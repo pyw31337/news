@@ -32,3 +32,12 @@ https://pyw31337.github.io/news/
   - `today.json`(3~4MB)은 커밋하지 않고 배포 산출물에만 포함 → 저장소 비대화 방지
 - AI: GitHub Models는 2026-07-30 종료되어 사용 불가. 저장소 Secret `LLM_API_KEY`를 넣으면 기본 Google Gemini(`gemini-2.5-flash`, OpenAI 호환 엔드포인트, 무료 등급)로 동작. 교체: 저장소 Variables `LLM_ENDPOINT`·`LLM_MODEL`, Secret `LLM_API_KEY` (OpenAI 호환 API·로컬 서버 모두 가능)
 - AI 결과는 화면에 “AI 요약/자동 판단”으로 표시, 수집 자료에 없는 내용은 쓰지 않도록 지시. 편향 배지는 확신도 high일 때만 표시
+
+## v5 (2026-10-28)
+- 주소에서 `#` 제거: `/news/issue/<id>`, `/news/entity/<이름>`, `/news/kw/<검색어>`, `/news/g/<id>`(해외). 예전 `#/…` 링크는 자동으로 바뀜.
+- 수집 때 이슈·인물·검색어마다 정적 `index.html`을 만들고 og:title·description·image를 넣음(`scripts/build_pages.py`). 없는 경로는 `404.html`(앱 본체)이 처리.
+- 이슈 ID는 대표 기사 URL 해시라서 순위가 바뀌어도 공유 링크가 유지됨. TOP 10에서 빠지면 안내문과 함께 오늘 화면을 보여줌.
+- 상세 화면 공유 버튼: Web Share API, 안 되면 링크 복사.
+- 앱 아이콘·대표 OG 이미지(1200×630): 렛츠뷰 아이콘과 같은 비율(오브젝트가 배경의 56%).
+- `/news/admin/`: 관리자 대시보드(noindex). 브라우저 안에서만 확인하는 해시 잠금이고, 비밀번호 변경은 기기마다 따로 저장됨. 공개 데이터(`data/status.json`, 공개 GitHub API)만 보여줌.
+- 맥미니: launchd `com.pyw31337.newsboard-ai`가 매일 03:30에 Apple 온디바이스 분석을 돌리고 결과를 data 브랜치 `overlay/`에 push.
