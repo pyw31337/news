@@ -84,6 +84,7 @@ for no, v in sorted((k, v) for k, v in cat.items() if k != '_full'):
     if not rows:
         v['asset'] = False; os.remove(f); continue
     members = [r for r in rows if '국회의원' in r['title'] or r['title'] in ('국회의장', '국회부의장')]
+    kind = '정기재산변동신고' if v['date'][5:7] in ('03', '04') and len(rows) > 100 else '재산등록·수시공개'
     a = age_at(v['date']); matched = 0
     url = f'{BASE}/portal/cmmn/file/fileDown.do?atchFileId={v["fid"]}&fileSn=1'
     for r in members:
