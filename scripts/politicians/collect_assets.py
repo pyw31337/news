@@ -24,17 +24,20 @@ for pg in range(1, 400):
     rows = re.findall(r'<tr>(.*?)</tr>', h, re.S)
     items = []
     for r in rows:
-        t = re.search(r'title="국회공보 제(\d{4}-\d+)호([^"]*)"', r); f = re.search(r'atchFileId=([0-9a-f]+)', r); d = re.search(r'<td title="(\d{4}-\d{2}-\d{2})"', r)
+        t = re.search(r'title="국회공보 제(\d{4}-\d+)호([^"]*)"', r); f = re.search(r'atchFileId=([^&"]+)', r); d = re.search(r'<td title="(\d{4}-\d{2}-\d{2})"', r)
         if t and f: items.append((t.group(1), {'fid': f.group(1), 'title': t.group(2).strip(), 'date': d.group(1) if d else ''}))
     if not items: break
     new = sum(1 for no, _ in items if no not in cat)
-    for no, v in items: cat[no] = v
+    for no, v in items:
+        if no not in cat or cat[no].get('fid') != v['fid']: cat[no] = v
     if min(v['date'] for _, v in items if v['date']) < f'{FROM}-01-01': break
     if not new and cat.get('_full'): break
 cat['_full'] = True
 json.dump(cat, open(cat_path, 'w'), ensure_ascii=False)
 def cand(no, v):
-    return bool(v.get('date')) and v['date'] >= f'{FROM}-01-01' and '재산' in v.get('title', '')
+    d = v.get('date') or ''
+    if not d or d < f'{FROM}-01-01' or v.get('asset') is False: return False
+    return '재산' in v.get('title', '') or '03-20' <= d[5:] <= '04-05' or '08-20' <= d[5:] <= '09-05'
 import pdfplumber
 NUM = r'(-?[\d,]+|-)'
 def n(s): return None if s in ('-', '') else int(s.replace(',', ''))
@@ -73,11 +76,13 @@ for no, v in sorted((k, v) for k, v in cat.items() if k != '_full'):
     if not cand(no, v): continue
     f = os.path.join(C, no + '.pdf')
     if not os.path.exists(f):
-        try: open(f, 'wb').write(get(f'{BASE}/portal/cmmn/file/fileDown.do?atchFileId={v["fid"]}&fileSn=1', 300))
+        try: b = get(f'{BASE}/portal/cmmn/file/fileDown.do?atchFileId={v["fid"]}&fileSn=1', 300)
         except Exception as e: print('down fail', no, e); continue
+        open(f, 'wb').write(b)
     try: kind, rows = parse(f)
     except Exception as e: print('parse fail', no, e); continue
-    if not rows: continue
+    if not rows:
+        v['asset'] = False; os.remove(f); continue
     members = [r for r in rows if '국회의원' in r['title'] or r['title'] in ('국회의장', '국회부의장')]
     a = age_at(v['date']); matched = 0
     url = f'{BASE}/portal/cmmn/file/fileDown.do?atchFileId={v["fid"]}&fileSn=1'
@@ -111,4 +116,5 @@ for e in idx['people']:
 idx['assets_people'] = n_people; idx['assets_rows'] = sum(len(v) for v in recs.values())
 json.dump(idx, open(f'{P}/index.json', 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 json.dump({'updated': TODAY, 'issues': issues, 'people': n_people, 'rows': idx['assets_rows'], 'source': SRC}, open(f'{P}/assets_index.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+json.dump(cat, open(cat_path, 'w'), ensure_ascii=False)
 print('assets people', n_people, 'rows', idx['assets_rows'], 'issues', len(issues))
