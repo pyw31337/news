@@ -20,6 +20,7 @@ git -C pdata fetch -q origin politicians 2>/dev/null && git -C pdata reset -q --
 PY=$B/venv/bin/python
 BILL_AGES=${BILL_AGES:-22} "$PY" src/scripts/politicians/collect_assembly.py pdata || { echo "collect failed"; exit 1; }
 "$PY" src/scripts/politicians/collect_votes.py pdata || echo "votes failed"
+"$PY" src/scripts/politicians/collect_assets.py pdata || echo "assets failed"
 "$PY" src/scripts/politicians/mirror_photos.py pdata || echo "photos failed"
 # 첫 실행 전 뉴스 연결이 없으면 Actions가 채움
 cd pdata

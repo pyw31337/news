@@ -24,3 +24,7 @@ feed.json             최근 새로 연결된 기사
 ## 다른 PC에서 이어받기
 `ASSEMBLY_KEY=… python scripts/politicians/collect_assembly.py pdata` (한국 IP) → `politicians` 브랜치에 push.
 키 없이 돌리면 `seed_names.txt`(위키백과 역대 의원 목록에서 뽑은 이름)로 한 명씩 조회.
+
+## 재산 (collect_assets.py)
+- 원출처: 국회공보 PDF(국회공직자윤리위원회 정기재산변동신고·재산등록 공개목록). assembly.go.kr 국회공보 목록에서 3~4월·6~9월 호를 찾아 PDF를 내려받아 항목 소계·총계(천원)를 읽음. 한국 IP 필요 → 맥미니 run_pol.sh에서 실행.
+- 제3자 가공 데이터(real-signal CDN, 정보공개센터 시트 CC BY-NC-ND)는 쓰지 않음.

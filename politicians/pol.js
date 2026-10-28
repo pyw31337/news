@@ -92,6 +92,14 @@ async function detail(id){
   <div class="legend">${Object.entries(S).map(([k,n])=>`<span class="vk"><i style="background:${C[k]||'#8189a3'}"></i>${esc(k)} <b>${fmt(n)}</b> <small>${Math.round(n/T*100)}%</small></span>`).join('')}</div>
   ${V.dissent.length?`<h3 style="margin-top:14px">반대·기권한 안건</h3><ul class="blist">${V.dissent.slice(0,10).map(x=>`<li><a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=${esc(x.id)}" target="_blank" rel="noopener">${esc(x.name)}</a><span>${esc(x.date||'')} · <b style="color:${C[x.vote]}">${esc(x.vote)}</b></span></li>`).join('')}</ul>`:''}
   <p class="fine">출처: ${esc(V.source.name)} · ${esc(V.source.fetched)} 수집</p></div>`})():''}
+  ${p.assets&&p.assets.records.length?(()=>{const R=p.assets.records,last=R[R.length-1],won=v=>{if(v==null)return'-';const e=v/100000;return Math.abs(e)>=1?(Math.round(e*10)/10).toLocaleString()+'억':Math.round(v/10).toLocaleString()+'만'};const reg=R.filter(r=>r.kind!=='재산등록사항'||R.length===1);const m=Math.max(...R.map(r=>r.total||0),1);
+  const K=[['토지','land','#7b61ff'],['건물','building','#2f6bff'],['예금·현금','deposits','#11a683'],['증권','securities','#ffb020'],['채무','debt','#e5243b']];const km=Math.max(...K.map(k=>last[k[1]]||0),1);
+  return`<div class="sec"><h2><small>Assets</small>재산 신고</h2><span class="more">${esc(last.date.slice(0,4))}년 공개 · ${R.length}회 기록</span></div>
+  <div class="g2"><div class="card pad"><h3>연도별 신고 총액</h3><div class="mbar">${R.map(r=>`<div title="${esc(r.date)} ${won(r.total)}원"><i style="height:${Math.max(3,(r.total||0)/m*100)}%;background:${c}"></i><span>${esc(r.date.slice(2,4))}${r.kind==='재산등록사항'?'*':''}</span></div>`).join('')}</div>
+   <p class="fine">최근 총액 <b>${won(last.total)}원</b>${last.change!=null?` · 전년 대비 <b class="${last.change>=0?'ok':''}">${last.change>=0?'+':''}${won(last.change)}원</b>`:''}${R.some(r=>r.kind==='재산등록사항')?' · * 신규 등록':''}</p></div>
+  <div class="card pad"><h3>항목별 (${esc(last.date.slice(0,4))}년 공개)</h3><div class="hbar">${K.map(([n,k,col])=>`<div><span>${n}</span><i style="width:${Math.max(2,(last[k]||0)/km*100)}%;background:${col}"></i><b>${won(last[k]||0)}</b></div>`).join('')}</div>
+   <p class="fine">부동산 ${won((last.land||0)+(last.building||0))}원 · 증권 ${won(last.securities||0)}원</p></div></div>
+  <div class="card pad"><p class="fine">본인·배우자·직계존비속 합산 신고액(고지거부분 제외)이며, 부동산은 공시가격 등 신고가액이라 시세와 다를 수 있어요. 공보 PDF를 자동으로 읽은 값이라 원문 확인을 권해요.<br>출처: ${R.map(r=>`<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.issue)}</a>`).join(', ')} (국회공직자윤리위원회 공고) · ${esc(p.assets.source.fetched)} 수집</p></div>`})():''}
   <div class="sec"><h2><small>Incidents</small>사건·사고 관련 보도</h2></div>
   <div class="card pad inc"><p class="warn">기사 제목의 단어로 <b>자동 분류</b>한 목록이에요. ‘의혹·수사·기소’ 단계는 확정된 사실이 아니며 유무죄와 관계없어요. 반드시 원문을 확인해 주세요.</p>
    <div class="stg">${Object.keys(STG).map(s=>`<span class="${STG[s]}">${s} <b>${inc.filter(x=>x.stage===s).length}</b></span>`).join('')}</div>
