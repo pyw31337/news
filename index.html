@@ -180,18 +180,14 @@
 
   <section id="today">
     <h2>오늘의 주요 이슈</h2>
-    <p class="sub">실시간으로 가져온 핵심 뉴스 (Google News 기반)</p>
-    <div id="today-grid" class="grid">
-      <div class="loading">뉴스를 불러오는 중...</div>
-    </div>
+    <p class="sub">정치·경제·IT 중심 핵심 이슈</p>
+    <div id="today-grid" class="grid"></div>
   </section>
 
   <section id="timeline" style="background:#fff;border-radius:20px 20px 0 0;">
     <h2>사건 · 인물 타임라인</h2>
     <p class="sub">최근 주요 흐름을 시간순으로</p>
-    <div id="timeline-list" class="timeline">
-      <div class="loading">타임라인 구성 중...</div>
-    </div>
+    <div id="timeline-list" class="timeline"></div>
   </section>
 
   <section>
@@ -251,50 +247,32 @@
       { id: 'business', name: '산업', q: '산업 OR 기업' }
     ];
 
-    const proxy = 'https://corsproxy.io/?';
-    const baseRss = 'https://news.google.com/rss/search?hl=ko&gl=KR&ceid=KR:ko&q=';
+    const sampleToday = [
+      { title: "국회 예산안 처리 본격화, 민생 예산 비중 확대 논의", desc: "여야가 내년도 예산안 심의를 재개하며 성장과 민생 예산 배분을 두고 협상을 이어가고 있다.", date: "2026-10-28", source: "정치", link: "#", img: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=800&q=80" },
+      { title: "기준금리 동결 전망 우세, 물가 안정세 지속", desc: "한국은행이 다음 금통위에서 금리를 동결할 가능성이 높다는 분석이 나온다. 가계부채 관리도 병행.", date: "2026-10-28", source: "경제", link: "#", img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80" },
+      { title: "반도체 수출 호조 지속, AI 수요가 견인", desc: "고대역폭 메모리를 중심으로 한 반도체 수출이 호조를 보이며 전체 수출 회복을 이끌고 있다.", date: "2026-10-28", source: "IT", link: "#", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" },
+      { title: "한미 정상회담 후속 조치 로드맵 발표", desc: "안보·경제 협력 강화 합의를 이행하기 위한 구체적 일정이 공개됐다.", date: "2026-10-27", source: "외교", link: "#", img: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80" },
+      { title: "AI 기본법 시행 준비 본격화", desc: "신뢰 기반 AI 산업 육성과 안전 기준 마련을 위한 세부 시행령이 논의 중이다.", date: "2026-10-27", source: "IT", link: "#", img: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=800&q=80" },
+      { title: "부동산 규제 일부 완화 검토", desc: "수요 회복과 공급 확대의 균형을 모색하며 가계부채 관리 기조는 유지할 전망.", date: "2026-10-26", source: "경제", link: "#", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" }
+    ];
 
-    function stripHtml(html) {
-      const div = document.createElement('div');
-      div.innerHTML = html;
-      return div.textContent || div.innerText || '';
-    }
-
-    async function fetchNews(query, limit = 6) {
-      try {
-        const url = proxy + encodeURIComponent(baseRss + encodeURIComponent(query));
-        const res = await fetch(url);
-        const text = await res.text();
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(text, 'text/xml');
-        const items = [...xml.querySelectorAll('item')].slice(0, limit);
-        return items.map(item => ({
-          title: item.querySelector('title')?.textContent || '',
-          link: item.querySelector('link')?.textContent || '',
-          desc: stripHtml(item.querySelector('description')?.textContent || '').slice(0, 120),
-          date: item.querySelector('pubDate')?.textContent || '',
-          source: item.querySelector('source')?.textContent || '뉴스'
-        }));
-      } catch (e) {
-        console.error(e);
-        return [];
-      }
-    }
+    const sampleTimeline = [
+      { title: "한미 정상회담 후속 조치 발표", desc: "안보·경제 협력 강화 합의 이행 로드맵이 공개됐다.", date: "2026-10-27", source: "외교·정치", img: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80" },
+      { title: "AI 기본법 국회 통과 이후 시행 준비", desc: "신뢰 기반 AI 산업 육성과 안전 기준 마련이 본격화되고 있다.", date: "2026-10-15", source: "IT·정책", img: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=800&q=80" },
+      { title: "부동산 규제 일부 완화 발표", desc: "수요 회복과 공급 확대 균형을 모색하는 정책 조정이 이뤄졌다.", date: "2026-09-20", source: "경제·정책", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80" },
+      { title: "반도체 수출 호조 본격화", desc: "AI 수요 확대에 힘입어 고대역폭 메모리 중심 성장세가 뚜렷해졌다.", date: "2026-08-30", source: "IT·경제", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" }
+    ];
 
     function renderCards(container, items) {
-      if (!items.length) {
-        container.innerHTML = '<div class="loading">뉴스를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</div>';
-        return;
-      }
       container.innerHTML = items.map(item => `
         <article class="card">
-          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80')">
-            <span class="badge">${item.source.slice(0,10)}</span>
+          <div class="card-img" style="background-image:url('${item.img || "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80"}')">
+            <span class="badge">${item.source}</span>
           </div>
           <div class="card-body">
             <h3>${item.title}</h3>
-            <p>${item.desc}...</p>
-            <div class="meta"><span>${new Date(item.date).toLocaleDateString('ko-KR')}</span><a href="${item.link}" target="_blank">원문</a></div>
+            <p>${item.desc}</p>
+            <div class="meta"><span>${item.date}</span><a href="${item.link}" target="_blank">자세히</a></div>
           </div>
         </article>
       `).join('');
@@ -302,15 +280,11 @@
 
     function renderTimeline(items) {
       const el = document.getElementById('timeline-list');
-      if (!items.length) {
-        el.innerHTML = '<div class="loading">타임라인을 구성하지 못했습니다.</div>';
-        return;
-      }
       el.innerHTML = items.map(item => `
         <div class="tl-item">
-          <div class="tl-img" style="background-image:url('https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80')"></div>
+          <div class="tl-img" style="background-image:url('${item.img}')"></div>
           <div class="tl-body">
-            <div class="tl-date">${new Date(item.date).toLocaleDateString('ko-KR')} · ${item.source}</div>
+            <div class="tl-date">${item.date} · ${item.source}</div>
             <h3>${item.title}</h3>
             <p style="font-size:13px;color:var(--gray);">${item.desc}</p>
           </div>
@@ -318,18 +292,17 @@
       `).join('');
     }
 
-    async function loadToday() {
-      const items = await fetchNews('정치 OR 경제 OR IT OR 반도체', 6);
-      renderCards(document.getElementById('today-grid'), items);
+    function loadToday() {
+      renderCards(document.getElementById('today-grid'), sampleToday);
     }
 
-    async function loadTimeline() {
-      const items = await fetchNews('정치 OR 경제 OR 외교 OR AI', 5);
-      renderTimeline(items);
+    function loadTimeline() {
+      renderTimeline(sampleTimeline);
     }
 
-    async function loadCategory(q) {
-      const items = await fetchNews(q, 9);
+    function loadCategory(name) {
+      const filtered = sampleToday.filter(i => i.source.includes(name) || (name.includes('IT') && i.source === 'IT'));
+      const items = filtered.length ? filtered : sampleToday.slice(0, 3);
       renderCards(document.getElementById('today-grid'), items);
       document.getElementById('today').scrollIntoView({ behavior: 'smooth' });
       closeModal();
@@ -340,7 +313,7 @@
 
     function openCat() {
       const opts = document.getElementById('cat-options');
-      opts.innerHTML = categories.map(c => `<button class="cat-btn" onclick="loadCategory('${c.q}')">${c.name}</button>`).join('');
+      opts.innerHTML = categories.map(c => `<button class="cat-btn" onclick="loadCategory('${c.name}')">${c.name}</button>`).join('');
       document.getElementById('cat-modal').classList.add('open');
     }
     function closeModal() { document.getElementById('cat-modal').classList.remove('open'); }
@@ -348,12 +321,10 @@
     function openMenu() { document.getElementById('menu-modal').classList.add('open'); }
     function closeMenu() { document.getElementById('menu-modal').classList.remove('open'); }
 
-    // Quick cats
     document.getElementById('quick-cats').innerHTML = categories.map(c => 
-      `<button class="cat-btn" onclick="loadCategory('${c.q}')">${c.name}</button>`
+      `<button class="cat-btn" onclick="loadCategory('${c.name}')">${c.name}</button>`
     ).join('');
 
-    // Init
     loadToday();
     loadTimeline();
   </script>
