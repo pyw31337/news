@@ -14,11 +14,12 @@ D = json.load(open(os.path.join(ROOT, 'today.json')))
 import atexit as _ax, collections as _co, urllib.parse as _up
 DIAG = {'ok': _co.Counter(), 'fail': _co.Counter(), 'errors': []}
 def _dhost(u): return _up.urlsplit(u).netloc
+_DDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
 def _dsave():
     try:
-        os.makedirs(os.path.join(os.path.dirname(__file__), '..', 'data'), exist_ok=True)
+        os.makedirs(_DDIR, exist_ok=True)
         json.dump(dict(step='enrich', at=dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).isoformat(), ok=DIAG['ok'], fail=DIAG['fail'], errors=DIAG['errors'][-40:]),
-                  open(os.path.join(os.path.dirname(__file__), '..', 'data', 'diag_enrich.json'), 'w'), ensure_ascii=False)
+                  open(os.path.join(_DDIR, 'diag_enrich.json'), 'w'), ensure_ascii=False)
     except Exception as e: print('diag', e)
 _ax.register(_dsave)
 

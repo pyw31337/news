@@ -16,11 +16,12 @@ kiwi = Kiwi()
 import atexit as _ax, collections as _co, urllib.parse as _up
 DIAG = {'ok': _co.Counter(), 'fail': _co.Counter(), 'errors': []}
 def _dhost(u): return _up.urlsplit(u).netloc
+_DDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
 def _dsave():
     try:
-        os.makedirs(os.path.join(os.path.dirname(__file__), '..', 'data'), exist_ok=True)
+        os.makedirs(_DDIR, exist_ok=True)
         json.dump(dict(step='collect', at=dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).isoformat(), ok=DIAG['ok'], fail=DIAG['fail'], errors=DIAG['errors'][-40:]),
-                  open(os.path.join(os.path.dirname(__file__), '..', 'data', 'diag_collect.json'), 'w'), ensure_ascii=False)
+                  open(os.path.join(_DDIR, 'diag_collect.json'), 'w'), ensure_ascii=False)
     except Exception as e: print('diag', e)
 _ax.register(_dsave)
 
@@ -198,7 +199,7 @@ for i, (c, (d, im)) in enumerate(zip(top, ogs)):
         seen.add(a['url']); sources.append(dict(title=a['title'], url=a['url'], press=a['press'],
                                                 portal='네이버' if a['src'].startswith('naver') else '구글뉴스',
                                                 kind={'naver_popularDay': '많이 본', 'naver_popularMemo': '댓글 많은'}.get(a['src'], a.get('section', ''))))
-    issues.append(dict(rank=i + 1, id='i%d' % (i + 1), title=rep['title'], url=rep['url'], press=rep['press'],
+    issues.append(dict(rank=i + 1, id='i' + __import__('hashlib').md5(rep['url'].encode()).hexdigest()[:8], title=rep['title'], url=rep['url'], press=rep['press'],
                        image=im or rep.get('img', ''), summary=summarize(d) if d else [], lead=d,
                        keywords=c['keywords'], entities=c['proper'], category=c['category'], trend=c['trend'],
                        score=round(c['score'], 1), mentions=len(c['arts']), presses=len(set(a['press'] for a in c['arts'])),

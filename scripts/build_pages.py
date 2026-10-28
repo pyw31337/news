@@ -40,13 +40,15 @@ n = 0
 for v, t in (('market', '마켓·정책'), ('people', '화제 — 인물·기업·장소'), ('timeline', '타임라인 비교'), ('map', '관계로 보는 오늘'), ('archive', '날짜 아카이브'), ('settings', '설정')):
     n += page(v, t, '')
 for i in D.get('issues', []):
-    n += page('issue/' + i['id'], i['title'], i.get('summary') or ((i.get('ai') or {}).get('deep') or ''), i.get('image'))
+    sm = i.get('summary'); sm = ' '.join(sm) if isinstance(sm, list) else (sm or '')
+    img = i.get('image') or next((g.get('img') for g in i.get('gallery') or [] if g.get('img')), '')
+    n += page('issue/' + i['id'], i['title'], sm or i.get('lead') or ((i.get('ai') or {}).get('deep') or ''), img)
 for e in D.get('entities', []):
     if safe(e['name']): n += page('entity/' + e['name'], e['name'] + ' — 타임라인', (e.get('wiki') or {}).get('desc') or (e.get('timeline') or [{}])[0].get('title', ''), (e.get('wiki') or {}).get('thumb'))
 for t in D.get('trends', []):
     if safe(t['keyword']): n += page('kw/' + t['keyword'], t['keyword'] + ' — 검색어 흐름', ((t.get('ai') or {}).get('summary')) or ('검색 ' + str(t.get('traffic', ''))), t.get('image'))
 for i in G.get('issues', []):
-    n += page('g/' + i['id'], i.get('title_ko') or i['title'], i.get('summary_ko') or i.get('summary', ''), i.get('image'))
+    n += page('g/' + i['id'], i.get('title_ko') or i['title'], (lambda x: ' '.join(x) if isinstance(x, list) else x)(i.get('summary_ko') or i.get('summary') or ''), i.get('image'))
 for k, t in enumerate(G.get('trends', [])):
     n += page('gt/%d' % k, (t.get('keyword_ko') or t['keyword']) + ' — 해외 검색어', '', t.get('image'))
 open(os.path.join(SITE, '404.html'), 'w', encoding='utf-8').write(T)

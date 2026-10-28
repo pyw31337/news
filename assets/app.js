@@ -150,7 +150,7 @@ function wordCard(w){return`<div class="card term word"><div class="wt">${w.wiki
 function biasB(s){if(!s.bias)return'';return`<span class="bias ${s.bias.lean}" title="${esc(s.bias.reason)}">${ic('alert')}${s.bias.lean==='left'?'좌편향 주의':'우편향 주의'}</span>`}
 function issue(id){
   const i=D.issues.find(x=>x.id===id);if(!i){today();app.insertAdjacentHTML('afterbegin','<div class="note">공유된 이슈가 지금 TOP 10에서 내려갔어요. 지난 이슈는 <a href="archive">아카이브</a>에서 볼 수 있어요.</div>');return}
-  setMeta(i.title,i.summary);
+  setMeta(i.title,Array.isArray(i.summary)?i.summary.join(' '):i.summary);
   const ai=i.ai||{},op=i.opinion,aop=ai.opinion||{};
   const ents=i.entities.map(ent).filter(Boolean);
   const flow=(i.flow||[]).map((f,k)=>`<div class="fg"><div class="fd"><b>${fmtDay(f.date)}</b><span>${k===0?'최신':ago(f.date+'T12:00:00+09:00')}</span></div>

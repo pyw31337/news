@@ -9,11 +9,12 @@ UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.3
 import atexit as _ax, collections as _co, urllib.parse as _up
 DIAG = {'ok': _co.Counter(), 'fail': _co.Counter(), 'errors': []}
 def _dhost(u): return _up.urlsplit(u).netloc
+_DDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
 def _dsave():
     try:
-        os.makedirs(os.path.join(os.path.dirname(__file__), '..', 'data'), exist_ok=True)
+        os.makedirs(_DDIR, exist_ok=True)
         json.dump(dict(step='global', at=dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).isoformat(), ok=DIAG['ok'], fail=DIAG['fail'], errors=DIAG['errors'][-40:]),
-                  open(os.path.join(os.path.dirname(__file__), '..', 'data', 'diag_global.json'), 'w'), ensure_ascii=False)
+                  open(os.path.join(_DDIR, 'diag_global.json'), 'w'), ensure_ascii=False)
     except Exception as e: print('diag', e)
 _ax.register(_dsave)
 
