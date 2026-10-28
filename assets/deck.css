@@ -1,0 +1,78 @@
+/* ---- 슬림 지표 칩 ---- */
+.schips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;position:relative;z-index:2}
+.schip{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 11px;border-radius:999px;font-size:.75rem;font-weight:600;color:#e7eaf5;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.16);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);white-space:nowrap;text-decoration:none;transition:background .2s,transform .2s}
+.schip b{font-weight:900;font-variant-numeric:tabular-nums;color:#fff}.schip .ico{width:14px;height:14px;color:var(--acc2,#ffb547)}
+a.schip:hover{background:rgba(255,255,255,.24)}a.schip:active{transform:scale(.96)}
+a.schip::after{content:'›';opacity:.6;margin-left:1px}
+.schip.hot{background:rgba(255,77,46,.22);border-color:rgba(255,120,90,.35)}
+.schips.light .schip{color:var(--ink2,#444);background:var(--bg,#f2f4f8);border-color:rgba(0,0,0,.06);-webkit-backdrop-filter:none;backdrop-filter:none}
+.schips.light .schip b{color:var(--ink,#111)}.schips.light .schip .ico{color:var(--acc,#ff4d2e)}
+.schips.light .schip.hot{background:#fff1ec;border-color:#ffd9cc}
+@media(max-width:359px){.schip{height:27px;padding:0 8px;font-size:.6875rem;gap:3px}.schip .ico{width:12px;height:12px}.schips{gap:4px}}
+/* ---- 섹션 강조 펄스 ---- */
+.anc{scroll-margin-top:72px;border-radius:18px;outline:none}
+.anc.pulse{animation:nbpulse 2s ease-out}
+@keyframes nbpulse{0%{box-shadow:0 0 0 0 rgba(255,77,46,.55);background:rgba(255,77,46,.07)}40%{box-shadow:0 0 0 10px rgba(255,77,46,0);background:rgba(255,77,46,.05)}100%{box-shadow:0 0 0 0 rgba(255,77,46,0);background:transparent}}
+/* ---- 카드 덱 ---- */
+.rdeck{position:relative;outline:none;min-width:0}
+.rdeck:focus-visible{box-shadow:0 0 0 3px rgba(47,107,255,.5);border-radius:26px}
+.rstage{position:relative;height:440px;perspective:1400px;touch-action:pan-y;-webkit-user-select:none;user-select:none;margin-bottom:44px}
+.rcard.lead{position:absolute;inset:0;min-height:0;will-change:transform,opacity;transform-origin:50% 60%;background-color:#1d2547;
+  box-shadow:0 calc(8px + var(--lift,0)*26px) calc(22px + var(--lift,0)*44px) rgba(12,18,40,calc(.22 + var(--lift,0)*.2)),0 1px 0 rgba(255,255,255,.08) inset;cursor:grab;backface-visibility:hidden}
+.rcard.lead:active{cursor:grabbing}
+.rcard.txt{background:radial-gradient(120% 90% at 85% 0%,#2a3a7a 0%,#141c3c 55%,#0f1630 100%)}
+.rcard.txt::after{content:'';position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,46,.35),transparent 70%)}
+.rcard .rlink{position:absolute;inset:0;z-index:1;border-radius:inherit}
+.rcard .in{z-index:2;pointer-events:none;width:100%}.rcard .in .schips{pointer-events:auto}
+.rcard h1{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.rcard img{-webkit-user-drag:none}
+.rctl{position:absolute;left:0;right:0;bottom:-44px;height:36px;display:flex;align-items:center;gap:10px;padding:0 4px}
+.rbtn{width:36px;height:36px;border-radius:50%;border:0;background:var(--card,#fff);box-shadow:0 2px 10px rgba(15,22,48,.12);font-size:1.35rem;line-height:1;color:var(--ink,#111);cursor:pointer;flex:none;transition:transform .15s,opacity .2s}
+.rbtn:active{transform:scale(.9)}.rbtn:disabled{opacity:.35;cursor:default}
+.rpos{font-size:.8rem;color:var(--mute,#778);font-variant-numeric:tabular-nums;flex:none}.rpos b{color:var(--ink,#111);font-weight:900}
+.rbar{flex:1;height:4px;border-radius:4px;background:rgba(15,22,48,.1);overflow:hidden;min-width:30px}.rbar i{display:block;height:100%;background:var(--acc,#ff4d2e);border-radius:4px;transition:width .35s cubic-bezier(.2,.8,.2,1)}
+.rhint{font-size:.7rem;color:var(--mute,#889);flex:none}
+@media(max-width:359px){.rstage{height:420px}.rhint{display:none}}
+@media(min-width:1000px){.rstage{height:540px}}
+/* 목록 동기화: 덱 맨 위 카드와 같은 줄은 위로 사라짐 */
+.srow{display:grid;grid-template-rows:1fr;transition:grid-template-rows .45s cubic-bezier(.3,.7,.2,1),opacity .35s,transform .45s cubic-bezier(.3,.7,.2,1),margin .45s;min-width:0}
+.srow>div{overflow:hidden;min-height:0}
+.srow.gone{grid-template-rows:0fr;opacity:0;transform:translateY(-14px);margin-bottom:-12px;pointer-events:none}
+/* ---- 상세 상단 갤러리 ---- */
+.dgal{display:none;position:relative;margin:0 0 14px}.dgal.on{display:block}
+.dgal .gt{display:block;border:0;padding:0;margin:0;background:#dfe3ee;overflow:hidden;cursor:zoom-in;position:relative}
+.dgal .gt img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.dgal .gt:hover img{transform:scale(1.04)}
+.gp{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:6px;height:min(46vw,440px);border-radius:22px;overflow:hidden}
+.gp .big{grid-row:1/3}
+.gp.n1{grid-template-columns:1fr}.gp.n2{grid-template-columns:2fr 1fr}.gp.n2 .gt:not(.big){grid-row:1/3}
+.gp.n3{grid-template-columns:2fr 1fr}.gp.n4{grid-template-columns:2fr 1fr 1fr}.gp.n4 .gt:nth-child(4){grid-column:2/4}
+.gmore{position:absolute;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;border:0;background:rgba(255,255,255,.94);color:#111;font-weight:800;font-size:.8rem;box-shadow:0 4px 16px rgba(0,0,0,.2);cursor:pointer}
+.gmore svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8}
+.gm{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:20px;scrollbar-width:none;aspect-ratio:4/3}
+.gm::-webkit-scrollbar{display:none}.gm .gt{flex:0 0 100%;scroll-snap-align:center;height:100%}
+.gcnt{position:absolute;left:12px;bottom:12px;background:rgba(10,14,30,.62);color:#fff;font-size:.75rem;padding:4px 10px;border-radius:999px;font-variant-numeric:tabular-nums}
+.dgal .gm~.gmore{height:30px;font-size:.72rem;right:10px;bottom:10px}
+.dhead.noimg .bd,.dhead .bd{padding-top:18px}.dhead .bd .ov{position:static;color:inherit;text-shadow:none;display:flex;gap:8px;align-items:center;font-size:.8rem}
+/* ---- 라이트박스 ---- */
+.lbx{position:fixed;inset:0;z-index:1000;background:rgba(6,8,16,.96);display:flex;flex-direction:column;color:#fff;touch-action:none;animation:lbin .25s ease-out}
+@keyframes lbin{from{opacity:0}}
+.lbtop{display:flex;justify-content:space-between;align-items:center;padding:calc(10px + env(safe-area-inset-top)) 14px 6px;font-variant-numeric:tabular-nums;font-size:.85rem}
+.lbx-x{width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:1.1rem;cursor:pointer}
+.lbtrack{flex:1;display:flex;min-height:0;will-change:transform}
+.lbs{flex:0 0 100%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.lbs img{max-width:100%;max-height:100%;object-fit:contain;-webkit-user-select:none;user-select:none;touch-action:none}
+.lbnav{position:absolute;top:50%;width:44px;height:44px;margin-top:-22px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:1.6rem;cursor:pointer}
+.lbnav.p{left:12px}.lbnav.n{right:12px}
+@media(hover:none){.lbnav{display:none}}
+.lbcap{padding:12px 18px calc(16px + env(safe-area-inset-bottom));font-size:.85rem;line-height:1.45;background:linear-gradient(0deg,rgba(0,0,0,.6),transparent)}
+.lbcap p{margin:0 0 4px}.lbcap small{color:#aab;font-size:.72rem}.lbcap a{color:#ffb547;margin-left:6px}
+/* ---- 언론사 로고 ---- */
+.pl{width:14px;height:14px;border-radius:4px;object-fit:cover;flex:none;vertical-align:-2px}
+i.mono{display:inline-grid;place-items:center;font-style:normal;font-weight:900;font-size:.55rem;color:#fff;background:hsl(var(--h) 55% 45%)}
+.plg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:8px}
+.plc{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--card,#fff);box-shadow:0 1px 3px rgba(15,22,48,.06);min-width:0;text-decoration:none;color:inherit}
+.plo{width:36px;height:36px;border-radius:10px;object-fit:cover;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+i.plo.mono{font-size:1rem}
+.plc span{min-width:0;display:flex;flex-direction:column}.plc b{font-size:.85rem}.plc small{font-size:.72rem;color:var(--mute,#778);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (prefers-reduced-motion:reduce){.srow,.rbar i,.dgal .gt img,.schip{transition:none}.anc.pulse{animation:none;box-shadow:0 0 0 3px rgba(255,77,46,.45)}.lbx{animation:none}}
