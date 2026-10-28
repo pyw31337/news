@@ -73,7 +73,7 @@
 
   <section>
     <h2 class="sec">오늘 가장 많이 회자된 뉴스</h2>
-    <p class="sec-sub">거론 횟수 기준 순위</p>
+    <p class="sec-sub">거론 횟수 기준 순위 (한글 뉴스만)</p>
     <div class="rank-scroll" id="rank-list"></div>
   </section>
 
@@ -103,14 +103,6 @@
       { title: "국회 예산안 처리 본격화", meta: "정치 · 거론 860회", img: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1400&q=80" }
     ];
 
-    const ranks = [
-      { rank:1, title:"한미 정상회담 후속", count:"1,240회", img:"https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=500&q=80" },
-      { rank:2, title:"반도체 수출 호조", count:"980회", img:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80" },
-      { rank:3, title:"기준금리 동결 전망", count:"720회", img:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=500&q=80" },
-      { rank:4, title:"AI 기본법 시행 준비", count:"650회", img:"https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=500&q=80" },
-      { rank:5, title:"부동산 규제 완화 검토", count:"540회", img:"https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=500&q=80" }
-    ];
-
     const entities = {
       featured: { name:"윤석열 대통령", desc:"한미 정상회담 후속 조치와 외교 일정 중심으로 최근 뉴스에서 가장 높은 빈도로 등장.", tags:["외교","정치","인물"], img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" },
       list: [
@@ -119,13 +111,6 @@
         { name:"캠프 데이비드", desc:"한미일 정상회담 장소로 재조명", tags:["장소","외교"], img:"https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=200&q=80" }
       ]
     };
-
-    const themes = [
-      { title:"정치 · 예산안 처리", desc:"여야 협상 재개와 민생 예산 비중 논의", img:"https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=200&q=80" },
-      { title:"경제 · 금리 동결 전망", desc:"물가 안정세 지속, 가계부채 관리 병행", img:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=200&q=80" },
-      { title:"IT · 반도체 수출", desc:"AI 수요 확대에 힘입은 고대역폭 메모리 성장", img:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=200&q=80" },
-      { title:"외교 · 한미 후속 조치", desc:"안보·경제 협력 로드맵 공개", img:"https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=200&q=80" }
-    ];
 
     const hero = document.getElementById('hero');
     heroSlides.forEach((s,i) => {
@@ -141,14 +126,6 @@
       cur = (cur+1)%heroSlides.length;
       document.querySelectorAll('.slide')[cur].classList.add('active');
     }, 5500);
-
-    document.getElementById('rank-list').innerHTML = ranks.map(r=>`
-      <div class="rank-item">
-        <div class="rank-num">${r.rank}</div>
-        <div class="rank-thumb" style="background-image:url('${r.img}')">
-          <div class="rank-info"><h3>${r.title}</h3><div class="rank-count">거론 ${r.count}</div></div>
-        </div>
-      </div>`).join('');
 
     document.getElementById('entities').innerHTML = `
       <div class="featured">
@@ -171,59 +148,79 @@
           </div>`).join('')}
       </div>`;
 
-    document.getElementById('themes').innerHTML = themes.map(t=>`
-      <div class="compact-item">
-        <div class="thumb" style="background-image:url('${t.img}')"></div>
-        <div>
-          <h4>${t.title}</h4>
-          <p style="font-size:13px;color:var(--gray);">${t.desc}</p>
-        </div>
-      </div>`).join('');
-
-    // ========== Naver / Live Data ==========
+    // ========== Live Data ==========
     const WORKER_URL = 'https://letsnews-proxy.pyw213.workers.dev';
+    const isKorean = (text) => /[가-힯]/.test(text);
 
-    async function loadNaverNews(query, limit = 8) {
+    async function loadNaverNews(query, limit = 10) {
       if (!WORKER_URL.includes('workers.dev')) return null;
       try {
         const url = `${WORKER_URL}?naver=${encodeURIComponent(query)}&display=${limit}&sort=date`;
         const res = await fetch(url);
         if (!res.ok) throw new Error(await res.text());
         const data = await res.json();
-        if (!data.items || !data.items.length) return null;
+        if (!data.items) return null;
 
-        return data.items.map(item => ({
-          title: item.title.replace(/<[^>]*>/g, '').replace(/"/g, '"').replace(/&/g, '&'),
-          desc: (item.description || '').replace(/<[^>]*>/g, '').slice(0, 100),
-          link: item.originallink || item.link,
-          date: item.pubDate ? new Date(item.pubDate).toLocaleDateString('ko-KR') : '',
-          source: '네이버',
-          img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80'
-        }));
+        return data.items
+          .map(item => ({
+            title: item.title.replace(/<[^>]*>/g, '').replace(/"/g, '"').replace(/&/g, '&'),
+            desc: (item.description || '').replace(/<[^>]*>/g, '').slice(0, 90),
+            link: item.originallink || item.link,
+            date: item.pubDate ? new Date(item.pubDate).toLocaleDateString('ko-KR') : '',
+            img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80'
+          }))
+          .filter(item => isKorean(item.title));
       } catch (e) {
         console.warn('Naver fetch failed:', e.message);
         return null;
       }
     }
 
-    async function tryLoadLiveRanks() {
-      const live = await loadNaverNews('정치 OR 경제 OR 반도체 OR AI', 5);
-      if (!live) return;
-      const rankList = document.getElementById('rank-list');
-      rankList.innerHTML = live.map((item, i) => `
-        <div class="rank-item">
-          <div class="rank-num">${i+1}</div>
-          <div class="rank-thumb" style="background-image:url('${item.img}')">
-            <div class="rank-info">
-              <h3>${item.title}</h3>
-              <div class="rank-count">${item.date}</div>
+    async function loadLiveSections() {
+      // Rank (top Korean news)
+      const rankNews = await loadNaverNews('정치 OR 경제 OR 반도체 OR AI OR 외교', 8);
+      if (rankNews && rankNews.length) {
+        document.getElementById('rank-list').innerHTML = rankNews.slice(0,5).map((item, i) => `
+          <div class="rank-item">
+            <div class="rank-num">${i+1}</div>
+            <div class="rank-thumb" style="background-image:url('${item.img}')">
+              <div class="rank-info">
+                <h3>${item.title}</h3>
+                <div class="rank-count">${item.date}</div>
+              </div>
             </div>
-          </div>
-        </div>`).join('');
+          </div>`).join('');
+      }
+
+      // Themes (category-specific)
+      const themeQueries = [
+        { title: '정치', query: '정치 예산안 OR 국회' },
+        { title: '경제', query: '금리 OR 물가 OR 경제' },
+        { title: 'IT', query: '반도체 OR AI OR 인공지능' },
+        { title: '외교', query: '한미 OR 외교 OR 정상회담' }
+      ];
+
+      const themeResults = await Promise.all(
+        themeQueries.map(async t => {
+          const items = await loadNaverNews(t.query, 3);
+          return items && items[0] ? { ...t, item: items[0] } : null;
+        })
+      );
+
+      const validThemes = themeResults.filter(Boolean);
+      if (validThemes.length) {
+        document.getElementById('themes').innerHTML = validThemes.map(t => `
+          <div class="compact-item">
+            <div class="thumb" style="background-image:url('${t.item.img}')"></div>
+            <div>
+              <h4>${t.title} · ${t.item.title}</h4>
+              <p style="font-size:13px;color:var(--gray);">${t.item.desc}</p>
+            </div>
+          </div>`).join('');
+      }
     }
 
-    // Try live data on load (falls back to sample if Worker not ready)
-    tryLoadLiveRanks();
+    loadLiveSections();
   </script>
 </body>
 </html>
