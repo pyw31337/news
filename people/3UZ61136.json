@@ -113,5 +113,44 @@
    "url": "https://open.assembly.go.kr",
    "fetched": "2026-10-28"
   }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2020-08-28",
+    "year": 2020,
+    "kind": "재산등록·수시공개",
+    "issue": "국회공보 제2020-98호",
+    "prev": 949736,
+    "inc": 256205,
+    "dec": -13976,
+    "total": 1219917,
+    "change": 270181,
+    "land": 141221,
+    "building": 1133860,
+    "securities": 78,
+    "deposits": 582570,
+    "polfund": 3770,
+    "debt": 665472,
+    "cats": {
+     "토지": 141221,
+     "건물": 1133860,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 23890,
+     "예금": 582570,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 3770,
+     "증권": 78,
+     "채무": 665472
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=s0dj2q0sl24eo8i90ke4uadobftmufw5&fileSn=1"
+   }
+  ],
+  "latest": 1219917,
+  "latest_date": "2020-08-28",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
+  }
  }
 }

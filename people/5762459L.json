@@ -730,5 +730,71 @@
    "url": "https://open.assembly.go.kr",
    "fetched": "2026-10-28"
   }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 1257376,
+    "inc": 682849,
+    "dec": 575542,
+    "total": 1364683,
+    "change": 107307,
+    "land": 0,
+    "building": 1043000,
+    "securities": 6218,
+    "deposits": 602062,
+    "polfund": 32112,
+    "debt": 477800,
+    "cats": {
+     "건물": 1043000,
+     "예금": 602062,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 32112,
+     "증권": 6218,
+     "채권": 120000,
+     "채무": 477800,
+     "가상자산": 39091
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 1364683,
+    "inc": 243975,
+    "dec": 189985,
+    "total": 1418673,
+    "change": 53990,
+    "land": 0,
+    "building": 1043000,
+    "securities": 20321,
+    "deposits": 603179,
+    "polfund": 60968,
+    "debt": 515000,
+    "cats": {
+     "건물": 1043000,
+     "예금": 603179,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 60968,
+     "증권": 20321,
+     "채권": 120000,
+     "채무": 515000,
+     "가상자산": 86205
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 1418673,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
+  }
  }
 }

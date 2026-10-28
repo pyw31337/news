@@ -1824,5 +1824,97 @@
    "url": "https://open.assembly.go.kr",
    "fetched": "2026-10-28"
   }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2021-03-25",
+    "year": 2021,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2021-42호",
+    "prev": 1499204,
+    "inc": 755922,
+    "dec": 781221,
+    "total": 1473905,
+    "change": -25299,
+    "land": 0,
+    "building": 500000,
+    "securities": 465902,
+    "deposits": 473976,
+    "polfund": 44158,
+    "debt": 33151,
+    "cats": {
+     "건물": 500000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 23020,
+     "예금": 473976,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 44158,
+     "증권": 465902,
+     "채무": 33151
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=ljiydqx6lf6qen8xqxkr4jw3rlpbtrw1&fileSn=1"
+   },
+   {
+    "date": "2022-03-31",
+    "year": 2022,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2022-31호",
+    "prev": 1473905,
+    "inc": 832487,
+    "dec": 349700,
+    "total": 1956692,
+    "change": 482787,
+    "land": 0,
+    "building": 850000,
+    "securities": 649592,
+    "deposits": 409000,
+    "polfund": 34678,
+    "debt": 17078,
+    "cats": {
+     "건물": 850000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 7000,
+     "예금": 409000,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 34678,
+     "증권": 649592,
+     "채권": 23500,
+     "채무": 17078
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=ldxlh5e853jcc9yoe05qoub4ju6wlwz0&fileSn=1"
+   },
+   {
+    "date": "2023-03-31",
+    "year": 2023,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2023-54호",
+    "prev": 1956692,
+    "inc": 368243,
+    "dec": 747150,
+    "total": 1577785,
+    "change": -378907,
+    "land": 0,
+    "building": 850000,
+    "securities": 292744,
+    "deposits": 393526,
+    "polfund": 24663,
+    "debt": 13158,
+    "cats": {
+     "건물": 850000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 6510,
+     "예금": 393526,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 24663,
+     "증권": 292744,
+     "채권": 23500,
+     "채무": 13158
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=yavxaifcot5en3h548549wssqga70kwc&fileSn=1"
+   }
+  ],
+  "latest": 1577785,
+  "latest_date": "2023-03-31",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
+  }
  }
 }

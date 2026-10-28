@@ -435,5 +435,43 @@
    "url": "https://open.assembly.go.kr",
    "fetched": "2026-10-28"
   }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2017-03-23",
+    "year": 2017,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2017-36호",
+    "prev": 552159,
+    "inc": -97557,
+    "dec": -210965,
+    "total": 665567,
+    "change": 113408,
+    "land": 0,
+    "building": 484000,
+    "securities": 0,
+    "deposits": 548658,
+    "polfund": 53541,
+    "debt": 452532,
+    "cats": {
+     "건물": 484000,
+     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 31900,
+     "예금": 548658,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 53541,
+     "채무": 452532,
+     "회원권": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=x8hui96yoguoljd1nw87ufs8s8vq4lbw&fileSn=1"
+   }
+  ],
+  "latest": 665567,
+  "latest_date": "2017-03-23",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
+  }
  }
 }

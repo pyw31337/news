@@ -478,5 +478,95 @@
    "url": "https://open.assembly.go.kr",
    "fetched": "2026-10-28"
   }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2016-03-25",
+    "year": 2016,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2016-23호",
+    "prev": 145725,
+    "inc": 31646,
+    "dec": -56611,
+    "total": 233982,
+    "change": 88257,
+    "land": 0,
+    "building": 194000,
+    "securities": 0,
+    "deposits": 81985,
+    "polfund": 119991,
+    "debt": 267994,
+    "cats": {
+     "건물": 194000,
+     "예금": 81985,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 119991,
+     "채무": 267994,
+     "합명․합자․유한회사출자지분": 106000,
+     "고지거부및등록제외사항": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=g5pidwnnnem8yj3gw6h1fdt2evyzp6sk&fileSn=1"
+   },
+   {
+    "date": "2017-03-23",
+    "year": 2017,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2017-36호",
+    "prev": 233982,
+    "inc": 40716,
+    "dec": 53906,
+    "total": 220792,
+    "change": -13190,
+    "land": 0,
+    "building": 204866,
+    "securities": 0,
+    "deposits": 107535,
+    "polfund": 76703,
+    "debt": 274312,
+    "cats": {
+     "건물": 204866,
+     "예금": 107535,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 76703,
+     "채무": 274312,
+     "합명․합자․유한회사출자지분": 106000,
+     "고지거부및등록제외사항": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=x8hui96yoguoljd1nw87ufs8s8vq4lbw&fileSn=1"
+   },
+   {
+    "date": "2018-03-29",
+    "year": 2018,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2018-41호",
+    "prev": 220792,
+    "inc": 138674,
+    "dec": 32661,
+    "total": 326805,
+    "change": 106013,
+    "land": 0,
+    "building": 216866,
+    "securities": 0,
+    "deposits": 133971,
+    "polfund": 140807,
+    "debt": 270839,
+    "cats": {
+     "건물": 216866,
+     "예금": 133971,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 140807,
+     "채무": 270839,
+     "합명․합자․유한회사출자지분": 106000,
+     "고지거부및등록제외사항": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=4tnlub9arerbcnbo9q2exc9ot2evxu83&fileSn=1"
+   }
+  ],
+  "latest": 326805,
+  "latest_date": "2018-03-29",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
+  }
  }
 }

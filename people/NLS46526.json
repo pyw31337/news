@@ -1920,5 +1920,97 @@
    "url": "https://open.assembly.go.kr",
    "fetched": "2026-10-28"
   }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2024-08-29",
+    "year": 2024,
+    "kind": "재산등록·수시공개",
+    "issue": "국회공보 제2024-107호",
+    "prev": 2839239,
+    "inc": 735301,
+    "dec": 767918,
+    "total": 2806622,
+    "change": -32617,
+    "land": 147629,
+    "building": 1843000,
+    "securities": 0,
+    "deposits": 1225213,
+    "polfund": 0,
+    "debt": 565000,
+    "cats": {
+     "토지": 147629,
+     "건물": 1843000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 5180,
+     "예금": 1225213,
+     "채권": 150600,
+     "채무": 565000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=02760d56f3434a2cab9f5c477a4b46c9&fileSn=1"
+   },
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 2806622,
+    "inc": 516426,
+    "dec": 373732,
+    "total": 2949316,
+    "change": 142694,
+    "land": 147629,
+    "building": 1903000,
+    "securities": 0,
+    "deposits": 1276567,
+    "polfund": 32280,
+    "debt": 565000,
+    "cats": {
+     "토지": 147629,
+     "건물": 1903000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 4240,
+     "예금": 1276567,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 32280,
+     "채권": 150600,
+     "채무": 565000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 2949316,
+    "inc": 663991,
+    "dec": 498652,
+    "total": 3114655,
+    "change": 165339,
+    "land": 0,
+    "building": 2157000,
+    "securities": 0,
+    "deposits": 898231,
+    "polfund": 55654,
+    "debt": 170000,
+    "cats": {
+     "토지": 0,
+     "건물": 2157000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 3770,
+     "예금": 898231,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 55654,
+     "채권": 170000,
+     "채무": 170000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 3114655,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
+  }
  }
 }

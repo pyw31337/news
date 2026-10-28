@@ -886,5 +886,67 @@
    "url": "https://open.assembly.go.kr",
    "fetched": "2026-10-28"
   }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 327356,
+    "inc": 121955,
+    "dec": 19814,
+    "total": 429497,
+    "change": 102141,
+    "land": 0,
+    "building": 603000,
+    "securities": 0,
+    "deposits": 67511,
+    "polfund": 64573,
+    "debt": 305651,
+    "cats": {
+     "건물": 603000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 64,
+     "예금": 67511,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 64573,
+     "채무": 305651
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 429497,
+    "inc": 28487,
+    "dec": -183503,
+    "total": 641487,
+    "change": 211990,
+    "land": 0,
+    "building": 603000,
+    "securities": 0,
+    "deposits": 105457,
+    "polfund": 187160,
+    "debt": 254184,
+    "cats": {
+     "건물": 603000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 54,
+     "예금": 105457,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 187160,
+     "채무": 254184
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 641487,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
+  }
  }
 }

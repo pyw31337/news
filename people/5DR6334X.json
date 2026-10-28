@@ -441,5 +441,101 @@
    "url": "https://open.assembly.go.kr",
    "fetched": "2026-10-28"
   }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2019-03-28",
+    "year": 2019,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2019-31호",
+    "prev": 902332,
+    "inc": 153480,
+    "dec": 69443,
+    "total": 986369,
+    "change": 84037,
+    "land": 501103,
+    "building": 1659240,
+    "securities": 0,
+    "deposits": 342689,
+    "polfund": 0,
+    "debt": 1648467,
+    "cats": {
+     "토지": 501103,
+     "건물": 1659240,
+     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 59804,
+     "예금": 342689,
+     "채무": 1648467,
+     "회원권": 3000,
+     "합명․합자․유한회사출자지분": 69000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=r2guppte8ij03hsla5avpep2qr9o2xn6&fileSn=1"
+   },
+   {
+    "date": "2020-03-26",
+    "year": 2020,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2020-36호",
+    "prev": 986369,
+    "inc": 158640,
+    "dec": 178527,
+    "total": 966482,
+    "change": -19887,
+    "land": 508347,
+    "building": 1733080,
+    "securities": 69000,
+    "deposits": 241743,
+    "polfund": 86134,
+    "debt": 1710318,
+    "cats": {
+     "토지": 508347,
+     "건물": 1733080,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 37496,
+     "예금": 241743,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 86134,
+     "유가증권": 69000,
+     "채무": 1710318,
+     "회원권": 1000,
+     "합명·합자·유한회사출자지분": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=gtwztinej6vorph6b8j7fxoxqx41nzyn&fileSn=1"
+   },
+   {
+    "date": "2020-08-28",
+    "year": 2020,
+    "kind": "재산등록·수시공개",
+    "issue": "국회공보 제2020-98호",
+    "prev": 966482,
+    "inc": 81197,
+    "dec": 229027,
+    "total": 818652,
+    "change": -147830,
+    "land": 497964,
+    "building": 1666413,
+    "securities": 69000,
+    "deposits": 238790,
+    "polfund": 54,
+    "debt": 1690615,
+    "cats": {
+     "토지": 497964,
+     "건물": 1666413,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 36046,
+     "예금": 238790,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 54,
+     "증권": 69000,
+     "채무": 1690615,
+     "회원권": 1000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=s0dj2q0sl24eo8i90ke4uadobftmufw5&fileSn=1"
+   }
+  ],
+  "latest": 818652,
+  "latest_date": "2020-08-28",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
+  }
  }
 }

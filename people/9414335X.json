@@ -444,5 +444,121 @@
    "url": "https://open.assembly.go.kr",
    "fetched": "2026-10-28"
   }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2018-03-29",
+    "year": 2018,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2018-41호",
+    "prev": 245341,
+    "inc": 151573,
+    "dec": 3635,
+    "total": 393279,
+    "change": 147938,
+    "land": 87100,
+    "building": 158229,
+    "securities": 0,
+    "deposits": 191851,
+    "polfund": 74360,
+    "debt": 131811,
+    "cats": {
+     "토지": 87100,
+     "건물": 158229,
+     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 13550,
+     "예금": 191851,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 74360,
+     "채무": 131811
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=4tnlub9arerbcnbo9q2exc9ot2evxu83&fileSn=1"
+   },
+   {
+    "date": "2019-03-28",
+    "year": 2019,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2019-31호",
+    "prev": 393279,
+    "inc": 250473,
+    "dec": 245341,
+    "total": 398411,
+    "change": 5132,
+    "land": 0,
+    "building": 283329,
+    "securities": 0,
+    "deposits": 190956,
+    "polfund": 41580,
+    "debt": 131004,
+    "cats": {
+     "토지": 0,
+     "건물": 283329,
+     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 13550,
+     "예금": 190956,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 41580,
+     "채무": 131004
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=r2guppte8ij03hsla5avpep2qr9o2xn6&fileSn=1"
+   },
+   {
+    "date": "2020-03-26",
+    "year": 2020,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2020-36호",
+    "prev": 398411,
+    "inc": 2112,
+    "dec": 66462,
+    "total": 334061,
+    "change": -64350,
+    "land": 4296,
+    "building": 313329,
+    "securities": 0,
+    "deposits": 181892,
+    "polfund": 14994,
+    "debt": 192450,
+    "cats": {
+     "토지": 4296,
+     "건물": 313329,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 12000,
+     "예금": 181892,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 14994,
+     "채무": 192450
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=gtwztinej6vorph6b8j7fxoxqx41nzyn&fileSn=1"
+   },
+   {
+    "date": "2020-08-28",
+    "year": 2020,
+    "kind": "재산등록·수시공개",
+    "issue": "국회공보 제2020-98호",
+    "prev": 334061,
+    "inc": 143589,
+    "dec": 138510,
+    "total": 339140,
+    "change": 5079,
+    "land": 4296,
+    "building": 293329,
+    "securities": 0,
+    "deposits": 214837,
+    "polfund": 0,
+    "debt": 183322,
+    "cats": {
+     "토지": 4296,
+     "건물": 293329,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 10000,
+     "예금": 214837,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 0,
+     "채무": 183322
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=s0dj2q0sl24eo8i90ke4uadobftmufw5&fileSn=1"
+   }
+  ],
+  "latest": 339140,
+  "latest_date": "2020-08-28",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
+  }
  }
 }

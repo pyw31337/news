@@ -438,5 +438,71 @@
    "url": "https://open.assembly.go.kr",
    "fetched": "2026-10-28"
   }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2016-03-25",
+    "year": 2016,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2016-23호",
+    "prev": 2693296,
+    "inc": 114555,
+    "dec": 384029,
+    "total": 2423822,
+    "change": -269474,
+    "land": 1417165,
+    "building": 755000,
+    "securities": 42031,
+    "deposits": 185806,
+    "polfund": 0,
+    "debt": 128180,
+    "cats": {
+     "토지": 1417165,
+     "건물": 755000,
+     "예금": 185806,
+     "유가증권": 42031,
+     "채무": 128180,
+     "회원권": 152000,
+     "고지거부및등록제외사항": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=g5pidwnnnem8yj3gw6h1fdt2evyzp6sk&fileSn=1"
+   },
+   {
+    "date": "2016-07-28",
+    "year": 2016,
+    "kind": "재산등록·수시공개",
+    "issue": "국회공보 제2016-68호",
+    "prev": 2423822,
+    "inc": 130824,
+    "dec": 25164,
+    "total": 2529482,
+    "change": 105660,
+    "land": 1439842,
+    "building": 808000,
+    "securities": 42149,
+    "deposits": 214371,
+    "polfund": 0,
+    "debt": 126880,
+    "cats": {
+     "토지": 1439842,
+     "건물": 808000,
+     "예금": 214371,
+     "유가증권": 42149,
+     "채무": 126880,
+     "회원권": 152000,
+     "고지거부및등록제외사항": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=8c91ay126w4vptgii572xndzrulxr3am&fileSn=1"
+   }
+  ],
+  "latest": 2529482,
+  "latest_date": "2016-07-28",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
+  }
  }
 }

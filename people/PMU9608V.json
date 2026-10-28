@@ -477,5 +477,73 @@
    "url": "https://open.assembly.go.kr",
    "fetched": "2026-10-28"
   }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2016-03-25",
+    "year": 2016,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2016-23호",
+    "prev": 3843089,
+    "inc": 1752009,
+    "dec": 1830140,
+    "total": 3764958,
+    "change": -78131,
+    "land": 11572,
+    "building": 880432,
+    "securities": 2857626,
+    "deposits": 764681,
+    "polfund": 26559,
+    "debt": 817912,
+    "cats": {
+     "토지": 11572,
+     "건물": 880432,
+     "예금": 764681,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 26559,
+     "유가증권": 2857626,
+     "채무": 817912,
+     "회원권": 42000,
+     "고지거부및등록제외사항": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=g5pidwnnnem8yj3gw6h1fdt2evyzp6sk&fileSn=1"
+   },
+   {
+    "date": "2016-07-28",
+    "year": 2016,
+    "kind": "재산등록·수시공개",
+    "issue": "국회공보 제2016-68호",
+    "prev": 3764958,
+    "inc": 1534423,
+    "dec": 776694,
+    "total": 4522687,
+    "change": 757729,
+    "land": 12838,
+    "building": 1616000,
+    "securities": 2232808,
+    "deposits": 901883,
+    "polfund": 130,
+    "debt": 282972,
+    "cats": {
+     "토지": 12838,
+     "건물": 1616000,
+     "예금": 901883,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 130,
+     "유가증권": 2232808,
+     "채무": 282972,
+     "회원권": 42000,
+     "고지거부및등록제외사항": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=8c91ay126w4vptgii572xndzrulxr3am&fileSn=1"
+   }
+  ],
+  "latest": 4522687,
+  "latest_date": "2016-07-28",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
+  }
  }
 }
