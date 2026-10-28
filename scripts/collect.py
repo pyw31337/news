@@ -13,7 +13,7 @@ UA = {'User-Agent': 'Mozilla/5.0 (NewsBoard; +https://pyw31337.github.io/news/)'
 kiwi = Kiwi()
 
 def get(url, enc=None, timeout=20):
-    for i in range(2):
+    for i in range(3):
         try:
             r = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout)
             b = r.read()
@@ -21,7 +21,9 @@ def get(url, enc=None, timeout=20):
                 m = re.search(rb'charset=["\']?([\w-]+)', b[:3000]); enc = m.group(1).decode() if m else 'utf-8'
             return b.decode(enc, 'replace')
         except Exception as e:
-            err = e; time.sleep(1)
+            err = e
+            if getattr(e, 'code', 0) == 404: break
+            time.sleep(4 * (i + 1) if getattr(e, 'code', 0) == 429 else 1)
     print('fail', url, err); return ''
 
 def un(s): return html.unescape(re.sub(r'<[^>]+>', '', html.unescape(s or ''))).strip()

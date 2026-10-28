@@ -11,9 +11,13 @@ kiwi = Kiwi()
 D = json.load(open(os.path.join(ROOT, 'today.json')))
 
 def get(url, headers=None, enc='utf-8', timeout=15):
-    h = {'User-Agent': UA}; h.update(headers or {})
-    for _ in range(2):
+    h = {'User-Agent': UA, 'Accept-Language': 'ko-KR,ko;q=0.9,en;q=0.6', 'Accept': 'text/html,application/json,*/*;q=0.8'}; h.update(headers or {})
+    for n in range(3):
         try: return urllib.request.urlopen(urllib.request.Request(url, headers=h), timeout=timeout).read().decode(enc, 'replace')
+        except urllib.error.HTTPError as e:
+            err = e
+            if e.code in (403, 404): break
+            time.sleep(3 * (n + 1) if e.code == 429 else 1)
         except Exception as e: err = e; time.sleep(1)
     print('fail', url[:120], err); return ''
 def un(s): return html.unescape(re.sub(r'<[^>]+>', '', s or '')).strip()
@@ -27,12 +31,32 @@ def ndate(txt):
     m = re.search(r'(20\d\d)\.(\d{1,2})\.(\d{1,2})\.', txt)
     if m: return dt.datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)), 12, tzinfo=KST).isoformat()
     return ''
+NAVER_OK = [True]; NAVER_FAIL = [0]
+def gsearch(q, period=None):
+    """네이버 검색이 막힌 환경(예: 클라우드 IP)용 대체: Google 뉴스 RSS 기간 검색"""
+    qq = q
+    if period: qq += ' after:%s before:%s' % ((period[0] - dt.timedelta(days=1)).isoformat(), (period[1] + dt.timedelta(days=1)).isoformat())
+    t = get('https://news.google.com/rss/search?hl=ko&gl=KR&ceid=KR:ko&q=' + urllib.parse.quote(qq)); out = []
+    for it in re.findall(r'<item>(.*?)</item>', t, re.S)[:15]:
+        g = lambda tag: (re.search(r'<%s[^>]*>(.*?)</%s>' % (tag, tag), it, re.S) or [None, ''])[1]
+        title = un(g('title')); src = un(g('source'))
+        if src and title.endswith(' - ' + src): title = title[:-len(src) - 3]
+        try: ts = dt.datetime.strptime(g('pubDate').strip(), '%a, %d %b %Y %H:%M:%S %Z').replace(tzinfo=dt.timezone.utc).astimezone(KST).isoformat()
+        except Exception: continue
+        out.append(dict(title=title, url=un(g('link')), body='', img='', press=src, t=ts, naver=''))
+    return out
 def nsearch(q, sort=0, period=None, start=1):
     u = 'https://search.naver.com/search.naver?where=news&query=%s&sort=%d&start=%d' % (urllib.parse.quote(q), sort, start)
     if period:
         a, b = period
         u += '&pd=3&ds=%s&de=%s&nso=%s' % (a.strftime('%Y.%m.%d'), b.strftime('%Y.%m.%d'), urllib.parse.quote('so:%s,p:from%sto%s' % ('dd' if sort == 1 else 'r', a.strftime('%Y%m%d'), b.strftime('%Y%m%d'))))
-    t = get(u); out = []
+    if NAVER_OK[0]:
+        t = get(u, {'Referer': 'https://search.naver.com/'})
+        if not t: NAVER_FAIL[0] += 1
+        if NAVER_FAIL[0] >= 4: NAVER_OK[0] = False; print('naver search blocked -> google news fallback')
+    else: t = ''
+    if not t: return gsearch(q, period)
+    out = []
     for ch in t.split('data-sds-comp="Profile"')[1:]:
         m = re.search(r'href="([^"]+)"[^>]*data-heatmap-target="\.tit"><span[^>]*>(.*?)</span>', ch, re.S)
         if not m: continue
@@ -123,8 +147,11 @@ def llm(key, prompt, maxtok=900):
     try:
         r = urllib.request.urlopen(urllib.request.Request(ENDPOINT, body,
                 {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json', 'Accept': 'application/json'}), timeout=60)
-        raw = r.read().decode()
-        out = json.loads(json.loads(raw)['choices'][0]['message']['content'])
+        raw = r.read().decode('utf-8', 'replace')
+        try: c = json.loads(raw)['choices'][0]['message']['content']
+        except Exception: raise ValueError('bad response %s: %r' % (r.status, raw[:160]))
+        c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip()
+        out = json.loads(c)
         LLM_STATUS['calls'] += 1; CACHE[key] = out; return out
     except urllib.error.HTTPError as e:
         LLM_STATUS['errors'].append('%s %s' % (e.code, e.read()[:200].decode('utf-8', 'replace')))
@@ -254,8 +281,17 @@ def stocks():
     with ThreadPoolExecutor(8) as ex: return [r for r in ex.map(info, L) if r]
 
 # ---------- 4) 오늘의 단어 ----------
+WCACHE_P = os.path.join(ROOT, 'wiki_cache.json')
+try: WCACHE = json.load(open(WCACHE_P))
+except Exception: WCACHE = {}
 def wiki(name):
+    if name in WCACHE: return WCACHE[name]
+    r = wiki_(name)
+    if r is False: return None   # 일시 오류는 캐시하지 않음
+    WCACHE[name] = r; return r
+def wiki_(name):
     t = get('https://ko.wikipedia.org/api/rest_v1/page/summary/' + urllib.parse.quote(name), timeout=10)
+    if not t: return False
     try: j = json.loads(t)
     except Exception: return None
     if j.get('type') != 'standard' or not j.get('extract'): return None
@@ -277,7 +313,7 @@ def words():
                 cnt[f] += 1
                 if len(ex_[f]) < 3: ex_[f].append(dict(title=t, url=u, press=p))
     cand = [w for w, c in cnt.most_common(120) if c >= 2][:70]
-    with ThreadPoolExecutor(8) as ex: W = dict(zip(cand, ex.map(wiki, cand)))
+    with ThreadPoolExecutor(3) as ex: W = dict(zip(cand, ex.map(wiki, cand)))
     ents = {e['name'] for e in D['entities']}
     pick = []
     for w in cand:
@@ -306,6 +342,8 @@ D['market'] = market()
 D['stocks'] = stocks()
 D['words'] = words()
 D['llm'] = LLM_STATUS
+LLM_STATUS['naver_search'] = NAVER_OK[0]
+json.dump(dict(list(WCACHE.items())[-3000:]), open(WCACHE_P, 'w'), ensure_ascii=False)
 # ---------- 누적 저장소 연계: 과거 아카이브의 같은 인물·키워드 사건 자동 연결 ----------
 AD = os.path.join(ROOT, 'archive'); IX = os.path.join(ROOT, 'index'); os.makedirs(IX, exist_ok=True)
 ent_ix, kw_ix = collections.defaultdict(list), collections.defaultdict(list)
