@@ -42,13 +42,15 @@ const TTIP='Google 트렌드 기준 오늘 대략적인 검색 횟수(구간값)
 const tlab=t=>t.traffic_n?`검색 ${kfmt(t.traffic_n)}+`:'';
 function header(){
   const R=S.region==='en'&&G;
-  $('#updated').outerHTML=`<div class="rsw" id="rsw" role="group" aria-label="국내/해외"><button data-r="kr" class="${R?'':'on'}">국내<small>KR</small></button><button data-r="en" class="${R?'on':''}">해외<small>EN</small></button></div>`;
-  $('#rsw').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;S.region=b.dataset.r;saveS();go('');header2()};
+  // 3단 전환: 국내 / 해외(한국어 번역) / 해외(영문 원문) — 선택은 nb-settings에 저장
+  $('#updated').outerHTML=`<div class="rsw" id="rsw" role="radiogroup" aria-label="국내·해외 보기"><button role="radio" data-m="kr" title="국내 뉴스">국내</button><button role="radio" data-m="ko" title="해외 뉴스 · 한국어 번역">해외<small>KR</small></button><button role="radio" data-m="en" title="해외 뉴스 · 영문 원문">해외<small>EN</small></button></div>`;
+  $('#rsw').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;const m=b.dataset.m;S.region=m==='kr'?'kr':'en';if(m!=='kr')S.orig=m==='en';saveS();{const cp=location.pathname.slice(BASEP.length);go(/^gt?\//.test(cp)&&m!=='kr'?cp:'')};header2()};
   header2();
 }
 function header2(){
   const R=S.region==='en'&&G;
-  document.querySelectorAll('#rsw button').forEach(b=>b.classList.toggle('on',b.dataset.r===(R?'en':'kr')));
+  const MD=R?(S.orig?'en':'ko'):'kr';
+  document.querySelectorAll('#rsw button').forEach(b=>{const on=b.dataset.m===MD;b.classList.toggle('on',on);b.setAttribute('aria-checked',on)});
   document.body.classList.toggle('en',!!R);
   const T=R?G.trends:D.trends;
   const tk=T.map((t,i)=>`<a href="${R?'gt/'+i:kh(t.keyword)}" title="${TTIP}"><b>${i+1}</b>${esc(R&&!S.orig?(t.keyword_ko||t.keyword):t.keyword)}<small>${tlab(t)}</small></a>`).join('');

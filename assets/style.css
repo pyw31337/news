@@ -293,7 +293,10 @@ section[id^=s-]{scroll-margin-top:120px}
 .obtn{border:2px solid var(--ink);background:#fff;color:var(--ink);font:inherit;font-weight:800;font-size:.78rem;padding:6px 12px;border-radius:99px;cursor:pointer;display:inline-flex;align-items:center}.obtn.on{background:var(--ink);color:#fff}
 .otit{font-size:.82rem;color:var(--mute);margin-top:6px;font-style:italic}.fe p{font-style:normal}
 body.en .ticker .lab{background:#7a4dff}
-@media(max-width:359px){.rsw button{padding:5px 7px;font-size:.72rem}.rsw button small{display:none}}
+/* v6 3단 전환: 국내(흰색) / 해외 KR(흰색) / 해외 EN(주황) — 320px에서도 세 칸이 구분되도록 */
+.rsw button[data-m=en].on{background:#ff7a1a;color:#fff}.rsw button[data-m=ko].on{background:#fff;color:var(--ink)}
+.rsw button+button{position:relative}
+@media(max-width:359px){.rsw{padding:2px}.rsw button{padding:5px 6px;font-size:.7rem;gap:1px}.rsw button small{display:inline;font-size:.55rem}}
 .rsw{margin-left:auto}
 .srcl li>div{min-width:0}.srcl li:has(.sth){display:flex;gap:10px;align-items:flex-start;list-style-position:inside}.sth{width:44px;height:44px;border-radius:8px;background:#dfe3ee center/cover;flex:none}
 
