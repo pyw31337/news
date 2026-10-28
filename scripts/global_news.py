@@ -23,7 +23,7 @@ def get(u, timeout=20):
         try:
             _r = urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=timeout).read().decode('utf-8', 'replace'); DIAG['ok'][_dhost(u)] += 1; return _r
         except Exception as e: err = e; time.sleep(2)
-    DIAG['fail'][_dhost(u)] += 1; DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S'), host=_dhost(u), path=_up.urlsplit(u).path[:60], err=str(err)[:120])); print('fail', u[:120], err); return ''
+    DIAG['fail'][_dhost(u)] += 1; DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S', time.gmtime(time.time() + 32400)), host=_dhost(u), path=_up.urlsplit(u).path[:60], err=str(err)[:120])); print('fail', u[:120], err); return ''
 def un(s): return html.unescape(re.sub(r'<[^>]+>', '', html.unescape(s or ''))).strip()
 GN = 'https://news.google.com/rss%s?hl=en-%s&gl=%s&ceid=%s:en'
 FEEDS = {

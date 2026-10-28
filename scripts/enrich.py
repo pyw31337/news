@@ -33,7 +33,7 @@ def get(url, headers=None, enc='utf-8', timeout=15):
             if e.code in (403, 404): break
             time.sleep(3 * (n + 1) if e.code == 429 else 1)
         except Exception as e: err = e; time.sleep(1)
-    DIAG['fail'][_dhost(url)] += 1; DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S'), host=_dhost(url), path=_up.urlsplit(url).path[:60], err=str(err)[:120])); print('fail', url[:120], err); return ''
+    DIAG['fail'][_dhost(url)] += 1; DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S', time.gmtime(time.time() + 32400)), host=_dhost(url), path=_up.urlsplit(url).path[:60], err=str(err)[:120])); print('fail', url[:120], err); return ''
 def un(s): return html.unescape(re.sub(r'<[^>]+>', '', s or '')).strip()
 
 # ---------- 네이버 뉴스 검색 (썸네일·스니펫·날짜) ----------
