@@ -194,7 +194,7 @@ def llm(key, prompt, maxtok=900):
                 LAST_CALL[0] = time.time()
             try:
                 r = urllib.request.urlopen(urllib.request.Request(ENDPOINT, body,
-                        {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json', 'Accept': 'application/json'}), timeout=60)
+                        {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json', 'Accept': 'application/json'}), timeout=45)
                 raw = r.read().decode('utf-8', 'replace')
                 try: c = json.loads(raw)['choices'][0]['message']['content']
                 except Exception: raise ValueError('bad response %s: %r' % (r.status, raw[:160]))
@@ -214,6 +214,8 @@ def llm(key, prompt, maxtok=900):
                     LLM_STATUS['errors'].append('%s %s: %s' % (e.code, m, msg[:120])); switch = True
                 else:
                     LLM_STATUS['errors'].append('%s %s: %s' % (e.code, m, msg[:120]))
+            except (TimeoutError, urllib.error.URLError, OSError) as e:  # 응답 지연(과부하) → 다음 모델로
+                LLM_STATUS['errors'].append('%s: %s' % (m, str(e)[:150])); switch = True
             except Exception as e:
                 LLM_STATUS['errors'].append(str(e)[:200])
             break
