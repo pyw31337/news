@@ -42,5 +42,58 @@
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
    "fetched": "2026-10-28"
   }
- ]
+ ],
+ "photo_local": "data/pol/photos/WZL8101U.webp",
+ "bills": {
+  "ages": [
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
+   "22"
+  ],
+  "lead_count": 2,
+  "co_count": 22,
+  "passed": 1,
+  "by_result": {
+   "원안가결": 1,
+   "폐기": 1
+  },
+  "by_month": {
+   "2004-11": 1,
+   "2005-02": 1
+  },
+  "recent": [
+   {
+    "id": "029907",
+    "no": "171336",
+    "name": "건축사법 일부개정법률안",
+    "date": "2005-02-03",
+    "age": 17,
+    "committee": "건설교통위원회",
+    "result": "원안가결",
+    "proc_date": "2005-06-23",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=029907&ageFrom=17&ageTo=17",
+    "proposer": "박혁규의원등 21인"
+   },
+   {
+    "id": "028979",
+    "no": "170708",
+    "name": "특별소비세법중개정법률안",
+    "date": "2004-11-03",
+    "age": 17,
+    "committee": "재정경제위원회",
+    "result": "폐기",
+    "proc_date": "2005-02-15",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=028979&ageFrom=17&ageTo=17",
+    "proposer": "박혁규의원등 31인"
+   }
+  ],
+  "source": {
+   "name": "열린국회정보 국회의원 발의법률안 API",
+   "url": "https://open.assembly.go.kr",
+   "fetched": "2026-10-28"
+  }
+ }
 }

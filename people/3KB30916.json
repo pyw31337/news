@@ -35,5 +35,85 @@
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
    "fetched": "2026-10-28"
   }
- ]
+ ],
+ "photo_local": "data/pol/photos/3KB30916.webp",
+ "bills": {
+  "ages": [
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
+   "22"
+  ],
+  "lead_count": 4,
+  "co_count": 102,
+  "passed": 2,
+  "by_result": {
+   "폐기": 2,
+   "원안가결": 1,
+   "대안반영폐기": 1
+  },
+  "by_month": {
+   "2004-11": 1,
+   "2004-12": 1,
+   "2005-03": 1,
+   "2005-06": 1
+  },
+  "recent": [
+   {
+    "id": "030803",
+    "no": "171933",
+    "name": "도로법 일부개정법률안",
+    "date": "2005-06-02",
+    "age": 17,
+    "committee": "건설교통위원회",
+    "result": "폐기",
+    "proc_date": "2005-11-02",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=030803&ageFrom=17&ageTo=17",
+    "proposer": "김기석의원등 14인"
+   },
+   {
+    "id": "030147",
+    "no": "171471",
+    "name": "여객자동차운수사업법 일부개정법률안",
+    "date": "2005-03-08",
+    "age": 17,
+    "committee": "건설교통위원회",
+    "result": "폐기",
+    "proc_date": "2005-12-08",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=030147&ageFrom=17&ageTo=17",
+    "proposer": "김기석의원등 12인"
+   },
+   {
+    "id": "029404",
+    "no": "171061",
+    "name": "화물유통촉진법중개정법률안",
+    "date": "2004-12-03",
+    "age": 17,
+    "committee": "건설교통위원회",
+    "result": "원안가결",
+    "proc_date": "2005-05-03",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=029404&ageFrom=17&ageTo=17",
+    "proposer": "김기석의원등 13인"
+   },
+   {
+    "id": "029068",
+    "no": "170776",
+    "name": "건축법중개정법률안",
+    "date": "2004-11-09",
+    "age": 17,
+    "committee": "건설교통위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2005-05-03",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=029068&ageFrom=17&ageTo=17",
+    "proposer": "김기석의원등 17인"
+   }
+  ],
+  "source": {
+   "name": "열린국회정보 국회의원 발의법률안 API",
+   "url": "https://open.assembly.go.kr",
+   "fetched": "2026-10-28"
+  }
+ }
 }
