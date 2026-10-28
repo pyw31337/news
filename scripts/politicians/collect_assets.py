@@ -21,24 +21,20 @@ cat_path = os.path.join(C, 'catalog.json')
 cat = json.load(open(cat_path)) if os.path.exists(cat_path) else {}
 for pg in range(1, 400):
     h = html.unescape(get(LIST % pg).decode('utf-8', 'ignore'))
-    items = re.findall(r'pdfTitle=국회공보 제(\d{4}-\d+)호.*?atchFileId=([0-9a-f]+)', h, re.S)
-    dates = re.findall(r'<td[^>]*>\s*(\d{4}-\d{2}-\d{2})\s*</td>', h)
+    rows = re.findall(r'<tr>(.*?)</tr>', h, re.S)
+    items = []
+    for r in rows:
+        t = re.search(r'title="국회공보 제(\d{4}-\d+)호([^"]*)"', r); f = re.search(r'atchFileId=([0-9a-f]+)', r); d = re.search(r'<td title="(\d{4}-\d{2}-\d{2})"', r)
+        if t and f: items.append((t.group(1), {'fid': f.group(1), 'title': t.group(2).strip(), 'date': d.group(1) if d else ''}))
     if not items: break
-    new = 0
-    for (no, fid) in items:
-        if no not in cat: cat[no] = {'fid': fid}; new += 1
-    m = re.findall(r'국회공보 제(\d{4})-\d+호 (\d{4}-\d{2}-\d{2})', h)
-    for no_d in re.findall(r'국회공보 제(\d{4}-\d+)호 (\d{4}-\d{2}-\d{2})', h):
-        if no_d[0] in cat: cat[no_d[0]]['date'] = no_d[1]
-    if int(items[-1][0][:4]) < FROM: break
-    if not new and pg > 3 and all('date' in cat[n] for n, _ in items) and cat.get('_full'): break
+    new = sum(1 for no, _ in items if no not in cat)
+    for no, v in items: cat[no] = v
+    if min(v['date'] for _, v in items if v['date']) < f'{FROM}-01-01': break
+    if not new and cat.get('_full'): break
 cat['_full'] = True
 json.dump(cat, open(cat_path, 'w'), ensure_ascii=False)
 def cand(no, v):
-    d = v.get('date') or ''
-    if not d or int(d[:4]) < FROM: return False
-    md = d[5:]
-    return '03-15' <= md <= '04-10' or '08-10' <= md <= '09-30' or '06-15' <= md <= '07-15'
+    return bool(v.get('date')) and v['date'] >= f'{FROM}-01-01' and '재산' in v.get('title', '')
 import pdfplumber
 NUM = r'(-?[\d,]+|-)'
 def n(s): return None if s in ('-', '') else int(s.replace(',', ''))
