@@ -42,7 +42,7 @@ for v, t in (('market', '마켓·정책'), ('people', '화제 — 인물·기업
 for i in D.get('issues', []):
     sm = i.get('summary'); sm = ' '.join(sm) if isinstance(sm, list) else (sm or '')
     img = i.get('image') or next((g.get('img') for g in i.get('gallery') or [] if g.get('img')), '')
-    n += page('issue/' + i['id'], i['title'], sm or i.get('lead') or ((i.get('ai') or {}).get('deep') or ''), img)
+    n += page('issue/' + i['id'], i['title'], sm or i.get('lead') or ((i.get('ai') or {}).get('deep') or '') or ('언론사 %d곳 · 기사 %d건이 다룬 오늘의 이슈 %d위' % (i.get('presses', 0), i.get('mentions', 0), i.get('rank', 0))), img)
 for e in D.get('entities', []):
     if safe(e['name']): n += page('entity/' + e['name'], e['name'] + ' — 타임라인', (e.get('wiki') or {}).get('desc') or (e.get('timeline') or [{}])[0].get('title', ''), (e.get('wiki') or {}).get('thumb'))
 for t in D.get('trends', []):
