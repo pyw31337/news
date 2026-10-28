@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>렛츠뉴스 · 사건과 인물의 타임라인</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    :root {
+      --orange: #FF6B00;
+      --orange-dark: #E65C00;
+      --navy: #1A2332;
+      --cream: #FAF7F2;
+      --gray: #5A6570;
+      --light: #F5F2ED;
+      --card: #FFFFFF;
+      --shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    body {
+      font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      line-height: 1.55;
+      padding-bottom: 70px;
+    }
+    img { max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      background: #fff;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .logo { font-weight: 800; font-size: 20px; color: var(--orange); }
+    .logo span { color: var(--navy); }
+
+    .hero {
+      position: relative;
+      min-height: 380px;
+      background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80') center/cover;
+      color: #fff;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,35,50,0.88), rgba(26,35,50,0.15));
+    }
+    .hero-inner {
+      position: relative;
+      padding: 28px 16px 36px;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: clamp(26px, 7.5vw, 46px);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .hero h1 .acc { color: var(--orange); }
+    .hero p { font-size: 15px; font-weight: 500; opacity: 0.92; max-width: 520px; }
+
+    section { padding: 28px 16px; max-width: 1100px; margin: 0 auto; }
+    h2 { font-size: 21px; font-weight: 800; margin-bottom: 4px; }
+    .sub { font-size: 13.5px; color: var(--gray); margin-bottom: 18px; font-weight: 500; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 960px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .card-img { height: 160px; background-size: cover; background-position: center; position: relative; }
+    .badge {
+      position: absolute; top: 10px; left: 10px;
+      background: var(--orange); color: #fff;
+      font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 12px;
+    }
+    .card-body { padding: 14px 16px 16px; }
+    .card h3 { font-size: 16px; font-weight: 700; line-height: 1.4; margin-bottom: 6px; }
+    .card p { font-size: 13.5px; color: var(--gray); }
+    .meta { margin-top: 10px; font-size: 12px; color: var(--gray); display: flex; justify-content: space-between; }
+
+    .timeline { position: relative; padding-left: 24px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px;
+      width: 2px; background: linear-gradient(var(--orange), #ffc299);
+    }
+    .tl-item {
+      background: #fff; border-radius: 14px; margin-bottom: 16px;
+      box-shadow: var(--shadow); overflow: hidden; position: relative;
+    }
+    .tl-item::before {
+      content: ''; position: absolute; left: -22px; top: 18px;
+      width: 12px; height: 12px; background: var(--orange);
+      border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px var(--orange);
+    }
+    .tl-img { height: 140px; background-size: cover; background-position: center; }
+    .tl-body { padding: 14px; }
+    .tl-date { color: var(--orange); font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+    .tl-body h3 { font-size: 15.5px; font-weight: 700; margin-bottom: 4px; }
+
+    .bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: #fff; border-top: 1px solid #eee;
+      display: flex; justify-content: space-around;
+      padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+      z-index: 100;
+    }
+    .bottom-nav button {
+      background: none; border: none; font-family: inherit;
+      display: flex; flex-direction: column; align-items: center;
+      font-size: 11px; font-weight: 600; color: var(--gray); gap: 2px;
+      cursor: pointer;
+    }
+    .bottom-nav button.active { color: var(--orange); }
+    .bottom-nav svg { width: 22px; height: 22px; }
+
+    .modal {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+      z-index: 200; align-items: flex-end; justify-content: center;
+    }
+    .modal.open { display: flex; }
+    .modal-content {
+      background: #fff; width: 100%; max-width: 480px; border-radius: 20px 20px 0 0;
+      padding: 20px 16px 30px; max-height: 70vh; overflow-y: auto;
+    }
+    .cat-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .cat-btn {
+      padding: 10px 16px; border-radius: 20px; border: 1px solid #ddd;
+      background: #fff; font-weight: 600; font-size: 14px; cursor: pointer;
+    }
+    .cat-btn.active { background: var(--orange); color: #fff; border-color: var(--orange); }
+
+    .loading { text-align: center; padding: 40px; color: var(--gray); }
+    @media (min-width: 768px) {
+      .bottom-nav { display: none; }
+      section { padding: 40px 24px; }
+      .hero { min-height: 480px; }
+    }
+    @media (max-width: 360px) {
+      .hero h1 { font-size: 24px; }
+      section { padding: 20px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">렛츠<span>뉴스</span></div>
+    <div style="font-size:13px;font-weight:600;color:var(--gray);">시각적 타임라인</div>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>오늘의 이슈를<br><span class="acc">따라가다</span></h1>
+      <p>정치·경제·IT 중심으로 사건과 인물의 흐름을 한눈에. 원문과 요약을 연결합니다.</p>
+    </div>
+  </div>
+
+  <section id="today">
+    <h2>오늘의 주요 이슈</h2>
+    <p class="sub">실시간으로 가져온 핵심 뉴스 (Google News 기반)</p>
+    <div id="today-grid" class="grid">
+      <div class="loading">뉴스를 불러오는 중...</div>
+    </div>
+  </section>
+
+  <section id="timeline" style="background:#fff;border-radius:20px 20px 0 0;">
+    <h2>사건 · 인물 타임라인</h2>
+    <p class="sub">최근 주요 흐름을 시간순으로</p>
+    <div id="timeline-list" class="timeline">
+      <div class="loading">타임라인 구성 중...</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>카테고리 탐색</h2>
+    <p class="sub">원하는 분야를 선택해 더 깊이 보기</p>
+    <div class="cat-list" id="quick-cats"></div>
+  </section>
+
+  <div class="modal" id="cat-modal">
+    <div class="modal-content">
+      <h3 style="font-size:18px;font-weight:800;margin-bottom:8px;">카테고리 선택</h3>
+      <p style="font-size:13px;color:var(--gray);margin-bottom:16px;">정치, 경제, IT 등을 중심으로 뉴스를 불러옵니다.</p>
+      <div class="cat-list" id="cat-options"></div>
+      <button onclick="closeModal()" style="margin-top:20px;width:100%;padding:12px;background:var(--navy);color:#fff;border:none;border-radius:12px;font-weight:700;">닫기</button>
+    </div>
+  </div>
+
+  <div class="modal" id="menu-modal">
+    <div class="modal-content">
+      <h3 style="font-size:18px;font-weight:800;">메뉴</h3>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:12px;">
+        <div style="padding:12px;background:var(--light);border-radius:12px;font-weight:600;">설정 (준비 중)</div>
+        <div style="padding:12px;background:var(--light);border-radius:12px;font-weight:600;">관심 엔티티 관리</div>
+        <div style="padding:12px;background:var(--light);border-radius:12px;font-weight:600;">알림 설정</div>
+        <div style="padding:12px;background:var(--light);border-radius:12px;font-weight:600;">정보</div>
+      </div>
+      <button onclick="closeMenu()" style="margin-top:20px;width:100%;padding:12px;background:var(--orange);color:#fff;border:none;border-radius:12px;font-weight:700;">닫기</button>
+    </div>
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="active" onclick="showToday()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      오늘
+    </button>
+    <button onclick="showTimeline()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+      타임라인
+    </button>
+    <button onclick="openCat()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+      카테고리
+    </button>
+    <button onclick="openMenu()">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+      메뉴
+    </button>
+  </nav>
+
+  <script>
+    const categories = [
+      { id: 'politics', name: '정치', q: '정치' },
+      { id: 'economy', name: '경제', q: '경제' },
+      { id: 'it', name: 'IT·기술', q: 'IT OR 반도체 OR AI' },
+      { id: 'society', name: '사회', q: '사회' },
+      { id: 'world', name: '국제', q: '국제 OR 외교' },
+      { id: 'business', name: '산업', q: '산업 OR 기업' }
+    ];
+
+    const proxy = 'https://corsproxy.io/?';
+    const baseRss = 'https://news.google.com/rss/search?hl=ko&gl=KR&ceid=KR:ko&q=';
+
+    function stripHtml(html) {
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      return div.textContent || div.innerText || '';
+    }
+
+    async function fetchNews(query, limit = 6) {
+      try {
+        const url = proxy + encodeURIComponent(baseRss + encodeURIComponent(query));
+        const res = await fetch(url);
+        const text = await res.text();
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(text, 'text/xml');
+        const items = [...xml.querySelectorAll('item')].slice(0, limit);
+        return items.map(item => ({
+          title: item.querySelector('title')?.textContent || '',
+          link: item.querySelector('link')?.textContent || '',
+          desc: stripHtml(item.querySelector('description')?.textContent || '').slice(0, 120),
+          date: item.querySelector('pubDate')?.textContent || '',
+          source: item.querySelector('source')?.textContent || '뉴스'
+        }));
+      } catch (e) {
+        console.error(e);
+        return [];
+      }
+    }
+
+    function renderCards(container, items) {
+      if (!items.length) {
+        container.innerHTML = '<div class="loading">뉴스를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</div>';
+        return;
+      }
+      container.innerHTML = items.map(item => `
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80')">
+            <span class="badge">${item.source.slice(0,10)}</span>
+          </div>
+          <div class="card-body">
+            <h3>${item.title}</h3>
+            <p>${item.desc}...</p>
+            <div class="meta"><span>${new Date(item.date).toLocaleDateString('ko-KR')}</span><a href="${item.link}" target="_blank">원문</a></div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderTimeline(items) {
+      const el = document.getElementById('timeline-list');
+      if (!items.length) {
+        el.innerHTML = '<div class="loading">타임라인을 구성하지 못했습니다.</div>';
+        return;
+      }
+      el.innerHTML = items.map(item => `
+        <div class="tl-item">
+          <div class="tl-img" style="background-image:url('https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=600&q=80')"></div>
+          <div class="tl-body">
+            <div class="tl-date">${new Date(item.date).toLocaleDateString('ko-KR')} · ${item.source}</div>
+            <h3>${item.title}</h3>
+            <p style="font-size:13px;color:var(--gray);">${item.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function loadToday() {
+      const items = await fetchNews('정치 OR 경제 OR IT OR 반도체', 6);
+      renderCards(document.getElementById('today-grid'), items);
+    }
+
+    async function loadTimeline() {
+      const items = await fetchNews('정치 OR 경제 OR 외교 OR AI', 5);
+      renderTimeline(items);
+    }
+
+    async function loadCategory(q) {
+      const items = await fetchNews(q, 9);
+      renderCards(document.getElementById('today-grid'), items);
+      document.getElementById('today').scrollIntoView({ behavior: 'smooth' });
+      closeModal();
+    }
+
+    function showToday() { loadToday(); document.getElementById('today').scrollIntoView({behavior:'smooth'}); }
+    function showTimeline() { document.getElementById('timeline').scrollIntoView({behavior:'smooth'}); }
+
+    function openCat() {
+      const opts = document.getElementById('cat-options');
+      opts.innerHTML = categories.map(c => `<button class="cat-btn" onclick="loadCategory('${c.q}')">${c.name}</button>`).join('');
+      document.getElementById('cat-modal').classList.add('open');
+    }
+    function closeModal() { document.getElementById('cat-modal').classList.remove('open'); }
+
+    function openMenu() { document.getElementById('menu-modal').classList.add('open'); }
+    function closeMenu() { document.getElementById('menu-modal').classList.remove('open'); }
+
+    // Quick cats
+    document.getElementById('quick-cats').innerHTML = categories.map(c => 
+      `<button class="cat-btn" onclick="loadCategory('${c.q}')">${c.name}</button>`
+    ).join('');
+
+    // Init
+    loadToday();
+    loadTimeline();
+  </script>
+</body>
+</html>
