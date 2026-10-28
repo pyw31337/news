@@ -8,7 +8,7 @@ def load(p, d=None):
     try: return json.load(open(os.path.join(ROOT, p), encoding='utf-8'))
     except Exception: return d
 D = load('today.json', {}); G = load('global.json', {}); OV = load('overlay/latest.json', {})
-diag = {k: load('diag_%s.json' % k, {}) for k in ('collect', 'enrich', 'global')}
+diag = {k: load('diag_%s.json' % k, {}) for k in ('collect', 'enrich', 'global', 'db')}
 def size(p):
     p = os.path.join(ROOT, p)
     if os.path.isfile(p): return os.path.getsize(p)
@@ -37,9 +37,9 @@ st = dict(updated=NOW.isoformat(), data_updated=D.get('updated'), stats=D.get('s
           counts=dict(issues=len(D.get('issues', [])), entities=len(D.get('entities', [])), entity_history=len(eh) if isinstance(eh, dict) else 0,
                       archive_days=len(arch), archive_first=arch[0] if arch else None, archive_last=arch[-1] if arch else None,
                       global_issues=len(G.get('issues', [])), global_trends=len(G.get('trends', []))),
-          sizes={p: size(p) for p in ('today.json', 'global.json', 'archive', 'index', 'entity_history.json', 'llm_cache.json', 'wiki_cache.json', 'tr_cache.json', 'overlay', 'runlog.json')},
+          sizes={p: size(p) for p in ('today.json', 'global.json', 'archive', 'index', 'entity_history.json', 'llm_cache.json', 'wiki_cache.json', 'tr_cache.json', 'overlay', 'runlog.json', 'db', 'db/articles', 'db/entities', '../media')},
           macmini=dict(updated=OV.get('updated'), issues=len(OV.get('issues', [])), ai=sum(1 for i in OV.get('issues', []) if i.get('ai')), flow=sum(1 for i in OV.get('issues', []) if i.get('flow')),
                        trends=len(OV.get('trends') or {}), words=len(OV.get('words') or []), age_h=round((NOW - dt.datetime.fromisoformat(OV['updated'])).total_seconds() / 3600, 1) if OV.get('updated') else None),
-          global_translate=G.get('translate'), sources=src, errors=errors, daily=sorted(daily.values(), key=lambda x: x['date'])[-60:], runs=RL[-48:])
+          global_translate=G.get('translate'), db=diag['db'].get('report'), sources=src, errors=errors, daily=sorted(daily.values(), key=lambda x: x['date'])[-60:], runs=RL[-48:])
 json.dump(st, open(os.path.join(ROOT, 'status.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 print('status', st['counts'], 'sources', len(src), 'errors', len(errors))

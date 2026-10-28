@@ -518,6 +518,24 @@ CACHE = dict(list(CACHE.items())[-600:])
 json.dump(CACHE, open(CACHE_P, 'w'), ensure_ascii=False)
 json.dump(D, open(os.path.join(ROOT, 'today.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 arch = os.path.join(ROOT, 'archive', D['date'] + '.json')
-json.dump(dict(updated=D['updated'], date=D['date'], issues=[dict({k: v for k, v in i.items() if k not in ('flow', 'opinion', 'timeline', 'leads', 'past')}, opinion_summary=((i.get('ai') or {}).get('opinion') or {}).get('summary', ''), comment_total=(i.get('opinion') or {}).get('total', 0)) for i in D['issues']], trends=[{k: t[k] for k in ('keyword', 'traffic')} for t in D['trends']], words=D['words']),
-          open(arch, 'w'), ensure_ascii=False)
+cur = dict(updated=D['updated'], date=D['date'], issues=[dict({k: v for k, v in i.items() if k not in ('flow', 'opinion', 'timeline', 'leads', 'past')}, opinion_summary=((i.get('ai') or {}).get('opinion') or {}).get('summary', ''), comment_total=(i.get('opinion') or {}).get('total', 0)) for i in D['issues']], trends=[{k: t[k] for k in ('keyword', 'traffic')} for t in D['trends']], words=D['words'])
+# 하루 동안 TOP에 오른 모든 이슈를 누적(매 실행 덮어쓰지 않음): 최고 순위(peak)·처음/마지막 등장 시각·등장 횟수
+try: old = json.load(open(arch))
+except Exception: old = {}
+HH = D['updated'][11:16]
+def acc(prev, now):
+    by = {x['id']: x for x in prev if 'id' in x}; order = [x['id'] for x in prev if 'id' in x]
+    for x in now:
+        if 'id' not in x: continue
+        p = by.get(x['id'], {})
+        x = dict(x, first_seen=p.get('first_seen', HH), last_seen=HH, seen=p.get('seen', 0) + 1, peak=min(p.get('peak', 999), x.get('rank') or 999))
+        if x['id'] not in by: order.append(x['id'])
+        by[x['id']] = x
+    return [by[k] for k in order]
+cur['issues'] = sorted(acc(old.get('issues', []), cur['issues']), key=lambda x: (x.get('peak', 999), -x.get('seen', 0)))
+cur['more'] = acc(old.get('more', []), [dict(m, rank=k + 11) for k, m in enumerate(D.get('more', []))])[-300:]
+tk = {t['keyword']: t for t in old.get('trends', [])}; tk.update({t['keyword']: t for t in cur['trends']}); cur['trends'] = list(tk.values())[-100:]
+wkey = lambda w: w.get('word') if isinstance(w, dict) else (w[0] if isinstance(w, list) and w else str(w))
+wk = {wkey(w): w for w in old.get('words', [])}; wk.update({wkey(w): w for w in cur['words']}); cur['words'] = list(wk.values())[-80:]
+json.dump(cur, open(arch, 'w'), ensure_ascii=False, separators=(',', ':'))
 print('enriched; llm', LLM_STATUS['calls'], LLM_STATUS['errors'][:2], 'market', len(D['market']), 'words', len(D['words']))

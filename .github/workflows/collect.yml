@@ -1,7 +1,7 @@
 name: collect-news
 on:
   schedule:
-    - cron: '7 * * * *'    # 매시 7분(UTC) 수집 + 가벼운 AI 분석
+    - cron: '7,37 * * * *' # 30분마다 수집(자체 DB 빠르게 채우기) + 가벼운 AI 분석
     - cron: '40 21 * * *'  # 매일 06:40 KST 심층 분석(AI 호출 예산 확대)
   workflow_dispatch:
     inputs:
@@ -20,6 +20,13 @@ jobs:
       - name: 누적 데이터(data 브랜치) 가져오기
         uses: actions/checkout@v4
         with: { ref: data, path: data }
+      - name: 썸네일 저장소(media 브랜치) 가져오기 — 없으면 새로 만듦
+        run: |
+          if git ls-remote --exit-code --heads origin media >/dev/null; then
+            git clone -q --depth 1 --branch media "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" media
+          else
+            mkdir media && cd media && git init -q -b media && git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          fi
       - uses: actions/setup-python@v5
         with: { python-version: '3.12', cache: pip }
       - run: pip install -r requirements.txt
@@ -36,6 +43,10 @@ jobs:
         continue-on-error: true
         timeout-minutes: 12
         run: python scripts/global_news.py
+      - name: 자체 DB(기사·엔티티 백필)·썸네일 WebP
+        continue-on-error: true
+        timeout-minutes: 10
+        run: python scripts/db.py
       - name: 관리자 상태(status.json·실행 이력)
         if: always()
         continue-on-error: true
@@ -48,10 +59,30 @@ jobs:
           git add -A
           git diff --cached --quiet || git commit -qm "data: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
           git push -q origin HEAD:data
+      - name: 썸네일 커밋(media 브랜치, 이력은 1개 커밋으로 유지해 용량 증가 방지)
+        continue-on-error: true
+        working-directory: media
+        run: |
+          git config user.name "newsboard-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -q --amend -m "media: thumbnails (WebP)" 2>/dev/null || git commit -qm "media: thumbnails (WebP)"
+            git push -q -f origin HEAD:media
+          fi
+      - name: 데이터 브랜치 용량 관리(.git 400MB 넘으면 최신 상태 1개 커밋으로 압축)
+        working-directory: data
+        run: |
+          git fetch -q --unshallow 2>/dev/null || true
+          SZ=$(git count-objects -vH | awk '/size-pack/{print $2$3}'); echo "pack: $SZ"
+          KB=$(git count-objects -v | awk '/size-pack/{print $2}')
+          if [ "$KB" -gt 409600 ]; then
+            git checkout -q --orphan squash && git add -A && git commit -qm "data: squashed $(TZ=Asia/Seoul date '+%Y-%m-%d') KST" && git push -q -f origin squash:data
+          fi
       - name: 사이트 묶기
         run: |
           mkdir _site && cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png _site/
           mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true)
+          (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null || true)
           python scripts/build_pages.py _site
       - uses: actions/upload-pages-artifact@v3
         with: { path: _site }

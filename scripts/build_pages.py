@@ -16,7 +16,7 @@ def page(path, title, desc, img=None):
     from urllib.parse import quote
     url = ORIGIN + quote(path, safe='/') + ('/' if path else '')
     t, d = esc(cut(title, 90)), esc(cut(desc or '포털에서 가장 많이 회자된 오늘의 이슈와, 인물·장소·사건의 흐름', 160))
-    im = esc(img if img and img.startswith('http') else DEF_IMG)
+    im = esc(img if img and img.startswith('http') else (ORIGIN + img) if img and img.startswith('media/') else DEF_IMG)
     og = f'''<!--OG-->
 <meta property="og:type" content="{'article' if path else 'website'}">
 <meta property="og:site_name" content="NewsBoard">

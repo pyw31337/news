@@ -306,6 +306,16 @@ data = dict(updated=NOW.isoformat(), date=today,
             links=[dict(a=a, b=b, n=n) for (a, b), n in co.most_common(60)],
             sections={k: [dict(title=a['title'], url=a['url'], press=a['press'], time=a['time'], related=a['related'])
                           for a in gn if a['section'] == k][:12] for k in SECTIONS})
+# TOP 10 밖 상위 이슈(11~40위)도 아카이브용으로 가볍게 남김
+top_ids = {id(c) for c in top}; more = []
+for c in clusters[:60]:
+    if id(c) in top_ids or len(more) >= 30: continue
+    A = c['arts']; nv = [a for a in A if a['src'].startswith('naver')]; rep = min(nv, key=lambda a: a['rank']) if nv else A[0]
+    more.append(dict(id='i' + __import__('hashlib').md5(rep['url'].encode()).hexdigest()[:8], title=rep['title'], url=rep['url'], press=rep['press'],
+                     presses=len({a['press'] for a in A}), mentions=len(A), score=round(c.get('score', 0), 1), keywords=c.get('keywords', [])[:5]))
+data['more'] = more
+json.dump([dict(title=a['title'], url=a['url'], press=a['press'], t=a.get('time') or '', src=a['src'], sec=a.get('section') or '') for a in arts],
+          open(os.path.join(ROOT, '_arts.json'), 'w'), ensure_ascii=False)
 json.dump(data, open(os.path.join(ROOT, 'today.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 json.dump(dict(updated=data['updated'], date=today, issues=issues, trends=tr[:20]),
           open(os.path.join(ROOT, 'archive', today + '.json'), 'w'), ensure_ascii=False)
