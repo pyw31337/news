@@ -16,9 +16,35 @@ const DEF={v:1,uid:null,saves:{},cols:[{id:'c0',name:'나중에 읽기'}],follow
 let M=JSON.parse(JSON.stringify(DEF));let db=null;
 const idb=()=>new Promise(r=>{try{const q=indexedDB.open('newsboard',1);q.onupgradeneeded=()=>q.result.createObjectStore('kv');q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)}catch(e){r(null)}});
 const load=async()=>{db=await idb();let v=null;if(db)v=await new Promise(r=>{const t=db.transaction('kv').objectStore('kv').get('my');t.onsuccess=()=>r(t.result);t.onerror=()=>r(null)});if(!v)try{v=JSON.parse(localStorage.getItem('nb-my')||'null')}catch(e){}if(v)M=Object.assign(JSON.parse(JSON.stringify(DEF)),v);if(!M.uid)M.uid='g-'+Math.random().toString(36).slice(2,10);};
-const save=()=>{M.updated=Date.now();const s=JSON.stringify(M);try{localStorage.setItem('nb-my',s)}catch(e){}if(db)try{db.transaction('kv','readwrite').objectStore('kv').put(JSON.parse(s),'my')}catch(e){}badge()};
-const ready=load();
-window.NBMy={get:()=>M,save};
+const save=()=>{M.updated=Date.now();const s=JSON.stringify(M);try{localStorage.setItem('nb-my',s)}catch(e){}if(db)try{db.transaction('kv','readwrite').objectStore('kv').put(JSON.parse(s),'my')}catch(e){}badge();syncSoon()};
+/* ---------- 여러 기기 동기화: Cloudflare Worker + D1 (로그인 시에만) ---------- */
+const SYNC='https://newsboard-sync.pyw213.workers.dev';
+{const h=new URLSearchParams(location.hash.slice(1));if(h.get('nbt')){localStorage.setItem('nb-tok',h.get('nbt'));localStorage.setItem('nb-prov',h.get('nbp')||'');localStorage.setItem('nb-migrate','1')}
+ if(h.get('nbt')||h.get('nbe'))history.replaceState(null,'',location.pathname+location.search);if(h.get('nbe'))setTimeout(()=>window.toast&&toast('로그인을 마치지 못했어요. 다시 시도해 주세요'),800)}
+const tok=()=>localStorage.getItem('nb-tok');
+const newer=(a,b)=>((a&&(a.u||a.at))||0)>=((b&&(b.u||b.at))||0)?a:b;
+function merge(a,b){if(!b)return a;if(!a)return b;const o=Object.assign({},b,a);
+  o.saves={};new Set([...Object.keys(a.saves||{}),...Object.keys(b.saves||{})]).forEach(k=>{const x=newer((a.saves||{})[k],(b.saves||{})[k]);if(x)o.saves[k]=x});
+  o.follows=Object.assign({},b.follows,a.follows);o.keywords=[...new Set([...(a.keywords||[]),...(b.keywords||[])])];
+  o.cols=[...(a.cols||[])];(b.cols||[]).forEach(c=>{if(!o.cols.find(x=>x.id===c.id))o.cols.push(c)});
+  o.reads={};new Set([...Object.keys(a.reads||{}),...Object.keys(b.reads||{})]).forEach(d=>o.reads[d]=Object.assign({},(b.reads||{})[d],(a.reads||{})[d]));
+  const n=(a.updated||0)>=(b.updated||0)?a:b;['home','watch','alerts'].forEach(k=>{if(n[k])o[k]=n[k]});
+  if(a.uid&&!String(a.uid).startsWith('g-'))o.uid=a.uid;else o.uid=b.uid||a.uid;o.updated=Math.max(a.updated||0,b.updated||0);return o}
+let rev=+localStorage.getItem('nb-rev')||0,syncT=null,syncing=false;window._nbSyncAt=+localStorage.getItem('nb-syncat')||0;
+async function api(path,opt={}){const r=await fetch(SYNC+path,Object.assign({},opt,{headers:Object.assign({'Content-Type':'application/json',Authorization:'Bearer '+tok()},opt.headers||{})}));
+  if(r.status===401){localStorage.removeItem('nb-tok');localStorage.removeItem('nb-rev');throw new Error('auth')}return{st:r.status,j:await r.json().catch(()=>({}))}}
+async function sync(){if(!tok()||syncing)return;syncing=true;try{
+  const g=await api('/sync');let data=merge(M,g.j.data);rev=g.j.rev||0;
+  for(let n=0;n<3;n++){const r=await api('/sync',{method:'PUT',body:JSON.stringify({data,rev})});if(r.st===200){rev=r.j.rev;break}
+    if(r.st===409){data=merge(data,r.j.data);rev=r.j.rev}else break}
+  M=Object.assign(JSON.parse(JSON.stringify(DEF)),data);M.updated=data.updated;const s=JSON.stringify(M);try{localStorage.setItem('nb-my',s)}catch(e){}if(db)try{db.transaction('kv','readwrite').objectStore('kv').put(JSON.parse(s),'my')}catch(e){}
+  localStorage.setItem('nb-rev',rev);window._nbSyncAt=Date.now();localStorage.setItem('nb-syncat',window._nbSyncAt);
+  if(localStorage.getItem('nb-migrate')){localStorage.removeItem('nb-migrate');window.toast&&toast('이 기기의 서재를 계정으로 옮겼어요')}
+  const st=document.getElementById('syncst');if(st)st.textContent='방금 동기화됨';badge&&badge()}catch(e){}finally{syncing=false}}
+const syncSoon=()=>{if(!tok())return;clearTimeout(syncT);syncT=setTimeout(sync,2500)};
+const ready=load().then(()=>{if(tok())sync()});
+addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&tok())sync()});
+window.NBMy={get:()=>M,save,sync};
 /* ---------- 내비 ---------- */
 const dnum=new Date().getDate();
 /* 한국 시간 기준 날짜·시각 */
@@ -148,7 +174,7 @@ function myView(sub){setMeta('내 서재','');if(sub==='home')return homeSet();
   const TY={issue:['이슈','fire'],entity:['인물·기업','user'],kw:['키워드','search'],chart:['지표','chart']};
   const card=s=>`<a class="myi ty-${s.t}" href="${s.href||'#'}">${s.img?`<span class="myth" style="background-image:url('${E(s.img)}')"></span>`:`<span class="myth noimg">${I(TY[s.t]?.[1])}</span>`}<div><em>${TY[s.t]?.[0]||''}${s.col?` · ${E((M.cols.find(c=>c.id===s.col)||{}).name||'')}`:''}</em><b>${E(s.title)}</b>${s.note?`<p class="mnote">${E(s.note)}</p>`:''}<span class="mtags">${(s.tags||[]).map(t=>`<i>#${E(t)}</i>`).join('')}${s.like?`<i class="lk">${SV(P.heart)}</i>`:''}</span></div><span class="mhw" data-t="${s.t}" data-id="${E(s.id)}"><button class="myact-n" data-a="note" aria-label="메모">${SV(P.plus)}</button></span></a>`;
   const rel=SA.filter(s=>s.t==='entity'||s.t==='kw').map(s=>{const i=D.issues.find(x=>(x.entities||[]).includes(s.id)||x.title.includes(s.id));return i&&{s,i}}).filter(Boolean).slice(0,4);
-  app.innerHTML=`<div class="myhead"><div class="myav">${SV(P.my||P.bm)}</div><div><b>게스트</b><small>이 기기에 저장 중 · 로그인 없이 사용</small></div><a class="ghost sm" href="my/home">${I('gear')}내 홈 꾸미기</a></div>
+  app.innerHTML=`<div class="myhead"><div class="myav">${SV(P.my||P.bm)}</div><div>${tok()?`<b>내 계정</b><small id="syncst">${localStorage.getItem('nb-prov')==='kakao'?'카카오':'Google'} 로그인 · 모든 기기에서 이어져요</small>`:`<b>게스트</b><small>이 기기에 저장 중 · 로그인 없이 사용</small>`}</div><a class="ghost sm" href="my/home">${I('gear')}내 홈 꾸미기</a></div>
   <div class="mystat"><div class="xp"><span>🔥 ${streak}일</span><small>연속 읽기</small></div><div class="xp"><span>Lv.${lvl(L.xp)}</span><small>퀴즈 XP ${L.xp||0}</small><i style="--p:${(L.xp||0)%100}%"></i></div><div class="xp"><span>${SA.length}</span><small>저장한 것</small></div><div class="xp"><span>${Object.keys(M.follows).length}</span><small>팔로우</small></div></div>
   ${rel.length?`<div class="sec"><h2><small>Connected</small>${I('link')}내 스크랩과 이어진 새 소식</h2></div><div class="myrel">${rel.map(({s,i})=>`<a href="issue/${i.id}"><em>${E(s.title)}</em><b>${E(i.title)}</b></a>`).join('')}</div>`:''}
   <div class="sec"><h2><small>Library</small>${I('book')}내 서재</h2><button class="more" id="newcol">+ 컬렉션</button></div>
@@ -162,7 +188,10 @@ function myView(sub){setMeta('내 서재','');if(sub==='home')return homeSet();
    <div class="card"><h4>최근 14일</h4><div class="days">${Array.from({length:14},(_,k)=>{const d=new Date(Date.now()-(13-k)*864e5).toISOString().slice(0,10);const n=Object.keys(M.reads[d]||{}).length;return`<i style="--o:${Math.min(1,n/5)}" title="${d} ${n}건"></i>`}).join('')}</div></div></div>`:'<p class="fine">이슈를 읽으면 주제 비율과 균형을 여기서 보여드려요.</p>'}
   <div class="sec"><h2><small>Backup</small>${I('link')}다른 기기로 옮기기</h2></div>
   <div class="card setc"><p class="fine">로그인 전에는 이 기기에만 저장돼요. 백업 파일이나 코드로 다른 기기에 옮길 수 있어요.</p><div class="mbr"><button class="pri" id="exf">백업 파일 받기</button><button id="imf">파일 불러오기</button><button id="exc">코드 복사</button><button id="imc">코드 붙여넣기</button></div><input type="file" id="imfi" accept=".json,application/json" hidden></div>
-  <div class="card setc login"><h3>${I('user')}로그인하면 모든 기기에서 자동으로 이어져요</h3><p class="fine">구글·카카오·네이버 간편 로그인 준비 중이에요. 이메일이나 이름은 받지 않아요.</p><span class="soonb">준비 중</span></div>`;
+  <div class="card setc login" id="loginc">${tok()?`<h3>${I('user')}모든 기기에서 이어지는 중</h3><p class="fine">좋아요·스크랩·메모·팔로우가 로그인한 모든 기기에 자동으로 맞춰져요.</p><div class="mbr"><button id="syncnow">지금 맞추기</button><button id="logout">로그아웃</button></div>`:`<h3>${I('user')}로그인하면 모든 기기에서 자동으로 이어져요</h3><p class="fine">지금 이 기기에 모은 것도 그대로 옮겨져요. 이메일이나 이름은 받지 않아요.</p><div class="mbr" id="loginb"><span class="soonb">준비 중</span></div>`}</div>`;
+  if(tok()){document.getElementById('syncnow').onclick=()=>{sync().then(()=>toast('맞췄어요'))};document.getElementById('logout').onclick=async()=>{try{await api('/logout',{method:'POST'})}catch(e){}['nb-tok','nb-rev','nb-prov','nb-syncat'].forEach(k=>localStorage.removeItem(k));toast('로그아웃했어요. 이 기기의 서재는 그대로 남아요');myView()}}
+  else fetch(SYNC+'/health').then(r=>r.json()).then(h=>{const L=h.login||{},b=document.getElementById('loginb');if(!b||!(L.google||L.kakao))return;
+    b.innerHTML=(L.google?`<a class="lgb g" href="${SYNC}/auth/google/start">Google로 계속하기</a>`:'')+(L.kakao?`<a class="lgb k" href="${SYNC}/auth/kakao/start">카카오로 계속하기</a>`:'')}).catch(()=>{});
   const draw=()=>{sessionStorage.setItem('nb-mytab',tab);const f=SA.filter(s=>tab==='all'||(tab==='like'&&s.like)||(tab==='scrap'&&s.scrap)||(tab==='note'&&s.note)||(tab.startsWith('c:')&&s.col===tab.slice(2))||(tab.startsWith('t:')&&(s.tags||[]).includes(tab.slice(2)))).sort((a,b)=>(b.u||b.at)-(a.u||a.at));
     document.getElementById('mylist').innerHTML=f.length?f.map(card).join(''):`<div class="aempty">${SV(P.bm)}<b>아직 비어 있어요</b><p>이슈·인물·지표 카드의 하트나 스크랩을 눌러 모아 보세요.</p></div>`};draw();
   document.getElementById('mytab').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;tab=b.dataset.k;document.querySelectorAll('#mytab button').forEach(x=>x.classList.toggle('on',x===b));draw()};
