@@ -149,6 +149,9 @@ CACHE = json.load(open(CACHE_P)) if os.path.exists(CACHE_P) else {}
 ENDPOINT = os.environ.get('LLM_ENDPOINT') or 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions'
 TOKEN = os.environ.get('LLM_API_KEY') or ''
 MODEL = os.environ.get('LLM_MODEL') or 'gemini-3.8-flash'
+# 무료 등급 대체 순서: 주 모델이 과부하(503)·한도(429)면 가벼운 모델로 넘어감
+MODELS = list(dict.fromkeys([MODEL] + [m for m in (os.environ.get('LLM_FALLBACKS') or 'gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-flash-lite-latest').split(',') if m]))
+LAST_CALL = [0.0]; GAP = float(os.environ.get('LLM_GAP', '4.5'))  # 분당 요청 한도 안: 호출 간 최소 간격(초)
 BUDGET = [int(os.environ.get('LLM_BUDGET', '14'))]
 BACKEND = os.environ.get('LLM_BACKEND', 'openai')   # 'apple' = 맥미니 Apple 온디바이스 모델(nbai)
 NBAI = os.environ.get('NBAI', os.path.expanduser('~/Developer/newsboard-local/bin/nbai'))
@@ -158,7 +161,7 @@ SMALL = APPLE or os.environ.get('LLM_SMALL') == '1' or any(h in ENDPOINT for h i
 if APPLE: MODEL = 'Apple Foundation Models (온디바이스)'; ENDPOINT = 'https://macmini.local/'
 LLM_STATUS = {'enabled': bool(TOKEN) or APPLE, 'model': MODEL, 'endpoint': ENDPOINT.split('/')[2], 'calls': 0, 'errors': [], 'backend': BACKEND}
 import subprocess, threading
-ALOCK = threading.Lock()
+ALOCK = threading.Lock(); GLOCK = threading.Lock()
 def jparse(c):
     c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip()
     a, b = c.find('{'), c.rfind('}')
@@ -179,26 +182,44 @@ def llm(key, prompt, maxtok=900):
             out = apple(prompt, maxtok); LLM_STATUS['calls'] += 1; CACHE[key] = out; return out
         except Exception as e:
             LLM_STATUS['errors'].append(str(e)[:200]); return None
-    body = json.dumps({'model': MODEL, 'temperature': 0.2, 'max_tokens': maxtok, 'response_format': {'type': 'json_object'},
-                       'messages': [{'role': 'system', 'content': SYS}, {'role': 'user', 'content': prompt}]}).encode()
-    for attempt in range(4):  # 일시 과부하(5xx)는 2·6·15초 간격 재시도, 끝내 실패하면 조용히 추출 요약으로 대체
-        try:
-            r = urllib.request.urlopen(urllib.request.Request(ENDPOINT, body,
-                    {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json', 'Accept': 'application/json'}), timeout=60)
-            raw = r.read().decode('utf-8', 'replace')
-            try: c = json.loads(raw)['choices'][0]['message']['content']
-            except Exception: raise ValueError('bad response %s: %r' % (r.status, raw[:160]))
-            c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip()
-            out = json.loads(c)
-            LLM_STATUS['calls'] += 1; CACHE[key] = out; return out
-        except urllib.error.HTTPError as e:
-            if e.code in (500, 502, 503, 504) and attempt < 3:
-                LLM_STATUS['retries'] = LLM_STATUS.get('retries', 0) + 1; time.sleep((2, 6, 15)[attempt]); continue
-            LLM_STATUS['errors'].append('%s %s' % (e.code, e.read()[:200].decode('utf-8', 'replace')))
-            if e.code == 429 or e.code >= 500: BUDGET[0] = 0  # 한도·과부하: 이번 수집은 AI 없이 진행
-        except Exception as e:
-            LLM_STATUS['errors'].append(str(e)[:200])
-        break
+    while MODELS:
+        m = MODELS[0]
+        body = json.dumps({'model': m, 'temperature': 0.2, 'max_tokens': maxtok, 'response_format': {'type': 'json_object'},
+                           'messages': [{'role': 'system', 'content': SYS}, {'role': 'user', 'content': prompt}]}).encode()
+        switch = False
+        for attempt in range(4):  # 과부하·한도는 간격을 늘려 재시도, 계속 실패하면 다음 모델, 끝내 실패하면 추출 요약으로 대체
+            with GLOCK:
+                wait = GAP - (time.time() - LAST_CALL[0])
+                if wait > 0: time.sleep(wait)
+                LAST_CALL[0] = time.time()
+            try:
+                r = urllib.request.urlopen(urllib.request.Request(ENDPOINT, body,
+                        {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json', 'Accept': 'application/json'}), timeout=60)
+                raw = r.read().decode('utf-8', 'replace')
+                try: c = json.loads(raw)['choices'][0]['message']['content']
+                except Exception: raise ValueError('bad response %s: %r' % (r.status, raw[:160]))
+                c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip()
+                out = json.loads(c)
+                LLM_STATUS['calls'] += 1; LLM_STATUS['model'] = m; CACHE[key] = out
+                LLM_STATUS.setdefault('by_model', {}); LLM_STATUS['by_model'][m] = LLM_STATUS['by_model'].get(m, 0) + 1
+                return out
+            except urllib.error.HTTPError as e:
+                msg = e.read()[:300].decode('utf-8', 'replace')
+                if e.code in (429, 500, 502, 503, 504):
+                    daily = e.code == 429 and 'PerDay' in msg
+                    if attempt < 2 and not daily:
+                        ra = e.headers.get('Retry-After')
+                        LLM_STATUS['retries'] = LLM_STATUS.get('retries', 0) + 1
+                        time.sleep(min(float(ra), 40) if ra and ra.isdigit() else (5, 15)[attempt]); continue
+                    LLM_STATUS['errors'].append('%s %s: %s' % (e.code, m, msg[:120])); switch = True
+                else:
+                    LLM_STATUS['errors'].append('%s %s: %s' % (e.code, m, msg[:120]))
+            except Exception as e:
+                LLM_STATUS['errors'].append(str(e)[:200])
+            break
+        if not switch: return None
+        MODELS.pop(0)  # 이 모델은 이번 수집에서 제외하고 다음 모델로
+    BUDGET[0] = 0
     return None
 
 def hkey(*a): return hashlib.md5('|'.join(a).encode()).hexdigest()[:16]
