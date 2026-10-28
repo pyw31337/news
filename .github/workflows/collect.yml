@@ -39,6 +39,14 @@ jobs:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_BUDGET: ${{ (github.event.schedule == '40 21 * * *' || inputs.deep) && '40' || '3' }}  # Gemini 무료 등급(하루 약 250회) 안: 30분×3 + 심층 40 ≈ 하루 180회
         run: python scripts/enrich.py
+      - name: 네이버 뉴스·이미지 검색(NAVER API HUB, 월 28만 회 상한)
+        continue-on-error: true
+        timeout-minutes: 3
+        env:
+          NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+          NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+          NAVER_BUDGET: ${{ (github.event.schedule == '40 21 * * *' || inputs.deep) && '60' || '20' }}  # 30분×최대 20 ≈ 월 3만 회
+        run: python scripts/naver.py
       - name: 해외 뉴스(번역)
         continue-on-error: true
         timeout-minutes: 12
