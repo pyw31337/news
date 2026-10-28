@@ -25,8 +25,8 @@ def fav(n):
     w = n; h = int(n * obj.height / obj.width); o = obj.resize((w, h), Image.LANCZOS)
     if n <= 48: o = ImageEnhance.Sharpness(o).enhance(1.6)
     c = Image.new('RGBA', (n, n), (0, 0, 0, 0)); c.paste(o, (0, (n - h) // 2), o); return c
-fav(512).save(os.path.join(I, 'favicon-512.png')); fav(32).save(os.path.join(I, 'favicon-32.png')); fav(16).save(os.path.join(I, 'favicon-16.png'))
-fav(48).save(os.path.join(R, 'favicon.ico'), sizes=[(16, 16), (32, 32), (48, 48)], append_images=[fav(16), fav(32)])
+fav(512).save(os.path.join(I, 'favicon-512.png'))
+import runpy; runpy.run_path(os.path.join(R, 'scripts/make_small_favicons.py'), run_name='__main__')  # 16/24/32 픽셀 힌팅
 def F(s, w='Black'):
     for p in (f'/usr/share/fonts/opentype/noto/NotoSansCJK-{w}.ttc', '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc', '/System/Library/Fonts/AppleSDGothicNeo.ttc'):
         try: return ImageFont.truetype(p, s, index=1 if 'Noto' in p else 0)
