@@ -10,16 +10,29 @@ UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Sa
 kiwi = Kiwi()
 D = json.load(open(os.path.join(ROOT, 'today.json')))
 
+
+import atexit as _ax, collections as _co, urllib.parse as _up
+DIAG = {'ok': _co.Counter(), 'fail': _co.Counter(), 'errors': []}
+def _dhost(u): return _up.urlsplit(u).netloc
+def _dsave():
+    try:
+        os.makedirs(os.path.join(os.path.dirname(__file__), '..', 'data'), exist_ok=True)
+        json.dump(dict(step='enrich', at=dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).isoformat(), ok=DIAG['ok'], fail=DIAG['fail'], errors=DIAG['errors'][-40:]),
+                  open(os.path.join(os.path.dirname(__file__), '..', 'data', 'diag_enrich.json'), 'w'), ensure_ascii=False)
+    except Exception as e: print('diag', e)
+_ax.register(_dsave)
+
 def get(url, headers=None, enc='utf-8', timeout=15):
     h = {'User-Agent': UA, 'Accept-Language': 'ko-KR,ko;q=0.9,en;q=0.6', 'Accept': 'text/html,application/json,*/*;q=0.8'}; h.update(headers or {})
     for n in range(3):
-        try: return urllib.request.urlopen(urllib.request.Request(url, headers=h), timeout=timeout).read().decode(enc, 'replace')
+        try:
+            _r = urllib.request.urlopen(urllib.request.Request(url, headers=h), timeout=timeout).read().decode(enc, 'replace'); DIAG['ok'][_dhost(url)] += 1; return _r
         except urllib.error.HTTPError as e:
             err = e
             if e.code in (403, 404): break
             time.sleep(3 * (n + 1) if e.code == 429 else 1)
         except Exception as e: err = e; time.sleep(1)
-    print('fail', url[:120], err); return ''
+    DIAG['fail'][_dhost(url)] += 1; DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S'), host=_dhost(url), path=_up.urlsplit(url).path[:60], err=str(err)[:120])); print('fail', url[:120], err); return ''
 def un(s): return html.unescape(re.sub(r'<[^>]+>', '', s or '')).strip()
 
 # ---------- 네이버 뉴스 검색 (썸네일·스니펫·날짜) ----------
@@ -182,6 +195,15 @@ def llm(key, prompt, maxtok=900):
     return None
 def hkey(*a): return hashlib.md5('|'.join(a).encode()).hexdigest()[:16]
 
+def ogimg(url):
+    if 'news.google.com' in url: return ''
+    t = get(url, timeout=10)
+    m = re.search(r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)', t) or re.search(r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:image', t)
+    return html.unescape(m.group(1)).replace('&amp;', '&') if m else ''
+def imgkey(u):
+    # 같은 사진 판별: 경로의 파일명(쿼리·크기 접미사 제거)
+    f = urllib.parse.urlparse(u).path.rsplit('/', 1)[-1].lower()
+    return re.sub(r'([_-](\d+x\d+|thumb|s|m|l|w\d+))?\.(jpe?g|png|webp|gif)$', '', f) or u
 def og(url):
     t = get(url, timeout=10)
     d = re.search(r'<meta property="og:description" content="([^"]*)"', t)
@@ -204,6 +226,17 @@ def enrich_issue(iss):
     with ThreadPoolExecutor(3) as ex: leads += [d for d in ex.map(og, nvs) if d]
     for s in iss['sources']:
         if not s.get('img'): s['img'] = ''
+    # 갤러리: 여러 매체가 대표 이미지로 쓴 사진(og:image) 모아 중복 제거
+    gs = [s_ for s_ in iss['sources'] if 'news.google.com' not in s_['url']][:12]
+    with ThreadPoolExecutor(4) as ex: gi = list(ex.map(lambda s_: s_.get('img') or ogimg(s_['url']), gs))
+    seen_i, gal = set(), []
+    for s_, im in zip(gs, gi):
+        if not im or re.search(r'logo|default|noimage|og_?image\.|share', im, re.I): continue
+        k = imgkey(im)
+        if k in seen_i: continue
+        seen_i.add(k); gal.append(dict(img=im, press=s_['press'], url=s_['url'])); s_['img'] = s_.get('img') or im
+    if iss.get('image') and imgkey(iss['image']) not in seen_i: gal.insert(0, dict(img=iss['image'], press=iss['press'], url=iss['url']))
+    iss['gallery'] = gal[:12]
     op = opinion(iss)
     days = list(group_days(flow).items())[:8]
     iss['flow'] = [dict(date=d, items=a[:5]) for d, a in days]
@@ -246,6 +279,16 @@ stances는 2~4개, share 합은 100. 댓글이 없으면 stances와 quotes는 �
     if ai:
         quotes = [q for q in ai.get('opinion', {}).get('quotes', []) if op and any(q[:20] in c['text'] for c in op['top'])]
         ai.setdefault('opinion', {})['quotes'] = quotes  # 실제 댓글과 일치하는 것만
+        st, seen = [], []
+        for x in ai['opinion'].get('stances', []) or []:
+            lb = str(x.get('label', '')).strip()
+            if not lb or any(lb in y or y in lb for y in seen): continue
+            seen.append(lb); st.append(x)
+        tot = sum(max(0, int(x.get('share', 0) or 0)) for x in st if str(x.get('share', '0')).isdigit()) or 0
+        if len(st) >= 2 and tot > 0:
+            for x in st: x['share'] = round(100 * max(0, int(x.get('share', 0) or 0)) / tot)
+            ai['opinion']['stances'] = st
+        else: ai['opinion']['stances'] = []
         mm = {f.get('date'): f.get('meaning') for f in ai.get('flow', [])}
         for f in iss['flow']: f['meaning'] = mm.get(f['date'], '')
     if ai:

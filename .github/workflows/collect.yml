@@ -32,6 +32,14 @@ jobs:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_BUDGET: ${{ (github.event.schedule == '40 21 * * *' || inputs.deep) && '40' || '5' }}
         run: python scripts/enrich.py
+      - name: 해외 뉴스(번역)
+        continue-on-error: true
+        timeout-minutes: 12
+        run: python scripts/global_news.py
+      - name: 관리자 상태(status.json·실행 이력)
+        if: always()
+        continue-on-error: true
+        run: python scripts/status.py
       - name: 누적 데이터 커밋(data 브랜치)
         working-directory: data
         run: |
@@ -42,8 +50,9 @@ jobs:
           git push -q origin HEAD:data
       - name: 사이트 묶기
         run: |
-          mkdir _site && cp -r index.html assets icons manifest.webmanifest sw.js _site/
-          mkdir _site/data && cp -r data/today.json data/archive _site/data/
+          mkdir _site && cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png _site/
+          mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true)
+          python scripts/build_pages.py _site
       - uses: actions/upload-pages-artifact@v3
         with: { path: _site }
       - id: deploy

@@ -12,6 +12,18 @@ ROOT = os.path.join(os.path.dirname(__file__), '..', 'data')
 UA = {'User-Agent': 'Mozilla/5.0 (NewsBoard; +https://pyw31337.github.io/news/)'}
 kiwi = Kiwi()
 
+
+import atexit as _ax, collections as _co, urllib.parse as _up
+DIAG = {'ok': _co.Counter(), 'fail': _co.Counter(), 'errors': []}
+def _dhost(u): return _up.urlsplit(u).netloc
+def _dsave():
+    try:
+        os.makedirs(os.path.join(os.path.dirname(__file__), '..', 'data'), exist_ok=True)
+        json.dump(dict(step='collect', at=dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).isoformat(), ok=DIAG['ok'], fail=DIAG['fail'], errors=DIAG['errors'][-40:]),
+                  open(os.path.join(os.path.dirname(__file__), '..', 'data', 'diag_collect.json'), 'w'), ensure_ascii=False)
+    except Exception as e: print('diag', e)
+_ax.register(_dsave)
+
 def get(url, enc=None, timeout=20):
     for i in range(3):
         try:
@@ -19,12 +31,12 @@ def get(url, enc=None, timeout=20):
             b = r.read()
             if not enc:
                 m = re.search(rb'charset=["\']?([\w-]+)', b[:3000]); enc = m.group(1).decode() if m else 'utf-8'
-            return b.decode(enc, 'replace')
+            DIAG['ok'][_dhost(url)] += 1; return b.decode(enc, 'replace')
         except Exception as e:
             err = e
             if getattr(e, 'code', 0) == 404: break
             time.sleep(4 * (i + 1) if getattr(e, 'code', 0) == 429 else 1)
-    print('fail', url, err); return ''
+    DIAG['fail'][_dhost(url)] += 1; DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S'), host=_dhost(url), path=_up.urlsplit(url).path[:60], err=str(err)[:120])); print('fail', url[:120], err); return ''
 
 def un(s): return html.unescape(re.sub(r'<[^>]+>', '', html.unescape(s or ''))).strip()
 
