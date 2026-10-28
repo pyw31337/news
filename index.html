@@ -6,30 +6,40 @@
 <title>NewsBoard · 오늘의 이슈와 타임라인</title>
 <meta name="description" content="포털에서 가장 많이 회자된 오늘의 이슈 10개와, 인물·장소·사건을 따라가는 타임라인">
 <meta name="theme-color" content="#0f1630">
+<meta name="referrer" content="no-referrer">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NewsBoard">
+<meta name="format-detection" content="telephone=no">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=2">
 </head>
 <body>
 <header class="top">
   <a class="brand" href="#/"><b>News</b>Board<i>.</i></a>
   <nav class="topnav">
-    <a href="#/" data-v="today">오늘</a><a href="#/timeline" data-v="timeline">타임라인</a><a href="#/people" data-v="people">인물·장소</a><a href="#/map" data-v="map">관계맵</a><a href="#/archive" data-v="archive">아카이브</a>
+    <a href="#/" data-v="today">오늘</a><a href="#/market" data-v="market">마켓·정책</a><a href="#/people" data-v="people">화제의 인물</a><a href="#/timeline" data-v="timeline">타임라인</a><a href="#/map" data-v="map">관계맵</a><a href="#/archive" data-v="archive">아카이브</a><a href="#/settings" data-v="settings">설정</a>
   </nav>
   <div class="updated" id="updated">불러오는 중…</div>
 </header>
 <div class="ticker" id="ticker"></div>
 <main id="app"><div class="loading">오늘의 이슈를 정리하고 있어요…</div></main>
-<footer class="foot">
-  <p><b>NewsBoard</b> — 네이버 뉴스 언론사별 랭킹·Google 뉴스·Google 트렌드를 매시간 수집해 자동으로 묶고 정리합니다. 요약은 기사 리드문에서 추출한 것이며, 저작권은 각 언론사에 있습니다. 원문 링크로 확인하세요.</p>
+<footer class="foot"><nav class="flinks"><a href="#/archive">날짜 아카이브</a><a href="#/map">관계맵</a><a href="#/timeline">타임라인 비교</a><a href="#/settings">설정</a></nav>
+  <p><b>NewsBoard</b> — 네이버 뉴스 랭킹·검색·댓글, Google 뉴스·트렌드, 네이버 증권·Yahoo Finance, 위키백과를 매시간 수집해 자동으로 묶고 정리합니다. “AI 요약” 표시가 있는 내용은 AI가 수집 자료만으로 작성한 것이며 틀릴 수 있습니다. 그 밖의 요약은 기사 리드문에서 추출했고, 저작권은 각 언론사에 있습니다. 원문 링크로 확인하세요.</p>
 </footer>
 <nav class="tabbar">
   <a href="#/" data-v="today"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg>오늘</a>
-  <a href="#/timeline" data-v="timeline"><svg viewBox="0 0 24 24"><path d="M6 3v18M6 7h10M6 12h6M6 17h12"/></svg>타임라인</a>
+  <a href="#/market" data-v="market"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8M15 8h5v5"/></svg>마켓</a>
   <a href="#/people" data-v="people"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/></svg>인물</a>
+  <a href="#/timeline" data-v="timeline"><svg viewBox="0 0 24 24"><path d="M6 3v18M6 7h10M6 12h6M6 17h12"/></svg>타임라인</a>
   <a href="#/map" data-v="map"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="10" cy="18" r="2.5"/><path d="M8 7l8 1M7 8l2 8M16 10l-5 6"/></svg>관계</a>
-  <a href="#/archive" data-v="archive"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>아카이브</a>
+  <a href="#/settings" data-v="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>설정</a>
 </nav>
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=2"></script>
 </body>
 </html>

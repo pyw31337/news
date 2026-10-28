@@ -1,24 +1,52 @@
 name: collect-news
 on:
   schedule:
-    - cron: '7 * * * *'   # 매시 7분 (UTC) 수집
+    - cron: '7 * * * *'    # 매시 7분(UTC) 수집 + 가벼운 AI 분석
+    - cron: '40 21 * * *'  # 매일 06:40 KST 심층 분석(AI 호출 예산 확대)
   workflow_dispatch:
+    inputs:
+      deep: { description: '심층 분석 모드', type: boolean, default: false }
 permissions:
   contents: write
-concurrency: collect
+  models: read      # GitHub Models(무료) 호출 권한
+  pages: write
+  id-token: write
+concurrency: { group: collect, cancel-in-progress: false }
 jobs:
   collect:
     runs-on: ubuntu-latest
+    environment: { name: github-pages, url: '${{ steps.deploy.outputs.page_url }}' }
     steps:
       - uses: actions/checkout@v4
+      - name: 누적 데이터(data 브랜치) 가져오기
+        uses: actions/checkout@v4
+        with: { ref: data, path: data }
       - uses: actions/setup-python@v5
         with: { python-version: '3.12', cache: pip }
       - run: pip install -r requirements.txt
       - run: python scripts/collect.py
-      - name: commit data
+      - name: enrich (흐름·여론·시장·용어·AI)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # 다른 LLM으로 바꾸려면 저장소 Variables/Secrets에 LLM_ENDPOINT·LLM_MODEL·LLM_API_KEY 설정
+          LLM_ENDPOINT: ${{ vars.LLM_ENDPOINT }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BUDGET: ${{ (github.event.schedule == '40 21 * * *' || inputs.deep) && '40' || '5' }}
+        run: python scripts/enrich.py
+      - name: 누적 데이터 커밋(data 브랜치)
+        working-directory: data
         run: |
           git config user.name "newsboard-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data
-          git diff --cached --quiet || git commit -m "data: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
-          git pull --rebase -q && git push
+          git add -A
+          git diff --cached --quiet || git commit -qm "data: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          git push -q origin HEAD:data
+      - name: 사이트 묶기
+        run: |
+          mkdir _site && cp -r index.html assets icons manifest.webmanifest sw.js _site/
+          mkdir _site/data && cp -r data/today.json data/archive _site/data/
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: _site }
+      - id: deploy
+        uses: actions/deploy-pages@v4
