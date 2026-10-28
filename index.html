@@ -180,17 +180,53 @@
         </div>
       </div>`).join('');
 
-    /*
-    // Live RSS via Cloudflare Worker (deploy worker.js first)
-    async function tryLive() {
+    // ========== Naver / Live Data ==========
+    // 1. Deploy worker.js to Cloudflare Workers
+    // 2. Set secrets: wrangler secret put NAVER_CLIENT_ID / NAVER_CLIENT_SECRET
+    // 3. Replace the URL below with your Worker URL
+    const WORKER_URL = 'https://YOUR-WORKER-NAME.workers.dev';
+
+    async function loadNaverNews(query, limit = 8) {
+      if (!WORKER_URL.includes('workers.dev') || WORKER_URL.includes('YOUR-WORKER')) return null;
       try {
-        const worker = 'https://YOUR-WORKER.workers.dev/?feed=';
-        const res = await fetch(worker + encodeURIComponent('https://www.yna.co.kr/rss/politics.xml'));
-        if (!res.ok) throw new Error();
-        // parse XML and update UI...
-      } catch(e) { console.log('Using sample data'); }
+        const url = `${WORKER_URL}?naver=${encodeURIComponent(query)}&display=${limit}&sort=date`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(await res.text());
+        const data = await res.json();
+        if (!data.items || !data.items.length) return null;
+
+        return data.items.map(item => ({
+          title: item.title.replace(/<[^>]*>/g, '').replace(/"/g, '"').replace(/&/g, '&'),
+          desc: (item.description || '').replace(/<[^>]*>/g, '').slice(0, 100),
+          link: item.originallink || item.link,
+          date: item.pubDate ? new Date(item.pubDate).toLocaleDateString('ko-KR') : '',
+          source: '네이버',
+          img: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80'
+        }));
+      } catch (e) {
+        console.warn('Naver fetch failed:', e.message);
+        return null;
+      }
     }
-    */
+
+    async function tryLoadLiveRanks() {
+      const live = await loadNaverNews('정치 OR 경제 OR 반도체 OR AI', 5);
+      if (!live) return;
+      const rankList = document.getElementById('rank-list');
+      rankList.innerHTML = live.map((item, i) => `
+        <div class="rank-item">
+          <div class="rank-num">${i+1}</div>
+          <div class="rank-thumb" style="background-image:url('${item.img}')">
+            <div class="rank-info">
+              <h3>${item.title}</h3>
+              <div class="rank-count">${item.date}</div>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+
+    // Try live data on load (falls back to sample if Worker not ready)
+    tryLoadLiveRanks();
   </script>
 </body>
 </html>
