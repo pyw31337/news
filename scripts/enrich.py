@@ -181,21 +181,26 @@ def llm(key, prompt, maxtok=900):
             LLM_STATUS['errors'].append(str(e)[:200]); return None
     body = json.dumps({'model': MODEL, 'temperature': 0.2, 'max_tokens': maxtok, 'response_format': {'type': 'json_object'},
                        'messages': [{'role': 'system', 'content': SYS}, {'role': 'user', 'content': prompt}]}).encode()
-    try:
-        r = urllib.request.urlopen(urllib.request.Request(ENDPOINT, body,
-                {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json', 'Accept': 'application/json'}), timeout=60)
-        raw = r.read().decode('utf-8', 'replace')
-        try: c = json.loads(raw)['choices'][0]['message']['content']
-        except Exception: raise ValueError('bad response %s: %r' % (r.status, raw[:160]))
-        c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip()
-        out = json.loads(c)
-        LLM_STATUS['calls'] += 1; CACHE[key] = out; return out
-    except urllib.error.HTTPError as e:
-        LLM_STATUS['errors'].append('%s %s' % (e.code, e.read()[:200].decode('utf-8', 'replace')))
-        if e.code == 429: BUDGET[0] = 0
-    except Exception as e:
-        LLM_STATUS['errors'].append(str(e)[:200])
+    for attempt in range(4):  # 일시 과부하(5xx)는 2·6·15초 간격 재시도, 끝내 실패하면 조용히 추출 요약으로 대체
+        try:
+            r = urllib.request.urlopen(urllib.request.Request(ENDPOINT, body,
+                    {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json', 'Accept': 'application/json'}), timeout=60)
+            raw = r.read().decode('utf-8', 'replace')
+            try: c = json.loads(raw)['choices'][0]['message']['content']
+            except Exception: raise ValueError('bad response %s: %r' % (r.status, raw[:160]))
+            c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip()
+            out = json.loads(c)
+            LLM_STATUS['calls'] += 1; CACHE[key] = out; return out
+        except urllib.error.HTTPError as e:
+            if e.code in (500, 502, 503, 504) and attempt < 3:
+                LLM_STATUS['retries'] = LLM_STATUS.get('retries', 0) + 1; time.sleep((2, 6, 15)[attempt]); continue
+            LLM_STATUS['errors'].append('%s %s' % (e.code, e.read()[:200].decode('utf-8', 'replace')))
+            if e.code == 429 or e.code >= 500: BUDGET[0] = 0  # 한도·과부하: 이번 수집은 AI 없이 진행
+        except Exception as e:
+            LLM_STATUS['errors'].append(str(e)[:200])
+        break
     return None
+
 def hkey(*a): return hashlib.md5('|'.join(a).encode()).hexdigest()[:16]
 
 def ogimg(url):

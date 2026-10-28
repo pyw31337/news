@@ -38,7 +38,7 @@ async function boot(){
       <p class="fine">매일 03:30 KST 실행(Apple 온디바이스 모델). 30시간 넘게 갱신이 없으면 경고로 바뀌어요.</p></section>
     <section class="card"><h2 style="margin-top:0">AI·검색 상태</h2>
       <table class="tbl"><tr><th>백엔드</th><td>${esc(L.backend||'—')} ${L.enabled?'<span class="pill ok">켜짐</span>':'<span class="pill">꺼짐</span>'}</td></tr><tr><th>모델</th><td>${esc(L.model||'—')} <span class="mute">${esc(L.endpoint||'')}</span></td></tr>
-      <tr><th>이번 호출</th><td>${num(L.calls)}회</td></tr><tr><th>네이버 검색(Actions)</th><td>${L.naver_search?'<span class="pill ok">가능</span>':'<span class="pill bad">차단 → 구글 뉴스 대체</span>'}</td></tr></table></section>
+      <tr><th>이번 호출</th><td>${num(L.calls)}회${L.retries?` <span class="mute">(재시도 ${num(L.retries)}회)</span>`:''}</td></tr>${(L.errors||[]).length?`<tr><th>AI 오류</th><td>${esc(hum(L.errors[0]))}${L.errors.length>1?` <span class="mute">외 ${L.errors.length-1}건</span>`:''}</td></tr>`:''}<tr><th>네이버 검색(Actions)</th><td>${L.naver_search?'<span class="pill ok">가능</span>':'<span class="pill bad">차단 → 구글 뉴스 대체</span>'}</td></tr></table></section>
   </div>
   <h2>일별 수집량 <small>최근 60일 · 실행마다 모인 기사 합</small></h2><div class="card">${chart(S.daily||[])}</div>
   <h2>GitHub Actions 실행 <small>공개 API · 시간당 60회 제한</small></h2><div class="card scroll" id="runs"><p class="mute">불러오는 중…</p></div>
@@ -57,7 +57,7 @@ function chart(d){if(!d.length)return'<p class="mute">아직 기록이 없어요
   return`<div class="scroll"><svg class="chart" viewBox="0 0 ${W} ${H}" style="min-width:${Math.min(W,600)}px" role="img" aria-label="일별 수집 기사 수">${d.map((x,i)=>{const bh=(H-30)*x.articles/mx;return`<g><title>${x.date} · 기사 ${num(x.articles)} · 실행 ${x.runs}회 · 실패 ${x.fail}</title><rect x="${i*bw+3}" y="${H-18-bh}" width="${bw-6}" height="${bh}" rx="3" fill="${x.fail>x.ok*.2?'#f08a00':'#0f1630'}"/>${d.length<=14||i%Math.ceil(d.length/10)===0?`<text x="${i*bw+bw/2}" y="${H-5}" text-anchor="middle">${x.date.slice(5)}</text>`:''}</g>`}).join('')}</svg></div>`}
 function srcTable(s){const e=Object.entries(s).sort((a,b)=>(b[1].ok+b[1].fail)-(a[1].ok+a[1].fail));if(!e.length)return'<p class="mute">기록 없음</p>';
   return`<table class="tbl"><tr><th>소스(호스트)</th><th>단계</th><th class="n">성공</th><th class="n">실패</th><th>성공률</th></tr>${e.map(([k,v])=>{const r=v.ok/(v.ok+v.fail||1)*100;return`<tr><td class="w">${esc(k)}</td><td>${v.steps.map(esc).join(', ')}</td><td class="n">${num(v.ok)}</td><td class="n">${num(v.fail)}</td><td><div class="bar"><i style="width:${r}%;background:${r<50?'var(--bad)':r<90?'var(--warn)':'var(--ok)'}"></i></div><small>${r.toFixed(0)}%</small></td></tr>`}).join('')}</table>`}
-function errTable(e){if(!e.length)return'<p class="mute">오류 없음 🎉</p>';return`<table class="tbl"><tr><th>시각</th><th>단계</th><th>호스트</th><th>내용</th></tr>${e.slice().reverse().map(x=>`<tr><td class="n">${esc(x.t)}</td><td>${esc(x.step)}</td><td class="w">${esc(x.host)}<br><small class="mute">${esc(x.path)}</small></td><td class="w">${esc(x.err)}</td></tr>`).join('')}</table>`}
+function errTable(e){if(!e.length)return'<p class="mute">오류 없음 🎉</p>';return`<table class="tbl"><tr><th>시각</th><th>단계</th><th>호스트</th><th>내용</th></tr>${e.slice().reverse().map(x=>`<tr><td class="n">${esc(x.t)}</td><td>${esc(x.step)}</td><td class="w">${esc(x.host)}<br><small class="mute">${esc(x.path)}</small></td><td class="w">${esc(hum(x.err))}</td></tr>`).join('')}</table>`}
 async function runs(){const el=$('#runs');try{const [a,c]=await Promise.all([j(`https://api.github.com/repos/${REPO}/actions/runs?per_page=20`),j(`https://api.github.com/repos/${REPO}/commits?sha=data&per_page=8`).catch(()=>[])]);
   const R=a.workflow_runs||[];const okn=R.filter(r=>r.conclusion==='success').length;
   el.innerHTML=`<p class="mute" style="margin-top:0">최근 ${R.length}회 중 성공 ${okn}회</p><table class="tbl"><tr><th>시작</th><th>워크플로</th><th>트리거</th><th>결과</th><th class="n">소요</th></tr>${R.map(r=>{const d=(new Date(r.updated_at)-new Date(r.run_started_at||r.created_at))/1e3;const cl=r.status!=='completed'?'run':r.conclusion==='success'?'ok':'bad';
@@ -75,3 +75,13 @@ function tree(o,k,d,name){const lab=name?`<span class="k">${esc(name)}</span>: `
   const en=Array.isArray(o)?o.map((x,i)=>[i,x]):Object.entries(o);const sh=en.filter(([a,b])=>!k||String(a).toLowerCase().includes(k)||hit(b,k));
   const head=`${lab}${Array.isArray(o)?`[${o.length}]`:`{${en.length}}`}`;if(d>7)return`<div>${head} …</div>`;
   const lim=sh.slice(0,200);return`<details ${d<1||(k&&d<4)?'open':''}><summary>${head}${k?` <small class="mute">${sh.length}개 일치</small>`:''}</summary>${lim.map(([a,b])=>tree(b,k,d+1,String(a))).join('')}${sh.length>200?`<div class="mute">… ${sh.length-200}개 더</div>`:''}</details>`}
+
+function hum(e){e=String(e||'');const c=(e.match(/^\s*(\d{3})\b/)||e.match(/"code":\s*(\d{3})/)||e.match(/HTTP Error (\d{3})/)||[])[1];
+ const g=/gemini|generativelanguage|model/i.test(e)?'Gemini ':'';
+ if(c==='503'||/UNAVAILABLE|high demand/i.test(e))return g+'일시 과부하 · 다음 수집에서 재시도';
+ if(c==='429'||/RESOURCE_EXHAUSTED|quota/i.test(e))return g+'호출 한도 초과 · 한도 초기화 후 재개';
+ if(c==='404')return g+'대상을 찾을 수 없음(모델·주소 변경 확인 필요)';
+ if(c==='401'||c==='403')return '인증 거부(키 승인·권한 확인 필요)';
+ if(/timed? ?out/i.test(e))return '응답 시간 초과 · 다음 수집에서 재시도';
+ if(c&&+c>=500)return '서버 일시 오류('+c+') · 다음 수집에서 재시도';
+ const m=e.match(/"message":\s*"([^"]{1,120})/);return m?m[1]:e.slice(0,140)}

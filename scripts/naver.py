@@ -64,7 +64,7 @@ else:
             if im:
                 i['image'] = i['image_src'] = im[0].get('thumbnail') or im[0].get('link'); diag['images'] += 1
         time.sleep(0.05)
-    d.setdefault('stats', {})['naver'] = diag['items']
+    d.setdefault('stats', {})['naver_search'] = diag['items']
     json.dump(d, open(p, 'w'), ensure_ascii=False)
 for k in list(use['day'])[:-40]: use['day'].pop(k)
 json.dump(use, open(U, 'w'))

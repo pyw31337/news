@@ -412,11 +412,11 @@ function settings(){
   <div class="card setc"><h3>보고 싶은 카테고리</h3><p class="fine">끈 카테고리는 TOP10·관계맵에서 숨겨요. 이 기기에만 저장됩니다.</p>
    <div class="toggles">${CATS.map(c=>`<label class="tg"><input type="checkbox" data-c="${c}" ${S.hide.includes(c)?'':'checked'}><span style="--c:${CATC[c]}">${ic(c)}${c}</span></label>`).join('')}</div></div>
   <div class="card setc"><h3>글자 크기</h3><div class="fsr"><button data-fs="-">가−</button><b>${S.fs}%</b><button data-fs="+">가+</button><button data-fs="0" class="ghost">기본</button></div><p class="fsprev">가나다 미리보기 — 오늘의 이슈를 따라가는 가장 쉬운 방법.</p></div>
-  <div class="card setc"><h3>AI 분석 상태</h3><p class="fine">${D.llm&&D.llm.enabled?`모델 ${esc(D.llm.model)} (${esc(D.llm.endpoint||'')}) · 이번 수집 호출 ${D.llm.calls}회${D.llm.errors.length?' · 오류: '+esc(D.llm.errors[0]):''}`:'AI 분석이 꺼져 있어요(API 키 미설정). 지금 보이는 요약·흐름은 기사 원문에서 그대로 추출한 내용입니다.'}</p></div>`;
+`;
   app.querySelectorAll('[data-c]').forEach(x=>x.onchange=()=>{const c=x.dataset.c;S.hide=x.checked?S.hide.filter(y=>y!==c):[...S.hide,c];saveS()});
   app.querySelectorAll('[data-fs]').forEach(x=>x.onclick=()=>{const v=x.dataset.fs;S.fs=v==='0'?100:Math.max(85,Math.min(130,S.fs+(v==='+'?5:-5)));saveS();draw()})};draw();
 }
-load().catch(e=>app.innerHTML=`<div class="loading">데이터를 불러오지 못했어요 (${esc(e.message)})</div>`);
+load().catch(()=>app.innerHTML='<div class="loading">잠시 후 다시 시도해 주세요. 소식을 불러오는 중 문제가 생겼어요.</div>');
 if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 
 /* v6 공식 데이터: 한국은행 ECOS 지표·재정경제부 보도자료(마켓), OpenDART 공시(기업 타임라인) */
