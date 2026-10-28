@@ -30,5 +30,5 @@ https://pyw31337.github.io/news/
   - `index/entities.json`, `index/keywords.json` 과거 이슈 색인 → 새 이슈와 공통 인물/키워드로 자동 연결(`issue.past`)
   - `entity_history.json` 인물·기관 일별 화제도, `llm_cache.json` AI 결과 캐시(중복 호출 방지)
   - `today.json`(3~4MB)은 커밋하지 않고 배포 산출물에만 포함 → 저장소 비대화 방지
-- AI: 기본 GitHub Models `openai/gpt-4o-mini`(Actions의 GITHUB_TOKEN, 무료). 교체: 저장소 Variables `LLM_ENDPOINT`·`LLM_MODEL`, Secret `LLM_API_KEY` (OpenAI 호환 API·로컬 서버 모두 가능)
+- AI: GitHub Models는 2026-07-30 종료되어 사용 불가. 저장소 Secret `LLM_API_KEY`를 넣으면 기본 Google Gemini(`gemini-2.5-flash`, OpenAI 호환 엔드포인트, 무료 등급)로 동작. 교체: 저장소 Variables `LLM_ENDPOINT`·`LLM_MODEL`, Secret `LLM_API_KEY` (OpenAI 호환 API·로컬 서버 모두 가능)
 - AI 결과는 화면에 “AI 요약/자동 판단”으로 표시, 수집 자료에 없는 내용은 쓰지 않도록 지시. 편향 배지는 확신도 high일 때만 표시

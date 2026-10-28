@@ -131,9 +131,10 @@ def opinion(issue):
 CACHE_P = os.path.join(ROOT, 'llm_cache.json')
 CACHE = json.load(open(CACHE_P)) if os.path.exists(CACHE_P) else {}
 # 교체 가능: LLM_ENDPOINT(OpenAI 호환 /chat/completions), LLM_MODEL, LLM_API_KEY. 기본=GitHub Models + GITHUB_TOKEN
-ENDPOINT = os.environ.get('LLM_ENDPOINT') or 'https://models.github.ai/inference/chat/completions'
-TOKEN = os.environ.get('LLM_API_KEY') or os.environ.get('GITHUB_TOKEN')
-MODEL = os.environ.get('LLM_MODEL') or 'openai/gpt-4o-mini'
+# GitHub Models는 2026-07-30 종료됨 → OpenAI 호환 API 키가 있어야 AI 분석 동작 (기본: Google Gemini 무료 등급)
+ENDPOINT = os.environ.get('LLM_ENDPOINT') or 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions'
+TOKEN = os.environ.get('LLM_API_KEY') or ''
+MODEL = os.environ.get('LLM_MODEL') or 'gemini-2.5-flash'
 BUDGET = [int(os.environ.get('LLM_BUDGET', '14'))]
 LLM_STATUS = {'enabled': bool(TOKEN), 'model': MODEL, 'endpoint': ENDPOINT.split('/')[2], 'calls': 0, 'errors': []}
 SYS = ('너는 한국어 뉴스 편집자다. 반드시 주어진 자료에 있는 사실만 사용하고, 자료에 없는 사실·수치·인용은 절대 만들지 마라. '
@@ -327,7 +328,10 @@ def words():
              '\nJSON: {"words": [{"word": "단어(목록 그대로)", "easy": "쉬운 설명 1~2문장", "level": "어려움 1~3"}]}', 1200)
     m = {w['word']: w for w in (ai or {}).get('words', [])}
     if m: pick = [p for p in pick if p['word'] in m]
-    else: pick = [p for p in pick if len(p['word']) >= 3 and re.search(r'(용어|개념|제도|정책|지표|현상|기법|체계|방식|권리|절차|행위|원칙|제재|조치|법률|처분)', p['wiki']['extract'][:120])]
+    else:
+        allp = pick
+        pick = [p for p in pick if len(p['word']) >= 3 and re.search(r'(용어|개념|제도|정책|지표|현상|기법|체계|방식|권리|절차|행위|원칙|제재|조치|법률|처분)', p['wiki']['extract'][:120])]
+        if len(pick) < 4: pick += [p for p in allp if p not in pick and p['word'] not in COMMON and len(p['word']) >= 2][:8 - len(pick)]
     out = []
     for p in pick[:10]:
         a = m.get(p['word'])

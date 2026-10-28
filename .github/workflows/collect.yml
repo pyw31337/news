@@ -8,7 +8,6 @@ on:
       deep: { description: '심층 분석 모드', type: boolean, default: false }
 permissions:
   contents: write
-  models: read      # GitHub Models(무료) 호출 권한
   pages: write
   id-token: write
 concurrency: { group: collect, cancel-in-progress: false }
@@ -27,8 +26,7 @@ jobs:
       - run: python scripts/collect.py
       - name: enrich (흐름·여론·시장·용어·AI)
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # 다른 LLM으로 바꾸려면 저장소 Variables/Secrets에 LLM_ENDPOINT·LLM_MODEL·LLM_API_KEY 설정
+          # AI 분석: Secret LLM_API_KEY 필수(기본 Gemini OpenAI 호환). 다른 LLM은 Variables LLM_ENDPOINT·LLM_MODEL로 교체
           LLM_ENDPOINT: ${{ vars.LLM_ENDPOINT }}
           LLM_MODEL: ${{ vars.LLM_MODEL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
