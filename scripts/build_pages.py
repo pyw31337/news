@@ -5,7 +5,7 @@ import json, os, re, sys, html
 SITE = sys.argv[1] if len(sys.argv) > 1 else '_site'
 ORIGIN = 'https://pyw31337.github.io/news/'
 T = open(os.path.join(SITE, 'index.html'), encoding='utf-8').read()
-DEF_IMG = ORIGIN + 'og-image.png?v=10'
+DEF_IMG = ORIGIN + 'og-image.png?v=11'
 def load(p):
     try: return json.load(open(p, encoding='utf-8'))
     except Exception: return {}
