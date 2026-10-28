@@ -51,5 +51,12 @@ for i in G.get('issues', []):
     n += page('g/' + i['id'], i.get('title_ko') or i['title'], (lambda x: ' '.join(x) if isinstance(x, list) else x)(i.get('summary_ko') or i.get('summary') or ''), i.get('image'))
 for k, t in enumerate(G.get('trends', [])):
     n += page('gt/%d' % k, (t.get('keyword_ko') or t['keyword']) + ' — 해외 검색어', '', t.get('image'))
+FN = load(os.path.join(SITE, 'data', 'fun.json'))
+if FN:
+    LI = ORIGIN + 'og/learn.png'
+    for v, t in (('learn', '놀면서 배우기 — 퀴즈·만화·카드뉴스'), ('quiz', '오늘의 단어 퀴즈'), ('quiz/review', '틀린 단어 복습')):
+        n += page(v, t, '오늘 뉴스에 나온 어려운 말을 OX 퀴즈로 익히고, 핫이슈는 4컷 만화와 카드뉴스로 쉽게 봐요', LI)
+    for c in FN.get('comics', []): n += page('comic/' + c['id'], c['title'] + ' — 4컷 설명 만화', c['headline'], ORIGIN + 'og/comic/%s.png' % c['id'])
+    for x in FN.get('decks', []): n += page('cards/' + x['id'], x['title'] + ' — 카드뉴스', x['cards'][0].get('text', ''), ORIGIN + 'og/cards/%s.png' % x['id'])
 open(os.path.join(SITE, '404.html'), 'w', encoding='utf-8').write(T)
 print('static pages', n)
