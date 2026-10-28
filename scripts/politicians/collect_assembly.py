@@ -94,7 +94,7 @@ def main():
         if os.path.exists(path):
             try: old = json.load(open(path, encoding='utf-8'))
             except Exception: pass
-        for k in ('bills', 'news', 'incidents', 'media', 'wikidata', 'assets'):  # 다른 수집기가 채운 칸은 보존
+        for k in ('bills', 'news', 'incidents', 'media', 'wikidata', 'assets', 'votes'):  # 다른 수집기가 채운 칸은 보존
             if k in old: P[k] = old[k]
         json.dump(P, open(path, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
         if os.path.exists(f'{OUT}/photos/{cd}.webp'): P['photo_local'] = f'data/pol/photos/{cd}.webp'
@@ -139,3 +139,4 @@ def main():
     print('people', len(idx), 'current', sum(e['current'] for e in idx), 'bills', len(allb))
 
 if __name__ == '__main__': main()
+

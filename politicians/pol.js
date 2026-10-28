@@ -28,7 +28,7 @@ function list(){
   const amax=Math.max(1,...Object.values(ageDist));
   app.innerHTML=`
   <section class="phero card"><div><small>PUBLIC FIGURES DB</small><h1>정치인 데이터베이스</h1><p>역대 국회의원 전원의 당선·정당 이력과 의정 활동, 뉴스 타임라인을 출처와 함께 쌓아가요. 앞으로 생기는 기사도 자동으로 각 인물에 연결돼요.</p></div>
-   <div class="kpis"><b>${fmt(IDX.count)}<em>역대 의원</em></b><b>${fmt(IDX.current)}<em>현역 22대</em></b><b>${IDX.bills?fmt(IDX.bills):'준비 중'}<em>법안(${(IDX.bill_ages||[]).join(',')||'-'}대)</em></b><b>${fmt(sw)}<em>당적 변경 경험</em></b></div></section>
+   <div class="kpis"><b>${fmt(IDX.count)}<em>역대 의원</em></b><b>${fmt(IDX.current)}<em>현역 22대</em></b><b>${IDX.bills?fmt(IDX.bills):'준비 중'}<em>법안(${(IDX.bill_ages||[]).join(',')||'-'}대)</em></b>${IDX.votes_rows?`<b>${fmt(IDX.votes_rows)}<em>표결 기록(${IDX.vote_ages.join(',')}대)</em></b>`:''}<b>${fmt(sw)}<em>당적 변경 경험</em></b></div></section>
   <div class="sec"><h2><small>22nd Assembly</small>현역 의석 분포</h2></div>
   <div class="card pad"><div class="seat">${bar}</div><div class="legend">${pe.map(([k,v])=>`<button data-party="${esc(k)}" class="${Q.party===k?'on':''}"><i style="background:${pc(k)}"></i>${esc(k)} <b>${v}</b></button>`).join('')}</div></div>
   ${hot.length?`<div class="sec"><h2><small>In the News</small>요즘 기사에 많이 나온 정치인</h2></div><div class="hotrow">${hot.map(p=>`<a class="hot card" data-pid href="politicians/?id=${p.id}">${ph(p.photo_local||p.photo,p.name,pc(p.party))}<b>${esc(p.name)}</b><span style="color:${pc(p.party)}">${esc(p.party||'')}</span><em>기사 ${fmt(p.news)}건${p.inc?` · 사건 키워드 ${p.inc}`:''}</em></a>`).join('')}</div>`:''}
@@ -86,6 +86,12 @@ async function detail(id){
   <div class="g2"><div class="card pad"><h3>대표발의 처리 결과</h3>${bars(bl.by_result,c)}</div><div class="card pad"><h3>월별 대표발의</h3>${months(bl.by_month,c)}</div></div>
   <div class="card pad"><h3>최근 대표발의 법안</h3><ul class="blist">${(bl.recent||[]).slice(0,12).map(b=>`<li><a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.name)}</a><span>${esc(b.date||'')} · <b class="${/가결|반영/.test(b.result)?'ok':''}">${esc(b.result)}</b></span></li>`).join('')}</ul><p class="fine">출처: <a href="${esc(bl.source.url)}" target="_blank" rel="noopener">${esc(bl.source.name)}</a> · ${esc(bl.source.fetched)} 수집</p></div>`:''}
 
+  ${p.votes?(()=>{const V=p.votes,S={};Object.values(V.summary).forEach(o=>Object.entries(o).forEach(([k,n])=>S[k]=(S[k]||0)+n));const T=Object.values(S).reduce((a,b)=>a+b,0)||1;const C={'찬성':'#11a683','반대':'#e5243b','기권':'#ffb020','불참':'#c3c8dc'};
+  return`<div class="sec"><h2><small>Votes</small>본회의 표결</h2><span class="more">${(V.ages||[]).join(',')}대 · ${fmt(V.count)}건</span></div>
+  <div class="card pad"><div class="seat">${Object.entries(S).map(([k,n])=>`<i style="flex:${n};background:${C[k]||'#8189a3'}"></i>`).join('')}</div>
+  <div class="legend">${Object.entries(S).map(([k,n])=>`<span class="vk"><i style="background:${C[k]||'#8189a3'}"></i>${esc(k)} <b>${fmt(n)}</b> <small>${Math.round(n/T*100)}%</small></span>`).join('')}</div>
+  ${V.dissent.length?`<h3 style="margin-top:14px">반대·기권한 안건</h3><ul class="blist">${V.dissent.slice(0,10).map(x=>`<li><a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=${esc(x.id)}" target="_blank" rel="noopener">${esc(x.name)}</a><span>${esc(x.date||'')} · <b style="color:${C[x.vote]}">${esc(x.vote)}</b></span></li>`).join('')}</ul>`:''}
+  <p class="fine">출처: ${esc(V.source.name)} · ${esc(V.source.fetched)} 수집</p></div>`})():''}
   <div class="sec"><h2><small>Incidents</small>사건·사고 관련 보도</h2></div>
   <div class="card pad inc"><p class="warn">기사 제목의 단어로 <b>자동 분류</b>한 목록이에요. ‘의혹·수사·기소’ 단계는 확정된 사실이 아니며 유무죄와 관계없어요. 반드시 원문을 확인해 주세요.</p>
    <div class="stg">${Object.keys(STG).map(s=>`<span class="${STG[s]}">${s} <b>${inc.filter(x=>x.stage===s).length}</b></span>`).join('')}</div>
