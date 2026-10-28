@@ -136,13 +136,33 @@ ENDPOINT = os.environ.get('LLM_ENDPOINT') or 'https://generativelanguage.googlea
 TOKEN = os.environ.get('LLM_API_KEY') or ''
 MODEL = os.environ.get('LLM_MODEL') or 'gemini-2.5-flash'
 BUDGET = [int(os.environ.get('LLM_BUDGET', '14'))]
-LLM_STATUS = {'enabled': bool(TOKEN), 'model': MODEL, 'endpoint': ENDPOINT.split('/')[2], 'calls': 0, 'errors': []}
+BACKEND = os.environ.get('LLM_BACKEND', 'openai')   # 'apple' = 맥미니 Apple 온디바이스 모델(nbai)
+NBAI = os.environ.get('NBAI', os.path.expanduser('~/Developer/newsboard-local/bin/nbai'))
+APPLE = BACKEND == 'apple'
+if APPLE: MODEL = 'Apple Foundation Models (온디바이스)'; ENDPOINT = 'https://macmini.local/'
+LLM_STATUS = {'enabled': bool(TOKEN) or APPLE, 'model': MODEL, 'endpoint': ENDPOINT.split('/')[2], 'calls': 0, 'errors': [], 'backend': BACKEND}
+import subprocess, threading
+ALOCK = threading.Lock()
+def jparse(c):
+    c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip()
+    a, b = c.find('{'), c.rfind('}')
+    return json.loads(c[a:b + 1] if a >= 0 else c)
+def apple(prompt, maxtok):
+    with ALOCK:  # 온디바이스 모델은 한 번에 하나씩
+        r = subprocess.run([NBAI, SYS, str(maxtok)], input=prompt, capture_output=True, text=True, timeout=180)
+    if r.returncode: raise ValueError('apple ' + r.stderr.strip()[:160])
+    return jparse(r.stdout)
 SYS = ('너는 한국어 뉴스 편집자다. 반드시 주어진 자료에 있는 사실만 사용하고, 자료에 없는 사실·수치·인용은 절대 만들지 마라. '
        '해석은 "~로 볼 수 있다", "~라는 해석이 나온다"처럼 해석임을 드러내라. 출력은 지정한 JSON만.')
 def llm(key, prompt, maxtok=900):
     if key in CACHE: return CACHE[key]
-    if not TOKEN or BUDGET[0] <= 0: return None
+    if not (TOKEN or APPLE) or BUDGET[0] <= 0: return None
     BUDGET[0] -= 1
+    if APPLE:
+        try:
+            out = apple(prompt, maxtok); LLM_STATUS['calls'] += 1; CACHE[key] = out; return out
+        except Exception as e:
+            LLM_STATUS['errors'].append(str(e)[:200]); return None
     body = json.dumps({'model': MODEL, 'temperature': 0.2, 'max_tokens': maxtok, 'response_format': {'type': 'json_object'},
                        'messages': [{'role': 'system', 'content': SYS}, {'role': 'user', 'content': prompt}]}).encode()
     try:
@@ -202,7 +222,27 @@ def enrich_issue(iss):
 stances는 2~4개, share 합은 100. 댓글이 없으면 stances와 quotes는 빈 배열.
 추가로 "bias": [{"i": 출처 번호, "lean": "left" 또는 "right", "confidence": "high"/"medium"/"low", "reason": "제목의 어떤 표현·프레이밍 때문인지 한 줄"}] 를 넣어라.
 언론사 이름이나 평소 성향으로 판단하지 말고, 오직 그 기사 제목의 단어 선택·프레이밍이 한쪽 정치 진영에 명백히 유리/불리하게 기울었을 때만 넣어라. 애매하면 넣지 마라.'''
-    ai = llm('issue:' + hkey(iss['url'], str(len(days)), str(len((op or {}).get('top', [])) > 0)), prompt, 1400)
+    k0 = hkey(iss['url'], str(len(days)), str(len((op or {}).get('top', [])) > 0))
+    if not APPLE: ai = llm('issue:' + k0, prompt, 1400)
+    else:
+        # Apple 모델은 문맥창(약 4천 토큰)이 작아 작업별로 나눠 호출
+        cut = lambda t, n: t if len(t) <= n else t[:n] + '…'
+        ai = {}
+        d1 = llm('a-deep:' + k0, cut('제목: %s\n[기사 리드문]\n%s' % (iss['title'], '\n'.join('- ' + cut(x, 300) for x in iss['leads'][:6])), 2200) +
+                 '\n\n위 자료의 사실만으로 사건 전체를 설명하는 한국어 한 문단(4~6문장)을 써라. JSON: {"deep": "..."}', 500)
+        if d1: ai['deep'] = d1.get('deep', '')
+        if len(days) > 1:
+            d2 = llm('a-flow:' + k0, '사건: %s\n[일자별 보도 제목]\n%s\n\n각 날짜의 보도가 이전 날짜 흐름과 어떻게 이어지는지, 어떤 의미·해석이 가능한지 날짜마다 1~2문장으로 써라. 해석임을 드러내라. JSON: {"flow": [{"date": "YYYY-MM-DD", "meaning": "..."}]}' % (
+                iss['title'], '\n'.join('%s: %s' % (d, ' / '.join(cut(x['title'], 60) for x in a[:3])) for d, a in days[:7])), 700)
+            if d2: ai['flow'] = d2.get('flow', [])
+        if op and op.get('top'):
+            d3 = llm('a-op:' + k0, '사건: %s\n[네이버 댓글(공감순)]\n%s\n\n댓글 여론을 분석하라. JSON: {"opinion": {"summary": "여론 2~3문장", "stances": [{"label": "입장(짧게)", "share": 정수, "desc": "한 문장"}], "quotes": ["위 댓글 원문 그대로 최대 3개"]}} stances 2~4개, share 합 100.' % (
+                iss['title'], '\n'.join('- (공감%d) %s' % (c['like'], cut(c['text'], 110)) for c in op['top'][:15])), 700)
+            if d3: ai['opinion'] = d3.get('opinion', {})
+        d4 = llm('a-bias:' + k0, '[기사 제목 목록]\n%s\n\n언론사 이름·평소 성향은 무시하고, 제목의 단어 선택·프레이밍이 한쪽 정치 진영에 명백히 유리/불리하게 기울어진 제목만 골라라. 애매하면 고르지 마라(빈 배열 가능). JSON: {"bias": [{"i": 번호, "lean": "left 또는 right", "confidence": "high/medium/low", "reason": "어떤 표현 때문인지 한 줄"}]}' % (
+            '\n'.join('%d. %s' % (k, x['title']) for k, x in enumerate(srcs))), 400)
+        if d4: ai['bias'] = d4.get('bias', [])
+        ai = ai or None
     if ai:
         quotes = [q for q in ai.get('opinion', {}).get('quotes', []) if op and any(q[:20] in c['text'] for c in op['top'])]
         ai.setdefault('opinion', {})['quotes'] = quotes  # 실제 댓글과 일치하는 것만
@@ -324,7 +364,7 @@ def words():
     # 어려운 단어 선별·쉬운 설명: LLM(근거=위키 요약), 없으면 위키 요약 첫 문장
     ai = llm('words:' + hkey(D['date'], *[p['word'] for p in pick[:30]]),
              '아래는 오늘 기사 제목에 자주 나온 단어와 위키백과 요약이다. 일반 독자(중학생 수준)가 뜻을 헷갈릴 만한 어려운 단어 8개를 골라, 위키백과 요약에 근거해서만 쉬운 말로 설명하라.\n' +
-             '\n'.join('- %s: %s' % (p['word'], p['wiki']['extract'][:200]) for p in pick[:30]) +
+             '\n'.join('- %s: %s' % (p['word'], p['wiki']['extract'][:200]) for p in pick[:(14 if APPLE else 30)]) +
              '\nJSON: {"words": [{"word": "단어(목록 그대로)", "easy": "쉬운 설명 1~2문장", "level": "어려움 1~3"}]}', 1200)
     m = {w['word']: w for w in (ai or {}).get('words', [])}
     if m: pick = [p for p in pick if p['word'] in m]
@@ -341,10 +381,60 @@ def words():
 
 with ThreadPoolExecutor(4) as ex:
     D['issues'] = list(ex.map(enrich_issue, D['issues']))
-    D['trends'] = list(ex.map(enrich_trend, D['trends'][:12]))
+    # 국내 모드: 한글이 없고 관련 기사도 대부분 외국어인 키워드(예: 해외 스포츠 경기)는 제외
+    hang = lambda t: bool(re.search('[가-힣]', t or ''))
+    def domestic(t):
+        if hang(t['keyword']): return True
+        ns = [n['title'] for n in t.get('news', [])]
+        return bool(ns) and sum(map(hang, ns)) / len(ns) >= 0.5
+    D['trends_foreign'] = [t['keyword'] for t in D['trends'] if not domestic(t)]
+    D['trends'] = list(ex.map(enrich_trend, [t for t in D['trends'] if domestic(t)][:12]))
+# 순위: Google 트렌드 검색량(구간값) → 같은 구간이면 오늘 관련 기사 수
+for t in D['trends']: t['articles'] = len(t.get('today', []))
+D['trends'].sort(key=lambda t: (-t.get('traffic_n', 0), -t['articles']))
+# ---------- 맥미니 새벽 분석 결과(overlay) 반영 / 생성 ----------
+OV_DIR = os.path.join(ROOT, 'overlay'); os.makedirs(OV_DIR, exist_ok=True)
+OV_P = os.path.join(OV_DIR, 'latest.json')
+def toks(i): return set(i.get('entities', [])) | set(i.get('keywords', [])[:6])
+def jac(a, b): return len(a & b) / max(1, len(a | b))
+if os.environ.get('OVERLAY_WRITE'):
+    pass  # 아래에서 저장
+elif os.path.exists(OV_P):
+    try: OV = json.load(open(OV_P))
+    except Exception: OV = {}
+    fresh = OV.get('updated') and (NOW - dt.datetime.fromisoformat(OV['updated'])).total_seconds() < 36 * 3600
+    if fresh:
+        used = 0
+        for i in D['issues']:
+            best = max(OV.get('issues', []), key=lambda o: (o['url'] == i['url'], jac(toks(i), set(o['toks']))), default=None)
+            if not best: continue
+            same = best['url'] == i['url'] or jac(toks(i), set(best['toks'])) >= 0.5
+            if same or jac(toks(i), set(best['toks'])) >= 0.3:
+                if not NAVER_OK[0] and best.get('flow'):
+                    # 클라우드에선 네이버 검색이 막힘 → 맥에서 모은 썸네일 흐름 + 지금 Google 기사 합치기
+                    cur = [x for f in i.get('flow', []) for x in f['items']]
+                    allx = dedupe([x for f in best['flow'] for x in f['items']] + cur)
+                    i['flow'] = [dict(date=d, items=a[:5], meaning=next((f.get('meaning', '') for f in best['flow'] if f['date'] == d), '')) for d, a in list(group_days(allx).items())[:8]]
+                if same and not i.get('ai') and best.get('ai'):
+                    i['ai'] = dict(best['ai'], via='macmini', at=OV['updated'])
+                    for b in (best.get('bias') or []):
+                        for s_ in i['sources']:
+                            if s_['url'] == b['url']: s_['bias'] = b['bias']
+                    if not i.get('flow_meaning_done'):
+                        mm = {f['date']: f.get('meaning', '') for f in best.get('flow', [])}
+                        for f in i['flow']: f['meaning'] = f.get('meaning') or mm.get(f['date'], '')
+                used += 1
+        for t in D['trends']:
+            o = OV.get('trends', {}).get(t['keyword'])
+            if o:
+                if not NAVER_OK[0]: t['today'], t['past'], t['image'] = o['today'] or t['today'], o['past'] or t['past'], t.get('image') or o.get('image', '')
+                if not t.get('ai'): t['ai'] = o.get('ai')
+        OV_WORDS = OV.get('words') or []
+        LLM_STATUS['overlay'] = dict(updated=OV['updated'], matched=used)
 D['market'] = market()
 D['stocks'] = stocks()
 D['words'] = words()
+if globals().get('OV_WORDS') and not any(w.get('ai') for w in D['words']): D['words'] = OV_WORDS
 D['llm'] = LLM_STATUS
 LLM_STATUS['naver_search'] = NAVER_OK[0]
 json.dump(dict(list(WCACHE.items())[-3000:]), open(WCACHE_P, 'w'), ensure_ascii=False)
@@ -372,6 +462,13 @@ for i in D['issues']:
     for k in i['keywords'][:4]: kw_ix[k].append(ref)
 json.dump({k: v[-200:] for k, v in ent_ix.items()}, open(os.path.join(IX, 'entities.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 json.dump({k: v[-100:] for k, v in kw_ix.items() if len(v) > 1}, open(os.path.join(IX, 'keywords.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
+if os.environ.get('OVERLAY_WRITE'):
+    ov = dict(updated=D['updated'], issues=[dict(url=i['url'], toks=sorted(toks(i)), flow=i.get('flow', []), ai=i.get('ai'),
+              bias=[dict(url=s_['url'], bias=s_['bias']) for s_ in i['sources'] if s_.get('bias')]) for i in D['issues']],
+              trends={t['keyword']: dict(today=t.get('today', []), past=t.get('past', [])[:40], image=t.get('image', ''), ai=t.get('ai')) for t in D['trends']},
+              words=D['words'] if any(w.get('ai') for w in D['words']) else [])
+    json.dump(ov, open(OV_P, 'w'), ensure_ascii=False, separators=(',', ':'))
+    json.dump(ov, open(os.path.join(OV_DIR, D['date'] + '.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 # 캐시 정리(최근 600개)
 CACHE = dict(list(CACHE.items())[-600:])
 json.dump(CACHE, open(CACHE_P, 'w'), ensure_ascii=False)
