@@ -26,7 +26,7 @@ SPECS = [
  ('ppi', ['404Y014'], 'M', ['총지수'], None, 6, 'yoy'),
  ('unemp', ['901Y027'], 'M', ['실업률'], ['계절조정', ''], 5, None),
  ('cab', ['301Y013'], 'M', ['경상수지'], None, 5, None),
- ('gdp', ['200Y102', '200Y002', '200Y001'], 'Q', ['국내총생산(GDP)(실질, 계절조정, 전기대비)', 'GDP(실질, 계절조정, 전기대비)', '실질, 계절조정, 전기대비', '경제성장률'], None, 6, None),
+ ('gdp', ['200Y102', '200Y002', '200Y001'], 'Q', ['GDP(실질, 계절조정, 전기비)', '국내총생산(GDP)(실질, 계절조정, 전기비)', '실질, 계절조정, 전기비', '국내총생산(GDP)(실질, 계절조정, 전기대비)', 'GDP(실질, 계절조정, 전기대비)', '실질, 계절조정, 전기대비', '경제성장률'], None, 6, None),
  ('kospi', ['802Y001'], 'D', ['KOSPI지수', 'KOSPI'], None, 3, None),
  ('kosdaq', ['802Y001'], 'D', ['KOSDAQ지수', 'KOSDAQ'], None, 3, None),
  ('m2', ['161Y006', '101Y004'], 'M', ['M2(평잔, 원계열)', 'M2 평잔', 'M2'], None, 5, 'yoy'),
@@ -78,7 +78,7 @@ def fetch(stat, cyc, code, start, end, pref2=None):
         except Exception: pass
     return out, (L[0].get('UNIT_NAME') if L else '')
 FRESH = False
-try: FRESH = (NOW - dt.datetime.fromisoformat(OLD['updated'])).total_seconds() < 3 * 3600 and len(OLD.get('series', {})) >= 15
+try: FRESH = (NOW - dt.datetime.fromisoformat(OLD['updated'])).total_seconds() < 3 * 3600 and 'gdp' in OLD.get('series', {})
 except Exception: pass
 if EK and not FRESH:
     for sid, stats, cyc, names, pref2, yrs, tf in SPECS:
@@ -106,14 +106,16 @@ if EK and not FRESH:
         if not tf: OUT['series'][sid].pop('raw')
     # 경기종합지수 구성지표(선행): 901Y067의 나머지 월간 항목 중 일부
     try:
+        import re
         main = {'선행종합지수', '동행종합지수', '후행종합지수', '선행지수순환변동치', '동행지수순환변동치'}
-        comp = [r for r in items('901Y067') if r.get('CYCLE') == 'M' and r.get('ITEM_NAME', '').replace(' ', '') not in main and '전월' not in r.get('ITEM_NAME', '')]
+        comp = [r for r in items('901Y067') if r.get('CYCLE') == 'M' and re.sub(r'[\s\d\)]', '', r.get('ITEM_NAME', '')) not in main and '전월' not in r.get('ITEM_NAME', '')]
         cl = []
         for r in comp[:8]:
             d, u = fetch('901Y067', 'M', r['ITEM_CODE'], fmt('M', NOW - dt.timedelta(days=365 * 5)), fmt('M', NOW))
             if len(d) > 12: cl.append(dict(name=r['ITEM_NAME'], code=r['ITEM_CODE'], unit=u, data=d))
-        if cl: OUT['components'] = cl
+        OUT['components'] = cl
     except Exception as e: errs.append('구성지표 %s' % e)
+    OUT['items_gdp'] = [[r.get('ITEM_CODE'), r.get('ITEM_NAME'), r.get('CYCLE')] for st in ('200Y102', '200Y002') for r in items(st)][:80]
     OUT['items_901Y067'] = [[r.get('ITEM_CODE'), r.get('ITEM_NAME'), r.get('CYCLE')] for r in items('901Y067')][:60]
     if any(v.get('data') for v in OUT['series'].values()):
         json.dump(OUT, open(P, 'w'), ensure_ascii=False, separators=(',', ':'))

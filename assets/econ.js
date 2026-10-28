@@ -31,10 +31,10 @@ function cutP(d,c,p){if(p==='all'||!d.length)return d;const m={'3m':3,'1y':12,'3
 function stat(s){const d=s.data,n=d.length;if(!n)return null;const L=d[n-1][1],P=n>1?d[n-2][1]:L;
   const back=k=>{const c=s.cycle;if(c==='M')return d[Math.max(0,n-1-k)][1];if(c==='Q')return d[Math.max(0,n-1-Math.round(k/3))][1];const t=new Date(d[n-1][0]+'T00:00:00');t.setMonth(t.getMonth()-k);const key=t.toISOString().slice(0,10);let r=d[0];for(const x of d){if(x[0]<=key)r=x;else break}return r[1]};
   const vs=d.map(x=>x[1]),mn=Math.min(...vs),mx=Math.max(...vs);return{L,P,d1:L-P,m3:L-back(3),y1:L-back(12),mn,mx,pos:(L-mn)/((mx-mn)||1),date:d[n-1][0]}}
-const isRate=s=>s.unit==='%';
+const isRate=s=>/%/.test(s.unit||'');const un=(s,inf)=>isRate(s)?'%':(inf.u||s.unit||'');
 const chg=(st,s,inf)=>{const v=isRate(s)?st.d1:(st.P?st.d1/Math.abs(st.P)*100:0);const t=isRate(s)?`${st.d1>0?'+':''}${fmt(st.d1,2)}%p`:`${v>0?'+':''}${fmt(v,2)}%`;const dir=Math.abs(v)<1e-9?'flat':v>0?'up':'down';return{t,dir}};
 /* 지금 상황(규칙 기반) */
-function now(id,s,st){const inf=INFO[id]||{};const dp=inf.dp??2,u=s.unit==='%'?'%':inf.u||'';
+function now(id,s,st){const inf=INFO[id]||{};const dp=inf.dp??2;
   const big=isRate(s)?.25:5,y=isRate(s)?st.y1:(st.L/(st.L-st.y1||1)-1)*100,m=isRate(s)?st.m3:(st.L/(st.L-st.m3||1)-1)*100;
   const tr=Math.abs(m)<(isRate(s)?.05:1)?'최근 3개월은 큰 변화 없이 옆걸음':m>0?'최근 3개월 오름세':'최근 3개월 내림세';
   const lvl=st.pos>.85?'기간 중 높은 편':st.pos<.15?'기간 중 낮은 편':'기간 중 중간 수준';
@@ -60,8 +60,8 @@ function chart(d,{w=320,h=120,col='#ff4d2e',axis=false,c='M',ref=null,shade=null
   return`<svg class="ech" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img">${sh}${ax}${rf}<path d="${p}L${lx.toFixed(1)},${T+H}L${L},${T+H}Z" fill="${col}" opacity=".08"/>${p2?`<path d="${p2}" fill="none" stroke="${col2}" stroke-width="${axis?1.8:1.4}" stroke-dasharray="${axis?'':'0'}" vector-effect="non-scaling-stroke"/>`:''}<path d="${p}" fill="none" stroke="${col}" stroke-width="${axis?2.2:1.8}" vector-effect="non-scaling-stroke" stroke-linejoin="round"/>${axis?`<circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="4" fill="${col}" stroke="#fff" stroke-width="2"/>`:''}</svg>`}
 const colOf=(dir,inf)=>dir==='flat'?'#8189a3':((dir==='up')===(inf.good!==-1))?(inf.good===0?(dir==='up'?'#e2321b':'#2f6bff'):'#11a683'):'#e2321b';
 function card(id){const s=ES.series[id];if(!s||!s.data||s.data.length<3)return'';const inf=INFO[id]||{t:s.name,dp:2};const st=stat(s),c=chg(st,s,inf);
-  const col=inf.good===0?(c.dir==='up'?'#e2321b':c.dir==='down'?'#2f6bff':'#8189a3'):colOf(c.dir,inf);
-  return`<button type="button" class="ecard" data-ec="${id}"><span class="eh"><i>${inf.ic||'📌'}</i>${e_(inf.t)}</span><b class="ev">${fmt(st.L,inf.dp??2)}<small>${e_(s.unit==='%'?'%':inf.u||s.unit||'')}</small></b><span class="dchg ${c.dir}" style="--c:${col}">${c.dir==='up'?'▲':c.dir==='down'?'▼':'–'} ${c.t}</span>${chart(cutP(s.data,s.cycle,s.cycle==='D'?'1y':'3y'),{w:160,h:44,col,c:s.cycle,ref:inf.target})}<span class="ets">${lab(st.date,s.cycle)} 기준</span></button>`}
+  const col=c.dir==='up'?'#e2321b':c.dir==='down'?'#2f6bff':'#8189a3';
+  return`<button type="button" class="ecard" data-ec="${id}"><span class="eh"><i>${inf.ic||'📌'}</i>${e_(inf.t)}</span><b class="ev">${fmt(st.L,inf.dp??2)}<small>${e_(un(s,inf))}</small></b><span class="dchg ${c.dir}" style="--c:${col}">${c.dir==='up'?'▲':c.dir==='down'?'▼':'–'} ${c.t}</span>${chart(cutP(s.data,s.cycle,s.cycle==='D'?'1y':'3y'),{w:160,h:44,col,c:s.cycle,ref:inf.target})}<span class="ets">${lab(st.date,s.cycle)} 기준</span></button>`}
 /* 상세 시트 */
 function sheet(id){const s=ES.series[id];if(!s)return;const inf=INFO[id]||{t:s.name};const st=stat(s),c=chg(st,s,inf);
   const per=s.cycle==='D'?[['3m','3개월'],['1y','1년'],['3y','3년']]:[['1y','1년'],['3y','3년'],['5y','5년'],['all','전체']];let cur=s.cycle==='D'?'1y':'3y';
@@ -72,7 +72,7 @@ function sheet(id){const s=ES.series[id];if(!s)return;const inf=INFO[id]||{t:s.n
     el.querySelectorAll('[data-p]').forEach(b=>b.classList.toggle('on',b.dataset.p===cur))};
   el.innerHTML=`<div class="esh" role="dialog" aria-modal="true" aria-label="${e_(inf.t)}"><div class="grab"></div><button type="button" class="x" data-close aria-label="닫기">✕</button>
    <div class="eh"><i>${inf.ic||'📌'}</i><span class="tag">${e_(inf.g||'')}</span></div><h3>${e_(inf.t)}</h3>
-   <div class="eval"><b>${fmt(st.L,inf.dp??2)}<small>${e_(s.unit==='%'?'%':inf.u||s.unit||'')}</small></b><span class="dchg ${c.dir}">${c.dir==='up'?'▲':c.dir==='down'?'▼':'–'} ${c.t} <em>직전 대비</em></span><time class="ts">${lab(st.date,s.cycle)} 기준</time></div>
+   <div class="eval"><b>${fmt(st.L,inf.dp??2)}<small>${e_(un(s,inf))}</small></b><span class="dchg ${c.dir}">${c.dir==='up'?'▲':c.dir==='down'?'▼':'–'} ${c.t} <em>직전 대비</em></span><time class="ts">${lab(st.date,s.cycle)} 기준</time></div>
    <div class="now"><b>지금 상황</b><p>${e_(now(id,s,st))}</p></div>
    <div class="ptog">${per.map(([k,t])=>`<button type="button" data-p="${k}">${t}</button>`).join('')}</div><div class="ebig"></div><div class="estats"></div>
    ${inf.what?`<div class="learn"><div class="lq"><span>무엇인가요?</span><p>${e_(inf.what)}</p></div><div class="lq"><span>왜 중요해요?</span><p>${e_(inf.why)}</p></div><div class="lud"><div class="u"><span>▲ 오르면</span><p>${e_(inf.up)}</p></div><div class="d"><span>▼ 내리면</span><p>${e_(inf.down)}</p></div></div><div class="life">💡 ${e_(inf.life)}</div></div>`:''}
@@ -83,19 +83,25 @@ document.addEventListener('click',ev=>{const b=ev.target.closest('[data-ec]');if
 document.addEventListener('keydown',ev=>{if(ev.key==='Escape'){const el=document.getElementById('esheet');el&&el.classList.remove('on');document.documentElement.classList.remove('noscroll')}});
 /* 경기선행지수 */
 function phase(d){const n=d.length;if(n<4)return null;const L=d[n-1][1],sl=L-d[n-4][1];return L>=100?(sl>=0?['확장','경기가 평균보다 좋고 더 좋아지는 중','up']:['둔화','평균보다는 좋지만 기세가 꺾이는 중','down']):(sl<0?['수축','평균보다 약하고 더 약해지는 중','down']:['회복','평균보다 약하지만 나아지기 시작','up'])}
-function shades(d){const out=[];let st=null,dir=null;for(let i=3;i<d.length;i++){const r=d[i][1]-d[i-3][1]>=0?'up':'down';if(r!==dir){if(st)out.push([st,d[i][0],dir]);st=d[i][0];dir=r}}if(st)out.push([st,d.at(-1)[0],dir]);return out}
+function shades(d){const out=[];let st=null,dir=null;for(let i=3;i<d.length;i++){const r=d[i][1]-d[i-3][1]>=0?'up':'down';if(r!==dir){if(st)out.push([st,d[i][0],dir]);st=d[i][0];dir=r}}if(st)out.push([st,d.at(-1)[0],dir]);
+  const keys=d.map(x=>x[0]),len=z=>keys.indexOf(z[1])-keys.indexOf(z[0]);const m=[];out.forEach(z=>{if(m.length&&len(z)<4){m.at(-1)[1]=z[1]}else if(m.length&&m.at(-1)[2]===z[2]){m.at(-1)[1]=z[1]}else m.push(z.slice())});return m}
 function leadHTML(){const S=ES.series,lc=S.cli_cyc,cc=S.cci_cyc;if(!lc||!lc.data||lc.data.length<12)return'';
   const d=lc.data,ph=phase(d),cph=cc?phase(cc.data):null,L=d.at(-1),six=d[Math.max(0,d.length-7)];
   let streak=0;for(let i=d.length-1;i>0&&(d[i][1]-d[i-1][1])*(L[1]-d[d.length-2][1])>0;i--)streak++;
   const w=Math.min(720,(document.getElementById('app')?.clientWidth||360)-28);
-  const comps=(ES.components||[]).slice(0,6);
+  const mon=d=>{const m={};(d||[]).forEach(x=>m[x[0].slice(0,7)]=x[1]);return Object.entries(m).sort()};
+  const k3=mon(S.ktb3?.data),k10=Object.fromEntries(mon(S.ktb10?.data));
+  const comps=(ES.components||[]).length?ES.components.slice(0,6):[
+   S.cli&&{name:'선행종합지수',data:S.cli.data},S.cci&&{name:'동행종합지수',data:S.cci.data},
+   k3.length&&{name:'장단기 금리차(10년−3년)',data:k3.filter(x=>k10[x[0]]!=null).map(x=>[x[0],+(k10[x[0]]-x[1]).toFixed(2)]),dp:2},
+   S.kospi&&{name:'코스피(월말)',data:mon(S.kospi.data),dp:0}].filter(x=>x&&x.data&&x.data.length>3);
   return`<section class="lead-ix">${window.sec?sec('경기선행지수','Leading indicators','','spark'):''}
   <div class="phase ${ph[2]}"><div class="pq">${['회복','확장','둔화','수축'].map(p=>`<span class="${p===ph[0]?'on':''}">${p}</span>`).join('')}</div><div class="pt"><small>지금 경기 국면(선행지수 기준)</small><b>${ph[0]}</b><p>${ph[1]}이에요.</p></div></div>
   <div class="card lchart"><div class="lh"><span class="lg"><i style="--c:#ff4d2e"></i>선행지수 순환변동치</span>${cc?`<span class="lg"><i style="--c:#2f6bff"></i>동행지수 순환변동치</span>`:''}<span class="lg sh"><i class="u"></i>오름 구간</span><span class="lg sh"><i class="d"></i>내림 구간</span></div>
    ${chart(d.slice(-120),{w,h:Math.round(Math.max(180,w*.42)),axis:true,c:'M',ref:100,shade:shades(d.slice(-120)),d2:cc?cc.data.slice(-120):null})}</div>
   <div class="lstats"><div><span>선행지수 순환변동치</span><b>${fmt(L[1],1)}</b><time class="ts">${lab(L[0],'M')}</time></div><div><span>6개월 전보다</span><b class="${L[1]>six[1]?'up':'down'}">${L[1]>six[1]?'+':''}${fmt(L[1]-six[1],1)}</b></div><div><span>연속 ${L[1]>=d[d.length-2][1]?'상승':'하락'}</span><b>${streak}<small>개월</small></b></div>${cph?`<div><span>동행지수 국면</span><b>${cph[0]}</b></div>`:''}</div>
   <div class="now"><b>지금 상황</b><p>선행지수 순환변동치는 ${fmt(L[1],1)}로 기준선(100)${L[1]>=100?'보다 높아':'보다 낮아'} ${ph[1]}이에요. ${streak>=3?`${streak}개월 연속 ${L[1]>=d[d.length-2][1]?'올라':'내려'} 방향성이 분명한 편이에요. `:'최근 방향이 자주 바뀌어 아직 뚜렷한 흐름은 아니에요. '}${cph?`지금의 경기를 보여주는 동행지수는 ‘${cph[0]}’ 국면이라, ${cph[0]===ph[0]?'현재와 앞으로의 신호가 같은 방향이에요.':'지금 경기와 앞으로의 신호가 엇갈리고 있어요.'}`:''}</p></div>
-  ${comps.length?`<h3 class="sub">${window.ic?ic('chart'):''}선행지수를 이루는 지표</h3><div class="ecards sm">${comps.map(x=>{const n=x.data.length,l=x.data[n-1][1],p=x.data[n-2][1],dir=l>p?'up':l<p?'down':'flat';return`<div class="ecard"><span class="eh">${e_(x.name)}</span><b class="ev">${fmt(l,1)}</b><span class="dchg ${dir}">${dir==='up'?'▲':dir==='down'?'▼':'–'} ${fmt(Math.abs(l-p),1)}</span>${chart(x.data.slice(-36),{w:160,h:40,col:dir==='down'?'#2f6bff':'#e2321b'})}</div>`}).join('')}</div>`:''}
+  ${comps.length?`<h3 class="sub">${window.ic?ic('chart'):''}선행지수와 함께 보는 지표 <small>금리차·주가는 선행지수 구성에 들어가는 항목이에요</small></h3><div class="ecards sm">${comps.map(x=>{const n=x.data.length,l=x.data[n-1][1],p=x.data[n-2][1],dir=l>p?'up':l<p?'down':'flat';return`<div class="ecard"><span class="eh">${e_(String(x.name).replace(/\s*\d\)\s*$/,''))}</span><b class="ev">${fmt(l,x.dp??1)}</b><span class="dchg ${dir}">${dir==='up'?'▲':dir==='down'?'▼':'–'} ${fmt(Math.abs(l-p),x.dp??1)}</span>${chart(x.data.slice(-36),{w:160,h:40,col:dir==='down'?'#2f6bff':'#e2321b'})}</div>`}).join('')}</div>`:''}
   <div class="learn"><div class="lq"><span>선행지수가 뭔가요?</span><p>몇 달 뒤 경기 흐름을 미리 보여주는 지표들(재고, 건설 수주, 경제심리, 주가, 금리 차이 등)을 하나로 묶은 숫자예요. 통계청이 매달 발표해요.</p></div>
    <div class="lq"><span>순환변동치는 왜 봐요?</span><p>장기적으로 커지는 추세를 걷어내 ‘평균보다 좋은지 나쁜지’만 남긴 값이에요. 100보다 크면 평균 이상, 작으면 평균 이하예요.</p></div>
    <div class="lq"><span>얼마나 앞서 움직여요?</span><p>보통 실제 경기(동행지수)보다 3~6개월쯤 먼저 방향을 바꾸는 경향이 있어요. 빨간 선이 파란 선을 앞서 움직이는지 보세요.</p></div>
