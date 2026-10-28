@@ -1,7 +1,7 @@
-// Cloudflare Worker - LetsNews Proxy
+// Cloudflare Worker - LetsNews Proxy (NAVER API HUB)
 // Supports:
 //   ?feed=https://www.yna.co.kr/rss/politics.xml   → RSS proxy
-//   ?naver=정치&display=10&sort=date             → Naver News Search
+//   ?naver=정치&display=10&sort=date             → Naver News Search (API HUB)
 //
 // Set secrets in Cloudflare dashboard or wrangler:
 //   wrangler secret put NAVER_CLIENT_ID
@@ -42,7 +42,7 @@ export default {
         });
       }
 
-      // Naver News Search
+      // Naver News Search (NAVER API HUB)
       if (naver) {
         const clientId = env.NAVER_CLIENT_ID;
         const clientSecret = env.NAVER_CLIENT_SECRET;
@@ -56,16 +56,18 @@ export default {
           });
         }
 
-        const naverUrl = new URL('https://openapi.naver.com/v1/search/news.json');
+        // New API HUB endpoint
+        const naverUrl = new URL('https://naverapihub.apigw.ntruss.com/search/v1/news');
         naverUrl.searchParams.set('query', naver);
         naverUrl.searchParams.set('display', display);
         naverUrl.searchParams.set('start', start);
         naverUrl.searchParams.set('sort', sort);
+        naverUrl.searchParams.set('format', 'json');
 
         const res = await fetch(naverUrl.toString(), {
           headers: {
-            'X-Naver-Client-Id': clientId,
-            'X-Naver-Client-Secret': clientSecret,
+            'X-NCP-APIGW-API-KEY-ID': clientId,
+            'X-NCP-APIGW-API-KEY': clientSecret,
             'User-Agent': 'LetsNews/1.0'
           }
         });
