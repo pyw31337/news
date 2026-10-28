@@ -1,4 +1,4 @@
-const V='nb-v2',SHELL=['./','index.html','assets/style.css?v=2','assets/app.js?v=2','manifest.webmanifest','icons/icon-192.png'];
+const V='nb-v3',SHELL=['./','index.html','assets/style.css?v=3','assets/app.js?v=3','manifest.webmanifest','icons/icon-192.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))));self.clients.claim()});
 self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==location.origin)return;
