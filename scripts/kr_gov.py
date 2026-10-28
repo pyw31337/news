@@ -36,10 +36,11 @@ def rows(b):
 ymd = lambda d: d.strftime('%Y%m%d')
 
 def briefs():  # 재정경제부 보도자료: start_date·end_date(YYYYMMDD) 필수, pageUnit = 페이지당 건수
-    L = []
-    for pg in range(1, 21):  # 한 페이지 10건 고정(오래된 순으로 와서 끝까지 넘김)
-        x = rows(call('brief', '1053000/brief/list', pageNo=pg, pageUnit=10, start_date=ymd(NOW - dt.timedelta(days=10)), end_date=TODAY)); L += x
-        if len(x) < 10: break
+    L, seen = [], set()
+    for back in range(0, 10):  # 페이지 넘김(pageNo)이 동작하지 않고 한 번에 10건만 와서 하루 단위로 조회
+        d = ymd(NOW - dt.timedelta(days=back))
+        for r in rows(call('brief', '1053000/brief/list', pageNo=1, pageUnit=10, start_date=d, end_date=d)):
+            if r.get('itemId') not in seen: seen.add(r.get('itemId')); L.append(r)
     out = []
     for r in L:
         t = html.unescape(re.sub(r'<[^>]+>', '', r.get('title', ''))).strip()
@@ -52,12 +53,12 @@ def briefs():  # 재정경제부 보도자료: start_date·end_date(YYYYMMDD) �
                         files=[n for n, u in r.get('_files', [])][:3]))
     ST['ok']['brief'] = len(out)
     if not out: return
-    out.sort(key=lambda x: (x['date'], x['id']), reverse=True)
-    save('briefs.json', dict(updated=NOW.isoformat(), source='재정경제부 보도자료(공공데이터포털)', items=out), D)
     p = os.path.join(D, 'db', 'briefs'); os.makedirs(p, exist_ok=True); p = os.path.join(p, NOW.strftime('%Y-%m') + '.json')
-    try: old = json.load(open(p))
+    try: old = [x for x in json.load(open(p)) if x.get('id')]
     except Exception: old = []
-    have = {x.get('id') or x['title'] for x in old}; old += [x for x in out if (x['id'] or x['title']) not in have]; json.dump(old, open(p, 'w'), ensure_ascii=False, separators=(',', ':'))
+    have = {x['id'] for x in old}; old += [x for x in out if x['id'] not in have]; json.dump(old, open(p, 'w'), ensure_ascii=False, separators=(',', ':'))
+    allx = {x['id']: x for x in old + out}.values()
+    save('briefs.json', dict(updated=NOW.isoformat(), source='재정경제부 보도자료(공공데이터포털)', items=sorted(allx, key=lambda x: (x['date'], x['id']), reverse=True)[:60]), D)
 
 def alerts():  # 지진(최대 3일 전부터)·기상특보(최대 6일 전부터) → 이슈 신호
     A = load('alerts.json', {'quakes': [], 'warnings': []})
