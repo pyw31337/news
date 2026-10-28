@@ -18,14 +18,28 @@ def icon(n, ratio=.56): return place(Image.new('RGB', (n, n), NAVY), (n / 2, n /
 I = os.path.join(R, 'icons'); os.makedirs(I, exist_ok=True)
 icon(512).save(os.path.join(I, 'icon-512.png')); icon(192).save(os.path.join(I, 'icon-192.png'))
 icon(512, .50).save(os.path.join(I, 'maskable-512.png'))  # 마스킹 안전영역
-icon(180).save(os.path.join(I, 'apple-touch-icon.png')); icon(32, .9).save(os.path.join(I, 'favicon-32.png'))
-og = place(Image.new('RGB', (1200, 630), NAVY), (600, 290), 300); d = ImageDraw.Draw(og)
-def F(s):
-    for p in ('/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc', '/System/Library/Fonts/AppleSDGothicNeo.ttc'):
+icon(180).save(os.path.join(I, 'apple-touch-icon.png'))
+# 파비콘: 네이비 배경 없이 오브젝트만(투명 배경)
+from PIL import ImageEnhance
+def fav(n):
+    w = n; h = int(n * obj.height / obj.width); o = obj.resize((w, h), Image.LANCZOS)
+    if n <= 48: o = ImageEnhance.Sharpness(o).enhance(1.6)
+    c = Image.new('RGBA', (n, n), (0, 0, 0, 0)); c.paste(o, (0, (n - h) // 2), o); return c
+fav(512).save(os.path.join(I, 'favicon-512.png')); fav(32).save(os.path.join(I, 'favicon-32.png')); fav(16).save(os.path.join(I, 'favicon-16.png'))
+fav(48).save(os.path.join(R, 'favicon.ico'), sizes=[(16, 16), (32, 32), (48, 48)], append_images=[fav(16), fav(32)])
+def F(s, w='Black'):
+    for p in (f'/usr/share/fonts/opentype/noto/NotoSansCJK-{w}.ttc', '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc', '/System/Library/Fonts/AppleSDGothicNeo.ttc'):
         try: return ImageFont.truetype(p, s, index=1 if 'Noto' in p else 0)
         except Exception: pass
     return ImageFont.load_default()
-d.text((240, 270), '오늘의 이슈', font=F(46), fill='white', anchor='mm'); d.text((240, 330), 'TOP 10 · 요약', font=F(26), fill=(255, 120, 95), anchor='mm')
-d.text((960, 270), '사건의 흐름', font=F(46), fill='white', anchor='mm'); d.text((960, 330), '인물 · 타임라인', font=F(26), fill=(255, 120, 95), anchor='mm')
-d.text((600, 510), 'NewsBoard.', font=F(56), fill='white', anchor='mm'); d.text((600, 572), 'pyw31337.github.io/news', font=F(24), fill=(150, 165, 200), anchor='mm')
+# OG: 좌측 타이틀 + 주황 태그라인, 우측 아이콘
+og = Image.new('RGB', (1200, 630), NAVY)
+glow = Image.new('L', og.size, 0); ImageDraw.Draw(glow).ellipse((700, 70, 1180, 550), fill=70)
+og.paste((40, 80, 140), (0, 0), glow.filter(ImageFilter.GaussianBlur(90)))
+place(og, (950, 315), 370); d = ImageDraw.Draw(og)
+OR = (255, 77, 46)
+d.rounded_rectangle((96, 168, 156, 176), 4, fill=OR)
+d.text((92, 300), 'NewsBoard', font=F(100), fill='white', anchor='ls')
+d.text((96, 385), '뉴스를 타임라인으로', font=F(50, 'Bold'), fill=OR, anchor='ls')
+d.text((96, 470), 'pyw31337.github.io/news', font=F(24, 'Medium'), fill=(150, 165, 200), anchor='ls')
 og.save(os.path.join(R, 'og-image.png')); print('ok')

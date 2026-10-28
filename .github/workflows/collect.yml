@@ -90,7 +90,7 @@ jobs:
           fi
       - name: 사이트 묶기
         run: |
-          mkdir _site && cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png _site/
+          mkdir _site && cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png favicon.ico _site/
           mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true)
           (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null || true)
           python scripts/build_pages.py _site
