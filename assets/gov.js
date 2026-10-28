@@ -7,22 +7,22 @@ const e_=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt
 const fmt=n=>Math.round(n).toLocaleString();
 const eok=v=>v>=10000?(v/10000).toFixed(2).replace(/\.?0+$/,'')+'억':fmt(v)+'만';
 /* 작은 SVG 선 차트(축·라벨 포함) */
-function chart(pts,{w=640,h=200,col='#ff4d2e',fmtY=fmt,bars=null}={}){if(!pts||pts.length<2)return'';
-  const ys=pts.map(p=>p[1]),mn=Math.min(...ys),mx=Math.max(...ys),r=mx-mn||1,L=46,B=22,T=10,W=w-L-8,H=h-T-B;
+function chart(pts,{w=640,h=260,col='#ff4d2e',fmtY=fmt,bars=null}={}){if(!pts||pts.length<2)return'';
+  const ys=pts.map(p=>p[1]),mn=Math.min(...ys),mx=Math.max(...ys),r=mx-mn||1,L=96,B=34,T=14,W=w-L-8,H=h-T-B;
   const X=i=>L+i/(pts.length-1)*W,Y=v=>T+H-(v-mn)/r*H;
   const d=pts.map((p,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(p[1]).toFixed(1)).join('');
   const bm=bars?Math.max(...bars,1):1,bw=Math.max(2,W/pts.length*0.6);
-  const lab=pts.map((p,i)=>i%Math.ceil(pts.length/6)===0||i===pts.length-1?`<text x="${X(i)}" y="${h-6}" text-anchor="middle">${e_(p[0])}</text>`:'').join('');
+  const lab=pts.map((p,i)=>i%Math.ceil(pts.length/6)===0||i===pts.length-1?`<text x="${X(i)}" y="${h-8}" text-anchor="middle">${e_(p[0])}</text>`:'').join('');
   return`<svg class="gchart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img">
   ${bars?bars.map((b,i)=>`<rect x="${(X(i)-bw/2).toFixed(1)}" y="${(T+H-b/bm*H*0.35).toFixed(1)}" width="${bw.toFixed(1)}" height="${(b/bm*H*0.35).toFixed(1)}" fill="#c9cfdc" opacity=".55"/>`).join(''):''}
-  ${[mn,(mn+mx)/2,mx].map(v=>`<line x1="${L}" x2="${w-8}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e6e8ee"/><text x="${L-6}" y="${Y(v)+4}" text-anchor="end">${e_(fmtY(v))}</text>`).join('')}
+  ${[mn,(mn+mx)/2,mx].map(v=>`<line x1="${L}" x2="${w-8}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e6e8ee"/><text x="${L-6}" y="${Y(v)+7}" text-anchor="end">${e_(fmtY(v))}</text>`).join('')}
   <path d="${d}" fill="none" stroke="${col}" stroke-width="2.4" stroke-linejoin="round"/><circle cx="${X(pts.length-1)}" cy="${Y(ys[ys.length-1])}" r="4" fill="${col}"/>${lab}</svg>`}
 const ym=k=>k.slice(2,4)+'.'+k.slice(4);
 /* ---------- 서울 아파트 ---------- */
 let GU='서울 전체';
 function aptSeries(kind,gu){const M=(APT&&APT[kind])||{},ks=Object.keys(M).sort();const out=[],vol=[];
   for(const k of ks){const g=M[k];let n=0,v=0;
-    if(gu==='서울 전체'){for(const x of Object.values(g)){if(x[1]){n+=x[0];v+=x[0]*x[1]}}v=n?v/n:0}else if(g[gu]){n=g[gu][0];v=g[gu][1]}
+    if(gu==='서울 전체'){if(Object.keys(g).length<25)continue;for(const x of Object.values(g)){if(x[1]){n+=x[0];v+=x[0]*x[1]}}v=n?v/n:0}else if(g[gu]){n=g[gu][0];v=g[gu][1]}
     if(v)out.push([ym(k),v]),vol.push(n)}
   // 이번 달은 신고가 다 안 들어와서(30일 신고 기한) 표시만 하고 추세 해석에서 제외
   return{pts:out,vol}}

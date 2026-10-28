@@ -438,7 +438,7 @@ b.up{color:#e2321b}b.down{color:#2f6bff}
 .pbrl{position:absolute;left:calc(12px + 7em + 8px);right:calc(12px + 7.5em);bottom:6px;height:12px;font-size:.625rem;color:var(--mute);font-family:var(--mono)}.pbrl span{position:absolute;transform:translateX(-50%);white-space:nowrap}.pbrl span:first-child{transform:none}
 @media(max-width:359px){.pbrb a{grid-template-columns:minmax(0,5.5em) 1fr auto;font-size:.75rem}.pbrb .dchg{display:none}.pbrl{display:none}}
 /* gov.js: 공공데이터 차트·신호 */
-.gchart{width:100%;height:auto;display:block;font-size:11px}.gchart text{fill:var(--mute);font-family:inherit}
+.gchart{width:100%;height:auto;display:block;font-size:21px}.gchart text{fill:var(--mute);font-family:inherit}
 .gt{font-size:.8rem;margin:4px 0 6px;color:var(--ink2)}.gsel{margin:0 0 10px}.gsel select{padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:#fff;font:inherit}
 .gkpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:0 0 10px}.gkpi>div{background:#fff;border-radius:12px;padding:10px 12px;box-shadow:var(--sh)}
 .gkpi small{display:block;font-size:.7rem;color:var(--mute)}.gkpi b{font-size:1.25rem;font-weight:900}.gkpi em{display:block;font-style:normal;font-size:.7rem;color:var(--mute)}
