@@ -312,3 +312,64 @@ body.en .ticker .lab{background:#7a4dff}
 .ecos{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:18px}
 .ec{background:var(--card,#fff);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
 .ec small{font-size:.65rem;opacity:.55}.ec b{font-size:.8rem}.ec span{font-weight:800;font-size:1.05rem}.ec i{font-style:normal;font-size:.65rem;opacity:.6;margin-left:2px}.ec em{font-style:normal;font-size:.62rem;opacity:.45}
+
+/* ===== UI v6 · 타입별 컴포넌트 시스템 ===== */
+:root{--mono:ui-monospace,'SF Mono','JetBrains Mono',Menlo,Consolas,monospace;
+--t-person:#ff4d2e;--t-person-bg:#fff0ec;--t-place:#11a683;--t-place-bg:#e7f8f3;--t-org:#7a4dff;--t-org-bg:#f1ecff;--t-company:#2f6bff;--t-company-bg:#eaf0ff;--t-event:#b7780a;--t-event-bg:#fff6e1;
+--fs-meta:.6875rem;--fs-stamp:.6875rem;--r-pill:99px;--r-tag:6px}
+/* 메타: 흐리고 작게, 한 줄 */
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:6px;font-size:var(--fs-meta);color:var(--mute);font-weight:500;line-height:1.3}
+/* 날짜·시간 스탬프: 고정폭 */
+.ts{font-family:var(--mono);font-size:var(--fs-stamp);letter-spacing:-.2px;color:var(--mute);font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums}
+.mtl .ts{color:var(--acc);font-weight:700;flex:none;min-width:38px}
+/* 언론사 pill + 파비콘 */
+.pp{display:inline-flex;align-items:center;gap:4px;max-width:150px;padding:2px 8px 2px 3px;border:1px solid var(--line);border-radius:var(--r-pill);background:#fff;color:var(--ink2);font-weight:700;font-size:.6875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp img{width:14px;height:14px;border-radius:50%;background:var(--bg);flex:none}
+.pp:not(:has(img)){padding-left:8px}
+/* 숫자 배지 */
+.cnt{display:inline-flex;align-items:center;gap:3px;min-width:22px;justify-content:center;padding:1px 7px;border-radius:var(--r-pill);background:var(--ink);color:#fff;font-size:.6875rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.5;white-space:nowrap}
+.cnt .ico{width:11px;height:11px;opacity:.75}
+.cnt.rk{background:var(--acc)}
+.meta .cnt{background:#eef0f6;color:var(--ink2)}
+.fd .cnt{margin-left:auto}
+/* 엔티티 칩 (모양: 둥근 + 타입 아이콘·색) */
+.ent{display:inline-flex;align-items:center;gap:4px;padding:3px 10px 3px 6px;border-radius:var(--r-pill);font-size:.75rem;font-weight:800;white-space:nowrap;background:var(--t-event-bg);color:var(--t-event);max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.ent .ico{width:13px;height:13px;flex:none}
+.ent.person{background:var(--t-person-bg);color:var(--t-person)}.ent.place{background:var(--t-place-bg);color:var(--t-place)}
+.ent.org,.ent.inst{background:var(--t-org-bg);color:var(--t-org)}.ent.company{background:var(--t-company-bg);color:var(--t-company)}
+.ent.issue{background:var(--ink);color:#fff;border-radius:8px;padding-left:4px}.ent .rkn{background:var(--acc);border-radius:5px;padding:0 5px;margin-right:2px;font-size:.6875rem}
+.ents{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+/* 카테고리 태그 (모양: 각진 사각) */
+.tag{display:inline-block;padding:1px 6px;border-radius:var(--r-tag);background:transparent;border:1px solid currentColor;color:var(--ink2);font-size:.625rem;font-weight:800;letter-spacing:.2px;line-height:1.5;white-space:nowrap;opacity:.8}
+/* 상태 라벨 */
+.status{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:4px;font-size:.6875rem;font-weight:900;color:#fff;background:var(--mute)}
+.status::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.7}
+.status.s1{background:#b7780a}.status.s2{background:#7a4dff}.status.s3{background:#2f6bff}.status.s4{background:var(--ink)}
+/* 인용(발언·댓글) */
+q,.quote{quotes:none;display:block;position:relative;padding:8px 10px 8px 14px;border-left:3px solid var(--acc2);background:#fffaf0;border-radius:0 10px 10px 0;font-family:var(--serif);font-size:.84rem;color:var(--ink);line-height:1.55}
+q::before{content:'“';position:absolute;left:4px;top:-4px;font-size:1.4rem;color:var(--acc2);font-weight:900}
+.word .ex a{display:grid;gap:4px;border-top:0}
+.cmts a{border-left:3px solid var(--line);font-family:var(--serif)}.cmts small{font-family:var(--mono)}
+/* 수치 카드: 큰 숫자 */
+.kpis b,.meter b{font-variant-numeric:tabular-nums;letter-spacing:-.8px;font-weight:900}
+.kpis b{font-size:1.5rem;line-height:1.1}
+/* 관계맵 */
+.mapwrap{height:auto;min-height:0;aspect-ratio:3/4;max-height:78svh}
+@media(min-width:768px){.mapwrap{aspect-ratio:16/10}}
+.mapwrap.mini{aspect-ratio:auto}
+.mapwrap svg{touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.node{cursor:pointer}.node text{paint-order:stroke;stroke:#fbfcff;stroke-width:3px;stroke-linejoin:round}
+.mapzoom{position:absolute;right:10px;bottom:10px;z-index:2;display:flex;flex-direction:column;gap:6px}
+.mapzoom button{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:1.05rem;font-weight:800;box-shadow:var(--sh)}
+/* 노드 이유 리스트: 칩 + 한줄 + 숫자배지 */
+.whyl a{display:flex;align-items:center;gap:8px;padding:9px 2px;min-width:0}
+.whyl .ent{flex:none;max-width:42%}
+.whyl .wt{flex:1;min-width:0;display:flex;align-items:center;gap:6px;overflow:hidden}
+.whyl .why{font-size:.75rem;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.whyl .why.strong{color:var(--ink);font-weight:700;font-size:.8rem}
+.whyl .cnt{flex:none}
+.srcl .meta{display:inline-flex;margin-top:4px}
+@media(max-width:359px){.pp{max-width:110px}.whyl .tag{display:none}.ent{font-size:.7rem}}
+.whyl .why{display:block;border:0;padding:0;margin:0;background:none;flex:1}
+.whyl li{min-width:0}.whyl a{width:100%;overflow:hidden}
+.mapzoom{right:8px;bottom:8px;gap:4px}.mapzoom button{width:30px;height:30px;background:rgba(255,255,255,.88)}

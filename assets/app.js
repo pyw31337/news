@@ -23,6 +23,14 @@ function line(v,w=120,h=28,col='#ff4d2e'){if(!v||v.length<2)return'';const mn=Ma
   return`<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polyline points="0,${h} ${pts} ${w},${h}" fill="${col}22" stroke="none"/><polyline points="${pts}" fill="none" stroke="${col}" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg>`}
 function sec(t,sub,more='',icon=''){return`<div class="sec"><h2><small>${sub}</small>${icon?ic(icon,'h'):''}${t}</h2>${more}</div>`}
 function av(e,cls='av'){const t=e.wiki&&e.wiki.thumb;return`<div class="${cls}" ${bg(t)}>${t?'':esc(e.name[0])}</div>`}
+/* ---------- 타입별 UI 컴포넌트 ---------- */
+const host=u=>{try{return new URL(u).hostname}catch(x){return''}};
+const pp=(name,url)=>name?`<span class="pp">${host(url)?`<img src="https://www.google.com/s2/favicons?domain=${host(url)}&sz=32" alt="" loading="lazy" width="14" height="14">`:''}${esc(name)}</span>`:'';
+const ts=(t,rel)=>t?`<time class="ts">${rel?ago(t):fmtD(t)}</time>`:'';
+const cnt=(n,icn,tip)=>`<span class="cnt" title="${tip||''}">${icn?ic(icn):''}${n}</span>`;
+const ETY={person:['인물','user'],place:['장소','spark'],org:['기관','news'],company:['기업','coin'],inst:['기관','news'],event:['키워드','fire'],issue:['이슈','fire']};
+const entc=(name,t,href)=>`<${href?`a href="${href}"`:'span'} class="ent ${t}">${ic((ETY[t]||ETY.event)[1])}${esc(name)}</${href?'a':'span'}>`;
+const meta=(x,rel)=>`<span class="meta">${pp(x.press,x.url)}${ts(x.t||x.time,rel)}</span>`;
 function th(u,cls='th',fb='news'){return u?`<div class="${cls}" ${bg(u)}></div>`:`<div class="${cls} noimg">${ic(fb)}</div>`}
 /* ---------- 설정 ---------- */
 const S=Object.assign({hide:[],fs:100,region:'kr',orig:false},JSON.parse(localStorage.getItem('nb-settings')||'{}'));
@@ -147,7 +155,7 @@ function today(){
 }
 function wordCard(w){return`<div class="card term word"><div class="wt">${w.wiki.thumb?`<span class="wi" ${bg(w.wiki.thumb)}></span>`:`<span class="wi noimg">${ic('book')}</span>`}<div><h4>${esc(w.word)}</h4><em>${esc(w.wiki.desc||'오늘 기사 '+w.count+'회 등장')}</em></div></div>
   <p class="easy">${w.ai?AIB:''}${esc(w.easy)}</p>
-  <div class="ex">${w.examples.slice(0,2).map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">“${esc(x.title)}” <small>${esc(x.press)}</small></a>`).join('')}</div>
+  <div class="ex">${w.examples.slice(0,2).map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener"><q>${esc(x.title)}</q>${pp(x.press,x.url)}</a>`).join('')}</div>
   <a class="src1" href="${esc(w.wiki.url)}" target="_blank" rel="noopener">${ic('book')}출처: 위키백과</a></div>`}
 
 /* ---------- 이슈 상세 ---------- */
@@ -159,7 +167,7 @@ function issue(id){
   const ents=i.entities.map(ent).filter(Boolean);
   const flow=(i.flow||[]).map((f,k)=>`<div class="fg"><div class="fd"><b>${fmtDay(f.date)}</b><span>${k===0?'최신':ago(f.date+'T12:00:00+09:00')}</span></div>
     ${f.meaning?`<div class="mean">${AIB}<p>${esc(f.meaning)}</p></div>`:''}
-    ${f.items.map((x,j)=>`<a class="fe ${j===0?'first':''}" href="${esc(x.url)}" target="_blank" rel="noopener">${th(x.img,'fi')}<div><h5>${esc(x.title)}</h5>${x.body&&j===0?`<p>${esc(x.body.slice(0,110))}…</p>`:''}<small>${esc(x.press)}</small></div></a>`).join('')}</div>`).join('');
+    ${f.items.map((x,j)=>`<a class="fe ${j===0?'first':''}" href="${esc(x.url)}" target="_blank" rel="noopener">${th(x.img,'fi')}<div><h5>${esc(x.title)}</h5>${x.body&&j===0?`<p>${esc(x.body.slice(0,110))}…</p>`:''}${meta(x)}</div></a>`).join('')}</div>`).join('');
   const st=(aop.stances||[]),col=['#ff4d2e','#2f6bff','#11a683','#f08a00'];
   const opin=op?`<div class="card opin">
     <div class="ostat"><div>${ic('chat')}<b>${op.total.toLocaleString()}</b><span>댓글 (${op.articles}개 기사)</span></div><div><b>👍 ${op.like.toLocaleString()}</b><span>상위 댓글 공감</span></div><div><b>👎 ${op.dislike.toLocaleString()}</b><span>비공감</span></div></div>
@@ -170,7 +178,7 @@ function issue(id){
     <h5>많이 나온 말</h5><div class="cloud">${op.words.map(([w,v],k)=>`<span style="font-size:${(0.8+Math.min(1,v/op.words[0][1])*0.9).toFixed(2)}rem;opacity:${(.55+Math.min(1,v/op.words[0][1])*.45).toFixed(2)}">${esc(w)}</span>`).join('')}</div>
     <h5>공감 많은 댓글</h5><div class="cmts">${((aop.quotes||[]).length?op.top.filter(c=>aop.quotes.some(q=>c.text.includes(q.slice(0,20)))):op.top).slice(0,4).concat(op.top).filter((c,k,a)=>a.indexOf(c)===k).slice(0,5).map(c=>`<a href="${esc(c.src)}" target="_blank" rel="noopener">“${esc(c.text)}”<small>👍 ${c.like} · 👎 ${c.dislike}</small></a>`).join('')}</div>
     <p class="fine">네이버 뉴스 댓글(공감순 상위)을 수집·집계했습니다. 일부 이용자의 의견으로, 전체 여론을 대표하지 않습니다.</p></div>`:'<div class="note">이 이슈는 댓글을 수집할 수 있는 네이버 기사가 없어요.</div>';
-  const past=(i.past||[]).length?`${sec('과거와 연결된 사건','Linked from archive','','link')}<div class="past">${i.past.map(p=>`<a class="card mini" href="${esc(p.url)}" target="_blank" rel="noopener">${th(p.image)}<div class="tx"><span class="chip">${fmtD(p.date)} · ${p.rank}위</span><h3>${esc(p.title)}</h3><div class="m">공통: ${p.shared.map(esc).join(', ')}</div></div></a>`).join('')}</div>`:'';
+  const past=(i.past||[]).length?`${sec('과거와 연결된 사건','Linked from archive','','link')}<div class="past">${i.past.map(p=>`<a class="card mini" href="${esc(p.url)}" target="_blank" rel="noopener">${th(p.image)}<div class="tx"><span class="meta">${ts(p.date)}<span class="cnt rk">${p.rank}위</span></span><h3>${esc(p.title)}</h3><div class="ents">${p.shared.map(n=>entc(n,(D.entities.find(e=>e.name===n)||{}).type||'event')).join('')}</div></div></a>`).join('')}</div>`:'';
   app.innerHTML=`<div class="bkrow"><a class="back" href="./">← 오늘의 TOP 10</a>${shareBtn()}</div>
   <article class="dhead card"><div class="img" ${bg(i.image)}><div class="ov"><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><b>오늘의 이슈 ${i.rank}위</b></div></div>
    <div class="bd"><h1>${esc(i.title)}</h1>
@@ -190,7 +198,7 @@ function issue(id){
    ${ents.length?sec('등장 인물·키워드','Who’s who','','user')+`<div class="who">${ents.map(e=>`<a class="card whoc" href="${eh(e.name)}">${av(e,'av s')}<div><b>${esc(e.name)}</b><small>${esc(e.wiki?.desc||TYPE[e.type])}</small></div></a>`).join('')}</div>`:''}
   </aside></div>
   <section id="s-src">${sec('출처','Sources','','link')}
-   <ol class="srcl">${i.sources.map(s=>`<li>${s.img?`<span class="sth" ${bg(s.img)}></span>`:''}<div><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a> <span>${esc(s.press)} · ${s.portal}${s.kind?' '+esc(s.kind):''}</span>${biasB(s)}${s.bias?`<div class="br">판단 근거: ${esc(s.bias.reason)}</div>`:''}</div></li>`).join('')}</ol>
+   <ol class="srcl">${i.sources.map(s=>`<li>${s.img?`<span class="sth" ${bg(s.img)}></span>`:''}<div><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a> <span class="meta">${pp(s.press,s.url)}<span class="tag">${s.portal}</span>${s.kind?' '+esc(s.kind):''}</span>${biasB(s)}${s.bias?`<div class="br">판단 근거: ${esc(s.bias.reason)}</div>`:''}</div></li>`).join('')}</ol>
    <p class="fine">편향 뱃지는 AI가 기사 제목의 표현·프레이밍만 보고 자동 판단한 것으로, 확신이 높은 경우에만 표시합니다. 언론사 성향으로 단정하지 않으며 틀릴 수 있습니다.</p></section>`;
 }
 
@@ -204,10 +212,10 @@ function kw(k){
   <section class="kwh card" ${bg(t.image||(t.today[0]||{}).img)}><div class="in"><span class="chip event">${ic('fire')}실시간 검색 ${D.trends.indexOf(t)+1}위 · <span title="${TTIP}">${tlab(t)}</span></span><h1>${esc(t.keyword)}</h1></div></section>
   ${sec('오늘 무슨 일이?','Today','','clock')}
   ${ai.today?`<div class="mean big">${AIB}<p>${esc(ai.today)}</p></div>`:''}
-  <div class="tgrid">${(t.today||[]).map((x,j)=>`<a class="card tn ${j===0?'first':''}" href="${esc(x.url)}" target="_blank" rel="noopener">${th(x.img,'img')}<div class="bd"><h3>${esc(x.title)}</h3>${x.body?`<p>${esc(x.body.slice(0,90))}…</p>`:''}<small>${esc(x.press)} · ${ago(x.t)}</small></div></a>`).join('')||'<div class="note">오늘 기사를 찾지 못했어요.</div>'}</div>
+  <div class="tgrid">${(t.today||[]).map((x,j)=>`<a class="card tn ${j===0?'first':''}" href="${esc(x.url)}" target="_blank" rel="noopener">${th(x.img,'img')}<div class="bd"><h3>${esc(x.title)}</h3>${x.body?`<p>${esc(x.body.slice(0,90))}…</p>`:''}${meta(x,1)}</div></a>`).join('')||'<div class="note">오늘 기사를 찾지 못했어요.</div>'}</div>
   ${sec('과거에는 무슨 일이?','Past timeline','','book')}
   ${ai.context?`<div class="mean">${AIB}<p>${esc(ai.context)}</p></div>`:''}
-  <div class="flow">${Object.entries(g).sort((a,b)=>b[0]-a[0]).map(([y,a])=>`<div class="fg"><div class="fd"><b>${y===now?'올해':y+'년'}</b><span>기사 ${a.length}건</span></div>${a.slice(0,6).map((x,j)=>`<a class="fe ${j===0?'first':''}" href="${esc(x.url)}" target="_blank" rel="noopener">${th(x.img,'fi')}<div><h5>${esc(x.title)}</h5>${x.body&&j===0?`<p>${esc(x.body.slice(0,100))}…</p>`:''}<small>${esc(x.press)} · ${fmtD(x.t)}</small></div></a>`).join('')}</div>`).join('')}</div>
+  <div class="flow">${Object.entries(g).sort((a,b)=>b[0]-a[0]).map(([y,a])=>`<div class="fg"><div class="fd"><b>${y===now?'올해':y+'년'}</b>${cnt(a.length,'news','기사 수')}</div>${a.slice(0,6).map((x,j)=>`<a class="fe ${j===0?'first':''}" href="${esc(x.url)}" target="_blank" rel="noopener">${th(x.img,'fi')}<div><h5>${esc(x.title)}</h5>${x.body&&j===0?`<p>${esc(x.body.slice(0,100))}…</p>`:''}${meta(x)}</div></a>`).join('')}</div>`).join('')}</div>
   <p class="fine">네이버 뉴스 검색(기간별 관련도순)에서 수집했습니다.</p>`;
 }
 
@@ -233,7 +241,7 @@ function market(){
   <div class="tbl card"><table><thead><tr><th>종목</th><th>현재가</th><th>등락</th><th>PBR</th><th>PER</th><th>배당</th></tr></thead><tbody>${low.map(x=>`<tr><td><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a></td><td>${esc(x.price)}</td><td class="${x.rate>0?'up':x.rate<0?'down':''}">${x.rate>0?'+':''}${x.rate.toFixed(2)}%</td><td><b>${x.pbr.toFixed(2)}</b></td><td>${x.per!=null?x.per.toFixed(1):'-'}</td><td>${x.div!=null?x.div.toFixed(2)+'%':'-'}</td></tr>`).join('')}</tbody></table></div>
   <p class="fine">PBR·PER·배당수익률은 네이버 증권 표시값이며 투자 권유가 아닙니다.</p>`:''}
   ${rel.length?sec('오늘의 경제·정책 이슈','Policy issues','','fire')+`<div class="side">${rel.map(i=>`<a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><h3>${esc(i.title)}</h3></div></a>`).join('')}</div>`:''}
-  ${news.length?sec('금리·부동산·증시 헤드라인','Headlines','','news')+`<div class="srcl2">${news.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}<small>${esc(x.press)} · ${ago(x.time)}</small></a>`).join('')}</div>`:''}
+  ${news.length?sec('금리·부동산·증시 헤드라인','Headlines','','news')+`<div class="srcl2">${news.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}<span class="meta">${pp(x.press,x.url)}${ts(x.time,1)}</span></a>`).join('')}</div>`:''}
   <p class="fine">지수·환율: 네이버 증권, 원자재·미국채·비트코인: Yahoo Finance. 지연 시세일 수 있습니다. 한국은행 기준금리 등 ECOS 통계는 API 키 등록 후 추가 가능합니다.</p>`;
 }
 
@@ -244,7 +252,7 @@ function vtl(el,items,z,limit=4){
   if(!g.length){el.innerHTML='<div class="note">아직 쌓인 기록이 없어요.</div>';return}
   let shown=Math.min(g.length,z==='year'?20:12);
   const draw=()=>{el.innerHTML=g.slice(0,shown).map(({k,a})=>{const s=a.slice().sort((p,q)=>(q.related||0)-(p.related||0));
-    return`<div class="vg"><h4>${k}<span>기사 ${a.length}건</span></h4>${s.slice(0,limit).map((x,j)=>`<a class="ve ${j===0&&x.related>2?'big':''}" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}<small>${esc(x.press)} · ${fmtD(x.t)}${x.related>1?` · 묶음 기사 ${x.related}건`:''}</small></a>`).join('')}</div>`}).join('')+(shown<g.length?`<div class="ve moreb">이전 기록 더 보기 (${g.length-shown}개 구간)</div>`:'');
+    return`<div class="vg"><h4>${k}${cnt(a.length,'news','기사 수')}</h4>${s.slice(0,limit).map((x,j)=>`<a class="ve ${j===0&&x.related>2?'big':''}" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}<span class="meta">${pp(x.press,x.url)}${ts(x.t)}${x.related>1?cnt('+'+x.related,'','묶음 기사'):''}</span></a>`).join('')}</div>`}).join('')+(shown<g.length?`<div class="ve moreb">이전 기록 더 보기 (${g.length-shown}개 구간)</div>`:'');
     const m=el.querySelector('.moreb');if(m)m.onclick=()=>{shown+=12;draw()}};draw();
 }
 function eraChart(items,z){const fmt=z==='year'?(t=>t.slice(0,4)):(t=>t.slice(0,7));const c={};items.forEach(x=>{const k=fmt(x.t);c[k]=(c[k]||0)+1});
@@ -321,12 +329,12 @@ function people(){
   let f=sessionStorage.getItem('nb-sub')||'person';
   app.innerHTML=`${sec('화제','Trending people · companies · places','','fire')}<p class="lede">지금 뉴스에 오르내리는 대상들을 분류별로 모았어요. 카드마다 연도별 히스토리를 보여줍니다.</p><div class="filters subt" id="f">${SUB.map(([k,v,icn])=>`<button data-f="${k}" class="${k===f?'on':''}">${ic(icn)}${v}</button>`).join('')}</div><div id="pg"></div>`;
   const draw=()=>{sessionStorage.setItem('nb-sub',f);
-    if(f==='issue'){$('#pg').innerHTML=`<div class="plist">${D.issues.filter(vis).map(i=>`<a class="card pcard" href="issue/${i.id}"><div class="ph">${th(i.image,'av')}<div><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><b>${esc(i.title)}</b><small>언론사 ${i.presses}곳 · 기사 ${i.mentions}건</small></div></div>
-      <ol class="mtl">${(i.flow||[]).slice(0,5).map(fl=>`<li><b>${fl.date.slice(5).replace('-','.')}</b><span>${esc(fl.items[0]?.title||'')}</span></li>`).join('')}</ol><span class="ft">사건의 흐름 보기 →</span></a>`).join('')}</div>`;return}
+    if(f==='issue'){$('#pg').innerHTML=`<div class="plist">${D.issues.filter(vis).map(i=>`<a class="card pcard" href="issue/${i.id}"><div class="ph">${th(i.image,'av')}<div><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><b>${esc(i.title)}</b><span class="meta">${cnt(i.presses,'user','언론사')}${cnt(i.mentions,'news','기사')}</span></div></div>
+      <ol class="mtl">${(i.flow||[]).slice(0,5).map(fl=>`<li><time class="ts">${fl.date.slice(5).replace('-','.')}</time><span>${esc(fl.items[0]?.title||'')}</span></li>`).join('')}</ol><span class="ft">사건의 흐름 보기 →</span></a>`).join('')}</div>`;return}
     const L=D.entities.filter(e=>subtype(e)===f);
     $('#pg').innerHTML=L.length?`<div class="plist">${L.map(e=>{const yrs={};e.timeline.forEach(x=>{const y=x.t.slice(0,4);if(!yrs[y])yrs[y]=x});const w=why(e);
     return`<a class="card pcard" href="${eh(e.name)}"><div class="ph">${av(e)}<div><b>${esc(e.name)}</b><small>${esc(e.wiki?.desc||'')}</small></div></div>${w.text?`<p class="why">${esc(w.text)}</p>`:''}${spark(e.daily,300,36)}
-    <ol class="mtl">${Object.entries(yrs).sort((a,b)=>b[0]-a[0]).slice(0,4).map(([y,x])=>`<li><b>${y}</b><span>${esc(x.title)}</span></li>`).join('')}</ol><span class="ft">기록 ${e.timeline.length}건 · 타임라인 보기 →</span></a>`}).join('')}</div>`:'<div class="note">오늘은 이 분류에 해당하는 대상이 없어요.</div>'};
+    <ol class="mtl">${Object.entries(yrs).sort((a,b)=>b[0]-a[0]).slice(0,4).map(([y,x])=>`<li><time class="ts">${y}</time><span>${esc(x.title)}</span></li>`).join('')}</ol><span class="ft">${cnt(e.timeline.length,'clock','기록')}타임라인 보기 →</span></a>`}).join('')}</div>`:'<div class="note">오늘은 이 분류에 해당하는 대상이 없어요.</div>'};
   $('#f').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;f=b.dataset.f;$('#f').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));draw()};draw();
 }
 
@@ -336,8 +344,8 @@ function map(){
   <div class="legend"><span style="--c:#ff4d2e">인물</span><span style="--c:#11a683">장소</span><span style="--c:#7a4dff">기관·기업</span><span style="--c:#ffb020">키워드</span><span style="--c:#0f1630">이슈</span></div>
   <div class="card mapwrap scan" id="mapbig"></div>
   ${sec('노드는 왜 여기에?','Why each node','','search')}
-  <ul class="whyl">${D.entities.map(e=>{const w=why(e);return`<li><a href="${eh(e.name)}"><i style="--c:${({person:'#ff4d2e',place:'#11a683',org:'#7a4dff'})[e.type]||'#ffb020'}"></i><b>${esc(e.name)}</b> — ${esc(SUB.find(x=>x[0]===subtype(e))?.[1]||'')}${w.issue?`, ${esc(w.text)}`:''}, 기사 ${w.n}건</a></li>`}).join('')}
-  ${D.issues.filter(vis).map(i=>`<li><a href="issue/${i.id}"><i style="--c:#0f1630"></i><b>${i.rank}위 이슈</b> — ${esc(i.title)} (언론사 ${i.presses}곳)</a></li>`).join('')}</ul>`;graph($('#mapbig'),false);
+  <ul class="whyl">${D.entities.map(e=>{const w=why(e),st=subtype(e);return`<li><a href="${eh(e.name)}">${entc(e.name,e.type)}<span class="wt"><span class="tag">${esc(SUB.find(x=>x[0]===st)?.[1]||'')}</span>${w.issue?`<span class="why">${esc(w.text)}</span>`:''}</span>${cnt(w.n,'news','관련 기사')}</a></li>`}).join('')}
+  ${D.issues.filter(vis).map(i=>`<li><a href="issue/${i.id}"><span class="ent issue"><b class="rkn">${i.rank}</b>이슈</span><span class="wt"><span class="why strong">${esc(i.title)}</span></span>${cnt(i.presses,'user','보도 언론사')}</a></li>`).join('')}</ul>`;graph($('#mapbig'),false);
 }
 function graph(el,mini){
   /* 결정적(시드) 레이아웃: 화면에 그리기 전에 시뮬레이션을 끝내고 고정 → 튐 없음 */
@@ -358,11 +366,11 @@ function graph(el,mini){
   const clamp=n=>{n.x=Math.max(pad+n.cr,Math.min(W-pad-n.cr,n.x));n.y=Math.max(pad+n.r,Math.min(H-pad-n.ch,n.y))};
   for(let it=0,T=k*.5;it<420;it++,T*=.988){
     N.forEach(n=>{n.fx=0;n.fy=0});
-    for(let i=0;i<N.length;i++)for(let j=i+1;j<N.length;j++){const a=N[i],b=N[j];let dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy)||.01;const f=k*k/d/d*.6;a.fx+=dx*f;a.fy+=dy*f;b.fx-=dx*f;b.fy-=dy*f}
+    for(let i=0;i<N.length;i++)for(let j=i+1;j<N.length;j++){const a=N[i],b=N[j];let dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy)||.01;if(d>k*1.6)continue;const f=k*k/d/d*.35;a.fx+=dx*f;a.fy+=dy*f;b.fx-=dx*f;b.fy-=dy*f}
     E.forEach(([i,j])=>{const a=N[i],b=N[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||.01,f=(d-L)/d*.08;a.fx+=dx*f;a.fy+=dy*f;b.fx-=dx*f;b.fy-=dy*f});
-    N.forEach(n=>{n.fx+=(cx-n.x)*.012;n.fy+=(cy-n.y)*.012*W/H;const m=Math.hypot(n.fx,n.fy)||1,s=Math.min(m,Math.max(T,1));n.x+=n.fx/m*s;n.y+=n.fy/m*s;clamp(n)});
+    N.forEach(n=>{n.fx+=(cx-n.x)*.05*Math.min(1,H/W);n.fy+=(cy-n.y)*.05*Math.min(1,W/H);const m=Math.hypot(n.fx,n.fy)||1,s=Math.min(m,Math.max(T,1));n.x+=n.fx/m*s;n.y+=n.fy/m*s;clamp(n)});
     // 충돌(사각형 근사: 라벨 폭 × 원+라벨 높이)
-    for(let p=0;p<2;p++)for(let i=0;i<N.length;i++)for(let j=i+1;j<N.length;j++){const a=N[i],b=N[j],ox=a.cr+b.cr-Math.abs(a.x-b.x),oy=(a.ch+b.ch)/1.6-Math.abs(a.y-b.y);if(ox>0&&oy>0){if(ox<oy){const s=(a.x<b.x?-1:1)*ox/2;a.x+=s;b.x-=s}else{const s=(a.y<b.y?-1:1)*oy/2;a.y+=s;b.y-=s}clamp(a);clamp(b)}}
+    for(let p=0;p<(it>380?6:2);p++)for(let i=0;i<N.length;i++)for(let j=i+1;j<N.length;j++){const a=N[i],b=N[j],ox=a.cr+b.cr-Math.abs(a.x-b.x),oy=(a.ch+b.ch)/1.6-Math.abs(a.y-b.y);if(ox>0&&oy>0){if(ox<oy){const s=(a.x<b.x?-1:1)*ox/2;a.x+=s;b.x-=s}else{const s=(a.y<b.y?-1:1)*oy/2;a.y+=s;b.y-=s}clamp(a);clamp(b)}}
   }
   const NS='http://www.w3.org/2000/svg';el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="키워드 관계맵"><defs>${N.map((n,i)=>n.img?`<pattern id="p${i}" width="1" height="1" patternContentUnits="objectBoundingBox"><image href="${esc(n.img)}" width="1" height="1" preserveAspectRatio="xMidYMid slice"/></pattern>`:'').join('')}</defs><g class="vp"><g class="ed"></g><g class="nd"></g></g></svg>${mini?'':`<div class="mapzoom"><button type="button" data-z="1.25" aria-label="확대">+</button><button type="button" data-z="0.8" aria-label="축소">−</button><button type="button" data-z="0" aria-label="원래대로">⟲</button></div>`}`;
   const svg=el.querySelector('svg'),vp=svg.querySelector('.vp'),ge=svg.querySelector('.ed'),gn=svg.querySelector('.nd');
@@ -409,7 +417,7 @@ function gtoday(){
   const I=G.issues,L=I[0];
   app.innerHTML=`<div class="gbar"><span>${ic('세계')}해외 주요 뉴스 · 한국어 자동 번역</span>${origBtn()}</div>
   <section class="hero"><a class="lead card" href="g/${L.id}" ${bg(L.image)}><div class="in"><div class="no">01</div><span class="cat 세계">${ic('세계')}${esc(L.category)}</span><h1>${esc(T_(L,'title'))}</h1>${L.summary?`<p class="ld">${esc(T_(L,'summary'))}</p>`:''}
-   <div class="meter"><div>${ic('news')}<b>${L.mentions}</b><span>관련 기사</span></div><div>${ic('user')}<b>${L.presses}</b><span>매체</span></div><div>${ic('spark')}<b>${L.gdelt||0}</b><span>GDELT 보도</span></div></div></div></a>
+   <div class="meter"><div>${ic('news')}<b>${L.mentions}</b><span>관련 기사</span></div><div>${ic('user')}<b>${L.presses}</b><span>매체</span></div><div>${ic('spark')}<b>${L.gdelt||0}</b><span>해외 보도</span></div></div></div></a>
    <div class="side">${I.slice(1,5).map(i=>`<a class="card mini" href="g/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><span class="cat 세계">${esc(i.category)}</span><h3>${esc(T_(i,'title'))}</h3><div class="m">${esc(i.press)} 외 ${Math.max(0,i.presses-1)}곳</div></div></a>`).join('')}</div></section>
   ${sec('해외 이슈 TOP','Global top stories','','세계')}
   <div class="grid">${I.slice(5).map(i=>`<a class="card ic" href="g/${i.id}"><div class="img" ${bg(i.image)}>${i.image?'':`<div class="noimg" style="height:100%">${ic('news')}</div>`}<span class="rk">${i.rank}</span></div><div class="bd"><h3>${esc(T_(i,'title'))}</h3><div class="ft"><span>${esc(i.press)} · 매체 ${i.presses}곳</span></div></div></a>`).join('')}</div>
@@ -422,10 +430,10 @@ function gissue(id){const i=G.issues.find(x=>x.id===id);if(!i)return gtoday();se
   app.innerHTML=`<div class="bkrow"><a class="back" href="./">← 해외 TOP</a>${shareBtn()}</div><div class="gbar"><span>${ic('세계')}해외 · 자동 번역</span>${origBtn()}</div>
   <article class="dhead card"><div class="img" ${bg(i.image)}><div class="ov"><span class="cat 세계">${esc(i.category)}</span><b>해외 이슈 ${i.rank}위</b></div></div>
    <div class="bd"><h1>${esc(T_(i,'title'))}</h1>${S.orig?'':`<p class="otit">${esc(i.title)}</p>`}
-   <div class="kpis"><div>${ic('news')}<b>${i.mentions}</b><span>관련 기사</span></div><div>${ic('user')}<b>${i.presses}</b><span>매체</span></div><div>${ic('spark')}<b>${i.gdelt||0}</b><span>GDELT</span></div><div>${ic('clock')}<b>${ago(i.sources[0]?.t)}</b><span>최근 보도</span></div></div>
+   <div class="kpis"><div>${ic('news')}<b>${i.mentions}</b><span>관련 기사</span></div><div>${ic('user')}<b>${i.presses}</b><span>매체</span></div><div>${ic('spark')}<b>${i.gdelt||0}</b><span>해외 보도</span></div><div>${ic('clock')}<b>${ago(i.sources[0]?.t)}</b><span>최근 보도</span></div></div>
    <div class="chips">${i.keywords.map(k=>`<span class="chip">#${esc(k)}</span>`).join('')}</div></div></article>
   ${i.summary?`<div class="card deep"><p>${esc(T_(i,'summary'))}</p><small>기사 요약문 자동 번역</small></div>`:''}
-  ${sec('보도 흐름','Coverage','','clock')}<div class="flow">${i.sources.map(x=>`<a class="fe" href="${esc(x.url)}" target="_blank" rel="noopener">${th(x.img,'fi')}<div><h5>${esc(T_(x,'title'))}</h5>${S.orig?'':`<p>${esc(x.title)}</p>`}<small>${esc(x.press)} · ${ago(x.t)}</small></div></a>`).join('')}</div>`;
+  ${sec('보도 흐름','Coverage','','clock')}<div class="flow">${i.sources.map(x=>`<a class="fe" href="${esc(x.url)}" target="_blank" rel="noopener">${th(x.img,'fi')}<div><h5>${esc(T_(x,'title'))}</h5>${S.orig?'':`<p>${esc(x.title)}</p>`}${meta(x,1)}</div></a>`).join('')}</div>`;
   bindOrig(()=>gissue(id));
 }
 function gtrend(k){const t=G.trends[k];if(!t)return gtoday();setMeta(T_(t,'keyword'),'');
@@ -453,9 +461,9 @@ function officialHTML(){let h='';
   const E=(O&&O.ecos)||[];
   if(E.length)h+=`${sec('공식 경제지표','Bank of Korea ECOS','<span class="more">한국은행 100대 통계</span>','chart')}<div class="ecos">${E.map(x=>`<div class="ec"><small>${esc(x.group||'')}</small><b>${esc(x.name)}</b><span>${esc(x.value)}<i>${esc(x.unit||'')}</i></span><em>${esc(x.cycle||'')}</em></div>`).join('')}</div>`;
   const B=(BR&&BR.items)||[];
-  if(B.length)h+=`${sec('재정경제부 보도자료','Press Releases','<span class="more">공공데이터포털</span>','book')}<div class="srcl2">${B.slice(0,10).map(x=>`<a href="${esc(x.url||'#')}" target="_blank" rel="noopener">${esc(x.title)}<small>${esc([x.dept,x.date&&x.date.slice(0,10)].filter(Boolean).join(' · '))}</small></a>`).join('')}</div>`;
+  if(B.length)h+=`${sec('재정경제부 보도자료','Press Releases','<span class="more">공공데이터포털</span>','book')}<div class="srcl2">${B.slice(0,10).map(x=>`<a href="${esc(x.url||'#')}" target="_blank" rel="noopener">${esc(x.title)}<span class="meta">${x.dept?`<span class="tag">${esc(x.dept)}</span>`:''}${x.date?`<time class="ts">${esc(x.date.slice(0,10))}</time>`:''}</span></a>`).join('')}</div>`;
   return h}
 function dartHTML(n){const L=(O&&O.dart_by_entity&&O.dart_by_entity[n])||[];if(!L.length)return'';
-  return`${sec('오늘의 공시','OpenDART','<span class="more">금융감독원 전자공시</span>','book')}<div class="srcl2">${L.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}<small>${esc(x.corp)} · ${x.date.slice(0,4)}.${x.date.slice(4,6)}.${x.date.slice(6)}</small></a>`).join('')}</div>`}
+  return`${sec('오늘의 공시','OpenDART','<span class="more">금융감독원 전자공시</span>','book')}<div class="srcl2">${L.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}<span class="meta">${entc(x.corp,'company')}<time class="ts">${x.date.slice(0,4)}.${x.date.slice(4,6)}.${x.date.slice(6)}</time></span></a>`).join('')}</div>`}
 {const _mk=market;market=function(){const r=_mk.apply(this,arguments);try{app.insertAdjacentHTML('beforeend',officialHTML())}catch(e){}return r}}
 {const _en=entity;entity=function(n){const r=_en.apply(this,arguments);try{app.insertAdjacentHTML('beforeend',dartHTML(n))}catch(e){}return r}}
