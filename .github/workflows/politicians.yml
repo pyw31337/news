@@ -1,0 +1,42 @@
+name: politicians-link
+# 정치인 DB(politicians 브랜치) ↔ 뉴스 자동 연결. 국회 API 수집은 한국 IP가 필요해 맥미니(local/politicians)가 담당
+on:
+  schedule:
+    - cron: '20 */6 * * *'   # 6시간마다(09:20·15:20·21:20·03:20 KST)
+  workflow_dispatch:
+permissions: { contents: write }
+concurrency: { group: politicians, cancel-in-progress: false }
+jobs:
+  link:
+    runs-on: ubuntu-latest
+    env: { ASSEMBLY_KEY: '${{ secrets.ASSEMBLY_KEY }}' }
+    steps:
+      - uses: actions/checkout@v4
+      - name: 정치인 DB 가져오기
+        run: |
+          git ls-remote --exit-code --heads origin politicians >/dev/null || { echo "politicians 브랜치 없음(맥미니 첫 수집 전)"; exit 0; }
+          git clone -q --branch politicians "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" pdata
+      - uses: actions/checkout@v4
+        with: { ref: data, path: data, sparse-checkout: archive }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: 국회 API 시도(키가 있고 해외 IP가 허용될 때만 성공)
+        if: ${{ hashFiles('pdata/index.json') != '' && env.ASSEMBLY_KEY != '' }}
+        continue-on-error: true
+        timeout-minutes: 30
+        run: python scripts/politicians/collect_assembly.py pdata
+      - name: 뉴스 연결·사건 단계 분류·미디어 통계
+        if: ${{ hashFiles('pdata/index.json') != '' }}
+        run: python scripts/politicians/link_news.py pdata data && python scripts/politicians/build_sqlite.py pdata politicians.sqlite
+      - name: 커밋
+        if: ${{ hashFiles('pdata/index.json') != '' }}
+        working-directory: pdata
+        run: |
+          git config user.name "newsboard-bot"; git config user.email "actions@users.noreply.github.com"
+          git add -A; git diff --cached --quiet && exit 0
+          git commit -qm "politicians: news link $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          for n in 1 2 3; do git push -q origin HEAD:politicians && break; git pull -q --rebase -X theirs origin politicians; done
+      - name: SQLite 스냅샷(분석용, 30일 보관 아티팩트)
+        if: ${{ hashFiles('politicians.sqlite') != '' }}
+        uses: actions/upload-artifact@v4
+        with: { name: politicians-sqlite, path: politicians.sqlite, retention-days: 30 }
