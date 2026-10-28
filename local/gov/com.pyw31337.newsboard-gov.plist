@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>Label</key><string>com.pyw31337.newsboard-gov</string>
+<key>ProgramArguments</key><array><string>/bin/bash</string><string>/Users/pyw31337/Developer/newsboard-local/gov/run_gov.sh</string></array>
+<key>StartCalendarInterval</key><dict><key>Minute</key><integer>20</integer></dict>
+<key>RunAtLoad</key><true/>
+<key>StandardOutPath</key><string>/Users/pyw31337/Developer/newsboard-local/gov/logs/launchd.out.log</string>
+<key>StandardErrorPath</key><string>/Users/pyw31337/Developer/newsboard-local/gov/logs/launchd.err.log</string>
+<key>LowPriorityIO</key><true/><key>Nice</key><integer>10</integer>
+</dict></plist>

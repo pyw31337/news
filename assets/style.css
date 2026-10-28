@@ -437,3 +437,15 @@ b.up{color:#e2321b}b.down{color:#2f6bff}
 .pbrb b{font-variant-numeric:tabular-nums;font-weight:900;min-width:2.6em;text-align:right}
 .pbrl{position:absolute;left:calc(12px + 7em + 8px);right:calc(12px + 7.5em);bottom:6px;height:12px;font-size:.625rem;color:var(--mute);font-family:var(--mono)}.pbrl span{position:absolute;transform:translateX(-50%);white-space:nowrap}.pbrl span:first-child{transform:none}
 @media(max-width:359px){.pbrb a{grid-template-columns:minmax(0,5.5em) 1fr auto;font-size:.75rem}.pbrb .dchg{display:none}.pbrl{display:none}}
+/* gov.js: 공공데이터 차트·신호 */
+.gchart{width:100%;height:auto;display:block;font-size:11px}.gchart text{fill:var(--mute);font-family:inherit}
+.gt{font-size:.8rem;margin:4px 0 6px;color:var(--ink2)}.gsel{margin:0 0 10px}.gsel select{padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:#fff;font:inherit}
+.gkpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:0 0 10px}.gkpi>div{background:#fff;border-radius:12px;padding:10px 12px;box-shadow:var(--sh)}
+.gkpi small{display:block;font-size:.7rem;color:var(--mute)}.gkpi b{font-size:1.25rem;font-weight:900}.gkpi em{display:block;font-style:normal;font-size:.7rem;color:var(--mute)}
+.gkpi .up b{color:#ff4d2e}.gkpi .down b{color:#2f6bff}.card.pad{padding:12px 14px}
+.gexp{margin-top:10px;font-size:.82rem;line-height:1.6}.gexp ul{margin:6px 0 0;padding-left:18px}
+.stkg{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}.stk{padding:10px 12px;display:flex;flex-direction:column;gap:2px;color:inherit;text-decoration:none}
+.stk b{font-size:.85rem}.stk span{font-weight:900;font-size:1.05rem}.stk em{font-style:normal;font-size:.75rem;font-weight:700}.stk em.up{color:#ff4d2e}.stk em.down{color:#2f6bff}.stk small{font-size:.68rem;color:var(--mute)}.stk svg{width:100%;height:30px}
+.galert{padding:10px 12px;margin:0 0 12px;border-left:4px solid #ff4d2e;font-size:.82rem;display:flex;flex-direction:column;gap:6px}
+.galert>div{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.galert time{margin-left:auto;font-size:.7rem;color:var(--mute);font-variant-numeric:tabular-nums}.galert em{font-style:normal;font-size:.7rem;color:var(--mute)}.galert small{font-size:.66rem;color:var(--mute)}
+.gbad{font-size:.66rem;font-weight:800;padding:2px 7px;border-radius:999px;background:#ff4d2e;color:#fff}.gbad.w{background:#f2a900}

@@ -51,11 +51,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 12
         run: python scripts/global_news.py
-      - name: 재정경제부 보도자료(공공데이터포털)
-        continue-on-error: true
-        timeout-minutes: 3
-        env: { DATA_GO_KR_KEY: '${{ secrets.DATA_GO_KR_KEY }}' }
-        run: python scripts/briefs.py
+      # 재정경제부 보도자료·기상·실거래가·주식시세·선관위: data.go.kr이 해외 IP를 막아서 맥미니(local/gov/run_gov.sh)가 매시 data 브랜치 gov/·briefs.json에 올림
       - name: 공식 통계·공시(ECOS·DART)
         continue-on-error: true
         timeout-minutes: 3
@@ -110,7 +106,7 @@ jobs:
       - name: 사이트 묶기
         run: |
           mkdir _site && cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png favicon.ico _site/
-          mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true)
+          mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true)
           (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null || true)
           python scripts/build_pages.py _site
           # 정치인 DB(politicians 브랜치, scripts/politicians·politicians.yml 참고)
