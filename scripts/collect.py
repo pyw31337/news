@@ -228,7 +228,7 @@ def etype(w):
     s = ((w or {}).get('desc', '') + ' ' + (w or {}).get('extract', '')[:60])
     d = (w or {}).get('desc', '')
     if re.search(r'(회사|기업|업체|기관|정당|단체|위원회|부처|대학|은행|협회|거래소|방송사|구단|그룹$)', d): return 'org'
-    if re.search(r'(증권|운용|은행|조사소|연구소)', w.get('title', '')): return 'org'
+    if re.search(r'(증권|운용|은행|조사소|연구소)', (w or {}).get('title', '')): return 'org'
     if re.search(r'(정치인|장관|청장|대법원장|시장|국회의원|배우|가수|선수|기업인|감독|대통령|총리|의원|방송인|작가|학자|아이돌|태어|출생)', s): return 'person'
     if re.search(r'(자치구|도시|국가|나라|섬|지역|광역시|특별시|공화국|마을)', d): return 'place'
     if re.search(r'(정치인|배우|가수|선수|기업인|감독|대통령|총리|의원|인물|방송인|작가|학자|그룹|아이돌|태어|출생|\(\d{4}년)', s): return 'person'
