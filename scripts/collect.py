@@ -165,13 +165,12 @@ CAT_WORDS = {'정치': '대통령 국회 의원 여당 야당 민주당 국민�
  'IT': 'AI 인공지능 해킹 앱 플랫폼 반도체 스마트폰 애플 구글 네이버 카카오 오픈AI 보안',
  '연예': '배우 가수 아이돌 드라마 영화 방송 예능 결혼 열애 임신 컴백 앨범',
  '스포츠': '야구 축구 농구 배구 골프 감독 선수 리그 월드컵 올림픽 KBO 손흥민 대표팀'}
+import sys as _sys; _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from classify import categorize as _cat2
 def categorize(A, sect):
-    sc = collections.Counter()
-    for k, v in sect.items(): sc[CAT_HINT.get(k, '사회')] += v * 0.7
-    text = ' '.join(a['title'] for a in A)
-    for cat, ws in CAT_WORDS.items():
-        for w in ws.split(): sc[cat] += text.count(w)
-    return sc.most_common(1)[0][0] if sc else '사회'
+    c, conf, why = _cat2([a['title'] for a in A], sect)
+    categorize.last = (conf, why)
+    return c
 CAT_HINT = {'정치': '정치', '경제': '경제', '세계': '세계', 'IT·과학': 'IT', '연예': '연예', '스포츠': '스포츠'}
 top = []
 for c in clusters[:40]:
@@ -179,7 +178,7 @@ for c in clusters[:40]:
     nv = [a for a in A if a['src'].startswith('naver')]
     rep = min(nv, key=lambda a: a['rank']) if nv else A[0]
     sect = collections.Counter(a.get('section') for a in A if a.get('section') not in (None, '주요'))
-    c.update(rep=rep, category=categorize(A, sect))
+    c.update(rep=rep, category=categorize(A, sect), cat_conf=categorize.last[0], cat_why=categorize.last[1])
     top.append(c)
     if len(top) >= 10 and len([x for x in top]) >= 10: break
 top = top[:10]
@@ -201,7 +200,7 @@ for i, (c, (d, im)) in enumerate(zip(top, ogs)):
                                                 kind={'naver_popularDay': '많이 본', 'naver_popularMemo': '댓글 많은'}.get(a['src'], a.get('section', ''))))
     issues.append(dict(rank=i + 1, id='i' + __import__('hashlib').md5(rep['url'].encode()).hexdigest()[:8], title=rep['title'], url=rep['url'], press=rep['press'],
                        image=im or rep.get('img', ''), summary=summarize(d) if d else [], lead=d,
-                       keywords=c['keywords'], entities=c['proper'], category=c['category'], trend=c['trend'],
+                       keywords=c['keywords'], entities=c['proper'], category=c['category'], cat_conf=c['cat_conf'], cat_why=c['cat_why'], trend=c['trend'],
                        score=round(c['score'], 1), mentions=len(c['arts']), presses=len(set(a['press'] for a in c['arts'])),
                        sources=sources[:12]))
 
