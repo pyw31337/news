@@ -148,7 +148,7 @@ CACHE = json.load(open(CACHE_P)) if os.path.exists(CACHE_P) else {}
 # GitHub Models는 2026-07-30 종료됨 → OpenAI 호환 API 키가 있어야 AI 분석 동작 (기본: Google Gemini 무료 등급)
 ENDPOINT = os.environ.get('LLM_ENDPOINT') or 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions'
 TOKEN = os.environ.get('LLM_API_KEY') or ''
-MODEL = os.environ.get('LLM_MODEL') or 'gemini-2.5-flash'
+MODEL = os.environ.get('LLM_MODEL') or 'gemini-3.8-flash'
 BUDGET = [int(os.environ.get('LLM_BUDGET', '14'))]
 BACKEND = os.environ.get('LLM_BACKEND', 'openai')   # 'apple' = 맥미니 Apple 온디바이스 모델(nbai)
 NBAI = os.environ.get('NBAI', os.path.expanduser('~/Developer/newsboard-local/bin/nbai'))
