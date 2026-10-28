@@ -181,13 +181,10 @@
       </div>`).join('');
 
     // ========== Naver / Live Data ==========
-    // 1. Deploy worker.js to Cloudflare Workers
-    // 2. Set secrets: wrangler secret put NAVER_CLIENT_ID / NAVER_CLIENT_SECRET
-    // 3. Replace the URL below with your Worker URL
-    const WORKER_URL = 'https://YOUR-WORKER-NAME.workers.dev';
+    const WORKER_URL = 'https://letsnews-proxy.pyw213.workers.dev';
 
     async function loadNaverNews(query, limit = 8) {
-      if (!WORKER_URL.includes('workers.dev') || WORKER_URL.includes('YOUR-WORKER')) return null;
+      if (!WORKER_URL.includes('workers.dev')) return null;
       try {
         const url = `${WORKER_URL}?naver=${encodeURIComponent(query)}&display=${limit}&sort=date`;
         const res = await fetch(url);
