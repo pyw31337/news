@@ -283,6 +283,10 @@ function entity(n){
 }
 
 /* ---------- 타임라인 비교 ---------- */
+// 선택한 대상 전체 기록에서 날짜별·대상별 최대 2건씩 골고루 섞어 한 이슈가 과거 흐름을 독점하지 않게 함
+function mixFeed(es){const seen=new Set(),out=[];
+  es.forEach(e=>{const per={};e.timeline.forEach(x=>{const k=ZK.day(x.t);if(seen.has(x.url)||(per[k]||0)>=2)return;per[k]=(per[k]||0)+1;seen.add(x.url);out.push({...x,title:`[${e.name}] `+x.title})})});
+  return out.sort((a,b)=>b.t<a.t?-1:1)}
 function timeline(){
   let sel=D.entities.slice(0,5).map(e=>e.name),z='month';
   app.innerHTML=`${sec('타임라인 비교','Swimlane','','clock')}
@@ -302,7 +306,7 @@ function timeline(){
     $('#lanes').innerHTML=`<svg width="${W}" height="${es.length*rh+30}">${keys.map((k,i)=>(z!=='month'||k.endsWith('-01')||i===0)&&(z!=='day'||i%7===0)?`<text x="${lw+i*cw}" y="${es.length*rh+20}">${z==='day'?k.slice(5):z==='month'?k.slice(0,4)+'.'+k.slice(5):k}</text><line x1="${lw+i*cw+cw/2}" x2="${lw+i*cw+cw/2}" y1="0" y2="${es.length*rh}" stroke="#eef0f6"/>`:'').join('')}
     ${es.map((e,r)=>`<a href="${eh(e.name)}"><text x="0" y="${r*rh+rh/2+4}" style="font-size:13px;font-weight:800;fill:#0f1630">${esc(e.name)}</text></a><line x1="${lw}" x2="${W}" y1="${r*rh+rh/2}" y2="${r*rh+rh/2}" stroke="#e6e8ef"/>${keys.map((k,i)=>{const v=M[r][k]||0;return v?`<circle cx="${lw+i*cw+cw/2}" cy="${r*rh+rh/2}" r="${(3+Math.sqrt(v/mx)*(Math.min(cw,rh)/2-3)).toFixed(1)}" fill="${cols[r%7]}" opacity=".8"><title>${esc(e.name)} ${k}: ${v}건</title></circle>`:''}).join('')}`).join('')}</svg>`;
     $('#lanes').scrollLeft=1e5;
-    vtl($('#mix'),es.flatMap(e=>e.timeline.slice(0,40).map(x=>({...x,title:`[${e.name}] `+x.title}))).sort((a,b)=>b.t<a.t?-1:1),'day',5)};
+    vtl($('#mix'),mixFeed(es),'day',6)};
   $('#pick').onclick=ev=>{const n=ev.target.dataset.n;if(!n)return;sel=sel.includes(n)?sel.filter(x=>x!==n):[...sel,n].slice(-7);draw()};
   $('#lz').onclick=ev=>{if(!ev.target.dataset.z)return;z=ev.target.dataset.z;$('#lz').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===ev.target));draw()};
   draw();
@@ -336,29 +340,53 @@ function map(){
   ${D.issues.filter(vis).map(i=>`<li><a href="issue/${i.id}"><i style="--c:#0f1630"></i><b>${i.rank}위 이슈</b> — ${esc(i.title)} (언론사 ${i.presses}곳)</a></li>`).join('')}</ul>`;graph($('#mapbig'),false);
 }
 function graph(el,mini){
-  const W=el.clientWidth,H=el.clientHeight,col={person:'#ff4d2e',place:'#11a683',org:'#7a4dff',event:'#ffb020'};
+  /* 결정적(시드) 레이아웃: 화면에 그리기 전에 시뮬레이션을 끝내고 고정 → 튐 없음 */
+  const W=el.clientWidth||360,H=el.clientHeight||460,col={person:'#ff4d2e',place:'#11a683',org:'#7a4dff',event:'#ffb020'};
+  const small=W<500,fs=mini||small?10.5:12;
   const N=[],idx={},E=[];
-  D.entities.forEach(e=>{idx[e.name]=N.length;N.push({id:e.name,t:e.type,r:8+Math.sqrt(e.score)/1.6,href:eh(e.name),img:e.wiki&&e.wiki.thumb})});
-  D.issues.filter(vis).forEach(i=>{idx[i.id]=N.length;N.push({id:i.id,label:i.rank+'위 '+i.keywords.slice(0,2).join('·'),t:'issue',r:14,href:'issue/'+i.id});i.entities.forEach(n=>{if(n in idx)E.push([idx[i.id],idx[n],3])})});
+  const cut=(s,m)=>s.length>m?s.slice(0,m-1)+'…':s;
+  D.entities.forEach(e=>{idx[e.name]=N.length;N.push({id:e.name,lab:cut(e.name,small?7:10),t:e.type,r:Math.min(small?17:22,(small?7:8)+Math.sqrt(e.score)/(small?2.2:1.6)),href:eh(e.name),img:e.wiki&&e.wiki.thumb})});
+  D.issues.filter(vis).forEach(i=>{idx[i.id]=N.length;N.push({id:i.id,lab:cut(i.rank+'위 '+i.keywords.slice(0,2).join('·'),small?8:12),t:'issue',r:small?11:14,href:'issue/'+i.id});i.entities.forEach(n=>{if(n in idx)E.push([idx[i.id],idx[n],3])})});
   D.links.forEach(l=>{if(l.a in idx&&l.b in idx)E.push([idx[l.a],idx[l.b],l.n])});
-  N.forEach((n,i)=>{const a=i/N.length*6.283;n.x=W/2+Math.cos(a)*W/3;n.y=H/2+Math.sin(a)*H/3;n.vx=n.vy=0});
-  const NS='http://www.w3.org/2000/svg';el.innerHTML=`<svg viewBox="0 0 ${W} ${H}"><defs>${N.map((n,i)=>n.img?`<pattern id="p${i}" width="1" height="1" patternContentUnits="objectBoundingBox"><image href="${esc(n.img)}" width="1" height="1" preserveAspectRatio="xMidYMid slice"/></pattern>`:'').join('')}</defs><g class="ed"></g><g class="nd"></g></svg>`;
-  const svg=el.querySelector('svg'),ge=svg.querySelector('.ed'),gn=svg.querySelector('.nd');
+  // 라벨 폭까지 포함한 충돌 반경
+  N.forEach(n=>{n.lw=n.lab.length*fs*.92;n.cr=Math.max(n.r,n.lw/2)+4;n.ch=n.r+fs+6});
+  let seed=0;for(const n of N)for(const c of n.id)seed=(seed*31+c.charCodeAt(0))>>>0;
+  const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
+  const pad=small?14:24,cx=W/2,cy=H/2;
+  N.forEach((n,i)=>{const a=i*2.39996+rnd()*.3,rr=Math.sqrt((i+.5)/N.length);n.x=cx+Math.cos(a)*rr*(W/2-pad-n.cr);n.y=cy+Math.sin(a)*rr*(H/2-pad-n.ch);n.vx=n.vy=0});
+  const area=(W-2*pad)*(H-2*pad),k=Math.sqrt(area/Math.max(N.length,1)),L=k*.9;
+  const clamp=n=>{n.x=Math.max(pad+n.cr,Math.min(W-pad-n.cr,n.x));n.y=Math.max(pad+n.r,Math.min(H-pad-n.ch,n.y))};
+  for(let it=0,T=k*.5;it<420;it++,T*=.988){
+    N.forEach(n=>{n.fx=0;n.fy=0});
+    for(let i=0;i<N.length;i++)for(let j=i+1;j<N.length;j++){const a=N[i],b=N[j];let dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy)||.01;const f=k*k/d/d*.6;a.fx+=dx*f;a.fy+=dy*f;b.fx-=dx*f;b.fy-=dy*f}
+    E.forEach(([i,j])=>{const a=N[i],b=N[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||.01,f=(d-L)/d*.08;a.fx+=dx*f;a.fy+=dy*f;b.fx-=dx*f;b.fy-=dy*f});
+    N.forEach(n=>{n.fx+=(cx-n.x)*.012;n.fy+=(cy-n.y)*.012*W/H;const m=Math.hypot(n.fx,n.fy)||1,s=Math.min(m,Math.max(T,1));n.x+=n.fx/m*s;n.y+=n.fy/m*s;clamp(n)});
+    // 충돌(사각형 근사: 라벨 폭 × 원+라벨 높이)
+    for(let p=0;p<2;p++)for(let i=0;i<N.length;i++)for(let j=i+1;j<N.length;j++){const a=N[i],b=N[j],ox=a.cr+b.cr-Math.abs(a.x-b.x),oy=(a.ch+b.ch)/1.6-Math.abs(a.y-b.y);if(ox>0&&oy>0){if(ox<oy){const s=(a.x<b.x?-1:1)*ox/2;a.x+=s;b.x-=s}else{const s=(a.y<b.y?-1:1)*oy/2;a.y+=s;b.y-=s}clamp(a);clamp(b)}}
+  }
+  const NS='http://www.w3.org/2000/svg';el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="키워드 관계맵"><defs>${N.map((n,i)=>n.img?`<pattern id="p${i}" width="1" height="1" patternContentUnits="objectBoundingBox"><image href="${esc(n.img)}" width="1" height="1" preserveAspectRatio="xMidYMid slice"/></pattern>`:'').join('')}</defs><g class="vp"><g class="ed"></g><g class="nd"></g></g></svg>${mini?'':`<div class="mapzoom"><button type="button" data-z="1.25" aria-label="확대">+</button><button type="button" data-z="0.8" aria-label="축소">−</button><button type="button" data-z="0" aria-label="원래대로">⟲</button></div>`}`;
+  const svg=el.querySelector('svg'),vp=svg.querySelector('.vp'),ge=svg.querySelector('.ed'),gn=svg.querySelector('.nd');
   const lines=E.map(([a,b,w])=>{const l=document.createElementNS(NS,'line');l.setAttribute('stroke','#c9cede');l.setAttribute('stroke-width',Math.min(4,.6+w*.4));ge.appendChild(l);return l});
-  const nodes=N.map((n,i)=>{const g=document.createElementNS(NS,'g');g.setAttribute('class','node');g.style.cursor='pointer';
-    g.innerHTML=n.t==='issue'?`<rect x="${-n.r}" y="${-n.r*.7}" width="${n.r*2}" height="${n.r*1.4}" rx="5" fill="#0f1630"/><text y="${n.r+12}" text-anchor="middle" style="fill:#3b4361;font-size:${mini?10:11}px">${esc(n.label)}</text>`:`<circle r="${n.r}" fill="${n.img?`url(#p${i})`:col[n.t]}" stroke="${col[n.t]}" stroke-width="3"/><text y="${n.r+13}" text-anchor="middle">${esc(n.id)}</text>`;
+  const nodes=N.map((n,i)=>{const g=document.createElementNS(NS,'g');g.setAttribute('class','node '+n.t);
+    g.innerHTML=(n.t==='issue'?`<rect x="${-n.r}" y="${-n.r*.7}" width="${n.r*2}" height="${n.r*1.4}" rx="5" fill="#0f1630"/>`:`<circle r="${n.r}" fill="${n.img?`url(#p${i})`:col[n.t]}" stroke="${col[n.t]}" stroke-width="3"/>`)+`<text y="${n.r+fs+2}" text-anchor="middle" style="font-size:${fs}px">${esc(n.lab)}</text><title>${esc(n.t==='issue'?n.lab:n.id)}</title>`;
     gn.appendChild(g);return g});
-  let drag=null,moved=false,alpha=1;
-  const tick=()=>{for(let i=0;i<N.length;i++){const a=N[i];for(let j=i+1;j<N.length;j++){const b=N[j];let dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy+.01;const f=(mini?1400:2600)/d2;a.vx+=dx*f/40;a.vy+=dy*f/40;b.vx-=dx*f/40;b.vy-=dy*f/40}}
-    E.forEach(([i,j])=>{const a=N[i],b=N[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)||1,f=(d-(mini?70:110))*.012;a.vx+=dx/d*f*d/10;a.vy+=dy/d*f*d/10;b.vx-=dx/d*f*d/10;b.vy-=dy/d*f*d/10});
-    N.forEach(n=>{if(n===drag)return;n.vx+=(W/2-n.x)*.004;n.vy+=(H/2-n.y)*.004;n.x+=n.vx*alpha;n.y+=n.vy*alpha;n.vx*=.55;n.vy*=.55;n.x=Math.max(n.r+4,Math.min(W-n.r-4,n.x));n.y=Math.max(n.r+4,Math.min(H-n.r-18,n.y))});
-    E.forEach(([i,j],k)=>{lines[k].setAttribute('x1',N[i].x);lines[k].setAttribute('y1',N[i].y);lines[k].setAttribute('x2',N[j].x);lines[k].setAttribute('y2',N[j].y)});
-    nodes.forEach((g,i)=>g.setAttribute('transform',`translate(${N[i].x.toFixed(1)},${N[i].y.toFixed(1)})`));
-    alpha*=.985;if(alpha>.02&&document.body.contains(el))requestAnimationFrame(tick)};tick();
+  const draw=()=>{E.forEach(([i,j],k)=>{const l=lines[k];l.setAttribute('x1',N[i].x);l.setAttribute('y1',N[i].y);l.setAttribute('x2',N[j].x);l.setAttribute('y2',N[j].y)});nodes.forEach((g,i)=>g.setAttribute('transform',`translate(${N[i].x.toFixed(1)},${N[i].y.toFixed(1)})`))};draw();
+  // 보기 변환(확대·이동) — 노드 배치는 그대로
+  let s=1,tx=0,ty=0;const setV=()=>{s=Math.max(1,Math.min(3,s));tx=Math.min(0,Math.max(W-W*s,tx));ty=Math.min(0,Math.max(H-H*s,ty));vp.setAttribute('transform',`translate(${tx},${ty}) scale(${s})`);svg.style.touchAction=s>1?'none':'pan-y'};setV();
   const pt=ev=>{const r=svg.getBoundingClientRect();return[(ev.clientX-r.left)*W/r.width,(ev.clientY-r.top)*H/r.height]};
-  nodes.forEach((g,i)=>{g.addEventListener('pointerdown',ev=>{drag=N[i];moved=false;svg.setPointerCapture(ev.pointerId)})});
-  svg.addEventListener('pointermove',ev=>{if(!drag)return;moved=true;[drag.x,drag.y]=pt(ev);if(alpha<.3){alpha=.3;tick()}});
-  svg.addEventListener('pointerup',()=>{if(drag&&!moved)go(drag.href);drag=null});
+  const P=new Map();let drag=null,moved=false,start=null,pinch=null,pan=null;
+  svg.addEventListener('pointerdown',ev=>{const p=pt(ev);P.set(ev.pointerId,p);const g=ev.target.closest('.node');
+    if(P.size===2){drag=null;const [a,b]=[...P.values()];pinch={d:Math.hypot(a[0]-b[0],a[1]-b[1]),s,tx,ty,m:[(a[0]+b[0])/2,(a[1]+b[1])/2]};return}
+    if(g){drag=N[nodes.indexOf(g)];moved=false;start=p;try{svg.setPointerCapture(ev.pointerId)}catch(x){}}
+    else if(s>1){pan={p,tx,ty};try{svg.setPointerCapture(ev.pointerId)}catch(x){}}});
+  svg.addEventListener('pointermove',ev=>{if(!P.has(ev.pointerId))return;const p=pt(ev);P.set(ev.pointerId,p);
+    if(pinch&&P.size===2){const [a,b]=[...P.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);const ns=Math.max(1,Math.min(3,pinch.s*d/pinch.d));tx=pinch.m[0]-(pinch.m[0]-pinch.tx)*ns/pinch.s;ty=pinch.m[1]-(pinch.m[1]-pinch.ty)*ns/pinch.s;s=ns;setV();ev.preventDefault();return}
+    if(drag){if(!moved&&Math.hypot(p[0]-start[0],p[1]-start[1])<6)return;moved=true;drag.x=(p[0]-tx)/s;drag.y=(p[1]-ty)/s;clamp(drag);draw();ev.preventDefault()}
+    else if(pan){tx=pan.tx+p[0]-pan.p[0];ty=pan.ty+p[1]-pan.p[1];setV()}});
+  const end=ev=>{P.delete(ev.pointerId);if(P.size<2)pinch=null;if(ev.type==='pointerup'&&drag&&!moved)go(drag.href);drag=null;pan=null};
+  svg.addEventListener('pointerup',end);svg.addEventListener('pointercancel',end);
+  nodes.forEach(g=>g.style.touchAction='none');
+  el.querySelector('.mapzoom')?.addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;const z=+b.dataset.z;if(!z){s=1;tx=ty=0}else{const ns=Math.max(1,Math.min(3,s*z));tx=W/2-(W/2-tx)*ns/s;ty=H/2-(H/2-ty)*ns/s;s=ns}setV()});
 }
 
 /* ---------- 아카이브 ---------- */
