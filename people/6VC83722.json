@@ -42,22 +42,16 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   }
  ],
- "photo_local": "data/pol/photos/6VC83722.webp",
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
   "lead_count": 122,
@@ -459,7 +453,73 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
+  }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 3041619,
+    "inc": 818697,
+    "dec": 614939,
+    "total": 3245377,
+    "change": 203758,
+    "land": 0,
+    "building": 1246000,
+    "securities": 4355,
+    "deposits": 2260084,
+    "polfund": 111085,
+    "debt": 400000,
+    "cats": {
+     "건물": 1246000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 22000,
+     "예금": 2260084,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 111085,
+     "증권": 4355,
+     "채무": 400000,
+     "가상자산": 1853
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 3245377,
+    "inc": 1031027,
+    "dec": 542980,
+    "total": 3733424,
+    "change": 488047,
+    "land": 0,
+    "building": 1392000,
+    "securities": 5310,
+    "deposits": 2476692,
+    "polfund": 241882,
+    "debt": 400000,
+    "cats": {
+     "건물": 1392000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 17540,
+     "예금": 2476692,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 241882,
+     "증권": 5310,
+     "채무": 400000,
+     "가상자산": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 3733424,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
   }
  },
  "votes": {
@@ -731,70 +791,509 @@
    "fetched": "2026-10-28"
   }
  },
- "assets": {
-  "records": [
+ "photo_local": "data/pol/photos/6VC83722.webp",
+ "news": [
+  {
+   "date": "2026-10-13",
+   "title": "민주 김현정 “청년 문제 해결 위해 청년청 신설해야”",
+   "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE83NGZhWmhfVUNab185TVU4VzE0aDhjX0tidi1oY0hhZDQ0N2JIUFJ2YllHbGNDcUs1dTVpZ2djS1FPQ25FNUFudVhlUGFmWlNK?oc=5",
+   "press": "문화일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-07",
+   "title": "민주 김현정 \"권익위, 조희대 청탁금지법 위반 의혹 조사해야\"",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1uNDhyNnpuNFRTVWN6R3RfWEFaNTFJQWZSSEpUanllUElueG5CTGZyNnl4QkZYdnBkODZxQmZ3VE1MVnRneU9KVVBGWXRoZ3NXWFQwVEF5Rm9RaDFtWG5Oa0lOMFBENHJDeklRV1pIbWtCWllFSnlVWdIBeEFVX3lxTFBFVnhwQ1VpUjVzN2FEd3pDaElMWkh6Z2RvLU4zbG8tQUdFMzBQc0hBbHN4WHpmcC12VGhhQk9xME1pVldTWWFEZkRZTlk4S3ZzdlpjTDk0dlNkRmNDUWY1SUt2ai1lSExlV19kblkwR3BaYWgyZVZLUQ?oc=5",
+   "press": "MBC 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-07",
+   "title": "김현정 의원, 5·18 왜곡 신고 4년 새 80배 넘게 급증",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9ET0hoTTNjQUxtemFTS2o5bWdmNTVSamFGMkV1LTVpUGtMZkZfSWRQZHBWZnpnM1J4UGxhZVlTYm5yeXpoZzVJZjBFbGhQSUpCQlp0Z0hSVFhMVGs1TVJPVFJVeC0wVXlu?oc=5",
+   "press": "경인매일",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-06",
+   "title": "김현정 의원, “5.18 왜곡·폄훼 심각, 국가보훈부가 적극적으로 나서야”",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5UQmkwN3RXalhXNWRyak14d1dVM28tLWVBY1F6VlZ3X080RXR6UkVuZTRIMFNaSzJ0d3g4ZlVRRThrZHFuMHQ1SG8xeDU3aUdxT2F3X3pTaVBvZ0RVaGdwNmpSZkh0TWM?oc=5",
+   "press": "일간대한뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-06",
+   "title": "김현정 “5·18 왜곡·폄훼 급증…보훈부, 무관용 법적 대응 나서야”",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5QMUZGWEMzUjRMT1B2QUVNd2ZCbURNYm1KQjZHbS1MVXhPbXZNT0FrdldqZjc3bjMyeGpIUDc5SEJ6ZENFdUM5QnViYw?oc=5",
+   "press": "아이뉴스24",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-21",
+   "title": "[전격시사] 김현정 더불어민주당 의원 - “대통령 진정성 통해…민생 정책과 진보 진영 통합 상승 이끌어야” 기자회견 ‘효과’ 지지율 상승?",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1nWWoyaVVaV0VockFpN3pDYzNfY3BuRHh1VkxMbmo5T0R5SXVvNHJIWkZRT096NVZlbnFMbWlTTlZ4ZFB0QWVqd2VXWEFYTXlyTThkVGRDc2otMEE?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-09",
+   "title": "한동훈 “좀 모자란 민주당 오빠들”…與 김현정 “韓, 긁혔나?”",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1CbDNvVU1fRFFQVVRvbWxkb21aVE9jN2ZWS09JQW1YdFZDZXJYTXZYSUJnaDdFZFJtS0JrdERoc1ZYT01zM2IzTzNOX2RtXzlkZnE4MTJ3?oc=5",
+   "press": "매일경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-04",
+   "title": "민주 김현정 \"가상자산거래소 지분제한, 절충점 찾을 수 있을 것\"",
+   "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1oS2NDbmczNXZjMlE1eXYyeFBlcU5xTml0Rk9URjNYSkZPTzBWaHlvYzZxaXY3UEVIVDBsYjZTeGY0d3YweWI2UlRNb1JhYzBDQlhENWllNUM3VG9RV3ZUSkwtYkc4dC1IbHdYd19zY3k5dw?oc=5",
+   "press": "디지털애셋",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-20",
+   "title": "김현정 \"李 기탁금 발언 당무개입 아냐…윤석열·박근혜와 질적으로 달라\"",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5PVkRoM1ZGVlFFbkxWNDFJM2hSbkFSY19MZVVTakZ5bGRZN3JJRjFOM1VSMm90Q05DNGp6MmZRcngybWNTMHFBVHBUdXJFUm91SjhkbjhxRFREaGky?oc=5",
+   "press": "뉴스핌",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-07",
+   "title": "與 김현정 \"3대 메가 프로젝트 국정조사? 특검? 국힘 하이에나 정치 그만두길\"",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPRjNqYjBQWk0xYkZRdXUyYnhiT2hQMzczM2xWYVpsaWlwV2hNTUJhMGhJU0Jma29IeEwtWXJqX3psV1lsZDdkQ2JjblE5M3FGN29CdnZkWThraUlwNHNHS3FEcHU3b3dPMUlBS3U2QjNXZVRwb0lwQlFmd3dpNkhBQXFWZGNwUQ?oc=5",
+   "press": "조선일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-15",
+   "title": "김현정 국회의원, 교육부 특별교부금 34억8천800만 원 확보",
+   "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFA4c1NLbGJIQjl2REFlV0pMaTlaMmtLVnZlLUJ6VjF0dGs4RnRIUDZQSEp6TWtqZE5odFUwUVp1SEVvSnVIWG4zRjZER2xoM3hWQVpScHlyTk9WSjBFSjk5QzJSQ1dnWkRZSHVrbHFaSQ?oc=5",
+   "press": "기호일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-01",
+   "title": "추미애 선대위 합류한 김현정 의원…반도체 전략 맡는다",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1Ha19QXzZ2M0xXZkRzeG9hY0RMMk1vWmZ1emgxUnI3VEUyQ3ZPMVRLcjMyRFlVQXR5dmpheUNQN2lhdXJuWng2TkhtcldzeHAzcFJjdmJ4aWtVQTdLVlVnTE9RZlVZbEFQN2RWeS1nTU9wdE4zcVlj?oc=5",
+   "press": "OhmyNews",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-03-31",
+   "title": "[전격시사] 김현정 더불어민주당 의원 - “현금살포 안 해도 민주 유리 국힘, 녹취록 진실규명 본질 흐려” 추경, 선거용 돈 살포? 대북송금, 누가 거짓말?",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1QRUNHcEtreXVTeVRkdWpwY1lSaG5wQzUwSGQtS0VBZWhmNmpSY05kMURkTFZEbnQyTGRpWG11azZrZ2lvS1BlR3NzaXoxbUdXN1BvOUI0N1NjN0E?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-12-22",
+   "title": "김현정 의원, 의정보고회 \"중단 없는 평택 발전, '성과'로 증명할 것\"",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE8xeVNWdlR6a2Y3Wlo4N0hxWnd3MlpESUw4enFQcU5SaXB2QXBlSmFacS1BaXJ6Q0tnUkxIV2F1dGxITklvZUo3SnN4QkxSbENWaGE2WHJjTkhya3kzbnFUanVLNTFneVdJc1RIWFRYMnpFUC15cENv?oc=5",
+   "press": "OhmyNews",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-12-22",
+   "title": "김현정 국회의원, '2025 의정보고회' 성황",
+   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBsR0o3Zm1ySHlLRWFJa3puNkcyY3ZXVHE0VjB2eDk2TzRJdDVtUjZIRTZPSmhydS1MbzJDNGxJaUF0SmljY1ZxYjRnX1NnRDNaZ016STV4dmJhakFqUHV4QlZB?oc=5",
+   "press": "경기신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-10-14",
+   "title": "與김현정 \"김병주 아닌 '검머외' 마이클 병주 킴, 유승준처럼 입국금지해야\" - 머니투데이",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBoWmZtSVhiNUtlLWpxX1VqTHp4NVRpclRhSUNRMF9INWt6QlBuWW1TakJkZVBMU2RFNFE4Rjl3bVk3Zk5kdHhVWVFPeUxuSm1aTE8xeWxqV3JZZVVRV2ZwWG9faDJZVzN4Rk1sTdIBckFVX3lxTE5oU2V2bkk1UVhjVXFGZzgyNkp5RTViLXd6eFRaem5pdk1KelFXbU5xSmNBMy1Rd2xsTVg1VmJwVGJzRmZjdXQ3SUtiQ1Blb25tSTk2bXYwUXg0cjhQNEZVck1LMWV4NHZrU1RnY2RSRG5EZw?oc=5",
+   "press": "머니투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-09-12",
+   "title": "민주 김현정, 금융사 소액금융분쟁 `금감원 조정안 의무 수용법` 발의",
+   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9vQnZkUVJjak9xOEF6ZGkwd0xMclo4UTlTWWRyZU1mWHVVSThuN1RkQ1JGXzl4SnhYbV9nZGhsNlFwOG9FU3gyNFRQNDRkczFUbjNQM09VbHdfQjZUMVRrMTdB?oc=5",
+   "press": "매일신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-08-13",
+   "title": "김현정 의원, 민주당 대외협력위원장 연임",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE4xVy1mVlAtNVhCem95QWVUQkN2S0pwYmNkUkdCMElBaTFhY0pPUmxFTFlkY2VVS1hmX1VjakdwWlMxeXRiazlkTEoxNlY5OVJLNlZfckJxR1ZkZW4zd3FRa2V5SFZZNk9Q?oc=5",
+   "press": "평택시민신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-08-12",
+   "title": "김현정 의원, ‘AI 프로파일링 규제’ 개인정보보호법 개정안 발의",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9JQVNmNm8xU04xUjdSbzl6TU1ETE1KNGotN05pVW93VmozU25aenVWVk92Vzg5TWdoMlltZVpfSy15UWRDWUpfSkF1UTNqU18zVTQ5X0VCMGdzZldIU0NXMnNqeGVTT0FkQmhN0gFvQVVfeXFMUGpnR0ZrbW9IbDZkSUN1MFZJdnR6MGxSdk85WGliNGdnUmtWN0E4WkEtY3g3a3gwUUJ3dFBNM1BFVm9oZ2dUTWpJcm0zODFNUktKV24ybHphVDY2SXgxMjA0OFpxdFlTS2xDcnR0TG84?oc=5",
+   "press": "투데이신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-05-12",
+   "title": "민주 ‘빛의혁명 본부’ 김현정 의원 “李는 ‘광장의 후보’… 과반 압승 돼야” [선대위 사람들]",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5rZ3U0QWxVY1JReWptcmhUR0dWNzI4ZEltMVNpUE9xS1plMmljMkFYVE1FN3JEdTIyNWt3VlZQaVNyUDdtWEtJUHJULXk5Ul9CRF8zWF9tcjDSAVRBVV95cUxPQ2FCSXhPV1NvdEhaR0pMbzR2ampwWTBxSHVGOUhDc3BWbGdYWmlzVlkwQ2lLX20xYUk3bjN0TlNxLWJuRmc0b1hoQTZ0dDdaRjd5dkE?oc=5",
+   "press": "세계일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-03-20",
+   "title": "평택병 김현정 의원, ‘당원결의대회’ 개최",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE53aDY3cmJ4Q2tFRkYtMDdzWnNwWk1vRklkQ2FIS2xrWkJMM3duMDNlNWtFN0xYWDhIUTEyVDIzNXpWQ0xJbUh6ZlpMQ3d4dktXd3c2cm4yeV93MTByTE5hek5HYUhiTzJjekUxZkhn0gFyQVVfeXFMUGNKWmJyWkVwZmt4c2tnNk9tTHhxU1J2OEVWckUzSDU4Z1pfOTVCbVR2Vm5HT1l0b0djUkdrMmNBT19GVGxTNXlWU2pvQnJ6OEh4Q1Y5bXNvaG1KeTV3bHpFZ0ZYQ2NBeDE4ODVzS05zXzFB?oc=5",
+   "press": "경인종합일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-07-23",
+   "title": "“사이버렉카 막겠다”, 민주 김현정 처벌 강화 나서",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE40SEZjMV9yNVFRYTBDZXYycUtRcXZxV1RuaXhGV2pKYm1mcWZjRWhDUVc3cE1sbmk2ZFFldjQ0Ui1GZGUyTW5oX0I1NzRqeDN5bFljcjduM2xPamtrQzNxcmh0U3g5NmRVZGpZa3d3?oc=5",
+   "press": "월간중앙",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-03-31",
+   "title": "“민주 김현정, 라임 김봉현 주도 ‘폰타나 모임’ 멤버였다”",
+   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5KUjRuZ0REMHp6aEJuOWYtMU1lQ0x2UGo3a1ZBTnZ5Y0Jka2V0dTRnUnpKbm1aLVNYUWZXNjBNTUlTSFJKX3ZxM2dLZzJuQ01qcFdaSVZHTk9hd252cmhtaUZyMF9NMmhPN1A5ZEZnODk2VlFXaFR3dUVn?oc=5",
+   "press": "조선일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-03-21",
+   "title": "[4.10 총선 격전지] 경기 평택병 민주 김현정 49.5%, 국힘 유의동 38.1%",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE4yZFdKeWdma2lYR3JVdlA0REpGejFmS1M1dUpLN0xieWl2UVdyM0hRdkQwX1ZsaEctempaRUMtODl0SFNtNDFUZ3FsMlRXa1l6VUdCNEpMUFZ0ei1DT0FBNWdXUXlxM1B4cl95SGdR?oc=5",
+   "press": "폴리뉴스 Polinews",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2020-03-09",
+   "title": "[김현정 더불어민주당 평택을 총선 예비후보] “우분투 정신·사회연대운동 제도권 정치로 확장하겠다”",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE14TzlMeFFKMVl4QVNQNDhoNWVvMEVXSHlibHdMSU8wTHlPMk1NaENZR3FLcUFya2RfOVJfckpzZXdjMEt4Zk55UV9nWERlR0RIMWFHQk5SWkxGQ0JaNThjcE9EbVhodXM4TW9KdEk3X00?oc=5",
+   "press": "매일노동뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  }
+ ],
+ "incidents": {
+  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
+  "updated": "2026-10-29",
+  "items": []
+ },
+ "media": {
+  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
+  "updated": "2026-10-29",
+  "top_words": [
+   [
+    "민주",
+    9
+   ],
+   [
+    "왜곡",
+    3
+   ],
+   [
+    "국힘",
+    3
+   ],
+   [
+    "급증",
+    2
+   ],
+   [
+    "폄훼",
+    2
+   ],
+   [
+    "나서야",
+    2
+   ],
+   [
+    "더불어민주당",
+    2
+   ],
+   [
+    "상승",
+    2
+   ],
+   [
+    "민주당",
+    2
+   ],
+   [
+    "국회의원",
+    2
+   ],
+   [
+    "의정보고회",
+    2
+   ],
+   [
+    "발의",
+    2
+   ],
+   [
+    "평택병",
+    2
+   ],
+   [
+    "청년",
+    1
+   ],
+   [
+    "문제",
+    1
+   ],
+   [
+    "해결",
+    1
+   ],
+   [
+    "청년청",
+    1
+   ],
+   [
+    "신설해야",
+    1
+   ],
+   [
+    "권익위",
+    1
+   ],
+   [
+    "조희대",
+    1
+   ],
+   [
+    "청탁금지법",
+    1
+   ],
+   [
+    "위반",
+    1
+   ],
+   [
+    "의혹",
+    1
+   ],
+   [
+    "조사해야",
+    1
+   ],
+   [
+    "신고",
+    1
+   ],
+   [
+    "넘게",
+    1
+   ],
+   [
+    "심각",
+    1
+   ],
+   [
+    "국가보훈부가",
+    1
+   ],
+   [
+    "적극적으로",
+    1
+   ],
+   [
+    "보훈부",
+    1
+   ]
+  ],
+  "quotes": [
    {
-    "date": "2025-03-27",
-    "year": 2025,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2025-51호",
-    "prev": 3041619,
-    "inc": 818697,
-    "dec": 614939,
-    "total": 3245377,
-    "change": 203758,
-    "land": 0,
-    "building": 1246000,
-    "securities": 4355,
-    "deposits": 2260084,
-    "polfund": 111085,
-    "debt": 400000,
-    "cats": {
-     "건물": 1246000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 22000,
-     "예금": 2260084,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 111085,
-     "증권": 4355,
-     "채무": 400000,
-     "가상자산": 1853
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+    "date": "2026-10-13",
+    "quote": "청년 문제 해결 위해 청년청 신설해야",
+    "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE83NGZhWmhfVUNab185TVU4VzE0aDhjX0tidi1oY0hhZDQ0N2JIUFJ2YllHbGNDcUs1dTVpZ2djS1FPQ25FNUFudVhlUGFmWlNK?oc=5",
+    "press": "문화일보"
    },
    {
-    "date": "2026-03-26",
-    "year": 2026,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2026-54호",
-    "prev": 3245377,
-    "inc": 1031027,
-    "dec": 542980,
-    "total": 3733424,
-    "change": 488047,
-    "land": 0,
-    "building": 1392000,
-    "securities": 5310,
-    "deposits": 2476692,
-    "polfund": 241882,
-    "debt": 400000,
-    "cats": {
-     "건물": 1392000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 17540,
-     "예금": 2476692,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 241882,
-     "증권": 5310,
-     "채무": 400000,
-     "가상자산": 0
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+    "date": "2026-10-07",
+    "quote": "권익위, 조희대 청탁금지법 위반 의혹 조사해야",
+    "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1uNDhyNnpuNFRTVWN6R3RfWEFaNTFJQWZSSEpUanllUElueG5CTGZyNnl4QkZYdnBkODZxQmZ3VE1MVnRneU9KVVBGWXRoZ3NXWFQwVEF5Rm9RaDFtWG5Oa0lOMFBENHJDeklRV1pIbWtCWllFSnlVWdIBeEFVX3lxTFBFVnhwQ1VpUjVzN2FEd3pDaElMWkh6Z2RvLU4zbG8tQUdFMzBQc0hBbHN4WHpmcC12VGhhQk9xME1pVldTWWFEZkRZTlk4S3ZzdlpjTDk0dlNkRmNDUWY1SUt2ai1lSExlV19kblkwR3BaYWgyZVZLUQ?oc=5",
+    "press": "MBC 뉴스"
+   },
+   {
+    "date": "2026-10-06",
+    "quote": "5.18 왜곡·폄훼 심각, 국가보훈부가 적극적으로 나서야",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5UQmkwN3RXalhXNWRyak14d1dVM28tLWVBY1F6VlZ3X080RXR6UkVuZTRIMFNaSzJ0d3g4ZlVRRThrZHFuMHQ1SG8xeDU3aUdxT2F3X3pTaVBvZ0RVaGdwNmpSZkh0TWM?oc=5",
+    "press": "일간대한뉴스"
+   },
+   {
+    "date": "2026-10-06",
+    "quote": "5·18 왜곡·폄훼 급증…보훈부, 무관용 법적 대응 나서야",
+    "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5QMUZGWEMzUjRMT1B2QUVNd2ZCbURNYm1KQjZHbS1MVXhPbXZNT0FrdldqZjc3bjMyeGpIUDc5SEJ6ZENFdUM5QnViYw?oc=5",
+    "press": "아이뉴스24"
+   },
+   {
+    "date": "2026-09-21",
+    "quote": "대통령 진정성 통해…민생 정책과 진보 진영 통합 상승 이끌어야",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1nWWoyaVVaV0VockFpN3pDYzNfY3BuRHh1VkxMbmo5T0R5SXVvNHJIWkZRT096NVZlbnFMbWlTTlZ4ZFB0QWVqd2VXWEFYTXlyTThkVGRDc2otMEE?oc=5",
+    "press": "KBS 뉴스"
+   },
+   {
+    "date": "2026-09-09",
+    "quote": "韓, 긁혔나?",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1CbDNvVU1fRFFQVVRvbWxkb21aVE9jN2ZWS09JQW1YdFZDZXJYTXZYSUJnaDdFZFJtS0JrdERoc1ZYT01zM2IzTzNOX2RtXzlkZnE4MTJ3?oc=5",
+    "press": "매일경제"
+   },
+   {
+    "date": "2026-08-04",
+    "quote": "가상자산거래소 지분제한, 절충점 찾을 수 있을 것",
+    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1oS2NDbmczNXZjMlE1eXYyeFBlcU5xTml0Rk9URjNYSkZPTzBWaHlvYzZxaXY3UEVIVDBsYjZTeGY0d3YweWI2UlRNb1JhYzBDQlhENWllNUM3VG9RV3ZUSkwtYkc4dC1IbHdYd19zY3k5dw?oc=5",
+    "press": "디지털애셋"
+   },
+   {
+    "date": "2026-07-20",
+    "quote": "李 기탁금 발언 당무개입 아냐…윤석열·박근혜와 질적으로 달라",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5PVkRoM1ZGVlFFbkxWNDFJM2hSbkFSY19MZVVTakZ5bGRZN3JJRjFOM1VSMm90Q05DNGp6MmZRcngybWNTMHFBVHBUdXJFUm91SjhkbjhxRFREaGky?oc=5",
+    "press": "뉴스핌"
+   },
+   {
+    "date": "2026-07-07",
+    "quote": "3대 메가 프로젝트 국정조사? 특검? 국힘 하이에나 정치 그만두길",
+    "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPRjNqYjBQWk0xYkZRdXUyYnhiT2hQMzczM2xWYVpsaWlwV2hNTUJhMGhJU0Jma29IeEwtWXJqX3psV1lsZDdkQ2JjblE5M3FGN29CdnZkWThraUlwNHNHS3FEcHU3b3dPMUlBS3U2QjNXZVRwb0lwQlFmd3dpNkhBQXFWZGNwUQ?oc=5",
+    "press": "조선일보"
+   },
+   {
+    "date": "2026-03-31",
+    "quote": "현금살포 안 해도 민주 유리 국힘, 녹취록 진실규명 본질 흐려",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1QRUNHcEtreXVTeVRkdWpwY1lSaG5wQzUwSGQtS0VBZWhmNmpSY05kMURkTFZEbnQyTGRpWG11azZrZ2lvS1BlR3NzaXoxbUdXN1BvOUI0N1NjN0E?oc=5",
+    "press": "KBS 뉴스"
+   },
+   {
+    "date": "2025-12-22",
+    "quote": "중단 없는 평택 발전, '성과'로 증명할 것",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE8xeVNWdlR6a2Y3Wlo4N0hxWnd3MlpESUw4enFQcU5SaXB2QXBlSmFacS1BaXJ6Q0tnUkxIV2F1dGxITklvZUo3SnN4QkxSbENWaGE2WHJjTkhya3kzbnFUanVLNTFneVdJc1RIWFRYMnpFUC15cENv?oc=5",
+    "press": "OhmyNews"
+   },
+   {
+    "date": "2025-10-14",
+    "quote": "김병주 아닌 '검머외' 마이클 병주 킴, 유승준처럼 입국금지해야",
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBoWmZtSVhiNUtlLWpxX1VqTHp4NVRpclRhSUNRMF9INWt6QlBuWW1TakJkZVBMU2RFNFE4Rjl3bVk3Zk5kdHhVWVFPeUxuSm1aTE8xeWxqV3JZZVVRV2ZwWG9faDJZVzN4Rk1sTdIBckFVX3lxTE5oU2V2bkk1UVhjVXFGZzgyNkp5RTViLXd6eFRaem5pdk1KelFXbU5xSmNBMy1Rd2xsTVg1VmJwVGJzRmZjdXQ3SUtiQ1Blb25tSTk2bXYwUXg0cjhQNEZVck1LMWV4NHZrU1RnY2RSRG5EZw?oc=5",
+    "press": "머니투데이"
+   },
+   {
+    "date": "2025-05-12",
+    "quote": "李는 ‘광장의 후보’… 과반 압승 돼야",
+    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5rZ3U0QWxVY1JReWptcmhUR0dWNzI4ZEltMVNpUE9xS1plMmljMkFYVE1FN3JEdTIyNWt3VlZQaVNyUDdtWEtJUHJULXk5Ul9CRF8zWF9tcjDSAVRBVV95cUxPQ2FCSXhPV1NvdEhaR0pMbzR2ampwWTBxSHVGOUhDc3BWbGdYWmlzVlkwQ2lLX20xYUk3bjN0TlNxLWJuRmc0b1hoQTZ0dDdaRjd5dkE?oc=5",
+    "press": "세계일보"
+   },
+   {
+    "date": "2020-03-09",
+    "quote": "우분투 정신·사회연대운동 제도권 정치로 확장하겠다",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE14TzlMeFFKMVl4QVNQNDhoNWVvMEVXSHlibHdMSU8wTHlPMk1NaENZR3FLcUFya2RfOVJfckpzZXdjMEt4Zk55UV9nWERlR0RIMWFHQk5SWkxGQ0JaNThjcE9EbVhodXM4TW9KdEk3X00?oc=5",
+    "press": "매일노동뉴스"
    }
   ],
-  "latest": 3733424,
-  "latest_date": "2026-03-26",
-  "source": {
-   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
-   "unit": "천원",
-   "fetched": "2026-10-28",
-   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
-  }
+  "by_month": {
+   "2020-03": 1,
+   "2024-03": 2,
+   "2024-07": 1,
+   "2025-03": 1,
+   "2025-05": 1,
+   "2025-08": 2,
+   "2025-09": 1,
+   "2025-10": 1,
+   "2025-12": 2,
+   "2026-03": 1,
+   "2026-05": 1,
+   "2026-06": 1,
+   "2026-07": 2,
+   "2026-08": 1,
+   "2026-09": 2,
+   "2026-10": 5
+  },
+  "presses": [
+   [
+    "KBS 뉴스",
+    2
+   ],
+   [
+    "조선일보",
+    2
+   ],
+   [
+    "OhmyNews",
+    2
+   ],
+   [
+    "문화일보",
+    1
+   ],
+   [
+    "MBC 뉴스",
+    1
+   ],
+   [
+    "경인매일",
+    1
+   ],
+   [
+    "일간대한뉴스",
+    1
+   ],
+   [
+    "아이뉴스24",
+    1
+   ],
+   [
+    "매일경제",
+    1
+   ],
+   [
+    "디지털애셋",
+    1
+   ]
+  ]
  }
 }

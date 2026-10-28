@@ -42,22 +42,16 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   }
  ],
- "photo_local": "data/pol/photos/GRP3908I.webp",
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
   "lead_count": 83,
@@ -461,7 +455,98 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
+  }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2024-08-29",
+    "year": 2024,
+    "kind": "재산등록·수시공개",
+    "issue": "국회공보 제2024-107호",
+    "prev": 1531495,
+    "inc": 330368,
+    "dec": 718414,
+    "total": 1143449,
+    "change": -388046,
+    "land": 0,
+    "building": 352000,
+    "securities": 10649,
+    "deposits": 629290,
+    "polfund": 0,
+    "debt": 20000,
+    "cats": {
+     "건물": 352000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 1510,
+     "예금": 629290,
+     "증권": 10649,
+     "채권": 170000,
+     "채무": 20000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=02760d56f3434a2cab9f5c477a4b46c9&fileSn=1"
+   },
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 1143449,
+    "inc": 491092,
+    "dec": 103847,
+    "total": 1530694,
+    "change": 387245,
+    "land": 0,
+    "building": 362000,
+    "securities": 11556,
+    "deposits": 950598,
+    "polfund": 55330,
+    "debt": 0,
+    "cats": {
+     "건물": 362000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 1210,
+     "예금": 950598,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 55330,
+     "증권": 11556,
+     "채권": 150000,
+     "채무": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 1530694,
+    "inc": 765751,
+    "dec": 527522,
+    "total": 1768923,
+    "change": 238229,
+    "land": 0,
+    "building": 365000,
+    "securities": 13731,
+    "deposits": 1098120,
+    "polfund": 141032,
+    "debt": 0,
+    "cats": {
+     "건물": 365000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 1040,
+     "예금": 1098120,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 141032,
+     "증권": 13731,
+     "채권": 150000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 1768923,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
   }
  },
  "votes": {
@@ -1048,95 +1133,378 @@
    "fetched": "2026-10-28"
   }
  },
- "assets": {
-  "records": [
+ "photo_local": "data/pol/photos/GRP3908I.webp",
+ "news": [
+  {
+   "date": "2026-10-28",
+   "title": "문금주 의원, ‘개발구역 지정 해제 요건 완화법’ 대표 발의",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1xZUtCaGVXYXdwMXpfZlNjMWR2YjhKRVBzeW9ib2xvOUdWRW1pb2RUOUVnZnpQWXc1U1NxYjQ4WVJqdVFIbklvOF8yWDNxcXlwZFRBUWpfR1JVdUh5cDZ1eDN3NlBSR2Z5bm9WStIBcEFVX3lxTE9IOUZoMkVNUzliY2FqR3lKVFlIc2cxd18xRlRldWNyZTBQZGFZeHB5LVdVUUw1RGJsZG9aZ21mRmMxaGtCSmVRUUFtdDduZkRLME9KRHZwbFFjaFgwTkRUMTNXUTFzSF9weS1YMFNzbGM?oc=5",
+   "press": "남도일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-27",
+   "title": "문금주 의원, 산림 경영·농촌 생태 복원 `국유림법`·`유휴농지 밀원식물법` 대표발의!",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFB2d25ndWhMUF9HWU1PUlF0Wkxua2hPN3B0blNQTHhxX3QtbmRtbmtEUGozMHl3czdVdUtxQU1VS1gyQzVXeGhVeFBnaw?oc=5",
+   "press": "더뉴스코리아",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-22",
+   "title": "양돈업도 가업상속공제 받는다…문금주 의원, 상속세법 개정안 발의",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBNOHJWOTRuRzZwTExzLUM3U1d6OElEV3loREszbjQ4R1NlbU80dnV4MkFrTldlTTVuaFNfbUtGN3lUT1hDWXNiWU5ybl9VVm1YWThKSndB?oc=5",
+   "press": "헤럴드경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-12",
+   "title": "오징어·도루묵 거의 안잡히는데...與 문금주 \"TAC 할당량 점검해야\" - 머니투데이",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8wbXZVcGZMQ18yZ3dWQVo0akVtWlhaTW5CdS00SnRudnBteHU0ZFhQLWh6bUxZNmJvN1JqMUhSVlB2eDJBal9kVUEyc21QemdqYU9pT0xsYWYzNWZDY3RUb2xBNERZM3J1V3NWOUMwdmFsaTNGVXlKQ9IBfkFVX3lxTE5paHJNSnJ1MDdFd3NyeEpaQXBhMnpDSDhZd0x5YUJ2Tk5UekVNOTR6TFE1d3RnN0ExRXFKTHd3bEx4N0tnWGl6cDdEQmM2TV9PQlJYU3I1ckVhQkRhakJFN2d2Rmk5WXBMNWlwT3JnYWxKejlhNkhWeEZxUDVxZw?oc=5",
+   "press": "머니투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-27",
+   "title": "문금주 의원, “항만 사이버공격 1,168건… 해경 사이버수사 전담인력 8명뿐”",
+   "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTFAxY3g0MFY1ckV4a1F0bXYxWjVxUFRoTzBHbjMwd2NrQ2U3eE9OamVma1FnWjMxcHFfZEJWMVdtSFBuNFVi?oc=5",
+   "press": "일등방송",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-26",
+   "title": "문금주 의원 “항만 사이버공격 1168건… 해경 전담 수사인력은 8명뿐”⋯항만 안전 강화 시급",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE56OGw4ZS1ONGNIV0tpZUZWekFGd3prbk5FbEhkb3c5OUUzdHdnRkVHcUtKajNMbnQ0MEF4eklEdGx1aFBfZllRTEN0aFRxYkdXcEZIc2YxUVQ?oc=5",
+   "press": "국민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-23",
+   "title": "문금주 의원, “어민 보호 외면한 수협… 수입 수산물에 점령당해”",
+   "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9lc2ZWV29IdDNrMXNubE9aRVc4RkNHMGFSNlpCQWJUZjFWQVB5UXdaN1R0Mzc2cVBqMDJfSW8yT2padzVW?oc=5",
+   "press": "일등방송",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-27",
+   "title": "문금주 의원, 양식장 관리선 중복 지정 절차 없앤다",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0zR1FCcmhWeDJJMV82ekY5Y29zdERoZmFQRk9MZkR1ZnRUMnFjQlJvempvN1VyT3piUnpPUW9wVzhqLTJ6V2JuR3dOYTllcUY2MjkyNEF6bTRja1kxSkpGNA?oc=5",
+   "press": "KBC광주방송",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-19",
+   "title": "문금주 의원, 지역 맞춤형 농지정책으로 지속 가능한 농촌 기틀 다져 > 뉴스",
+   "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9rT0tJbEh1Q3BTUkRLVG9yenBJQy1wY2NEc1l1YlpHeDg1Qkt6QmNfa3FLTE9fQVp0Q25IbUtxLWY2eG54QjZxanVVUGNNTU1FbGlWNVE2VkNiNU1yRE1DU3NKbzlPVzU1Vjc0MTFndjNLQQ?oc=5",
+   "press": "더코리아",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-01-12",
+   "title": "문금주 국회의원, 고흥·보성·장흥·강진 전 지역 ‘찾아가는 의정보고회’ 개최",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1TWEZSV3Zla1FWQU56VjZwcXNGV2R1UkZmRWxNeG1oaGJXcVFMZmwwTDZWQWIwUlNncVZDSkY0RlVZZHA0WHpzcjlrYm5IRDFLTFdZbXBSUlRhU0Q5MlpRdHRFZjNsSWM?oc=5",
+   "press": "장흥투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-12-29",
+   "title": "[신년사] 문금주 의원 “기후위기·농어촌 소멸 속 농수산식품 산업, 새 도약 필요”",
+   "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5tM3RoSzNBQlJkWjZJZW54VE5LM2M1bDBoNGhGTFVhSjREakFTbHc4OU5jWWFud0NsdjBXRndkRGN5TFlndnF2V1dwOTJDZXdGczFhbFlwT3NlM0xlLWNaY0dRazVUZw?oc=5",
+   "press": "푸드투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-12-02",
+   "title": "서천호·문금주 의원 ‘우주항공복합도시 특별법’ 발의",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA0dUw0MDB2Z3ZqdDc3UjVHZkNDOHhwYlVQUy1pRTNXNWJxTGFaQWlIVExSdS1xbFVjbjBFM1p2TkFfQW5jLW5zTUE1WVFWYktWdEkzVUZZYXdsTlF3czd4U2RvejhDYUtV?oc=5",
+   "press": "경남도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-10-31",
+   "title": "민주, 신임 전국농어민위원장에 문금주 의원 임명",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5GVFpKNG10a25zcUJ1X0oyYWl5ZFlwamZMRGJkWElmendiaFJhSk5sZGhMWmJkVHJHRlBlTWpWOFNzdmZMaDdkdlNwTG5WbHVuZFBhZTMyT0V5QQ?oc=5",
+   "press": "뉴스1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-04-11",
+   "title": "'행정가서 정치인으로' 문금주 당선자 \"통합 정치하겠다\"",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9sQ0twY2RxbVktRU5GTnp1NmkxdFU1ak9YTzE1ZEdGNTZBaEduS01NQnJWTERNV2NaUV9ESlhPYVIta2FKenZQb1haZGJoZUdxV2tqRFliLW1tNlI5cWY4SnJGQTRnMmtmWHpSQ3JR0gFzQVVfeXFMTlBDTm15dkctY2pEOFRFMUxMN0J6c2JINUxYUnhxR0FUSXAxTFdaQ2hfNHhJY28yN25CV3VEQUZyNFJyUVpNWXVMUUhFSWJLbVV2bkdQNTJyZzVMbENBU1E0TWFHWlpzbkFQZlNWcG9lNkVXWQ?oc=5",
+   "press": "한국일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-04-08",
+   "title": "문금주 “한국항공우주연구원 분원 유치 추진”",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9RbUVsblJ0RmJLWk91R2F2eDhReXVINWl2NUI3LTJqRkpkeVhXZTJuVUlUZFpjMnQya1J4UlFXYUt3OEgtWmRIM1A2aW5RYVh2RW1KOFVKNFI2Y09JSUNlaEhZV0xoeUp0V3pIZg?oc=5",
+   "press": "광주in",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-03-21",
+   "title": "문금주, 제22대 국회의원 선거 후보 등록",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBHcjM5SkVweGpvVFlCVGFaVkxQUHZRYkVfZEVGeTFNNndtN1lrQjUzOXp2YVRhMENLV3hEWmY2UUhwYnFteVoyVDB6SWR5N1ZvZmZkZ2tpMGtmZnBuTzVfWVJfV0NBNkpoUzBWVQ?oc=5",
+   "press": "광주in",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  }
+ ],
+ "incidents": {
+  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
+  "updated": "2026-10-29",
+  "items": []
+ },
+ "media": {
+  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
+  "updated": "2026-10-29",
+  "top_words": [
+   [
+    "발의",
+    3
+   ],
+   [
+    "항만",
+    3
+   ],
+   [
+    "지정",
+    2
+   ],
+   [
+    "농촌",
+    2
+   ],
+   [
+    "사이버공격",
+    2
+   ],
+   [
+    "해경",
+    2
+   ],
+   [
+    "명뿐",
+    2
+   ],
+   [
+    "지역",
+    2
+   ],
+   [
+    "국회의원",
+    2
+   ],
+   [
+    "개발구역",
+    1
+   ],
+   [
+    "해제",
+    1
+   ],
+   [
+    "요건",
+    1
+   ],
+   [
+    "완화법",
+    1
+   ],
+   [
+    "산림",
+    1
+   ],
+   [
+    "경영",
+    1
+   ],
+   [
+    "생태",
+    1
+   ],
+   [
+    "복원",
+    1
+   ],
+   [
+    "국유림법",
+    1
+   ],
+   [
+    "유휴농지",
+    1
+   ],
+   [
+    "밀원식물법",
+    1
+   ],
+   [
+    "대표발의",
+    1
+   ],
+   [
+    "양돈업도",
+    1
+   ],
+   [
+    "가업상속공제",
+    1
+   ],
+   [
+    "받는다",
+    1
+   ],
+   [
+    "상속세법",
+    1
+   ],
+   [
+    "개정안",
+    1
+   ],
+   [
+    "오징어",
+    1
+   ],
+   [
+    "도루묵",
+    1
+   ],
+   [
+    "거의",
+    1
+   ],
+   [
+    "안잡히는데",
+    1
+   ]
+  ],
+  "quotes": [
    {
-    "date": "2024-08-29",
-    "year": 2024,
-    "kind": "재산등록·수시공개",
-    "issue": "국회공보 제2024-107호",
-    "prev": 1531495,
-    "inc": 330368,
-    "dec": 718414,
-    "total": 1143449,
-    "change": -388046,
-    "land": 0,
-    "building": 352000,
-    "securities": 10649,
-    "deposits": 629290,
-    "polfund": 0,
-    "debt": 20000,
-    "cats": {
-     "건물": 352000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 1510,
-     "예금": 629290,
-     "증권": 10649,
-     "채권": 170000,
-     "채무": 20000
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=02760d56f3434a2cab9f5c477a4b46c9&fileSn=1"
+    "date": "2026-10-12",
+    "quote": "TAC 할당량 점검해야",
+    "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8wbXZVcGZMQ18yZ3dWQVo0akVtWlhaTW5CdS00SnRudnBteHU0ZFhQLWh6bUxZNmJvN1JqMUhSVlB2eDJBal9kVUEyc21QemdqYU9pT0xsYWYzNWZDY3RUb2xBNERZM3J1V3NWOUMwdmFsaTNGVXlKQ9IBfkFVX3lxTE5paHJNSnJ1MDdFd3NyeEpaQXBhMnpDSDhZd0x5YUJ2Tk5UekVNOTR6TFE1d3RnN0ExRXFKTHd3bEx4N0tnWGl6cDdEQmM2TV9PQlJYU3I1ckVhQkRhakJFN2d2Rmk5WXBMNWlwT3JnYWxKejlhNkhWeEZxUDVxZw?oc=5",
+    "press": "머니투데이"
    },
    {
-    "date": "2025-03-27",
-    "year": 2025,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2025-51호",
-    "prev": 1143449,
-    "inc": 491092,
-    "dec": 103847,
-    "total": 1530694,
-    "change": 387245,
-    "land": 0,
-    "building": 362000,
-    "securities": 11556,
-    "deposits": 950598,
-    "polfund": 55330,
-    "debt": 0,
-    "cats": {
-     "건물": 362000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 1210,
-     "예금": 950598,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 55330,
-     "증권": 11556,
-     "채권": 150000,
-     "채무": 0
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+    "date": "2026-09-27",
+    "quote": "항만 사이버공격 1,168건… 해경 사이버수사 전담인력 8명뿐",
+    "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTFAxY3g0MFY1ckV4a1F0bXYxWjVxUFRoTzBHbjMwd2NrQ2U3eE9OamVma1FnWjMxcHFfZEJWMVdtSFBuNFVi?oc=5",
+    "press": "일등방송"
    },
    {
-    "date": "2026-03-26",
-    "year": 2026,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2026-54호",
-    "prev": 1530694,
-    "inc": 765751,
-    "dec": 527522,
-    "total": 1768923,
-    "change": 238229,
-    "land": 0,
-    "building": 365000,
-    "securities": 13731,
-    "deposits": 1098120,
-    "polfund": 141032,
-    "debt": 0,
-    "cats": {
-     "건물": 365000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 1040,
-     "예금": 1098120,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 141032,
-     "증권": 13731,
-     "채권": 150000
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+    "date": "2026-09-26",
+    "quote": "항만 사이버공격 1168건… 해경 전담 수사인력은 8명뿐",
+    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE56OGw4ZS1ONGNIV0tpZUZWekFGd3prbk5FbEhkb3c5OUUzdHdnRkVHcUtKajNMbnQ0MEF4eklEdGx1aFBfZllRTEN0aFRxYkdXcEZIc2YxUVQ?oc=5",
+    "press": "국민일보"
+   },
+   {
+    "date": "2026-09-23",
+    "quote": "어민 보호 외면한 수협… 수입 수산물에 점령당해",
+    "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9lc2ZWV29IdDNrMXNubE9aRVc4RkNHMGFSNlpCQWJUZjFWQVB5UXdaN1R0Mzc2cVBqMDJfSW8yT2padzVW?oc=5",
+    "press": "일등방송"
+   },
+   {
+    "date": "2025-12-29",
+    "quote": "기후위기·농어촌 소멸 속 농수산식품 산업, 새 도약 필요",
+    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5tM3RoSzNBQlJkWjZJZW54VE5LM2M1bDBoNGhGTFVhSjREakFTbHc4OU5jWWFud0NsdjBXRndkRGN5TFlndnF2V1dwOTJDZXdGczFhbFlwT3NlM0xlLWNaY0dRazVUZw?oc=5",
+    "press": "푸드투데이"
+   },
+   {
+    "date": "2024-04-11",
+    "quote": "통합 정치하겠다",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9sQ0twY2RxbVktRU5GTnp1NmkxdFU1ak9YTzE1ZEdGNTZBaEduS01NQnJWTERNV2NaUV9ESlhPYVIta2FKenZQb1haZGJoZUdxV2tqRFliLW1tNlI5cWY4SnJGQTRnMmtmWHpSQ3JR0gFzQVVfeXFMTlBDTm15dkctY2pEOFRFMUxMN0J6c2JINUxYUnhxR0FUSXAxTFdaQ2hfNHhJY28yN25CV3VEQUZyNFJyUVpNWXVMUUhFSWJLbVV2bkdQNTJyZzVMbENBU1E0TWFHWlpzbkFQZlNWcG9lNkVXWQ?oc=5",
+    "press": "한국일보"
+   },
+   {
+    "date": "2024-04-08",
+    "quote": "한국항공우주연구원 분원 유치 추진",
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9RbUVsblJ0RmJLWk91R2F2eDhReXVINWl2NUI3LTJqRkpkeVhXZTJuVUlUZFpjMnQya1J4UlFXYUt3OEgtWmRIM1A2aW5RYVh2RW1KOFVKNFI2Y09JSUNlaEhZV0xoeUp0V3pIZg?oc=5",
+    "press": "광주in"
    }
   ],
-  "latest": 1768923,
-  "latest_date": "2026-03-26",
-  "source": {
-   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
-   "unit": "천원",
-   "fetched": "2026-10-28",
-   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
-  }
+  "by_month": {
+   "2024-03": 1,
+   "2024-04": 2,
+   "2025-10": 1,
+   "2025-12": 2,
+   "2026-01": 1,
+   "2026-08": 2,
+   "2026-09": 3,
+   "2026-10": 4
+  },
+  "presses": [
+   [
+    "일등방송",
+    2
+   ],
+   [
+    "광주in",
+    2
+   ],
+   [
+    "남도일보",
+    1
+   ],
+   [
+    "더뉴스코리아",
+    1
+   ],
+   [
+    "헤럴드경제",
+    1
+   ],
+   [
+    "머니투데이",
+    1
+   ],
+   [
+    "국민일보",
+    1
+   ],
+   [
+    "KBC광주방송",
+    1
+   ],
+   [
+    "더코리아",
+    1
+   ],
+   [
+    "장흥투데이",
+    1
+   ]
+  ]
  }
 }

@@ -75,66 +75,27 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   }
  ],
- "photo_local": "data/pol/photos/FJK3396E.webp",
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
-  "lead_count": 102,
-  "co_count": 1663,
-  "passed": 34,
+  "lead_count": 28,
+  "co_count": 449,
+  "passed": 10,
   "by_result": {
-   "임기만료폐기": 50,
-   "대안반영폐기": 22,
-   "수정가결": 9,
-   "원안가결": 3,
-   "계류": 18
+   "계류": 18,
+   "수정가결": 4,
+   "대안반영폐기": 6
   },
   "by_month": {
-   "2018-12": 3,
-   "2019-02": 1,
-   "2019-04": 2,
-   "2019-05": 4,
-   "2019-06": 1,
-   "2019-07": 1,
-   "2019-08": 2,
-   "2019-09": 2,
-   "2019-10": 5,
-   "2020-06": 3,
-   "2020-07": 4,
-   "2020-08": 4,
-   "2020-09": 3,
-   "2020-11": 1,
-   "2021-01": 2,
-   "2021-03": 3,
-   "2021-04": 1,
-   "2021-05": 1,
-   "2021-06": 2,
-   "2021-07": 1,
-   "2021-08": 1,
-   "2022-01": 1,
-   "2022-02": 1,
-   "2022-06": 5,
-   "2022-12": 3,
-   "2023-04": 1,
-   "2023-05": 1,
-   "2023-06": 3,
-   "2023-07": 1,
-   "2023-09": 9,
-   "2023-12": 2,
    "2024-06": 1,
    "2024-07": 3,
    "2024-09": 4,
@@ -486,36 +447,229 @@
     "proc_date": "2026-02-12",
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_Y2Z4Y0W5U3D1B1A7B3A3I2F9H3G9F7&ageFrom=22&ageTo=22",
     "proposer": "맹성규의원ㆍ이양수의원 등 10인"
-   },
-   {
-    "id": "PRC_M2M3L1L2K2I6J1Q7R2Q8Q4O1N6N7V1",
-    "no": "2126153",
-    "name": "자동차관리법 일부개정법률안",
-    "date": "2023-12-29",
-    "age": 21,
-    "committee": "국토교통위원회",
-    "result": "임기만료폐기",
-    "proc_date": "2024-05-29",
-    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_M2M3L1L2K2I6J1Q7R2Q8Q4O1N6N7V1&ageFrom=21&ageTo=21",
-    "proposer": "맹성규의원 등 10인"
-   },
-   {
-    "id": "PRC_Y2U3U1T2T0S6Q1R3Y4Z7Y1Y7W0V9V4",
-    "no": "2125885",
-    "name": "은퇴자마을(도시) 조성 및 운영에 관한 특별법안",
-    "date": "2023-12-11",
-    "age": 21,
-    "committee": "국토교통위원회",
-    "result": "임기만료폐기",
-    "proc_date": "2024-05-29",
-    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_Y2U3U1T2T0S6Q1R3Y4Z7Y1Y7W0V9V4&ageFrom=21&ageTo=21",
-    "proposer": "맹성규의원 등 15인"
    }
   ],
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
+  }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2019-03-28",
+    "year": 2019,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2019-31호",
+    "prev": 1505323,
+    "inc": 1500950,
+    "dec": 1184485,
+    "total": 1821788,
+    "change": 316465,
+    "land": 0,
+    "building": 645000,
+    "securities": 0,
+    "deposits": 1064037,
+    "polfund": 77221,
+    "debt": 5000,
+    "cats": {
+     "건물": 645000,
+     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 40530,
+     "예금": 1064037,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 77221,
+     "유가증권": 0,
+     "채무": 5000,
+     "고지거부및등록제외사항": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=r2guppte8ij03hsla5avpep2qr9o2xn6&fileSn=1"
+   },
+   {
+    "date": "2020-03-26",
+    "year": 2020,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2020-36호",
+    "prev": 1821788,
+    "inc": 883516,
+    "dec": 908612,
+    "total": 1796692,
+    "change": -25096,
+    "land": 0,
+    "building": 690000,
+    "securities": 0,
+    "deposits": 1045075,
+    "polfund": 29228,
+    "debt": 1071,
+    "cats": {
+     "건물": 690000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 33460,
+     "예금": 1045075,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 29228,
+     "채무": 1071
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=gtwztinej6vorph6b8j7fxoxqx41nzyn&fileSn=1"
+   },
+   {
+    "date": "2021-03-25",
+    "year": 2021,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2021-42호",
+    "prev": 1796692,
+    "inc": 1291254,
+    "dec": 1274355,
+    "total": 1813591,
+    "change": 16899,
+    "land": 0,
+    "building": 770000,
+    "securities": 0,
+    "deposits": 959722,
+    "polfund": 55519,
+    "debt": 0,
+    "cats": {
+     "건물": 770000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 28350,
+     "예금": 959722,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 55519
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=ljiydqx6lf6qen8xqxkr4jw3rlpbtrw1&fileSn=1"
+   },
+   {
+    "date": "2022-03-31",
+    "year": 2022,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2022-31호",
+    "prev": 1813591,
+    "inc": 554642,
+    "dec": 418638,
+    "total": 1949595,
+    "change": 136004,
+    "land": 37675,
+    "building": 770000,
+    "securities": 28109,
+    "deposits": 1009961,
+    "polfund": 79740,
+    "debt": 0,
+    "cats": {
+     "토지": 37675,
+     "건물": 770000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 24110,
+     "예금": 1009961,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 79740,
+     "증권": 28109
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=ldxlh5e853jcc9yoe05qoub4ju6wlwz0&fileSn=1"
+   },
+   {
+    "date": "2023-03-31",
+    "year": 2023,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2023-54호",
+    "prev": 1949595,
+    "inc": 950453,
+    "dec": 1136883,
+    "total": 1763165,
+    "change": -186430,
+    "land": 41161,
+    "building": 755000,
+    "securities": 58725,
+    "deposits": 888692,
+    "polfund": 3327,
+    "debt": 0,
+    "cats": {
+     "토지": 41161,
+     "건물": 755000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 16260,
+     "예금": 888692,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 3327,
+     "증권": 58725
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=yavxaifcot5en3h548549wssqga70kwc&fileSn=1"
+   },
+   {
+    "date": "2024-03-28",
+    "year": 2024,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2024-36호",
+    "prev": 1763165,
+    "inc": 866386,
+    "dec": 794091,
+    "total": 1835460,
+    "change": 72295,
+    "land": 39137,
+    "building": 755000,
+    "securities": 0,
+    "deposits": 1025793,
+    "polfund": 2010,
+    "debt": 0,
+    "cats": {
+     "토지": 39137,
+     "건물": 755000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 13520,
+     "예금": 1025793,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 2010,
+     "증권": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=959e13ad361144f6a6cb8289718474ad&fileSn=1"
+   },
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 1835460,
+    "inc": 857528,
+    "dec": 778372,
+    "total": 1914616,
+    "change": 79156,
+    "land": 40036,
+    "building": 755000,
+    "securities": 0,
+    "deposits": 1082226,
+    "polfund": 26194,
+    "debt": 0,
+    "cats": {
+     "토지": 40036,
+     "건물": 755000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 11160,
+     "예금": 1082226,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 26194
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 1914616,
+    "inc": 1450467,
+    "dec": 1399609,
+    "total": 1965474,
+    "change": 50858,
+    "land": 41274,
+    "building": 800000,
+    "securities": 23241,
+    "deposits": 1027864,
+    "polfund": 62485,
+    "debt": 0,
+    "cats": {
+     "토지": 41274,
+     "건물": 800000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 10610,
+     "예금": 1027864,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 62485,
+     "증권": 23241
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 1965474,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
   }
  },
  "votes": {
@@ -814,221 +968,437 @@
    "fetched": "2026-10-28"
   }
  },
- "assets": {
-  "records": [
+ "photo_local": "data/pol/photos/FJK3396E.webp",
+ "news": [
+  {
+   "date": "2026-10-13",
+   "title": "與맹성규 \"민주, 위성락보단 정동영·이종석에 힘 실어줄 것\"",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1ncmNacWZ6MVZxekI4d290SU9BbjZwbUNFT1NwUWJqcTRKbGtSeENFdDFrbW9hZFF1SWQzQ244R0VZdnNGNlBLTUYtZURHNk01d2hwNGxHQ3Y0X1XSAWBBVV95cUxOeVNVNTlGMVRseVFIN1UwSW5PZVh1dzh6dlpIck9ydnN3d0hzVERWckFTVlBYbWpxcjBhSENpZTZpWUN6MHhFbUZveHU2VnNZdWRPVnBlQk92Yk5JY0hIeGE?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-13",
+   "title": "與맹성규 “민주, 위성락보단 정동영·이종석에 힘 실어줄 것”",
+   "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBCeUN2TmtndHRycWFQQUR1X19ha1RtZjFsREdac2NoeWN2dUU0Z01kSEY4M1hCMTdxalE4Q19jX19fYS1uS2x6UXlEaXNGZFpRT3fSAVNBVV95cUxPVE52RXBEMVo1VktYNHhZbkxwM21Eeno4WGdGdE4ySGVqTWg2Q25rblZfSXZyMnV3bjhocDB5QmQwU1B4dmZwejVZcm9uSmxuVEpjWQ?oc=5",
+   "press": "서울경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-13",
+   "title": "與맹성규 \"민주, 위성락보단 정동영·이종석에 힘 실어줄 것\"",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE0zSWlHXzk0d2ZhY3UtQ2RtNnZpNXROZ2QzZEZ2a0YtMDNFSVRSdnJRQ2VqVTMzTXBRSEJ2d0VrMEtyaElSd2YtdXlLTjRQMWNZUnkxYU5OdUMtdHow?oc=5",
+   "press": "부산파이낸셜뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-06",
+   "title": "맹성규 사무실 앞 택시노동자 고공농성 100일··· “월급제 즉각 시행”",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5WT2dBMDViREdobkdRaElvSGFhQUJRRzE5YkxPd0NRMkZzUWhEZ1Rwdm52RFhHaE8xckRPYjl1cXJtOUYxTEZGOWRVS0pMSVJWUkdJelRvcjBnNk5QUXVTaWVjZDh6bVRBQ1VrRDMxM04?oc=5",
+   "press": "인천투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-29",
+   "title": "민주, 전준위 구성…위원장 이학영, 부위원장 맹성규·송옥주",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5fNEdzblhDekRvU0dxSVVnVGN5dE9EMHVXZk5zbm9LUllGOWwtQjhCZHlRVmduZzNkLVpMbHdRSWJMS1Vuck1zbm42dWUwZGFsNFFsb2FYYktCX3pDaElFa9IBeEFVX3lxTE8wdVVta2hHTkNXZWR5Y2M4VFFaOTRucUtUa2F1ZHRPS3NMZ3pOenR5akpYa1QtdGxsa3ppT2wwZGRFNTAzZnluZGNTem5UdnFMSnI5SDZDQWJKMmVnbDhqdmozRGlRYXZBWE1vUk1JUXFzWUVaQUJ0Wg?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-05",
+   "title": "박찬대, 김교흥·맹성규·유동수 선대위원장 ‘원팀’ 구성…송영길·박남춘 상임고문",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBpaHpqQzNXX3ZOMXhwMnB4SERnbFljR0RyTjFJS29XY3JJbmc2R0Ryd1BSbzVPdl8wZVdYX2RVVzIzUFZXcDlIcV9fVEJ1ZjlhcmM4UFBub240bWc?oc=5",
+   "press": "경기일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-03-29",
+   "title": "\"택시발전법 개정안 폐기\"…與맹성규 지역사무실 앞 고공농성",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5NQlg1NTAzX1FqcWFRVElOT1BUbFpqOUZfWXNoRGdoRHlsX3oxS2NkR1R5djIyY2p1WEtjWTFyOU1odno0U3ZtMzJJb1dsZW0xdElDbEgxWVZnUHfSAWBBVV95cUxOYzFVR1YyR1ROZlk5d3NvdEJwV0FERlNrdW9rb3pSY1ltZWF4RVVkeWw4ZUhwMFl1LUptTlVaM0dfUldoWkkxTkd3N2ZSTi1CZ3hHZzRyRmF2Vms2WVpBNU4?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-12-05",
+   "title": "맹성규, 與에 호소 “尹탄핵 찬성 동참해달라…그게 국민의힘”",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5odlRUVWp2UFBmQi1PTTVGLTFtYm9Tdkc2dkQ2UFBzUC12cjVSdEdKb1hHT0t0bjJRcEdseVItaS1paUpmZmJiN1FxUmh3cWwtT0lkcXAwZ2JicVhEajJJZg?oc=5",
+   "press": "헤럴드경제 미주판",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-07-11",
+   "title": "맹성규 의원, 더불어민주당 인천시당위원장 후보 출마",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5jNGxiOE8zdzRudTlLLWxUYXdCekJqQ09POW9mSjZaWUFMa01VVlNmZ3hoV1UwMXQ2VlhvM0g2R1BXbFFTYnhSaWxxU1BMXy1fNUltQkZMdVJnb3FJOVB3S0xaWEhmcUo40gFsQVVfeXFMUE85dWFWWjM1REU0RzNwb2g2T3RnTmoxaXhJWVN0Zkc3ZHNIMDMtc2RxRVJocVdoLUpfSTBrcnVyRGRlSnV4WXJOZ1M2MGRWd3lMTkE4TXItQi01U24wUzVfV2F1YWYxeThQSDZC?oc=5",
+   "press": "세이프투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-06-04",
+   "title": "민주당 맹성규 의원 '은퇴자마을(도시) 조성 특별법안' 대표 발의",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1FcXZOUjkwRVNqelhGNXVvR3RHQWhYenNGOUcyWmR0bzhFVXhJbXFrUlMxUmpGVTdYQlFJcFZ5X1laREU1cmlHOVcyVHRDcy1EeExISE82YzdUUTAtTkpVdnBUQUtTWmJZU1lsSw?oc=5",
+   "press": "incheonin.com",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-04-29",
+   "title": "맹성규 인천 남동구갑 당선인 “전세사기 대책 마련에 최선” [당선인 인터뷰]",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBVMkJERG9WNjUyejA0dU43YVd6VS1GWThfak5vWEtuZGpDUzVza3lzcTdBcFJicFNjNk0zQTlZeWZCLTZHZ1pPZEFxUC1ZOXVSTDNINkZ1azBESGs?oc=5",
+   "press": "경기일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-04-11",
+   "title": "[총선] 인천 남동갑 민주 맹성규 '3선 확실'",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBSZEJjVjNNcWFXYk1IR0Zwam5VOXg1d1JtNjZnTUJ1V19jc09JV3hUOHh2cmVTWnkxRU93NGxzQktDandUekZxbWhDVXB4bEJRdU0yZjNyUEtkM2QyeUViNV9IZTDSAWhBVV95cUxNaGIzbUtzcmhJZkRYV0l3Tk02bm1UbVF0aGJGajBkaDk4clA3SzFqbkIyd3ZwdnhTakN4RFBuTFRBSElfZDFFVHlhX0NuQlMtblREZ0hhMzJVM2RwVXlaX0dBcVJYQ0VGbA?oc=5",
+   "press": "경인방송 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-04-11",
+   "title": "[인천 남동갑] 민주 맹성규 '당선' 3선 고지 달성",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9uc0RqaVE1LTkySXh2Q0R5TGk3SDJsZzNmM1RuenNtNHFsWFFyaFJ1NDhnN1QzUVBlODdfcjF1WWlldHpNZ0ZlVVpBcndyQnhBQ2drc0tVSHVnNG9nNklCcDM2SU81VVk3TDkyeVZhZnc?oc=5",
+   "press": "인천투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-03-21",
+   "title": "'다문화교육지원센터 운영' ,맹성규 남동갑 후보, 귀화 한국인과 간담회 개최",
+   "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBCR1FtV3FvSUlCek5UbFBhWF83OWk0Vzd5LXZxeTlLVXplUUd0R3BHblFiZmxYeDMtSGMxS0NOX1pEWTdtUjRxZG95Y0ZnN0w3YTdIOHFEQ2ZmVEJWWGd2bF8tcE5ORENnUWpxUy1mUdIBc0FVX3lxTE5IN2xDVFk0WHczeGpVM1ZZUzZHZzVvN3NZZWpzOU11c255Q19UNE0wQm9pR2ZuZG9tN2RVSk9EXzRrRXJhWjlZOGhyZVpLZ3FucWc5bVVLZ2pmOUI3c1dZUGRiSHRQVEd0RGNaZ1R1MFltMFU?oc=5",
+   "press": "남동뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-03-04",
+   "title": "남동갑 국힘 경선 손범규 승리… 민주 맹성규 · 진보 용혜량 단일화 경선",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE04azktUmNEaWxmOXFEQWMzaWVEUEpVeHZzaEVZelNxZEl5cEo3ZHdoTkc4YklkaVJLS1otN0lzUE82eFNYdFdBZnBQRDdzLS1vTk54Z2E3QUgzOFBSaUtpajFWYlJ5bngwaUN5eg?oc=5",
+   "press": "incheonin.com",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-02-03",
+   "title": "[22대 총선] ‘남동갑’ 맹성규 “남동발전·국가 과제 해결하는 3선”",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4wZS1GemU1UXJDY0VoeExlT3p4azJaSmdzbk9aMGJSUlpXczVSU2puOHFhb2R0S0Q3Z2dPN1BjR3duZWpkS2VmejR1eS1DS2o2bXMzSTJENmtNOWY1ZmowRDJPeDlJNmg2MmtZa25LREk?oc=5",
+   "press": "인천투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-01-29",
+   "title": "[22대 총선] ‘남동갑’ 민주 맹성규, 국힘 후보 4명에 모두 앞서",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5DYVlVdmt4amlCREZUNEx3c2hYdnd5bXgwQTMwZUlFei05T2ZrdE5tTUx6ZE1fR0lheTZqOVNwQTI0N0tfa19KNjFLUDRfRmZuSF9lcW9fRzh6aEhaSnBocFdPalI0RERiQU1LcjRaN2o?oc=5",
+   "press": "인천투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2022-07-20",
+   "title": "더불어민주당 인천시당위원장 선거 ' 김교흥·맹성규' 출마 선언",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9IVktvYzdQYzhPaVBpWTBNZnpmQWVQMXBXNGRnWDRxaXFnME1jRkJxVUVWcUo1MTVXbmpsWWFaem01QVp2Ylk1NkpLNWsyZEJxbnpsVkJHMnhmVjTSAVZBVV95cUxNd2ZlRDdTcUVIOVA3MmJfMWdUOGhxYkFWdDNPUFNPNTU1eTdYSmc2T1lfejltbmM2eEV3QnZRcWx5SERGSUV6OFFhb3JVMXI5WE96QXMydw?oc=5",
+   "press": "더팩트",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2021-10-15",
+   "title": "맹성규 의원 장애인 참여형 예술활동 활성화 돕겠다",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1aT2xDVERzSG1wZTRWcWRzSEowQWQ2ZzZaVDk5SHhDdjN2VDdFMXh3dkpYZE9mVWxPMUtRODVsNjg4OENBalpQU3hUc1IzalIyT0dxTTJKOFY?oc=5",
+   "press": "국민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2021-06-29",
+   "title": "맹성규·박찬대·윤관석 “제2경인선, 4차 국가철도망 반영 환영”",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1BclkzNW51R2Q3WHlsYWJiakt2VTl4YWNqQVR6d0x4V0FreF9Rd1ZyZEJwZldod3VlTW1GV0RJUDl4VkEyVFA2MVgwa2s3QjVIUHlPM0tVVHVXOVVYX0d3d3BiQ3pWYUViU3I4NEhnMGg?oc=5",
+   "press": "인천투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2021-04-21",
+   "title": "맹성규의원, 장애인차별금지법 개정안 대표 발의",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5FRWJyQ25QX1lQRjJiWjZtWHdROEVPajZ1LXpzd2tlemNjRzRKVWZqbG9rQ05DTTlfcFpTSk5zTkxGWXJ3ay1JUmFzY09IVGhzNWRvRzEtalk?oc=5",
+   "press": "국민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  }
+ ],
+ "incidents": {
+  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
+  "updated": "2026-10-29",
+  "items": []
+ },
+ "media": {
+  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
+  "updated": "2026-10-29",
+  "top_words": [
+   [
+    "민주",
+    8
+   ],
+   [
+    "남동갑",
+    5
+   ],
+   [
+    "위성락보단",
+    3
+   ],
+   [
+    "정동영",
+    3
+   ],
+   [
+    "이종석에",
+    3
+   ],
+   [
+    "실어줄",
+    3
+   ],
+   [
+    "후보",
+    3
+   ],
+   [
+    "고공농성",
+    2
+   ],
+   [
+    "구성",
+    2
+   ],
+   [
+    "박찬대",
+    2
+   ],
+   [
+    "김교흥",
+    2
+   ],
+   [
+    "개정안",
+    2
+   ],
+   [
+    "더불어민주당",
+    2
+   ],
+   [
+    "인천시당위원장",
+    2
+   ],
+   [
+    "출마",
+    2
+   ],
+   [
+    "발의",
+    2
+   ],
+   [
+    "인천",
+    2
+   ],
+   [
+    "국힘",
+    2
+   ],
+   [
+    "경선",
+    2
+   ],
+   [
+    "사무실",
+    1
+   ],
+   [
+    "택시노동자",
+    1
+   ],
+   [
+    "월급제",
+    1
+   ],
+   [
+    "즉각",
+    1
+   ],
+   [
+    "시행",
+    1
+   ],
+   [
+    "전준위",
+    1
+   ],
+   [
+    "이학영",
+    1
+   ],
+   [
+    "부위원장",
+    1
+   ],
+   [
+    "송옥주",
+    1
+   ],
+   [
+    "유동수",
+    1
+   ],
+   [
+    "선대위원장",
+    1
+   ]
+  ],
+  "quotes": [
    {
-    "date": "2019-03-28",
-    "year": 2019,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2019-31호",
-    "prev": 1505323,
-    "inc": 1500950,
-    "dec": 1184485,
-    "total": 1821788,
-    "change": 316465,
-    "land": 0,
-    "building": 645000,
-    "securities": 0,
-    "deposits": 1064037,
-    "polfund": 77221,
-    "debt": 5000,
-    "cats": {
-     "건물": 645000,
-     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 40530,
-     "예금": 1064037,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 77221,
-     "유가증권": 0,
-     "채무": 5000,
-     "고지거부및등록제외사항": 0
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=r2guppte8ij03hsla5avpep2qr9o2xn6&fileSn=1"
+    "date": "2026-10-13",
+    "quote": "민주, 위성락보단 정동영·이종석에 힘 실어줄 것",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1ncmNacWZ6MVZxekI4d290SU9BbjZwbUNFT1NwUWJqcTRKbGtSeENFdDFrbW9hZFF1SWQzQ244R0VZdnNGNlBLTUYtZURHNk01d2hwNGxHQ3Y0X1XSAWBBVV95cUxOeVNVNTlGMVRseVFIN1UwSW5PZVh1dzh6dlpIck9ydnN3d0hzVERWckFTVlBYbWpxcjBhSENpZTZpWUN6MHhFbUZveHU2VnNZdWRPVnBlQk92Yk5JY0hIeGE?oc=5",
+    "press": "연합뉴스"
    },
    {
-    "date": "2020-03-26",
-    "year": 2020,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2020-36호",
-    "prev": 1821788,
-    "inc": 883516,
-    "dec": 908612,
-    "total": 1796692,
-    "change": -25096,
-    "land": 0,
-    "building": 690000,
-    "securities": 0,
-    "deposits": 1045075,
-    "polfund": 29228,
-    "debt": 1071,
-    "cats": {
-     "건물": 690000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 33460,
-     "예금": 1045075,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 29228,
-     "채무": 1071
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=gtwztinej6vorph6b8j7fxoxqx41nzyn&fileSn=1"
+    "date": "2026-10-13",
+    "quote": "민주, 위성락보단 정동영·이종석에 힘 실어줄 것",
+    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBCeUN2TmtndHRycWFQQUR1X19ha1RtZjFsREdac2NoeWN2dUU0Z01kSEY4M1hCMTdxalE4Q19jX19fYS1uS2x6UXlEaXNGZFpRT3fSAVNBVV95cUxPVE52RXBEMVo1VktYNHhZbkxwM21Eeno4WGdGdE4ySGVqTWg2Q25rblZfSXZyMnV3bjhocDB5QmQwU1B4dmZwejVZcm9uSmxuVEpjWQ?oc=5",
+    "press": "서울경제"
    },
    {
-    "date": "2021-03-25",
-    "year": 2021,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2021-42호",
-    "prev": 1796692,
-    "inc": 1291254,
-    "dec": 1274355,
-    "total": 1813591,
-    "change": 16899,
-    "land": 0,
-    "building": 770000,
-    "securities": 0,
-    "deposits": 959722,
-    "polfund": 55519,
-    "debt": 0,
-    "cats": {
-     "건물": 770000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 28350,
-     "예금": 959722,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 55519
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=ljiydqx6lf6qen8xqxkr4jw3rlpbtrw1&fileSn=1"
+    "date": "2026-10-13",
+    "quote": "민주, 위성락보단 정동영·이종석에 힘 실어줄 것",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE0zSWlHXzk0d2ZhY3UtQ2RtNnZpNXROZ2QzZEZ2a0YtMDNFSVRSdnJRQ2VqVTMzTXBRSEJ2d0VrMEtyaElSd2YtdXlLTjRQMWNZUnkxYU5OdUMtdHow?oc=5",
+    "press": "부산파이낸셜뉴스"
    },
    {
-    "date": "2022-03-31",
-    "year": 2022,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2022-31호",
-    "prev": 1813591,
-    "inc": 554642,
-    "dec": 418638,
-    "total": 1949595,
-    "change": 136004,
-    "land": 37675,
-    "building": 770000,
-    "securities": 28109,
-    "deposits": 1009961,
-    "polfund": 79740,
-    "debt": 0,
-    "cats": {
-     "토지": 37675,
-     "건물": 770000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 24110,
-     "예금": 1009961,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 79740,
-     "증권": 28109
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=ldxlh5e853jcc9yoe05qoub4ju6wlwz0&fileSn=1"
+    "date": "2026-07-06",
+    "quote": "월급제 즉각 시행",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5WT2dBMDViREdobkdRaElvSGFhQUJRRzE5YkxPd0NRMkZzUWhEZ1Rwdm52RFhHaE8xckRPYjl1cXJtOUYxTEZGOWRVS0pMSVJWUkdJelRvcjBnNk5QUXVTaWVjZDh6bVRBQ1VrRDMxM04?oc=5",
+    "press": "인천투데이"
    },
    {
-    "date": "2023-03-31",
-    "year": 2023,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2023-54호",
-    "prev": 1949595,
-    "inc": 950453,
-    "dec": 1136883,
-    "total": 1763165,
-    "change": -186430,
-    "land": 41161,
-    "building": 755000,
-    "securities": 58725,
-    "deposits": 888692,
-    "polfund": 3327,
-    "debt": 0,
-    "cats": {
-     "토지": 41161,
-     "건물": 755000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 16260,
-     "예금": 888692,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 3327,
-     "증권": 58725
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=yavxaifcot5en3h548549wssqga70kwc&fileSn=1"
+    "date": "2024-12-05",
+    "quote": "尹탄핵 찬성 동참해달라…그게 국민의힘",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5odlRUVWp2UFBmQi1PTTVGLTFtYm9Tdkc2dkQ2UFBzUC12cjVSdEdKb1hHT0t0bjJRcEdseVItaS1paUpmZmJiN1FxUmh3cWwtT0lkcXAwZ2JicVhEajJJZg?oc=5",
+    "press": "헤럴드경제 미주판"
    },
    {
-    "date": "2024-03-28",
-    "year": 2024,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2024-36호",
-    "prev": 1763165,
-    "inc": 866386,
-    "dec": 794091,
-    "total": 1835460,
-    "change": 72295,
-    "land": 39137,
-    "building": 755000,
-    "securities": 0,
-    "deposits": 1025793,
-    "polfund": 2010,
-    "debt": 0,
-    "cats": {
-     "토지": 39137,
-     "건물": 755000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 13520,
-     "예금": 1025793,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 2010,
-     "증권": 0
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=959e13ad361144f6a6cb8289718474ad&fileSn=1"
+    "date": "2024-04-29",
+    "quote": "전세사기 대책 마련에 최선",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBVMkJERG9WNjUyejA0dU43YVd6VS1GWThfak5vWEtuZGpDUzVza3lzcTdBcFJicFNjNk0zQTlZeWZCLTZHZ1pPZEFxUC1ZOXVSTDNINkZ1azBESGs?oc=5",
+    "press": "경기일보"
    },
    {
-    "date": "2025-03-27",
-    "year": 2025,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2025-51호",
-    "prev": 1835460,
-    "inc": 857528,
-    "dec": 778372,
-    "total": 1914616,
-    "change": 79156,
-    "land": 40036,
-    "building": 755000,
-    "securities": 0,
-    "deposits": 1082226,
-    "polfund": 26194,
-    "debt": 0,
-    "cats": {
-     "토지": 40036,
-     "건물": 755000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 11160,
-     "예금": 1082226,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 26194
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+    "date": "2024-02-03",
+    "quote": "남동발전·국가 과제 해결하는 3선",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4wZS1GemU1UXJDY0VoeExlT3p4azJaSmdzbk9aMGJSUlpXczVSU2puOHFhb2R0S0Q3Z2dPN1BjR3duZWpkS2VmejR1eS1DS2o2bXMzSTJENmtNOWY1ZmowRDJPeDlJNmg2MmtZa25LREk?oc=5",
+    "press": "인천투데이"
    },
    {
-    "date": "2026-03-26",
-    "year": 2026,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2026-54호",
-    "prev": 1914616,
-    "inc": 1450467,
-    "dec": 1399609,
-    "total": 1965474,
-    "change": 50858,
-    "land": 41274,
-    "building": 800000,
-    "securities": 23241,
-    "deposits": 1027864,
-    "polfund": 62485,
-    "debt": 0,
-    "cats": {
-     "토지": 41274,
-     "건물": 800000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 10610,
-     "예금": 1027864,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 62485,
-     "증권": 23241
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+    "date": "2021-06-29",
+    "quote": "제2경인선, 4차 국가철도망 반영 환영",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1BclkzNW51R2Q3WHlsYWJiakt2VTl4YWNqQVR6d0x4V0FreF9Rd1ZyZEJwZldod3VlTW1GV0RJUDl4VkEyVFA2MVgwa2s3QjVIUHlPM0tVVHVXOVVYX0d3d3BiQ3pWYUViU3I4NEhnMGg?oc=5",
+    "press": "인천투데이"
    }
   ],
-  "latest": 1965474,
-  "latest_date": "2026-03-26",
-  "source": {
-   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
-   "unit": "천원",
-   "fetched": "2026-10-28",
-   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
-  }
+  "by_month": {
+   "2021-04": 1,
+   "2021-06": 1,
+   "2021-10": 1,
+   "2022-07": 1,
+   "2024-01": 1,
+   "2024-02": 1,
+   "2024-03": 2,
+   "2024-04": 3,
+   "2024-06": 1,
+   "2024-07": 1,
+   "2024-12": 1,
+   "2026-03": 1,
+   "2026-05": 1,
+   "2026-06": 1,
+   "2026-07": 1,
+   "2026-10": 3
+  },
+  "presses": [
+   [
+    "인천투데이",
+    5
+   ],
+   [
+    "연합뉴스",
+    2
+   ],
+   [
+    "경기일보",
+    2
+   ],
+   [
+    "incheonin.com",
+    2
+   ],
+   [
+    "국민일보",
+    2
+   ],
+   [
+    "서울경제",
+    1
+   ],
+   [
+    "부산파이낸셜뉴스",
+    1
+   ],
+   [
+    "뉴시스",
+    1
+   ],
+   [
+    "헤럴드경제 미주판",
+    1
+   ],
+   [
+    "세이프투데이",
+    1
+   ]
+  ]
  }
 }

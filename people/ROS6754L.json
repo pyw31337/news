@@ -54,22 +54,16 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   }
  ],
- "photo_local": "data/pol/photos/ROS6754L.webp",
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
   "lead_count": 67,
@@ -466,7 +460,73 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
+  }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 1122695,
+    "inc": 295853,
+    "dec": 315267,
+    "total": 1103281,
+    "change": -19414,
+    "land": 0,
+    "building": 840000,
+    "securities": 147,
+    "deposits": 496534,
+    "polfund": 0,
+    "debt": 300000,
+    "cats": {
+     "건물": 840000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 16600,
+     "예금": 496534,
+     "증권": 147,
+     "채권": 50000,
+     "채무": 300000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 1103281,
+    "inc": 346020,
+    "dec": 223699,
+    "total": 1225602,
+    "change": 122321,
+    "land": 0,
+    "building": 840000,
+    "securities": 15459,
+    "deposits": 551517,
+    "polfund": 86907,
+    "debt": 338930,
+    "cats": {
+     "건물": 840000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 20630,
+     "예금": 551517,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 86907,
+     "증권": 15459,
+     "채권": 50000,
+     "채무": 338930,
+     "가상자산": 19
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 1225602,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
   }
  },
  "votes": {
@@ -1753,70 +1813,5 @@
    "fetched": "2026-10-28"
   }
  },
- "assets": {
-  "records": [
-   {
-    "date": "2025-03-27",
-    "year": 2025,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2025-51호",
-    "prev": 1122695,
-    "inc": 295853,
-    "dec": 315267,
-    "total": 1103281,
-    "change": -19414,
-    "land": 0,
-    "building": 840000,
-    "securities": 147,
-    "deposits": 496534,
-    "polfund": 0,
-    "debt": 300000,
-    "cats": {
-     "건물": 840000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 16600,
-     "예금": 496534,
-     "증권": 147,
-     "채권": 50000,
-     "채무": 300000
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
-   },
-   {
-    "date": "2026-03-26",
-    "year": 2026,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2026-54호",
-    "prev": 1103281,
-    "inc": 346020,
-    "dec": 223699,
-    "total": 1225602,
-    "change": 122321,
-    "land": 0,
-    "building": 840000,
-    "securities": 15459,
-    "deposits": 551517,
-    "polfund": 86907,
-    "debt": 338930,
-    "cats": {
-     "건물": 840000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 20630,
-     "예금": 551517,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 86907,
-     "증권": 15459,
-     "채권": 50000,
-     "채무": 338930,
-     "가상자산": 19
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
-   }
-  ],
-  "latest": 1225602,
-  "latest_date": "2026-03-26",
-  "source": {
-   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
-   "unit": "천원",
-   "fetched": "2026-10-28",
-   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
-  }
- }
+ "photo_local": "data/pol/photos/ROS6754L.webp"
 }

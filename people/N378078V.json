@@ -46,22 +46,16 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   }
  ],
- "photo_local": "data/pol/photos/N378078V.webp",
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
   "lead_count": 51,
@@ -454,7 +448,77 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
+  }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 3920079,
+    "inc": 221598,
+    "dec": 156225,
+    "total": 3985452,
+    "change": 65373,
+    "land": 772256,
+    "building": 2572100,
+    "securities": 232568,
+    "deposits": 470754,
+    "polfund": 52530,
+    "debt": 524596,
+    "cats": {
+     "토지": 772256,
+     "건물": 2572100,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 69840,
+     "예금": 470754,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 52530,
+     "증권": 232568,
+     "채권": 300000,
+     "채무": 524596,
+     "골동품및예술품": 40000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 3985452,
+    "inc": 194647,
+    "dec": 373184,
+    "total": 3806915,
+    "change": -178537,
+    "land": 753497,
+    "building": 2504100,
+    "securities": 221169,
+    "deposits": 360549,
+    "polfund": 140293,
+    "debt": 634303,
+    "cats": {
+     "토지": 753497,
+     "건물": 2504100,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 61610,
+     "예금": 360549,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 140293,
+     "증권": 221169,
+     "채권": 360000,
+     "채무": 634303,
+     "골동품및예술품": 40000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 3806915,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
   }
  },
  "votes": {
@@ -1237,74 +1301,794 @@
    "fetched": "2026-10-28"
   }
  },
- "assets": {
-  "records": [
+ "photo_local": "data/pol/photos/N378078V.webp",
+ "news": [
+  {
+   "date": "2026-10-27",
+   "title": "김종양, \"부실한 사후관리론 중국산 못 막아… 전기차 리콜 지표 바꿔야\"",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9ZS2tkaU1yUmtGT0padEtwc29oRzFFcmxuQXJLR2pmdVRLai1ySjJ0Yng2cURRWnBZQnZDNV9yUkY0ZWdGaHF1Vkx6bWU0UjdhRzVzV2FDdTM1VDJHN3FocEJLRW1UTmFTdjdpQ1dEaEFGZWVr?oc=5",
+   "press": "글로벌뉴스통신GNA",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-27",
+   "title": "김종양 의원 \"전기차 결함 신고·피해구제 증가…ICCU 리콜 후에도 재발\"",
+   "url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE0tdkJwV1JiNFFsOExVZGRVeTlxd0FadnRqd2tWaHQ5OGlrZHQ0S2lTZFhhcUliR3ZBM09mQVlLY0JHQQ?oc=5",
+   "press": "브레이크뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-22",
+   "title": "김종양 의원 “사천 등 전국 7개 공항 종단안전구역 미달…활주로 안전 ‘비상’”",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFA4cEFuQXV4cTJJclI5VHJ0NTJiLWVhRHV1VHBoRHdGUUFXODZJNk1aVkVQN0xMNEw5N3MybUJqc1ppSkhwYnVOdFZnZ1NZdnJ3SlMxZThYQ0JMOXlKaTV0RlB4NWFvLWlWUGxB?oc=5",
+   "press": "경남일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-22",
+   "title": "김종양 의원, ‘닥공’ 필수 건축 인허가 전산망, 재난 나면 복구 ‘구멍’",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9XbnVYLTUzalNwcHo3dlZYQ0pnT0dlS2VabnpMek03WVF3b3ItdG5uYVVlNXR6aXZITWtBUl90WkxXMjZiYVYzbTVLd2Q5X0FXNW1PY1Fkd21PLURaRTBwYVNod2V1VDNBMHVj?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-22",
+   "title": "김종양 의원 “제주공항 대혼란 1759명 엉뚱한 공항 착륙”",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5MR2RnQXBWN2xHTS13cVE5VGM0dktYX1hObVlEdnZBRy0tNzRDcUZzT284R01NRHkyTzB5d0pyLWptVHM5SmFfcHlVZFZvQkR1cUI3LS1fS2NIeEx2NTFaaVlXalgwSWJ4?oc=5",
+   "press": "경남도민신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-22",
+   "title": "김종양 의원 \"전국 14개 공항 중 7곳 활주로 안전구역 권고기준 미달\"",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9CdkJvc1kyNzZuNV9UM2lRemN6VlF3V1lTb1R0eFRTYmlNajVHcTJVaE1ULUhZREdUamtrczJvYTVtU0tDNjRfc2VJNVBGXy1pOE96cFlFYVFoTWhISDBHLUpVN00?oc=5",
+   "press": "https://www.ppss.kr/",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-21",
+   "title": "김종양 의원, “李대통령 제주 간 날, 제주공항 지연에 1,759명 엉뚱한 공항으로\"",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9fTy1yOEVZZVdiVk1QaEExalp0STkzdXc1dEFaVXlfdXFFTGVWNjk3aTNKSzVVZWFoZGhaSUdJM29vck9JMlZETDViTkVwRGZuS09SZU5wQm1scklLUm1ycVVhYmhYWU9h?oc=5",
+   "press": "시사코리아저널",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-19",
+   "title": "추미애 '소방 재정 빨대' 재차 사과… 국감장선 김종양·문정복 충돌",
+   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1KR05oUllBb3VLajl5bDFRVzdtQzFMc2g1U0JiNHNiTDF3R054SkdlRm9NX3VhLTZMR29XbHFKejRVVnVaSHJod1RPQnh2cXhxZ2Q3eUk4dzhJQ0tJN1pwQV9icFc5TF9ZMmtMZzNPTnVhdWx0blRkcElR0gF_QVVfeXFMTkVWN0dKekNxYUJ2dWxPY1h1d1QzMlZfT3MwS0tZM3hOMkxuTmFqN3JhR1NpaDd1dWcyVFNPekhaM21ORnJGeVc4eGdIZ1ltLVhkWkNfQ2ZTT3VqWTkxU01xM2FlYzBBMENsQ0N3NGZyQjZlNjc0TXFtRzVoZy01Zw?oc=5",
+   "press": "뉴데일리 경기",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-15",
+   "title": "김종양 의원 “전국 전세계약 5건 중 1건 '주의 계약'”",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBha1FObHYzcFJkSzRDWndfSE8wNDdRNE9sQjcxUFRGV3NEMDdpSTFkamFVd0lYVEc2UWxRS21MUnZQOVdTcmxPZjlFXzYxX0czTDlvNkt0U1NPQTk2bnU3YUkxX3MtR0NnUWNj?oc=5",
+   "press": "경남일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-15",
+   "title": "김종양 의원, 전세계약 27만건 보니… 5건 중 1건, 보증금 먹튀·바가지 의심",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBiX3luUHdJaGg1dHFOVVpUZW9hR0haSml5MU5VaWhNU2FrTWl0TGljMzF3YWFXVnJ0RWhvdGVSLWZKOXpJR0ZCTng4aHg0ZmpDVGd1ZVhjZjM2T2Y4MUI4Y1dOck0wQTBPV3M0?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-13",
+   "title": "김종양 의원, 집지을 땅 없다는데...LH 택지 절반 유찰",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5MOVFIdDE1cExFVjE0OVlaTU1LdVFXcnFVbUFZSGJpX3ZiT2tsVjk4cm5IV3AzWVRqNTBlZmV5NG5rcDN1X0lqejhQWWd5VktUWW1EWS0zY1YyLTF2TEJGSXo3RFk4NEJNblRV?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-29",
+   "title": "김종양 의원, 3기 신도시 보상금 1조원 초과…명도소송 2718건",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9BREhhYzhhZFA2U1FneF8tZEE3cm1TYVMzUE5zWlJMY2F2bHR5ODBoRU1ucGRXX3l6NnRVMXdMelE4dDJQR2lGUkhSMFNJcHllVUJKVGZuMkZZWGdwUzVJaFRCSXU5S3hLcmhJ?oc=5",
+   "press": "일간투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-29",
+   "title": "김종양 의원, ADAS 사고 분석 36건… 23건 ‘특이사항 없음’종결",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1rNTNneW1ZUG8yS0o3dmoxQ2Y0MXZrZ2h6cExiQzNneGFLejd5TGFfM0toeGRZSkhEallOZmJNdWpaT3FObkFjbFJ5b1RqOFVYWjBjX0xTdlZQUFZ4RFZDdHowRnlFb093cGhz?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-28",
+   "title": "김종양 의원, 서울~부산 KTX, 16년새 오히려 9분 더 느려졌다",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBFVkx3TEY4ekxhUW1UTXhzUXJJVEJQVHB1ZGZUNzVacXpNQTZTLWVLZi03TXZ2TkJTNlpOSFVITDZXUmFLVjBNeGRwcHhTMmNwckJ6SEo1OE5hY1VPNFIxelBQOTl0bS01WDRB?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-28",
+   "title": "김종양 의원 “ADAS 사고 분석 36건 중 23건 ‘특이사항 없음’ 종결”",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1VMTdnMHNlZEdXWGxnbWlRbGtaa0VjSFBoVUFIU0JFM0ZTRE50Q2hISzQyd0JHRDNxUllpNFExeTlROVVzbm56M0JtSkpyNHB3MU5zcWJmSnMzWlV3TkExaVRMUXFWTWRoN3RZ?oc=5",
+   "press": "www.kmsnews.co.kr",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-21",
+   "title": "김종양 의원, 지방 정비사업 공사비, 부동산원 검증 후에도 46.6% 뛰었다",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE96RjVScV9ZSUZJbVphTURwZW53WDM1YTRralFZRkkzaVJaZFBfU1RTa0VURGdlWDc3Q0xsQ203VHBvSXpsNW5OekVyb2I3OVBzNjBHQUNMb0FkaG5nTTlXNG83elJmaFBoUXJN?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-17",
+   "title": "김종양 의원 “고속도로 버스전용차로 위반 5년간 24만 건 넘어…승차인원 단속은 사실상 사각지대”",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5NX2JwTlFaMlliUGxGVmxDeHAwRjlDOWFQY2pYeXRpSzJ0YWUtR005Y0VxV1Vka2RNZHBSS2RYRnV4UER5N1lubkVVb2NfbGtmeXRLbnlEYmtUZ2JnWjF5WlZIeXJnaTFXMkRF?oc=5",
+   "press": "www.kmsnews.co.kr",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-15",
+   "title": "김종양 의원​​​​​​​ “서울 고가주택 외국인 이상거래 급증”",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1DOUJVU0tCNnloV1dIZ3VzcXc3dmRGN0JQODNGaTdaVkFSZW01czhKeUVfaWk1TW00RXNEbXB3VVNDZW9WeU5aQThBM2VDMDZUSEg2X2FxeHJFY2Vhbkl2ZThmLWUwckxEUGpj?oc=5",
+   "press": "경남일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-15",
+   "title": "김종양 의원, 서울·고가 부동산 ‘줍줍’ 외국인 이상거래 2배 급증",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE42RHVuajBBVnd4MDgta0Z1MVJ3UWFRNVpIYnRXNmdHU1BPODFtbHAtbTQwcldOWGdfaUJaa3haNEhQRnBpaFgzcGVPNFB0YV9FcDJOWWNmVzlkU2FYcWNzTVlHRllydk5INHZv?oc=5",
+   "press": "www.kmsnews.co.kr",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-14",
+   "title": "김종양 의원, 무안공항 참사에도 조류레이더 내년 구축",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5LZk1sLTQ1bHduR096ZHNlUlR5RnQ3TzN4NG1jZ09BUXVaQmM2ZXh5alRsX0QzV0tvUWJBcmYtZ3pSY3ZxdzdwTW9RSEZpbEtLbWVGakZvNUkzcDhYRWQ1a05pQk9BTGREVm5tbWFMd2lXcnV6?oc=5",
+   "press": "글로벌뉴스통신GNA",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-14",
+   "title": "김종양 의원, 무안공항 참사에도...조류레이더는 내년에야 구축",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9ZSVpJWS1WOUk3UDhad3pPaEdCR3pPenRIRUVJaklXa21jdy1KazRZa1EzQXp3d2xsSml0MVNXY3p6Z05LUTJFcDZMb3hrTEJDWG8zVTBRaTVRVXdxR0U0S01jZmtPN3dCOUhV?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-11",
+   "title": "김종양 의원, 공시가격 이의신청 인용 서울 97% … 집값 급등 후폭풍",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9zWGYzS0w2WkUwTk5PZ3JBSlVBclFHcjFadFBCUzd5M2RIcVpNRGtHOThpWkZpMnhteGZOdWtpX0RHY2xUU2l1dFk0LUx0R080b1c0Q3pXZXh5NGNTWnZWbDdQWUg3ZW9SZzFr?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-08",
+   "title": "김종양 의원, 국지도 60호선‘칠북~북면’도로 건설 관련 간담회 성료",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBYbGxQbW9PYkZMbmFTdUwtUTFHX3BxNXBjTGt5TE5SNlpZTHRkRGVRN2VLVmZRM25xYTMtQ19jckY0dHJYNlpkMUFyZ2x1bTNSb1JhanpvSkpoUFpzc2JlNDlwZVZZUm1VNmZz?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-07",
+   "title": "김종양 의원 “공동주택 회계 객관적 검증 장치 등 필요”",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9LNHlsWlZfTW1qQm8tU0xQblpfOElNbmlJR3VRR2FEVG1mT1AwQXVQVnp5Y3JrMVkwWkw2RnpqdjNIWVQ2ZmdrcmhDS2ItdEVOQ0ZEMU5PaHFPS1BaVk1WTzl2cGVQOVXSAWtBVV95cUxNa2lIcFNFSlM1WElUczZOMDM2MmN4S0x2WEZaRWF0elRabWNIRlljdTlfSkZYMnlSRWJ2MjhzMV9QeDQyeVVDcUNsRE01WmNiWW4zUWNVYjBuYlA0aTF2d05MaFdlUF9Nam9hbw?oc=5",
+   "press": "아파트관리신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-07",
+   "title": "김종양 의원, 국지도 60호선 ‘칠북~북면’도로 건설 관련 간담회 마련",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9OVWkwT3oxWnFZem9ZMEpaQXBNQnlQN2dsVGpVR0M2OEQ3eTZtWW5aODYyYTVxQUoyaHBLcW1UMXIxMk9EeFNlOTdjTDIzNDIzb25Od3REYTRfX0owRTNjM0w1YTQyZHd6?oc=5",
+   "press": "시사코리아저널",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-03",
+   "title": "김종양 의원, 의왕역, 3년 전 무선입환 대상서 빠졌다… 지난해 코레일 산재 166명 '5년 새 최다'",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1zVDdCdkdQdUowWVozV21vV3Z0OElhWGRnNW5FZUZ5X3BuRUpsUmkwSHdJQ0ZJSG5DWnhmLUhLeV9helZTRmRjNFc2TGYxUU9CRnhpVEdxdWJjV2M2QXlueWsyT3UtZ0Zsd0pz?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-01",
+   "title": "김종양 의원, 주식·채권 매각 주택자금 8조 돌파",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBObWFjcC0teE14dTB5Q19McXN6Zl83Rjh2RVp0bmZaVGtXR0kzSE00M3JEd1ZaYlpRLUcyOWVIczF2THVjSEVTR1k3c2xtZ2dVOHZER2EzQnBzWEVTaXgyZGZiX0p2NGg5anNN?oc=5",
+   "press": "일간투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-01",
+   "title": "김종양 의원, 창원 마금산온천·낙동강 관광 규제 완화 나선다",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE03Wlp0TTROYlhPdllZY3FzWkV3NS04MGJhZ1o5eHNtNGtYOWUyM3g2VUNuYTBhWlZZdEpDNUNOWFZPTmJyWm00TVJSQTluaFRIUER3WXpqRnhRcTVrZTZxVEpMd1gzT2VsNUE?oc=5",
+   "press": "경남도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-01",
+   "title": "김종양 의원, ‘창원지역 여가·관광 활성화 3법’ 대표 발의",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9feUgtRW1VeDBlUFJqaE53ak5CRmRsOWg0S1dHc015cmNKbHdvUkV1eGwweTRLbEJkcWFfMUZnSkhCYmNyUTQyak53aEhjT0M5V05xajFjazUyOFB5NnZrT3pEdEN1MFdm?oc=5",
+   "press": "시사코리아저널",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-30",
+   "title": "김종양 국회의원, 국지도 60호선 ‘미착공 구간’ 해법 찾는다",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE16YmQ0a095YVQzcE1oQ2s4WjNCaUxVU2ZlMnF2TDJfQ3FubXd4WVZjLVRuNHJWd0hsZ1V6RWZGTHVjb1lYalpnSU42V0tDZW9GU3VVaDl2aUM5cUprZ0lfMG9WYWp0WlJHLXc?oc=5",
+   "press": "경남도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-28",
+   "title": "김종양 의원, 국지도 60호선‘칠북~북면’ 도로 건설 관련 간담회 연다",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFByblNkZWJiaVU4eVZnSDNPX1plb3c2bncwRmlFYVA0c3k3TnJ0azNxUkl0V0lJS3R4bGRVYlVuaFRPYU55YUZmWThNcmZYR08wYkJkSW90T0FIMC01M3lkUGljLVJtY0p5UGFR?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-26",
+   "title": "\"끊겼던 국도 잇는다\"…김종양 의원, 국도 79호선 연결 예타 통과 - 머니투데이",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE00ckhXSkpDRGE5UFJfTEVQcWVrZ0VGSkNlY0xyTkJ0U09MdmlkSlZzcUtJMmFTRDR5c1BKVENlVUpkdDZaWUlKSGdPclBoWm83RDJ1aEVWWEFYa0ViUzV5SHlPSFBvc3RuTkHSAW9BVV95cUxQS1lMQzdEMFdaZGFMNEd1ZlRNNXlzUFVGS2RZdXB1SVFTR3RGczhCN0VVMW81dHU3STRhcHV2S280QnRtWVRwRk9ULURUanlWNlJZRE9GXzF0QjZnTnRQa1Z1N2RkX2RmMmxoY2w1Y2c?oc=5",
+   "press": "머니투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-13",
+   "title": "김종양 의원, ‘농촌부동산 활성화 2법’ 대표 발의",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFA5cU0xa3FxNFFBbDlXMTB0aWU3X3djNWpNWjl0TS1jSEpGUk1BVmE1WHR4VF9Pd1dmcURuVS0yeDQ0eXN0Ui1DbW1GNWp2MmozaTAyZjQzOERjUQ?oc=5",
+   "press": "농민신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-29",
+   "title": "김종양 의원 “전국 빈집 14만호, 범정부 차원 통합 관리 시급”",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBQX3JJT0dfdEpKSnlKY3hwQ0k4bjlDZm5OTkVpSWktRkdlLWgwX2J2aElRdXY4UWpXTHZkeEp3UUMyejVZc2NQenppZGJXUGk3N3lISHpPM0VGNkVjMkU2UFBidElrM3UtLUdZ?oc=5",
+   "press": "경남일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-29",
+   "title": "김종양 의원, 전국 빈집 14만971호…1년 새 6,962호 증가",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5pUVg3OGZXNTBJcTdsQ3ZZOHlHLWY5RXp0R3FPZ2dMbjRJZ01qYWhtQnRXRzBOV1FLT1JQOUx0MEZPS2xhckRjTm5YaklXcVJNTkFyeG5RdlREOUpwS2FKWmRBeUlCUV9kVFpJ?oc=5",
+   "press": "LPN로컬파워뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-24",
+   "title": "시설공사업단체연합회, ‘모듈러 건축 활성화 특별법’ 발의 한 김종양 국민의힘 의원에 감사패",
+   "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5OUWN4a1o2NURHNUR0WUlxRk4zSjFWdXZ4SmNRTDVCb3Jxa3RkOXR6ZC1DX3pzWDVZWDg2OEVyTXhBX0lPbWxad25MTmNZZDVM?oc=5",
+   "press": "문화일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-23",
+   "title": "이형주 회장 등 시단연 회장단, 국회 김종양 의원 예방",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9WQjVBUXJ2TVpuQmd1ZmR5dF9VTUNPazVmQmwzVTk0UnpNUFNuZGJuOUxOazZNdTlIWnpXNkltUkpRQmZocW5lMEY2NFo5TUxwRlEtc3QtenlYanc0X3huR3NQeVNfZ3JsSzJmMtIBcEFVX3lxTE9rOVI4dWtaalRGQ0Fyd3ktRjFCWlBkYkVubzN3SDBqbzA0WlJoU2tCMjE0NVZQeV9hNUJCVVZXRE5PLXRSdTIzZnZUTWxZU2JyZndEdGI5VThSY2RBNkdCRzNYQUhsRHFNWEY4eTVnZ0M?oc=5",
+   "press": "전기신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-22",
+   "title": "김종양 의원 “농지 거래 절벽, 규제부터 풀자”",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1JQkwweXQ1TFNodFctY0VaaU1LLVdNWFZTbFR3MUVYNmFyUWZLc3BlM21aWDdZOHFEMnUzRDdkdkZRYnhsZG1xQ19lM0tzRC1zd0hWOVRxNXNHZ19YeHA0cWpqa1VMMklHa2lB?oc=5",
+   "press": "경남일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-10",
+   "title": "김종양 의원, 건설현장 휴대전화 사용 제한 명문화 추진",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE12TTZ0WFlEd2hobGdVWE9QbTA3eG9OejhxaHFHVVVOUUtzaEFEMVVZWUFqMG1KZmtyUThBbFFlblR0MFBkN1dWLUZLci16SFV5eGtTdjJVc1R3UWdIMHc0QkI5MUJlb1V0SjY4MQ?oc=5",
+   "press": "기계설비신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-08",
+   "title": "김종양 의원, 창원 북면∼창녕 부곡 국도79호선 예타 통과 촉구",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1rQnptbjNsM1V3SkhtMlJ1alhqRC1BcFJZcnJOMUttdk5NaUhVRUpna2ZYRTYtbE0yckRtSG9RVEYwRWFnR1l6Mjg1akhoWXFZeUZmRThaZTJwYWfSAWBBVV95cUxQWVFLcGxnX3BkaXFnNXVCZlUtTHhTMk4zb0tvOHNOcFlNUHFERUZqVTdpcm5mSGY4TlU2aGdpYXgwOEZHWXRFa0FxWUZhV0hVTVZqNWRNSGJjNDlsSmFqS0Q?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-26",
+   "title": "김종양 의원,“실패 증명된 부동산 세제 강화 놀음...정권 몰락의 시발점 될 것”",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB2cUxZMldHb1ZYZm1lZk9aU29CbW5uaHExdEFHaHR5SGNET1F5d0UxY2hZeUhScnVXQnZZbkQ5X3YyLTUzRmtXR0o4T2xQdnhielN3M3d1ZGFsV1hhZnhfUmFqc1dyZU55VzY0?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-17",
+   "title": "김종양 의원, 이재명 정부 부동산 정책 1년 진단 “시중 유동성 증가가 서울 집값 밀어 올렸다…",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBGRTFFYzd1cy1tY2txX1lLR2RTdE1ORWo3M21Vc1pzTjhGMld1emZMRUNFOHlkRm45a2xaci1wQkxJNEFCZmhCSmhjQk0yd3JPTFJMMjl4RGQ1cUtCdmNTRDgwYWxxWFpvbDhV?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-15",
+   "title": "김종양 의원, 최근 5년간 전국 싱크홀 면적,25평 아파트 158채 분량 꺼졌다",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB6S3hzbTlkNHY3N0hUWm9CZmEzUTdFRGRFZUtSX1Q5Rjl3TFJoZWN6WDZFbjVrTzJhYnlxYVBzUmxIeTZ6RllPS1RVNlpnMThKZlB2eHp1ZmNJNVVpMGpDbXI1QjA2QnVOZ1NB?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-12",
+   "title": "김종양 의원, 의창구 현안 해결 위해 특교세 10억 확보",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5SSkJhcENlUkJBQ1hRVHlvbmxWOVIzWTB3UHJUN1lWYjBXVkFmenNqN0plOVJ0VkR1Y1BKd3VrcVlpVks4U3hrdzlXTHBMaEJmMWwyQUNHTk04U1JOa240WDhWdGlQZDkxakZB?oc=5",
+   "press": "경남일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-12-16",
+   "title": "김종양 의원,「K-철도 해외진출 활성화를 위한 전략 토론회」개최",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE56NUlEUW9wMWpxMkoyMkh2bDVmX2lWaXVFdWlBLXFVVnhralh6RHJIMlNoVDg2bG1pWDQ0UENMN3VWTkNsWVZ6dlQyZVloZGMzSndoUUVGUEdXbllfR3FZV1NIb012aEJvVFBv?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-10-20",
+   "title": "질의하는 김종양 의원",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1TeWVNNXFnaXBUdDdGelNxNGcxNTFIRHZZVFBzY1hmUHRfX3oxMTZxUkY3R3h3eDRZYVdENE1LbEM4aGhIcXVYeDZXeFQ2YUVNS0lnOU1aQzVoTjjSAWBBVV95cUxQX3BvVkItTTJaTUtEOFJQWDl0aV80T0FJUmJOdlk3Q1l5Q3c3RFRmMEpEd0xXdldUOWxaQ3l1bmlCRm8xaDZVelJEdHRvMUxqZ2VSNWh3NnZPT1lFMWpOXzE?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-03-16",
+   "title": "대통령 탄핵 반대 집회 참여한 김종양 국회의원",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBpQzUyYVlXSVF0eW16UHBOS203OWpwQXN6UVNvN2dGYVkxZVh3ajdZczJKcjFpUzZ2RVN1dkp1YjVqSXV0LTh4UllVOWI5U2JJVDlvWmpleXlZdTFMcjZuZkc0dEQ0S0F6?oc=5",
+   "press": "경남도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-02-16",
+   "title": "김종양 의원 \"야권이 내란 획책…창원 제2국가산단 속도를\"",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBmRXRLUzZWWmRRMmhaVm9peGlWb0ZvVnFLTFRuMEFtdkpXM25VMWQ4eG5jNzVSb1M2c3hGbEYyQnI4eGtKRm1GSFJwY0Q1WlpZSzljX2lyUnBWcHNCSUVKR09fV3hmOUxi?oc=5",
+   "press": "경남도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-02-11",
+   "title": "김종양 의원, 대정부 질문서 창원 '특례시 지위 유지' 논한다",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9xV2VhUEVuUnhxUlhKc1ljYWoxZF9xM3NSUm82anhrQmZndEVXMWlYTnJ3Z0k4Szd0d3Mwc05nSTN6NHVVV3c1NktLYW95eEZsN2ZiVmNFa29MaDVybmd4QkxGRTZSWTJH?oc=5",
+   "press": "경남도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-12-26",
+   "title": "창원 의창 김종양 의원, 행정안전부 특별교부세 25억 확보",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE12ZjY1eFJFWnM2R0VVVzZfOUtpQkd4dy0wWVA4NExTYS1DR2dEQVBLVFllb2VuaGdMc0RTM3NIaERDNlJzUEJYWEVaMmtWOE1XX2xWblZPVWM5SGFOSWFBWDZCNFJNSDNV?oc=5",
+   "press": "경남도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-11-13",
+   "title": "김종양 의원, 특례시 지원에 관한 법률안 발의",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBLZWhreW1yQmE2RVZGZmJLNDAwWWZNOS1aNHBHNkZKd2UxOXpkQklJMjNaNUpkdnNIbkhFRUJzNDhjNmp0SnBpTS1zV0V0Y1VaLWR0b2FTLTdqUXBtTk0tSdIBeEFVX3lxTE1JTlhEYnNINUtodTRXSDRDcHQzY2dMWDd6djcyZ2tlcWpkUWJ2SkxHcWQ4SjJENTZXLXd0TjhFZm1QM01Uejk2ZE1SSUFZNmZoVHlSWEVzZ3VsRHJ4MzMtWUE4cmJfNTdTNjN2a1FzWllJSzlGYjgtcA?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-08-29",
+   "title": "창원 의창 김종양 32억…22대 국회 신입생 재산 공개",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1QSjViT19jOEJsdnowUG8tOEctV1ZYQ3VoOEVLR1dlaWZiZlg1Qk1Wazd6WXY0ZHFYTmNXSU9oOXlUbThGRnFWemNGMjJPNUM4dnYxaWotQTZlelMxMmE0RVY3ZlF3Q0l6?oc=5",
+   "press": "경남도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-08-25",
+   "title": "'만능 생활체육인' 김종양 국회의원 스포츠로 소통 정치 앞장",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBuNjJtdmZudzNNR2hIcmIwbE9IOTNsX0lhamtCV3JWYkxubXpHdEctcUIyb1Rfck1uSjVpWTViS1VfRnZhUElHNzN2NHhKdGF3LTdTZlVvMS1qZ3kwRnE2OVctNWg0RjNBbVE?oc=5",
+   "press": "경남도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-07-12",
+   "title": "김종양 의원 '인구 100만 위태' 창원시, 특례시 지위 사수 나서",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE94TWRJYnNqc1BjcXVUbHd6dzBSM0pNNW1zMlhTbjNxb09QT1Q0MXpvZkxoUkhkbzE5aUVWZ2g3LWpNM3ZPNGZQSDMxM01IRmhiTUo2R2VaekhlalZGbkduRUFfMjVhRVhl?oc=5",
+   "press": "경남도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-06-25",
+   "title": "김종양 의원, 21대 때 폐기 '방산부품연구원 설립법' 재발의",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE10REt1YXp2dHpReHNrTjdMdmRHNV9OVXBfSFd3cXpaQ0xZN0dCQmNzUzNGVHBqeHpOcFlpNlhDQ3hMSUdLTUZzcnVhXzBWLTBCTkFtZEdFVzlvMVBXVWJDaFpNR0tGQ2Fl?oc=5",
+   "press": "경남도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-03-31",
+   "title": "다급했나…국민의힘 창원 의창 김종양 후보 \"비례 국민의미래 찍어달라\"에 선관위 '경고'",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5KZ2ROSzdDeWpIekQ2Z25rVHJPaU51R2JiR1ROSnM3OExEdzRsaW94NDd3RjVraFdhdDQzRlY0VXltWmNYdElXMms5MVNucnM5YnItLWhFdmZKckR4bFBrY3NhOXlOZWhC?oc=5",
+   "press": "경남도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  }
+ ],
+ "incidents": {
+  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
+  "updated": "2026-10-29",
+  "items": []
+ },
+ "media": {
+  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
+  "updated": "2026-10-29",
+  "top_words": [
+   [
+    "창원",
+    7
+   ],
+   [
+    "전국",
+    6
+   ],
+   [
+    "호선",
+    6
+   ],
+   [
+    "서울",
+    5
+   ],
+   [
+    "국지도",
+    4
+   ],
+   [
+    "북면",
+    4
+   ],
+   [
+    "발의",
+    4
+   ],
+   [
+    "공항",
+    3
+   ],
+   [
+    "부동산",
+    3
+   ],
+   [
+    "칠북",
+    3
+   ],
+   [
+    "도로",
+    3
+   ],
+   [
+    "건설",
+    3
+   ],
+   [
+    "간담회",
+    3
+   ],
+   [
+    "활성화",
+    3
+   ],
+   [
+    "국회의원",
+    3
+   ],
+   [
+    "국도",
+    3
+   ],
+   [
+    "특례시",
+    3
+   ],
+   [
+    "의창",
+    3
+   ],
+   [
+    "전기차",
+    2
+   ],
+   [
+    "리콜",
+    2
+   ],
+   [
+    "증가",
+    2
+   ],
+   [
+    "후에도",
+    2
+   ],
+   [
+    "미달",
+    2
+   ],
+   [
+    "활주로",
+    2
+   ],
+   [
+    "건축",
+    2
+   ],
+   [
+    "제주공항",
+    2
+   ],
+   [
+    "엉뚱한",
+    2
+   ],
+   [
+    "대통령",
+    2
+   ],
+   [
+    "전세계약",
+    2
+   ],
+   [
+    "ADAS",
+    2
+   ]
+  ],
+  "quotes": [
    {
-    "date": "2025-03-27",
-    "year": 2025,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2025-51호",
-    "prev": 3920079,
-    "inc": 221598,
-    "dec": 156225,
-    "total": 3985452,
-    "change": 65373,
-    "land": 772256,
-    "building": 2572100,
-    "securities": 232568,
-    "deposits": 470754,
-    "polfund": 52530,
-    "debt": 524596,
-    "cats": {
-     "토지": 772256,
-     "건물": 2572100,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 69840,
-     "예금": 470754,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 52530,
-     "증권": 232568,
-     "채권": 300000,
-     "채무": 524596,
-     "골동품및예술품": 40000
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+    "date": "2026-10-27",
+    "quote": "부실한 사후관리론 중국산 못 막아… 전기차 리콜 지표 바꿔야",
+    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9ZS2tkaU1yUmtGT0padEtwc29oRzFFcmxuQXJLR2pmdVRLai1ySjJ0Yng2cURRWnBZQnZDNV9yUkY0ZWdGaHF1Vkx6bWU0UjdhRzVzV2FDdTM1VDJHN3FocEJLRW1UTmFTdjdpQ1dEaEFGZWVr?oc=5",
+    "press": "글로벌뉴스통신GNA"
    },
    {
-    "date": "2026-03-26",
-    "year": 2026,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2026-54호",
-    "prev": 3985452,
-    "inc": 194647,
-    "dec": 373184,
-    "total": 3806915,
-    "change": -178537,
-    "land": 753497,
-    "building": 2504100,
-    "securities": 221169,
-    "deposits": 360549,
-    "polfund": 140293,
-    "debt": 634303,
-    "cats": {
-     "토지": 753497,
-     "건물": 2504100,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 61610,
-     "예금": 360549,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 140293,
-     "증권": 221169,
-     "채권": 360000,
-     "채무": 634303,
-     "골동품및예술품": 40000
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+    "date": "2026-10-27",
+    "quote": "전기차 결함 신고·피해구제 증가…ICCU 리콜 후에도 재발",
+    "url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE0tdkJwV1JiNFFsOExVZGRVeTlxd0FadnRqd2tWaHQ5OGlrZHQ0S2lTZFhhcUliR3ZBM09mQVlLY0JHQQ?oc=5",
+    "press": "브레이크뉴스"
+   },
+   {
+    "date": "2026-10-22",
+    "quote": "사천 등 전국 7개 공항 종단안전구역 미달…활주로 안전 ‘비상’",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFA4cEFuQXV4cTJJclI5VHJ0NTJiLWVhRHV1VHBoRHdGUUFXODZJNk1aVkVQN0xMNEw5N3MybUJqc1ppSkhwYnVOdFZnZ1NZdnJ3SlMxZThYQ0JMOXlKaTV0RlB4NWFvLWlWUGxB?oc=5",
+    "press": "경남일보"
+   },
+   {
+    "date": "2026-10-22",
+    "quote": "제주공항 대혼란 1759명 엉뚱한 공항 착륙",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5MR2RnQXBWN2xHTS13cVE5VGM0dktYX1hObVlEdnZBRy0tNzRDcUZzT284R01NRHkyTzB5d0pyLWptVHM5SmFfcHlVZFZvQkR1cUI3LS1fS2NIeEx2NTFaaVlXalgwSWJ4?oc=5",
+    "press": "경남도민신문"
+   },
+   {
+    "date": "2026-10-22",
+    "quote": "전국 14개 공항 중 7곳 활주로 안전구역 권고기준 미달",
+    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9CdkJvc1kyNzZuNV9UM2lRemN6VlF3V1lTb1R0eFRTYmlNajVHcTJVaE1ULUhZREdUamtrczJvYTVtU0tDNjRfc2VJNVBGXy1pOE96cFlFYVFoTWhISDBHLUpVN00?oc=5",
+    "press": "https://www.ppss.kr/"
+   },
+   {
+    "date": "2026-10-15",
+    "quote": "전국 전세계약 5건 중 1건 '주의 계약'",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBha1FObHYzcFJkSzRDWndfSE8wNDdRNE9sQjcxUFRGV3NEMDdpSTFkamFVd0lYVEc2UWxRS21MUnZQOVdTcmxPZjlFXzYxX0czTDlvNkt0U1NPQTk2bnU3YUkxX3MtR0NnUWNj?oc=5",
+    "press": "경남일보"
+   },
+   {
+    "date": "2026-09-28",
+    "quote": "ADAS 사고 분석 36건 중 23건 ‘특이사항 없음’ 종결",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1VMTdnMHNlZEdXWGxnbWlRbGtaa0VjSFBoVUFIU0JFM0ZTRE50Q2hISzQyd0JHRDNxUllpNFExeTlROVVzbm56M0JtSkpyNHB3MU5zcWJmSnMzWlV3TkExaVRMUXFWTWRoN3RZ?oc=5",
+    "press": "www.kmsnews.co.kr"
+   },
+   {
+    "date": "2026-09-17",
+    "quote": "고속도로 버스전용차로 위반 5년간 24만 건 넘어…승차인원 단속은 사실상 사각지대",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5NX2JwTlFaMlliUGxGVmxDeHAwRjlDOWFQY2pYeXRpSzJ0YWUtR005Y0VxV1Vka2RNZHBSS2RYRnV4UER5N1lubkVVb2NfbGtmeXRLbnlEYmtUZ2JnWjF5WlZIeXJnaTFXMkRF?oc=5",
+    "press": "www.kmsnews.co.kr"
+   },
+   {
+    "date": "2026-09-15",
+    "quote": "서울 고가주택 외국인 이상거래 급증",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1DOUJVU0tCNnloV1dIZ3VzcXc3dmRGN0JQODNGaTdaVkFSZW01czhKeUVfaWk1TW00RXNEbXB3VVNDZW9WeU5aQThBM2VDMDZUSEg2X2FxeHJFY2Vhbkl2ZThmLWUwckxEUGpj?oc=5",
+    "press": "경남일보"
+   },
+   {
+    "date": "2026-09-07",
+    "quote": "공동주택 회계 객관적 검증 장치 등 필요",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9LNHlsWlZfTW1qQm8tU0xQblpfOElNbmlJR3VRR2FEVG1mT1AwQXVQVnp5Y3JrMVkwWkw2RnpqdjNIWVQ2ZmdrcmhDS2ItdEVOQ0ZEMU5PaHFPS1BaVk1WTzl2cGVQOVXSAWtBVV95cUxNa2lIcFNFSlM1WElUczZOMDM2MmN4S0x2WEZaRWF0elRabWNIRlljdTlfSkZYMnlSRWJ2MjhzMV9QeDQyeVVDcUNsRE01WmNiWW4zUWNVYjBuYlA0aTF2d05MaFdlUF9Nam9hbw?oc=5",
+    "press": "아파트관리신문"
+   },
+   {
+    "date": "2026-07-29",
+    "quote": "전국 빈집 14만호, 범정부 차원 통합 관리 시급",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBQX3JJT0dfdEpKSnlKY3hwQ0k4bjlDZm5OTkVpSWktRkdlLWgwX2J2aElRdXY4UWpXTHZkeEp3UUMyejVZc2NQenppZGJXUGk3N3lISHpPM0VGNkVjMkU2UFBidElrM3UtLUdZ?oc=5",
+    "press": "경남일보"
+   },
+   {
+    "date": "2026-07-22",
+    "quote": "농지 거래 절벽, 규제부터 풀자",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1JQkwweXQ1TFNodFctY0VaaU1LLVdNWFZTbFR3MUVYNmFyUWZLc3BlM21aWDdZOHFEMnUzRDdkdkZRYnhsZG1xQ19lM0tzRC1zd0hWOVRxNXNHZ19YeHA0cWpqa1VMMklHa2lB?oc=5",
+    "press": "경남일보"
+   },
+   {
+    "date": "2026-06-26",
+    "quote": "실패 증명된 부동산 세제 강화 놀음...정권 몰락의 시발점 될 것",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB2cUxZMldHb1ZYZm1lZk9aU29CbW5uaHExdEFHaHR5SGNET1F5d0UxY2hZeUhScnVXQnZZbkQ5X3YyLTUzRmtXR0o4T2xQdnhielN3M3d1ZGFsV1hhZnhfUmFqc1dyZU55VzY0?oc=5",
+    "press": "뉴스데일리"
+   },
+   {
+    "date": "2025-02-16",
+    "quote": "야권이 내란 획책…창원 제2국가산단 속도를",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBmRXRLUzZWWmRRMmhaVm9peGlWb0ZvVnFLTFRuMEFtdkpXM25VMWQ4eG5jNzVSb1M2c3hGbEYyQnI4eGtKRm1GSFJwY0Q1WlpZSzljX2lyUnBWcHNCSUVKR09fV3hmOUxi?oc=5",
+    "press": "경남도민일보"
+   },
+   {
+    "date": "2024-03-31",
+    "quote": "비례 국민의미래 찍어달라",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5KZ2ROSzdDeWpIekQ2Z25rVHJPaU51R2JiR1ROSnM3OExEdzRsaW94NDd3RjVraFdhdDQzRlY0VXltWmNYdElXMms5MVNucnM5YnItLWhFdmZKckR4bFBrY3NhOXlOZWhC?oc=5",
+    "press": "경남도민일보"
    }
   ],
-  "latest": 3806915,
-  "latest_date": "2026-03-26",
-  "source": {
-   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
-   "unit": "천원",
-   "fetched": "2026-10-28",
-   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
-  }
+  "by_month": {
+   "2024-03": 1,
+   "2024-06": 1,
+   "2024-07": 1,
+   "2024-08": 2,
+   "2024-11": 1,
+   "2024-12": 1,
+   "2025-02": 2,
+   "2025-03": 1,
+   "2025-10": 1,
+   "2025-12": 1,
+   "2026-05": 2,
+   "2026-06": 2,
+   "2026-07": 7,
+   "2026-08": 4,
+   "2026-09": 18,
+   "2026-10": 11
+  },
+  "presses": [
+   [
+    "뉴스데일리",
+    15
+   ],
+   [
+    "경남도민일보",
+    11
+   ],
+   [
+    "경남일보",
+    6
+   ],
+   [
+    "시사코리아저널",
+    3
+   ],
+   [
+    "www.kmsnews.co.kr",
+    3
+   ],
+   [
+    "글로벌뉴스통신GNA",
+    2
+   ],
+   [
+    "일간투데이",
+    2
+   ],
+   [
+    "연합뉴스",
+    2
+   ],
+   [
+    "브레이크뉴스",
+    1
+   ],
+   [
+    "경남도민신문",
+    1
+   ]
+  ]
  }
 }

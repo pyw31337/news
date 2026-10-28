@@ -76,64 +76,27 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   }
  ],
- "photo_local": "data/pol/photos/HRG9655C.webp",
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
-  "lead_count": 116,
-  "co_count": 755,
-  "passed": 41,
+  "lead_count": 55,
+  "co_count": 223,
+  "passed": 10,
   "by_result": {
-   "임기만료폐기": 30,
-   "대안반영폐기": 37,
-   "수정가결": 4,
-   "계류": 45
+   "계류": 45,
+   "대안반영폐기": 9,
+   "수정가결": 1
   },
   "by_month": {
-   "2004-07": 1,
-   "2004-08": 1,
-   "2005-03": 2,
-   "2005-06": 2,
-   "2005-07": 5,
-   "2005-08": 2,
-   "2006-07": 1,
-   "2006-10": 1,
-   "2007-05": 1,
-   "2007-06": 1,
-   "2007-12": 1,
-   "2012-05": 1,
-   "2012-07": 1,
-   "2012-08": 2,
-   "2012-09": 11,
-   "2012-11": 2,
-   "2013-01": 1,
-   "2013-03": 2,
-   "2013-04": 3,
-   "2013-05": 5,
-   "2013-06": 2,
-   "2013-08": 2,
-   "2013-09": 1,
-   "2013-11": 3,
-   "2013-12": 1,
-   "2014-03": 2,
-   "2014-04": 1,
-   "2014-05": 1,
-   "2014-10": 1,
-   "2014-11": 1,
    "2024-06": 10,
    "2024-09": 6,
    "2024-10": 3,
@@ -515,7 +478,101 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
+  }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2016-07-28",
+    "year": 2016,
+    "kind": "재산등록·수시공개",
+    "issue": "국회공보 제2016-68호",
+    "prev": 1931443,
+    "inc": 191263,
+    "dec": 133189,
+    "total": 1989517,
+    "change": 58074,
+    "land": 19335,
+    "building": 873000,
+    "securities": 28307,
+    "deposits": 1317750,
+    "polfund": 21975,
+    "debt": 280000,
+    "cats": {
+     "토지": 19335,
+     "건물": 873000,
+     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 9150,
+     "예금": 1317750,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 21975,
+     "유가증권": 28307,
+     "채무": 280000,
+     "고지거부및등록제외사항": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=8c91ay126w4vptgii572xndzrulxr3am&fileSn=1"
+   },
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 4579845,
+    "inc": 1230216,
+    "dec": 1021269,
+    "total": 4788792,
+    "change": 208947,
+    "land": 20295,
+    "building": 1445000,
+    "securities": 1636704,
+    "deposits": 2727459,
+    "polfund": 2624,
+    "debt": 1050000,
+    "cats": {
+     "토지": 20295,
+     "건물": 1445000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 6710,
+     "예금": 2727459,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 2624,
+     "증권": 1636704,
+     "채무": 1050000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 4788792,
+    "inc": 3313717,
+    "dec": 2476029,
+    "total": 5626480,
+    "change": 837688,
+    "land": 20221,
+    "building": 3998000,
+    "securities": 396862,
+    "deposits": 2198200,
+    "polfund": 56857,
+    "debt": 1050000,
+    "cats": {
+     "토지": 20221,
+     "건물": 3998000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 6340,
+     "예금": 2198200,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 56857,
+     "증권": 396862,
+     "채무": 1050000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 5626480,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
   }
  },
  "votes": {
@@ -1690,98 +1747,593 @@
    "fetched": "2026-10-28"
   }
  },
- "assets": {
-  "records": [
+ "photo_local": "data/pol/photos/HRG9655C.webp",
+ "news": [
+  {
+   "date": "2026-10-28",
+   "title": "[창간 10주년 축사] 김희정 “더퍼블릭의 새로운 10년과 더 큰 발전을 기원합니다”",
+   "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE52OG1wWkRENUhoSmp6WmdoSl9xNkxpOTI1cXRCNjNmVGw1ZXJsckJoN0FhV1h6bDFsR0hGUFZSZGdkczlDa2pFNGFmUVVxMVFVNUVKRWJZTzhEOFpsd2FuYl9vSnU3YmwxWF92UF9ma9IBb0FVX3lxTE52OG1wWkRENUhoSmp6WmdoSl9xNkxpOTI1cXRCNjNmVGw1ZXJsckJoN0FhV1h6bDFsR0hGUFZSZGdkczlDa2pFNGFmUVVxMVFVNUVKRWJZTzhEOFpsd2FuYl9vSnU3YmwxWF92UF9maw?oc=5",
+   "press": "더퍼블릭",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-23",
+   "title": "김희정 의원 “외국인 유학생 불법체류 3만명…대학 관리체계 개선해야”",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5oZkJnQ1BTbDYzZzhiOXlBX0s3azBwLVM0MmJvSl9GZWtocER0VV9TM2sxV2NmUkF0alMyWklpNXBmbGJqQWxPUzN4MUJINlQyUXlYNzVfdHVEUjBLZXQ1R3V2MU5ZY0M4Q1ZF?oc=5",
+   "press": "일간투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-23",
+   "title": "국회 교육위 김희정 위원장, 외국인 유학생 불법체류 3만 명 돌파",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBCeHd1VU1NNmJwQTk4c1RjMjFqeG9SR21kdlROSWhFWHRocGxIZkQ5amswaEhjTWNXcjh5UndQeXB2ZU44Vi0tNUFOSUVNaE1rT3hiQnpoZndKYVRsOVN1RDd3OUl5U3ZZTkxUaNIBcEFVX3lxTE9ZWUpqR3cycFp3cFNSSTYtSmNlUzBwakhYNWRKMHhTRjZKSGI3bVJmSWV3YkxYOTlIQ0ZhanprNjBjdEROb3QwRTZrdHVqRi1oazFPTk1VdGRkOVBOY1Brc1hHRmowcjZsVWdkTXRpM0I?oc=5",
+   "press": "글로벌경제신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-23",
+   "title": "김희정 의원, 대학 외국인 유학생 불법체류 발생 12.2% 증가",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5PMUhmX190d2EtU0FvYjhIYVQtb2hydHJoTkFSd1FjWEktMlVucVkyY0ZTZUxHR2xXSzZfeWhOMFF5aHpxdTd5c05JTk1GZTBBSlRLaHA4bmxtR0hFR0Q5V1ZOV2stb0drVExubg?oc=5",
+   "press": "파이낸스투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-23",
+   "title": "김희정 의원, 외국인 유학생 늘리기 앞서 체류 관리부터…불법체류 3만 명 넘어",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5GNVctM2tNNUV4VW1NVUw2bGdpLVpvRk8xSjYyZ1VSVmtBY0NVTFZDcXd6dWZPWHAyT09mRlI5Y0llNkJnOW5QNjBobmdEay1KYVgyRG4zMW5LaVZpNnc?oc=5",
+   "press": "불탑뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-23",
+   "title": "김희정 의원, 외국인 유학생 불법체류자 3만 명 시대...어학연수생 불법체류율은 30% 달해",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB4XzlwSUQyRzE1eFBlaEhLdk03VGRFR0ctNnB4Tmx5XzdSdXplbWJaSmlJSktON3hFSVFuSk9fU3hUZldvZTh6YWxsWXB4WU50THMxMFFWb3pRLWplb3ByTtIBXkFVX3lxTFBEeUNyWHRvaktUUDFEMzBDRkJJelBzWXI5MWJzUG9wWHB0SUloNEMyZ1lJRDJ1cl9wS0YwdnZTeDcxUFUyMTdOSTVlelZDR0Q5Um1OdGg3V2owQldQcVE?oc=5",
+   "press": "세계로컬타임즈",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-16",
+   "title": "[여성신문 창간 38주년 축하합니다] 김희정 국회 교육위원장",
+   "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5paVlHbFRSNG1TV1pMcE1fWFBCWmFQUHpQOGk4a2VfRnlXdXBfWkFUOVJ0NW9TQzhpVkJwbVJVTExBMFNTOGZjaHV0a1lxLUxCaEQtLXV2X05zZFZRbjlxWVYydUZTLWM2UTh3eExGa9IBc0FVX3lxTFB2Rl8yRWxsLU8yZmF4eTl0MndNVUw1UmJqZ2FYQmVLMHRXdVJobmZPZThqVzV3X0VlSEZsUWV5b0pOS2h1ZEwzUDFORUc5elRCX3lTMEhUTjlvOTMtSWtPYUJRbkctYjFMZU94RWY5ZDBwMDg?oc=5",
+   "press": "여성신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-16",
+   "title": "김희정 교육위원장과 악수하는 이인재 인천대 총장",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1KTkhhUVBSNV9lQ2pHbjFYLWR6TDRlaEw3aWg2SEdYRmUxNjNGOVVSbmFSZ045NXg3Vl9aQ3UwWEJiSlpIbTEydEJzWW9yMVktSHlPQ2VJYXBydjTSAWBBVV95cUxPTmJodV9zTWg1VDF2eGZIYzB2OEw0YzJieTRsNG1TejJQRFpZVnJ5dGVhcHVEdjlJN2ppb3RlcXpncEtjYmlwYUItZURvWDM0Zy1EWDhTSmJmR181OThFR0g?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-12",
+   "title": "[PICK! 이 안건] 김희정 등 12인 \"교육공무원도 육아휴직 대상 자녀의 연령 및 학령 기준을 만 12세 이하 또는 초등학교 6학년 이하로 상향해야\"",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBPdDU0UVRodEJUQnI1UGd0c25lN0JWd25ib3AwUEhNNVZIdXozX2pvQndPdkYtOHVRZTM0cEZDVXBxNUF0aFhkd2o4ZWJJM1A1V3Q3U3NhOXM4ZGhlLVppcFhiNGJZVGNoLWc4enln?oc=5",
+   "press": "전국매일신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-10",
+   "title": "“교사 때리고 폭행, 5년 새 5배”…김희정 의원, 교권침해 대책 촉구",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9CWWlYanRTNVcxdFpSMm8xeVdRM0RQYjJzYW5iUnVvNnNKb2huRlVwWFVyYlR1NlMzU2lDQW02Tnoyel9pUnA4eDI5LVNKNC14SEFhTzRLeXlaSmM1ejNHellFSmNWQmRvaEk2ag?oc=5",
+   "press": "파이낸스투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-09",
+   "title": "김희정 의원, \"교원 대상 상해·폭행 증가…교권침해 신고 6년간 1만 9,819건\"",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBjSjhOVTRFbHJCWDlGejdmam5SQm5HTUpRVk9DTXpYZlNIT3pRV1ZNSF85SHVKUnJzTDlNYlN6dW9uc081ZTdOSFJfWHhpYkJIZVY2SVgxVm5VVTBC?oc=5",
+   "press": "교육연합신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-08",
+   "title": "김희정 의원 ‘대주주 회생동의 촉구’ 국제신문 농성장 찾아 응원",
+   "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOZjdaSWVEZlJmOEtnVE9PNS1LT0RhSFZqWDBpcllReWxpWUZYUzYyejEzNHl5NUhBU1ZhTkc1X0QtazllQzFtcmRJamR1SjBmdEZWcEptVHRaclEwU05JRjJIWUNnUXhYTkZpVE0tQVVYRDRfZ1hhMzYyNDJoekR2VFdfSUZHZTNhZ2lLMFNB?oc=5",
+   "press": "국제신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-08",
+   "title": "초등 6학년까지 육아휴직 확대 추진… 김희정 의원 개정안 발의",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1QTzliUzdGNWZMbjlDRmVOeHJGVVJZMlVscG93anJ1cmpsU0ZQRjBnb0RiNG5kX1hLak9NVmdfcTZWcDZmTFFHak1SaE54QzQ2cEtUd1prclZwNEU5MjlHOFdHQTgtczhLWlZua21R?oc=5",
+   "press": "간호사신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-07",
+   "title": "김희정 의원 \"최근 5년간 교원 성비위 징계 538건…학생 보호 체계 강화해야\"",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1VSGR6QzV1eUkwbFREbV9ITEJIaDVrLUFFSktuc21xSEVBR1ZTcG9rZ0J1Ny1YTUNudlp4VkcxRUx6b2tiOEc1SlJ5eExUY2xJVDlRamUzd3YxN2N4?oc=5",
+   "press": "뉴스핌",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-07",
+   "title": "[단독]김희정 \"국가평생교육진흥원장, 전용차 외 업무용 차 추가 배차 받아 '차량 2부제' 회피\"",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE44N0Fjcm1MZkFrRVA4ZUJITDNXNC1yVWJQQVkxVGJjaVZpVG83SV9MWHJXSlJHODgtZ2szbktQUG4zZnFSVkFrSm95WkRtTFRWVERfdDJkdUdBb3VtY2JvZdIBeEFVX3lxTE1PQTRILWlHanVwODFLZzhYQzlhWktobGJhTmRtbGN5WEZUYU9yVEhGRGFJbUNwTGloQlpaSTVSNGlpR1NtWEU4VG93TU5XU0F3azdidjJwZndHUWNGS0JYcHU1bzNjYzYzZUpTbjZ6T3N3dmRkc0lIOQ?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-07",
+   "title": "[2026국감] 김희정 사학연금 부정수급 규모 38억 원 넘어...\"적극 환수해야\"",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE16ajVNNjR3TWFsTGQyTDV1RWMxZFcyaUF5REMtSEs0QUNablZlOFVlbkZDeEo4WWVrU3ZsNEJIeUpxTFRpcTN1Z1F3V0lGWlBlWW5vRWc1NGd0eUZOaFRGblJWdGNjNklCbGJLOG9B?oc=5",
+   "press": "폴리뉴스 Polinews",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-07",
+   "title": "김희정 의원, \"미성년자·장애인 대상 성폭력 징계, 두 배 이상 증가\"",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8xYlFHVElZWGpDTGFqZ21wZVloV3RHSmFyMEltSjdKemFXOXFBXzE3ZTRHak1LMVBDUElibWZJRWlwMldudVFlTE4xaG1vbzlRT2RpNHpmVVBvN2ZO?oc=5",
+   "press": "교육연합신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-06",
+   "title": "김희정 의원 \"한국장학재단, 형식적 MOU 수집 벗어나야\"",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE90bkM5YmVxLWVFWTNTRUtIOVhzeWRUMFUtNnItUUphcVU2LV9vSk9zY1dGWEgtZ0JlM1Y1YUtNMHdsM21BNl95NmNINjh2T1NwVUNPTE9YNm9BZw?oc=5",
+   "press": "파이낸셜뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-03",
+   "title": "김희정 의원, 86번 버스 연산9동 양방향 운행 점검… \"주민 오랜 숙원 해소\"",
+   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE80WWg0VmxYMDRlbTVXa1A3ZDIzdDNpcmhyNUZEZkNnSmVuVTlabWJLa1czeXUyeXhxQzlXLVdxZXVRa2ZqeWtjaEx1WmF6b1dVVFRQWldPaFVaengySlZiTnN5NURaNXo5amVSTXdGeTM0SUNkOXZXV05VZUE2dw?oc=5",
+   "press": "더파워",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-27",
+   "title": "김희정 의원 “대입 원서접수번호로 경쟁률 유추…교육부 개선책 마련해야”",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5pa1hlN3dLSDdtN1FrSzlXRDkxSnF6SDZKMFZvQm5HN0htbS1kb2NEelRtMFFrT1Nsc1l1VzRvbkQ3TmNSRDhwanctTHZKY1NPeHFTYkhGNjlzdnZUU2V6NkJtUVZ0N0E1b25J?oc=5",
+   "press": "일간투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-24",
+   "title": "김희정 의원 \"수시 접수번호 실제 경쟁률 유추 가능…교육부 대책 마련해야\"",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBUVHFyNERhMUhPb0VmYVhUa1MwbVltZWVSczIyVFJ1d1FQLU9TZ2VBZjdfSEZHMGFTOEdIR0xuclhGWXVHMUdacGFBXzZNWFloZ2tjdVkzdnpwXzhr?oc=5",
+   "press": "뉴스핌",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-21",
+   "title": "[전격시사] 김희정 국민의힘 의원 - “지지층만을 위한 기자회견…‘연임 안한다, 재판 받겠다’ 세트로 갔어야” 대통령 아닌 ‘당통령’?",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBMcEIxcFM0V0FKVi01cEQyVkpsOXRJSHcxVGhmVzBKYm11V1JzWGQwOEsyeXQtdTA0R3N2aVhZbzZaQUJUQzQ4TXhEYzBhRU9qVXhnNlZ0N1hfdXc?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-16",
+   "title": "김희정-이주환 또 맞붙을까…연제구 총선 신호탄",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1KZ1VsclRURllxbGFoVUsxYmpfblpDaHFKS2s0eXhXRDdtblROLWZOVFc3ckJTak10TmN6aVNOcWpjZFFOUW9WTkRZN2syZUROTVdOaklRZTBVT0ZTdG8teWl3ZTlGT1dPVloybUhzaU8xTEk4OHZZUg?oc=5",
+   "press": "부산일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-10",
+   "title": "[인물포커스]-김희정 국회 교육위원장",
+   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5rckVVdlpBY2xwUUlSMlI0VzVzMHdZM0V5cEQwUFdrS1RCMHd6ajRaVURhV1pZZHEwSzhrSDZKUG9selRVQy1HRmtDVkwxaHhaWlE1Tw?oc=5",
+   "press": "news.knn.co.kr",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-10",
+   "title": "[포토] 청년의날 조직위원회 위촉식&시상식 축사하는 김희정 국민의힘 의원",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1MZWpJZU12MnI2MXU0M3ZlOTZBZThjWVVzYTVRdjRYRUtWTGxmYjZIS0htaGZvOTNtcldPcFFoSTZPQjVnN0QwRWUyUQ?oc=5",
+   "press": "아이뉴스24",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-30",
+   "title": "하반기 교육위, 여야 중량급 새 진용…위원장엔 국힘 김희정 의원",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE50SjdRUE03YjRpY1Z3Zy13ejV0WUxSRkhWZHFkSG42MnhpUUxmX3lqc2hFUmZKWFUyRC1WdGJmUGNaVzJkT3Z5Z1JWN3poNDFQWWE4cnJyd29peDJDT255S3Y5YVVDUmc?oc=5",
+   "press": "교수신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-24",
+   "title": "국회 교육위원장에 김희정 의원… “대한민국 교육의 새로운 미래 그려낼 것”",
+   "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBzREdXdmxQdmppM24yNFdKZjhldkxEZG1yLUJ2TWRIREw3bVFOOFYxb0pBZ0RQc3RjRHNNaVh2b2pmN0kyMm5vT2h2YTVCVmZXWnlZMjN3eFJodFpYaWFSc3pyVzc3UQ?oc=5",
+   "press": "한국대학신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-24",
+   "title": "22대 국회 후반기 교육위원장에 3선 김희정 선출",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9zMU15ZHhjMFcycHRyeFNVVFNfQnlJNVdKQVJxZUlfV0RHVXREMlhJbXhjdC1xRUNYMzZDZnpZY3ViOUpFUVpBczFQRm05VGJDci02dFVkT2ozdG1fSVhxUzNBQm1GcnM?oc=5",
+   "press": "교수신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-23",
+   "title": "[프로필] 김희정 교육위원장…여가부 장관 지낸 부산 3선",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9TTjI2UndONjV4ay0zXzU2d0FaZjA0WGJuWFlJWU8zNHB0TXJLUkphd00tcmI4am40cktfMHhkcFcySUJuLTN3NGRfcEl4UVdsZHlScWNxalU5ZmPSAWBBVV95cUxPRzRCZlIyOF96YmtBQTBqMmVQUmJlc0pxZVN3b25ISVhacW93cEVVYWx2cDdxQ0MySjBseFZmUXhmbElxaXV5eGdIcjBrVUpVSkY4cGE4SnhZTk1YNGhWQ0c?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-23",
+   "title": "[프로필] 김희정 신임 교육위원장…靑대변인·여가부장관 역임 실력파",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9DYkFrZ0NGOTdjZmVudmtfZGhMODRsX3lNR0Y4Y0E1MWgtdThCYWRFRDhreVNWVFhDWkRoUFZxN2dqbzMtR1VWWlpwTzRSVFE?oc=5",
+   "press": "Daum",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-23",
+   "title": "국힘, 상임위 복귀…교육위원장에 부산 3선 김희정",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE4xdDJjMEZrNWFVYjVsSnJJd21ZZGJLYzA2S2tuNkRjMlNVTmE0cTFFNVhRc0ZuckJzQkZMRWpwREFZaW1oaDJhOWpkc0ZnUG1vUGZORGtqd2VTZm5jTUYwNnowQzdBVmhlZlFj0gFvQVVfeXFMUFlDdHNMRHdJTmlZSVZfMTlsUVNrTHluUU12WFJIY21HUjNKT09UMDFvMFRUcXRSMHpOaFMxM25VTEtHSTNTTFlBTzk2VjJ5dWhFaW44LWhzUDZPdm1xT0ppLVU5NWdEYUZYRHhMZHIw?oc=5",
+   "press": "펜앤마이크",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-23",
+   "title": "22대 후반기 국회 교육위원장에 김희정 의원",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFB4dWJaQ1RqZXV0UzFwbGFtU3VIaFNNWmRBdjc2eEJ6cUI2a0l0UHBwM0MzNEZLTlpEYWRfVURnaTgwYnZKSnQwNndadm1aeFprLVl5cmZDbjM5X3hBekZn?oc=5",
+   "press": "한국교육신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-22",
+   "title": "상임위원장 선출 돌입한 국힘…부산 3선 김희정 교육위원장 내정",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQMjlTZEk1bmlUT003cnYteVlRMnhOQjlRNFR5X0RBZWtHbGZGOTZYbnVpdHM1QV9CYjJTdmc4b2Rob0laRGFMTDhRTHhiaEdKSmFPajJrT1BHTmNlREZEX2M3S05FWDdKUXpPZTNRUkQzR2J2dnhabXpzNFNFX1M5N3ZYVmk3UQ?oc=5",
+   "press": "부산일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-22",
+   "title": "김희정 의원, 22대 국회 하반기 교육위원장 낙점",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9leGR2UTc4UlpYRWdlMHVidS03QTFiTzRYOU5KZ0NPeGRyaGpIQjRtajBTQVJwYkNxRTJtc2FYXy11XzBnUVRYVDVrc2M5Mk9hdkxtY0xsMzh2Qnc?oc=5",
+   "press": "더에듀",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-25",
+   "title": "[전격시사] 김희정 국민의힘 의원 - 다주택·정보유출 논란…“제출,답변 자료, 100% 못 믿어…공적 마인드 안 보여” ‘전운고조’ 한성숙 청문회",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE85NXV6cDRXZzFIWWlHTEllR0o4bTBHRENVVENZVy1wV1JkZ21lRDItNmNwYjFhMXhOYXhoSldVS0FaeWJfc0Y3VC1XRFNXNDItY09ITFhjMmhJWTQ?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  }
+ ],
+ "incidents": {
+  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
+  "updated": "2026-10-29",
+  "items": []
+ },
+ "media": {
+  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
+  "updated": "2026-10-29",
+  "top_words": [
+   [
+    "교육위원장",
+    6
+   ],
+   [
+    "외국인",
+    5
+   ],
+   [
+    "유학생",
+    5
+   ],
+   [
+    "불법체류",
+    4
+   ],
+   [
+    "교육위원장에",
+    4
+   ],
+   [
+    "증가",
+    3
+   ],
+   [
+    "대상",
+    3
+   ],
+   [
+    "국민의힘",
+    3
+   ],
+   [
+    "국힘",
+    3
+   ],
+   [
+    "부산",
+    3
+   ],
+   [
+    "새로운",
+    2
+   ],
+   [
+    "대학",
+    2
+   ],
+   [
+    "교육위",
+    2
+   ],
+   [
+    "넘어",
+    2
+   ],
+   [
+    "육아휴직",
+    2
+   ],
+   [
+    "폭행",
+    2
+   ],
+   [
+    "교권침해",
+    2
+   ],
+   [
+    "대책",
+    2
+   ],
+   [
+    "촉구",
+    2
+   ],
+   [
+    "교원",
+    2
+   ],
+   [
+    "년간",
+    2
+   ],
+   [
+    "징계",
+    2
+   ],
+   [
+    "경쟁률",
+    2
+   ],
+   [
+    "유추",
+    2
+   ],
+   [
+    "교육부",
+    2
+   ],
+   [
+    "마련해야",
+    2
+   ],
+   [
+    "하반기",
+    2
+   ],
+   [
+    "후반기",
+    2
+   ],
+   [
+    "선출",
+    2
+   ],
+   [
+    "더퍼블릭의",
+    1
+   ]
+  ],
+  "quotes": [
    {
-    "date": "2016-07-28",
-    "year": 2016,
-    "kind": "재산등록·수시공개",
-    "issue": "국회공보 제2016-68호",
-    "prev": 1931443,
-    "inc": 191263,
-    "dec": 133189,
-    "total": 1989517,
-    "change": 58074,
-    "land": 19335,
-    "building": 873000,
-    "securities": 28307,
-    "deposits": 1317750,
-    "polfund": 21975,
-    "debt": 280000,
-    "cats": {
-     "토지": 19335,
-     "건물": 873000,
-     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 9150,
-     "예금": 1317750,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 21975,
-     "유가증권": 28307,
-     "채무": 280000,
-     "고지거부및등록제외사항": 0
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=8c91ay126w4vptgii572xndzrulxr3am&fileSn=1"
+    "date": "2026-10-28",
+    "quote": "더퍼블릭의 새로운 10년과 더 큰 발전을 기원합니다",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE52OG1wWkRENUhoSmp6WmdoSl9xNkxpOTI1cXRCNjNmVGw1ZXJsckJoN0FhV1h6bDFsR0hGUFZSZGdkczlDa2pFNGFmUVVxMVFVNUVKRWJZTzhEOFpsd2FuYl9vSnU3YmwxWF92UF9ma9IBb0FVX3lxTE52OG1wWkRENUhoSmp6WmdoSl9xNkxpOTI1cXRCNjNmVGw1ZXJsckJoN0FhV1h6bDFsR0hGUFZSZGdkczlDa2pFNGFmUVVxMVFVNUVKRWJZTzhEOFpsd2FuYl9vSnU3YmwxWF92UF9maw?oc=5",
+    "press": "더퍼블릭"
    },
    {
-    "date": "2025-03-27",
-    "year": 2025,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2025-51호",
-    "prev": 4579845,
-    "inc": 1230216,
-    "dec": 1021269,
-    "total": 4788792,
-    "change": 208947,
-    "land": 20295,
-    "building": 1445000,
-    "securities": 1636704,
-    "deposits": 2727459,
-    "polfund": 2624,
-    "debt": 1050000,
-    "cats": {
-     "토지": 20295,
-     "건물": 1445000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 6710,
-     "예금": 2727459,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 2624,
-     "증권": 1636704,
-     "채무": 1050000
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+    "date": "2026-10-23",
+    "quote": "외국인 유학생 불법체류 3만명…대학 관리체계 개선해야",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5oZkJnQ1BTbDYzZzhiOXlBX0s3azBwLVM0MmJvSl9GZWtocER0VV9TM2sxV2NmUkF0alMyWklpNXBmbGJqQWxPUzN4MUJINlQyUXlYNzVfdHVEUjBLZXQ1R3V2MU5ZY0M4Q1ZF?oc=5",
+    "press": "일간투데이"
    },
    {
-    "date": "2026-03-26",
-    "year": 2026,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2026-54호",
-    "prev": 4788792,
-    "inc": 3313717,
-    "dec": 2476029,
-    "total": 5626480,
-    "change": 837688,
-    "land": 20221,
-    "building": 3998000,
-    "securities": 396862,
-    "deposits": 2198200,
-    "polfund": 56857,
-    "debt": 1050000,
-    "cats": {
-     "토지": 20221,
-     "건물": 3998000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 6340,
-     "예금": 2198200,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 56857,
-     "증권": 396862,
-     "채무": 1050000
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+    "date": "2026-10-12",
+    "quote": "교육공무원도 육아휴직 대상 자녀의 연령 및 학령 기준을 만 12세 이하 또는 초등학교 6학년 이하로 상향해야",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBPdDU0UVRodEJUQnI1UGd0c25lN0JWd25ib3AwUEhNNVZIdXozX2pvQndPdkYtOHVRZTM0cEZDVXBxNUF0aFhkd2o4ZWJJM1A1V3Q3U3NhOXM4ZGhlLVppcFhiNGJZVGNoLWc4enln?oc=5",
+    "press": "전국매일신문"
+   },
+   {
+    "date": "2026-10-09",
+    "quote": "교원 대상 상해·폭행 증가…교권침해 신고 6년간 1만 9,819건",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBjSjhOVTRFbHJCWDlGejdmam5SQm5HTUpRVk9DTXpYZlNIT3pRV1ZNSF85SHVKUnJzTDlNYlN6dW9uc081ZTdOSFJfWHhpYkJIZVY2SVgxVm5VVTBC?oc=5",
+    "press": "교육연합신문"
+   },
+   {
+    "date": "2026-10-07",
+    "quote": "최근 5년간 교원 성비위 징계 538건…학생 보호 체계 강화해야",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1VSGR6QzV1eUkwbFREbV9ITEJIaDVrLUFFSktuc21xSEVBR1ZTcG9rZ0J1Ny1YTUNudlp4VkcxRUx6b2tiOEc1SlJ5eExUY2xJVDlRamUzd3YxN2N4?oc=5",
+    "press": "뉴스핌"
+   },
+   {
+    "date": "2026-10-07",
+    "quote": "국가평생교육진흥원장, 전용차 외 업무용 차 추가 배차 받아 '차량 2부제' 회피",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE44N0Fjcm1MZkFrRVA4ZUJITDNXNC1yVWJQQVkxVGJjaVZpVG83SV9MWHJXSlJHODgtZ2szbktQUG4zZnFSVkFrSm95WkRtTFRWVERfdDJkdUdBb3VtY2JvZdIBeEFVX3lxTE1PQTRILWlHanVwODFLZzhYQzlhWktobGJhTmRtbGN5WEZUYU9yVEhGRGFJbUNwTGloQlpaSTVSNGlpR1NtWEU4VG93TU5XU0F3azdidjJwZndHUWNGS0JYcHU1bzNjYzYzZUpTbjZ6T3N3dmRkc0lIOQ?oc=5",
+    "press": "뉴시스"
+   },
+   {
+    "date": "2026-10-07",
+    "quote": "적극 환수해야",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE16ajVNNjR3TWFsTGQyTDV1RWMxZFcyaUF5REMtSEs0QUNablZlOFVlbkZDeEo4WWVrU3ZsNEJIeUpxTFRpcTN1Z1F3V0lGWlBlWW5vRWc1NGd0eUZOaFRGblJWdGNjNklCbGJLOG9B?oc=5",
+    "press": "폴리뉴스 Polinews"
+   },
+   {
+    "date": "2026-10-07",
+    "quote": "미성년자·장애인 대상 성폭력 징계, 두 배 이상 증가",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8xYlFHVElZWGpDTGFqZ21wZVloV3RHSmFyMEltSjdKemFXOXFBXzE3ZTRHak1LMVBDUElibWZJRWlwMldudVFlTE4xaG1vbzlRT2RpNHpmVVBvN2ZO?oc=5",
+    "press": "교육연합신문"
+   },
+   {
+    "date": "2026-10-06",
+    "quote": "한국장학재단, 형식적 MOU 수집 벗어나야",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE90bkM5YmVxLWVFWTNTRUtIOVhzeWRUMFUtNnItUUphcVU2LV9vSk9zY1dGWEgtZ0JlM1Y1YUtNMHdsM21BNl95NmNINjh2T1NwVUNPTE9YNm9BZw?oc=5",
+    "press": "파이낸셜뉴스"
+   },
+   {
+    "date": "2026-10-03",
+    "quote": "주민 오랜 숙원 해소",
+    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE80WWg0VmxYMDRlbTVXa1A3ZDIzdDNpcmhyNUZEZkNnSmVuVTlabWJLa1czeXUyeXhxQzlXLVdxZXVRa2ZqeWtjaEx1WmF6b1dVVFRQWldPaFVaengySlZiTnN5NURaNXo5amVSTXdGeTM0SUNkOXZXV05VZUE2dw?oc=5",
+    "press": "더파워"
+   },
+   {
+    "date": "2026-09-27",
+    "quote": "대입 원서접수번호로 경쟁률 유추…교육부 개선책 마련해야",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5pa1hlN3dLSDdtN1FrSzlXRDkxSnF6SDZKMFZvQm5HN0htbS1kb2NEelRtMFFrT1Nsc1l1VzRvbkQ3TmNSRDhwanctTHZKY1NPeHFTYkhGNjlzdnZUU2V6NkJtUVZ0N0E1b25J?oc=5",
+    "press": "일간투데이"
+   },
+   {
+    "date": "2026-09-24",
+    "quote": "수시 접수번호 실제 경쟁률 유추 가능…교육부 대책 마련해야",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBUVHFyNERhMUhPb0VmYVhUa1MwbVltZWVSczIyVFJ1d1FQLU9TZ2VBZjdfSEZHMGFTOEdIR0xuclhGWXVHMUdacGFBXzZNWFloZ2tjdVkzdnpwXzhr?oc=5",
+    "press": "뉴스핌"
+   },
+   {
+    "date": "2026-09-21",
+    "quote": "지지층만을 위한 기자회견…‘연임 안한다, 재판 받겠다’ 세트로 갔어야",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBMcEIxcFM0V0FKVi01cEQyVkpsOXRJSHcxVGhmVzBKYm11V1JzWGQwOEsyeXQtdTA0R3N2aVhZbzZaQUJUQzQ4TXhEYzBhRU9qVXhnNlZ0N1hfdXc?oc=5",
+    "press": "KBS 뉴스"
+   },
+   {
+    "date": "2026-07-24",
+    "quote": "대한민국 교육의 새로운 미래 그려낼 것",
+    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBzREdXdmxQdmppM24yNFdKZjhldkxEZG1yLUJ2TWRIREw3bVFOOFYxb0pBZ0RQc3RjRHNNaVh2b2pmN0kyMm5vT2h2YTVCVmZXWnlZMjN3eFJodFpYaWFSc3pyVzc3UQ?oc=5",
+    "press": "한국대학신문"
+   },
+   {
+    "date": "2026-06-25",
+    "quote": "제출,답변 자료, 100% 못 믿어…공적 마인드 안 보여",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE85NXV6cDRXZzFIWWlHTEllR0o4bTBHRENVVENZVy1wV1JkZ21lRDItNmNwYjFhMXhOYXhoSldVS0FaeWJfc0Y3VC1XRFNXNDItY09ITFhjMmhJWTQ?oc=5",
+    "press": "KBS 뉴스"
    }
   ],
-  "latest": 5626480,
-  "latest_date": "2026-03-26",
-  "source": {
-   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
-   "unit": "천원",
-   "fetched": "2026-10-28",
-   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
-  }
+  "by_month": {
+   "2026-06": 1,
+   "2026-07": 9,
+   "2026-09": 6,
+   "2026-10": 19
+  },
+  "presses": [
+   [
+    "일간투데이",
+    2
+   ],
+   [
+    "파이낸스투데이",
+    2
+   ],
+   [
+    "연합뉴스",
+    2
+   ],
+   [
+    "교육연합신문",
+    2
+   ],
+   [
+    "뉴스핌",
+    2
+   ],
+   [
+    "KBS 뉴스",
+    2
+   ],
+   [
+    "부산일보",
+    2
+   ],
+   [
+    "교수신문",
+    2
+   ],
+   [
+    "더퍼블릭",
+    1
+   ],
+   [
+    "글로벌경제신문",
+    1
+   ]
+  ]
  }
 }

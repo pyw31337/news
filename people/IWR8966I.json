@@ -62,22 +62,16 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   }
  ],
- "photo_local": "data/pol/photos/IWR8966I.webp",
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
   "lead_count": 80,
@@ -482,7 +476,75 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
+  }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 2460036,
+    "inc": 242032,
+    "dec": 99166,
+    "total": 2602902,
+    "change": 142866,
+    "land": 519493,
+    "building": 3901158,
+    "securities": 35342,
+    "deposits": 359733,
+    "polfund": 28486,
+    "debt": 2516300,
+    "cats": {
+     "토지": 519493,
+     "건물": 3901158,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 24990,
+     "예금": 359733,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 28486,
+     "증권": 35342,
+     "채권": 250000,
+     "채무": 2516300
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 2602902,
+    "inc": -405266,
+    "dec": -776090,
+    "total": 2973726,
+    "change": 370824,
+    "land": 523827,
+    "building": 4200510,
+    "securities": 69456,
+    "deposits": 240543,
+    "polfund": 115648,
+    "debt": 2478088,
+    "cats": {
+     "토지": 523827,
+     "건물": 4200510,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 51830,
+     "예금": 240543,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 115648,
+     "증권": 69456,
+     "채권": 250000,
+     "채무": 2478088
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 2973726,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
   }
  },
  "votes": {
@@ -796,72 +858,648 @@
    "fetched": "2026-10-28"
   }
  },
- "assets": {
-  "records": [
+ "photo_local": "data/pol/photos/IWR8966I.webp",
+ "news": [
+  {
+   "date": "2026-10-23",
+   "title": "한동훈, 아들 학폭 의혹 제기 박균택에 법적 대응 예고 : 정치",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9qQlBiYkdOc1JYV3poS3pGck9tck9VbVl5emx0cUpBcko2VVpIdGRiOUV5bG1Xb0tMSEpXOHZ1SkgteVJKclE3WE1PWQ?oc=5",
+   "press": "재경일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-22",
+   "title": "민주 박균택, '한동훈 아들 학폭무마 의혹' 제기‥한동훈 \"저질·한심\"",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1WVkNjc0UwTWxpY3VSNW1Wdk9DR0NPdVRBdVROdldyaUxxVmEzYks1aXZzbGJabmVaMVR5M28waENHSWlQU2I5UXUwWVlXeE90RjhBRXVfc2RjOUl4ZWhwUExCLWtLeVZwcVdnWnBhVzJ6d3ZmazVWadIBeEFVX3lxTFAwbXdEcTNOeVhtUGYxMDJHRTVQWldZNzRtN0NoanY5dmJjbGlxNkgwQ2NfaGZwazFNWVg4VDdrXzBqNmtVMmJQWnBMWkZ0OEpyYURaYlFzSmdlU25DMlFvWk9uSk1WcVBleFNKdmFtY2E2NWc2SlFtWQ?oc=5",
+   "press": "MBC 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-22",
+   "title": "박균택 “한동훈, 아들 학폭 무마 의혹”···한 “저질 공격”",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1EWnhKRVptWEtJOVNEXzFQM2lLZlpNdU1YaWp2azlWZnFPOE95TjRPSmFTQ0ZhSmpIUzVORE96QnF0VHduYW5md1MtemhDamtfSWlRSnF1WXo5Ylc1LWc?oc=5",
+   "press": "주간경향",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-22",
+   "title": "박균택, 한동훈 아들 학폭 무마 의혹 제기…한동훈 법적 대응 예고",
+   "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE8wdzh4c1BCcE9CUWFkb0hsQmdXdVFOajdrTmpkb05xamJpNFR6c0luMkl3ZG5McU5qbW5ZckpfMU9rZmdacnlhQnE4SFJwdDlqRnRDa2lKWnNtQzI5Qmp3aENpa2VzZXZuME5raEM4MXctc1E?oc=5",
+   "press": "스페셜타임스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-14",
+   "title": "5·18 피해자 배상액 최대 4배 차이…與박균택 \"불균형 바로잡아야\"",
+   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBTRFpSVjlYNktqSTVNcTZZaTB6ZnY0Ql9VTERQRmJKWDNFN21nVDBsOVlYekRVdW9VNkFpX2d5VDhVR0swNjJZU3lTRllpQTNIYzZfWHNVd3hoYVg0cHI0OElR?oc=5",
+   "press": "매일신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-10",
+   "title": "“한동훈 장관 때, 딸 수사 국제공조 불송부…직권남용 수사감” 박균택 직격",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1talJxMHA5N200U0YtZmtGWkN5bWZYVnpVTHhKLUVrQ0pwVWlsZHdpVHl0TjZTMXBzUV9PSU9NZXZmdXJzMldTTnBoTnphMWZLcHl3cGFrN1VHS2R2RHJsMTA3QkNFbmtURE8tSnZuVlYzd0s3?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-08",
+   "title": "與 박균택 “후임 법무장관 非검사 출신 적임자 필요”",
+   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPTkNqdVA2WmlIbFJMdk9CVHcwLVpUdlZWWFZWSVdjcXY1REdDekUzUUVVajlIUXMxMkxNR1hCNUJJdHVTRC05R1g1RHRSWHVZWmFwejlrM2FFM3pGblRSSnUwZUhqeGdqYzhCclB0MHphcE1OeWNzcDRUNUlyVGJodw?oc=5",
+   "press": "이데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-08",
+   "title": "[전격시사] 박균택 더불어민주당 의원 - “가석방 절차대로…대북송금, 검찰 조작 행위 법원 묵인, 특검법 통과돼야” 이화영이 던진 ‘화살’, 어디로?",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1yWFR4dGMyUUdOQS11OWtjQTE2cUp1WGpDdXVLTDJHZUtOaWV6OHgtWnhINlZDSmRmOVM3M2N5OHVPYU5qaTB4SlB3eGVFcFF5N0ZYengzVjI4Rmc?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-26",
+   "title": "법무장관 하마평 박균택 \"조작기소 특검법에 공소취소권 넣어야\"",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQZ1ExUkYtdG44NFVLX21tYVl5dUk3dXVXeC10a01ENzR0MzdSbkpTSnFNWDVMaFV0WVBMUGRnVkJPaGxKOGVZN3g3SnVDRHE0bVNVNU9Bb29RNGhydEJjcUFpczltaFRxcGNGOFZ2bVlMR0Z3MDFtN0VZWVI4bE16YnpEZWF6Zw?oc=5",
+   "press": "조선일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-18",
+   "title": "박균택 의원 “임기 2년 만에 ‘정치 인생 건 약속’ 현실로… 윤석열 탄핵·군공항 이전 가시화 달성”",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5rQ0ZRTmEtVDZ2SjZManNWN1M0b1MzVm9IbTZVWk5lWHhPS2pqeXBJTGV5WHNsSHVFcURLU09MQWtqVHpJMGRYdktCVGxzOE9LYmVfYWRwZnpRdXZLRGs2UTBvblAwc0JJeGxj?oc=5",
+   "press": "뉴스데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-09",
+   "title": "[전격시사] 박균택 더불어민주당 의원 - “검찰 불신 강해, 보완수사권 폐지가 민주진영 생각…부작용, 보완은 필요” ‘장윤기 사건’에도 보완수사권 폐지 속도, 왜?",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5MZG95Nzg0T2plT0FJbGlvT1I3REJkX3o0dGxJMHZsWkNQcG5RZ1VZVWRzbS0zNzJ5VE9GYzEzdzZWcDR2bzF6MjZnenJSX1VJb2JOWEhicmFpYmM?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-11",
+   "title": "박균택 의원 \"정청래 '정권은 짧다' 발언, 설마 李 겨냥이라고 믿지 않아\"",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1kd3p5UUw4ZzlsTFEzMzdHTW0ybHJ5dzZKNjJYWVdwOF9CSjc4SmNvMEh4YnNaLW1TSGZSMFdQQWxaN3RBRERnZjdWT1FUaGl1VHBoREJWUFo5bUtj?oc=5",
+   "press": "뉴스핌",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-16",
+   "title": "평택서 거세지는 민주 vs 혁신…혁신당 \"박균택 주장 아닌밤 홍두깨 식\" 맹비난",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBETzkwc3otTlhpWXA0aVo3ek9VMnNoYVhlZ2FRQzVfazdXOTlBTnU5WXJHWUN1WXpfMmdTU0tDNHZhMklmRW5KbGJydXpLRFkyMXZnUmdDTGdKWlFQck5QYkFVQWhTdWRXcUdj?oc=5",
+   "press": "프레시안",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-16",
+   "title": "與박균택 \"조국, 檢개혁 말할 자격있나\"…조국혁신당 \"조국 사태 전후 달라져\"",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBRbUxaYW5VWEZENW9lZU1fNWswLVY3Wk1lN09zMjNxbGRPNHRHSFZPOHFsVVlpUHZsVmZzVDEtWEJjaS1mQmlEMjFtY2R1MnpkTGxDVXlyckYtSHctUW16ONIBeEFVX3lxTE5kQmRkT3pHWGk2R2Y1OE9fSVlOMV8tYWdDV2dCc0sxUFc2OUl5TGR4bXVpekdtSGlwR01HRVBJTWVtWjBvb0VZTFJaLXE1Mkl4RFV4dDRYc25Yc0dsOEJieDVfNmJrYllZMUZpLTN0N3RjS0cxOHNpcg?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-15",
+   "title": "민주 박균택, 조국에 “김용남 비난 전에 검찰개혁 실패 사죄하라”",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFA2eUlhVVBJZDdUT3VKVW16cGNEOGNZZTBSWE5TQ1VPWHJnajNCMzBOWko1dnpLSnZVTzlmS3NjbXEyMjlObTVhd182MHVzMUREVnRXNFhQeVBDZ0ZhN1oyVmc0TjdPdG9XakE?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-08",
+   "title": "박균택 의원, 지선 선대위 2상황실장 맡아...민주 원내부대표 재임명도",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5Yc2NLb2l6cTVkWVpmZDJTWEhsS0lQWGpJQUZzS3hET2w0MU9IUlFRZWFqdm03UW1MR0RpZVhtSHNsM0RndnFKYlZxRlYtZWNPel9QV0NnV1JtWDVu?oc=5",
+   "press": "뉴스핌",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-03-12",
+   "title": "與 박균택 \"공취거래설 황당하고 어림도 없는 소리…근거 밝혀야\"",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9wMmxTbEhRN3ZFWklhU2QzWC00dTFMSTdvRnN0TzFFRVJpSmRRZzNxSHhMWi1HV3RVYmY5eFpia0cza3VCMW44RC1ZLWxzYXFxZ3h3emY1SVYxdw?oc=5",
+   "press": "뉴스1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-01-16",
+   "title": "박균택 \"검사 직접수사권은 폐지…조건적 보완수사권은 필요\"",
+   "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE90SVdPWWtvWmxWd2tiOW9hWnhZX2RVNVN0amNCejZKUE56TFlOR0psR0phVFp2eDBlSFM3U21QNklraTQxM3JRdThNd1RJbWcwM1HSAVNBVV95cUxQc0tDNFR1T01DXzFUM3gyN0RWenEzZzJEWWd1S2djUDY3QTlDRUNJaC1jOVhINGNUdTlhb3NhSERPOVk2UEtBd1dKUjRlckZfSDRWOA?oc=5",
+   "press": "서울경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-11-11",
+   "title": "[인터뷰] 박균택 \"노만석 옳은 결정 한 것…반발 두려워 사표 내는 건 무책임\"",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFA2anlaQ3BleVBMZmMyS2tNOFF4cENCakI0c1VWZkhfaFJwc284YzVRVXczX3JnM3VVdE91YlAxN09IRjMzQzRrZGlpUmdTa2JfYU1LUktwWTB3ZWo4MV9fWGF3M3hkU18tQkHSAWZBVV95cUxQaHpQR3dpbWY0QVI1MU9NdkhlQWZVQU1Dcno5MWNGcmRncXROQmpqVklLRF83NWtuZncwYzZGb1VCazVBMnpBR2ZzUFY1aDJoWGEyQVdNdmczYVdRenVKSEZtNEpqQXc?oc=5",
+   "press": "SBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-10-20",
+   "title": "인터뷰 전문…박균택 “장동혁, 추종세력 은혜 갚으려 윤석열 전 대통령 면회” [정치시그널]",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1qY0ptbFZZVlBoaEtUTGZndF91cWZiNEVVekhiajd4VGllaHhDRmpxVWNiTWJseDg2VTA0MEpDX2RZV19wRFFScTR4VU4zVnRkWjVvR01NZ0FWMEVuWVHSAWNBVV95cUxOaExjUlM0MTczSmNhdEFlM0djRnZNdW5kclFQdFVyRWpINGN0dzBLRG52cFphYm1LRXVCRTg5dndxbEZCZ1dPMENIYlc5eDZHN3JjOVBkNk5xenVuVXZjWERlOWM?oc=5",
+   "press": "채널A",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-08-14",
+   "title": "민주 박균택 “조국, 잘못보다 심한 매 맞아…예전 인기는 못 누릴 것”",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBHNHpxNXZfOGpYZDUyQTJaX2d3LUF6enIyZlFkbUJNcDhFNDRMNG1Xa19iVnVlMkpEN1VLZ2tOaHlsRjZYMml4ZGRaSHc5aTRPZ3JoeFRzbU1yUk0?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-06-23",
+   "title": "박균택 의원, 광산구민 천여명 참석 의정보고회 성료",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBOWXRTdVR0dDlaUW5WQW1GNFF2RDlMTkNEQU5fZW1iWTNDYjhRalZQM3pWbENiN3h4eVI1NEJ3TW1IeVEyMmRxYWZIMnNBS2JqNkhpLU5CZWRuSjhuZ2Y4XzNLdFhQak9FRXFz0gFvQVVfeXFMT2dTamoxLUtVd3poeUk4UkljajYwV1N2SmNUQUpRVTRPa1pNdnNDclpqYW43RjYzUEJRUWdPY25VdGw2XzJiWDQtb0pSR1dQdnhmUk52Q3dvYUxKS1E1aGFwWEViekFxSXlaRGJDWl93?oc=5",
+   "press": "펜앤마이크",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-06-12",
+   "title": "[전격시사] 박균택 더불어민주당 의원 - “역대급 사건에는 역대급 특검 필요…검찰청 폐지, 민주 진영 내 공감대”",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5MVVRXdDVMbUlvZnN3Nk1LSC1FUVhnR1B2ZUVfR0NYSzhZNmkzejl6R3h4RExLV1psaUpaNWYwUzQzRWZQQ0o4UFViMFlFUWJQTEd1NFdHRms0ZHM?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-06-12",
+   "title": "고검장 출신 민주 박균택 “비검찰 출신 법무부장관 임명 가능성 충분”",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9RU0ZZdkpfN1VFT2YxSm5ORzB0a3JSdkRSb21FQk1PeC1Zb0ViQjRpNlA4aFpDMkRfLXBuYTFJaDB3czNjbVRNNW1ocmp1dGQyWU02U1FB?oc=5",
+   "press": "헤럴드경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "민주 박균택 \"이재명 대통령 재판…법원 스스로 중단할 가능성 커\"",
+   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5uRmRtTWt1YjBRQ3NmNVNrbWtkSGxVT3BJaXZKMXJsempsRUVVaVc3cVU0LUxsaXFHbzUwbHBYd015Vzl3dWs3cDVkR3FPQWZMck9sUQ?oc=5",
+   "press": "JTBC",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-06-05",
+   "title": "민주 박균택 \"이재명 대통령 선거법 재판, 법원 스스로 중단할 것\"",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE81TDNvNF9rcHU0VEQzYW1oRVlGQWNCdTZ4X3I2TzQ1enZma0dTZTF0dXNieVZRQnoxdFBOekludFZ6WlZRRmllTzRsVG9rNjM5VE5xR1ZWdDNidjRHNldsX9IBeEFVX3lxTFBKQ0VfTVFlbWFfQTUyc0pEck40UWxnYW9xN0NhYmVGMk44Qy1HSk9rNUZRWkgtV3JwZmFDYnYwc2RjYXRER3ctVEQxU1gxd0FpcVFxSDZGNmtUYjg3ZFR6WnFKVndYWW5ZSWZmRnJ1bGZ3Q194dEpiag?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-05-02",
+   "title": "민주 박균택 “재상고 절차만 27일…대선 전 재판확정 불가능”",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE43a1ptYlM1aE9Wdnh0NE1fTmVPVzR6RVFvRGIzSXRPcHBnSFExTkFKbDduYk1oZWhENE9hckNGek1wS3UwSE1nOUU0TndETkJ3cUNYWVR4ZDd1Y050Ykx6X25WTGxMb3pSc3dMaUxXODBOYml1?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-05-02",
+   "title": "박균택 \"대법 '李 선거법 무죄 파기', 이승만 이후 최대 대선 개입 사건\"",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBmZXV2OFNIaFZPZ3VLeWpGWXIwN0hEbmJUMnJDbU5vMzNhRS1aMmpqSC1QWnVGandpdUM5aUlvT3RjU0xyMFc3OEVtcTdvcDZFMzNFSUUyV0tqQQ?oc=5",
+   "press": "한국경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-12-24",
+   "title": "민주 박균택, ‘선거법 위반’ 회계책임자 재판 나와 \"선처해달라\"",
+   "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBUSFR3azJsbVozU3B1cm1nRkRaUUVwSF9WTEpmdVBYM2xjMkN6cFVnQ2VsWGVUeE9iaGhQbkNCamFDaWZNTzVVOUFxOGxQeHpX?oc=5",
+   "press": "문화일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-12-20",
+   "title": "박균택 의원, '더불어민주당 국정감사 우수의원' 선정",
+   "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9TaHhMa2Nmd193d0laOFFsYnhoc0FQSFFFM2xLWDU3ZWJIOHZlc1B5bFZMNVA3aUZ3SkRTbmhRZk91aTU3T2dmZ3BhUFlfSTVmOXc?oc=5",
+   "press": "노컷뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-11-15",
+   "title": "민주 박균택 \"'선거법 위반' 이재명, 당연히 '무죄'\"",
+   "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE82Q0JMS1BCZ2RfZ21oZ1JpX2NhMGtZQUc5S2p4N3BRNGJHZU96QUVrLUd3eGNJbVZXWlI5T2FsZVlyYlFtb0RCMktUOE8?oc=5",
+   "press": "아이뉴스24",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-04-22",
+   "title": "광주 민형배 의원 민주당 전략기획위원장, 박균택 당선인 법률위원장 맡아",
+   "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFA4aHdNWG9DVldNS2xMVjU3RU95akxSLVI3NU81M19pci1IQzBKaURQVUhOZDR3cU1oMXdfQVFXMnUzRHFMOTJhekRUZlFMRnV4WEpVVnZaYXM5X1NqcXlEN19RZkMyaWwwemJCaGRZV0lzRlHSAXdBVV95cUxOQXo1U2V6NkFneWxVYnpUMVJrVlZKUGVncVd1OE95cjZWM1dUZ2lYZHhwMGlITXltY0lLTnVDeExDM19FOXk1QWtFeHNobEgxempVMTItLWxRb2pMRm4wc1l1UzNxVElvTTVfNjB0WHl3TnFxV2d3Yw?oc=5",
+   "press": "한국시민기자협회 뉴스포털1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  }
+ ],
+ "incidents": {
+  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
+  "updated": "2026-10-29",
+  "items": [
    {
-    "date": "2025-03-27",
-    "year": 2025,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2025-51호",
-    "prev": 2460036,
-    "inc": 242032,
-    "dec": 99166,
-    "total": 2602902,
-    "change": 142866,
-    "land": 519493,
-    "building": 3901158,
-    "securities": 35342,
-    "deposits": 359733,
-    "polfund": 28486,
-    "debt": 2516300,
-    "cats": {
-     "토지": 519493,
-     "건물": 3901158,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 24990,
-     "예금": 359733,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 28486,
-     "증권": 35342,
-     "채권": 250000,
-     "채무": 2516300
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+    "date": "2026-10-23",
+    "stage": "의혹",
+    "title": "한동훈, 아들 학폭 의혹 제기 박균택에 법적 대응 예고 : 정치",
+    "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9qQlBiYkdOc1JYV3poS3pGck9tck9VbVl5emx0cUpBcko2VVpIdGRiOUV5bG1Xb0tMSEpXOHZ1SkgteVJKclE3WE1PWQ?oc=5",
+    "press": "재경일보"
    },
    {
-    "date": "2026-03-26",
-    "year": 2026,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2026-54호",
-    "prev": 2602902,
-    "inc": -405266,
-    "dec": -776090,
-    "total": 2973726,
-    "change": 370824,
-    "land": 523827,
-    "building": 4200510,
-    "securities": 69456,
-    "deposits": 240543,
-    "polfund": 115648,
-    "debt": 2478088,
-    "cats": {
-     "토지": 523827,
-     "건물": 4200510,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 51830,
-     "예금": 240543,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 115648,
-     "증권": 69456,
-     "채권": 250000,
-     "채무": 2478088
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+    "date": "2026-10-22",
+    "stage": "의혹",
+    "title": "박균택, 한동훈 아들 학폭 무마 의혹 제기…한동훈 법적 대응 예고",
+    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE8wdzh4c1BCcE9CUWFkb0hsQmdXdVFOajdrTmpkb05xamJpNFR6c0luMkl3ZG5McU5qbW5ZckpfMU9rZmdacnlhQnE4SFJwdDlqRnRDa2lKWnNtQzI5Qmp3aENpa2VzZXZuME5raEM4MXctc1E?oc=5",
+    "press": "스페셜타임스"
+   },
+   {
+    "date": "2026-07-09",
+    "stage": "수사",
+    "title": "[전격시사] 박균택 더불어민주당 의원 - “검찰 불신 강해, 보완수사권 폐지가 민주진영 생각…부작용, 보완은 필요” ‘장윤기 사건’에도 보완수사권 폐지 속도, 왜?",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5MZG95Nzg0T2plT0FJbGlvT1I3REJkX3o0dGxJMHZsWkNQcG5RZ1VZVWRzbS0zNzJ5VE9GYzEzdzZWcDR2bzF6MjZnenJSX1VJb2JOWEhicmFpYmM?oc=5",
+    "press": "KBS 뉴스"
+   },
+   {
+    "date": "2024-12-24",
+    "stage": "기소·재판",
+    "title": "민주 박균택, ‘선거법 위반’ 회계책임자 재판 나와 \"선처해달라\"",
+    "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBUSFR3azJsbVozU3B1cm1nRkRaUUVwSF9WTEpmdVBYM2xjMkN6cFVnQ2VsWGVUeE9iaGhQbkNCamFDaWZNTzVVOUFxOGxQeHpX?oc=5",
+    "press": "문화일보"
+   }
+  ]
+ },
+ "media": {
+  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
+  "updated": "2026-10-29",
+  "top_words": [
+   [
+    "민주",
+    12
+   ],
+   [
+    "한동훈",
+    7
+   ],
+   [
+    "아들",
+    4
+   ],
+   [
+    "의혹",
+    4
+   ],
+   [
+    "필요",
+    4
+   ],
+   [
+    "더불어민주당",
+    4
+   ],
+   [
+    "선거법",
+    4
+   ],
+   [
+    "학폭",
+    3
+   ],
+   [
+    "제기",
+    3
+   ],
+   [
+    "출신",
+    3
+   ],
+   [
+    "법원",
+    3
+   ],
+   [
+    "폐지",
+    3
+   ],
+   [
+    "조국",
+    3
+   ],
+   [
+    "대통령",
+    3
+   ],
+   [
+    "이재명",
+    3
+   ],
+   [
+    "재판",
+    3
+   ],
+   [
+    "법적",
+    2
+   ],
+   [
+    "대응",
+    2
+   ],
+   [
+    "예고",
+    2
+   ],
+   [
+    "정치",
+    2
+   ],
+   [
+    "저질",
+    2
+   ],
+   [
+    "무마",
+    2
+   ],
+   [
+    "최대",
+    2
+   ],
+   [
+    "법무장관",
+    2
+   ],
+   [
+    "검사",
+    2
+   ],
+   [
+    "검찰",
+    2
+   ],
+   [
+    "윤석열",
+    2
+   ],
+   [
+    "보완수사권",
+    2
+   ],
+   [
+    "사건",
+    2
+   ],
+   [
+    "맡아",
+    2
+   ]
+  ],
+  "quotes": [
+   {
+    "date": "2026-10-22",
+    "quote": "한동훈, 아들 학폭 무마 의혹",
+    "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1EWnhKRVptWEtJOVNEXzFQM2lLZlpNdU1YaWp2azlWZnFPOE95TjRPSmFTQ0ZhSmpIUzVORE96QnF0VHduYW5md1MtemhDamtfSWlRSnF1WXo5Ylc1LWc?oc=5",
+    "press": "주간경향"
+   },
+   {
+    "date": "2026-10-14",
+    "quote": "불균형 바로잡아야",
+    "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBTRFpSVjlYNktqSTVNcTZZaTB6ZnY0Ql9VTERQRmJKWDNFN21nVDBsOVlYekRVdW9VNkFpX2d5VDhVR0swNjJZU3lTRllpQTNIYzZfWHNVd3hoYVg0cHI0OElR?oc=5",
+    "press": "매일신문"
+   },
+   {
+    "date": "2026-10-08",
+    "quote": "후임 법무장관 非검사 출신 적임자 필요",
+    "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPTkNqdVA2WmlIbFJMdk9CVHcwLVpUdlZWWFZWSVdjcXY1REdDekUzUUVVajlIUXMxMkxNR1hCNUJJdHVTRC05R1g1RHRSWHVZWmFwejlrM2FFM3pGblRSSnUwZUhqeGdqYzhCclB0MHphcE1OeWNzcDRUNUlyVGJodw?oc=5",
+    "press": "이데일리"
+   },
+   {
+    "date": "2026-10-08",
+    "quote": "가석방 절차대로…대북송금, 검찰 조작 행위 법원 묵인, 특검법 통과돼야",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1yWFR4dGMyUUdOQS11OWtjQTE2cUp1WGpDdXVLTDJHZUtOaWV6OHgtWnhINlZDSmRmOVM3M2N5OHVPYU5qaTB4SlB3eGVFcFF5N0ZYengzVjI4Rmc?oc=5",
+    "press": "KBS 뉴스"
+   },
+   {
+    "date": "2026-08-26",
+    "quote": "조작기소 특검법에 공소취소권 넣어야",
+    "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQZ1ExUkYtdG44NFVLX21tYVl5dUk3dXVXeC10a01ENzR0MzdSbkpTSnFNWDVMaFV0WVBMUGRnVkJPaGxKOGVZN3g3SnVDRHE0bVNVNU9Bb29RNGhydEJjcUFpczltaFRxcGNGOFZ2bVlMR0Z3MDFtN0VZWVI4bE16YnpEZWF6Zw?oc=5",
+    "press": "조선일보"
+   },
+   {
+    "date": "2026-07-18",
+    "quote": "임기 2년 만에 ‘정치 인생 건 약속’ 현실로… 윤석열 탄핵·군공항 이전 가시화 달성",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5rQ0ZRTmEtVDZ2SjZManNWN1M0b1MzVm9IbTZVWk5lWHhPS2pqeXBJTGV5WHNsSHVFcURLU09MQWtqVHpJMGRYdktCVGxzOE9LYmVfYWRwZnpRdXZLRGs2UTBvblAwc0JJeGxj?oc=5",
+    "press": "뉴스데일리"
+   },
+   {
+    "date": "2026-07-09",
+    "quote": "검찰 불신 강해, 보완수사권 폐지가 민주진영 생각…부작용, 보완은 필요",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5MZG95Nzg0T2plT0FJbGlvT1I3REJkX3o0dGxJMHZsWkNQcG5RZ1VZVWRzbS0zNzJ5VE9GYzEzdzZWcDR2bzF6MjZnenJSX1VJb2JOWEhicmFpYmM?oc=5",
+    "press": "KBS 뉴스"
+   },
+   {
+    "date": "2026-06-11",
+    "quote": "정청래 '정권은 짧다' 발언, 설마 李 겨냥이라고 믿지 않아",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1kd3p5UUw4ZzlsTFEzMzdHTW0ybHJ5dzZKNjJYWVdwOF9CSjc4SmNvMEh4YnNaLW1TSGZSMFdQQWxaN3RBRERnZjdWT1FUaGl1VHBoREJWUFo5bUtj?oc=5",
+    "press": "뉴스핌"
+   },
+   {
+    "date": "2026-05-16",
+    "quote": "조국, 檢개혁 말할 자격있나",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBRbUxaYW5VWEZENW9lZU1fNWswLVY3Wk1lN09zMjNxbGRPNHRHSFZPOHFsVVlpUHZsVmZzVDEtWEJjaS1mQmlEMjFtY2R1MnpkTGxDVXlyckYtSHctUW16ONIBeEFVX3lxTE5kQmRkT3pHWGk2R2Y1OE9fSVlOMV8tYWdDV2dCc0sxUFc2OUl5TGR4bXVpekdtSGlwR01HRVBJTWVtWjBvb0VZTFJaLXE1Mkl4RFV4dDRYc25Yc0dsOEJieDVfNmJrYllZMUZpLTN0N3RjS0cxOHNpcg?oc=5",
+    "press": "뉴시스"
+   },
+   {
+    "date": "2026-05-15",
+    "quote": "김용남 비난 전에 검찰개혁 실패 사죄하라",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFA2eUlhVVBJZDdUT3VKVW16cGNEOGNZZTBSWE5TQ1VPWHJnajNCMzBOWko1dnpLSnZVTzlmS3NjbXEyMjlObTVhd182MHVzMUREVnRXNFhQeVBDZ0ZhN1oyVmc0TjdPdG9XakE?oc=5",
+    "press": "한겨레"
+   },
+   {
+    "date": "2026-03-12",
+    "quote": "공취거래설 황당하고 어림도 없는 소리…근거 밝혀야",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9wMmxTbEhRN3ZFWklhU2QzWC00dTFMSTdvRnN0TzFFRVJpSmRRZzNxSHhMWi1HV3RVYmY5eFpia0cza3VCMW44RC1ZLWxzYXFxZ3h3emY1SVYxdw?oc=5",
+    "press": "뉴스1"
+   },
+   {
+    "date": "2026-01-16",
+    "quote": "검사 직접수사권은 폐지…조건적 보완수사권은 필요",
+    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE90SVdPWWtvWmxWd2tiOW9hWnhZX2RVNVN0amNCejZKUE56TFlOR0psR0phVFp2eDBlSFM3U21QNklraTQxM3JRdThNd1RJbWcwM1HSAVNBVV95cUxQc0tDNFR1T01DXzFUM3gyN0RWenEzZzJEWWd1S2djUDY3QTlDRUNJaC1jOVhINGNUdTlhb3NhSERPOVk2UEtBd1dKUjRlckZfSDRWOA?oc=5",
+    "press": "서울경제"
+   },
+   {
+    "date": "2025-11-11",
+    "quote": "노만석 옳은 결정 한 것…반발 두려워 사표 내는 건 무책임",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFA2anlaQ3BleVBMZmMyS2tNOFF4cENCakI0c1VWZkhfaFJwc284YzVRVXczX3JnM3VVdE91YlAxN09IRjMzQzRrZGlpUmdTa2JfYU1LUktwWTB3ZWo4MV9fWGF3M3hkU18tQkHSAWZBVV95cUxQaHpQR3dpbWY0QVI1MU9NdkhlQWZVQU1Dcno5MWNGcmRncXROQmpqVklLRF83NWtuZncwYzZGb1VCazVBMnpBR2ZzUFY1aDJoWGEyQVdNdmczYVdRenVKSEZtNEpqQXc?oc=5",
+    "press": "SBS 뉴스"
+   },
+   {
+    "date": "2025-10-20",
+    "quote": "장동혁, 추종세력 은혜 갚으려 윤석열 전 대통령 면회",
+    "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1qY0ptbFZZVlBoaEtUTGZndF91cWZiNEVVekhiajd4VGllaHhDRmpxVWNiTWJseDg2VTA0MEpDX2RZV19wRFFScTR4VU4zVnRkWjVvR01NZ0FWMEVuWVHSAWNBVV95cUxOaExjUlM0MTczSmNhdEFlM0djRnZNdW5kclFQdFVyRWpINGN0dzBLRG52cFphYm1LRXVCRTg5dndxbEZCZ1dPMENIYlc5eDZHN3JjOVBkNk5xenVuVXZjWERlOWM?oc=5",
+    "press": "채널A"
+   },
+   {
+    "date": "2025-08-14",
+    "quote": "조국, 잘못보다 심한 매 맞아…예전 인기는 못 누릴 것",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBHNHpxNXZfOGpYZDUyQTJaX2d3LUF6enIyZlFkbUJNcDhFNDRMNG1Xa19iVnVlMkpEN1VLZ2tOaHlsRjZYMml4ZGRaSHc5aTRPZ3JoeFRzbU1yUk0?oc=5",
+    "press": "KBS 뉴스"
+   },
+   {
+    "date": "2025-06-12",
+    "quote": "역대급 사건에는 역대급 특검 필요…검찰청 폐지, 민주 진영 내 공감대",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5MVVRXdDVMbUlvZnN3Nk1LSC1FUVhnR1B2ZUVfR0NYSzhZNmkzejl6R3h4RExLV1psaUpaNWYwUzQzRWZQQ0o4UFViMFlFUWJQTEd1NFdHRms0ZHM?oc=5",
+    "press": "KBS 뉴스"
+   },
+   {
+    "date": "2025-06-12",
+    "quote": "비검찰 출신 법무부장관 임명 가능성 충분",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9RU0ZZdkpfN1VFT2YxSm5ORzB0a3JSdkRSb21FQk1PeC1Zb0ViQjRpNlA4aFpDMkRfLXBuYTFJaDB3czNjbVRNNW1ocmp1dGQyWU02U1FB?oc=5",
+    "press": "헤럴드경제"
+   },
+   {
+    "date": "2025-06-05",
+    "quote": "이재명 대통령 재판…법원 스스로 중단할 가능성 커",
+    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5uRmRtTWt1YjBRQ3NmNVNrbWtkSGxVT3BJaXZKMXJsempsRUVVaVc3cVU0LUxsaXFHbzUwbHBYd015Vzl3dWs3cDVkR3FPQWZMck9sUQ?oc=5",
+    "press": "JTBC"
+   },
+   {
+    "date": "2025-06-05",
+    "quote": "이재명 대통령 선거법 재판, 법원 스스로 중단할 것",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE81TDNvNF9rcHU0VEQzYW1oRVlGQWNCdTZ4X3I2TzQ1enZma0dTZTF0dXNieVZRQnoxdFBOekludFZ6WlZRRmllTzRsVG9rNjM5VE5xR1ZWdDNidjRHNldsX9IBeEFVX3lxTFBKQ0VfTVFlbWFfQTUyc0pEck40UWxnYW9xN0NhYmVGMk44Qy1HSk9rNUZRWkgtV3JwZmFDYnYwc2RjYXRER3ctVEQxU1gxd0FpcVFxSDZGNmtUYjg3ZFR6WnFKVndYWW5ZSWZmRnJ1bGZ3Q194dEpiag?oc=5",
+    "press": "뉴시스"
+   },
+   {
+    "date": "2025-05-02",
+    "quote": "재상고 절차만 27일…대선 전 재판확정 불가능",
+    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE43a1ptYlM1aE9Wdnh0NE1fTmVPVzR6RVFvRGIzSXRPcHBnSFExTkFKbDduYk1oZWhENE9hckNGek1wS3UwSE1nOUU0TndETkJ3cUNYWVR4ZDd1Y050Ykx6X25WTGxMb3pSc3dMaUxXODBOYml1?oc=5",
+    "press": "한겨레"
+   },
+   {
+    "date": "2025-05-02",
+    "quote": "대법 '李 선거법 무죄 파기', 이승만 이후 최대 대선 개입 사건",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBmZXV2OFNIaFZPZ3VLeWpGWXIwN0hEbmJUMnJDbU5vMzNhRS1aMmpqSC1QWnVGandpdUM5aUlvT3RjU0xyMFc3OEVtcTdvcDZFMzNFSUUyV0tqQQ?oc=5",
+    "press": "한국경제"
+   },
+   {
+    "date": "2024-11-15",
+    "quote": "'선거법 위반' 이재명, 당연히 '무죄'",
+    "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE82Q0JMS1BCZ2RfZ21oZ1JpX2NhMGtZQUc5S2p4N3BRNGJHZU96QUVrLUd3eGNJbVZXWlI5T2FsZVlyYlFtb0RCMktUOE8?oc=5",
+    "press": "아이뉴스24"
    }
   ],
-  "latest": 2973726,
-  "latest_date": "2026-03-26",
-  "source": {
-   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
-   "unit": "천원",
-   "fetched": "2026-10-28",
-   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
-  }
+  "by_month": {
+   "2024-04": 1,
+   "2024-11": 1,
+   "2024-12": 2,
+   "2025-05": 2,
+   "2025-06": 5,
+   "2025-08": 1,
+   "2025-10": 1,
+   "2025-11": 1,
+   "2026-01": 1,
+   "2026-03": 1,
+   "2026-05": 4,
+   "2026-06": 1,
+   "2026-07": 2,
+   "2026-08": 1,
+   "2026-10": 8
+  },
+  "presses": [
+   [
+    "KBS 뉴스",
+    4
+   ],
+   [
+    "한겨레",
+    3
+   ],
+   [
+    "뉴스핌",
+    2
+   ],
+   [
+    "뉴시스",
+    2
+   ],
+   [
+    "재경일보",
+    1
+   ],
+   [
+    "MBC 뉴스",
+    1
+   ],
+   [
+    "주간경향",
+    1
+   ],
+   [
+    "스페셜타임스",
+    1
+   ],
+   [
+    "매일신문",
+    1
+   ],
+   [
+    "이데일리",
+    1
+   ]
+  ]
  }
 }

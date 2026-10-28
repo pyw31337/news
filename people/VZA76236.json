@@ -56,22 +56,16 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   }
  ],
- "photo_local": "data/pol/photos/VZA76236.webp",
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
   "lead_count": 25,
@@ -406,7 +400,73 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
+  }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 675377,
+    "inc": 470633,
+    "dec": 312162,
+    "total": 833848,
+    "change": 158471,
+    "land": 89142,
+    "building": 737941,
+    "securities": 46381,
+    "deposits": 115200,
+    "polfund": 87730,
+    "debt": 279526,
+    "cats": {
+     "토지": 89142,
+     "건물": 737941,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 36980,
+     "예금": 115200,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 87730,
+     "증권": 46381,
+     "채무": 279526
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 833848,
+    "inc": 583185,
+    "dec": 427895,
+    "total": 989138,
+    "change": 155290,
+    "land": 531369,
+    "building": 471000,
+    "securities": 67183,
+    "deposits": 142291,
+    "polfund": 6845,
+    "debt": 260000,
+    "cats": {
+     "토지": 531369,
+     "건물": 471000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 30450,
+     "예금": 142291,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 6845,
+     "증권": 67183,
+     "채무": 260000
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 989138,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
   }
  },
  "votes": {
@@ -1063,70 +1123,364 @@
    "fetched": "2026-10-28"
   }
  },
- "assets": {
-  "records": [
+ "photo_local": "data/pol/photos/VZA76236.webp",
+ "news": [
+  {
+   "date": "2026-10-09",
+   "title": "김문수, 정청래 美비자 사태에 김민석·박선원도 소환 \"반미투쟁 반성커녕 무용담 미화\"",
+   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBJZ3hqenN1LTBIRXVBa2twVWtHODRSQ0pIYngxUktwMV9tZll2YUJ0RUNqa0ItQ1c0U0Z6ZURsVG82c0hzX0dKLWc2WFFZUUV5X3N5U0FuX0NOZ2JfTFI3bFJn?oc=5",
+   "press": "매일신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-17",
+   "title": "[속보]민주당 최고위원 ‘친청계’ 최민희·이성윤·한민수···‘친명계’ 박선원·서미화 당선",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBMczVrQlNzMFpDZzdoNGFWbi11dDdld1h4NHBPVDlxZ2llbjZxeGdiWE9uUV9nYjhraVRBb0hSVXBUYWg0bE85d2RrZWtLaVU?oc=5",
+   "press": "Daum",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-05",
+   "title": "「M포토」 ‘모두의 민주’ 창립식 참석한 한민수·서미화·박선원·최민희",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA5M0dCNGNNaHNrLTVxQVp5XzUybEdRbl91Z25obEJVSmMyU1hDY29XYVhqN3Mya3BIbmx5U3JHaWtpZ1dLWkZOZGRDQ2dRRUVaVFlRN0lIcGRDeWZDeVUtYndDTHprTTA?oc=5",
+   "press": "M이코노미뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-23",
+   "title": "與박선원 “신천지, 민주·국힘 중복가입 독려…보이지 않는 손 밝혀야”",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE4wQWlyT3lPRFdPNVBLQmR6dnFGdU9JaXRtYkNnRUkxaHlsSV9GLWNyTzVRb055d3FTVDZza3EtR091YTRRODBIYnFGdlpWR1lpb3hQY1dHeGVlMVJIdkY1MENyaEhVbm1uUXd6MzgzclNkZlJIUGVn0gFmQVVfeXFMUG53UldqcjhZS29nUlRmbWJHbWJHcC1UbkFBUHNuZnU4Sl93RFBYQWJyYUpxNWJJVWM3dUZHT24tRzY5TkZPZ0d3M3M4ZnRNbVpCZFRIZUUzMVhTQnRsS3FKN0pvV1BB?oc=5",
+   "press": "동아일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-09",
+   "title": "민주 박선원 “호남이 대한민국 미래 열어야”",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE96NTd4TlhURUNKcXRDNzM0eWh6c1BtMUNwWm5PbGFMUG1xNlhCVDQ1VVJOX203Y0NpREhhM0lod3gxQnVoVkNiZlBZbmM5YkU?oc=5",
+   "press": "Daum",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-24",
+   "title": "박선원 與최고위원 출마…\"총선·대선 승리할 민주 만들 것\"",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE41YU04dGhRSl9zYW9URGhVcFN4eVk5YTZLWm9aZmUzcmw1R255cmZ5SEJsemNHc29ZcFB5M3hmcGx5bXlUclhkVnlSQVhnOWhscDI4Z3BSNHB5QQ?oc=5",
+   "press": "뉴스1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-04-25",
+   "title": "민주 박선원, 국정원장 ‘직무유기’ 등 혐의 고발…“정치 중립 의무 위반”",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5UNnNycVh2cW8xaFFtdHJvNEpWNE04djRCZGVLLWtCeUZjeFdvd2FvelBsQk1xMzBsaVQxdmhhSHEyY3k5bGcwRHZud0N4UV8xdTU0aTg1OWhzU3Bka0RaX3dEWFVsclZmWm5JcHluYi15c2syLXNv0gFmQVVfeXFMUHpsUDducjJkZ2x6MFpPZjJ4cWwwREU0dEdGWlB0RGVTdHhtZ3FrZmpzNEhoX3lxZVF6aldua3p5S2NBYmFiUWhMRWZONnFvNm5QUGswWkJKclVldlgtc05FOElWU2lR?oc=5",
+   "press": "동아일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-02-05",
+   "title": "트럼프 노벨상 추천한 박선원 “판 바꿀 사람이라”",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE15ejV0aFJWTExpY1lpVU51RktvVVNoZ1pXMU4tb2prM2JrajlBajV6YW5YLU1ieEZTY3lUTUN0eWhTWThvamZ3YklVRy1qSFJUcXM3TzJoSkpJQVUyMWNoRmRrTzBFWlN5SkE?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-02-04",
+   "title": "민주 박선원, 노벨평화상에 트럼프 추천…“한인 추방당할 판인데”",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9rSGtCUS1nSHh5djdlY2g1cmowbVduQng2U0szeEJmY2stVWk1MlFJMVJUUkxfTjJtT09ZOEF6TWVJQWxGSUVrNGRHZUxZc2JKYVdtQWVMLTNpMzdkT3FnVHZtN3RjX2d0OUE?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-02-03",
+   "title": "민주 박선원, 트럼프 노벨평화상 후보로 추천…“지도부에도 언질”",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1ublZVZThGNFdCXzNEVHpEc1Q0Z045cG9iMzlweXkyYTh5M1hWRWQ2RjJSdDVxOXJwenlmS0c3Vmc5NkpnRlpfVGstNmJfRkwwclZNbWpQY204d9IBX0FVX3lxTE95LXl1OVhiZF9qU2N5R3QxcDkwWDh0Tmc3eGhPTTFJNjQ4R1ltVXNzeFQ4RXo2eHI1b0NuTGltRVFZRTBRcnlLSFAydnRNLUVwYzBVWFdCRmV6WGxra2hF?oc=5",
+   "press": "경향신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-02-03",
+   "title": "민주 박선원, 노벨 평화상 후보에 트럼프 추천",
+   "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBpQ3UwbS1HSUc0U3R3Zks4NHdkaTlNT0swZEU2RXBtaHF6MjJuVEpEWWR4MEJFUTdBV0cwUEg3YlkzOVo2OUlJLWFDQzBmcFkxN1HSAVNBVV95cUxQcS1SX2FfNUZoUU1kV1JkeVR1cDJmeUJHb0twck4ySDdkS1loNTVXemtDNzVSelVjT2tNNHEzdk1JdlF3bGpidXlLbFc1T2x6N201dw?oc=5",
+   "press": "서울경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-12-06",
+   "title": "박선원 \"軍, 올해 3월부터 계엄 예비 훈련\"",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE4yRkRPNW4tanhxMXpyOUpQQTZuQ1ZQMGpxZFpjWlotTjdxSEVOckdna1JGcTVvbTdFZUZEajRaTzJtTzQyc01YVGdZb3RBbnpJZnFkTzRzOEQxaDlQMzVCc1pkVjFTVnRkY2c?oc=5",
+   "press": "주간조선",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  }
+ ],
+ "incidents": {
+  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
+  "updated": "2026-10-29",
+  "items": [
    {
-    "date": "2025-03-27",
-    "year": 2025,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2025-51호",
-    "prev": 675377,
-    "inc": 470633,
-    "dec": 312162,
-    "total": 833848,
-    "change": 158471,
-    "land": 89142,
-    "building": 737941,
-    "securities": 46381,
-    "deposits": 115200,
-    "polfund": 87730,
-    "debt": 279526,
-    "cats": {
-     "토지": 89142,
-     "건물": 737941,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 36980,
-     "예금": 115200,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 87730,
-     "증권": 46381,
-     "채무": 279526
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+    "date": "2026-10-09",
+    "stage": "수사",
+    "title": "김문수, 정청래 美비자 사태에 김민석·박선원도 소환 \"반미투쟁 반성커녕 무용담 미화\"",
+    "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBJZ3hqenN1LTBIRXVBa2twVWtHODRSQ0pIYngxUktwMV9tZll2YUJ0RUNqa0ItQ1c0U0Z6ZURsVG82c0hzX0dKLWc2WFFZUUV5X3N5U0FuX0NOZ2JfTFI3bFJn?oc=5",
+    "press": "매일신문"
    },
    {
-    "date": "2026-03-26",
-    "year": 2026,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2026-54호",
-    "prev": 833848,
-    "inc": 583185,
-    "dec": 427895,
-    "total": 989138,
-    "change": 155290,
-    "land": 531369,
-    "building": 471000,
-    "securities": 67183,
-    "deposits": 142291,
-    "polfund": 6845,
-    "debt": 260000,
-    "cats": {
-     "토지": 531369,
-     "건물": 471000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 30450,
-     "예금": 142291,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 6845,
-     "증권": 67183,
-     "채무": 260000
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+    "date": "2025-04-25",
+    "stage": "수사",
+    "title": "민주 박선원, 국정원장 ‘직무유기’ 등 혐의 고발…“정치 중립 의무 위반”",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5UNnNycVh2cW8xaFFtdHJvNEpWNE04djRCZGVLLWtCeUZjeFdvd2FvelBsQk1xMzBsaVQxdmhhSHEyY3k5bGcwRHZud0N4UV8xdTU0aTg1OWhzU3Bka0RaX3dEWFVsclZmWm5JcHluYi15c2syLXNv0gFmQVVfeXFMUHpsUDducjJkZ2x6MFpPZjJ4cWwwREU0dEdGWlB0RGVTdHhtZ3FrZmpzNEhoX3lxZVF6aldua3p5S2NBYmFiUWhMRWZONnFvNm5QUGswWkJKclVldlgtc05FOElWU2lR?oc=5",
+    "press": "동아일보"
+   }
+  ]
+ },
+ "media": {
+  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
+  "updated": "2026-10-29",
+  "top_words": [
+   [
+    "민주",
+    8
+   ],
+   [
+    "트럼프",
+    4
+   ],
+   [
+    "추천",
+    3
+   ],
+   [
+    "최고위원",
+    2
+   ],
+   [
+    "최민희",
+    2
+   ],
+   [
+    "한민수",
+    2
+   ],
+   [
+    "서미화",
+    2
+   ],
+   [
+    "김문수",
+    1
+   ],
+   [
+    "정청래",
+    1
+   ],
+   [
+    "비자",
+    1
+   ],
+   [
+    "사태에",
+    1
+   ],
+   [
+    "김민석",
+    1
+   ],
+   [
+    "소환",
+    1
+   ],
+   [
+    "반미투쟁",
+    1
+   ],
+   [
+    "반성커녕",
+    1
+   ],
+   [
+    "무용담",
+    1
+   ],
+   [
+    "미화",
+    1
+   ],
+   [
+    "민주당",
+    1
+   ],
+   [
+    "친청계",
+    1
+   ],
+   [
+    "이성윤",
+    1
+   ],
+   [
+    "친명계",
+    1
+   ],
+   [
+    "당선",
+    1
+   ],
+   [
+    "M포토",
+    1
+   ],
+   [
+    "모두의",
+    1
+   ],
+   [
+    "창립식",
+    1
+   ],
+   [
+    "참석한",
+    1
+   ],
+   [
+    "신천지",
+    1
+   ],
+   [
+    "국힘",
+    1
+   ],
+   [
+    "중복가입",
+    1
+   ],
+   [
+    "독려",
+    1
+   ]
+  ],
+  "quotes": [
+   {
+    "date": "2026-10-09",
+    "quote": "반미투쟁 반성커녕 무용담 미화",
+    "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBJZ3hqenN1LTBIRXVBa2twVWtHODRSQ0pIYngxUktwMV9tZll2YUJ0RUNqa0ItQ1c0U0Z6ZURsVG82c0hzX0dKLWc2WFFZUUV5X3N5U0FuX0NOZ2JfTFI3bFJn?oc=5",
+    "press": "매일신문"
+   },
+   {
+    "date": "2026-07-23",
+    "quote": "신천지, 민주·국힘 중복가입 독려…보이지 않는 손 밝혀야",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE4wQWlyT3lPRFdPNVBLQmR6dnFGdU9JaXRtYkNnRUkxaHlsSV9GLWNyTzVRb055d3FTVDZza3EtR091YTRRODBIYnFGdlpWR1lpb3hQY1dHeGVlMVJIdkY1MENyaEhVbm1uUXd6MzgzclNkZlJIUGVn0gFmQVVfeXFMUG53UldqcjhZS29nUlRmbWJHbWJHcC1UbkFBUHNuZnU4Sl93RFBYQWJyYUpxNWJJVWM3dUZHT24tRzY5TkZPZ0d3M3M4ZnRNbVpCZFRIZUUzMVhTQnRsS3FKN0pvV1BB?oc=5",
+    "press": "동아일보"
+   },
+   {
+    "date": "2026-07-09",
+    "quote": "호남이 대한민국 미래 열어야",
+    "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE96NTd4TlhURUNKcXRDNzM0eWh6c1BtMUNwWm5PbGFMUG1xNlhCVDQ1VVJOX203Y0NpREhhM0lod3gxQnVoVkNiZlBZbmM5YkU?oc=5",
+    "press": "Daum"
+   },
+   {
+    "date": "2026-06-24",
+    "quote": "총선·대선 승리할 민주 만들 것",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE41YU04dGhRSl9zYW9URGhVcFN4eVk5YTZLWm9aZmUzcmw1R255cmZ5SEJsemNHc29ZcFB5M3hmcGx5bXlUclhkVnlSQVhnOWhscDI4Z3BSNHB5QQ?oc=5",
+    "press": "뉴스1"
+   },
+   {
+    "date": "2025-04-25",
+    "quote": "정치 중립 의무 위반",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5UNnNycVh2cW8xaFFtdHJvNEpWNE04djRCZGVLLWtCeUZjeFdvd2FvelBsQk1xMzBsaVQxdmhhSHEyY3k5bGcwRHZud0N4UV8xdTU0aTg1OWhzU3Bka0RaX3dEWFVsclZmWm5JcHluYi15c2syLXNv0gFmQVVfeXFMUHpsUDducjJkZ2x6MFpPZjJ4cWwwREU0dEdGWlB0RGVTdHhtZ3FrZmpzNEhoX3lxZVF6aldua3p5S2NBYmFiUWhMRWZONnFvNm5QUGswWkJKclVldlgtc05FOElWU2lR?oc=5",
+    "press": "동아일보"
+   },
+   {
+    "date": "2025-02-05",
+    "quote": "판 바꿀 사람이라",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE15ejV0aFJWTExpY1lpVU51RktvVVNoZ1pXMU4tb2prM2JrajlBajV6YW5YLU1ieEZTY3lUTUN0eWhTWThvamZ3YklVRy1qSFJUcXM3TzJoSkpJQVUyMWNoRmRrTzBFWlN5SkE?oc=5",
+    "press": "한겨레"
+   },
+   {
+    "date": "2025-02-04",
+    "quote": "한인 추방당할 판인데",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9rSGtCUS1nSHh5djdlY2g1cmowbVduQng2U0szeEJmY2stVWk1MlFJMVJUUkxfTjJtT09ZOEF6TWVJQWxGSUVrNGRHZUxZc2JKYVdtQWVMLTNpMzdkT3FnVHZtN3RjX2d0OUE?oc=5",
+    "press": "한겨레"
+   },
+   {
+    "date": "2025-02-03",
+    "quote": "지도부에도 언질",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1ublZVZThGNFdCXzNEVHpEc1Q0Z045cG9iMzlweXkyYTh5M1hWRWQ2RjJSdDVxOXJwenlmS0c3Vmc5NkpnRlpfVGstNmJfRkwwclZNbWpQY204d9IBX0FVX3lxTE95LXl1OVhiZF9qU2N5R3QxcDkwWDh0Tmc3eGhPTTFJNjQ4R1ltVXNzeFQ4RXo2eHI1b0NuTGltRVFZRTBRcnlLSFAydnRNLUVwYzBVWFdCRmV6WGxra2hF?oc=5",
+    "press": "경향신문"
+   },
+   {
+    "date": "2024-12-06",
+    "quote": "軍, 올해 3월부터 계엄 예비 훈련",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE4yRkRPNW4tanhxMXpyOUpQQTZuQ1ZQMGpxZFpjWlotTjdxSEVOckdna1JGcTVvbTdFZUZEajRaTzJtTzQyc01YVGdZb3RBbnpJZnFkTzRzOEQxaDlQMzVCc1pkVjFTVnRkY2c?oc=5",
+    "press": "주간조선"
    }
   ],
-  "latest": 989138,
-  "latest_date": "2026-03-26",
-  "source": {
-   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
-   "unit": "천원",
-   "fetched": "2026-10-28",
-   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
-  }
+  "by_month": {
+   "2024-12": 1,
+   "2025-02": 4,
+   "2025-04": 1,
+   "2026-06": 1,
+   "2026-07": 2,
+   "2026-08": 2,
+   "2026-10": 1
+  },
+  "presses": [
+   [
+    "Daum",
+    2
+   ],
+   [
+    "동아일보",
+    2
+   ],
+   [
+    "한겨레",
+    2
+   ],
+   [
+    "매일신문",
+    1
+   ],
+   [
+    "M이코노미뉴스",
+    1
+   ],
+   [
+    "뉴스1",
+    1
+   ],
+   [
+    "경향신문",
+    1
+   ],
+   [
+    "서울경제",
+    1
+   ],
+   [
+    "주간조선",
+    1
+   ]
+  ]
  }
 }

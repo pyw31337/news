@@ -39,22 +39,16 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   }
  ],
- "photo_local": "data/pol/photos/1A82234K.webp",
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
   "lead_count": 41,
@@ -451,7 +445,71 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
+  }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 4337967,
+    "inc": 1356461,
+    "dec": 2513342,
+    "total": 3181086,
+    "change": -1156881,
+    "land": 245498,
+    "building": 1315300,
+    "securities": 0,
+    "deposits": 1455311,
+    "polfund": 103367,
+    "debt": 0,
+    "cats": {
+     "토지": 245498,
+     "건물": 1315300,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 61610,
+     "예금": 1455311,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 103367,
+     "채권": 0,
+     "채무": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 3181086,
+    "inc": 2613626,
+    "dec": 2545555,
+    "total": 3249157,
+    "change": 68071,
+    "land": 247271,
+    "building": 1877200,
+    "securities": 0,
+    "deposits": 926275,
+    "polfund": 153421,
+    "debt": 0,
+    "cats": {
+     "토지": 247271,
+     "건물": 1877200,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 44990,
+     "예금": 926275,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 153421
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 3249157,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
   }
  },
  "votes": {
@@ -814,68 +872,787 @@
    "fetched": "2026-10-28"
   }
  },
- "assets": {
-  "records": [
+ "photo_local": "data/pol/photos/1A82234K.webp",
+ "news": [
+  {
+   "date": "2026-10-28",
+   "title": "'尹 찍어내기 감찰 의혹' 박은정 해임취소 항소심 12월 시작",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0yUVJyV1RMdGFBSktHTlN6dmVieEFvNl9OR3ZGRjdtZWlSRXh0Y2JHaFNtQWFSdy00UkJaZGtldGFETXlNR3ltaUd4N2JOcXdtclZBREkyRXVyNWp1Q2Z1WNIBYEFVX3lxTE0yUVJyV1RMdGFBSktHTlN6dmVieEFvNl9OR3ZGRjdtZWlSRXh0Y2JHaFNtQWFSdy00UkJaZGtldGFETXlNR3ltaUd4N2JOcXdtclZBREkyRXVyNWp1Q2Z1WA?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-27",
+   "title": "박은정 “신사고 늦장기소 피해 심각… 비상식 양자경영 등 철저 수사해야”",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9LejVDZllsYkpiUHAwTlljMm9yU2I4eU1YRUpPVVltRXlCNm5WWG9hSFpGQ1VSX0hnbnZrOVp1RUloSWdHTTg4NUJPdzd4RlNpRHZYSXBhWXIyOFNMUkdndDh5XzA0ZDRa?oc=5",
+   "press": "녹색경제신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-27",
+   "title": "신사고 홍범준 2년8월만 기소에 박은정 “검찰의 지연, 근로자 피해로”",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9iSWwwNlZCXzZrbU9wRWhtRDZRRHlQTDl1WHVRbDhIUjlFRWtQWkxTUENQVFJIQTBGUzdValNYTnA4N3dyc0ZIVEcwTk5GbG1nN05LY2c4aDI5U0pnUU14S1Nma1lvcm9SVXU0TkppV1g?oc=5",
+   "press": "미디어오늘",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-22",
+   "title": "[2026 국감] 박은정 \"검찰개혁 1등 공신은 한동훈\" 이정현 \"가장 악영향은 윤석열\"",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9vdVNxejBqRjdWam9LSmZRZllUcHB5NVBFN0hQWXZVWXpJdDIyalgyOHZXc19JMmlGZWNZWU5LTFlxdHpxWXZMLTYzQkVNeTZFd21KMjJ30gFQQVVfeXFMTkZQT28xM0pMRU1Rdy03TGVCU090SGtHTFRNeS11dWkwZXdmT0lzb2JLQVJJbFpzaDFsNGJNblhzNjJQc0FDek1QbzhBVDZCang?oc=5",
+   "press": "더팩트",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-20",
+   "title": "질의하는 박은정 의원",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE50a2o0NnYxT1pPUlhwcGZiNzZ2OEZ5TTM5aVpNVkVERk9TWnNFeDRCelpsZVVQdzBzTkdZdmRFVzZkbURScFVwQ0ZqZGJzeW4yd19zNTJyd09PaEJMbU9Kag?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-20",
+   "title": "국감 질의 박은정 의원",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA5QXNCMGhCYWEyNDhQaGlFSk03T0NZMzVha3FJSkdBV0lpZkExOV91R2xsa1V0VHlkd3ZWMVVWT1dXaFFhX2lWSWdWa1JWd0FYVmRMVzZ5VDdVWnN4SW9Jdw?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-20",
+   "title": "[국감] 박은정 의원, 법사위 국감서 질의",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE56cGFneDRjWXJpQnRQUThpQ01HanFHR3VyZkJSNVV0YUUtMjV4VVd3RVJIelZfWlR1VTFOS2tZTHJjR1hEbEFKNkp0dw?oc=5",
+   "press": "뉴스1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-20",
+   "title": "박은정 \"납북귀환 어부 재심 기각…군산지청 재검토해야\"",
+   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBHcU5hbzlZU0pzek80NVVHMVpoZkN6QzIyYllKZ0pSRTYtVlVhRXFRam1nOEozalA3d1kwNms0WkU5N2lUMzkzVm9CV0dPQnhkRTJKZQ?oc=5",
+   "press": "뉴스1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-18",
+   "title": "박은정 “‘라임 술접대’ 감찰하고 덮었다는 건 허위사실…법적 대응”",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5iQVZRZy1DWS1kWFhvNXcwTHU5Vzl4TVgzY3RCa3padFdpeXItTEp3Z0dPcVIyVEJaX1NyY3hyNEdKcUpyTkJXRW15SWNtcWl2UU1McHhoa0FsTTQ?oc=5",
+   "press": "경기일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-18",
+   "title": "박은정 이 정도면 스토킹이에요…김승원 아닌 한동훈 청문회? [현장영상]",
+   "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1iQ2VqRi1QU05yS3R3OV9PbW1idjUzeWFnVDdFdVNzVU0zUHpBQzBubVBnbVZvT2J3a0pTc291TTdqb2VsM2p1TjJpWDHSAUxBVV95cUxNYkNlakYtUFNOckt0dzlfT21tYnY1M3lhZ1Q3RXVTc1VNM1B6QUMwbm1QZ21Wb09id2tKU3NvdU03am9lbDNqdU4yaVgx?oc=5",
+   "press": "MBN 홈페이지",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-15",
+   "title": "박은정 \"임은정, 민주당이 청문회 증인 안불러...공소청 국정감사 참고인 신청\" - 머니투데이",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1ibEwxZ0QxMTVtNzBZXzdPTUk3a1JiRjFzSWEwRjFkY0VTVmJYekJEbUV0TzlSUU9teV8xX3JNbFliLTBLdGZPWklWTlJ1cFBpVzBJcTY5Nmw0bTg2bmVNb3lPQ1p4NDNYaVIxMNIBckFVX3lxTE1WZ25wRnA0eU1XSWQ0cDFSYjJJSGtVSTFld1RhaFZOUUl3Y09GT2RJNEpfY2NxaHVlS01yQ0tKSWNHaHNkVVd6azNnWURFV2FJeDk2RkZnMXRKa3ZER3dFdzh4VEJnMnVfUEt1WFBkSW9DQQ?oc=5",
+   "press": "머니투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-15",
+   "title": "박은정, 임은정 국감 참고인 신청…“尹도 안 한 입틀막”",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1uczZlX21aMF9WSkRmNzVENE9mZTBCbGZIUzAySHR6bENDN05rd2NnZ2R4S3UtaklMTTZGYWJlV0tXTVV2WnE3MXBXTjRjWWI1Y2w1Qkc2eDVKWk1vT2thWjdQTWhCR29lQUdqdTJfb25FMnlLcXE00gFmQVVfeXFMUHR2VF96bS1reUpka0FsTWYycTRXa1NmLS1FYktRWkZ5ZEU5MjF6dnZFMVBaOE5UX3UxU3hoUUVpUU93VEptOTF5YVNEbUYzaDFZbW1yNkc5aF9wc0xnQjZ2R1BOWlhB?oc=5",
+   "press": "동아일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-15",
+   "title": "“윤석열도 감찰 지시 안해” 박은정, 임은정 참고인 신청 [현장영상]",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE94UEVlaFFsQkZ4VFd3VGc3d0l1TlFDclVYRmlMQnJ6dGtMdmQxbHN0aEtSR0VqeVlHR3NyOWFKU3Ixa3pWdEFERURJM0FZNFpXREVSUWJneFB3eGxrQVHSAWNBVV95cUxPelBEVTZ5RGUzZTFZdjdGdXQtN1FlQ3FwVmtrb0JtNXRUQXhoSWZDZmtjcE1kaHhEZ1loRE00RmtLVjhxbkdOQk1tRS1UcmRQcmg0RVJLc2hCYTJtNFpvZFlFeDQ?oc=5",
+   "press": "채널A",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-15",
+   "title": "박은정, 임은정 국감 참고인 신청…\"尹도 안 한 입틀막\"",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE94aE9nZ3ZuMDFpSlhzb09lN3B2RTg4VHROS0pEU3hTUFQ0REI0T2VNVnVIaUdQTGlRT0hncEJNTXZLOENxQllRVDl5c0FkdzdjZ1Jud0RtejdKdw?oc=5",
+   "press": "파이낸셜뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-15",
+   "title": "박은정 \"촉법소년, 연령 하향만으론 한계\"…사회복귀 지원 강조",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE96TkQyNTZlckh4ZXhHWUc0Vll2dEo4aXRCUm5XNXZoajJkZFBqRXc5ejBjUmtwSkhES1Y2ZHB0UFRycUFSMThlamR2akFYWTRac0RrSW4xTEtNZkMzd2hFcTJnU0JrNUgwSGc?oc=5",
+   "press": "월요신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-14",
+   "title": "‘윤석열 변호인’ 김계리 “박은정, 윤석열 말고 삶의 동력 있나 모르겠다”",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5PbllObG1YazNqVWRDcWhZTXo2eHIxTk1OTWJ5cjNTVWF6WXg1X0lIOWRDbGJiVnJpbnhybmZKeXNMSEdudmZGREMzb0hSWDZtUnZyTS1taU5mRFFKNHc?oc=5",
+   "press": "주간경향",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-13",
+   "title": "박은정, 국감서 \"김학의 출국금지, 봉욱·한찬식도 책임\" - 머니투데이",
+   "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE4xRmhRa3BKU1JIcUNwcW55MnlxMzMyRHFlaWtNc2hsVTgwZzh5Wl9VdmcybWhUX25YRnlNc3dJSzI0eFRTOHdlYVhpaDZkZXlOT0FoVnBnTHgtVVpPSXFWS1RCVTJMRk41X3lHMWg2QWNmS0ZDVkJ1QlpB0gF_QVVfeXFMTVRnUlJOTGFVNnpUekNRX1BvRzU4eVYxbllsdkE2OXgwcnR3Q2ZCekgxZEViTEJPX1RRMm4wQjIwX2hkYl9PRVVHUXZERndiYmtRa0ZtU2gzYVF6RUZkYXRRcUl5UUtwU3dWcXUxYmljNFFIdlgwVzlSYl9tcUNVRQ?oc=5",
+   "press": "머니투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-12",
+   "title": "박은정 \"김지용 청문회에 고기영? 이 정부도 흘러가는 한 페이지\"",
+   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1IcGp2UHRiQWNDSE15eXFuNkZQMjNXZGROMndPZng1N1pSNjFDTXhOTFBsbUR6OE85OHAtMTFuOHZNUkR1YW5vdkhxVXV2ZlU5eE15dg?oc=5",
+   "press": "JTBC",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-12",
+   "title": "조국혁신당 박은정 의원 “김지용 청문회 증인 고기영, 민주주의 위기 때 직무 방기”:경찰연합신문",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9VUV9rOUt6bmR3Y01JYVo5T1RObE13LV90dW42UkFXbkxfWkh3SU5FcjJfeUFYa0c4dUtOdWdtNVQxRkJhM1habk8xTm11RGVFdEhnSGpIQUlPenJ20gFsQVVfeXFMUFJXeWs4R3NlVkJ0ZzhDU2xCSzNlSW9Qc0FOY282dTlLYXVLRGw0SHJaSXU3aTBSWjBTNXNzRnhzbGNlQngzQUZlclVnTER6cjEzRkxFNFB2ZFItM2k0bDJFTUttbmxhSlQwaF9H?oc=5",
+   "press": "경찰연합신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-12",
+   "title": "윤호중 '임은정 감찰' 지시에 박은정 \"잡란하다\"",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1rT1NLYVZCRUJQQzhXdktQRkNMb3RkZWwxNlZJcUpfaDVQV1JkS2FzS2JDalpqOXVTQU1xWkktU2o4QmFHcE5KNjVMUQ?oc=5",
+   "press": "아이뉴스24",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-11",
+   "title": "조국당 박은정 “이재명정부도 잠깐 흘러가는 한 페이지”",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5PRFNVS2pSS2Zjckdya0ZOOE1xUGhMMjBPeHQ2LS1JaHFQV3FVb3Fza2RWdDNzbXpXUmtzZ2wxNG12a2t2ekwxY29kaFdwd1VwNmxrZmsyby3SAVRBVV95cUxQTkNIWFFxWEg0WlQtU0p1T3pEQlpjR2J3eEZ2VkVjSkdFalM1a3VndUVFWmZ2cktBa0xJdndwM05hblZEVjJPRklqYl9aZ1hZbXJMUGg?oc=5",
+   "press": "세계일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-11",
+   "title": "“李정부도 잠깐 흘러가는 한 페이지” 박은정의 말",
+   "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5qQUxGQl9ObmZCY0pjZF9qS1AtSURDQm9yUE9tbnFEdUl1WXFSZE41a0VwTWRERFNzdmVLWFM4aUdpbS1vUWl1TGp2LWFVMnQ5?oc=5",
+   "press": "문화일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-11",
+   "title": "박은정 \"김지용 청문회에 고기영?…尹대통령 만들기 공신끼리 무슨 검증\"",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBSeFVLNlJpMkVtQk9BZUZVcGc4U2JncElxelNHWlRCRUZac2tNS3JwRTNwMHdqRERIZjFxMGhCSFNzbk1RZDJIX3RTV25CLVROSXlLNWN5WlBmUQ?oc=5",
+   "press": "뉴스1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-11",
+   "title": "박은정 \"김지용 청문회에 고기영? 李정부도 흘러가는 한 페이지…훗날 평가할 것\"",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1UeHBHZGtZalFIS2tGYmJuVTAwYTk2ZjBuUnNVOVRQMnVtQzNXenAwcWVxVXFmem1JcFB0V1dhUWhoZjB1aHAxU29Zd2hjSUQ3VDRvQjhoU0NIb21pQUVPctIBeEFVX3lxTE9GSHJONDBablA4dFMwLWJTeENfaTRIVks0dUxXbWJhSzN3UUZVVnNJWk9mNFVBdGVPb0hNQjROQkZqb0ptdlZKbDNjMHNJV0toMzF0ZkRWTWxaLVljMEtNREFtMFBSLXNwLTNDcW1zaV9HNjdZYlNyYw?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-11",
+   "title": "[국정감사] 박은정 의원, \"검찰 불기소, 법원이 다시 통제해야\"…5년 간 560명이 증명한 사법 사각지대",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB1VFh0ZGtibU9Pb092QWN6WXFVYUVyZVViS3lPWHRiLUVlQXlQTzJ4MnBJdW8wTHNHYk5PLURCZU5zY01rM0xRVExQWnZ6dU5WQkpXckJMdTgybThXZXlaRVI0ZnB3RGc?oc=5",
+   "press": "의회신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-09",
+   "title": "혁신당 박은정 \"진영 내 비판받는다면 검찰과 손잡은 것\"",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8tTzZpZlNPQk5rOUhrSVZMd2tRZ2sybElQTDNjYllTaktnZ015WmFUblZPenJNYWhtNXZXS0g4RU5PcEtrZi1XdUswZFM5ZnJ5ZHBXc2J4eTBkWXZ5ZWtabUFSZnNLTWpaYXhKbnBweXFUeGpnRTVHTtIBeEFVX3lxTFA1amp3a1pSV0toZlFJdFItcXlIY3Q3dnF5dlp6TjN0N2hSY0diYk9iMEc0ZDM5TERNQjMzT1BoZ1M0c2NYcDdOd3VUUGx6cVNTOWxfN0luUjNsTkFvT0Y3NVVKdU45dFZKSmxIZVpObTZReVgzM3JxeA?oc=5",
+   "press": "MBC 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-09",
+   "title": "박은정, 李 `무책임한 극단주의자` 자신 겨냥했다 봤나 `내 자리 안 변해, 적폐검찰과 싸웠을 뿐`",
+   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1sSUJZRGhKWVZaaERSOE9TMnF5cU5YWUd6M1VFTGk4OHRBR2F6VTZxUnRybzFxWEFheTF6Sm9IMENyUzJ0RmV6YzdoN0xfN09XYWNGcFc2UjRiaGh6cDJHamFn?oc=5",
+   "press": "매일신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-09",
+   "title": "박은정 “진영 내 비판받는 건 검찰과 손잡았기 때문”… 이 대통령에 반박?",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1nSFdSWVJydGp2OUVIVTBhVkNKQVN3Zndzb1BHNmRZY3lrejJvcGVMZHVyTkd4dUxJM0pVQURDWGp0VHBHQURxU0ZKSjItM1FFcDJWLTJ3?oc=5",
+   "press": "위키트리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-08",
+   "title": "박은정 남편 이종근 변호사 '직권남용' 고발건, 서울중수청 반부패 배당",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9kRTBmQzBNX09iN3ZzSHhlUHczUFRCZl9Mb1RXQnNndGpWOXk5Q0t3dUlQcDhpNi1sQjRBZFpmQ0VqU25rR2hUR2NBZHZsOTZtR3JSQWNSV0hQWHhsYUVSelItNTM?oc=5",
+   "press": "뉴스1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-08",
+   "title": "‘부엉이바위’ 김태규 “‘사람돼라’? 참겠냐” 박은정 “패륜, 인간되면 돼”",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE95NG1IR0hwVG4tT004OGt5eGVRLVdpNVhFYzNqcTBoNWVpakZkdnAyeElSNjZLRVZDS0g2WUhPQlZqYlhXbTkwWnFSY2pxd3E4Q3h3S3JPZENMWXRMcVB2MTRzZnI4ZHdjcUdXNHl5bXc?oc=5",
+   "press": "미디어오늘",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-08",
+   "title": "강제퇴거 외국인, 가만히 있어도 '퍽'…박은정 \"기본권 박탈해선 안돼\" - 머니투데이",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE02S1Nvb2JSb3RqR3B5YnpYWTlicWZDLXBBTm1XQVIxRlJEWHhWR0t0dUYxY2dFNFA4NUo0WnlNb3JuOFFZMHR3ajNNVElHZWhfd3U5UlFqbmpDUmZhYXl0NUJmZjNaZ0xxZzNn0gFwQVVfeXFMTU5CZFNXbllHRHFaSDUxNHlCdU5xR04wMFVEdFM4WThNb0MzWU05aURJMURpbDJDdFlnclJyQWxpVlJaQ2o4YzgyMVlQWHhnTmRHNFo5Umhfb2d0dnE3QUFmd1V4elFBcmRScDEwQjZpbw?oc=5",
+   "press": "머니투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-08",
+   "title": "박은정 의원 남편 ‘직권남용’ 고발건, 서울중수청 반부패수사국 배당",
+   "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE94WmZqRU8wQXN3WkxUaGRFQ2dkNkZjZ214NUh3ZjJaZ2ZaQ3VFVlp5NG90UElyd0s2MTA4ajI1OFlVR1p2X3FHR1NvWXJUeUJZSmfSAVNBVV95cUxPandpbHpZb2tVRmV3WTZOSEk3TE5ZcFlqczVwOEl5RmNfekFDTDFEbGY1eHREbzlOYnhOYjFlNkNKNUI2UFY3Zi1wVWdLX05rTUxxTQ?oc=5",
+   "press": "서울경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-07",
+   "title": "박은정 \"이재명 정부, 검찰주의자에 둘러싸여 김지용 편드는 것\"",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9FeW9SZEtXOVVLSDZmWEVteXYtREdHUVpCVmdRT1l5OGUzems4WE91TEFlQVJGcmM3YUhYWmFfeVdLSkRWR09SSWxPT0xvMUNqOEVtZ1EwZU9KdWxwZms0Wlo3S0tTMTc4Rlo0ZFVIUFFuLTZUbEtV?oc=5",
+   "press": "OhmyNews",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-07",
+   "title": "[막전막후] '술접대 사건'과 '코인 사기' 관여로 고발된 박은정 남편, 중수청장 후보로 거론된 역설",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5HNVFhNUZMNUJkcnVpejZTNXBTSFd4VWlFbnFkQmo5dnFSTjAxQm5hSjNKMkN4dXFNOFJjS2lTUTBPMFpzZjlQM1Y3TGR6TGNNbEVlbFZTLTFCaFpYSlNGTEszVDVUTTl5LS1R0gFvQVVfeXFMTUh6RUhvajRxbHBXbFJEZUZhZVNvYmxaSzFqNnNLUlI1Q2U3R2ZrN3NKdWR2LWk3UjlhcDluRVpUaTNBSFp5MjctdFlUSHRwYXcxWklXZG16OThoMDkzSF95LTJQMjd3cnBid2VMQ0JN?oc=5",
+   "press": "펜앤마이크",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-06",
+   "title": "조국 “뉴이재명, 박은정과 남편까지 허위 비방···이러면 무슨 보상 따르나”",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5yVjRhX2JvY29uV3FqN0o4d01vdnpmbjVQd0RqQ0x3WkJDZFVURUJEckNWQThscVRybDVYMGdWZVliOURHZWQwNU82eHR6RzFRYm5NdjM4N1M0b1V5TUE?oc=5",
+   "press": "주간경향",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-06",
+   "title": "“박은정 남편, 중수청장 후보 추천…다단계 수사하고 다단계 변호한 전문가”",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1uV1FFdEdCUTdYdWNUbEIyY3AybFRDSFVJTF9XTEpjczlabVdtUkNDRUZFYjhrX3BxMjY4a3RpS29FazVUWDViV1hQajh3bFN0Vm1ENHNpUlQ5em1wekE?oc=5",
+   "press": "주간경향",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-06",
+   "title": "박은정 의원 남편 이종근 변호사, 직권남용 등 혐의 중수청 고발돼",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA2TDVDWnJjZDJidVZfVWotQVRFaTh4Y0o2VXRITi1IR1BxWW1LenJvVW0tX1pLU1ZVQTdiTWpkdWxWNTBVdmhvTXZUMU5wdnVvbFMzdnlGVHE4bzjSAWBBVV95cUxOS212SmJacXNMenlOWkg0cFVNWE9xbGk3Z1RIVWt0SHJfZTBFQXZtRDc1X3EyVng1R3lIRF9TeDVVMjRGYUdJN1N6NFExYWREWFNRTmJWQmVvS0c5SFlDbEU?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-06",
+   "title": "한동훈 \"노무현 허구 신화 깨야\", 국힘 김태규 \"부엉이 바위\" : 조국혁신당 박은정 \"인간이 돼라\"",
+   "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFAwTVRBaWtXYy11bmdVZWFyLW93eHpqLTBrNHR3cXNFMFBwU1pSYm5Uck13M01xV3FfSlhaUWU1ZjdzazV5Q1BDRmZ5aG1JSElhQnJWdFREYw?oc=5",
+   "press": "허프포스트코리아",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-06",
+   "title": "조국 \"뉴이재명, 박은정 넘어 이종근 변호사도 허위비방…무슨 보상 받느냐\"",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE94QlBLS1A4Z0lBQ1RlX3d3ZXFWSUVhaDlTeE5EeW81ZF9Sc1NYbmdxTGhCRnVnOXhOM181UFlCSzdYV2NQTFN3TWJuYlFGdmM3aW91bEtSZkxBbHZ1bnNsbmg1VHR3ektoMXpz?oc=5",
+   "press": "프레시안",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-05",
+   "title": "조국 \"뉴이재명, 박은정 넘어 남편 이종근까지 공격…비열한 가족 건드리기\"",
+   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9neHEzSDc4U3Y1SzRlb2VaekM2UVVLZ1FUdjBMcVJhTTYweF9pS05DaU51djQ5d2gxbGIwUGlScFEtNWJjem1KM2xtS0VnMUZYTE9mdWJxOFM2M2kzZjUyb3pR?oc=5",
+   "press": "매일신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-05",
+   "title": "김정철 “박은정 남편, 중수청장 후보자 추천…다단계 수사하고 다단계 변호한 보기 드문 전문가”",
+   "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1yd3BRSHNtN1NqZmhpdlhSQ05lSUh3VHVTdjNZV1E2aExBUUsxZXJRbkRvSGE3R0Mtei1oU1JIMnJHbVd4MW5RdzBkU2kwVVNG?oc=5",
+   "press": "문화일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-02",
+   "title": "박은정 의원이 ‘기를 쓰고’ 김지용 중수청장 반대한 속사정은",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE94R2xCeE1tQVIzVHVSM1dJYlBld0pvYUFuSDdZaUpnM0hsWXpTTmlsSFlmaWtmU2NBTFJ2N1BlNEdRWERXWHhpNWN0dms3THVrQWtVSjYyc2FRUDg?oc=5",
+   "press": "에너지경제신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-02",
+   "title": "박은정 \"내 남편이 친윤 검사?…허위 사실, 그럴 시간 없었다\"",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9KV0tnQjNFbzdyY2ZkbDFHa3BzQkd6SlJJTzlLejdXaUkza0I5aUx6Q3V6em1uNkN1Mm5HVUsyWEFDWjhZZldyNy1zdlBTcHptMk5xWE9OZmlKdw?oc=5",
+   "press": "뉴스1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-30",
+   "title": "대화 나누는 신장식 조국혁신당 대표와 박은정 의원",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBDcEplaklPTFBZT0Y5bDlGR1BxdENYRV83X2ZUV3N4ZnFfVU5Tdnl2MGVEdWY2c3prVWhJZmVfLTlJVzNHaHF3MG92ZEhpTk95ejY1R05Ncm5wWFNRemRseA?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-30",
+   "title": "박은정 \"중수청, 친윤 검사로 깔면 매우 위험…친윤이 친윤을 부른다\"",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFA0N3ZfdHJDckhWcU5XTUhremduNjFFVWl2MHAtajZIelNQcjMwZ09lSGg5aGpFbDNyekpGVkVtRXpVOWxmRG1BNmhjRlB1WWI3SkdRTWtwQS1tdw?oc=5",
+   "press": "뉴스1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-17",
+   "title": "성폭력 범죄 처벌 특례법 대체토론하는 조국혁신당 박은정 의원",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBUQ1lOQnZoYUFTSXJVa2FmQnktaVEzNVoyRHdPZGdHQ0xiVXZxd0sxeUFDdzkyVTFYbzliTjRIYjRaRVRXNXZNbndIalkwODJJeDktak5qdXBoeUHSAWBBVV95cUxPR0d4cU12QjNqV2MyRFlrNjVtVXNvVXFNaEFIT3F1OGtoYS05OEg1VmozT3hKb2UwMm5TOGpDV1ZiejVBOU1RT1dVRGJGc1RYNG9tSlA4dHpiR2tZNTJUeDA?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  }
+ ],
+ "incidents": {
+  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
+  "updated": "2026-10-29",
+  "items": [
    {
-    "date": "2025-03-27",
-    "year": 2025,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2025-51호",
-    "prev": 4337967,
-    "inc": 1356461,
-    "dec": 2513342,
-    "total": 3181086,
-    "change": -1156881,
-    "land": 245498,
-    "building": 1315300,
-    "securities": 0,
-    "deposits": 1455311,
-    "polfund": 103367,
-    "debt": 0,
-    "cats": {
-     "토지": 245498,
-     "건물": 1315300,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 61610,
-     "예금": 1455311,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 103367,
-     "채권": 0,
-     "채무": 0
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+    "date": "2026-10-28",
+    "stage": "판결",
+    "title": "'尹 찍어내기 감찰 의혹' 박은정 해임취소 항소심 12월 시작",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0yUVJyV1RMdGFBSktHTlN6dmVieEFvNl9OR3ZGRjdtZWlSRXh0Y2JHaFNtQWFSdy00UkJaZGtldGFETXlNR3ltaUd4N2JOcXdtclZBREkyRXVyNWp1Q2Z1WNIBYEFVX3lxTE0yUVJyV1RMdGFBSktHTlN6dmVieEFvNl9OR3ZGRjdtZWlSRXh0Y2JHaFNtQWFSdy00UkJaZGtldGFETXlNR3ltaUd4N2JOcXdtclZBREkyRXVyNWp1Q2Z1WA?oc=5",
+    "press": "연합뉴스"
    },
    {
-    "date": "2026-03-26",
-    "year": 2026,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2026-54호",
-    "prev": 3181086,
-    "inc": 2613626,
-    "dec": 2545555,
-    "total": 3249157,
-    "change": 68071,
-    "land": 247271,
-    "building": 1877200,
-    "securities": 0,
-    "deposits": 926275,
-    "polfund": 153421,
-    "debt": 0,
-    "cats": {
-     "토지": 247271,
-     "건물": 1877200,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 44990,
-     "예금": 926275,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 153421
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+    "date": "2026-10-27",
+    "stage": "기소·재판",
+    "title": "신사고 홍범준 2년8월만 기소에 박은정 “검찰의 지연, 근로자 피해로”",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9iSWwwNlZCXzZrbU9wRWhtRDZRRHlQTDl1WHVRbDhIUjlFRWtQWkxTUENQVFJIQTBGUzdValNYTnA4N3dyc0ZIVEcwTk5GbG1nN05LY2c4aDI5U0pnUU14S1Nma1lvcm9SVXU0TkppV1g?oc=5",
+    "press": "미디어오늘"
+   },
+   {
+    "date": "2026-10-08",
+    "stage": "수사",
+    "title": "박은정 남편 이종근 변호사 '직권남용' 고발건, 서울중수청 반부패 배당",
+    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9kRTBmQzBNX09iN3ZzSHhlUHczUFRCZl9Mb1RXQnNndGpWOXk5Q0t3dUlQcDhpNi1sQjRBZFpmQ0VqU25rR2hUR2NBZHZsOTZtR3JSQWNSV0hQWHhsYUVSelItNTM?oc=5",
+    "press": "뉴스1"
+   },
+   {
+    "date": "2026-10-08",
+    "stage": "수사",
+    "title": "박은정 의원 남편 ‘직권남용’ 고발건, 서울중수청 반부패수사국 배당",
+    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE94WmZqRU8wQXN3WkxUaGRFQ2dkNkZjZ214NUh3ZjJaZ2ZaQ3VFVlp5NG90UElyd0s2MTA4ajI1OFlVR1p2X3FHR1NvWXJUeUJZSmfSAVNBVV95cUxPandpbHpZb2tVRmV3WTZOSEk3TE5ZcFlqczVwOEl5RmNfekFDTDFEbGY1eHREbzlOYnhOYjFlNkNKNUI2UFY3Zi1wVWdLX05rTUxxTQ?oc=5",
+    "press": "서울경제"
+   },
+   {
+    "date": "2026-10-07",
+    "stage": "수사",
+    "title": "[막전막후] '술접대 사건'과 '코인 사기' 관여로 고발된 박은정 남편, 중수청장 후보로 거론된 역설",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5HNVFhNUZMNUJkcnVpejZTNXBTSFd4VWlFbnFkQmo5dnFSTjAxQm5hSjNKMkN4dXFNOFJjS2lTUTBPMFpzZjlQM1Y3TGR6TGNNbEVlbFZTLTFCaFpYSlNGTEszVDVUTTl5LS1R0gFvQVVfeXFMTUh6RUhvajRxbHBXbFJEZUZhZVNvYmxaSzFqNnNLUlI1Q2U3R2ZrN3NKdWR2LWk3UjlhcDluRVpUaTNBSFp5MjctdFlUSHRwYXcxWklXZG16OThoMDkzSF95LTJQMjd3cnBid2VMQ0JN?oc=5",
+    "press": "펜앤마이크"
+   },
+   {
+    "date": "2026-10-06",
+    "stage": "수사",
+    "title": "박은정 의원 남편 이종근 변호사, 직권남용 등 혐의 중수청 고발돼",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA2TDVDWnJjZDJidVZfVWotQVRFaTh4Y0o2VXRITi1IR1BxWW1LenJvVW0tX1pLU1ZVQTdiTWpkdWxWNTBVdmhvTXZUMU5wdnVvbFMzdnlGVHE4bzjSAWBBVV95cUxOS212SmJacXNMenlOWkg0cFVNWE9xbGk3Z1RIVWt0SHJfZTBFQXZtRDc1X3EyVng1R3lIRF9TeDVVMjRGYUdJN1N6NFExYWREWFNRTmJWQmVvS0c5SFlDbEU?oc=5",
+    "press": "연합뉴스"
+   }
+  ]
+ },
+ "media": {
+  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
+  "updated": "2026-10-29",
+  "top_words": [
+   [
+    "남편",
+    7
+   ],
+   [
+    "김지용",
+    6
+   ],
+   [
+    "임은정",
+    5
+   ],
+   [
+    "참고인",
+    4
+   ],
+   [
+    "신청",
+    4
+   ],
+   [
+    "고기영",
+    4
+   ],
+   [
+    "흘러가는",
+    4
+   ],
+   [
+    "페이지",
+    4
+   ],
+   [
+    "조국혁신당",
+    4
+   ],
+   [
+    "중수청장",
+    4
+   ],
+   [
+    "다단계",
+    4
+   ],
+   [
+    "감찰",
+    3
+   ],
+   [
+    "한동훈",
+    3
+   ],
+   [
+    "윤석열",
+    3
+   ],
+   [
+    "국감",
+    3
+   ],
+   [
+    "청문회",
+    3
+   ],
+   [
+    "머니투데이",
+    3
+   ],
+   [
+    "청문회에",
+    3
+   ],
+   [
+    "정부도",
+    3
+   ],
+   [
+    "무슨",
+    3
+   ],
+   [
+    "이종근",
+    3
+   ],
+   [
+    "직권남용",
+    3
+   ],
+   [
+    "조국",
+    3
+   ],
+   [
+    "뉴이재명",
+    3
+   ],
+   [
+    "신사고",
+    2
+   ],
+   [
+    "질의",
+    2
+   ],
+   [
+    "국감서",
+    2
+   ],
+   [
+    "술접대",
+    2
+   ],
+   [
+    "증인",
+    2
+   ],
+   [
+    "입틀막",
+    2
+   ]
+  ],
+  "quotes": [
+   {
+    "date": "2026-10-27",
+    "quote": "신사고 늦장기소 피해 심각… 비상식 양자경영 등 철저 수사해야",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9LejVDZllsYkpiUHAwTlljMm9yU2I4eU1YRUpPVVltRXlCNm5WWG9hSFpGQ1VSX0hnbnZrOVp1RUloSWdHTTg4NUJPdzd4RlNpRHZYSXBhWXIyOFNMUkdndDh5XzA0ZDRa?oc=5",
+    "press": "녹색경제신문"
+   },
+   {
+    "date": "2026-10-27",
+    "quote": "검찰의 지연, 근로자 피해로",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9iSWwwNlZCXzZrbU9wRWhtRDZRRHlQTDl1WHVRbDhIUjlFRWtQWkxTUENQVFJIQTBGUzdValNYTnA4N3dyc0ZIVEcwTk5GbG1nN05LY2c4aDI5U0pnUU14S1Nma1lvcm9SVXU0TkppV1g?oc=5",
+    "press": "미디어오늘"
+   },
+   {
+    "date": "2026-10-22",
+    "quote": "검찰개혁 1등 공신은 한동훈",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9vdVNxejBqRjdWam9LSmZRZllUcHB5NVBFN0hQWXZVWXpJdDIyalgyOHZXc19JMmlGZWNZWU5LTFlxdHpxWXZMLTYzQkVNeTZFd21KMjJ30gFQQVVfeXFMTkZQT28xM0pMRU1Rdy03TGVCU090SGtHTFRNeS11dWkwZXdmT0lzb2JLQVJJbFpzaDFsNGJNblhzNjJQc0FDek1QbzhBVDZCang?oc=5",
+    "press": "더팩트"
+   },
+   {
+    "date": "2026-10-20",
+    "quote": "납북귀환 어부 재심 기각…군산지청 재검토해야",
+    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBHcU5hbzlZU0pzek80NVVHMVpoZkN6QzIyYllKZ0pSRTYtVlVhRXFRam1nOEozalA3d1kwNms0WkU5N2lUMzkzVm9CV0dPQnhkRTJKZQ?oc=5",
+    "press": "뉴스1"
+   },
+   {
+    "date": "2026-10-18",
+    "quote": "‘라임 술접대’ 감찰하고 덮었다는 건 허위사실…법적 대응",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5iQVZRZy1DWS1kWFhvNXcwTHU5Vzl4TVgzY3RCa3padFdpeXItTEp3Z0dPcVIyVEJaX1NyY3hyNEdKcUpyTkJXRW15SWNtcWl2UU1McHhoa0FsTTQ?oc=5",
+    "press": "경기일보"
+   },
+   {
+    "date": "2026-10-15",
+    "quote": "임은정, 민주당이 청문회 증인 안불러...공소청 국정감사 참고인 신청",
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1ibEwxZ0QxMTVtNzBZXzdPTUk3a1JiRjFzSWEwRjFkY0VTVmJYekJEbUV0TzlSUU9teV8xX3JNbFliLTBLdGZPWklWTlJ1cFBpVzBJcTY5Nmw0bTg2bmVNb3lPQ1p4NDNYaVIxMNIBckFVX3lxTE1WZ25wRnA0eU1XSWQ0cDFSYjJJSGtVSTFld1RhaFZOUUl3Y09GT2RJNEpfY2NxaHVlS01yQ0tKSWNHaHNkVVd6azNnWURFV2FJeDk2RkZnMXRKa3ZER3dFdzh4VEJnMnVfUEt1WFBkSW9DQQ?oc=5",
+    "press": "머니투데이"
+   },
+   {
+    "date": "2026-10-15",
+    "quote": "尹도 안 한 입틀막",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1uczZlX21aMF9WSkRmNzVENE9mZTBCbGZIUzAySHR6bENDN05rd2NnZ2R4S3UtaklMTTZGYWJlV0tXTVV2WnE3MXBXTjRjWWI1Y2w1Qkc2eDVKWk1vT2thWjdQTWhCR29lQUdqdTJfb25FMnlLcXE00gFmQVVfeXFMUHR2VF96bS1reUpka0FsTWYycTRXa1NmLS1FYktRWkZ5ZEU5MjF6dnZFMVBaOE5UX3UxU3hoUUVpUU93VEptOTF5YVNEbUYzaDFZbW1yNkc5aF9wc0xnQjZ2R1BOWlhB?oc=5",
+    "press": "동아일보"
+   },
+   {
+    "date": "2026-10-15",
+    "quote": "尹도 안 한 입틀막",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE94aE9nZ3ZuMDFpSlhzb09lN3B2RTg4VHROS0pEU3hTUFQ0REI0T2VNVnVIaUdQTGlRT0hncEJNTXZLOENxQllRVDl5c0FkdzdjZ1Jud0RtejdKdw?oc=5",
+    "press": "파이낸셜뉴스"
+   },
+   {
+    "date": "2026-10-15",
+    "quote": "촉법소년, 연령 하향만으론 한계",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE96TkQyNTZlckh4ZXhHWUc0Vll2dEo4aXRCUm5XNXZoajJkZFBqRXc5ejBjUmtwSkhES1Y2ZHB0UFRycUFSMThlamR2akFYWTRac0RrSW4xTEtNZkMzd2hFcTJnU0JrNUgwSGc?oc=5",
+    "press": "월요신문"
+   },
+   {
+    "date": "2026-10-13",
+    "quote": "김학의 출국금지, 봉욱·한찬식도 책임",
+    "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE4xRmhRa3BKU1JIcUNwcW55MnlxMzMyRHFlaWtNc2hsVTgwZzh5Wl9VdmcybWhUX25YRnlNc3dJSzI0eFRTOHdlYVhpaDZkZXlOT0FoVnBnTHgtVVpPSXFWS1RCVTJMRk41X3lHMWg2QWNmS0ZDVkJ1QlpB0gF_QVVfeXFMTVRnUlJOTGFVNnpUekNRX1BvRzU4eVYxbllsdkE2OXgwcnR3Q2ZCekgxZEViTEJPX1RRMm4wQjIwX2hkYl9PRVVHUXZERndiYmtRa0ZtU2gzYVF6RUZkYXRRcUl5UUtwU3dWcXUxYmljNFFIdlgwVzlSYl9tcUNVRQ?oc=5",
+    "press": "머니투데이"
+   },
+   {
+    "date": "2026-10-12",
+    "quote": "김지용 청문회에 고기영? 이 정부도 흘러가는 한 페이지",
+    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1IcGp2UHRiQWNDSE15eXFuNkZQMjNXZGROMndPZng1N1pSNjFDTXhOTFBsbUR6OE85OHAtMTFuOHZNUkR1YW5vdkhxVXV2ZlU5eE15dg?oc=5",
+    "press": "JTBC"
+   },
+   {
+    "date": "2026-10-12",
+    "quote": "김지용 청문회 증인 고기영, 민주주의 위기 때 직무 방기",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9VUV9rOUt6bmR3Y01JYVo5T1RObE13LV90dW42UkFXbkxfWkh3SU5FcjJfeUFYa0c4dUtOdWdtNVQxRkJhM1habk8xTm11RGVFdEhnSGpIQUlPenJ20gFsQVVfeXFMUFJXeWs4R3NlVkJ0ZzhDU2xCSzNlSW9Qc0FOY282dTlLYXVLRGw0SHJaSXU3aTBSWjBTNXNzRnhzbGNlQngzQUZlclVnTER6cjEzRkxFNFB2ZFItM2k0bDJFTUttbmxhSlQwaF9H?oc=5",
+    "press": "경찰연합신문"
+   },
+   {
+    "date": "2026-10-11",
+    "quote": "이재명정부도 잠깐 흘러가는 한 페이지",
+    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5PRFNVS2pSS2Zjckdya0ZOOE1xUGhMMjBPeHQ2LS1JaHFQV3FVb3Fza2RWdDNzbXpXUmtzZ2wxNG12a2t2ekwxY29kaFdwd1VwNmxrZmsyby3SAVRBVV95cUxQTkNIWFFxWEg0WlQtU0p1T3pEQlpjR2J3eEZ2VkVjSkdFalM1a3VndUVFWmZ2cktBa0xJdndwM05hblZEVjJPRklqYl9aZ1hZbXJMUGg?oc=5",
+    "press": "세계일보"
+   },
+   {
+    "date": "2026-10-11",
+    "quote": "김지용 청문회에 고기영?…尹대통령 만들기 공신끼리 무슨 검증",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBSeFVLNlJpMkVtQk9BZUZVcGc4U2JncElxelNHWlRCRUZac2tNS3JwRTNwMHdqRERIZjFxMGhCSFNzbk1RZDJIX3RTV25CLVROSXlLNWN5WlBmUQ?oc=5",
+    "press": "뉴스1"
+   },
+   {
+    "date": "2026-10-11",
+    "quote": "김지용 청문회에 고기영? 李정부도 흘러가는 한 페이지…훗날 평가할 것",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1UeHBHZGtZalFIS2tGYmJuVTAwYTk2ZjBuUnNVOVRQMnVtQzNXenAwcWVxVXFmem1JcFB0V1dhUWhoZjB1aHAxU29Zd2hjSUQ3VDRvQjhoU0NIb21pQUVPctIBeEFVX3lxTE9GSHJONDBablA4dFMwLWJTeENfaTRIVks0dUxXbWJhSzN3UUZVVnNJWk9mNFVBdGVPb0hNQjROQkZqb0ptdlZKbDNjMHNJV0toMzF0ZkRWTWxaLVljMEtNREFtMFBSLXNwLTNDcW1zaV9HNjdZYlNyYw?oc=5",
+    "press": "뉴시스"
+   },
+   {
+    "date": "2026-10-11",
+    "quote": "검찰 불기소, 법원이 다시 통제해야",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB1VFh0ZGtibU9Pb092QWN6WXFVYUVyZVViS3lPWHRiLUVlQXlQTzJ4MnBJdW8wTHNHYk5PLURCZU5zY01rM0xRVExQWnZ6dU5WQkpXckJMdTgybThXZXlaRVI0ZnB3RGc?oc=5",
+    "press": "의회신문"
+   },
+   {
+    "date": "2026-10-09",
+    "quote": "진영 내 비판받는다면 검찰과 손잡은 것",
+    "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8tTzZpZlNPQk5rOUhrSVZMd2tRZ2sybElQTDNjYllTaktnZ015WmFUblZPenJNYWhtNXZXS0g4RU5PcEtrZi1XdUswZFM5ZnJ5ZHBXc2J4eTBkWXZ5ZWtabUFSZnNLTWpaYXhKbnBweXFUeGpnRTVHTtIBeEFVX3lxTFA1amp3a1pSV0toZlFJdFItcXlIY3Q3dnF5dlp6TjN0N2hSY0diYk9iMEc0ZDM5TERNQjMzT1BoZ1M0c2NYcDdOd3VUUGx6cVNTOWxfN0luUjNsTkFvT0Y3NVVKdU45dFZKSmxIZVpObTZReVgzM3JxeA?oc=5",
+    "press": "MBC 뉴스"
+   },
+   {
+    "date": "2026-10-09",
+    "quote": "진영 내 비판받는 건 검찰과 손잡았기 때문",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1nSFdSWVJydGp2OUVIVTBhVkNKQVN3Zndzb1BHNmRZY3lrejJvcGVMZHVyTkd4dUxJM0pVQURDWGp0VHBHQURxU0ZKSjItM1FFcDJWLTJ3?oc=5",
+    "press": "위키트리"
+   },
+   {
+    "date": "2026-10-08",
+    "quote": "패륜, 인간되면 돼",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE95NG1IR0hwVG4tT004OGt5eGVRLVdpNVhFYzNqcTBoNWVpakZkdnAyeElSNjZLRVZDS0g2WUhPQlZqYlhXbTkwWnFSY2pxd3E4Q3h3S3JPZENMWXRMcVB2MTRzZnI4ZHdjcUdXNHl5bXc?oc=5",
+    "press": "미디어오늘"
+   },
+   {
+    "date": "2026-10-08",
+    "quote": "기본권 박탈해선 안돼",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE02S1Nvb2JSb3RqR3B5YnpYWTlicWZDLXBBTm1XQVIxRlJEWHhWR0t0dUYxY2dFNFA4NUo0WnlNb3JuOFFZMHR3ajNNVElHZWhfd3U5UlFqbmpDUmZhYXl0NUJmZjNaZ0xxZzNn0gFwQVVfeXFMTU5CZFNXbllHRHFaSDUxNHlCdU5xR04wMFVEdFM4WThNb0MzWU05aURJMURpbDJDdFlnclJyQWxpVlJaQ2o4YzgyMVlQWHhnTmRHNFo5Umhfb2d0dnE3QUFmd1V4elFBcmRScDEwQjZpbw?oc=5",
+    "press": "머니투데이"
+   },
+   {
+    "date": "2026-10-07",
+    "quote": "이재명 정부, 검찰주의자에 둘러싸여 김지용 편드는 것",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9FeW9SZEtXOVVLSDZmWEVteXYtREdHUVpCVmdRT1l5OGUzems4WE91TEFlQVJGcmM3YUhYWmFfeVdLSkRWR09SSWxPT0xvMUNqOEVtZ1EwZU9KdWxwZms0Wlo3S0tTMTc4Rlo0ZFVIUFFuLTZUbEtV?oc=5",
+    "press": "OhmyNews"
+   },
+   {
+    "date": "2026-10-06",
+    "quote": "인간이 돼라",
+    "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFAwTVRBaWtXYy11bmdVZWFyLW93eHpqLTBrNHR3cXNFMFBwU1pSYm5Uck13M01xV3FfSlhaUWU1ZjdzazV5Q1BDRmZ5aG1JSElhQnJWdFREYw?oc=5",
+    "press": "허프포스트코리아"
+   },
+   {
+    "date": "2026-10-02",
+    "quote": "내 남편이 친윤 검사?…허위 사실, 그럴 시간 없었다",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9KV0tnQjNFbzdyY2ZkbDFHa3BzQkd6SlJJTzlLejdXaUkza0I5aUx6Q3V6em1uNkN1Mm5HVUsyWEFDWjhZZldyNy1zdlBTcHptMk5xWE9OZmlKdw?oc=5",
+    "press": "뉴스1"
+   },
+   {
+    "date": "2026-09-30",
+    "quote": "중수청, 친윤 검사로 깔면 매우 위험…친윤이 친윤을 부른다",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFA0N3ZfdHJDckhWcU5XTUhremduNjFFVWl2MHAtajZIelNQcjMwZ09lSGg5aGpFbDNyekpGVkVtRXpVOWxmRG1BNmhjRlB1WWI3SkdRTWtwQS1tdw?oc=5",
+    "press": "뉴스1"
    }
   ],
-  "latest": 3249157,
-  "latest_date": "2026-03-26",
-  "source": {
-   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
-   "unit": "천원",
-   "fetched": "2026-10-28",
-   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
-  }
+  "by_month": {
+   "2026-09": 3,
+   "2026-10": 43
+  },
+  "presses": [
+   [
+    "뉴스1",
+    6
+   ],
+   [
+    "뉴시스",
+    4
+   ],
+   [
+    "연합뉴스",
+    3
+   ],
+   [
+    "머니투데이",
+    3
+   ],
+   [
+    "주간경향",
+    3
+   ],
+   [
+    "미디어오늘",
+    2
+   ],
+   [
+    "문화일보",
+    2
+   ],
+   [
+    "매일신문",
+    2
+   ],
+   [
+    "녹색경제신문",
+    1
+   ],
+   [
+    "더팩트",
+    1
+   ]
+  ]
  }
 }

@@ -62,59 +62,28 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   }
  ],
- "photo_local": "data/pol/photos/IL74008M.webp",
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
-  "lead_count": 80,
-  "co_count": 1889,
-  "passed": 21,
+  "lead_count": 32,
+  "co_count": 257,
+  "passed": 13,
   "by_result": {
-   "임기만료폐기": 40,
-   "대안반영폐기": 16,
-   "수정안반영폐기": 2,
-   "수정가결": 2,
    "계류": 19,
-   "원안가결": 1
+   "대안반영폐기": 11,
+   "원안가결": 1,
+   "수정가결": 1
   },
   "by_month": {
-   "2020-09": 3,
-   "2020-11": 6,
-   "2020-12": 2,
-   "2021-03": 1,
-   "2021-05": 1,
-   "2021-06": 1,
-   "2021-11": 3,
-   "2021-12": 4,
-   "2022-03": 1,
-   "2022-04": 1,
-   "2022-07": 2,
-   "2022-08": 5,
-   "2022-09": 1,
-   "2022-10": 1,
-   "2022-11": 1,
-   "2022-12": 3,
-   "2023-01": 1,
-   "2023-02": 3,
-   "2023-04": 2,
-   "2023-05": 1,
-   "2023-06": 1,
-   "2023-07": 2,
-   "2023-08": 2,
    "2024-06": 2,
    "2024-08": 5,
    "2024-09": 1,
@@ -491,7 +460,73 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
+  }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 3059697,
+    "inc": 1122739,
+    "dec": 1048186,
+    "total": 3134250,
+    "change": 74553,
+    "land": 78960,
+    "building": 1735000,
+    "securities": 20146,
+    "deposits": 1169057,
+    "polfund": 104162,
+    "debt": 0,
+    "cats": {
+     "토지": 78960,
+     "건물": 1735000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 22730,
+     "예금": 1169057,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 104162,
+     "증권": 20146,
+     "지식재산권-----299--300-본인저작재산권정치언어의품격----변동없음본인저작재산권스피치의정치----변동없음▶가상자산": 4195
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 3134250,
+    "inc": 935728,
+    "dec": 688866,
+    "total": 3381112,
+    "change": 246862,
+    "land": 80313,
+    "building": 1803000,
+    "securities": 76143,
+    "deposits": 1216278,
+    "polfund": 160374,
+    "debt": 0,
+    "cats": {
+     "토지": 80313,
+     "건물": 1803000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 18630,
+     "예금": 1216278,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 160374,
+     "증권": 76143,
+     "지식재산권----본인저작재산권정치언어의품격-----271--272-본인저작재산권스피치의정치----▶가상자산": 26374
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 3381112,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
   }
  },
  "votes": {
@@ -944,70 +979,586 @@
    "fetched": "2026-10-28"
   }
  },
- "assets": {
-  "records": [
+ "photo_local": "data/pol/photos/IL74008M.webp",
+ "news": [
+  {
+   "date": "2026-10-04",
+   "title": "박성준 “전두환 내란 부정 김태규, 국회의원 뿐 아닌 국민 자격 없다”",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5BRm9FeVFfeEtxUnUzR0NTQWIzR0dhemtIRml2bVY5RU5yaVVKVW50OGtLRmJfOXctS3kyb0k2bHBXQkVnS2FwTkFTZjZBdnliMFdjOGJkLWtfajQ5aU9HTjRtcU5lLUxQdGZEbWlUMEg?oc=5",
+   "press": "미디어오늘",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-24",
+   "title": "박성준, 국힘 이진숙에 \"정치적 수사에 고소, 국회의원 맞나\" - 머니투데이",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1xeWVTNmV0QnZPVEtaMU9HN0p6OFlkUGJIQldCb3NVYUh5ZW5LTGVYcFV2QWhNWkV1VFVjNG5qa1ctTkt5bE5TWTYtMkQtOXBMWHpFcFJvN01CTnBCaW5OdTNOYzBKUkJ5aTIzZNIBckFVX3lxTE9fLVhZX3Y0bzNQUHpGajlwUUIyU1l0TWJveC13QWczd2tGUlh0LXRyZmhBRHFtdFdOUkFPdUN6emNYaFZYTXNod3hFNjJobXFTMWVXQWZYbmpWTEdYU01LSEZPSWl1SzhISk1yYXhCaWhfQQ?oc=5",
+   "press": "머니투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-24",
+   "title": "민주 박성준 “부동산 세제 정부안, 취지 공감하지만 민심 저항 심각”",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE54RHk4bmpscU9tZ0tITjhOSkxzMWdfaWpQYUJ1cFlyZmxjaGJ3cTQ2QzJNX2pWczRIWlpNN0pEemphTEQ1aE91eXp3TWpJaXdVMjlBM3lpSGowdkZlX0RnV1RRUEhVSDVFbW9aT0NmUmdtWVkx?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-17",
+   "title": "[전격시사] 민주 전당대회 ‘과열’, 갈등 봉합 가능? (박성준) “당내 역동성, 전대 이후 달라질 것” vs (최형두) “분당대회·파당대회로 끝날 것”",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1ydlN6NEs0aXZEaDZQQlRtclpPb1BRYnI2bEdETExtYWpQbWtZRUdveGFycG1lekNTZzRjVUM5SUxFOEFSUldxdG0tS0FtWENSZVFCM19UbnAyV0U?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-12",
+   "title": "與박성준, 최고위원 출마…鄭겨냥 \"말만 앞세우는 공격수 안돼\"",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1ZOUxMa2o3bUg5RVlYVWlFZXFmZDBTelk3Y2NvREZkaE1DUGtSN0pXUnFqLVpUZkNXcXBqdFZ4MFRwTnpaSEZsZHA1TEpJTXhYTlRjS3ptRjBlZ2PSAWBBVV95cUxNQTZSeGpzZVhhelMwUXZ3aFl0QjVqMTVCd0dLdUgyLVRpTEZaM2JRTVhFMmZBeW55ZVFocGZlWUtwTFVKaW1WQjM2b0wtNldlUWhES2VraERoUXZFTktlSkU?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-12",
+   "title": "박성준 의원, 민주당 최고위원 출마…\"말 아닌 행동으로 당 혁신\"",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBMSGhMRm81MzRRYzFLeXBPQmdSdEVBS1RVRGZ5WlNhQ0x0T05ENFZJdzZwWFoxTjNJWThqMDBzOG84cTRmUWY4RHJ5dC1sTXJHY1lyY3g3d0pxaGFYbDdyd1RaNXhXMmxvNmJJ?oc=5",
+   "press": "일간투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-12",
+   "title": "박성준, 최고위원 출마 선언…“말만 앞세우는 공격수 원하지 않아”",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5RSXpxdmF0TnppRVcyYkxaMF9BcVl1cUswQy10SzJzZlJfS2doQnBXOWpFWEJlaFVKaV82ZEwtWFpHSS1zeGt5ckJDd25LUkZ4ZjM2OVpn?oc=5",
+   "press": "헤럴드경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-17",
+   "title": "[여담야담] 이 대통령 국정지지율 부정 ＞긍정…박성준 \"민주 지지층 실망\"",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5nb3BwZnM1MXlKd1NtVW1wc2JQYWVvZ3Jsc3NTZnU1TWNzOFlzbXY5S3BCdTNma05fQml4U0tOZkcySDN6ZHZ2Mm80MXpDMTg?oc=5",
+   "press": "Daum",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-17",
+   "title": "[여담야담] 민주 박성준도 반정청래?…\"민주, 리더십 교체돼야\"",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFAzVmlJWWlDdUplbWVFZWVteTBueWFMZ0g3RjB2cEdIOTBTX2t2c2ZPV3JGR0ExRG5KNXJuS0htYllsR0FpUnMzVW1WSmd4Zk0yQTZ1czZJSzNEd1NLQlFybHhBM2VTbE93cFHSAWZBVV95cUxQQ0ctRldnSEZFN1JLVU8yQ0RmcllnNTN3ODlDWTZRUUNlWmFuVDR2ODNJNzd1ZFdHY3p4OEhVTFF3LVlyRHZrN0FoeEVuMnFIYVh6RW52SkRMSU5PM0dINXVSWlY4d0E?oc=5",
+   "press": "SBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-07",
+   "title": "박성준 “시민들 공소 취소 몰라”…장동혁 “민주, 진심 듬뿍 담긴 말”",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9BbExHVmg4WmptWHA1bElDNjE5dllaRk85Z1pQNEZEVTRxTnA0WElSZGZRd3Y3UFlqV0NCb2RtWG5wazZOelo5SzNfelpKU0p4RGZCbkFXc3VvTE1OQ1F4aE1fQVg5Q3cxQ2s3Vk9TR1NBa0V1?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-07",
+   "title": "민주 박성준 “시민들 공소취소 뜻 몰라”…야당 “역대급 망언” 맹폭",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1pQ1RKRWhEeVdLLVl1TER0UGtlbWNrMXd5M1Z2RXM2b3FDc0lLSjFiN1BUOUctRHRYRjUzcU9tTzR1dU1leWl1bjVoSlQya1NJN05EX2d1QXRibFk?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-07",
+   "title": "박성준 \"시민들 공소 취소 뜻 모른다\"…”국민 바보니 해도 된다?” 맹공",
+   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1XQ3p5eWxVUllvS0Y3TklEMzJrQndwN2I0TXFyQmhBSmd1UXRuWEtOa0VkUmlGNXg0ZUpyTHZDc0stUFN5clN0U1JfQVBXZXgxOGZoWA?oc=5",
+   "press": "JTBC",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-02-12",
+   "title": "민주 박성준 “합당, 차기 지도부가 정할 일…‘통합 전당대회’ 불가능”",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE92Y0tVaTBjYnY2bGRfR2cwNDVtUGpHc2pRaVpOTmRrX1RxZ3Atd1ZlNWVDaVZHbHF0b3FNUWxUV1hLR2xxY3NjNHVGcnJQMFhIWTlwRlFSOEtHVGhGMzFsLTh2WnhObHRzejktWFZFM2VvY0Fi?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-01-14",
+   "title": "박성준 “모든 국민이 검찰개혁 쳐다봐…검찰개혁은 시대 흐름 잘될 것”",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1UNnU1eUduRW5CTkhLM0owNGk3ZC1WU2R0djlBZUxGU0F0SEE0RHE0M3BfVGwzYzhmWTZaNVB0YjZMa2VWb1ZOWllhTzZJZmppbDVKWkxfanNKVW0zRGtMZWFnR2JETkFqTl94MjF30gFyQVVfeXFMUHJnaGVyTnlVMlBiY0I0Q2RybFZzM3dTc0VXc1Rna3FiekRlVmlHRW8wNXpuYXVTQVVhNlNLcXc3QlNlN1dHUDIxcUhtcnRxa1dLZ2dwaUcta2F0TUZNRzFIaWlDMThndV8wOW1obFMyMS13?oc=5",
+   "press": "로리더",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-12-29",
+   "title": "[29일 오!정말] 민주당 박성준 \"실력에는 여야가 없다\"",
+   "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4ybERObUcxMy1xcnhoelEyNEgxM3J1NWJvNUE0UnZnYlBFekQ1c0p6dmVkdmxFSUV1cDNDRWt4dnZncVdCTWJEZzVENUZlMElpakpPRE5tZjBDUkdpS0UwMEcwUV9qbkdJOHF5SzdULUVzQ2s?oc=5",
+   "press": "비즈니스포스트",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-08-28",
+   "title": "내란 특검, 민주 박성준 참고인 조사…“국힘 표결 방해 있었다고 봐”",
+   "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1jS2o4UUdvTW42dHNlMmlLYlZHMTluWS1HTGF0OVRBZFdEd0lPSW1zXzBiVFpKSG5laURnWmtMQThJYzFMX1NEZjVvdDJhT1FsakJWaTVZUDhoN3VVSGY4cGpuc0FIdmE2bnlPbXFxUjB5UQ?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-08-28",
+   "title": "민주 박성준, 내란 특검 참고인 조사 출석",
+   "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNd29scGYyanhoNF9fV0Njb1JfX2FRNXlmZmVNZF9YeU5Jb1VoT2JkLThjRndMOWtJZHRFdTUtamtrSGVwWXloR2t3cWhZTkhZdm1pOUVyMHkyTzFKbzhKT3VtTHc0X1BpSUFjb0FWTzRXT3A2SEhpMWd4eHZRdC1xbWpIQUgzeFU?oc=5",
+   "press": "조선일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-08-28",
+   "title": "민주 박성준 내란특검 출석… “계엄 때 국힘 표결 방해 있었다”",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1Md0F0cHZRUEY0aWJvazFjeU8xYWRsOWRRQTgxM2tpN3FRMFE4LVZsb3g3MHRSd0NENlRlMEs2STQtZVZSelZLZVBMYWJ3ZVI5Sm9icHZBWGvSAVRBVV95cUxOWGFvUmxwSlV3dnBEU3lPVS1vRnJFaTBzT0tnRkUyRW1xdEYzcTlQWDh2RTQ4NklfOTdlTHhlVHM3cmMwMGNWZ19jaG02NWRhRnJOb0U?oc=5",
+   "press": "세계일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-08-28",
+   "title": "박성준, 특검 조사서 “의총은 국회서 여는 게 상식”…국힘 표결 방해 주장",
+   "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBKcFVsZEZDQlhNUnljd0V5N3p2ZWtXaEk2cjNmU1hhRjhLUjFydmxnenljNEJvYUR6M0RvZ2JpMjJUUGl0dnBqSFFkUVNNaGVoaTIwWGN2OXJoWm1kd2p5S3FrV1FDZ3QwaHcyUW50TGdXUQ?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-07-16",
+   "title": "‘불법 조기유학’ 이진숙 거든 박성준...“유학, 뭐 큰 잘못이냐”?",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE04TVJHc3ZpejBjY0lMMERtTGJDcWNIbFhHaHRQajFYcS1jOHpKMFh4WExobmM1TXVsMDR6Mk1Fb1RTOHVuVEtZSFFTUGI3VVNSWi1DZnV4bGg0VlFjaURtQ0NraFBJZUxsV0xv0gFvQVVfeXFMTk9uTEVuRzZRYThqRWJrT0VucFphOU5XWmlBRG5zbUlCU3dsd3JlUDFuUGR6YUpDd21NYUlwQ2JLd01BVUhmSjhJb2dIX192X2dPYWVQVnhqUUNnWXI4ME1mMmVGUWlNUGR1RzhzeGpR?oc=5",
+   "press": "교육언론[창]",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-06-18",
+   "title": "[이재명 파워엘리트111] 박성준 더불어민주당 의원",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5McHJWSmx6b19Bdjh1OHhJWGd6cUFqRzRDQTh5eWVONldYZ05yVTVjakVFclJibmFwQ1JhcDRpUDgyMVZ6WG5NbzBaSTk5MmhieHNCZnpRWW5BNzE2YmtsUmVaWlJiZXBzMVA3RWhR?oc=5",
+   "press": "신동아",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-03-03",
+   "title": "민주 박성준 “윤석열 선고 3월13일 이내…만장일치 파면될 것”",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBrWnZHcm05RmFEQjI0OHBHU09tSlJPR0ZuNU1OWmlmWEktOVJTTVpxdnJmZDZHandZWkowR3BjTGJfVEVNV19LTVQ1MTlHbWZ3OE5wR2lTeU1KbmRCTVhScDExTGdUWGtyaHc?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-06-25",
+   "title": "민주 박성준 \"당대표 억지 경선, 구색 맞추기…생각 자체가 잘못\"",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBwSFFxLTFDd0x3U1B2cnBCQ3RGNzRyY0V2RDBOQWZKMmk5RWpGZTdHWmZ0azh6ZG5XaVk0b2txc3ZhUXRmT1FKd2FWdUhjMElaem9EQ0tiQjkzVHNGckJpMdIBeEFVX3lxTE95VDBVQXVncE9qR0xWamNOZHpCSGhJTXkybkF6N2J4ZGlRZjVvQmQybjVwN3BzRkJEQzMxUk5tODc3ejd6bjFMTUpaaXgyZjZGM0lEWkxtNHMzeEx6U2hYc0VFdHpBYVFDeUxwZ3otS2k3ZEFfYS1jMg?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-03-18",
+   "title": "[뉴스레터K] 박성준 “민주 과반 전망은 ‘간절함 표현’…심판 투표 독려 차원”",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9Jb1d6dzVWekRCWG5WY1RxbXVDS2pHUngtV25zZ09xLTJxalRBbnVIYTBuejhWaUdpaHNBWkV1dWxFS3hLRVJmUS05Z1hickZocGNYcFZZNmFUS28?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-03-12",
+   "title": "민주, 비명계 현역 줄탈락…'친명' 박성준·이연희 등 본선행",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5HU1NNLXpib1E3VXZ2WXZPcV8yRUlpQU1RTWlWNHdrS3N0VG1tU2pRZVFVQldSa2pSc2pKVjBkalpPUmgyRUxzQXljdHFjalE?oc=5",
+   "press": "Daum",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2023-08-28",
+   "title": "[김능구의 정국인터뷰] 박성준 더불어민주당 의원 ① “尹정부, 국정운영시스템 갖추지 못한 것이 가장 큰 문제”",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBEalgwWHVCVTltSGhTXzJWQWxESVdsOEd5cl9zYkt3TzBITU5CQlpiWXN3YmhlWkdoU2xOcERPeFRvSXpvRGNSd1VQc3hMZDRrcWU2eDAzY3pCbVEzOWhWUEN4XzVpa3Nnd2Zkejh3?oc=5",
+   "press": "폴리뉴스 Polinews",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2023-08-09",
+   "title": "박성준 \"난 민주당 돈봉투 명단과 무관...검찰의 언론플레이\"",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE96ZDlxV0tURnAxRVhrVk5yVm85bkFxR3dOb0E3Sm5NS3M1X09vQUhETndtTDJ0a0d0N3VNTVA5VjI4TTdSa3hRYU9ZbzVCVzMxVWZrYVFpbnBxa016?oc=5",
+   "press": "뉴스핌",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  }
+ ],
+ "incidents": {
+  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
+  "updated": "2026-10-29",
+  "items": []
+ },
+ "media": {
+  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
+  "updated": "2026-10-29",
+  "top_words": [
+   [
+    "민주",
+    15
+   ],
+   [
+    "국힘",
+    4
+   ],
+   [
+    "내란",
+    3
+   ],
+   [
+    "최고위원",
+    3
+   ],
+   [
+    "출마",
+    3
+   ],
+   [
+    "민주당",
+    3
+   ],
+   [
+    "시민들",
+    3
+   ],
+   [
+    "특검",
+    3
+   ],
+   [
+    "표결",
+    3
+   ],
+   [
+    "방해",
+    3
+   ],
+   [
+    "부정",
+    2
+   ],
+   [
+    "국회의원",
+    2
+   ],
+   [
+    "아닌",
+    2
+   ],
+   [
+    "없다",
+    2
+   ],
+   [
+    "전당대회",
+    2
+   ],
+   [
+    "말만",
+    2
+   ],
+   [
+    "앞세우는",
+    2
+   ],
+   [
+    "공격수",
+    2
+   ],
+   [
+    "공소",
+    2
+   ],
+   [
+    "취소",
+    2
+   ],
+   [
+    "몰라",
+    2
+   ],
+   [
+    "참고인",
+    2
+   ],
+   [
+    "조사",
+    2
+   ],
+   [
+    "출석",
+    2
+   ],
+   [
+    "더불어민주당",
+    2
+   ],
+   [
+    "전두환",
+    1
+   ],
+   [
+    "김태규",
+    1
+   ],
+   [
+    "자격",
+    1
+   ],
+   [
+    "이진숙에",
+    1
+   ],
+   [
+    "정치적",
+    1
+   ]
+  ],
+  "quotes": [
    {
-    "date": "2025-03-27",
-    "year": 2025,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2025-51호",
-    "prev": 3059697,
-    "inc": 1122739,
-    "dec": 1048186,
-    "total": 3134250,
-    "change": 74553,
-    "land": 78960,
-    "building": 1735000,
-    "securities": 20146,
-    "deposits": 1169057,
-    "polfund": 104162,
-    "debt": 0,
-    "cats": {
-     "토지": 78960,
-     "건물": 1735000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 22730,
-     "예금": 1169057,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 104162,
-     "증권": 20146,
-     "지식재산권-----299--300-본인저작재산권정치언어의품격----변동없음본인저작재산권스피치의정치----변동없음▶가상자산": 4195
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+    "date": "2026-10-04",
+    "quote": "전두환 내란 부정 김태규, 국회의원 뿐 아닌 국민 자격 없다",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5BRm9FeVFfeEtxUnUzR0NTQWIzR0dhemtIRml2bVY5RU5yaVVKVW50OGtLRmJfOXctS3kyb0k2bHBXQkVnS2FwTkFTZjZBdnliMFdjOGJkLWtfajQ5aU9HTjRtcU5lLUxQdGZEbWlUMEg?oc=5",
+    "press": "미디어오늘"
    },
    {
-    "date": "2026-03-26",
-    "year": 2026,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2026-54호",
-    "prev": 3134250,
-    "inc": 935728,
-    "dec": 688866,
-    "total": 3381112,
-    "change": 246862,
-    "land": 80313,
-    "building": 1803000,
-    "securities": 76143,
-    "deposits": 1216278,
-    "polfund": 160374,
-    "debt": 0,
-    "cats": {
-     "토지": 80313,
-     "건물": 1803000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 18630,
-     "예금": 1216278,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 160374,
-     "증권": 76143,
-     "지식재산권----본인저작재산권정치언어의품격-----271--272-본인저작재산권스피치의정치----▶가상자산": 26374
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+    "date": "2026-08-24",
+    "quote": "정치적 수사에 고소, 국회의원 맞나",
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1xeWVTNmV0QnZPVEtaMU9HN0p6OFlkUGJIQldCb3NVYUh5ZW5LTGVYcFV2QWhNWkV1VFVjNG5qa1ctTkt5bE5TWTYtMkQtOXBMWHpFcFJvN01CTnBCaW5OdTNOYzBKUkJ5aTIzZNIBckFVX3lxTE9fLVhZX3Y0bzNQUHpGajlwUUIyU1l0TWJveC13QWczd2tGUlh0LXRyZmhBRHFtdFdOUkFPdUN6emNYaFZYTXNod3hFNjJobXFTMWVXQWZYbmpWTEdYU01LSEZPSWl1SzhISk1yYXhCaWhfQQ?oc=5",
+    "press": "머니투데이"
+   },
+   {
+    "date": "2026-08-24",
+    "quote": "부동산 세제 정부안, 취지 공감하지만 민심 저항 심각",
+    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE54RHk4bmpscU9tZ0tITjhOSkxzMWdfaWpQYUJ1cFlyZmxjaGJ3cTQ2QzJNX2pWczRIWlpNN0pEemphTEQ1aE91eXp3TWpJaXdVMjlBM3lpSGowdkZlX0RnV1RRUEhVSDVFbW9aT0NmUmdtWVkx?oc=5",
+    "press": "한겨레"
+   },
+   {
+    "date": "2026-08-17",
+    "quote": "당내 역동성, 전대 이후 달라질 것",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1ydlN6NEs0aXZEaDZQQlRtclpPb1BRYnI2bEdETExtYWpQbWtZRUdveGFycG1lekNTZzRjVUM5SUxFOEFSUldxdG0tS0FtWENSZVFCM19UbnAyV0U?oc=5",
+    "press": "KBS 뉴스"
+   },
+   {
+    "date": "2026-07-12",
+    "quote": "말만 앞세우는 공격수 안돼",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1ZOUxMa2o3bUg5RVlYVWlFZXFmZDBTelk3Y2NvREZkaE1DUGtSN0pXUnFqLVpUZkNXcXBqdFZ4MFRwTnpaSEZsZHA1TEpJTXhYTlRjS3ptRjBlZ2PSAWBBVV95cUxNQTZSeGpzZVhhelMwUXZ3aFl0QjVqMTVCd0dLdUgyLVRpTEZaM2JRTVhFMmZBeW55ZVFocGZlWUtwTFVKaW1WQjM2b0wtNldlUWhES2VraERoUXZFTktlSkU?oc=5",
+    "press": "연합뉴스"
+   },
+   {
+    "date": "2026-07-12",
+    "quote": "말 아닌 행동으로 당 혁신",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBMSGhMRm81MzRRYzFLeXBPQmdSdEVBS1RVRGZ5WlNhQ0x0T05ENFZJdzZwWFoxTjNJWThqMDBzOG84cTRmUWY4RHJ5dC1sTXJHY1lyY3g3d0pxaGFYbDdyd1RaNXhXMmxvNmJJ?oc=5",
+    "press": "일간투데이"
+   },
+   {
+    "date": "2026-07-12",
+    "quote": "말만 앞세우는 공격수 원하지 않아",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5RSXpxdmF0TnppRVcyYkxaMF9BcVl1cUswQy10SzJzZlJfS2doQnBXOWpFWEJlaFVKaV82ZEwtWFpHSS1zeGt5ckJDd25LUkZ4ZjM2OVpn?oc=5",
+    "press": "헤럴드경제"
+   },
+   {
+    "date": "2026-06-17",
+    "quote": "민주 지지층 실망",
+    "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5nb3BwZnM1MXlKd1NtVW1wc2JQYWVvZ3Jsc3NTZnU1TWNzOFlzbXY5S3BCdTNma05fQml4U0tOZkcySDN6ZHZ2Mm80MXpDMTg?oc=5",
+    "press": "Daum"
+   },
+   {
+    "date": "2026-06-17",
+    "quote": "민주, 리더십 교체돼야",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFAzVmlJWWlDdUplbWVFZWVteTBueWFMZ0g3RjB2cEdIOTBTX2t2c2ZPV3JGR0ExRG5KNXJuS0htYllsR0FpUnMzVW1WSmd4Zk0yQTZ1czZJSzNEd1NLQlFybHhBM2VTbE93cFHSAWZBVV95cUxQQ0ctRldnSEZFN1JLVU8yQ0RmcllnNTN3ODlDWTZRUUNlWmFuVDR2ODNJNzd1ZFdHY3p4OEhVTFF3LVlyRHZrN0FoeEVuMnFIYVh6RW52SkRMSU5PM0dINXVSWlY4d0E?oc=5",
+    "press": "SBS 뉴스"
+   },
+   {
+    "date": "2026-05-07",
+    "quote": "시민들 공소 취소 몰라",
+    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9BbExHVmg4WmptWHA1bElDNjE5dllaRk85Z1pQNEZEVTRxTnA0WElSZGZRd3Y3UFlqV0NCb2RtWG5wazZOelo5SzNfelpKU0p4RGZCbkFXc3VvTE1OQ1F4aE1fQVg5Q3cxQ2s3Vk9TR1NBa0V1?oc=5",
+    "press": "한겨레"
+   },
+   {
+    "date": "2026-05-07",
+    "quote": "시민들 공소취소 뜻 몰라",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1pQ1RKRWhEeVdLLVl1TER0UGtlbWNrMXd5M1Z2RXM2b3FDc0lLSjFiN1BUOUctRHRYRjUzcU9tTzR1dU1leWl1bjVoSlQya1NJN05EX2d1QXRibFk?oc=5",
+    "press": "KBS 뉴스"
+   },
+   {
+    "date": "2026-05-07",
+    "quote": "시민들 공소 취소 뜻 모른다",
+    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1XQ3p5eWxVUllvS0Y3TklEMzJrQndwN2I0TXFyQmhBSmd1UXRuWEtOa0VkUmlGNXg0ZUpyTHZDc0stUFN5clN0U1JfQVBXZXgxOGZoWA?oc=5",
+    "press": "JTBC"
+   },
+   {
+    "date": "2026-02-12",
+    "quote": "합당, 차기 지도부가 정할 일…‘통합 전당대회’ 불가능",
+    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE92Y0tVaTBjYnY2bGRfR2cwNDVtUGpHc2pRaVpOTmRrX1RxZ3Atd1ZlNWVDaVZHbHF0b3FNUWxUV1hLR2xxY3NjNHVGcnJQMFhIWTlwRlFSOEtHVGhGMzFsLTh2WnhObHRzejktWFZFM2VvY0Fi?oc=5",
+    "press": "한겨레"
+   },
+   {
+    "date": "2026-01-14",
+    "quote": "모든 국민이 검찰개혁 쳐다봐…검찰개혁은 시대 흐름 잘될 것",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1UNnU1eUduRW5CTkhLM0owNGk3ZC1WU2R0djlBZUxGU0F0SEE0RHE0M3BfVGwzYzhmWTZaNVB0YjZMa2VWb1ZOWllhTzZJZmppbDVKWkxfanNKVW0zRGtMZWFnR2JETkFqTl94MjF30gFyQVVfeXFMUHJnaGVyTnlVMlBiY0I0Q2RybFZzM3dTc0VXc1Rna3FiekRlVmlHRW8wNXpuYXVTQVVhNlNLcXc3QlNlN1dHUDIxcUhtcnRxa1dLZ2dwaUcta2F0TUZNRzFIaWlDMThndV8wOW1obFMyMS13?oc=5",
+    "press": "로리더"
+   },
+   {
+    "date": "2025-12-29",
+    "quote": "실력에는 여야가 없다",
+    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4ybERObUcxMy1xcnhoelEyNEgxM3J1NWJvNUE0UnZnYlBFekQ1c0p6dmVkdmxFSUV1cDNDRWt4dnZncVdCTWJEZzVENUZlMElpakpPRE5tZjBDUkdpS0UwMEcwUV9qbkdJOHF5SzdULUVzQ2s?oc=5",
+    "press": "비즈니스포스트"
+   },
+   {
+    "date": "2025-08-28",
+    "quote": "국힘 표결 방해 있었다고 봐",
+    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1jS2o4UUdvTW42dHNlMmlLYlZHMTluWS1HTGF0OVRBZFdEd0lPSW1zXzBiVFpKSG5laURnWmtMQThJYzFMX1NEZjVvdDJhT1FsakJWaTVZUDhoN3VVSGY4cGpuc0FIdmE2bnlPbXFxUjB5UQ?oc=5",
+    "press": "한겨레"
+   },
+   {
+    "date": "2025-08-28",
+    "quote": "계엄 때 국힘 표결 방해 있었다",
+    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1Md0F0cHZRUEY0aWJvazFjeU8xYWRsOWRRQTgxM2tpN3FRMFE4LVZsb3g3MHRSd0NENlRlMEs2STQtZVZSelZLZVBMYWJ3ZVI5Sm9icHZBWGvSAVRBVV95cUxOWGFvUmxwSlV3dnBEU3lPVS1vRnJFaTBzT0tnRkUyRW1xdEYzcTlQWDh2RTQ4NklfOTdlTHhlVHM3cmMwMGNWZ19jaG02NWRhRnJOb0U?oc=5",
+    "press": "세계일보"
+   },
+   {
+    "date": "2025-08-28",
+    "quote": "의총은 국회서 여는 게 상식",
+    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBKcFVsZEZDQlhNUnljd0V5N3p2ZWtXaEk2cjNmU1hhRjhLUjFydmxnenljNEJvYUR6M0RvZ2JpMjJUUGl0dnBqSFFkUVNNaGVoaTIwWGN2OXJoWm1kd2p5S3FrV1FDZ3QwaHcyUW50TGdXUQ?oc=5",
+    "press": "한겨레"
+   },
+   {
+    "date": "2025-07-16",
+    "quote": "유학, 뭐 큰 잘못이냐",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE04TVJHc3ZpejBjY0lMMERtTGJDcWNIbFhHaHRQajFYcS1jOHpKMFh4WExobmM1TXVsMDR6Mk1Fb1RTOHVuVEtZSFFTUGI3VVNSWi1DZnV4bGg0VlFjaURtQ0NraFBJZUxsV0xv0gFvQVVfeXFMTk9uTEVuRzZRYThqRWJrT0VucFphOU5XWmlBRG5zbUlCU3dsd3JlUDFuUGR6YUpDd21NYUlwQ2JLd01BVUhmSjhJb2dIX192X2dPYWVQVnhqUUNnWXI4ME1mMmVGUWlNUGR1RzhzeGpR?oc=5",
+    "press": "교육언론[창]"
+   },
+   {
+    "date": "2025-03-03",
+    "quote": "윤석열 선고 3월13일 이내…만장일치 파면될 것",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBrWnZHcm05RmFEQjI0OHBHU09tSlJPR0ZuNU1OWmlmWEktOVJTTVpxdnJmZDZHandZWkowR3BjTGJfVEVNV19LTVQ1MTlHbWZ3OE5wR2lTeU1KbmRCTVhScDExTGdUWGtyaHc?oc=5",
+    "press": "한겨레"
+   },
+   {
+    "date": "2024-06-25",
+    "quote": "당대표 억지 경선, 구색 맞추기…생각 자체가 잘못",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBwSFFxLTFDd0x3U1B2cnBCQ3RGNzRyY0V2RDBOQWZKMmk5RWpGZTdHWmZ0azh6ZG5XaVk0b2txc3ZhUXRmT1FKd2FWdUhjMElaem9EQ0tiQjkzVHNGckJpMdIBeEFVX3lxTE95VDBVQXVncE9qR0xWamNOZHpCSGhJTXkybkF6N2J4ZGlRZjVvQmQybjVwN3BzRkJEQzMxUk5tODc3ejd6bjFMTUpaaXgyZjZGM0lEWkxtNHMzeEx6U2hYc0VFdHpBYVFDeUxwZ3otS2k3ZEFfYS1jMg?oc=5",
+    "press": "뉴시스"
+   },
+   {
+    "date": "2024-03-18",
+    "quote": "민주 과반 전망은 ‘간절함 표현’…심판 투표 독려 차원",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9Jb1d6dzVWekRCWG5WY1RxbXVDS2pHUngtV25zZ09xLTJxalRBbnVIYTBuejhWaUdpaHNBWkV1dWxFS3hLRVJmUS05Z1hickZocGNYcFZZNmFUS28?oc=5",
+    "press": "KBS 뉴스"
+   },
+   {
+    "date": "2023-08-28",
+    "quote": "尹정부, 국정운영시스템 갖추지 못한 것이 가장 큰 문제",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBEalgwWHVCVTltSGhTXzJWQWxESVdsOEd5cl9zYkt3TzBITU5CQlpiWXN3YmhlWkdoU2xOcERPeFRvSXpvRGNSd1VQc3hMZDRrcWU2eDAzY3pCbVEzOWhWUEN4XzVpa3Nnd2Zkejh3?oc=5",
+    "press": "폴리뉴스 Polinews"
+   },
+   {
+    "date": "2023-08-09",
+    "quote": "난 민주당 돈봉투 명단과 무관...검찰의 언론플레이",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE96ZDlxV0tURnAxRVhrVk5yVm85bkFxR3dOb0E3Sm5NS3M1X09vQUhETndtTDJ0a0d0N3VNTVA5VjI4TTdSa3hRYU9ZbzVCVzMxVWZrYVFpbnBxa016?oc=5",
+    "press": "뉴스핌"
    }
   ],
-  "latest": 3381112,
-  "latest_date": "2026-03-26",
-  "source": {
-   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
-   "unit": "천원",
-   "fetched": "2026-10-28",
-   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
-  }
+  "by_month": {
+   "2023-08": 2,
+   "2024-03": 2,
+   "2024-06": 1,
+   "2025-03": 1,
+   "2025-06": 1,
+   "2025-07": 1,
+   "2025-08": 4,
+   "2025-12": 1,
+   "2026-01": 1,
+   "2026-02": 1,
+   "2026-05": 3,
+   "2026-06": 2,
+   "2026-07": 3,
+   "2026-08": 3,
+   "2026-10": 1
+  },
+  "presses": [
+   [
+    "한겨레",
+    6
+   ],
+   [
+    "KBS 뉴스",
+    3
+   ],
+   [
+    "Daum",
+    2
+   ],
+   [
+    "미디어오늘",
+    1
+   ],
+   [
+    "머니투데이",
+    1
+   ],
+   [
+    "연합뉴스",
+    1
+   ],
+   [
+    "일간투데이",
+    1
+   ],
+   [
+    "헤럴드경제",
+    1
+   ],
+   [
+    "SBS 뉴스",
+    1
+   ],
+   [
+    "JTBC",
+    1
+   ]
+  ]
  }
 }

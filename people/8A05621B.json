@@ -45,22 +45,16 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   }
  ],
- "photo_local": "data/pol/photos/8A05621B.webp",
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
   "lead_count": 25,
@@ -391,7 +385,68 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
+  }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 605750,
+    "inc": 306293,
+    "dec": 139924,
+    "total": 772119,
+    "change": 166369,
+    "land": 0,
+    "building": 320000,
+    "securities": 0,
+    "deposits": 300554,
+    "polfund": 100955,
+    "debt": 0,
+    "cats": {
+     "건물": 320000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 50610,
+     "예금": 300554,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 100955,
+     "증권": 0
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 772119,
+    "inc": 405803,
+    "dec": 235803,
+    "total": 942119,
+    "change": 170000,
+    "land": 0,
+    "building": 300000,
+    "securities": 0,
+    "deposits": 428692,
+    "polfund": 172487,
+    "debt": 0,
+    "cats": {
+     "건물": 300000,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 40940,
+     "예금": 428692,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 172487
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 942119,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
   }
  },
  "votes": {
@@ -964,65 +1019,692 @@
    "fetched": "2026-10-28"
   }
  },
- "assets": {
-  "records": [
+ "photo_local": "data/pol/photos/8A05621B.webp",
+ "news": [
+  {
+   "date": "2026-09-16",
+   "title": "[전격시사] 김준형 조국혁신당 원내대표 - “가장 위험하고 정당성 없는 전쟁…美 통상 압박 때처럼 국민께 호소할 것으로” 李 기자회견 ‘파병 입장’ 밝힐까?",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBDRklfaDVJVGU4T3dYaGFrX0JZWEpkbE11VG42bzVxOEhYMkxkUkdOLTJGd0d3T09IQnFrNTFOcHFYelBHRy02X040YUhOTHFkNzYyRXdTUEk0LUE?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-15",
+   "title": "의원총회에서 발언하는 김준형 조국혁신당 원내대표",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBuSDBZOFo4WU9ERlNPeXBqOUFzdlNZVUxXa0ZVVksyMV9vWHMtd2FSUFJkblNoRVpsMnJndjVCMXMyVWdqYldUbzhmdEtUbDlTS0ZzRnpjdVZ3QnNaTzBTSA?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-09-04",
+   "title": "조국혁신당 김준형 \"호르무즈 파병, 넘어선 안 될 선… 尹정부도 우크라전 파병 안 해\"",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5QWFpUa0RjRWJzOXJ1N2kxRzZHcUNpY01Sd2l3ZmUydVo2UW10WFB1VDNEZGM1d1NLeDVfTHN2NXVtYW02dHAta0lJV3hPRW1KVTFUN3F0WWppaWtQRWthNmhrOEU3Tnk3Z2Jsd29B0gFzQVVfeXFMTnZNRWNkbnlRZjJqd2E1bGU5b1VYV0YxT19mYmlBb2JSbU83X211b2hLcFRKdHczYjh2enZoTU10N2dFY3ZHQ1M0N2NZREsxeDVmUHdVM0tPVFFucXphR1hJTzFmLUNDVWZST2wtc2Z6OFllMA?oc=5",
+   "press": "한국일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-23",
+   "title": "조국혁신당, 수도권 시도당위원장에 강원 연고 인사…김준형·김선민 선출",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9RWEpPUFV3TDJJbXFQVHRvUG5HMVpFd003U2dOM21SVVNEcjJGUUNXYl9UOWNwOVBoeFdXNFhyTEEydGhoNi10aGVsTXdYSXpXVWw2MFo0LVpJM0E?oc=5",
+   "press": "강원일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-23",
+   "title": "조국혁신당, 서울·경기·인천 시도당위원장에 김준형·김선민·안광호 선출",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE92WTg5Mk5EUFRZTnZOakEzdzhIV1B5aVBlMjlid3JEZ2Y4Z252RFppU1l5WmF6cFpEMVVkbTRBWEhfbkJxbHhJblk3dGNJbEVTSmlRV3dleWd1THhtY3FvODR6WFota0JXLTJhdXlOYmt0dXo1SElYT9IBeEFVX3lxTE0xdFJkdlNibnI2RVRfMk10LXgtM0gyeDZEZEdFblE1cjJFQjdIc3pvOHktOGhCTzBYLWZzWTN5UmFaTDZCWFd3cGVRdmlobm51WmkxeWtEalFVYzFWSUJVM0RLNVZnVnNlTWNGcUQyVFZUWjVnX3B3ZQ?oc=5",
+   "press": "MBC 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-11",
+   "title": "조국혁신당 의원총회에서 발언하는 김준형 원내대표",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5uNHFDeVBPNlNxNmllbUxHd1BDcXZIZnZMRkJqMTJ1OE10TVBpR0l5cUx4U3I2V3BlRGgzT3BHenZrNDViQm53MzZTa2E0MVRpRFFLdzRWWXBLM1HSAWBBVV95cUxNcV94Q3plOTR1Uk9iZmNSU09jV01LMXE1d3BtUDBaMWFFcEVmQ2lEUVIwRHBzLTJZS0oxU2ZvTG4xMXRKTTEtTlpzMDYwc0F5Q0lVd0ZJcEtaWEwzbHpIM2I?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-21",
+   "title": "김준형 “혁신당 ’협력 거수기’로 여기지 말라“…보완수사권 폐지 압박",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB0X3JfbHM4MzNpR0xTNEVwZVd5Uk9aa2UwZW9wM0djSGNCYW13c3NrdlFHQlVMM0hQY09Ta1ZwMWllUHU1LUhlQ3R3OGxTNVRQX3FLT3hkZEVyWkdBQVVOenk4cElLZ0U?oc=5",
+   "press": "연합뉴스TV",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-07",
+   "title": "의원총회 발언하는 김준형 조국혁신당 대표 권한대행",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5KdTRNUXg2amxzVlVfSjJXOWFYemprR1VYbmFKOXJOLW5PeWZtMnI4ak5RVzNUM1laWlZPeVh5a1J4SFhIcTh1SW5pVWdWUnlpam5FRl8yVGN3bVlfN20tOQ?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-07",
+   "title": "조국혁신당 의원총회, 발언하는 김준형 당 대표 권한대행",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBnaVhqU05QLWxpTW1IYmYtSm5pOTdpS3NwRC1xRS1mMnVYd1plbVlWbll4dFFBZVlaTTBQQUw2OHgtV0xlWDRKUmRQdkZXQ3d5TnI3dXM3TWNUWVXSAWBBVV95cUxOYUVNQnF1MjZpZ0c5YmxydEZvZUROT0lqbFo4MGZKLUlDcFJLMUxESlE1bFFvb080T0lIeE9BN2JWdmRTejlaSzYzc2Q0eW45V01YY3Z4cHppT1hfYTRlVUM?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-07",
+   "title": "「M포토」 혁신당 의원총회서 발언하는 김준형",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5CQVJNZkZHT2N2cVFDeVJJclowb3FzWW0zU0R1amFZUmgwTFBfbXdtclppQlRpMnhxUDA4ZGtPRWxFRTZLOGlGTDRCVTZqamNRekIwZ2RDd0JEc3VLSDhnWWVwcVJmaVU?oc=5",
+   "press": "M이코노미뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-07",
+   "title": "발언하는 김준형 조국혁신당 대표 권한대행",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBIYjBrUlBZaTRmYmo5cTBrWnBNejdOS2RHY2ZRTEY4TTQtZFhtSUZuU0Fhb2N2TmlDVjVzNkszYkUzWE1icHo5ZVZNa2RUUG5UUXl1eWJCc3NCbnhmaEpvZC1XNHFJS2hQeVlZ?oc=5",
+   "press": "서울뉴스통신",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-19",
+   "title": "조국혁신당 김준형 “민주당과 합당 타이밍 아냐, 모욕적 방식 안돼”",
+   "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBzcW9LYXZMZ0ZBWGdkOEZ6eVF1WFhxdzhnTE4yMk9qeWpYY3VudmppZE9rT3lOS1ZIeVl0emdIY0FQWllpV2lYNzI3RXA4dFZyQmfSAVNBVV95cUxQVHpBeWJ5NllacGNQYU5od0ZTTE81U1d0OEVjWGtEMW1TaXE3YnpkLWFPeElGY284SzhQakg0WEw4VU5lOGs5U1ByOVFUNVcwc2Y2QQ?oc=5",
+   "press": "서울경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-19",
+   "title": "조국혁신당 김준형, 한병도에 \"합당론으로 마음 고생…지금은 시기 아냐\"",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1ZWGhCdVB2amx3U2h4RldqbjFyVkNCazVDZFZwcllIRmVmWDJKcHRsN3dKTXBwa052OGtObFgyQzVnUXZOV0ZPZG1fdVVfbGZBV0pIbHlWa3luYWQxMEFOYtIBeEFVX3lxTE1FcWZmc29PaGt6REFDSTdUaDU4VEUxWXV2azQ0enRfblVLVGs4b2dsM3lZZFhpTDltYUVxT0hidFd6R1JVVmgxeWdFanRYaVEtc0k3OF9iUFBHNVdMWEZIWElJTEFiUVpfX0VrZklUOG43OEpXdW5YaQ?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-17",
+   "title": "조국혁신당 원내대표에 외교원장 지낸 김준형",
+   "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOcmVla2JCMV9jUWZUYUFJSTZVZnhZOVBvVlk5aFdnY19VV2Y2UHB3WjNka3JxcnF5VnJOck1TR0NKT1NKaUdSd2cyc0ZzZGNXU2VHeWFteDkxQWxFTjZEUDBaeHNwTEY4ZlUyZWhlMzJxZER0QzgxQ08wczNhcGpZZnVyVGV1QQ?oc=5",
+   "press": "조선일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 새 원내대표에 김준형 의원‥만장일치 당선",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFB0eHk0SjlfaTFaLUwybUJEeDZCMWRzU1lQcUJBSlJtN08zUmlzeldFU3ZxTGlfQVpFTWJRLXEwTFU2R1hyMXUtQk1oSXhHQkxkbzFwZVJmYWxiM0RnaFBPTG1OOXd5UUM1emVwSGdIUXhfUWJVWEl4YtIBeEFVX3lxTE5QY3JtdEJaMnJfclFIcjFsMC1zTU11WFNIc3RVS3FtMm9RZGp0TWVEbGNHOFB3bUdfY29jRzU4WHhmREhYU05raDI2OHFMc1dFWXJxSWZGcURmbkFaNDN3R2gwWmxDTjVkSEJjTXZqTmt5Q0VGUzAwbQ?oc=5",
+   "press": "MBC 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 새 원내대표에 김준형 의원…“정치공학적 합당 거부”",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1CS0k3SUZuOWg5UGgzdmFSR2xhUWcwb3pkc0dJSFlYNUdMbGlDajFOczEwTHpzR1N5Si1haWpzck1OU2REa0V2QTB3NWJGLW5aLUhaMkZZWi1qUGgxMXZvR25NVG9jNlpwUWFkU05iSE1WUHVoc2RZ0gFmQVVfeXFMTTZGWmprb3JlM19YdEkzNVlrVTdmWTJrMWxaRzNaRjd1MFFmekM0Q2o4Sk4tZzI0MGtoUlM0MDdjN0Y4VXd2Y19SNF9RUFMtck9YaVk5eHBReGI3YWp3anlzbzM3QkJ3?oc=5",
+   "press": "동아일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 새 원내대표에 김준형…“정치공학적 합당·연대 거부”",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE56TVZ0VGZBZUNCZ3lqZ0JJY1hjLUE1aUlDRDRVLUpNeGtsZ1dKUFFUTG04MnFfRVlsX1h3b29UQ2hHUk5vVEMxV2diSmFOUjZuWWx5QUhmUXZ3NWM?oc=5",
+   "press": "경기일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "혁신당 새 원내대표에 김준형 의원…만장일치로 당선",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1SSE1la290VjBiR1JlcEFJZUlMbDN3TzY5aENMVUZMZGg3aFN2bENKZDNhQkhEam5FbHRNbVJOMTI3M0o0WjZlWHBSWlBmOVBsT3ZERC1Ta1QwaU3SAWBBVV95cUxNUENQYnY1cTl1MmNQSVN2TmpGVVdwbTB6T01ncnMyRWdWSk0xalNqZ1hseTR6eFpmUko0VDZZQjdzS3JIRThPQklXRzFpQ1NnLThXQmdfQkxlaldOeEFwdzY?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 새 원내대표 김준형 의원 선출…“민주진보 단결”",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9nVlFUWGxUVWRjTnZJS0hWeXp2YzJFdzYtY3ZYZ3IwamxockZuT1RVRGFGZ2w0d2JhSXI4ZHJnWklxYThWNktmOXRxSVZrY3hlU0lGZS1tQ1k4d2s?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 새 원내대표에 김준형…\"李 정부 성공 위해 연대\"",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5ObnBhYlUxd2JsMnhZOEZtQUEyeUh1aUtfOXVma2NELXVET250VFp3LTRIQkg5bXlDLTFvakwwNXVublRvUU9KOVZtWWJtZGtyMTg2cVRlbHZ3UQ?oc=5",
+   "press": "한국경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "\"뭉치지 않으면 이길 수 없다\" 만장일치 당선, 김준형의 '혁신당'[인터뷰] - 머니투데이",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBLQW55R0tuclotdjRCQ0V6N2JYS1NXWFVwZjUycVFsQ0k0cDRTTGRvSXF1cHlIbGxOUXVHRlFpN0RYaWVJVmFRa3Z5NzltS1B0VjRpTUZhZm04U1k0THBSTVlhLUYyWnFNQkxydtIBckFVX3lxTFBJb3N0bXJJN1dFc05OVzliV2dTNXRzeFB1WkszUWVvdmdveG1QcEg3NDhjc05LSGNkcndaZjIwWnFTaHBmZ1FkS2oyU1pDamgxLVhVM2Nwb1JfUWNSZGg0Nl9yN25XUU1oSVBIbE5YT0pBZw?oc=5",
+   "press": "머니투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 새 원내대표에 김준형…“李 정부 성공 위해 연대”",
+   "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5OVHB0eTRzMzRiLUMyd3ZnODF6em1wSTdQYWtmbGotOFRScGpoYjZfZEI4RXp1RGZMbHJ4bVVsNER5aDlOZjRKT1U2SjhJWkt0UmfSAVNBVV95cUxNS3UxNlMtbEgwMVZoWENIMkhSRldEUlVrcHRmTmwtV2F2MERPM0pKZ05zaEhHaHFBUkE2dFQ1YkdQb0pkcW5OSXd2NmV3WTNzSFN0bw?oc=5",
+   "press": "서울경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 새 원내대표에 김준형",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE53enJidmNMQ0hrQWlMUXkyOHJQX3BsYWpBbUVLZmFpVGVEaEFlTXhfYkRxY2RnUGRYckdkTXR2NmgyUEI3OUxUQUNhSm9sQ3R4T2ktUjVkckdxQQ?oc=5",
+   "press": "한국경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "[속보] 조국혁신당 새 원내대표에 김준형 의원 선출",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5rQmQxcU5nLWFPOGVVQ21RVVF1bGJkdXdDTlBibkpVZnluZUtvNy1rekxqT2pRNkpmdkhQMTNCbEwwZWJ3LWsyRHBUR1V2czJxRzdjVl96QlEtX2Z4clp3UjRaem1Yby1JcUZodENB?oc=5",
+   "press": "gukjenews.com",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 새 원내대표 김준형… “정부 성공 협력”",
+   "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9jSkpJN3FSUHRBWDY3aFE0NnlmUkUtdUh3NEdGWWduZHg0NTlUdURQYTE3amlXMVlOZ3M2V01tSk9OWjMzelI1VnEycDZFMHpm?oc=5",
+   "press": "문화일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 신임 원내대표에 외교 전문가 김준형 당선",
+   "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9hUUdUM2NBMGt6T3kwLU13V1R4SnNWSjUxOVpQY2t5U2RXVkFrRFFjUTRnVEpUeWRCOUR1eENtZHdKckVtYklGcjQzVGlBV1h0QlBiVzhGbHBxOEFnNllDTkNoSnhCRHh2ZUtEVVZLSVdodw?oc=5",
+   "press": "굿모닝충청",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 신임 원내대표에 김준형 의원…“정치공학적 맥락의 합당·연대 불가”",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBuYWN6U3c3enlsTmhjNUN1RG1kNUVFZlYzSktHYVhPNjZPcVJPc0NxSXNMNzgyekdMUVZxTGNmOUVBT0w5RWZZWlJLd29CTlhNRkx5enpNdUkzQdIBX0FVX3lxTFA3RVM3Z25mOEZBeUJ0eFgtc1FmN3pReHZRUzZKMXByT2dNc0s1cEFQazJwN2JWaDJtUTVnY0U4WmNrOHpwb1R2djVNZGhXYUVVN0VMZGZYTEVTVE1ucVdN?oc=5",
+   "press": "경향신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "당선 소감 밝히는 조국혁신당 김준형 신임 원내대표",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA1NE5kamdzYVRTTHI0SG9JX1YxZXlWTzdDSC1NeVpHN0hDVFdFSi13QmJGTlNaSWFVdEhQUUg2aFF2OTlGdzk4OVlieFloUnQ1SE1XLXhtR2dSZUnSAWBBVV95cUxPUlAtZHVpQVJIbE15aF9xUEdjb1d3eUlValh6a1VyS3JzUlhLODFBV3pFUW1vLURjbWZ4NzJQTEMzY1hiQ2pnQmVaNDllOWRqTDdZaUZBZTFWMC1aeWV2MWM?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "[프로필]김준형 조국혁신당 신임 원내대표…국립외교원장 출신 국제정치 전문가",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9nd2VacmRXYUNnWmtQVVMwRnJ0bFRMbDFOQS12c3JYeGFhRmdldzV5S0RzcTd4cWlhM2VjQThEbGR2T3hkcnZpclhDR3FtQTRleF9FZnJhTWV1ZGRkNUR4NtIBeEFVX3lxTFAtbnptY1BlcGI4VU94bmtpRmx6Rk8xV0MxWm1hZmtTeWJvWTd6Y0YzdWhWVjBNcUlXUXBLTFZvdi11aHhFbFpTM19jS1R0SS1CUFk0Sjc5U0NrUDN3SjdlaUgyUmg2R0pYdEtkNy1Gb2VXX21OYUc0eg?oc=5",
+   "press": "뉴시스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 새 원내대표에 김준형... \"李 정부 성공 위해 연대해야\"",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5fLXZyZWRLZ2tBZW9MMjF6bEMwTjNoVnRhMDhvZnFHekMtUFhvbmRKT2U0ZXFFVllHMzhoMXI0NjlOT3hDN1ZwZkdfajJucmZ6bXcybmxxRUE2WEJMVHJTZ0N1eVBXYmVnTjlNckdn0gFzQVVfeXFMT3V3dlp5MlhPb2UwcnVRQ0dMYWlWaXhKTGtqbldXQ1VHTEdOTjBnalBTa01SSEo5dEVMSUdtdnNfb1RYQzJJRkUxekhoS3lHdnVKTGpkY1BmdkNLWHRpREdzZnJoQzhhVzZtbkt0WndJRXNaSQ?oc=5",
+   "press": "한국일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 새 원내대표 김준형 “李 정부 성공 위해 힘 모아야”라면서도 “정치공학적 합당은 거부”",
+   "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9ScVFvV1VWOXNBejBOcDYyU3h2NTdGZUkyRk1NRktlWDlUZHlwZFNxRWdVQUZaQUtMNGp2b0N4V3VReDJJQnIyaDJCa2Jxa29ram5JUkZ4ZlBfQkVXNFHSAWNBVV95cUxPUU1HQ08zal84QXBKNUJBZmhTMVNacktNRV9jNUJVVkVORExvZ3FOak5qeldrVEplcGtua3lnSVo3NUZfM2hnYWpzX2JGckthUVJ4QmxsQ3B0YXhmcmFNclcyVjA?oc=5",
+   "press": "채널A",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "조국혁신당 새 원내대표에 김준형",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5BUVAwSG00Ykg4a3ZmekZuSFg1RDI4WG44SDFKS2Q0WFo3TnZCbUJ5WVZSYzJGdVlQRlZ2eEVvZkV6NjUxeVBqR2JROUk5TUJUT05qWGNrZnF0ZDdqZFZoRWM1TUIwcDIyYmRMTFhB0gFyQVVfeXFMTXJWWnlleWxFT21vUW1MeUdxQjF6QjFBdnhzOUQ5VUhSNlotaWZ0YXFCUERWTTVlSkdkaUROUGZrb1pJd1IxUkRLemZkdEVpaXFuYlR0cGJ0TG1Dd0xtY195LW9sdFVEVTUzWHpEdEh2aHVn?oc=5",
+   "press": "경인종합일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "혁신당 새 원내대표에 김준형…“정치투쟁 맥락의 합당은 거부”",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9VREtWcnFPUXExTi05UlRyVHBraC05TVdrdVBvbS1uQ29hMFlmdUVXcVQ1X3o4SkNTemVtVHVMZGFKUnVoQUJJbzFyV002VTdwdmxRSU0xQThUQ1dDS1d3ajg3bm50bEY3aXU2Wk5jSTR5bjV6?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-16",
+   "title": "혁신당 새 원내대표에 김준형…“타이밍·여건 성숙됐을 때 통합 논의”",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9rZFRTX2VGc2lNZE5BX3d0VGQ1R3hjZjN3NFZyQkw3SjRtaTJFUFFaNnRBbG5KQllJOHZGLW4taEJ0VnlXY3NNc29ja0JpV2I3TkRpOFFJTWlQR3dMaG9qVWNsYjk4ZTVCbl9GUjkzLXM?oc=5",
+   "press": "서울신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-15",
+   "title": "혁신당, 오늘 원내대표 선출…김준형 단독 입후보",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBFTFVGbTB6LTkzWFo1TDFidWhpenhWR2lJOTZnZGNleXItQ3Nlb2U4TVRIYjV5eVlPYTc5emtXcndZN3o0bUo4eUlrSENFNzhTeUZSTk00U0VMX2_SAWBBVV95cUxPbE83ZDRwWEpEaGdIYTMtR0lod1pBdWhLOExnNzNiSzNZdmJOWWdwa3ZDaUFtRHdxODhwYnhSejcycDQ1RHFvbVJFc2FCSmVfVlozXzRBcmdSOTNlZUZUMy0?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-29",
+   "title": "조국혁신당 강경숙·김준형 의원, 강동원 후보 지원 남원 유세",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1oSmFkeFQ4Rzk5UlNJNzYzdWpzMGtTQWpZRzlqQ1F1QUpuTzlSLVZVOVU0UmRKT2lsTkdGNkhHempvcVZHR1U1YnQ3dXVzV28?oc=5",
+   "press": "시사전북닷컴",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-02-01",
+   "title": "김준형 의원 \"트럼프, 국제규범과 질서 파괴자\"",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE53WHBvcnQxVjNtY1RhZGFfTnJyTUxwR0tJZ25ESGZEMzN1eVI2dndNem5neEczQjhDYkhoS3FuUmZ5cUh1bzh5OXJHTU9mMzV6MW5pOEw1NlFEWll3VDVVOERscFBSSlNLcVQwM3B3dkFMc1ZHTHF3?oc=5",
+   "press": "OhmyNews",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-01-31",
+   "title": "김준형 조국혁신당 의원",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFAtdWVyTDRXZ1RCeFdoMnJUMUJYWjlWV1VaUmxRTGZjcjlKbjJLd0lLWTVaNVJRRHZveDBkb0poVnBocWhHbk9IMEI0SzlINTlYYXJ5MEltSlBYQnB6bHdleEpNZjl6bk1wYjNXdmxtQ2NaVURkR05NUw?oc=5",
+   "press": "OhmyNews",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-12-15",
+   "title": "혁신당 김준형 \"아들 美국적 포기…입대 약속 지켰다\"",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE84RUxFTlJmaUFkZHRSQ2Y4N3lScVVGMnZFSEp1eXJGRmw1LXBmMC1HdDlkaFk3cEdJRFVRYlI0OGdEQWZ5YWpGVWkzRzMtSHZUUVBObGpR?oc=5",
+   "press": "중앙일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-12-15",
+   "title": "김준형 조국혁신당 의원이 아들의 군 입대 사진을 공개한 이유",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFA1aGtCeGstSUNGRHBBZTg1STZKZkp0blFxTkxWeE5wbUhFWXktRURGRXhFZUN3dFhad0RhYjdRQTVnYzZkVUZ0MlVweTJfOWxuV1dqbHRpWk9pY0Jja1dpc21NVGYzd2x2RGlMaW9RRDE?oc=5",
+   "press": "미디어오늘",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-12-15",
+   "title": "‘아들 美 국적’ 논란 조국당 김준형 “아들 입대…약속 지켰다”",
+   "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQN3l0UmpHQk9RTl9sTlJRVWJmcFJiUmVmNFVKSkZ5Y3NmYnNmSWVpR1ZhZlpnUXh5aGY2N2JsRkgtNnJCNE5IaXRrWUszc2s5WTZSMm5ZS0V5WURHM3ZLdFNlOWVoZC1IMzREcTZBOTdaZjhNZUhQblhXVFBsVG9tUjdFakZLbVYzc3U3aGxvcDU?oc=5",
+   "press": "조선일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-12-15",
+   "title": "미국 국적 포기하고 아들 입대…혁신당 김준형 “약속 지켰다”",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE13eXlHaHdLTTRoNUotdDRjUGNkeHZlVEg5bUVXMEpyU2Vqam5kS1JQb2NwaWM2UDVtN2p6RmJQbENPTEM5cC1GblpBNGY3V2FtS2V0VTFWM0JUU1hfNG9UemlBS3J3RUhqUkZrMmRzb2VES1Qt?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  }
+ ],
+ "incidents": {
+  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
+  "updated": "2026-10-29",
+  "items": [
    {
-    "date": "2025-03-27",
-    "year": 2025,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2025-51호",
-    "prev": 605750,
-    "inc": 306293,
-    "dec": 139924,
-    "total": 772119,
-    "change": 166369,
-    "land": 0,
-    "building": 320000,
-    "securities": 0,
-    "deposits": 300554,
-    "polfund": 100955,
-    "debt": 0,
-    "cats": {
-     "건물": 320000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 50610,
-     "예금": 300554,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 100955,
-     "증권": 0
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+    "date": "2026-07-21",
+    "stage": "수사",
+    "title": "김준형 “혁신당 ’협력 거수기’로 여기지 말라“…보완수사권 폐지 압박",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB0X3JfbHM4MzNpR0xTNEVwZVd5Uk9aa2UwZW9wM0djSGNCYW13c3NrdlFHQlVMM0hQY09Ta1ZwMWllUHU1LUhlQ3R3OGxTNVRQX3FLT3hkZEVyWkdBQVVOenk4cElLZ0U?oc=5",
+    "press": "연합뉴스TV"
+   }
+  ]
+ },
+ "media": {
+  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
+  "updated": "2026-10-29",
+  "top_words": [
+   [
+    "조국혁신당",
+    31
+   ],
+   [
+    "원내대표에",
+    15
+   ],
+   [
+    "원내대표",
+    9
+   ],
+   [
+    "혁신당",
+    9
+   ],
+   [
+    "발언하는",
+    6
+   ],
+   [
+    "선출",
+    5
+   ],
+   [
+    "당선",
+    5
+   ],
+   [
+    "성공",
+    5
+   ],
+   [
+    "합당",
+    4
+   ],
+   [
+    "정치공학적",
+    4
+   ],
+   [
+    "거부",
+    4
+   ],
+   [
+    "연대",
+    4
+   ],
+   [
+    "신임",
+    4
+   ],
+   [
+    "아들",
+    4
+   ],
+   [
+    "입대",
+    4
+   ],
+   [
+    "파병",
+    3
+   ],
+   [
+    "권한대행",
+    3
+   ],
+   [
+    "국적",
+    3
+   ],
+   [
+    "약속",
+    3
+   ],
+   [
+    "지켰다",
+    3
+   ],
+   [
+    "압박",
+    2
+   ],
+   [
+    "의원총회에서",
+    2
+   ],
+   [
+    "시도당위원장에",
+    2
+   ],
+   [
+    "김선민",
+    2
+   ],
+   [
+    "협력",
+    2
+   ],
+   [
+    "의원총회",
+    2
+   ],
+   [
+    "타이밍",
+    2
+   ],
+   [
+    "아냐",
+    2
+   ],
+   [
+    "만장일치",
+    2
+   ],
+   [
+    "전문가",
+    2
+   ]
+  ],
+  "quotes": [
+   {
+    "date": "2026-09-16",
+    "quote": "가장 위험하고 정당성 없는 전쟁…美 통상 압박 때처럼 국민께 호소할 것으로",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBDRklfaDVJVGU4T3dYaGFrX0JZWEpkbE11VG42bzVxOEhYMkxkUkdOLTJGd0d3T09IQnFrNTFOcHFYelBHRy02X040YUhOTHFkNzYyRXdTUEk0LUE?oc=5",
+    "press": "KBS 뉴스"
    },
    {
-    "date": "2026-03-26",
-    "year": 2026,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2026-54호",
-    "prev": 772119,
-    "inc": 405803,
-    "dec": 235803,
-    "total": 942119,
-    "change": 170000,
-    "land": 0,
-    "building": 300000,
-    "securities": 0,
-    "deposits": 428692,
-    "polfund": 172487,
-    "debt": 0,
-    "cats": {
-     "건물": 300000,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 40940,
-     "예금": 428692,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 172487
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+    "date": "2026-09-04",
+    "quote": "호르무즈 파병, 넘어선 안 될 선… 尹정부도 우크라전 파병 안 해",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5QWFpUa0RjRWJzOXJ1N2kxRzZHcUNpY01Sd2l3ZmUydVo2UW10WFB1VDNEZGM1d1NLeDVfTHN2NXVtYW02dHAta0lJV3hPRW1KVTFUN3F0WWppaWtQRWthNmhrOEU3Tnk3Z2Jsd29B0gFzQVVfeXFMTnZNRWNkbnlRZjJqd2E1bGU5b1VYV0YxT19mYmlBb2JSbU83X211b2hLcFRKdHczYjh2enZoTU10N2dFY3ZHQ1M0N2NZREsxeDVmUHdVM0tPVFFucXphR1hJTzFmLUNDVWZST2wtc2Z6OFllMA?oc=5",
+    "press": "한국일보"
+   },
+   {
+    "date": "2026-06-19",
+    "quote": "민주당과 합당 타이밍 아냐, 모욕적 방식 안돼",
+    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBzcW9LYXZMZ0ZBWGdkOEZ6eVF1WFhxdzhnTE4yMk9qeWpYY3VudmppZE9rT3lOS1ZIeVl0emdIY0FQWllpV2lYNzI3RXA4dFZyQmfSAVNBVV95cUxQVHpBeWJ5NllacGNQYU5od0ZTTE81U1d0OEVjWGtEMW1TaXE3YnpkLWFPeElGY284SzhQakg0WEw4VU5lOGs5U1ByOVFUNVcwc2Y2QQ?oc=5",
+    "press": "서울경제"
+   },
+   {
+    "date": "2026-06-19",
+    "quote": "합당론으로 마음 고생…지금은 시기 아냐",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1ZWGhCdVB2amx3U2h4RldqbjFyVkNCazVDZFZwcllIRmVmWDJKcHRsN3dKTXBwa052OGtObFgyQzVnUXZOV0ZPZG1fdVVfbGZBV0pIbHlWa3luYWQxMEFOYtIBeEFVX3lxTE1FcWZmc29PaGt6REFDSTdUaDU4VEUxWXV2azQ0enRfblVLVGs4b2dsM3lZZFhpTDltYUVxT0hidFd6R1JVVmgxeWdFanRYaVEtc0k3OF9iUFBHNVdMWEZIWElJTEFiUVpfX0VrZklUOG43OEpXdW5YaQ?oc=5",
+    "press": "뉴시스"
+   },
+   {
+    "date": "2026-06-16",
+    "quote": "정치공학적 합당 거부",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1CS0k3SUZuOWg5UGgzdmFSR2xhUWcwb3pkc0dJSFlYNUdMbGlDajFOczEwTHpzR1N5Si1haWpzck1OU2REa0V2QTB3NWJGLW5aLUhaMkZZWi1qUGgxMXZvR25NVG9jNlpwUWFkU05iSE1WUHVoc2RZ0gFmQVVfeXFMTTZGWmprb3JlM19YdEkzNVlrVTdmWTJrMWxaRzNaRjd1MFFmekM0Q2o4Sk4tZzI0MGtoUlM0MDdjN0Y4VXd2Y19SNF9RUFMtck9YaVk5eHBReGI3YWp3anlzbzM3QkJ3?oc=5",
+    "press": "동아일보"
+   },
+   {
+    "date": "2026-06-16",
+    "quote": "정치공학적 합당·연대 거부",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE56TVZ0VGZBZUNCZ3lqZ0JJY1hjLUE1aUlDRDRVLUpNeGtsZ1dKUFFUTG04MnFfRVlsX1h3b29UQ2hHUk5vVEMxV2diSmFOUjZuWWx5QUhmUXZ3NWM?oc=5",
+    "press": "경기일보"
+   },
+   {
+    "date": "2026-06-16",
+    "quote": "민주진보 단결",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9nVlFUWGxUVWRjTnZJS0hWeXp2YzJFdzYtY3ZYZ3IwamxockZuT1RVRGFGZ2w0d2JhSXI4ZHJnWklxYThWNktmOXRxSVZrY3hlU0lGZS1tQ1k4d2s?oc=5",
+    "press": "KBS 뉴스"
+   },
+   {
+    "date": "2026-06-16",
+    "quote": "李 정부 성공 위해 연대",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5ObnBhYlUxd2JsMnhZOEZtQUEyeUh1aUtfOXVma2NELXVET250VFp3LTRIQkg5bXlDLTFvakwwNXVublRvUU9KOVZtWWJtZGtyMTg2cVRlbHZ3UQ?oc=5",
+    "press": "한국경제"
+   },
+   {
+    "date": "2026-06-16",
+    "quote": "李 정부 성공 위해 연대",
+    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5OVHB0eTRzMzRiLUMyd3ZnODF6em1wSTdQYWtmbGotOFRScGpoYjZfZEI4RXp1RGZMbHJ4bVVsNER5aDlOZjRKT1U2SjhJWkt0UmfSAVNBVV95cUxNS3UxNlMtbEgwMVZoWENIMkhSRldEUlVrcHRmTmwtV2F2MERPM0pKZ05zaEhHaHFBUkE2dFQ1YkdQb0pkcW5OSXd2NmV3WTNzSFN0bw?oc=5",
+    "press": "서울경제"
+   },
+   {
+    "date": "2026-06-16",
+    "quote": "정부 성공 협력",
+    "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9jSkpJN3FSUHRBWDY3aFE0NnlmUkUtdUh3NEdGWWduZHg0NTlUdURQYTE3amlXMVlOZ3M2V01tSk9OWjMzelI1VnEycDZFMHpm?oc=5",
+    "press": "문화일보"
+   },
+   {
+    "date": "2026-06-16",
+    "quote": "정치공학적 맥락의 합당·연대 불가",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBuYWN6U3c3enlsTmhjNUN1RG1kNUVFZlYzSktHYVhPNjZPcVJPc0NxSXNMNzgyekdMUVZxTGNmOUVBT0w5RWZZWlJLd29CTlhNRkx5enpNdUkzQdIBX0FVX3lxTFA3RVM3Z25mOEZBeUJ0eFgtc1FmN3pReHZRUzZKMXByT2dNc0s1cEFQazJwN2JWaDJtUTVnY0U4WmNrOHpwb1R2djVNZGhXYUVVN0VMZGZYTEVTVE1ucVdN?oc=5",
+    "press": "경향신문"
+   },
+   {
+    "date": "2026-06-16",
+    "quote": "李 정부 성공 위해 연대해야",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5fLXZyZWRLZ2tBZW9MMjF6bEMwTjNoVnRhMDhvZnFHekMtUFhvbmRKT2U0ZXFFVllHMzhoMXI0NjlOT3hDN1ZwZkdfajJucmZ6bXcybmxxRUE2WEJMVHJTZ0N1eVBXYmVnTjlNckdn0gFzQVVfeXFMT3V3dlp5MlhPb2UwcnVRQ0dMYWlWaXhKTGtqbldXQ1VHTEdOTjBnalBTa01SSEo5dEVMSUdtdnNfb1RYQzJJRkUxekhoS3lHdnVKTGpkY1BmdkNLWHRpREdzZnJoQzhhVzZtbkt0WndJRXNaSQ?oc=5",
+    "press": "한국일보"
+   },
+   {
+    "date": "2026-06-16",
+    "quote": "李 정부 성공 위해 힘 모아야",
+    "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9ScVFvV1VWOXNBejBOcDYyU3h2NTdGZUkyRk1NRktlWDlUZHlwZFNxRWdVQUZaQUtMNGp2b0N4V3VReDJJQnIyaDJCa2Jxa29ram5JUkZ4ZlBfQkVXNFHSAWNBVV95cUxPUU1HQ08zal84QXBKNUJBZmhTMVNacktNRV9jNUJVVkVORExvZ3FOak5qeldrVEplcGtua3lnSVo3NUZfM2hnYWpzX2JGckthUVJ4QmxsQ3B0YXhmcmFNclcyVjA?oc=5",
+    "press": "채널A"
+   },
+   {
+    "date": "2026-06-16",
+    "quote": "정치투쟁 맥락의 합당은 거부",
+    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9VREtWcnFPUXExTi05UlRyVHBraC05TVdrdVBvbS1uQ29hMFlmdUVXcVQ1X3o4SkNTemVtVHVMZGFKUnVoQUJJbzFyV002VTdwdmxRSU0xQThUQ1dDS1d3ajg3bm50bEY3aXU2Wk5jSTR5bjV6?oc=5",
+    "press": "한겨레"
+   },
+   {
+    "date": "2026-06-16",
+    "quote": "타이밍·여건 성숙됐을 때 통합 논의",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9rZFRTX2VGc2lNZE5BX3d0VGQ1R3hjZjN3NFZyQkw3SjRtaTJFUFFaNnRBbG5KQllJOHZGLW4taEJ0VnlXY3NNc29ja0JpV2I3TkRpOFFJTWlQR3dMaG9qVWNsYjk4ZTVCbl9GUjkzLXM?oc=5",
+    "press": "서울신문"
+   },
+   {
+    "date": "2026-02-01",
+    "quote": "트럼프, 국제규범과 질서 파괴자",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE53WHBvcnQxVjNtY1RhZGFfTnJyTUxwR0tJZ25ESGZEMzN1eVI2dndNem5neEczQjhDYkhoS3FuUmZ5cUh1bzh5OXJHTU9mMzV6MW5pOEw1NlFEWll3VDVVOERscFBSSlNLcVQwM3B3dkFMc1ZHTHF3?oc=5",
+    "press": "OhmyNews"
+   },
+   {
+    "date": "2025-12-15",
+    "quote": "아들 美국적 포기…입대 약속 지켰다",
+    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE84RUxFTlJmaUFkZHRSQ2Y4N3lScVVGMnZFSEp1eXJGRmw1LXBmMC1HdDlkaFk3cEdJRFVRYlI0OGdEQWZ5YWpGVWkzRzMtSHZUUVBObGpR?oc=5",
+    "press": "중앙일보"
+   },
+   {
+    "date": "2025-12-15",
+    "quote": "아들 입대…약속 지켰다",
+    "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQN3l0UmpHQk9RTl9sTlJRVWJmcFJiUmVmNFVKSkZ5Y3NmYnNmSWVpR1ZhZlpnUXh5aGY2N2JsRkgtNnJCNE5IaXRrWUszc2s5WTZSMm5ZS0V5WURHM3ZLdFNlOWVoZC1IMzREcTZBOTdaZjhNZUhQblhXVFBsVG9tUjdFakZLbVYzc3U3aGxvcDU?oc=5",
+    "press": "조선일보"
+   },
+   {
+    "date": "2025-12-15",
+    "quote": "약속 지켰다",
+    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE13eXlHaHdLTTRoNUotdDRjUGNkeHZlVEg5bUVXMEpyU2Vqam5kS1JQb2NwaWM2UDVtN2p6RmJQbENPTEM5cC1GblpBNGY3V2FtS2V0VTFWM0JUU1hfNG9UemlBS3J3RUhqUkZrMmRzb2VES1Qt?oc=5",
+    "press": "한겨레"
    }
   ],
-  "latest": 942119,
-  "latest_date": "2026-03-26",
-  "source": {
-   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
-   "unit": "천원",
-   "fetched": "2026-10-28",
-   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
-  }
+  "by_month": {
+   "2025-12": 4,
+   "2026-01": 1,
+   "2026-02": 1,
+   "2026-05": 1,
+   "2026-06": 24,
+   "2026-07": 5,
+   "2026-08": 3,
+   "2026-09": 3
+  },
+  "presses": [
+   [
+    "연합뉴스",
+    5
+   ],
+   [
+    "뉴시스",
+    4
+   ],
+   [
+    "KBS 뉴스",
+    2
+   ],
+   [
+    "한국일보",
+    2
+   ],
+   [
+    "MBC 뉴스",
+    2
+   ],
+   [
+    "서울경제",
+    2
+   ],
+   [
+    "조선일보",
+    2
+   ],
+   [
+    "한국경제",
+    2
+   ],
+   [
+    "한겨레",
+    2
+   ],
+   [
+    "OhmyNews",
+    2
+   ]
+  ]
  }
 }

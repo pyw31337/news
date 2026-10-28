@@ -76,100 +76,28 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
   }
  ],
- "photo_local": "data/pol/photos/4019850M.webp",
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
-  "lead_count": 399,
-  "co_count": 5620,
-  "passed": 122,
+  "lead_count": 88,
+  "co_count": 1683,
+  "passed": 27,
   "by_result": {
-   "임기만료폐기": 211,
-   "대안반영폐기": 91,
-   "수정가결": 20,
-   "폐기": 4,
-   "원안가결": 11,
-   "철회": 1,
-   "계류": 61
+   "계류": 61,
+   "대안반영폐기": 24,
+   "원안가결": 1,
+   "수정가결": 2
   },
   "by_month": {
-   "2016-05": 1,
-   "2016-06": 4,
-   "2016-07": 9,
-   "2016-08": 12,
-   "2016-09": 6,
-   "2016-10": 14,
-   "2016-11": 10,
-   "2016-12": 12,
-   "2017-01": 9,
-   "2017-02": 10,
-   "2017-03": 9,
-   "2017-04": 2,
-   "2017-05": 4,
-   "2017-06": 9,
-   "2017-07": 10,
-   "2017-08": 5,
-   "2017-09": 10,
-   "2017-11": 9,
-   "2017-12": 5,
-   "2018-01": 4,
-   "2018-02": 3,
-   "2018-03": 8,
-   "2018-04": 7,
-   "2018-05": 1,
-   "2018-07": 8,
-   "2018-09": 2,
-   "2018-11": 7,
-   "2018-12": 4,
-   "2019-01": 2,
-   "2019-02": 7,
-   "2019-04": 6,
-   "2019-05": 8,
-   "2019-06": 1,
-   "2019-07": 6,
-   "2019-08": 2,
-   "2019-09": 1,
-   "2019-10": 1,
-   "2020-06": 18,
-   "2020-07": 7,
-   "2020-08": 7,
-   "2020-09": 6,
-   "2020-10": 1,
-   "2020-11": 1,
-   "2020-12": 5,
-   "2021-02": 3,
-   "2021-03": 2,
-   "2021-04": 1,
-   "2021-06": 2,
-   "2021-08": 2,
-   "2021-11": 1,
-   "2021-12": 2,
-   "2022-01": 3,
-   "2022-02": 5,
-   "2022-03": 1,
-   "2022-10": 1,
-   "2023-02": 1,
-   "2023-03": 1,
-   "2023-04": 5,
-   "2023-05": 2,
-   "2023-08": 3,
-   "2023-10": 1,
-   "2023-12": 1,
-   "2024-01": 1,
    "2024-05": 4,
    "2024-06": 12,
    "2024-07": 10,
@@ -558,7 +486,295 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-29"
+  }
+ },
+ "assets": {
+  "records": [
+   {
+    "date": "2017-03-23",
+    "year": 2017,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2017-36호",
+    "prev": 23791384,
+    "inc": 2204164,
+    "dec": 3002565,
+    "total": 22992983,
+    "change": -798401,
+    "land": 11956,
+    "building": 32451897,
+    "securities": 2217170,
+    "deposits": 6120166,
+    "polfund": 700,
+    "debt": 20027140,
+    "cats": {
+     "토지": 11956,
+     "건물": 32451897,
+     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 8234,
+     "예금": 6120166,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 700,
+     "유가증권": 2217170,
+     "채권": 2210000,
+     "채무": 20027140
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=x8hui96yoguoljd1nw87ufs8s8vq4lbw&fileSn=1"
+   },
+   {
+    "date": "2018-03-29",
+    "year": 2018,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2018-41호",
+    "prev": 22992983,
+    "inc": 4773106,
+    "dec": 1251578,
+    "total": 26514511,
+    "change": 3521528,
+    "land": 11956,
+    "building": 34218098,
+    "securities": 3067170,
+    "deposits": 5897659,
+    "polfund": 50569,
+    "debt": 19317088,
+    "cats": {
+     "토지": 11956,
+     "건물": 34218098,
+     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 21844,
+     "예금": 5897659,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 50569,
+     "유가증권": 3067170,
+     "채권": 2564303,
+     "채무": 19317088
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=4tnlub9arerbcnbo9q2exc9ot2evxu83&fileSn=1"
+   },
+   {
+    "date": "2019-03-28",
+    "year": 2019,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2019-31호",
+    "prev": 26514511,
+    "inc": 1927803,
+    "dec": -341536,
+    "total": 28783850,
+    "change": 2269339,
+    "land": 12029,
+    "building": 35203002,
+    "securities": 3067170,
+    "deposits": 4692858,
+    "polfund": 700,
+    "debt": 16852140,
+    "cats": {
+     "토지": 12029,
+     "건물": 35203002,
+     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 21844,
+     "예금": 4692858,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 700,
+     "유가증권": 3067170,
+     "채권": 2638387,
+     "채무": 16852140
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=r2guppte8ij03hsla5avpep2qr9o2xn6&fileSn=1"
+   },
+   {
+    "date": "2020-03-26",
+    "year": 2020,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2020-36호",
+    "prev": 28783850,
+    "inc": 4466746,
+    "dec": 1839739,
+    "total": 31410857,
+    "change": 2627007,
+    "land": 12273,
+    "building": 35149646,
+    "securities": 3067170,
+    "deposits": 6388144,
+    "polfund": 1110,
+    "debt": 16146653,
+    "cats": {
+     "토지": 12273,
+     "건물": 35149646,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 43610,
+     "예금": 6388144,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 1110,
+     "유가증권": 3067170,
+     "채권": 2895557,
+     "채무": 16146653
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=gtwztinej6vorph6b8j7fxoxqx41nzyn&fileSn=1"
+   },
+   {
+    "date": "2021-03-25",
+    "year": 2021,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2021-42호",
+    "prev": 31410857,
+    "inc": 23711285,
+    "dec": 9810654,
+    "total": 45311488,
+    "change": 13900631,
+    "land": 12553,
+    "building": 39151507,
+    "securities": 14123924,
+    "deposits": 5742566,
+    "polfund": 8981,
+    "debt": 15848653,
+    "cats": {
+     "토지": 12553,
+     "건물": 39151507,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 53610,
+     "예금": 5742566,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 8981,
+     "증권": 14123924,
+     "채권": 2067000,
+     "채무": 15848653
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=ljiydqx6lf6qen8xqxkr4jw3rlpbtrw1&fileSn=1"
+   },
+   {
+    "date": "2022-03-31",
+    "year": 2022,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2022-31호",
+    "prev": 45311488,
+    "inc": 5205233,
+    "dec": 4701895,
+    "total": 45814826,
+    "change": 503338,
+    "land": 13224,
+    "building": 40415190,
+    "securities": 13554800,
+    "deposits": 6498283,
+    "polfund": 204,
+    "debt": 14720485,
+    "cats": {
+     "토지": 13224,
+     "건물": 40415190,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 53610,
+     "예금": 6498283,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 204,
+     "증권": 13554800,
+     "채권": 0,
+     "채무": 14720485
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=ldxlh5e853jcc9yoe05qoub4ju6wlwz0&fileSn=1"
+   },
+   {
+    "date": "2023-03-31",
+    "year": 2023,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2023-54호",
+    "prev": 45814826,
+    "inc": 7464488,
+    "dec": 2680806,
+    "total": 50598508,
+    "change": 4783682,
+    "land": 13603,
+    "building": 42886438,
+    "securities": 15495008,
+    "deposits": 5456525,
+    "polfund": 1809,
+    "debt": 13278485,
+    "cats": {
+     "토지": 13603,
+     "건물": 42886438,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 23610,
+     "예금": 5456525,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 1809,
+     "증권": 15495008,
+     "채무": 13278485
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=yavxaifcot5en3h548549wssqga70kwc&fileSn=1"
+   },
+   {
+    "date": "2024-03-28",
+    "year": 2024,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2024-36호",
+    "prev": 50598508,
+    "inc": 1128202,
+    "dec": 17676353,
+    "total": 34050357,
+    "change": -16548151,
+    "land": 12773,
+    "building": 39840391,
+    "securities": 419352,
+    "deposits": 4632982,
+    "polfund": 4950,
+    "debt": 10904401,
+    "cats": {
+     "토지": 12773,
+     "건물": 39840391,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 44310,
+     "예금": 4632982,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 4950,
+     "증권": 419352,
+     "채무": 10904401
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=959e13ad361144f6a6cb8289718474ad&fileSn=1"
+   },
+   {
+    "date": "2025-03-27",
+    "year": 2025,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2025-51호",
+    "prev": 34050357,
+    "inc": 4228980,
+    "dec": 2243623,
+    "total": 36035714,
+    "change": 1985357,
+    "land": 12858,
+    "building": 38239445,
+    "securities": 1250,
+    "deposits": 7797473,
+    "polfund": 664,
+    "debt": 10116676,
+    "cats": {
+     "토지": 12858,
+     "건물": 38239445,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 100700,
+     "예금": 7797473,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 664,
+     "증권": 1250,
+     "채무": 10116676
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
+   },
+   {
+    "date": "2026-03-26",
+    "year": 2026,
+    "kind": "정기재산변동신고",
+    "issue": "국회공보 제2026-54호",
+    "prev": 36035714,
+    "inc": 2003599,
+    "dec": 582624,
+    "total": 37456689,
+    "change": 1420975,
+    "land": 13151,
+    "building": 38779680,
+    "securities": 1250,
+    "deposits": 7598902,
+    "polfund": 1934,
+    "debt": 9038928,
+    "cats": {
+     "토지": 13151,
+     "건물": 38779680,
+     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 100700,
+     "예금": 7598902,
+     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 1934,
+     "증권": 1250,
+     "채무": 9038928
+    },
+    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+   }
+  ],
+  "latest": 37456689,
+  "latest_date": "2026-03-26",
+  "source": {
+   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
+   "unit": "천원",
+   "fetched": "2026-10-28",
+   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
   }
  },
  "votes": {
@@ -983,292 +1199,402 @@
    "fetched": "2026-10-28"
   }
  },
- "assets": {
-  "records": [
+ "photo_local": "data/pol/photos/4019850M.webp",
+ "news": [
+  {
+   "date": "2026-10-28",
+   "title": "박정 \"한미동맹 무조건 믿는 80년 고정관념에 물음표\"",
+   "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxNanpQejZNOEU5QXY4QjcyQkdHQzBpSVFPOUM2SjdMaFY1OXQwNHpGYWc0T3Bla3p6NHNfZXlKWFVHMVlqRlN5MEhWTm9lNWcydGkxbWdmRGtyd281ZWZWQnhTSkl5dzQ0WGdRdlJNSC1ORlJ2MjIwOXF2dmJ1OUhKSFFNWjc4dkJtbW9lOWdzNnA1QVBYY24zbXdXZDMxMkMyZDBEX09oMzZLaHhGQ2pQRXpidGRDZzNUNUhuYWFJbTdLQXBTOXBTcl9YYjA4aE5uTm9ET0hRS2FraWtpSEpFeWV1dUIxOFZEWVR2THROX1dUS0U2cWd1cVVrem9jbFRWbXpZ?oc=5",
+   "press": "데일리안",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-23",
+   "title": "與박정 \"길어지는 산재 처리 기간…AI 도입하려 해도 예산·인력 부족\" - 머니투데이",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE12YTRteDk5UFVHMzIwT3Yyc1FrQWNWLXJzc0ZoOTY3anBPNzRSMU9GSGhqZFpway1paWJpSUtiOG5KM2xVeFQyZkRaYlIzSXc1am50UFNyUm1KZGc2ZHZMZW1nVFV3WWZBSm5aSNIBckFVX3lxTFBMZU53ck9PdlJ2eWNtZFFnZDVqS3drRHhUbFBtMTBlUm5yOEMxTGlRU2lzV1czVDUyNW5jSElrS3Y2cHh0LTA4ZmNBQ0tOS2htVWRCeUQxVUh4NndueDU2OWRTQjY4SEZqcU5jbXNlWVFPdw?oc=5",
+   "press": "머니투데이",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-13",
+   "title": "민주당 박정 “청년일자리장려금 수혜자 4명중 1명은 반년 못채우고 퇴사”",
+   "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5WYm1TUElFbmJUUzNRbXpLcGltd0RsMjBobFJJMnlMR2Mza1VnVjlja09kaE1wQ3p2eVMwZTZ0YW5rZmhtLTMyRUVQdnhZWEs0?oc=5",
+   "press": "문화일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-22",
+   "title": "[단독] ‘민주시민’ 외치던 박정 의원의 ‘평정서원’… ‘기습 강퇴’ 불통·식대 대납 논란 폭발",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1jbFlra3FZTnl6OGl2RkVDaXp5NGxVY2p6Z29lY1VoYkdzSGZVc1V0NDZPejh0SzdIbmN1eUd5WEVKcmdaUmpGbWttTjc4UDYtLXp1dGIwVlRpYXVoanp2SE9CaDZWdXM?oc=5",
+   "press": "파주에서신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-04-27",
+   "title": "민주 원내대표 '한병도 추대' 힘 실리나...서영교·박정 불출마 선언",
+   "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA3cVlBOW93bVlkYS1zN3pwaFdBLWlBQzJDVEY3bVZDMWZ4NmVfNklGY2s3Nk4wTXZVNUNPSWtqd3dua0NrWjRVbTFOcXdXUjRMaC1kZ2JjUWNBQkd3NU1oWg?oc=5",
+   "press": "KBC광주방송",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-04-27",
+   "title": "민주, 사실상 한병도 추대...서영교·박정·백혜련 원내대표 불출마",
+   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE80RUJrajE3Um9WWi14c0JxdERkS2pHQVdVR1Q2MkZleS12RS1OY1UxdnRSYWl2SlhhVVhvNjFaSTZCME1GR0hzY29KN3hRczlNOVJZZ9IBWEFVX3lxTFBSNV9SX1hZb09ORWZDSWo5UGhmWnZ2dklGYVpuU3ZwV3Qwai1ncWt2S0tTM0ZWUGVnOVJvclFNNTM1Sl90aTE5N1ZpeUo5R0ZpTmdnMnI0WTQ?oc=5",
+   "press": "미디어펜",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-04-26",
+   "title": "민주 서영교·박정, 원내대표 선거 불출마 선언…한병도 추대?",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1jcjAtR21jS1YyN2F3ekQtOTdvcVhHOVRCbmJSNWE2djZKUUlfVE0xSmw0WWtsMjFUanAyQThUZDBPZk1oRExGRF9tS01mSTZvMjA0SHJ0RXYxbms?oc=5",
+   "press": "KBS 뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-01-08",
+   "title": "[인터뷰] 박정 “중간계투로 당에 헌신…지방선거 승리 이끌어 정부 뒷받침”",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9jeHdZNlhYZURyTnlOVXpjZHlQUEtPNjRpS01seTE2cHZaU2NHU2t0UnNEU3ZTbFdtN0puODdoMmNyU1E2eXVObU9yVFhzUmFQbTRtUHVmalpqOVlaX3hNaHZocjFqZy1PLXVNdTZNcS03eXJp?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-01-08",
+   "title": "“김병기 자진 탈당해야 하나” 묻자…한병도·진성준·백혜련 ‘O’ 박정 ‘X’",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9FZ1g1WGxUZVZYOXJsREp6VTQ4OW9vUW5TNEhfSHJfa0ktbEtfcE9hV2daeVlxX0hOYVJOUExvREdFMERzM3kxTnJrOW0xZWhjZnNaSE1kakZPQmdUa1duVUthTV9wTkpxRldjYmxjT0NNaThW?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-01-02",
+   "title": "박정·백혜련, 진성준 이어 출마 선언…민주 후임 원내대표 ‘3선 4파전’?",
+   "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE12SWpyOU04TkhiY181Y0dOODdOdUdDdUI3dnBMYmxEcUxvYWJfcmstWF9ZX2xEbXpxTWs0WXNNdXdsTlZTTUVqTXZpQjBCRXJYSFc0SFZpYXZ0TzR2YmIzd0J3MUZmSFlSVmNGOU9EUjdQam0z?oc=5",
+   "press": "한겨레",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-01-02",
+   "title": "박정 프로필 국회의원 나이 고향 학력",
+   "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1XNW5vd2h2YkEtNk9kRDVhb2xTRFNCQ1VCYzJuRl9Mc1ZIX1F1QktxOEprc2JQcElPVGlhdkMwMUctTjRlVk0tTEpEQ19wZ0V5TmtmX0p1UQ?oc=5",
+   "press": "블로그",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-09-18",
+   "title": "박정 국회의원 페이스북 계정 도용 피해우려",
+   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5IdTdYM0hMaEFCOVJnVVF2QXdocDFuUmlheWMxd0N0WHZGclhnMVJZMk5BTmdyb3poQmdjMVEybmJyNVY2LVZuYWJRNUR4VkxmdDhQdERmUGFXMU9WU3A0eW9B?oc=5",
+   "press": "경기신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-07-09",
+   "title": "# 박정 의원, “내란특별법, 공동발의...훼손된 민주헌정질서 복원하는 것”",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9wUGlBMG5WR01EcVo3MDFJWmJxaGpDMUFTVEc2SmlpVXk3cHBXRU9WUXJDOVR6WEZaTTViSjhGQXJ5dG8ycWdCNDBFck9iS0g2R1FKOGFseDBYRzJxVy1BMUVGVThiUEJjT0wyR0tTdGnSAXRBVV95cUxNbEVyMEE4SkE5WEg3VVBkV3lfNGdwU1BoSWdKN0Q1YzVTRGFSc1VmR3E3Y0lQWWRrZlIxZUsxVHhPLThudUNfaGZINUFuMC1mOWFtR3NvLTBkZ251aEU4c3VjUTJoOGQ4bE1mLW1VZkZiOVg3bg?oc=5",
+   "press": "시사연합신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-06-11",
+   "title": "[프로필] 박정 예결위원장…'어학원 성공신화' 쓴 중국통",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9Fc2hzVjdiQjhBNDBBaDI4V0F1SzFtQmZva0tETU5FVHdjQUFGcDVlX21GZUFFdVZnWHpCamNOc2FERV83NC00bDljbTVNVzZScXpDckJDZ2F3VmtrZmhnWGV6QWtIeVpmdTA5bFhvMng?oc=5",
+   "press": "인천일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-06-10",
+   "title": "[프로필] 박정 예결위원장…'어학원 성공신화' 쓴 중국통",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE52dnlwRzFKVmg1Wmt5LTIyWkcxVzNkM053N3FBSHVfZ1lPd3JycjN5ajQtMUlqLUpNVzkzUmhXN0d0NDl5VWVZQk9MQldVSE1BallFUmNEZ1lpOW_SAWBBVV95cUxNMDJqcTFycE5pNE1udFFDaXhqN1FwenJ4Y3BXenpBUktrNEk4elB1OUtMR2JhWGtnLW9zTEREcEVkN1k2ZHM1SFVKZ0R2enpvbFNtSGt2cE1TeW5GMTBsY1E?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2020-06-04",
+   "title": "최고 부동산 자산가는 박정 민주당 의원… 397억원 보유",
+   "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE56Y04wb2xRU1BjeXE0T0xqREdVZHhuVFRQaHlkbDZjUVlGM2RVR2NUVkFjXzFZVkd0dDNMUmFKRzRHYWhXUkE1VVpvaER4aXZi?oc=5",
+   "press": "문화일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2019-10-24",
+   "title": "[데이터브루]재산이 닮았다④ 부동산+교육=박정·홍문종 의원",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBHQVdVR082WFJMS2VpVFJ0SkNIU09FTS1DRUl5amlMR3pZcGRBZnhfYjdSVUpIVG5hMkpXd19tQ3NqRHRPbXpMeHh5M1BMZVhPXzZYQnp3?oc=5",
+   "press": "중앙일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2017-12-25",
+   "title": "[인터뷰] ‘중국통’ 박정 “文정부 1년 외교 처음과 끝은 中…北 변수 있지만 갈등 풀어나갈 것”",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB3NExnZ01JZ1AtS0pOSVZ5WWpMX0d1dE9UZ054elBtbUtQVWdHVUN0SDRSZ0pRYU5rRkNBT2xxRmFYMW5MYjJXV3gwVEtUR0VPdG9QbXdZNE96Z9IBWEFVX3lxTE12WmRIZUwxTUJwbWlMakhkUTJrZWJLVHk2THlkRDhnWjVNS1AzUUVGYjg2ejFsTkNNckwtdS1pMEJnRUdQV1ludldjc0tNamlpdm9XTGhLdzQ?oc=5",
+   "press": "아주경제",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2016-06-20",
+   "title": "더민주 박정 의원",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9KdjR1OEdGaWlUb0JJR20zQlpqRnFtMnJlSjJlWnZqbExpUXJMZ1YtX2Fzbzh4TUNvTzEzc3BaTWpwLWF6NkFzOVdfZ1dMS3ZrcE5qNkJobHBwM2FudVU5OWhyWHE?oc=5",
+   "press": "일요시사",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  }
+ ],
+ "incidents": {
+  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
+  "updated": "2026-10-29",
+  "items": []
+ },
+ "media": {
+  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
+  "updated": "2026-10-29",
+  "top_words": [
+   [
+    "민주",
+    4
+   ],
+   [
+    "원내대표",
+    4
+   ],
+   [
+    "한병도",
+    4
+   ],
+   [
+    "추대",
+    3
+   ],
+   [
+    "서영교",
+    3
+   ],
+   [
+    "불출마",
+    3
+   ],
+   [
+    "선언",
+    3
+   ],
+   [
+    "백혜련",
+    3
+   ],
+   [
+    "중국통",
+    3
+   ],
+   [
+    "민주당",
+    2
+   ],
+   [
+    "진성준",
+    2
+   ],
+   [
+    "국회의원",
+    2
+   ],
+   [
+    "예결위원장",
+    2
+   ],
+   [
+    "어학원",
+    2
+   ],
+   [
+    "성공신화",
+    2
+   ],
+   [
+    "부동산",
+    2
+   ],
+   [
+    "한미동맹",
+    1
+   ],
+   [
+    "무조건",
+    1
+   ],
+   [
+    "믿는",
+    1
+   ],
+   [
+    "고정관념에",
+    1
+   ],
+   [
+    "물음표",
+    1
+   ],
+   [
+    "길어지는",
+    1
+   ],
+   [
+    "산재",
+    1
+   ],
+   [
+    "처리",
+    1
+   ],
+   [
+    "기간",
+    1
+   ],
+   [
+    "AI",
+    1
+   ],
+   [
+    "도입하려",
+    1
+   ],
+   [
+    "해도",
+    1
+   ],
+   [
+    "예산",
+    1
+   ],
+   [
+    "인력",
+    1
+   ]
+  ],
+  "quotes": [
    {
-    "date": "2017-03-23",
-    "year": 2017,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2017-36호",
-    "prev": 23791384,
-    "inc": 2204164,
-    "dec": 3002565,
-    "total": 22992983,
-    "change": -798401,
-    "land": 11956,
-    "building": 32451897,
-    "securities": 2217170,
-    "deposits": 6120166,
-    "polfund": 700,
-    "debt": 20027140,
-    "cats": {
-     "토지": 11956,
-     "건물": 32451897,
-     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 8234,
-     "예금": 6120166,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 700,
-     "유가증권": 2217170,
-     "채권": 2210000,
-     "채무": 20027140
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=x8hui96yoguoljd1nw87ufs8s8vq4lbw&fileSn=1"
+    "date": "2026-10-28",
+    "quote": "한미동맹 무조건 믿는 80년 고정관념에 물음표",
+    "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxNanpQejZNOEU5QXY4QjcyQkdHQzBpSVFPOUM2SjdMaFY1OXQwNHpGYWc0T3Bla3p6NHNfZXlKWFVHMVlqRlN5MEhWTm9lNWcydGkxbWdmRGtyd281ZWZWQnhTSkl5dzQ0WGdRdlJNSC1ORlJ2MjIwOXF2dmJ1OUhKSFFNWjc4dkJtbW9lOWdzNnA1QVBYY24zbXdXZDMxMkMyZDBEX09oMzZLaHhGQ2pQRXpidGRDZzNUNUhuYWFJbTdLQXBTOXBTcl9YYjA4aE5uTm9ET0hRS2FraWtpSEpFeWV1dUIxOFZEWVR2THROX1dUS0U2cWd1cVVrem9jbFRWbXpZ?oc=5",
+    "press": "데일리안"
    },
    {
-    "date": "2018-03-29",
-    "year": 2018,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2018-41호",
-    "prev": 22992983,
-    "inc": 4773106,
-    "dec": 1251578,
-    "total": 26514511,
-    "change": 3521528,
-    "land": 11956,
-    "building": 34218098,
-    "securities": 3067170,
-    "deposits": 5897659,
-    "polfund": 50569,
-    "debt": 19317088,
-    "cats": {
-     "토지": 11956,
-     "건물": 34218098,
-     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 21844,
-     "예금": 5897659,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 50569,
-     "유가증권": 3067170,
-     "채권": 2564303,
-     "채무": 19317088
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=4tnlub9arerbcnbo9q2exc9ot2evxu83&fileSn=1"
+    "date": "2026-10-23",
+    "quote": "길어지는 산재 처리 기간…AI 도입하려 해도 예산·인력 부족",
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE12YTRteDk5UFVHMzIwT3Yyc1FrQWNWLXJzc0ZoOTY3anBPNzRSMU9GSGhqZFpway1paWJpSUtiOG5KM2xVeFQyZkRaYlIzSXc1am50UFNyUm1KZGc2ZHZMZW1nVFV3WWZBSm5aSNIBckFVX3lxTFBMZU53ck9PdlJ2eWNtZFFnZDVqS3drRHhUbFBtMTBlUm5yOEMxTGlRU2lzV1czVDUyNW5jSElrS3Y2cHh0LTA4ZmNBQ0tOS2htVWRCeUQxVUh4NndueDU2OWRTQjY4SEZqcU5jbXNlWVFPdw?oc=5",
+    "press": "머니투데이"
    },
    {
-    "date": "2019-03-28",
-    "year": 2019,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2019-31호",
-    "prev": 26514511,
-    "inc": 1927803,
-    "dec": -341536,
-    "total": 28783850,
-    "change": 2269339,
-    "land": 12029,
-    "building": 35203002,
-    "securities": 3067170,
-    "deposits": 4692858,
-    "polfund": 700,
-    "debt": 16852140,
-    "cats": {
-     "토지": 12029,
-     "건물": 35203002,
-     "부동산에관한규정이준용되는권리와자동차․건설기계․선박및항공기": 21844,
-     "예금": 4692858,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 700,
-     "유가증권": 3067170,
-     "채권": 2638387,
-     "채무": 16852140
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=r2guppte8ij03hsla5avpep2qr9o2xn6&fileSn=1"
+    "date": "2026-10-13",
+    "quote": "청년일자리장려금 수혜자 4명중 1명은 반년 못채우고 퇴사",
+    "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5WYm1TUElFbmJUUzNRbXpLcGltd0RsMjBobFJJMnlMR2Mza1VnVjlja09kaE1wQ3p2eVMwZTZ0YW5rZmhtLTMyRUVQdnhZWEs0?oc=5",
+    "press": "문화일보"
    },
    {
-    "date": "2020-03-26",
-    "year": 2020,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2020-36호",
-    "prev": 28783850,
-    "inc": 4466746,
-    "dec": 1839739,
-    "total": 31410857,
-    "change": 2627007,
-    "land": 12273,
-    "building": 35149646,
-    "securities": 3067170,
-    "deposits": 6388144,
-    "polfund": 1110,
-    "debt": 16146653,
-    "cats": {
-     "토지": 12273,
-     "건물": 35149646,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 43610,
-     "예금": 6388144,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 1110,
-     "유가증권": 3067170,
-     "채권": 2895557,
-     "채무": 16146653
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=gtwztinej6vorph6b8j7fxoxqx41nzyn&fileSn=1"
+    "date": "2026-01-08",
+    "quote": "중간계투로 당에 헌신…지방선거 승리 이끌어 정부 뒷받침",
+    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9jeHdZNlhYZURyTnlOVXpjZHlQUEtPNjRpS01seTE2cHZaU2NHU2t0UnNEU3ZTbFdtN0puODdoMmNyU1E2eXVObU9yVFhzUmFQbTRtUHVmalpqOVlaX3hNaHZocjFqZy1PLXVNdTZNcS03eXJp?oc=5",
+    "press": "한겨레"
    },
    {
-    "date": "2021-03-25",
-    "year": 2021,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2021-42호",
-    "prev": 31410857,
-    "inc": 23711285,
-    "dec": 9810654,
-    "total": 45311488,
-    "change": 13900631,
-    "land": 12553,
-    "building": 39151507,
-    "securities": 14123924,
-    "deposits": 5742566,
-    "polfund": 8981,
-    "debt": 15848653,
-    "cats": {
-     "토지": 12553,
-     "건물": 39151507,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 53610,
-     "예금": 5742566,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 8981,
-     "증권": 14123924,
-     "채권": 2067000,
-     "채무": 15848653
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=ljiydqx6lf6qen8xqxkr4jw3rlpbtrw1&fileSn=1"
+    "date": "2025-07-09",
+    "quote": "내란특별법, 공동발의...훼손된 민주헌정질서 복원하는 것",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9wUGlBMG5WR01EcVo3MDFJWmJxaGpDMUFTVEc2SmlpVXk3cHBXRU9WUXJDOVR6WEZaTTViSjhGQXJ5dG8ycWdCNDBFck9iS0g2R1FKOGFseDBYRzJxVy1BMUVGVThiUEJjT0wyR0tTdGnSAXRBVV95cUxNbEVyMEE4SkE5WEg3VVBkV3lfNGdwU1BoSWdKN0Q1YzVTRGFSc1VmR3E3Y0lQWWRrZlIxZUsxVHhPLThudUNfaGZINUFuMC1mOWFtR3NvLTBkZ251aEU4c3VjUTJoOGQ4bE1mLW1VZkZiOVg3bg?oc=5",
+    "press": "시사연합신문"
    },
    {
-    "date": "2022-03-31",
-    "year": 2022,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2022-31호",
-    "prev": 45311488,
-    "inc": 5205233,
-    "dec": 4701895,
-    "total": 45814826,
-    "change": 503338,
-    "land": 13224,
-    "building": 40415190,
-    "securities": 13554800,
-    "deposits": 6498283,
-    "polfund": 204,
-    "debt": 14720485,
-    "cats": {
-     "토지": 13224,
-     "건물": 40415190,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 53610,
-     "예금": 6498283,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 204,
-     "증권": 13554800,
-     "채권": 0,
-     "채무": 14720485
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=ldxlh5e853jcc9yoe05qoub4ju6wlwz0&fileSn=1"
-   },
-   {
-    "date": "2023-03-31",
-    "year": 2023,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2023-54호",
-    "prev": 45814826,
-    "inc": 7464488,
-    "dec": 2680806,
-    "total": 50598508,
-    "change": 4783682,
-    "land": 13603,
-    "building": 42886438,
-    "securities": 15495008,
-    "deposits": 5456525,
-    "polfund": 1809,
-    "debt": 13278485,
-    "cats": {
-     "토지": 13603,
-     "건물": 42886438,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 23610,
-     "예금": 5456525,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 1809,
-     "증권": 15495008,
-     "채무": 13278485
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=yavxaifcot5en3h548549wssqga70kwc&fileSn=1"
-   },
-   {
-    "date": "2024-03-28",
-    "year": 2024,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2024-36호",
-    "prev": 50598508,
-    "inc": 1128202,
-    "dec": 17676353,
-    "total": 34050357,
-    "change": -16548151,
-    "land": 12773,
-    "building": 39840391,
-    "securities": 419352,
-    "deposits": 4632982,
-    "polfund": 4950,
-    "debt": 10904401,
-    "cats": {
-     "토지": 12773,
-     "건물": 39840391,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 44310,
-     "예금": 4632982,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 4950,
-     "증권": 419352,
-     "채무": 10904401
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=959e13ad361144f6a6cb8289718474ad&fileSn=1"
-   },
-   {
-    "date": "2025-03-27",
-    "year": 2025,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2025-51호",
-    "prev": 34050357,
-    "inc": 4228980,
-    "dec": 2243623,
-    "total": 36035714,
-    "change": 1985357,
-    "land": 12858,
-    "building": 38239445,
-    "securities": 1250,
-    "deposits": 7797473,
-    "polfund": 664,
-    "debt": 10116676,
-    "cats": {
-     "토지": 12858,
-     "건물": 38239445,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 100700,
-     "예금": 7797473,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 664,
-     "증권": 1250,
-     "채무": 10116676
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=1566ee279b40430c9faedcc0aec17268&fileSn=1"
-   },
-   {
-    "date": "2026-03-26",
-    "year": 2026,
-    "kind": "정기재산변동신고",
-    "issue": "국회공보 제2026-54호",
-    "prev": 36035714,
-    "inc": 2003599,
-    "dec": 582624,
-    "total": 37456689,
-    "change": 1420975,
-    "land": 13151,
-    "building": 38779680,
-    "securities": 1250,
-    "deposits": 7598902,
-    "polfund": 1934,
-    "debt": 9038928,
-    "cats": {
-     "토지": 13151,
-     "건물": 38779680,
-     "부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기": 100700,
-     "예금": 7598902,
-     "정치자금법에따른정치자금의수입및지출을위한예금계좌의예금": 1934,
-     "증권": 1250,
-     "채무": 9038928
-    },
-    "url": "https://www.assembly.go.kr/portal/cmmn/file/fileDown.do?atchFileId=0b500c662c0b4a57928afa682468b754&fileSn=1"
+    "date": "2017-12-25",
+    "quote": "文정부 1년 외교 처음과 끝은 中…北 변수 있지만 갈등 풀어나갈 것",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB3NExnZ01JZ1AtS0pOSVZ5WWpMX0d1dE9UZ054elBtbUtQVWdHVUN0SDRSZ0pRYU5rRkNBT2xxRmFYMW5MYjJXV3gwVEtUR0VPdG9QbXdZNE96Z9IBWEFVX3lxTE12WmRIZUwxTUJwbWlMakhkUTJrZWJLVHk2THlkRDhnWjVNS1AzUUVGYjg2ejFsTkNNckwtdS1pMEJnRUdQV1ludldjc0tNamlpdm9XTGhLdzQ?oc=5",
+    "press": "아주경제"
    }
   ],
-  "latest": 37456689,
-  "latest_date": "2026-03-26",
-  "source": {
-   "name": "국회공보(국회공직자윤리위원회 재산공개 공고)",
-   "unit": "천원",
-   "fetched": "2026-10-28",
-   "note": "공보 PDF 원문에서 항목 소계·총계를 기계적으로 읽은 값. 부동산은 공시가격 등 신고가액 기준이며 시가와 다를 수 있음."
-  }
+  "by_month": {
+   "2016-06": 1,
+   "2017-12": 1,
+   "2019-10": 1,
+   "2020-06": 1,
+   "2024-06": 2,
+   "2025-07": 1,
+   "2025-09": 1,
+   "2026-01": 4,
+   "2026-04": 3,
+   "2026-07": 1,
+   "2026-10": 3
+  },
+  "presses": [
+   [
+    "한겨레",
+    3
+   ],
+   [
+    "문화일보",
+    2
+   ],
+   [
+    "데일리안",
+    1
+   ],
+   [
+    "머니투데이",
+    1
+   ],
+   [
+    "파주에서신문",
+    1
+   ],
+   [
+    "KBC광주방송",
+    1
+   ],
+   [
+    "미디어펜",
+    1
+   ],
+   [
+    "KBS 뉴스",
+    1
+   ],
+   [
+    "블로그",
+    1
+   ],
+   [
+    "경기신문",
+    1
+   ]
+  ]
  }
 }
