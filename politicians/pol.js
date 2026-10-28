@@ -61,7 +61,7 @@ function months(obj,color){const E=Object.entries(obj||{}).filter(e=>e[0]).slice
   return`<div class="mbar">${E.map(([k,v])=>`<div title="${k} ${v}"><i style="height:${Math.max(3,v/m*100)}%;background:${color}"></i><span>${k.slice(2).replace('-','.')}</span></div>`).join('')}</div>`}
 async function detail(id){
   let p;try{p=await j(DATA+'people/'+encodeURIComponent(id)+'.json')}catch(e){app.innerHTML='<div class="note">인물을 찾을 수 없어요. <a href="politicians/" data-pid>목록으로</a></div>';return}
-  document.title=p.name+' — 정치인 DB · NewsBoard';const c=pc(p.party);
+  document.title=p.name+' — 정치인 DB · NewsBoard';const ie=IDX.people.find(x=>x.id===p.id);if(ie&&!p.photo_local)p.photo_local=ie.photo_local;const c=pc(p.party);
   const terms=p.terms||[],swA=p.party_switches||[],sw=swA.filter(s=>s.kind!=='rename'),bl=p.bills,inc=(p.incidents||{}).items||[],md=p.media,news=p.news||[];
   const tl=[...terms.map(t=>({d:'',k:'term',t})),...news.slice(0,80).map(n=>({d:n.date,k:'news',n}))];
   app.innerHTML=`
