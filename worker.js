@@ -1,17 +1,29 @@
-// Cloudflare Worker example for proxying Korean news RSS / APIs
-// Deploy: wrangler deploy or via Cloudflare dashboard
-// Usage: https://your-worker.workers.dev/?feed=https://www.yna.co.kr/rss/politics.xml
+// Cloudflare Worker - LetsNews Proxy
+// Supports:
+//   ?feed=https://www.yna.co.kr/rss/politics.xml   → RSS proxy
+//   ?naver=정치&display=10&sort=date             → Naver News Search
+//
+// Set secrets in Cloudflare dashboard or wrangler:
+//   wrangler secret put NAVER_CLIENT_ID
+//   wrangler secret put NAVER_CLIENT_SECRET
+//
+// Deploy: wrangler deploy
+// Then set WORKER_URL in the frontend.
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const url = new URL(request.url);
     const feed = url.searchParams.get('feed');
-    const naverQuery = url.searchParams.get('naver');
+    const naver = url.searchParams.get('naver');
+    const display = url.searchParams.get('display') || '10';
+    const sort = url.searchParams.get('sort') || 'date';
+    const start = url.searchParams.get('start') || '1';
 
     const corsHeaders = {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
+      'Cache-Control': 'public, max-age=300',
     };
 
     if (request.method === 'OPTIONS') {
@@ -19,10 +31,10 @@ export default {
     }
 
     try {
+      // RSS proxy
       if (feed) {
-        // RSS proxy
         const res = await fetch(feed, {
-          headers: { 'User-Agent': 'LetsNews/1.0' }
+          headers: { 'User-Agent': 'LetsNews/1.0 (+https://pyw31337.github.io/news)' }
         });
         const text = await res.text();
         return new Response(text, {
@@ -30,17 +42,44 @@ export default {
         });
       }
 
-      if (naverQuery) {
-        // Placeholder for Naver API (add your Client ID/Secret as env vars)
-        // const clientId = env.NAVER_CLIENT_ID;
-        // const clientSecret = env.NAVER_CLIENT_SECRET;
-        return new Response(JSON.stringify({ error: 'Set NAVER_CLIENT_ID and NAVER_CLIENT_SECRET in Worker secrets' }), {
-          status: 501,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      // Naver News Search
+      if (naver) {
+        const clientId = env.NAVER_CLIENT_ID;
+        const clientSecret = env.NAVER_CLIENT_SECRET;
+
+        if (!clientId || !clientSecret) {
+          return new Response(JSON.stringify({
+            error: 'NAVER_CLIENT_ID and NAVER_CLIENT_SECRET not set in Worker secrets'
+          }), {
+            status: 501,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const naverUrl = new URL('https://openapi.naver.com/v1/search/news.json');
+        naverUrl.searchParams.set('query', naver);
+        naverUrl.searchParams.set('display', display);
+        naverUrl.searchParams.set('start', start);
+        naverUrl.searchParams.set('sort', sort);
+
+        const res = await fetch(naverUrl.toString(), {
+          headers: {
+            'X-Naver-Client-Id': clientId,
+            'X-Naver-Client-Secret': clientSecret,
+            'User-Agent': 'LetsNews/1.0'
+          }
+        });
+
+        const data = await res.text();
+        return new Response(data, {
+          status: res.status,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json; charset=utf-8' }
         });
       }
 
-      return new Response(JSON.stringify({ error: 'Provide ?feed=URL or ?naver=query' }), {
+      return new Response(JSON.stringify({
+        error: 'Use ?feed=RSS_URL or ?naver=검색어&display=10&sort=date'
+      }), {
         status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       });
