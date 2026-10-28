@@ -58,5 +58,7 @@ if FN:
         n += page(v, t, '오늘 뉴스에 나온 어려운 말을 OX 퀴즈로 익히고, 핫이슈는 4컷 만화와 카드뉴스로 쉽게 봐요', LI)
     for c in FN.get('comics', []): n += page('comic/' + c['id'], c['title'] + ' — 4컷 설명 만화', c['headline'], ORIGIN + 'og/comic/%s.png' % c['id'])
     for x in FN.get('decks', []): n += page('cards/' + x['id'], x['title'] + ' — 카드뉴스', x['cards'][0].get('text', ''), ORIGIN + 'og/cards/%s.png' % x['id'])
+for v, t in (('my', '내 서재'), ('my/home', '내 홈 꾸미기'), ('menu', '메뉴'), ('alerts', '알림'), ('alerts/settings', '알림 설정')):
+    n += page(v, t, '')
 open(os.path.join(SITE, '404.html'), 'w', encoding='utf-8').write(T)
 print('static pages', n)

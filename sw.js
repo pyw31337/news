@@ -1,4 +1,4 @@
-const V='nb-v19',SHELL=['./','index.html','assets/style.css?v=12','assets/app.js?v=11','assets/econ.js?v=2','assets/gov.js?v=2','assets/fun.js?v=1','manifest.webmanifest','icons/icon-192.png','og-image.png','favicon.ico'];
+const V='nb-v20',SHELL=['./','index.html','assets/style.css?v=12','assets/app.js?v=11','assets/econ.js?v=2','assets/gov.js?v=2','assets/my.js?v=1','assets/my.css?v=1','assets/fun.js?v=1','manifest.webmanifest','icons/icon-192.png','og-image.png','favicon.ico'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))));self.clients.claim()});
 self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==location.origin)return;
