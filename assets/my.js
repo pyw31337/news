@@ -1,13 +1,16 @@
 /* NewsBoard v7 · 5탭 내비 + 메뉴 사이트맵 + 내 서재(게스트·IndexedDB, 나중에 Supabase 동기화) + 알림 센터 */
 (function(){
-/* 하단 탭 가운데 '오늘' 강조 스타일: 'fab'(주황 원형+노치) | 'glow'(빛나는 알약) | 'pin'(코르크 핀 배지) | 'date'(네이비 원판+오늘 날짜) | 'glass'(리퀴드 글래스) */
-const NAV_STYLE='date';
+/* 하단 탭 가운데 '오늘' 버튼 스타일
+   라이브 시계형(윗줄 날짜 '10.29 (목)', 아랫줄 지금 시각 'HH:MM', 1분마다 갱신):
+     'live'(기본: 빨간 라이브 점 + 초침 링) | 'pulse'(맥박처럼 퍼지는 링) | 'badge'(LIVE 빨간 점 배지) | 'flip'(분이 바뀔 때 숫자 넘김) | 'lglass'(리퀴드 글래스 + 갱신 때 반짝임)
+   이전 시안: 'fab'(주황 원형+노치) | 'glow'(빛나는 알약) | 'pin'(코르크 핀 배지) | 'date'(네이비 원판+오늘 날짜) | 'glass'(리퀴드 글래스) */
+const NAV_STYLE='live';
 const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const I=(n)=>typeof ic==='function'?ic(n):'';
 const SV=p=>`<svg viewBox="0 0 24 24">${p}</svg>`;
 const P={timeline:'<path d="M6 3v18M6 7h10M6 12h6M6 17h12"/>',market:'<path d="M3 17l5-5 4 4 8-8M15 8h5v5"/>',today:'<path d="M4 5h16v14H4zM8 9h8M8 13h5"/>',my:'<path d="M5 3h11l3 3v15l-7-4-7 4z"/>',menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',bm:'<path d="M6 3h12v18l-6-4-6 4z"/>',star:'<path d="M12 3l2.6 5.6 6 .6-4.5 4 1.3 6L12 16l-5.4 3.2 1.3-6L3.4 9.2l6-.6z"/>',plus:'<path d="M12 5v14M5 12h14"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',up:'<path d="M6 15l6-6 6 6"/>',dn:'<path d="M6 9l6 6 6-6"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>'};
 if(typeof IC!=='undefined'){IC.bell=P.bell;IC.bm=P.bm;IC.heart=P.heart}
-const qn=new URLSearchParams(location.search).get('nav');const NS=['fab','glow','pin','date','glass'].includes(qn)?qn:NAV_STYLE;
+const qn=new URLSearchParams(location.search).get('nav');const NS=['fab','glow','pin','date','glass','live','pulse','badge','flip','lglass'].includes(qn)?qn:NAV_STYLE;const CLK=['live','pulse','badge','flip','lglass'].includes(NS);
 /* ---------- 저장소: IndexedDB(없으면 localStorage) ---------- */
 const DEF={v:1,uid:null,saves:{},cols:[{id:'c0',name:'나중에 읽기'}],follows:{},keywords:[],reads:{},home:{today:null,market:null,hideT:[],hideM:[]},watch:{ind:{},apt:[]},alerts:{on:{kw:1,follow:1,ind:1,apt:1,quiz:1,reply:1},seen:{},lastSeen:0},updated:0};
 let M=JSON.parse(JSON.stringify(DEF));let db=null;
@@ -18,10 +21,20 @@ const ready=load();
 window.NBMy={get:()=>M,save};
 /* ---------- 내비 ---------- */
 const dnum=new Date().getDate();
+/* 한국 시간 기준 날짜·시각 */
+const kst=()=>{const p={};new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'2-digit',day:'2-digit',weekday:'short',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).forEach(x=>p[x.type]=x.value);return{d:`${p.month}.${p.day} (${p.weekday})`,h:p.hour,m:p.minute,s:+p.second}};
+const clkHTML=()=>{const k=kst();return`<svg class="rg" viewBox="0 0 64 64" aria-hidden="true"><circle class="rt" cx="32" cy="32" r="30"/><circle class="rp" cx="32" cy="32" r="30" pathLength="100" style="animation-delay:-${k.s}s"/></svg><i class="pl" aria-hidden="true"></i><em class="lv" aria-hidden="true"><i></i>LIVE</em><small class="cd"><i class="ld"></i><span>${k.d}</span></small><b class="ct"><span class="hh">${k.h}</span><span class="co">:</span><span class="mm">${k.m}</span></b>`};
+let tickT=null;
+function tick(){const k=kst();const cb=document.querySelector('.tabbar .ctr .cb.clk');if(cb){
+  const set=(sel,v)=>{const e=cb.querySelector(sel);if(e&&e.textContent!==v){e.textContent=v;e.classList.remove('fl');void e.offsetWidth;e.classList.add('fl')}};
+  set('.cd span',k.d);set('.hh',k.h);set('.mm',k.m);cb.classList.remove('shim');void cb.offsetWidth;cb.classList.add('shim');
+  const a=cb.closest('.ctr');if(a)a.setAttribute('aria-label',`오늘 · ${k.d} ${k.h}시 ${k.m}분`)}
+  clearTimeout(tickT);tickT=setTimeout(tick,(60-kst().s)*1000+50)}
 function nav(){const tb=document.querySelector('.tabbar');if(!tb)return;
   const T=[['timeline','timeline','타임라인'],['market','market','마켓'],['','today','오늘'],['my','my','내 서재'],['menu','menu','메뉴']];
   tb.className='tabbar v7 nav-'+NS;
-  tb.innerHTML=T.map(([h,v,l])=>v==='today'?`<a href="./" data-v="today" class="ctr" aria-label="오늘"><span class="cb"><span class="pinh"></span>${NS==='date'?`<b class="dn">${dnum}</b><small>TODAY</small>`:SV(P.today)}</span><span class="cl">${l}</span></a>`:`<a href="${h}" data-v="${v}">${SV(P[v])}<span>${l}</span></a>`).join('');
+  tb.innerHTML=T.map(([h,v,l])=>v==='today'?`<a href="./" data-v="today" class="ctr" aria-label="오늘"><span class="cb${CLK?' clk':''}"><span class="pinh"></span>${CLK?clkHTML():NS==='date'?`<b class="dn">${dnum}</b><small>TODAY</small>`:SV(P.today)}</span><span class="cl">${l}</span></a>`:`<a href="${h}" data-v="${v}">${SV(P[v])}<span>${l}</span></a>`).join('');
+  if(CLK){tb.classList.add('clkv');tick()}
   const tn=document.querySelector('.topnav');if(tn)tn.innerHTML=T.map(([h,v,l])=>`<a href="${h||'./'}" data-v="${v}">${l}</a>`).join('');
   const top=document.querySelector('header.top');if(top&&!document.getElementById('bell')){const b=document.createElement('a');b.id='bell';b.href='alerts';b.className='bell';b.setAttribute('aria-label','알림');b.innerHTML=SV(P.bell)+'<i id="bellc"></i>';top.appendChild(b)}
 }

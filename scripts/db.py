@@ -2,9 +2,9 @@
 """NewsBoard 자체 DB 채우기 (collect·enrich·global_news 뒤에 실행)
 1) 기사 DB: data/db/articles/YYYY-MM-DD/HHMM.json.gz — 그날 처음 본 기사만 조각으로 한 번 기록(덮어쓰기 없음 → git 이력 비대화 방지)
 2) 엔티티 DB: data/db/entities/<해시>.json — 인물·기업·장소 타임라인 누적(최대 3000건) + 매 실행 몇 개씩 과거 백필(2·5·10년 전)
-3) 썸네일: media/ (별도 media 브랜치)에 WebP(가로 최대 640, 품질 72, URL 해시 파일명, 내용 해시로 중복 제거) 저장 후
+3) 사진: media/ (별도 media 브랜치)에 가장 큰 원본을 찾아 WebP(가로 최대 1600·확대 없음, 품질 82, 원본 크기 기록, URL 해시 파일명, 내용 해시로 중복 제거) 저장 후
    today/global JSON 이미지 주소를 자체 주소로 교체(원본은 *_src 보관). 용량 상한 넘으면 오래 안 쓴 것부터 삭제
-환경변수: BACKFILL_N(기본 6), MEDIA_MAX_MB(기본 700), MEDIA_NEW_MAX(실행당 새 이미지, 기본 150)"""
+환경변수: BACKFILL_N(기본 6), MEDIA_MAX_MB(기본 900), MEDIA_NEW_MAX(실행당 새 이미지, 기본 100)"""
 import os, json, gzip, glob, hashlib, re, io, time, html, datetime as dt, urllib.request, urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
@@ -84,50 +84,106 @@ with ThreadPoolExecutor(3) as ex:
         e = load(os.path.join(ED, IDX[name]['f'] + '.json'), {}) or {}
         merge_ent(name, e.get('type'), items); IDX[name]['backfill'] = IDX[name].get('backfill', 0) + 1
 save(IDX_P, IDX); REPORT['entities_db'] = len(IDX); REPORT['entity_items'] = sum(v.get('n', 0) for v in IDX.values()); REPORT['backfilled'] = queue
-# ---------- 3) 썸네일 WebP 자체 저장 ----------
+# ---------- 3) 사진: 가장 큰 원본을 찾아 WebP(q82, 확대 없음)로 보존 + 원본 픽셀 크기 기록 ----------
+# 뉴스 사진의 해상도는 신뢰도. 화면(assets/sharp.js)은 기록된/실제 크기와 칸 크기×화면 배율을 비교해 흐린 사진은 쓰지 않고 디자인 카드로 대체.
 try: from PIL import Image
 except Exception: Image = None
-MAP_P = os.path.join(MEDIA, 'map.json')
+MAP_P = os.path.join(MEDIA, 'map.json'); MAXW = 1600; MINW = 400; MV = 2
+def upgrade(u):
+    """썸네일 주소 → 원본 주소 후보(큰 것부터)"""
+    out = []; pu = urllib.parse.urlsplit(u); q = urllib.parse.parse_qs(pu.query)
+    for k in ('fname', 'src', 'u', 'url'):   # 다음/카카오 thumb?fname=, 네이버 search.pstatic.net/?src=
+        if k in q and q[k][0].startswith('http') and ('daumcdn' in pu.netloc or 'kakaocdn' in pu.netloc or 'pstatic' in pu.netloc):
+            out += upgrade(q[k][0])
+    if 'pstatic.net' in pu.netloc and pu.query and 'search.pstatic' not in pu.netloc:
+        out.append(urllib.parse.urlunsplit(pu._replace(query='')))       # ?type=w800 등 크기 지정 제거 = 원본
+    if 'upload.wikimedia.org' in pu.netloc and '/thumb/' in pu.path:   # 위키 썸네일 320px → 1280px
+        out.append(re.sub(r'/(\d+)px-', '/1280px-', u))
+    out.append(u); return list(dict.fromkeys(out))
+def page_imgs(url):
+    """기사 페이지의 og:image·twitter:image·본문 큰 사진 후보"""
+    t = get(url, timeout=10) if url and url.startswith('http') and 'news.google.com' not in url else ''
+    if not t: return []
+    c = []
+    for pat in (r'<meta[^>]+(?:property|name)="(?:og:image|twitter:image)(?::src)?"[^>]+content="([^"]+)"', r'<meta[^>]+content="([^"]+)"[^>]+(?:property|name)="(?:og:image|twitter:image)"',
+                r'<img[^>]+(?:data-src|src)="(https?://[^"]+\.(?:jpe?g|png|webp)[^"]*)"'):
+        c += [html.unescape(x) for x in re.findall(pat, t, re.I)]
+    return list(dict.fromkeys(c))[:6]
 if Image and os.path.isdir(MEDIA):
-    M = load(MAP_P, {}) or {}   # 원본URL -> {f: 'img/ab/xxxx.webp', h: 내용해시, used: 마지막 사용일, b: 바이트}
+    M = load(MAP_P, {}) or {}   # 원본URL -> {f, h, used, b, w, h0(원본 높이), v, small}
     BYH = {v['h']: v['f'] for v in M.values() if v.get('h') and v.get('f')}
     G = load(os.path.join(ROOT, 'global.json'), {}) or {}
-    refs = []
+    refs = []; PAGE = {}
+    def kid(o, k='img'):
+        if isinstance(o, dict) and isinstance(o.get(k), str):
+            refs.append((o, k))
+            if o.get('url'): PAGE.setdefault(o.get(k + '_src') or o[k], o['url'])
     for i in D.get('issues', []):
-        refs.append((i, 'image')); refs += [(g, 'img') for g in (i.get('gallery') or []) if isinstance(g, dict)]
+        refs.append((i, 'image')); [kid(g) for g in (i.get('gallery') or [])]; [kid(x) for x in (i.get('sources') or [])]
+        if i.get('url'): PAGE.setdefault(i.get('image_src') or i.get('image') or '', i['url'])
     for e in D.get('entities', []):
         if isinstance(e.get('wiki'), dict): refs.append((e['wiki'], 'thumb'))
     for t in D.get('trends', []) + G.get('issues', []) + G.get('trends', []):
-        if isinstance(t, dict): refs.append((t, 'image'))
-    urls = list(dict.fromkeys(o[k] for o, k in refs if isinstance(o.get(k), str) and o[k].startswith('http')))
-    todo = [u for u in urls if u not in M][:int(os.environ.get('MEDIA_NEW_MAX', '150'))]
+        if isinstance(t, dict):
+            refs.append((t, 'image')); [kid(x) for x in (t.get('today') or []) + (t.get('sources') or [])]
+    for i in D.get('issues', []):
+        for f in i.get('flow') or []: [kid(x) for x in f.get('items') or []]
+    src = lambda o, k: o.get(k + '_src') if isinstance(o.get(k + '_src'), str) and o[k + '_src'].startswith('http') else o.get(k)
+    urls = list(dict.fromkeys(src(o, k) for o, k in refs if isinstance(src(o, k), str) and src(o, k).startswith('http')))
+    # 새 주소 + 예전 방식(640px 축소·크기 미기록) 백필
+    todo = [u for u in urls if u not in M or (M[u].get('v') != MV and (M[u].get('f') or M[u].get('used', '') < DAY))][:int(os.environ.get('MEDIA_NEW_MAX', '100'))]
+    def best(cands):
+        top = None
+        for c in cands:
+            b = get(c, raw=True, timeout=12)
+            if not b or len(b) < 800: continue
+            try: im = Image.open(io.BytesIO(b)); im.load()
+            except Exception: continue
+            if not top or im.width > top.width: top = im
+            if top.width >= 1200: break
+        return top
     def fetch(u):
-        b = get(u, raw=True, timeout=12)
-        if not b or len(b) < 800: return u, None
-        try:
-            im = Image.open(io.BytesIO(b)); im.load()
-            if im.width < 80 or im.height < 60: return u, None
-            if im.mode not in ('RGB', 'L'): im = im.convert('RGB')
-            if im.width > 640: im = im.resize((640, round(im.height * 640 / im.width)), Image.LANCZOS)
-            o = io.BytesIO(); im.save(o, 'WEBP', quality=72, method=5); return u, o.getvalue()
-        except Exception: return u, None
-    added = 0
+        im = best(upgrade(u))
+        if (not im or im.width < 1200) and PAGE.get(u):
+            alt = best([c for x in page_imgs(PAGE[u]) for c in upgrade(x)][:6])
+            if alt and (not im or alt.width > im.width): im = alt
+        if not im: return u, None, 0, 0
+        w0, h0 = im.size
+        if w0 < MINW or h0 < 200: return u, None, w0, h0   # 너무 작음 → 쓰지 않음(디자인 카드로 대체)
+        if im.mode not in ('RGB', 'L'): im = im.convert('RGB')
+        if im.width > MAXW: im = im.resize((MAXW, round(im.height * MAXW / im.width)), Image.LANCZOS)   # 축소만, 확대 없음
+        o = io.BytesIO(); im.save(o, 'WEBP', quality=82, method=5); return u, o.getvalue(), im.width, im.height
+    added = upd = small = 0
     with ThreadPoolExecutor(8) as ex:
-        for u, w in ex.map(fetch, todo):
-            if not w: M[u] = dict(f=None, used=DAY); continue
-            ch = hashlib.sha1(w).hexdigest(); f = BYH.get(ch) or 'img/%s/%s.webp' % (h8(u, 2), h8(u, 16))
+        for u, w, W, H in ex.map(fetch, todo):
+            if not w:
+                if W: small += 1
+                M[u] = dict(f=None, used=DAY, v=MV, w=W, h0=H, small=bool(W)); continue
+            ch = hashlib.sha1(w).hexdigest(); f = BYH.get(ch) or 'img/%s/%s.webp' % (h8(u, 2), h8(u + '#v2', 16))
             if ch not in BYH:
                 p = os.path.join(MEDIA, f); os.makedirs(os.path.dirname(p), exist_ok=True); open(p, 'wb').write(w); BYH[ch] = f; added += 1
-            M[u] = dict(f=f, h=ch, used=DAY, b=len(w))
+            if u in M and M[u].get('f') and M[u]['f'] != f: upd += 1
+            M[u] = dict(f=f, h=ch, used=DAY, b=len(w), w=W, h0=H, v=MV)
     for u in urls:
         if u in M: M[u]['used'] = DAY
     for o, k in refs:
-        u = o.get(k)
-        if isinstance(u, str) and (M.get(u) or {}).get('f'): o[k + '_src'] = u; o[k] = 'media/' + M[u]['f']
-    lim = int(os.environ.get('MEDIA_MAX_MB', '700')) * 1048576; files = {}
+        u = src(o, k)
+        if not isinstance(u, str): continue
+        v = M.get(u) or {}
+        if v.get('f'): o[k + '_src'] = u; o[k] = 'media/' + v['f']
+        if v.get('w'): o[k + '_w'] = v['w']; o[k + '_h'] = v.get('h0')
+        if v.get('v') == MV and not v.get('f') and v.get('small'): o[k + '_src'] = u; o[k] = ''   # 흐린 사진은 아예 내보내지 않음
+    lim = int(os.environ.get('MEDIA_MAX_MB', '900')) * 1048576; files = {}
+    live = {v['f'] for v in M.values() if v.get('f')}
     for u, v in M.items():
         if v.get('f'):
             x = files.setdefault(v['f'], [v.get('b', 0), '']); x[1] = max(x[1], v.get('used', ''))
+    for root, _, fs in os.walk(os.path.join(MEDIA, 'img')):   # 교체된 예전 저해상도 파일 정리
+        for fn in fs:
+            rel = os.path.relpath(os.path.join(root, fn), MEDIA)
+            if rel not in live:
+                try: os.remove(os.path.join(root, fn))
+                except Exception: pass
     tot = sum(b for b, _ in files.values()); removed = 0
     if tot > lim:
         for f, (b, used) in sorted(files.items(), key=lambda x: x[1][1]):
@@ -140,7 +196,9 @@ if Image and os.path.isdir(MEDIA):
     M = {u: v for u, v in M.items() if v.get('f') or v.get('used', '') >= cut}  # 실패 기록은 14일 뒤 재시도
     save(MAP_P, M); save(os.path.join(ROOT, 'today.json'), D)
     if G: save(os.path.join(ROOT, 'global.json'), G)
-    REPORT.update(media_new=added, media_files=len(files) - removed, media_mb=round(tot / 1048576, 1), media_removed=removed)
+    ws = [v['w'] for v in M.values() if v.get('f') and v.get('v') == MV]
+    REPORT.update(media_new=added, media_upgraded=upd, media_small_rejected=small, media_files=len(files) - removed, media_mb=round(tot / 1048576, 1),
+                  media_removed=removed, media_v2=len(ws), media_hd=sum(w >= 1200 for w in ws), media_left_v1=sum(1 for v in M.values() if v.get('f') and v.get('v') != MV))
 save(os.path.join(ROOT, 'diag_db.json'), dict(step='db', at=NOW.isoformat(), ok={}, fail={}, errors=[], report=REPORT))
 try: os.remove(os.path.join(ROOT, '_arts.json'))
 except Exception: pass
