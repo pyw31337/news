@@ -153,6 +153,8 @@ BUDGET = [int(os.environ.get('LLM_BUDGET', '14'))]
 BACKEND = os.environ.get('LLM_BACKEND', 'openai')   # 'apple' = 맥미니 Apple 온디바이스 모델(nbai)
 NBAI = os.environ.get('NBAI', os.path.expanduser('~/Developer/newsboard-local/bin/nbai'))
 APPLE = BACKEND == 'apple'
+# 작은 모델(Apple 온디바이스·Ollama 로컬 등)은 문맥창이 작아 작업별로 나눠 호출
+SMALL = APPLE or os.environ.get('LLM_SMALL') == '1' or any(h in ENDPOINT for h in ('127.0.0.1', 'localhost'))
 if APPLE: MODEL = 'Apple Foundation Models (온디바이스)'; ENDPOINT = 'https://macmini.local/'
 LLM_STATUS = {'enabled': bool(TOKEN) or APPLE, 'model': MODEL, 'endpoint': ENDPOINT.split('/')[2], 'calls': 0, 'errors': [], 'backend': BACKEND}
 import subprocess, threading
@@ -257,7 +259,7 @@ stances는 2~4개, share 합은 100. 댓글이 없으면 stances와 quotes는 �
 추가로 "bias": [{"i": 출처 번호, "lean": "left" 또는 "right", "confidence": "high"/"medium"/"low", "reason": "제목의 어떤 표현·프레이밍 때문인지 한 줄"}] 를 넣어라.
 언론사 이름이나 평소 성향으로 판단하지 말고, 오직 그 기사 제목의 단어 선택·프레이밍이 한쪽 정치 진영에 명백히 유리/불리하게 기울었을 때만 넣어라. 애매하면 넣지 마라.'''
     k0 = hkey(iss['url'], str(len(days)), str(len((op or {}).get('top', [])) > 0))
-    if not APPLE: ai = llm('issue:' + k0, prompt, 1400)
+    if not SMALL: ai = llm('issue:' + k0, prompt, 1400)
     else:
         # Apple 모델은 문맥창(약 4천 토큰)이 작아 작업별로 나눠 호출
         cut = lambda t, n: t if len(t) <= n else t[:n] + '…'
@@ -408,7 +410,7 @@ def words():
     # 어려운 단어 선별·쉬운 설명: LLM(근거=위키 요약), 없으면 위키 요약 첫 문장
     ai = llm('words:' + hkey(D['date'], *[p['word'] for p in pick[:30]]),
              '아래는 오늘 기사 제목에 자주 나온 단어와 위키백과 요약이다. 일반 독자(중학생 수준)가 뜻을 헷갈릴 만한 어려운 단어 8개를 골라, 위키백과 요약에 근거해서만 쉬운 말로 설명하라.\n' +
-             '\n'.join('- %s: %s' % (p['word'], p['wiki']['extract'][:200]) for p in pick[:(14 if APPLE else 30)]) +
+             '\n'.join('- %s: %s' % (p['word'], p['wiki']['extract'][:200]) for p in pick[:(14 if SMALL else 30)]) +
              '\nJSON: {"words": [{"word": "단어(목록 그대로)", "easy": "쉬운 설명 1~2문장", "level": "어려움 1~3"}]}', 1200)
     m = {w['word']: w for w in (ai or {}).get('words', [])}
     if m: pick = [p for p in pick if p['word'] in m]
