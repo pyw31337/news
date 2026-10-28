@@ -8,7 +8,7 @@ def load(p, d=None):
     try: return json.load(open(os.path.join(ROOT, p), encoding='utf-8'))
     except Exception: return d
 D = load('today.json', {}); G = load('global.json', {}); OV = load('overlay/latest.json', {})
-diag = {k: load('diag_%s.json' % k, {}) for k in ('collect', 'enrich', 'global', 'db', 'briefs')}
+diag = {k: load('diag_%s.json' % k, {}) for k in ('collect', 'enrich', 'global', 'db', 'briefs', 'official')}
 def size(p):
     p = os.path.join(ROOT, p)
     if os.path.isfile(p): return os.path.getsize(p)

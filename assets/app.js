@@ -33,6 +33,8 @@ const vis=i=>!S.hide.includes(i.category);
 async function load(){
   D=await (await fetch('data/today.json?'+Date.now())).json();
   try{G=await (await fetch('data/global.json?'+Date.now())).json()}catch(e){G=null}
+  try{O=await (await fetch('data/official.json?'+Date.now())).json()}catch(e){O=null}
+  try{BR=await (await fetch('data/briefs.json?'+Date.now())).json()}catch(e){BR=null}
   header();route();
 }
 let G=null;
@@ -416,3 +418,16 @@ function settings(){
 }
 load().catch(e=>app.innerHTML=`<div class="loading">데이터를 불러오지 못했어요 (${esc(e.message)})</div>`);
 if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+
+/* v6 공식 데이터: 한국은행 ECOS 지표·재정경제부 보도자료(마켓), OpenDART 공시(기업 타임라인) */
+var O=null,BR=null;
+function officialHTML(){let h='';
+  const E=(O&&O.ecos)||[];
+  if(E.length)h+=`${sec('공식 경제지표','Bank of Korea ECOS','<span class="more">한국은행 100대 통계</span>','chart')}<div class="ecos">${E.map(x=>`<div class="ec"><small>${esc(x.group||'')}</small><b>${esc(x.name)}</b><span>${esc(x.value)}<i>${esc(x.unit||'')}</i></span><em>${esc(x.cycle||'')}</em></div>`).join('')}</div>`;
+  const B=(BR&&BR.items)||[];
+  if(B.length)h+=`${sec('재정경제부 보도자료','Press Releases','<span class="more">공공데이터포털</span>','book')}<div class="srcl2">${B.slice(0,10).map(x=>`<a href="${esc(x.url||'#')}" target="_blank" rel="noopener">${esc(x.title)}<small>${esc([x.dept,x.date&&x.date.slice(0,10)].filter(Boolean).join(' · '))}</small></a>`).join('')}</div>`;
+  return h}
+function dartHTML(n){const L=(O&&O.dart_by_entity&&O.dart_by_entity[n])||[];if(!L.length)return'';
+  return`${sec('오늘의 공시','OpenDART','<span class="more">금융감독원 전자공시</span>','book')}<div class="srcl2">${L.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}<small>${esc(x.corp)} · ${x.date.slice(0,4)}.${x.date.slice(4,6)}.${x.date.slice(6)}</small></a>`).join('')}</div>`}
+{const _mk=market;market=function(){const r=_mk.apply(this,arguments);try{app.insertAdjacentHTML('beforeend',officialHTML())}catch(e){}return r}}
+{const _en=entity;entity=function(n){const r=_en.apply(this,arguments);try{app.insertAdjacentHTML('beforeend',dartHTML(n))}catch(e){}return r}}

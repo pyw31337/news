@@ -308,3 +308,7 @@ body.en .ticker .lab{background:#7a4dff}
 #toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:#0f1630;color:#fff;padding:.6rem 1rem;border-radius:999px;font-size:.85rem;opacity:0;pointer-events:none;transition:.25s;z-index:99}
 #toast.on{opacity:1;transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){#toast{transition:none}}
+
+.ecos{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:18px}
+.ec{background:var(--card,#fff);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.ec small{font-size:.65rem;opacity:.55}.ec b{font-size:.8rem}.ec span{font-weight:800;font-size:1.05rem}.ec i{font-style:normal;font-size:.65rem;opacity:.6;margin-left:2px}.ec em{font-style:normal;font-size:.62rem;opacity:.45}
