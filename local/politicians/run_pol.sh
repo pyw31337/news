@@ -17,7 +17,10 @@ if [ ! -d pdata/.git ]; then
   git clone -q -b politicians $R pdata 2>/dev/null || { mkdir -p pdata && cd pdata && git init -q -b politicians && git remote add origin $R && cd ..; }
 fi
 git -C pdata fetch -q origin politicians 2>/dev/null && git -C pdata reset -q --hard origin/politicians
-BILL_AGES=${BILL_AGES:-22} python3 src/scripts/politicians/collect_assembly.py pdata || { echo "collect failed"; exit 1; }
+PY=$B/venv/bin/python
+BILL_AGES=${BILL_AGES:-22} "$PY" src/scripts/politicians/collect_assembly.py pdata || { echo "collect failed"; exit 1; }
+"$PY" src/scripts/politicians/mirror_photos.py pdata || echo "photos failed"
+# 첫 실행 전 뉴스 연결이 없으면 Actions가 채움
 cd pdata
 for n in 1 2 3; do
   git add -A && git -c user.name=newsboard-macmini -c user.email=macmini@users.noreply.github.com commit -qm "politicians: assembly $(date '+%Y-%m-%d %H:%M') KST" || { echo "nothing to commit"; break; }

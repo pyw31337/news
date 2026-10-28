@@ -97,7 +97,9 @@ def main():
         for k in ('bills', 'news', 'incidents', 'media', 'wikidata', 'assets'):  # 다른 수집기가 채운 칸은 보존
             if k in old: P[k] = old[k]
         json.dump(P, open(path, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
-        idx.append({k: P[k] for k in ('id', 'name', 'hanja', 'party', 'district', 'current', 'ages', 'reelect', 'photo', 'birth', 'sex')} | {'switches': sum(1 for s in switches if s['kind'] == 'switch')})
+        if os.path.exists(f'{OUT}/photos/{cd}.webp'): P['photo_local'] = f'data/pol/photos/{cd}.webp'
+        json.dump(P, open(path, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+        idx.append({'photo_local': P.get('photo_local')} | {k: P[k] for k in ('id', 'name', 'hanja', 'party', 'district', 'current', 'ages', 'reelect', 'photo', 'birth', 'sex')} | {'switches': sum(1 for s in switches if s['kind'] == 'switch')})
     # 법안 (대표발의/공동발의)
     bills_by = {}
     allb = []
