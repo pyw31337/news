@@ -1,36 +1,31 @@
 #!/usr/bin/env python3
-"""아이콘 교체: python scripts/make_icons.py <원본이미지> [cx cy r]
-원본에서 원형 오브젝트(중심 cx,cy 반지름 r, 원본 대비 비율 0~1. 기본 0.5 0.485 0.28)를 잘라
-렛츠뷰 아이콘 비율(오브젝트 지름 = 아이콘 폭의 56%)로 남색 배경에 얹어 PWA 아이콘·파비콘·OG 이미지를 다시 만듭니다."""
+"""아이콘 생성: python scripts/make_icons.py [오브젝트 PNG(투명 배경 RGBA)]
+기본 오브젝트는 icons/candidates/s3_cork_object.png (scripts/render_icon_s3.py로 다시 그릴 수 있음).
+오브젝트 폭 = 아이콘 폭의 56%(렛츠뷰 비율), 배경 단색 #011E45로 PWA 아이콘·파비콘·OG 이미지를 만듭니다."""
 import sys, os
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 R = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
-src = Image.open(sys.argv[1]).convert('RGB'); W, H = src.size
-cx, cy, r = [float(x) for x in sys.argv[2:5]] if len(sys.argv) >= 5 else (0.5, 0.485, 0.28)
-box = (int((cx - r) * W), int((cy - r) * H), int((cx + r) * W), int((cy + r) * H)); obj = src.crop(box).resize((1024, 1024), Image.LANCZOS)
-mask = Image.new('L', (1024, 1024), 0); ImageDraw.Draw(mask).ellipse((6, 6, 1018, 1018), fill=255); mask = mask.filter(ImageFilter.GaussianBlur(2))
-def bg(w, h):
-    g = Image.new('RGB', (w, h)); d = ImageDraw.Draw(g)
-    for y in range(h): t = y / h; d.line([(0, y), (w, y)], fill=(int(14 + 10 * (1 - t)), int(28 + 14 * (1 - t)), int(70 + 30 * (1 - t))))
-    return g
-def place(img, c, d):
-    sh = Image.new('L', img.size, 0); ImageDraw.Draw(sh).ellipse((c[0] - d / 2, c[1] - d / 2 + d * .05, c[0] + d / 2, c[1] + d / 2 + d * .05), fill=150)
-    img.paste((0, 0, 0), (0, 0), sh.filter(ImageFilter.GaussianBlur(d * .06)))
-    o = obj.resize((int(d), int(d)), Image.LANCZOS); m = mask.resize((int(d), int(d)), Image.LANCZOS)
-    img.paste(o, (int(c[0] - d / 2), int(c[1] - d / 2)), m); return img
-def icon(n, ratio=.56):
-    return place(bg(n, n), (n / 2, n / 2), n * ratio)
+NAVY = (1, 30, 69)
+src = sys.argv[1] if len(sys.argv) > 1 else os.path.join(R, 'icons/candidates/s3_cork_object.png')
+obj = Image.open(src).convert('RGBA'); obj = obj.crop(obj.getbbox())
+def place(img, c, w):
+    h = w * obj.height / obj.width; o = obj.resize((int(w), int(h)), Image.LANCZOS)
+    x, y = int(c[0] - w / 2), int(c[1] - h / 2)
+    sh = Image.new('L', img.size, 0); sh.paste(o.split()[3].point(lambda v: v * 160 // 255), (x, y + int(w * .05)))
+    img.paste((0, 0, 0), (0, 0), sh.filter(ImageFilter.GaussianBlur(max(1, w * .05))))
+    img.paste(o, (x, y), o); return img
+def icon(n, ratio=.56): return place(Image.new('RGB', (n, n), NAVY), (n / 2, n / 2), n * ratio)
 I = os.path.join(R, 'icons'); os.makedirs(I, exist_ok=True)
 icon(512).save(os.path.join(I, 'icon-512.png')); icon(192).save(os.path.join(I, 'icon-192.png'))
-icon(512, .50).save(os.path.join(I, 'maskable-512.png'))  # 마스킹 안전영역 고려
-icon(180).save(os.path.join(I, 'apple-touch-icon.png')); icon(32, .8).save(os.path.join(I, 'favicon-32.png'))
-og = place(bg(1200, 630), (600, 300), 330)
-d = ImageDraw.Draw(og)
-def F(s, b=True):
-    for p in ('/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc', '/System/Library/Fonts/AppleSDGothicNeo.ttc', '/usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc'):
-        try: return ImageFont.truetype(p, s, index=1 if 'Sans' in p else 0)
+icon(512, .50).save(os.path.join(I, 'maskable-512.png'))  # 마스킹 안전영역
+icon(180).save(os.path.join(I, 'apple-touch-icon.png')); icon(32, .9).save(os.path.join(I, 'favicon-32.png'))
+og = place(Image.new('RGB', (1200, 630), NAVY), (600, 290), 300); d = ImageDraw.Draw(og)
+def F(s):
+    for p in ('/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc', '/System/Library/Fonts/AppleSDGothicNeo.ttc'):
+        try: return ImageFont.truetype(p, s, index=1 if 'Noto' in p else 0)
         except Exception: pass
     return ImageFont.load_default()
-d.text((215, 300), '오늘의 이슈', font=F(44), fill='white', anchor='mm'); d.text((985, 300), '사건의 흐름', font=F(44), fill='white', anchor='mm')
-d.text((600, 525), 'NewsBoard.', font=F(56), fill='white', anchor='mm'); d.text((600, 585), 'pyw31337.github.io/news', font=F(24), fill=(170, 180, 210), anchor='mm')
+d.text((240, 270), '오늘의 이슈', font=F(46), fill='white', anchor='mm'); d.text((240, 330), 'TOP 10 · 요약', font=F(26), fill=(255, 120, 95), anchor='mm')
+d.text((960, 270), '사건의 흐름', font=F(46), fill='white', anchor='mm'); d.text((960, 330), '인물 · 타임라인', font=F(26), fill=(255, 120, 95), anchor='mm')
+d.text((600, 510), 'NewsBoard.', font=F(56), fill='white', anchor='mm'); d.text((600, 572), 'pyw31337.github.io/news', font=F(24), fill=(150, 165, 200), anchor='mm')
 og.save(os.path.join(R, 'og-image.png')); print('ok')
