@@ -1,4 +1,4 @@
-const V='nb-v24',SHELL=['./','index.html','assets/style.css?v=13','assets/app.js?v=13','assets/deck.js?v=1','assets/deck.css?v=1','assets/econ.js?v=2','assets/gov.js?v=2','assets/my.js?v=5','assets/my.css?v=3','assets/sharp.js?v=1','assets/fun.js?v=1','manifest.webmanifest','icons/icon-192.png','og-image.png','favicon.ico'];
+const V='nb-v25',SHELL=['./','index.html','assets/style.css?v=13','assets/app.js?v=13','assets/deck.js?v=1','assets/deck.css?v=1','assets/econ.js?v=2','assets/gov.js?v=2','assets/my.js?v=5','assets/my.css?v=3','assets/sharp.js?v=1','assets/fun.js?v=1','manifest.webmanifest','icons/icon-192.png','og-image.png','favicon.ico'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(SHELL)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))));self.clients.claim()});
 self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==location.origin)return;

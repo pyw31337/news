@@ -1,7 +1,7 @@
 .ahero{padding:28px 18px 18px;border-radius:22px;background:linear-gradient(150deg,#101a3a,#24305e);color:#fff;margin:12px 0 18px;box-shadow:0 10px 30px #0f16303a}
 .ahero small,.asec h2 small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#ff8a3d;font-weight:700}
 .ahero h1{font:900 30px 'Noto Serif KR',serif;margin:4px 0 6px}.ahero p{opacity:.8;margin:0 0 16px;line-height:1.5}
-.astat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.astat div{background:#ffffff14;border-radius:14px;padding:10px}.astat b{display:block;font-size:22px}.astat span{font-size:12px;opacity:.75}
+.astat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.astat div{background:#ffffff14;border-radius:14px;padding:10px}.astat b{display:block;font-size:clamp(17px,5.6vw,22px);white-space:nowrap}.astat span{font-size:12px;opacity:.75}
 .asrch input{width:100%;margin-top:14px;padding:13px 16px;border-radius:999px;border:0;font-size:15px;box-sizing:border-box}
 .asec{margin:22px 0}.asec h2{font-size:20px;margin:0 0 12px}.cnt{font-style:normal;font-size:13px;color:#ff7a00;margin-left:6px}
 .agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
