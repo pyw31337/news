@@ -102,9 +102,9 @@ async function archive(env, req, url, p) {
   const A = env.AR;
   if (p === '/archive/ingest' && req.method === 'POST') {
     if (!env.ARCHIVE_KEY || req.headers.get('Authorization') !== 'Bearer ' + env.ARCHIVE_KEY) return J(env, req, { error: 'auth' }, 401);
-    // 무료 한도(계정 전체 하루 100k 줄 쓰기) 보호: 아카이브는 하루 ARCHIVE_DAILY_ROWS(기본 6만)까지만, 나머지는 사용자 동기화 몫.
+    // 무료 한도(계정 전체 하루 100k 줄 쓰기) 보호: 아카이브는 하루 ARCHIVE_DAILY_ROWS(기본 4만)까지만, 하루 기준은 Cloudflare 초기화와 같은 UTC 0시(=한국 오전 9시), 나머지는 사용자 동기화 몫.
     // 바뀐 줄만 씀(ON CONFLICT … WHERE 달라졌을 때만), 한 요청 = 한 트랜잭션(실패 시 전부 롤백, 반쯤 지워진 상태 없음).
-    const CAP = +(env.ARCHIVE_DAILY_ROWS || 60000), day = new Date(now() + 9 * 36e5).toISOString().slice(0, 10);
+    const CAP = +(env.ARCHIVE_DAILY_ROWS || 40000), day = new Date(now()).toISOString().slice(0, 10);
     let used = 0;
     try { used = (await A.prepare('SELECT rows FROM budget WHERE day=?').bind(day).first())?.rows || 0; }
     catch (e) { await A.prepare('CREATE TABLE IF NOT EXISTS budget(day TEXT PRIMARY KEY, rows INTEGER NOT NULL)').run(); }
