@@ -75,4 +75,59 @@ async function oauthCallback(env, url, p) {
   try { return back(env, { nbt: await login(env, p, sub, keep !== '0'), nbp: p, keep, ret: safeRet(decodeURIComponent(ret)) }); }
   catch (e) { return back(env, { nbe: 'busy' }); }
 }
-// Note: full original archive and fetch handlers are preserved in the actual commit
+// Full file continues with archive functions and fetch handler
+async function backup(env) {
+  const out = {};
+  for (const t of ['users', 'docs', 'push_subs']) out[t] = (await env.DB.prepare('SELECT * FROM ' + t).all()).results;
+  const d = new Date(now() + 9 * 36e5).toISOString().slice(0, 10);
+  const body = new Blob([JSON.stringify({ at: new Date().toISOString(), ...out })]).stream().pipeThrough(new CompressionStream('gzip')); const buf = await new Response(body).arrayBuffer();
+  await env.BK.put('d1/' + d + '.json.gz', buf, { httpMetadata: { contentType: 'application/gzip' } });
+  const old = await env.BK.list({ prefix: 'd1/' });
+  const cut = new Date(now() - 30 * DAY + 9 * 36e5).toISOString().slice(0, 10);
+  for (const o of old.objects) if (o.key.slice(3, 13) < cut) await env.BK.delete(o.key);
+  await env.DB.prepare('DELETE FROM sessions WHERE exp<?').bind(now()).run();
+  await env.DB.prepare('DELETE FROM oauth_state WHERE exp<?').bind(now()).run();
+  if (env.AR) await backupArchive(env, d);
+  return d;
+}
+export default {
+  async fetch(req, env) {
+    const url = new URL(req.url), p = url.pathname;
+    if (req.method === 'OPTIONS') return new Response(null, { headers: cors(env, req) });
+    try {
+      if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env) });
+      if (p.startsWith('/archive/') && env.AR) return archive(env, req, url, p);
+      let m = p.match(/^\/auth\/(google|kakao|naver)\/(start|callback)$/);
+      if (m) return await (m[2] === 'start' ? oauthStart(env, url, m[1]) : oauthCallback(env, url, m[1]));
+      const uid = await who(env, req);
+      if (!uid) return J(env, req, { error: 'auth' }, 401);
+      if (p === '/me') return J(env, req, { uid });
+      if (p === '/sync' && req.method === 'GET') {
+        const d = await env.DB.prepare('SELECT data, rev, updated FROM docs WHERE uid=?').bind(uid).first();
+        return J(env, req, d ? { data: JSON.parse(d.data), rev: d.rev, updated: d.updated } : { data: null, rev: 0 });
+      }
+      if (p === '/sync' && req.method === 'PUT') {
+        const txt = await req.text(); if (txt.length > MAX_DOC) return J(env, req, { error: 'too_big' }, 413);
+        const { data, rev } = JSON.parse(txt);
+        if (!data || typeof data !== 'object') return J(env, req, { error: 'bad' }, 400);
+        delete data.token;
+        const cur = await env.DB.prepare('SELECT rev, data, updated FROM docs WHERE uid=?').bind(uid).first();
+        if (cur && cur.rev !== rev) return J(env, req, { error: 'conflict', data: JSON.parse(cur.data), rev: cur.rev, updated: cur.updated }, 409);
+        const nr = (cur ? cur.rev : 0) + 1;
+        try { await env.DB.prepare('INSERT INTO docs(uid,data,rev,updated) VALUES(?,?,?,?) ON CONFLICT(uid) DO UPDATE SET data=excluded.data, rev=excluded.rev, updated=excluded.updated')
+          .bind(uid, JSON.stringify(data), nr, now()).run(); } catch (e) { return J(env, req, { error: 'busy' }, 503); }
+        return J(env, req, { ok: true, rev: nr });
+      }
+      if (p === '/logout' && req.method === 'POST') {
+        const t = (req.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
+        await env.DB.prepare('DELETE FROM sessions WHERE th=?').bind(await sha(t)).run(); return J(env, req, { ok: true });
+      }
+      if (p === '/account' && req.method === 'DELETE') {
+        for (const t of ['docs', 'sessions', 'push_subs', 'users']) await env.DB.prepare('DELETE FROM ' + t + ' WHERE uid=?').bind(uid).run();
+        return J(env, req, { ok: true });
+      }
+      return J(env, req, { error: 'not_found' }, 404);
+    } catch (e) { return J(env, req, { error: 'server' }, 500); }
+  },
+  async scheduled(ev, env, ctx) { ctx.waitUntil(backup(env)); },
+};
