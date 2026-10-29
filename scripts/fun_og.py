@@ -3,10 +3,15 @@ import json, os, sys, urllib.request
 from PIL import Image, ImageDraw, ImageFont
 SITE = sys.argv[1]; F = json.load(open(os.path.join(SITE, 'data', 'fun.json'), encoding='utf-8'))
 def font():
-    for p in ('/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc', '/System/Library/Fonts/AppleSDGothicNeo.ttc', '/tmp/Pretendard-Bold.otf'):
+    # 디자인 규칙: Pretendard 우선. 받을 수 없을 때만 시스템 한글 글꼴
+    if os.path.exists('/tmp/Pretendard-Bold.otf'): return '/tmp/Pretendard-Bold.otf'
+    for u in ('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard/dist/public/static/Pretendard-Bold.otf',
+              'https://raw.githubusercontent.com/orioncactus/pretendard/v1.3.9/packages/pretendard/dist/public/static/Pretendard-Bold.otf'):
+        try: urllib.request.urlretrieve(u, '/tmp/Pretendard-Bold.otf'); return '/tmp/Pretendard-Bold.otf'
+        except Exception: pass
+    for p in ('/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc', '/System/Library/Fonts/AppleSDGothicNeo.ttc'):
         if os.path.exists(p): return p
-    urllib.request.urlretrieve('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/public/static/Pretendard-Bold.otf', '/tmp/Pretendard-Bold.otf')
-    return '/tmp/Pretendard-Bold.otf'
+    raise SystemExit('no Korean font')
 FP = font(); Fn = lambda s: ImageFont.truetype(FP, s)
 NAVY, OR, Y = (15, 22, 48), (255, 77, 46), (255, 176, 32)
 def wrap(d, t, f, w):
