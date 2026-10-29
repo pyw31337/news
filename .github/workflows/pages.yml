@@ -1,0 +1,58 @@
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: data
+          path: data
+      - uses: actions/checkout@v4
+        with:
+          ref: media
+          path: media
+      - uses: actions/checkout@v4
+        with:
+          ref: politicians
+          path: pol
+      - name: Prepare Pages artifact
+        run: |
+          mkdir _site
+          cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png favicon.ico _site/
+          mkdir _site/data
+          cp -r data/today.json data/archive _site/data/
+          cp data/global.json data/status.json data/briefs.json data/official.json data/ecos_series.json data/voice.json data/fun.json _site/data/ 2>/dev/null || true
+          cp -r data/gov _site/data/ 2>/dev/null || true
+          mkdir -p _site/media
+          cp -r media/img _site/media/ 2>/dev/null || true
+          python3 scripts/build_pages.py _site
+          cp -r politicians persons history games privacy terms login _site/
+          mkdir -p _site/data/pol
+          cp -r pol/index.json pol/people _site/data/pol/
+          cp -r pol/photos _site/data/pol/ 2>/dev/null || true
+          cp pol/feed.json _site/data/pol/ 2>/dev/null || true
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
