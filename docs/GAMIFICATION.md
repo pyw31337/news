@@ -45,3 +45,4 @@ SVG 메달(`NBGame.medal`)은 티어 색 그라디언트 + Tabler 아이콘, 잠
 - 배지 그림: `assets/badges/<id>-<등급>.webp`(512) · `-s.webp`(128) · `slot/<id>-<등급>.webp`(음각). 새 배지 엠블럼은 Tabler 아이콘을 3D 광택으로 렌더(`scripts/game_art/lib.mjs emblem()`), 7~9등급 프레임은 레전드 프레임을 색 변환.
 - 게임: `games/g2048.js`, `games/merge.js`, `games/sling.js`(+`games/vendor/matter.min.js` MIT), 공용 `games/sound.js`(배경음·효과음 토글 `nb-snd`), `games/fx.js`, `games/board.js`(개인 기록 `nb-scores`, 전체 순위 Worker `/lb`).
 - **배지 그림 v5(2026-10-30)**: 사용자가 준 그록(Grok) 금색 메달 26장으로 전면 교체(`scripts/game_art/grok_badges.py`, 매핑은 파일 안 MAP). 등급은 바깥 금속 프레임만 색을 바꿈(가운데 상징은 원본 유지). 그록 그림이 없는 15종은 서류 메달의 원판을 비우고 금색 Tabler 엠블럼을 얹음(`gold_emblems.mjs`). 배지 URL에 `?v=4`(game.js `BV`) — 그림을 바꾸면 올릴 것. `sharp.js`는 배지·게임 그림을 검사에서 제외(연출 중 확대 크기로 재서 숨기던 버그).
+- 배지 그림 규칙·41종 상징·그록 생성 지시문·교체 절차: **docs/BADGE_GUIDE.md**(v1.1)
