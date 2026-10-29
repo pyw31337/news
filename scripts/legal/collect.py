@@ -6,8 +6,9 @@ from datetime import datetime, timezone, timedelta
 ROOT = sys.argv[1]; OUT = os.path.join(ROOT, 'legal', 'v1'); os.makedirs(OUT, exist_ok=True)
 HERE = os.path.dirname(os.path.abspath(__file__)); SCR = os.path.dirname(HERE)
 UA = {'User-Agent': 'Mozilla/5.0 (NewsBoard legal archive; +https://pyw31337.github.io/news/)'}
+REF = {**UA, 'Referer': 'https://pyw31337.github.io/', 'Origin': 'https://pyw31337.github.io'}  # law.go.kr DRF는 등록 도메인을 Referer로 검증
 KST = timezone(timedelta(hours=9)); NOW = datetime.now(KST)
-def get(u, t=20): return ur.urlopen(ur.Request(u, headers=UA), timeout=t).read()
+def get(u, t=20): return ur.urlopen(ur.Request(u, headers=REF if 'law.go.kr' in u else UA), timeout=t).read()
 def jload(p, d):
     try:
         with (gzip.open(p, 'rt') if p.endswith('.gz') else open(p)) as f: return json.load(f)
@@ -88,7 +89,7 @@ def lawgo(oc):
             body = next(iter(r.values())) if isinstance(r, dict) and r else {}
             if not isinstance(body, dict):   # 오류 응답(키·IP 미등록 등): 내용 일부만 기록(키 값은 가림)
                 LOG['sources']['law.go.kr'][target] = 'resp ' + json.dumps(r, ensure_ascii=False)[:300].replace(oc, '***')
-                try: LOG['sources']['law.go.kr'][target + '_final'] = ur.urlopen(ur.Request(base, headers=UA), timeout=20).geturl().replace(oc, '***')
+                try: LOG['sources']['law.go.kr'][target + '_final'] = ur.urlopen(ur.Request(base, headers=REF), timeout=20).geturl().replace(oc, '***')
                 except Exception: pass
                 break
             rows = body.get(target) or []
