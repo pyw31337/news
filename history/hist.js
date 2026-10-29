@@ -35,7 +35,8 @@ async function person(id){const v=IX[id];$('#hxv').innerHTML=`<div class="hx-loa
     $('#hxtl').innerHTML=html+(L.length>400?`<li class="more">가장 최근 400건을 보여드려요</li>`:'');
     $('#hxbars').innerHTML=yearBars(it,y0,y1,r=>r[3],sel);document.querySelectorAll('#hxf button').forEach(b=>b.classList.toggle('on',b.dataset.c===sel))};
   $('#hxv').innerHTML=`<button class="hx-back" id="hxb">${I('chevron-left')}목록</button>
-   <section class="hx-ph"><span class="av lg">${E(d.n.slice(0,1))}</span><div><small>${E(d.occ)}</small><h2>${E(d.n)}</h2><p><span class="ds-num">${y1-y0+1}년</span> 동안의 기록 <span class="ds-num">${nf(it.length)}건</span> · 언론사 ${nf(d.o.length)}곳</p></div></section>
+   <section class="hx-ph"><span class="av lg">${E(d.n.slice(0,1))}</span><div><small>${E(d.occ)}</small><h2>${E(d.n)}${(v&&v.al&&v.al.length)?` <small class="hx-al">${E(v.al.join(' · '))}</small>`:''}</h2><p><span class="ds-num">${y1-y0+1}년</span> 동안의 기록 <span class="ds-num">${nf(it.length)}건</span> · 언론사 ${nf(d.o.length)}곳</p></div></section>
+   ${id.startsWith('a')?`<a class="hx-arc" href="persons/?id=${encodeURIComponent(id.slice(1))}">${I('id-badge-2')}<span>인물 아카이브</span><small>프로필·관계도·의정 기록</small>${I('chevron-right')}</a>`:''}
    <div class="hx-kpi">${ORD.filter(k=>cc[k]).map(k=>`<div style="--c:${C[k][2]}">${I(C[k][1])}<b>${nf(cc[k])}</b><span>${C[k][0]}</span></div>`).join('')}</div>
    ${quotes.length?`<section class="hx-quotes"><h3>${I('message-2')}최근 남긴 말</h3>${quotes.map(r=>`<blockquote><q class="ds-say">${E(r[4])}</q><cite>${r[0].replace(/-/g,'.')} · ${E(d.o[r[2]])}</cite></blockquote>`).join('')}</section>`:''}
    <section class="hx-card"><h3>${I('chart-bar')}해마다 남은 기록</h3><div id="hxbars"></div></section>

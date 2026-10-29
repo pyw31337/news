@@ -112,7 +112,13 @@ function econHTML(){if(!ES||!ES.series)return'';const has=ORDER.some(([g,ids])=>
   ${ORDER.map(([g,ids])=>{const h=ids.map(card).join('');return h?`<h3 class="sub">${g}</h3><div class="ecards">${h}</div>`:''}).join('')}</section>${leadHTML()}`}
 /* 마켓 페이지에 끼워넣기: 지수 아래, 기존 단순 목록 대신 */
 function put(){try{put_()}catch(e){}}
-function put_(){if(!/^market\/?$/.test(location.pathname.slice(BASEP.length)))return;const app=document.getElementById('app');if(!app||!app.querySelector('.mkrow,.lede'))return;
+/* 실시간 시세(today.json market)로 일별 지표의 마지막 값을 맞춤 — 상단 카드와 대시보드가 같은 값·날짜를 보이게 */
+const LIVE={kospi:'KOSPI',kosdaq:'KOSDAQ',usd:'미국 USD',jpy:'일본 JPY(100)',eur:'유럽 EUR',cny:'중국 CNY',sp500:'S&P 500',nasdaq:'NASDAQ',wti:'WTI 원유',btc:'비트코인'};
+function liveSync(){try{const M=(typeof D!=='undefined'&&D&&D.market)||[];if(!ES||!ES.series||!M.length)return;
+  for(const[k,nm]of Object.entries(LIVE)){const s=ES.series[k],m=M.find(x=>x.name===nm);if(!s||!m||!m.at||!s.data||!s.data.length)continue;
+    const d=m.at.slice(0,10),v=parseFloat(String(m.price).replace(/,/g,''));if(!isFinite(v))continue;const L=s.data[s.data.length-1];
+    if(String(L[0]).length!==10)continue;if(L[0]===d)L[1]=v;else if(L[0]<d)s.data.push([d,v]);s.live=m.at}}catch(e){}}
+function put_(){liveSync();if(!/^market\/?$/.test(location.pathname.slice(BASEP.length)))return;const app=document.getElementById('app');if(!app||!app.querySelector('.mkrow,.lede'))return;
   app.querySelectorAll('.econ,.lead-ix').forEach(x=>x.remove());const h=econHTML();if(!h)return;
   [...app.querySelectorAll('.ecos')].forEach(x=>{const s=x.previousElementSibling;if(s&&s.classList.contains('sec'))s.remove();x.remove()});
   app.querySelectorAll('.mydash').forEach(x=>x.remove());

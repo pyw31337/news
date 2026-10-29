@@ -115,9 +115,10 @@ def seed():
         ppl = json.load(open(f'{pd}/index.json'))['people']
         ppl.sort(key=lambda p: (p.get('news') or 0) * 3 + (60 if p.get('current') else 0) + len(p.get('ages') or []) * 6, reverse=True)
         for p in ppl: T.append({'k': 'p', 'id': 'a' + str(p['id']), 'n': p['name'], 'q': f'"{p["name"]}" 의원', 'y0': max(Y0, int((p.get('birth') or '1960')[:4]) + 25), 'occ': '정치인', 'pri': 1000 + (p.get('news') or 0)})
-    q = '''SELECT ?p ?n ?b ?o ?sl WHERE { ?p wdt:P27 wd:Q884; wdt:P106 ?o. VALUES ?o {%s}
-      ?s schema:about ?p; schema:isPartOf <https://ko.wikipedia.org/>. ?p rdfs:label ?n FILTER(lang(?n)="ko")
-      OPTIONAL{?p wdt:P569 ?b} ?p wikibase:sitelinks ?sl. FILTER NOT EXISTS{?p wdt:P570 ?dd} }''' % ' '.join('wd:' + k for k in OCC)
+    q = '''SELECT ?p ?n ?b ?o ?sl ?t (GROUP_CONCAT(DISTINCT ?al;separator="|") AS ?als) WHERE { ?p wdt:P27 wd:Q884; wdt:P106 ?o. VALUES ?o {%s}
+      ?s schema:about ?p; schema:isPartOf <https://ko.wikipedia.org/>; schema:name ?t. ?p rdfs:label ?n FILTER(lang(?n)="ko")
+      OPTIONAL{?p wdt:P569 ?b} ?p wikibase:sitelinks ?sl. FILTER NOT EXISTS{?p wdt:P570 ?dd}
+      OPTIONAL{?p skos:altLabel ?al FILTER(lang(?al)="ko")} } GROUP BY ?p ?n ?b ?o ?sl ?t''' % ' '.join('wd:' + k for k in OCC)
     rows = []
     for oc in OCC:  # 직업별로 나눠 요청(한 번에 하면 시간 초과)
         qq = q.replace('VALUES ?o {%s}' % ' '.join('wd:' + k for k in OCC), 'VALUES ?o {wd:%s}' % oc)
@@ -129,12 +130,21 @@ def seed():
     for r in rows:
         qid = r['p']['value'].rsplit('/', 1)[1]; b = r.get('b', {}).get('value', '')[:4]
         if b and b.isdigit() and int(b) > NOW.year - 19: continue  # 미성년자 제외
-        e = E.setdefault(qid, {'k': 'p', 'id': qid, 'n': r['n']['value'], 'occ': OCC[r['o']['value'].rsplit('/', 1)[1]], 'sl': int(r['sl']['value']), 'b': b})
+        oc = OCC[r['o']['value'].rsplit('/', 1)[1]]
+        e = E.setdefault(qid, {'k': 'p', 'id': qid, 'n': re.sub(r'\s*\(.*\)$', '', r['n']['value']).strip(), 'occ': oc, 'sl': int(r['sl']['value']), 'b': b})
+        if oc == '가수': e['occ'] = oc  # 가수 겸 배우는 가수로(뷔·아이유 등)
+        # 활동명: 위키백과 문서 제목(괄호 앞) — '제니 김' → '제니', '김남준' → 'RM'
+        tt = re.sub(r'\s*\(.*\)$', '', r.get('t', {}).get('value', '')).strip()
+        al = [a for a in r.get('als', {}).get('value', '').split('|') if a]
+        if tt and tt != e['n'] and (tt in al or tt in e['n'] or re.fullmatch(r'[A-Za-z0-9 .\-]{1,12}', tt)):
+            lb = re.sub(r'\s*\(.*\)$', '', e['n']).strip(); e['n'] = tt
+            if lb != tt: e['al'] = [lb]
     names = {}
     for e in E.values(): names[e['n']] = names.get(e['n'], 0) + 1
     for e in E.values():
         amb = names[e['n']] > 1 or len(e['n']) <= 2
-        e['q'] = f'"{e["n"]}" {e["occ"]}' if amb or e['sl'] < 15 else f'"{e["n"]}"'
+        nm = f'"{e["n"]}"' if not e.get('al') else '(' + ' OR '.join(f'"{x}"' for x in [e['n']] + e['al']) + ')'
+        e['q'] = f'{nm} {e["occ"]}' if amb or e['sl'] < 15 or e.get('al') else nm
         e['y0'] = max(Y0, int(e['b']) + 15) if e['b'].isdigit() else Y0
         e['pri'] = e['sl'] * 20; T.append(e)
     for s in ISSUES: T.append({'k': 'i', 'id': H(s), 'n': s, 'q': s, 'y0': Y0, 'pri': 5000})
@@ -145,10 +155,14 @@ def run(minutes):
     T = jl(f'{OUT}/h/targets.json', []); S = jl(f'{OUT}/h/state.json', {}); IX = jl(f'{OUT}/h/index.json', {})
     end = time.time() + minutes * 60; req = [0]; done = 0; fails = 0; t0 = time.time()
     # 아직 안 끝난 대상 우선, 그다음 마지막 갱신이 오래된 순(올해 분만 다시)
+    for t in T:  # 검색어(활동명)가 바뀐 대상은 처음부터 다시, 맨 앞으로
+        st = S.get(t['id'])
+        if st and st.get('q') != t['q'] and (st.get('q') or t.get('al') or IX.get(t['id'], {}).get('n') != t['n']): st.update(seen=[], full=0, at=0, q=t['q'])
     order = sorted(T, key=lambda t: (S.get(t['id'], {}).get('full', 0), S.get(t['id'], {}).get('at', 0), -t['pri']))
     for t in order:
         if time.time() > end: break
         st = S.setdefault(t['id'], {'seen': [], 'full': 0, 'at': 0})
+        st['q'] = t['q']
         path = f'{OUT}/h/{t["k"]}/{t["id"]}.json.gz'
         items = {nt(x['t']): x for x in unpack(gzr(path))}
         try: harvest(t['q'], t.get('y0', Y0), items, st['seen'], req)
@@ -158,12 +172,12 @@ def run(minutes):
             continue
         fails = 0
         # 인물은 제목에 이름이 들어간 기사만(동명이인·무관 기사 거름)
-        L = sorted((x for x in items.values() if t['k'] != 'p' or t['n'].split(' ')[0] in x['t']), key=lambda x: x['d'])
+        L = sorted((x for x in items.values() if t['k'] != 'p' or any(n in x['t'] for n in [t['n']] + t.get('al', []))), key=lambda x: x['d'])
         doc = pack(t, L); gzw(path, doc); L = doc['it']
         st['full'] = 1; st['at'] = int(time.time()); done += 1
         ys = sorted({x[0][:4] for x in L}); cc = {}
         for x in L: cc[x[3]] = cc.get(x[3], 0) + 1
-        IX[t['id']] = {'k': t['k'], 'n': t['n'], 'occ': t.get('occ', ''), 'c': len(L), 'y': [ys[0], ys[-1]] if ys else None, 'cc': cc}
+        IX[t['id']] = {'k': t['k'], 'n': t['n'], 'al': t.get('al', []), 'occ': t.get('occ', ''), 'c': len(L), 'y': [ys[0], ys[-1]] if ys else None, 'cc': cc}
     jw(f'{OUT}/h/state.json', S); jw(f'{OUT}/h/index.json', IX)
     el = time.time() - t0; tot = sum(v['c'] for v in IX.values())
     m = {'at': datetime.datetime.now().isoformat(timespec='minutes'), 'targets_done_run': done, 'requests': req[0], 'sec': round(el), 'sec_per_target': round(el / max(done, 1), 1),

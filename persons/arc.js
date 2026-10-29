@@ -28,10 +28,11 @@ const cards=L=>L.map(p=>`<a class="acard" href="persons/?id=${p.id}">${ph(p.phot
 async function person(id){
   const [p,g]=await Promise.all([j('person/'+encodeURIComponent(id)),j('graph/'+encodeURIComponent(id)).catch(()=>null)]);
   document.title=p.name+' 인물 아카이브 · NewsBoard';
+  fetch('https://raw.githubusercontent.com/pyw31337/news/history/h/index.json').then(r=>r.json()).then(X=>{const v=X['a'+id],el=document.getElementById('abb');if(!el)return;if(v&&v.c)el.querySelector('small').textContent=`${v.y[0]}년부터 ${v.c.toLocaleString()}건의 기록`;else el.querySelector('small').textContent='기록을 모으는 중이에요'}).catch(()=>{});
   const d=p.data||{},E=p.events||[],c=pc(p.party);
   const types=[...new Set(E.map(e=>e.typ))];
   const undated=E.filter(e=>!e.d),dated=E.filter(e=>e.d);
-  app.innerHTML=`<a class="back" href="persons/">← 인물 아카이브</a>
+  app.innerHTML=`<a class="back" href="persons/">← 인물 아카이브</a><a class="abb" id="abb" href="history/?t=p&id=a${encodeURIComponent(id)}">${window.NBI?NBI('message-report'):''}<span>블랙박스</span><small>과거 발언·행적 보기</small></a>
   <section class="aprof" style="--pc:${c}">${ph(d.photo,p.name,c,'big')}<div><small>${esc(d.hanja||'')}</small><h1>${esc(p.name)}</h1>
    <p class="ameta"><i style="background:${c}"></i>${esc(p.party||'')}${p.birth?` · ${p.birth.slice(0,4)}년생`:''}${d.ages?.length?` · ${d.ages.map(a=>a+'대').join('·')} 국회의원`:''}</p>
    <div class="achips"><a href="politicians/?id=${p.id}" class="chip">의정 활동 자세히</a><a href="#graph" class="chip">관계도 보기</a></div></div></section>

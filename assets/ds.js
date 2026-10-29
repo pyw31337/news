@@ -89,7 +89,29 @@ function bindFlow(root){const sv=root.querySelector('.ds-rsv'),box=root.querySel
     nd.querySelectorAll('.ds-n').forEach(b=>b.classList.toggle('on',+b.dataset.k===sel&&!b.classList.contains('past')))}
   sg.onclick=e=>{const b=e.target.closest('button');if(!b)return;cur=b.dataset.r;sg.querySelectorAll('button').forEach(x=>x.setAttribute('aria-selected',x===b));draw()};
   nd.onclick=e=>{const b=e.target.closest('button.ds-n');if(!b)return;sel=+b.dataset.k;nd.querySelectorAll('.ds-n').forEach(x=>x.classList.toggle('on',x===b));ls.querySelectorAll('.ds-fg').forEach(x=>x.classList.toggle('on',+x.dataset.k===sel));const c=ls.querySelector(`.ds-fg[data-k="${sel}"]`);c&&c.scrollIntoView({behavior:'smooth',block:'nearest'})};
-  draw();let rt;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(draw,150)}).observe(box)}
+  draw();let rt;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(draw,150)}).observe(box);
+  hist();
+  /* 수십 년 기록(history 브랜치) 이어붙이기: 이슈 인물·반복 이슈의 과거 기사 → 과거 노드 + 연도별 목록 */
+  async function hist(){try{const HB='https://raw.githubusercontent.com/pyw31337/news/history/h/';
+    const IX=window.__nbHX||(window.__nbHX=await fetch(HB+'index.json').then(r=>r.json()));
+    const tt=(terms||[]).map(String).filter(x=>x.length>=2),blob=tt.join(' ');
+    const hit=Object.entries(IX).filter(([id,v])=>v.c&&(v.k==='p'?tt.includes(v.n)||(v.al||[]).some(a=>tt.includes(a)):(blob.includes(v.n)||tt.some(t=>t.length>=2&&v.n.includes(t)&&t.length>=v.n.length*.75)))).slice(0,4);
+    if(!hit.length)return;
+    const gz=async u=>{const r=await fetch(HB+u);return JSON.parse(await new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).text())};
+    const docs=await Promise.all(hit.map(([id,v])=>gz(`${v.k}/${id}.json.gz`).then(d=>[id,v,d]).catch(()=>null)));
+    const gs=t=>'https://news.google.com/search?q='+encodeURIComponent('"'+t.slice(0,60)+'"')+'&hl=ko&gl=KR&ceid=KR:ko';
+    const cut=Date.now()-14*864e5,out=[];
+    docs.filter(Boolean).forEach(([id,v,d])=>{const by={};d.it.forEach(r=>{const t=new Date(r[0]+'T00:00:00+09:00');if(+t>cut)return;
+      const sc=(r[3]&&r[3]!=='보도'?2:0)+tt.filter(w=>r[1].includes(w)).length*3;(by[r[0].slice(0,4)]=by[r[0].slice(0,4)]||[]).push({sc,r,t})});
+      Object.values(by).forEach(L=>L.sort((a,b)=>b.sc-a.sc).slice(0,2).forEach(x=>out.push({title:x.r[1],url:gs(x.r[1]),date:x.r[0],t:x.t,press:d.o[x.r[2]],who:v.n,c:x.r[3],hist:1,href:`history/?t=${v.k}&id=${id}`})))});
+    if(!out.length)return;out.sort((a,b)=>a.t-b.t);
+    const step=Math.max(1,Math.ceil(out.length/24));out.filter((x,j)=>j%step===0).forEach(x=>P.push(x));draw();
+    const yrs={};out.forEach(x=>(yrs[x.date.slice(0,4)]=yrs[x.date.slice(0,4)]||[]).push(x));const Y=Object.keys(yrs).sort().reverse();
+    const el=document.createElement('div');el.className='ds-hist';
+    el.innerHTML=`<h4>${I('history')}수년 전부터 이어진 기록 <small>${Y.at(-1)}년부터 ${out.length}건 · ${hit.map(h=>`<a href="${hit.length&&h[1].k==='p'?`history/?t=p&id=${h[0]}`:`history/?t=i&id=${h[0]}`}">${E(h[1].n)}</a>`).join(' · ')}</small></h4>
+      <ol>${Y.map(y=>`<li><b>${y}</b><div>${yrs[y].slice(0,3).map(x=>`<a href="${E(x.url)}" target="_blank" rel="noopener"><span class="ds-tag">${E(x.who)}</span>${E(x.title)}<small>${E(x.press||'')} · ${x.date.slice(5).replace('-','.')}</small></a>`).join('')}</div></li>`).join('')}</ol>`;
+    (box.closest('.ds-sec')||root).appendChild(el)}catch(e){}}
+}
 
 /* 댓글·민심: 지표 상자 + 도넛 + 성별 픽토그램 + 연령 막대 + 워드 클라우드 */
 function donut(st,col){let a=-90;const R=42,C=2*Math.PI*R;let off=0;
