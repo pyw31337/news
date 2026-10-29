@@ -36,6 +36,7 @@
 | `data` | 누적 데이터: `archive/날짜.json`(일별 TOP10), `db/articles/날짜/*.json.gz`, `db/entities/`, `overlay/`, `gov/`, `fun.json`, `runlog.json`, 각종 캐시 |
 | `media` | 사진 WebP `img/xx/*.webp` + `map.json`(원본→파일 매핑), 상한 900MB |
 | `politicians` | 국회의원 3,296명 `people/`, `photos/`, 법안 `bills_17~22`, 표결 `votes_21~22` |
+| `legal` | 법조 데이터 `legal/v1/`(판례·결정·해석·보도자료·재판관·양형기준, 사건 해시 ID). 3시간마다 `legal-archive`가 추가만 함, D1에는 안 넣음. 규칙: `docs/LEGAL_ARCHIVE.md` |
 | `history` | **과거 뉴스 히스토리(정적, D1 미사용)**: `h/p/<id>.json.gz` 인물 블랙박스, `h/i/<id>.json.gz` 이슈 연표, `h/y/<YYYY>.json` 연도별 사건(1948~), `h/index.json` 현황, `h/targets.json` 대상, `h/state.json` 진행, `h/runs.json` 실측 로그, `h/market_extra.json` 세계 지표. 화면은 raw.githubusercontent.com에서 직접 읽음 |
 | `backup-grok-v1` | 과거 백업, 건드리지 말 것 |
 

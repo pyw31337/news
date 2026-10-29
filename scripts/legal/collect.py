@@ -119,11 +119,17 @@ def press():
     for name, url in PRESS.items():
         if not probe(name, url): continue
         try:
-            t = get(url).decode('utf8', 'ignore'); rows = []
-            if os.environ.get('LEGAL_DEBUG'): jsave(f'{OUT}/_debug/{name}.json', {'html': t[:200000]})
-            for m in re.finditer(r'<a[^>]+href="([^"]+)"[^>]*>\s*([^<]{15,140})</a>', t):
-                h, title = m.group(1), html.unescape(m.group(2)).strip()
-                if re.search(r'(선고|판결|결정|보도|사건|재판|헌법)', title) and not SEX.search(title): rows.append({'title': title, 'url': up.urljoin(url, h)})
+            raw = get(url); cs = re.search(rb'charset=["\']?([\w-]+)', raw[:3000]); rows = []
+            try: t = raw.decode((cs.group(1).decode() if cs else 'utf8'), 'strict')
+            except Exception:
+                try: t = raw.decode('utf8')
+                except Exception: t = raw.decode('cp949', 'ignore')
+            tit = re.findall(r'<td class="tit">\s*<a[^>]+href=[\'"]([^\'"]+)[\'"][^>]*>(.*?)</a>', t, re.S)  # 대법원 표 형식
+            pairs = tit or re.findall(r'<a[^>]+href=[\'"]([^\'"]+)[\'"][^>]*>([^<]{15,300})</a>', t)
+            for h, title in pairs:
+                title = re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', '', title))).strip().rstrip('.').strip()
+                if not 15 <= len(title) <= 140 or SEX.search(title): continue
+                if tit or re.search(r'(선고|판결|결정|보도|사건|재판|헌법)', title): rows.append({'title': title, 'url': up.urljoin(url, html.unescape(h))})
             p = f'{OUT}/press/{name}.json'; cur = jload(p, []); have = {r['url'] for r in cur}
             new = [dict(r, seen=NOW.strftime('%Y-%m-%d')) for r in rows if r['url'] not in have]; jsave(p, cur + new)
             LOG['sources'][name]['added'] = len(new)

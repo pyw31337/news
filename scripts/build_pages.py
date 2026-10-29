@@ -37,7 +37,7 @@ def page(path, title, desc, img=None):
     return 1
 safe = lambda s: s and '/' not in s and '\\' not in s and not s.startswith('.') and len(s.encode()) < 200
 n = 0
-for v, t in (('market', '마켓·정책'), ('people', '화제 — 인물·기업·장소'), ('timeline', '타임라인 비교'), ('map', '관계로 보는 오늘'), ('archive', '날짜 아카이브'), ('settings', '설정')):
+for v, t in (('market', '마켓·정책'), ('people', '화제 — 인물·기업·장소'), ('timeline', '타임라인 비교'), ('map', '관계로 보는 오늘'), ('archive', '날짜 아카이브'), ('voice', '민심·영상'), ('settings', '설정')):
     n += page(v, t, '')
 for i in D.get('issues', []):
     sm = i.get('summary'); sm = ' '.join(sm) if isinstance(sm, list) else (sm or '')
