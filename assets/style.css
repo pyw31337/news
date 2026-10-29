@@ -47,7 +47,7 @@ main{max-width:1240px;margin:0 auto;padding:16px}
     -webkit-backdrop-filter: none !important;
   }
   .tabbar { background: rgba(255, 255, 255, 0.98); }
-  .ticker .run { animation-duration: 90s; }
+  .ticker .run { animation-duration: 180s !important; will-change: transform; }
   .card, .ic { box-shadow: 0 4px 14px -8px rgba(15,22,48,.12); }
   .ic { content-visibility: auto; contain-intrinsic-size: 320px 280px; }
 
