@@ -15,7 +15,9 @@ if(h.get('nbe')){history.replaceState(null,'',location.pathname+location.search)
 $('lgback').href=BASE+ret;
 /* 이미 로그인 */
 const tok=LS.getItem('nb-tok');
-if(tok){const p=LS.getItem('nb-prov');$('lgc').hidden=true;$('lgd').hidden=false;$('lgav').innerHTML=USERF+'<b style="background:'+(PC[p]||PC.google)+'"></b>';$('lgdt').textContent=(PN[p]||'구글')+' 계정으로 로그인됨';
+async function api(path,opt={}){const r=await fetch(SYNC+path,Object.assign({},opt,{headers:Object.assign({'Content-Type':'application/json',Authorization:'Bearer '+tok},opt.headers||{})}));return{st:r.status,j:await r.json().catch(()=>({}))}}
+async function showConnections(){const box=$('lgcon');if(!box)return;let providers=[];try{const r=await api('/me');providers=r.j.providers||[]}catch(e){}const active=LS.getItem('nb-prov');if(active&&!providers.includes(active))providers.push(active);box.innerHTML='<h2>연결한 로그인</h2><p>구글·카카오·네이버를 한 계정으로 묶으면 어느 방식으로 로그인해도 같은 서재를 사용해요.</p><div class="lglinks">'+['google','kakao','naver'].map(p=>'<div class="lg-link '+p+(providers.includes(p)?' linked':'')+'"><span><i></i> '+PN[p]+'</span><button data-link="'+p+'" '+(providers.includes(p)?'disabled':'')+'>'+(providers.includes(p)?'연결됨':'연결하기')+'</button></div>').join('')+'</div>';box.querySelectorAll('[data-link]').forEach(b=>b.onclick=async()=>{b.disabled=true;b.textContent='연결 준비 중';try{const r=await api('/auth/link',{method:'POST',body:JSON.stringify({provider:b.dataset.link,ret:'my'})});if(r.st===200&&r.j.url){location.assign(r.j.url);return}}catch(e){}b.disabled=false;b.textContent='다시 시도'})}
+if(tok){const p=LS.getItem('nb-prov');$('lgc').hidden=true;$('lgd').hidden=false;$('lgav').innerHTML=USERF+'<b style="background:'+(PC[p]||PC.google)+'"></b>';$('lgdt').textContent=(PN[p]||'구글')+' 계정으로 로그인됨';showConnections();
   $('lgout').onclick=async()=>{try{await fetch(SYNC+'/logout',{method:'POST',headers:{Authorization:'Bearer '+tok}})}catch(e){}['nb-tok','nb-rev','nb-prov','nb-syncat','nb-sess'].forEach(k=>LS.removeItem(k));location.reload()}}
 /* 자동 로그인 */
 const kb=$('keep');let keep=LS.getItem('nb-keep')!=='0';

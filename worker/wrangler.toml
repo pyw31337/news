@@ -19,7 +19,8 @@ bucket_name = "newsboard-backup"
 # 매일 04:10 KST(19:10 UTC) D1 전체를 R2로 내보내기(30일 보관). D1 자체 Time Travel(무료 7일)과 함께 이중 온라인 백업
 [triggers]
 crons = ["10 19 * * *"]
-# 비밀값(wrangler secret put): ID_SALT(필수), GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET, KAKAO_REST_KEY/KAKAO_CLIENT_SECRET(선택)
+# 비밀값(wrangler secret put): ID_SALT(필수), GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET,
+# KAKAO_REST_KEY/KAKAO_CLIENT_SECRET, NAVER_CLIENT_ID/NAVER_CLIENT_SECRET(선택)
 
 # 인물 아카이브(타임라인·관계 그래프). 사용자 동기화 DB와 분리
 [[d1_databases]]

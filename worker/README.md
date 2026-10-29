@@ -3,7 +3,7 @@
 - 주소: https://newsboard-sync.pyw213.workers.dev (상태 확인: /health)
 - D1: newsboard-sync · R2: newsboard-backup (매일 04:10 KST `d1/YYYY-MM-DD.json.gz`, 30일 보관)
 - 백업 2중: ① D1 Time Travel(무료 7일 되돌리기: `wrangler d1 time-travel restore newsboard-sync --timestamp=...`) ② R2 일일 내보내기
-- 저장하는 것: 불투명 ID(HMAC), 세션 해시, 내 서재 JSON. 이메일·이름·프로필 사진은 받지 않음.
+- 저장하는 것: 불투명 ID(HMAC), 제공자 연결표, 세션 해시, 내 서재 JSON. 이메일·이름·프로필 사진은 받지 않음.
 - 배포: `npx wrangler deploy` (이 폴더), 스키마: `npx wrangler d1 execute newsboard-sync --remote --file schema.sql`
 
 ## Google 로그인 켜기
@@ -29,3 +29,6 @@
 7. 값 전달(또는 `npx wrangler secret put KAKAO_REST_KEY` / `KAKAO_CLIENT_SECRET`)
 
 값이 들어가면 사이트 '내 서재'에 로그인 버튼이 자동으로 나타납니다(코드 수정·재배포 불필요).
+
+## 네이버 로그인 켜기
+네이버 Developers의 로그인 API에서 콜백 URL을 `https://newsboard-sync.pyw213.workers.dev/auth/naver/callback`으로 등록하고, Worker 비밀값 `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET`을 넣습니다. 연결된 구글·카카오 계정이 있는 사용자는 내 서재의 **연결하기**에서 네이버 로그인을 추가할 수 있으며, 제공자 고유번호는 HMAC으로 가린 값만 저장됩니다.

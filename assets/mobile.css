@@ -1,0 +1,12 @@
+/* Mobile reading contract: information cards stack vertically before their text becomes narrow. */
+@media (max-width:639px){
+  body{overflow-wrap:break-word;word-break:keep-all}
+  h1,h2,h3,h4,h5,p,a,span,li{overflow-wrap:break-word;word-break:keep-all}
+  .hero,.grid10,.two,.gloss,.side,.stats,.pgrid,.mkrow,.words,.trends,.plist,.tgrid,
+  .dhead .kpis,.ostat,.demo,.ecards,.estats,.lstats,.lud,.ecos,.gkpi,.stkg,.lstat,
+  .ltiles,.lhome,.clist,.dlist,.myan,.mgl,.dw-grid,.dwp-l,.vq,.vvg,.vmb{grid-template-columns:minmax(0,1fr)}
+  .grid10 .ic.wide,.tn.first,.lh.quiz{grid-column:auto;grid-row:auto}
+  .two>aside{position:static;top:auto}
+  .lead,.lead .in{min-height:0}
+  .whyl{grid-template-columns:minmax(0,1fr)}
+}

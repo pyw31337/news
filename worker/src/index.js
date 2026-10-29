@@ -1,5 +1,5 @@
 // NewsBoard 상세 서버 (Cloudflare Worker + D1). 무료 등급 안에서 동작.
-// 로그인: Google·카카오 → 고유번호를 HMAC으로 바꾼 '불투명 ID'만 저장. 내 서재 데이터(JSON)는 기기 간 동기화.
+// 로그인: Google·카카오·네이버 → 고유번호를 HMAC으로 바꾼 '불투명 ID'만 저장. 내 서재 데이터(JSON)는 기기 간 동기화.
 const enc = new TextEncoder();
 const hex = b => [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join('');
 const rnd = (n = 32) => hex(crypto.getRandomValues(new Uint8Array(n)));
@@ -23,9 +23,59 @@ async function who(env, req) {
   const r = await env.DB.prepare('SELECT uid, exp FROM sessions WHERE th=?').bind(await sha(t)).first();
   return r && r.exp > now() ? r.uid : null;
 }
-async function login(env, provider, sub, keep = true) {
-  const uid = 'u_' + (await hmac(env.ID_SALT, provider + ':' + sub)).slice(0, 32);
+const obj = x => x && typeof x === 'object' && !Array.isArray(x);
+function newest(a, b) { return ((a && (a.u || a.at)) || 0) >= ((b && (b.u || b.at)) || 0) ? a : b; }
+function mergeProgress(a, b) {
+  if (typeof a === 'number' && typeof b === 'number') return Math.max(a, b);
+  if (Array.isArray(a) && Array.isArray(b)) { const out = [...a]; for (const x of b) if (!out.some(y => JSON.stringify(y) === JSON.stringify(x))) out.push(x); return out; }
+  if (obj(a) && obj(b)) { const out = { ...a }; for (const [k, v] of Object.entries(b)) out[k] = k in out ? mergeProgress(out[k], v) : v; return out; }
+  return b == null ? a : b;
+}
+function mergeLibrary(current, previous) {
+  if (!previous) return current || {}; if (!current) return previous;
+  const out = { ...previous, ...current }; out.saves = {};
+  for (const k of new Set([...Object.keys(previous.saves || {}), ...Object.keys(current.saves || {})])) { const v = newest((current.saves || {})[k], (previous.saves || {})[k]); if (v) out.saves[k] = v; }
+  out.follows = { ...(previous.follows || {}), ...(current.follows || {}) };
+  out.keywords = [...new Set([...(previous.keywords || []), ...(current.keywords || [])])];
+  out.cols = [...(current.cols || [])]; for (const c of previous.cols || []) if (!out.cols.some(x => x && x.id === c.id)) out.cols.push(c);
+  out.reads = {}; for (const d of new Set([...Object.keys(previous.reads || {}), ...Object.keys(current.reads || {})])) out.reads[d] = { ...(previous.reads || {})[d], ...(current.reads || {})[d] };
+  if (previous.game || current.game) out.game = mergeProgress(previous.game || {}, current.game || {});
+  const newerDoc = (current.updated || 0) >= (previous.updated || 0) ? current : previous;
+  for (const k of ['home', 'watch', 'alerts']) if (newerDoc[k] != null) out[k] = newerDoc[k];
+  out.updated = Math.max(current.updated || 0, previous.updated || 0, now()); return out;
+}
+async function ensureUser(env, uid) {
   await env.DB.prepare('INSERT INTO users(uid,created,last_seen) VALUES(?,?,?) ON CONFLICT(uid) DO UPDATE SET last_seen=excluded.last_seen').bind(uid, now(), now()).run();
+}
+async function mergeUsers(env, into, from) {
+  if (!from || from === into) return;
+  const [target, source] = await Promise.all([env.DB.prepare('SELECT data,rev FROM docs WHERE uid=?').bind(into).first(), env.DB.prepare('SELECT data,rev FROM docs WHERE uid=?').bind(from).first()]);
+  if (source) {
+    let a = null, b = null; try { a = target && JSON.parse(target.data); b = JSON.parse(source.data); } catch (e) { throw new Error('bad_linked_data'); }
+    const merged = mergeLibrary(a, b), rev = Math.max((target && target.rev) || 0, source.rev || 0) + 1;
+    await env.DB.prepare('INSERT INTO docs(uid,data,rev,updated) VALUES(?,?,?,?) ON CONFLICT(uid) DO UPDATE SET data=excluded.data,rev=excluded.rev,updated=excluded.updated').bind(into, JSON.stringify(merged), rev, now()).run();
+  }
+  await env.DB.batch([
+    env.DB.prepare('UPDATE identities SET uid=? WHERE uid=?').bind(into, from), env.DB.prepare('UPDATE sessions SET uid=? WHERE uid=?').bind(into, from), env.DB.prepare('UPDATE push_subs SET uid=? WHERE uid=?').bind(into, from),
+    env.DB.prepare('DELETE FROM docs WHERE uid=?').bind(from), env.DB.prepare('DELETE FROM users WHERE uid=?').bind(from),
+  ]);
+}
+async function login(env, provider, sub, keep = true, linkUid = '') {
+  const legacyUid = 'u_' + (await hmac(env.ID_SALT, provider + ':' + sub)).slice(0, 32);
+  const subject = (await hmac(env.ID_SALT, 'identity:' + provider + ':' + sub)).slice(0, 48);
+  let row = await env.DB.prepare('SELECT uid FROM identities WHERE provider=? AND provider_subject=?').bind(provider, subject).first();
+  let uid = row && row.uid;
+  if (linkUid) {
+    const owner = await env.DB.prepare('SELECT uid FROM users WHERE uid=?').bind(linkUid).first(); if (!owner) throw new Error('link_owner_missing');
+    const prior = uid || ((await env.DB.prepare('SELECT uid FROM users WHERE uid=?').bind(legacyUid).first()) ? legacyUid : '');
+    if (prior && prior !== linkUid) await mergeUsers(env, linkUid, prior);
+    await ensureUser(env, linkUid);
+    await env.DB.prepare('INSERT INTO identities(provider,provider_subject,uid,created) VALUES(?,?,?,?) ON CONFLICT(provider,provider_subject) DO UPDATE SET uid=excluded.uid').bind(provider, subject, linkUid, now()).run(); uid = linkUid;
+  } else if (!uid) {
+    uid = legacyUid; await ensureUser(env, uid);
+    await env.DB.prepare('INSERT INTO identities(provider,provider_subject,uid,created) VALUES(?,?,?,?) ON CONFLICT(provider,provider_subject) DO NOTHING').bind(provider, subject, uid, now()).run();
+    row = await env.DB.prepare('SELECT uid FROM identities WHERE provider=? AND provider_subject=?').bind(provider, subject).first(); uid = row && row.uid || uid;
+  } else await ensureUser(env, uid);
   const tok = rnd(32);
   await env.DB.prepare('INSERT INTO sessions(th,uid,exp) VALUES(?,?,?)').bind(await sha(tok), uid, now() + (keep ? SESSION_DAYS * DAY : SHORT_HOURS * 36e5)).run();
   return tok;
@@ -33,10 +83,11 @@ async function login(env, provider, sub, keep = true) {
 const back = (env, q) => Response.redirect(env.SITE + 'login/#' + new URLSearchParams(q).toString(), 302);
 const safeRet = r => (r && /^[A-Za-z0-9\-_\/.%#=&?~가-힣]{0,300}$/.test(r) && !r.startsWith('/') && !r.includes('//') && !r.includes('..')) ? r : '';
 const SHORT_HOURS = 24;
-async function oauthStart(env, url, p) {
+async function oauthStart(env, url, p, opt = {}) {
   if (!providers(env)[p]) return back(env, { nbe: 'unavailable' });
-  const keep = url.searchParams.get('keep') === '0' ? '0' : '1', ret = safeRet(url.searchParams.get('ret') || '');
-  const st = rnd(16) + '.' + keep + '.' + encodeURIComponent(ret);
+  const keep = opt.keep || (url.searchParams.get('keep') === '0' ? '0' : '1'), ret = safeRet(opt.ret == null ? (url.searchParams.get('ret') || '') : opt.ret);
+  const mode = opt.linkUid ? 'link~' + opt.linkUid : 'login';
+  const st = rnd(16) + '.' + keep + '.' + encodeURIComponent(ret) + '.' + mode;
   try { await env.DB.prepare('INSERT INTO oauth_state(st,exp) VALUES(?,?)').bind(st, now() + 600_000).run(); } catch (e) { return back(env, { nbe: 'busy' }); }
   const cb = url.origin + '/auth/' + p + '/callback';
   let u;
@@ -45,6 +96,19 @@ async function oauthStart(env, url, p) {
   else if (p === 'naver') u = 'https://nid.naver.com/oauth2.0/authorize?' + new URLSearchParams({ client_id: env.NAVER_CLIENT_ID, redirect_uri: cb, response_type: 'code', state: st });
   else return back(env, { nbe: 'unavailable' });
   return Response.redirect(u, 302);
+}
+function readState(st) {
+  const part = String(st || '').split('.'); const keep = part[1] || '1'; let tail = part.pop() || '', linkUid = '';
+  if (tail.startsWith('link~')) linkUid = tail.slice(5); else if (tail !== 'login') part.push(tail);
+  return { keep, ret: safeRet(decodeURIComponent(part.slice(2).join('.'))), linkUid };
+}
+async function oauthLinkStart(env, req, url) {
+  const uid = await who(env, req); if (!uid) return J(env, req, { error: 'auth' }, 401);
+  let body = {}; try { body = await req.json(); } catch (e) {}
+  const provider = body.provider, ret = safeRet(body.ret || 'my');
+  if (!['google', 'kakao', 'naver'].includes(provider) || !providers(env)[provider]) return J(env, req, { error: 'unavailable' }, 400);
+  const r = await oauthStart(env, url, provider, { keep: '1', ret, linkUid: uid });
+  return J(env, req, { url: r.headers.get('Location') });
 }
 async function oauthCallback(env, url, p) {
   const code = url.searchParams.get('code'), st = url.searchParams.get('state');
@@ -71,13 +135,13 @@ async function oauthCallback(env, url, p) {
     }
   } catch (e) { sub = null; }
   if (!sub) return back(env, { nbe: 'retry' });
-  const sp = st.split('.'), keep = sp[1] || '1', ret = sp.slice(2).join('.');
-  try { return back(env, { nbt: await login(env, p, sub, keep !== '0'), nbp: p, keep, ret: safeRet(decodeURIComponent(ret)) }); }
+  const state = readState(st);
+  try { return back(env, { nbt: await login(env, p, sub, state.keep !== '0', state.linkUid), nbp: p, nbl: state.linkUid ? p : '', keep: state.keep, ret: state.ret }); }
   catch (e) { return back(env, { nbe: 'busy' }); }
 }
 async function backup(env) {
   const out = {};
-  for (const t of ['users', 'docs', 'push_subs']) out[t] = (await env.DB.prepare('SELECT * FROM ' + t).all()).results;
+  for (const t of ['users', 'identities', 'docs', 'push_subs']) out[t] = (await env.DB.prepare('SELECT * FROM ' + t).all()).results;
   const d = new Date(now() + 9 * 36e5).toISOString().slice(0, 10);
   const body = new Blob([JSON.stringify({ at: new Date().toISOString(), ...out })]).stream().pipeThrough(new CompressionStream('gzip')); const buf = await new Response(body).arrayBuffer();
   await env.BK.put('d1/' + d + '.json.gz', buf, { httpMetadata: { contentType: 'application/gzip' } });
@@ -236,11 +300,15 @@ export default {
       if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env) });
       if (p.startsWith('/archive/') && env.AR) return archive(env, req, url, p);
       if (p === '/lb') return await leaderboard(env, req, url);
+      if (p === '/auth/link' && req.method === 'POST') return await oauthLinkStart(env, req, url);
       let m = p.match(/^\/auth\/(google|kakao|naver)\/(start|callback)$/);
       if (m) return await (m[2] === 'start' ? oauthStart(env, url, m[1]) : oauthCallback(env, url, m[1]));
       const uid = await who(env, req);
       if (!uid) return J(env, req, { error: 'auth' }, 401);
-      if (p === '/me') return J(env, req, { uid });
+      if (p === '/me') {
+        const r = await env.DB.prepare('SELECT provider FROM identities WHERE uid=? ORDER BY provider').bind(uid).all();
+        return J(env, req, { uid, providers: r.results.map(x => x.provider) });
+      }
       if (p === '/sync' && req.method === 'GET') {
         const d = await env.DB.prepare('SELECT data, rev, updated FROM docs WHERE uid=?').bind(uid).first();
         return J(env, req, d ? { data: JSON.parse(d.data), rev: d.rev, updated: d.updated } : { data: null, rev: 0 });
@@ -262,7 +330,7 @@ export default {
         await env.DB.prepare('DELETE FROM sessions WHERE th=?').bind(await sha(t)).run(); return J(env, req, { ok: true });
       }
       if (p === '/account' && req.method === 'DELETE') {
-        for (const t of ['docs', 'sessions', 'push_subs', 'users']) await env.DB.prepare('DELETE FROM ' + t + ' WHERE uid=?').bind(uid).run();
+        for (const t of ['docs', 'sessions', 'push_subs', 'identities', 'users']) await env.DB.prepare('DELETE FROM ' + t + ' WHERE uid=?').bind(uid).run();
         try { await env.DB.prepare('DELETE FROM lb WHERE uid=?').bind(uid).run(); } catch (e) {}
         return J(env, req, { ok: true });
       }
