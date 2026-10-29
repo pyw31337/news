@@ -134,7 +134,7 @@ jobs:
           (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null || true)
           python scripts/build_pages.py _site
           # 정치인 DB(politicians 브랜치, scripts/politicians·politicians.yml 참고)
-          cp -r politicians _site/ 2>/dev/null || true; cp -r persons _site/ 2>/dev/null || true; cp -r history _site/ 2>/dev/null || true; cp -r games _site/ 2>/dev/null || true
+          cp -r politicians _site/ 2>/dev/null || true; cp -r persons _site/ 2>/dev/null || true; cp -r history _site/ 2>/dev/null || true; cp -r games _site/ 2>/dev/null || true; cp -r privacy terms _site/ 2>/dev/null || true
           if git clone -q --depth 1 --branch politicians "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" pol_db 2>/dev/null; then
             mkdir -p _site/data/pol && cp -r pol_db/index.json pol_db/people _site/data/pol/ && (cp -r pol_db/photos _site/data/pol/ || true) && (cp pol_db/feed.json _site/data/pol/ || true)
           fi
