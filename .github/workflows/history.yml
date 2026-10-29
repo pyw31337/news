@@ -33,8 +33,12 @@ jobs:
           if [ ! -f hist/h/y/2000.json ] || [ "$(date -u +%H)" = "19" ]; then python scripts/history/hist.py hist years 1948 $(date +%Y) || true; fi
       - name: 세계 시장 지표(3시간마다)
         run: if [ $(( $(date -u +%H) % 3 )) = 0 ] || [ ! -f hist/h/market_extra.json ]; then timeout 240 python scripts/history/market_extra.py hist/h/market_extra.json || true; fi
-      - name: 인물·이슈 백필
-        run: python scripts/history/hist.py hist run ${{ github.event.inputs.minutes || '42' }}
+      - name: 단계형 화제 타임라인(최근 7일·30일 화제 먼저 → 성숙하면 1년·3년·5년 확장, stage.py)
+        run: timeout 900 python scripts/history/stage.py hist 12 || true
+      - name: 인물·이슈 백필(남은 시간)
+        run: |
+          M=${{ github.event.inputs.minutes || '42' }}; M=$(( M > 20 ? M - 12 : M ))
+          python scripts/history/hist.py hist run $M
       - name: 저장
         run: |
           cd hist && git config user.name newsboard-bot && git config user.email bot@users.noreply.github.com

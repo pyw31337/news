@@ -109,7 +109,7 @@ window.nbDeck=function(root){
 window.nbGallery=async function(el,list){if(!el)return;
   const W=el.clientWidth||360,mob=W<640;const bigW=mob?W:W*.5,smW=mob?W:W*.25;
   const chk=await Promise.all(list.map(async g=>({g,n:await natural(g.img)})));
-  const ok=chk.filter(x=>x.n.w>=need(smW)).sort((a,b)=>b.n.w-a.n.w);
+  const ok=chk.filter(x=>x.n.w>=need(smW)).sort((a,b)=>((b.g.q||0)-(a.g.q||0))||(b.n.w-a.n.w));/* 품질 점수순(docs/QUALITY.md), 같으면 큰 사진 */
   const big=ok.findIndex(x=>x.n.w>=need(bigW));
   if(big<0){el.remove();document.querySelector('.dhead')?.classList.add('noimg');return}
   const G=[ok[big],...ok.filter((_,k)=>k!==big)].map(x=>x.g);el._G=G;

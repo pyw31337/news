@@ -68,6 +68,7 @@ function drawQ(){const s=QS,q=s.Q[s.i];const pct=Math.round(s.i/s.Q.length*100);
   app.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>answer(b))}
 function answer(b){const s=QS,q=s.Q[s.i];const a=+b.dataset.a;const ok=q.kind==='ox'?(a===1)===q.answer:a===q.answer;
   app.querySelectorAll('[data-a]').forEach(x=>{x.disabled=true;const v=+x.dataset.a;if(q.kind==='ox'?((v===1)===q.answer):v===q.answer)x.classList.add('right');});if(!ok)b.classList.add('wrong');
+  try{dispatchEvent(new CustomEvent('nb:quiz',{detail:{ok,word:q.word,kind:q.kind,perfect:ok&&s.i===s.Q.length-1&&s.ok+1===s.Q.length}}))}catch(e){}/* 게이미피케이션(game.js) */
   const w=wordOf(q.word);beep(ok);buzz(ok?18:[40,60,40]);
   if(ok){s.ok++;s.combo++;const g=10+(s.combo>=3?5:0);s.xp+=g;if(s.review&&L.review[q.word]){L.review[q.word].hit=(L.review[q.word].hit||0)+1;if(L.review[q.word].hit>=2)delete L.review[q.word]}}
   else{s.combo=0;s.miss.push(q.word);L.review[q.word]={word:w.word,mean:w.mean,related:w.related||[],ex:(w.examples||[])[0]||w.ex||null,hit:0,at:todayK()}}

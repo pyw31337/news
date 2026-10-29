@@ -138,3 +138,8 @@
 - 공개 화면 변경 후 휴대폰(390px)·PC 스크린샷으로 확인하고 사용자에게 보여주기.
 - D1 대량 쓰기 금지(하루 6만 줄 예산 지키기). 읽기 확인은 `wrangler d1 execute newsboard-archive --remote --command "..."`.
 - 사용자에게는 기술 용어 대신 결과·숫자·화면으로 보고.
+
+## game-v1 (2026-10-29)
+- 게이미피케이션: assets/game.js, game.css, gicons.js, games/ (docs/GAMIFICATION.md)
+- 품질 점수: scripts/quality.py (docs/QUALITY.md)
+- 단계 수집: scripts/history/stage.py, history.yml 단계 추가, hist.py HOT 우선

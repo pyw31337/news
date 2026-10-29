@@ -158,7 +158,10 @@ def run(minutes):
     for t in T:  # 검색어(활동명)가 바뀐 대상은 처음부터 다시, 맨 앞으로
         st = S.get(t['id'])
         if st and st.get('q') != t['q'] and (st.get('q') or t.get('al') or IX.get(t['id'], {}).get('n') != t['n']): st.update(seen=[], full=0, at=0, q=t['q'])
-    order = sorted(T, key=lambda t: (S.get(t['id'], {}).get('full', 0), S.get(t['id'], {}).get('at', 0), -t['pri']))
+    # t57u 단계형 우선순위: stage.py 가 뽑은 '최근 7일·30일 화제' 인물·이슈를 먼저(h/topics.json)
+    TP = jl(f'{OUT}/h/topics.json', {}) or {}
+    HOT = {v.get('n'): (0 if v.get('hot7') else 1) for v in TP.values() if v.get('state') != 'dormant'}
+    order = sorted(T, key=lambda t: (S.get(t['id'], {}).get('full', 0), HOT.get(t['n'], 2), S.get(t['id'], {}).get('at', 0), -t['pri']))
     for t in order:
         if time.time() > end: break
         st = S.setdefault(t['id'], {'seen': [], 'full': 0, 'at': 0})
