@@ -30,13 +30,13 @@ function aptHTML(){if(!APT||!APT.trade)return'';const t=aptSeries('trade',GU),r=
   const last=t.pts[t.pts.length-2]||t.pts[t.pts.length-1],yr=t.pts[t.pts.length-14],chg=yr?(last[1]/yr[1]-1)*100:null;
   const rl=r.pts[r.pts.length-2],ratio=rl&&last?rl[1]/last[1]*100:null;
   const gus=['서울 전체',...Object.keys(Object.values(APT.trade).pop()||{})];
-  return`<section class="govapt">${sec('서울 아파트 실거래 흐름','Seoul apartment deals','<span class="more">국토교통부 실거래가</span>','chart')}
+  return`<section class="govapt">${sec('서울 아파트 실거래 흐름','Seoul apartment deals','<span class="more">국토교통부 실거래가</span>','apt')}
   <p class="lede sm">실제로 계약된 아파트 거래를 모아 <b>3.3㎡(1평)당 중간 가격</b>으로 보여줘요. 호가가 아니라 진짜 거래 가격이라 시장 분위기를 가장 정직하게 보여주는 숫자예요.</p>
   <div class="gsel"><select id="aptgu" aria-label="지역">${gus.map(g=>`<option${g===GU?' selected':''}>${e_(g)}</option>`).join('')}</select></div>
   <div class="gkpi"><div><small>매매 평당 중간값</small><b>${eok(last[1])}원</b><em>${e_(last[0])} 기준</em></div>${chg!=null?`<div class="${chg>0?'up':'down'}"><small>1년 전보다</small><b>${chg>0?'+':''}${chg.toFixed(1)}%</b><em>${chg>3?'오르는 중':chg<-3?'내리는 중':'제자리 수준'}</em></div>`:''}${ratio?`<div><small>전세가율</small><b>${ratio.toFixed(0)}%</b><em>매매가 대비 전세가</em></div>`:''}</div>
   <div class="card pad"><h4 class="gt">매매 · 평당 가격(선)과 거래량(막대)</h4>${chart(t.pts,{bars:t.vol,fmtY:eok})}
   ${r.pts.length>2?`<h4 class="gt">전세 · 평당 보증금</h4>${chart(r.pts,{col:'#2f6bff',fmtY:eok})}`:''}</div>
-  <div class="gexp card pad"><b>📘 이렇게 읽어요</b><ul><li><b>거래량</b>이 먼저 늘고 가격이 따라 오르는 경우가 많아요. 거래가 줄면서 가격만 오르면 힘이 약한 상승일 수 있어요.</li><li><b>전세가율</b>이 높으면(70% 이상) 적은 돈으로 집을 사는 ‘갭투자’가 쉬워지고, 집값이 떨어질 때 전세금을 못 돌려받는 위험도 커져요.</li><li>최근 1~2달은 신고 기한(30일)이 남아 거래량이 적게 보여요. 추세는 그 전 달까지로 판단하세요.</li></ul></div>
+  <div class="gexp card pad"><b>${NBI('info-circle')}이렇게 읽어요</b><ul><li><b>거래량</b>이 먼저 늘고 가격이 따라 오르는 경우가 많아요. 거래가 줄면서 가격만 오르면 힘이 약한 상승일 수 있어요.</li><li><b>전세가율</b>이 높으면(70% 이상) 적은 돈으로 집을 사는 ‘갭투자’가 쉬워지고, 집값이 떨어질 때 전세금을 못 돌려받는 위험도 커져요.</li><li>최근 1~2달은 신고 기한(30일)이 남아 거래량이 적게 보여요. 추세는 그 전 달까지로 판단하세요.</li></ul></div>
   <p class="fine">출처: 국토교통부 아파트 매매·전월세 실거래가(공공데이터포털). 해제된 거래는 뺐고, 전세는 월세가 없는 계약만 셌어요.</p></section>`}
 /* ---------- 주요 종목 ---------- */
 function stockSeries(code){const D=(STK&&STK.days)||{};return Object.keys(D).sort().filter(d=>D[d][code]).map(d=>[d.slice(4,6)+'.'+d.slice(6),D[d][code][0]])}

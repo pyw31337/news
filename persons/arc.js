@@ -6,7 +6,7 @@ const pc=p=>PC[p]||(/민주/.test(p||'')?'#2b5fbf':/한나라|새누리|자유�
 const fmt=n=>(n||0).toLocaleString();
 const j=async u=>{const r=await fetch(API+u);if(!r.ok)throw r.status;return r.json()};
 const ph=(u,n,c,cls='')=>`<div class="aph ${cls}" style="--pc:${c}">${u?`<img src="${esc(u)}" alt="" loading="lazy" onerror="this.remove()">`:''}<span>${esc((n||'?').slice(0,1))}</span></div>`;
-const TYP={birth:['출생','#8b6cf0','✶'],edu:['학업','#2a9d8f','✎'],career:['경력','#5b7fa6','◆'],election:['선거','#1f5bd8','✔'],office:['공직','#3b5bdb','★'],party:['정당','#f08c00','⇄'],award:['수상','#e0a800','✿'],family:['가족','#d6336c','♥'],assets:['재산','#2f9e44','₩'],allegation:['의혹·사건','#e03131','!'],ruling:['판결','#862e9c','⚖'],news:['보도','#868e96','•']};
+const TYP={birth:['출생','#8b6cf0','confetti'],edu:['학업','#2a9d8f','school'],career:['경력','#5b7fa6','building'],election:['선거','#1f5bd8','circle-check'],office:['공직','#3b5bdb','star-f'],party:['정당','#f08c00','repeat'],award:['수상','#e0a800','trophy'],family:['가족','#d6336c','heart-f'],assets:['재산','#2f9e44','currency-won'],allegation:['의혹·사건','#e03131','alert-triangle'],ruling:['판결','#862e9c','landmark'],news:['보도','#868e96','news']};
 const STAGES=['출생·성장','학업','사회 경력','정치 활동','재산','논란·사법','언론 보도'];
 const REL={parent:['부모·자녀','#d6336c'],spouse:['배우자','#e64980'],sibling:['형제자매','#f06595'],relative:['친척','#f783ac'],schoolmate:['학교 동문','#2a9d8f'],hometown:['같은 출생지','#f08c00'],predecessor:['지역구 전·후임','#3b5bdb']};
 const yr=d=>(d||'').slice(0,4);
@@ -49,7 +49,7 @@ async function person(id){
   bindGraph();
 }
 const ev=e=>{const t=TYP[e.typ]||['기타','#888','•'];const age=null;let x={};try{x=JSON.parse(e.extra||'{}')||{}}catch(_){}
-  return `<li class="ev ${e.status}" style="--tc:${t[1]}"><span class="dot">${t[2]}</span><div><time>${esc((e.d||'').replace(/-/g,'.'))}</time><b>${esc(e.title)}</b>
+  return `<li class="ev ${e.status}" style="--tc:${t[1]}"><span class="dot">${typeof NBI==='function'?NBI(t[2]):''}</span><div><time>${esc((e.d||'').replace(/-/g,'.'))}</time><b>${esc(e.title)}</b>
   <small>${e.status==='allegation'?`<em class="tag al">${esc(x.stage||'의혹')} 단계 · 확정 아님</em>`:e.status==='confirmed'?'<em class="tag cf">확정</em>':e.status==='report'?'<em class="tag rp">보도</em>':''}${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.src||'출처')}</a>`:esc(e.src||'')}</small></div></li>`};
 
 function graph(g){

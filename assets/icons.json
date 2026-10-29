@@ -1,0 +1,1867 @@
+{
+ "version": 1,
+ "license": "Tabler Icons MIT © Paweł Kuna · Lucide ISC (landmark)",
+ "count": 207,
+ "icons": [
+  {
+   "id": "i-timeline-event",
+   "ko": "타임라인 오프",
+   "tabler": "timeline-event",
+   "style": "outline",
+   "pair": "타임라인",
+   "state": "off",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-timeline-event-f",
+   "ko": "타임라인 온",
+   "tabler": "timeline-event",
+   "style": "filled",
+   "pair": "타임라인",
+   "state": "on",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-chart-candle",
+   "ko": "마켓 오프",
+   "tabler": "chart-candle",
+   "style": "outline",
+   "pair": "마켓",
+   "state": "off",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-chart-candle-f",
+   "ko": "마켓 온",
+   "tabler": "chart-candle",
+   "style": "filled",
+   "pair": "마켓",
+   "state": "on",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-news",
+   "ko": "오늘 오프",
+   "tabler": "news",
+   "style": "outline",
+   "pair": "오늘",
+   "state": "off",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler",
+   "aliases": [
+    "언론사"
+   ]
+  },
+  {
+   "id": "i-file-text-f",
+   "ko": "오늘 온",
+   "tabler": "file-text",
+   "style": "filled",
+   "pair": "오늘",
+   "state": "on",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler",
+   "aliases": [
+    "기사 온"
+   ]
+  },
+  {
+   "id": "i-bookmarks",
+   "ko": "내 서재 오프",
+   "tabler": "bookmarks",
+   "style": "outline",
+   "pair": "내 서재",
+   "state": "off",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bookmarks-f",
+   "ko": "내 서재 온",
+   "tabler": "bookmarks",
+   "style": "filled",
+   "pair": "내 서재",
+   "state": "on",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-menu-2",
+   "ko": "메뉴 오프",
+   "tabler": "menu-2",
+   "style": "outline",
+   "pair": "메뉴",
+   "state": "off",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-menu-2-f",
+   "ko": "메뉴 온",
+   "tabler": "menu-2",
+   "style": "filled",
+   "pair": "메뉴",
+   "state": "on",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-home",
+   "ko": "홈 오프",
+   "tabler": "home",
+   "style": "outline",
+   "pair": "홈",
+   "state": "off",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-home-f",
+   "ko": "홈 온",
+   "tabler": "home",
+   "style": "filled",
+   "pair": "홈",
+   "state": "on",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-school",
+   "ko": "배우기 오프",
+   "tabler": "school",
+   "style": "outline",
+   "pair": "배우기",
+   "state": "off",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-school-f",
+   "ko": "배우기 온",
+   "tabler": "school",
+   "style": "filled",
+   "pair": "배우기",
+   "state": "on",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-building-bank",
+   "ko": "정치인 오프",
+   "tabler": "building-bank",
+   "style": "outline",
+   "pair": "정치인",
+   "state": "off",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler",
+   "aliases": [
+    "은행",
+    "기관"
+   ]
+  },
+  {
+   "id": "i-broadcast",
+   "ko": "라이브",
+   "tabler": "broadcast",
+   "style": "outline",
+   "use": "하단 메뉴·상단 내비",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bell",
+   "ko": "알림 오프",
+   "tabler": "bell",
+   "style": "outline",
+   "pair": "알림",
+   "state": "off",
+   "use": "알림",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bell-f",
+   "ko": "알림 온",
+   "tabler": "bell",
+   "style": "filled",
+   "pair": "알림",
+   "state": "on",
+   "use": "알림",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bell-ringing",
+   "ko": "알림 울림 오프",
+   "tabler": "bell-ringing",
+   "style": "outline",
+   "pair": "알림 울림",
+   "state": "off",
+   "use": "알림",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bell-ringing-f",
+   "ko": "알림 울림 온",
+   "tabler": "bell-ringing",
+   "style": "filled",
+   "pair": "알림 울림",
+   "state": "on",
+   "use": "알림",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bell-plus",
+   "ko": "알림 추가 오프",
+   "tabler": "bell-plus",
+   "style": "outline",
+   "pair": "알림 추가",
+   "state": "off",
+   "use": "알림",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bell-plus-f",
+   "ko": "알림 추가 온",
+   "tabler": "bell-plus",
+   "style": "filled",
+   "pair": "알림 추가",
+   "state": "on",
+   "use": "알림",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bell-x",
+   "ko": "알림 끄기 오프",
+   "tabler": "bell-x",
+   "style": "outline",
+   "pair": "알림 끄기",
+   "state": "off",
+   "use": "알림",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bell-x-f",
+   "ko": "알림 끄기 온",
+   "tabler": "bell-x",
+   "style": "filled",
+   "pair": "알림 끄기",
+   "state": "on",
+   "use": "알림",
+   "src": "tabler"
+  },
+  {
+   "id": "i-settings",
+   "ko": "설정 오프",
+   "tabler": "settings",
+   "style": "outline",
+   "pair": "설정",
+   "state": "off",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-settings-f",
+   "ko": "설정 온",
+   "tabler": "settings",
+   "style": "filled",
+   "pair": "설정",
+   "state": "on",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-search",
+   "ko": "검색",
+   "tabler": "search",
+   "style": "outline",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-user-search",
+   "ko": "사람 검색",
+   "tabler": "user-search",
+   "style": "outline",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-share",
+   "ko": "공유",
+   "tabler": "share",
+   "style": "outline",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-link",
+   "ko": "링크 오프",
+   "tabler": "link",
+   "style": "outline",
+   "pair": "링크",
+   "state": "off",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-x",
+   "ko": "닫기",
+   "tabler": "x",
+   "style": "outline",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-plus",
+   "ko": "추가",
+   "tabler": "plus",
+   "style": "outline",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-chevron-up",
+   "ko": "위",
+   "tabler": "chevron-up",
+   "style": "outline",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-chevron-down",
+   "ko": "아래",
+   "tabler": "chevron-down",
+   "style": "outline",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-chevron-left",
+   "ko": "왼쪽",
+   "tabler": "chevron-left",
+   "style": "outline",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-chevron-right",
+   "ko": "오른쪽",
+   "tabler": "chevron-right",
+   "style": "outline",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-pencil",
+   "ko": "편집",
+   "tabler": "pencil",
+   "style": "outline",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-trash",
+   "ko": "삭제",
+   "tabler": "trash",
+   "style": "outline",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-external-link",
+   "ko": "바깥 링크",
+   "tabler": "external-link",
+   "style": "outline",
+   "use": "설정·검색·공유",
+   "src": "tabler"
+  },
+  {
+   "id": "i-device-laptop",
+   "ko": "IT",
+   "tabler": "device-laptop",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-ball-football",
+   "ko": "스포츠",
+   "tabler": "ball-football",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-movie",
+   "ko": "연예",
+   "tabler": "movie",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-users-group",
+   "ko": "사회",
+   "tabler": "users-group",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-chart-arrows-vertical",
+   "ko": "경제",
+   "tabler": "chart-arrows-vertical",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-cloud-storm",
+   "ko": "세계 날씨·특보",
+   "tabler": "cloud-storm",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-trophy",
+   "ko": "트로피",
+   "tabler": "trophy",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-circle-check",
+   "ko": "체크",
+   "tabler": "circle-check",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-circle-x",
+   "ko": "엑스",
+   "tabler": "circle-x",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-repeat",
+   "ko": "반복",
+   "tabler": "repeat",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bolt",
+   "ko": "번개",
+   "tabler": "bolt",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-medal",
+   "ko": "메달",
+   "tabler": "medal",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-building-factory",
+   "ko": "공장 일반",
+   "tabler": "building-factory",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-droplet",
+   "ko": "물",
+   "tabler": "droplet",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bulb",
+   "ko": "전구",
+   "tabler": "bulb",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-ship",
+   "ko": "배",
+   "tabler": "ship",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-rocket",
+   "ko": "로켓",
+   "tabler": "rocket",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-shopping-cart",
+   "ko": "장보기",
+   "tabler": "shopping-cart",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-user-cog",
+   "ko": "일하는 사람",
+   "tabler": "user-cog",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-currency-dollar",
+   "ko": "달러",
+   "tabler": "currency-dollar",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-currency-yen",
+   "ko": "엔",
+   "tabler": "currency-yen",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-currency-euro",
+   "ko": "유로",
+   "tabler": "currency-euro",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-currency-won",
+   "ko": "원화",
+   "tabler": "currency-won",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-pin",
+   "ko": "핀",
+   "tabler": "pin",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-file-description",
+   "ko": "문서",
+   "tabler": "file-description",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-confetti",
+   "ko": "파티",
+   "tabler": "confetti",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-thumb-up",
+   "ko": "엄지 위 오프",
+   "tabler": "thumb-up",
+   "style": "outline",
+   "pair": "엄지 위",
+   "state": "off",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-thumb-up-f",
+   "ko": "엄지 위 온",
+   "tabler": "thumb-up",
+   "style": "filled",
+   "pair": "엄지 위",
+   "state": "on",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-thumb-down",
+   "ko": "엄지 아래 오프",
+   "tabler": "thumb-down",
+   "style": "outline",
+   "pair": "엄지 아래",
+   "state": "off",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-thumb-down-f",
+   "ko": "엄지 아래 온",
+   "tabler": "thumb-down",
+   "style": "filled",
+   "pair": "엄지 아래",
+   "state": "on",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-brand-youtube",
+   "ko": "유튜브",
+   "tabler": "brand-youtube",
+   "style": "outline",
+   "use": "카테고리 뱃지",
+   "src": "tabler"
+  },
+  {
+   "id": "i-report-search",
+   "ko": "문서 검색",
+   "tabler": "report-search",
+   "style": "outline",
+   "use": "검색 종류",
+   "src": "user"
+  },
+  {
+   "id": "i-map-pin-search",
+   "ko": "위치 검색",
+   "tabler": "map-pin-search",
+   "style": "outline",
+   "use": "검색 종류",
+   "src": "user"
+  },
+  {
+   "id": "i-calendar-search",
+   "ko": "날짜 검색",
+   "tabler": "calendar-search",
+   "style": "outline",
+   "use": "검색 종류",
+   "src": "user"
+  },
+  {
+   "id": "i-file-text",
+   "ko": "기사 오프",
+   "tabler": "file-text",
+   "style": "outline",
+   "pair": "기사",
+   "state": "off",
+   "use": "기사·언론사·댓글",
+   "src": "user"
+  },
+  {
+   "id": "i-message-2",
+   "ko": "댓글 오프",
+   "tabler": "message-2",
+   "style": "outline",
+   "pair": "댓글",
+   "state": "off",
+   "use": "기사·언론사·댓글",
+   "src": "user"
+  },
+  {
+   "id": "i-message-2-f",
+   "ko": "댓글 온",
+   "tabler": "message-2",
+   "style": "filled",
+   "pair": "댓글",
+   "state": "on",
+   "use": "기사·언론사·댓글",
+   "src": "user"
+  },
+  {
+   "id": "i-flame",
+   "ko": "화제 오프",
+   "tabler": "flame",
+   "style": "outline",
+   "pair": "화제",
+   "state": "off",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-flame-f",
+   "ko": "화제 온",
+   "tabler": "flame",
+   "style": "filled",
+   "pair": "화제",
+   "state": "on",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock",
+   "ko": "시간 오프",
+   "tabler": "clock",
+   "style": "outline",
+   "pair": "시간",
+   "state": "off",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-f",
+   "ko": "시간 온",
+   "tabler": "clock",
+   "style": "filled",
+   "pair": "시간",
+   "state": "on",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bookmark",
+   "ko": "북마크 오프",
+   "tabler": "bookmark",
+   "style": "outline",
+   "pair": "북마크",
+   "state": "off",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-bookmark-f",
+   "ko": "북마크 온",
+   "tabler": "bookmark",
+   "style": "filled",
+   "pair": "북마크",
+   "state": "on",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-heart",
+   "ko": "좋아요 오프",
+   "tabler": "heart",
+   "style": "outline",
+   "pair": "좋아요",
+   "state": "off",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-heart-f",
+   "ko": "좋아요 온",
+   "tabler": "heart",
+   "style": "filled",
+   "pair": "좋아요",
+   "state": "on",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-star",
+   "ko": "즐겨찾기 오프",
+   "tabler": "star",
+   "style": "outline",
+   "pair": "즐겨찾기",
+   "state": "off",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-star-f",
+   "ko": "즐겨찾기 온",
+   "tabler": "star",
+   "style": "filled",
+   "pair": "즐겨찾기",
+   "state": "on",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-chart-line",
+   "ko": "그래프",
+   "tabler": "chart-line",
+   "style": "outline",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-chart-bar",
+   "ko": "막대 차트",
+   "tabler": "chart-bar",
+   "style": "outline",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-chart-pie",
+   "ko": "원 차트 오프",
+   "tabler": "chart-pie",
+   "style": "outline",
+   "pair": "원 차트",
+   "state": "off",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-chart-pie-f",
+   "ko": "원 차트 온",
+   "tabler": "chart-pie",
+   "style": "filled",
+   "pair": "원 차트",
+   "state": "on",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-trending-up",
+   "ko": "상승",
+   "tabler": "trending-up",
+   "style": "outline",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-trending-down",
+   "ko": "하락",
+   "tabler": "trending-down",
+   "style": "outline",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-caret-up-f",
+   "ko": "상승 화살표",
+   "tabler": "caret-up",
+   "style": "filled",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-caret-down-f",
+   "ko": "하락 화살표",
+   "tabler": "caret-down",
+   "style": "filled",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-cash",
+   "ko": "돈",
+   "tabler": "cash",
+   "style": "outline",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-coin",
+   "ko": "코인",
+   "tabler": "coin",
+   "style": "outline",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-book",
+   "ko": "배우기 책 오프",
+   "tabler": "book",
+   "style": "outline",
+   "pair": "배우기 책",
+   "state": "off",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-book-f",
+   "ko": "배우기 책 온",
+   "tabler": "book",
+   "style": "filled",
+   "pair": "배우기 책",
+   "state": "on",
+   "use": "화제·시간·북마크·차트 (t48u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-hour-1",
+   "ko": "1시",
+   "tabler": "clock-hour-1",
+   "style": "outline",
+   "use": "상대 시간(N시 방향)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-hour-2",
+   "ko": "2시",
+   "tabler": "clock-hour-2",
+   "style": "outline",
+   "use": "상대 시간(N시 방향)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-hour-3",
+   "ko": "3시",
+   "tabler": "clock-hour-3",
+   "style": "outline",
+   "use": "상대 시간(N시 방향)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-hour-4",
+   "ko": "4시",
+   "tabler": "clock-hour-4",
+   "style": "outline",
+   "use": "상대 시간(N시 방향)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-hour-5",
+   "ko": "5시",
+   "tabler": "clock-hour-5",
+   "style": "outline",
+   "use": "상대 시간(N시 방향)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-hour-6",
+   "ko": "6시",
+   "tabler": "clock-hour-6",
+   "style": "outline",
+   "use": "상대 시간(N시 방향)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-hour-7",
+   "ko": "7시",
+   "tabler": "clock-hour-7",
+   "style": "outline",
+   "use": "상대 시간(N시 방향)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-hour-8",
+   "ko": "8시",
+   "tabler": "clock-hour-8",
+   "style": "outline",
+   "use": "상대 시간(N시 방향)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-hour-9",
+   "ko": "9시",
+   "tabler": "clock-hour-9",
+   "style": "outline",
+   "use": "상대 시간(N시 방향)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-hour-10",
+   "ko": "10시",
+   "tabler": "clock-hour-10",
+   "style": "outline",
+   "use": "상대 시간(N시 방향)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-hour-11",
+   "ko": "11시",
+   "tabler": "clock-hour-11",
+   "style": "outline",
+   "use": "상대 시간(N시 방향)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-clock-hour-12",
+   "ko": "12시",
+   "tabler": "clock-hour-12",
+   "style": "outline",
+   "use": "상대 시간(N시 방향)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-cash-banknote-plus",
+   "ko": "돈 추가",
+   "tabler": "cash-banknote-plus",
+   "style": "outline",
+   "use": "돈·카드·기업",
+   "src": "user"
+  },
+  {
+   "id": "i-cash-coin",
+   "ko": "돈2",
+   "tabler": "cash-coin",
+   "style": "outline",
+   "use": "돈·카드·기업",
+   "src": "user"
+  },
+  {
+   "id": "i-credit-card",
+   "ko": "카드 오프",
+   "tabler": "credit-card",
+   "style": "outline",
+   "pair": "카드",
+   "state": "off",
+   "use": "돈·카드·기업",
+   "src": "user"
+  },
+  {
+   "id": "i-credit-card-f",
+   "ko": "카드 온",
+   "tabler": "credit-card",
+   "style": "filled",
+   "pair": "카드",
+   "state": "on",
+   "use": "돈·카드·기업",
+   "src": "user"
+  },
+  {
+   "id": "i-building",
+   "ko": "기업",
+   "tabler": "building",
+   "style": "outline",
+   "use": "돈·카드·기업",
+   "src": "user"
+  },
+  {
+   "id": "i-building-plus",
+   "ko": "기업 추가",
+   "tabler": "building-plus",
+   "style": "outline",
+   "use": "돈·카드·기업",
+   "src": "user"
+  },
+  {
+   "id": "i-building-minus",
+   "ko": "기업 제거",
+   "tabler": "building-minus",
+   "style": "outline",
+   "use": "돈·카드·기업",
+   "src": "user"
+  },
+  {
+   "id": "i-building-off",
+   "ko": "기업 삭제",
+   "tabler": "building-off",
+   "style": "outline",
+   "use": "기업·장소",
+   "src": "user"
+  },
+  {
+   "id": "i-building-cog",
+   "ko": "기업 설정",
+   "tabler": "building-cog",
+   "style": "outline",
+   "use": "기업·장소",
+   "src": "user"
+  },
+  {
+   "id": "i-building-community",
+   "ko": "아파트 집",
+   "tabler": "building-community",
+   "style": "outline",
+   "use": "기업·장소",
+   "src": "user"
+  },
+  {
+   "id": "i-building-skyscraper",
+   "ko": "부동산",
+   "tabler": "building-skyscraper",
+   "style": "outline",
+   "use": "기업·장소",
+   "src": "user"
+  },
+  {
+   "id": "i-building-airport",
+   "ko": "공항",
+   "tabler": "building-airport",
+   "style": "outline",
+   "use": "기업·장소",
+   "src": "user"
+  },
+  {
+   "id": "i-building-carousel",
+   "ko": "놀이공원",
+   "tabler": "building-carousel",
+   "style": "outline",
+   "use": "기업·장소",
+   "src": "user"
+  },
+  {
+   "id": "i-building-factory-2",
+   "ko": "공장",
+   "tabler": "building-factory-2",
+   "style": "outline",
+   "use": "기업·장소",
+   "src": "user"
+  },
+  {
+   "id": "i-map-pin",
+   "ko": "장소 오프",
+   "tabler": "map-pin",
+   "style": "outline",
+   "pair": "장소",
+   "state": "off",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-map-pin-f",
+   "ko": "장소 온",
+   "tabler": "map-pin",
+   "style": "filled",
+   "pair": "장소",
+   "state": "on",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-user",
+   "ko": "인물 오프",
+   "tabler": "user",
+   "style": "outline",
+   "pair": "인물",
+   "state": "off",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-user-f",
+   "ko": "인물 온",
+   "tabler": "user",
+   "style": "filled",
+   "pair": "인물",
+   "state": "on",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-users",
+   "ko": "사람들",
+   "tabler": "users",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-affiliate",
+   "ko": "관계 오프",
+   "tabler": "affiliate",
+   "style": "outline",
+   "pair": "관계",
+   "state": "off",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-affiliate-f",
+   "ko": "관계 온",
+   "tabler": "affiliate",
+   "style": "filled",
+   "pair": "관계",
+   "state": "on",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-hierarchy-3",
+   "ko": "관계도",
+   "tabler": "hierarchy-3",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-topology-star-3",
+   "ko": "관계망",
+   "tabler": "topology-star-3",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-sparkles",
+   "ko": "AI 오프",
+   "tabler": "sparkles",
+   "style": "outline",
+   "pair": "AI",
+   "state": "off",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-sparkles-f",
+   "ko": "AI 온",
+   "tabler": "sparkles",
+   "style": "filled",
+   "pair": "AI",
+   "state": "on",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-photo-ai",
+   "ko": "AI 생성 이미지",
+   "tabler": "photo-ai",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-file-text-ai",
+   "ko": "AI 작성 텍스트",
+   "tabler": "file-text-ai",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-ai",
+   "ko": "AI",
+   "tabler": "ai",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-alert-triangle",
+   "ko": "주의 오프",
+   "tabler": "alert-triangle",
+   "style": "outline",
+   "pair": "주의",
+   "state": "off",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-alert-triangle-f",
+   "ko": "주의 온",
+   "tabler": "alert-triangle",
+   "style": "filled",
+   "pair": "주의",
+   "state": "on",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-info-circle",
+   "ko": "정보 오프",
+   "tabler": "info-circle",
+   "style": "outline",
+   "pair": "정보",
+   "state": "off",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-info-circle-f",
+   "ko": "정보 온",
+   "tabler": "info-circle",
+   "style": "filled",
+   "pair": "정보",
+   "state": "on",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-photo",
+   "ko": "사진 오프",
+   "tabler": "photo",
+   "style": "outline",
+   "pair": "사진",
+   "state": "off",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-photo-f",
+   "ko": "사진 온",
+   "tabler": "photo",
+   "style": "filled",
+   "pair": "사진",
+   "state": "on",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-arrow-left",
+   "ko": "이전",
+   "tabler": "arrow-left",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-arrow-right",
+   "ko": "다음",
+   "tabler": "arrow-right",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-arrow-up-right",
+   "ko": "오른쪽 위",
+   "tabler": "arrow-up-right",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-zoom-in",
+   "ko": "확대",
+   "tabler": "zoom-in",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-zoom-out",
+   "ko": "축소",
+   "tabler": "zoom-out",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-notes",
+   "ko": "메모",
+   "tabler": "notes",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-folder",
+   "ko": "그룹 오프",
+   "tabler": "folder",
+   "style": "outline",
+   "pair": "그룹",
+   "state": "off",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-folder-f",
+   "ko": "그룹 온",
+   "tabler": "folder",
+   "style": "filled",
+   "pair": "그룹",
+   "state": "on",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-folder-plus",
+   "ko": "그룹 추가",
+   "tabler": "folder-plus",
+   "style": "outline",
+   "use": "장소·관계·AI·주의·사진·화살표·확대·메모 (t49u 가운데, 복원)",
+   "src": "tabler"
+  },
+  {
+   "id": "i-folder-open",
+   "ko": "그룹 열기 오프",
+   "tabler": "folder-open",
+   "style": "outline",
+   "pair": "그룹 열기",
+   "state": "off",
+   "use": "폴더(컬렉션)",
+   "src": "user"
+  },
+  {
+   "id": "i-folder-open-f",
+   "ko": "그룹 열기 온",
+   "tabler": "folder-open",
+   "style": "filled",
+   "pair": "그룹 열기",
+   "state": "on",
+   "use": "폴더(컬렉션)",
+   "src": "user"
+  },
+  {
+   "id": "i-folders",
+   "ko": "그룹 복사 오프",
+   "tabler": "folders",
+   "style": "outline",
+   "pair": "그룹 복사",
+   "state": "off",
+   "use": "폴더(컬렉션)",
+   "src": "user"
+  },
+  {
+   "id": "i-folders-f",
+   "ko": "그룹 복사 온",
+   "tabler": "folders",
+   "style": "filled",
+   "pair": "그룹 복사",
+   "state": "on",
+   "use": "폴더(컬렉션)",
+   "src": "user"
+  },
+  {
+   "id": "i-folder-cog",
+   "ko": "그룹 설정",
+   "tabler": "folder-cog",
+   "style": "outline",
+   "use": "폴더(컬렉션)",
+   "src": "user"
+  },
+  {
+   "id": "i-folder-down",
+   "ko": "그룹 내려받기",
+   "tabler": "folder-down",
+   "style": "outline",
+   "use": "폴더(컬렉션)",
+   "src": "user"
+  },
+  {
+   "id": "i-folder-heart",
+   "ko": "그룹 좋아요",
+   "tabler": "folder-heart",
+   "style": "outline",
+   "use": "폴더(컬렉션)",
+   "src": "user"
+  },
+  {
+   "id": "i-folder-pin",
+   "ko": "그룹 위치",
+   "tabler": "folder-pin",
+   "style": "outline",
+   "use": "폴더(컬렉션)",
+   "src": "user"
+  },
+  {
+   "id": "i-folder-search",
+   "ko": "그룹 검색",
+   "tabler": "folder-search",
+   "style": "outline",
+   "use": "폴더(컬렉션)",
+   "src": "user"
+  },
+  {
+   "id": "i-folder-star",
+   "ko": "그룹 즐겨찾기",
+   "tabler": "folder-star",
+   "style": "outline",
+   "use": "폴더(컬렉션)",
+   "src": "user"
+  },
+  {
+   "id": "i-folder-up",
+   "ko": "그룹 업로드",
+   "tabler": "folder-up",
+   "style": "outline",
+   "use": "폴더(컬렉션)",
+   "src": "user"
+  },
+  {
+   "id": "i-help-hexagon",
+   "ko": "퀴즈 오프",
+   "tabler": "help-hexagon",
+   "style": "outline",
+   "pair": "퀴즈",
+   "state": "off",
+   "use": "배우기",
+   "src": "user"
+  },
+  {
+   "id": "i-help-hexagon-f",
+   "ko": "퀴즈 온",
+   "tabler": "help-hexagon",
+   "style": "filled",
+   "pair": "퀴즈",
+   "state": "on",
+   "use": "배우기",
+   "src": "user"
+  },
+  {
+   "id": "i-boom",
+   "ko": "만화 오프",
+   "tabler": "boom",
+   "style": "outline",
+   "pair": "만화",
+   "state": "off",
+   "use": "배우기",
+   "src": "user"
+  },
+  {
+   "id": "i-boom-f",
+   "ko": "만화 온",
+   "tabler": "boom",
+   "style": "filled",
+   "pair": "만화",
+   "state": "on",
+   "use": "배우기",
+   "src": "user"
+  },
+  {
+   "id": "i-arrow-autofit-content",
+   "ko": "연속",
+   "tabler": "arrow-autofit-content",
+   "style": "outline",
+   "use": "배우기",
+   "src": "user"
+  },
+  {
+   "id": "i-cards",
+   "ko": "카드뉴스 오프",
+   "tabler": "cards",
+   "style": "outline",
+   "pair": "카드뉴스",
+   "state": "off",
+   "use": "배우기",
+   "src": "user"
+  },
+  {
+   "id": "i-cards-f",
+   "ko": "카드뉴스 온",
+   "tabler": "cards",
+   "style": "filled",
+   "pair": "카드뉴스",
+   "state": "on",
+   "use": "배우기",
+   "src": "user"
+  },
+  {
+   "id": "i-history",
+   "ko": "지난",
+   "tabler": "history",
+   "style": "outline",
+   "use": "아카이브·국회",
+   "src": "user"
+  },
+  {
+   "id": "i-landmark",
+   "ko": "국회",
+   "tabler": "lucide:landmark",
+   "style": "outline",
+   "use": "아카이브·국회",
+   "src": "user"
+  },
+  {
+   "id": "i-mood-smile",
+   "ko": "민심 좋아요 오프",
+   "tabler": "mood-smile",
+   "style": "outline",
+   "pair": "민심 좋아요",
+   "state": "off",
+   "use": "민심(댓글 여론)",
+   "src": "user"
+  },
+  {
+   "id": "i-mood-smile-f",
+   "ko": "민심 좋아요 온",
+   "tabler": "mood-smile",
+   "style": "filled",
+   "pair": "민심 좋아요",
+   "state": "on",
+   "use": "민심(댓글 여론)",
+   "src": "user"
+  },
+  {
+   "id": "i-mood-happy",
+   "ko": "민심 행복 오프",
+   "tabler": "mood-happy",
+   "style": "outline",
+   "pair": "민심 행복",
+   "state": "off",
+   "use": "민심(댓글 여론)",
+   "src": "user"
+  },
+  {
+   "id": "i-mood-happy-f",
+   "ko": "민심 행복 온",
+   "tabler": "mood-happy",
+   "style": "filled",
+   "pair": "민심 행복",
+   "state": "on",
+   "use": "민심(댓글 여론)",
+   "src": "user"
+  },
+  {
+   "id": "i-mood-angry",
+   "ko": "민심 화나요 오프",
+   "tabler": "mood-angry",
+   "style": "outline",
+   "pair": "민심 화나요",
+   "state": "off",
+   "use": "민심(댓글 여론)",
+   "src": "user"
+  },
+  {
+   "id": "i-mood-angry-f",
+   "ko": "민심 화나요 온",
+   "tabler": "mood-angry",
+   "style": "filled",
+   "pair": "민심 화나요",
+   "state": "on",
+   "use": "민심(댓글 여론)",
+   "src": "user"
+  },
+  {
+   "id": "i-mood-empty",
+   "ko": "민심 중간 오프",
+   "tabler": "mood-empty",
+   "style": "outline",
+   "pair": "민심 중간",
+   "state": "off",
+   "use": "민심(댓글 여론)",
+   "src": "user"
+  },
+  {
+   "id": "i-mood-empty-f",
+   "ko": "민심 중간 온",
+   "tabler": "mood-empty",
+   "style": "filled",
+   "pair": "민심 중간",
+   "state": "on",
+   "use": "민심(댓글 여론)",
+   "src": "user"
+  },
+  {
+   "id": "i-mood-sad",
+   "ko": "민심 슬퍼요 오프",
+   "tabler": "mood-sad",
+   "style": "outline",
+   "pair": "민심 슬퍼요",
+   "state": "off",
+   "use": "민심(댓글 여론)",
+   "src": "user"
+  },
+  {
+   "id": "i-mood-sad-f",
+   "ko": "민심 슬퍼요 온",
+   "tabler": "mood-sad",
+   "style": "filled",
+   "pair": "민심 슬퍼요",
+   "state": "on",
+   "use": "민심(댓글 여론)",
+   "src": "user"
+  },
+  {
+   "id": "i-video",
+   "ko": "영상 오프",
+   "tabler": "video",
+   "style": "outline",
+   "pair": "영상",
+   "state": "off",
+   "use": "영상",
+   "src": "user"
+  },
+  {
+   "id": "i-video-f",
+   "ko": "영상 온",
+   "tabler": "video",
+   "style": "filled",
+   "pair": "영상",
+   "state": "on",
+   "use": "영상",
+   "src": "user"
+  },
+  {
+   "id": "i-video-off",
+   "ko": "영상 차단",
+   "tabler": "video-off",
+   "style": "outline",
+   "use": "영상",
+   "src": "user"
+  },
+  {
+   "id": "i-video-minus",
+   "ko": "영상 삭제 오프",
+   "tabler": "video-minus",
+   "style": "outline",
+   "pair": "영상 삭제",
+   "state": "off",
+   "use": "영상",
+   "src": "user"
+  },
+  {
+   "id": "i-video-minus-f",
+   "ko": "영상 삭제 온",
+   "tabler": "video-minus",
+   "style": "filled",
+   "pair": "영상 삭제",
+   "state": "on",
+   "use": "영상",
+   "src": "user"
+  },
+  {
+   "id": "i-video-plus",
+   "ko": "영상 추가 오프",
+   "tabler": "video-plus",
+   "style": "outline",
+   "pair": "영상 추가",
+   "state": "off",
+   "use": "영상",
+   "src": "user"
+  },
+  {
+   "id": "i-video-plus-f",
+   "ko": "영상 추가 온",
+   "tabler": "video-plus",
+   "style": "filled",
+   "pair": "영상 추가",
+   "state": "on",
+   "use": "영상",
+   "src": "user"
+  },
+  {
+   "id": "i-photo-video",
+   "ko": "미디어",
+   "tabler": "photo-video",
+   "style": "outline",
+   "use": "영상",
+   "src": "user"
+  },
+  {
+   "id": "i-lock",
+   "ko": "로그인 오프",
+   "tabler": "lock",
+   "style": "outline",
+   "pair": "로그인",
+   "state": "off",
+   "use": "계정",
+   "src": "user"
+  },
+  {
+   "id": "i-lock-f",
+   "ko": "로그인 온",
+   "tabler": "lock",
+   "style": "filled",
+   "pair": "로그인",
+   "state": "on",
+   "use": "계정",
+   "src": "user"
+  },
+  {
+   "id": "i-lock-cancel",
+   "ko": "로그인 차단",
+   "tabler": "lock-cancel",
+   "style": "outline",
+   "use": "계정",
+   "src": "user"
+  },
+  {
+   "id": "i-lock-search",
+   "ko": "계정찾기",
+   "tabler": "lock-search",
+   "style": "outline",
+   "use": "계정",
+   "src": "user"
+  },
+  {
+   "id": "i-lock-open-2",
+   "ko": "로그아웃",
+   "tabler": "lock-open-2",
+   "style": "outline",
+   "use": "계정",
+   "src": "user"
+  },
+  {
+   "id": "i-lock-cog",
+   "ko": "로그인 설정",
+   "tabler": "lock-cog",
+   "style": "outline",
+   "use": "계정",
+   "src": "user"
+  },
+  {
+   "id": "i-cloud-data-connection",
+   "ko": "동기화 오프",
+   "tabler": "cloud-data-connection",
+   "style": "outline",
+   "pair": "동기화",
+   "state": "off",
+   "use": "동기화·국가",
+   "src": "user"
+  },
+  {
+   "id": "i-cloud-data-connection-f",
+   "ko": "동기화 온",
+   "tabler": "cloud-data-connection",
+   "style": "filled",
+   "pair": "동기화",
+   "state": "on",
+   "use": "동기화·국가",
+   "src": "user"
+  },
+  {
+   "id": "i-world-cog",
+   "ko": "국가전환",
+   "tabler": "world-cog",
+   "style": "outline",
+   "use": "동기화·국가",
+   "src": "user"
+  },
+  {
+   "id": "i-world-plus",
+   "ko": "국가 추가",
+   "tabler": "world-plus",
+   "style": "outline",
+   "use": "동기화·국가",
+   "src": "user"
+  },
+  {
+   "id": "i-world-search",
+   "ko": "국가 검색",
+   "tabler": "world-search",
+   "style": "outline",
+   "use": "동기화·국가",
+   "src": "user"
+  },
+  {
+   "id": "i-world-minus",
+   "ko": "국가 제거",
+   "tabler": "world-minus",
+   "style": "outline",
+   "use": "동기화·국가",
+   "src": "user"
+  },
+  {
+   "id": "i-world-heart",
+   "ko": "국가 좋아요",
+   "tabler": "world-heart",
+   "style": "outline",
+   "use": "동기화·국가",
+   "src": "user"
+  },
+  {
+   "id": "i-world-star",
+   "ko": "국가 즐겨찾기",
+   "tabler": "world-star",
+   "style": "outline",
+   "use": "동기화·국가",
+   "src": "user"
+  },
+  {
+   "id": "i-world-f",
+   "ko": "국가 온",
+   "tabler": "world",
+   "style": "filled",
+   "pair": "국가",
+   "state": "on",
+   "use": "동기화·국가",
+   "src": "user"
+  },
+  {
+   "id": "i-world",
+   "ko": "국가 오프",
+   "tabler": "world",
+   "style": "outline",
+   "pair": "국가",
+   "state": "off",
+   "use": "동기화·국가",
+   "src": "user"
+  }
+ ]
+}

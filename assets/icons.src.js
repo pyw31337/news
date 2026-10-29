@@ -1,0 +1,8 @@
+/* NewsBoard 아이콘 v1 · Tabler Icons(MIT) 스프라이트를 문서에 한 번 넣고 <use href="#i-…">로 씀. 생성: scripts/build_icons.py · 안내: docs/icons.md */
+(function(){var S=__SPRITE__;function put(){if(document.getElementById('nb-sprite'))return;var d=document.createElement('div');d.id='nb-sprite';d.setAttribute('aria-hidden','true');d.style.cssText='position:absolute;width:0;height:0;overflow:hidden';d.innerHTML=S;document.body.insertBefore(d,document.body.firstChild)}
+if(document.body)put();else document.addEventListener('DOMContentLoaded',put);
+/* NBI('bell') → 외곽선 하나 · NBI('bell',1) → 꺼짐(외곽선)/켜짐(채움) 한 쌍: 부모나 svg에 .on 이 붙으면 채움으로 바뀜 */
+window.NBU=function(id,pair){id=id.replace(/^i-/,'');return pair?'<use class="u0" href="#i-'+id+'"/><use class="u1" href="#i-'+id+'-f"/>':'<use href="#i-'+id+'"/>'};
+window.NBI=function(id,pair,cls){return'<svg class="ico'+(pair?' tg':'')+(cls?' '+cls:'')+'" viewBox="0 0 24 24" aria-hidden="true">'+NBU(id,pair)+'</svg>'};
+var st=document.createElement('style');st.textContent=':where(svg:has(>use[href^="#i-"])){fill:none;stroke:currentColor;stroke-width:2}svg .u1{display:none}.on>svg>.u1,.on>.cb>svg>.u1,svg.on>.u1,[aria-pressed=true]>svg>.u1{display:inline}.on>svg>.u0,.on>.cb>svg>.u0,svg.on>.u0,[aria-pressed=true]>svg>.u0{display:none}.aimark{display:inline-flex;align-items:center;gap:3px}.ev .dot .ico{width:14px;height:14px;margin:0}.mood b{display:flex;align-items:center;gap:4px}.mood .ico{width:1.2em;height:1.2em;color:var(--acc,#ff4d2e)}.dchg .ico,.mk em .ico{width:.9em;height:.9em;margin:0 1px 0 0}.lti .ico,.lhi .ico{width:1em;height:1em;margin:0}.ls i .ico{margin:0}';document.head.appendChild(st);
+})();

@@ -34,21 +34,21 @@ function panel(p,k){const mood=p.mood||'explain';const who=new Set(p.lines.map(l
 const srcList=S=>`<div class="fsrc"><h4>출처</h4>${S.map(s=>`<a href="${E(s.url)}" target="_blank" rel="noopener">${typeof pp==='function'?pp(s.press,s.url):E(s.press)}<span>${E(s.title)}</span></a>`).join('')}</div>`;
 /* ---------- 허브 ---------- */
 function stats(){const s=streakNow(),b=lvBar(),rv=Object.keys(L.review).length;
-  return`<div class="lstat"><div class="ls fire"><i>🔥</i><b>${s}</b><span>일 연속</span></div><div class="ls xp"><i>⚡</i><b>${L.xp}</b><span>XP</span></div><div class="ls lv"><i>🏅</i><b>Lv.${b.n}</b><span>다음까지 ${b.left}XP</span></div><div class="ls rv"><i>🔁</i><b>${rv}</b><span>복습 단어</span></div></div>
+  return`<div class="lstat"><div class="ls fire"><i>${NBI('flame-f')}</i><b>${s}</b><span>일 연속</span></div><div class="ls xp"><i>${NBI('bolt')}</i><b>${L.xp}</b><span>XP</span></div><div class="ls lv"><i>${NBI('medal')}</i><b>Lv.${b.n}</b><span>다음까지 ${b.left}XP</span></div><div class="ls rv"><i>🔁</i><b>${rv}</b><span>복습 단어</span></div></div>
   <div class="lvbar"><i style="width:${b.pct}%"></i></div>`}
 function hub(){setMeta('놀면서 배우기 — 퀴즈·만화·카드뉴스','오늘 뉴스의 어려운 말을 OX 퀴즈로, 핫이슈를 4컷 만화로, 이어지는 사건을 카드뉴스로');
   const q=F.quiz,done=(L.days[todayK()]||{}).done;
   app.innerHTML=`<section class="lhero"><div><small>LEARN WITH NEWS</small><h1>놀면서 배우는 뉴스</h1><p>하루 3분, 오늘 기사에 나온 말을 퀴즈로 익히고 어려운 이슈는 만화와 카드로 쉽게 봐요.</p></div><div class="lmasc"><svg viewBox="-160 -50 320 100">${'<g transform="translate(-70,0)">'+bori('smile')+'</g><g transform="translate(70,0)">'+nuri('explain')+'</g>'}</svg></div></section>
   ${stats()}
   <div class="ltiles">
-   <a class="lt quiz" href="quiz"><span class="lti">✅❌</span><b>오늘의 단어 퀴즈</b><small>${q.questions.length}문제 · OX·객관식·빈칸</small><em>${done?'오늘 완료! 다시 풀기':'시작하기 →'}</em></a>
-   <a class="lt review ${Object.keys(L.review).length?'':'off'}" href="quiz/review"><span class="lti">🔁</span><b>틀린 단어 복습</b><small>${Object.keys(L.review).length?Object.keys(L.review).length+'개가 기다려요':'아직 없어요'}</small><em>복습하기 →</em></a>
+   <a class="lt quiz" href="quiz"><span class="lti">${NBI('help-hexagon',1,'on')}</span><b>오늘의 단어 퀴즈</b><small>${q.questions.length}문제 · OX·객관식·빈칸</small><em>${done?'오늘 완료! 다시 풀기':'시작하기 →'}</em></a>
+   <a class="lt review ${Object.keys(L.review).length?'':'off'}" href="quiz/review"><span class="lti">🔁</span><b>틀린 단어 복습</b><small>${Object.keys(L.review).length?Object.keys(L.review).length+'개가 기다려요':'아직 없어요'}</small><em>복습하기 ${NBI('arrow-right')}</em></a>
   </div>
-  ${sec('4컷으로 보는 뉴스','Explainer comics','<span class="more">AI 해설 만화 · 실존 인물 풍자 아님</span>','chat')}
+  ${sec('4컷으로 보는 뉴스','Explainer comics','<span class="more">AI 해설 만화 · 실존 인물 풍자 아님</span>','comic')}
   <div class="clist">${F.comics.slice(0,6).map(c=>`<a class="cl" href="comic/${c.id}"><div class="clp" style="--pb:${BG[0]}">${'<svg viewBox="-160 -50 320 100"><g transform="translate(-80,0)">'+bori(c.panels[0].mood)+'</g><g transform="translate(80,0)">'+nuri('explain')+'</g></svg>'}<span class="clb">${E(c.panels[0].lines[0].text)}</span></div><div class="clt"><span class="cat ${c.category}">${c.category}</span><b>${E(c.title)}</b><small>${c.date.slice(5).replace('-','.')}</small></div></a>`).join('')}</div>
-  ${sec('카드뉴스','Card news','<span class="more">넘겨 보는 흐름 정리</span>','clock')}
+  ${sec('카드뉴스','Card news','<span class="more">넘겨 보는 흐름 정리</span>','cards')}
   <div class="dlist">${F.decks.slice(0,8).map(deckTile).join('')}</div>`}
-function deckTile(d){const h=d.cards[0];return`<a class="dt ${d.kind}" href="cards/${d.id}" ${h.img?`style="--im:url('${E(AB(h.img))}')"`:''}><span class="dtag">${E(d.tag)}</span><b>${E(d.title)}</b><span class="dn">${d.cards.length}장 ›</span></a>`}
+function deckTile(d){const h=d.cards[0];return`<a class="dt ${d.kind}" href="cards/${d.id}" ${h.img?`style="--im:url('${E(AB(h.img))}')"`:''}><span class="dtag">${E(d.tag)}</span><b>${E(d.title)}</b><span class="dn">${d.cards.length}장 ${NBI('chevron-right')}</span></a>`}
 /* ---------- 퀴즈 ---------- */
 let QS=null;
 function buildReview(){const W=Object.values(L.review);const all=W.concat(F.quiz.words.filter(w=>!L.review[w.word]));const r=[];
@@ -59,7 +59,7 @@ function quiz(review){const Q=review?buildReview():F.quiz.questions;setMeta(revi
   QS={Q,i:0,ok:0,xp:0,review,combo:0,miss:[]};drawQ()}
 const wordOf=w=>F.quiz.words.find(x=>x.word===w)||L.review[w]||{word:w,mean:''};
 function drawQ(){const s=QS,q=s.Q[s.i];const pct=Math.round(s.i/s.Q.length*100);
-  app.innerHTML=`<div class="qwrap"><div class="qtop"><a class="qx" href="learn" aria-label="그만하기">✕</a><div class="qprog"><i style="width:${pct}%"></i></div><span class="qcombo ${s.combo>=2?'on':''}">🔥${s.combo}</span></div>
+  app.innerHTML=`<div class="qwrap"><div class="qtop"><a class="qx" href="learn" aria-label="그만하기">${NBI('x')}</a><div class="qprog"><i style="width:${pct}%"></i></div><span class="qcombo ${s.combo>=2?'on':''}">${NBI('flame-f')}${s.combo}</span></div>
   <div class="qcard" id="qcard"><span class="qkind ${q.kind}">${{ox:'OX 퀴즈',mc:'뜻 고르기',blank:'빈칸 채우기'}[q.kind]}</span>
    <h2 class="qq">${E(q.q)}</h2>${q.quote?`<blockquote class="qquote">${E(q.quote)}</blockquote>`:''}
    ${q.kind==='ox'?`<div class="oxb"><button class="ox o" data-a="1"><span>O</span>맞아요</button><button class="ox x" data-a="0"><span>X</span>아니에요</button></div>`
@@ -79,7 +79,7 @@ function answer(b){const s=QS,q=s.Q[s.i];const a=+b.dataset.a;const ok=q.kind===
   :`<div class="qres"><span class="qic">💡</span><div><b>아쉬워요! 같이 알아봐요</b><small>복습 목록에 담았어요</small></div></div>
    <div class="qexp"><div class="qe mean"><span>뜻</span><p><b>${E(w.word)}</b> — ${E(w.mean)}</p></div>
    ${w.context?`<div class="qe ctx"><span>오늘 뉴스에서</span><p>${E(w.context)}</p></div>`:''}
-   ${ex?`<a class="qe exa" href="${E(ex.url)}" target="_blank" rel="noopener"><span>예문</span><p>“${E(ex.title).replace(E(w.word),'<mark>'+E(w.word)+'</mark>')}”<small>${E(ex.press||'')} ›</small></p></a>`:''}
+   ${ex?`<a class="qe exa" href="${E(ex.url)}" target="_blank" rel="noopener"><span>예문</span><p>“${E(ex.title).replace(E(w.word),'<mark>'+E(w.word)+'</mark>')}”<small>${E(ex.press||'')} ${NBI('chevron-right')}</small></p></a>`:''}
    ${w.tip?`<div class="qe tip"><span>헷갈림 주의</span><p>${E(w.tip)}</p></div>`:''}
    ${(w.related||[]).length?`<div class="qe rel"><span>같이 알면 좋은 말</span><p>${w.related.map(r=>`<i class="rchip">${E(r)}</i>`).join('')}</p></div>`:''}</div>
    <button class="qbtn" id="qn">알겠어요, 계속</button>`;
@@ -89,14 +89,14 @@ function burst(el){const r=el.getBoundingClientRect();for(let k=0;k<18;k++){cons
 function finish(){const s=QS;const lv0=lvl(L.xp);L.xp+=s.xp+(s.ok===s.Q.length?20:0);markDay();if(!s.review)L.days[todayK()]={done:1,ok:s.ok,n:s.Q.length};saveL();const up=lvl(L.xp)>lv0;
   const acc=Math.round(s.ok/s.Q.length*100);
   app.innerHTML=`<div class="qdone"><div class="big">${acc>=80?'🏆':acc>=50?'👏':'💪'}</div><h2>${acc>=80?'훌륭해요!':acc>=50?'잘했어요!':'내일은 더 잘할 수 있어요!'}</h2>
-  <div class="qsum"><div><b>${s.ok}/${s.Q.length}</b><span>정답</span></div><div><b>+${s.xp+(s.ok===s.Q.length?20:0)}</b><span>XP${s.ok===s.Q.length?' (만점 +20)':''}</span></div><div><b>🔥${L.streak}</b><span>일 연속</span></div></div>
+  <div class="qsum"><div><b>${s.ok}/${s.Q.length}</b><span>정답</span></div><div><b>+${s.xp+(s.ok===s.Q.length?20:0)}</b><span>XP${s.ok===s.Q.length?' (만점 +20)':''}</span></div><div><b>${NBI('flame-f')}${L.streak}</b><span>일 연속</span></div></div>
   ${up?`<p class="lvup">🎊 레벨 업! Lv.${lvl(L.xp)}</p>`:''}${stats()}
   ${s.miss.length?`<div class="qmiss"><h4>복습 목록에 담은 단어</h4>${s.miss.map(w=>`<span class="rchip">${E(w)}</span>`).join('')}</div>`:''}
   <div class="qacts">${s.miss.length?'<a class="qbtn" href="quiz/review">바로 복습하기</a>':''}<a class="qbtn ghost" href="learn">배우기 홈</a></div></div>`;
   if(acc>=80)burst(app.querySelector('.big'))}
 /* ---------- 만화 ---------- */
 function comic(id){const c=F.comics.find(x=>x.id===id)||F.comics[0];if(!c)return hub();setMeta(c.title+' — 4컷 해설',c.headline);
-  app.innerHTML=`<div class="cwrap"><a class="back" href="learn">‹ 배우기</a><div class="chead"><span class="cat ${c.category}">${c.category}</span><span class="clab">설명 만화 · 사실 기반 해설${c.gen==='ai'?' · AI 대본':''}</span><h1>${E(c.title)}</h1><p>${E(c.headline)}</p></div>
+  app.innerHTML=`<div class="cwrap"><a class="back" href="learn">${NBI('chevron-left')} 배우기</a><div class="chead"><span class="cat ${c.category}">${c.category}</span><span class="clab">설명 만화 · 사실 기반 해설${c.gen==='ai'?' · AI 대본':''}</span><h1>${E(c.title)}</h1><p>${E(c.headline)}</p></div>
   <div class="comic">${c.panels.map(panel).join('')}</div>
   <p class="cnote">이 만화는 기사 내용을 쉽게 풀어 쓴 <b>설명용 만화</b>예요. 등장하는 보리·누리는 NewsBoard 마스코트이고, 실존 인물을 묘사하거나 풍자하지 않아요. 정확한 내용은 아래 원문으로 확인하세요.</p>
   <div class="cact"><a class="qbtn" href="issue/${c.issue}">이 이슈 자세히 보기</a>${typeof shareBtn==='function'?shareBtn():''}</div>${srcList(c.sources)}</div>`}
@@ -107,7 +107,7 @@ function lineSvg(S,unit){const v=S.map(x=>x[1]),mn=Math.min(...v),mx=Math.max(..
 function barSvg(S,unit){const mx=Math.max(...S.map(x=>x[1]))||1,W=300,H=140,bw=W/S.length;
   return`<svg class="dchart" viewBox="0 0 ${W} ${H+20}">${S.map((x,i)=>{const h=Math.max(4,x[1]/mx*(H-24));return`<rect x="${i*bw+bw*.18}" y="${H-h}" width="${bw*.64}" height="${h}" rx="5" fill="${x[1]===mx?'#ff4d2e':'#ffc2b4'}"/><text x="${i*bw+bw/2}" y="${H-h-5}" font-size="11" font-weight="800" text-anchor="middle" fill="#0f1630">${x[1]}</text><text x="${i*bw+bw/2}" y="${H+15}" font-size="10" text-anchor="middle" fill="#8189a3">${E(String(x[0]).slice(5).replace('-','.'))}</text>`}).join('')}</svg>`}
 function card(c,k,n,d){let b='';
-  if(c.t==='hook')b=`<div class="dk hook" ${c.img?`style="--im:url('${E(AB(c.img))}')"`:''}><span class="dtag">${E(d.tag)}</span>${c.icon?`<span class="dico">${c.icon}</span>`:''}<h2>${E(c.big)}</h2><p>${E(c.text)}</p><span class="swh">옆으로 넘겨 보세요 ›</span></div>`;
+  if(c.t==='hook')b=`<div class="dk hook" ${c.img?`style="--im:url('${E(AB(c.img))}')"`:''}><span class="dtag">${E(d.tag)}</span>${c.icon?`<span class="dico">${c.icon}</span>`:''}<h2>${E(c.big)}</h2><p>${E(c.text)}</p><span class="swh">옆으로 넘겨 보세요 ${NBI('chevron-right')}</span></div>`;
   else if(c.t==='bg'||c.t==='next')b=`<div class="dk ${c.t}"><span class="dlab">${c.t==='bg'?'배경':'앞으로'}</span><h3>${E(c.title)}</h3><p class="dbody">${E(c.text)}</p></div>`;
   else if(c.t==='word')b=`<div class="dk word"><span class="dlab">용어</span><h3>${E(c.title)}</h3><div class="dword"><b>${E(c.word)}</b><p>${E(c.text)}</p></div><a class="qbtn sm" href="quiz">퀴즈로 익히기</a></div>`;
   else if(c.t==='timeline')b=`<div class="dk tl"><span class="dlab">흐름</span><h3>${E(c.title)}</h3><ol class="dtl">${c.items.map(x=>`<li class="${x.dir||''}"><time>${E(x.d.slice(2).replace(/-/g,'.'))}</time><b>${E(x.text)}</b>${x.note?`<small>${E(x.note)}</small>`:''}</li>`).join('')}</ol></div>`;
@@ -117,9 +117,9 @@ function card(c,k,n,d){let b='';
   else if(c.t==='src')b=`<div class="dk src"><span class="dlab">출처</span><h3>자료 출처</h3>${srcList(c.sources).replace('<h4>출처</h4>','')}<p class="dnote">카드뉴스는 NewsBoard 타임라인 DB에서 자동으로 만들어요.</p></div>`;
   return`<section class="dcard" aria-label="${k+1}/${n}"><span class="dpg">${k+1}/${n}</span>${b}</section>`}
 function deck(id){const d=F.decks.find(x=>x.id===id)||F.decks[0];if(!d)return hub();setMeta(d.title+' — 카드뉴스',d.cards[0].text||'');
-  app.innerHTML=`<div class="dwrap"><a class="back" href="learn">‹ 배우기</a><div class="dhead"><span class="dtag2">${E(d.tag)}</span><h1>${E(d.title)}</h1></div>
+  app.innerHTML=`<div class="dwrap"><a class="back" href="learn">${NBI('chevron-left')} 배우기</a><div class="dhead"><span class="dtag2">${E(d.tag)}</span><h1>${E(d.title)}</h1></div>
   <div class="deck" id="deck">${d.cards.map((c,k)=>card(c,k,d.cards.length,d)).join('')}</div>
-  <div class="dnav"><button class="dbtn" data-d="-1" aria-label="이전">‹</button><div class="dots">${d.cards.map((_,k)=>`<i class="${k?'':'on'}"></i>`).join('')}</div><button class="dbtn" data-d="1" aria-label="다음">›</button></div>
+  <div class="dnav"><button class="dbtn" data-d="-1" aria-label="이전">${NBI('chevron-left')}</button><div class="dots">${d.cards.map((_,k)=>`<i class="${k?'':'on'}"></i>`).join('')}</div><button class="dbtn" data-d="1" aria-label="다음">${NBI('chevron-right')}</button></div>
   <div class="cact">${typeof shareBtn==='function'?shareBtn():''}${d.issue?`<a class="qbtn ghost" href="issue/${d.issue}">이슈 페이지</a>`:''}</div>
   <h3 class="dmore">다른 카드뉴스</h3><div class="dlist">${F.decks.filter(x=>x.id!==d.id).slice(0,4).map(deckTile).join('')}</div></div>`;
   const el=document.getElementById('deck'),dots=app.querySelectorAll('.dots i');
@@ -128,8 +128,8 @@ function deck(id){const d=F.decks.find(x=>x.id===id)||F.decks[0];if(!d)return hu
   app.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>el.scrollTo({left:(cur()+ +b.dataset.d)*el.clientWidth,behavior:'smooth'}))}
 /* ---------- 홈 진입점 ---------- */
 function homeBlock(){if(!F)return'';const c=F.comics[0],d=F.decks[0],done=(L.days[todayK()]||{}).done;
-  return`${sec('놀면서 배우기','Learn with news',`<a class="more" href="learn">전체 →</a>`,'book')}
-  <div class="lhome"><a class="lh quiz" href="quiz"><span class="lhi">✅</span><b>오늘의 단어 퀴즈</b><small>${F.quiz.questions.length}문제 · 🔥${streakNow()}일 연속 · Lv.${lvl(L.xp)}</small><em>${done?'완료! 다시 풀기':'3분 도전 →'}</em></a>
+  return`${sec('놀면서 배우기','Learn with news',`<a class="more" href="learn">전체 ${NBI('arrow-right')}</a>`,'book')}
+  <div class="lhome"><a class="lh quiz" href="quiz"><span class="lhi">${NBI('help-hexagon-f')}</span><b>오늘의 단어 퀴즈</b><small>${F.quiz.questions.length}문제 · ${NBI('flame-f')}${streakNow()}일 연속 · Lv.${lvl(L.xp)}</small><em>${done?'완료! 다시 풀기':'3분 도전 →'}</em></a>
   ${c?`<a class="lh comic" href="comic/${c.id}"><svg viewBox="-160 -50 320 100"><g transform="translate(-70,0)">${bori('curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg><b>${E(c.title)}</b><small>4컷 설명 만화</small></a>`:''}
   ${d?`<a class="lh deck" href="cards/${d.id}" ${d.cards[0].img?`style="--im:url('${E(AB(d.cards[0].img))}')"`:''}><span class="lhi">🗂️</span><b>${E(d.title)}</b><small>카드뉴스 ${d.cards.length}장</small></a>`:''}</div>`}
 const FR=['learn','quiz','comic','cards'];

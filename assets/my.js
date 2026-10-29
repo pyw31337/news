@@ -7,8 +7,8 @@
 const NAV_STYLE='live';
 const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const I=(n)=>typeof ic==='function'?ic(n):'';
-const SV=p=>`<svg viewBox="0 0 24 24">${p}</svg>`;
-const P={timeline:'<path d="M6 3v18M6 7h10M6 12h6M6 17h12"/>',market:'<path d="M3 17l5-5 4 4 8-8M15 8h5v5"/>',today:'<path d="M4 5h16v14H4zM8 9h8M8 13h5"/>',my:'<path d="M5 3h11l3 3v15l-7-4-7 4z"/>',menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',bm:'<path d="M6 3h12v18l-6-4-6 4z"/>',star:'<path d="M12 3l2.6 5.6 6 .6-4.5 4 1.3 6L12 16l-5.4 3.2 1.3-6L3.4 9.2l6-.6z"/>',plus:'<path d="M12 5v14M5 12h14"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',up:'<path d="M6 15l6-6 6 6"/>',dn:'<path d="M6 9l6 6 6-6"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>'};
+const SV=p=>`<svg class="nbi${/u1/.test(p)?' tg':''}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
+const P={timeline:NBU('timeline-event',1),market:NBU('chart-candle',1),today:NBU('file-text',1),my:NBU('bookmarks',1),menu:NBU('menu-2',1),bell:NBU('bell',1),heart:NBU('heart',1),bm:NBU('bookmark',1),star:NBU('star',1),plus:NBU('plus'),search:NBU('search'),up:NBU('chevron-up'),dn:NBU('chevron-down'),x:NBU('x')};
 if(typeof IC!=='undefined'){IC.bell=P.bell;IC.bm=P.bm;IC.heart=P.heart}
 const qn=new URLSearchParams(location.search).get('nav');const NS=['fab','glow','pin','date','glass','live','pulse','badge','flip','lglass'].includes(qn)?qn:NAV_STYLE;const CLK=['live','pulse','badge','flip','lglass'].includes(NS);
 /* ---------- 저장소: IndexedDB(없으면 localStorage) ---------- */
@@ -77,7 +77,7 @@ function groupSecs(kind){const kids=[...app.children];let g=null,first=null;cons
   sorted.forEach(o=>{const w=document.createElement('div');w.className='hsec'+(hide.includes(o.title)?' hid':'');o.nodes.forEach(n=>w.appendChild(n));app.appendChild(w)});}
 /* ---------- 화제(오늘 안으로) ---------- */
 function hotHTML(){if(typeof SUB==='undefined'||typeof subtype!=='function')return'';
-  return`<div class="sec"><h2><small>People · Companies · Places</small>${I('fire')}화제</h2><a class="more" href="people">전체 →</a></div><div class="filters subt" id="hotf">${SUB.filter(s=>s[0]!=='issue').map(([k,v,n],i)=>`<button data-f="${k}" class="${i?'':'on'}">${I(n)}${v}</button>`).join('')}</div><div class="hs" id="hotl"></div>`}
+  return`<div class="sec"><h2><small>People · Companies · Places</small>${I('fire')}화제</h2><a class="more" href="people">전체 ${NBI('arrow-right')}</a></div><div class="filters subt" id="hotf">${SUB.filter(s=>s[0]!=='issue').map(([k,v,n],i)=>`<button data-f="${k}" class="${i?'':'on'}">${I(n)}${v}</button>`).join('')}</div><div class="hs" id="hotl"></div>`}
 function hotDraw(f){const L=D.entities.filter(e=>subtype(e)===f).slice(0,12);const el=document.getElementById('hotl');if(!el)return;
   el.innerHTML=L.length?L.map(e=>`<a class="card pc" href="${eh(e.name)}">${av(e)}<b>${E(e.name)}</b><small>${E(e.wiki?.desc||'')}</small>${spark(e.daily)}<span class="last">${e.timeline[0]?E(e.timeline[0].title):''}</span></a>`).join(''):'<p class="fine">오늘은 이 분류의 화제가 적어요.</p>'}
 /* ---------- 저장 버튼 ---------- */
@@ -110,11 +110,11 @@ function after(){if(!(typeof D!=='undefined'&&D))return;const[v,a]=curV();docume
   hl();badge();}
 /* ---------- 메뉴(전체 사이트맵) ---------- */
 const MENU=[
- ['뉴스 보기','today',[['오늘','./','오늘의 이슈 TOP10·화제·관계','fire'],['타임라인','timeline','사건이 시간순으로 이어지는 흐름','clock'],['관계도','map','인물·기업·장소가 어떻게 얽혔는지','link'],['화제','people','인물·기업·장소·기관별로 모아보기','user'],['날짜 아카이브','archive','지난 날의 이슈 다시 보기','book']]],
- ['돈과 정책','market',[['마켓','market','증시·환율·원자재 한눈에','chart'],['경기선행지수','market#lead','경기가 어디로 가는지 미리 보기','spark'],['정치인 DB','politicians/','의원 3,296명의 법안·표결·재산','user']]],
- ['인물 아카이브','persons',[['인물 타임라인','persons/','정치인의 출생부터 오늘까지 일생 기록','clock'],['인물 관계도','persons/#graph','가족·동문·지역구로 이어진 사람들','link'],['오늘의 인물사','persons/','몇 년 전 오늘, 이 사람에게 있었던 일','book']]],
- ['쉽게 배우기','learn',[['오늘의 단어 퀴즈','quiz','OX로 맞히며 어려운 말 익히기','book'],['4컷 만평','learn','핫이슈를 만화로 쉽게','chat'],['카드뉴스','learn','반복되는 사건을 카드로 정리','news']]],
- ['나','my',[['내 서재','my','좋아요·스크랩·메모·팔로우','book'],['알림','alerts','키워드·팔로우·지표·아파트 알림','alert'],['내 홈 꾸미기','my/home','오늘·마켓 섹션 순서와 관심 항목','gear']]]];
+ ['뉴스 보기','today',[['오늘','./','오늘의 이슈 TOP10·화제·관계','news'],['타임라인','timeline','사건이 시간순으로 이어지는 흐름','timeline'],['관계도','map','인물·기업·장소가 어떻게 얽혔는지','graph'],['화제','people','인물·기업·장소·기관별로 모아보기','fire'],['날짜 아카이브','archive','지난 날의 이슈 다시 보기','history']]],
+ ['돈과 정책','market',[['마켓','market','증시·환율·원자재 한눈에','market'],['경기선행지수','market#lead','경기가 어디로 가는지 미리 보기','spark'],['정치인 DB','politicians/','의원 3,296명의 법안·표결·재산','정치']]],
+ ['인물 아카이브','persons',[['인물 타임라인','persons/','정치인의 출생부터 오늘까지 일생 기록','timeline'],['인물 관계도','persons/#graph','가족·동문·지역구로 이어진 사람들','graph'],['오늘의 인물사','persons/','몇 년 전 오늘, 이 사람에게 있었던 일','history']]],
+ ['쉽게 배우기','learn',[['오늘의 단어 퀴즈','quiz','OX로 맞히며 어려운 말 익히기','quiz'],['4컷 만평','learn','핫이슈를 만화로 쉽게','comic'],['카드뉴스','learn','반복되는 사건을 카드로 정리','cards']]],
+ ['나','my',[['내 서재','my','좋아요·스크랩·메모·팔로우','bm'],['알림','alerts','키워드·팔로우·지표·아파트 알림','bell'],['내 홈 꾸미기','my/home','오늘·마켓 섹션 순서와 관심 항목','gear']]]];
 function fsV(d){S.fs=d===0?100:Math.max(85,Math.min(130,S.fs+d));saveS()}
 function menu(){setMeta('메뉴','NewsBoard 전체 메뉴');
   app.innerHTML=`<div class="menu7"><div class="msrch">${SV(P.search)}<input id="mq" type="search" placeholder="메뉴·이슈·인물 검색" autocomplete="off"></div><div id="mres"></div>
@@ -123,15 +123,15 @@ function menu(){setMeta('메뉴','NewsBoard 전체 메뉴');
    <div class="srow"><span>${I('book')}<b>글자 크기</b></span><div class="seg"><button data-fs="-5">가−</button><em>${S.fs}%</em><button data-fs="5">가+</button></div></div>
    <div class="srow"><span>${I('news')}<b>국내 / 해외</b></span><div class="seg" id="mreg">${[['kr','국내'],['ko','해외 KR'],['en','해외 EN']].map(([m,l])=>`<button data-m="${m}" class="${(S.region==='kr'?'kr':S.orig?'en':'ko')===m?'on':''}">${l}</button>`).join('')}</div></div>
    <div class="srow"><span>${I('alert')}<b>편향 배지 표시</b></span><label class="sw"><input type="checkbox" id="mbias" ${S.nobias?'':'checked'}><i></i></label></div>
-   <a class="srow" href="settings"><span>${I('gear')}<b>카테고리 고르기</b><small>스포츠·연예 등 숨기기</small></span><em>›</em></a>
-   <a class="srow" href="alerts/settings"><span>${I('alert')}<b>알림 설정</b></span><em>›</em></a>
-   <details class="srow ab"><summary><span>${I('spark')}<b>NewsBoard 소개</b></span></summary><p class="fine">여러 포털과 언론사 기사를 자동으로 모아 이슈별로 묶고, 사건의 흐름을 타임라인으로 보여주는 서비스예요. 내 서재 기록은 이 기기에만 저장되고, 개인정보는 받지 않아요.</p></details>
+   <a class="srow" href="settings"><span>${I('gear')}<b>카테고리 고르기</b><small>스포츠·연예 등 숨기기</small></span><em>${NBI('chevron-right')}</em></a>
+   <a class="srow" href="alerts/settings"><span>${I('alert')}<b>알림 설정</b></span><em>${NBI('chevron-right')}</em></a>
+   <details class="srow ab"><summary><span>${I('spark')}<b>NewsBoard 소개</b></span></summary><p class="fine">여러 포털과 언론사 기사를 자동으로 모아 이슈별로 묶고, 사건의 흐름을 타임라인으로 보여주는 서비스예요. 내 서재 기록은 이 기기에만 저장되고, 개인정보는 받지 않아요.</p><p class="fine">아이콘: <a href="https://tabler.io/icons" target="_blank" rel="noopener">Tabler Icons</a> (MIT 라이선스, © Paweł Kuna) · 국회 아이콘 <a href="https://lucide.dev" target="_blank" rel="noopener">Lucide</a> (ISC). <a href="assets/icons.html">아이콘 모음 보기</a></p></details>
   </section></div></div>`;
   const q=document.getElementById('mq');q.oninput=()=>{const s=q.value.trim();document.getElementById('mgrp').style.display=s?'none':'';if(!s){mres.innerHTML='';return}
     const mi=MENU.flatMap(g=>g[2]).filter(x=>(x[0]+x[2]).includes(s)).map(x=>`<a class="sr" href="${x[1]}">${I(x[3])}<b>${E(x[0])}</b><small>메뉴</small></a>`);
     const is=D.issues.filter(i=>i.title.includes(s)).slice(0,6).map(i=>`<a class="sr" href="issue/${i.id}">${I('fire')}<b>${E(i.title)}</b><small>이슈</small></a>`);
     const en=D.entities.filter(e=>e.name.includes(s)).slice(0,6).map(e=>`<a class="sr" href="${eh(e.name)}">${I('user')}<b>${E(e.name)}</b><small>${E(TYPE[e.type]||'')}</small></a>`);
-    mres.innerHTML=[...mi,...is,...en].join('')||`<p class="fine">'${E(s)}'에 맞는 결과가 없어요. <a href="${kh(s)}">키워드로 찾아보기 →</a></p>`};
+    mres.innerHTML=[...mi,...is,...en].join('')||`<p class="fine">'${E(s)}'에 맞는 결과가 없어요. <a href="${kh(s)}">키워드로 찾아보기 ${NBI('arrow-right')}</a></p>`};
   const mres=document.getElementById('mres');
   app.querySelectorAll('[data-fs]').forEach(b=>b.onclick=()=>{fsV(+b.dataset.fs);menu()});
   document.getElementById('mreg').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;const m=b.dataset.m;S.region=m==='kr'?'kr':'en';if(m!=='kr')S.orig=m==='en';saveS();typeof header2==='function'&&header2();menu();toast(m==='kr'?'국내 뉴스로 바꿨어요':'해외 뉴스로 바꿨어요')};
@@ -148,15 +148,15 @@ function computeAlerts(){const out=[],ls=M.alerts.lastSeen||0,on=M.alerts.on;if(
   return out}
 function unread(){return computeAlerts().filter(a=>!M.alerts.seen[a.id]).length}
 function badge(){const c=document.getElementById('bellc');if(!c)return;const n=unread();c.textContent=n>9?'9+':n||'';c.style.display=n?'':'none'}
-const TYP=[['kw','키워드 알림','내 키워드가 들어간 새 기사','search'],['follow','팔로우 업데이트','따라가는 이슈·인물·키워드의 새 소식','user'],['ind','지표 변동','관심 지표가 기준보다 크게 움직일 때','chart'],['apt','아파트 실거래','관심 지역에 새 거래가 잡힐 때','spark'],['quiz','퀴즈 리마인더','오늘 퀴즈를 아직 안 풀었을 때','book'],['reply','댓글·답글','내 댓글에 답글이 달릴 때','chat']];
+const TYP=[['kw','키워드 알림','내 키워드가 들어간 새 기사','search'],['follow','팔로우 업데이트','따라가는 이슈·인물·키워드의 새 소식','bell'],['ind','지표 변동','관심 지표가 기준보다 크게 움직일 때','chart'],['apt','아파트 실거래','관심 지역에 새 거래가 잡힐 때','apt'],['quiz','퀴즈 리마인더','오늘 퀴즈를 아직 안 풀었을 때','quiz'],['reply','댓글·답글','내 댓글에 답글이 달릴 때','chat']];
 function alerts(sub){setMeta('알림','');if(sub==='settings')return alertSet();
-  const A=computeAlerts();app.innerHTML=`<div class="sec"><h2><small>Notifications</small>${I('bell')}알림</h2><a class="more" href="alerts/settings">설정 →</a></div>
+  const A=computeAlerts();app.innerHTML=`<div class="sec"><h2><small>Notifications</small>${I('bell')}알림</h2><a class="more" href="alerts/settings">설정 ${NBI('arrow-right')}</a></div>
   <div class="afil" id="afil"><button data-f="" class="on">전체</button>${TYP.slice(0,5).map(t=>`<button data-f="${t[0]}">${t[1].split(' ')[0]}</button>`).join('')}</div>
   <div class="alist" id="alist">${A.length?A.map(a=>`<a class="al ty-${a.ty} ${M.alerts.seen[a.id]?'':'new'} ${a.tone||''}" href="${a.href}" data-ty="${a.ty}"><span class="ali">${I(a.ic)}</span><div><em>${a.lab}</em><b>${E(a.title)}</b><p>${E(a.body)}</p></div><time class="ts">${typeof ago==='function'?ago(a.t):''}</time></a>`).join(''):`<div class="aempty">${SV(P.bell)}<b>아직 알림이 없어요</b><p>키워드를 등록하거나 이슈·인물을 팔로우하면 새 소식을 모아 드려요.</p><a class="pri" href="alerts/settings">알림 키워드 추가하기</a></div>`}</div>
   <div class="al ty-reply soon"><span class="ali">${I('chat')}</span><div><em>댓글·답글</em><b>내 댓글의 답글 알림</b><p>댓글 기능과 로그인이 생기면 여기로 와요.</p></div><span class="soonb">로그인 이후</span></div>`;
   A.forEach(a=>M.alerts.seen[a.id]=1);M.alerts.lastSeen=Date.now();save();
   document.getElementById('afil').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;document.querySelectorAll('#afil button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('#alist .al').forEach(x=>x.style.display=!b.dataset.f||x.dataset.ty===b.dataset.f?'':'none')}}
-function alertSet(){const D2=()=>{app.innerHTML=`<div class="sec"><h2><small>Alert settings</small>${I('bell')}알림 설정</h2><a class="more" href="alerts">알림함 →</a></div>
+function alertSet(){const D2=()=>{app.innerHTML=`<div class="sec"><h2><small>Alert settings</small>${I('bell')}알림 설정</h2><a class="more" href="alerts">알림함 ${NBI('arrow-right')}</a></div>
   <div class="card setc"><h3>알림 키워드</h3><p class="fine">이 단어가 들어간 새 기사가 오면 알려드려요.</p><div class="kwin"><input id="kwi" placeholder="예: 금리, 반도체"><button class="pri" id="kwa">추가</button></div><div class="kwl">${M.keywords.map(k=>`<button data-k="${E(k)}">#${E(k)} ${SV(P.x)}</button>`).join('')}</div></div>
   <div class="card setc"><h3>받을 알림</h3>${TYP.map(([k,n,d,i])=>`<div class="srow"><span>${I(i)}<b>${n}</b><small>${d}</small></span>${k==='reply'?'<span class="soonb">로그인 이후</span>':`<label class="sw"><input type="checkbox" data-on="${k}" ${M.alerts.on[k]?'checked':''}><i></i></label>`}</div>`).join('')}</div>
   <div class="card setc"><h3>휴대폰 푸시 알림</h3><p class="fine">지금은 사이트를 열 때 새 소식을 모아 보여드려요. 앱을 닫아도 오는 푸시 알림은 로그인 기능과 함께 준비 중이에요. 아이폰은 홈 화면에 NewsBoard를 추가해야 받을 수 있어요.</p><span class="soonb">준비 중</span></div>`;
@@ -177,12 +177,12 @@ function myView(sub){setMeta('내 서재','');if(sub==='home')return homeSet();
   const card=s=>`<a class="myi ty-${s.t}" href="${s.href||'#'}">${s.img?`<span class="myth" style="background-image:url('${E(s.img)}')"></span>`:`<span class="myth noimg">${I(TY[s.t]?.[1])}</span>`}<div><em>${TY[s.t]?.[0]||''}${s.col?` · ${E((M.cols.find(c=>c.id===s.col)||{}).name||'')}`:''}</em><b>${E(s.title)}</b>${s.note?`<p class="mnote">${E(s.note)}</p>`:''}<span class="mtags">${(s.tags||[]).map(t=>`<i>#${E(t)}</i>`).join('')}${s.like?`<i class="lk">${SV(P.heart)}</i>`:''}</span></div><span class="mhw" data-t="${s.t}" data-id="${E(s.id)}"><button class="myact-n" data-a="note" aria-label="메모">${SV(P.plus)}</button></span></a>`;
   const rel=SA.filter(s=>s.t==='entity'||s.t==='kw').map(s=>{const i=D.issues.find(x=>(x.entities||[]).includes(s.id)||x.title.includes(s.id));return i&&{s,i}}).filter(Boolean).slice(0,4);
   app.innerHTML=`<div class="myhead"><div class="myav">${SV(P.my||P.bm)}</div><div>${tok()?`<b>내 계정</b><small id="syncst">${localStorage.getItem('nb-prov')==='kakao'?'카카오':'Google'} 로그인 · 모든 기기에서 이어져요</small>`:`<b>게스트</b><small>이 기기에 저장 중 · 로그인 없이 사용</small>`}</div><a class="ghost sm" href="my/home">${I('gear')}내 홈 꾸미기</a></div>
-  <div class="mystat"><div class="xp"><span>🔥 ${streak}일</span><small>연속 읽기</small></div><div class="xp"><span>Lv.${lvl(L.xp)}</span><small>퀴즈 XP ${L.xp||0}</small><i style="--p:${(L.xp||0)%100}%"></i></div><div class="xp"><span>${SA.length}</span><small>저장한 것</small></div><div class="xp"><span>${Object.keys(M.follows).length}</span><small>팔로우</small></div></div>
+  <div class="mystat"><div class="xp"><span>${NBI('flame',1,'on')}${streak}일</span><small>연속 읽기</small></div><div class="xp"><span>Lv.${lvl(L.xp)}</span><small>퀴즈 XP ${L.xp||0}</small><i style="--p:${(L.xp||0)%100}%"></i></div><div class="xp"><span>${SA.length}</span><small>저장한 것</small></div><div class="xp"><span>${Object.keys(M.follows).length}</span><small>팔로우</small></div></div>
   ${rel.length?`<div class="sec"><h2><small>Connected</small>${I('link')}내 스크랩과 이어진 새 소식</h2></div><div class="myrel">${rel.map(({s,i})=>`<a href="issue/${i.id}"><em>${E(s.title)}</em><b>${E(i.title)}</b></a>`).join('')}</div>`:''}
   <div class="sec"><h2><small>Library</small>${I('book')}내 서재</h2><button class="more" id="newcol">+ 컬렉션</button></div>
-  <div class="afil" id="mytab">${[['all','전체'],['like','좋아요'],['scrap','스크랩'],['note','메모'],...M.cols.map(c=>['c:'+c.id,'📁 '+c.name]),...tags.map(t=>['t:'+t,'#'+t])].map(([k,l])=>`<button data-k="${E(k)}" class="${k===tab?'on':''}">${E(l)}</button>`).join('')}</div>
+  <div class="afil" id="mytab">${[['all','전체'],['like','좋아요'],['scrap','스크랩'],['note','메모'],...M.cols.map(c=>['c:'+c.id,c.name]),...tags.map(t=>['t:'+t,'#'+t])].map(([k,l])=>`<button data-k="${E(k)}" class="${k===tab?'on':''}">${k.startsWith('c:')?NBI('folder',1):''}${E(l)}</button>`).join('')}</div>
   <div class="mylist" id="mylist"></div>
-  <div class="sec"><h2><small>Following</small>${I('bell')}팔로우 중</h2><a class="more" href="alerts/settings">키워드 추가 →</a></div>
+  <div class="sec"><h2><small>Following</small>${I('bell')}팔로우 중</h2><a class="more" href="alerts/settings">키워드 추가 ${NBI('arrow-right')}</a></div>
   <div class="kwl">${Object.values(M.follows).map(f=>`<a href="${f.t==='issue'?'issue/'+f.id:f.t==='kw'?kh(f.id):eh(f.id)}">${I(TY[f.t]?.[1])}${E(f.title)}</a>`).join('')}${M.keywords.map(k=>`<a href="${kh(k)}">#${E(k)}</a>`).join('')}${!Object.keys(M.follows).length&&!M.keywords.length?'<p class="fine">이슈나 인물 화면에서 팔로우를 누르면 여기에 모여요.</p>':''}</div>
   <div class="sec"><h2><small>My analysis</small>${I('chart')}나의 읽기 분석</h2></div>
   ${nRead?`<div class="myan"><div class="card"><h4>무엇을 읽었나 <small>${nRead}건</small></h4><div class="catbar">${Object.entries(cat).map(([c,n])=>`<i style="flex:${n};background:${CATC[c]||'#999'}"></i>`).join('')}</div><div class="legend">${Object.entries(cat).sort((a,b)=>b[1]-a[1]).map(([c,n])=>`<span style="--c:${CATC[c]||'#999'}">${c} ${Math.round(n/tot*100)}%</span>`).join('')}</div></div>
@@ -207,7 +207,7 @@ function myView(sub){setMeta('내 서재','');if(sub==='home')return homeSet();
   document.getElementById('imc').onclick=()=>{const c=prompt('백업 코드를 붙여넣으세요');if(c)try{restore(decodeURIComponent(escape(atob(c.trim().replace(/^NB1\./,'')))))}catch(e){toast('백업 코드를 읽지 못했어요')}};}
 function homeSet(){const draw=()=>{const sl=k=>{const names=M.home[k]||M.home['k'+k]||[];const hide=M.home[k==='today'?'hideT':'hideM'];return names.map((n,i)=>`<div class="ord"><label class="sw sm"><input type="checkbox" data-h="${k}" data-n="${E(n)}" ${hide.includes(n)?'':'checked'}><i></i></label><b>${E(n)}</b><button data-mv="${k}" data-i="${i}" data-d="-1" aria-label="위로">${SV(P.up)}</button><button data-mv="${k}" data-i="${i}" data-d="1" aria-label="아래로">${SV(P.dn)}</button></div>`).join('')||'<p class="fine">오늘·마켓 화면을 한 번 열면 섹션 목록이 생겨요.</p>'};
   const mk=(D.market||[]);const dist=window._APT?Object.keys(Object.values(_APT.trade||{}).slice(-1)[0]||{}):[];
-  app.innerHTML=`<div class="sec"><h2><small>My home</small>${I('gear')}내 홈 꾸미기</h2><a class="more" href="my">내 서재 →</a></div>
+  app.innerHTML=`<div class="sec"><h2><small>My home</small>${I('gear')}내 홈 꾸미기</h2><a class="more" href="my">내 서재 ${NBI('arrow-right')}</a></div>
   <div class="card setc"><h3>오늘 화면 섹션</h3><p class="fine">켜고 끄고, 화살표로 순서를 바꿔요.</p>${sl('today')}</div>
   <div class="card setc"><h3>마켓 화면 섹션</h3>${sl('market')}</div>
   <div class="card setc"><h3>관심 지표</h3><p class="fine">고른 지표가 기준(%)보다 크게 움직이면 알림에 떠요.</p><div class="indl">${mk.map(m=>{const w=M.watch.ind[m.name];return`<div class="ord"><label class="sw sm"><input type="checkbox" data-ind="${E(m.name)}" ${w!=null?'checked':''}><i></i></label><b>${E(m.name)}</b><select data-th="${E(m.name)}" ${w==null?'disabled':''}>${[0.5,1,2,3,5].map(t=>`<option ${w==t?'selected':''}>${t}</option>`).join('')}</select><small>%</small></div>`}).join('')}</div></div>

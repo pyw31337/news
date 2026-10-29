@@ -1,0 +1,11 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NewsBoard 아이콘 모음</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>body{font-family:'Pretendard Variable',sans-serif;margin:0;padding:16px;background:#f6f7fb;color:#1b1f2e}h1{font-size:20px;margin:0 0 4px}p{color:#667;font-size:13px;margin:0 0 12px}h2{font-size:14px;margin:18px 0 8px;color:#445}
+.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}.c{background:#fff;border-radius:12px;padding:10px 4px 8px;text-align:center;box-shadow:0 1px 2px #0001}.c svg{width:26px;height:26px;color:#1b1f2e}.c.f svg{color:#ff4d2e}.c b{display:block;font-size:11px;font-weight:600;margin-top:6px;word-break:keep-all}.c small{display:block;font-size:9.5px;color:#99a;word-break:break-all}
+.pr{display:flex;gap:6px;justify-content:center}.ico{width:1em;height:1em}#q{width:100%;max-width:360px;padding:9px 12px;border:1px solid #dde;border-radius:10px;font:inherit;margin-bottom:6px}</style></head><body>
+<h1>NewsBoard 아이콘 모음</h1><p>외곽선 = 꺼짐(기본), <span style="color:#ff4d2e">채움 = 켜짐(선택됨)</span>. Tabler Icons (MIT) · 국회 아이콘 Lucide (ISC). 사용법은 docs/icons.md</p>
+<input id="q" type="search" placeholder="이름·id 검색"><div id="out"></div>
+<script src="icons.js?v=1"></script>
+<script>fetch('icons.json').then(r=>r.json()).then(j=>{const by={};j.icons.forEach(i=>(by[i.use]=by[i.use]||[]).push(i));
+const draw=q=>{out.innerHTML=Object.entries(by).map(([u,L])=>{L=L.filter(i=>!q||(i.ko+i.id+(i.aliases||[]).join()).includes(q));return L.length?`<h2>${u} <small>(${L.length})</small></h2><div class="g">${L.map(i=>`<div class="c ${i.style==='filled'?'f':''}"><svg viewBox="0 0 24 24"><use href="#${i.id}"/></svg><b>${i.ko}</b><small>${i.id}</small></div>`).join('')}</div>`:''}).join('')};
+draw('');q.oninput=()=>draw(q.value.trim());document.title+=' ('+j.count+')'})</script></body></html>

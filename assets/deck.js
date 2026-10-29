@@ -119,15 +119,15 @@ window.nbGallery=async function(el,list){if(!el)return;
   el.classList.add('on');
   const gm=el.querySelector('.gm');if(gm)gm.addEventListener('scroll',()=>{el.querySelector('.gcnt b').textContent=Math.round(gm.scrollLeft/gm.clientWidth)+1},{passive:true});
   el.addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b)lightbox(G,+b.dataset.k,b)})};
-const ICO={photo:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg>'};
+const ICO={photo:NBI('photo')};
 
 /* ---------- 라이트박스: 스와이프 · 핀치 확대 · 두 번 탭 · 설명 · 출처 ---------- */
 function lightbox(G,k,opener){
   const lb=document.createElement('div');lb.className='lbx';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');lb.setAttribute('aria-label','사진 크게 보기');
   const cap=g=>{const s=((typeof D!=='undefined'&&D)?D.issues:[]).flatMap(i=>i.sources||[]).find(s=>s.url===g.url);return`<p>${esc2(s?.title||'')}</p><small>사진 · ${esc2(g.press||'언론사')} <a href="${esc2(g.url)}" target="_blank" rel="noopener">기사 원문 보기</a></small>`};
-  lb.innerHTML=`<div class="lbtop"><span class="lbn"></span><button type="button" class="lbx-x" aria-label="닫기">✕</button></div>
+  lb.innerHTML=`<div class="lbtop"><span class="lbn"></span><button type="button" class="lbx-x" aria-label="닫기">${NBI('x')}</button></div>
    <div class="lbtrack">${G.map(g=>`<div class="lbs"><img src="${g.img}" alt="" draggable="false"></div>`).join('')}</div>
-   <button type="button" class="lbnav p" aria-label="이전 사진">‹</button><button type="button" class="lbnav n" aria-label="다음 사진">›</button><div class="lbcap"></div>`;
+   <button type="button" class="lbnav p" aria-label="이전 사진">${NBI('chevron-left')}</button><button type="button" class="lbnav n" aria-label="다음 사진">${NBI('chevron-right')}</button><div class="lbcap"></div>`;
   document.body.appendChild(lb);document.body.style.overflow='hidden';
   const tr=lb.querySelector('.lbtrack');let i=k,off=0,z=1,px=0,py=0;const P=new Map();let g0=null,tap=0;
   const img=()=>tr.children[i].querySelector('img');
