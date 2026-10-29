@@ -8,7 +8,7 @@ const NAV_STYLE='live';
 const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const I=(n)=>typeof ic==='function'?ic(n):'';
 const SV=p=>`<svg class="nbi${/u1/.test(p)?' tg':''}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
-const P={timeline:NBU('timeline-event',1),market:NBU('chart-candle',1),today:NBU('file-text',1),my:NBU('bookmarks',1),menu:NBU('menu-2',1),bell:NBU('bell',1),heart:NBU('heart',1),bm:NBU('bookmark',1),star:NBU('star',1),plus:NBU('plus'),search:NBU('search'),up:NBU('chevron-up'),dn:NBU('chevron-down'),x:NBU('x')};
+const P={timeline:NBU('timeline-event',1),market:NBU('chart-candle',1),today:NBU('file-text',1),my:NBU('bookmarks',1),menu:NBU('menu-2',1),bell:NBU('bell',1),heart:NBU("thumb-up",1),bm:NBU('bookmark',1),star:NBU('star',1),plus:NBU('plus'),search:NBU('search'),up:NBU('chevron-up'),dn:NBU('chevron-down'),x:NBU('x')};
 if(typeof IC!=='undefined'){IC.bell=P.bell;IC.bm=P.bm;IC.heart=P.heart}
 const qn=new URLSearchParams(location.search).get('nav');const NS=['fab','glow','pin','date','glass','live','pulse','badge','flip','lglass'].includes(qn)?qn:NAV_STYLE;const CLK=['live','pulse','badge','flip','lglass'].includes(NS);
 /* ---------- 저장소: IndexedDB(없으면 localStorage) ---------- */
@@ -61,11 +61,14 @@ function nav(){const tb=document.querySelector('.tabbar');if(!tb)return;
   tb.className='tabbar v7 nav-'+NS;
   tb.innerHTML=T.map(([h,v,l])=>v==='today'?`<a href="./" data-v="today" class="ctr" aria-label="오늘"><span class="cb${CLK?' clk':''}"><span class="pinh"></span>${CLK?clkHTML():NS==='date'?`<b class="dn">${dnum}</b><small>TODAY</small>`:SV(P.today)}</span><span class="cl">${l}</span></a>`:`<a href="${h}" data-v="${v}">${SV(P[v])}<span>${l}</span></a>`).join('');
   if(CLK){tb.classList.add('clkv');tick()}
-  const tn=document.querySelector('.topnav');if(tn)tn.innerHTML=T.map(([h,v,l])=>`<a href="${h||'./'}" data-v="${v}">${l}</a>`).join('');
-  const top=document.querySelector('header.top');if(top&&!document.getElementById('bell')){const b=document.createElement('a');b.id='bell';b.href='alerts';b.className='bell';b.setAttribute('aria-label','알림');b.innerHTML=SV(P.bell)+'<i id="bellc"></i>';top.appendChild(b)}
+  /* PC 상단: 오늘 · 타임라인 · 마켓 · 내 서재, 메뉴는 알림 종 오른쪽 끝 */
+  const TP=[['','today','오늘'],['timeline','timeline','타임라인'],['market','market','마켓'],['my','my','내 서재']];
+  const tn=document.querySelector('.topnav');if(tn)tn.innerHTML=TP.map(([h,v,l])=>`<a href="${h||'./'}" data-v="${v}">${l}</a>`).join('');
+  const top=document.querySelector('header.top');if(top&&!document.getElementById('bell')){const b=document.createElement('a');b.id='bell';b.href='alerts';b.className='bell';b.setAttribute('aria-label','알림');b.innerHTML=SV(P.bell)+'<i id="bellc"></i>';top.appendChild(b);
+    const m=document.createElement('a');m.href='menu';m.className='tmenu';m.dataset.v='menu';m.setAttribute('aria-label','메뉴');m.innerHTML=SV(P.menu);top.appendChild(m)}
 }
 const VMAP={'':'today',issue:'today',kw:'today',g:'today',gt:'today',entity:'today',people:'today',market:'market',timeline:'timeline',my:'my',alerts:'my'};
-function hl(){const v=decodeURIComponent(location.pathname.slice(BASEP.length)).split('/')[0];const t=VMAP[v]??'menu';document.querySelectorAll('.tabbar [data-v],.topnav [data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v===t))}
+function hl(){const v=decodeURIComponent(location.pathname.slice(BASEP.length)).split('/')[0];const t=VMAP[v]??'menu';document.querySelectorAll('.tabbar [data-v],.topnav [data-v],.tmenu').forEach(x=>x.classList.toggle('on',x.dataset.v===t))}
 const _ps=history.pushState;history.pushState=function(){const r=_ps.apply(this,arguments);setTimeout(()=>{hl();after()},0);return r};
 addEventListener('popstate',()=>setTimeout(()=>{hl();after()},0));
 /* ---------- 섹션 묶기(내 홈 순서·숨김) ---------- */

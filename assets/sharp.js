@@ -6,7 +6,7 @@ const F=()=>Math.max(2,window.devicePixelRatio||1),CAPW=1600,CAPH=1000;
 const C=new Map();
 const dims=u=>{if(!C.has(u))C.set(u,new Promise(r=>{const i=new Image();i.decoding='async';i.onload=()=>r([i.naturalWidth,i.naturalHeight]);i.onerror=()=>r([0,0]);i.src=u}));return C.get(u)};
 const urlOf=el=>{if(el.tagName==='IMG')return el.currentSrc||el.src;const m=(el.getAttribute('style')||'').match(/(?:background-image|--im)\s*:\s*url\((['"]?)(.*?)\1\)/);return m?m[2]:''};
-const skip=el=>el.closest('.pp,svg,.tabbar')||/favicons|data:image\/svg/.test(urlOf(el));
+const skip=el=>el.closest('.pp,.ds-logo,svg,.tabbar')||/favicons|data:image\/svg/.test(urlOf(el));
 async function check(el){const u=urlOf(el);if(!u){el.classList.add('sq-ok');return}
   const [w,h]=await dims(u);const r=el.getBoundingClientRect();if(!r.width||!r.height){el.classList.add('sq-ok');return}
   const f=F(),nw=Math.min(CAPW,r.width*f),nh=Math.min(CAPH,r.height*f);

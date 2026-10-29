@@ -43,6 +43,7 @@ const vis=i=>!S.hide.includes(i.category);
 
 async function load(){
   D=await (await fetch('data/today.json?'+Date.now())).json();
+  {const W=o=>{if(Array.isArray(o))o.forEach(W);else if(o&&typeof o==='object'){if(o.ourl)o.url=o.ourl;for(const k in o)if(o[k]&&typeof o[k]==='object')W(o[k])}};W(D)}
   try{G=await (await fetch('data/global.json?'+Date.now())).json()}catch(e){G=null}
   try{O=await (await fetch('data/official.json?'+Date.now())).json()}catch(e){O=null}
   try{BR=await (await fetch('data/briefs.json?'+Date.now())).json()}catch(e){BR=null}
@@ -172,42 +173,25 @@ function biasB(s){if(!s.bias)return'';return`<span class="bias ${s.bias.lean}" t
 function issue(id){
   const i=D.issues.find(x=>x.id===id);if(!i){today();app.insertAdjacentHTML('afterbegin','<div class="note">공유된 이슈가 지금 TOP 10에서 내려갔어요. 지난 이슈는 <a href="archive">아카이브</a>에서 볼 수 있어요.</div>');return}
   setMeta(i.title,Array.isArray(i.summary)?i.summary.join(' '):i.summary);
-  const ai=i.ai||{},op=i.opinion,aop=ai.opinion||{};
-  const ents=i.entities.map(ent).filter(Boolean);
-  const flow=(i.flow||[]).map((f,k)=>`<div class="fg"><div class="fd"><b>${fmtDay(f.date)}</b><span>${k===0?'최신':ago(f.date+'T12:00:00+09:00')}</span></div>
-    ${f.meaning?`<div class="mean">${AIB}<p>${esc(f.meaning)}</p></div>`:''}
-    ${f.items.map((x,j)=>`<a class="fe ${j===0?'first':''}" href="${esc(x.url)}" target="_blank" rel="noopener">${th(x.img,'fi')}<div><h5>${esc(x.title)}</h5>${x.body&&j===0?`<p>${esc(x.body.slice(0,110))}…</p>`:''}${meta(x)}</div></a>`).join('')}</div>`).join('');
-  const st=(aop.stances||[]),col=['#ff4d2e','#2f6bff','#11a683','#f08a00'];
-  const opin=op?`<div class="card opin">
-    <div class="ostat"><div>${ic('chat')}<b>${op.total.toLocaleString()}</b><span>댓글 (${op.articles}개 기사)</span></div><div><b>${NBI('thumb-up')}${op.like.toLocaleString()}</b><span>상위 댓글 공감</span></div><div><b>${NBI('thumb-down')}${op.dislike.toLocaleString()}</b><span>비공감</span></div>${moodBox(op.like,op.dislike)}</div>
-    ${aop.summary?`<div class="mean">${AIB}<p>${esc(aop.summary)}</p></div>`:''}
-    ${st.length?`<h5>입장 분포 <small>(공감순 상위 댓글 기준 AI 분류)</small></h5><div class="stbar">${st.map((s,k)=>`<i style="flex:${s.share};background:${col[k%4]}">${s.share}%</i>`).join('')}</div><div class="stl">${st.map((s,k)=>`<div><b style="color:${col[k%4]}">● ${esc(s.label)} ${s.share}%</b><span>${esc(s.desc)}</span></div>`).join('')}</div>`:''}
-    <div class="demo">${op.gender?`<div><h5>성별</h5><div class="gbar"><i style="flex:${op.gender.male}">남 ${op.gender.male}%</i><i style="flex:${op.gender.female}" class="f">여 ${op.gender.female}%</i></div></div>`:''}
-    ${op.ages?`<div><h5>연령대</h5><div class="ages">${Object.entries(op.ages).map(([a,v])=>`<span><i style="height:${v*1.6+2}px"></i>${a}${a==='70'?'+':''}</span>`).join('')}</div></div>`:''}</div>
-    <h5>많이 나온 말</h5><div class="cloud">${op.words.map(([w,v],k)=>`<span style="font-size:${(0.8+Math.min(1,v/op.words[0][1])*0.9).toFixed(2)}rem;opacity:${(.55+Math.min(1,v/op.words[0][1])*.45).toFixed(2)}">${esc(w)}</span>`).join('')}</div>
-    <h5>공감 많은 댓글</h5><div class="cmts">${((aop.quotes||[]).length?op.top.filter(c=>aop.quotes.some(q=>c.text.includes(q.slice(0,20)))):op.top).slice(0,4).concat(op.top).filter((c,k,a)=>a.indexOf(c)===k).slice(0,5).map(c=>`<a href="${esc(c.src)}" target="_blank" rel="noopener">“${esc(c.text)}”<small>${NBI('thumb-up')}${c.like} · ${NBI('thumb-down')}${c.dislike}</small></a>`).join('')}</div>
-    <p class="fine">네이버 뉴스 댓글(공감순 상위)을 수집·집계했습니다. 일부 이용자의 의견으로, 전체 여론을 대표하지 않습니다.</p></div>`:'<div class="note">이 이슈는 댓글을 수집할 수 있는 네이버 기사가 없어요.</div>';
-  const past=(i.past||[]).length?`${sec('과거와 연결된 사건','Linked from archive','','history')}<div class="past">${i.past.map(p=>`<a class="card mini" href="${esc(p.url)}" target="_blank" rel="noopener">${th(p.image)}<div class="tx"><span class="meta">${ts(p.date)}<span class="cnt rk">${p.rank}위</span></span><h3>${esc(p.title)}</h3><div class="ents">${p.shared.map(n=>entc(n,(D.entities.find(e=>e.name===n)||{}).type||'event')).join('')}</div></div></a>`).join('')}</div>`:'';
+  const ents=i.entities.map(ent).filter(Boolean),terms=[...i.entities,...i.keywords];
   app.innerHTML=`<div class="bkrow"><a class="back" href="./">${NBI('arrow-left')} 오늘의 TOP 10</a>${shareBtn()}</div>
   <section class="dgal" aria-label="이 사건 사진"></section>
-  <article class="dhead card"><div class="bd"><div class="ov"><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><b>오늘의 이슈 ${i.rank}위</b></div><h1>${esc(i.title)}</h1>
+  <article class="dhead card ds-head"><div class="bd"><div class="ov"><span class="ds-badge cat c-${i.category}">${ic(i.category)}${i.category}</span><span class="ds-badge rank">오늘의 이슈 <b>${i.rank}</b>위</span></div><h1 class="ds-title">${esc(i.title)}</h1>
     <div class="schips light">${schips(i,'')}</div>
-    <div class="chips">${i.entities.map(n=>chipE(n)).join('')}${i.keywords.filter(k=>!i.entities.includes(k)).slice(0,4).map(k=>`<span class="chip">#${esc(k)}</span>`).join('')}</div></div></article>
-  <nav class="toc"><a href="#s-sum">${ic('news')}요약</a><a href="#s-flow">${ic('clock')}흐름</a><a href="#related">${ic('news')}관련 기사</a><a href="#press">${ic('press')}언론사</a><a href="#comments">${ic('chat')}댓글</a></nav>
+    <div class="chips">${i.entities.map(n=>chipE(n)).join('')}${i.keywords.filter(k=>!i.entities.includes(k)).slice(0,4).map(k=>`<span class="ds-tag">#${esc(k)}</span>`).join('')}</div></div></article>
+  <nav class="toc ds-tabs"><a href="#s-sum">${ic('news')}<span>요약</span></a><a href="#s-flow">${ic('clock')}<span>흐름</span></a><a href="#related">${ic('news')}<span>관련 기사</span></a><a href="#press">${ic('press')}<span>언론사</span></a><a href="#comments">${ic('chat')}<span>댓글</span></a></nav>
   <div class="two"><div>
-   <section id="s-sum">${sec('한눈에 보기','Summary · 기사 리드문','','news')}<div class="summary">${i.summary.map((s,k)=>`<div class="sl"><b>${k+1}</b><p>${esc(s)}</p></div>`).join('')||'<p>요약을 가져오지 못했어요.</p>'}</div></section>
-   <section id="s-deep">${sec('깊게 보기','Deep dive','','book')}
-    ${ai.deep?`<div class="card deep">${AIB}<p>${esc(ai.deep)}</p><small>여러 언론사 리드문·보도 흐름을 바탕으로 자동 작성된 요약입니다. 사실관계는 아래 원문으로 확인하세요.</small></div>`:`<div class="card deep">${(i.leads||[]).slice(0,4).map(l=>`<p>${esc(l)}</p>`).join('')}<small>AI 요약이 아직 생성되지 않아 여러 언론사의 리드문을 모아 보여드려요. (하루 1회 심층 분석 시 갱신)</small></div>`}
-   </section>
-   <section id="s-flow">${sec('이 사건의 흐름','Issue flow · 오늘부터 과거로','','clock')}<div class="flow">${flow||'<div class="note">흐름 데이터가 없어요.</div>'}</div></section>
-   ${past}
+   <section id="s-sum" class="ds-sec">${sec('한눈에 보기','Summary','','news')}<div class="summary ds-sum">${i.summary.map((s,k)=>`<div class="sl"><b>${k+1}</b><p class="${k===0?'ds-lead':''}">${DS.emph(s,terms)}</p></div>`).join('')||'<p>요약을 가져오지 못했어요.</p>'}</div></section>
+   ${DS.deep(i)}
+   ${DS.flow(i)}
+   ${DS.past(i)}
   </div><aside>
-   <section id="comments" class="anc">${sec('댓글 · 사람들의 반응','Comments','','chat')}${opin}</section>
+   <section id="comments" class="anc ds-sec">${sec('댓글 · 사람들의 반응','Comments','','chat')}${DS.opinion(i)}</section>
    ${ents.length?sec('등장 인물·키워드','Who’s who','','user')+`<div class="who">${ents.map(e=>`<a class="card whoc" href="${eh(e.name)}">${av(e,'av s')}<div><b>${esc(e.name)}</b><small>${esc(e.wiki?.desc||TYPE[e.type])}</small></div></a>`).join('')}</div>`:''}
   </aside></div>
-  ${pressSec(i)}<section id="related" class="anc">${sec('관련 기사','Related articles',`<span class="more">${i.sources.length}건</span>`,'news')}
-   <ol class="srcl">${i.sources.map(s=>`<li>${s.img?`<span class="sth" ${bg(s.img)}></span>`:''}<div><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a> <span class="meta">${pp(s.press,s.url)}<span class="tag">${s.portal}</span>${s.kind?' '+esc(s.kind):''}</span>${biasB(s)}${s.bias?`<div class="br">판단 근거: ${esc(s.bias.reason)}</div>`:''}</div></li>`).join('')}</ol>
-   <p class="fine">편향 뱃지는 AI가 기사 제목의 표현·프레이밍만 보고 자동 판단한 것으로, 확신이 높은 경우에만 표시합니다. 언론사 성향으로 단정하지 않으며 틀릴 수 있습니다.</p></section>`;
+  ${DS.press(i)}${DS.related(i)}`;
+  DS.bind(app);
+  const tabs=app.querySelector('.ds-tabs');if(tabs&&'IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)tabs.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});['s-sum','s-flow','related','press','comments'].forEach(k=>{const el=document.getElementById(k);el&&io.observe(el)})}
   const gl=(i.gallery||[]).length?i.gallery:(i.image?[{img:i.image,press:i.press,url:i.url}]:[]);window.nbGallery?nbGallery($('.dgal'),gl):$('.dgal').remove();
 }
 /* 슬림 지표 칩: 누르면 상세 해당 섹션으로 */
@@ -267,7 +251,7 @@ function vtl(el,items,z,limit=4){
   if(!g.length){el.innerHTML='<div class="note">아직 쌓인 기록이 없어요.</div>';return}
   let shown=Math.min(g.length,z==='year'?20:12);
   const draw=()=>{el.innerHTML=g.slice(0,shown).map(({k,a})=>{const s=a.slice().sort((p,q)=>(q.related||0)-(p.related||0));
-    return`<div class="vg"><h4>${k}${cnt(a.length,'news','기사 수')}</h4>${s.slice(0,limit).map((x,j)=>`<a class="ve ${j===0&&x.related>2?'big':''}" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}<span class="meta">${pp(x.press,x.url)}${ts(x.t)}${x.related>1?cnt('+'+x.related,'','묶음 기사'):''}</span></a>`).join('')}</div>`}).join('')+(shown<g.length?`<div class="ve moreb">이전 기록 더 보기 (${g.length-shown}개 구간)</div>`:'');
+    return`<div class="vg"><h4>${k}${cnt(a.length,'news','기사 수')}</h4>${s.slice(0,limit).map((x,j)=>`<a class="ve ${j===0&&x.related>2?'big':''}" href="${esc(x.url)}" target="_blank" rel="noopener">${x.img&&j<2?`<span class="vth" ${bg(x.img)}></span>`:''}${esc(x.title)}<span class="meta">${pp(x.press,x.url)}${ts(x.t)}${x.related>1?cnt('+'+x.related,'','묶음 기사'):''}</span></a>`).join('')}</div>`}).join('')+(shown<g.length?`<div class="ve moreb">이전 기록 더 보기 (${g.length-shown}개 구간)</div>`:'');
     const m=el.querySelector('.moreb');if(m)m.onclick=()=>{shown+=12;draw()}};draw();
 }
 function eraChart(items,z){const fmt=z==='year'?(t=>t.slice(0,4)):(t=>t.slice(0,7));const c={};items.forEach(x=>{const k=fmt(x.t);c[k]=(c[k]||0)+1});

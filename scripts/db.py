@@ -100,6 +100,22 @@ def upgrade(u):
     if 'upload.wikimedia.org' in pu.netloc and '/thumb/' in pu.path:   # 위키 썸네일 320px → 1280px
         out.append(re.sub(r'/(\d+)px-', '/1280px-', u))
     out.append(u); return list(dict.fromkeys(out))
+import json as _json, urllib.request as _ur
+UA={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36'}
+def gdecode(u,timeout=10):
+    """Google News RSS 링크 → 원문 기사 주소"""
+    m=re.search(r'/(?:rss/)?articles/([^?/]+)',u)
+    if not m: return ''
+    gid=m.group(1)
+    t=_ur.urlopen(_ur.Request('https://news.google.com/articles/'+gid,headers=UA),timeout=timeout).read().decode('utf8','ignore')
+    sg=re.search(r'data-n-a-sg="([^"]+)"',t);ts=re.search(r'data-n-a-ts="([^"]+)"',t)
+    if not(sg and ts): return ''
+    req=["Fbv4je",'["garturlreq",[["X","X",["X","X"],null,null,1,1,"US:en",null,1,null,null,null,null,null,0,1],"X","X",1,[1,1,1],1,1,null,0,0,null,0],"%s",%s,"%s"]'%(gid,ts.group(1),sg.group(1))]
+    body='f.req='+urllib.parse.quote(_json.dumps([[req]]))
+    r=_ur.urlopen(_ur.Request('https://news.google.com/_/DotsSplashUi/data/batchexecute',data=body.encode(),headers=dict(UA,**{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'})),timeout=timeout).read().decode('utf8','ignore')
+    x=_json.loads(r.split('\n\n',1)[1])[:-2]
+    return _json.loads(x[0][2])[1]
+
 def page_imgs(url):
     """기사 페이지의 og:image·twitter:image·본문 큰 사진 후보"""
     t = get(url, timeout=10) if url and url.startswith('http') and 'news.google.com' not in url else ''
@@ -128,8 +144,21 @@ if Image and os.path.isdir(MEDIA):
             refs.append((t, 'image')); [kid(x) for x in (t.get('today') or []) + (t.get('sources') or [])]
     for i in D.get('issues', []):
         for f in i.get('flow') or []: [kid(x) for x in f.get('items') or []]
+    def kid0(L):
+        for x in L or []:
+            if isinstance(x, dict): x.setdefault('img', ''); kid(x)
+    for i in D.get('issues', []): kid0(i.get('timeline'))
+    for t in D.get('trends', []): kid0(t.get('news')); kid0(t.get('today'))
+    for e in sorted(D.get('entities', []), key=lambda e: -(e.get('score') or 0)): kid0(sorted(e.get('timeline') or [], key=lambda x: x.get('t', ''), reverse=True))
     src = lambda o, k: o.get(k + '_src') if isinstance(o.get(k + '_src'), str) and o[k + '_src'].startswith('http') else o.get(k)
     urls = list(dict.fromkeys(src(o, k) for o, k in refs if isinstance(src(o, k), str) and src(o, k).startswith('http')))
+    # 목록에 사진이 없던 기사: 기사 페이지의 대표 사진(og:image)을 찾아 채움 (실행당 PAGE_MAX건, 실패는 14일 뒤 재시도)
+    NOIMG = {}
+    for o, k in refs:
+        if isinstance(o, dict) and o.get(k) == '' and not o.get(k + '_src') and str(o.get('url', '')).startswith('http'):
+            NOIMG.setdefault('page:' + o['url'], []).append((o, k))
+    OURL = {}; PDL = time.time() + int(os.environ.get('PAGE_SEC', '240'))
+    ptodo = [u for u in NOIMG if u not in M][:int(os.environ.get('PAGE_MAX', '300'))]
     # 새 주소 + 예전 방식(640px 축소·크기 미기록) 백필
     todo = [u for u in urls if u not in M or (M[u].get('v') != MV and (M[u].get('f') or M[u].get('used', '') < DAY))][:int(os.environ.get('MEDIA_NEW_MAX', '100'))]
     def best(cands):
@@ -143,19 +172,32 @@ if Image and os.path.isdir(MEDIA):
             if top.width >= 1200: break
         return top
     def fetch(u):
+        if u.startswith('page:'):
+            if time.time() > PDL: return u, None, -1, 0   # 시간 초과 → 기록 없이 다음 실행에서 재시도
+            pg = u[5:]
+            if 'news.google.com' in pg:
+                try: pg = gdecode(pg) or ''
+                except Exception: pg = ''
+                if pg: OURL[u] = pg
+            im = best([c for x in page_imgs(pg) for c in upgrade(x)][:6]) if pg else None
+            if not im: return u, None, 0, 0
+            return shrink(u, im)
         im = best(upgrade(u))
         if (not im or im.width < 1200) and PAGE.get(u):
             alt = best([c for x in page_imgs(PAGE[u]) for c in upgrade(x)][:6])
             if alt and (not im or alt.width > im.width): im = alt
         if not im: return u, None, 0, 0
+        return shrink(u, im)
+    def shrink(u, im):
         w0, h0 = im.size
         if w0 < MINW or h0 < 200: return u, None, w0, h0   # 너무 작음 → 쓰지 않음(디자인 카드로 대체)
         if im.mode not in ('RGB', 'L'): im = im.convert('RGB')
         if im.width > MAXW: im = im.resize((MAXW, round(im.height * MAXW / im.width)), Image.LANCZOS)   # 축소만, 확대 없음
         o = io.BytesIO(); im.save(o, 'WEBP', quality=82, method=5); return u, o.getvalue(), im.width, im.height
     added = upd = small = 0
-    with ThreadPoolExecutor(8) as ex:
-        for u, w, W, H in ex.map(fetch, todo):
+    with ThreadPoolExecutor(16) as ex:
+        for u, w, W, H in ex.map(fetch, todo + ptodo):
+            if W == -1: continue
             if not w:
                 if W: small += 1
                 M[u] = dict(f=None, used=DAY, v=MV, w=W, h0=H, small=bool(W)); continue
@@ -164,9 +206,17 @@ if Image and os.path.isdir(MEDIA):
                 p = os.path.join(MEDIA, f); os.makedirs(os.path.dirname(p), exist_ok=True); open(p, 'wb').write(w); BYH[ch] = f; added += 1
             if u in M and M[u].get('f') and M[u]['f'] != f: upd += 1
             M[u] = dict(f=f, h=ch, used=DAY, b=len(w), w=W, h0=H, v=MV)
-    for u in urls:
+    for u in urls + list(NOIMG):
         if u in M: M[u]['used'] = DAY
+    for pu, lst in NOIMG.items():
+        v = M.get(pu) or {}
+        if v.get('f'):
+            for o, k in lst: o[k] = 'media/' + v['f']; o[k + '_w'] = v['w']; o[k + '_h'] = v.get('h0')
+        if pu in OURL and pu in M: M[pu]['ou'] = OURL[pu]
+        if v.get('ou') or OURL.get(pu):
+            for o, k in lst: o['ourl'] = v.get('ou') or OURL[pu]   # 구글 뉴스 중계 링크 대신 원문 주소
     for o, k in refs:
+        if isinstance(o.get(k), str) and o[k].startswith('media/') and not o.get(k + '_src'): continue
         u = src(o, k)
         if not isinstance(u, str): continue
         v = M.get(u) or {}
