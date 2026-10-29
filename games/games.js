@@ -105,7 +105,7 @@ function badges(v){const T=window.NBTaste;const L=G.B.map(b=>({b,r:T.req(b)}));c
   v.innerHTML=`<div class="gx-bh"><h2>배지 우표첩 <b>${got}</b><span>/ ${L.length}</span></h2><p>빈 자리는 아직 모으지 못한 배지예요. 조건을 채우면 그 자리에 메달이 찍혀요. 배지를 누르면 남은 목표와 내 기록 분석을 볼 수 있어요.</p></div>
    <div class="sb-page"><div class="sb-grid">${L.map(({b,r})=>{const on=r.t>=0,fresh=on&&(seen[b[0]]==null||seen[b[0]]<r.t),C=on?G.TIERS[b[7]!=null?b[7]:Math.min(r.t,6)]:null;
      return`<button type="button" class="sb-st ${on?'got':''} ${fresh?'fresh':''}" data-b="${b[0]}" aria-label="${E(b[1])} 배지 자세히">${on?`<span class="sb-tier" style="--c:${C[1]}">${b[7]!=null?'스페셜':C[0]}</span>`:''}
-      <span class="sb-slot"><span class="sb-m">${G.medal(b,r.t,92)}</span></span><h3>${E(b[1])}</h3><span class="sb-req">${r.done?'모든 등급을 모았어요':E(r.label)}</span>
+      <span class="sb-slot">${G.slot(b,r.t,112)}</span><h3>${E(b[1])}</h3><span class="sb-req">${r.done?'모든 등급을 모았어요':E(r.label)}</span>
       <span class="sb-pb" role="progressbar" aria-valuenow="${r.pct}" aria-valuemin="0" aria-valuemax="100"><i style="--p:${r.pct}%"></i></span><span class="sb-num"><b>${r.v.toLocaleString()}</b> / ${r.goal.toLocaleString()}${r.done?'':` · ${r.left.toLocaleString()}${r.unit} 남음`}</span></button>`}).join('')}</div></div>`;
   L.forEach(({b,r})=>{if(r.t>=0)seen[b[0]]=r.t});setTimeout(()=>localStorage.setItem('nb-stamp',JSON.stringify(seen)),1500);
   v.querySelector('.sb-grid').onclick=e=>{const x=e.target.closest('[data-b]');if(x)sheet(G.B.find(b=>b[0]===x.dataset.b))}}
