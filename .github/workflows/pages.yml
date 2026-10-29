@@ -22,20 +22,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
-        with:
-          ref: data
-          path: _data
-      - uses: actions/checkout@v4
-        with:
-          ref: media
-          path: _media
-      - uses: actions/checkout@v4
-        with:
-          ref: politicians
-          path: _pol
       - name: Prepare Pages artifact
         run: |
+          git clone -q --depth 1 --branch data "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" _data
+          git clone -q --depth 1 --branch media "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" _media
+          git clone -q --depth 1 --branch politicians "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" _pol
           mkdir _site
           cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png favicon.ico _site/
           mkdir _site/data
