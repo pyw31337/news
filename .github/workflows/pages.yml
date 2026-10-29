@@ -25,31 +25,31 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: data
-          path: data
+          path: _data
       - uses: actions/checkout@v4
         with:
           ref: media
-          path: media
+          path: _media
       - uses: actions/checkout@v4
         with:
           ref: politicians
-          path: pol
+          path: _pol
       - name: Prepare Pages artifact
         run: |
           mkdir _site
           cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png favicon.ico _site/
           mkdir _site/data
-          cp -r data/today.json data/archive _site/data/
-          cp data/global.json data/status.json data/briefs.json data/official.json data/ecos_series.json data/voice.json data/fun.json _site/data/ 2>/dev/null || true
-          cp -r data/gov _site/data/ 2>/dev/null || true
+          cp -r _data/today.json _data/archive _site/data/
+          cp _data/global.json _data/status.json _data/briefs.json _data/official.json _data/ecos_series.json _data/voice.json _data/fun.json _site/data/ 2>/dev/null || true
+          cp -r _data/gov _site/data/ 2>/dev/null || true
           mkdir -p _site/media
-          cp -r media/img _site/media/ 2>/dev/null || true
+          cp -r _media/img _site/media/ 2>/dev/null || true
           python3 scripts/build_pages.py _site
           cp -r politicians persons history games privacy terms login _site/
           mkdir -p _site/data/pol
-          cp -r pol/index.json pol/people _site/data/pol/
-          cp -r pol/photos _site/data/pol/ 2>/dev/null || true
-          cp pol/feed.json _site/data/pol/ 2>/dev/null || true
+          cp -r _pol/index.json _pol/people _site/data/pol/
+          cp -r _pol/photos _site/data/pol/ 2>/dev/null || true
+          cp _pol/feed.json _site/data/pol/ 2>/dev/null || true
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
