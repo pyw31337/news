@@ -53,7 +53,12 @@
 .gm-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;padding:0 var(--ds-5);border-radius:var(--ds-r-pill);border:0;background:var(--ds-brand);color:#fff;font:var(--ds-w-bold) var(--ds-t-body) var(--ds-sans);text-decoration:none;cursor:pointer}
 .gm-btn.ghost{background:var(--ds-bg);color:var(--ds-ink)}.gm-btn.wide{width:100%}
 /* 메달 */
-.gm-medal{display:block;overflow:visible}.gm-medal.off{opacity:.75}
+.gm-medal{display:block;position:relative;flex:none;line-height:0}.gm-medal img{width:100%;height:100%;object-fit:contain;display:block;-webkit-user-select:none;user-select:none}
+.gm-medal.on img{filter:drop-shadow(0 6px 6px rgba(20,14,0,.32)) drop-shadow(0 1px 1px rgba(0,0,0,.2))}
+.gm-medal.off img{filter:grayscale(1) brightness(1.08) contrast(.55);opacity:.42}
+.gm-glint{position:absolute;inset:0;pointer-events:none;-webkit-mask:var(--mk) center/contain no-repeat;mask:var(--mk) center/contain no-repeat;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.75) 48%,transparent 60%) no-repeat;background-size:250% 100%;background-position:150% 0;opacity:0}
+.gm-medal.on .gm-glint{animation:gmglint 4.5s 1s ease-in-out infinite}
+@keyframes gmglint{0%{background-position:150% 0;opacity:1}30%{background-position:-60% 0;opacity:1}31%,100%{opacity:0}}
 /* XP 팝 · 축하 */
 .gm-pop{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);z-index:90;background:var(--ds-ink);color:#fff;border-radius:var(--ds-r-pill);padding:8px 16px;display:flex;gap:8px;align-items:center;font-size:var(--ds-t-small);box-shadow:var(--ds-sh-2);animation:gmpop 1.9s ease forwards}
 .gm-pop b{color:var(--ds-brand-2);font-weight:var(--ds-w-black)}
@@ -73,7 +78,7 @@
 @keyframes gmconf{0%{opacity:1;transform:translate(0,0) rotate(0)}100%{opacity:0;transform:translate(var(--x),calc(var(--y) + 220px)) rotate(var(--r))}}
 .gm-lvbig{font:var(--ds-w-black) 64px/1 var(--ds-sans);letter-spacing:-.05em;background:linear-gradient(135deg,var(--ds-brand-2),var(--ds-brand),var(--ds-violet));-webkit-background-clip:text;background-clip:text;color:transparent}
 .gm-lvbig span{font-size:22px}
-@media(prefers-reduced-motion:reduce){.gm-cc .gm-medal,.gm-burst i,.gm-pop{animation:none}}
+@media(prefers-reduced-motion:reduce){.gm-glint,.gm-cc .gm-medal,.gm-burst i,.gm-pop{animation:none}}
 
 .gm-sheen{animation:gmsheen 4.5s ease-in-out infinite;transform-box:view-box}
 @keyframes gmsheen{0%,55%{translate:0 0}85%,100%{translate:140px 0}}

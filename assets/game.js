@@ -58,32 +58,9 @@ let uid=0;
 /* 등급별 금속 팔레트: 하이라이트, 밝은 면, 기본, 그림자, 가장자리(두께) */
 const METAL=[['#ffe2c2','#e9a46a','#b8743d','#7a4520','#4e2a12'],['#ffffff','#e8edf3','#b9c2cf','#7d8796','#4c5563'],['#fff6c9','#ffd54a','#e0a400','#9a6a00','#5e3f00'],['#ffffff','#dff7f3','#a8d8d2','#5f9e98','#335f5b'],['#ffffff','#d9ecff','#8fc3ff','#3f6fe0','#1d3480'],['#fbefff','#d9b0ff','#a66bf0','#6a2fc0','#3b1677'],['#fff1d8','#ff9c6b','#e2453b','#9c1630','#5a0a1c']];
 const SH={circle:'<circle cx="50" cy="52" r="33"/>',hex:'<path d="M50 17l31 17.5v35L50 87 19 69.5v-35z"/>',shield:'<path d="M50 17l30 10v23c0 21-13 32-30 38-17-6-30-17-30-38V27z"/>',star:'<path d="M50 15l9 11 14-3 1 14 12 7-7 12 7 12-12 7-1 14-14-3-9 11-9-11-14 3-1-14-12-7 7-12-7-12 12-7 1-14 14 3z"/>'};
-function medal(b,t,size=88){const on=t>=0,id='m'+(++uid),shape=SH[b[4]],ti=on?(b[7]!=null?b[7]:Math.min(t,6)):-1;
-  const P=on?METAL[ti]:['#f4f5f8','#e3e6ec','#cdd2db','#aeb4c0','#9aa1ae'];
-  const face=`translate(50 52) scale(.8) translate(-50 -52)`;
-  const ribC=on?TIERS[ti][1]:'#c9ced8',rib=on?`<g><path d="M30 0h17l6 30-10 4z" fill="url(#${id}r)"/><path d="M53 0h17l-13 34-10-4z" fill="url(#${id}r2)"/><path d="M30 0h17l1 4H31z" fill="#000" opacity=".18"/><path d="M38 0l9 30" stroke="#fff" stroke-opacity=".25" stroke-width="1"/><path d="M62 0l-9 30" stroke="#000" stroke-opacity=".15" stroke-width="1"/></g>`:'';
-  const icon=(dx,dy,c,o)=>`<svg x="${34+dx}" y="${36+dy}" width="32" height="32" viewBox="0 0 24 24" style="color:${c}" opacity="${o}"><use href="#g-${b[3]}"/></svg>`;
-  return`<svg class="gm-medal ${on?'on':'off'}" viewBox="0 0 100 104" width="${size}" height="${size*1.04}" aria-hidden="true"><defs>
-   <linearGradient id="${id}r" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${ribC}"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset=".55" stop-color="${ribC}"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient>
-   <linearGradient id="${id}r2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".3"/><stop offset=".4" stop-color="${ribC}"/><stop offset="1" stop-color="${ribC}"/></linearGradient>
-   <radialGradient id="${id}cs" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity="${on?.38:.12}"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
-   <linearGradient id="${id}e" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P[3]}"/><stop offset="1" stop-color="${P[4]}"/></linearGradient>
-   <linearGradient id="${id}rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${P[0]}"/><stop offset=".25" stop-color="${P[1]}"/><stop offset=".55" stop-color="${P[3]}"/><stop offset=".8" stop-color="${P[2]}"/><stop offset="1" stop-color="${P[0]}"/></linearGradient>
-   <linearGradient id="${id}f" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${P[3]}"/><stop offset=".18" stop-color="${P[2]}"/><stop offset=".42" stop-color="${P[1]}"/><stop offset=".5" stop-color="${P[0]}"/><stop offset=".58" stop-color="${P[1]}"/><stop offset=".8" stop-color="${P[2]}"/><stop offset="1" stop-color="${P[3]}"/></linearGradient>
-   <linearGradient id="${id}br" x1="0" y1="0" x2="0" y2="1" gradientTransform="rotate(8)"><stop offset="0" stop-color="#fff" stop-opacity=".0"/>${Array.from({length:14},(_,k)=>`<stop offset="${(k+.5)/14}" stop-color="${k%2?'#fff':'#000'}" stop-opacity="${on?.06:.03}"/>`).join('')}<stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-   <linearGradient id="${id}bv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${on?P[4]:'#8d94a3'}" stop-opacity=".55"/><stop offset=".5" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".85"/></linearGradient>
-   <radialGradient id="${id}sp" cx=".32" cy=".24" r=".42"><stop offset="0" stop-color="#fff" stop-opacity="${on?.9:.5}"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-   <linearGradient id="${id}sw" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-   <clipPath id="${id}c"><g transform="${face}">${shape}</g></clipPath></defs>
-   <ellipse cx="50" cy="94" rx="30" ry="6" fill="url(#${id}cs)"/>${rib}
-   <g transform="translate(0 3.2)" fill="url(#${id}e)">${shape}</g>
-   <g transform="translate(0 1.6)" fill="${P[4]}" opacity=".6">${shape}</g>
-   <g fill="url(#${id}rim)" stroke="${P[4]}" stroke-opacity=".5" stroke-width=".8">${shape}</g>
-   <g transform="${face}" fill="url(#${id}f)" stroke="url(#${id}bv)" stroke-width="3">${shape}</g>
-   <g clip-path="url(#${id}c)"><rect x="0" y="0" width="100" height="104" fill="url(#${id}br)"/>${on?'<rect class="gm-sheen" x="-40" y="-10" width="26" height="130" fill="url(#'+id+'sw)" transform="rotate(20 50 52)"/>':''}</g>
-   <g fill="url(#${id}sp)">${shape}</g>
-   ${icon(-.7,-.7,on?P[4]:'#9aa1ae',.55)}${icon(.7,.9,'#fff',on?.75:.8)}${icon(0,0,on?P[3]:'#c5cad4',1)}<g transform="translate(50 52) scale(.7) translate(-50 -52)" fill="none" stroke="#fff" stroke-opacity="${on?.35:.5}" stroke-width="1">${shape}</g>${on&&ti>=4?[[30,34,5],[70,70,3.6],[66,30,2.6]].map(([x,y,r])=>`<path d="M${x} ${y-r}L${x+r*.22} ${y-r*.22}L${x+r} ${y}L${x+r*.22} ${y+r*.22}L${x} ${y+r}L${x-r*.22} ${y+r*.22}L${x-r} ${y}L${x-r*.22} ${y-r*.22}z" fill="#fff" class="gm-glint"/>`).join(''):''}
-   ${on&&b[6].length>1?`<g><circle cx="80" cy="26" r="10.5" fill="#0f1630" stroke="#fff" stroke-width="2"/><text x="80" y="30.4" text-anchor="middle" font-size="11.5" font-weight="900" fill="#fff" font-family="Pretendard Variable,Pretendard,sans-serif">${t+1}</text></g>`:''}</svg>`}
+function medal(b,t,size=88){const on=t>=0,ti=on?(b[7]!=null?b[7]:Math.min(t,6)):(b[7]!=null?b[7]:0),
+  src=`assets/badges/${b[0]}-${ti}${size<=64?'-s':''}.webp`;
+  return`<span class="gm-medal ${on?'on':'off'} gm-t${ti}" style="width:${size}px;height:${size}px;--mk:url(${src})" aria-hidden="true"><img src="${src}" width="${size}" height="${size}" alt="" loading="lazy" decoding="async" draggable="false"><i class="gm-glint"></i></span>`}
 /* ---------- 상태 저장·동기화(변경 시에만) ---------- */
 let pushT=null;
 const save=(important)=>{S.at=Date.now();localStorage.setItem(K,JSON.stringify(S));if(important)push()};
