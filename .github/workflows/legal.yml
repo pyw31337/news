@@ -31,6 +31,7 @@ jobs:
         env:
           LAW_OC: ${{ secrets.LAW_OC }}
           DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
+          LEGAL_DEBUG: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
         run: python scripts/legal/collect.py lg dd/db/articles
       - name: 저장
         run: |
