@@ -41,14 +41,20 @@ const saveS=()=>{localStorage.setItem('nb-settings',JSON.stringify(S));applyS()}
 const applyS=()=>{document.documentElement.style.fontSize=(16*S.fs/100)+'px'};applyS();
 const vis=i=>!S.hide.includes(i.category);
 
+const ourl=o=>{if(Array.isArray(o))o.forEach(ourl);else if(o&&typeof o==='object'){if(o.ourl)o.url=o.ourl;for(const k in o)if(o[k]&&typeof o[k]==='object')ourl(o[k])}};
+/* 첫 화면은 가벼운 today_lite.json(인물 타임라인 최신 12건)으로 그리고, 전체 today.json은 뒤에서 받아 인물 타임라인만 채움 */
+let FULL=null;
+function fullData(){return FULL||(FULL=fetch('data/today.json?'+Date.now()).then(r=>r.json()).then(F=>{ourl(F);const m={};(F.entities||[]).forEach(e=>m[e.name]=e.timeline);D.entities.forEach(e=>{if(m[e.name])e.timeline=m[e.name]});D.lite=0}).catch(()=>{D.lite=0}))}
 async function load(){
-  D=await (await fetch('data/today.json?'+Date.now())).json();
-  {const W=o=>{if(Array.isArray(o))o.forEach(W);else if(o&&typeof o==='object'){if(o.ourl)o.url=o.ourl;for(const k in o)if(o[k]&&typeof o[k]==='object')W(o[k])}};W(D)}
+  let r=null;try{r=await fetch('data/today_lite.json?'+Date.now())}catch(e){}
+  if(!r||!r.ok)r=await fetch('data/today.json?'+Date.now());
+  D=await r.json();ourl(D);
   try{G=await (await fetch('data/global.json?'+Date.now())).json()}catch(e){G=null}
   try{O=await (await fetch('data/official.json?'+Date.now())).json()}catch(e){O=null}
   try{BR=await (await fetch('data/briefs.json?'+Date.now())).json()}catch(e){BR=null}
   try{PL=await (await fetch('assets/press/index.json?v=1')).json()}catch(e){PL={}}
   header();route();
+  if(D.lite)(window.requestIdleCallback||setTimeout)(fullData,{timeout:2500});
 }
 let G=null,PL={};
 /* 검색량 표기: Google 트렌드 '오늘 검색 횟수(대략)' 구간 */
@@ -108,6 +114,7 @@ document.addEventListener('click',async e=>{const b=e.target.closest('[data-shar
   try{await navigator.clipboard.writeText(url);toast('링크를 복사했어요')}catch(x){prompt('링크를 복사하세요',url)}});
 function route(){
   if(!D)return;setMeta();const h=decodeURIComponent(location.pathname.slice(BASEP.length)).replace(/\/+$/,'');const v=h.split('/')[0],a=h.split('/').slice(1).join('/');
+  if(D.lite&&['entity','timeline','people','map'].includes(v)){const p=location.pathname;app.innerHTML='<div class="loading">기록을 불러오고 있어요…</div>';fullData().then(()=>{if(location.pathname===p)route()});return}
   const tab={'':'today',issue:'today',kw:'today',g:'today',gt:'today',entity:'people'}[v]??v;
   if(S.region==='en'&&G&&(v===''||v==='g'||v==='gt')){document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v==='today'));window.scrollTo(0,0);return v==='g'?gissue(a):v==='gt'?gtrend(+a):gtoday()}
   document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v===tab));

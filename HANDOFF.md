@@ -36,7 +36,7 @@
 
 ## 3. 아키텍처
 - **프런트:** 정적 사이트(GitHub Pages, `main`). `index.html` + `assets/*` (app.js 본체, nb2 상세, ds 디자인 시스템, deck 카드덱, comic2 만화, econ/gov 마켓·정부, my 내 서재·내비·동기화, fun 퀴즈/만화/카드뉴스, icons 스프라이트, sharp 사진 규칙). `persons/` 인물 아카이브 화면, `politicians/` 정치인, `admin/` 진단.
-- **서비스워커 `sw.js`:** 캐시 이름 `nb-vNN`(2026-10-29 15:50 기준 **nb-v37** 배포됨 → 다음은 nb-v38부터, 커밋 직전 `grep nb-v sw.js`로 재확인). **화면 파일을 바꾸면 반드시 다음 번호로 올리고**, 바꾼 파일의 `?v=` 쿼리도 올릴 것. 동시 작업자가 있으므로 커밋 전 `git pull --rebase` 후 **비어 있는 다음 번호**를 사용.
+- **서비스워커 `sw.js`:** 캐시 이름 `nb-vNN`(2026-10-30 기준 **nb-v54** → 다음은 nb-v55부터, 커밋 직전 `grep nb-v sw.js`로 재확인). `sw.js` SHELL의 `?v=`는 `index.html`과 항상 같게. **화면 파일을 바꾸면 반드시 다음 번호로 올리고**, 바꾼 파일의 `?v=` 쿼리도 올릴 것. 동시 작업자가 있으므로 커밋 전 `git pull --rebase` 후 **비어 있는 다음 번호**를 사용.
 - **수집 파이프라인 (`scripts/`):** `collect.py`(네이버 랭킹·구글뉴스·트렌드 → 이슈 TOP10) → `enrich.py`(흐름·여론·시장·단어·과거 연결·AI 해석) → `db.py`(기사 DB·엔티티·사진 WebP 백필) → `fun.py`(퀴즈·만화·카드뉴스) 등. `classify.py` 카테고리 분류, `press_logos.py` 언론사 로고, `kr_gov.py`/`ecos_series.py` 시장·경제, `politicians/` 국회 DB, `archive/build.py` 인물 아카이브.
 - **Cloudflare Worker** `newsboard-sync` (https://newsboard-sync.pyw213.workers.dev, 소스 `worker/`): 로그인·동기화 API, 아카이브 API. 계정 pyw213@naver.com (박스에 wrangler 로그인됨).
 
@@ -166,6 +166,7 @@
 9. 미결정: `data`·`media` 브랜치 이력 정리 여부(사용자 답변 대기)
 
 ## 7. 알려진 문제
+- Cloudflare `Workers Builds: newsboard-sync` 체크는 main 이외 브랜치(PR 포함)에서 항상 실패(대시보드 설정 문제, 코드 무관). 필요 없으면 Workers > newsboard-sync > Settings > Build에서 비-production 브랜치 빌드 끄기.
 - `gov/stocks.json`의 날짜 데이터가 비어 있음.
 - 출처 기사 썸네일 34% — 구글뉴스 링크는 원문 해석이 필요하고 저해상도는 규칙상 숨김.
 - 수집 1회에 원문 실패 약 91건(성공 814건) 수준.
@@ -225,6 +226,9 @@
 - law.go.kr·scourt·ccourt·data.go.kr은 박스에서 막힘 → GitHub Actions에서 테스트.
 
 ## 11. 배운 함정
+- 배포 경로 2개: `collect.yml`(30분 수집+배포)과 `pages.yml`(main 푸시 시 배포). 둘 다 같은 '사이트 묶기'(404·공유 페이지·og·썸네일·아카이브·정치인)를 해야 하고 concurrency 그룹 `collect`를 공유. 한쪽만 고치지 말 것.
+- 첫 화면은 `data/today_lite.json`(`scripts/split_today.py`가 배포 때 생성, 인물 타임라인 최신 12건 + `tn` 전체 건수)으로 그림. 전체 `today.json`은 `app.js fullData()`가 뒤에서 받아 인물 타임라인만 합침. 인물·타임라인·화제·관계맵 화면은 전체 도착 후 그림. 새 화면이 `entities[].timeline` 전체를 쓰면 `route()`의 목록에 추가.
+- 모바일 성능: 움직이는 카드 안에 `backdrop-filter` 금지(스와이프마다 재계산), 무한 애니메이션은 transform·opacity만, 매 프레임 `scrollWidth` 같은 레이아웃 읽기 금지.
 - D1: 전량 재적재 3회로 19.8만 줄 → 한도 초과. 반드시 줄 단위 diff upsert, 배치, 한 요청 한 트랜잭션, 아카이브 하루 4만 줄(UTC 0시 = 09:00 KST 초기화). 대량 데이터는 git 브랜치/R2로.
 - 구글뉴스 링크는 중계 링크 → 원문 해석해야 썸네일(og:image) 확보(회당 300 백필).
 - law.go.kr "필수입력요소 검증 실패" = OC가 아니라 Referer 누락이었음.

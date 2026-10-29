@@ -40,6 +40,7 @@ jobs:
           mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true); (cp data/voice.json _site/data/ 2>/dev/null || true); (cp data/fun.json _site/data/ 2>/dev/null && python scripts/fun_og.py _site || true)
           (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null || true)
           python scripts/build_pages.py _site
+          python scripts/split_today.py _site || true
           cp -r politicians _site/ 2>/dev/null || true; cp -r persons _site/ 2>/dev/null || true; cp -r history _site/ 2>/dev/null || true; cp -r games _site/ 2>/dev/null || true; cp -r privacy terms login _site/ 2>/dev/null || true
           if git clone -q --depth 1 --branch politicians "$repo" pol_db 2>/dev/null; then
             mkdir -p _site/data/pol && cp -r pol_db/index.json pol_db/people _site/data/pol/ && (cp -r pol_db/photos _site/data/pol/ || true) && (cp pol_db/feed.json _site/data/pol/ || true)
