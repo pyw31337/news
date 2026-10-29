@@ -65,14 +65,35 @@ async function backup(env) {
   const out = {};
   for (const t of ['users', 'docs', 'push_subs']) out[t] = (await env.DB.prepare('SELECT * FROM ' + t).all()).results;
   const d = new Date(now() + 9 * 36e5).toISOString().slice(0, 10);
-  const body = new Blob([JSON.stringify({ at: new Date().toISOString(), ...out })]).stream().pipeThrough(new CompressionStream('gzip'));
-  await env.BK.put('d1/' + d + '.json.gz', body, { httpMetadata: { contentType: 'application/gzip' } });
+  const body = new Blob([JSON.stringify({ at: new Date().toISOString(), ...out })]).stream().pipeThrough(new CompressionStream('gzip')); const buf = await new Response(body).arrayBuffer();
+  await env.BK.put('d1/' + d + '.json.gz', buf, { httpMetadata: { contentType: 'application/gzip' } });
   const old = await env.BK.list({ prefix: 'd1/' });   // 30일 지난 백업 정리
   const cut = new Date(now() - 30 * DAY + 9 * 36e5).toISOString().slice(0, 10);
   for (const o of old.objects) if (o.key.slice(3, 13) < cut) await env.BK.delete(o.key);
   await env.DB.prepare('DELETE FROM sessions WHERE exp<?').bind(now()).run();
   await env.DB.prepare('DELETE FROM oauth_state WHERE exp<?').bind(now()).run();
+  if (env.AR) await backupArchive(env, d);
   return d;
+}
+// 인물 아카이브도 30일 보관: 표마다 3000줄씩 나눠 저장(무료 한도 안에서)
+async function backupArchive(env, d) {
+  for (const t of ['persons', 'events', 'edges', 'nodes', 'runs']) {
+    for (let o = 0, i = 0; ; o += 3000, i++) {
+      const r = (await env.AR.prepare('SELECT * FROM ' + t + ' LIMIT 3000 OFFSET ' + o).all()).results;
+      if (!r.length) break;
+      const body = new Blob([JSON.stringify(r)]).stream().pipeThrough(new CompressionStream('gzip')); const buf = await new Response(body).arrayBuffer();
+      await env.BK.put('archive/' + d + '/' + t + '-' + i + '.json.gz', buf, { httpMetadata: { contentType: 'application/gzip' } });
+      if (r.length < 3000) break;
+    }
+  }
+  const cut = new Date(now() - 30 * DAY + 9 * 36e5).toISOString().slice(0, 10);
+  let cur;
+  do {
+    const l = await env.BK.list({ prefix: 'archive/', cursor: cur });
+    const del = l.objects.filter(o => o.key.slice(8, 18) < cut).map(o => o.key);
+    if (del.length) await env.BK.delete(del);
+    cur = l.truncated ? l.cursor : null;
+  } while (cur);
 }
 
 // ── 인물 아카이브(공개 읽기, 수집기만 쓰기) ──

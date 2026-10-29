@@ -227,7 +227,7 @@ Object.defineProperty(window,'_wrapToday',{value:1});
 let _t=window.today;setTimeout(()=>{if(window.today!==_t){window._todayInner=window.today;window.today=_t;}},0);
 ['market','issue','entity','kw'].forEach(n=>{const f=window[n];if(typeof f==='function')window[n]=function(){const r=f.apply(this,arguments);setTimeout(after,0);return r}});
 fetch('data/gov/apt.json').then(r=>r.ok?r.json():null).then(j=>{window._APT=j;badge()}).catch(()=>{});
-ready.then(()=>{nav();const go_=()=>{if((typeof D!=='undefined'&&D)){hl();after();const[v]=curV();if(['my','menu','alerts'].includes(v))route()}else setTimeout(go_,150)};go_()});
+ready.then(()=>{nav();if(typeof BASEP==='undefined'){document.querySelectorAll('.tabbar [data-v=menu]').forEach(x=>x.classList.add('on'));return}const go_=()=>{if((typeof D!=='undefined'&&D)){hl();after();const[v]=curV();if(['my','menu','alerts'].includes(v))route()}else setTimeout(go_,150)};go_()});
 })();
 
 /* 이슈 상세 → 인물 아카이브 연결(이슈 본문에 등장하는 아카이브 인물) */
