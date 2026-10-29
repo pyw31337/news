@@ -41,14 +41,20 @@ const saveS=()=>{localStorage.setItem('nb-settings',JSON.stringify(S));applyS()}
 const applyS=()=>{document.documentElement.style.fontSize=(16*S.fs/100)+'px'};applyS();
 const vis=i=>!S.hide.includes(i.category);
 
+const ourl=o=>{if(Array.isArray(o))o.forEach(ourl);else if(o&&typeof o==='object'){if(o.ourl)o.url=o.ourl;for(const k in o)if(o[k]&&typeof o[k]==='object')ourl(o[k])}};
+/* 첫 화면은 가벼운 today_lite.json(인물 타임라인 최신 12건)으로 그리고, 전체 today.json은 뒤에서 받아 인물 타임라인만 채움 */
+let FULL=null;
+function fullData(){return FULL||(FULL=fetch('data/today.json?'+Date.now()).then(r=>r.json()).then(F=>{ourl(F);const m={};(F.entities||[]).forEach(e=>m[e.name]=e.timeline);D.entities.forEach(e=>{if(m[e.name])e.timeline=m[e.name]});D.lite=0}).catch(()=>{D.lite=0}))}
 async function load(){
-  D=await (await fetch('data/today.json?'+Date.now())).json();
-  {const W=o=>{if(Array.isArray(o))o.forEach(W);else if(o&&typeof o==='object'){if(o.ourl)o.url=o.ourl;for(const k in o)if(o[k]&&typeof o[k]==='object')W(o[k])}};W(D)}
+  let r=null;try{r=await fetch('data/today_lite.json?'+Date.now())}catch(e){}
+  if(!r||!r.ok)r=await fetch('data/today.json?'+Date.now());
+  D=await r.json();ourl(D);
   try{G=await (await fetch('data/global.json?'+Date.now())).json()}catch(e){G=null}
   try{O=await (await fetch('data/official.json?'+Date.now())).json()}catch(e){O=null}
   try{BR=await (await fetch('data/briefs.json?'+Date.now())).json()}catch(e){BR=null}
   try{PL=await (await fetch('assets/press/index.json?v=1')).json()}catch(e){PL={}}
   header();route();
+  if(D.lite)(window.requestIdleCallback||setTimeout)(fullData,{timeout:2500});
 }
 let G=null,PL={};
 /* 검색량 표기: Google 트렌드 '오늘 검색 횟수(대략)' 구간 */
@@ -77,15 +83,19 @@ function header2(){
 /* 티커: 자동 흐름 + 마우스 드래그·터치 스와이프 */
 function tickerDrag(el){
   let down=false,sx=0,sl=0,moved=false,pause=0,raf;
-  const half=()=>el.scrollWidth/2;
-  const step=()=>{if(!down&&Date.now()>pause&&!matchMedia('(prefers-reduced-motion: reduce)').matches){el.scrollLeft+=.6;if(el.scrollLeft>=half())el.scrollLeft-=half()}raf=requestAnimationFrame(step)};
-  cancelAnimationFrame(window._tkr);window._tkr=requestAnimationFrame(step);
+  let hw=el.scrollWidth/2,last=0,vis=true;const half=()=>hw,RM=matchMedia('(prefers-reduced-motion: reduce)');
+  if(window.ResizeObserver){window._tkro&&window._tkro.disconnect();window._tkro=new ResizeObserver(()=>{hw=el.scrollWidth/2});window._tkro.observe(el);el.firstElementChild&&window._tkro.observe(el.firstElementChild)}
+  const step=t=>{const dt=last?Math.min(t-last,50):16.7;last=t;if(!down&&Date.now()>pause&&!RM.matches){el.scrollLeft+=dt*.036;if(el.scrollLeft>=hw)el.scrollLeft-=hw}window._tkr=vis&&!document.hidden?requestAnimationFrame(step):0};
+  const run=()=>{if(!window._tkr&&vis&&!document.hidden){last=0;window._tkr=requestAnimationFrame(step)}};
+  cancelAnimationFrame(window._tkr);window._tkr=0;run();
+  if(window.IntersectionObserver){window._tkio&&window._tkio.disconnect();window._tkio=new IntersectionObserver(es=>{vis=es[es.length-1].isIntersecting;run()});window._tkio.observe(el)}
+  if(!window._tkvis){window._tkvis=1;document.addEventListener('visibilitychange',()=>window._tkrun&&window._tkrun())}window._tkrun=run;
   el.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;sx=e.clientX;sl=el.scrollLeft;el.classList.add('drag')});
   window.addEventListener('pointermove',e=>{if(!down)return;const d=e.clientX-sx;if(Math.abs(d)>4)moved=true;el.scrollLeft=sl-d;if(el.scrollLeft<0)el.scrollLeft+=half();if(el.scrollLeft>=half())el.scrollLeft-=half()});
   window.addEventListener('pointerup',()=>{if(down){down=false;pause=Date.now()+2500;el.classList.remove('drag')}});
   el.addEventListener('click',e=>{if(moved){e.preventDefault();moved=false}},true);
   el.addEventListener('touchstart',()=>{pause=Date.now()+4000},{passive:true});
-  el.addEventListener('scroll',()=>{if(el.scrollLeft>=half())el.scrollLeft-=half()},{passive:true});
+  el.addEventListener('scroll',()=>{if(el.scrollLeft>=hw)el.scrollLeft-=hw},{passive:true});
   el.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){el.scrollLeft+=e.deltaY;e.preventDefault()}pause=Date.now()+2500},{passive:false});
 }
 const BASEP=new URL(document.baseURI).pathname;
@@ -104,6 +114,7 @@ document.addEventListener('click',async e=>{const b=e.target.closest('[data-shar
   try{await navigator.clipboard.writeText(url);toast('링크를 복사했어요')}catch(x){prompt('링크를 복사하세요',url)}});
 function route(){
   if(!D)return;setMeta();const h=decodeURIComponent(location.pathname.slice(BASEP.length)).replace(/\/+$/,'');const v=h.split('/')[0],a=h.split('/').slice(1).join('/');
+  if(D.lite&&['entity','timeline','people','map'].includes(v)){const p=location.pathname;app.innerHTML='<div class="loading">기록을 불러오고 있어요…</div>';fullData().then(()=>{if(location.pathname===p)route()});return}
   const tab={'':'today',issue:'today',kw:'today',g:'today',gt:'today',entity:'people'}[v]??v;
   if(S.region==='en'&&G&&(v===''||v==='g'||v==='gt')){document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v==='today'));window.scrollTo(0,0);return v==='g'?gissue(a):v==='gt'?gtrend(+a):gtoday()}
   document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v===tab));
@@ -160,7 +171,7 @@ function today(){
   <div class="hs">${pcs}</div>
   ${sec('관계로 보는 오늘','Relation map',`<a class="more" href="map">크게 보기 ${NBI('arrow-right')}</a>`,'graph')}
   <div class="card mapwrap mini" id="mapmini"></div>`;
-  graph($('#mapmini'),true);
+  {const mm=$('#mapmini');if(window.IntersectionObserver){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();if(mm.isConnected)graph(mm,true)}},{rootMargin:'600px 0px'});io.observe(mm)}else graph(mm,true)}
   window.nbDeck&&nbDeck($('.rdeck'));
 }
 function wordCard(w){return`<div class="card term word"><div class="wt">${w.wiki.thumb?`<span class="wi" ${bg(w.wiki.thumb)}></span>`:`<span class="wi noimg">${ic('book')}</span>`}<div><h4>${esc(w.word)}</h4><em>${esc(w.wiki.desc||'오늘 기사 '+w.count+'회 등장')}</em></div></div>

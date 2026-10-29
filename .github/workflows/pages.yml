@@ -10,8 +10,9 @@ permissions:
   pages: write
   id-token: write
 
+# collect-news와 같은 그룹: 두 배포가 동시에 돌아 서로 덮어쓰지 않도록 차례로 실행
 concurrency:
-  group: pages
+  group: collect
   cancel-in-progress: false
 
 jobs:
@@ -22,20 +23,29 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install Pillow
+      # collect.yml '사이트 묶기'와 같은 구성. 수집은 다시 하지 않고,
+      # 커밋되지 않는 today·global·status는 지금 공개된 사이트에서, 나머지는 data·media·politicians 브랜치에서 가져옴
       - name: Prepare site with the currently published data
         run: |
-          mkdir _site _site/data _site/data/archive _site/data/gov
-          cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png favicon.ico _site/
-          cp -r politicians persons history games privacy terms login _site/
+          repo="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git clone -q --depth 1 --branch data "$repo" data
+          git clone -q --depth 1 --branch media "$repo" media || mkdir media
           base=https://pyw31337.github.io/news/data
-          curl -fL --retry 3 "$base/today.json" -o _site/data/today.json
-          curl -fsSL --retry 3 "$base/archive/index.json" -o _site/data/archive/index.json || true
-          for f in global.json status.json briefs.json official.json ecos_series.json voice.json fun.json; do
-            curl -fsSL --retry 3 "$base/$f" -o "_site/data/$f" || true
-          done
-          for f in apt.json alerts.json stocks.json; do
-            curl -fsSL --retry 3 "$base/gov/$f" -o "_site/data/gov/$f" || true
-          done
+          curl -fsSL --retry 3 "$base/today.json" -o data/today.json
+          for f in global.json status.json; do curl -fsSL --retry 3 "$base/$f" -o "data/$f" || true; done
+          mkdir _site && cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png favicon.ico _site/
+          mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true); (cp data/voice.json _site/data/ 2>/dev/null || true); (cp data/fun.json _site/data/ 2>/dev/null && python scripts/fun_og.py _site || true)
+          (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null || true)
+          python scripts/build_pages.py _site
+          python scripts/split_today.py _site || true
+          cp -r politicians _site/ 2>/dev/null || true; cp -r persons _site/ 2>/dev/null || true; cp -r history _site/ 2>/dev/null || true; cp -r games _site/ 2>/dev/null || true; cp -r privacy terms login _site/ 2>/dev/null || true
+          if git clone -q --depth 1 --branch politicians "$repo" pol_db 2>/dev/null; then
+            mkdir -p _site/data/pol && cp -r pol_db/index.json pol_db/people _site/data/pol/ && (cp -r pol_db/photos _site/data/pol/ || true) && (cp pol_db/feed.json _site/data/pol/ || true)
+          fi
+          test -f _site/404.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

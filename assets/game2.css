@@ -28,7 +28,7 @@
 .ox-nav button{width:40px;height:40px;border-radius:50%;border:1px solid var(--ds-line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ds-ink)}.ox-nav button:disabled{opacity:.35}.ox-nav .nbi{width:20px;height:20px}
 .ox-dots{flex:1;display:flex;gap:4px;justify-content:center;flex-wrap:wrap}.ox-dots i{width:6px;height:6px;border-radius:50%;background:var(--ds-line);transition:all .2s}.ox-dots i.ok{background:var(--ds-green)}.ox-dots i.no{background:var(--ds-brand)}.ox-dots i.on{width:16px;border-radius:4px;box-shadow:0 0 0 2px #fff,0 0 0 3px var(--ds-ink)}
 /* --- 카드의 나중에 읽기 --- */
-.rcard .rlater{position:absolute;top:12px;right:12px;z-index:5;display:flex;align-items:center;gap:4px;height:34px;padding:0 12px 0 9px;border-radius:var(--ds-r-pill);border:0;background:rgba(15,22,48,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font:var(--ds-w-bold) 12px var(--ds-sans);cursor:pointer;transition:background .2s,transform .2s}
+.rcard .rlater{position:absolute;top:12px;right:12px;z-index:5;display:flex;align-items:center;gap:4px;height:34px;padding:0 12px 0 9px;border-radius:var(--ds-r-pill);border:0;background:rgba(15,22,48,.7);color:#fff;font:var(--ds-w-bold) 12px var(--ds-sans);cursor:pointer;transition:background .2s,transform .2s}
 .rcard .rlater .nbi{width:17px;height:17px}.rcard .rlater.on{background:var(--ds-brand)}.rcard .rlater.bump{transform:scale(1.15)}
 @media (min-width:900px){.side .srow:nth-child(n+7){display:none}}
 /* --- 내 서재 --- */
