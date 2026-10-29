@@ -1,7 +1,18 @@
 # NewsBoard 인수인계 (HANDOFF)
 
-> 최종 갱신: 2026-10-29 13:45 KST (법률 수집·API 신청 가이드·요청 점검표 추가) (기록 보관소·history 백필·내 지표판 추가) · 다음 에이전트는 **이 문서 → docs/ROADMAP.md → docs/design-system.md → docs/icons.md** 순서로 읽고 시작하세요.
+> 최종 갱신: **2026-10-29 15:50 KST** (전체 인수인계판, Grok 이어받기용). 다음 에이전트는 **HANDOFF_PROMPT.md → 이 문서 0·10·11절 → docs/ROADMAP.md → docs/design-system.md → docs/icons.md → docs/GAMIFICATION.md** 순서로 읽으세요.
 > 사이트: https://pyw31337.github.io/news/ · 저장소: `pyw31337/news`
+
+## 0. 지금 상태 한눈에 (2026-10-29 15:50 KST)
+| 항목 | 상태 | 다음 할 일 |
+|---|---|---|
+| Google 로그인 | 버튼 켜짐, 계정 선택까지 확인. 앱은 **테스트 중**(테스트 사용자만) | GCP 프로젝트는 옛 '메트로라이브'를 재사용 → 브랜딩에서 이름 NewsBoard로. `/news/privacy/`·`/news/terms/` 배포(커밋 3a7aa216)는 됐지만 **15:50 현재 404, Pages 반영 대기** → 열리면 사용자에게 알림 → 사용자가 브랜딩 저장(앱 이름·지원 이메일·홈 `https://pyw31337.github.io/news/`·개인정보 `/news/privacy/`·약관 `/news/terms/`·승인 도메인 `pyw31337.github.io`, `pyw213.workers.dev`) → 대상 메뉴에서 '앱 게시'. **로고는 올리지 말 것**(올리면 인증 심사 수주) |
+| Kakao 로그인 | 켜짐, 사용자 미테스트 | 사용자에게 내 서재에서 테스트 요청. 리디렉트 URI는 `https://newsboard-sync.pyw213.workers.dev/auth/kakao/callback`(앱 > 플랫폼 키 > REST API 키). 간편가입 아님 → 비즈 심사 불필요 |
+| 배지 v3 | 일러스트 WebP 메달(7티어 프레임 × 21 엠블럼, 512/128px, `assets/badges/` 175파일), nb-v37 | SVG 메탈 v2는 사용자가 "구리다"고 거절. 레퍼런스(게임풍 날개·왕관·보석·입체 상징) 수준 유지. 사용자 피드백 대기 |
+| 법제처(law.go.kr) | 동작: 판례 93·법령해석례 300 첫 실행 | **헌재결정례(detc) 0건, 원인 불명**(오류 없이 0) → target/파라미터 확인. 요청에 `Referer: https://pyw31337.github.io/` 필수, www 호스트 사용 |
+| 인물 아카이브 | 진행 | 정치인 전원 11.04경, 연예인 블랙박스 11.05경 |
+| D1 | 오늘 한도 소진 → 10.30 09:00 KST 초기화, 11:00 자동 점검 예약 | 대량 쓰기 금지 |
+| 미결 질문 | `data`·`media` 브랜치 이력 정리 여부(사용자 무응답), BigKinds 신청(선택) | 다시 묻지 말고 사용자가 답하면 처리 |
 
 ## 1. 제품 목표와 방향
 - **한 줄 정의:** "오늘의 이슈 TOP10 + 그 이슈가 어디서 왔는지(사건 흐름·인물·과거 연결)"를 초보자도 한눈에 보는 뉴스 보드.
@@ -25,7 +36,7 @@
 
 ## 3. 아키텍처
 - **프런트:** 정적 사이트(GitHub Pages, `main`). `index.html` + `assets/*` (app.js 본체, nb2 상세, ds 디자인 시스템, deck 카드덱, comic2 만화, econ/gov 마켓·정부, my 내 서재·내비·동기화, fun 퀴즈/만화/카드뉴스, icons 스프라이트, sharp 사진 규칙). `persons/` 인물 아카이브 화면, `politicians/` 정치인, `admin/` 진단.
-- **서비스워커 `sw.js`:** 캐시 이름 `nb-vNN`(현재 **nb-v29**). **화면 파일을 바꾸면 반드시 다음 번호로 올리고**, 바꾼 파일의 `?v=` 쿼리도 올릴 것. 동시 작업자가 있으므로 커밋 전 `git pull --rebase` 후 **비어 있는 다음 번호**를 사용.
+- **서비스워커 `sw.js`:** 캐시 이름 `nb-vNN`(2026-10-29 15:50 기준 **nb-v37** 배포됨 → 다음은 nb-v38부터, 커밋 직전 `grep nb-v sw.js`로 재확인). **화면 파일을 바꾸면 반드시 다음 번호로 올리고**, 바꾼 파일의 `?v=` 쿼리도 올릴 것. 동시 작업자가 있으므로 커밋 전 `git pull --rebase` 후 **비어 있는 다음 번호**를 사용.
 - **수집 파이프라인 (`scripts/`):** `collect.py`(네이버 랭킹·구글뉴스·트렌드 → 이슈 TOP10) → `enrich.py`(흐름·여론·시장·단어·과거 연결·AI 해석) → `db.py`(기사 DB·엔티티·사진 WebP 백필) → `fun.py`(퀴즈·만화·카드뉴스) 등. `classify.py` 카테고리 분류, `press_logos.py` 언론사 로고, `kr_gov.py`/`ecos_series.py` 시장·경제, `politicians/` 국회 DB, `archive/build.py` 인물 아카이브.
 - **Cloudflare Worker** `newsboard-sync` (https://newsboard-sync.pyw213.workers.dev, 소스 `worker/`): 로그인·동기화 API, 아카이브 API. 계정 pyw213@naver.com (박스에 wrangler 로그인됨).
 
@@ -55,8 +66,9 @@
 
 ### 비밀값 위치 (이름만)
 - GitHub Actions secrets: `ARCHIVE_KEY`, `ASSEMBLY_KEY`, `DART_API_KEY`, `ECOS_API_KEY`, `LLM_API_KEY`, `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET` / variables: `LLM_ENDPOINT`, `LLM_MODEL`
-- Worker secrets: `ID_SALT`(사본: 에이전트 저장소 `newsboard/worker_id_salt.txt`), `ARCHIVE_KEY` 등. OAuth(Google·Kakao) 키는 **미등록** → 버튼은 "준비 중". 가이드: `worker/README.md`
-- 선택 키(미등록): `KAKAO_REST_KEY`, `YOUTUBE_API_KEY` (민심·영상 강화용)
+- GitHub Actions secrets 추가분(등록 완료): `LAW_OC`(법제처), `KAKAO_REST_KEY`, `YOUTUBE_API_KEY`, `DATA_GO_KR_KEY`, `NAVER_CLIENT_ID/SECRET`. (`LLM_API_KEY`=Gemini, `ECOS_API_KEY`=한국은행, `DART_API_KEY`=DART, `ASSEMBLY_KEY`=국회)
+- Worker secrets(`wrangler secret`): `ID_SALT`, `ARCHIVE_KEY`, `KAKAO_REST_KEY`, `KAKAO_CLIENT_SECRET`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` (모두 등록 완료). vars: `SITE`, `ORIGINS`, `ARCHIVE_DAILY_ROWS`. 바인딩: `DB`, `AR`, `BK`.
+- **값은 절대 채팅·커밋에 쓰지 말 것.** 새 키는 사용자에게 비밀값 요청 카드로 받기.
 
 ## 4. 데이터 현황과 목표 (2026-10-29 11:50 KST 실측)
 아래 표는 docs/ROADMAP.md 의 계산 근거와 같습니다.
@@ -184,3 +196,23 @@
 | 재미 공유 이미지 글꼴 | 수정 완료 | 다음 배포부터 |
 | OAuth(Google·Kakao) | **사용자 대기** | 가이드 3·4절 |
 | `data`·`media` 브랜치 이력 정리 | **사용자 답변 대기** | 하면 저장소가 가벼워지지만 과거 커밋 기록이 사라짐 |
+
+
+## 10. 검증·배포 방법
+- 작업은 `/workspace/repo`에서 `git worktree add /workspace/wt-<이름> origin/main -b <브랜치>`. 끝나면 `git pull --rebase origin main` → push main.
+- 화면 파일 변경 시 `sw.js` 캐시 `nb-vNN` 다음 빈 번호 + 바꾼 파일 `?v=` 올리기. 문서만 바꾸면 불필요.
+- 배포: main push 후 `gh workflow run collect-news`(또는 30분 주기 대기) → Pages 반영 10~20분. 확인: `curl -s https://pyw31337.github.io/news/sw.js | grep nb-v`.
+- Worker: `cd worker && npx wrangler deploy` (박스에 로그인됨). D1 확인은 읽기 쿼리만.
+- 스크린샷: Playwright로 390px·1440px 촬영 → `/workspace/newsboard-shots/<작업>-vN/`, 사용자에게 보여주기.
+- law.go.kr·scourt·ccourt·data.go.kr은 박스에서 막힘 → GitHub Actions에서 테스트.
+
+## 11. 배운 함정
+- D1: 전량 재적재 3회로 19.8만 줄 → 한도 초과. 반드시 줄 단위 diff upsert, 배치, 한 요청 한 트랜잭션, 아카이브 하루 4만 줄(UTC 0시 = 09:00 KST 초기화). 대량 데이터는 git 브랜치/R2로.
+- 구글뉴스 링크는 중계 링크 → 원문 해석해야 썸네일(og:image) 확보(회당 300 백필).
+- law.go.kr "필수입력요소 검증 실패" = OC가 아니라 Referer 누락이었음.
+- 대법원 보도자료는 EUC-KR. 헌재 data.go.kr API는 law.go.kr로 연결될 뿐(별도 신청 불필요).
+- 연예인 검색은 활동명 기준(제니 19→272건).
+- 코스피 등은 실시간 값 하나로 통일(ECOS 전일 종가와 섞지 말 것).
+- 유튜브 키는 다른 서비스(렛츠캠핑)와 공유 말고 별도 키(웹사이트 제한 문제).
+- 동시 작업자 많음: sw 번호 충돌, rebase 필수. 안전 검사 차단은 우회 금지, 보고.
+- 디자인: 사용자는 디자이너라 품질 기준이 높음. 레퍼런스 수준이 안 나오면 코드 SVG 대신 이미지 생성·선별, 시안을 먼저 보여주기.
