@@ -119,7 +119,7 @@ const MENU=[
  ['쉽게 배우기','learn',[['오늘의 단어 퀴즈','quiz','OX로 맞히며 어려운 말 익히기','quiz'],['4컷 만평','learn','핫이슈를 만화로 쉽게','comic'],['카드뉴스','learn','반복되는 사건을 카드로 정리','cards']]],
  ['나','my',[['내 서재','my','좋아요·스크랩·메모·팔로우','bm'],['알림','alerts','키워드·팔로우·지표·아파트 알림','bell'],['내 홈 꾸미기','my/home','오늘·마켓 섹션 순서와 관심 항목','gear']]]];
 function fsV(d){S.fs=d===0?100:Math.max(85,Math.min(130,S.fs+d));saveS()}
-function menu(){setMeta('메뉴','NewsBoard 전체 메뉴');
+function menu(){if(window.nbMenu)return nbMenu();setMeta('메뉴','NewsBoard 전체 메뉴');
   app.innerHTML=`<div class="menu7"><div class="msrch">${SV(P.search)}<input id="mq" type="search" placeholder="메뉴·이슈·인물 검색" autocomplete="off"></div><div id="mres"></div>
   <div id="mgrp">${MENU.map(([g,c,L])=>`<section class="mg mg-${c}"><h3>${E(g)}</h3><div class="mgl">${L.map(([n,h,d,i])=>`<a class="mi" href="${h}" data-n="${E(n+' '+d)}"><span class="mic">${I(i)}</span><b>${E(n)}</b><small>${E(d)}</small></a>`).join('')}</div></section>`).join('')}
   <section class="mg mg-set" id="settings7"><h3>설정</h3>
