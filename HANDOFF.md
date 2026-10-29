@@ -143,3 +143,9 @@
 - 게이미피케이션: assets/game.js, game.css, gicons.js, games/ (docs/GAMIFICATION.md)
 - 품질 점수: scripts/quality.py (docs/QUALITY.md)
 - 단계 수집: scripts/history/stage.py, history.yml 단계 추가, hist.py HOT 우선
+### 4-2. 후속(10.29): 코스피 일치·활동명·연결
+- 코스피 불일치 원인: 대시보드는 ECOS 일별 종가(전 영업일 10.28 6,012.44), 상단 카드는 실시간(10.29 장중). `econ.js liveSync()`가 today.json market 값으로 일별 지표(kospi·kosdaq·환율·S&P·나스닥·WTI·BTC) 마지막 점을 같은 날짜로 덮어씀.
+- 블랙박스 활동명: seed가 위키백과 문서 제목(괄호 앞)·ko 별칭으로 활동명 결정(`n`=활동명, `al`=본명/라벨). 검색어 `("제니" OR "제니 김") 가수`, 제목 필터는 이름 중 하나. 검색어가 바뀐 대상은 run 시작 시 자동 재수집(state.q 비교). 활동명 적용 1,061명.
+- 인물 아카이브 ↔ 블랙박스: persons/?id=X ↔ history/?t=p&id=aX.
+- 이슈 상세 흐름(ds.js bindFlow): history index에서 이슈 인물·반복 이슈를 찾아 과거 노드(최대 24) + "수년 전부터 이어진 기록" 연도 목록 추가. 동명이인 기사가 섞일 수 있음.
+- sw nb-v30.
