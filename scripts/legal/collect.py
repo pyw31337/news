@@ -80,21 +80,24 @@ def lawgo(oc):
         st = STATE.setdefault('law_' + target, {'page': 1, 'ids': []}); ids = set(st['ids']); added = 0; t0 = time.time()
         for _ in range(30):
             if time.time() - t0 > 600: break
-            base = f'https://www.law.go.kr/DRF/lawSearch.do?OC={up.quote(oc)}&target={target}&type=JSON&display=100&page={st["page"]}'
+            base = f'http://www.law.go.kr/DRF/lawSearch.do?OC={up.quote(oc)}&target={target}&type=JSON&display=100&page={st["page"]}'
             try:
                 r = json.loads(get(base + '&sort=ddes'))
                 if isinstance(r, dict) and 'result' in r and 'msg' in r: r = json.loads(get(base + '&search=2&query=' + up.quote('*')))   # 필수값 오류 시 다른 형식으로 한 번 더
             except Exception as e: LOG['sources']['law.go.kr'][target] = f'err {type(e).__name__}'; break
             body = next(iter(r.values())) if isinstance(r, dict) and r else {}
             if not isinstance(body, dict):   # 오류 응답(키·IP 미등록 등): 내용 일부만 기록(키 값은 가림)
-                LOG['sources']['law.go.kr'][target] = 'resp ' + json.dumps(r, ensure_ascii=False)[:300].replace(oc, '***'); break
+                LOG['sources']['law.go.kr'][target] = 'resp ' + json.dumps(r, ensure_ascii=False)[:300].replace(oc, '***')
+                try: LOG['sources']['law.go.kr'][target + '_final'] = ur.urlopen(ur.Request(base, headers=UA), timeout=20).geturl().replace(oc, '***')
+                except Exception: pass
+                break
             rows = body.get(target) or []
             if isinstance(rows, dict): rows = [rows]
             if not rows: st['page'] = 1; break
             for row in rows:
                 i = str(row.get(idkey) or row.get('id') or '')
                 if not i or i in ids: continue
-                try: det = json.loads(get(f'https://www.law.go.kr/DRF/lawService.do?OC={oc}&target={target}&ID={i}&type=JSON'))
+                try: det = json.loads(get(f'http://www.law.go.kr/DRF/lawService.do?OC={oc}&target={target}&ID={i}&type=JSON'))
                 except Exception: continue
                 d = next(iter(det.values())) if isinstance(det, dict) and det else {}
                 if not isinstance(d, dict): continue
