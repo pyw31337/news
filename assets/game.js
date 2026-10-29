@@ -58,9 +58,10 @@ let uid=0;
 /* 등급별 금속 팔레트: 하이라이트, 밝은 면, 기본, 그림자, 가장자리(두께) */
 const METAL=[['#ffe2c2','#e9a46a','#b8743d','#7a4520','#4e2a12'],['#ffffff','#e8edf3','#b9c2cf','#7d8796','#4c5563'],['#fff6c9','#ffd54a','#e0a400','#9a6a00','#5e3f00'],['#ffffff','#dff7f3','#a8d8d2','#5f9e98','#335f5b'],['#ffffff','#d9ecff','#8fc3ff','#3f6fe0','#1d3480'],['#fbefff','#d9b0ff','#a66bf0','#6a2fc0','#3b1677'],['#fff1d8','#ff9c6b','#e2453b','#9c1630','#5a0a1c']];
 const SH={circle:'<circle cx="50" cy="52" r="33"/>',hex:'<path d="M50 17l31 17.5v35L50 87 19 69.5v-35z"/>',shield:'<path d="M50 17l30 10v23c0 21-13 32-30 38-17-6-30-17-30-38V27z"/>',star:'<path d="M50 15l9 11 14-3 1 14 12 7-7 12 7 12-12 7-1 14-14-3-9 11-9-11-14 3-1-14-12-7 7-12-7-12 12-7 1-14 14 3z"/>'};
-const slotSrc=(b,ti)=>`assets/badges/slot/${b[0]}-${ti}.webp`;
+const BB=(()=>{try{const c=document.currentScript;if(c&&c.src)return new URL('badges/',c.src).href}catch(e){}return'/news/assets/badges/'})();
+const slotSrc=(b,ti)=>`${BB}slot/${b[0]}-${ti}.webp`;
 function medal(b,t,size=88){const on=t>=0,ti=on?(b[7]!=null?b[7]:Math.min(t,6)):(b[7]!=null?b[7]:0),
-  src=`assets/badges/${b[0]}-${ti}${size<=64?'-s':''}.webp`;
+  src=`${BB}${b[0]}-${ti}${size<=64?'-s':''}.webp`;
   if(!on)return`<span class="gm-medal off gm-t${ti}" style="width:${size}px;height:${size}px" aria-hidden="true"><img src="${slotSrc(b,ti)}" width="${size}" height="${size}" alt="" loading="lazy" decoding="async" draggable="false"></span>`;
   return`<span class="gm-medal on gm-t${ti}" style="width:${size}px;height:${size}px;--mk:url(${src})" aria-hidden="true"><img src="${src}" width="${size}" height="${size}" alt="" loading="lazy" decoding="async" draggable="false"><i class="gm-glint"></i></span>`}
 /* 앨범용: 음각 홈 + (획득 시) 홈에 끼운 메달 */
