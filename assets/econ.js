@@ -76,7 +76,7 @@ function sheet(id){const s=ES.series[id];if(!s)return;const inf=INFO[id]||{t:s.n
    <div class="now"><b>지금 상황</b><p>${e_(now(id,s,st))}</p></div>
    <div class="ptog">${per.map(([k,t])=>`<button type="button" data-p="${k}">${t}</button>`).join('')}</div><div class="ebig"></div><div class="estats"></div>
    ${inf.what?`<div class="learn"><div class="lq"><span>무엇인가요?</span><p>${e_(inf.what)}</p></div><div class="lq"><span>왜 중요해요?</span><p>${e_(inf.why)}</p></div><div class="lud"><div class="u"><span>${NBI('trending-up')}오르면</span><p>${e_(inf.up)}</p></div><div class="d"><span>${NBI('trending-down')}내리면</span><p>${e_(inf.down)}</p></div></div><div class="life">💡 ${e_(inf.life)}</div></div>`:''}
-   <p class="fine">출처: 한국은행 경제통계시스템. 투자 권유가 아닌 이해를 돕기 위한 설명이에요.</p></div>`;
+   <p class="fine">출처: ${s.src==='FRED'?'미국 연방준비은행 경제데이터(FRED)':'한국은행 경제통계시스템'}. 투자 권유가 아닌 이해를 돕기 위한 설명이에요.</p></div>`;
   el.querySelector('.ptog').onclick=ev=>{const b=ev.target.closest('[data-p]');if(b){cur=b.dataset.p;draw()}};
   el.classList.add('on');document.documentElement.classList.add('noscroll');draw()}
 document.addEventListener('click',ev=>{const b=ev.target.closest('[data-ec]');if(b&&ES)sheet(b.dataset.ec)});
@@ -115,8 +115,45 @@ function put(){try{put_()}catch(e){}}
 function put_(){if(!/^market\/?$/.test(location.pathname.slice(BASEP.length)))return;const app=document.getElementById('app');if(!app||!app.querySelector('.mkrow,.lede'))return;
   app.querySelectorAll('.econ,.lead-ix').forEach(x=>x.remove());const h=econHTML();if(!h)return;
   [...app.querySelectorAll('.ecos')].forEach(x=>{const s=x.previousElementSibling;if(s&&s.classList.contains('sec'))s.remove();x.remove()});
-  (app.querySelector('.mkrow.wide')||app.querySelector('.lede')).insertAdjacentHTML('afterend',h)}
+  app.querySelectorAll('.mydash').forEach(x=>x.remove());
+  (app.querySelector('.mkrow.wide')||app.querySelector('.lede')).insertAdjacentHTML('afterend',dashHTML()+h)}
+/* ---------- 세계 지표(FRED) 합치기 + 내 지표판(직접 고르고 배치·저장, 로그인 시 모든 기기 동기화) ---------- */
+const XURL='https://raw.githubusercontent.com/pyw31337/news/history/h/market_extra.json';
+let XP=null;const loadX=()=>XP||(XP=fetch(XURL).then(r=>r.ok?r.json():null).catch(()=>null).then(x=>{if(x&&ES&&ES.series){const gs={};
+  Object.entries(x.series).forEach(([k,s])=>{if(ES.series[k])return;ES.series[k]=Object.assign({src:'FRED'},s);INFO[k]={t:s.name,g:s.g,u:s.unit,dp:s.unit==='%'?2:(s.data.at(-1)?.[1]>=1000?0:2),good:0,ic:s.ic,what:s.what};(gs[s.g]=gs[s.g]||[]).push(k)});
+  Object.entries(gs).forEach(([g,ids])=>{if(!ORDER.find(o=>o[0]===g))ORDER.push([g,ids])})}return x}));
+const WT=[['num','숫자'],['line','추이'],['bar','막대'],['gauge','위치'],['spark','미니']];
+const DEFW=[{id:'kospi',ty:'num',sz:1},{id:'usd',ty:'gauge',sz:1},{id:'base',ty:'line',sz:2},{id:'cpi',ty:'bar',sz:2},{id:'wti',ty:'spark',sz:1},{id:'sp500',ty:'spark',sz:1}];
+const my=()=>window.NBMy?NBMy.get():null;
+const dget=()=>{const m=my();return(m&&m.dash&&m.dash.w)?m.dash.w:DEFW.map(x=>Object.assign({},x))};
+const dset=w=>{const m=my();if(!m)return;m.dash={w,u:Date.now()};NBMy.save();drawDash()};
+let dedit=false;
+function wbody(w){const s=ES.series[w.id];if(!s||!s.data||s.data.length<3)return'';const inf=INFO[w.id]||{t:s.name,dp:2},st=stat(s),c=chg(st,s,inf),dp=inf.dp??2;
+  const col=c.dir==='up'?'#e2321b':c.dir==='down'?'#2f6bff':'#8189a3',W=w.sz===2?640:300;
+  const head=`<div class="dw-h"><i>${NBI(inf.ic||'pin')}</i><b>${e_(inf.t)}</b><span class="dchg ${c.dir}">${c.t}</span></div>`;
+  const val=`<b class="dw-v">${fmt(st.L,dp)}<small>${e_(un(s,inf))}</small></b>`;
+  if(w.ty==='num')return head+val+`<div class="dw-mm"><span>1년 전보다 <b>${st.y1>=0?'+':''}${fmt(st.y1,dp)}</b></span></div>`;
+  if(w.ty==='spark')return head+val+chart(cutP(s.data,s.cycle,'3m').length>5?cutP(s.data,s.cycle,'3m'):s.data.slice(-12),{w:W,h:44,col});
+  if(w.ty==='line')return head+val+chart(cutP(s.data,s.cycle,'1y').length>5?cutP(s.data,s.cycle,'1y'):s.data.slice(-24),{w:W,h:w.sz===2?150:110,axis:w.sz===2,col:'#ff4d2e',c:s.cycle});
+  if(w.ty==='gauge'){const d5=cutP(s.data,s.cycle,'5y');const vs=d5.map(x=>x[1]),mn=Math.min(...vs),mx=Math.max(...vs),p=(st.L-mn)/((mx-mn)||1),a=Math.PI*(1-p),cx=60,cy=58,r=46;
+    return head+`<div class="dw-g"><svg viewBox="0 0 120 66"><path d="M14 58A46 46 0 0 1 106 58" fill="none" stroke="#e6e8ef" stroke-width="10" stroke-linecap="round"/><path d="M14 58A46 46 0 0 1 106 58" fill="none" stroke="#ff4d2e" stroke-width="10" stroke-linecap="round" pathLength="100" stroke-dasharray="${(p*100).toFixed(1)} 100"/><circle cx="${(cx+r*Math.cos(a)).toFixed(1)}" cy="${(cy-r*Math.sin(a)).toFixed(1)}" r="6" fill="#0f1630" stroke="#fff" stroke-width="2"/></svg>${val}<div class="dw-mm"><span>5년 최저 ${fmt(mn,dp)}</span><span>최고 ${fmt(mx,dp)}</span></div></div>`}
+  if(w.ty==='bar'){const d=s.data.slice(-13),ch=d.slice(1).map((x,i)=>[x[0],x[1]-d[i][1]]),m=Math.max(1e-9,...ch.map(x=>Math.abs(x[1]))),bw=W/ch.length;
+    return head+val+`<svg class="ech" viewBox="0 0 ${W} 70" preserveAspectRatio="none"><line x1="0" x2="${W}" y1="35" y2="35" stroke="#e6e8ef"/>${ch.map((x,i)=>{const hh=Math.abs(x[1])/m*32;return`<rect x="${(i*bw+2).toFixed(1)}" y="${(x[1]>=0?35-hh:35).toFixed(1)}" width="${(bw-4).toFixed(1)}" height="${Math.max(1,hh).toFixed(1)}" rx="2" fill="${x[1]>=0?'#e2321b':'#2f6bff'}"><title>${lab(x[0],s.cycle)} ${x[1]>=0?'+':''}${fmt(x[1],dp)}</title></rect>`}).join('')}</svg><div class="dw-mm"><span>최근 ${ch.length}번의 변화</span></div>`}
+  return head+val}
+function dashHTML(){const W=dget();return`<section class="mydash" id="mydash">${sec('내 지표판','My dashboard',`<button type="button" class="dw-btn" id="dwedit">${NBI(dedit?'circle-check':'pencil')}${dedit?'완료':'꾸미기'}</button>`,'chart')}
+  <p class="lede">보고 싶은 지표만 골라 원하는 모양과 순서로 놓아 보세요. ${my()&&localStorage.getItem('nb-tok')?'로그인한 모든 기기에 그대로 이어져요.':'이 기기에 저장되고, 로그인하면 모든 기기에 이어져요.'}</p>
+  <div class="dw-grid ${dedit?'edit':''}">${W.map((w,i)=>{const b=wbody(w);if(!b)return'';return`<div class="dw sz${w.sz} ty-${w.ty}" ${dedit?'':`data-ec="${w.id}" role="button" tabindex="0"`}>${b}${dedit?`<div class="dw-ed" data-i="${i}"><div class="seg">${WT.map(([k,t])=>`<button type="button" data-ty="${k}" class="${w.ty===k?'on':''}">${t}</button>`).join('')}</div><div class="ctl"><button type="button" data-mv="-1" aria-label="앞으로">${NBI('chevron-up')}</button><button type="button" data-mv="1" aria-label="뒤로">${NBI('chevron-down')}</button><button type="button" data-sz aria-label="크기">${w.sz===2?'반폭':'전체폭'}</button><button type="button" data-rm aria-label="빼기">${NBI('trash')}</button></div></div>`:''}</div>`}).join('')}
+  ${dedit?`<button type="button" class="dw add" id="dwadd">${NBI('plus')}<b>지표 더하기</b><small>${Object.keys(ES.series).length}개 중에서 골라요</small></button>`:''}</div></section>`}
+function drawDash(){const el=document.getElementById('mydash');if(el)el.outerHTML=dashHTML()}
+function pick(){let el=document.getElementById('dwpick');if(!el){el=document.createElement('div');el.id='dwpick';el.className='dwp';document.body.appendChild(el)}
+  const has=new Set(dget().map(w=>w.id));
+  el.innerHTML=`<div class="dwp-s" role="dialog" aria-label="지표 더하기"><div class="grab"></div><h3>${NBI('plus')}지표 더하기</h3>${ORDER.map(([g,ids])=>{const L=ids.filter(i=>ES.series[i]?.data?.length>2);return L.length?`<h4>${e_(g)}</h4><div class="dwp-l">${L.map(i=>`<button type="button" data-add="${i}" class="${has.has(i)?'on':''}"><i>${NBI(INFO[i]?.ic||'pin')}</i>${e_(INFO[i]?.t||ES.series[i].name)}<span>${has.has(i)?NBI('circle-check'):NBI('plus')}</span></button>`).join('')}</div>`:''}).join('')}<button type="button" class="dw-btn pri" data-close>닫기</button></div>`;
+  el.classList.add('on');el.onclick=ev=>{if(ev.target===el||ev.target.closest('[data-close]')){el.classList.remove('on');return}const b=ev.target.closest('[data-add]');if(!b)return;const W=dget(),i=W.findIndex(w=>w.id===b.dataset.add);
+    if(i>=0)W.splice(i,1);else W.push({id:b.dataset.add,ty:ES.series[b.dataset.add].cycle==='D'?'line':'num',sz:1});dset(W);pick()}}
+document.addEventListener('click',ev=>{if(ev.target.closest('#dwedit')){dedit=!dedit;drawDash();return}if(ev.target.closest('#dwadd')){pick();return}
+  const ed=ev.target.closest('.dw-ed');if(!ed)return;const W=dget(),i=+ed.dataset.i,b=ev.target.closest('button');if(!b)return;
+  if(b.dataset.ty)W[i].ty=b.dataset.ty;else if(b.dataset.mv){const j=i+ +b.dataset.mv;if(j<0||j>=W.length)return;[W[i],W[j]]=[W[j],W[i]]}else if(b.hasAttribute('data-sz'))W[i].sz=W[i].sz===2?1:2;else if(b.hasAttribute('data-rm'))W.splice(i,1);dset(W)});
 const _mk=window.market;
-window.market=function(){const r=_mk.apply(this,arguments);if(ES)put();else loadES().then(put);return r};
-loadES().then(()=>setTimeout(put,0));
+window.market=function(){const r=_mk.apply(this,arguments);loadES().then(loadX).then(put);return r};
+loadES().then(loadX).then(()=>setTimeout(put,0));
 })();

@@ -115,7 +115,7 @@ function after(){if(!(typeof D!=='undefined'&&D))return;const[v,a]=curV();docume
 const MENU=[
  ['뉴스 보기','today',[['오늘','./','오늘의 이슈 TOP10·화제·관계','news'],['타임라인','timeline','사건이 시간순으로 이어지는 흐름','timeline'],['관계도','map','인물·기업·장소가 어떻게 얽혔는지','graph'],['화제','people','인물·기업·장소·기관별로 모아보기','fire'],['날짜 아카이브','archive','지난 날의 이슈 다시 보기','history']]],
  ['돈과 정책','market',[['마켓','market','증시·환율·원자재 한눈에','market'],['경기선행지수','market#lead','경기가 어디로 가는지 미리 보기','spark'],['정치인 DB','politicians/','의원 3,296명의 법안·표결·재산','정치']]],
- ['인물 아카이브','persons',[['인물 타임라인','persons/','정치인의 출생부터 오늘까지 일생 기록','timeline'],['인물 관계도','persons/#graph','가족·동문·지역구로 이어진 사람들','graph'],['오늘의 인물사','persons/','몇 년 전 오늘, 이 사람에게 있었던 일','history']]],
+ ['인물 아카이브','persons',[['인물 타임라인','persons/','정치인의 출생부터 오늘까지 일생 기록','timeline'],['인물 관계도','persons/#graph','가족·동문·지역구로 이어진 사람들','graph'],['오늘의 인물사','persons/','몇 년 전 오늘, 이 사람에게 있었던 일','history'],['인물 블랙박스','history/','정치인·연예인의 지난 발언과 행적 기록','message-2'],['이슈 연표','history/?t=i','반복되는 이슈의 수십 년 흐름','timeline'],['연도별 사건','history/?t=y','1948년부터 해마다 있었던 일','history']]],
  ['쉽게 배우기','learn',[['오늘의 단어 퀴즈','quiz','OX로 맞히며 어려운 말 익히기','quiz'],['4컷 만평','learn','핫이슈를 만화로 쉽게','comic'],['카드뉴스','learn','반복되는 사건을 카드로 정리','cards']]],
  ['나','my',[['내 서재','my','좋아요·스크랩·메모·팔로우','bm'],['알림','alerts','키워드·팔로우·지표·아파트 알림','bell'],['내 홈 꾸미기','my/home','오늘·마켓 섹션 순서와 관심 항목','gear']]]];
 function fsV(d){S.fs=d===0?100:Math.max(85,Math.min(130,S.fs+d));saveS()}

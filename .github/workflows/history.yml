@@ -1,0 +1,42 @@
+name: news-history
+# 과거 뉴스 히스토리(수년~수십년) 백필: 인물 블랙박스(정치인·연예인·인플루언서) + 반복 이슈 연표 + 연도별 사건 + 세계 시장 지표
+# 저장: 'history' 브랜치 정적 파일(D1 사용 안 함). 공개 저장소라 GitHub Actions 분량 무료.
+on:
+  schedule:
+    - cron: '15 * * * *'      # 매시 15분(KST 동일 분), 회당 약 42분 수집
+  workflow_dispatch:
+    inputs:
+      minutes: { description: '수집 시간(분)', default: '42' }
+permissions: { contents: write }
+concurrency: { group: history, cancel-in-progress: false }
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: scripts/history }
+      - name: history 브랜치 가져오기(없으면 새로 만듦)
+        run: |
+          if git ls-remote --exit-code --heads origin history >/dev/null; then
+            git clone --depth 1 --branch history "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" hist
+          else
+            mkdir hist && cd hist && git init -b history && git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          fi
+      - uses: actions/checkout@v4
+        with: { ref: politicians, path: pdata, sparse-checkout: index.json, sparse-checkout-cone-mode: false }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: 대상 목록(주 1회 또는 없을 때)
+        run: |
+          if [ ! -f hist/h/targets.json ] || [ "$(date -u +%u%H)" = "718" ]; then python scripts/history/hist.py hist seed pdata || true; fi
+          if [ ! -f hist/h/y/2000.json ] || [ "$(date -u +%H)" = "19" ]; then python scripts/history/hist.py hist years 1948 $(date +%Y) || true; fi
+      - name: 세계 시장 지표(3시간마다)
+        run: if [ $(( $(date -u +%H) % 3 )) = 0 ] || [ ! -f hist/h/market_extra.json ]; then python scripts/history/market_extra.py hist/h/market_extra.json || true; fi
+      - name: 인물·이슈 백필
+        run: python scripts/history/hist.py hist run ${{ github.event.inputs.minutes || '42' }}
+      - name: 저장
+        run: |
+          cd hist && git config user.name newsboard-bot && git config user.email bot@users.noreply.github.com
+          git add -A && git commit -qm "history $(date -u +%FT%H:%MZ)" || exit 0
+          for i in 1 2 3; do git push origin HEAD:history && break; git pull --rebase -X theirs origin history; done

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<base href="/news/">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>기록 보관소 · NewsBoard</title>
+<meta name="description" content="인물의 지난 발언과 행적, 반복되는 이슈의 수십 년 흐름을 출처와 함께 모은 NewsBoard 기록 보관소">
+<meta property="og:type" content="website"><meta property="og:site_name" content="NewsBoard"><meta property="og:title" content="기록 보관소 — 인물 블랙박스와 이슈 연표"><meta property="og:image" content="https://pyw31337.github.io/news/og-image.png">
+<meta name="theme-color" content="#0f1630"><meta name="referrer" content="no-referrer">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="../favicon.ico?v=11" sizes="any"><link rel="apple-touch-icon" href="../icons/apple-touch-icon.png?v=11">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=13"><link rel="stylesheet" href="assets/my.css?v=4"><link rel="stylesheet" href="assets/ds.css?v=1"><link rel="stylesheet" href="history/hist.css?v=1">
+</head>
+<body class="hx">
+<header class="top">
+  <a class="brand" href="./"><b>News</b>Board<i>.</i></a>
+  <nav class="topnav"><a href="./">오늘</a><a href="timeline">타임라인</a><a href="market">마켓</a><a href="my">내 서재</a><a href="menu">메뉴</a></nav>
+</header>
+<main id="hx">
+  <section class="hx-hero">
+    <small class="hx-eyebrow">기록 보관소</small>
+    <h1>지난 말과 행동, <span class="ds-key">수십 년의 흐름</span>까지</h1>
+    <p>인물이 언제 무슨 말을 했고 무엇을 했는지, 반복되는 이슈가 어떻게 이어져 왔는지 날짜와 출처로 모았어요.</p>
+    <div class="hx-stats" id="hxs"></div>
+  </section>
+  <nav class="hx-tabs" id="hxt"><button data-t="p" class="on">인물 블랙박스</button><button data-t="i">이슈 연표</button><button data-t="y">연도별 사건</button></nav>
+  <div id="hxv"></div>
+</main>
+<script src="assets/icons.js?v=1"></script>
+<script src="history/hist.js?v=1"></script>
+</body>
+</html>
