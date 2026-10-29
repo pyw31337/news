@@ -98,12 +98,24 @@ function sling(el,lv=1){const K=KW();const RUM=['루머','카더라','조작','�
     ov.querySelector('[data-nx]').onclick=()=>{cancelAnimationFrame(raf);sling(el,st?lv+1:lv)}}}
 const cw=n=>{const c=getComputedStyle(n);return n.clientWidth-parseFloat(c.paddingLeft)-parseFloat(c.paddingRight)};
 /* ================= 배지 모음 · 커리어 ================= */
-function badges(v){const S=G.state();const L=G.B.map(b=>{const{t,v:val,next}=G.tierOf(b);return{b,t,val,next}});const got=L.filter(x=>x.t>=0).length;
-  v.innerHTML=`<div class="gx-bh"><h2>배지 모음 <b>${got}</b><span>/ ${L.length}</span></h2><p>등급은 <span class="tier" style="--c:${G.TIERS[0][1]}">브론즈</span>→<span class="tier" style="--c:${G.TIERS[1][1]}">실버</span>→<span class="tier" style="--c:${G.TIERS[2][1]}">골드</span>→<span class="tier" style="--c:${G.TIERS[3][1]}">플래티넘</span>→<span class="tier" style="--c:${G.TIERS[4][1]}">다이아</span>→<span class="tier" style="--c:${G.TIERS[5][1]}">마스터</span>→<span class="tier" style="--c:${G.TIERS[6][1]}">레전드</span></p></div>
-   <div class="gx-bg">${L.map(({b,t,val,next})=>{const prev=t>=0?b[6][t]:0,pct=next?Math.min(100,Math.round((val-prev)/(next-prev)*100)):100;
-     return`<article class="gx-bc ${t<0?'lock':''}">${G.medal(b,t,96)}<h3>${E(b[1])}</h3><p>${E(b[2])}</p>
-      <div class="gx-tl">${b[6].map((x,k)=>`<i class="${k<=t?'on':''}" style="--c:${(b[7]!=null?G.TIERS[b[7]]:G.TIERS[Math.min(k,6)])[1]}" title="${x.toLocaleString()}"></i>`).join('')}</div>
-      <div class="gm-bar lt"><i style="width:${pct}%"></i></div><small>${next?`<b>${val.toLocaleString()}</b> / ${next.toLocaleString()} · 다음 등급까지 ${(next-val).toLocaleString()}`:'최고 등급 달성!'}</small></article>`}).join('')}</div>`}
+function badges(v){const T=window.NBTaste;const L=G.B.map(b=>({b,r:T.req(b)}));const got=L.filter(x=>x.r.t>=0).length;
+  let seen={};try{seen=JSON.parse(localStorage.getItem('nb-stamp')||'{}')}catch(e){}
+  // 모은 것 먼저, 그다음 거의 다 모은 순
+  L.sort((x,y)=>(y.r.t>=0)-(x.r.t>=0)||y.r.pct-x.r.pct);
+  v.innerHTML=`<div class="gx-bh"><h2>배지 우표첩 <b>${got}</b><span>/ ${L.length}</span></h2><p>빈 자리는 아직 모으지 못한 배지예요. 조건을 채우면 그 자리에 메달이 찍혀요. 배지를 누르면 남은 목표와 내 기록 분석을 볼 수 있어요.</p></div>
+   <div class="sb-page"><div class="sb-grid">${L.map(({b,r})=>{const on=r.t>=0,fresh=on&&(seen[b[0]]==null||seen[b[0]]<r.t),C=on?G.TIERS[b[7]!=null?b[7]:Math.min(r.t,6)]:null;
+     return`<button type="button" class="sb-st ${on?'got':''} ${fresh?'fresh':''}" data-b="${b[0]}" aria-label="${E(b[1])} 배지 자세히">${on?`<span class="sb-tier" style="--c:${C[1]}">${b[7]!=null?'스페셜':C[0]}</span>`:''}
+      <span class="sb-slot"><span class="sb-m">${G.medal(b,r.t,92)}</span></span><h3>${E(b[1])}</h3><span class="sb-req">${r.done?'모든 등급을 모았어요':E(r.label)}</span>
+      <span class="sb-pb" role="progressbar" aria-valuenow="${r.pct}" aria-valuemin="0" aria-valuemax="100"><i style="--p:${r.pct}%"></i></span><span class="sb-num"><b>${r.v.toLocaleString()}</b> / ${r.goal.toLocaleString()}${r.done?'':` · ${r.left.toLocaleString()}${r.unit} 남음`}</span></button>`}).join('')}</div></div>`;
+  L.forEach(({b,r})=>{if(r.t>=0)seen[b[0]]=r.t});setTimeout(()=>localStorage.setItem('nb-stamp',JSON.stringify(seen)),1500);
+  v.querySelector('.sb-grid').onclick=e=>{const x=e.target.closest('[data-b]');if(x)sheet(G.B.find(b=>b[0]===x.dataset.b))}}
+function sheet(b){const T=window.NBTaste,r=T.req(b);const w=document.createElement('div');w.className='sb-sheet';
+  w.innerHTML=`<div class="sb-sh" role="dialog" aria-label="${E(b[1])}"><div class="sb-top">${G.medal(b,r.t,84)}<div><h2>${E(b[1])}</h2><p>${E(b[2])}</p></div><button type="button" class="sb-x" aria-label="닫기">${GI('x')}</button></div>
+   <div class="sb-goal"><h4>${r.done?'모든 등급 달성':'다음 목표 · '+E(r.label)}</h4><span class="sb-stat">${GI('chart-bar')}필요한 기록: ${E(r.stat)}</span>
+    <div class="sb-big"><b>${r.v.toLocaleString()}</b><span>/ ${r.goal.toLocaleString()}${r.unit}</span><em>${r.done?'완료':r.left.toLocaleString()+r.unit+' 남음'}</em></div><span class="sb-pb"><i style="--p:${r.pct}%"></i></span>
+    <ul class="sb-lad">${b[6].map((x,k)=>{const C=G.TIERS[b[7]!=null?b[7]:Math.min(k,6)];return`<li class="${k<=r.t?'on':''}" style="--c:${C[1]}"><i></i>${b[7]!=null?'스페셜':C[0]} · ${E((T.REQ[b[5]]||['','{n}'])[1].replace('{n}',x.toLocaleString()))}${k<=r.t?GI('check'):''}</li>`}).join('')}</ul></div>
+   ${r.src?`<div class="sb-an"><h4>${GI('chart-donut')}${r.src==='save'?'내가 모은 기사 분석':'지금까지 읽은 기사 분석'}</h4>${T.html(r.src,{hours:b[5]==='night'||b[5]==='morning'||b[5]==='read'})}</div>`:''}</div>`;
+  document.body.appendChild(w);r.src&&T.seen();const close=()=>w.remove();w.onclick=e=>{if(e.target===w||e.target.closest('.sb-x'))close()};addEventListener('keydown',function k(e){if(e.key==='Escape'){close();removeEventListener('keydown',k)}})}
 function careerV(v){const n=G.level(G.totalXP());v.innerHTML=`<div class="gx-bh"><h2>나의 커리어</h2><p>XP가 쌓이면 레벨이 오르고, 신문사 직함이 바뀌어요.</p></div>
   <ol class="gx-cr">${G.CAREER.map((c,k)=>{const nx=G.CAREER[k+1],on=n>=c[0]&&(!nx||n<nx[0]),past=nx&&n>=nx[0];return`<li class="${on?'on':past?'past':''}"><span class="lv">Lv.${c[0]}</span><b>${E(c[1])}</b><small>${E(c[2])}</small>${on?'<em>지금 여기</em>':''}</li>`}).join('')}</ol>
   <div class="gx-bh"><h2>XP 얻는 방법</h2></div><div class="gx-xp"><div><b>+5</b><span>이슈 읽기</span></div><div><b>+10</b><span>OX·단어 퀴즈 정답 (3연속 +5)</span></div><div><b>+5~60</b><span>뉴스 게임 한 판</span></div><div><b>+20</b><span>하루 퀴즈 만점</span></div></div><p class="gx-fine">게임·활동 XP는 하루 400까지 쌓여요. 퀴즈 XP는 따로예요.</p>`}

@@ -53,7 +53,7 @@
 .gm-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;padding:0 var(--ds-5);border-radius:var(--ds-r-pill);border:0;background:var(--ds-brand);color:#fff;font:var(--ds-w-bold) var(--ds-t-body) var(--ds-sans);text-decoration:none;cursor:pointer}
 .gm-btn.ghost{background:var(--ds-bg);color:var(--ds-ink)}.gm-btn.wide{width:100%}
 /* 메달 */
-.gm-medal{display:block;overflow:visible}.gm-medal.on{filter:drop-shadow(0 6px 10px rgba(15,22,48,.22))}.gm-medal.off{opacity:.75}
+.gm-medal{display:block;overflow:visible}.gm-medal.off{opacity:.75}
 /* XP 팝 · 축하 */
 .gm-pop{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);z-index:90;background:var(--ds-ink);color:#fff;border-radius:var(--ds-r-pill);padding:8px 16px;display:flex;gap:8px;align-items:center;font-size:var(--ds-t-small);box-shadow:var(--ds-sh-2);animation:gmpop 1.9s ease forwards}
 .gm-pop b{color:var(--ds-brand-2);font-weight:var(--ds-w-black)}

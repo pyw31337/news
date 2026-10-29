@@ -98,7 +98,10 @@ function Deck(root,onTop){
 }
 window.nbDeck=function(root){
   const rows=[...document.querySelectorAll('.side .srow')];
-  Deck(root,t=>{const id=root.querySelectorAll('.rcard')[t]?.dataset.id;rows.forEach(r=>r.classList.toggle('gone',r.dataset.id===id))});
+  // 덱을 넘길수록 이미 본 카드(01…현재)는 아래 목록에서 차례로 사라짐 → 넘기기만으로 목록 훑기
+  const RC=[...root.querySelectorAll('.rcard')];let far=0;
+  let prevT=0;Deck(root,t=>{if(t!==prevT){prevT=t;dispatchEvent(new CustomEvent('nb:decktop',{detail:{t}}))}far=Math.max(far,t);const seen=new Set(RC.slice(0,t+1).map(c=>c.dataset.id));rows.forEach(r=>r.classList.toggle('gone',seen.has(r.dataset.id)));
+    if(t===RC.length-1&&RC.length>=5)dispatchEvent(new CustomEvent('nb:deckall',{detail:{n:RC.length}}))});
   // 선명하지 않은 대표 사진은 글자 카드로
   root.querySelectorAll('.rcard').forEach(async c=>{const u=c.dataset.img,box=c.querySelector('.rimg');if(!u){c.classList.add('txt');return}
     const bw=box.clientWidth||c.clientWidth||360,bh=box.clientHeight||bw*.56;

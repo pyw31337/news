@@ -34,13 +34,18 @@ const B=[
  ['sling','팩트 새총','팩트 새총에서 깨뜨린 루머 블록 수','target-arrow','shield','sling',[5,30,100,400]],
  ['owl','올빼미 독자','밤 11시 이후에 읽은 날','moon','circle','night',[1,7,30]],
  ['bird','아침형 독자','오전 7시 전에 읽은 날','sun-high','circle','morning',[1,7,30]],
+ ['deckall','완주 스캐너','오늘의 카드 10장을 끝까지 넘겨 훑어본 날','cards','star','deckall',[1,7,30,100]],
+ ['later','나중에 읽기','나중에 읽기로 담아 둔 기사 수','bookmark-plus','shield','later',[1,10,50,200]],
+ ['taste','나를 아는 독자','나의 성향 분석을 열어 본 날','user-search','hex','taste',[1,7,30]],
  ['level','커리어 성장','도달한 레벨','rocket','star','level',[5,10,20,30,40]]
 ];
-const metric=m=>{const ev=S.ev||{},My=window.NBMy&&NBMy.get?NBMy.get():null,L=learn();
+const myRO=()=>{try{return JSON.parse(localStorage.getItem('nb-my')||'null')}catch(e){return null}};
+const metric=m=>{const ev=S.ev||{},My=window.NBMy&&NBMy.get?NBMy.get():myRO(),L=learn();
   switch(m){case 'signup':return localStorage.getItem('nb-tok')?1:0;
    case 'read':return My?Object.values(My.reads||{}).reduce((a,d)=>a+Object.keys(d).length,0):ev.read||0;
    case 'streak':return Math.max(S.best||0,L.best||0);
    case 'cats':{if(!My)return ev.cats||0;const c=new Set();Object.values(My.reads||{}).forEach(d=>Object.values(d).forEach(r=>r.c&&c.add(r.c)));return c.size}
+   case 'later':return My?Object.values(My.saves||{}).filter(x=>x.later||x.col==='c0').length:ev.later||0;
    case 'saves':return My?Object.keys(My.saves||{}).length:ev.saves||0;
    case 'follows':return My?Object.keys(My.follows||{}).length+(My.keywords||[]).length:ev.follows||0;
    case 'words':return Math.max(ev.words||0,Object.keys(ev.wordset||{}).length);
@@ -50,7 +55,7 @@ const tierOf=(b)=>{const v=metric(b[5]);let t=-1;b[6].forEach((x,k)=>{if(v>=x)t=
 const tierColor=(b,t)=>TIERS[b[7]!=null?b[7]:Math.min(t,TIERS.length-1)];
 /* ---------- 메달 SVG (등급색 그라데이션 + 리본 + 모양 + Tabler 아이콘) ---------- */
 let uid=0;
-function medal(b,t,size=88){const on=t>=0,C=on?tierColor(b,t):['#e6e8ef','#b9bfcc','#f4f5f9'],id='m'+(++uid);
+function medal(b,t,size=88){const on=t>=0,C=on?tierColor(b,t).slice(1):['#e6e8ef','#b9bfcc','#f4f5f9'],id='m'+(++uid);
   const shape={circle:`<circle cx="50" cy="56" r="34"/>`,hex:`<path d="M50 20l31 18v36L50 92 19 74V38z"/>`,shield:`<path d="M50 20l30 10v24c0 20-13 32-30 38-17-6-30-18-30-38V30z"/>`,star:`<path d="M50 18l9 11 14-3 1 14 12 7-7 12 7 12-12 7-1 14-14-3-9 11-9-11-14 3-1-14-12-7 7-12-7-12 12-7 1-14 14 3z"/>`}[b[4]];
   const rib=on?`<path d="M34 2h12l8 26h-12z" fill="${C[2]}" opacity=".95"/><path d="M54 2h12l-8 26h-12z" fill="${C[1]}"/>`:'';
   return`<svg class="gm-medal ${on?'on':'off'}" viewBox="0 0 100 100" width="${size}" height="${size}" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${C[2]}"/><stop offset=".45" stop-color="${C[0]}"/><stop offset="1" stop-color="${C[1]}"/></linearGradient><radialGradient id="${id}s" cx=".3" cy=".25" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".75"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
@@ -106,8 +111,8 @@ function oxBox(){const Q=(F&&F.quiz&&F.quiz.questions||[]).filter(q=>q.kind==='o
 function todayBlock(){const app=document.getElementById('app');const h=app&&app.querySelector('.hero');if(!h||app.querySelector('.gm-today'))return;
   loadF().then(()=>{if(app.querySelector('.gm-today'))return;const s=document.createElement('section');s.className='gm-today';
     s.innerHTML=`<div class="gm-th"><h2><small>Daily challenge</small>오늘의 도전</h2><a class="more" href="games/#badges">배지 모음 ${G_('arrow-right')}</a></div>
-     <div class="gm-tgrid"><div class="gm-tl">${lvCard(1)}${goals()}</div>${oxBox()}<div class="gm-games">${gameTiles()}</div></div>`;
-    h.insertAdjacentElement('afterend',s);
+     <div class="gm-tgrid"><div class="gm-tl">${lvCard(1)}${goals()}</div><div class="gm-oxd"></div><div class="gm-games">${gameTiles()}</div></div>`;
+    h.insertAdjacentElement('afterend',s);window.NBOX&&NBOX(s.querySelector('.gm-oxd'),F);
     s.addEventListener('click',e=>{const b=e.target.closest('.gm-ox [data-a]');if(!b)return;const box=b.closest('.gm-ox'),Q=F.quiz.questions.filter(q=>q.kind==='ox'),q=Q[+box.dataset.k];const ok=(+b.dataset.a===1)===q.answer;
       box.querySelectorAll('button').forEach(x=>{x.disabled=true;if((+x.dataset.a===1)===q.answer)x.classList.add('right')});if(!ok)b.classList.add('wrong');
       box.querySelector('.gm-oxr').innerHTML=ok?`<b>정답!</b> ${E(q.word)} 단어를 익혔어요`:`<b>아쉬워요.</b> 정답은 ${q.answer?'O':'X'}예요`;
@@ -123,7 +128,9 @@ let lastRead=-1;
 function tick(){const My=window.NBMy&&NBMy.get?NBMy.get():null;if(My){if(My.game&&(My.game.at||0)>(S.at||0)){S=Object.assign(S,mergeG(S,My.game));save()}
   const r=metric('read');if(lastRead>=0&&r>lastRead){touchDay();addXP(5*(r-lastRead),'기사 읽기');check(level(totalXP()-5));save(true)}else if(lastRead<0)check(0);lastRead=r}
   todayBlock();libBlock()}
-document.addEventListener('click',e=>{if(e.target.closest('.rbtn,.rcard'))ev('deck',1);if(e.target.closest('[data-save],[data-like]'))setTimeout(()=>check(0),300)},true);
+document.addEventListener('click',e=>{if(e.target.closest('[data-save],[data-like]'))setTimeout(()=>check(0),300)},true);
+addEventListener('nb:decktop',()=>ev('deck',1));
+addEventListener('nb:deckall',()=>{const t=dayK();if(S.ev.deckallDay===t)return;S.ev.deckallDay=t;ev('deckall',1,{xp:20,why:'카드 10장 완주'})});
 addEventListener('nb:quiz',e=>{const d=e.detail||{};ev('quiz_n',1,{day:'q'});if(d.ok){S.ev.wordset=S.ev.wordset||{};if(d.word)S.ev.wordset[d.word]=1;ev('quiz_ok',1);ev('words',Object.keys(S.ev.wordset).length,{max:1})}if(d.perfect)ev('perfect',1)});
 if(/\/history\//.test(location.pathname))ev('hist',1);
 window.NBGame={B,TIERS,CAREER,medal,lvCard,goals,gameTiles,tierOf,metric,level,totalXP,career,lvXP,
