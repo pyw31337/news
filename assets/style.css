@@ -20,14 +20,18 @@ main{max-width:1240px;margin:0 auto;padding:16px}
 /* ===== 2026-10-29: 태블릿 이하 카드 가로폭 고정 + 모바일 경량화 ===== */
 @media (max-width: 999px) {
   .grid10 {
-    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-columns: 1fr !important;
     gap: 14px;
   }
-  .grid10 > .ic,
-  .grid10 > .card.ic {
+  .grid10 > *,
+  .grid10 .card.ic,
+  .grid10 .lead.rcard,
+  .grid10 a {
     width: 100% !important;
-    max-width: 100%;
-    grid-column: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 100% !important;
+    grid-column: 1 / -1 !important;
   }
   .grid10 .ic.wide {
     flex-direction: column !important;
