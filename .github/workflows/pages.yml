@@ -21,14 +21,36 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v4
+      - name: Checkout data branch
+        uses: actions/checkout@v4
+        with:
+          ref: data
+          path: _data
+      - name: Prepare site
+        run: |
+          mkdir -p _site
+          rsync -a --exclude='.git' --exclude='_data' --exclude='_site' . _site/
+          mkdir -p _site/data
+          if [ -d _data ]; then
+            # copy generated data files if present
+            cp -r _data/today.json _site/data/ 2>/dev/null || true
+            cp -r _data/global.json _site/data/ 2>/dev/null || true
+            cp -r _data/archive _site/data/ 2>/dev/null || true
+            cp -r _data/gov _site/data/ 2>/dev/null || true
+            cp _data/fun.json _site/data/ 2>/dev/null || true
+            cp _data/official.json _site/data/ 2>/dev/null || true
+            cp _data/briefs.json _site/data/ 2>/dev/null || true
+            echo "Data files copied"
+            ls _site/data/ | head -20
+          fi
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
