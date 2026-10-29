@@ -1,6 +1,6 @@
 # NewsBoard 인수인계 (HANDOFF)
 
-> 최종 갱신: **2026-10-29 15:50 KST** (전체 인수인계판, Grok 이어받기용). 다음 에이전트는 **HANDOFF_PROMPT.md → 이 문서 0·10·11절 → docs/ROADMAP.md → docs/design-system.md → docs/icons.md → docs/GAMIFICATION.md** 순서로 읽으세요.
+> 최종 갱신: **2026-10-29 15:50 KST** (전체 인수인계판, Grok 이어받기용). 다음 에이전트는 **HANDOFF_PROMPT.md → 이 문서 0·10·11절 → docs/ROADMAP.md → docs/design-system.md → docs/icons.md → docs/GAMIFICATION.md → docs/BADGE_GUIDE.md** 순서로 읽으세요.
 > 사이트: https://pyw31337.github.io/news/ · 저장소: `pyw31337/news`
 
 ## 0. 지금 상태 한눈에 (2026-10-29 15:50 KST)
