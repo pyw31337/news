@@ -1,0 +1,44 @@
+name: Deploy current site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare site with the currently published data
+        run: |
+          mkdir _site _site/data _site/data/archive _site/data/gov
+          cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png favicon.ico _site/
+          cp -r politicians persons history games privacy terms login _site/
+          base=https://pyw31337.github.io/news/data
+          curl -fL --retry 3 "$base/today.json" -o _site/data/today.json
+          curl -fsSL --retry 3 "$base/archive/index.json" -o _site/data/archive/index.json || true
+          for f in global.json status.json briefs.json official.json ecos_series.json voice.json fun.json; do
+            curl -fsSL --retry 3 "$base/$f" -o "_site/data/$f" || true
+          done
+          for f in apt.json alerts.json stocks.json; do
+            curl -fsSL --retry 3 "$base/gov/$f" -o "_site/data/gov/$f" || true
+          done
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
