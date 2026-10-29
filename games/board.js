@@ -33,7 +33,7 @@
         <ol class="lb-hist">${hist(cur).map(h => `<li><span>${fmtT(h.t)}</span><b>${h.s.toLocaleString()}</b></li>`).join('') || '<li class="lb-wait">아직 기록이 없어요. 한 판 해 보세요!</li>'}</ol></section></div>`;
       fetch(SYNC + '/lb?b=' + encodeURIComponent(cur) + '&n=20', { headers: tok() ? { Authorization: 'Bearer ' + tok() } : {} }).then(r => r.ok ? r.json() : null).then(j => {
         const L = el.querySelector('.lb-list'); if (!L) return;
-        if (!j) { L.innerHTML = '<li class="lb-wait">지금은 순위를 불러올 수 없어요. 잠시 후 다시 열어 주세요.</li>'; return }
+        if (!j || j.wait) { L.innerHTML = '<li class="lb-wait">순위판을 준비하고 있어요. 잠시 후 다시 열어 주세요.</li>'; return }
         L.innerHTML = j.rows.length ? j.rows.map((r, k) => `<li class="${r.me ? 'me' : ''} ${k < 3 ? 'top t' + k : ''}"><span class="rk">${k + 1}</span><span class="nm">${E(r.name)}</span><b>${r.score.toLocaleString()}</b></li>`).join('')
           + (j.me && j.me.rank > j.rows.length ? `<li class="me"><span class="rk">${j.me.rank}</span><span class="nm">나</span><b>${j.me.score.toLocaleString()}</b></li>` : '')
           : '<li class="lb-wait">아직 아무도 없어요. 첫 기록의 주인공이 되어 보세요!</li>';

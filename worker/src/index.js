@@ -200,9 +200,11 @@ async function lbInit(env) {
 const lbBoard = b => /^(2048|merge|sling)(-[a-z]{2,12})?$/.test(b || '') ? b : null;
 const lbName = n => { n = String(n || '').trim().replace(/\s+/g, ' '); return /^[0-9A-Za-z가-힣 _.\-]{2,12}$/.test(n) ? n : null; };
 async function leaderboard(env, req, url) {
-  await lbInit(env);
+  // 표 만들기가 실패해도(예: D1 하루 쓰기 한도 초과) 읽기는 빈 순위로 응답하고, 다음 요청에서 다시 시도
+  let initErr = null; try { await lbInit(env); } catch (e) { initErr = e; }
   const uid = await who(env, req);
   if (req.method === 'GET') {
+    if (initErr) { try { await env.DB.prepare('SELECT 1 FROM lb LIMIT 1').first(); } catch (e) { return J(env, req, { rows: [], me: null, wait: true }); } }
     const b = lbBoard(url.searchParams.get('b')); if (!b) return J(env, req, { error: 'bad' }, 400);
     const n = Math.min(50, Math.max(5, +url.searchParams.get('n') || 20));
     const rows = (await env.DB.prepare('SELECT uid, name, score, at FROM lb WHERE board=? ORDER BY score DESC, at ASC LIMIT ?').bind(b, n).all()).results;
@@ -213,14 +215,15 @@ async function leaderboard(env, req, url) {
   }
   if (req.method === 'POST') {
     if (!uid) return J(env, req, { error: 'auth' }, 401);
+    if (initErr) return J(env, req, { error: 'busy' }, 503);
     const { b, score, name } = await req.json().catch(() => ({}));
     const bd = lbBoard(b), sc = Math.floor(+score), nm = lbName(name) || ('독자 ' + uid.slice(-4).toUpperCase());
     if (!bd || !(sc > 0) || sc > LB_MAX[bd.split('-')[0]]) return J(env, req, { error: 'bad' }, 400);
     const cur = await env.DB.prepare('SELECT score, name, at FROM lb WHERE board=? AND uid=?').bind(bd, uid).first();
     if (cur && cur.score >= sc && cur.name === nm) return J(env, req, { ok: true, kept: true });
     if (cur && now() - cur.at < 15000) return J(env, req, { error: 'slow' }, 429);
-    await env.DB.prepare('INSERT INTO lb(board,uid,name,score,at) VALUES(?,?,?,?,?) ON CONFLICT(board,uid) DO UPDATE SET score=MAX(lb.score,excluded.score), name=excluded.name, at=excluded.at')
-      .bind(bd, uid, nm, sc, now()).run();
+    try { await env.DB.prepare('INSERT INTO lb(board,uid,name,score,at) VALUES(?,?,?,?,?) ON CONFLICT(board,uid) DO UPDATE SET score=MAX(lb.score,excluded.score), name=excluded.name, at=excluded.at')
+      .bind(bd, uid, nm, sc, now()).run(); } catch (e) { return J(env, req, { error: 'busy' }, 503); }
     return J(env, req, { ok: true });
   }
   return J(env, req, { error: 'not_found' }, 404);
