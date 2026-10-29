@@ -73,13 +73,17 @@ def news(datadir):
 
 # 2) 국가법령정보센터 Open API (OC 필요): 판례(prec)·헌재결정례(detc)·법령해석례(expc) 증분 수집
 def lawgo(oc):
-    LOG['sources']['law.go.kr'] = {'key': bool(oc)}
+    raw_oc = oc or ''; oc = raw_oc.strip().split('@')[0]   # OC는 이메일 아이디 부분만(예: abc@naver.com → abc)
+    LOG['sources']['law.go.kr'] = {'key': bool(oc), 'oc_fixed': oc != raw_oc, 'oc_len': len(oc)}
     if not oc or not probe('law.go.kr', 'https://www.law.go.kr/'): return
     for target, idkey in (('prec', '판례일련번호'), ('detc', '헌재결정례일련번호'), ('expc', '법령해석례일련번호')):
         st = STATE.setdefault('law_' + target, {'page': 1, 'ids': []}); ids = set(st['ids']); added = 0; t0 = time.time()
         for _ in range(30):
             if time.time() - t0 > 600: break
-            try: r = json.loads(get(f'https://www.law.go.kr/DRF/lawSearch.do?OC={oc}&target={target}&type=JSON&display=100&page={st["page"]}&sort=ddes'))
+            base = f'https://www.law.go.kr/DRF/lawSearch.do?OC={up.quote(oc)}&target={target}&type=JSON&display=100&page={st["page"]}'
+            try:
+                r = json.loads(get(base + '&sort=ddes'))
+                if isinstance(r, dict) and 'result' in r and 'msg' in r: r = json.loads(get(base + '&search=2&query=' + up.quote('*')))   # 필수값 오류 시 다른 형식으로 한 번 더
             except Exception as e: LOG['sources']['law.go.kr'][target] = f'err {type(e).__name__}'; break
             body = next(iter(r.values())) if isinstance(r, dict) and r else {}
             if not isinstance(body, dict):   # 오류 응답(키·IP 미등록 등): 내용 일부만 기록(키 값은 가림)
