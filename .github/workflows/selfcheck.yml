@@ -1,0 +1,15 @@
+name: selfcheck
+on:
+  schedule:
+    - cron: '0 0 * * 1'   # 매주 월 09:00 KST
+  workflow_dispatch:
+permissions: { contents: read, issues: write, actions: read }
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: health
+        env: { GH_TOKEN: '${{ github.token }}', REPO: '${{ github.repository }}' }
+        run: python3 scripts/selfcheck.py

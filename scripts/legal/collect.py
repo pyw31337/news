@@ -92,11 +92,12 @@ def lawgo(oc):
                 try: LOG['sources']['law.go.kr'][target + '_final'] = ur.urlopen(ur.Request(base, headers=REF), timeout=20).geturl().replace(oc, '***')
                 except Exception: pass
                 break
-            rows = body.get(target) or []
+            rows = body.get(target) or body.get(target.capitalize()) or body.get(target.upper()) or next((v for k, v in body.items() if k.lower() == target and v), None) or []   # 헌재결정례 응답은 'Detc' 대문자 키
             if isinstance(rows, dict): rows = [rows]
-            if not rows: st['page'] = 1; break
+            if not rows:
+                LOG['sources']['law.go.kr'][target + '_keys'] = list(body.keys())[:12]; st['page'] = 1; break
             for row in rows:
-                i = str(row.get(idkey) or row.get('id') or '')
+                i = str(row.get(idkey) or row.get('id') or next((v for k, v in row.items() if k.endswith('일련번호')), '') or '')
                 if not i or i in ids: continue
                 try: det = json.loads(get(f'http://www.law.go.kr/DRF/lawService.do?OC={oc}&target={target}&ID={i}&type=JSON'))
                 except Exception: continue
@@ -108,7 +109,7 @@ def lawgo(oc):
                 rec['justices'] = re.findall(NAME_RX + r'\s*\(?(?:재판장|주심)?\)?\s*(?=대법관|재판관)', tail)[:14] or re.findall(r'(?:대법관|재판관)\s+' + NAME_RX, tail)[:14]
                 rec['judges'] = re.findall(r'(?:재판장\s*)?판사\s+' + NAME_RX, tail)[:5]
                 rec['counsel'] = list(dict.fromkeys(re.findall(r'(?:소송대리인|변호인)\s*(?:법무법인[^\s]*\s*(?:담당\s*)?)?변호사\s+' + NAME_RX, txt[:4000])))[:6]
-                y = str(row.get('선고일자') or row.get('종국일자') or '0000')[:4]
+                y = str(row.get('선고일자') or row.get('종국일자') or row.get('회신일자') or row.get('해석일자') or '0000').replace('.', '')[:4]
                 p = f'{OUT}/lawgo/{target}/{y}.json.gz'; cur = jload(p, []); cur.append(rec); jsave(p, cur)
                 ids.add(i); added += 1; time.sleep(.3)
             st['page'] += 1
