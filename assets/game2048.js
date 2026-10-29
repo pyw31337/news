@@ -1,4 +1,4 @@
-/* NewsBoard 2048 with Web Audio SFX
+/* NewsBoard 2048 with file-based SFX + Web Audio fallback
    2026-10-30
 */
 (function(){
@@ -6,6 +6,7 @@ const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&','<':'<','>':'>','"':'"'
 const STEPS=['제보','단신','기사','심층','이슈','논쟁','담론','역사'];
 let grid=Array(4).fill().map(()=>Array(4).fill(0));
 let score=0, best=0;
+const play=n=>window.NBAudioFile?NBAudioFile.play(n):(window.NBAudio&&NBAudio.play(n));
 
 function init(){
   grid=Array(4).fill().map(()=>Array(4).fill(0));
@@ -19,7 +20,7 @@ function spawn(){
   if(!empty.length)return;
   const [r,c]=empty[Math.floor(Math.random()*empty.length)];
   grid[r][c]=Math.random()<0.9?2:4;
-  if(window.NBAudio)NBAudio.play('place');
+  play('place');
 }
 function slide(row){
   let a=row.filter(x=>x),m=0;
@@ -28,7 +29,7 @@ function slide(row){
   }
   a=a.filter(x=>x);
   while(a.length<4)a.push(0);
-  if(m&&window.NBAudio)NBAudio.play('merge');
+  if(m)play('merge');
   return a;
 }
 function move(dir){
