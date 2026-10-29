@@ -86,6 +86,7 @@ function Deck(root,onTop){
     if(d.mode==='prev'){if((fast&&vx>0)||(far&&dx>0&&!(fast&&vx<0)))go(top-1,vx*1000);else{st[d.i].vx=vx*1000;kick()}}
     else if(dx<0&&top<N-1&&((fast&&vx<0)||(far&&!(fast&&vx>0))))go(top+1,vx*1000-300,vx*40);
     else{st[d.i].vx=vx*600;kick()}}
+  stage.addEventListener('dragstart',e=>e.preventDefault());
   stage.addEventListener('pointerup',e=>{if(drag&&e.pointerId===drag.id)release(e)});
   stage.addEventListener('pointercancel',e=>{if(drag&&e.pointerId===drag.id)release(e,true)});
   stage.addEventListener('click',e=>{if(root._moved){e.preventDefault();e.stopPropagation();return}
@@ -99,8 +100,10 @@ window.nbDeck=function(root){
   const rows=[...document.querySelectorAll('.side .srow')];
   Deck(root,t=>{const id=root.querySelectorAll('.rcard')[t]?.dataset.id;rows.forEach(r=>r.classList.toggle('gone',r.dataset.id===id))});
   // 선명하지 않은 대표 사진은 글자 카드로
-  root.querySelectorAll('.rcard[data-img]').forEach(async c=>{const u=c.dataset.img,n=await natural(u);
-    if(n.w>=need(c.clientWidth||360)){c.style.backgroundImage=`url('${u}')`;c.classList.add('hasimg')}else c.classList.add('txt')})};
+  root.querySelectorAll('.rcard').forEach(async c=>{const u=c.dataset.img,box=c.querySelector('.rimg');if(!u){c.classList.add('txt');return}
+    const bw=box.clientWidth||c.clientWidth||360,bh=box.clientHeight||bw*.56;
+    const L=await Promise.all(u.split('|').map(async x=>({x,n:await natural(x)})));const ok=L.filter(o=>o.n.w>=need(bw)&&o.n.h>=need(bh)).sort((a,b)=>b.n.w-a.n.w)[0];
+    if(ok){box.style.backgroundImage=`url('${ok.x}')`;c.classList.add('hasimg')}else c.classList.add('txt')})};
 
 /* ---------- 상세 상단 갤러리 (큰 사진 1 + 2×2 + 사진 +N장) ---------- */
 window.nbGallery=async function(el,list){if(!el)return;

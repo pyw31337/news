@@ -25,7 +25,7 @@ function sec(t,sub,more='',icon=''){return`<div class="sec"><h2><small>${sub}</s
 function av(e,cls='av'){const t=e.wiki&&e.wiki.thumb;return`<div class="${cls}" ${bg(t)}>${t?'':esc(e.name[0])}</div>`}
 /* ---------- 타입별 UI 컴포넌트 ---------- */
 const host=u=>{try{return new URL(u).hostname}catch(x){return''}};
-const plogo=(name,url,cls='pl')=>{const f=PL[name]||PL[host(url).replace(/^www\./,'')];return f?`<img class="${cls}" src="assets/press/${f}" alt="" loading="lazy" width="14" height="14">`:`<i class="${cls} mono" style="--h:${[...String(name)].reduce((a,c)=>a+c.charCodeAt(0),0)%360}" aria-hidden="true">${esc(String(name||'?').replace(/^\W+/,'')[0]||'?')}</i>`};
+const plogo=(name,url,cls='pl')=>{const f=PL[name]||PL[host(url).replace(/^www\./,'')];return f?`<img class="${cls}" src="assets/press/${f}" alt="" loading="lazy" width="14" height="14">`:`<i class="${cls} mono" style="--h:${[...String(name)].reduce((a,c)=>a+c.charCodeAt(0),0)%360}" aria-hidden="true">${esc(String(name||'?').replace(/^[\s\[(\'"“‘]+/,'')[0]||'?')}</i>`};
 const pp=(name,url)=>name?`<span class="pp">${plogo(name,url)}${esc(name)}</span>`:'';
 const ts=(t,rel)=>t?`<time class="ts">${rel?ago(t):fmtD(t)}</time>`:'';
 const cnt=(n,icn,tip)=>`<span class="cnt" title="${tip||''}">${icn?ic(icn):''}${n}</span>`;
@@ -138,7 +138,7 @@ function today(){
   app.innerHTML=`
   <section class="hero">
     <div class="rdeck" tabindex="0" aria-roledescription="카드 덱" aria-label="오늘의 이슈 카드. 좌우로 넘겨 보세요">
-     <div class="rstage">${I.slice(0,10).map((i,k)=>`<article class="lead rcard" data-i="${k}" data-id="${i.id}" ${i.image?`data-img="${esc(i.image)}"`:''}><a class="rlink" href="issue/${i.id}" aria-label="${esc(i.title)}"></a><div class="in"><div class="no">${String(i.rank).padStart(2,'0')}</div><span class="cat ${i.category}">${ic(i.category)}${i.category}</span>
+     <div class="rstage">${I.slice(0,10).map((i,k)=>`<article class="lead rcard" data-i="${k}" data-id="${i.id}" data-img="${esc([i.image,...(i.gallery||[]).map(g=>g.img)].filter(Boolean).filter((u,k,A)=>A.indexOf(u)===k).slice(0,6).join('|'))}"><div class="rimg"></div><a class="rlink" draggable="false" href="issue/${i.id}" aria-label="${esc(i.title)}"></a><div class="in"><div class="no">${String(i.rank).padStart(2,'0')}</div><span class="cat ${i.category}">${ic(i.category)}${i.category}</span>
       <h1>${esc(i.title)}</h1><p>${esc(i.summary.join(' '))}</p>
       <div class="schips">${schips(i,'issue/'+i.id)}</div></div></article>`).join('')}</div>
      <div class="rctl"><button type="button" class="rbtn" data-d="-1" aria-label="이전 이슈" disabled>‹</button><span class="rpos"><b>01</b> / ${String(Math.min(10,I.length)).padStart(2,'0')}</span><span class="rbar"><i style="width:${100/Math.min(10,I.length)}%"></i></span><span class="rhint">옆으로 넘겨 보세요</span><button type="button" class="rbtn" data-d="1" aria-label="다음 이슈">›</button></div>

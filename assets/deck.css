@@ -14,9 +14,9 @@ a.schip::after{content:'›';opacity:.6;margin-left:1px}
 .anc.pulse{animation:nbpulse 2s ease-out}
 @keyframes nbpulse{0%{box-shadow:0 0 0 0 rgba(255,77,46,.55);background:rgba(255,77,46,.07)}40%{box-shadow:0 0 0 10px rgba(255,77,46,0);background:rgba(255,77,46,.05)}100%{box-shadow:0 0 0 0 rgba(255,77,46,0);background:transparent}}
 /* ---- 카드 덱 ---- */
-.rdeck{position:relative;outline:none;min-width:0}
+.rdeck{position:relative;outline:none;min-width:0;padding-bottom:50px}
 .rdeck:focus-visible{box-shadow:0 0 0 3px rgba(47,107,255,.5);border-radius:26px}
-.rstage{position:relative;height:440px;perspective:1400px;touch-action:pan-y;-webkit-user-select:none;user-select:none;margin-bottom:44px}
+.rstage{position:relative;height:440px;perspective:1400px;touch-action:pan-y;-webkit-user-select:none;user-select:none}
 .rcard.lead{position:absolute;inset:0;min-height:0;will-change:transform,opacity;transform-origin:50% 60%;background-color:#1d2547;
   box-shadow:0 calc(8px + var(--lift,0)*26px) calc(22px + var(--lift,0)*44px) rgba(12,18,40,calc(.22 + var(--lift,0)*.2)),0 1px 0 rgba(255,255,255,.08) inset;cursor:grab;backface-visibility:hidden}
 .rcard.lead:active{cursor:grabbing}
@@ -26,7 +26,7 @@ a.schip::after{content:'›';opacity:.6;margin-left:1px}
 .rcard .in{z-index:2;pointer-events:none;width:100%}.rcard .in .schips{pointer-events:auto}
 .rcard h1{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .rcard img{-webkit-user-drag:none}
-.rctl{position:absolute;left:0;right:0;bottom:-44px;height:36px;display:flex;align-items:center;gap:10px;padding:0 4px}
+.rctl{position:absolute;left:0;right:0;bottom:4px;height:36px;display:flex;align-items:center;gap:10px;padding:0 4px}
 .rbtn{width:36px;height:36px;border-radius:50%;border:0;background:var(--card,#fff);box-shadow:0 2px 10px rgba(15,22,48,.12);font-size:1.35rem;line-height:1;color:var(--ink,#111);cursor:pointer;flex:none;transition:transform .15s,opacity .2s}
 .rbtn:active{transform:scale(.9)}.rbtn:disabled{opacity:.35;cursor:default}
 .rpos{font-size:.8rem;color:var(--mute,#778);font-variant-numeric:tabular-nums;flex:none}.rpos b{color:var(--ink,#111);font-weight:900}
@@ -49,7 +49,7 @@ a.schip::after{content:'›';opacity:.6;margin-left:1px}
 .gp.n3{grid-template-columns:2fr 1fr}.gp.n4{grid-template-columns:2fr 1fr 1fr}.gp.n4 .gt:nth-child(4){grid-column:2/4}
 .gmore{position:absolute;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;border:0;background:rgba(255,255,255,.94);color:#111;font-weight:800;font-size:.8rem;box-shadow:0 4px 16px rgba(0,0,0,.2);cursor:pointer}
 .gmore svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8}
-.gm{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:20px;scrollbar-width:none;aspect-ratio:4/3}
+.gm{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:20px;scrollbar-width:none;aspect-ratio:16/10}
 .gm::-webkit-scrollbar{display:none}.gm .gt{flex:0 0 100%;scroll-snap-align:center;height:100%}
 .gcnt{position:absolute;left:12px;bottom:12px;background:rgba(10,14,30,.62);color:#fff;font-size:.75rem;padding:4px 10px;border-radius:999px;font-variant-numeric:tabular-nums}
 .dgal .gm~.gmore{height:30px;font-size:.72rem;right:10px;bottom:10px}
@@ -76,3 +76,7 @@ i.mono{display:inline-grid;place-items:center;font-style:normal;font-weight:900;
 i.plo.mono{font-size:1rem}
 .plc span{min-width:0;display:flex;flex-direction:column}.plc b{font-size:.85rem}.plc small{font-size:.72rem;color:var(--mute,#778);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (prefers-reduced-motion:reduce){.srow,.rbar i,.dgal .gt img,.schip{transition:none}.anc.pulse{animation:none;box-shadow:0 0 0 3px rgba(255,77,46,.45)}.lbx{animation:none}}
+.rcard .rimg{position:absolute;left:0;right:0;top:0;height:50%;background:center/cover no-repeat;border-radius:24px 24px 0 0;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);mask-image:linear-gradient(180deg,#000 62%,transparent)}
+.rcard.lead::before{background:linear-gradient(180deg,rgba(15,22,48,0) 30%,rgba(15,22,48,.85) 58%,#141b3a 100%)}
+.rcard.hasimg{background:#141b3a}
+.rcard.txt .rimg{display:none}
