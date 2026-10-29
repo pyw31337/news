@@ -44,10 +44,10 @@ function Deck(root,onTop){
     c.style.transform=`translate3d(${p.x.toFixed(2)}px,${(p.y-p.l*8).toFixed(2)}px,0) rotate(${p.r.toFixed(2)}deg) rotateY(${(p.ry||0).toFixed(2)}deg) scale(${(p.s+p.l*.035).toFixed(4)})`;
     c.style.opacity=clamp(p.o,0,1).toFixed(3);
     c.style.setProperty('--lift',clamp(p.l,0,1.2).toFixed(3));
-    c.style.zIndex=d<0||(drag&&drag.mode==='prev'&&i===top-1)?200+i:100-d;
-    c.style.visibility=p.o<.01&&d!==0?'hidden':'visible';
-    c.setAttribute('aria-hidden',d===0?'false':'true');c.tabIndex=d===0?0:-1;
-    c.querySelectorAll('a').forEach(a=>a.tabIndex=d===0?0:-1)})}
+    const z=d<0||(drag&&drag.mode==='prev'&&i===top-1)?200+i:100-d,vis=p.o<.01&&d!==0?'hidden':'visible';
+    if(c._z!==z){c._z=z;c.style.zIndex=z}if(c._v!==vis){c._v=vis;c.style.visibility=vis}
+    if(c._d!==d){c._d=d;c.setAttribute('aria-hidden',d===0?'false':'true');c.tabIndex=d===0?0:-1;
+    c.querySelectorAll('a').forEach(a=>a.tabIndex=d===0?0:-1)}})}
   function loop(ts){const dt0=Math.min(.05,last?(ts-last)/1000:.016);last=ts;let b=false;
     const n=Math.ceil(dt0/.004);for(let k=0;k<n;k++)b=step(dt0/n)||b;paint();
     raf=b||drag?requestAnimationFrame(loop):0;if(!raf)last=0}

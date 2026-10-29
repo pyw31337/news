@@ -77,15 +77,19 @@ function header2(){
 /* 티커: 자동 흐름 + 마우스 드래그·터치 스와이프 */
 function tickerDrag(el){
   let down=false,sx=0,sl=0,moved=false,pause=0,raf;
-  const half=()=>el.scrollWidth/2;
-  const step=()=>{if(!down&&Date.now()>pause&&!matchMedia('(prefers-reduced-motion: reduce)').matches){el.scrollLeft+=.6;if(el.scrollLeft>=half())el.scrollLeft-=half()}raf=requestAnimationFrame(step)};
-  cancelAnimationFrame(window._tkr);window._tkr=requestAnimationFrame(step);
+  let hw=el.scrollWidth/2,last=0,vis=true;const half=()=>hw,RM=matchMedia('(prefers-reduced-motion: reduce)');
+  if(window.ResizeObserver){window._tkro&&window._tkro.disconnect();window._tkro=new ResizeObserver(()=>{hw=el.scrollWidth/2});window._tkro.observe(el);el.firstElementChild&&window._tkro.observe(el.firstElementChild)}
+  const step=t=>{const dt=last?Math.min(t-last,50):16.7;last=t;if(!down&&Date.now()>pause&&!RM.matches){el.scrollLeft+=dt*.036;if(el.scrollLeft>=hw)el.scrollLeft-=hw}window._tkr=vis&&!document.hidden?requestAnimationFrame(step):0};
+  const run=()=>{if(!window._tkr&&vis&&!document.hidden){last=0;window._tkr=requestAnimationFrame(step)}};
+  cancelAnimationFrame(window._tkr);window._tkr=0;run();
+  if(window.IntersectionObserver){window._tkio&&window._tkio.disconnect();window._tkio=new IntersectionObserver(es=>{vis=es[es.length-1].isIntersecting;run()});window._tkio.observe(el)}
+  if(!window._tkvis){window._tkvis=1;document.addEventListener('visibilitychange',()=>window._tkrun&&window._tkrun())}window._tkrun=run;
   el.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;sx=e.clientX;sl=el.scrollLeft;el.classList.add('drag')});
   window.addEventListener('pointermove',e=>{if(!down)return;const d=e.clientX-sx;if(Math.abs(d)>4)moved=true;el.scrollLeft=sl-d;if(el.scrollLeft<0)el.scrollLeft+=half();if(el.scrollLeft>=half())el.scrollLeft-=half()});
   window.addEventListener('pointerup',()=>{if(down){down=false;pause=Date.now()+2500;el.classList.remove('drag')}});
   el.addEventListener('click',e=>{if(moved){e.preventDefault();moved=false}},true);
   el.addEventListener('touchstart',()=>{pause=Date.now()+4000},{passive:true});
-  el.addEventListener('scroll',()=>{if(el.scrollLeft>=half())el.scrollLeft-=half()},{passive:true});
+  el.addEventListener('scroll',()=>{if(el.scrollLeft>=hw)el.scrollLeft-=hw},{passive:true});
   el.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){el.scrollLeft+=e.deltaY;e.preventDefault()}pause=Date.now()+2500},{passive:false});
 }
 const BASEP=new URL(document.baseURI).pathname;
@@ -160,7 +164,7 @@ function today(){
   <div class="hs">${pcs}</div>
   ${sec('관계로 보는 오늘','Relation map',`<a class="more" href="map">크게 보기 ${NBI('arrow-right')}</a>`,'graph')}
   <div class="card mapwrap mini" id="mapmini"></div>`;
-  graph($('#mapmini'),true);
+  {const mm=$('#mapmini');if(window.IntersectionObserver){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();if(mm.isConnected)graph(mm,true)}},{rootMargin:'600px 0px'});io.observe(mm)}else graph(mm,true)}
   window.nbDeck&&nbDeck($('.rdeck'));
 }
 function wordCard(w){return`<div class="card term word"><div class="wt">${w.wiki.thumb?`<span class="wi" ${bg(w.wiki.thumb)}></span>`:`<span class="wi noimg">${ic('book')}</span>`}<div><h4>${esc(w.word)}</h4><em>${esc(w.wiki.desc||'오늘 기사 '+w.count+'회 등장')}</em></div></div>

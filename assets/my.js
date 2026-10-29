@@ -50,7 +50,8 @@ window.NBMy={get:()=>M,save,sync};
 /* ---------- 내비 ---------- */
 const dnum=new Date().getDate();
 /* 한국 시간 기준 날짜·시각 */
-const kst=()=>{const p={};new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'2-digit',day:'2-digit',weekday:'short',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).forEach(x=>p[x.type]=x.value);return{d:`${p.month}.${p.day} (${p.weekday})`,h:p.hour,m:p.minute,s:+p.second}};
+const KF=new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'2-digit',day:'2-digit',weekday:'short',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'});
+const kst=()=>{const p={};KF.formatToParts(new Date()).forEach(x=>p[x.type]=x.value);return{d:`${p.month}.${p.day} (${p.weekday})`,h:p.hour,m:p.minute,s:+p.second}};
 const clkHTML=()=>{const k=kst();return`<svg class="rg" viewBox="0 0 64 64" aria-hidden="true"><circle class="rt" cx="32" cy="32" r="30"/><circle class="rp" cx="32" cy="32" r="30" pathLength="100" style="animation-delay:-${k.s}s"/></svg><i class="pl" aria-hidden="true"></i><em class="lv" aria-hidden="true"><i></i>LIVE</em><small class="cd"><i class="ld"></i><span>${k.d}</span></small><b class="ct"><span class="hh">${k.h}</span><span class="co">:</span><span class="mm">${k.m}</span></b>`};
 let tickT=null;
 function tick(){const k=kst();const cb=document.querySelector('.tabbar .ctr .cb.clk');if(cb){

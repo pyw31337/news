@@ -5,6 +5,7 @@
 a.schip:hover{background:rgba(255,255,255,.24)}a.schip:active{transform:scale(.96)}
 a.schip::after{content:'›';opacity:.6;margin-left:1px}
 .schip.hot{background:rgba(255,77,46,.22);border-color:rgba(255,120,90,.35)}
+.rcard .schip{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(255,255,255,.14)}
 .schips.light .schip{color:var(--ink2,#444);background:var(--bg,#f2f4f8);border-color:rgba(0,0,0,.06);-webkit-backdrop-filter:none;backdrop-filter:none}
 .schips.light .schip b{color:var(--ink,#111)}.schips.light .schip .ico{color:var(--acc,#ff4d2e)}
 .schips.light .schip.hot{background:#fff1ec;border-color:#ffd9cc}
@@ -37,6 +38,7 @@ a.schip::after{content:'›';opacity:.6;margin-left:1px}
 /* 목록 동기화: 덱 맨 위 카드와 같은 줄은 위로 사라짐 */
 .srow{display:grid;grid-template-rows:1fr;transition:grid-template-rows .45s cubic-bezier(.3,.7,.2,1),opacity .35s,transform .45s cubic-bezier(.3,.7,.2,1),margin .45s;min-width:0}
 .srow>div{overflow:hidden;min-height:0}
+.side .srow{grid-template-columns:minmax(0,1fr);justify-content:stretch;align-items:stretch}
 .srow.gone{grid-template-rows:0fr;opacity:0;transform:translateY(-14px);margin-bottom:-12px;pointer-events:none}
 /* ---- 상세 상단 갤러리 ---- */
 .dgal{display:none;position:relative;margin:0 0 14px}.dgal.on{display:block}
