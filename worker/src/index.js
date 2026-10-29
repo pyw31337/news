@@ -31,7 +31,7 @@ async function login(env, provider, sub, keep = true) {
   return tok;
 }
 const back = (env, q) => Response.redirect(env.SITE + 'login/#' + new URLSearchParams(q).toString(), 302);
-const safeRet = r => (r && /^[A-Za-z0-9\-_\/.%#=&?~가-한]{0,300}$/.test(r) && !r.startsWith('/') && !r.includes('//') && !r.includes('..')) ? r : '';
+const safeRet = r => (r && /^[A-Za-z0-9\-_\/.%#=&?~가-힣]{0,300}$/.test(r) && !r.startsWith('/') && !r.includes('//') && !r.includes('..')) ? r : '';
 const SHORT_HOURS = 24;
 async function oauthStart(env, url, p) {
   if (!providers(env)[p]) return back(env, { nbe: 'unavailable' });
@@ -75,7 +75,6 @@ async function oauthCallback(env, url, p) {
   try { return back(env, { nbt: await login(env, p, sub, keep !== '0'), nbp: p, keep, ret: safeRet(decodeURIComponent(ret)) }); }
   catch (e) { return back(env, { nbe: 'busy' }); }
 }
-// Full restored content continues below
 async function backup(env) {
   const out = {};
   for (const t of ['users', 'docs', 'push_subs']) out[t] = (await env.DB.prepare('SELECT * FROM ' + t).all()).results;
@@ -89,6 +88,105 @@ async function backup(env) {
   await env.DB.prepare('DELETE FROM oauth_state WHERE exp<?').bind(now()).run();
   if (env.AR) await backupArchive(env, d);
   return d;
+}
+// 인물 아카이브도 30일 보관: 표마다 3000줄씩 나눠 저장(무료 한도 안에서)
+async function backupArchive(env, d) {
+  for (const t of ['persons', 'events', 'edges', 'nodes', 'runs']) {
+    for (let o = 0, i = 0; ; o += 3000, i++) {
+      const r = (await env.AR.prepare('SELECT * FROM ' + t + ' LIMIT 3000 OFFSET ' + o).all()).results;
+      if (!r.length) break;
+      const body = new Blob([JSON.stringify(r)]).stream().pipeThrough(new CompressionStream('gzip')); const buf = await new Response(body).arrayBuffer();
+      await env.BK.put('archive/' + d + '/' + t + '-' + i + '.json.gz', buf, { httpMetadata: { contentType: 'application/gzip' } });
+      if (r.length < 3000) break;
+    }
+  }
+  const cut = new Date(now() - 30 * DAY + 9 * 36e5).toISOString().slice(0, 10);
+  let cur;
+  do {
+    const l = await env.BK.list({ prefix: 'archive/', cursor: cur });
+    const del = l.objects.filter(o => o.key.slice(8, 18) < cut).map(o => o.key);
+    if (del.length) await env.BK.delete(del);
+    cur = l.truncated ? l.cursor : null;
+  } while (cur);
+}
+
+// ── 인물 아카이브(공개 읽기, 수집기만 쓰기) ──
+const AJ = (env, req, o, s = 200, age = 600) => new Response(JSON.stringify(o), { status: s, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=' + age, ...cors(env, req) } });
+async function archive(env, req, url, p) {
+  const A = env.AR;
+  if (p === '/archive/ingest' && req.method === 'POST') {
+    if (!env.ARCHIVE_KEY || req.headers.get('Authorization') !== 'Bearer ' + env.ARCHIVE_KEY) return J(env, req, { error: 'auth' }, 401);
+    // 무료 한도(계정 전체 하루 100k 줄 쓰기) 보호: 아카이브는 하루 ARCHIVE_DAILY_ROWS(기본 4만)까지만, 하루 기준은 Cloudflare 초기화와 같은 UTC 0시(=한국 오전 9시), 나머지는 사용자 동기화 몫.
+    // 바뀐 줄만 씀(ON CONFLICT … WHERE 달라졌을 때만), 한 요청 = 한 트랜잭션(실패 시 전부 롤백, 반쯤 지워진 상태 없음).
+    const CAP = +(env.ARCHIVE_DAILY_ROWS || 40000), day = new Date(now()).toISOString().slice(0, 10);
+    let used = 0;
+    try { used = (await A.prepare('SELECT rows FROM budget WHERE day=?').bind(day).first())?.rows || 0; }
+    catch (e) { await A.prepare('CREATE TABLE IF NOT EXISTS budget(day TEXT PRIMARY KEY, rows INTEGER NOT NULL)').run(); }
+    if (used >= CAP) return J(env, req, { ok: false, defer: true, used, cap: CAP }, 429);
+    const b = await req.json(), st = [], X = (...c) => c.map(k => k + ' IS NOT excluded.' + k).join(' OR ');
+    for (const x of b.persons || []) st.push(A.prepare('INSERT INTO persons(id,name,kind,party,birth,qid,score,ev,ed,data,updated) VALUES(?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET name=excluded.name,kind=excluded.kind,party=excluded.party,birth=excluded.birth,qid=excluded.qid,score=excluded.score,ev=excluded.ev,ed=excluded.ed,data=excluded.data,updated=excluded.updated WHERE ' + X('name', 'kind', 'party', 'birth', 'qid', 'score', 'ev', 'ed', 'data'))
+      .bind(x.id, x.name, x.kind || null, x.party || null, x.birth || null, x.qid || null, x.score || 0, x.ev || 0, x.ed || 0, JSON.stringify(x.data || {}), now()));
+    // 재방문 시각만 갱신(색인 없는 열 1개 = 1줄)
+    const ids = (b.persons || []).map(x => x.id);
+    if (ids.length) st.push(A.prepare('UPDATE persons SET updated=? WHERE id IN (SELECT value FROM json_each(?))').bind(now(), JSON.stringify(ids)));
+    // 사건: 사라진 것만 지우고, 새로 생기거나 바뀐 것만 씀
+    for (const id of b.replace || []) st.push(A.prepare('DELETE FROM events WHERE pid=? AND h NOT IN (SELECT value FROM json_each(?))').bind(id, JSON.stringify((b.events || []).filter(e => e.pid === id).map(e => e.h))));
+    for (const e of b.events || []) st.push(A.prepare('INSERT INTO events(h,pid,d,typ,stage,title,status,conf,src,url,extra) VALUES(?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(h) DO UPDATE SET pid=excluded.pid,d=excluded.d,typ=excluded.typ,stage=excluded.stage,title=excluded.title,status=excluded.status,conf=excluded.conf,src=excluded.src,url=excluded.url,extra=excluded.extra WHERE ' + X('pid', 'd', 'typ', 'stage', 'title', 'status', 'conf', 'src', 'url', 'extra'))
+      .bind(e.h, e.pid, e.d || null, e.typ, e.stage, e.title, e.status || 'fact', e.conf ?? 1, e.src || null, e.url || null, e.extra ? JSON.stringify(e.extra) : null));
+    for (const e of b.edges || []) st.push(A.prepare('INSERT INTO edges(a,b,typ,label,conf,src,url) VALUES(?,?,?,?,?,?,?) ON CONFLICT(a,b,typ) DO UPDATE SET label=excluded.label,conf=excluded.conf,src=excluded.src,url=excluded.url WHERE ' + X('label', 'conf', 'src', 'url'))
+      .bind(e.a, e.b, e.typ, e.label || null, e.conf ?? 1, e.src || null, e.url || null));
+    for (const n of b.nodes || []) st.push(A.prepare('INSERT INTO nodes(id,name,note,qid) VALUES(?,?,?,?) ON CONFLICT(id) DO UPDATE SET name=excluded.name,note=excluded.note,qid=excluded.qid WHERE ' + X('name', 'note', 'qid'))
+      .bind(n.id, n.name, n.note || null, n.qid || null));
+    if (b.run) st.push(A.prepare('INSERT OR REPLACE INTO runs(at,persons,events,edges,note) VALUES(?,?,?,?,?)').bind(now(), b.run.persons || 0, b.run.events || 0, b.run.edges || 0, b.run.note || null));
+    if (!st.length) return J(env, req, { ok: true, written: 0, used, cap: CAP });
+    const res = await A.batch(st);   // 하나의 트랜잭션
+    const written = res.reduce((s, r) => s + (r.meta?.rows_written || 0), 0);
+    await A.prepare('INSERT INTO budget(day,rows) VALUES(?,?) ON CONFLICT(day) DO UPDATE SET rows=rows+excluded.rows').bind(day, written + 1).run();
+    return J(env, req, { ok: true, n: st.length, written, used: used + written + 1, cap: CAP });
+  }
+  if (p === '/archive/budget') { try { return AJ(env, req, (await A.prepare('SELECT day,rows FROM budget ORDER BY day DESC LIMIT 14').all()).results, 200, 0); } catch (e) { return AJ(env, req, [], 200, 0); } }
+  if (p === '/archive/stats') {
+    const c = async q => (await A.prepare(q).first()).n;
+    const runs = (await A.prepare('SELECT at,persons,events,edges FROM runs ORDER BY at DESC LIMIT 30').all()).results;
+    return AJ(env, req, { persons: await c('SELECT count(*) n FROM persons'), events: await c('SELECT count(*) n FROM events'), edges: await c('SELECT count(*) n FROM edges'), runs });
+  }
+  if (p === '/archive/done') return AJ(env, req, (await A.prepare('SELECT id,updated FROM persons').all()).results, 200, 0);
+  if (p === '/archive/people') {
+    const q = (url.searchParams.get('q') || '').trim(), lim = Math.min(+url.searchParams.get('n') || 60, 200);
+    const r = q ? await A.prepare("SELECT id,name,kind,party,birth,score,ev,ed,json_extract(data,'$.photo') photo,json_extract(data,'$.summary') summary FROM persons WHERE name LIKE ? ORDER BY score DESC LIMIT ?").bind('%' + q + '%', lim).all()
+      : await A.prepare("SELECT id,name,kind,party,birth,score,ev,ed,json_extract(data,'$.photo') photo,json_extract(data,'$.summary') summary FROM persons ORDER BY score DESC LIMIT ?").bind(lim).all();
+    return AJ(env, req, r.results);
+  }
+  let m = p.match(/^\/archive\/person\/([\w-]+)$/);
+  if (m) {
+    const x = await A.prepare('SELECT * FROM persons WHERE id=?').bind(m[1]).first();
+    if (!x) return AJ(env, req, { error: 'not_found' }, 404, 60);
+    const ev = (await A.prepare('SELECT d,typ,stage,title,status,conf,src,url,extra FROM events WHERE pid=? ORDER BY d').bind(m[1]).all()).results;
+    return AJ(env, req, { ...x, data: JSON.parse(x.data), events: ev });
+  }
+  m = p.match(/^\/archive\/graph\/([\w-]+)$/);
+  if (m) {   // 2단계 이웃까지
+    const id = m[1], seen = new Set([id]), E = [];
+    let front = [id];
+    for (let hop = 0; hop < 2 && front.length; hop++) {
+      const ph = front.map(() => '?').join(',');
+      const r = (await A.prepare(`SELECT * FROM edges WHERE a IN (${ph}) OR b IN (${ph}) ORDER BY CASE typ WHEN 'parent' THEN 0 WHEN 'spouse' THEN 0 WHEN 'sibling' THEN 0 WHEN 'relative' THEN 1 WHEN 'predecessor' THEN 2 WHEN 'hometown' THEN 3 ELSE 4 END, conf DESC LIMIT ${hop ? 60 : 40}`).bind(...front, ...front).all()).results;
+      const nx = [];
+      for (const e of r) { if (!E.some(f => f.a === e.a && f.b === e.b && f.typ === e.typ)) E.push(e); for (const k of [e.a, e.b]) if (!seen.has(k)) { seen.add(k); nx.push(k); } }
+      front = hop === 0 ? nx.filter(k => !k.startsWith('wd:')).slice(0, 12) : [];
+    }
+    const ids = [...seen].slice(0, 90), ph = ids.map(() => '?').join(',');
+    const P = (await A.prepare(`SELECT id,name,kind,party,json_extract(data,'$.photo') photo FROM persons WHERE id IN (${ph})`).bind(...ids).all()).results;
+    const N = (await A.prepare(`SELECT id,name,note FROM nodes WHERE id IN (${ph})`).bind(...ids).all()).results;
+    const keep = new Set(ids);
+    return AJ(env, req, { center: id, nodes: [...P.map(x => ({ ...x, archived: 1 })), ...N.filter(n => !P.some(x => x.id === n.id))], edges: E.filter(e => keep.has(e.a) && keep.has(e.b)) });
+  }
+  if (p === '/archive/onthisday') {
+    const md = url.searchParams.get('md') || new Date(now() + 9 * 36e5).toISOString().slice(5, 10);
+    const r = (await A.prepare("SELECT e.pid,p.name,e.d,e.typ,e.title,e.status,e.src,e.url FROM events e JOIN persons p ON p.id=e.pid WHERE substr(e.d,6,5)=? AND length(e.d)=10 AND e.typ!='news' ORDER BY p.score DESC LIMIT 40").bind(md).all()).results;
+    return AJ(env, req, r);
+  }
+  return J(env, req, { error: 'not_found' }, 404);
 }
 export default {
   async fetch(req, env) {
