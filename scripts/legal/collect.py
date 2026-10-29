@@ -120,6 +120,7 @@ def press():
         if not probe(name, url): continue
         try:
             t = get(url).decode('utf8', 'ignore'); rows = []
+            if os.environ.get('LEGAL_DEBUG'): jsave(f'{OUT}/_debug/{name}.json', {'html': t[:200000]})
             for m in re.finditer(r'<a[^>]+href="([^"]+)"[^>]*>\s*([^<]{15,140})</a>', t):
                 h, title = m.group(1), html.unescape(m.group(2)).strip()
                 if re.search(r'(선고|판결|결정|보도|사건|재판|헌법)', title) and not SEX.search(title): rows.append({'title': title, 'url': up.urljoin(url, h)})
