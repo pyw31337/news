@@ -39,16 +39,21 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-29"
+   "fetched": "2026-10-30"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-29"
+   "fetched": "2026-10-30"
   }
  ],
  "bills": {
   "ages": [
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
    "22"
   ],
   "lead_count": 54,
@@ -443,8 +448,587 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-29"
+   "fetched": "2026-10-30"
   }
+ },
+ "news": [
+  {
+   "date": "2026-10-27",
+   "title": "전종덕, 국민연금 이스라엘 전쟁국채 매입 “‘집단학살’ 인권평가 했나”",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBNWVBabWk5Y0ItZjdJbjBWSENjSHhUUFpfVVJucTI4VGtYYUdOd3pLNGJMNkR3WEc1RXkwRkpjbzhDeXEtOUplVkd2Smx3RnNoYW5iMXZOMW45R1JaTGJhNmpvdlkyeGw1eXpFV3ZQM0I?oc=5",
+   "press": "미디어오늘",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-10-13",
+   "title": "전종덕 의원 \"의약품 임상재평가 기한 연장 제도 폐지해야\"",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE40ejRSb2hZSlZCMURqMF9qODVWNVAtSUNZOHc2dVhyRlRWRVZQSWdvdTQ1LUZaSXA0VGo3SnM3SC1rclEteWVTWnFZUVF4Ukp4Y2R6NzRqbG8yOVlJWXprMHRNZHZFV3hBdDEw?oc=5",
+   "press": "메디파나뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-20",
+   "title": "전종덕 의원, ‘입사 한 달 만에 사망’ 故 임가현 방사선사 진상 촉구",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9mTHhUdjJTVHZaUUR5dlczQkE0OTh1X1MtMl9FajJuNmliVUhJQVl5QjZoRkR4eVF2QWZiY0ZIeHYtc0lUTzQ0b0dSb0RLOFJzbTFEQk5ENzEzTHkxSEJ1MWppbHBwU3Y2TnhKMk1B?oc=5",
+   "press": "간호사신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-08-11",
+   "title": "전종덕 의원 “농촌 희생 없는 에너지 전환해야”",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9GUkRlZXhMbGhvNXdsWERmRUJ6UHFySGdoS2llZlJ6Y1g0RFpJUlpPWVBoX1ptaTlaTlFMaWFBa1E1S21FcUtIYkw4bGQyc3haNm1BRTByRnY5MV8tRDRPSmp3ai12T2h4?oc=5",
+   "press": "환경일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-07-28",
+   "title": "진보당 의원총회에서 발언하는 전종덕 원내부대표",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1TaG1rMExNSVBMV2JHVFZERlAteFNiZXNuV0JqZHdfcE15d2hqWU9INGVzTVFucmJqeXRiZldGVjlxU2lmaEk5WWkyNC1XZ0FIZU5yc3pzNTQ1M0nSAWBBVV95cUxOTUFkeHJTempCV0tUNnY2LXpBLThLcWlseHhfUG15X252MGI1dWlIVWZkWk9VUlo1aUZkeW5kc1FtOU1YTENhY1M1bHFMcXNtQklZRUNkUnk0U1lHR3lDMXc?oc=5",
+   "press": "연합뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-24",
+   "title": "전종덕 의원·농민의 길, 농가 위기 해결 위한 근본 대책 촉구",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1jYVU5SXpNMnNoejV2a2UxaVFKY2U1S05FSDBpLUVSZ3E3VzBBazc5UHFlVDlLNzg2S3JoTER5UTRMajNqMWFGb0R5YjZZTFhab0ZlYkw2bFd1elIyaFFpWmhfMkhxQ2c?oc=5",
+   "press": "M이코노미뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-24",
+   "title": "전종덕 의원·농민의길 “농산물 가격폭락·농자재값 폭등 대책 마련해야”",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBxSTFyRUV2cUtjaGQtRGl0Z1BfaHVzZ09mOHFmc2Y1eXQ4WXZnNzR4ejZOSTFiNU11ODlJMmc0a1FmUEQzXy1SRjduRDJraXg4NlZvTmFJU1Rvdw?oc=5",
+   "press": "농민신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-20",
+   "title": "전종덕 의원·전농, 국회서 “우량농지 파괴 중단 촉구",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5HRlNkNVhDTWtULWNRdmZxTVNiOUlYT3hDMkVjTDJWZFhaUU5qV1MxNEhEampvMm5QNUU5dGJlSXhDTFZzQm9wMFV3bC1VUEVEeWpxdlJyajdUQjdvZVFQRWUzNzlrU3RiN1BEZA?oc=5",
+   "press": "공뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-06-12",
+   "title": "전종덕 의원 “농어촌기본소득, 인구소멸지역 전면 확대해야”",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE90bXNhTUJadmw3NHlOZm9kLWNtMGVsRmxjVkUzZ1ZCeHBDRGFOVnllTzJmc3ROYUszT05XWVl2SlRDUWJXaUNsWGg5d3VSei1IOFJrc2FROGs1Zw?oc=5",
+   "press": "농민신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-14",
+   "title": "전종덕 의원, ‘재생에너지자립도시 특별법’ 발의",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBBVlM4RUZQdjNpWGVWeWV5dVBWRjBJTzRSYjk4RVNmNVdqckpYT1VwWEFQSUlfdk5CdnFjZHpqREtPTG1ucFZ6cVMwR19qc1JBVGZjMXk2Ry1VeWV4dFIwTGZ3N0VSVmlvSXZSXw?oc=5",
+   "press": "기계설비신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-12",
+   "title": "전종덕, 이성수 \"순천시장 손훈모 후보, 불법 정치자금 수수 의혹·성범죄 변호...즉각 사퇴해야\"",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE51UmM4WlRPVjYzYU9WcFJFN2VtaDhxVTI0SGVBU2VMSWQxWDRNWmt6WDZ5bmdkcnJldlowZ3U0ZzJvWHl3YkNQcGZvR3B2N3dKREt6UlBjeGJfeGx6dmt5Vl9mWnJCb1lZUmp4dmJn?oc=5",
+   "press": "everynews.co.kr",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-07",
+   "title": "농민의길·전종덕 의원, 지방선거 7대 농정공약 채택 촉구",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1nbS1NX3BLTURfREIyYUE5bHYtRnJaR3FidW9pSGhFQ0ZNQW5OWV9CUHZWemlhMzk0c1RhdzI2X0k1dTQ2dzVSX2haUnFid0RUTVFMakdaMUNjZw?oc=5",
+   "press": "농민신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-05-04",
+   "title": "“돌봄 노동 처우 현실화” 전종덕 의원 입법 발의",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5iRThrcm42VXJZMExlTjlqdGdOSXl4enNZMFhOV1RTbWdpdHdYT3p1MTd2eFd4YzlPeXRUSklXUi14bTl5OTA0Y3pHMGgzQ3hYUWN1QTlBZThOY0Z1SHBadHcyLVRQWTJfVGtHMmtn?oc=5",
+   "press": "간호사신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-01-29",
+   "title": "진보당 전종덕 의원·강성희 전주시장 출마자 \"광주·전남 통합 넘어 전북 포함한 ‘500만 호남대통합특별시’ 필요\" 주장",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1MNlVkenZyejBnMkxmbmNEOXFucmFtcWNFNkNQNnNLX0VjQjM4TXhobVFGSGprdGlIMXRaWEl1S2QxaHhlRHZkTlBYZG5lY0VmS3NDOWQ3WHlFb3JhY2RtUE1xb01Hb1k?oc=5",
+   "press": "전북의소리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2026-01-21",
+   "title": "전종덕 진보당 의원, \"개헌위한 첫 걸음 국민투표법 개정하라\"",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8wNmo0RVRYNkJGZmZ2ZVRBVmJpQUdQMDRaeGRWVlBFcm1fcWxVR2lKMmphbGdhRVlnOVJYQVVpaVZBeV9CVUV2OHRqTUx1Zlh1MTJRLVYzMm5sNmhJ?oc=5",
+   "press": "뉴스핌",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-11-18",
+   "title": "‘경실련 국감 우수의원’ 임미애·전종덕 의원 선정",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5tdW5EWmMyZEM5YnE4bkMxTjRUdllaVFJJTEp6QlVKNUJlVWZmM1B3VHoweThkYXJGMjZkcnFnbUZLN1NITEY2S0RaTnU4RFZ4Q1Z6RkJ0R3JTTENXZlUwRGtHbHBpaDdsbWZqbg?oc=5",
+   "press": "한국농어민신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-11-13",
+   "title": "전종덕 의원 \"광주공항 소음 피해 보상 기준 낮춰야\"",
+   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1Wdk1ZcmZrZms4MEpRaWl3QXV1ZGl0S041Y3g2SkM0MjVVR2o2WHVmUDdLanU2bkp0MDRTZXI5UV9wcnMxYUJBVURGVFdDak85Wk94cDhHTVhDc2ZLYVYxQ3hB?oc=5",
+   "press": "KBC광주방송",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-10-17",
+   "title": "[국감] 질의하는 전종덕 의원",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE92R0FGQm9TbENGa0xWLW56aXpwRkdqcnRZVXpwU1RwaEpTaFYwdWFUNVlxMjd6SzUza21zZWoxQjlSRm1oZnlqWWZvTQ?oc=5",
+   "press": "뉴스1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-10-15",
+   "title": "여성농민회총연합·전종덕 “성평등한 농촌사회 실현 촉구”",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9VbEllXzhrVlUzRkdqRlh6Q2F4dUVydTJiSnFVQnYybG9yYndaLWtLSW5qaVd5cTdxOUhKRVM3YWJwOGpBU2E3MkpwWFBQWGM3d1BxR1czcUYzSS1QdkxIcVhlSWZ2VDA?oc=5",
+   "press": "M이코노미뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-10-01",
+   "title": "전종덕 의원, 벼 깨씨무늬병 수확 전 대책 마련 촉구",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9wczVTZmsyOFNFZ0ktSzlsZWRRdnRmck5mWXI0dkpJNHpoRU5aX1ZSc295NzZNT05EdDRWZDQ1ZE1KZG9xUDNjWWYxUEZqdzRUd0c1QUwyUUt3M1lfZkNZem1palRTUGfSAWtBVV95cUxNN0ZZbWlhWVJSRnhMZzFocU03aTN6ekZxVkhJalZVYlZXN2g0czhtY0ZYX0hDQ1FFeXZQRWJhZnVFdzJHeTFUQUNMeENGQXh0UTk5bjRyeUJuWTVjbWhELVVOV3RtRFluVElXMA?oc=5",
+   "press": "한국농정신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-09-15",
+   "title": "전종덕 의원, 16일 '국산 식용유산업 육성' 국회 토론회",
+   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1GdEI3S2V0MHFlN2tlNy04WlF6bWFVbzBuWTBGcl9DY09vaUl5QnRNVHdJeGd6MDNlMUJRalFiZnJvcExrYnJMa3p3YldxaUpHQ1RDSWR4UFFjV3lCUG9Md3lnWTlzWF9WQkNIZlRIdnllRlVUQllz?oc=5",
+   "press": "OhmyNews",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-07-28",
+   "title": "환노위 소회의실 앞 노조법 개정 촉구 손팻말 든 전종덕 진보당 의원",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE95YkJNTTdIenlDc0R6YVlYeUYwYXh0M011M3VqMXRzcFc1Ul9vZ0xQZkJfWkFwWHJ1SkRkSndhbGVqaGs4UVJLdWNQOA?oc=5",
+   "press": "뉴스1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-07-28",
+   "title": "전종덕 진보당 의원, 안호영 환노위원장에게 노조법 개정 당부",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBMSVVCX0phcHRmNVBGT2xIRGFIT0wxQ2lnaTVSTEs2X0ptNzA3d2MyLTNtdFZUeFVYbDdxdW85S3VQNEZpeDllbGE0NV9FN19DZEoydlhORF9WX09za1hvQ04taWVaYjZMY2c?oc=5",
+   "press": "서울뉴스통신",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-04-08",
+   "title": "반박하는 전종덕 의원",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9HZlc5X1g3OVdlZjA4UFNmSG90SE1RNGZiVHJaN1pWTDV2akdWSnNpa254Rko5dmdyOXJfSFFzTFlyMkNGU0ZmZXpMTQ?oc=5",
+   "press": "뉴스1",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-04-03",
+   "title": "전종덕 “온 국민이 헌법재판관 입만 봐…윤석열 만장일치 파면해야”",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0yTXdsV1pDNmVKQTU1ZUNJOTBTbDZwbEc5TWRJV1ZRMHZOY3RFVURaaXpaSk5Cay1GallSVDdybzFleXdhQWppdjVVTFQzMnNNYk85Zk9XMVllaUwtNUd0X1V0dlhBTjNPMUVCelhB0gFyQVVfeXFMTjVQcktFb1VHZThPeldBRDVHNDFSMGNxTjJQYlRsVkowMjh2UTcyODBYUVFkNDdKUkFNTEpqNS00YWctSkVCcm5pa1FQZEppWkliZ1luYTJJVHlUSzhzM1BEaDl2bVNSS1lUcU5wSWNIamh3?oc=5",
+   "press": "로리더",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2025-04-02",
+   "title": "전종덕 의원, ‘먹거리기본법’ 대표 발의…“먹거리위기 시대에 꼭 필요”",
+   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1GdENjMEVPVEhpSDN6X0lLRWY2SkRvR3ZyR3NEUVR1QUVrSnBZeFdYSnEtSzVsYVFvbGdtMVJmRktiOFJDVWtaZzZkQ2lhS0dNaTZ6bHVBQWpWUQ?oc=5",
+   "press": "농민신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-11-01",
+   "title": "전종덕 의원 \"정부, 20만원 이상 쌀값 약속 이행하라\"",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB2cjFNcWFjTEx4UVNLUmRUN3FXZnFuUkR6X1BSNnlidS1EVHB6WDJOUm1Ya2QxQmxqNEN5OGFBYUVtdDFMWWxVOXVFMXd6V3Z0ZGtzb0otSVJ5NlZERl9ISHB5MXJCTU0?oc=5",
+   "press": "한국농정신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-10-18",
+   "title": "[포토]국정감사, '질의하는 전종덕 의원'",
+   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQOW5XeG56Qm9CcUQwbUd1eE00WGVIQ091STFNeUpYUDhMZlQtczhDb040YlpXVXVzZGMwYThnUkxTR0Eya3ZFWGg2RE9fQnRYalN1MkRPRXBHbzJVa0QzdW9iRVgtMWsyblRnbzItN0tLZTh4djhMNmswQ0dJOTd1Sg?oc=5",
+   "press": "이데일리",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-07-18",
+   "title": "창사특집·전종덕>“농어업 정책 대전환 필요…‘국가 책임 농정’ 실현”",
+   "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBqR2NmMmt2UXhhY3hmOXhEQlNIb1ZqOVoxMkw5bWl2enZRSlVKX2VUSDRvbmd4MS0xTk5nS1F5Y2JCTEVGUEJsYXk2cGZQNXoxXzZvZmVXTEphNTdhVFFEMUR6dUlONXlDU1QxWGpQSQ?oc=5",
+   "press": "전남일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-06-26",
+   "title": "전종덕 “4대보험 개혁…모든 노동자 건강보험 적용 추진”",
+   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1idEQta0xmRlZsX25EaFRSWi1QTWZfTENuX01qanJwcVB4aXJnR3dYa0xvaHM2Nms5V2lWb0ZBOHFjME5YZW5iSjZMdXNjNDVFcUxfTUVRUzlWVlJDOGI1SlVBeU8yZVExcFdlStIBcEFVX3lxTFBhTUVsQk9BLXJNbTZiU0Z4MUdRYnJnVlRHVF9mcXRNTGZTdHNtaHliZHBva08wcHpyZFNjNG1jSzdZXzlmU0pZZkJVQ1FKdlZ4bE5MbWZuRlc2N21vLVdld0hudHJ0UzR1TlJIel9jSVo?oc=5",
+   "press": "DFT 대한금융신문",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-06-03",
+   "title": "조국혁신당 김재원 의원, 진보당 정혜경·전종덕 의원,",
+   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5FMEpBcHFzT0JNTi0tUlJ5ZWFXMjR1RUFFYnF2SFh4N0trS2JZYW9qZnY5YkpjQm9vSkNWV0I3dDNDNFRKTXgxZ2plc1AyemFnbHQyeFg5Sk52VG53RG1qNjlSVnBSUHBINWlmbm1CZzNpSVMtY2FNag?oc=5",
+   "press": "OhmyNews",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  },
+  {
+   "date": "2024-05-07",
+   "title": "[전종덕 진보당 당선인] “진보정치의 효능감” 전국 최초 무상급식 도입 주인공",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBBcEdUUmlLVFEyMUZic2NkSlpuSDJoNVlua3FOdWVrLS1FWXdzMW5kQ3hBMnEtTk5kRXlwekc4bVFlUDlXOFdxX20wYWJyVFJJY0pKRDZaOTc4NUJUZWtYbnRxTjJfTnZMQzlfcXBCMjM?oc=5",
+   "press": "매일노동뉴스",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-10-29"
+  }
+ ],
+ "incidents": {
+  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
+  "updated": "2026-10-29",
+  "items": []
+ },
+ "media": {
+  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
+  "updated": "2026-10-29",
+  "top_words": [
+   [
+    "촉구",
+    7
+   ],
+   [
+    "진보당",
+    6
+   ],
+   [
+    "대책",
+    3
+   ],
+   [
+    "발의",
+    3
+   ],
+   [
+    "필요",
+    3
+   ],
+   [
+    "농민의길",
+    2
+   ],
+   [
+    "질의하는",
+    2
+   ],
+   [
+    "실현",
+    2
+   ],
+   [
+    "노조법",
+    2
+   ],
+   [
+    "개정",
+    2
+   ],
+   [
+    "국민연금",
+    1
+   ],
+   [
+    "이스라엘",
+    1
+   ],
+   [
+    "전쟁국채",
+    1
+   ],
+   [
+    "매입",
+    1
+   ],
+   [
+    "집단학살",
+    1
+   ],
+   [
+    "인권평가",
+    1
+   ],
+   [
+    "했나",
+    1
+   ],
+   [
+    "의약품",
+    1
+   ],
+   [
+    "임상재평가",
+    1
+   ],
+   [
+    "기한",
+    1
+   ],
+   [
+    "연장",
+    1
+   ],
+   [
+    "제도",
+    1
+   ],
+   [
+    "폐지해야",
+    1
+   ],
+   [
+    "입사",
+    1
+   ],
+   [
+    "만에",
+    1
+   ],
+   [
+    "사망",
+    1
+   ],
+   [
+    "임가현",
+    1
+   ],
+   [
+    "방사선사",
+    1
+   ],
+   [
+    "진상",
+    1
+   ],
+   [
+    "농촌",
+    1
+   ]
+  ],
+  "quotes": [
+   {
+    "date": "2026-10-27",
+    "quote": "‘집단학살’ 인권평가 했나",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBNWVBabWk5Y0ItZjdJbjBWSENjSHhUUFpfVVJucTI4VGtYYUdOd3pLNGJMNkR3WEc1RXkwRkpjbzhDeXEtOUplVkd2Smx3RnNoYW5iMXZOMW45R1JaTGJhNmpvdlkyeGw1eXpFV3ZQM0I?oc=5",
+    "press": "미디어오늘"
+   },
+   {
+    "date": "2026-10-13",
+    "quote": "의약품 임상재평가 기한 연장 제도 폐지해야",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE40ejRSb2hZSlZCMURqMF9qODVWNVAtSUNZOHc2dVhyRlRWRVZQSWdvdTQ1LUZaSXA0VGo3SnM3SC1rclEteWVTWnFZUVF4Ukp4Y2R6NzRqbG8yOVlJWXprMHRNZHZFV3hBdDEw?oc=5",
+    "press": "메디파나뉴스"
+   },
+   {
+    "date": "2026-08-11",
+    "quote": "농촌 희생 없는 에너지 전환해야",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9GUkRlZXhMbGhvNXdsWERmRUJ6UHFySGdoS2llZlJ6Y1g0RFpJUlpPWVBoX1ptaTlaTlFMaWFBa1E1S21FcUtIYkw4bGQyc3haNm1BRTByRnY5MV8tRDRPSmp3ai12T2h4?oc=5",
+    "press": "환경일보"
+   },
+   {
+    "date": "2026-06-24",
+    "quote": "농산물 가격폭락·농자재값 폭등 대책 마련해야",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBxSTFyRUV2cUtjaGQtRGl0Z1BfaHVzZ09mOHFmc2Y1eXQ4WXZnNzR4ejZOSTFiNU11ODlJMmc0a1FmUEQzXy1SRjduRDJraXg4NlZvTmFJU1Rvdw?oc=5",
+    "press": "농민신문"
+   },
+   {
+    "date": "2026-06-12",
+    "quote": "농어촌기본소득, 인구소멸지역 전면 확대해야",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE90bXNhTUJadmw3NHlOZm9kLWNtMGVsRmxjVkUzZ1ZCeHBDRGFOVnllTzJmc3ROYUszT05XWVl2SlRDUWJXaUNsWGg5d3VSei1IOFJrc2FROGs1Zw?oc=5",
+    "press": "농민신문"
+   },
+   {
+    "date": "2026-05-12",
+    "quote": "순천시장 손훈모 후보, 불법 정치자금 수수 의혹·성범죄 변호...즉각 사퇴해야",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE51UmM4WlRPVjYzYU9WcFJFN2VtaDhxVTI0SGVBU2VMSWQxWDRNWmt6WDZ5bmdkcnJldlowZ3U0ZzJvWHl3YkNQcGZvR3B2N3dKREt6UlBjeGJfeGx6dmt5Vl9mWnJCb1lZUmp4dmJn?oc=5",
+    "press": "everynews.co.kr"
+   },
+   {
+    "date": "2026-01-29",
+    "quote": "광주·전남 통합 넘어 전북 포함한 ‘500만 호남대통합특별시’ 필요",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1MNlVkenZyejBnMkxmbmNEOXFucmFtcWNFNkNQNnNLX0VjQjM4TXhobVFGSGprdGlIMXRaWEl1S2QxaHhlRHZkTlBYZG5lY0VmS3NDOWQ3WHlFb3JhY2RtUE1xb01Hb1k?oc=5",
+    "press": "전북의소리"
+   },
+   {
+    "date": "2026-01-21",
+    "quote": "개헌위한 첫 걸음 국민투표법 개정하라",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8wNmo0RVRYNkJGZmZ2ZVRBVmJpQUdQMDRaeGRWVlBFcm1fcWxVR2lKMmphbGdhRVlnOVJYQVVpaVZBeV9CVUV2OHRqTUx1Zlh1MTJRLVYzMm5sNmhJ?oc=5",
+    "press": "뉴스핌"
+   },
+   {
+    "date": "2025-11-13",
+    "quote": "광주공항 소음 피해 보상 기준 낮춰야",
+    "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1Wdk1ZcmZrZms4MEpRaWl3QXV1ZGl0S041Y3g2SkM0MjVVR2o2WHVmUDdLanU2bkp0MDRTZXI5UV9wcnMxYUJBVURGVFdDak85Wk94cDhHTVhDc2ZLYVYxQ3hB?oc=5",
+    "press": "KBC광주방송"
+   },
+   {
+    "date": "2025-10-15",
+    "quote": "성평등한 농촌사회 실현 촉구",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9VbEllXzhrVlUzRkdqRlh6Q2F4dUVydTJiSnFVQnYybG9yYndaLWtLSW5qaVd5cTdxOUhKRVM3YWJwOGpBU2E3MkpwWFBQWGM3d1BxR1czcUYzSS1QdkxIcVhlSWZ2VDA?oc=5",
+    "press": "M이코노미뉴스"
+   },
+   {
+    "date": "2025-04-03",
+    "quote": "온 국민이 헌법재판관 입만 봐…윤석열 만장일치 파면해야",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0yTXdsV1pDNmVKQTU1ZUNJOTBTbDZwbEc5TWRJV1ZRMHZOY3RFVURaaXpaSk5Cay1GallSVDdybzFleXdhQWppdjVVTFQzMnNNYk85Zk9XMVllaUwtNUd0X1V0dlhBTjNPMUVCelhB0gFyQVVfeXFMTjVQcktFb1VHZThPeldBRDVHNDFSMGNxTjJQYlRsVkowMjh2UTcyODBYUVFkNDdKUkFNTEpqNS00YWctSkVCcm5pa1FQZEppWkliZ1luYTJJVHlUSzhzM1BEaDl2bVNSS1lUcU5wSWNIamh3?oc=5",
+    "press": "로리더"
+   },
+   {
+    "date": "2025-04-02",
+    "quote": "먹거리위기 시대에 꼭 필요",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1GdENjMEVPVEhpSDN6X0lLRWY2SkRvR3ZyR3NEUVR1QUVrSnBZeFdYSnEtSzVsYVFvbGdtMVJmRktiOFJDVWtaZzZkQ2lhS0dNaTZ6bHVBQWpWUQ?oc=5",
+    "press": "농민신문"
+   },
+   {
+    "date": "2024-11-01",
+    "quote": "정부, 20만원 이상 쌀값 약속 이행하라",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB2cjFNcWFjTEx4UVNLUmRUN3FXZnFuUkR6X1BSNnlidS1EVHB6WDJOUm1Ya2QxQmxqNEN5OGFBYUVtdDFMWWxVOXVFMXd6V3Z0ZGtzb0otSVJ5NlZERl9ISHB5MXJCTU0?oc=5",
+    "press": "한국농정신문"
+   },
+   {
+    "date": "2024-07-18",
+    "quote": "농어업 정책 대전환 필요…‘국가 책임 농정’ 실현",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBqR2NmMmt2UXhhY3hmOXhEQlNIb1ZqOVoxMkw5bWl2enZRSlVKX2VUSDRvbmd4MS0xTk5nS1F5Y2JCTEVGUEJsYXk2cGZQNXoxXzZvZmVXTEphNTdhVFFEMUR6dUlONXlDU1QxWGpQSQ?oc=5",
+    "press": "전남일보"
+   },
+   {
+    "date": "2024-06-26",
+    "quote": "4대보험 개혁…모든 노동자 건강보험 적용 추진",
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1idEQta0xmRlZsX25EaFRSWi1QTWZfTENuX01qanJwcVB4aXJnR3dYa0xvaHM2Nms5V2lWb0ZBOHFjME5YZW5iSjZMdXNjNDVFcUxfTUVRUzlWVlJDOGI1SlVBeU8yZVExcFdlStIBcEFVX3lxTFBhTUVsQk9BLXJNbTZiU0Z4MUdRYnJnVlRHVF9mcXRNTGZTdHNtaHliZHBva08wcHpyZFNjNG1jSzdZXzlmU0pZZkJVQ1FKdlZ4bE5MbWZuRlc2N21vLVdld0hudHJ0UzR1TlJIel9jSVo?oc=5",
+    "press": "DFT 대한금융신문"
+   },
+   {
+    "date": "2024-05-07",
+    "quote": "진보정치의 효능감",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBBcEdUUmlLVFEyMUZic2NkSlpuSDJoNVlua3FOdWVrLS1FWXdzMW5kQ3hBMnEtTk5kRXlwekc4bVFlUDlXOFdxX20wYWJyVFJJY0pKRDZaOTc4NUJUZWtYbnRxTjJfTnZMQzlfcXBCMjM?oc=5",
+    "press": "매일노동뉴스"
+   }
+  ],
+  "by_month": {
+   "2024-05": 1,
+   "2024-06": 2,
+   "2024-07": 1,
+   "2024-10": 1,
+   "2024-11": 1,
+   "2025-04": 3,
+   "2025-07": 2,
+   "2025-09": 1,
+   "2025-10": 3,
+   "2025-11": 2,
+   "2026-01": 2,
+   "2026-05": 4,
+   "2026-06": 4,
+   "2026-07": 1,
+   "2026-08": 2,
+   "2026-10": 2
+  },
+  "presses": [
+   [
+    "농민신문",
+    4
+   ],
+   [
+    "뉴스1",
+    3
+   ],
+   [
+    "간호사신문",
+    2
+   ],
+   [
+    "M이코노미뉴스",
+    2
+   ],
+   [
+    "한국농정신문",
+    2
+   ],
+   [
+    "OhmyNews",
+    2
+   ],
+   [
+    "미디어오늘",
+    1
+   ],
+   [
+    "메디파나뉴스",
+    1
+   ],
+   [
+    "환경일보",
+    1
+   ],
+   [
+    "연합뉴스",
+    1
+   ]
+  ]
  },
  "assets": {
   "records": [
@@ -1765,587 +2349,8 @@
   "source": {
    "name": "열린국회정보 국회의원 본회의 표결정보 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-30"
   }
  },
- "photo_local": "data/pol/photos/P8A4624C.webp",
- "news": [
-  {
-   "date": "2026-10-27",
-   "title": "전종덕, 국민연금 이스라엘 전쟁국채 매입 “‘집단학살’ 인권평가 했나”",
-   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBNWVBabWk5Y0ItZjdJbjBWSENjSHhUUFpfVVJucTI4VGtYYUdOd3pLNGJMNkR3WEc1RXkwRkpjbzhDeXEtOUplVkd2Smx3RnNoYW5iMXZOMW45R1JaTGJhNmpvdlkyeGw1eXpFV3ZQM0I?oc=5",
-   "press": "미디어오늘",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-10-13",
-   "title": "전종덕 의원 \"의약품 임상재평가 기한 연장 제도 폐지해야\"",
-   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE40ejRSb2hZSlZCMURqMF9qODVWNVAtSUNZOHc2dVhyRlRWRVZQSWdvdTQ1LUZaSXA0VGo3SnM3SC1rclEteWVTWnFZUVF4Ukp4Y2R6NzRqbG8yOVlJWXprMHRNZHZFV3hBdDEw?oc=5",
-   "press": "메디파나뉴스",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-08-20",
-   "title": "전종덕 의원, ‘입사 한 달 만에 사망’ 故 임가현 방사선사 진상 촉구",
-   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9mTHhUdjJTVHZaUUR5dlczQkE0OTh1X1MtMl9FajJuNmliVUhJQVl5QjZoRkR4eVF2QWZiY0ZIeHYtc0lUTzQ0b0dSb0RLOFJzbTFEQk5ENzEzTHkxSEJ1MWppbHBwU3Y2TnhKMk1B?oc=5",
-   "press": "간호사신문",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-08-11",
-   "title": "전종덕 의원 “농촌 희생 없는 에너지 전환해야”",
-   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9GUkRlZXhMbGhvNXdsWERmRUJ6UHFySGdoS2llZlJ6Y1g0RFpJUlpPWVBoX1ptaTlaTlFMaWFBa1E1S21FcUtIYkw4bGQyc3haNm1BRTByRnY5MV8tRDRPSmp3ai12T2h4?oc=5",
-   "press": "환경일보",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-07-28",
-   "title": "진보당 의원총회에서 발언하는 전종덕 원내부대표",
-   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1TaG1rMExNSVBMV2JHVFZERlAteFNiZXNuV0JqZHdfcE15d2hqWU9INGVzTVFucmJqeXRiZldGVjlxU2lmaEk5WWkyNC1XZ0FIZU5yc3pzNTQ1M0nSAWBBVV95cUxOTUFkeHJTempCV0tUNnY2LXpBLThLcWlseHhfUG15X252MGI1dWlIVWZkWk9VUlo1aUZkeW5kc1FtOU1YTENhY1M1bHFMcXNtQklZRUNkUnk0U1lHR3lDMXc?oc=5",
-   "press": "연합뉴스",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-06-24",
-   "title": "전종덕 의원·농민의 길, 농가 위기 해결 위한 근본 대책 촉구",
-   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1jYVU5SXpNMnNoejV2a2UxaVFKY2U1S05FSDBpLUVSZ3E3VzBBazc5UHFlVDlLNzg2S3JoTER5UTRMajNqMWFGb0R5YjZZTFhab0ZlYkw2bFd1elIyaFFpWmhfMkhxQ2c?oc=5",
-   "press": "M이코노미뉴스",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-06-24",
-   "title": "전종덕 의원·농민의길 “농산물 가격폭락·농자재값 폭등 대책 마련해야”",
-   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBxSTFyRUV2cUtjaGQtRGl0Z1BfaHVzZ09mOHFmc2Y1eXQ4WXZnNzR4ejZOSTFiNU11ODlJMmc0a1FmUEQzXy1SRjduRDJraXg4NlZvTmFJU1Rvdw?oc=5",
-   "press": "농민신문",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-06-20",
-   "title": "전종덕 의원·전농, 국회서 “우량농지 파괴 중단 촉구",
-   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5HRlNkNVhDTWtULWNRdmZxTVNiOUlYT3hDMkVjTDJWZFhaUU5qV1MxNEhEampvMm5QNUU5dGJlSXhDTFZzQm9wMFV3bC1VUEVEeWpxdlJyajdUQjdvZVFQRWUzNzlrU3RiN1BEZA?oc=5",
-   "press": "공뉴스",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-06-12",
-   "title": "전종덕 의원 “농어촌기본소득, 인구소멸지역 전면 확대해야”",
-   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE90bXNhTUJadmw3NHlOZm9kLWNtMGVsRmxjVkUzZ1ZCeHBDRGFOVnllTzJmc3ROYUszT05XWVl2SlRDUWJXaUNsWGg5d3VSei1IOFJrc2FROGs1Zw?oc=5",
-   "press": "농민신문",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-05-14",
-   "title": "전종덕 의원, ‘재생에너지자립도시 특별법’ 발의",
-   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBBVlM4RUZQdjNpWGVWeWV5dVBWRjBJTzRSYjk4RVNmNVdqckpYT1VwWEFQSUlfdk5CdnFjZHpqREtPTG1ucFZ6cVMwR19qc1JBVGZjMXk2Ry1VeWV4dFIwTGZ3N0VSVmlvSXZSXw?oc=5",
-   "press": "기계설비신문",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-05-12",
-   "title": "전종덕, 이성수 \"순천시장 손훈모 후보, 불법 정치자금 수수 의혹·성범죄 변호...즉각 사퇴해야\"",
-   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE51UmM4WlRPVjYzYU9WcFJFN2VtaDhxVTI0SGVBU2VMSWQxWDRNWmt6WDZ5bmdkcnJldlowZ3U0ZzJvWHl3YkNQcGZvR3B2N3dKREt6UlBjeGJfeGx6dmt5Vl9mWnJCb1lZUmp4dmJn?oc=5",
-   "press": "everynews.co.kr",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-05-07",
-   "title": "농민의길·전종덕 의원, 지방선거 7대 농정공약 채택 촉구",
-   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1nbS1NX3BLTURfREIyYUE5bHYtRnJaR3FidW9pSGhFQ0ZNQW5OWV9CUHZWemlhMzk0c1RhdzI2X0k1dTQ2dzVSX2haUnFid0RUTVFMakdaMUNjZw?oc=5",
-   "press": "농민신문",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-05-04",
-   "title": "“돌봄 노동 처우 현실화” 전종덕 의원 입법 발의",
-   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5iRThrcm42VXJZMExlTjlqdGdOSXl4enNZMFhOV1RTbWdpdHdYT3p1MTd2eFd4YzlPeXRUSklXUi14bTl5OTA0Y3pHMGgzQ3hYUWN1QTlBZThOY0Z1SHBadHcyLVRQWTJfVGtHMmtn?oc=5",
-   "press": "간호사신문",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-01-29",
-   "title": "진보당 전종덕 의원·강성희 전주시장 출마자 \"광주·전남 통합 넘어 전북 포함한 ‘500만 호남대통합특별시’ 필요\" 주장",
-   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1MNlVkenZyejBnMkxmbmNEOXFucmFtcWNFNkNQNnNLX0VjQjM4TXhobVFGSGprdGlIMXRaWEl1S2QxaHhlRHZkTlBYZG5lY0VmS3NDOWQ3WHlFb3JhY2RtUE1xb01Hb1k?oc=5",
-   "press": "전북의소리",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2026-01-21",
-   "title": "전종덕 진보당 의원, \"개헌위한 첫 걸음 국민투표법 개정하라\"",
-   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8wNmo0RVRYNkJGZmZ2ZVRBVmJpQUdQMDRaeGRWVlBFcm1fcWxVR2lKMmphbGdhRVlnOVJYQVVpaVZBeV9CVUV2OHRqTUx1Zlh1MTJRLVYzMm5sNmhJ?oc=5",
-   "press": "뉴스핌",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2025-11-18",
-   "title": "‘경실련 국감 우수의원’ 임미애·전종덕 의원 선정",
-   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5tdW5EWmMyZEM5YnE4bkMxTjRUdllaVFJJTEp6QlVKNUJlVWZmM1B3VHoweThkYXJGMjZkcnFnbUZLN1NITEY2S0RaTnU4RFZ4Q1Z6RkJ0R3JTTENXZlUwRGtHbHBpaDdsbWZqbg?oc=5",
-   "press": "한국농어민신문",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2025-11-13",
-   "title": "전종덕 의원 \"광주공항 소음 피해 보상 기준 낮춰야\"",
-   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1Wdk1ZcmZrZms4MEpRaWl3QXV1ZGl0S041Y3g2SkM0MjVVR2o2WHVmUDdLanU2bkp0MDRTZXI5UV9wcnMxYUJBVURGVFdDak85Wk94cDhHTVhDc2ZLYVYxQ3hB?oc=5",
-   "press": "KBC광주방송",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2025-10-17",
-   "title": "[국감] 질의하는 전종덕 의원",
-   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE92R0FGQm9TbENGa0xWLW56aXpwRkdqcnRZVXpwU1RwaEpTaFYwdWFUNVlxMjd6SzUza21zZWoxQjlSRm1oZnlqWWZvTQ?oc=5",
-   "press": "뉴스1",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2025-10-15",
-   "title": "여성농민회총연합·전종덕 “성평등한 농촌사회 실현 촉구”",
-   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9VbEllXzhrVlUzRkdqRlh6Q2F4dUVydTJiSnFVQnYybG9yYndaLWtLSW5qaVd5cTdxOUhKRVM3YWJwOGpBU2E3MkpwWFBQWGM3d1BxR1czcUYzSS1QdkxIcVhlSWZ2VDA?oc=5",
-   "press": "M이코노미뉴스",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2025-10-01",
-   "title": "전종덕 의원, 벼 깨씨무늬병 수확 전 대책 마련 촉구",
-   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9wczVTZmsyOFNFZ0ktSzlsZWRRdnRmck5mWXI0dkpJNHpoRU5aX1ZSc295NzZNT05EdDRWZDQ1ZE1KZG9xUDNjWWYxUEZqdzRUd0c1QUwyUUt3M1lfZkNZem1palRTUGfSAWtBVV95cUxNN0ZZbWlhWVJSRnhMZzFocU03aTN6ekZxVkhJalZVYlZXN2g0czhtY0ZYX0hDQ1FFeXZQRWJhZnVFdzJHeTFUQUNMeENGQXh0UTk5bjRyeUJuWTVjbWhELVVOV3RtRFluVElXMA?oc=5",
-   "press": "한국농정신문",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2025-09-15",
-   "title": "전종덕 의원, 16일 '국산 식용유산업 육성' 국회 토론회",
-   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1GdEI3S2V0MHFlN2tlNy04WlF6bWFVbzBuWTBGcl9DY09vaUl5QnRNVHdJeGd6MDNlMUJRalFiZnJvcExrYnJMa3p3YldxaUpHQ1RDSWR4UFFjV3lCUG9Md3lnWTlzWF9WQkNIZlRIdnllRlVUQllz?oc=5",
-   "press": "OhmyNews",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2025-07-28",
-   "title": "환노위 소회의실 앞 노조법 개정 촉구 손팻말 든 전종덕 진보당 의원",
-   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE95YkJNTTdIenlDc0R6YVlYeUYwYXh0M011M3VqMXRzcFc1Ul9vZ0xQZkJfWkFwWHJ1SkRkSndhbGVqaGs4UVJLdWNQOA?oc=5",
-   "press": "뉴스1",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2025-07-28",
-   "title": "전종덕 진보당 의원, 안호영 환노위원장에게 노조법 개정 당부",
-   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBMSVVCX0phcHRmNVBGT2xIRGFIT0wxQ2lnaTVSTEs2X0ptNzA3d2MyLTNtdFZUeFVYbDdxdW85S3VQNEZpeDllbGE0NV9FN19DZEoydlhORF9WX09za1hvQ04taWVaYjZMY2c?oc=5",
-   "press": "서울뉴스통신",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2025-04-08",
-   "title": "반박하는 전종덕 의원",
-   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9HZlc5X1g3OVdlZjA4UFNmSG90SE1RNGZiVHJaN1pWTDV2akdWSnNpa254Rko5dmdyOXJfSFFzTFlyMkNGU0ZmZXpMTQ?oc=5",
-   "press": "뉴스1",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2025-04-03",
-   "title": "전종덕 “온 국민이 헌법재판관 입만 봐…윤석열 만장일치 파면해야”",
-   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0yTXdsV1pDNmVKQTU1ZUNJOTBTbDZwbEc5TWRJV1ZRMHZOY3RFVURaaXpaSk5Cay1GallSVDdybzFleXdhQWppdjVVTFQzMnNNYk85Zk9XMVllaUwtNUd0X1V0dlhBTjNPMUVCelhB0gFyQVVfeXFMTjVQcktFb1VHZThPeldBRDVHNDFSMGNxTjJQYlRsVkowMjh2UTcyODBYUVFkNDdKUkFNTEpqNS00YWctSkVCcm5pa1FQZEppWkliZ1luYTJJVHlUSzhzM1BEaDl2bVNSS1lUcU5wSWNIamh3?oc=5",
-   "press": "로리더",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2025-04-02",
-   "title": "전종덕 의원, ‘먹거리기본법’ 대표 발의…“먹거리위기 시대에 꼭 필요”",
-   "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1GdENjMEVPVEhpSDN6X0lLRWY2SkRvR3ZyR3NEUVR1QUVrSnBZeFdYSnEtSzVsYVFvbGdtMVJmRktiOFJDVWtaZzZkQ2lhS0dNaTZ6bHVBQWpWUQ?oc=5",
-   "press": "농민신문",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2024-11-01",
-   "title": "전종덕 의원 \"정부, 20만원 이상 쌀값 약속 이행하라\"",
-   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB2cjFNcWFjTEx4UVNLUmRUN3FXZnFuUkR6X1BSNnlidS1EVHB6WDJOUm1Ya2QxQmxqNEN5OGFBYUVtdDFMWWxVOXVFMXd6V3Z0ZGtzb0otSVJ5NlZERl9ISHB5MXJCTU0?oc=5",
-   "press": "한국농정신문",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2024-10-18",
-   "title": "[포토]국정감사, '질의하는 전종덕 의원'",
-   "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQOW5XeG56Qm9CcUQwbUd1eE00WGVIQ091STFNeUpYUDhMZlQtczhDb040YlpXVXVzZGMwYThnUkxTR0Eya3ZFWGg2RE9fQnRYalN1MkRPRXBHbzJVa0QzdW9iRVgtMWsyblRnbzItN0tLZTh4djhMNmswQ0dJOTd1Sg?oc=5",
-   "press": "이데일리",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2024-07-18",
-   "title": "창사특집·전종덕>“농어업 정책 대전환 필요…‘국가 책임 농정’ 실현”",
-   "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBqR2NmMmt2UXhhY3hmOXhEQlNIb1ZqOVoxMkw5bWl2enZRSlVKX2VUSDRvbmd4MS0xTk5nS1F5Y2JCTEVGUEJsYXk2cGZQNXoxXzZvZmVXTEphNTdhVFFEMUR6dUlONXlDU1QxWGpQSQ?oc=5",
-   "press": "전남일보",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2024-06-26",
-   "title": "전종덕 “4대보험 개혁…모든 노동자 건강보험 적용 추진”",
-   "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1idEQta0xmRlZsX25EaFRSWi1QTWZfTENuX01qanJwcVB4aXJnR3dYa0xvaHM2Nms5V2lWb0ZBOHFjME5YZW5iSjZMdXNjNDVFcUxfTUVRUzlWVlJDOGI1SlVBeU8yZVExcFdlStIBcEFVX3lxTFBhTUVsQk9BLXJNbTZiU0Z4MUdRYnJnVlRHVF9mcXRNTGZTdHNtaHliZHBva08wcHpyZFNjNG1jSzdZXzlmU0pZZkJVQ1FKdlZ4bE5MbWZuRlc2N21vLVdld0hudHJ0UzR1TlJIel9jSVo?oc=5",
-   "press": "DFT 대한금융신문",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2024-06-03",
-   "title": "조국혁신당 김재원 의원, 진보당 정혜경·전종덕 의원,",
-   "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5FMEpBcHFzT0JNTi0tUlJ5ZWFXMjR1RUFFYnF2SFh4N0trS2JZYW9qZnY5YkpjQm9vSkNWV0I3dDNDNFRKTXgxZ2plc1AyemFnbHQyeFg5Sk52VG53RG1qNjlSVnBSUHBINWlmbm1CZzNpSVMtY2FNag?oc=5",
-   "press": "OhmyNews",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  },
-  {
-   "date": "2024-05-07",
-   "title": "[전종덕 진보당 당선인] “진보정치의 효능감” 전국 최초 무상급식 도입 주인공",
-   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBBcEdUUmlLVFEyMUZic2NkSlpuSDJoNVlua3FOdWVrLS1FWXdzMW5kQ3hBMnEtTk5kRXlwekc4bVFlUDlXOFdxX20wYWJyVFJJY0pKRDZaOTc4NUJUZWtYbnRxTjJfTnZMQzlfcXBCMjM?oc=5",
-   "press": "매일노동뉴스",
-   "img": "",
-   "via": "구글 뉴스 검색",
-   "linked": "2026-10-29"
-  }
- ],
- "incidents": {
-  "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
-  "updated": "2026-10-29",
-  "items": []
- },
- "media": {
-  "method": "통계(연결된 기사 헤드라인 단어 빈도)",
-  "updated": "2026-10-29",
-  "top_words": [
-   [
-    "촉구",
-    7
-   ],
-   [
-    "진보당",
-    6
-   ],
-   [
-    "대책",
-    3
-   ],
-   [
-    "발의",
-    3
-   ],
-   [
-    "필요",
-    3
-   ],
-   [
-    "농민의길",
-    2
-   ],
-   [
-    "질의하는",
-    2
-   ],
-   [
-    "실현",
-    2
-   ],
-   [
-    "노조법",
-    2
-   ],
-   [
-    "개정",
-    2
-   ],
-   [
-    "국민연금",
-    1
-   ],
-   [
-    "이스라엘",
-    1
-   ],
-   [
-    "전쟁국채",
-    1
-   ],
-   [
-    "매입",
-    1
-   ],
-   [
-    "집단학살",
-    1
-   ],
-   [
-    "인권평가",
-    1
-   ],
-   [
-    "했나",
-    1
-   ],
-   [
-    "의약품",
-    1
-   ],
-   [
-    "임상재평가",
-    1
-   ],
-   [
-    "기한",
-    1
-   ],
-   [
-    "연장",
-    1
-   ],
-   [
-    "제도",
-    1
-   ],
-   [
-    "폐지해야",
-    1
-   ],
-   [
-    "입사",
-    1
-   ],
-   [
-    "만에",
-    1
-   ],
-   [
-    "사망",
-    1
-   ],
-   [
-    "임가현",
-    1
-   ],
-   [
-    "방사선사",
-    1
-   ],
-   [
-    "진상",
-    1
-   ],
-   [
-    "농촌",
-    1
-   ]
-  ],
-  "quotes": [
-   {
-    "date": "2026-10-27",
-    "quote": "‘집단학살’ 인권평가 했나",
-    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBNWVBabWk5Y0ItZjdJbjBWSENjSHhUUFpfVVJucTI4VGtYYUdOd3pLNGJMNkR3WEc1RXkwRkpjbzhDeXEtOUplVkd2Smx3RnNoYW5iMXZOMW45R1JaTGJhNmpvdlkyeGw1eXpFV3ZQM0I?oc=5",
-    "press": "미디어오늘"
-   },
-   {
-    "date": "2026-10-13",
-    "quote": "의약품 임상재평가 기한 연장 제도 폐지해야",
-    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE40ejRSb2hZSlZCMURqMF9qODVWNVAtSUNZOHc2dVhyRlRWRVZQSWdvdTQ1LUZaSXA0VGo3SnM3SC1rclEteWVTWnFZUVF4Ukp4Y2R6NzRqbG8yOVlJWXprMHRNZHZFV3hBdDEw?oc=5",
-    "press": "메디파나뉴스"
-   },
-   {
-    "date": "2026-08-11",
-    "quote": "농촌 희생 없는 에너지 전환해야",
-    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9GUkRlZXhMbGhvNXdsWERmRUJ6UHFySGdoS2llZlJ6Y1g0RFpJUlpPWVBoX1ptaTlaTlFMaWFBa1E1S21FcUtIYkw4bGQyc3haNm1BRTByRnY5MV8tRDRPSmp3ai12T2h4?oc=5",
-    "press": "환경일보"
-   },
-   {
-    "date": "2026-06-24",
-    "quote": "농산물 가격폭락·농자재값 폭등 대책 마련해야",
-    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBxSTFyRUV2cUtjaGQtRGl0Z1BfaHVzZ09mOHFmc2Y1eXQ4WXZnNzR4ejZOSTFiNU11ODlJMmc0a1FmUEQzXy1SRjduRDJraXg4NlZvTmFJU1Rvdw?oc=5",
-    "press": "농민신문"
-   },
-   {
-    "date": "2026-06-12",
-    "quote": "농어촌기본소득, 인구소멸지역 전면 확대해야",
-    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE90bXNhTUJadmw3NHlOZm9kLWNtMGVsRmxjVkUzZ1ZCeHBDRGFOVnllTzJmc3ROYUszT05XWVl2SlRDUWJXaUNsWGg5d3VSei1IOFJrc2FROGs1Zw?oc=5",
-    "press": "농민신문"
-   },
-   {
-    "date": "2026-05-12",
-    "quote": "순천시장 손훈모 후보, 불법 정치자금 수수 의혹·성범죄 변호...즉각 사퇴해야",
-    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE51UmM4WlRPVjYzYU9WcFJFN2VtaDhxVTI0SGVBU2VMSWQxWDRNWmt6WDZ5bmdkcnJldlowZ3U0ZzJvWHl3YkNQcGZvR3B2N3dKREt6UlBjeGJfeGx6dmt5Vl9mWnJCb1lZUmp4dmJn?oc=5",
-    "press": "everynews.co.kr"
-   },
-   {
-    "date": "2026-01-29",
-    "quote": "광주·전남 통합 넘어 전북 포함한 ‘500만 호남대통합특별시’ 필요",
-    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1MNlVkenZyejBnMkxmbmNEOXFucmFtcWNFNkNQNnNLX0VjQjM4TXhobVFGSGprdGlIMXRaWEl1S2QxaHhlRHZkTlBYZG5lY0VmS3NDOWQ3WHlFb3JhY2RtUE1xb01Hb1k?oc=5",
-    "press": "전북의소리"
-   },
-   {
-    "date": "2026-01-21",
-    "quote": "개헌위한 첫 걸음 국민투표법 개정하라",
-    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE8wNmo0RVRYNkJGZmZ2ZVRBVmJpQUdQMDRaeGRWVlBFcm1fcWxVR2lKMmphbGdhRVlnOVJYQVVpaVZBeV9CVUV2OHRqTUx1Zlh1MTJRLVYzMm5sNmhJ?oc=5",
-    "press": "뉴스핌"
-   },
-   {
-    "date": "2025-11-13",
-    "quote": "광주공항 소음 피해 보상 기준 낮춰야",
-    "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1Wdk1ZcmZrZms4MEpRaWl3QXV1ZGl0S041Y3g2SkM0MjVVR2o2WHVmUDdLanU2bkp0MDRTZXI5UV9wcnMxYUJBVURGVFdDak85Wk94cDhHTVhDc2ZLYVYxQ3hB?oc=5",
-    "press": "KBC광주방송"
-   },
-   {
-    "date": "2025-10-15",
-    "quote": "성평등한 농촌사회 실현 촉구",
-    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9VbEllXzhrVlUzRkdqRlh6Q2F4dUVydTJiSnFVQnYybG9yYndaLWtLSW5qaVd5cTdxOUhKRVM3YWJwOGpBU2E3MkpwWFBQWGM3d1BxR1czcUYzSS1QdkxIcVhlSWZ2VDA?oc=5",
-    "press": "M이코노미뉴스"
-   },
-   {
-    "date": "2025-04-03",
-    "quote": "온 국민이 헌법재판관 입만 봐…윤석열 만장일치 파면해야",
-    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE0yTXdsV1pDNmVKQTU1ZUNJOTBTbDZwbEc5TWRJV1ZRMHZOY3RFVURaaXpaSk5Cay1GallSVDdybzFleXdhQWppdjVVTFQzMnNNYk85Zk9XMVllaUwtNUd0X1V0dlhBTjNPMUVCelhB0gFyQVVfeXFMTjVQcktFb1VHZThPeldBRDVHNDFSMGNxTjJQYlRsVkowMjh2UTcyODBYUVFkNDdKUkFNTEpqNS00YWctSkVCcm5pa1FQZEppWkliZ1luYTJJVHlUSzhzM1BEaDl2bVNSS1lUcU5wSWNIamh3?oc=5",
-    "press": "로리더"
-   },
-   {
-    "date": "2025-04-02",
-    "quote": "먹거리위기 시대에 꼭 필요",
-    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1GdENjMEVPVEhpSDN6X0lLRWY2SkRvR3ZyR3NEUVR1QUVrSnBZeFdYSnEtSzVsYVFvbGdtMVJmRktiOFJDVWtaZzZkQ2lhS0dNaTZ6bHVBQWpWUQ?oc=5",
-    "press": "농민신문"
-   },
-   {
-    "date": "2024-11-01",
-    "quote": "정부, 20만원 이상 쌀값 약속 이행하라",
-    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB2cjFNcWFjTEx4UVNLUmRUN3FXZnFuUkR6X1BSNnlidS1EVHB6WDJOUm1Ya2QxQmxqNEN5OGFBYUVtdDFMWWxVOXVFMXd6V3Z0ZGtzb0otSVJ5NlZERl9ISHB5MXJCTU0?oc=5",
-    "press": "한국농정신문"
-   },
-   {
-    "date": "2024-07-18",
-    "quote": "농어업 정책 대전환 필요…‘국가 책임 농정’ 실현",
-    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBqR2NmMmt2UXhhY3hmOXhEQlNIb1ZqOVoxMkw5bWl2enZRSlVKX2VUSDRvbmd4MS0xTk5nS1F5Y2JCTEVGUEJsYXk2cGZQNXoxXzZvZmVXTEphNTdhVFFEMUR6dUlONXlDU1QxWGpQSQ?oc=5",
-    "press": "전남일보"
-   },
-   {
-    "date": "2024-06-26",
-    "quote": "4대보험 개혁…모든 노동자 건강보험 적용 추진",
-    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1idEQta0xmRlZsX25EaFRSWi1QTWZfTENuX01qanJwcVB4aXJnR3dYa0xvaHM2Nms5V2lWb0ZBOHFjME5YZW5iSjZMdXNjNDVFcUxfTUVRUzlWVlJDOGI1SlVBeU8yZVExcFdlStIBcEFVX3lxTFBhTUVsQk9BLXJNbTZiU0Z4MUdRYnJnVlRHVF9mcXRNTGZTdHNtaHliZHBva08wcHpyZFNjNG1jSzdZXzlmU0pZZkJVQ1FKdlZ4bE5MbWZuRlc2N21vLVdld0hudHJ0UzR1TlJIel9jSVo?oc=5",
-    "press": "DFT 대한금융신문"
-   },
-   {
-    "date": "2024-05-07",
-    "quote": "진보정치의 효능감",
-    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBBcEdUUmlLVFEyMUZic2NkSlpuSDJoNVlua3FOdWVrLS1FWXdzMW5kQ3hBMnEtTk5kRXlwekc4bVFlUDlXOFdxX20wYWJyVFJJY0pKRDZaOTc4NUJUZWtYbnRxTjJfTnZMQzlfcXBCMjM?oc=5",
-    "press": "매일노동뉴스"
-   }
-  ],
-  "by_month": {
-   "2024-05": 1,
-   "2024-06": 2,
-   "2024-07": 1,
-   "2024-10": 1,
-   "2024-11": 1,
-   "2025-04": 3,
-   "2025-07": 2,
-   "2025-09": 1,
-   "2025-10": 3,
-   "2025-11": 2,
-   "2026-01": 2,
-   "2026-05": 4,
-   "2026-06": 4,
-   "2026-07": 1,
-   "2026-08": 2,
-   "2026-10": 2
-  },
-  "presses": [
-   [
-    "농민신문",
-    4
-   ],
-   [
-    "뉴스1",
-    3
-   ],
-   [
-    "간호사신문",
-    2
-   ],
-   [
-    "M이코노미뉴스",
-    2
-   ],
-   [
-    "한국농정신문",
-    2
-   ],
-   [
-    "OhmyNews",
-    2
-   ],
-   [
-    "미디어오늘",
-    1
-   ],
-   [
-    "메디파나뉴스",
-    1
-   ],
-   [
-    "환경일보",
-    1
-   ],
-   [
-    "연합뉴스",
-    1
-   ]
-  ]
- }
+ "photo_local": "data/pol/photos/P8A4624C.webp"
 }

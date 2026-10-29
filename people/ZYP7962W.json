@@ -100,27 +100,75 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-29"
+   "fetched": "2026-10-30"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-29"
+   "fetched": "2026-10-30"
   }
  ],
  "bills": {
   "ages": [
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
    "22"
   ],
-  "lead_count": 27,
-  "co_count": 407,
-  "passed": 7,
+  "lead_count": 135,
+  "co_count": 2661,
+  "passed": 24,
   "by_result": {
-   "계류": 20,
-   "대안반영폐기": 6,
-   "수정가결": 1
+   "임기만료폐기": 87,
+   "대안반영폐기": 18,
+   "원안가결": 3,
+   "철회": 3,
+   "수정가결": 3,
+   "폐기": 1,
+   "계류": 20
   },
   "by_month": {
+   "2017-05": 5,
+   "2017-07": 2,
+   "2017-08": 3,
+   "2017-09": 2,
+   "2018-02": 4,
+   "2018-03": 1,
+   "2018-04": 2,
+   "2018-06": 5,
+   "2018-07": 2,
+   "2019-01": 15,
+   "2019-02": 1,
+   "2019-05": 1,
+   "2019-07": 3,
+   "2019-09": 2,
+   "2020-06": 7,
+   "2020-07": 3,
+   "2020-08": 5,
+   "2020-10": 2,
+   "2020-11": 3,
+   "2021-01": 2,
+   "2021-03": 3,
+   "2021-04": 3,
+   "2021-05": 2,
+   "2021-06": 4,
+   "2021-08": 1,
+   "2021-09": 1,
+   "2021-11": 2,
+   "2021-12": 1,
+   "2022-01": 1,
+   "2022-03": 1,
+   "2022-04": 3,
+   "2022-06": 1,
+   "2022-08": 1,
+   "2022-10": 1,
+   "2023-01": 2,
+   "2023-02": 5,
+   "2023-05": 3,
+   "2023-09": 2,
+   "2023-11": 1,
    "2024-05": 1,
    "2024-06": 2,
    "2024-07": 3,
@@ -459,12 +507,48 @@
     "proc_date": "2025-02-27",
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_V2H4U0E5F3Y0D1V1S1I5T3G1G1D4Q7&ageFrom=22&ageTo=22",
     "proposer": "김석기의원 등 12인"
+   },
+   {
+    "id": "PRC_B2B3Z0A9Z1G9H1F4G0E5F5D0Z2Z2Y9",
+    "no": "2125277",
+    "name": "소하천정비법 일부개정법률안",
+    "date": "2023-11-06",
+    "age": 21,
+    "committee": "행정안전위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_B2B3Z0A9Z1G9H1F4G0E5F5D0Z2Z2Y9&ageFrom=21&ageTo=21",
+    "proposer": "김석기의원 등 12인"
+   },
+   {
+    "id": "PRC_I2J3H0H9G1E5F1N6N5M6K5L4J3K2F0",
+    "no": "2124563",
+    "name": "국가배상법 일부개정법률안",
+    "date": "2023-09-19",
+    "age": 21,
+    "committee": "법제사법위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_I2J3H0H9G1E5F1N6N5M6K5L4J3K2F0&ageFrom=21&ageTo=21",
+    "proposer": "김석기의원 등 11인"
+   },
+   {
+    "id": "PRC_S2S3R0R9Q1O5P1W6X5W7W2U4V0T7P3",
+    "no": "2124562",
+    "name": "경찰관 직무집행법 일부개정법률안",
+    "date": "2023-09-19",
+    "age": 21,
+    "committee": "행정안전위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_S2S3R0R9Q1O5P1W6X5W7W2U4V0T7P3&ageFrom=21&ageTo=21",
+    "proposer": "김석기의원 등 11인"
    }
   ],
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-29"
+   "fetched": "2026-10-30"
   }
  },
  "news": [
@@ -2229,7 +2313,7 @@
   "source": {
    "name": "열린국회정보 국회의원 본회의 표결정보 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-30"
   }
  },
  "photo_local": "data/pol/photos/ZYP7962W.webp"

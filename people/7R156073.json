@@ -100,27 +100,83 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-29"
+   "fetched": "2026-10-30"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-29"
+   "fetched": "2026-10-30"
   }
  ],
  "bills": {
   "ages": [
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
    "22"
   ],
-  "lead_count": 28,
-  "co_count": 201,
-  "passed": 2,
+  "lead_count": 124,
+  "co_count": 949,
+  "passed": 31,
   "by_result": {
+   "임기만료폐기": 65,
+   "대안반영폐기": 21,
+   "수정가결": 6,
+   "원안가결": 4,
+   "폐기": 2,
    "계류": 25,
-   "대안반영폐기": 2,
    "철회": 1
   },
   "by_month": {
+   "2012-08": 2,
+   "2012-12": 3,
+   "2013-02": 1,
+   "2013-04": 3,
+   "2013-05": 1,
+   "2013-06": 1,
+   "2013-08": 1,
+   "2013-09": 1,
+   "2013-10": 1,
+   "2014-02": 1,
+   "2014-03": 2,
+   "2014-04": 1,
+   "2015-08": 1,
+   "2015-10": 1,
+   "2016-06": 3,
+   "2016-08": 7,
+   "2016-09": 2,
+   "2016-10": 1,
+   "2017-01": 2,
+   "2017-02": 1,
+   "2017-06": 2,
+   "2017-08": 3,
+   "2017-11": 1,
+   "2018-01": 1,
+   "2018-02": 1,
+   "2018-03": 1,
+   "2018-04": 1,
+   "2018-11": 1,
+   "2018-12": 8,
+   "2019-06": 1,
+   "2019-07": 2,
+   "2019-09": 1,
+   "2019-10": 5,
+   "2020-07": 7,
+   "2020-08": 1,
+   "2020-09": 1,
+   "2020-10": 2,
+   "2020-11": 6,
+   "2020-12": 4,
+   "2021-01": 1,
+   "2022-08": 1,
+   "2022-11": 1,
+   "2022-12": 2,
+   "2023-01": 1,
+   "2023-04": 1,
+   "2023-08": 1,
+   "2023-09": 3,
    "2024-06": 1,
    "2024-08": 1,
    "2024-09": 5,
@@ -470,12 +526,36 @@
     "proc_date": null,
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_C2C4A0B6J1H3I1G0H4F1B5C8A0B2Z7&ageFrom=22&ageTo=22",
     "proposer": "박범계의원 등 53인"
+   },
+   {
+    "id": "PRC_I2G3G0P9N1N9M1N2L4L8H4F7G8F9F2",
+    "no": "2124674",
+    "name": "국가재정법 일부개정법률안",
+    "date": "2023-09-25",
+    "age": 21,
+    "committee": "기획재정위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_I2G3G0P9N1N9M1N2L4L8H4F7G8F9F2&ageFrom=21&ageTo=21",
+    "proposer": "박범계의원 등 10인"
+   },
+   {
+    "id": "PRC_Q2P3P0N9O1M9U1V2T4T6S4T5R9Z5A8",
+    "no": "2124673",
+    "name": "소상공인 대출부담 경감을 위한 특별조치법안",
+    "date": "2023-09-25",
+    "age": 21,
+    "committee": "산업통상자원중소벤처기업위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_Q2P3P0N9O1M9U1V2T4T6S4T5R9Z5A8&ageFrom=21&ageTo=21",
+    "proposer": "박범계의원 등 10인"
    }
   ],
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-29"
+   "fetched": "2026-10-30"
   }
  },
  "news": [
@@ -1435,7 +1515,7 @@
   "source": {
    "name": "열린국회정보 국회의원 본회의 표결정보 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-30"
   }
  },
  "photo_local": "data/pol/photos/7R156073.webp"

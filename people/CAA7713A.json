@@ -70,27 +70,55 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-29"
+   "fetched": "2026-10-30"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-29"
+   "fetched": "2026-10-30"
   }
  ],
  "bills": {
   "ages": [
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
    "22"
   ],
-  "lead_count": 24,
-  "co_count": 944,
-  "passed": 16,
+  "lead_count": 77,
+  "co_count": 2288,
+  "passed": 47,
   "by_result": {
-   "계류": 8,
-   "대안반영폐기": 9,
-   "수정가결": 7
+   "임기만료폐기": 22,
+   "대안반영폐기": 30,
+   "원안가결": 1,
+   "수정가결": 16,
+   "계류": 8
   },
   "by_month": {
+   "2020-07": 1,
+   "2020-10": 3,
+   "2020-11": 2,
+   "2020-12": 7,
+   "2021-02": 2,
+   "2021-03": 4,
+   "2021-05": 6,
+   "2021-08": 1,
+   "2021-09": 1,
+   "2021-11": 1,
+   "2021-12": 4,
+   "2022-08": 5,
+   "2022-12": 4,
+   "2023-01": 1,
+   "2023-03": 1,
+   "2023-04": 1,
+   "2023-07": 1,
+   "2023-09": 1,
+   "2023-11": 1,
+   "2024-01": 5,
+   "2024-02": 1,
    "2024-05": 1,
    "2024-08": 9,
    "2024-09": 1,
@@ -391,12 +419,84 @@
     "proc_date": null,
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_C2Z4U0I5X3X0F1F1X2C8H3P3W7M6K7&ageFrom=22&ageTo=22",
     "proposer": "백종헌의원 등 10인"
+   },
+   {
+    "id": "PRC_L2B4J0I2G1F5N2O0K5S8T5R7Q4P1L8",
+    "no": "2126537",
+    "name": "공공주택 특별법 일부개정법률안",
+    "date": "2024-02-20",
+    "age": 21,
+    "committee": "국토교통위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_L2B4J0I2G1F5N2O0K5S8T5R7Q4P1L8&ageFrom=21&ageTo=21",
+    "proposer": "백종헌의원 등 10인"
+   },
+   {
+    "id": "PRC_L2K3K1I2J0R1P1Q4P0P8N4J2K5I3J9",
+    "no": "2126415",
+    "name": "대한적십자사 조직법 일부개정법률안",
+    "date": "2024-01-26",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_L2K3K1I2J0R1P1Q4P0P8N4J2K5I3J9&ageFrom=21&ageTo=21",
+    "proposer": "백종헌의원 등 10인"
+   },
+   {
+    "id": "PRC_Y2Y3W1X1V2W9U0C9D1B0C3A7Z1Z8H7",
+    "no": "2126414",
+    "name": "모자보건법 일부개정법률안",
+    "date": "2024-01-26",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_Y2Y3W1X1V2W9U0C9D1B0C3A7Z1Z8H7&ageFrom=21&ageTo=21",
+    "proposer": "백종헌의원 등 10인"
+   },
+   {
+    "id": "PRC_X2Y3W1U2V1D1E1C0A2B5Z2A0W7W7U4",
+    "no": "2126412",
+    "name": "감염병의 예방 및 관리에 관한 법률 일부개정법률안",
+    "date": "2024-01-26",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_X2Y3W1U2V1D1E1C0A2B5Z2A0W7W7U4&ageFrom=21&ageTo=21",
+    "proposer": "백종헌의원 등 10인"
+   },
+   {
+    "id": "PRC_N2O3W1X2V2U2U1T0T1B6Z5A2Z5Z6X4",
+    "no": "2126411",
+    "name": "식품안전기본법 일부개정법률안",
+    "date": "2024-01-26",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_N2O3W1X2V2U2U1T0T1B6Z5A2Z5Z6X4&ageFrom=21&ageTo=21",
+    "proposer": "백종헌의원 등 11인"
+   },
+   {
+    "id": "PRC_C2A3B0Z8Z2Y2U1U6T2T4S1Q2R0Y0D0",
+    "no": "2126410",
+    "name": "식품 등의 표시ㆍ광고에 관한 법률 일부개정법률안",
+    "date": "2024-01-26",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_C2A3B0Z8Z2Y2U1U6T2T4S1Q2R0Y0D0&ageFrom=21&ageTo=21",
+    "proposer": "백종헌의원 등 11인"
    }
   ],
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-29"
+   "fetched": "2026-10-30"
   }
  },
  "news": [
@@ -2565,7 +2665,7 @@
   "source": {
    "name": "열린국회정보 국회의원 본회의 표결정보 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-28"
+   "fetched": "2026-10-30"
   }
  },
  "photo_local": "data/pol/photos/CAA7713A.webp"
