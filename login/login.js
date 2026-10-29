@@ -1,6 +1,7 @@
 (function(){
 const SYNC='https://newsboard-sync.pyw213.workers.dev',BASE='/news/',$=id=>document.getElementById(id),LS=localStorage;
 const USERF='<svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z"/><path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z"/></svg>';
+const PN={kakao:'카카오',google:'구글',naver:'네이버'},PC={kakao:'#FEE500',naver:'#03C75A',google:'conic-gradient(#EA4335 0 25%,#FBBC05 0 50%,#34A853 0 75%,#4285F4 0)'};
 const clean=r=>(r&&!/^\/|\/\/|\.\./.test(r)&&!/^login/.test(r))?r:'';
 const q=new URLSearchParams(location.search),h=new URLSearchParams(location.hash.slice(1));
 let ret=clean(q.get('ret')||'');
@@ -14,7 +15,7 @@ if(h.get('nbe')){history.replaceState(null,'',location.pathname+location.search)
 $('lgback').href=BASE+ret;
 /* 이미 로그인 */
 const tok=LS.getItem('nb-tok');
-if(tok){const p=LS.getItem('nb-prov');$('lgc').hidden=true;$('lgd').hidden=false;$('lgav').innerHTML=USERF+'<b style="background:'+(p==='kakao'?'#FEE500':'conic-gradient(#EA4335 0 25%,#FBBC05 0 50%,#34A853 0 75%,#4285F4 0)')+'"></b>';$('lgdt').textContent=(p==='kakao'?'카카오':'구글')+' 계정으로 로그인됨';
+if(tok){const p=LS.getItem('nb-prov');$('lgc').hidden=true;$('lgd').hidden=false;$('lgav').innerHTML=USERF+'<b style="background:'+(PC[p]||PC.google)+'"></b>';$('lgdt').textContent=(PN[p]||'구글')+' 계정으로 로그인됨';
   $('lgout').onclick=async()=>{try{await fetch(SYNC+'/logout',{method:'POST',headers:{Authorization:'Bearer '+tok}})}catch(e){}['nb-tok','nb-rev','nb-prov','nb-syncat','nb-sess'].forEach(k=>LS.removeItem(k));location.reload()}}
 /* 자동 로그인 */
 const kb=$('keep');let keep=LS.getItem('nb-keep')!=='0';
@@ -24,6 +25,8 @@ kb.onclick=()=>{keep=!keep;LS.setItem('nb-keep',keep?'1':'0');setK();upd()};
 const last=LS.getItem('nb-lastp'),box=document.querySelector('.lg-btns');
 document.querySelectorAll('.lg-b[data-p]').forEach(a=>{if(a.dataset.p===last){a.classList.add('recent');box.prepend(a)}});
 function upd(){document.querySelectorAll('.lg-b[data-p]').forEach(a=>a.href=SYNC+'/auth/'+a.dataset.p+'/start?'+new URLSearchParams({keep:keep?'1':'0',ret}))}upd();
+/* 서버에 설정된 로그인 수단만 누를 수 있게(설정 안 된 것은 '준비 중') */
+fetch(SYNC+'/health').then(r=>r.json()).then(j=>{const L=j.login||{};document.querySelectorAll('.lg-b[data-p]').forEach(a=>{if(L[a.dataset.p]===false)a.classList.add('off')})}).catch(()=>{});
 /* 계정 찾기 */
 const f=$('find');f.onclick=()=>{const o=$('help').hidden;$('help').hidden=!o;f.setAttribute('aria-expanded',o)};
 })();
