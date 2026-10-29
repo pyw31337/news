@@ -102,18 +102,35 @@ async function archive(env, req, url, p) {
   const A = env.AR;
   if (p === '/archive/ingest' && req.method === 'POST') {
     if (!env.ARCHIVE_KEY || req.headers.get('Authorization') !== 'Bearer ' + env.ARCHIVE_KEY) return J(env, req, { error: 'auth' }, 401);
-    const b = await req.json(), st = [];
-    for (const x of b.persons || []) st.push(A.prepare('INSERT INTO persons(id,name,kind,party,birth,qid,score,ev,ed,data,updated) VALUES(?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET name=excluded.name,kind=excluded.kind,party=excluded.party,birth=excluded.birth,qid=excluded.qid,score=excluded.score,ev=excluded.ev,ed=excluded.ed,data=excluded.data,updated=excluded.updated')
+    // 무료 한도(계정 전체 하루 100k 줄 쓰기) 보호: 아카이브는 하루 ARCHIVE_DAILY_ROWS(기본 6만)까지만, 나머지는 사용자 동기화 몫.
+    // 바뀐 줄만 씀(ON CONFLICT … WHERE 달라졌을 때만), 한 요청 = 한 트랜잭션(실패 시 전부 롤백, 반쯤 지워진 상태 없음).
+    const CAP = +(env.ARCHIVE_DAILY_ROWS || 60000), day = new Date(now() + 9 * 36e5).toISOString().slice(0, 10);
+    let used = 0;
+    try { used = (await A.prepare('SELECT rows FROM budget WHERE day=?').bind(day).first())?.rows || 0; }
+    catch (e) { await A.prepare('CREATE TABLE IF NOT EXISTS budget(day TEXT PRIMARY KEY, rows INTEGER NOT NULL)').run(); }
+    if (used >= CAP) return J(env, req, { ok: false, defer: true, used, cap: CAP }, 429);
+    const b = await req.json(), st = [], X = (...c) => c.map(k => k + ' IS NOT excluded.' + k).join(' OR ');
+    for (const x of b.persons || []) st.push(A.prepare('INSERT INTO persons(id,name,kind,party,birth,qid,score,ev,ed,data,updated) VALUES(?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET name=excluded.name,kind=excluded.kind,party=excluded.party,birth=excluded.birth,qid=excluded.qid,score=excluded.score,ev=excluded.ev,ed=excluded.ed,data=excluded.data,updated=excluded.updated WHERE ' + X('name', 'kind', 'party', 'birth', 'qid', 'score', 'ev', 'ed', 'data'))
       .bind(x.id, x.name, x.kind || null, x.party || null, x.birth || null, x.qid || null, x.score || 0, x.ev || 0, x.ed || 0, JSON.stringify(x.data || {}), now()));
-    for (const id of b.replace || []) st.push(A.prepare('DELETE FROM events WHERE pid=?').bind(id));
-    for (const e of b.events || []) st.push(A.prepare('INSERT OR REPLACE INTO events(h,pid,d,typ,stage,title,status,conf,src,url,extra) VALUES(?,?,?,?,?,?,?,?,?,?,?)')
+    // 재방문 시각만 갱신(색인 없는 열 1개 = 1줄)
+    const ids = (b.persons || []).map(x => x.id);
+    if (ids.length) st.push(A.prepare('UPDATE persons SET updated=? WHERE id IN (SELECT value FROM json_each(?))').bind(now(), JSON.stringify(ids)));
+    // 사건: 사라진 것만 지우고, 새로 생기거나 바뀐 것만 씀
+    for (const id of b.replace || []) st.push(A.prepare('DELETE FROM events WHERE pid=? AND h NOT IN (SELECT value FROM json_each(?))').bind(id, JSON.stringify((b.events || []).filter(e => e.pid === id).map(e => e.h))));
+    for (const e of b.events || []) st.push(A.prepare('INSERT INTO events(h,pid,d,typ,stage,title,status,conf,src,url,extra) VALUES(?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(h) DO UPDATE SET pid=excluded.pid,d=excluded.d,typ=excluded.typ,stage=excluded.stage,title=excluded.title,status=excluded.status,conf=excluded.conf,src=excluded.src,url=excluded.url,extra=excluded.extra WHERE ' + X('pid', 'd', 'typ', 'stage', 'title', 'status', 'conf', 'src', 'url', 'extra'))
       .bind(e.h, e.pid, e.d || null, e.typ, e.stage, e.title, e.status || 'fact', e.conf ?? 1, e.src || null, e.url || null, e.extra ? JSON.stringify(e.extra) : null));
-    for (const e of b.edges || []) st.push(A.prepare('INSERT OR REPLACE INTO edges(a,b,typ,label,conf,src,url) VALUES(?,?,?,?,?,?,?)').bind(e.a, e.b, e.typ, e.label || null, e.conf ?? 1, e.src || null, e.url || null));
-    for (const n of b.nodes || []) st.push(A.prepare('INSERT OR REPLACE INTO nodes(id,name,note,qid) VALUES(?,?,?,?)').bind(n.id, n.name, n.note || null, n.qid || null));
+    for (const e of b.edges || []) st.push(A.prepare('INSERT INTO edges(a,b,typ,label,conf,src,url) VALUES(?,?,?,?,?,?,?) ON CONFLICT(a,b,typ) DO UPDATE SET label=excluded.label,conf=excluded.conf,src=excluded.src,url=excluded.url WHERE ' + X('label', 'conf', 'src', 'url'))
+      .bind(e.a, e.b, e.typ, e.label || null, e.conf ?? 1, e.src || null, e.url || null));
+    for (const n of b.nodes || []) st.push(A.prepare('INSERT INTO nodes(id,name,note,qid) VALUES(?,?,?,?) ON CONFLICT(id) DO UPDATE SET name=excluded.name,note=excluded.note,qid=excluded.qid WHERE ' + X('name', 'note', 'qid'))
+      .bind(n.id, n.name, n.note || null, n.qid || null));
     if (b.run) st.push(A.prepare('INSERT OR REPLACE INTO runs(at,persons,events,edges,note) VALUES(?,?,?,?,?)').bind(now(), b.run.persons || 0, b.run.events || 0, b.run.edges || 0, b.run.note || null));
-    for (let i = 0; i < st.length; i += 80) await A.batch(st.slice(i, i + 80));
-    return J(env, req, { ok: true, n: st.length });
+    if (!st.length) return J(env, req, { ok: true, written: 0, used, cap: CAP });
+    const res = await A.batch(st);   // 하나의 트랜잭션
+    const written = res.reduce((s, r) => s + (r.meta?.rows_written || 0), 0);
+    await A.prepare('INSERT INTO budget(day,rows) VALUES(?,?) ON CONFLICT(day) DO UPDATE SET rows=rows+excluded.rows').bind(day, written + 1).run();
+    return J(env, req, { ok: true, n: st.length, written, used: used + written + 1, cap: CAP });
   }
+  if (p === '/archive/budget') { try { return AJ(env, req, (await A.prepare('SELECT day,rows FROM budget ORDER BY day DESC LIMIT 14').all()).results, 200, 0); } catch (e) { return AJ(env, req, [], 200, 0); } }
   if (p === '/archive/stats') {
     const c = async q => (await A.prepare(q).first()).n;
     const runs = (await A.prepare('SELECT at,persons,events,edges FROM runs ORDER BY at DESC LIMIT 30').all()).results;

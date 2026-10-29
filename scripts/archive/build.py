@@ -143,8 +143,9 @@ deg = defaultdict(int)
 for e in edges.values(): deg[e['a']] += 1; deg[e['b']] += 1
 
 # 4) 처리 대상: 우선순위 순, 미처리 또는 7일 지난 인물
+# 진행 기록을 못 읽으면 전원을 다시 쓰게 되므로(쓰기 한도 낭비) 이번 회차는 건너뜀
 try: done = {r['id']: r['updated'] for r in jget(API + '/archive/done')}
-except Exception: done = {}
+except Exception as e: print('진행 기록 읽기 실패, 이번 회차 건너뜀:', e); sys.exit(0)
 cut = (time.time() - (0 if os.environ.get('ARCHIVE_FORCE') else 7 * 86400)) * 1000
 todo = [p for p in idx if done.get(p['id'], 0) < cut][:LIMIT]
 print('이번 처리', len(todo))
@@ -219,14 +220,26 @@ for p in todo:
     E_OUT.extend(ev.values())
 print('인물', len(P_OUT), '사건', len(E_OUT), '관계', len(edges), '외부 인물', len([n for n in nodes if n.startswith('wd:')]))
 
+class Defer(Exception): pass
 def post(body):
     if not KEY: print('ARCHIVE_KEY 없음: 업로드 생략'); return
-    r = get(API + '/archive/ingest', json.dumps(body, ensure_ascii=False).encode(), {'Authorization': 'Bearer ' + KEY, 'Content-Type': 'application/json'})
-    return json.loads(r)
-for i in range(0, len(P_OUT), 25):
-    ch = P_OUT[i:i+25]; ids = {x['id'] for x in ch}
-    post({'persons': ch, 'replace': list(ids), 'events': [x for x in E_OUT if x['pid'] in ids]})
-EL, NL = list(edges.values()), list(nodes.values())
-for i in range(0, max(len(EL), len(NL)), 400): post({'edges': EL[i:i+400], 'nodes': NL[i:i+400]})
-post({'run': {'persons': len(P_OUT), 'events': len(E_OUT), 'edges': len(EL), 'note': f'wikidata {len(qid_of)}'}})
-print('완료')
+    r = urllib.request.Request(API + '/archive/ingest', json.dumps(body, ensure_ascii=False).encode(), {'User-Agent': UA, 'Authorization': 'Bearer ' + KEY, 'Content-Type': 'application/json'})
+    for i in range(3):
+        try:
+            with urllib.request.urlopen(r, timeout=120) as f: o = json.loads(f.read()); print('  쓰기', o.get('written'), '오늘 누적', o.get('used'), '/', o.get('cap')); return o
+        except urllib.error.HTTPError as e:
+            if e.code == 429: raise Defer(e.read().decode()[:200])
+            if i == 2: raise
+        except Exception:
+            if i == 2: raise
+        time.sleep(5 * (i + 1))
+try:
+    for i in range(0, len(P_OUT), 25):
+        ch = P_OUT[i:i+25]; ids = {x['id'] for x in ch}
+        post({'persons': ch, 'replace': list(ids), 'events': [x for x in E_OUT if x['pid'] in ids]})
+    EL, NL = list(edges.values()), list(nodes.values())
+    for i in range(0, max(len(EL), len(NL)), 400): post({'edges': EL[i:i+400], 'nodes': NL[i:i+400]})
+    post({'run': {'persons': len(P_OUT), 'events': len(E_OUT), 'edges': len(EL), 'note': f'wikidata {len(qid_of)}'}})
+    print('완료')
+except Defer as e:
+    print('오늘 아카이브 쓰기 예산 소진 → 남은 인물은 다음 날 이어서 처리:', e)
