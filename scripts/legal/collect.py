@@ -20,8 +20,10 @@ SEX = re.compile(r'(성폭|강간|강제추행|성착취|불법촬영|성매매|
 NAME_RX = '([가-힣]{2,4})'
 
 def probe(name, url):
-    try: get(url, 15); ok = True
-    except Exception as e: ok = f'{type(e).__name__}'
+    ok = None
+    for k in range(3):   # 해외 러너에서 가끔 끊김: 3번까지 다시 시도
+        try: get(url, 30); ok = True; break
+        except Exception as e: ok = f'{type(e).__name__}'; time.sleep(5 * (k + 1))
     LOG['sources'].setdefault(name, {})['reachable'] = ok; return ok is True
 
 # 1) 뉴스·미디어 판결 보도: 구글뉴스 검색(최근 2일) + 뉴스보드 data 브랜치 기사 → 원문 본문 → 구조화(legal_extract.mjs 재사용)
