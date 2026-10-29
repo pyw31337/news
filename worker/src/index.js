@@ -188,6 +188,43 @@ async function archive(env, req, url, p) {
   }
   return J(env, req, { error: 'not_found' }, 404);
 }
+// ── 게임 리더보드: 보드(게임·사다리)별 사용자당 1줄, 최고 점수가 오를 때만 씀(D1 쓰기 최소) ──
+const LB_MAX = { '2048': 5e6, merge: 5e6, sling: 3e6 };
+let lbReady = false;
+async function lbInit(env) {
+  if (lbReady) return;
+  await env.DB.prepare('CREATE TABLE IF NOT EXISTS lb (board TEXT NOT NULL, uid TEXT NOT NULL, name TEXT NOT NULL, score INTEGER NOT NULL, at INTEGER NOT NULL, PRIMARY KEY(board, uid))').run();
+  await env.DB.prepare('CREATE INDEX IF NOT EXISTS lb_rank ON lb(board, score DESC)').run();
+  lbReady = true;
+}
+const lbBoard = b => /^(2048|merge|sling)(-[a-z]{2,12})?$/.test(b || '') ? b : null;
+const lbName = n => { n = String(n || '').trim().replace(/\s+/g, ' '); return /^[0-9A-Za-z가-힣 _.\-]{2,12}$/.test(n) ? n : null; };
+async function leaderboard(env, req, url) {
+  await lbInit(env);
+  const uid = await who(env, req);
+  if (req.method === 'GET') {
+    const b = lbBoard(url.searchParams.get('b')); if (!b) return J(env, req, { error: 'bad' }, 400);
+    const n = Math.min(50, Math.max(5, +url.searchParams.get('n') || 20));
+    const rows = (await env.DB.prepare('SELECT uid, name, score, at FROM lb WHERE board=? ORDER BY score DESC, at ASC LIMIT ?').bind(b, n).all()).results;
+    let me = null;
+    if (uid) { const r = await env.DB.prepare('SELECT score, at FROM lb WHERE board=? AND uid=?').bind(b, uid).first();
+      if (r) me = { score: r.score, rank: 1 + (await env.DB.prepare('SELECT COUNT(*) c FROM lb WHERE board=? AND score>?').bind(b, r.score).first()).c }; }
+    return J(env, req, { rows: rows.map(r => ({ name: r.name, score: r.score, at: r.at, me: r.uid === uid })), me });
+  }
+  if (req.method === 'POST') {
+    if (!uid) return J(env, req, { error: 'auth' }, 401);
+    const { b, score, name } = await req.json().catch(() => ({}));
+    const bd = lbBoard(b), sc = Math.floor(+score), nm = lbName(name) || ('독자 ' + uid.slice(-4).toUpperCase());
+    if (!bd || !(sc > 0) || sc > LB_MAX[bd.split('-')[0]]) return J(env, req, { error: 'bad' }, 400);
+    const cur = await env.DB.prepare('SELECT score, name, at FROM lb WHERE board=? AND uid=?').bind(bd, uid).first();
+    if (cur && cur.score >= sc && cur.name === nm) return J(env, req, { ok: true, kept: true });
+    if (cur && now() - cur.at < 15000) return J(env, req, { error: 'slow' }, 429);
+    await env.DB.prepare('INSERT INTO lb(board,uid,name,score,at) VALUES(?,?,?,?,?) ON CONFLICT(board,uid) DO UPDATE SET score=MAX(lb.score,excluded.score), name=excluded.name, at=excluded.at')
+      .bind(bd, uid, nm, sc, now()).run();
+    return J(env, req, { ok: true });
+  }
+  return J(env, req, { error: 'not_found' }, 404);
+}
 export default {
   async fetch(req, env) {
     const url = new URL(req.url), p = url.pathname;
@@ -195,6 +232,7 @@ export default {
     try {
       if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env) });
       if (p.startsWith('/archive/') && env.AR) return archive(env, req, url, p);
+      if (p === '/lb') return await leaderboard(env, req, url);
       let m = p.match(/^\/auth\/(google|kakao|naver)\/(start|callback)$/);
       if (m) return await (m[2] === 'start' ? oauthStart(env, url, m[1]) : oauthCallback(env, url, m[1]));
       const uid = await who(env, req);
@@ -222,6 +260,7 @@ export default {
       }
       if (p === '/account' && req.method === 'DELETE') {
         for (const t of ['docs', 'sessions', 'push_subs', 'users']) await env.DB.prepare('DELETE FROM ' + t + ' WHERE uid=?').bind(uid).run();
+        try { await env.DB.prepare('DELETE FROM lb WHERE uid=?').bind(uid).run(); } catch (e) {}
         return J(env, req, { ok: true });
       }
       return J(env, req, { error: 'not_found' }, 404);

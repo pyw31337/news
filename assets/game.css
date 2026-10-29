@@ -125,3 +125,18 @@
 .gm-aw6{--fk:1.8;--ro:1}.gm-aw6 .gm-rays{background:repeating-conic-gradient(from 0deg,rgba(255,200,110,.7) 0 6deg,transparent 6deg 15deg),repeating-conic-gradient(from 7deg,rgba(255,120,80,.35) 0 3deg,transparent 3deg 15deg);width:560px;height:560px;margin:-280px}
 .gm-aw.rm .gm-drop,.gm-aw.rm .gm-ac{animation:none}.gm-aw.rm .gm-ac>*{opacity:1;transform:none}.gm-aw.rm .gm-rays{opacity:.35}.gm-aw.rm .gm-cc{opacity:0;transition:opacity .4s}.gm-aw.rm.on .gm-cc{opacity:1}
 @media(prefers-reduced-motion:reduce){.gm-aw .gm-drop,.gm-aw .gm-ac,.gm-aw .gm-rays,.gm-aw .gm-flash{animation:none!important}}
+
+/* v4: 그랜드마스터·신화·이터널 — 레전드 연출 + 오라 */
+.gm-aw7.hit .gm-ac,.gm-aw8.hit .gm-ac,.gm-aw9.hit .gm-ac{animation:gmshake2 .55s linear}
+.gm-aw7{--fk:2}.gm-aw8{--fk:2.2}.gm-aw9{--fk:2.5}
+.gm-aw7 .gm-rays{background:repeating-conic-gradient(from 0deg,rgba(255,211,107,.75) 0 6deg,transparent 6deg 14deg);width:600px;height:600px;margin:-300px}
+.gm-aw8 .gm-rays{background:repeating-conic-gradient(from 0deg,rgba(69,224,192,.7) 0 5deg,transparent 5deg 12deg),repeating-conic-gradient(from 6deg,rgba(255,255,255,.3) 0 2deg,transparent 2deg 12deg);width:640px;height:640px;margin:-320px}
+.gm-aw9 .gm-rays{background:conic-gradient(from 0deg,rgba(255,120,220,.55),rgba(120,160,255,.55),rgba(80,240,200,.55),rgba(255,230,120,.55),rgba(255,120,220,.55));-webkit-mask:repeating-conic-gradient(#000 0 5deg,transparent 5deg 11deg);mask:repeating-conic-gradient(#000 0 5deg,transparent 5deg 11deg);width:680px;height:680px;margin:-340px}
+.gm-medal.gm-t7,.gm-medal.gm-t8,.gm-medal.gm-t9{position:relative}
+.gm-medal.on.gm-t7::before,.gm-medal.on.gm-t8::before,.gm-medal.on.gm-t9::before{content:'';position:absolute;inset:-8%;border-radius:50%;z-index:-1;filter:blur(10px);opacity:.75;animation:gmaura 3.2s ease-in-out infinite}
+.gm-medal.on.gm-t7::before{background:radial-gradient(circle,rgba(255,211,107,.85),transparent 68%)}
+.gm-medal.on.gm-t8::before{background:radial-gradient(circle,rgba(69,224,192,.85),transparent 68%)}
+.gm-medal.on.gm-t9::before{background:conic-gradient(rgba(255,120,220,.8),rgba(120,160,255,.8),rgba(80,240,200,.8),rgba(255,230,120,.8),rgba(255,120,220,.8));-webkit-mask:radial-gradient(circle,#000 30%,transparent 70%);mask:radial-gradient(circle,#000 30%,transparent 70%)}
+@keyframes gmaura{50%{opacity:.35;transform:scale(.94)}}
+@media (prefers-reduced-motion:reduce){.gm-medal.on::before{animation:none}}
+.gm-bonus{margin-top:6px;font-size:.82rem;color:#ffd36b}.gm-bonus b{font-weight:900}
