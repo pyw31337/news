@@ -1,0 +1,21 @@
+name: person-archive
+# 인물 아카이브: 매일 우선순위 순으로 400명씩 타임라인·관계 갱신(7일 주기 재방문) → Cloudflare D1
+on:
+  schedule:
+    - cron: '40 17 * * *'   # 매일 02:40 KST
+  workflow_dispatch:
+permissions: { contents: read }
+concurrency: { group: archive, cancel-in-progress: false }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env: { ARCHIVE_KEY: '${{ secrets.ARCHIVE_KEY }}' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: politicians, path: pdata }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: 아카이브 수집·업로드
+        run: python scripts/archive/build.py pdata 400

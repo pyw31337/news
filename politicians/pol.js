@@ -65,7 +65,7 @@ async function detail(id){
   const terms=p.terms||[],swA=p.party_switches||[],sw=swA.filter(s=>s.kind!=='rename'),bl=p.bills,inc=(p.incidents||{}).items||[],md=p.media,news=p.news||[];
   const tl=[...terms.map(t=>({d:'',k:'term',t})),...news.slice(0,80).map(n=>({d:n.date,k:'news',n}))];
   app.innerHTML=`
-  <a class="back" href="politicians/" data-pid>← 정치인 목록</a>
+  <a class="back" href="politicians/" data-pid>← 정치인 목록</a><a class="arcl" href="persons/?id=${encodeURIComponent(id)}" style="float:right;padding:6px 12px;border-radius:999px;background:#ff7a00;color:#fff;text-decoration:none;font-size:13px;font-weight:700">일생 타임라인·관계도 →</a>
   <section class="pdhero card" style="--pc:${c}">${ph(p.photo_local||p.photo,p.name,c)}<div class="pdt">
     <span class="pbadge">${p.current?'현역 22대 국회의원':'전직 국회의원'}</span>
     <h1>${esc(p.name)} <small>${esc(p.hanja||'')} ${esc(p.en||'')}</small></h1>

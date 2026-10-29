@@ -20,3 +20,10 @@ bucket_name = "newsboard-backup"
 [triggers]
 crons = ["10 19 * * *"]
 # 비밀값(wrangler secret put): ID_SALT(필수), GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET, KAKAO_REST_KEY/KAKAO_CLIENT_SECRET(선택)
+
+# 인물 아카이브(타임라인·관계 그래프). 사용자 동기화 DB와 분리
+[[d1_databases]]
+binding = "AR"
+database_name = "newsboard-archive"
+database_id = "f200e94d-5b22-47bc-8868-ad42cb929bc0"
+# 비밀값 ARCHIVE_KEY: 수집기(GitHub Actions)만 쓰기 가능

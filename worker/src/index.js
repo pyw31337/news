@@ -74,12 +74,75 @@ async function backup(env) {
   await env.DB.prepare('DELETE FROM oauth_state WHERE exp<?').bind(now()).run();
   return d;
 }
+
+// ── 인물 아카이브(공개 읽기, 수집기만 쓰기) ──
+const AJ = (env, req, o, s = 200, age = 600) => new Response(JSON.stringify(o), { status: s, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=' + age, ...cors(env, req) } });
+async function archive(env, req, url, p) {
+  const A = env.AR;
+  if (p === '/archive/ingest' && req.method === 'POST') {
+    if (!env.ARCHIVE_KEY || req.headers.get('Authorization') !== 'Bearer ' + env.ARCHIVE_KEY) return J(env, req, { error: 'auth' }, 401);
+    const b = await req.json(), st = [];
+    for (const x of b.persons || []) st.push(A.prepare('INSERT INTO persons(id,name,kind,party,birth,qid,score,ev,ed,data,updated) VALUES(?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET name=excluded.name,kind=excluded.kind,party=excluded.party,birth=excluded.birth,qid=excluded.qid,score=excluded.score,ev=excluded.ev,ed=excluded.ed,data=excluded.data,updated=excluded.updated')
+      .bind(x.id, x.name, x.kind || null, x.party || null, x.birth || null, x.qid || null, x.score || 0, x.ev || 0, x.ed || 0, JSON.stringify(x.data || {}), now()));
+    for (const id of b.replace || []) st.push(A.prepare('DELETE FROM events WHERE pid=?').bind(id));
+    for (const e of b.events || []) st.push(A.prepare('INSERT OR REPLACE INTO events(h,pid,d,typ,stage,title,status,conf,src,url,extra) VALUES(?,?,?,?,?,?,?,?,?,?,?)')
+      .bind(e.h, e.pid, e.d || null, e.typ, e.stage, e.title, e.status || 'fact', e.conf ?? 1, e.src || null, e.url || null, e.extra ? JSON.stringify(e.extra) : null));
+    for (const e of b.edges || []) st.push(A.prepare('INSERT OR REPLACE INTO edges(a,b,typ,label,conf,src,url) VALUES(?,?,?,?,?,?,?)').bind(e.a, e.b, e.typ, e.label || null, e.conf ?? 1, e.src || null, e.url || null));
+    for (const n of b.nodes || []) st.push(A.prepare('INSERT OR REPLACE INTO nodes(id,name,note,qid) VALUES(?,?,?,?)').bind(n.id, n.name, n.note || null, n.qid || null));
+    if (b.run) st.push(A.prepare('INSERT OR REPLACE INTO runs(at,persons,events,edges,note) VALUES(?,?,?,?,?)').bind(now(), b.run.persons || 0, b.run.events || 0, b.run.edges || 0, b.run.note || null));
+    for (let i = 0; i < st.length; i += 80) await A.batch(st.slice(i, i + 80));
+    return J(env, req, { ok: true, n: st.length });
+  }
+  if (p === '/archive/stats') {
+    const c = async q => (await A.prepare(q).first()).n;
+    const runs = (await A.prepare('SELECT at,persons,events,edges FROM runs ORDER BY at DESC LIMIT 30').all()).results;
+    return AJ(env, req, { persons: await c('SELECT count(*) n FROM persons'), events: await c('SELECT count(*) n FROM events'), edges: await c('SELECT count(*) n FROM edges'), runs });
+  }
+  if (p === '/archive/done') return AJ(env, req, (await A.prepare('SELECT id,updated FROM persons').all()).results, 200, 0);
+  if (p === '/archive/people') {
+    const q = (url.searchParams.get('q') || '').trim(), lim = Math.min(+url.searchParams.get('n') || 60, 200);
+    const r = q ? await A.prepare("SELECT id,name,kind,party,birth,score,ev,ed,json_extract(data,'$.photo') photo,json_extract(data,'$.summary') summary FROM persons WHERE name LIKE ? ORDER BY score DESC LIMIT ?").bind('%' + q + '%', lim).all()
+      : await A.prepare("SELECT id,name,kind,party,birth,score,ev,ed,json_extract(data,'$.photo') photo,json_extract(data,'$.summary') summary FROM persons ORDER BY score DESC LIMIT ?").bind(lim).all();
+    return AJ(env, req, r.results);
+  }
+  let m = p.match(/^\/archive\/person\/([\w-]+)$/);
+  if (m) {
+    const x = await A.prepare('SELECT * FROM persons WHERE id=?').bind(m[1]).first();
+    if (!x) return AJ(env, req, { error: 'not_found' }, 404, 60);
+    const ev = (await A.prepare('SELECT d,typ,stage,title,status,conf,src,url,extra FROM events WHERE pid=? ORDER BY d').bind(m[1]).all()).results;
+    return AJ(env, req, { ...x, data: JSON.parse(x.data), events: ev });
+  }
+  m = p.match(/^\/archive\/graph\/([\w-]+)$/);
+  if (m) {   // 2단계 이웃까지
+    const id = m[1], seen = new Set([id]), E = [];
+    let front = [id];
+    for (let hop = 0; hop < 2 && front.length; hop++) {
+      const ph = front.map(() => '?').join(',');
+      const r = (await A.prepare(`SELECT * FROM edges WHERE a IN (${ph}) OR b IN (${ph}) ORDER BY CASE typ WHEN 'parent' THEN 0 WHEN 'spouse' THEN 0 WHEN 'sibling' THEN 0 WHEN 'relative' THEN 1 WHEN 'predecessor' THEN 2 WHEN 'hometown' THEN 3 ELSE 4 END, conf DESC LIMIT ${hop ? 60 : 40}`).bind(...front, ...front).all()).results;
+      const nx = [];
+      for (const e of r) { if (!E.some(f => f.a === e.a && f.b === e.b && f.typ === e.typ)) E.push(e); for (const k of [e.a, e.b]) if (!seen.has(k)) { seen.add(k); nx.push(k); } }
+      front = hop === 0 ? nx.filter(k => !k.startsWith('wd:')).slice(0, 12) : [];
+    }
+    const ids = [...seen].slice(0, 90), ph = ids.map(() => '?').join(',');
+    const P = (await A.prepare(`SELECT id,name,kind,party,json_extract(data,'$.photo') photo FROM persons WHERE id IN (${ph})`).bind(...ids).all()).results;
+    const N = (await A.prepare(`SELECT id,name,note FROM nodes WHERE id IN (${ph})`).bind(...ids).all()).results;
+    const keep = new Set(ids);
+    return AJ(env, req, { center: id, nodes: [...P.map(x => ({ ...x, archived: 1 })), ...N.filter(n => !P.some(x => x.id === n.id))], edges: E.filter(e => keep.has(e.a) && keep.has(e.b)) });
+  }
+  if (p === '/archive/onthisday') {
+    const md = url.searchParams.get('md') || new Date(now() + 9 * 36e5).toISOString().slice(5, 10);
+    const r = (await A.prepare("SELECT e.pid,p.name,e.d,e.typ,e.title,e.status,e.src,e.url FROM events e JOIN persons p ON p.id=e.pid WHERE substr(e.d,6,5)=? AND length(e.d)=10 AND e.typ!='news' ORDER BY p.score DESC LIMIT 40").bind(md).all()).results;
+    return AJ(env, req, r);
+  }
+  return J(env, req, { error: 'not_found' }, 404);
+}
 export default {
   async fetch(req, env) {
     const url = new URL(req.url), p = url.pathname;
     if (req.method === 'OPTIONS') return new Response(null, { headers: cors(env, req) });
     try {
       if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env) });
+      if (p.startsWith('/archive/') && env.AR) return archive(env, req, url, p);
       let m = p.match(/^\/auth\/(google|kakao)\/(start|callback)$/);
       if (m) return m[2] === 'start' ? oauthStart(env, url, m[1]) : oauthCallback(env, url, m[1]);
       const uid = await who(env, req);

@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS persons (id TEXT PRIMARY KEY, name TEXT NOT NULL, kind TEXT, party TEXT, birth TEXT, qid TEXT, score INTEGER DEFAULT 0, ev INTEGER DEFAULT 0, ed INTEGER DEFAULT 0, data TEXT NOT NULL, updated INTEGER NOT NULL);
+CREATE INDEX IF NOT EXISTS persons_name ON persons(name);
+CREATE INDEX IF NOT EXISTS persons_score ON persons(score DESC);
+CREATE TABLE IF NOT EXISTS events (h TEXT PRIMARY KEY, pid TEXT NOT NULL, d TEXT, typ TEXT, stage TEXT, title TEXT NOT NULL, status TEXT, conf REAL, src TEXT, url TEXT, extra TEXT);
+CREATE INDEX IF NOT EXISTS events_pid ON events(pid, d);
+CREATE INDEX IF NOT EXISTS events_md ON events(substr(d,6,5));
+CREATE TABLE IF NOT EXISTS edges (a TEXT NOT NULL, b TEXT NOT NULL, typ TEXT NOT NULL, label TEXT, conf REAL, src TEXT, url TEXT, PRIMARY KEY(a,b,typ));
+CREATE INDEX IF NOT EXISTS edges_b ON edges(b);
+CREATE TABLE IF NOT EXISTS nodes (id TEXT PRIMARY KEY, name TEXT, note TEXT, qid TEXT);
+CREATE TABLE IF NOT EXISTS runs (at INTEGER PRIMARY KEY, persons INTEGER, events INTEGER, edges INTEGER, note TEXT);

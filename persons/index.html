@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<base href="/news/">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>인물 아카이브 · NewsBoard</title>
+<meta name="description" content="공인의 평생 타임라인과 인물 관계도를 출처와 함께 정리한 NewsBoard 인물 아카이브">
+<meta property="og:type" content="website"><meta property="og:site_name" content="NewsBoard"><meta property="og:title" content="인물 아카이브 — 평생 타임라인과 관계도"><meta property="og:description" content="출생부터 오늘까지, 그리고 누구와 어떻게 연결됐는지"><meta property="og:image" content="https://pyw31337.github.io/news/og-image.png?v=11"><meta property="og:url" content="https://pyw31337.github.io/news/persons/">
+<meta name="theme-color" content="#0f1630">
+<meta name="referrer" content="no-referrer">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="../favicon.ico?v=11" sizes="any"><link rel="icon" type="image/png" href="../icons/favicon-32.png?v=11" sizes="32x32"><link rel="icon" type="image/png" href="../icons/favicon-16.png?v=11" sizes="16x16"><link rel="icon" type="image/png" href="../icons/favicon-192.png?v=11" sizes="192x192">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png?v=11">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NewsBoard">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=11"><link rel="stylesheet" href="politicians/pol.css?v=5"><link rel="stylesheet" href="persons/arc.css?v=1">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="./"><b>News</b>Board<i>.</i></a>
+  <nav class="topnav">
+    <a href="timeline">타임라인</a><a href="market">마켓</a><a href="./">오늘</a><a href="my">내 서재</a><a href="menu">메뉴</a>
+  </nav>
+  <div class="updated" id="updated">불러오는 중…</div>
+</header>
+<div class="ticker" id="ticker"></div>
+<main id="app"><div class="loading">인물 아카이브를 불러오고 있어요…</div></main>
+<footer class="foot"><p class="footmeta" id="footmeta"></p><nav class="flinks"><a href="archive">날짜 아카이브</a><a href="map">관계맵</a><a href="timeline">타임라인 비교</a><a href="settings">설정</a></nav>
+  <p><b>NewsBoard</b> — 네이버 뉴스 랭킹·검색·댓글, Google 뉴스·트렌드, 네이버 증권·Yahoo Finance, 위키백과를 매시간 수집해 자동으로 묶고 정리합니다. “AI 요약” 표시가 있는 내용은 AI가 수집 자료만으로 작성한 것이며 틀릴 수 있습니다. 그 밖의 요약은 기사 리드문에서 추출했고, 저작권은 각 언론사에 있습니다. 원문 링크로 확인하세요.</p>
+</footer>
+<nav class="tabbar">
+  <a href="timeline"><svg viewBox="0 0 24 24"><path d="M6 3v18M6 7h10M6 12h6M6 17h12"/></svg>타임라인</a>
+  <a href="market"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-8M15 8h5v5"/></svg>마켓</a>
+  <a href="./"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>오늘</a>
+  <a href="my"><svg viewBox="0 0 24 24"><path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h10"/></svg>내 서재</a>
+  <a href="menu" class="on"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>메뉴</a>
+</nav>
+<script src="persons/arc.js?v=1"></script>
+</body>
+</html>

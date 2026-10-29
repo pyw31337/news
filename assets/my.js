@@ -104,6 +104,7 @@ function after(){if(!(typeof D!=='undefined'&&D))return;const[v,a]=curV();docume
     if(!app.querySelector('.hsec'))groupSecs('today');save()}
   if(v==='market'&&!app.querySelector('.hsec')){groupSecs('market');app.querySelectorAll('.mk').forEach(k=>{const n=k.querySelector('.n')?.firstChild?.textContent?.trim();if(n&&!k.querySelector('.mini-heart')){k.style.position='relative';k.insertAdjacentHTML('beforeend',`<span data-t="chart" data-id="${E(n)}" class="mhw"><button class="mini-heart ${st('chart',n).like?'on':''}" aria-label="관심 지표">${SV(P.star)}</button></span>`)}});save()}
   if(['issue','entity','kw'].includes(v)&&a&&!app.querySelector('.myact')){const h=app.querySelector('h1,h2');const t=v;const id=v==='issue'?a:a;(h||app.firstElementChild)?.insertAdjacentHTML('afterend',actBar(t,id));
+    if(v==='issue')arcLink(a);
     if(v==='issue'){const i=D.issues.find(x=>x.id===a);if(i){const d=new Date().toISOString().slice(0,10);const r=M.reads[d]||(M.reads[d]={});if(!r[a]){r[a]={c:i.category,l:(i.sources||[]).reduce((o,s)=>{if(s.bias)o[s.bias.lean]=(o[s.bias.lean]||0)+1;else o.n=(o.n||0)+1;return o},{})};save()}}}}
   app.querySelectorAll('a.card[href^="issue/"]').forEach(c=>{if(c.querySelector('.mhw'))return;const id=c.getAttribute('href').slice(6);c.style.position='relative';c.insertAdjacentHTML('beforeend',`<span class="mhw" data-t="issue" data-id="${E(id)}"><button class="mini-heart ${st('issue',id).like?'on':''}" aria-label="좋아요">${SV(P.heart)}</button></span>`)});
   hl();badge();}
@@ -111,6 +112,7 @@ function after(){if(!(typeof D!=='undefined'&&D))return;const[v,a]=curV();docume
 const MENU=[
  ['뉴스 보기','today',[['오늘','./','오늘의 이슈 TOP10·화제·관계','fire'],['타임라인','timeline','사건이 시간순으로 이어지는 흐름','clock'],['관계도','map','인물·기업·장소가 어떻게 얽혔는지','link'],['화제','people','인물·기업·장소·기관별로 모아보기','user'],['날짜 아카이브','archive','지난 날의 이슈 다시 보기','book']]],
  ['돈과 정책','market',[['마켓','market','증시·환율·원자재 한눈에','chart'],['경기선행지수','market#lead','경기가 어디로 가는지 미리 보기','spark'],['정치인 DB','politicians/','의원 3,296명의 법안·표결·재산','user']]],
+ ['인물 아카이브','persons',[['인물 타임라인','persons/','정치인의 출생부터 오늘까지 일생 기록','clock'],['인물 관계도','persons/#graph','가족·동문·지역구로 이어진 사람들','link'],['오늘의 인물사','persons/','몇 년 전 오늘, 이 사람에게 있었던 일','book']]],
  ['쉽게 배우기','learn',[['오늘의 단어 퀴즈','quiz','OX로 맞히며 어려운 말 익히기','book'],['4컷 만평','learn','핫이슈를 만화로 쉽게','chat'],['카드뉴스','learn','반복되는 사건을 카드로 정리','news']]],
  ['나','my',[['내 서재','my','좋아요·스크랩·메모·팔로우','book'],['알림','alerts','키워드·팔로우·지표·아파트 알림','alert'],['내 홈 꾸미기','my/home','오늘·마켓 섹션 순서와 관심 항목','gear']]]];
 function fsV(d){S.fs=d===0?100:Math.max(85,Math.min(130,S.fs+d));saveS()}
@@ -227,3 +229,9 @@ let _t=window.today;setTimeout(()=>{if(window.today!==_t){window._todayInner=win
 fetch('data/gov/apt.json').then(r=>r.ok?r.json():null).then(j=>{window._APT=j;badge()}).catch(()=>{});
 ready.then(()=>{nav();const go_=()=>{if((typeof D!=='undefined'&&D)){hl();after();const[v]=curV();if(['my','menu','alerts'].includes(v))route()}else setTimeout(go_,150)};go_()});
 })();
+
+/* 이슈 상세 → 인물 아카이브 연결(이슈 본문에 등장하는 아카이브 인물) */
+let ARCN=null;async function arcLink(id){try{ARCN=ARCN||await (await fetch('https://newsboard-sync.pyw213.workers.dev/archive/people?n=200')).json();
+ const tx=(document.querySelector('#app')?.innerText||'').slice(0,20000);const hit=ARCN.filter(p=>p.name.length>1&&tx.includes(p.name)).slice(0,6);
+ if(!hit.length||document.querySelector('.arcrow'))return;const h=document.querySelector('#app .myact')||document.querySelector('#app h1,#app h2');
+ h&&h.insertAdjacentHTML('afterend',`<div class="arcrow" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0"><span style="font-size:12px;color:#888;align-self:center">이 이슈의 인물 일생 보기</span>${hit.map(p=>`<a href="persons/?id=${p.id}" style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border-radius:999px;background:#fff;box-shadow:0 1px 5px #0f163020;text-decoration:none;color:#1b2140;font-size:13px;font-weight:700">${p.photo?`<img src="${p.photo}" alt="" style="width:24px;height:24px;border-radius:50%;object-fit:cover;object-position:top">`:''}${E(p.name)}</a>`).join('')}</div>`)}catch(e){}}
