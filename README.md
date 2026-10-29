@@ -2,9 +2,11 @@
 
 https://pyw31337.github.io/news/
 
+> **작업을 이어받는 에이전트는 먼저 [HANDOFF.md](HANDOFF.md)와 [docs/ROADMAP.md](docs/ROADMAP.md)를 읽으세요.** (목표·사용자 선호·구조·진행 중 작업·백로그·데이터 현황)
+
 ## 구조
 - `index.html`, `assets/` — 정적 프런트엔드 (모바일 우선, 1000px 이상 다단 레이아웃)
-- `scripts/collect.py` — 수집·분석 파이프라인 (GitHub Actions가 매시간 실행)
+- `scripts/collect.py` — 수집·분석 파이프라인 (GitHub Actions가 30분마다 실행)
 - `data/today.json` — 오늘의 결과, `data/archive/YYYY-MM-DD.json` — 날짜별 TOP10, `data/entity_history.json` — 인물별 일자 화제도 누적
 
 ## 데이터 소스 (모두 무료·키 불필요)
