@@ -46,5 +46,24 @@ main{max-width:1240px;margin:0 auto;padding:16px}
   .ticker .run { animation-duration: 90s; }
   .card, .ic { box-shadow: 0 4px 14px -8px rgba(15,22,48,.12); }
   .ic { content-visibility: auto; contain-intrinsic-size: 320px 280px; }
+
+  /* 모바일 가로 다단 → 세로 적층 (줄바꿈 방지) */
+  .mkrow, .mkrow.wide, .dw-grid, .ecards, .mystat, .gm-shelf, .plist, .hx-stats, .hx-plist {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .schips, .hx-tabs, .filters {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .gm-shelf {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .mystat {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .hx-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
 @media (prefers-reduced-motion: reduce) { .ticker .run { animation: none; } }
