@@ -32,7 +32,7 @@ jobs:
           if [ ! -f hist/h/targets.json ] || [ "$(date -u +%u%H)" = "718" ]; then python scripts/history/hist.py hist seed pdata || true; fi
           if [ ! -f hist/h/y/2000.json ] || [ "$(date -u +%H)" = "19" ]; then python scripts/history/hist.py hist years 1948 $(date +%Y) || true; fi
       - name: 세계 시장 지표(3시간마다)
-        run: if [ $(( $(date -u +%H) % 3 )) = 0 ] || [ ! -f hist/h/market_extra.json ]; then python scripts/history/market_extra.py hist/h/market_extra.json || true; fi
+        run: if [ $(( $(date -u +%H) % 3 )) = 0 ] || [ ! -f hist/h/market_extra.json ]; then timeout 240 python scripts/history/market_extra.py hist/h/market_extra.json || true; fi
       - name: 인물·이슈 백필
         run: python scripts/history/hist.py hist run ${{ github.event.inputs.minutes || '42' }}
       - name: 저장
