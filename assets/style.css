@@ -71,3 +71,11 @@ main{max-width:1240px;margin:0 auto;padding:16px}
   }
 }
 @media (prefers-reduced-motion: reduce) { .ticker .run { animation: none; } }
+
+/* 2026-10-30: 국내/해외 전환 + 번역보기 버튼 */
+.rsw{display:flex;gap:4px;align-items:center}
+.rsw button{border:0;background:rgba(255,255,255,.12);color:#fff;border-radius:99px;padding:6px 12px;font-size:.75rem;font-weight:700;cursor:pointer}
+.rsw button.on{background:#fff;color:#0f1630}
+.trbtn{border:0;background:rgba(255,255,255,.15);color:#fff;border-radius:99px;padding:6px 10px;font-size:.7rem;font-weight:700;margin-left:6px;cursor:pointer}
+.trbtn:hover{background:rgba(255,255,255,.25)}
+body.en .trbtn{display:inline-flex}
