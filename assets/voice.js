@@ -16,7 +16,7 @@ function trend(tr){if(!tr||tr.length<2)return'<p class="vfine">분위기 변화�
 function cloud(ws){if(!ws||!ws.length)return'';const mx=ws[0][1];return`<div class="vcloud">${ws.slice(0,18).map(([w,v],k)=>`<span class="c${k%4}" style="font-size:${(.78+v/mx*.85).toFixed(2)}rem">${E(w)}</span>`).join('')}</div>`}
 function quotes(r,n){const P=r.posts||[];const pick=((r.ai&&r.ai.quotes)||[]).map(q=>P[q]).filter(Boolean);const L=pick.concat(P.filter(p=>p.s!==0),P).filter((p,k,a)=>a.indexOf(p)===k).slice(0,n);
   return`<div class="vq">${L.map(p=>{const s=SRC[p.src]||['글','var(--ds-mute)'];return`<a class="vqc ${p.s>0?'pos':p.s<0?'neg':''}" href="${E(p.url)}" target="_blank" rel="noopener"><span class="vsb" style="--c:${s[1]}">${E(s[0])}</span><q>${E(p.q)}</q><small>원문 보기 ${NBI('external-link')}</small></a>`}).join('')}</div>`}
-function vcards(vs){if(!vs||!vs.length)return'<p class="vfine">아직 이 사건을 다룬 영상을 찾지 못했어요.</p>';
+function vcards(vs){if(!vs||!vs.length)return'<p class="vfine keep">아직 이 사건을 다룬 영상을 찾지 못했어요.</p>';
   return`<div class="vvg">${vs.map(v=>{const p=PF[v.pf]||PF.etc;return`<a class="vv" href="${E(v.url)}" target="_blank" rel="noopener"><div class="vvt" style="background-image:url('${E(v.thumb||'')}')"><span class="vpf">${NBI(v.pf==='youtube'||v.pf==='shorts'?'brand-youtube':'video')} ${p[0]}</span>${v.views?`<span class="vvw">${NBI('chart-bar')} ${fmtV(v.views)}회</span>`:''}</div>
    <div class="vvb"><h5>${E(v.title)}</h5><div class="vch"><b>${E(v.ch)}</b>${v.t?`<span>${agoT(v.t)}</span>`:''}</div>${(v.sum||[]).length?`<ol>${v.sum.map(s=>`<li>${E(s)}</li>`).join('')}</ol>`:''}</div></a>`}).join('')}</div>`}
 window.NBVoice={gauge,vcards,quotes};

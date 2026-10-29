@@ -1,0 +1,34 @@
+/* 계정 버튼 */
+.acct{position:relative;flex:none;margin-left:6px}
+.acb{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;position:relative;background:none;border:0;cursor:pointer}
+.acb:hover{background:rgba(255,255,255,.1)}
+.acb svg{width:22px;height:22px}.acb .ua0{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.acct.in .acb{background:#fff;color:#0f1630;width:34px;height:34px;margin:2px}.acct.in .acb svg{width:20px;height:20px}
+.ua1{fill:currentColor}
+.acd{position:absolute;right:-2px;bottom:-2px;width:13px;height:13px;border-radius:50%;border:2.5px solid #0f1630;box-sizing:content-box}
+.acd.google{background:conic-gradient(#EA4335 0 25%,#FBBC05 0 50%,#34A853 0 75%,#4285F4 0)}.acd.kakao{background:#FEE500}
+.acm{position:absolute;right:0;top:calc(100% + 10px);min-width:200px;background:#fff;color:#0f1630;border-radius:16px;padding:8px;box-shadow:0 12px 36px rgba(15,22,48,.22),0 0 0 1px rgba(15,22,48,.06);opacity:0;transform:translateY(-6px);pointer-events:none;transition:.16s;z-index:90}
+.acct.open .acm{opacity:1;transform:none;pointer-events:auto}
+.ach{display:grid;grid-template-columns:36px 1fr;column-gap:10px;align-items:center;padding:8px 8px 12px;border-bottom:1px solid #eef0f5;margin-bottom:6px}
+.ach svg{grid-row:1/3;width:36px;height:36px;padding:8px;border-radius:50%;background:#0f1630;color:#fff;box-sizing:border-box}
+.ach b{font-size:.92rem;font-weight:800}.ach small{font-size:.78rem;color:#11a683;font-weight:700}
+.acm>a,.acm>button{display:block;width:100%;text-align:left;padding:11px 10px;border-radius:10px;font:inherit;font-size:.92rem;font-weight:650;color:#0f1630;background:none;border:0;cursor:pointer}
+.acm>a:hover,.acm>button:hover{background:#f4f5f9}.aco{color:#c2321b!important}
+@media(min-width:1000px){.top .acct{order:0}}
+/* 현재 위치: PC 상단 */
+.topnav a{position:relative;background:none!important;border-radius:0!important;color:#aeb4cc;font-weight:600;padding:7px 14px}
+.topnav a:hover{color:#fff}
+.topnav a.on{color:var(--acc)!important;font-weight:850}
+.topnav a.on::after{content:'';position:absolute;left:14px;right:14px;bottom:-9px;height:3px;border-radius:3px;background:var(--acc)}
+/* 현재 위치: 모바일 탭바 */
+.tabbar a:not(.ctr) .u1{display:none}.tabbar a.on:not(.ctr) .u1{display:inline;fill:currentColor;stroke:none}.tabbar a.on:not(.ctr) .u0{display:none}
+.tabbar a.on{color:var(--acc)!important;font-weight:850}
+.tabbar a.on:not(.ctr)::before{content:'';position:absolute;top:-4px;left:50%;width:22px;height:3px;margin-left:-11px;border-radius:0 0 3px 3px;background:var(--acc)}
+/* 설명 문구 숨김 */
+p.fine:not(.keep),p.vfine:not(.keep),.footmeta{display:none!important}
+/* 오늘 랭킹 목록: 구분선 없이 촘촘하게 */
+.hero .side{gap:8px!important}.hero .side .srow{border-top:0!important;padding:0!important}
+/* 최소 푸터 */
+.foot.min{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot.min .flinks{display:flex;gap:18px;margin:0}
+.foot.min .brand{color:inherit;font-size:1.05rem}

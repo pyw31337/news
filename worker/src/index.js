@@ -23,17 +23,21 @@ async function who(env, req) {
   const r = await env.DB.prepare('SELECT uid, exp FROM sessions WHERE th=?').bind(await sha(t)).first();
   return r && r.exp > now() ? r.uid : null;
 }
-async function login(env, provider, sub) {
+async function login(env, provider, sub, keep = true) {
   const uid = 'u_' + (await hmac(env.ID_SALT, provider + ':' + sub)).slice(0, 32);
   await env.DB.prepare('INSERT INTO users(uid,created,last_seen) VALUES(?,?,?) ON CONFLICT(uid) DO UPDATE SET last_seen=excluded.last_seen').bind(uid, now(), now()).run();
   const tok = rnd(32);
-  await env.DB.prepare('INSERT INTO sessions(th,uid,exp) VALUES(?,?,?)').bind(await sha(tok), uid, now() + SESSION_DAYS * DAY).run();
+  await env.DB.prepare('INSERT INTO sessions(th,uid,exp) VALUES(?,?,?)').bind(await sha(tok), uid, now() + (keep ? SESSION_DAYS * DAY : SHORT_HOURS * 36e5)).run();
   return tok;
 }
-const back = (env, q) => Response.redirect(env.SITE + 'my#' + new URLSearchParams(q).toString(), 302);
+// 로그인 결과는 사이트의 login/ 페이지가 받아서 원래 보던 페이지로 되돌려 보냄
+const back = (env, q) => Response.redirect(env.SITE + 'login/#' + new URLSearchParams(q).toString(), 302);
+const safeRet = r => (r && /^[A-Za-z0-9\-_\/.%#=&?~가-힣]{0,300}$/.test(r) && !r.startsWith('/') && !r.includes('//') && !r.includes('..')) ? r : '';
+const SHORT_HOURS = 24;   // 자동 로그인 끔: 브라우저를 닫으면 사이트가 토큰을 지우고, 서버 세션도 24시간 뒤 만료
 async function oauthStart(env, url, p) {
   if (!providers(env)[p]) return back(env, { nbe: 'unavailable' });
-  const st = rnd(16);
+  const keep = url.searchParams.get('keep') === '0' ? '0' : '1', ret = safeRet(url.searchParams.get('ret') || '');
+  const st = rnd(16) + '.' + keep + '.' + encodeURIComponent(ret);
   try { await env.DB.prepare('INSERT INTO oauth_state(st,exp) VALUES(?,?)').bind(st, now() + 600_000).run(); } catch (e) { return back(env, { nbe: 'busy' }); }
   const cb = url.origin + '/auth/' + p + '/callback';
   const u = p === 'google'
@@ -62,7 +66,8 @@ async function oauthCallback(env, url, p) {
     }
   } catch (e) { sub = null; }
   if (!sub) return back(env, { nbe: 'retry' });
-  try { return back(env, { nbt: await login(env, p, sub), nbp: p }); }
+  const sp = st.split('.'), keep = sp[1] || '1', ret = sp.slice(2).join('.');
+  try { return back(env, { nbt: await login(env, p, sub, keep !== '0'), nbp: p, keep, ret: safeRet(decodeURIComponent(ret)) }); }
   catch (e) { return back(env, { nbe: 'busy' }); }   // D1 쓰기 한도 초과 등: 사이트에서 '잠시 후' 안내
 }
 async function backup(env) {

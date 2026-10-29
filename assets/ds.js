@@ -64,7 +64,7 @@ function bindFlow(root){const sv=root.querySelector('.ds-rsv'),box=root.querySel
   const {F,P,terms}=window.__dsFlow;const now=Date.now();const RG={'1m':31,'6m':183,'1y':366,all:1e5};let cur='all',sel=0;
   const th=(u)=>u?`<span class="ds-fth" style="background-image:url('${E(u)}')"></span>`:'';
   function card(f,k){return`<article class="ds-fg ${k===sel?'on':''}" data-k="${k}"><header><span class="ds-dot"></span><b>${ymd(f.t)}</b><small>${dago(f.t)}</small><span class="ds-badge">${f.items.length}건</span></header>
-    ${f.meaning?`<div class="ds-mean"><span class="ds-ai">${I('sparkles')}AI 요약</span>${rich(f.meaning,terms,'s')}</div>`:''}
+    ${f.meaning?`<div class="ds-mean">${rich(f.meaning,terms,'s')}</div>`:''}
     <ul>${f.items.map((x,j)=>`<li class="${j===0?'top':''}"><a href="${E(x.url)}" target="_blank" rel="noopener">${j===0?th(x.img):''}<span><b>${E(x.title)}</b>${x.press?`<small>${logo(x.press,x.url,'sm')}${E(x.press)}</small>`:''}</span></a></li>`).join('')}</ul></article>`}
   function draw(){const lim=now-RG[cur]*864e5;const f=F.filter(x=>+x.t>=lim),p=P.filter(x=>+x.t>=lim);
     const all=[...f.map((x,k)=>({x,k,kind:'f'})),...p.map(x=>({x,kind:'p'}))].sort((a,b)=>a.x.t-b.x.t);
@@ -125,7 +125,7 @@ function opinion(i){const op=i.opinion,aop=(i.ai||{}).opinion||{};if(!op)return'
   return`<div class="ds-op">
    <div class="ds-kpi"><div class="big"><span class="lab">${I('message-2')}모인 댓글</span><b>${op.total.toLocaleString()}</b><small>기사 ${op.articles}개에서</small></div>
     <div class="ld"><span class="lab">공감 vs 비공감</span><div class="ds-ldbar"><i style="width:${lr}%"></i></div><div class="ds-ldn"><span class="up">${I('thumb-up')}<b>${op.like.toLocaleString()}</b></span><span class="dn"><b>${op.dislike.toLocaleString()}</b>${I('thumb-down')}</span></div><small>상위 댓글 공감 비율 <b>${lr}%</b></small></div></div>
-   ${aop.summary?`<div class="ds-aisum"><span class="ds-ai">${I('sparkles')}AI 요약</span>${rich(aop.summary,terms)}</div>`:''}
+   ${aop.summary?`<div class="ds-aisum">${rich(aop.summary,terms)}</div>`:''}
    ${st.length?`<h5 class="ds-h5">입장 분포 <small>공감 많은 댓글 기준</small></h5><div class="ds-stance">${donut(st,col)}<ul>${st.map((s,k)=>`<li style="--c:${col[k%4]}"><div class="h"><b>${E(s.label)}</b><em>${s.share}%</em></div><div class="bar"><i style="width:${s.share}%"></i></div><p>${E(s.desc)}</p></li>`).join('')}</ul></div>`:''}
    ${g||ages.length?`<div class="ds-demo">${g?`<div class="ds-gen"><h5 class="ds-h5">성별</h5><div class="row m"><span class="lb">남성</span><span class="pg">${ppl(Math.round(g.male/10),'m')}</span><b>${g.male}%</b></div><div class="row f"><span class="lb">여성</span><span class="pg">${ppl(Math.round(g.female/10),'f')}</span><b>${g.female}%</b></div></div>`:''}
     ${ages.length?`<div class="ds-age"><h5 class="ds-h5">연령대 <small>${ag[0]}대가 가장 많아요</small></h5><div class="cols">${ages.map(([a,v])=>`<div class="${a===ag[0]?'max':''}"><em>${v}%</em><i style="--h:${Math.max(3,v/amx*100)}%"></i><span>${a}${a==='70'?'+':''}</span></div>`).join('')}</div></div>`:''}</div>`:''}
@@ -141,7 +141,7 @@ function deep(i){const ai=i.ai||{},terms=[...(i.entities||[]),...(i.keywords||[]
    <div class="ds-facts"><div><b>${i.mentions||0}</b><span>관련 기사</span></div><div><b>${i.presses||0}</b><span>언론사</span></div><div><b>${span||'–'}</b><span>일째 이어짐</span></div><div><b>${i.opinion?i.opinion.total.toLocaleString():'–'}</b><span>댓글</span></div></div>
    ${(i.entities||[]).length?`<div class="ds-who">${i.entities.slice(0,6).map(n=>`<span class="ds-tag k">${E(n)}</span>`).join('')}</div>`:''}
    <ol class="ds-steps">${S.map((s,k)=>`<li><span class="no">${k+1}</span><div><em>${lab[Math.min(k,5)]}</em><p>${emph(s,terms)}</p></div></li>`).join('')}</ol>
-   ${ai.deep?'<p class="fine"><span class="ds-ai">'+I('sparkles')+'AI 요약</span> 여러 언론사의 보도를 바탕으로 정리했어요. 정확한 내용은 원문으로 확인하세요.</p>':''}</section>`}
+   </section>`}
 
 window.DS={emph,rich,logo,press,related,past,flow,opinion,deep,bind(root){bindPress(root);bindFlow(root)}};
 })();

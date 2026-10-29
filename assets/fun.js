@@ -97,7 +97,7 @@ function finish(){const s=QS;const lv0=lvl(L.xp);L.xp+=s.xp+(s.ok===s.Q.length?2
   if(acc>=80)burst(app.querySelector('.big'))}
 /* ---------- 만화 ---------- */
 function comic(id){const c=F.comics.find(x=>x.id===id)||F.comics[0];if(!c)return hub();setMeta(c.title+' — 4컷 해설',c.headline);
-  app.innerHTML=`<div class="cwrap"><a class="back" href="learn">${NBI('chevron-left')} 배우기</a><div class="chead"><span class="cat ${c.category}">${c.category}</span><span class="clab">설명 만화 · 사실 기반 해설${c.gen==='ai'?' · AI 대본':''}</span><h1>${E(c.title)}</h1><p>${E(c.headline)}</p></div>
+  app.innerHTML=`<div class="cwrap"><a class="back" href="learn">${NBI('chevron-left')} 배우기</a><div class="chead"><span class="cat ${c.category}">${c.category}</span><h1>${E(c.title)}</h1><p>${E(c.headline)}</p></div>
   <div class="comic${window.NBC?' c2':''}">${c.panels.map((p,k)=>window.NBC?NBC.panel(p,k,c):panel(p,k)).join('')}</div>
   <p class="cnote">이 만화는 기사 내용을 쉽게 풀어 쓴 <b>설명용 만화</b>예요. 등장하는 보리·누리는 NewsBoard 마스코트이고, 실존 인물을 묘사하거나 풍자하지 않아요. 정확한 내용은 아래 원문으로 확인하세요.</p>
   <div class="cact"><a class="qbtn" href="issue/${c.issue}">이 이슈 자세히 보기</a>${typeof shareBtn==='function'?shareBtn():''}</div>${srcList(c.sources)}</div>`}
