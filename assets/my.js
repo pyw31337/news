@@ -20,7 +20,7 @@ const save=()=>{M.updated=Date.now();const s=JSON.stringify(M);try{localStorage.
 /* ---------- 여러 기기 동기화: Cloudflare Worker + D1 (로그인 시에만) ---------- */
 const SYNC='https://newsboard-sync.pyw213.workers.dev';
 {const h=new URLSearchParams(location.hash.slice(1));if(h.get('nbt')){localStorage.setItem('nb-tok',h.get('nbt'));localStorage.setItem('nb-prov',h.get('nbp')||'');localStorage.setItem('nb-migrate','1')}
- if(h.get('nbt')||h.get('nbe'))history.replaceState(null,'',location.pathname+location.search);if(h.get('nbe'))setTimeout(()=>window.toast&&toast('로그인을 마치지 못했어요. 다시 시도해 주세요'),800)}
+ if(h.get('nbt')||h.get('nbe'))history.replaceState(null,'',location.pathname+location.search);if(h.get('nbe'))setTimeout(()=>window.toast&&toast(h.get('nbe')==='busy'?'지금 로그인 서버가 붐벼요. 잠시 뒤에 다시 시도해 주세요':'로그인을 마치지 못했어요. 다시 시도해 주세요'),800)}
 const tok=()=>localStorage.getItem('nb-tok');
 const newer=(a,b)=>((a&&(a.u||a.at))||0)>=((b&&(b.u||b.at))||0)?a:b;
 function merge(a,b){if(!b)return a;if(!a)return b;const o=Object.assign({},b,a);
@@ -35,10 +35,11 @@ let rev=+localStorage.getItem('nb-rev')||0,syncT=null,syncing=false;window._nbSy
 async function api(path,opt={}){const r=await fetch(SYNC+path,Object.assign({},opt,{headers:Object.assign({'Content-Type':'application/json',Authorization:'Bearer '+tok()},opt.headers||{})}));
   if(r.status===401){localStorage.removeItem('nb-tok');localStorage.removeItem('nb-rev');throw new Error('auth')}return{st:r.status,j:await r.json().catch(()=>({}))}}
 async function sync(){if(!tok()||syncing)return;syncing=true;try{
-  const g=await api('/sync');let data=merge(M,g.j.data);rev=g.j.rev||0;
-  for(let n=0;n<3;n++){const r=await api('/sync',{method:'PUT',body:JSON.stringify({data,rev})});if(r.st===200){rev=r.j.rev;break}
+  let ok=0;const g=await api('/sync');let data=merge(M,g.j.data);rev=g.j.rev||0;
+  for(let n=0;n<3;n++){const r=await api('/sync',{method:'PUT',body:JSON.stringify({data,rev})});if(r.st===200){rev=r.j.rev;ok=1;break}
     if(r.st===409){data=merge(data,r.j.data);rev=r.j.rev}else break}
   M=Object.assign(JSON.parse(JSON.stringify(DEF)),data);M.updated=data.updated;const s=JSON.stringify(M);try{localStorage.setItem('nb-my',s)}catch(e){}if(db)try{db.transaction('kv','readwrite').objectStore('kv').put(JSON.parse(s),'my')}catch(e){}
+  if(!ok){const st=document.getElementById('syncst');if(st)st.textContent='이 기기에 저장해 두고 나중에 맞출게요';return}
   localStorage.setItem('nb-rev',rev);window._nbSyncAt=Date.now();localStorage.setItem('nb-syncat',window._nbSyncAt);
   if(localStorage.getItem('nb-migrate')){localStorage.removeItem('nb-migrate');window.toast&&toast('이 기기의 서재를 계정으로 옮겼어요')}
   const st=document.getElementById('syncst');if(st)st.textContent='방금 동기화됨';badge&&badge()}catch(e){}finally{syncing=false}}
@@ -194,7 +195,7 @@ function myView(sub){setMeta('내 서재','');if(sub==='home')return homeSet();
    <div class="card"><h4>최근 14일</h4><div class="days">${Array.from({length:14},(_,k)=>{const d=new Date(Date.now()-(13-k)*864e5).toISOString().slice(0,10);const n=Object.keys(M.reads[d]||{}).length;return`<i style="--o:${Math.min(1,n/5)}" title="${d} ${n}건"></i>`}).join('')}</div></div></div>`:'<p class="fine">이슈를 읽으면 주제 비율과 균형을 여기서 보여드려요.</p>'}
   <div class="sec"><h2><small>Backup</small>${I('link')}다른 기기로 옮기기</h2></div>
   <div class="card setc"><p class="fine">로그인 전에는 이 기기에만 저장돼요. 백업 파일이나 코드로 다른 기기에 옮길 수 있어요.</p><div class="mbr"><button class="pri" id="exf">백업 파일 받기</button><button id="imf">파일 불러오기</button><button id="exc">코드 복사</button><button id="imc">코드 붙여넣기</button></div><input type="file" id="imfi" accept=".json,application/json" hidden></div>
-  <div class="card setc login" id="loginc">${tok()?`<h3>${I('user')}모든 기기에서 이어지는 중</h3><p class="fine">좋아요·스크랩·메모·팔로우가 로그인한 모든 기기에 자동으로 맞춰져요.</p><div class="mbr"><button id="syncnow">지금 맞추기</button><button id="logout">로그아웃</button></div>`:`<h3>${I('user')}로그인하면 모든 기기에서 자동으로 이어져요</h3><p class="fine">지금 이 기기에 모은 것도 그대로 옮겨져요. 이메일이나 이름은 받지 않아요.</p><div class="mbr" id="loginb"><span class="soonb">준비 중</span></div>`}</div>`;
+  <div class="card setc login" id="loginc">${tok()?`<h3>${I('user')}모든 기기에서 이어지는 중</h3><p class="fine">좋아요·스크랩·메모·팔로우가 로그인한 모든 기기에 자동으로 맞춰져요.</p><div class="mbr"><button id="syncnow">지금 맞추기</button><button id="logout">로그아웃</button></div>`:`<h3>${I('user')}로그인하면 모든 기기에서 자동으로 이어져요</h3><p class="fine">지금 이 기기에 모은 것도 그대로 옮겨져요. 이메일이나 이름은 받지 않아요.</p><div class="mbr" id="loginb"><a class="lgb g" href="${SYNC}/auth/google/start">Google로 계속하기</a><a class="lgb k" href="${SYNC}/auth/kakao/start">카카오로 계속하기</a></div>`}</div>`;
   if(tok()){document.getElementById('syncnow').onclick=()=>{sync().then(()=>toast('맞췄어요'))};document.getElementById('logout').onclick=async()=>{try{await api('/logout',{method:'POST'})}catch(e){}['nb-tok','nb-rev','nb-prov','nb-syncat'].forEach(k=>localStorage.removeItem(k));toast('로그아웃했어요. 이 기기의 서재는 그대로 남아요');myView()}}
   else fetch(SYNC+'/health').then(r=>r.json()).then(h=>{const L=h.login||{},b=document.getElementById('loginb');if(!b||!(L.google||L.kakao))return;
     b.innerHTML=(L.google?`<a class="lgb g" href="${SYNC}/auth/google/start">Google로 계속하기</a>`:'')+(L.kakao?`<a class="lgb k" href="${SYNC}/auth/kakao/start">카카오로 계속하기</a>`:'')}).catch(()=>{});

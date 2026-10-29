@@ -33,7 +33,8 @@ async function login(env, provider, sub) {
 const back = (env, q) => Response.redirect(env.SITE + 'my#' + new URLSearchParams(q).toString(), 302);
 async function oauthStart(env, url, p) {
   if (!providers(env)[p]) return back(env, { nbe: 'unavailable' });
-  const st = rnd(16); await env.DB.prepare('INSERT INTO oauth_state(st,exp) VALUES(?,?)').bind(st, now() + 600_000).run();
+  const st = rnd(16);
+  try { await env.DB.prepare('INSERT INTO oauth_state(st,exp) VALUES(?,?)').bind(st, now() + 600_000).run(); } catch (e) { return back(env, { nbe: 'busy' }); }
   const cb = url.origin + '/auth/' + p + '/callback';
   const u = p === 'google'
     ? 'https://accounts.google.com/o/oauth2/v2/auth?' + new URLSearchParams({ client_id: env.GOOGLE_CLIENT_ID, redirect_uri: cb, response_type: 'code', scope: 'openid', state: st, prompt: 'select_account' })
@@ -42,7 +43,9 @@ async function oauthStart(env, url, p) {
 }
 async function oauthCallback(env, url, p) {
   const code = url.searchParams.get('code'), st = url.searchParams.get('state');
-  const row = st && await env.DB.prepare('DELETE FROM oauth_state WHERE st=? RETURNING exp').bind(st).first();
+  let row = null;
+  try { row = st && await env.DB.prepare('DELETE FROM oauth_state WHERE st=? RETURNING exp').bind(st).first(); }
+  catch (e) { try { row = st && await env.DB.prepare('SELECT exp FROM oauth_state WHERE st=?').bind(st).first(); } catch (e2) { return back(env, { nbe: 'busy' }); } }
   if (!code || !row || row.exp < now()) return back(env, { nbe: 'retry' });
   const cb = url.origin + '/auth/' + p + '/callback';
   let sub = null;
@@ -59,7 +62,8 @@ async function oauthCallback(env, url, p) {
     }
   } catch (e) { sub = null; }
   if (!sub) return back(env, { nbe: 'retry' });
-  return back(env, { nbt: await login(env, p, sub), nbp: p });
+  try { return back(env, { nbt: await login(env, p, sub), nbp: p }); }
+  catch (e) { return back(env, { nbe: 'busy' }); }   // D1 쓰기 한도 초과 등: 사이트에서 '잠시 후' 안내
 }
 async function backup(env) {
   const out = {};
@@ -182,7 +186,7 @@ export default {
       if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env) });
       if (p.startsWith('/archive/') && env.AR) return archive(env, req, url, p);
       let m = p.match(/^\/auth\/(google|kakao)\/(start|callback)$/);
-      if (m) return m[2] === 'start' ? oauthStart(env, url, m[1]) : oauthCallback(env, url, m[1]);
+      if (m) return await (m[2] === 'start' ? oauthStart(env, url, m[1]) : oauthCallback(env, url, m[1]));
       const uid = await who(env, req);
       if (!uid) return J(env, req, { error: 'auth' }, 401);
       if (p === '/me') return J(env, req, { uid });
@@ -198,8 +202,8 @@ export default {
         const cur = await env.DB.prepare('SELECT rev, data, updated FROM docs WHERE uid=?').bind(uid).first();
         if (cur && cur.rev !== rev) return J(env, req, { error: 'conflict', data: JSON.parse(cur.data), rev: cur.rev, updated: cur.updated }, 409);
         const nr = (cur ? cur.rev : 0) + 1;
-        await env.DB.prepare('INSERT INTO docs(uid,data,rev,updated) VALUES(?,?,?,?) ON CONFLICT(uid) DO UPDATE SET data=excluded.data, rev=excluded.rev, updated=excluded.updated')
-          .bind(uid, JSON.stringify(data), nr, now()).run();
+        try { await env.DB.prepare('INSERT INTO docs(uid,data,rev,updated) VALUES(?,?,?,?) ON CONFLICT(uid) DO UPDATE SET data=excluded.data, rev=excluded.rev, updated=excluded.updated')
+          .bind(uid, JSON.stringify(data), nr, now()).run(); } catch (e) { return J(env, req, { error: 'busy' }, 503); }
         return J(env, req, { ok: true, rev: nr });
       }
       if (p === '/logout' && req.method === 'POST') {

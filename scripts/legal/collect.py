@@ -79,7 +79,9 @@ def lawgo(oc):
             if time.time() - t0 > 600: break
             try: r = json.loads(get(f'https://www.law.go.kr/DRF/lawSearch.do?OC={oc}&target={target}&type=JSON&display=100&page={st["page"]}&sort=ddes'))
             except Exception as e: LOG['sources']['law.go.kr'][target] = f'err {type(e).__name__}'; break
-            body = next(iter(r.values())) if isinstance(r, dict) else {}
+            body = next(iter(r.values())) if isinstance(r, dict) and r else {}
+            if not isinstance(body, dict):   # 오류 응답(키·IP 미등록 등): 내용 일부만 기록(키 값은 가림)
+                LOG['sources']['law.go.kr'][target] = 'resp ' + json.dumps(r, ensure_ascii=False)[:300].replace(oc, '***'); break
             rows = body.get(target) or []
             if isinstance(rows, dict): rows = [rows]
             if not rows: st['page'] = 1; break
@@ -88,7 +90,8 @@ def lawgo(oc):
                 if not i or i in ids: continue
                 try: det = json.loads(get(f'https://www.law.go.kr/DRF/lawService.do?OC={oc}&target={target}&ID={i}&type=JSON'))
                 except Exception: continue
-                d = next(iter(det.values())) if isinstance(det, dict) else {}
+                d = next(iter(det.values())) if isinstance(det, dict) and det else {}
+                if not isinstance(d, dict): continue
                 txt = re.sub(r'<[^>]+>', ' ', html.unescape(str(d.get('판례내용') or d.get('전문') or d.get('회답') or '')))
                 rec = {'id': f'{target}:{i}', 'meta': row, 'summary': {k: d.get(k) for k in ('판시사항', '판결요지', '참조조문', '참조판례', '결정요지', '질의요지', '회답') if d.get(k)}}
                 tail = txt[-1500:]

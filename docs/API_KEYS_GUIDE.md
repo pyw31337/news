@@ -6,7 +6,7 @@
 | 순서 | 플랫폼 | 어디에 쓰나 | 승인 | 돌려줄 값 |
 |---|---|---|---|---|
 | 1 | 국가법령정보 공동활용 (법제처) | 판례·헌재결정·법령해석 전문, 대법관·변호사 이름 | **자동 승인(즉시)** | API인증키(OC) |
-| 2 | 공공데이터포털 | 헌법재판소 판례·사건 정보 | 개발계정 **자동 승인** | 없음 (키는 이미 등록됨, 신청만) |
+| 2 | 공공데이터포털 | 헌법재판소 판례·사건 정보 | **신청 필요 없음** (1번 법제처로 받음) | 없음 |
 | 3 | 카카오 디벨로퍼스 | 카카오 로그인 + 다음 검색(민심 보강) | 즉시 | REST API 키, 클라이언트 시크릿 |
 | 4 | Google Cloud (로그인) | 구글 로그인 | 즉시(테스트 모드) | 클라이언트 ID, 클라이언트 보안 비밀번호 |
 | 5 | Google Cloud (YouTube) | 이슈별 관련 영상 | 즉시 | API 키 |
@@ -31,18 +31,12 @@
 - 돌려줄 값: **OC** → 제가 GitHub 비밀값 `LAW_OC`로 넣으면, 3시간마다 도는 법률 수집이 바로 판례를 받기 시작해요.
 - 문의: 044-200-6797 (승인), 02-2109-6446 (기술)
 
-## 2. 공공데이터포털 — 헌법재판소 API 활용신청 (각 2분)
-이미 공공데이터포털 키(`DATA_GO_KR_KEY`)가 있어서 **새 키는 필요 없고, 서비스별 "활용신청"만** 누르면 돼요.
-1. https://www.data.go.kr 로그인 (기존 계정).
-2. 아래 두 페이지에서 각각 파란 **활용신청** 버튼:
-   - 헌법재판소_판례정보 조회 서비스: https://www.data.go.kr/data/15141085/openapi.do
-   - 헌법재판소_사건정보 조회 서비스: https://www.data.go.kr/data/15141079/openapi.do
-3. 신청서: **활용목적** = `웹 사이트 개발` 선택, 내용에 `뉴스 이슈와 관련된 헌법재판소 결정 정보를 출처와 함께 보여주는 비영리 뉴스 서비스` → 라이선스 동의 → **활용신청**.
-4. 개발계정은 **자동 승인**(하루 1,000건). **마이페이지 → 데이터활용 → Open API → 활용신청 현황**에서 '승인'이면 끝.
-- 돌려줄 값: 없음. "신청했어요"라고만 알려 주세요.
+## 2. 공공데이터포털 — 헌법재판소: 신청 필요 없음
+공공데이터포털의 헌법재판소 판례·사건 정보 페이지(15141085, 15141079)는 실제로는 **국가법령정보(law.go.kr)로 연결되는 링크**예요. 따로 활용신청할 API가 없어요.
+헌재 결정례는 1번 법제처 키(`LAW_OC`)로 이미 함께 받아요. **할 일 없음.**
 
 ## 3. 카카오 디벨로퍼스 — 카카오 로그인 + 다음 검색 (10분)
-> 2025.12 개편 후 메뉴 기준이에요. 리다이렉트 URI는 이제 **[앱] → [플랫폼 키] → [REST API 키]** 안에 있어요.
+> 2025.12 개편 후 메뉴 기준이에요. 리다이렉트 URI는 **[앱] → [플랫폼 키] → [REST API 키]** 화면 안에 있어요(예전 '카카오 로그인 → Redirect URI' 메뉴 아님).
 1. https://developers.kakao.com → 카카오 계정으로 로그인 → 처음이면 개발자 등록 동의.
 2. 위쪽 **앱** → **앱 생성**: 앱 이름 `NewsBoard`, 회사명 `개인` (아이콘은 선택) → 저장.
 3. 왼쪽 **[앱] → [플랫폼 키] → [REST API 키]** 클릭:
@@ -93,7 +87,7 @@
 
 ### 확인한 출처
 - 법제처: https://open.law.go.kr/LSO/usrJoin.do (신청 시 자동승인, OC 직접 지정, 활용목적 필수), https://open.law.go.kr/LSO/usr/usrOcInfoMod.do
-- 공공데이터포털: https://www.data.go.kr/data/15141085/openapi.do (개발 자동승인, 개발계정 1,000건)
+- 공공데이터포털 헌재 페이지(15141085·15141079): law.go.kr로 연결되는 링크라 별도 신청 없음
 - 카카오: https://developers.kakao.com/docs/ko/getting-started/app-key-migration , https://developers.kakao.com/docs/ko/kakaologin/prerequisite
 - Google: https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid , https://developers.google.com/identity/protocols/oauth2/web-server
 - YouTube: https://developers.google.com/youtube/v3/getting-started , https://developers.google.com/youtube/v3/determine_quota_cost
