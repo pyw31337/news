@@ -76,7 +76,7 @@ def news(datadir):
 def lawgo(oc):
     raw_oc = oc or ''; oc = raw_oc.strip().split('@')[0]   # OC는 이메일 아이디 부분만(예: abc@naver.com → abc)
     LOG['sources']['law.go.kr'] = {'key': bool(oc), 'oc_fixed': oc != raw_oc, 'oc_len': len(oc)}
-    if not oc or not probe('law.go.kr', 'https://www.law.go.kr/'): return
+    if not oc or not probe('law.go.kr', f'http://www.law.go.kr/DRF/lawSearch.do?OC={up.quote(oc)}&target=law&type=XML&query=%EB%AF%BC%EB%B2%95'): return
     for target, idkey in (('prec', '판례일련번호'), ('detc', '헌재결정례일련번호'), ('expc', '법령해석례일련번호')):
         st = STATE.setdefault('law_' + target, {'page': 1, 'ids': []}); ids = set(st['ids']); added = 0; t0 = time.time()
         for _ in range(30):
