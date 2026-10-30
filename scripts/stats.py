@@ -172,6 +172,7 @@ if ai_run_day:  # 장부가 생기기 전 날짜는 GitHub Actions 실행 기록
     g = AIL.setdefault('actions-gemini', {})
     for d, n in ai_run_day.items():
         if d not in g: g[d] = dict(calls=n, reused=0, fail=0, runs=runs_day.get(d, 0), kinds={}, models={}, from_runlog=True)
+        elif g[d].get('calls', 0) < n: g[d] = dict(g[d], calls=n)  # 장부가 하루 중간에 생긴 날: 실행 기록 합계가 더 크면 그 값
 AI_NAME = {'actions-gemini': ('클라우드 AI', 'Google Gemini · GitHub Actions'), 'macmini-apple': ('로컬 AI(맥미니)', 'Apple 온디바이스 모델'),
            'macmini-ollama': ('로컬 AI(맥미니)', 'Ollama 오픈 모델'), 'actions-ollama': ('로컬 AI', 'Ollama'), 'macmini-gemini': ('클라우드 AI(맥미니에서 호출)', 'Google Gemini')}
 w7 = set(dd[-7:]); ai_eng = []
