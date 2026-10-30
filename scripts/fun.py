@@ -254,8 +254,12 @@ def gwords():
     out = []
     for x in r.get('words', []) if isinstance(r, dict) else []:
         try:
-            h = HEAD[int(x.get('h'))]; w = str(x.get('word', '')).strip()
-            if not w or w.lower() not in h['title'].lower() or not x.get('mean_en') or not re.search(r'[가-힣]', x.get('mean_ko', '')): continue
+            w = str(x.get('word', '')).strip()
+            try: h = HEAD[int(x.get('h'))]
+            except Exception: h = None
+            # 번호가 어긋나도 단어가 실제로 들어 있는 헤드라인을 찾아 예문으로(없으면 버림 · 지어낸 단어 방지)
+            if not h or w.lower() not in h['title'].lower(): h = next((y for y in HEAD if w and w.lower() in y['title'].lower()), None)
+            if not w or not h or not x.get('mean_en') or not re.search(r'[가-힣]', x.get('mean_ko', '')): continue
             out.append(dict(word=w, pos=str(x.get('pos', ''))[:12], mean_en=str(x['mean_en'])[:120], mean_ko=str(x['mean_ko'])[:60], example=h['title'], example_ko=h['title_ko'], url=h['url'], press=h['press']))
         except Exception: continue
     return out[:8]
