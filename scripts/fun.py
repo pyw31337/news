@@ -4,9 +4,11 @@
   그림은 브라우저에서 SVG(마스코트 누리·보리)로 그려 이미지 생성 비용 0.
 - 카드뉴스: 기준금리(ECOS 시계열) + 여러 날 이어진 이슈(흐름 DB)로 5~8장 덱."""
 import json, os, re, sys, random, hashlib, subprocess, urllib.request, urllib.error, time, datetime
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import ai_usage
 sys.path.insert(0, os.path.dirname(__file__))
 from glossary import G as GL
 ROOT = os.environ.get('FUN_DATA') or os.path.join(os.path.dirname(__file__), '..', 'data')
+ai_usage.setup(ROOT)
 P = lambda n: os.path.join(ROOT, n)
 def J(n, d=None):
     try: return json.load(open(P(n), encoding='utf-8'))
@@ -30,13 +32,13 @@ def jparse(c):
     c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip(); a, b = c.find('{'), c.rfind('}')
     return json.loads(c[a:b + 1])
 def llm(key, prompt, maxtok=1500):
-    if key in CACHE: return CACHE[key]
+    if key in CACHE: ai_usage.note('fun', key.split(':')[0], reused=True); return CACHE[key]
     if time.time() > DEADLINE: return None
     out = None
     try:
         if APPLE and os.path.exists(NBAI):
             r = subprocess.run([NBAI, SYS, str(maxtok)], input=prompt, capture_output=True, text=True, timeout=240)
-            if not r.returncode: out = jparse(r.stdout)
+            if not r.returncode: out = jparse(r.stdout); ai_usage.note('fun', key.split(':')[0], 'apple', 'apple')
         elif TOKEN:
             for m in MODELS:
                 if time.time() > DEADLINE: break
@@ -45,7 +47,7 @@ def llm(key, prompt, maxtok=1500):
                 for a in range(2):
                     try:
                         r = urllib.request.urlopen(urllib.request.Request(ENDPOINT, body, {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json'}), timeout=max(5, min(40, DEADLINE - time.time())))
-                        out = jparse(json.loads(r.read())['choices'][0]['message']['content']); break
+                        out = jparse(json.loads(r.read())['choices'][0]['message']['content']); ai_usage.note('fun', key.split(':')[0], m); break
                     except urllib.error.HTTPError as e:
                         if e.code in (429, 500, 502, 503, 504) and a == 0: time.sleep(8); continue
                         break
@@ -53,6 +55,7 @@ def llm(key, prompt, maxtok=1500):
                 if out: break
     except Exception as e: print('fun llm:', str(e)[:120])
     if out: CACHE[key] = out
+    elif APPLE or TOKEN: ai_usage.note('fun', key.split(':')[0], (MODELS or [''])[0], 'apple' if APPLE else None, ok=False)
     return out
 def bat(w):
     c = w[-1]

@@ -8,9 +8,11 @@
 - 한도: 네이버 호출은 naver.py와 같은 data/db/naver_usage.json 상한을 공유."""
 import os, re, json, html, time, hashlib, datetime, subprocess, urllib.request, urllib.parse, urllib.error
 import xml.etree.ElementTree as ET
+import sys as _sys; _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import ai_usage
 KST = datetime.timezone(datetime.timedelta(hours=9))
 now = datetime.datetime.now(KST); M, D = now.strftime('%Y-%m'), now.strftime('%Y-%m-%d')
 ROOT = os.environ.get('VOICE_DATA') or 'data'
+ai_usage.setup(ROOT)
 P = lambda n: os.path.join(ROOT, n)
 def J(n, d=None):
     try: return json.load(open(P(n), encoding='utf-8'))
@@ -142,7 +144,7 @@ def llm(prompt, maxtok=3500):
     try:
         if os.environ.get('LLM_BACKEND') == 'apple' and os.path.exists(NBAI):
             r = subprocess.run([NBAI, SYS, str(maxtok)], input=prompt, capture_output=True, text=True, timeout=400)
-            if not r.returncode: diag['llm'] = 'local'; return jparse(r.stdout)
+            if not r.returncode: diag['llm'] = 'local'; ai_usage.note('voice', 'opinion', 'apple', 'apple'); return jparse(r.stdout)
         if not TOKEN: return None
         for m in MODELS:
             body = json.dumps({'model': m, 'temperature': 0.2, 'max_tokens': maxtok, 'response_format': {'type': 'json_object'},
@@ -150,13 +152,14 @@ def llm(prompt, maxtok=3500):
             for a in range(2):
                 try:
                     r = urllib.request.urlopen(urllib.request.Request(ENDPOINT, body, {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json'}), timeout=90)
-                    diag['llm'] = m; return jparse(json.loads(r.read())['choices'][0]['message']['content'])
+                    diag['llm'] = m; ai_usage.note('voice', 'opinion', m); return jparse(json.loads(r.read())['choices'][0]['message']['content'])
                 except urllib.error.HTTPError as e:
                     diag['errors'].append(f'llm {m} {e.code}')
                     if e.code in (429, 500, 502, 503, 504) and a == 0: time.sleep(8); continue
                     break
                 except Exception as e: diag['errors'].append(f'llm {type(e).__name__}'); break
     except Exception as e: diag['errors'].append('llm ' + str(e)[:60])
+    ai_usage.note('voice', 'opinion', (MODELS or [''])[0], ok=False)
     return None
 # ---------- 이슈 키 (같은 사건을 여러 날 이어 추적) ----------
 def ikey(i):

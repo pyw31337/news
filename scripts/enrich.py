@@ -160,7 +160,9 @@ APPLE = BACKEND == 'apple'
 SMALL = APPLE or os.environ.get('LLM_SMALL') == '1' or any(h in ENDPOINT for h in ('127.0.0.1', 'localhost'))
 if APPLE: MODEL = 'Apple Foundation Models (온디바이스)'; ENDPOINT = 'https://macmini.local/'
 LLM_STATUS = {'enabled': bool(TOKEN) or APPLE, 'model': MODEL, 'endpoint': ENDPOINT.split('/')[2], 'calls': 0, 'errors': [], 'backend': BACKEND}
-import subprocess, threading
+import subprocess, threading, sys as _sys
+_sys.path.insert(0, os.path.dirname(__file__)); import ai_usage; ai_usage.setup(ROOT)
+_AK = lambda key: key.split(':')[0]
 ALOCK = threading.Lock(); GLOCK = threading.Lock()
 def jparse(c):
     c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip()
@@ -181,15 +183,15 @@ SYS = ('너는 한국어 뉴스 편집자다. 반드시 주어진 자료에 있�
 def llm(key, prompt, maxtok=900):
     if key in CACHE:
         # 이전 실행에서 잘못 저장된 배열·문자열 캐시는 재사용하지 않는다.
-        if isinstance(CACHE[key], dict): return CACHE[key]
+        if isinstance(CACHE[key], dict): ai_usage.note('enrich', _AK(key), reused=True); return CACHE[key]
         CACHE.pop(key, None)
     if not (TOKEN or APPLE) or BUDGET[0] <= 0: return None
     BUDGET[0] -= 1
     if APPLE:
         try:
-            out = apple(prompt, maxtok); LLM_STATUS['calls'] += 1; CACHE[key] = out; return out
+            out = apple(prompt, maxtok); LLM_STATUS['calls'] += 1; CACHE[key] = out; ai_usage.note('enrich', _AK(key), MODEL, 'apple'); return out
         except Exception as e:
-            LLM_STATUS['errors'].append(str(e)[:200]); return None
+            LLM_STATUS['errors'].append(str(e)[:200]); ai_usage.note('enrich', _AK(key), MODEL, 'apple', ok=False); return None
     while MODELS:
         m = MODELS[0]
         body = json.dumps({'model': m, 'temperature': 0.2, 'max_tokens': maxtok, 'response_format': {'type': 'json_object'},
@@ -210,7 +212,7 @@ def llm(key, prompt, maxtok=900):
                 out = json_object(json.loads(c))
                 LLM_STATUS['calls'] += 1; LLM_STATUS['model'] = m; CACHE[key] = out
                 LLM_STATUS.setdefault('by_model', {}); LLM_STATUS['by_model'][m] = LLM_STATUS['by_model'].get(m, 0) + 1
-                return out
+                ai_usage.note('enrich', _AK(key), m); return out
             except urllib.error.HTTPError as e:
                 msg = e.read()[:300].decode('utf-8', 'replace')
                 if e.code in (429, 500, 502, 503, 504):
@@ -227,9 +229,9 @@ def llm(key, prompt, maxtok=900):
             except Exception as e:
                 LLM_STATUS['errors'].append(str(e)[:200])
             break
-        if not switch: return None
+        if not switch: ai_usage.note('enrich', _AK(key), m, ok=False); return None
         MODELS.pop(0)  # 이 모델은 이번 수집에서 제외하고 다음 모델로
-    BUDGET[0] = 0
+    BUDGET[0] = 0; ai_usage.note('enrich', _AK(key), MODEL, ok=False)
     return None
 
 def hkey(*a): return hashlib.md5('|'.join(a).encode()).hexdigest()[:16]

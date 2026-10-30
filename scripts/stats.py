@@ -20,17 +20,21 @@ D = J('today.json', {}) or {}; G = J('global.json', {}) or {}; I = D.get('issues
 # ---------- 기사 DB(국내·해외): 날짜·시간별 ----------
 def art_db(sub):
     per_day, per_hour, secs, srcs, last = {}, collections.Counter(), collections.Counter(), collections.Counter(), None
+    dsec, dsrc = {}, {}  # 최근 30일 날짜별 섹션·출처 분포(추이 그래프)
     for d in sorted(os.listdir(os.path.join(ROOT, 'db', sub))) if os.path.isdir(os.path.join(ROOT, 'db', sub)) else []:
         n = 0
         for f in sorted(glob.glob(os.path.join(ROOT, 'db', sub, d, '*.json.gz'))):
             L = load(f, []) or []; n += len(L); hh = os.path.basename(f)[:2]
-            if d == TODAY:
-                per_hour[hh] += len(L)
-                for a in L: secs[a.get('sec') or a.get('cat') or '기타'] += 1; srcs[(a.get('src') or 'global').split('_')[0]] += 1
+            if d == TODAY: per_hour[hh] += len(L)
+            if d >= D30:
+                cs, cr = dsec.setdefault(d, collections.Counter()), dsrc.setdefault(d, collections.Counter())
+                for a in L: cs[a.get('sec') or a.get('cat') or '기타'] += 1; cr[(a.get('src') or 'global').split('_')[0]] += 1
             last = f'{d}T{os.path.basename(f)[:2]}:{os.path.basename(f)[2:4]}:00+09:00'
         per_day[d] = n
-    return per_day, per_hour, secs, srcs, last
-kd, kh, ksec, ksrc, klast = art_db('articles'); gd, gh, gsec, _, glast = art_db('articles_global')
+    secs, srcs = dsec.get(TODAY, collections.Counter()), dsrc.get(TODAY, collections.Counter())
+    return per_day, per_hour, secs, srcs, last, dsec, dsrc
+D30 = days(30)[0]
+kd, kh, ksec, ksrc, klast, ksec_d, ksrc_d = art_db('articles'); gd, gh, gsec, _, glast, gsec_d, _ = art_db('articles_global')
 # ---------- 실행 이력 ----------
 RL = J('runlog.json', []) or []
 runs_day = collections.Counter(r['at'][:10] for r in RL)
@@ -45,7 +49,7 @@ def src(key, name, group, total=None, today=None, unit='건', updated=None, max_
     if total in (0, None) and today in (0, None): lv = 'bad' if max_age else lv
     S.append(dict(key=key, name=name, group=group, total=total, today=today, unit=unit, updated=updated, age_h=a, max_age_h=max_age, level=lv,
                   daily=daily or [], target=target, target_label=target_label, note=note, extra=extra or {}))
-dd = days(14)
+dd = days(30)  # 화면에서 7일·30일로 골라 봄
 src('news_kr', '국내 기사(네이버·구글뉴스)', '뉴스', total=sum(kd.values()), today=kd.get(TODAY, 0), updated=klast, max_age=2,
     daily=[[d, kd.get(d, 0)] for d in dd], target=3000, target_label='하루 3,000건', note='30분마다 포털 많이 본·댓글 많은 기사, 구글뉴스 섹션',
     extra=dict(by_source=dict(ksrc), first_day=min(kd) if kd else None))
@@ -128,6 +132,9 @@ cat_today = collections.Counter(i.get('category') for i in I)
 cat_week = collections.Counter()
 for d in AR[-7:]:
     for i in (J(f'archive/{d}.json', {}) or {}).get('issues', []): cat_week[i.get('category')] += 1
+cat_daily = {}
+for d in AR[-30:]: cat_daily[d] = dict(collections.Counter(i.get('category') for i in (J(f'archive/{d}.json', {}) or {}).get('issues', [])))
+if I: cat_daily[TODAY] = dict(cat_today)
 cat_year = collections.Counter()
 for d in AR[-365:]:
     for i in (J(f'archive/{d}.json', {}) or {}).get('issues', []): cat_year[i.get('category')] += 1
@@ -155,17 +162,82 @@ for q in Q:
 # ---------- 속도 ----------
 speed = dict(per_hour_today=sorted(kh.items()), runs_today=runs_day.get(TODAY, 0), runs_24h=len(last24),
              avg_new_per_run=round(sum(kd.get(d, 0) for d in dd[-7:]) / max(1, sum(runs_day.get(d, 0) for d in dd[-7:])), 1),
-             avg_daily_7=round(sum(kd.get(d, 0) for d in dd[-7:]) / 7, 1), runs_daily=[[d, runs_day.get(d, 0), fails_day.get(d, 0)] for d in dd])
+             avg_daily_7=round(sum(kd.get(d, 0) for d in dd[-7:]) / 7, 1), runs_daily=[[d, runs_day.get(d, 0), fails_day.get(d, 0)] for d in dd],
+             global_daily=[[d, gd.get(d, 0)] for d in dd])
+# ---------- AI 분석(실행처·엔진별) — scripts/ai_usage.py 장부 + 실행 기록·아카이브로 과거 보충 ----------
+AIL = {os.path.basename(f)[:-5]: load(f, {}) or {} for f in sorted(glob.glob(os.path.join(ROOT, 'db', 'ai_usage', '*.json')))}
+ai_run_day = collections.Counter()
+for r in RL: ai_run_day[r['at'][:10]] += r.get('ai', 0) or 0
+if ai_run_day:  # 장부가 생기기 전 날짜는 GitHub Actions 실행 기록(회당 AI 호출 수)으로 채움
+    g = AIL.setdefault('actions-gemini', {})
+    for d, n in ai_run_day.items():
+        if d not in g: g[d] = dict(calls=n, reused=0, fail=0, runs=runs_day.get(d, 0), kinds={}, models={}, from_runlog=True)
+AI_NAME = {'actions-gemini': ('클라우드 AI', 'Google Gemini · GitHub Actions'), 'macmini-apple': ('로컬 AI(맥미니)', 'Apple 온디바이스 모델'),
+           'macmini-ollama': ('로컬 AI(맥미니)', 'Ollama 오픈 모델'), 'actions-ollama': ('로컬 AI', 'Ollama'), 'macmini-gemini': ('클라우드 AI(맥미니에서 호출)', 'Google Gemini')}
+w7 = set(dd[-7:]); ai_eng = []
+for k, H_ in sorted(AIL.items()):
+    nm = AI_NAME.get(k, (k, ''))
+    kinds7 = collections.Counter()
+    for d in w7: kinds7.update((H_.get(d) or {}).get('kinds') or {})
+    models = collections.Counter()
+    for v in H_.values(): models.update(v.get('models') or {})
+    ai_eng.append(dict(key=k, name=nm[0], engine=nm[1], today=(H_.get(TODAY) or {}).get('calls', 0), d7=sum((H_.get(d) or {}).get('calls', 0) for d in w7),
+                       total=sum(v.get('calls', 0) for v in H_.values()), reused7=sum((H_.get(d) or {}).get('reused', 0) for d in w7),
+                       fail7=sum((H_.get(d) or {}).get('fail', 0) for d in w7), first=min(H_) if H_ else None, last=max(H_) if H_ else None,
+                       daily=[[d, (H_.get(d) or {}).get('calls', 0)] for d in dd], fails=[[d, (H_.get(d) or {}).get('fail', 0)] for d in dd],
+                       kinds7=dict(kinds7.most_common()), models=dict(models.most_common(6))))
+CA = J('llm_cache.json', {}) or {}
+ai_arch = []
+for d in dd:
+    x = J(f'archive/{d}.json', {}) or {}; I_ = x.get('issues', []) if d != TODAY else I
+    ai_arch.append([d, sum(1 for i in I_ if (i.get('ai') or {}).get('deep')), sum(1 for i in I_ if i.get('ai')), len(I_)])
+ai_total_issues = 0
+for d in AR:
+    if d < dd[0]: ai_total_issues += sum(1 for i in (J(f'archive/{d}.json', {}) or {}).get('issues', []) if i.get('ai'))
+ai_total_issues += sum(r[2] for r in ai_arch)
+AI = dict(engines=ai_eng, today=sum(e['today'] for e in ai_eng), d7=sum(e['d7'] for e in ai_eng), total=sum(e['total'] for e in ai_eng),
+          fail7=sum(e['fail7'] for e in ai_eng), reused7=sum(e['reused7'] for e in ai_eng),
+          daily=[[d, sum(dict(e['daily']).get(d, 0) for e in ai_eng)] for d in dd],
+          issues_daily=ai_arch, issues_total=ai_total_issues,
+          stored=dict(collections.Counter(k.split(':')[0] for k in CA)), stored_total=len(CA),
+          local_connected=any(e['key'].startswith('macmini') for e in ai_eng),
+          note='장부(ai_usage)가 생기기 전 날짜는 GitHub Actions 실행 기록의 AI 호출 수로 채움')
+# ---------- 날짜별 기록(그날 마지막 값) — 하루치 이력이 없는 수집처도 추이를 그릴 수 있게 ----------
+HP = os.path.join(ROOT, 'db', 'stats_hist.json'); H = load(HP, {}) or {}
+H[TODAY] = dict(s={x['key']: [x['today'], x['total']] for x in S}, q={q['key']: q['value'] for q in Q}, runs=runs_day.get(TODAY, 0))
+H = {k: H[k] for k in sorted(H)[-400:]}
+os.makedirs(os.path.dirname(HP), exist_ok=True); json.dump(H, open(HP, 'w'), ensure_ascii=False, separators=(',', ':'))
+for x in S:
+    x['hist'] = not x['daily']  # True면 날짜별 '그날 마지막 값' 기록으로 그린 추이
+    if not x['daily']: x['daily'] = [[d, ((H.get(d) or {}).get('s') or {}).get(x['key'], [None])[0]] for d in dd]
+    x['total_daily'] = [[d, ((H.get(d) or {}).get('s') or {}).get(x['key'], [None, None])[1]] for d in dd]
+for q in Q: q['daily'] = [[d, ((H.get(d) or {}).get('q') or {}).get(q['key'])] for d in dd]
+# 어제(하루가 끝난 날) 수집량이 직전 7일 중앙값의 절반 아래면 이상 신호
+YDAY = dd[-2]
+def drop(x):
+    v = dict(x['daily']); y = v.get(YDAY); prev = sorted(v[d] for d in dd[-9:-2] if v.get(d) is not None)
+    if y is None or len(prev) < 4: return None
+    med = prev[len(prev) // 2]
+    return (y, med) if med >= 5 and y < med * .5 else None
 # ---------- 문제 목록 ----------
 P = []
+for x in S:
+    dr = drop(x)
+    if dr:
+        x['drop'] = dict(yday=dr[0], median=dr[1])
+        P.append(dict(level='bad' if dr[0] < dr[1] * .2 else 'warn', what=x['name'], why=f"어제 {dr[0]:,}{x['unit']} — 평소(7일 중앙값) {dr[1]:,}{x['unit']}의 {round(dr[0] / dr[1] * 100)}%"))
 for s in S:
     if s['level'] != 'ok': P.append(dict(level=s['level'], what=s['name'], why=(f"{s['age_h']}시간째 갱신 없음(기준 {s['max_age_h']}시간)" if s['age_h'] is not None else '데이터 없음')))
 for q in Q:
     if q['level'] != 'ok': u = q.get('unit', '%'); P.append(dict(level=q['level'], what=q['name'], why=f"{q['value']}{u} — 목표 {q['target']}{u}"))
+if AI['d7'] and AI['fail7'] > AI['d7'] * .3: P.append(dict(level='warn', what='AI 분석 실패', why=f"최근 7일 실패 {AI['fail7']:,}회 / 성공 {AI['d7']:,}회"))
+if AI['daily'][-2][1] == 0 and any(v for _, v in AI['daily'][-9:-2]): P.append(dict(level='bad', what='AI 분석', why='어제 AI 분석이 한 번도 되지 않음'))
 if LL.get('errors'): P.append(dict(level='warn', what='AI 분석', why='; '.join(str(e)[:80] for e in LL['errors'][:2])))
 P.sort(key=lambda p: 0 if p['level'] == 'bad' else 1)
-out = dict(updated=NOW.isoformat(timespec='minutes'), problems=P, sources=S, quality=Q, speed=speed,
-           categories=dict(today=dict(cat_today), week=dict(cat_week), year=dict(cat_year), sections_today=dict(ksec), global_today=dict(gsec)),
+out = dict(updated=NOW.isoformat(timespec='minutes'), problems=P, sources=S, quality=Q, speed=speed, ai=AI,
+           categories=dict(today=dict(cat_today), week=dict(cat_week), year=dict(cat_year), sections_today=dict(ksec), global_today=dict(gsec),
+                           daily_top10=[[d, cat_daily.get(d, {})] for d in dd], daily_sections=[[d, dict(ksec_d.get(d, {}))] for d in dd],
+                           daily_global=[[d, dict(gsec_d.get(d, {}))] for d in dd], daily_kr_source=[[d, dict(ksrc_d.get(d, {}))] for d in dd]),
            totals=dict(articles_kr=sum(kd.values()), articles_global=sum(gd.values()), archive_days=len(AR), people=len(PI), registry=PR.get('total'), entities=len(EI)))
 json.dump(out, open(os.path.join(ROOT, 'stats.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 print('stats: sources', len(S), 'problems', len(P), 'quality', [(q['key'], q['value']) for q in Q])

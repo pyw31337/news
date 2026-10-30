@@ -143,6 +143,14 @@
 - `scripts/dedupe.py`(collect): 같은 내용 기사 묶음과 요약을 data/db/dupes/YYYY-MM-DD.json에 보관
 - 민심 출처는 assets/platforms/*.webp 공식 아이콘 + 말풍선
 
+## 4-7. 관리자 데이터 수집 현황판 (2026-10-30)
+- `scripts/stats.py`(collect 끝, `if: always()`) → `data/stats.json`. 화면: `admin/data.js`(`renderDash`) + `admin/admin.css`. 비밀번호 잠긴 /admin 맨 위.
+- 문제 목록·핵심 숫자 → 일자별 추이(7일·30일 전환) → 수집처별 작은 차트 → 분류별(섹션·출처·TOP10·해외) 누적 막대와 섹션별 작은 차트 → AI 분석 → 수집처별 표 → 품질(날짜별 추이) → 분포.
+- 이상 신호: 어제 수집량이 그 전 7일 중앙값의 절반 아래면 문제 목록에 올라가고 막대가 빨갛게 됨. 첫 기록 전 날짜는 '기록 시작 전'으로 비움.
+- 하루치 기록이 없는 수집처는 `data/db/stats_hist.json`(날짜별 그날 마지막 값, 400일)로 추이를 그림.
+- AI 분석 장부: `scripts/ai_usage.py` → `data/db/ai_usage/<실행처>-<엔진>.json`(actions-gemini, macmini-apple, macmini-ollama…). enrich·voice·fun의 AI 호출마다 새 분석/다시 씀/실패, 작업별·모델별로 셈. 기계마다 파일이 따로라 동시 저장해도 안 겹침. 장부 전 날짜는 runlog의 `ai` 값으로 보충.
+- collect의 data 커밋: 중간 파일 `_arts.json`은 저장 제외, 수정/삭제 충돌은 자동 해결(2026-10-30 실패 원인).
+
 ## 4-3. 자동 운영 (2026-10-29 16:50 KST 기준, 사람·AI 개입 없이 동작)
 모든 수집은 GitHub Actions cron으로 돕니다(공개 저장소라 무료). 각 수집기는 자기 브랜치에 state(체크포인트)를 커밋해 다음 회차가 이어받고, 이미 넣은 ID는 건너뛰어 중복이 없습니다. D1은 하루 4만 줄 상한·차분 업서트(09:00 KST 리셋). LLM 단계는 secrets의 무료 Gemini 키만 사용하고, 실패·한도 초과 시 건너뛰고 다음 회차로 미룹니다(`continue-on-error`).
 

@@ -127,13 +127,16 @@ jobs:
         run: |
           git config user.name "newsboard-bot"
           git config user.email "actions@users.noreply.github.com"
+          # 수집 중간 파일(_arts.json)은 저장하지 않음 — 남아 있으면 다른 실행과 '수정/삭제' 충돌이 남
+          grep -qx '_arts.json' .git/info/exclude 2>/dev/null || echo '_arts.json' >> .git/info/exclude
+          git rm -q --cached --ignore-unmatch _arts.json
           git add -A
           git diff --cached --quiet || git commit -qm "data: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
           # 맥미니(overlay/·정치인)와 동시에 저장해도 충돌 없이: 최신을 받아 위에 얹고(같은 파일이면 이번 수집 결과 우선) 간격 늘려 재시도
           for n in 1 2 3 4 5 6; do
             git push -q origin HEAD:data && exit 0
             sleep $((n * 10 + RANDOM % 10))
-            (git fetch -q --unshallow origin data 2>/dev/null || git fetch -q origin data) && git rebase -q -X theirs origin/data || { git rebase --abort; git merge -q -X ours --no-edit origin/data; }
+            (git fetch -q --unshallow origin data 2>/dev/null || git fetch -q origin data) && git rebase -q -X theirs origin/data || { git rebase --abort; git merge -q -X ours --no-edit origin/data || { git diff --name-only --diff-filter=U | while read -r f; do if git cat-file -e "HEAD:$f" 2>/dev/null; then git checkout -q --ours -- "$f" && git add -- "$f"; else git rm -q -- "$f"; fi; done; git commit -q --no-edit; }; }
           done
           exit 1
       - name: 썸네일 커밋(media 브랜치, 이력은 1개 커밋으로 유지해 용량 증가 방지)
