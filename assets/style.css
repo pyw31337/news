@@ -590,4 +590,36 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 .mkd-tabs{display:flex;gap:6px;margin:4px 0 10px}.mkd-tabs button{border:0;border-radius:99px;padding:6px 12px;font-weight:700;background:var(--bg);color:var(--ink2);cursor:pointer}.mkd-tabs button.on{background:var(--ink);color:#fff}
 .mkd-info{display:flex;gap:10px;align-items:flex-start}.mkd-info p{margin:0;line-height:1.6}
 .mkd-news{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:8px}.mkd-news li{background:var(--card);border-radius:12px;padding:12px;box-shadow:var(--sh)}.mkd-news a{color:inherit;text-decoration:none;font-weight:700;display:block}.mkd-news small{color:var(--mute)}
-.side .srow.cur .card.mini{box-shadow:0 0 0 2px var(--acc),var(--sh)}
+/* 2026-10-30: 카테고리는 아이콘·배경 없이 카테고리 색 글자만(오늘의 이슈 카드·TOP10 목록) */
+.cat.정치{--cc:#2f6bff}.cat.경제{--cc:#11a683}.cat.사회{--cc:#ff4d2e}.cat.세계{--cc:#7a4dff}.cat.IT{--cc:#0aa5c8}.cat.연예{--cc:#e2448e}.cat.스포츠{--cc:#f08a00}
+.cat.과학{--cc:#0f8fb0;background:#0f8fb0}.cat.건강{--cc:#d6336c;background:#d6336c}.cat.환경{--cc:#2f9e44;background:#2f9e44}.cat.문화{--cc:#b8590b;background:#b8590b}
+.side .cat,.grid10 .cat{background:none!important;padding:0;border-radius:0;color:var(--cc,var(--ink2));font-size:.75rem;font-weight:800;letter-spacing:0}
+.side .cat .ico,.grid10 .cat .ico{display:none}
+/* 좋아요: 원형 배경·그림자 없이 아이콘만 */
+.mini-heart{background:none!important;box-shadow:none!important;width:28px;height:28px;color:#8a90a6}
+.mini-heart svg{width:18px;height:18px}
+.side .mhw{top:auto;bottom:6px;right:6px}
+.mhw.inrow{position:static;margin-left:auto}
+.grid10 .row{width:100%}
+.side .card.mini .tx{padding-right:24px}
+/* 요약 강조 + 화제도 막대 이름표(2026-10-30) */
+.grid10 li em.hl{font-style:normal;color:var(--acc,#ff4d2e);font-weight:800}
+.ic .heat{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:.6875rem;color:var(--mute)}
+.ic .heat>span{flex:none;font-weight:700}.ic .heat b{flex:none;font-size:.75rem;color:var(--ink2)}
+.ic .heat .bar{flex:1;margin:0}
+/* 실시간 검색어 카드: 세로로 쌓아 잘리지 않게(2026-10-30) — 사진·순위 / 검색어(줄바꿈 허용) / 검색량·기사 수 */
+.tr{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"t n" "b b" "v v";align-items:center;gap:6px 10px;padding:12px}
+.tr .tt{grid-area:t;width:36px;height:36px}.tr .n{grid-area:n;width:auto;font-size:1.125rem}
+.tr b{grid-area:b;white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.35;font-size:.9375rem}
+.tr .tv{grid-area:v;white-space:normal;line-height:1.3;padding-top:6px;border-top:1px solid var(--line,#eef0f6)}
+/* 이슈 카드 사진 캐러셀(2026-10-30, 렛츠캠핑식: 좌우로 넘기는 대표 사진 + 점 표시) */
+.ic .img.car{overflow:hidden}
+.car .ctrack{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab}
+.car .ctrack::-webkit-scrollbar{display:none}
+.car .cs{flex:0 0 100%;height:100%;scroll-snap-align:center;scroll-snap-stop:always;background:#dfe3ee center/cover}
+.car .rk,.car .cm,.car .cdots,.car .cnav{z-index:2}.car .rk,.car .cdots{pointer-events:none}
+.car .cdots{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);display:flex;gap:5px;padding:4px 7px;border-radius:99px;background:rgba(15,22,48,.35);backdrop-filter:blur(4px)}
+.car .cdots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55);transition:width .2s,background .2s}.car .cdots i.on{width:16px;border-radius:4px;background:#fff}
+.car .cnav{position:absolute;top:50%;margin-top:-16px;width:32px;height:32px;border:0;border-radius:50%;background:rgba(255,255,255,.88);color:var(--ink);display:grid;place-items:center;cursor:pointer;opacity:0;transition:opacity .2s}
+.car .cnav.p{left:8px}.car .cnav.n{right:8px}.car .cnav svg{width:18px;height:18px}
+@media(hover:hover){.car:hover .cnav{opacity:1}}
