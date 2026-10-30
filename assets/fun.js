@@ -67,7 +67,7 @@ const wordOf=w=>F.quiz.words.find(x=>x.word===w)||L.review[w]||{word:w,mean:''};
 function drawQ(){const s=QS,q=s.Q[s.i];const pct=Math.round(s.i/s.Q.length*100);
   app.innerHTML=`<div class="qwrap"><div class="qtop"><a class="qx" href="learn" aria-label="그만하기">${NBI('x')}</a><div class="qprog"><i style="width:${pct}%"></i></div><span class="qcombo ${s.combo>=2?'on':''}">${NBI('flame-f')}${s.combo}</span></div>
   <div class="qcard" id="qcard"><span class="qkind ${q.kind}">${{ox:'OX 퀴즈',mc:'뜻 고르기',blank:'빈칸 채우기'}[q.kind]}</span>
-   <h2 class="qq">${E(q.q)}</h2>${q.quote?`<blockquote class="qquote">${E(q.quote)}</blockquote>`:''}
+   <h2 class="qq">${E(q.q).replace(/‘([^’]{1,30})’/g,'<em class="ox-k">‘$1’</em>').replace(/“([^”]{1,80})”/g,'<em class="ox-d">“$1”</em>')}</h2>${q.quote?`<blockquote class="qquote">${E(q.quote)}</blockquote>`:''}
    ${q.kind==='ox'?`<div class="oxb"><button class="ox o" data-a="1"><span>O</span>맞아요</button><button class="ox x" data-a="0"><span>X</span>아니에요</button></div>`
    :`<div class="mcb">${q.choices.map((c,k)=>`<button class="mc" data-a="${k}"><i>${'ABCD'[k]}</i>${E(c)}</button>`).join('')}</div>`}</div>
    <div class="qsheet" id="qsheet" hidden></div><div class="qfoot">${s.i+1} / ${s.Q.length}</div></div>`;

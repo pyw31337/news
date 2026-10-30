@@ -51,10 +51,11 @@ function entStock(n){if(!STK||!STK.names)return'';const k=String(n||'').replace(
   return`<section class="govstk">${sec('주가 흐름','Stock price','<span class="more">'+(STK.src==='naver'?'네이버 금융':'금융위원회')+' 시세</span>','coin')}<div class="card pad"><div class="gkpi"><div><small>최근 종가</small><b>${fmt(b)}원</b><em>${e_(s[s.length-1][0])}</em></div><div class="${ch>0?'up':'down'}"><small>${s.length}거래일 동안</small><b>${ch>0?'+':''}${ch.toFixed(1)}%</b></div></div>${chart(s,{col:ch<0?'#2f6bff':'#ff4d2e'})}<p class="fine">기사가 많이 나온 날과 주가가 크게 움직인 날을 비교해 보면 뉴스의 영향력을 가늠할 수 있어요. 투자 권유가 아닙니다.</p></div></section>`}
 /* ---------- 지진·기상특보 신호(오늘 화면 위쪽, 최근 것만) ---------- */
 function alertHTML(){if(!AL)return'';const now=Date.now(),age=t=>(now-new Date(t.replace(' ','T')+':00+09:00'))/36e5;
-  const q=(AL.quakes||[]).filter(x=>age(x.t)<48&&(x.domestic||x.mag>=6));
-  const w=[],seen=new Set();for(const x of (AL.warnings||[]).filter(x=>age(x.t)<24)){const k=x.title.replace(/\s*(발표|해제|변경)\b.*/,'');if(seen.has(k))continue;seen.add(k);if(!x.lift)w.push(x)}
+  /* 우리나라에 지금 영향이 있는 것만(2026-10-30): 국내 지진(규모 3 이상, 24시간 안), 경보급 기상특보(주의보 제외, 해제 안 된 것) */
+  const q=(AL.quakes||[]).filter(x=>age(x.t)<24&&x.domestic&&x.mag>=3);
+  const w=[],seen=new Set();for(const x of (AL.warnings||[]).filter(x=>age(x.t)<24)){const k=x.title.replace(/\s*(발표|해제|변경)\b.*/,'');if(seen.has(k))continue;seen.add(k);if(!x.lift&&/경보/.test(k)&&!/주의보/.test(k))w.push(x)}
   if(!q.length&&!w.length)return'';
-  return`<div class="galert card">${q.map(x=>`<div class="gq"><span class="gbad">지진</span><b>규모 ${e_(x.mag)}</b> ${e_(x.loc)}<time>${e_(x.t.slice(5))}</time>${x.domestic?'':'<em>국내 영향 없음</em>'}</div>`).join('')}${w.slice(0,3).map(x=>`<div class="gw"><span class="gbad w">기상특보</span>${e_(x.title)}<time>${e_(x.t.slice(5))}</time></div>`).join('')}<small>기상청 발표 · 최근 것만 보여요</small></div>`}
+  return`<div class="galert card">${q.map(x=>`<div class="gq"><span class="gbad">지진</span><b>규모 ${e_(x.mag)}</b> ${e_(x.loc)}<time>${e_(x.t.slice(5))}</time></div>`).join('')}${w.slice(0,3).map(x=>`<div class="gw"><span class="gbad w">기상특보</span>${e_(x.title)}<time>${e_(x.t.slice(5))}</time></div>`).join('')}<small>기상청 발표 · 지금 우리나라에 영향이 있는 것만 보여요</small></div>`}
 /* ---------- 끼워넣기 ---------- */
 const path=()=>location.pathname.slice((typeof BASEP==='string'?BASEP:'/news/').length).replace(/\/+$/,'');
 function putMarket(){if(path()!=='market')return;const app=document.getElementById('app');if(!app)return;app.querySelectorAll('.govapt,.govstk').forEach(x=>x.remove());

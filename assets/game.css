@@ -140,3 +140,17 @@
 @keyframes gmaura{50%{opacity:.35;transform:scale(.94)}}
 @media (prefers-reduced-motion:reduce){.gm-medal.on::before{animation:none}}
 .gm-bonus{margin-top:6px;font-size:.82rem;color:#ffd36b}.gm-bonus b{font-weight:900}
+/* 커리어 카드 세로 적층(2026-10-30) */
+.gm-lv.v2{flex-direction:column;align-items:stretch;gap:0;padding:0;overflow:hidden}
+.gm-lv.v2>*{padding:var(--ds-3) var(--ds-4)}
+.gm-lv.v2>*+*{border-top:1px solid rgba(255,255,255,.1)}
+.gm-lvh{display:flex;align-items:center;gap:var(--ds-3)}
+.gm-lv.v2 .gm-lvp .gm-bar{margin:0 0 8px;height:10px}
+.gm-lv.v2 .gm-lvs{display:flex;justify-content:space-between;gap:var(--ds-2);flex-wrap:wrap}
+.gm-lvnx{display:flex;align-items:center;gap:8px;font-size:var(--ds-t-cap);color:#c9d2ff}
+.gm-lvnx .nbi{width:18px;height:18px;flex:none;color:var(--ds-brand-2)}
+.gm-lvnx b{color:#fff}.gm-lvnx em{font-style:normal;font-weight:var(--ds-w-heavy);color:var(--ds-brand-2)}
+.gm-lv.v2 .gm-kpis{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0}
+.gm-lv.v2 .gm-k{grid-template-columns:auto auto;grid-template-areas:"i b" "i s";align-items:center;justify-content:center;column-gap:10px;padding:var(--ds-3) var(--ds-2);font-size:var(--ds-t-cap)}
+.gm-lv.v2 .gm-k+.gm-k{border-left:1px solid rgba(255,255,255,.1)}
+.gm-lv.v2 .gm-k .nbi{grid-area:i;width:26px;height:26px}.gm-lv.v2 .gm-k b{grid-area:b;font-size:22px;justify-self:start}.gm-lv.v2 .gm-k span{grid-area:s;justify-self:start}
