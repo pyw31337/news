@@ -15,10 +15,10 @@ function badges(v){const T=window.NBTaste;const L=G.B.map(b=>({b,r:T.req(b)}));c
   let seen={};try{seen=JSON.parse(localStorage.getItem('nb-stamp')||'{}')}catch(e){}
   const card=({b,r})=>{const on=r.t>=0,fresh=on&&(seen[b[0]]==null||seen[b[0]]<r.t),C=on?G.TIERS[tI(b,r.t)]:null;
     return`<button type="button" class="sb-st ${on?'got':''} ${fresh?'fresh':''}" data-b="${b[0]}" aria-label="${E(b[1])} 배지 자세히">${on?`<span class="sb-tier" style="--c:${C[1]}">${b[7]!=null?'스페셜':C[0]}</span>`:''}
-      <span class="sb-slot">${G.slot(b,r.t,112)}</span><h3>${E(b[1])}</h3><span class="sb-req">${r.done?'모든 등급을 모았어요':E(r.label)}</span>
+      <span class="sb-slot">${G.slot(b,r.t,112)}</span><h3>${E(b[1])}</h3><span class="sb-req">${r.done?'모든 등급을 모았어요':E(r.label)}${r.done||!G.eta?'':`<em class="sb-eta" title="꾸준히 할 때 걸리는 예상 기간">${G.eta(b,r.t+1)}</em>`}</span>
       <span class="sb-pb" role="progressbar" aria-valuenow="${r.pct}" aria-valuemin="0" aria-valuemax="100"><i style="--p:${r.pct}%"></i></span><span class="sb-num"><b>${r.v.toLocaleString()}</b> / ${r.goal.toLocaleString()}${r.done?'':` · ${r.left.toLocaleString()}${r.unit} 남음`}</span>
       <span class="sb-dots">${b[6].map((_,k)=>`<i class="${k<=r.t?'on':''}" style="--c:${G.TIERS[tI(b,k)][1]}"></i>`).join('')}</span></button>`};
-  v.innerHTML=`<div class="gx-bh"><h2>배지 우표첩 <b>${got}</b><span>/ ${L.length}종 · 등급 ${tiers}/${allT}</span></h2><p>등급은 브론즈부터 <b>이터널</b>까지 10단계예요. 새 등급을 받을 때마다 보너스 XP를 드려요. 배지를 누르면 남은 목표와 내 기록 분석을 볼 수 있어요.</p>
+  v.innerHTML=`<div class="gx-bh"><h2>배지 우표첩 <b>${got}</b><span>/ ${L.length}종 · 등급 ${tiers}/${allT}</span></h2><p>등급은 브론즈부터 <b>이터널</b>까지 10단계예요. 처음 두 개는 바로 받을 수 있고, 나머지는 며칠·몇 주·몇 달, 높은 등급은 1년 넘게 꾸준히 해야 받아요(배지마다 예상 기간 표시). 새 등급을 받을 때마다 보너스 XP를 드려요.</p>
     <div class="sb-tiers">${G.TIERS.map((t,k)=>`<span style="--c:${t[1]}"><i></i>${t[0]}<small>+${G.TIER_XP[k]}</small></span>`).join('')}</div></div>
    ${G.GROUPS.map(([g,name])=>{const S=L.filter(x=>(x.b[8]||'start')===g).sort((x,y)=>(y.r.t>=0)-(x.r.t>=0)||y.r.pct-x.r.pct);if(!S.length)return'';
      return`<section class="sb-group"><h3 class="sb-gh">${E(name)}<small>${S.filter(x=>x.r.t>=0).length}/${S.length}</small></h3><div class="sb-page"><div class="sb-grid">${S.map(card).join('')}</div></div></section>`}).join('')}`;
@@ -28,7 +28,7 @@ function sheet(b){const T=window.NBTaste,r=T.req(b);const w=document.createEleme
   w.innerHTML=`<div class="sb-sh" role="dialog" aria-label="${E(b[1])}"><div class="sb-top">${G.medal(b,r.t,84)}<div><h2>${E(b[1])}</h2><p>${E(b[2])}</p></div><button type="button" class="sb-x" aria-label="닫기">${GI('x')}</button></div>
    <div class="sb-goal"><h4>${r.done?'모든 등급 달성':'다음 목표 · '+E(r.label)}</h4><span class="sb-stat">${GI('chart-bar')}필요한 기록: ${E(r.stat)}</span>
     <div class="sb-big"><b>${r.v.toLocaleString()}</b><span>/ ${r.goal.toLocaleString()}${r.unit}</span><em>${r.done?'완료':r.left.toLocaleString()+r.unit+' 남음'}</em></div><span class="sb-pb"><i style="--p:${r.pct}%"></i></span>
-    <ul class="sb-lad">${b[6].map((x,k)=>{const C=G.TIERS[tI(b,k)];return`<li class="${k<=r.t?'on':''}" style="--c:${C[1]}"><i></i>${b[7]!=null?'스페셜':C[0]} · ${E((T.REQ[b[5]]||['','{n}'])[1].replace('{n}',x.toLocaleString()))}<em>+${G.TIER_XP[tI(b,k)]} XP</em>${k<=r.t?GI('check'):''}</li>`}).join('')}</ul></div>
+    <ul class="sb-lad">${b[6].map((x,k)=>{const C=G.TIERS[tI(b,k)];return`<li class="${k<=r.t?'on':''}" style="--c:${C[1]}"><i></i>${b[7]!=null?'스페셜':C[0]} · ${E((T.REQ[b[5]]||['','{n}'])[1].replace('{n}',x.toLocaleString()))}${G.eta?`<small class="sb-et">${G.eta(b,k)}</small>`:''}<em>+${G.TIER_XP[tI(b,k)]} XP</em>${k<=r.t?GI('check'):''}</li>`}).join('')}</ul></div>
    ${r.src?`<div class="sb-an"><h4>${GI('chart-donut')}${r.src==='save'?'내가 모은 기사 분석':'지금까지 읽은 기사 분석'}</h4>${T.html(r.src,{hours:['night','morning','lunch','commute','read'].includes(b[5])})}</div>`:''}</div>`;
   document.body.appendChild(w);r.src&&T.seen();const close=()=>w.remove();w.onclick=e=>{if(e.target===w||e.target.closest('.sb-x'))close()};addEventListener('keydown',function k(e){if(e.key==='Escape'){close();removeEventListener('keydown',k)}})}
 function careerV(v){const n=G.level(G.totalXP());v.innerHTML=`<div class="gx-bh"><h2>나의 커리어</h2><p>XP가 쌓이면 레벨이 오르고, 신문사 직함이 바뀌어요. Lv.100 ‘뉴스의 전설’까지.</p></div>

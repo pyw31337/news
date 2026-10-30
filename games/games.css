@@ -158,3 +158,6 @@ body.gx{background:var(--ds-bg);font-family:var(--ds-sans)}
 .sb-st{transition:transform .15s ease}.sb-st:active{transform:scale(1.05)}
 @media (hover:hover){.sb-st:hover{transform:scale(1.05)}}
 @media (prefers-reduced-motion:reduce){.sb-st,.sb-st:active,.sb-st:hover{transition:none;transform:none}}
+/* 배지 예상 기간(바로·며칠·1주+·1달+·3달+·6달+·1년+) */
+.sb-eta{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:99px;background:#f1f3f8;color:#5b6378;font-style:normal;font-size:.68rem;font-weight:800;vertical-align:1px}
+.sb-et{margin-left:auto;margin-right:8px;color:#8a91a8;font-size:.7rem;font-weight:700}

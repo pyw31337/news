@@ -191,8 +191,12 @@ function today(){
   ${sec('관계로 보는 오늘','Relation map',`<a class="more" href="map">크게 보기 ${NBI('arrow-right')}</a>`,'graph')}
   <div class="card mapwrap mini scan" id="mapmini"></div>`;
   {const mm=$('#mapmini');if(window.IntersectionObserver){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();if(mm.isConnected)graph(mm,true)}},{rootMargin:'600px 0px'});io.observe(mm)}else graph(mm,true)}
-  window.nbDeck&&nbDeck($('.rdeck'));carousels(app);
+  window.nbDeck&&nbDeck($('.rdeck'));carousels(app);heatIn(app);
 }
+/* 화제도 게이지: 카드가 화면에 들어오면 차오르기 시작(.go) */
+function heatIn(root){const H=[...(root||document).querySelectorAll('.ic .heat:not(.go)')];if(!H.length)return;
+  if(!window.IntersectionObserver||matchMedia('(prefers-reduced-motion: reduce)').matches){H.forEach(h=>h.classList.add('go'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('go');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});H.forEach(h=>io.observe(h))}
 /* 카드 사진 캐러셀: 터치는 기본 스크롤(스냅), 마우스는 끌기·화살표. 넘긴 직후의 클릭은 카드 이동으로 보지 않음 */
 function carousels(root){root.querySelectorAll('.car').forEach(c=>{const t=c.querySelector('.ctrack'),dots=[...c.querySelectorAll('.cdots i')];if(!t||c._on)return;c._on=1;
   const cur=()=>Math.round(t.scrollLeft/Math.max(1,t.clientWidth));let moved=0,drag=null;
@@ -514,7 +518,7 @@ function gtoday(){
   ${secs.length?`${sec(gt('Latest by section','분야별 최신 헤드라인'),'By section','','news')}<div class="gsecs">${secs.map(([c,L])=>`<section class="card gsec"><h3><span class="cat ${c}">${ic(c)}${esc(gcat(c))}</span></h3>
    ${L.map((x,k)=>`<a href="${esc(x.url)}" target="_blank" rel="noopener" class="${k===0&&x.img?'top':''}">${k===0&&x.img?`<span class="gi" ${bg(x.img)}></span>`:''}<b>${esc(T_(x,'title'))}</b><small>${esc(x.press)} · ${ago(x.t)}</small></a>`).join('')}</section>`).join('')}</div>`:''}
   <p class="fine">${gt('Market data: Yahoo Finance daily closes (may be delayed). Stories: international RSS feeds and Google News.','시세: 야후 파이낸스 일별 종가(지연될 수 있어요). 기사: 해외 언론 RSS·구글 뉴스. 번역은 자동 생성되어 어색하거나 틀릴 수 있어요.')}</p>`;
-  bindOrig(gtoday);
+  bindOrig(gtoday);heatIn(app);
 }
 function gissue(id){const i=G.issues.find(x=>x.id===id);if(!i)return gtoday();setMeta(T_(i,'title'),T_(i,'summary'));
   app.innerHTML=`<div class="bkrow"><a class="back" href="./">${NBI('arrow-left')} ${gt('Global top stories','해외 TOP')}</a>${shareBtn()}</div><div class="gbar"><span>${ic('세계')}${gt('Global reporting','해외 · 자동 번역')}</span>${origBtn()}</div>
