@@ -164,6 +164,7 @@
 - 해외 이슈 상세(app.js `gissue`): 사진 모음 → 제목·숫자·목차 → 요약(AI) → 기사 내용(원문 첫 문단, `global_news.py` `page()`) → 깊게 보기 → 핵심 용어 → 보도 흐름(날짜별) → 관련 기사(공통 보도 묶음). AI 해설은 `scripts/global_ai.py`(이슈별 캐시 `data/gai_cache.json`, 실행당 새 이슈 최대 6개 한 번에).
 - 해외 화제도(`global_news.py` `score`): 주요 언론사(MAJOR)·주요 헤드라인 피드 가중, 주제 검색 피드(과학·건강·기후·문화 검색)·지역 매체만 있는 묶음은 낮게. 같은 사건 판정은 흔하지 않은 낱말 2개 이상 공유(2026-10-31: 지역 방송 'Spooky Science' 4건이 1위로 묶이던 문제).
 - 해외 SNS: `scripts/social.py` → `data/social.json`(트럼프=trumpstruth.org 공개 아카이브 RSS, 블루스카이 공개 API 계정 목록 `BSKY`). X(머스크 등)는 API 유료·무료 미러 차단이라 미수집. 화면은 해외 탭 '지금 SNS에서'.
+- 나에게 맞춤(설정 '연령대·읽기 수준', app.js `AGEP`): 연령대 → 읽기 수준(쉽게/보통/자세히)·관심 분야 순서(TOP10 카드 순서만, 숨기지 않음)·퀴즈 시작 단계(nb-oxlv)·글자 크기 기본값. 쉬운 말 요약은 `scripts/easy.py`(이슈별 캐시 `data/easy_cache.json`, today.json `easy`), 용어 풀이 `gloss`는 검수 사전. 상세 '쉽게 풀어 보기'·'이 기사 속 용어'.
 - 오늘의 OX: `scripts/quiz.py` → `data/quiz.json` + 날짜별 누적 `data/fun/quiz/YYYY-MM-DD.json`·`index.json`. 레벨 1~3, OX·4지선다, 해설, 한·영. AI는 오전·오후 2번(캐시), 자료에 없는 숫자가 든 문제는 버림. 규칙 문제(시세·기준금리·검수 사전)는 AI 없이도 매일. 영어가 덜 번역된 문제(`en_ok:false`)는 영어 모드에서 뺌.
 - (2026-10-31 수정) 영어 모드는 '국내 콘텐츠를 영어로 번역'이 아니라 **해외 영어 원문 기반**(뉴욕타임스형 영어 학습). 해외 탭 기본=한국어(번역), '영어 원문 보기'=영어 원문. `fun.py`의 `world`(영어 헤드라인 단어 `vocab`·해외 카드뉴스·해외 4컷 ko/en), `quiz.py`의 `scope:'global'` 문제(영어 원문으로 출제+한국어 번역). 국내 탭은 `scope:'kr'`.
 - 그래프 말풍선: `assets/tip.js`(data-tip · SVG <title> · data-series). 새 그래프를 만들면 이 세 가지 중 하나를 붙일 것.

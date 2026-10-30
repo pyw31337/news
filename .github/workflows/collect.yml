@@ -44,6 +44,14 @@ jobs:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_BUDGET: ${{ (github.event.schedule == '40 21 * * *' || inputs.deep) && '40' || '3' }}  # Gemini 무료 등급(하루 약 250회) 안: 30분×3 + 심층 40 ≈ 하루 180회
         run: python scripts/enrich.py
+      - name: 읽기 수준 맞춤(쉬운 말 요약 · 용어 풀이)
+        continue-on-error: true
+        timeout-minutes: 3
+        env:
+          LLM_ENDPOINT: ${{ vars.LLM_ENDPOINT }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: python scripts/easy.py
       - name: 네이버 뉴스·이미지 검색(NAVER API HUB, 월 28만 회 상한)
         continue-on-error: true
         timeout-minutes: 3
