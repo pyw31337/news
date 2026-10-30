@@ -55,12 +55,15 @@ function buildQ(F){const W=(F&&F.quiz&&F.quiz.words)||[],Q=((F&&F.quiz&&F.quiz.q
   const M={};W.forEach(w=>M[w.word]=w);Q.forEach(q=>{const w=M[q.word]||{};q.mean=w.mean;q.tip=w.tip;q.ctx=w.context;q.field=w.field});
   // 하루 안에서는 순서 고정, 날마다 섞기
   const seed=(F.quiz.date||'').split('-').join('')|0;return Q.map((q,i)=>[q,Math.sin(seed+i*97)]).sort((a,b)=>a[1]-b[1]).map(x=>x[0])}
-const LANG=()=>{try{const s=JSON.parse(localStorage.getItem('nb-settings')||'{}');return s.region==='en'&&s.orig?'en':'ko'}catch(e){return'ko'}};
+/* 국내 탭=국내 문제(한국어) · 해외 탭=해외 문제(기본 한국어, '영어 원문 보기'면 영어 원문 문장) */
+const SET=()=>{try{return JSON.parse(localStorage.getItem('nb-settings')||'{}')}catch(e){return{}}};
+const LANG=()=>{const s=SET();return s.region==='en'&&s.orig?'en':'ko'},SCOPE=()=>SET().region==='en'?'global':'kr';
+const scopeOf=q=>q.scope||(String(q.ref||'').startsWith('g')?'global':'kr');
 let QZ=null;const quizV2=()=>QZ?Promise.resolve(QZ):fetch('data/quiz.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>QZ=j).catch(()=>null);
 const LV={1:['기초','Basic'],2:['중급','Intermediate'],3:['고급','Advanced']};
 window.NBOX=async function(el,F){if(!el)return;const Z=await quizV2(),L=LANG(),T=(ko,en)=>L==='en'?en:ko;
   let V2=!!(Z&&Z.questions&&Z.questions.length);
-  const pool=V2?Z.questions.filter(q=>L!=='en'||q.en_ok!==false):[];if(V2&&!pool.length)V2=false;
+  const SC=SCOPE(),pool=V2?Z.questions.filter(q=>scopeOf(q)===SC&&(L!=='en'||q.en_ok!==false)):[];if(V2&&!pool.length)V2=false;
   if(!V2&&!F){el.remove();return}
   const day=V2?Z.date:(F.quiz.date||''),dk='nb-oxd2';let lv=+(localStorage.getItem('nb-oxlv')||1);
   const counts={1:0,2:0,3:0};pool.forEach(q=>counts[q.level]=(counts[q.level]||0)+1);if(V2&&!counts[lv])lv=[1,2,3].find(k=>counts[k])||1;
@@ -72,7 +75,7 @@ window.NBOX=async function(el,F){if(!el)return;const Z=await quizV2(),L=LANG(),T
   mk();if(!Q.length){el.remove();return}
   el.className='gm-oxd';
   const right=(q,a)=>q.kind==='mc'?a===q.answer:(a===1)===q.answer;
-  const shell=()=>{el.innerHTML=`<div class="ox-h"><small>${I('bulb')}${T('오늘의 OX 덱','Daily quiz deck')}</small><span class="ox-sc"></span></div>
+  const shell=()=>{el.innerHTML=`<div class="ox-h"><small>${I('bulb')}${SCOPE()==='global'?T('해외 뉴스 OX 덱','World news quiz'):T('오늘의 OX 덱','Daily quiz deck')}</small><span class="ox-sc"></span></div>
    ${V2?`<div class="ox-lv" role="tablist">${[1,2,3].filter(k=>counts[k]).map(k=>`<button type="button" role="tab" data-lv="${k}" class="${k===lv?'on':''}" aria-selected="${k===lv}">${T(LV[k][0],LV[k][1])}<small>${counts[k]}</small></button>`).join('')}</div>`:''}
    <div class="ox-stage" tabindex="0" aria-roledescription="${T('퀴즈 카드 덱','quiz card deck')}"></div>
    <div class="ox-nav"><button type="button" class="ox-pv" aria-label="${T('이전 문제','Previous')}">${I('chevron-left')}</button><div class="ox-dots"></div><button type="button" class="ox-nx" aria-label="${T('다음 문제','Next')}">${I('chevron-right')}</button></div>

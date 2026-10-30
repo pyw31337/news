@@ -155,7 +155,7 @@ if Image and os.path.isdir(MEDIA):
         if isinstance(e.get('wiki'), dict): refs.append((e['wiki'], 'thumb'))
     for t in D.get('trends', []) + G.get('issues', []) + G.get('trends', []):
         if isinstance(t, dict):
-            refs.append((t, 'image')); [kid(x) for x in (t.get('today') or []) + (t.get('sources') or [])]
+            refs.append((t, 'image')); [kid(x) for x in (t.get('today') or []) + (t.get('sources') or []) + (t.get('gallery') or [])]
     for i in D.get('issues', []):
         for f in i.get('flow') or []: [kid(x) for x in f.get('items') or []]
     def kid0(L):

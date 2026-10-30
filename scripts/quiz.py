@@ -64,9 +64,10 @@ def tr_en(texts):
         except Exception as e: print('tr_en', str(e)[:80])
     return {t: TE.get(t, '') for t in texts}
 Q = []
-def add(level, kind, ko, en, answer, exp_ko, exp_en, choices_ko=None, choices_en=None, ref=None, cat='', src='rule'):
-    q = dict(id='q' + hk(ko, answer), level=level, kind=kind, cat=cat, q=dict(ko=ko, en=en), answer=answer,
-             exp=dict(ko=exp_ko, en=exp_en), ref=ref, src=src, date=DATE)
+def add(level, kind, ko, en, answer, exp_ko, exp_en, choices_ko=None, choices_en=None, ref=None, cat='', src='rule', scope='kr'):
+    """scope: kr=국내 탭(한국어), global=해외 탭(기본 한국어 · '영어 원문 보기'면 영어 원문 문장)"""
+    q = dict(id='q' + hk(ko, en, answer), level=level, kind=kind, cat=cat, q=dict(ko=ko, en=en), answer=answer,
+             exp=dict(ko=exp_ko, en=exp_en), ref=ref, src=src, date=DATE, scope=scope)
     if kind == 'mc': q['choices'] = dict(ko=choices_ko, en=choices_en)
     # 영어 문장에 번역 안 된 한국어가 남았으면 영어 모드에서는 내지 않음(“용어” 따옴표 속 짧은 한국어는 허용)
     en_all = re.sub(r'“[가-힣 ]{1,10}”', '', en + ' ' + exp_en + ' ' + ' '.join(choices_en or []))
@@ -74,18 +75,19 @@ def add(level, kind, ko, en, answer, exp_ko, exp_en, choices_ko=None, choices_en
     Q.append(q)
 # ---------- 1) AI 문제(레벨별) ----------
 g = load_llm()
-prompt = ('아래는 오늘의 국내·해외 뉴스 이슈와 각 이슈에서 확인된 사실이다. 이것만 근거로 퀴즈 18문제를 만들어라.\n'
+KF = [f for f in facts if f['scope'] == 'kr']
+prompt = ('아래는 오늘의 국내 뉴스 이슈와 각 이슈에서 확인된 사실이다. 이것만 근거로 퀴즈 18문제를 만들어라.\n'
           '- 레벨 1(기초) 6문제: 무슨 일이 있었는지 사실 확인, 뉴스에 나온 용어의 뜻.\n'
           '- 레벨 2(중급) 6문제: 왜 그런 일이 생겼는지, 관련 주체·숫자 비교, 맥락.\n'
           '- 레벨 3(고급) 6문제: 배경 제도·개념, 이 일이 갖는 의미(자료가 뒷받침하는 범위에서).\n'
           '- 각 레벨에서 OX 4문제(answer: true/false, 참·거짓을 섞어라) + 4지선다 2문제(answer: 0~3 정답 번호).\n'
-          '- 거짓 문장은 그럴듯하게 바꾸되 자료와 분명히 다르게. 너무 쉬운(뻔한) 문제·말장난 금지. 국내·해외를 섞어라.\n'
+          '- 거짓 문장은 그럴듯하게 바꾸되 자료와 분명히 다르게. 너무 쉬운(뻔한) 문제·말장난 금지.\n'
           '- 모든 문장은 한국어(ko)와 자연스러운 영어(en)를 함께. 해설(exp)은 왜 정답인지 1~2문장.\n'
           '- ref: 근거 이슈 id.\n'
           'JSON: {"q":[{"level":1,"kind":"ox","ko":"...","en":"...","answer":true,"exp_ko":"...","exp_en":"...","ref":"id"},'
           '{"level":2,"kind":"mc","ko":"...","en":"...","choices_ko":["","","",""],"choices_en":["","","",""],"answer":2,"exp_ko":"...","exp_en":"...","ref":"id"}]}\n\n'
-          + '\n'.join('[%s · %s · %s] %s\n  사실: %s' % (f['id'], '국내' if f['scope'] == 'kr' else '해외', f['cat'], f['title'], ' / '.join(f['facts'] + f.get('facts_en', []))) for f in facts))
-res = g['llm']('qz:' + hk(DATE, HALF, *[f['id'] for f in facts]), prompt, 7000) or {}
+          + '\n'.join('[%s · %s] %s\n  사실: %s' % (f['id'], f['cat'], f['title'], ' / '.join(f['facts'])) for f in KF))
+res = g['llm']('qz:' + hk(DATE, HALF, *[f['id'] for f in KF]), prompt, 7000) or {}
 ids = {f['id']: f for f in facts}; bad = 0
 for x in res.get('q', []) if isinstance(res, dict) else []:
     try:
@@ -101,6 +103,35 @@ for x in res.get('q', []) if isinstance(res, dict) else []:
             if not (isinstance(ck, list) and isinstance(ce, list) and len(ck) == 4 == len(ce) and isinstance(a, int) and 0 <= a < 4 and len(set(ck)) == 4): raise ValueError('mc')
             add(lv, 'mc', ko, en, a, str(x.get('exp_ko', ''))[:200], str(x.get('exp_en', ''))[:260], [str(c)[:80] for c in ck], [str(c)[:100] for c in ce], ref=x.get('ref'), cat=(ids.get(x.get('ref')) or {}).get('cat', ''), src='ai')
     except Exception: bad += 1
+# 해외: 영어 원문 기사로 영어 문제를 쓰고 한국어 번역을 함께(영어 학습용 · 뉴욕타임스형)
+GFX = [dict(id=i['id'], cat=i.get('category', '세계'), title=i['title'], summary=i.get('summary', '')[:500], heads=[x['title'] for x in (i.get('sources') or [])[:5]]) for i in (G.get('issues') or [])[:8]]
+GALL = ' '.join(f['title'] + ' ' + f['summary'] + ' ' + ' '.join(f['heads']) for f in GFX)
+gp = ('You write a daily English news quiz for Korean adults learning English, like a New York Times learning quiz. Use ONLY the facts below (real English headlines and summaries). '
+      'Write 18 questions in natural, newspaper-style English:\n'
+      '- level 1 (Basic) 6: what happened; meaning of a word as used in a headline.\n'
+      '- level 2 (Intermediate) 6: why/how, who is involved, comparisons, context.\n'
+      '- level 3 (Advanced) 6: background concepts, implications supported by the facts, nuance of wording.\n'
+      '- per level: 4 true/false (answer true/false, mix both) + 2 multiple choice (4 options, answer 0-3).\n'
+      '- Never invent numbers, quotes or facts. False statements must be plausible but clearly contradicted by the facts.\n'
+      '- Give a faithful Korean translation of every question/choice (ko, choices_ko) and a 1–2 sentence explanation in both languages. ref = story id.\n'
+      'JSON: {"q":[{"level":1,"kind":"ox","en":"","ko":"","answer":true,"exp_en":"","exp_ko":"","ref":"id"},{"level":2,"kind":"mc","en":"","ko":"","choices_en":["","","",""],"choices_ko":["","","",""],"answer":1,"exp_en":"","exp_ko":"","ref":"id"}]}\n\n'
+      + '\n'.join('[%s · %s] %s\n  Summary: %s\n  Other headlines: %s' % (f['id'], f['cat'], f['title'], f['summary'], ' | '.join(f['heads'])) for f in GFX))
+gres = g['llm']('gq:' + hk(DATE, HALF, *[f['id'] for f in GFX]), gp, 7000) if GFX else {}
+gids = {f['id']: f for f in GFX}
+for x in (gres or {}).get('q', []) if isinstance(gres, dict) else []:
+    try:
+        lv, kind = int(x.get('level')), x.get('kind'); ko, en = str(x.get('ko', '')).strip(), str(x.get('en', '')).strip()
+        if lv not in (1, 2, 3) or kind not in ('ox', 'mc') or not (8 < len(en) < 260) or not re.search(r'[가-힣]', ko): raise ValueError('shape')
+        if nums(en + ' ' + ' '.join(x.get('choices_en') or [])) - nums(GALL): raise ValueError('num')
+        cat = (gids.get(x.get('ref')) or {}).get('cat', '세계')
+        if kind == 'ox':
+            if not isinstance(x.get('answer'), bool): raise ValueError('ans')
+            add(lv, 'ox', ko, en, x['answer'], str(x.get('exp_ko', ''))[:220], str(x.get('exp_en', ''))[:280], ref=x.get('ref'), cat=cat, src='ai', scope='global')
+        else:
+            ck, ce, a = x.get('choices_ko'), x.get('choices_en'), x.get('answer')
+            if not (isinstance(ck, list) and isinstance(ce, list) and len(ck) == 4 == len(ce) and isinstance(a, int) and 0 <= a < 4 and len(set(ce)) == 4): raise ValueError('mc')
+            add(lv, 'mc', ko, en, a, str(x.get('exp_ko', ''))[:220], str(x.get('exp_en', ''))[:280], [str(c)[:90] for c in ck], [str(c)[:110] for c in ce], ref=x.get('ref'), cat=cat, src='ai', scope='global')
+    except Exception: bad += 1
 # ---------- 2) 규칙 문제(항상 맞음) ----------
 M = {m['name']: m for m in D.get('market') or []}
 NAME_EN = {'KOSPI': 'KOSPI', 'KOSDAQ': 'KOSDAQ', 'S&P 500': 'S&P 500', 'NASDAQ': 'Nasdaq', '미국 USD': 'USD/KRW', '금': 'gold', 'WTI 원유': 'WTI crude', '비트코인': 'Bitcoin'}
@@ -111,7 +142,14 @@ for m in mk[:2]:
     rd = {'KOSPI': '코스피', 'KOSDAQ': '코스닥', 'S&P 500': 'S&P 500(오백)', 'NASDAQ': '나스닥', '미국 USD': '달러 환율', '금': '금', 'WTI 원유': 'WTI 원유', '비트코인': '비트코인'}[n]
     add(1, 'ox', '가장 최근 거래일에 %s 전날보다 %s.' % (eun(rd).replace(rd, n) if not rd.endswith(')') else n + ('은' if bat('백') else '는'), '올랐다' if claim_up else '내렸다'),
         'On the latest trading day, %s %s from the previous day.' % (NAME_EN[n], 'rose' if claim_up else 'fell'), up == claim_up,
-        '%s %s (%s%%)였어요.' % (n, m['price'], m['rate']), '%s closed at %s (%s%%).' % (NAME_EN[n], m['price'], m['rate']), cat='경제')
+        '%s %s (%s%%)였어요.' % (n, m['price'], m['rate']), '%s closed at %s (%s%%).' % (NAME_EN[n], m['price'], m['rate']), cat='경제', scope='kr' if n in ('KOSPI', 'KOSDAQ', '미국 USD') else 'global')
+# 해외 탭: 미국·세계 지수(영어 원문 그대로 · 한국어 번역)
+GM = [m for m in (G.get('markets') or []) if m.get('group') in ('us', 'world') and m.get('dir') in ('RISING', 'FALLING')]
+rnd.shuffle(GM)
+for m in GM[:3]:
+    up = m['dir'] == 'RISING'; claim = rnd.random() < .5
+    add(1, 'ox', '가장 최근 거래일에 %s 지수는 전날보다 %s.' % (m['name_ko'], '올랐다' if claim else '내렸다'), 'The %s %s on its latest trading day.' % (m['name'], 'rose' if claim else 'fell'), up == claim,
+        '%s %s (%+.2f%%)로 마감했어요.' % (m['name_ko'], m['price'], m['rate']), 'It closed at %s (%+.2f%%).' % (m['price'], m['rate']), cat='경제', scope='global')
 s = (ES.get('series') or {}).get('base')
 if s and s.get('data'):
     cur = s['data'][-1][1]; opts = sorted({cur, cur + .25, cur - .25, cur + .5}); rnd.shuffle(opts)

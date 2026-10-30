@@ -56,6 +56,14 @@ jobs:
         continue-on-error: true
         timeout-minutes: 12
         run: python scripts/global_news.py
+      - name: 해외 이슈 AI 해설(요약·배경·왜 중요한가 · 영어 원문+한국어)
+        continue-on-error: true
+        timeout-minutes: 4
+        env:
+          LLM_ENDPOINT: ${{ vars.LLM_ENDPOINT }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: python scripts/global_ai.py
       # 재정경제부 보도자료·기상·실거래가·주식시세·선관위: data.go.kr이 해외 IP를 막아서 맥미니(local/gov/run_gov.sh)가 매시 data 브랜치 gov/·briefs.json에 올림
       - name: 공식 통계·공시(ECOS·DART)
         continue-on-error: true

@@ -1,9 +1,11 @@
 /* NewsBoard · 놀면서 배우기: 오늘의 단어 퀴즈(게임) · 4컷 설명 만화 · 카드뉴스 */
 (function(){
 let F=null,fP=null,F0=null,IX=null,PAST='';
-/* 영어 모드(해외·원문, body.en): fun.json의 영어판(en)으로 카드뉴스·만화·단어 퀴즈를 보여 줌 */
+/* 해외 탭에서는 해외 기사로 만든 학습판(fun.json world: 영어 원문 단어·카드뉴스·만화)을 씀. 기본 한국어, '영어 원문 보기'(body.en)면 영어 원문 */
 const ENM=()=>document.body.classList.contains('en'),T=(ko,en)=>ENM()?en:ko;
-const pick=j=>{if(!j||!ENM()||!j.en||!j.en.ok)return j;const e=j.en;return Object.assign({},j,{quiz:e.quiz||j.quiz,comics:(e.comics&&e.comics.length)?e.comics:j.comics,decks:(e.decks&&e.decks.length)?e.decks:j.decks})};
+const WORLDM=()=>{try{return JSON.parse(localStorage.getItem('nb-settings')||'{}').region==='en'}catch(e){return false}};
+const pick=j=>{if(!j||!WORLDM()||!j.world)return j;const w=j.world[ENM()?'en':'ko']||{};
+  return Object.assign({},j,{quiz:(w.quiz&&w.quiz.questions&&w.quiz.questions.length)?w.quiz:j.quiz,comics:(w.comics&&w.comics.length)?w.comics:j.comics,decks:(w.decks&&w.decks.length)?w.decks:j.decks})};
 const loadF=()=>fP||(fP=fetch('data/fun.json?'+Date.now()).then(r=>r.ok?r.json():null).catch(()=>null).then(j=>{F0=j;return F=pick(j)}));
 addEventListener('nb:region-changed',()=>{if(F0)F=pick(F0)});
 /* 지난 기록: data/fun/index.json(날짜 목록) · data/fun/YYYY-MM-DD.json(그날 퀴즈·만화·카드뉴스) */
