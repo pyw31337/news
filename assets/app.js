@@ -74,6 +74,20 @@ if(S.regionDefaultV!==2){S.orig=false;S.regionDefaultV=2;localStorage.setItem('n
 const saveS=()=>{localStorage.setItem('nb-settings',JSON.stringify(S));applyS()};
 const applyS=()=>{document.documentElement.style.fontSize=(16*S.fs/100)+'px'};applyS();
 const vis=i=>!S.hide.includes(i.category);
+/* 나에게 맞춤(설정 '연령대·읽기 수준'): 연령대를 고르면 읽기 수준·관심 분야 순서·퀴즈 레벨·글자 크기가 자동으로 맞춰지고 각각 따로 바꿀 수 있음.
+   분야를 숨기지 않고 순서만 바꿈(필터 버블 방지). 값은 이 기기 + 내 서재 동기화에만 저장 */
+const AGEP={'10':{n:'10대',read:'easy',lv:1,fs:100,order:['연예','스포츠','IT','과학','문화','사회','세계','환경','경제','건강','정치']},
+ '20':{n:'20대',read:'std',lv:2,fs:100,order:['경제','IT','사회','연예','세계','문화','스포츠','과학','정치','환경','건강']},
+ '30':{n:'30대',read:'std',lv:2,fs:100,order:['경제','사회','IT','정치','세계','건강','과학','문화','환경','연예','스포츠']},
+ '40':{n:'40대',read:'std',lv:2,fs:100,order:['경제','정치','사회','건강','세계','IT','과학','환경','문화','스포츠','연예']},
+ '50':{n:'50대',read:'deep',lv:3,fs:105,order:['경제','정치','건강','사회','세계','환경','과학','IT','문화','스포츠','연예']},
+ '60':{n:'60대 이상',read:'easy',lv:1,fs:115,order:['건강','정치','사회','경제','세계','문화','환경','과학','IT','스포츠','연예']}};
+const READN={easy:'쉽게',std:'보통',deep:'자세히'};
+const corder=c=>{const o=S.corder||(AGEP[S.age]||{}).order;if(!o)return 0;const k=o.indexOf(c);return k<0?99:k};
+/* 어려운 시사 용어(검수 사전, today.json gloss)에 점선 밑줄 + 말풍선 뜻 */
+const glossWrap=(h,i)=>{const G=i&&i.gloss;if(!G)return h;Object.keys(G).sort((a,b)=>b.length-a.length).forEach(w=>{h=h.replace(new RegExp('(^|[^가-힣])('+w+')(?![^<]*>)'),`$1<abbr class="gw" tabindex="0" data-tip="${esc(w)}: ${esc(G[w])}">$2</abbr>`)});return h};
+/* 카드 요약: 읽기 수준 '쉽게'면 쉬운 말 요약(easy), '자세히'면 한 줄 더 */
+const sumFor=(i,n)=>S.read==='easy'&&i.easy&&i.easy.length?{L:i.easy.slice(0,n),easy:1}:{L:(i.summary||[]).slice(0,S.read==='deep'?n+1:n),easy:0};
 
 const ourl=o=>{if(Array.isArray(o))o.forEach(ourl);else if(o&&typeof o==='object'){if(o.ourl)o.url=o.ourl;for(const k in o)if(o[k]&&typeof o[k]==='object')ourl(o[k])}};
 /* 첫 화면은 가벼운 today_lite.json(인물 타임라인 최신 12건)으로 그리고, 전체 today.json은 뒤에서 받아 인물 타임라인만 채움 */
@@ -174,13 +188,14 @@ function today(){
   const L=I[0],mx=Math.max(...I.map(i=>i.score));
   const side=I.slice(0,10).map(i=>`<div class="srow" data-id="${i.id}"><div><a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><h3>${esc(i.title)}</h3><div class="m">${ic('news')}${esc(i.press)} 외 ${i.presses-1}곳 ${i.opinion?`· ${ic('chat')}${i.opinion.total.toLocaleString()}`:''}</div></div></a></div></div>`).join('');
   const cats={};I.forEach(i=>cats[i.category]=(cats[i.category]||0)+1);
-  const grid=I.map((i,k)=>{const wide=k===0||k===5;const txt=!i.image;
+  const GORD=S.age||S.corder?[...I].sort((a,b)=>corder(a.category)-corder(b.category)||a.rank-b.rank):I;
+  const grid=GORD.map((i,k)=>{const wide=k===0||k===5;const txt=!i.image;
     /* 품질 점수 1위 사진(docs/QUALITY.md) → 대표 사진 → 흐름·관련 기사 사진을 한 캐러셀로(좌우로 넘김). 한 기사의 엉뚱한 대표 이미지가 맨 앞에 오지 않게 */
     const pics=txt?[]:[...(i.gallery||[]).slice(0,1).map(g=>g.img),i.image,...(i.flow||[]).flatMap(f=>f.items.filter(x=>x.img).slice(0,1).map(x=>x.img)),...(i.gallery||[]).map(g=>g.img)].filter(Boolean).filter((u,n,A)=>A.indexOf(u)===n).slice(0,6);
     return`<a class="card ic ${wide?'wide':''} ${txt?'text':''}" href="issue/${i.id}">
     ${txt?'':`<div class="img car"><div class="ctrack">${pics.map(u=>`<span class="cs" ${bg(u)}></span>`).join('')}</div><div class="rk">${i.rank}</div>${i.opinion?`<span class="cm">${ic('chat')}${i.opinion.total.toLocaleString()}</span>`:''}${pics.length>1?`<span class="cdots" aria-hidden="true">${pics.map((_,n)=>`<i class="${n?'':'on'}"></i>`).join('')}</span><button type="button" class="cnav p" aria-label="이전 사진" tabindex="-1">${NBI('chevron-left')}</button><button type="button" class="cnav n" aria-label="다음 사진" tabindex="-1">${NBI('chevron-right')}</button>`:''}</div>`}
     <div class="bd">${txt?`<div class="rkt">${String(i.rank).padStart(2,'0')}</div>`:''}<div class="row"><span class="cat ${i.category}">${ic(i.category)}${i.category}</span>${i.trend.length?`<span class="chip event">${ic('fire')}검색 급상승</span>`:''}</div>
-    <h3>${esc(i.title)}</h3>${i.summary.length?`<ul>${i.summary.slice(0,wide?3:2).map(s=>`<li>${hiSum(s,i)}</li>`).join('')}</ul>`:''}
+    <h3>${esc(i.title)}</h3>${(()=>{const X=sumFor(i,wide?3:2);return X.L.length?`<ul class="${X.easy?'easy':''}">${X.L.map(s=>`<li>${glossWrap(hiSum(s,i),i)}</li>`).join('')}</ul>`:''})()}
     <div class="chips">${i.entities.slice(0,3).map(n=>chipE(n,1)).join('')}</div>
     <div class="heat" title="화제도: 기사 수·보도한 언론사 수·검색량·댓글을 합친 점수. 막대는 오늘 1위 이슈 대비 크기예요."><span>화제도</span><div class="bar"><i style="width:${(i.score/mx*100).toFixed(0)}%"></i></div><b>${Math.round(i.score).toLocaleString()}</b></div>
     <div class="ft"><span>언론사 ${i.presses}곳${(i.flow||[]).length?` · 흐름 ${i.flow.length}일`:''}</span><span>자세히 ${NBI('arrow-right')}</span></div></div></a>`}).join('');
@@ -199,7 +214,7 @@ function today(){
     <div class="side">${side}</div>
   </section>
   ${marketStrip()}
-  ${sec('오늘의 이슈 TOP 10','Today’s Top 10',`<a class="more" href="settings">${ic('gear')}카테고리 설정</a>`,'fire')}
+  ${sec('오늘의 이슈 TOP 10','Today’s Top 10',`<a class="more" href="settings">${ic('gear')}${S.age?`${AGEP[S.age].n} 맞춤 · 읽기 ${READN[S.read||'std']}`:'나에게 맞춤 설정'}</a>`,'fire')}
   <div class="catbar">${Object.entries(cats).map(([c,n])=>`<i style="flex:${n};background:${CATC[c]}" data-tip="${c} 이슈 ${n}개 · TOP 10의 ${Math.round(n/I.length*100)}%"></i>`).join('')}</div>
   <div class="legend">${Object.entries(cats).map(([c,n])=>`<span style="--c:${CATC[c]}">${c} ${n}</span>`).join('')}</div>
   <div class="grid10">${grid}</div>
@@ -245,6 +260,8 @@ function issue(id){
   <article class="dhead card ds-head"><div class="bd"><div class="dh-top"><span class="dh-rank" aria-label="오늘의 이슈 ${i.rank}위"><b>${String(i.rank).padStart(2,'0')}</b><small>오늘의<br>이슈</small></span><span class="cat ${i.category}">${i.category}</span></div><h1 class="ds-title">${esc(i.title)}</h1>
     <div class="dh-bar"><div class="schips light">${schips(i,'')}</div><div class="dh-act"></div></div>
     <div class="chips">${i.entities.map(n=>chipE(n)).join('')}${i.keywords.filter(k=>!i.entities.includes(k)).slice(0,4).map(k=>`<span class="ds-tag">#${esc(k)}</span>`).join('')}</div></div></article>
+  ${i.easy&&i.easy.length?`<details class="easyb card" ${S.read==='easy'?'open':''}><summary>${ic('spark')}쉽게 풀어 보기<small>처음 보는 분도 이해하기 쉬운 말로</small></summary><ul>${i.easy.map(t=>`<li>${glossWrap(esc(t),i)}</li>`).join('')}</ul></details>`:''}
+  ${i.gloss&&Object.keys(i.gloss).length?`<div class="glb"><b>이 기사 속 용어</b>${Object.entries(i.gloss).map(([w,m])=>`<span tabindex="0" data-tip="${esc(m)}">${esc(w)}</span>`).join('')}</div>`:''}
   <nav class="toc ds-tabs"><a href="#s-sum">${ic('news')}<span>요약</span></a><a href="#s-flow">${ic('clock')}<span>흐름</span></a><a href="#related">${ic('news')}<span>관련 기사</span></a><a href="#press">${ic('press')}<span>언론사</span></a><a href="#comments">${ic('chat')}<span>댓글</span></a></nav>
   <div class="two"><div>
    <section id="s-sum" class="ds-sec">${sec('한눈에 보기','Summary','','news')}<div class="summary ds-sum">${sumOf(i).map((s,k)=>`<div class="sl"><b>${k+1}</b><p class="${k===0?'ds-lead':''}">${DS.emph(s,terms)}</p></div>`).join('')||'<p>요약을 가져오지 못했어요.</p>'}</div></section>
@@ -607,11 +624,19 @@ function gtrend(k){const t=G.trends[k];if(!t)return gtoday();setMeta(T_(t,'keywo
 /* ---------- 설정 ---------- */
 function settings(){
   const draw=()=>{app.innerHTML=`${sec('설정','Settings','','gear')}
+  <div class="card setc pers"><h3>나에게 맞춤</h3><p class="fine keep">연령대를 고르면 읽기 수준·관심 분야 순서·퀴즈 단계·글자 크기가 자동으로 맞춰져요. 아래에서 각각 따로 바꿀 수 있어요. 분야를 숨기지는 않고 순서만 바꿔요. 이 기기와 내 서재 동기화에만 저장돼요.</p>
+   <div class="segs" data-g="age"><button data-age="" class="${S.age?'':'on'}">선택 안 함</button>${Object.entries(AGEP).map(([k,v])=>`<button data-age="${k}" class="${S.age===k?'on':''}">${v.n}</button>`).join('')}</div>
+   <h4>읽기 수준</h4><div class="segs"><button data-read="easy" class="${S.read==='easy'?'on':''}">쉽게<small>쉬운 말 요약 · 용어 풀이</small></button><button data-read="std" class="${!S.read||S.read==='std'?'on':''}">보통<small>기본 요약</small></button><button data-read="deep" class="${S.read==='deep'?'on':''}">자세히<small>요약 한 줄 더</small></button></div>
+   <h4>퀴즈 시작 단계</h4><div class="segs">${[[1,'기초'],[2,'중급'],[3,'고급']].map(([k,n])=>`<button data-lv="${k}" class="${(+localStorage.getItem('nb-oxlv')||1)===k?'on':''}">${n}</button>`).join('')}</div>
+   ${S.age?`<p class="fine keep">${AGEP[S.age].n} 관심 분야 순서: ${(S.corder||AGEP[S.age].order).slice(0,5).join(' · ')} …</p>`:''}</div>
   <div class="card setc"><h3>보고 싶은 카테고리</h3><p class="fine">끈 카테고리는 TOP10·관계맵에서 숨겨요. 이 기기에만 저장됩니다.</p>
    <div class="toggles">${CATS.map(c=>`<label class="tg"><input type="checkbox" data-c="${c}" ${S.hide.includes(c)?'':'checked'}><span style="--c:${CATC[c]}">${ic(c)}${c}</span></label>`).join('')}</div></div>
   <div class="card setc"><h3>글자 크기</h3><div class="fsr"><button data-fs="-">가−</button><b>${S.fs}%</b><button data-fs="+">가+</button><button data-fs="0" class="ghost">기본</button></div><p class="fsprev">가나다 미리보기 — 오늘의 이슈를 따라가는 가장 쉬운 방법.</p></div>
 `;
   app.querySelectorAll('[data-c]').forEach(x=>x.onchange=()=>{const c=x.dataset.c;S.hide=x.checked?S.hide.filter(y=>y!==c):[...S.hide,c];saveS()});
+  app.querySelectorAll('[data-age]').forEach(x=>x.onclick=()=>{const k=x.dataset.age;S.age=k;const P=AGEP[k];if(P){S.read=P.read;S.fs=P.fs;delete S.corder;localStorage.setItem('nb-oxlv',P.lv)}saveS();draw();toast(P?`${P.n}에 맞춰 바꿨어요`:'맞춤을 껐어요')});
+  app.querySelectorAll('[data-read]').forEach(x=>x.onclick=()=>{S.read=x.dataset.read;saveS();draw()});
+  app.querySelectorAll('[data-lv]').forEach(x=>x.onclick=()=>{localStorage.setItem('nb-oxlv',x.dataset.lv);draw()});
   app.querySelectorAll('[data-fs]').forEach(x=>x.onclick=()=>{const v=x.dataset.fs;S.fs=v==='0'?100:Math.max(85,Math.min(130,S.fs+(v==='+'?5:-5)));saveS();draw()})};draw();
 }
 load().catch(()=>app.innerHTML='<div class="loading">잠시 후 다시 시도해 주세요. 소식을 불러오는 중 문제가 생겼어요.</div>');
