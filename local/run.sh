@@ -2,7 +2,7 @@
 # NewsBoard 로컬 새벽 분석(맥·리눅스 공용): 수집 + AI(애플 온디바이스/Ollama/API) → data 브랜치 overlay/ 업로드
 set -u
 B="${NB_HOME:-$HOME/Developer/newsboard-local}"; cd "$B" || exit 1
-mkdir -p logs; exec >> "$B/logs/run-$(date +%Y%m%d).log" 2>&1
+mkdir -p logs upload-queue; exec >> "$B/logs/run-$(date +%Y%m%d).log" 2>&1
 echo "== start $(date)"
 mkdir "$B/.lock" 2>/dev/null || { echo "already running"; exit 0; }
 trap 'rmdir "$B/.lock"' EXIT
@@ -10,9 +10,30 @@ export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 [ -f "$B/local.env" ] && set -a && . "$B/local.env" && set +a
 R="${NB_REMOTE:-git@github-newsboard:pyw31337/news.git}"
 [ -d news ] || git clone -q "$R" news
-cd news && git fetch -q origin && git reset -q --hard origin/main
-[ -d data/.git ] || { rm -rf data; git clone -q -b data "$R" data; }
-git -C data fetch -q origin && git -C data reset -q --hard origin/data
+cd news || exit 1
+# 작업 중인 소스나 수집 결과를 초기화하지 않는다. 원격 변경은 fast-forward일 때만 반영한다.
+git fetch -q origin && git merge -q --ff-only origin/main || echo "source update deferred; local checkout retained"
+# data는 절대 reset하지 않는다. 원격보다 앞선 로컬 커밋이 업로드 대기열이다.
+if [ ! -d data ]; then git clone -q -b data "$R" data
+elif [ ! -e data/.git ]; then echo "data가 Git 저장소가 아닙니다. 기존 데이터를 보호하기 위해 중단합니다."; exit 1
+fi
+queue_status(){
+  { printf 'checked_at=%s\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')"; printf 'head=%s\n' "$(git -C data rev-parse --short HEAD 2>/dev/null || true)"; printf 'pending_commits:\n'; git -C data log --oneline origin/data..HEAD 2>/dev/null || true; } > "$B/upload-queue/data.status"
+}
+sync_data(){
+  git -C data add -A
+  git -C data diff --cached --quiet || git -C data -c user.name="newsboard-$(hostname -s)" -c user.email=local@users.noreply.github.com commit -qm "local data: $(date '+%Y-%m-%d %H:%M') KST"
+  git -C data fetch -q origin data || { echo "원격 확인 실패: 로컬 큐에 보존"; queue_status; return 1; }
+  if ! git -C data merge-base --is-ancestor origin/data HEAD; then
+    git -C data rebase -X theirs origin/data || { git -C data rebase --abort 2>/dev/null || true; echo "원격 충돌: 로컬 큐 유지"; queue_status; return 1; }
+  fi
+  for delay in 0 5 15; do
+    [ "$delay" -eq 0 ] || sleep "$delay"
+    git -C data push -q origin HEAD:data && { echo "data uploaded"; printf 'uploaded_at=%s\npending_commits=0\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')" > "$B/upload-queue/data.status"; return 0; }
+  done
+  echo "업로드 보류: 다음 회차가 재시도"; queue_status; return 1
+}
+sync_data || true
 PY="$B/venv/bin/python"
 # 백엔드 고르기
 BK="${LLM_BACKEND:-auto}"
@@ -28,14 +49,11 @@ case "$BK" in
   api)    export LLM_BACKEND=openai ;;
   *)      export LLM_BACKEND=openai LLM_API_KEY= ;;
 esac
-"$PY" scripts/collect.py > "$B/logs/collect.last.log" 2>&1 || { echo "collect failed"; exit 1; }
-OVERLAY_WRITE=1 LLM_BUDGET=${LLM_BUDGET:-90} "$PY" scripts/enrich.py > "$B/logs/enrich.last.log" 2>&1 || { echo "enrich failed"; tail -5 "$B/logs/enrich.last.log"; exit 1; }
+"$PY" scripts/collect.py > "$B/logs/collect.last.log" 2>&1 || { echo "collect failed"; sync_data || true; exit 1; }
+# 원본 수집을 분석 결과와 분리하여 즉시 보존한다.
+sync_data || true
+OVERLAY_WRITE=1 LLM_BUDGET=${LLM_BUDGET:-90} "$PY" scripts/enrich.py > "$B/logs/enrich.last.log" 2>&1 || { echo "enrich failed"; tail -5 "$B/logs/enrich.last.log"; sync_data || true; exit 1; }
 tail -1 "$B/logs/enrich.last.log"
-T=$(mktemp -d) && cp data/overlay/*.json "$T"/
-cd data
-for n in 1 2 3; do
-  git fetch -q origin && git reset -q --hard origin/data && mkdir -p overlay && cp "$T"/*.json overlay/
-  git add overlay && git -c user.name="newsboard-$(hostname -s)" -c user.email=local@users.noreply.github.com commit -qm "overlay: $(hostname -s) $(date '+%Y-%m-%d %H:%M')" || { echo "nothing to commit"; break; }
-  git push -q origin HEAD:data && { echo "pushed"; break; }; sleep 20
-done
-rm -rf "$T"; find "$B/logs" -name 'run-*.log' -mtime +30 -delete; echo "== end $(date)"
+"$PY" scripts/global_news.py > "$B/logs/global.last.log" 2>&1 || echo "global collect deferred"
+sync_data || true
+find "$B/logs" -name 'run-*.log' -mtime +30 -delete; echo "== end $(date)"

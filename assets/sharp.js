@@ -23,7 +23,9 @@ function scan(root){(root.querySelectorAll?root:document).querySelectorAll('[sty
   if(el.dataset.sq===urlOf(el)||el.classList.contains('sq-wait'))return;if(skip(el)){el.classList.add('sq-ok');return}
   el.classList.remove('sq-ok','sq-low','sq-soft','sq-deep');el.classList.add('sq-wait');const go=()=>{el.classList.remove('sq-wait');check(el)};
   if(io){io.observe(el);el.classList.remove('sq-wait')}else go()})}
-new MutationObserver(ms=>{for(const m of ms){if(m.type==='attributes')scan(m.target.parentNode||document);else m.addedNodes.forEach(n=>n.nodeType===1&&scan(n.parentNode||n))}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['style','src']});
+/* 라우팅으로 추가된 카드만 검사한다. style/src 변화까지 전 문서를 감시하면 저사양 모바일에서
+   레이아웃 계산이 반복되어 스크롤이 끊긴다. */
+function watch(){const root=document.getElementById('app')||document.body;if(!root)return;new MutationObserver(ms=>{for(const m of ms)m.addedNodes.forEach(n=>n.nodeType===1&&scan(n))}).observe(root,{childList:true,subtree:true})}
 let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>document.querySelectorAll('.sq-ok[data-sq],.sq-low[data-sq]').forEach(el=>{if(!el.classList.contains('sq-low'))check(el)}),400)});
-document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>scan(document)):scan(document);
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>{scan(document);watch()}):(scan(document),watch());
 })();

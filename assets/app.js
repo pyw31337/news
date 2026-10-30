@@ -1,12 +1,13 @@
 const $=s=>document.querySelector(s);const app=$('#app');let D=null;const CACHE={};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const TYPE={person:'인물',place:'장소',org:'기관·기업',event:'키워드'};
-const CATS=['정치','경제','사회','세계','IT','연예','스포츠'];
-const CATC={정치:'#2f6bff',경제:'#11a683',사회:'#ff4d2e',세계:'#7a4dff',IT:'#0aa5c8',연예:'#e2448e',스포츠:'#f08a00'};
+const CATS=['정치','경제','사회','세계','IT','과학','건강','환경','문화','연예','스포츠'];
+const CATC={정치:'#2f6bff',경제:'#11a683',사회:'#ff4d2e',세계:'#7a4dff',IT:'#0aa5c8',과학:'#4868d8',건강:'#d64f73',환경:'#28a26e',문화:'#9c58cc',연예:'#e2448e',스포츠:'#f08a00'};
+const CATEN={정치:'Politics',경제:'Business',사회:'Society',세계:'World',IT:'Technology',과학:'Science',건강:'Health',환경:'Climate',문화:'Culture',연예:'Entertainment',스포츠:'Sports'};
 /* 아이콘 */
-const IC={'정치':NBU('landmark'),'경제':NBU('chart-arrows-vertical'),'사회':NBU('users-group'),'세계':NBU('world'),IT:NBU('device-laptop'),'연예':NBU('movie'),'스포츠':NBU('ball-football'),fire:NBU('flame',1),clock:NBU('clock'),chat:NBU('message-2',1),link:NBU('link'),book:NBU('book'),chart:NBU('chart-line'),spark:NBU('sparkles',1),news:NBU('file-text',1),press:NBU('news'),user:NBU('user'),gear:NBU('settings'),search:NBU('search'),coin:NBU('coin'),alert:NBU('alert-triangle',1),bell:NBU('bell',1),bm:NBU('bookmark',1),heart:NBU('heart',1),place:NBU('map-pin'),org:NBU('building-bank'),graph:NBU('affiliate'),photo:NBU('photo'),note:NBU('notes'),folder:NBU('folder',1),video:NBU('video',1),mood:NBU('mood-smile'),ai:NBU('sparkles'),aitext:NBU('file-text-ai'),aiimg:NBU('photo-ai'),history:NBU('history'),up:NBU('trending-up'),down:NBU('trending-down'),share:NBU('share'),apt:NBU('building-community'),home:NBU('building-community'),quiz:NBU('help-hexagon',1),comic:NBU('boom',1),cards:NBU('cards',1),streak:NBU('arrow-autofit-content'),login:NBU('lock',1),sync:NBU('cloud-data-connection',1),globe:NBU('world',1),info:NBU('info-circle',1),x:NBU('x'),flame:NBU('flame',1),timeline:NBU('timeline-event',1),market:NBU('chart-candle',1)};
+const IC={'정치':NBU('landmark'),'경제':NBU('chart-arrows-vertical'),'사회':NBU('users-group'),'세계':NBU('world'),IT:NBU('device-laptop'),'과학':NBU('flask-2'),'건강':NBU('heart'),'환경':NBU('leaf'),'문화':NBU('palette'),'연예':NBU('movie'),'스포츠':NBU('ball-football'),fire:NBU('flame',1),clock:NBU('clock'),chat:NBU('message-2',1),link:NBU('link'),book:NBU('book'),chart:NBU('chart-line'),spark:NBU('sparkles',1),news:NBU('file-text',1),press:NBU('news'),user:NBU('user'),gear:NBU('settings'),search:NBU('search'),coin:NBU('coin'),alert:NBU('alert-triangle',1),bell:NBU('bell',1),bm:NBU('bookmark',1),heart:NBU('heart',1),place:NBU('map-pin'),org:NBU('building-bank'),graph:NBU('affiliate'),photo:NBU('photo'),note:NBU('notes'),folder:NBU('folder',1),video:NBU('video',1),mood:NBU('mood-smile'),ai:NBU('sparkles'),aitext:NBU('file-text-ai'),aiimg:NBU('photo-ai'),history:NBU('history'),up:NBU('trending-up'),down:NBU('trending-down'),share:NBU('share'),apt:NBU('building-community'),home:NBU('building-community'),quiz:NBU('help-hexagon',1),comic:NBU('boom',1),cards:NBU('cards',1),streak:NBU('arrow-autofit-content'),login:NBU('lock',1),sync:NBU('cloud-data-connection',1),globe:NBU('world',1),info:NBU('info-circle',1),x:NBU('x'),flame:NBU('flame',1),timeline:NBU('timeline-event',1),market:NBU('chart-candle',1)};
 const ic=(n,c='')=>`<svg class="ico ${/u1/.test(IC[n]||'')?'tg ':''}${c}" viewBox="0 0 24 24" aria-hidden="true">${IC[n]||IC.news}</svg>`;
-const ago=t=>{if(!t)return'';const m=(Date.now()-new Date(t))/6e4;if(m<60)return Math.max(1,m|0)+'분 전';if(m<1440)return(m/60|0)+'시간 전';if(m<43200)return(m/1440|0)+'일 전';return fmtD(t)};
+const ago=t=>{if(!t)return'';const m=(Date.now()-new Date(t))/6e4,en=S?.region==='en'&&S?.orig;if(m<60)return en?`${Math.max(1,m|0)}m ago`:Math.max(1,m|0)+'분 전';if(m<1440)return en?`${m/60|0}h ago`:(m/60|0)+'시간 전';if(m<43200)return en?`${m/1440|0}d ago`:(m/1440|0)+'일 전';return fmtD(t)};
 const moodOf=(l,d)=>{const r=(l||0)/((l||0)+(d||0)||1);return r>=.7?['mood-happy','반가워요']:r>=.55?['mood-smile','좋아요']:r>=.45?['mood-empty','반반이에요']:r>=.3?['mood-sad','아쉬워요']:['mood-angry','화나요']};
 const moodBox=(l,d)=>{if(!(l+d))return'';const[m,t]=moodOf(l,d);return`<div class="mood"><b>${NBI(m,1,'on')}${t}</b><span>민심</span></div>`};
 const agoI=t=>{if(!t)return'';const h=new Date(t).getHours()%12||12;return NBI('clock-hour-'+h)+ago(t)};
@@ -36,7 +37,7 @@ const entc=(name,t,href)=>`<${href?`a href="${href}"`:'span'} class="ent ${t}">$
 const meta=(x,rel)=>`<span class="meta">${pp(x.press,x.url)}${ts(x.t||x.time,rel)}</span>`;
 function th(u,cls='th',fb='news'){return u?`<div class="${cls}" ${bg(u)}></div>`:`<div class="${cls} noimg">${ic(fb)}</div>`}
 /* ---------- 설정 ---------- */
-const S=Object.assign({hide:[],fs:100,region:'kr',orig:false},JSON.parse(localStorage.getItem('nb-settings')||'{}'));
+const S=Object.assign({hide:[],fs:100,region:'kr',orig:true},JSON.parse(localStorage.getItem('nb-settings')||'{}'));
 const saveS=()=>{localStorage.setItem('nb-settings',JSON.stringify(S));applyS()};
 const applyS=()=>{document.documentElement.style.fontSize=(16*S.fs/100)+'px'};applyS();
 const vis=i=>!S.hide.includes(i.category);
@@ -60,44 +61,29 @@ let G=null,PL={};
 /* 검색량 표기: Google 트렌드 '오늘 검색 횟수(대략)' 구간 */
 const kfmt=n=>n>=10000?(n/10000)+'만':n>=1000?(n/1000)+'천':String(n);
 const TTIP='Google 트렌드 기준 오늘 대략적인 검색 횟수(구간값)입니다. 순위는 검색량 → 관련 기사 수 순으로 매겼어요.';
-const tlab=t=>t.traffic_n?`검색 ${kfmt(t.traffic_n)}+`:'';
+const tlab=t=>t.traffic_n?(S.region==='en'&&S.orig?`Search ${kfmt(t.traffic_n)}+`:`검색 ${kfmt(t.traffic_n)}+`):'';
 function header(){
-  const R=S.region==='en'&&G;
-  // 3단 전환: 국내 / 해외(한국어 번역) / 해외(영문 원문) — 선택은 nb-settings에 저장
-  $('#updated').outerHTML=`<div class="rsw" id="rsw" role="radiogroup" aria-label="국내·해외 보기"><button role="radio" data-m="kr" title="국내 뉴스">국내</button><button role="radio" data-m="ko" title="해외 뉴스 · 한국어 번역">해외<small>KR</small></button><button role="radio" data-m="en" title="해외 뉴스 · 영문 원문">해외<small>EN</small></button></div>`;
-  $('#rsw').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;const m=b.dataset.m;S.region=m==='kr'?'kr':'en';if(m!=='kr')S.orig=m==='en';saveS();{const cp=location.pathname.slice(BASEP.length);go(/^gt?\//.test(cp)&&m!=='kr'?cp:'')};header2()};
+  $('#updated').outerHTML=`<div class="regionctl" id="rsw"><div class="rsw" role="radiogroup" aria-label="국내·해외 보기"><button role="radio" data-m="kr" title="국내 뉴스">국내</button><button role="radio" data-m="en" title="해외 뉴스">해외</button></div></div>`;
+  $('#rsw').onclick=ev=>{const b=ev.target.closest('[data-m]');if(!b)return;const m=b.dataset.m;S.region=m;if(m==='en')S.orig=true;saveS();const cp=location.pathname.slice(BASEP.length);go(m==='en'&&/^gt?\//.test(cp)?cp:'');header2()};
   header2();
 }
 function header2(){
-  const R=S.region==='en'&&G;
-  const MD=R?(S.orig?'en':'ko'):'kr';
-  document.querySelectorAll('#rsw button').forEach(b=>{const on=b.dataset.m===MD;b.classList.toggle('on',on);b.setAttribute('aria-checked',on)});
-  document.body.classList.toggle('en',!!R);
+  const R=!!(S.region==='en'&&G),EN=R&&S.orig,MD=R?'en':'kr';
+  document.querySelectorAll('#rsw [data-m]').forEach(b=>{const on=b.dataset.m===MD;b.classList.toggle('on',on);b.setAttribute('aria-checked',on)});
+  document.body.classList.toggle('en',EN);document.documentElement.lang=EN?'en':'ko';window.dispatchEvent(new CustomEvent('nb:region-changed'));
+  const top=EN?['Today','Timeline','Markets','Library']:['오늘','타임라인','마켓','내 서재'];
+  document.querySelectorAll('.topnav a').forEach((a,i)=>a.textContent=top[i]||a.textContent);
+  const tab=EN?['Timeline','Markets','Today','Library','Menu']:['타임라인','마켓','오늘','내 서재','메뉴'];
+  document.querySelectorAll('.tabbar a').forEach((a,i)=>{const svg=a.querySelector('svg');if(svg)a.replaceChildren(svg,document.createTextNode(tab[i]||''))});
   const T=R?G.trends:D.trends;
   const tk=T.map((t,i)=>`<a href="${R?'gt/'+i:kh(t.keyword)}" title="${TTIP}"><b>${i+1}</b>${esc(R&&!S.orig?(t.keyword_ko||t.keyword):t.keyword)}<small>${tlab(t)}</small></a>`).join('');
-  $('#ticker').innerHTML=`<div class="lab">${ic('fire')}${R?'해외 트렌드':'실시간'}</div><div class="tw" id="tw"><div class="run">${tk}<i class="sp"></i>${tk}</div></div>`;
+  const tr=R?`<button type="button" class="translate ${S.orig?'':'on'}" id="translate" title="${S.orig?'해외 뉴스를 한국어로 번역해 보기':'영어 원문으로 보기'}">${S.orig?'번역 보기':'원문 보기'}</button>`:'';
+  $('#ticker').innerHTML=`<div class="lab">${ic('fire')}${R?(EN?'Global trends':'해외 트렌드'):'실시간'}</div><div class="tw" id="tw"><div class="run">${tk}<i class="sp"></i>${tk}</div></div>${tr}`;
   tickerDrag($('#tw'));
-  const st=R?`해외 기사 ${G.stats.articles.toLocaleString()}건 · 매체 ${G.stats.presses}곳 · ${fmtD(G.updated)} ${new Date(G.updated).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})} 업데이트`:`${fmtD(D.updated)} ${new Date(D.updated).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'})} 업데이트 · 기사 ${(D.stats.naver+D.stats.google).toLocaleString()}건 · 언론사 ${D.stats.presses}곳`;
-  
+  const tb=$('#translate');if(tb)tb.onclick=()=>{S.orig=!S.orig;saveS();header2();route()};
 }
 /* 티커: 자동 흐름 + 마우스 드래그·터치 스와이프 */
-function tickerDrag(el){
-  let down=false,sx=0,sl=0,moved=false,pause=0,raf;
-  let hw=el.scrollWidth/2,last=0,vis=true;const half=()=>hw,RM=matchMedia('(prefers-reduced-motion: reduce)');
-  if(window.ResizeObserver){window._tkro&&window._tkro.disconnect();window._tkro=new ResizeObserver(()=>{hw=el.scrollWidth/2});window._tkro.observe(el);el.firstElementChild&&window._tkro.observe(el.firstElementChild)}
-  const step=t=>{const dt=last?Math.min(t-last,50):16.7;last=t;if(!down&&Date.now()>pause&&!RM.matches){el.scrollLeft+=dt*.036;if(el.scrollLeft>=hw)el.scrollLeft-=hw}window._tkr=vis&&!document.hidden?requestAnimationFrame(step):0};
-  const run=()=>{if(!window._tkr&&vis&&!document.hidden){last=0;window._tkr=requestAnimationFrame(step)}};
-  cancelAnimationFrame(window._tkr);window._tkr=0;run();
-  if(window.IntersectionObserver){window._tkio&&window._tkio.disconnect();window._tkio=new IntersectionObserver(es=>{vis=es[es.length-1].isIntersecting;run()});window._tkio.observe(el)}
-  if(!window._tkvis){window._tkvis=1;document.addEventListener('visibilitychange',()=>window._tkrun&&window._tkrun())}window._tkrun=run;
-  el.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;sx=e.clientX;sl=el.scrollLeft;el.classList.add('drag')});
-  window.addEventListener('pointermove',e=>{if(!down)return;const d=e.clientX-sx;if(Math.abs(d)>4)moved=true;el.scrollLeft=sl-d;if(el.scrollLeft<0)el.scrollLeft+=half();if(el.scrollLeft>=half())el.scrollLeft-=half()});
-  window.addEventListener('pointerup',()=>{if(down){down=false;pause=Date.now()+2500;el.classList.remove('drag')}});
-  el.addEventListener('click',e=>{if(moved){e.preventDefault();moved=false}},true);
-  el.addEventListener('touchstart',()=>{pause=Date.now()+4000},{passive:true});
-  el.addEventListener('scroll',()=>{if(el.scrollLeft>=hw)el.scrollLeft-=hw},{passive:true});
-  el.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){el.scrollLeft+=e.deltaY;e.preventDefault()}pause=Date.now()+2500},{passive:false});
-}
+function tickerDrag(el){if(!el)return;el.addEventListener('pointerdown',()=>el.classList.add('drag'));['pointerup','pointercancel','pointerleave'].forEach(n=>el.addEventListener(n,()=>el.classList.remove('drag')))}
 const BASEP=new URL(document.baseURI).pathname;
 function go(p){p=String(p||'');const u=p.startsWith('/')?p:BASEP+p.replace(/^\.\//,'');if(u!==location.pathname+location.hash)history.pushState(null,'',u);route()}
 window.addEventListener('popstate',route);
@@ -107,7 +93,7 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!a|
   const u=new URL(a.href);if(u.origin!==location.origin||!u.pathname.startsWith(BASEP)||/\.[a-z0-9]+$/i.test(u.pathname)||u.pathname.startsWith(BASEP+'admin')||u.pathname.startsWith(BASEP+'politicians')||u.pathname.startsWith(BASEP+'persons')||u.pathname.startsWith(BASEP+'history/')||/^(games|login|privacy|terms)\//.test(u.pathname.slice(BASEP.length)))return;e.preventDefault();go(u.pathname+u.hash)});
 const DTITLE=document.title,DDESC=document.querySelector('meta[name=description]').content;
 function setMeta(t,d){document.title=t?t+' · NewsBoard':DTITLE;document.querySelector('meta[name=description]').content=d||DDESC}
-function shareBtn(){return`<button class="share" type="button" data-share>${ic('link')}공유</button>`}
+function shareBtn(){return`<button class="share" type="button" data-share>${ic('link')}${S.region==='en'&&S.orig?'Share':'공유'}</button>`}
 function toast(m){let t=$('#toast');if(!t){t=document.createElement('div');t.id='toast';t.setAttribute('role','status');document.body.appendChild(t)}t.textContent=m;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),2200)}
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-share]');if(!b)return;const url=location.href.split('#')[0],title=document.title,text=document.querySelector('meta[name=description]').content;
   if(navigator.share){try{await navigator.share({title,text,url});return}catch(x){if(x.name==='AbortError')return}}
@@ -421,34 +407,36 @@ async function archive(){
 
 /* ---------- 해외 모드 ---------- */
 const T_=(o,k)=>S.orig?o[k]:(o[k+'_ko']||o[k]);
-function origBtn(){return`<button class="obtn ${S.orig?'on':''}" id="ob">${ic('book')}${S.orig?'번역 보기':'원문(EN) 보기'}</button>`}
-function bindOrig(re){const b=$('#ob');if(b)b.onclick=()=>{S.orig=!S.orig;saveS();header2();re()}}
+const gcat=c=>S.orig?(CATEN[c]||c):c;
+const gt=(en,ko)=>S.orig?en:ko;
+function origBtn(){return''}
+function bindOrig(re){}
 function gtoday(){
   const I=G.issues,L=I[0];
-  app.innerHTML=`<div class="gbar"><span>${ic('세계')}해외 주요 뉴스 · 한국어 자동 번역</span>${origBtn()}</div>
-  <section class="hero"><a class="lead card" href="g/${L.id}" ${bg(L.image)}><div class="in"><div class="no">01</div><span class="cat 세계">${ic('세계')}${esc(L.category)}</span><h1>${esc(T_(L,'title'))}</h1>${L.summary?`<p class="ld">${esc(T_(L,'summary'))}</p>`:''}
-   <div class="meter"><div>${ic('news')}<b>${L.mentions}</b><span>관련 기사</span></div><div>${ic('user')}<b>${L.presses}</b><span>매체</span></div><div>${ic('spark')}<b>${L.gdelt||0}</b><span>해외 보도</span></div></div></div></a>
-   <div class="side">${I.slice(1,5).map(i=>`<a class="card mini" href="g/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><span class="cat 세계">${esc(i.category)}</span><h3>${esc(T_(i,'title'))}</h3><div class="m">${esc(i.press)} 외 ${Math.max(0,i.presses-1)}곳</div></div></a>`).join('')}</div></section>
-  ${sec('해외 이슈 TOP','Global top stories','','세계')}
-  <div class="grid">${I.slice(5).map(i=>`<a class="card ic" href="g/${i.id}"><div class="img" ${bg(i.image)}>${i.image?'':`<div class="noimg" style="height:100%">${ic('news')}</div>`}<span class="rk">${i.rank}</span></div><div class="bd"><h3>${esc(T_(i,'title'))}</h3><div class="ft"><span>${esc(i.press)} · 매체 ${i.presses}곳</span></div></div></a>`).join('')}</div>
-  ${sec('해외 실시간 검색어','Google Trends US','','fire')}
+  app.innerHTML=`<div class="gbar"><span>${ic('세계')}${gt('Global briefing · original reporting','해외 주요 뉴스 · 한국어 자동 번역')}</span>${origBtn()}</div>
+  <section class="hero"><a class="lead card" href="g/${L.id}" ${bg(L.image)}><div class="in"><div class="no">01</div><span class="cat 세계">${ic('세계')}${esc(gcat(L.category))}</span><h1>${esc(T_(L,'title'))}</h1>${L.summary?`<p class="ld">${esc(T_(L,'summary'))}</p>`:''}
+   <div class="meter"><div>${ic('news')}<b>${L.mentions}</b><span>${gt('stories','관련 기사')}</span></div><div>${ic('user')}<b>${L.presses}</b><span>${gt('publishers','매체')}</span></div><div>${ic('spark')}<b>${L.gdelt||0}</b><span>${gt('extra coverage','해외 보도')}</span></div></div></div></a>
+   <div class="side">${I.slice(1,5).map(i=>`<a class="card mini" href="g/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><span class="cat 세계">${esc(gcat(i.category))}</span><h3>${esc(T_(i,'title'))}</h3><div class="m">${esc(i.press)} · ${gt(`${i.presses} publishers`,`외 ${Math.max(0,i.presses-1)}곳`)}</div></div></a>`).join('')}</div></section>
+  ${sec(gt('Global top stories','해외 이슈 TOP'),'Global top stories','','세계')}
+  <div class="grid">${I.slice(5).map(i=>`<a class="card ic" href="g/${i.id}"><div class="img" ${bg(i.image)}>${i.image?'':`<div class="noimg" style="height:100%">${ic('news')}</div>`}<span class="rk">${i.rank}</span></div><div class="bd"><h3>${esc(T_(i,'title'))}</h3><div class="ft"><span>${esc(i.press)} · ${gt(`${i.presses} publishers`,`매체 ${i.presses}곳`)}</span></div></div></a>`).join('')}</div>
+  ${sec(gt('Live searches','해외 실시간 검색어'),'Google Trends','','fire')}
   <div class="trends">${G.trends.slice(0,10).map((t,k)=>`<a class="tr" href="gt/${k}">${th(t.image,'tt','search')}<span class="n">${k+1}</span><b>${esc(T_(t,'keyword'))}</b><span class="tv" title="${TTIP}">${tlab(t)}</span></a>`).join('')}</div>
-  <p class="fine">번역은 무료 자동 번역(Google 번역 웹, 실패 시 MyMemory)으로 생성되어 어색하거나 틀릴 수 있어요. ‘원문(EN) 보기’로 확인하세요.</p>`;
+  <p class="fine">${gt('This page shows original English reporting. Use “번역 보기” in the header when you want a Korean machine translation.','번역은 자동 생성되어 어색하거나 틀릴 수 있어요. 상단의 원문 보기를 이용해 확인하세요.')}</p>`;
   bindOrig(gtoday);
 }
 function gissue(id){const i=G.issues.find(x=>x.id===id);if(!i)return gtoday();setMeta(T_(i,'title'),T_(i,'summary'));
-  app.innerHTML=`<div class="bkrow"><a class="back" href="./">${NBI('arrow-left')} 해외 TOP</a>${shareBtn()}</div><div class="gbar"><span>${ic('세계')}해외 · 자동 번역</span>${origBtn()}</div>
-  <article class="dhead card"><div class="img" ${bg(i.image)}><div class="ov"><span class="cat 세계">${esc(i.category)}</span><b>해외 이슈 ${i.rank}위</b></div></div>
+  app.innerHTML=`<div class="bkrow"><a class="back" href="./">${NBI('arrow-left')} ${gt('Global top stories','해외 TOP')}</a>${shareBtn()}</div><div class="gbar"><span>${ic('세계')}${gt('Global reporting','해외 · 자동 번역')}</span>${origBtn()}</div>
+  <article class="dhead card"><div class="img" ${bg(i.image)}><div class="ov"><span class="cat 세계">${esc(gcat(i.category))}</span><b>${gt(`Global issue #${i.rank}`,`해외 이슈 ${i.rank}위`)}</b></div></div>
    <div class="bd"><h1>${esc(T_(i,'title'))}</h1>${S.orig?'':`<p class="otit">${esc(i.title)}</p>`}
-   <div class="kpis"><div>${ic('news')}<b>${i.mentions}</b><span>관련 기사</span></div><div>${ic('user')}<b>${i.presses}</b><span>매체</span></div><div>${ic('spark')}<b>${i.gdelt||0}</b><span>해외 보도</span></div><div>${i.sources[0]?.t?NBI('clock-hour-'+(new Date(i.sources[0].t).getHours()%12||12)):ic('clock')}<b>${ago(i.sources[0]?.t)}</b><span>최근 보도</span></div></div>
+   <div class="kpis"><div>${ic('news')}<b>${i.mentions}</b><span>${gt('stories','관련 기사')}</span></div><div>${ic('user')}<b>${i.presses}</b><span>${gt('publishers','매체')}</span></div><div>${ic('spark')}<b>${i.gdelt||0}</b><span>${gt('extra coverage','해외 보도')}</span></div><div>${i.sources[0]?.t?NBI('clock-hour-'+(new Date(i.sources[0].t).getHours()%12||12)):ic('clock')}<b>${ago(i.sources[0]?.t)}</b><span>${gt('latest coverage','최근 보도')}</span></div></div>
    <div class="chips">${i.keywords.map(k=>`<span class="chip">#${esc(k)}</span>`).join('')}</div></div></article>
-  ${i.summary?`<div class="card deep"><p>${esc(T_(i,'summary'))}</p><small>기사 요약문 자동 번역</small></div>`:''}
-  ${sec('보도 흐름','Coverage','','clock')}<div class="flow">${i.sources.map(x=>`<a class="fe" href="${esc(x.url)}" target="_blank" rel="noopener">${th(x.img,'fi')}<div><h5>${esc(T_(x,'title'))}</h5>${S.orig?'':`<p>${esc(x.title)}</p>`}${meta(x,1)}</div></a>`).join('')}</div>`;
+  ${i.summary?`<div class="card deep"><p>${esc(T_(i,'summary'))}</p><small>${gt('Automated article summary','기사 요약문 자동 번역')}</small></div>`:''}
+  ${sec(gt('Coverage','보도 흐름'),'Coverage','','clock')}<div class="flow">${i.sources.map(x=>`<a class="fe" href="${esc(x.url)}" target="_blank" rel="noopener">${th(x.img,'fi')}<div><h5>${esc(T_(x,'title'))}</h5>${S.orig?'':`<p>${esc(x.title)}</p>`}${meta(x,1)}</div></a>`).join('')}</div>`;
   bindOrig(()=>gissue(id));
 }
 function gtrend(k){const t=G.trends[k];if(!t)return gtoday();setMeta(T_(t,'keyword'),'');
-  app.innerHTML=`<div class="bkrow"><a class="back" href="./">${NBI('arrow-left')} 해외</a>${shareBtn()}</div><div class="gbar"><span>${ic('fire')}해외 검색어</span>${origBtn()}</div>
-  <section class="kwh card" ${bg(t.image)}><div class="in"><span class="chip event">${ic('fire')}미국 검색 ${k+1}위 · ${tlab(t)}</span><h1>${esc(T_(t,'keyword'))}</h1>${S.orig?'':`<p class="otit">${esc(t.keyword)}</p>`}</div></section>
+  app.innerHTML=`<div class="bkrow"><a class="back" href="./">${NBI('arrow-left')} ${gt('Global','해외')}</a>${shareBtn()}</div><div class="gbar"><span>${ic('fire')}${gt('Global searches','해외 검색어')}</span>${origBtn()}</div>
+  <section class="kwh card" ${bg(t.image)}><div class="in"><span class="chip event">${ic('fire')}${gt(`Search trend #${k+1}`,`검색 ${k+1}위`)} · ${tlab(t)}</span><h1>${esc(T_(t,'keyword'))}</h1>${S.orig?'':`<p class="otit">${esc(t.keyword)}</p>`}</div></section>
   <div class="srcl2">${t.news.map(n=>`<a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(T_(n,'title'))}${S.orig?'':`<small>${esc(n.title)}</small>`}</a>`).join('')}</div>`;bindOrig(()=>gtrend(k));
 }
 

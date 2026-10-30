@@ -251,12 +251,12 @@ def verify_categories(issues):
     low = [x for x in issues if x.get('cat_conf', 1) < 0.55]
     if not low: return
     k = 'cat:' + hkey(*[x['title'] for x in low])
-    r = llm(k, '[뉴스 이슈 제목]\n%s\n\n각 이슈의 카테고리를 정치/경제/사회/세계/IT/연예/스포츠 중 하나로 골라라. 정당·정치인·대통령·선거가 주체면 골프·올림픽 같은 단어가 있어도 정치다. JSON: {"c": [{"i": 번호, "cat": "카테고리", "conf": 0~1}]}' % (
+    r = llm(k, '[뉴스 이슈 제목]\n%s\n\n각 이슈의 카테고리를 정치/경제/사회/세계/IT/과학/건강/환경/문화/연예/스포츠 중 하나로 골라라. 정당·정치인·대통령·선거가 주체면 골프·올림픽 같은 단어가 있어도 정치다. JSON: {"c": [{"i": 번호, "cat": "카테고리", "conf": 0~1}]}' % (
         '\n'.join('%d. %s' % (n, x['title']) for n, x in enumerate(low))), 400)
     for o in (r or {}).get('c', []):
         try:
             x = low[int(o['i'])]
-            if o['cat'] in ('정치', '경제', '사회', '세계', 'IT', '연예', '스포츠') and float(o.get('conf', 0)) >= 0.6:
+            if o['cat'] in ('정치', '경제', '사회', '세계', 'IT', '과학', '건강', '환경', '문화', '연예', '스포츠') and float(o.get('conf', 0)) >= 0.6:
                 if o['cat'] != x['category']: x['cat_why'] = (x.get('cat_why') or []) + ['AI 재판정 %s→%s' % (x['category'], o['cat'])]
                 x['category'] = o['cat']; x['cat_conf'] = round(float(o['conf']), 2)
         except Exception: pass

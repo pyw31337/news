@@ -16,7 +16,7 @@ const DEF={v:1,uid:null,saves:{},cols:[{id:'c0',name:'나중에 읽기'}],follow
 let M=JSON.parse(JSON.stringify(DEF));let db=null;
 const idb=()=>new Promise(r=>{try{const q=indexedDB.open('newsboard',1);q.onupgradeneeded=()=>q.result.createObjectStore('kv');q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)}catch(e){r(null)}});
 const load=async()=>{db=await idb();let v=null;if(db)v=await new Promise(r=>{const t=db.transaction('kv').objectStore('kv').get('my');t.onsuccess=()=>r(t.result);t.onerror=()=>r(null)});if(!v)try{v=JSON.parse(localStorage.getItem('nb-my')||'null')}catch(e){}if(v)M=Object.assign(JSON.parse(JSON.stringify(DEF)),v);if(!M.uid)M.uid='g-'+Math.random().toString(36).slice(2,10);};
-const save=()=>{M.updated=Date.now();const s=JSON.stringify(M);try{localStorage.setItem('nb-my',s)}catch(e){}if(db)try{db.transaction('kv','readwrite').objectStore('kv').put(JSON.parse(s),'my')}catch(e){}badge();syncSoon()};
+const save=()=>{M.updated=Date.now();const s=JSON.stringify(M);try{localStorage.setItem('nb-my',s)}catch(e){}if(db)try{db.transaction('kv','readwrite').objectStore('kv').put(JSON.parse(s),'my')}catch(e){}window.dispatchEvent(new CustomEvent('nb:my-changed'));badge();syncSoon()};
 /* ---------- 여러 기기 동기화: Cloudflare Worker + D1 (로그인 시에만) ---------- */
 const SYNC='https://newsboard-sync.pyw213.workers.dev';
 {const h=new URLSearchParams(location.hash.slice(1));if(h.get('nbt')){localStorage.setItem('nb-tok',h.get('nbt'));localStorage.setItem('nb-prov',h.get('nbp')||'');if(h.get('nbl'))localStorage.setItem('nb-linked',h.get('nbl'));localStorage.setItem('nb-migrate','1')}
@@ -62,7 +62,8 @@ function tick(){const k=kst();const cb=document.querySelector('.tabbar .ctr .cb.
   const a=cb.closest('.ctr');if(a)a.setAttribute('aria-label',`오늘 · ${k.d} ${k.h}시 ${k.m}분`)}
   clearTimeout(tickT);tickT=setTimeout(tick,(60-kst().s)*1000+50)}
 function nav(){const tb=document.querySelector('.tabbar');if(!tb)return;
-  const T=[['timeline','timeline','타임라인'],['market','market','마켓'],['','today','오늘'],['my','my','내 서재'],['menu','menu','메뉴']];
+  const english=typeof S!=='undefined'&&S.region==='en'&&S.orig;
+  const T=english?[['timeline','timeline','Timeline'],['market','market','Markets'],['','today','Today'],['my','my','Library'],['menu','menu','Menu']]:[['timeline','timeline','타임라인'],['market','market','마켓'],['','today','오늘'],['my','my','내 서재'],['menu','menu','메뉴']];
   tb.className='tabbar v7 nav-'+NS;
   tb.innerHTML=T.map(([h,v,l])=>v==='today'?`<a href="./" data-v="today" class="ctr" aria-label="오늘"><span class="cb${CLK?' clk':''}"><span class="pinh"></span>${CLK?clkHTML():NS==='date'?`<b class="dn">${dnum}</b><small>TODAY</small>`:SV(P.today)}</span><span class="cl">${l}</span></a>`:`<a href="${h}" data-v="${v}">${SV(P[v])}<span>${l}</span></a>`).join('');
   if(CLK){tb.classList.add('clkv');tick()}
@@ -72,6 +73,7 @@ function nav(){const tb=document.querySelector('.tabbar');if(!tb)return;
   const top=document.querySelector('header.top');if(top&&!document.getElementById('bell')){const b=document.createElement('a');b.id='bell';b.href='alerts';b.className='bell';b.setAttribute('aria-label','알림');b.innerHTML=SV(P.bell)+'<i id="bellc"></i>';top.appendChild(b);
     const m=document.createElement('a');m.href='menu';m.className='tmenu';m.dataset.v='menu';m.setAttribute('aria-label','메뉴');m.innerHTML=SV(P.menu);top.appendChild(m)}
 }
+addEventListener('nb:region-changed',nav);
 const VMAP={'':'today',issue:'today',kw:'today',g:'today',gt:'today',entity:'today',people:'today',market:'market',timeline:'timeline',my:'my',alerts:'my'};
 function hl(){const v=decodeURIComponent(location.pathname.slice(BASEP.length)).split('/')[0];const t=VMAP[v]??'menu';document.querySelectorAll('.tabbar [data-v],.topnav [data-v],.tmenu').forEach(x=>x.classList.toggle('on',x.dataset.v===t))}
 const _ps=history.pushState;history.pushState=function(){const r=_ps.apply(this,arguments);setTimeout(()=>{hl();after()},0);return r};

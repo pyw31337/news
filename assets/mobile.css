@@ -10,3 +10,10 @@
   .lead,.lead .in{min-height:0}
   .whyl{grid-template-columns:minmax(0,1fr)}
 }
+
+/* 태블릿부터 TOP 카드의 배경과 본문 폭을 같은 한 열로 고정한다. */
+@media (min-width:640px) and (max-width:999px){
+  .grid10{grid-template-columns:minmax(0,1fr)}
+  .grid10 .ic.wide{grid-column:auto;grid-row:auto;flex-direction:column}
+  .grid10 .ic.wide .img{width:auto;aspect-ratio:16/9}
+}

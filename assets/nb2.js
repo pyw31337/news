@@ -58,11 +58,13 @@ function tkItems(v){const DD=gD(),GG=gG();if(!DD)return[];const R=S.region==='en
   if(v==='apt'){if(!APT){loadApt().then(()=>tkcur==='apt'&&renderTicker());return[{h:'market',t:'불러오는 중'}]}const T=APT.trade||{},ks=Object.keys(T).sort();let k=ks.at(-1);if(k&&Object.keys(T[k]).length<10&&ks.length>1)k=ks.at(-2);const M=T[k]||{};return Object.entries(M).sort((a,b)=>b[1][0]-a[1][0]).slice(0,12).map(([g])=>({h:'market',t:g+'구'}))}
   return[]}
 let tkcur='live';
-function renderTicker(){const el=document.getElementById('ticker');if(!el||!gD())return;tkcur=tkCur();const o=TK.find(x=>x.v===tkcur)||TK[0];const R=S.region==='en'&&gG();
-  let it=tkItems(o.v);if(!it.length){tkcur='live';it=tkItems('live')}const lab=tkcur==='live'&&R?'해외 트렌드':(TK.find(x=>x.v===tkcur)||TK[0]).label;
+function renderTicker(){const el=document.getElementById('ticker');if(!el||!gD())return;tkcur=tkCur();const o=TK.find(x=>x.v===tkcur)||TK[0];const R=S.region==='en'&&gG(),EN=R&&S.orig;
+  let it=tkItems(o.v);if(!it.length){tkcur='live';it=tkItems('live')}const lab=tkcur==='live'&&R?(EN?'Global trends':'해외 트렌드'):(TK.find(x=>x.v===tkcur)||TK[0]).label;
   const tk=it.map((x,i)=>`<a href="${x.h}"><b>${i+1}</b>${E(x.t)}${x.x||''}</a>`).join('');
-  el.innerHTML=`<button type="button" class="lab tksel" aria-haspopup="listbox" aria-expanded="false" aria-label="실시간 순위 종류 고르기 (지금: ${E(lab)})">${I(o.icon)}<span>${E(lab)}</span>${I('chevron-down')}</button><div class="tw" id="tw"><div class="run">${tk}<i class="sp"></i>${tk}</div></div>`;
+  const tr=R?`<button type="button" class="translate ${S.orig?'':'on'}" id="translate" title="${S.orig?'해외 뉴스를 한국어로 번역해 보기':'영어 원문으로 보기'}">${S.orig?'번역 보기':'원문 보기'}</button>`:'';
+  el.innerHTML=`<button type="button" class="lab tksel" aria-haspopup="listbox" aria-expanded="false" aria-label="실시간 순위 종류 고르기 (지금: ${E(lab)})">${I(o.icon)}<span>${E(lab)}</span>${I('chevron-down')}</button><div class="tw" id="tw"><div class="run">${tk}<i class="sp"></i>${tk}</div></div>${tr}`;
   el.dataset.k=tkcur;typeof tickerDrag==='function'&&tickerDrag(document.getElementById('tw'));
+  const tb=el.querySelector('#translate');if(tb)tb.onclick=()=>{S.orig=!S.orig;saveS();typeof header2==='function'&&header2();route()};
   const b=el.querySelector('.tksel');b.onclick=()=>{if(openPop&&openPop.btn===b)return closePop();popList(b,TK.filter(x=>x.v!=='world'||gG()),tkcur,x=>{localStorage.setItem('nb-tk',x.v);if(x.v==='apt')loadApt().then(renderTicker);renderTicker()},{title:'무엇의 순위를 볼까요?',w:240,cls:'tkpop'})}}
 window.nbTicker=renderTicker;
 const hookH=()=>{if(typeof header2!=='function'||header2._nb)return false;const o=header2;window.header2=function(){const r=o.apply(this,arguments);renderTicker();return r};window.header2._nb=1;return true};
