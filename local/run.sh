@@ -52,8 +52,10 @@ esac
 "$PY" scripts/collect.py > "$B/logs/collect.last.log" 2>&1 || { echo "collect failed"; sync_data || true; exit 1; }
 # 원본 수집을 분석 결과와 분리하여 즉시 보존한다.
 sync_data || true
+# 번역·해외 데이터는 AI 심층 분석보다 먼저 갱신한다. 분석이 오래 걸려도 독자가 보는 뉴스는 지연되지 않는다.
+"$PY" scripts/global_news.py > "$B/logs/global.last.log" 2>&1 || echo "global collect deferred"
+sync_data || true
 OVERLAY_WRITE=1 LLM_BUDGET=${LLM_BUDGET:-90} "$PY" scripts/enrich.py > "$B/logs/enrich.last.log" 2>&1 || { echo "enrich failed"; tail -5 "$B/logs/enrich.last.log"; sync_data || true; exit 1; }
 tail -1 "$B/logs/enrich.last.log"
-"$PY" scripts/global_news.py > "$B/logs/global.last.log" 2>&1 || echo "global collect deferred"
 sync_data || true
 find "$B/logs" -name 'run-*.log' -mtime +30 -delete; echo "== end $(date)"
