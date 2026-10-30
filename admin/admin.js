@@ -20,7 +20,7 @@ async function boot(){
   const c=S.counts||{},mm=S.macmini||{},L=S.llm||{},sz=S.sizes||{};
   const mmState=mm.age_h==null?['bad','기록 없음']:mm.age_h<30?['ok','정상']:mm.age_h<54?['warn','하루 넘게 갱신 없음']:['bad','멈춤 의심'];
   const tot=Object.values(sz).reduce((a,b)=>a+(b||0),0);
-  app.innerHTML=`
+  app.innerHTML=`<div id="dash"></div>
   ${S.missing?'<p class="err">status.json이 아직 없어요. 다음 수집(매시 7분 UTC) 뒤에 채워져요.</p>':''}
   <h2>요약 <small>공개 데이터 기준 · 상태 생성 ${kst(S.updated)}</small></h2>
   <div class="kpis">
@@ -48,7 +48,7 @@ async function boot(){
   <h2>데이터 탐색</h2><div class="card"><div class="row" style="margin-bottom:.6rem"><select id="dsel" aria-label="데이터 파일"><option value="data/today.json">today.json (오늘)</option><option value="data/global.json">global.json (해외)</option><option value="data/status.json">status.json (상태)</option><option value="data/archive/index.json">archive/index.json</option></select><input id="dq" placeholder="검색어(키·값)" aria-label="검색"></div><div class="json" id="dv"></div></div>
   <h2>설정</h2><div class="card"><form id="pf" style="flex-wrap:wrap"><input type="password" id="p0" placeholder="현재 비밀번호" autocomplete="current-password" aria-label="현재 비밀번호"><input type="password" id="p1" placeholder="새 비밀번호(4자 이상)" autocomplete="new-password" aria-label="새 비밀번호"><input type="password" id="p2" placeholder="새 비밀번호 확인" autocomplete="new-password" aria-label="새 비밀번호 확인"><button>변경</button></form><p class="err" id="perr" role="status"></p>
   <p class="fine">비밀번호는 이 기기 브라우저에만 저장돼요(다른 기기는 초기 비밀번호 그대로). 브라우저 데이터를 지우면 초기값으로 돌아가요.</p></div>`;
-  runs();explorer();
+  runs();explorer();window.renderDash&&renderDash(document.getElementById('dash'));
   $('#pf').onsubmit=async e=>{e.preventDefault();const p=$('#perr');if(await h($('#p0').value)!==cur())return p.textContent='현재 비밀번호가 달라요.';if($('#p1').value.length<4)return p.textContent='4자 이상으로 정해주세요.';if($('#p1').value!==$('#p2').value)return p.textContent='새 비밀번호가 서로 달라요.';
     const n=await h($('#p1').value);localStorage.setItem('nb-admin-hash',n);sessionStorage.setItem('nb-admin-ok',n);p.style.color='var(--ok)';p.textContent='바꿨어요. 이 기기에서만 적용돼요.';e.target.reset()};
 }

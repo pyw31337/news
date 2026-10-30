@@ -26,3 +26,15 @@ h2{font-size:1rem;margin:1.6rem 0 .6rem;display:flex;align-items:baseline;gap:.5
 a{color:#2f6bff}.pill{display:inline-block;font-size:.7rem;padding:.05rem .45rem;border-radius:999px;background:#eef0f5;white-space:nowrap}
 .pill.ok{background:#e1f6ef;color:#0b7a5f}.pill.bad{background:#fde7e7;color:#b42318}.pill.run{background:#fff3e0;color:#a65b00}
 .row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+/* 데이터 수집 현황판 */
+#dash h3{margin:0 0 10px;font-size:.95rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}#dash h3 small{font-weight:500;color:#8a91a8;font-size:.75rem}
+.dprob ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}.dprob li{display:flex;gap:10px;flex-wrap:wrap;padding:8px 10px;border-radius:8px;font-size:.85rem}
+.dprob li.bad{background:#fff0ee}.dprob li.warn{background:#fff8e6}.dprob li span{color:#5a6178}
+.dsrc td{vertical-align:top}.dsrc td small{display:block;font-size:.7rem;margin-top:2px}.dsrc .ex{color:#6a7290}
+.gh{font-size:.8rem!important;letter-spacing:.06em;color:#ff4d2e}
+.sp{display:flex;align-items:flex-end;gap:2px;min-width:120px}.sp i{flex:1;background:#2f6bff;border-radius:2px 2px 0 0;min-height:1px}
+.axis{display:flex;gap:2px;font-size:.62rem;color:#8a91a8;margin-top:4px}.axis span{flex:1;text-align:center;overflow:hidden;white-space:nowrap}.axis em{display:block;color:#e5243b;font-style:normal;font-weight:800}
+.pgw{display:flex;align-items:center;gap:6px}.pg{flex:1;height:8px;background:#eceff5;border-radius:99px;overflow:hidden;min-width:70px}.pg i{display:block;height:100%;border-radius:99px}
+.pg i.ok{background:#11a683}.pg i.mid{background:#f0a000}.pg i.low{background:#e5243b}.pgw small{font-size:.7rem;font-weight:800;color:#4a5170}
+.stk{display:flex;gap:2px;border-radius:99px;overflow:hidden}.stk i{min-width:3px}.lg{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:8px;font-size:.75rem;color:#4a5170}.lg i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
+.dq td small{display:block;font-size:.7rem}
