@@ -83,6 +83,14 @@ jobs:
           LLM_MODEL: ${{ vars.LLM_MODEL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
         run: python scripts/fun.py
+      - name: 오늘의 OX(레벨별 · 한국어/영어, 날짜별 누적)
+        continue-on-error: true
+        timeout-minutes: 4
+        env:
+          LLM_ENDPOINT: ${{ vars.LLM_ENDPOINT }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+        run: python scripts/quiz.py
       - name: 민심·영상(블로그·카페 반응 + 방송사 영상, 유튜브 키 없어도 동작)
         continue-on-error: true
         timeout-minutes: 6
@@ -168,7 +176,7 @@ jobs:
       - name: 사이트 묶기
         run: |
           mkdir _site && cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png favicon.ico _site/
-          mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp data/stats.json data/stats_detail.json _site/data/ 2>/dev/null || cp data/stats.json _site/data/ 2>/dev/null || true); (cp data/market_detail.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true); (cp data/voice.json _site/data/ 2>/dev/null || true); (cp data/fun.json _site/data/ 2>/dev/null && python scripts/fun_og.py _site || true); (cp -r data/fun _site/data/ 2>/dev/null || true)
+          mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp data/stats.json data/stats_detail.json _site/data/ 2>/dev/null || cp data/stats.json _site/data/ 2>/dev/null || true); (cp data/market_detail.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true); (cp data/voice.json _site/data/ 2>/dev/null || true); (cp data/quiz.json _site/data/ 2>/dev/null || true); (cp data/fun.json _site/data/ 2>/dev/null && python scripts/fun_og.py _site || true); (cp -r data/fun _site/data/ 2>/dev/null || true)
           (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null; cp -r media/ent _site/media/ 2>/dev/null || true)
           python scripts/build_pages.py _site
           python scripts/split_today.py _site || true

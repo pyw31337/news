@@ -158,6 +158,14 @@
 - 봇 목록(누가·어디서·언제·무엇을·저장)은 stats_detail.py의 `BOTS`에 손으로 적음 → 새 자동 작업을 만들면 여기에 한 줄 추가.
 - 독자 반응: `assets/ev.js`(index·persons·politicians)가 조회(30분 1회)·원문 클릭(하루 1회)·좋아요/스크랩(my.js `nb:save` 신호)·공유를 익명으로 Worker `POST /ev`에 묶어 보냄. D1 표 `ev`(날짜·항목·종류 합계)·`evm`(제목)·`evb`(하루 쓰기 수, 15,000행 상한). 관리자는 `GET /ev/stats`(2분 캐시). 개인정보처리방침 1절에 한 줄 추가.
 
+## 4-9. 해외 탭·영어 모드·오늘의 OX(2026-10-31)
+- 해외 수집(`global_news.py`): 구글 뉴스 중계 주소를 원문 주소로 풀고(`data/gn_cache.json`), 원문 대표 사진(og:image) 우선, 미국·세계 증시 17개·미국 대표 종목 16개(야후 일봉), 분야별 최신 헤드라인. 화면은 app.js `gtoday`.
+- 영어 모드 = 해외 + '영어 원문 보기'(S.region==='en'&&S.orig, body.en). 머리줄·하단 탭·국내/해외 전환·바닥글·오늘의 도전(game.js `T`)·OX 덱·놀면서 배우기(fun.js `pick`)가 영어로. 원문/번역 전환 버튼은 해외 화면 머리줄 오른쪽 끝.
+- 오늘의 OX: `scripts/quiz.py` → `data/quiz.json` + 날짜별 누적 `data/fun/quiz/YYYY-MM-DD.json`·`index.json`. 레벨 1~3, OX·4지선다, 해설, 한·영. AI는 오전·오후 2번(캐시), 자료에 없는 숫자가 든 문제는 버림. 규칙 문제(시세·기준금리·검수 사전)는 AI 없이도 매일. 영어가 덜 번역된 문제(`en_ok:false`)는 영어 모드에서 뺌.
+- 카드뉴스·만화·단어 퀴즈 영어판: `fun.py`가 무료 번역(POST, 캐시 `data/tr_en_cache.json`)으로 `fun.json.en` 생성(`en.ok`일 때만 화면 사용).
+- 그래프 말풍선: `assets/tip.js`(data-tip · SVG <title> · data-series). 새 그래프를 만들면 이 세 가지 중 하나를 붙일 것.
+- 배지 난이도: `docs/GAMIFICATION.md` '배지 획득 난이도 설계'.
+
 ## 4-3. 자동 운영 (2026-10-29 16:50 KST 기준, 사람·AI 개입 없이 동작)
 모든 수집은 GitHub Actions cron으로 돕니다(공개 저장소라 무료). 각 수집기는 자기 브랜치에 state(체크포인트)를 커밋해 다음 회차가 이어받고, 이미 넣은 ID는 건너뛰어 중복이 없습니다. D1은 하루 4만 줄 상한·차분 업서트(09:00 KST 리셋). LLM 단계는 secrets의 무료 Gemini 키만 사용하고, 실패·한도 초과 시 건너뛰고 다음 회차로 미룹니다(`continue-on-error`).
 

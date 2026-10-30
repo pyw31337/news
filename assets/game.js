@@ -14,6 +14,10 @@ const level=x=>{let n=1;while(lvXP(n+1)<=x)n++;return n};
 const CAREER=[[1,'인턴 기자','신문을 처음 펼친 새내기'],[3,'수습 기자','매일 뉴스를 따라가는 중'],[6,'기자','사건의 흐름을 읽는 사람'],[10,'차장','맥락까지 꿰뚫는 독자'],[15,'부장','이슈를 한눈에 정리하는 눈'],[20,'논설위원','관점을 비교할 줄 아는 사람'],[30,'편집국장','오늘의 뉴스를 고르는 사람'],[40,'발행인','뉴스 세계의 주인공'],
  [50,'미디어 그룹 회장','여러 매체를 이끄는 사람'],[60,'저널리즘 교수','다음 세대에게 뉴스 읽는 법을 가르치는 사람'],[70,'퓰리처 심사위원','좋은 보도를 가려내는 눈'],[80,'명예의 전당','언론사에 이름을 남긴 독자'],[90,'세기의 언론인','시대의 흐름을 기록하는 사람'],[100,'뉴스의 전설','모든 이슈의 처음과 끝을 아는 사람']];
 const career=n=>CAREER.filter(c=>n>=c[0]).pop();
+/* 영어 모드(해외·원문, body.en): 오늘의 도전·커리어·목표·게임 문구를 영어로 */
+const ENM=()=>document.body.classList.contains('en'),T=(ko,en)=>ENM()?en:ko;
+const CAREER_EN={1:'Intern reporter',3:'Trainee reporter',6:'Reporter',10:'Deputy editor',15:'Desk editor',20:'Editorial writer',30:'Editor-in-chief',40:'Publisher',50:'Media group chair',60:'Journalism professor',70:'Pulitzer juror',80:'Hall of Fame',90:'Journalist of the century',100:'Legend of the news'};
+const cname=c=>c?(ENM()?CAREER_EN[c[0]]||c[1]:c[1]):'';
 /* ---------- 메달 등급 ---------- */
 const TIERS=[['브론즈','#c98a4b','#8a5426','#f3c79a'],['실버','#c7ced8','#7d8796','#f4f7fb'],['골드','#ffcc3d','#c88a00','#fff1b0'],['플래티넘','#7fe0d4','#2a9d93','#e4fffb'],['다이아','#8fb6ff','#3b5bff','#eaf1ff'],['마스터','#c18bff','#7a2fe0','#f4e8ff'],['레전드','#ff7a59','#d6203b','#ffe0d6'],
  ['그랜드마스터','#ffd36b','#3a2a10','#fff3cf'],['신화','#45e0c0','#0b6b63','#d9fff6'],['이터널','#ff9be8','#6a3cff','#fff0fb']];
@@ -178,24 +182,24 @@ function award(w,ti,T,second){const cv=w.querySelector('.gm-fx'),m=w.querySelect
 function lvCard(compact){const x=totalXP(),n=level(x),a=lvXP(n),b=lvXP(n+1),c=career(n),pct=Math.round((x-a)/(b-a)*100),nx=CAREER.find(k=>k[0]>n);
   const st=Math.max(S.last===dayK()||S.last===dayK(Date.now()-864e5)?S.streak:0,0);const nb=Object.keys(S.badges).length;
   /* 세로 적층(2026-10-30): 레벨·직함 → 진행 막대·XP → 다음 직함 → 연속·배지 */
-  return`<div class="gm-lv v2${compact?' sm':''}"><div class="gm-lvh"><div class="gm-lvn"><span>Lv.</span>${n}</div><div class="gm-lvt"><small>나의 커리어</small><b>${E(c[1])}</b></div></div>
-   <div class="gm-lvp"><div class="gm-bar"><i style="width:${pct}%"></i></div><div class="gm-lvs"><span><b>${x.toLocaleString()}</b> XP</span><span>다음 레벨까지 <b>${(b-x).toLocaleString()}</b> XP</span></div></div>
-   ${nx?`<div class="gm-lvnx">${G_('award')}<span><b>Lv.${nx[0]}</b>이 되면 ‘<em>${E(nx[1])}</em>’</span></div>`:''}
-   <div class="gm-kpis"><div class="gm-k fire">${G_('flame')}<b>${st}</b><span>일 연속</span></div><div class="gm-k">${G_('award')}<b>${nb}</b><span>배지</span></div></div></div>`}
+  return`<div class="gm-lv v2${compact?' sm':''}"><div class="gm-lvh"><div class="gm-lvn"><span>Lv.</span>${n}</div><div class="gm-lvt"><small>${T('나의 커리어','My career')}</small><b>${E(cname(c))}</b></div></div>
+   <div class="gm-lvp"><div class="gm-bar"><i style="width:${pct}%"></i></div><div class="gm-lvs"><span><b>${x.toLocaleString()}</b> XP</span><span>${T('다음 레벨까지','To next level')} <b>${(b-x).toLocaleString()}</b> XP</span></div></div>
+   ${nx?`<div class="gm-lvnx">${G_('award')}<span>${T(`<b>Lv.${nx[0]}</b>이 되면 ‘<em>${E(nx[1])}</em>’`,`At <b>Lv.${nx[0]}</b>: ‘<em>${E(CAREER_EN[nx[0]]||nx[1])}</em>’`)}</span></div>`:''}
+   <div class="gm-kpis"><div class="gm-k fire">${G_('flame')}<b>${st}</b><span>${T('일 연속','day streak')}</span></div><div class="gm-k">${G_('award')}<b>${nb}</b><span>${T('배지','badges')}</span></div></div></div>`}
 function goals(){const d=S.daily[dayK()]||{},My=window.NBMy&&NBMy.get?NBMy.get():null,r=My?Object.keys((My.reads||{})[new Date().toISOString().slice(0,10)]||{}).length:(d.r||0);
-  const G=[['기사 3개 읽기',Math.min(3,r),3,'news'],['OX 퀴즈 풀기',Math.min(1,d.q||0),1,'checks'],['뉴스 게임 1판',Math.min(1,d.g||0),1,'device-gamepad-2']];const done=G.filter(g=>g[1]>=g[2]).length;
+  const G=[[T('기사 3개 읽기','Read 3 stories'),Math.min(3,r),3,'news'],[T('OX 퀴즈 풀기','Solve a quiz'),Math.min(1,d.q||0),1,'checks'],[T('뉴스 게임 1판','Play a news game'),Math.min(1,d.g||0),1,'device-gamepad-2']];const done=G.filter(g=>g[1]>=g[2]).length;
   const R=26,Cc=2*Math.PI*R;
   return`<div class="gm-goal"><svg viewBox="0 0 64 64" class="gm-ring"><circle cx="32" cy="32" r="${R}"/><circle cx="32" cy="32" r="${R}" class="p" style="stroke-dasharray:${Cc};stroke-dashoffset:${Cc*(1-done/3)}"/><text x="32" y="37" text-anchor="middle">${done}/3</text></svg>
    <ul>${G.map(g=>`<li class="${g[1]>=g[2]?'ok':''}">${G_(g[1]>=g[2]?'checks':g[3])}<span>${g[0]}</span><em>${g[1]}/${g[2]}</em></li>`).join('')}</ul></div>`}
-const GAMES=[['2048','이슈 2048','같은 단계의 뉴스를 합쳐 헤드라인까지','grid-4x4','#ff4d2e'],['merge','뉴스 머지','떨어뜨려 합치면 단신이 특종으로','circles','#7a4dff'],['sling','팩트 새총','루머 블록을 사실 확인 새총으로','target-arrow','#11a683']];
-function gameTiles(){return GAMES.map(g=>`<a class="gm-gt" href="games/#${g[0]}" style="--c:${g[4]}"><span class="gm-gi">${G_(g[3])}</span><b>${g[1]}</b><small>${g[2]}</small></a>`).join('')}
+const GAMES=[['2048','이슈 2048','같은 단계의 뉴스를 합쳐 헤드라인까지','grid-4x4','#ff4d2e','Issue 2048','Merge matching news up to the headline'],['merge','뉴스 머지','떨어뜨려 합치면 단신이 특종으로','circles','#7a4dff','News merge','Drop and merge briefs into a scoop'],['sling','팩트 새총','루머 블록을 사실 확인 새총으로','target-arrow','#11a683','Fact slingshot','Knock down rumor blocks with fact-checks']];
+function gameTiles(){return GAMES.map(g=>`<a class="gm-gt" href="games/#${g[0]}" style="--c:${g[4]}"><span class="gm-gi">${G_(g[3])}</span><b>${T(g[1],g[5])}</b><small>${T(g[2],g[6])}</small></a>`).join('')}
 /* ---------- 오늘 화면: '오늘의 도전' (OX 한 문제 + 목표 링 + 게임) ---------- */
 let F=null;const loadF=()=>F?Promise.resolve(F):fetch('data/fun.json?'+Math.floor(Date.now()/6e5)).then(r=>r.ok?r.json():null).then(j=>F=j).catch(()=>null);
 function oxBox(){const Q=(F&&F.quiz&&F.quiz.questions||[]).filter(q=>q.kind==='ox');if(!Q.length)return'';const k=(S.ev.oxi||0)%Q.length,q=Q[k];
   return`<div class="gm-ox" data-k="${k}"><small>${G_('bulb')}오늘의 OX</small><p>${E(q.q)}</p><div class="gm-oxb"><button type="button" data-a="1" class="o">O</button><button type="button" data-a="0" class="x">X</button></div><span class="gm-oxr" aria-live="polite"></span></div>`}
 function todayBlock(){const app=document.getElementById('app');const h=app&&app.querySelector('.hero');if(!h||app.querySelector('.gm-today'))return;
   loadF().then(()=>{if(app.querySelector('.gm-today'))return;const s=document.createElement('section');s.className='gm-today';
-    s.innerHTML=`<div class="gm-th"><h2><small>Daily challenge</small>오늘의 도전</h2><a class="more" href="games/#badges">배지 모음 ${G_('arrow-right')}</a></div>
+    s.innerHTML=`<div class="gm-th"><h2><small>Daily challenge</small>${T('오늘의 도전','Today’s challenge')}</h2><a class="more" href="games/#badges">${T('배지 모음','Badges')} ${G_('arrow-right')}</a></div>
      <div class="gm-tgrid"><div class="gm-tl">${lvCard(1)}${goals()}</div><div class="gm-oxd"></div><div class="gm-games">${gameTiles()}</div></div>`;
     h.insertAdjacentElement('afterend',s);window.NBOX&&NBOX(s.querySelector('.gm-oxd'),F);
     s.addEventListener('click',e=>{const b=e.target.closest('.gm-ox [data-a]');if(!b)return;const box=b.closest('.gm-ox'),Q=F.quiz.questions.filter(q=>q.kind==='ox'),q=Q[+box.dataset.k];const ok=(+b.dataset.a===1)===q.answer;
@@ -203,6 +207,7 @@ function todayBlock(){const app=document.getElementById('app');const h=app&&app.
       box.querySelector('.gm-oxr').innerHTML=ok?`<b>정답!</b> ${E(q.word)} 단어를 익혔어요`:`<b>아쉬워요.</b> 정답은 ${q.answer?'O':'X'}예요`;
       S.ev.oxi=(S.ev.oxi||0)+1;ev('quiz_n',1,{day:'q'});if(ok){S.ev.wordset=S.ev.wordset||{};S.ev.wordset[q.word]=1;ev('quiz_ok',1,{xp:10,why:'오늘의 OX 정답'});ev('words',Object.keys(S.ev.wordset).length,{max:1})}
       setTimeout(()=>{const n=s.querySelector('.gm-tl');n&&(n.innerHTML=lvCard(1)+goals())},600)})})}
+addEventListener('nb:region-changed',()=>{const o=document.querySelector('.gm-today');if(o){o.remove();setTimeout(todayBlock,0)}});
 /* ---------- 내 서재: 커리어·배지 진열장 ---------- */
 function libBlock(){const app=document.getElementById('app');if(!app||app.querySelector('.gm-lib'))return;const h=[...app.querySelectorAll('.sec h2')].find(x=>/내 서재/.test(x.textContent));if(!h)return;
   const s=document.createElement('section');s.className='gm-lib';const got=B.map(b=>[b,(S.badges[b[0]]||{t:-1}).t]).sort((a,b)=>b[1]-a[1]);

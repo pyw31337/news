@@ -92,7 +92,7 @@ async function load(){
 }
 let G=null,PL={};
 /* 검색량 표기: Google 트렌드 '오늘 검색 횟수(대략)' 구간 */
-const kfmt=n=>n>=10000?(n/10000)+'만':n>=1000?(n/1000)+'천':String(n);
+const kfmt=n=>S.region==='en'&&S.orig?(n>=1e6?(n/1e6)+'M':n>=1000?(n/1000)+'K':String(n)):n>=10000?(n/10000)+'만':n>=1000?(n/1000)+'천':String(n);
 const TTIP='Google 트렌드 기준 오늘 대략적인 검색 횟수(구간값)입니다. 순위는 검색량 → 관련 기사 수 순으로 매겼어요.';
 const tlab=t=>t.traffic_n?(S.region==='en'&&S.orig?`Search ${kfmt(t.traffic_n)}+`:`검색 ${kfmt(t.traffic_n)}+`):'';
 function header(){
@@ -106,6 +106,9 @@ function header2(){
   document.body.classList.toggle('en',EN);document.documentElement.lang=EN?'en':'ko';window.dispatchEvent(new CustomEvent('nb:region-changed'));
   const top=EN?['Today','Timeline','Markets','Library']:['오늘','타임라인','마켓','내 서재'];
   document.querySelectorAll('.topnav a').forEach((a,i)=>a.textContent=top[i]||a.textContent);
+  // 국내·해외 전환, 바닥글도 영어 모드에서는 영어로
+  document.querySelectorAll('#rsw [data-m]').forEach(b=>b.textContent=EN?(b.dataset.m==='kr'?'Korea':'World'):(b.dataset.m==='kr'?'국내':'해외'));
+  document.querySelectorAll('.flinks a').forEach(a=>{const t=/terms/.test(a.getAttribute('href'));a.textContent=EN?(t?'Terms':'Privacy'):(t?'이용약관':'개인정보처리방침')});
   // 하단 탭 이름은 my.js nav()가 nb:region-changed에서 다시 그림(여기서 덮어쓰면 가운데 '오늘' 시계가 사라짐)
   const T=R?G.trends:D.trends;
   const tk=T.map((t,i)=>`<a href="${R?'gt/'+i:kh(t.keyword)}" title="${TTIP}"><b>${i+1}</b>${esc(R&&!S.orig?(t.keyword_ko||t.keyword):t.keyword)}<small>${tlab(t)}</small></a>`).join('');
