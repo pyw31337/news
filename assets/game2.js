@@ -45,7 +45,9 @@ function tasteHTML(src,opt={}){const A=analyse(src);const who=src==='save'?'스�
    ${opt.hours===false?'':`<section class="tz-c wide"><h4>${I('clock-hour-4')}주로 읽는 시간</h4>${hours(A.hours)}</section>`}</div></div>`}
 window.NBTaste={analyse,html:tasteHTML,req,REQ};
 
-/* ================= 3. OX 덱 (맞히면 자동으로 다음, 이전 카드로 돌아가 해설 다시 보기) ================= */
+/* ================= 3. OX 덱 (레벨별 · 한국어/영어) =================
+   data/quiz.json(scripts/quiz.py): 기초·중급·고급, OX와 4지선다, 해설. 날마다 새 문제가 쌓임. 없으면 예전 단어 OX로 대체.
+   맞히면 자동으로 다음 카드, 이전 카드로 돌아가 해설 다시 보기. 영어 모드(해외·원문)에서는 영어 문장으로 */
 function buildQ(F){const W=(F&&F.quiz&&F.quiz.words)||[],Q=((F&&F.quiz&&F.quiz.questions)||[]).filter(q=>q.kind==='ox').map(q=>Object.assign({},q));
   const seen=new Set(Q.map(q=>q.word+'|'+q.answer));
   W.forEach((w,k)=>{if(!w.mean)return;if(!seen.has(w.word+'|true'))Q.push({kind:'ox',word:w.word,q:`‘${w.word}’은(는) “${w.mean}”라는 뜻이다.`,answer:true});
@@ -53,33 +55,51 @@ function buildQ(F){const W=(F&&F.quiz&&F.quiz.words)||[],Q=((F&&F.quiz&&F.quiz.q
   const M={};W.forEach(w=>M[w.word]=w);Q.forEach(q=>{const w=M[q.word]||{};q.mean=w.mean;q.tip=w.tip;q.ctx=w.context;q.field=w.field});
   // 하루 안에서는 순서 고정, 날마다 섞기
   const seed=(F.quiz.date||'').split('-').join('')|0;return Q.map((q,i)=>[q,Math.sin(seed+i*97)]).sort((a,b)=>a[1]-b[1]).map(x=>x[0])}
-window.NBOX=function(el,F){if(!el||!F)return;const Q=buildQ(F);if(!Q.length){el.remove();return}
-  const dk='nb-oxd',day=F.quiz.date||'';let A={};try{const o=JSON.parse(localStorage.getItem(dk)||'{}');A=o.d===day?o.a:{}}catch(e){}
-  let cur=Q.findIndex((q,i)=>A[i]==null);if(cur<0)cur=Q.length-1;
+const LANG=()=>{try{const s=JSON.parse(localStorage.getItem('nb-settings')||'{}');return s.region==='en'&&s.orig?'en':'ko'}catch(e){return'ko'}};
+let QZ=null;const quizV2=()=>QZ?Promise.resolve(QZ):fetch('data/quiz.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>QZ=j).catch(()=>null);
+const LV={1:['기초','Basic'],2:['중급','Intermediate'],3:['고급','Advanced']};
+window.NBOX=async function(el,F){if(!el)return;const Z=await quizV2(),L=LANG(),T=(ko,en)=>L==='en'?en:ko;
+  let V2=!!(Z&&Z.questions&&Z.questions.length);
+  const pool=V2?Z.questions.filter(q=>L!=='en'||q.en_ok!==false):[];if(V2&&!pool.length)V2=false;
+  if(!V2&&!F){el.remove();return}
+  const day=V2?Z.date:(F.quiz.date||''),dk='nb-oxd2';let lv=+(localStorage.getItem('nb-oxlv')||1);
+  const counts={1:0,2:0,3:0};pool.forEach(q=>counts[q.level]=(counts[q.level]||0)+1);if(V2&&!counts[lv])lv=[1,2,3].find(k=>counts[k])||1;
+  let A={};try{const o=JSON.parse(localStorage.getItem(dk)||'{}');A=o.d===day?o.a:{}}catch(e){}
+  let Q=[],cur=0;
+  const mk=()=>{if(V2){const seed=(day.split('-').join('')|0);Q=pool.filter(q=>q.level===lv).map((q,i)=>[q,Math.sin(seed+i*97)]).sort((a,b)=>a[1]-b[1]).map(x=>x[0])}
+    else Q=buildQ(F).map((q,i)=>Object.assign({id:'w'+i,level:1,q:{ko:q.q,en:q.q},exp:{ko:q.mean?`‘${q.word}’은(는) ${q.mean}.`:'',en:''},cat:q.field},q));
+    cur=Q.findIndex(q=>A[q.id]==null);if(cur<0)cur=Math.max(0,Q.length-1)};
+  mk();if(!Q.length){el.remove();return}
   el.className='gm-oxd';
-  el.innerHTML=`<div class="ox-h"><small>${I('bulb')}오늘의 OX 덱</small><span class="ox-sc"></span></div><div class="ox-stage" tabindex="0" aria-roledescription="퀴즈 카드 덱"></div>
-   <div class="ox-nav"><button type="button" class="ox-pv" aria-label="이전 문제">${I('chevron-left')}</button><div class="ox-dots"></div><button type="button" class="ox-nx" aria-label="다음 문제">${I('chevron-right')}</button></div>`;
-  const stage=el.querySelector('.ox-stage');
-  const card=(q,i)=>{const a=A[i],done=a!=null,ok=done&&((a===1)===q.answer);
-    return`<article class="ox-card ${done?(ok?'ok':'no'):''}" data-i="${i}"><div class="ox-no">Q${String(i+1).padStart(2,'0')}<span>${E(q.field||'오늘의 단어')}</span></div><p class="ox-q">${oxHi(q.q)}</p>
-     <div class="ox-btns"><button type="button" data-o="1" class="o ${done&&q.answer?'right':''} ${done&&a===1&&!ok?'wrong':''}" ${done?'disabled':''}>O</button><button type="button" data-o="0" class="x ${done&&!q.answer?'right':''} ${done&&a===0&&!ok?'wrong':''}" ${done?'disabled':''}>X</button></div>
-     <div class="ox-exp">${done?`<b>${ok?'정답이에요':'아쉬워요'}</b> 정답은 <em>${q.answer?'O':'X'}</em>. ${q.mean?`‘${E(q.word)}’은(는) ${E(q.mean)}.`:''}${q.tip?`<small>${E(q.tip)}</small>`:''}`:''}</div></article>`};
-  function draw(dir){const n=Object.keys(A).length,ok=Object.entries(A).filter(([i,a])=>(a===1)===Q[i].answer).length;
-    el.querySelector('.ox-sc').innerHTML=`<b>${ok}</b> / ${n} 정답 · ${cur+1}/${Q.length}`;
-    stage.innerHTML=[cur+2,cur+1].filter(i=>i<Q.length).map(i=>`<div class="ox-under u${i-cur}"></div>`).join('')+card(Q[cur],cur);
-    const c=stage.querySelector('.ox-card');if(dir)c.classList.add(dir>0?'in-r':'in-l');
-    el.querySelector('.ox-dots').innerHTML=Q.map((q,i)=>`<i class="${i===cur?'on':''} ${A[i]!=null?((A[i]===1)===q.answer?'ok':'no'):''}"></i>`).join('');
-    el.querySelector('.ox-pv').disabled=cur===0;el.querySelector('.ox-nx').disabled=cur===Q.length-1;
-    if(cur===Q.length-1&&n===Q.length&&!el.querySelector('.ox-end'))stage.insertAdjacentHTML('beforeend','')}
-  const go=(t)=>{t=Math.max(0,Math.min(Q.length-1,t));if(t===cur)return;const d=t>cur?1:-1;const c=stage.querySelector('.ox-card');c&&c.classList.add(d>0?'out-l':'out-r');setTimeout(()=>{cur=t;draw(d)},180)};
-  el.addEventListener('click',e=>{const b=e.target.closest('[data-o]');if(b){const i=cur,q=Q[i];if(A[i]!=null)return;const a=+b.dataset.o;A[i]=a;localStorage.setItem(dk,JSON.stringify({d:day,a:A}));
-      const ok=(a===1)===q.answer;const all=Object.keys(A).length===Q.length&&Object.entries(A).every(([k,v])=>(v===1)===Q[k].answer);
-      dispatchEvent(new CustomEvent('nb:quiz',{detail:{ok,word:q.word,kind:'ox',perfect:all}}));if(ok&&window.NBGame)NBGame.ev('quiz_x',1,{xp:10,why:'OX 정답'});
-      draw();const c=stage.querySelector('.ox-card');c.classList.add(ok?'pop':'shake');
-      if(ok&&i<Q.length-1)setTimeout(()=>{if(cur===i)go(i+1)},1300);return}
+  const right=(q,a)=>q.kind==='mc'?a===q.answer:(a===1)===q.answer;
+  const shell=()=>{el.innerHTML=`<div class="ox-h"><small>${I('bulb')}${T('오늘의 OX 덱','Daily quiz deck')}</small><span class="ox-sc"></span></div>
+   ${V2?`<div class="ox-lv" role="tablist">${[1,2,3].filter(k=>counts[k]).map(k=>`<button type="button" role="tab" data-lv="${k}" class="${k===lv?'on':''}" aria-selected="${k===lv}">${T(LV[k][0],LV[k][1])}<small>${counts[k]}</small></button>`).join('')}</div>`:''}
+   <div class="ox-stage" tabindex="0" aria-roledescription="${T('퀴즈 카드 덱','quiz card deck')}"></div>
+   <div class="ox-nav"><button type="button" class="ox-pv" aria-label="${T('이전 문제','Previous')}">${I('chevron-left')}</button><div class="ox-dots"></div><button type="button" class="ox-nx" aria-label="${T('다음 문제','Next')}">${I('chevron-right')}</button></div>
+   ${V2&&Z.total?`<p class="ox-tot">${T(`지금까지 ${Z.days}일 동안 ${Z.total.toLocaleString()}문제를 만들었어요`,`${Z.total.toLocaleString()} questions made over ${Z.days} day${Z.days>1?"s":""}`)}</p>`:''}`};
+  shell();const stage=()=>el.querySelector('.ox-stage');
+  const card=(q,i)=>{const a=A[q.id],done=a!=null,ok=done&&right(q,a),tx=q.q[L]||q.q.ko,ex=(q.exp&&(q.exp[L]||q.exp.ko))||'';
+    const btns=q.kind==='mc'?`<div class="ox-mc">${(q.choices[L]||q.choices.ko).map((c,k)=>`<button type="button" data-o="${k}" class="${done&&k===q.answer?'right':''} ${done&&a===k&&!ok?'wrong':''}" ${done?'disabled':''}><b>${'ABCD'[k]}</b>${E(c)}</button>`).join('')}</div>`
+      :`<div class="ox-btns"><button type="button" data-o="1" class="o ${done&&q.answer?'right':''} ${done&&a===1&&!ok?'wrong':''}" ${done?'disabled':''}>O</button><button type="button" data-o="0" class="x ${done&&!q.answer?'right':''} ${done&&a===0&&!ok?'wrong':''}" ${done?'disabled':''}>X</button></div>`;
+    const ans=q.kind==='mc'?'ABCD'[q.answer]:(q.answer?'O':'X');
+    return`<article class="ox-card ${done?(ok?'ok':'no'):''} ${q.kind==='mc'?'mc':''}" data-i="${i}"><div class="ox-no">Q${String(i+1).padStart(2,'0')}<span>${E(V2?T(LV[q.level][0],LV[q.level][1])+(q.cat?(L==='en'?(({정치:'Politics',경제:'Business',사회:'Society',세계:'World',IT:'Tech',과학:'Science',건강:'Health',환경:'Climate',문화:'Culture',연예:'Entertainment',스포츠:'Sports'}[q.cat])?' · '+{정치:'Politics',경제:'Business',사회:'Society',세계:'World',IT:'Tech',과학:'Science',건강:'Health',환경:'Climate',문화:'Culture',연예:'Entertainment',스포츠:'Sports'}[q.cat]:''):' · '+q.cat):''):(q.field||'오늘의 단어'))}</span></div><p class="ox-q">${oxHi(tx)}</p>${btns}
+     <div class="ox-exp">${done?`<b>${ok?T('정답이에요','Correct'):T('아쉬워요','Not quite')}</b> ${T('정답은','Answer:')} <em>${ans}</em>. ${E(ex)}`:''}</div></article>`};
+  function draw(dir){const ids=Q.map(q=>q.id),n=ids.filter(id=>A[id]!=null).length,ok=Q.filter(q=>A[q.id]!=null&&right(q,A[q.id])).length;
+    el.querySelector('.ox-sc').innerHTML=`<b>${ok}</b> / ${n} ${T('정답','correct')} · ${cur+1}/${Q.length}`;
+    stage().innerHTML=[cur+2,cur+1].filter(i=>i<Q.length).map(i=>`<div class="ox-under u${i-cur}"></div>`).join('')+card(Q[cur],cur);
+    const c=stage().querySelector('.ox-card');if(dir)c.classList.add(dir>0?'in-r':'in-l');
+    el.querySelector('.ox-dots').innerHTML=Q.map((q,i)=>`<i class="${i===cur?'on':''} ${A[q.id]!=null?(right(q,A[q.id])?'ok':'no'):''}"></i>`).join('');
+    el.querySelector('.ox-pv').disabled=cur===0;el.querySelector('.ox-nx').disabled=cur===Q.length-1}
+  const go=(t)=>{t=Math.max(0,Math.min(Q.length-1,t));if(t===cur)return;const d=t>cur?1:-1;const c=stage().querySelector('.ox-card');c&&c.classList.add(d>0?'out-l':'out-r');setTimeout(()=>{cur=t;draw(d)},180)};
+  el.addEventListener('click',e=>{const lb=e.target.closest('[data-lv]');if(lb){lv=+lb.dataset.lv;localStorage.setItem('nb-oxlv',lv);mk();shell();draw();return}
+    const b=e.target.closest('[data-o]');if(b){const i=cur,q=Q[i];if(A[q.id]!=null)return;const a=+b.dataset.o;A[q.id]=a;localStorage.setItem(dk,JSON.stringify({d:day,a:A}));
+      const ok=right(q,a);const all=Q.every(x=>A[x.id]!=null&&right(x,A[x.id]));
+      dispatchEvent(new CustomEvent('nb:quiz',{detail:{ok,word:q.word||q.id,kind:q.kind,perfect:all}}));if(ok&&window.NBGame)NBGame.ev('quiz_x',1,{xp:[0,10,15,20][q.level||1],why:T('퀴즈 정답','Quiz correct')});
+      draw();const c=stage().querySelector('.ox-card');c.classList.add(ok?'pop':'shake');
+      if(ok&&i<Q.length-1)setTimeout(()=>{if(cur===i)go(i+1)},1600);return}
     if(e.target.closest('.ox-pv'))go(cur-1);if(e.target.closest('.ox-nx'))go(cur+1)});
-  let sx=null;stage.addEventListener('pointerdown',e=>{sx=e.clientX});stage.addEventListener('pointerup',e=>{if(sx==null)return;const dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50)go(cur+(dx<0?1:-1))});
-  stage.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
+  let sx=null;el.addEventListener('pointerdown',e=>{if(e.target.closest('.ox-stage'))sx=e.clientX});el.addEventListener('pointerup',e=>{if(sx==null)return;const dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50)go(cur+(dx<0?1:-1))});
+  el.addEventListener('keydown',e=>{if(!e.target.closest('.ox-stage'))return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
   draw()};
 
 /* ================= 4. 카드의 ‘나중에 읽기’ ================= */

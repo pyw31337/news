@@ -101,3 +101,11 @@
 /* 퀴즈 핵심 문구 강조(2026-10-30) */
 .ox-q em{font-style:normal;color:var(--ds-brand,#ff4d2e)}.ox-q .ox-k{font-weight:var(--ds-w-black,900)}.ox-q .ox-d{font-weight:var(--ds-w-bold,700)}
 .qq em{font-style:normal;color:var(--ds-brand,#ff4d2e)}.qq .ox-k{font-weight:900}
+/* OX 덱 레벨 탭·4지선다·누적 안내 */
+.ox-lv{display:flex;gap:4px;margin:0 0 10px;padding:3px;border-radius:10px;background:var(--ds-bg,#f3f5fa)}
+.ox-lv button{flex:1;border:0;border-radius:8px;padding:6px 4px;background:none;font:800 .78rem var(--ds-sans,inherit);color:var(--ds-mute,#6b7389);cursor:pointer}
+.ox-lv button small{margin-left:4px;font-weight:700;opacity:.7}.ox-lv button.on{background:#fff;color:var(--ds-ink,#141a2e);box-shadow:0 1px 3px rgba(15,22,48,.12)}
+.ox-mc{display:grid;gap:6px}.ox-mc button{display:flex;gap:8px;align-items:flex-start;text-align:left;padding:9px 10px;border-radius:10px;border:2px solid var(--ds-line,#e3e6ee);background:var(--ds-bg,#f6f7fb);font:600 .82rem/1.4 var(--ds-sans,inherit);color:inherit;cursor:pointer}
+.ox-mc button b{flex:none;width:20px;height:20px;border-radius:6px;background:#fff;display:grid;place-items:center;font-size:.72rem}
+.ox-mc button.right{border-color:#11a683;background:#e9f8f3}.ox-mc button.wrong{border-color:#e5484d;background:#fdeeee}
+.ox-card.mc{min-height:300px}.ox-tot{margin:8px 0 0;text-align:center;font-size:.7rem;color:var(--ds-mute,#8a91a8)}

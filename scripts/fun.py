@@ -113,9 +113,10 @@ for w in WORDS:
     w['ai'] = bool(a)
 Q = []
 def other(w, k=3):
-    pool = [x for x in WORDS if x['word'] != w['word']] or []
-    extra = [dict(word=k_, mean=v[0]) for k_, v in GL.items() if k_ != w['word'] and k_ not in {x['word'] for x in pool}]
-    rnd.shuffle(extra); return (rnd.sample(pool, min(k, len(pool))) + extra)[:k]
+    """오답 뜻은 검수 사전에서만(같은 분야 먼저). 위키 설명처럼 엉뚱한 문장이 오답으로 섞여 너무 쉬워지던 문제(2026-10-31)"""
+    same = [dict(word=k_, mean=v[0]) for k_, v in GL.items() if k_ != w['word'] and v[1] == w.get('field')]
+    rest = [dict(word=k_, mean=v[0]) for k_, v in GL.items() if k_ != w['word'] and v[1] != w.get('field')]
+    rnd.shuffle(same); rnd.shuffle(rest); return (same + rest)[:k]
 for n, w in enumerate(WORDS):
     kind = ['ox', 'mc', 'ox', 'blank'][n % 4]
     if kind == 'blank' and not w['examples']: kind = 'mc'
@@ -235,12 +236,57 @@ for i in flowing[:3]:
     DECKS.append(dict(id='d' + i['id'][1:9], kind='flow', issue=i['id'], title=short(re.sub(r'^\[[^\]]*\]\s*', '', i['title']), 26), tag='이어지는 사건 · ' + i.get('category', ''), date=DATE, cards=cards[:8]))
 oldd = [x for x in OLD.get('decks', []) if x.get('date') != DATE and x['id'] not in {y['id'] for y in DECKS}]
 DECKS += oldd[:10]
-out = dict(date=DATE, updated=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(timespec='minutes'), quiz=quiz, comics=COMICS, decks=DECKS,
+# ---------- 영어판: 카드뉴스·만화·단어를 무료 번역으로 함께 만듦(캐시 data/tr_en_cache.json) ----------
+import urllib.parse
+TE = J('tr_en_cache.json', {}) or {}
+TKEYS = {'title', 'tag', 'big', 'text', 'note', 'caption', 'headline', 'mean', 'context', 'tip', 'field', 'l', 'q', 'quote', 'meaning'}
+def strings(o, acc):
+    if isinstance(o, dict):
+        for k, v in o.items():
+            if k in TKEYS and isinstance(v, str) and re.search(r'[가-힣]', v): acc.append(v)
+            elif k == 'choices' and isinstance(v, list): acc.extend(x for x in v if isinstance(x, str) and re.search(r'[가-힣]', x))
+            else: strings(v, acc)
+    elif isinstance(o, list):
+        for x in o: strings(x, acc)
+    return acc
+def tr_all(texts):
+    miss = [t for t in dict.fromkeys(texts) if t not in TE]; grp, size = [], 0
+    def flush(g):
+        if not g: return
+        marked = '\n\n'.join(('<<<S%03d>>>\n%s' % (n, t)) if n else t for n, t in enumerate(g))
+        try:
+            raw = urllib.request.urlopen(urllib.request.Request('https://translate.googleapis.com/translate_a/single?client=gtx&sl=ko&tl=en&dt=t', urllib.parse.urlencode({'q': marked}).encode(),  # 긴 한국어는 GET 주소 길이 초과(400) → POST
+                                         headers={'User-Agent': 'Mozilla/5.0', 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}), timeout=15).read().decode('utf-8', 'replace')
+            parts = re.split(r'<<<S\d{3}>>>\s*', ''.join(x[0] for x in json.loads(raw)[0] if x[0]))
+            if len(parts) == len(g):
+                for t, v in zip(g, parts): TE[t] = v.strip()
+        except Exception as e: print('fun tr_en', str(e)[:80])
+    for t in miss:
+        if grp and size + len(t) > 3000: flush(grp); grp, size = [], 0; time.sleep(.6)
+        grp.append(t[:1500]); size += len(t) + 12
+    flush(grp)
+def to_en(o):
+    if isinstance(o, dict):
+        r = {}
+        for k, v in o.items():
+            if k in TKEYS and isinstance(v, str): r[k] = TE.get(v, v)
+            elif k == 'who' and isinstance(v, str): r[k] = {'누리': 'Nuri', '보리': 'Bori'}.get(v, v)
+            elif k == 'choices' and isinstance(v, list): r[k] = [TE.get(x, x) if isinstance(x, str) else x for x in v]
+            else: r[k] = to_en(v)
+        return r
+    if isinstance(o, list): return [to_en(x) for x in o]
+    return o
+src_en = dict(quiz=quiz, comics=[c for c in COMICS if c.get('date') == DATE], decks=[d for d in DECKS if d.get('date') == DATE])
+tr_all(strings(src_en, []))
+EN = to_en(src_en)
+EN['ok'] = not strings({k: EN[k] for k in ('comics', 'decks')}, [])   # 번역 대상 문장에 한국어가 남지 않았으면 영어판 사용(언론사·분류 이름은 화면에서 따로 처리)
+json.dump(dict(list(TE.items())[-6000:]), open(P('tr_en_cache.json'), 'w', encoding='utf-8'), ensure_ascii=False)
+out = dict(date=DATE, updated=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(timespec='minutes'), quiz=quiz, comics=COMICS, decks=DECKS, en=EN,
            _cache={k: v for k, v in CACHE.items()} if len(CACHE) < 60 else {})
 json.dump(out, open(P('fun.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 # 날짜별 보관: fun/YYYY-MM-DD.json(그날 만든 것만) + fun/index.json(날짜 목록). 배우기 화면 '지난 기록'에서 다시 봄
 os.makedirs(P('fun'), exist_ok=True)
-day = dict(date=DATE, updated=out['updated'], quiz=quiz, comics=[c for c in COMICS if c.get('date') == DATE], decks=[d for d in DECKS if d.get('date') == DATE])
+day = dict(date=DATE, updated=out['updated'], quiz=quiz, comics=[c for c in COMICS if c.get('date') == DATE], decks=[d for d in DECKS if d.get('date') == DATE], en=EN)
 json.dump(day, open(P('fun/%s.json' % DATE), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 IX = J('fun/index.json', {}) or {}; IX.setdefault('days', {})
 IX['days'][DATE] = dict(q=len(Q), c=len(day['comics']), d=len(day['decks']), w=[w['word'] for w in WORDS[:3]])
