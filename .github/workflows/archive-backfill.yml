@@ -1,0 +1,33 @@
+name: archive-backfill
+# 과거 날짜의 주요 이슈 10개 복원(실시간 수집 이전 날짜, 최근 1년) → data 브랜치 archive/
+# 한 번에 25일씩, 매시간. 이미 있는 날짜는 건너뛰므로 1년 치가 차면 할 일이 없어 바로 끝남
+on:
+  schedule:
+    - cron: '52 * * * *'
+  workflow_dispatch:
+permissions: { contents: write }
+concurrency: { group: collect, cancel-in-progress: false }   # collect-news와 같은 data 브랜치를 쓰므로 차례로
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: data, path: data }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: 복원
+        run: python scripts/history/backfill_top10.py data 25 365
+      - name: data 브랜치에 저장
+        working-directory: data
+        run: |
+          git config user.name "newsboard-bot"; git config user.email "actions@users.noreply.github.com"
+          git add archive
+          git diff --cached --quiet && exit 0
+          git commit -qm "archive: backfill $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          for n in 1 2 3 4 5; do
+            git push -q origin HEAD:data && exit 0
+            sleep $((n * 10)); git fetch -q origin data && git rebase -q -X theirs origin/data || { git rebase --abort; git merge -q -X ours --no-edit origin/data; }
+          done
+          exit 1
