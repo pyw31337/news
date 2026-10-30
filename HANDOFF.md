@@ -125,6 +125,12 @@
 - **안전장치(docs/LEGAL_ARCHIVE.md):** 기사 제목·당사자 이름 저장 안 함, 성범죄 사건은 날짜·법원·심급·출처만, 판사는 이름+법원이 같을 때만 동일인, 순위·승소율 없음.
 - **다음:** OC 수령 후 판례 백필 속도 실측, 대법원 보도자료 파서, 법원별 선고 공지, 판사 경력(Wikidata) ↔ 보도 판결 연결, 사람 검수 화면.
 
+## 4-4. 인물 타임라인·무손실 보관 (2026-10-30, 사용자 요청: "모든 자료를 우리 서버에, 개별 타임라인, 유실 금지")
+- 인물 명부 `data/db/people/registry.json.gz`: 국회의원 역대 3,296 + 위키데이터 한국(남·북) 국적 인물 전체(약 5.6만) + 주요 25개국 이름난 인물 + 연표 대상 1.57만 + 뉴스에서 찾은 새 인물. people.yml 매주 일요일 재생성(위키데이터 막히면 지난 명부 유지)
+- `scripts/people/mentions.py`: 30분마다(collect) 새 기사 파일만 읽어 인물별 월별 파일 `db/people/t/<2>/<id>/<YYYY-MM>.json.gz`에 추가(삭제 없음). 동명이인은 제목 단서→유명도, 후보 수를 남김. '배우 ○○○', '○○○ 의원' 3건 이상이면 discovered.json → 다음 명부
+- 해외 기사 원문도 `db/articles_global/`에 날짜별 보관(archive_extra.py). 엔티티 타임라인 3,000건 초과분은 버리지 않고 `db/entities/old/`로
+- backup.yml: 매주 data·politicians·history·legal·media 브랜치를 통째로 R2(newsboard-backup `branches/latest/`, 매달 첫 주 `branches/YYYY-MM/`)에. Worker `/backup/put`(GitHub OIDC)
+
 ## 4-3. 자동 운영 (2026-10-29 16:50 KST 기준, 사람·AI 개입 없이 동작)
 모든 수집은 GitHub Actions cron으로 돕니다(공개 저장소라 무료). 각 수집기는 자기 브랜치에 state(체크포인트)를 커밋해 다음 회차가 이어받고, 이미 넣은 ID는 건너뛰어 중복이 없습니다. D1은 하루 4만 줄 상한·차분 업서트(09:00 KST 리셋). LLM 단계는 secrets의 무료 Gemini 키만 사용하고, 실패·한도 초과 시 건너뛰고 다음 회차로 미룹니다(`continue-on-error`).
 

@@ -52,7 +52,18 @@ def merge_ent(name, typ, items, wiki=None):
     for x in items:
         if isinstance(x, dict) and x.get('url') and x['url'] not in have and x.get('t'):
             have.add(x['url']); e['timeline'].append({k: x.get(k) for k in ('t', 'title', 'url', 'press')})
-    e['timeline'] = sorted(e['timeline'], key=lambda x: x['t'], reverse=True)[:3000]
+    e['timeline'] = sorted(e['timeline'], key=lambda x: x['t'], reverse=True)
+    if len(e['timeline']) > 3000:   # 오래된 기록은 버리지 않고 old/ 아래 월별 파일로 옮김
+        by = {}
+        for x in e['timeline'][3000:]: by.setdefault(x['t'][:7], []).append(x)
+        for mon, xs in by.items():
+            op = os.path.join(ED, 'old', h8(name), mon + '.json.gz')
+            try: ol = json.load(gzip.open(op, 'rt', encoding='utf-8'))
+            except Exception: ol = []
+            have_o = {y['url'] for y in ol}; ol += [x for x in xs if x['url'] not in have_o]
+            os.makedirs(os.path.dirname(op), exist_ok=True)
+            with gzip.open(op, 'wt', encoding='utf-8') as g: json.dump(ol, g, ensure_ascii=False, separators=(',', ':'))
+        e['spilled'] = e.get('spilled', 0) + len(e['timeline']) - 3000; e['timeline'] = e['timeline'][:3000]
     e['type'] = typ or e.get('type'); e['last_seen'] = DAY
     if isinstance(wiki, dict): e['wiki'] = {k: wiki.get(k) for k in ('title', 'desc', 'thumb', 'url')}
     save(p, e)

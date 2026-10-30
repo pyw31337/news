@@ -93,6 +93,10 @@ jobs:
       - name: 아카이브 보강(해외 뉴스·시장 지표도 날짜별로 남김)
         continue-on-error: true
         run: python scripts/archive_extra.py
+      - name: 인물 타임라인(새 기사 → 등장 인물별로 쌓기)
+        continue-on-error: true
+        timeout-minutes: 5
+        run: python scripts/people/mentions.py data
       - name: 품질 점수(사진·기사·이슈·인물 채점 → 좋은 것 먼저 배열, docs/QUALITY.md)
         continue-on-error: true
         timeout-minutes: 6
