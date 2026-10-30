@@ -236,57 +236,95 @@ for i in flowing[:3]:
     DECKS.append(dict(id='d' + i['id'][1:9], kind='flow', issue=i['id'], title=short(re.sub(r'^\[[^\]]*\]\s*', '', i['title']), 26), tag='이어지는 사건 · ' + i.get('category', ''), date=DATE, cards=cards[:8]))
 oldd = [x for x in OLD.get('decks', []) if x.get('date') != DATE and x['id'] not in {y['id'] for y in DECKS}]
 DECKS += oldd[:10]
-# ---------- 영어판: 카드뉴스·만화·단어를 무료 번역으로 함께 만듦(캐시 data/tr_en_cache.json) ----------
-import urllib.parse
-TE = J('tr_en_cache.json', {}) or {}
-TKEYS = {'title', 'tag', 'big', 'text', 'note', 'caption', 'headline', 'mean', 'context', 'tip', 'field', 'l', 'q', 'quote', 'meaning'}
-def strings(o, acc):
-    if isinstance(o, dict):
-        for k, v in o.items():
-            if k in TKEYS and isinstance(v, str) and re.search(r'[가-힣]', v): acc.append(v)
-            elif k == 'choices' and isinstance(v, list): acc.extend(x for x in v if isinstance(x, str) and re.search(r'[가-힣]', x))
-            else: strings(v, acc)
-    elif isinstance(o, list):
-        for x in o: strings(x, acc)
-    return acc
-def tr_all(texts):
-    miss = [t for t in dict.fromkeys(texts) if t not in TE]; grp, size = [], 0
-    def flush(g):
-        if not g: return
-        marked = '\n\n'.join(('<<<S%03d>>>\n%s' % (n, t)) if n else t for n, t in enumerate(g))
+# ---------- 해외(영어 원문) 학습판: 해외 탭에서 쓰는 단어·카드뉴스·만화 ----------
+# 영어는 '원문 그대로'(번역문이 아님), 한국어는 해외 수집기가 만든 번역(title_ko 등)이나 AI가 함께 쓴 풀이.
+# 해외 탭 기본 = ko, '영어 원문 보기' = en. 국내 콘텐츠를 영어로 옮긴 것이 아님(2026-10-31 사용자 요청: 뉴욕타임스형 영어 학습)
+GJ = J('global.json', {}) or {}; GI = (GJ.get('issues') or [])[:10]
+HEAD = [dict(title=x['title'], title_ko=x.get('title_ko', ''), url=x['url'], press=x['press']) for i in GI for x in [i] + (i.get('sources') or [])[:6] if x.get('title')] + \
+       [dict(title=x['title'], title_ko=x.get('title_ko', ''), url=x['url'], press=x['press']) for L in (GJ.get('sections') or {}).values() for x in L]
+HEAD = list({h['title']: h for h in HEAD}.values())
+def gwords():
+    """영어 헤드라인에서 학습 가치가 있는 단어·표현 8개: 뜻(쉬운 영어 + 한국어), 품사, 원문 예문"""
+    if not HEAD: return []
+    r = llm('gw:' + hk(DATE, *[h['title'] for h in HEAD[:30]]),
+            'You teach English to Korean adults through today\'s news. From the real headlines below, pick 8 useful words or short phrases '
+            '(B1–C1 level, news vocabulary; no names, no basic words). For each: the exact word as it appears, part of speech, a simple English definition (max 14 words), '
+            'a natural Korean meaning (짧게), and the headline number it comes from.\nHeadlines:\n' + '\n'.join('%d. %s' % (k, h['title']) for k, h in enumerate(HEAD[:30])) +
+            '\nJSON: {"words":[{"word":"","pos":"noun","mean_en":"","mean_ko":"","h":0}]}', 1500) or {}
+    out = []
+    for x in r.get('words', []) if isinstance(r, dict) else []:
         try:
-            raw = urllib.request.urlopen(urllib.request.Request('https://translate.googleapis.com/translate_a/single?client=gtx&sl=ko&tl=en&dt=t', urllib.parse.urlencode({'q': marked}).encode(),  # 긴 한국어는 GET 주소 길이 초과(400) → POST
-                                         headers={'User-Agent': 'Mozilla/5.0', 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}), timeout=15).read().decode('utf-8', 'replace')
-            parts = re.split(r'<<<S\d{3}>>>\s*', ''.join(x[0] for x in json.loads(raw)[0] if x[0]))
-            if len(parts) == len(g):
-                for t, v in zip(g, parts): TE[t] = v.strip()
-        except Exception as e: print('fun tr_en', str(e)[:80])
-    for t in miss:
-        if grp and size + len(t) > 3000: flush(grp); grp, size = [], 0; time.sleep(.6)
-        grp.append(t[:1500]); size += len(t) + 12
-    flush(grp)
-def to_en(o):
-    if isinstance(o, dict):
-        r = {}
-        for k, v in o.items():
-            if k in TKEYS and isinstance(v, str): r[k] = TE.get(v, v)
-            elif k == 'who' and isinstance(v, str): r[k] = {'누리': 'Nuri', '보리': 'Bori'}.get(v, v)
-            elif k == 'choices' and isinstance(v, list): r[k] = [TE.get(x, x) if isinstance(x, str) else x for x in v]
-            else: r[k] = to_en(v)
-        return r
-    if isinstance(o, list): return [to_en(x) for x in o]
-    return o
-src_en = dict(quiz=quiz, comics=[c for c in COMICS if c.get('date') == DATE], decks=[d for d in DECKS if d.get('date') == DATE])
-tr_all(strings(src_en, []))
-EN = to_en(src_en)
-EN['ok'] = not strings({k: EN[k] for k in ('comics', 'decks')}, [])   # 번역 대상 문장에 한국어가 남지 않았으면 영어판 사용(언론사·분류 이름은 화면에서 따로 처리)
-json.dump(dict(list(TE.items())[-6000:]), open(P('tr_en_cache.json'), 'w', encoding='utf-8'), ensure_ascii=False)
-out = dict(date=DATE, updated=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(timespec='minutes'), quiz=quiz, comics=COMICS, decks=DECKS, en=EN,
-           _cache={k: v for k, v in CACHE.items()} if len(CACHE) < 60 else {})
+            h = HEAD[int(x.get('h'))]; w = str(x.get('word', '')).strip()
+            if not w or w.lower() not in h['title'].lower() or not x.get('mean_en') or not re.search(r'[가-힣]', x.get('mean_ko', '')): continue
+            out.append(dict(word=w, pos=str(x.get('pos', ''))[:12], mean_en=str(x['mean_en'])[:120], mean_ko=str(x['mean_ko'])[:60], example=h['title'], example_ko=h['title_ko'], url=h['url'], press=h['press']))
+        except Exception: continue
+    return out[:8]
+WW = gwords()
+def wquiz(lang):
+    """해외 단어 퀴즈: 원문 예문 속 표현의 뜻 고르기(오답은 오늘의 다른 표현 뜻)"""
+    m = 'mean_en' if lang == 'en' else 'mean_ko'
+    words = [dict(word=w['word'], mean=w[m], field=w['pos'], related=[], examples=[dict(title=w['example'], url=w['url'], press=w['press'])], src='headline',
+                  context=('Seen today in: “%s”' % w['example'][:80]) if lang == 'en' else ('오늘 “%s” 기사에 나왔어요.' % (w['example_ko'] or w['example'])[:60]),
+                  tip=w['mean_en'] if lang == 'ko' else w['mean_ko'], ai=True) for w in WW]
+    qs = []
+    for k, w in enumerate(words):
+        others = [x['mean'] for x in words if x['word'] != w['word']]; rnd.shuffle(others)
+        if len(others) < 3: continue
+        ch = [w['mean']] + others[:3]; rnd.shuffle(ch)
+        qs.append(dict(kind='mc', word=w['word'], q=('What does “%s” mean in this headline?' % w['word']) if lang == 'en' else ('이 헤드라인의 “%s”는 무슨 뜻일까요?' % w['word']),
+                       quote=w['examples'][0]['title'], choices=ch, answer=ch.index(w['mean'])))
+    return dict(date=DATE, words=words, questions=qs)
+def gdecks(lang):
+    """해외 이슈 카드뉴스(규칙): 원문 제목·요약·보도 흐름·숫자·출처"""
+    T_ = lambda o, k: (o.get(k + '_ko') or o.get(k, '')) if lang == 'ko' else o.get(k, '')
+    L = lambda ko, en: ko if lang == 'ko' else en
+    out = []
+    for i in [x for x in GI if len(x.get('sources') or []) >= 3][:4]:
+        S_ = sorted(i['sources'], key=lambda x: x.get('t', ''))
+        cards = [dict(t='hook', big=short(T_(i, 'title'), 90), text=L('언론사 %d곳 · 기사 %d건이 다뤘어요' % (i.get('presses', 0), i.get('mentions', 0)), '%d publishers · %d stories' % (i.get('presses', 0), i.get('mentions', 0))), img=i.get('image', '')),
+                 dict(t='bg', title=L('무슨 일이에요?', 'What happened'), text=short(T_(i, 'summary'), 260))]
+        ww = next((w for w in WW if w['word'].lower() in (i['title'] + ' ' + ' '.join(x['title'] for x in i['sources'])).lower()), None)
+        if ww: cards.append(dict(t='word', title=L('오늘의 영어 표현', 'Word to know'), word=ww['word'], text=ww['mean_ko'] if lang == 'ko' else ww['mean_en']))
+        cards += [dict(t='timeline', title=L('보도 흐름', 'How the story unfolded'), items=[dict(d=(x.get('t') or '')[5:16].replace('T', ' '), text=short(T_(x, 'title'), 80), note=x.get('press', '')) for x in S_[-6:]]),
+                  dict(t='numbers', title=L('숫자로 보면', 'By the numbers'), nums=[dict(v=str(i.get('presses', 0)), l=L('언론사', 'publishers')), dict(v=str(i.get('mentions', 0)), l=L('관련 기사', 'stories')), dict(v=str(len(i.get('keywords') or [])), l=L('핵심어', 'key terms'))]),
+                  dict(t='src', sources=[dict(title=x['title'], url=x['url'], press=x['press']) for x in i['sources'][:5]])]
+        out.append(dict(id='w' + i['id'][1:9], kind='flow', issue=i['id'], title=short(T_(i, 'title'), 64), tag=L('해외 이슈 · ', 'World · ') + i.get('category', ''), date=DATE, cards=cards))
+    return out
+def gcomics():
+    """해외 이슈 4컷(영어 원문 + 한국어 풀이를 AI가 함께 씀). 숫자는 원문에 있는 것만"""
+    out = {'en': [], 'ko': []}
+    for i in [x for x in GI if x.get('category') not in ('연예', '스포츠') and x.get('summary')][:2]:
+        src = i['title'] + ' ' + i.get('summary', '') + ' ' + ' '.join(x['title'] for x in i.get('sources') or [])
+        sc = llm('gcx:' + hk(i['id'], i['title']),
+                 'Write a 4-panel explainer comic for English learners about this news, using only these facts. Two mascots: "Bori" (curious student) and "Nuri" (calm explainer). '
+                 'No real people as characters. Each panel: a caption (max 6 words) and 1–2 short lines (max 16 words each) in simple, natural English, plus a Korean translation of each. '
+                 'Panel 1 what happened, 2 why/how, 3 a key word or number, 4 what to watch. mood: curious, explain, surprised, think, smile.\n'
+                 'Headline: %s\nFacts: %s\nJSON: {"title_en":"","title_ko":"","panels":[{"caption_en":"","caption_ko":"","mood":"curious","lines":[{"who":"Bori","en":"","ko":""}]}]}' % (i['title'], i.get('summary', '')[:600]), 1600)
+        try:
+            ps = sc['panels']; assert len(ps) == 4
+            for p in ps:
+                assert 1 <= len(p['lines']) <= 2
+                for l in p['lines']:
+                    assert l['who'] in ('Bori', 'Nuri') and 2 <= len(l['en']) <= 120 and re.search(r'[가-힣]', l['ko'])
+                    assert not (set(re.findall(r'\d+', l['en'])) - set(re.findall(r'\d+', src)))
+        except Exception: continue
+        for lg in ('en', 'ko'):
+            who = (lambda w: w) if lg == 'en' else (lambda w: {'Bori': '보리', 'Nuri': '누리'}[w])
+            out[lg].append(dict(id='g' + i['id'][1:9], issue=i['id'], category=i.get('category'), headline=i['title'] if lg == 'en' else (i.get('title_ko') or i['title']),
+                                title=sc.get('title_' + lg) or i['title'][:40], gen='ai', word='', date=DATE, image=i.get('image', ''),
+                                sources=[dict(title=x['title'], url=x['url'], press=x['press']) for x in (i.get('sources') or [])[:4]],
+                                panels=[dict(caption=p.get('caption_' + lg, ''), mood=p.get('mood', 'explain') if p.get('mood') in ('curious', 'explain', 'surprised', 'think', 'smile') else 'explain',
+                                             lines=[dict(who=who(l['who']), text=l[lg]) for l in p['lines']]) for p in sc['panels']]))
+    return out
+GC_ = gcomics()
+WORLD = {lg: dict(quiz=wquiz(lg), decks=gdecks(lg), comics=GC_[lg]) for lg in ('ko', 'en')}
+WORLD['vocab'] = WW
+out = dict(date=DATE, updated=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(timespec='minutes'), quiz=quiz, comics=COMICS, decks=DECKS, world=WORLD,
+           _cache={k: v for k, v in CACHE.items()} if len(CACHE) < 80 else {})
 json.dump(out, open(P('fun.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 # 날짜별 보관: fun/YYYY-MM-DD.json(그날 만든 것만) + fun/index.json(날짜 목록). 배우기 화면 '지난 기록'에서 다시 봄
 os.makedirs(P('fun'), exist_ok=True)
-day = dict(date=DATE, updated=out['updated'], quiz=quiz, comics=[c for c in COMICS if c.get('date') == DATE], decks=[d for d in DECKS if d.get('date') == DATE], en=EN)
+day = dict(date=DATE, updated=out['updated'], quiz=quiz, comics=[c for c in COMICS if c.get('date') == DATE], decks=[d for d in DECKS if d.get('date') == DATE], world=WORLD)
 json.dump(day, open(P('fun/%s.json' % DATE), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 IX = J('fun/index.json', {}) or {}; IX.setdefault('days', {})
 IX['days'][DATE] = dict(q=len(Q), c=len(day['comics']), d=len(day['decks']), w=[w['word'] for w in WORDS[:3]])

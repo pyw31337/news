@@ -523,8 +523,16 @@ function gtoday(){
   ${secs.length?`${sec(gt('Latest by section','분야별 최신 헤드라인'),'By section','','news')}<div class="gsecs">${secs.map(([c,L])=>`<section class="card gsec"><h3><span class="cat ${c}">${ic(c)}${esc(gcat(c))}</span></h3>
    ${L.map((x,k)=>`<a href="${esc(x.url)}" target="_blank" rel="noopener" class="${k===0&&x.img?'top':''}">${k===0&&x.img?`<span class="gi" ${bg(x.img)}></span>`:''}<b>${esc(T_(x,'title'))}</b><small>${esc(x.press)} · ${ago(x.t)}</small></a>`).join('')}</section>`).join('')}</div>`:''}
   <p class="fine">${gt('Market data: Yahoo Finance daily closes (may be delayed). Stories: international RSS feeds and Google News.','시세: 야후 파이낸스 일별 종가(지연될 수 있어요). 기사: 해외 언론 RSS·구글 뉴스. 번역은 자동 생성되어 어색하거나 틀릴 수 있어요.')}</p>`;
-  bindOrig(gtoday);heatIn(app);
+  bindOrig(gtoday);heatIn(app);gvocab();
 }
+/* 해외 탭 '오늘의 영어 표현': 오늘 영어 헤드라인에서 고른 단어(fun.json world.vocab). 원문 예문에 단어 강조 */
+let FUNJ=null;
+function gvocab(){const put=W=>{if(!W||!W.length||!app.querySelector('.gbar')||app.querySelector('.gvoc'))return;const at=app.querySelector('.trends');if(!at)return;
+  const hi=(t,w)=>esc(t).replace(new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','i'),'<mark>$1</mark>');
+  at.previousElementSibling.insertAdjacentHTML('beforebegin',`${sec(gt('Words from today’s stories','오늘의 영어 표현'),'Learn English with the news',`<span class="more">${gt('Picked from real headlines','실제 영어 헤드라인에서 골랐어요')}</span>`,'book')}
+   <div class="gvoc">${W.map(w=>`<a class="card gv" href="${esc(w.url)}" target="_blank" rel="noopener"><div class="gvh"><b lang="en">${esc(w.word)}</b><i>${esc(w.pos)}</i></div>
+    <p class="gvm">${S.orig?esc(w.mean_en):esc(w.mean_ko)}<small>${S.orig?esc(w.mean_ko):esc(w.mean_en)}</small></p><q lang="en">${hi(w.example,w.word)}</q>${!S.orig&&w.example_ko?`<small class="gvk">${esc(w.example_ko)}</small>`:''}<span class="gvs">${esc(w.press)}</span></a>`).join('')}</div>`)};
+  if(FUNJ)return put((FUNJ.world||{}).vocab);fetch('data/fun.json?'+Math.floor(Date.now()/6e5)).then(r=>r.ok?r.json():null).then(j=>{FUNJ=j;put(((j||{}).world||{}).vocab)}).catch(()=>{})}
 function gissue(id){const i=G.issues.find(x=>x.id===id);if(!i)return gtoday();setMeta(T_(i,'title'),T_(i,'summary'));
   app.innerHTML=`<div class="bkrow"><a class="back" href="./">${NBI('arrow-left')} ${gt('Global top stories','해외 TOP')}</a>${shareBtn()}</div><div class="gbar"><span>${ic('세계')}${gt('Global reporting','해외 · 자동 번역')}</span>${origBtn()}</div>
   <article class="dhead card"><div class="img" ${bg(i.image)}><div class="ov"><span class="cat 세계">${esc(gcat(i.category))}</span><b>${gt(`Global issue #${i.rank}`,`해외 이슈 ${i.rank}위`)}</b></div></div>
