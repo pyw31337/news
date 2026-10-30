@@ -26,14 +26,14 @@ function analyse(src){const M=My()||{};let L=[];
   const hours=Array(24).fill(0);L.forEach(r=>{if(r.h!=null)hours[r.h]++});
   return{n:L.length,cat:cnt(L.map(r=>r.c)),topic:cnt(L.flatMap(r=>r.k||[])).slice(0,8),tag:cnt(L.flatMap(r=>r.e||[])).slice(0,14),lean,hours}}
 function donut(cat,n){let a=0;const R=40,C=2*Math.PI*R;
-  return`<div class="tz-donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="${R}" class="bg"/>${cat.map(([c,v])=>{const f=v/n,s=`<circle cx="50" cy="50" r="${R}" style="stroke:${CATC[c]||'#9aa3b5'};stroke-dasharray:${f*C} ${C};stroke-dashoffset:${-a*C}"/>`;a+=f;return s}).join('')}</svg><div class="tz-dc"><b>${n.toLocaleString()}</b><span>건</span></div></div>
+  return`<div class="tz-donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="${R}" class="bg"/>${cat.map(([c,v])=>{const f=v/n,s=`<circle cx="50" cy="50" r="${R}" style="stroke:${CATC[c]||'#9aa3b5'};stroke-dasharray:${f*C} ${C};stroke-dashoffset:${-a*C}"><title>${E(c)} ${v}건 · 전체의 ${Math.round(f*100)}%</title></circle>`;a+=f;return s}).join('')}</svg><div class="tz-dc"><b>${n.toLocaleString()}</b><span>건</span></div></div>
    <ul class="tz-leg">${cat.slice(0,7).map(([c,v])=>`<li style="--c:${CATC[c]||'#9aa3b5'}"><i></i>${E(c)}<b>${Math.round(v/n*100)}%</b></li>`).join('')}</ul>`}
 function leanBar(l){const T=l.left+l.center+l.right+l.n||1,P=k=>Math.round(l[k]/T*1000)/10;const side=l.left+l.right?(l.left>l.right*1.5?'진보 성향 매체 기사를 더 많이 봤어요':l.right>l.left*1.5?'보수 성향 매체 기사를 더 많이 봤어요':'진보·보수 기사를 고르게 봤어요'):'아직 성향이 표시된 기사가 적어요';
   return`<div class="tz-lean"><div class="tz-lb"><i class="l" style="flex:${l.left||0}"></i><i class="c" style="flex:${(l.center||0)+(l.n||0)}"></i><i class="r" style="flex:${l.right||0}"></i></div>
    <div class="tz-ll"><span class="l">진보 ${P('left')}%</span><span class="c">중립·판단 보류 ${Math.round((P('center')+P('n'))*10)/10}%</span><span class="r">보수 ${P('right')}%</span></div><p>${side}</p></div>`}
-function bars(list){const m=list[0]?list[0][1]:1;return`<ol class="tz-bars">${list.map(([k,v],i)=>`<li><span>${E(k)}</span><i style="--w:${v/m*100}%;--d:${i*.05}s"></i><b>${v}</b></li>`).join('')}</ol>`}
+function bars(list){const m=list[0]?list[0][1]:1;return`<ol class="tz-bars">${list.map(([k,v],i)=>`<li data-tip="${E(k)} · ${v}건"><span>${E(k)}</span><i style="--w:${v/m*100}%;--d:${i*.05}s"></i><b>${v}</b></li>`).join('')}</ol>`}
 function tags(list){const m=list[0]?list[0][1]:1;return`<div class="tz-tags">${list.map(([k,v])=>`<span style="--s:${.78+v/m*.5}">${I('tag')}${E(k)}<em>${v}</em></span>`).join('')}</div>`}
-function hours(h){const m=Math.max(1,...h);return`<div class="tz-hrs">${h.map((v,i)=>`<i style="--h:${v/m*100}%" title="${i}시 ${v}건"></i>`).join('')}</div><div class="tz-hx"><span>0시</span><span>6시</span><span>12시</span><span>18시</span><span>24시</span></div>`}
+function hours(h){const m=Math.max(1,...h);return`<div class="tz-hrs">${h.map((v,i)=>`<i style="--h:${v/m*100}%" data-tip="${i}시에 읽은 기사 ${v}건"></i>`).join('')}</div><div class="tz-hx"><span>0시</span><span>6시</span><span>12시</span><span>18시</span><span>24시</span></div>`}
 function tasteHTML(src,opt={}){const A=analyse(src);const who=src==='save'?'스크랩·나중에 읽기':'읽은 기사';
   if(!A.n)return`<div class="tz-empty">${I('chart-donut')}<p>${src==='save'?'카드의 ‘나중에 읽기’나 스크랩으로 기사를 모으면':'기사를 읽으면'} 여기서 나의 성향을 분석해 드려요.</p></div>`;
   const top=A.cat[0];

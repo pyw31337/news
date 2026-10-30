@@ -9,12 +9,13 @@ const fmtV=n=>n>=1e8?(n/1e8).toFixed(1)+'억':n>=1e4?(n/1e4).toFixed(n>=1e5?0:1)
 const agoT=t=>{if(!t)return'';const m=(Date.now()-new Date(t))/6e4;return m<60?Math.max(1,m|0)+'분 전':m<1440?(m/60|0)+'시간 전':(m/1440|0)+'일 전'};
 const sent=r=>(r.ai&&r.ai.sent)||r.sent;
 function gauge(s,big){const tot=s.pos+s.neu+s.neg||1,R=big?70:46,W=big?14:10,cx=R+W,cy=R+W,L=Math.PI*R;let off=0;
-  const seg=(v,c)=>{const l=L*v/tot,d=`<path d="M${cx-R} ${cy}A${R} ${R} 0 0 1 ${cx+R} ${cy}" fill="none" stroke="${c}" stroke-width="${W}" stroke-dasharray="${l} ${L}" stroke-dashoffset="${-off}"/>`;off+=l;return d};
+  const seg=(v,c,nm)=>{const l=L*v/tot,d=`<path d="M${cx-R} ${cy}A${R} ${R} 0 0 1 ${cx+R} ${cy}" fill="none" stroke="${c}" stroke-width="${W}" stroke-dasharray="${l} ${L}" stroke-dashoffset="${-off}"><title>${nm} 글 ${v}% · 블로그·카페 글의 분위기를 AI·사전으로 판별한 비율</title></path>`;off+=l;return d};
   const lead=s.neg>=s.pos&&s.neg>=s.neu?['부정적','var(--ds-up)',s.neg]:s.pos>=s.neu?['긍정적','var(--ds-green)',s.pos]:['중립적','var(--ds-mute)',s.neu];
-  return`<div class="vg ${big?'big':''}"><svg viewBox="0 0 ${2*cx} ${cy+6}">${seg(s.pos,'var(--ds-green)')}${seg(s.neu,'var(--ds-line)')}${seg(s.neg,'var(--ds-up)')}</svg><div class="vgl"><b style="color:${lead[1]}">${lead[2]}%</b><span>${lead[0]}</span></div></div>`}
+  return`<div class="vg ${big?'big':''}"><svg viewBox="0 0 ${2*cx} ${cy+6}">${seg(s.pos,'var(--ds-green)','긍정적')}${seg(s.neu,'var(--ds-line)','중립적')}${seg(s.neg,'var(--ds-up)','부정적')}</svg><div class="vgl"><b style="color:${lead[1]}">${lead[2]}%</b><span>${lead[0]}</span></div></div>`}
 function trend(tr){if(!tr||tr.length<2)return'<p class="vfine">분위기 변화는 몇 시간 더 모이면 그래프로 보여드려요.</p>';const w=300,h=70,n=tr.length,x=k=>k/(n-1)*w;
   const ar=(f,c)=>`<path d="M0 ${h} ${tr.map((p,k)=>`L${x(k).toFixed(1)} ${(h-f(p)/100*h).toFixed(1)}`).join(' ')} L${w} ${h}Z" fill="${c}"/>`;
-  return`<svg class="vtr" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">${ar(p=>p[1]+p[2]+p[3],'var(--ds-up)')}${ar(p=>p[1]+p[2],'var(--ds-line)')}${ar(p=>p[1],'var(--ds-green)')}</svg><div class="vtrx"><span>${E(tr[0][0].replace('-','/'))}시</span><span>지금</span></div>`}
+  const tips=tr.map(p=>`${String(p[0]).replace('-','/')}시 · 긍정 ${p[1]}% · 중립 ${p[2]}% · 부정 ${p[3]}%`);
+  return`<svg class="vtr" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" data-series="${tr.map(p=>p[1]+p[2]+p[3]).join(',')}" data-tips='${E(JSON.stringify(tips))}'>${ar(p=>p[1]+p[2]+p[3],'var(--ds-up)')}${ar(p=>p[1]+p[2],'var(--ds-line)')}${ar(p=>p[1],'var(--ds-green)')}</svg><div class="vtrx"><span>${E(tr[0][0].replace('-','/'))}시</span><span>지금</span></div>`}
 function cloud(ws){if(!ws||!ws.length)return'';const mx=ws[0][1];return`<div class="vcloud">${ws.slice(0,18).map(([w,v],k)=>`<span class="c${k%4}" style="font-size:${(.78+v/mx*.85).toFixed(2)}rem">${E(w)}</span>`).join('')}</div>`}
 function quotes(r,n){const P=r.posts||[];const pick=((r.ai&&r.ai.quotes)||[]).map(q=>P[q]).filter(Boolean);const L=pick.concat(P.filter(p=>p.s!==0),P).filter((p,k,a)=>a.indexOf(p)===k).slice(0,n);
   return`<div class="vq">${L.map(p=>{return`<a class="vqc ${p.s>0?'pos':p.s<0?'neg':''}" href="${E(p.url)}" target="_blank" rel="noopener">${plat(p.src)}<q>${E(p.q)}</q><small>원문 보기 ${NBI('external-link')}</small></a>`}).join('')}</div>`}

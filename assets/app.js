@@ -30,10 +30,12 @@ function av(e,cls='av'){const v=entityMedia(e),fallback=e.type==='person'?'user'
 function chipE(n,nolink){const e=ent(n);if(e&&nolink)return`<span class="chip ${e.type}">${esc(n)}</span>`;return e?`<a class="chip ${e.type}" href="${eh(n)}">${esc(n)}</a>`:`<span class="chip event">#${esc(n)}</span>`}
 function spark(daily,w=120,h=28,col='#ff4d2e'){const now=new Date();const bins=Array(24).fill(0);
   daily.forEach(([d,c])=>{const t=new Date(d);const k=(now.getFullYear()-t.getFullYear())*12+now.getMonth()-t.getMonth();if(k>=0&&k<24)bins[23-k]+=c});
-  return line(bins,w,h,col)}
-function line(v,w=120,h=28,col='#ff4d2e'){if(!v||v.length<2)return'';const mn=Math.min(...v),mx=Math.max(...v),r=mx-mn||1;
+  const lab=bins.map((_,i)=>{const d=new Date(now.getFullYear(),now.getMonth()-(23-i),1);return`${d.getFullYear()}년 ${d.getMonth()+1}월`});
+  return line(bins,w,h,col,{name:'관련 기사',unit:'건',labels:lab})}
+/* 작은 선 그래프. meta={name,unit,labels}: 말풍선(assets/tip.js)에 '무엇이 · 언제 · 얼마'를 보여 줌 */
+function line(v,w=120,h=28,col='#ff4d2e',meta={}){if(!v||v.length<2)return'';const mn=Math.min(...v),mx=Math.max(...v),r=mx-mn||1;
   const pts=v.map((x,i)=>`${(i/(v.length-1)*w).toFixed(1)},${(h-2-(x-mn)/r*(h-4)).toFixed(1)}`).join(' ');
-  return`<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polyline points="0,${h} ${pts} ${w},${h}" fill="${col}22" stroke="none"/><polyline points="${pts}" fill="none" stroke="${col}" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg>`}
+  return`<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" data-series="${v.map(x=>+(+x).toFixed(4)).join(',')}" data-h="${h}" data-col="${col}"${meta.step?` data-step="${esc(meta.step)}"`:''}${meta.name?` data-name="${esc(meta.name)}"`:''}${meta.unit?` data-unit="${esc(meta.unit)}"`:''}${meta.labels?` data-labels='${esc(JSON.stringify(meta.labels))}'`:''}><polyline points="0,${h} ${pts} ${w},${h}" fill="${col}22" stroke="none"/><polyline points="${pts}" fill="none" stroke="${col}" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg>`}
 function sec(t,sub,more='',icon=''){return`<div class="sec"><h2><small>${sub}</small>${icon?ic(icon,'h'):''}${t}</h2>${more}</div>`}
 /* ---------- 타입별 UI 컴포넌트 ---------- */
 const host=u=>{try{return new URL(u).hostname}catch(x){return''}};
@@ -141,7 +143,7 @@ function route(){
 const up=m=>m.dir==='RISING'?'up':m.dir==='FALLING'?'down':'';
 const mrate=(m,d)=>`${d==='down'?'-':d==='up'?'+':''}${esc(String(m.rate??'').replace(/^[-+]/,''))}%`;/* 원자료에 부호가 이미 있어 '--5.12%'로 겹치던 문제 */
 function mcard(m,big){const d=up(m),s=d==='up'?NBI('caret-up-f'):d==='down'?NBI('caret-down-f'):'';
-  return`<a class="mk ${d} ${big?'big':''}" href="market/${encodeURIComponent(m.name)}" aria-label="${esc(m.name)} 자세히 보기"><span class="n">${esc(m.name)}${m.unit?`<i>${esc(m.unit)}</i>`:''}</span><b>${esc(m.price)}</b><em>${s} ${esc(String(m.diff??'').replace(/^[-+]/,''))} (${mrate(m,d)})</em>${line(m.series,120,big?44:28,d==='down'?'#2f6bff':'#ff4d2e')}</a>`}
+  return`<a class="mk ${d} ${big?'big':''}" href="market/${encodeURIComponent(m.name)}" aria-label="${esc(m.name)} 자세히 보기"><span class="n">${esc(m.name)}${m.unit?`<i>${esc(m.unit)}</i>`:''}</span><b>${esc(m.price)}</b><em>${s} ${esc(String(m.diff??'').replace(/^[-+]/,''))} (${mrate(m,d)})</em>${line(m.series,120,big?44:28,d==='down'?'#2f6bff':'#ff4d2e',{name:m.name,step:'거래일 전',unit:m.unit==='%'?'%':''})}</a>`}
 /* ---------- 마켓 항목 상세(카드를 누르면): assets/mkt.js ---------- */
 function mdetail(a){const m=(D.market||[]).find(x=>x.name===a);if(!m||!window.nbMkt)return market();nbMkt(m)}
 function marketStrip(){const M=D.market||[];if(!M.length)return'';
@@ -179,7 +181,7 @@ function today(){
   </section>
   ${marketStrip()}
   ${sec('오늘의 이슈 TOP 10','Today’s Top 10',`<a class="more" href="settings">${ic('gear')}카테고리 설정</a>`,'fire')}
-  <div class="catbar">${Object.entries(cats).map(([c,n])=>`<i style="flex:${n};background:${CATC[c]}"></i>`).join('')}</div>
+  <div class="catbar">${Object.entries(cats).map(([c,n])=>`<i style="flex:${n};background:${CATC[c]}" data-tip="${c} 이슈 ${n}개 · TOP 10의 ${Math.round(n/I.length*100)}%"></i>`).join('')}</div>
   <div class="legend">${Object.entries(cats).map(([c,n])=>`<span style="--c:${CATC[c]}">${c} ${n}</span>`).join('')}</div>
   <div class="grid10">${grid}</div>
   ${sec('실시간 검색어','Google Trends KR','<span class="more">눌러서 오늘·과거 흐름 보기</span>','search')}
@@ -487,7 +489,7 @@ function origBtn(){return`<button type="button" class="translate ${S.orig?'':'on
 function bindOrig(re){const tb=$('#translate');if(tb)tb.onclick=()=>{S.orig=!S.orig;saveS();header2();route()}}
 // 해외 증시 카드(우리 마켓 상세가 없는 지표라 링크 없이, 누르면 말풍선)
 function gmk(m){const d=up(m),s=d==='up'?NBI('caret-up-f'):d==='down'?NBI('caret-down-f'):'',n=S.orig?m.name:(m.name_ko||m.name);
-  return`<div class="mk ${d}" data-tip="${esc(n)} · ${gt('52-week','52주')} ${m.lo52!=null?Number(m.lo52).toLocaleString():'—'} ~ ${m.hi52!=null?Number(m.hi52).toLocaleString():'—'}"><span class="n">${esc(n)}</span><b>${esc(m.price)}</b><em>${s} ${esc(m.diff||'')} (${m.rate>0?'+':''}${m.rate}%)</em>${line(m.series,120,28,d==='down'?'#2f6bff':'#ff4d2e')}</div>`}
+  return`<div class="mk ${d}" data-tip="${esc(n)} · ${gt('52-week','52주')} ${m.lo52!=null?Number(m.lo52).toLocaleString():'—'} ~ ${m.hi52!=null?Number(m.hi52).toLocaleString():'—'}"><span class="n">${esc(n)}</span><b>${esc(m.price)}</b><em>${s} ${esc(m.diff||'')} (${m.rate>0?'+':''}${m.rate}%)</em>${line(m.series,120,28,d==='down'?'#2f6bff':'#ff4d2e',{name:n+' · '+gt('daily close','일별 종가'),step:gt(' trading days ago','거래일 전')})}</div>`}
 function gtoday(){
   const I=G.issues,L=I[0],mx=Math.max(...I.map(i=>i.score||0),1),M=G.markets||[],ST=G.stocks||[],SE=G.sections||{};
   const cats={};I.forEach(i=>cats[i.category]=(cats[i.category]||0)+1);
@@ -507,7 +509,7 @@ function gtoday(){
    <div class="side">${I.slice(1,5).map(i=>`<a class="card mini" href="g/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><span class="cat ${i.category}">${esc(gcat(i.category))}</span><h3>${esc(T_(i,'title'))}</h3><div class="m">${esc(i.press)} · ${gt(`${i.presses} publishers`,`외 ${Math.max(0,i.presses-1)}곳`)}</div></div></a>`).join('')}</div></section>
   ${us.length?`${sec(gt('US stock market','미국 증시'),'Wall Street','<span class="more">'+gt('Daily close · 3-month trend','일별 종가 · 3개월 흐름')+'</span>','up')}<div class="mkrow">${us.map(gmk).join('')}</div>`:''}
   ${ST.length?`${sec(gt('US market leaders','미국 대표 종목'),'Big Tech & leaders',`<span class="more">${gt('Top mover','오늘 가장 많이 오른 종목')}: ${esc(mv[0].name)} ${mv[0].rate>0?'+':''}${mv[0].rate}%</span>`,'chart')}
-   <div class="gstk">${mv.map(x=>{const d=up(x);return`<div class="gs ${d}" data-tip="${esc(x.name)} (${esc(x.sym)}) · ${gt('52-week','52주')} ${x.lo52??'—'} ~ ${x.hi52??'—'}"><span class="n">${esc(x.name)}<small>${esc(x.sym)}</small></span>${line(x.series,90,24,d==='down'?'#2f6bff':'#ff4d2e')}<b>$${esc(x.price)}</b><em>${x.rate>0?'+':''}${x.rate}%</em></div>`}).join('')}</div>`:''}
+   <div class="gstk">${mv.map(x=>{const d=up(x);return`<div class="gs ${d}" data-tip="${esc(x.name)} (${esc(x.sym)}) · ${gt('52-week','52주')} ${x.lo52??'—'} ~ ${x.hi52??'—'}"><span class="n">${esc(x.name)}<small>${esc(x.sym)}</small></span>${line(x.series,90,24,d==='down'?'#2f6bff':'#ff4d2e',{name:x.name+' · '+gt('daily close','일별 종가'),step:gt(' trading days ago','거래일 전')})}<b>$${esc(x.price)}</b><em>${x.rate>0?'+':''}${x.rate}%</em></div>`}).join('')}</div>`:''}
   ${wo.length||ot.length?`${sec(gt('World markets · rates · FX','세계 증시·금리·환율'),'Global markets','','coin')}<div class="mkrow">${[...wo,...ot].map(gmk).join('')}</div>`:''}
   ${sec(gt('Global top stories','해외 이슈 TOP'),'Global top stories','','세계')}
   <div class="catbar">${Object.entries(cats).map(([c,n])=>`<i style="flex:${n};background:${CATC[c]||'#8189a3'}" data-tip="${esc(gcat(c))} ${n}"></i>`).join('')}</div>
