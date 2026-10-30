@@ -173,12 +173,23 @@ N = len(docs)
 vec = [{w: c * math.log(N / (1 + df[w])) for w, c in d.items()} for d in docs]
 nrm = [math.sqrt(sum(v * v for v in x.values())) or 1 for x in vec]
 def cos(i, j): return sum(v * vec[j].get(w, 0) for w, v in vec[i].items()) / nrm[i] / nrm[j]
+# 같은 사건인지: 유사도 0.28 초과 + 흔하지 않은 낱말 2개 이상 공유(‘spooky science’처럼 한두 낱말만 겹치는 지역 뉴스 묶음 방지, 2026-10-31)
+def same(i, j):
+    if cos(i, j) <= 0.28: return False
+    common = [w for w in docs[i] if w in docs[j] and df[w] < N * .05]
+    return len(common) >= 2
 cl = []
 for i in range(N):
     for c in cl:
-        if cos(i, c[0]) > 0.3: c.append(i); break
+        if same(i, c[0]): c.append(i); break
     else: cl.append([i])
-def score(c): return len({A[i]['press'] for i in c}) * 2 + len({A[i]['feed'] for i in c}) * 1.5 + len(c) * .3
+# 화제도: 주요 언론사·주요 헤드라인 피드에 실릴수록 높게. 주제 검색 피드(과학·건강·기후·문화 검색)·지역 매체만 있는 묶음은 낮게
+MAJOR = re.compile(r'reuters|associated press|^ap\b|ap news|bbc|guardian|new york times|nytimes|wall street|wsj|bloomberg|financial times|cnn|nbc|cbs|abc news|al jazeera|npr|\bdw\b|washington post|politico|axios|afp|sky news|cnbc|economist|usa today|los angeles times|fox news|the times|telegraph|independent|time\b|forbes|the hill|le monde|nikkei|south china morning|straits times|times of india', re.I)
+SEARCHF = {'Google News Science', 'Google News Health', 'Google News Climate', 'Google News Culture'}
+def score(c):
+    ps = {A[i]['press'] for i in c}; fs = {A[i]['feed'] for i in c}
+    top = [f for f in fs if f not in SEARCHF]
+    return sum(2.2 if MAJOR.search(p or '') else .8 for p in ps) + len(top) * 1.5 + (len(fs) - len(top)) * .4 + len(c) * .3
 cl.sort(key=score, reverse=True)
 issues = []
 for c in cl[:12]:
@@ -288,7 +299,7 @@ for a in sorted(A, key=lambda a: a['t'], reverse=True):
 with ThreadPoolExecutor(6) as ex:
     todo = [x for L in sections.values() for x in L if 'news.google.com' in x['url']]
     for x, real in zip(todo, ex.map(lambda x: gn_decode(x['url']), todo)): x['url'] = real
-    todo = [x for L in sections.values() for x in L[:3] if not x['img']]
+    todo = [x for L in sections.values() for x in L if not x['img']]   # 분야별 헤드라인은 모두 썸네일
     for x, im in zip(todo, ex.map(lambda x: og_img(x['url']), todo)): x['img'] = im
 # 번역은 한 큐에서 배치 처리한다. 제한 중에는 빈 번역값으로 저장되어 화면이 영어 원문으로 자연스럽게 대체된다.
 jobs = []

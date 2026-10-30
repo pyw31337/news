@@ -106,7 +106,16 @@ for d in dd:
 V = J('voice.json', {}) or {}
 by_plat = C()
 for r in V.get('issues', []): by_plat.update(r.get('by') or {})
-content = dict(fun_days=len(fdays), fun_today=dict(quiz=len(FJ.get('quiz') or []), comics=len(FJ.get('comics') or []), decks=len(FJ.get('decks') or []),
+QI = J('fun/quiz/index.json', {}) or {}; QZ = J('quiz.json', {}) or {}
+quizst = dict(total=QI.get('total'), days=len(QI.get('days') or {}), today=len(QZ.get('questions') or []),
+              daily=[[d, (QI.get('days') or {}).get(d, {}).get('n', 0)] for d in dd], ai_daily=[[d, (QI.get('days') or {}).get(d, {}).get('ai', 0)] for d in dd],
+              by_scope={k: sum(1 for q in QZ.get('questions') or [] if (q.get('scope') or 'kr') == k) for k in ('kr', 'global')},
+              by_level={str(l): sum(1 for q in QZ.get('questions') or [] if q.get('level') == l) for l in (1, 2, 3)},
+              with_img=sum(1 for q in QZ.get('questions') or [] if q.get('img')))
+SOC = J('social.json', {}) or {}
+socst = dict(updated=SOC.get('updated'), posts=len(SOC.get('posts') or []), by_net={n: sum(1 for p in SOC.get('posts') or [] if p.get('net') == n) for n in ('truth', 'bluesky')},
+             accounts=sorted({p.get('name') for p in SOC.get('posts') or []}))
+content = dict(quiz=quizst, social=socst, fun_days=len(fdays), fun_today=dict(quiz=len(FJ.get('quiz') or []), comics=len(FJ.get('comics') or []), decks=len(FJ.get('decks') or []),
                     cards=sum(len(k.get('cards') or k.get('slides') or []) for k in (FJ.get('decks') or []) if isinstance(k, dict)), updated=FJ.get('updated')),
                fun_daily=fun_daily, decks=[[k.get('title') or k.get('name'), len(k.get('cards') or k.get('slides') or [])] for k in (FJ.get('decks') or []) if isinstance(k, dict)],
                voice=dict(issues=len(V.get('issues', [])), posts=sum(r.get('n', 0) for r in V.get('issues', [])), videos=sum(len(r.get('videos') or []) for r in V.get('issues', [])),

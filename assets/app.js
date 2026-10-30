@@ -170,7 +170,7 @@ function today(){
     <div class="ft"><span>언론사 ${i.presses}곳${(i.flow||[]).length?` · 흐름 ${i.flow.length}일`:''}</span><span>자세히 ${NBI('arrow-right')}</span></div></div></a>`}).join('');
   const P=D.entities.filter(e=>e.type==='person').slice(0,12);
   const pcs=P.map(e=>`<a class="card pc" href="${eh(e.name)}">${av(e)}<b>${esc(e.name)}</b><small>${esc(e.wiki?.desc||'')}</small>${spark(e.daily)}<span class="last">${e.timeline[0]?esc(e.timeline[0].title):''}</span></a>`).join('');
-  const tr=D.trends.slice(0,10).map((t,i)=>`<a class="tr" href="${kh(t.keyword)}">${th(t.image,'tt','search')}<span class="n">${i+1}</span><b>${esc(t.keyword)}</b><span class="tv" title="${TTIP}">${tlab(t)}${t.articles?` · 기사 ${t.articles}`:''}</span></a>`).join('');
+  const tr=D.trends.slice(0,10).map((t,i)=>`<a class="tr" href="${kh(t.keyword)}">${th(t.image,'tt','search')}<span class="n">${i+1}</span><b>${esc(t.keyword)}</b>${(t.news||t.today||[])[0]?`<span class="why">${esc((t.news||t.today)[0].title)}</span>`:''}<span class="tv" title="${TTIP}">${tlab(t)}${t.articles?` · 기사 ${t.articles}`:''}</span></a>`).join('');
   const W=(D.words||[]).slice(0,6);
   app.innerHTML=`
   <section class="hero">
@@ -490,6 +490,13 @@ const gt=(en,ko)=>S.orig?en:ko;
 // 원문·번역 전환: 해외 화면 머리줄('해외 주요 뉴스 · 한국어 자동 번역') 오른쪽 끝
 function origBtn(){return`<button type="button" class="translate ${S.orig?'':'on'}" id="translate" title="${S.orig?'해외 뉴스를 한국어로 번역해 보기':'영어 원문으로 보기'}">${S.orig?'한국어 번역 보기':'영어 원문 보기'}</button>`}
 function bindOrig(re){const tb=$('#translate');if(tb)tb.onclick=()=>{S.orig=!S.orig;saveS();header2();route()}}
+/* 해외 카드 요약: AI 세 줄 요약(없으면 요약문을 문장으로 나눔) → 국내 카드처럼 주황 불릿, 핵심어 주황 강조 */
+function gbullets(i,n){const A=i.ai||{};let L=(A.bullets&&(A.bullets[S.orig?'en':'ko']||A.bullets.en))||[];
+  if(!L.length){const ld=(i.leads||[])[0],t=T_(i,'summary')||(ld?(S.orig?ld.text:(ld.text_ko||ld.text)):'');L=t.split(/(?<=[.!?다요])\s+/).map(x=>x.trim()).filter(x=>x.length>12)}
+  L=L.slice(0,n).map(x=>x.length>120?x.slice(0,118)+'…':x);if(!L.length)return'';
+  const K=[...(i.keywords||[])].filter(w=>w&&w.length>=3).sort((a,b)=>b.length-a.length).slice(0,6);
+  const hl=t=>{let h=esc(t);K.forEach(k=>{h=h.replace(new RegExp('\\b('+k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')\\b','i'),'<em class="hk">$1</em>')});return h};
+  return`<ul>${L.map(t=>`<li>${hl(t)}</li>`).join('')}</ul>`}
 // 해외 증시 카드(우리 마켓 상세가 없는 지표라 링크 없이, 누르면 말풍선)
 function gmk(m){const d=up(m),s=d==='up'?NBI('caret-up-f'):d==='down'?NBI('caret-down-f'):'',n=S.orig?m.name:(m.name_ko||m.name);
   return`<div class="mk ${d}" data-tip="${esc(n)} · ${gt('52-week','52주')} ${m.lo52!=null?Number(m.lo52).toLocaleString():'—'} ~ ${m.hi52!=null?Number(m.hi52).toLocaleString():'—'}"><span class="n">${esc(n)}</span><b>${esc(m.price)}</b><em>${s} ${esc(m.diff||'')} (${m.rate>0?'+':''}${m.rate}%)</em>${line(m.series,120,28,d==='down'?'#2f6bff':'#ff4d2e',{name:n+' · '+gt('daily close','일별 종가'),step:gt(' trading days ago','거래일 전')})}</div>`}
@@ -499,7 +506,7 @@ function gtoday(){
   const grid=I.slice(5).map((i,k)=>{const wide=k===0;const sum=T_(i,'summary');
     return`<a class="card ic ${wide?'wide':''} ${i.image?'':'text'}" href="g/${i.id}">${i.image?`<div class="img" ${bg(i.image)}><div class="rk">${i.rank}</div></div>`:''}
     <div class="bd">${i.image?'':`<div class="rkt">${String(i.rank).padStart(2,'0')}</div>`}<div class="row"><span class="cat ${i.category}">${ic(i.category)}${esc(gcat(i.category))}</span></div>
-    <h3>${esc(T_(i,'title'))}</h3>${sum?`<p class="gsum">${esc(sum.slice(0,wide?220:140))}${sum.length>(wide?220:140)?'…':''}</p>`:''}
+    <h3>${esc(T_(i,'title'))}</h3>${gbullets(i,wide?3:2)}
     <div class="chips">${(i.keywords||[]).slice(0,4).map(w=>`<span class="chip">${esc(w)}</span>`).join('')}</div>
     <div class="heat" data-tip="${gt('Buzz: number of stories and publishers covering it, relative to the top story','화제도: 다룬 기사 수·매체 수를 합친 점수(1위 이슈 대비)')}"><span>${gt('Buzz','화제도')}</span><div class="bar"><i style="width:${((i.score||0)/mx*100).toFixed(0)}%"></i></div><b>${Math.round(i.score||0)}</b></div>
     <div class="ft"><span>${esc(i.press)} · ${gt(`${i.presses} publishers`,`매체 ${i.presses}곳`)}</span><span>${gt('More','자세히')} ${NBI('arrow-right')}</span></div></div></a>`}).join('');
@@ -510,6 +517,7 @@ function gtoday(){
   <section class="hero"><a class="lead card" href="g/${L.id}" ${bg(L.image)}><div class="in"><div class="no">01</div><span class="cat 세계">${ic('세계')}${esc(gcat(L.category))}</span><h1>${esc(T_(L,'title'))}</h1>${L.summary?`<p class="ld">${esc(T_(L,'summary'))}</p>`:''}
    <div class="meter"><div>${ic('news')}<b>${L.mentions}</b><span>${gt('stories','관련 기사')}</span></div><div>${ic('user')}<b>${L.presses}</b><span>${gt('publishers','매체')}</span></div><div>${ic('spark')}<b>${(L.keywords||[]).length}</b><span>${gt('key terms','핵심어')}</span></div></div></div></a>
    <div class="side">${I.slice(1,5).map(i=>`<a class="card mini" href="g/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><span class="cat ${i.category}">${esc(gcat(i.category))}</span><h3>${esc(T_(i,'title'))}</h3><div class="m">${esc(i.press)} · ${gt(`${i.presses} publishers`,`외 ${Math.max(0,i.presses-1)}곳`)}</div></div></a>`).join('')}</div></section>
+  <div id="gsns"></div>
   ${us.length?`${sec(gt('US stock market','미국 증시'),'Wall Street','<span class="more">'+gt('Daily close · 3-month trend','일별 종가 · 3개월 흐름')+'</span>','up')}<div class="mkrow">${us.map(gmk).join('')}</div>`:''}
   ${ST.length?`${sec(gt('US market leaders','미국 대표 종목'),'Big Tech & leaders',`<span class="more">${gt('Top mover','오늘 가장 많이 오른 종목')}: ${esc(mv[0].name)} ${mv[0].rate>0?'+':''}${mv[0].rate}%</span>`,'chart')}
    <div class="gstk">${mv.map(x=>{const d=up(x);return`<div class="gs ${d}" data-tip="${esc(x.name)} (${esc(x.sym)}) · ${gt('52-week','52주')} ${x.lo52??'—'} ~ ${x.hi52??'—'}"><span class="n">${esc(x.name)}<small>${esc(x.sym)}</small></span>${line(x.series,90,24,d==='down'?'#2f6bff':'#ff4d2e',{name:x.name+' · '+gt('daily close','일별 종가'),step:gt(' trading days ago','거래일 전')})}<b>$${esc(x.price)}</b><em>${x.rate>0?'+':''}${x.rate}%</em></div>`}).join('')}</div>`:''}
@@ -519,12 +527,21 @@ function gtoday(){
   <div class="legend">${Object.entries(cats).map(([c,n])=>`<span style="--c:${CATC[c]||'#8189a3'}">${esc(gcat(c))} ${n}</span>`).join('')}</div>
   <div class="grid10">${grid}</div>
   ${sec(gt('Live searches','해외 실시간 검색어'),'Google Trends','','fire')}
-  <div class="trends">${G.trends.slice(0,10).map((t,k)=>`<a class="tr" href="gt/${k}">${th(t.image,'tt','search')}<span class="n">${k+1}</span><b>${esc(T_(t,'keyword'))}</b><span class="tv" title="${TTIP}">${tlab(t)}</span></a>`).join('')}</div>
+  <div class="trends">${G.trends.slice(0,10).map((t,k)=>`<a class="tr" href="gt/${k}">${th(t.image,'tt','search')}<span class="n">${k+1}</span><b>${esc(T_(t,'keyword'))}</b>${t.news&&t.news[0]?`<span class="why">${esc(T_(t.news[0],'title'))}</span>`:''}<span class="tv" title="${TTIP}">${tlab(t)}</span></a>`).join('')}</div>
   ${secs.length?`${sec(gt('Latest by section','분야별 최신 헤드라인'),'By section','','news')}<div class="gsecs">${secs.map(([c,L])=>`<section class="card gsec"><h3><span class="cat ${c}">${ic(c)}${esc(gcat(c))}</span></h3>
-   ${L.map((x,k)=>`<a href="${esc(x.url)}" target="_blank" rel="noopener" class="${k===0&&x.img?'top':''}">${k===0&&x.img?`<span class="gi" ${bg(x.img)}></span>`:''}<b>${esc(T_(x,'title'))}</b><small>${esc(x.press)} · ${ago(x.t)}</small></a>`).join('')}</section>`).join('')}</div>`:''}
+   ${L.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener" class="gsr">${x.img?`<span class="gi" ${bg(x.img)}></span>`:`<span class="gi noimg">${ic(c)}</span>`}<span class="gt"><b>${esc(T_(x,'title'))}</b><small>${esc(x.press)} · ${ago(x.t)}</small></span></a>`).join('')}</section>`).join('')}</div>`:''}
   <p class="fine">${gt('Market data: Yahoo Finance daily closes (may be delayed). Stories: international RSS feeds and Google News.','시세: 야후 파이낸스 일별 종가(지연될 수 있어요). 기사: 해외 언론 RSS·구글 뉴스. 번역은 자동 생성되어 어색하거나 틀릴 수 있어요.')}</p>`;
-  bindOrig(gtoday);heatIn(app);gvocab();
+  bindOrig(gtoday);heatIn(app);gvocab();gsocial();
 }
+/* 해외 탭 'SNS 라이브': 트럼프(트루스소셜 아카이브)·블루스카이 인물·언론(data/social.json). 원문/번역 전환을 따름 */
+let SOCJ=null;
+function gsocial(){const put=X=>{const el=$('#gsns');if(!el||!X||!(X.posts||[]).length)return;const P=X.posts.slice(0,14);
+  const net={truth:['Truth Social','#5448ee'],bluesky:['Bluesky','#1185fe']};
+  el.innerHTML=`${sec(gt('Live from social media','지금 SNS에서'),'Live from social',`<span class="more"><i class="live"></i>${gt(`Updated ${ago(X.updated)}`,`${ago(X.updated)} 갱신`)}</span>`,'chat')}
+  <div class="sns">${P.map(p=>`<a class="card sn" href="${esc(p.url)}" target="_blank" rel="noopener"><div class="snh">${p.avatar?`<span class="sav" ${bg(p.avatar)}></span>`:`<span class="sav ini">${esc(p.name.split(' ').map(w=>w[0]).join('').slice(0,2))}</span>`}<span class="snn"><b>${esc(p.name)}</b><small>${esc(p.handle)} · ${ago(p.t)}</small></span><em style="--c:${(net[p.net]||['',''])[1]}">${(net[p.net]||[p.net])[0]}</em></div>
+   <p ${S.orig?'lang="en"':''}>${esc(S.orig||!p.text_ko?p.text:p.text_ko)}</p>${p.img?`<span class="sim" ${bg(p.img)}></span>`:''}${p.likes!=null?`<div class="snf"><span>♥ ${(p.likes||0).toLocaleString()}</span><span>↻ ${(p.reposts||0).toLocaleString()}</span></div>`:''}</a>`).join('')}</div>
+  <p class="fine">${gt('Truth Social via the public trumpstruth.org archive; Bluesky public API. X (Twitter) is not included because its API is paid.','트루스소셜은 공개 아카이브(trumpstruth.org), 블루스카이는 공개 API로 모아요. X(트위터)는 API가 유료라 넣지 않았어요.')}</p>`};
+  if(SOCJ)return put(SOCJ);fetch('data/social.json?'+Math.floor(Date.now()/3e5)).then(r=>r.ok?r.json():null).then(j=>{SOCJ=j;put(j)}).catch(()=>{})}
 /* 해외 탭 '오늘의 영어 표현': 오늘 영어 헤드라인에서 고른 단어(fun.json world.vocab). 원문 예문에 단어 강조 */
 let FUNJ=null;
 function gvocab(){const put=W=>{if(!W||!W.length||!app.querySelector('.gbar')||app.querySelector('.gvoc'))return;const at=app.querySelector('.trends');if(!at)return;
