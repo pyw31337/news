@@ -41,6 +41,19 @@ def get(url, enc=None, timeout=20):
             time.sleep(4 * (i + 1) if getattr(e, 'code', 0) == 429 else 1)
     DIAG['fail'][_dhost(url)] += 1; DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S', time.gmtime(time.time() + 32400)), host=_dhost(url), path=_up.urlsplit(url).path[:60], err=str(err)[:120])); print('fail', url[:120], err); return ''
 
+# 기자 프로필은 보조 정보다. 포털 응답이 늦어도 메인 뉴스 수집을 기다리게 하지 않는다.
+def reporter_get(url, enc='utf-8', timeout=5):
+    try:
+        r = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout)
+        b = r.read()
+        DIAG['ok'][_dhost(url)] += 1
+        return b.decode(enc or 'utf-8', 'replace')
+    except Exception as e:
+        DIAG['fail'][_dhost(url)] += 1
+        DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S', time.gmtime(time.time() + 32400)), host=_dhost(url), path=_up.urlsplit(url).path[:60], err=('reporter: ' + str(e))[:120]))
+        print('reporter fail', url[:100], str(e)[:80])
+        return ''
+
 def un(s): return html.unescape(re.sub(r'<[^>]+>', '', html.unescape(s or ''))).strip()
 
 STOP = set('속보 단독 종합 영상 사진 포토 오늘 내일 어제 이번 지난 올해 내년 관련 논란 가능 정부 기자 뉴스 대한 위해 이후 결과 상황 공개 발표 확인 사실 문제 우리 국내 최근 전망 이유 계획 진행 예정 경우 모습 시간 직접 첫 가운데 뒤 전 후 중 등 것 수 명 개 년 월 일 원 억 조 만 위 씨 측 곳 말 때 번 건 날 분 회 차 앞 속 간 내 외 대 이 그 저 더 또 왜 다 한 두 세 글 화 독자 종목 인터뷰 칼럼 사설 시론 기고'.split())
@@ -219,7 +232,7 @@ for i, (c, (d, im)) in enumerate(zip(top, ogs)):
 # 기자는 기사 본문에 공개된 네이버 기자 카드와 기자 프로필을 기준으로만 수집한다.
 # 같은 이름이라는 이유만으로 이직·소속 이력을 합치지 않으며, 한 회차 최대 8명으로 제한한다.
 try:
-    reporters = collect_reporters(issues, ROOT, NOW, get, limit=8)
+    reporters = collect_reporters(issues, ROOT, NOW, reporter_get, limit=8)
 except Exception as ex:
     reporters = []
     print('reporters', ex)
