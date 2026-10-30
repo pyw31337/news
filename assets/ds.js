@@ -43,11 +43,19 @@ const bi=t=>{const n=normT(t),o=new Set();for(let k=0;k<n.length-1;k++)o.add(n.s
 const sim=(a,b)=>{let c=0;a.forEach(x=>{if(b.has(x))c++});return c/Math.max(1,Math.min(a.size,b.size))};
 function dedupe(S){const G=[];S.forEach(s=>{const b=bi(s.title);const g=G.find(g=>sim(g.b,b)>=.6);if(g)g.more.push(s);else G.push({s,b,more:[]})});return G}
 window.NBDedupe=dedupe;
-/* 관련 기사: 배경 없는 한 줄(왼쪽 제목, 오른쪽 언론사 로고), 같은 내용은 한 줄로 묶고 '외 N곳' */
-function related(i){const S=i.sources||[],G=dedupe(S);
-  const row=g=>{const s=g.s,ps=[s,...g.more];return`<li><a href="${E(s.url)}" target="_blank" rel="noopener"><span class="ds-rt">${E(s.title)}${s.bias?`<span class="ds-warn">${s.bias.lean==='left'?'좌편향 주의':'우편향 주의'}</span>`:''}</span><span class="ds-rm">${ps.slice(0,3).map(x=>`<span data-tip="${E(PN(x.press||''))}">${logo(x.press,x.url,'sm')}</span>`).join('')}${g.more.length?`<em>외 ${g.more.length}곳</em>`:`<em>${E(PN(s.press||''))}</em>`}</span></a></li>`};
-  return`<section id="related" class="anc ds-sec">${window.sec?sec('관련 기사','Related articles',`<span class="more">${S.length}건${G.length<S.length?` · 같은 내용 묶어 ${G.length}개`:''}</span>`,'news'):''}
-  <ul class="ds-rel">${G.slice(0,6).map(row).join('')}</ul>${G.length>6?`<details class="ds-more"><summary><span>나머지 ${G.length-6}개 더 보기</span>${I('chevron-down')}</summary><ul class="ds-rel">${G.slice(6).map(row).join('')}</ul></details>`:''}
+/* 관련 기사: 같은 내용을 여러 매체가 실은 기사는 '공통 보도' 한 줄로 묶어(펼치면 매체별 제목), 단독 보도는 배경 없는 한 줄.
+   근거·출처는 기본으로 접어 두고 필요할 때 펼침 */
+function related(i){const S=i.sources||[],G=dedupe(S).sort((a,b)=>b.more.length-a.more.length);
+  const multi=G.filter(g=>g.more.length),single=G.filter(g=>!g.more.length);
+  const warn=s=>s.bias?`<span class="ds-warn">${s.bias.lean==='left'?'좌편향 주의':'우편향 주의'}</span>`:'';
+  const row=g=>{const s=g.s;return`<li><a href="${E(s.url)}" target="_blank" rel="noopener"><span class="ds-rt">${E(s.title)}${warn(s)}</span><span class="ds-rm"><span data-tip="${E(PN(s.press||''))}">${logo(s.press,s.url,'sm')}</span><em>${E(PN(s.press||''))}</em></span></a></li>`};
+  const grp=g=>{const ps=[g.s,...g.more];return`<li class="ds-grp"><details><summary><span class="ds-rt"><b class="ds-gn">${ps.length}곳 공통 보도</b>${E(g.s.title)}</span><span class="ds-rm">${ps.slice(0,4).map(x=>`<span data-tip="${E(PN(x.press||''))}">${logo(x.press,x.url,'sm')}</span>`).join('')}${ps.length>4?`<em>+${ps.length-4}</em>`:''}${I('chevron-down')}</span></summary>
+    <p class="ds-gsum">${E(ps.slice(0,4).map(x=>PN(x.press||'')).filter(Boolean).join('·'))}${ps.length>4?` 등 ${ps.length}곳`:''}에서 같은 내용을 실었어요. 매체별 제목:</p>
+    <ul class="ds-gl">${ps.map(x=>`<li><a href="${E(x.url)}" target="_blank" rel="noopener"><span>${E(x.title)}${warn(x)}</span><em>${E(PN(x.press||''))}</em></a></li>`).join('')}</ul></details></li>`};
+  const head=`${S.length}건${multi.length?` · 공통 보도 ${multi.length}묶음`:''}${single.length?` · 단독 ${single.length}건`:''}`;
+  return`<section id="related" class="anc ds-sec">${window.sec?sec('관련 기사','Related articles',`<span class="more">${head}</span>`,'news'):''}
+  ${multi.length?`<ul class="ds-rel">${multi.map(grp).join('')}</ul>`:''}
+  ${single.length?`<details class="ds-more"${multi.length?'':' open'}><summary><span>단독 보도 ${single.length}건 ${multi.length?'보기':''}</span>${I('chevron-down')}</summary><ul class="ds-rel">${single.map(row).join('')}</ul></details>`:''}
   ${S.some(s=>s.bias)?'<p class="fine">편향 표시는 기사 제목의 표현만 보고 자동으로 판단한 참고 정보예요. 틀릴 수 있어요.</p>':''}</section>`}
 
 /* 과거와 연결된 사건: 건별 한 줄 연관 설명 */
@@ -129,7 +137,7 @@ function bindFlow(root){const sv=root.querySelector('.ds-rsv'),box=root.querySel
 
 /* 댓글·민심: 지표 상자 + 도넛 + 성별 픽토그램 + 연령 막대 + 워드 클라우드 */
 function donut(st,col){let a=-90;const R=42,C=2*Math.PI*R;let off=0;
-  return`<svg class="ds-donut" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="${R}" class="bg"/>${st.map((s,k)=>{const L=C*s.share/100,el=`<circle cx="50" cy="50" r="${R}" stroke="${col[k%col.length]}" stroke-dasharray="${L} ${C-L}" stroke-dashoffset="${-off}" style="--d:${k*150}ms"/>`;off+=L;return el}).join('')}<text x="50" y="47">${st[0].share}<tspan>%</tspan></text><text x="50" y="62" class="s">가장 많은 입장</text></svg>`}
+  return`<svg class="ds-donut" viewBox="0 0 100 100"><circle cx="50" cy="50" r="${R}" class="bg"/>${st.map((s,k)=>{const L=C*s.share/100,el=`<circle cx="50" cy="50" r="${R}" stroke="${col[k%col.length]}" stroke-dasharray="${L} ${C-L}" stroke-dashoffset="${-off}" style="--d:${k*150}ms"><title>${E(s.label||'')} ${s.share}% · 공감 많은 댓글을 입장별로 나눈 비율${s.desc?' · '+E(s.desc):''}</title></circle>`;off+=L;return el}).join('')}<text x="50" y="47">${st[0].share}<tspan>%</tspan></text><text x="50" y="62" class="s">가장 많은 입장</text></svg>`}
 function opinion(i){const op=i.opinion,aop=(i.ai||{}).opinion||{};if(!op)return'<div class="note">이 이슈는 댓글을 모을 수 있는 기사가 없어요.</div>';
   const terms=[...(i.entities||[]),...(op.words||[]).slice(0,6).map(w=>w[0])];
   const col=['#ff4d2e','#2f6bff','#11a683','#f0a000'],st=aop.stances||[];const lr=Math.round(100*op.like/((op.like+op.dislike)||1));
