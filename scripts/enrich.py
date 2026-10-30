@@ -166,15 +166,23 @@ def jparse(c):
     c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip()
     a, b = c.find('{'), c.rfind('}')
     return json.loads(c[a:b + 1] if a >= 0 else c)
+def json_object(value):
+    """LLM이 배열·문자열을 돌려도 수집 전체가 중단되지 않도록 객체만 허용한다."""
+    if not isinstance(value, dict):
+        raise ValueError('LLM response must be a JSON object')
+    return value
 def apple(prompt, maxtok):
     with ALOCK:  # 온디바이스 모델은 한 번에 하나씩
         r = subprocess.run([NBAI, SYS, str(maxtok)], input=prompt, capture_output=True, text=True, timeout=180)
     if r.returncode: raise ValueError('apple ' + r.stderr.strip()[:160])
-    return jparse(r.stdout)
+    return json_object(jparse(r.stdout))
 SYS = ('너는 한국어 뉴스 편집자다. 반드시 주어진 자료에 있는 사실만 사용하고, 자료에 없는 사실·수치·인용은 절대 만들지 마라. '
        '해석은 "~로 볼 수 있다", "~라는 해석이 나온다"처럼 해석임을 드러내라. 출력은 지정한 JSON만.')
 def llm(key, prompt, maxtok=900):
-    if key in CACHE: return CACHE[key]
+    if key in CACHE:
+        # 이전 실행에서 잘못 저장된 배열·문자열 캐시는 재사용하지 않는다.
+        if isinstance(CACHE[key], dict): return CACHE[key]
+        CACHE.pop(key, None)
     if not (TOKEN or APPLE) or BUDGET[0] <= 0: return None
     BUDGET[0] -= 1
     if APPLE:
@@ -199,7 +207,7 @@ def llm(key, prompt, maxtok=900):
                 try: c = json.loads(raw)['choices'][0]['message']['content']
                 except Exception: raise ValueError('bad response %s: %r' % (r.status, raw[:160]))
                 c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip()
-                out = json.loads(c)
+                out = json_object(json.loads(c))
                 LLM_STATUS['calls'] += 1; LLM_STATUS['model'] = m; CACHE[key] = out
                 LLM_STATUS.setdefault('by_model', {}); LLM_STATUS['by_model'][m] = LLM_STATUS['by_model'].get(m, 0) + 1
                 return out
@@ -323,22 +331,32 @@ stances는 2~4개, share 합은 100. 댓글이 없으면 stances와 quotes는 �
         if d4: ai['bias'] = d4.get('bias', [])
         ai = ai or None
     if ai:
-        quotes = [q for q in ai.get('opinion', {}).get('quotes', []) if op and any(q[:20] in c['text'] for c in op['top'])]
-        ai.setdefault('opinion', {})['quotes'] = quotes  # 실제 댓글과 일치하는 것만
+        # 응답이 부분적으로 형식을 벗어나도 해당 분석만 비워 두고 배포는 계속한다.
+        opinion_ai = ai.get('opinion')
+        if not isinstance(opinion_ai, dict): opinion_ai = {}
+        ai['opinion'] = opinion_ai
+        ai_flow = ai.get('flow')
+        ai['flow'] = ai_flow if isinstance(ai_flow, list) else []
+        ai_bias = ai.get('bias')
+        ai['bias'] = ai_bias if isinstance(ai_bias, list) else []
+        quotes = [q for q in opinion_ai.get('quotes', []) if isinstance(q, str) and op and any(q[:20] in c['text'] for c in op['top'])]
+        opinion_ai['quotes'] = quotes  # 실제 댓글과 일치하는 것만
         st, seen = [], []
-        for x in ai['opinion'].get('stances', []) or []:
+        for x in opinion_ai.get('stances', []) or []:
+            if not isinstance(x, dict): continue
             lb = str(x.get('label', '')).strip()
             if not lb or any(lb in y or y in lb for y in seen): continue
             seen.append(lb); st.append(x)
         tot = sum(max(0, int(x.get('share', 0) or 0)) for x in st if str(x.get('share', '0')).isdigit()) or 0
         if len(st) >= 2 and tot > 0:
             for x in st: x['share'] = round(100 * max(0, int(x.get('share', 0) or 0)) / tot)
-            ai['opinion']['stances'] = st
-        else: ai['opinion']['stances'] = []
-        mm = {f.get('date'): f.get('meaning') for f in ai.get('flow', [])}
+            opinion_ai['stances'] = st
+        else: opinion_ai['stances'] = []
+        mm = {f.get('date'): f.get('meaning') for f in ai['flow'] if isinstance(f, dict)}
         for f in iss['flow']: f['meaning'] = mm.get(f['date'], '')
     if ai:
         for b in ai.get('bias', []) or []:
+            if not isinstance(b, dict): continue
             try:
                 k = int(b.get('i'))
                 if b.get('confidence') == 'high' and b.get('lean') in ('left', 'right') and 0 <= k < len(srcs):
