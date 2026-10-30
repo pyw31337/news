@@ -297,3 +297,22 @@ html.nbtip [data-tip]::after,html.nbtip [data-tip]::before{display:none!importan
 .sn .sim{display:block;aspect-ratio:16/9;border-radius:10px;background:#eef0f5 center/cover}.snf{display:flex;gap:12px;font-size:.72rem;color:var(--mute)}
 .more .live{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff3b30;margin-right:5px;vertical-align:1px;animation:livep 1.6s ease-in-out infinite}
 @keyframes livep{50%{opacity:.25;transform:scale(.8)}}
+/* 메인 '놀면서 배우기': 단어 퀴즈 덱 + 카드뉴스·만화 덱 */
+.mlg{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}@media(min-width:900px){.mlg{grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr)}}
+.ml h3{display:flex;align-items:center;gap:6px;margin:0 0 10px;font-size:.95rem}.ml h3 small{margin-left:auto;font-weight:600;color:var(--mute);font-size:.72rem}.ml h3 svg{width:18px;height:18px;color:var(--acc,#ff4d2e)}
+.mlqa-w{padding:16px}.mlq{display:flex;flex-direction:column;gap:8px;min-height:220px}
+.mlw{display:flex;align-items:baseline;gap:8px}.mlw b{font-size:1.5rem;letter-spacing:-.4px}.mlw i{font-size:.72rem;color:var(--mute);font-style:normal;border:1px solid var(--line,#e3e6ee);border-radius:99px;padding:0 7px}
+.mlqq{margin:0;font-weight:700;font-size:.92rem}.mlq q{display:block;font-size:.82rem;line-height:1.5;color:var(--ink2);background:#f6f7fb;border-radius:10px;padding:8px 10px}
+.mlc{display:grid;gap:6px}.mlc.ox{grid-template-columns:1fr 1fr}.mlc button{text-align:left;padding:9px 11px;border-radius:10px;border:2px solid var(--line,#e3e6ee);background:#fff;font:600 .84rem/1.4 inherit;color:inherit;cursor:pointer}
+.mlc.ox button{text-align:center;font-size:1.3rem;font-weight:900}.mlc button.right{border-color:#11a683;background:#e9f8f3}.mlc button.wrong{border-color:#e5484d;background:#fdeeee}
+.mlx{font-size:.82rem;line-height:1.5}.mlx b{color:var(--acc,#ff4d2e);margin-right:4px}.mlx small{display:block;color:var(--mute)}
+.mlnav{display:flex;align-items:center;justify-content:space-between;margin-top:10px}.mlnav button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line,#e3e6ee);background:#fff;display:grid;place-items:center;cursor:pointer}.mlnav button:disabled{opacity:.35}
+.mlnav span{display:flex;gap:4px}.mlnav i{width:6px;height:6px;border-radius:50%;background:#dfe3ec}.mlnav i.done{background:#9fd9c7}.mlnav i.on{background:var(--acc,#ff4d2e);width:14px;border-radius:4px}
+.mldk{min-width:0}.mlrow{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(210px,240px);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+.mld{scroll-snap-align:start;position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;min-height:250px;padding:14px;border-radius:16px;color:#fff;text-decoration:none;overflow:hidden;background:#141a2e}
+.mld.deck{background:linear-gradient(180deg,rgba(15,22,48,.05),rgba(15,22,48,.88)),var(--im,linear-gradient(135deg,#2f6bff,#7a4dff)) center/cover}
+.mld.comic{background:linear-gradient(160deg,#fff4d6,#ffe1cc);color:#141a2e}.mld.comic svg{position:absolute;top:34px;left:0;width:100%;height:120px}
+.mld .mlt{position:absolute;top:12px;left:12px;font-size:.68rem;font-weight:800;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.88);color:#141a2e}
+.mld b{font-size:1rem;line-height:1.35;position:relative}.mld small{font-size:.74rem;opacity:.85;position:relative;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* 헤더 순위 띠: 끌어서 넘기기(app.js tickerDrag) */
+.ticker .tw{overflow:hidden!important;touch-action:pan-y!important;cursor:grab}.ticker .tw.drag{cursor:grabbing}

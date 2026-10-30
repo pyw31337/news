@@ -5,7 +5,8 @@ let F=null,fP=null,F0=null,IX=null,PAST='';
 const ENM=()=>document.body.classList.contains('en'),T=(ko,en)=>ENM()?en:ko;
 const WORLDM=()=>{try{return JSON.parse(localStorage.getItem('nb-settings')||'{}').region==='en'}catch(e){return false}};
 const pick=j=>{if(!j||!WORLDM()||!j.world)return j;const w=j.world[ENM()?'en':'ko']||{};
-  return Object.assign({},j,{quiz:(w.quiz&&w.quiz.questions&&w.quiz.questions.length)?w.quiz:j.quiz,comics:(w.comics&&w.comics.length)?w.comics:j.comics,decks:(w.decks&&w.decks.length)?w.decks:j.decks})};
+  // 해외 탭에서는 국내 콘텐츠로 대신 채우지 않음(없으면 그 칸을 숨김)
+  return Object.assign({},j,{quiz:w.quiz||{date:j.date,words:[],questions:[]},comics:w.comics||[],decks:w.decks||[]})};
 const loadF=()=>fP||(fP=fetch('data/fun.json?'+Date.now()).then(r=>r.ok?r.json():null).catch(()=>null).then(j=>{F0=j;return F=pick(j)}));
 addEventListener('nb:region-changed',()=>{if(F0)F=pick(F0)});
 /* 지난 기록: data/fun/index.json(날짜 목록) · data/fun/YYYY-MM-DD.json(그날 퀴즈·만화·카드뉴스) */
@@ -145,6 +146,35 @@ function homeBlock(){if(!F)return'';const c=F.comics[0],d=F.decks[0],done=(L.day
   <div class="lhome"><a class="lh quiz" href="quiz"><span class="lhi">${NBI('help-hexagon-f')}</span><b>${T('오늘의 단어 퀴즈','Today’s word quiz')}</b><small>${F.quiz.questions.length}${T('문제',' questions')} · ${NBI('flame-f')}${streakNow()}${T('일 연속','-day streak')} · Lv.${lvl(L.xp)}</small><em>${done?T('완료! 다시 풀기','Done! Again'):T('3분 도전 →','3-minute challenge →')}</em></a>
   ${c?`<a class="lh comic" href="comic/${c.id}"><svg viewBox="-160 -50 320 100"><g transform="translate(-70,0)">${bori('curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg><b>${E(c.title)}</b><small>${T('4컷 설명 만화','4-panel explainer')}</small></a>`:''}
   ${d?`<a class="lh deck" href="cards/${d.id}" ${d.cards[0].img?`style="--im:url('${E(AB(d.cards[0].img))}')"`:''}><span class="lhi">🗂️</span><b>${E(d.title)}</b><small>${T(`카드뉴스 ${d.cards.length}장`,`Card news · ${d.cards.length} cards`)}</small></a>`:''}</div>`}
+/* 메인 화면 '놀면서 배우기': 단어 퀴즈 덱(국내=오늘의 시사 단어, 해외=오늘의 영어 표현) + 카드뉴스·4컷 만화 카드 덱.
+   국내·해외 탭 모두 같은 구성(해외는 fun.json world). 오늘의 도전(game.js) 아래에 들어감 */
+function mainLearn(){if(!F||!document.getElementById('app'))return;const ap=document.getElementById('app');if(ap.querySelector('.ml'))return;
+  const hero=ap.querySelector('.hero');if(!hero)return;const W=WORLDM(),Q=(F.quiz&&F.quiz.questions||[]).filter(q=>q.choices||q.kind==='ox');
+  const items=[...(F.comics||[]).slice(0,4).map(c=>({k:'c',c})),...(F.decks||[]).slice(0,6).map(d=>({k:'d',d}))];if(!Q.length&&!items.length)return;
+  const dk='nb-wq',day=(F.quiz&&F.quiz.date)||todayK();let A={};try{const o=JSON.parse(localStorage.getItem(dk)||'{}');A=o.d===day+(W?'w':'k')?o.a:{}}catch(e){}
+  let cur=Q.findIndex((q,i)=>A[i]==null);if(cur<0)cur=0;
+  const s=document.createElement('section');s.className='ml';
+  const title=W?T('오늘의 영어 표현 퀴즈','Today’s English word quiz'):'오늘의 시사 단어 퀴즈';
+  const card=i=>{const q=Q[i],a=A[i],done=a!=null,ok=done&&(q.kind==='ox'?(a===1)===q.answer:a===q.answer),w=(F.quiz.words||[]).find(x=>x.word===q.word)||{};
+    const ch=q.kind==='ox'?['O','X']:q.choices;
+    return`<div class="mlq ${done?(ok?'ok':'no'):''}"><div class="mlw"><b ${W?'lang="en"':''}>${E(q.word||'')}</b>${w.field?`<i>${E(w.field)}</i>`:''}</div><p class="mlqq">${E(q.q)}</p>${q.quote?`<q ${W?'lang="en"':''}>${E(q.quote)}</q>`:''}
+     <div class="mlc ${q.kind==='ox'?'ox':''}">${ch.map((c,k)=>{const v=q.kind==='ox'?(k?0:1):k,right=q.kind==='ox'?(v===1)===q.answer:v===q.answer;return`<button type="button" data-v="${v}" class="${done&&right?'right':''} ${done&&a===v&&!right?'wrong':''}" ${done?'disabled':''}>${E(c)}</button>`}).join('')}</div>
+     ${done?`<div class="mlx"><b>${ok?T('정답!','Correct!'):T('아쉬워요','Not quite')}</b> ${w.mean?E(w.word+' — '+w.mean):''}${w.tip?`<small>${E(w.tip)}</small>`:''}</div>`:''}</div>`};
+  const draw=()=>{const qa=s.querySelector('.mlqa');if(!qa||!Q.length)return;qa.innerHTML=card(cur)+`<div class="mlnav"><button type="button" data-d="-1" ${cur?'':'disabled'} aria-label="${T('이전','Previous')}">${NBI('chevron-left')}</button><span>${Q.map((_,i)=>`<i class="${i===cur?'on':''} ${A[i]!=null?'done':''}"></i>`).join('')}</span><button type="button" data-d="1" ${cur<Q.length-1?'':'disabled'} aria-label="${T('다음','Next')}">${NBI('chevron-right')}</button></div>`};
+  const cover=x=>x.k==='c'?`<a class="mld comic" href="comic/${x.c.id}"><span class="mlt">${T('4컷 만화','4-panel comic')}</span><svg viewBox="-160 -50 320 100" aria-hidden="true"><g transform="translate(-70,0)">${bori((x.c.panels[0]||{}).mood||'curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg><b>${E(x.c.title)}</b><small>${E(((x.c.panels[0]||{}).lines||[{}])[0].text||'')}</small></a>`
+    :`<a class="mld deck" href="cards/${x.d.id}" ${x.d.cards[0].img?`style="--im:url('${E(AB(x.d.cards[0].img))}')"`:''}><span class="mlt">${T('카드뉴스','Card news')} · ${x.d.cards.length}${T('장',' cards')}</span><b>${E(x.d.title)}</b><small>${E(x.d.tag||'')}</small></a>`;
+  s.innerHTML=`${sec(W?T('뉴스로 배우는 영어','Learn English with the news'):'놀면서 배우기','Learn with news',`<a class="more" href="learn">${T('전체 보기','See all')} ${NBI('arrow-right')}</a>`,'book')}
+   <div class="mlg">${Q.length?`<div class="mlqa-w card"><h3>${NBI('help-hexagon')}${title}<small>${Q.length}${T('문제',' questions')}</small></h3><div class="mlqa"></div></div>`:''}
+   ${items.length?`<div class="mldk"><h3>${T('카드뉴스 · 4컷 만화','Card news · comics')}<small>${T('옆으로 넘겨 보세요','Swipe')}</small></h3><div class="mlrow">${items.map(cover).join('')}</div></div>`:''}</div>`;
+  const anchor=ap.querySelector('.gm-today')||hero;anchor.insertAdjacentElement('afterend',s);draw();
+  s.addEventListener('click',e=>{const b=e.target.closest('.mlc [data-v]');if(b){const v=+b.dataset.v,q=Q[cur];A[cur]=v;localStorage.setItem(dk,JSON.stringify({d:day+(W?'w':'k'),a:A}));
+      const ok=q.kind==='ox'?(v===1)===q.answer:v===q.answer;try{L.xp+=ok?10:2;saveL()}catch(x){}window.NBGame&&ok&&NBGame.ev('quiz_x',1,{xp:10,why:T('단어 퀴즈 정답','Word quiz correct')});draw();
+      if(ok&&cur<Q.length-1)setTimeout(()=>{cur++;draw()},1400);return}
+    const d=e.target.closest('.mlnav [data-d]');if(d){cur=Math.max(0,Math.min(Q.length-1,cur+(+d.dataset.d)));draw()}})}
+window.nbLearnMain=()=>{if(F)mainLearn();else loadF().then(mainLearn)};
+// 오늘의 도전(game.js)이 나중에 들어오면 그 아래로 옮김
+new MutationObserver(()=>{const ap=document.getElementById('app'),m=ap&&ap.querySelector('.ml'),g=ap&&ap.querySelector('.gm-today');if(m&&g&&g.nextElementSibling!==m)g.insertAdjacentElement('afterend',m)}).observe(document.getElementById('app')||document.body,{childList:true});
+addEventListener('nb:region-changed',()=>{const m=document.querySelector('.ml');if(m)m.remove()});
 const FR=['learn','quiz','comic','cards'];
 const _today=window.today;
 window.today=function(){const h=decodeURIComponent(location.pathname.slice(BASEP.length)).replace(/\/+$/,'');const v=h.split('/')[0],a=h.split('/').slice(1).join('/');
@@ -156,7 +186,7 @@ window.today=function(){const h=decodeURIComponent(location.pathname.slice(BASEP
     if(pd&&pd!==PAST){app.innerHTML='<div class="loading">불러오는 중…</div>';loadF().then(()=>loadDay(pd)).then(j=>{if(j&&j.quiz){F=Object.assign({},F0,j);PAST=pd}else{F=F0;PAST=''}run()});return}
     if(F)run();else{app.innerHTML='<div class="loading">불러오는 중…</div>';loadF().then(run)}return}
   const r=_today.apply(this,arguments);
-  const put=()=>{const w=app.querySelector('.words');if(!F||app.querySelector('.lhome'))return;const blk=homeBlock();if(w){const s=w.previousElementSibling;w.outerHTML=blk;if(s&&s.classList.contains('sec'))s.remove()}else{const g=app.querySelector('.trends');g&&g.insertAdjacentHTML('afterend',blk)}};
+  const put=()=>mainLearn();
   if(F)put();else loadF().then(put);return r};
 /* 설정에 소리·진동 토글 */
 const _set=window.settings;
