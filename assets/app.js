@@ -116,7 +116,23 @@ function header2(){
   tickerDrag($('#tw'));
 }
 /* 티커: 자동 흐름 + 마우스 드래그·터치 스와이프 */
-function tickerDrag(el){if(!el)return;el.addEventListener('pointerdown',()=>el.classList.add('drag'));['pointerup','pointercancel','pointerleave'].forEach(n=>el.addEventListener(n,()=>el.classList.remove('drag')))}
+/* 헤더 순위 띠: 평소엔 CSS 애니메이션(합성기만 사용, 메인 스레드 부담 0)으로 왼쪽으로 흐르고,
+   손가락·마우스로 잡으면 그 자리에서 멈춰 좌우로 끌 수 있음. 놓으면 던진 속도로 미끄러지다(관성) 다시 원래 흐름으로 이어짐.
+   끌고 미끄러지는 동안만 requestAnimationFrame을 씀(평소엔 0). 이어질 때는 animation-delay로 위치를 맞춰 끊김 없음 */
+function tickerDrag(el){if(!el||el._td)return;el._td=1;const run=el.querySelector('.run');if(!run)return;
+  const DUR=34;let st=null,x=0,v=0,raf=0,moved=0;
+  const half=()=>run.scrollWidth/2||1,wrap=n=>{const h=half();n%=h;return n>0?n-h:n};
+  const cur=()=>{const m=getComputedStyle(run).transform;return m&&m!=='none'?new DOMMatrixReadOnly(m).m41:0};
+  const resume=()=>{const h=half(),p=(-wrap(x))/h;run.style.transform='';run.style.animation='';run.style.animationDelay=(-p*DUR)+'s';el.classList.remove('drag')};
+  el.addEventListener('pointerdown',e=>{if(e.button)return;cancelAnimationFrame(raf);x=cur();run.style.animation='none';run.style.transform=`translateX(${x}px)`;
+    st={px:e.clientX,x,t:performance.now(),lx:e.clientX};v=0;moved=0;el.classList.add('drag');try{el.setPointerCapture(e.pointerId)}catch(x){}});
+  el.addEventListener('pointermove',e=>{if(!st)return;const dx=e.clientX-st.px;if(Math.abs(dx)>4)moved=1;if(!moved)return;
+    if(e.pointerType!=='mouse'&&Math.abs(dx)<10)return;const now=performance.now();v=(e.clientX-st.lx)/Math.max(1,now-st.t)*16;st.lx=e.clientX;st.t=now;
+    x=wrap(st.x+dx);run.style.transform=`translateX(${x}px)`},{passive:true});
+  const end=()=>{if(!st)return;st=null;if(!moved){resume();return}
+    const glide=()=>{v*=.94;x=wrap(x+v);run.style.transform=`translateX(${x}px)`;if(Math.abs(v)>.3)raf=requestAnimationFrame(glide);else resume()};raf=requestAnimationFrame(glide)};
+  el.addEventListener('pointerup',end);el.addEventListener('pointercancel',end);el.addEventListener('lostpointercapture',end);
+  el.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation();moved=0}},true)}
 const BASEP=new URL(document.baseURI).pathname;
 function go(p){p=String(p||'');const u=p.startsWith('/')?p:BASEP+p.replace(/^\.\//,'');if(u!==location.pathname+location.hash)history.pushState(null,'',u);route()}
 window.addEventListener('popstate',route);
@@ -531,7 +547,7 @@ function gtoday(){
   ${secs.length?`${sec(gt('Latest by section','분야별 최신 헤드라인'),'By section','','news')}<div class="gsecs">${secs.map(([c,L])=>`<section class="card gsec"><h3><span class="cat ${c}">${ic(c)}${esc(gcat(c))}</span></h3>
    ${L.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener" class="gsr">${x.img?`<span class="gi" ${bg(x.img)}></span>`:`<span class="gi noimg">${ic(c)}</span>`}<span class="gt"><b>${esc(T_(x,'title'))}</b><small>${esc(x.press)} · ${ago(x.t)}</small></span></a>`).join('')}</section>`).join('')}</div>`:''}
   <p class="fine">${gt('Market data: Yahoo Finance daily closes (may be delayed). Stories: international RSS feeds and Google News.','시세: 야후 파이낸스 일별 종가(지연될 수 있어요). 기사: 해외 언론 RSS·구글 뉴스. 번역은 자동 생성되어 어색하거나 틀릴 수 있어요.')}</p>`;
-  bindOrig(gtoday);heatIn(app);gvocab();gsocial();
+  bindOrig(gtoday);heatIn(app);gvocab();gsocial();window.nbLearnMain&&nbLearnMain();
 }
 /* 해외 탭 'SNS 라이브': 트럼프(트루스소셜 아카이브)·블루스카이 인물·언론(data/social.json). 원문/번역 전환을 따름 */
 let SOCJ=null;
