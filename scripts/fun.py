@@ -24,11 +24,14 @@ APPLE = os.environ.get('LLM_BACKEND') == 'apple'
 NBAI = os.environ.get('NBAI', os.path.expanduser('~/Developer/newsboard-local/bin/nbai'))
 SYS = '너는 친절한 한국어 뉴스 해설가다. 주어진 자료의 사실만 쓰고, 자료에 없는 숫자·인용·사실은 절대 만들지 마라. 특정인을 조롱하거나 단정하지 말고 중립적으로 써라. 출력은 지정한 JSON만.'
 CACHE = OLD.get('_cache', {})
+# 단계 시간 제한(5분) 안에 반드시 저장하도록 AI 호출은 합계 200초까지만(넘으면 기본 문구로 대체)
+DEADLINE = time.time() + int(os.environ.get('FUN_AI_SEC', '200'))
 def jparse(c):
     c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip(); a, b = c.find('{'), c.rfind('}')
     return json.loads(c[a:b + 1])
 def llm(key, prompt, maxtok=1500):
     if key in CACHE: return CACHE[key]
+    if time.time() > DEADLINE: return None
     out = None
     try:
         if APPLE and os.path.exists(NBAI):
@@ -36,11 +39,12 @@ def llm(key, prompt, maxtok=1500):
             if not r.returncode: out = jparse(r.stdout)
         elif TOKEN:
             for m in MODELS:
+                if time.time() > DEADLINE: break
                 body = json.dumps({'model': m, 'temperature': 0.3, 'max_tokens': maxtok, 'response_format': {'type': 'json_object'},
                                    'messages': [{'role': 'system', 'content': SYS}, {'role': 'user', 'content': prompt}]}).encode()
                 for a in range(2):
                     try:
-                        r = urllib.request.urlopen(urllib.request.Request(ENDPOINT, body, {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json'}), timeout=60)
+                        r = urllib.request.urlopen(urllib.request.Request(ENDPOINT, body, {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json'}), timeout=max(5, min(40, DEADLINE - time.time())))
                         out = jparse(json.loads(r.read())['choices'][0]['message']['content']); break
                     except urllib.error.HTTPError as e:
                         if e.code in (429, 500, 502, 503, 504) and a == 0: time.sleep(8); continue
