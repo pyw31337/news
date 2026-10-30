@@ -39,6 +39,27 @@ for i in D.get('issues', []):
         comments=(i.get('opinion') or {}).get('total'), score=round(i.get('score') or 0), days=len(fl), first=fl[0] if fl else None,
         today=(last[0]['items'][0]['title'] if last and last[0].get('items') else ''), new=not _seen(i['title']),
         ents=(i.get('entities') or [])[:4], kw=(i.get('keywords') or [])[:4]))
+# 2차 시안(보는 뉴스): 사진 모음·등장인물 얼굴·댓글 여론·이슈별 OX를 함께
+EV = {e['name']: e for e in D.get('entities', [])}
+def face(n):
+    e = EV.get(n) or {}; u = (e.get('visual') or {}).get('url') or (e.get('wiki') or {}).get('thumb') or ''
+    return dict(n=n, img=u, t=e.get('type')) if u else None
+try: QZ = json.load(open(os.path.join(SITE, 'data', 'quiz.json'), encoding='utf-8')).get('questions', [])
+except Exception: QZ = []
+for v, i in zip(V['issues'], D.get('issues', [])):
+    v['imgs'] = list(dict.fromkeys([x.get('img') for x in (i.get('gallery') or []) if x.get('img')] + ([i['image']] if i.get('image') else [])))[:4]
+    v['faces'] = [f for f in (face(n) for n in (i.get('entities') or [])[:6]) if f][:4]
+    op = i.get('opinion') or {}; aop = (i.get('ai') or {}).get('opinion') or {}
+    if op.get('total'):
+        v['op'] = dict(total=op.get('total'), like=op.get('like'), dislike=op.get('dislike'), gender=op.get('gender'), ages=op.get('ages'),
+                       words=[w[0] for w in (op.get('words') or [])[:6]], top=((op.get('top') or [{}])[0].get('text') or '')[:90],
+                       stances=[dict(l=x.get('label'), s=x.get('share')) for x in (aop.get('stances') or [])[:3]], sum=aop.get('summary', ''))
+    q = next((x for x in QZ if x.get('ref') == i['id'] and x.get('kind') == 'ox' and (x.get('scope') or 'kr') == 'kr'), None)
+    if q: v['q'] = dict(t=q['q']['ko'], a=q['answer'], e=(q.get('exp') or {}).get('ko', ''))
+V['people'] = [dict(n=e['name'], img=(e.get('visual') or {}).get('url') or (e.get('wiki') or {}).get('thumb'), d=((e.get('wiki') or {}).get('desc') or '')[:24], c=len(e.get('issues') or []))
+               for e in D.get('entities', []) if e.get('type') == 'person' and ((e.get('visual') or {}).get('url') or (e.get('wiki') or {}).get('thumb'))][:12]
+st = D.get('stats') or {}
+V['nums'] = dict(arts=(st.get('naver') or 0) + (st.get('google') or 0), presses=st.get('presses'), comments=sum((i.get('opinion') or {}).get('total') or 0 for i in D.get('issues', [])))
 for t in (D.get('trends') or [])[:10]:
     n = (t.get('news') or t.get('today') or [{}])[0]
     V['trends'].append(dict(k=t.get('keyword'), why=n.get('title', ''), n=t.get('traffic_n')))
