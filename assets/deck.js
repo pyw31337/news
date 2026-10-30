@@ -99,8 +99,9 @@ function Deck(root,onTop){
 }
 window.nbDeck=function(root){
   const rows=[...document.querySelectorAll('.side .srow')];
+  // 덱을 넘길수록 이미 본 카드(01…현재)는 아래 목록에서 차례로 사라지고, 남은 순위 중 앞의 5개가 채워짐(넓은 화면, 왼쪽 카드와 높이를 맞춤). 이전 카드로 돌아가면 사라졌던 줄이 다시 펼쳐지며 아래로 밀림
   const RC=[...root.querySelectorAll('.rcard')];let far=0;
-  let prevT=0;Deck(root,t=>{if(t!==prevT){prevT=t;dispatchEvent(new CustomEvent('nb:decktop',{detail:{t}}))}far=Math.max(far,t);const cid=RC[t]&&RC[t].dataset.id;rows.forEach(r=>{r.classList.remove('gone');r.classList.toggle('cur',r.dataset.id===cid)});/* 목록은 10개 그대로 두고 지금 카드만 강조(숨기면 목록이 사라진 것처럼 보임) */
+  let prevT=0;Deck(root,t=>{if(t!==prevT){prevT=t;dispatchEvent(new CustomEvent('nb:decktop',{detail:{t}}))}far=Math.max(far,t);const seen=new Set(RC.slice(0,t+1).map(c=>c.dataset.id));let k=0;rows.forEach(r=>{const g=seen.has(r.dataset.id);r.classList.toggle('gone',g);r.classList.toggle('cap',!g&&++k>5)});
     if(t===RC.length-1&&RC.length>=5)dispatchEvent(new CustomEvent('nb:deckall',{detail:{n:RC.length}}))});
   // 선명하지 않은 대표 사진은 글자 카드로
   root.querySelectorAll('.rcard').forEach(async c=>{const u=c.dataset.img,box=c.querySelector('.rimg');if(!u){c.classList.add('txt');return}

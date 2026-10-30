@@ -147,7 +147,9 @@ function after(){if(!(typeof D!=='undefined'&&D))return;const[v,a]=curV();docume
   if(['issue','entity','kw'].includes(v)&&a&&!app.querySelector('.myact')){const h=app.querySelector('h1,h2');const t=v;const id=v==='issue'?a:a;(h||app.firstElementChild)?.insertAdjacentHTML('afterend',actBar(t,id));
     if(v==='issue')arcLink(a);
     if(v==='issue'){const i=D.issues.find(x=>x.id===a);if(i){const d=new Date().toISOString().slice(0,10);const r=M.reads[d]||(M.reads[d]={});if(!r[a]){r[a]={c:i.category,k:(i.keywords||[]).slice(0,4),e:(i.entities||[]).slice(0,3),h:new Date().getHours(),l:(i.sources||[]).reduce((o,s)=>{if(s.bias)o[s.bias.lean]=(o[s.bias.lean]||0)+1;else o.n=(o.n||0)+1;return o},{})};save()}}}}
-  app.querySelectorAll('a.card[href^="issue/"]').forEach(c=>{if(c.querySelector('.mhw'))return;const id=c.getAttribute('href').slice(6);c.style.position='relative';c.insertAdjacentHTML('beforeend',`<span class="mhw" data-t="issue" data-id="${E(id)}"><button class="mini-heart ${st('issue',id).like?'on':''}" aria-label="좋아요">${SV(P.heart)}</button></span>`)});
+  app.querySelectorAll('a.card[href^="issue/"]').forEach(c=>{if(c.querySelector('.mhw'))return;const id=c.getAttribute('href').slice(6);c.style.position='relative';const h=`<span class="mhw" data-t="issue" data-id="${E(id)}"><button class="mini-heart ${st('issue',id).like?'on':''}" aria-label="좋아요">${SV(P.heart)}</button></span>`;
+    /* 오늘의 이슈 카드: 카테고리와 같은 줄 오른쪽 끝 / TOP10 목록: 카드 오른쪽 아래 */
+    const row=c.querySelector('.bd .row');if(row){row.insertAdjacentHTML('beforeend',h);row.lastElementChild.classList.add('inrow')}else c.insertAdjacentHTML('beforeend',h)});
   hl();badge();}
 /* ---------- 메뉴(전체 사이트맵) ---------- */
 const MENU=[
