@@ -217,9 +217,9 @@ for i, (c, (d, im)) in enumerate(zip(top, ogs)):
                        sources=sources[:12]))
 
 # 기자는 기사 본문에 공개된 네이버 기자 카드와 기자 프로필을 기준으로만 수집한다.
-# 같은 이름이라는 이유만으로 이직·소속 이력을 합치지 않으며, 한 회차 최대 10명으로 제한한다.
+# 같은 이름이라는 이유만으로 이직·소속 이력을 합치지 않으며, 한 회차 최대 8명으로 제한한다.
 try:
-    reporters = collect_reporters(issues, ROOT, NOW, get, limit=10)
+    reporters = collect_reporters(issues, ROOT, NOW, get, limit=8)
 except Exception as ex:
     reporters = []
     print('reporters', ex)

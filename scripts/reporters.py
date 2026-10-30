@@ -9,6 +9,7 @@ import html
 import json
 import os
 import re
+from concurrent.futures import ThreadPoolExecutor
 
 
 def clean(value):
@@ -81,7 +82,7 @@ def _profile(page, base):
     return base
 
 
-def collect(issues, root, now, fetch, limit=10):
+def collect(issues, root, now, fetch, limit=8):
     """상위 이슈별 대표 네이버 기사에서 최대 ``limit``명의 기자를 수집한다.
 
     fetch는 수집 파이프라인의 재시도·진단 기능을 그대로 쓴다. 실패는 해당 기자만
@@ -99,9 +100,15 @@ def collect(issues, root, now, fetch, limit=10):
         if len(seeds) >= limit:
             break
 
+    def article_page(seed):
+        issue_id, source = seed
+        return issue_id, source, fetch(source['url'], 'utf-8', 5)
+
     raw = []
-    for issue_id, source in seeds:
-        page = fetch(source['url'], 'utf-8', 10)
+    # 외부 프로필 서버가 늦어도 전체 수집을 지연시키지 않도록 소수만 병렬로 읽는다.
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        pages = list(pool.map(article_page, seeds))
+    for issue_id, source, page in pages:
         for reporter in _article_reporter(page, source):
             reporter.setdefault('issues', []).append(issue_id)
             raw.append(reporter)
@@ -112,13 +119,18 @@ def collect(issues, root, now, fetch, limit=10):
         if current is not reporter:
             current['issues'] = list(dict.fromkeys(current.get('issues', []) + reporter.get('issues', [])))
     reporters = list(grouped.values())[:limit]
-    for reporter in reporters:
+    def profile_page(reporter):
         try:
-            page = fetch(reporter['profile'], 'utf-8', 12)
+            page = fetch(reporter['profile'], 'utf-8', 5)
             if page:
                 _profile(page, reporter)
         except Exception:
             pass
+        return reporter
+
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        reporters = list(pool.map(profile_page, reporters))
+    for reporter in reporters:
         # 프로필 목록을 받지 못해도 오늘 기사 1건은 남긴다.
         if not reporter.get('reports'):
             reporter['reports'] = [reporter.pop('seed_report')]
