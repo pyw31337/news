@@ -111,27 +111,90 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-30"
+   "fetched": "2026-10-31"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-30"
+   "fetched": "2026-10-31"
   }
  ],
  "bills": {
   "ages": [
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
    "22"
   ],
-  "lead_count": 26,
-  "co_count": 548,
-  "passed": 4,
+  "lead_count": 134,
+  "co_count": 2478,
+  "passed": 40,
   "by_result": {
-   "계류": 21,
-   "대안반영폐기": 4,
-   "철회": 1
+   "임기만료폐기": 68,
+   "대안반영폐기": 32,
+   "원안가결": 1,
+   "수정가결": 7,
+   "폐기": 3,
+   "철회": 2,
+   "계류": 21
   },
   "by_month": {
+   "2004-07": 1,
+   "2004-10": 3,
+   "2005-03": 1,
+   "2005-06": 1,
+   "2005-07": 2,
+   "2005-09": 1,
+   "2005-10": 1,
+   "2005-11": 1,
+   "2007-11": 1,
+   "2008-12": 1,
+   "2009-03": 1,
+   "2009-04": 1,
+   "2009-06": 1,
+   "2009-09": 1,
+   "2010-01": 1,
+   "2010-02": 1,
+   "2010-03": 4,
+   "2010-04": 4,
+   "2010-06": 3,
+   "2010-07": 1,
+   "2010-09": 1,
+   "2010-11": 1,
+   "2010-12": 8,
+   "2011-01": 2,
+   "2011-03": 1,
+   "2011-04": 2,
+   "2011-07": 3,
+   "2011-08": 1,
+   "2011-09": 1,
+   "2011-10": 1,
+   "2011-12": 2,
+   "2016-07": 2,
+   "2016-12": 6,
+   "2017-01": 3,
+   "2017-02": 1,
+   "2017-05": 3,
+   "2017-11": 1,
+   "2017-12": 3,
+   "2018-01": 5,
+   "2018-02": 2,
+   "2018-03": 1,
+   "2018-04": 6,
+   "2018-06": 3,
+   "2018-08": 1,
+   "2018-10": 3,
+   "2018-12": 2,
+   "2019-02": 3,
+   "2019-03": 1,
+   "2019-04": 1,
+   "2019-05": 1,
+   "2019-06": 2,
+   "2019-07": 1,
+   "2019-08": 1,
+   "2019-09": 2,
    "2024-07": 3,
    "2024-08": 3,
    "2024-09": 3,
@@ -456,12 +519,60 @@
     "proc_date": "2024-07-26",
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_I2I4H0P7P1O6O1N0L4M3I0I7G2H7G9&ageFrom=22&ageTo=22",
     "proposer": "조배숙의원 등 13인"
+   },
+   {
+    "id": "PRC_I1A9P0Y9F2R5W1N7O5H8R1G0K8A4F3",
+    "no": "2022685",
+    "name": "국가재정법 일부개정법률안",
+    "date": "2019-09-25",
+    "age": 20,
+    "committee": "기획재정위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2020-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_I1A9P0Y9F2R5W1N7O5H8R1G0K8A4F3&ageFrom=20&ageTo=20",
+    "proposer": "조배숙의원 등 12인"
+   },
+   {
+    "id": "PRC_O1C9W0M9K2P5B1J6V3S9S5D4T8N0G4",
+    "no": "2022677",
+    "name": "가습기살균제 피해구제를 위한 특별법 일부개정법률안",
+    "date": "2019-09-25",
+    "age": 20,
+    "committee": "환경노동위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2020-03-06",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_O1C9W0M9K2P5B1J6V3S9S5D4T8N0G4&ageFrom=20&ageTo=20",
+    "proposer": "조배숙의원 등 12인"
+   },
+   {
+    "id": "PRC_H1Q9D0Z8P0N5N1B3C1D9B0R4P9N3U3",
+    "no": "2021841",
+    "name": "특허법 일부개정법률안",
+    "date": "2019-08-05",
+    "age": 20,
+    "committee": "산업통상자원중소벤처기업위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2020-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_H1Q9D0Z8P0N5N1B3C1D9B0R4P9N3U3&ageFrom=20&ageTo=20",
+    "proposer": "조배숙의원 등 10인"
+   },
+   {
+    "id": "PRC_S1X9K0Z7I1E1I1N6A5L7Q0K1F1O0Y3",
+    "no": "2021436",
+    "name": "소상공인기본법안",
+    "date": "2019-07-11",
+    "age": 20,
+    "committee": "산업통상자원중소벤처기업위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2020-01-09",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_S1X9K0Z7I1E1I1N6A5L7Q0K1F1O0Y3&ageFrom=20&ageTo=20",
+    "proposer": "조배숙의원 등 16인"
    }
   ],
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-30"
+   "fetched": "2026-10-31"
   }
  },
  "news": [
@@ -2195,7 +2306,7 @@
   "source": {
    "name": "열린국회정보 국회의원 본회의 표결정보 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-30"
+   "fetched": "2026-10-31"
   }
  },
  "photo_local": "data/pol/photos/IWK63872.webp"

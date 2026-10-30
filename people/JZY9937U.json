@@ -66,27 +66,77 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-10-30"
+   "fetched": "2026-10-31"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-30"
+   "fetched": "2026-10-31"
   }
  ],
  "bills": {
   "ages": [
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
    "22"
   ],
-  "lead_count": 23,
-  "co_count": 398,
-  "passed": 16,
+  "lead_count": 164,
+  "co_count": 2582,
+  "passed": 76,
   "by_result": {
-   "계류": 7,
-   "수정가결": 3,
-   "대안반영폐기": 13
+   "수정가결": 18,
+   "대안반영폐기": 57,
+   "임기만료폐기": 80,
+   "원안가결": 1,
+   "폐기": 1,
+   "계류": 7
   },
   "by_month": {
+   "2012-09": 2,
+   "2012-10": 4,
+   "2012-11": 1,
+   "2013-01": 2,
+   "2013-02": 2,
+   "2013-05": 3,
+   "2013-06": 2,
+   "2013-12": 3,
+   "2014-02": 6,
+   "2014-03": 6,
+   "2014-07": 2,
+   "2014-08": 2,
+   "2015-02": 2,
+   "2015-03": 8,
+   "2015-04": 7,
+   "2015-05": 4,
+   "2015-07": 2,
+   "2015-08": 3,
+   "2015-09": 2,
+   "2020-06": 3,
+   "2020-07": 3,
+   "2020-08": 4,
+   "2020-09": 2,
+   "2020-11": 8,
+   "2020-12": 6,
+   "2021-01": 2,
+   "2021-03": 1,
+   "2021-04": 7,
+   "2021-05": 2,
+   "2021-07": 1,
+   "2021-08": 3,
+   "2021-10": 1,
+   "2022-05": 1,
+   "2022-07": 1,
+   "2022-09": 1,
+   "2022-10": 2,
+   "2022-11": 5,
+   "2023-02": 6,
+   "2023-03": 9,
+   "2023-04": 5,
+   "2023-05": 2,
+   "2023-07": 3,
    "2024-06": 6,
    "2024-07": 5,
    "2024-08": 3,
@@ -372,12 +422,96 @@
     "proc_date": "2025-04-02",
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_M2U4S0R5Q3Q1G1E0D2B5S1Q5M0L2M3&ageFrom=22&ageTo=22",
     "proposer": "김윤덕의원 등 10인"
+   },
+   {
+    "id": "PRC_O2M3N0L7M1K7S1T4R0S2Q4R7P7X9Y2",
+    "no": "2123575",
+    "name": "영화 및 비디오물의 진흥에 관한 법률 전부개정법률안",
+    "date": "2023-07-31",
+    "age": 21,
+    "committee": "문화체육관광위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_O2M3N0L7M1K7S1T4R0S2Q4R7P7X9Y2&ageFrom=21&ageTo=21",
+    "proposer": "김윤덕의원 등 12인"
+   },
+   {
+    "id": "PRC_A2Y3Z0H5F2G2E1E8D2E1M3M2L2J7J4",
+    "no": "2123147",
+    "name": "택견 진흥법안",
+    "date": "2023-07-07",
+    "age": 21,
+    "committee": "문화체육관광위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_A2Y3Z0H5F2G2E1E8D2E1M3M2L2J7J4&ageFrom=21&ageTo=21",
+    "proposer": "김윤덕의원 등 10인"
+   },
+   {
+    "id": "PRC_G2E3F0A5B1Z6A1Y1X0E0F1D9D0C3K6",
+    "no": "2123068",
+    "name": "관광진흥법 일부개정법률안",
+    "date": "2023-07-04",
+    "age": 21,
+    "committee": "문화체육관광위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2024-02-01",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_G2E3F0A5B1Z6A1Y1X0E0F1D9D0C3K6&ageFrom=21&ageTo=21",
+    "proposer": "김윤덕의원 등 10인"
+   },
+   {
+    "id": "PRC_A2I3H0F5G0F8N0M9K5L1J3F2E1F4E0",
+    "no": "2121942",
+    "name": "체육시설의 설치·이용에 관한 법률 일부개정법률안",
+    "date": "2023-05-11",
+    "age": 21,
+    "committee": "문화체육관광위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2024-02-01",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_A2I3H0F5G0F8N0M9K5L1J3F2E1F4E0&ageFrom=21&ageTo=21",
+    "proposer": "김윤덕의원 등 10인"
+   },
+   {
+    "id": "PRC_K2J3K0S5Q0P8O0O9K5J2H5G5H0P7O0",
+    "no": "2121938",
+    "name": "전통사찰의 보존 및 지원에 관한 법률 일부개정법률안",
+    "date": "2023-05-11",
+    "age": 21,
+    "committee": "문화체육관광위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2024-01-25",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_K2J3K0S5Q0P8O0O9K5J2H5G5H0P7O0&ageFrom=21&ageTo=21",
+    "proposer": "김윤덕의원 등 12인"
+   },
+   {
+    "id": "PRC_V2T3S0A3Z2Z7Y0W7F5D3E0D8C5K2J6",
+    "no": "2121426",
+    "name": "체육시설의 설치·이용에 관한 법률 일부개정법률안",
+    "date": "2023-04-18",
+    "age": 21,
+    "committee": "문화체육관광위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2024-02-01",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_V2T3S0A3Z2Z7Y0W7F5D3E0D8C5K2J6&ageFrom=21&ageTo=21",
+    "proposer": "김윤덕의원 등 11인"
+   },
+   {
+    "id": "PRC_F2E3E0M3L2K7I0R7R5V1U3Q2R8Q7O3",
+    "no": "2121402",
+    "name": "체육시설의 설치·이용에 관한 법률 일부개정법률안",
+    "date": "2023-04-17",
+    "age": 21,
+    "committee": "문화체육관광위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2024-02-01",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_F2E3E0M3L2K7I0R7R5V1U3Q2R8Q7O3&ageFrom=21&ageTo=21",
+    "proposer": "김윤덕의원 등 10인"
    }
   ],
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-30"
+   "fetched": "2026-10-31"
   }
  },
  "news": [
@@ -1454,7 +1588,7 @@
   "source": {
    "name": "열린국회정보 국회의원 본회의 표결정보 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-10-30"
+   "fetched": "2026-10-31"
   }
  },
  "photo_local": "data/pol/photos/JZY9937U.webp"
