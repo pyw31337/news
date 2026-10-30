@@ -209,7 +209,13 @@ for cap in (2, 3, 10):
     if len(top) >= 10: break
 with ThreadPoolExecutor(10) as ex:
     reps = [c['rep'] for c in top]
-    ogs = list(ex.map(lambda a: og(a['url']) if 'naver' in a['url'] else ('', ''), reps))
+    # 요약(og 설명)은 네이버 기사에서만 받을 수 있어, 대표 기사가 네이버가 아니면 같은 묶음의 네이버 기사에서 받음(사진은 대표 기사 것만)
+    def og_of(c):
+        r = c['rep']
+        if 'naver' in r['url']: return og(r['url'])
+        alt = next((a['url'] for a in c['arts'] if 'naver' in a['url']), None)
+        return (og(alt)[0], '') if alt else ('', '')
+    ogs = list(ex.map(og_of, top))
 def summarize(text):
     s = [x.strip() for x in re.split(r'(?<=다\.)\s+', text.strip()) if x.strip()]
     full = [x for x in s if x.endswith('다.')]

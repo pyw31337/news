@@ -7,16 +7,13 @@ const e_=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt
 const fmt=n=>Math.round(n).toLocaleString();
 const eok=v=>v>=10000?(v/10000).toFixed(2).replace(/\.?0+$/,'')+'억':fmt(v)+'만';
 /* 작은 SVG 선 차트(축·라벨 포함) */
-function chart(pts,{w=640,h=260,col='#ff4d2e',fmtY=fmt,bars=null}={}){if(!pts||pts.length<2)return'';
-  const ys=pts.map(p=>p[1]),mn=Math.min(...ys),mx=Math.max(...ys),r=mx-mn||1,L=96,B=34,T=14,W=w-L-8,H=h-T-B;
-  const X=i=>L+i/(pts.length-1)*W,Y=v=>T+H-(v-mn)/r*H;
-  const d=pts.map((p,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(p[1]).toFixed(1)).join('');
-  const bm=bars?Math.max(...bars,1):1,bw=Math.max(2,W/pts.length*0.6);
-  const lab=pts.map((p,i)=>i%Math.ceil(pts.length/6)===0||i===pts.length-1?`<text x="${X(i)}" y="${h-8}" text-anchor="middle">${e_(p[0])}</text>`:'').join('');
-  return`<svg class="gchart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img">
-  ${bars?bars.map((b,i)=>`<rect x="${(X(i)-bw/2).toFixed(1)}" y="${(T+H-b/bm*H*0.35).toFixed(1)}" width="${bw.toFixed(1)}" height="${(b/bm*H*0.35).toFixed(1)}" fill="#c9cfdc" opacity=".55"/>`).join(''):''}
-  ${[mn,(mn+mx)/2,mx].map(v=>`<line x1="${L}" x2="${w-8}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e6e8ee"/><text x="${L-6}" y="${Y(v)+7}" text-anchor="end">${e_(fmtY(v))}</text>`).join('')}
-  <path d="${d}" fill="none" stroke="${col}" stroke-width="2.4" stroke-linejoin="round"/><circle cx="${X(pts.length-1)}" cy="${Y(ys[ys.length-1])}" r="4" fill="${col}"/>${lab}</svg>`}
+/* 차트: 공통 주식식 차트(assets/mkt.js NBChart — 실제 폭에 맞춰 그리고, 눈금·십자선·말풍선)로 그림.
+   예전처럼 고정 크기 SVG를 늘리면 글자까지 커지던 문제(2026-10-30) */
+window.__gch=window.__gch||{};let gchN=0;
+function chart(pts,{h=260,col='#ff4d2e',fmtY=fmt,bars=null}={}){if(!pts||pts.length<2)return'';const id='g'+(++gchN);window.__gch[id]={pts,col,fmtY,bars,h};return`<div class="gch" data-gch="${id}" style="min-height:${h}px"></div>`}
+function drawCharts(root){if(!window.NBChart)return;(root||document).querySelectorAll('[data-gch]:not([data-done])').forEach(el=>{const c=window.__gch[el.dataset.gch];if(!c)return;el.dataset.done=1;
+  NBChart(el,c.pts.map((p,k)=>({d:String(p[0]),v:p[1],x:c.bars?c.bars[k]:null})),{raw:1,fmt:c.fmtY,bars:c.bars,col:c.col,h:c.h})})}
+new MutationObserver(()=>drawCharts(document.getElementById('app'))).observe(document.documentElement,{childList:true,subtree:true});
 const ym=k=>k.slice(2,4)+'.'+k.slice(4);
 /* ---------- 서울 아파트 ---------- */
 let GU='서울 전체';

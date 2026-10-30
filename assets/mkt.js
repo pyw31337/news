@@ -17,26 +17,27 @@ function chart(el,P,o={}){if(!el)return;if(!P||P.length<2){el.innerHTML='<p clas
   const draw=()=>{const W=Math.max(280,el.clientWidth),L=8,R=64,T=14,B=26,iw=W-L-R,ih=H-T-B;
     const vs=P.map(p=>p.v),hi=P.map(p=>p.h??p.v),lo=P.map(p=>p.l??p.v);let mn=Math.min(...lo),mx=Math.max(...hi);const pad=(mx-mn)*.08||mx*.01;mn-=pad;mx+=pad;
     const tk=ticks(mn,mx,5),X=i=>L+i/(P.length-1)*iw,Y=v=>T+(1-(v-mn)/(mx-mn))*ih;
-    const first=vs[0],lastV=vs[vs.length-1],col=lastV>=first?UP:DN,id='g'+Math.random().toString(36).slice(2,7);
-    const span=(new Date(P[P.length-1].d)-new Date(P[0].d))/864e5,lab=d=>span>200?d.slice(2,7).replace('-','.'):d.slice(5).replace('-','.');
+    const first=vs[0],lastV=vs[vs.length-1],col=o.col||(lastV>=first?UP:DN),id='g'+Math.random().toString(36).slice(2,7),F=o.fmt||(v=>fx(v,dp));
+    const span=o.raw?0:(new Date(P[P.length-1].d)-new Date(P[0].d))/864e5,lab=d=>o.raw?d:span>200?d.slice(2,7).replace('-','.'):d.slice(5).replace('-','.');
     const xs=[];const nx=W<420?3:5;for(let k=0;k<nx;k++)xs.push(Math.round(k*(P.length-1)/(nx-1)));
     const path=P.map((p,i)=>`${i?'L':'M'}${X(i).toFixed(1)},${Y(p.v).toFixed(1)}`).join('');
     el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${E(o.name||'')} 가격 차트">
       <defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity=".22"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs>
-      <g class="gy">${tk.t.map(v=>`<line x1="${L}" x2="${L+iw}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}"/><text x="${W-R+8}" y="${(Y(v)+4).toFixed(1)}">${fx(v,tk.st<1?dp:0)}</text>`).join('')}</g>
+      <g class="gy">${tk.t.map(v=>`<line x1="${L}" x2="${L+iw}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}"/><text x="${W-R+8}" y="${(Y(v)+4).toFixed(1)}">${o.fmt?E(o.fmt(v)):fx(v,tk.st<1?dp:0)}</text>`).join('')}</g>
       <g class="gx">${xs.map(i=>`<line x1="${X(i).toFixed(1)}" x2="${X(i).toFixed(1)}" y1="${T}" y2="${T+ih}"/><text x="${X(i).toFixed(1)}" y="${H-8}" text-anchor="${i===0?'start':i===P.length-1?'end':'middle'}">${lab(P[i].d)}</text>`).join('')}</g>
       <line class="base" x1="${L}" x2="${L+iw}" y1="${Y(first).toFixed(1)}" y2="${Y(first).toFixed(1)}"/>
+      ${o.bars?(()=>{const bm=Math.max(1,...o.bars),bw=Math.max(2,iw/P.length*.6);return o.bars.map((b,k)=>`<rect class="vb" x="${(X(k)-bw/2).toFixed(1)}" y="${(T+ih-b/bm*ih*.3).toFixed(1)}" width="${bw.toFixed(1)}" height="${(b/bm*ih*.3).toFixed(1)}"/>`).join('')})():''}
       <path d="${path}L${X(P.length-1).toFixed(1)},${T+ih}L${L},${T+ih}Z" fill="url(#${id})"/>
       <path d="${path}" fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round"/>
-      <g class="last"><rect x="${W-R+2}" y="${(Y(lastV)-10).toFixed(1)}" width="${R-4}" height="20" rx="4" fill="${col}"/><text x="${W-R+6}" y="${(Y(lastV)+4).toFixed(1)}">${fx(lastV,dp)}</text></g>
+      <g class="last"><rect x="${W-R+2}" y="${(Y(lastV)-10).toFixed(1)}" width="${R-4}" height="20" rx="4" fill="${col}"/><text x="${W-R+6}" y="${(Y(lastV)+4).toFixed(1)}">${E(F(lastV))}</text></g>
       <g class="cross" visibility="hidden"><line class="cx" y1="${T}" y2="${T+ih}"/><line class="cy" x1="${L}" x2="${L+iw}"/><circle r="4.5" fill="${col}" stroke="#fff" stroke-width="2"/>
         <rect class="cyl" x="${W-R+2}" width="${R-4}" height="20" rx="4"/><text class="cyt" x="${W-R+6}"></text></g>
       <rect class="hit" x="${L}" y="${T}" width="${iw}" height="${ih}" fill="transparent"/></svg><div class="xtip" hidden></div>`;
     const svg=el.querySelector('svg'),cr=svg.querySelector('.cross'),tip=el.querySelector('.xtip');
     const show=ev=>{const r=svg.getBoundingClientRect(),x=(ev.clientX-r.left)*W/r.width,i=Math.max(0,Math.min(P.length-1,Math.round((x-L)/iw*(P.length-1)))),p=P[i],cx=X(i),cy=Y(p.v);
       cr.setAttribute('visibility','visible');cr.querySelector('.cx').setAttribute('x1',cx);cr.querySelector('.cx').setAttribute('x2',cx);cr.querySelector('.cy').setAttribute('y1',cy);cr.querySelector('.cy').setAttribute('y2',cy);
-      const c=cr.querySelector('circle');c.setAttribute('cx',cx);c.setAttribute('cy',cy);cr.querySelector('.cyl').setAttribute('y',cy-10);const yt=cr.querySelector('.cyt');yt.setAttribute('y',cy+4);yt.textContent=fx(p.v,dp);
-      const ch=(p.v/first-1)*100;tip.hidden=false;tip.innerHTML=`<b>${E(p.d.replace(/-/g,'.'))}</b><span>${o.unit?'':'종가 '}<em>${fx(p.v,dp)}</em>${E(o.unit||'')}</span>${p.o!=null?`<small>시 ${fx(p.o,dp)} · 고 ${fx(p.h,dp)} · 저 ${fx(p.l,dp)}</small>`:''}<small class="${ch>=0?'up':'dn'}">기간 시작 대비 ${ch>=0?'+':''}${ch.toFixed(2)}%</small>`;
+      const c=cr.querySelector('circle');c.setAttribute('cx',cx);c.setAttribute('cy',cy);cr.querySelector('.cyl').setAttribute('y',cy-10);const yt=cr.querySelector('.cyt');yt.setAttribute('y',cy+4);yt.textContent=F(p.v);
+      const ch=(p.v/first-1)*100;tip.hidden=false;tip.innerHTML=`<b>${E(o.raw?p.d:p.d.replace(/-/g,'.'))}</b><span>${o.unit||o.raw?'':'종가 '}<em>${E(F(p.v))}</em>${E(o.unit||'')}</span>${p.x!=null?`<small>거래 ${Number(p.x).toLocaleString()}건</small>`:''}${p.o!=null?`<small>시 ${fx(p.o,dp)} · 고 ${fx(p.h,dp)} · 저 ${fx(p.l,dp)}</small>`:''}<small class="${ch>=0?'up':'dn'}">기간 시작 대비 ${ch>=0?'+':''}${ch.toFixed(2)}%</small>`;
       const px=cx/W*r.width;tip.style.left=Math.min(r.width-tip.offsetWidth-6,Math.max(6,px+(px>r.width/2?-tip.offsetWidth-14:14)))+'px'};
     const hide=()=>{cr.setAttribute('visibility','hidden');tip.hidden=true};
     const hit=svg.querySelector('.hit');hit.addEventListener('pointermove',show);hit.addEventListener('pointerdown',show);hit.addEventListener('pointerleave',hide);hit.addEventListener('pointercancel',hide)};

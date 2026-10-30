@@ -57,6 +57,10 @@ function numToday(I){const st=D.stats||{},arts=(st.naver||0)+(st.google||0);if(!
    <div class="numt-s card"><h3>분야별 TOP 10 <small>오늘 가장 많이 오른 분야는 <b style="color:${CATC[ce[0][0]]||'var(--ink)'}">${esc(ce[0][0])}</b></small></h3>
     <div class="numt-seat">${ce.map(([c,n])=>`<i style="flex:${n};background:${CATC[c]||'#8189a3'}">${n}</i>`).join('')}</div>
     <div class="numt-lg">${ce.map(([c,n])=>`<span><i style="background:${CATC[c]||'#8189a3'}"></i>${esc(c)} <b>${n}</b></span>`).join('')}</div></div></div>`}
+/* 한눈에 보기 문장: 포털 요약 → AI 심층 분석 앞 문장 → 기사 첫 문단 → 제목 (비어 있지 않게) */
+function sumOf(i){if((i.summary||[]).length)return i.summary;const ai=i.ai||{};const sp=t=>String(t||'').split(/(?<=[.!?다요])\s+/).map(x=>x.trim()).filter(x=>x.length>8);
+  /* 깊게 보기가 AI 심층 분석을 쓰면 기사 첫 문단을, 아니면 AI 요약을 — 두 섹션이 같은 문장을 반복하지 않게 */
+  const l=(i.leads||[]).filter(Boolean).slice(0,2);if(ai.deep&&l.length)return l;const a=sp(ai.summary||(l.length?'':ai.deep)).slice(0,2);if(a.length)return a;return l.length?l.slice(0,1):[i.title]}
 function hiSum(t,i){const T=[...new Set([...(i.entities||[]),...(i.keywords||[]).map(k=>String(k).replace(/^#/,''))])].filter(w=>w&&w.length>=2).sort((a,b)=>b.length-a.length).slice(0,12);
   let h=esc(t);if(!T.length)return h;const used=new Set();
   return h.replace(new RegExp(T.map(w=>esc(w).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'g'),m=>used.has(m)||used.size>=4?m:(used.add(m),`<em class="hl">${m}</em>`))}
@@ -220,7 +224,7 @@ function issue(id){
     <div class="chips">${i.entities.map(n=>chipE(n)).join('')}${i.keywords.filter(k=>!i.entities.includes(k)).slice(0,4).map(k=>`<span class="ds-tag">#${esc(k)}</span>`).join('')}</div></div></article>
   <nav class="toc ds-tabs"><a href="#s-sum">${ic('news')}<span>요약</span></a><a href="#s-flow">${ic('clock')}<span>흐름</span></a><a href="#related">${ic('news')}<span>관련 기사</span></a><a href="#press">${ic('press')}<span>언론사</span></a><a href="#comments">${ic('chat')}<span>댓글</span></a></nav>
   <div class="two"><div>
-   <section id="s-sum" class="ds-sec">${sec('한눈에 보기','Summary','','news')}<div class="summary ds-sum">${i.summary.map((s,k)=>`<div class="sl"><b>${k+1}</b><p class="${k===0?'ds-lead':''}">${DS.emph(s,terms)}</p></div>`).join('')||'<p>요약을 가져오지 못했어요.</p>'}</div></section>
+   <section id="s-sum" class="ds-sec">${sec('한눈에 보기','Summary','','news')}<div class="summary ds-sum">${sumOf(i).map((s,k)=>`<div class="sl"><b>${k+1}</b><p class="${k===0?'ds-lead':''}">${DS.emph(s,terms)}</p></div>`).join('')||'<p>요약을 가져오지 못했어요.</p>'}</div></section>
    ${DS.deep(i)}
    ${DS.flow(i)}
    ${DS.past(i)}

@@ -176,3 +176,34 @@ details.ds-fg ul{margin-left:0!important}
 .ds-logo.b{background:none!important;padding:0!important;overflow:hidden;border-radius:50%}.ds-logo.b img{width:100%!important;height:100%!important;object-fit:cover;border-radius:50%}
 img.b.pl,img.b.plo{border-radius:50%;object-fit:cover}
 .chips .chip{gap:0!important}
+
+/* ---- 2026-10-30 3차: 상세 화면 힘 빼기(흰 상자 걷어내기)·규격 정리 ---- */
+/* 타임라인 화면: 민심 게이지(.vg)와 이름이 겹쳐 날짜 묶음이 120px로 찌그러지던 문제 */
+.vt .vg{width:auto!important}
+/* 흐름 날짜 줄: 점이 날짜 글자를 덮지 않게(요약 줄은 기준 위치가 되지 않음) */
+details.ds-fg>summary{position:static!important}
+details.ds-fg .ds-dot{left:1px!important;top:16px!important}
+/* 흐름 요약 수치: 한 줄(좁으면 가로 스크롤), 숫자에 말풍선 */
+.ds-fsum{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;white-space:nowrap;gap:4px 16px!important;padding:6px 2px}
+.ds-fsum::-webkit-scrollbar{display:none}
+.ds-fsum>span{flex:none;cursor:help}.ds-fsum [data-tip]::after{white-space:normal;width:max-content;max-width:220px}
+/* 흰 상자 걷어내기: 바탕(미색회색) 위에 글만 — 그래프·머리 카드만 흰 판 유지 */
+.ds-sum,.ds-sec .ds-sum,.summary.ds-sum{background:none!important;box-shadow:none!important;padding:0!important;border-radius:0!important}
+.ds-sum .sl{padding:10px 0!important;border-bottom:1px solid var(--line,#e6e8ef)}
+.ds-steps{background:none!important;box-shadow:none!important;padding:0!important;border-radius:0!important}
+.ds-steps li{padding:14px 0!important}.ds-steps li+li{border-top:1px solid var(--line,#e6e8ef)!important}
+.ds-steps .no{width:24px!important;height:24px!important;font-size:.75rem!important;background:var(--ink,#0f1630)!important}
+.ds-hist{background:none!important;box-shadow:none!important;padding:16px 0 0!important;border-radius:0!important;border-top:1px solid var(--line,#e6e8ef)}
+.ds-kpi>div{background:none!important;padding:0 0 0 12px!important;border-left:2px solid var(--line,#e6e8ef);border-radius:0!important}
+.ds-cmts a{background:none!important;box-shadow:none!important;border-left:3px solid var(--line,#e6e8ef)!important;border-radius:0!important;padding:6px 0 6px 12px!important}
+.vcard{background:none!important;box-shadow:none!important;padding:0!important}
+.vqc{background:none!important;border-radius:0!important;padding:4px 0 4px 12px!important}
+.vqc q{background:none!important;border:0!important}
+/* 크기 위계: 섹션 제목 1.125rem, 본문 .9375rem, 보조 .75rem — 유독 큰 숫자·글자 줄이기 */
+.ds-sec .sec h2{font-size:1.125rem!important}
+.ds-kpi .big b{font-size:1.375rem!important}
+.ds-steps p{font-size:.9375rem!important;line-height:1.7!important;font-weight:400!important}
+.ds-sum .sl p{font-size:.9375rem!important;font-weight:400!important}.ds-sum .sl p.ds-lead{font-weight:700!important}
+.ds-nodes.crowd .ds-n.past span{display:none}
+/* 타임라인 화면 기사: 흰 상자 대신 구분선 목록 */
+.vt .ve{background:none!important;box-shadow:none!important;border-radius:0!important;padding:11px 0!important;margin:0!important;border-bottom:1px solid var(--line,#e6e8ef)}
