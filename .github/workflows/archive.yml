@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '40 17 * * *'   # 매일 02:40 KST
   workflow_dispatch:
-permissions: { contents: read }
+permissions: { contents: read, id-token: write }   # id-token: 서버가 이 저장소의 작업인지 확인(ARCHIVE_KEY 불필요)
 concurrency: { group: archive, cancel-in-progress: false }
 jobs:
   build:

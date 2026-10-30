@@ -221,9 +221,16 @@ for p in todo:
 print('인물', len(P_OUT), '사건', len(E_OUT), '관계', len(edges), '외부 인물', len([n for n in nodes if n.startswith('wd:')]))
 
 class Defer(Exception): pass
+def token():
+    """업로드 인증: ARCHIVE_KEY가 있으면 그것, 없으면 GitHub Actions OIDC 토큰(대상 newsboard-sync, 짧게 유효 → 업로드마다 새로 받음)"""
+    if KEY: return KEY
+    u, t = os.environ.get('ACTIONS_ID_TOKEN_REQUEST_URL'), os.environ.get('ACTIONS_ID_TOKEN_REQUEST_TOKEN')
+    if not (u and t): return ''
+    with urllib.request.urlopen(urllib.request.Request(u + '&audience=newsboard-sync', headers={'Authorization': 'bearer ' + t}), timeout=30) as f: return json.loads(f.read())['value']
 def post(body):
-    if not KEY: print('ARCHIVE_KEY 없음: 업로드 생략'); return
-    r = urllib.request.Request(API + '/archive/ingest', json.dumps(body, ensure_ascii=False).encode(), {'User-Agent': UA, 'Authorization': 'Bearer ' + KEY, 'Content-Type': 'application/json'})
+    tk = token()
+    if not tk: print('인증 수단 없음(ARCHIVE_KEY·GitHub OIDC): 업로드 생략'); return
+    r = urllib.request.Request(API + '/archive/ingest', json.dumps(body, ensure_ascii=False).encode(), {'User-Agent': UA, 'Authorization': 'Bearer ' + tk, 'Content-Type': 'application/json'})
     for i in range(3):
         try:
             with urllib.request.urlopen(r, timeout=120) as f: o = json.loads(f.read()); print('  쓰기', o.get('written'), '오늘 누적', o.get('used'), '/', o.get('cap')); return o
