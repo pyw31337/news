@@ -5,8 +5,8 @@ on:
   schedule:
     - cron: '52 * * * *'
   workflow_dispatch:
-permissions: { contents: write }
-concurrency: { group: collect, cancel-in-progress: false }   # collect-news와 같은 data 브랜치를 쓰므로 차례로
+permissions: { contents: write, actions: write }
+concurrency: { group: archive-backfill, cancel-in-progress: false }   # collect와 같은 대기열이면 계속 밀려 취소됨 → 따로. data 브랜치 충돌은 아래 재시도로 처리
 jobs:
   backfill:
     runs-on: ubuntu-latest
@@ -31,3 +31,11 @@ jobs:
             sleep $((n * 10)); git fetch -q origin data && git rebase -q -X theirs origin/data || { git rebase --abort; git merge -q -X ours --no-edit origin/data; }
           done
           exit 1
+      # 아직 채울 날짜가 남았으면 바로 다음 회차(예약 실행이 자주 건너뛰어짐)
+      - name: 다음 회차 이어 실행
+        if: success()
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          n=$(ls data/archive | grep -c '^20.*\.json$')
+          echo "보관 날짜: $n"
+          if [ "$n" -lt 360 ]; then gh workflow run archive-backfill.yml --ref main -R ${{ github.repository }} || true; fi

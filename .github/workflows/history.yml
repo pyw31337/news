@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       minutes: { description: '수집 시간(분)', default: '42' }
-permissions: { contents: write }
+permissions: { contents: write, actions: write }   # actions: 끝나면 다음 회차를 스스로 실행
 concurrency: { group: history, cancel-in-progress: false }
 jobs:
   backfill:
@@ -44,3 +44,11 @@ jobs:
           cd hist && git config user.name newsboard-bot && git config user.email bot@users.noreply.github.com
           git add -A && git commit -qm "history $(date -u +%FT%H:%MZ)" || exit 0
           for i in 1 2 3; do git push origin HEAD:history && break; git pull --rebase -X theirs origin history; done
+      # GitHub 예약 실행은 붐빌 때 자주 건너뛰어져(하루 3~4회만 돎) → 대상이 남아 있으면 다음 회차를 바로 이어서 실행
+      - name: 다음 회차 이어 실행
+        if: always()
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          left=$(python3 -c "import json;t=json.load(open('hist/h/targets.json'));s=json.load(open('hist/h/state.json'));print(sum(1 for x in t if not (s.get(x.get('id') if isinstance(x,dict) else x) or {}).get('full')))" 2>/dev/null || echo 1)
+          echo "남은 대상: $left"
+          if [ "$left" != "0" ]; then gh workflow run history.yml --ref main -R ${{ github.repository }} || true; fi
