@@ -101,6 +101,10 @@ jobs:
       - name: 아카이브 보강(해외 뉴스·시장 지표도 날짜별로 남김)
         continue-on-error: true
         run: python scripts/archive_extra.py
+      - name: 같은 내용 기사 묶기·묶음 요약 보관(db/dupes)
+        continue-on-error: true
+        timeout-minutes: 2
+        run: python scripts/dedupe.py
       - name: 인물 타임라인(새 기사 → 등장 인물별로 쌓기)
         continue-on-error: true
         timeout-minutes: 5

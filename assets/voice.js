@@ -2,6 +2,8 @@
 (()=>{let V=null;const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const BP=(typeof BASEP!=='undefined'?BASEP:'/news/');
 const SRC={blog:['네이버 블로그','#03c75a'],cafe:['네이버 카페','#03a94f'],tistory:['티스토리','#ff5a4a'],daumblog:['다음 블로그','#2b6cff'],daumcafe:['다음 카페','#2b6cff']};
+/* 플랫폼은 글자 대신 공식 아이콘(assets/platforms), 마우스를 올리면 이름 말풍선 */
+const plat=(k,n)=>{const s=SRC[k]||[k||'글'];return`<span class="plat" data-tip="${E(s[0])}${n!=null?' '+n+'개':''}" aria-label="${E(s[0])}">${SRC[k]?`<img src="assets/platforms/${k}.webp" alt="" width="20" height="20">`:E(s[0][0])}${n!=null?`<b>${n}</b>`:''}</span>`};
 const PF={youtube:['YouTube'],shorts:['Shorts'],kakaotv:['카카오TV'],naver:['네이버TV'],vimeo:['Vimeo'],etc:['영상']};
 const fmtV=n=>n>=1e8?(n/1e8).toFixed(1)+'억':n>=1e4?(n/1e4).toFixed(n>=1e5?0:1)+'만':n>=1e3?(n/1e3).toFixed(1)+'천':String(n||0);
 const agoT=t=>{if(!t)return'';const m=(Date.now()-new Date(t))/6e4;return m<60?Math.max(1,m|0)+'분 전':m<1440?(m/60|0)+'시간 전':(m/1440|0)+'일 전'};
@@ -15,7 +17,7 @@ function trend(tr){if(!tr||tr.length<2)return'<p class="vfine">분위기 변화�
   return`<svg class="vtr" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">${ar(p=>p[1]+p[2]+p[3],'var(--ds-up)')}${ar(p=>p[1]+p[2],'var(--ds-line)')}${ar(p=>p[1],'var(--ds-green)')}</svg><div class="vtrx"><span>${E(tr[0][0].replace('-','/'))}시</span><span>지금</span></div>`}
 function cloud(ws){if(!ws||!ws.length)return'';const mx=ws[0][1];return`<div class="vcloud">${ws.slice(0,18).map(([w,v],k)=>`<span class="c${k%4}" style="font-size:${(.78+v/mx*.85).toFixed(2)}rem">${E(w)}</span>`).join('')}</div>`}
 function quotes(r,n){const P=r.posts||[];const pick=((r.ai&&r.ai.quotes)||[]).map(q=>P[q]).filter(Boolean);const L=pick.concat(P.filter(p=>p.s!==0),P).filter((p,k,a)=>a.indexOf(p)===k).slice(0,n);
-  return`<div class="vq">${L.map(p=>{const s=SRC[p.src]||['글','var(--ds-mute)'];return`<a class="vqc ${p.s>0?'pos':p.s<0?'neg':''}" href="${E(p.url)}" target="_blank" rel="noopener"><span class="vsb" style="--c:${s[1]}">${E(s[0])}</span><q>${E(p.q)}</q><small>원문 보기 ${NBI('external-link')}</small></a>`}).join('')}</div>`}
+  return`<div class="vq">${L.map(p=>{return`<a class="vqc ${p.s>0?'pos':p.s<0?'neg':''}" href="${E(p.url)}" target="_blank" rel="noopener">${plat(p.src)}<q>${E(p.q)}</q><small>원문 보기 ${NBI('external-link')}</small></a>`}).join('')}</div>`}
 function vcards(vs){if(!vs||!vs.length)return'<p class="vfine keep">아직 이 사건을 다룬 영상을 찾지 못했어요.</p>';
   return`<div class="vvg">${vs.map(v=>{const p=PF[v.pf]||PF.etc;return`<a class="vv" href="${E(v.url)}" target="_blank" rel="noopener"><div class="vvt" style="background-image:url('${E(v.thumb||'')}')"><span class="vpf">${NBI(v.pf==='youtube'||v.pf==='shorts'?'brand-youtube':'video')} ${p[0]}</span>${v.views?`<span class="vvw">${NBI('chart-bar')} ${fmtV(v.views)}회</span>`:''}</div>
    <div class="vvb"><h5>${E(v.title)}</h5><div class="vch"><b>${E(v.ch)}</b>${v.t?`<span>${agoT(v.t)}</span>`:''}</div>${(v.sum||[]).length?`<ol>${v.sum.map(s=>`<li>${E(s)}</li>`).join('')}</ol>`:''}</div></a>`}).join('')}</div>`}
@@ -24,7 +26,7 @@ function block(r){const s=sent(r),a=r.ai||{};const col=['var(--ds-brand)','var(-
   return`<section class="vblk anc ds-sec" id="s-voice"><div class="vh"><h2><small>Voices · 블로그·카페</small>민심</h2><span class="vbadge">글 ${r.n}개 분석</span></div>
   <div class="card vcard"><div class="vtop">${gauge(s,1)}<div class="vtx">${a.mood?`<span class="vmood">지금 분위기 · <b>${E(a.mood)}</b></span>`:''}${a.summary?`<p>${E(a.summary)}</p>`:'<p>블로그·카페 글에 자주 나온 말로 분위기를 짐작했어요.</p>'}
    <div class="vleg"><i style="--c:var(--ds-green)">긍정 ${s.pos}%</i><i style="--c:var(--ds-mute)">중립 ${s.neu}%</i><i style="--c:var(--ds-up)">부정 ${s.neg}%</i></div>
-   <div class="vsrc">${Object.entries(r.by||{}).map(([k,n])=>`<span class="vsb" style="--c:${(SRC[k]||['','var(--ds-mute)'])[1]}">${E((SRC[k]||[k])[0])} ${n}</span>`).join('')}</div></div></div>
+   <div class="vsrc">${Object.entries(r.by||{}).map(([k,n])=>plat(k,n)).join('')}</div></div></div>
    ${(a.stances||[]).length?`<h5>사람들의 입장</h5><div class="vst">${a.stances.map((x,k)=>`<i style="flex:${x.share};background:${col[k%4]}">${x.share}%</i>`).join('')}</div><div class="vstl">${a.stances.map((x,k)=>`<div><b style="--c:${col[k%4]}" class="vdot">${E(x.label)}</b><span>${E(x.desc)}</span></div>`).join('')}</div>`:''}
    ${(a.topics||[]).length?`<h5>많이 이야기하는 주제</h5><div class="vtp">${a.topics.map(t=>`<span>${E(t.label)}<b>${t.n}</b></span>`).join('')}</div>`:''}
    <h5>자주 나온 말</h5>${cloud(r.words)}

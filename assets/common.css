@@ -1,0 +1,132 @@
+/* ==========================================================================
+   NewsBoard 공통 모듈 (2026-10-30)
+   메인·상세·인물·마켓 등 여러 화면에 반복되는 요소의 스타일을 여기 한 곳에서 정한다.
+   모든 페이지에서 가장 마지막에 불러오므로, 여기서 고치면 모든 화면에 같이 반영된다.
+   1) 글꼴  2) 카테고리  3) 지표 줄  4) 해시태그·인물 칩  5) 아이콘 버튼·메모  6) 말풍선
+   7) 인용(따옴표)  8) 섹션 메뉴  9) 상세 머리  10) 사진 격자·라이트박스  11) 언론사·관련 기사  12) 흐름
+   ========================================================================== */
+/* 1) 글꼴: 사이트 전체 Pretendard 하나, 굵기로만 변화 */
+:root{--serif:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;--ds-serif:var(--serif)}
+body,button,input,select,textarea,q,.quote,.cmts a,.ds-say,.vqc q{font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
+
+/* 2) 카테고리: 아이콘·배경 없이 카테고리 색 글자 */
+.cat{--cc:var(--ink2,#3a4160);background:none!important;padding:0!important;border-radius:0!important;color:var(--cc)!important;font-size:.75rem;font-weight:800;letter-spacing:0;line-height:1.2}
+.cat .ico{display:none!important}
+.cat.정치{--cc:#2f6bff}.cat.경제{--cc:#11a683}.cat.사회{--cc:#ff4d2e}.cat.세계{--cc:#7a4dff}.cat.IT{--cc:#0aa5c8}.cat.연예{--cc:#e2448e}.cat.스포츠{--cc:#f08a00}
+.cat.과학{--cc:#4868d8}.cat.건강{--cc:#d64f73}.cat.환경{--cc:#28a26e}.cat.문화{--cc:#9c58cc}
+/* 어두운 배경(대표 카드·글자 카드) 위에서는 밝게 */
+.lead .cat,.rcard .cat,.ic.text .cat,.dark .cat{filter:brightness(1.55) saturate(1.1)}
+
+/* 3) 지표 줄(관련 기사·언론사·댓글·화제도): 캡슐 없이 평평하게, 사이 점 구분 */
+.schips{gap:4px 14px!important}
+.schip{height:auto!important;padding:0!important;border:0!important;background:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-radius:0!important;font-size:.8125rem!important;font-weight:600;gap:4px!important}
+.schip::after{content:none!important}
+.schip b{font-weight:900}
+.schips.light .schip{color:var(--ink2,#4a5170)!important}.schips.light .schip b{color:var(--ink,#0f1630)}
+.schips.light .schip .ico{color:var(--mute,#8a91a8)!important}.schips.light .schip.hot,.schips.light .schip.hot b{color:var(--acc,#ff4d2e)!important}.schips.light .schip.hot .ico{color:var(--acc,#ff4d2e)!important}
+a.schip:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* 4) 해시태그·인물 칩: 배경·테두리 없이 글자만(종류별 색) */
+.chips{gap:4px 12px!important}
+.chip,.ds-tag{background:none!important;border:0!important;padding:0!important;border-radius:0!important;font-size:.8125rem;font-weight:700;color:var(--ink2,#4a5170)}
+.chip.person{color:#ff4d2e}.chip.org{color:#7a4dff}.chip.place{color:#11a683}.chip.event,.ds-tag{color:#c27a00}
+a.chip:hover{text-decoration:underline;text-underline-offset:3px}
+.chip .ico,.ds-tag .ico{display:none}
+
+/* 5) 아이콘 버튼(좋아요·스크랩·팔로우)·메모 */
+.myact{display:flex!important;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:6px 0 14px!important}
+.myact .myic{display:flex;gap:2px}
+.myact .myic button{display:grid;place-items:center;width:38px;height:38px;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;border-radius:50%;color:var(--ink2,#4a5170);cursor:pointer}
+.myact .myic button svg{width:22px!important;height:22px!important}
+.myact .myic button:hover{color:var(--ink,#0f1630);background:rgba(15,22,48,.05)!important}
+.myact .myic button.on{color:var(--acc,#ff4d2e)}.myact .myic button.on svg{fill:currentColor}
+.myact .memo{display:inline-flex;align-items:center;gap:6px;padding:7px 12px!important;border:1px dashed #c5cad8!important;background:#fffdf6!important;border-radius:10px!important;font-size:.8125rem;font-weight:700;color:#8a6200;cursor:pointer}
+.myact .memo svg{width:16px!important;height:16px!important}.myact .memo.on{border-style:solid!important;border-color:#f0c25a!important;background:#fff6db!important}
+.mini-heart{background:none!important;box-shadow:none!important}
+
+/* 6) 말풍선: data-tip을 단 요소에 마우스를 올리면 바로 보이고, 벗어나면 사라짐 */
+[data-tip]{position:relative}
+[data-tip]::after{content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);padding:5px 9px;border-radius:8px;background:#191f28;color:#fff;font-size:.72rem;font-weight:700;line-height:1.3;white-space:nowrap;pointer-events:none;opacity:0;visibility:hidden;z-index:50}
+[data-tip]::before{content:'';position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);border:6px solid transparent;border-top-color:#191f28;border-bottom:0;opacity:0;visibility:hidden;z-index:50;pointer-events:none}
+[data-tip]:hover::after,[data-tip]:hover::before,[data-tip]:focus-visible::after,[data-tip]:focus-visible::before{opacity:1;visibility:visible}
+
+/* 7) 인용: 따옴표가 글자를 가리지 않게 왼쪽 여백 안에 둠 */
+q,.quote{padding-left:30px!important;font-size:.875rem}
+q::before{left:9px!important;top:4px!important;font-size:1.5rem!important;line-height:1!important}
+q.ds-say{padding-left:0!important}q.ds-say::before{position:static}
+.vqc q{padding-left:0!important}.vqc q::before{content:none}
+
+/* 8) 섹션 메뉴(요약·흐름·관련 기사·언론사·댓글·민심): 한 줄, 좁으면 가로 스크롤 + 아이콘 숨김 */
+.toc{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;gap:4px}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;white-space:nowrap}
+@media(max-width:520px){.toc a .ico,.toc a svg{display:none}.toc a{padding-left:12px;padding-right:12px}}
+
+/* 9) 상세 머리: 메인 카드처럼 큰 순위 숫자 + 카테고리 글자 */
+.dh-top{display:flex;align-items:center;gap:12px;margin-bottom:2px}
+.dh-rank{display:flex;align-items:center;gap:8px}
+.dh-rank b{font-size:3rem;font-weight:900;line-height:.85;letter-spacing:-.06em;color:var(--acc,#ff4d2e);font-variant-numeric:tabular-nums}
+.dh-rank small{font-size:.66rem;font-weight:800;line-height:1.25;color:var(--mute,#8a91a8)}
+.dh-top .cat{font-size:.875rem}
+.dhead .ds-title{margin-top:6px!important}
+
+/* 10) 사진 격자(큰 사진 + 작은 사진들, 마지막 칸 '+N')·라이트박스 */
+.gp .gt{position:relative}
+.gplus{position:absolute;inset:0;display:grid;place-items:center;background:rgba(10,14,30,.55);color:#fff;font-size:1.25rem;font-weight:900}
+.gp.mob{grid-template-columns:repeat(3,1fr)!important;grid-template-rows:auto!important;height:auto!important;border-radius:18px}
+.gp.mob .gt{grid-column:auto!important;grid-row:auto!important}
+.gp.mob .big{grid-column:1/-1!important;aspect-ratio:16/10}
+.gp.mob .gt:not(.big){aspect-ratio:1}
+.gp.mob.n2 .gt:not(.big){grid-column:1/-1!important;aspect-ratio:16/10}.gp.mob.n3{grid-template-columns:1fr 1fr!important}
+.lbx img,.dgal img,.gm-medal img{opacity:1!important}
+
+/* 11) 보도 언론사: 원형 로고만(이름은 말풍선) / 관련 기사: 배경 없는 한 줄 */
+.ds-pgrid{display:flex!important;flex-wrap:wrap;gap:8px!important}
+.ds-pt{width:auto!important;padding:0!important;background:none!important;border:0!important;box-shadow:none!important;position:relative}
+.ds-pt .ds-pn{display:none}
+.ds-pt .ds-logo.lg{width:44px!important;height:44px!important;border-radius:50%!important;box-shadow:0 0 0 1px var(--line,#e3e6ef)}
+.ds-pt[aria-expanded=true] .ds-logo.lg{box-shadow:0 0 0 2px var(--acc,#ff4d2e)}
+.ds-pt .ds-cnt{position:absolute;right:-4px;top:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--ink,#0f1630);color:#fff;font-size:.62rem;font-weight:800;display:grid;place-items:center;padding:0 4px}
+.ds-rel{list-style:none;margin:0;padding:0}
+.ds-rel li{background:none!important;border:0!important;box-shadow:none!important;border-bottom:1px solid var(--line,#eef0f6)!important;border-radius:0!important;margin:0!important}
+.ds-rel a{display:flex!important;align-items:center;justify-content:space-between;gap:12px;padding:11px 2px!important;color:inherit;text-decoration:none}
+.ds-rel .ds-rt{flex:1;min-width:0;font-size:.9375rem;font-weight:600;line-height:1.45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ds-rel .ds-rm{flex:none;display:flex;align-items:center;gap:2px;font-size:.75rem;color:var(--mute,#8a91a8)}
+.ds-rel .ds-rm em{font-style:normal;margin-left:4px}
+.ds-rel a:hover .ds-rt{text-decoration:underline;text-underline-offset:3px}
+.ds-warn{margin-left:6px;font-size:.66rem;font-weight:800;color:#c27a00}
+@media(max-width:520px){.ds-rel .ds-rt{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}}
+
+/* 12) 사건의 흐름: 날짜별 한 줄 요약(접힘) → 펼치면 매체별 헤드라인 */
+.ds-flist{display:grid;gap:0;border-left:2px solid var(--acc,#ff4d2e);margin-left:6px;padding-left:0}
+details.ds-fg{background:none!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0!important;margin:0!important}
+details.ds-fg>summary{list-style:none;display:grid;grid-template-columns:auto auto 1fr auto auto;align-items:center;gap:10px;padding:12px 4px 12px 0;cursor:pointer;position:relative}
+details.ds-fg>summary::-webkit-details-marker{display:none}
+details.ds-fg .ds-dot{width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid var(--acc,#ff4d2e);margin-left:-6px}
+details.ds-fg[open] .ds-dot,details.ds-fg.on .ds-dot{background:var(--acc,#ff4d2e)}
+details.ds-fg .ds-fd{display:grid;line-height:1.15}.ds-fd b{font-size:.875rem;font-weight:900}.ds-fd small{font-size:.66rem;color:var(--mute,#8a91a8)}
+details.ds-fg .ds-fs{min-width:0;font-size:.875rem;line-height:1.5;color:var(--ink,#0f1630);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+details.ds-fg .ds-fn{font-size:.72rem;font-weight:800;color:var(--mute,#8a91a8)}
+details.ds-fg>summary>svg{width:18px;height:18px;color:var(--mute,#8a91a8);transition:transform .2s}details.ds-fg[open]>summary>svg{transform:rotate(180deg)}
+details.ds-fg ul{list-style:none;margin:0 0 8px 22px;padding:0;display:grid}
+details.ds-fg li a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-top:1px dashed var(--line,#e3e6ef);color:inherit;text-decoration:none;font-size:.8125rem;line-height:1.45}
+details.ds-fg li a small{flex:none;display:flex;align-items:center;gap:2px;font-size:.7rem;color:var(--mute,#8a91a8)}
+details.ds-fg li a:hover span:first-child{text-decoration:underline}
+
+/* 민심 플랫폼 아이콘 */
+.plat{display:inline-flex;align-items:center;gap:4px;flex:none;font-size:.75rem;font-weight:800;color:var(--ink2,#4a5170);vertical-align:middle}
+.plat img{width:20px;height:20px;border-radius:5px;display:block}
+.vsrc{display:flex;flex-wrap:wrap;gap:10px}
+.vqc .plat{margin-bottom:4px}
+
+/* 맞대결 막대(선거 개표 '1위 vs 2위' 막대 차용): 공감 vs 비공감 등 두 값 비교 */
+.ds-vs{display:flex;height:30px;gap:3px;margin:8px 0 6px}
+.ds-vs>div{display:flex;align-items:center;padding:0 10px;color:#fff;font-size:.8125rem;font-weight:900}
+.ds-vs .l{background:#ff4d2e;border-radius:99px 0 0 99px}.ds-vs .r{background:#2f6bff;border-radius:0 99px 99px 0;justify-content:flex-end}
+/* 작은 아이콘·로고는 사진 선명도 검사 대상이 아님 */
+.plat img,.ds-logo img,.plo,.pl img{opacity:1!important}
+/* 문장 속 인용(“…”)은 본문 크기·색 그대로 */
+q.ds-say::before,q.ds-say::after{position:static!important;font-size:1em!important;color:inherit!important;line-height:inherit!important}
+/* 해시태그·인물 줄에는 형광 강조를 쓰지 않음 */
+.chips .ds-key,.dhead .chips .ds-key{background:none!important;padding:0!important}
+.ds-vs>div{white-space:nowrap;min-width:52px}
