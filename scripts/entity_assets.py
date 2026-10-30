@@ -42,6 +42,10 @@ ok = 0
 with ThreadPoolExecutor(6) as ex:
     for e, src, rel in ex.map(one, todo):
         if rel: e['visual'] = dict(e.get('visual') or {}, url='media/' + rel, src=src); ok += 1
+        w = (e.get('visual') or {}).get('wide')
+        if w and w.startswith('http'):
+            wr = store(w, 'logo')
+            if wr: e['visual'] = dict(e['visual'], wide='media/' + wr, wide_src=w)
 json.dump(D, open(P, 'w'), ensure_ascii=False, separators=(',', ':'))
 json.dump(IDX, open(IP, 'w'), ensure_ascii=False, separators=(',', ':'))
 print(f'entity_assets: {ok}/{len(todo)} local WebP, cache {sum(1 for x in IDX.values() if x.get("f"))} files')

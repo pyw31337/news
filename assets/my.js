@@ -129,9 +129,9 @@ function itemOf(t,id){if(t==='issue'){const i=D.issues.find(x=>x.id===id);return
 function toggleSave(t,id,kind){const k=key(t,id);const s=M.saves[k]||(M.saves[k]=Object.assign({t,id,at:Date.now(),like:0,scrap:0,tags:[],col:null,note:''},itemOf(t,id)||{}));s[kind]=s[kind]?0:1;s.u=Date.now();if(!s.like&&!s.scrap&&!s.note)delete M.saves[k];save();return M.saves[k]}
 const st=(t,id)=>M.saves[key(t,id)]||{};
 function actBar(t,id){const s=st(t,id),f=M.follows[key(t,id)];
-  /* 좋아요·스크랩·팔로우는 아이콘만(말풍선으로 이름), 메모는 성격이 달라 따로 '나만의 메모' 버튼으로 */
-  const b=(a,on,ic,lab)=>`<button data-a="${a}" class="${on?'on':''}" aria-label="${lab}" aria-pressed="${on?'true':'false'}" data-tip="${lab}">${SV(ic)}</button>`;
-  return`<div class="myact" data-t="${t}" data-id="${E(id)}"><span class="myic">${b('like',s.like,P.heart,s.like?'좋아요 취소':'좋아요')}${b('scrap',s.scrap,P.bm,s.scrap?'스크랩 취소':'스크랩')}${t!=='chart'?b('follow',f,P.bell,f?'팔로우 취소':'새 소식 팔로우'):''}</span><button data-a="note" class="memo ${s.note?'on':''}">${SV(NBU('pencil'))}<span>${s.note?'내 메모 보기':'나만의 메모 남기기'}</span></button></div>`}
+  /* 좋아요·스크랩·알림·메모: 같은 종류의 개인 기능이라 같은 모양(아이콘 + 짧은 글자, 배경 없음)으로 한 묶음 */
+  const b=(a,on,ic,lab,full)=>`<button data-a="${a}" class="${on?'on':''}" aria-label="${full||lab}" aria-pressed="${on?'true':'false'}">${SV(ic)}<span>${lab}</span></button>`;
+  return`<div class="myact" data-t="${t}" data-id="${E(id)}">${b('like',s.like,P.heart,'좋아요')}${b('scrap',s.scrap,P.bm,'스크랩')}${t!=='chart'?b('follow',f,P.bell,f?'알림 중':'알림',f?'알림 끄기':'새 소식 알림 받기'):''}${b('note',s.note,NBU('pencil'),'메모',s.note?'내 메모 보기':'나만의 메모 남기기')}</div>`}
 document.addEventListener('click',e=>{const b=e.target.closest('.myact button,.mini-heart');if(!b)return;e.preventDefault();e.stopPropagation();
   const w=b.closest('[data-t]'),t=w.dataset.t,id=w.dataset.id,a=b.dataset.a||'like';
   if(a==='follow'){const k=key(t,id);if(M.follows[k])delete M.follows[k];else M.follows[k]={t,id,at:Date.now(),title:(itemOf(t,id)||{}).title||id};save();toast(M.follows[k]?'팔로우했어요. 새 소식이 오면 알려드릴게요':'팔로우를 해제했어요')}
@@ -147,7 +147,7 @@ function after(){if(!(typeof D!=='undefined'&&D))return;const[v,a]=curV();docume
     [...app.querySelectorAll('.sec')].forEach(s=>{if(/화제의 인물/.test(s.textContent)){const n=s.nextElementSibling;s.remove();n&&n.remove()}});
     if(!app.querySelector('.hsec'))groupSecs('today');save()}
   if(v==='market'&&!app.querySelector('.hsec')){groupSecs('market');app.querySelectorAll('.mk').forEach(k=>{const n=k.querySelector('.n')?.firstChild?.textContent?.trim();if(n&&!k.querySelector('.mini-heart')){k.style.position='relative';k.insertAdjacentHTML('beforeend',`<span data-t="chart" data-id="${E(n)}" class="mhw"><button class="mini-heart ${st('chart',n).like?'on':''}" aria-label="관심 지표">${SV(P.star)}</button></span>`)}});save()}
-  if(['issue','entity','kw'].includes(v)&&a&&!app.querySelector('.myact')){const h=app.querySelector('h1,h2');const t=v;const id=v==='issue'?a:a;(h||app.firstElementChild)?.insertAdjacentHTML('afterend',actBar(t,id));
+  if(['issue','entity','kw'].includes(v)&&a&&!app.querySelector('.myact')){const h=app.querySelector('h1,h2');const t=v;const id=v==='issue'?a:a;const slot=app.querySelector('.dh-act');if(slot)slot.innerHTML=actBar(t,id);else (h||app.firstElementChild)?.insertAdjacentHTML('afterend',actBar(t,id));
     if(v==='issue')arcLink(a);
     if(v==='issue'){const i=D.issues.find(x=>x.id===a);if(i){const d=new Date().toISOString().slice(0,10);const r=M.reads[d]||(M.reads[d]={});if(!r[a]){r[a]={c:i.category,k:(i.keywords||[]).slice(0,4),e:(i.entities||[]).slice(0,3),h:new Date().getHours(),l:(i.sources||[]).reduce((o,s)=>{if(s.bias)o[s.bias.lean]=(o[s.bias.lean]||0)+1;else o.n=(o.n||0)+1;return o},{})};save()}}}}
   app.querySelectorAll('a.card[href^="issue/"]').forEach(c=>{if(c.querySelector('.mhw'))return;const id=c.getAttribute('href').slice(6);c.style.position='relative';const h=`<span class="mhw" data-t="issue" data-id="${E(id)}"><button class="mini-heart ${st('issue',id).like?'on':''}" aria-label="좋아요">${SV(P.heart)}</button></span>`;

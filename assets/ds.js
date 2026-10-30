@@ -1,5 +1,6 @@
 /* NewsBoard 디자인 시스템 v1 — 이슈 상세 화면 블록들. 규칙: docs/design-system.md · 스타일: assets/ds.css */
 (function(){
+const PN=n=>(((typeof PL!=='undefined'?PL:{})._n)||{})[n]||n;
 const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const I=(n,pair)=>window.NBI?NBI(n,pair,'ds-i'):'';
 const day=d=>{const t=new Date(String(d).length<=10?d+'T12:00:00+09:00':d);return isNaN(t)?null:t};
@@ -21,15 +22,17 @@ function rich(text,terms,cls=''){const S=sents(text);if(!S.length)return'';retur
 /* 언론사 원형 로고 (캡슐 안 원) */
 function logo(name,url,size){const f=(typeof PL!=='undefined'?PL:{})[name];const h=(()=>{try{return new URL(url).hostname.replace(/^www\./,'')}catch(e){return''}})();const g=f||(typeof PL!=='undefined'?PL:{})[h];
   const ch=E(String(name||'?').replace(/^(주간|월간|일간)/,'')[0]||'?');
-  return g?`<span class="ds-logo ${size||''}"><img src="assets/press/${g}" alt="" loading="lazy"></span>`:`<span class="ds-logo ${size||''} t" style="--h:${[...String(name)].reduce((a,c)=>a+c.charCodeAt(0),0)%360}">${ch}</span>`}
+  /* 원형 배지용으로 가공한 로고(scripts/press_badges.py: 테두리 제거·로고 바탕색으로 원 채움)가 있으면 그것을 */
+  const bd=g&&((typeof PL!=='undefined'?PL:{})._b||{})[g];
+  return g?`<span class="ds-logo ${size||''}${bd?' b':''}"><img src="assets/press/${bd||g}" alt="" loading="lazy"></span>`:`<span class="ds-logo ${size||''} t" style="--h:${[...String(name)].reduce((a,c)=>a+c.charCodeAt(0),0)%360}">${ch}</span>`}
 
 /* 보도 언론사: 로고 썸네일 격자 → 누르면 그 언론사의 기사 제목 펼침 */
 function press(i){const m=new Map();(i.sources||[]).forEach(s=>{const k=s.press||'';if(!k)return;(m.get(k)||m.set(k,[]).get(k)).push(s)});
   const L=[...m.entries()].sort((a,b)=>b[1].length-a[1].length);if(!L.length)return'';
   return`<section id="press" class="anc ds-sec">${window.sec?sec('보도 언론사','Who covered it',`<span class="more">${L.length}곳</span>`,'press'):''}
-  <div class="ds-pgrid" role="list">${L.map(([n,a],k)=>`<button class="ds-pt" data-k="${k}" aria-expanded="false" role="listitem" aria-label="${E(n)} ${a.length}건" data-tip="${E(n)}${a.length>1?' · '+a.length+'건':''}">${logo(n,a[0].url,'lg')}${a.length>1?`<span class="ds-cnt">${a.length}</span>`:''}</button>`).join('')}</div>
+  <div class="ds-pgrid" role="list">${L.map(([n,a],k)=>`<button class="ds-pt" data-k="${k}" aria-expanded="false" role="listitem" aria-label="${E(PN(n))} ${a.length}건" data-tip="${E(PN(n))}${a.length>1?' · '+a.length+'건':''}">${logo(n,a[0].url,'lg')}${a.length>1?`<span class="ds-cnt">${a.length}</span>`:''}</button>`).join('')}</div>
   <div class="ds-ppanel" hidden></div>
-  <template class="ds-pdata">${L.map(([n,a],k)=>`<div data-k="${k}"><div class="ds-phd">${logo(n,a[0].url)}<b>${E(n)}</b><span>${a.length}건 보도</span></div><ul>${a.map(s=>`<li><a href="${E(s.url)}" target="_blank" rel="noopener">${E(s.title)}${I('arrow-up-right')}</a></li>`).join('')}</ul></div>`).join('')}</template></section>`}
+  <template class="ds-pdata">${L.map(([n,a],k)=>`<div data-k="${k}"><div class="ds-phd">${logo(n,a[0].url)}<b>${E(PN(n))}</b><span>${a.length}건 보도</span></div><ul>${a.map(s=>`<li><a href="${E(s.url)}" target="_blank" rel="noopener">${E(s.title)}${I('arrow-up-right')}</a></li>`).join('')}</ul></div>`).join('')}</template></section>`}
 function bindPress(root){const g=root.querySelector('.ds-pgrid');if(!g)return;const p=root.querySelector('.ds-ppanel'),tp=root.querySelector('.ds-pdata');
   g.onclick=e=>{const b=e.target.closest('.ds-pt');if(!b)return;const on=b.getAttribute('aria-expanded')==='true';g.querySelectorAll('.ds-pt').forEach(x=>x.setAttribute('aria-expanded','false'));
     if(on){p.hidden=true;return}b.setAttribute('aria-expanded','true');p.innerHTML=tp.content.querySelector(`[data-k="${b.dataset.k}"]`).outerHTML;p.hidden=false;p.classList.remove('in');void p.offsetWidth;p.classList.add('in')}}
@@ -42,7 +45,7 @@ function dedupe(S){const G=[];S.forEach(s=>{const b=bi(s.title);const g=G.find(g
 window.NBDedupe=dedupe;
 /* 관련 기사: 배경 없는 한 줄(왼쪽 제목, 오른쪽 언론사 로고), 같은 내용은 한 줄로 묶고 '외 N곳' */
 function related(i){const S=i.sources||[],G=dedupe(S);
-  const row=g=>{const s=g.s,ps=[s,...g.more];return`<li><a href="${E(s.url)}" target="_blank" rel="noopener"><span class="ds-rt">${E(s.title)}${s.bias?`<span class="ds-warn">${s.bias.lean==='left'?'좌편향 주의':'우편향 주의'}</span>`:''}</span><span class="ds-rm">${ps.slice(0,3).map(x=>`<span data-tip="${E(x.press||'')}">${logo(x.press,x.url,'sm')}</span>`).join('')}${g.more.length?`<em>외 ${g.more.length}곳</em>`:`<em>${E(s.press||'')}</em>`}</span></a></li>`};
+  const row=g=>{const s=g.s,ps=[s,...g.more];return`<li><a href="${E(s.url)}" target="_blank" rel="noopener"><span class="ds-rt">${E(s.title)}${s.bias?`<span class="ds-warn">${s.bias.lean==='left'?'좌편향 주의':'우편향 주의'}</span>`:''}</span><span class="ds-rm">${ps.slice(0,3).map(x=>`<span data-tip="${E(PN(x.press||''))}">${logo(x.press,x.url,'sm')}</span>`).join('')}${g.more.length?`<em>외 ${g.more.length}곳</em>`:`<em>${E(PN(s.press||''))}</em>`}</span></a></li>`};
   return`<section id="related" class="anc ds-sec">${window.sec?sec('관련 기사','Related articles',`<span class="more">${S.length}건${G.length<S.length?` · 같은 내용 묶어 ${G.length}개`:''}</span>`,'news'):''}
   <ul class="ds-rel">${G.slice(0,6).map(row).join('')}</ul>${G.length>6?`<details class="ds-more"><summary><span>나머지 ${G.length-6}개 더 보기</span>${I('chevron-down')}</summary><ul class="ds-rel">${G.slice(6).map(row).join('')}</ul></details>`:''}
   ${S.some(s=>s.bias)?'<p class="fine">편향 표시는 기사 제목의 표현만 보고 자동으로 판단한 참고 정보예요. 틀릴 수 있어요.</p>':''}</section>`}
@@ -57,7 +60,8 @@ function why(p,i){const sh=(p.shared||[]).slice(0,3);const t=day(p.date);const e
   if(sh.length)return`<b>${E(sh[0])}</b>를 둘러싸고 ${w}에 먼저 불거진 일이에요.`;
   return`비슷한 주제로 ${w}에 화제가 됐던 사건이에요.`}
 function past(i){const P=i.past||[];if(!P.length)return'';
-  return`<section class="ds-sec">${window.sec?sec('과거와 연결된 사건','Linked from archive','','history'):''}<div class="ds-past">${P.map(p=>`<a class="ds-pc" href="${E(p.url)}" target="_blank" rel="noopener"><span class="ds-pd">${(t=>t?`<b>${ymd(t)}</b><small>${dago(t)}</small>`:'')(day(p.date))}</span><div><h4>${E(p.title)}</h4><p class="ds-why">${I('affiliate')}<span>${why(p,i)}</span></p><span class="ds-tags">${(p.shared||[]).map(n=>`<span class="ds-tag">${E(n)}</span>`).join('')}${p.rank?`<span class="ds-badge">그날 ${p.rank}위</span>`:''}</span></div></a>`).join('')}</div></section>`}
+  /* 과거와 연결된 사건: 날짜(연도·월일) | 제목·연관 설명·공통 키워드 — 한 줄씩, 박스 없이 */
+  return`<section class="ds-sec">${window.sec?sec('과거와 연결된 사건','Linked from archive','','history'):''}<div class="ds-past">${P.map(p=>{const t=day(p.date);return`<a class="ds-pc" href="${E(p.url)}" target="_blank" rel="noopener"><span class="ds-pd">${t?`<small>${t.getFullYear()}</small><b>${md(t)}</b><em>${dago(t)}</em>`:''}</span><div class="ds-pb"><h4>${E(p.title)}</h4><p class="ds-why">${why(p,i)}</p><span class="ds-pk">${(p.shared||[]).map(n=>`<span>#${E(n)}</span>`).join('')}${p.rank?`<span class="r">그날 ${p.rank}위</span>`:''}</span></div>${I('arrow-up-right')}</a>`}).join('')}</div></section>`}
 
 /* 이 사건의 흐름: 기간 필터 + 살아 움직이는 노드 타임라인 */
 function flow(i){const F=(i.flow||[]).map(f=>({...f,t:day(f.date)})).filter(f=>f.t);const P=(i.past||[]).map(p=>({...p,t:day(p.date)})).filter(p=>p.t);
@@ -73,19 +77,19 @@ function bindFlow(root){const sv=root.querySelector('.ds-rsv'),box=root.querySel
   /* 날짜별 한 줄 요약(접힘) → 펼치면 매체별 헤드라인(같은 내용은 한 줄로), 누르면 새 창 */
   function card(f,k){const G=dedupe(f.items),sum=f.meaning?sents(f.meaning)[0]||f.meaning:(G[0]?.s.title||'');
     return`<details class="ds-fg ${k===sel?'on':''}" data-k="${k}"${k===sel?' open':''}><summary><span class="ds-dot"></span><span class="ds-fd"><b>${md(f.t)}</b><small>${dago(f.t)}</small></span><span class="ds-fs">${emph(sum,terms)}</span><span class="ds-fn">${f.items.length}건</span>${I('chevron-down')}</summary>
-    <ul>${G.map(g=>`<li><a href="${E(g.s.url)}" target="_blank" rel="noopener"><span>${E(g.s.title)}</span><small>${[g.s,...g.more].slice(0,3).map(x=>`<span data-tip="${E(x.press||'')}">${logo(x.press,x.url,'sm')}</span>`).join('')}${g.more.length?`외 ${g.more.length}곳`:E(g.s.press||'')}</small></a></li>`).join('')}</ul></details>`}
+    <ul>${G.map(g=>`<li><a href="${E(g.s.url)}" target="_blank" rel="noopener"><span>${E(g.s.title)}</span><small>${[g.s,...g.more].slice(0,3).map(x=>`<span data-tip="${E(PN(x.press||''))}">${logo(x.press,x.url,'sm')}</span>`).join('')}${g.more.length?`외 ${g.more.length}곳`:E(g.s.press||'')}</small></a></li>`).join('')}</ul></details>`}
   function draw(){const lim=now-RG[cur]*864e5;const f=F.filter(x=>+x.t>=lim),p=P.filter(x=>+x.t>=lim);
     const all=[...f.map((x,k)=>({x,k,kind:'f'})),...p.map(x=>({x,kind:'p'}))].sort((a,b)=>a.x.t-b.x.t);
-    const W=box.clientWidth||320,H=box.clientHeight||170,pad=24;
+    const W=box.clientWidth||320,H=box.clientHeight||170,pad=44;
     const n0=all.length,gap=(W-2*pad)/Math.max(1,n0-1);const mx=Math.max(1,...f.map(x=>x.items.length));
-    all.forEach((a,j)=>{a.cx=n0===1?W/2:pad+gap*j;a.r=a.kind==='p'?6:7+8*Math.sqrt(a.x.items.length/mx);a.cy=a.kind==='p'?H*.74:H*.40+Math.sin(j*1.3)*H*.16});
+    all.forEach((a,j)=>{a.cx=n0===1?W/2:pad+gap*j;a.r=a.kind==='p'?6:7+8*Math.sqrt(a.x.items.length/mx);a.cy=a.kind==='p'?H*.64:H*.36+Math.sin(j*1.3)*H*.13});
     const ff=all.filter(a=>a.kind==='f');let path='';ff.forEach((a,j)=>{if(!j){path=`M${a.cx},${a.cy}`;return}const b=ff[j-1],m=(a.cx+b.cx)/2;path+=` C${m},${b.cy} ${m},${a.cy} ${a.cx},${a.cy}`});
     const links=all.filter(a=>a.kind==='p').map(a=>{const n=ff.reduce((q,b)=>Math.abs(b.cx-a.cx)<Math.abs(q.cx-a.cx)?b:q,ff[0]||a);return`<path class="ds-lk" d="M${a.cx},${a.cy} Q${(a.cx+n.cx)/2},${a.cy+24} ${n.cx},${n.cy}"/>`}).join('');
     const yrs=[];all.forEach((a,j)=>{const y=a.x.t.getFullYear();if(!j||all[j-1].x.t.getFullYear()!==y)yrs.push([a.cx,y])});
     const tk=yrs;const step='y';const sx=x=>x;
     sv.setAttribute('viewBox',`0 0 ${W} ${H}`);
     sv.innerHTML=`<defs><linearGradient id="dsg" x1="0" x2="1"><stop offset="0" stop-color="var(--ds-brand-2)" stop-opacity=".25"/><stop offset="1" stop-color="var(--ds-brand)"/></linearGradient></defs>
-      <line class="ds-ax" x1="${pad}" x2="${W-pad}" y1="${H-12}" y2="${H-12}"/>${yrs.map(([x,y])=>`<g class="ds-tk"><text x="${Math.max(pad,x)}" y="${H-1}">${y}</text></g>`).join('')}
+      <line class="ds-ax" x1="${pad}" x2="${W-pad}" y1="${H-26}" y2="${H-26}"/>${yrs.map(([x,y])=>`<g class="ds-tk"><text x="${Math.max(pad,x)}" y="${H-10}">${y}</text></g>`).join('')}
       ${links}<path class="ds-line" d="${path}" stroke="url(#dsg)"/><path class="ds-flowd" d="${path}"/>`;
     const pl=sv.querySelector('.ds-line');if(pl&&pl.getTotalLength){const L=pl.getTotalLength();pl.style.strokeDasharray=L;pl.style.strokeDashoffset=L;requestAnimationFrame(()=>{pl.style.transition='stroke-dashoffset 1s cubic-bezier(.3,.7,.2,1)';pl.style.strokeDashoffset=0})}
     nd.innerHTML=all.map((a,j)=>a.kind==='f'?`<button class="ds-n ${a.k===sel?'on':''} ${a.k===0?'now':''}" data-k="${a.k}" style="--x:${a.cx}px;--y:${a.cy}px;--r:${a.r}px;--d:${j*60}ms" aria-label="${ymd(a.x.t)} ${a.x.items.length}건"><i>${a.x.items.length}</i><span>${md(a.x.t)}</span></button>`
@@ -117,7 +121,7 @@ function bindFlow(root){const sv=root.querySelector('.ds-rsv'),box=root.querySel
     const yrs={};out.forEach(x=>(yrs[x.date.slice(0,4)]=yrs[x.date.slice(0,4)]||[]).push(x));const Y=Object.keys(yrs).sort().reverse();
     const el=document.createElement('div');el.className='ds-hist';
     el.innerHTML=`<h4>${I('history')}수년 전부터 이어진 기록 <small>${Y.at(-1)}년부터 ${out.length}건 · ${hit.map(h=>`<a href="${hit.length&&h[1].k==='p'?`history/?t=p&id=${h[0]}`:`history/?t=i&id=${h[0]}`}">${E(h[1].n)}</a>`).join(' · ')}</small></h4>
-      <ol>${Y.map(y=>`<li><b>${y}</b><div>${yrs[y].slice(0,3).map(x=>`<a href="${E(x.url)}" target="_blank" rel="noopener"><span class="ds-tag">${E(x.who)}</span>${E(x.title)}<small>${E(x.press||'')} · ${x.date.slice(5).replace('-','.')}</small></a>`).join('')}</div></li>`).join('')}</ol>`;
+      <ol>${Y.map(y=>`<li><b>${y}</b><div>${yrs[y].slice(0,3).map(x=>`<a href="${E(x.url)}" target="_blank" rel="noopener"><span class="ds-who">${E(x.who)}</span><span class="ds-ht">${E(x.title)}</span><small>${E(x.press||'')} · ${x.date.slice(5).replace('-','.')}</small></a>`).join('')}</div></li>`).join('')}</ol>`;
     (box.closest('.ds-sec')||root).appendChild(el)}catch(e){}}
 }
 

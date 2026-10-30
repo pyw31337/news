@@ -70,13 +70,13 @@ def normalize_type(entity):
 def wikidata_files(title):
     """위키백과 문서에서 QID를 찾은 뒤 로고(P154), 대표사진(P18)을 얻는다."""
     if not title:
-        return '', ''
+        return '', '', ''
     api = 'https://ko.wikipedia.org/w/api.php?action=query&format=json&redirects=1&prop=pageprops&titles=' + urllib.parse.quote(title)
     pages = (get_json(api).get('query', {}).get('pages', {}) or {}).values()
     page = next(iter(pages), {})
     qid = (page.get('pageprops') or {}).get('wikibase_item')
     if not qid:
-        return '', ''
+        return '', '', ''
     item = get_json('https://www.wikidata.org/wiki/Special:EntityData/%s.json' % qid).get('entities', {}).get(qid, {})
     claims = item.get('claims') or {}
     def value(prop):
@@ -88,7 +88,8 @@ def wikidata_files(title):
             except Exception:
                 pass
         return ''
-    return value('P154'), value('P18')
+    # 원형·정사각 배지에는 심볼(P8972 작은 로고·아이콘), 가로로 긴 자리에는 심볼+글자 로고(P154)
+    return value('P154'), value('P18'), value('P8972')
 
 def resolve(entity, cache):
     name = entity.get('name', '')
@@ -98,12 +99,15 @@ def resolve(entity, cache):
         return {'url': 'https://flagcdn.com/w320/%s.png' % COUNTRIES[name], 'kind': 'flag'}
     key = '%s:%s' % (typ, name)
     cached = cache.get(key)
-    if isinstance(cached, dict) and cached.get('url'):
+    # 예전 캐시의 로고는 심볼·가로형 구분 전이라 한 번 다시 확인
+    if isinstance(cached, dict) and cached.get('url') and not (cached.get('kind') == 'logo' and 'symchk' not in cached):
         return cached
     wiki = entity.get('wiki') or {}
-    logo, photo = wikidata_files(wiki.get('title') or name)
-    if typ == 'org' and logo:
-        visual = {'url': commons_file(logo), 'kind': 'logo'}
+    logo, photo, sym = wikidata_files(wiki.get('title') or name)
+    if typ == 'org' and (logo or sym):
+        visual = {'url': commons_file(sym or logo), 'kind': 'logo'}
+        if logo: visual['wide'] = commons_file(logo)
+        visual['symchk'] = 1
     elif photo:
         visual = {'url': commons_file(photo), 'kind': 'portrait' if typ == 'person' else 'place'}
     else:
