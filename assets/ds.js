@@ -27,17 +27,24 @@ function logo(name,url,size){const f=(typeof PL!=='undefined'?PL:{})[name];const
 function press(i){const m=new Map();(i.sources||[]).forEach(s=>{const k=s.press||'';if(!k)return;(m.get(k)||m.set(k,[]).get(k)).push(s)});
   const L=[...m.entries()].sort((a,b)=>b[1].length-a[1].length);if(!L.length)return'';
   return`<section id="press" class="anc ds-sec">${window.sec?sec('보도 언론사','Who covered it',`<span class="more">${L.length}곳</span>`,'press'):''}
-  <div class="ds-pgrid" role="list">${L.map(([n,a],k)=>`<button class="ds-pt" data-k="${k}" aria-expanded="false" role="listitem">${logo(n,a[0].url,'lg')}<span class="ds-pn">${E(n)}</span>${a.length>1?`<span class="ds-cnt">${a.length}</span>`:''}</button>`).join('')}</div>
+  <div class="ds-pgrid" role="list">${L.map(([n,a],k)=>`<button class="ds-pt" data-k="${k}" aria-expanded="false" role="listitem" aria-label="${E(n)} ${a.length}건" data-tip="${E(n)}${a.length>1?' · '+a.length+'건':''}">${logo(n,a[0].url,'lg')}${a.length>1?`<span class="ds-cnt">${a.length}</span>`:''}</button>`).join('')}</div>
   <div class="ds-ppanel" hidden></div>
   <template class="ds-pdata">${L.map(([n,a],k)=>`<div data-k="${k}"><div class="ds-phd">${logo(n,a[0].url)}<b>${E(n)}</b><span>${a.length}건 보도</span></div><ul>${a.map(s=>`<li><a href="${E(s.url)}" target="_blank" rel="noopener">${E(s.title)}${I('arrow-up-right')}</a></li>`).join('')}</ul></div>`).join('')}</template></section>`}
 function bindPress(root){const g=root.querySelector('.ds-pgrid');if(!g)return;const p=root.querySelector('.ds-ppanel'),tp=root.querySelector('.ds-pdata');
   g.onclick=e=>{const b=e.target.closest('.ds-pt');if(!b)return;const on=b.getAttribute('aria-expanded')==='true';g.querySelectorAll('.ds-pt').forEach(x=>x.setAttribute('aria-expanded','false'));
     if(on){p.hidden=true;return}b.setAttribute('aria-expanded','true');p.innerHTML=tp.content.querySelector(`[data-k="${b.dataset.k}"]`).outerHTML;p.hidden=false;p.classList.remove('in');void p.offsetWidth;p.classList.add('in')}}
 
-/* 관련 기사: 텍스트형, 3개만 보이고 나머지는 접힘 */
-function related(i){const S=i.sources||[];const row=s=>`<li><a href="${E(s.url)}" target="_blank" rel="noopener"><span class="ds-rt">${E(s.title)}</span><span class="ds-rm">${logo(s.press,s.url,'sm')}${E(s.press||'')}${s.bias?`<span class="ds-badge warn">${s.bias.lean==='left'?'좌편향 주의':'우편향 주의'}</span>`:''}</span></a></li>`;
-  return`<section id="related" class="anc ds-sec">${window.sec?sec('관련 기사','Related articles',`<span class="more">${S.length}건</span>`,'news'):''}
-  <ul class="ds-rel">${S.slice(0,3).map(row).join('')}</ul>${S.length>3?`<details class="ds-more"><summary><span>나머지 ${S.length-3}건 더 보기</span>${I('chevron-down')}</summary><ul class="ds-rel">${S.slice(3).map(row).join('')}</ul></details>`:''}
+/* 같은 내용 기사 묶기: 괄호·기호를 뺀 제목의 두 글자 조각이 60% 이상 겹치면 같은 기사로 봄(통신사 기사를 여러 매체가 그대로 실은 경우 등) */
+const normT=t=>String(t||'').replace(/\[[^\]]*\]|\([^)]*\)|【[^】]*】|<[^>]*>/g,'').replace(/[^가-힣A-Za-z0-9]/g,'');
+const bi=t=>{const n=normT(t),o=new Set();for(let k=0;k<n.length-1;k++)o.add(n.slice(k,k+2));return o};
+const sim=(a,b)=>{let c=0;a.forEach(x=>{if(b.has(x))c++});return c/Math.max(1,Math.min(a.size,b.size))};
+function dedupe(S){const G=[];S.forEach(s=>{const b=bi(s.title);const g=G.find(g=>sim(g.b,b)>=.6);if(g)g.more.push(s);else G.push({s,b,more:[]})});return G}
+window.NBDedupe=dedupe;
+/* 관련 기사: 배경 없는 한 줄(왼쪽 제목, 오른쪽 언론사 로고), 같은 내용은 한 줄로 묶고 '외 N곳' */
+function related(i){const S=i.sources||[],G=dedupe(S);
+  const row=g=>{const s=g.s,ps=[s,...g.more];return`<li><a href="${E(s.url)}" target="_blank" rel="noopener"><span class="ds-rt">${E(s.title)}${s.bias?`<span class="ds-warn">${s.bias.lean==='left'?'좌편향 주의':'우편향 주의'}</span>`:''}</span><span class="ds-rm">${ps.slice(0,3).map(x=>`<span data-tip="${E(x.press||'')}">${logo(x.press,x.url,'sm')}</span>`).join('')}${g.more.length?`<em>외 ${g.more.length}곳</em>`:`<em>${E(s.press||'')}</em>`}</span></a></li>`};
+  return`<section id="related" class="anc ds-sec">${window.sec?sec('관련 기사','Related articles',`<span class="more">${S.length}건${G.length<S.length?` · 같은 내용 묶어 ${G.length}개`:''}</span>`,'news'):''}
+  <ul class="ds-rel">${G.slice(0,6).map(row).join('')}</ul>${G.length>6?`<details class="ds-more"><summary><span>나머지 ${G.length-6}개 더 보기</span>${I('chevron-down')}</summary><ul class="ds-rel">${G.slice(6).map(row).join('')}</ul></details>`:''}
   ${S.some(s=>s.bias)?'<p class="fine">편향 표시는 기사 제목의 표현만 보고 자동으로 판단한 참고 정보예요. 틀릴 수 있어요.</p>':''}</section>`}
 
 /* 과거와 연결된 사건: 건별 한 줄 연관 설명 */
@@ -63,9 +70,10 @@ function flow(i){const F=(i.flow||[]).map(f=>({...f,t:day(f.date)})).filter(f=>f
 function bindFlow(root){const sv=root.querySelector('.ds-rsv'),box=root.querySelector('.ds-river'),nd=root.querySelector('.ds-nodes'),ls=root.querySelector('.ds-flist'),sm=root.querySelector('.ds-fsum'),sg=root.querySelector('.ds-seg');if(!sv||!window.__dsFlow)return;
   const {F,P,terms}=window.__dsFlow;const now=Date.now();const RG={'1m':31,'6m':183,'1y':366,all:1e5};let cur='all',sel=0;
   const th=(u)=>u?`<span class="ds-fth" style="background-image:url('${E(u)}')"></span>`:'';
-  function card(f,k){return`<article class="ds-fg ${k===sel?'on':''}" data-k="${k}"><header><span class="ds-dot"></span><b>${ymd(f.t)}</b><small>${dago(f.t)}</small><span class="ds-badge">${f.items.length}건</span></header>
-    ${f.meaning?`<div class="ds-mean">${rich(f.meaning,terms,'s')}</div>`:''}
-    <ul>${f.items.map((x,j)=>`<li class="${j===0?'top':''}"><a href="${E(x.url)}" target="_blank" rel="noopener">${j===0?th(x.img):''}<span><b>${E(x.title)}</b>${x.press?`<small>${logo(x.press,x.url,'sm')}${E(x.press)}</small>`:''}</span></a></li>`).join('')}</ul></article>`}
+  /* 날짜별 한 줄 요약(접힘) → 펼치면 매체별 헤드라인(같은 내용은 한 줄로), 누르면 새 창 */
+  function card(f,k){const G=dedupe(f.items),sum=f.meaning?sents(f.meaning)[0]||f.meaning:(G[0]?.s.title||'');
+    return`<details class="ds-fg ${k===sel?'on':''}" data-k="${k}"${k===sel?' open':''}><summary><span class="ds-dot"></span><span class="ds-fd"><b>${md(f.t)}</b><small>${dago(f.t)}</small></span><span class="ds-fs">${emph(sum,terms)}</span><span class="ds-fn">${f.items.length}건</span>${I('chevron-down')}</summary>
+    <ul>${G.map(g=>`<li><a href="${E(g.s.url)}" target="_blank" rel="noopener"><span>${E(g.s.title)}</span><small>${[g.s,...g.more].slice(0,3).map(x=>`<span data-tip="${E(x.press||'')}">${logo(x.press,x.url,'sm')}</span>`).join('')}${g.more.length?`외 ${g.more.length}곳`:E(g.s.press||'')}</small></a></li>`).join('')}</ul></details>`}
   function draw(){const lim=now-RG[cur]*864e5;const f=F.filter(x=>+x.t>=lim),p=P.filter(x=>+x.t>=lim);
     const all=[...f.map((x,k)=>({x,k,kind:'f'})),...p.map(x=>({x,kind:'p'}))].sort((a,b)=>a.x.t-b.x.t);
     const W=box.clientWidth||320,H=box.clientHeight||170,pad=24;
@@ -88,7 +96,7 @@ function bindFlow(root){const sv=root.querySelector('.ds-rsv'),box=root.querySel
     ls.innerHTML=f.map(x=>card(x,F.indexOf(x))).join('');
     nd.querySelectorAll('.ds-n').forEach(b=>b.classList.toggle('on',+b.dataset.k===sel&&!b.classList.contains('past')))}
   sg.onclick=e=>{const b=e.target.closest('button');if(!b)return;cur=b.dataset.r;sg.querySelectorAll('button').forEach(x=>x.setAttribute('aria-selected',x===b));draw()};
-  nd.onclick=e=>{const b=e.target.closest('button.ds-n');if(!b)return;sel=+b.dataset.k;nd.querySelectorAll('.ds-n').forEach(x=>x.classList.toggle('on',x===b));ls.querySelectorAll('.ds-fg').forEach(x=>x.classList.toggle('on',+x.dataset.k===sel));const c=ls.querySelector(`.ds-fg[data-k="${sel}"]`);c&&c.scrollIntoView({behavior:'smooth',block:'nearest'})};
+  nd.onclick=e=>{const b=e.target.closest('button.ds-n');if(!b)return;sel=+b.dataset.k;nd.querySelectorAll('.ds-n').forEach(x=>x.classList.toggle('on',x===b));ls.querySelectorAll('.ds-fg').forEach(x=>x.classList.toggle('on',+x.dataset.k===sel));const c=ls.querySelector(`.ds-fg[data-k="${sel}"]`);if(c){c.open=true;c.scrollIntoView({behavior:'smooth',block:'nearest'})}};
   draw();let rt;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(draw,150)}).observe(box);
   hist();
   /* 수십 년 기록(history 브랜치) 이어붙이기: 이슈 인물·반복 이슈의 과거 기사 → 과거 노드 + 연도별 목록 */
@@ -124,7 +132,7 @@ function opinion(i){const op=i.opinion,aop=(i.ai||{}).opinion||{};if(!op)return'
   const W=op.words||[],wm=(W[0]||[0,1])[1];
   return`<div class="ds-op">
    <div class="ds-kpi"><div class="big"><span class="lab">${I('message-2')}모인 댓글</span><b>${op.total.toLocaleString()}</b><small>기사 ${op.articles}개에서</small></div>
-    <div class="ld"><span class="lab">공감 vs 비공감</span><div class="ds-ldbar"><i style="width:${lr}%"></i></div><div class="ds-ldn"><span class="up">${I('thumb-up')}<b>${op.like.toLocaleString()}</b></span><span class="dn"><b>${op.dislike.toLocaleString()}</b>${I('thumb-down')}</span></div><small>상위 댓글 공감 비율 <b>${lr}%</b></small></div></div>
+    <div class="ld"><span class="lab">공감 vs 비공감</span><div class="ds-vs" aria-label="공감 ${lr}% 비공감 ${100-lr}%"><div class="l" style="flex:${Math.max(lr,8)}"><b>${lr}%</b></div><div class="r" style="flex:${Math.max(100-lr,8)}"><b>${100-lr}%</b></div></div><div class="ds-ldn"><span class="up">${I('thumb-up')}공감 <b>${op.like.toLocaleString()}</b></span><span class="dn">비공감 <b>${op.dislike.toLocaleString()}</b>${I('thumb-down')}</span></div><small>상위 댓글 공감 비율 <b>${lr}%</b></small></div></div>
    ${aop.summary?`<div class="ds-aisum">${rich(aop.summary,terms)}</div>`:''}
    ${st.length?`<h5 class="ds-h5">입장 분포 <small>공감 많은 댓글 기준</small></h5><div class="ds-stance">${donut(st,col)}<ul>${st.map((s,k)=>`<li style="--c:${col[k%4]}"><div class="h"><b>${E(s.label)}</b><em>${s.share}%</em></div><div class="bar"><i style="width:${s.share}%"></i></div><p>${E(s.desc)}</p></li>`).join('')}</ul></div>`:''}
    ${g||ages.length?`<div class="ds-demo">${g?`<div class="ds-gen"><h5 class="ds-h5">성별</h5><div class="row m"><span class="lb">남성</span><span class="pg">${ppl(Math.round(g.male/10),'m')}</span><b>${g.male}%</b></div><div class="row f"><span class="lb">여성</span><span class="pg">${ppl(Math.round(g.female/10),'f')}</span><b>${g.female}%</b></div></div>`:''}

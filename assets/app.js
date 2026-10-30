@@ -215,7 +215,7 @@ function issue(id){
   const ents=i.entities.map(ent).filter(Boolean),terms=[...i.entities,...i.keywords];
   app.innerHTML=`<div class="bkrow"><a class="back" href="./">${NBI('arrow-left')} 오늘의 TOP 10</a>${shareBtn()}</div>
   <section class="dgal" aria-label="이 사건 사진"></section>
-  <article class="dhead card ds-head"><div class="bd"><div class="ov"><span class="ds-badge cat c-${i.category}">${ic(i.category)}${i.category}</span><span class="ds-badge rank">오늘의 이슈 <b>${i.rank}</b>위</span></div><h1 class="ds-title">${esc(i.title)}</h1>
+  <article class="dhead card ds-head"><div class="bd"><div class="dh-top"><span class="dh-rank" aria-label="오늘의 이슈 ${i.rank}위"><b>${String(i.rank).padStart(2,'0')}</b><small>오늘의<br>이슈</small></span><span class="cat ${i.category}">${i.category}</span></div><h1 class="ds-title">${esc(i.title)}</h1>
     <div class="schips light">${schips(i,'')}</div>
     <div class="chips">${i.entities.map(n=>chipE(n)).join('')}${i.keywords.filter(k=>!i.entities.includes(k)).slice(0,4).map(k=>`<span class="ds-tag">#${esc(k)}</span>`).join('')}</div></div></article>
   <nav class="toc ds-tabs"><a href="#s-sum">${ic('news')}<span>요약</span></a><a href="#s-flow">${ic('clock')}<span>흐름</span></a><a href="#related">${ic('news')}<span>관련 기사</span></a><a href="#press">${ic('press')}<span>언론사</span></a><a href="#comments">${ic('chat')}<span>댓글</span></a></nav>

@@ -118,15 +118,16 @@ window.nbDeck=function(root){
 
 /* ---------- 상세 상단 갤러리 (큰 사진 1 + 2×2 + 사진 +N장) ---------- */
 window.nbGallery=async function(el,list){if(!el)return;
-  const W=el.clientWidth||360,mob=W<640;const bigW=mob?W:W*.5,smW=mob?W:W*.25;
+  const W=el.clientWidth||el.parentElement?.clientWidth||innerWidth,mob=W<640;const bigW=mob?W:W*.5,smW=mob?W:W*.25;
   const chk=await Promise.all(list.map(async g=>({g,n:await natural(g.img)})));
   const ok=chk.filter(x=>x.n.w>=need(smW)).sort((a,b)=>((b.g.q||0)-(a.g.q||0))||(b.n.w-a.n.w));/* 품질 점수순(docs/QUALITY.md), 같으면 큰 사진 */
   const big=ok.findIndex(x=>x.n.w>=need(bigW));
   if(big<0){el.remove();document.querySelector('.dhead')?.classList.add('noimg');return}
   const G=[ok[big],...ok.filter((_,k)=>k!==big)].map(x=>x.g);el._G=G;
-  const tile=(g,k,cls='')=>`<button type="button" class="gt ${cls}" data-k="${k}" aria-label="사진 ${k+1} 크게 보기"><img src="${g.img}" alt="${(g.press||'')} 사진" loading="${k?'lazy':'eager'}" decoding="async"></button>`;
-  el.innerHTML=mob?`<div class="gm" role="list">${G.map((g,k)=>tile(g,k)).join('')}</div><span class="gcnt"><b>1</b> / ${G.length}</span>${G.length>1?`<button type="button" class="gmore" data-k="0">사진 ${G.length}장 모두 보기</button>`:''}`
-   :`<div class="gp n${Math.min(5,G.length)}">${tile(G[0],0,'big')}${G.slice(1,5).map((g,k)=>tile(g,k+1)).join('')}</div>${G.length>1?`<button type="button" class="gmore" data-k="0">${ICO.photo}사진 +${G.length}장</button>`:''}`;
+  /* 렛츠캠핑식 격자(2026-10-30): 큰 사진 1 + 작은 사진(PC 4, 모바일 3), 마지막 칸에 '+N장'. 누르면 라이트박스(좌우로 끌어 넘김) */
+  const tile=(g,k,cls='',more=0)=>`<button type="button" class="gt ${cls}" data-k="${k}" aria-label="사진 ${k+1} 크게 보기"><img src="${g.img}" alt="${(g.press||'')} 사진" loading="${k?'lazy':'eager'}" decoding="async">${more?`<span class="gplus">+${more}</span>`:''}</button>`;
+  const ns=mob?3:4,sm=G.slice(1,1+ns),rest=G.length-1-sm.length;
+  el.innerHTML=`<div class="gp ${mob?'mob':''} n${Math.min(ns+1,G.length)}">${tile(G[0],0,'big')}${sm.map((g,k)=>tile(g,k+1,'',k===sm.length-1&&rest>0?rest:0)).join('')}</div>${G.length>1?`<button type="button" class="gmore" data-k="0">${ICO.photo}사진 ${G.length}장 모두 보기</button>`:''}`;
   el.classList.add('on');
   const gm=el.querySelector('.gm');if(gm)gm.addEventListener('scroll',()=>{el.querySelector('.gcnt b').textContent=Math.round(gm.scrollLeft/gm.clientWidth)+1},{passive:true});
   el.addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b)lightbox(G,+b.dataset.k,b)})};

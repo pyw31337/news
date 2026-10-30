@@ -128,7 +128,10 @@ function itemOf(t,id){if(t==='issue'){const i=D.issues.find(x=>x.id===id);return
   if(t==='kw')return{title:id,href:kh(id)};if(t==='chart')return{title:id,href:'market'};return{title:id}}
 function toggleSave(t,id,kind){const k=key(t,id);const s=M.saves[k]||(M.saves[k]=Object.assign({t,id,at:Date.now(),like:0,scrap:0,tags:[],col:null,note:''},itemOf(t,id)||{}));s[kind]=s[kind]?0:1;s.u=Date.now();if(!s.like&&!s.scrap&&!s.note)delete M.saves[k];save();return M.saves[k]}
 const st=(t,id)=>M.saves[key(t,id)]||{};
-function actBar(t,id){const s=st(t,id),f=M.follows[key(t,id)];return`<div class="myact" data-t="${t}" data-id="${E(id)}"><button data-a="like" class="${s.like?'on':''}">${SV(P.heart)}좋아요</button><button data-a="scrap" class="${s.scrap?'on':''}">${SV(P.bm)}스크랩</button>${t!=='chart'?`<button data-a="follow" class="${f?'on':''}">${SV(P.bell)}${f?'팔로잉':'팔로우'}</button>`:''}<button data-a="note" class="${s.note?'on':''}">${SV(P.plus)}메모</button></div>`}
+function actBar(t,id){const s=st(t,id),f=M.follows[key(t,id)];
+  /* 좋아요·스크랩·팔로우는 아이콘만(말풍선으로 이름), 메모는 성격이 달라 따로 '나만의 메모' 버튼으로 */
+  const b=(a,on,ic,lab)=>`<button data-a="${a}" class="${on?'on':''}" aria-label="${lab}" aria-pressed="${on?'true':'false'}" data-tip="${lab}">${SV(ic)}</button>`;
+  return`<div class="myact" data-t="${t}" data-id="${E(id)}"><span class="myic">${b('like',s.like,P.heart,s.like?'좋아요 취소':'좋아요')}${b('scrap',s.scrap,P.bm,s.scrap?'스크랩 취소':'스크랩')}${t!=='chart'?b('follow',f,P.bell,f?'팔로우 취소':'새 소식 팔로우'):''}</span><button data-a="note" class="memo ${s.note?'on':''}">${SV(NBU('pencil'))}<span>${s.note?'내 메모 보기':'나만의 메모 남기기'}</span></button></div>`}
 document.addEventListener('click',e=>{const b=e.target.closest('.myact button,.mini-heart');if(!b)return;e.preventDefault();e.stopPropagation();
   const w=b.closest('[data-t]'),t=w.dataset.t,id=w.dataset.id,a=b.dataset.a||'like';
   if(a==='follow'){const k=key(t,id);if(M.follows[k])delete M.follows[k];else M.follows[k]={t,id,at:Date.now(),title:(itemOf(t,id)||{}).title||id};save();toast(M.follows[k]?'팔로우했어요. 새 소식이 오면 알려드릴게요':'팔로우를 해제했어요')}
