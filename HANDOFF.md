@@ -38,7 +38,7 @@
 
 ## 3. 아키텍처
 - **프런트:** 정적 사이트(GitHub Pages, `main`). `index.html` + `assets/*` (app.js 본체, nb2 상세, ds 디자인 시스템, deck 카드덱, comic2 만화, econ/gov 마켓·정부, my 내 서재·내비·동기화, fun 퀴즈/만화/카드뉴스, icons 스프라이트, sharp 사진 규칙). `persons/` 인물 아카이브 화면, `politicians/` 정치인, `admin/` 진단.
-- **서비스워커 `sw.js`:** 캐시 이름 `nb-vNN`(2026-10-30 기준 **nb-v62** → 다음은 nb-v63부터, 커밋 직전 `grep nb-v sw.js`로 재확인). `sw.js` SHELL의 `?v=`는 `index.html`과 항상 같게. **화면 파일을 바꾸면 반드시 다음 번호로 올리고**, 바꾼 파일의 `?v=` 쿼리도 올릴 것. 동시 작업자가 있으므로 커밋 전 `git pull --rebase` 후 **비어 있는 다음 번호**를 사용.
+- **서비스워커 `sw.js`:** 캐시 이름 `nb-vNN`(2026-10-30 기준 **nb-v63** → 다음은 nb-v64부터, 커밋 직전 `grep nb-v sw.js`로 재확인). `sw.js` SHELL의 `?v=`는 `index.html`과 항상 같게. **화면 파일을 바꾸면 반드시 다음 번호로 올리고**, 바꾼 파일의 `?v=` 쿼리도 올릴 것. 동시 작업자가 있으므로 커밋 전 `git pull --rebase` 후 **비어 있는 다음 번호**를 사용.
 - **수집 파이프라인 (`scripts/`):** `collect.py`(네이버 랭킹·구글뉴스·트렌드 → 이슈 TOP10) → `enrich.py`(흐름·여론·시장·단어·과거 연결·AI 해석) → `db.py`(기사 DB·엔티티·사진 WebP 백필) → `fun.py`(퀴즈·만화·카드뉴스) 등. `classify.py` 카테고리 분류, `press_logos.py` 언론사 로고, `kr_gov.py`/`ecos_series.py` 시장·경제, `politicians/` 국회 DB, `archive/build.py` 인물 아카이브.
 - **Cloudflare Worker** `newsboard-sync` (https://newsboard-sync.pyw213.workers.dev, 소스 `worker/`): 로그인·동기화 API, 아카이브 API. 계정 pyw213@naver.com (박스에 wrangler 로그인됨).
 
@@ -161,7 +161,7 @@
 2. ~~메뉴 화면 벤치마킹 시안 → 선택안 적용~~(번호 섹션형 메뉴 적용됨, 10.30 빠진 메뉴 6개 연결)
 3. ~~민심·영상 배포~~(완료)
 4. 인물 아카이브 정치인 전원 완료(가속 검토) → 관계도·평생 타임라인 고도화 → 연예인·인플루언서 확장
-5. 과거 TOP10 소급(타임라인 1년 필터를 실제로 채우기)
+5. 과거 TOP10 소급: 10.30 시작 — `archive-backfill.yml`(매시 52분, 25일씩)이 `scripts/history/backfill_top10.py`로 최근 1년을 복원(구글뉴스 기간 검색 → 같은 사건 묶기 → 보도 언론사 수 순, `restored:true`, 아카이브 화면에 안내 문구). 약 15시간이면 1년 치
 6. ~~주식 일별 데이터 복구~~(완료), 언론사 로고 확충(10.30: 이름 색인 복구 + 64px 기준으로 확대)
 7. ~~재미 공유 이미지 글꼴 수정, 재미 콘텐츠 날짜별 누적 보관~~(완료: `data/fun/YYYY-MM-DD.json`, 배우기 화면 '지난 기록')
 8. OAuth 연결(키 수령 후), 알림 고도화
