@@ -126,7 +126,7 @@ const key=(t,id)=>t+':'+id;
 function itemOf(t,id){if(t==='issue'){const i=D.issues.find(x=>x.id===id);return i&&{title:i.title,img:i.image,cat:i.category,href:'issue/'+id}}
   if(t==='entity'){const e=D.entities.find(x=>x.name===id);return{title:id,img:e?.wiki?.thumb,cat:e?.type,href:eh(id)}}
   if(t==='kw')return{title:id,href:kh(id)};if(t==='chart')return{title:id,href:'market'};return{title:id}}
-function toggleSave(t,id,kind){const k=key(t,id);const s=M.saves[k]||(M.saves[k]=Object.assign({t,id,at:Date.now(),like:0,scrap:0,tags:[],col:null,note:''},itemOf(t,id)||{}));s[kind]=s[kind]?0:1;s.u=Date.now();if(!s.like&&!s.scrap&&!s.note)delete M.saves[k];save();return M.saves[k]}
+function toggleSave(t,id,kind){const k=key(t,id);const s=M.saves[k]||(M.saves[k]=Object.assign({t,id,at:Date.now(),like:0,scrap:0,tags:[],col:null,note:''},itemOf(t,id)||{}));s[kind]=s[kind]?0:1;s.u=Date.now();if(!s.like&&!s.scrap&&!s.note)delete M.saves[k];save();try{document.dispatchEvent(new CustomEvent('nb:save',{detail:{t,id,kind,on:!!s[kind],item:itemOf(t,id)}}))}catch(e){}return M.saves[k]}
 const st=(t,id)=>M.saves[key(t,id)]||{};
 function actBar(t,id){const s=st(t,id),f=M.follows[key(t,id)];
   /* 좋아요·스크랩·알림·메모: 같은 종류의 개인 기능이라 같은 모양(아이콘 + 짧은 글자, 배경 없음)으로 한 묶음 */

@@ -60,6 +60,10 @@ function tipper(el){let t=el.querySelector('.dtip');if(!t){t=document.createElem
   const show=e=>{const x=e.target.closest('[data-t]');if(!x||!el.contains(x)){t.hidden=true;return}t.textContent=x.dataset.t;t.hidden=false;
     const r=el.getBoundingClientRect(),b=x.getBoundingClientRect();t.style.left=Math.min(r.width-t.offsetWidth-4,Math.max(4,b.left-r.left+b.width/2-t.offsetWidth/2))+'px';t.style.top=(b.top-r.top-t.offsetHeight-6)+'px'};
   el.onpointerover=show;el.onclick=show;el.onpointerleave=()=>t.hidden=true}
+// 다른 메뉴(admin/tabs.js)에서 같은 그래프 부품을 씀
+window.NBD={E,N,K,AGO,LV,bars,stackBars,multiples,stack,prog,spark,trend,tipper,col,md,aik,flags,
+  get range(){return RANGE},setRange(n){RANGE=n;try{localStorage.setItem('nb-dash-range',n)}catch(e){}},
+  tog:()=>`<span class="rg">${[7,30].map(n=>`<button type="button" data-range="${n}" class="${RANGE===n?'on':''}">${n}일</button>`).join('')}</span>`};
 let S0=null;
 window.renderDash=async function(el){if(!el)return;
   if(!S0){el.innerHTML='<p class="mute">수집 현황을 불러오는 중…</p>';
