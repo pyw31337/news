@@ -42,13 +42,13 @@ function aptHTML(){if(!APT||!APT.trade)return'';const t=aptSeries('trade',GU),r=
 function stockSeries(code){const D=(STK&&STK.days)||{};return Object.keys(D).sort().filter(d=>D[d][code]).map(d=>[d.slice(4,6)+'.'+d.slice(6),D[d][code][0]])}
 function stocksHTML(){const D=(STK&&STK.days)||{},ds=Object.keys(D).sort();if(ds.length<2)return'';const last=D[ds[ds.length-1]];
   const top=Object.entries(last).sort((a,b)=>b[1][2]-a[1][2]).slice(0,12);
-  return`<section class="govstk">${sec('시가총액 상위 종목','Top KRX stocks','<span class="more">금융위원회 주식시세</span>','coin')}
+  return`<section class="govstk">${sec('시가총액 상위 종목','Top KRX stocks','<span class="more">'+(STK.src==='naver'?'네이버 금융':'금융위원회')+' 시세</span>','coin')}
   <p class="lede sm">시가총액(회사 전체 몸값)이 큰 순서예요. 큰 회사 주가는 지수 전체를 끌고 가서, 이 종목들의 흐름이 곧 ‘한국 증시의 날씨’예요.</p>
   <div class="stkg">${top.map(([c,v])=>{const s=stockSeries(c).map(x=>x[1]),n=(STK.names[c]||[c])[0];return`<a class="card stk" href="entity/${encodeURIComponent(n)}"><b>${e_(n)}</b><span>${fmt(v[0])}원</span><em class="${v[1]>0?'up':v[1]<0?'down':''}">${v[1]>0?'+':''}${v[1].toFixed(2)}%</em>${typeof line==='function'?line(s.slice(-60),120,30,v[1]<0?'#2f6bff':'#ff4d2e'):''}<small>시총 ${fmt(v[2]/10000)}조</small></a>`}).join('')}</div>
   <p class="fine">${ds[ds.length-1].slice(4,6)}.${ds[ds.length-1].slice(6)} 종가 기준(하루 늦게 반영돼요). 투자 권유가 아닙니다.</p></section>`}
 function entStock(n){if(!STK||!STK.names)return'';const k=String(n||'').replace(/\s/g,'');const c=Object.keys(STK.names).find(c=>STK.names[c][0]===k||STK.names[c][0]===k.replace(/㈜|\(주\)/g,''));if(!c)return'';
   const s=stockSeries(c);if(s.length<2)return'';const a=s[0][1],b=s[s.length-1][1],ch=(b/a-1)*100;
-  return`<section class="govstk">${sec('주가 흐름','Stock price','<span class="more">금융위원회 주식시세</span>','coin')}<div class="card pad"><div class="gkpi"><div><small>최근 종가</small><b>${fmt(b)}원</b><em>${e_(s[s.length-1][0])}</em></div><div class="${ch>0?'up':'down'}"><small>${s.length}거래일 동안</small><b>${ch>0?'+':''}${ch.toFixed(1)}%</b></div></div>${chart(s,{col:ch<0?'#2f6bff':'#ff4d2e'})}<p class="fine">기사가 많이 나온 날과 주가가 크게 움직인 날을 비교해 보면 뉴스의 영향력을 가늠할 수 있어요. 투자 권유가 아닙니다.</p></div></section>`}
+  return`<section class="govstk">${sec('주가 흐름','Stock price','<span class="more">'+(STK.src==='naver'?'네이버 금융':'금융위원회')+' 시세</span>','coin')}<div class="card pad"><div class="gkpi"><div><small>최근 종가</small><b>${fmt(b)}원</b><em>${e_(s[s.length-1][0])}</em></div><div class="${ch>0?'up':'down'}"><small>${s.length}거래일 동안</small><b>${ch>0?'+':''}${ch.toFixed(1)}%</b></div></div>${chart(s,{col:ch<0?'#2f6bff':'#ff4d2e'})}<p class="fine">기사가 많이 나온 날과 주가가 크게 움직인 날을 비교해 보면 뉴스의 영향력을 가늠할 수 있어요. 투자 권유가 아닙니다.</p></div></section>`}
 /* ---------- 지진·기상특보 신호(오늘 화면 위쪽, 최근 것만) ---------- */
 function alertHTML(){if(!AL)return'';const now=Date.now(),age=t=>(now-new Date(t.replace(' ','T')+':00+09:00'))/36e5;
   const q=(AL.quakes||[]).filter(x=>age(x.t)<48&&(x.domestic||x.mag>=6));

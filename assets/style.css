@@ -565,3 +565,9 @@ b.up{color:#e2321b}b.down{color:#2f6bff}
 @media (max-width:640px){.comic{grid-template-columns:1fr}.cpan{min-height:250px}.lhome{grid-template-columns:1fr 1fr}.lh.quiz{grid-column:1/-1;min-height:120px}.ltiles{grid-template-columns:1fr}.lt{min-height:120px}.lmasc{width:110px}.lhero{padding:16px}.lhero h1{font-size:1.3rem}}
 @media (max-width:360px){.lstat{grid-template-columns:repeat(2,1fr)}.lmasc{display:none}.qq{font-size:1.12rem}.ox span{font-size:2.2rem}.dk.hook h2{font-size:1.4rem}.dk{padding:18px 14px}.dbody{font-size:.95rem}.bub{font-size:.86rem}}
 .brand{white-space:nowrap;flex:none}.top{min-width:0}
+/* 배우기: 지난 기록 */
+.lpast{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.lpd{flex:none;display:grid;gap:2px;min-width:118px;padding:10px 12px;border-radius:14px;background:#fff;box-shadow:var(--sh);color:var(--ink)}
+.lpd b{font-size:1.05rem;font-weight:900;letter-spacing:-.3px}.lpd small{font-size:.72rem;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px}.lpd em{font-style:normal;font-size:.66rem;color:var(--mute)}
+.lpd.on{background:var(--ink);color:#fff}.lpd.on small,.lpd.on em{color:#c9cee0}
+.lpast-on{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px;padding:10px 14px;border-radius:12px;background:#fff4e2;color:var(--ink);font-size:.86rem}.lpast-on a{font-weight:800;color:var(--acc);display:inline-flex;align-items:center;gap:2px}

@@ -129,6 +129,7 @@ def datagokr(key):
 
 # 4) 법원·헌재 공식 보도자료 목록(제목·날짜·링크만), 5) 대법관·헌법재판관 경력(Wikidata, CC0)
 PRESS = {'대법원 보도자료': 'https://www.scourt.go.kr/portal/news/NewsListAction.work?gubun=4', '헌법재판소 보도자료': 'https://www.ccourt.go.kr/site/kor/ex/bbs/List.do?cbIdx=1118'}
+NOISE = re.compile(r'(업무추진비|예산|채용|입찰|공고|인사발령|행사 안내|정보공개|홍보대사)')  # 판결·결정과 무관한 행정 공지
 def press():
     for name, url in PRESS.items():
         if not probe(name, url): continue
@@ -142,7 +143,7 @@ def press():
             pairs = tit or re.findall(r'<a[^>]+href=[\'"]([^\'"]+)[\'"][^>]*>([^<]{15,300})</a>', t)
             for h, title in pairs:
                 title = re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', '', title))).strip().rstrip('.').strip()
-                if not 15 <= len(title) <= 140 or SEX.search(title): continue
+                if not 15 <= len(title) <= 140 or SEX.search(title) or NOISE.search(title): continue
                 if tit or re.search(r'(선고|판결|결정|보도|사건|재판|헌법)', title): rows.append({'title': title, 'url': up.urljoin(url, html.unescape(h))})
             p = f'{OUT}/press/{name}.json'; cur = jload(p, []); have = {r['url'] for r in cur}
             new = [dict(r, seen=NOW.strftime('%Y-%m-%d')) for r in rows if r['url'] not in have]; jsave(p, cur + new)
