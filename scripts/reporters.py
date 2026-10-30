@@ -164,4 +164,16 @@ def collect(issues, root, now, fetch, limit=8):
 
     for reporter in reporters:
         reporter.pop('seed_report', None)
-    return reporters
+    # GitHub Actions에서는 일부 포털 기사가 시간 초과될 수 있다. 마지막으로 검증된
+    # 공개 프로필 묶음을 보관해 두면, 기사 수집은 계속하면서 기자 데스크만 비는 일을 막는다.
+    cache_path = os.path.join(root, 'reporters.json')
+    if reporters:
+        json.dump(reporters, open(cache_path, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+        return reporters
+    try:
+        cached = json.load(open(cache_path, encoding='utf-8'))
+        if isinstance(cached, list):
+            return [r for r in cached if r.get('id') and r.get('name') and r.get('reports')][:limit]
+    except Exception:
+        pass
+    return []
