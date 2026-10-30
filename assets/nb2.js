@@ -58,11 +58,13 @@ function tkItems(v){const DD=gD(),GG=gG();if(!DD)return[];const R=S.region==='en
   if(v==='apt'){if(!APT){loadApt().then(()=>tkcur==='apt'&&renderTicker());return[{h:'market',t:'불러오는 중'}]}const T=APT.trade||{},ks=Object.keys(T).sort();let k=ks.at(-1);if(k&&Object.keys(T[k]).length<10&&ks.length>1)k=ks.at(-2);const M=T[k]||{};return Object.entries(M).sort((a,b)=>b[1][0]-a[1][0]).slice(0,12).map(([g])=>({h:'market',t:g+'구'}))}
   return[]}
 let tkcur='live';
-function renderTicker(){const el=document.getElementById('ticker');if(!el||!gD())return;tkcur=tkCur();const o=TK.find(x=>x.v===tkcur)||TK[0];const R=S.region==='en'&&gG();
-  let it=tkItems(o.v);if(!it.length){tkcur='live';it=tkItems('live')}const lab=tkcur==='live'&&R?'해외 트렌드':(TK.find(x=>x.v===tkcur)||TK[0]).label;
+function renderTicker(){const el=document.getElementById('ticker');if(!el||!gD())return;tkcur=tkCur();const o=TK.find(x=>x.v===tkcur)||TK[0];const R=S.region==='en'&&gG(),EN=R&&S.orig;
+  let it=tkItems(o.v);if(!it.length){tkcur='live';it=tkItems('live')}const lab=tkcur==='live'&&R?(EN?'Global trends':'해외 트렌드'):(TK.find(x=>x.v===tkcur)||TK[0]).label;
   const tk=it.map((x,i)=>`<a href="${x.h}"><b>${i+1}</b>${E(x.t)}${x.x||''}</a>`).join('');
-  el.innerHTML=`<button type="button" class="lab tksel" aria-haspopup="listbox" aria-expanded="false" aria-label="실시간 순위 종류 고르기 (지금: ${E(lab)})">${I(o.icon)}<span>${E(lab)}</span>${I('chevron-down')}</button><div class="tw" id="tw"><div class="run">${tk}<i class="sp"></i>${tk}</div></div>`;
+  const tr=R?`<button type="button" class="translate ${S.orig?'':'on'}" id="translate" title="${S.orig?'해외 뉴스를 한국어로 번역해 보기':'영어 원문으로 보기'}">${S.orig?'번역 보기':'원문 보기'}</button>`:'';
+  el.innerHTML=`<button type="button" class="lab tksel" aria-haspopup="listbox" aria-expanded="false" aria-label="실시간 순위 종류 고르기 (지금: ${E(lab)})">${I(o.icon)}<span>${E(lab)}</span>${I('chevron-down')}</button><div class="tw" id="tw"><div class="run">${tk}<i class="sp"></i>${tk}</div></div>${tr}`;
   el.dataset.k=tkcur;typeof tickerDrag==='function'&&tickerDrag(document.getElementById('tw'));
+  const tb=el.querySelector('#translate');if(tb)tb.onclick=()=>{S.orig=!S.orig;saveS();typeof header2==='function'&&header2();route()};
   const b=el.querySelector('.tksel');b.onclick=()=>{if(openPop&&openPop.btn===b)return closePop();popList(b,TK.filter(x=>x.v!=='world'||gG()),tkcur,x=>{localStorage.setItem('nb-tk',x.v);if(x.v==='apt')loadApt().then(renderTicker);renderTicker()},{title:'무엇의 순위를 볼까요?',w:240,cls:'tkpop'})}}
 window.nbTicker=renderTicker;
 const hookH=()=>{if(typeof header2!=='function'||header2._nb)return false;const o=header2;window.header2=function(){const r=o.apply(this,arguments);renderTicker();return r};window.header2._nb=1;return true};
@@ -82,10 +84,10 @@ function live(k){const DD=gD();if(!DD)return'';try{
   if(k==='people'){const p=(DD.entities||[]).filter(e=>e.type==='person').sort((a,b)=>b.score-a.score)[0];return p?`<span class="ix-live"><em>오늘의 인물</em>${E(p.name)}</span>`:''}
   if(k==='learn'){const w=(DD.words||[])[0];return w?`<span class="ix-live"><em>오늘의 단어</em>${E(w.word)}</span>`:''}
   }catch(e){}return''}
-function setRegion(m){S.region=m==='kr'?'kr':'en';if(m!=='kr')S.orig=m==='en';saveS();typeof header2==='function'&&header2()}
+function setRegion(m){S.region=m==='kr'?'kr':'en';if(m!=='kr')S.orig=false;saveS();typeof header2==='function'&&header2()}
 window.nbMenu=function(){setMeta('메뉴','NewsBoard 전체 메뉴');const app=document.getElementById('app');const DD=gD();
   const now=new Date(),dd=`${now.getMonth()+1}.${now.getDate()} (${'일월화수목금토'[now.getDay()]})`;
-  const open=JSON.parse(localStorage.getItem('nb-ix')||'["news"]');const MD=S.region==='kr'?'kr':S.orig?'en':'ko';
+  const open=JSON.parse(localStorage.getItem('nb-ix')||'["news"]');const MD=S.region==='kr'?'kr':'ko';
   app.innerHTML=`<div class="ix">
   <header class="ix-top"><div class="ix-date"><b>${dd}</b>${DD?`<span>기사 ${(DD.stats.naver+DD.stats.google).toLocaleString()}건 · 언론사 ${DD.stats.presses}곳에서 모았어요</span>`:''}</div>
    <label class="ix-q">${I('search')}<input id="mq" type="search" placeholder="메뉴·이슈·인물 찾기" autocomplete="off" enterkeyhint="search"><kbd>/</kbd></label><div id="mres" class="ix-res"></div></header>
@@ -94,7 +96,7 @@ window.nbMenu=function(){setMeta('메뉴','NewsBoard 전체 메뉴');const app=d
     <div class="ix-items">${p.items.map(([n,h,d,ic])=>`<a class="ix-i" href="${h}"><span class="ix-ic">${I(ic)}</span><span class="ix-t"><b>${E(n)}</b><small>${E(d)}</small></span>${I('arrow-right')}</a>`).join('')}</div></section>`).join('')}</nav>
   <section class="ix-set"><h3><span>환경 설정</span></h3>
    <div class="ix-row"><span class="ix-rl">${I('book')}<b>글자 크기</b></span><div class="ds-stepper"><button type="button" data-fs="-5" aria-label="작게">가<sup>−</sup></button><em>${S.fs}%</em><button type="button" data-fs="5" aria-label="크게">가<sup>+</sup></button></div></div>
-   <div class="ix-row"><span class="ix-rl">${I('world')}<b>뉴스 지역</b></span><div class="ds-pill" id="mreg" role="radiogroup">${[['kr','국내'],['ko','해외 KR'],['en','해외 EN']].map(([m,l])=>`<button type="button" role="radio" aria-checked="${MD===m}" data-m="${m}" class="${MD===m?'on':''}">${l}</button>`).join('')}<i class="ds-segk"></i></div></div>
+   <div class="ix-row"><span class="ix-rl">${I('world')}<b>뉴스 지역</b></span><div class="ds-pill" id="mreg" role="radiogroup">${[['kr','국내'],['ko','해외']].map(([m,l])=>`<button type="button" role="radio" aria-checked="${MD===m}" data-m="${m}" class="${MD===m?'on':''}">${l}</button>`).join('')}<i class="ds-segk"></i></div></div>
    <div class="ix-row"><span class="ix-rl">${I('alert-triangle')}<b>편향 배지 표시</b></span><button type="button" class="ds-toggle${S.nobias?'':' on'}" role="switch" aria-checked="${!S.nobias}" id="mbias"><i></i></button></div>
    <a class="ix-row" href="settings"><span class="ix-rl">${I('settings')}<b>카테고리 고르기</b><small>스포츠·연예 등 숨기기</small></span>${I('chevron-right')}</a>
    <a class="ix-row" href="alerts/settings"><span class="ix-rl">${I('bell')}<b>알림 설정</b></span>${I('chevron-right')}</a>

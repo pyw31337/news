@@ -16,12 +16,13 @@ const DEF={v:1,uid:null,saves:{},cols:[{id:'c0',name:'나중에 읽기'}],follow
 let M=JSON.parse(JSON.stringify(DEF));let db=null;
 const idb=()=>new Promise(r=>{try{const q=indexedDB.open('newsboard',1);q.onupgradeneeded=()=>q.result.createObjectStore('kv');q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)}catch(e){r(null)}});
 const load=async()=>{db=await idb();let v=null;if(db)v=await new Promise(r=>{const t=db.transaction('kv').objectStore('kv').get('my');t.onsuccess=()=>r(t.result);t.onerror=()=>r(null)});if(!v)try{v=JSON.parse(localStorage.getItem('nb-my')||'null')}catch(e){}if(v)M=Object.assign(JSON.parse(JSON.stringify(DEF)),v);if(!M.uid)M.uid='g-'+Math.random().toString(36).slice(2,10);};
-const save=()=>{M.updated=Date.now();const s=JSON.stringify(M);try{localStorage.setItem('nb-my',s)}catch(e){}if(db)try{db.transaction('kv','readwrite').objectStore('kv').put(JSON.parse(s),'my')}catch(e){}badge();syncSoon()};
+const save=()=>{M.updated=Date.now();const s=JSON.stringify(M);try{localStorage.setItem('nb-my',s)}catch(e){}if(db)try{db.transaction('kv','readwrite').objectStore('kv').put(JSON.parse(s),'my')}catch(e){}window.dispatchEvent(new CustomEvent('nb:my-changed'));badge();syncSoon()};
 /* ---------- 여러 기기 동기화: Cloudflare Worker + D1 (로그인 시에만) ---------- */
 const SYNC='https://newsboard-sync.pyw213.workers.dev';
-{const h=new URLSearchParams(location.hash.slice(1));if(h.get('nbt')){localStorage.setItem('nb-tok',h.get('nbt'));localStorage.setItem('nb-prov',h.get('nbp')||'');localStorage.setItem('nb-migrate','1')}
+{const h=new URLSearchParams(location.hash.slice(1));if(h.get('nbt')){localStorage.setItem('nb-tok',h.get('nbt'));localStorage.setItem('nb-prov',h.get('nbp')||'');if(h.get('nbl'))localStorage.setItem('nb-linked',h.get('nbl'));localStorage.setItem('nb-migrate','1')}
  if(h.get('nbt')||h.get('nbe'))history.replaceState(null,'',location.pathname+location.search);if(h.get('nbe'))setTimeout(()=>window.toast&&toast(h.get('nbe')==='busy'?'지금 로그인 서버가 붐벼요. 잠시 뒤에 다시 시도해 주세요':'로그인을 마치지 못했어요. 다시 시도해 주세요'),800)}
 const tok=()=>localStorage.getItem('nb-tok');
+const providerName=p=>({google:'구글',kakao:'카카오',naver:'네이버'})[p]||'계정';
 const newer=(a,b)=>((a&&(a.u||a.at))||0)>=((b&&(b.u||b.at))||0)?a:b;
 function merge(a,b){if(!b)return a;if(!a)return b;const o=Object.assign({},b,a);
   o.saves={};new Set([...Object.keys(a.saves||{}),...Object.keys(b.saves||{})]).forEach(k=>{const x=newer((a.saves||{})[k],(b.saves||{})[k]);if(x)o.saves[k]=x});
@@ -34,6 +35,7 @@ function merge(a,b){if(!b)return a;if(!a)return b;const o=Object.assign({},b,a);
 let rev=+localStorage.getItem('nb-rev')||0,syncT=null,syncing=false;window._nbSyncAt=+localStorage.getItem('nb-syncat')||0;
 async function api(path,opt={}){const r=await fetch(SYNC+path,Object.assign({},opt,{headers:Object.assign({'Content-Type':'application/json',Authorization:'Bearer '+tok()},opt.headers||{})}));
   if(r.status===401){localStorage.removeItem('nb-tok');localStorage.removeItem('nb-rev');throw new Error('auth')}return{st:r.status,j:await r.json().catch(()=>({}))}}
+async function renderAccountLinks(){const slot=document.getElementById('linkedaccts');if(!slot)return;let ps=[];try{const r=await api('/me');ps=r.j.providers||[]}catch(e){}const active=localStorage.getItem('nb-prov');if(active&&!ps.includes(active))ps.push(active);slot.innerHTML=['google','kakao','naver'].map(p=>`<button data-linkp="${p}" ${ps.includes(p)?'disabled':''}>${providerName(p)} ${ps.includes(p)?'연결됨':'연결하기'}</button>`).join('');slot.querySelectorAll('[data-linkp]').forEach(b=>b.onclick=async()=>{b.disabled=true;b.textContent='연결 준비 중';try{const r=await api('/auth/link',{method:'POST',body:JSON.stringify({provider:b.dataset.linkp,ret:'my'})});if(r.st===200&&r.j.url){location.assign(r.j.url);return}}catch(e){}b.disabled=false;b.textContent=providerName(b.dataset.linkp)+' 다시 시도'})}
 async function sync(){if(!tok()||syncing)return;syncing=true;try{
   let ok=0;const g=await api('/sync');let data=merge(M,g.j.data);rev=g.j.rev||0;
   for(let n=0;n<3;n++){const r=await api('/sync',{method:'PUT',body:JSON.stringify({data,rev})});if(r.st===200){rev=r.j.rev;ok=1;break}
@@ -60,7 +62,8 @@ function tick(){const k=kst();const cb=document.querySelector('.tabbar .ctr .cb.
   const a=cb.closest('.ctr');if(a)a.setAttribute('aria-label',`오늘 · ${k.d} ${k.h}시 ${k.m}분`)}
   clearTimeout(tickT);tickT=setTimeout(tick,(60-kst().s)*1000+50)}
 function nav(){const tb=document.querySelector('.tabbar');if(!tb)return;
-  const T=[['timeline','timeline','타임라인'],['market','market','마켓'],['','today','오늘'],['my','my','내 서재'],['menu','menu','메뉴']];
+  const english=typeof S!=='undefined'&&S.region==='en'&&S.orig;
+  const T=english?[['timeline','timeline','Timeline'],['market','market','Markets'],['','today','Today'],['my','my','Library'],['menu','menu','Menu']]:[['timeline','timeline','타임라인'],['market','market','마켓'],['','today','오늘'],['my','my','내 서재'],['menu','menu','메뉴']];
   tb.className='tabbar v7 nav-'+NS;
   tb.innerHTML=T.map(([h,v,l])=>v==='today'?`<a href="./" data-v="today" class="ctr" aria-label="오늘"><span class="cb${CLK?' clk':''}"><span class="pinh"></span>${CLK?clkHTML():NS==='date'?`<b class="dn">${dnum}</b><small>TODAY</small>`:SV(P.today)}</span><span class="cl">${l}</span></a>`:`<a href="${h}" data-v="${v}">${SV(P[v])}<span>${l}</span></a>`).join('');
   if(CLK){tb.classList.add('clkv');tick()}
@@ -70,6 +73,7 @@ function nav(){const tb=document.querySelector('.tabbar');if(!tb)return;
   const top=document.querySelector('header.top');if(top&&!document.getElementById('bell')){const b=document.createElement('a');b.id='bell';b.href='alerts';b.className='bell';b.setAttribute('aria-label','알림');b.innerHTML=SV(P.bell)+'<i id="bellc"></i>';top.appendChild(b);
     const m=document.createElement('a');m.href='menu';m.className='tmenu';m.dataset.v='menu';m.setAttribute('aria-label','메뉴');m.innerHTML=SV(P.menu);top.appendChild(m)}
 }
+addEventListener('nb:region-changed',nav);
 const VMAP={'':'today',issue:'today',kw:'today',g:'today',gt:'today',entity:'today',people:'today',market:'market',timeline:'timeline',my:'my',alerts:'my'};
 function hl(){const v=decodeURIComponent(location.pathname.slice(BASEP.length)).split('/')[0];const t=VMAP[v]??'menu';document.querySelectorAll('.tabbar [data-v],.topnav [data-v],.tmenu').forEach(x=>x.classList.toggle('on',x.dataset.v===t))}
 const _ps=history.pushState;history.pushState=function(){const r=_ps.apply(this,arguments);setTimeout(()=>{hl();after()},0);return r};
@@ -172,7 +176,7 @@ function alertSet(){const D2=()=>{app.innerHTML=`<div class="sec"><h2><small>Ale
   app.querySelectorAll('[data-on]').forEach(x=>x.onchange=()=>{M.alerts.on[x.dataset.on]=x.checked?1:0;save()})};D2()}
 /* ---------- 내 서재 ---------- */
 function lvl(x){return 1+Math.floor((x||0)/100)}
-function myView(sub){setMeta('내 서재','');if(sub==='home')return homeSet();
+function myView(sub){setMeta('내 서재','');if(tok()&&!sub)setTimeout(()=>{renderAccountLinks();const linked=localStorage.getItem('nb-linked');if(linked){localStorage.removeItem('nb-linked');toast(providerName(linked)+' 계정을 연결했어요')}},0);if(sub==='home')return homeSet();
   const SA=Object.values(M.saves);let L={};try{L=JSON.parse(localStorage.getItem('nb-learn')||'{}')}catch(e){}
   const days=Object.keys(M.reads).sort();let streak=0;{const d=new Date();for(;;){const k=d.toISOString().slice(0,10);if(M.reads[k]){streak++;d.setDate(d.getDate()-1)}else break}}
   const cat={},lean={left:0,right:0,n:0};let nRead=0;days.forEach(d=>Object.values(M.reads[d]).forEach(r=>{nRead++;cat[r.c]=(cat[r.c]||0)+1;Object.entries(r.l||{}).forEach(([k,v])=>lean[k]=(lean[k]||0)+v)}));
@@ -182,7 +186,7 @@ function myView(sub){setMeta('내 서재','');if(sub==='home')return homeSet();
   const TY={issue:['이슈','fire'],entity:['인물·기업','user'],kw:['키워드','search'],chart:['지표','chart']};
   const card=s=>`<a class="myi ty-${s.t}" href="${s.href||'#'}">${s.img?`<span class="myth" style="background-image:url('${E(s.img)}')"></span>`:`<span class="myth noimg">${I(TY[s.t]?.[1])}</span>`}<div><em>${TY[s.t]?.[0]||''}${s.col?` · ${E((M.cols.find(c=>c.id===s.col)||{}).name||'')}`:''}</em><b>${E(s.title)}</b>${s.note?`<p class="mnote">${E(s.note)}</p>`:''}<span class="mtags">${(s.tags||[]).map(t=>`<i>#${E(t)}</i>`).join('')}${s.like?`<i class="lk">${SV(P.heart)}</i>`:''}</span></div><span class="mhw" data-t="${s.t}" data-id="${E(s.id)}"><button class="myact-n" data-a="note" aria-label="메모">${SV(P.plus)}</button></span></a>`;
   const rel=SA.filter(s=>s.t==='entity'||s.t==='kw').map(s=>{const i=D.issues.find(x=>(x.entities||[]).includes(s.id)||x.title.includes(s.id));return i&&{s,i}}).filter(Boolean).slice(0,4);
-  app.innerHTML=`<div class="myhead"><div class="myav">${SV(P.my||P.bm)}</div><div>${tok()?`<b>내 계정</b><small id="syncst">${localStorage.getItem('nb-prov')==='kakao'?'카카오':'Google'} 계정으로 로그인됨</small>`:`<b>게스트</b><small><a href="login/?ret=my">로그인</a></small>`}</div><a class="ghost sm" href="my/home">${I('gear')}내 홈 꾸미기</a></div>
+  app.innerHTML=`<div class="myhead"><div class="myav">${SV(P.my||P.bm)}</div><div>${tok()?`<b>내 계정</b><small id="syncst">${providerName(localStorage.getItem('nb-prov'))} 계정으로 로그인됨</small>`:`<b>게스트</b><small><a href="login/?ret=my">로그인</a></small>`}</div><a class="ghost sm" href="my/home">${I('gear')}내 홈 꾸미기</a></div>
   <div class="mystat"><div class="xp"><span>${NBI('flame',1,'on')}${streak}일</span><small>연속 읽기</small></div><div class="xp"><span>Lv.${lvl(L.xp)}</span><small>퀴즈 XP ${L.xp||0}</small><i style="--p:${(L.xp||0)%100}%"></i></div><div class="xp"><span>${SA.length}</span><small>저장한 것</small></div><div class="xp"><span>${Object.keys(M.follows).length}</span><small>팔로우</small></div></div>
   ${rel.length?`<div class="sec"><h2><small>Connected</small>${I('link')}내 스크랩과 이어진 새 소식</h2></div><div class="myrel">${rel.map(({s,i})=>`<a href="issue/${i.id}"><em>${E(s.title)}</em><b>${E(i.title)}</b></a>`).join('')}</div>`:''}
   <div class="sec"><h2><small>Library</small>${I('book')}내 서재</h2><button class="more" id="newcol">+ 컬렉션</button></div>
@@ -196,7 +200,7 @@ function myView(sub){setMeta('내 서재','');if(sub==='home')return homeSet();
    <div class="card"><h4>최근 14일</h4><div class="days">${Array.from({length:14},(_,k)=>{const d=new Date(Date.now()-(13-k)*864e5).toISOString().slice(0,10);const n=Object.keys(M.reads[d]||{}).length;return`<i style="--o:${Math.min(1,n/5)}" title="${d} ${n}건"></i>`}).join('')}</div></div></div>`:'<p class="fine">이슈를 읽으면 주제 비율과 균형을 여기서 보여드려요.</p>'}
   <div class="sec"><h2><small>Backup</small>${I('link')}다른 기기로 옮기기</h2></div>
   <div class="card setc"><p class="fine">로그인 전에는 이 기기에만 저장돼요. 백업 파일이나 코드로 다른 기기에 옮길 수 있어요.</p><div class="mbr"><button class="pri" id="exf">백업 파일 받기</button><button id="imf">파일 불러오기</button><button id="exc">코드 복사</button><button id="imc">코드 붙여넣기</button></div><input type="file" id="imfi" accept=".json,application/json" hidden></div>
-  <div class="card setc login" id="loginc">${tok()?`<h3>${I('user')}${localStorage.getItem('nb-prov')==='kakao'?'카카오':'구글'} 계정으로 로그인됨</h3><div class="mbr"><button id="syncnow">지금 맞추기</button><button id="logout">로그아웃</button><button id="delacc">계정·데이터 삭제</button></div>`:`<h3>${I('user')}로그인</h3><div class="mbr" id="loginb"><a class="lgb pri" href="login/?ret=my">로그인하기</a></div>`}</div>`;
+  <div class="card setc login" id="loginc">${tok()?`<h3>${I('user')}${providerName(localStorage.getItem('nb-prov'))} 계정으로 로그인됨</h3><p class="fine">로그인 방식을 연결하면 구글·카카오·네이버 어느 쪽으로 들어와도 같은 서재를 사용해요.</p><div class="mbr" id="linkedaccts"></div><div class="mbr"><button id="syncnow">지금 맞추기</button><button id="logout">로그아웃</button><button id="delacc">계정·데이터 삭제</button></div>`:`<h3>${I('user')}로그인</h3><div class="mbr" id="loginb"><a class="lgb pri" href="login/?ret=my">로그인하기</a></div>`}</div>`;
   if(tok()){document.getElementById('syncnow').onclick=()=>{sync().then(()=>toast('맞췄어요'))};document.getElementById('logout').onclick=async()=>{try{await api('/logout',{method:'POST'})}catch(e){}['nb-tok','nb-rev','nb-prov','nb-syncat'].forEach(k=>localStorage.removeItem(k));toast('로그아웃했어요. 이 기기의 서재는 그대로 남아요');myView()};const dl=document.getElementById('delacc');dl.onclick=async()=>{if(!dl.dataset.c){dl.dataset.c=1;dl.textContent='한 번 더 누르면 서버 데이터가 삭제돼요';setTimeout(()=>{delete dl.dataset.c;dl.textContent='계정·데이터 삭제'},5000);return}try{await api('/account',{method:'DELETE'})}catch(e){toast('지금은 삭제하지 못했어요. 잠시 뒤 다시 시도해 주세요');return}['nb-tok','nb-rev','nb-prov','nb-syncat'].forEach(k=>localStorage.removeItem(k));toast('서버의 계정과 데이터를 삭제했어요. 이 기기의 서재는 남아 있어요');myView()}}
 
   const draw=()=>{sessionStorage.setItem('nb-mytab',tab);const f=SA.filter(s=>tab==='all'||(tab==='like'&&s.like)||(tab==='scrap'&&s.scrap)||(tab==='note'&&s.note)||(tab.startsWith('c:')&&s.col===tab.slice(2))||(tab.startsWith('t:')&&(s.tags||[]).includes(tab.slice(2)))).sort((a,b)=>(b.u||b.at)-(a.u||a.at));

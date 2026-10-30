@@ -82,7 +82,8 @@ const metric=m=>{const ev=S.ev||{},My=window.NBMy&&NBMy.get?NBMy.get():myRO(),L=
    case 'stars':return Object.values(ev.slv||{}).reduce((a,v)=>a+v,0);
    default:if(m.startsWith('c_')){const c=m.slice(2);return My?Object.values(My.reads||{}).reduce((a,d)=>a+Object.values(d).filter(r=>r.c===c).length,0):(ev[m]||0)}return ev[m]||0}};
 /* 시간대 판정(한국 시간). 읽기 기록(날짜=UTC, h=기기 시각)에서 하루 한 번씩 셈 → 이전에 읽은 기록도 소급 */
-const TOD={morning:h=>h>=5&&h<9,lunch:h=>h>=12&&h<14,commute:h=>h>=17&&h<20,night:h=>h>=23||h<4};
+/* 안내 문구의 “오전 5~9시”는 09:59까지 포함한다. */
+const TOD={morning:h=>h>=5&&h<10,lunch:h=>h>=12&&h<14,commute:h=>h>=17&&h<20,night:h=>h>=23||h<4};
 let todC=null,todK=-2;
 function todDays(My){const k=My?Object.values(My.reads||{}).reduce((a,d)=>a+Object.keys(d).length,0):-1;if(todC&&k===todK)return todC;
   const o={morning:new Set(),lunch:new Set(),commute:new Set(),night:new Set(),weekend:new Set()};
@@ -204,6 +205,7 @@ function visits(){const p=location.pathname.replace(/^.*?\/news\//,'').split('/'
   const m={timeline:'v_tl',map:'v_map',entity:'v_ent',market:'v_mkt'}[p];if(m)ev(m,1)}
 function tick(){const My=window.NBMy&&NBMy.get?NBMy.get():null;if(document.getElementById('app'))visits();if(My){if(My.game&&(My.game.at||0)>(S.at||0)){S=Object.assign(S,mergeG(S,My.game));save()}
   const r=metric('read');if(lastRead>=0&&r>lastRead){touchDay();todMark();addXP(5*(r-lastRead),'기사 읽기');check(level(totalXP()-5));save(true)}else if(lastRead<0)check(0);lastRead=r}
+  else check(0);
   todayBlock();libBlock()}
 document.addEventListener('click',e=>{if(e.target.closest('[data-save],[data-like]'))setTimeout(()=>check(0),300);if(e.target.closest('[data-share]'))ev('share',1,{xp:5,why:'기사 공유'})},true);
 addEventListener('nb:decktop',()=>ev('deck',1));
@@ -214,6 +216,7 @@ window.NBGame={B,TIERS,TIER_XP,GROUPS,CAREER,medal,slot,lvCard,goals,gameTiles,t
   play(game,score,stat){const d=S.daily[dayK()]||(S.daily[dayK()]={xp:0,g:0,q:0,r:0});ev('plays',1,{day:'g'});if(stat)ev(stat[0],stat[1],{max:stat[2]});return addXP(Math.min(60,Math.max(5,Math.round(score))),'게임 보상')||0},
   state:()=>S,ev,check,celebrate};
 const mo=new MutationObserver(()=>{clearTimeout(mo.t);mo.t=setTimeout(tick,120)});
-const start=()=>{const a=document.getElementById('app');if(a)mo.observe(a,{childList:true});tick();setInterval(()=>{if(window.NBMy)tick()},4000)};
+let syncTick=0;const queueTick=()=>{clearTimeout(syncTick);syncTick=setTimeout(tick,80)};
+const start=()=>{const a=document.getElementById('app');if(a)mo.observe(a,{childList:true});tick();addEventListener('nb:my-changed',queueTick);document.addEventListener('visibilitychange',()=>{if(!document.hidden)queueTick()})};
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',start):start();
 })();

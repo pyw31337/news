@@ -92,8 +92,12 @@ def gnews(url, label):
     return arts
 
 GN = 'https://news.google.com/rss%s?hl=ko&gl=KR&ceid=KR:ko'
+def gquery(q): return 'https://news.google.com/rss/search?q=' + urllib.parse.quote(q) + '&hl=ko&gl=KR&ceid=KR:ko'
+def section_url(path): return path if path.startswith('http') else GN % path
 SECTIONS = {'주요': '', '정치': '/headlines/section/topic/NATION', '경제': '/headlines/section/topic/BUSINESS',
             '세계': '/headlines/section/topic/WORLD', 'IT·과학': '/headlines/section/topic/TECHNOLOGY',
+            '과학': gquery('과학 연구 OR 우주 OR 연구개발'), '건강': gquery('건강 OR 의료 OR 질병'),
+            '환경': gquery('기후 OR 환경 OR 탄소'), '문화': gquery('문화 OR 전시 OR 공연 OR 출판'),
             '연예': '/headlines/section/topic/ENTERTAINMENT', '스포츠': '/headlines/section/topic/SPORTS'}
 
 def trends():
@@ -108,7 +112,7 @@ def trends():
 
 with ThreadPoolExecutor(10) as ex:
     fr = [ex.submit(naver_ranking, 'popularDay'), ex.submit(naver_ranking, 'popularMemo'), ex.submit(trends)] + \
-         [ex.submit(gnews, GN % p, k) for k, p in SECTIONS.items()]
+         [ex.submit(gnews, section_url(p), k) for k, p in SECTIONS.items()]
     nv_pop, nv_memo, tr = fr[0].result(), fr[1].result(), fr[2].result()
     gn = [a for f in fr[3:] for a in f.result()]
 print('naver', len(nv_pop), len(nv_memo), 'google', len(gn), 'trends', len(tr))
@@ -172,16 +176,22 @@ def categorize(A, sect):
     categorize.last = (conf, why)
     return c
 CAT_HINT = {'정치': '정치', '경제': '경제', '세계': '세계', 'IT·과학': 'IT', '연예': '연예', '스포츠': '스포츠'}
-top = []
+choices = []
 for c in clusters[:40]:
     A = c['arts']
     nv = [a for a in A if a['src'].startswith('naver')]
     rep = min(nv, key=lambda a: a['rank']) if nv else A[0]
     sect = collections.Counter(a.get('section') for a in A if a.get('section') not in (None, '주요'))
     c.update(rep=rep, category=categorize(A, sect), cat_conf=categorize.last[0], cat_why=categorize.last[1])
-    top.append(c)
-    if len(top) >= 10 and len([x for x in top]) >= 10: break
-top = top[:10]
+    choices.append(c)
+# 첫 화면은 한 카테고리가 독점하지 않도록 2개→3개 상한으로 채운다.
+top = []; picked = set(); bycat = collections.Counter()
+for cap in (2, 3, 10):
+    for c in choices:
+        if id(c) in picked or bycat[c['category']] >= cap: continue
+        top.append(c); picked.add(id(c)); bycat[c['category']] += 1
+        if len(top) >= 10: break
+    if len(top) >= 10: break
 with ThreadPoolExecutor(10) as ex:
     reps = [c['rep'] for c in top]
     ogs = list(ex.map(lambda a: og(a['url']) if 'naver' in a['url'] else ('', ''), reps))
