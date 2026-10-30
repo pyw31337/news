@@ -1,0 +1,38 @@
+name: backup
+# 모든 데이터 브랜치를 통째로 Cloudflare R2(newsboard-backup)에 보관: GitHub에 문제가 생겨도 잃지 않도록.
+# 매주 latest/를 덮어쓰고, 매달 첫 주에는 YYYY-MM/에 따로 남김(썸네일 media는 용량이 커서 latest만). 인증은 GitHub OIDC(따로 넣을 비밀번호 없음)
+on:
+  schedule:
+    - cron: '41 19 * * 0'   # 월요일 04:41 KST
+  workflow_dispatch:
+permissions: { contents: read, id-token: write }
+concurrency: { group: backup, cancel-in-progress: false }
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: 브랜치 묶어서 올리기
+        run: |
+          set -e
+          repo="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          W=https://newsboard-sync.pyw213.workers.dev
+          M=$(TZ=Asia/Seoul date +%Y-%m); D=$(TZ=Asia/Seoul date +%d)
+          put() {  # $1 파일, $2 키
+            T=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=newsboard-sync" | python3 -c 'import json,sys;print(json.load(sys.stdin)["value"])')
+            for n in 1 2 3; do curl -fsS -X PUT -H "Authorization: Bearer $T" -H 'Content-Type: application/octet-stream' --data-binary @"$1" "$W/backup/put?k=$2" && echo && return 0; sleep $((n * 20)); done
+            return 1
+          }
+          fail=0
+          for b in data politicians history legal media; do
+            git clone -q --depth 1 --branch $b "$repo" b_$b 2>/dev/null || { echo "$b 없음"; continue; }
+            rm -rf b_$b/.git
+            tar -czf $b.tgz -C b_$b . && rm -rf b_$b
+            split -b 90m -d -a 2 $b.tgz $b.tgz.part- && rm $b.tgz
+            for f in $b.tgz.part-*; do
+              put "$f" "latest/$f" || fail=1
+              if [ "$b" != media ] && [ "$D" -le 07 ]; then put "$f" "$M/$f" || fail=1; fi
+              rm "$f"
+            done
+          done
+          exit $fail

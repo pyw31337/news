@@ -215,6 +215,15 @@ async function backupArchive(env, d) {
   } while (cur);
 }
 
+// ── 데이터 브랜치 통째 백업(GitHub Actions만, R2): latest/는 매주 덮어쓰고, 매달 1번은 YYYY-MM/에 따로 남김 ──
+async function branchBackup(env, req, url) {
+  if (!await ghActions((req.headers.get('Authorization') || '').replace(/^Bearer\s+/i, ''))) return J(env, req, { error: 'auth' }, 401);
+  const k = url.searchParams.get('k') || '';
+  if (!/^(latest|20\d\d-\d\d)\/[a-z0-9._-]{1,80}$/.test(k) || !req.body) return J(env, req, { error: 'bad' }, 400);
+  const n = +(req.headers.get('Content-Length') || 0); if (!n) return J(env, req, { error: 'length' }, 411);
+  await env.BK.put('branches/' + k, req.body, { httpMetadata: { contentType: 'application/octet-stream' } });
+  return J(env, req, { ok: true, k, bytes: n });
+}
 // ── 인물 아카이브(공개 읽기, 수집기만 쓰기) ──
 const AJ = (env, req, o, s = 200, age = 600) => new Response(JSON.stringify(o), { status: s, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=' + age, ...cors(env, req) } });
 async function archive(env, req, url, p) {
@@ -340,6 +349,7 @@ export default {
     if (req.method === 'OPTIONS') return new Response(null, { headers: cors(env, req) });
     try {
       if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env), keys: { id_salt: env.ID_SALT ? 'secret' : 'auto', archive: env.ARCHIVE_KEY ? 'key+github' : 'github' } });   // 값은 절대 내보내지 않음
+      if (p === '/backup/put' && req.method === 'PUT') return branchBackup(env, req, url);
       if (p.startsWith('/archive/') && env.AR) return archive(env, req, url, p);
       if (p === '/lb') return await leaderboard(env, req, url);
       if (p === '/auth/link' && req.method === 'POST') return await oauthLinkStart(env, req, url);

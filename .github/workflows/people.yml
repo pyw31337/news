@@ -1,0 +1,42 @@
+name: people
+# 인물 명부(국회의원 역대 전체 + 위키데이터 한국 인물 전체 + 해외 주요 인물 + 뉴스에서 새로 찾은 인물)를 매주 다시 만들고,
+# 지금까지 쌓인 모든 기사를 인물별 타임라인(data 브랜치 db/people/)에 다시 맞춰 봄. 평소에는 collect가 30분마다 새 기사만 더함
+on:
+  schedule:
+    - cron: '23 18 * * 6'   # 일요일 03:23 KST
+  workflow_dispatch:
+permissions: { contents: write }
+concurrency: { group: people, cancel-in-progress: false }
+jobs:
+  people:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: data, path: data }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: 국회의원·연표 대상 가져오기
+        run: |
+          repo="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git clone -q --depth 1 --branch politicians "$repo" pol_db || mkdir pol_db
+          git clone -q --depth 1 --branch history "$repo" hist || mkdir hist
+      - name: 인물 명부
+        timeout-minutes: 30
+        run: python scripts/people/registry.py data pol_db hist
+      - name: 모든 기사 → 인물 타임라인
+        env: { PEOPLE_SEC: '900' }
+        run: python scripts/people/mentions.py data
+      - name: data 브랜치에 저장
+        working-directory: data
+        run: |
+          git config user.name "newsboard-bot"; git config user.email "actions@users.noreply.github.com"
+          git add db/people
+          git diff --cached --quiet && exit 0
+          git commit -qm "people: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          for n in 1 2 3 4 5 6; do
+            git push -q origin HEAD:data && exit 0
+            sleep $((n * 10 + RANDOM % 10)); git fetch -q origin data && git rebase -q -X theirs origin/data || { git rebase --abort; git merge -q -X ours --no-edit origin/data; }
+          done
+          exit 1
