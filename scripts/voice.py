@@ -8,11 +8,11 @@
 - 한도: 네이버 호출은 naver.py와 같은 data/db/naver_usage.json 상한을 공유."""
 import os, re, json, html, time, hashlib, datetime, subprocess, urllib.request, urllib.parse, urllib.error
 import xml.etree.ElementTree as ET
-import sys as _sys; _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import ai_usage
+import sys as _sys; _sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import ai_usage, llm_quota
 KST = datetime.timezone(datetime.timedelta(hours=9))
 now = datetime.datetime.now(KST); M, D = now.strftime('%Y-%m'), now.strftime('%Y-%m-%d')
 ROOT = os.environ.get('VOICE_DATA') or 'data'
-ai_usage.setup(ROOT)
+ai_usage.setup(ROOT); llm_quota.setup(ROOT)
 P = lambda n: os.path.join(ROOT, n)
 def J(n, d=None):
     try: return json.load(open(P(n), encoding='utf-8'))
@@ -146,14 +146,15 @@ def llm(prompt, maxtok=3500):
             r = subprocess.run([NBAI, SYS, str(maxtok)], input=prompt, capture_output=True, text=True, timeout=400)
             if not r.returncode: diag['llm'] = 'local'; ai_usage.note('voice', 'opinion', 'apple', 'apple'); return jparse(r.stdout)
         if not TOKEN: return None
-        for m in MODELS:
+        for m in llm_quota.order(MODELS, 'opinion'):
             body = json.dumps({'model': m, 'temperature': 0.2, 'max_tokens': maxtok, 'response_format': {'type': 'json_object'},
                                'messages': [{'role': 'system', 'content': SYS}, {'role': 'user', 'content': prompt}]}).encode()
             for a in range(2):
                 try:
                     r = urllib.request.urlopen(urllib.request.Request(ENDPOINT, body, {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json'}), timeout=90)
-                    diag['llm'] = m; ai_usage.note('voice', 'opinion', m); return jparse(json.loads(r.read())['choices'][0]['message']['content'])
+                    diag['llm'] = m; llm_quota.ok(m); ai_usage.note('voice', 'opinion', m); return jparse(json.loads(r.read())['choices'][0]['message']['content'])
                 except urllib.error.HTTPError as e:
+                    if e.code == 429 and llm_quota.limited(m, e.code, e.read()[:4000].decode('utf-8', 'replace')): break  # 하루 한도 → 바로 다음 모델
                     diag['errors'].append(f'llm {m} {e.code}')
                     if e.code in (429, 500, 502, 503, 504) and a == 0: time.sleep(8); continue
                     break

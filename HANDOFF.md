@@ -149,6 +149,7 @@
 - 이상 신호: 어제 수집량이 그 전 7일 중앙값의 절반 아래면 문제 목록에 올라가고 막대가 빨갛게 됨. 첫 기록 전 날짜는 '기록 시작 전'으로 비움.
 - 하루치 기록이 없는 수집처는 `data/db/stats_hist.json`(날짜별 그날 마지막 값, 400일)로 추이를 그림.
 - AI 분석 장부: `scripts/ai_usage.py` → `data/db/ai_usage/<실행처>-<엔진>.json`(actions-gemini, macmini-apple, macmini-ollama…). enrich·voice·fun의 AI 호출마다 새 분석/다시 씀/실패, 작업별·모델별로 셈. 기계마다 파일이 따로라 동시 저장해도 안 겹침. 장부 전 날짜는 runlog의 `ai` 값으로 보충.
+- Gemini 한도 관리: `scripts/llm_quota.py` → `data/db/llm_quota.json`. 하루 한도 429(PerDay)를 맞은 모델은 미국 서부 자정까지 건너뜀, 가벼운 작업(cat·trend·words·a-flow·a-bias·wx)은 lite 모델 먼저, 지난 한도 기록(cap) 기준으로 주력 모델을 하루 시간 흐름만큼만 사용. enrich·voice·fun 공용. 현황판 'AI 분석'에 모델별 오늘 사용량 표.
 - collect의 data 커밋: 중간 파일 `_arts.json`은 저장 제외, 수정/삭제 충돌은 자동 해결(2026-10-30 실패 원인).
 
 ## 4-3. 자동 운영 (2026-10-29 16:50 KST 기준, 사람·AI 개입 없이 동작)

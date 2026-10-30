@@ -113,6 +113,9 @@ window.renderDash=async function(el){if(!el)return;
    <section class="card"><h3>날짜별 AI 분석 횟수 ${trend(A.daily)}<small>모든 AI 합계</small></h3>${bars(A.daily,{h:110,unit:'회',col:'#ff4d2e'})}</section>
    <section class="card"><h3>날짜별 AI가 분석한 TOP 10 이슈 <small>깊게 보기까지 만든 이슈 수 · 하루 10개</small></h3>${bars((A.issues_daily||[]).map(([d,n])=>[d,n]),{h:110,unit:'건',col:'#11a683',avg:false})}</section>
   </div>
+  ${A.quota&&Object.keys(A.quota.models||{}).length?`<section class="card scroll"><h3>모델별 오늘 사용량 <small>Gemini 무료 등급 · 하루 한도는 미국 서부 자정(한국 오후 4~5시)에 초기화 · ${E(A.quota.day)}</small></h3>
+   <table class="tbl"><thead><tr><th>모델</th><th class="n">성공</th><th>하루 한도(지난 기록)</th><th class="n">분당 한도 대기</th><th>상태</th></tr></thead><tbody>${Object.entries(A.quota.models).map(([m,v])=>{const cap=(A.quota.cap||{})[m];
+    return`<tr><td><b>${E(m)}</b></td><td class="n">${N(v.ok)}</td><td>${cap?`<div class="pgw">${prog(v.ok,cap)}</div><small class="mute">약 ${N(cap)}회</small>`:'<span class="mute">아직 한도에 닿은 적 없음</span>'}</td><td class="n">${N(v.minute)}</td><td>${v.out?'<span class="dot warn"></span>오늘 한도 소진 → 보조 모델 사용':'<span class="dot ok"></span>사용 가능'}</td></tr>`}).join('')}</tbody></table></section>`:''}
   ${(A.engines||[]).length?`<div class="mul">${A.engines.map(e=>`<div class="card mc"><div class="mh"><b>${E(e.name)}</b><span class="mute">${E(e.engine)}</span></div>
     <div class="mn"><b>${N(e.today)}</b><small>회 오늘</small><small>7일 ${N(e.d7)}</small><small>누적 ${N(e.total)}</small>${e.fail7?`<small class="bad">7일 실패 ${N(e.fail7)}</small>`:''}</div>
     ${bars(e.daily,{h:50,unit:'회',col:'#ff4d2e'})}

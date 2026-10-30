@@ -201,6 +201,7 @@ AI = dict(engines=ai_eng, today=sum(e['today'] for e in ai_eng), d7=sum(e['d7'] 
           issues_daily=ai_arch, issues_total=ai_total_issues,
           stored=dict(collections.Counter(k.split(':')[0] for k in CA)), stored_total=len(CA),
           local_connected=any(e['key'].startswith('macmini') for e in ai_eng),
+          quota=(lambda Qs: dict(day=max(Qs.get('days') or {'': 0}), models=(Qs.get('days') or {}).get(max(Qs.get('days') or {'': 0}), {}), cap=Qs.get('cap') or {}))(J('db/llm_quota.json', {}) or {}),
           note='장부(ai_usage)가 생기기 전 날짜는 GitHub Actions 실행 기록의 AI 호출 수로 채움')
 # ---------- 날짜별 기록(그날 마지막 값) — 하루치 이력이 없는 수집처도 추이를 그릴 수 있게 ----------
 HP = os.path.join(ROOT, 'db', 'stats_hist.json'); H = load(HP, {}) or {}
@@ -232,7 +233,8 @@ for q in Q:
     if q['level'] != 'ok': u = q.get('unit', '%'); P.append(dict(level=q['level'], what=q['name'], why=f"{q['value']}{u} — 목표 {q['target']}{u}"))
 if AI['d7'] and AI['fail7'] > AI['d7'] * .3: P.append(dict(level='warn', what='AI 분석 실패', why=f"최근 7일 실패 {AI['fail7']:,}회 / 성공 {AI['d7']:,}회"))
 if AI['daily'][-2][1] == 0 and any(v for _, v in AI['daily'][-9:-2]): P.append(dict(level='bad', what='AI 분석', why='어제 AI 분석이 한 번도 되지 않음'))
-if LL.get('errors'): P.append(dict(level='warn', what='AI 분석', why='; '.join(str(e)[:80] for e in LL['errors'][:2])))
+# 하루 한도로 보조 모델로 넘어간 것은 정상 동작(문제 아님). 이번 실행에서 AI가 한 번도 성공하지 못했을 때만 알림
+if LL.get('errors') and not LL.get('calls') and LL.get('enabled'): P.append(dict(level='warn', what='AI 분석', why='이번 수집에서 AI 분석 실패: ' + '; '.join(str(e)[:80] for e in LL['errors'][:2])))
 P.sort(key=lambda p: 0 if p['level'] == 'bad' else 1)
 out = dict(updated=NOW.isoformat(timespec='minutes'), problems=P, sources=S, quality=Q, speed=speed, ai=AI,
            categories=dict(today=dict(cat_today), week=dict(cat_week), year=dict(cat_year), sections_today=dict(ksec), global_today=dict(gsec),

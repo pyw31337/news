@@ -161,7 +161,8 @@ SMALL = APPLE or os.environ.get('LLM_SMALL') == '1' or any(h in ENDPOINT for h i
 if APPLE: MODEL = 'Apple Foundation Models (온디바이스)'; ENDPOINT = 'https://macmini.local/'
 LLM_STATUS = {'enabled': bool(TOKEN) or APPLE, 'model': MODEL, 'endpoint': ENDPOINT.split('/')[2], 'calls': 0, 'errors': [], 'backend': BACKEND}
 import subprocess, threading, sys as _sys
-_sys.path.insert(0, os.path.dirname(__file__)); import ai_usage; ai_usage.setup(ROOT)
+_sys.path.insert(0, os.path.dirname(__file__)); import ai_usage, llm_quota; ai_usage.setup(ROOT); llm_quota.setup(ROOT)
+RUN_OFF = set()  # 이번 실행에서 과부하·지연으로 뺀 모델
 _AK = lambda key: key.split(':')[0]
 ALOCK = threading.Lock(); GLOCK = threading.Lock()
 def jparse(c):
@@ -192,8 +193,8 @@ def llm(key, prompt, maxtok=900):
             out = apple(prompt, maxtok); LLM_STATUS['calls'] += 1; CACHE[key] = out; ai_usage.note('enrich', _AK(key), MODEL, 'apple'); return out
         except Exception as e:
             LLM_STATUS['errors'].append(str(e)[:200]); ai_usage.note('enrich', _AK(key), MODEL, 'apple', ok=False); return None
-    while MODELS:
-        m = MODELS[0]
+    m = MODEL
+    for m in [x for x in llm_quota.order(MODELS, _AK(key)) if x not in RUN_OFF]:
         body = json.dumps({'model': m, 'temperature': 0.2, 'max_tokens': maxtok, 'response_format': {'type': 'json_object'},
                            'messages': [{'role': 'system', 'content': SYS}, {'role': 'user', 'content': prompt}]}).encode()
         switch = False
@@ -210,13 +211,17 @@ def llm(key, prompt, maxtok=900):
                 except Exception: raise ValueError('bad response %s: %r' % (r.status, raw[:160]))
                 c = re.sub(r'^```(?:json)?|```$', '', c.strip()).strip()
                 out = json_object(json.loads(c))
-                LLM_STATUS['calls'] += 1; LLM_STATUS['model'] = m; CACHE[key] = out
+                LLM_STATUS['calls'] += 1; LLM_STATUS['model'] = m; CACHE[key] = out; llm_quota.ok(m)
                 LLM_STATUS.setdefault('by_model', {}); LLM_STATUS['by_model'][m] = LLM_STATUS['by_model'].get(m, 0) + 1
                 ai_usage.note('enrich', _AK(key), m); return out
             except urllib.error.HTTPError as e:
-                msg = e.read()[:300].decode('utf-8', 'replace')
+                full = e.read()[:4000].decode('utf-8', 'replace'); msg = full[:300]
                 if e.code in (429, 500, 502, 503, 504):
-                    daily = e.code == 429 and 'PerDay' in msg
+                    daily = e.code == 429 and llm_quota.limited(m, e.code, full)
+                    if daily:  # 하루 한도: 기다려도 안 풀림 → 오류로 남기지 않고 바로 다음 모델로
+                        LLM_STATUS.setdefault('quota_out', [])
+                        if m not in LLM_STATUS['quota_out']: LLM_STATUS['quota_out'].append(m)
+                        switch = True; break
                     if attempt < 2 and not daily:
                         ra = e.headers.get('Retry-After')
                         LLM_STATUS['retries'] = LLM_STATUS.get('retries', 0) + 1
@@ -230,7 +235,7 @@ def llm(key, prompt, maxtok=900):
                 LLM_STATUS['errors'].append(str(e)[:200])
             break
         if not switch: ai_usage.note('enrich', _AK(key), m, ok=False); return None
-        MODELS.pop(0)  # 이 모델은 이번 수집에서 제외하고 다음 모델로
+        RUN_OFF.add(m)  # 이 모델은 이번 수집에서 제외하고 다음 모델로
     BUDGET[0] = 0; ai_usage.note('enrich', _AK(key), MODEL, ok=False)
     return None
 
