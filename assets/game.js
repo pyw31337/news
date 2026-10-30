@@ -23,47 +23,54 @@ const TIER_XP=[10,20,30,50,80,120,200,300,500,800];
 const B=[
  // [id, 이름, 설명, Tabler 아이콘, 모양, 측정값, 등급별 기준, (스페셜 등급), 분류]
  ['hello','계정 개설 축하','NewsBoard에 첫 발을 내디뎠어요','user-plus','star','signup',[1],2,'start'],
- ['read','열독가','기사(이슈)를 읽은 수','news','circle','read',[1,10,30,50,100,300,1000,2000,5000,10000],null,'read'],
- ['streak','연속 출석','며칠 연속으로 뉴스를 봤는지','flame','shield','streak',[3,7,14,30,60,100,200,365,500,1000],null,'habit'],
- ['visit','개근상','뉴스를 읽은 날을 모두 더한 수','calendar-check','shield','visit',[7,30,60,100,200,365,500,730,1000],null,'habit'],
- ['bird','아침형 독자','오전 5~9시에 기사를 읽은 날','sun-high','circle','morning',[1,7,30,100,200,365],null,'time'],
- ['lunch','점심 브리핑','낮 12~2시에 기사를 읽은 날','tools-kitchen-2','circle','lunch',[1,7,30,100,200,365],null,'time'],
- ['commute','퇴근길 독자','오후 5~8시에 기사를 읽은 날','bus','circle','commute',[1,7,30,100,200,365],null,'time'],
- ['owl','올빼미 독자','밤 11시~새벽 4시에 기사를 읽은 날','moon','circle','night',[1,7,30,100,200,365],null,'time'],
- ['weekend','주말 독자','토·일요일에 기사를 읽은 날','beach','circle','weekend',[1,4,12,26,52,104],null,'time'],
- ['balance','균형 잡힌 독자','읽은 분야 수(정치·경제·사회…)','chart-bubble','circle','cats',[3,4,5,6,7],null,'read'],
- ['f_pol','정치통','정치 기사를 읽은 수','building-bank','hex','c_정치',[5,20,50,100,300,1000,3000],null,'field'],
- ['f_eco','경제통','경제 기사를 읽은 수','coin','hex','c_경제',[5,20,50,100,300,1000,3000],null,'field'],
- ['f_soc','사회부 기자','사회 기사를 읽은 수','users-group','hex','c_사회',[5,20,50,100,300,1000,3000],null,'field'],
- ['f_world','국제통','세계 기사를 읽은 수','world','hex','c_세계',[5,20,50,100,300,1000,3000],null,'field'],
- ['f_it','IT·과학 탐구자','IT·과학 기사를 읽은 수','cpu','hex','c_IT',[5,20,50,100,300,1000,3000],null,'field'],
- ['f_ent','연예 소식통','연예 기사를 읽은 수','microphone-2','hex','c_연예',[5,20,50,100,300,1000,3000],null,'field'],
- ['f_spo','스포츠광','스포츠 기사를 읽은 수','ball-football','hex','c_스포츠',[5,20,50,100,300,1000,3000],null,'field'],
- ['quiz','OX 마스터','퀴즈를 맞힌 수','checks','hex','quiz_ok',[10,50,100,300,1000,2000,5000],null,'learn'],
- ['perfect','만점왕','하루 퀴즈를 모두 맞힌 날','crown','star','perfect',[1,5,20,50,100,200,365],null,'learn'],
- ['words','단어 수집가','퀴즈로 익힌 단어 수','book-2','hex','words',[10,50,100,300,1000,2000,3000],null,'learn'],
- ['history','기록 탐험가','기록 보관소에서 과거를 찾아본 횟수','timeline-event','shield','hist',[1,10,50,100,300,1000],null,'explore'],
- ['x_tl','타임라인 항해사','타임라인 화면을 열어 본 횟수','timeline','shield','v_tl',[1,10,50,200,500,1000],null,'explore'],
- ['x_map','관계 탐정','관계맵을 열어 본 횟수','affiliate','shield','v_map',[1,10,50,200,500,1000],null,'explore'],
- ['x_ent','인물 연구가','인물 페이지를 열어 본 횟수','id-badge-2','shield','v_ent',[1,10,50,200,500,1000,3000],null,'explore'],
- ['x_mkt','마켓 워처','마켓 화면을 열어 본 횟수','chart-candle','shield','v_mkt',[1,10,50,200,500,1000],null,'explore'],
- ['share','소문난 공유왕','기사를 공유한 횟수','share','star','share',[1,5,20,50,100,300],null,'explore'],
- ['deck','카드 넘기기','오늘의 카드 덱을 넘긴 수','sparkles','circle','deck',[10,100,500,2000,5000,10000,30000],null,'habit'],
- ['deckall','완주 스캐너','오늘의 카드 10장을 끝까지 넘겨 훑어본 날','cards','star','deckall',[1,7,30,100,200,365],null,'habit'],
- ['save','스크랩북','내 서재에 저장한 기사 수','bookmarks','shield','saves',[1,10,50,200,500,1000],null,'collect'],
- ['later','나중에 읽기','나중에 읽기로 담아 둔 기사 수','bookmark-plus','shield','later',[1,10,50,200,500],null,'collect'],
- ['follow','인물 추적자','팔로우한 인물·키워드 수','eye','hex','follows',[1,5,20,50,100],null,'collect'],
- ['taste','나를 아는 독자','나의 성향 분석을 열어 본 날','user-search','hex','taste',[1,7,30,100],null,'collect'],
- ['gamer','게임 기자단','뉴스 게임을 한 판 수','device-gamepad-2','star','plays',[1,10,50,200,500,1000,2000,5000],null,'game'],
+ ['read','열독가','기사(이슈)를 읽은 수','news','circle','read',[1,40,150,400,1000,2500,5000,10000,20000,40000],null,'read'],
+ ['streak','연속 출석','며칠 연속으로 뉴스를 봤는지','flame','shield','streak',[3,7,14,30,60,100,180,365,500,1000],null,'habit'],
+ ['visit','개근상','뉴스를 읽은 날을 모두 더한 수','calendar-check','shield','visit',[7,30,60,100,180,365,500,730,1000],null,'habit'],
+ ['bird','아침형 독자','오전 5~9시에 기사를 읽은 날','sun-high','circle','morning',[5,20,50,100,200,365],null,'time'],
+ ['lunch','점심 브리핑','낮 12~2시에 기사를 읽은 날','tools-kitchen-2','circle','lunch',[5,20,50,100,200,365],null,'time'],
+ ['commute','퇴근길 독자','오후 5~8시에 기사를 읽은 날','bus','circle','commute',[5,20,50,100,200,365],null,'time'],
+ ['owl','올빼미 독자','밤 11시~새벽 4시에 기사를 읽은 날','moon','circle','night',[5,20,50,100,200,365],null,'time'],
+ ['weekend','주말 독자','토·일요일에 기사를 읽은 날','beach','circle','weekend',[3,8,26,52,104,156],null,'time'],
+ ['balance','균형 잡힌 독자','읽은 분야 수(정치·경제·사회…)','chart-bubble','circle','cats',[4,6,8,10,11],null,'read'],
+ ['f_pol','정치통','정치 기사를 읽은 수','building-bank','hex','c_정치',[20,100,300,800,2000,5000,10000],null,'field'],
+ ['f_eco','경제통','경제 기사를 읽은 수','coin','hex','c_경제',[20,100,300,800,2000,5000,10000],null,'field'],
+ ['f_soc','사회부 기자','사회 기사를 읽은 수','users-group','hex','c_사회',[20,100,300,800,2000,5000,10000],null,'field'],
+ ['f_world','국제통','세계 기사를 읽은 수','world','hex','c_세계',[20,100,300,800,2000,5000,10000],null,'field'],
+ ['f_it','IT·과학 탐구자','IT·과학 기사를 읽은 수','cpu','hex','c_IT',[20,100,300,800,2000,5000,10000],null,'field'],
+ ['f_ent','연예 소식통','연예 기사를 읽은 수','microphone-2','hex','c_연예',[20,100,300,800,2000,5000,10000],null,'field'],
+ ['f_spo','스포츠광','스포츠 기사를 읽은 수','ball-football','hex','c_스포츠',[20,100,300,800,2000,5000,10000],null,'field'],
+ ['quiz','OX 마스터','퀴즈를 맞힌 수','checks','hex','quiz_ok',[30,200,600,1500,4000,8000,15000],null,'learn'],
+ ['perfect','만점왕','하루 퀴즈를 모두 맞힌 날','crown','star','perfect',[3,15,40,100,200,365,500],null,'learn'],
+ ['words','단어 수집가','퀴즈로 익힌 단어 수','book-2','hex','words',[30,200,600,1500,3000,6000,10000],null,'learn'],
+ ['history','기록 탐험가','기록 보관소에서 과거를 찾아본 횟수','timeline-event','shield','hist',[5,30,100,300,1000,3000],null,'explore'],
+ ['x_tl','타임라인 항해사','타임라인 화면을 열어 본 횟수','timeline','shield','v_tl',[5,30,100,300,1000,3000],null,'explore'],
+ ['x_map','관계 탐정','관계맵을 열어 본 횟수','affiliate','shield','v_map',[5,30,100,300,1000,3000],null,'explore'],
+ ['x_ent','인물 연구가','인물 페이지를 열어 본 횟수','id-badge-2','shield','v_ent',[5,30,100,300,1000,3000,6000],null,'explore'],
+ ['x_mkt','마켓 워처','마켓 화면을 열어 본 횟수','chart-candle','shield','v_mkt',[5,30,100,300,1000,3000],null,'explore'],
+ ['share','소문난 공유왕','기사를 공유한 횟수','share','star','share',[3,15,50,150,400,1000],null,'explore'],
+ ['deck','카드 넘기기','오늘의 카드 덱을 넘긴 수','sparkles','circle','deck',[100,1000,4000,15000,40000,100000,250000],null,'habit'],
+ ['deckall','완주 스캐너','오늘의 카드 10장을 끝까지 넘겨 훑어본 날','cards','star','deckall',[3,14,45,100,200,365],null,'habit'],
+ ['save','스크랩북','내 서재에 저장한 기사 수','bookmarks','shield','saves',[5,30,100,300,1000,3000],null,'collect'],
+ ['later','나중에 읽기','나중에 읽기로 담아 둔 기사 수','bookmark-plus','shield','later',[5,30,100,300,1000],null,'collect'],
+ ['follow','인물 추적자','팔로우한 인물·키워드 수','eye','hex','follows',[3,10,30,80,150],null,'collect'],
+ ['taste','나를 아는 독자','나의 성향 분석을 열어 본 날','user-search','hex','taste',[3,14,60,180],null,'collect'],
+ ['gamer','게임 기자단','뉴스 게임을 한 판 수','device-gamepad-2','star','plays',[5,30,150,500,1500,3000,6000,15000],null,'game'],
  ['g2048','이슈 2048','2048에서 만든 가장 높은 단계(01~11)','grid-4x4','hex','g2048',[6,7,8,9,10,11],null,'game'],
  ['ladder','사다리 정복자','2048에서 08단계 이상을 만든 사다리 수','stairs-up','hex','ladders',[1,2,3,4],null,'game'],
- ['merge','뉴스 머지','머지 최고 점수','circles','circle','merge',[300,1500,5000,12000,25000,50000,100000],null,'game'],
+ ['merge','뉴스 머지','머지 최고 점수','circles','circle','merge',[1500,5000,12000,25000,50000,100000,200000],null,'game'],
  ['planet','큰 그림','머지에서 만든 가장 높은 단계(01~11)','planet','circle','merge_lv',[6,7,8,9,10,11],null,'game'],
- ['combo','콤보 마스터','2048·머지에서 한 번에 이어 합친 최대 콤보','bolt','star','combo',[2,3,4,5,6,8],null,'game'],
- ['sling','팩트 새총','팩트 새총에서 물리친 가짜뉴스 고블린 수','target-arrow','shield','sling',[5,30,100,400,1000,3000],null,'game'],
- ['stars','별 수집가','팩트 새총에서 모은 별(레벨별 최고)','star','star','stars',[3,9,18,27,36],null,'game'],
+ ['combo','콤보 마스터','2048·머지에서 한 번에 이어 합친 최대 콤보','bolt','star','combo',[3,4,5,6,7,9],null,'game'],
+ ['sling','팩트 새총','팩트 새총에서 물리친 가짜뉴스 고블린 수','target-arrow','shield','sling',[20,100,400,1000,3000,8000],null,'game'],
+ ['stars','별 수집가','팩트 새총에서 모은 별(레벨별 최고)','star','star','stars',[6,12,21,30,36],null,'game'],
  ['level','커리어 성장','도달한 레벨','rocket','star','level',[5,10,20,30,40,50,60,70,80,100],null,'start']
 ];
+/* 획득 난이도(2026-10-31): 처음 둘(계정 개설·첫 기사)만 바로, 나머지는 며칠 → 1주 → 1달 → 3달·6달·1년 이상 꾸준히 해야 오르도록 기준을 높임.
+   RATE = 꾸준히 쓰는 독자의 하루 평균 증가량(추정) → 등급마다 예상 기간을 보여 줌 */
+const RATE={read:8,streak:1,visit:1,morning:.5,lunch:.5,commute:.5,night:.4,weekend:.28,cats:1.2,quiz_ok:10,perfect:.5,words:6,hist:1,v_tl:1.2,v_map:1,v_ent:2,v_mkt:1.2,share:.3,deck:25,deckall:.6,saves:1,later:.7,follows:.25,taste:.3,plays:3,merge:400,sling:8,stars:.6,combo:.15,g2048:.2,merge_lv:.2,ladders:.05,level:.6,signup:99};
+for(const k in RATE)if(/^c_/.test(k))delete RATE[k];
+const etaDays=(b,k)=>{const x=b[6][k],m=b[5],r=RATE[m]||(m.startsWith('c_')?1.5:1);if(m==='level')return lvXP(x)/120;if(['g2048','merge_lv','combo','ladders','stars'].includes(m))return [1,5,20,60,150,300,400][k]||365;return x/r};
+const etaLabel=d=>d<=.2?'바로':d<=4?'며칠':d<=12?'1주+':d<=45?'1달+':d<=120?'3달+':d<=240?'6달+':'1년+';
+const eta=(b,k)=>etaLabel(etaDays(b,k));
 const GROUPS=[['start','시작·성장'],['read','읽기'],['field','분야 전문가'],['time','시간대'],['habit','꾸준함'],['learn','배우기'],['explore','탐험'],['collect','모으기'],['game','게임']];
 const myRO=()=>{try{return JSON.parse(localStorage.getItem('nb-my')||'null')}catch(e){return null}};
 const metric=m=>{const ev=S.ev||{},My=window.NBMy&&NBMy.get?NBMy.get():myRO(),L=learn();
@@ -215,7 +222,7 @@ addEventListener('nb:decktop',()=>ev('deck',1));
 addEventListener('nb:deckall',()=>{const t=dayK();if(S.ev.deckallDay===t)return;S.ev.deckallDay=t;ev('deckall',1,{xp:20,why:'카드 10장 완주'})});
 addEventListener('nb:quiz',e=>{const d=e.detail||{};ev('quiz_n',1,{day:'q'});if(d.ok){S.ev.wordset=S.ev.wordset||{};if(d.word)S.ev.wordset[d.word]=1;ev('quiz_ok',1);ev('words',Object.keys(S.ev.wordset).length,{max:1})}if(d.perfect)ev('perfect',1)});
 if(/\/history\//.test(location.pathname))ev('hist',1);
-window.NBGame={B,TIERS,TIER_XP,GROUPS,CAREER,medal,slot,lvCard,goals,gameTiles,tierOf,metric,level,totalXP,career,lvXP,
+window.NBGame={B,TIERS,eta,TIER_XP,GROUPS,CAREER,medal,slot,lvCard,goals,gameTiles,tierOf,metric,level,totalXP,career,lvXP,
   play(game,score,stat){const d=S.daily[dayK()]||(S.daily[dayK()]={xp:0,g:0,q:0,r:0});ev('plays',1,{day:'g'});if(stat)ev(stat[0],stat[1],{max:stat[2]});return addXP(Math.min(60,Math.max(5,Math.round(score))),'게임 보상')||0},
   state:()=>S,ev,check,celebrate};
 const mo=new MutationObserver(()=>{clearTimeout(mo.t);mo.t=setTimeout(tick,120)});
