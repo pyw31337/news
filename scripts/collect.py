@@ -5,6 +5,7 @@
 import re, json, html, os, datetime as dt, urllib.request, urllib.parse, email.utils, collections, math, time
 from concurrent.futures import ThreadPoolExecutor
 from kiwipiepy import Kiwi
+from entity_media import enrich as enrich_entity_media
 
 KST = dt.timezone(dt.timedelta(hours=9))
 NOW = dt.datetime.now(KST)
@@ -307,6 +308,13 @@ for e in ents:
                          timeline=tl[:400], daily=sorted(days.items()), history=sorted(h.items())[-30:],
                          delta=(round(ent_score[e] - prev[-1], 1) if prev else None),
                          related=[dict(name=(b if a == e else a), n=n) for (a, b), n in co.most_common() if e in (a, b)][:8]))
+
+# 인물은 사진, 기업·기관은 로고, 나라·장소는 국기·대표 사진을 우선한다.
+# 실패해도 기존 위키 미리보기로 렌더링할 수 있으므로 수집 전체를 멈추지 않는다.
+try:
+    enrich_entity_media(entities)
+except Exception as ex:
+    print('entity media', ex)
 
 data = dict(updated=NOW.isoformat(), date=today,
             stats=dict(naver=len(nv_pop) + len(nv_memo), google=len(gn), trends=len(tr), clusters=len(clusters),

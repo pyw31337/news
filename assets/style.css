@@ -65,7 +65,8 @@ main{max-width:1240px;margin:0 auto;padding:16px}
 /* people carousel */
 .hs{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;margin:0 -16px;padding-left:16px;scrollbar-width:none}.hs::-webkit-scrollbar{display:none}
 .pc{flex:0 0 150px;scroll-snap-align:start;text-align:center;padding:16px 12px}
-.pc .av{width:84px;height:84px;border-radius:50%;margin:0 auto 10px;background:#e6e9f3 center/cover;display:flex;align-items:center;justify-content:center;font-size:1.75rem;font-weight:900;color:var(--mute);border:3px solid #fff;box-shadow:0 0 0 2px var(--line)}
+.pc .av{width:84px;height:84px;border-radius:50%;margin:0 auto 10px;background:#e6e9f3 center/cover;display:flex;align-items:center;justify-content:center;font-size:1.75rem;font-weight:900;color:var(--mute);border:3px solid #fff;box-shadow:0 0 0 2px var(--line);overflow:hidden}
+.av.media-logo{background-color:#fff;background-size:72% auto;background-repeat:no-repeat}.av.media-flag{background-color:#eef1f6;background-size:cover}.av.media-portrait,.av.media-place,.av.media-photo{background-size:cover}.av.media-fallback svg{width:48%;height:48%}
 .pc b{display:block;font-size:0.9375rem}.pc small{display:block;font-size:0.71875rem;color:var(--mute);height:34px;overflow:hidden;margin:4px 0 8px}
 .spark{display:block;width:100%;height:28px}
 /* glossary (original NewsBoard term card) */
@@ -279,7 +280,8 @@ section[id^=s-]{scroll-margin-top:120px}
 .ehero .in{position:relative;padding:20px}.ehero h1{font-family:var(--serif);font-size:2.1rem;margin:8px 0}
 .ehero .big{font-size:1.1rem;font-weight:800;line-height:1.45}.ehero .go{display:inline-block;margin-top:10px;font-weight:800;color:var(--acc2)}
 /* 관계맵 '분석 중' 배경 */
-.mapwrap.scan{position:relative;background-color:#fbfcff;background-image:linear-gradient(rgba(47,107,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(47,107,255,.06) 1px,transparent 1px),radial-gradient(circle at 30% 40%,rgba(122,77,255,.07),transparent 45%),radial-gradient(circle at 75% 65%,rgba(255,77,46,.06),transparent 40%);background-size:28px 28px,28px 28px,100% 100%,100% 100%;-webkit-animation:gridf 40s linear infinite;animation:gridf 40s linear infinite}
+.mapwrap.scan{position:relative;overflow:hidden;background-color:#f5f7fc;background-image:linear-gradient(rgba(47,107,255,.105) 1px,transparent 1px),linear-gradient(90deg,rgba(47,107,255,.105) 1px,transparent 1px),radial-gradient(circle at 30% 40%,rgba(122,77,255,.12),transparent 45%),radial-gradient(circle at 75% 65%,rgba(255,77,46,.1),transparent 40%);background-size:30px 30px,30px 30px,100% 100%,100% 100%;box-shadow:inset 0 0 0 1px rgba(47,107,255,.06),var(--sh);-webkit-animation:gridf 40s linear infinite;animation:gridf 40s linear infinite}
+.mapwrap.scan::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.7;background:radial-gradient(circle at 12% 82%,rgba(17,166,131,.18) 0 2px,transparent 3px),radial-gradient(circle at 88% 16%,rgba(122,77,255,.2) 0 2px,transparent 3px),linear-gradient(115deg,transparent 49.85%,rgba(47,107,255,.08) 50%,transparent 50.15%)}
 .mapwrap.scan::after{content:'';position:absolute;left:0;right:0;top:0;height:30%;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(47,107,255,.07),transparent);-webkit-animation:scanl 7s ease-in-out infinite;animation:scanl 7s ease-in-out infinite;will-change:transform}
 .mapwrap.scan svg{position:relative;z-index:1}
 @keyframes gridf{to{background-position:28px 28px,28px 28px,0 0,0 0}}@-webkit-keyframes gridf{to{background-position:28px 28px,28px 28px,0 0,0 0}}
@@ -358,7 +360,8 @@ q::before{content:'“';position:absolute;left:4px;top:-4px;font-size:1.4rem;col
 @media(min-width:768px){.mapwrap{aspect-ratio:16/10}}
 .mapwrap.mini{aspect-ratio:auto}
 .mapwrap svg{touch-action:pan-y;-webkit-user-select:none;user-select:none}
-.node{cursor:pointer}.node text{paint-order:stroke;stroke:#fbfcff;stroke-width:3px;stroke-linejoin:round}
+.node{cursor:pointer}.node text{paint-order:stroke;stroke:#f5f7fc;stroke-width:3px;stroke-linejoin:round}.node circle,.node rect{transition:filter .18s ease,stroke-width .18s ease}.node:hover circle,.node:hover rect{filter:drop-shadow(0 3px 5px rgba(15,22,48,.2));stroke-width:4px}
+.mapfield{position:absolute;z-index:2;left:14px;top:13px;display:grid;gap:2px;pointer-events:none;padding:6px 8px;border:1px solid rgba(47,107,255,.14);border-radius:8px;background:rgba(255,255,255,.58);backdrop-filter:blur(4px);font-size:.58rem;letter-spacing:.08em;color:#6d7895}.mapfield b{font-size:.62rem;color:#445170}.mapfield span{font-weight:700;letter-spacing:0}
 .mapzoom{position:absolute;right:10px;bottom:10px;z-index:2;display:flex;flex-direction:column;gap:6px}
 .mapzoom button{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:1.05rem;font-weight:800;box-shadow:var(--sh)}
 /* 노드 이유 리스트: 칩 + 한줄 + 숫자배지 */
