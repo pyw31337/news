@@ -107,10 +107,8 @@ function header2(){
   // 하단 탭 이름은 my.js nav()가 nb:region-changed에서 다시 그림(여기서 덮어쓰면 가운데 '오늘' 시계가 사라짐)
   const T=R?G.trends:D.trends;
   const tk=T.map((t,i)=>`<a href="${R?'gt/'+i:kh(t.keyword)}" title="${TTIP}"><b>${i+1}</b>${esc(R&&!S.orig?(t.keyword_ko||t.keyword):t.keyword)}<small>${tlab(t)}</small></a>`).join('');
-  const tr=R?`<button type="button" class="translate ${S.orig?'':'on'}" id="translate" title="${S.orig?'해외 뉴스를 한국어로 번역해 보기':'영어 원문으로 보기'}">${S.orig?'번역 보기':'원문 보기'}</button>`:'';
-  $('#ticker').innerHTML=`<div class="lab">${ic('fire')}${R?(EN?'Global trends':'해외 트렌드'):'실시간'}</div><div class="tw" id="tw"><div class="run">${tk}<i class="sp"></i>${tk}</div></div>${tr}`;
+  $('#ticker').innerHTML=`<div class="lab">${ic('fire')}${R?(EN?'Global trends':'해외 트렌드'):'실시간'}</div><div class="tw" id="tw"><div class="run">${tk}<i class="sp"></i>${tk}</div></div>`;
   tickerDrag($('#tw'));
-  const tb=$('#translate');if(tb)tb.onclick=()=>{S.orig=!S.orig;saveS();header2();route()};
 }
 /* 티커: 자동 흐름 + 마우스 드래그·터치 스와이프 */
 function tickerDrag(el){if(!el)return;el.addEventListener('pointerdown',()=>el.classList.add('drag'));['pointerup','pointercancel','pointerleave'].forEach(n=>el.addEventListener(n,()=>el.classList.remove('drag')))}
@@ -480,19 +478,42 @@ async function archive(){
 const T_=(o,k)=>S.orig?o[k]:(o[k+'_ko']||o[k]);
 const gcat=c=>S.orig?(CATEN[c]||c):c;
 const gt=(en,ko)=>S.orig?en:ko;
-function origBtn(){return''}
-function bindOrig(re){}
+// 원문·번역 전환: 해외 화면 머리줄('해외 주요 뉴스 · 한국어 자동 번역') 오른쪽 끝
+function origBtn(){return`<button type="button" class="translate ${S.orig?'':'on'}" id="translate" title="${S.orig?'해외 뉴스를 한국어로 번역해 보기':'영어 원문으로 보기'}">${S.orig?'한국어 번역 보기':'영어 원문 보기'}</button>`}
+function bindOrig(re){const tb=$('#translate');if(tb)tb.onclick=()=>{S.orig=!S.orig;saveS();header2();route()}}
+// 해외 증시 카드(우리 마켓 상세가 없는 지표라 링크 없이, 누르면 말풍선)
+function gmk(m){const d=up(m),s=d==='up'?NBI('caret-up-f'):d==='down'?NBI('caret-down-f'):'',n=S.orig?m.name:(m.name_ko||m.name);
+  return`<div class="mk ${d}" data-tip="${esc(n)} · ${gt('52-week','52주')} ${m.lo52!=null?Number(m.lo52).toLocaleString():'—'} ~ ${m.hi52!=null?Number(m.hi52).toLocaleString():'—'}"><span class="n">${esc(n)}</span><b>${esc(m.price)}</b><em>${s} ${esc(m.diff||'')} (${m.rate>0?'+':''}${m.rate}%)</em>${line(m.series,120,28,d==='down'?'#2f6bff':'#ff4d2e')}</div>`}
 function gtoday(){
-  const I=G.issues,L=I[0];
+  const I=G.issues,L=I[0],mx=Math.max(...I.map(i=>i.score||0),1),M=G.markets||[],ST=G.stocks||[],SE=G.sections||{};
+  const cats={};I.forEach(i=>cats[i.category]=(cats[i.category]||0)+1);
+  const grid=I.slice(5).map((i,k)=>{const wide=k===0;const sum=T_(i,'summary');
+    return`<a class="card ic ${wide?'wide':''} ${i.image?'':'text'}" href="g/${i.id}">${i.image?`<div class="img" ${bg(i.image)}><div class="rk">${i.rank}</div></div>`:''}
+    <div class="bd">${i.image?'':`<div class="rkt">${String(i.rank).padStart(2,'0')}</div>`}<div class="row"><span class="cat ${i.category}">${ic(i.category)}${esc(gcat(i.category))}</span></div>
+    <h3>${esc(T_(i,'title'))}</h3>${sum?`<p class="gsum">${esc(sum.slice(0,wide?220:140))}${sum.length>(wide?220:140)?'…':''}</p>`:''}
+    <div class="chips">${(i.keywords||[]).slice(0,4).map(w=>`<span class="chip">${esc(w)}</span>`).join('')}</div>
+    <div class="heat" data-tip="${gt('Buzz: number of stories and publishers covering it, relative to the top story','화제도: 다룬 기사 수·매체 수를 합친 점수(1위 이슈 대비)')}"><span>${gt('Buzz','화제도')}</span><div class="bar"><i style="width:${((i.score||0)/mx*100).toFixed(0)}%"></i></div><b>${Math.round(i.score||0)}</b></div>
+    <div class="ft"><span>${esc(i.press)} · ${gt(`${i.presses} publishers`,`매체 ${i.presses}곳`)}</span><span>${gt('More','자세히')} ${NBI('arrow-right')}</span></div></div></a>`}).join('');
+  const us=M.filter(m=>m.group==='us'),wo=M.filter(m=>m.group==='world'),ot=M.filter(m=>!['us','world'].includes(m.group));
+  const mv=[...ST].sort((a,b)=>b.rate-a.rate);
+  const secs=Object.entries(SE).filter(([,L])=>L.length);
   app.innerHTML=`<div class="gbar"><span>${ic('세계')}${gt('Global briefing · original reporting','해외 주요 뉴스 · 한국어 자동 번역')}</span>${origBtn()}</div>
   <section class="hero"><a class="lead card" href="g/${L.id}" ${bg(L.image)}><div class="in"><div class="no">01</div><span class="cat 세계">${ic('세계')}${esc(gcat(L.category))}</span><h1>${esc(T_(L,'title'))}</h1>${L.summary?`<p class="ld">${esc(T_(L,'summary'))}</p>`:''}
-   <div class="meter"><div>${ic('news')}<b>${L.mentions}</b><span>${gt('stories','관련 기사')}</span></div><div>${ic('user')}<b>${L.presses}</b><span>${gt('publishers','매체')}</span></div><div>${ic('spark')}<b>${L.gdelt||0}</b><span>${gt('extra coverage','해외 보도')}</span></div></div></div></a>
-   <div class="side">${I.slice(1,5).map(i=>`<a class="card mini" href="g/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><span class="cat 세계">${esc(gcat(i.category))}</span><h3>${esc(T_(i,'title'))}</h3><div class="m">${esc(i.press)} · ${gt(`${i.presses} publishers`,`외 ${Math.max(0,i.presses-1)}곳`)}</div></div></a>`).join('')}</div></section>
+   <div class="meter"><div>${ic('news')}<b>${L.mentions}</b><span>${gt('stories','관련 기사')}</span></div><div>${ic('user')}<b>${L.presses}</b><span>${gt('publishers','매체')}</span></div><div>${ic('spark')}<b>${(L.keywords||[]).length}</b><span>${gt('key terms','핵심어')}</span></div></div></div></a>
+   <div class="side">${I.slice(1,5).map(i=>`<a class="card mini" href="g/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><span class="cat ${i.category}">${esc(gcat(i.category))}</span><h3>${esc(T_(i,'title'))}</h3><div class="m">${esc(i.press)} · ${gt(`${i.presses} publishers`,`외 ${Math.max(0,i.presses-1)}곳`)}</div></div></a>`).join('')}</div></section>
+  ${us.length?`${sec(gt('US stock market','미국 증시'),'Wall Street','<span class="more">'+gt('Daily close · 3-month trend','일별 종가 · 3개월 흐름')+'</span>','up')}<div class="mkrow">${us.map(gmk).join('')}</div>`:''}
+  ${ST.length?`${sec(gt('US market leaders','미국 대표 종목'),'Big Tech & leaders',`<span class="more">${gt('Top mover','오늘 가장 많이 오른 종목')}: ${esc(mv[0].name)} ${mv[0].rate>0?'+':''}${mv[0].rate}%</span>`,'chart')}
+   <div class="gstk">${mv.map(x=>{const d=up(x);return`<div class="gs ${d}" data-tip="${esc(x.name)} (${esc(x.sym)}) · ${gt('52-week','52주')} ${x.lo52??'—'} ~ ${x.hi52??'—'}"><span class="n">${esc(x.name)}<small>${esc(x.sym)}</small></span>${line(x.series,90,24,d==='down'?'#2f6bff':'#ff4d2e')}<b>$${esc(x.price)}</b><em>${x.rate>0?'+':''}${x.rate}%</em></div>`}).join('')}</div>`:''}
+  ${wo.length||ot.length?`${sec(gt('World markets · rates · FX','세계 증시·금리·환율'),'Global markets','','coin')}<div class="mkrow">${[...wo,...ot].map(gmk).join('')}</div>`:''}
   ${sec(gt('Global top stories','해외 이슈 TOP'),'Global top stories','','세계')}
-  <div class="grid">${I.slice(5).map(i=>`<a class="card ic" href="g/${i.id}"><div class="img" ${bg(i.image)}>${i.image?'':`<div class="noimg" style="height:100%">${ic('news')}</div>`}<span class="rk">${i.rank}</span></div><div class="bd"><h3>${esc(T_(i,'title'))}</h3><div class="ft"><span>${esc(i.press)} · ${gt(`${i.presses} publishers`,`매체 ${i.presses}곳`)}</span></div></div></a>`).join('')}</div>
+  <div class="catbar">${Object.entries(cats).map(([c,n])=>`<i style="flex:${n};background:${CATC[c]||'#8189a3'}" data-tip="${esc(gcat(c))} ${n}"></i>`).join('')}</div>
+  <div class="legend">${Object.entries(cats).map(([c,n])=>`<span style="--c:${CATC[c]||'#8189a3'}">${esc(gcat(c))} ${n}</span>`).join('')}</div>
+  <div class="grid10">${grid}</div>
   ${sec(gt('Live searches','해외 실시간 검색어'),'Google Trends','','fire')}
   <div class="trends">${G.trends.slice(0,10).map((t,k)=>`<a class="tr" href="gt/${k}">${th(t.image,'tt','search')}<span class="n">${k+1}</span><b>${esc(T_(t,'keyword'))}</b><span class="tv" title="${TTIP}">${tlab(t)}</span></a>`).join('')}</div>
-  <p class="fine">${gt('This page shows original English reporting. Use “번역 보기” in the header when you want a Korean machine translation.','번역은 자동 생성되어 어색하거나 틀릴 수 있어요. 상단의 원문 보기를 이용해 확인하세요.')}</p>`;
+  ${secs.length?`${sec(gt('Latest by section','분야별 최신 헤드라인'),'By section','','news')}<div class="gsecs">${secs.map(([c,L])=>`<section class="card gsec"><h3><span class="cat ${c}">${ic(c)}${esc(gcat(c))}</span></h3>
+   ${L.map((x,k)=>`<a href="${esc(x.url)}" target="_blank" rel="noopener" class="${k===0&&x.img?'top':''}">${k===0&&x.img?`<span class="gi" ${bg(x.img)}></span>`:''}<b>${esc(T_(x,'title'))}</b><small>${esc(x.press)} · ${ago(x.t)}</small></a>`).join('')}</section>`).join('')}</div>`:''}
+  <p class="fine">${gt('Market data: Yahoo Finance daily closes (may be delayed). Stories: international RSS feeds and Google News.','시세: 야후 파이낸스 일별 종가(지연될 수 있어요). 기사: 해외 언론 RSS·구글 뉴스. 번역은 자동 생성되어 어색하거나 틀릴 수 있어요.')}</p>`;
   bindOrig(gtoday);
 }
 function gissue(id){const i=G.issues.find(x=>x.id===id);if(!i)return gtoday();setMeta(T_(i,'title'),T_(i,'summary'));

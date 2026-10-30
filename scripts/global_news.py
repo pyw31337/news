@@ -90,11 +90,47 @@ def tr_batch(texts):
             DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S', time.gmtime(time.time() + 32400)), host='translate.googleapis.com', path='/translate_a/single', err=str(e)[:120]))
         TR_STAT['deferred'] += len(group)
     return out
+# ---- 원문 주소·대표 사진(캐시): 구글 뉴스 중계 주소를 실제 기사 주소로 풀고, 기사 페이지의 큰 대표 사진(og:image)을 씀 ----
+GC_P = os.path.join(ROOT, 'gn_cache.json')
+try: GC = json.load(open(GC_P))
+except Exception: GC = {}
+IMG_STAT = collections.Counter()
+def gn_decode(u):
+    """news.google.com/rss/articles/<id> → 원문 주소. 실패하면 원래 주소."""
+    m = re.search(r'news\.google\.com/(?:rss/)?articles/([^?/]+)', u or '')
+    if not m: return u
+    aid = m.group(1)
+    if aid in GC: return GC[aid] or u
+    try:
+        h = urllib.request.urlopen(urllib.request.Request('https://news.google.com/rss/articles/' + aid, headers=UA), timeout=12).read().decode('utf-8', 'replace')
+        sg, ts = re.search(r'data-n-a-sg="([^"]+)"', h), re.search(r'data-n-a-ts="([^"]+)"', h)
+        p = ['Fbv4je', '["garturlreq",[["X","X",["X","X"],null,null,1,1,"US:en",null,1,null,null,null,null,null,0,1],"X","X",1,[1,1,1],1,1,null,0,0,null,0],"%s",%s,"%s"]' % (aid, ts.group(1), sg.group(1))]
+        r = urllib.request.urlopen(urllib.request.Request('https://news.google.com/_/DotsSplashUi/data/batchexecute', ('f.req=' + urllib.parse.quote(json.dumps([[p]]))).encode(),
+                                   {**UA, 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}), timeout=12).read().decode('utf-8', 'replace')
+        real = json.loads(json.loads(r.split('\n\n')[1])[:-2][0][2])[1]
+        if not str(real).startswith('http'): raise ValueError('no url')
+        GC[aid] = real; IMG_STAT['gn_decoded'] += 1; return real
+    except Exception as e:
+        IMG_STAT['gn_fail'] += 1; GC[aid] = ''; return u
+def big(img):
+    """피드가 주는 작은 썸네일을 큰 크기로(가능한 곳만). 바꿀 수 없는 작은 사진은 '' → 원문 대표 사진으로 대체"""
+    if not img: return ''
+    img = re.sub(r'(ichef\.bbci\.co\.uk/(?:ace|news)/(?:standard|ws|branded_news))/\d+/', r'\1/976/', img)          # BBC 240 → 976
+    if 'i.guim.co.uk' in img and re.search(r'width=(\d+)', img) and int(re.search(r'width=(\d+)', img).group(1)) < 600: return ''  # Guardian 서명 주소라 크기 변경 불가
+    if 'aljazeera.com' in img: img = img.split('?')[0]
+    w = re.search(r'[?&](?:w|width)=(\d+)', img)
+    if w and int(w.group(1)) < 400: return ''
+    return img
 def og_img(u):
-    if 'news.google.com' in u: return ''
+    if not u or 'news.google.com' in u: return ''
+    k = 'og:' + u
+    if k in GC: return GC[k]
     t = get(u, 10)
-    m = re.search(r'<meta[^>]+property="og:image"[^>]+content="([^"]+)"', t) or re.search(r'<meta[^>]+content="([^"]+)"[^>]+property="og:image"', t)
-    return html.unescape(m.group(1)) if m else ''
+    m = re.search(r'<meta[^>]+property="og:image"[^>]+content="([^"]+)"', t) or re.search(r'<meta[^>]+content="([^"]+)"[^>]+property="og:image"', t) \
+        or re.search(r'<meta[^>]+name="twitter:image(?::src)?"[^>]+content="([^"]+)"', t)
+    v = html.unescape(m.group(1)) if m else ''
+    if v.startswith('//'): v = 'https:' + v
+    GC[k] = v; IMG_STAT['og_hit' if v else 'og_miss'] += 1; return v
 def gdelt(q):
     t = get('https://api.gdeltproject.org/api/v2/doc/doc?format=json&mode=artlist&maxrecords=15&sort=hybridrel&timespan=2d&query=' + urllib.parse.quote(q + ' sourcelang:english'), 25)
     try: return json.loads(t).get('articles', [])
@@ -143,9 +179,23 @@ if os.environ.get('GLOBAL_GDELT') == '1':
                 except Exception: ts = NOW.isoformat()
                 i['sources'].append(dict(title=a.get('title', ''), url=a.get('url'), press=a.get('domain', ''), t=ts, img=a.get('socialimage', '')))
 for i in issues: i.setdefault('gdelt', 0)
-with ThreadPoolExecutor(4) as ex:
-    imgs = list(ex.map(lambda i: i['image'] or next((og_img(s['url']) for s in i['sources'][:3] if 'news.google' not in s['url']), ''), issues))
-for i, im in zip(issues, imgs): i['image'] = im
+# 구글 뉴스 중계 주소 → 원문 주소(이슈당 앞 6건). 원문 링크도 정확해지고 대표 사진을 찾을 수 있게 됨
+with ThreadPoolExecutor(6) as ex:
+    todo = [s for i in issues for s in i['sources'][:6] if 'news.google.com' in s['url']]
+    for s, real in zip(todo, ex.map(lambda s: gn_decode(s['url']), todo)): s['url'] = real
+for i in issues:
+    if 'news.google.com' in i['url']: i['url'] = next((s['url'] for s in i['sources'] if s['title'] == i['title'] and 'news.google.com' not in s['url']), i['url'])
+# 대표 사진: 원문 기사 페이지의 큰 사진(og:image) 우선, 없으면 크기를 키운 피드 사진
+def pick(i):
+    for s in i['sources'][:4]:
+        if 'news.google.com' in s['url']: continue
+        og = og_img(s['url'])
+        if og: s['img'] = og; return og
+    return big(i['image']) or next((big(s['img']) for s in i['sources'] if big(s['img'])), '')
+with ThreadPoolExecutor(6) as ex: imgs = list(ex.map(pick, issues))
+for i, im in zip(issues, imgs): i['image'] = im; IMG_STAT['issue_img' if im else 'issue_noimg'] += 1
+for i in issues:
+    for s in i['sources']: s['img'] = big(s.get('img'))
 def trend_feed(geo):
     out=[]; tt=get('https://trends.google.com/trending/rss?geo='+geo)
     for it in re.findall(r'<item>(.*?)</item>', tt, re.S)[:12]:
@@ -164,16 +214,61 @@ for t in sorted(raw_trends,key=lambda t:-t['traffic_n']):
     k=re.sub(r'\W','',t['keyword'].lower())
     if k and k not in seen_t: seen_t.add(k);trends.append(t)
 trends=trends[:20]
+# 검색어 사진: 구글 트렌드 사진은 작아서, 첫 관련 기사의 대표 사진을 우선
+def tpick(t):
+    for n in t['news'][:2]:
+        og = og_img(n['url'])
+        if og: return og
+    return t['image']
+with ThreadPoolExecutor(6) as ex:
+    for t, im in zip(trends, ex.map(tpick, trends)): t['image'] = im
+# ---- 미국·세계 증시(야후 일봉 3개월) ----
+def yq(sym):
+    try:
+        j = json.loads(get('https://query1.finance.yahoo.com/v8/finance/chart/%s?range=3mo&interval=1d' % urllib.parse.quote(sym), 15))['chart']['result'][0]
+        c = [x for x in j['indicators']['quote'][0]['close'] if x is not None]
+        if len(c) < 2: return None
+        p, q = c[-1], c[-2]
+        return dict(price=p, prev=q, rate=round((p - q) / q * 100, 2), dir='RISING' if p > q else 'FALLING' if p < q else 'EVEN',
+                    at=dt.datetime.fromtimestamp(j['meta'].get('regularMarketTime') or 0, KST).isoformat(), series=[round(x, 4) for x in c[-60:]],
+                    hi52=j['meta'].get('fiftyTwoWeekHigh'), lo52=j['meta'].get('fiftyTwoWeekLow'))
+    except Exception as e: print('yahoo', sym, e); return None
+WM = [('^GSPC', 'S&P 500', 'S&P 500', 'us'), ('^IXIC', 'Nasdaq', '나스닥', 'us'), ('^DJI', 'Dow Jones', '다우존스', 'us'), ('^RUT', 'Russell 2000', '러셀 2000', 'us'),
+      ('^VIX', 'VIX (fear index)', 'VIX 공포지수', 'us'), ('^TNX', 'US 10Y yield', '미국 10년물 금리', 'rate'), ('DX-Y.NYB', 'Dollar index', '달러 인덱스', 'fx'), ('EURUSD=X', 'EUR/USD', '유로/달러', 'fx'),
+      ('USDJPY=X', 'USD/JPY', '달러/엔', 'fx'), ('^N225', 'Nikkei 225', '닛케이 225', 'world'), ('^FTSE', 'FTSE 100', '영국 FTSE 100', 'world'), ('^GDAXI', 'DAX', '독일 DAX', 'world'),
+      ('^HSI', 'Hang Seng', '항셍', 'world'), ('000001.SS', 'Shanghai', '상하이 종합', 'world'), ('CL=F', 'WTI crude', 'WTI 원유', 'cmd'), ('GC=F', 'Gold', '금', 'cmd'), ('BTC-USD', 'Bitcoin', '비트코인', 'cmd')]
+WS = [('NVDA', 'Nvidia'), ('AAPL', 'Apple'), ('MSFT', 'Microsoft'), ('GOOGL', 'Alphabet'), ('AMZN', 'Amazon'), ('META', 'Meta'), ('TSLA', 'Tesla'), ('AVGO', 'Broadcom'),
+      ('TSM', 'TSMC'), ('BRK-B', 'Berkshire'), ('JPM', 'JPMorgan'), ('LLY', 'Eli Lilly'), ('NFLX', 'Netflix'), ('AMD', 'AMD'), ('PLTR', 'Palantir'), ('COST', 'Costco')]
+with ThreadPoolExecutor(8) as ex:
+    wm = list(ex.map(lambda a: yq(a[0]), WM)); ws = list(ex.map(lambda a: yq(a[0]), WS))
+fmt = lambda v, sym: ('{:,.3f}' if sym.endswith('=X') else '{:,.2f}').format(v)
+markets = [dict(sym=a[0], name=a[1], name_ko=a[2], group=a[3], price=fmt(q['price'], a[0]), diff=fmt(abs(q['price'] - q['prev']), a[0]), **{k: q[k] for k in ('rate', 'dir', 'at', 'series', 'hi52', 'lo52')})
+           for a, q in zip(WM, wm) if q]
+stocks = [dict(sym=a[0], name=a[1], price=fmt(q['price'], a[0]), **{k: q[k] for k in ('rate', 'dir', 'series', 'hi52', 'lo52')}) for a, q in zip(WS, ws) if q]
+# ---- 분야별 최신 헤드라인(이슈에 안 들어간 기사, 분야마다 6건) ----
+used = {s['url'] for i in issues for s in i['sources']} | {i['url'] for i in issues}
+sections = {}
+for a in sorted(A, key=lambda a: a['t'], reverse=True):
+    c = next((CAT[k] for k in CAT if k in a['feed']), None)
+    if not c or a['url'] in used or len(sections.setdefault(c, [])) >= 6: continue
+    sections[c].append(dict(title=a['title'], url=a['url'], press=a['press'], t=a['t'], img=big(a['img'])))
+with ThreadPoolExecutor(6) as ex:
+    todo = [x for L in sections.values() for x in L if 'news.google.com' in x['url']]
+    for x, real in zip(todo, ex.map(lambda x: gn_decode(x['url']), todo)): x['url'] = real
+    todo = [x for L in sections.values() for x in L[:3] if not x['img']]
+    for x, im in zip(todo, ex.map(lambda x: og_img(x['url']), todo)): x['img'] = im
 # 번역은 한 큐에서 배치 처리한다. 제한 중에는 빈 번역값으로 저장되어 화면이 영어 원문으로 자연스럽게 대체된다.
 jobs = []
 for i in issues:
     jobs.extend([(i, 'title_ko', i['title']), (i, 'summary_ko', i['summary'])]); jobs.extend([(s, 'title_ko', s['title']) for s in i['sources']])
+for L in sections.values(): jobs.extend([(x, 'title_ko', x['title']) for x in L])
 for t in trends:
     jobs.append((t, 'keyword_ko', t['keyword'])); jobs.extend([(n, 'title_ko', n['title']) for n in t['news']])
 translated = tr_batch([text for _, _, text in jobs])
 for target, key, source in jobs: target[key] = translated.get(source, '')
 for r, i in enumerate(issues, 1): i['rank'] = r; i['id'] = 'g' + __import__('hashlib').md5((i['sources'][0]['url'] if i.get('sources') else i['title']).encode()).hexdigest()[:8]
 json.dump(dict(list(TC.items())[-4000:]), open(TC_P, 'w'), ensure_ascii=False)
-json.dump(dict(updated=NOW.isoformat(), issues=issues, trends=trends, stats=dict(articles=len(A), feeds=len(FEEDS), presses=len({a['press'] for a in A})),
-               translate=dict(TR_STAT)), open(os.path.join(ROOT, 'global.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
-print('global', len(A), 'articles', len(issues), 'issues', dict(TR_STAT))
+json.dump(dict(list(GC.items())[-6000:]), open(GC_P, 'w'), ensure_ascii=False)
+json.dump(dict(updated=NOW.isoformat(), issues=issues, trends=trends, markets=markets, stocks=stocks, sections=sections, stats=dict(articles=len(A), feeds=len(FEEDS), presses=len({a['press'] for a in A})),
+               translate=dict(TR_STAT), images=dict(IMG_STAT)), open(os.path.join(ROOT, 'global.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
+print('global', len(A), 'articles', len(issues), 'issues', dict(TR_STAT), dict(IMG_STAT))
