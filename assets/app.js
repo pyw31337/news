@@ -37,7 +37,9 @@ const entc=(name,t,href)=>`<${href?`a href="${href}"`:'span'} class="ent ${t}">$
 const meta=(x,rel)=>`<span class="meta">${pp(x.press,x.url)}${ts(x.t||x.time,rel)}</span>`;
 function th(u,cls='th',fb='news'){return u?`<div class="${cls}" ${bg(u)}></div>`:`<div class="${cls} noimg">${ic(fb)}</div>`}
 /* ---------- 설정 ---------- */
-const S=Object.assign({hide:[],fs:100,region:'kr',orig:true},JSON.parse(localStorage.getItem('nb-settings')||'{}'));
+const S=Object.assign({hide:[],fs:100,region:'kr',orig:false},JSON.parse(localStorage.getItem('nb-settings')||'{}'));
+/* v2: 해외 기본 언어를 한국어로 전환. 기존의 자동 영문 기본값도 한 번만 안전하게 이관한다. */
+if(S.regionDefaultV!==2){S.orig=false;S.regionDefaultV=2;localStorage.setItem('nb-settings',JSON.stringify(S));}
 const saveS=()=>{localStorage.setItem('nb-settings',JSON.stringify(S));applyS()};
 const applyS=()=>{document.documentElement.style.fontSize=(16*S.fs/100)+'px'};applyS();
 const vis=i=>!S.hide.includes(i.category);
@@ -64,7 +66,7 @@ const TTIP='Google 트렌드 기준 오늘 대략적인 검색 횟수(구간값)
 const tlab=t=>t.traffic_n?(S.region==='en'&&S.orig?`Search ${kfmt(t.traffic_n)}+`:`검색 ${kfmt(t.traffic_n)}+`):'';
 function header(){
   $('#updated').outerHTML=`<div class="regionctl" id="rsw"><div class="rsw" role="radiogroup" aria-label="국내·해외 보기"><button role="radio" data-m="kr" title="국내 뉴스">국내</button><button role="radio" data-m="en" title="해외 뉴스">해외</button></div></div>`;
-  $('#rsw').onclick=ev=>{const b=ev.target.closest('[data-m]');if(!b)return;const m=b.dataset.m;S.region=m;if(m==='en')S.orig=true;saveS();const cp=location.pathname.slice(BASEP.length);go(m==='en'&&/^gt?\//.test(cp)?cp:'');header2()};
+  $('#rsw').onclick=ev=>{const b=ev.target.closest('[data-m]');if(!b)return;const m=b.dataset.m;S.region=m;if(m==='en')S.orig=false;saveS();const cp=location.pathname.slice(BASEP.length);go(m==='en'&&/^gt?\//.test(cp)?cp:'');header2()};
   header2();
 }
 function header2(){

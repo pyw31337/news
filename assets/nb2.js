@@ -84,10 +84,10 @@ function live(k){const DD=gD();if(!DD)return'';try{
   if(k==='people'){const p=(DD.entities||[]).filter(e=>e.type==='person').sort((a,b)=>b.score-a.score)[0];return p?`<span class="ix-live"><em>오늘의 인물</em>${E(p.name)}</span>`:''}
   if(k==='learn'){const w=(DD.words||[])[0];return w?`<span class="ix-live"><em>오늘의 단어</em>${E(w.word)}</span>`:''}
   }catch(e){}return''}
-function setRegion(m){S.region=m==='kr'?'kr':'en';if(m!=='kr')S.orig=m==='en';saveS();typeof header2==='function'&&header2()}
+function setRegion(m){S.region=m==='kr'?'kr':'en';if(m!=='kr')S.orig=false;saveS();typeof header2==='function'&&header2()}
 window.nbMenu=function(){setMeta('메뉴','NewsBoard 전체 메뉴');const app=document.getElementById('app');const DD=gD();
   const now=new Date(),dd=`${now.getMonth()+1}.${now.getDate()} (${'일월화수목금토'[now.getDay()]})`;
-  const open=JSON.parse(localStorage.getItem('nb-ix')||'["news"]');const MD=S.region==='kr'?'kr':S.orig?'en':'ko';
+  const open=JSON.parse(localStorage.getItem('nb-ix')||'["news"]');const MD=S.region==='kr'?'kr':'ko';
   app.innerHTML=`<div class="ix">
   <header class="ix-top"><div class="ix-date"><b>${dd}</b>${DD?`<span>기사 ${(DD.stats.naver+DD.stats.google).toLocaleString()}건 · 언론사 ${DD.stats.presses}곳에서 모았어요</span>`:''}</div>
    <label class="ix-q">${I('search')}<input id="mq" type="search" placeholder="메뉴·이슈·인물 찾기" autocomplete="off" enterkeyhint="search"><kbd>/</kbd></label><div id="mres" class="ix-res"></div></header>
@@ -96,7 +96,7 @@ window.nbMenu=function(){setMeta('메뉴','NewsBoard 전체 메뉴');const app=d
     <div class="ix-items">${p.items.map(([n,h,d,ic])=>`<a class="ix-i" href="${h}"><span class="ix-ic">${I(ic)}</span><span class="ix-t"><b>${E(n)}</b><small>${E(d)}</small></span>${I('arrow-right')}</a>`).join('')}</div></section>`).join('')}</nav>
   <section class="ix-set"><h3><span>환경 설정</span></h3>
    <div class="ix-row"><span class="ix-rl">${I('book')}<b>글자 크기</b></span><div class="ds-stepper"><button type="button" data-fs="-5" aria-label="작게">가<sup>−</sup></button><em>${S.fs}%</em><button type="button" data-fs="5" aria-label="크게">가<sup>+</sup></button></div></div>
-   <div class="ix-row"><span class="ix-rl">${I('world')}<b>뉴스 지역</b></span><div class="ds-pill" id="mreg" role="radiogroup">${[['kr','국내'],['ko','해외 KR'],['en','해외 EN']].map(([m,l])=>`<button type="button" role="radio" aria-checked="${MD===m}" data-m="${m}" class="${MD===m?'on':''}">${l}</button>`).join('')}<i class="ds-segk"></i></div></div>
+   <div class="ix-row"><span class="ix-rl">${I('world')}<b>뉴스 지역</b></span><div class="ds-pill" id="mreg" role="radiogroup">${[['kr','국내'],['ko','해외']].map(([m,l])=>`<button type="button" role="radio" aria-checked="${MD===m}" data-m="${m}" class="${MD===m?'on':''}">${l}</button>`).join('')}<i class="ds-segk"></i></div></div>
    <div class="ix-row"><span class="ix-rl">${I('alert-triangle')}<b>편향 배지 표시</b></span><button type="button" class="ds-toggle${S.nobias?'':' on'}" role="switch" aria-checked="${!S.nobias}" id="mbias"><i></i></button></div>
    <a class="ix-row" href="settings"><span class="ix-rl">${I('settings')}<b>카테고리 고르기</b><small>스포츠·연예 등 숨기기</small></span>${I('chevron-right')}</a>
    <a class="ix-row" href="alerts/settings"><span class="ix-rl">${I('bell')}<b>알림 설정</b></span>${I('chevron-right')}</a>
