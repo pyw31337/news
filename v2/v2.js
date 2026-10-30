@@ -1,7 +1,7 @@
 /* NewsBoard v2 시안 2 — '보고·넘기고·만지는 뉴스'
    첫 화면 데이터는 data/today_v2.json(약 23KB) 하나. 사진·얼굴·숫자·색으로 먼저 이해되게, 글은 최소.
    ① 오늘의 스토리(인스타그램식): 이슈마다 표지 → 무슨 일 → 왜 중요 → 사람들 반응 → 맞혀 보기, 톡톡 넘김
-   ② 오늘 뉴스의 크기(버블 지도) ③ 얼굴로 보는 오늘 ④ 여론 온도계 ⑤ 숫자로 보는 오늘
+   ② 얼굴로 보는 오늘 ③ 실험실(lab.js: 번호 붙은 콘텐츠 후보, 골라서 합칠 것) ④ 숫자로 보는 오늘
    저장 형식은 v1과 같아(nb-settings 등) 기록이 이어짐. 서비스 워커 미등록. 상세는 확정 전까지 v1 화면으로 */
 (function(){
 const $=s=>document.querySelector(s),app=$('#app');
@@ -20,51 +20,26 @@ let V=null;
 /* ---------- 첫 화면 ---------- */
 function draw(){const I=V.issues||[];if(!I.length){app.innerHTML='<p class="ld">아직 오늘의 뉴스가 없어요.</p>';return}
   const day=new Date((V.date||'')+'T00:00:00+09:00');
-  const hot=I.filter(i=>i.op&&i.op.total).sort((a,b)=>b.op.total-a.op.total).slice(0,3);
   app.innerHTML=`
   <section class="hi"><div><small>${E(day.toLocaleDateString('ko-KR',{month:'long',day:'numeric',weekday:'long'}))}</small><h1>오늘 뉴스, <em>3분</em>이면 충분해요</h1></div></section>
   <section class="rings" aria-label="오늘의 스토리">${I.map((i,k)=>`<button type="button" class="rg" data-s="${k}" style="--c:${cc(i.cat)}"><span class="rgi" ${bg(i.imgs[0]||i.img)}></span><b>${i.rank}</b><small>${E(short((i.faces[0]||{}).n||i.kw[0]||i.cat,6))}</small>${i.new?'<i class="nw">NEW</i>':''}</button>`).join('')}</section>
   <button type="button" class="play" data-s="0"><span>▶</span><b>오늘의 이슈 10개, 스토리로 넘겨 보기</b><small>무슨 일 → 왜 중요 → 사람들 반응 → 맞혀 보기</small></button>
 
-  <h2>오늘 뉴스의 크기<small>원이 클수록 화제예요 · 눌러서 보기</small></h2>
-  <section class="bub" id="bub"></section>
-  <div class="lgd">${[...new Set(I.map(i=>i.cat))].map(c=>`<span style="--c:${cc(c)}">${E(c)}</span>`).join('')}</div>
-
   ${(V.people||[]).length?`<h2>얼굴로 보는 오늘<small>오늘 뉴스에 나온 사람들</small></h2>
   <section class="faces">${V.people.map(p=>`<a href="entity/${encodeURIComponent(p.n)}"><span ${bg(p.img)}></span><b>${E(p.n)}</b><small>${E(p.d)}</small>${p.c>1?`<i>${p.c}</i>`:''}</a>`).join('')}</section>`:''}
 
-  ${hot.length?`<h2>여론 온도계<small>댓글로 본 사람들의 반응</small></h2>
-  <section class="temp">${hot.map(i=>{const o=i.op,lk=o.like||0,dl=o.dislike||0,t=lk+dl||1,G=o.gender||{},A=o.ages||{},am=Math.max(1,...Object.values(A));
-    return`<button type="button" class="tc" data-s="${I.indexOf(i)}"><div class="tch"><span class="tci" ${bg(i.imgs[0]||i.img)}></span><b>${E(short(i.title,40))}</b></div>
-     <div class="thermo"><i class="h" style="width:${lk/t*100}%"></i><i class="c" style="width:${dl/t*100}%"></i></div><div class="thl"><span>공감 ${Math.round(lk/t*100)}%</span><span>댓글 ${nf(o.total)}</span><span>비공감 ${Math.round(dl/t*100)}%</span></div>
-     ${(o.stances||[]).length?`<div class="stn">${o.stances.map((x,k)=>`<span style="flex:${x.s};--k:${k}"><em>${E(short(x.l,10))}</em>${x.s}%</span>`).join('')}</div>`:''}
-     <div class="demo"><div class="gd"><i style="width:${G.male||0}%"></i><span>남 ${G.male||0}%</span><span>여 ${G.female||0}%</span></div><div class="ag">${Object.entries(A).map(([k,v])=>`<span><i style="height:${v/am*100}%"></i><small>${k}</small></span>`).join('')}</div></div>
-     ${o.words.length?`<div class="wd">${o.words.map((w,k)=>`<span style="--s:${1.05-k*.07}">${E(w)}</span>`).join('')}</div>`:''}
-     ${o.top?`<q>${E(o.top)}</q>`:''}</button>`}).join('')}</section>`:''}
+  <section id="lab"></section>
 
   <h2>숫자로 보는 오늘</h2>
   <section class="nums"><div><b data-n="${V.nums.arts||0}">0</b><small>오늘 모은 기사</small></div><div><b data-n="${V.nums.presses||0}">0</b><small>언론사</small></div><div><b data-n="${V.nums.comments||0}">0</b><small>TOP 10 댓글</small></div></section>
-  ${(V.market||[]).length?`<section class="mkts">${V.market.slice(0,6).map(m=>{const u=m.dir==='RISING',d=m.dir==='FALLING';return`<a href="market/${encodeURIComponent(m.name)}" class="${u?'u':d?'d':''}"><small>${E(m.name)}</small><b>${E(m.price)}</b><em>${u?'▲':d?'▼':''} ${E(String(m.rate).replace(/^[-+]/,''))}%</em></a>`}).join('')}</section>`:''}
-
-  ${(V.trends||[]).length?`<h2>지금 많이 찾는 말</h2><section class="tr">${V.trends.slice(0,8).map((t,k)=>`<a href="kw/${encodeURIComponent(t.k)}"><i>${k+1}</i>${E(t.k)}</a>`).join('')}</section>`:''}
 
   <h2>더 즐기기</h2>
   <section class="more"><a href="learn"><span>🧩</span>배우기</a><a href="games/"><span>🎮</span>게임·배지</a><a href="market"><span>📈</span>마켓</a><a href="people"><span>👤</span>인물</a><a href="timeline"><span>🕰️</span>타임라인</a><a href="./" data-world><span>🌍</span>해외·영어</a></section>
-  <p class="foot">v2 시안 2 · 첫 화면 데이터 ${(window.__v2kb||0)}KB · 확정 전 미리보기 · <a href="./">지금 버전(v1)</a></p>`;
-  bubbles(I);countUp();
+  <p class="foot">v2 시안 3 · 첫 화면 데이터 ${(window.__v2kb||0)}KB · 확정 전 미리보기 · <a href="./">지금 버전(v1)</a></p>`;
+  countUp();window.NB2={V,E,cc,bg,short,nf,RM,S,story};const ls=document.createElement('script');ls.src='v2/lab.js?v=1';document.body.appendChild(ls);
   app.onclick=e=>{const s=e.target.closest('[data-s]');if(s){e.preventDefault();story(+s.dataset.s,0);return}
     const w=e.target.closest('[data-world]');if(w){try{const s=JSON.parse(localStorage.getItem('nb-settings')||'{}');s.region='en';localStorage.setItem('nb-settings',JSON.stringify(s))}catch(x){}}}}
 
-/* 버블 지도: 화제도(score)로 크기, 사진으로 채우고 분류 색 테두리. 가운데부터 나선형으로 겹치지 않게 놓음 */
-function bubbles(I){const el=$('#bub');if(!el)return;const W=el.clientWidth||340,H=Math.min(440,Math.max(320,W*.95));el.style.height=H+'px';
-  // 원 넓이 합이 판의 약 48%가 되게 크기를 정하고, 가운데부터 나선형으로 놓음. 못 놓은 원이 있으면 전체를 줄여 다시
-  const sum=I.reduce((a,i)=>a+(i.score||1),0);let k0=1,P;
-  for(let tries=0;tries<8;tries++){P=[];let fail=false;
-    I.forEach((i,k)=>{const r=Math.max(24,Math.sqrt((i.score||1)/sum*W*H*.48/Math.PI)*k0);let a=k*2.4,d=0,x=W/2,y=H/2,ok=false;
-      for(let t=0;t<2600&&!ok;t++){x=W/2+Math.cos(a)*d;y=H/2+Math.sin(a)*d;ok=x-r>3&&x+r<W-3&&y-r>3&&y+r<H-3&&P.every(p=>Math.hypot(p.x-x,p.y-y)>p.r+r+5);a+=.3;d+=.25}
-      if(!ok)fail=true;P.push({x,y,r,i,k})});
-    if(!fail)break;k0*=.9}
-  el.innerHTML=P.map(p=>`<button type="button" class="bb" data-s="${p.k}" style="--x:${p.x}px;--y:${p.y}px;--r:${p.r}px;--c:${cc(p.i.cat)};--d:${p.k*60}ms;z-index:${20-p.k}" aria-label="${p.i.rank}위 ${E(p.i.title)}"><span ${bg(p.i.imgs[0]||p.i.img)}></span><b>${p.i.rank}</b>${p.r>40?`<small>${E(short((p.i.faces[0]||{}).n||p.i.kw[0]||p.i.cat,7))}</small>`:''}</button>`).join('')}
 function countUp(){document.querySelectorAll('.nums b[data-n]').forEach(b=>{const n=+b.dataset.n;if(RM){b.textContent=nf(n);return}const t0=performance.now();
   const f=t=>{const p=Math.min(1,(t-t0)/1100);b.textContent=nf(Math.round(n*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(f)};
   const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){io.disconnect();requestAnimationFrame(f)}});io.observe(b)})}
@@ -116,5 +91,5 @@ function bindSV(){let y0=null,x0=null;
 
 const t0=performance.now();
 fetch('data/today_v2.json',{cache:'no-cache'}).then(r=>{window.__v2kb=Math.round((+r.headers.get('content-length')||0)/1024);return r.json()})
- .then(j=>{V=j;draw();addEventListener('resize',()=>bubbles(V.issues))}).catch(()=>{app.innerHTML='<p class="ld">불러오지 못했어요. 잠시 후 다시 열어 주세요.</p>'});
+ .then(j=>{V=j;draw()}).catch(()=>{app.innerHTML='<p class="ld">불러오지 못했어요. 잠시 후 다시 열어 주세요.</p>'});
 })();
