@@ -152,6 +152,12 @@
 - Gemini 한도 관리: `scripts/llm_quota.py` → `data/db/llm_quota.json`. 하루 한도 429(PerDay)를 맞은 모델은 미국 서부 자정까지 건너뜀, 가벼운 작업(cat·trend·words·a-flow·a-bias·wx)은 lite 모델 먼저, 지난 한도 기록(cap) 기준으로 주력 모델을 하루 시간 흐름만큼만 사용. enrich·voice·fun 공용. 현황판 'AI 분석'에 모델별 오늘 사용량 표.
 - collect의 data 커밋: 중간 파일 `_arts.json`은 저장 제외, 수정/삭제 충돌은 자동 해결(2026-10-30 실패 원인).
 
+## 4-8. 관리자 메뉴형 현황판·독자 반응 (2026-10-30)
+- /admin 상단 메뉴: 개요 · 뉴스 기사 · 인물 · 장소·기업·사건 · 카드뉴스·놀이·민심 · AI·봇 · 수집 일정 · 독자 반응 · 시스템·도구(예전 화면). `#news`처럼 주소로 바로 열림.
+- 데이터: `scripts/stats_detail.py`(collect, `GH_TOKEN`으로 워크플로 실행 기록) → `data/stats_detail.json`. 화면: `admin/tabs.js`(그래프 부품은 data.js의 `window.NBD`).
+- 봇 목록(누가·어디서·언제·무엇을·저장)은 stats_detail.py의 `BOTS`에 손으로 적음 → 새 자동 작업을 만들면 여기에 한 줄 추가.
+- 독자 반응: `assets/ev.js`(index·persons·politicians)가 조회(30분 1회)·원문 클릭(하루 1회)·좋아요/스크랩(my.js `nb:save` 신호)·공유를 익명으로 Worker `POST /ev`에 묶어 보냄. D1 표 `ev`(날짜·항목·종류 합계)·`evm`(제목)·`evb`(하루 쓰기 수, 15,000행 상한). 관리자는 `GET /ev/stats`(2분 캐시). 개인정보처리방침 1절에 한 줄 추가.
+
 ## 4-3. 자동 운영 (2026-10-29 16:50 KST 기준, 사람·AI 개입 없이 동작)
 모든 수집은 GitHub Actions cron으로 돕니다(공개 저장소라 무료). 각 수집기는 자기 브랜치에 state(체크포인트)를 커밋해 다음 회차가 이어받고, 이미 넣은 ID는 건너뛰어 중복이 없습니다. D1은 하루 4만 줄 상한·차분 업서트(09:00 KST 리셋). LLM 단계는 secrets의 무료 Gemini 키만 사용하고, 실패·한도 초과 시 건너뛰고 다음 회차로 미룹니다(`continue-on-error`).
 

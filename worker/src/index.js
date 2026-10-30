@@ -352,6 +352,48 @@ async function leaderboard(env, req, url) {
   }
   return J(env, req, { error: 'not_found' }, 404);
 }
+// 독자 반응 집계(익명): 누가 했는지는 저장하지 않고 날짜·항목·종류별 숫자만 더함. D1 하루 쓰기 한도를 지키려고 하루 15,000행까지만 받음
+const EVK = new Set(['view', 'click', 'like', 'scrap', 'share']), EV_CAP = 15000;
+let evOK = false;
+async function evInit(env) {
+  if (evOK) return;
+  await env.DB.batch(['CREATE TABLE IF NOT EXISTS ev (day TEXT NOT NULL, id TEXT NOT NULL, k TEXT NOT NULL, n INTEGER NOT NULL, PRIMARY KEY (day, id, k))',
+    'CREATE TABLE IF NOT EXISTS evm (id TEXT PRIMARY KEY, t TEXT, c TEXT, u TEXT, p TEXT)',
+    'CREATE TABLE IF NOT EXISTS evb (day TEXT PRIMARY KEY, rows INTEGER NOT NULL)'].map(q => env.DB.prepare(q)));
+  evOK = true;
+}
+const kday = (d = 0) => new Date(now() + 9 * 36e5 - d * DAY).toISOString().slice(0, 10);
+const cut = (v, n) => typeof v === 'string' ? v.replace(/[\u0000-\u001f]/g, ' ').slice(0, n) : null;
+async function events(env, req, url) {
+  try { await evInit(env); } catch (e) { return req.method === 'GET' ? J(env, req, { wait: true }) : new Response(null, { status: 204, headers: cors(env, req) }); }
+  if (req.method === 'POST') {
+    let L = []; try { L = JSON.parse((await req.text()).slice(0, 20000)).e || []; } catch (e) {}
+    L = L.filter(x => x && EVK.has(x.k) && typeof x.id === 'string' && /^[\w:./\-가-힣%]{1,120}$/.test(x.id)).slice(0, 30);
+    if (!L.length) return new Response(null, { status: 204, headers: cors(env, req) });
+    const day = kday(), used = (await env.DB.prepare('SELECT rows FROM evb WHERE day=?').bind(day).first())?.rows || 0;
+    if (used > EV_CAP) return new Response(null, { status: 204, headers: cors(env, req) });
+    const st = [];
+    for (const x of L) {
+      const v = x.v === -1 && (x.k === 'like' || x.k === 'scrap') ? -1 : 1;
+      st.push(env.DB.prepare('INSERT INTO ev(day,id,k,n) VALUES(?,?,?,?) ON CONFLICT(day,id,k) DO UPDATE SET n=MAX(0,n+excluded.n)').bind(day, x.id, x.k, v));
+      if (x.t) st.push(env.DB.prepare('INSERT OR IGNORE INTO evm(id,t,c,u,p) VALUES(?,?,?,?,?)').bind(x.id, cut(x.t, 140), cut(x.c, 12), cut(x.u, 300), cut(x.p, 16)));
+    }
+    st.push(env.DB.prepare('INSERT INTO evb(day,rows) VALUES(?,?) ON CONFLICT(day) DO UPDATE SET rows=rows+excluded.rows').bind(day, st.length + 1));
+    try { await env.DB.batch(st); } catch (e) {}
+    return new Response(null, { status: 204, headers: cors(env, req) });
+  }
+  // GET /ev/stats: 날짜별 합계(30일) + 종류별 많이 반응한 항목(오늘·7일·30일)
+  const q = (sql, ...a) => env.DB.prepare(sql).bind(...a);
+  const d30 = kday(29), wins = [['d1', kday(0)], ['d7', kday(6)], ['d30', d30]], ks = [...EVK];
+  const qs = [q('SELECT day,k,SUM(n) n,COUNT(*) items FROM ev WHERE day>=? GROUP BY day,k', d30), q('SELECT day,rows FROM evb WHERE day>=?', d30)];
+  for (const [, from] of wins) for (const k of ks) qs.push(q('SELECT e.id,SUM(e.n) n,m.t,m.c,m.u,m.p FROM ev e LEFT JOIN evm m ON m.id=e.id WHERE e.k=? AND e.day>=? GROUP BY e.id HAVING n>0 ORDER BY n DESC LIMIT 20', k, from));
+  qs.push(q('SELECT m.p p,e.k k,SUM(e.n) n FROM ev e LEFT JOIN evm m ON m.id=e.id WHERE e.day>=? GROUP BY m.p,e.k', kday(6)));
+  const r = (await env.DB.batch(qs)).map(x => x.results);
+  const top = {}; let i = 2;
+  for (const [w] of wins) { top[w] = {}; for (const k of ks) top[w][k] = r[i++]; }
+  return new Response(JSON.stringify({ day: kday(), daily: r[0], budget: r[1], top, by_type: r[i], cap: EV_CAP }),
+    { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=120', ...cors(env, req) } });
+}
 export default {
   async fetch(req, env) {
     const url = new URL(req.url), p = url.pathname;
@@ -362,6 +404,7 @@ export default {
       if (p === '/usage' && req.method === 'GET') return usage(env, req);
       if (p.startsWith('/archive/') && env.AR) return archive(env, req, url, p);
       if (p === '/lb') return await leaderboard(env, req, url);
+      if (p === '/ev' && req.method === 'POST' || p === '/ev/stats' && req.method === 'GET') return await events(env, req, url);
       if (p === '/auth/link' && req.method === 'POST') return await oauthLinkStart(env, req, url);
       let m = p.match(/^\/auth\/(google|kakao|naver)\/(start|callback)$/);
       if (m) return await (m[2] === 'start' ? oauthStart(env, url, m[1]) : oauthCallback(env, url, m[1]));
