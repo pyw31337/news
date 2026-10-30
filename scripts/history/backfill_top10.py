@@ -21,7 +21,6 @@ Q = [('속보', None), ('대통령', '정치'), ('국회', '정치'), ('정부 �
 PR = set('협력 개최 출시 수상 새단장 취득 체결 MOU 세미나 성과대회 이벤트 프로모션 오픈 론칭 기부 후원 캠페인 선정 할인 특가 업무협약 동정'.split())
 HARD = set('사망 사고 구속 기소 선고 탄핵 특검 발사 급락 급등 화재 지진 대통령 국회'.split())
 LOCAL = set('국비 현안 시장 군수 구청장 도지사'.split())
-CAT7 = {'과학': 'IT', '건강': '사회', '환경': '사회', '문화': '사회'}   # 사이트 분류 7개(정치·경제·사회·세계·IT·연예·스포츠)로
 STOP = set('속보 단독 종합 1보 2보 영상 사진 포토 오늘 내일 어제 관련 대한 위해 이번 지난 올해 한국 우리 정부 발표 기자 뉴스 사설 칼럼 오피니언 인터뷰 브리핑'.split())
 def get(u):
     for i in range(3):
@@ -84,7 +83,7 @@ def day(d):
                 k, conf = categorize(titles)[:2]
                 if conf >= .5 or not qcat: cat = k
             except Exception: pass
-        cat = CAT7.get(cat or qcat or '사회', cat or qcat or '사회')
+        cat = cat or qcat or '사회'   # 사이트와 같은 11개 분류(classify.CATS)
         out.append(dict(rank=r, id='r' + hashlib.md5((a + rep['title']).encode()).hexdigest()[:8], title=rep['title'], url=rep['url'], press=rep['press'], image='',
                         summary=[], keywords=core[:6], entities=[], category=cat, presses=c['presses'], mentions=len(c['items']),
                         sources=[dict(title=i['title'], url=i['url'], press=i['press']) for i in c['items'][:6]]))
