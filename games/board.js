@@ -46,5 +46,7 @@
     };
     draw();
   }
+  /* 로그인 전에 세운 최고 기록도 로그인하면 전체 순위에 올림(한 번만) */
+  if (tok()) Object.entries(S).forEach(([b, v]) => { if (v && v.best > (v.sent || 0)) submit(b, v.best).then(j => { if (j && !j.error) { v.sent = v.best; save() } }) });
   window.NBBoard = { record, best, hist, view, submit };
 })();

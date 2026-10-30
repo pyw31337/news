@@ -131,6 +131,12 @@
 - 해외 기사 원문도 `db/articles_global/`에 날짜별 보관(archive_extra.py). 엔티티 타임라인 3,000건 초과분은 버리지 않고 `db/entities/old/`로
 - backup.yml: 매주 data·politicians·history·legal·media 브랜치를 통째로 R2(newsboard-backup `branches/latest/`, 매달 첫 주 `branches/YYYY-MM/`)에. Worker `/backup/put`(GitHub OIDC)
 
+## 4-5. 기기 기록 보존·계정 인계·용량 알림 (2026-10-30)
+- my.js: nb-로 시작하는 모든 localStorage 값(게임 점수·학습·설정·취향 등, 인증 키 제외)을 변경 시각(nb-lsat)과 함께 IndexedDB 'ls'에 사본 → 지워지면 다음 방문 때 복구. 로그인하면 /sync 문서의 `ls`로 전부 올리고 기기 간 합침(최근 값 우선, nb-scores는 최고점·기록 합침, nb-game은 NBGameMerge). 삭제는 퍼뜨리지 않음
+- games/board.js: 로그인 전 최고 기록도 로그인 후 리더보드에 한 번 올림
+- quota.yml(매일): 저장소·Pages 묶음(1GB)·media(900MB 상한)·data·D1·R2·네이버 API 사용량 → 80% 넘으면 '[용량 알림]' 이슈. Worker `/usage`(OIDC)
+- 썸네일 표시 기준 완화(sharp.js·deck.js): 칸의 60% 이상이거나 가로 480px 이상이면 표시. 대표 카드는 기사 대표 사진 우선
+
 ## 4-3. 자동 운영 (2026-10-29 16:50 KST 기준, 사람·AI 개입 없이 동작)
 모든 수집은 GitHub Actions cron으로 돕니다(공개 저장소라 무료). 각 수집기는 자기 브랜치에 state(체크포인트)를 커밋해 다음 회차가 이어받고, 이미 넣은 ID는 건너뛰어 중복이 없습니다. D1은 하루 4만 줄 상한·차분 업서트(09:00 KST 리셋). LLM 단계는 secrets의 무료 Gemini 키만 사용하고, 실패·한도 초과 시 건너뛰고 다음 회차로 미룹니다(`continue-on-error`).
 

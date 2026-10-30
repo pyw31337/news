@@ -75,8 +75,7 @@ function header2(){
   document.body.classList.toggle('en',EN);document.documentElement.lang=EN?'en':'ko';window.dispatchEvent(new CustomEvent('nb:region-changed'));
   const top=EN?['Today','Timeline','Markets','Library']:['오늘','타임라인','마켓','내 서재'];
   document.querySelectorAll('.topnav a').forEach((a,i)=>a.textContent=top[i]||a.textContent);
-  const tab=EN?['Timeline','Markets','Today','Library','Menu']:['타임라인','마켓','오늘','내 서재','메뉴'];
-  document.querySelectorAll('.tabbar a').forEach((a,i)=>{const svg=a.querySelector('svg');if(svg)a.replaceChildren(svg,document.createTextNode(tab[i]||''))});
+  // 하단 탭 이름은 my.js nav()가 nb:region-changed에서 다시 그림(여기서 덮어쓰면 가운데 '오늘' 시계가 사라짐)
   const T=R?G.trends:D.trends;
   const tk=T.map((t,i)=>`<a href="${R?'gt/'+i:kh(t.keyword)}" title="${TTIP}"><b>${i+1}</b>${esc(R&&!S.orig?(t.keyword_ko||t.keyword):t.keyword)}<small>${tlab(t)}</small></a>`).join('');
   const tr=R?`<button type="button" class="translate ${S.orig?'':'on'}" id="translate" title="${S.orig?'해외 뉴스를 한국어로 번역해 보기':'영어 원문으로 보기'}">${S.orig?'번역 보기':'원문 보기'}</button>`:'';

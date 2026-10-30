@@ -224,6 +224,15 @@ async function branchBackup(env, req, url) {
   await env.BK.put('branches/' + k, req.body, { httpMetadata: { contentType: 'application/octet-stream' } });
   return J(env, req, { ok: true, k, bytes: n });
 }
+// ── 무료 한도 사용량(GitHub Actions만): D1 두 DB 크기, R2 백업 용량. quota.yml이 80% 넘으면 알림 ──
+async function usage(env, req) {
+  if (!await ghActions((req.headers.get('Authorization') || '').replace(/^Bearer\s+/i, ''))) return J(env, req, { error: 'auth' }, 401);
+  const size = async d => { try { return (await d.prepare('SELECT 1').run()).meta.size_after || 0 } catch (e) { return -1 } };
+  let bytes = 0, objects = 0, cur;
+  do { const l = await env.BK.list({ cursor: cur, limit: 1000 }); for (const o of l.objects) { bytes += o.size; objects++ } cur = l.truncated ? l.cursor : null } while (cur);
+  let rows = 0; try { rows = (await env.AR.prepare('SELECT rows FROM budget WHERE day=?').bind(new Date(now()).toISOString().slice(0, 10)).first())?.rows || 0 } catch (e) {}
+  return J(env, req, { d1: { sync: await size(env.DB), archive: env.AR ? await size(env.AR) : 0 }, r2: { bytes, objects }, archive_rows_today: rows });
+}
 // ── 인물 아카이브(공개 읽기, 수집기만 쓰기) ──
 const AJ = (env, req, o, s = 200, age = 600) => new Response(JSON.stringify(o), { status: s, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=' + age, ...cors(env, req) } });
 async function archive(env, req, url, p) {
@@ -350,6 +359,7 @@ export default {
     try {
       if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env), keys: { id_salt: env.ID_SALT ? 'secret' : 'auto', archive: env.ARCHIVE_KEY ? 'key+github' : 'github' } });   // 값은 절대 내보내지 않음
       if (p === '/backup/put' && req.method === 'PUT') return branchBackup(env, req, url);
+      if (p === '/usage' && req.method === 'GET') return usage(env, req);
       if (p.startsWith('/archive/') && env.AR) return archive(env, req, url, p);
       if (p === '/lb') return await leaderboard(env, req, url);
       if (p === '/auth/link' && req.method === 'POST') return await oauthLinkStart(env, req, url);

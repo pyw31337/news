@@ -1,0 +1,27 @@
+name: quota
+# 무료 한도 사용량 점검(매일). 80%를 넘는 항목이 있으면 이슈로 알림 → 데이터가 지워지기 전에 다른 저장소로 옮길 시간 확보
+on:
+  schedule:
+    - cron: '17 23 * * *'   # 매일 08:17 KST
+  workflow_dispatch:
+permissions: { contents: read, issues: write, actions: read, id-token: write }
+jobs:
+  quota:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: 브랜치 크기 재기
+        run: |
+          repo="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git clone -q --depth 1 --branch data "$repo" data || mkdir data
+          git clone -q --depth 1 --branch media "$repo" media || mkdir media
+      - name: Cloudflare 사용량(D1·R2)
+        continue-on-error: true
+        run: |
+          T=$(curl -fsS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=newsboard-sync" | python3 -c 'import json,sys;print(json.load(sys.stdin)["value"])')
+          for n in 1 2 3; do curl -fsS -H "Authorization: Bearer $T" https://newsboard-sync.pyw213.workers.dev/usage -o usage.json && break; sleep 10; done
+          cat usage.json || true
+      - name: 점검·알림
+        env: { GH_TOKEN: '${{ github.token }}', REPO: '${{ github.repository }}' }
+        run: python3 scripts/quota.py

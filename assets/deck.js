@@ -13,7 +13,8 @@ window.nbAnchor=function(id){const t=document.getElementById(id);if(!t)return;
 /* ---------- 선명도 검사: 원본 폭 ≥ 화면 폭 × 2 (기기 배율이 1이면 ×1) ---------- */
 const NAT={};
 function natural(u){return NAT[u]||(NAT[u]=new Promise(r=>{const im=new Image();im.decoding='async';im.onload=()=>r({w:im.naturalWidth,h:im.naturalHeight});im.onerror=()=>r({w:0,h:0});im.src=u;setTimeout(()=>r({w:0,h:0}),8000)}))}
-const need=w=>Math.min(1600,w*Math.max(2,devicePixelRatio||1));
+/* 사진이 없는 것보다 조금 덜 선명한 사진이 낫다(2026-10-30): 칸 크기의 60%(최소 160px, 최대 480px) 이상이면 사용 */
+const need=w=>Math.min(480,Math.max(160,w*.6));
 window.nbSharp=natural;
 
 /* ---------- 카드 덱 (스프링 물리) ---------- */
@@ -105,8 +106,8 @@ window.nbDeck=function(root){
   // 선명하지 않은 대표 사진은 글자 카드로
   root.querySelectorAll('.rcard').forEach(async c=>{const u=c.dataset.img,box=c.querySelector('.rimg');if(!u){c.classList.add('txt');return}
     const bw=box.clientWidth||c.clientWidth||360,bh=box.clientHeight||bw*.56;
-    const L=await Promise.all(u.split('|').map(async x=>({x,n:await natural(x)})));const ok=L.filter(o=>o.n.w>=need(bw)&&o.n.h>=need(bh)).sort((a,b)=>b.n.w-a.n.w)[0];
-    if(ok){box.style.backgroundImage=`url('${ok.x}')`;c.classList.add('hasimg')}else c.classList.add('txt')})};
+    const L=await Promise.all(u.split('|').map(async x=>({x,n:await natural(x)})));const ok=L.filter(o=>o.n.w>=need(bw)&&o.n.h>=need(bh))[0];/* 기사 대표 사진 우선(크기순으로 고르면 묶음 속 다른 기사 사진이 뜸) */
+    if(ok){box.style.backgroundImage=`url('${ok.x}')`;box.classList.add('sq-ok');box.dataset.sq=ok.x;c.classList.add('hasimg')}else c.classList.add('txt')})};
 
 /* ---------- 상세 상단 갤러리 (큰 사진 1 + 2×2 + 사진 +N장) ---------- */
 window.nbGallery=async function(el,list){if(!el)return;
