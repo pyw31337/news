@@ -42,3 +42,9 @@
 .vk{display:flex;align-items:center;gap:5px;font-size:.8rem}.vk i{width:9px;height:9px;border-radius:50%}.vk small{color:var(--mute)}
 .hbar b{white-space:nowrap}
 .lseg{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px}.lseg button b{font-size:.7rem;opacity:.7;margin-left:2px}#localdb .legend span{display:inline-flex;align-items:center;gap:4px;margin:4px 8px 0 0;font-size:.75rem}#localdb .legend i{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* 의석 막대: 개표 화면처럼 굵게, 막대 안 숫자, 과반선(2026-10-30) */
+.seat{position:relative;height:30px;overflow:visible}.seat i{display:flex;align-items:center;justify-content:center;min-width:2px;color:#fff;font-size:.75rem;font-weight:800}
+.seat i:first-child{border-radius:99px 0 0 99px}.seat i:last-of-type{border-radius:0 99px 99px 0}
+.seat .maj{position:absolute;top:-6px;bottom:-6px;width:0;border-left:2px dashed #0f1630}.seat .maj span{position:absolute;top:-18px;left:0;transform:translateX(-50%);white-space:nowrap;font-size:.66rem;font-weight:800;color:#0f1630}
+.seat{margin-top:18px}

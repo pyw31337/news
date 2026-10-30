@@ -18,8 +18,10 @@ a.schip::after{content:'›';opacity:.6;margin-left:1px}
 .rdeck{position:relative;outline:none;min-width:0;padding-bottom:50px}
 .rdeck:focus-visible{box-shadow:0 0 0 3px rgba(47,107,255,.5);border-radius:26px}
 .rstage{position:relative;height:440px;perspective:1400px;touch-action:pan-y;-webkit-user-select:none;user-select:none}
-.rcard.lead{position:absolute;inset:0;min-height:0;will-change:transform,opacity;transform-origin:50% 60%;background-color:#1d2547;
-  box-shadow:0 calc(8px + var(--lift,0)*26px) calc(22px + var(--lift,0)*44px) rgba(12,18,40,calc(.22 + var(--lift,0)*.2)),0 1px 0 rgba(255,255,255,.08) inset;cursor:grab;backface-visibility:hidden}
+.rcard.lead{position:absolute;inset:0;min-height:0;transform-origin:50% 60%;background-color:#1d2547;
+  box-shadow:0 8px 22px rgba(12,18,40,.22),0 1px 0 rgba(255,255,255,.08) inset;cursor:grab;backface-visibility:hidden;contain:layout style}
+/* 들었을 때 그림자: 미리 그려 둔 층의 불투명도만 바꿈(매 프레임 그림자를 다시 그리지 않음) */
+.rcard .rlift{position:absolute;inset:0;border-radius:inherit;box-shadow:0 34px 66px rgba(12,18,40,.42);opacity:0;pointer-events:none;will-change:opacity;z-index:-1}
 .rcard.lead:active{cursor:grabbing}
 .rcard.txt{background:radial-gradient(120% 90% at 85% 0%,#2a3a7a 0%,#141c3c 55%,#0f1630 100%)}
 .rcard.txt::after{content:'';position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,46,.35),transparent 70%)}
@@ -82,3 +84,7 @@ i.plo.mono{font-size:1rem}
 .rcard.lead::before{background:linear-gradient(180deg,rgba(15,22,48,0) 30%,rgba(15,22,48,.85) 58%,#141b3a 100%)}
 .rcard.hasimg{background:#141b3a}
 .rcard.txt .rimg{display:none}
+
+/* 움직이는 카드(현재·바로 뒤·방금 넘긴 카드)만 별도 레이어로: 레이어가 많으면 매 프레임 레이어 정리(Layerize)가 무거워짐 */
+.rcard.lead.act{will-change:transform,opacity}
+.rcard.lead:not(.act) .rlift{will-change:auto}
