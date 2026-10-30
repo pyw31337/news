@@ -66,7 +66,7 @@ function past(i){const P=i.past||[];if(!P.length)return'';
 /* 이 사건의 흐름: 기간 필터 + 살아 움직이는 노드 타임라인 */
 function flow(i){const F=(i.flow||[]).map(f=>({...f,t:day(f.date)})).filter(f=>f.t);const P=(i.past||[]).map(p=>({...p,t:day(p.date)})).filter(p=>p.t);
   if(!F.length)return`<section id="s-flow" class="ds-sec">${window.sec?sec('이 사건의 흐름','Issue flow','','clock'):''}<div class="note">흐름 데이터가 없어요.</div></section>`;
-  window.__dsFlow={F,P,terms:[...(i.entities||[]),...(i.keywords||[])]};
+  window.__dsFlow={F,P,terms:[...(i.entities||[]),...(i.keywords||[])],x:{presses:i.presses||0,comments:i.opinion?i.opinion.total:0}};
   return`<section id="s-flow" class="ds-sec">${window.sec?sec('이 사건의 흐름','Issue flow','','clock'):''}
   <div class="ds-seg" role="tablist" aria-label="기간">${[['1m','1개월'],['6m','6개월'],['1y','1년'],['all','전체']].map(([v,l],k)=>`<button role="tab" data-r="${v}" aria-selected="${k===3}">${l}</button>`).join('')}</div>
   <div class="ds-river"><svg class="ds-rsv" preserveAspectRatio="none"></svg><div class="ds-nodes"></div></div>
@@ -92,10 +92,12 @@ function bindFlow(root){const sv=root.querySelector('.ds-rsv'),box=root.querySel
       <line class="ds-ax" x1="${pad}" x2="${W-pad}" y1="${H-26}" y2="${H-26}"/>${yrs.map(([x,y])=>`<g class="ds-tk"><text x="${Math.max(pad,x)}" y="${H-10}">${y}</text></g>`).join('')}
       ${links}<path class="ds-line" d="${path}" stroke="url(#dsg)"/><path class="ds-flowd" d="${path}"/>`;
     const pl=sv.querySelector('.ds-line');if(pl&&pl.getTotalLength){const L=pl.getTotalLength();pl.style.strokeDasharray=L;pl.style.strokeDashoffset=L;requestAnimationFrame(()=>{pl.style.transition='stroke-dashoffset 1s cubic-bezier(.3,.7,.2,1)';pl.style.strokeDashoffset=0})}
+    nd.classList.toggle('crowd',gap<36);   /* 노드가 촘촘하면 과거 노드의 날짜 글자는 숨김(마우스를 올리면 제목) */
     nd.innerHTML=all.map((a,j)=>a.kind==='f'?`<button class="ds-n ${a.k===sel?'on':''} ${a.k===0?'now':''}" data-k="${a.k}" style="--x:${a.cx}px;--y:${a.cy}px;--r:${a.r}px;--d:${j*60}ms" aria-label="${ymd(a.x.t)} ${a.x.items.length}건"><i>${a.x.items.length}</i><span>${md(a.x.t)}</span></button>`
       :`<a class="ds-n past" href="${E(a.x.url)}" target="_blank" rel="noopener" style="--x:${a.cx}px;--y:${a.cy}px;--r:${a.r}px;--d:${j*60}ms" title="${E(a.x.title)}"><i></i><span>${md(a.x.t)}</span></a>`).join('');
     const n=f.reduce((s,x)=>s+x.items.length,0),first=f.length?f[f.length-1].t:null;
-    sm.innerHTML=f.length?`<span><b class="ds-num">${f.length}</b>번의 고비</span><span><b class="ds-num">${n}</b>건 보도</span>${first?`<span><b class="ds-num">${Math.max(1,Math.round((now-first)/864e5))}</b>일째 이어지는 이야기</span>`:''}${p.length?`<span class="past"><b class="ds-num">${p.length}</b>개 과거 사건과 연결</span>`:''}`:'<span>이 기간에는 새 흐름이 없어요. 기간을 넓혀 보세요.</span>';
+    const X=window.__dsFlow.x||{},tip=(v,t,lab)=>`<span data-tip="${E(t)}"><b class="ds-num">${v}</b>${lab}</span>`;
+    sm.innerHTML=f.length?[tip(f.length,'기사가 몰린 날(흐름의 고비) 수','번의 고비'),tip(n,'이 기간 흐름에 잡힌 보도 수','건 보도'),first?tip(Math.max(1,Math.round((now-first)/864e5)),'첫 보도부터 오늘까지','일째 이어짐'):'',p.length?tip(p.length,'아카이브의 과거 사건 중 인물·키워드가 겹치는 것','개 과거 사건과 연결'):'',X.presses?tip(X.presses,'오늘 이 이슈를 보도한 언론사 수','곳 언론사'):'',X.comments?tip(X.comments.toLocaleString(),'포털 기사에 달린 댓글 수','개 댓글'):''].join(''):'<span>이 기간에는 새 흐름이 없어요. 기간을 넓혀 보세요.</span>';
     if(!f.some(x=>F.indexOf(x)===sel))sel=f.length?F.indexOf(f[0]):-1;
     ls.innerHTML=f.map(x=>card(x,F.indexOf(x))).join('');
     nd.querySelectorAll('.ds-n').forEach(b=>b.classList.toggle('on',+b.dataset.k===sel&&!b.classList.contains('past')))}
@@ -150,10 +152,8 @@ function deep(i){const ai=i.ai||{},terms=[...(i.entities||[]),...(i.keywords||[]
   const F=(i.flow||[]).map(f=>day(f.date)).filter(Boolean);const span=F.length?Math.max(1,Math.round((Date.now()-Math.min(...F))/864e5)):0;
   const lab=['배경','전개','쟁점','파장','앞으로','더 보기'];
   return`<section id="s-deep" class="ds-sec">${window.sec?sec('깊게 보기','Deep dive','','book'):''}
-   <div class="ds-facts"><div><b>${i.mentions||0}</b><span>관련 기사</span></div><div><b>${i.presses||0}</b><span>언론사</span></div><div><b>${span||'–'}</b><span>일째 이어짐</span></div><div><b>${i.opinion?i.opinion.total.toLocaleString():'–'}</b><span>댓글</span></div></div>
-   ${(i.entities||[]).length?`<div class="ds-who">${i.entities.slice(0,6).map(n=>`<span class="ds-tag k">${E(n)}</span>`).join('')}</div>`:''}
    <ol class="ds-steps">${S.map((s,k)=>`<li><span class="no">${k+1}</span><div><em>${lab[Math.min(k,5)]}</em><p>${emph(s,terms)}</p></div></li>`).join('')}</ol>
    </section>`}
 
-window.DS={emph,rich,logo,press,related,past,flow,opinion,deep,bind(root){bindPress(root);bindFlow(root)}};
+window.DS={emph,rich,logo,press,related,past,flow,opinion,deep,sents,bind(root){bindPress(root);bindFlow(root)}};
 })();
