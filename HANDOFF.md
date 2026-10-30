@@ -161,6 +161,7 @@
 ## 4-9. 해외 탭·영어 모드·오늘의 OX(2026-10-31)
 - 해외 수집(`global_news.py`): 구글 뉴스 중계 주소를 원문 주소로 풀고(`data/gn_cache.json`), 원문 대표 사진(og:image) 우선, 미국·세계 증시 17개·미국 대표 종목 16개(야후 일봉), 분야별 최신 헤드라인. 화면은 app.js `gtoday`.
 - 영어 모드 = 해외 + '영어 원문 보기'(S.region==='en'&&S.orig, body.en). 머리줄·하단 탭·국내/해외 전환·바닥글·오늘의 도전(game.js `T`)·OX 덱·놀면서 배우기(fun.js `pick`)가 영어로. 원문/번역 전환 버튼은 해외 화면 머리줄 오른쪽 끝.
+- 해외 이슈 상세(app.js `gissue`): 사진 모음 → 제목·숫자·목차 → 요약(AI) → 기사 내용(원문 첫 문단, `global_news.py` `page()`) → 깊게 보기 → 핵심 용어 → 보도 흐름(날짜별) → 관련 기사(공통 보도 묶음). AI 해설은 `scripts/global_ai.py`(이슈별 캐시 `data/gai_cache.json`, 실행당 새 이슈 최대 6개 한 번에).
 - 오늘의 OX: `scripts/quiz.py` → `data/quiz.json` + 날짜별 누적 `data/fun/quiz/YYYY-MM-DD.json`·`index.json`. 레벨 1~3, OX·4지선다, 해설, 한·영. AI는 오전·오후 2번(캐시), 자료에 없는 숫자가 든 문제는 버림. 규칙 문제(시세·기준금리·검수 사전)는 AI 없이도 매일. 영어가 덜 번역된 문제(`en_ok:false`)는 영어 모드에서 뺌.
 - (2026-10-31 수정) 영어 모드는 '국내 콘텐츠를 영어로 번역'이 아니라 **해외 영어 원문 기반**(뉴욕타임스형 영어 학습). 해외 탭 기본=한국어(번역), '영어 원문 보기'=영어 원문. `fun.py`의 `world`(영어 헤드라인 단어 `vocab`·해외 카드뉴스·해외 4컷 ko/en), `quiz.py`의 `scope:'global'` 문제(영어 원문으로 출제+한국어 번역). 국내 탭은 `scope:'kr'`.
 - 그래프 말풍선: `assets/tip.js`(data-tip · SVG <title> · data-series). 새 그래프를 만들면 이 세 가지 중 하나를 붙일 것.

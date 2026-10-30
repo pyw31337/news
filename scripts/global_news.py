@@ -121,6 +121,30 @@ def big(img):
     w = re.search(r'[?&](?:w|width)=(\d+)', img)
     if w and int(w.group(1)) < 400: return ''
     return img
+BOIL = re.compile(r'cookie|subscribe|sign up|newsletter|advertis|all rights reserved|javascript|your browser|copyright|©|click here|read more|follow us', re.I)
+def page(u):
+    """원문 기사 페이지 한 번 읽어 대표 사진·설명·첫 문단들을 캐시(pg:주소). 막힌 사이트는 빈 값"""
+    if not u or 'news.google.com' in u: return {}
+    k = 'pg:' + u
+    if k in GC: return GC[k]
+    t = get(u, 10)
+    md = lambda *names: next((html.unescape(m.group(1)) for n in names for m in [re.search(r'<meta[^>]+(?:property|name)="%s"[^>]+content="([^"]*)"' % n, t) or re.search(r'<meta[^>]+content="([^"]*)"[^>]+(?:property|name)="%s"' % n, t)] if m), '')
+    img = md('og:image', 'twitter:image', 'twitter:image:src')
+    if img.startswith('//'): img = 'https:' + img
+    paras = []
+    for m in re.finditer(r'<p[^>]*>(.*?)</p>', t, re.S):
+        x = re.sub(r'\s+', ' ', un(re.sub(r'<(svg|script|style|button|figure|figcaption)[^>]*>.*?</\1>', ' ', m.group(1), flags=re.S))).strip()
+        x = re.sub(r'^(?:Prefer the Guardian on Google|Advertisement|Listen to this article[^.]*\.)\s*', '', x)
+        x = re.sub(r'^By [^.]{0,120}?Published On \d{1,2} \w+ \d{4}(?:\d{1,2} \w+ \d{4})?', '', x).strip()
+        if not x: continue
+        w = re.findall(r"[A-Za-z']+", x)
+        if w and sum(1 for t in w if t[0].isupper()) / len(w) > .45: continue   # 메뉴·목록(대문자 단어 나열)
+        # 문장다운 문단만: 단어 15개 이상, 마침표, 붙어 버린 버튼 글자(camelCase 덩어리) 없음
+        if 90 <= len(x) <= 700 and len(w) >= 15 and '.' in x and not BOIL.search(x) and not re.search(r'[a-z]{3,}[A-Z][a-z]+[A-Z]', x) \
+           and sum(len(t) for t in w) / len(w) < 8 and x[0].isupper() and x not in paras: paras.append(x)
+        if len(paras) >= 3: break
+    v = dict(img=img, desc=md('og:description', 'description', 'twitter:description')[:400], paras=paras)
+    GC[k] = v; GC['og:' + u] = img; IMG_STAT['page_text' if paras else 'page_notext'] += 1; return v
 def og_img(u):
     if not u or 'news.google.com' in u: return ''
     k = 'og:' + u
@@ -187,15 +211,24 @@ for i in issues:
     if 'news.google.com' in i['url']: i['url'] = next((s['url'] for s in i['sources'] if s['title'] == i['title'] and 'news.google.com' not in s['url']), i['url'])
 # 대표 사진: 원문 기사 페이지의 큰 사진(og:image) 우선, 없으면 크기를 키운 피드 사진
 def pick(i):
-    for s in i['sources'][:4]:
-        if 'news.google.com' in s['url']: continue
-        og = og_img(s['url'])
-        if og: s['img'] = og; return og
-    return big(i['image']) or next((big(s['img']) for s in i['sources'] if big(s['img'])), '')
+    """원문 앞 5건을 읽어 대표 사진·사진 모음·기사 첫 문단(기사 내용)을 채움"""
+    first = ''; gal = []; leads = []
+    for s in [x for x in i['sources'] if 'news.google.com' not in x['url']][:5]:
+        pg = page(s['url']) or {}
+        if pg.get('img'):
+            s['img'] = pg['img']; first = first or pg['img']
+            if pg['img'] not in [g['img'] for g in gal]: gal.append(dict(img=pg['img'], press=s['press'], url=s['url'], title=s['title']))
+        text = (pg.get('paras') or [])[:2] or ([pg['desc']] if pg.get('desc') and len(pg['desc']) > 60 else [])
+        if text: leads.append(dict(press=s['press'], url=s['url'], title=s['title'], text=' '.join(text)[:900]))
+    i['gallery'] = gal[:8]; i['leads'] = leads[:4]
+    return first or big(i['image']) or next((big(s['img']) for s in i['sources'] if big(s['img'])), '')
 with ThreadPoolExecutor(6) as ex: imgs = list(ex.map(pick, issues))
 for i, im in zip(issues, imgs): i['image'] = im; IMG_STAT['issue_img' if im else 'issue_noimg'] += 1
 for i in issues:
     for s in i['sources']: s['img'] = big(s.get('img'))
+    fl = {}
+    for s in i['sources']: fl.setdefault((s.get('t') or '')[:10], []).append(dict(title=s['title'], url=s['url'], press=s['press'], t=s.get('t'), img=s.get('img', '')))
+    i['flow'] = [dict(date=d, items=v) for d, v in sorted(fl.items()) if d]
 def trend_feed(geo):
     out=[]; tt=get('https://trends.google.com/trending/rss?geo='+geo)
     for it in re.findall(r'<item>(.*?)</item>', tt, re.S)[:12]:
@@ -261,6 +294,7 @@ with ThreadPoolExecutor(6) as ex:
 jobs = []
 for i in issues:
     jobs.extend([(i, 'title_ko', i['title']), (i, 'summary_ko', i['summary'])]); jobs.extend([(s, 'title_ko', s['title']) for s in i['sources']])
+    jobs.extend([(l, 'text_ko', l['text']) for l in i.get('leads') or []])
 for L in sections.values(): jobs.extend([(x, 'title_ko', x['title']) for x in L])
 for t in trends:
     jobs.append((t, 'keyword_ko', t['keyword'])); jobs.extend([(n, 'title_ko', n['title']) for n in t['news']])
