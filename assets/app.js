@@ -24,7 +24,7 @@ const COUNTRY_FLAG={대한민국:'kr',한국:'kr',남한:'kr',북한:'kp',미국
 function entityMedia(e){
   const flag=COUNTRY_FLAG[e.name];if(flag)return{url:`https://flagcdn.com/w320/${flag}.png`,kind:'flag'};
   const v=e.visual||{},w=e.wiki||{},url=v.url||w.thumb||w.thumb_src||'';
-  return{url,kind:v.kind||(e.type==='person'?'portrait':e.type==='place'?'place':e.type==='org'?'photo':'')};
+  return{url,wide:v.wide||'',kind:v.kind||(e.type==='person'?'portrait':e.type==='place'?'place':e.type==='org'?'photo':'')};
 }
 function av(e,cls='av'){const v=entityMedia(e),fallback=e.type==='person'?'user':e.type==='place'?'place':e.type==='org'?'org':'news';return`<div class="${cls} media-${esc(v.kind||'fallback')}" ${bg(v.url)}>${v.url?'':ic(fallback)}</div>`}
 function chipE(n,nolink){const e=ent(n);if(e&&nolink)return`<span class="chip ${e.type}">${esc(n)}</span>`;return e?`<a class="chip ${e.type}" href="${eh(n)}">${esc(n)}</a>`:`<span class="chip event">#${esc(n)}</span>`}
@@ -37,7 +37,7 @@ function line(v,w=120,h=28,col='#ff4d2e'){if(!v||v.length<2)return'';const mn=Ma
 function sec(t,sub,more='',icon=''){return`<div class="sec"><h2><small>${sub}</small>${icon?ic(icon,'h'):''}${t}</h2>${more}</div>`}
 /* ---------- 타입별 UI 컴포넌트 ---------- */
 const host=u=>{try{return new URL(u).hostname}catch(x){return''}};
-const plogo=(name,url,cls='pl')=>{const f=PL[name]||PL[host(url).replace(/^www\./,'')];return f?`<img class="${cls}" src="assets/press/${f}" alt="" loading="lazy" width="14" height="14">`:`<i class="${cls} mono" style="--h:${[...String(name)].reduce((a,c)=>a+c.charCodeAt(0),0)%360}" aria-hidden="true">${esc(String(name||'?').replace(/^[\s\[(\'"“‘]+/,'')[0]||'?')}</i>`};
+const plogo=(name,url,cls='pl')=>{const f=PL[name]||PL[host(url).replace(/^www\./,'')],bd=f&&(PL._b||{})[f];return f?`<img class="${cls}${bd?' b':''}" src="assets/press/${bd||f}" alt="" loading="lazy" width="14" height="14">`:`<i class="${cls} mono" style="--h:${[...String(name)].reduce((a,c)=>a+c.charCodeAt(0),0)%360}" aria-hidden="true">${esc(String(name||'?').replace(/^[\s\[(\'"“‘]+/,'')[0]||'?')}</i>`};
 const pp=(name,url)=>name?`<span class="pp">${plogo(name,url)}${esc(name)}</span>`:'';
 const ts=(t,rel)=>t?`<time class="ts">${rel?ago(t):fmtD(t)}</time>`:'';
 const cnt=(n,icn,tip)=>`<span class="cnt" title="${tip||''}">${icn?ic(icn):''}${n}</span>`;
@@ -80,7 +80,7 @@ async function load(){
   try{G=await (await fetch('data/global.json?'+Date.now())).json()}catch(e){G=null}
   try{O=await (await fetch('data/official.json?'+Date.now())).json()}catch(e){O=null}
   try{BR=await (await fetch('data/briefs.json?'+Date.now())).json()}catch(e){BR=null}
-  try{PL=await (await fetch('assets/press/index.json?v=1')).json()}catch(e){PL={}}
+  try{PL=await (await fetch('assets/press/index.json?v=2')).json()}catch(e){PL={}}
   header();route();
   if(D.lite)(window.requestIdleCallback||setTimeout)(fullData,{timeout:2500});
 }
@@ -216,7 +216,7 @@ function issue(id){
   app.innerHTML=`<div class="bkrow"><a class="back" href="./">${NBI('arrow-left')} 오늘의 TOP 10</a>${shareBtn()}</div>
   <section class="dgal" aria-label="이 사건 사진"></section>
   <article class="dhead card ds-head"><div class="bd"><div class="dh-top"><span class="dh-rank" aria-label="오늘의 이슈 ${i.rank}위"><b>${String(i.rank).padStart(2,'0')}</b><small>오늘의<br>이슈</small></span><span class="cat ${i.category}">${i.category}</span></div><h1 class="ds-title">${esc(i.title)}</h1>
-    <div class="schips light">${schips(i,'')}</div>
+    <div class="dh-bar"><div class="schips light">${schips(i,'')}</div><div class="dh-act"></div></div>
     <div class="chips">${i.entities.map(n=>chipE(n)).join('')}${i.keywords.filter(k=>!i.entities.includes(k)).slice(0,4).map(k=>`<span class="ds-tag">#${esc(k)}</span>`).join('')}</div></div></article>
   <nav class="toc ds-tabs"><a href="#s-sum">${ic('news')}<span>요약</span></a><a href="#s-flow">${ic('clock')}<span>흐름</span></a><a href="#related">${ic('news')}<span>관련 기사</span></a><a href="#press">${ic('press')}<span>언론사</span></a><a href="#comments">${ic('chat')}<span>댓글</span></a></nav>
   <div class="two"><div>
@@ -307,7 +307,7 @@ function entity(n){
   const iss=e.issues.map(id=>D.issues.find(x=>x.id===id)).filter(Boolean);
   const w=why(e),wi=w.issue;
   app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a>${shareBtn()}</div>
-  <section class="ehero card" ${bg(wi&&wi.image||e.wiki?.thumb)}><div class="in"><span class="chip ${e.type}">${esc(SUB.find(x=>x[0]===subtype(e))?.[1]||TYPE[e.type])}</span><h1>${esc(e.name)}</h1>
+  <section class="ehero card" ${bg(wi&&wi.image||e.wiki?.thumb)}><div class="in"><span class="chip ${e.type}">${esc(SUB.find(x=>x[0]===subtype(e))?.[1]||TYPE[e.type])}</span>${entityMedia(e).wide?`<img class="ewide" src="${esc(entityMedia(e).wide)}" alt="${esc(e.name)} 로고">`:''}<h1>${esc(e.name)}</h1>
    <p class="big">${wi?`지금 화제인 이유 — ${esc(wi.title)}`:esc(e.timeline[0]?.title||e.wiki?.desc||'')}</p>${wi?`<a class="go" href="issue/${wi.id}">이슈 자세히 보기 ${NBI('arrow-right')}</a>`:''}</div></section>
   <div class="two"><div>
    <section class="card prof"><div class="row">${av(e)}<div><span class="chip ${e.type}">${TYPE[e.type]}</span><h1>${esc(e.name)}</h1><p>${esc(e.wiki?.desc||'')}</p></div></div>
