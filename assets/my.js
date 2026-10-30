@@ -15,10 +15,40 @@ const qn=new URLSearchParams(location.search).get('nav');const NS=['fab','glow',
 const DEF={v:1,uid:null,saves:{},cols:[{id:'c0',name:'나중에 읽기'}],follows:{},keywords:[],reads:{},home:{today:null,market:null,hideT:[],hideM:[]},watch:{ind:{},apt:[]},alerts:{on:{kw:1,follow:1,ind:1,apt:1,quiz:1,reply:1},seen:{},lastSeen:0},updated:0};
 let M=JSON.parse(JSON.stringify(DEF));let db=null;
 const idb=()=>new Promise(r=>{try{const q=indexedDB.open('newsboard',1);q.onupgradeneeded=()=>q.result.createObjectStore('kv');q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)}catch(e){r(null)}});
-const load=async()=>{db=await idb();let v=null;if(db)v=await new Promise(r=>{const t=db.transaction('kv').objectStore('kv').get('my');t.onsuccess=()=>r(t.result);t.onerror=()=>r(null)});if(!v)try{v=JSON.parse(localStorage.getItem('nb-my')||'null')}catch(e){}if(v)M=Object.assign(JSON.parse(JSON.stringify(DEF)),v);if(!M.uid)M.uid='g-'+Math.random().toString(36).slice(2,10);};
+const load=async()=>{db=await idb();let v=null;if(db)v=await new Promise(r=>{const t=db.transaction('kv').objectStore('kv').get('my');t.onsuccess=()=>r(t.result);t.onerror=()=>r(null)});if(!v)try{v=JSON.parse(localStorage.getItem('nb-my')||'null')}catch(e){}if(v)M=Object.assign(JSON.parse(JSON.stringify(DEF)),v);if(!M.uid)M.uid='g-'+Math.random().toString(36).slice(2,10);await lsRestore();try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}};
 const save=()=>{M.updated=Date.now();const s=JSON.stringify(M);try{localStorage.setItem('nb-my',s)}catch(e){}if(db)try{db.transaction('kv','readwrite').objectStore('kv').put(JSON.parse(s),'my')}catch(e){}window.dispatchEvent(new CustomEvent('nb:my-changed'));badge();syncSoon()};
 /* ---------- 여러 기기 동기화: Cloudflare Worker + D1 (로그인 시에만) ---------- */
 const SYNC='https://newsboard-sync.pyw213.workers.dev';
+/* ---------- 이 기기의 모든 기록(nb-로 시작하는 저장값: 게임 점수·학습·설정·취향 등) 보존 + 계정 인계 ----------
+   - 값이 바뀔 때마다 시각을 적어 두고(nb-lsat), IndexedDB에도 사본을 둬서 저장값이 지워져도 다음 방문 때 되살림
+   - 로그인하면 전부 계정(/sync)에 올리고, 여러 기기의 값은 '최근 것' 기준으로 합침(게임 점수·레벨은 큰 값 유지)
+   - 지우기는 다른 기기로 퍼뜨리지 않음(실수로 지워도 계정 쪽 기록이 남도록) */
+const LSX=new Set(['nb-tok','nb-rev','nb-prov','nb-syncat','nb-sess','nb-migrate','nb-linked','nb-lastp','nb-my','nb-lsat','nb-keep']);
+const lsKey=k=>typeof k==='string'&&/^nb[-_]/.test(k)&&!LSX.has(k);
+const LSP=Storage.prototype,_lsSet=LSP.setItem;
+let lsat={};try{lsat=JSON.parse(localStorage.getItem('nb-lsat')||'{}')||{}}catch(e){}
+const lsStamp=(k,t)=>{lsat[k]=t||Date.now();try{_lsSet.call(localStorage,'nb-lsat',JSON.stringify(lsat))}catch(e){}};
+let lsT=null;
+function lsChanged(){clearTimeout(lsT);lsT=setTimeout(()=>{lsBackup();try{syncSoon()}catch(e){}},1500)}
+try{LSP.setItem=function(k,v){_lsSet.call(this,k,v);if(this===window.localStorage&&lsKey(k)){lsStamp(k);lsChanged()}}}catch(e){}
+function lsSnap(){const o={};try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(!lsKey(k))continue;const v=localStorage.getItem(k);if(v!=null&&v.length<200000)o[k]=[lsat[k]||1,v]}}catch(e){}return o}
+function lsBackup(){if(!db)return;try{db.transaction('kv','readwrite').objectStore('kv').put({at:Date.now(),ls:lsSnap(),lsat},'ls')}catch(e){}}
+async function lsRestore(){if(!db)return;const b=await new Promise(r=>{try{const t=db.transaction('kv').objectStore('kv').get('ls');t.onsuccess=()=>r(t.result);t.onerror=()=>r(null)}catch(e){r(null)}});
+  if(!b||!b.ls)return;let n=0;for(const[k,[t,v]]of Object.entries(b.ls)){if(localStorage.getItem(k)==null){try{_lsSet.call(localStorage,k,v);lsat[k]=t;n++}catch(e){}}}
+  if(n){lsStamp('nb-restored');window._nbRestored=n}}
+const J_=s=>{try{return JSON.parse(s)}catch(e){return null}};
+function mergeScores(x,y){const A=J_(x),B=J_(y);if(!A||!B)return null;const O=Object.assign({},B);
+  for(const[g,v]of Object.entries(A)){const w=O[g];if(!w){O[g]=v;continue}const seen=new Set();
+    O[g]={best:Math.max(v.best||0,w.best||0),at:Math.max(v.at||0,w.at||0),hist:[...(v.hist||[]),...(w.hist||[])].filter(e=>{const q=e.t+':'+e.s;return seen.has(q)?0:(seen.add(q),1)}).sort((p,q)=>q.t-p.t).slice(0,10)}}
+  return JSON.stringify(O)}
+function mergeLS(a,b){if(!b)return a||{};if(!a)return b;const o=Object.assign({},b);
+  for(const[k,x]of Object.entries(a)){const y=o[k];if(!y){o[k]=x;continue}if(x[1]===y[1]){o[k]=[Math.max(x[0],y[0]),x[1]];continue}
+    let m=null;if(k==='nb-scores')m=mergeScores(x[1],y[1]);else if(k==='nb-game'&&window.NBGameMerge){const A=J_(x[1]),B=J_(y[1]);if(A&&B)m=JSON.stringify(Object.assign({},(A.at||0)>=(B.at||0)?A:B,NBGameMerge(A,B)))}
+    o[k]=m!=null?[Math.max(x[0],y[0]),m]:(x[0]>=y[0]?x:y)}
+  return o}
+function lsApply(ls){let n=0;for(const[k,[t,v]]of Object.entries(ls||{})){if(!lsKey(k))continue;const cur=localStorage.getItem(k);
+  if(cur!==v&&(cur==null||t>=(lsat[k]||0))){try{_lsSet.call(localStorage,k,v);lsat[k]=t;n++}catch(e){}}}
+  if(n){try{_lsSet.call(localStorage,'nb-lsat',JSON.stringify(lsat))}catch(e){}lsBackup();window.dispatchEvent(new CustomEvent('nb:ls-synced',{detail:{n}}))}}
 {const h=new URLSearchParams(location.hash.slice(1));if(h.get('nbt')){localStorage.setItem('nb-tok',h.get('nbt'));localStorage.setItem('nb-prov',h.get('nbp')||'');if(h.get('nbl'))localStorage.setItem('nb-linked',h.get('nbl'));localStorage.setItem('nb-migrate','1')}
  if(h.get('nbt')||h.get('nbe'))history.replaceState(null,'',location.pathname+location.search);if(h.get('nbe'))setTimeout(()=>window.toast&&toast(h.get('nbe')==='busy'?'지금 로그인 서버가 붐벼요. 잠시 뒤에 다시 시도해 주세요':'로그인을 마치지 못했어요. 다시 시도해 주세요'),800)}
 const tok=()=>localStorage.getItem('nb-tok');
@@ -31,22 +61,23 @@ function merge(a,b){if(!b)return a;if(!a)return b;const o=Object.assign({},b,a);
   o.reads={};new Set([...Object.keys(a.reads||{}),...Object.keys(b.reads||{})]).forEach(d=>o.reads[d]=Object.assign({},(b.reads||{})[d],(a.reads||{})[d]));
   if(a.game||b.game)o.game=window.NBGameMerge?NBGameMerge(a.game,b.game):(a.game||b.game);/* 배지·레벨: 큰 값·높은 등급 유지 */
   const n=(a.updated||0)>=(b.updated||0)?a:b;['home','watch','alerts'].forEach(k=>{if(n[k])o[k]=n[k]});
+  if(a.ls||b.ls)o.ls=mergeLS(a.ls,b.ls);
   if(a.uid&&!String(a.uid).startsWith('g-'))o.uid=a.uid;else o.uid=b.uid||a.uid;o.updated=Math.max(a.updated||0,b.updated||0);return o}
 let rev=+localStorage.getItem('nb-rev')||0,syncT=null,syncing=false;window._nbSyncAt=+localStorage.getItem('nb-syncat')||0;
 async function api(path,opt={}){const r=await fetch(SYNC+path,Object.assign({},opt,{headers:Object.assign({'Content-Type':'application/json',Authorization:'Bearer '+tok()},opt.headers||{})}));
   if(r.status===401){localStorage.removeItem('nb-tok');localStorage.removeItem('nb-rev');throw new Error('auth')}return{st:r.status,j:await r.json().catch(()=>({}))}}
 async function renderAccountLinks(){const slot=document.getElementById('linkedaccts');if(!slot)return;let ps=[];try{const r=await api('/me');ps=r.j.providers||[]}catch(e){}const active=localStorage.getItem('nb-prov');if(active&&!ps.includes(active))ps.push(active);slot.innerHTML=['google','kakao','naver'].map(p=>`<button data-linkp="${p}" ${ps.includes(p)?'disabled':''}>${providerName(p)} ${ps.includes(p)?'연결됨':'연결하기'}</button>`).join('');slot.querySelectorAll('[data-linkp]').forEach(b=>b.onclick=async()=>{b.disabled=true;b.textContent='연결 준비 중';try{const r=await api('/auth/link',{method:'POST',body:JSON.stringify({provider:b.dataset.linkp,ret:'my'})});if(r.st===200&&r.j.url){location.assign(r.j.url);return}}catch(e){}b.disabled=false;b.textContent=providerName(b.dataset.linkp)+' 다시 시도'})}
 async function sync(){if(!tok()||syncing)return;syncing=true;try{
-  let ok=0;const g=await api('/sync');let data=merge(M,g.j.data);rev=g.j.rev||0;
+  let ok=0;const g=await api('/sync');const mine=Object.assign({},M,{ls:lsSnap()});let data=merge(mine,g.j.data);rev=g.j.rev||0;
   for(let n=0;n<3;n++){const r=await api('/sync',{method:'PUT',body:JSON.stringify({data,rev})});if(r.st===200){rev=r.j.rev;ok=1;break}
     if(r.st===409){data=merge(data,r.j.data);rev=r.j.rev}else break}
-  M=Object.assign(JSON.parse(JSON.stringify(DEF)),data);M.updated=data.updated;const s=JSON.stringify(M);try{localStorage.setItem('nb-my',s)}catch(e){}if(db)try{db.transaction('kv','readwrite').objectStore('kv').put(JSON.parse(s),'my')}catch(e){}
+  lsApply(data.ls);M=Object.assign(JSON.parse(JSON.stringify(DEF)),data);delete M.ls;M.updated=data.updated;const s=JSON.stringify(M);try{localStorage.setItem('nb-my',s)}catch(e){}if(db)try{db.transaction('kv','readwrite').objectStore('kv').put(JSON.parse(s),'my')}catch(e){}
   if(!ok){const st=document.getElementById('syncst');if(st)st.textContent='이 기기에 저장해 두고 나중에 맞출게요';return}
   localStorage.setItem('nb-rev',rev);window._nbSyncAt=Date.now();localStorage.setItem('nb-syncat',window._nbSyncAt);
-  if(localStorage.getItem('nb-migrate')){localStorage.removeItem('nb-migrate');window.toast&&toast('이 기기의 서재를 계정으로 옮겼어요')}
+  if(localStorage.getItem('nb-migrate')){localStorage.removeItem('nb-migrate');window.toast&&toast('이 기기의 기록(서재·레벨·배지·게임 점수·학습·설정)을 계정으로 모두 옮겼어요')}
   const st=document.getElementById('syncst');if(st)st.textContent='방금 동기화됨';badge&&badge()}catch(e){}finally{syncing=false}}
 const syncSoon=()=>{if(!tok())return;clearTimeout(syncT);syncT=setTimeout(sync,2500)};
-const ready=load().then(()=>{if(tok())sync()});
+const ready=load().then(()=>{lsBackup();if(tok())sync()});
 addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&tok())sync()});
 window.NBMy={get:()=>M,save,sync};
 /* ---------- 내비 ---------- */

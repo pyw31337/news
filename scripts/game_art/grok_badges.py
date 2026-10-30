@@ -11,7 +11,10 @@ SRC, EMB, OUT = sys.argv[1:4]
 os.makedirs(OUT + '/slot', exist_ok=True)
 MAP = {'01': 'x_tl', '02': 'f_soc', '03': 'share', '04': 'visit', '05': 'weekend', '06': 'level', '07': 'taste', '08': 'later', '09': 'deckall', '10': 'sling',
        '11': 'merge', '12': 'g2048', '13': 'gamer', '14': 'follow', '15': 'save', '16': 'deck', '17': 'history', '18': 'balance', '19': 'words',
-       '20': 'perfect', '21': 'quiz', '22': 'bird', '23': 'owl', '24': 'streak', '25': 'read', '26': 'hello'}
+       '20': 'perfect', '21': 'quiz', '22': 'bird', '23': 'owl', '24': 'streak', '25': 'read', '26': 'hello',
+       # 2차(2026-10-30): 임시 배지 15개를 그록 원본으로 교체(파일 이름이 배지 이름)
+       '정치통': 'f_pol', '경제통': 'f_eco', '국제통': 'f_world', '과학탐구자': 'f_it', '연예소식통': 'f_ent', '스포츠광': 'f_spo', '점심브리핑': 'lunch',
+       '퇴근길독자': 'commute', '관계탐정': 'x_map', '인물연구가': 'x_ent', '마켓워처': 'x_mkt', '사다리정복자': 'ladder', '큰그림': 'planet', '콤보마스터': 'combo', '별수집가': 'stars'}
 TIERS = json.load(open(os.path.join(os.path.dirname(__file__), 'tiers.json')))  # {id: [등급 수, 스페셜]}
 
 def cutout(im):
@@ -79,8 +82,9 @@ def slot(im):
     o = np.dstack([np.clip(np.array([.235, .19, .14]) + em[..., None] * .55, 0, 1), a[..., 3]])
     return Image.fromarray((o * 255).astype(np.uint8), 'RGBA')
 base = {}
-for k, bid in MAP.items(): base[bid] = cutout(Image.open(f'{SRC}/{k}.jpg'))
-for f in sorted(os.listdir(EMB)):
+for k, bid in MAP.items():
+    if os.path.exists(f'{SRC}/{k}.jpg'): base[bid] = cutout(Image.open(f'{SRC}/{k}.jpg'))   # 있는 원본만(일부만 다시 만들 때)
+for f in sorted(os.listdir(EMB)) if os.path.isdir(EMB) else []:
     bid = f[:-4]
     if bid not in base: base[bid] = cutout(template(f'{EMB}/{f}'))
 done = 0
@@ -91,5 +95,5 @@ for bid, (im, keep) in base.items():
         x = tier(im, t, keep); x.save(f'{OUT}/{bid}-{t}.webp', quality=86, method=4)
         x.resize((128, 128), Image.LANCZOS).save(f'{OUT}/{bid}-{t}-s.webp', quality=86, method=4)
         slot(x).save(f'{OUT}/slot/{bid}-{t}.webp', quality=82, method=4); done += 1
-missing = [b for b in TIERS if b not in base]
+missing = [b for b in TIERS if b not in base and not os.path.exists(f'{OUT}/{b}-0.webp')]
 print('badges', len(base), 'images', done, 'missing', missing)
