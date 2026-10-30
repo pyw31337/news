@@ -1,5 +1,5 @@
 """언론사 로고 수집: 각 언론사 공식 홈페이지가 공개한 아이콘(apple-touch-icon·고해상도 favicon)만 사용.
-96px 이상만 채택 → 128px WebP로 assets/press/에 저장. 없으면 화면에서 이니셜 칩으로 대체.
+64px 이상만 채택(표시 크기 14~20px × 3배) → 128px WebP로 assets/press/에 저장. 없으면 화면에서 이니셜 칩으로 대체.
 python scripts/press_logos.py  (새 언론사가 생기면 아래 표에 도메인만 추가)"""
 import re, io, os, json, urllib.request, urllib.parse
 from PIL import Image
@@ -15,6 +15,18 @@ P = {'SBS':'news.sbs.co.kr','주간조선':'weekly.chosun.com','디지털타임�
 'JIBS':'jibs.co.kr','KBS 뉴스':'news.kbs.co.kr','국민일보':'kmib.co.kr','대구MBC':'dgmbc.com','오마이뉴스':'ohmynews.com','서울신문':'seoul.co.kr','비즈워치':'bizwatch.co.kr',
 '지디넷코리아':'zdnet.co.kr','조세일보':'joseilbo.com','블로터':'bloter.net','한경비즈니스':'magazine.hankyung.com','아주경제':'ajunews.com','전남일보':'jnilbo.com',
 'MBN뉴스':'mbn.co.kr','일요신문':'ilyo.co.kr','헬스조선':'health.chosun.com','전자신문':'etnews.com','에너지경제':'ekn.kr','아시아경제':'asiae.co.kr','뉴스핌':'newspim.com','비즈니스포스트':'businesspost.co.kr','이투데이':'etoday.co.kr'}
+# 2026-10-30 추가: 이름 변형(구글뉴스·네이버 표기)과 자주 나오는 언론사
+P.update({'MBC 뉴스':'imnews.imbc.com','KBS 뉴스':'news.kbs.co.kr','SBS 뉴스':'news.sbs.co.kr','Chosunbiz':'biz.chosun.com','조선비즈':'biz.chosun.com','TV조선':'tvchosun.com',
+'MBN':'mbn.co.kr','천지일보':'newscj.com','글로벌이코노믹':'g-enews.com','펜앤마이크':'pennmike.com','뉴데일리':'newdaily.co.kr','인천일보':'incheonilbo.com',
+'스포티비뉴스':'spotvnews.co.kr','위키트리':'wikitree.co.kr','뉴스클레임':'newsclaim.co.kr','TJB대전방송':'tjb.co.kr','스마트투데이':'smarttoday.co.kr','스포츠동아':'sports.donga.com',
+'VOA':'voakorea.com','쿠키뉴스':'kukinews.com','자동차와 사람':'jasm.co.kr','아시아경제':'asiae.co.kr','뉴스핌':'newspim.com','동아일보':'donga.com','중앙SUNDAY':'joongang.co.kr',
+'스포츠조선':'sports.chosun.com','스포츠서울':'sportsseoul.com','스포츠경향':'sports.khan.co.kr','일간스포츠':'isplus.com','OSEN':'osen.co.kr','엑스포츠뉴스':'xportsnews.com',
+'마이데일리':'mydaily.co.kr','텐아시아':'tenasia.hankyung.com','스타뉴스':'starnewskorea.com','enews24':'enews24.cjenm.com','디스패치':'dispatch.co.kr','한국경제TV':'wowtv.co.kr',
+'머니S':'moneys.co.kr','뉴스웨이':'newsway.co.kr','이투데이':'etoday.co.kr','브릿지경제':'viva100.com','데일리한국':'daily.hankooki.com','미디어펜':'mediapen.com',
+'뉴스토마토':'newstomato.com','시사IN':'sisain.co.kr','한겨레21':'h21.hani.co.kr','신동아':'shindonga.donga.com','월간조선':'monthly.chosun.com','농민신문':'nongmin.com',
+'경남신문':'knnews.co.kr','광주일보':'kwangju.co.kr','전북일보':'jjan.kr','제주일보':'jejunews.com','충청투데이':'cctoday.co.kr','중부일보':'joongboo.com','울산매일':'iusm.co.kr',
+'KNN':'knn.co.kr','TBC':'tbc.co.kr','ubc울산방송':'ubc.co.kr','G1방송':'g1tv.co.kr','JTV전주방송':'jtv.co.kr','OBS':'obsnews.co.kr','EBS':'news.ebs.co.kr','아리랑TV':'arirang.com',
+'코리아헤럴드':'koreaherald.com','코리아타임스':'koreatimes.co.kr','코리아중앙데일리':'koreajoongangdaily.joins.com','BBC 코리아':'bbc.com','로이터':'reuters.com'})
 OUT = os.path.join(os.path.dirname(__file__), '..', 'assets', 'press')
 UA = {'User-Agent': 'Mozilla/5.0 (Macintosh) NewsBoard logo fetch'}
 def get(u, t=12):
@@ -44,7 +56,7 @@ def best(dom):
             if getattr(im, 'n_frames', 1) > 1 or im.format == 'ICO':
                 im = max((im.copy() for _ in [0]), key=lambda x: x.size[0])
             w = min(im.size)
-            if w >= 96 and (not top or w > top[0]): top = (w, im.convert('RGBA'))
+            if w >= 64 and (not top or w > top[0]): top = (w, im.convert('RGBA'))  # 화면 표시 14~20px × 화면 배율 3 = 64px면 충분
         except Exception: continue
     return top
 os.makedirs(OUT, exist_ok=True)

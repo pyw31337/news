@@ -1,7 +1,10 @@
 /* NewsBoard · 놀면서 배우기: 오늘의 단어 퀴즈(게임) · 4컷 설명 만화 · 카드뉴스 */
 (function(){
-let F=null,fP=null;
-const loadF=()=>fP||(fP=fetch('data/fun.json?'+Date.now()).then(r=>r.ok?r.json():null).catch(()=>null).then(j=>F=j));
+let F=null,fP=null,F0=null,IX=null,PAST='';
+const loadF=()=>fP||(fP=fetch('data/fun.json?'+Date.now()).then(r=>r.ok?r.json():null).catch(()=>null).then(j=>F=F0=j));
+/* 지난 기록: data/fun/index.json(날짜 목록) · data/fun/YYYY-MM-DD.json(그날 퀴즈·만화·카드뉴스) */
+const loadIX=()=>IX?Promise.resolve(IX):fetch('data/fun/index.json?'+Math.floor(Date.now()/6e5)).then(r=>r.ok?r.json():{days:{}}).catch(()=>({days:{}})).then(j=>IX=j);
+const loadDay=d=>fetch('data/fun/'+d+'.json').then(r=>r.ok?r.json():null).catch(()=>null);
 const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const app=document.getElementById('app');
 const AB=u=>{try{return new URL(u,document.baseURI).href}catch(e){return u}};
@@ -37,8 +40,8 @@ function stats(){const s=streakNow(),b=lvBar(),rv=Object.keys(L.review).length;
   return`<div class="lstat"><div class="ls fire"><i>${NBI('flame-f')}</i><b>${s}</b><span>일 연속</span></div><div class="ls xp"><i>${NBI('bolt')}</i><b>${L.xp}</b><span>XP</span></div><div class="ls lv"><i>${NBI('medal')}</i><b>Lv.${b.n}</b><span>다음까지 ${b.left}XP</span></div><div class="ls rv"><i>🔁</i><b>${rv}</b><span>복습 단어</span></div></div>
   <div class="lvbar"><i style="width:${b.pct}%"></i></div>`}
 function hub(){setMeta('놀면서 배우기 — 퀴즈·만화·카드뉴스','오늘 뉴스의 어려운 말을 OX 퀴즈로, 핫이슈를 4컷 만화로, 이어지는 사건을 카드뉴스로');
-  const q=F.quiz,done=(L.days[todayK()]||{}).done;
-  app.innerHTML=`<section class="lhero"><div><small>LEARN WITH NEWS</small><h1>놀면서 배우는 뉴스</h1><p>하루 3분, 오늘 기사에 나온 말을 퀴즈로 익히고 어려운 이슈는 만화와 카드로 쉽게 봐요.</p></div><div class="lmasc"><svg viewBox="-160 -50 320 100">${'<g transform="translate(-70,0)">'+bori('smile')+'</g><g transform="translate(70,0)">'+nuri('explain')+'</g>'}</svg></div></section>
+  const q=F.quiz,done=!PAST&&(L.days[todayK()]||{}).done;
+  app.innerHTML=`${PAST?`<div class="lpast-on"><b>${PAST.slice(5).replace('-','.')} 기록</b>을 보고 있어요 <a href="learn">오늘로 돌아가기 ${NBI('arrow-right')}</a></div>`:''}<section class="lhero"><div><small>LEARN WITH NEWS</small><h1>놀면서 배우는 뉴스</h1><p>하루 3분, 오늘 기사에 나온 말을 퀴즈로 익히고 어려운 이슈는 만화와 카드로 쉽게 봐요.</p></div><div class="lmasc"><svg viewBox="-160 -50 320 100">${'<g transform="translate(-70,0)">'+bori('smile')+'</g><g transform="translate(70,0)">'+nuri('explain')+'</g>'}</svg></div></section>
   ${stats()}
   <div class="ltiles">
    <a class="lt quiz" href="quiz"><span class="lti">${NBI('help-hexagon',1,'on')}</span><b>오늘의 단어 퀴즈</b><small>${q.questions.length}문제 · OX·객관식·빈칸</small><em>${done?'오늘 완료! 다시 풀기':'시작하기 →'}</em></a>
@@ -47,7 +50,10 @@ function hub(){setMeta('놀면서 배우기 — 퀴즈·만화·카드뉴스','�
   ${sec('4컷으로 보는 뉴스','Explainer comics','<span class="more">AI 해설 만화 · 실존 인물 풍자 아님</span>','comic')}
   <div class="clist">${F.comics.slice(0,6).map(c=>`<a class="cl" href="comic/${c.id}"><div class="clp" style="--pb:${BG[0]}">${'<svg viewBox="-160 -50 320 100"><g transform="translate(-80,0)">'+bori(c.panels[0].mood)+'</g><g transform="translate(80,0)">'+nuri('explain')+'</g></svg>'}<span class="clb">${E(c.panels[0].lines[0].text)}</span></div><div class="clt"><span class="cat ${c.category}">${c.category}</span><b>${E(c.title)}</b><small>${c.date.slice(5).replace('-','.')}</small></div></a>`).join('')}</div>
   ${sec('카드뉴스','Card news','<span class="more">넘겨 보는 흐름 정리</span>','cards')}
-  <div class="dlist">${F.decks.slice(0,8).map(deckTile).join('')}</div>`}
+  <div class="dlist">${F.decks.slice(0,8).map(deckTile).join('')}</div>
+  <div id="lpast"></div>`;
+  loadIX().then(ix=>{const el=document.getElementById('lpast');const ds=Object.keys(ix.days||{}).sort().reverse().slice(0,30);if(!el||ds.length<2)return;
+    el.innerHTML=sec('지난 기록','Past days','<span class="more">그날의 퀴즈·만화·카드뉴스</span>','clock')+`<div class="lpast">${ds.map(d=>{const x=ix.days[d];const cur=PAST?d===PAST:d===todayK();return`<a class="lpd ${cur?'on':''}" href="learn/${d}"><b>${d.slice(5).replace('-','.')}</b><small>${E((x.w||[]).slice(0,2).join(' · '))}</small><em>퀴즈 ${x.q} · 만화 ${x.c} · 카드 ${x.d}</em></a>`}).join('')}</div>`})}
 function deckTile(d){const h=d.cards[0];return`<a class="dt ${d.kind}" href="cards/${d.id}" ${h.img?`style="--im:url('${E(AB(h.img))}')"`:''}><span class="dtag">${E(d.tag)}</span><b>${E(d.title)}</b><span class="dn">${d.cards.length}장 ${NBI('chevron-right')}</span></a>`}
 /* ---------- 퀴즈 ---------- */
 let QS=null;
@@ -139,6 +145,9 @@ window.today=function(){const h=decodeURIComponent(location.pathname.slice(BASEP
   if(FR.includes(v)){document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v==='learn'));
     const run=()=>{if(!F){app.innerHTML='<div class="note">준비 중이에요. 잠시 후 다시 열어 주세요.</div>';return}
       v==='learn'?hub():v==='quiz'?quiz(a==='review'):v==='comic'?(a?comic(a):hub()):(a?deck(a):hub())};
+    const pd=v==='learn'&&/^\d{4}-\d{2}-\d{2}$/.test(a)?a:'';
+    if(v==='learn'&&!pd&&PAST){PAST='';F=F0}
+    if(pd&&pd!==PAST){app.innerHTML='<div class="loading">불러오는 중…</div>';loadF().then(()=>loadDay(pd)).then(j=>{if(j&&j.quiz){F=Object.assign({},F0,j);PAST=pd}else{F=F0;PAST=''}run()});return}
     if(F)run();else{app.innerHTML='<div class="loading">불러오는 중…</div>';loadF().then(run)}return}
   const r=_today.apply(this,arguments);
   const put=()=>{const w=app.querySelector('.words');if(!F||app.querySelector('.lhome'))return;const blk=homeBlock();if(w){const s=w.previousElementSibling;w.outerHTML=blk;if(s&&s.classList.contains('sec'))s.remove()}else{const g=app.querySelector('.trends');g&&g.insertAdjacentHTML('afterend',blk)}};

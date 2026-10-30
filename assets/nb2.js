@@ -73,10 +73,10 @@ const ft=setInterval(()=>{if(gD()&&document.querySelector('#ticker .run')){if(!d
 
 /* ============ ③ 메뉴: 편집 인덱스(Editorial Index) ============ */
 const PIL=[
- {k:'news',no:'01',name:'뉴스',en:'NEWS',c:'#ff4d2e',d:'오늘 무슨 일이 있었는지',items:[['오늘','./','오늘의 이슈 TOP10과 흐름','file-text'],['타임라인','timeline','사건이 이어지는 순서대로','timeline-event'],['관계도','map','인물·기업·장소가 얽힌 모양','affiliate'],['화제','people','인물·기업·기관별로 모아보기','flame'],['날짜 아카이브','archive','지난 날의 이슈 다시 보기','history']]},
+ {k:'news',no:'01',name:'뉴스',en:'NEWS',c:'#ff4d2e',d:'오늘 무슨 일이 있었는지',items:[['오늘','./','오늘의 이슈 TOP10과 흐름','file-text'],['타임라인','timeline','사건이 이어지는 순서대로','timeline-event'],['관계도','map','인물·기업·장소가 얽힌 모양','affiliate'],['화제','people','인물·기업·기관별로 모아보기','flame'],['민심·영상','voice','이슈마다 사람들의 생각과 방송사 영상','message-2'],['날짜 아카이브','archive','지난 날의 이슈 다시 보기','history']]},
  {k:'money',no:'02',name:'돈과 정책',en:'MONEY & POLICY',c:'#11a683',d:'내 지갑과 나라 살림',items:[['마켓','market','증시·환율·원자재 한눈에','chart-candle'],['경기선행지수','market#lead','경기가 어디로 가는지','trending-up'],['서울 아파트','market','구별 실거래 흐름','building-community'],['정치인 DB','politicians/','의원들의 법안·표결·재산','landmark']]},
- {k:'people',no:'03',name:'인물 아카이브',en:'PEOPLE',c:'#2f6bff',d:'사람으로 보는 뉴스',items:[['인물 타임라인','persons/','태어나서 오늘까지 일생 기록','timeline-event'],['인물 관계도','persons/#graph','가족·동문·지역구로 이어진 사람들','topology-star-3'],['오늘의 인물사','persons/','몇 년 전 오늘 있었던 일','history']]},
- {k:'learn',no:'04',name:'쉽게 배우기',en:'LEARN',c:'#7a4dff',d:'어려운 뉴스를 3분 만에',items:[['오늘의 단어 퀴즈','quiz','OX로 맞히며 어려운 말 익히기','help-hexagon'],['4컷 만화','learn','핫이슈를 만화로 쉽게','boom'],['카드뉴스','learn','반복되는 사건을 카드로','cards']]},
+ {k:'people',no:'03',name:'인물 아카이브',en:'PEOPLE',c:'#2f6bff',d:'사람으로 보는 뉴스',items:[['인물 타임라인','persons/','태어나서 오늘까지 일생 기록','timeline-event'],['인물 관계도','persons/#graph','가족·동문·지역구로 이어진 사람들','topology-star-3'],['오늘의 인물사','persons/','몇 년 전 오늘 있었던 일','history'],['인물 블랙박스','history/','정치인·연예인의 지난 발언과 행적','report-search'],['이슈 연표','history/?t=i','반복되는 이슈의 수십 년 흐름','timeline-event'],['연도별 사건','history/?t=y','1948년부터 해마다 있었던 일','calendar-search']]},
+ {k:'learn',no:'04',name:'쉽게 배우기',en:'LEARN',c:'#7a4dff',d:'어려운 뉴스를 3분 만에',items:[['오늘의 단어 퀴즈','quiz','OX로 맞히며 어려운 말 익히기','help-hexagon'],['4컷 만화','learn','핫이슈를 만화로 쉽게','boom'],['카드뉴스','learn','반복되는 사건을 카드로','cards'],['뉴스 게임','games/','이슈 2048·뉴스 머지·팩트 새총','sparkles'],['배지 모음','games/#badges','모을수록 빛나는 메달과 순위','trophy']]},
  {k:'me',no:'05',name:'나',en:'MY',c:'#0f1630',d:'내 기록과 알림',items:[['내 서재','my','좋아요·스크랩·메모·팔로우','bookmarks'],['알림','alerts','키워드·팔로우·지표·아파트 알림','bell'],['내 홈 꾸미기','my/home','오늘·마켓 섹션 순서','settings']]}];
 function live(k){const DD=gD();if(!DD)return'';try{
   if(k==='news'){const i=DD.issues[0];return i?`<span class="ix-live"><em>1위</em>${E(i.title)}</span>`:''}

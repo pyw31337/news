@@ -135,7 +135,10 @@ if Image and os.path.isdir(MEDIA):
             refs.append((o, k))
             if o.get('url'): PAGE.setdefault(o.get(k + '_src') or o[k], o['url'])
     for i in D.get('issues', []):
-        refs.append((i, 'image')); [kid(g) for g in (i.get('gallery') or [])]; [kid(x) for x in (i.get('sources') or [])]
+        refs.append((i, 'image')); [kid(g) for g in (i.get('gallery') or [])]
+        # 출처 기사: 사진 항목이 아예 없는 기사도 원문 대표사진(og:image) 찾기 대상에 넣음(예전엔 빠져서 썸네일 비율이 낮았음)
+        for x in i.get('sources') or []:
+            if isinstance(x, dict): x.setdefault('img', ''); kid(x)
         if i.get('url'): PAGE.setdefault(i.get('image_src') or i.get('image') or '', i['url'])
     for e in D.get('entities', []):
         if isinstance(e.get('wiki'), dict): refs.append((e['wiki'], 'thumb'))

@@ -153,3 +153,8 @@ body.gx{background:var(--ds-bg);font-family:var(--ds-sans)}
 .sl-sv{width:40px;height:40px;fill:#dfe3ec;stroke:#c3c9d6;stroke-width:1;stroke-linejoin:round}
 .sl-stars .on .sl-sv{fill:#ffcf1a;stroke:#c88a00;filter:drop-shadow(0 2px 3px rgba(200,138,0,.45))}
 .sl-st .sl-sv{width:15px;height:15px;fill:rgba(255,255,255,.55);stroke:none}.sl-st i.on .sl-sv{fill:#ffcf1a;filter:drop-shadow(0 1px 1px rgba(0,0,0,.4))}
+/* 배지 가이드 v1.1 §9: 칸 간격 16px, 누르면 살짝 확대 */
+.sb-grid{gap:16px}
+.sb-st{transition:transform .15s ease}.sb-st:active{transform:scale(1.05)}
+@media (hover:hover){.sb-st:hover{transform:scale(1.05)}}
+@media (prefers-reduced-motion:reduce){.sb-st,.sb-st:active,.sb-st:hover{transition:none;transform:none}}

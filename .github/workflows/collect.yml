@@ -62,6 +62,10 @@ jobs:
         timeout-minutes: 4
         env: { ECOS_API_KEY: '${{ secrets.ECOS_API_KEY }}' }
         run: python scripts/ecos_series.py
+      - name: 시가총액 상위 종목 일별 시세(네이버 금융, 6시간마다 — 금융위 API 보조)
+        continue-on-error: true
+        timeout-minutes: 5
+        run: python scripts/stocks_naver.py
       - name: 놀면서 배우기(단어 퀴즈·4컷 만화·카드뉴스)
         continue-on-error: true
         timeout-minutes: 5
@@ -130,7 +134,7 @@ jobs:
       - name: 사이트 묶기
         run: |
           mkdir _site && cp -r index.html assets icons admin manifest.webmanifest sw.js og-image.png favicon.ico _site/
-          mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true); (cp data/voice.json _site/data/ 2>/dev/null || true); (cp data/fun.json _site/data/ 2>/dev/null && python scripts/fun_og.py _site || true)
+          mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true); (cp data/voice.json _site/data/ 2>/dev/null || true); (cp data/fun.json _site/data/ 2>/dev/null && python scripts/fun_og.py _site || true); (cp -r data/fun _site/data/ 2>/dev/null || true)
           (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null || true)
           python scripts/build_pages.py _site
           python scripts/split_today.py _site || true

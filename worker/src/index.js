@@ -16,7 +16,8 @@ function cors(env, req) {
     'Access-Control-Allow-Headers': 'Authorization,Content-Type', 'Access-Control-Max-Age': '86400', Vary: 'Origin' };
 }
 const J = (env, req, o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', ...cors(env, req) } });
-const providers = env => ({ google: !!(env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET), kakao: !!env.KAKAO_REST_KEY, naver: !!(env.NAVER_CLIENT_ID && env.NAVER_CLIENT_SECRET) });
+// ID_SALT(사용자 ID 만들기)가 없으면 로그인 끝에서 실패하므로 모든 로그인 수단을 '준비 중'으로
+const providers = env => { const s = !!env.ID_SALT; return { google: s && !!(env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET), kakao: s && !!env.KAKAO_REST_KEY, naver: s && !!(env.NAVER_CLIENT_ID && env.NAVER_CLIENT_SECRET) }; };
 async function who(env, req) {
   const t = (req.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
   if (!t || t.length < 40) return null;
@@ -297,7 +298,7 @@ export default {
     const url = new URL(req.url), p = url.pathname;
     if (req.method === 'OPTIONS') return new Response(null, { headers: cors(env, req) });
     try {
-      if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env) });
+      if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env), keys: { id_salt: !!env.ID_SALT, archive_key: !!env.ARCHIVE_KEY } });   // 값은 절대 내보내지 않고 등록 여부만
       if (p.startsWith('/archive/') && env.AR) return archive(env, req, url, p);
       if (p === '/lb') return await leaderboard(env, req, url);
       if (p === '/auth/link' && req.method === 'POST') return await oauthLinkStart(env, req, url);

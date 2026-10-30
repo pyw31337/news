@@ -230,4 +230,12 @@ DECKS += oldd[:10]
 out = dict(date=DATE, updated=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(timespec='minutes'), quiz=quiz, comics=COMICS, decks=DECKS,
            _cache={k: v for k, v in CACHE.items()} if len(CACHE) < 60 else {})
 json.dump(out, open(P('fun.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+# 날짜별 보관: fun/YYYY-MM-DD.json(그날 만든 것만) + fun/index.json(날짜 목록). 배우기 화면 '지난 기록'에서 다시 봄
+os.makedirs(P('fun'), exist_ok=True)
+day = dict(date=DATE, updated=out['updated'], quiz=quiz, comics=[c for c in COMICS if c.get('date') == DATE], decks=[d for d in DECKS if d.get('date') == DATE])
+json.dump(day, open(P('fun/%s.json' % DATE), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+IX = J('fun/index.json', {}) or {}; IX.setdefault('days', {})
+IX['days'][DATE] = dict(q=len(Q), c=len(day['comics']), d=len(day['decks']), w=[w['word'] for w in WORDS[:3]])
+IX['days'] = dict(sorted(IX['days'].items())[-400:]); IX['updated'] = out['updated']
+json.dump(IX, open(P('fun/index.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 print('fun: words %d, questions %d, comics %d (%s), decks %d' % (len(WORDS), len(Q), len(COMICS), ','.join(c['gen'] for c in COMICS), len(DECKS)))
