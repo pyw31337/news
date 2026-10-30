@@ -37,7 +37,7 @@ def page(path, title, desc, img=None):
     return 1
 safe = lambda s: s and '/' not in s and '\\' not in s and not s.startswith('.') and len(s.encode()) < 200
 n = 0
-for v, t in (('market', '마켓·정책'), ('people', '화제 — 인물·기업·장소'), ('timeline', '타임라인 비교'), ('map', '관계로 보는 오늘'), ('archive', '날짜 아카이브'), ('voice', '민심·영상'), ('settings', '설정')):
+for v, t in (('market', '마켓·정책'), ('people', '화제 — 인물·기자·기업·장소'), ('timeline', '타임라인 비교'), ('map', '관계로 보는 오늘'), ('archive', '날짜 아카이브'), ('voice', '민심·영상'), ('settings', '설정')):
     n += page(v, t, '')
 for i in D.get('issues', []):
     sm = i.get('summary'); sm = ' '.join(sm) if isinstance(sm, list) else (sm or '')
@@ -45,6 +45,11 @@ for i in D.get('issues', []):
     n += page('issue/' + i['id'], i['title'], sm or i.get('lead') or ((i.get('ai') or {}).get('deep') or '') or ('언론사 %d곳 · 기사 %d건이 다룬 오늘의 이슈 %d위' % (i.get('presses', 0), i.get('mentions', 0), i.get('rank', 0))), img)
 for e in D.get('entities', []):
     if safe(e['name']): n += page('entity/' + e['name'], e['name'] + ' — 타임라인', (e.get('wiki') or {}).get('desc') or (e.get('timeline') or [{}])[0].get('title', ''), (e.get('wiki') or {}).get('thumb'))
+for r in D.get('reporters', []):
+    rid = r.get('id', '')
+    if safe(rid):
+        reports = r.get('reports') or [{}]
+        n += page('reporter/' + rid, r.get('name', '') + ' 기자 — 보도 기록', r.get('bio') or reports[0].get('title', ''), r.get('photo'))
 for t in D.get('trends', []):
     if safe(t['keyword']): n += page('kw/' + t['keyword'], t['keyword'] + ' — 검색어 흐름', ((t.get('ai') or {}).get('summary')) or ('검색 ' + str(t.get('traffic', ''))), t.get('image'))
 for i in G.get('issues', []):

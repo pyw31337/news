@@ -16,6 +16,7 @@ const fmtDay=d=>{const t=new Date(d+'T12:00:00+09:00');return`${t.getFullYear()}
 const bg=u=>u?`style="background-image:url('${esc(u)}')"`:'';
 const ent=n=>D.entities.find(e=>e.name===n);
 const eh=n=>'entity/'+encodeURIComponent(n);const kh=n=>'kw/'+encodeURIComponent(n);
+const rh=id=>'reporter/'+encodeURIComponent(id);
 const AIB='';
 /* 경량 데이터는 작은 원본을 자체 WebP로 바꾸지 못했을 때 thumb를 비우고 thumb_src만 남긴다.
    작은 카드에서는 그 원본도 충분히 선명하므로, 대표 미디어 → 고화질 thumb → 원본 순서로 쓴다. */
@@ -55,7 +56,7 @@ const vis=i=>!S.hide.includes(i.category);
 const ourl=o=>{if(Array.isArray(o))o.forEach(ourl);else if(o&&typeof o==='object'){if(o.ourl)o.url=o.ourl;for(const k in o)if(o[k]&&typeof o[k]==='object')ourl(o[k])}};
 /* 첫 화면은 가벼운 today_lite.json(인물 타임라인 최신 12건)으로 그리고, 전체 today.json은 뒤에서 받아 인물 타임라인만 채움 */
 let FULL=null;
-function fullData(){return FULL||(FULL=fetch('data/today.json?'+Date.now()).then(r=>r.json()).then(F=>{ourl(F);const m={};(F.entities||[]).forEach(e=>m[e.name]=e.timeline);D.entities.forEach(e=>{if(m[e.name])e.timeline=m[e.name]});D.lite=0}).catch(()=>{D.lite=0}))}
+function fullData(){return FULL||(FULL=fetch('data/today.json?'+Date.now()).then(r=>r.json()).then(F=>{ourl(F);const m={};(F.entities||[]).forEach(e=>m[e.name]=e.timeline);D.entities.forEach(e=>{if(m[e.name])e.timeline=m[e.name]});if(F.reporters)D.reporters=F.reporters;D.lite=0}).catch(()=>{D.lite=0}))}
 async function load(){
   let r=null;try{r=await fetch('data/today_lite.json?'+Date.now())}catch(e){}
   if(!r||!r.ok)r=await fetch('data/today.json?'+Date.now());
@@ -110,11 +111,11 @@ document.addEventListener('click',async e=>{const b=e.target.closest('[data-shar
 function route(){
   if(!D)return;setMeta();const h=decodeURIComponent(location.pathname.slice(BASEP.length)).replace(/\/+$/,'');const v=h.split('/')[0],a=h.split('/').slice(1).join('/');
   if(D.lite&&['entity','timeline','people','map'].includes(v)){const p=location.pathname;app.innerHTML='<div class="loading">기록을 불러오고 있어요…</div>';fullData().then(()=>{if(location.pathname===p)route()});return}
-  const tab={'':'today',issue:'today',kw:'today',g:'today',gt:'today',entity:'people'}[v]??v;
+  const tab={'':'today',issue:'today',kw:'today',g:'today',gt:'today',entity:'people',reporter:'people'}[v]??v;
   if(S.region==='en'&&G&&(v===''||v==='g'||v==='gt')){document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v==='today'));window.scrollTo(0,0);return v==='g'?gissue(a):v==='gt'?gtrend(+a):gtoday()}
   document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v===tab));
   window.scrollTo(0,0);
-  ({'':today,issue:()=>issue(a),entity:()=>entity(a),kw:()=>kw(a),market:()=>a?mdetail(a):market(),timeline,people,map,archive,settings}[v]||today)();
+  ({'':today,issue:()=>issue(a),entity:()=>entity(a),reporter:()=>reporter(a),kw:()=>kw(a),market:()=>a?mdetail(a):market(),timeline,people,map,archive,settings}[v]||today)();
   if(location.hash.length>1&&!location.hash.startsWith('#/')){const id=location.hash.slice(1);setTimeout(()=>window.nbAnchor&&nbAnchor(id),120)}
 }
 
@@ -361,22 +362,33 @@ function timeline(){
 }
 
 /* ---------- 화제의 인물 ---------- */
-const SUB=[['person','인물','user'],['company','기업','coin'],['place','장소','spark'],['inst','기관·단체','news'],['issue','사건·정책','fire']];
+const SUB=[['person','인물','user'],['reporter','기자','press'],['company','기업','coin'],['place','장소','spark'],['inst','기관·단체','news'],['issue','사건·정책','fire']];
 const subtype=e=>e.type==='org'?(/기업|회사|주식회사|그룹|은행|증권|전자|자동차|브랜드|제조|통신사|게임/.test((e.wiki?.desc||'')+(e.wiki?.extract||'').slice(0,60))?'company':'inst'):e.type;
 function why(e){const i=e.issues.map(id=>D.issues.find(x=>x.id===id)).filter(Boolean)[0];const td=e.timeline.filter(x=>Date.now()-new Date(x.t)<864e5).length;
   return{issue:i,text:i?`‘${i.title}’ 관련`:(e.timeline[0]?`최근: ${e.timeline[0].title}`:''),n:td||e.timeline.length}}
+const reporters=()=>D.reporters||[];
+const reporterById=id=>reporters().find(r=>r.id===id);
+function reporterAvatar(r,cls='rav'){return`<div class="${cls}" ${bg(r.photo)}>${r.photo?'':ic('press')}</div>`}
+function reporterIssues(r){return(r.issues||[]).map(id=>D.issues.find(i=>i.id===id)).filter(Boolean)}
+function reporterTopics(r){const topics=[];if(r.stats?.focus)topics.push(r.stats.focus);reporterIssues(r).forEach(i=>{if(i.category&&!topics.includes(i.category))topics.push(i.category)});return topics.slice(0,3)}
+function reporterCount(r){return r.stats?.last30||Math.max(0,...(r.activity||[]).map(x=>x.n||0),0)||r.reports?.length||0}
+function reporterBars(r){const a=(r.activity||[]).slice(-14),mx=Math.max(1,...a.map(x=>x.n||0));if(!a.length)return'<div class="repbars empty" aria-hidden="true"></div>';return`<div class="repbars" aria-label="최근 공개 프로필의 일별 보도량">${a.map(x=>`<i style="height:${Math.max(5,Math.round((x.n||0)/mx*100))}%" title="${esc(x.day)} ${x.n}건"></i>`).join('')}</div>`}
+function reporterCard(r){const issues=reporterIssues(r),topics=reporterTopics(r),reports=(r.reports||[]).slice(0,2);return`<a class="card repcard" href="${rh(r.id)}"><div class="rephead">${reporterAvatar(r)}<div><span class="repdesk">${ic('press')} ${esc(r.press||'공개 기자 프로필')}</span><b>${esc(r.name)} 기자</b><small>${topics.length?topics.map(esc).join(' · '):'오늘 보도 기록'}</small></div><span class="reptag">${issues.length?'이슈 '+issues.length:'기자 데스크'}</span></div><div class="repstat"><div><b>${reporterCount(r)}</b><span>최근 30일 보도</span></div>${reporterBars(r)}</div>${reports.length?`<ol class="repfeed">${reports.map(x=>`<li>${esc(x.title)}<small>${esc(x.when||'')}</small></li>`).join('')}</ol>`:''}<span class="ft">보도 기록과 공개 프로필 보기 ${NBI('arrow-right')}</span></a>`}
+function reportersDesk(){const L=reporters();if(!L.length)return'<div class="note">공개 기자 카드가 붙은 네이버 주요 기사를 다음 수집부터 기자 데스크에 모읍니다.</div>';const total=L.reduce((s,r)=>s+reporterCount(r),0),focus=[...new Set(L.map(r=>r.stats?.focus).filter(Boolean))].slice(0,4);return`<section class="repdeskhead"><div><small>REPORTER DESK</small><h3>${ic('press')}기자 데스크</h3><p>기사에 공개된 기자 프로필을 바탕으로 최근 보도·전문 분야·소속 관측을 함께 봅니다.</p></div><div class="repdesknum"><b>${L.length}</b><span>오늘 연결된 기자</span><em>${total}건 <i>최근 30일 공개 통계 합계</i></em></div></section><div class="repfilters" aria-label="기자 전문 분야">${['전체',...focus].map((x,i)=>`<button type="button" class="${i?'':'on'}" data-rf="${esc(x)}">${esc(x)}</button>`).join('')}</div><div class="plist reporter-list">${L.map(reporterCard).join('')}</div>`}
 function people(){
   let f=sessionStorage.getItem('nb-sub')||'person';
-  app.innerHTML=`${sec('화제','Trending people · companies · places','','fire')}<p class="lede">지금 뉴스에 오르내리는 대상들을 분류별로 모았어요. 카드마다 연도별 히스토리를 보여줍니다.</p><div class="filters subt" id="f">${SUB.map(([k,v,icn])=>`<button data-f="${k}" class="${k===f?'on':''}">${ic(icn)}${v}</button>`).join('')}</div><div id="pg"></div>`;
+  app.innerHTML=`${sec('화제','Trending people · companies · places','','fire')}<p class="lede">지금 뉴스에 오르내리는 대상들을 분류별로 모았어요. 인물·기자 카드는 보도 기록과 연도별 흐름을 함께 보여줍니다.</p><div class="filters subt" id="f">${SUB.map(([k,v,icn])=>`<button data-f="${k}" class="${k===f?'on':''}">${ic(icn)}${v}</button>`).join('')}</div><div id="pg"></div>`;
   const draw=()=>{sessionStorage.setItem('nb-sub',f);
     if(f==='issue'){$('#pg').innerHTML=`<div class="plist">${D.issues.filter(vis).map(i=>`<a class="card pcard" href="issue/${i.id}"><div class="ph">${th(i.image,'av')}<div><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><b>${esc(i.title)}</b><span class="meta">${cnt(i.presses,'press','언론사')}${cnt(i.mentions,'news','기사')}</span></div></div>
       <ol class="mtl">${(i.flow||[]).slice(0,5).map(fl=>`<li><time class="ts">${fl.date.slice(5).replace('-','.')}</time><span>${esc(fl.items[0]?.title||'')}</span></li>`).join('')}</ol><span class="ft">사건의 흐름 보기 ${NBI('arrow-right')}</span></a>`).join('')}</div>`;return}
+    if(f==='reporter'){$('#pg').innerHTML=reportersDesk();const rf=$('#pg .repfilters');if(rf)rf.onclick=ev=>{const b=ev.target.closest('button');if(!b)return;rf.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));const q=b.dataset.rf;const list=$('#pg .reporter-list');list.innerHTML=reporters().filter(r=>q==='전체'||reporterTopics(r).includes(q)).map(reporterCard).join('')||'<div class="note">이 분야의 공개 기자 프로필이 아직 없어요.</div>'};return}
     const L=D.entities.filter(e=>subtype(e)===f);
     $('#pg').innerHTML=L.length?`<div class="plist">${L.map(e=>{const yrs={};e.timeline.forEach(x=>{const y=x.t.slice(0,4);if(!yrs[y])yrs[y]=x});const w=why(e);
     return`<a class="card pcard" href="${eh(e.name)}"><div class="ph">${av(e)}<div><b>${esc(e.name)}</b><small>${esc(e.wiki?.desc||'')}</small></div></div>${w.text?`<p class="why">${esc(w.text)}</p>`:''}${spark(e.daily,300,36)}
     <ol class="mtl">${Object.entries(yrs).sort((a,b)=>b[0]-a[0]).slice(0,4).map(([y,x])=>`<li><time class="ts">${y}</time><span>${esc(x.title)}</span></li>`).join('')}</ol><span class="ft">${cnt(e.timeline.length,'clock','기록')}타임라인 보기 ${NBI('arrow-right')}</span></a>`}).join('')}</div>`:'<div class="note">오늘은 이 분류에 해당하는 대상이 없어요.</div>'};
   $('#f').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;f=b.dataset.f;$('#f').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));draw()};draw();
 }
+function reporter(id){const r=reporterById(id);if(!r)return people();const issues=reporterIssues(r),topics=reporterTopics(r),reports=r.reports||[],aff=r.affiliations||[];setMeta(r.name+' 기자 — 보도 기록',`${r.press||''} ${r.name} 기자의 공개 프로필과 최근 보도 기록`);app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a>${shareBtn()}</div><section class="repdetail card"><div class="repidentity">${reporterAvatar(r,'rav big')}<div><span class="repdesk">${ic('press')} ${esc(r.press||'공개 기자 프로필')}</span><h1>${esc(r.name)} 기자</h1>${r.bio?`<p>${esc(r.bio)}</p>`:'<p>기사에 표시된 공개 기자 프로필을 기준으로 정리한 보도 기록입니다.</p>'}${r.profile?`<a class="go" href="${esc(r.profile)}" target="_blank" rel="noopener">네이버 기자 프로필 ${NBI('arrow-up-right')}</a>`:''}</div></div><div class="rep-kpis"><div><b>${reporterCount(r)}</b><span>최근 30일 보도</span></div><div><b>${issues.length}</b><span>오늘 연결 이슈</span></div><div><b>${reports.length}</b><span>최근 공개 목록</span></div></div></section><div class="two"><div>${sec('최근 보도','Latest reports','','news')}<div class="report-list">${reports.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${x.image?`<span class="report-thumb" ${bg(x.image)}></span>`:''}<span><b>${esc(x.title)}</b><small>${esc(r.press||'')} · ${esc(x.when||'네이버 기자페이지')}</small></span>${NBI('arrow-up-right')}</a>`).join('')||'<div class="note">공개된 최근 보도 목록을 불러오지 못했어요.</div>'}</div>${sec('보도 리듬','30-day public profile activity','','chart')}<section class="card repactivity">${reporterBars(r)}<p>막대는 네이버 기자 프로필에 표시된 최근 30일의 일별 기사 수입니다.</p></section></div><aside>${sec('관점과 연결','Desk context','','search')}<section class="card repcontext"><div><small>주요 분야</small><p class="chips">${topics.map(x=>`<span class="chip event">${esc(x)}</span>`).join('')||'<span class="note">분야 정보 없음</span>'}</p></div>${issues.length?`<div><small>오늘의 연결 이슈</small><ul>${issues.map(i=>`<li><a href="issue/${i.id}"><b>${i.rank}</b>${esc(i.title)}</a></li>`).join('')}</ul></div>`:''}</section>${sec('소속 관측','Affiliation observation','','history')}<section class="card affiliations">${aff.map(x=>`<div><b>${esc(x.press||'소속 미표기')}</b><span>${esc(x.first)}${x.last&&x.last!==x.first?' — '+esc(x.last):'부터 관측'}</span></div>`).join('')||'<p>공개 프로필의 소속 표기를 기다리고 있어요.</p>'}<p>동명이인은 합치지 않으며, 공개 프로필에 확인되지 않은 이직은 추정해 표시하지 않습니다.</p></section></aside></div>`}
 
 /* ---------- 관계맵 ---------- */
 function map(){

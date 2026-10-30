@@ -6,6 +6,7 @@ import re, json, html, os, datetime as dt, urllib.request, urllib.parse, email.u
 from concurrent.futures import ThreadPoolExecutor
 from kiwipiepy import Kiwi
 from entity_media import enrich as enrich_entity_media
+from reporters import collect as collect_reporters
 
 KST = dt.timezone(dt.timedelta(hours=9))
 NOW = dt.datetime.now(KST)
@@ -215,6 +216,14 @@ for i, (c, (d, im)) in enumerate(zip(top, ogs)):
                        score=round(c['score'], 1), mentions=len(c['arts']), presses=len(set(a['press'] for a in c['arts'])),
                        sources=sources[:12]))
 
+# 기자는 기사 본문에 공개된 네이버 기자 카드와 기자 프로필을 기준으로만 수집한다.
+# 같은 이름이라는 이유만으로 이직·소속 이력을 합치지 않으며, 한 회차 최대 10명으로 제한한다.
+try:
+    reporters = collect_reporters(issues, ROOT, NOW, get, limit=10)
+except Exception as ex:
+    reporters = []
+    print('reporters', ex)
+
 # ---------- 3. 엔티티(인물·장소·사건) + 관계망 ----------
 ent_score = collections.Counter(); ent_issue = collections.defaultdict(set)
 for c in clusters[:60]:
@@ -317,9 +326,9 @@ except Exception as ex:
     print('entity media', ex)
 
 data = dict(updated=NOW.isoformat(), date=today,
-            stats=dict(naver=len(nv_pop) + len(nv_memo), google=len(gn), trends=len(tr), clusters=len(clusters),
+            stats=dict(naver=len(nv_pop) + len(nv_memo), google=len(gn), trends=len(tr), clusters=len(clusters), reporters=len(reporters),
                        presses=len(set(a['press'] for a in arts))),
-            issues=issues, entities=entities, trends=tr[:20],
+            issues=issues, entities=entities, reporters=reporters, trends=tr[:20],
             links=[dict(a=a, b=b, n=n) for (a, b), n in co.most_common(60)],
             sections={k: [dict(title=a['title'], url=a['url'], press=a['press'], time=a['time'], related=a['related'])
                           for a in gn if a['section'] == k][:12] for k in SECTIONS})
