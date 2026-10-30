@@ -63,12 +63,14 @@ def tr_en(texts):
                 for t, v in zip(grp, parts): TE[t] = v.strip()
         except Exception as e: print('tr_en', str(e)[:80])
     return {t: TE.get(t, '') for t in texts}
+IMG = {i['id']: i.get('image') for i in (D.get('issues') or []) + (G.get('issues') or []) if i.get('image')}
 Q = []
 def add(level, kind, ko, en, answer, exp_ko, exp_en, choices_ko=None, choices_en=None, ref=None, cat='', src='rule', scope='kr'):
     """scope: kr=국내 탭(한국어), global=해외 탭(기본 한국어 · '영어 원문 보기'면 영어 원문 문장)"""
     q = dict(id='q' + hk(ko, en, answer), level=level, kind=kind, cat=cat, q=dict(ko=ko, en=en), answer=answer,
              exp=dict(ko=exp_ko, en=exp_en), ref=ref, src=src, date=DATE, scope=scope)
     if kind == 'mc': q['choices'] = dict(ko=choices_ko, en=choices_en)
+    if ref and IMG.get(ref): q['img'] = IMG[ref]   # 카드 위 썸네일(근거 이슈 사진)
     # 영어 문장에 번역 안 된 한국어가 남았으면 영어 모드에서는 내지 않음(“용어” 따옴표 속 짧은 한국어는 허용)
     en_all = re.sub(r'“[가-힣 ]{1,10}”', '', en + ' ' + exp_en + ' ' + ' '.join(choices_en or []))
     q['en_ok'] = not re.search(r'[가-힣]', en_all)

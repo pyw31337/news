@@ -283,3 +283,17 @@ html.nbtip [data-tip]::after,html.nbtip [data-tip]::before{display:none!importan
 .ggal.multi.n4{grid-template-columns:2fr 1fr 1fr;grid-template-rows:150px 150px}.ggal.multi.n4 .gg:nth-child(4){grid-column:span 2}
 @media(max-width:640px){.ggal.multi.n2{grid-template-columns:1fr 1fr;grid-template-rows:200px 110px}.ggal.multi.n2 .gg.big{grid-column:span 2}.ggal.multi.n2 .gg:nth-child(2){grid-column:span 2}
  .ggal.multi.n3,.ggal.multi.n4{grid-template-columns:1fr 1fr;grid-template-rows:200px 110px}.ggal.multi.n4 .gg:nth-child(4){grid-column:auto}}
+/* 해외 카드 불릿 · 검색어 이유 · 분야별 헤드라인 썸네일 · SNS 라이브 */
+.ic .bd ul li .hk{font-style:normal;color:var(--acc,#ff4d2e);font-weight:700}
+.tr .why{display:block;font-size:.72rem;line-height:1.4;color:var(--mute);margin:2px 0 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.gsec a.gsr{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:start}.gsec a.gsr .gi{display:block;width:72px;height:52px;border-radius:8px;background:#eef0f5 center/cover;margin:0}
+.gsec a.gsr .gi.noimg{display:grid;place-items:center;color:#b4bacb}.gsec a.gsr .gt{min-width:0}.gsec a.gsr b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sns{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,300px);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin}
+.sn{scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;padding:12px 14px;color:inherit;text-decoration:none}
+.snh{display:flex;align-items:center;gap:8px}.sav{flex:none;width:34px;height:34px;border-radius:50%;background:#e6e9f1 center/cover}.sav.ini{display:grid;place-items:center;font-weight:800;font-size:.75rem;color:#fff;background:#5448ee}
+.snn{min-width:0;flex:1}.snn b{display:block;font-size:.85rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.snn small{font-size:.7rem;color:var(--mute)}
+.snh em{flex:none;font-style:normal;font-size:.62rem;font-weight:800;color:var(--c);border:1px solid var(--c);border-radius:99px;padding:1px 6px}
+.sn p{margin:0;font-size:.85rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.sn .sim{display:block;aspect-ratio:16/9;border-radius:10px;background:#eef0f5 center/cover}.snf{display:flex;gap:12px;font-size:.72rem;color:var(--mute)}
+.more .live{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff3b30;margin-right:5px;vertical-align:1px;animation:livep 1.6s ease-in-out infinite}
+@keyframes livep{50%{opacity:.25;transform:scale(.8)}}
