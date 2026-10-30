@@ -21,7 +21,7 @@ async function boot(){
   const mmState=mm.age_h==null?['bad','기록 없음']:mm.age_h<30?['ok','정상']:mm.age_h<54?['warn','하루 넘게 갱신 없음']:['bad','멈춤 의심'];
   const tot=Object.values(sz).reduce((a,b)=>a+(b||0),0);
   const TABS=[['home','개요'],['news','뉴스 기사'],['people','인물'],['ents','장소·기업·사건'],['content','카드뉴스·놀이·민심'],['ai','AI·봇'],['sched','수집 일정'],['reader','독자 반응'],['sys','시스템·도구']];
-  app.innerHTML=`<nav class="atabs" aria-label="현황판 메뉴">${TABS.map(([k,l])=>`<a href="#${k}" data-tab="${k}">${l}</a>`).join('')}</nav>
+  app.innerHTML=`<nav class="atabs" aria-label="현황판 메뉴">${TABS.map(([k,l])=>`<a href="#${k}" data-tab="${k}">${l}</a>`).join('')}<a href="../v2/" target="_blank" rel="noopener" style="background:#ff4d2e;color:#fff">v2 미리보기 ↗</a></nav>
   <div data-v="home"><div id="dash"></div></div>${TABS.slice(1,-1).map(([k])=>`<div data-v="${k}" hidden></div>`).join('')}
   <div data-v="sys" hidden>
   ${S.missing?'<p class="err">status.json이 아직 없어요. 다음 수집(매시 7분 UTC) 뒤에 채워져요.</p>':''}
