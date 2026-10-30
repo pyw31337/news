@@ -163,6 +163,7 @@ if Image and os.path.isdir(MEDIA):
             if isinstance(x, dict): x.setdefault('img', ''); kid(x)
     for i in D.get('issues', []): kid0(i.get('timeline'))
     for t in D.get('trends', []): kid0(t.get('news')); kid0(t.get('today'))
+    for L in (G.get('sections') or {}).values(): [kid(x) for x in L if isinstance(x, dict)]   # 해외 분야별 헤드라인 사진도 우리 서버(WebP)에
     for e in sorted(D.get('entities', []), key=lambda e: -(e.get('score') or 0)): kid0(sorted(e.get('timeline') or [], key=lambda x: x.get('t', ''), reverse=True))
     src = lambda o, k: o.get(k + '_src') if isinstance(o.get(k + '_src'), str) and o[k + '_src'].startswith('http') else o.get(k)
     urls = list(dict.fromkeys(src(o, k) for o, k in refs if isinstance(src(o, k), str) and src(o, k).startswith('http')))
