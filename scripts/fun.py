@@ -4,11 +4,11 @@
   그림은 브라우저에서 SVG(마스코트 누리·보리)로 그려 이미지 생성 비용 0.
 - 카드뉴스: 기준금리(ECOS 시계열) + 여러 날 이어진 이슈(흐름 DB)로 5~8장 덱."""
 import json, os, re, sys, random, hashlib, subprocess, urllib.request, urllib.error, time, datetime
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import ai_usage
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import ai_usage, llm_quota
 sys.path.insert(0, os.path.dirname(__file__))
 from glossary import G as GL
 ROOT = os.environ.get('FUN_DATA') or os.path.join(os.path.dirname(__file__), '..', 'data')
-ai_usage.setup(ROOT)
+ai_usage.setup(ROOT); llm_quota.setup(ROOT)
 P = lambda n: os.path.join(ROOT, n)
 def J(n, d=None):
     try: return json.load(open(P(n), encoding='utf-8'))
@@ -40,15 +40,16 @@ def llm(key, prompt, maxtok=1500):
             r = subprocess.run([NBAI, SYS, str(maxtok)], input=prompt, capture_output=True, text=True, timeout=240)
             if not r.returncode: out = jparse(r.stdout); ai_usage.note('fun', key.split(':')[0], 'apple', 'apple')
         elif TOKEN:
-            for m in MODELS:
+            for m in llm_quota.order(MODELS, key.split(':')[0]):
                 if time.time() > DEADLINE: break
                 body = json.dumps({'model': m, 'temperature': 0.3, 'max_tokens': maxtok, 'response_format': {'type': 'json_object'},
                                    'messages': [{'role': 'system', 'content': SYS}, {'role': 'user', 'content': prompt}]}).encode()
                 for a in range(2):
                     try:
                         r = urllib.request.urlopen(urllib.request.Request(ENDPOINT, body, {'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json'}), timeout=max(5, min(40, DEADLINE - time.time())))
-                        out = jparse(json.loads(r.read())['choices'][0]['message']['content']); ai_usage.note('fun', key.split(':')[0], m); break
+                        out = jparse(json.loads(r.read())['choices'][0]['message']['content']); llm_quota.ok(m); ai_usage.note('fun', key.split(':')[0], m); break
                     except urllib.error.HTTPError as e:
+                        if e.code == 429 and llm_quota.limited(m, e.code, e.read()[:4000].decode('utf-8', 'replace')): break
                         if e.code in (429, 500, 502, 503, 504) and a == 0: time.sleep(8); continue
                         break
                     except Exception: break
