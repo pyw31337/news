@@ -592,7 +592,7 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 .mkd-news{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:8px}.mkd-news li{background:var(--card);border-radius:12px;padding:12px;box-shadow:var(--sh)}.mkd-news a{color:inherit;text-decoration:none;font-weight:700;display:block}.mkd-news small{color:var(--mute)}
 /* 2026-10-30: 카테고리는 아이콘·배경 없이 카테고리 색 글자만(오늘의 이슈 카드·TOP10 목록) */
 .cat.정치{--cc:#2f6bff}.cat.경제{--cc:#11a683}.cat.사회{--cc:#ff4d2e}.cat.세계{--cc:#7a4dff}.cat.IT{--cc:#0aa5c8}.cat.연예{--cc:#e2448e}.cat.스포츠{--cc:#f08a00}
-.cat.과학{--cc:#0f8fb0;background:#0f8fb0}.cat.건강{--cc:#d6336c;background:#d6336c}.cat.환경{--cc:#2f9e44;background:#2f9e44}.cat.문화{--cc:#b8590b;background:#b8590b}
+.cat.과학{--cc:#4868d8;background:#4868d8}.cat.건강{--cc:#d64f73;background:#d64f73}.cat.환경{--cc:#28a26e;background:#28a26e}.cat.문화{--cc:#9c58cc;background:#9c58cc}
 .side .cat,.grid10 .cat{background:none!important;padding:0;border-radius:0;color:var(--cc,var(--ink2));font-size:.75rem;font-weight:800;letter-spacing:0}
 .side .cat .ico,.grid10 .cat .ico{display:none}
 /* 좋아요: 원형 배경·그림자 없이 아이콘만 */
@@ -618,8 +618,29 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 .car .ctrack::-webkit-scrollbar{display:none}
 .car .cs{flex:0 0 100%;height:100%;scroll-snap-align:center;scroll-snap-stop:always;background:#dfe3ee center/cover}
 .car .rk,.car .cm,.car .cdots,.car .cnav{z-index:2}.car .rk,.car .cdots{pointer-events:none}
-.car .cdots{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);display:flex;gap:5px;padding:4px 7px;border-radius:99px;background:rgba(15,22,48,.35);backdrop-filter:blur(4px)}
+.car .cdots{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);display:flex;gap:5px;padding:4px 7px;border-radius:99px;background:rgba(15,22,48,.5)}
 .car .cdots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55);transition:width .2s,background .2s}.car .cdots i.on{width:16px;border-radius:4px;background:#fff}
 .car .cnav{position:absolute;top:50%;margin-top:-16px;width:32px;height:32px;border:0;border-radius:50%;background:rgba(255,255,255,.88);color:var(--ink);display:grid;place-items:center;cursor:pointer;opacity:0;transition:opacity .2s}
 .car .cnav.p{left:8px}.car .cnav.n{right:8px}.car .cnav svg{width:18px;height:18px}
 @media(hover:hover){.car:hover .cnav{opacity:1}}
+/* 관계맵 배경 격자는 멈춰 둠(배경 위치 애니메이션은 매 프레임 다시 그려 스크롤·카드덱을 버벅이게 함). 위아래 스캔 빛은 합성 단계라 유지 */
+.mapwrap.scan{animation:none!important;-webkit-animation:none!important}
+/* 상단바·하단 탭: 배경이 96% 불투명이라 흐림 효과는 거의 안 보이는데, 아래 내용이 움직일 때마다 매 프레임 다시 계산돼 무거움 → 끔 */
+.top,.tabbar{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}.top{background:rgba(15,22,48,.985)}.tabbar{background:rgba(255,255,255,.985)}
+/* 화면 밖 카드는 그리지 않음(content-visibility): 사진 캐러셀 스크롤 영역이 각각 레이어를 잡아 위쪽 카드덱 움직임까지 무거워지던 문제 */
+.grid10>.card,.plist>.card,.mapwrap.mini{content-visibility:auto;contain-intrinsic-size:auto 440px}
+/* 숫자로 보는 오늘(2026-10-30, 선거 페이지 '숫자로 보는 선거' 참고) */
+.numt{display:grid;gap:12px;margin-bottom:8px}
+.numt .card{padding:16px}.numt h3{margin:0 0 12px;font-size:.9375rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}.numt h3 small{font-size:.75rem;font-weight:600;color:var(--mute)}.numt h3 small b{color:var(--acc)}
+.numt-k{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.numt-k small{display:block;font-size:.72rem;color:var(--mute);font-weight:700}.numt-k b{display:block;font-size:1.75rem;font-weight:900;letter-spacing:-1px;color:var(--ink);font-variant-numeric:tabular-nums}
+.numt-k b em{font-style:normal;font-size:.875rem;margin-left:2px;color:var(--ink2)}.numt-k div:first-child b{color:var(--acc)}
+.numt-k a{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;font-size:.72rem;color:var(--ink2);text-decoration:none}
+.numt-bars{display:flex;align-items:flex-end;gap:6px;height:150px;padding-top:18px}
+.numt-bars a{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;text-decoration:none;color:var(--mute);min-width:0}
+.numt-bars i{display:block;width:100%;max-width:34px;border-radius:6px 6px 2px 2px;background:#c9c6f2}
+.numt-bars a.max i{background:var(--acc)}.numt-bars em{font-style:normal;font-size:.66rem;font-weight:800;color:var(--ink2)}.numt-bars a.max em{color:var(--acc);font-size:.75rem}
+.numt-bars span{font-size:.66rem;font-weight:700}
+.numt-seat{display:flex;height:30px;border-radius:99px;overflow:hidden;gap:2px}.numt-seat i{display:flex;align-items:center;justify-content:center;color:#fff;font-style:normal;font-size:.75rem;font-weight:800;min-width:18px}
+.numt-lg{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:10px;font-size:.75rem;color:var(--ink2)}.numt-lg i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
+@media(min-width:900px){.numt{grid-template-columns:1fr 1.4fr 1fr}.numt-k{grid-template-columns:1fr 1fr}}

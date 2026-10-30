@@ -45,6 +45,18 @@ const ETY={person:['인물','user'],place:['장소','spark'],org:['기관','news
 const entc=(name,t,href)=>`<${href?`a href="${href}"`:'span'} class="ent ${t}">${ic((ETY[t]||ETY.event)[1])}${esc(name)}</${href?'a':'span'}>`;
 const meta=(x,rel)=>`<span class="meta">${pp(x.press,x.url)}${ts(x.t||x.time,rel)}</span>`;
 /* 요약문에서 이 이슈의 인물·핵심어를 주황색으로(이슈마다 최대 4곳) */
+/* 숫자로 보는 오늘: 선거 페이지 '숫자로 보는 선거'처럼 큰 숫자 + 막대(최고값 강조) + 의석식 분포 막대 */
+function numToday(I){const st=D.stats||{},arts=(st.naver||0)+(st.google||0);if(!I.length)return'';
+  const T=I.slice(0,10),mx=Math.max(1,...T.map(i=>i.score)),top=T[0];
+  const cats={};T.forEach(i=>cats[i.category]=(cats[i.category]||0)+1);const ce=Object.entries(cats).sort((a,b)=>b[1]-a[1]);
+  const cm=Math.max(...T.map(i=>i.opinion?.total||0)),ci=T.find(i=>(i.opinion?.total||0)===cm);
+  return`${sec('숫자로 보는 오늘','Today in numbers','','chart')}<div class="numt">
+   <div class="numt-k card"><div><small>오늘 모은 기사</small><b>${arts.toLocaleString()}<em>건</em></b></div><div><small>보도한 언론사</small><b>${(st.presses||0).toLocaleString()}<em>곳</em></b></div><div><small>묶어 낸 사건</small><b>${(st.clusters||0).toLocaleString()}<em>개</em></b></div>${cm?`<div><small>댓글 가장 많은 이슈</small><b>${cm.toLocaleString()}<em>개</em></b><a href="issue/${ci.id}">${esc(ci.title)}</a></div>`:''}</div>
+   <div class="numt-c card"><h3>TOP 10 화제도 <small>최고 <b>${Math.round(mx).toLocaleString()}</b> · 1위 ‘${esc(top.title.length>22?top.title.slice(0,21)+'…':top.title)}’</small></h3>
+    <div class="numt-bars">${T.map((i,k)=>`<a href="issue/${i.id}" class="${k?'':'max'}" title="${esc(i.title)}"><em>${Math.round(i.score)}</em><i style="height:${Math.max(4,i.score/mx*100).toFixed(0)}%"></i><span>${k+1}위</span></a>`).join('')}</div></div>
+   <div class="numt-s card"><h3>분야별 TOP 10 <small>오늘 가장 많이 오른 분야는 <b style="color:${CATC[ce[0][0]]||'var(--ink)'}">${esc(ce[0][0])}</b></small></h3>
+    <div class="numt-seat">${ce.map(([c,n])=>`<i style="flex:${n};background:${CATC[c]||'#8189a3'}">${n}</i>`).join('')}</div>
+    <div class="numt-lg">${ce.map(([c,n])=>`<span><i style="background:${CATC[c]||'#8189a3'}"></i>${esc(c)} <b>${n}</b></span>`).join('')}</div></div></div>`}
 function hiSum(t,i){const T=[...new Set([...(i.entities||[]),...(i.keywords||[]).map(k=>String(k).replace(/^#/,''))])].filter(w=>w&&w.length>=2).sort((a,b)=>b.length-a.length).slice(0,12);
   let h=esc(t);if(!T.length)return h;const used=new Set();
   return h.replace(new RegExp(T.map(w=>esc(w).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'g'),m=>used.has(m)||used.size>=4?m:(used.add(m),`<em class="hl">${m}</em>`))}
@@ -171,6 +183,7 @@ function today(){
   ${sec('실시간 검색어','Google Trends KR','<span class="more">눌러서 오늘·과거 흐름 보기</span>','search')}
   <div class="trends">${tr}</div>
   ${W.length?sec('오늘의 단어','Words of the day',`<span class="more">문해력 한 스푼</span>`,'quiz')+`<div class="words">${W.map(wordCard).join('')}</div>`:''}
+  ${numToday(I)}
   ${sec('화제의 인물','People in the news',`<a class="more" href="people">전체 ${NBI('arrow-right')}</a>`,'user')}
   <div class="hs">${pcs}</div>
   ${sec('관계로 보는 오늘','Relation map',`<a class="more" href="map">크게 보기 ${NBI('arrow-right')}</a>`,'graph')}

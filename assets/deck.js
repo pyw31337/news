@@ -41,12 +41,17 @@ function Deck(root,onTop){
     // 드래그 중인 카드의 회전·들림도 스프링으로 따라감(손을 따라 흔들림)
     if(drag){const p=st[drag.i];for(const k of['r','ry','l','s']){const v='v'+k,[kk,cc]=K[k];const a=-kk*(p[k]-drag.t[k])-cc*p[v];p[v]+=a*dt;p[k]+=p[v]*dt}}
     return busy}
+  /* 부하 줄이기(2026-10-30): 바뀐 값만 쓰고, 화면 밖으로 사라져 멈춘 카드는 건너뜀. 들림 그림자는 box-shadow를 매번 다시 그리지 않고
+     미리 그려 둔 그림자 층(.rlift)의 불투명도만 바꿈(합성 단계에서 처리) */
+  cards.forEach(c=>{const l=document.createElement('i');l.className='rlift';l.setAttribute('aria-hidden','true');c.prepend(l);c._lf=l});
   function paint(){const rm=RM();cards.forEach((c,i)=>{const p=rm?Object.assign({},target(i),drag&&drag.i===i?{x:st[i].x}:{}):st[i];const d=i-top;
-    c.style.transform=`translate3d(${p.x.toFixed(2)}px,${(p.y-p.l*8).toFixed(2)}px,0) rotate(${p.r.toFixed(2)}deg) rotateY(${(p.ry||0).toFixed(2)}deg) scale(${(p.s+p.l*.035).toFixed(4)})`;
-    c.style.opacity=clamp(p.o,0,1).toFixed(3);
-    c.style.setProperty('--lift',clamp(p.l,0,1.2).toFixed(3));
+    const tr=`translate3d(${p.x.toFixed(1)}px,${(p.y-p.l*8).toFixed(1)}px,0) rotate(${p.r.toFixed(2)}deg) rotateY(${(p.ry||0).toFixed(2)}deg) scale(${(p.s+p.l*.035).toFixed(4)})`;
+    if(c._t!==tr){c._t=tr;c.style.transform=tr}
+    const op=clamp(p.o,0,1).toFixed(2);if(c._o!==op){c._o=op;c.style.opacity=op}
+    const lf=clamp(p.l,0,1).toFixed(2);if(c._l!==lf){c._l=lf;c._lf.style.opacity=lf}
     const z=d<0||(drag&&drag.mode==='prev'&&i===top-1)?200+i:100-d,vis=p.o<.01&&d!==0?'hidden':'visible';
     if(c._z!==z){c._z=z;c.style.zIndex=z}if(c._v!==vis){c._v=vis;c.style.visibility=vis}
+    const act=vis==='visible'&&d>=-1&&d<=2;if(c._a!==act){c._a=act;c.classList.toggle('act',act)}
     if(c._d!==d){c._d=d;c.setAttribute('aria-hidden',d===0?'false':'true');c.tabIndex=d===0?0:-1;
     c.querySelectorAll('a').forEach(a=>a.tabIndex=d===0?0:-1)}})}
   function loop(ts){const dt0=Math.min(.05,last?(ts-last)/1000:.016);last=ts;let b=false;
@@ -101,7 +106,9 @@ window.nbDeck=function(root){
   const rows=[...document.querySelectorAll('.side .srow')];
   // 덱을 넘길수록 이미 본 카드(01…현재)는 아래 목록에서 차례로 사라지고, 남은 순위 중 앞의 5개가 채워짐(넓은 화면, 왼쪽 카드와 높이를 맞춤). 이전 카드로 돌아가면 사라졌던 줄이 다시 펼쳐지며 아래로 밀림
   const RC=[...root.querySelectorAll('.rcard')];let far=0;
-  let prevT=0;Deck(root,t=>{if(t!==prevT){prevT=t;dispatchEvent(new CustomEvent('nb:decktop',{detail:{t}}))}far=Math.max(far,t);const seen=new Set(RC.slice(0,t+1).map(c=>c.dataset.id));let k=0;rows.forEach(r=>{const g=seen.has(r.dataset.id);r.classList.toggle('gone',g);r.classList.toggle('cap',!g&&++k>5)});
+  /* 목록 갱신은 카드가 거의 자리 잡은 뒤(0.28초)에: 카드 움직임과 목록 접힘(레이아웃 계산)이 같은 프레임에 겹치지 않게 */
+  let prevT=0,lt=null;const sync=t=>{const seen=new Set(RC.slice(0,t+1).map(c=>c.dataset.id));let k=0;rows.forEach(r=>{const g=seen.has(r.dataset.id);r.classList.toggle('gone',g);r.classList.toggle('cap',!g&&++k>5)})};
+  Deck(root,t=>{if(t!==prevT){prevT=t;dispatchEvent(new CustomEvent('nb:decktop',{detail:{t}}))}far=Math.max(far,t);clearTimeout(lt);if(!lt&&t===0){sync(0);lt=-1}else lt=setTimeout(()=>sync(t),280);
     if(t===RC.length-1&&RC.length>=5)dispatchEvent(new CustomEvent('nb:deckall',{detail:{n:RC.length}}))});
   // 선명하지 않은 대표 사진은 글자 카드로
   root.querySelectorAll('.rcard').forEach(async c=>{const u=c.dataset.img,box=c.querySelector('.rimg');if(!u){c.classList.add('txt');return}

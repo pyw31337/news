@@ -21,7 +21,8 @@ function list(){
   const P=IDX.people,cur=P.filter(p=>p.current);
   const parties={};cur.forEach(p=>parties[p.party||'무소속']=(parties[p.party||'무소속']||0)+1);
   const pe=Object.entries(parties).sort((a,b)=>b[1]-a[1]);
-  const bar=pe.map(([k,v])=>`<i style="flex:${v};background:${pc(k)}" title="${esc(k)} ${v}"></i>`).join('');
+  const tot=cur.length||1;/* 선거 개표 화면처럼 막대 안에 의석 수, 과반선 표시 */
+  const bar=pe.map(([k,v])=>`<i style="flex:${v};background:${pc(k)}" title="${esc(k)} ${v}석">${v/tot>=.06?`<span>${v}석</span>`:''}</i>`).join('')+`<b class="maj" style="left:${(Math.floor(tot/2)+1)/tot*100}%"><span>과반 ${Math.floor(tot/2)+1}</span></b>`;
   const sw=P.filter(p=>p.switches>0).length,lead=cur.reduce((s,p)=>s+(p.lead||0),0);
   const hot=P.filter(p=>p.news).sort((a,b)=>b.news-a.news).slice(0,8);
   const ageDist={};P.forEach(p=>(p.ages||[]).forEach(a=>ageDist[a]=(ageDist[a]||0)+1));
