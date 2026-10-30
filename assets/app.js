@@ -106,14 +106,49 @@ function route(){
   if(S.region==='en'&&G&&(v===''||v==='g'||v==='gt')){document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v==='today'));window.scrollTo(0,0);return v==='g'?gissue(a):v==='gt'?gtrend(+a):gtoday()}
   document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v===tab));
   window.scrollTo(0,0);
-  ({'':today,issue:()=>issue(a),entity:()=>entity(a),kw:()=>kw(a),market,timeline,people,map,archive,settings}[v]||today)();
+  ({'':today,issue:()=>issue(a),entity:()=>entity(a),kw:()=>kw(a),market:()=>a?mdetail(a):market(),timeline,people,map,archive,settings}[v]||today)();
   if(location.hash.length>1&&!location.hash.startsWith('#/')){const id=location.hash.slice(1);setTimeout(()=>window.nbAnchor&&nbAnchor(id),120)}
 }
 
 /* ---------- 마켓 위젯 ---------- */
 const up=m=>m.dir==='RISING'?'up':m.dir==='FALLING'?'down':'';
+const mrate=(m,d)=>`${d==='down'?'-':d==='up'?'+':''}${esc(String(m.rate??'').replace(/^[-+]/,''))}%`;/* 원자료에 부호가 이미 있어 '--5.12%'로 겹치던 문제 */
 function mcard(m,big){const d=up(m),s=d==='up'?NBI('caret-up-f'):d==='down'?NBI('caret-down-f'):'';
-  return`<div class="mk ${d} ${big?'big':''}"><span class="n">${esc(m.name)}${m.unit?`<i>${esc(m.unit)}</i>`:''}</span><b>${esc(m.price)}</b><em>${s} ${esc(m.diff)} (${d==='down'?'-':d==='up'?'+':''}${esc(m.rate)}%)</em>${line(m.series,120,big?44:28,d==='down'?'#2f6bff':'#ff4d2e')}</div>`}
+  return`<a class="mk ${d} ${big?'big':''}" href="market/${encodeURIComponent(m.name)}" aria-label="${esc(m.name)} 자세히 보기"><span class="n">${esc(m.name)}${m.unit?`<i>${esc(m.unit)}</i>`:''}</span><b>${esc(m.price)}</b><em>${s} ${esc(String(m.diff??'').replace(/^[-+]/,''))} (${mrate(m,d)})</em>${line(m.series,120,big?44:28,d==='down'?'#2f6bff':'#ff4d2e')}</a>`}
+/* ---------- 마켓 항목 상세(카드를 누르면) ---------- */
+const MKI={'KOSPI':['kospi','코스피','우리나라 대표 기업(유가증권시장)의 주가를 모은 지수예요. 국내 경기와 외국인 투자 흐름을 가장 먼저 보여줘요.'],
+  'KOSDAQ':['kosdaq','코스닥','중소·벤처·기술 기업 중심 시장의 지수예요. 바이오·2차전지 등 성장주의 분위기를 보여줘요.'],
+  'S&P 500':[null,'S&P|뉴욕증시|미 증시|미국 증시','미국 대형주 500개로 만든 지수예요. 세계 증시의 기준점이라 우리 증시에도 영향을 줘요.'],
+  'NASDAQ':[null,'나스닥|뉴욕증시|미 증시|기술주','미국 기술주 중심 지수예요. 반도체·AI 기업 흐름이 우리 IT 대형주와 함께 움직이는 경우가 많아요.'],
+  '미국 USD':['usd','환율|달러|원·달러|원/달러','1달러를 사는 데 드는 원화예요. 오르면(원화 약세) 수입 물가가 오르고 수출 기업엔 유리해요.'],
+  '일본 JPY(100)':['jpy','엔화|엔저|원·엔','100엔을 사는 데 드는 원화예요. 일본 여행 경비와 일본과 경쟁하는 수출 기업에 영향을 줘요.'],
+  '유럽 EUR':['eur','유로','1유로를 사는 데 드는 원화예요. 유럽 경기와 유럽중앙은행 금리 결정에 따라 움직여요.'],
+  '중국 CNY':['cny','위안','1위안을 사는 데 드는 원화예요. 최대 교역국인 중국 경기와 함께 움직여요.'],
+  '금':[null,'금값|금 시세|안전자산','대표적인 안전자산이에요. 불안할 때·금리가 내릴 때 오르는 경향이 있어요.'],
+  '은':[null,'은값|은 시세','귀금속이면서 태양광·전자 산업 재료로도 쓰여 경기에 따라 크게 움직여요.'],
+  '구리':[null,'구리|원자재','전선·건설·전기차에 두루 쓰여 \'경기를 미리 알려주는 금속\'으로 불려요.'],
+  'WTI 원유':[null,'유가|원유|국제유가|기름값','미국 텍사스산 원유 가격이에요. 오르면 휘발유값·물가가 따라 올라요.'],
+  '미국 10년물 금리':[null,'미 국채|국채 금리|금리','미국 정부가 10년 동안 돈을 빌릴 때의 금리예요. 전 세계 대출·주택 금리의 기준이 돼요.'],
+  '비트코인':[null,'비트코인|가상자산|암호화폐|코인','대표 가상자산이에요. 하루에도 크게 오르내려 투자 위험이 커요.']};
+let mkES=null;const mkLoadES=()=>mkES||(mkES=fetch('data/ecos_series.json').then(r=>r.ok?r.json():null).catch(()=>null));
+function mdetail(a){const m=(D.market||[]).find(x=>x.name===a);if(!m)return market();
+  const info=MKI[m.name]||[null,m.name,''],d=up(m),col=d==='down'?'#2f6bff':'#ff4d2e',kw=new RegExp(info[1].replace(/[.*+?^${}()[\]\\]/g,'\\$&'));
+  const news=[...D.issues.map(i=>({title:i.title,url:'issue/'+i.id,press:i.press,in:1})),...Object.values(D.sections||{}).flat()].filter(x=>kw.test(x.title)).filter((x,i,A)=>A.findIndex(y=>y.title===x.title)===i).slice(0,10);
+  app.innerHTML=`<p class="mkback"><a href="market">${NBI('arrow-left')}마켓 전체</a></p>
+  <section class="mkd ${d}"><small>${m.kind==='index'?'주가 지수':m.kind==='fx'?'환율':'원자재·금리·가상자산'}</small><h2>${esc(m.name)}${m.unit?` <i>${esc(m.unit)}</i>`:''}</h2>
+   <div class="mkd-p"><b>${esc(m.price)}</b><em>${d==='up'?NBI('caret-up-f'):d==='down'?NBI('caret-down-f'):''} ${esc(String(m.diff??'').replace(/^[-+]/,''))} (${mrate(m,d)})</em></div>
+   <p class="mkd-at">${m.at?ago(m.at)+' 기준':''}</p>
+   <div class="mkd-ch card"><h3 class="sub">최근 ${m.series?.length||0}${m.kind==='commodity'?'개 시점':'거래일'}</h3>${line(m.series,640,180,col)}</div>
+   <div class="mkd-long card" hidden><h3 class="sub">장기 흐름 <small>한국은행 경제통계</small></h3><div class="mkd-tabs" role="tablist"></div><div class="mkd-lc"></div><p class="fine"></p></div>
+   ${info[2]?`<div class="mkd-info card">${ic('bulb')}<p>${esc(info[2])}</p></div>`:''}
+   <h3 class="sub">${ic('news')}관련 뉴스</h3>${news.length?`<ul class="mkd-news">${news.map(x=>`<li><a href="${esc(x.url)}"${x.in?'':' target="_blank" rel="noopener"'}>${esc(x.title)}</a><small>${esc(x.press||'')}</small></li>`).join('')}</ul>`:'<p class="note">오늘 수집한 기사 중 관련 뉴스가 아직 없어요.</p>'}
+   <p class="fine">시세는 지연될 수 있어요. 투자 권유가 아닙니다.</p></section>`;
+  if(info[0])mkLoadES().then(j=>{const sr=j&&j.series&&j.series[info[0]];const box=app.querySelector('.mkd-long');if(!sr||!box||!sr.data?.length)return;box.hidden=false;
+    const P=[['1개월',22],['6개월',130],['1년',260],['전체',1e9]];let cur=2;
+    const draw=()=>{const L=sr.data.slice(-P[cur][1]);box.querySelector('.mkd-tabs').innerHTML=P.map((p,k)=>`<button type="button" class="${k===cur?'on':''}" data-k="${k}">${p[0]}</button>`).join('');
+      const v=L.map(x=>x[1]),a0=v[0],b0=v[v.length-1],ch=(b0/a0-1)*100;box.querySelector('.mkd-lc').innerHTML=line(v,640,180,ch<0?'#2f6bff':'#ff4d2e');
+      box.querySelector('.fine').textContent=`${L[0][0]} ~ ${L[L.length-1][0]} · ${ch>=0?'+':''}${ch.toFixed(1)}% · ${sr.unit||''}`};
+    box.querySelector('.mkd-tabs').onclick=e=>{const b=e.target.closest('[data-k]');if(b){cur=+b.dataset.k;draw()}};draw()})}
 function marketStrip(){const M=D.market||[];if(!M.length)return'';
   return`${sec('주요 증시·환율','Stock & Currency',`<a class="more" href="market">마켓 전체 ${NBI('arrow-right')}</a>`,'up')}<div class="mkrow">${M.slice(0,8).map(m=>mcard(m)).join('')}</div>`}
 

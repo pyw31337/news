@@ -2,6 +2,8 @@
    로컬 우선: 나중에 읽기·스크랩은 내 서재(NBMy) 한 줄 동기화에 실려 바뀔 때만 저장 */
 (function(){
 const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+/* 퀴즈 문장의 핵심어 ‘…’와 뜻풀이 “…”를 주황색으로 */
+const oxHi=t=>E(t).replace(/‘([^’]{1,30})’/g,'<em class="ox-k">‘$1’</em>').replace(/“([^”]{1,80})”/g,'<em class="ox-d">“$1”</em>');
 const I=n=>window.GI?GI(n):'';
 const CATC={정치:'#2f6bff',경제:'#11a683',사회:'#ff4d2e',세계:'#7a4dff',IT:'#0aa5c8',연예:'#e2448e',스포츠:'#f08a00'};
 const My=()=>window.NBMy&&NBMy.get?NBMy.get():(()=>{try{return JSON.parse(localStorage.getItem('nb-my')||'null')}catch(e){return null}})();
@@ -59,7 +61,7 @@ window.NBOX=function(el,F){if(!el||!F)return;const Q=buildQ(F);if(!Q.length){el.
    <div class="ox-nav"><button type="button" class="ox-pv" aria-label="이전 문제">${I('chevron-left')}</button><div class="ox-dots"></div><button type="button" class="ox-nx" aria-label="다음 문제">${I('chevron-right')}</button></div>`;
   const stage=el.querySelector('.ox-stage');
   const card=(q,i)=>{const a=A[i],done=a!=null,ok=done&&((a===1)===q.answer);
-    return`<article class="ox-card ${done?(ok?'ok':'no'):''}" data-i="${i}"><div class="ox-no">Q${String(i+1).padStart(2,'0')}<span>${E(q.field||'오늘의 단어')}</span></div><p class="ox-q">${E(q.q)}</p>
+    return`<article class="ox-card ${done?(ok?'ok':'no'):''}" data-i="${i}"><div class="ox-no">Q${String(i+1).padStart(2,'0')}<span>${E(q.field||'오늘의 단어')}</span></div><p class="ox-q">${oxHi(q.q)}</p>
      <div class="ox-btns"><button type="button" data-o="1" class="o ${done&&q.answer?'right':''} ${done&&a===1&&!ok?'wrong':''}" ${done?'disabled':''}>O</button><button type="button" data-o="0" class="x ${done&&!q.answer?'right':''} ${done&&a===0&&!ok?'wrong':''}" ${done?'disabled':''}>X</button></div>
      <div class="ox-exp">${done?`<b>${ok?'정답이에요':'아쉬워요'}</b> 정답은 <em>${q.answer?'O':'X'}</em>. ${q.mean?`‘${E(q.word)}’은(는) ${E(q.mean)}.`:''}${q.tip?`<small>${E(q.tip)}</small>`:''}`:''}</div></article>`};
   function draw(dir){const n=Object.keys(A).length,ok=Object.entries(A).filter(([i,a])=>(a===1)===Q[i].answer).length;

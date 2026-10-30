@@ -170,7 +170,10 @@ function award(w,ti,T,second){const cv=w.querySelector('.gm-fx'),m=w.querySelect
 /* ---------- 공용 위젯 ---------- */
 function lvCard(compact){const x=totalXP(),n=level(x),a=lvXP(n),b=lvXP(n+1),c=career(n),pct=Math.round((x-a)/(b-a)*100),nx=CAREER.find(k=>k[0]>n);
   const st=Math.max(S.last===dayK()||S.last===dayK(Date.now()-864e5)?S.streak:0,0);const nb=Object.keys(S.badges).length;
-  return`<div class="gm-lv${compact?' sm':''}"><div class="gm-lvn"><span>Lv.</span>${n}</div><div class="gm-lvt"><small>나의 커리어</small><b>${E(c[1])}</b><div class="gm-bar"><i style="width:${pct}%"></i></div><span class="gm-lvs">${x.toLocaleString()} XP · 다음 레벨까지 <b>${(b-x).toLocaleString()}</b>${nx?` · ${nx[0]}레벨에 ‘${nx[1]}’`:''}</span></div>
+  /* 세로 적층(2026-10-30): 레벨·직함 → 진행 막대·XP → 다음 직함 → 연속·배지 */
+  return`<div class="gm-lv v2${compact?' sm':''}"><div class="gm-lvh"><div class="gm-lvn"><span>Lv.</span>${n}</div><div class="gm-lvt"><small>나의 커리어</small><b>${E(c[1])}</b></div></div>
+   <div class="gm-lvp"><div class="gm-bar"><i style="width:${pct}%"></i></div><div class="gm-lvs"><span><b>${x.toLocaleString()}</b> XP</span><span>다음 레벨까지 <b>${(b-x).toLocaleString()}</b> XP</span></div></div>
+   ${nx?`<div class="gm-lvnx">${G_('award')}<span><b>Lv.${nx[0]}</b>이 되면 ‘<em>${E(nx[1])}</em>’</span></div>`:''}
    <div class="gm-kpis"><div class="gm-k fire">${G_('flame')}<b>${st}</b><span>일 연속</span></div><div class="gm-k">${G_('award')}<b>${nb}</b><span>배지</span></div></div></div>`}
 function goals(){const d=S.daily[dayK()]||{},My=window.NBMy&&NBMy.get?NBMy.get():null,r=My?Object.keys((My.reads||{})[new Date().toISOString().slice(0,10)]||{}).length:(d.r||0);
   const G=[['기사 3개 읽기',Math.min(3,r),3,'news'],['OX 퀴즈 풀기',Math.min(1,d.q||0),1,'checks'],['뉴스 게임 1판',Math.min(1,d.g||0),1,'device-gamepad-2']];const done=G.filter(g=>g[1]>=g[2]).length;

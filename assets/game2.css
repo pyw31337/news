@@ -98,3 +98,6 @@
 .sb-st{background:transparent;box-shadow:none;outline:1.5px dashed rgba(220,190,130,.2);outline-offset:-3px;color:#efe3c8}
 .sb-st h3{color:#f3e7cf}.sb-st:not(.got) h3{color:#b9a47c}.sb-req{color:#cdb88f}.sb-num{color:#a7926c}.sb-num b{color:#f3e7cf}
 .sb-pb{background:#17120d;box-shadow:inset 0 1px 2px #000,0 1px 0 rgba(255,225,170,.1)}
+/* 퀴즈 핵심 문구 강조(2026-10-30) */
+.ox-q em{font-style:normal;color:var(--ds-brand,#ff4d2e)}.ox-q .ox-k{font-weight:var(--ds-w-black,900)}.ox-q .ox-d{font-weight:var(--ds-w-bold,700)}
+.qq em{font-style:normal;color:var(--ds-brand,#ff4d2e)}.qq .ox-k{font-weight:900}
