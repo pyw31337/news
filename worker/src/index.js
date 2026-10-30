@@ -16,8 +16,47 @@ function cors(env, req) {
     'Access-Control-Allow-Headers': 'Authorization,Content-Type', 'Access-Control-Max-Age': '86400', Vary: 'Origin' };
 }
 const J = (env, req, o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', ...cors(env, req) } });
-// ID_SALT(사용자 ID 만들기)가 없으면 로그인 끝에서 실패하므로 모든 로그인 수단을 '준비 중'으로
-const providers = env => { const s = !!env.ID_SALT; return { google: s && !!(env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET), kakao: s && !!env.KAKAO_REST_KEY, naver: s && !!(env.NAVER_CLIENT_ID && env.NAVER_CLIENT_SECRET) }; };
+const providers = env => ({ google: !!(env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET), kakao: !!env.KAKAO_REST_KEY, naver: !!(env.NAVER_CLIENT_ID && env.NAVER_CLIENT_SECRET) });
+// 처음 쓸 때 필요한 표를 만듦(schema.sql과 같음, 이미 있으면 아무 일 없음). 격리 실행 단위당 한 번
+let schemaOK = false;
+async function ensureSchema(env) {
+  if (schemaOK) return;
+  await env.DB.batch([
+    'CREATE TABLE IF NOT EXISTS users (uid TEXT PRIMARY KEY, created INTEGER NOT NULL, last_seen INTEGER)',
+    'CREATE TABLE IF NOT EXISTS identities (provider TEXT NOT NULL, provider_subject TEXT NOT NULL, uid TEXT NOT NULL, created INTEGER NOT NULL, PRIMARY KEY (provider, provider_subject))',
+    'CREATE INDEX IF NOT EXISTS identities_uid ON identities(uid)',
+    'CREATE TABLE IF NOT EXISTS sessions (th TEXT PRIMARY KEY, uid TEXT NOT NULL, exp INTEGER NOT NULL)',
+    'CREATE INDEX IF NOT EXISTS sessions_uid ON sessions(uid)',
+    'CREATE TABLE IF NOT EXISTS docs (uid TEXT PRIMARY KEY, data TEXT NOT NULL, rev INTEGER NOT NULL DEFAULT 1, updated INTEGER NOT NULL)',
+    'CREATE TABLE IF NOT EXISTS push_subs (id TEXT PRIMARY KEY, uid TEXT, sub TEXT NOT NULL, topics TEXT, created INTEGER NOT NULL)',
+    'CREATE TABLE IF NOT EXISTS oauth_state (st TEXT PRIMARY KEY, exp INTEGER NOT NULL)',
+    'CREATE TABLE IF NOT EXISTS config (k TEXT PRIMARY KEY, v TEXT NOT NULL)'].map(q => env.DB.prepare(q)));
+  schemaOK = true;
+}
+// 사용자 ID용 비밀 소금: 비밀값 ID_SALT가 있으면 그것, 없으면 처음 한 번 무작위로 만들어 D1 config 표에 보관(이후 고정)
+let saltC = null;
+async function salt(env) {
+  if (env.ID_SALT) return env.ID_SALT;
+  if (saltC) return saltC;
+  await ensureSchema(env);
+  let r = await env.DB.prepare("SELECT v FROM config WHERE k='id_salt'").first();
+  if (!r) { await env.DB.prepare("INSERT OR IGNORE INTO config(k,v) VALUES('id_salt',?)").bind(rnd(32)).run(); r = await env.DB.prepare("SELECT v FROM config WHERE k='id_salt'").first(); }
+  return saltC = r.v;
+}
+// 수집기 인증: 공유 비밀번호(ARCHIVE_KEY) 대신 GitHub Actions가 발급한 OIDC 토큰을 검증(서명·발급처·대상·저장소·만료)
+let jwksC = null;
+const b64u = s => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - s.length % 4) % 4)), c => c.charCodeAt(0));
+async function ghActions(token) {
+  try {
+    const [h, p, sg] = token.split('.'); if (!sg) return false;
+    const hd = JSON.parse(new TextDecoder().decode(b64u(h))), pl = JSON.parse(new TextDecoder().decode(b64u(p)));
+    if (pl.iss !== 'https://token.actions.githubusercontent.com' || pl.aud !== 'newsboard-sync' || pl.repository !== 'pyw31337/news' || !(pl.exp * 1000 > now())) return false;
+    if (!jwksC || jwksC.at < now() - 36e5) jwksC = { at: now(), keys: (await (await fetch('https://token.actions.githubusercontent.com/.well-known/jwks')).json()).keys };
+    const jwk = jwksC.keys.find(k => k.kid === hd.kid); if (!jwk || hd.alg !== 'RS256') return false;
+    const key = await crypto.subtle.importKey('jwk', jwk, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']);
+    return await crypto.subtle.verify('RSASSA-PKCS1-v1_5', key, b64u(sg), enc.encode(h + '.' + p));
+  } catch (e) { return false; }
+}
 async function who(env, req) {
   const t = (req.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
   if (!t || t.length < 40) return null;
@@ -62,8 +101,9 @@ async function mergeUsers(env, into, from) {
   ]);
 }
 async function login(env, provider, sub, keep = true, linkUid = '') {
-  const legacyUid = 'u_' + (await hmac(env.ID_SALT, provider + ':' + sub)).slice(0, 32);
-  const subject = (await hmac(env.ID_SALT, 'identity:' + provider + ':' + sub)).slice(0, 48);
+  await ensureSchema(env); const sl = await salt(env);
+  const legacyUid = 'u_' + (await hmac(sl, provider + ':' + sub)).slice(0, 32);
+  const subject = (await hmac(sl, 'identity:' + provider + ':' + sub)).slice(0, 48);
   let row = await env.DB.prepare('SELECT uid FROM identities WHERE provider=? AND provider_subject=?').bind(provider, subject).first();
   let uid = row && row.uid;
   if (linkUid) {
@@ -180,7 +220,8 @@ const AJ = (env, req, o, s = 200, age = 600) => new Response(JSON.stringify(o), 
 async function archive(env, req, url, p) {
   const A = env.AR;
   if (p === '/archive/ingest' && req.method === 'POST') {
-    if (!env.ARCHIVE_KEY || req.headers.get('Authorization') !== 'Bearer ' + env.ARCHIVE_KEY) return J(env, req, { error: 'auth' }, 401);
+    const bt = (req.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '');
+    if (!((env.ARCHIVE_KEY && bt === env.ARCHIVE_KEY) || await ghActions(bt))) return J(env, req, { error: 'auth' }, 401);
     // 무료 한도(계정 전체 하루 100k 줄 쓰기) 보호: 아카이브는 하루 ARCHIVE_DAILY_ROWS(기본 4만)까지만, 하루 기준은 Cloudflare 초기화와 같은 UTC 0시(=한국 오전 9시), 나머지는 사용자 동기화 몫.
     // 바뀐 줄만 씀(ON CONFLICT … WHERE 달라졌을 때만), 한 요청 = 한 트랜잭션(실패 시 전부 롤백, 반쯤 지워진 상태 없음).
     const CAP = +(env.ARCHIVE_DAILY_ROWS || 40000), day = new Date(now()).toISOString().slice(0, 10);
@@ -298,7 +339,7 @@ export default {
     const url = new URL(req.url), p = url.pathname;
     if (req.method === 'OPTIONS') return new Response(null, { headers: cors(env, req) });
     try {
-      if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env), keys: { id_salt: !!env.ID_SALT, archive_key: !!env.ARCHIVE_KEY } });   // 값은 절대 내보내지 않고 등록 여부만
+      if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env), keys: { id_salt: env.ID_SALT ? 'secret' : 'auto', archive: env.ARCHIVE_KEY ? 'key+github' : 'github' } });   // 값은 절대 내보내지 않음
       if (p.startsWith('/archive/') && env.AR) return archive(env, req, url, p);
       if (p === '/lb') return await leaderboard(env, req, url);
       if (p === '/auth/link' && req.method === 'POST') return await oauthLinkStart(env, req, url);
