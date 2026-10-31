@@ -8,7 +8,7 @@ const NAV_STYLE='live';
 const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const I=(n)=>typeof ic==='function'?ic(n):'';
 const SV=p=>`<svg class="nbi${/u1/.test(p)?' tg':''}" viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
-const P={timeline:NBU('timeline-event',1),market:NBU('chart-candle',1),today:NBU('file-text',1),my:NBU('bookmarks',1),menu:NBU('menu-2',1),bell:NBU('bell',1),heart:NBU("thumb-up",1),bm:NBU('bookmark',1),star:NBU('star',1),plus:NBU('plus'),search:NBU('search'),up:NBU('chevron-up'),dn:NBU('chevron-down'),x:NBU('x')};
+const P={timeline:NBU('timeline-event',1),market:NBU('chart-candle',1),today:NBU('file-text',1),my:NBU('bookmarks',1),learn:NBU('school',1),menu:NBU('menu-2',1),bell:NBU('bell',1),heart:NBU("thumb-up",1),bm:NBU('bookmark',1),star:NBU('star',1),plus:NBU('plus'),search:NBU('search'),up:NBU('chevron-up'),dn:NBU('chevron-down'),x:NBU('x')};
 if(typeof IC!=='undefined'){IC.bell=P.bell;IC.bm=P.bm;IC.heart=P.heart}
 const qn=new URLSearchParams(location.search).get('nav');const NS=['fab','glow','pin','date','glass','live','pulse','badge','flip','lglass'].includes(qn)?qn:NAV_STYLE;const CLK=['live','pulse','badge','flip','lglass'].includes(NS);
 /* ---------- 저장소: IndexedDB(없으면 localStorage) ---------- */
@@ -94,18 +94,20 @@ function tick(){const k=kst();const cb=document.querySelector('.tabbar .ctr .cb.
   clearTimeout(tickT);tickT=setTimeout(tick,(60-kst().s)*1000+50)}
 function nav(){const tb=document.querySelector('.tabbar');if(!tb)return;
   const english=typeof S!=='undefined'&&S.region==='en'&&S.orig;
-  const T=english?[['timeline','timeline','Timeline'],['market','market','Markets'],['','today','Today'],['my','my','Library'],['menu','menu','Menu']]:[['timeline','timeline','타임라인'],['market','market','마켓'],['','today','오늘'],['my','my','내 서재'],['menu','menu','메뉴']];
+  const T=english?[['timeline','timeline','Timeline'],['market','market','Markets'],['','today','Today'],['learn','learn','Learn'],['menu','menu','Menu']]:[['timeline','timeline','타임라인'],['market','market','마켓'],['','today','오늘'],['learn','learn','배우기'],['menu','menu','메뉴']];
+  /* 내 서재는 상단 오른쪽 '마이페이지'(사람 아이콘)로 옮김. 상단 오른쪽 = 검색 · 알림 · 마이페이지 */
   tb.className='tabbar v7 nav-'+NS;
   tb.innerHTML=T.map(([h,v,l])=>v==='today'?`<a href="./" data-v="today" class="ctr" aria-label="오늘"><span class="cb${CLK?' clk':''}"><span class="pinh"></span>${CLK?clkHTML():NS==='date'?`<b class="dn">${dnum}</b><small>TODAY</small>`:SV(P.today)}</span><span class="cl">${l}</span></a>`:`<a href="${h}" data-v="${v}">${SV(P[v])}<span>${l}</span></a>`).join('');
   if(CLK){tb.classList.add('clkv');tick()}
-  /* PC 상단: 오늘 · 타임라인 · 마켓 · 내 서재, 메뉴는 알림 종 오른쪽 끝 */
-  const TP=[['','today','오늘'],['timeline','timeline','타임라인'],['market','market','마켓'],['my','my','내 서재']];
+  /* PC 상단: 오늘 · 타임라인 · 마켓 · 배우기, 오른쪽 끝은 검색 · 알림 · 마이페이지 · 메뉴 */
+  const TP=[['','today','오늘'],['timeline','timeline','타임라인'],['market','market','마켓'],['learn','learn','배우기']];
   const tn=document.querySelector('.topnav');if(tn)tn.innerHTML=TP.map(([h,v,l])=>`<a href="${h||'./'}" data-v="${v}">${l}</a>`).join('');
-  const top=document.querySelector('header.top');if(top&&!document.getElementById('bell')){const b=document.createElement('a');b.id='bell';b.href='alerts';b.className='bell';b.setAttribute('aria-label','알림');b.innerHTML=SV(P.bell)+'<i id="bellc"></i>';top.appendChild(b);
+  const top=document.querySelector('header.top');if(top&&!document.getElementById('hsrch')){const q=document.createElement('button');q.type='button';q.id='hsrch';q.className='hsrch';q.setAttribute('aria-label','검색');q.innerHTML=SV(P.search);q.onclick=()=>window.NBT?NBT.search():(location.href='/news/#search');const bl=document.getElementById('bell');bl?bl.before(q):top.appendChild(q)}
+  if(top&&!document.getElementById('bell')){const b=document.createElement('a');b.id='bell';b.href='alerts';b.className='bell';b.setAttribute('aria-label','알림');b.innerHTML=SV(P.bell)+'<i id="bellc"></i>';top.appendChild(b);const q=document.getElementById('hsrch');if(q)b.before(q);
     const m=document.createElement('a');m.href='menu';m.className='tmenu';m.dataset.v='menu';m.setAttribute('aria-label','메뉴');m.innerHTML=SV(P.menu);top.appendChild(m)}
 }
 addEventListener('nb:region-changed',nav);
-const VMAP={'':'today',issue:'today',kw:'today',g:'today',gt:'today',entity:'today',people:'today',market:'market',timeline:'timeline',my:'my',alerts:'my'};
+const VMAP={'':'today',issue:'today',kw:'today',g:'today',gt:'today',entity:'today',people:'today',market:'market',timeline:'timeline',my:'my',alerts:'my',learn:'learn',quiz:'learn',comic:'learn',cards:'learn'};
 function hl(){const v=decodeURIComponent(location.pathname.slice(BASEP.length)).split('/')[0];const t=VMAP[v]??'menu';document.querySelectorAll('.tabbar [data-v],.topnav [data-v],.tmenu').forEach(x=>x.classList.toggle('on',x.dataset.v===t))}
 const _ps=history.pushState;history.pushState=function(){const r=_ps.apply(this,arguments);setTimeout(()=>{hl();after()},0);return r};
 addEventListener('popstate',()=>setTimeout(()=>{hl();after()},0));
@@ -213,7 +215,7 @@ function alertSet(){const D2=()=>{app.innerHTML=`<div class="sec"><h2><small>Ale
   app.querySelectorAll('[data-on]').forEach(x=>x.onchange=()=>{M.alerts.on[x.dataset.on]=x.checked?1:0;save()})};D2()}
 /* ---------- 내 서재 ---------- */
 function lvl(x){return 1+Math.floor((x||0)/100)}
-function myView(sub){setMeta('내 서재','');if(tok()&&!sub)setTimeout(()=>{renderAccountLinks();const linked=localStorage.getItem('nb-linked');if(linked){localStorage.removeItem('nb-linked');toast(providerName(linked)+' 계정을 연결했어요')}},0);if(sub==='home')return homeSet();
+function myView(sub){setMeta('마이페이지','');if(tok()&&!sub)setTimeout(()=>{renderAccountLinks();const linked=localStorage.getItem('nb-linked');if(linked){localStorage.removeItem('nb-linked');toast(providerName(linked)+' 계정을 연결했어요')}},0);if(sub==='home')return homeSet();
   const SA=Object.values(M.saves);let L={};try{L=JSON.parse(localStorage.getItem('nb-learn')||'{}')}catch(e){}
   const days=Object.keys(M.reads).sort();let streak=0;{const d=new Date();for(;;){const k=d.toISOString().slice(0,10);if(M.reads[k]){streak++;d.setDate(d.getDate()-1)}else break}}
   const cat={},lean={left:0,right:0,n:0};let nRead=0;days.forEach(d=>Object.values(M.reads[d]).forEach(r=>{nRead++;cat[r.c]=(cat[r.c]||0)+1;Object.entries(r.l||{}).forEach(([k,v])=>lean[k]=(lean[k]||0)+v)}));
@@ -224,6 +226,7 @@ function myView(sub){setMeta('내 서재','');if(tok()&&!sub)setTimeout(()=>{ren
   const card=s=>`<a class="myi ty-${s.t}" href="${s.href||'#'}">${s.img?`<span class="myth" style="background-image:url('${E(s.img)}')"></span>`:`<span class="myth noimg">${I(TY[s.t]?.[1])}</span>`}<div><em>${TY[s.t]?.[0]||''}${s.col?` · ${E((M.cols.find(c=>c.id===s.col)||{}).name||'')}`:''}</em><b>${E(s.title)}</b>${s.note?`<p class="mnote">${E(s.note)}</p>`:''}<span class="mtags">${(s.tags||[]).map(t=>`<i>#${E(t)}</i>`).join('')}${s.like?`<i class="lk">${SV(P.heart)}</i>`:''}</span></div><span class="mhw" data-t="${s.t}" data-id="${E(s.id)}"><button class="myact-n" data-a="note" aria-label="메모">${SV(P.plus)}</button></span></a>`;
   const rel=SA.filter(s=>s.t==='entity'||s.t==='kw').map(s=>{const i=D.issues.find(x=>(x.entities||[]).includes(s.id)||x.title.includes(s.id));return i&&{s,i}}).filter(Boolean).slice(0,4);
   app.innerHTML=`<div class="myhead"><div class="myav">${SV(P.my||P.bm)}</div><div>${tok()?`<b>내 계정</b><small id="syncst">${providerName(localStorage.getItem('nb-prov'))} 계정으로 로그인됨</small>`:`<b>게스트</b><small><a href="login/?ret=my">로그인</a></small>`}</div><a class="ghost sm" href="my/home">${I('gear')}내 홈 꾸미기</a></div>
+  <nav class="myq" aria-label="마이페이지 바로가기"><a href="my#mylist">${I('book')}내 서재</a><a href="alerts">${I('bell')}알림</a><a href="games/#badges">${I('star')}배지·레벨</a><a href="quiz/review">${I('quiz')}복습 단어</a><a href="settings">${I('gear')}맞춤 설정</a></nav>
   <div class="mystat"><div class="xp"><span>${NBI('flame',1,'on')}${streak}일</span><small>연속 읽기</small></div><div class="xp"><span>Lv.${lvl(L.xp)}</span><small>퀴즈 XP ${L.xp||0}</small><i style="--p:${(L.xp||0)%100}%"></i></div><div class="xp"><span>${SA.length}</span><small>저장한 것</small></div><div class="xp"><span>${Object.keys(M.follows).length}</span><small>팔로우</small></div></div>
   ${rel.length?`<div class="sec"><h2><small>Connected</small>${I('link')}내 스크랩과 이어진 새 소식</h2></div><div class="myrel">${rel.map(({s,i})=>`<a href="issue/${i.id}"><em>${E(s.title)}</em><b>${E(i.title)}</b></a>`).join('')}</div>`:''}
   <div class="sec"><h2><small>Library</small>${I('book')}내 서재</h2><button class="more" id="newcol">+ 컬렉션</button></div>

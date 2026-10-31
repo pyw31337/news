@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0f1630">
+<title>NewsBoard 사이트맵 제안</title>
+<base href="/news/">
+<link rel="icon" href="favicon.ico?v=11" sizes="any">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="v2/v2.css?v=6">
+<style>
+/* 사이트맵 제안 페이지 전용 */
+.sm-hero{padding:22px 16px 6px}.sm-hero small{color:var(--acc);font-weight:900;font-size:.76rem}.sm-hero h1{margin:4px 0 6px;font-size:1.6rem;letter-spacing:-.6px;line-height:1.25}.sm-hero p{margin:0;color:var(--ink2);font-size:.88rem;line-height:1.55}
+.sm-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px 16px 0}.sm-sum div{background:var(--ink);color:#fff;border-radius:16px;padding:12px}.sm-sum b{display:block;font-size:1.5rem;font-weight:900}.sm-sum span{font-size:.72rem;color:#aeb5cf}
+.sm-sec{margin:28px 16px 10px;font-size:1.1rem;letter-spacing:-.4px;display:flex;align-items:baseline;gap:8px}.sm-sec small{color:var(--mute);font-size:.74rem;font-weight:600}
+/* 휴대폰 틀 */
+.sm-phone{margin:0 16px;border-radius:28px;background:#fff;box-shadow:0 10px 30px rgba(15,22,48,.12);overflow:hidden;border:6px solid var(--ink)}
+.sm-ph{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--ink);color:#fff}.sm-ph b{font-size:.95rem}.sm-ph b i{color:var(--acc);font-style:normal}
+.sm-seg{display:flex;background:rgba(255,255,255,.12);border-radius:99px;padding:2px;font-size:.62rem;font-weight:800}.sm-seg span{padding:3px 8px;border-radius:99px}.sm-seg .on{background:#fff;color:var(--ink)}
+.sm-ut{margin-left:auto;display:flex;gap:4px}.sm-ut span{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.12);position:relative}.sm-ut svg{width:17px;height:17px}
+.sm-ut span em{position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-style:normal;font-size:.56rem;font-weight:900;color:#ffb3a3;white-space:nowrap}
+.sm-body{height:120px;display:grid;place-items:center;color:var(--mute);font-size:.76rem;background:repeating-linear-gradient(135deg,#f6f7fb 0 8px,#fff 8px 16px)}
+.sm-tb{display:flex;justify-content:space-around;padding:8px 0 10px;border-top:1px solid var(--line)}.sm-tb span{display:grid;justify-items:center;gap:2px;font-size:.66rem;font-weight:800;color:var(--mute)}.sm-tb span.on{color:var(--ink)}.sm-tb svg{width:20px;height:20px}
+/* 트리 */
+.sm-tree{display:grid;gap:12px;padding:0 16px}@media(min-width:760px){.sm-tree{grid-template-columns:repeat(2,1fr)}}
+.sm-n{border-radius:22px;background:#fff;box-shadow:0 4px 16px rgba(15,22,48,.06);overflow:hidden}
+.sm-nh{display:flex;gap:12px;align-items:center;padding:14px 16px;background:var(--c);color:#fff}.sm-nh .ic{flex:none;width:42px;height:42px;border-radius:14px;background:rgba(255,255,255,.2);display:grid;place-items:center}.sm-nh svg{width:22px;height:22px}
+.sm-nh b{display:block;font-size:1.05rem}.sm-nh small{font-size:.74rem;opacity:.9}.sm-nh .k{margin-left:auto;font-size:.66rem;font-weight:900;background:rgba(0,0,0,.18);padding:3px 8px;border-radius:99px;white-space:nowrap}
+.sm-l{list-style:none;margin:0;padding:8px 10px 12px 26px;position:relative}.sm-l::before{content:'';position:absolute;left:18px;top:8px;bottom:22px;width:2px;background:color-mix(in srgb,var(--c) 30%,#fff)}
+.sm-l li{position:relative}.sm-l li::before{content:'';position:absolute;left:-8px;top:21px;width:12px;height:2px;background:color-mix(in srgb,var(--c) 30%,#fff)}
+.sm-l a{display:flex;gap:8px;align-items:baseline;padding:9px 8px;border-radius:12px}.sm-l a:active{background:var(--bg)}.sm-l b{font-size:.88rem;white-space:nowrap}.sm-l small{font-size:.74rem;color:var(--mute);line-height:1.35}
+.sm-l .nw{font-style:normal;font-size:.58rem;font-weight:900;color:#fff;background:var(--acc);padding:1px 5px;border-radius:5px;margin-left:2px;vertical-align:2px}
+/* 원칙 */
+.sm-pr{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:0 16px}.sm-pr div{background:#fff;border-radius:18px;padding:14px;box-shadow:0 4px 16px rgba(15,22,48,.05)}.sm-pr span{font-size:1.5rem}.sm-pr b{display:block;margin:4px 0 2px;font-size:.88rem}.sm-pr p{margin:0;font-size:.74rem;color:var(--ink2);line-height:1.45}
+/* 지금 → 제안 */
+.sm-mv{margin:0 16px;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 4px 16px rgba(15,22,48,.05)}
+.sm-mv div{display:grid;grid-template-columns:1fr 24px 1fr;align-items:center;gap:6px;padding:10px 14px;border-top:1px solid var(--line);font-size:.8rem}.sm-mv div:first-child{border-top:0;background:var(--bg);font-size:.7rem;font-weight:900;color:var(--mute)}
+.sm-mv s{color:var(--mute);text-decoration:none}.sm-mv i{font-style:normal;color:var(--acc);text-align:center;font-weight:900}.sm-mv b{font-weight:800}
+/* 홈 흐름 */
+.sm-flow{display:grid;gap:6px;padding:0 16px;counter-reset:f}.sm-flow div{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:center;background:#fff;border-radius:16px;padding:10px 12px;box-shadow:0 4px 16px rgba(15,22,48,.05)}
+.sm-flow div::before{counter-increment:f;content:counter(f);width:30px;height:30px;border-radius:50%;background:var(--c,var(--ink));color:#fff;display:grid;place-items:center;font-weight:900;font-size:.82rem}
+.sm-flow b{font-size:.86rem}.sm-flow small{display:block;font-size:.72rem;color:var(--mute)}
+.sm-cta{margin:26px 16px 0;padding:16px;border-radius:20px;background:var(--ink);color:#fff}.sm-cta b{display:block;font-size:1rem}.sm-cta p{margin:6px 0 0;font-size:.8rem;color:#c6cbe0;line-height:1.5}
+</style>
+</head>
+<body>
+<header class="hd"><a class="brand" href="v2/"><b>News</b>Board<i>.</i></a><span class="pv">v2 미리보기</span><span class="hut"><a href="v2/#search" aria-label="검색"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="M21 21l-6-6"/></svg></a><a href="alerts" aria-label="알림"><svg viewBox="0 0 24 24"><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2-3v-3a7 7 0 0 1 4-6"/><path d="M9 17v1a3 3 0 0 0 6 0v-1"/></svg></a><a href="my" aria-label="마이페이지"><svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></a></span></header>
+<main>
+<section class="sm-hero"><small>사이트맵 제안</small><h1>탭 5개 + 도구 3개로<br>모든 기능을 3번 안에</h1><p>기능이 30개 넘게 늘어서 지금은 같은 화면이 여러 메뉴에 흩어져 있어요. 엄지로 닿는 아래 탭 5개는 "무엇을 볼지", 위 오른쪽 도구 3개는 "나와 관련된 것"으로 나눴어요.</p></section>
+<div class="sm-sum"><div><b>5</b><span>아래 탭</span></div><div><b>3</b><span>위 도구(검색·알림·마이)</span></div><div><b>3번</b><span>어떤 화면이든 이 안에</span></div></div>
+
+<h2 class="sm-sec">한 화면으로 보면<small>모든 페이지 공통 틀</small></h2>
+<div class="sm-phone"><div class="sm-ph"><b>NewsBoard<i>.</i></b><span class="sm-seg"><span class="on">국내</span><span>해외</span></span><span class="sm-ut"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="7"/><path d="M21 21l-6-6"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2-3v-3a7 7 0 0 1 4-6"/><path d="M9 17v1a3 3 0 0 0 6 0v-1"/></svg></span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span></span></div>
+ <div class="sm-body">각 탭의 화면</div>
+ <div class="sm-tb"><span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12H3l9-9l9 9h-2"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>오늘</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l5-6l4 4l7-8"/><circle cx="4" cy="17" r="1.5"/><circle cx="20" cy="7" r="1.5"/></svg>흐름</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6l4 4l8-8"/><path d="M14 7h7v7"/></svg>마켓</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 9L12 5L2 9l10 4l10-4v6"/><path d="M6 10.6V16a6 3 0 0 0 12 0v-5.4"/></svg>배우기</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>전체</span></div></div>
+
+<h2 class="sm-sec">아래 탭 5개<small>무엇을 볼지</small></h2>
+<div class="sm-tree" id="tree"></div>
+<h2 class="sm-sec">위 도구 3개<small>나와 관련된 것</small></h2>
+<div class="sm-tree" id="tools"></div>
+
+<h2 class="sm-sec">오늘 탭의 순서<small>보고 → 만지고 → 배우기</small></h2>
+<div class="sm-flow">
+ <div style="--c:#ff4d2e"><span><b>스토리 고리 · 넘겨 보기</b><small>오늘 이슈 10개를 3분 안에</small></span></div>
+ <div style="--c:#ff4d2e"><span><b>지난 방문 이후</b><small>그사이 새로 오른 이슈만</small></span></div>
+ <div style="--c:#2f6bff"><span><b>오늘의 이슈 TOP 10 모자이크</b><small>크기 = 화제, 두근두근</small></span></div>
+ <div style="--c:#11a683"><span><b>참여: 나라면? · 찬반 한 판 · OX</b><small>먼저 고르면 다른 사람 생각이 열림</small></span></div>
+ <div style="--c:#7a4dff"><span><b>사람들: 한눈 온도 · 내 또래는? · 댓글 수다방</b><small>여론은 숫자 하나 + 펼침</small></span></div>
+ <div style="--c:#f08a00"><span><b>화제: 얼굴로 보는 오늘 · 검색어 톡</b><small>누구·무엇이 떴는지</small></span></div>
+ <div style="--c:#e2448e"><span><b>배우기 맛보기: 단어 스크래치 · 숫자 카드 · 형광펜 · 카드뉴스</b><small>더 하고 싶으면 배우기 탭으로</small></span></div>
+</div>
+
+<h2 class="sm-sec">지금 → 제안<small>무엇이 어디로 가나</small></h2>
+<div class="sm-mv" id="mv"></div>
+
+<h2 class="sm-sec">이렇게 나눈 이유</h2>
+<div class="sm-pr">
+ <div><span>👍</span><b>엄지 영역 = 탭 5개</b><p>자주 쓰는 큰 갈래만 아래에. 6개가 넘으면 글씨가 작아지고 잘못 누르기 쉬워요.</p></div>
+ <div><span>🙋</span><b>나와 관련된 건 위 오른쪽</b><p>검색·알림·내 서재는 '도구'라서 어느 화면에서든 같은 자리에.</p></div>
+ <div><span>🔁</span><b>국내·해외는 스위치</b><p>탭을 두 배로 늘리지 않고, 같은 틀에서 내용만 바뀌게.</p></div>
+ <div><span>3️⃣</span><b>어디든 3번 안에</b><p>탭 → 목록 → 상세. '전체' 탭은 모든 화면을 한 장에.</p></div>
+</div>
+<div class="sm-cta"><b>정해 주시면 이 구조로 v1을 바꿀게요</b><p>지금 v1에는 위 도구 3개(검색·알림·마이)를 먼저 적용했어요. 아래 탭을 '타임라인' 대신 '흐름'으로 묶는 것과 '화제' 메뉴를 오늘·흐름으로 나누는 것은 확정 후에 옮길게요.</p></div>
+<p class="foot">v2 사이트맵 제안 · <a href="v2/">v2 미리보기로</a> · <a href="./">지금 버전(v1)</a></p>
+</main>
+<nav class="tb2" aria-label="주요 메뉴"><a href="v2/"><svg viewBox="0 0 24 24"><path d="M5 12H3l9-9l9 9h-2"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>오늘</a><a href="timeline"><svg viewBox="0 0 24 24"><path d="M4 17l5-6l4 4l7-8"/><circle cx="4" cy="17" r="1.5"/><circle cx="20" cy="7" r="1.5"/></svg>흐름</a><a href="market"><svg viewBox="0 0 24 24"><path d="M3 17l6-6l4 4l8-8"/><path d="M14 7h7v7"/></svg>마켓</a><a href="learn"><svg viewBox="0 0 24 24"><path d="M22 9L12 5L2 9l10 4l10-4v6"/><path d="M6 10.6V16a6 3 0 0 0 12 0v-5.4"/></svg>배우기</a><a href="v2/map/" class="on"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>전체</a></nav>
+<script>
+(function(){
+const ICON={today:'<path d="M5 12H3l9-9l9 9h-2"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/>',flow:'<path d="M4 17l5-6l4 4l7-8"/><circle cx="4" cy="17" r="1.5"/><circle cx="20" cy="7" r="1.5"/>',market:'<path d="M3 17l6-6l4 4l8-8"/><path d="M14 7h7v7"/>',learn:'<path d="M22 9L12 5L2 9l10 4l10-4v6"/><path d="M6 10.6V16a6 3 0 0 0 12 0v-5.4"/>',all:'<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>',
+ search:'<circle cx="10" cy="10" r="7"/><path d="M21 21l-6-6"/>',bell:'<path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2-3v-3a7 7 0 0 1 4-6"/><path d="M9 17v1a3 3 0 0 0 6 0v-1"/>',my:'<path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>'};
+const svg=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICON[k]}</svg>`;
+// [탭, 아이콘, 색, 한 줄, 하위 [이름, 주소, 설명, 새로?]]
+const TABS=[
+ ['오늘','today','#ff4d2e','지금 무슨 일이? 보고 만지는 뉴스',[['오늘 홈','./','스토리·TOP 10 모자이크·참여·화제'],['이슈 상세','./','한눈에·쉬운 말·흐름·과거·댓글·언론사'],['인물·키워드 상세','people','얼굴·연도별 흐름·오늘 관련 이슈'],['민심·영상','voice','이슈별 사람들 생각과 방송 영상'],['해외(스위치)','./','같은 틀, 영어 원문 보기 지원',1]]],
+ ['흐름','flow','#2f6bff','어떻게 여기까지 왔나',[['타임라인','timeline','사건이 시간순으로 이어지는 흐름'],['관계도','map','인물·기업·장소가 얽힌 모양'],['날짜 아카이브','archive','지난 날의 이슈 다시 보기'],['인물 아카이브','persons/','정치인 일생 기록·관계도'],['이슈 연표·연도별 사건','history/','1948년부터 해마다 있었던 일']]],
+ ['마켓','market','#11a683','돈과 정책',[['증시·환율·원자재','market','지수·종목·시세 차트'],['경기 지표','market#lead','경기선행지수·한국은행 통계'],['정책·공시','market','보도자료·전자공시'],['정치인 DB','politicians/','법안·표결·재산'],['아파트 실거래','market','관심 지역 거래']]],
+ ['배우기','learn','#7a4dff','놀면서 시사 상식',[['오늘의 퀴즈','quiz','OX 덱(밀어서 답)·단어 퀴즈·복습'],['카드뉴스','learn','회차마다 다른 표지와 구성'],['4컷 만화','learn','핫이슈를 만화로 쉽게'],['뉴스 게임','games/','2048·머지·팩트 새총'],['영어로 배우기','learn','해외 뉴스 영어 표현',1]]],
+ ['전체','all','#3d4560','모든 화면을 한 장에',[['사이트맵','v2/map/','이 페이지'],['설정','settings','연령대·읽기 수준·카테고리·글자 크기'],['소개·약관','terms/','이용약관·개인정보처리방침']]]];
+const TOOLS=[
+ ['검색','search','#0f1630','어느 화면에서든 돋보기 하나',[['통합 검색','v2/#search','이슈·인물·단어·해외·메뉴를 한 번에',1],['최근 검색·많이 찾는 말','v2/#search','입력 전에도 바로 고르기',1],['지난 기사까지','kw/검색','키워드 페이지에서 과거 기록까지']]],
+ ['알림','bell','#f08a00','놓친 것만 모아서',[['새 소식','alerts','팔로우한 인물·키워드·이슈'],['지난 방문 이후','./','그사이 새로 오른 이슈',1],['지표·아파트','alerts','기준을 넘으면 알려 줌'],['알림 설정','alerts/settings','받을 알림 고르기']]],
+ ['마이','my','#e2448e','나의 모든 기록 (내 서재 포함)',[['내 서재','my','좋아요·스크랩·메모·컬렉션'],['팔로우','my','따라가는 인물·키워드'],['배지·레벨','games/#badges','모은 메달과 커리어'],['학습 기록','quiz/review','틀린 단어 복습'],['맞춤 설정·계정','settings','연령대·읽기 수준·로그인 연동']]]];
+const tree=(L)=>L.map(([n,ic,c,d,K])=>`<section class="sm-n" style="--c:${c}"><div class="sm-nh"><span class="ic">${svg(ic)}</span><div><b>${n}</b><small>${d}</small></div><span class="k">${K.length}개</span></div><ul class="sm-l">${K.map(([a,h,s,nw])=>`<li><a href="${h}"><b>${a}${nw?'<i class="nw">NEW</i>':''}</b><small>${s}</small></a></li>`).join('')}</ul></section>`).join('');
+document.getElementById('tree').innerHTML=tree(TABS);document.getElementById('tools').innerHTML=tree(TOOLS);
+const MV=[['타임라인 (아래 탭)','흐름 탭 안 첫 화면'],['화제 (메뉴)','오늘: 얼굴로 보는 오늘 / 흐름: 인물 아카이브'],['내 서재 (아래 탭)','위 오른쪽 마이'],['설정 (상단 메뉴)','마이 · 전체 탭'],['민심·영상 (메뉴)','이슈 상세 안 + 오늘 탭'],['관계도 (메뉴)','흐름 탭'],['정치인 DB (메뉴)','마켓 탭(돈과 정책)'],['메뉴 속 검색창','위 오른쪽 돋보기']];
+document.getElementById('mv').innerHTML=`<div><span>지금(v1)</span><i></i><span>제안</span></div>`+MV.map(([a,b])=>`<div><s>${a}</s><i>→</i><b>${b}</b></div>`).join('');
+})();
+</script>
+</body>
+</html>

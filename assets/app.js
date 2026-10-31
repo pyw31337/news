@@ -118,7 +118,7 @@ function header2(){
   const R=!!(S.region==='en'&&G),EN=R&&S.orig,MD=R?'en':'kr';
   document.querySelectorAll('#rsw [data-m]').forEach(b=>{const on=b.dataset.m===MD;b.classList.toggle('on',on);b.setAttribute('aria-checked',on)});
   document.body.classList.toggle('en',EN);document.documentElement.lang=EN?'en':'ko';window.dispatchEvent(new CustomEvent('nb:region-changed'));
-  const top=EN?['Today','Timeline','Markets','Library']:['오늘','타임라인','마켓','내 서재'];
+  const top=EN?['Today','Timeline','Markets','Learn']:['오늘','타임라인','마켓','배우기'];
   document.querySelectorAll('.topnav a').forEach((a,i)=>a.textContent=top[i]||a.textContent);
   // 국내·해외 전환, 바닥글도 영어 모드에서는 영어로
   document.querySelectorAll('#rsw [data-m]').forEach(b=>b.textContent=EN?(b.dataset.m==='kr'?'Korea':'World'):(b.dataset.m==='kr'?'국내':'해외'));
@@ -204,11 +204,15 @@ function today(){
   ${sec('오늘의 이슈 TOP 10','Today’s Top 10',`<a class="more" href="settings">${ic('gear')}${S.age?`${AGEP[S.age].n} 맞춤 · 읽기 ${READN[S.read||'std']}`:'나에게 맞춤 설정'}</a>`,'fire')}
   <div class="catbar">${Object.entries(cats).map(([c,n])=>`<i style="flex:${n};background:${CATC[c]}" data-tip="${c} 이슈 ${n}개 · TOP 10의 ${Math.round(n/I.length*100)}%"></i>`).join('')}</div>
   <div class="legend">${Object.entries(cats).map(([c,n])=>`<span style="--c:${CATC[c]}">${c} ${n}</span>`).join('')}</div>
+  ${NBT.sinceHTML(I)}
   ${NBT.mosaicHTML(I)}
   ${NBT.voteHTML(I)}
   ${NBT.trendsHTML(D.trends.slice(0,10))}
   ${NBT.debateHTML(I)}
+  ${NBT.heatHTML(I)}
   ${NBT.wordsHTML(W)}
+  ${NBT.numsHTML(I)}
+  ${NBT.hiliteHTML(I)}
   ${NBT.agesHTML(I)}
   ${NBT.chatHTML(I)}
   ${numToday(I)}
@@ -217,7 +221,7 @@ function today(){
   <div class="card mapwrap mini scan" id="mapmini"></div>`;
   {const mm=$('#mapmini');if(window.IntersectionObserver){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();if(mm.isConnected)graph(mm,true)}},{rootMargin:'600px 0px'});io.observe(mm)}else graph(mm,true)}
   window.nbDeck&&nbDeck($('.rdeck'));carousels(app);heatIn(app);
-  NBT.mosaic(I);NBT.vote(I);NBT.trends(D.trends.slice(0,10));NBT.debate(I);NBT.words();NBT.ages(I);NBT.chat();
+  NBT.mosaic(I);NBT.vote(I);NBT.trends(D.trends.slice(0,10));NBT.debate(I);NBT.words();NBT.nums();NBT.hilite();NBT.ages(I);NBT.chat();
 }
 /* 화제도 게이지: 카드가 화면에 들어오면 차오르기 시작(.go) */
 function heatIn(root){const H=[...(root||document).querySelectorAll('.ic .heat:not(.go)')];if(!H.length)return;

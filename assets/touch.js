@@ -21,7 +21,7 @@ const lk=i=>OP(i).like||0,dl=i=>OP(i).dislike||0;
 
 /* ---------- ① TOP 10 모자이크 ---------- */
 function mosaicHTML(I){return`<div class="tmo" id="tmo" aria-label="오늘의 이슈 TOP 10"></div>`}
-function mosaic(I){const el=$('#tmo');if(!el)return;
+function mosaic(I){if(location.hash==='#search'){history.replaceState(null,'',location.pathname);setTimeout(search,300)}const el=$('#tmo');if(!el)return;
   const draw=()=>{const W=el.clientWidth||360,H=Math.round(W>=720?W*.62:W*1.38),out=[];el.style.height=H+'px';
     const it=I.slice(0,10).map(i=>({i,v:Math.pow(Math.max(1,i.score||1),.7)}));   // 0.7제곱: 1위가 판을 다 먹지 않게
     (function tm(a,x,y,w,h){if(a.length===1){out.push({...a[0],x,y,w,h});return}
@@ -127,5 +127,65 @@ function easyHold(i,root){const box=$('#s-sum .summary',root);if(!box||!(i.easy|
   S.addEventListener('contextmenu',e=>e.preventDefault());
   B.onclick=()=>{w._lock=!w._lock;set(w._lock);hz(8);$('span',B).textContent=w._lock?'쉬운 말로 보는 중 · 톡 누르면 원래대로':'꾹 누르면 쉬운 말 · 톡 누르면 계속'}}
 
-window.NBT={mosaicHTML,mosaic,voteHTML,vote,debateHTML,debate,agesHTML,ages,chatHTML,chat,facesHTML,wordsHTML,words,trendsHTML,trends,easyHold,hz};
+
+/* ---------- ⑩ 지난 방문 이후 브리핑 ---------- */
+// 지난번에 본 TOP 10과 비교해 새로 오른 이슈만 칩으로. 같은 세션에서 다시 그려도 같은 결과(세션 저장)
+function sinceHTML(I){let prev=null;try{prev=JSON.parse(sessionStorage.getItem('nb-visit-prev')||'null')}catch(e){}
+  if(!prev){prev=LS('nb-visit',null);try{sessionStorage.setItem('nb-visit-prev',JSON.stringify(prev||{}))}catch(e){}}
+  SS('nb-visit',{t:Date.now(),ids:I.slice(0,10).map(i=>i.id)});
+  if(!prev||!prev.t||Date.now()-prev.t<20*60e3)return'';const N=I.slice(0,10).filter(i=>!(prev.ids||[]).includes(i.id));if(!N.length)return'';
+  const h=Math.round((Date.now()-prev.t)/36e5),ago=h<1?'조금 전':h<24?h+'시간 전':Math.round(h/24)+'일 전';
+  return`<section class="tsn card"><div class="tsnh"><b>${ago} 다녀가신 뒤</b><span>새로 오른 이슈 <em>${N.length}</em>개</span></div><div class="tsnl">${N.map(i=>`<a href="issue/${i.id}"><span ${pic(i)?bg(pic(i)):''}></span><b>${esc(short(i.title,30))}</b><i>${i.rank}위</i></a>`).join('')}</div></section>`}
+
+/* ---------- ⑪ 한눈 온도(실험실 B2): 숫자 하나만 크게, 눌러야 자세히 ---------- */
+function heatHTML(I){const L=I.filter(i=>lk(i)+dl(i)>10).sort((a,b)=>(OP(b).total||0)-(OP(a).total||0)).slice(0,5);if(!L.length)return'';
+  return sec('한눈 온도','Mood meter','<span class="more">댓글 공감 비율 · 눌러서 자세히</span>','chat')+`<div class="tht">${L.map(i=>{const o=OP(i),t=lk(i)+dl(i)||1,p=Math.round(lk(i)/t*100),A=o.ages||{},am=Math.max(1,...Object.values(A)),S=((i.ai||{}).opinion||{}).stances||[],q=(o.top||[]).map(x=>x.text||'').find(x=>x.length>=6&&!BAD.test(x.replace(/\s/g,'')));
+    return`<details class="card"><summary><span class="thp" ${pic(i)?bg(pic(i)):''}></span><div><b>${esc(short(i.title,34))}</b><i class="thb"><i style="width:${p}%"></i></i></div><strong class="${p>=60?'w':p<=45?'c':''}">${p}<small>%</small></strong></summary>
+     <div class="thd">${S.map(x=>`<p><span>${esc(x.label)}</span><b>${x.share}%</b></p>`).join('')}${Object.keys(A).length?`<div class="tha">${Object.entries(A).map(([k,v])=>`<span><i style="height:${v/am*100}%"></i><small>${k}대</small></span>`).join('')}</div>`:''}${q&&!SAD.test(i.title)?`<q>${esc(short(q,90))}</q>`:''}<a href="issue/${i.id}#comments">댓글 ${nf(o.total)}개 보기 ${NBI('arrow-right')}</a></div></details>`}).join('')}</div>`}
+
+/* ---------- ⑫ 숫자 카드(실험실 C5): 큰 숫자만 보고 맞혀 보기, 누르면 뒤집힘 ---------- */
+function numsHTML(I){const re=/(\d[\d,.]*)\s?(%|％|조\s?원|억\s?원|만\s?원|조|억|만|원|달러|명|배|곳|개월|건)/,C=[];
+  I.forEach(i=>{for(const t of[i.title,...(i.summary||[])]){const m=re.exec(t||'');if(m&&!/^(19|20)\d\d$/.test(m[1])){C.push({i,n:m[1],u:m[2].replace(/\s/g,''),t});break}}});if(C.length<2)return'';
+  return sec('숫자 카드','Guess the number','<span class="more">무슨 숫자일까요? 눌러서 뒤집기</span>','chart')+`<div class="tnc">${C.slice(0,6).map(c=>`<button type="button" class="tfl" style="--c:${cc(c.i.category)}"><div class="f"><b>${esc(c.n)}<small>${esc(c.u)}</small></b><span>무슨 숫자일까요?</span></div><div class="k"><p>${esc(short(c.t,64))}</p><a href="issue/${c.i.id}">기사 보기 ›</a></div></button>`).join('')}</div>`}
+function nums(){$$('.tnc').forEach(el=>el.addEventListener('click',e=>{if(e.target.closest('a'))return;const b=e.target.closest('.tfl');if(b){hz(10);b.classList.toggle('on')}}))}
+
+/* ---------- ⑬ 형광펜 단어장(실험실 C6): 어려운 말을 누르면 기사 속 그 말에 형광펜 + 쉬운 뜻 ---------- */
+function hiliteHTML(I){const G={};I.forEach(i=>Object.entries(i.gloss||{}).forEach(([w,m])=>{if(!G[w])G[w]={m,i}}));const L=Object.entries(G).slice(0,10);if(L.length<2)return'';
+  window._nbHL=L;return sec('어려운 말 형광펜','Highlighter','<span class="more">눌러서 뜻 보기</span>','book')+`<div class="thl card" id="thl"><div class="thw">${L.map(([w],k)=>`<button type="button" data-w="${k}" class="${k?'':'on'}">${esc(w)}</button>`).join('')}</div><div class="thx"></div></div>`}
+function hilite(){const el=$('#thl');if(!el)return;const L=window._nbHL||[];
+  const show=k=>{const [w,g]=L[k],t=[g.i.title,...(g.i.summary||[])].find(x=>(x||'').includes(w))||g.i.title,j=t.indexOf(w);
+    $('.thx',el).innerHTML=`<div class="thdc"><p>${j<0?esc(t)+` <mark>${esc(w)}</mark>`:esc(t.slice(0,j))+`<mark>${esc(w)}</mark>`+esc(t.slice(j+w.length))}</p><div class="thm"><b>${esc(w)}</b><span>${esc(g.m)}</span></div><a href="issue/${g.i.id}">이 기사 보기 ›</a></div>`;
+    const m=$('mark',el);requestAnimationFrame(()=>requestAnimationFrame(()=>m&&m.classList.add('go')))};
+  inview(el,()=>show(0));el.addEventListener('click',e=>{const b=e.target.closest('[data-w]');if(!b)return;hz(8);$$('[data-w]',el).forEach(x=>x.classList.toggle('on',x===b));show(+b.dataset.w)})}
+
+/* ---------- ⑭ 검색(상단 돋보기) ---------- */
+// 오늘 이슈·인물·기관·단어·해외 이슈·메뉴를 한 번에. 엔터는 첫 결과, 없으면 키워드 페이지(지난 기사까지)
+const MENU2=[['오늘','./','이슈 TOP 10·참여'],['타임라인','timeline','사건이 이어지는 흐름'],['관계도','map','인물·기업·장소 관계'],['화제','people','인물·기업·장소별'],['아카이브','archive','지난 날의 이슈'],['마켓','market','증시·환율·정책'],['정치인','politicians/','법안·표결·재산'],['인물 아카이브','persons/','정치인 일생 기록'],['배우기','learn','퀴즈·카드뉴스·만화'],['단어 퀴즈','quiz','OX로 어려운 말'],['게임·배지','games/','뉴스 게임과 배지'],['마이페이지','my','내 서재·팔로우·기록'],['알림','alerts','키워드·팔로우 알림'],['설정','settings','연령대·읽기 수준·카테고리']];
+function search(){let o=$('.nbs');if(o){$('input',o).focus();return}
+  const DD=typeof D!=='undefined'?D:null,GG=typeof G!=='undefined'?G:null,R=LS('nb-recent',[]);
+  o=document.createElement('div');o.className='nbs';o.setAttribute('role','dialog');o.setAttribute('aria-label','검색');
+  o.innerHTML=`<div class="nbsh"><span class="nbsi">${NBI('search')}</span><input type="search" placeholder="이슈·인물·단어·메뉴 검색" autocomplete="off" enterkeyhint="search"><button type="button" class="nbsx">닫기</button></div><div class="nbsb"></div>`;
+  document.body.appendChild(o);document.body.classList.add('nbs-on');const q=$('input',o),body=$('.nbsb',o);
+  const close=()=>{o.remove();document.body.classList.remove('nbs-on');removeEventListener('keydown',key)};
+  const key=e=>{if(e.key==='Escape')close()};addEventListener('keydown',key);
+  const rec=t=>{t=t.trim();if(!t)return;const a=[t,...LS('nb-recent',[]).filter(x=>x!==t)].slice(0,8);SS('nb-recent',a)};
+  const empty=()=>{const T=DD?(DD.trends||[]).slice(0,10):[];body.innerHTML=`${R.length?`<h4>최근 검색 <button type="button" class="nbsc">지우기</button></h4><div class="nbsk">${R.map(t=>`<button type="button" data-q="${esc(t)}">${esc(t)}</button>`).join('')}</div>`:''}
+    ${T.length?`<h4>지금 많이 찾는 말</h4><div class="nbsk">${T.map((t,k)=>`<button type="button" data-q="${esc(t.keyword)}"><i>${k+1}</i>${esc(t.keyword)}</button>`).join('')}</div>`:''}
+    <h4>바로가기</h4><div class="nbsm">${MENU2.slice(0,9).map(m=>`<a href="${m[1]}">${esc(m[0])}</a>`).join('')}</div>`};
+  const hl=(t,s)=>{const k=t.toLowerCase().indexOf(s.toLowerCase());return k<0?esc(t):esc(t.slice(0,k))+'<mark>'+esc(t.slice(k,k+s.length))+'</mark>'+esc(t.slice(k+s.length))};
+  const run=()=>{const s=q.value.trim();if(!s)return empty();const has=t=>(t||'').toLowerCase().includes(s.toLowerCase()),g=(t,a)=>a.length?`<h4>${t}</h4>${a.join('')}`:'';
+    const iss=DD?DD.issues.filter(i=>has(i.title)||has((i.summary||[]).join(' '))||(i.keywords||[]).some(has)||(i.entities||[]).some(has)).slice(0,8).map(i=>`<a class="nbsr" href="issue/${i.id}"><span class="sq-ok" ${pic(i)?bg(pic(i)):''}></span><div><b>${hl(i.title,s)}</b><small>${esc(i.category)} · ${i.rank}위</small></div></a>`):[];
+    const ent=DD?DD.entities.filter(e=>has(e.name)).slice(0,8).map(e=>`<a class="nbsr" href="${eh(e.name)}"><span class="ro sq-ok" ${((e.visual||{}).url||(e.wiki||{}).thumb)?bg((e.visual||{}).url||(e.wiki||{}).thumb):''}></span><div><b>${hl(e.name,s)}</b><small>${esc(short((e.wiki||{}).desc||'',30))}</small></div></a>`):[];
+    const wd=DD?(DD.words||[]).filter(w=>has(w.word)).slice(0,4).map(w=>`<a class="nbsr t" href="quiz"><div><b>${hl(w.word,s)}</b><small>${esc(short(w.easy||w.mean||'',50))}</small></div></a>`):[];
+    const gl=GG&&GG.issues?GG.issues.filter(i=>has(i.title)||has(i.title_ko)).slice(0,5).map(i=>`<a class="nbsr t" href="g/${i.id}"><div><b>${hl(i.title_ko||i.title,s)}</b><small>해외 · ${esc(short(i.title,40))}</small></div></a>`):[];
+    const mn=MENU2.filter(m=>has(m[0])||has(m[2])).map(m=>`<a class="nbsr t" href="${m[1]}"><div><b>${hl(m[0],s)}</b><small>${esc(m[2])}</small></div></a>`);
+    body.innerHTML=g('이슈',iss)+g('인물·기관·장소',ent)+g('오늘의 단어',wd)+g('해외',gl)+g('메뉴',mn)+`<a class="nbsall" href="${kh(s)}">'${esc(s)}' 지난 기사까지 모두 찾기 ${NBI('arrow-right')}</a>`};
+  q.oninput=run;q.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();rec(q.value);const a=$('.nbsr',body)||$('.nbsall',body);if(a)a.click()}};
+  o.addEventListener('click',e=>{if(e.target.closest('.nbsx'))return close();const c=e.target.closest('.nbsc');if(c){SS('nb-recent',[]);R.length=0;return empty()}
+    const b=e.target.closest('[data-q]');if(b){q.value=b.dataset.q;rec(b.dataset.q);run();return}
+    const a=e.target.closest('a');if(a){rec(q.value);setTimeout(close,0)}});
+  empty();setTimeout(()=>q.focus(),30)}
+document.addEventListener('keydown',e=>{if((e.key==='k'&&(e.metaKey||e.ctrlKey))&&!/INPUT|TEXTAREA/.test((document.activeElement||{}).tagName||'')){e.preventDefault();search()}});
+
+window.NBT={sinceHTML,heatHTML,numsHTML,nums,hiliteHTML,hilite,search,mosaicHTML,mosaic,voteHTML,vote,debateHTML,debate,agesHTML,ages,chatHTML,chat,facesHTML,wordsHTML,words,trendsHTML,trends,easyHold,hz};
 })();

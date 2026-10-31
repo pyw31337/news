@@ -152,7 +152,9 @@ def word_in(i):
     t = i['title'] + ' ' + ' '.join(i.get('summary') or [])
     return next((w for w in WORDS if w['word'] in t), None)
 PRI = {'경제': 0, '세계': 1, '사회': 2, 'IT': 3, '정치': 5}
-cands = [i for i in D['issues'] if i.get('category') not in ('연예', '스포츠') and ((i.get('ai') or {}).get('deep') or i.get('lead'))]
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from sensitive import ok_issue   # 부고·범죄·재난 기사는 만화·카드뉴스로 만들지 않음
+cands = [i for i in D['issues'] if ok_issue(i) and i.get('category') not in ('연예', '스포츠') and ((i.get('ai') or {}).get('deep') or i.get('lead'))]
 # 개인 발언 공방(따옴표 제목)보다 사건·제도 이슈를 우선 — 실존 인물 풍자 위험을 줄임
 cands.sort(key=lambda i: (PRI.get(i.get('category'), 4) + (3 if re.search(r'[“"]', i['title'][:30]) else 0), i['rank']))
 COMICS = []
@@ -214,7 +216,7 @@ if s and len(s.get('data', [])) > 6:
         dict(t='src', sources=[dict(title='한국은행 경제통계시스템(ECOS) 기준금리', url='https://ecos.bok.or.kr/', press='한국은행')])]))
 def span(i):
     ds = sorted({f['date'] for f in i.get('flow') or []}); return ds, (datetime.date.fromisoformat(ds[-1]) - datetime.date.fromisoformat(ds[0])).days if len(ds) > 1 else 0
-flowing = [i for i in D['issues'] if i.get('category') not in ('연예', '스포츠') and not re.search(r'[“"]', i['title'][:30]) and len(span(i)[0]) >= 3 and span(i)[1] >= 3]
+flowing = [i for i in D['issues'] if ok_issue(i) and i.get('category') not in ('연예', '스포츠') and not re.search(r'[“"]', i['title'][:30]) and len(span(i)[0]) >= 3 and span(i)[1] >= 3]
 flowing.sort(key=lambda i: (-len(span(i)[0]), i['rank']))
 for i in flowing[:3]:
     ds, sp = span(i); ai_ = i.get('ai') or {}
@@ -297,7 +299,7 @@ def gdecks(lang):
 def gcomics():
     """해외 이슈 4컷(영어 원문 + 한국어 풀이를 AI가 함께 씀). 숫자는 원문에 있는 것만"""
     out = {'en': [], 'ko': []}
-    for i in [x for x in GI if x.get('category') not in ('연예', '스포츠') and x.get('summary')][:2]:
+    for i in [x for x in GI if ok_issue(x) and x.get('category') not in ('연예', '스포츠') and x.get('summary')][:2]:
         src = i['title'] + ' ' + i.get('summary', '') + ' ' + ' '.join(x['title'] for x in i.get('sources') or [])
         sc = llm('gcx:' + hk(i['id'], i['title']),
                  'Write a 4-panel explainer comic for English learners about this news, using only these facts. Two mascots: "Bori" (curious student) and "Nuri" (calm explainer). '
