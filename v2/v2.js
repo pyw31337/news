@@ -35,8 +35,8 @@ function draw(){const I=V.issues||[];if(!I.length){app.innerHTML='<p class="ld">
 
   <h2>더 즐기기</h2>
   <section class="more"><a href="learn"><span>🧩</span>배우기</a><a href="games/"><span>🎮</span>게임·배지</a><a href="market"><span>📈</span>마켓</a><a href="people"><span>👤</span>인물</a><a href="timeline"><span>🕰️</span>타임라인</a><a href="./" data-world><span>🌍</span>해외·영어</a></section>
-  <p class="foot">v2 시안 3 · 첫 화면 데이터 ${(window.__v2kb||0)}KB · 확정 전 미리보기 · <a href="./">지금 버전(v1)</a></p>`;
-  countUp();window.NB2={V,E,cc,bg,short,nf,RM,S,story};const ls=document.createElement('script');ls.src='v2/lab.js?v=1';document.body.appendChild(ls);
+  <p class="foot">v2 시안 4 · 첫 화면 데이터 ${(window.__v2kb||0)}KB · 확정 전 미리보기 · <a href="./">지금 버전(v1)</a></p>`;
+  countUp();window.NB2={V,E,cc,bg,short,nf,RM,S,story};const ls=document.createElement('script');ls.src='v2/lab.js?v=2';document.body.appendChild(ls);
   app.onclick=e=>{const s=e.target.closest('[data-s]');if(s){e.preventDefault();story(+s.dataset.s,0);return}
     const w=e.target.closest('[data-world]');if(w){try{const s=JSON.parse(localStorage.getItem('nb-settings')||'{}');s.region='en';localStorage.setItem('nb-settings',JSON.stringify(s))}catch(x){}}}}
 
