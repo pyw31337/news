@@ -61,7 +61,18 @@ function hub(){setMeta('놀면서 배우기 — 퀴즈·만화·카드뉴스','�
   <div id="lpast"></div>`;
   loadIX().then(ix=>{const el=document.getElementById('lpast');const ds=Object.keys(ix.days||{}).sort().reverse().slice(0,30);if(!el||ds.length<2)return;
     el.innerHTML=sec('지난 기록','Past days','<span class="more">그날의 퀴즈·만화·카드뉴스</span>','clock')+`<div class="lpast">${ds.map(d=>{const x=ix.days[d];const cur=PAST?d===PAST:d===todayK();return`<a class="lpd ${cur?'on':''}" href="learn/${d}"><b>${d.slice(5).replace('-','.')}</b><small>${E((x.w||[]).slice(0,2).join(' · '))}</small><em>퀴즈 ${x.q} · 만화 ${x.c} · 카드 ${x.d}</em></a>`}).join('')}</div>`})}
-function deckTile(d){const h=d.cards[0];return`<a class="dt ${d.kind}" href="cards/${d.id}" ${h.img?`style="--im:url('${E(AB(h.img))}')"`:''}><span class="dtag">${E(d.tag)}</span><b>${E(d.title)}</b><span class="dn">${d.cards.length}${T('장',' cards')} ${NBI('chevron-right')}</span></a>`}
+/* 카드뉴스 표지·구성 변주: 같은 날 카드뉴스가 서로 다른 모양이 되도록 순서대로 6가지 표지 × 3가지 구성.
+   0 사진 꽉 · 1 큰 숫자 · 2 위 사진/아래 글 · 3 글자만(종이) · 4 동그란 사진 · 5 색 입힌 사진+스티커 */
+const SKC=['#ff4d2e','#2f6bff','#11a683','#7a4dff','#f08a00','#e2448e'];
+const skI=d=>{const k=(F&&F.decks||[]).indexOf(d);return(k<0?0:k)%6};
+const numOf=t=>{const m=/([+-]?\d[\d.,]*)\s?(%|조\s?원|억\s?원|만\s?원|조|억|만|원|달러|명|건|곳|일|배|년|개월|bp)?/.exec(t||'');return m&&!/^(19|20)\d\d$/.test(m[1])?{v:m[1],u:(m[2]||'').replace(/\s/g,'')}:null};
+const skEmo=d=>(d.cards[0]||{}).icon||{정치:'🏛️',경제:'💹',사회:'🧭',세계:'🌍',IT:'💡',과학:'🔭',건강:'🩺',환경:'🌱',문화:'🎭',연예:'🎬',스포츠:'🏅'}[(String(d.tag||'').split('·').pop()||'').trim()]||'🗂️';
+function skin(d){const k=skI(d),h=d.cards[0]||{},im=h.img?AB(h.img):'',n=numOf(h.big)||numOf(d.title),c=SKC[k];
+  const st=`style="--skc:${c};${im?`--im:url('${E(im)}')`:''}"`;
+  const top=k===1?`<span class="skn">${n?`${E(n.v)}<small>${E(n.u)}</small>`:skEmo(d)}</span>${im?`<span class="skph"></span>`:''}`
+    :k===2?`<span class="skph"></span>`:k===3?`<span class="skq">“</span>`:k===4?`<span class="skph"></span>`:k===5?`<span class="ske">${skEmo(d)}</span>`:'';
+  return{k,st,top,cls:`sk sk${k}${im?'':' noim'}`}}
+function deckTile(d){const K=skin(d);return`<a class="dt ${d.kind} ${K.cls}" href="cards/${d.id}" ${K.st}>${K.top}<span class="dtag">${E(d.tag)}</span><b>${E(d.title)}</b><span class="dn">${d.cards.length}${T('장',' cards')} ${NBI('chevron-right')}</span></a>`}
 /* ---------- 퀴즈 ---------- */
 let QS=null;
 function buildReview(){const W=Object.values(L.review);const all=W.concat(F.quiz.words.filter(w=>!L.review[w.word]));const r=[];
@@ -121,7 +132,9 @@ function lineSvg(S,unit){const v=S.map(x=>x[1]),mn=Math.min(...v),mx=Math.max(..
 function barSvg(S,unit){const mx=Math.max(...S.map(x=>x[1]))||1,W=300,H=140,bw=W/S.length;
   return`<svg class="dchart" viewBox="0 0 ${W} ${H+20}">${S.map((x,i)=>{const h=Math.max(4,x[1]/mx*(H-24));return`<rect x="${i*bw+bw*.18}" y="${H-h}" width="${bw*.64}" height="${h}" rx="5" fill="${x[1]===mx?'#ff4d2e':'#ffc2b4'}"/><text x="${i*bw+bw/2}" y="${H-h-5}" font-size="11" font-weight="800" text-anchor="middle" fill="#0f1630">${x[1]}</text><text x="${i*bw+bw/2}" y="${H+15}" font-size="10" text-anchor="middle" fill="#8189a3">${E(String(x[0]).slice(5).replace('-','.'))}</text>`}).join('')}</svg>`}
 function card(c,k,n,d){let b='';
-  if(c.t==='hook')b=`<div class="dk hook" ${c.img?`style="--im:url('${E(AB(c.img))}')"`:''}><span class="dtag">${E(d.tag)}</span>${c.icon?`<span class="dico">${c.icon}</span>`:''}<h2>${E(c.big)}</h2><p>${E(c.text)}</p><span class="swh">옆으로 넘겨 보세요 ${NBI('chevron-right')}</span></div>`;
+  if(c.t==='hook'){const K=skin(d);b=`<div class="dk hook ${K.cls}" ${K.st}>${K.top}<span class="dtag">${E(d.tag)}</span>${c.icon&&K.k!==1&&K.k!==5?`<span class="dico">${c.icon}</span>`:''}<h2>${E(c.big)}</h2><p>${E(c.text)}</p><span class="swh">옆으로 넘겨 보세요 ${NBI('chevron-right')}</span></div>`}
+  else if(c.t==='bg'&&skI(d)%3===0)b=`<div class="dk bg qa"><span class="dlab">Q</span><h3>${E(c.title)}</h3><p class="dbody dhid">${E(c.text)}</p><button type="button" class="drev">눌러서 답 보기</button></div>`;
+  else if(c.t==='bg'&&skI(d)%3===2)b=`<div class="dk bg dq"><span class="dlab">한 줄로</span><blockquote>${E(c.text)}</blockquote><h3>${E(c.title)}</h3></div>`;
   else if(c.t==='bg'||c.t==='next')b=`<div class="dk ${c.t}"><span class="dlab">${c.t==='bg'?'배경':'앞으로'}</span><h3>${E(c.title)}</h3><p class="dbody">${E(c.text)}</p></div>`;
   else if(c.t==='word')b=`<div class="dk word"><span class="dlab">용어</span><h3>${E(c.title)}</h3><div class="dword"><b>${E(c.word)}</b><p>${E(c.text)}</p></div><a class="qbtn sm" href="quiz">퀴즈로 익히기</a></div>`;
   else if(c.t==='timeline')b=`<div class="dk tl"><span class="dlab">흐름</span><h3>${E(c.title)}</h3><ol class="dtl">${c.items.map(x=>`<li class="${x.dir||''}"><time>${E(x.d.slice(2).replace(/-/g,'.'))}</time><b>${E(x.text)}</b>${x.note?`<small>${E(x.note)}</small>`:''}</li>`).join('')}</ol></div>`;
@@ -129,14 +142,18 @@ function card(c,k,n,d){let b='';
   else if(c.t==='bars')b=`<div class="dk ch"><span class="dlab">숫자</span><h3>${E(c.title)}</h3>${barSvg(c.series,c.unit)}<p class="dnote">${E(c.note||'')}</p></div>`;
   else if(c.t==='numbers')b=`<div class="dk num"><span class="dlab">숫자</span><h3>${E(c.title)}</h3><div class="dnums">${c.nums.map((x,i)=>`<div class="${i?'':'main'}"><b>${E(x.v)}</b><span>${E(x.l)}</span></div>`).join('')}</div></div>`;
   else if(c.t==='src')b=`<div class="dk src"><span class="dlab">출처</span><h3>자료 출처</h3>${srcList(c.sources).replace('<h4>출처</h4>','')}<p class="dnote">카드뉴스는 NewsBoard 타임라인 DB에서 자동으로 만들어요.</p></div>`;
-  return`<section class="dcard" aria-label="${k+1}/${n}"><span class="dpg">${k+1}/${n}</span>${b}</section>`}
+  return`<section class="dcard sk${skI(d)}" style="--skc:${SKC[skI(d)]}" aria-label="${k+1}/${n}"><span class="dpg">${k+1}/${n}</span>${b}</section>`}
+// 회차마다 순서도 다르게: 1 흐름(타임라인·추이) 먼저, 2 숫자(숫자·막대) 먼저. 표지는 맨 앞, 출처는 맨 끝 고정
+function order(d){const C=d.cards.slice(),v=skI(d)%3;if(v===0||C.length<4)return C;const head=C[0],tail=C.filter((c,i)=>i&&c.t==='src'),mid=C.filter((c,i)=>i&&c.t!=='src');
+  const first=v===1?['timeline','chart']:['numbers','bars','chart'];mid.sort((a,b)=>(first.includes(b.t)?1:0)-(first.includes(a.t)?1:0));return[head,...mid,...tail]}
 function deck(id){const d=F.decks.find(x=>x.id===id)||F.decks[0];if(!d)return hub();setMeta(d.title+' — 카드뉴스',d.cards[0].text||'');
   app.innerHTML=`<div class="dwrap"><a class="back" href="learn">${NBI('chevron-left')} 배우기</a><div class="dhead"><span class="dtag2">${E(d.tag)}</span><h1>${E(d.title)}</h1></div>
-  <div class="deck" id="deck">${d.cards.map((c,k)=>card(c,k,d.cards.length,d)).join('')}</div>
-  <div class="dnav"><button class="dbtn" data-d="-1" aria-label="이전">${NBI('chevron-left')}</button><div class="dots">${d.cards.map((_,k)=>`<i class="${k?'':'on'}"></i>`).join('')}</div><button class="dbtn" data-d="1" aria-label="다음">${NBI('chevron-right')}</button></div>
+  <div class="deck" id="deck">${order(d).map((c,k,A)=>card(c,k,A.length,d)).join('')}</div>
+  <div class="dnav"><button class="dbtn" data-d="-1" aria-label="이전">${NBI('chevron-left')}</button><div class="dots">${order(d).map((_,k)=>`<i class="${k?'':'on'}"></i>`).join('')}</div><button class="dbtn" data-d="1" aria-label="다음">${NBI('chevron-right')}</button></div>
   <div class="cact">${typeof shareBtn==='function'?shareBtn():''}${d.issue?`<a class="qbtn ghost" href="issue/${d.issue}">이슈 페이지</a>`:''}</div>
   <h3 class="dmore">다른 카드뉴스</h3><div class="dlist">${F.decks.filter(x=>x.id!==d.id).slice(0,4).map(deckTile).join('')}</div></div>`;
   const el=document.getElementById('deck'),dots=app.querySelectorAll('.dots i');
+  el.addEventListener('click',e=>{const r=e.target.closest('.drev');if(r){const p=r.parentNode.querySelector('.dhid');p&&p.classList.remove('dhid');r.remove();try{navigator.vibrate&&navigator.vibrate(10)}catch(x){}}});
   const cur=()=>Math.round(el.scrollLeft/el.clientWidth);
   el.addEventListener('scroll',()=>{const c=cur();dots.forEach((x,i)=>x.classList.toggle('on',i===c))},{passive:true});
   app.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>el.scrollTo({left:(cur()+ +b.dataset.d)*el.clientWidth,behavior:'smooth'}))}
@@ -162,7 +179,7 @@ function mainLearn(){if(!F||!document.getElementById('app'))return;const ap=docu
      ${done?`<div class="mlx"><b>${ok?T('정답!','Correct!'):T('아쉬워요','Not quite')}</b> ${w.mean?E(w.word+' — '+w.mean):''}${w.tip?`<small>${E(w.tip)}</small>`:''}</div>`:''}</div>`};
   const draw=()=>{const qa=s.querySelector('.mlqa');if(!qa||!Q.length)return;qa.innerHTML=card(cur)+`<div class="mlnav"><button type="button" data-d="-1" ${cur?'':'disabled'} aria-label="${T('이전','Previous')}">${NBI('chevron-left')}</button><span>${Q.map((_,i)=>`<i class="${i===cur?'on':''} ${A[i]!=null?'done':''}"></i>`).join('')}</span><button type="button" data-d="1" ${cur<Q.length-1?'':'disabled'} aria-label="${T('다음','Next')}">${NBI('chevron-right')}</button></div>`};
   const cover=x=>x.k==='c'?`<a class="mld comic" href="comic/${x.c.id}"><span class="mlt">${T('4컷 만화','4-panel comic')}</span><svg viewBox="-160 -50 320 100" aria-hidden="true"><g transform="translate(-70,0)">${bori((x.c.panels[0]||{}).mood||'curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg><b>${E(x.c.title)}</b><small>${E(((x.c.panels[0]||{}).lines||[{}])[0].text||'')}</small></a>`
-    :`<a class="mld deck" href="cards/${x.d.id}" ${x.d.cards[0].img?`style="--im:url('${E(AB(x.d.cards[0].img))}')"`:''}><span class="mlt">${T('카드뉴스','Card news')} · ${x.d.cards.length}${T('장',' cards')}</span><b>${E(x.d.title)}</b><small>${E(x.d.tag||'')}</small></a>`;
+    :(K=>`<a class="mld deck ${K.cls}" href="cards/${x.d.id}" ${K.st}>${K.top}<span class="mlt">`)(skin(x.d))+`${T('카드뉴스','Card news')} · ${x.d.cards.length}${T('장',' cards')}</span><b>${E(x.d.title)}</b><small>${E(x.d.tag||'')}</small></a>`;
   s.innerHTML=`${sec(W?T('뉴스로 배우는 영어','Learn English with the news'):'놀면서 배우기','Learn with news',`<a class="more" href="learn">${T('전체 보기','See all')} ${NBI('arrow-right')}</a>`,'book')}
    <div class="mlg">${Q.length?`<div class="mlqa-w card"><h3>${NBI('help-hexagon')}${title}<small>${Q.length}${T('문제',' questions')}</small></h3><div class="mlqa"></div></div>`:''}
    ${items.length?`<div class="mldk"><h3>${T('카드뉴스 · 4컷 만화','Card news · comics')}<small>${T('옆으로 넘겨 보세요','Swipe')}</small></h3><div class="mlrow">${items.map(cover).join('')}</div></div>`:''}</div>`;

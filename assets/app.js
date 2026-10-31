@@ -188,20 +188,7 @@ function today(){
   const L=I[0],mx=Math.max(...I.map(i=>i.score));
   const side=I.slice(0,10).map(i=>`<div class="srow" data-id="${i.id}"><div><a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><h3>${esc(i.title)}</h3><div class="m">${ic('news')}${esc(i.press)} 외 ${i.presses-1}곳 ${i.opinion?`· ${ic('chat')}${i.opinion.total.toLocaleString()}`:''}</div></div></a></div></div>`).join('');
   const cats={};I.forEach(i=>cats[i.category]=(cats[i.category]||0)+1);
-  const GORD=S.age||S.corder?[...I].sort((a,b)=>corder(a.category)-corder(b.category)||a.rank-b.rank):I;
-  const grid=GORD.map((i,k)=>{const wide=k===0||k===5;const txt=!i.image;
-    /* 품질 점수 1위 사진(docs/QUALITY.md) → 대표 사진 → 흐름·관련 기사 사진을 한 캐러셀로(좌우로 넘김). 한 기사의 엉뚱한 대표 이미지가 맨 앞에 오지 않게 */
-    const pics=txt?[]:[...(i.gallery||[]).slice(0,1).map(g=>g.img),i.image,...(i.flow||[]).flatMap(f=>f.items.filter(x=>x.img).slice(0,1).map(x=>x.img)),...(i.gallery||[]).map(g=>g.img)].filter(Boolean).filter((u,n,A)=>A.indexOf(u)===n).slice(0,6);
-    return`<a class="card ic ${wide?'wide':''} ${txt?'text':''}" href="issue/${i.id}">
-    ${txt?'':`<div class="img car"><div class="ctrack">${pics.map(u=>`<span class="cs" ${bg(u)}></span>`).join('')}</div><div class="rk">${i.rank}</div>${i.opinion?`<span class="cm">${ic('chat')}${i.opinion.total.toLocaleString()}</span>`:''}${pics.length>1?`<span class="cdots" aria-hidden="true">${pics.map((_,n)=>`<i class="${n?'':'on'}"></i>`).join('')}</span><button type="button" class="cnav p" aria-label="이전 사진" tabindex="-1">${NBI('chevron-left')}</button><button type="button" class="cnav n" aria-label="다음 사진" tabindex="-1">${NBI('chevron-right')}</button>`:''}</div>`}
-    <div class="bd">${txt?`<div class="rkt">${String(i.rank).padStart(2,'0')}</div>`:''}<div class="row"><span class="cat ${i.category}">${ic(i.category)}${i.category}</span>${i.trend.length?`<span class="chip event">${ic('fire')}검색 급상승</span>`:''}</div>
-    <h3>${esc(i.title)}</h3>${(()=>{const X=sumFor(i,wide?3:2);return X.L.length?`<ul class="${X.easy?'easy':''}">${X.L.map(s=>`<li>${glossWrap(hiSum(s,i),i)}</li>`).join('')}</ul>`:''})()}
-    <div class="chips">${i.entities.slice(0,3).map(n=>chipE(n,1)).join('')}</div>
-    <div class="heat" title="화제도: 기사 수·보도한 언론사 수·검색량·댓글을 합친 점수. 막대는 오늘 1위 이슈 대비 크기예요."><span>화제도</span><div class="bar"><i style="width:${(i.score/mx*100).toFixed(0)}%"></i></div><b>${Math.round(i.score).toLocaleString()}</b></div>
-    <div class="ft"><span>언론사 ${i.presses}곳${(i.flow||[]).length?` · 흐름 ${i.flow.length}일`:''}</span><span>자세히 ${NBI('arrow-right')}</span></div></div></a>`}).join('');
-  const P=D.entities.filter(e=>e.type==='person').slice(0,12);
-  const pcs=P.map(e=>`<a class="card pc" href="${eh(e.name)}">${av(e)}<b>${esc(e.name)}</b><small>${esc(e.wiki?.desc||'')}</small>${spark(e.daily)}<span class="last">${e.timeline[0]?esc(e.timeline[0].title):''}</span></a>`).join('');
-  const tr=D.trends.slice(0,10).map((t,i)=>`<a class="tr" href="${kh(t.keyword)}">${th(t.image,'tt','search')}<span class="n">${i+1}</span><b>${esc(t.keyword)}</b>${(t.news||t.today||[])[0]?`<span class="why">${esc((t.news||t.today)[0].title)}</span>`:''}<span class="tv" title="${TTIP}">${tlab(t)}${t.articles?` · 기사 ${t.articles}`:''}</span></a>`).join('');
+  /* TOP 10·화제·검색어·단어는 '만지는 뉴스' 모듈(assets/touch.js, v2 실험실에서 확정)로 그림 */
   const W=(D.words||[]).slice(0,6);
   app.innerHTML=`
   <section class="hero">
@@ -217,17 +204,20 @@ function today(){
   ${sec('오늘의 이슈 TOP 10','Today’s Top 10',`<a class="more" href="settings">${ic('gear')}${S.age?`${AGEP[S.age].n} 맞춤 · 읽기 ${READN[S.read||'std']}`:'나에게 맞춤 설정'}</a>`,'fire')}
   <div class="catbar">${Object.entries(cats).map(([c,n])=>`<i style="flex:${n};background:${CATC[c]}" data-tip="${c} 이슈 ${n}개 · TOP 10의 ${Math.round(n/I.length*100)}%"></i>`).join('')}</div>
   <div class="legend">${Object.entries(cats).map(([c,n])=>`<span style="--c:${CATC[c]}">${c} ${n}</span>`).join('')}</div>
-  <div class="grid10">${grid}</div>
-  ${sec('실시간 검색어','Google Trends KR','<span class="more">눌러서 오늘·과거 흐름 보기</span>','search')}
-  <div class="trends">${tr}</div>
-  ${W.length?sec('오늘의 단어','Words of the day',`<span class="more">문해력 한 스푼</span>`,'quiz')+`<div class="words">${W.map(wordCard).join('')}</div>`:''}
+  ${NBT.mosaicHTML(I)}
+  ${NBT.voteHTML(I)}
+  ${NBT.trendsHTML(D.trends.slice(0,10))}
+  ${NBT.debateHTML(I)}
+  ${NBT.wordsHTML(W)}
+  ${NBT.agesHTML(I)}
+  ${NBT.chatHTML(I)}
   ${numToday(I)}
-  ${sec('화제의 인물','People in the news',`<a class="more" href="people">전체 ${NBI('arrow-right')}</a>`,'user')}
-  <div class="hs">${pcs}</div>
+  ${NBT.facesHTML(D.entities)}
   ${sec('관계로 보는 오늘','Relation map',`<a class="more" href="map">크게 보기 ${NBI('arrow-right')}</a>`,'graph')}
   <div class="card mapwrap mini scan" id="mapmini"></div>`;
   {const mm=$('#mapmini');if(window.IntersectionObserver){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();if(mm.isConnected)graph(mm,true)}},{rootMargin:'600px 0px'});io.observe(mm)}else graph(mm,true)}
   window.nbDeck&&nbDeck($('.rdeck'));carousels(app);heatIn(app);
+  NBT.mosaic(I);NBT.vote(I);NBT.trends(D.trends.slice(0,10));NBT.debate(I);NBT.words();NBT.ages(I);NBT.chat();
 }
 /* 화제도 게이지: 카드가 화면에 들어오면 차오르기 시작(.go) */
 function heatIn(root){const H=[...(root||document).querySelectorAll('.ic .heat:not(.go)')];if(!H.length)return;
@@ -273,7 +263,7 @@ function issue(id){
    ${ents.length?sec('등장 인물·키워드','Who’s who','','user')+`<div class="who">${ents.map(e=>`<a class="card whoc" href="${eh(e.name)}">${av(e,'av s')}<div><b>${esc(e.name)}</b><small>${esc(e.wiki?.desc||TYPE[e.type])}</small></div></a>`).join('')}</div>`:''}
   </aside></div>
   ${DS.press(i)}${DS.related(i)}`;
-  DS.bind(app);
+  DS.bind(app);window.NBT&&NBT.easyHold(i,app);
   const tabs=app.querySelector('.ds-tabs');if(tabs&&'IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)tabs.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});['s-sum','s-flow','related','press','comments'].forEach(k=>{const el=document.getElementById(k);el&&io.observe(el)})}
   const gl=(i.gallery||[]).length?i.gallery:(i.image?[{img:i.image,press:i.press,url:i.url}]:[]);window.nbGallery?nbGallery($('.dgal'),gl):$('.dgal').remove();
 }

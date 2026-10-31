@@ -16,7 +16,7 @@ if not D.get('issues'): print('easy: no today.json'); sys.exit(0)
 hk = lambda *a: hashlib.md5('|'.join(map(str, a)).encode()).hexdigest()[:12]
 key = lambda i: hk(i['id'], i['title'])
 summ = lambda i: ' '.join(i.get('summary') or []) if isinstance(i.get('summary'), list) else (i.get('summary') or '')
-def src_text(i): return ' '.join([i['title'], summ(i), (i.get('ai') or {}).get('deep') or '', ' '.join(i.get('leads') or [])])
+def src_text(i): return ' '.join([i['title'], summ(i), (i.get('ai') or {}).get('deep') or '', ' '.join(i.get('leads') or []), ' '.join(x.get('title', '') for x in (i.get('sources') or [])[:12])])
 # 1) 용어 풀이(사전)
 for i in D['issues']:
     t = i['title'] + ' ' + summ(i) + ' ' + ' '.join((i.get('ai') or {}).get('summary') or [] if isinstance((i.get('ai') or {}).get('summary'), list) else [])
@@ -46,8 +46,10 @@ if todo:
     for x in r.get('items', []) if isinstance(r, dict) else []:
         i = by.get(x.get('id'))
         try:
-            L = [str(s).strip() for s in x.get('easy') or [] if 6 < len(str(s).strip()) < 120][:3]
-            assert i and len(L) >= 2 and not (nums(' '.join(L)) - nums(src_text(i)))
+            # 원문에 없는 숫자가 든 문장만 빼고(전체를 버리지 않음), 2문장 이상 남으면 채택
+            L = [str(s).strip() for s in x.get('easy') or [] if 6 < len(str(s).strip()) < 120]
+            L = [t for t in L if not (nums(t) - nums(src_text(i)))][:3] if i else []
+            assert i and len(L) >= 2
             C[key(i)] = L; ok += 1
         except Exception: bad += 1
     print('easy: new %d, dropped %d' % (ok, bad))

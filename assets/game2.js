@@ -85,7 +85,7 @@ window.NBOX=async function(el,F){if(!el)return;const Z=await quizV2(),L=LANG(),T
     const btns=q.kind==='mc'?`<div class="ox-mc">${(q.choices[L]||q.choices.ko).map((c,k)=>`<button type="button" data-o="${k}" class="${done&&k===q.answer?'right':''} ${done&&a===k&&!ok?'wrong':''}" ${done?'disabled':''}><b>${'ABCD'[k]}</b>${E(c)}</button>`).join('')}</div>`
       :`<div class="ox-btns"><button type="button" data-o="1" class="o ${done&&q.answer?'right':''} ${done&&a===1&&!ok?'wrong':''}" ${done?'disabled':''}>O</button><button type="button" data-o="0" class="x ${done&&!q.answer?'right':''} ${done&&a===0&&!ok?'wrong':''}" ${done?'disabled':''}>X</button></div>`;
     const ans=q.kind==='mc'?'ABCD'[q.answer]:(q.answer?'O':'X');
-    return`<article class="ox-card ${done?(ok?'ok':'no'):''} ${q.kind==='mc'?'mc':''} ${q.img?'pic':''}" data-i="${i}">${q.img?`<div class="ox-img" style="background-image:url('${E(q.img)}')"></div>`:''}<div class="ox-no">Q${String(i+1).padStart(2,'0')}<span>${E(V2?T(LV[q.level][0],LV[q.level][1])+(q.cat?(L==='en'?(({정치:'Politics',경제:'Business',사회:'Society',세계:'World',IT:'Tech',과학:'Science',건강:'Health',환경:'Climate',문화:'Culture',연예:'Entertainment',스포츠:'Sports'}[q.cat])?' · '+{정치:'Politics',경제:'Business',사회:'Society',세계:'World',IT:'Tech',과학:'Science',건강:'Health',환경:'Climate',문화:'Culture',연예:'Entertainment',스포츠:'Sports'}[q.cat]:''):' · '+q.cat):''):(q.field||'오늘의 단어'))}</span></div><p class="ox-q">${oxHi(tx)}</p>${btns}
+    return`<article class="ox-card ${done?(ok?'ok':'no'):''} ${q.kind==='mc'?'mc':''} ${q.img?'pic':''}" data-i="${i}">${q.img?`<div class="ox-img" style="background-image:url('${E(q.img)}')"></div>`:''}<div class="ox-no">Q${String(i+1).padStart(2,'0')}<span>${E(V2?T(LV[q.level][0],LV[q.level][1])+(q.cat?(L==='en'?(({정치:'Politics',경제:'Business',사회:'Society',세계:'World',IT:'Tech',과학:'Science',건강:'Health',환경:'Climate',문화:'Culture',연예:'Entertainment',스포츠:'Sports'}[q.cat])?' · '+{정치:'Politics',경제:'Business',사회:'Society',세계:'World',IT:'Tech',과학:'Science',건강:'Health',환경:'Climate',문화:'Culture',연예:'Entertainment',스포츠:'Sports'}[q.cat]:''):' · '+q.cat):''):(q.field||'오늘의 단어'))}</span></div><p class="ox-q">${oxHi(tx)}</p>${btns}${q.kind!=='mc'&&!done?`<i class="ox-st o">O</i><i class="ox-st x">X</i><div class="ox-sw"><span>← X</span><small>${T('카드를 밀어서 답해요','Swipe to answer')}</small><span>O →</span></div>`:''}
      <div class="ox-exp">${done?`<b>${ok?T('정답이에요','Correct'):T('아쉬워요','Not quite')}</b> ${T('정답은','Answer:')} <em>${ans}</em>. ${E(ex)}`:''}</div></article>`};
   function draw(dir){const ids=Q.map(q=>q.id),n=ids.filter(id=>A[id]!=null).length,ok=Q.filter(q=>A[q.id]!=null&&right(q,A[q.id])).length;
     el.querySelector('.ox-sc').innerHTML=`<b>${ok}</b> / ${n} ${T('정답','correct')} · ${cur+1}/${Q.length}`;
@@ -95,13 +95,27 @@ window.NBOX=async function(el,F){if(!el)return;const Z=await quizV2(),L=LANG(),T
     el.querySelector('.ox-pv').disabled=cur===0;el.querySelector('.ox-nx').disabled=cur===Q.length-1}
   const go=(t)=>{t=Math.max(0,Math.min(Q.length-1,t));if(t===cur)return;const d=t>cur?1:-1;const c=stage().querySelector('.ox-card');c&&c.classList.add(d>0?'out-l':'out-r');setTimeout(()=>{cur=t;draw(d)},180)};
   el.addEventListener('click',e=>{const lb=e.target.closest('[data-lv]');if(lb){lv=+lb.dataset.lv;localStorage.setItem('nb-oxlv',lv);mk();shell();draw();return}
-    const b=e.target.closest('[data-o]');if(b){const i=cur,q=Q[i];if(A[q.id]!=null)return;const a=+b.dataset.o;A[q.id]=a;localStorage.setItem(dk,JSON.stringify({d:day,a:A}));
+    if(el._nc)return;const b=e.target.closest('[data-o]');if(b){const i=cur,q=Q[i];if(A[q.id]!=null)return;const a=+b.dataset.o;A[q.id]=a;localStorage.setItem(dk,JSON.stringify({d:day,a:A}));
       const ok=right(q,a);const all=Q.every(x=>A[x.id]!=null&&right(x,A[x.id]));
       dispatchEvent(new CustomEvent('nb:quiz',{detail:{ok,word:q.word||q.id,kind:q.kind,perfect:all}}));if(ok&&window.NBGame)NBGame.ev('quiz_x',1,{xp:[0,10,15,20][q.level||1],why:T('퀴즈 정답','Quiz correct')});
       draw();const c=stage().querySelector('.ox-card');c.classList.add(ok?'pop':'shake');
       if(ok&&i<Q.length-1)setTimeout(()=>{if(cur===i)go(i+1)},1600);return}
     if(e.target.closest('.ox-pv'))go(cur-1);if(e.target.closest('.ox-nx'))go(cur+1)});
-  let sx=null;el.addEventListener('pointerdown',e=>{if(e.target.closest('.ox-stage'))sx=e.clientX});el.addEventListener('pointerup',e=>{if(sx==null)return;const dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50)go(cur+(dx<0?1:-1))});
+  /* 밀어서 답하기(v2 실험실 C1): 안 푼 OX 카드는 오른쪽=O, 왼쪽=X. 카드가 손가락을 따라 기울고 도장이 진해짐.
+     푼 카드·4지선다는 예전처럼 좌우로 밀면 다음/이전 문제. 끌다 놓은 뒤 이어지는 클릭은 무시 */
+  const hz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(x){}};
+  let sx=null,dx=0,dc=null,mv=0,over=0;const open=()=>{const q=Q[cur];return q&&q.kind!=='mc'&&A[q.id]==null};
+  el.addEventListener('pointerdown',e=>{if(!e.target.closest('.ox-stage'))return;sx=e.clientX;dx=0;mv=0;over=0;dc=stage().querySelector('.ox-card')});
+  el.addEventListener('pointermove',e=>{if(sx==null||!dc)return;dx=e.clientX-sx;if(!mv&&Math.abs(dx)>10){mv=1;try{dc.setPointerCapture(e.pointerId)}catch(x){}}if(!mv)return;
+    const op=open();dc.style.transition='none';dc.style.transform=`translateX(${dx}px) rotate(${dx/(op?16:40)}deg)`;
+    if(op){dc.style.setProperty('--so',Math.max(0,Math.min(1,dx/110)));dc.style.setProperty('--sx',Math.max(0,Math.min(1,-dx/110)));const o=Math.abs(dx)>=90?1:0;if(o!==over){over=o;o&&hz(8)}}});
+  const end=()=>{if(sx==null)return;sx=null;const c=dc;dc=null;if(!c)return;c.style.transition='';
+    if(mv){el._nc=1;setTimeout(()=>el._nc=0,0)}
+    if(open()&&Math.abs(dx)>=90){const v=dx>0?1:0;c.style.transform=`translateX(${dx>0?560:-560}px) rotate(${dx/5}deg)`;c.style.opacity='0';
+      setTimeout(()=>{const b=c.querySelector(`[data-o="${v}"]`);if(b){b.click();const q=Q[cur];hz(right(q,v)?15:[30,40,30])}},170);return}
+    c.style.transform='';c.style.setProperty('--so',0);c.style.setProperty('--sx',0);
+    if(mv&&!open()&&Math.abs(dx)>50)go(cur+(dx<0?1:-1))};
+  el.addEventListener('pointerup',end);el.addEventListener('pointercancel',end);
   el.addEventListener('keydown',e=>{if(!e.target.closest('.ox-stage'))return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
   draw()};
 
