@@ -40,7 +40,21 @@ function draw(){const I=V.issues||[];if(!I.length){app.innerHTML='<p class="ld">
   app.onclick=e=>{const s=e.target.closest('[data-s]');if(s){e.preventDefault();story(+s.dataset.s,0);return}
     const w=e.target.closest('[data-world]');if(w){try{const s=JSON.parse(localStorage.getItem('nb-settings')||'{}');s.region='en';localStorage.setItem('nb-settings',JSON.stringify(s))}catch(x){}}}}
 
-function countUp(){document.querySelectorAll('.nums b[data-n]').forEach(b=>{const n=+b.dataset.n;if(RM){b.textContent=nf(n);return}const t0=performance.now();
+function countUp(){document.querySelectorAll('.nums b[data-n]').forEach(b=>{const n=+b.dataset.n;if(RM){b.textContent=nf(n);return}/* ---------- 검색(사이트맵 제안: 위 오른쪽 돋보기) ---------- */
+function search(){if(document.querySelector('.v2s'))return;const o=document.createElement('div');o.className='v2s';
+  o.innerHTML=`<div class="v2sh"><input type="search" placeholder="이슈·인물·검색어" enterkeyhint="search" autocomplete="off"><button type="button">닫기</button></div><div class="v2sb"></div>`;document.body.appendChild(o);
+  const q=o.querySelector('input'),b=o.querySelector('.v2sb'),hl=(t,s)=>{const k=t.indexOf(s);return k<0?E(t):E(t.slice(0,k))+'<mark>'+E(s)+'</mark>'+E(t.slice(k+s.length))};
+  const empty=()=>{b.innerHTML=`<h4>지금 많이 찾는 말</h4><div class="v2sk">${(V.trends||[]).map((t,k)=>`<button type="button" data-q="${E(t.k)}"><i>${k+1}</i>${E(t.k)}</button>`).join('')}</div><h4>오늘 뉴스 속 사람</h4><div class="v2sk">${(V.people||[]).map(p=>`<button type="button" data-q="${E(p.n)}">${E(p.n)}</button>`).join('')}</div>`};
+  const run=()=>{const s=q.value.trim();if(!s)return empty();
+    const I=(V.issues||[]).filter(i=>(i.title+' '+(i.kw||[]).join(' ')+' '+(i.ents||[]).join(' ')).includes(s)).map(i=>`<a class="v2sr" href="issue/${i.id}"><span ${bg(i.imgs[0]||i.img)}></span><div><b>${hl(i.title,s)}</b><small>${E(i.cat)} · ${i.rank}위</small></div></a>`);
+    const P=(V.people||[]).filter(p=>p.n.includes(s)).map(p=>`<a class="v2sr p" href="entity/${encodeURIComponent(p.n)}"><span ${bg(p.img)}></span><div><b>${hl(p.n,s)}</b><small>${E(p.d)}</small></div></a>`);
+    b.innerHTML=(I.length?'<h4>이슈</h4>'+I.join(''):'')+(P.length?'<h4>사람</h4>'+P.join(''):'')+`<a class="v2sall" href="kw/${encodeURIComponent(s)}">'${E(s)}' 지난 기사까지 찾기 →</a>`};
+  const close=()=>{o.remove();if(location.hash==='#search')history.replaceState(null,'',location.pathname)};
+  q.oninput=run;q.onkeydown=e=>{if(e.key==='Enter'){const a=b.querySelector('a');a&&a.click()}if(e.key==='Escape')close()};
+  o.addEventListener('click',e=>{if(e.target.closest('.v2sh button'))return close();const t=e.target.closest('[data-q]');if(t){q.value=t.dataset.q;run()}});empty();setTimeout(()=>q.focus(),30)}
+document.getElementById('v2s')&&document.getElementById('v2s').addEventListener('click',()=>V&&search());
+
+const t0=performance.now();
   const f=t=>{const p=Math.min(1,(t-t0)/1100);b.textContent=nf(Math.round(n*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(f)};
   const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){io.disconnect();requestAnimationFrame(f)}});io.observe(b)})}
 
@@ -89,7 +103,21 @@ function bindSV(){let y0=null,x0=null;
     if(dy>90&&Math.abs(dx)<70){SV._sw=1;close()}else if(Math.abs(dx)>60){SV._sw=1;(dx<0?next:prev)()}});
   addEventListener('keydown',function k(e){if(!SV){removeEventListener('keydown',k);return}if(e.key==='Escape')close();if(e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev()})}
 
+/* ---------- 검색(사이트맵 제안: 위 오른쪽 돋보기) ---------- */
+function search(){if(document.querySelector('.v2s'))return;const o=document.createElement('div');o.className='v2s';
+  o.innerHTML=`<div class="v2sh"><input type="search" placeholder="이슈·인물·검색어" enterkeyhint="search" autocomplete="off"><button type="button">닫기</button></div><div class="v2sb"></div>`;document.body.appendChild(o);
+  const q=o.querySelector('input'),b=o.querySelector('.v2sb'),hl=(t,s)=>{const k=t.indexOf(s);return k<0?E(t):E(t.slice(0,k))+'<mark>'+E(s)+'</mark>'+E(t.slice(k+s.length))};
+  const empty=()=>{b.innerHTML=`<h4>지금 많이 찾는 말</h4><div class="v2sk">${(V.trends||[]).map((t,k)=>`<button type="button" data-q="${E(t.k)}"><i>${k+1}</i>${E(t.k)}</button>`).join('')}</div><h4>오늘 뉴스 속 사람</h4><div class="v2sk">${(V.people||[]).map(p=>`<button type="button" data-q="${E(p.n)}">${E(p.n)}</button>`).join('')}</div>`};
+  const run=()=>{const s=q.value.trim();if(!s)return empty();
+    const I=(V.issues||[]).filter(i=>(i.title+' '+(i.kw||[]).join(' ')+' '+(i.ents||[]).join(' ')).includes(s)).map(i=>`<a class="v2sr" href="issue/${i.id}"><span ${bg(i.imgs[0]||i.img)}></span><div><b>${hl(i.title,s)}</b><small>${E(i.cat)} · ${i.rank}위</small></div></a>`);
+    const P=(V.people||[]).filter(p=>p.n.includes(s)).map(p=>`<a class="v2sr p" href="entity/${encodeURIComponent(p.n)}"><span ${bg(p.img)}></span><div><b>${hl(p.n,s)}</b><small>${E(p.d)}</small></div></a>`);
+    b.innerHTML=(I.length?'<h4>이슈</h4>'+I.join(''):'')+(P.length?'<h4>사람</h4>'+P.join(''):'')+`<a class="v2sall" href="kw/${encodeURIComponent(s)}">'${E(s)}' 지난 기사까지 찾기 →</a>`};
+  const close=()=>{o.remove();if(location.hash==='#search')history.replaceState(null,'',location.pathname)};
+  q.oninput=run;q.onkeydown=e=>{if(e.key==='Enter'){const a=b.querySelector('a');a&&a.click()}if(e.key==='Escape')close()};
+  o.addEventListener('click',e=>{if(e.target.closest('.v2sh button'))return close();const t=e.target.closest('[data-q]');if(t){q.value=t.dataset.q;run()}});empty();setTimeout(()=>q.focus(),30)}
+document.getElementById('v2s')&&document.getElementById('v2s').addEventListener('click',()=>V&&search());
+
 const t0=performance.now();
 fetch('data/today_v2.json',{cache:'no-cache'}).then(r=>{window.__v2kb=Math.round((+r.headers.get('content-length')||0)/1024);return r.json()})
- .then(j=>{V=j;draw()}).catch(()=>{app.innerHTML='<p class="ld">불러오지 못했어요. 잠시 후 다시 열어 주세요.</p>'});
+ .then(j=>{V=j;draw();if(location.hash==='#search')search()}).catch(()=>{app.innerHTML='<p class="ld">불러오지 못했어요. 잠시 후 다시 열어 주세요.</p>'});
 })();

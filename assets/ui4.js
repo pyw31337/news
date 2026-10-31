@@ -10,9 +10,9 @@ function draw(){const top=document.querySelector('header.top');if(!top)return;
   if(!el){el=document.createElement('div');el.className='acct';const bell=document.getElementById('bell');if(bell)bell.after(el);else top.appendChild(el)}
   else{const bell=document.getElementById('bell');if(bell&&el.previousElementSibling!==bell)bell.after(el)}
   const t=LS.getItem('nb-tok'),p=LS.getItem('nb-prov')||'google',k=t?p:'';if(k===st)return;st=k;
-  if(!t){el.classList.remove('in');el.innerHTML=`<a class="acb" href="login/?ret=${encodeURIComponent(ret())}" aria-label="로그인">${U}</a>`;
-    el.querySelector('a').onclick=e=>{e.preventDefault();e.stopPropagation();location.href=B+'login/?ret='+encodeURIComponent(ret())};return}
-  el.classList.add('in');el.innerHTML=`<button type="button" class="acb" aria-label="내 계정" aria-haspopup="true" aria-expanded="false">${UF}<i class="acd ${p}"></i></button><div class="acm" role="menu"><div class="ach">${UF}<b>${({kakao:'카카오',naver:'네이버'})[p]||'구글'} 계정</b><small>로그인됨</small></div><a href="my" role="menuitem">내 서재</a><button type="button" role="menuitem" class="aco">로그아웃</button></div>`;
+  // 마이페이지(내 서재 포함): 로그인 전에도 바로 마이페이지로, 로그인은 마이페이지 안에서
+  if(!t){el.classList.remove('in');el.innerHTML=`<a class="acb" href="my" aria-label="마이페이지">${U}</a>`;return}
+  el.classList.add('in');el.innerHTML=`<button type="button" class="acb" aria-label="내 계정" aria-haspopup="true" aria-expanded="false">${UF}<i class="acd ${p}"></i></button><div class="acm" role="menu"><div class="ach">${UF}<b>${({kakao:'카카오',naver:'네이버'})[p]||'구글'} 계정</b><small>로그인됨</small></div><a href="my" role="menuitem">마이페이지 · 내 서재</a><a href="alerts" role="menuitem">알림</a><button type="button" role="menuitem" class="aco">로그아웃</button></div>`;
   const b=el.querySelector('.acb');b.onclick=e=>{e.stopPropagation();const o=!el.classList.contains('open');el.classList.toggle('open',o);b.setAttribute('aria-expanded',o)};
   el.querySelector('.acm a').addEventListener('click',()=>el.classList.remove('open'));
   el.querySelector('.aco').onclick=async()=>{const tk=LS.getItem('nb-tok');try{await fetch(SYNC+'/logout',{method:'POST',headers:{Authorization:'Bearer '+tk}})}catch(e){}['nb-tok','nb-rev','nb-prov','nb-syncat','nb-sess'].forEach(k=>LS.removeItem(k));location.reload()}}

@@ -35,12 +35,14 @@ def load_llm():
     return g
 # ---------- 자료 ----------
 def sents(t): return [s.strip() for s in re.split(r'(?<=[.!?다요])\s+', t or '') if 12 < len(s.strip()) < 220]
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from sensitive import ok_issue   # 부고·범죄·재난 기사는 퀴즈로 내지 않음
 facts = []
-for i in D['issues'][:10]:
+for i in [x for x in D['issues'][:12] if ok_issue(x)][:10]:
     ai = i.get('ai') or {}
     txt = sents(ai.get('deep'))[:3] or (i.get('leads') or [])[:3] or (i.get('summary') or [])[:2]
     facts.append(dict(id=i['id'], scope='kr', cat=i.get('category', ''), title=i['title'], facts=[re.sub(r'\s+', ' ', x)[:220] for x in txt]))
-for i in (G.get('issues') or [])[:6]:
+for i in [x for x in (G.get('issues') or [])[:8] if ok_issue(x)][:6]:
     facts.append(dict(id=i['id'], scope='global', cat=i.get('category', '세계'), title=i.get('title_ko') or i['title'], title_en=i['title'],
                       facts=[x for x in [i.get('summary_ko', '')[:240]] if x], facts_en=[i.get('summary', '')[:240]]))
 ALL = ' '.join(f['title'] + ' ' + ' '.join(f['facts']) + ' ' + f.get('title_en', '') + ' ' + ' '.join(f.get('facts_en', [])) for f in facts)
