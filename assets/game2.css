@@ -110,3 +110,8 @@
 .ox-mc button.right{border-color:#11a683;background:#e9f8f3}.ox-mc button.wrong{border-color:#e5484d;background:#fdeeee}
 .ox-card.mc{min-height:300px}.ox-tot{margin:8px 0 0;text-align:center;font-size:.7rem;color:var(--ds-mute,#8a91a8)}
 .ox-card.pic{padding-top:0;overflow:hidden}.ox-img{height:96px;margin:0 calc(-1 * var(--ds-4,16px)) 2px;background:#e9ecf3 center/cover;border-radius:var(--ds-r-m,12px) var(--ds-r-m,12px) 0 0}
+/* 밀어서 답하기(OX) */
+.ox-stage .ox-card{touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.ox-st{position:absolute;top:16px;z-index:3;font-style:normal;font-size:2.4rem;font-weight:900;line-height:1;padding:2px 12px;border:4px solid;border-radius:12px;background:rgba(255,255,255,.92);pointer-events:none}
+.ox-st.o{left:16px;color:#11a683;opacity:var(--so,0);transform:rotate(-12deg)}.ox-st.x{right:16px;color:#f04452;opacity:var(--sx,0);transform:rotate(12deg)}
+.ox-sw{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;font-weight:800;color:var(--ds-mute,#8189a3)}.ox-sw small{font-size:.66rem;font-weight:700}
