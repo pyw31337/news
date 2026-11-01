@@ -54,27 +54,49 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-11-01"
+   "fetched": "2026-11-02"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-01"
+   "fetched": "2026-11-02"
   }
  ],
  "bills": {
   "ages": [
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
    "22"
   ],
-  "lead_count": 29,
-  "co_count": 712,
-  "passed": 12,
+  "lead_count": 62,
+  "co_count": 1415,
+  "passed": 20,
   "by_result": {
-   "계류": 17,
-   "대안반영폐기": 11,
-   "수정가결": 1
+   "임기만료폐기": 23,
+   "철회": 2,
+   "대안반영폐기": 17,
+   "수정가결": 3,
+   "계류": 17
   },
   "by_month": {
+   "2020-07": 1,
+   "2020-09": 1,
+   "2020-11": 4,
+   "2020-12": 3,
+   "2021-04": 3,
+   "2021-06": 5,
+   "2021-07": 2,
+   "2021-12": 1,
+   "2022-11": 1,
+   "2022-12": 1,
+   "2023-02": 1,
+   "2023-06": 6,
+   "2023-07": 2,
+   "2023-08": 1,
+   "2023-11": 1,
    "2024-06": 2,
    "2024-07": 5,
    "2024-08": 2,
@@ -439,12 +461,24 @@
     "proc_date": "2026-01-29",
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_I2P4U0U5T3Z0Y1X3T1S1R5Q8Z7I6G9&ageFrom=22&ageTo=22",
     "proposer": "문정복의원 등 12인"
+   },
+   {
+    "id": "PRC_A2G3P0N9N2M1M1L5H4H2G4G6F1F6E7",
+    "no": "2125499",
+    "name": "초·중등교육법 일부개정법률안",
+    "date": "2023-11-17",
+    "age": 21,
+    "committee": "교육위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_A2G3P0N9N2M1M1L5H4H2G4G6F1F6E7&ageFrom=21&ageTo=21",
+    "proposer": "문정복의원 등 10인"
    }
   ],
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-01"
+   "fetched": "2026-11-02"
   }
  },
  "news": [
@@ -1907,7 +1941,7 @@
   "source": {
    "name": "열린국회정보 국회의원 본회의 표결정보 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-01"
+   "fetched": "2026-11-02"
   }
  },
  "photo_local": "data/pol/photos/GOC54665.webp"

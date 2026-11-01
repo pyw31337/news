@@ -69,22 +69,75 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-11-01"
+   "fetched": "2026-11-02"
   }
  ],
  "bills": {
   "ages": [
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
    "22"
   ],
-  "lead_count": 24,
-  "co_count": 260,
-  "passed": 5,
+  "lead_count": 170,
+  "co_count": 2343,
+  "passed": 55,
   "by_result": {
-   "계류": 19,
-   "대안반영폐기": 3,
-   "수정가결": 2
+   "임기만료폐기": 95,
+   "대안반영폐기": 39,
+   "수정가결": 15,
+   "폐기": 1,
+   "원안가결": 1,
+   "계류": 19
   },
   "by_month": {
+   "2016-07": 2,
+   "2016-09": 1,
+   "2016-12": 1,
+   "2017-02": 2,
+   "2017-03": 1,
+   "2017-06": 4,
+   "2017-07": 3,
+   "2018-01": 2,
+   "2018-03": 3,
+   "2018-04": 14,
+   "2018-05": 7,
+   "2018-07": 1,
+   "2018-08": 2,
+   "2018-10": 2,
+   "2018-11": 5,
+   "2018-12": 1,
+   "2019-02": 2,
+   "2019-03": 1,
+   "2019-04": 2,
+   "2019-05": 5,
+   "2019-07": 6,
+   "2019-08": 1,
+   "2019-09": 3,
+   "2019-10": 2,
+   "2019-12": 2,
+   "2020-07": 4,
+   "2020-09": 17,
+   "2020-11": 3,
+   "2020-12": 1,
+   "2021-01": 7,
+   "2021-02": 3,
+   "2021-03": 2,
+   "2021-04": 2,
+   "2021-06": 2,
+   "2021-08": 5,
+   "2021-11": 2,
+   "2022-07": 2,
+   "2022-12": 3,
+   "2023-03": 6,
+   "2023-04": 1,
+   "2023-05": 3,
+   "2023-06": 1,
+   "2023-10": 2,
+   "2023-12": 3,
+   "2024-01": 2,
    "2024-06": 2,
    "2024-07": 6,
    "2024-08": 1,
@@ -380,12 +433,84 @@
     "proc_date": "2025-07-03",
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_W2F4D0C6B1J8I0Q9P5N7M0I0J4I3G3&ageFrom=22&ageTo=22",
     "proposer": "강훈식의원 등 12인"
+   },
+   {
+    "id": "PRC_Y2H4L0H1E1D8L1K7J0I9P4O2F2L4K8",
+    "no": "2126343",
+    "name": "장애인복지법 일부개정법률안",
+    "date": "2024-01-23",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_Y2H4L0H1E1D8L1K7J0I9P4O2F2L4K8&ageFrom=21&ageTo=21",
+    "proposer": "강훈식의원 등 11인"
+   },
+   {
+    "id": "PRC_L2K4Q0P1O1N8K1I7H1P1Y3V7U9J2J1",
+    "no": "2126342",
+    "name": "장애아동 복지지원법 일부개정법률안",
+    "date": "2024-01-23",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_L2K4Q0P1O1N8K1I7H1P1Y3V7U9J2J1&ageFrom=21&ageTo=21",
+    "proposer": "강훈식의원 등 11인"
+   },
+   {
+    "id": "PRC_Q2V3V1C0X1U8C1B5Y5F6F2L7L3I8H3",
+    "no": "2126045",
+    "name": "아동복지법 일부개정법률안",
+    "date": "2023-12-21",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_Q2V3V1C0X1U8C1B5Y5F6F2L7L3I8H3&ageFrom=21&ageTo=21",
+    "proposer": "강훈식의원 등 12인"
+   },
+   {
+    "id": "PRC_B2B3A1B2Z0Z4H1G6G2F2F2E0E5A6Y1",
+    "no": "2125756",
+    "name": "여신전문금융업법 일부개정법률안",
+    "date": "2023-12-05",
+    "age": 21,
+    "committee": "정무위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_B2B3A1B2Z0Z4H1G6G2F2F2E0E5A6Y1&ageFrom=21&ageTo=21",
+    "proposer": "강훈식의원 등 10인"
+   },
+   {
+    "id": "PRC_F2D3D1T2T0R4S1R6P1P9X5Y6W3V7V3",
+    "no": "2125753",
+    "name": "신용협동조합법 일부개정법률안",
+    "date": "2023-12-05",
+    "age": 21,
+    "committee": "정무위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_F2D3D1T2T0R4S1R6P1P9X5Y6W3V7V3&ageFrom=21&ageTo=21",
+    "proposer": "강훈식의원 등 10인"
+   },
+   {
+    "id": "PRC_W2C3Z1Z0F1F8Z1Z3W5H8O2L7L8F1E8",
+    "no": "2125187",
+    "name": "자본시장과 금융투자업에 관한 법률 일부개정법률안",
+    "date": "2023-10-27",
+    "age": 21,
+    "committee": "정무위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_W2C3Z1Z0F1F8Z1Z3W5H8O2L7L8F1E8&ageFrom=21&ageTo=21",
+    "proposer": "강훈식의원 등 11인"
    }
   ],
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-01"
+   "fetched": "2026-11-02"
   }
  },
  "news": [
@@ -1318,7 +1443,7 @@
   "source": {
    "name": "열린국회정보 국회의원 본회의 표결정보 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-01"
+   "fetched": "2026-11-02"
   }
  },
  "photo_local": "data/pol/photos/TRE2429O.webp"

@@ -52,25 +52,59 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-11-01"
+   "fetched": "2026-11-02"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-01"
+   "fetched": "2026-11-02"
   }
  ],
  "bills": {
   "ages": [
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
    "22"
   ],
-  "lead_count": 1,
-  "co_count": 37,
-  "passed": 0,
+  "lead_count": 76,
+  "co_count": 1112,
+  "passed": 18,
   "by_result": {
+   "임기만료폐기": 54,
+   "대안반영폐기": 13,
+   "원안가결": 3,
+   "철회": 3,
+   "수정가결": 2,
    "계류": 1
   },
   "by_month": {
+   "2020-06": 3,
+   "2020-07": 5,
+   "2020-08": 7,
+   "2020-09": 6,
+   "2020-10": 2,
+   "2020-11": 2,
+   "2020-12": 7,
+   "2021-01": 1,
+   "2021-02": 1,
+   "2021-03": 2,
+   "2021-04": 2,
+   "2021-05": 1,
+   "2021-07": 3,
+   "2021-10": 1,
+   "2021-12": 1,
+   "2022-04": 3,
+   "2022-06": 1,
+   "2022-09": 1,
+   "2022-12": 1,
+   "2023-03": 8,
+   "2023-04": 14,
+   "2023-05": 1,
+   "2023-06": 1,
+   "2024-01": 1,
    "2026-09": 1
   },
   "recent": [
@@ -85,12 +119,360 @@
     "proc_date": null,
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_823587DEDBE94870B9A76B7C24DBD2&ageFrom=22&ageTo=22",
     "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_G2E3F1N2L2M7K1L4J4K4R3S3R4P6P9",
+    "no": "2126249",
+    "name": "형사소송법 일부개정법률안",
+    "date": "2024-01-10",
+    "age": 21,
+    "committee": "법제사법위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_G2E3F1N2L2M7K1L4J4K4R3S3R4P6P9&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_R2O3N0V6U2R0A1Y4Y1W8V2B0A7A9Y0",
+    "no": "2122931",
+    "name": "지능정보화 기본법 일부개정법률안",
+    "date": "2023-06-28",
+    "age": 21,
+    "committee": "과학기술정보방송통신위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2024-02-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_R2O3N0V6U2R0A1Y4Y1W8V2B0A7A9Y0&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_R2P3O0W3X1W5V1D3E1D4B5A3A1J5I7",
+    "no": "2121754",
+    "name": "국민건강보험법 일부개정법률안",
+    "date": "2023-05-02",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_R2P3O0W3X1W5V1D3E1D4B5A3A1J5I7&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_U2U3T0S4Y0X7Y1G6E2D1C2K0J2K2I4",
+    "no": "2121667",
+    "name": "검사징계법 일부개정법률안",
+    "date": "2023-04-26",
+    "age": 21,
+    "committee": "법제사법위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_U2U3T0S4Y0X7Y1G6E2D1C2K0J2K2I4&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_S2R3Q0X4Y0X7F1E6C2B2C0K7I3H0G8",
+    "no": "2121666",
+    "name": "법관징계법 일부개정법률안",
+    "date": "2023-04-26",
+    "age": 21,
+    "committee": "법제사법위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_S2R3Q0X4Y0X7F1E6C2B2C0K7I3H0G8&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 11인"
+   },
+   {
+    "id": "PRC_E2U3S0R4Q0Y7X1V6W2V3D1C7A3Z7V2",
+    "no": "2121665",
+    "name": "변호사법 일부개정법률안",
+    "date": "2023-04-26",
+    "age": 21,
+    "committee": "법제사법위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_E2U3S0R4Q0Y7X1V6W2V3D1C7A3Z7V2&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 11인"
+   },
+   {
+    "id": "PRC_C2K3K0K4J2S4P1O4W1V0S3P5O5X0W4",
+    "no": "2121606",
+    "name": "도로교통법 일부개정법률안",
+    "date": "2023-04-24",
+    "age": 21,
+    "committee": "행정안전위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2023-10-06",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_C2K3K0K4J2S4P1O4W1V0S3P5O5X0W4&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 11인"
+   },
+   {
+    "id": "PRC_W2V3U0B4A2Z4Y1I4H1E1B2A6W4F0E6",
+    "no": "2121601",
+    "name": "국민건강증진법 일부개정법률안",
+    "date": "2023-04-24",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_W2V3U0B4A2Z4Y1I4H1E1B2A6W4F0E6&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 11인"
+   },
+   {
+    "id": "PRC_U2C3B0A4Y0U7V0U9T2R6Z0Y9Z9X3W3",
+    "no": "2121470",
+    "name": "환경친화적 자동차의 개발 및 보급 촉진에 관한 법률 일부개정법률안",
+    "date": "2023-04-20",
+    "age": 21,
+    "committee": "산업통상자원중소벤처기업위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_U2C3B0A4Y0U7V0U9T2R6Z0Y9Z9X3W3&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_Z2I3G0F3G1E5M1L3M1L5L3U5S6R2P4",
+    "no": "2121455",
+    "name": "고등교육법 일부개정법률안",
+    "date": "2023-04-19",
+    "age": 21,
+    "committee": "교육위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_Z2I3G0F3G1E5M1L3M1L5L3U5S6R2P4&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_Z2H3G0P4N1M0N1M8U1S0Q5P4Q2Y8X7",
+    "no": "2121370",
+    "name": "국가재정법 일부개정법률안",
+    "date": "2023-04-14",
+    "age": 21,
+    "committee": "기획재정위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_Z2H3G0P4N1M0N1M8U1S0Q5P4Q2Y8X7&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 17인"
+   },
+   {
+    "id": "PRC_U2C3B0A3Y1H5F1E3F1E3Z2Y8X6V2E5",
+    "no": "2121255",
+    "name": "국회법 일부개정법률안",
+    "date": "2023-04-11",
+    "age": 21,
+    "committee": "국회운영위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_U2C3B0A3Y1H5F1E3F1E3Z2Y8X6V2E5&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 11인"
+   },
+   {
+    "id": "PRC_U2V3T0U3C2C0A1Z5A1Y4Z5V9V6T0U3",
+    "no": "2121194",
+    "name": "예비군법 일부개정법률안",
+    "date": "2023-04-07",
+    "age": 21,
+    "committee": "국방위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_U2V3T0U3C2C0A1Z5A1Y4Z5V9V6T0U3&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 12인"
+   },
+   {
+    "id": "PRC_E2B3Z0Y3X2F7F1Y7X5F5E5E0D7B9K8",
+    "no": "2121158",
+    "name": "대일항쟁기 강제동원 피해조사 및 국외강제동원 희생자 등 지원에 관한 특별법 일부개정법률안",
+    "date": "2023-04-05",
+    "age": 21,
+    "committee": "행정안전위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_E2B3Z0Y3X2F7F1Y7X5F5E5E0D7B9K8&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 18인"
+   },
+   {
+    "id": "PRC_Q2P3N0J3I1H5I1W3V1R0P4O3O1N1V2",
+    "no": "2121132",
+    "name": "지방세특례제한법 일부개정법률안",
+    "date": "2023-04-04",
+    "age": 21,
+    "committee": "행정안전위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2023-12-20",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_Q2P3N0J3I1H5I1W3V1R0P4O3O1N1V2&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_I2G3F0G3O1N5L1K3S0N9M0K9L6T2S5",
+    "no": "2121091",
+    "name": "지방세특례제한법 일부개정법률안",
+    "date": "2023-04-03",
+    "age": 21,
+    "committee": "행정안전위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_I2G3F0G3O1N5L1K3S0N9M0K9L6T2S5&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_V2T3U0C3B1X5V1W3V1T4B0A7Z6A3Y2",
+    "no": "2121080",
+    "name": "국세징수법 일부개정법률안",
+    "date": "2023-04-03",
+    "age": 21,
+    "committee": "기획재정위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_V2T3U0C3B1X5V1W3V1T4B0A7Z6A3Y2&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_C2K3J0H3G1H5P1N3V1W1U2T4R8S8A5",
+    "no": "2121073",
+    "name": "지방세특례제한법 일부개정법률안",
+    "date": "2023-03-31",
+    "age": 21,
+    "committee": "행정안전위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2023-12-20",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_C2K3J0H3G1H5P1N3V1W1U2T4R8S8A5&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_D2B3A0Z3H1F5H1G3O0N9M5L5G3H8G9",
+    "no": "2121035",
+    "name": "지방세특례제한법 일부개정법률안",
+    "date": "2023-03-30",
+    "age": 21,
+    "committee": "행정안전위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2023-12-20",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_D2B3A0Z3H1F5H1G3O0N9M5L5G3H8G9&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_H2D3D0C3B1Z5H1I3H1F2E4I3G3O9N8",
+    "no": "2120947",
+    "name": "암관리법 일부개정법률안",
+    "date": "2023-03-28",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_H2D3D0C3B1Z5H1I3H1F2E4I3G3O9N8&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_F2E3F0N3L1K3L1J4S0Q3P0L0M6L7J7",
+    "no": "2120833",
+    "name": "국가공무원법 일부개정법률안",
+    "date": "2023-03-23",
+    "age": 21,
+    "committee": "행정안전위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_F2E3F0N3L1K3L1J4S0Q3P0L0M6L7J7&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 11인"
+   },
+   {
+    "id": "PRC_P2O2U0E9V2B1K1D5U5D1V3J7F5N9N8",
+    "no": "2120774",
+    "name": "자살예방 및 생명존중문화 조성을 위한 법률 일부개정법률안",
+    "date": "2023-03-21",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_P2O2U0E9V2B1K1D5U5D1V3J7F5N9N8&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 11인"
+   },
+   {
+    "id": "PRC_O2T2O0W8L0U2Q1B1D3C9T3L2U4M4K9",
+    "no": "2120686",
+    "name": "신용정보의 이용 및 보호에 관한 법률 일부개정법률안",
+    "date": "2023-03-16",
+    "age": 21,
+    "committee": "정무위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_O2T2O0W8L0U2Q1B1D3C9T3L2U4M4K9&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 12인"
+   },
+   {
+    "id": "PRC_U2S3R0S3O0N3L1K1L1T6R4Q0P1U0T4",
+    "no": "2120660",
+    "name": "기초연금법 일부개정법률안",
+    "date": "2023-03-15",
+    "age": 21,
+    "committee": "보건복지위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_U2S3R0S3O0N3L1K1L1T6R4Q0P1U0T4&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_L2K3I0Q3P0Q6P1N9D4B7A5A7Z8H0G0",
+    "no": "2120477",
+    "name": "소상공인 보호 및 지원에 관한 법률 일부개정법률안",
+    "date": "2023-03-07",
+    "age": 21,
+    "committee": "산업통상자원중소벤처기업위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_L2K3I0Q3P0Q6P1N9D4B7A5A7Z8H0G0&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_J2D2Z1U2W2F6I0N9V2U6X3K3S0E1E6",
+    "no": "2119226",
+    "name": "국가공무원법 일부개정법률안",
+    "date": "2022-12-28",
+    "age": 21,
+    "committee": "행정안전위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_J2D2Z1U2W2F6I0N9V2U6X3K3S0E1E6&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 11인"
+   },
+   {
+    "id": "PRC_F2K2R0G9Q2M7H0O1C2C4J1P8D8U3N4",
+    "no": "2117576",
+    "name": "국회에서의 증언·감정 등에 관한 법률 일부개정법률안",
+    "date": "2022-09-27",
+    "age": 21,
+    "committee": "국회운영위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_F2K2R0G9Q2M7H0O1C2C4J1P8D8U3N4&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 10인"
+   },
+   {
+    "id": "PRC_T2Q2Q0E6C1Z6I0Z9N3S0S2W8P8L7F3",
+    "no": "2116195",
+    "name": "비송사건절차법 일부개정법률안",
+    "date": "2022-06-29",
+    "age": 21,
+    "committee": "법제사법위원회",
+    "result": "임기만료폐기",
+    "proc_date": "2024-05-29",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_T2Q2Q0E6C1Z6I0Z9N3S0S2W8P8L7F3&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원 등 11인"
+   },
+   {
+    "id": "PRC_K2C2N0I2Q0C3E1W6U1F7N0F4C5M2Q1",
+    "no": "2115249",
+    "name": "민법 일부개정법률안",
+    "date": "2022-04-13",
+    "age": 21,
+    "committee": "법제사법위원회",
+    "result": "대안반영폐기",
+    "proc_date": "2022-11-24",
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_K2C2N0I2Q0C3E1W6U1F7N0F4C5M2Q1&ageFrom=21&ageTo=21",
+    "proposer": "김남국의원등11인"
    }
   ],
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-01"
+   "fetched": "2026-11-02"
   }
  },
  "news": [
@@ -1444,7 +1826,7 @@
   "source": {
    "name": "열린국회정보 국회의원 본회의 표결정보 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-01"
+   "fetched": "2026-11-02"
   }
  },
  "photo_local": "data/pol/photos/QHL3248U.webp"
