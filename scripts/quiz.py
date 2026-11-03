@@ -182,6 +182,16 @@ os.makedirs(P('fun/quiz'), exist_ok=True)
 day = J('fun/quiz/%s.json' % DATE, {}) or {}
 have = {q['id'] for q in day.get('questions', [])}
 merged = day.get('questions', []) + [q for q in Q if q['id'] not in have]
+# 하루 10문제 제한 (중급 4, 기초 3, 고급 3 등으로 고루 배치)
+if len(merged) > 10:
+    l1 = [q for q in merged if q.get('level') == 1]
+    l2 = [q for q in merged if q.get('level') == 2]
+    l3 = [q for q in merged if q.get('level') == 3]
+    selected = l2[:4] + l1[:3] + l3[:3]
+    for q in merged:
+        if len(selected) >= 10: break
+        if q not in selected: selected.append(q)
+    merged = selected[:10]
 for k, q in enumerate(merged): q['n'] = k + 1
 lv = {str(l): sum(1 for q in merged if q['level'] == l) for l in (1, 2, 3)}
 day = dict(date=DATE, updated=NOW.isoformat(timespec='minutes'), levels=lv, questions=merged)

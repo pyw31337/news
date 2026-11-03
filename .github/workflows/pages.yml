@@ -29,6 +29,8 @@ jobs:
       # collect.yml '사이트 묶기'와 같은 구성. 수집은 다시 하지 않고,
       # 커밋되지 않는 today·global·status는 지금 공개된 사이트에서, 나머지는 data·media·politicians 브랜치에서 가져옴
       - name: Prepare site with the currently published data
+        env:
+          GITHUB_SHA: ${{ github.sha }}
         run: |
           repo="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
           git clone -q --depth 1 --branch data "$repo" data

@@ -229,8 +229,9 @@ for i, (c, (d, im)) in enumerate(zip(top, ogs)):
         seen.add(a['url']); sources.append(dict(title=a['title'], url=a['url'], press=a['press'],
                                                 portal='네이버' if a['src'].startswith('naver') else '구글뉴스',
                                                 kind={'naver_popularDay': '많이 본', 'naver_popularMemo': '댓글 많은'}.get(a['src'], a.get('section', ''))))
+    alt_img = next((a.get('img') for a in c['arts'] if a.get('img')), '')
     issues.append(dict(rank=i + 1, id='i' + __import__('hashlib').md5(rep['url'].encode()).hexdigest()[:8], title=rep['title'], url=rep['url'], press=rep['press'],
-                       image=im or rep.get('img', ''), summary=summarize(d) if d else [], lead=d,
+                       image=im or rep.get('img', '') or alt_img, summary=summarize(d) if d else [], lead=d,
                        keywords=c['keywords'], entities=c['proper'], category=c['category'], cat_conf=c['cat_conf'], cat_why=c['cat_why'], trend=c['trend'],
                        score=round(c['score'], 1), mentions=len(c['arts']), presses=len(set(a['press'] for a in c['arts'])),
                        sources=sources[:12]))

@@ -4,6 +4,12 @@ GitHub Pages는 해시(#) 없는 경로(/news/issue/xxx)를 이 파일로 바로
 import json, os, re, sys, html
 SITE = sys.argv[1] if len(sys.argv) > 1 else '_site'
 ORIGIN = 'https://pyw31337.github.io/news/'
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    from inject_cache_version import inject_cache_version
+    inject_cache_version(SITE)
+except Exception as ex:
+    print('  [cache_burst] Warning: Could not run inject_cache_version:', ex)
 T = open(os.path.join(SITE, 'index.html'), encoding='utf-8').read()
 DEF_IMG = ORIGIN + 'og-image.png?v=11'
 def load(p):

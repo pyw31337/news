@@ -65,21 +65,61 @@ window.NBOX=async function(el,F){if(!el)return;const Z=await quizV2(),L=LANG(),T
   let V2=!!(Z&&Z.questions&&Z.questions.length);
   const SC=SCOPE(),pool=V2?Z.questions.filter(q=>scopeOf(q)===SC&&(L!=='en'||q.en_ok!==false)):[];if(V2&&!pool.length)V2=false;
   if(!V2&&!F){el.remove();return}
-  const day=V2?Z.date:(F.quiz.date||''),dk='nb-oxd2';let lv=+(localStorage.getItem('nb-oxlv')||1);
-  const counts={1:0,2:0,3:0};pool.forEach(q=>counts[q.level]=(counts[q.level]||0)+1);if(V2&&!counts[lv])lv=[1,2,3].find(k=>counts[k])||1;
+  const day=V2?Z.date:(F.quiz.date||''),dk='nb-oxd2';
   let A={};try{const o=JSON.parse(localStorage.getItem(dk)||'{}');A=o.d===day?o.a:{}}catch(e){}
-  let Q=[],cur=0;
-  const mk=()=>{if(V2){const seed=(day.split('-').join('')|0);Q=pool.filter(q=>q.level===lv).map((q,i)=>[q,Math.sin(seed+i*97)]).sort((a,b)=>a[1]-b[1]).map(x=>x[0])}
-    else Q=buildQ(F).map((q,i)=>Object.assign({id:'w'+i,level:1,q:{ko:q.q,en:q.q},exp:{ko:q.mean?`‘${q.word}’은(는) ${q.mean}.`:'',en:''},cat:q.field},q));
-    cur=Q.findIndex(q=>A[q.id]==null);if(cur<0)cur=Math.max(0,Q.length-1)};
-  mk();if(!Q.length){el.remove();return}
-  el.className='gm-oxd';
   const right=(q,a)=>q.kind==='mc'?a===q.answer:(a===1)===q.answer;
+
+  /* 하루 10문제 제한 & 적응형 레벨(기본: 중급 2, 3연속 정답: 고급 3, 3연속 오답: 기초 1) */
+  const seed=(day.split('-').join('')|0);
+  const p1=pool.filter(q=>q.level===1).map((q,i)=>[q,Math.sin(seed+i*13)]).sort((a,b)=>a[1]-b[1]).map(x=>x[0]);
+  const p2=pool.filter(q=>q.level===2).map((q,i)=>[q,Math.sin(seed+i*37)]).sort((a,b)=>a[1]-b[1]).map(x=>x[0]);
+  const p3=pool.filter(q=>q.level===3).map((q,i)=>[q,Math.sin(seed+i*71)]).sort((a,b)=>a[1]-b[1]).map(x=>x[0]);
+
+  // 기본 10문제: 중급(2)으로 시작, 대체 풀로 기초(1) 및 고급(3) 준비
+  let Q=(p2.length?p2:pool).slice(0,10);
+  if(!Q.length&&!V2){
+    Q=buildQ(F).slice(0,10).map((q,i)=>Object.assign({id:'w'+i,level:2,q:{ko:q.q,en:q.q},exp:{ko:q.mean?`‘${q.word}’은(는) ${q.mean}.`:'',en:''},cat:q.field},q));
+  }
+  // 10개 문제로 고정
+  while(Q.length<10&&pool.length>Q.length){
+    const nextQ=pool.find(q=>!Q.some(x=>x.id===q.id));
+    if(nextQ)Q.push(nextQ);else break;
+  }
+  Q=Q.slice(0,10);
+
+  // 현재 연속 정답/오답 계산 함수
+  function getStreaks(upToIdx){
+    let sc=0,sw=0;
+    for(let k=upToIdx-1;k>=0;k--){
+      const a=A[Q[k].id];if(a==null)break;
+      const ok=right(Q[k],a);
+      if(ok){if(sw>0)break;sc++}else{if(sc>0)break;sw++}
+    }
+    return{sc,sw};
+  }
+
+  // 현재 문제의 적응형 레벨 반영
+  function adaptLevel(idx){
+    if(idx<=0||idx>=Q.length)return;
+    const {sc,sw}=getStreaks(idx);
+    let targetLv=2; // 기본 중급
+    if(sc>=3)targetLv=3; // 3회 연속 맞추면 고급
+    else if(sw>=3)targetLv=1; // 3회 연속 틀리면 기초
+    if(Q[idx].level!==targetLv){
+      const candPool=targetLv===3?p3:targetLv===1?p1:p2;
+      const alt=candPool.find(q=>!Q.some(x=>x.id===q.id)&&A[q.id]==null);
+      if(alt)Q[idx]=alt;
+    }
+  }
+
+  let cur=Q.findIndex(q=>A[q.id]==null);if(cur<0)cur=Math.max(0,Q.length-1);
+  adaptLevel(cur);
+  el.className='gm-oxd';
+
   const shell=()=>{el.innerHTML=`<div class="ox-h"><small>${I('bulb')}${SCOPE()==='global'?T('해외 뉴스 OX 덱','World news quiz'):T('오늘의 OX 덱','Daily quiz deck')}</small><span class="ox-sc"></span></div>
-   ${V2?`<div class="ox-lv" role="tablist">${[1,2,3].filter(k=>counts[k]).map(k=>`<button type="button" role="tab" data-lv="${k}" class="${k===lv?'on':''}" aria-selected="${k===lv}">${T(LV[k][0],LV[k][1])}<small>${counts[k]}</small></button>`).join('')}</div>`:''}
    <div class="ox-stage" tabindex="0" aria-roledescription="${T('퀴즈 카드 덱','quiz card deck')}"></div>
    <div class="ox-nav"><button type="button" class="ox-pv" aria-label="${T('이전 문제','Previous')}">${I('chevron-left')}</button><div class="ox-dots"></div><button type="button" class="ox-nx" aria-label="${T('다음 문제','Next')}">${I('chevron-right')}</button></div>
-`};
+`;};
   shell();const stage=()=>el.querySelector('.ox-stage');
   const card=(q,i)=>{const a=A[q.id],done=a!=null,ok=done&&right(q,a),tx=q.q[L]||q.q.ko,ex=(q.exp&&(q.exp[L]||q.exp.ko))||'';
     const btns=q.kind==='mc'?`<div class="ox-mc">${(q.choices[L]||q.choices.ko).map((c,k)=>`<button type="button" data-o="${k}" class="${done&&k===q.answer?'right':''} ${done&&a===k&&!ok?'wrong':''}" ${done?'disabled':''}><b>${'ABCD'[k]}</b>${E(c)}</button>`).join('')}</div>`
@@ -93,13 +133,11 @@ window.NBOX=async function(el,F){if(!el)return;const Z=await quizV2(),L=LANG(),T
     const c=stage().querySelector('.ox-card');if(dir)c.classList.add(dir>0?'in-r':'in-l');
     el.querySelector('.ox-dots').innerHTML=Q.map((q,i)=>`<i class="${i===cur?'on':''} ${A[q.id]!=null?(right(q,A[q.id])?'ok':'no'):''}"></i>`).join('');
     el.querySelector('.ox-pv').disabled=cur===0;el.querySelector('.ox-nx').disabled=cur===Q.length-1}
-  const go=(t)=>{t=Math.max(0,Math.min(Q.length-1,t));if(t===cur)return;const d=t>cur?1:-1;const c=stage().querySelector('.ox-card');c&&c.classList.add(d>0?'out-l':'out-r');setTimeout(()=>{cur=t;draw(d)},180)};
-  el.addEventListener('click',e=>{const lb=e.target.closest('[data-lv]');if(lb){lv=+lb.dataset.lv;localStorage.setItem('nb-oxlv',lv);mk();shell();draw();return}
-    if(el._nc)return;const b=e.target.closest('[data-o]');if(b){const i=cur,q=Q[i];if(A[q.id]!=null)return;const a=+b.dataset.o;A[q.id]=a;localStorage.setItem(dk,JSON.stringify({d:day,a:A}));
+  const go=(t)=>{t=Math.max(0,Math.min(Q.length-1,t));if(t===cur)return;const d=t>cur?1:-1;adaptLevel(t);const c=stage().querySelector('.ox-card');c&&c.classList.add(d>0?'out-l':'out-r');setTimeout(()=>{cur=t;draw(d)},180)};
+  el.addEventListener('click',e=>{if(el._nc)return;const b=e.target.closest('[data-o]');if(b){const i=cur,q=Q[i];if(A[q.id]!=null)return;const a=+b.dataset.o;A[q.id]=a;localStorage.setItem(dk,JSON.stringify({d:day,a:A}));
       const ok=right(q,a);const all=Q.every(x=>A[x.id]!=null&&right(x,A[x.id]));
       dispatchEvent(new CustomEvent('nb:quiz',{detail:{ok,word:q.word||q.id,kind:q.kind,perfect:all}}));if(ok&&window.NBGame)NBGame.ev('quiz_x',1,{xp:[0,10,15,20][q.level||1],why:T('퀴즈 정답','Quiz correct')});
       draw();const c=stage().querySelector('.ox-card');c.classList.add(ok?'pop':'shake');
-      if(ok&&i<Q.length-1)setTimeout(()=>{if(cur===i)go(i+1)},1600);return}
     if(e.target.closest('.ox-pv'))go(cur-1);if(e.target.closest('.ox-nx'))go(cur+1)});
   /* 밀어서 답하기(v2 실험실 C1): 안 푼 OX 카드는 오른쪽=O, 왼쪽=X. 카드가 손가락을 따라 기울고 도장이 진해짐.
      푼 카드·4지선다는 예전처럼 좌우로 밀면 다음/이전 문제. 끌다 놓은 뒤 이어지는 클릭은 무시 */

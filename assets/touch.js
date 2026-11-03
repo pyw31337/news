@@ -20,10 +20,13 @@ const OP=i=>i.opinion||{};
 const lk=i=>OP(i).like||0,dl=i=>OP(i).dislike||0;
 
 /* ---------- ① TOP 10 모자이크 ---------- */
+const hasPic = i => Boolean(i && ((i.image && i.image.trim()) || (i.gallery && i.gallery.some(g => g && g.img && g.img.trim()))));
 function mosaicHTML(I){return`<div class="tmo" id="tmo" aria-label="오늘의 이슈 TOP 10"></div>`}
 function mosaic(I){if(location.hash==='#search'){history.replaceState(null,'',location.pathname);setTimeout(search,300)}const el=$('#tmo');if(!el)return;
   const draw=()=>{const W=el.clientWidth||360,H=Math.round(W>=720?W*.62:W*1.38),out=[];el.style.height=H+'px';
-    const it=I.slice(0,10).map(i=>({i,v:Math.pow(Math.max(1,i.score||1),.7)}));   // 0.7제곱: 1위가 판을 다 먹지 않게
+    const validI = I.filter(hasPic);
+    const pool = validI.length ? validI : I;
+    const it=pool.slice(0,10).map(i=>({i,v:Math.pow(Math.max(1,i.score||1),.7)}));   // 0.7제곱: 1위가 판을 다 먹지 않게
     (function tm(a,x,y,w,h){if(a.length===1){out.push({...a[0],x,y,w,h});return}
       const tot=a.reduce((s,b)=>s+b.v,0);let acc=0,k=0;while(k<a.length-1&&acc+a[k].v<=tot/2){acc+=a[k].v;k++}if(!k){acc=a[0].v;k=1}
       const f=acc/tot;if(w>=h){tm(a.slice(0,k),x,y,w*f,h);tm(a.slice(k),x+w*f,y,w*(1-f),h)}else{tm(a.slice(0,k),x,y,w,h*f);tm(a.slice(k),x,y+h*f,w,h*(1-f))}})(it,0,0,W,H);
@@ -40,33 +43,68 @@ function mosaic(I){if(location.hash==='#search'){history.replaceState(null,'',lo
   if('IntersectionObserver'in window)new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!on){on=true;setTimeout(beat,500)}on=v}).observe(el);
   el.addEventListener('pointerdown',e=>{if(e.target.closest('.tmc'))hz(8)})}
 
-/* ---------- ② 나라면? ---------- */
-function voteHTML(I){const P=I.filter(i=>lk(i)+dl(i)>10);if(!P.length)return'';const VT=LS('nb-v2-vote',{});
-  return sec('나라면?','What would you say?','<span class="more">먼저 누르면 결과가 열려요</span>','chat')+`<div class="tvrow" id="tvote">${P.map(i=>`<div class="tvc" data-id="${i.id}"><a class="tvp" href="issue/${i.id}" ${pic(i)?bg(pic(i)):''}></a><b>${esc(short(i.title,46))}</b><div class="tvq">${VT[i.id]!=null?voteRes(i,VT[i.id]):voteAsk()}</div></div>`).join('')}</div>`}
-const voteAsk=()=>`<p>이 소식, 어떻게 느껴요?</p><div class="tvb"><button type="button" data-v="1">👍 공감</button><button type="button" data-v="0">👎 글쎄</button></div>`;
-function voteRes(i,v){const t=lk(i)+dl(i)||1,p=Math.round((v?lk(i):dl(i))/t*100),a=Math.round(lk(i)/t*100);
-  return`<div class="tvr"><b>${p}%</b><span>가 나와 같은 생각이에요</span><div class="tvbar"><i style="--w:${a}%"></i></div><small><em>공감 ${a}%</em><em>글쎄 ${100-a}%</em></small></div>`}
-function vote(I){const el=$('#tvote');if(!el)return;const VT=LS('nb-v2-vote',{});
-  el.addEventListener('click',e=>{const b=e.target.closest('[data-v]');if(!b)return;const c=b.closest('.tvc'),i=I.find(x=>x.id===c.dataset.id),v=+b.dataset.v;
-    VT[i.id]=v;SS('nb-v2-vote',VT);hz(12);$('.tvq',c).innerHTML=voteRes(i,v)})}
+/* ---------- ② 나라면? (찬반 한판 수준으로 고도화) ---------- */
+function getStances(i){
+  const S=((i.ai||{}).opinion||{}).stances||[];
+  if(S.length>=2) return S.slice(0,2);
+  const l=lk(i)||60, d=dl(i)||40, tot=l+d||1;
+  return [
+    {label:'공감해요', desc:'기사 내용의 긍정적 측면과 시사점에 무게를 둬요', share:Math.round(l/tot*100)},
+    {label:'우려돼요', desc:'신중한 접근과 보완 대책 마련이 필요해 보여요', share:Math.round(d/tot*100)}
+  ];
+}
 
-/* ---------- ③ 찬반 한 판: 한 사안을 두 입장으로, 고르면 사람들 생각을 그래프로 ---------- */
-function debateHTML(I){const P=I.filter(i=>(((i.ai||{}).opinion||{}).stances||[]).length>=2);if(!P.length)return'';
-  return sec('찬반 한 판','Pick a side','<span class="more">고르면 사람들 생각이 보여요</span>','chat')+`<div class="tdb card" id="tdb"></div>`}
-function debate(I){const el=$('#tdb');if(!el)return;const P=I.filter(i=>(((i.ai||{}).opinion||{}).stances||[]).length>=2),MY=LS('nb-debate',{});let n=0;
-  const res=(i,k)=>{const S=i.ai.opinion.stances.slice(0,2),tot=S.reduce((a,x)=>a+(x.share||0),0)||1,A=OP(i).ages,G=OP(i).gender,am=A?Math.max(1,...Object.values(A)):1;
-    return`<div class="tdr"><div class="tdm"><b>${Math.round(S[k].share/tot*100)}%</b><span>가 나와 같은 편이에요</span></div>
-      <div class="tdsplit">${S.map((x,j)=>`<i class="s${j} ${j===k?'me':''}" style="--w:${x.share/tot*100}%"><em>${Math.round(x.share/tot*100)}%</em></i>`).join('')}</div>
-      <div class="tdl">${S.map((x,j)=>`<div class="s${j} ${j===k?'me':''}"><b>${esc(x.label)}${j===k?' · 나':''}</b>${x.desc?`<p>${esc(short(x.desc,90))}</p>`:''}</div>`).join('')}</div>
-      ${A&&Object.keys(A).length?`<div class="tdage"><small>누가 말하고 있나 · 댓글 연령</small><div>${Object.entries(A).map(([a,v])=>`<span><i style="--h:${v/am*100}%"></i><b>${v}%</b><small>${a}대</small></span>`).join('')}</div>${G?`<p class="tdg"><i style="--w:${G.male||0}%"></i><span>남 ${G.male||0}%</span><span>여 ${G.female||0}%</span></p>`:''}</div>`:''}
-      <p class="tdn">댓글 ${nf(OP(i).total)}개를 AI가 입장별로 나눈 비율이에요</p></div>`};
-  const draw=()=>{const i=P[n%P.length],S=i.ai.opinion.stances.slice(0,2),m=MY[i.id];
-    el.innerHTML=`<div class="tdh"><a href="issue/${i.id}" class="tdp" ${pic(i)?bg(pic(i)):''}></a><div><span class="cat ${i.category}">${esc(i.category)}</span><b>${esc(i.title)}</b></div></div>
-      <p class="tdq">이 사안, 어느 쪽에 더 가까워요?</p><div class="tdbt">${S.map((x,j)=>`<button type="button" data-k="${j}" class="s${j} ${m===j?'on':''}" ${m!=null?'disabled':''}>${esc(short(x.label,22))}</button>`).join('')}</div>
-      ${m!=null?res(i,m):''}<div class="tdnav"><span>${n%P.length+1} / ${P.length}</span><button type="button" class="tdnx">다른 사안 ›</button></div>`;
-    if(m!=null)requestAnimationFrame(()=>el.classList.add('go'))};
-  el.addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b&&!b.disabled){const i=P[n%P.length];MY[i.id]=+b.dataset.k;SS('nb-debate',MY);hz([10,30,15]);el.classList.remove('go');draw()}
-    if(e.target.closest('.tdnx')){n++;hz(6);el.classList.remove('go');draw()}});draw()}
+function voteCardRes(i, myChoice){
+  const S=getStances(i), tot=S.reduce((a,x)=>a+(x.share||0),0)||1;
+  const my=S[myChoice]||S[0];
+  const pct=Math.round((my.share||0)/tot*100);
+  const A=OP(i).ages, G=OP(i).gender, am=A?Math.max(1,...Object.values(A)):1;
+  return `<div class="tvr go">
+    <div class="tvm"><b>${pct}%</b><span>가 나와 같은 생각이에요</span></div>
+    <div class="tdsplit tvsplit">${S.map((x,j)=>`<i class="s${j} ${j===myChoice?'me':''}" style="--w:${Math.max(10,Math.round((x.share||0)/tot*100))}%"><em>${Math.round((x.share||0)/tot*100)}%</em></i>`).join('')}</div>
+    <div class="tdl tvl">${S.map((x,j)=>`<div class="s${j} ${j===myChoice?'me':''}"><div class="tvlh"><b>${esc(x.label)}</b>${j===myChoice?'<span class="mepill">내 선택</span>':''}</div>${x.desc?`<p>${esc(short(x.desc,72))}</p>`:''}</div>`).join('')}</div>
+    ${A&&Object.keys(A).length?`<div class="tdage tvage"><small>댓글 연령별 참여 분포</small><div>${Object.entries(A).map(([a,v])=>`<span><i style="--h:${Math.round(v/am*100)}%"></i><b>${v}%</b><small>${a}대</small></span>`).join('')}</div></div>`:''}
+    <div class="tvmeta"><span>${ic('chat')}댓글 ${nf(OP(i).total||(lk(i)+dl(i))||120)}개 기반</span><a href="issue/${i.id}#comments">토론 참여 ›</a></div>
+  </div>`;
+}
+
+function voteCardAsk(i){
+  const S=getStances(i);
+  return `<p class="tvask">이 사안, 어느 쪽에 더 가까우신가요?</p>
+  <div class="tdbt tvbt">${S.map((x,j)=>`<button type="button" data-k="${j}" class="s${j}"><b>${esc(short(x.label,16))}</b><small>${esc(short(x.desc||'',34))}</small></button>`).join('')}</div>`;
+}
+
+function voteHTML(I){
+  const valid = I.filter(hasPic);
+  const P = (valid.length ? valid : I).filter(i => (((i.ai||{}).opinion||{}).stances||[]).length >= 2 || lk(i) + dl(i) > 8);
+  if(!P.length) return '';
+  const VT = LS('nb-v2-vote', {});
+  return sec('나라면?','What would you say?','<span class="more">내 생각을 고르면 의견 분포가 열려요</span>','chat')+
+    `<div class="tvrow grab-carousel" id="tvote">${P.map(i=>`<div class="tvc card" data-id="${i.id}">
+      <a class="tvp" href="issue/${i.id}" ${pic(i)?bg(pic(i)):''}><span class="cat ${i.category}">${esc(i.category)}</span></a>
+      <div class="tvb-title"><a href="issue/${i.id}"><b>${esc(short(i.title,48))}</b></a></div>
+      <div class="tvq">${VT[i.id]!=null ? voteCardRes(i, VT[i.id]) : voteCardAsk(i)}</div>
+    </div>`).join('')}</div>`;
+}
+
+function vote(I){
+  const el=$('#tvote'); if(!el) return;
+  const VT=LS('nb-v2-vote', {});
+  el.addEventListener('click', e => {
+    if (el._dragged) return;
+    const b = e.target.closest('[data-k]'); if(!b) return;
+    const c = b.closest('.tvc'); if(!c) return;
+    const i = I.find(x => x.id === c.dataset.id); if(!i) return;
+    const k = +b.dataset.k;
+    VT[i.id] = k; SS('nb-v2-vote', VT); hz([12, 30, 16]);
+    $('.tvq', c).innerHTML = voteCardRes(i, k);
+  });
+  enableElasticCarousel(el);
+}
+
+/* ---------- ③ 찬반 한 판 (나라면?으로 통합되어 레거시 호환 스텁 유지) ---------- */
+function debateHTML(I){return''}
+function debate(I){}
 
 /* ---------- ④ 내 또래는? ---------- */
 function agesHTML(I){const P=I.filter(i=>OP(i).ages),ages=['20','30','40','50','60'].filter(a=>P.some(i=>OP(i).ages[a]>0));if(!ages.length)return'';
@@ -76,26 +114,40 @@ function ages(I){const el=$('#tage');if(!el)return;const P=I.filter(i=>OP(i).age
   const list=a=>{$('.tagl',el).innerHTML=P.filter(i=>OP(i).ages[a]>0).sort((x,y)=>OP(y).ages[a]-OP(x).ages[a]).slice(0,5).map(i=>`<a href="issue/${i.id}"><span class="tagp" ${pic(i)?bg(pic(i)):''}></span><b>${esc(short(i.title,40))}</b><i style="--w:${OP(i).ages[a]}%"></i><em>${OP(i).ages[a]}%</em></a>`).join('');const l=$('.tagl',el);l.classList.remove('in');void l.offsetWidth;l.classList.add('in')};
   el.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;hz(6);$$('[data-a]',el).forEach(x=>x.classList.toggle('on',x===b));list(b.dataset.a)});list(el.dataset.def)}
 
-/* ---------- ⑤ 댓글 수다방 ---------- */
-// 공개 화면에 올리는 대표 댓글: 욕설·혐오 표현이 있거나 부고·참사 기사면 쓰지 않음
-const BAD=/공산당|잡것|개돼지|대깨|문빠|윤빠|짱깨|쪽바리|홍어|씨발|시발|ㅅㅂ|ㅆㅂ|개새|병신|ㅂㅅ|좆|존나|졸라|죽어라|죽여|뒤져|꺼져|미친놈|미친년|또라이|닥쳐|쓰레기|버러지|벌레|틀딱|한남|김치녀|빨갱|좌빨|토착왜구|수꼴|대가리|새끼|ㅅㄲ|놈들|년들|창녀|매국노/;
-const SAD=/별세|빈소|추모|사망|숨져|숨진|故|부고|참사|희생|유족|영면|애도/;
-function chatHTML(I){const L=chatList(I);if(!L.length)return'';
-  return sec('댓글 수다방','Comment room','<span class="more">이슈마다 공감 1위 댓글</span>','chat')+`<div class="tch card" id="tch">${L.map(([i,t],k)=>`<a href="issue/${i.id}#comments" style="--d:${k*650}ms" class="${k%2?'r':''}"><span class="tca" ${pic(i)?bg(pic(i)):''}></span><div><small>${i.rank}위 · ${esc(short(i.title,22))}</small><p>${esc(short(t,90))}</p></div></a>`).join('')}</div>`}
-function chatList(I){return I.filter(i=>!SAD.test(i.title)).map(i=>{const c=(OP(i).top||[]).map(x=>x.text||'').find(t=>t.length>=6&&!BAD.test(t.replace(/\s/g,'')));return c?[i,c]:null}).filter(Boolean).slice(0,6)}
-function chat(){const el=$('#tch');if(el)inview(el,()=>el.classList.add('go'))}
+/* ---------- ⑤ 댓글 수다방 (사용자 요청으로 제거, 호환 스텁) ---------- */
+function chatHTML(I){return''}
+function chatList(I){return[]}
+function chat(){}
 
-/* ---------- ⑥ 얼굴로 보는 오늘 ---------- */
-function facesHTML(E){const P=E.filter(e=>e.type==='person'&&!/나스닥|코스피|코스닥|다우|S&P|증시|거래소/.test(e.name)).map(e=>({e,u:(typeof entityMedia==='function'?entityMedia(e).url:'')||((e.visual||{}).url)||((e.wiki||{}).thumb)})).filter(x=>x.u).slice(0,14);if(!P.length)return'';
-  return sec('얼굴로 보는 오늘','Faces of today',`<a class="more" href="people">전체 ${NBI('arrow-right')}</a>`,'user')+`<div class="tfa">${P.map(({e,u})=>{const n=(e.issues||[]).length;return`<a href="${eh(e.name)}"><span ${bg(u)}></span><b>${esc(e.name)}</b><small>${esc(short((e.wiki||{}).desc||'',22))}</small>${n>1?`<i>${n}</i>`:''}</a>`}).join('')}</div>`}
+/* ---------- ⑥ 얼굴로 보는 오늘 (사용자 요청으로 제거, 호환 스텁) ---------- */
+function facesHTML(E){return''}
 
 /* ---------- ⑦ 오늘의 단어 스크래치 ---------- */
 function wordsHTML(W){if(!W.length)return'';
-  return sec('오늘의 단어','Words of the day','<span class="more">긁으면 정답이 나와요</span>','quiz')+`<div class="tws">${W.map((w,k)=>{const ex=(w.examples||[]).find(x=>(x.title||'').includes(w.word))||(w.examples||[])[0]||{},t=ex.title||'',has=t.includes(w.word);
-    const blank=has?esc(t).split(esc(w.word)).join('<u>□□</u>'):'';const mean=(w.easy||w.mean||(w.wiki||{}).desc||'').split(w.word).join('□□');   // 힌트에 정답이 보이지 않게
-    return`<div class="twc"><small class="twn">Q${k+1}${w.field?` · ${esc(w.field)}`:''}</small><p class="twq">${has?`빈칸에 들어갈 말은?<q>${blank}</q>`:'이 뜻을 가진 말은?'}</p>${mean?`<p class="twh">${has?'힌트 · ':''}${esc(short(mean,70))}</p>`:''}
-      <div class="twa"><div class="twr"><b>${esc(w.word)}</b><small>${esc(short((w.wiki||{}).desc||mean,40))}</small>${ex.url?`<a href="${esc(ex.url)}" target="_blank" rel="noopener">기사 보기 ${NBI('arrow-up-right')}</a>`:''}</div><canvas aria-label="긁어서 정답 보기"></canvas></div></div>`}).join('')}</div>`}
-function words(){$$('.twa canvas').forEach(cv=>inview(cv,()=>scratch(cv),.01))}
+  return sec('오늘의 단어','Words of the day','<span class="more">긁으면 정답이 나와요</span>','quiz')+
+    `<div class="tws grab-carousel" id="tword-deck">${W.map((w,k)=>{
+      const ex=(w.examples||[]).find(x=>(x.title||'').includes(w.word))||(w.examples||[])[0]||{}, t=ex.title||'', has=t.includes(w.word);
+      const sq = '□'.repeat(w.word ? w.word.length : 2);
+      const blank = has ? esc(t).split(esc(w.word)).join(`<u>${sq}</u>`) : '';
+      const mean = (w.easy||w.mean||(w.wiki||{}).desc||'').split(w.word).join(sq);
+      return `<div class="twc card">
+        <div class="tw-head">
+          <small class="twn">Q${k+1}${w.field?` · ${esc(w.field)}`:''}</small>
+          <div class="twq">${has ? `<p>${blank}</p>` : `<p><b>${sq}</b> · 이 뜻을 가진 시사 단어는?</p>`}</div>
+        </div>
+        <div class="twa">
+          <div class="twr"><b>${esc(w.word)}</b><small>${esc(short((w.wiki||{}).desc||mean,40))}</small>${ex.url?`<a href="${esc(ex.url)}" target="_blank" rel="noopener">기사 보기 ${NBI('arrow-up-right')}</a>`:''}</div>
+          <canvas aria-label="긁어서 정답 보기"></canvas>
+        </div>
+        ${mean ? `<p class="twh">힌트 · ${esc(short(mean,75))}</p>` : ''}
+      </div>`;
+    }).join('')}</div>`}
+
+function words(){
+  $$('.twa canvas').forEach(cv=>inview(cv,()=>scratch(cv),.01));
+  const el=$('#tword-deck'); if(el) enableElasticCarousel(el);
+}
+
 function scratch(cv){const w=cv.parentNode.clientWidth,h=cv.parentNode.clientHeight;if(!w||!h)return;const dp=devicePixelRatio||1,x=cv.getContext('2d');cv.width=w*dp;cv.height=h*dp;x.scale(dp,dp);
   const g=x.createLinearGradient(0,0,w,h);g.addColorStop(0,'#c9ced9');g.addColorStop(.5,'#eef0f5');g.addColorStop(1,'#b4bac8');x.fillStyle=g;x.fillRect(0,0,w,h);
   x.fillStyle='rgba(255,255,255,.35)';for(let k=0;k<40;k++){x.fillRect(Math.random()*w,Math.random()*h,2,2)}
@@ -106,14 +158,178 @@ function scratch(cv){const w=cv.parentNode.clientWidth,h=cv.parentNode.clientHei
   cv.onpointerdown=e=>{dn=true;cv.setPointerCapture(e.pointerId);const r=cv.getBoundingClientRect();lx=e.clientX-r.left;ly=e.clientY-r.top;at(e)};cv.onpointermove=e=>dn&&at(e);cv.onpointerup=cv.onpointercancel=()=>dn=false}
 
 /* ---------- ⑧ 실시간 검색어 톡 ---------- */
-function trendsHTML(T){if(!T.length)return'';
-  return sec('실시간 검색어','Google Trends KR','<span class="more">누르면 왜 떴는지 알려 줘요</span>','search')+`<div class="ttr card" id="ttr"><div class="ttc">${T.map((t,k)=>`<button type="button" data-k="${k}"><i>${k+1}</i>${esc(t.keyword)}</button>`).join('')}</div><div class="ttw" hidden></div></div>`}
-function trends(T){const el=$('#ttr');if(!el)return;
-  el.addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(!b)return;const t=T[+b.dataset.k],w=$('.ttw',el),on=b.classList.contains('on');hz(8);
-    $$('[data-k]',el).forEach(x=>x.classList.remove('on'));if(on){w.hidden=true;return}b.classList.add('on');w.hidden=false;
-    const n=(t.news||t.today||[])[0]||{},im=t.image||t.img||n.img;w.style.setProperty('--x',(b.offsetLeft+b.offsetWidth/2)+'px');
-    w.innerHTML=`${im?`<span class="ttp" ${bg(im)}></span>`:''}<div><b>${esc(t.keyword)}${t.traffic?` <small>검색 ${esc(t.traffic)}</small>`:''}</b><p>${esc(n.title||'관련 기사를 찾는 중이에요')}</p><a href="${kh(t.keyword)}">오늘·과거 흐름 보기 ${NBI('arrow-right')}</a></div>`;
-    w.classList.remove('in');void w.offsetWidth;w.classList.add('in')})}
+function trendImg(t){
+  if(t.image && t.image.trim()) return t.image;
+  if(t.img && t.img.trim()) return t.img;
+  if(t.image_src && t.image_src.trim()) return t.image_src;
+  const n = (t.news || t.today || [])[0];
+  if(n && (n.img || n.image)) return n.img || n.image;
+  if(typeof D !== 'undefined' && D && D.issues){
+    const mi = D.issues.find(i => (i.title||'').includes(t.keyword) || (i.keywords||[]).includes(t.keyword));
+    if(mi && pic(mi)) return pic(mi);
+  }
+  return '';
+}
+
+function trendBubbleBody(t, k){
+  if(!t) return '';
+  const n = (t.news || t.today || [])[0] || {};
+  const im = trendImg(t);
+  return `${im ? `<span class="ttp sq-ok" ${bg(im)}></span>` : `<span class="ttp sq-ok noimg">${ic('search')}</span>`}
+  <div class="ttw-txt">
+    <b><i>${k+1}위</i> ${esc(t.keyword)}${t.traffic ? ` <small>검색 ${esc(t.traffic)}</small>` : ''}</b>
+    <p>${esc(n.title || t.keyword + ' 관련 주요 소식이 화제예요')}</p>
+    <a href="${kh(t.keyword)}">오늘·과거 흐름 보기 ${NBI('arrow-right')}</a>
+  </div>`;
+}
+
+function trendsHTML(T){
+  if(!T.length) return '';
+  const t0 = T[0];
+  return sec('실시간 검색어','Google Trends KR','<span class="more">순위를 누르면 이유가 열려요</span>','search')+
+    `<div class="ttr card" id="ttr">
+      <div class="ttc">${T.map((t,k)=>`<button type="button" data-k="${k}" class="${k===0?'on':''}"><i>${k+1}</i>${esc(t.keyword)}</button>`).join('')}</div>
+      <div class="ttw in">${trendBubbleBody(t0, 0)}</div>
+    </div>`;
+}
+
+function trends(T){
+  const el=$('#ttr'); if(!el) return;
+  const w = $('.ttw', el);
+  const setTail = b => {
+    if(!b || !w) return;
+    const badge = b.querySelector('i') || b;
+    const rB = badge.getBoundingClientRect();
+    const rW = w.getBoundingClientRect();
+    const x = (rB.left + rB.width / 2) - rW.left;
+    w.style.setProperty('--x', `${Math.round(x)}px`);
+  };
+
+  requestAnimationFrame(()=>{
+    const b0 = $('[data-k="0"]', el);
+    if(b0) setTail(b0);
+  });
+  window.addEventListener('resize', ()=>{
+    const active = $('[data-k].on', el) || $('[data-k="0"]', el);
+    if(active && el.isConnected) setTail(active);
+  });
+
+  el.addEventListener('click', e => {
+    const b = e.target.closest('[data-k]'); if(!b) return;
+    const k = +b.dataset.k, t = T[k];
+    hz(8);
+    $$('[data-k]', el).forEach(x => x.classList.toggle('on', x === b));
+    w.hidden = false;
+    w.innerHTML = trendBubbleBody(t, k);
+    setTail(b);
+    w.classList.remove('in'); void w.offsetWidth; w.classList.add('in');
+  });
+}
+
+/* ---------- Ⓧ 가로 캐러셀 마우스 드래그 & 엘라스틱 바운스 도우미 ---------- */
+function enableElasticCarousel(el){
+  if(!el || el._elastic) return;
+  el._elastic = true;
+  let isDown = false, startX = 0, startScroll = 0, moved = 0, velX = 0, lastX = 0, lastT = 0;
+  
+  const onPointerDown = e => {
+    if(e.button != null && e.button !== 0) return;
+    if(e.target.closest('canvas, input, textarea, select')) return;
+    isDown = true;
+    moved = 0;
+    startX = e.clientX;
+    lastX = e.clientX;
+    lastT = performance.now();
+    startScroll = el.scrollLeft;
+    el.classList.add('grabbing');
+    el.style.scrollBehavior = 'auto';
+    el.style.scrollSnapType = 'none';
+    try { el.setPointerCapture(e.pointerId); } catch(x){}
+  };
+
+  const onPointerMove = e => {
+    if(!isDown) return;
+    const now = performance.now();
+    const dt = Math.max(1, now - lastT);
+    const dx = e.clientX - startX;
+    velX = (e.clientX - lastX) / dt;
+    lastX = e.clientX;
+    lastT = now;
+    
+    if(Math.abs(dx) > 5) {
+      moved = 1;
+      el._dragged = true;
+    }
+    
+    const maxScroll = Math.max(0, el.scrollWidth - el.clientWidth);
+    let target = startScroll - dx;
+    if(target < 0) {
+      target = target * 0.35;
+    } else if(target > maxScroll) {
+      const over = target - maxScroll;
+      target = maxScroll + over * 0.35;
+    }
+    el.scrollLeft = target;
+  };
+
+  const snapElastic = () => {
+    const maxScroll = Math.max(0, el.scrollWidth - el.clientWidth);
+    const cur = el.scrollLeft;
+    const cards = [...el.children];
+    let best = cur;
+    if(cur <= 0) {
+      best = 0;
+    } else if(cur >= maxScroll) {
+      best = maxScroll;
+    } else {
+      let minDiff = Infinity;
+      cards.forEach(c => {
+        const diff = Math.abs(c.offsetLeft - cur);
+        if(diff < minDiff) { minDiff = diff; best = c.offsetLeft; }
+      });
+      if(Math.abs(velX) > 0.35) {
+        const bias = velX < 0 ? 180 : -180;
+        let mDiff = Infinity, mBest = cur + bias;
+        cards.forEach(c => {
+          const d = Math.abs(c.offsetLeft - (cur + bias));
+          if(d < mDiff) { mDiff = d; mBest = c.offsetLeft; }
+        });
+        best = Math.max(0, Math.min(maxScroll, mBest));
+      }
+    }
+
+    el.style.transition = 'scroll-left 0.4s cubic-bezier(0.25, 1.35, 0.5, 1)';
+    el.scrollLeft = best;
+    setTimeout(() => {
+      el.style.transition = '';
+      el.style.scrollSnapType = '';
+    }, 420);
+  };
+
+  const onPointerUp = e => {
+    if(!isDown) return;
+    isDown = false;
+    el.classList.remove('grabbing');
+    try { el.releasePointerCapture(e.pointerId); } catch(x){}
+    snapElastic();
+    setTimeout(() => {
+      moved = 0;
+      el._dragged = false;
+    }, 80);
+  };
+
+  el.addEventListener('pointerdown', onPointerDown);
+  el.addEventListener('pointermove', onPointerMove);
+  el.addEventListener('pointerup', onPointerUp);
+  el.addEventListener('pointercancel', onPointerUp);
+
+  el.addEventListener('click', e => {
+    if(moved) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+}
 
 /* ---------- ⑨ 꾹 눌러 쉬운 말(이슈 상세 요약) ---------- */
 // 원래 요약과 쉬운 말을 같은 칸에 겹쳐 높이가 변하지 않게. 꾹 누르는 동안만 쉬운 말, 아래 단추를 톡 누르면 계속 쉬운 말
@@ -187,5 +403,5 @@ function search(){let o=$('.nbs');if(o){$('input',o).focus();return}
   empty();setTimeout(()=>q.focus(),30)}
 document.addEventListener('keydown',e=>{if((e.key==='k'&&(e.metaKey||e.ctrlKey))&&!/INPUT|TEXTAREA/.test((document.activeElement||{}).tagName||'')){e.preventDefault();search()}});
 
-window.NBT={sinceHTML,heatHTML,numsHTML,nums,hiliteHTML,hilite,search,mosaicHTML,mosaic,voteHTML,vote,debateHTML,debate,agesHTML,ages,chatHTML,chat,facesHTML,wordsHTML,words,trendsHTML,trends,easyHold,hz};
+window.NBT={sinceHTML,heatHTML,numsHTML,nums,hiliteHTML,hilite,search,mosaicHTML,mosaic,voteHTML,vote,debateHTML,debate,agesHTML,ages,chatHTML,chat,facesHTML,wordsHTML,words,trendsHTML,trends,easyHold,hz,enableElasticCarousel};
 })();

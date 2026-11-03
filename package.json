@@ -1,0 +1,29 @@
+{
+  "name": "newsboard",
+  "version": "1.0.0",
+  "description": "NewsBoard (렛츠뉴스) — 오늘의 이슈 TOP10 + 인물·사건 타임라인",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "serve": "npx serve -l 3000 .",
+    "validate": "python3 scripts/validate_project.py",
+    "test": "python3 scripts/validate_project.py",
+    "cache:inject": "python3 scripts/inject_cache_version.py",
+    "worker:dev": "cd worker && npx wrangler dev",
+    "worker:deploy": "cd worker && npx wrangler deploy",
+    "worker:tail": "cd worker && npx wrangler tail"
+  },
+  "keywords": [
+    "news",
+    "timeline",
+    "korean-news",
+    "infographics",
+    "newsboard"
+  ],
+  "author": "pyw31337",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pyw31337/news.git"
+  }
+}

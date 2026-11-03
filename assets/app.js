@@ -186,42 +186,38 @@ function marketStrip(){const M=D.market||[];if(!M.length)return'';
 function today(){
   const I=D.issues.filter(vis);if(!I.length){app.innerHTML='<div class="note">설정에서 모든 카테고리를 껐어요. <a href="settings">설정</a></div>';return}
   const L=I[0],mx=Math.max(...I.map(i=>i.score));
-  const side=I.slice(0,10).map(i=>`<div class="srow" data-id="${i.id}"><div><a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><h3>${esc(i.title)}</h3><div class="m">${ic('news')}${esc(i.press)} 외 ${i.presses-1}곳 ${i.opinion?`· ${ic('chat')}${i.opinion.total.toLocaleString()}`:''}</div></div></a></div></div>`).join('');
+  /* 썸네일(사진)이 있는 이슈만 최상단 카드 덱과 사이드 목록에 노출 */
+  const hasPic = i => Boolean(i && ((i.image && i.image.trim()) || (i.gallery && i.gallery.some(g => g && g.img && g.img.trim()))));
+  const heroI = (I.filter(hasPic).length ? I.filter(hasPic) : I).slice(0, 10);
+  const side=heroI.map(i=>`<div class="srow" data-id="${i.id}"><div><a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image||(i.gallery&&i.gallery[0]&&i.gallery[0].img))}<div class="tx"><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><h3>${esc(i.title)}</h3><div class="m">${ic('news')}${esc(i.press)} 외 ${i.presses-1}곳 ${i.opinion?`· ${ic('chat')}${i.opinion.total.toLocaleString()}`:''}</div></div></a></div></div>`).join('');
   const cats={};I.forEach(i=>cats[i.category]=(cats[i.category]||0)+1);
   /* TOP 10·화제·검색어·단어는 '만지는 뉴스' 모듈(assets/touch.js, v2 실험실에서 확정)로 그림 */
   const W=(D.words||[]).slice(0,6);
   app.innerHTML=`
   <section class="hero">
     <div class="rdeck" tabindex="0" aria-roledescription="카드 덱" aria-label="오늘의 이슈 카드. 좌우로 넘겨 보세요">
-     <div class="rstage">${I.slice(0,10).map((i,k)=>`<article class="lead rcard" data-i="${k}" data-id="${i.id}" data-img="${esc([...(i.gallery||[]).slice(0,1).map(g=>g.img),i.image,...(i.gallery||[]).map(g=>g.img)].filter(Boolean).filter((u,k,A)=>A.indexOf(u)===k).slice(0,6).join('|'))}"><div class="rimg"></div><a class="rlink" draggable="false" href="issue/${i.id}" aria-label="${esc(i.title)}"></a><button type="button" class="rlater" data-later="${i.id}" aria-label="나중에 읽기" aria-pressed="false">${window.GI?GI('bookmark-plus'):''}<span>나중에 읽기</span></button><div class="in"><div class="no">${String(i.rank).padStart(2,'0')}</div><span class="cat ${i.category}">${ic(i.category)}${i.category}</span>
+     <div class="rstage">${heroI.map((i,k)=>`<article class="lead rcard" data-i="${k}" data-id="${i.id}" data-img="${esc([...(i.gallery||[]).slice(0,1).map(g=>g.img),i.image,...(i.gallery||[]).map(g=>g.img)].filter(Boolean).filter((u,k,A)=>A.indexOf(u)===k).slice(0,6).join('|'))}"><div class="rimg"></div><a class="rlink" draggable="false" href="issue/${i.id}" aria-label="${esc(i.title)}"></a><button type="button" class="rlater" data-later="${i.id}" aria-label="나중에 읽기" aria-pressed="false">${window.GI?GI('bookmark-plus'):''}<span>나중에 읽기</span></button><div class="in"><div class="no">${String(i.rank).padStart(2,'0')}</div><span class="cat ${i.category}">${ic(i.category)}${i.category}</span>
       <h1>${esc(i.title)}</h1><p>${esc(i.summary.join(' '))}</p>
       <div class="schips">${schips(i,'issue/'+i.id)}</div></div></article>`).join('')}</div>
-     <div class="rctl"><button type="button" class="rbtn" data-d="-1" aria-label="이전 이슈" disabled>${NBI('chevron-left')}</button><span class="rpos"><b>01</b> / ${String(Math.min(10,I.length)).padStart(2,'0')}</span><span class="rbar"><i style="width:${100/Math.min(10,I.length)}%"></i></span><span class="rhint">옆으로 넘겨 보세요</span><button type="button" class="rbtn" data-d="1" aria-label="다음 이슈">${NBI('chevron-right')}</button></div>
+     <div class="rctl"><button type="button" class="rbtn" data-d="-1" aria-label="이전 이슈" disabled>${NBI('chevron-left')}</button><span class="rpos"><b>01</b> / ${String(Math.min(10,heroI.length)).padStart(2,'0')}</span><span class="rbar"><i style="width:${100/Math.min(10,heroI.length)}%"></i></span><span class="rhint">옆으로 넘겨 보세요</span><button type="button" class="rbtn" data-d="1" aria-label="다음 이슈">${NBI('chevron-right')}</button></div>
     </div>
     <div class="side">${side}</div>
   </section>
   ${marketStrip()}
   ${sec('오늘의 이슈 TOP 10','Today’s Top 10',`<a class="more" href="settings">${ic('gear')}${S.age?`${AGEP[S.age].n} 맞춤 · 읽기 ${READN[S.read||'std']}`:'나에게 맞춤 설정'}</a>`,'fire')}
-  <div class="catbar">${Object.entries(cats).map(([c,n])=>`<i style="flex:${n};background:${CATC[c]}" data-tip="${c} 이슈 ${n}개 · TOP 10의 ${Math.round(n/I.length*100)}%"></i>`).join('')}</div>
-  <div class="legend">${Object.entries(cats).map(([c,n])=>`<span style="--c:${CATC[c]}">${c} ${n}</span>`).join('')}</div>
   ${NBT.sinceHTML(I)}
   ${NBT.mosaicHTML(I)}
   ${NBT.voteHTML(I)}
   ${NBT.trendsHTML(D.trends.slice(0,10))}
-  ${NBT.debateHTML(I)}
-  ${NBT.heatHTML(I)}
   ${NBT.wordsHTML(W)}
-  ${NBT.numsHTML(I)}
   ${NBT.hiliteHTML(I)}
   ${NBT.agesHTML(I)}
-  ${NBT.chatHTML(I)}
-  ${numToday(I)}
-  ${NBT.facesHTML(D.entities)}
   ${sec('관계로 보는 오늘','Relation map',`<a class="more" href="map">크게 보기 ${NBI('arrow-right')}</a>`,'graph')}
-  <div class="card mapwrap mini scan" id="mapmini"></div>`;
+  <div class="card mapwrap mini" id="mapmini"></div>`;
   {const mm=$('#mapmini');if(window.IntersectionObserver){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();if(mm.isConnected)graph(mm,true)}},{rootMargin:'600px 0px'});io.observe(mm)}else graph(mm,true)}
   window.nbDeck&&nbDeck($('.rdeck'));carousels(app);heatIn(app);
-  NBT.mosaic(I);NBT.vote(I);NBT.trends(D.trends.slice(0,10));NBT.debate(I);NBT.words();NBT.nums();NBT.hilite();NBT.ages(I);NBT.chat();
+  NBT.mosaic(I);NBT.vote(I);NBT.trends(D.trends.slice(0,10));NBT.words();NBT.hilite();NBT.ages(I);
+  document.querySelectorAll('.mkrow').forEach(r => NBT.enableElasticCarousel(r));
 }
 /* 화제도 게이지: 카드가 화면에 들어오면 차오르기 시작(.go) */
 function heatIn(root){const H=[...(root||document).querySelectorAll('.ic .heat:not(.go)')];if(!H.length)return;
@@ -429,7 +425,7 @@ function reporter(id){const r=reporterById(id);if(!r)return people();const issue
 function map(){
   app.innerHTML=`${sec('키워드 관계맵','Relation map','','graph')}<p class="lede">오늘의 이슈(사각형)와 인물·장소·기관(원)이 같은 기사에 함께 등장하면 선으로 이어집니다. 노드를 끌어보고, 눌러서 상세로 이동하세요.</p>
   <div class="legend"><span style="--c:#ff4d2e">인물</span><span style="--c:#11a683">장소</span><span style="--c:#7a4dff">기관·기업</span><span style="--c:#ffb020">키워드</span><span style="--c:#0f1630">이슈</span></div>
-  <div class="card mapwrap scan" id="mapbig"></div>
+  <div class="card mapwrap" id="mapbig"></div>
   ${sec('노드는 왜 여기에?','Why each node','','search')}
   <ul class="whyl">${D.entities.map(e=>{const w=why(e),st=subtype(e);return`<li><a href="${eh(e.name)}">${entc(e.name,e.type)}<span class="wt"><span class="tag">${esc(SUB.find(x=>x[0]===st)?.[1]||'')}</span>${w.issue?`<span class="why">${esc(w.text)}</span>`:''}</span>${cnt(w.n,'news','관련 기사')}</a></li>`}).join('')}
   ${D.issues.filter(vis).map(i=>`<li><a href="issue/${i.id}"><span class="ent issue"><b class="rkn">${i.rank}</b>이슈</span><span class="wt"><span class="why strong">${esc(i.title)}</span></span>${cnt(i.presses,'press','보도 언론사')}</a></li>`).join('')}</ul>`;graph($('#mapbig'),false);
@@ -463,11 +459,19 @@ function graph(el,mini){
   const NS='http://www.w3.org/2000/svg';el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="키워드 관계맵"><defs>${N.map((n,i)=>n.img?`<pattern id="p${i}" width="1" height="1" patternContentUnits="objectBoundingBox"><image href="${esc(n.img)}" width="1" height="1" preserveAspectRatio="${n.kind==='logo'||n.kind==='flag'?'xMidYMid meet':'xMidYMid slice'}"/></pattern>`:'').join('')}</defs><g class="vp"><g class="ed"></g><g class="nd"></g></g></svg>${mini?'':`<div class="mapfield" aria-hidden="true"><b>LIVE RELATION FIELD</b><span>인물 · 장소 · 기관</span></div><div class="mapzoom"><button type="button" data-z="1.25" aria-label="확대">+</button><button type="button" data-z="0.8" aria-label="축소">−</button><button type="button" data-z="0" aria-label="원래대로">⟲</button></div>`}`;
   const svg=el.querySelector('svg'),vp=svg.querySelector('.vp'),ge=svg.querySelector('.ed'),gn=svg.querySelector('.nd');
   const near=N.map(()=>new Set());E.forEach(([a,b])=>{near[a].add(b);near[b].add(a)});
-  const lines=E.map(([a,b,w])=>{const l=document.createElementNS(NS,'line');l.setAttribute('stroke','#9ca9c6');l.setAttribute('stroke-opacity','0.52');l.setAttribute('stroke-width',Math.min(1.45,.36+w*.13));l.setAttribute('vector-effect','non-scaling-stroke');ge.appendChild(l);return l});
+  const lines=E.map(([a,b,w])=>{const l=document.createElementNS(NS,'line');l.setAttribute('stroke','#9ca9c6');l.setAttribute('stroke-opacity','0.45');l.setAttribute('stroke-width',Math.min(1.45,.36+w*.13));l.setAttribute('vector-effect','non-scaling-stroke');ge.appendChild(l);return l});
+  const flowLines=E.map(()=>{const fl=document.createElementNS(NS,'line');fl.setAttribute('class','map-flow');fl.setAttribute('vector-effect','non-scaling-stroke');ge.appendChild(fl);return fl});
   const nodes=N.map((n,i)=>{const g=document.createElementNS(NS,'g');g.setAttribute('class','node '+n.t);
     g.innerHTML=(n.t==='issue'?`<rect x="${-n.r}" y="${-n.r*.7}" width="${n.r*2}" height="${n.r*1.4}" rx="5" fill="#0f1630"/>`:`<circle r="${n.r}" fill="${n.img?`url(#p${i})`:col[n.t]}" stroke="${col[n.t]}" stroke-width="${n.img?'2':'3'}"/>`)+`<text y="${n.r+fs+2}" text-anchor="middle" style="font-size:${fs}px">${esc(n.lab)}</text><title>${esc(n.t==='issue'?n.lab:n.id)}</title>`;
     gn.appendChild(g);return g});
-  const draw=()=>{E.forEach(([i,j],k)=>{const l=lines[k];l.setAttribute('x1',N[i].x);l.setAttribute('y1',N[i].y);l.setAttribute('x2',N[j].x);l.setAttribute('y2',N[j].y)});nodes.forEach((g,i)=>g.setAttribute('transform',`translate(${N[i].x.toFixed(1)},${N[i].y.toFixed(1)})`))};draw();
+  const draw=()=>{
+    E.forEach(([i,j],k)=>{
+      const l=lines[k], fl=flowLines[k];
+      l.setAttribute('x1',N[i].x);l.setAttribute('y1',N[i].y);l.setAttribute('x2',N[j].x);l.setAttribute('y2',N[j].y);
+      if(fl){fl.setAttribute('x1',N[i].x);fl.setAttribute('y1',N[i].y);fl.setAttribute('x2',N[j].x);fl.setAttribute('y2',N[j].y)}
+    });
+    nodes.forEach((g,i)=>g.setAttribute('transform',`translate(${N[i].x.toFixed(1)},${N[i].y.toFixed(1)})`))
+  };draw();
   // 보기 변환(확대·이동) — 노드 배치는 그대로
   let s=1,tx=0,ty=0;const setV=()=>{s=Math.max(1,Math.min(3,s));tx=Math.min(0,Math.max(W-W*s,tx));ty=Math.min(0,Math.max(H-H*s,ty));vp.setAttribute('transform',`translate(${tx},${ty}) scale(${s})`);svg.style.touchAction=s>1?'none':'pan-y'};setV();
   const pt=ev=>{const r=svg.getBoundingClientRect();return[(ev.clientX-r.left)*W/r.width,(ev.clientY-r.top)*H/r.height]};

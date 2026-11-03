@@ -312,7 +312,8 @@ html.nbtip [data-tip]::after,html.nbtip [data-tip]::before{display:none!importan
 .mld{scroll-snap-align:start;position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;min-height:250px;padding:14px;border-radius:16px;color:#fff;text-decoration:none;overflow:hidden;background:#141a2e}
 .mld.deck{background:linear-gradient(180deg,rgba(15,22,48,.05),rgba(15,22,48,.88)),var(--im,linear-gradient(135deg,#2f6bff,#7a4dff)) center/cover}
 .mld.comic{background:linear-gradient(160deg,#fff4d6,#ffe1cc);color:#141a2e}.mld.comic svg{position:absolute;top:34px;left:0;width:100%;height:120px}
-.mld .mlt{position:absolute;top:12px;left:12px;font-size:.68rem;font-weight:800;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.88);color:#141a2e}
+.mld-thumb{position:relative;z-index:1;width:100%;height:130px;border-radius:12px;background:#eef0f6 center/cover no-repeat;margin:28px 0 6px;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+.mld .mlt{position:absolute;top:12px;left:12px;font-size:.68rem;font-weight:800;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,.88);color:#141a2e;z-index:2}
 .mld b{font-size:1rem;line-height:1.35;position:relative}.mld small{font-size:.74rem;opacity:.85;position:relative;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 /* 헤더 순위 띠: 끌어서 넘기기(app.js tickerDrag) */
 .ticker .tw{overflow:hidden!important;touch-action:pan-y!important;cursor:grab}.ticker .tw.drag{cursor:grabbing}
