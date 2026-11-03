@@ -60,7 +60,8 @@ function hub(){setMeta('놀면서 배우기 — 퀴즈·만화·카드뉴스','�
   <div class="dlist">${F.decks.slice(0,8).map(deckTile).join('')}</div>
   <div id="lpast"></div>`;
   loadIX().then(ix=>{const el=document.getElementById('lpast');const ds=Object.keys(ix.days||{}).sort().reverse().slice(0,30);if(!el||ds.length<2)return;
-    el.innerHTML=sec('지난 기록','Past days','<span class="more">그날의 퀴즈·만화·카드뉴스</span>','clock')+`<div class="lpast">${ds.map(d=>{const x=ix.days[d];const cur=PAST?d===PAST:d===todayK();return`<a class="lpd ${cur?'on':''}" href="learn/${d}"><b>${d.slice(5).replace('-','.')}</b><small>${E((x.w||[]).slice(0,2).join(' · '))}</small><em>퀴즈 ${x.q} · 만화 ${x.c} · 카드 ${x.d}</em></a>`}).join('')}</div>`})}
+    el.innerHTML=sec('지난 기록','Past days','<span class="more">그날의 퀴즈·만화·카드뉴스</span>','clock')+`<div class="lpast">${ds.map(d=>{const x=ix.days[d];const cur=PAST?d===PAST:d===todayK();return`<a class="lpd ${cur?'on':''}" href="learn/${d}"><b>${d.slice(5).replace('-','.')}</b><small>${E((x.w||[]).slice(0,2).join(' · '))}</small><em>퀴즈 ${x.q} · 만화 ${x.c} · 카드 ${x.d}</em></a>`}).join('')}</div>`;
+    window.NBT?.bindHorizontalCarousels?.(el)})}
 /* 카드뉴스 표지·구성 변주: 같은 날 카드뉴스가 서로 다른 모양이 되도록 순서대로 6가지 표지 × 3가지 구성.
    0 사진 꽉 · 1 큰 숫자 · 2 위 사진/아래 글 · 3 글자만(종이) · 4 동그란 사진 · 5 색 입힌 사진+스티커 */
 const SKC=['#ff4d2e','#2f6bff','#11a683','#7a4dff','#f08a00','#e2448e'];
@@ -156,14 +157,15 @@ function deck(id){const d=F.decks.find(x=>x.id===id)||F.decks[0];if(!d)return hu
   el.addEventListener('click',e=>{const r=e.target.closest('.drev');if(r){const p=r.parentNode.querySelector('.dhid');p&&p.classList.remove('dhid');r.remove();try{navigator.vibrate&&navigator.vibrate(10)}catch(x){}}});
   const cur=()=>Math.round(el.scrollLeft/el.clientWidth);
   el.addEventListener('scroll',()=>{const c=cur();dots.forEach((x,i)=>x.classList.toggle('on',i===c))},{passive:true});
-  app.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>el.scrollTo({left:(cur()+ +b.dataset.d)*el.clientWidth,behavior:'smooth'}))}
+  app.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>el.scrollTo({left:(cur()+ +b.dataset.d)*el.clientWidth,behavior:'smooth'}));
+  window.NBT?.enableElasticCarousel?.(el)}
 /* ---------- 홈 진입점 ---------- */
 function homeBlock(){if(!F)return'';const c=F.comics[0],d=F.decks[0],done=(L.days[todayK()]||{}).done;
   return`${sec(T('놀면서 배우기','Learn with news'),'Learn with news',`<a class="more" href="learn">${T('전체','All')} ${NBI('arrow-right')}</a>`,'book')}
   <div class="lhome"><a class="lh quiz" href="quiz"><span class="lhi">${NBI('help-hexagon-f')}</span><b>${T('오늘의 단어 퀴즈','Today’s word quiz')}</b><small>${F.quiz.questions.length}${T('문제',' questions')} · ${NBI('flame-f')}${streakNow()}${T('일 연속','-day streak')} · Lv.${lvl(L.xp)}</small><em>${done?T('완료! 다시 풀기','Done! Again'):T('3분 도전 →','3-minute challenge →')}</em></a>
   ${c?`<a class="lh comic" href="comic/${c.id}"><svg viewBox="-160 -50 320 100"><g transform="translate(-70,0)">${bori('curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg><b>${E(c.title)}</b><small>${T('4컷 설명 만화','4-panel explainer')}</small></a>`:''}
   ${d?`<a class="lh deck" href="cards/${d.id}" ${d.cards[0].img?`style="--im:url('${E(AB(d.cards[0].img))}')"`:''}><span class="lhi">🗂️</span><b>${E(d.title)}</b><small>${T(`카드뉴스 ${d.cards.length}장`,`Card news · ${d.cards.length} cards`)}</small></a>`:''}</div>`}
-/* 메인 화면 '카드뉴스 · 4컷 만화': 동일 규격 카드 통합 및 고품질 썸네일 지원 */
+/* 메인 화면 '카드뉴스': 동일 규격 카드 통합 및 고품질 썸네일 지원 */
 function mainLearn(){if(!F||!document.getElementById('app'))return;const ap=document.getElementById('app');if(ap.querySelector('.ml'))return;
   const hero=ap.querySelector('.hero');if(!hero)return;
   const items=[...(F.comics||[]).map(c=>({k:'c',c})),...(F.decks||[]).map(d=>({k:'d',d}))];if(!items.length)return;
@@ -175,7 +177,7 @@ function mainLearn(){if(!F||!document.getElementById('app'))return;const ap=docu
     const thumb=x.d.img||(x.d.cards[0]&&x.d.cards[0].img);
     return`<a class="mld card" href="cards/${x.d.id}"><div class="mld-thumb"${thumb?` style="background-image:url('${E(thumb)}')"`:''}><span class="mlt">${T('카드뉴스','Card news')} · ${x.d.cards.length}${T('장',' cards')}</span></div><div class="mld-body"><b>${E(x.d.title)}</b><small>${E(x.d.tag||'')}</small></div></a>`;
   };
-  s.innerHTML=`${sec(T('카드뉴스 · 4컷 만화','Card News & Comics'),'Comics & Card News',`<a class="more" href="learn">${T('전체 보기','See all')} ${NBI('arrow-right')}</a>`,'boom')}
+  s.innerHTML=`${sec(T('카드뉴스','Card News & Comics'),'Comics & Card News',`<a class="more" href="learn">${T('전체 보기','See all')} ${NBI('arrow-right')}</a>`,'boom')}
    <div class="mldk"><div class="mlrow">${items.map(cover).join('')}</div></div>`;
   hero.insertAdjacentElement('afterend',s);
   const row=s.querySelector('.mlrow'); if(row&&window.NBT?.enableElasticCarousel) NBT.enableElasticCarousel(row)}

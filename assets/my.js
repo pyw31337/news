@@ -122,7 +122,8 @@ function groupSecs(kind){const kids=[...app.children];let g=null,first=null;cons
 function hotHTML(){if(typeof SUB==='undefined'||typeof subtype!=='function')return'';
   return`<div class="sec"><h2><small>People · Companies · Places</small>${I('fire')}화제</h2><a class="more" href="people">전체 ${NBI('arrow-right')}</a></div><div class="filters subt" id="hotf">${SUB.filter(s=>s[0]!=='issue').map(([k,v,n],i)=>`<button data-f="${k}" class="${i?'':'on'}">${I(n)}${v}</button>`).join('')}</div><div class="hs" id="hotl"></div>`}
 function hotDraw(f){const L=D.entities.filter(e=>subtype(e)===f).slice(0,12);const el=document.getElementById('hotl');if(!el)return;
-  el.innerHTML=L.length?L.map(e=>`<a class="card pc" href="${eh(e.name)}">${av(e)}<b>${E(e.name)}</b><small>${E(e.wiki?.desc||'')}</small>${spark(e.daily)}<span class="last">${e.timeline[0]?E(e.timeline[0].title):''}</span></a>`).join(''):'<p class="fine keep">오늘은 이 분류의 화제가 적어요.</p>'}
+  el.innerHTML=L.length?L.map(e=>`<a class="card pc" href="${eh(e.name)}">${av(e)}<b>${E(e.name)}</b><small>${E(e.wiki?.desc||'')}</small>${spark(e.daily)}<span class="last">${e.timeline[0]?E(e.timeline[0].title):''}</span></a>`).join(''):'<p class="fine keep">오늘은 이 분류의 화제가 적어요.</p>';
+  window.NBT?.enableElasticCarousel?.(el)}
 /* ---------- 저장 버튼 ---------- */
 const key=(t,id)=>t+':'+id;
 function itemOf(t,id){if(t==='issue'){const i=D.issues.find(x=>x.id===id);return i&&{title:i.title,img:i.image,cat:i.category,href:'issue/'+id}}

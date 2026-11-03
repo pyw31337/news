@@ -219,23 +219,19 @@ function today(){
   {const mm=$('#mapmini');if(window.IntersectionObserver){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();if(mm.isConnected)graph(mm,true)}},{rootMargin:'600px 0px'});io.observe(mm)}else graph(mm,true)}
   window.nbDeck&&nbDeck($('.rdeck'));carousels(app);heatIn(app);
   NBT.mosaic(I);NBT.vote(I);NBT.trends(D.trends.slice(0,10));NBT.words();NBT.hilite();NBT.ages(I);
-  document.querySelectorAll('.mkrow').forEach(r => NBT.enableElasticCarousel(r));
+  NBT.bindHorizontalCarousels(app);
 }
 /* 화제도 게이지: 카드가 화면에 들어오면 차오르기 시작(.go) */
 function heatIn(root){const H=[...(root||document).querySelectorAll('.ic .heat:not(.go)')];if(!H.length)return;
   if(!window.IntersectionObserver||matchMedia('(prefers-reduced-motion: reduce)').matches){H.forEach(h=>h.classList.add('go'));return}
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('go');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});H.forEach(h=>io.observe(h))}
-/* 카드 사진 캐러셀: 터치는 기본 스크롤(스냅), 마우스는 끌기·화살표. 넘긴 직후의 클릭은 카드 이동으로 보지 않음 */
+/* 카드 사진 캐러셀: 카드 레일 공통 드래그/스와이프와 화살표를 함께 쓴다. */
 function carousels(root){root.querySelectorAll('.car').forEach(c=>{const t=c.querySelector('.ctrack'),dots=[...c.querySelectorAll('.cdots i')];if(!t||c._on)return;c._on=1;
-  const cur=()=>Math.round(t.scrollLeft/Math.max(1,t.clientWidth));let moved=0,drag=null;
+  const cur=()=>Math.round(t.scrollLeft/Math.max(1,t.clientWidth));
   t.addEventListener('scroll',()=>{const k=cur();dots.forEach((d,n)=>d.classList.toggle('on',n===k))},{passive:true});
   const to=k=>t.scrollTo({left:Math.max(0,Math.min(dots.length-1,k))*t.clientWidth,behavior:'smooth'});
   c.querySelectorAll('.cnav').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();to(cur()+(b.classList.contains('n')?1:-1))}));
-  t.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||dots.length<2)return;drag={x:e.clientX,l:t.scrollLeft};moved=0;t.style.scrollSnapType='none';try{t.setPointerCapture(e.pointerId)}catch(x){}});
-  t.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x;if(Math.abs(dx)>5)moved=1;t.scrollLeft=drag.l-dx});
-  t.addEventListener('pointerup',e=>{if(!drag)return;const dx=e.clientX-drag.x,k=Math.round(drag.l/t.clientWidth)+(dx<-40?1:dx>40?-1:0);drag=null;t.style.scrollSnapType='';to(k);setTimeout(()=>moved=0,50)});
-  c.closest('a')?.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation()}},true);
-  t.addEventListener('dragstart',e=>e.preventDefault())})}
+  window.NBT?.enableElasticCarousel?.(t)})}
 function wordCard(w){return`<div class="card term word"><div class="wt">${w.wiki.thumb?`<span class="wi" ${bg(w.wiki.thumb)}></span>`:`<span class="wi noimg">${ic('book')}</span>`}<div><h4>${esc(w.word)}</h4><em>${esc(w.wiki.desc||'오늘 기사 '+w.count+'회 등장')}</em></div></div>
   <p class="easy">${w.ai?AIB:''}${esc(w.easy)}</p>
   <div class="ex">${w.examples.slice(0,2).map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener"><q>${esc(x.title)}</q>${pp(x.press,x.url)}</a>`).join('')}</div>
@@ -679,7 +675,7 @@ function gtoday(){
   ${secs.length?`${sec(gt('Latest by section','분야별 최신 헤드라인'),'By section','','news')}<div class="gsecs">${secs.map(([c,L])=>`<section class="card gsec"><h3><span class="cat ${c}">${ic(c)}${esc(gcat(c))}</span></h3>
    ${L.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener" class="gsr">${x.img?`<span class="gi" ${bg(x.img)}></span>`:`<span class="gi noimg">${ic(c)}</span>`}<span class="gt"><b>${esc(T_(x,'title'))}</b><small>${esc(x.press)} · ${ago(x.t)}</small></span></a>`).join('')}</section>`).join('')}</div>`:''}
   <p class="fine">${gt('Market data: Yahoo Finance daily closes (may be delayed). Stories: international RSS feeds and Google News.','시세: 야후 파이낸스 일별 종가(지연될 수 있어요). 기사: 해외 언론 RSS·구글 뉴스. 번역은 자동 생성되어 어색하거나 틀릴 수 있어요.')}</p>`;
-  bindOrig(gtoday);heatIn(app);gvocab();gsocial();window.nbLearnMain&&nbLearnMain();
+  bindOrig(gtoday);heatIn(app);gvocab();gsocial();window.NBT?.bindHorizontalCarousels?.(app);window.nbLearnMain&&nbLearnMain();
 }
 /* 해외 탭 'SNS 라이브': 트럼프(트루스소셜 아카이브)·블루스카이 인물·언론(data/social.json). 원문/번역 전환을 따름 */
 let SOCJ=null;
@@ -688,7 +684,8 @@ function gsocial(){const put=X=>{const el=$('#gsns');if(!el||!X||!(X.posts||[]).
   el.innerHTML=`${sec(gt('Live from social media','지금 SNS에서'),'Live from social',`<span class="more"><i class="live"></i>${gt(`Updated ${ago(X.updated)}`,`${ago(X.updated)} 갱신`)}</span>`,'chat')}
   <div class="sns">${P.map(p=>`<a class="card sn" href="${esc(p.url)}" target="_blank" rel="noopener"><div class="snh">${p.avatar?`<span class="sav" ${bg(p.avatar)}></span>`:`<span class="sav ini">${esc(p.name.split(' ').map(w=>w[0]).join('').slice(0,2))}</span>`}<span class="snn"><b>${esc(p.name)}</b><small>${esc(p.handle)} · ${ago(p.t)}</small></span><em style="--c:${(net[p.net]||['',''])[1]}">${(net[p.net]||[p.net])[0]}</em></div>
    <p ${S.orig?'lang="en"':''}>${esc(S.orig||!p.text_ko?p.text:p.text_ko)}</p>${p.img?`<span class="sim" ${bg(p.img)}></span>`:''}${p.likes!=null?`<div class="snf"><span>♥ ${(p.likes||0).toLocaleString()}</span><span>↻ ${(p.reposts||0).toLocaleString()}</span></div>`:''}</a>`).join('')}</div>
-  <p class="fine">${gt('Truth Social via the public trumpstruth.org archive; Bluesky public API. X (Twitter) is not included because its API is paid.','트루스소셜은 공개 아카이브(trumpstruth.org), 블루스카이는 공개 API로 모아요. X(트위터)는 API가 유료라 넣지 않았어요.')}</p>`};
+  <p class="fine">${gt('Truth Social via the public trumpstruth.org archive; Bluesky public API. X (Twitter) is not included because its API is paid.','트루스소셜은 공개 아카이브(trumpstruth.org), 블루스카이는 공개 API로 모아요. X(트위터)는 API가 유료라 넣지 않았어요.')}</p>`;
+  window.NBT?.bindHorizontalCarousels?.(el)};
   if(SOCJ)return put(SOCJ);fetch('data/social.json?'+Math.floor(Date.now()/3e5)).then(r=>r.ok?r.json():null).then(j=>{SOCJ=j;put(j)}).catch(()=>{})}
 /* 해외 탭 '오늘의 영어 표현': 오늘 영어 헤드라인에서 고른 단어(fun.json world.vocab). 원문 예문에 단어 강조 */
 let FUNJ=null;

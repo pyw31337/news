@@ -49,8 +49,8 @@ function getStances(i){
   if(S.length>=2) return S.slice(0,2);
   const l=lk(i)||60, d=dl(i)||40, tot=l+d||1;
   return [
-    {label:'공감해요', desc:'기사 내용의 긍정적 측면과 시사점에 무게를 둬요', share:Math.round(l/tot*100)},
-    {label:'우려돼요', desc:'신중한 접근과 보완 대책 마련이 필요해 보여요', share:Math.round(d/tot*100)}
+    {label:'공감해요', share:Math.round(l/tot*100)},
+    {label:'우려돼요', share:Math.round(d/tot*100)}
   ];
 }
 
@@ -71,7 +71,7 @@ function voteCardRes(i, myChoice){
 function voteCardAsk(i){
   const S=getStances(i);
   return `<p class="tvask">이 사안, 어느 쪽에 더 가까우신가요?</p>
-  <div class="tdbt tvbt">${S.map((x,j)=>`<button type="button" data-k="${j}" class="s${j}"><b>${esc(short(x.label,16))}</b><small>${esc(short(x.desc||'',34))}</small></button>`).join('')}</div>`;
+  <div class="tdbt tvbt">${S.map((x,j)=>`<button type="button" data-k="${j}" class="s${j}"><b>${esc(x.label)}</b>${x.desc?`<small>${esc(x.desc)}</small>`:''}</button>`).join('')}</div>`;
 }
 
 function voteHTML(I){
@@ -83,7 +83,7 @@ function voteHTML(I){
     `<div class="tvrow grab-carousel" id="tvote">${P.map(i=>`<div class="tvc card" data-id="${i.id}">
       <a class="tvp" href="issue/${i.id}" ${pic(i)?bg(pic(i)):''}></a>
       <div class="tv-cat"><span class="cat ${i.category}">${esc(i.category)}</span></div>
-      <div class="tvb-title"><a href="issue/${i.id}"><b>${esc(short(i.title,48))}</b></a></div>
+      <div class="tvb-title"><a href="issue/${i.id}"><b>${esc(i.title)}</b></a></div>
       <div class="tvq">${VT[i.id]!=null ? voteCardRes(i, VT[i.id]) : voteCardAsk(i)}</div>
     </div>`).join('')}</div>`;
 }
@@ -112,7 +112,7 @@ function agesHTML(I){const P=I.filter(i=>OP(i).ages),ages=['20','30','40','50','
   const my=String((typeof S!=='undefined'?S:{}).age||'').slice(0,2),def=ages.includes(my)?my:ages.includes('40')?'40':ages[0];
   return sec('내 또래는?','By age','<span class="more">댓글 단 사람들의 나이로 봤어요</span>','user')+`<div class="tage-card card" id="tage" data-def="${def}"><div class="tagc">${ages.map(a=>`<button type="button" data-a="${a}" class="${a===def?'on':''}">${a}대</button>`).join('')}</div><div class="tagl"></div></div>`}
 function ages(I){const el=$('#tage');if(!el)return;const P=I.filter(i=>OP(i).ages);
-  const list=a=>{$('.tagl',el).innerHTML=P.filter(i=>OP(i).ages[a]>0).sort((x,y)=>OP(y).ages[a]-OP(x).ages[a]).slice(0,5).map(i=>`<a href="issue/${i.id}"><span class="tagp" ${pic(i)?bg(pic(i)):''}></span><b>${esc(short(i.title,40))}</b><i style="--w:${OP(i).ages[a]}%"></i><em>${OP(i).ages[a]}%</em></a>`).join('');const l=$('.tagl',el);l.classList.remove('in');void l.offsetWidth;l.classList.add('in')};
+  const list=a=>{$('.tagl',el).innerHTML=P.filter(i=>OP(i).ages[a]>0).sort((x,y)=>OP(y).ages[a]-OP(x).ages[a]).slice(0,5).map(i=>`<a href="issue/${i.id}"><span class="tagp" ${pic(i)?bg(pic(i)):''}></span><b>${esc(i.title)}</b><i style="--w:${OP(i).ages[a]}%"></i><em>${OP(i).ages[a]}%</em></a>`).join('');const l=$('.tagl',el);l.classList.remove('in');void l.offsetWidth;l.classList.add('in')};
   el.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;hz(6);$$('[data-a]',el).forEach(x=>x.classList.toggle('on',x===b));list(b.dataset.a)});list(el.dataset.def)}
 
 /* ---------- ⑤ 댓글 수다방 (사용자 요청으로 제거, 호환 스텁) ---------- */
@@ -240,122 +240,75 @@ function trends(T){
   });
 }
 
-/* ---------- Ⓧ 가로 캐러셀 마우스 드래그 & 엘라스틱 바운스 도우미 ---------- */
+/* ---------- Ⓧ 가로 카드 레일: 마우스 끌기 · 터치 스와이프 · 스냅 복귀 ---------- */
+const CARD_RAILS='.mlrow,.tvrow,.tws,.hs,.sns,.tsnl,.deck,.ctrack,.galr,.lpast';
 function enableElasticCarousel(el){
   if(!el || el._elastic) return;
   el._elastic = true;
-  let isDown = false, isDragging = false, startX = 0, startScroll = 0, moved = 0, velX = 0, lastX = 0, lastT = 0, activePointerId = null;
-  
-  const onPointerDown = e => {
-    if(e.button != null && e.button !== 0) return;
-    if(e.target.closest('canvas, input, textarea, select')) return;
-    isDown = true;
-    isDragging = false;
-    moved = 0;
-    activePointerId = e.pointerId;
-    startX = e.clientX;
-    lastX = e.clientX;
-    lastT = performance.now();
-    startScroll = el.scrollLeft;
-    // 클릭(터치 탭)을 방해하지 않도록 pointerdown 시점에는 캡처하지 않음
-  };
+  el.classList.add('nb-drag-rail');
+  let isDown=false,isDragging=false,startX=0,startY=0,startScroll=0,lastX=0,lastT=0,velX=0,activePointerId=null,blockClicksUntil=0,snapTimer=0;
 
-  const onPointerMove = e => {
-    if(!isDown) return;
-    const now = performance.now();
-    const dt = Math.max(1, now - lastT);
-    const dx = e.clientX - startX;
-    velX = (e.clientX - lastX) / dt;
-    lastX = e.clientX;
-    lastT = now;
-    
-    if(!isDragging && Math.abs(dx) > 6) {
-      isDragging = true;
-      moved = 1;
-      el._dragged = true;
-      el.classList.add('grabbing');
-      el.style.scrollBehavior = 'auto';
-      el.style.scrollSnapType = 'none';
-      try { el.setPointerCapture(activePointerId); } catch(x){}
-    }
-    
-    if(!isDragging) return;
-
-    const maxScroll = Math.max(0, el.scrollWidth - el.clientWidth);
-    let target = startScroll - dx;
-    if(target < 0) {
-      target = target * 0.35;
-    } else if(target > maxScroll) {
-      const over = target - maxScroll;
-      target = maxScroll + over * 0.35;
-    }
-    el.scrollLeft = target;
-  };
-
-  const snapElastic = () => {
-    const maxScroll = Math.max(0, el.scrollWidth - el.clientWidth);
-    const cur = el.scrollLeft;
-    const cards = [...el.children];
-    let best = cur;
-    if(cur <= 0) {
-      best = 0;
-    } else if(cur >= maxScroll) {
-      best = maxScroll;
-    } else {
-      let minDiff = Infinity;
-      cards.forEach(c => {
-        const diff = Math.abs(c.offsetLeft - cur);
-        if(diff < minDiff) { minDiff = diff; best = c.offsetLeft; }
-      });
-      if(Math.abs(velX) > 0.35) {
-        const bias = velX < 0 ? 180 : -180;
-        let mDiff = Infinity, mBest = cur + bias;
-        cards.forEach(c => {
-          const d = Math.abs(c.offsetLeft - (cur + bias));
-          if(d < mDiff) { mDiff = d; mBest = c.offsetLeft; }
-        });
-        best = Math.max(0, Math.min(maxScroll, mBest));
-      }
-    }
-
-    el.style.transition = 'scroll-left 0.4s cubic-bezier(0.25, 1.35, 0.5, 1)';
-    el.scrollLeft = best;
-    setTimeout(() => {
-      el.style.transition = '';
-      el.style.scrollSnapType = '';
-    }, 420);
-  };
-
-  const onPointerUp = e => {
-    if(!isDown) return;
-    isDown = false;
+  const reset=()=>{
+    isDown=false;isDragging=false;activePointerId=null;
     el.classList.remove('grabbing');
-    if(isDragging) {
-      try { el.releasePointerCapture(e.pointerId); } catch(x){}
-      snapElastic();
-      setTimeout(() => {
-        moved = 0;
-        el._dragged = false;
-        isDragging = false;
-      }, 80);
-    } else {
-      moved = 0;
-      el._dragged = false;
-      isDragging = false;
-    }
   };
-
-  el.addEventListener('pointerdown', onPointerDown);
-  el.addEventListener('pointermove', onPointerMove);
-  el.addEventListener('pointerup', onPointerUp);
-  el.addEventListener('pointercancel', onPointerUp);
-
-  el.addEventListener('click', e => {
-    if(moved) {
-      e.preventDefault();
-      e.stopPropagation();
+  const snapToCard=()=>{
+    const max=Math.max(0,el.scrollWidth-el.clientWidth),cur=el.scrollLeft,cards=[...el.children];
+    if(!cards.length||!max)return;
+    const target=cur+(Math.abs(velX)>.35?(velX<0?Math.min(el.clientWidth*.55,180):-Math.min(el.clientWidth*.55,180)):0);
+    let best=0,diff=Infinity;
+    cards.forEach(card=>{const next=Math.min(max,Math.max(0,card.offsetLeft));const d=Math.abs(next-target);if(d<diff){diff=d;best=next}});
+    const previousSnap=el.style.scrollSnapType;
+    el.style.scrollSnapType='none';
+    if(el.scrollTo)el.scrollTo({left:best,behavior:RM()?'auto':'smooth'});else el.scrollLeft=best;
+    clearTimeout(snapTimer);
+    snapTimer=setTimeout(()=>{el.style.scrollSnapType=previousSnap},460);
+  };
+  const onPointerDown=e=>{
+    if(e.isPrimary===false||(e.button!=null&&e.button!==0)||el.scrollWidth<=el.clientWidth+1)return;
+    if(e.target.closest('canvas,input,textarea,select,button,summary,label,[data-no-drag]'))return;
+    isDown=true;isDragging=false;activePointerId=e.pointerId;
+    startX=lastX=e.clientX;startY=e.clientY;startScroll=el.scrollLeft;lastT=performance.now();velX=0;
+  };
+  const onPointerMove=e=>{
+    if(!isDown||e.pointerId!==activePointerId)return;
+    const dx=e.clientX-startX,dy=e.clientY-startY;
+    if(!isDragging){
+      if(Math.max(Math.abs(dx),Math.abs(dy))<6)return;
+      if(Math.abs(dy)>Math.abs(dx)){reset();return}
+      isDragging=true;el._dragged=true;el.classList.add('grabbing');
+      try{el.setPointerCapture(activePointerId)}catch(x){}
     }
-  }, true);
+    e.preventDefault();
+    const now=performance.now();velX=(e.clientX-lastX)/Math.max(1,now-lastT);lastX=e.clientX;lastT=now;
+    const max=Math.max(0,el.scrollWidth-el.clientWidth);
+    el.scrollLeft=Math.max(0,Math.min(max,startScroll-dx));
+  };
+  const onPointerEnd=e=>{
+    if(!isDown||(e.pointerId!=null&&e.pointerId!==activePointerId))return;
+    const dragged=isDragging,id=activePointerId;
+    reset();
+    try{el.releasePointerCapture(id)}catch(x){}
+    if(!dragged)return;
+    blockClicksUntil=performance.now()+420;
+    snapToCard();
+    setTimeout(()=>{el._dragged=false},430);
+  };
+  el.addEventListener('pointerdown',onPointerDown);
+  el.addEventListener('pointermove',onPointerMove,{passive:false});
+  el.addEventListener('pointerup',onPointerEnd);
+  el.addEventListener('pointercancel',onPointerEnd);
+  el.addEventListener('lostpointercapture',onPointerEnd);
+  el.addEventListener('dragstart',e=>e.preventDefault());
+  el.addEventListener('click',e=>{
+    if(performance.now()<blockClicksUntil){e.preventDefault();e.stopPropagation()}
+  },true);
+}
+function bindHorizontalCarousels(root=document){
+  const rails=[];
+  if(root.matches?.(CARD_RAILS))rails.push(root);
+  rails.push(...(root.querySelectorAll?.(CARD_RAILS)||[]));
+  rails.forEach(enableElasticCarousel);
 }
 
 /* ---------- ⑨ 꾹 눌러 쉬운 말(이슈 상세 요약) ---------- */
@@ -378,18 +331,18 @@ function sinceHTML(I){let prev=null;try{prev=JSON.parse(sessionStorage.getItem('
   SS('nb-visit',{t:Date.now(),ids:I.slice(0,10).map(i=>i.id)});
   if(!prev||!prev.t||Date.now()-prev.t<20*60e3)return'';const N=I.slice(0,10).filter(i=>!(prev.ids||[]).includes(i.id));if(!N.length)return'';
   const h=Math.round((Date.now()-prev.t)/36e5),ago=h<1?'조금 전':h<24?h+'시간 전':Math.round(h/24)+'일 전';
-  return`<section class="tsn card"><div class="tsnh"><b>${ago} 다녀가신 뒤</b><span>새로 오른 이슈 <em>${N.length}</em>개</span></div><div class="tsnl">${N.map(i=>`<a href="issue/${i.id}"><span ${pic(i)?bg(pic(i)):''}></span><b>${esc(short(i.title,30))}</b><i>${i.rank}위</i></a>`).join('')}</div></section>`}
+  return`<section class="tsn card"><div class="tsnh"><b>${ago} 다녀가신 뒤</b><span>새로 오른 이슈 <em>${N.length}</em>개</span></div><div class="tsnl">${N.map(i=>`<a href="issue/${i.id}"><span ${pic(i)?bg(pic(i)):''}></span><b>${esc(i.title)}</b><i>${i.rank}위</i></a>`).join('')}</div></section>`}
 
 /* ---------- ⑪ 한눈 온도(실험실 B2): 숫자 하나만 크게, 눌러야 자세히 ---------- */
 function heatHTML(I){const L=I.filter(i=>lk(i)+dl(i)>10).sort((a,b)=>(OP(b).total||0)-(OP(a).total||0)).slice(0,5);if(!L.length)return'';
   return sec('한눈 온도','Mood meter','<span class="more">댓글 공감 비율 · 눌러서 자세히</span>','chat')+`<div class="tht">${L.map(i=>{const o=OP(i),t=lk(i)+dl(i)||1,p=Math.round(lk(i)/t*100),A=o.ages||{},am=Math.max(1,...Object.values(A)),S=((i.ai||{}).opinion||{}).stances||[],q=(o.top||[]).map(x=>x.text||'').find(x=>x.length>=6&&!BAD.test(x.replace(/\s/g,'')));
-    return`<details class="card"><summary><span class="thp" ${pic(i)?bg(pic(i)):''}></span><div><b>${esc(short(i.title,34))}</b><i class="thb"><i style="width:${p}%"></i></i></div><strong class="${p>=60?'w':p<=45?'c':''}">${p}<small>%</small></strong></summary>
+    return`<details class="card"><summary><span class="thp" ${pic(i)?bg(pic(i)):''}></span><div><b>${esc(i.title)}</b><i class="thb"><i style="width:${p}%"></i></i></div><strong class="${p>=60?'w':p<=45?'c':''}">${p}<small>%</small></strong></summary>
      <div class="thd">${S.map(x=>`<p><span>${esc(x.label)}</span><b>${x.share}%</b></p>`).join('')}${Object.keys(A).length?`<div class="tha">${Object.entries(A).map(([k,v])=>`<span><i style="height:${v/am*100}%"></i><small>${k}대</small></span>`).join('')}</div>`:''}${q&&!SAD.test(i.title)?`<q>${esc(short(q,90))}</q>`:''}<a href="issue/${i.id}#comments">댓글 ${nf(o.total)}개 보기 ${NBI('arrow-right')}</a></div></details>`}).join('')}</div>`}
 
 /* ---------- ⑫ 숫자 카드(실험실 C5): 큰 숫자만 보고 맞혀 보기, 누르면 뒤집힘 ---------- */
 function numsHTML(I){const re=/(\d[\d,.]*)\s?(%|％|조\s?원|억\s?원|만\s?원|조|억|만|원|달러|명|배|곳|개월|건)/,C=[];
   I.forEach(i=>{for(const t of[i.title,...(i.summary||[])]){const m=re.exec(t||'');if(m&&!/^(19|20)\d\d$/.test(m[1])){C.push({i,n:m[1],u:m[2].replace(/\s/g,''),t});break}}});if(C.length<2)return'';
-  return sec('숫자 카드','Guess the number','<span class="more">무슨 숫자일까요? 눌러서 뒤집기</span>','chart')+`<div class="tnc">${C.slice(0,6).map(c=>`<button type="button" class="tfl" style="--c:${cc(c.i.category)}"><div class="f"><b>${esc(c.n)}<small>${esc(c.u)}</small></b><span>무슨 숫자일까요?</span></div><div class="k"><p>${esc(short(c.t,64))}</p><a href="issue/${c.i.id}">기사 보기 ›</a></div></button>`).join('')}</div>`}
+  return sec('숫자 카드','Guess the number','<span class="more">무슨 숫자일까요? 눌러서 뒤집기</span>','chart')+`<div class="tnc">${C.slice(0,6).map(c=>`<button type="button" class="tfl" style="--c:${cc(c.i.category)}"><div class="f"><b>${esc(c.n)}<small>${esc(c.u)}</small></b><span>무슨 숫자일까요?</span></div><div class="k"><p>${esc(c.t)}</p><a href="issue/${c.i.id}">기사 보기 ›</a></div></button>`).join('')}</div>`}
 function nums(){$$('.tnc').forEach(el=>el.addEventListener('click',e=>{if(e.target.closest('a'))return;const b=e.target.closest('.tfl');if(b){hz(10);b.classList.toggle('on')}}))}
 
 /* ---------- ⑬ 형광펜 단어장(실험실 C6): 어려운 말을 누르면 기사 속 그 말에 형광펜 + 쉬운 뜻 ---------- */
@@ -430,5 +383,5 @@ function search(){let o=$('.nbs');if(o){$('input',o).focus();return}
   empty();setTimeout(()=>q.focus(),30)}
 document.addEventListener('keydown',e=>{if((e.key==='k'&&(e.metaKey||e.ctrlKey))&&!/INPUT|TEXTAREA/.test((document.activeElement||{}).tagName||'')){e.preventDefault();search()}});
 
-window.NBT={sinceHTML,heatHTML,numsHTML,nums,hiliteHTML,hilite,search,mosaicHTML,mosaic,voteHTML,vote,debateHTML,debate,agesHTML,ages,chatHTML,chat,facesHTML,wordsHTML,words,trendsHTML,trends,easyHold,hz,enableElasticCarousel};
+window.NBT={sinceHTML,heatHTML,numsHTML,nums,hiliteHTML,hilite,search,mosaicHTML,mosaic,voteHTML,vote,debateHTML,debate,agesHTML,ages,chatHTML,chat,facesHTML,wordsHTML,words,trendsHTML,trends,easyHold,hz,enableElasticCarousel,bindHorizontalCarousels};
 })();

@@ -33,14 +33,14 @@ main{max-width:1240px;margin:0 auto;padding:16px}
 .lead .in{position:relative;padding:22px}
 .lead .no{font-family:var(--serif);font-size:5.25rem;line-height:.8;font-weight:900;color:var(--acc);text-shadow:0 6px 30px rgba(0,0,0,.4)}
 .lead h1{font-family:var(--serif);font-size:clamp(1.3rem,5.8vw,2.4rem);line-height:1.28;letter-spacing:-.8px;margin:12px 0 10px}
-.lead p{font-size:0.90625rem;color:#d9ddeb;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.lead p{font-size:0.90625rem;color:#d9ddeb;line-height:1.5}
 .lead .meta{display:flex;gap:8px;align-items:center;margin-top:14px;font-size:0.78125rem;color:#aeb5cf;flex-wrap:wrap}
 .meter{display:flex;gap:10px;margin-top:14px}.meter div{flex:1;background:rgba(255,255,255,.1);border-radius:12px;padding:8px 10px}.meter b{display:block;font-size:1.1875rem}.meter span{font-size:0.6875rem;color:#aeb5cf}
 .side{display:grid;gap:12px}
 .mini{display:flex;gap:12px;padding:12px;align-items:center}
 .mini .n{font-family:var(--serif);font-size:1.875rem;font-weight:900;color:var(--ink);width:30px;flex:none;text-align:center}
 .mini .th{width:84px;height:84px;border-radius:12px;background:#dfe3ee center/cover;flex:none}
-.mini h3{font-size:0.9375rem;line-height:1.38;letter-spacing:-.3px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.mini h3{font-size:0.9375rem;line-height:1.38;letter-spacing:-.3px;overflow-wrap:anywhere}
 .mini .m{font-size:0.71875rem;color:var(--mute);margin-top:4px}
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
