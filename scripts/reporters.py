@@ -165,18 +165,25 @@ def collect(issues, root, now, fetch, limit=8):
 
     for reporter in reporters:
         reporter.pop('seed_report', None)
-    # GitHub Actions에서는 일부 포털 기사가 시간 초과될 수 있다. 마지막으로 검증된
-    # 공개 프로필 묶음을 보관해 두면, 기사 수집은 계속하면서 기자 데스크만 비는 일을 막는다.
+    # GitHub Actions에서는 포털 기사 응답이 한꺼번에 늦어질 수 있다. 당일 일부만
+    # 읽혀도 마지막으로 검증된 공개 프로필을 나머지 칸에 합쳐 기자 데스크가 비거나
+    # 한두 명으로 줄어들지 않게 한다. 새로 읽힌 기자가 항상 우선이다.
     cache_path = os.path.join(root, 'reporters.json')
-    if reporters:
-        json.dump(reporters, open(cache_path, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
-        return reporters
     try:
         cached = json.load(open(cache_path, encoding='utf-8'))
-        if isinstance(cached, list) and cached:
-            return [r for r in cached if r.get('id') and r.get('name') and r.get('reports')][:limit]
+        cached = [r for r in cached if r.get('id') and r.get('name') and r.get('reports')] if isinstance(cached, list) else []
     except Exception:
-        pass
+        cached = []
+    seen = {r.get('id') for r in reporters}
+    for reporter in cached:
+        if len(reporters) >= limit:
+            break
+        if reporter.get('id') not in seen:
+            reporters.append(reporter)
+            seen.add(reporter.get('id'))
+    if reporters:
+        json.dump(reporters, open(cache_path, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+        return reporters[:limit]
     fallback_path = os.path.join(os.path.dirname(__file__), 'reporters_fallback.json')
     try:
         if os.path.exists(fallback_path):

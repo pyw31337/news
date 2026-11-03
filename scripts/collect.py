@@ -11,7 +11,7 @@ from reporters import collect as collect_reporters
 KST = dt.timezone(dt.timedelta(hours=9))
 NOW = dt.datetime.now(KST)
 ROOT = os.path.join(os.path.dirname(__file__), '..', 'data')
-UA = {'User-Agent': 'Mozilla/5.0 (NewsBoard; +https://pyw31337.github.io/news/)'}
+UA = {'User-Agent': 'Mozilla/5.0 (NewsBoard; +https://pyw31337.github.io/news/)', 'Accept-Language': 'ko-KR,ko;q=0.9,en;q=0.7'}
 kiwi = Kiwi()
 
 
@@ -42,17 +42,25 @@ def get(url, enc=None, timeout=20):
     DIAG['fail'][_dhost(url)] += 1; DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S', time.gmtime(time.time() + 32400)), host=_dhost(url), path=_up.urlsplit(url).path[:60], err=str(err)[:120])); print('fail', url[:120], err); return ''
 
 # 기자 프로필은 보조 정보다. 포털 응답이 늦어도 메인 뉴스 수집을 기다리게 하지 않는다.
-def reporter_get(url, enc='utf-8', timeout=5):
-    try:
-        r = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout)
-        b = r.read()
-        DIAG['ok'][_dhost(url)] += 1
-        return b.decode(enc or 'utf-8', 'replace')
-    except Exception as e:
-        DIAG['fail'][_dhost(url)] += 1
-        DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S', time.gmtime(time.time() + 32400)), host=_dhost(url), path=_up.urlsplit(url).path[:60], err=('reporter: ' + str(e))[:120]))
-        print('reporter fail', url[:100], str(e)[:80])
-        return ''
+def reporter_get(url, enc='utf-8', timeout=8):
+    # 프로필은 보조 정보지만, 5초 단발 요청은 GitHub 러너에서 네이버 기사 카드가
+    # 전부 비는 원인이 됐다. 짧은 재시도 한 번만 허용해 메인 수집을 지연시키지 않는다.
+    err = None
+    for attempt in range(2):
+        try:
+            headers = dict(UA, Referer='https://news.naver.com/')
+            r = urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=timeout)
+            b = r.read()
+            DIAG['ok'][_dhost(url)] += 1
+            return b.decode(enc or 'utf-8', 'replace')
+        except Exception as e:
+            err = e
+            if attempt == 0:
+                time.sleep(.6)
+    DIAG['fail'][_dhost(url)] += 1
+    DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S', time.gmtime(time.time() + 32400)), host=_dhost(url), path=_up.urlsplit(url).path[:60], err=('reporter: ' + str(err))[:120]))
+    print('reporter fail', url[:100], str(err)[:80])
+    return ''
 
 def un(s):
     s = re.sub(r'<!\[CDATA\[(.*?)\]\]>', r'\1', s or '', flags=re.S)

@@ -54,7 +54,7 @@
 }
 /* 가로 카드 레일: 세로 스크롤은 유지하고, 가로는 마우스·터치 모두 같은 방식으로 넘긴다. */
 .nb-drag-rail{cursor:grab;touch-action:pan-y;overscroll-behavior-x:contain;user-select:none;-webkit-user-select:none}
-.nb-drag-rail.grabbing{cursor:grabbing}.nb-drag-rail img{-webkit-user-drag:none}
+.nb-drag-rail.grabbing{cursor:grabbing;will-change:scroll-position}.nb-drag-rail img{-webkit-user-drag:none}
 /* ④ 내 또래는? (하얀 배경, 깔끔한 테두리) */
 .tage-card, #tage.card{background:var(--card,#ffffff)!important;border:1px solid rgba(0,0,0,.06)!important;border-radius:var(--r-l,18px)!important;box-shadow:var(--sh)!important;padding:16px;opacity:1!important}
 .tagc{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}

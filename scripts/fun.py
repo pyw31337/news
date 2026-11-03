@@ -3,7 +3,7 @@
 - 만화: 이슈 사실(AI 요약·리드)에서 대본 생성. AI 대본은 숫자·길이·화자 검증을 통과할 때만 사용, 아니면 규칙 대본.
   그림은 브라우저에서 SVG(마스코트 누리·보리)로 그려 이미지 생성 비용 0.
 - 카드뉴스: 기준금리(ECOS 시계열) + 여러 날 이어진 이슈(흐름 DB)로 5~8장 덱."""
-import json, os, re, sys, random, hashlib, subprocess, urllib.request, urllib.error, time, datetime
+import json, os, re, sys, random, hashlib, subprocess, urllib.request, urllib.error, time, datetime, glob
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import ai_usage, llm_quota
 sys.path.insert(0, os.path.dirname(__file__))
 from glossary import G as GL
@@ -18,6 +18,35 @@ OLD = J('fun.json', {}) or {}
 if not D.get('issues'): print('fun: no today.json'); sys.exit(0)
 DATE = D.get('date') or datetime.date.today().isoformat()
 rnd = random.Random(DATE)
+WORD_TARGET = 10
+
+def recent_words(days=14):
+    """최근 학습판과 겹치는 답을 제외해 '오늘의' 단어가 매일 새롭게 바뀌게 한다."""
+    seen = set()
+    try:
+        cutoff = (datetime.date.fromisoformat(DATE) - datetime.timedelta(days=days)).isoformat()
+        for path in glob.glob(P('fun/20??-??-??.json')):
+            day = os.path.basename(path)[:10]
+            if not (cutoff <= day < DATE):
+                continue
+            item = json.load(open(path, encoding='utf-8'))
+            seen.update(str(x.get('word', '')).strip() for x in (item.get('quiz') or {}).get('words', []))
+    except Exception:
+        pass
+    return seen
+
+def same_day_words():
+    """30분마다 다시 수집돼도 그날의 열 문제는 바뀌지 않게 첫 생성본을 고정한다."""
+    if OLD.get('date') != DATE:
+        return []
+    out, used = [], set()
+    for w in (OLD.get('quiz') or {}).get('words', []):
+        word, mean = str(w.get('word', '')).strip(), str(w.get('mean', '')).strip()
+        if word and mean and word not in used:
+            out.append(w); used.add(word)
+        if len(out) == WORD_TARGET:
+            return out
+    return []
 # ---------- AI(선택): Gemini 무료 등급 또는 맥미니 nbai. 하루 1~2회, 결과 캐시 ----------
 ENDPOINT = os.environ.get('LLM_ENDPOINT') or 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions'
 TOKEN = os.environ.get('LLM_API_KEY') or ''
@@ -83,22 +112,59 @@ def examples(w, n=2):
 iss_of = {i['id']: i for i in D['issues']}
 
 # ---------- 1) 오늘의 단어 퀴즈 ----------
-WORDS = []
-for w, (mean, field, rel) in GL.items():
-    ex = examples(w, 3)
-    if ex: WORDS.append(dict(word=w, mean=mean, field=field, related=rel, examples=ex, src='사전', hits=sum(w in a['title'] for a in ARTS)))
-have = {w['word'] for w in WORDS}
-# 위키 단어는 AI가 '어려운 말'로 고른 것만(뜻이 기사 맥락과 다를 수 있는 일상어는 제외)
-for w in D.get('words') or []:
-    if w['word'] in have or not w.get('ai'): continue
-    ex = examples(w['word'], 3)
-    if ex and w.get('easy'): WORDS.append(dict(word=w['word'], mean=w['easy'].rstrip('.'), field='오늘의 말', related=[], examples=ex, src='위키백과', hits=w.get('count', 1), url=(w.get('wiki') or {}).get('url', '')))
-WORDS.sort(key=lambda x: -x['hits'])
-WORDS = WORDS[:8]
-if len(WORDS) < 5:  # 오늘 기사에 사전 단어가 적으면 기본 뉴스 용어로 채움(예문 없음)
-    for w in ['기소', '기준금리', '탄핵', '공시', '환율', '영장', '고발', '추경']:
-        if len(WORDS) >= 6: break
-        if w not in {x['word'] for x in WORDS}: m, f, r = GL[w]; WORDS.append(dict(word=w, mean=m, field=f, related=r, examples=[], src='사전', hits=0))
+# 매일 정확히 10개. 최근 14일 답·같은 기사·같은 분야 쏠림을 피하고, 사전 정의가
+# 있는 말만 답으로 삼는다. 하루 첫 생성 결과는 다음 회차에서도 그대로 유지한다.
+WORDS = same_day_words()
+if not WORDS:
+    blocked = recent_words()
+    pool = []
+    for w, (mean, field, rel) in GL.items():
+        ex = examples(w, 3)
+        if len(w) < 2 or not mean or w in blocked:
+            continue
+        pool.append(dict(word=w, mean=mean, field=field, related=rel, examples=ex, src='사전', hits=sum(w in a['title'] for a in ARTS)))
+    have = {w['word'] for w in pool}
+    # 위키 단어는 AI가 '어려운 말'로 고른 것만(뜻이 기사 맥락과 다를 수 있는 일상어는 제외)
+    for w in D.get('words') or []:
+        word = str(w.get('word', '')).strip()
+        if word in have or word in blocked or not w.get('ai') or not w.get('easy'):
+            continue
+        ex = examples(word, 3)
+        if ex:
+            pool.append(dict(word=word, mean=w['easy'].rstrip('.'), field='오늘의 말', related=[], examples=ex, src='위키백과', hits=w.get('count', 1), url=(w.get('wiki') or {}).get('url', '')))
+            have.add(word)
+    pool.sort(key=lambda x: (-x['hits'], bool(x['examples']) is False, x['word']))
+    used_words, used_issues, field_n = set(), set(), {}
+    def pick(strict=True):
+        if len(WORDS) >= WORD_TARGET:
+            return
+        for w in pool:
+            if len(WORDS) >= WORD_TARGET:
+                return
+            issue = (w.get('examples') or [{}])[0].get('issue', '')
+            if w['word'] in used_words:
+                continue
+            if strict and issue and issue in used_issues:
+                continue
+            if strict and field_n.get(w.get('field'), 0) >= 2:
+                continue
+            WORDS.append(w); used_words.add(w['word']); field_n[w.get('field')] = field_n.get(w.get('field'), 0) + 1
+            if issue: used_issues.add(issue)
+            if len(WORDS) == WORD_TARGET:
+                return
+    pick(True); pick(False)
+    # 오늘 제목에서 열 개가 안 나오면 검수된 시사 사전으로만 채운다. 빈칸형은
+    # 예문이 있을 때만 만들므로 출처 없는 단어가 정답 문맥을 꾸며 내지는 않는다.
+    for word in list(GL):
+        if len(WORDS) == WORD_TARGET:
+            break
+        if word in used_words or word in blocked:
+            continue
+        mean, field, rel = GL[word]
+        WORDS.append(dict(word=word, mean=mean, field=field, related=rel, examples=[], src='검수 사전', hits=0))
+        used_words.add(word)
+    if len(WORDS) != WORD_TARGET:
+        raise RuntimeError('fun: not enough reviewed words (%d/%d)' % (len(WORDS), WORD_TARGET))
 # AI 해설(선택): 왜 오늘 나왔는지 한 문장. 뜻 자체는 검수 사전을 따름
 ai = llm('wx:' + hk(DATE, *[w['word'] for w in WORDS]),
          '아래 단어마다 오늘 기사 제목을 근거로 "오늘 뉴스에서는 ~" 형식의 한 문장(40자 안팎) 맥락 설명과, 헷갈리기 쉬운 점 한 문장을 써라. 뜻은 주어진 뜻을 바꾸지 마라.\n' +
@@ -106,7 +172,8 @@ ai = llm('wx:' + hk(DATE, *[w['word'] for w in WORDS]),
          '\nJSON: {"words":[{"word":"단어","context":"...","tip":"..."}]}', 1200)
 am = {x.get('word'): x for x in (ai or {}).get('words', []) if isinstance(x, dict)}
 for w in WORDS:
-    a = am.get(w['word']) or {}
+    # 기사 예문이 없는 보충 단어에는 그날의 맥락을 AI가 추측해 붙이지 않는다.
+    a = (am.get(w['word']) or {}) if w['examples'] else {}
     ok = lambda s: isinstance(s, str) and 5 < len(s) < 120 and not (set(re.findall(r'\d+', s)) - set(re.findall(r'\d+', ' '.join(e['title'] for e in w['examples']) + w['mean'])))
     w['context'] = a.get('context') if ok(a.get('context')) else (('오늘 “%s” 같은 기사에 나왔어요.' % w['examples'][0]['title'][:40]) if w['examples'] else '뉴스에 자주 나오는 말이에요.')
     w['tip'] = a.get('tip') if ok(a.get('tip')) else ''
@@ -130,13 +197,22 @@ for n, w in enumerate(WORDS):
     else:
         t = w['examples'][0]['title']; ch = [w['word']] + [o['word'] for o in other(w, 3)]; rnd.shuffle(ch)
         Q.append(dict(kind='blank', word=w['word'], q='오늘 기사 제목의 빈칸에 들어갈 말은?', quote=t.replace(w['word'], '〔　　〕', 1), choices=ch, answer=ch.index(w['word'])))
-# 검증: 정답이 사전 뜻과 일치하는지 다시 확인
+# 검증: 정답·선택지·빈칸 원문을 다시 대조한다. 이 검사에 통과한 10문제만 배포한다.
 mean_of = {w['word']: w['mean'] for w in WORDS}
+level_for = {'ox': '기초', 'mc': '보통', 'blank': '심화'}
 for q in Q:
     if q['kind'] == 'ox': assert (q['q'].split('“')[1].rsplit('”', 1)[0] == mean_of[q['word']]) == q['answer']
     elif q['kind'] == 'mc': assert q['choices'][q['answer']] == mean_of[q['word']] and len(set(q['choices'])) == len(q['choices'])
     else: assert q['choices'][q['answer']] == q['word']
-quiz = dict(date=DATE, words=WORDS, questions=Q)
+    # 문제 형식 자체를 기준으로 난도를 고정한다: 뜻 참/거짓 → 선택지 판별 →
+    # 실제 기사 문맥 빈칸. 단어 길이처럼 내용과 무관한 값으로 난도를 매기지 않는다.
+    q['level'] = level_for[q['kind']]
+    q['reviewed'] = True
+assert len(Q) == WORD_TARGET and len({q['word'] for q in Q}) == WORD_TARGET
+quiz = dict(date=DATE, words=WORDS, questions=Q,
+            quality=dict(target=WORD_TARGET, delivered=len(Q), reviewed=len(Q),
+                         levels={k: sum(q['level'] == k for q in Q) for k in ('기초', '보통', '심화')},
+                         rules=['검수 사전 정의 대조', '선택지 중복 검사', '빈칸 원문 포함 검사', '최근 14일 답 제외']))
 
 # ---------- 2) 설명 만화(4컷) ----------
 def sents(t):

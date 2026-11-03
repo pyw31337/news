@@ -172,10 +172,12 @@ function mainLearn(){if(!F||!document.getElementById('app'))return;const ap=docu
   const s=document.createElement('section');s.className='ml';
   const cover=x=>{
     if(x.k==='c'){
-      return`<a class="mld card" href="comic/${x.c.id}"><div class="mld-thumb"${x.c.img?` style="background-image:url('${E(x.c.img)}')"`:''}><span class="mlt">${T('4컷 만화','4-panel comic')}</span>${!x.c.img?`<svg viewBox="-160 -50 320 100" aria-hidden="true"><g transform="translate(-70,0)">${bori((x.c.panels[0]||{}).mood||'curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg>`:''}</div><div class="mld-body"><b>${E(x.c.title)}</b><small>${E(x.c.desc||((x.c.panels[0]||{}).lines||[{}])[0].text||'')}</small></div></a>`;
+      const copy=x.c.desc||((x.c.panels[0]||{}).lines||[{}])[0].text||'', comicImg=x.c.image||x.c.img||'';
+      return`<a class="mld comic card" href="comic/${x.c.id}"><div class="mld-thumb"${comicImg?` style="background-image:url('${E(AB(comicImg))}')"`:''}><span class="mlt">${T('4컷 만화','4-panel comic')}</span>${!comicImg?`<svg viewBox="-160 -50 320 100" aria-hidden="true"><g transform="translate(-70,0)">${bori((x.c.panels[0]||{}).mood||'curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg>`:''}</div><div class="mld-body"><span class="mld-kicker">${E(x.c.category||T('오늘의 이슈','Today'))} · ${T('4장으로 읽기','4 panels')}</span><b>${E(x.c.title)}</b><small>${E(copy)}</small><span class="mld-go">${T('만화로 보기','Open comic')} ${NBI('arrow-right')}</span></div></a>`;
     }
     const thumb=x.d.img||(x.d.cards[0]&&x.d.cards[0].img);
-    return`<a class="mld card" href="cards/${x.d.id}"><div class="mld-thumb"${thumb?` style="background-image:url('${E(thumb)}')"`:''}><span class="mlt">${T('카드뉴스','Card news')} · ${x.d.cards.length}${T('장',' cards')}</span></div><div class="mld-body"><b>${E(x.d.title)}</b><small>${E(x.d.tag||'')}</small></div></a>`;
+    const intro=(x.d.cards||[])[0]?.text||x.d.tag||'';
+    return`<a class="mld deck card" href="cards/${x.d.id}"><div class="mld-thumb"${thumb?` style="background-image:url('${E(thumb)}')"`:''}><span class="mlt">${T('카드뉴스','Card news')} · ${x.d.cards.length}${T('장',' cards')}</span>${!thumb?`<span class="mld-monogram">${E(skEmo(x.d))}</span>`:''}</div><div class="mld-body"><span class="mld-kicker">${E(x.d.tag||T('뉴스 흐름','News brief'))}</span><b>${E(x.d.title)}</b><small>${E(intro)}</small><span class="mld-go">${T('카드 넘겨보기','Open cards')} ${NBI('arrow-right')}</span></div></a>`;
   };
   s.innerHTML=`${sec(T('카드뉴스','Card News & Comics'),'Comics & Card News',`<a class="more" href="learn">${T('전체 보기','See all')} ${NBI('arrow-right')}</a>`,'boom')}
    <div class="mldk"><div class="mlrow">${items.map(cover).join('')}</div></div>`;
