@@ -54,7 +54,9 @@ def reporter_get(url, enc='utf-8', timeout=5):
         print('reporter fail', url[:100], str(e)[:80])
         return ''
 
-def un(s): return html.unescape(re.sub(r'<[^>]+>', '', html.unescape(s or ''))).strip()
+def un(s):
+    s = re.sub(r'<!\[CDATA\[(.*?)\]\]>', r'\1', s or '', flags=re.S)
+    return html.unescape(re.sub(r'<[^>]+>', '', html.unescape(s))).strip()
 
 STOP = set('속보 단독 종합 영상 사진 포토 오늘 내일 어제 이번 지난 올해 내년 관련 논란 가능 정부 기자 뉴스 대한 위해 이후 결과 상황 공개 발표 확인 사실 문제 우리 국내 최근 전망 이유 계획 진행 예정 경우 모습 시간 직접 첫 가운데 뒤 전 후 중 등 것 수 명 개 년 월 일 원 억 조 만 위 씨 측 곳 말 때 번 건 날 분 회 차 앞 속 간 내 외 대 이 그 저 더 또 왜 다 한 두 세 글 화 독자 종목 인터뷰 칼럼 사설 시론 기고'.split())
 
@@ -125,20 +127,94 @@ def trends():
         out.append(dict(keyword=kw, traffic=tr, traffic_n=int(re.sub(r'\D', '', tr) or 0), news=news, img=pic))
     return out
 
-with ThreadPoolExecutor(10) as ex:
-    fr = [ex.submit(naver_ranking, 'popularDay'), ex.submit(naver_ranking, 'popularMemo'), ex.submit(trends)] + \
-         [ex.submit(gnews, section_url(p), k) for k, p in SECTIONS.items()]
-    nv_pop, nv_memo, tr = fr[0].result(), fr[1].result(), fr[2].result()
-    gn = [a for f in fr[3:] for a in f.result()]
-print('naver', len(nv_pop), len(nv_memo), 'google', len(gn), 'trends', len(tr))
+def daum_section(path, label):
+    url = 'https://news.daum.net%s' % path
+    t = get(url, 'utf-8', 12)
+    if not t: return []
+    arts, seen = [], set()
+    matches = re.findall(r'<a[^>]+href="(https://v\.daum\.net/v/\d+)"[^>]*>(.*?)</a>', t, re.S)
+    for link, inner in matches:
+        if link in seen: continue
+        m_tit = re.search(r'class="tit_txt">([^<]+)</strong>', inner) or re.search(r'>([^<]{10,})<', inner)
+        if not m_tit: continue
+        title = un(m_tit.group(1))
+        m_press = re.search(r'class="txt_info">([^<]+)</span>', inner)
+        press = un(m_press.group(1)) if m_press else '다음뉴스'
+        m_img = re.search(r'src="([^"]+)"|fname=([^&"]+)', inner)
+        img = ''
+        if m_img:
+            img = m_img.group(2) or m_img.group(1)
+            img = urllib.parse.unquote(img)
+            if img.startswith('//'): img = 'https:' + img
+        seen.add(link)
+        arts.append(dict(src='daum', section=label, title=title, url=link, press=press, img=img, related=1))
+    return arts
+
+DAUM_SECTIONS = [
+    ('', '주요'),
+    ('/news/politics', '정치'),
+    ('/news/economy', '경제'),
+    ('/news/society', '사회'),
+    ('/news/culture', '문화'),
+    ('/news/tech', 'IT·과학'),
+    ('/news/climate', '환경'),
+    ('/news/world', '세계')
+]
+
+MEDIA_RSS = [
+    ('연합뉴스', 'https://www.yna.co.kr/rss/news.xml', '주요'),
+    ('SBS뉴스', 'https://news.sbs.co.kr/news/SectionRssFeed.do?sectionId=01&plink=RSSREADER', '주요'),
+    ('매일경제', 'https://www.mk.co.kr/rss/40300001/', '경제'),
+    ('동아일보', 'https://rss.donga.com/total.xml', '주요')
+]
+
+def media_rss(press_name, url, label):
+    t = get(url, 'utf-8', 12)
+    if not t: return []
+    arts = []
+    for it in re.findall(r'<item>(.*?)</item>', t, re.S):
+        title = un((re.search(r'<title>(.*?)</title>', it, re.S) or [0, ''])[1])
+        link = un((re.search(r'<link>(.*?)</link>', it) or [0, ''])[1])
+        if not title or not link: continue
+        img = ''
+        m_enc = re.search(r'url=["\']([^"\']+\.(?:jpg|png|webp|jpeg)[^"\']*)', it, re.I)
+        if m_enc: img = un(m_enc.group(1))
+        pd = (re.search(r'<pubDate>(.*?)</pubDate>', it) or [0, ''])[1]
+        try: ts = email.utils.parsedate_to_datetime(pd).astimezone(KST).isoformat()
+        except Exception: ts = ''
+        arts.append(dict(src='rss', section=label, title=title, url=link, press=press_name, img=img, time=ts, related=1))
+    return arts
+
+def portal_name(src):
+    if src.startswith('naver'): return '네이버'
+    if src.startswith('daum'): return '다음'
+    if src.startswith('rss'): return '언론사RSS'
+    return '구글뉴스'
+
+with ThreadPoolExecutor(12) as ex:
+    fr_nv = [ex.submit(naver_ranking, 'popularDay'), ex.submit(naver_ranking, 'popularMemo')]
+    fr_tr = ex.submit(trends)
+    fr_gn = [ex.submit(gnews, section_url(p), k) for k, p in SECTIONS.items()]
+    fr_dm = [ex.submit(daum_section, p, k) for p, k in DAUM_SECTIONS]
+    fr_rss = [ex.submit(media_rss, name, u, k) for name, u, k in MEDIA_RSS]
+
+    nv_pop, nv_memo = fr_nv[0].result(), fr_nv[1].result()
+    tr = fr_tr.result()
+    gn = [a for f in fr_gn for a in f.result()]
+    dm = [a for f in fr_dm for a in f.result()]
+    mr = [a for f in fr_rss for a in f.result()]
+
+print('naver', len(nv_pop), len(nv_memo), 'daum', len(dm), 'rss', len(mr), 'google', len(gn), 'trends', len(tr))
 
 # ---------- 2. 분석: 명사/개체 추출 + 이슈 클러스터링 ----------
-arts = nv_pop + nv_memo + gn
+arts = nv_pop + nv_memo + dm + mr + gn
 for a in arts:
     ns = nouns(a['title']); a['nouns'] = list(dict.fromkeys(n for n, _ in ns)); a['proper'] = list(dict.fromkeys(n for n, p in ns if p))
-    if a['src'] == 'naver_popularDay': a['w'] = 6 - min(a['rank'], 5) + 1
-    elif a['src'] == 'naver_popularMemo': a['w'] = (6 - min(a['rank'], 5)) * 0.8 + 1
-    else: a['w'] = 1.5 + math.log1p(a['related']) * 1.5
+    if a['src'] == 'naver_popularDay': a['w'] = 6 - min(a.get('rank', 5), 5) + 1
+    elif a['src'] == 'naver_popularMemo': a['w'] = (6 - min(a.get('rank', 5), 5)) * 0.8 + 1
+    elif a['src'] == 'daum': a['w'] = 3.0
+    elif a['src'] == 'rss': a['w'] = 2.2
+    else: a['w'] = 1.5 + math.log1p(a.get('related', 1)) * 1.5
 
 df = collections.Counter(n for a in arts for n in set(a['nouns']))
 N = len(arts)
@@ -167,9 +243,11 @@ for c in clusters:
     c['proper'] = [k for k, _ in collections.Counter(n for a in A for n in a['proper']).most_common(5)]
     c['trend'] = [k for k in trend_kw if any(k.replace(' ', '') in a['title'].replace(' ', '') for a in A)]
     if c['trend']: c['score'] *= 1.25
-    srcs = set(a['src'].split('_')[0] for a in A)
+    srcs = set(portal_name(a['src']) for a in A)
     c['portals'] = sorted(srcs)
+    if len(srcs) >= 2: c['score'] *= (1.0 + 0.12 * (len(srcs) - 1))
 clusters.sort(key=lambda c: -c['score'])
+
 
 def og(url):
     t = get(url, 'utf-8', 12)
@@ -192,29 +270,55 @@ def categorize(A, sect):
     return c
 CAT_HINT = {'정치': '정치', '경제': '경제', '세계': '세계', 'IT·과학': 'IT', '연예': '연예', '스포츠': '스포츠'}
 choices = []
-for c in clusters[:40]:
+for c in clusters[:60]:
     A = c['arts']
-    nv = [a for a in A if a['src'].startswith('naver')]
-    rep = min(nv, key=lambda a: a['rank']) if nv else A[0]
+    # 대표 기사: 썸네일 이미지가 있는 기사를 최우선으로 선정
+    with_img = [a for a in A if a.get('img')]
+    nv_img = [a for a in with_img if a['src'].startswith('naver')]
+    if nv_img:
+        rep = min(nv_img, key=lambda a: a.get('rank', 99))
+    elif with_img:
+        rep = with_img[0]
+    else:
+        nv_all = [a for a in A if a['src'].startswith('naver')]
+        rep = min(nv_all, key=lambda a: a.get('rank', 99)) if nv_all else A[0]
     sect = collections.Counter(a.get('section') for a in A if a.get('section') not in (None, '주요'))
     c.update(rep=rep, category=categorize(A, sect), cat_conf=categorize.last[0], cat_why=categorize.last[1])
     choices.append(c)
-# 첫 화면은 한 카테고리가 독점하지 않도록 2개→3개 상한으로 채운다.
+
+# 첫 화면은 한 카테고리가 독점하지 않도록 2개→3개 상한으로 채우되 썸네일 검증된 이슈 우선
 top = []; picked = set(); bycat = collections.Counter()
 for cap in (2, 3, 10):
     for c in choices:
         if id(c) in picked or bycat[c['category']] >= cap: continue
+        # 썸네일 확보 가능 여부 엄격 검증: 대표기사 이미지, 클러스터 내 타 기사 이미지, 또는 네이버 기사
+        has_img = bool(c['rep'].get('img') or any(a.get('img') for a in c['arts']) or 'naver.com' in c['rep'].get('url', ''))
+        if not has_img: continue
         top.append(c); picked.add(id(c)); bycat[c['category']] += 1
         if len(top) >= 10: break
     if len(top) >= 10: break
+if len(top) < 10:
+    for c in choices:
+        if id(c) not in picked:
+            top.append(c); picked.add(id(c))
+            if len(top) >= 10: break
+
 with ThreadPoolExecutor(10) as ex:
     reps = [c['rep'] for c in top]
-    # 요약(og 설명)은 네이버 기사에서만 받을 수 있어, 대표 기사가 네이버가 아니면 같은 묶음의 네이버 기사에서 받음(사진은 대표 기사 것만)
+    # 요약(og 설명) 및 썸네일 보강: 네이버/다음/RSS/구글 기사 연계
     def og_of(c):
         r = c['rep']
-        if 'naver' in r['url']: return og(r['url'])
-        alt = next((a['url'] for a in c['arts'] if 'naver' in a['url']), None)
-        return (og(alt)[0], '') if alt else ('', '')
+        alt_img = next((a.get('img') for a in c['arts'] if a.get('img')), '')
+        if 'naver' in r['url']:
+            d, im = og(r['url'])
+            return (d, im or r.get('img') or alt_img)
+        if r.get('img'):
+            alt_nv = next((a['url'] for a in c['arts'] if 'naver' in a['url']), None)
+            d = og(alt_nv)[0] if alt_nv else ''
+            return (d, r['img'])
+        alt_nv = next((a['url'] for a in c['arts'] if 'naver' in a['url']), None)
+        d = og(alt_nv)[0] if alt_nv else ''
+        return (d, alt_img)
     ogs = list(ex.map(og_of, top))
 def summarize(text):
     s = [x.strip() for x in re.split(r'(?<=다\.)\s+', text.strip()) if x.strip()]
@@ -227,11 +331,15 @@ for i, (c, (d, im)) in enumerate(zip(top, ogs)):
     for a in sorted(c['arts'], key=lambda a: -a['w']):
         if a['url'] in seen: continue
         seen.add(a['url']); sources.append(dict(title=a['title'], url=a['url'], press=a['press'],
-                                                portal='네이버' if a['src'].startswith('naver') else '구글뉴스',
-                                                kind={'naver_popularDay': '많이 본', 'naver_popularMemo': '댓글 많은'}.get(a['src'], a.get('section', ''))))
+                                                portal=portal_name(a['src']),
+                                                kind={'naver_popularDay': '많이 본', 'naver_popularMemo': '댓글 많은', 'daum': '포털 주요', 'rss': '언론사 헤드라인'}.get(a['src'], a.get('section', ''))))
     alt_img = next((a.get('img') for a in c['arts'] if a.get('img')), '')
+    final_img = im or rep.get('img', '') or alt_img
+    if not final_img and rep.get('url') and not rep['url'].startswith('https://news.google.com'):
+        _, scr_img = og(rep['url'])
+        if scr_img: final_img = scr_img
     issues.append(dict(rank=i + 1, id='i' + __import__('hashlib').md5(rep['url'].encode()).hexdigest()[:8], title=rep['title'], url=rep['url'], press=rep['press'],
-                       image=im or rep.get('img', '') or alt_img, summary=summarize(d) if d else [], lead=d,
+                       image=final_img, summary=summarize(d) if d else [], lead=d,
                        keywords=c['keywords'], entities=c['proper'], category=c['category'], cat_conf=c['cat_conf'], cat_why=c['cat_why'], trend=c['trend'],
                        score=round(c['score'], 1), mentions=len(c['arts']), presses=len(set(a['press'] for a in c['arts'])),
                        sources=sources[:12]))
@@ -348,17 +456,20 @@ except Exception as ex:
     print('entity media', ex)
 
 data = dict(updated=NOW.isoformat(), date=today,
-            stats=dict(naver=len(nv_pop) + len(nv_memo), google=len(gn), trends=len(tr), clusters=len(clusters), reporters=len(reporters),
+            stats=dict(naver=len(nv_pop) + len(nv_memo), daum=len(dm), rss=len(mr), google=len(gn), trends=len(tr), clusters=len(clusters), reporters=len(reporters),
                        presses=len(set(a['press'] for a in arts))),
             issues=issues, entities=entities, reporters=reporters, trends=tr[:20],
             links=[dict(a=a, b=b, n=n) for (a, b), n in co.most_common(60)],
-            sections={k: [dict(title=a['title'], url=a['url'], press=a['press'], time=a['time'], related=a['related'])
-                          for a in gn if a['section'] == k][:12] for k in SECTIONS})
+            sections={k: [dict(title=a['title'], url=a['url'], press=a['press'], time=a.get('time') or '', related=a.get('related', 1), img=a.get('img') or '')
+                          for a in (gn + dm + mr) if a.get('section') == k][:12] for k in SECTIONS})
 # TOP 10 밖 상위 이슈(11~40위)도 아카이브용으로 가볍게 남김
 top_ids = {id(c) for c in top}; more = []
 for c in clusters[:60]:
     if id(c) in top_ids or len(more) >= 30: continue
-    A = c['arts']; nv = [a for a in A if a['src'].startswith('naver')]; rep = min(nv, key=lambda a: a['rank']) if nv else A[0]
+    A = c['arts']
+    nv = [a for a in A if a.get('img') and a['src'].startswith('naver')]
+    if not nv: nv = [a for a in A if a['src'].startswith('naver')]
+    rep = min(nv, key=lambda a: a.get('rank', 99)) if nv else (next((a for a in A if a.get('img')), A[0]))
     more.append(dict(id='i' + __import__('hashlib').md5(rep['url'].encode()).hexdigest()[:8], title=rep['title'], url=rep['url'], press=rep['press'],
                      presses=len({a['press'] for a in A}), mentions=len(A), score=round(c.get('score', 0), 1), keywords=c.get('keywords', [])[:5]))
 data['more'] = more
