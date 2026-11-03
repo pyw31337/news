@@ -103,13 +103,27 @@ function Deck(root,onTop){
   st.forEach((p,i)=>Object.assign(p,target(i)));paint();onTop(0);
 }
 window.nbDeck=function(root){
-  const rows=[...document.querySelectorAll('.side .srow')];
+  const side=root.closest('.hero')?.querySelector('.side');
+  const rows=[...(side?.querySelectorAll('.srow')||[])];
   // 덱을 넘길수록 이미 본 카드(01…현재)는 아래 목록에서 차례로 사라지고, 남은 순위 중 앞의 5개가 채워짐(넓은 화면, 왼쪽 카드와 높이를 맞춤). 이전 카드로 돌아가면 사라졌던 줄이 다시 펼쳐지며 아래로 밀림
   const RC=[...root.querySelectorAll('.rcard')];let far=0;
+  // 마지막 카드에서는 비어 있는 순위 목록 대신 완독 메시지를 보여 준다.
+  // 효과는 DOM 조각만 잠깐 만들고 제거해, 외부 라이브러리·캔버스 없이 가볍게 유지한다.
+  const done=document.createElement('section');done.className='deckdone';done.hidden=true;done.setAttribute('role','status');done.setAttribute('aria-live','polite');
+  done.innerHTML=`<span class="deckdone-emoji" aria-hidden="true">🎉</span><strong>오늘의 기사 <b>${RC.length}개</b>를 전부 읽으셨어요!</strong><p>오늘의 흐름을 빠짐없이 살펴보셨네요. 내일의 이슈도 함께 만나보세요.</p><button type="button" class="deckdone-replay">처음부터 다시 보기</button>`;
+  side?.append(done);
+  function fireworks(){if(RM())return;const fx=document.createElement('div');fx.className='deck-fireworks';fx.setAttribute('aria-hidden','true');
+    const colors=['#ff4d2e','#ffb020','#7a4dff','#2f6bff','#11a683','#fff'];
+    [[22,28],[56,18],[82,35]].forEach(([x,y],burst)=>{for(let i=0;i<12;i++){const p=document.createElement('i'),a=Math.PI*2*i/12+(burst%2*.22),d=34+(i%4)*8;
+      p.style.setProperty('--x',x+'%');p.style.setProperty('--y',y+'%');p.style.setProperty('--dx',(Math.cos(a)*d).toFixed(1)+'px');p.style.setProperty('--dy',(Math.sin(a)*d+18).toFixed(1)+'px');p.style.setProperty('--r',(i%2?180:90)+'deg');p.style.setProperty('--c',colors[(i+burst*2)%colors.length]);p.style.setProperty('--delay',(burst*.08+(i%3)*.025)+'s');fx.append(p)}});
+    root.classList.remove('celebrating');void root.offsetWidth;root.classList.add('celebrating');
+    root.append(fx);setTimeout(()=>{fx.remove();root.classList.remove('celebrating')},1500)}
   /* 목록 갱신은 카드가 거의 자리 잡은 뒤(0.28초)에: 카드 움직임과 목록 접힘(레이아웃 계산)이 같은 프레임에 겹치지 않게 */
-  let prevT=0,lt=null;const sync=t=>{const seen=new Set(RC.slice(0,t+1).map(c=>c.dataset.id));let k=0;rows.forEach(r=>{const g=seen.has(r.dataset.id);r.classList.toggle('gone',g);r.classList.toggle('cap',!g&&++k>5)})};
-  Deck(root,t=>{if(t!==prevT){prevT=t;dispatchEvent(new CustomEvent('nb:decktop',{detail:{t}}))}far=Math.max(far,t);clearTimeout(lt);if(!lt&&t===0){sync(0);lt=-1}else lt=setTimeout(()=>sync(t),280);
-    if(t===RC.length-1&&RC.length>=5)dispatchEvent(new CustomEvent('nb:deckall',{detail:{n:RC.length}}))});
+  let prevT=0,lt=null;const sync=t=>{const seen=new Set(RC.slice(0,t+1).map(c=>c.dataset.id));let k=0;rows.forEach(r=>{const g=seen.has(r.dataset.id);r.classList.toggle('gone',g);r.classList.toggle('cap',!g&&++k>5)});
+    const complete=t===RC.length-1&&RC.length>1;root.classList.toggle('complete',complete);done.hidden=!complete};
+  Deck(root,t=>{const enteredLast=t===RC.length-1&&t!==prevT;if(t!==prevT){prevT=t;dispatchEvent(new CustomEvent('nb:decktop',{detail:{t}}))}far=Math.max(far,t);clearTimeout(lt);if(!lt&&t===0){sync(0);lt=-1}else lt=setTimeout(()=>sync(t),280);
+    if(enteredLast){fireworks();if(RC.length>=5)dispatchEvent(new CustomEvent('nb:deckall',{detail:{n:RC.length}}))}});
+  done.querySelector('.deckdone-replay').addEventListener('click',()=>root._go?.(0,800));
   // 선명하지 않은 대표 사진은 글자 카드로
   root.querySelectorAll('.rcard').forEach(async c=>{const u=c.dataset.img,box=c.querySelector('.rimg');if(!u){c.classList.add('txt');return}
     const bw=box.clientWidth||c.clientWidth||360,bh=box.clientHeight||bw*.56;
