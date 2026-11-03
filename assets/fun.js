@@ -163,20 +163,23 @@ function homeBlock(){if(!F)return'';const c=F.comics[0],d=F.decks[0],done=(L.day
   <div class="lhome"><a class="lh quiz" href="quiz"><span class="lhi">${NBI('help-hexagon-f')}</span><b>${T('오늘의 단어 퀴즈','Today’s word quiz')}</b><small>${F.quiz.questions.length}${T('문제',' questions')} · ${NBI('flame-f')}${streakNow()}${T('일 연속','-day streak')} · Lv.${lvl(L.xp)}</small><em>${done?T('완료! 다시 풀기','Done! Again'):T('3분 도전 →','3-minute challenge →')}</em></a>
   ${c?`<a class="lh comic" href="comic/${c.id}"><svg viewBox="-160 -50 320 100"><g transform="translate(-70,0)">${bori('curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg><b>${E(c.title)}</b><small>${T('4컷 설명 만화','4-panel explainer')}</small></a>`:''}
   ${d?`<a class="lh deck" href="cards/${d.id}" ${d.cards[0].img?`style="--im:url('${E(AB(d.cards[0].img))}')"`:''}><span class="lhi">🗂️</span><b>${E(d.title)}</b><small>${T(`카드뉴스 ${d.cards.length}장`,`Card news · ${d.cards.length} cards`)}</small></a>`:''}</div>`}
-/* 메인 화면 '카드뉴스 · 4컷 만화': 생성형 고품질 이미지 썸네일 지원 및 단어 퀴즈 제거 */
+/* 메인 화면 '카드뉴스 · 4컷 만화': 동일 규격 카드 통합 및 고품질 썸네일 지원 */
 function mainLearn(){if(!F||!document.getElementById('app'))return;const ap=document.getElementById('app');if(ap.querySelector('.ml'))return;
   const hero=ap.querySelector('.hero');if(!hero)return;
   const items=[...(F.comics||[]).map(c=>({k:'c',c})),...(F.decks||[]).map(d=>({k:'d',d}))];if(!items.length)return;
   const s=document.createElement('section');s.className='ml';
-  const cover=x=>x.k==='c'?`<a class="mld comic" href="comic/${x.c.id}"><span class="mlt">${T('4컷 만화','4-panel comic')}</span>${x.c.img?`<div class="mld-thumb" style="background-image:url('${E(x.c.img)}')"></div>`:`<svg viewBox="-160 -50 320 100" aria-hidden="true"><g transform="translate(-70,0)">${bori((x.c.panels[0]||{}).mood||'curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg>`}<b>${E(x.c.title)}</b><small>${E(x.c.desc||((x.c.panels[0]||{}).lines||[{}])[0].text||'')}</small></a>`
-    :(K=>`<a class="mld deck ${K.cls}" href="cards/${x.d.id}" ${K.st}>${K.top}<span class="mlt">`)(skin(x.d))+`${T('카드뉴스','Card news')} · ${x.d.cards.length}${T('장',' cards')}</span>${(x.d.img||(x.d.cards[0]&&x.d.cards[0].img))?`<div class="mld-thumb" style="background-image:url('${E(x.d.img||x.d.cards[0].img)}')"></div>`:''}<b>${E(x.d.title)}</b><small>${E(x.d.tag||'')}</small></a>`;
+  const cover=x=>{
+    if(x.k==='c'){
+      return`<a class="mld card" href="comic/${x.c.id}"><div class="mld-thumb"${x.c.img?` style="background-image:url('${E(x.c.img)}')"`:''}><span class="mlt">${T('4컷 만화','4-panel comic')}</span>${!x.c.img?`<svg viewBox="-160 -50 320 100" aria-hidden="true"><g transform="translate(-70,0)">${bori((x.c.panels[0]||{}).mood||'curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg>`:''}</div><div class="mld-body"><b>${E(x.c.title)}</b><small>${E(x.c.desc||((x.c.panels[0]||{}).lines||[{}])[0].text||'')}</small></div></a>`;
+    }
+    const thumb=x.d.img||(x.d.cards[0]&&x.d.cards[0].img);
+    return`<a class="mld card" href="cards/${x.d.id}"><div class="mld-thumb"${thumb?` style="background-image:url('${E(thumb)}')"`:''}><span class="mlt">${T('카드뉴스','Card news')} · ${x.d.cards.length}${T('장',' cards')}</span></div><div class="mld-body"><b>${E(x.d.title)}</b><small>${E(x.d.tag||'')}</small></div></a>`;
+  };
   s.innerHTML=`${sec(T('카드뉴스 · 4컷 만화','Card News & Comics'),'Comics & Card News',`<a class="more" href="learn">${T('전체 보기','See all')} ${NBI('arrow-right')}</a>`,'boom')}
    <div class="mldk"><div class="mlrow">${items.map(cover).join('')}</div></div>`;
-  const anchor=ap.querySelector('.gm-today')||hero;anchor.insertAdjacentElement('afterend',s);
+  hero.insertAdjacentElement('afterend',s);
   const row=s.querySelector('.mlrow'); if(row&&window.NBT?.enableElasticCarousel) NBT.enableElasticCarousel(row)}
 window.nbLearnMain=()=>{if(F)mainLearn();else loadF().then(mainLearn)};
-// 오늘의 도전(game.js)이 나중에 들어오면 그 아래로 옮김
-new MutationObserver(()=>{const ap=document.getElementById('app'),m=ap&&ap.querySelector('.ml'),g=ap&&ap.querySelector('.gm-today');if(m&&g&&g.nextElementSibling!==m)g.insertAdjacentElement('afterend',m)}).observe(document.getElementById('app')||document.body,{childList:true});
 addEventListener('nb:region-changed',()=>{const m=document.querySelector('.ml');if(m)m.remove()});
 const FR=['learn','quiz','comic','cards'];
 const _today=window.today;

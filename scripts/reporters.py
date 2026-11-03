@@ -96,8 +96,9 @@ def collect(issues, root, now, fetch, limit=8):
                 continue
             seen_urls.add(url)
             seeds.append((issue.get('id', ''), source))
-            break
-        if len(seeds) >= limit:
+            if len(seeds) >= limit * 2:
+                break
+        if len(seeds) >= limit * 2:
             break
 
     def article_page(seed):
@@ -172,8 +173,16 @@ def collect(issues, root, now, fetch, limit=8):
         return reporters
     try:
         cached = json.load(open(cache_path, encoding='utf-8'))
-        if isinstance(cached, list):
+        if isinstance(cached, list) and cached:
             return [r for r in cached if r.get('id') and r.get('name') and r.get('reports')][:limit]
+    except Exception:
+        pass
+    fallback_path = os.path.join(os.path.dirname(__file__), 'reporters_fallback.json')
+    try:
+        if os.path.exists(fallback_path):
+            fb = json.load(open(fallback_path, encoding='utf-8'))
+            if isinstance(fb, list) and fb:
+                return fb[:limit]
     except Exception:
         pass
     return []

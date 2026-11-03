@@ -63,7 +63,7 @@ function voteCardRes(i, myChoice){
     <div class="tvm"><b>${pct}%</b><span>가 나와 같은 생각이에요</span></div>
     <div class="tdsplit tvsplit">${S.map((x,j)=>`<i class="s${j} ${j===myChoice?'me':''}" style="--w:${Math.max(10,Math.round((x.share||0)/tot*100))}%"><em>${Math.round((x.share||0)/tot*100)}%</em></i>`).join('')}</div>
     <div class="tdl tvl">${S.map((x,j)=>`<div class="s${j} ${j===myChoice?'me':''}"><div class="tvlh"><b>${esc(x.label)}</b>${j===myChoice?'<span class="mepill">내 선택</span>':''}</div>${x.desc?`<p>${esc(short(x.desc,72))}</p>`:''}</div>`).join('')}</div>
-    ${A&&Object.keys(A).length?`<div class="tdage tvage"><small>댓글 연령별 참여 분포</small><div>${Object.entries(A).map(([a,v])=>`<span><i style="--h:${Math.round(v/am*100)}%"></i><b>${v}%</b><small>${a}대</small></span>`).join('')}</div></div>`:''}
+    ${A&&Object.keys(A).length?`<div class="tdage tvage"><small>댓글 연령별 참여 분포</small><div class="tvag">${Object.entries(A).map(([a,v])=>`<span><i style="--h:${Math.round(v/am*100)}%"></i><b>${v}%</b><small>${a}대</small></span>`).join('')}</div></div>`:''}
     <div class="tvmeta"><span>${ic('chat')}댓글 ${nf(OP(i).total||(lk(i)+dl(i))||120)}개 기반</span><a href="issue/${i.id}#comments">토론 참여 ›</a></div>
   </div>`;
 }
@@ -81,7 +81,8 @@ function voteHTML(I){
   const VT = LS('nb-v2-vote', {});
   return sec('나라면?','What would you say?','<span class="more">내 생각을 고르면 의견 분포가 열려요</span>','chat')+
     `<div class="tvrow grab-carousel" id="tvote">${P.map(i=>`<div class="tvc card" data-id="${i.id}">
-      <a class="tvp" href="issue/${i.id}" ${pic(i)?bg(pic(i)):''}><span class="cat ${i.category}">${esc(i.category)}</span></a>
+      <a class="tvp" href="issue/${i.id}" ${pic(i)?bg(pic(i)):''}></a>
+      <div class="tv-cat"><span class="cat ${i.category}">${esc(i.category)}</span></div>
       <div class="tvb-title"><a href="issue/${i.id}"><b>${esc(short(i.title,48))}</b></a></div>
       <div class="tvq">${VT[i.id]!=null ? voteCardRes(i, VT[i.id]) : voteCardAsk(i)}</div>
     </div>`).join('')}</div>`;
@@ -109,7 +110,7 @@ function debate(I){}
 /* ---------- ④ 내 또래는? ---------- */
 function agesHTML(I){const P=I.filter(i=>OP(i).ages),ages=['20','30','40','50','60'].filter(a=>P.some(i=>OP(i).ages[a]>0));if(!ages.length)return'';
   const my=String((typeof S!=='undefined'?S:{}).age||'').slice(0,2),def=ages.includes(my)?my:ages.includes('40')?'40':ages[0];
-  return sec('내 또래는?','By age','<span class="more">댓글 단 사람들의 나이로 봤어요</span>','user')+`<div class="tag card" id="tage" data-def="${def}"><div class="tagc">${ages.map(a=>`<button type="button" data-a="${a}" class="${a===def?'on':''}">${a}대</button>`).join('')}</div><div class="tagl"></div></div>`}
+  return sec('내 또래는?','By age','<span class="more">댓글 단 사람들의 나이로 봤어요</span>','user')+`<div class="tage-card card" id="tage" data-def="${def}"><div class="tagc">${ages.map(a=>`<button type="button" data-a="${a}" class="${a===def?'on':''}">${a}대</button>`).join('')}</div><div class="tagl"></div></div>`}
 function ages(I){const el=$('#tage');if(!el)return;const P=I.filter(i=>OP(i).ages);
   const list=a=>{$('.tagl',el).innerHTML=P.filter(i=>OP(i).ages[a]>0).sort((x,y)=>OP(y).ages[a]-OP(x).ages[a]).slice(0,5).map(i=>`<a href="issue/${i.id}"><span class="tagp" ${pic(i)?bg(pic(i)):''}></span><b>${esc(short(i.title,40))}</b><i style="--w:${OP(i).ages[a]}%"></i><em>${OP(i).ages[a]}%</em></a>`).join('');const l=$('.tagl',el);l.classList.remove('in');void l.offsetWidth;l.classList.add('in')};
   el.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;hz(6);$$('[data-a]',el).forEach(x=>x.classList.toggle('on',x===b));list(b.dataset.a)});list(el.dataset.def)}
@@ -123,9 +124,22 @@ function chat(){}
 function facesHTML(E){return''}
 
 /* ---------- ⑦ 오늘의 단어 스크래치 ---------- */
-function wordsHTML(W){if(!W.length)return'';
+function wordsHTML(W){if(!W||!W.length)return'';
+  // 중복 주제/기사(예: 동일 회사/헤드라인) 제거
+  const seenHeadlines = new Set();
+  const diverseW = [];
+  for(const w of W){
+    if(!w || !w.word) continue;
+    const ex = (w.examples||[]).find(x=>(x.title||'').includes(w.word)) || (w.examples||[])[0] || {};
+    const key = (ex.title||'').replace(/[^\w가-힣]/g,'').slice(0,10);
+    if(key && seenHeadlines.has(key)) continue;
+    if(key) seenHeadlines.add(key);
+    diverseW.push(w);
+    if(diverseW.length >= 6) break;
+  }
+  const finalW = diverseW.length >= 3 ? diverseW : W.slice(0, 6);
   return sec('오늘의 단어','Words of the day','<span class="more">긁으면 정답이 나와요</span>','quiz')+
-    `<div class="tws grab-carousel" id="tword-deck">${W.map((w,k)=>{
+    `<div class="tws grab-carousel" id="tword-deck">${finalW.map((w,k)=>{
       const ex=(w.examples||[]).find(x=>(x.title||'').includes(w.word))||(w.examples||[])[0]||{}, t=ex.title||'', has=t.includes(w.word);
       const sq = '□'.repeat(w.word ? w.word.length : 2);
       const blank = has ? esc(t).split(esc(w.word)).join(`<u>${sq}</u>`) : '';
@@ -230,21 +244,20 @@ function trends(T){
 function enableElasticCarousel(el){
   if(!el || el._elastic) return;
   el._elastic = true;
-  let isDown = false, startX = 0, startScroll = 0, moved = 0, velX = 0, lastX = 0, lastT = 0;
+  let isDown = false, isDragging = false, startX = 0, startScroll = 0, moved = 0, velX = 0, lastX = 0, lastT = 0, activePointerId = null;
   
   const onPointerDown = e => {
     if(e.button != null && e.button !== 0) return;
     if(e.target.closest('canvas, input, textarea, select')) return;
     isDown = true;
+    isDragging = false;
     moved = 0;
+    activePointerId = e.pointerId;
     startX = e.clientX;
     lastX = e.clientX;
     lastT = performance.now();
     startScroll = el.scrollLeft;
-    el.classList.add('grabbing');
-    el.style.scrollBehavior = 'auto';
-    el.style.scrollSnapType = 'none';
-    try { el.setPointerCapture(e.pointerId); } catch(x){}
+    // 클릭(터치 탭)을 방해하지 않도록 pointerdown 시점에는 캡처하지 않음
   };
 
   const onPointerMove = e => {
@@ -256,11 +269,18 @@ function enableElasticCarousel(el){
     lastX = e.clientX;
     lastT = now;
     
-    if(Math.abs(dx) > 5) {
+    if(!isDragging && Math.abs(dx) > 6) {
+      isDragging = true;
       moved = 1;
       el._dragged = true;
+      el.classList.add('grabbing');
+      el.style.scrollBehavior = 'auto';
+      el.style.scrollSnapType = 'none';
+      try { el.setPointerCapture(activePointerId); } catch(x){}
     }
     
+    if(!isDragging) return;
+
     const maxScroll = Math.max(0, el.scrollWidth - el.clientWidth);
     let target = startScroll - dx;
     if(target < 0) {
@@ -310,12 +330,19 @@ function enableElasticCarousel(el){
     if(!isDown) return;
     isDown = false;
     el.classList.remove('grabbing');
-    try { el.releasePointerCapture(e.pointerId); } catch(x){}
-    snapElastic();
-    setTimeout(() => {
+    if(isDragging) {
+      try { el.releasePointerCapture(e.pointerId); } catch(x){}
+      snapElastic();
+      setTimeout(() => {
+        moved = 0;
+        el._dragged = false;
+        isDragging = false;
+      }, 80);
+    } else {
       moved = 0;
       el._dragged = false;
-    }, 80);
+      isDragging = false;
+    }
   };
 
   el.addEventListener('pointerdown', onPointerDown);

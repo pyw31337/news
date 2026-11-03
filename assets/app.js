@@ -208,10 +208,12 @@ function today(){
   ${NBT.sinceHTML(I)}
   ${NBT.mosaicHTML(I)}
   ${NBT.voteHTML(I)}
-  ${NBT.trendsHTML(D.trends.slice(0,10))}
+  <div class="trend-age-duo">
+    <div class="duo-col duo-trend">${NBT.trendsHTML(D.trends.slice(0,10))}</div>
+    <div class="duo-col duo-age">${NBT.agesHTML(I)}</div>
+  </div>
   ${NBT.wordsHTML(W)}
   ${NBT.hiliteHTML(I)}
-  ${NBT.agesHTML(I)}
   ${sec('관계로 보는 오늘','Relation map',`<a class="more" href="map">크게 보기 ${NBI('arrow-right')}</a>`,'graph')}
   <div class="card mapwrap mini" id="mapmini"></div>`;
   {const mm=$('#mapmini');if(window.IntersectionObserver){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();if(mm.isConnected)graph(mm,true)}},{rootMargin:'600px 0px'});io.observe(mm)}else graph(mm,true)}
@@ -395,8 +397,17 @@ function timeline(){
 /* ---------- 화제의 인물 ---------- */
 const SUB=[['person','인물','user'],['reporter','기자','press'],['company','기업','coin'],['place','장소','spark'],['inst','기관·단체','news'],['issue','사건·정책','fire']];
 const subtype=e=>e.type==='org'?(/기업|회사|주식회사|그룹|은행|증권|전자|자동차|브랜드|제조|통신사|게임/.test((e.wiki?.desc||'')+(e.wiki?.extract||'').slice(0,60))?'company':'inst'):e.type;
-function why(e){const i=e.issues.map(id=>D.issues.find(x=>x.id===id)).filter(Boolean)[0];const td=e.timeline.filter(x=>Date.now()-new Date(x.t)<864e5).length;
-  return{issue:i,text:i?`‘${i.title}’ 관련`:(e.timeline[0]?`최근: ${e.timeline[0].title}`:''),n:td||e.timeline.length}}
+function why(e){
+  const i=e.issues.map(id=>D.issues.find(x=>x.id===id)).filter(Boolean)[0];
+  const td=e.timeline.filter(x=>Date.now()-new Date(x.t)<864e5).length;
+  let txt = '';
+  if(i){
+    txt = i.cat_why ? `${i.cat_why} · ‘${i.title}’` : `‘${i.title}’ 이슈 관련`;
+  } else if(e.timeline && e.timeline[0]){
+    txt = `최근 보도: ‘${e.timeline[0].title}’`;
+  }
+  return {issue:i, text:txt, n:td||e.timeline.length};
+}
 const reporters=()=>D.reporters||[];
 const reporterById=id=>reporters().find(r=>r.id===id);
 function reporterAvatar(r,cls='rav'){return`<div class="${cls}" ${bg(r.photo)}>${r.photo?'':ic('press')}</div>`}
@@ -415,7 +426,8 @@ function people(){
     if(f==='reporter'){$('#pg').innerHTML=reportersDesk();const rf=$('#pg .repfilters');if(rf)rf.onclick=ev=>{const b=ev.target.closest('button');if(!b)return;rf.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));const q=b.dataset.rf;const list=$('#pg .reporter-list');list.innerHTML=reporters().filter(r=>q==='전체'||reporterTopics(r).includes(q)).map(reporterCard).join('')||'<div class="note">이 분야의 공개 기자 프로필이 아직 없어요.</div>'};return}
     const L=D.entities.filter(e=>subtype(e)===f);
     $('#pg').innerHTML=L.length?`<div class="plist">${L.map(e=>{const yrs={};e.timeline.forEach(x=>{const y=x.t.slice(0,4);if(!yrs[y])yrs[y]=x});const w=why(e);
-    return`<a class="card pcard" href="${eh(e.name)}"><div class="ph">${av(e)}<div><b>${esc(e.name)}</b><small>${esc(e.wiki?.desc||'')}</small></div></div>${w.text?`<p class="why">${esc(w.text)}</p>`:''}${spark(e.daily,300,36)}
+    return`<a class="card pcard" href="${eh(e.name)}"><div class="ph">${av(e)}<div><b>${esc(e.name)}</b><small>${esc(e.wiki?.desc||'')}</small></div></div>${spark(e.daily,300,36)}
+    ${w.text?`<div class="why-box"><span class="why-badge">화제 이유</span><p class="why-desc">${esc(w.text)}</p></div>`:''}
     <ol class="mtl">${Object.entries(yrs).sort((a,b)=>b[0]-a[0]).slice(0,4).map(([y,x])=>`<li><time class="ts">${y}</time><span>${esc(x.title)}</span></li>`).join('')}</ol><span class="ft">${cnt(e.timeline.length,'clock','기록')}타임라인 보기 ${NBI('arrow-right')}</span></a>`}).join('')}</div>`:'<div class="note">오늘은 이 분류에 해당하는 대상이 없어요.</div>'};
   $('#f').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;f=b.dataset.f;$('#f').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));draw()};draw();
 }
@@ -432,37 +444,122 @@ function map(){
 }
 function graph(el,mini){
   /* 결정적(시드) 레이아웃: 화면에 그리기 전에 시뮬레이션을 끝내고 고정 → 튐 없음 */
-  const W=el.clientWidth||360,H=el.clientHeight||460,col={person:'#ff4d2e',place:'#11a683',org:'#7a4dff',event:'#ffb020'};
-  const small=W<500,fs=mini||small?10.5:12;
+  let W=el.clientWidth||360,H=el.clientHeight||460,col={person:'#ff4d2e',place:'#11a683',org:'#7a4dff',event:'#ffb020'};
+  let small=W<500,fs=mini||small?10.5:12;
   const N=[],idx={},E=[];
   const cut=(s,m)=>s.length>m?s.slice(0,m-1)+'…':s;
-  D.entities.forEach(e=>{const media=entityMedia(e);idx[e.name]=N.length;N.push({id:e.name,lab:cut(e.name,small?7:10),t:e.type,r:Math.min(small?17:22,(small?7:8)+Math.sqrt(e.score)/(small?2.2:1.6)),href:eh(e.name),img:media.url,kind:media.kind})});
-  D.issues.filter(vis).forEach(i=>{idx[i.id]=N.length;N.push({id:i.id,lab:cut(i.rank+'위 '+i.keywords.slice(0,2).join('·'),small?8:12),t:'issue',r:small?11:14,href:'issue/'+i.id});i.entities.forEach(n=>{if(n in idx)E.push([idx[i.id],idx[n],3])})});
+  
+  // 모든 엔티티 노드 썸네일 확보 (위키/비주얼 우선, 없으면 관련 이슈 사진 활용)
+  D.entities.forEach(e=>{
+    const media=entityMedia(e);
+    let img=media.url;
+    if(!img){
+      const rel=(e.issues||[]).map(id=>D.issues.find(x=>x.id===id)).filter(Boolean)[0];
+      if(rel && (rel.image || (rel.gallery && rel.gallery[0] && rel.gallery[0].img))){
+        img = rel.image || rel.gallery[0].img;
+      }
+    }
+    idx[e.name]=N.length;
+    N.push({id:e.name,lab:cut(e.name,small?7:10),t:e.type,r:Math.min(small?18:24,(small?8:10)+Math.sqrt(e.score)/(small?2.2:1.6)),href:eh(e.name),img,kind:media.kind});
+  });
+
+  // 모든 이슈 노드 썸네일 확보
+  D.issues.filter(vis).forEach(i=>{
+    idx[i.id]=N.length;
+    const img=i.image || (i.gallery && i.gallery[0] && i.gallery[0].img) || '';
+    N.push({id:i.id,lab:cut(i.rank+'위 '+i.keywords.slice(0,2).join('·'),small?8:12),t:'issue',r:small?13:16,href:'issue/'+i.id,img,kind:'issue'});
+    i.entities.forEach(n=>{if(n in idx)E.push([idx[i.id],idx[n],3])});
+  });
+
   D.links.forEach(l=>{if(l.a in idx&&l.b in idx)E.push([idx[l.a],idx[l.b],l.n])});
-  // 라벨 폭까지 포함한 충돌 반경
-  N.forEach(n=>{n.lw=n.lab.length*fs*.92;n.cr=Math.max(n.r,n.lw/2)+4;n.ch=n.r+fs+6});
-  let seed=0;for(const n of N)for(const c of n.id)seed=(seed*31+c.charCodeAt(0))>>>0;
-  const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
-  const pad=small?14:24,cx=W/2,cy=H/2;
-  N.forEach((n,i)=>{const a=i*2.39996+rnd()*.3,rr=Math.sqrt((i+.5)/N.length);n.x=cx+Math.cos(a)*rr*(W/2-pad-n.cr);n.y=cy+Math.sin(a)*rr*(H/2-pad-n.ch);n.vx=n.vy=0});
-  const area=(W-2*pad)*(H-2*pad),k=Math.sqrt(area/Math.max(N.length,1)),L=k*.9;
-  const clamp=n=>{n.x=Math.max(pad+n.cr,Math.min(W-pad-n.cr,n.x));n.y=Math.max(pad+n.r,Math.min(H-pad-n.ch,n.y))};
-  for(let it=0,T=k*.5;it<420;it++,T*=.988){
-    N.forEach(n=>{n.fx=0;n.fy=0});
-    for(let i=0;i<N.length;i++)for(let j=i+1;j<N.length;j++){const a=N[i],b=N[j];let dx=a.x-b.x,dy=a.y-b.y,d=Math.hypot(dx,dy)||.01;if(d>k*1.6)continue;const f=k*k/d/d*.35;a.fx+=dx*f;a.fy+=dy*f;b.fx-=dx*f;b.fy-=dy*f}
-    E.forEach(([i,j])=>{const a=N[i],b=N[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||.01,f=(d-L)/d*.08;a.fx+=dx*f;a.fy+=dy*f;b.fx-=dx*f;b.fy-=dy*f});
-    N.forEach(n=>{n.fx+=(cx-n.x)*.05*Math.min(1,H/W);n.fy+=(cy-n.y)*.05*Math.min(1,W/H);const m=Math.hypot(n.fx,n.fy)||1,s=Math.min(m,Math.max(T,1));n.x+=n.fx/m*s;n.y+=n.fy/m*s;clamp(n)});
-    // 충돌(사각형 근사: 라벨 폭 × 원+라벨 높이)
-    for(let p=0;p<(it>380?6:2);p++)for(let i=0;i<N.length;i++)for(let j=i+1;j<N.length;j++){const a=N[i],b=N[j],ox=a.cr+b.cr-Math.abs(a.x-b.x),oy=(a.ch+b.ch)/1.6-Math.abs(a.y-b.y);if(ox>0&&oy>0){if(ox<oy){const s=(a.x<b.x?-1:1)*ox/2;a.x+=s;b.x-=s}else{const s=(a.y<b.y?-1:1)*oy/2;a.y+=s;b.y-=s}clamp(a);clamp(b)}}
-  }
-  N.forEach(n=>{n.homeX=n.x;n.homeY=n.y;n.vx=0;n.vy=0});
-  const NS='http://www.w3.org/2000/svg';el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="키워드 관계맵"><defs>${N.map((n,i)=>n.img?`<pattern id="p${i}" width="1" height="1" patternContentUnits="objectBoundingBox"><image href="${esc(n.img)}" width="1" height="1" preserveAspectRatio="${n.kind==='logo'||n.kind==='flag'?'xMidYMid meet':'xMidYMid slice'}"/></pattern>`:'').join('')}</defs><g class="vp"><g class="ed"></g><g class="nd"></g></g></svg>${mini?'':`<div class="mapfield" aria-hidden="true"><b>LIVE RELATION FIELD</b><span>인물 · 장소 · 기관</span></div><div class="mapzoom"><button type="button" data-z="1.25" aria-label="확대">+</button><button type="button" data-z="0.8" aria-label="축소">−</button><button type="button" data-z="0" aria-label="원래대로">⟲</button></div>`}`;
+
+  // 고른 분포와 겹침 없는 배치를 위한 레이아웃 연산 함수
+  const solveLayout = (targetW, targetH) => {
+    W = targetW; H = targetH;
+    small = W < 500; fs = mini || small ? 10.5 : 12;
+    const pad = small ? 16 : 28, cx = W / 2, cy = H / 2;
+    N.forEach(n => {
+      n.lw = n.lab.length * fs * 0.95;
+      n.cr = Math.max(n.r + 8, n.lw / 2 + 10);
+      n.ch = n.r + fs + 14;
+    });
+    let seed = 0; for(const n of N) for(const c of n.id) seed = (seed * 31 + c.charCodeAt(0)) >>> 0;
+    const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296 };
+    N.forEach((n, i) => {
+      const a = i * 2.39996 + rnd() * 0.3, rr = Math.sqrt((i + 0.5) / N.length);
+      n.x = cx + Math.cos(a) * rr * (W / 2 - pad - n.cr);
+      n.y = cy + Math.sin(a) * rr * (H / 2 - pad - n.ch);
+      n.vx = n.vy = 0;
+    });
+    const area = (W - 2 * pad) * (H - 2 * pad);
+    const k = Math.sqrt(area / Math.max(N.length, 1));
+    const L = k * 0.95;
+    const clamp = n => {
+      n.x = Math.max(pad + n.cr, Math.min(W - pad - n.cr, n.x));
+      n.y = Math.max(pad + n.r, Math.min(H - pad - n.ch, n.y));
+    };
+
+    for(let it = 0, T = k * 0.55; it < 460; it++, T *= 0.988) {
+      N.forEach(n => { n.fx = 0; n.fy = 0; });
+      for(let i = 0; i < N.length; i++) {
+        for(let j = i + 1; j < N.length; j++) {
+          const a = N[i], b = N[j];
+          let dx = a.x - b.x, dy = a.y - b.y;
+          let d = Math.hypot(dx, dy) || 0.01;
+          const f = (k * k * 1.15) / (d * d + 25);
+          a.fx += dx * f; a.fy += dy * f;
+          b.fx -= dx * f; b.fy -= dy * f;
+        }
+      }
+      E.forEach(([i, j]) => {
+        const a = N[i], b = N[j], dx = b.x - a.x, dy = b.y - a.y, d = Math.hypot(dx, dy) || 0.01;
+        const f = (d - L) / d * 0.07;
+        a.fx += dx * f; a.fy += dy * f;
+        b.fx -= dx * f; b.fy -= dy * f;
+      });
+      N.forEach(n => {
+        n.fx += (cx - n.x) * 0.04 * Math.min(1, H / W);
+        n.fy += (cy - n.y) * 0.04 * Math.min(1, W / H);
+        const m = Math.hypot(n.fx, n.fy) || 1, s = Math.min(m, Math.max(T, 0.8));
+        n.x += n.fx / m * s; n.y += n.fy / m * s;
+        clamp(n);
+      });
+      // 충돌 방지: 사각형 근사 + 라벨 반경
+      for(let p = 0; p < (it > 390 ? 8 : 3); p++) {
+        for(let i = 0; i < N.length; i++) {
+          for(let j = i + 1; j < N.length; j++) {
+            const a = N[i], b = N[j];
+            const ox = (a.cr + b.cr + 12) - Math.abs(a.x - b.x);
+            const oy = (a.ch + b.ch + 10) / 1.5 - Math.abs(a.y - b.y);
+            if(ox > 0 && oy > 0) {
+              if(ox < oy) {
+                const s = (a.x < b.x ? -1 : 1) * ox / 2;
+                a.x += s; b.x -= s;
+              } else {
+                const s = (a.y < b.y ? -1 : 1) * oy / 2;
+                a.y += s; b.y -= s;
+              }
+              clamp(a); clamp(b);
+            }
+          }
+        }
+      }
+    }
+    N.forEach(n => { n.homeX = n.x; n.homeY = n.y; n.vx = 0; n.vy = 0; });
+  };
+  solveLayout(W, H);
+
+  const NS='http://www.w3.org/2000/svg';
+  const defsSvg = N.map((n,i)=>n.img?`<pattern id="p${i}" width="1" height="1" patternContentUnits="objectBoundingBox"><image href="${esc(n.img)}" width="1" height="1" preserveAspectRatio="${n.kind==='logo'||n.kind==='flag'?'xMidYMid meet':'xMidYMid slice'}"/></pattern>`:'').join('');
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="키워드 관계맵"><defs>${defsSvg}</defs><g class="vp"><g class="ed"></g><g class="nd"></g></g></svg>${mini?'':`<div class="mapfield" aria-hidden="true"><b>LIVE RELATION FIELD</b><span>인물 · 장소 · 기관</span></div><div class="mapzoom"><button type="button" data-z="1.25" aria-label="확대">+</button><button type="button" data-z="0.8" aria-label="축소">−</button><button type="button" data-z="0" aria-label="원래대로">⟲</button></div>`}`;
   const svg=el.querySelector('svg'),vp=svg.querySelector('.vp'),ge=svg.querySelector('.ed'),gn=svg.querySelector('.nd');
   const near=N.map(()=>new Set());E.forEach(([a,b])=>{near[a].add(b);near[b].add(a)});
   const lines=E.map(([a,b,w])=>{const l=document.createElementNS(NS,'line');l.setAttribute('stroke','#9ca9c6');l.setAttribute('stroke-opacity','0.45');l.setAttribute('stroke-width',Math.min(1.45,.36+w*.13));l.setAttribute('vector-effect','non-scaling-stroke');ge.appendChild(l);return l});
   const flowLines=E.map(()=>{const fl=document.createElementNS(NS,'line');fl.setAttribute('class','map-flow');fl.setAttribute('vector-effect','non-scaling-stroke');ge.appendChild(fl);return fl});
   const nodes=N.map((n,i)=>{const g=document.createElementNS(NS,'g');g.setAttribute('class','node '+n.t);
-    g.innerHTML=(n.t==='issue'?`<rect x="${-n.r}" y="${-n.r*.7}" width="${n.r*2}" height="${n.r*1.4}" rx="5" fill="#0f1630"/>`:`<circle r="${n.r}" fill="${n.img?`url(#p${i})`:col[n.t]}" stroke="${col[n.t]}" stroke-width="${n.img?'2':'3'}"/>`)+`<text y="${n.r+fs+2}" text-anchor="middle" style="font-size:${fs}px">${esc(n.lab)}</text><title>${esc(n.t==='issue'?n.lab:n.id)}</title>`;
+    const shape = n.t==='issue' ? (n.img?`<rect x="${-n.r*1.15}" y="${-n.r*0.8}" width="${n.r*2.3}" height="${n.r*1.6}" rx="6" fill="url(#p${i})" stroke="#0f1630" stroke-width="2.5"/>`:`<rect x="${-n.r}" y="${-n.r*.7}" width="${n.r*2}" height="${n.r*1.4}" rx="5" fill="#0f1630"/>`)
+      : `<circle r="${n.r}" fill="${n.img?`url(#p${i})`:col[n.t]}" stroke="${col[n.t]}" stroke-width="${n.img?'2.5':'3'}"/>`;
+    g.innerHTML=shape+`<text y="${n.r+fs+2}" text-anchor="middle" style="font-size:${fs}px">${esc(n.lab)}</text><title>${esc(n.t==='issue'?n.lab:n.id)}</title>`;
     gn.appendChild(g);return g});
   const draw=()=>{
     E.forEach(([i,j],k)=>{
@@ -484,16 +581,36 @@ function graph(el,mini){
     N.forEach((n,i)=>{if(n===drag)return;let fx=(n.homeX-n.x)*.09,fy=(n.homeY-n.y)*.09;
       if(hover&&hoverPoint){if(n===hover){fx+=(hoverPoint[0]-n.x)*.065;fy+=(hoverPoint[1]-n.y)*.065}
         else if(near[N.indexOf(hover)]?.has(i)){fx+=(hover.x-n.x)*.012;fy+=(hover.y-n.y)*.012}}
-      n.vx=(n.vx+fx)*.76;n.vy=(n.vy+fy)*.76;n.x+=n.vx;n.y+=n.vy;clamp(n);
+      n.vx=(n.vx+fx)*.76;n.vy=(n.vy+fy)*.76;n.x+=n.vx;n.y+=n.vy;
+      clampNode(n);
       if(Math.abs(n.vx)+Math.abs(n.vy)+Math.abs(n.homeX-n.x)+Math.abs(n.homeY-n.y)>.22)active=true});
     draw();if(active)raf=requestAnimationFrame(tick);else raf=0});};
+  const clampNode=n=>{n.x=Math.max((small?16:28)+n.cr,Math.min(W-(small?16:28)-n.cr,n.x));n.y=Math.max((small?16:28)+n.r,Math.min(H-(small?16:28)-n.ch,n.y))};
+
+  // 브라우저 가로폭 리사이즈 감지 시 새 너비에 맞춰 자동 재배치
+  if(window.ResizeObserver && !el._nbResizeObs){
+    let curW = el.clientWidth;
+    el._nbResizeObs = new ResizeObserver(entries=>{
+      for(const entry of entries){
+        const nw = Math.round(entry.contentRect.width);
+        if(nw > 100 && Math.abs(nw - curW) > 16){
+          curW = nw;
+          solveLayout(nw, el.clientHeight || H);
+          svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+          wake();
+        }
+      }
+    });
+    el._nbResizeObs.observe(el);
+  }
+
   svg.addEventListener('pointerdown',ev=>{const p=pt(ev);P.set(ev.pointerId,p);const g=ev.target.closest('.node');
     if(P.size===2){drag=null;const [a,b]=[...P.values()];pinch={d:Math.hypot(a[0]-b[0],a[1]-b[1]),s,tx,ty,m:[(a[0]+b[0])/2,(a[1]+b[1])/2]};return}
     if(g){drag=N[nodes.indexOf(g)];hover=null;hoverPoint=null;moved=false;start=p;try{svg.setPointerCapture(ev.pointerId)}catch(x){}}
     else if(s>1){pan={p,tx,ty};try{svg.setPointerCapture(ev.pointerId)}catch(x){}}});
   svg.addEventListener('pointermove',ev=>{const p=pt(ev);if(!P.has(ev.pointerId)){if(ev.pointerType==='mouse'&&!drag&&!pan){const g=ev.target.closest('.node');hover=g?N[nodes.indexOf(g)]:nodeAt([(p[0]-tx)/s,(p[1]-ty)/s]);hoverPoint=hover?[(p[0]-tx)/s,(p[1]-ty)/s]:null;wake()}return}P.set(ev.pointerId,p);
     if(pinch&&P.size===2){const [a,b]=[...P.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);const ns=Math.max(1,Math.min(3,pinch.s*d/pinch.d));tx=pinch.m[0]-(pinch.m[0]-pinch.tx)*ns/pinch.s;ty=pinch.m[1]-(pinch.m[1]-pinch.ty)*ns/pinch.s;s=ns;setV();ev.preventDefault();return}
-    if(drag){if(!moved&&Math.hypot(p[0]-start[0],p[1]-start[1])<6)return;moved=true;drag.x=(p[0]-tx)/s;drag.y=(p[1]-ty)/s;clamp(drag);draw();ev.preventDefault()}
+    if(drag){if(!moved&&Math.hypot(p[0]-start[0],p[1]-start[1])<6)return;moved=true;drag.x=(p[0]-tx)/s;drag.y=(p[1]-ty)/s;clampNode(drag);draw();ev.preventDefault()}
     else if(pan){tx=pan.tx+p[0]-pan.p[0];ty=pan.ty+p[1]-pan.p[1];setV()}});
   const end=ev=>{P.delete(ev.pointerId);if(P.size<2)pinch=null;if(ev.type==='pointerup'&&drag&&!moved)go(drag.href);drag=null;pan=null;wake()};
   svg.addEventListener('pointerup',end);svg.addEventListener('pointercancel',end);

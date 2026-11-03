@@ -197,17 +197,8 @@ function gameTiles(){return GAMES.map(g=>`<a class="gm-gt" href="games/#${g[0]}"
 let F=null;const loadF=()=>F?Promise.resolve(F):fetch('data/fun.json?'+Math.floor(Date.now()/6e5)).then(r=>r.ok?r.json():null).then(j=>F=j).catch(()=>null);
 function oxBox(){const Q=(F&&F.quiz&&F.quiz.questions||[]).filter(q=>q.kind==='ox');if(!Q.length)return'';const k=(S.ev.oxi||0)%Q.length,q=Q[k];
   return`<div class="gm-ox" data-k="${k}"><small>${G_('bulb')}오늘의 OX</small><p>${E(q.q)}</p><div class="gm-oxb"><button type="button" data-a="1" class="o">O</button><button type="button" data-a="0" class="x">X</button></div><span class="gm-oxr" aria-live="polite"></span></div>`}
-function todayBlock(){const app=document.getElementById('app');const h=app&&app.querySelector('.hero');if(!h||app.querySelector('.gm-today'))return;
-  loadF().then(()=>{if(app.querySelector('.gm-today'))return;const s=document.createElement('section');s.className='gm-today';
-    s.innerHTML=`<div class="gm-th"><h2><small>Daily challenge</small>${T('오늘의 도전','Today’s challenge')}</h2><a class="more" href="games/#badges">${T('배지 모음','Badges')} ${G_('arrow-right')}</a></div>
-     <div class="gm-tgrid"><div class="gm-tl">${lvCard(1)}${goals()}</div><div class="gm-oxd"></div><div class="gm-games">${gameTiles()}</div></div>`;
-    h.insertAdjacentElement('afterend',s);window.NBOX&&NBOX(s.querySelector('.gm-oxd'),F);
-    s.addEventListener('click',e=>{const b=e.target.closest('.gm-ox [data-a]');if(!b)return;const box=b.closest('.gm-ox'),Q=F.quiz.questions.filter(q=>q.kind==='ox'),q=Q[+box.dataset.k];const ok=(+b.dataset.a===1)===q.answer;
-      box.querySelectorAll('button').forEach(x=>{x.disabled=true;if((+x.dataset.a===1)===q.answer)x.classList.add('right')});if(!ok)b.classList.add('wrong');
-      box.querySelector('.gm-oxr').innerHTML=ok?`<b>정답!</b> ${E(q.word)} 단어를 익혔어요`:`<b>아쉬워요.</b> 정답은 ${q.answer?'O':'X'}예요`;
-      S.ev.oxi=(S.ev.oxi||0)+1;ev('quiz_n',1,{day:'q'});if(ok){S.ev.wordset=S.ev.wordset||{};S.ev.wordset[q.word]=1;ev('quiz_ok',1,{xp:10,why:'오늘의 OX 정답'});ev('words',Object.keys(S.ev.wordset).length,{max:1})}
-      setTimeout(()=>{const n=s.querySelector('.gm-tl');n&&(n.innerHTML=lvCard(1)+goals())},600)})})}
-addEventListener('nb:region-changed',()=>{const o=document.querySelector('.gm-today');if(o){o.remove();setTimeout(todayBlock,0)}});
+function todayBlock(){const o=document.querySelector('.gm-today');if(o)o.remove();return}
+addEventListener('nb:region-changed',()=>{const o=document.querySelector('.gm-today');if(o)o.remove()});
 /* ---------- 내 서재: 커리어·배지 진열장 ---------- */
 function libBlock(){const app=document.getElementById('app');if(!app||app.querySelector('.gm-lib'))return;const h=[...app.querySelectorAll('.sec h2')].find(x=>/내 서재/.test(x.textContent));if(!h)return;
   const s=document.createElement('section');s.className='gm-lib';const got=B.map(b=>[b,(S.badges[b[0]]||{t:-1}).t]).sort((a,b)=>b[1]-a[1]);

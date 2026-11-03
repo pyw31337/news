@@ -275,8 +275,10 @@ section[id^=s-]{scroll-margin-top:120px}
 .galr a{flex:0 0 46%;max-width:240px;scroll-snap-align:start}.galr span{display:block;aspect-ratio:4/3;border-radius:12px;background:#dfe3ee center/cover}.galr small{display:block;font-size:.7rem;color:var(--mute);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media(min-width:768px){.galr a{flex-basis:200px}}
 /* 화제 하위탭 */
-.filters.subt{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.filters.subt button{flex:none;display:inline-flex;align-items:center}
 .why{font-size:.85rem;font-weight:700;color:var(--ink);background:#fff4ec;border-left:3px solid var(--acc);padding:8px 10px;border-radius:8px}
+.why-box{display:flex;align-items:flex-start;gap:6px;background:rgba(255,77,46,.06);border-left:3px solid var(--acc,#ff4d2e);padding:6px 10px;border-radius:4px 8px 8px 4px;margin:8px 0 6px}
+.why-badge{font-size:.65rem;font-weight:900;color:var(--acc,#ff4d2e);white-space:nowrap;padding:1px 5px;background:#fff;border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.why-desc{margin:0;font-size:.74rem;font-weight:700;color:var(--ink);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 /* 엔티티 히어로 */
 .ehero{min-height:220px;display:flex;align-items:flex-end;background:#1d2547 center/cover;color:#fff;position:relative;margin-bottom:16px;overflow:hidden}
 .ehero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,22,48,.2),rgba(15,22,48,.92))}
