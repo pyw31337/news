@@ -44,8 +44,22 @@ const EDITORIAL_STORY={
     [['보리','회복 여부는 어떻게 알 수 있어?'],['누리','화재·마케팅 비용이 줄고 본업 수익성이 회복되는지가 다음 실적의 핵심이야.']]
   ]
 };
+/* 수집 중 같은 날 군집 ID가 바뀌어도, 공유된 선별 만화 URL은 빈 첫 카드로
+   떨어뜨리지 않는다. 다음 수집본의 해당 이슈 페이지로 연결하고 작화·대본은 보존한다. */
+const LEGACY_EDITORIAL_COMICS={
+  c72f07d09:{id:'c72f07d09',issue:'ib0a51b0a',category:'경제',date:'2026-11-04',title:'쿠팡 올해 누적 적자 2조…, 4컷으로 보기',headline:'쿠팡 올해 누적 적자 2조 원 육박…인천 화재 비용만 3,540억 원',panels:[
+    {caption:'누적 적자, 왜 커졌나',mood:'curious',lines:[{who:'보리',text:'쿠팡 적자가 올해 누적 2조 원에 가깝다던데?'},{who:'누리',text:'3분기 손실까지 더해 누적 적자가 커졌다는 보도야.'}]},
+    {caption:'이번 분기를 키운 비용',mood:'explain',lines:[{who:'보리',text:'이번 분기에 특별히 커진 이유가 있어?'},{who:'누리',text:'인천 물류센터 화재 관련 비용 약 3,540억 원이 반영됐어.'}]},
+    {caption:'일회성·본업을 나눠 보기',mood:'think',lines:[{who:'보리',text:'그럼 화재 비용만 보면 되는 거야?'},{who:'누리',text:'회사는 일시적 비용으로 설명하지만, 본업 수익 흐름은 따로 봐야 해.'}]},
+    {caption:'다음 실적에서 볼 점',mood:'think',lines:[{who:'보리',text:'그다음에는 무엇을 확인하면 돼?'},{who:'누리',text:'화재 비용을 뺀 뒤에도 적자가 줄어드는지가 다음 실적의 핵심이야.'}]}
+  ],sources:[
+    {press:'연합뉴스TV',title:'쿠팡, 3분기 연속 적자…누적 영업손실 2조 육박',url:'https://n.news.naver.com/mnews/article/422/0000922777?sid=101'},
+    {press:'전자신문',title:'쿠팡, 분기 매출 14조 돌파…영업손실 6423억에 빛바래',url:'https://n.news.naver.com/mnews/article/030/0003482080?sid=101'}
+  ]}
+};
+const coupangLossStory=c=>c?.date==='2026-11-04'&&/쿠팡/.test(c?.headline||c?.title||'')&&/적자|손실|수익성/.test(c?.headline||c?.title||'')?EDITORIAL_STORY.ce042c57d:null;
 const comicArt=c=>c?.art||EDITORIAL_ART.comics[c?.id]||'';
-const comicPanels=c=>(c?.panels||[]).map((p,k)=>{const source=EDITORIAL_STORY[c?.id]?.[k]||p.lines||[];return Object.assign({},p,{caption:EDITORIAL_META[c?.id]?.captions?.[k]||p.caption,lines:source.map(line=>Array.isArray(line)?{who:line[0],text:line[1]}:{who:line.who,text:line.text})})});
+const comicPanels=c=>(c?.panels||[]).map((p,k)=>{const source=EDITORIAL_STORY[c?.id]?.[k]||coupangLossStory(c)?.[k]||p.lines||[];const meta=EDITORIAL_META[c?.id]||(coupangLossStory(c)?EDITORIAL_META.ce042c57d:null);return Object.assign({},p,{caption:meta?.captions?.[k]||p.caption,lines:source.map(line=>Array.isArray(line)?{who:line[0],text:line[1]}:{who:line.who,text:line.text})})});
 const comicImage=c=>comicArt(c)||c?.image||c?.img||'';
 const deckArt=d=>d?.art||(d?.cards||[]).find(x=>x.art)?.art||EDITORIAL_ART.decks[d?.id]||'';
 const deckImage=d=>deckArt(d)||(d?.cards||[])[0]?.img||d?.image||'';
@@ -190,7 +204,7 @@ function finish(){const s=QS;const lv0=lvl(L.xp);L.xp+=s.xp+(s.ok===s.Q.length?2
   <div class="qacts">${s.miss.length?'<a class="qbtn" href="quiz/review">바로 복습하기</a>':''}<a class="qbtn ghost" href="learn">배우기 홈</a></div></div>`;
   if(acc>=80)burst(app.querySelector('.big'))}
 /* ---------- 만화 ---------- */
-function comic(id){const c=F.comics.find(x=>x.id===id)||F.comics[0];if(!c)return hub();setMeta(c.title+' — 4컷 해설',c.headline);
+function comic(id){const c=F.comics.find(x=>x.id===id)||LEGACY_EDITORIAL_COMICS[id]||F.comics[0];if(!c)return hub();setMeta(c.title+' — 4컷 해설',c.headline);
   const panels=comicPanels(c),art=comicArt(c),comicBody=art?`<figure class="comic-art"><img src="${E(AB(art))}" alt="AI 시각화 4컷 만화: ${E(c.title)}">${comicDialogue(c,panels)}<figcaption><b>AI 시각화</b> · 기사에 나온 사실을 이해하도록 만든 장면이며, 실제 현장 사진이나 인물 묘사가 아닙니다.</figcaption></figure>`
     :`<div class="comic${window.NBC?' c2 '+E(c.visual?.layout||'reportage'):''}">${panels.map((p,k)=>window.NBC?NBC.panel(p,k,c):panel(p,k)).join('')}</div>`;
   app.innerHTML=`<div class="cwrap"><a class="back" href="learn">${NBI('chevron-left')} 배우기</a><div class="chead"><span class="cat ${c.category}">${c.category}</span><h1>${E(c.title)}</h1><p>${E(c.headline)}</p></div>

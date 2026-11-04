@@ -246,7 +246,7 @@ def word_in(i):
     t = i['title'] + ' ' + ' '.join(i.get('summary') or [])
     return next((w for w in WORDS if w['word'] in t), None)
 FILLER = re.compile(r'원문.{0,12}(확인|보|읽)|기사.{0,12}(확인|보|읽)|이해가.{0,8}(쏙|돼)|지켜보|같이 확인')
-CAUSE = re.compile(r'때문|원인|배경|비용|영향|여파|반영|투자|화재|갈등|파업|수요|공급|정책|규제|금리|환율|감소|증가|하락|상승')
+CAUSE = re.compile(r'때문|원인|배경|비용|영향|여파|반영|투자|화재|갈등|파업|수요|공급|정책|규제|금리|환율|감소|증가|하락|상승|매도|매물|선거')
 def choose_fact(facts, pattern, fallback=''):
     return next((x for x in facts if pattern.search(x)), fallback)
 def next_signal(i, cause, evidence, flow):
@@ -262,6 +262,12 @@ def next_signal(i, cause, evidence, flow):
     if re.search(r'해킹|보안|유출|사이버', text):
         return '피해 범위와 추가 보안 조치가 공개되는지를 다음으로 살펴봐야 해.'
     return short('%s의 원인이었던 조건이 다음 발표에서도 이어지는지 보면 돼.' % title, 60)
+def comic_facts(i):
+    """AI 요약이 아직 비어 있어도 원문 검색 결과의 설명문으로 원인·수치를 잃지 않는다."""
+    source_facts = []
+    for source in (i.get('sources') or []) + (i.get('timeline') or []):
+        source_facts.extend(sents(source.get('desc', '') or source.get('title', '')))
+    return (sents((i.get('ai') or {}).get('deep')) or sents(i.get('lead')) or source_facts or i.get('summary') or [i['title']])
 def visual_plan(i):
     """기사 주제에 맞는 장면·그리드 계획. 고정된 '도시→얼굴→칠판→노을' 순서를 금지한다."""
     text = (i.get('title', '') + ' ' + ' '.join(i.get('summary') or [])).lower()
@@ -287,12 +293,12 @@ def visual_plan(i):
 PRI = {'경제': 0, '세계': 1, '사회': 2, 'IT': 3, '정치': 5}
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sensitive import ok_issue   # 부고·범죄·재난 기사는 만화·카드뉴스로 만들지 않음
-cands = [i for i in D['issues'] if ok_issue(i) and i.get('category') not in ('연예', '스포츠') and ((i.get('ai') or {}).get('deep') or i.get('lead'))]
+cands = [i for i in D['issues'] if ok_issue(i) and i.get('category') not in ('연예', '스포츠') and comic_facts(i)]
 # 개인 발언 공방(따옴표 제목)보다 사건·제도 이슈를 우선 — 실존 인물 풍자 위험을 줄임
-cands.sort(key=lambda i: (PRI.get(i.get('category'), 4) + (3 if re.search(r'[“"]', i['title'][:30]) else 0) - (2 if CAUSE.search(' '.join(sents((i.get('ai') or {}).get('deep')) or sents(i.get('lead')) or i.get('summary') or [])) else 0), i['rank']))
+cands.sort(key=lambda i: (0 if CAUSE.search(' '.join(comic_facts(i))) else 1, PRI.get(i.get('category'), 4), 3 if re.search(r'[“"]', i['title'][:30]) else 0, i['rank']))
 COMICS = []
 for i in cands[:2]:
-    facts = sents((i.get('ai') or {}).get('deep')) or sents(i.get('lead')) or i.get('summary') or [i['title']]
+    facts = comic_facts(i)
     flow = [f.get('meaning', '') for f in (i.get('ai') or {}).get('flow') or [] if f.get('meaning')]
     w = word_in(i); tp = topic(i); visual = visual_plan(i)
     numsrc = ' '.join(facts + flow + [i['title']] + (i.get('summary') or []))
@@ -332,10 +338,14 @@ for i in cands[:2]:
 # 지난 만화 보관(최근 14개)
 past = []
 for c in OLD.get('comics', []):
-    if c.get('date') == DATE or c['id'] in {x['id'] for x in COMICS}:
+    if c['id'] in {x['id'] for x in COMICS}:
         continue
     c = dict(c)
     c['art'] = c.get('art') or editorial_art('comics', c.get('id', ''), c.get('headline') or c.get('title', ''))
+    # 같은 날 수집 차수마다 ID가 바뀌어도, 사람이 선별한 작화가 붙은 만화의 링크와
+    # 대본은 유지한다. 자동 텍스트만인 당일 항목은 최신 기사로 교체한다.
+    if c.get('date') == DATE and not c.get('art'):
+        continue
     past.append(c)
 COMICS = COMICS + past[:12]
 

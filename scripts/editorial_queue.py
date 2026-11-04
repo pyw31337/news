@@ -18,7 +18,7 @@ MANIFEST = os.path.normpath(os.path.join(HERE, '..', 'assets', 'editorial-art.js
 OUT_DIR = os.path.join(ROOT, 'editorial')
 OUT = os.path.join(OUT_DIR, 'queue.json')
 FILLER = re.compile(r'원문.{0,12}(확인|보|읽)|기사.{0,12}(확인|보|읽)|이해가.{0,8}(쏙|돼)|지켜보')
-CAUSE = re.compile(r'때문|원인|배경|비용|영향|여파|반영|투자|화재|갈등|파업|수요|공급|정책|규제|금리|환율|감소|증가|하락|상승')
+CAUSE = re.compile(r'때문|원인|배경|비용|영향|여파|반영|투자|화재|갈등|파업|수요|공급|정책|규제|금리|환율|감소|증가|하락|상승|매도|매물|선거')
 NUMBER = re.compile(r'\d')
 PRI = {'경제': 0, '세계': 1, '사회': 2, 'IT': 3, '과학': 4, '정치': 5}
 
@@ -73,7 +73,10 @@ def visual_direction(issue):
 
 
 def brief(issue, manifest):
-    facts = sentences((issue.get('ai') or {}).get('deep')) or sentences(issue.get('lead')) or [compact(x, 140) for x in issue.get('summary') or []]
+    source_facts = []
+    for source in (issue.get('sources') or []) + (issue.get('timeline') or []):
+        source_facts.extend(sentences(source.get('desc', '') or source.get('title', '')))
+    facts = sentences((issue.get('ai') or {}).get('deep')) or sentences(issue.get('lead')) or source_facts or [compact(x, 140) for x in issue.get('summary') or []]
     facts = [f for f in facts if f]
     cause = first_matching(facts, CAUSE, facts[1] if len(facts) > 1 else (facts[0] if facts else issue.get('title', '')))
     evidence = first_matching(facts[1:], NUMBER, facts[2] if len(facts) > 2 else cause)
@@ -103,7 +106,7 @@ def build(max_items):
     manifest = load(MANIFEST, {})
     issues = list(today.get('issues') or [])
     candidates = [brief(issue, manifest) for issue in issues if issue.get('title') and issue.get('category') not in ('연예', '스포츠')]
-    candidates.sort(key=lambda x: (PRI.get(x['category'], 4), -x['priority_score'], x.get('rank') or 999))
+    candidates.sort(key=lambda x: (0 if x['quality_gate']['cause_grounded'] else 1, PRI.get(x['category'], 4), -x['priority_score'], x.get('rank') or 999))
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).isoformat(timespec='seconds')
     return dict(
         schema='newsboard.editorial-queue.v1', date=today.get('date') or dt.date.today().isoformat(), generated_at=now,
