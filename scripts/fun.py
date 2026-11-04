@@ -261,6 +261,10 @@ def next_signal(i, cause, evidence, flow):
         return '합의 뒤 실제 가동 일정과 현장 인력 변화가 이어지는지 확인하면 돼.'
     if re.search(r'해킹|보안|유출|사이버', text):
         return '피해 범위와 추가 보안 조치가 공개되는지를 다음으로 살펴봐야 해.'
+    if re.search(r'지분|최대주주|공개매수|이사회|경영권|주주', text):
+        return '다음 공시에서 지분 변동과 이사회 진입·의결권 행사 계획을 확인해야 해.'
+    if re.search(r'법안|재판|수사|특검|기소|판결', text):
+        return '다음 절차의 일정과 공식 결정문에 담길 쟁점 변화를 확인해야 해.'
     return short('%s의 원인이었던 조건이 다음 발표에서도 이어지는지 보면 돼.' % title, 60)
 def comic_facts(i):
     """AI 요약이 아직 비어 있어도 원문 검색 결과의 설명문으로 원인·수치를 잃지 않는다."""
