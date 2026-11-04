@@ -227,6 +227,7 @@ function card(c,k,n,d){let b='',media=cardMedia(d,c,c.t==='timeline'||c.t==='wor
   else if(c.t==='bg'&&skI(d)%3===0)b=`<div class="dk bg qa has-media">${media}<span class="dlab">Q</span><h3>${E(c.title)}</h3><p class="dbody dhid">${E(c.text)}</p><button type="button" class="drev">사실 설명 보기</button></div>`;
   else if(c.t==='bg'&&skI(d)%3===2)b=`<div class="dk bg dq has-media">${media}<span class="dlab">한 줄로</span><blockquote>${E(c.text)}</blockquote><h3>${E(c.title)}</h3></div>`;
   else if(c.t==='bg'||c.t==='next')b=`<div class="dk ${c.t} has-media">${media}<span class="dlab">${c.t==='bg'?'배경':'앞으로'}</span><h3>${E(c.title)}</h3><p class="dbody">${E(c.text)}</p></div>`;
+  else if(c.t==='fact')b=`<div class="dk fact has-media">${media}<span class="dlab">${E(c.label||'근거')}</span><h3>${E(c.title)}</h3><p class="dbody">${E(c.text)}</p></div>`;
   else if(c.t==='word')b=`<div class="dk word has-media">${media}<span class="dlab">용어</span><h3>${E(c.title)}</h3><div class="dword"><b>${E(c.word)}</b><p>${E(c.text)}</p></div><a class="qbtn sm" href="quiz">퀴즈로 익히기</a></div>`;
   else if(c.t==='timeline')b=`<div class="dk tl has-media">${media}<span class="dlab">흐름</span><h3>${E(c.title)}</h3><ol class="dtl">${c.items.map(x=>`<li class="${x.dir||''}"><time>${E(x.d.slice(2).replace(/-/g,'.'))}</time><b>${E(x.text)}</b>${x.note?`<small>${E(x.note)}</small>`:''}</li>`).join('')}</ol></div>`;
   else if(c.t==='chart')b=`<div class="dk ch"><span class="dlab">추이</span><h3>${E(c.title)}</h3>${lineSvg(c.series,c.unit)}<p class="dnote">${E(c.note||'')}</p></div>`;

@@ -135,6 +135,17 @@ def validate():
         quality = comic.get('quality') or {}
         if quality and not (quality.get('cause') and quality.get('evidence') and quality.get('next_signal') and quality.get('no_filler')):
             problems.append('%s: story quality gate incomplete' % comic.get('id'))
+    for deck in [x for x in fun.get('decks', []) if x.get('date') == current and x.get('kind') == 'explainer']:
+        cards = deck.get('cards') or []
+        kinds = {card.get('t') for card in cards}
+        text = [str(card.get('text', '')) for card in cards]
+        if not {'hook', 'bg', 'fact', 'next', 'src'} <= kinds:
+            problems.append('%s: explainer deck structure incomplete' % deck.get('id'))
+        if any(FILLER.search(line) for line in text):
+            problems.append('%s: generic closing/filler detected' % deck.get('id'))
+        quality = deck.get('quality') or {}
+        if not (quality.get('cause') and quality.get('evidence') and quality.get('next_signal') and quality.get('no_filler') and quality.get('sources')):
+            problems.append('%s: deck quality gate incomplete' % deck.get('id'))
     print('editorial queue validation: %s' % ('PASS' if not problems else 'FAIL'))
     for problem in problems:
         print('- ' + problem)

@@ -388,15 +388,60 @@ for i in flowing[:3]:
     if w: cards.append(dict(t='word', title='알아두면 좋은 말', word=w['word'], text=w['mean']))
     cards += [dict(t='timeline', title='흐름 따라가기', items=tl),
               dict(t='bars', title='날짜별 보도량', unit='건', series=sorted(cnt.items())[-10:], note='보도가 몰린 날에 큰 변화가 있었어요.'),
-              dict(t='next', title='앞으로 볼 점', text=short(mean.get(ds[-1], '') or '새 보도가 나오면 이 흐름에 자동으로 이어 붙여요.', 140)),
+              dict(t='next', title='앞으로 볼 점', text=short(mean.get(ds[-1], '') or '다음 보도에서 원인이 된 조건과 핵심 수치가 어떻게 달라지는지 확인해요.', 140)),
               dict(t='src', sources=[dict(title=s_['title'], url=s_['url'], press=s_['press']) for s_ in (i.get('sources') or [])[:5]])]
     DECKS.append(dict(id=deck_id, kind='flow', issue=i['id'], title=short(re.sub(r'^\[[^\]]*\]\s*', '', i['title']), 26), tag='이어지는 사건 · ' + i.get('category', ''), date=DATE, cards=cards[:8], art=art, image=i.get('image', '')))
+
+# 여러 날의 타임라인이 아직 쌓이지 않았다고 해도, 원인과 근거가 확인된 오늘의
+# 이슈는 카드뉴스로 설명할 가치가 있다. 만화와 같은 사실 묶음에서 만들되 카드는
+# "사건 → 원인 → 근거 → 다음 신호"를 각각 한 장에 담아 텍스트만 바꾼 장식물이
+# 되지 않게 한다. 이미 장기 흐름 덱이 있는 이슈는 중복해서 만들지 않는다.
+decked_issues = {d.get('issue') for d in DECKS}
+for i in cands:
+    if i.get('id') in decked_issues or len([d for d in DECKS if d.get('kind') == 'explainer']) >= 2:
+        continue
+    facts = comic_facts(i)
+    if not facts:
+        continue
+    flow = [f.get('meaning', '') for f in (i.get('ai') or {}).get('flow') or [] if f.get('meaning') and not FILLER.search(f.get('meaning', ''))]
+    cause = choose_fact(facts, CAUSE, facts[1] if len(facts) > 1 else facts[0])
+    evidence = choose_fact(facts[1:], re.compile(r'\d'), facts[2] if len(facts) > 2 else cause)
+    signal = next_signal(i, cause, evidence, flow)
+    src = [dict(title=s_['title'], url=s_['url'], press=s_['press']) for s_ in (i.get('sources') or [])[:5]]
+    if not src:
+        continue
+    deck_id = 'd' + i['id'][1:9]
+    art = editorial_art('decks', deck_id, i['title'])
+    w = word_in(i)
+    cards = [
+        dict(t='hook', big=short(i['title'], 46), text=short(facts[0], 100), img=art or i.get('image', ''), art=art),
+        dict(t='bg', title='무슨 일이 있었나', text=short(facts[0], 150), img=i.get('image', '')),
+        dict(t='fact', title='왜 이렇게 됐나', text=short(cause, 150), label='원인'),
+        dict(t='fact', title='핵심 근거', text=short(evidence, 150), label='근거'),
+    ]
+    if w:
+        cards.append(dict(t='word', title='알아두면 좋은 말', word=w['word'], text=w['mean']))
+    cards += [
+        dict(t='next', title='다음에 볼 점', text=short(signal, 150)),
+        dict(t='src', sources=src),
+    ]
+    DECKS.append(dict(
+        id=deck_id, kind='explainer', issue=i['id'], title=short(re.sub(r'^\[[^\]]*\]\s*', '', i['title']), 30),
+        tag='오늘의 쟁점 · ' + i.get('category', ''), date=DATE, cards=cards[:8], art=art, image=i.get('image', ''),
+        quality=dict(cause=bool(CAUSE.search(cause)), evidence=bool(evidence), next_signal=bool(signal),
+                     no_filler=not any(FILLER.search(str(card.get('text', ''))) for card in cards), sources=len(src))
+    ))
+    decked_issues.add(i.get('id'))
 oldd = []
 for d in OLD.get('decks', []):
-    if d.get('date') == DATE or d['id'] in {y['id'] for y in DECKS}:
+    if d['id'] in {y['id'] for y in DECKS}:
         continue
     d = dict(d)
     d['art'] = d.get('art') or editorial_art('decks', d.get('id', ''), d.get('title', ''))
+    # 기사 군집 ID는 재수집 때 달라질 수 있다. 사람이 선별한 작화가 연결된 당일
+    # 덱은 자동 텍스트 덱처럼 지우지 않고 남겨 공유 링크와 품질을 함께 지킨다.
+    if d.get('date') == DATE and not d.get('art'):
+        continue
     oldd.append(d)
 DECKS += oldd[:10]
 # ---------- 해외(영어 원문) 학습판: 해외 탭에서 쓰는 단어·카드뉴스·만화 ----------
