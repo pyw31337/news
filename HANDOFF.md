@@ -6,7 +6,7 @@
 ## 0. 지금 상태 한눈에 (2026-10-29 15:50 KST)
 | 항목 | 상태 | 다음 할 일 |
 |---|---|---|
-| 화제 '기자' 탭 | 11.04 수정: 홈 화제가 `entities`만 읽어 기자(`reporters`, 별도 배열)는 항상 비었음 → `D.reporters` 사용, 수집 8→20명·오늘 기사 수/이슈 수 순 정렬, 빈 탭은 숨김. sw 캐시 버전은 이제 `inject_cache_version.py`가 자동 주입(수동 nb-vNN 불필요) | 라이브 확인 |
+| 화제 '기자' 탭 | 11.04 수정: 홈 화제가 `entities`만 읽어 기자(`reporters`, 별도 배열)는 항상 비었음 → `D.reporters` 사용, 수집 8→20명·오늘 기사 수/이슈 수 순 정렬, 빈 탭은 숨김. sw 캐시 버전은 이제 `inject_cache_version.py`가 자동 주입(수동 nb-vNN 불필요) | **남은 원인:** 10.30부터 네이버가 GitHub 러너(해외 IP)에 기자 영역 없는 기사 HTML을 줌(60/60건 기자 링크 0). 그래서 매번 10.30 스냅샷 8명(`scripts/reporters_fallback.json`)만 노출. 한국 IP에서 돌릴 경로 필요(박스/로컬 루틴 또는 KR 프록시) |
 | Google 로그인 | 버튼 켜짐, 계정 선택까지 확인. 앱은 **테스트 중**(테스트 사용자만) | GCP 프로젝트는 옛 '메트로라이브'를 재사용 → 브랜딩에서 이름 NewsBoard로. `/news/privacy/`·`/news/terms/` 배포(커밋 3a7aa216)는 됐지만 **15:50 현재 404, Pages 반영 대기** → 열리면 사용자에게 알림 → 사용자가 브랜딩 저장(앱 이름·지원 이메일·홈 `https://pyw31337.github.io/news/`·개인정보 `/news/privacy/`·약관 `/news/terms/`·승인 도메인 `pyw31337.github.io`, `pyw213.workers.dev`) → 대상 메뉴에서 '앱 게시'. **로고는 올리지 말 것**(올리면 인증 심사 수주) |
 | **로그인·동기화 서버(2026-10-30)** | Worker 정상. 로그인 키(Google·Kakao·Naver)는 사용자가 다시 등록함. `ID_SALT`는 이제 **필요 없음**: 없으면 처음 로그인 때 무작위로 만들어 D1 `config` 표에 고정 보관. `ARCHIVE_KEY`도 **필요 없음**: 인물 아카이브 업로드는 GitHub Actions OIDC 토큰(저장소 `pyw31337/news`, 대상 `newsboard-sync`)을 서버가 검증. D1 표는 처음 쓸 때 자동 생성(`ensureSchema`) | `/health`의 `keys`로 확인(값은 노출 안 함) |
 | 게임·배지 v3 | 배포 준비(docs/GAME_DESIGN.md): 배지 41종×최대 10등급(이터널까지)·등급 보너스 XP·Lv.100 커리어, 2048 사다리 4종(01~11 표시), 머지 3세트(태양계·공·과일), 팩트 새총 12레벨(matter.js), 배경음 6곡·효과음 19종, 리더보드(Worker `/lb`) | 그림 재생성: `node scripts/game_art/build.mjs && python3 scripts/game_art/webp.py`, 소리: `python3 scripts/game_art/audio.py` |

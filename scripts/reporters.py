@@ -118,14 +118,16 @@ def collect(issues, root, now, fetch, limit=8):
     # 외부 프로필 서버가 늦어도 전체 수집을 지연시키지 않도록 소수만 병렬로 읽는다.
     with ThreadPoolExecutor(max_workers=4) as pool:
         pages = list(pool.map(article_page, seeds))
-    ok = [p for _, _, p in pages if p]
-    import re as _re
-    print('reporters diag seeds', len(seeds), 'pages', len(ok), 'lens', [len(p) for p in ok[:5]], 'marks', [(p.count('media_end_head_journalist'), p.count('byline'), p.count('journalist/')) for p in ok[:5]])
+    got = 0
     for issue_id, source, page in pages:
         for reporter in _article_reporter(page, source):
             reporter.setdefault('issues', []).append(issue_id)
             raw.append(reporter)
+            got += 1
 
+    if pages and not got:
+        # 네이버가 해외 데이터센터(GitHub 러너)에는 기자 영역을 뺀 기사를 준다(10.30~).
+        print('reporters: 기사 %d건에 기자 카드 없음 → 마지막 스냅샷 사용' % len(pages))
     grouped = {}
     for reporter in raw:
         current = grouped.setdefault(reporter['id'], reporter)
