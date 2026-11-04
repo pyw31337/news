@@ -118,6 +118,9 @@ def collect(issues, root, now, fetch, limit=8):
     # 외부 프로필 서버가 늦어도 전체 수집을 지연시키지 않도록 소수만 병렬로 읽는다.
     with ThreadPoolExecutor(max_workers=4) as pool:
         pages = list(pool.map(article_page, seeds))
+    ok = [p for _, _, p in pages if p]
+    import re as _re
+    print('reporters diag seeds', len(seeds), 'pages', len(ok), 'titles', [(_re.search(r'<title>(.*?)</title>', p, _re.S) or [None, len(p)])[1] for p in ok[:3]])
     for issue_id, source, page in pages:
         for reporter in _article_reporter(page, source):
             reporter.setdefault('issues', []).append(issue_id)
