@@ -246,9 +246,17 @@ def word_in(i):
     t = i['title'] + ' ' + ' '.join(i.get('summary') or [])
     return next((w for w in WORDS if w['word'] in t), None)
 FILLER = re.compile(r'원문.{0,12}(확인|보|읽)|기사.{0,12}(확인|보|읽)|이해가.{0,8}(쏙|돼)|지켜보|같이 확인')
-CAUSE = re.compile(r'때문|원인|배경|비용|영향|여파|반영|투자|화재|갈등|파업|수요|공급|정책|규제|금리|환율|감소|증가|하락|상승|매도|매물|선거')
+CAUSE = re.compile(r'때문|원인|배경|비용|영향|여파|반영|투자|화재|갈등|파업|수요|공급|정책|규제|금리|환율|감소|증가|하락|상승|매도|매물|선거|변경|지분|최대주주|이사회|의결권|법안|판결')
 def choose_fact(facts, pattern, fallback=''):
     return next((x for x in facts if pattern.search(x)), fallback)
+def causal_fact(facts):
+    """첫 카드의 사건 설명을 원인 카드에서 되풀이하지 않도록 후속 근거를 우선한다."""
+    return choose_fact(facts[1:], CAUSE, '')
+def same_fact(a, b):
+    return re.sub(r'\s+', '', a or '') == re.sub(r'\s+', '', b or '')
+def evidence_fact(facts, cause):
+    """원인 문장을 그대로 한 번 더 쓰지 않고, 다른 수치·사실을 고른다."""
+    return choose_fact([fact for fact in facts[1:] if not same_fact(fact, cause)], re.compile(r'\d'), cause)
 def next_signal(i, cause, evidence, flow):
     """사실을 반복하거나 원문 읽기를 권하지 않고, 다음 보도에서 볼 검증 지점을 만든다."""
     title = topic(i)
@@ -267,11 +275,19 @@ def next_signal(i, cause, evidence, flow):
         return '다음 절차의 일정과 공식 결정문에 담길 쟁점 변화를 확인해야 해.'
     return short('%s의 원인이었던 조건이 다음 발표에서도 이어지는지 보면 돼.' % title, 60)
 def comic_facts(i):
-    """AI 요약이 아직 비어 있어도 원문 검색 결과의 설명문으로 원인·수치를 잃지 않는다."""
+    """리드가 있어도 원문 설명문을 함께 보존해 사건·원인·수치가 한 문장에 뭉개지지 않게 한다."""
     source_facts = []
     for source in (i.get('sources') or []) + (i.get('timeline') or []):
         source_facts.extend(sents(source.get('desc', '') or source.get('title', '')))
-    return (sents((i.get('ai') or {}).get('deep')) or sents(i.get('lead')) or source_facts or i.get('summary') or [i['title']])
+    primary = sents((i.get('ai') or {}).get('deep')) or sents(i.get('lead')) or sents(' '.join(i.get('summary') or []))
+    out, seen = [], set()
+    # 첫 장은 리드의 사건을 쓰고, 그 다음 장들은 원문 출처의 수치·조건을 먼저
+    # 읽는다. 리드의 두 번째 문장이 원인 카드까지 독점하는 일을 피한다.
+    for fact in primary[:1] + source_facts + primary[1:] + list(i.get('summary') or []) + [i.get('title', '')]:
+        key = re.sub(r'\s+', '', fact or '')
+        if key and key not in seen:
+            out.append(fact); seen.add(key)
+    return out
 def visual_plan(i):
     """기사 주제에 맞는 장면·그리드 계획. 고정된 '도시→얼굴→칠판→노을' 순서를 금지한다."""
     text = (i.get('title', '') + ' ' + ' '.join(i.get('summary') or [])).lower()
@@ -297,7 +313,7 @@ def visual_plan(i):
 PRI = {'경제': 0, '세계': 1, '사회': 2, 'IT': 3, '정치': 5}
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sensitive import ok_issue   # 부고·범죄·재난 기사는 만화·카드뉴스로 만들지 않음
-cands = [i for i in D['issues'] if ok_issue(i) and i.get('category') not in ('연예', '스포츠') and comic_facts(i)]
+cands = [i for i in D['issues'] if ok_issue(i) and i.get('category') not in ('연예', '스포츠') and comic_facts(i) and causal_fact(comic_facts(i))]
 # 개인 발언 공방(따옴표 제목)보다 사건·제도 이슈를 우선 — 실존 인물 풍자 위험을 줄임
 cands.sort(key=lambda i: (0 if CAUSE.search(' '.join(comic_facts(i))) else 1, PRI.get(i.get('category'), 4), 3 if re.search(r'[“"]', i['title'][:30]) else 0, i['rank']))
 COMICS = []
@@ -306,8 +322,8 @@ for i in cands[:2]:
     flow = [f.get('meaning', '') for f in (i.get('ai') or {}).get('flow') or [] if f.get('meaning')]
     w = word_in(i); tp = topic(i); visual = visual_plan(i)
     numsrc = ' '.join(facts + flow + [i['title']] + (i.get('summary') or []))
-    cause = choose_fact(facts, CAUSE, facts[1] if len(facts) > 1 else facts[0])
-    evidence = choose_fact(facts[1:], re.compile(r'\d'), facts[2] if len(facts) > 2 else cause)
+    cause = causal_fact(facts)
+    evidence = evidence_fact(facts, cause)
     signal = next_signal(i, cause, evidence, flow)
     script = llm('cx:' + hk(i['id'], i['title']),
         '아래 사실만 써서 초보자에게 이 뉴스를 설명하는 4컷 만화 대본을 만들어라. 등장인물은 마스코트 둘뿐: "보리"(궁금한 게 많은 학생), "누리"(차분한 해설가). 실존 인물은 등장시키지 말고 이름만 언급 가능. 네 컷은 서로 다른 장소·카메라·소품이어야 하며, 추상적인 "도시/칠판/노을" 반복을 금지한다. 각 칸은 대사 1~2개(각 45자 이내), 사실을 가리키는 칸 위 설명 캡션(20자 이내), 시각 장면 설명(scene: 32자 이내)을 써라. 반드시 1칸 무슨 일, 2칸 왜 이런 일이 생겼는지(제시된 원인), 3칸 그 원인을 뒷받침하는 수치·근거, 4칸 다음에 검증할 구체 지표·조건을 다룬다. "원문을 확인", "기사를 읽어", "지켜보자", "이해가 쏙" 같은 빈말은 절대 쓰지 마라. mood는 curious, explain, surprised, think, smile 중 하나.\n'
@@ -408,8 +424,8 @@ for i in cands:
     if not facts:
         continue
     flow = [f.get('meaning', '') for f in (i.get('ai') or {}).get('flow') or [] if f.get('meaning') and not FILLER.search(f.get('meaning', ''))]
-    cause = choose_fact(facts, CAUSE, facts[1] if len(facts) > 1 else facts[0])
-    evidence = choose_fact(facts[1:], re.compile(r'\d'), facts[2] if len(facts) > 2 else cause)
+    cause = causal_fact(facts)
+    evidence = evidence_fact(facts, cause)
     signal = next_signal(i, cause, evidence, flow)
     src = [dict(title=s_['title'], url=s_['url'], press=s_['press']) for s_ in (i.get('sources') or [])[:5]]
     if not src:
@@ -420,9 +436,10 @@ for i in cands:
     cards = [
         dict(t='hook', big=short(i['title'], 46), text=short(facts[0], 100), img=art or i.get('image', ''), art=art),
         dict(t='bg', title='무슨 일이 있었나', text=short(facts[0], 150), img=i.get('image', '')),
-        dict(t='fact', title='왜 이렇게 됐나', text=short(cause, 150), label='원인'),
-        dict(t='fact', title='핵심 근거', text=short(evidence, 150), label='근거'),
+        dict(t='fact', title='왜 이렇게 됐나', text=short(cause, 150), label='원인' if not same_fact(cause, evidence) else '원인·근거'),
     ]
+    if not same_fact(cause, evidence):
+        cards.append(dict(t='fact', title='핵심 근거', text=short(evidence, 150), label='근거'))
     if w:
         cards.append(dict(t='word', title='알아두면 좋은 말', word=w['word'], text=w['mean']))
     cards += [
