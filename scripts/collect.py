@@ -360,6 +360,17 @@ except Exception as ex:
     reporters = []
     print('reporters', ex)
 
+# Mac mini(한국 IP)가 올린 기자 데이터가 더 새로우면 그것을 쓴다(러너는 네이버 기자 영역을 못 받음).
+try:
+    _loc = json.load(open(os.path.join(ROOT, 'reporters_local.json'), encoding='utf-8'))
+    _age = (NOW - dt.datetime.fromisoformat(_loc['updated'])).total_seconds()
+    _fresh = sum(1 for r in reporters if r.get('today'))
+    if _loc.get('reporters') and _age < 6 * 3600 and len(_loc['reporters']) >= _fresh:
+        reporters = _loc['reporters'][:20]
+        print('reporters: mac data', len(reporters), int(_age // 60), 'min old')
+except Exception as ex:
+    print('reporters local', ex)
+
 # ---------- 3. 엔티티(인물·장소·사건) + 관계망 ----------
 ent_score = collections.Counter(); ent_issue = collections.defaultdict(set)
 for c in clusters[:60]:
