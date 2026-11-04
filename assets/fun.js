@@ -18,7 +18,7 @@ const AB=u=>{try{return new URL(u,document.baseURI).href}catch(e){return u}};
 const todayK=()=>new Date(Date.now()+9*36e5).toISOString().slice(0,10);
 /* 사람이 선별한 기사별 작화만 여기서 우선한다. 데이터 갱신 전에도 당일 완성본이 즉시 보이고,
    없을 때는 기사 원문 사진으로 물러난다. AI 작화를 실제 보도 사진처럼 보이게 하지 않는다. */
-const EDITORIAL_ART={comics:{c101bdbe8:'assets/comics/2026-11-04-coupang-loss-comic.webp',cd1194f83:'assets/comics/2026-11-04-genesis-line-comic.webp',ca02c5ce8:'assets/comics/2026-11-04-ulsan-line-comic.webp'},decks:{d101bdbe8:'assets/cards/2026-11-04-coupang-loss-card.webp'}};
+const EDITORIAL_ART={comics:{c101bdbe8:'assets/comics/2026-11-04-coupang-loss-comic.webp',c72f07d09:'assets/comics/2026-11-04-coupang-loss-comic.webp',cd1194f83:'assets/comics/2026-11-04-genesis-line-comic.webp',ca02c5ce8:'assets/comics/2026-11-04-ulsan-line-comic.webp'},decks:{d101bdbe8:'assets/cards/2026-11-04-coupang-loss-card.webp'}};
 /* 자산과 함께 편집한 장면명. 수집 데이터가 다음 배치에서 갱신되기 전에도
    “무슨 일?” 같은 범용 라벨로 되돌아가지 않게 한다. */
 const EDITORIAL_META={
