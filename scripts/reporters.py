@@ -96,9 +96,9 @@ def collect(issues, root, now, fetch, limit=8):
                 continue
             seen_urls.add(url)
             seeds.append((issue.get('id', ''), source))
-            if len(seeds) >= limit * 2:
+            if len(seeds) >= limit * 3:
                 break
-        if len(seeds) >= limit * 2:
+        if len(seeds) >= limit * 3:
             break
 
     def article_page(seed):
@@ -119,7 +119,11 @@ def collect(issues, root, now, fetch, limit=8):
         current = grouped.setdefault(reporter['id'], reporter)
         if current is not reporter:
             current['issues'] = list(dict.fromkeys(current.get('issues', []) + reporter.get('issues', [])))
-    reporters = list(grouped.values())[:limit]
+            current['today'] = current.get('today', 1) + 1
+        else:
+            reporter['today'] = 1
+    # 오늘 기사 수와 걸친 이슈 수가 많은 기자부터.
+    reporters = sorted(grouped.values(), key=lambda r: (-r.get('today', 1), -len(set(r.get('issues', [])))))[:limit]
     def profile_page(reporter):
         try:
             page = fetch(reporter['profile'], 'utf-8', 5)
