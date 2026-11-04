@@ -146,7 +146,10 @@ jobs:
         continue-on-error: true
         timeout-minutes: 2
         env: { FUN_DATA: data }
-        run: python scripts/editorial_queue.py
+        run: |
+          python scripts/editorial_queue.py
+          # 검수 실패는 로그에 남기되, 이미 수집한 원본 데이터를 멈추거나 버리지는 않는다.
+          python scripts/editorial_queue.py --validate
       - name: 관리자 상태(status.json·실행 이력)
         if: always()
         continue-on-error: true

@@ -42,6 +42,8 @@ jobs:
           # 학습 콘텐츠를 다시 조립한다. 외부 LLM 호출은 하지 않아 배포가 데이터 수집을 막지 않는다.
           FUN_DATA=data FUN_AI_SEC=0 python scripts/fun.py
           FUN_DATA=data python scripts/editorial_queue.py
+          # 안전 폴백을 제공하는 정적 배포는 유지하면서, 편집 품질 이슈는 배포 로그에서 즉시 보이게 한다.
+          FUN_DATA=data python scripts/editorial_queue.py --validate || echo "::warning::Editorial quality gate reported an issue; safe fallback content remains published."
           mkdir _site && cp -r index.html assets icons admin v2 manifest.webmanifest sw.js og-image.png favicon.ico _site/
           mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp data/stats.json data/stats_detail.json _site/data/ 2>/dev/null || cp data/stats.json _site/data/ 2>/dev/null || true); (cp data/market_detail.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true); (cp data/voice.json _site/data/ 2>/dev/null || true); (cp data/quiz.json _site/data/ 2>/dev/null || true); (cp data/social.json _site/data/ 2>/dev/null || true); (cp data/fun.json _site/data/ 2>/dev/null && python scripts/fun_og.py _site || true); (cp -r data/fun _site/data/ 2>/dev/null || true); (cp -r data/editorial _site/data/ 2>/dev/null || true)
           (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null; cp -r media/ent _site/media/ 2>/dev/null || true)
