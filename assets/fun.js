@@ -16,6 +16,26 @@ const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt
 const app=document.getElementById('app');
 const AB=u=>{try{return new URL(u,document.baseURI).href}catch(e){return u}};
 const todayK=()=>new Date(Date.now()+9*36e5).toISOString().slice(0,10);
+/* 사람이 선별한 기사별 작화만 여기서 우선한다. 데이터 갱신 전에도 당일 완성본이 즉시 보이고,
+   없을 때는 기사 원문 사진으로 물러난다. AI 작화를 실제 보도 사진처럼 보이게 하지 않는다. */
+const EDITORIAL_ART={comics:{c101bdbe8:'assets/comics/2026-11-04-coupang-loss-comic.webp',cd1194f83:'assets/comics/2026-11-04-genesis-line-comic.webp',ca02c5ce8:'assets/comics/2026-11-04-ulsan-line-comic.webp'},decks:{d101bdbe8:'assets/cards/2026-11-04-coupang-loss-card.webp'}};
+/* 자산과 함께 편집한 장면명. 수집 데이터가 다음 배치에서 갱신되기 전에도
+   “무슨 일?” 같은 범용 라벨로 되돌아가지 않게 한다. */
+const EDITORIAL_META={
+  c101bdbe8:{captions:['현장에서 시작된 변화','돈의 흐름은','핵심 수치와 쟁점','다음 공시·보도 확인']},
+  cd1194f83:{captions:['멈춘 라인, 다시 열리다','공장 안에서 확인한 상황','아직 남아 있는 인력 협의','다음 교섭을 지켜보기']},
+  ca02c5ce8:{captions:['울산 현장, 멈춘 이유','시험 차량을 둘러싼 쟁점','정상화 합의의 순간','다시 움직이는 생산라인']}
+};
+const comicArt=c=>c?.art||EDITORIAL_ART.comics[c?.id]||'';
+const comicPanels=c=>(c?.panels||[]).map((p,k)=>Object.assign({},p,{caption:EDITORIAL_META[c?.id]?.captions?.[k]||p.caption}));
+const comicImage=c=>comicArt(c)||c?.image||c?.img||'';
+const deckArt=d=>d?.art||(d?.cards||[]).find(x=>x.art)?.art||EDITORIAL_ART.decks[d?.id]||'';
+const deckImage=d=>deckArt(d)||(d?.cards||[])[0]?.img||d?.image||'';
+const mediaTag=(ai,raw)=>ai?'AI 시각화':raw?'원문 기사 사진':'';
+/* 편집 일러스트에도 실제 만화처럼 대사가 장면 위에서 읽혀야 한다.
+   원본 작화 비율에 맞춘 두 가지 레이아웃(첫 컷 와이드 / 2×2)만 쓴다. */
+function comicDialogue(c,panels){const layout=c?.id==='cd1194f83'?'quad':'wide';
+  return`<div class="comic-dialogue ${layout}" aria-label="만화 대사">${panels.flatMap((p,k)=>(p.lines||[]).map((l,n)=>`<p class="art-bubble p${k} s${n} ${l.who==='보리'?'bori':'nuri'}"><b>${E(l.who)}</b>${E(l.text)}</p>`)).join('')}</div>`}
 /* ---------- 학습 기록(localStorage, 로그인 없음) ---------- */
 const LK='nb-learn';
 const L=Object.assign({xp:0,streak:0,best:0,last:'',days:{},review:{},sound:false,haptic:true},JSON.parse(localStorage.getItem(LK)||'{}'));
@@ -42,6 +62,8 @@ function panel(p,k){const mood=p.mood||'explain';const who=new Set(p.lines.map(l
   <div class="cbub">${p.lines.map(l=>`<p class="bub ${l.who==='보리'?'l':'r'}"><b>${E(l.who)}</b>${E(l.text)}</p>`).join('')}</div>
   <svg class="cchar" viewBox="-160 -50 320 100" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><g transform="translate(-80,0)" opacity="${who.has('보리')?1:.55}">${bori(who.has('보리')?mood:'smile')}</g><g transform="translate(80,0)" opacity="${who.has('누리')?1:.55}">${nuri(who.has('누리')?(mood==='curious'?'explain':mood):'smile')}</g></svg></div>`}
 const srcList=S=>`<div class="fsrc"><h4>출처</h4>${S.map(s=>`<a href="${E(s.url)}" target="_blank" rel="noopener">${typeof pp==='function'?pp(s.press,s.url):E(s.press)}<span>${E(s.title)}</span></a>`).join('')}</div>`;
+function comicTile(c){const ai=comicArt(c),im=ai||comicImage(c),label=mediaTag(ai,im);
+  return`<a class="cl" href="comic/${c.id}"><div class="clp ${im?'visual':''}" style="--pb:${BG[0]}">${im?`<img src="${E(AB(im))}" alt="${E(label?label+': ':'')}${E(c.title)}" loading="lazy"><span class="cmedia-tag">${label}</span>`:`<svg viewBox="-160 -50 320 100"><g transform="translate(-80,0)">${bori(c.panels[0].mood)}</g><g transform="translate(80,0)">${nuri('explain')}</g></svg><span class="clb">${E(c.panels[0].lines[0].text)}</span>`}</div><div class="clt"><span class="cat ${c.category}">${c.category}</span><b>${E(c.title)}</b><small>${c.date.slice(5).replace('-','.')}</small></div></a>`}
 /* ---------- 허브 ---------- */
 function stats(){const s=streakNow(),b=lvBar(),rv=Object.keys(L.review).length;
   return`<div class="lstat"><div class="ls fire"><i>${NBI('flame-f')}</i><b>${s}</b><span>일 연속</span></div><div class="ls xp"><i>${NBI('bolt')}</i><b>${L.xp}</b><span>XP</span></div><div class="ls lv"><i>${NBI('medal')}</i><b>Lv.${b.n}</b><span>다음까지 ${b.left}XP</span></div><div class="ls rv"><i>🔁</i><b>${rv}</b><span>복습 단어</span></div></div>
@@ -55,7 +77,7 @@ function hub(){setMeta('놀면서 배우기 — 퀴즈·만화·카드뉴스','�
    <a class="lt review ${Object.keys(L.review).length?'':'off'}" href="quiz/review"><span class="lti">🔁</span><b>틀린 단어 복습</b><small>${Object.keys(L.review).length?Object.keys(L.review).length+'개가 기다려요':'아직 없어요'}</small><em>복습하기 ${NBI('arrow-right')}</em></a>
   </div>
   ${sec(T('4컷으로 보는 뉴스','News in 4 panels'),'Explainer comics',`<span class="more">${T('AI 해설 만화 · 실존 인물 풍자 아님','AI explainer comics · not satire of real people')}</span>`,'comic')}
-  <div class="clist">${F.comics.slice(0,6).map(c=>`<a class="cl" href="comic/${c.id}"><div class="clp" style="--pb:${BG[0]}">${'<svg viewBox="-160 -50 320 100"><g transform="translate(-80,0)">'+bori(c.panels[0].mood)+'</g><g transform="translate(80,0)">'+nuri('explain')+'</g></svg>'}<span class="clb">${E(c.panels[0].lines[0].text)}</span></div><div class="clt"><span class="cat ${c.category}">${c.category}</span><b>${E(c.title)}</b><small>${c.date.slice(5).replace('-','.')}</small></div></a>`).join('')}</div>
+  <div class="clist">${F.comics.slice(0,6).map(comicTile).join('')}</div>
   ${sec(T('카드뉴스','Card news'),'Card news',`<span class="more">${T('넘겨 보는 흐름 정리','Swipe through the story')}</span>`,'cards')}
   <div class="dlist">${F.decks.slice(0,8).map(deckTile).join('')}</div>
   <div id="lpast"></div>`;
@@ -68,7 +90,7 @@ const SKC=['#ff4d2e','#2f6bff','#11a683','#7a4dff','#f08a00','#e2448e'];
 const skI=d=>{const k=(F&&F.decks||[]).indexOf(d);return(k<0?0:k)%6};
 const numOf=t=>{const m=/([+-]?\d[\d.,]*)\s?(%|조\s?원|억\s?원|만\s?원|조|억|만|원|달러|명|건|곳|일|배|년|개월|bp)?/.exec(t||'');return m&&!/^(19|20)\d\d$/.test(m[1])?{v:m[1],u:(m[2]||'').replace(/\s/g,'')}:null};
 const skEmo=d=>(d.cards[0]||{}).icon||{정치:'🏛️',경제:'💹',사회:'🧭',세계:'🌍',IT:'💡',과학:'🔭',건강:'🩺',환경:'🌱',문화:'🎭',연예:'🎬',스포츠:'🏅'}[(String(d.tag||'').split('·').pop()||'').trim()]||'🗂️';
-function skin(d){const k=skI(d),h=d.cards[0]||{},im=h.img?AB(h.img):'',n=numOf(h.big)||numOf(d.title),c=SKC[k];
+function skin(d){const k=skI(d),h=d.cards[0]||{},im=deckImage(d)?AB(deckImage(d)):'',n=numOf(h.big)||numOf(d.title),c=SKC[k];
   const st=`style="--skc:${c};${im?`--im:url('${E(im)}')`:''}"`;
   const top=k===1?`<span class="skn">${n?`${E(n.v)}<small>${E(n.u)}</small>`:skEmo(d)}</span>${im?`<span class="skph"></span>`:''}`
     :k===2?`<span class="skph"></span>`:k===3?`<span class="skq">“</span>`:k===4?`<span class="skph"></span>`:k===5?`<span class="ske">${skEmo(d)}</span>`:'';
@@ -122,27 +144,31 @@ function finish(){const s=QS;const lv0=lvl(L.xp);L.xp+=s.xp+(s.ok===s.Q.length?2
   if(acc>=80)burst(app.querySelector('.big'))}
 /* ---------- 만화 ---------- */
 function comic(id){const c=F.comics.find(x=>x.id===id)||F.comics[0];if(!c)return hub();setMeta(c.title+' — 4컷 해설',c.headline);
+  const panels=comicPanels(c),art=comicArt(c),comicBody=art?`<figure class="comic-art"><img src="${E(AB(art))}" alt="AI 시각화 4컷 만화: ${E(c.title)}">${comicDialogue(c,panels)}<figcaption><b>AI 시각화</b> · 기사에 나온 사실을 이해하도록 만든 장면이며, 실제 현장 사진이나 인물 묘사가 아닙니다.</figcaption></figure>`
+    :`<div class="comic${window.NBC?' c2 '+E(c.visual?.layout||'reportage'):''}">${panels.map((p,k)=>window.NBC?NBC.panel(p,k,c):panel(p,k)).join('')}</div>`;
   app.innerHTML=`<div class="cwrap"><a class="back" href="learn">${NBI('chevron-left')} 배우기</a><div class="chead"><span class="cat ${c.category}">${c.category}</span><h1>${E(c.title)}</h1><p>${E(c.headline)}</p></div>
-  <div class="comic${window.NBC?' c2':''}">${c.panels.map((p,k)=>window.NBC?NBC.panel(p,k,c):panel(p,k)).join('')}</div>
-  <p class="cnote">이 만화는 기사 내용을 쉽게 풀어 쓴 <b>설명용 만화</b>예요. 등장하는 보리·누리는 NewsBoard 마스코트이고, 실존 인물을 묘사하거나 풍자하지 않아요. 정확한 내용은 아래 원문으로 확인하세요.</p>
-  <div class="cact"><a class="qbtn" href="issue/${c.issue}">이 이슈 자세히 보기</a>${typeof shareBtn==='function'?shareBtn():''}</div>${srcList(c.sources)}</div>`}
+  ${comicBody}
+  <p class="cnote">이 만화는 원문 기사에서 확인된 사실만 쉽게 풀어 쓴 <b>설명용 콘텐츠</b>입니다. 실존 인물을 묘사하거나 원인·결과를 단정하지 않으며, 아래 원문으로 사실을 확인할 수 있어요.</p>
+  <div class="cact"><a class="qbtn" href="issue/${c.issue}">이 이슈 자세히 보기</a>${typeof shareBtn==='function'?shareBtn():''}</div>${srcList(c.sources||[])}</div>`}
 /* ---------- 카드뉴스 ---------- */
 function lineSvg(S,unit){const v=S.map(x=>x[1]),mn=Math.min(...v),mx=Math.max(...v),r=mx-mn||1,W=300,H=150;const pts=v.map((y,i)=>[(i/(v.length-1||1)*W),(H-12-(y-mn)/r*(H-36))]);
   return`<svg class="dchart" viewBox="0 0 ${W} ${H+18}"><polyline points="0,${H} ${pts.map(p=>p.join(',')).join(' ')} ${W},${H}" fill="#ff4d2e22"/><polyline points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="#ff4d2e" stroke-width="3" stroke-linejoin="round"/><circle cx="${pts.at(-1)[0]}" cy="${pts.at(-1)[1]}" r="5" fill="#ff4d2e"/>
   <text x="0" y="${H+16}" font-size="11" fill="#8189a3">${E(S[0][0])}</text><text x="${W}" y="${H+16}" font-size="11" fill="#8189a3" text-anchor="end">${E(S.at(-1)[0])}</text><text x="${W-4}" y="${pts.at(-1)[1]-10}" font-size="14" font-weight="800" fill="#0f1630" text-anchor="end">${v.at(-1)}${unit}</text><text x="2" y="14" font-size="11" fill="#8189a3">최고 ${mx}${unit}</text></svg>`}
 function barSvg(S,unit){const mx=Math.max(...S.map(x=>x[1]))||1,W=300,H=140,bw=W/S.length;
   return`<svg class="dchart" viewBox="0 0 ${W} ${H+20}">${S.map((x,i)=>{const h=Math.max(4,x[1]/mx*(H-24));return`<rect x="${i*bw+bw*.18}" y="${H-h}" width="${bw*.64}" height="${h}" rx="5" fill="${x[1]===mx?'#ff4d2e':'#ffc2b4'}"/><text x="${i*bw+bw/2}" y="${H-h-5}" font-size="11" font-weight="800" text-anchor="middle" fill="#0f1630">${x[1]}</text><text x="${i*bw+bw/2}" y="${H+15}" font-size="10" text-anchor="middle" fill="#8189a3">${E(String(x[0]).slice(5).replace('-','.'))}</text>`}).join('')}</svg>`}
-function card(c,k,n,d){let b='';
-  if(c.t==='hook'){const K=skin(d);b=`<div class="dk hook ${K.cls}" ${K.st}>${K.top}<span class="dtag">${E(d.tag)}</span>${c.icon&&K.k!==1&&K.k!==5?`<span class="dico">${c.icon}</span>`:''}<h2>${E(c.big)}</h2><p>${E(c.text)}</p><span class="swh">옆으로 넘겨 보세요 ${NBI('chevron-right')}</span></div>`}
-  else if(c.t==='bg'&&skI(d)%3===0)b=`<div class="dk bg qa"><span class="dlab">Q</span><h3>${E(c.title)}</h3><p class="dbody dhid">${E(c.text)}</p><button type="button" class="drev">눌러서 답 보기</button></div>`;
-  else if(c.t==='bg'&&skI(d)%3===2)b=`<div class="dk bg dq"><span class="dlab">한 줄로</span><blockquote>${E(c.text)}</blockquote><h3>${E(c.title)}</h3></div>`;
-  else if(c.t==='bg'||c.t==='next')b=`<div class="dk ${c.t}"><span class="dlab">${c.t==='bg'?'배경':'앞으로'}</span><h3>${E(c.title)}</h3><p class="dbody">${E(c.text)}</p></div>`;
-  else if(c.t==='word')b=`<div class="dk word"><span class="dlab">용어</span><h3>${E(c.title)}</h3><div class="dword"><b>${E(c.word)}</b><p>${E(c.text)}</p></div><a class="qbtn sm" href="quiz">퀴즈로 익히기</a></div>`;
-  else if(c.t==='timeline')b=`<div class="dk tl"><span class="dlab">흐름</span><h3>${E(c.title)}</h3><ol class="dtl">${c.items.map(x=>`<li class="${x.dir||''}"><time>${E(x.d.slice(2).replace(/-/g,'.'))}</time><b>${E(x.text)}</b>${x.note?`<small>${E(x.note)}</small>`:''}</li>`).join('')}</ol></div>`;
+function cardMedia(d,c,compact=false){const own=c.img||'',im=own||deckImage(d),ai=!own&&!!deckArt(d);if(!im)return'';
+  return`<figure class="dmedia ${compact?'compact':''}" style="--dm:url('${E(AB(im))}')"><figcaption>${mediaTag(ai,im)}</figcaption></figure>`}
+function card(c,k,n,d){let b='',media=cardMedia(d,c,c.t==='timeline'||c.t==='word');
+  if(c.t==='hook'){const K=skin(d),ai=!!deckArt(d);b=`<div class="dk hook ${K.cls}" ${K.st}>${K.top}<span class="dtag">${E(d.tag)}</span>${ai?'<span class="d-ai">AI 시각화</span>':''}${c.icon&&K.k!==1&&K.k!==5?`<span class="dico">${c.icon}</span>`:''}<h2>${E(c.big)}</h2><p>${E(c.text)}</p><span class="swh">옆으로 넘겨 보세요 ${NBI('chevron-right')}</span></div>`}
+  else if(c.t==='bg'&&skI(d)%3===0)b=`<div class="dk bg qa has-media">${media}<span class="dlab">Q</span><h3>${E(c.title)}</h3><p class="dbody dhid">${E(c.text)}</p><button type="button" class="drev">사실 설명 보기</button></div>`;
+  else if(c.t==='bg'&&skI(d)%3===2)b=`<div class="dk bg dq has-media">${media}<span class="dlab">한 줄로</span><blockquote>${E(c.text)}</blockquote><h3>${E(c.title)}</h3></div>`;
+  else if(c.t==='bg'||c.t==='next')b=`<div class="dk ${c.t} has-media">${media}<span class="dlab">${c.t==='bg'?'배경':'앞으로'}</span><h3>${E(c.title)}</h3><p class="dbody">${E(c.text)}</p></div>`;
+  else if(c.t==='word')b=`<div class="dk word has-media">${media}<span class="dlab">용어</span><h3>${E(c.title)}</h3><div class="dword"><b>${E(c.word)}</b><p>${E(c.text)}</p></div><a class="qbtn sm" href="quiz">퀴즈로 익히기</a></div>`;
+  else if(c.t==='timeline')b=`<div class="dk tl has-media">${media}<span class="dlab">흐름</span><h3>${E(c.title)}</h3><ol class="dtl">${c.items.map(x=>`<li class="${x.dir||''}"><time>${E(x.d.slice(2).replace(/-/g,'.'))}</time><b>${E(x.text)}</b>${x.note?`<small>${E(x.note)}</small>`:''}</li>`).join('')}</ol></div>`;
   else if(c.t==='chart')b=`<div class="dk ch"><span class="dlab">추이</span><h3>${E(c.title)}</h3>${lineSvg(c.series,c.unit)}<p class="dnote">${E(c.note||'')}</p></div>`;
   else if(c.t==='bars')b=`<div class="dk ch"><span class="dlab">숫자</span><h3>${E(c.title)}</h3>${barSvg(c.series,c.unit)}<p class="dnote">${E(c.note||'')}</p></div>`;
   else if(c.t==='numbers')b=`<div class="dk num"><span class="dlab">숫자</span><h3>${E(c.title)}</h3><div class="dnums">${c.nums.map((x,i)=>`<div class="${i?'':'main'}"><b>${E(x.v)}</b><span>${E(x.l)}</span></div>`).join('')}</div></div>`;
-  else if(c.t==='src')b=`<div class="dk src"><span class="dlab">출처</span><h3>자료 출처</h3>${srcList(c.sources).replace('<h4>출처</h4>','')}<p class="dnote">카드뉴스는 NewsBoard 타임라인 DB에서 자동으로 만들어요.</p></div>`;
+  else if(c.t==='src')b=`<div class="dk src"><span class="dlab">출처</span><h3>원문 출처</h3>${srcList(c.sources).replace('<h4>출처</h4>','')}<p class="dnote">각 카드의 사실과 세부 맥락은 원문 기사에서 확인하세요.</p></div>`;
   return`<section class="dcard sk${skI(d)}" style="--skc:${SKC[skI(d)]}" aria-label="${k+1}/${n}"><span class="dpg">${k+1}/${n}</span>${b}</section>`}
 // 회차마다 순서도 다르게: 1 흐름(타임라인·추이) 먼저, 2 숫자(숫자·막대) 먼저. 표지는 맨 앞, 출처는 맨 끝 고정
 function order(d){const C=d.cards.slice(),v=skI(d)%3;if(v===0||C.length<4)return C;const head=C[0],tail=C.filter((c,i)=>i&&c.t==='src'),mid=C.filter((c,i)=>i&&c.t!=='src');
@@ -163,8 +189,8 @@ function deck(id){const d=F.decks.find(x=>x.id===id)||F.decks[0];if(!d)return hu
 function homeBlock(){if(!F)return'';const c=F.comics[0],d=F.decks[0],done=(L.days[todayK()]||{}).done;
   return`${sec(T('놀면서 배우기','Learn with news'),'Learn with news',`<a class="more" href="learn">${T('전체','All')} ${NBI('arrow-right')}</a>`,'book')}
   <div class="lhome"><a class="lh quiz" href="quiz"><span class="lhi">${NBI('help-hexagon-f')}</span><b>${T('오늘의 단어 퀴즈','Today’s word quiz')}</b><small>${F.quiz.questions.length}${T('문제',' questions')} · ${NBI('flame-f')}${streakNow()}${T('일 연속','-day streak')} · Lv.${lvl(L.xp)}</small><em>${done?T('완료! 다시 풀기','Done! Again'):T('3분 도전 →','3-minute challenge →')}</em></a>
-  ${c?`<a class="lh comic" href="comic/${c.id}"><svg viewBox="-160 -50 320 100"><g transform="translate(-70,0)">${bori('curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg><b>${E(c.title)}</b><small>${T('4컷 설명 만화','4-panel explainer')}</small></a>`:''}
-  ${d?`<a class="lh deck" href="cards/${d.id}" ${d.cards[0].img?`style="--im:url('${E(AB(d.cards[0].img))}')"`:''}><span class="lhi">🗂️</span><b>${E(d.title)}</b><small>${T(`카드뉴스 ${d.cards.length}장`,`Card news · ${d.cards.length} cards`)}</small></a>`:''}</div>`}
+  ${c?`<a class="lh comic ${comicImage(c)?'has-art':''}" href="comic/${c.id}" ${comicImage(c)?`style="--im:url('${E(AB(comicImage(c)))}')"`:''}>${comicImage(c)?'<span class="lhi art">AI 시각화</span>':`<svg viewBox="-160 -50 320 100"><g transform="translate(-70,0)">${bori('curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg>`}<b>${E(c.title)}</b><small>${T('4컷 설명 만화','4-panel explainer')}</small></a>`:''}
+  ${d?`<a class="lh deck" href="cards/${d.id}" ${deckImage(d)?`style="--im:url('${E(AB(deckImage(d)))}')"`:''}><span class="lhi">🗂️</span><b>${E(d.title)}</b><small>${T(`카드뉴스 ${d.cards.length}장`,`Card news · ${d.cards.length} cards`)}</small></a>`:''}</div>`}
 /* 메인 화면 '카드뉴스': 동일 규격 카드 통합 및 고품질 썸네일 지원 */
 function mainLearn(){if(!F||!document.getElementById('app'))return;const ap=document.getElementById('app');if(ap.querySelector('.ml'))return;
   const hero=ap.querySelector('.hero');if(!hero)return;
@@ -172,10 +198,10 @@ function mainLearn(){if(!F||!document.getElementById('app'))return;const ap=docu
   const s=document.createElement('section');s.className='ml';
   const cover=x=>{
     if(x.k==='c'){
-      const copy=x.c.desc||((x.c.panels[0]||{}).lines||[{}])[0].text||'', comicImg=x.c.image||x.c.img||'';
+      const copy=x.c.desc||((x.c.panels[0]||{}).lines||[{}])[0].text||'', comicImg=comicImage(x.c);
       return`<a class="mld comic card" href="comic/${x.c.id}"><div class="mld-thumb"${comicImg?` style="background-image:url('${E(AB(comicImg))}')"`:''}><span class="mlt">${T('4컷 만화','4-panel comic')}</span>${!comicImg?`<svg viewBox="-160 -50 320 100" aria-hidden="true"><g transform="translate(-70,0)">${bori((x.c.panels[0]||{}).mood||'curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg>`:''}</div><div class="mld-body"><span class="mld-kicker">${E(x.c.category||T('오늘의 이슈','Today'))} · ${T('4장으로 읽기','4 panels')}</span><b>${E(x.c.title)}</b><small>${E(copy)}</small><span class="mld-go">${T('만화로 보기','Open comic')} ${NBI('arrow-right')}</span></div></a>`;
     }
-    const thumb=x.d.img||(x.d.cards[0]&&x.d.cards[0].img);
+    const thumb=deckImage(x.d);
     const intro=(x.d.cards||[])[0]?.text||x.d.tag||'';
     return`<a class="mld deck card" href="cards/${x.d.id}"><div class="mld-thumb"${thumb?` style="background-image:url('${E(thumb)}')"`:''}><span class="mlt">${T('카드뉴스','Card news')} · ${x.d.cards.length}${T('장',' cards')}</span>${!thumb?`<span class="mld-monogram">${E(skEmo(x.d))}</span>`:''}</div><div class="mld-body"><span class="mld-kicker">${E(x.d.tag||T('뉴스 흐름','News brief'))}</span><b>${E(x.d.title)}</b><small>${E(intro)}</small><span class="mld-go">${T('카드 넘겨보기','Open cards')} ${NBI('arrow-right')}</span></div></a>`;
   };

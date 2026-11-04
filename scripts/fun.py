@@ -1,7 +1,7 @@
 """놀면서 배우기 데이터: 오늘의 단어 퀴즈 · 설명 만화(4컷) · 카드뉴스 → data/fun.json
 - 퀴즈: 정답은 검수된 사전(glossary.py)·위키 뜻에서 규칙으로 만들어 항상 맞음. AI는 해설 문장만 보탬.
-- 만화: 이슈 사실(AI 요약·리드)에서 대본 생성. AI 대본은 숫자·길이·화자 검증을 통과할 때만 사용, 아니면 규칙 대본.
-  그림은 브라우저에서 SVG(마스코트 누리·보리)로 그려 이미지 생성 비용 0.
+- 만화: 이슈 사실(AI 요약·리드)에서 대본·장면 계획을 생성한다. AI 대본은 숫자·길이·화자 검증을 통과할 때만 사용, 아니면 규칙 대본.
+  당일 고품질 편집 일러스트가 assets/editorial-art.json에 등록돼 있으면 연결하고, 없을 때도 기사 사진·장면 계획을 이용해 같은 틀을 반복하지 않는다.
 - 카드뉴스: 기준금리(ECOS 시계열) + 여러 날 이어진 이슈(흐름 DB)로 5~8장 덱."""
 import json, os, re, sys, random, hashlib, subprocess, urllib.request, urllib.error, time, datetime, glob
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); import ai_usage, llm_quota
@@ -19,6 +19,22 @@ if not D.get('issues'): print('fun: no today.json'); sys.exit(0)
 DATE = D.get('date') or datetime.date.today().isoformat()
 rnd = random.Random(DATE)
 WORD_TARGET = 10
+ART_MANIFEST = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'assets', 'editorial-art.json'))
+try:
+    EDITORIAL_ART = json.load(open(ART_MANIFEST, encoding='utf-8'))
+except Exception:
+    EDITORIAL_ART = {}
+def editorial_art(kind, item_id, title=''):
+    """선별한 기사별 시각화만 연결한다. 군집 ID가 다음 수집에서 바뀌어도, 모든 키워드가 맞는 기사만 엄격하게 이어 준다."""
+    direct = str((EDITORIAL_ART.get(kind, {}) or {}).get(item_id, '') or '')
+    if direct:
+        return direct
+    normalized = re.sub(r'\s+', '', str(title or '')).lower()
+    for rule in (EDITORIAL_ART.get('matches', {}) or {}).get(kind, []) or []:
+        terms = [re.sub(r'\s+', '', str(x)).lower() for x in rule.get('terms', [])]
+        if terms and all(term in normalized for term in terms):
+            return str(rule.get('asset', '') or '')
+    return ''
 
 def recent_words(days=14):
     """최근 학습판과 겹치는 답을 제외해 '오늘의' 단어가 매일 새롭게 바뀌게 한다."""
@@ -227,6 +243,28 @@ def topic(i):
 def word_in(i):
     t = i['title'] + ' ' + ' '.join(i.get('summary') or [])
     return next((w for w in WORDS if w['word'] in t), None)
+def visual_plan(i):
+    """기사 주제에 맞는 장면·그리드 계획. 고정된 '도시→얼굴→칠판→노을' 순서를 금지한다."""
+    text = (i.get('title', '') + ' ' + ' '.join(i.get('summary') or [])).lower()
+    if re.search(r'공장|생산|재가동|노사|파업|라인|제조', text):
+        scene, captions = 'industry', ['현장에 무슨 일이', '멈춘 이유와 조건', '합의의 핵심', '가동 뒤 확인할 점']
+    elif re.search(r'해킹|보안|악성|사이버|정보.?유출|랜섬', text):
+        scene, captions = 'security', ['무슨 일이 포착됐나', '공격은 어떻게', '피해 범위 확인', '지금 살필 신호']
+    elif re.search(r'물류|배송|매장|유통|쿠팡|영업|적자|매출|투자|주가|금리', text):
+        scene, captions = 'business', ['현장에서 시작된 변화', '돈의 흐름은', '핵심 수치와 쟁점', '다음 공시·보도 확인']
+    elif re.search(r'우주|과학|연구|기술|반도체|ai|인공지능', text):
+        scene, captions = 'science', ['새로 나온 소식', '어떤 원리인가', '핵심 데이터', '다음 연구 단계']
+    elif i.get('category') == '정치':
+        scene, captions = 'civic', ['무슨 결정·발언인가', '쟁점은 어디에', '공개된 근거', '후속 절차 확인']
+    elif i.get('category') == '세계':
+        scene, captions = 'world', ['현지에서 벌어진 일', '배경과 경로', '지금까지 확인된 점', '다음 발표 확인']
+    else:
+        scene, captions = 'reportage', ['무슨 일이 있었나', '배경을 짚어 보면', '핵심 사실', '앞으로 확인할 점']
+    layouts = {'industry':['blueprint','reportage','assembly'], 'security':['signal','reportage','evidence'],
+               'business':['ledger','reportage','collage'], 'science':['blueprint','signal','collage'],
+               'civic':['evidence','reportage','ledger'], 'world':['reportage','collage','signal'], 'reportage':['reportage','collage','evidence']}
+    choices = layouts[scene]
+    return dict(scene=scene, layout=choices[int(hk(i.get('id', ''), i.get('title', '')), 16) % len(choices)], captions=captions)
 PRI = {'경제': 0, '세계': 1, '사회': 2, 'IT': 3, '정치': 5}
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sensitive import ok_issue   # 부고·범죄·재난 기사는 만화·카드뉴스로 만들지 않음
@@ -237,11 +275,11 @@ COMICS = []
 for i in cands[:2]:
     facts = sents((i.get('ai') or {}).get('deep')) or sents(i.get('lead')) or i.get('summary') or [i['title']]
     flow = [f.get('meaning', '') for f in (i.get('ai') or {}).get('flow') or [] if f.get('meaning')]
-    w = word_in(i); tp = topic(i)
+    w = word_in(i); tp = topic(i); visual = visual_plan(i)
     numsrc = ' '.join(facts + flow + [i['title']] + (i.get('summary') or []))
     script = llm('cx:' + hk(i['id'], i['title']),
-        '아래 사실만 써서 초보자에게 이 뉴스를 설명하는 4컷 만화 대본을 만들어라. 등장인물은 마스코트 둘뿐: "보리"(궁금한 게 많은 학생), "누리"(차분한 해설가). 실존 인물은 등장시키지 말고 이름만 언급 가능. 각 칸은 대사 1~2개(각 45자 이내)와 칸 위 설명 캡션(20자 이내). 1칸 무슨 일, 2칸 왜/어떻게, 3칸 핵심 숫자나 어려운 말, 4칸 앞으로 볼 점. mood는 curious, explain, surprised, think, smile 중 하나.\n'
-        '제목: %s\n사실: %s\n흐름: %s\nJSON: {"title":"만화 제목(18자 이내)","panels":[{"caption":"","mood":"curious","lines":[{"who":"보리","text":""}]}]}' % (i['title'], ' '.join(facts[:6]), ' '.join(flow[:2])), 1400)
+        '아래 사실만 써서 초보자에게 이 뉴스를 설명하는 4컷 만화 대본을 만들어라. 등장인물은 마스코트 둘뿐: "보리"(궁금한 게 많은 학생), "누리"(차분한 해설가). 실존 인물은 등장시키지 말고 이름만 언급 가능. 네 컷은 서로 다른 장소·카메라·소품이어야 하며, 추상적인 "도시/칠판/노을" 반복을 금지한다. 각 칸은 대사 1~2개(각 45자 이내), 사실을 가리키는 칸 위 설명 캡션(20자 이내), 시각 장면 설명(scene: 32자 이내)을 써라. 1칸 사건 현장, 2칸 작동 방식·배경, 3칸 핵심 수치·근거, 4칸 다음에 확인할 사실을 다룬다. mood는 curious, explain, surprised, think, smile 중 하나.\n'
+        '제목: %s\n권장 장면 주제: %s\n권장 캡션: %s\n사실: %s\n흐름: %s\nJSON: {"title":"만화 제목(18자 이내)","panels":[{"caption":"","scene":"","mood":"curious","lines":[{"who":"보리","text":""}]}]}' % (i['title'], visual['scene'], ' / '.join(visual['captions']), ' '.join(facts[:6]), ' '.join(flow[:2])), 1500)
     def valid(s):
         try:
             ps = s['panels']; assert len(ps) == 4 and 2 <= len(s.get('title', '')) <= 24
@@ -261,15 +299,22 @@ for i in cands[:2]:
         p3 = ([dict(who='보리', text='‘%s’? 그게 무슨 말이야?' % w['word']), dict(who='누리', text=short(w['mean'] + '이라는 뜻이야.', 60))] if w else
               [dict(who='보리', text='숫자로 보면 어느 정도야?'), dict(who='누리', text=short(num, 60))])
         nxt = short(flow[-1], 60) if flow else '원문 기사를 보면서 새 소식을 같이 확인해 보자.'
-        panels = [dict(caption='무슨 일?', mood='curious', lines=[dict(who='보리', text='누리야, 오늘 ‘%s’ 뉴스가 많던데?' % tp), dict(who='누리', text=short(f[0], 60))]),
-                  dict(caption='어떻게 된 거야?', mood='explain', lines=[dict(who='보리', text='어쩌다 그렇게 된 거야?'), dict(who='누리', text=short(f[1] or f[0], 60))]),
-                  dict(caption='핵심 짚기', mood='surprised' if not w else 'think', lines=p3),
-                  dict(caption='앞으로 볼 점', mood='smile', lines=[dict(who='누리', text=nxt), dict(who='보리', text='흐름으로 보니까 이해가 쏙 돼!')])]
+        panels = [dict(caption=visual['captions'][0], scene=visual['scene'] + ' 현장', mood='curious', lines=[dict(who='보리', text='누리야, 오늘 ‘%s’ 뉴스가 많던데?' % tp), dict(who='누리', text=short(f[0], 60))]),
+                  dict(caption=visual['captions'][1], scene=visual['scene'] + ' 배경', mood='explain', lines=[dict(who='보리', text='어쩌다 그렇게 된 거야?'), dict(who='누리', text=short(f[1] or f[0], 60))]),
+                  dict(caption=visual['captions'][2], scene=visual['scene'] + ' 근거', mood='surprised' if not w else 'think', lines=p3),
+                  dict(caption=visual['captions'][3], scene=visual['scene'] + ' 관찰', mood='smile', lines=[dict(who='누리', text=nxt), dict(who='보리', text='흐름으로 보니까 이해가 쏙 돼!')])]
         title, gen = short(tp + ', 4컷으로 보기', 22), 'rule'
     src = [dict(title=s['title'], url=s['url'], press=s['press']) for s in (i.get('sources') or [])[:4]]
-    COMICS.append(dict(id='c' + i['id'][1:9], issue=i['id'], category=i.get('category'), headline=i['title'], title=title, panels=panels, gen=gen, word=w['word'] if w else '', sources=src, date=DATE, image=i.get('image', '')))
+    comic_id = 'c' + i['id'][1:9]
+    COMICS.append(dict(id=comic_id, issue=i['id'], category=i.get('category'), headline=i['title'], title=title, panels=panels, gen=gen, word=w['word'] if w else '', sources=src, date=DATE, image=i.get('image', ''), visual=visual, art=editorial_art('comics', comic_id, i['title'])))
 # 지난 만화 보관(최근 14개)
-past = [c for c in OLD.get('comics', []) if c.get('date') != DATE and c['id'] not in {x['id'] for x in COMICS}]
+past = []
+for c in OLD.get('comics', []):
+    if c.get('date') == DATE or c['id'] in {x['id'] for x in COMICS}:
+        continue
+    c = dict(c)
+    c['art'] = c.get('art') or editorial_art('comics', c.get('id', ''), c.get('headline') or c.get('title', ''))
+    past.append(c)
 COMICS = COMICS + past[:12]
 
 # ---------- 3) 카드뉴스 ----------
@@ -304,15 +349,23 @@ for i in flowing[:3]:
     for f in fl: cnt[f['date']] = max(cnt.get(f['date'], 0), len(f['items']))
     bg_ = sents(ai_.get('deep')) or sents(i.get('lead')) or i.get('summary') or [i['title']]
     w = word_in(i)
-    cards = [dict(t='hook', big=short(i['title'], 46), text='%d일에 걸쳐 이어진 이야기 · 언론사 %d곳' % (sp + 1, i.get('presses', 0)), img=i.get('image', '')),
-             dict(t='bg', title='무슨 일이에요?', text=' '.join(short(s_, 90) for s_ in bg_[:2]))]
+    deck_id = 'd' + i['id'][1:9]
+    art = editorial_art('decks', deck_id, i['title'])
+    cards = [dict(t='hook', big=short(i['title'], 46), text='%d일에 걸쳐 이어진 이야기 · 언론사 %d곳' % (sp + 1, i.get('presses', 0)), img=art or i.get('image', ''), art=art),
+             dict(t='bg', title='무슨 일이에요?', text=' '.join(short(s_, 90) for s_ in bg_[:2]), img=i.get('image', ''))]
     if w: cards.append(dict(t='word', title='알아두면 좋은 말', word=w['word'], text=w['mean']))
     cards += [dict(t='timeline', title='흐름 따라가기', items=tl),
               dict(t='bars', title='날짜별 보도량', unit='건', series=sorted(cnt.items())[-10:], note='보도가 몰린 날에 큰 변화가 있었어요.'),
               dict(t='next', title='앞으로 볼 점', text=short(mean.get(ds[-1], '') or '새 보도가 나오면 이 흐름에 자동으로 이어 붙여요.', 140)),
               dict(t='src', sources=[dict(title=s_['title'], url=s_['url'], press=s_['press']) for s_ in (i.get('sources') or [])[:5]])]
-    DECKS.append(dict(id='d' + i['id'][1:9], kind='flow', issue=i['id'], title=short(re.sub(r'^\[[^\]]*\]\s*', '', i['title']), 26), tag='이어지는 사건 · ' + i.get('category', ''), date=DATE, cards=cards[:8]))
-oldd = [x for x in OLD.get('decks', []) if x.get('date') != DATE and x['id'] not in {y['id'] for y in DECKS}]
+    DECKS.append(dict(id=deck_id, kind='flow', issue=i['id'], title=short(re.sub(r'^\[[^\]]*\]\s*', '', i['title']), 26), tag='이어지는 사건 · ' + i.get('category', ''), date=DATE, cards=cards[:8], art=art, image=i.get('image', '')))
+oldd = []
+for d in OLD.get('decks', []):
+    if d.get('date') == DATE or d['id'] in {y['id'] for y in DECKS}:
+        continue
+    d = dict(d)
+    d['art'] = d.get('art') or editorial_art('decks', d.get('id', ''), d.get('title', ''))
+    oldd.append(d)
 DECKS += oldd[:10]
 # ---------- 해외(영어 원문) 학습판: 해외 탭에서 쓰는 단어·카드뉴스·만화 ----------
 # 영어는 '원문 그대로'(번역문이 아님), 한국어는 해외 수집기가 만든 번역(title_ko 등)이나 AI가 함께 쓴 풀이.
