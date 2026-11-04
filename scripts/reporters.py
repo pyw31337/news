@@ -103,7 +103,16 @@ def collect(issues, root, now, fetch, limit=8):
 
     def article_page(seed):
         issue_id, source = seed
-        return issue_id, source, fetch(source['url'], 'utf-8', 5)
+        # GitHub 러너에서 n.news 호스트가 자주 시간 초과(10.30~) → 모바일 호스트로 한 번 더.
+        page = None
+        for url in (source['url'], source['url'].replace('://n.news.naver.com/', '://m.news.naver.com/')):
+            try:
+                page = fetch(url, 'utf-8', 6)
+            except Exception:
+                page = None
+            if page:
+                break
+        return issue_id, source, page or ''
 
     raw = []
     # 외부 프로필 서버가 늦어도 전체 수집을 지연시키지 않도록 소수만 병렬로 읽는다.
