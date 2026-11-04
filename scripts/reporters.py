@@ -120,7 +120,7 @@ def collect(issues, root, now, fetch, limit=8):
         pages = list(pool.map(article_page, seeds))
     ok = [p for _, _, p in pages if p]
     import re as _re
-    print('reporters diag seeds', len(seeds), 'pages', len(ok), 'titles', [(_re.search(r'<title>(.*?)</title>', p, _re.S) or [None, len(p)])[1] for p in ok[:3]])
+    print('reporters diag seeds', len(seeds), 'pages', len(ok), 'lens', [len(p) for p in ok[:5]], 'marks', [(p.count('media_end_head_journalist'), p.count('byline'), p.count('journalist/')) for p in ok[:5]])
     for issue_id, source, page in pages:
         for reporter in _article_reporter(page, source):
             reporter.setdefault('issues', []).append(issue_id)
