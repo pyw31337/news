@@ -137,7 +137,7 @@ window.NBOX=async function(el,F){if(!el)return;const Z=await quizV2(),L=LANG(),T
   el.addEventListener('click',e=>{if(el._nc)return;const b=e.target.closest('[data-o]');if(b){const i=cur,q=Q[i];if(A[q.id]!=null)return;const a=+b.dataset.o;A[q.id]=a;localStorage.setItem(dk,JSON.stringify({d:day,a:A}));
       const ok=right(q,a);const all=Q.every(x=>A[x.id]!=null&&right(x,A[x.id]));
       dispatchEvent(new CustomEvent('nb:quiz',{detail:{ok,word:q.word||q.id,kind:q.kind,perfect:all}}));if(ok&&window.NBGame)NBGame.ev('quiz_x',1,{xp:[0,10,15,20][q.level||1],why:T('퀴즈 정답','Quiz correct')});
-      draw();const c=stage().querySelector('.ox-card');c.classList.add(ok?'pop':'shake');
+      draw();const c=stage().querySelector('.ox-card');c.classList.add(ok?'pop':'shake')}
     if(e.target.closest('.ox-pv'))go(cur-1);if(e.target.closest('.ox-nx'))go(cur+1)});
   /* 밀어서 답하기(v2 실험실 C1): 안 푼 OX 카드는 오른쪽=O, 왼쪽=X. 카드가 손가락을 따라 기울고 도장이 진해짐.
      푼 카드·4지선다는 예전처럼 좌우로 밀면 다음/이전 문제. 끌다 놓은 뒤 이어지는 클릭은 무시 */

@@ -18,24 +18,71 @@ const AB=u=>{try{return new URL(u,document.baseURI).href}catch(e){return u}};
 const todayK=()=>new Date(Date.now()+9*36e5).toISOString().slice(0,10);
 /* 사람이 선별한 기사별 작화만 여기서 우선한다. 데이터 갱신 전에도 당일 완성본이 즉시 보이고,
    없을 때는 기사 원문 사진으로 물러난다. AI 작화를 실제 보도 사진처럼 보이게 하지 않는다. */
-const EDITORIAL_ART={comics:{c101bdbe8:'assets/comics/2026-11-04-coupang-loss-comic.webp',c72f07d09:'assets/comics/2026-11-04-coupang-loss-comic.webp',cd1194f83:'assets/comics/2026-11-04-genesis-line-comic.webp',ca02c5ce8:'assets/comics/2026-11-04-ulsan-line-comic.webp'},decks:{d101bdbe8:'assets/cards/2026-11-04-coupang-loss-card.webp'}};
+const EDITORIAL_ART={comics:{c101bdbe8:'assets/comics/2026-11-04-coupang-loss-comic.webp',c72f07d09:'assets/comics/2026-11-04-coupang-loss-comic.webp',ce042c57d:'assets/comics/2026-11-04-coupang-loss-comic.webp',cd1194f83:'assets/comics/2026-11-04-genesis-line-comic.webp',ca02c5ce8:'assets/comics/2026-11-04-ulsan-line-comic.webp'},decks:{d101bdbe8:'assets/cards/2026-11-04-coupang-loss-card.webp'}};
 /* 자산과 함께 편집한 장면명. 수집 데이터가 다음 배치에서 갱신되기 전에도
    “무슨 일?” 같은 범용 라벨로 되돌아가지 않게 한다. */
 const EDITORIAL_META={
   c101bdbe8:{captions:['현장에서 시작된 변화','돈의 흐름은','핵심 수치와 쟁점','다음 공시·보도 확인']},
+  c72f07d09:{captions:['누적 적자, 왜 커졌나','이번 분기를 키운 비용','일회성·본업을 나눠 보기','다음 실적에서 볼 점']},
+  ce042c57d:{captions:['누적 적자, 왜 커졌나','이번 분기를 키운 비용','매출과 비용을 나눠 보기','다음 실적에서 볼 점']},
   cd1194f83:{captions:['멈춘 라인, 다시 열리다','공장 안에서 확인한 상황','아직 남아 있는 인력 협의','다음 교섭을 지켜보기']},
   ca02c5ce8:{captions:['울산 현장, 멈춘 이유','시험 차량을 둘러싼 쟁점','정상화 합의의 순간','다시 움직이는 생산라인']}
 };
+/* 사람 편집자가 재검토한 대본은 기사 ID별로 고정한다. 특히 '원문을 보세요'로
+   끝나는 자동 대본 대신, 원인 → 비용 → 구분해서 볼 점 → 다음 지표를 완결한다. */
+const EDITORIAL_STORY={
+  c72f07d09:[
+    [['보리','쿠팡 적자가 올해 누적 2조 원에 가깝다던데?'],['누리','3분기 손실까지 더해지며 누적 적자가 커졌다는 보도야.']],
+    [['보리','이번 분기에 특별히 커진 이유가 있어?'],['누리','인천 물류센터 화재 관련 비용 3,540억 원이 반영됐어.']],
+    [['보리','그럼 화재 비용만 보면 되는 거야?'],['누리','회사는 이를 일회성 비용으로 설명했지만, 본업 수익 흐름은 따로 봐야 해.']],
+    [['보리','그다음에는 무엇을 확인하면 돼?'],['누리','화재 비용을 뺀 뒤에도 적자가 줄어드는지가 다음 실적의 핵심이야.']]
+  ],
+  ce042c57d:[
+    [['보리','쿠팡의 올해 누적 적자가 2조 원에 가깝다던데?'],['누리','3분기 손실 6,423억 원까지 더해 누적 손실이 1조 8,318억 원이 됐어.']],
+    [['보리','이번 적자가 커진 이유는 뭐야?'],['누리','인천 화재 비용 약 3,540억 원과 고객 회복 마케팅·대만 투자 부담이 겹쳤어.']],
+    [['보리','매출이 늘었다는데도 왜 적자야?'],['누리','매출 증가보다 화재 같은 일시 비용과 신규 투자 부담이 더 크게 반영된 거야.']],
+    [['보리','회복 여부는 어떻게 알 수 있어?'],['누리','화재·마케팅 비용이 줄고 본업 수익성이 회복되는지가 다음 실적의 핵심이야.']]
+  ]
+};
 const comicArt=c=>c?.art||EDITORIAL_ART.comics[c?.id]||'';
-const comicPanels=c=>(c?.panels||[]).map((p,k)=>Object.assign({},p,{caption:EDITORIAL_META[c?.id]?.captions?.[k]||p.caption}));
+const comicPanels=c=>(c?.panels||[]).map((p,k)=>{const source=EDITORIAL_STORY[c?.id]?.[k]||p.lines||[];return Object.assign({},p,{caption:EDITORIAL_META[c?.id]?.captions?.[k]||p.caption,lines:source.map(line=>Array.isArray(line)?{who:line[0],text:line[1]}:{who:line.who,text:line.text})})});
 const comicImage=c=>comicArt(c)||c?.image||c?.img||'';
 const deckArt=d=>d?.art||(d?.cards||[]).find(x=>x.art)?.art||EDITORIAL_ART.decks[d?.id]||'';
 const deckImage=d=>deckArt(d)||(d?.cards||[])[0]?.img||d?.image||'';
 const mediaTag=(ai,raw)=>ai?'AI 시각화':raw?'원문 기사 사진':'';
-/* 편집 일러스트에도 실제 만화처럼 대사가 장면 위에서 읽혀야 한다.
-   원본 작화 비율에 맞춘 두 가지 레이아웃(첫 컷 와이드 / 2×2)만 쓴다. */
-function comicDialogue(c,panels){const layout=c?.id==='cd1194f83'?'quad':'wide';
-  return`<div class="comic-dialogue ${layout}" aria-label="만화 대사">${panels.flatMap((p,k)=>(p.lines||[]).map((l,n)=>`<p class="art-bubble p${k} s${n} ${l.who==='보리'?'bori':'nuri'}"><b>${E(l.who)}</b>${E(l.text)}</p>`)).join('')}</div>`}
+/* 편집 일러스트에서도 대사는 장면 위 말풍선에 둔다. 꼭지는 글상자가 아니라
+   독립 SVG 리더선으로 그려 글을 가리지 않고, 각 말풍선은 독자가 옮길 수 있다. */
+const BUBBLE_LAYOUTS={
+  wide:[
+    [3,2,42,24,12,28,27],[55,13,42,72,25,40,25],
+    [2,33,42,22,43,27,62],[4,46,42,35,56,45,62],
+    [56,33,42,76,43,62,63],[54,47,42,70,56,88,54],
+    [2,70,42,23,78,36,88],[55,79,42,70,87,47,88]
+  ],
+  quad:[
+    [2,3,42,23,16,29,31],[3,17,42,28,30,38,42],
+    [56,3,42,77,16,71,31],[55,17,42,67,30,82,42],
+    [2,52,42,23,65,29,81],[3,67,42,29,80,39,92],
+    [56,52,42,77,65,71,81],[55,67,42,67,80,82,92]
+  ]
+};
+const bubblePath=(sx,sy,tx,ty)=>`M ${sx} ${sy} Q ${(sx+tx)/2} ${(sy+ty)/2-2} ${tx} ${ty}`;
+function comicDialogue(c,panels){const layout=c?.id==='cd1194f83'?'quad':'wide';const lines=panels.flatMap((p,k)=>(p.lines||[]).map((l,n)=>Object.assign({k,n},l)));
+  return`<div class="comic-dialogue ${layout}" aria-label="만화 대사">\n    <svg class="bubble-leaders" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="speech-arrow" viewBox="0 0 8 8" refX="6.4" refY="4" markerWidth="3" markerHeight="3" orient="auto"><path d="M0 0L8 4L0 8Z" fill="currentColor"></path></marker></defs>${lines.map((l,i)=>{const a=BUBBLE_LAYOUTS[layout][i]||BUBBLE_LAYOUTS.wide[i];return`<path data-bubble-leader="${i}" class="${l.who==='보리'?'bori':'nuri'}" d="${bubblePath(a[3],a[4],a[5],a[6])}"></path><circle data-bubble-dot="${i}" class="${l.who==='보리'?'bori':'nuri'}" cx="${a[5]}" cy="${a[6]}" r="1.25"></circle>`}).join('')}</svg>\n    ${lines.map((l,i)=>{const a=BUBBLE_LAYOUTS[layout][i]||BUBBLE_LAYOUTS.wide[i];return`<p class="art-bubble ${l.who==='보리'?'bori':'nuri'}" data-bubble="${i}" data-sx="${a[3]}" data-sy="${a[4]}" data-tx="${a[5]}" data-ty="${a[6]}" style="--x:${a[0]}%;--y:${a[1]}%;--w:${a[2]}%" title="드래그해서 말풍선을 옮기고, 두 번 누르면 원래 위치로 돌아갑니다"><b>${E(l.who)}</b>${E(l.text)}</p>`}).join('')}\n  </div>`}
+function bindComicBubbleDrag(c){const art=app.querySelector('.comic-art'),dialogue=art?.querySelector('.comic-dialogue');if(!art||!dialogue)return;
+  const key='nb-comic-bubbles:'+String(c.id||'');let saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+  const place=(bubble,offset,save)=>{const id=bubble.dataset.bubble;const x=Number(offset?.x||0),y=Number(offset?.y||0);bubble.style.setProperty('--dx',x+'px');bubble.style.setProperty('--dy',y+'px');
+    const r=art.getBoundingClientRect(),sx=Number(bubble.dataset.sx)+x/r.width*100,sy=Number(bubble.dataset.sy)+y/r.height*100,tx=Number(bubble.dataset.tx),ty=Number(bubble.dataset.ty),leader=dialogue.querySelector(`[data-bubble-leader="${id}"]`);
+    if(leader)leader.setAttribute('d',bubblePath(sx,sy,tx,ty));
+    if(save){saved[id]={x:Math.round(x/r.width*1000)/10,y:Math.round(y/r.height*1000)/10};localStorage.setItem(key,JSON.stringify(saved))}
+  };
+  dialogue.querySelectorAll('.art-bubble').forEach(b=>{const old=saved[b.dataset.bubble];if(old){const r=art.getBoundingClientRect();place(b,{x:old.x*r.width/100,y:old.y*r.height/100})}
+    let drag=null;b.addEventListener('pointerdown',e=>{if(e.button&&e.pointerType==='mouse')return;drag={x:e.clientX,y:e.clientY,ox:parseFloat(b.style.getPropertyValue('--dx'))||0,oy:parseFloat(b.style.getPropertyValue('--dy'))||0};b.setPointerCapture?.(e.pointerId);b.classList.add('dragging');e.preventDefault()});
+    b.addEventListener('pointermove',e=>{if(!drag)return;const r=art.getBoundingClientRect(),nx=Math.max(-r.width*.36,Math.min(r.width*.36,drag.ox+e.clientX-drag.x)),ny=Math.max(-r.height*.18,Math.min(r.height*.18,drag.oy+e.clientY-drag.y));place(b,{x:nx,y:ny})});
+    const end=()=>{if(!drag)return;const x=parseFloat(b.style.getPropertyValue('--dx'))||0,y=parseFloat(b.style.getPropertyValue('--dy'))||0;place(b,{x,y},true);drag=null;b.classList.remove('dragging')};b.addEventListener('pointerup',end);b.addEventListener('pointercancel',end);
+    b.addEventListener('dblclick',()=>{delete saved[b.dataset.bubble];localStorage.setItem(key,JSON.stringify(saved));place(b,{x:0,y:0});});
+  });
+}
 /* ---------- 학습 기록(localStorage, 로그인 없음) ---------- */
 const LK='nb-learn';
 const L=Object.assign({xp:0,streak:0,best:0,last:'',days:{},review:{},sound:false,haptic:true},JSON.parse(localStorage.getItem(LK)||'{}'));
@@ -148,8 +195,11 @@ function comic(id){const c=F.comics.find(x=>x.id===id)||F.comics[0];if(!c)return
     :`<div class="comic${window.NBC?' c2 '+E(c.visual?.layout||'reportage'):''}">${panels.map((p,k)=>window.NBC?NBC.panel(p,k,c):panel(p,k)).join('')}</div>`;
   app.innerHTML=`<div class="cwrap"><a class="back" href="learn">${NBI('chevron-left')} 배우기</a><div class="chead"><span class="cat ${c.category}">${c.category}</span><h1>${E(c.title)}</h1><p>${E(c.headline)}</p></div>
   ${comicBody}
-  <p class="cnote">이 만화는 원문 기사에서 확인된 사실만 쉽게 풀어 쓴 <b>설명용 콘텐츠</b>입니다. 실존 인물을 묘사하거나 원인·결과를 단정하지 않으며, 아래 원문으로 사실을 확인할 수 있어요.</p>
-  <div class="cact"><a class="qbtn" href="issue/${c.issue}">이 이슈 자세히 보기</a>${typeof shareBtn==='function'?shareBtn():''}</div>${srcList(c.sources||[])}</div>`}
+  ${art?'<p class="bubble-help">↔ 말풍선을 드래그해 장면을 가리지 않게 옮길 수 있어요 · 두 번 누르면 원래 자리로 돌아가요.</p>':''}
+  <p class="cnote">이 만화는 원문 기사에서 확인된 사실을 쉽게 풀어 쓴 <b>설명용 콘텐츠</b>입니다. 마지막 컷은 사실을 읽는 데 필요한 다음 확인 지점을 제안합니다.</p>
+  <div class="cact"><a class="qbtn" href="issue/${c.issue}">이 이슈 자세히 보기</a>${typeof shareBtn==='function'?shareBtn():''}</div>${srcList(c.sources||[])}</div>`;
+  if(art)bindComicBubbleDrag(c)
+}
 /* ---------- 카드뉴스 ---------- */
 function lineSvg(S,unit){const v=S.map(x=>x[1]),mn=Math.min(...v),mx=Math.max(...v),r=mx-mn||1,W=300,H=150;const pts=v.map((y,i)=>[(i/(v.length-1||1)*W),(H-12-(y-mn)/r*(H-36))]);
   return`<svg class="dchart" viewBox="0 0 ${W} ${H+18}"><polyline points="0,${H} ${pts.map(p=>p.join(',')).join(' ')} ${W},${H}" fill="#ff4d2e22"/><polyline points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="#ff4d2e" stroke-width="3" stroke-linejoin="round"/><circle cx="${pts.at(-1)[0]}" cy="${pts.at(-1)[1]}" r="5" fill="#ff4d2e"/>

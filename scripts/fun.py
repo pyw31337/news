@@ -206,7 +206,9 @@ for n, w in enumerate(WORDS):
     if kind == 'ox':
         truth = rnd.random() < .5
         m = w['mean'] if truth else other(w, 1)[0]['mean']
-        Q.append(dict(kind='ox', word=w['word'], q='‘%s’%s “%s”%s 뜻이다.' % (w['word'], eun(w['word'])[len(w['word']):], m, ira(m)[len(m):]), answer=truth))
+        # 뜻 안에 인용부호가 들어갈 수 있으므로, 표시용 문장을 다시 split해 정답을
+        # 검증하지 않는다. 검증용 값은 출력 직전에 제거한다.
+        Q.append(dict(kind='ox', word=w['word'], q='‘%s’%s “%s”%s 뜻이다.' % (w['word'], eun(w['word'])[len(w['word']):], m, ira(m)[len(m):]), answer=truth, _meaning=m))
     elif kind == 'mc':
         ch = [w['mean']] + [o['mean'] for o in other(w, 3)]; rnd.shuffle(ch)
         Q.append(dict(kind='mc', word=w['word'], q='‘%s’의 뜻으로 알맞은 것은?' % w['word'], choices=ch, answer=ch.index(w['mean'])))
@@ -217,7 +219,7 @@ for n, w in enumerate(WORDS):
 mean_of = {w['word']: w['mean'] for w in WORDS}
 level_for = {'ox': '기초', 'mc': '보통', 'blank': '심화'}
 for q in Q:
-    if q['kind'] == 'ox': assert (q['q'].split('“')[1].rsplit('”', 1)[0] == mean_of[q['word']]) == q['answer']
+    if q['kind'] == 'ox': assert (q.pop('_meaning') == mean_of[q['word']]) == q['answer']
     elif q['kind'] == 'mc': assert q['choices'][q['answer']] == mean_of[q['word']] and len(set(q['choices'])) == len(q['choices'])
     else: assert q['choices'][q['answer']] == q['word']
     # 문제 형식 자체를 기준으로 난도를 고정한다: 뜻 참/거짓 → 선택지 판별 →
@@ -243,6 +245,23 @@ def topic(i):
 def word_in(i):
     t = i['title'] + ' ' + ' '.join(i.get('summary') or [])
     return next((w for w in WORDS if w['word'] in t), None)
+FILLER = re.compile(r'원문.{0,12}(확인|보|읽)|기사.{0,12}(확인|보|읽)|이해가.{0,8}(쏙|돼)|지켜보|같이 확인')
+CAUSE = re.compile(r'때문|원인|배경|비용|영향|여파|반영|투자|화재|갈등|파업|수요|공급|정책|규제|금리|환율|감소|증가|하락|상승')
+def choose_fact(facts, pattern, fallback=''):
+    return next((x for x in facts if pattern.search(x)), fallback)
+def next_signal(i, cause, evidence, flow):
+    """사실을 반복하거나 원문 읽기를 권하지 않고, 다음 보도에서 볼 검증 지점을 만든다."""
+    title = topic(i)
+    if flow and not FILLER.search(flow[-1]):
+        return short(flow[-1], 60)
+    text = ' '.join([cause, evidence, i.get('title', '')])
+    if re.search(r'적자|손실|매출|실적|비용|주가|금리', text):
+        return '다음 실적에서 일회성 비용과 본업 수익 흐름이 어떻게 달라지는지 봐야 해.'
+    if re.search(r'공장|생산|노사|파업|재가동', text):
+        return '합의 뒤 실제 가동 일정과 현장 인력 변화가 이어지는지 확인하면 돼.'
+    if re.search(r'해킹|보안|유출|사이버', text):
+        return '피해 범위와 추가 보안 조치가 공개되는지를 다음으로 살펴봐야 해.'
+    return short('%s의 원인이었던 조건이 다음 발표에서도 이어지는지 보면 돼.' % title, 60)
 def visual_plan(i):
     """기사 주제에 맞는 장면·그리드 계획. 고정된 '도시→얼굴→칠판→노을' 순서를 금지한다."""
     text = (i.get('title', '') + ' ' + ' '.join(i.get('summary') or [])).lower()
@@ -270,15 +289,18 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sensitive import ok_issue   # 부고·범죄·재난 기사는 만화·카드뉴스로 만들지 않음
 cands = [i for i in D['issues'] if ok_issue(i) and i.get('category') not in ('연예', '스포츠') and ((i.get('ai') or {}).get('deep') or i.get('lead'))]
 # 개인 발언 공방(따옴표 제목)보다 사건·제도 이슈를 우선 — 실존 인물 풍자 위험을 줄임
-cands.sort(key=lambda i: (PRI.get(i.get('category'), 4) + (3 if re.search(r'[“"]', i['title'][:30]) else 0), i['rank']))
+cands.sort(key=lambda i: (PRI.get(i.get('category'), 4) + (3 if re.search(r'[“"]', i['title'][:30]) else 0) - (2 if CAUSE.search(' '.join(sents((i.get('ai') or {}).get('deep')) or sents(i.get('lead')) or i.get('summary') or [])) else 0), i['rank']))
 COMICS = []
 for i in cands[:2]:
     facts = sents((i.get('ai') or {}).get('deep')) or sents(i.get('lead')) or i.get('summary') or [i['title']]
     flow = [f.get('meaning', '') for f in (i.get('ai') or {}).get('flow') or [] if f.get('meaning')]
     w = word_in(i); tp = topic(i); visual = visual_plan(i)
     numsrc = ' '.join(facts + flow + [i['title']] + (i.get('summary') or []))
+    cause = choose_fact(facts, CAUSE, facts[1] if len(facts) > 1 else facts[0])
+    evidence = choose_fact(facts[1:], re.compile(r'\d'), facts[2] if len(facts) > 2 else cause)
+    signal = next_signal(i, cause, evidence, flow)
     script = llm('cx:' + hk(i['id'], i['title']),
-        '아래 사실만 써서 초보자에게 이 뉴스를 설명하는 4컷 만화 대본을 만들어라. 등장인물은 마스코트 둘뿐: "보리"(궁금한 게 많은 학생), "누리"(차분한 해설가). 실존 인물은 등장시키지 말고 이름만 언급 가능. 네 컷은 서로 다른 장소·카메라·소품이어야 하며, 추상적인 "도시/칠판/노을" 반복을 금지한다. 각 칸은 대사 1~2개(각 45자 이내), 사실을 가리키는 칸 위 설명 캡션(20자 이내), 시각 장면 설명(scene: 32자 이내)을 써라. 1칸 사건 현장, 2칸 작동 방식·배경, 3칸 핵심 수치·근거, 4칸 다음에 확인할 사실을 다룬다. mood는 curious, explain, surprised, think, smile 중 하나.\n'
+        '아래 사실만 써서 초보자에게 이 뉴스를 설명하는 4컷 만화 대본을 만들어라. 등장인물은 마스코트 둘뿐: "보리"(궁금한 게 많은 학생), "누리"(차분한 해설가). 실존 인물은 등장시키지 말고 이름만 언급 가능. 네 컷은 서로 다른 장소·카메라·소품이어야 하며, 추상적인 "도시/칠판/노을" 반복을 금지한다. 각 칸은 대사 1~2개(각 45자 이내), 사실을 가리키는 칸 위 설명 캡션(20자 이내), 시각 장면 설명(scene: 32자 이내)을 써라. 반드시 1칸 무슨 일, 2칸 왜 이런 일이 생겼는지(제시된 원인), 3칸 그 원인을 뒷받침하는 수치·근거, 4칸 다음에 검증할 구체 지표·조건을 다룬다. "원문을 확인", "기사를 읽어", "지켜보자", "이해가 쏙" 같은 빈말은 절대 쓰지 마라. mood는 curious, explain, surprised, think, smile 중 하나.\n'
         '제목: %s\n권장 장면 주제: %s\n권장 캡션: %s\n사실: %s\n흐름: %s\nJSON: {"title":"만화 제목(18자 이내)","panels":[{"caption":"","scene":"","mood":"curious","lines":[{"who":"보리","text":""}]}]}' % (i['title'], visual['scene'], ' / '.join(visual['captions']), ' '.join(facts[:6]), ' '.join(flow[:2])), 1500)
     def valid(s):
         try:
@@ -288,6 +310,10 @@ for i in cands[:2]:
                 for l in p['lines']:
                     assert l['who'] in ('보리', '누리') and 2 <= len(l['text']) <= 60
                     assert not (set(re.findall(r'\d+', l['text'])) - set(re.findall(r'\d+', numsrc)))
+                    assert not FILLER.search(l['text'])
+            # 원인과 다음 검증 지점이 없는 대본은, 문장이 자연스러워도 통과시키지 않는다.
+            assert any(re.search(r'왜|원인|배경|비용|영향|때문', l['text']) for l in ps[1]['lines'])
+            assert any(re.search(r'다음|실적|발표|일정|범위|지표|확인', l['text']) for l in ps[3]['lines'])
             return True
         except Exception: return False
     if script and valid(script):
@@ -295,18 +321,14 @@ for i in cands[:2]:
         for p in panels: p['caption'] = re.sub(r'^\s*\d\s*칸\s*[:：.]?\s*', '', p.get('caption', ''))
     else:
         f = facts + [''] * 4
-        num = next((s for s in facts[1:] if re.search(r'\d', s)), f[2] or f[1])
-        p3 = ([dict(who='보리', text='‘%s’? 그게 무슨 말이야?' % w['word']), dict(who='누리', text=short(w['mean'] + '이라는 뜻이야.', 60))] if w else
-              [dict(who='보리', text='숫자로 보면 어느 정도야?'), dict(who='누리', text=short(num, 60))])
-        nxt = short(flow[-1], 60) if flow else '원문 기사를 보면서 새 소식을 같이 확인해 보자.'
-        panels = [dict(caption=visual['captions'][0], scene=visual['scene'] + ' 현장', mood='curious', lines=[dict(who='보리', text='누리야, 오늘 ‘%s’ 뉴스가 많던데?' % tp), dict(who='누리', text=short(f[0], 60))]),
-                  dict(caption=visual['captions'][1], scene=visual['scene'] + ' 배경', mood='explain', lines=[dict(who='보리', text='어쩌다 그렇게 된 거야?'), dict(who='누리', text=short(f[1] or f[0], 60))]),
-                  dict(caption=visual['captions'][2], scene=visual['scene'] + ' 근거', mood='surprised' if not w else 'think', lines=p3),
-                  dict(caption=visual['captions'][3], scene=visual['scene'] + ' 관찰', mood='smile', lines=[dict(who='누리', text=nxt), dict(who='보리', text='흐름으로 보니까 이해가 쏙 돼!')])]
+        panels = [dict(caption=visual['captions'][0], scene=visual['scene'] + ' 현장', mood='curious', lines=[dict(who='보리', text='오늘 ‘%s’ 뉴스는 무슨 일이야?' % tp), dict(who='누리', text=short(f[0], 60))]),
+                  dict(caption=visual['captions'][1], scene=visual['scene'] + ' 배경', mood='explain', lines=[dict(who='보리', text='왜 이런 일이 생긴 거야?'), dict(who='누리', text=short(cause, 60))]),
+                  dict(caption=visual['captions'][2], scene=visual['scene'] + ' 근거', mood='surprised', lines=[dict(who='보리', text='그 배경을 보여 주는 근거가 있어?'), dict(who='누리', text=short(evidence, 60))]),
+                  dict(caption=visual['captions'][3], scene=visual['scene'] + ' 관찰', mood='think', lines=[dict(who='보리', text='다음에는 무엇을 보면 돼?'), dict(who='누리', text=signal)])]
         title, gen = short(tp + ', 4컷으로 보기', 22), 'rule'
     src = [dict(title=s['title'], url=s['url'], press=s['press']) for s in (i.get('sources') or [])[:4]]
     comic_id = 'c' + i['id'][1:9]
-    COMICS.append(dict(id=comic_id, issue=i['id'], category=i.get('category'), headline=i['title'], title=title, panels=panels, gen=gen, word=w['word'] if w else '', sources=src, date=DATE, image=i.get('image', ''), visual=visual, art=editorial_art('comics', comic_id, i['title'])))
+    COMICS.append(dict(id=comic_id, issue=i['id'], category=i.get('category'), headline=i['title'], title=title, panels=panels, gen=gen, word=w['word'] if w else '', sources=src, date=DATE, image=i.get('image', ''), visual=visual, art=editorial_art('comics', comic_id, i['title']), quality=dict(cause=bool(CAUSE.search(cause)), evidence=bool(evidence), next_signal=bool(signal), no_filler=not any(FILLER.search(l.get('text', '')) for p in panels for l in p.get('lines', [])))))
 # 지난 만화 보관(최근 14개)
 past = []
 for c in OLD.get('comics', []):
