@@ -120,12 +120,13 @@ function groupSecs(kind){const kids=[...app.children];let g=null,first=null;cons
   sorted.forEach(o=>{const w=document.createElement('div');w.className='hsec'+(hide.includes(o.title)?' hid':'');o.nodes.forEach(n=>w.appendChild(n));app.appendChild(w)});}
 /* ---------- 화제(오늘 안으로) ---------- */
 function hotHTML(){if(typeof SUB==='undefined'||typeof subtype!=='function')return'';
-  return`<div class="sec"><h2><small>People · Companies · Places</small>${I('fire')}화제</h2><a class="more" href="people">전체 ${NBI('arrow-right')}</a></div><div class="filters subt" id="hotf">${SUB.filter(s=>s[0]!=='issue'&&hotList(s[0]).length).map(([k,v,n],i)=>`<button data-f="${k}" class="${i?'':'on'}">${I(n)}${v}</button>`).join('')}</div><div class="hs" id="hotl"></div>`}
+  return`<div class="sec"><h2><small>People · Companies · Places</small>${I('fire')}화제</h2><a class="more" href="people">전체 ${NBI('arrow-right')}</a></div><div class="filters subt grab-carousel" id="hotf">${SUB.filter(s=>s[0]!=='issue'&&hotList(s[0]).length).map(([k,v,n],i)=>`<button data-f="${k}" class="${i?'':'on'}">${I(n)}${v}</button>`).join('')}</div><div class="hs grab-carousel" id="hotl"></div>`}
 function hotList(f){return f==='reporter'?(D.reporters||[]).slice(0,12):D.entities.filter(e=>subtype(e)===f).slice(0,12)}
 function hotRep(r){const n=r.today,lr=(r.reports||[])[0];return`<a class="card pc" href="${rh(r.id)}">${reporterAvatar(r,'av')}<b>${E(r.name)}</b><small>${E(r.press||'')}${n?' · 오늘 '+n+'건':''}</small>${lr?`<span class="last">${E(lr.title)}</span>`:''}</a>`}
-function hotDraw(f){const el=document.getElementById('hotl');if(!el)return;if(f==='reporter'){const R=hotList(f);el.innerHTML=R.map(hotRep).join('');window.NBT?.enableElasticCarousel?.(el);return}const L=hotList(f);
+function hotDraw(f){const el=document.getElementById('hotl');if(!el)return;if(f==='reporter'){const R=hotList(f);el.innerHTML=R.map(hotRep).join('');if(window.NBT?.enableElasticCarousel) window.NBT.enableElasticCarousel(el);return}const L=hotList(f);
   el.innerHTML=L.length?L.map(e=>`<a class="card pc" href="${eh(e.name)}">${av(e)}<b>${E(e.name)}</b><small>${E(e.wiki?.desc||'')}</small>${spark(e.daily)}<span class="last">${e.timeline[0]?E(e.timeline[0].title):''}</span></a>`).join(''):'<p class="fine keep">오늘은 이 분류의 화제가 적어요.</p>';
-  window.NBT?.enableElasticCarousel?.(el)}
+  if(window.NBT?.enableElasticCarousel) window.NBT.enableElasticCarousel(el);
+}
 /* ---------- 저장 버튼 ---------- */
 const key=(t,id)=>t+':'+id;
 function itemOf(t,id){if(t==='issue'){const i=D.issues.find(x=>x.id===id);return i&&{title:i.title,img:i.image,cat:i.category,href:'issue/'+id}}
@@ -148,8 +149,36 @@ function openNote(t,id){const s=st(t,id);const sh=document.createElement('div');
 /* ---------- 화면 후처리 ---------- */
 function curV(){const h=decodeURIComponent(location.pathname.slice(BASEP.length)).replace(/\/+$/,'');return[h.split('/')[0],h.split('/').slice(1).join('/')]}
 function after(){if(!(typeof D!=='undefined'&&D))return;const[v,a]=curV();document.body.classList.toggle('nobias',!!(S.nobias));
-  if(v===''&&!(S.region==='en'&&typeof G!=='undefined'&&G)){if(!document.getElementById('hotl')){const m=document.getElementById('mapmini');const h=hotHTML();if(h){const at=m?m.previousElementSibling:null;at?at.insertAdjacentHTML('beforebegin',h):app.insertAdjacentHTML('beforeend',h);hotDraw('person');document.getElementById('hotf').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;document.querySelectorAll('#hotf button').forEach(x=>x.classList.toggle('on',x===b));hotDraw(b.dataset.f)}}}
-    [...app.querySelectorAll('.sec')].forEach(s=>{if(/화제의 인물/.test(s.textContent)){const n=s.nextElementSibling;s.remove();n&&n.remove()}});
+  if(v===''&&!(S.region==='en'&&typeof G!=='undefined'&&G)){
+    if(!document.getElementById('hotl')){
+      const m=document.getElementById('mapmini');
+      const h=hotHTML();
+      if(h){
+        const at=m?m.previousElementSibling:null;
+        at?at.insertAdjacentHTML('beforebegin',h):app.insertAdjacentHTML('beforeend',h);
+        hotDraw('person');
+        const hf=document.getElementById('hotf');
+        if(hf){
+          hf.onclick=ev=>{const b=ev.target.closest('button');if(!b)return;document.querySelectorAll('#hotf button').forEach(x=>x.classList.toggle('on',x===b));hotDraw(b.dataset.f)};
+          if(window.NBT?.enableElasticCarousel) window.NBT.enableElasticCarousel(hf);
+        }
+      }
+    }
+    // 중복 노출 방지: 화제 섹션이 2개 이상 존재하면 상단에 잘못 뜬 화제를 정리하고 본 섹션만 유지
+    const hotSecs=[...app.querySelectorAll('.sec')].filter(s=>{
+      const h2=s.querySelector('h2');
+      return h2&&(/화제/.test(h2.textContent)||/화제의 인물/.test(h2.textContent));
+    });
+    if(hotSecs.length>1){
+      for(let i=0;i<hotSecs.length-1;i++){
+        const n=hotSecs[i];
+        let next=n.nextElementSibling;
+        n.remove();
+        if(next&&(next.classList.contains('subt')||next.classList.contains('filters')||next.id==='hotf'||next.classList.contains('hs'))){
+          next.remove();
+        }
+      }
+    }
     if(!app.querySelector('.hsec'))groupSecs('today');save()}
   if(v==='market'&&!app.querySelector('.hsec')){groupSecs('market');app.querySelectorAll('.mk').forEach(k=>{const n=k.querySelector('.n')?.firstChild?.textContent?.trim();if(n&&!k.querySelector('.mini-heart')){k.style.position='relative';k.insertAdjacentHTML('beforeend',`<span data-t="chart" data-id="${E(n)}" class="mhw"><button class="mini-heart ${st('chart',n).like?'on':''}" aria-label="관심 지표">${SV(P.star)}</button></span>`)}});save()}
   if(['issue','entity','kw'].includes(v)&&a&&!app.querySelector('.myact')){const h=app.querySelector('h1,h2');const t=v;const id=v==='issue'?a:a;const slot=app.querySelector('.dh-act');if(slot)slot.innerHTML=actBar(t,id);else (h||app.firstElementChild)?.insertAdjacentHTML('afterend',actBar(t,id));

@@ -208,7 +208,7 @@ function today(){
   <section class="hero">
     <div class="rdeck" tabindex="0" aria-roledescription="카드 덱" aria-label="오늘의 이슈 카드. 좌우로 넘겨 보세요">
      <div class="rstage">${heroI.map((i,k)=>`<article class="lead rcard" data-i="${k}" data-id="${i.id}" data-img="${esc([...(i.gallery||[]).slice(0,1).map(g=>g.img),i.image,...(i.gallery||[]).map(g=>g.img)].filter(Boolean).filter((u,k,A)=>A.indexOf(u)===k).slice(0,6).join('|'))}"><div class="rimg"></div><a class="rlink" draggable="false" href="issue/${i.id}" aria-label="${esc(i.title)}"></a><button type="button" class="rlater" data-later="${i.id}" aria-label="나중에 읽기" aria-pressed="false">${window.GI?GI('bookmark-plus'):''}<span>나중에 읽기</span></button><div class="in"><div class="no">${String(i.rank).padStart(2,'0')}</div><span class="cat ${i.category}">${ic(i.category)}${i.category}</span>
-      <h1>${esc(i.title)}</h1><ul class="hero-sum">${(i.summary||[]).slice(0,2).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+      <h1>${esc(i.title)}</h1>
       <div class="schips">${schips(i,'issue/'+i.id)}</div></div></article>`).join('')}</div>
      <div class="rctl"><button type="button" class="rbtn" data-d="-1" aria-label="이전 이슈" disabled>${NBI('chevron-left')}</button><span class="rpos"><b>01</b> / ${String(Math.min(10,heroI.length)).padStart(2,'0')}</span><span class="rbar"><i style="width:${100/Math.min(10,heroI.length)}%"></i></span><span class="rhint">옆으로 넘겨 보세요</span><button type="button" class="rbtn" data-d="1" aria-label="다음 이슈">${NBI('chevron-right')}</button></div>
     </div>
@@ -476,8 +476,12 @@ function graph(el,mini){
   const N=[],idx={},E=[];
   const cut=(s,m)=>s.length>m?s.slice(0,m-1)+'…':s;
   
+  // 모바일/미니 뷰에서는 주요 핵심 노드 중심으로 정제하여 겹침 없이 쾌적하게 노출
+  const entitiesPool = (mini || small) ? D.entities.slice(0, small ? 6 : 9) : D.entities;
+  const issuesPool = (mini || small) ? D.issues.filter(vis).slice(0, small ? 4 : 6) : D.issues.filter(vis);
+
   // 모든 엔티티 노드 썸네일 확보 (위키/비주얼 우선, 없으면 관련 이슈 사진 활용)
-  D.entities.forEach(e=>{
+  entitiesPool.forEach(e=>{
     const media=entityMedia(e);
     let img=media.url;
     if(!img){
@@ -491,7 +495,7 @@ function graph(el,mini){
   });
 
   // 모든 이슈 노드 썸네일 확보
-  D.issues.filter(vis).forEach(i=>{
+  issuesPool.forEach(i=>{
     idx[i.id]=N.length;
     const img=i.image || (i.gallery && i.gallery[0] && i.gallery[0].img) || '';
     N.push({id:i.id,lab:cut(i.rank+'위 '+i.keywords.slice(0,2).join('·'),small?8:12),t:'issue',r:small?13:16,href:'issue/'+i.id,img,kind:'issue'});

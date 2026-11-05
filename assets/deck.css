@@ -93,8 +93,10 @@ i.plo.mono{font-size:1rem}
 .plc span{min-width:0;display:flex;flex-direction:column}.plc b{font-size:.85rem}.plc small{font-size:.72rem;color:var(--mute,#778);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (prefers-reduced-motion:reduce){.srow,.rbar i,.dgal .gt img,.schip{transition:none}.anc.pulse{animation:none;box-shadow:0 0 0 3px rgba(255,77,46,.45)}.lbx{animation:none}}
 .rcard .rimg{position:absolute;left:0;right:0;top:0;height:50%;background:center/cover no-repeat;border-radius:24px 24px 0 0;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);mask-image:linear-gradient(180deg,#000 62%,transparent)}
+.rcard .rimg::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(15,22,48,.15) 0%,rgba(15,22,48,.4) 35%,rgba(15,22,48,.88) 72%,#0f1630 100%);pointer-events:none}
 .rcard.lead::before{background:linear-gradient(180deg,rgba(15,22,48,0) 30%,rgba(15,22,48,.85) 58%,#141b3a 100%)}
 .rcard.hasimg{background:#141b3a}
+.rcard .in{position:relative;z-index:3}
 .rcard.txt .rimg{display:none}
 
 /* 움직이는 카드(현재·바로 뒤·방금 넘긴 카드)만 별도 레이어로: 레이어가 많으면 매 프레임 레이어 정리(Layerize)가 무거워짐 */

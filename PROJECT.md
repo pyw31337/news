@@ -2,7 +2,7 @@
 
 > **서비스 배포 URL:** [https://pyw31337.github.io/news/](https://pyw31337.github.io/news/)  
 > **저장소:** [github.com/pyw31337/news](https://github.com/pyw31337/news)  
-> **최신 캐시 버전:** `nb-v87` (Service Worker)
+> **최신 캐시 버전:** `nb-<commit_hash>` (GitHub Actions 배포 시 git commit hash 기반 자동 주입)
 
 ---
 
@@ -21,8 +21,10 @@ NewsBoard는 복잡하고 단편적인 포털 뉴스를 탈피하여 **"오늘 �
 
 ```mermaid
 flowchart TD
-    subgraph DataSources ["📡 데이터 소스 (무료/키 불필요/공공)"]
+    subgraph DataSources ["📡 데이터 소스 (다중 소스 장애 분산망)"]
         Naver["네이버 뉴스 언론사별 랭킹"]
+        Daum["다음 뉴스 홈 & 7대 핵심 섹션"]
+        WireRSS["언론사 공식 RSS (연합·SBS·매경·동아)"]
         GoogleNews["구글 뉴스 RSS + 기간 검색"]
         Trends["구글 트렌드 KR 일간 급상승"]
         Wiki["한국어 위키백과 / 위키데이터"]
@@ -54,7 +56,7 @@ flowchart TD
 
     subgraph FrontendSite ["📱 배포 환경 (GitHub Pages)"]
         Pages["https://pyw31337.github.io/news/"]
-        SW["Service Worker (nb-v87, 오프라인 캐시)"]
+        SW["Service Worker (nb-<commit_hash>, 무중단 캐시)"]
         StaticAssets["Vanilla JS + CSS Modules + SVG Icons"]
     end
 

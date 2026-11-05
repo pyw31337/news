@@ -273,7 +273,7 @@ function mainLearn(){if(!F||!document.getElementById('app'))return;const ap=docu
     const intro=(x.d.cards||[])[0]?.text||x.d.tag||'';
     return`<a class="mld deck card" href="cards/${x.d.id}"><div class="mld-thumb"${thumb?` style="background-image:url('${E(thumb)}')"`:''}><span class="mlt">${T('카드뉴스','Card news')} · ${x.d.cards.length}${T('장',' cards')}</span>${!thumb?`<span class="mld-monogram">${E(skEmo(x.d))}</span>`:''}</div><div class="mld-body"><span class="mld-kicker">${E(x.d.tag||T('뉴스 흐름','News brief'))}</span><b>${E(x.d.title)}</b><small>${E(intro)}</small><span class="mld-go">${T('카드 넘겨보기','Open cards')} ${NBI('arrow-right')}</span></div></a>`;
   };
-  s.innerHTML=`${sec(T('카드뉴스','Card News & Comics'),'Comics & Card News',`<a class="more" href="learn/all">${T('전체 보기','See all')} ${NBI('arrow-right')}</a>`,'boom')}
+  s.innerHTML=`${sec(T('카드뉴스','Card News'),'Card News',`<a class="more" href="learn/all">${T('전체 보기','See all')} ${NBI('arrow-right')}</a>`,'boom')}
    <div class="mldk"><div class="mlrow">${items.map(cover).join('')}</div></div>`;
   hero.insertAdjacentElement('afterend',s);
   const row=s.querySelector('.mlrow'); if(row&&window.NBT?.enableElasticCarousel) NBT.enableElasticCarousel(row)}
