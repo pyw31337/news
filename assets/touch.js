@@ -325,19 +325,22 @@ function enableElasticCarousel(el){
   const onPointerMove=e=>{
     if(!isDown||e.pointerId!==activePointerId)return;
     const dx=e.clientX-startX,dy=e.clientY-startY;
+    const thresh = isMouse ? 7 : 14;
     if(!isDragging){
-      if(Math.max(Math.abs(dx),Math.abs(dy))<5)return;
-      if(!isMouse && Math.abs(dy)>Math.abs(dx)){reset();return}
-      isDragging=true;el._dragged=true;
+      if(Math.max(Math.abs(dx),Math.abs(dy)) < thresh) return;
+      if(!isMouse && Math.abs(dy) > Math.abs(dx) * 1.2){ reset(); return; }
+      isDragging=true;
       if(isMouse){
         el.classList.add('grabbing');
         freeScroll();
         try{el.setPointerCapture(activePointerId)}catch(x){}
       }
     }
-    if(isMouse){
+    if(isDragging && isMouse){
       if(e.cancelable) e.preventDefault();
-      const now=performance.now();velX=(e.clientX-lastX)/Math.max(1,now-lastT);lastX=e.clientX;lastT=now;
+      const now=performance.now();
+      velX=(e.clientX-lastX)/Math.max(1,now-lastT);
+      lastX=e.clientX;lastT=now;
       const max=Math.max(0,el.scrollWidth-el.clientWidth);
       el.scrollLeft=Math.max(0,Math.min(max,startScroll-dx));
     }
@@ -345,7 +348,9 @@ function enableElasticCarousel(el){
 
   const onPointerEnd=e=>{
     if(!isDown||(e.pointerId!=null&&e.pointerId!==activePointerId))return;
-    const dragged=isDragging,id=activePointerId,wasMouse=isMouse;
+    const dx=Math.abs(e.clientX-startX);
+    const dragged=isDragging && (isMouse ? dx >= 7 : dx >= 14);
+    const id=activePointerId,wasMouse=isMouse;
     reset();
     if(wasMouse){
       try{el.releasePointerCapture(id)}catch(x){}
@@ -354,13 +359,14 @@ function enableElasticCarousel(el){
       restoreSnap();
       return;
     }
-    blockClicksUntil=performance.now()+400;
+    blockClicksUntil=performance.now()+320;
+    el._dragged=true;
     if(wasMouse){
       snapToCard();
     }else{
       restoreSnap();
     }
-    setTimeout(()=>{el._dragged=false},410);
+    setTimeout(()=>{el._dragged=false},350);
   };
 
   el.addEventListener('pointerdown',onPointerDown);
@@ -370,7 +376,10 @@ function enableElasticCarousel(el){
   el.addEventListener('lostpointercapture',onPointerEnd);
   el.addEventListener('dragstart',e=>e.preventDefault());
   el.addEventListener('click',e=>{
-    if(performance.now()<blockClicksUntil||el._dragged){e.preventDefault();e.stopPropagation()}
+    if(performance.now()<blockClicksUntil||el._dragged){
+      e.preventDefault();
+      e.stopPropagation();
+    }
   },true);
 }
 function bindHorizontalCarousels(root=document){

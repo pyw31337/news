@@ -58,7 +58,7 @@
   .trend-age-duo .sec{margin-top:0}
 }
 /* 가로 카드 레일: 세로 스크롤은 유지하고, 가로는 마우스·터치 모두 같은 방식으로 넘긴다. */
-.nb-drag-rail{cursor:grab;touch-action:pan-y;overscroll-behavior-x:contain;user-select:none;-webkit-user-select:none}
+.nb-drag-rail{cursor:grab;touch-action:pan-x pan-y;overscroll-behavior-x:contain;user-select:none;-webkit-user-select:none}
 .nb-drag-rail.grabbing{cursor:grabbing;will-change:scroll-position}.nb-drag-rail img{-webkit-user-drag:none}
 /* ④ 내 또래는? (하얀 배경, 깔끔한 테두리) */
 .tage-card, #tage.card{background:var(--card,#ffffff)!important;border:1px solid rgba(0,0,0,.06)!important;border-radius:var(--r-l,18px)!important;box-shadow:var(--sh)!important;padding:16px;opacity:1!important}
@@ -141,9 +141,10 @@
 .sk.sk5.sq-low[class][class]{background:linear-gradient(160deg,var(--skc),color-mix(in srgb,var(--skc) 50%,#0f1630))!important}
 .sk .sqf{display:none}
 /* ---------- 상단 오른쪽: 검색 · 알림 · 마이페이지 ---------- */
-.hsrch{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;color:#fff;background:none;border:0;cursor:pointer;flex:none;margin-left:auto}
+.hsrch{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;color:#fff;background:none;border:0;cursor:pointer;flex:none;margin-left:auto!important;order:10!important}
 .hsrch:hover{background:rgba(255,255,255,.1)}.hsrch svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.top .hsrch+.bell,.top .hsrch+.bell[class]{margin-left:0!important}
+.top .acct{order:20!important;margin-left:4px!important}
+.top .tmenu{order:30!important}
 .myq{display:flex;gap:6px;overflow-x:auto;margin:12px 0 4px;scrollbar-width:none}.myq::-webkit-scrollbar{display:none}
 .myq a{flex:none;display:inline-flex;align-items:center;gap:5px;padding:8px 12px;border-radius:99px;background:var(--card);box-shadow:var(--sh);font-size:.8rem;font-weight:800;color:var(--ink);text-decoration:none}.myq a svg{width:16px;height:16px}
 /* ---------- 검색 창 ---------- */
@@ -478,17 +479,19 @@ body.nbs-on{overflow:hidden}
   width: 100%;
 }
 
-/* ---------- 화제 섹션 필터 & 목록 스크롤바 숨김 및 정렬 ---------- */
+/* ---------- 화제 섹션 필터 & 목록 스크롤바 숨김 및 좌측 x좌표 정밀 정렬 ---------- */
 #hotf.subt, .filters.subt {
   display: flex !important;
   flex-wrap: nowrap !important;
   overflow-x: auto !important;
-  gap: 8px;
+  gap: 8px !important;
   scrollbar-width: none;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
   margin: 0 -16px 14px !important;
   padding: 4px 16px !important;
+  scroll-padding-left: 16px !important;
+  scroll-padding-inline-start: 16px !important;
 }
 #hotf.subt::-webkit-scrollbar, .filters.subt::-webkit-scrollbar { display: none; }
 #hotl.hs, .hs {
@@ -497,10 +500,15 @@ body.nbs-on{overflow:hidden}
   overflow-x: auto !important;
   scroll-snap-type: x mandatory !important;
   padding: 8px 16px 18px 16px !important;
-  margin: 0 -16px !important;
+  margin: 0 -16px 0 !important;
+  scroll-padding-left: 16px !important;
+  scroll-padding-inline-start: 16px !important;
   scrollbar-width: none;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
+}
+#hotl .card.pc:first-child {
+  margin-left: 0 !important;
 }
 #hotl.hs::-webkit-scrollbar, .hs::-webkit-scrollbar { display: none; }
 @media (min-width: 1240px) {
@@ -509,6 +517,8 @@ body.nbs-on{overflow:hidden}
     margin-right: 0 !important;
     padding-left: 0 !important;
     padding-right: 0 !important;
+    scroll-padding-left: 0 !important;
+    scroll-padding-inline-start: 0 !important;
   }
 }
 
@@ -819,10 +829,10 @@ body.nbs-on{overflow:hidden}
   text-align: center;
 }
 
-/* ---------- 가로 레일 마우스 드래그 및 스크롤 최적화 ---------- */
+/* ---------- 가로 레일 마우스 드래그 및 터치 스크롤 최적화 ---------- */
 .nb-drag-rail {
   cursor: grab;
-  touch-action: pan-y !important;
+  touch-action: pan-x pan-y !important;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
 }

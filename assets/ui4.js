@@ -7,8 +7,9 @@ const UF='<svg viewBox="0 0 24 24" class="ua1"><path d="M12 2a5 5 0 1 1 -5 5l.00
 let el=null,st=null;
 const ret=()=>{const p=location.pathname.startsWith(B)?location.pathname.slice(B.length):'';return p.startsWith('login')?'':p+location.search+location.hash};
 function draw(){const top=document.querySelector('header.top');if(!top)return;
-  if(!el){el=document.createElement('div');el.className='acct';const bell=document.getElementById('bell');if(bell)bell.after(el);else top.appendChild(el)}
-  else{const bell=document.getElementById('bell');if(bell&&el.previousElementSibling!==bell)bell.after(el)}
+  const hsrch=document.getElementById('hsrch');
+  if(!el){el=document.createElement('div');el.className='acct';if(hsrch)hsrch.after(el);else top.appendChild(el)}
+  else{if(hsrch&&el.previousElementSibling!==hsrch)hsrch.after(el)}
   const t=LS.getItem('nb-tok'),p=LS.getItem('nb-prov')||'google',k=t?p:'';if(k===st)return;st=k;
   // 마이페이지 팝업: 레이어 상단 알림 및 나의 커리어/성과 노출
   el.classList.toggle('in', !!t);
@@ -20,8 +21,10 @@ function draw(){const top=document.querySelector('header.top');if(!top)return;
     ${topAlerts.length ? `<div class="acm-alerts-list">${topAlerts.map(a=>`<a class="acm-al ${a.tone||''}" href="${a.href}"><span class="acm-al-tag">${a.lab}</span><b>${a.title}</b><p>${a.body}</p></a>`).join('')}</div>` : `<div class="acm-al-empty"><small>새로운 알림이 없어요</small></div>`}
   </div>`;
   const gameW = (window.NBGame && NBGame.lvCard && NBGame.goals) ? `<div class="acm-game">${NBGame.lvCard(true)}${NBGame.goals()}</div>` : '';
-  el.innerHTML=`<button type="button" class="acb" aria-label="내 계정" aria-haspopup="true" aria-expanded="false">${t?UF:U}${t?`<i class="acd ${p}"></i>`:''}<i class="acb-unread" style="display:${unreadCount?'':'none'}"></i></button>
+  el.innerHTML=`<button type="button" class="acb" aria-label="내 계정" aria-haspopup="true" aria-expanded="false">${t?UF:U}<i class="acb-unread" style="display:${unreadCount?'':'none'}"></i></button>
+  <div class="acm-backdrop"></div>
   <div class="acm" role="menu">
+    <div class="acm-modal-hd"><span class="acm-modal-title">마이페이지</span><button type="button" class="acm-modal-x" aria-label="닫기">✕</button></div>
     ${alertsHTML}
     <div class="ach">${UF}<div><b>${t?(({kakao:'카카오',naver:'네이버'})[p]||'구글')+' 계정':'게스트 독자'}</b><small class="${t?'ok':'guest'}">${t?'로그인됨':'로그인하고 기록 보관하기'}</small></div></div>
     ${gameW}
@@ -32,9 +35,12 @@ function draw(){const top=document.querySelector('header.top');if(!top)return;
     </div>
   </div>`;
   const b=el.querySelector('.acb');b.onclick=e=>{e.stopPropagation();const o=!el.classList.contains('open');el.classList.toggle('open',o);b.setAttribute('aria-expanded',o);if(o){if(window.NBGame){const gw=el.querySelector('.acm-game');if(gw)gw.innerHTML=NBGame.lvCard(true)+NBGame.goals()}if(typeof window.nbComputeAlerts==='function'){const freshUnread=window.nbUnreadAlerts(),freshAlerts=window.nbComputeAlerts().slice(0,3),alWrap=el.querySelector('.acm-alerts');if(alWrap)alWrap.innerHTML=`<div class="acm-alerts-hd"><span><b>알림</b>${freshUnread?`<mark class="acm-badge">${freshUnread}</mark>`:''}</span><a href="alerts">전체 보기 ›</a></div>${freshAlerts.length?`<div class="acm-alerts-list">${freshAlerts.map(a=>`<a class="acm-al ${a.tone||''}" href="${a.href}"><span class="acm-al-tag">${a.lab}</span><b>${a.title}</b><p>${a.body}</p></a>`).join('')}</div>`:`<div class="acm-al-empty"><small>새로운 알림이 없어요</small></div>`}`}}};
+  const bd=el.querySelector('.acm-backdrop'),xBtn=el.querySelector('.acm-modal-x');
+  if(bd)bd.onclick=e=>{e.stopPropagation();el.classList.remove('open');b.setAttribute('aria-expanded','false')};
+  if(xBtn)xBtn.onclick=e=>{e.stopPropagation();el.classList.remove('open');b.setAttribute('aria-expanded','false')};
   el.querySelectorAll('.acm a').forEach(a=>a.addEventListener('click',()=>el.classList.remove('open')));
   const lo=el.querySelector('.aco');if(lo)lo.onclick=async()=>{const tk=LS.getItem('nb-tok');try{await fetch(SYNC+'/logout',{method:'POST',headers:{Authorization:'Bearer '+tk}})}catch(e){}['nb-tok','nb-rev','nb-prov','nb-syncat','nb-sess'].forEach(k=>LS.removeItem(k));location.reload()}}
-document.addEventListener('click',e=>{if(el&&!el.contains(e.target))el.classList.remove('open')});
+document.addEventListener('click',e=>{if(el&&!el.contains(e.target)){el.classList.remove('open');const b=el.querySelector('.acb');if(b)b.setAttribute('aria-expanded','false')}});
 addEventListener('storage',()=>{st=null;draw()});
 const go=()=>{draw();setTimeout(draw,600)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go();
 setInterval(draw,1200);

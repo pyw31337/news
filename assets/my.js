@@ -102,7 +102,7 @@ function nav(){const tb=document.querySelector('.tabbar');if(!tb)return;
   /* PC 상단: 오늘 · 타임라인 · 마켓 · 배우기, 오른쪽 끝은 검색 · 알림 · 마이페이지 · 메뉴 */
   const TP=[['','today','오늘'],['timeline','timeline','타임라인'],['market','market','마켓'],['learn','learn','배우기']];
   const tn=document.querySelector('.topnav');if(tn)tn.innerHTML=TP.map(([h,v,l])=>`<a href="${h||'./'}" data-v="${v}">${l}</a>`).join('');
-  const top=document.querySelector('header.top');if(top&&!document.getElementById('hsrch')){const q=document.createElement('button');q.type='button';q.id='hsrch';q.className='hsrch';q.setAttribute('aria-label','검색');q.innerHTML=SV(P.search);q.onclick=()=>window.NBT?NBT.search():(location.href='/news/#search');top.appendChild(q)}
+  const top=document.querySelector('header.top');if(top&&!document.getElementById('hsrch')){const q=document.createElement('button');q.type='button';q.id='hsrch';q.className='hsrch';q.setAttribute('aria-label','검색');q.innerHTML=SV(P.search);q.onclick=()=>window.NBT?NBT.search():(location.href='/news/#search');const ac=top.querySelector('.acct');if(ac)ac.before(q);else top.appendChild(q)}
   if(top&&!document.getElementById('tmenu')){
     const m=document.createElement('a');m.id='tmenu';m.href='menu';m.className='tmenu';m.dataset.v='menu';m.setAttribute('aria-label','메뉴');m.innerHTML=SV(P.menu);top.appendChild(m)}
 }
@@ -123,8 +123,9 @@ function hotHTML(){if(typeof SUB==='undefined'||typeof subtype!=='function')retu
   return`<div class="sec"><h2><small>People · Companies · Places</small>${I('fire')}화제</h2><a class="more" href="people">전체 ${NBI('arrow-right')}</a></div><div class="filters subt grab-carousel" id="hotf">${SUB.filter(s=>s[0]!=='issue'&&hotList(s[0]).length).map(([k,v,n],i)=>`<button data-f="${k}" class="${i?'':'on'}">${I(n)}${v}</button>`).join('')}</div><div class="hs grab-carousel" id="hotl"></div>`}
 function hotList(f){return f==='reporter'?(D.reporters||[]).slice(0,12):D.entities.filter(e=>subtype(e)===f).slice(0,12)}
 function hotRep(r){const n=r.today,lr=(r.reports||[])[0];return`<a class="card pc" href="${rh(r.id)}">${reporterAvatar(r,'av')}<b>${E(r.name)}</b><small>${E(r.press||'')}${n?' · 오늘 '+n+'건':''}</small>${lr?`<span class="last">${E(lr.title)}</span>`:''}</a>`}
-function hotDraw(f){const el=document.getElementById('hotl');if(!el)return;if(f==='reporter'){const R=hotList(f);el.innerHTML=R.map(hotRep).join('');if(window.NBT?.enableElasticCarousel) window.NBT.enableElasticCarousel(el);return}const L=hotList(f);
+function hotDraw(f){const el=document.getElementById('hotl');if(!el)return;el.scrollLeft=0;if(f==='reporter'){const R=hotList(f);el.innerHTML=R.map(hotRep).join('');el.scrollLeft=0;if(window.NBT?.enableElasticCarousel) window.NBT.enableElasticCarousel(el);return}const L=hotList(f);
   el.innerHTML=L.length?L.map(e=>`<a class="card pc" href="${eh(e.name)}">${av(e)}<b>${E(e.name)}</b><small>${E(e.wiki?.desc||'')}</small>${spark(e.daily)}<span class="last">${e.timeline[0]?E(e.timeline[0].title):''}</span></a>`).join(''):'<p class="fine keep">오늘은 이 분류의 화제가 적어요.</p>';
+  el.scrollLeft=0;
   if(window.NBT?.enableElasticCarousel) window.NBT.enableElasticCarousel(el);
 }
 /* ---------- 저장 버튼 ---------- */
