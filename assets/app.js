@@ -182,10 +182,19 @@ function route(){
 }
 
 /* ---------- 마켓 위젯 ---------- */
+const mFlag=name=>{
+  const n=String(name||'').trim();
+  if(/KOSPI|코스피|KOSDAQ|코스닥|원\/|원화|국고채|한국/i.test(n))return'<span class="mflag flag-kr" title="대한민국">🇰🇷 </span>';
+  if(/S&P|나스닥|NASDAQ|다우|DOW|필라델피아|달러인덱스|WTI|금|테슬라|애플|엔비디아|마이크로소프트|구글|아마존|메타/i.test(n))return'<span class="mflag flag-us" title="미국">🇺🇸 </span>';
+  if(/엔|일본|니케이|NIKKEI/i.test(n))return'<span class="mflag" title="일본">🇯🇵 </span>';
+  if(/유로|EURO/i.test(n))return'<span class="mflag" title="유럽">🇪🇺 </span>';
+  if(/위안|상하이|CSI/i.test(n))return'<span class="mflag" title="중국">🇨🇳 </span>';
+  return'';
+};
 const up=m=>m.dir==='RISING'?'up':m.dir==='FALLING'?'down':'';
 const mrate=(m,d)=>`${d==='down'?'-':d==='up'?'+':''}${esc(String(m.rate??'').replace(/^[-+]/,''))}%`;/* 원자료에 부호가 이미 있어 '--5.12%'로 겹치던 문제 */
 function mcard(m,big){const d=up(m),s=d==='up'?NBI('caret-up-f'):d==='down'?NBI('caret-down-f'):'';
-  return`<a class="mk ${d} ${big?'big':''}" href="market/${encodeURIComponent(m.name)}" aria-label="${esc(m.name)} 자세히 보기"><span class="n">${esc(m.name)}${m.unit?`<i>${esc(m.unit)}</i>`:''}</span><b>${esc(m.price)}</b><em>${s} ${esc(String(m.diff??'').replace(/^[-+]/,''))} (${mrate(m,d)})</em>${line(m.series,120,big?44:28,d==='down'?'#2f6bff':'#ff4d2e',{name:m.name,step:'거래일 전',unit:m.unit==='%'?'%':''})}</a>`}
+  return`<a class="mk ${d} ${big?'big':''}" href="market/${encodeURIComponent(m.name)}" aria-label="${esc(m.name)} 자세히 보기"><span class="n">${mFlag(m.name)}${esc(m.name)}${m.unit?`<i>${esc(m.unit)}</i>`:''}</span><b>${esc(m.price)}</b><em>${s} ${esc(String(m.diff??'').replace(/^[-+]/,''))} (${mrate(m,d)})</em>${line(m.series,120,big?44:28,d==='down'?'#2f6bff':'#ff4d2e',{name:m.name,step:'거래일 전',unit:m.unit==='%'?'%':''})}</a>`}
 /* ---------- 마켓 항목 상세(카드를 누르면): assets/mkt.js ---------- */
 function mdetail(a){const m=(D.market||[]).find(x=>x.name===a);if(!m||!window.nbMkt)return market();nbMkt(m)}
 function marketStrip(){const M=D.market||[];if(!M.length)return'';
@@ -198,7 +207,7 @@ function today(){
   /* 썸네일(사진)이 있는 이슈만 최상단 카드 덱과 사이드 목록에 노출 */
   const hasPic = i => Boolean(i && ((i.image && i.image.trim()) || (i.gallery && i.gallery.some(g => g && g.img && g.img.trim()))));
   const heroI = (I.filter(hasPic).length ? I.filter(hasPic) : I).slice(0, 10);
-  const side=heroI.map(i=>`<div class="srow" data-id="${i.id}"><div><a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image||(i.gallery&&i.gallery[0]&&i.gallery[0].img))}<div class="tx"><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><h3>${esc(i.title)}</h3><div class="m">${ic('news')}${esc(i.press)} 외 ${i.presses-1}곳 ${i.opinion?`· ${ic('chat')}${i.opinion.total.toLocaleString()}`:''}</div></div></a></div></div>`).join('');
+  const side=heroI.map(i=>`<div class="srow" data-id="${i.id}"><div><a class="card mini" href="issue/${i.id}"><div class="mini-meta"><div class="mini-left"><span class="n">${i.rank}</span><span class="cat ${i.category}">${ic(i.category)}${i.category}</span></div><button type="button" class="mini-later rlater" data-later="${i.id}" aria-label="나중에 읽기" aria-pressed="false" title="나중에 읽기">${window.GI?GI('bookmark-plus'):(typeof NBI==='function'?NBI('bookmark'):'')}</button></div><div class="mini-content">${th(i.image||(i.gallery&&i.gallery[0]&&i.gallery[0].img))}<div class="tx"><h3>${esc(i.title)}</h3><div class="m">${ic('news')}${esc(i.press)} 외 ${i.presses-1}곳 ${i.opinion?`· ${ic('chat')}${i.opinion.total.toLocaleString()}`:''}</div></div></div></a></div></div>`).join('');
   const cats={};I.forEach(i=>cats[i.category]=(cats[i.category]||0)+1);
   /* TOP 10·화제·검색어·단어는 '만지는 뉴스' 모듈(assets/touch.js, v2 실험실에서 확정)로 그림 */
   // 오늘의 단어는 수집·검수한 하루치 10개를 그대로 보여 준다.
@@ -215,7 +224,7 @@ function today(){
     <div class="side">${side}</div>
   </section>
   ${marketStrip()}
-  ${sec('오늘의 이슈 TOP 10','Today’s Top 10',`<a class="more" href="settings">${ic('gear')}${S.age?`${AGEP[S.age].n} 맞춤 · 읽기 ${READN[S.read||'std']}`:'나에게 맞춤 설정'}</a>`,'fire')}
+  ${sec('오늘의 이슈 TOP 10','Today’s Top 10',`<a class="more" href="settings">${ic('gear')}설정</a>`,'fire')}
   ${NBT.sinceHTML(I)}
   ${NBT.mosaicHTML(I)}
   ${NBT.voteHTML(I)}
@@ -428,12 +437,7 @@ function reportersDesk(){const L=reporters();if(!L.length)return'<div class="not
 function reportersPreview(){const L=reporters().slice(0,4);if(!L.length)return'';return`<section class="rep-preview card"><div><small>${ic('press')} REPORTER DESK · ${L.length}명</small><b>오늘 기사에 연결된 기자</b><span>보도 기록·전문 분야를 함께 봐요</span></div><a href="people" data-open-reporters>전체 보기 ${NBI('arrow-right')}</a><div class="rep-preview-list">${L.map(r=>`<a href="${rh(r.id)}">${reporterAvatar(r,'rav mini')}<span><b>${esc(r.name)} 기자</b><small>${esc(r.press||'')}</small></span></a>`).join('')}</div></section>`}
 /* 메인의 화제는 수평 레일이 아니라 한 화면에서 훑는 여섯 칸이다. 당일 기사만으로
    카테고리가 비면, 이미 쌓인 기록이 많은 대상도 보충해 기자·기업·장소·기관이 사라지지 않게 한다. */
-function homeTrending(){const pool=[],seen=new Set(),add=x=>{if(x&&!seen.has(x.key)){seen.add(x.key);pool.push(x)}};
-  reporters().sort((a,b)=>reporterCount(b)-reporterCount(a)).slice(0,2).forEach(r=>add({key:'r:'+r.id,href:rh(r.id),name:r.name+' 기자',desc:r.press||'기자',type:'reporter',avatar:reporterAvatar(r,'av')}));
-  const E=(D.entities||[]).slice().sort((a,b)=>(b.score||0)-(a.score||0));
-  ['company','place','inst','person'].forEach(kind=>{const e=E.find(x=>subtype(x)===kind);if(e)add({key:'e:'+e.name,href:eh(e.name),name:e.name,desc:SUB.find(x=>x[0]===kind)?.[1]||TYPE[e.type],type:e.type,avatar:av(e)})});
-  E.forEach(e=>add({key:'e:'+e.name,href:eh(e.name),name:e.name,desc:SUB.find(x=>x[0]===subtype(e))?.[1]||TYPE[e.type],type:e.type,avatar:av(e)}));
-  const L=pool.slice(0,6);if(!L.length)return'';return`${sec('화제','Trending people · reporters · places',`<a class="more" href="people">전체 보기 ${NBI('arrow-right')}</a>`,'fire')}<div class="hot-grid">${L.map(x=>`<a class="hot-entity card" href="${x.href}"><div class="ph">${x.avatar}<div><b>${esc(x.name)}</b><small>${esc(x.desc)}</small></div></div></a>`).join('')}</div>`}
+function homeTrending(){return''}
 function people(){
   let f=sessionStorage.getItem('nb-sub')||'person';
   app.innerHTML=`${sec('화제','Trending people · companies · places','','fire')}<p class="lede">지금 뉴스에 오르내리는 대상들을 분류별로 모았어요. 인물·기자 카드는 보도 기록과 연도별 흐름을 함께 보여줍니다.</p><div class="filters subt" id="f">${SUB.map(([k,v,icn])=>`<button data-f="${k}" class="${k===f?'on':''}">${ic(icn)}${v}${k==='reporter'&&reporters().length?`<em>${reporters().length}</em>`:''}</button>`).join('')}</div><div id="pg"></div>`;
@@ -474,13 +478,12 @@ function graph(el,mini){
   let W=el.clientWidth||360,H=el.clientHeight||460,col={person:'#ff4d2e',place:'#11a683',org:'#7a4dff',event:'#ffb020'};
   let small=W<500,fs=mini||small?10.5:12;
   const N=[],idx={},E=[];
-  const cut=(s,m)=>s.length>m?s.slice(0,m-1)+'…':s;
-  
-  // 모바일/미니 뷰에서는 주요 핵심 노드 중심으로 정제하여 겹침 없이 쾌적하게 노출
-  const entitiesPool = (mini || small) ? D.entities.slice(0, small ? 6 : 9) : D.entities;
-  const issuesPool = (mini || small) ? D.issues.filter(vis).slice(0, small ? 4 : 6) : D.issues.filter(vis);
 
-  // 모든 엔티티 노드 썸네일 확보 (위키/비주얼 우선, 없으면 관련 이슈 사진 활용)
+  // 모바일과 데스크톱 모두 풍성하면서도 정돈된 노드 풀 구성
+  const entitiesPool = (mini || small) ? D.entities.slice(0, small ? 9 : 14) : D.entities.slice(0, 20);
+  const issuesPool = (mini || small) ? D.issues.filter(vis).slice(0, small ? 5 : 7) : D.issues.filter(vis).slice(0, 10);
+
+  // 모든 엔티티 노드 썸네일 확보 (생략 '…' 없이 온전한 키워드 노출)
   entitiesPool.forEach(e=>{
     const media=entityMedia(e);
     let img=media.url;
@@ -491,18 +494,34 @@ function graph(el,mini){
       }
     }
     idx[e.name]=N.length;
-    N.push({id:e.name,lab:cut(e.name,small?7:10),t:e.type,r:Math.min(small?18:24,(small?8:10)+Math.sqrt(e.score)/(small?2.2:1.6)),href:eh(e.name),img,kind:media.kind});
+    N.push({id:e.name,lab:e.name,t:e.type,r:Math.min(small?18:24,(small?8:10)+Math.sqrt(e.score)/(small?2.2:1.6)),href:eh(e.name),img,kind:media.kind});
   });
 
-  // 모든 이슈 노드 썸네일 확보
+  // 모든 이슈 노드 썸네일 확보 및 관계망 연결
   issuesPool.forEach(i=>{
     idx[i.id]=N.length;
     const img=i.image || (i.gallery && i.gallery[0] && i.gallery[0].img) || '';
-    N.push({id:i.id,lab:cut(i.rank+'위 '+i.keywords.slice(0,2).join('·'),small?8:12),t:'issue',r:small?13:16,href:'issue/'+i.id,img,kind:'issue'});
-    i.entities.forEach(n=>{if(n in idx)E.push([idx[i.id],idx[n],3])});
+    const kwLabel = i.keywords && i.keywords[0] ? i.keywords[0] : i.category;
+    N.push({id:i.id,lab:`${i.rank}위 ${kwLabel}`,t:'issue',r:small?13:16,href:'issue/'+i.id,img,kind:'issue'});
+    let linked = false;
+    i.entities.forEach(n=>{if(n in idx){E.push([idx[i.id],idx[n],3]);linked=true}});
+    if(!linked && issuesPool.length>1){
+      const other = issuesPool.find(x => x.id !== i.id && x.category === i.category) || issuesPool[0];
+      if(other && other.id in idx) E.push([idx[i.id], idx[other.id], 2]);
+    }
   });
 
   D.links.forEach(l=>{if(l.a in idx&&l.b in idx)E.push([idx[l.a],idx[l.b],l.n])});
+
+  // 모든 엔티티가 관계망 선으로 연결되도록 보강
+  entitiesPool.forEach(e=>{
+    const myIdx = idx[e.name];
+    const hasEdge = E.some(([a,b]) => a === myIdx || b === myIdx);
+    if(!hasEdge && issuesPool.length){
+      const relIssue = issuesPool.find(i => (i.entities||[]).includes(e.name) || (e.issues||[]).includes(i.id)) || issuesPool[0];
+      if(relIssue && relIssue.id in idx) E.push([myIdx, idx[relIssue.id], 2]);
+    }
+  });
 
   // 고른 분포와 겹침 없는 배치를 위한 레이아웃 연산 함수
   const solveLayout = (targetW, targetH) => {

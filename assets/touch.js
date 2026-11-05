@@ -24,20 +24,24 @@ const hasPic = i => Boolean(i && ((i.image && i.image.trim()) || (i.gallery && i
 function mosaicHTML(I){return`<div class="tmo" id="tmo" aria-label="오늘의 이슈 TOP 10"></div>`}
 function mosaic(I){if(location.hash==='#search'){history.replaceState(null,'',location.pathname);setTimeout(search,300)}const el=$('#tmo');if(!el)return;
   const draw=()=>{const W=el.clientWidth||360;
-    const validI = I.filter(hasPic);
-    const pool = (validI.length ? validI : I).slice(0,10);
+    const heroIds = new Set((I.filter(hasPic).length ? I.filter(hasPic) : I).slice(0, 10).map(x => x.id));
+    const nonHero = I.filter(x => !heroIds.has(x.id));
+    const validNonHero = nonHero.filter(hasPic);
+    const pool = (validNonHero.length >= 10 ? validNonHero : (nonHero.concat(I.filter(hasPic)))).slice(0, 10);
     if(W < 720){
       el.style.height = 'auto';
       el.className = 'tmo tmo-mobile';
       el.innerHTML = pool.map(i => {
         const o = OP(i), p = pic(i);
+        const pl = typeof plogo === 'function' ? plogo(i.press, i.url, 'pl') : ic('news');
         return `<a class="tmo-mcard card" href="issue/${i.id}">
-          <div class="tmo-mimg" ${p ? bg(p) : ''}><span class="tmo-mrank"><b>${i.rank}</b>위</span><span class="cat ${i.category}">${esc(i.category)}</span></div>
+          <div class="tmo-mimg" ${p ? bg(p) : ''}><span class="tmo-mrank"><b>${i.rank}</b>위</span></div>
           <div class="tmo-mbody">
+            <span class="cat ${i.category}">${esc(i.category)}</span>
             <h4 class="tmo-mtitle">${esc(i.title)}</h4>
             ${(i.summary&&i.summary[0]) ? `<p class="tmo-msum">${esc(i.summary[0])}</p>` : ''}
             <div class="tmo-mmeta">
-              <span>${ic('news')}${esc(i.press||'')}</span>
+              <span class="tmo-mpress">${pl}${esc(i.press||'')}</span>
               ${o.total ? `<span>${ic('chat')}댓글 ${nf(o.total)}개</span>` : ''}
             </div>
           </div>
@@ -83,7 +87,7 @@ function voteCardRes(i, myChoice){
   return `<div class="tvr go">
     <div class="tvm"><b>${pct}%</b><span>가 나와 같은 생각이에요</span></div>
     <div class="tdsplit tvsplit">${S.map((x,j)=>`<i class="s${j} ${j===myChoice?'me':''}" style="--w:${Math.max(10,Math.round((x.share||0)/tot*100))}%"><em>${Math.round((x.share||0)/tot*100)}%</em></i>`).join('')}</div>
-    <div class="tdl tvl">${S.map((x,j)=>`<div class="s${j} ${j===myChoice?'me':''}"><div class="tvlh"><b>${esc(x.label)}</b>${j===myChoice?'<span class="mepill">내 선택</span>':''}</div>${x.desc?`<p>${esc(short(x.desc,72))}</p>`:''}</div>`).join('')}</div>
+    <div class="tdl tvl">${S.map((x,j)=>`<div class="s${j} ${j===myChoice?'me':''}"><div class="tvlh"><b>${esc(x.label)}</b></div>${x.desc?`<p>${esc(short(x.desc,72))}</p>`:''}</div>`).join('')}</div>
     ${A&&Object.keys(A).length?`<div class="tdage tvage"><small>댓글 연령별 참여 분포</small><div class="tvag">${Object.entries(A).map(([a,v])=>`<span><i style="--h:${Math.round(v/am*100)}%"></i><b>${v}%</b><small>${a}대</small></span>`).join('')}</div></div>`:''}
     <div class="tvmeta"><span>${ic('chat')}댓글 ${nf(OP(i).total||(lk(i)+dl(i))||120)}개 기반</span><a href="issue/${i.id}#comments">토론 참여 ›</a></div>
   </div>`;
@@ -91,8 +95,7 @@ function voteCardRes(i, myChoice){
 
 function voteCardAsk(i){
   const S=getStances(i);
-  return `<p class="tvask">이 사안, 어느 쪽에 더 가까우신가요?</p>
-  <div class="tvbt-wrap">
+  return `<div class="tvbt-wrap">
     <button type="button" data-k="0" class="s0"><b>${esc(S[0].label)}</b></button>
     <div class="tv-vs-badge" aria-hidden="true">VS</div>
     <button type="button" data-k="1" class="s1"><b>${esc(S[1].label)}</b></button>
@@ -104,7 +107,7 @@ function voteHTML(I){
   const P = (valid.length ? valid : I).filter(i => (((i.ai||{}).opinion||{}).stances||[]).length >= 2 || lk(i) + dl(i) > 8);
   if(!P.length) return '';
   const VT = LS('nb-v2-vote', {});
-  return sec('나라면?','What would you say?','<span class="more">내 생각을 고르면 의견 분포가 열려요</span>','chat')+
+  return sec('나라면?','What would you say?','','chat')+
     `<div class="tvrow grab-carousel" id="tvote">${P.map(i=>`<div class="tvc card" data-id="${i.id}">
       <a class="tvp" href="issue/${i.id}" ${pic(i)?bg(pic(i)):''}></a>
       <div class="tv-cat"><span class="cat ${i.category}">${esc(i.category)}</span></div>
@@ -180,7 +183,7 @@ function wordsHTML(W){if(!W||!W.length)return'';
           <div class="twq">${has ? `<p>${blank}</p>` : `<p><b>${sq}</b> · 이 뜻을 가진 시사 단어는?</p>`}</div>
         </div>
         <div class="twa">
-          <div class="twr"><b>${esc(w.word)}</b><small>${esc(short((w.wiki||{}).desc||mean,40))}</small>${ex.url?`<a href="${esc(ex.url)}" target="_blank" rel="noopener">기사 보기 ${NBI('arrow-up-right')}</a>`:''}</div>
+          <div class="twr"><b>${esc(w.word)}</b><small>${esc(((w.wiki||{}).desc||mean||'').split(/(?<=[.!?])\s+/)[0] || ((w.wiki||{}).desc||mean||''))}</small>${ex.url?`<a href="${esc(ex.url)}" target="_blank" rel="noopener">기사 보기 ${NBI('arrow-up-right')}</a>`:''}</div>
           <canvas aria-label="긁어서 정답 보기"></canvas>
         </div>
         ${mean ? `<button type="button" class="twh" data-hint="${esc(mean)}" title="${esc(mean)}"><span>힌트</span></button><p class="tw-tip" hidden>${esc(mean)}</p>` : ''}
@@ -331,7 +334,7 @@ function enableElasticCarousel(el){
   };
   const onPointerDown=e=>{
     if(e.isPrimary===false||(e.button!=null&&e.button!==0)||el.scrollWidth<=el.clientWidth+1)return;
-    if(e.target.closest('canvas,input,textarea,select,button,summary,label,[data-no-drag]'))return;
+    if(e.target.closest('canvas,input,textarea,select,summary,label,[data-no-drag]'))return;
     clearTimeout(snapTimer);restoreSnap();flushScroll();
     isDown=true;isDragging=false;activePointerId=e.pointerId;
     startX=lastX=e.clientX;startY=e.clientY;startScroll=el.scrollLeft;lastT=performance.now();velX=0;
