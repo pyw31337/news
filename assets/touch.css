@@ -428,56 +428,6 @@ body.nbs-on{overflow:hidden}
   padding: 14px;
 }
 
-/* ---------- 사이드 미니 카드 (랭킹+카테고리+북마크) 공통 ---------- */
-.mini-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding-bottom: 4px;
-}
-.mini-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.mini-left .n {
-  font-family: var(--serif);
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: var(--ink);
-  line-height: 1;
-}
-.mini-left .cat {
-  font-size: 0.68rem;
-  padding: 2px 7px;
-  border-radius: 5px;
-}
-.mini-later {
-  background: transparent;
-  border: 0;
-  padding: 4px;
-  cursor: pointer;
-  color: var(--mute);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  transition: color .15s, transform .15s;
-}
-.mini-later svg, .mini-later .nbi {
-  width: 16px;
-  height: 16px;
-}
-.mini-later:hover, .mini-later.on {
-  color: var(--acc, #ff4d2e);
-}
-.mini-content {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-}
 
 /* ---------- 화제 섹션 필터 & 목록 스크롤바 숨김 및 좌측 x좌표 정밀 정렬 ---------- */
 #hotf.subt, .filters.subt {
@@ -522,54 +472,8 @@ body.nbs-on{overflow:hidden}
   }
 }
 
-/* ---------- 모바일 320px 리스트 및 마켓 스트립 최적화 ---------- */
+/* ---------- 모바일 마켓 스트립 최적화 ---------- */
 @media (max-width: 640px) {
-  .side .card.mini {
-    display: flex;
-    flex-direction: column;
-    padding: 14px 16px;
-    gap: 8px;
-    align-items: stretch;
-  }
-  .side .card.mini .mini-left .n {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    min-width: 26px;
-    height: 22px;
-    padding: 0 6px;
-    border-radius: 6px;
-    background: var(--acc, #ff4d2e);
-    color: #fff;
-    font-size: 0.8rem;
-    font-weight: 900;
-  }
-  .side .card.mini .mini-content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: stretch;
-  }
-  .side .card.mini .th {
-    width: 100%;
-    height: 140px;
-    border-radius: 12px;
-    order: 2;
-  }
-  .side .card.mini .tx {
-    order: 1;
-    padding-right: 0 !important;
-  }
-  .side .card.mini h3 {
-    font-size: 1rem;
-    line-height: 1.45;
-    -webkit-line-clamp: unset;
-    display: block;
-    margin-top: 4px;
-    overflow-wrap: anywhere;
-    word-break: keep-all;
-  }
   .mkrow > :nth-child(n+5) {
     display: none !important;
   }

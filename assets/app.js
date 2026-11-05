@@ -205,9 +205,7 @@ function today(){
   const I=D.issues.filter(vis);if(!I.length){app.innerHTML='<div class="note">설정에서 모든 카테고리를 껐어요. <a href="settings">설정</a></div>';return}
   const L=I[0],mx=Math.max(...I.map(i=>i.score));
   /* 썸네일(사진)이 있는 이슈만 최상단 카드 덱과 사이드 목록에 노출 */
-  const hasPic = i => Boolean(i && ((i.image && i.image.trim()) || (i.gallery && i.gallery.some(g => g && g.img && g.img.trim()))));
-  const heroI = (I.filter(hasPic).length ? I.filter(hasPic) : I).slice(0, 10);
-  const side=heroI.map(i=>`<div class="srow" data-id="${i.id}"><div><a class="card mini" href="issue/${i.id}"><div class="mini-meta"><div class="mini-left"><span class="n">${i.rank}</span><span class="cat ${i.category}">${ic(i.category)}${i.category}</span></div><button type="button" class="mini-later rlater" data-later="${i.id}" aria-label="나중에 읽기" aria-pressed="false" title="나중에 읽기">${window.GI?GI('bookmark-plus'):(typeof NBI==='function'?NBI('bookmark'):'')}</button></div><div class="mini-content">${th(i.image||(i.gallery&&i.gallery[0]&&i.gallery[0].img))}<div class="tx"><h3>${esc(i.title)}</h3><div class="m">${ic('news')}${esc(i.press)} 외 ${i.presses-1}곳 ${i.opinion?`· ${ic('chat')}${i.opinion.total.toLocaleString()}`:''}</div></div></div></a></div></div>`).join('');
+  const side=heroI.map(i=>`<div class="srow" data-id="${i.id}"><div><a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image||(i.gallery&&i.gallery[0]&&i.gallery[0].img))}<div class="tx"><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><h3>${esc(i.title)}</h3><div class="m">${ic('news')}${esc(i.press)} 외 ${i.presses-1}곳 ${i.opinion?`· ${ic('chat')}${i.opinion.total.toLocaleString()}`:''}</div></div></a></div></div>`).join('');
   const cats={};I.forEach(i=>cats[i.category]=(cats[i.category]||0)+1);
   /* TOP 10·화제·검색어·단어는 '만지는 뉴스' 모듈(assets/touch.js, v2 실험실에서 확정)로 그림 */
   // 오늘의 단어는 수집·검수한 하루치 10개를 그대로 보여 준다.
