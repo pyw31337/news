@@ -102,9 +102,9 @@ function nav(){const tb=document.querySelector('.tabbar');if(!tb)return;
   /* PC 상단: 오늘 · 타임라인 · 마켓 · 배우기, 오른쪽 끝은 검색 · 알림 · 마이페이지 · 메뉴 */
   const TP=[['','today','오늘'],['timeline','timeline','타임라인'],['market','market','마켓'],['learn','learn','배우기']];
   const tn=document.querySelector('.topnav');if(tn)tn.innerHTML=TP.map(([h,v,l])=>`<a href="${h||'./'}" data-v="${v}">${l}</a>`).join('');
-  const top=document.querySelector('header.top');if(top&&!document.getElementById('hsrch')){const q=document.createElement('button');q.type='button';q.id='hsrch';q.className='hsrch';q.setAttribute('aria-label','검색');q.innerHTML=SV(P.search);q.onclick=()=>window.NBT?NBT.search():(location.href='/news/#search');const bl=document.getElementById('bell');bl?bl.before(q):top.appendChild(q)}
-  if(top&&!document.getElementById('bell')){const b=document.createElement('a');b.id='bell';b.href='alerts';b.className='bell';b.setAttribute('aria-label','알림');b.innerHTML=SV(P.bell)+'<i id="bellc"></i>';top.appendChild(b);const q=document.getElementById('hsrch');if(q)b.before(q);
-    const m=document.createElement('a');m.href='menu';m.className='tmenu';m.dataset.v='menu';m.setAttribute('aria-label','메뉴');m.innerHTML=SV(P.menu);top.appendChild(m)}
+  const top=document.querySelector('header.top');if(top&&!document.getElementById('hsrch')){const q=document.createElement('button');q.type='button';q.id='hsrch';q.className='hsrch';q.setAttribute('aria-label','검색');q.innerHTML=SV(P.search);q.onclick=()=>window.NBT?NBT.search():(location.href='/news/#search');top.appendChild(q)}
+  if(top&&!document.getElementById('tmenu')){
+    const m=document.createElement('a');m.id='tmenu';m.href='menu';m.className='tmenu';m.dataset.v='menu';m.setAttribute('aria-label','메뉴');m.innerHTML=SV(P.menu);top.appendChild(m)}
 }
 addEventListener('nb:region-changed',nav);
 const VMAP={'':'today',issue:'today',kw:'today',g:'today',gt:'today',entity:'today',people:'today',market:'market',timeline:'timeline',my:'my',alerts:'my',learn:'learn',quiz:'learn',comic:'learn',cards:'learn'};
@@ -228,7 +228,9 @@ function computeAlerts(){const out=[],ls=M.alerts.lastSeen||0,on=M.alerts.on;if(
   if(on.quiz){let L={};try{L=JSON.parse(localStorage.getItem('nb-learn')||'{}')}catch(e){}const d=new Date();const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');if(!(L.days&&L.days[k]&&L.days[k].done))out.push({id:'q-'+k,ty:'quiz',ic:'book',lab:'퀴즈',title:'오늘의 단어 퀴즈가 기다려요',body:'3분이면 끝나요. 연속 기록을 이어가세요!',href:'quiz',t:D.updated})}
   return out}
 function unread(){return computeAlerts().filter(a=>!M.alerts.seen[a.id]).length}
-function badge(){const c=document.getElementById('bellc');if(!c)return;const n=unread();c.textContent=n>9?'9+':n||'';c.style.display=n?'':'none'}
+window.nbComputeAlerts=()=>computeAlerts();
+window.nbUnreadAlerts=()=>unread();
+function badge(){const n=unread();const c=document.getElementById('bellc');if(c){c.textContent=n>9?'9+':n||'';c.style.display=n?'':'none'}const dot=document.querySelector('.acb-unread');if(dot)dot.style.display=n?'':'none'}
 const TYP=[['kw','키워드 알림','내 키워드가 들어간 새 기사','search'],['follow','팔로우 업데이트','따라가는 이슈·인물·키워드의 새 소식','bell'],['ind','지표 변동','관심 지표가 기준보다 크게 움직일 때','chart'],['apt','아파트 실거래','관심 지역에 새 거래가 잡힐 때','apt'],['quiz','퀴즈 리마인더','오늘 퀴즈를 아직 안 풀었을 때','quiz'],['reply','댓글·답글','내 댓글에 답글이 달릴 때','chat']];
 function alerts(sub){setMeta('알림','');if(sub==='settings')return alertSet();
   const A=computeAlerts();app.innerHTML=`<div class="sec"><h2><small>Notifications</small>${I('bell')}알림</h2><a class="more" href="alerts/settings">설정 ${NBI('arrow-right')}</a></div>

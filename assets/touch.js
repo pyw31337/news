@@ -112,7 +112,6 @@ function voteHTML(I){
       <a class="tvp" href="issue/${i.id}" ${pic(i)?bg(pic(i)):''}></a>
       <div class="tv-cat"><span class="cat ${i.category}">${esc(i.category)}</span></div>
       <div class="tvb-title"><a href="issue/${i.id}"><b>${esc(i.title)}</b></a></div>
-      ${(i.summary&&i.summary[0]) ? `<div class="tvb-sum">${esc(short(i.summary[0],75))}</div>` : ''}
       <div class="tvq">${VT[i.id]!=null ? voteCardRes(i, VT[i.id]) : voteCardAsk(i)}</div>
     </div>`).join('')}</div>`;
 }
@@ -171,7 +170,7 @@ function wordsHTML(W){if(!W||!W.length)return'';
   // 생성 파이프라인은 정확히 열 문제를 보장한다. 화면에서도 임의로 여섯 개로
   // 잘라 버리지 않아 하루 학습량과 표시 수가 어긋나지 않게 한다.
   const finalW = diverseW.length >= Math.min(10,W.length) ? diverseW : W.slice(0, 10);
-  return sec('오늘의 단어','Words of the day','<span class="more">긁으면 정답이 나와요</span>','quiz')+
+  return sec('오늘의 단어','Words of the day','','quiz')+
     `<div class="tws grab-carousel" id="tword-deck">${finalW.map((w,k)=>{
       const ex=(w.examples||[]).find(x=>(x.title||'').includes(w.word))||(w.examples||[])[0]||{}, t=ex.title||'', has=t.includes(w.word);
       const sq = '□'.repeat(w.word ? w.word.length : 2);
@@ -277,96 +276,93 @@ function trends(T){
 }
 
 /* ---------- Ⓧ 가로 카드 레일: 마우스 끌기 · 터치 스와이프 · 스냅 복귀 ---------- */
-const CARD_RAILS='.mlrow,.tvrow,.tws,.hs,.sns,.tsnl,.deck,.ctrack,.galr,.lpast';
+const CARD_RAILS='#tvote,#tword-deck,#hotl,#hotf,#ttr .ttc,#tage .tagc,.mlrow,.tvrow,.tws,.hs,.sns,.tsnl,.deck,.ctrack,.galr,.lpast,.grab-carousel,.filters.subt';
 function enableElasticCarousel(el){
   if(!el || el._elastic) return;
   el._elastic = true;
   el.classList.add('nb-drag-rail');
-  let isDown=false,isDragging=false,startX=0,startY=0,startScroll=0,lastX=0,lastT=0,velX=0,activePointerId=null,blockClicksUntil=0,snapTimer=0,scrollFrame=0,pendingScroll=null,savedSnap=null,savedBehavior=null;
+  let isDown=false,isDragging=false,isMouse=false,startX=0,startY=0,startScroll=0,lastX=0,lastT=0,velX=0,activePointerId=null,blockClicksUntil=0,snapTimer=0;
 
-  // CSS scroll-snap은 드래그하는 매 순간에도 가장 가까운 카드로 되돌리려 한다.
-  // 손가락/마우스를 잡은 동안에는 완전히 끄고, 놓은 뒤에만 한 번 정렬한다.
   const freeScroll=()=>{
     clearTimeout(snapTimer);
-    if(savedSnap===null){
-      savedSnap=el.style.scrollSnapType;
-      savedBehavior=el.style.scrollBehavior;
-    }
-    el.style.scrollSnapType='none';
-    el.style.scrollBehavior='auto';
+    el.classList.add('free-scroll');
   };
   const restoreSnap=()=>{
-    if(savedSnap===null)return;
-    el.style.scrollSnapType=savedSnap;
-    el.style.scrollBehavior=savedBehavior;
-    savedSnap=savedBehavior=null;
-  };
-  const flushScroll=()=>{
-    if(!scrollFrame)return;
-    cancelAnimationFrame(scrollFrame);scrollFrame=0;
-    if(pendingScroll!==null){el.scrollLeft=pendingScroll;pendingScroll=null}
-  };
-  const queueScroll=left=>{
-    pendingScroll=left;
-    if(scrollFrame)return;
-    scrollFrame=requestAnimationFrame(()=>{
-      scrollFrame=0;
-      if(pendingScroll!==null){el.scrollLeft=pendingScroll;pendingScroll=null}
-    });
+    el.classList.remove('free-scroll');
   };
 
   const reset=()=>{
-    isDown=false;isDragging=false;activePointerId=null;
+    isDown=false;isDragging=false;isMouse=false;activePointerId=null;
     el.classList.remove('grabbing');
   };
+
   const snapToCard=()=>{
     const max=Math.max(0,el.scrollWidth-el.clientWidth),cur=el.scrollLeft,cards=[...el.children];
     if(!cards.length||!max)return;
-    const target=cur+(Math.abs(velX)>.35?(velX<0?Math.min(el.clientWidth*.55,180):-Math.min(el.clientWidth*.55,180)):0);
+    const momentum = Math.abs(velX) > 0.25 ? (velX < 0 ? Math.min(el.clientWidth * 0.6, 220) : -Math.min(el.clientWidth * 0.6, 220)) : 0;
+    const target = cur + momentum;
     let best=0,diff=Infinity;
-    cards.forEach(card=>{const next=Math.min(max,Math.max(0,card.offsetLeft));const d=Math.abs(next-target);if(d<diff){diff=d;best=next}});
-    // release 직후에도 CSS snap을 잠시 끈 상태로 두면 브라우저의 강제 스냅과
-    // 이 부드러운 정렬이 서로 싸우지 않는다.
+    cards.forEach(card=>{
+      const next=Math.min(max,Math.max(0,card.offsetLeft - (el.offsetLeft || 0)));
+      const d=Math.abs(next-target);
+      if(d<diff){diff=d;best=next}
+    });
     freeScroll();
     if(el.scrollTo)el.scrollTo({left:best,behavior:RM()?'auto':'smooth'});else el.scrollLeft=best;
     clearTimeout(snapTimer);
-    snapTimer=setTimeout(restoreSnap,RM()?0:520);
+    snapTimer=setTimeout(restoreSnap,RM()?0:450);
   };
+
   const onPointerDown=e=>{
     if(e.isPrimary===false||(e.button!=null&&e.button!==0)||el.scrollWidth<=el.clientWidth+1)return;
-    if(e.target.closest('canvas,input,textarea,select,summary,label,[data-no-drag]'))return;
-    clearTimeout(snapTimer);restoreSnap();flushScroll();
+    if(e.target.closest('input,textarea,select,summary,label,[data-no-drag]'))return;
+    clearTimeout(snapTimer);
     isDown=true;isDragging=false;activePointerId=e.pointerId;
+    isMouse=e.pointerType==='mouse';
     startX=lastX=e.clientX;startY=e.clientY;startScroll=el.scrollLeft;lastT=performance.now();velX=0;
   };
+
   const onPointerMove=e=>{
     if(!isDown||e.pointerId!==activePointerId)return;
     const dx=e.clientX-startX,dy=e.clientY-startY;
     if(!isDragging){
-      if(Math.max(Math.abs(dx),Math.abs(dy))<6)return;
-      if(Math.abs(dy)>Math.abs(dx)){reset();return}
-      isDragging=true;el._dragged=true;el.classList.add('grabbing');
-      freeScroll();
-      try{el.setPointerCapture(activePointerId)}catch(x){}
+      if(Math.max(Math.abs(dx),Math.abs(dy))<5)return;
+      if(!isMouse && Math.abs(dy)>Math.abs(dx)){reset();return}
+      isDragging=true;el._dragged=true;
+      if(isMouse){
+        el.classList.add('grabbing');
+        freeScroll();
+        try{el.setPointerCapture(activePointerId)}catch(x){}
+      }
     }
-    e.preventDefault();
-    const now=performance.now();velX=(e.clientX-lastX)/Math.max(1,now-lastT);lastX=e.clientX;lastT=now;
-    const max=Math.max(0,el.scrollWidth-el.clientWidth);
-    // 포인터 이벤트마다 레이아웃을 강제로 그리지 않고 한 프레임에 한 번만 반영한다.
-    // 그래서 빠른 트랙패드·스와이프도 위치를 그대로, 끊김 없이 따른다.
-    queueScroll(Math.max(0,Math.min(max,startScroll-dx)));
+    if(isMouse){
+      if(e.cancelable) e.preventDefault();
+      const now=performance.now();velX=(e.clientX-lastX)/Math.max(1,now-lastT);lastX=e.clientX;lastT=now;
+      const max=Math.max(0,el.scrollWidth-el.clientWidth);
+      el.scrollLeft=Math.max(0,Math.min(max,startScroll-dx));
+    }
   };
+
   const onPointerEnd=e=>{
     if(!isDown||(e.pointerId!=null&&e.pointerId!==activePointerId))return;
-    flushScroll();
-    const dragged=isDragging,id=activePointerId;
+    const dragged=isDragging,id=activePointerId,wasMouse=isMouse;
     reset();
-    try{el.releasePointerCapture(id)}catch(x){}
-    if(!dragged)return;
-    blockClicksUntil=performance.now()+420;
-    snapToCard();
-    setTimeout(()=>{el._dragged=false},430);
+    if(wasMouse){
+      try{el.releasePointerCapture(id)}catch(x){}
+    }
+    if(!dragged){
+      restoreSnap();
+      return;
+    }
+    blockClicksUntil=performance.now()+400;
+    if(wasMouse){
+      snapToCard();
+    }else{
+      restoreSnap();
+    }
+    setTimeout(()=>{el._dragged=false},410);
   };
+
   el.addEventListener('pointerdown',onPointerDown);
   el.addEventListener('pointermove',onPointerMove,{passive:false});
   el.addEventListener('pointerup',onPointerEnd);
@@ -374,7 +370,7 @@ function enableElasticCarousel(el){
   el.addEventListener('lostpointercapture',onPointerEnd);
   el.addEventListener('dragstart',e=>e.preventDefault());
   el.addEventListener('click',e=>{
-    if(performance.now()<blockClicksUntil){e.preventDefault();e.stopPropagation()}
+    if(performance.now()<blockClicksUntil||el._dragged){e.preventDefault();e.stopPropagation()}
   },true);
 }
 function bindHorizontalCarousels(root=document){

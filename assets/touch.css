@@ -565,3 +565,286 @@ body.nbs-on{overflow:hidden}
   }
 }
 
+/* ---------- 화제도 생생한 불꽃 및 불씨 파티클 애니메이션 ---------- */
+.flame-fx {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1;
+  margin-right: 3px;
+  overflow: visible;
+}
+.flame-fx .flame-live {
+  display: inline-block;
+  color: #ff4d2e !important;
+  fill: currentColor !important;
+  transform-origin: center 85%;
+  animation: flameWaver 1.25s ease-in-out infinite;
+  filter: drop-shadow(0 1px 2px rgba(255, 77, 46, 0.45));
+}
+.flame-sparks {
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.flame-sparks span {
+  position: absolute;
+  border-radius: 50%;
+  background: #ffb733;
+  box-shadow: 0 0 3px #ff4500;
+  opacity: 0;
+}
+.flame-sparks span:nth-child(1) {
+  width: 2.5px;
+  height: 2.5px;
+  left: -2px;
+  animation: sparkRise1 1.3s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}
+.flame-sparks span:nth-child(2) {
+  width: 2px;
+  height: 2px;
+  left: 2px;
+  animation: sparkRise2 1.6s 0.45s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}
+.flame-sparks span:nth-child(3) {
+  width: 2px;
+  height: 2px;
+  left: -4px;
+  animation: sparkRise3 1.5s 0.85s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+}
+@keyframes flameWaver {
+  0%, 100% {
+    transform: scale(1) rotate(-3deg);
+    filter: drop-shadow(0 0 2px rgba(255, 77, 46, 0.5));
+  }
+  25% {
+    transform: scale(1.08, 0.93) rotate(3deg);
+    filter: drop-shadow(0 0 5px rgba(255, 120, 40, 0.8));
+  }
+  50% {
+    transform: scale(0.95, 1.06) rotate(-2deg);
+    filter: drop-shadow(0 0 3px rgba(255, 60, 20, 0.6));
+  }
+  75% {
+    transform: scale(1.05, 0.96) rotate(2deg);
+    filter: drop-shadow(0 0 5px rgba(255, 140, 50, 0.85));
+  }
+}
+@keyframes sparkRise1 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  25% { opacity: 1; }
+  100% { transform: translate(-4px, -15px) scale(0.3); opacity: 0; }
+}
+@keyframes sparkRise2 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  25% { opacity: 1; }
+  100% { transform: translate(5px, -17px) scale(0.25); opacity: 0; }
+}
+@keyframes sparkRise3 {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  25% { opacity: 1; }
+  100% { transform: translate(-2px, -19px) scale(0.2); opacity: 0; }
+}
+
+/* ---------- 모바일 상단 브랜드 'N.' 전환 ---------- */
+.brand .brand-short { display: none; }
+@media (max-width: 640px) {
+  .brand .brand-long { display: none !important; }
+  .brand .brand-short {
+    display: inline-block !important;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+  }
+}
+
+/* ---------- 모바일 주요 증시·환율 가로 2단 그리드 (총 4개 노출) ---------- */
+@media (max-width: 639px) {
+  .mkrow {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  .mkrow > :nth-child(n+5) {
+    display: none !important;
+  }
+  .mk {
+    padding: 10px 11px !important;
+  }
+  .mk b {
+    font-size: 1.05rem !important;
+  }
+}
+
+/* ---------- 기상특보 호우경보 지역 레드 포커스 ---------- */
+.wx-station.warn-focus {
+  background: #dc2626 !important;
+  border-color: #b91c1c !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.4), 0 8px 18px -6px rgba(220, 38, 38, 0.6) !important;
+  animation: wxWarnPulse 2s infinite ease-in-out;
+}
+.wx-station.warn-focus b,
+.wx-station.warn-focus strong,
+.wx-station.warn-focus small,
+.wx-station.warn-focus em,
+.wx-station.warn-focus em i {
+  color: #fff !important;
+}
+.wx-warn-tag {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 800;
+  margin-top: 2px;
+}
+.wx-map-dot.warn-focus {
+  background: #dc2626 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.5), 0 0 16px rgba(220, 38, 38, 0.8) !important;
+  transform: translate(-50%, -50%) scale(1.18) !important;
+  animation: wxWarnPulse 2s infinite ease-in-out;
+  z-index: 12 !important;
+}
+.wx-map-dot.warn-focus b,
+.wx-map-dot.warn-focus i {
+  color: #fff !important;
+}
+@keyframes wxWarnPulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.4), 0 8px 18px -6px rgba(220, 38, 38, 0.6); }
+  50% { box-shadow: 0 0 0 6px rgba(220, 38, 38, 0.7), 0 10px 24px -4px rgba(220, 38, 38, 0.9); }
+}
+
+/* ---------- 마이페이지 레이어팝업 상단 알림 영역 ---------- */
+.acb {
+  position: relative;
+}
+.acb-unread {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff4d2e;
+  border: 1.5px solid #fff;
+  pointer-events: none;
+}
+.acm-alerts {
+  padding: 12px 14px 10px;
+  background: #f7f9fd;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 14px 14px 0 0;
+}
+.acm-alerts-hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  font-size: 0.76rem;
+}
+.acm-alerts-hd b {
+  color: var(--ink, #101630);
+  font-weight: 800;
+}
+.acm-badge {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 1px 6px;
+  border-radius: 99px;
+  background: #ff4d2e;
+  color: #fff;
+  font-size: 0.64rem;
+  font-weight: 800;
+}
+.acm-alerts-hd a {
+  color: #4a6fe0;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.acm-alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.acm-al {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+.acm-al:hover {
+  background: #edf2fc;
+}
+.acm-al-tag {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #63739a;
+  margin-bottom: 2px;
+}
+.acm-al b {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--ink, #101630);
+}
+.acm-al p {
+  margin: 2px 0 0;
+  font-size: 0.7rem;
+  color: var(--mute, #818ba3);
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.acm-al-empty {
+  padding: 6px 0;
+  color: var(--mute, #818ba3);
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+/* ---------- 가로 레일 마우스 드래그 및 스크롤 최적화 ---------- */
+.nb-drag-rail {
+  cursor: grab;
+  touch-action: pan-y !important;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.nb-drag-rail.grabbing {
+  cursor: grabbing !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+.nb-drag-rail.grabbing * {
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+.nb-drag-rail.grabbing,
+.nb-drag-rail.free-scroll {
+  scroll-snap-type: none !important;
+  scroll-behavior: auto !important;
+}
+.nb-drag-rail a,
+.nb-drag-rail img,
+.nb-drag-rail button {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
