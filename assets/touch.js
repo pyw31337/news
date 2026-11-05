@@ -70,8 +70,8 @@ function voteCardRes(i, myChoice){
 
 function voteCardAsk(i){
   const S=getStances(i);
-  return `<p class="tvask">이 사안, 어느 쪽에 더 가까우신가요?</p>
-  <div class="tdbt tvbt">${S.map((x,j)=>`<button type="button" data-k="${j}" class="s${j}"><b>${esc(x.label)}</b>${x.desc?`<small>${esc(x.desc)}</small>`:''}</button>`).join('')}</div>`;
+  const labels=['탄핵 찬성 및 비판','중립 및 관망'];
+  return `<div class="tdbt tvbt">${S.map((x,j)=>`<button type="button" data-k="${j}" class="s${j}"><b>${labels[j]||x.label}</b></button>${j===0?'<span class="tvvs" aria-hidden="true">VS</span>':''}`).join('')}</div>`;
 }
 
 function voteHTML(I){
@@ -155,13 +155,14 @@ function wordsHTML(W){if(!W||!W.length)return'';
           <div class="twr"><b>${esc(w.word)}</b><small>${esc(short((w.wiki||{}).desc||mean,40))}</small>${ex.url?`<a href="${esc(ex.url)}" target="_blank" rel="noopener">기사 보기 ${NBI('arrow-up-right')}</a>`:''}</div>
           <canvas aria-label="긁어서 정답 보기"></canvas>
         </div>
-        ${mean ? `<p class="twh">힌트 · ${esc(short(mean,75))}</p>` : ''}
+        ${mean ? `<button type="button" class="twh" data-hint="${esc(mean)}" title="${esc(mean)}"><span>힌트</span></button><p class="tw-tip" hidden>${esc(mean)}</p>` : ''}
       </div>`;
     }).join('')}</div>`}
 
 function words(){
   $$('.twa canvas').forEach(cv=>inview(cv,()=>scratch(cv),.01));
-  const el=$('#tword-deck'); if(el) enableElasticCarousel(el);
+  const el=$('#tword-deck'); if(!el)return;enableElasticCarousel(el);
+  el.addEventListener('click',e=>{const b=e.target.closest('[data-hint]');if(!b)return;const tip=b.nextElementSibling;if(!tip)return;const open=tip.hidden;tip.hidden=!open;b.classList.toggle('on',open);b.setAttribute('aria-expanded',String(open))});
 }
 
 function scratch(cv){const w=cv.parentNode.clientWidth,h=cv.parentNode.clientHeight;if(!w||!h)return;const dp=devicePixelRatio||1,x=cv.getContext('2d');cv.width=w*dp;cv.height=h*dp;x.scale(dp,dp);

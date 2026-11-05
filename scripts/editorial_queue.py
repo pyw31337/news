@@ -1,9 +1,10 @@
 """Agent-independent editorial production queue for comics and card news.
 
 The collector writes facts; this script turns the strongest explainable issues into a
-small, restartable brief.  It deliberately does not call an image model.  A human or
-any capable agent can resume from data/editorial/queue.json without reinterpreting a
-half-finished chat, while the site still has a safe text/SVG fallback.
+small, restartable brief. It deliberately does not call a particular image model:
+Claude, Gemini, Grok, a local Apple model, or a human editor can all consume the same
+contract in data/editorial/queue.json. The site keeps a safe fallback until a reviewed
+asset has been registered.
 """
 import argparse
 import datetime as dt
@@ -101,7 +102,17 @@ def brief(issue, manifest):
             dict(panel=3, purpose='핵심 수치·근거', evidence=compact(evidence, 120)),
             dict(panel=4, purpose='다음에 검증할 지표·조건', evidence=compact(flow[-1] if flow else '다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인', 120)),
         ],
-        visual_brief=dict(scene=scene, direction=direction, comic='4개의 서로 다른 장면. 이미지 내부에는 읽을 텍스트·말풍선을 넣지 말고, 대사는 웹 오버레이로 제공.', card_news='표지 1장 + 원인·근거·수치·다음 지점을 각각 독립 카드로. 근거 없는 장식 문구 금지.'),
+        visual_brief=dict(
+            scene=scene, direction=direction,
+            comic='세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.',
+            card_news='표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다.'),
+        visual_contract=dict(
+            layout='comic: 1-wide / 2-split / 1-wide, card: one visual idea per card',
+            continuity='Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.',
+            composition='Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.',
+            evidence='Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.',
+            forbid=['read-the-original CTA', 'generic city sunset', 'generic classroom chalkboard', 'copied panel composition', 'invented chart number', 'real-person likeness'],
+            acceptance=['four distinct panel scenes', 'no rasterized text or speech bubbles', 'source beats checked', 'asset registered in assets/editorial-art.json']),
         asset=dict(existing=asset, action='reuse_existing' if asset else 'generate_after_human_fact_check'),
         quality_gate=dict(cause_grounded=bool(CAUSE.search(cause)), numeric_or_specific_evidence=bool(NUMBER.search(evidence) or evidence), sources=len(sources), no_generic_closing=True),
     )
@@ -115,9 +126,11 @@ def build(max_items):
     candidates.sort(key=lambda x: (0 if x['quality_gate']['cause_grounded'] else 1, PRI.get(x['category'], 4), -x['priority_score'], x.get('rank') or 999))
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).isoformat(timespec='seconds')
     return dict(
-        schema='newsboard.editorial-queue.v1', date=today.get('date') or dt.date.today().isoformat(), generated_at=now,
+        schema='newsboard.editorial-queue.v2', date=today.get('date') or dt.date.today().isoformat(), generated_at=now,
         handoff=dict(
-            state='brief_ready', owner='unassigned', next_action='Select one item, check every story beat against linked sources, then create or reuse an asset and register it in assets/editorial-art.json.',
+            state='brief_ready', owner='unassigned', daily_minimum='Select one highest-priority reviewed candidate for a bespoke visual asset. Other candidates may use the safe fallback.',
+            daily_caps=dict(comics=3, card_news=3), providers=['Claude', 'Gemini', 'Grok', 'local Apple model', 'human editor'],
+            next_action='Select one item, check every story beat against linked sources, create or reuse an asset that satisfies visual_contract, then register it in assets/editorial-art.json.',
             resume_commands=['python scripts/editorial_queue.py --validate', 'FUN_DATA=data FUN_AI_SEC=0 python scripts/fun.py', 'npm run validate'],
             completion_definition='A comic/card item has four evidence-backed beats, a registered visual asset or safe fallback, and passes the no-filler validator.'
         ),

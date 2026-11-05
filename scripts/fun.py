@@ -19,6 +19,8 @@ if not D.get('issues'): print('fun: no today.json'); sys.exit(0)
 DATE = D.get('date') or datetime.date.today().isoformat()
 rnd = random.Random(DATE)
 WORD_TARGET = 10
+DAILY_COMIC_LIMIT = 3
+DAILY_DECK_LIMIT = 3
 ART_MANIFEST = os.path.normpath(os.path.join(os.path.dirname(__file__), '..', 'assets', 'editorial-art.json'))
 try:
     EDITORIAL_ART = json.load(open(ART_MANIFEST, encoding='utf-8'))
@@ -317,7 +319,7 @@ cands = [i for i in D['issues'] if ok_issue(i) and i.get('category') not in ('�
 # 개인 발언 공방(따옴표 제목)보다 사건·제도 이슈를 우선 — 실존 인물 풍자 위험을 줄임
 cands.sort(key=lambda i: (0 if CAUSE.search(' '.join(comic_facts(i))) else 1, PRI.get(i.get('category'), 4), 3 if re.search(r'[“"]', i['title'][:30]) else 0, i['rank']))
 COMICS = []
-for i in cands[:2]:
+for i in cands[:DAILY_COMIC_LIMIT]:
     facts = comic_facts(i)
     flow = [f.get('meaning', '') for f in (i.get('ai') or {}).get('flow') or [] if f.get('meaning')]
     w = word_in(i); tp = topic(i); visual = visual_plan(i)
@@ -391,7 +393,9 @@ def span(i):
     ds = sorted({f['date'] for f in i.get('flow') or []}); return ds, (datetime.date.fromisoformat(ds[-1]) - datetime.date.fromisoformat(ds[0])).days if len(ds) > 1 else 0
 flowing = [i for i in D['issues'] if ok_issue(i) and i.get('category') not in ('연예', '스포츠') and not re.search(r'[“"]', i['title'][:30]) and len(span(i)[0]) >= 3 and span(i)[1] >= 3]
 flowing.sort(key=lambda i: (-len(span(i)[0]), i['rank']))
-for i in flowing[:3]:
+# 정기 카드도 그날 만든 카드뉴스 한 편으로 센다. 같은 날에 텍스트만 바꾼 덱을
+# 과도하게 늘리지 않고, 남은 슬롯에서만 흐름 카드를 만든다.
+for i in flowing[:max(0, DAILY_DECK_LIMIT-len(DECKS))]:
     ds, sp = span(i); ai_ = i.get('ai') or {}
     mean = {f['date']: f.get('meaning', '') for f in ai_.get('flow') or []}
     fl = sorted(i['flow'], key=lambda f: f['date'])
@@ -418,7 +422,7 @@ for i in flowing[:3]:
 # 되지 않게 한다. 이미 장기 흐름 덱이 있는 이슈는 중복해서 만들지 않는다.
 decked_issues = {d.get('issue') for d in DECKS}
 for i in cands:
-    if i.get('id') in decked_issues or len([d for d in DECKS if d.get('kind') == 'explainer']) >= 2:
+    if i.get('id') in decked_issues or len(DECKS) >= DAILY_DECK_LIMIT:
         continue
     facts = comic_facts(i)
     if not facts:

@@ -6,6 +6,8 @@ const load=()=>P||(P=Promise.all([J('data/gov/apt.json'),J('data/gov/stocks.json
 const e_=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt=n=>Math.round(n).toLocaleString();
 const eok=v=>v>=10000?(v/10000).toFixed(2).replace(/\.?0+$/,'')+'억':fmt(v)+'만';
+const when=(t,style='compact')=>window.NBDate?.[style]?.(t)||String(t||'');
+const areaOf=x=>{const a=x?.areas||x?.area||x?.region||x?.regions||'';return Array.isArray(a)?a.filter(Boolean).join(' · '):String(a||'').trim()};
 /* 작은 SVG 선 차트(축·라벨 포함) */
 /* 차트: 공통 주식식 차트(assets/mkt.js NBChart — 실제 폭에 맞춰 그리고, 눈금·십자선·말풍선)로 그림.
    예전처럼 고정 크기 SVG를 늘리면 글자까지 커지던 문제(2026-10-30) */
@@ -52,7 +54,11 @@ function alertHTML(){if(!AL)return'';const now=Date.now(),age=t=>(now-new Date(t
   const q=(AL.quakes||[]).filter(x=>age(x.t)<24&&x.domestic&&x.mag>=3);
   const w=[],seen=new Set();for(const x of (AL.warnings||[]).filter(x=>age(x.t)<24)){const k=x.title.replace(/\s*(발표|해제|변경)\b.*/,'');if(seen.has(k))continue;seen.add(k);if(!x.lift&&/경보/.test(k)&&!/주의보/.test(k))w.push(x)}
   if(!q.length&&!w.length)return'';
-  return`<div class="galert card">${q.map(x=>`<div class="gq"><span class="gbad">지진</span><b>규모 ${e_(x.mag)}</b> ${e_(x.loc)}<time>${e_(x.t.slice(5))}</time></div>`).join('')}${w.slice(0,3).map(x=>`<div class="gw"><span class="gbad w">기상특보</span>${e_(x.title)}<time>${e_(x.t.slice(5))}</time></div>`).join('')}<small>기상청 발표 · 지금 우리나라에 영향이 있는 것만 보여요</small></div>`}
+  return`<div class="galert card">${q.map(x=>`<div class="gq"><span class="gbad">지진</span><b>규모 ${e_(x.mag)}</b> ${e_(x.loc)}<time>${e_(when(x.t))}</time></div>`).join('')}${w.slice(0,3).map(x=>`<a class="gw" href="weather" aria-label="${e_(x.title)} 전국 기상특보 상세 보기"><span class="gbad w">기상특보</span>${e_(x.title)}${areaOf(x)?`<em>${e_(areaOf(x))}</em>`:''}<time>${e_(when(x.t))}</time></a>`).join('')}<small>기상청 발표 · 특보를 누르면 전국 발표 현황을 봐요</small></div>`}
+function weatherPage(){const app=document.getElementById('app');if(!app)return;const all=[...(AL?.warnings||[])].sort((a,b)=>String(b.t).localeCompare(String(a.t))),active=all.filter(x=>!x.lift),ended=all.filter(x=>x.lift);
+  const card=(title,rows,empty)=>`<section class="weather-card card"><h3>${title}</h3>${rows.length?`<ul>${rows.map(x=>`<li><b>${e_(x.title)}</b><small>${areaOf(x)?`발표 지역 · ${e_(areaOf(x))}<br>`:''}${e_(when(x.t,'full'))}${x.lift?' · 해제':' · 발효 중'}</small></li>`).join('')}</ul>`:`<p class="note">${empty}</p>`}</section>`;
+  app.innerHTML=`<div class="bkrow"><a class="back" href="./">${typeof NBI==='function'?NBI('arrow-left'):''} 오늘</a></div><main class="weather-page"><section class="card" style="padding:20px"><span class="gbad w">기상청 특보</span><h1>전국 기상특보</h1><p class="lede">현재 발효 중인 경보와 최근 변경·해제 내역입니다. 지역 정보가 함께 제공된 특보는 해당 지역까지 표시하며, 원문 기준은 기상청 발표입니다.</p><small>마지막 수집 · ${e_(when(AL?.updated,'full'))}</small></section><div class="weather-grid">${card('현재 발효 중',active,'현재 발효 중인 경보급 특보가 없어요.')}${card('최근 변경·해제',ended.slice(0,24),'최근 변경 내역이 없어요.')}</div><p class="fine">기상특보는 수집 시점과 기상청 발표 시점 차이로 늦게 반영될 수 있습니다.</p></main>`}
+window.nbWeather=function(){load().then(weatherPage)};
 /* ---------- 끼워넣기 ---------- */
 const path=()=>location.pathname.slice((typeof BASEP==='string'?BASEP:'/news/').length).replace(/\/+$/,'');
 function putMarket(){if(path()!=='market')return;const app=document.getElementById('app');if(!app)return;app.querySelectorAll('.govapt,.govstk').forEach(x=>x.remove());

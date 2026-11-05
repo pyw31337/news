@@ -43,7 +43,7 @@ def page(path, title, desc, img=None):
     return 1
 safe = lambda s: s and '/' not in s and '\\' not in s and not s.startswith('.') and len(s.encode()) < 200
 n = 0
-for v, t in (('market', '마켓·정책'), ('people', '화제 — 인물·기자·기업·장소'), ('timeline', '타임라인 비교'), ('map', '관계로 보는 오늘'), ('archive', '날짜 아카이브'), ('voice', '민심·영상'), ('settings', '설정')):
+for v, t in (('market', '마켓·정책'), ('weather', '전국 기상특보'), ('people', '화제 — 인물·기자·기업·장소'), ('timeline', '타임라인 비교'), ('map', '관계로 보는 오늘'), ('archive', '날짜 아카이브'), ('voice', '민심·영상'), ('settings', '설정')):
     n += page(v, t, '')
 for i in D.get('issues', []):
     sm = i.get('summary'); sm = ' '.join(sm) if isinstance(sm, list) else (sm or '')
@@ -65,7 +65,7 @@ for k, t in enumerate(G.get('trends', [])):
 FN = load(os.path.join(SITE, 'data', 'fun.json'))
 if FN:
     LI = ORIGIN + 'og/learn.png'
-    for v, t in (('learn', '놀면서 배우기 — 퀴즈·만화·카드뉴스'), ('quiz', '오늘의 단어 퀴즈'), ('quiz/review', '틀린 단어 복습')):
+    for v, t in (('learn', '놀면서 배우기 — 퀴즈·만화·카드뉴스'), ('learn/all', '누적 콘텐츠 — 만화·카드뉴스'), ('quiz', '오늘의 단어 퀴즈'), ('quiz/review', '틀린 단어 복습')):
         n += page(v, t, '오늘 뉴스에 나온 어려운 말을 OX 퀴즈로 익히고, 핫이슈는 4컷 만화와 카드뉴스로 쉽게 봐요', LI)
     for c in FN.get('comics', []): n += page('comic/' + c['id'], c['title'] + ' — 4컷 설명 만화', c['headline'], ORIGIN + 'og/comic/%s.png' % c['id'])
     for x in FN.get('decks', []): n += page('cards/' + x['id'], x['title'] + ' — 카드뉴스', x['cards'][0].get('text', ''), ORIGIN + 'og/cards/%s.png' % x['id'])

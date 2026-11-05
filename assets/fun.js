@@ -16,6 +16,7 @@ const E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt
 const app=document.getElementById('app');
 const AB=u=>{try{return new URL(u,document.baseURI).href}catch(e){return u}};
 const todayK=()=>new Date(Date.now()+9*36e5).toISOString().slice(0,10);
+const dateLabel=d=>window.NBDate?.date?.(d)||String(d||'').slice(0,10).replaceAll('-','.');
 /* 사람이 선별한 기사별 작화만 여기서 우선한다. 데이터 갱신 전에도 당일 완성본이 즉시 보이고,
    없을 때는 기사 원문 사진으로 물러난다. AI 작화를 실제 보도 사진처럼 보이게 하지 않는다. */
 const EDITORIAL_ART={comics:{c101bdbe8:'assets/comics/2026-11-04-coupang-loss-comic.webp',c72f07d09:'assets/comics/2026-11-04-coupang-loss-comic.webp',ce042c57d:'assets/comics/2026-11-04-coupang-loss-comic.webp',cd1194f83:'assets/comics/2026-11-04-genesis-line-comic.webp',ca02c5ce8:'assets/comics/2026-11-04-ulsan-line-comic.webp'},decks:{d101bdbe8:'assets/cards/2026-11-04-coupang-loss-card.webp'}};
@@ -64,8 +65,8 @@ const comicImage=c=>comicArt(c)||c?.image||c?.img||'';
 const deckArt=d=>d?.art||(d?.cards||[]).find(x=>x.art)?.art||EDITORIAL_ART.decks[d?.id]||'';
 const deckImage=d=>deckArt(d)||(d?.cards||[])[0]?.img||d?.image||'';
 const mediaTag=(ai,raw)=>ai?'AI 시각화':raw?'원문 기사 사진':'';
-/* 편집 일러스트에서도 대사는 장면 위 말풍선에 둔다. 꼭지는 글상자가 아니라
-   독립 SVG 리더선으로 그려 글을 가리지 않고, 각 말풍선은 독자가 옮길 수 있다. */
+/* 편집 일러스트에서도 대사는 장면 위 말풍선에 둔다. 독립 리더선 대신 말풍선 테두리
+   바깥의 카툰 꼭지를 써서 선이 중간에서 끊겨 보이지 않게 하고, 필요하면 옮길 수 있다. */
 const BUBBLE_LAYOUTS={
   wide:[
     [3,2,42,24,12,28,27],[55,13,42,72,25,40,25],
@@ -80,15 +81,12 @@ const BUBBLE_LAYOUTS={
     [56,52,42,77,65,71,81],[55,67,42,67,80,82,92]
   ]
 };
-const bubblePath=(sx,sy,tx,ty)=>`M ${sx} ${sy} Q ${(sx+tx)/2} ${(sy+ty)/2-2} ${tx} ${ty}`;
 function comicDialogue(c,panels){const layout=c?.id==='cd1194f83'?'quad':'wide';const lines=panels.flatMap((p,k)=>(p.lines||[]).map((l,n)=>Object.assign({k,n},l)));
-  return`<div class="comic-dialogue ${layout}" aria-label="만화 대사">\n    <svg class="bubble-leaders" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="speech-arrow" viewBox="0 0 8 8" refX="6.4" refY="4" markerWidth="3" markerHeight="3" orient="auto"><path d="M0 0L8 4L0 8Z" fill="currentColor"></path></marker></defs>${lines.map((l,i)=>{const a=BUBBLE_LAYOUTS[layout][i]||BUBBLE_LAYOUTS.wide[i];return`<path data-bubble-leader="${i}" class="${l.who==='보리'?'bori':'nuri'}" d="${bubblePath(a[3],a[4],a[5],a[6])}"></path><circle data-bubble-dot="${i}" class="${l.who==='보리'?'bori':'nuri'}" cx="${a[5]}" cy="${a[6]}" r="1.25"></circle>`}).join('')}</svg>\n    ${lines.map((l,i)=>{const a=BUBBLE_LAYOUTS[layout][i]||BUBBLE_LAYOUTS.wide[i];return`<p class="art-bubble ${l.who==='보리'?'bori':'nuri'}" data-bubble="${i}" data-sx="${a[3]}" data-sy="${a[4]}" data-tx="${a[5]}" data-ty="${a[6]}" style="--x:${a[0]}%;--y:${a[1]}%;--w:${a[2]}%" title="드래그해서 말풍선을 옮기고, 두 번 누르면 원래 위치로 돌아갑니다"><b>${E(l.who)}</b>${E(l.text)}</p>`}).join('')}\n  </div>`}
+  return`<div class="comic-dialogue ${layout}" aria-label="만화 대사">${lines.map((l,i)=>{const a=BUBBLE_LAYOUTS[layout][i]||BUBBLE_LAYOUTS.wide[i];return`<p class="art-bubble ${l.who==='보리'?'bori':'nuri'}" data-bubble="${i}" style="--x:${a[0]}%;--y:${a[1]}%;--w:${a[2]}%" title="드래그해서 말풍선을 옮기고, 두 번 누르면 원래 위치로 돌아갑니다"><b>${E(l.who)}</b>${E(l.text)}</p>`}).join('')}</div>`}
 function bindComicBubbleDrag(c){const art=app.querySelector('.comic-art'),dialogue=art?.querySelector('.comic-dialogue');if(!art||!dialogue)return;
   const key='nb-comic-bubbles:'+String(c.id||'');let saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
   const place=(bubble,offset,save)=>{const id=bubble.dataset.bubble;const x=Number(offset?.x||0),y=Number(offset?.y||0);bubble.style.setProperty('--dx',x+'px');bubble.style.setProperty('--dy',y+'px');
-    const r=art.getBoundingClientRect(),sx=Number(bubble.dataset.sx)+x/r.width*100,sy=Number(bubble.dataset.sy)+y/r.height*100,tx=Number(bubble.dataset.tx),ty=Number(bubble.dataset.ty),leader=dialogue.querySelector(`[data-bubble-leader="${id}"]`);
-    if(leader)leader.setAttribute('d',bubblePath(sx,sy,tx,ty));
-    if(save){saved[id]={x:Math.round(x/r.width*1000)/10,y:Math.round(y/r.height*1000)/10};localStorage.setItem(key,JSON.stringify(saved))}
+    const r=art.getBoundingClientRect();if(save){saved[id]={x:Math.round(x/r.width*1000)/10,y:Math.round(y/r.height*1000)/10};localStorage.setItem(key,JSON.stringify(saved))}
   };
   dialogue.querySelectorAll('.art-bubble').forEach(b=>{const old=saved[b.dataset.bubble];if(old){const r=art.getBoundingClientRect();place(b,{x:old.x*r.width/100,y:old.y*r.height/100})}
     let drag=null;b.addEventListener('pointerdown',e=>{if(e.button&&e.pointerType==='mouse')return;drag={x:e.clientX,y:e.clientY,ox:parseFloat(b.style.getPropertyValue('--dx'))||0,oy:parseFloat(b.style.getPropertyValue('--dy'))||0};b.setPointerCapture?.(e.pointerId);b.classList.add('dragging');e.preventDefault()});
@@ -124,27 +122,32 @@ function panel(p,k){const mood=p.mood||'explain';const who=new Set(p.lines.map(l
   <svg class="cchar" viewBox="-160 -50 320 100" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><g transform="translate(-80,0)" opacity="${who.has('보리')?1:.55}">${bori(who.has('보리')?mood:'smile')}</g><g transform="translate(80,0)" opacity="${who.has('누리')?1:.55}">${nuri(who.has('누리')?(mood==='curious'?'explain':mood):'smile')}</g></svg></div>`}
 const srcList=S=>`<div class="fsrc"><h4>출처</h4>${S.map(s=>`<a href="${E(s.url)}" target="_blank" rel="noopener">${typeof pp==='function'?pp(s.press,s.url):E(s.press)}<span>${E(s.title)}</span></a>`).join('')}</div>`;
 function comicTile(c){const ai=comicArt(c),im=ai||comicImage(c),label=mediaTag(ai,im);
-  return`<a class="cl" href="comic/${c.id}"><div class="clp ${im?'visual':''}" style="--pb:${BG[0]}">${im?`<img src="${E(AB(im))}" alt="${E(label?label+': ':'')}${E(c.title)}" loading="lazy"><span class="cmedia-tag">${label}</span>`:`<svg viewBox="-160 -50 320 100"><g transform="translate(-80,0)">${bori(c.panels[0].mood)}</g><g transform="translate(80,0)">${nuri('explain')}</g></svg><span class="clb">${E(c.panels[0].lines[0].text)}</span>`}</div><div class="clt"><span class="cat ${c.category}">${c.category}</span><b>${E(c.title)}</b><small>${c.date.slice(5).replace('-','.')}</small></div></a>`}
+  return`<a class="cl" href="comic/${c.id}"><div class="clp ${im?'visual':''}" style="--pb:${BG[0]}">${im?`<img src="${E(AB(im))}" alt="${E(label?label+': ':'')}${E(c.title)}" loading="lazy"><span class="cmedia-tag">${label}</span>`:`<svg viewBox="-160 -50 320 100"><g transform="translate(-80,0)">${bori(c.panels[0].mood)}</g><g transform="translate(80,0)">${nuri('explain')}</g></svg><span class="clb">${E(c.panels[0].lines[0].text)}</span>`}</div><div class="clt"><span class="cat ${c.category}">${c.category}</span><b>${E(c.title)}</b><small>${dateLabel(c.date)}</small></div></a>`}
 /* ---------- 허브 ---------- */
 function stats(){const s=streakNow(),b=lvBar(),rv=Object.keys(L.review).length;
   return`<div class="lstat"><div class="ls fire"><i>${NBI('flame-f')}</i><b>${s}</b><span>일 연속</span></div><div class="ls xp"><i>${NBI('bolt')}</i><b>${L.xp}</b><span>XP</span></div><div class="ls lv"><i>${NBI('medal')}</i><b>Lv.${b.n}</b><span>다음까지 ${b.left}XP</span></div><div class="ls rv"><i>🔁</i><b>${rv}</b><span>복습 단어</span></div></div>
   <div class="lvbar"><i style="width:${b.pct}%"></i></div>`}
 function hub(){setMeta('놀면서 배우기 — 퀴즈·만화·카드뉴스','오늘 뉴스의 어려운 말을 OX 퀴즈로, 핫이슈를 4컷 만화로, 이어지는 사건을 카드뉴스로');
   const q=F.quiz,done=!PAST&&(L.days[todayK()]||{}).done;
-  app.innerHTML=`${PAST?`<div class="lpast-on"><b>${PAST.slice(5).replace('-','.')} 기록</b>을 보고 있어요 <a href="learn">오늘로 돌아가기 ${NBI('arrow-right')}</a></div>`:''}<section class="lhero"><div><small>LEARN WITH NEWS</small><h1>${T('놀면서 배우는 뉴스','Learn the news, playfully')}</h1><p>하루 3분, 오늘 기사에 나온 말을 퀴즈로 익히고 어려운 이슈는 만화와 카드로 쉽게 봐요.</p></div><div class="lmasc"><svg viewBox="-160 -50 320 100">${'<g transform="translate(-70,0)">'+bori('smile')+'</g><g transform="translate(70,0)">'+nuri('explain')+'</g>'}</svg></div></section>
+  app.innerHTML=`${PAST?`<div class="lpast-on"><b>${dateLabel(PAST)} 기록</b>을 보고 있어요 <a href="learn">오늘로 돌아가기 ${NBI('arrow-right')}</a></div>`:''}<section class="lhero"><div><small>LEARN WITH NEWS</small><h1>${T('놀면서 배우는 뉴스','Learn the news, playfully')}</h1><p>하루 3분, 오늘 기사에 나온 말을 퀴즈로 익히고 어려운 이슈는 만화와 카드로 쉽게 봐요.</p></div><div class="lmasc"><svg viewBox="-160 -50 320 100">${'<g transform="translate(-70,0)">'+bori('smile')+'</g><g transform="translate(70,0)">'+nuri('explain')+'</g>'}</svg></div></section>
   ${stats()}
   <div class="ltiles">
    <a class="lt quiz" href="quiz"><span class="lti">${NBI('help-hexagon',1,'on')}</span><b>${T('오늘의 단어 퀴즈','Today’s word quiz')}</b><small>${q.questions.length}${T('문제 · OX·객관식·빈칸',' questions · true/false, choice, fill-in')}</small><em>${done?T('오늘 완료! 다시 풀기','Done today! Play again'):T('시작하기 →','Start →')}</em></a>
    <a class="lt review ${Object.keys(L.review).length?'':'off'}" href="quiz/review"><span class="lti">🔁</span><b>틀린 단어 복습</b><small>${Object.keys(L.review).length?Object.keys(L.review).length+'개가 기다려요':'아직 없어요'}</small><em>복습하기 ${NBI('arrow-right')}</em></a>
   </div>
-  ${sec(T('4컷으로 보는 뉴스','News in 4 panels'),'Explainer comics',`<span class="more">${T('AI 해설 만화 · 실존 인물 풍자 아님','AI explainer comics · not satire of real people')}</span>`,'comic')}
+  ${sec(T('4컷으로 보는 뉴스','News in 4 panels'),'Explainer comics',`<a class="more" href="learn/all">${T('전체 보기','All')} ${NBI('arrow-right')}</a>`,'comic')}
   <div class="clist">${F.comics.slice(0,6).map(comicTile).join('')}</div>
-  ${sec(T('카드뉴스','Card news'),'Card news',`<span class="more">${T('넘겨 보는 흐름 정리','Swipe through the story')}</span>`,'cards')}
+  ${sec(T('카드뉴스','Card news'),'Card news',`<a class="more" href="learn/all">${T('전체 보기','All')} ${NBI('arrow-right')}</a>`,'cards')}
   <div class="dlist">${F.decks.slice(0,8).map(deckTile).join('')}</div>
   <div id="lpast"></div>`;
   loadIX().then(ix=>{const el=document.getElementById('lpast');const ds=Object.keys(ix.days||{}).sort().reverse().slice(0,30);if(!el||ds.length<2)return;
-    el.innerHTML=sec('지난 기록','Past days','<span class="more">그날의 퀴즈·만화·카드뉴스</span>','clock')+`<div class="lpast">${ds.map(d=>{const x=ix.days[d];const cur=PAST?d===PAST:d===todayK();return`<a class="lpd ${cur?'on':''}" href="learn/${d}"><b>${d.slice(5).replace('-','.')}</b><small>${E((x.w||[]).slice(0,2).join(' · '))}</small><em>퀴즈 ${x.q} · 만화 ${x.c} · 카드 ${x.d}</em></a>`}).join('')}</div>`;
+    el.innerHTML=sec('지난 기록','Past days','<span class="more">그날의 퀴즈·만화·카드뉴스</span>','clock')+`<div class="lpast">${ds.map(d=>{const x=ix.days[d];const cur=PAST?d===PAST:d===todayK();return`<a class="lpd ${cur?'on':''}" href="learn/${d}"><b>${dateLabel(d)}</b><small>${E((x.w||[]).slice(0,2).join(' · '))}</small><em>퀴즈 ${x.q} · 만화 ${x.c} · 카드 ${x.d}</em></a>`}).join('')}</div>`;
     window.NBT?.bindHorizontalCarousels?.(el)})}
+function allContent(){setMeta('놀면서 배우기 — 전체 콘텐츠','날짜별로 누적된 4컷 만화와 카드뉴스를 모아 봅니다.');
+  app.innerHTML=`<div class="bkrow"><a class="back" href="learn">${NBI('chevron-left')} 배우기</a></div><section class="lhero"><div><small>NEWS LIBRARY</small><h1>${T('누적 콘텐츠','All content')}</h1><p>${T('하루 최대 만화 3개, 카드뉴스 3개만 새로 만들고 검토를 통과한 콘텐츠를 날짜별로 쌓습니다.','Up to three comics and three card-news items are added each day after review.')}</p></div></section><section id="all-comics">${sec(T('4컷으로 보는 뉴스','News in 4 panels'),'Explainer comics','','comic')}<div class="clist">${F.comics.map(comicTile).join('')}</div></section><section id="all-decks">${sec(T('카드뉴스','Card news'),'Card news','','cards')}<div class="dlist">${F.decks.map(deckTile).join('')}</div></section><div class="loading" id="all-loading">지난 기록을 불러오는 중…</div>`;
+  const seenC=new Set(F.comics.map(x=>x.id)),seenD=new Set(F.decks.map(x=>x.id));
+  loadIX().then(ix=>Promise.all(Object.keys(ix.days||{}).sort().reverse().slice(0,90).map(loadDay))).then(days=>{const cs=[],ds=[];days.filter(Boolean).forEach(day=>{(day.comics||[]).forEach(x=>{if(!seenC.has(x.id)){seenC.add(x.id);cs.push(x)}});(day.decks||[]).forEach(x=>{if(!seenD.has(x.id)){seenD.add(x.id);ds.push(x)}})});cs.sort((a,b)=>String(b.date).localeCompare(String(a.date)));ds.sort((a,b)=>String(b.date).localeCompare(String(a.date)));const c=document.querySelector('#all-comics .clist'),d=document.querySelector('#all-decks .dlist');if(c)c.insertAdjacentHTML('beforeend',cs.map(comicTile).join(''));if(d)d.insertAdjacentHTML('beforeend',ds.map(deckTile).join(''));document.getElementById('all-loading')?.remove()}).catch(()=>{const l=document.getElementById('all-loading');if(l)l.textContent='지난 기록을 불러오지 못했어요. 오늘 콘텐츠는 계속 볼 수 있어요.'})
+}
 /* 카드뉴스 표지·구성 변주: 같은 날 카드뉴스가 서로 다른 모양이 되도록 순서대로 6가지 표지 × 3가지 구성.
    0 사진 꽉 · 1 큰 숫자 · 2 위 사진/아래 글 · 3 글자만(종이) · 4 동그란 사진 · 5 색 입힌 사진+스티커 */
 const SKC=['#ff4d2e','#2f6bff','#11a683','#7a4dff','#f08a00','#e2448e'];
@@ -252,7 +255,7 @@ function deck(id){const d=F.decks.find(x=>x.id===id)||F.decks[0];if(!d)return hu
   window.NBT?.enableElasticCarousel?.(el)}
 /* ---------- 홈 진입점 ---------- */
 function homeBlock(){if(!F)return'';const c=F.comics[0],d=F.decks[0],done=(L.days[todayK()]||{}).done;
-  return`${sec(T('놀면서 배우기','Learn with news'),'Learn with news',`<a class="more" href="learn">${T('전체','All')} ${NBI('arrow-right')}</a>`,'book')}
+  return`${sec(T('놀면서 배우기','Learn with news'),'Learn with news',`<a class="more" href="learn/all">${T('전체','All')} ${NBI('arrow-right')}</a>`,'book')}
   <div class="lhome"><a class="lh quiz" href="quiz"><span class="lhi">${NBI('help-hexagon-f')}</span><b>${T('오늘의 단어 퀴즈','Today’s word quiz')}</b><small>${F.quiz.questions.length}${T('문제',' questions')} · ${NBI('flame-f')}${streakNow()}${T('일 연속','-day streak')} · Lv.${lvl(L.xp)}</small><em>${done?T('완료! 다시 풀기','Done! Again'):T('3분 도전 →','3-minute challenge →')}</em></a>
   ${c?`<a class="lh comic ${comicImage(c)?'has-art':''}" href="comic/${c.id}" ${comicImage(c)?`style="--im:url('${E(AB(comicImage(c)))}')"`:''}>${comicImage(c)?'<span class="lhi art">AI 시각화</span>':`<svg viewBox="-160 -50 320 100"><g transform="translate(-70,0)">${bori('curious')}</g><g transform="translate(70,0)">${nuri('explain')}</g></svg>`}<b>${E(c.title)}</b><small>${T('4컷 설명 만화','4-panel explainer')}</small></a>`:''}
   ${d?`<a class="lh deck" href="cards/${d.id}" ${deckImage(d)?`style="--im:url('${E(AB(deckImage(d)))}')"`:''}><span class="lhi">🗂️</span><b>${E(d.title)}</b><small>${T(`카드뉴스 ${d.cards.length}장`,`Card news · ${d.cards.length} cards`)}</small></a>`:''}</div>`}
@@ -270,7 +273,7 @@ function mainLearn(){if(!F||!document.getElementById('app'))return;const ap=docu
     const intro=(x.d.cards||[])[0]?.text||x.d.tag||'';
     return`<a class="mld deck card" href="cards/${x.d.id}"><div class="mld-thumb"${thumb?` style="background-image:url('${E(thumb)}')"`:''}><span class="mlt">${T('카드뉴스','Card news')} · ${x.d.cards.length}${T('장',' cards')}</span>${!thumb?`<span class="mld-monogram">${E(skEmo(x.d))}</span>`:''}</div><div class="mld-body"><span class="mld-kicker">${E(x.d.tag||T('뉴스 흐름','News brief'))}</span><b>${E(x.d.title)}</b><small>${E(intro)}</small><span class="mld-go">${T('카드 넘겨보기','Open cards')} ${NBI('arrow-right')}</span></div></a>`;
   };
-  s.innerHTML=`${sec(T('카드뉴스','Card News & Comics'),'Comics & Card News',`<a class="more" href="learn">${T('전체 보기','See all')} ${NBI('arrow-right')}</a>`,'boom')}
+  s.innerHTML=`${sec(T('카드뉴스','Card News & Comics'),'Comics & Card News',`<a class="more" href="learn/all">${T('전체 보기','See all')} ${NBI('arrow-right')}</a>`,'boom')}
    <div class="mldk"><div class="mlrow">${items.map(cover).join('')}</div></div>`;
   hero.insertAdjacentElement('afterend',s);
   const row=s.querySelector('.mlrow'); if(row&&window.NBT?.enableElasticCarousel) NBT.enableElasticCarousel(row)}
@@ -281,7 +284,7 @@ const _today=window.today;
 window.today=function(){const h=decodeURIComponent(location.pathname.slice(BASEP.length)).replace(/\/+$/,'');const v=h.split('/')[0],a=h.split('/').slice(1).join('/');
   if(FR.includes(v)){document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v==='learn'));
     const run=()=>{if(!F){app.innerHTML='<div class="note">준비 중이에요. 잠시 후 다시 열어 주세요.</div>';return}
-      v==='learn'?hub():v==='quiz'?quiz(a==='review'):v==='comic'?(a?comic(a):hub()):(a?deck(a):hub())};
+      v==='learn'?(a==='all'?allContent():hub()):v==='quiz'?quiz(a==='review'):v==='comic'?(a?comic(a):hub()):(a?deck(a):hub())};
     const pd=v==='learn'&&/^\d{4}-\d{2}-\d{2}$/.test(a)?a:'';
     if(v==='learn'&&!pd&&PAST){PAST='';F=F0}
     if(pd&&pd!==PAST){app.innerHTML='<div class="loading">불러오는 중…</div>';loadF().then(()=>loadDay(pd)).then(j=>{if(j&&j.quiz){F=Object.assign({},F0,j);PAST=pd}else{F=F0;PAST=''}run()});return}

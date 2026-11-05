@@ -79,6 +79,21 @@ def _profile(page, base):
                             when=clean(when.group(1)) if when else ''))
     if reports:
         base['reports'] = reports[:10]
+    # 공개 프로필의 텍스트에서 명시된 경력·수상만 보수적으로 보존한다. 키워드가
+    # 보인다는 이유로 이력이나 상을 추정하지 않는다.
+    text = clean(page)
+    career = []
+    for value in re.findall(r'(?:경력|약력)\s*[:：]\s*([^\n]{4,140})', text):
+        value = clean(value)
+        if value and value not in career:
+            career.append(value)
+    awards = []
+    for value in re.findall(r'([^\n]{2,80}(?:상|賞)\s*(?:수상|선정|받음)[^\n]{0,50})', text):
+        value = clean(value)
+        if value and value not in awards:
+            awards.append(value)
+    if career: base['career'] = career[:8]
+    if awards: base['awards'] = awards[:8]
     return base
 
 
@@ -163,8 +178,9 @@ def collect(issues, root, now, fetch, limit=8):
     except Exception:
         history = {}
     today = now.astimezone(dt.timezone(dt.timedelta(hours=9))).strftime('%Y-%m-%d')
+    issue_by_id = {x.get('id'): x for x in issues}
     for reporter in reporters:
-        h = history.setdefault(reporter['id'], dict(name=reporter['name'], affiliations=[]))
+        h = history.setdefault(reporter['id'], dict(name=reporter['name'], affiliations=[], reports=[], topic_counts={}, career=[], awards=[]))
         h['name'] = reporter['name']
         profile = reporter.get('profile', '')
         row = next((x for x in h['affiliations'] if x.get('profile') == profile), None)
@@ -178,6 +194,24 @@ def collect(issues, root, now, fetch, limit=8):
         # 같은 이름의 다른 프로필을 합치지 않는다. 잘못된 이직 이력보다 빈 이력이 낫다.
         reporter['affiliations'] = h['affiliations'][-6:]
         reporter['observed'] = today
+        # 공개 기자 페이지에서 확인한 기사만 누적한다. 같은 URL은 합치고, 제목으로
+        # 정치적 성향을 추론하지 않으며 분야별 보도 비중만 보여 준다.
+        by_url = {x.get('url'): x for x in h.get('reports', []) if x.get('url')}
+        for report in reporter.get('reports', []):
+            row = dict(report)
+            row['observed'] = today
+            by_url[row.get('url') or (row.get('title', '') + today)] = row
+        h['reports'] = list(by_url.values())[-500:]
+        for issue_id in reporter.get('issues', []):
+            category = (issue_by_id.get(issue_id) or {}).get('category')
+            if category:
+                h['topic_counts'][category] = h['topic_counts'].get(category, 0) + 1
+        for key in ('career', 'awards'):
+            for value in reporter.get(key, []):
+                if value not in h[key]: h[key].append(value)
+            reporter[key] = h[key][-12:]
+        reporter['history_reports'] = sorted(h['reports'], key=lambda x: (x.get('when', ''), x.get('observed', '')), reverse=True)[:120]
+        reporter['topic_counts'] = h.get('topic_counts', {})
     os.makedirs(root, exist_ok=True)
     json.dump(history, open(path, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 

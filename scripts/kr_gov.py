@@ -73,8 +73,17 @@ def alerts():  # 지진(최대 3일 전부터)·기상특보(최대 6일 전부�
     for r in w:
         i = '%s-%s' % (r.get('tmFc'), r.get('tmSeq'))
         if i in have: continue
-        t = str(r.get('tmFc', '')); title = re.sub(r'^\[특보\]\s*제[\d-]+호\s*:\s*[\d.: ]+/\s*', '', r.get('title', '')).replace('(*)', '').strip()
-        A['warnings'].append(dict(id=i, t='%s-%s-%s %s:%s' % (t[:4], t[4:6], t[6:8], t[8:10], t[10:12]), title=title, lift='해제' in title))
+        t = str(r.get('tmFc', '')); raw_title = html.unescape(str(r.get('title', ''))).replace('(*)', '').strip()
+        title = re.sub(r'^\[특보\]\s*제[\d-]+호\s*:\s*[\d.: ]+/\s*', '', raw_title).strip()
+        # API 제공 항목은 시점마다 이름이 조금 다르다. 가능한 지역 필드를 모두
+        # 보존하고, 제목 안에 포함된 ‘지역: 특보’ 형태도 놓치지 않는다. 없는 지역을
+        # 추측해 만들지 않는 것이 경보 화면에서 특히 중요하다.
+        areas = next((str(r.get(k) or '').strip() for k in ('area', 'areas', 'region', 'regions', 'areaName', 'warnArea', 'zone') if str(r.get(k) or '').strip()), '')
+        if not areas:
+            m = re.search(r'(?:특보|경보|주의보)\s*(?:발표|변경|해제)?\s*[:：]\s*(.+)$', title)
+            if m and re.search(r'[가-힣]', m.group(1)):
+                areas = m.group(1).strip()
+        A['warnings'].append(dict(id=i, t='%s-%s-%s %s:%s' % (t[:4], t[4:6], t[6:8], t[8:10], t[10:12]), title=title, areas=areas, lift='해제' in title))
     A['quakes'] = sorted(A['quakes'], key=lambda x: x['t'], reverse=True)[:200]; A['warnings'] = sorted(A['warnings'], key=lambda x: x['t'], reverse=True)[:300]
     A['updated'] = NOW.isoformat(); ST['ok']['quake'] = len(q); ST['ok']['warn'] = len(w); save('alerts.json', A)
 

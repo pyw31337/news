@@ -90,7 +90,7 @@ let tickT=null;
 function tick(){const k=kst();const cb=document.querySelector('.tabbar .ctr .cb.clk');if(cb){
   const set=(sel,v)=>{const e=cb.querySelector(sel);if(e&&e.textContent!==v){e.textContent=v;e.classList.remove('fl');void e.offsetWidth;e.classList.add('fl')}};
   set('.cd span',k.d);set('.hh',k.h);set('.mm',k.m);cb.classList.remove('shim');void cb.offsetWidth;cb.classList.add('shim');
-  const a=cb.closest('.ctr');if(a)a.setAttribute('aria-label',`오늘 · ${k.d} ${k.h}시 ${k.m}분`)}
+  const a=cb.closest('.ctr');if(a)a.setAttribute('aria-label',`오늘 · ${k.d} ${k.h}:${k.m}`)}
   clearTimeout(tickT);tickT=setTimeout(tick,(60-kst().s)*1000+50)}
 function nav(){const tb=document.querySelector('.tabbar');if(!tb)return;
   const english=typeof S!=='undefined'&&S.region==='en'&&S.orig;

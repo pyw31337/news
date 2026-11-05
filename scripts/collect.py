@@ -393,7 +393,9 @@ def wiki(name):
 def etype(w):
     s = ((w or {}).get('desc', '') + ' ' + (w or {}).get('extract', '')[:60])
     d = (w or {}).get('desc', '')
-    if re.search(r'(회사|기업|업체|기관|정당|단체|위원회|부처|대학|은행|협회|거래소|방송사|구단|그룹$)', d): return 'org'
+    # 법인·서비스를 사람/장소보다 먼저 판별한다. 회사명이 사람 이름과 겹치거나
+    # 위키 설명이 짧아도 광고대행사·플랫폼 같은 표현으로 빠지는 일을 줄인다.
+    if re.search(r'(회사|기업|업체|법인|대행사|플랫폼|서비스|브랜드|제조사|통신사|기관|정당|단체|위원회|부처|대학|은행|협회|거래소|방송사|구단|그룹$)', d): return 'org'
     if re.search(r'(증권|운용|은행|조사소|연구소)', (w or {}).get('title', '')): return 'org'
     # 주가지수·거래소가 '사람'으로 잘못 분류되던 문제(예: 나스닥) — 지수·시장 이름은 기관으로
     if re.search(r'(지수|거래소|증시|주식시장|나스닥|코스피|코스닥|다우|S&P|NASDAQ)', (w or {}).get('title', '') + ' ' + d): return 'org'
@@ -403,6 +405,14 @@ def etype(w):
     if re.search(r'(도시|국가|나라|섬|지역|광역시|특별시|도\b|군\b|구\b|시\b|공화국|주\b|산\b|강\b)', s): return 'place'
     if re.search(r'(회사|기업|기관|정당|단체|위원회|부처|법원|대학|은행|협회)', s): return 'org'
     return 'event'
+
+def entity_kind(name, w, typ):
+    """화면 분류용 세부 타입. 실제 위키 설명·이름으로만 고르고 추측은 하지 않는다."""
+    if typ == 'person': return 'person'
+    if typ == 'place': return 'place'
+    text = ' '.join([name, (w or {}).get('title', ''), (w or {}).get('desc', ''), (w or {}).get('extract', '')[:180]])
+    companies = r'(회사|기업|업체|법인|대행사|플랫폼|서비스|브랜드|제조|통신|게임|그룹|은행|증권|자동차|전자|애플|카카오|쿠팡|이노션)'
+    return 'company' if re.search(companies, text, re.I) else 'inst'
 
 def timeline(name):
     q = urllib.parse.quote('"%s"' % name)
@@ -420,7 +430,9 @@ def timeline(name):
 with ThreadPoolExecutor(8) as ex:
     W = dict(zip(cand, ex.map(wiki, cand)))
 tkw = set(trend_kw)
-ents = [e for e in cand if (W[e] and etype(W[e]) != 'event') or e in tkw][:22]
+# 실시간 22개만 보면 기업·기관이 하루만에 사라지므로, 후보 폭은 조금 더 넓혀
+# 최근 화제 풀의 씨앗을 만든다. 타임라인 수집은 아래 동시성 제한을 그대로 쓴다.
+ents = [e for e in cand if (W[e] and etype(W[e]) != 'event') or e in tkw][:36]
 with ThreadPoolExecutor(8) as ex:
     TL = dict(zip(ents, ex.map(timeline, ents)))
 
@@ -462,10 +474,44 @@ for e in ents:
     w = W[e]; tl = TL[e]
     days = collections.Counter(x['t'][:10] for x in tl)
     h = hist.get(e, {}); prev = [v for d, v in sorted(h.items()) if d < today]
-    entities.append(dict(name=e, type=etype(w), score=round(ent_score[e], 1), wiki=w, issues=sorted(ent_issue[e]),
+    typ = etype(w)
+    entities.append(dict(name=e, type=typ, kind=entity_kind(e, w, typ), score=round(ent_score[e], 1), wiki=w, issues=sorted(ent_issue[e]),
                          timeline=tl[:400], daily=sorted(days.items()), history=sorted(h.items())[-30:],
                          delta=(round(ent_score[e] - prev[-1], 1) if prev else None),
                          related=[dict(name=(b if a == e else a), n=n) for (a, b), n in co.most_common() if e in (a, b)][:8]))
+
+# 최근 화제 보관함: 오늘 상위권에 없더라도 기자·기업·장소·기관·단체가 사라지지
+# 않게 한다. 과거 항목은 마지막 관측일을 함께 표시할 수 있으며, 새 원본 기사나
+# 위키 정보를 만들어 내지 않는다.
+pool_path = os.path.join(ROOT, 'entity_pool.json')
+try:
+    pool = json.load(open(pool_path, encoding='utf-8'))
+    pool = pool if isinstance(pool, dict) else {}
+except Exception:
+    pool = {}
+for entity in entities:
+    entity['last_seen'] = today
+    pool[entity['name']] = entity
+cutoff = (NOW.date() - dt.timedelta(days=30)).isoformat()
+pool = {name: entity for name, entity in pool.items() if str(entity.get('last_seen', today)) >= cutoff and entity.get('name')}
+def rank_pool(entity):
+    return (entity.get('last_seen', ''), float(entity.get('score') or 0), len(entity.get('timeline') or []))
+ordered_pool = sorted(pool.values(), key=rank_pool, reverse=True)
+picked, picked_names = [], set()
+for kind in ('person', 'company', 'place', 'inst'):
+    # 각 분류는 최근 화제에서 최대 여섯 개까지 우선 확보한다. 데이터가 아직 여섯
+    # 개 미만이면 있는 원본만 표시하고 빈 자리를 가짜 카드로 채우지 않는다.
+    for entity in (x for x in ordered_pool if x.get('kind') == kind):
+        if sum(1 for x in picked if x.get('kind') == kind) >= 6:
+            break
+        if entity['name'] not in picked_names:
+            picked.append(entity); picked_names.add(entity['name'])
+for entity in ordered_pool:
+    if len(picked) >= 36: break
+    if entity['name'] not in picked_names:
+        picked.append(entity); picked_names.add(entity['name'])
+entities = picked
+json.dump(pool, open(pool_path, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 
 # 인물은 사진, 기업·기관은 로고, 나라·장소는 국기·대표 사진을 우선한다.
 # 실패해도 기존 위키 미리보기로 렌더링할 수 있으므로 수집 전체를 멈추지 않는다.
