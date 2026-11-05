@@ -1,0 +1,39 @@
+name: site-mobile-audit
+
+# 실제 공개 페이지를 모바일 Lighthouse로 측정한다. 결과는 아티팩트로만 남기며 배포물은 바꾸지 않는다.
+on:
+  schedule:
+    - cron: '40 21 * * *' # 매일 06:40 KST, 수집·배포 직전 상태도 비교 가능
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - name: 공개 사이트 모바일 성능·접근성 측정
+        run: |
+          mkdir -p reports
+          npx --yes lighthouse https://pyw31337.github.io/news/ \
+            --only-categories=performance,accessibility,best-practices \
+            --preset=perf --form-factor=mobile --output=json --output-path=reports/mobile.json \
+            --chrome-flags='--headless --no-sandbox'
+          python3 - <<'PY'
+          import json
+          d = json.load(open('reports/mobile.json'))
+          cats = d.get('categories', {})
+          for key in ('performance', 'accessibility', 'best-practices'):
+              score = cats.get(key, {}).get('score')
+              print('%s: %s' % (key, 'n/a' if score is None else round(score * 100)))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mobile-lighthouse-report
+          path: reports/
+          retention-days: 14

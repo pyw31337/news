@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """공공데이터포털(data.go.kr) 수집 — 맥미니(국내 IP)에서 실행.
 data.go.kr 게이트웨이는 해외 IP(GitHub Actions 등)를 막아서 SSL 끊김/500/403이 나요. 그래서 이 스크립트는 맥미니 launchd(com.pyw31337.newsboard-gov)가 매시 실행해 data 브랜치 gov/ 에 올립니다.
-출력: data/briefs.json(재정경제부 보도자료), data/gov/{alerts,stocks,apt,winners_*,status}.json
+출력: data/briefs.json(재정경제부 보도자료), data/gov/{alerts,weather,stocks,apt,winners_*,status}.json
 환경변수 DATA_GO_KR_KEY. 키는 로그·파일에 남기지 않음. API별 하루 1만 회 한도 → 하루 약 300회 이하로 사용."""
 import os, sys, json, re, html, time, datetime as dt, urllib.request, urllib.parse, xml.etree.ElementTree as ET
 D = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data'); G = os.path.join(D, 'gov'); os.makedirs(G, exist_ok=True)
@@ -87,6 +87,60 @@ def alerts():  # 지진(최대 3일 전부터)·기상특보(최대 6일 전부�
     A['quakes'] = sorted(A['quakes'], key=lambda x: x['t'], reverse=True)[:200]; A['warnings'] = sorted(A['warnings'], key=lambda x: x['t'], reverse=True)[:300]
     A['updated'] = NOW.isoformat(); ST['ok']['quake'] = len(q); ST['ok']['warn'] = len(w); save('alerts.json', A)
 
+# 전국 화면은 ‘서울’ 한 곳의 예보를 전국 데이터처럼 보이지 않게, 17개 시·도 생활권을
+# 각각 보관한다. 특보는 기상청(data.go.kr) 발표을 그대로 쓰고, 이 파일은 시간대·주간
+# 모델 예보와 현재 수치를 담당한다. Open-Meteo는 키가 필요 없어서 GitHub 수집에서도
+# 갱신할 수 있다. 제공되지 않은 대기질·체감 지수는 만들어 내지 않는다.
+WEATHER_REGIONS = (
+    ('seoul', '서울', 37.5665, 126.9780), ('incheon', '인천', 37.4563, 126.7052),
+    ('gyeonggi', '경기', 37.2636, 127.0286), ('gangwon', '강원', 37.8813, 127.7300),
+    ('sejong', '세종', 36.4801, 127.2890), ('daejeon', '대전', 36.3504, 127.3845),
+    ('chungbuk', '충북', 36.6424, 127.4890), ('chungnam', '충남', 36.8151, 127.1139),
+    ('jeonbuk', '전북', 35.8242, 127.1480), ('gwangju', '광주', 35.1595, 126.8526),
+    ('jeonnam', '전남', 34.8118, 126.3922), ('daegu', '대구', 35.8714, 128.6014),
+    ('gyeongbuk', '경북', 36.5760, 128.5056), ('busan', '부산', 35.1796, 129.0756),
+    ('ulsan', '울산', 35.5384, 129.3114), ('gyeongnam', '경남', 35.2281, 128.6811),
+    ('jeju', '제주', 33.4996, 126.5312),
+)
+
+def weather():
+    """17개 시·도 생활권의 현재값·48시간·7일 예보를 한 번에 받아 저장한다."""
+    q = urllib.parse.urlencode({
+        'latitude': ','.join(str(x[2]) for x in WEATHER_REGIONS),
+        'longitude': ','.join(str(x[3]) for x in WEATHER_REGIONS),
+        'timezone': 'Asia/Seoul', 'forecast_days': 7, 'forecast_hours': 48,
+        'current': 'temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,cloud_cover,pressure_msl,wind_speed_10m,wind_direction_10m,wind_gusts_10m',
+        'hourly': 'temperature_2m,apparent_temperature,precipitation_probability,precipitation,weather_code,wind_speed_10m,relative_humidity_2m',
+        'daily': 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,sunrise,sunset,uv_index_max',
+    })
+    try:
+        req = urllib.request.Request('https://api.open-meteo.com/v1/forecast?' + q, headers={'User-Agent': 'NewsBoard weather collector'})
+        payload = json.loads(urllib.request.urlopen(req, timeout=35).read().decode('utf-8'))
+        payload = payload if isinstance(payload, list) else [payload]
+        if len(payload) != len(WEATHER_REGIONS):
+            raise RuntimeError('expected %d regions, got %d' % (len(WEATHER_REGIONS), len(payload)))
+    except Exception as e:
+        ST['err']['weather'] = str(e)[:160]
+        return
+    stations = []
+    for (sid, name, lat, lon), raw in zip(WEATHER_REGIONS, payload):
+        current, hourly, daily = raw.get('current') or {}, raw.get('hourly') or {}, raw.get('daily') or {}
+        times = hourly.get('time') or []
+        try: start = times.index(current.get('time'))
+        except ValueError: start = 0
+        end = min(len(times), start + 30)  # 한 화면은 다음 30시간, 원본 API는 48시간 요청
+        def H(key, i, default=None):
+            v = hourly.get(key) or []
+            return v[i] if i < len(v) else default
+        def D_(key, i, default=None):
+            v = daily.get(key) or []
+            return v[i] if i < len(v) else default
+        hours = [dict(t=times[i], temp=H('temperature_2m', i), feel=H('apparent_temperature', i), pop=H('precipitation_probability', i), precip=H('precipitation', i), code=H('weather_code', i), wind=H('wind_speed_10m', i), humidity=H('relative_humidity_2m', i)) for i in range(start, end)]
+        days = [dict(date=D_('time', i), code=D_('weather_code', i), high=D_('temperature_2m_max', i), low=D_('temperature_2m_min', i), pop=D_('precipitation_probability_max', i), precip=D_('precipitation_sum', i), sunrise=D_('sunrise', i), sunset=D_('sunset', i), uv=D_('uv_index_max', i)) for i in range(min(7, len(daily.get('time') or [])))]
+        stations.append(dict(id=sid, name=name, lat=lat, lon=lon, current=dict(time=current.get('time'), temp=current.get('temperature_2m'), humidity=current.get('relative_humidity_2m'), feel=current.get('apparent_temperature'), day=current.get('is_day'), precip=current.get('precipitation'), code=current.get('weather_code'), cloud=current.get('cloud_cover'), pressure=current.get('pressure_msl'), wind=current.get('wind_speed_10m'), wind_dir=current.get('wind_direction_10m'), gust=current.get('wind_gusts_10m')), hours=hours, days=days))
+    save('weather.json', dict(schema='newsboard.weather.v1', updated=NOW.isoformat(), timezone='Asia/Seoul', source=dict(forecast='Open-Meteo Weather Forecast API · model forecast', alerts='기상청 특보(공공데이터포털)'), coverage=[x[1] for x in WEATHER_REGIONS], stations=stations))
+    ST['ok']['weather'] = len(stations)
+
 def stocks():  # 금융위 주식시세: 날짜(basDt) 한 번 호출로 전 종목 → 시총 상위 300 종목 일별 종가 120영업일 보관
     S = load('stocks.json', {'days': {}, 'names': {}})
     if S.get('checked') == TODAY + NOW.strftime('%H')[:1] and S['days']: return  # 10시간 단위로만 확인
@@ -149,9 +203,11 @@ def winners():  # 선관위 당선인 — 선거별 1회(이후 30일마다 재�
         if out: save(fn, dict(sgId=sg, name=nm, checked=TODAY, cols=['name', 'party', 'type', 'sd', 'sgg', 'wiw', 'birth', 'gender', 'rate', 'career', 'id'], rows=out)); ST['ok'][fn] = len(out)
 
 if __name__ == '__main__':
-    if not KEY: print('no key'); sys.exit(0)
     only = sys.argv[1:]
-    for f in (briefs, alerts, stocks, apt, winners):
+    jobs = (weather,) + ((briefs, alerts, stocks, apt, winners) if KEY else ())
+    if not KEY and not only:
+        print('DATA_GO_KR_KEY unavailable: collecting keyless weather only')
+    for f in jobs:
         if only and f.__name__ not in only: continue
         try: f()
         except Exception as e: ST['err'][f.__name__] = str(e).replace(KEY, '***')[:200]

@@ -76,6 +76,11 @@ jobs:
         continue-on-error: true
         timeout-minutes: 3
         run: python scripts/social.py
+      - name: 전국 날씨(17개 생활권 현재·시간대·주간 예보)
+        continue-on-error: true
+        timeout-minutes: 2
+        # Open-Meteo 예보는 키 없이 수집 가능하다. 기상청 특보는 맥미니의 data.go.kr 수집을 계속 우선한다.
+        run: python scripts/kr_gov.py weather
       # 재정경제부 보도자료·기상·실거래가·주식시세·선관위: data.go.kr이 해외 IP를 막아서 맥미니(local/gov/run_gov.sh)가 매시 data 브랜치 gov/·briefs.json에 올림
       - name: 공식 통계·공시(ECOS·DART)
         continue-on-error: true

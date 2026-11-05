@@ -1,0 +1,43 @@
+name: cloudflare-readonly-check
+
+# CLOUDFLARE_API_TOKEN은 배포 권한으로 쓰지 않는다. 이 작업은 현재 Worker 배포 목록과
+# 공개 health만 확인한다. 문제가 생겨도 데이터·Worker·R2를 변경하지 않는 점검 전용이다.
+on:
+  schedule:
+    - cron: '25 21 * * *' # 매일 06:25 KST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - name: Worker 배포 상태와 공개 health 확인
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN"
+          mkdir -p reports
+          npx --yes wrangler@4 deployments list --config worker/wrangler.toml --json > reports/worker-deployments.json
+          curl --fail --silent --show-error --retry 3 https://newsboard-sync.pyw213.workers.dev/health > reports/worker-health.json
+          python3 - <<'PY'
+          import json
+          deploy = json.load(open('reports/worker-deployments.json'))
+          health = json.load(open('reports/worker-health.json'))
+          if not health.get('ok'):
+              raise SystemExit('Worker health endpoint reported not ok')
+          count = len(deploy) if isinstance(deploy, list) else len(deploy.get('deployments', []))
+          print('Cloudflare read-only check passed: %d deployment record(s), health=ok' % count)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cloudflare-readonly-report
+          path: reports/
+          retention-days: 14
