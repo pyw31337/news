@@ -600,7 +600,10 @@ function graph(el,mini){
   let s=1,tx=0,ty=0;const setV=()=>{s=Math.max(1,Math.min(3,s));tx=Math.min(0,Math.max(W-W*s,tx));ty=Math.min(0,Math.max(H-H*s,ty));vp.setAttribute('transform',`translate(${tx},${ty}) scale(${s})`);svg.style.touchAction=s>1?'none':'pan-y'};setV();
   const pt=ev=>{const r=svg.getBoundingClientRect();return[(ev.clientX-r.left)*W/r.width,(ev.clientY-r.top)*H/r.height]};
   const P=new Map();let drag=null,moved=false,start=null,pinch=null,pan=null,hover=null,hoverPoint=null,raf=0;
-  const setFlow=n=>el.classList.toggle('flow-active',!!n);
+  /* 기본 화면은 정적이고, 손가락/포인터가 닿은 노드와 직접 연결된 선만 흐른다.
+     전체 그래프가 동시에 움직이면 관계의 방향을 읽기 어려워진다. */
+  const setFlow=n=>{const i=n?N.indexOf(n):-1;el.classList.toggle('flow-active',i>=0);
+    flowLines.forEach((line,k)=>{const edge=E[k]||[];line.classList.toggle('on',i>=0&&(edge[0]===i||edge[1]===i))})};
   const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const nodeAt=p=>{let hit=null,dist=Infinity;N.forEach(n=>{const d=Math.hypot(n.x-p[0],n.y-p[1]);if(d<Math.max(n.r+44,62)&&d<dist){hit=n;dist=d}});return hit};
   /* 상시 시뮬레이션은 하지 않는다. 포인터가 가까울 때만 이웃 노드를 살짝 끌고,
