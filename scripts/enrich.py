@@ -477,20 +477,50 @@ def words():
         pick.append(dict(word=w, count=cnt[w], wiki=x, examples=ex_[w]))
     # 어려운 단어 선별·쉬운 설명: LLM(근거=위키 요약), 없으면 위키 요약 첫 문장
     ai = llm('words:' + hkey(D['date'], *[p['word'] for p in pick[:30]]),
-             '아래는 오늘 기사 제목에 자주 나온 단어와 위키백과 요약이다. 일반 독자(중학생 수준)가 뜻을 헷갈릴 만한 어려운 단어 8개를 골라, 위키백과 요약에 근거해서만 쉬운 말로 설명하라.\n' +
+             '아래는 오늘 기사 제목에 자주 나온 단어와 위키백과 요약이다. 일반 독자(중학생 수준)가 뜻을 헷갈릴 만한 어려운 단어 8~10개를 골라, 위키백과 요약에 근거해서만 쉬운 말로 설명하라.\n' +
+             '반드시 서로 다른 사건이나 기사 제목에서 나온 단어를 골라라 (같은 사건·동일 기사 문맥에서 2개 이상 선택 금지).\n' +
              '\n'.join('- %s: %s' % (p['word'], p['wiki']['extract'][:200]) for p in pick[:(14 if SMALL else 30)]) +
              '\nJSON: {"words": [{"word": "단어(목록 그대로)", "easy": "쉬운 설명 1~2문장", "level": "어려움 1~3"}]}', 1200)
     m = {w['word']: w for w in (ai or {}).get('words', [])}
-    if m: pick = [p for p in pick if p['word'] in m]
+    if m:
+        # LLM이 고른 단어들을 우선하되, 후보 풀 전체에서 중복 사건을 걸러 채운다
+        ordered_pick = [p for p in pick if p['word'] in m] + [p for p in pick if p['word'] not in m]
     else:
         allp = pick
-        pick = [p for p in pick if len(p['word']) >= 3 and re.search(r'(용어|개념|제도|정책|지표|현상|기법|체계|방식|권리|절차|행위|원칙|제재|조치|법률|처분)', p['wiki']['extract'][:120])]
-        if len(pick) < 4: pick += [p for p in allp if p not in pick and p['word'] not in COMMON and len(p['word']) >= 2][:8 - len(pick)]
+        ordered_pick = [p for p in pick if len(p['word']) >= 3 and re.search(r'(용어|개념|제도|정책|지표|현상|기법|체계|방식|권리|절차|행위|원칙|제재|조치|법률|처분)', p['wiki']['extract'][:120])]
+        ordered_pick += [p for p in allp if p not in ordered_pick and p['word'] not in COMMON and len(p['word']) >= 2]
+
+    # 사건·기사 제목 단위 중복 제거: 같은 기사 문맥에서 서로 다른 단어가 동시 선정되는 현상 원천 차단
+    def norm_t(t): return re.sub(r'[^\w가-힣]', '', (t or '')).lower()
+    def toks_t(t): return set([x for x in re.sub(r'[^\w가-힣\s]', ' ', (t or '')).split() if len(x) >= 2])
+    def is_dup_story(t1, t2):
+        if not t1 or not t2: return False
+        n1, n2 = norm_t(t1), norm_t(t2)
+        if n1 == n2 or (len(n1) >= 8 and len(n2) >= 8 and n1[:8] == n2[:8]): return True
+        return len(toks_t(t1) & toks_t(t2)) >= 2
+
     out = []
-    for p in pick[:10]:
+    used_titles = []
+    for p in ordered_pick:
+        exs = p.get('examples') or [{}]
+        chosen_ex = None
+        for ex in exs:
+            t = ex.get('title', '')
+            if t and not any(is_dup_story(u, t) for u in used_titles):
+                chosen_ex = ex
+                break
+        if not chosen_ex and exs and exs[0].get('title'):
+            # 모든 예문이 이미 선정된 기사 주제와 겹치면 제외
+            continue
+        chosen_ex = chosen_ex or exs[0]
+        if chosen_ex.get('title'):
+            used_titles.append(chosen_ex.get('title'))
         a = m.get(p['word'])
         first = re.split(r'(?<=다\.)\s', p['wiki']['extract'])[0]
-        out.append(dict(p, easy=(a or {}).get('easy') or first, ai=bool(a), level=(a or {}).get('level', '')))
+        reordered_exs = [chosen_ex] + [e for e in exs if e != chosen_ex]
+        out.append(dict(p, examples=reordered_exs, easy=(a or {}).get('easy') or first, ai=bool(a), level=(a or {}).get('level', '')))
+        if len(out) >= 10:
+            break
     return out
 
 try: verify_categories(D['issues'])

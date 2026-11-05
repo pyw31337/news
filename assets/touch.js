@@ -155,24 +155,52 @@ function facesHTML(E){return''}
 
 /* ---------- ⑦ 오늘의 단어 스크래치 ---------- */
 function wordsHTML(W){if(!W||!W.length)return'';
-  // 중복 주제/기사(예: 동일 회사/헤드라인) 제거
-  const seenHeadlines = new Set();
+  // 중복 주제/기사(예: 동일 사건·문구에서 서로 다른 단어 마스킹) 완벽 제거
+  const normTitle = t => (t||'').replace(/[^\w가-힣]/g,'').toLowerCase();
+  const getTokens = t => new Set((t||'').replace(/[^\w가-힣\s]/g,' ').split(/\s+/).filter(x => x.length >= 2));
+  const isSimilarStory = (t1, t2) => {
+    if(!t1 || !t2) return false;
+    const n1 = normTitle(t1), n2 = normTitle(t2);
+    if(n1 === n2) return true;
+    if(n1.length >= 8 && n2.length >= 8 && n1.slice(0, 8) === n2.slice(0, 8)) return true;
+    const s1 = getTokens(t1), s2 = getTokens(t2);
+    let common = 0;
+    for(const tok of s1){ if(s2.has(tok)) common++; }
+    return common >= 2;
+  };
+
+  const usedHeadlines = [];
   const diverseW = [];
+
   for(const w of W){
     if(!w || !w.word) continue;
-    const ex = (w.examples||[]).find(x=>(x.title||'').includes(w.word)) || (w.examples||[])[0] || {};
-    const key = (ex.title||'').replace(/[^\w가-힣]/g,'').slice(0,10);
-    if(key && seenHeadlines.has(key)) continue;
-    if(key) seenHeadlines.add(key);
-    diverseW.push(w);
+    const exList = (w.examples && w.examples.length) ? w.examples : [{}];
+    let chosenEx = null;
+    for(const ex of exList){
+      const t = ex.title || '';
+      if(t && !usedHeadlines.some(u => isSimilarStory(u, t))){
+        chosenEx = ex;
+        break;
+      }
+    }
+    // 첫 번째 예문과 모든 대체 예문이 이미 다룬 주제와 겹친다면 중복 사건이므로 스킵
+    if(!chosenEx && exList[0] && exList[0].title){
+      continue;
+    }
+    chosenEx = chosenEx || exList[0] || {};
+    if(chosenEx.title){
+      usedHeadlines.push(chosenEx.title);
+    }
+    diverseW.push(Object.assign({}, w, { _chosenEx: chosenEx }));
     if(diverseW.length >= 10) break;
   }
-  // 생성 파이프라인은 정확히 열 문제를 보장한다. 화면에서도 임의로 여섯 개로
-  // 잘라 버리지 않아 하루 학습량과 표시 수가 어긋나지 않게 한다.
-  const finalW = diverseW.length >= Math.min(10,W.length) ? diverseW : W.slice(0, 10);
+
+  // 중복을 엄격히 배제한 diverseW를 그대로 노출 (중복 있는 이전 원본으로 되돌리지 않음)
+  const finalW = diverseW.length ? diverseW : W.slice(0, 10);
   return sec('오늘의 단어','Words of the day','','quiz')+
     `<div class="tws grab-carousel" id="tword-deck">${finalW.map((w,k)=>{
-      const ex=(w.examples||[]).find(x=>(x.title||'').includes(w.word))||(w.examples||[])[0]||{}, t=ex.title||'', has=t.includes(w.word);
+      const ex=w._chosenEx || (w.examples||[]).find(x=>(x.title||'').includes(w.word)) || (w.examples||[])[0] || {};
+      const t=ex.title||'', has=t.includes(w.word);
       const sq = '□'.repeat(w.word ? w.word.length : 2);
       const blank = has ? esc(t).split(esc(w.word)).join(`<u>${sq}</u>`) : '';
       const mean = (w.easy||w.mean||(w.wiki||{}).desc||'').split(w.word).join(sq);

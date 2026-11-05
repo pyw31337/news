@@ -151,21 +151,44 @@ if not WORDS:
         if ex:
             pool.append(dict(word=word, mean=w['easy'].rstrip('.'), field='오늘의 말', related=[], examples=ex, src='위키백과', hits=w.get('count', 1), url=(w.get('wiki') or {}).get('url', '')))
             have.add(word)
-    pool.sort(key=lambda x: (-x['hits'], bool(x['examples']) is False, x['word']))
+    def norm_t(t): return re.sub(r'[^\w가-힣]', '', (t or '')).lower()
+    def toks_t(t): return set([x for x in re.sub(r'[^\w가-힣\s]', ' ', (t or '')).split() if len(x) >= 2])
+    def is_dup_story(t1, t2):
+        if not t1 or not t2: return False
+        n1, n2 = norm_t(t1), norm_t(t2)
+        if n1 == n2 or (len(n1) >= 8 and len(n2) >= 8 and n1[:8] == n2[:8]): return True
+        return len(toks_t(t1) & toks_t(t2)) >= 2
     used_words, used_issues, field_n = set(), set(), {}
+    used_titles = []
     def pick(strict=True):
         if len(WORDS) >= WORD_TARGET:
             return
         for w in pool:
             if len(WORDS) >= WORD_TARGET:
                 return
-            issue = (w.get('examples') or [{}])[0].get('issue', '')
             if w['word'] in used_words:
                 continue
+            exs = w.get('examples') or []
+            chosen_ex = None
+            if exs:
+                for ex in exs:
+                    t = ex.get('title', '')
+                    if t and not any(is_dup_story(u, t) for u in used_titles):
+                        chosen_ex = ex
+                        break
+                if not chosen_ex:
+                    if strict:
+                        continue
+                    chosen_ex = exs[0]
+            issue = (chosen_ex or {}).get('issue', '')
             if strict and issue and issue in used_issues:
                 continue
             if strict and field_n.get(w.get('field'), 0) >= 2:
                 continue
+            if chosen_ex:
+                w['examples'] = [chosen_ex] + [e for e in exs if e != chosen_ex]
+                if chosen_ex.get('title'):
+                    used_titles.append(chosen_ex.get('title'))
             WORDS.append(w); used_words.add(w['word']); field_n[w.get('field')] = field_n.get(w.get('field'), 0) + 1
             if issue: used_issues.add(issue)
             if len(WORDS) == WORD_TARGET:
