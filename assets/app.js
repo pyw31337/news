@@ -514,6 +514,15 @@ function eraChart(items,z,themeCol){const fmt=z==='year'?(t=>t.slice(0,4)):(t=>t
   const baseCol=themeCol||'#2f6bff',maxCol=themeCol||'#ff4d2e';
   return`<div class="era"><svg width="${W}" height="${H+24}">${all.map((k,i)=>{const v=c[k]||0,h=v/mx*(H-10);return`<rect x="${i*bw+10}" y="${H-h}" width="${bw-4}" height="${h}" rx="3" fill="${v===mx?maxCol:baseCol}" opacity="${v?(v===mx?1:.8):.15}"><title>${k}: ${v}건</title></rect>${(z==='year'||k.endsWith('-01'))?`<text x="${i*bw+10}" y="${H+16}">${z==='year'?k:k.slice(0,4)}</text>`:''}`}).join('')}</svg></div>`}
 
+function makeHeroMetaRow(e, pol){
+  const sub=SUB.find(x=>x[0]===subtype(e))?.[1]||TYPE[e.type];
+  if(!pol){
+    return `<div class="ehero-meta-row"><span class="ehero-badge type-badge ${e.type}">${esc(sub)}</span></div>`;
+  }
+  const age=(pol.ages||[]).slice(-1)[0]||22;
+  return `<div class="ehero-meta-row"><span class="ehero-badge party-badge"><span class="pm-wrap">${partyMark(pol.party,16,true)}</span><b>${esc(pol.party)}</b></span><span class="ehero-badge">제${age}대 국회의원</span>${pol.district?`<span class="ehero-badge">${esc(pol.district)}</span>`:''}${pol.reelect?`<span class="ehero-badge">${esc(pol.reelect)}</span>`:''}<span class="ehero-badge type-badge ${e.type}">${esc(sub)}</span></div>`;
+}
+
 /* ---------- 인물 상세 ---------- */
 function entity(n){
   const e=ent(n);if(!e)return people();
@@ -528,16 +537,6 @@ function entity(n){
   const em=entityMedia(e);
 
   const pcVars=pTheme?`--pc:${pTheme.color};--pc-dark:${pTheme.dark};--pc-light:${pTheme.light};`:'';
-  
-  const polHeaderBadge=pol?`<div class="ehero-pol-header">
-    <span class="ehero-party-badge">
-      <span class="pm-wrap">${partyMark(pol.party,18,true)}</span>
-      <b>${esc(pol.party)}</b>
-      <small>제${(pol.ages||[]).slice(-1)[0]||22}대 국회의원</small>
-    </span>
-    ${pol.district?`<span class="ehero-pol-dist">${esc(pol.district)}</span>`:''}
-    ${pol.reelect?`<span class="ehero-pol-dist">${esc(pol.reelect)}</span>`:''}
-  </div>`:'';
 
   const polProfilePill=pol?`<div class="prof-party-pill">
     <span class="pm-wrap">${partyMark(pol.party,16,true)}</span>
@@ -550,7 +549,7 @@ function entity(n){
   const polLinkHtml=pol?`<div class="pol-link" style="margin-top:12px"><a class="pol-act-btn" href="politicians/?id=${pol.id}"><span style="font-size:14px">🏛️</span><span>${esc(pol.name)} 의원 국회 활동·법안 보기</span>${NBI('arrow-right')}</a></div>`:rep?`<div class="rep-link" style="margin-top:12px"><a class="chip" href="${rh(rep.id)}" style="display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:var(--blue);font-weight:700;padding:6px 14px;border-radius:99px;font-size:12px">${ic('press')} 기자 데스크 프로필 보기 ${NBI('arrow-right')}</a></div>`:'';
 
   app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a>${shareBtn()}</div>
-  <section class="ehero card ${pTheme?'ehero-party':''}" style="${pcVars}${bg(wi&&wi.image||em.url||e.wiki?.thumb)}"><div class="in">${polHeaderBadge}<span class="chip ${e.type}">${esc(SUB.find(x=>x[0]===subtype(e))?.[1]||TYPE[e.type])}</span>${em.wide?`<img class="ewide" src="${esc(em.wide)}" alt="${esc(e.name)} 로고">`:''}<h1>${esc(e.name)}</h1>
+  <section class="ehero card ${pTheme?'ehero-party':''}" style="${pcVars}${bg(wi&&wi.image||em.url||e.wiki?.thumb)}"><div class="in">${makeHeroMetaRow(e,pol)}${em.wide?`<img class="ewide" src="${esc(em.wide)}" alt="${esc(e.name)} 로고">`:''}<h1>${esc(e.name)}</h1>
    <p class="big">${wi?`지금 화제인 이유 — ${esc(wi.title)}`:esc(e.timeline[0]?.title||desc)}</p>${wi?`<a class="go" href="issue/${wi.id}">이슈 자세히 보기 ${NBI('arrow-right')}</a>`:''}</div></section>
   <div class="two"><div>
    <section class="card prof ${pTheme?'prof-party':''}" style="${pcVars}"><div class="row"><div style="position:relative;flex:none">${av(e)}${polSealHtml}</div><div>${polProfilePill}<h1>${esc(e.name)}</h1><p class="prof-desc">${esc(desc)}</p>${polLinkHtml}</div></div>
@@ -575,12 +574,13 @@ function entity(n){
         elHero.classList.add('ehero-party');
         elHero.style.setProperty('--pc', th.color);
         elHero.style.setProperty('--pc-dark', th.dark);
-        if(!elHero.querySelector('.ehero-party-badge')){
-          const hb=document.createElement('div');
-          hb.className='ehero-pol-header';
-          hb.innerHTML=`<span class="ehero-party-badge"><span class="pm-wrap">${partyMark(p.party,18,true)}</span><b>${esc(p.party)}</b><small>제${(p.ages||[]).slice(-1)[0]||22}대 국회의원</small></span>${p.district?`<span class="ehero-pol-dist">${esc(p.district)}</span>`:''}${p.reelect?`<span class="ehero-pol-dist">${esc(p.reelect)}</span>`:''}`;
-          elHero.querySelector('.in')?.prepend(hb);
+        const metaRow=elHero.querySelector('.ehero-meta-row');
+        if(metaRow){
+          metaRow.outerHTML=makeHeroMetaRow(e,p);
+        }else{
+          elHero.querySelector('.in')?.insertAdjacentHTML('afterbegin',makeHeroMetaRow(e,p));
         }
+        elHero.querySelectorAll('.in > .chip').forEach(c=>c.remove());
         if(curEm.url&&!elHero.style.backgroundImage){
           elHero.style.backgroundImage=`url('${curEm.url}')`;
         }
