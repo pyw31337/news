@@ -534,7 +534,7 @@ function makeHeroMetaRow(e, pol){
 
 /* ---------- 통합 인물 & 정치인 상세 대시보드 헬퍼 ---------- */
 const fmt=n=>(n||0).toLocaleString();
-const fDate=s=>String(s??'').replace(/(\d{4})-(\d{2})-(\d{2})/g,'$1.$2.$3').replace(/(\d{4})-(\d{2})/g,'$1.$2');
+const fDate=s=>{if(!s)return'';const str=String(s).trim();const m=str.match(/(\d{4})[-./](\d{1,2})[-./](\d{1,2})/);if(m)return`${m[1]}.${m[2].padStart(2,'0')}.${m[3].padStart(2,'0')}`;const ym=str.match(/(\d{4})[-./](\d{1,2})/);if(ym)return`${ym[1]}.${ym[2].padStart(2,'0')}`;return str.replace(/-/g,'.')};
 const pc=p=>partyTheme(p)?.color||(/민주/.test(p||'')?'#004ea2':/국민의힘|한나라|새누리|자유한국|미래통합/.test(p||'')?'#E61E2B':'#6b7390');
 const ARC_REL={parent:['부모·자녀','#d6336c'],spouse:['배우자','#e64980'],sibling:['형제자매','#f06595'],relative:['친척','#f783ac'],schoolmate:['학교 동문','#2a9d8f'],hometown:['같은 출생지','#f08c00'],predecessor:['지역구 전·후임','#3b5bdb']};
 const ARC_TYP={birth:['출생','#8b6cf0','confetti'],edu:['학업','#2a9d8f','school'],career:['경력','#5b7fa6','building'],election:['선거','#1f5bd8','circle-check'],office:['공직','#3b5bdb','star-f'],party:['정당','#f08c00','repeat'],award:['수상','#e0a800','trophy'],family:['가족','#d6336c','heart-f'],assets:['재산','#2f9e44','currency-won'],allegation:['의혹·사건','#e03131','alert-triangle'],ruling:['판결','#862e9c','landmark'],news:['보도','#868e96','news']};
@@ -1317,7 +1317,7 @@ function renderIncidentsSection(p, arc){
       ${inc.slice(0,30).map(x=>`<li>
         <em class="${STG[x.stage]||'s1'}">${esc(x.stage)}</em>
         <a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a>
-        <span>${esc(fDate(x.date))} · ${esc(x.press||'')}</span>
+        <span>${plogo(x.press, x.url, 'q-press-emb')}${esc(fDate(x.date))} · ${esc(x.press||'')}</span>
       </li>`).join('')}
     </ul>`:'<p class="mute">연결된 사건 관련 보도가 없습니다.</p>'}
     ${arcAllegations.length?`
@@ -1327,7 +1327,7 @@ function renderIncidentsSection(p, arc){
         ${arcAllegations.map(ae=>`<li>
           <em class="${ae.typ==='ruling'?'s4':'s1'}">${ae.typ==='ruling'?'판결':'의혹·사건'}</em>
           <a href="${esc(ae.url||'#')}" target="_blank" rel="noopener">${esc(ae.title)}</a>
-          <span>${esc(fDate(ae.d))} · ${esc(ae.src||'')}</span>
+          <span>${plogo(ae.src, ae.url||'', 'q-press-emb')}${esc(fDate(ae.d))} · ${esc(ae.src||'')}</span>
         </li>`).join('')}
       </ul>
     </div>`:''}
@@ -1463,22 +1463,107 @@ function renderQuotesSection(p, id){
   const md=p.media;
   if(!md&&(!p.history||!p.history.length))return'';
 
+  const quotesList = md?.quotes || [];
+  const topWords = md?.top_words || [];
+
+  // 화제성 점수(Topic Buzz / Heat Score) 및 썸네일 산출
+  const topWordMap = new Map();
+  topWords.forEach(([w, c], idx) => {
+    topWordMap.set(w, Math.max(2, 28 - idx));
+  });
+
+  const dateCounts = {};
+  quotesList.forEach(q => {
+    const d = (q.date || '').slice(0, 10);
+    dateCounts[d] = (dateCounts[d] || 0) + 1;
+  });
+
+  const scoredQuotes = quotesList.slice(0, 15).map(q => {
+    let score = 56;
+    const txt = q.quote || '';
+    for (const [w, weight] of topWordMap) {
+      if (txt.includes(w)) score += weight * 1.6;
+    }
+    const d = (q.date || '').slice(0, 10);
+    score += Math.min(22, (dateCounts[d] || 1) * 4);
+    const finalScore = Math.min(99, Math.round(score));
+
+    let thumbImg = q.image || null;
+    if (!thumbImg && window.D && D.issues) {
+      const match = D.issues.find(iss => iss.image && (iss.title.includes(txt.slice(0, 8)) || (iss.leads||[]).some(l => l.text.includes(txt.slice(0, 8)))));
+      if (match) thumbImg = match.image;
+    }
+    return { ...q, score: finalScore, thumbImg };
+  });
+
+  const scores = scoredQuotes.map(x => x.score);
+  const maxBuzz = scores.length ? Math.max(...scores) : 70;
+  const avgBuzz = scores.length ? (scores.reduce((a, b) => a + b, 0) / scores.length) : 60;
+
+  const quotesHtml = scoredQuotes.map(q => {
+    const isPeak = (q.score === maxBuzz && q.score >= 75);
+    const isAboveAvg = (q.score > avgBuzz);
+    const flameClass = isPeak ? 'flame-peak' : (isAboveAvg ? 'flame-high' : 'flame-subtle');
+    const badgeClass = isPeak ? 'peak' : (isAboveAvg ? 'high' : 'normal');
+
+    return `<li class="pol-qitem ${isPeak ? 'q-peak' : (isAboveAvg ? 'q-high' : '')}">
+      <div class="q-thumb ${q.thumbImg ? '' : 'noimg'}" ${q.thumbImg ? `style="background-image:url('${esc(q.thumbImg)}')"` : ''}>
+        ${q.thumbImg ? '' : `${plogo(q.press, q.url, 'q-thumb-logo')}<span class="q-thumb-mark">“</span>`}
+      </div>
+      <div class="q-content">
+        <div class="q-topline">
+          <span class="q-heat-badge ${badgeClass}" title="화제성 지수 ${q.score}점 (${isPeak ? '최고 화제 보도' : (isAboveAvg ? '평균 이상 화제 보도' : '일반')})">
+            ${NBI('flame', 1, flameClass)}
+            <b class="q-heat-val">화제 ${q.score}</b>
+          </span>
+          <time class="q-date">${esc(fDate(q.date))}</time>
+        </div>
+        <a href="${esc(q.url)}" target="_blank" rel="noopener" class="q-title ${isPeak ? 'peak' : (isAboveAvg ? 'high' : '')}" title="${esc(q.quote)}">
+          “${esc(q.quote)}”
+        </a>
+        <div class="q-meta">
+          <span class="q-press-bullet">${plogo(q.press, q.url, 'q-press-emb')}</span>
+          <span class="q-press-name">${esc(q.press || '언론사')}</span>
+        </div>
+      </div>
+    </li>`;
+  }).join('');
+
+  const pressChipsHtml = (md.presses || []).filter(x => x[0]).map(([name, count]) => `
+    <div class="pol-press-chip" title="${esc(name)} 총 ${count}건 집중 보도">
+      <span class="pol-press-bullet">${plogo(name, '', 'pol-press-logo')}</span>
+      <span class="pol-press-name">${esc(name)}</span>
+      <b class="pol-press-count">${count}건</b>
+    </div>
+  `).join('');
+
   return `<div class="sec" id="sec-quotes">
     <h2><small>Quotes & Media</small>언행 및 미디어 노출 경향</h2>
   </div>
-  <a class="pol-abb" href="history/?t=p&id=a${encodeURIComponent(id)}" target="_blank">
-    ${typeof NBI==='function'?NBI('message-report'):''}
-    <span>블랙박스 아카이브</span>
-    <small>과거 발언·언행 및 행적 전수 조사 보기 →</small>
+  <a class="pol-abb" href="history/?t=p&id=a${encodeURIComponent(id)}" target="_blank" title="발언·언행 블랙박스 전수 아카이브 열기">
+    <span class="bb-cam-icon">
+      <svg class="bb-cam-svg" viewBox="0 0 28 22" fill="none" aria-hidden="true">
+        <rect x="2" y="3" width="20" height="16" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+        <circle cx="12" cy="11" r="5" fill="#1e293b" stroke="#64748b" stroke-width="1.2"/>
+        <circle cx="12" cy="11" r="2.8" fill="#0b0f19"/>
+        <circle cx="13.2" cy="9.8" r="1" fill="#60a5fa" opacity="0.85"/>
+        <path d="M9 3V1h6v2" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
+        <circle class="bb-rec-light" cx="18.5" cy="6.5" r="2" fill="#ef4444"/>
+      </svg>
+      <span class="bb-rec-pill"><i class="bb-rec-dot"></i>REC</span>
+    </span>
+    <span class="bb-title">블랙박스 아카이브</span>
+    <span class="bb-desc-pill">24h 상시 기록</span>
+    <span class="bb-ext-arrow">과거 발언·언행 및 행적 전수 조사 보기 ↗</span>
   </a>
-  ${md&&(md.quotes||[]).length?`
+  ${quotesHtml ? `
   <div class="card pad" style="margin-top:10px">
-    <h3>헤드라인에 실린 주요 발언·어록</h3>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+      <h3 style="margin:0">헤드라인에 실린 주요 발언·어록</h3>
+      <span class="pol-press-subtag">화제성 높은 보도 우선 하이라이트</span>
+    </div>
     <ul class="pol-qlist">
-      ${md.quotes.slice(0,10).map(q=>`<li>
-        <a href="${esc(q.url)}" target="_blank" rel="noopener">“${esc(q.quote)}”</a>
-        <span>${esc(fDate(q.date))} · ${esc(q.press||'')}</span>
-      </li>`).join('')}
+      ${quotesHtml}
     </ul>
   </div>`:''}
 
@@ -1497,10 +1582,13 @@ function renderQuotesSection(p, id){
     <div class="card pad">
       <h3>월별 보도량 & 주요 언론사</h3>
       ${polMonths(md.by_month,'#ff4d2e')}
-      <h4 style="margin-top:14px;font-size:.82rem;color:var(--mute)">많이 다룬 언론사</h4>
-      <p style="font-size:.82rem;color:var(--ink2);margin-top:4px">
-        ${(md.presses||[]).filter(x=>x[0]).map(x=>esc(x[0])+' '+x[1]+'건').join(' · ')}
-      </p>
+      <h4 style="margin-top:14px;font-size:.82rem;color:var(--mute);display:flex;align-items:center;gap:6px">
+        <span>많이 다룬 언론사</span>
+        <span class="pol-press-subtag">집중 보도 매체</span>
+      </h4>
+      <div class="pol-press-chips">
+        ${pressChipsHtml}
+      </div>
     </div>
   </div>`:''}`;
 }

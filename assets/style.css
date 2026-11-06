@@ -1371,18 +1371,60 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 .pol-ilist em{font-style:normal;font-size:.68rem;font-weight:800;padding:2px 7px;border-radius:6px;margin-right:6px}
 .pol-ilist a{font-weight:600;color:var(--ink);text-decoration:none}
 .pol-ilist a:hover{text-decoration:underline}
-.pol-ilist span{display:block;font-size:.72rem;color:var(--mute);margin-top:2px}
+.pol-ilist span{display:flex;align-items:center;gap:6px;font-size:.74rem;color:var(--mute);margin-top:2px}
 
-.pol-abb{display:flex;align-items:center;gap:8px;margin:8px 0 10px;padding:11px 14px;border-radius:14px;background:#1d2230;color:#fff;text-decoration:none;font-size:.88rem;transition:opacity .15s}
-.pol-abb:hover{opacity:.9}
-.pol-abb svg{width:18px;height:18px;flex:none}
-.pol-abb span{font-weight:700}
-.pol-abb small{margin-left:auto;opacity:.75;font-size:.75rem}
+.pol-abb{display:flex;align-items:center;gap:10px;margin:10px 0 12px;padding:12px 16px;border-radius:14px;background:linear-gradient(135deg,#0c101d 0%,#182238 100%);border:1px solid #2d3748;color:#fff;text-decoration:none;box-shadow:0 3px 12px rgba(12,16,29,0.3);transition:all .2s ease;position:relative;overflow:hidden}
+.pol-abb:hover{border-color:#475569;box-shadow:0 4px 16px rgba(12,16,29,0.45),0 0 14px rgba(239,68,68,0.18);transform:translateY(-1px)}
+.bb-cam-icon{display:inline-flex;align-items:center;gap:6px;flex:none}
+.bb-cam-svg{width:28px;height:22px;flex:none;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.4))}
+.bb-rec-light{animation:recSlowPulse 1.8s ease-in-out infinite;transform-origin:18.5px 6.5px}
+.bb-rec-pill{display:inline-flex;align-items:center;gap:4px;padding:2px 6px;border-radius:999px;background:rgba(239,68,68,0.18);border:1px solid rgba(239,68,68,0.4);color:#ff6b6b;font-size:.64rem;font-weight:900;letter-spacing:0.5px}
+.bb-rec-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#ef4444;box-shadow:0 0 5px #ef4444;animation:recSlowPulse 1.8s ease-in-out infinite}
+@keyframes recSlowPulse{0%,100%{opacity:1;transform:scale(1);filter:drop-shadow(0 0 5px #ff2222)}50%{opacity:0.25;transform:scale(0.85);filter:none}}
+.bb-title{font-weight:800;font-size:.92rem;letter-spacing:-0.2px;color:#fff}
+.bb-desc-pill{font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(255,255,255,0.08);color:#94a3b8;border:1px solid rgba(255,255,255,0.12)}
+.bb-ext-arrow{margin-left:auto;font-size:.76rem;font-weight:600;color:#94a3b8;display:inline-flex;align-items:center;gap:4px;transition:color .15s ease}
+.pol-abb:hover .bb-ext-arrow{color:#e2e8f0}
 
-.pol-qlist{list-style:none;display:grid;gap:9px;padding:0;margin:8px 0 0}
-.pol-qlist a{font-family:var(--serif);font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none}
-.pol-qlist a:hover{text-decoration:underline}
-.pol-qlist span{display:block;font-size:.72rem;color:var(--mute);margin-top:2px}
+/* 어록 및 발언 기사 리스트 (썸네일 + 화제성 불꽃 마크) */
+.pol-qlist{list-style:none;display:grid;gap:10px;padding:0;margin:10px 0 0}
+.pol-qitem{display:flex;gap:12px;align-items:flex-start;padding:11px 13px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0;transition:all .18s ease}
+.pol-qitem:hover{background:#ffffff;border-color:#cbd5e1;box-shadow:0 3px 10px rgba(0,0,0,0.05);transform:translateY(-1px)}
+.pol-qitem.q-peak{background:linear-gradient(135deg,#fff8f7,#fff1f0);border:1.5px solid #fca5a5;box-shadow:0 2px 8px rgba(239,68,68,0.08)}
+.pol-qitem.q-high{background:linear-gradient(135deg,#fffaf8,#fff6f3);border:1px solid #fed7aa}
+
+.q-thumb{flex:none;width:56px;height:56px;border-radius:10px;background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;overflow:hidden;border:1px solid rgba(0,0,0,0.06);background-color:#e2e8f0;display:flex;align-items:center;justify-content:center}
+.q-thumb.noimg{background:linear-gradient(135deg,#f1f5f9,#e2e8f0)}
+.q-thumb-logo{width:26px;height:26px;border-radius:50%;object-fit:cover;box-shadow:0 1px 3px rgba(0,0,0,0.15)}
+.q-thumb-mark{position:absolute;bottom:-4px;right:2px;font-family:var(--serif);font-size:24px;font-weight:900;color:rgba(100,116,139,0.3);line-height:1;pointer-events:none}
+
+.q-content{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.q-topline{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px}
+.q-heat-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:6px;font-size:.72rem;font-weight:800;letter-spacing:-0.2px}
+.q-heat-badge.peak{background:#fee2e2;color:#dc2626;border:1px solid #fecaca;box-shadow:0 0 6px rgba(239,68,68,0.2)}
+.q-heat-badge.high{background:#ffedd5;color:#ea580c;border:1px solid #fed7aa}
+.q-heat-badge.normal{background:#f1f5f9;color:#64748b}
+.q-date{font-size:.74rem;color:#64748b;font-weight:600;font-variant-numeric:tabular-nums}
+
+.q-title{font-family:var(--serif);font-weight:700;font-size:.94rem;line-height:1.45;color:var(--ink);text-decoration:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:1px 0}
+.q-title:hover{text-decoration:underline}
+.q-title.peak{color:#dc2626 !important;font-weight:850;letter-spacing:-0.2px}
+.q-title.high{color:#e11d48 !important;font-weight:800}
+
+.q-meta{display:flex;align-items:center;gap:6px;font-size:.74rem;color:#64748b;margin-top:2px}
+.q-press-bullet{display:inline-flex;align-items:center}
+.q-press-emb{width:14px;height:14px;border-radius:50%;object-fit:cover;vertical-align:middle}
+.q-press-name{font-weight:600;color:#475569}
+
+/* 많이 다룬 언론사 칩 (로고 불릿) */
+.pol-press-chips{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:8px}
+.pol-press-chip{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;background:#ffffff;border:1px solid #e2e8f0;border-radius:8px;font-size:.78rem;box-shadow:0 1px 2px rgba(0,0,0,0.03);transition:all .15s ease}
+.pol-press-chip:hover{border-color:#cbd5e1;background:#f8fafc;transform:translateY(-1px);box-shadow:0 2px 4px rgba(0,0,0,0.06)}
+.pol-press-bullet{display:inline-flex;align-items:center;justify-content:center}
+.pol-press-logo{width:14px;height:14px;border-radius:50%;object-fit:cover;vertical-align:middle}
+.pol-press-name{font-weight:600;color:#334155}
+.pol-press-count{font-size:.72rem;font-weight:800;color:#ef4444;background:#fff1f2;padding:1px 5px;border-radius:4px}
+.pol-press-subtag{font-size:.68rem;font-weight:700;color:#64748b;background:#f1f5f9;padding:1px 6px;border-radius:4px}
 
 .pol-cloud{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;margin-top:8px}
 .pol-cloud span, .pol-cloud .pol-word-chip{font-weight:800;color:var(--ink);text-decoration:none;transition:all .15s ease}
