@@ -124,7 +124,11 @@ function hotHTML(){if(typeof SUB==='undefined'||typeof subtype!=='function')retu
 function hotList(f){return f==='reporter'?(D.reporters||[]).slice(0,12):D.entities.filter(e=>subtype(e)===f).slice(0,12)}
 function hotRep(r){const n=r.today,lr=(r.reports||[])[0];return`<a class="card pc" href="${rh(r.id)}">${reporterAvatar(r,'av')}<b>${E(r.name)}</b><small>${E(r.press||'')}${n?' · 오늘 '+n+'건':''}</small>${lr?`<span class="last">${E(lr.title)}</span>`:''}</a>`}
 function hotDraw(f){const el=document.getElementById('hotl');if(!el)return;el.scrollLeft=0;if(f==='reporter'){const R=hotList(f);el.innerHTML=R.map(hotRep).join('');el.scrollLeft=0;if(window.NBT?.enableElasticCarousel) window.NBT.enableElasticCarousel(el);return}const L=hotList(f);
-  el.innerHTML=L.length?L.map(e=>`<a class="card pc" href="${eh(e.name)}">${av(e)}<b>${E(e.name)}</b><small>${E(e.wiki?.desc||'')}</small>${spark(e.daily)}<span class="last">${e.timeline[0]?E(e.timeline[0].title):''}</span></a>`).join(''):'<p class="fine keep">오늘은 이 분류의 화제가 적어요.</p>';
+  el.innerHTML=L.length?L.map(e=>{
+    const desc=(e.wiki?.desc||e.desc||'').trim();
+    const ibtn=desc?`<span class="pc-ibtn" role="button" tabindex="0" data-tip="${E(desc)}" aria-label="${E(e.name)}: ${E(desc)}" title="${E(desc)}">i</span>`:'';
+    return`<a class="card pc" href="${eh(e.name)}">${av(e)}<b>${E(e.name)}${ibtn}</b>${spark(e.daily)}<span class="last">${e.timeline[0]?E(e.timeline[0].title):''}</span></a>`;
+  }).join(''):'<p class="fine keep">오늘은 이 분류의 화제가 적어요.</p>';
   el.scrollLeft=0;
   if(window.NBT?.enableElasticCarousel) window.NBT.enableElasticCarousel(el);
 }
@@ -139,7 +143,28 @@ function actBar(t,id){const s=st(t,id),f=M.follows[key(t,id)];
   /* 좋아요·스크랩·알림·메모: 같은 종류의 개인 기능이라 같은 모양(아이콘 + 짧은 글자, 배경 없음)으로 한 묶음 */
   const b=(a,on,ic,lab,full)=>`<button data-a="${a}" class="${on?'on':''}" aria-label="${full||lab}" aria-pressed="${on?'true':'false'}">${SV(ic)}<span>${lab}</span></button>`;
   return`<div class="myact" data-t="${t}" data-id="${E(id)}">${b('like',s.like,P.heart,'좋아요')}${b('scrap',s.scrap,P.bm,'스크랩')}${t!=='chart'?b('follow',f,P.bell,f?'알림 중':'알림',f?'알림 끄기':'새 소식 알림 받기'):''}${b('note',s.note,NBU('pencil'),'메모',s.note?'내 메모 보기':'나만의 메모 남기기')}</div>`}
-document.addEventListener('click',e=>{const b=e.target.closest('.myact button,.mini-heart');if(!b)return;e.preventDefault();e.stopPropagation();
+document.addEventListener('click',e=>{
+  const ib=e.target.closest('.pc-ibtn');
+  if(ib){
+    e.preventDefault();
+    e.stopPropagation();
+    if(window.NBTip){
+      const box=document.querySelector('.nbt');
+      if(box&&!box.hidden&&ib._tipActive){
+        window.NBTip.hide();
+        ib._tipActive=false;
+      }else{
+        const r=ib.getBoundingClientRect();
+        const txt=ib.dataset.tip||'';
+        if(txt){
+          window.NBTip.show(txt, r.left+r.width/2, r.top, r.top);
+          ib._tipActive=true;
+        }
+      }
+    }
+    return;
+  }
+  const b=e.target.closest('.myact button,.mini-heart');if(!b)return;e.preventDefault();e.stopPropagation();
   const w=b.closest('[data-t]'),t=w.dataset.t,id=w.dataset.id,a=b.dataset.a||'like';
   if(a==='follow'){const k=key(t,id);if(M.follows[k])delete M.follows[k];else M.follows[k]={t,id,at:Date.now(),title:(itemOf(t,id)||{}).title||id};save();toast(M.follows[k]?'팔로우했어요. 새 소식이 오면 알려드릴게요':'팔로우를 해제했어요')}
   else if(a==='note'){openNote(t,id);return}

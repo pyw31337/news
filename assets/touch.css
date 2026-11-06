@@ -460,6 +460,33 @@ body.nbs-on{overflow:hidden}
 #hotl .card.pc:first-child {
   margin-left: 0 !important;
 }
+#hotl .card.pc {
+  flex: 0 0 160px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+#hotl .card.pc b {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  margin: 0 0 10px !important;
+}
+#hotl .card.pc .last, .pc .last {
+  display: block !important;
+  font-size: .75rem !important;
+  line-height: 1.4 !important;
+  color: var(--ink2) !important;
+  margin-top: 8px !important;
+  text-align: left !important;
+  word-break: keep-all !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: unset !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
 #hotl.hs::-webkit-scrollbar, .hs::-webkit-scrollbar { display: none; }
 @media (min-width: 1240px) {
   #hotf.subt, .filters.subt, #hotl.hs, .hs {

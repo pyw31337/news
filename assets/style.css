@@ -199,7 +199,11 @@ h1,h2,h3,h4,h5,p,a,span,li{overflow-wrap:anywhere}
 .aib{display:inline-flex;align-items:center;gap:3px;font-size:.66rem;font-weight:800;color:#fff;background:linear-gradient(90deg,#7a4dff,#2f6bff);padding:2px 8px;border-radius:99px;margin-right:6px;vertical-align:2px;white-space:nowrap}
 .aib svg{width:10px;height:10px;fill:#fff}
 /* people */
-.pc{flex:0 0 160px}.pc .last{display:block;font-size:.7rem;color:var(--ink2);margin-top:6px;text-align:left;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pc{flex:0 0 160px;display:flex;flex-direction:column}
+.pc b{display:flex;align-items:center;justify-content:center;gap:4px;font-size:0.9375rem;margin:0 0 10px;color:var(--ink);line-height:1.25}
+.pc-ibtn{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;background:var(--bg2,#f2f4f8);color:var(--mute,#8b95a1);border:1px solid var(--line,#e2e8f0);font-size:10px;font-weight:700;font-family:'Times New Roman',serif;font-style:italic;line-height:1;cursor:pointer;user-select:none;-webkit-user-select:none;transition:all .15s ease;vertical-align:middle;padding:0;box-sizing:border-box;flex:none}
+.pc-ibtn:hover,.pc-ibtn:focus-visible,.pc-ibtn:active{background:var(--blue,#3182f6);color:#fff;border-color:var(--blue,#3182f6);box-shadow:0 2px 6px rgba(49,130,246,.35);transform:scale(1.12);outline:none}
+.pc .last{display:block;font-size:.75rem;line-height:1.4;color:var(--ink2);margin-top:8px;text-align:left;word-break:keep-all;overflow-wrap:break-word;white-space:normal}
 .plist{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
 .pcard{padding:16px;display:flex;flex-direction:column;gap:10px}.pcard .ph{display:flex;gap:12px;align-items:center}.pcard .av{width:64px;height:64px;border-radius:18px;background:#e6e9f3 center/cover;flex:none;display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--mute);font-size:1.4rem}
 .pcard b{display:block;font-size:1.1rem}.pcard small{font-size:.75rem;color:var(--mute)}.pcard .spark{height:36px}
