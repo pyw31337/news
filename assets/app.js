@@ -775,10 +775,77 @@ function renderBillListHtml(list, filterResult, partyColor){
     </li>`;
   }).join('');
 }
-function polMonths(obj,color){
-  const E=Object.entries(obj||{}).filter(e=>e[0]).slice(-24);if(!E.length)return'';
-  const m=Math.max(...E.map(e=>e[1]));
-  return`<div class="pol-mbar">${E.map(([k,v])=>`<div title="${k} ${v}건"><i style="height:${Math.max(4,v/m*100)}%;background:${color}"></i><span>${k.slice(2).replace('-','.')}</span></div>`).join('')}</div>`;
+function polMonths(obj, color, chartType = 'bill'){
+  const E = Object.entries(obj||{}).filter(e => e[0]).slice(-24);
+  if(!E.length) return '<p class="mute" style="padding:16px;text-align:center">데이터 없음</p>';
+  const m = Math.max(...E.map(e => e[1]), 1);
+  return `<div class="pol-mbar-scroll" data-drag-scroll="true" aria-label="월별 추이 막대 그래프 (좌우 스크롤 가능)">
+    <div class="pol-mbar-track" role="group">
+      ${E.map(([k, v]) => {
+        const [y, mo] = k.split('-');
+        const label = `${y.slice(2)}.${mo}`;
+        const barH = Math.max(5, Math.round((v / m) * 100));
+        return `<div class="pm-col" data-month="${esc(k)}" data-val="${v}" data-chart-type="${chartType}" tabindex="0" role="button" aria-label="${y}년 ${mo}월 ${v}건">
+          <span class="pm-tooltip">${y}.${mo} · <b>${v}건</b></span>
+          <div class="pm-bar-wrap">
+            <span class="pm-count-tag">${v > 0 ? v : ''}</span>
+            <i class="pm-bar" style="height:${barH}%;background:${color};"></i>
+          </div>
+          <span class="pm-lab">${label}</span>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+function initDragScrolls(container){
+  const root = container || document;
+  root.querySelectorAll('.pol-mbar-scroll').forEach(el => {
+    if(el._dragInit) return;
+    el._dragInit = true;
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    let hasMoved = false;
+
+    setTimeout(() => {
+      el.scrollLeft = el.scrollWidth;
+    }, 60);
+
+    el.addEventListener('mousedown', e => {
+      isDown = true;
+      hasMoved = false;
+      el.classList.add('is-dragging');
+      startX = e.pageX - el.offsetLeft;
+      scrollLeft = el.scrollLeft;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      isDown = false;
+      el.classList.remove('is-dragging');
+    });
+
+    el.addEventListener('mouseup', () => {
+      isDown = false;
+      el.classList.remove('is-dragging');
+    });
+
+    el.addEventListener('mousemove', e => {
+      if(!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - el.offsetLeft;
+      const walk = (x - startX) * 1.6;
+      if(Math.abs(walk) > 4) hasMoved = true;
+      el.scrollLeft = scrollLeft - walk;
+    });
+
+    el.addEventListener('click', e => {
+      if(hasMoved){
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    }, true);
+  });
 }
 
 function arcEvItem(e){
@@ -975,13 +1042,24 @@ function renderAssetsSection(p, c){
   <div class="pol-g2">
     <div class="card pad">
       <h3>연도별 신고 총액 추이</h3>
-      <div class="pol-mbar">
-        ${R.map(r=>`<div title="${esc(fDate(r.date))} ${polWon(r.total)}">
-          <i style="height:${Math.max(4,(r.total||0)/m*100)}%;background:${c}"></i>
-          <span>${esc(r.date.slice(2,4))}년${r.kind!=='정기재산변동신고'?'*':''}</span>
-        </div>`).join('')}
+      <div class="pol-mbar-scroll" data-drag-scroll="true" style="padding-top:28px">
+        <div class="pol-mbar-track" style="min-width:${Math.max(R.length*70, 260)}px;height:120px">
+          ${R.map(r=>{
+            const wonStr = polWon(r.total);
+            const y = r.date.slice(0,4);
+            const barH = Math.max(5, Math.round((r.total||0)/m*100));
+            return `<div class="pm-col" data-val="${r.total}" tabindex="0" role="img" aria-label="${y}년 신고액 ${wonStr}">
+              <span class="pm-tooltip">${y}년 · <b>${wonStr}</b></span>
+              <div class="pm-bar-wrap">
+                <span class="pm-count-tag">${wonStr}</span>
+                <i class="pm-bar" style="height:${barH}%;background:${c}"></i>
+              </div>
+              <span class="pm-lab">${y}년${r.kind!=='정기재산변동신고'?'*':''}</span>
+            </div>`;
+          }).join('')}
+        </div>
       </div>
-      <p class="fine">최신 신고 총액 <b>${polWon(last.total)}</b>${last.change!=null?` (전년 대비 ${last.change>=0?'+':''}${polWon(last.change)})`:''}</p>
+      <p class="fine" style="margin-top:10px">최신 신고 총액 <b>${polWon(last.total)}</b>${last.change!=null?` (전년 대비 ${last.change>=0?'+':''}${polWon(last.change)})`:''}</p>
     </div>
     <div class="card pad">
       <h3>항목별 재산 구성 (${esc(last.date.slice(0,4))}년 공개)</h3>
@@ -1083,21 +1161,27 @@ function renderActivitySection(p, c){
   </div>
 
   ${bl?`
-  <div class="pol-g2" style="margin-top:10px">
-    <div class="card pad">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <h3 style="margin:0">대표발의 처리 결과</h3>
-        <small style="color:var(--mute);font-size:.74rem">항목을 누르면 해당 법안 목록으로 이동</small>
-      </div>
-      ${polBars(bl.by_result,c)}
+  <div class="card pad" style="margin-top:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <h3 style="margin:0">대표발의 처리 결과</h3>
+      <small style="color:var(--mute);font-size:.74rem">항목을 누르면 해당 법안 목록으로 즉시 필터링</small>
     </div>
-    <div class="card pad">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-        <h3 style="margin:0">월별 대표발의 추이</h3>
-        <small style="color:var(--mute);font-size:.74rem">최근 24개월</small>
+    ${polBars(bl.by_result,c)}
+  </div>
+  <div class="card pad pol-month-chart-card" id="pol-month-box" style="margin-top:10px">
+    <div class="pol-month-header">
+      <div>
+        <h3 style="margin:0;display:inline-flex;align-items:center;gap:8px">
+          <span>월별 대표발의 추이</span>
+          <span class="pol-chart-badge">최근 24개월</span>
+        </h3>
+        <p class="pol-chart-sub">막대를 누르면 해당 월의 발의 법안만 필터링됩니다. (마우스 드래그 및 터치 스와이프로 좌우 탐색 가능)</p>
       </div>
-      ${polMonths(bl.by_month,c)}
+      <div class="pol-month-stat-pill" id="pol-month-active-pill">
+        <span>선택: <b>전체 기간</b></span>
+      </div>
     </div>
+    ${polMonths(bl.by_month,c,'bill')}
   </div>
   <div class="card pad pol-bill-card" id="pol-bill-box" style="margin-top:10px">
     <div class="pol-bill-header">
@@ -1454,6 +1538,7 @@ function entity(n){
     if(aDetail)html+=renderLifeTimelineSection(aDetail);
 
     container.innerHTML=html;
+    initDragScrolls(container);
 
     container.querySelectorAll('.pol-dash-tabs button').forEach(b=>{
       b.onclick=()=>{
@@ -1480,6 +1565,11 @@ function entity(n){
         container.querySelectorAll('#pol-bill-filter-tabs button').forEach(tb=>{
           tb.classList.toggle('on', tb.dataset.billRes === targetRes);
         });
+        container.querySelectorAll('.pm-col').forEach(c=>c.classList.remove('on'));
+        const statPill=document.getElementById('pol-month-active-pill');
+        if(statPill){
+          statPill.innerHTML='<span>선택: <b>전체 기간</b></span>';
+        }
 
         const filtered=(targetRes && targetRes !== 'all') ? (bl.recent||[]).filter(b=>b.result===targetRes) : (bl.recent||[]);
         const totalInStat=bl.by_result?.[targetRes] || (bl.recent||[]).length;
@@ -1519,6 +1609,41 @@ function entity(n){
           const targetRes=(currentActive === clickedRes && clickedRes !== 'all') ? 'all' : clickedRes;
           applyBillFilter(targetRes);
           billBox?.scrollIntoView({behavior:'smooth',block:'nearest'});
+          return;
+        }
+
+        const monthCol=ev.target.closest('.pm-col[data-chart-type="bill"]');
+        if(monthCol){
+          ev.preventDefault();
+          const targetMonth=monthCol.dataset.month;
+          const currentActive=container.querySelector('.pm-col.on')?.dataset.month;
+          const isSame=(currentActive === targetMonth);
+
+          container.querySelectorAll('.pm-col').forEach(c=>c.classList.remove('on'));
+          const statPill=document.getElementById('pol-month-active-pill');
+
+          if(isSame){
+            applyBillFilter('all');
+          }else{
+            monthCol.classList.add('on');
+            container.querySelectorAll('.pol-hbar-row').forEach(r=>r.classList.remove('on'));
+            container.querySelectorAll('#pol-bill-filter-tabs button').forEach(tb=>tb.classList.remove('on'));
+
+            const [y,mo]=targetMonth.split('-');
+            const filtered=(bl.recent||[]).filter(b=>(b.date||'').startsWith(targetMonth));
+            if(countPill)countPill.textContent=`${y}.${mo} (${filtered.length}건)`;
+            if(banner && bannerText){
+              banner.style.display='flex';
+              bannerText.innerHTML=`📅 <b>${y}년 ${mo}월</b> 발의안 <b>${filtered.length}건</b>을 표시하고 있습니다. (막대를 다시 누르면 전체로 돌아갑니다)`;
+            }
+            if(billList){
+              billList.innerHTML=renderBillListHtml(filtered, 'all', thCol);
+            }
+            if(statPill){
+              statPill.innerHTML=`<span>선택: <b>${y}.${mo} (${monthCol.dataset.val}건)</b></span>`;
+            }
+            billBox?.scrollIntoView({behavior:'smooth',block:'nearest'});
+          }
           return;
         }
 
