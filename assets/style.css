@@ -948,21 +948,86 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 
 .pol-g2{display:grid;gap:10px;margin-bottom:10px}
 .pol-hbar{display:grid;gap:8px;margin-top:8px}
-.pol-hbar div{display:grid;grid-template-columns:88px 1fr 48px;align-items:center;gap:8px;font-size:.8rem}
-.pol-hbar i{height:12px;border-radius:6px;display:block}
-.pol-hbar b{text-align:right;white-space:nowrap;font-size:.78rem}
+.pol-hbar-row{
+  display:grid;grid-template-columns:88px 1fr 48px 16px;align-items:center;gap:10px;
+  padding:8px 12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;
+  cursor:pointer;font:inherit;text-align:left;color:inherit;width:100%;
+  transition:all .18s ease;box-shadow:0 1px 2px rgba(0,0,0,0.02);
+}
+.pol-hbar-row:hover{
+  background:#ffffff;border-color:#cbd5e1;transform:translateX(2px);
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+.pol-hbar-row.on{
+  background:#ffffff;border-color:var(--pc, #E61E2B);
+  box-shadow:0 0 0 1.5px var(--pc, #E61E2B), 0 4px 12px rgba(230,30,43,0.12);
+}
+.pol-hbar-row .ph-name{font-weight:700;font-size:0.82rem;color:#1e293b}
+.pol-hbar-row.on .ph-name{color:var(--pc, #E61E2B);font-weight:800}
+.pol-hbar-row .ph-bar-track{height:10px;background:#edf2f7;border-radius:99px;overflow:hidden;display:block}
+.pol-hbar-row .ph-bar-fill{height:100%;border-radius:99px;display:block;transition:width .3s ease}
+.pol-hbar-row .ph-val{text-align:right;white-space:nowrap;font-size:0.82rem;font-weight:800;color:#0f172a}
+.pol-hbar-row .ph-arrow{font-size:0.9rem;color:#94a3b8;display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.pol-hbar-row:hover .ph-arrow{transform:translateX(2px);color:var(--pc, #E61E2B)}
+.pol-hbar-row.on .ph-arrow{transform:rotate(90deg);color:var(--pc, #E61E2B)}
 
 .pol-mbar{display:flex;align-items:flex-end;gap:3px;height:110px;margin-top:8px}
 .pol-mbar div{flex:1;min-width:0;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
 .pol-mbar i{width:100%;border-radius:3px 3px 0 0;opacity:.88}
 .pol-mbar span{font-size:.55rem;color:var(--mute);white-space:nowrap;overflow:hidden;max-width:100%;margin-top:3px}
 
-.pol-blist{list-style:none;display:grid;gap:8px;padding:0;margin:8px 0 0}
-.pol-blist li{font-size:.85rem;border-bottom:1px solid var(--line);padding-bottom:8px}
-.pol-blist a{font-weight:600;color:var(--ink);text-decoration:none}
-.pol-blist a:hover{text-decoration:underline}
-.pol-blist span{display:block;font-size:.74rem;color:var(--mute);margin-top:2px}
-.pol-blist .ok{color:var(--green);font-weight:700}
+/* 대표발의 법안 목록 & 필터 */
+.pol-bill-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.pol-bill-count-pill{font-size:0.75rem;font-weight:800;padding:3px 9px;border-radius:99px;background:#eff6ff;color:#2563eb}
+.pol-bill-sub{font-size:0.78rem;color:#64748b;margin:4px 0 0}
+.pol-bill-filter-tabs{display:flex;gap:5px;flex-wrap:wrap}
+.pol-bill-filter-tabs button{
+  border:1px solid var(--line);background:#fff;border-radius:99px;
+  padding:4px 10px;font-size:0.75rem;font-weight:700;color:#475569;
+  cursor:pointer;transition:all .15s ease;
+}
+.pol-bill-filter-tabs button:hover{border-color:#94a3b8;color:#0f172a}
+.pol-bill-filter-tabs button.on{background:var(--pc, #E61E2B);color:#fff;border-color:var(--pc, #E61E2B)}
+
+.pol-bill-filter-banner{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:8px 14px;border-radius:10px;background:#f1f5f9;margin-bottom:12px;
+  font-size:0.8rem;font-weight:700;color:#334155;
+}
+.pol-bill-filter-banner button{
+  border:none;background:none;color:#ef4444;font-size:0.76rem;font-weight:800;
+  cursor:pointer;padding:2px 6px;border-radius:4px;
+}
+.pol-bill-filter-banner button:hover{background:#fee2e2}
+
+.pol-blist{list-style:none;display:grid;gap:10px;padding:0;margin:0}
+.pol-blist li{
+  padding:12px 14px;border-radius:12px;background:#f8fafc;border:1px solid #e2e8f0;
+  display:flex;flex-direction:column;gap:6px;transition:all .15s ease;
+}
+.pol-blist li:hover{background:#ffffff;border-color:#cbd5e1;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.pol-bill-main-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.pol-bill-title{font-size:0.92rem;font-weight:700;color:#0f172a;text-decoration:none;line-height:1.45}
+.pol-bill-title:hover{color:var(--pc, #E61E2B);text-decoration:underline}
+.pol-bill-title .pol-ext-icon{font-size:0.75rem;color:#94a3b8;margin-left:2px}
+.pol-bill-badge{
+  flex:none;font-size:0.72rem;font-weight:800;padding:3px 8px;border-radius:6px;
+  background:#e2e8f0;color:#475569;white-space:nowrap;border:none;cursor:pointer;
+}
+.pol-bill-badge.res-계류{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+.pol-bill-badge.res-가결{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}
+.pol-bill-badge.res-폐기{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+
+.pol-bill-meta-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;font-size:0.75rem;color:#64748b}
+.pol-bill-meta-row span{display:inline-flex;align-items:center;gap:4px}
+.pol-bill-meta-row .comm-chip{
+  background:#f1f5f9;color:#334155;font-weight:700;padding:2px 8px;border-radius:4px;
+  cursor:pointer;border:none;font-size:0.74rem;
+}
+.pol-bill-meta-row .comm-chip:hover{background:#e2e8f0;color:#0f172a}
+.pol-bill-ext-link{margin-top:14px;padding:12px;border-radius:10px;background:#f8fafc;border:1px dashed #cbd5e1;text-align:center}
+.pol-bill-ext-link a{font-size:0.84rem;font-weight:800;color:var(--pc, #E61E2B);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.pol-bill-ext-link a:hover{text-decoration:underline}
 
 .pol-seat{position:relative;height:24px;border-radius:99px;overflow:hidden;display:flex;gap:2px;margin:12px 0 6px}
 .pol-seat i{display:flex;align-items:center;justify-content:center;height:100%}
@@ -1002,8 +1067,10 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 .pol-qlist a:hover{text-decoration:underline}
 .pol-qlist span{display:block;font-size:.72rem;color:var(--mute);margin-top:2px}
 
-.pol-cloud{display:flex;flex-wrap:wrap;gap:5px 10px;align-items:baseline;margin-top:8px}
-.pol-cloud span{font-weight:800;color:var(--ink)}
+.pol-cloud{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;margin-top:8px}
+.pol-cloud span, .pol-cloud .pol-word-chip{font-weight:800;color:var(--ink);text-decoration:none;transition:all .15s ease}
+.pol-cloud .pol-word-chip{padding:3px 8px;border-radius:6px;background:#f1f5f9;display:inline-block}
+.pol-cloud .pol-word-chip:hover{background:var(--pc, #E61E2B);color:#ffffff !important;transform:scale(1.05)}
 
 .pol-hist{list-style:none;display:grid;gap:6px;padding:0;margin:6px 0 0;font-size:.84rem;color:var(--ink2)}
 

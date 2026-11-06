@@ -544,10 +544,46 @@ function polWon(v){
   const e=v/100000;
   return Math.abs(e)>=1?(Math.round(e*10)/10).toLocaleString()+'억 원':Math.round(v/10).toLocaleString()+'만 원';
 }
-function polBars(obj,color){
+function polBars(obj,color,activeKey){
   const E=Object.entries(obj||{});if(!E.length)return'<p class="mute">데이터 없음</p>';
   const m=Math.max(...E.map(e=>e[1]));
-  return`<div class="pol-hbar">${E.map(([k,v])=>`<div><span>${esc(k)}</span><i style="width:${Math.max(4,v/m*100)}%;background:${color}"></i><b>${v}건</b></div>`).join('')}</div>`;
+  return`<div class="pol-hbar" role="group" aria-label="대표발의 처리 결과 필터">${E.map(([k,v])=>{
+    const on=activeKey===k;
+    return `<button type="button" class="pol-hbar-row ${on?'on':''}" data-bill-res="${esc(k)}" title="${esc(k)} ${v}건 발의안 목록 보기">
+      <span class="ph-name">${esc(k)}</span>
+      <span class="ph-bar-track"><i class="ph-bar-fill" style="width:${Math.max(4,v/m*100)}%;background:${color}"></i></span>
+      <b class="ph-val">${v}건</b>
+      <span class="ph-arrow">${typeof NBI==='function'?NBI('chevron-right'):'›'}</span>
+    </button>`;
+  }).join('')}</div>`;
+}
+
+function renderBillListHtml(list, filterResult, partyColor){
+  const filtered = (filterResult && filterResult !== 'all') ? (list||[]).filter(b => b.result === filterResult) : (list||[]);
+  if(!filtered.length){
+    return `<li class="pol-bill-empty" style="text-align:center;padding:26px 16px;color:var(--mute)">
+      <p style="margin:0 0 6px;font-weight:700">선택하신 <b>'${esc(filterResult)}'</b> 상태의 법안이 최근 목록에 없습니다.</p>
+      <span style="font-size:.76rem">이전 대수 발의안이거나 국회 의안시스템에 보관 중입니다. 아래 링크에서 전체 기록을 확인할 수 있습니다.</span>
+    </li>`;
+  }
+  return filtered.map(b => {
+    const resClass = /가결/.test(b.result) ? 'res-가결' : /폐기/.test(b.result) ? 'res-폐기' : 'res-계류';
+    return `<li>
+      <div class="pol-bill-main-row">
+        <a class="pol-bill-title" href="${esc(b.url || `https://likms.assembly.go.kr/bill/billDetail.do?billId=${esc(b.id)}`)}" target="_blank" rel="noopener">
+          ${esc(b.name)}
+          <span class="pol-ext-icon">${typeof NBI==='function'?NBI('arrow-up-right'):'↗'}</span>
+        </a>
+        <button type="button" class="pol-bill-badge ${resClass}" data-bill-res="${esc(b.result)}" title="${esc(b.result)} 법안만 필터링">${esc(b.result)}</button>
+      </div>
+      <div class="pol-bill-meta-row">
+        <span>📅 ${esc(b.date||'-')}</span>
+        ${b.no ? `<span>의안 제${esc(b.no)}호</span>` : ''}
+        ${b.committee ? `<button type="button" class="comm-chip" data-comm="${esc(b.committee)}" title="소관위">${esc(b.committee)}</button>` : ''}
+        ${b.proposer ? `<span>👤 ${esc(b.proposer)}</span>` : ''}
+      </div>
+    </li>`;
+  }).join('');
 }
 function polMonths(obj,color){
   const E=Object.entries(obj||{}).filter(e=>e[0]).slice(-24);if(!E.length)return'';
@@ -628,7 +664,7 @@ function renderArcGraph(g, targetName){
     const[x,y]=pos[id];
     const c=id===C,r=c?34:ds.has(id)?22:15;
     const col=n.party?(partyTheme(n.party)?.color||'#8189a3'):'#9aa3b5';
-    const link=id.startsWith('wd:')?'':`href="entity/${encodeURIComponent(n.name)}"`;
+    const link=id.startsWith('wd:')?`href="https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}" target="_blank" rel="noopener" title="${esc(n.name)} 검색"`:`href="entity/${encodeURIComponent(n.name)}" title="${esc(n.name)} 프로필 보기"`;
     return `<a ${link} class="gn ${c?'c':''}" data-id="${esc(id)}"><circle cx="${x}" cy="${y}" r="${r}" fill="#fff" stroke="${col}" stroke-width="${c?4:2.5}"/>${n.photo?`<clipPath id="cp${esc(id).replace(/\W/g,'')}"><circle cx="${x}" cy="${y}" r="${r-2}"/></clipPath><image href="${esc(n.photo)}" x="${x-r}" y="${y-r}" width="${2*r}" height="${2*r}" clip-path="url(#cp${esc(id).replace(/\W/g,'')})" preserveAspectRatio="xMidYMin slice"/>`:`<text x="${x}" y="${y+5}" text-anchor="middle" class="gi">${esc((n.name||'?')[0])}</text>`}<text x="${x}" y="${y+r+15}" text-anchor="middle" class="gl">${esc(n.name||'')}</text></a>`;
   }).join('');
   const xs=Object.values(pos).map(p=>p[0]),ys=Object.values(pos).map(p=>p[1]);
@@ -638,7 +674,7 @@ function renderArcGraph(g, targetName){
   const rows=direct.map(([o,e])=>{
     const n=N[o]||{};
     const r=ARC_REL[e.typ]||['관계','#999'];
-    return `<li style="--rc:${r[1]}"><i></i><b>${o.startsWith('wd:')?esc(n.name):`<a href="entity/${encodeURIComponent(n.name)}">${esc(n.name)}</a>`}</b><span>${esc(e.label||r[0])}</span><small>${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.src)}</a>`:esc(e.src||'')}${e.conf<0.8?' · 추정':''}</small></li>`;
+    return `<li style="--rc:${r[1]}"><i></i><b>${o.startsWith('wd:')?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}" target="_blank" rel="noopener" title="${esc(n.name)} 검색">${esc(n.name)} <small style="font-size:10px">↗</small></a>`:`<a href="entity/${encodeURIComponent(n.name)}">${esc(n.name)}</a>`}</b><span>${esc(e.label||r[0])}</span><small>${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.src)}</a>`:esc(e.src||'')}${e.conf<0.8?' · 추정':''}</small></li>`;
   }).join('');
   return `<div class="arc-glegend">${used.map(t=>`<span style="--rc:${ARC_REL[t]?.[1]||'#999'}"><i></i>${ARC_REL[t]?.[0]||t}</span>`).join('')}</div>
   <div class="arc-gwrap"><svg viewBox="${vb}" class="arc-gsvg" role="img" aria-label="인맥 관계도">${lines}${nd}</svg></div>
@@ -859,23 +895,47 @@ function renderActivitySection(p, c){
   ${bl?`
   <div class="pol-g2" style="margin-top:10px">
     <div class="card pad">
-      <h3>대표발의 처리 결과</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h3 style="margin:0">대표발의 처리 결과</h3>
+        <small style="color:var(--mute);font-size:.74rem">항목을 누르면 해당 법안 목록으로 이동</small>
+      </div>
       ${polBars(bl.by_result,c)}
     </div>
     <div class="card pad">
-      <h3>월별 대표발의 추이</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h3 style="margin:0">월별 대표발의 추이</h3>
+        <small style="color:var(--mute);font-size:.74rem">최근 24개월</small>
+      </div>
       ${polMonths(bl.by_month,c)}
     </div>
   </div>
-  <div class="card pad" style="margin-top:10px">
-    <h3>최근 대표발의 법안</h3>
-    <ul class="pol-blist">
-      ${(bl.recent||[]).slice(0,12).map(b=>`<li>
-        <a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.name)}</a>
-        <span>${esc(b.date||'')} · <b class="${/가결|반영/.test(b.result)?'ok':''}">${esc(b.result)}</b></span>
-      </li>`).join('')}
+  <div class="card pad pol-bill-card" id="pol-bill-box" style="margin-top:10px">
+    <div class="pol-bill-header">
+      <div>
+        <h3 style="margin:0;display:inline-flex;align-items:center;gap:8px">
+          <span>대표발의 법안 목록</span>
+          <span id="pol-bill-count-pill" class="pol-bill-count-pill">전체 ${(bl.recent||[]).length}건</span>
+        </h3>
+        <p class="pol-bill-sub" id="pol-bill-sub">계류·가결·폐기 상태나 소관위원회를 눌러 심층 필터링할 수 있습니다.</p>
+      </div>
+      <div class="pol-bill-filter-tabs" id="pol-bill-filter-tabs">
+        <button type="button" class="on" data-bill-res="all">전체 (${(bl.recent||[]).length})</button>
+        ${Object.entries(bl.by_result||{}).map(([k,v])=>`<button type="button" data-bill-res="${esc(k)}">${esc(k)} (${v})</button>`).join('')}
+      </div>
+    </div>
+    <div id="pol-bill-filter-banner" class="pol-bill-filter-banner" style="display:none">
+      <span id="pol-bill-filter-text"></span>
+      <button type="button" id="pol-bill-filter-reset">✕ 전체 보기</button>
+    </div>
+    <ul class="pol-blist" id="pol-bill-list">
+      ${renderBillListHtml(bl.recent||[], 'all', c)}
     </ul>
-    <p class="fine">출처: <a href="${esc(bl.source?.url||'#')}" target="_blank" rel="noopener">${esc(bl.source?.name||'국회 의안정보시스템')}</a></p>
+    <div id="pol-bill-ext-link" class="pol-bill-ext-link">
+      <a href="https://likms.assembly.go.kr/bill/main.do" target="_blank" rel="noopener">
+        🏛️ 국회 의안정보시스템에서 <b>${esc(p.name)} 의원</b>의 대표발의안 전체 원문 검색하기 ↗
+      </a>
+    </div>
+    <p class="fine" style="margin-top:10px">출처: <a href="${esc(bl.source?.url||'https://likms.assembly.go.kr/bill/main.do')}" target="_blank" rel="noopener">${esc(bl.source?.name||'국회 의안정보시스템')}</a></p>
   </div>`:''}
 
   ${V?(()=>{
@@ -935,9 +995,9 @@ function renderQuotesSection(p, id){
       <h3>헤드라인 핵심 연관 단어</h3>
       <div class="pol-cloud">
         ${md.top_words.slice(0,24).map(([w,n],i)=>`
-          <span style="font-size:${(.8+Math.min(1,n/md.top_words[0][1])*.9).toFixed(2)}rem;opacity:${(1-i/40).toFixed(2)}">
-            ${esc(w)}
-          </span>
+          <a class="pol-word-chip" href="kw/${encodeURIComponent(w)}" style="font-size:${(.8+Math.min(1,n/md.top_words[0][1])*.9).toFixed(2)}rem;opacity:${(1-i/40).toFixed(2)}" title="'${esc(w)}' 키워드 타임라인 보기">
+            #${esc(w)}
+          </a>
         `).join('')}
       </div>
     </div>
@@ -1213,6 +1273,89 @@ function entity(n){
         if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
       };
     });
+
+    if(pDetail?.bills){
+      const bl=pDetail.bills;
+      const billBox=document.getElementById('pol-bill-box');
+      const billList=document.getElementById('pol-bill-list');
+      const countPill=document.getElementById('pol-bill-count-pill');
+      const banner=document.getElementById('pol-bill-filter-banner');
+      const bannerText=document.getElementById('pol-bill-filter-text');
+      const extLink=document.getElementById('pol-bill-ext-link');
+
+      const applyBillFilter=(targetRes)=>{
+        container.querySelectorAll('.pol-hbar-row').forEach(r=>{
+          r.classList.toggle('on', r.dataset.billRes === targetRes);
+        });
+        container.querySelectorAll('#pol-bill-filter-tabs button').forEach(tb=>{
+          tb.classList.toggle('on', tb.dataset.billRes === targetRes);
+        });
+
+        const filtered=(targetRes && targetRes !== 'all') ? (bl.recent||[]).filter(b=>b.result===targetRes) : (bl.recent||[]);
+        const totalInStat=bl.by_result?.[targetRes] || (bl.recent||[]).length;
+
+        if(countPill){
+          countPill.textContent=(targetRes && targetRes !== 'all') ? `${targetRes} ${filtered.length}건 / 통계 ${totalInStat}건` : `전체 ${(bl.recent||[]).length}건`;
+        }
+
+        if(banner && bannerText){
+          if(targetRes && targetRes !== 'all'){
+            banner.style.display='flex';
+            bannerText.innerHTML=`처리 상태 <b>'${esc(targetRes)}'</b> 법안 목록을 보고 있습니다. (최근 수집 ${filtered.length}건 / 통계 전체 ${totalInStat}건)`;
+          }else{
+            banner.style.display='none';
+          }
+        }
+
+        if(billList){
+          billList.innerHTML=renderBillListHtml(bl.recent||[], targetRes, thCol);
+        }
+
+        if(extLink){
+          extLink.innerHTML=`
+            <a href="https://likms.assembly.go.kr/bill/main.do" target="_blank" rel="noopener">
+              🏛️ 국회 의안정보시스템에서 <b>${esc(pDetail.name)} 의원</b>의 ${targetRes && targetRes !== 'all' ? `[${esc(targetRes)}]` : ''} 대표발의안 원문 전체 검색하기 ↗
+            </a>
+          `;
+        }
+      };
+
+      container.addEventListener('click', ev=>{
+        const resBtn=ev.target.closest('[data-bill-res]');
+        if(resBtn){
+          ev.preventDefault();
+          const clickedRes=resBtn.dataset.billRes;
+          const currentActive=container.querySelector('.pol-hbar-row.on')?.dataset.billRes;
+          const targetRes=(currentActive === clickedRes && clickedRes !== 'all') ? 'all' : clickedRes;
+          applyBillFilter(targetRes);
+          billBox?.scrollIntoView({behavior:'smooth',block:'nearest'});
+          return;
+        }
+
+        if(ev.target.closest('#pol-bill-filter-reset')){
+          ev.preventDefault();
+          applyBillFilter('all');
+          return;
+        }
+
+        const commBtn=ev.target.closest('.comm-chip');
+        if(commBtn){
+          ev.preventDefault();
+          const comm=commBtn.dataset.comm;
+          const filtered=(bl.recent||[]).filter(b=>b.committee===comm);
+          if(countPill)countPill.textContent=`${comm} (${filtered.length}건)`;
+          if(banner && bannerText){
+            banner.style.display='flex';
+            bannerText.innerHTML=`소관위 <b>'${esc(comm)}'</b> 발의안 <b>${filtered.length}건</b>을 표시하고 있습니다.`;
+          }
+          if(billList){
+            billList.innerHTML=renderBillListHtml(filtered, 'all', thCol);
+          }
+          billBox?.scrollIntoView({behavior:'smooth',block:'nearest'});
+          return;
+        }
+      });
+    }
 
     if(aDetail?.events){
       const dated=aDetail.events.filter(x=>x.d);
