@@ -871,9 +871,178 @@ function drawArcTimeline(dated, filterTyp){
   `).join('')||'<p class="mute">해당하는 기록이 없습니다.</p>';
 }
 
+function initArcGraphInteraction(wrap){
+  if(!wrap || wrap.dataset.bound) return;
+  wrap.dataset.bound = 'true';
+  const svg = wrap.querySelector('.arc-gsvg');
+  if(!svg) return;
+
+  const hintBar = wrap.querySelector('.arc-hint-bar .arc-hint-text');
+  const defaultHint = '노드를 드래그하거나 롤오버하면 관계 선과 정보가 연결됩니다';
+  const W = 520, H = 320;
+
+  const nodesById = {};
+  wrap.querySelectorAll('.gn').forEach(g => {
+    const id = g.dataset.id;
+    const tf = g.getAttribute('transform') || '';
+    const m = tf.match(/translate\(\s*([\d.-]+)\s*,\s*([\d.-]+)\s*\)/);
+    const x = m ? parseFloat(m[1]) : W / 2;
+    const y = m ? parseFloat(m[2]) : H / 2;
+    const c = g.classList.contains('c');
+    nodesById[id] = {
+      id,
+      name: g.dataset.name,
+      rel: g.dataset.rel,
+      href: g.dataset.href,
+      ext: g.dataset.ext === 'true',
+      x,
+      y,
+      r: c ? 20 : 14,
+      el: g
+    };
+  });
+
+  const edgeLines = wrap.querySelectorAll('.arc-edge');
+  const flowLines = wrap.querySelectorAll('.arc-flow');
+
+  const updateNodePosition = (node, nx, ny) => {
+    const pad = 24;
+    node.x = Math.max(pad, Math.min(W - pad, nx));
+    node.y = Math.max(pad, Math.min(H - pad - 10, ny));
+    node.el.setAttribute('transform', `translate(${node.x.toFixed(1)},${node.y.toFixed(1)})`);
+
+    edgeLines.forEach(l => {
+      if(l.dataset.a === node.id){
+        l.setAttribute('x1', node.x.toFixed(1));
+        l.setAttribute('y1', node.y.toFixed(1));
+      } else if(l.dataset.b === node.id){
+        l.setAttribute('x2', node.x.toFixed(1));
+        l.setAttribute('y2', node.y.toFixed(1));
+      }
+    });
+
+    flowLines.forEach(l => {
+      if(l.dataset.a === node.id){
+        l.setAttribute('x1', node.x.toFixed(1));
+        l.setAttribute('y1', node.y.toFixed(1));
+      } else if(l.dataset.b === node.id){
+        l.setAttribute('x2', node.x.toFixed(1));
+        l.setAttribute('y2', node.y.toFixed(1));
+      }
+    });
+  };
+
+  const setHover = (nodeId) => {
+    if(!nodeId){
+      flowLines.forEach(l => l.classList.remove('on'));
+      edgeLines.forEach(l => l.classList.remove('dimmed'));
+      wrap.querySelectorAll('.gn').forEach(g => g.classList.remove('on', 'dimmed', 'highlight'));
+      if(hintBar) hintBar.textContent = defaultHint;
+      return;
+    }
+
+    const n = nodesById[nodeId];
+    if(hintBar && n){
+      hintBar.innerHTML = `<b>${esc(n.name)}</b> · <span style="color:#2563eb">${esc(n.rel || '연결 인물')}</span>`;
+    }
+
+    const connectedNodes = new Set([nodeId]);
+    flowLines.forEach(fl => {
+      const isConn = (fl.dataset.a === nodeId || fl.dataset.b === nodeId);
+      fl.classList.toggle('on', isConn);
+      if(isConn){
+        connectedNodes.add(fl.dataset.a);
+        connectedNodes.add(fl.dataset.b);
+      }
+    });
+
+    edgeLines.forEach(el => {
+      const isConn = (el.dataset.a === nodeId || el.dataset.b === nodeId);
+      el.classList.toggle('dimmed', !isConn);
+    });
+
+    wrap.querySelectorAll('.gn').forEach(g => {
+      const id = g.dataset.id;
+      const isTarget = (id === nodeId);
+      const isConn = connectedNodes.has(id);
+      g.classList.toggle('on', isTarget);
+      g.classList.toggle('highlight', isConn && !isTarget);
+      g.classList.toggle('dimmed', !isConn);
+    });
+  };
+
+  let dragNode = null, dragStart = null, moved = false;
+
+  const getSvgPt = (ev) => {
+    const rect = svg.getBoundingClientRect();
+    return {
+      x: ((ev.clientX - rect.left) / (rect.width || 1)) * W,
+      y: ((ev.clientY - rect.top) / (rect.height || 1)) * H
+    };
+  };
+
+  svg.addEventListener('pointerdown', ev => {
+    const g = ev.target.closest('.gn');
+    if(!g) return;
+    const n = nodesById[g.dataset.id];
+    if(!n) return;
+
+    dragNode = n;
+    dragStart = getSvgPt(ev);
+    moved = false;
+    dragNode.el.classList.add('dragging');
+    setHover(dragNode.id);
+
+    try { svg.setPointerCapture(ev.pointerId); } catch(_) {}
+  });
+
+  svg.addEventListener('pointermove', ev => {
+    if(dragNode){
+      const p = getSvgPt(ev);
+      if(!moved && Math.hypot(p.x - dragStart.x, p.y - dragStart.y) < 5) return;
+      moved = true;
+      updateNodePosition(dragNode, p.x, p.y);
+      ev.preventDefault();
+      return;
+    }
+
+    if(ev.pointerType === 'mouse'){
+      const g = ev.target.closest('.gn');
+      setHover(g ? g.dataset.id : null);
+    }
+  });
+
+  const onPointerEnd = ev => {
+    if(dragNode){
+      try { svg.releasePointerCapture(ev.pointerId); } catch(_) {}
+      dragNode.el.classList.remove('dragging');
+
+      if(!moved){
+        const href = dragNode.href;
+        if(href){
+          if(dragNode.ext || href.startsWith('http')){
+            window.open(href, '_blank', 'noopener');
+          } else {
+            go(href);
+          }
+        }
+      }
+      dragNode = null;
+    }
+  };
+
+  svg.addEventListener('pointerup', onPointerEnd);
+  svg.addEventListener('pointercancel', onPointerEnd);
+  svg.addEventListener('pointerleave', ev => {
+    if(ev.pointerType === 'mouse' && !dragNode){
+      setHover(null);
+    }
+  });
+}
+
 function renderArcGraph(g, targetName){
   if(!g||!g.nodes||!g.edges||!g.edges.length)return'<p class="mute">확인된 인맥·관계망 자료가 쌓이면 자동으로 시각화됩니다.</p>';
-  const W=720,H=560,cx=W/2,cy=H/2,N={};
+  const W=520,H=320,cx=W/2,cy=H/2-6,N={};
   g.nodes.forEach(n=>N[n.id]=n);
   const C=g.center,direct=[],second=[];
   const ds=new Set();
@@ -891,52 +1060,102 @@ function renderArcGraph(g, targetName){
   const ord=Object.keys(ARC_REL);
   direct.sort((a,b)=>ord.indexOf(a[1].typ)-ord.indexOf(b[1].typ));
   const pos={[C]:[cx,cy]};
-  const R1=Math.max(130,Math.min(210,70+direct.length*9));
-  direct.forEach(([o],i)=>{
-    const a=-Math.PI/2+i*2*Math.PI/Math.max(direct.length,1);
-    pos[o]=[cx+R1*Math.cos(a),cy+R1*Math.sin(a)];
-  });
-  const secL=second.slice(0,24),grp={};
+  const R1=Math.max(85,Math.min(125,60+direct.length*6));
+  if(direct.length===1){
+    pos[direct[0][0]]=[cx+105,cy];
+  } else {
+    direct.forEach(([o],i)=>{
+      const a=-Math.PI/2+i*2*Math.PI/Math.max(direct.length,1);
+      pos[o]=[cx+R1*Math.cos(a),cy+R1*Math.sin(a)];
+    });
+  }
+  const secL=second.slice(0,20),grp={};
   secL.forEach(s=>{
     const L=(grp[s[2]]=grp[s[2]]||[]);
-    if(L.length<5)L.push(s[0]);
+    if(L.length<4)L.push(s[0]);
   });
   Object.entries(grp).forEach(([p,L])=>{
     const[px,py]=pos[p]||[cx,cy];
-    const base=Math.atan2(py-cy,px-cx),spread=Math.min(2.2,0.55*(L.length-1));
+    const base=Math.atan2(py-cy,px-cx),spread=Math.min(1.8,0.5*(L.length-1));
     L.forEach((o,i)=>{
-      const a=base+(L.length>1?-spread/2+spread*i/(L.length-1):0),r=110+(i%2)*45;
-      pos[o]=[px+r*Math.cos(a),py+r*Math.sin(a)];
+      const a=base+(L.length>1?-spread/2+spread*i/(L.length-1):0),r=55+(i%2)*18;
+      let nx=px+r*Math.cos(a),ny=py+r*Math.sin(a);
+      nx=Math.max(28,Math.min(W-28,nx));
+      ny=Math.max(26,Math.min(H-34,ny));
+      pos[o]=[nx,ny];
     });
   });
   const show=new Set(Object.keys(pos));
-  const lines=g.edges.filter(e=>show.has(e.a)&&show.has(e.b)).map(e=>{
+
+  // Node descriptions mapping
+  const relMap={};
+  show.forEach(id=>{
+    if(id===C){
+      relMap[id]={label:'본인',desc:'의정 및 인맥 분석 대상'};
+      return;
+    }
+    const edge=g.edges.find(e=>(e.a===id&&e.b===C)||(e.b===id&&e.a===C))||g.edges.find(e=>e.a===id||e.b===id);
+    if(edge){
+      const rInfo=ARC_REL[edge.typ]||['관계','#94a3b8'];
+      let shortLbl=edge.label||rInfo[0];
+      shortLbl=shortLbl.replace(/\(나이 차.*?\)/g,'').replace(/대학교/g,'대').trim();
+      if(shortLbl.length>12)shortLbl=shortLbl.slice(0,11)+'…';
+      relMap[id]={label:shortLbl,desc:`${edge.label||rInfo[0]}${edge.src?' (출처: '+edge.src+')':''}`};
+    } else {
+      relMap[id]={label:'연결 인물',desc:'네트워크 연계'};
+    }
+  });
+
+  const validEdges=g.edges.filter(e=>show.has(e.a)&&show.has(e.b));
+  const lines=validEdges.map((e,idx)=>{
     const[a,b]=[pos[e.a],pos[e.b]];
-    const r=ARC_REL[e.typ]||['관계','#999'];
+    const r=ARC_REL[e.typ]||['관계','#94a3b8'];
     const prim=e.a===C||e.b===C;
-    return `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${r[1]}" stroke-width="${prim?2.4:1.2}" opacity="${prim?.9:.45}" ${e.typ==='schoolmate'||e.typ==='hometown'?'stroke-dasharray="5 4"':''}><title>${esc(e.label||r[0])} · 출처 ${esc(e.src||'')}</title></line>`;
+    const isDashed=e.typ==='schoolmate'||e.typ==='hometown';
+    return `<line class="arc-edge" data-edge-idx="${idx}" data-a="${esc(e.a)}" data-b="${esc(e.b)}" x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${r[1]}" stroke-width="${prim?2.2:1.2}" opacity="${prim?0.8:0.4}" ${isDashed?'stroke-dasharray="4 3"':''}><title>${esc(e.label||r[0])} · 출처 ${esc(e.src||'')}</title></line>
+    <line class="arc-flow" data-edge-idx="${idx}" data-a="${esc(e.a)}" data-b="${esc(e.b)}" x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${r[1]}" style="--fc:${r[1]}"></line>`;
   }).join('');
+
   const nd=[...show].map(id=>{
     const n=N[id]||{name:'?'};
     const[x,y]=pos[id];
-    const c=id===C,r=c?34:ds.has(id)?22:15;
-    const col=n.party?(partyTheme(n.party)?.color||'#8189a3'):'#9aa3b5';
-    const link=id.startsWith('wd:')?`href="https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}" target="_blank" rel="noopener" title="${esc(n.name)} 검색"`:`href="entity/${encodeURIComponent(n.name)}" title="${esc(n.name)} 프로필 보기"`;
-    return `<a ${link} class="gn ${c?'c':''}" data-id="${esc(id)}"><circle cx="${x}" cy="${y}" r="${r}" fill="#fff" stroke="${col}" stroke-width="${c?4:2.5}"/>${n.photo?`<clipPath id="cp${esc(id).replace(/\W/g,'')}"><circle cx="${x}" cy="${y}" r="${r-2}"/></clipPath><image href="${esc(n.photo)}" x="${x-r}" y="${y-r}" width="${2*r}" height="${2*r}" clip-path="url(#cp${esc(id).replace(/\W/g,'')})" preserveAspectRatio="xMidYMin slice"/>`:`<text x="${x}" y="${y+5}" text-anchor="middle" class="gi">${esc((n.name||'?')[0])}</text>`}<text x="${x}" y="${y+r+15}" text-anchor="middle" class="gl">${esc(n.name||'')}</text></a>`;
+    const c=id===C,r=c?20:ds.has(id)?14:10;
+    const col=n.party?(partyTheme(n.party)?.color||'#64748b'):'#94a3b8';
+    const link=id.startsWith('wd:')?`https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}`:`entity/${encodeURIComponent(n.name)}`;
+    const isExt=id.startsWith('wd:');
+    const rel=relMap[id]||{label:'',desc:''};
+    const safeId=esc(id).replace(/\W/g,'');
+
+    return `<g class="gn ${c?'c':''}" data-id="${esc(id)}" data-name="${esc(n.name)}" data-rel="${esc(rel.desc)}" data-href="${link}" data-ext="${isExt}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})">
+      <circle cx="0" cy="0" r="${r}" fill="#fff" stroke="${col}" stroke-width="${c?3.5:2}"/>
+      ${n.photo?`<clipPath id="cp_${safeId}"><circle cx="0" cy="0" r="${r-1.5}"/></clipPath><image href="${esc(n.photo)}" x="${-r}" y="${-r}" width="${2*r}" height="${2*r}" clip-path="url(#cp_${safeId})" preserveAspectRatio="xMidYMin slice"/>`:`<text x="0" y="4" text-anchor="middle" class="gi">${esc((n.name||'?')[0])}</text>`}
+      <text x="0" y="${r+12}" text-anchor="middle" class="gl">${esc(n.name||'')}</text>
+      <text x="0" y="${r+23}" text-anchor="middle" class="gr-desc">${esc(rel.label)}</text>
+      <title>${esc(n.name)} (${esc(rel.desc)})</title>
+    </g>`;
   }).join('');
-  const xs=Object.values(pos).map(p=>p[0]),ys=Object.values(pos).map(p=>p[1]);
-  const mx=Math.min(...xs)-60,my=Math.min(...ys)-50,vw=Math.max(...xs)-mx+60,vh=Math.max(...ys)-my+70;
-  const vb=`${mx} ${my} ${vw} ${vh}`;
-  const used=[...new Set(g.edges.filter(e=>show.has(e.a)&&show.has(e.b)).map(e=>e.typ))];
+
+  const used=[...new Set(validEdges.map(e=>e.typ))];
   const rows=direct.map(([o,e])=>{
     const n=N[o]||{};
-    const r=ARC_REL[e.typ]||['관계','#999'];
+    const r=ARC_REL[e.typ]||['관계','#94a3b8'];
     return `<li style="--rc:${r[1]}"><i></i><b>${o.startsWith('wd:')?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}" target="_blank" rel="noopener" title="${esc(n.name)} 검색">${esc(n.name)} <small style="font-size:10px">↗</small></a>`:`<a href="entity/${encodeURIComponent(n.name)}">${esc(n.name)}</a>`}</b><span>${esc(e.label||r[0])}</span><small>${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.src)}</a>`:esc(e.src||'')}${e.conf<0.8?' · 추정':''}</small></li>`;
   }).join('');
-  return `<div class="arc-glegend">${used.map(t=>`<span style="--rc:${ARC_REL[t]?.[1]||'#999'}"><i></i>${ARC_REL[t]?.[0]||t}</span>`).join('')}</div>
-  <div class="arc-gwrap"><svg viewBox="${vb}" class="arc-gsvg" role="img" aria-label="인맥 관계도">${lines}${nd}</svg></div>
+
+  setTimeout(()=>{
+    document.querySelectorAll('.arc-gwrap:not([data-bound])').forEach(initArcGraphInteraction);
+  }, 25);
+
+  return `<div class="arc-glegend">${used.map(t=>`<span style="--rc:${ARC_REL[t]?.[1]||'#94a3b8'}"><i></i>${ARC_REL[t]?.[0]||t}</span>`).join('')}</div>
+  <div class="arc-gwrap">
+    <div class="arc-hint-bar" aria-live="polite">
+      <span class="arc-hint-icon">✨</span>
+      <span class="arc-hint-text">노드를 드래그하거나 롤오버하면 관계 선과 정보가 연결됩니다</span>
+    </div>
+    <svg viewBox="0 0 ${W} ${H}" class="arc-gsvg" role="img" aria-label="인맥 관계도">${lines}${nd}</svg>
+  </div>
   <ul class="arc-glist">${rows}</ul>
-  <p class="fine" style="margin-top:8px">※ 점선은 같은 학교 동문이나 출생지처럼 공통 배경이 겹치는 관계입니다.</p>`;
+  <p class="fine" style="margin-top:8px">※ 점선은 같은 학교 동문이나 출생지처럼 공통 배경이 겹치는 관계입니다. 노드를 끌어서 위치를 재배치하거나 터치해 상호 관계를 확인할 수 있습니다.</p>`;
 }
 
 function renderFamilySection(p, arc, g){
@@ -1539,6 +1758,7 @@ function entity(n){
 
     container.innerHTML=html;
     initDragScrolls(container);
+    container.querySelectorAll('.arc-gwrap').forEach(initArcGraphInteraction);
 
     container.querySelectorAll('.pol-dash-tabs button').forEach(b=>{
       b.onclick=()=>{
