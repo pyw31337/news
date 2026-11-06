@@ -707,43 +707,98 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 
 /* ---------- 국회의원 정당 테마 및 정당 마크 ---------- */
 .ehero.ehero-party{
-  border-top: 5px solid var(--pc, #e5243b);
-  box-shadow: 0 10px 36px -10px color-mix(in srgb, var(--pc, #e5243b) 55%, transparent);
+  border-top: none !important;
+  box-shadow: 0 8px 28px -6px color-mix(in srgb, var(--pc, #E61E2B) 35%, rgba(0,0,0,.15));
 }
 .ehero.ehero-party::before{
-  background: linear-gradient(180deg, color-mix(in srgb, var(--pc, #e5243b) 48%, rgba(15,22,48,.3)) 0%, color-mix(in srgb, var(--pc-dark, #800f1c) 88%, #060914) 100%) !important;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--pc, #E61E2B) 94%, #000) 0%, color-mix(in srgb, var(--pc-dark, #b41420) 97%, #000) 100%) !important;
+}
+.ehero.ehero-party .in{color:#fff !important}
+.ehero.ehero-party h1{color:#fff !important}
+.ehero.ehero-party p.big{color:rgba(255,255,255,.95) !important}
+.ehero.ehero-party .chip,
+.ehero.ehero-party .chip.person,
+.ehero.ehero-party .chip.org,
+.ehero.ehero-party .chip.place,
+.ehero.ehero-party .chip.event{
+  background: rgba(255, 255, 255, 0.22) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  padding: 3px 10px !important;
+  border-radius: 99px !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  width: fit-content !important;
+  margin-bottom: 6px !important;
+}
+.ehero .myact{
+  margin: 10px 0 12px 0 !important;
+  gap: 5px !important;
+}
+.ehero .myact button{
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  border-radius: 8px !important;
+  padding: 0 11px !important;
+  height: 32px !important;
+  backdrop-filter: blur(4px);
+  transition: background .15s ease;
+}
+.ehero .myact button:hover{
+  background: rgba(255, 255, 255, 0.28) !important;
+  color: #ffffff !important;
+}
+.ehero .myact button svg{
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+  width: 17px !important;
+  height: 17px !important;
+}
+.ehero .myact button.on{
+  color: #ffe066 !important;
+  background: rgba(255, 255, 255, 0.24) !important;
+  border-color: rgba(255, 224, 102, 0.6) !important;
+}
+.ehero .myact button.on svg{
+  fill: #ffe066 !important;
+  stroke: #ffe066 !important;
 }
 .ehero-pol-header{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px}
 .ehero-party-badge{
   display:inline-flex;align-items:center;gap:7px;
-  background:var(--pc, #e5243b);color:#fff;font-weight:800;font-size:.85rem;
-  padding:5px 14px 5px 6px;border-radius:99px;
-  box-shadow:0 4px 16px color-mix(in srgb, var(--pc, #e5243b) 55%, transparent);
-  border: 1px solid rgba(255,255,255,.25);
+  background:var(--pc, #E61E2B);color:#fff;font-weight:800;font-size:.85rem;
+  padding:4px 12px 4px 5px;border-radius:99px;
+  box-shadow:0 2px 10px rgba(0,0,0,.2);
+  border: 1px solid rgba(255,255,255,.3);
 }
-.ehero-party-badge .pm-wrap{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2);overflow:hidden}
+.ehero-party-badge .pm-wrap{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2);overflow:hidden}
 .ehero-party-badge small{opacity:.95;font-weight:600;font-size:.72rem;background:rgba(255,255,255,.2);padding:2px 8px;border-radius:99px;margin-left:2px}
-.ehero-pol-dist{font-size:.76rem;font-weight:700;color:rgba(255,255,255,.9);background:rgba(255,255,255,.16);padding:4px 11px;border-radius:99px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18)}
+.ehero-pol-dist{font-size:.76rem;font-weight:700;color:rgba(255,255,255,.95);background:rgba(255,255,255,.18);padding:4px 11px;border-radius:99px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.22)}
 
 .prof.prof-party{
-  border-top: 5px solid var(--pc, #e5243b);
-  background: linear-gradient(180deg, color-mix(in srgb, var(--pc, #e5243b) 7%, #fff) 0%, #fff 140px);
-  box-shadow: 0 6px 24px -4px color-mix(in srgb, var(--pc, #e5243b) 22%, rgba(15,22,48,.08));
+  border-top: none !important;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--pc, #E61E2B) 5%, #fff) 0%, #fff 110px);
+  box-shadow: 0 4px 20px -4px rgba(0,0,0,.06);
 }
 .prof.prof-party .av{
   position: relative !important;
-  box-shadow: 0 0 0 3.5px var(--pc, #e5243b), 0 8px 24px -4px color-mix(in srgb, var(--pc, #e5243b) 45%, transparent);
+  box-shadow: 0 4px 14px rgba(0,0,0,.08) !important;
+  border: none !important;
 }
 .prof.prof-party .av-seal{
   position: absolute;
-  right: -6px;
-  bottom: -6px;
-  width: 36px;
-  height: 36px;
+  right: -4px;
+  bottom: -4px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: #fff;
-  border: 2px solid var(--pc, #e5243b);
-  box-shadow: 0 3px 10px rgba(0,0,0,.25);
+  background: var(--pc, #E61E2B);
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.22);
   display: grid;
   place-items: center;
   z-index: 2;
@@ -751,22 +806,26 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 }
 .prof-party-pill{
   display:inline-flex;align-items:center;gap:6px;
-  background:var(--pc, #e5243b);color:#fff;font-weight:800;font-size:.8rem;
-  padding:4px 12px 4px 6px;border-radius:99px;
-  box-shadow:0 2px 8px color-mix(in srgb, var(--pc, #e5243b) 35%, transparent);
-  margin-bottom:6px;
+  background:var(--pc, #E61E2B);color:#fff;font-weight:700;font-size:.78rem;
+  padding:3px 11px 3px 5px;border-radius:99px;
+  box-shadow:none;
+  margin-bottom:8px;
   border: 1px solid rgba(255,255,255,.2);
 }
-.prof-party-pill .pm-wrap{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#fff;overflow:hidden}
+.prof-party-pill .pm-wrap{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:#fff;overflow:hidden}
 .pol-act-btn{
-  background:var(--pc, #e5243b) !important;
-  color:#fff !important;font-weight:800 !important;border:none !important;
-  padding:8px 18px !important;border-radius:99px !important;
+  background:var(--pc, #E61E2B) !important;
+  color:#fff !important;font-weight:700 !important;border:none !important;
+  padding:8px 16px !important;border-radius:99px !important;
   display:inline-flex !important;align-items:center !important;gap:7px !important;
-  box-shadow:0 4px 14px color-mix(in srgb, var(--pc, #e5243b) 40%, transparent) !important;
+  box-shadow:none !important;
   font-size:13px !important;text-decoration:none !important;
-  transition:transform .15s, box-shadow .15s !important;
+  cursor:pointer !important;
+  transition:background .15s ease !important;
 }
-.pol-act-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px color-mix(in srgb, var(--pc, #e5243b) 55%, transparent) !important}
-.prof.prof-party .kpis b{color:var(--pc, #e5243b)}
+.pol-act-btn:hover{background:var(--pc-dark, #b41420) !important;color:#fff !important;box-shadow:none !important}
+.pol-act-btn *{color:#fff !important}
+.pol-act-btn svg{stroke:#fff !important;fill:none !important;width:13px !important;height:13px !important}
+.prof.prof-party .kpis b{color:var(--pc, #E61E2B)}
+
 

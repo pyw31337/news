@@ -49,13 +49,13 @@ function getPol(name){return POL_MAP?POL_MAP[name]:null;}
 function partyTheme(party){
   if(!party)return null;
   if(/국민의힘|한나라|새누리|자유한국|미래통합|신한국|민자|민정/.test(party)){
-    return{name:'국민의힘',color:'#e5243b',dark:'#800f1c',light:'#fff1f2',text:'#ffffff'};
+    return{name:'국민의힘',color:'#E61E2B',dark:'#b41420',light:'#fff1f2',text:'#ffffff'};
   }
   if(/민주|열린민주|새정치|통합민주|민주통합|평화민주/.test(party)){
-    return{name:'더불어민주당',color:'#1f5bd8',dark:'#0c3588',light:'#eff6ff',text:'#ffffff'};
+    return{name:'더불어민주당',color:'#004ea2',dark:'#0c3588',light:'#eff6ff',text:'#ffffff'};
   }
   if(/조국/.test(party)){
-    return{name:'조국혁신당',color:'#0a7cc1',dark:'#064b75',light:'#f0f9ff',text:'#ffffff'};
+    return{name:'조국혁신당',color:'#0073cf',dark:'#064b75',light:'#f0f9ff',text:'#ffffff'};
   }
   if(/개혁/.test(party)){
     return{name:'개혁신당',color:'#ff7a00',dark:'#a34e00',light:'#fff7ed',text:'#ffffff'};
@@ -71,31 +71,46 @@ function partyTheme(party){
   }
   return{name:party,color:'#64748b',dark:'#334155',light:'#f8fafc',text:'#ffffff'};
 }
-function partyMark(party,size=20,bgWhite=false){
+function partyMark(party,size=20,mode=false){
   if(!party)return'';
   if(/국민의힘|한나라|새누리|자유한국|미래통합|신한국|민자|민정/.test(party)){
-    const col=bgWhite?'#e5243b':'#ffffff';
-    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="국민의힘"><rect width="24" height="24" rx="5" fill="${bgWhite?'#ffffff':'#e5243b'}"/><path d="M5.5 6.5h10v4h-5.5v7h-4.5v-11z" fill="${col}"/><rect x="12" y="12" width="6.5" height="5.5" rx="1.2" fill="${col}"/></svg>`;
+    if(mode==='white-icon')return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="국민의힘"><path d="M10 6.5h8v7.5l-4 4H6v-7.5z" fill="#ffffff"/></svg>`;
+    const isW=mode===true||mode==='white-bg';
+    const bg=isW?'#ffffff':'#E61E2B',fg=isW?'#E61E2B':'#ffffff';
+    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="국민의힘"><circle cx="12" cy="12" r="11" fill="${bg}"/><path d="M10 6.5h8v7.5l-4 4H6v-7.5z" fill="${fg}"/></svg>`;
   }
   if(/민주/.test(party)){
-    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="더불어민주당"><rect width="24" height="24" rx="5" fill="${bgWhite?'#ffffff':'#1f5bd8'}"/><path d="M6 6.5h5.5c3.6 0 6 2.2 6 5.5s-2.4 5.5-6 5.5H6v-11z" stroke="${bgWhite?'#1f5bd8':'#ffffff'}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.2" cy="7.8" r="2.2" fill="#00d084"/><path d="M6 12h5" stroke="#00d084" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+    if(mode==='white-icon')return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="더불어민주당"><path d="M6 6.5h5.5c3.6 0 6 2.2 6 5.5s-2.4 5.5-6 5.5H6v-11z" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.2" cy="7.8" r="2.2" fill="#00d084"/></svg>`;
+    const isW=mode===true||mode==='white-bg';
+    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="더불어민주당"><circle cx="12" cy="12" r="11" fill="${isW?'#ffffff':'#004ea2'}"/><path d="M6 6.5h5.5c3.6 0 6 2.2 6 5.5s-2.4 5.5-6 5.5H6v-11z" stroke="${isW?'#004ea2':'#ffffff'}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.2" cy="7.8" r="2.2" fill="#00d084"/></svg>`;
   }
   if(/조국/.test(party)){
-    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="조국혁신당"><rect width="24" height="24" rx="5" fill="${bgWhite?'#ffffff':'#0a7cc1'}"/><path d="M6 17.5l6-11 6 11H6z" stroke="${bgWhite?'#0a7cc1':'#ffffff'}" stroke-width="2.4" stroke-linejoin="round"/><path d="M9 13.5h6" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+    if(mode==='white-icon')return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="조국혁신당"><path d="M6 17.5l6-11 6 11H6z" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/><path d="M9 13.5h6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+    const isW=mode===true||mode==='white-bg';
+    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="조국혁신당"><circle cx="12" cy="12" r="11" fill="${isW?'#ffffff':'#0073cf'}"/><path d="M6 17.5l6-11 6 11H6z" stroke="${isW?'#0073cf':'#ffffff'}" stroke-width="2.4" stroke-linejoin="round"/><path d="M9 13.5h6" stroke="${isW?'#0073cf':'#38bdf8'}" stroke-width="2.2" stroke-linecap="round"/></svg>`;
   }
   if(/개혁/.test(party)){
-    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="개혁신당"><rect width="24" height="24" rx="5" fill="${bgWhite?'#ffffff':'#ff7a00'}"/><path d="M6 18l5-11h2l5 11h-3.6l-1.4-3.5H11L9.6 18H6z" fill="${bgWhite?'#ff7a00':'#ffffff'}"/></svg>`;
+    if(mode==='white-icon')return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="개혁신당"><path d="M6 18l5-11h2l5 11h-3.6l-1.4-3.5H11L9.6 18H6z" fill="#ffffff"/></svg>`;
+    const isW=mode===true||mode==='white-bg';
+    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="개혁신당"><circle cx="12" cy="12" r="11" fill="${isW?'#ffffff':'#ff7a00'}"/><path d="M6 18l5-11h2l5 11h-3.6l-1.4-3.5H11L9.6 18H6z" fill="${isW?'#ff7a00':'#ffffff'}"/></svg>`;
   }
   if(/진보/.test(party)){
-    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="진보당"><rect width="24" height="24" rx="5" fill="${bgWhite?'#ffffff':'#d6001c'}"/><path d="M6.5 6.5h7a4 4 0 0 1 0 8h-7v-8z" fill="${bgWhite?'#d6001c':'#ffffff'}"/><rect x="6.5" y="6.5" width="3.5" height="12" fill="${bgWhite?'#d6001c':'#ffffff'}"/><path d="M14 14l4 4.5h-4z" fill="#fde047"/></svg>`;
+    if(mode==='white-icon')return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="진보당"><path d="M6.5 6.5h7a4 4 0 0 1 0 8h-7v-8z" fill="#ffffff"/><rect x="6.5" y="6.5" width="3.5" height="12" fill="#ffffff"/></svg>`;
+    const isW=mode===true||mode==='white-bg';
+    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="진보당"><circle cx="12" cy="12" r="11" fill="${isW?'#ffffff':'#d6001c'}"/><path d="M6.5 6.5h7a4 4 0 0 1 0 8h-7v-8z" fill="${isW?'#d6001c':'#ffffff'}"/><rect x="6.5" y="6.5" width="3.5" height="12" fill="${isW?'#d6001c':'#ffffff'}"/></svg>`;
   }
   if(/기본소득/.test(party)){
-    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="기본소득당"><rect width="24" height="24" rx="5" fill="${bgWhite?'#ffffff':'#00b6b0'}"/><circle cx="12" cy="12" r="6.5" stroke="${bgWhite?'#00b6b0':'#ffffff'}" stroke-width="2.2"/><path d="M12 8.5v7M8.5 12h7" stroke="${bgWhite?'#00b6b0':'#ffffff'}" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+    if(mode==='white-icon')return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="기본소득당"><circle cx="12" cy="12" r="6.5" stroke="#ffffff" stroke-width="2.2"/><path d="M12 8.5v7M8.5 12h7" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+    const isW=mode===true||mode==='white-bg';
+    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="기본소득당"><circle cx="12" cy="12" r="11" fill="${isW?'#ffffff':'#00b6b0'}"/><circle cx="12" cy="12" r="6.5" stroke="${isW?'#00b6b0':'#ffffff'}" stroke-width="2.2"/><path d="M12 8.5v7M8.5 12h7" stroke="${isW?'#00b6b0':'#ffffff'}" stroke-width="2.2" stroke-linecap="round"/></svg>`;
   }
   if(/사회민주/.test(party)){
-    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="사회민주당"><rect width="24" height="24" rx="5" fill="${bgWhite?'#ffffff':'#f2a900'}"/><circle cx="12" cy="12" r="6" fill="${bgWhite?'#f2a900':'#ffffff'}"/><path d="M9.5 9.5h5M9.5 12h5M9.5 14.5h3.5" stroke="${bgWhite?'#ffffff':'#9e6e00'}" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+    if(mode==='white-icon')return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="사회민주당"><circle cx="12" cy="12" r="6" fill="#ffffff"/><path d="M9.5 9.5h5M9.5 12h5M9.5 14.5h3.5" stroke="#f2a900" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+    const isW=mode===true||mode==='white-bg';
+    return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="사회민주당"><circle cx="12" cy="12" r="11" fill="${isW?'#ffffff':'#f2a900'}"/><circle cx="12" cy="12" r="6" fill="${isW?'#f2a900':'#ffffff'}"/><path d="M9.5 9.5h5M9.5 12h5M9.5 14.5h3.5" stroke="${isW?'#ffffff':'#9e6e00'}" stroke-width="1.8" stroke-linecap="round"/></svg>`;
   }
-  return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="국회"><circle cx="12" cy="12" r="10.5" fill="${bgWhite?'#ffffff':'#475569'}" stroke="#94a3b8" stroke-width="1"/><circle cx="12" cy="12" r="8" fill="none" stroke="${bgWhite?'#475569':'#e2e8f0'}" stroke-width="0.8" stroke-dasharray="1.5 1.5"/><text x="12" y="15" text-anchor="middle" font-size="7" font-weight="900" fill="${bgWhite?'#475569':'#ffffff'}" font-family="'Pretendard Variable',sans-serif">국회</text></svg>`;
+  if(mode==='white-icon')return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark"><circle cx="12" cy="12" r="9" stroke="#ffffff" stroke-width="1.5"/><text x="12" y="15" text-anchor="middle" font-size="7" font-weight="900" fill="#ffffff">국회</text></svg>`;
+  return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="국회"><circle cx="12" cy="12" r="10.5" fill="${mode?'#ffffff':'#475569'}" stroke="#94a3b8" stroke-width="1"/><circle cx="12" cy="12" r="8" fill="none" stroke="${mode?'#475569':'#e2e8f0'}" stroke-width="0.8" stroke-dasharray="1.5 1.5"/><text x="12" y="15" text-anchor="middle" font-size="7" font-weight="900" fill="${mode?'#475569':'#ffffff'}" font-family="'Pretendard Variable',sans-serif">국회</text></svg>`;
 }
 function entDesc(e){
   if(!e)return'';
@@ -530,9 +545,9 @@ function entity(n){
     <span style="opacity:.85;font-size:.72rem;font-weight:600;">· 제${(pol.ages||[]).slice(-1)[0]||22}대 국회의원</span>
   </div>`:'';
 
-  const polSealHtml=pol?`<span class="av-seal" title="${esc(pol.party)}">${partyMark(pol.party,26,false)}</span>`:'';
+  const polSealHtml=pol?`<span class="av-seal" title="${esc(pol.party)}">${partyMark(pol.party,18,'white-icon')}</span>`:'';
 
-  const polLinkHtml=pol?`<div class="pol-link" style="margin-top:12px"><a class="chip pol-act-btn" href="politicians/?id=${pol.id}"><span style="font-size:15px">🏛️</span><span>${esc(pol.name)} 의원 국회 활동·법안 보기</span>${NBI('arrow-right')}</a></div>`:rep?`<div class="rep-link" style="margin-top:12px"><a class="chip" href="${rh(rep.id)}" style="display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:var(--blue);font-weight:700;padding:6px 14px;border-radius:99px;font-size:12px">${ic('press')} 기자 데스크 프로필 보기 ${NBI('arrow-right')}</a></div>`:'';
+  const polLinkHtml=pol?`<div class="pol-link" style="margin-top:12px"><a class="pol-act-btn" href="politicians/?id=${pol.id}"><span style="font-size:14px">🏛️</span><span>${esc(pol.name)} 의원 국회 활동·법안 보기</span>${NBI('arrow-right')}</a></div>`:rep?`<div class="rep-link" style="margin-top:12px"><a class="chip" href="${rh(rep.id)}" style="display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:var(--blue);font-weight:700;padding:6px 14px;border-radius:99px;font-size:12px">${ic('press')} 기자 데스크 프로필 보기 ${NBI('arrow-right')}</a></div>`:'';
 
   app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a>${shareBtn()}</div>
   <section class="ehero card ${pTheme?'ehero-party':''}" style="${pcVars}${bg(wi&&wi.image||em.url||e.wiki?.thumb)}"><div class="in">${polHeaderBadge}<span class="chip ${e.type}">${esc(SUB.find(x=>x[0]===subtype(e))?.[1]||TYPE[e.type])}</span>${em.wide?`<img class="ewide" src="${esc(em.wide)}" alt="${esc(e.name)} 로고">`:''}<h1>${esc(e.name)}</h1>
@@ -580,7 +595,7 @@ function entity(n){
           const seal=document.createElement('span');
           seal.className='av-seal';
           seal.title=p.party;
-          seal.innerHTML=partyMark(p.party,26,false);
+          seal.innerHTML=partyMark(p.party,18,'white-icon');
           avWrap.appendChild(seal);
         }
         const textWrap=elProf.querySelector('.row > div:last-child');
@@ -606,10 +621,10 @@ function entity(n){
           elPolLink.style.marginTop='12px';
           textWrap?.appendChild(elPolLink);
         }
-        elPolLink.innerHTML=`<a class="chip pol-act-btn" href="politicians/?id=${p.id}"><span style="font-size:15px">🏛️</span><span>${esc(p.name)} 의원 국회 활동·법안 보기</span>${NBI('arrow-right')}</a>`;
+        elPolLink.innerHTML=`<a class="pol-act-btn" href="politicians/?id=${p.id}"><span style="font-size:14px">🏛️</span><span>${esc(p.name)} 의원 국회 활동·법안 보기</span>${NBI('arrow-right')}</a>`;
         elProf.querySelectorAll('.kpis div b')[0]&&(elProf.querySelectorAll('.kpis div b')[0].style.color=th.color);
+        $('#era')&&($('#era').innerHTML=eraChart(tl,'month',th.color));
       }
-      $('#era')&&($('#era').innerHTML=eraChart(tl,'month',th.color));
     }
   });
   let curEz='month';
