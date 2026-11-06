@@ -336,10 +336,64 @@ function vtl(el,items,z,limit=4){
   const g=[];items.forEach(x=>{const k=ZK[z](x.t);if(!g.length||g[g.length-1].k!==k)g.push({k,a:[]});g[g.length-1].a.push(x)});
   if(!g.length){el.innerHTML='<div class="note">아직 쌓인 기록이 없어요.</div>';return}
   let shown=Math.min(g.length,z==='year'?20:12);
-  const draw=()=>{el.innerHTML=g.slice(0,shown).map(({k,a})=>{const s=a.slice().sort((p,q)=>(q.related||0)-(p.related||0));
-    const leads=s.slice(0,2).map(x=>esc(x.title)).join(' · '),more=Math.max(0,s.length-2);
-    return`<div class="vg"><h4>${k}${cnt(a.length,'news','기사 수')}</h4><p class="vsum">${leads}${more?` 외 ${more}건`:''}</p><details class="vt-fold"><summary>그날의 기사 ${s.length}건 펼쳐 보기</summary><div>${s.map((x,j)=>`<a class="ve ${j===0&&x.related>2?'big':''}" href="${esc(x.url)}" target="_blank" rel="noopener">${x.img&&j<2?`<span class="vth" ${bg(x.img)}></span>`:''}${esc(x.title)}<span class="meta">${pp(x.press,x.url)}${ts(x.t)}${x.related>1?cnt('+'+x.related,'','묶음 기사'):''}</span></a>`).join('')}</div></details></div>`}).join('')+(shown<g.length?`<div class="ve moreb">이전 기록 더 보기 (${g.length-shown}개 구간)</div>`:'');
-    const m=el.querySelector('.moreb');if(m)m.onclick=()=>{shown+=12;draw()}};draw();
+  const draw=()=>{
+    const slice=g.slice(0,shown);
+    const counts=slice.map(x=>x.a.length);
+    const maxBuzz=Math.max(...counts,1);
+    const avgBuzz=counts.reduce((s,v)=>s+v,0)/(counts.length||1);
+
+    el.innerHTML=slice.map(({k,a})=>{
+      const s=a.slice().sort((p,q)=>(q.related||0)-(p.related||0));
+      const leads=s.slice(0,2).map(x=>esc(x.title)).join(' · '),more=Math.max(0,s.length-2);
+      const buzz=a.length;
+      const isAboveAvg=buzz>avgBuzz && maxBuzz>1;
+      const isPeak=buzz===maxBuzz && maxBuzz>1;
+
+      let customStyle='';
+      let textClass='';
+      if(isPeak){
+        textClass='peak';
+        customStyle='color:#dc2626;font-weight:850;font-size:.88rem;letter-spacing:-0.2px;';
+      }else if(isAboveAvg){
+        textClass='above-avg';
+        const ratio=maxBuzz>avgBuzz?(buzz-avgBuzz)/(maxBuzz-avgBuzz):0.5;
+        const r=Math.round(194+ratio*(225-194));
+        const gr=Math.round(65-ratio*(65-29));
+        const bl=Math.round(12+ratio*(72-12));
+        const w=Math.round(650+ratio*150);
+        customStyle=`color:rgb(${r},${gr},${bl});font-weight:${w};`;
+      }
+
+      const buzzBadgeClass=isPeak?'peak':(isAboveAvg?'high':'normal');
+      const flameClass=isPeak?'flame-peak':(isAboveAvg?'flame-high':'flame-subtle');
+
+      return`<div class="vg ${isPeak?'vg-peak':(isAboveAvg?'vg-above-avg':'')}">
+        <h4>
+          <span class="vg-date">${k}</span>
+          <span class="vg-buzz ${buzzBadgeClass}" title="화제지수 ${buzz}">
+            ${ic('flame',flameClass)}
+            <b class="vg-buzz-val">${buzz}</b>
+          </span>
+        </h4>
+        <details class="vg-fold">
+          <summary class="vg-summary">
+            <p class="vsum ${textClass}" style="${customStyle}">${leads}${more?` <span class="vmore">외 ${more}건</span>`:''}</p>
+            <span class="vg-arrow" aria-label="기사 목록 펼치기/접기">${NBI('chevron-down')}</span>
+          </summary>
+          <div class="vg-articles">
+            ${s.map((x,j)=>`<a class="ve ${j===0&&x.related>2?'big':''}" href="${esc(x.url)}" target="_blank" rel="noopener">
+              ${x.img&&j<2?`<span class="vth" ${bg(x.img)}></span>`:''}
+              ${esc(x.title)}
+              <span class="meta">${pp(x.press,x.url)}${ts(x.t)}${x.related>1?cnt('+'+x.related,'','묶음 기사'):''}</span>
+            </a>`).join('')}
+          </div>
+        </details>
+      </div>`;
+    }).join('')+(shown<g.length?`<div class="ve moreb">이전 기록 더 보기 (${g.length-shown}개 구간)</div>`:'');
+
+    const m=el.querySelector('.moreb');if(m)m.onclick=()=>{shown+=12;draw()};
+  };
+  draw();
 }
 function eraChart(items,z){const fmt=z==='year'?(t=>t.slice(0,4)):(t=>t.slice(0,7));const c={};items.forEach(x=>{const k=fmt(x.t);c[k]=(c[k]||0)+1});
   const ks=Object.keys(c).sort();if(!ks.length)return'';const all=[];let [y,m]=ks[0].split('-').map(Number);const [ey,em]=ks[ks.length-1].split('-').map(Number);
