@@ -91,18 +91,78 @@ def wikidata_files(title):
     # 원형·정사각 배지에는 심볼(P8972 작은 로고·아이콘), 가로로 긴 자리에는 심볼+글자 로고(P154)
     return value('P154'), value('P18'), value('P8972')
 
+_POL_MAP = None
+def load_politicians():
+    global _POL_MAP
+    if _POL_MAP is not None:
+        return _POL_MAP
+    _POL_MAP = {}
+    paths = [
+        os.path.join(BASE, 'pol_db', 'index.json'),
+        os.path.join(BASE, 'data', 'pol', 'index.json'),
+        os.path.join(BASE, 'politicians', 'index.json'),
+    ]
+    data = None
+    for p in paths:
+        if os.path.exists(p):
+            try:
+                data = json.load(open(p, encoding='utf-8'))
+                break
+            except Exception:
+                pass
+    if not data:
+        try:
+            req = urllib.request.Request('https://pyw31337.github.io/news/data/pol/index.json', headers=UA)
+            with urllib.request.urlopen(req, timeout=5) as r:
+                data = json.loads(r.read().decode('utf-8'))
+        except Exception:
+            data = None
+    if data and isinstance(data, dict):
+        for p in data.get('people', []):
+            name = p.get('name')
+            if name:
+                if name not in _POL_MAP or (p.get('current') and not _POL_MAP[name].get('current')):
+                    _POL_MAP[name] = p
+    return _POL_MAP
+
 def resolve(entity, cache):
     name = entity.get('name', '')
     typ = normalize_type(entity)
     entity['type'] = typ
     if name in COUNTRIES:
         return {'url': 'https://flagcdn.com/w320/%s.png' % COUNTRIES[name], 'kind': 'flag'}
+
+    pols = load_politicians()
+    pol = pols.get(name) if pols else None
+    if pol:
+        typ = 'person'
+        entity['type'] = 'person'
+        term = pol['ages'][-1] if pol.get('ages') else 22
+        dist = f" · {pol['district']}" if pol.get('district') else ""
+        pol_desc = f"제{term}대 국회의원 ({pol.get('party', '')}{dist})"
+        if not (entity.get('wiki') or {}).get('desc'):
+            entity.setdefault('wiki', {})['desc'] = pol_desc
+        pol_photo = pol.get('photo_local') or pol.get('photo')
+        if pol_photo:
+            visual = {'url': pol_photo, 'kind': 'portrait', 'pol_id': pol.get('id')}
+            key = '%s:%s' % (typ, name)
+            cache[key] = dict(visual, updated=int(time.time()))
+            return visual
+
+    # Wiki desc fallback from extract if desc is empty
+    wiki = entity.get('wiki') or {}
+    if not wiki.get('desc') and wiki.get('extract'):
+        sent = re.split(r'(?<=[.!?다요])\s+', wiki['extract'])[0].strip()
+        if sent and len(sent) < 80:
+            wiki['desc'] = sent
+            entity['wiki'] = wiki
+
     key = '%s:%s' % (typ, name)
     cached = cache.get(key)
     # 예전 캐시의 로고는 심볼·가로형 구분 전이라 한 번 다시 확인
     if isinstance(cached, dict) and cached.get('url') and not (cached.get('kind') == 'logo' and 'symchk' not in cached):
         return cached
-    wiki = entity.get('wiki') or {}
+
     logo, photo, sym = wikidata_files(wiki.get('title') or name)
     if typ == 'org' and (logo or sym):
         visual = {'url': commons_file(sym or logo), 'kind': 'logo'}
@@ -114,6 +174,15 @@ def resolve(entity, cache):
         # db.py가 저해상도 미리보기를 비워도 원본 주소(thumb_src)는 남긴다.
         source = wiki.get('thumb') or wiki.get('thumb_src')
         visual = {'url': source, 'kind': 'portrait' if typ == 'person' else ('place' if typ == 'place' else 'photo')} if source else {}
+
+    # 공직자·법조인(판사/검사)·기자 등 위키에 사진이 없으나 관련 기사에 보도 사진이 있는 경우 뉴스 이미지 활용
+    if not visual.get('url') and entity.get('timeline'):
+        for item in entity['timeline']:
+            u = item.get('img')
+            if u and not re.search(r'blank|default|logo|banner', u, re.I):
+                visual = {'url': u, 'kind': 'portrait' if typ == 'person' else 'photo'}
+                break
+
     if visual.get('url'):
         cache[key] = dict(visual, updated=int(time.time()))
     return visual

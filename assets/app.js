@@ -30,9 +30,54 @@ const AIB='';
 /* 경량 데이터는 작은 원본을 자체 WebP로 바꾸지 못했을 때 thumb를 비우고 thumb_src만 남긴다.
    작은 카드에서는 그 원본도 충분히 선명하므로, 대표 미디어 → 고화질 thumb → 원본 순서로 쓴다. */
 const COUNTRY_FLAG={대한민국:'kr',한국:'kr',남한:'kr',북한:'kp',미국:'us',중국:'cn',일본:'jp',독일:'de',프랑스:'fr',영국:'gb',러시아:'ru',우크라이나:'ua',이스라엘:'il',이란:'ir',대만:'tw',인도:'in',캐나다:'ca',호주:'au',이탈리아:'it',스페인:'es',브라질:'br',멕시코:'mx',튀르키예:'tr',사우디아라비아:'sa',베트남:'vn',태국:'th',필리핀:'ph',싱가포르:'sg',인도네시아:'id'};
+let POL_MAP=null;
+function ensurePolIndex(){
+  if(POL_MAP!==null)return Promise.resolve(POL_MAP);
+  return fetch('data/pol/index.json').then(r=>r.ok?r.json():null).then(d=>{
+    POL_MAP={};
+    if(d&&d.people){
+      d.people.forEach(p=>{
+        if(!POL_MAP[p.name]||(p.current&&!POL_MAP[p.name].current)){
+          POL_MAP[p.name]=p;
+        }
+      });
+    }
+    return POL_MAP;
+  }).catch(()=>{POL_MAP={};return POL_MAP;});
+}
+function getPol(name){return POL_MAP?POL_MAP[name]:null;}
+function entDesc(e){
+  if(!e)return'';
+  if(e.wiki&&e.wiki.desc)return e.wiki.desc;
+  const p=getPol(e.name);
+  if(p)return`제${(p.ages||[]).slice(-1)[0]||22}대 국회의원 (${p.party||''}${p.district?' · '+p.district:''})`;
+  if(typeof reporters==='function'){
+    const r=reporters().find(x=>x.name===e.name);
+    if(r)return`${r.press||''} 기자`;
+  }
+  if(e.wiki&&e.wiki.extract){
+    const s=e.wiki.extract.split(/(?<=[.!?다요])\s+/)[0];
+    if(s&&s.length<80)return s;
+  }
+  return TYPE[e.type]||'';
+}
 function entityMedia(e){
+  if(!e)return{url:'',kind:''};
   const flag=COUNTRY_FLAG[e.name];if(flag)return{url:`https://flagcdn.com/w320/${flag}.png`,kind:'flag'};
-  const v=e.visual||{},w=e.wiki||{},url=v.url||w.thumb||w.thumb_src||'';
+  const v=e.visual||{},w=e.wiki||{};
+  let url=v.url||w.thumb||w.thumb_src||'';
+  const pol=getPol(e.name);
+  if(!url&&pol){
+    url=pol.photo_local||pol.photo||'';
+  }
+  if(!url&&typeof reporters==='function'&&reporters().length){
+    const rep=reporters().find(r=>r.name===e.name);
+    if(rep&&rep.photo)url=rep.photo;
+  }
+  if(!url&&e.timeline&&e.timeline.length){
+    const art=e.timeline.find(x=>x.img&&!/blank|default|logo/i.test(x.img));
+    if(art)url=art.img;
+  }
   return{url,wide:v.wide||'',kind:v.kind||(e.type==='person'?'portrait':e.type==='place'?'place':e.type==='org'?'photo':'')};
 }
 function av(e,cls='av'){const v=entityMedia(e),fallback=e.type==='person'?'user':e.type==='place'?'place':e.type==='org'?'org':'news';return`<div class="${cls} media-${esc(v.kind||'fallback')}" ${bg(v.url)}>${v.url?'':ic(fallback)}</div>`}
@@ -112,6 +157,7 @@ async function load(){
   try{PL=await (await fetch('assets/press/index.json?v=2')).json()}catch(e){PL={}}
   header();route();
   if(D.lite)(window.requestIdleCallback||setTimeout)(fullData,{timeout:2500});
+  (window.requestIdleCallback||setTimeout)(ensurePolIndex,{timeout:1200});
 }
 let G=null,PL={};
 /* 검색량 표기: Google 트렌드 '오늘 검색 횟수(대략)' 구간 */
@@ -273,7 +319,7 @@ function issue(id){
    ${DS.past(i)}
   </div><aside>
    <section id="comments" class="anc ds-sec">${sec('댓글 · 사람들의 반응','Comments','','chat')}${DS.opinion(i)}</section>
-   ${ents.length?sec('등장 인물·키워드','Who’s who','','user')+`<div class="who">${ents.map(e=>`<a class="card whoc" href="${eh(e.name)}">${av(e,'av s')}<div><b>${esc(e.name)}</b><small>${esc(e.wiki?.desc||TYPE[e.type])}</small></div></a>`).join('')}</div>`:''}
+   ${ents.length?sec('등장 인물·키워드','Who’s who','','user')+`<div class="who">${ents.map(e=>`<a class="card whoc" href="${eh(e.name)}">${av(e,'av s')}<div><b>${esc(e.name)}</b><small>${esc(entDesc(e))}</small></div></a>`).join('')}</div>`:''}
   </aside></div>
   ${DS.press(i)}${DS.related(i)}`;
   DS.bind(app);window.NBT&&NBT.easyHold(i,app);
@@ -404,15 +450,20 @@ function eraChart(items,z){const fmt=z==='year'?(t=>t.slice(0,4)):(t=>t.slice(0,
 /* ---------- 인물 상세 ---------- */
 function entity(n){
   const e=ent(n);if(!e)return people();
-  setMeta(e.name+' — 타임라인',(e.wiki&&e.wiki.desc)||'');
+  const pol=getPol(e.name);
+  const rep=typeof reporters==='function'?reporters().find(r=>r.name===e.name):null;
+  const desc=entDesc(e);
+  setMeta(e.name+' — 타임라인',desc);
   const tl=e.timeline,first=tl.length?tl[tl.length-1].t:null;
   const iss=e.issues.map(id=>D.issues.find(x=>x.id===id)).filter(Boolean);
   const w=why(e),wi=w.issue;
+  const em=entityMedia(e);
+  const polLinkHtml=pol?`<div class="pol-link" style="margin-top:8px"><a class="chip" href="politicians/?id=${pol.id}" style="display:inline-flex;align-items:center;gap:4px;background:#eef2ff;color:var(--blue);font-weight:700;padding:5px 12px;border-radius:6px;font-size:12px">🏛️ 국회 의정활동 및 법안 보기 ${NBI('arrow-right')}</a></div>`:rep?`<div class="rep-link" style="margin-top:8px"><a class="chip" href="${rh(rep.id)}" style="display:inline-flex;align-items:center;gap:4px;background:#eef2ff;color:var(--blue);font-weight:700;padding:5px 12px;border-radius:6px;font-size:12px">${ic('press')} 기자 데스크 프로필 보기 ${NBI('arrow-right')}</a></div>`:'';
   app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a>${shareBtn()}</div>
-  <section class="ehero card" ${bg(wi&&wi.image||e.wiki?.thumb)}><div class="in"><span class="chip ${e.type}">${esc(SUB.find(x=>x[0]===subtype(e))?.[1]||TYPE[e.type])}</span>${entityMedia(e).wide?`<img class="ewide" src="${esc(entityMedia(e).wide)}" alt="${esc(e.name)} 로고">`:''}<h1>${esc(e.name)}</h1>
-   <p class="big">${wi?`지금 화제인 이유 — ${esc(wi.title)}`:esc(e.timeline[0]?.title||e.wiki?.desc||'')}</p>${wi?`<a class="go" href="issue/${wi.id}">이슈 자세히 보기 ${NBI('arrow-right')}</a>`:''}</div></section>
+  <section class="ehero card" ${bg(wi&&wi.image||em.url||e.wiki?.thumb)}><div class="in"><span class="chip ${e.type}">${esc(SUB.find(x=>x[0]===subtype(e))?.[1]||TYPE[e.type])}</span>${em.wide?`<img class="ewide" src="${esc(em.wide)}" alt="${esc(e.name)} 로고">`:''}<h1>${esc(e.name)}</h1>
+   <p class="big">${wi?`지금 화제인 이유 — ${esc(wi.title)}`:esc(e.timeline[0]?.title||desc)}</p>${wi?`<a class="go" href="issue/${wi.id}">이슈 자세히 보기 ${NBI('arrow-right')}</a>`:''}</div></section>
   <div class="two"><div>
-   <section class="card prof"><div class="row">${av(e)}<div><span class="chip ${e.type}">${TYPE[e.type]}</span><h1>${esc(e.name)}</h1><p>${esc(e.wiki?.desc||'')}</p></div></div>
+   <section class="card prof"><div class="row">${av(e)}<div><span class="chip ${e.type}">${TYPE[e.type]}</span><h1>${esc(e.name)}</h1><p class="prof-desc">${esc(desc)}</p>${polLinkHtml}</div></div>
     ${e.wiki?.extract?`<p>${esc(e.wiki.extract)} ${e.wiki.url?`<a href="${esc(e.wiki.url)}" target="_blank" style="color:var(--blue)">위키백과 ${NBI('arrow-up-right')}</a>`:''}</p>`:''}
     <div class="kpis"><div><b>${e.score}</b><span>오늘 화제도</span></div><div><b>${tl.length}</b><span>수집된 기록</span></div><div><b>${first?new Date(first).getFullYear():'-'}</b><span>가장 오래된 기록</span></div></div></section>
    ${sec('시대별 보도량','Coverage by era','<div class="zoom" id="ez"><button data-z="month" class="on">월</button><button data-z="year">연</button></div>','chart')}
@@ -424,6 +475,32 @@ function entity(n){
    ${e.related.length?sec('함께 언급된','Related','','graph')+`<div class="chips">${e.related.map(r=>chipE(r.name)).join('')}</div>`:''}
    ${e.history.length>1?sec('NewsBoard 누적 화제도','Daily score','','chart')+`<div class="card" style="padding:12px">${line(e.history.map(x=>x[1]),300,60,'#2f6bff')}</div>`:'<div class="note">매시간 수집이 누적되면 일자별 화제도 그래프가 이곳에 쌓입니다.</div>'}
   </aside></div>`;
+  ensurePolIndex().then(()=>{
+    const p=getPol(e.name);
+    if(p){
+      const curEm=entityMedia(e);
+      const elAv=$('.prof .av');
+      if(elAv&&curEm.url&&(!elAv.style.backgroundImage||elAv.querySelector('svg'))){
+        elAv.style.backgroundImage=`url('${curEm.url}')`;
+        elAv.innerHTML='';
+      }
+      const elHero=$('.ehero');
+      if(elHero&&curEm.url&&!elHero.style.backgroundImage){
+        elHero.style.backgroundImage=`url('${curEm.url}')`;
+      }
+      const elDesc=$('.prof-desc');
+      if(elDesc&&(!e.wiki?.desc||elDesc.textContent==='')){
+        elDesc.textContent=entDesc(e);
+      }
+      if(!$('.pol-link')){
+        const lb=document.createElement('div');
+        lb.className='pol-link';
+        lb.style.marginTop='8px';
+        lb.innerHTML=`<a class="chip" href="politicians/?id=${p.id}" style="display:inline-flex;align-items:center;gap:4px;background:#eef2ff;color:var(--blue);font-weight:700;padding:5px 12px;border-radius:6px;font-size:12px">🏛️ 국회 의정활동 및 법안 보기 ${NBI('arrow-right')}</a>`;
+        $('.prof .row > div')?.appendChild(lb);
+      }
+    }
+  });
   const drawE=z=>{$('#era').innerHTML=eraChart(tl,z);const x=$('#era .era');if(x)x.scrollLeft=1e5};drawE('month');
   $('#ez').onclick=ev=>{const z=ev.target.dataset.z;if(!z)return;$('#ez').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===ev.target));drawE(z)};
   const drawT=z=>vtl($('#etl'),z==='hour'?tl.filter(x=>Date.now()-new Date(x.t)<3*864e5):tl,z,z==='year'?6:4);drawT('day');
@@ -496,9 +573,30 @@ function people(){
     if(f==='reporter'){$('#pg').innerHTML=reportersDesk();const rf=$('#pg .repfilters');if(rf)rf.onclick=ev=>{const b=ev.target.closest('button');if(!b)return;rf.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));const q=b.dataset.rf;const list=$('#pg .reporter-list');list.innerHTML=reporters().filter(r=>q==='전체'||reporterTopics(r).includes(q)).map(reporterCard).join('')||'<div class="note">이 분야의 공개 기자 프로필이 아직 없어요.</div>'};return}
     const L=D.entities.filter(e=>subtype(e)===f);
     $('#pg').innerHTML=(f==='person'?reportersPreview():'')+(L.length?`<div class="plist">${L.map(e=>{const yrs={};e.timeline.forEach(x=>{const y=x.t.slice(0,4);if(!yrs[y])yrs[y]=x});const w=why(e);
-    return`<a class="card pcard" href="${eh(e.name)}"><div class="ph">${av(e)}<div><b>${esc(e.name)}</b><small>${esc(e.wiki?.desc||'')}</small></div></div>${spark(e.daily,300,36)}
+    return`<a class="card pcard" href="${eh(e.name)}"><div class="ph">${av(e)}<div><b>${esc(e.name)}</b><small>${esc(entDesc(e))}</small></div></div>${spark(e.daily,300,36)}
     ${w.text?`<div class="why-box"><span class="why-badge">화제 이유</span><p class="why-desc">${esc(w.text)}</p></div>`:''}
-    <ol class="mtl">${Object.entries(yrs).sort((a,b)=>b[0]-a[0]).slice(0,4).map(([y,x])=>`<li><time class="ts">${y}</time><span>${esc(x.title)}</span></li>`).join('')}</ol><span class="ft">${cnt(e.timeline.length,'clock','기록')}타임라인 보기 ${NBI('arrow-right')}</span></a>`}).join('')}</div>`:'<div class="note">오늘은 이 분류에 해당하는 대상이 없어요.</div>');};
+    <ol class="mtl">${Object.entries(yrs).sort((a,b)=>b[0]-a[0]).slice(0,4).map(([y,x])=>`<li><time class="ts">${y}</time><span>${esc(x.title)}</span></li>`).join('')}</ol><span class="ft">${cnt(e.timeline.length,'clock','기록')}타임라인 보기 ${NBI('arrow-right')}</span></a>`}).join('')}</div>`:'<div class="note">오늘은 이 분류에 해당하는 대상이 없어요.</div>');
+    ensurePolIndex().then(()=>{
+      L.forEach(e=>{
+        const p=getPol(e.name);
+        if(p){
+          const pc=document.querySelector(`.pcard[href="${eh(e.name)}"]`);
+          if(pc){
+            const elAv=pc.querySelector('.av');
+            const curEm=entityMedia(e);
+            if(elAv&&curEm.url&&(!elAv.style.backgroundImage||elAv.querySelector('svg'))){
+              elAv.style.backgroundImage=`url('${curEm.url}')`;
+              elAv.innerHTML='';
+            }
+            const elSmall=pc.querySelector('.ph small');
+            if(elSmall&&(!e.wiki?.desc||elSmall.textContent==='')){
+              elSmall.textContent=entDesc(e);
+            }
+          }
+        }
+      });
+    });
+  };
   $('#f').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;f=b.dataset.f;$('#f').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));draw()};draw();const preview=$('[data-open-reporters]',app);if(preview)preview.onclick=ev=>{ev.preventDefault();f='reporter';$('#f').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.f===f));draw()};
 }
 function reporter(id){const r=reporterById(id);if(!r)return people();const issues=reporterIssues(r),topics=reporterTopics(r),reports=r.reports||[],aff=r.affiliations||[];setMeta(r.name+' 기자 — 보도 기록',`${r.press||''} ${r.name} 기자의 공개 프로필과 최근 보도 기록`);app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a>${shareBtn()}</div><section class="repdetail card"><div class="repidentity">${reporterAvatar(r,'rav big')}<div><span class="repdesk">${ic('press')} ${esc(r.press||'공개 기자 프로필')}</span><h1>${esc(r.name)} 기자</h1>${r.bio?`<p>${esc(r.bio)}</p>`:'<p>기사에 표시된 공개 기자 프로필을 기준으로 정리한 보도 기록입니다.</p>'}${r.profile?`<a class="go" href="${esc(r.profile)}" target="_blank" rel="noopener">네이버 기자 프로필 ${NBI('arrow-up-right')}</a>`:''}</div></div><div class="rep-kpis"><div><b>${reporterCount(r)}</b><span>최근 30일 보도</span></div><div><b>${issues.length}</b><span>오늘 연결 이슈</span></div><div><b>${reports.length}</b><span>최근 공개 목록</span></div></div></section><div class="two"><div>${sec('최근 보도','Latest reports','','news')}<div class="report-list">${reports.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noopener">${x.image?`<span class="report-thumb" ${bg(x.image)}></span>`:''}<span><b>${esc(x.title)}</b><small>${esc(r.press||'')} · ${esc(x.when||'네이버 기자페이지')}</small></span>${NBI('arrow-up-right')}</a>`).join('')||'<div class="note">공개된 최근 보도 목록을 불러오지 못했어요.</div>'}</div>${sec('보도 리듬','30-day public profile activity','','chart')}<section class="card repactivity">${reporterBars(r)}<p>막대는 네이버 기자 프로필에 표시된 최근 30일의 일별 기사 수입니다.</p></section></div><aside>${sec('관점과 연결','Desk context','','search')}<section class="card repcontext"><div><small>주요 분야</small><p class="chips">${topics.map(x=>`<span class="chip event">${esc(x)}</span>`).join('')||'<span class="note">분야 정보 없음</span>'}</p></div>${issues.length?`<div><small>오늘의 연결 이슈</small><ul>${issues.map(i=>`<li><a href="issue/${i.id}"><b>${i.rank}</b>${esc(i.title)}</a></li>`).join('')}</ul></div>`:''}</section>${sec('소속 관측','Affiliation observation','','history')}<section class="card affiliations">${aff.map(x=>`<div><b>${esc(x.press||'소속 미표기')}</b><span>${esc(x.first)}${x.last&&x.last!==x.first?' — '+esc(x.last):'부터 관측'}</span></div>`).join('')||'<p>공개 프로필의 소속 표기를 기다리고 있어요.</p>'}<p>동명이인은 합치지 않으며, 공개 프로필에 확인되지 않은 이직은 추정해 표시하지 않습니다.</p></section></aside></div>`}

@@ -387,7 +387,12 @@ def wiki(name):
     try: j = json.loads(t)
     except Exception: return None
     if j.get('type') != 'standard': return None
-    return dict(title=j.get('title'), desc=j.get('description', ''), extract=j.get('extract', ''),
+    desc = j.get('description', '')
+    ext = j.get('extract', '')
+    if not desc and ext:
+        s = re.split(r'(?<=[.!?다요])\s+', ext)[0].strip()
+        if s and len(s) < 80: desc = s
+    return dict(title=j.get('title'), desc=desc, extract=ext,
                 thumb=(j.get('thumbnail') or {}).get('source', ''), url=(j.get('content_urls') or {}).get('desktop', {}).get('page', ''))
 
 def etype(w):
@@ -399,9 +404,9 @@ def etype(w):
     if re.search(r'(증권|운용|은행|조사소|연구소)', (w or {}).get('title', '')): return 'org'
     # 주가지수·거래소가 '사람'으로 잘못 분류되던 문제(예: 나스닥) — 지수·시장 이름은 기관으로
     if re.search(r'(지수|거래소|증시|주식시장|나스닥|코스피|코스닥|다우|S&P|NASDAQ)', (w or {}).get('title', '') + ' ' + d): return 'org'
-    if re.search(r'(정치인|장관|청장|대법원장|시장|국회의원|배우|가수|선수|기업인|감독|대통령|총리|의원|방송인|작가|학자|아이돌|태어|출생)', s): return 'person'
+    if re.search(r'(정치인|장관|청장|대법원장|시장|국회의원|배우|가수|선수|기업인|감독|대통령|총리|의원|방송인|작가|학자|아이돌|태어|출생|판사|검사|변호사|기자|앵커|교수|의사|연구원|지사|위원장)', s): return 'person'
     if re.search(r'(자치구|도시|국가|나라|섬|지역|광역시|특별시|공화국|마을)', d): return 'place'
-    if re.search(r'(정치인|배우|가수|선수|기업인|감독|대통령|총리|의원|인물|방송인|작가|학자|그룹|아이돌|태어|출생|\(\d{4}년)', s): return 'person'
+    if re.search(r'(정치인|배우|가수|선수|기업인|감독|대통령|총리|의원|인물|방송인|작가|학자|그룹|아이돌|태어|출생|판사|검사|변호사|기자|앵커|교수|의사|연구원|지사|위원장|\(\d{4}년)', s): return 'person'
     if re.search(r'(도시|국가|나라|섬|지역|광역시|특별시|도\b|군\b|구\b|시\b|공화국|주\b|산\b|강\b)', s): return 'place'
     if re.search(r'(회사|기업|기관|정당|단체|위원회|부처|법원|대학|은행|협회)', s): return 'org'
     return 'event'
