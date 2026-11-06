@@ -704,3 +704,69 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 .numt-seat{display:flex;height:30px;border-radius:99px;overflow:hidden;gap:2px}.numt-seat i{display:flex;align-items:center;justify-content:center;color:#fff;font-style:normal;font-size:.75rem;font-weight:800;min-width:18px}
 .numt-lg{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:10px;font-size:.75rem;color:var(--ink2)}.numt-lg i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
 @media(min-width:900px){.numt{grid-template-columns:1fr 1.4fr 1fr}.numt-k{grid-template-columns:1fr 1fr}}
+
+/* ---------- 국회의원 정당 테마 및 정당 마크 ---------- */
+.ehero.ehero-party{
+  border-top: 5px solid var(--pc, #e5243b);
+  box-shadow: 0 10px 36px -10px color-mix(in srgb, var(--pc, #e5243b) 55%, transparent);
+}
+.ehero.ehero-party::before{
+  background: linear-gradient(180deg, color-mix(in srgb, var(--pc, #e5243b) 48%, rgba(15,22,48,.3)) 0%, color-mix(in srgb, var(--pc-dark, #800f1c) 88%, #060914) 100%) !important;
+}
+.ehero-pol-header{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:10px}
+.ehero-party-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--pc, #e5243b);color:#fff;font-weight:800;font-size:.85rem;
+  padding:5px 14px 5px 6px;border-radius:99px;
+  box-shadow:0 4px 16px color-mix(in srgb, var(--pc, #e5243b) 55%, transparent);
+  border: 1px solid rgba(255,255,255,.25);
+}
+.ehero-party-badge .pm-wrap{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.2);overflow:hidden}
+.ehero-party-badge small{opacity:.95;font-weight:600;font-size:.72rem;background:rgba(255,255,255,.2);padding:2px 8px;border-radius:99px;margin-left:2px}
+.ehero-pol-dist{font-size:.76rem;font-weight:700;color:rgba(255,255,255,.9);background:rgba(255,255,255,.16);padding:4px 11px;border-radius:99px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18)}
+
+.prof.prof-party{
+  border-top: 5px solid var(--pc, #e5243b);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--pc, #e5243b) 7%, #fff) 0%, #fff 140px);
+  box-shadow: 0 6px 24px -4px color-mix(in srgb, var(--pc, #e5243b) 22%, rgba(15,22,48,.08));
+}
+.prof.prof-party .av{
+  position: relative !important;
+  box-shadow: 0 0 0 3.5px var(--pc, #e5243b), 0 8px 24px -4px color-mix(in srgb, var(--pc, #e5243b) 45%, transparent);
+}
+.prof.prof-party .av-seal{
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--pc, #e5243b);
+  box-shadow: 0 3px 10px rgba(0,0,0,.25);
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  overflow: hidden;
+}
+.prof-party-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--pc, #e5243b);color:#fff;font-weight:800;font-size:.8rem;
+  padding:4px 12px 4px 6px;border-radius:99px;
+  box-shadow:0 2px 8px color-mix(in srgb, var(--pc, #e5243b) 35%, transparent);
+  margin-bottom:6px;
+  border: 1px solid rgba(255,255,255,.2);
+}
+.prof-party-pill .pm-wrap{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#fff;overflow:hidden}
+.pol-act-btn{
+  background:var(--pc, #e5243b) !important;
+  color:#fff !important;font-weight:800 !important;border:none !important;
+  padding:8px 18px !important;border-radius:99px !important;
+  display:inline-flex !important;align-items:center !important;gap:7px !important;
+  box-shadow:0 4px 14px color-mix(in srgb, var(--pc, #e5243b) 40%, transparent) !important;
+  font-size:13px !important;text-decoration:none !important;
+  transition:transform .15s, box-shadow .15s !important;
+}
+.pol-act-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px color-mix(in srgb, var(--pc, #e5243b) 55%, transparent) !important}
+.prof.prof-party .kpis b{color:var(--pc, #e5243b)}
+
