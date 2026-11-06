@@ -531,6 +531,8 @@ function makeHeroMetaRow(e, pol){
 }
 
 /* ---------- 통합 인물 & 정치인 상세 대시보드 헬퍼 ---------- */
+const fmt=n=>(n||0).toLocaleString();
+const pc=p=>partyTheme(p)?.color||(/민주/.test(p||'')?'#004ea2':/국민의힘|한나라|새누리|자유한국|미래통합/.test(p||'')?'#E61E2B':'#6b7390');
 const ARC_REL={parent:['부모·자녀','#d6336c'],spouse:['배우자','#e64980'],sibling:['형제자매','#f06595'],relative:['친척','#f783ac'],schoolmate:['학교 동문','#2a9d8f'],hometown:['같은 출생지','#f08c00'],predecessor:['지역구 전·후임','#3b5bdb']};
 const ARC_TYP={birth:['출생','#8b6cf0','confetti'],edu:['학업','#2a9d8f','school'],career:['경력','#5b7fa6','building'],election:['선거','#1f5bd8','circle-check'],office:['공직','#3b5bdb','star-f'],party:['정당','#f08c00','repeat'],award:['수상','#e0a800','trophy'],family:['가족','#d6336c','heart-f'],assets:['재산','#2f9e44','currency-won'],allegation:['의혹·사건','#e03131','alert-triangle'],ruling:['판결','#862e9c','landmark'],news:['보도','#868e96','news']};
 const ARC_STAGES=['출생·성장','학업','사회 경력','정치 활동','재산','논란·사법','언론 보도'];
@@ -1210,9 +1212,10 @@ function entity(n){
         drawArcTimeline(dated,'');
       }
     }
-  }).catch(()=>{
+  }).catch(err=>{
+    console.error('Error loading full person data:', err);
     const container=document.getElementById('pol-dashboard-container');
-    if(container)container.innerHTML='';
+    if(container)container.innerHTML='<div style="padding:16px;color:var(--mute);text-align:center">인물 상세 데이터를 불러오는 중 일시적인 네트워크 지연이 발생했습니다.</div>';
   });
 }
 
