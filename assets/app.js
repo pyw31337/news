@@ -530,8 +530,14 @@ function entity(n){
   const rep=typeof reporters==='function'?reporters().find(r=>r.name===e.name):null;
   const pTheme=pol?partyTheme(pol.party):null;
   const desc=entDesc(e);
-  setMeta(e.name+' — 타임라인',desc);
-  const tl=e.timeline,first=tl.length?tl[tl.length-1].t:null;
+  const rawTl=e.timeline||[];
+  const tl=rawTl.filter(x=>{
+    if(!x||!x.title)return false;
+    if(x.title.includes(e.name))return true;
+    if(e.aliases&&e.aliases.some(al=>al&&x.title.includes(al)))return true;
+    return false;
+  });
+  const first=tl.length?tl[tl.length-1].t:null;
   const iss=e.issues.map(id=>D.issues.find(x=>x.id===id)).filter(Boolean);
   const w=why(e),wi=w.issue;
   const em=entityMedia(e);
@@ -550,7 +556,7 @@ function entity(n){
 
   app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a>${shareBtn()}</div>
   <section class="ehero card ${pTheme?'ehero-party':''}" style="${pcVars}${bg(wi&&wi.image||em.url||e.wiki?.thumb)}"><div class="in">${makeHeroMetaRow(e,pol)}${em.wide?`<img class="ewide" src="${esc(em.wide)}" alt="${esc(e.name)} 로고">`:''}<h1>${esc(e.name)}</h1>
-   <p class="big">${wi?`지금 화제인 이유 — ${esc(wi.title)}`:esc(e.timeline[0]?.title||desc)}</p>${wi?`<a class="go" href="issue/${wi.id}">이슈 자세히 보기 ${NBI('arrow-right')}</a>`:''}</div></section>
+   <p class="big">${wi?`지금 화제인 이유 — ${esc(wi.title)}`:esc(tl[0]?.title||desc)}</p>${wi?`<a class="go" href="issue/${wi.id}">이슈 자세히 보기 ${NBI('arrow-right')}</a>`:''}</div></section>
   <div class="two"><div>
    <section class="card prof ${pTheme?'prof-party':''}" style="${pcVars}"><div class="row"><div style="position:relative;flex:none">${av(e)}${polSealHtml}</div><div>${polProfilePill}<h1>${esc(e.name)}</h1><p class="prof-desc">${esc(desc)}</p>${polLinkHtml}</div></div>
     ${e.wiki?.extract?`<p>${esc(e.wiki.extract)} ${e.wiki.url?`<a href="${esc(e.wiki.url)}" target="_blank" style="color:${pTheme?pTheme.color:'var(--blue)'}">위키백과 ${NBI('arrow-up-right')}</a>`:''}</p>`:''}

@@ -429,6 +429,7 @@ def timeline(name):
     for a in items:
         k = re.sub(r'\W', '', a['title'])[:24]
         if k in seen or not a['time']: continue
+        if name and name not in a['title']: continue
         seen.add(k); out.append(dict(t=a['time'], title=a['title'], url=a['url'], press=a['press'], related=a['related']))
     return sorted(out, key=lambda x: x['t'], reverse=True)
 

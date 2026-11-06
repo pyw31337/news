@@ -48,9 +48,12 @@ D = load(os.path.join(ROOT, 'today.json'), {}) or {}
 ED = os.path.join(ROOT, 'db', 'entities'); IDX_P = os.path.join(ED, 'index.json'); IDX = load(IDX_P, {}) or {}
 def merge_ent(name, typ, items, wiki=None):
     p = os.path.join(ED, h8(name) + '.json'); e = load(p, None) or dict(name=name, type=typ, timeline=[], first_seen=DAY)
+    if name:
+        e['timeline'] = [x for x in e.get('timeline', []) if isinstance(x, dict) and x.get('title') and name in x['title']]
     have = {x['url'] for x in e['timeline']}
     for x in items:
         if isinstance(x, dict) and x.get('url') and x['url'] not in have and x.get('t'):
+            if name and name not in (x.get('title') or ''): continue
             have.add(x['url']); e['timeline'].append({k: x.get(k) for k in ('t', 'title', 'url', 'press')})
     e['timeline'] = sorted(e['timeline'], key=lambda x: x['t'], reverse=True)
     if len(e['timeline']) > 3000:   # 오래된 기록은 버리지 않고 old/ 아래 월별 파일로 옮김
@@ -89,7 +92,8 @@ queue = sorted([n for n, v in IDX.items() if v.get('backfill', 0) < len(STEPS)],
 def bf(name):
     yrs = STEPS[IDX[name].get('backfill', 0)]; q = '"%s"' % name
     lo = (NOW - dt.timedelta(days=365 * (yrs + 1))).strftime('%Y-%m-%d'); hi = (NOW - dt.timedelta(days=365 * yrs)).strftime('%Y-%m-%d')
-    return name, gnews('%s after:%s before:%s' % (q, lo, hi)) + gnews('%s before:%s' % (q, hi))
+    res = gnews('%s after:%s before:%s' % (q, lo, hi)) + gnews('%s before:%s' % (q, hi))
+    return name, [it for it in res if name in (it.get('title') or '')]
 with ThreadPoolExecutor(3) as ex:
     for name, items in ex.map(bf, queue):
         e = load(os.path.join(ED, IDX[name]['f'] + '.json'), {}) or {}
