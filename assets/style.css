@@ -1012,11 +1012,240 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 .pol-bill-title .pol-ext-icon{font-size:0.75rem;color:#94a3b8;margin-left:2px}
 .pol-bill-badge{
   flex:none;font-size:0.72rem;font-weight:800;padding:3px 8px;border-radius:6px;
-  background:#e2e8f0;color:#475569;white-space:nowrap;border:none;cursor:pointer;
+  background:#f1f5f9;color:#475569;white-space:nowrap;border:1px solid #cbd5e1;cursor:pointer;
+  transition:all .15s ease;
 }
-.pol-bill-badge.res-계류{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
-.pol-bill-badge.res-가결{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}
-.pol-bill-badge.res-폐기{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.pol-bill-badge.res-계류{background:#f1f5f9;color:#475569;border:1px solid #cbd5e1}
+.pol-bill-badge.res-계류:hover{background:#e2e8f0;color:#1e293b;border-color:#94a3b8}
+.pol-bill-badge.res-가결, .pol-bill-badge.res-수정가결, .pol-bill-badge.res-원안가결{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}
+.pol-bill-badge.res-가결:hover, .pol-bill-badge.res-수정가결:hover, .pol-bill-badge.res-원안가결:hover{background:#d1fae5;color:#065f46;border-color:#6ee7b7}
+.pol-bill-badge.res-폐기, .pol-bill-badge.res-대안반영폐기{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
+.pol-bill-badge.res-폐기:hover, .pol-bill-badge.res-대안반영폐기:hover{background:#ffedd5;color:#9a3412;border-color:#fdba74}
+
+/* Bill Accordion & Drawer */
+.pol-blist li.pol-bill-item {
+  padding: 0;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  transition: all .2s ease;
+}
+.pol-blist li.pol-bill-item:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+}
+.pol-blist li.pol-bill-item.open {
+  background: #ffffff;
+  border-color: #94a3b8;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.pol-bill-summary-bar {
+  padding: 12px 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  user-select: none;
+}
+.pol-bill-title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex: 1;
+}
+.pol-bill-title {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.45;
+  transition: color .15s ease;
+}
+.pol-bill-summary-bar:hover .pol-bill-title {
+  color: var(--pc, #E61E2B);
+}
+.pol-bill-toggle-hint {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--pc, #2f6bff);
+  background: color-mix(in srgb, var(--pc, #2f6bff) 8%, #fff);
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid color-mix(in srgb, var(--pc, #2f6bff) 25%, transparent);
+}
+.pol-bill-item.open .pol-bill-toggle-hint {
+  color: #64748b;
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+/* Bill Drawer Body */
+.pol-bill-drawer {
+  display: none;
+  padding: 14px 16px 16px;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  animation: billSlideDown .2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes billSlideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.pol-bill-item.open .pol-bill-drawer {
+  display: block;
+}
+
+.bill-drawer-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-bottom: 12px;
+}
+.bill-domain-tag {
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #1e293b;
+  background: #f1f5f9;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+.bill-type-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #2563eb;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+.bill-no-tag, .bill-date-tag {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+/* Purpose Card */
+.bill-purpose-card {
+  background: #f8fafc;
+  border-left: 3px solid var(--pc, #2f6bff);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+}
+.bpc-tit {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+.bpc-desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #334155;
+  margin: 0;
+}
+
+/* Compare Grid */
+.bill-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+@media (max-width: 640px) {
+  .bill-compare-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.compare-card {
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.compare-card.before {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+.compare-card.after {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+.compare-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+.compare-card.before .compare-head {
+  color: #475569;
+}
+.compare-card.after .compare-head {
+  color: #166534;
+}
+.compare-head .ch-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.compare-card.before .ch-badge {
+  background: #e2e8f0;
+  color: #334155;
+}
+.compare-card.after .ch-badge {
+  background: #dcfce7;
+  color: #15803d;
+}
+.compare-desc {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  margin: 0;
+  color: #334155;
+}
+
+/* Drawer Foot */
+.bill-drawer-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+}
+.bdf-effect {
+  font-size: 0.78rem;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.bdf-effect b {
+  color: #0f172a;
+}
+.bill-likms-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #ffffff;
+  background: #1e293b;
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all .15s ease;
+}
+.bill-likms-btn:hover {
+  background: #0f172a;
+  transform: translateY(-1px);
+}
 
 .pol-bill-meta-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;font-size:0.75rem;color:#64748b}
 .pol-bill-meta-row span{display:inline-flex;align-items:center;gap:4px}

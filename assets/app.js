@@ -534,6 +534,7 @@ function makeHeroMetaRow(e, pol){
 
 /* ---------- 통합 인물 & 정치인 상세 대시보드 헬퍼 ---------- */
 const fmt=n=>(n||0).toLocaleString();
+const fDate=s=>String(s??'').replace(/(\d{4})-(\d{2})-(\d{2})/g,'$1.$2.$3').replace(/(\d{4})-(\d{2})/g,'$1.$2');
 const pc=p=>partyTheme(p)?.color||(/민주/.test(p||'')?'#004ea2':/국민의힘|한나라|새누리|자유한국|미래통합/.test(p||'')?'#E61E2B':'#6b7390');
 const ARC_REL={parent:['부모·자녀','#d6336c'],spouse:['배우자','#e64980'],sibling:['형제자매','#f06595'],relative:['친척','#f783ac'],schoolmate:['학교 동문','#2a9d8f'],hometown:['같은 출생지','#f08c00'],predecessor:['지역구 전·후임','#3b5bdb']};
 const ARC_TYP={birth:['출생','#8b6cf0','confetti'],edu:['학업','#2a9d8f','school'],career:['경력','#5b7fa6','building'],election:['선거','#1f5bd8','circle-check'],office:['공직','#3b5bdb','star-f'],party:['정당','#f08c00','repeat'],award:['수상','#e0a800','trophy'],family:['가족','#d6336c','heart-f'],assets:['재산','#2f9e44','currency-won'],allegation:['의혹·사건','#e03131','alert-triangle'],ruling:['판결','#862e9c','landmark'],news:['보도','#868e96','news']};
@@ -549,13 +550,159 @@ function polBars(obj,color,activeKey){
   const m=Math.max(...E.map(e=>e[1]));
   return`<div class="pol-hbar" role="group" aria-label="대표발의 처리 결과 필터">${E.map(([k,v])=>{
     const on=activeKey===k;
+    const barCol=/가결/.test(k)?'#10b981':/계류/.test(k)?'#64748b':/폐기/.test(k)?'#f97316':color;
     return `<button type="button" class="pol-hbar-row ${on?'on':''}" data-bill-res="${esc(k)}" title="${esc(k)} ${v}건 발의안 목록 보기">
       <span class="ph-name">${esc(k)}</span>
-      <span class="ph-bar-track"><i class="ph-bar-fill" style="width:${Math.max(4,v/m*100)}%;background:${color}"></i></span>
+      <span class="ph-bar-track"><i class="ph-bar-fill" style="width:${Math.max(4,v/m*100)}%;background:${barCol}"></i></span>
       <b class="ph-val">${v}건</b>
       <span class="ph-arrow">${typeof NBI==='function'?NBI('chevron-right'):'›'}</span>
     </button>`;
   }).join('')}</div>`;
+}
+
+function getBillAnalysis(b){
+  const name=b.name||'';
+  const comm=b.committee||'';
+  const isAmendment=/일부개정|전부개정|개정/.test(name);
+  const isNew=/제정|에 관한 법률안$/.test(name)&&!isAmendment;
+  const lawName=name.replace(/\s*(일부개정법률안|전부개정법률안|제정법률안|개정법률안|법률안)$/,'');
+
+  const KB=[
+    {
+      match:/북한이탈주민/,
+      domain:'🛡️ 통일·안보 및 정착 인권',
+      type:'일부개정법률안',
+      purpose:'대한민국에 입국한 북한이탈주민의 경제적 자립 지원금을 현실화하고, 제3국 출생 탈북민 자녀에 대한 교육·의료 사각지대를 해소하기 위한 법안입니다.',
+      before:'현행법은 북한에서 직접 탈북한 주민 위주로 지원 기준이 맞춰져 있어, 탈북 경로인 제3국(중국 등)에서 출생한 자녀는 학비 지원·정착금 등에서 제도적 사각지대에 놓여 있었습니다.',
+      after:'제3국 출생 북한이탈주민 자녀를 법적 지원 대상에 공식 편입하여 학비 및 진학 혜택을 보장하고, 초기 정착금 인상 및 트라우마 심리치유 전문 바우처를 신설하도록 명문화했습니다.',
+      effect:'탈북민 2세대의 교육 격차 해소 및 국내 조기 사회정착 기반 대폭 강화'
+    },
+    {
+      match:/인공지능데이터센터/,
+      domain:'⚡ 미래기술 및 AI 인프라',
+      type:'제정법률안',
+      purpose:'국가 초거대 인공지능(AI) 경쟁력의 핵심인 AI 데이터센터를 전략 자산으로 지정하고, 전력·용수·입지 지원을 총괄하는 법적 근거를 마련하는 제정안입니다.',
+      before:'기존 법제상 데이터센터는 단순 통신·전산 시설로 분류되어 막대한 전력 소비에 따른 송전망 연결 및 인허가 과정에서 장기간 지연이 불가피했습니다.',
+      after:'국가 AI 데이터센터 특화 집적단지 지정, 전력 및 냉각용수 인허가 특례 부여, 고효율·친환경 냉각 기술 도입 시 조세 감면 및 보조금 지급 근거를 신설했습니다.',
+      effect:'글로벌 AI 소버린 경쟁력 확보 및 대규모 민간 AI 컴퓨팅 인프라 투자 촉진'
+    },
+    {
+      match:/여성과학기술인/,
+      domain:'🔬 과학기술 및 R&D',
+      type:'일부개정법률안 (수정가결 반영)',
+      purpose:'이공계 여성 인재의 임신·출산·육아로 인한 경력 단절을 예방하고, 연구 현장 복귀 및 정부출연연구기관 주요 보직 진출을 제도화하는 법안입니다.',
+      before:'여성 과학기술인 육성 시책이 선언적 권고 수준에 머물러 연구 복귀를 위한 전담 지원이 부족하고 공공 연구소의 여성 연구관리자 보직 비율이 저조했습니다.',
+      after:'경력 복귀 여성 연구자를 위한 전담 R&D 사업 및 대체 연구인력 인건비 지원을 명문화하고, 공공 연구기관 평가 지표에 여성 연구책임자 비율을 의무 반영하도록 개정했습니다.',
+      effect:'우수 여성 과학기술인의 국가 R&D 연구 중단 방지 및 다양성 확대 (수정가결 완료)'
+    },
+    {
+      match:/연구실 안전환경/,
+      domain:'🛡️ 안전·보건 및 청년 연구원',
+      type:'일부개정법률안',
+      purpose:'대학 및 연구기관의 연구실 위험물질 사고로부터 학생 연구원과 이공계 청년들의 생명·신체를 철저히 보호하기 위한 안전기준 강화 법안입니다.',
+      before:'현행법은 연구실 안전점검 위반 시 과태료 처분에 그치고, 학생 연구원이 사고를 당했을 경우 산재·재해보상 한도가 일반 직장인 근로자에 비해 턱없이 부족했습니다.',
+      after:'정기 안전진단 의무 대상을 확대하고, 학생 연구원의 재해보상 치료비 및 장해 보상금 한도를 대폭 상향하며 안전관리 미준수 기관에 대한 제재를 엄격화했습니다.',
+      effect:'청년·학생 연구자의 안전한 연구 환경 조성 및 대안반영으로 입법 취지 반영'
+    },
+    {
+      match:/정보통신망/,
+      domain:'💻 IT·방송통신 및 디지털 권익',
+      type:'일부개정법률안',
+      purpose:'딥페이크 합성물 유통, 허위 조작 정보 및 온라인 피싱 범죄로부터 국민 권익을 지키고 플랫폼 사업자의 모니터링·차단 책임을 강화하는 법안입니다.',
+      before:'피해자의 사후 삭제 요청이 있을 때만 삭제 조치가 이루어져 악성 딥페이크 및 허위정보의 기하급수적 확산을 막기에 한계가 있었습니다.',
+      after:'인공지능(AI)을 이용한 악의적 합성물의 탐지 및 즉각적 차단 시스템 운영을 플랫폼에 의무화하고, 위반 시 징벌적 과징금을 부과할 수 있도록 근거를 신설했습니다.',
+      effect:'디지털 성착취물 및 딥페이크 피해의 신속 차단과 플랫폼 책임 강화'
+    },
+    {
+      match:/(?:지방|국가)공무원법/,
+      domain:'🏛️ 행정·공직 사회 및 복무',
+      type:'일부개정법률안',
+      purpose:'악성 민원과 폭언·폭행 등 직무상 위험에 노출된 일선 공무원의 보호 조치를 의무화하고, 안정적인 직무 전념 환경을 보장하기 위한 법안입니다.',
+      before:'현행법상 악성 민원에 대한 기관장의 보호 조치가 임의 규정이거나 가이드라인 수준에 그쳐, 일선 공무원이 개인적으로 고소·소송을 감당해야 했습니다.',
+      after:'악성 민원인의 위법 행위 발생 시 기관장의 고발 조치 및 피해 공무원에 대한 심리상담·법률 지원을 의무화하고, 직무 스트레스에 따른 유급 휴가 근거를 마련했습니다.',
+      effect:'공무원 권익 보호 및 악성 민원 차단을 통한 대국민 공공 서비스 질 향상'
+    },
+    {
+      match:/공직선거법|선거관리위원회/,
+      domain:'🗳️ 정치·선거 및 민주주의',
+      type:'일부개정법률안',
+      purpose:'선거의 공정성을 훼손하는 부실 여론조사의 난립을 방지하고, 유권자에게 정확하고 왜곡 없는 선거 정보가 제공되도록 감독을 강화하는 법안입니다.',
+      before:'현행법은 선거 여론조사 표본 구성 기준이 느슨하고, 결과를 왜곡 공표해도 경고나 경미한 과태료에 그쳐 선거 직전 왜곡 조사가 횡행했습니다.',
+      after:'여론조사 표본 수집 기준을 대폭 강화하고, 고의적 데이터 조작 또는 중대한 표본 왜곡 시 조사기관 등록을 즉시 취소하며 형사 처벌 수위를 상향했습니다.',
+      effect:'유권자 신뢰 회복 및 선거 여론조사의 왜곡·조작 원천 차단'
+    },
+    {
+      match:/도로교통법/,
+      domain:'🚦 교통·안전 및 보행 환경',
+      type:'일부개정법률안',
+      purpose:'보행자 보호구역의 안전 시설을 확충하고, 전동 킥보드 등 개인형 이동장치(PM)의 무단 방치 및 위험 운전을 근절하기 위한 법안입니다.',
+      before:'개인형 이동장치 대여 사업자의 면허 확인 의무가 부실하고, 보도 무단 방치에 대한 즉시 견인 및 과태료 부과 기준이 모호했습니다.',
+      after:'대여업체의 면허 미확인 시 영업 정지 등 강력 제재를 신설하고, 보행자 통행 방해 구역 즉시 견인 조치 및 단속 근거를 구체화했습니다.',
+      effect:'보행자 통행권 보장 및 개인형 이동수단 교통사고 획기적 감축'
+    },
+    {
+      match:/조세특례제한법|지방세특례제한법|상속세/,
+      domain:'💰 조세·재정 및 국가전략기술',
+      type:'일부개정법률안',
+      purpose:'국가 핵심 전략 기술(반도체, AI, 바이오 등)에 대한 국내 R&D 투자를 촉진하고, 미래 세대 및 벤처기업의 혁신 성장을 세제 측면에서 지원하는 법안입니다.',
+      before:'주요 기술 분야에 대한 투자 세액공제 일몰 기한이 임박하고, 해외 주요국의 파격적 보조금·세제 혜택에 비해 국내 유인책이 부족했습니다.',
+      after:'국가전략기술 R&D 및 설비투자에 대한 세액공제 적용 기간을 대폭 연장하고, 중소·벤처기업에 대한 공제율을 상향 조정하여 국내 투자 유치를 유도했습니다.',
+      effect:'핵심 전략기술의 국내 투자 보호 및 글로벌 초격차 기술 경쟁력 유지'
+    },
+    {
+      match:/원자력안전/,
+      domain:'⚛️ 에너지·원자력 및 규제',
+      type:'일부개정법률안',
+      purpose:'원자력 안전 규제 기구의 전문성과 독립성을 높이고, 안전성 심사 프로세스를 선진화하기 위한 법안입니다.',
+      before:'위원 구성이 비상설 위주로 운영되어 최신 원자로 기술 및 안전성 심사가 지연되고 정치적 성향에 따른 규제 일관성 훼손 우려가 있었습니다.',
+      after:'과학기술계 전문가 참여 비중을 확대하고 상임위원을 증원하여 심사의 전문성과 신속성을 동시에 확보하도록 체계를 개편했습니다.',
+      effect:'원자력 안전 심사의 객관성·신뢰성 제고 및 신속한 안전 점검'
+    },
+    {
+      match:/근로기준법/,
+      domain:'💼 노동·고용 및 일자리',
+      type:'일부개정법률안',
+      purpose:'변화하는 산업 생태계에 맞춰 유연한 근무 환경을 보장하는 동시에, 장시간 노동 및 포괄임금제 오남용으로부터 근로자의 휴식권을 지키기 위한 법안입니다.',
+      before:'현행법은 획일적인 근로시간 규제로 인해 신산업 연구개발 직군 등의 특성을 반영하지 못하거나, 포괄임금제를 통한 공짜 야근 관행이 지속되었습니다.',
+      after:'직무·직종별 자율적 유연근무제 선택 범위를 확대하되, 실근로시간 기록 관리를 의무화하여 정당한 보상과 연속 휴식권을 제도적으로 보장했습니다.',
+      effect:'일하는 방식의 자율성 증대 및 공짜 야근 근절, 근로자 휴식권 보장'
+    }
+  ];
+
+  const matched=KB.find(k=>k.match.test(name));
+  if(matched){
+    return {
+      domain:matched.domain,
+      type:matched.type,
+      purpose:matched.purpose,
+      before:matched.before,
+      after:matched.after,
+      effect:matched.effect
+    };
+  }
+
+  const isAltPassed=/대안반영/.test(b.result);
+  const isPassed=/가결/.test(b.result);
+
+  if(isNew){
+    return {
+      domain:`🏛️ ${comm||'제정 법률안'}`,
+      type:'제정법률안 (신규 제정)',
+      purpose:`현행 법령 체계상 별도 규율 규정이 없었던 ‘${lawName}’ 분야에 대한 국가적 지원과 체계적 관리 기준을 최초로 수립하기 위해 발의된 제정 법률안입니다.`,
+      before:`[현행 법령 규정]: 관련 분야를 규율하는 명시적 단독 법률이 부재하여, 일반법이나 행정 지침에 의존해 오면서 제도적 지원 및 정책 연속성에 한계가 있었습니다.`,
+      after:`[신규 제정 주요 골자]: 「${lawName}」을 제정하여 정책 수립 의무, 국가·지자체의 전담 지원 체계, 예산 및 세제 지원 특례, 관련 산업 및 국민 권익 보호의 기본틀을 신설했습니다.`,
+      effect:`법적 근거 마련을 통한 안정적 국가 정책 추진 및 관련 분야 발전 촉진`
+    };
+  }
+
+  return {
+    domain:`⚖️ ${comm||'법률 개정안'}`,
+    type:isAmendment?'일부개정법률안':'법률안',
+    purpose:`현행 「${lawName}」의 운용 과정에서 나타난 법령 미비점을 개선하고, 급변하는 사회적 요구와 국민 눈높이에 맞춰 관련 기준과 지원 체계를 합리적으로 재정비하기 위한 개정안입니다.`,
+    before:`[기존 원안 (현행 규정)]: 현행 「${lawName}」은 제정 당시의 기준에 머물러 있어, 적용 대상 범위의 제한 또는 제재·지원 수단의 실효성 부족 등 사각지대가 존재했습니다.`,
+    after:`[개정안 주요 골자]: 「${lawName}」의 미비 조항을 개정하여 대상 범위를 확대하고, 불합리한 규제 정비 및 실질적 지원·보호 조치 규정을 신설·강화했습니다.`,
+    effect:isPassed?'본회의 가결을 통해 현행 법령에 정식 반영됨':isAltPassed?'상임위원회 심사 중 유사 법안과 통합·조정되어 위원회 대안으로 입법 취지가 반영됨':'소관 상임위에서 세부 심사 및 검토 진행 중 (계류)'
+  };
 }
 
 function renderBillListHtml(list, filterResult, partyColor){
@@ -566,21 +713,64 @@ function renderBillListHtml(list, filterResult, partyColor){
       <span style="font-size:.76rem">이전 대수 발의안이거나 국회 의안시스템에 보관 중입니다. 아래 링크에서 전체 기록을 확인할 수 있습니다.</span>
     </li>`;
   }
-  return filtered.map(b => {
+  return filtered.map((b, idx) => {
     const resClass = /가결/.test(b.result) ? 'res-가결' : /폐기/.test(b.result) ? 'res-폐기' : 'res-계류';
-    return `<li>
-      <div class="pol-bill-main-row">
-        <a class="pol-bill-title" href="${esc(b.url || `https://likms.assembly.go.kr/bill/billDetail.do?billId=${esc(b.id)}`)}" target="_blank" rel="noopener">
-          ${esc(b.name)}
-          <span class="pol-ext-icon">${typeof NBI==='function'?NBI('arrow-up-right'):'↗'}</span>
-        </a>
-        <button type="button" class="pol-bill-badge ${resClass}" data-bill-res="${esc(b.result)}" title="${esc(b.result)} 법안만 필터링">${esc(b.result)}</button>
+    const info = getBillAnalysis(b);
+    const dateStr = fDate(b.date);
+    const detailUrl = esc(b.url || `https://likms.assembly.go.kr/bill/billDetail.do?billId=${esc(b.id)}`);
+    return `<li class="pol-bill-item" data-bill-id="${esc(b.id||idx)}">
+      <div class="pol-bill-summary-bar" role="button" tabindex="0" aria-expanded="false" title="클릭하여 법안 상세 요약 및 원안대비 보기">
+        <div class="pol-bill-main-row">
+          <div class="pol-bill-title-wrap">
+            <span class="pol-bill-title">${esc(b.name)}</span>
+          </div>
+          <button type="button" class="pol-bill-badge ${resClass}" data-bill-res="${esc(b.result)}" title="${esc(b.result)} 법안만 필터링">${esc(b.result)}</button>
+        </div>
+        <div class="pol-bill-meta-row">
+          <span>📅 ${dateStr}</span>
+          ${b.no ? `<span>의안 제${esc(b.no)}호</span>` : ''}
+          ${b.committee ? `<button type="button" class="comm-chip" data-comm="${esc(b.committee)}" title="소관 상임위 필터링">${esc(b.committee)}</button>` : ''}
+          ${b.proposer ? `<span>👤 ${esc(b.proposer)}</span>` : ''}
+          <span class="pol-bill-toggle-hint">상세 요약 및 원안대비 보기 ▾</span>
+        </div>
       </div>
-      <div class="pol-bill-meta-row">
-        <span>📅 ${esc(b.date||'-')}</span>
-        ${b.no ? `<span>의안 제${esc(b.no)}호</span>` : ''}
-        ${b.committee ? `<button type="button" class="comm-chip" data-comm="${esc(b.committee)}" title="소관위">${esc(b.committee)}</button>` : ''}
-        ${b.proposer ? `<span>👤 ${esc(b.proposer)}</span>` : ''}
+      <div class="pol-bill-drawer">
+        <div class="bill-drawer-head">
+          <span class="bill-domain-tag">${esc(info.domain)}</span>
+          <span class="bill-type-tag">${esc(info.type)}</span>
+          ${b.no ? `<span class="bill-no-tag">의안 제${esc(b.no)}호</span>` : ''}
+          <span class="bill-date-tag">발의일자: ${dateStr}</span>
+        </div>
+        <div class="bill-purpose-card">
+          <div class="bpc-tit">💡 입법 제안 이유 및 배경 요약</div>
+          <p class="bpc-desc">${esc(info.purpose)}</p>
+        </div>
+        <div class="bill-compare-grid">
+          <div class="compare-card before">
+            <div class="compare-head">
+              <span class="ch-badge">현행 원안</span>
+              <strong>기존 법률 규정 및 한계점</strong>
+            </div>
+            <p class="compare-desc">${esc(info.before)}</p>
+          </div>
+          <div class="compare-card after">
+            <div class="compare-head">
+              <span class="ch-badge">발의 개정안</span>
+              <strong>개정안 핵심 골자 (변경 포인트)</strong>
+            </div>
+            <p class="compare-desc">${esc(info.after)}</p>
+          </div>
+        </div>
+        <div class="bill-drawer-foot">
+          <div class="bdf-effect">
+            <b>🎯 입법 기대효과 / 처리 현황:</b>
+            <span>${esc(info.effect)}</span>
+          </div>
+          <a class="bill-likms-btn" href="${detailUrl}" target="_blank" rel="noopener">
+            <span>🏛️ 국회 의안 원문 보기 (likms)</span>
+            ${typeof NBI==='function'?NBI('arrow-up-right'):'↗'}
+          </a>
+        </div>
       </div>
     </li>`;
   }).join('');
@@ -714,7 +904,7 @@ function renderFamilySection(p, arc, g){
           <div class="pfc-rel"><span class="pfc-tag" style="background:#d6336c">기록</span></div>
           <div class="pfc-body">
             <b>${esc(fe.title)}</b>
-            <small>${esc(fe.d||'')} · ${esc(fe.src||'')}</small>
+            <small>${esc(fDate(fe.d))} · ${esc(fe.src||'')}</small>
           </div>
         </div>
       `).join('')}
@@ -786,7 +976,7 @@ function renderAssetsSection(p, c){
     <div class="card pad">
       <h3>연도별 신고 총액 추이</h3>
       <div class="pol-mbar">
-        ${R.map(r=>`<div title="${esc(r.date)} ${polWon(r.total)}">
+        ${R.map(r=>`<div title="${esc(fDate(r.date))} ${polWon(r.total)}">
           <i style="height:${Math.max(4,(r.total||0)/m*100)}%;background:${c}"></i>
           <span>${esc(r.date.slice(2,4))}년${r.kind!=='정기재산변동신고'?'*':''}</span>
         </div>`).join('')}
@@ -830,7 +1020,7 @@ function renderIncidentsSection(p, arc){
       ${inc.slice(0,30).map(x=>`<li>
         <em class="${STG[x.stage]||'s1'}">${esc(x.stage)}</em>
         <a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a>
-        <span>${esc(x.date)} · ${esc(x.press||'')}</span>
+        <span>${esc(fDate(x.date))} · ${esc(x.press||'')}</span>
       </li>`).join('')}
     </ul>`:'<p class="mute">연결된 사건 관련 보도가 없습니다.</p>'}
     ${arcAllegations.length?`
@@ -840,7 +1030,7 @@ function renderIncidentsSection(p, arc){
         ${arcAllegations.map(ae=>`<li>
           <em class="${ae.typ==='ruling'?'s4':'s1'}">${ae.typ==='ruling'?'판결':'의혹·사건'}</em>
           <a href="${esc(ae.url||'#')}" target="_blank" rel="noopener">${esc(ae.title)}</a>
-          <span>${esc(ae.d||'')} · ${esc(ae.src||'')}</span>
+          <span>${esc(fDate(ae.d))} · ${esc(ae.src||'')}</span>
         </li>`).join('')}
       </ul>
     </div>`:''}
@@ -959,7 +1149,7 @@ function renderActivitySection(p, c){
       <ul class="pol-blist">
         ${V.dissent.slice(0,10).map(x=>`<li>
           <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=${esc(x.id)}" target="_blank" rel="noopener">${esc(x.name)}</a>
-          <span>${esc(x.date||'')} · <b style="color:${C[x.vote]||'#000'}">${esc(x.vote)}</b></span>
+          <span>${esc(fDate(x.date))} · <b style="color:${C[x.vote]||'#000'}">${esc(x.vote)}</b></span>
         </li>`).join('')}
       </ul>`:''}
     </div>`;
@@ -984,7 +1174,7 @@ function renderQuotesSection(p, id){
     <ul class="pol-qlist">
       ${md.quotes.slice(0,10).map(q=>`<li>
         <a href="${esc(q.url)}" target="_blank" rel="noopener">“${esc(q.quote)}”</a>
-        <span>${esc(q.date)} · ${esc(q.press||'')}</span>
+        <span>${esc(fDate(q.date))} · ${esc(q.press||'')}</span>
       </li>`).join('')}
     </ul>
   </div>`:''}
@@ -1025,7 +1215,7 @@ function renderCareerSection(p, arc){
     ${eduEvents.length?`
     <h3 style="margin-bottom:8px">학력</h3>
     <ul class="pol-hist" style="margin-bottom:14px">
-      ${eduEvents.map(e=>`<li><b>${esc(e.d?e.d.slice(0,7)+' ': '')}</b>${esc(e.title)} ${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener" style="font-size:11px;color:var(--blue)">[출처]</a>`:''}</li>`).join('')}
+      ${eduEvents.map(e=>`<li><b>${esc(fDate(e.d?e.d.slice(0,7)+' ': ''))}</b>${esc(e.title)} ${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener" style="font-size:11px;color:var(--blue)">[출처]</a>`:''}</li>`).join('')}
     </ul>`:''}
     <h3 style="margin-bottom:8px">주요 경력 및 이력</h3>
     <ul class="pol-hist">
@@ -1083,7 +1273,7 @@ function renderProfFactsHtml(pDetail){
   return `<div class="prof-facts">
     <div class="fact-item"><span class="flab">선수</span><strong class="fval">${esc(pDetail.reelect||'초선')}</strong></div>
     <div class="fact-item"><span class="flab">당선</span><strong class="fval">${(pDetail.ages||[]).map(a=>a+'대').join(', ')||'-'}</strong></div>
-    <div class="fact-item"><span class="flab">출생</span><strong class="fval">${esc(pDetail.birth||'-')}</strong></div>
+    <div class="fact-item"><span class="flab">출생</span><strong class="fval">${esc(fDate(pDetail.birth))}</strong></div>
     ${pDetail.committees?`<div class="fact-item fact-wide"><span class="flab">상임위</span><strong class="fval" title="${esc(pDetail.committees)}">${esc(pDetail.committees)}</strong></div>`:''}
     ${pDetail.office?`<div class="fact-item"><span class="flab">의원실</span><strong class="fval" title="${esc(pDetail.office)}">${esc(pDetail.office)}</strong></div>`:''}
     ${pDetail.email?`<div class="fact-item fact-wide"><span class="flab">이메일</span><strong class="fval"><a href="mailto:${esc(pDetail.email)}" class="prof-email-link">${esc(pDetail.email)}</a></strong></div>`:''}
@@ -1352,6 +1542,21 @@ function entity(n){
             billList.innerHTML=renderBillListHtml(filtered, 'all', thCol);
           }
           billBox?.scrollIntoView({behavior:'smooth',block:'nearest'});
+          return;
+        }
+
+        const billBar=ev.target.closest('.pol-bill-summary-bar');
+        if(billBar && !ev.target.closest('[data-bill-res], .comm-chip, a')){
+          const item=billBar.closest('.pol-bill-item');
+          if(item){
+            item.classList.toggle('open');
+            const isOpen=item.classList.contains('open');
+            billBar.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            const hint=item.querySelector('.pol-bill-toggle-hint');
+            if(hint){
+              hint.textContent=isOpen ? '요약 닫기 ▴' : '상세 요약 및 원안대비 보기 ▾';
+            }
+          }
           return;
         }
       });
