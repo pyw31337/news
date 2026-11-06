@@ -324,6 +324,8 @@ function today(){
   const I=D.issues.filter(vis);if(!I.length){app.innerHTML='<div class="note">설정에서 모든 카테고리를 껐어요. <a href="settings">설정</a></div>';return}
   const L=I[0],mx=Math.max(...I.map(i=>i.score));
   /* 썸네일(사진)이 있는 이슈만 최상단 카드 덱과 사이드 목록에 노출 */
+  const hasPic = i => Boolean(i && ((i.image && i.image.trim()) || (i.gallery && i.gallery.some(g => g && g.img && g.img.trim()))));
+  const heroI = (I.filter(hasPic).length ? I.filter(hasPic) : I).slice(0, 10);
   const side=heroI.map(i=>`<div class="srow" data-id="${i.id}"><div><a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image||(i.gallery&&i.gallery[0]&&i.gallery[0].img))}<div class="tx"><span class="cat ${i.category}">${ic(i.category)}${i.category}</span><h3>${esc(i.title)}</h3><div class="m">${ic('news')}${esc(i.press)} 외 ${i.presses-1}곳 ${i.opinion?`· ${ic('chat')}${i.opinion.total.toLocaleString()}`:''}</div></div></a></div></div>`).join('');
   const cats={};I.forEach(i=>cats[i.category]=(cats[i.category]||0)+1);
   /* TOP 10·화제·검색어·단어는 '만지는 뉴스' 모듈(assets/touch.js, v2 실험실에서 확정)로 그림 */
@@ -1016,6 +1018,18 @@ async function loadFullPersonData(name, polId){
   return { id: polId, pol: polDetail, arc: arcDetail, graph: graphDetail };
 }
 
+function renderProfFactsHtml(pDetail){
+  if(!pDetail) return '';
+  return `<div class="prof-facts">
+    <div class="fact-item"><span class="flab">선수</span><strong class="fval">${esc(pDetail.reelect||'초선')}</strong></div>
+    <div class="fact-item"><span class="flab">당선</span><strong class="fval">${(pDetail.ages||[]).map(a=>a+'대').join(', ')||'-'}</strong></div>
+    <div class="fact-item"><span class="flab">출생</span><strong class="fval">${esc(pDetail.birth||'-')}</strong></div>
+    ${pDetail.committees?`<div class="fact-item fact-wide"><span class="flab">상임위</span><strong class="fval" title="${esc(pDetail.committees)}">${esc(pDetail.committees)}</strong></div>`:''}
+    ${pDetail.office?`<div class="fact-item"><span class="flab">의원실</span><strong class="fval" title="${esc(pDetail.office)}">${esc(pDetail.office)}</strong></div>`:''}
+    ${pDetail.email?`<div class="fact-item fact-wide"><span class="flab">이메일</span><strong class="fval"><a href="mailto:${esc(pDetail.email)}" class="prof-email-link">${esc(pDetail.email)}</a></strong></div>`:''}
+  </div>`;
+}
+
 /* ---------- 인물 상세 ---------- */
 function entity(n){
   const e=ent(n);if(!e)return people();
@@ -1045,25 +1059,35 @@ function entity(n){
 
   const polSealHtml=pol?`<span class="av-seal" title="${esc(pol.party)}">${partyMark(pol.party,18,'white-icon')}</span>`:'';
 
-  const polLinkHtml=pol?`<div class="pol-link" style="margin-top:12px"><a class="pol-act-btn" href="#sec-activity" onclick="event.preventDefault();document.querySelector('#sec-activity')?.scrollIntoView({behavior:'smooth'})"><span style="font-size:14px">🏛️</span><span>의정 활동·법안·재산 대시보드 바로보기</span>${NBI('arrow-down')}</a></div>`:rep?`<div class="rep-link" style="margin-top:12px"><a class="chip" href="${rh(rep.id)}" style="display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:var(--blue);font-weight:700;padding:6px 14px;border-radius:99px;font-size:12px">${ic('press')} 기자 데스크 프로필 보기 ${NBI('arrow-right')}</a></div>`:'';
+  const polLinkHtml=pol?`<div class="pol-link" style="margin-top:10px"><a class="pol-act-btn" href="#sec-activity" onclick="event.preventDefault();document.querySelector('#sec-activity')?.scrollIntoView({behavior:'smooth'})"><span style="font-size:14px">🏛️</span><span>의정 활동·법안·재산 대시보드 바로보기</span>${NBI('arrow-down')}</a></div>`:rep?`<div class="rep-link" style="margin-top:10px"><a class="chip" href="${rh(rep.id)}" style="display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:var(--blue);font-weight:700;padding:6px 14px;border-radius:99px;font-size:12px">${ic('press')} 기자 데스크 프로필 보기 ${NBI('arrow-right')}</a></div>`:'';
+
+  const asideContent = `
+    ${iss.length?sec('오늘 관련 이슈','Today','','fire')+`<div class="side">${iss.map(i=>`<a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><h3>${esc(i.title)}</h3></div></a>`).join('')}</div>`:''}
+    ${e.related.length?sec('함께 언급된 인물','Related','','graph')+`<div class="chips">${e.related.map(r=>chipE(r.name)).join('')}</div>`:''}
+    ${e.history.length>1?sec('NewsBoard 누적 화제도','Daily score','','chart')+`<div class="card" style="padding:14px">${line(e.history.map(x=>x[1]),300,60,pTheme?pTheme.color:'#2f6bff')}</div>`:'<div class="note">매시간 수집이 누적되면 일자별 화제도 그래프가 이곳에 쌓입니다.</div>'}
+  `;
 
   app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a>${shareBtn()}</div>
   <section class="ehero card ${pTheme?'ehero-party':''}" style="${pcVars}${bg(wi&&wi.image||em.url||e.wiki?.thumb)}"><div class="in">${makeHeroMetaRow(e,pol)}${em.wide?`<img class="ewide" src="${esc(em.wide)}" alt="${esc(e.name)} 로고">`:''}<h1>${esc(e.name)}</h1>
    <p class="big">${wi?`지금 화제인 이유 — ${esc(wi.title)}`:esc(tl[0]?.title||desc)}</p>${wi?`<a class="go" href="issue/${wi.id}">이슈 자세히 보기 ${NBI('arrow-right')}</a>`:''}</div></section>
-  <div class="two"><div>
-   <section class="card prof ${pTheme?'prof-party':''}" style="${pcVars}"><div class="row"><div style="position:relative;flex:none">${av(e)}${polSealHtml}</div><div>${polProfilePill}<h1>${esc(e.name)}</h1><p class="prof-desc">${esc(desc)}</p>${polLinkHtml}</div></div>
-    ${e.wiki?.extract?`<p>${esc(e.wiki.extract)} ${e.wiki.url?`<a href="${esc(e.wiki.url)}" target="_blank" style="color:${pTheme?pTheme.color:'var(--blue)'}">위키백과 ${NBI('arrow-up-right')}</a>`:''}</p>`:''}
-    <div class="kpis"><div><b style="${pTheme?`color:${pTheme.color}`:''}">${e.score}</b><span>오늘 화제도</span></div><div><b>${tl.length}</b><span>수집된 기록</span></div><div><b>${first?new Date(first).getFullYear():'-'}</b><span>가장 오래된 기록</span></div></div></section>
+  <div class="entity-overview-grid">
+   <section class="card prof ${pTheme?'prof-party':''}" style="${pcVars}">
+    <div class="row"><div style="position:relative;flex:none">${av(e)}${polSealHtml}</div><div>${polProfilePill}<h1>${esc(e.name)}</h1><p class="prof-desc">${esc(desc)}</p>${polLinkHtml}</div></div>
+    <div class="prof-facts-area">${renderProfFactsHtml(pol)}</div>
+    ${e.wiki?.extract?`<p class="prof-wiki">${esc(e.wiki.extract)} ${e.wiki.url?`<a href="${esc(e.wiki.url)}" target="_blank" rel="noopener" style="color:${pTheme?pTheme.color:'var(--blue)'};font-weight:700">위키백과 ${NBI('arrow-up-right')}</a>`:''}</p>`:''}
+    <div class="kpis"><div><b style="${pTheme?`color:${pTheme.color}`:''}">${e.score}</b><span>오늘 화제도</span></div><div><b>${tl.length}</b><span>수집된 기록</span></div><div><b>${first?new Date(first).getFullYear():'-'}</b><span>가장 오래된 기록</span></div></div>
+   </section>
+   <aside class="entity-aside">
+    ${asideContent}
+   </aside>
+  </div>
+  <div class="entity-full-dash">
    <div id="pol-dashboard-container"><div style="text-align:center;padding:16px;color:var(--mute);font-size:.84rem">인물 상세 데이터베이스(활동·재산·가족·언행·사건)를 불러오는 중…</div></div>
    <div class="sec" id="sec-newstl"><h2><small>News Timeline</small>시대별 보도량 및 뉴스 타임라인</h2></div>
    <div class="card" style="padding:10px 14px" id="era"></div>
    <div style="margin-top:12px">${sec(esc(e.name)+' 뉴스 타임라인','Timeline','<div class="zoom" id="tz"><button data-z="hour">시간</button><button data-z="day" class="on">일</button><button data-z="month">월</button><button data-z="year">시대</button></div>','clock')}</div>
    <div class="vt" id="etl"></div>
-  </div><aside>
-   ${iss.length?sec('오늘 관련 이슈','Today','','fire')+`<div class="side">${iss.map(i=>`<a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><h3>${esc(i.title)}</h3></div></a>`).join('')}</div>`:''}
-   ${e.related.length?sec('함께 언급된','Related','','graph')+`<div class="chips">${e.related.map(r=>chipE(r.name)).join('')}</div>`:''}
-   ${e.history.length>1?sec('NewsBoard 누적 화제도','Daily score','','chart')+`<div class="card" style="padding:12px">${line(e.history.map(x=>x[1]),300,60,pTheme?pTheme.color:'#2f6bff')}</div>`:'<div class="note">매시간 수집이 누적되면 일자별 화제도 그래프가 이곳에 쌓입니다.</div>'}
-  </aside></div>`;
+  </div>`;
 
   let curEz='month';
   const drawE=z=>{curEz=z;$('#era').innerHTML=eraChart(tl,z,pTheme?pTheme.color:null);const x=$('#era .era');if(x)x.scrollLeft=1e5};drawE('month');
@@ -1125,31 +1149,23 @@ function entity(n){
           elDesc.innerHTML=`<b style="color:var(--pc);font-weight:800;">${esc(p.party||'')}</b> ${esc(p.district?p.district+' · ':'')}대한민국 제${(p.ages||[]).slice(-1)[0]||22}대 국회의원`;
         }
         if(pDetail){
-          let elFacts=elProf.querySelector('.facts');
+          let elFacts=elProf.querySelector('.prof-facts-area');
           if(!elFacts){
             elFacts=document.createElement('div');
-            elFacts.className='facts';
-            elFacts.style.marginTop='10px';
-            textWrap?.appendChild(elFacts);
+            elFacts.className='prof-facts-area';
+            elProf.querySelector('.row')?.after(elFacts);
           }
-          elFacts.innerHTML=`
-            <span><em>선수</em>${esc(pDetail.reelect||'초선')}</span>
-            <span><em>당선</em>${(pDetail.ages||[]).map(a=>a+'대').join(', ')||'-'}</span>
-            <span><em>출생</em>${esc(pDetail.birth||'-')}</span>
-            ${pDetail.committees?`<span class="w"><em>상임위</em>${esc(pDetail.committees)}</span>`:''}
-            ${pDetail.office?`<span><em>의원실</em>${esc(pDetail.office)}</span>`:''}
-            ${pDetail.email?`<span><em>이메일</em>${esc(pDetail.email)}</span>`:''}
-          `;
+          elFacts.innerHTML=renderProfFactsHtml(pDetail);
         }
         let elPolLink=elProf.querySelector('.pol-link');
         if(!elPolLink){
           elPolLink=document.createElement('div');
           elPolLink.className='pol-link';
-          elPolLink.style.marginTop='12px';
-          textWrap?.appendChild(elPolLink);
+          elPolLink.style.marginTop='10px';
+          elProf.querySelector('.row > div:last-child')?.appendChild(elPolLink);
         }
         elPolLink.innerHTML=`<a class="pol-act-btn" href="#sec-activity" onclick="event.preventDefault();document.querySelector('#sec-activity')?.scrollIntoView({behavior:'smooth'})"><span style="font-size:14px">🏛️</span><span>의정 활동·법안·재산 대시보드 바로보기</span>${NBI('arrow-down')}</a>
-        ${res?.id?`<a href="politicians/?id=${esc(res.id)}" target="_blank" style="font-size:12px;color:var(--mute);margin-left:10px;text-decoration:underline">정치인 DB 원본 ↗</a>`:''}`;
+        ${res?.id?`<a href="politicians/?id=${esc(res.id)}" target="_blank" class="pol-src-link">정치인 DB 원본 ↗</a>`:''}`;
         elProf.querySelectorAll('.kpis div b')[0]&&(elProf.querySelectorAll('.kpis div b')[0].style.color=th.color);
         $('#era')&&($('#era').innerHTML=eraChart(tl,'month',th.color));
       }

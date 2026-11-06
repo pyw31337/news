@@ -26,9 +26,16 @@ select.ds-native{position:absolute!important;opacity:0!important;pointer-events:
 .ds-stepper button{width:38px;height:32px;border:0;border-radius:9px;background:#fff;font:800 .875rem var(--ds-sans,inherit);color:var(--x-ink);cursor:pointer;box-shadow:0 1px 2px rgba(15,22,48,.08)}.ds-stepper sup{font-size:.6em;margin-left:1px}
 .ds-stepper em{font-style:normal;font-weight:800;font-size:.8125rem;min-width:52px;text-align:center;font-variant-numeric:tabular-nums}
 /* ---------- 티커: 카테고리 셀렉터 ---------- */
-.ticker .lab.tksel{border:0;color:#fff;cursor:pointer;gap:5px;font:800 .75rem var(--ds-sans,inherit);padding:0 10px 0 12px;transition:filter .15s}
-.ticker .lab.tksel:hover{filter:brightness(1.08)}.ticker .lab.tksel .ico{width:15px;height:15px;stroke:#fff;color:#fff}
-.ticker .lab.tksel .ico:last-child{width:13px;height:13px;opacity:.85;transition:transform .2s}.ticker .lab.tksel[aria-expanded=true] .ico:last-child{transform:rotate(180deg)}
+.ticker .lab.tksel{border:0;color:#fff;cursor:pointer;gap:6px;font:800 .75rem var(--ds-sans,inherit);padding:0 12px;transition:filter .15s;display:inline-flex;align-items:center;height:100%}
+.ticker .lab.tksel:hover{filter:brightness(1.08)}
+.ticker .lab.tksel .flame-fx{display:inline-flex;align-items:center;justify-content:center;margin-right:2px;overflow:visible}
+.ticker .lab.tksel .flame-fx .flame-live,
+.ticker .lab .flame-fx .flame-live{color:#ffffff !important;fill:#ffffff !important;stroke:#ffffff !important;width:16px !important;height:16px !important;filter:drop-shadow(0 0 3px rgba(255,255,255,0.95)) drop-shadow(0 0 6px #ffe600) drop-shadow(0 1px 2px rgba(0,0,0,0.5)) !important}
+.ticker .lab.tksel .flame-sparks span,
+.ticker .lab .flame-sparks span{background:#fff9d6 !important;box-shadow:0 0 4px #ffffff,0 0 6px #ffd700 !important}
+.ticker .lab.tksel .ico{width:15px;height:15px;stroke:#fff;color:#fff}
+.ticker .lab.tksel .ico:last-child{width:13px;height:13px;opacity:.9;transition:transform .2s;margin-left:1px}
+.ticker .lab.tksel[aria-expanded=true] .ico:last-child{transform:rotate(180deg)}
 .ticker .tw a small{display:none}
 .ticker .tkd{display:inline-flex;margin-left:2px}.ticker .tkd .ico{width:12px;height:12px}.ticker .tkd.up{color:#ff6b55}.ticker .tkd.dn{color:#6a9bff}
 .ds-pop.tkpop{border-radius:16px}
