@@ -1304,22 +1304,46 @@ function renderIncidentsSection(p, arc){
   const arcAllegations=(arc?.events||[]).filter(e=>e.typ==='allegation'||e.typ==='ruling');
   if(!inc.length&&!arcAllegations.length)return'';
 
+  const counts = {
+    '전체': inc.length,
+    '의혹': inc.filter(x=>x.stage==='의혹').length,
+    '수사': inc.filter(x=>x.stage==='수사').length,
+    '기소·재판': inc.filter(x=>x.stage==='기소·재판'||x.stage==='기소').length,
+    '판결': inc.filter(x=>x.stage==='판결').length
+  };
+
   return `<div class="sec" id="sec-incidents">
-    <h2><small>Incidents & Scandals</small>사건·사고 및 법적 쟁점 관련 보도</h2>
+    <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px">
+      <h2 style="display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px">
+        <small style="display:block;width:100%">Incidents & Scandals</small>
+        <span>사건·사고 및 법적 쟁점 관련 보도</span>
+        <span class="pol-info-tip-wrap">
+          <button type="button" class="pol-info-btn" id="pol-inc-info-btn" aria-label="사건 분류 안내" title="분류 기준 안내">i</button>
+          <span class="pol-info-popover" role="tooltip">
+            <b>💡 사건·사고 보도 분류 안내</b>
+            기사 제목과 공공 데이터베이스 단어로 <b>자동 분류</b>한 목록입니다. ‘의혹·수사·기소’ 단계는 확정된 사실이 아니며 사법적 유무죄와 무관합니다. 객관적 사실 확인을 위해 반드시 원문 기사를 확인해 주세요.
+          </span>
+        </span>
+      </h2>
+    </div>
   </div>
   <div class="card pad pol-inc">
-    <p class="pol-warn">기사 제목과 공공 데이터베이스 단어로 <b>자동 분류</b>한 목록입니다. ‘의혹·수사·기소’ 단계는 확정된 사실이 아니며 사법적 유무죄와 무관합니다. 객관적 사실 확인을 위해 반드시 원문 기사를 확인해 주세요.</p>
-    <div class="pol-stg">
-      ${Object.keys(STG).map(s=>`<span class="${STG[s]}">${s} <b>${inc.filter(x=>x.stage===s).length}</b></span>`).join('')}
+    <div class="pol-seg-tabs" id="pol-inc-seg-tabs" role="tablist" aria-label="사건 단계별 필터">
+      <button type="button" class="pol-seg-btn on" data-stage="all">전체 <b class="seg-cnt">${counts['전체']}</b></button>
+      <button type="button" class="pol-seg-btn s1" data-stage="의혹">의혹 <b class="seg-cnt">${counts['의혹']}</b></button>
+      <button type="button" class="pol-seg-btn s2" data-stage="수사">수사 <b class="seg-cnt">${counts['수사']}</b></button>
+      <button type="button" class="pol-seg-btn s3" data-stage="기소·재판">기소·재판 <b class="seg-cnt">${counts['기소·재판']}</b></button>
+      <button type="button" class="pol-seg-btn s4" data-stage="판결">판결 <b class="seg-cnt">${counts['판결']}</b></button>
     </div>
     ${inc.length?`
-    <ul class="pol-ilist">
-      ${inc.slice(0,30).map(x=>`<li>
+    <ul class="pol-ilist" id="pol-inc-list">
+      ${inc.slice(0,30).map(x=>`<li data-stage="${esc(x.stage==='기소'?'기소·재판':x.stage)}">
         <em class="${STG[x.stage]||'s1'}">${esc(x.stage)}</em>
         <a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a>
         <span>${plogo(x.press, x.url, 'q-press-emb')}${esc(fDate(x.date))} · ${esc(x.press||'')}</span>
       </li>`).join('')}
-    </ul>`:'<p class="mute">연결된 사건 관련 보도가 없습니다.</p>'}
+    </ul>
+    <p id="pol-inc-empty" class="mute" style="display:none;padding:12px 0;text-align:center">선택하신 단계로 분류된 보도가 없습니다.</p>`:'<p class="mute">연결된 사건 관련 보도가 없습니다.</p>'}
     ${arcAllegations.length?`
     <div style="margin-top:16px;border-top:1px solid var(--line);padding-top:12px">
       <h4 style="font-size:.86rem;margin-bottom:8px;color:var(--ink)">아카이브 기록된 주요 사법·논란 단계</h4>
@@ -1593,6 +1617,158 @@ function renderQuotesSection(p, id){
   </div>`:''}`;
 }
 
+function getOrgSymbolHtml(text, size=28){
+  if(!text)return'';
+  const str=String(text);
+
+  // 1. Political Parties
+  if(/국민의힘|새누리|한나라|자유한국|미래통합|국민의미래/.test(str)){
+    return`<span class="c-symbol p-ppp" title="국민의힘">${partyMark('국민의힘',size)}</span>`;
+  }
+  if(/더불어민주|민주당|새정치국민회의|열린우리|평화민주/.test(str)){
+    return`<span class="c-symbol p-dp" title="더불어민주당">${partyMark('더불어민주당',size)}</span>`;
+  }
+  if(/조국혁신/.test(str)){
+    return`<span class="c-symbol p-jgp" title="조국혁신당">${partyMark('조국혁신당',size)}</span>`;
+  }
+  if(/개혁신당/.test(str)){
+    return`<span class="c-symbol p-nrp" title="개혁신당">${partyMark('개혁신당',size)}</span>`;
+  }
+  if(/진보당/.test(str)){
+    return`<span class="c-symbol p-jbp" title="진보당">${partyMark('진보당',size)}</span>`;
+  }
+  if(/기본소득/.test(str)){
+    return`<span class="c-symbol p-bip" title="기본소득당">${partyMark('기본소득당',size)}</span>`;
+  }
+  if(/사회민주/.test(str)){
+    return`<span class="c-symbol p-sdp" title="사회민주당">${partyMark('사회민주당',size)}</span>`;
+  }
+
+  // 2. 대한민국 국회
+  if(/국회|국회의원|의원실|운영위원회|상임위|과학기술정보|비례대표|예결위|외통위|법사위|과방위/.test(str)){
+    return`<span class="c-symbol c-na" title="대한민국 국회">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#1b2a4a" stroke="#d4af37" stroke-width="1.2"/>
+        <circle cx="12" cy="12" r="8.8" fill="none" stroke="#e2b842" stroke-width="0.8" stroke-dasharray="1.5 1"/>
+        <text x="12" y="15.2" text-anchor="middle" font-size="7.5" font-weight="900" fill="#ffffff" font-family="'Pretendard Variable',sans-serif">국회</text>
+      </svg>
+    </span>`;
+  }
+
+  // 3. 서울대학교
+  if(/서울대/.test(str)){
+    return`<span class="c-symbol c-snu" title="서울대학교">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#0f1f4b" stroke="#3b82f6" stroke-width="1"/>
+        <path d="M7 14.5c0-3.5 2-6.5 5-7.5 3 1 5 4 5 7.5" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M8.5 13.5l3.5-1.5 3.5 1.5M12 12v4.5" stroke="#93c5fd" stroke-width="1.2"/>
+        <text x="12" y="19" text-anchor="middle" font-size="5" font-weight="900" fill="#ffffff">SNU</text>
+      </svg>
+    </span>`;
+  }
+
+  // 4. 김정은국방종합대학 / 북한 국방대
+  if(/국방종합|김정은국방|김책공대|리과대|평양/.test(str)){
+    return`<span class="c-symbol c-ndu" title="국방종합대학">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#1e293b" stroke="#f59e0b" stroke-width="1"/>
+        <path d="M12 4.5l2 4 4.5.6-3.2 3.2.8 4.5-4.1-2.2-4.1 2.2.8-4.5-3.2-3.2 4.5-.6z" fill="#f59e0b"/>
+        <text x="12" y="20" text-anchor="middle" font-size="4.2" font-weight="800" fill="#cbd5e1">국방대</text>
+      </svg>
+    </span>`;
+  }
+
+  // 5. 현대제철 / 현대
+  if(/현대제철|현대자동차|현대중공업|현대그룹|현대/.test(str)){
+    return`<span class="c-symbol c-hyundai" title="현대제철">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#002c5f" stroke="#0072ce" stroke-width="1"/>
+        <path d="M7 6.5h2.5v11H7zM14.5 6.5H17v11h-2.5zM8 11.5h8v2H8z" fill="#ffffff"/>
+        <text x="12" y="20.5" text-anchor="middle" font-size="4.2" font-weight="800" fill="#38bdf8">HYUNDAI</text>
+      </svg>
+    </span>`;
+  }
+
+  // 6. 카이스트
+  if(/카이스트|KAIST|한국과학기술원/.test(str)){
+    return`<span class="c-symbol c-kaist" title="KAIST">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#004191" stroke="#38bdf8" stroke-width="1"/>
+        <text x="12" y="14.8" text-anchor="middle" font-size="6.5" font-weight="900" fill="#ffffff" font-family="'Pretendard Variable',sans-serif">KAIST</text>
+      </svg>
+    </span>`;
+  }
+
+  // 7. 고려대
+  if(/고려대/.test(str)){
+    return`<span class="c-symbol c-ku" title="고려대학교">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#8a0026" stroke="#d4af37" stroke-width="1"/>
+        <circle cx="12" cy="12" r="8.5" fill="none" stroke="#fbbf24" stroke-width="0.8"/>
+        <text x="12" y="15" text-anchor="middle" font-size="7" font-weight="900" fill="#ffffff">KU</text>
+      </svg>
+    </span>`;
+  }
+
+  // 8. 연세대
+  if(/연세대/.test(str)){
+    return`<span class="c-symbol c-yonsei" title="연세대학교">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#003764" stroke="#60a5fa" stroke-width="1"/>
+        <circle cx="12" cy="12" r="8.5" fill="none" stroke="#93c5fd" stroke-width="0.8"/>
+        <text x="12" y="15" text-anchor="middle" font-size="6.5" font-weight="900" fill="#ffffff">YS</text>
+      </svg>
+    </span>`;
+  }
+
+  // 9. 연구소 / 연구원
+  if(/연구소|연구원|연구개발|연구센터|KIST|ETRI|ADD|재료공학/.test(str)){
+    return`<span class="c-symbol c-lab" title="연구기관">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#0e7490" stroke="#22d3ee" stroke-width="1"/>
+        <path d="M10 5v4l-3.5 6.5A1.5 1.5 0 0 0 7.8 18h8.4a1.5 1.5 0 0 0 1.3-2.5L14 9V5" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="12" cy="14" r="1.5" fill="#67e8f9"/>
+      </svg>
+    </span>`;
+  }
+
+  // 10. 일반 학력 (대학/학사/석사/박사)
+  if(/대학교|대학원|학사|석사|박사|수학|졸업|학교/.test(str)){
+    return`<span class="c-symbol c-edu" title="학력">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#1e293b" stroke="#94a3b8" stroke-width="1"/>
+        <path d="M12 6L4 10.5 12 15l8-4.5L12 6z" fill="#94a3b8"/>
+        <path d="M7 12.2v4.3c0 1.8 2.2 3.2 5 3.2s5-1.4 5-3.2v-4.3" stroke="#cbd5e1" stroke-width="1.2" fill="none"/>
+        <path d="M19 11v5" stroke="#f59e0b" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </span>`;
+  }
+
+  // 11. 일반 정부 / 공직
+  if(/대통령|정부|청와대|부처|장관|차관|처장|청장|지사|시장|구청장|검찰|법원|청/.test(str)){
+    return`<span class="c-symbol c-gov" title="정부·공직">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#0369a1" stroke="#7dd3fc" stroke-width="1"/>
+        <circle cx="12" cy="12" r="6" fill="#ef4444"/>
+        <path d="M6 12a6 6 0 0 1 12 0c0 3.3-2.7 6-6 6a6 6 0 0 1-6-6z" fill="#2563eb"/>
+      </svg>
+    </span>`;
+  }
+
+  // 기본 조직
+  return`<span class="c-symbol c-org" title="이력">
+    <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+      <rect x="2" y="2" width="20" height="20" rx="5" fill="#334155" stroke="#64748b" stroke-width="1"/>
+      <path d="M7 19V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v12" stroke="#ffffff" stroke-width="1.4"/>
+      <rect x="10" y="8" width="1.5" height="1.5" fill="#ffffff"/>
+      <rect x="13" y="8" width="1.5" height="1.5" fill="#ffffff"/>
+      <rect x="10" y="12" width="1.5" height="1.5" fill="#ffffff"/>
+      <rect x="13" y="12" width="1.5" height="1.5" fill="#ffffff"/>
+      <path d="M11 19v-3h2v3" fill="#94a3b8"/>
+    </svg>
+  </span>`;
+}
+
 function renderCareerSection(p, arc){
   const hist=p.history||[];
   const eduEvents=(arc?.events||[]).filter(e=>e.typ==='edu');
@@ -1604,13 +1780,48 @@ function renderCareerSection(p, arc){
   </div>
   <div class="card pad">
     ${eduEvents.length?`
-    <h3 style="margin-bottom:8px">학력</h3>
-    <ul class="pol-hist" style="margin-bottom:14px">
-      ${eduEvents.map(e=>`<li><b>${esc(fDate(e.d?e.d.slice(0,7)+' ': ''))}</b>${esc(e.title)} ${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener" style="font-size:11px;color:var(--blue)">[출처]</a>`:''}</li>`).join('')}
+    <h3 style="margin-bottom:10px;display:flex;align-items:center;gap:6px">
+      <span>학력</span>
+      <span class="pol-press-subtag">공식 기록</span>
+    </h3>
+    <ul class="pol-career-list pol-edu-list" style="margin-bottom:16px">
+      ${eduEvents.map(e=>{
+        const titleText=e.title||'';
+        const sym=getOrgSymbolHtml(titleText, 28);
+        const dateStr=fDate(e.d?e.d.slice(0,7):'');
+        return `<li class="pol-career-item">
+          <div class="pci-symbol">${sym}</div>
+          <div class="pci-body">
+            <div class="pci-title-row">
+              ${dateStr?`<time class="pci-date">${esc(dateStr)}</time>`:''}
+              <strong class="pci-title">${esc(titleText)}</strong>
+              ${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener" class="pci-src-btn">출처 ↗</a>`:''}
+            </div>
+          </div>
+        </li>`;
+      }).join('')}
     </ul>`:''}
-    <h3 style="margin-bottom:8px">주요 경력 및 이력</h3>
-    <ul class="pol-hist">
-      ${hist.map(h=>`<li>${esc(h)}</li>`).join('')}
+    <h3 style="margin-bottom:10px;display:flex;align-items:center;gap:6px">
+      <span>주요 경력 및 이력</span>
+      <span class="pol-press-subtag">활동 및 직책</span>
+    </h3>
+    <ul class="pol-career-list">
+      ${hist.map(h=>{
+        const sym=getOrgSymbolHtml(h, 28);
+        const isCur=/現\)|현재|현직/.test(h);
+        const isPast=/前\)|전직/.test(h);
+        const badgeText=isCur?'現':(isPast?'前':'');
+        const cleanText=h.replace(/^(現\)|前\)|現|前)\s*/,'');
+        return `<li class="pol-career-item ${isCur?'cur':''}">
+          <div class="pci-symbol">${sym}</div>
+          <div class="pci-body">
+            <div class="pci-title-row">
+              ${badgeText?`<span class="pci-badge ${isCur?'cur':'past'}">${badgeText}</span>`:''}
+              <strong class="pci-title">${esc(cleanText)}</strong>
+            </div>
+          </div>
+        </li>`;
+      }).join('')}
     </ul>
   </div>`;
 }
@@ -1991,6 +2202,41 @@ function entity(n){
             }
           }
           return;
+        }
+      });
+    }
+
+    // Incidents segment tab filtering
+    const incTabs = container.querySelectorAll('#pol-inc-seg-tabs .pol-seg-btn');
+    if(incTabs.length){
+      incTabs.forEach(btn => {
+        btn.onclick = () => {
+          incTabs.forEach(b => b.classList.remove('on'));
+          btn.classList.add('on');
+          const stage = btn.dataset.stage;
+          let visibleCount = 0;
+          container.querySelectorAll('#pol-inc-list li').forEach(li => {
+            const match = (stage === 'all' || li.dataset.stage === stage);
+            li.style.display = match ? '' : 'none';
+            if(match) visibleCount++;
+          });
+          const emptyMsg = container.querySelector('#pol-inc-empty');
+          if(emptyMsg) emptyMsg.style.display = (visibleCount === 0) ? 'block' : 'none';
+        };
+      });
+    }
+
+    // Incidents info popover toggle (for mobile touch interaction)
+    const incInfoBtn = container.querySelector('#pol-inc-info-btn');
+    if(incInfoBtn){
+      incInfoBtn.onclick = (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        incInfoBtn.closest('.pol-info-tip-wrap')?.classList.toggle('open');
+      };
+      document.addEventListener('click', (ev) => {
+        if(!ev.target.closest('.pol-info-tip-wrap')){
+          container.querySelector('.pol-info-tip-wrap.open')?.classList.remove('open');
         }
       });
     }

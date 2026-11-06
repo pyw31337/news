@@ -1358,17 +1358,37 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 .pol-terms .swb{flex-basis:100%;font-style:normal;font-size:.74rem;font-weight:800;color:#d66a00}
 .pol-terms .swb.rn{color:var(--mute)}
 
-.pol-warn{background:#fff6e5;border-radius:10px;padding:10px 12px;font-size:.8rem;color:#7a4a00;line-height:1.45;margin-bottom:10px}
-.pol-stg{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
-.pol-stg span{font-size:.76rem;font-weight:700;padding:4px 10px;border-radius:99px}
-.pol-stg .s1, .pol-ilist .s1{background:#eef1ff;color:#2f6bff}
-.pol-stg .s2, .pol-ilist .s2{background:#fff3e0;color:#d66a00}
-.pol-stg .s3, .pol-ilist .s3{background:#ffe9e5;color:#e5442b}
-.pol-stg .s4, .pol-ilist .s4{background:#efe9ff;color:#6a3dff}
+/* 사건·사고 안내 툴팁 & 세그먼트 탭 */
+.pol-info-tip-wrap{position:relative;display:inline-flex;align-items:center;vertical-align:middle;margin-left:6px}
+.pol-info-btn{width:18px;height:18px;border-radius:50%;border:1.5px solid #94a3b8;background:#fff;color:#64748b;font-family:serif;font-style:italic;font-weight:800;font-size:11px;line-height:1;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s ease;padding:0}
+.pol-info-btn:hover, .pol-info-tip-wrap.open .pol-info-btn{background:#0f172a;color:#fff;border-color:#0f172a;transform:scale(1.08)}
+.pol-info-popover{position:absolute;top:calc(100% + 8px);left:0;width:290px;padding:10px 12px;background:#1e293b;color:#f8fafc;font-size:.74rem;line-height:1.5;border-radius:10px;box-shadow:0 10px 25px -5px rgba(0,0,0,0.3);z-index:50;opacity:0;visibility:hidden;transition:all .18s ease;pointer-events:none}
+.pol-info-popover::before{content:'';position:absolute;top:-5px;left:9px;border-width:0 5px 5px 5px;border-style:solid;border-color:transparent transparent #1e293b transparent}
+.pol-info-popover b{display:block;color:#38bdf8;margin-bottom:3px;font-size:.76rem}
+.pol-info-tip-wrap:hover .pol-info-popover, .pol-info-tip-wrap:focus-within .pol-info-popover, .pol-info-tip-wrap.open .pol-info-popover{opacity:1;visibility:visible;pointer-events:auto}
+
+.pol-seg-tabs{display:inline-flex;background:#f1f5f9;padding:3px;border-radius:10px;gap:3px;margin-bottom:12px;flex-wrap:wrap}
+.pol-seg-btn{border:none;background:transparent;padding:5px 11px;border-radius:8px;font-size:.78rem;font-weight:700;color:#64748b;cursor:pointer;display:inline-flex;align-items:center;gap:4px;transition:all .15s ease}
+.pol-seg-btn:hover{color:#0f172a}
+.pol-seg-btn.on{background:#ffffff;color:#0f172a;font-weight:800;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
+.pol-seg-btn.on.s1{color:#2563eb}
+.pol-seg-btn.on.s2{color:#ea580c}
+.pol-seg-btn.on.s3{color:#dc2626}
+.pol-seg-btn.on.s4{color:#9333ea}
+.pol-seg-btn .seg-cnt{font-size:.7rem;font-weight:800;padding:1px 5px;border-radius:4px;background:#e2e8f0;color:#475569}
+.pol-seg-btn.on .seg-cnt{background:#0f172a;color:#fff}
+.pol-seg-btn.on.s1 .seg-cnt{background:#dbeafe;color:#1e40af}
+.pol-seg-btn.on.s2 .seg-cnt{background:#ffedd5;color:#9a3412}
+.pol-seg-btn.on.s3 .seg-cnt{background:#fee2e2;color:#991b1b}
+.pol-seg-btn.on.s4 .seg-cnt{background:#f3e8ff;color:#6b21a8}
 
 .pol-ilist{list-style:none;display:grid;gap:9px;padding:0;margin:8px 0 0}
 .pol-ilist li{font-size:.85rem}
 .pol-ilist em{font-style:normal;font-size:.68rem;font-weight:800;padding:2px 7px;border-radius:6px;margin-right:6px}
+.pol-ilist .s1{background:#eef1ff;color:#2f6bff}
+.pol-ilist .s2{background:#fff3e0;color:#d66a00}
+.pol-ilist .s3{background:#ffe9e5;color:#e5442b}
+.pol-ilist .s4{background:#efe9ff;color:#6a3dff}
 .pol-ilist a{font-weight:600;color:var(--ink);text-decoration:none}
 .pol-ilist a:hover{text-decoration:underline}
 .pol-ilist span{display:flex;align-items:center;gap:6px;font-size:.74rem;color:var(--mute);margin-top:2px}
@@ -1431,6 +1451,23 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 .pol-cloud .pol-word-chip{padding:3px 8px;border-radius:6px;background:#f1f5f9;display:inline-block}
 .pol-cloud .pol-word-chip:hover{background:var(--pc, #E61E2B);color:#ffffff !important;transform:scale(1.05)}
 
+/* 주요 학력 및 경력 카드 (조직 로고/심볼 썸네일 불릿) */
+.pol-career-list{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:8px}
+.pol-career-item{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;transition:all .15s ease}
+.pol-career-item:hover{background:#ffffff;border-color:#cbd5e1;box-shadow:0 2px 6px rgba(0,0,0,0.04);transform:translateX(2px)}
+.pol-career-item.cur{background:linear-gradient(135deg,#f0fdf4,#f8fafc);border-color:#bbf7d0}
+.pci-symbol{flex:none;width:32px;height:32px;display:grid;place-items:center;border-radius:8px;overflow:hidden}
+.c-symbol{display:inline-grid;place-items:center}
+.c-symbol svg{display:block;border-radius:6px}
+.pci-body{flex:1;min-width:0}
+.pci-title-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.pci-badge{flex:none;font-size:.68rem;font-weight:800;padding:1px 5px;border-radius:4px}
+.pci-badge.cur{background:#dcfce7;color:#15803d}
+.pci-badge.past{background:#f1f5f9;color:#64748b}
+.pci-date{flex:none;font-size:.74rem;font-weight:700;color:#475569;background:#e2e8f0;padding:1px 6px;border-radius:4px}
+.pci-title{font-size:.88rem;color:var(--ink);font-weight:600;line-height:1.4}
+.pci-src-btn{font-size:.7rem;font-weight:700;color:var(--blue);text-decoration:none;padding:1px 5px;border-radius:4px;background:#eff6ff;border:1px solid #dbeafe}
+.pci-src-btn:hover{text-decoration:underline}
 .pol-hist{list-style:none;display:grid;gap:6px;padding:0;margin:6px 0 0;font-size:.84rem;color:var(--ink2)}
 
 /* 가족 관계 카드 및 안내 */
