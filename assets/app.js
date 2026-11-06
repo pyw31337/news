@@ -168,7 +168,7 @@ function sec(t,sub,more='',icon=''){return`<div class="sec"><h2><small>${sub}</s
 const host=u=>{try{return new URL(u).hostname}catch(x){return''}};
 const plogo=(name,url,cls='pl')=>{const f=PL[name]||PL[host(url).replace(/^www\./,'')],bd=f&&(PL._b||{})[f];return f?`<img class="${cls}${bd?' b':''}" src="assets/press/${bd||f}" alt="" loading="lazy" width="14" height="14">`:`<i class="${cls} mono" style="--h:${[...String(name)].reduce((a,c)=>a+c.charCodeAt(0),0)%360}" aria-hidden="true">${esc(String(name||'?').replace(/^[\s\[(\'"“‘]+/,'')[0]||'?')}</i>`};
 const pp=(name,url)=>name?`<span class="pp">${plogo(name,url)}${esc(name)}</span>`:'';
-const ts=(t,rel)=>t?`<time class="ts">${rel?ago(t):fmtD(t)}</time>`:'';
+const ts=(t,rel)=>t?`<time class="ts" title="${esc(fDate(t,true))}">${rel?ago(t):fDate(t,true)}</time>`:'';
 const cnt=(n,icn,tip)=>`<span class="cnt" title="${tip||''}">${icn?ic(icn):''}${n}</span>`;
 const ETY={person:['인물','user'],place:['장소','spark'],org:['기관','news'],company:['기업','coin'],inst:['기관','news'],event:['키워드','fire'],issue:['이슈','fire']};
 const entc=(name,t,href)=>`<${href?`a href="${href}"`:'span'} class="ent ${t}">${ic((ETY[t]||ETY.event)[1])}${esc(name)}</${href?'a':'span'}>`;
@@ -516,12 +516,153 @@ function vtl(el,items,z,limit=4){
   };
   draw();
 }
-function eraChart(items,z,themeCol){const fmt=z==='year'?(t=>t.slice(0,4)):(t=>t.slice(0,7));const c={};items.forEach(x=>{const k=fmt(x.t);c[k]=(c[k]||0)+1});
-  const ks=Object.keys(c).sort();if(!ks.length)return'';const all=[];let [y,m]=ks[0].split('-').map(Number);const [ey,em]=ks[ks.length-1].split('-').map(Number);
-  if(z==='year'){for(let k=y;k<=ey;k++)all.push(String(k))}else{while(y<ey||(y===ey&&m<=em)){all.push(`${y}-${String(m).padStart(2,'0')}`);m++;if(m>12){m=1;y++}}}
-  const bw=z==='year'?44:16,H=130,mx=Math.max(...Object.values(c));const W=Math.max(all.length*bw+20,300);
-  const baseCol=themeCol||'#2f6bff',maxCol=themeCol||'#ff4d2e';
-  return`<div class="era"><svg width="${W}" height="${H+24}">${all.map((k,i)=>{const v=c[k]||0,h=v/mx*(H-10);return`<rect x="${i*bw+10}" y="${H-h}" width="${bw-4}" height="${h}" rx="3" fill="${v===mx?maxCol:baseCol}" opacity="${v?(v===mx?1:.8):.15}"><title>${k}: ${v}건</title></rect>${(z==='year'||k.endsWith('-01'))?`<text x="${i*bw+10}" y="${H+16}">${z==='year'?k:k.slice(0,4)}</text>`:''}`}).join('')}</svg></div>`}
+function renderPressIcon(name, url='', size=18, count=null){
+  if(!name) return '';
+  const logo = plogo(name, url, 'press-sym-img');
+  const tipText = count ? `${name} (${fmt(count)}건 보도)` : name;
+  return `<span class="press-sym-pill" data-tooltip="${esc(tipText)}" tabindex="0" role="img" aria-label="${esc(tipText)}">${logo}<span class="press-tooltip">${esc(tipText)}</span></span>`;
+}
+
+function eraChart(items, z, themeCol, pDetail){
+  const fmt = z === 'year' ? (t => t.slice(0,4)) : (t => t.slice(0,7));
+  const c = {};
+  const pressCounts = {};
+  items.forEach(x => {
+    const k = fmt(x.t);
+    c[k] = (c[k] || 0) + 1;
+    if(x.press){
+      pressCounts[x.press] = (pressCounts[x.press] || 0) + 1;
+    }
+  });
+
+  const ks = Object.keys(c).sort();
+  if(!ks.length) return '<p class="mute" style="padding:20px;text-align:center">수집된 보도 기록이 없습니다.</p>';
+
+  const all = [];
+  let [y, m] = ks[0].split('-').map(Number);
+  const [ey, em] = ks[ks.length-1].split('-').map(Number);
+
+  if(z === 'year'){
+    for(let k=y; k<=ey; k++) all.push(String(k));
+  } else {
+    while(y < ey || (y === ey && m <= em)){
+      all.push(`${y}-${String(m).padStart(2,'0')}`);
+      m++;
+      if(m > 12){ m = 1; y++; }
+    }
+  }
+
+  const bw = z === 'year' ? 44 : 18;
+  const H = 140;
+  const topPad = 28;
+  const bottomPad = 26;
+  const mx = Math.max(1, ...Object.values(c));
+  const W = Math.max(all.length * bw + 30, 320);
+
+  const baseCol = themeCol || '#2f6bff';
+  const peakCol = '#dc2626';
+
+  // Grid lines: 25%, 50%, 75%, 100%
+  const gridLevels = [0.25, 0.5, 0.75, 1.0];
+  const gridLinesSvg = gridLevels.map(lvl => {
+    const gy = topPad + (1 - lvl) * H;
+    const val = Math.round(mx * lvl);
+    return `
+      <line x1="10" y1="${gy.toFixed(1)}" x2="${(W-10).toFixed(1)}" y2="${gy.toFixed(1)}" stroke="#e2e8f0" stroke-dasharray="3,3" stroke-width="1"/>
+      <text x="${(W-12).toFixed(1)}" y="${(gy - 3).toFixed(1)}" font-size="9" fill="#94a3b8" text-anchor="end" font-weight="600">${val}건</text>
+    `;
+  }).join('');
+
+  // Flow line points
+  const pts = [];
+  all.forEach((k, i) => {
+    const v = c[k] || 0;
+    const h = (v / mx) * H;
+    const cx = i * bw + 10 + (bw - 4) / 2;
+    const cy = topPad + H - h;
+    pts.push({ x: cx, y: cy, k, v });
+  });
+
+  const polylineStr = pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+
+  // SVG Bars
+  const barsSvg = all.map((k, i) => {
+    const v = c[k] || 0;
+    const h = (v / mx) * H;
+    const isPeak = (v === mx && v > 1);
+    const col = isPeak ? peakCol : (v ? baseCol : '#cbd5e1');
+    const x = i * bw + 10;
+    const y = topPad + H - h;
+    const barW = bw - 4;
+    const label = (z === 'year' || k.endsWith('-01') || (all.length < 14)) ? (z === 'year' ? k : (all.length > 20 ? k.slice(2,7) : k)) : '';
+
+    return `
+      <g class="era-bar-grp" data-period="${esc(k)}" data-count="${v}">
+        <rect class="era-bar ${isPeak ? 'peak' : ''}" x="${x}" y="${y.toFixed(1)}" width="${barW}" height="${Math.max(2, h).toFixed(1)}" rx="3" fill="${col}" opacity="${v ? (isPeak ? 1 : 0.85) : 0.12}">
+          <title>${k}: ${v}건 보도${isPeak ? ' (최고 화제점)' : ''}</title>
+        </rect>
+        ${label ? `<text class="era-axis-label" x="${(x + barW/2).toFixed(1)}" y="${topPad + H + 18}" text-anchor="middle">${esc(label)}</text>` : ''}
+      </g>
+    `;
+  }).join('');
+
+  // Top Press symbols with tooltips
+  const pMediaPress = pDetail?.media?.by_press || [];
+  const pressEntries = (pMediaPress.length ? pMediaPress : Object.entries(pressCounts)).slice(0, 16);
+  const pressSummaryHtml = pressEntries.length ? `
+    <div class="era-press-summary">
+      <div class="eps-head">
+        <span class="eps-title">
+          <svg class="ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 4v16"/></svg>
+          <b>보도 집중 언론사</b>
+        </span>
+        <span class="eps-sub">심볼 롤오버/터치 시 언론사명 & 건수 표시</span>
+      </div>
+      <div class="press-sym-list">
+        ${pressEntries.map(([name, count]) => renderPressIcon(name, '', 20, count)).join('')}
+      </div>
+    </div>
+  ` : '';
+
+  return `
+    <div class="era-chart-container">
+      <div class="era-chart-header">
+        <div class="ech-left">
+          <span class="ech-badge">📊 시대별 보도량 추이 및 플로우 분석</span>
+          <span class="ech-stat">총 <b>${fmt(items.length)}건</b> 관측 (최대 <b>${mx}건</b>/구간)</span>
+        </div>
+        <div class="ech-legend">
+          <span class="ecl-item"><i style="background:${baseCol}"></i>일반 보도</span>
+          <span class="ecl-item"><i style="background:${peakCol}"></i>최고 집중 구간</span>
+          <span class="ecl-item"><i style="background:${baseCol};height:2px;border-radius:1px"></i>플로우 라인</span>
+        </div>
+      </div>
+      <div class="era grab-carousel" tabindex="0" aria-label="시대별 보도량 차트 (가로 스크롤 가능)">
+        <svg class="era-svg" width="${W}" height="${topPad + H + bottomPad}" viewBox="0 0 ${W} ${topPad + H + bottomPad}">
+          <defs>
+            <linearGradient id="eraFlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="${baseCol}" stop-opacity="0.6"/>
+              <stop offset="50%" stop-color="${baseCol}" stop-opacity="0.95"/>
+              <stop offset="100%" stop-color="${peakCol}" stop-opacity="0.9"/>
+            </linearGradient>
+            <filter id="eraGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="${baseCol}" flood-opacity="0.3"/>
+            </filter>
+          </defs>
+          <g class="era-grid-group">${gridLinesSvg}</g>
+          <polyline class="era-flow-line" points="${polylineStr}" fill="none" stroke="url(#eraFlowGrad)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#eraGlow)"/>
+          <g class="era-bars-group">${barsSvg}</g>
+          ${pts.filter(p => p.v === mx && p.v > 1).map(p => `
+            <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4.5" fill="#ffffff" stroke="${peakCol}" stroke-width="2.5">
+              <title>${p.k}: 최고 ${p.v}건</title>
+            </circle>
+          `).join('')}
+        </svg>
+      </div>
+      ${pressSummaryHtml}
+    </div>
+  `;
+}
 
 function makeHeroMetaRow(e, pol){
   const sub=SUB.find(x=>x[0]===subtype(e))?.[1]||TYPE[e.type];
@@ -534,7 +675,25 @@ function makeHeroMetaRow(e, pol){
 
 /* ---------- 통합 인물 & 정치인 상세 대시보드 헬퍼 ---------- */
 const fmt=n=>(n||0).toLocaleString();
-const fDate=s=>{if(!s)return'';const str=String(s).trim();const m=str.match(/(\d{4})[-./](\d{1,2})[-./](\d{1,2})/);if(m)return`${m[1]}.${m[2].padStart(2,'0')}.${m[3].padStart(2,'0')}`;const ym=str.match(/(\d{4})[-./](\d{1,2})/);if(ym)return`${ym[1]}.${ym[2].padStart(2,'0')}`;return str.replace(/-/g,'.')};
+const fDate=(s, forceTime=false)=>{
+  if(!s)return'';
+  const str=String(s).trim();
+  if(/^\d{4}$/.test(str))return str;
+  const ym=str.match(/^(\d{4})[-./](\d{1,2})$/);
+  if(ym)return`${ym[1]}.${ym[2].padStart(2,'0')}`;
+  const hasTime = forceTime || /T|\s\d{1,2}:\d{2}/.test(str);
+  if(hasTime && typeof NBDate?.full === 'function'){
+    const formatted = NBDate.full(str);
+    if(formatted) return formatted;
+  }
+  if(typeof NBDate?.date === 'function'){
+    const formatted = NBDate.date(str);
+    if(formatted) return formatted;
+  }
+  const m=str.match(/(\d{4})[-./](\d{1,2})[-./](\d{1,2})/);
+  if(m)return`${m[1]}.${m[2].padStart(2,'0')}.${m[3].padStart(2,'0')}`;
+  return str.replace(/-/g,'.');
+};
 const pc=p=>partyTheme(p)?.color||(/민주/.test(p||'')?'#004ea2':/국민의힘|한나라|새누리|자유한국|미래통합/.test(p||'')?'#E61E2B':'#6b7390');
 const ARC_REL={parent:['부모·자녀','#d6336c'],spouse:['배우자','#e64980'],sibling:['형제자매','#f06595'],relative:['친척','#f783ac'],schoolmate:['학교 동문','#2a9d8f'],hometown:['같은 출생지','#f08c00'],predecessor:['지역구 전·후임','#3b5bdb']};
 const ARC_TYP={birth:['출생','#8b6cf0','confetti'],edu:['학업','#2a9d8f','school'],career:['경력','#5b7fa6','building'],election:['선거','#1f5bd8','circle-check'],office:['공직','#3b5bdb','star-f'],party:['정당','#f08c00','repeat'],award:['수상','#e0a800','trophy'],family:['가족','#d6336c','heart-f'],assets:['재산','#2f9e44','currency-won'],allegation:['의혹·사건','#e03131','alert-triangle'],ruling:['판결','#862e9c','landmark'],news:['보도','#868e96','news']};
@@ -851,24 +1010,53 @@ function initDragScrolls(container){
 function arcEvItem(e){
   const t=ARC_TYP[e.typ]||['기타','#888','•'];
   let x={};try{x=JSON.parse(e.extra||'{}')||{}}catch(_){}
-  return `<li class="arc-ev ${e.status||''}" style="--tc:${t[1]}"><span class="arc-dot">${typeof NBI==='function'?NBI(t[2]):''}</span><div><time>${esc((e.d||'').replace(/-/g,'.'))}</time><b>${esc(e.title)}</b>
-  <small>${e.status==='allegation'?`<em class="arc-tag al">${esc(x.stage||'의혹')} 단계 · 확정 아님</em>`:e.status==='confirmed'?'<em class="arc-tag cf">확정</em>':e.status==='report'?'<em class="arc-tag rp">보도</em>':''}${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.src||'출처')}</a>`:esc(e.src||'')}</small></div></li>`;
+  const dateFormatted = fDate(e.d);
+  return `<li class="arc-ev ${e.status||''}" style="--tc:${t[1]}">
+    <span class="arc-dot">${typeof NBI==='function'?NBI(t[2]):''}</span>
+    <div>
+      <time>${esc(dateFormatted)}</time>
+      <b>${esc(e.title)}</b>
+      <small>
+        ${e.status==='allegation'?`<em class="arc-tag al">${esc(x.stage||'의혹')} 단계 · 확정 아님</em>`:e.status==='confirmed'?'<em class="arc-tag cf">확정</em>':e.status==='report'?'<em class="arc-tag rp">보도</em>':''}
+        ${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener" class="arc-src-link">${plogo(e.src, e.url, 'q-press-emb')}${esc(e.src||'출처')} ↗</a>`:(e.src?`<span>${plogo(e.src, '', 'q-press-emb')}${esc(e.src)}</span>`:'')}
+      </small>
+    </div>
+  </li>`;
 }
 
 function drawArcTimeline(dated, filterTyp){
   const box=document.getElementById('arc-tl-box');
   if(!box)return;
-  const L=dated.filter(e=>!filterTyp||e.typ===filterTyp);
+  // Exclude '언론 보도' stage to consolidate with #etl timeline below
+  const L=dated.filter(e=>(!filterTyp||e.typ===filterTyp) && e.stage !== '언론 보도');
   const byS={};
   L.forEach(e=>(byS[e.stage]=byS[e.stage]||[]).push(e));
-  box.innerHTML=ARC_STAGES.filter(s=>byS[s]).map(s=>`
+  const stagesHtml = ARC_STAGES.filter(s=>s!=='언론 보도'&&byS[s]).map(s=>`
     <div class="arc-stage">
       <h4>${s} <span>${(byS[s][0].d||'').slice(0,4)}${byS[s].length>1&&(byS[s].at(-1).d||'').slice(0,4)!==(byS[s][0].d||'').slice(0,4)?'–'+(byS[s].at(-1).d||'').slice(0,4):''}</span></h4>
       <ol>
-        ${(s==='언론 보도'?byS[s].slice().reverse():byS[s]).map(arcEvItem).join('')}
+        ${byS[s].map(arcEvItem).join('')}
       </ol>
     </div>
-  `).join('')||'<p class="mute">해당하는 기록이 없습니다.</p>';
+  `).join('');
+
+  const jumpHtml = `
+    <div class="arc-news-jump-card">
+      <div class="anj-content">
+        <span class="anj-icon">📰</span>
+        <div class="anj-desc">
+          <strong>언론 보도 및 기사 통합 타임라인</strong>
+          <p>언론 보도 전체 기사 및 시대별 분석은 하단의 '뉴스 타임라인'에서 통합 제공됩니다.</p>
+        </div>
+      </div>
+      <a href="#sec-newstl" class="anj-btn" onclick="event.preventDefault();document.getElementById('sec-newstl')?.scrollIntoView({behavior:'smooth'})">
+        <span>뉴스 타임라인 바로가기</span>
+        <svg class="ico" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </a>
+    </div>
+  `;
+
+  box.innerHTML = (stagesHtml || '<p class="mute">해당하는 기록이 없습니다.</p>') + jumpHtml;
 }
 
 function initArcGraphInteraction(wrap){
@@ -1530,6 +1718,8 @@ function renderQuotesSection(p, id){
     const flameClass = isPeak ? 'flame-peak' : (isAboveAvg ? 'flame-high' : 'flame-subtle');
     const badgeClass = isPeak ? 'peak' : (isAboveAvg ? 'high' : 'normal');
 
+    const aiSummary = extractQuoteAiSummary(q.quote, p.name);
+
     return `<li class="pol-qitem ${isPeak ? 'q-peak' : (isAboveAvg ? 'q-high' : '')}">
       <div class="q-thumb ${q.thumbImg ? '' : 'noimg'}" ${q.thumbImg ? `style="background-image:url('${esc(q.thumbImg)}')"` : ''}>
         ${q.thumbImg ? '' : `${plogo(q.press, q.url, 'q-thumb-logo')}<span class="q-thumb-mark">“</span>`}
@@ -1545,6 +1735,10 @@ function renderQuotesSection(p, id){
         <a href="${esc(q.url)}" target="_blank" rel="noopener" class="q-title ${isPeak ? 'peak' : (isAboveAvg ? 'high' : '')}" title="${esc(q.quote)}">
           “${esc(q.quote)}”
         </a>
+        <div class="q-ai-summary">
+          <span class="q-ai-badge">✨ AI 핵심 요약</span>
+          <p class="q-ai-text">${esc(aiSummary)}</p>
+        </div>
         <div class="q-meta">
           <span class="q-press-bullet">${plogo(q.press, q.url, 'q-press-emb')}</span>
           <span class="q-press-name">${esc(q.press || '언론사')}</span>
@@ -1552,14 +1746,6 @@ function renderQuotesSection(p, id){
       </div>
     </li>`;
   }).join('');
-
-  const pressChipsHtml = (md.presses || []).filter(x => x[0]).map(([name, count]) => `
-    <div class="pol-press-chip" title="${esc(name)} 총 ${count}건 집중 보도">
-      <span class="pol-press-bullet">${plogo(name, '', 'pol-press-logo')}</span>
-      <span class="pol-press-name">${esc(name)}</span>
-      <b class="pol-press-count">${count}건</b>
-    </div>
-  `).join('');
 
   return `<div class="sec" id="sec-quotes">
     <h2><small>Quotes & Media</small>언행 및 미디어 노출 경향</h2>
@@ -1592,29 +1778,27 @@ function renderQuotesSection(p, id){
   </div>`:''}
 
   ${md&&(md.top_words||[]).length?`
-  <div class="pol-g2" style="margin-top:10px">
-    <div class="card pad">
-      <h3>헤드라인 핵심 연관 단어</h3>
-      <div class="pol-cloud">
-        ${md.top_words.slice(0,24).map(([w,n],i)=>`
-          <a class="pol-word-chip" href="kw/${encodeURIComponent(w)}" style="font-size:${(.8+Math.min(1,n/md.top_words[0][1])*.9).toFixed(2)}rem;opacity:${(1-i/40).toFixed(2)}" title="'${esc(w)}' 키워드 타임라인 보기">
-            #${esc(w)}
-          </a>
-        `).join('')}
-      </div>
+  <div class="card pad" style="margin-top:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px">
+      <h3 style="margin:0">헤드라인 핵심 연관 단어</h3>
+      <span class="pol-press-subtag">출현 빈도순 주요 키워드 클라우드</span>
     </div>
-    <div class="card pad">
-      <h3>월별 보도량 & 주요 언론사</h3>
-      ${polMonths(md.by_month,'#ff4d2e')}
-      <h4 style="margin-top:14px;font-size:.82rem;color:var(--mute);display:flex;align-items:center;gap:6px">
-        <span>많이 다룬 언론사</span>
-        <span class="pol-press-subtag">집중 보도 매체</span>
-      </h4>
-      <div class="pol-press-chips">
-        ${pressChipsHtml}
-      </div>
+    <div class="pol-cloud">
+      ${md.top_words.slice(0,28).map(([w,n],i)=>`
+        <a class="pol-word-chip" href="kw/${encodeURIComponent(w)}" style="font-size:${(.8+Math.min(1,n/md.top_words[0][1])*.9).toFixed(2)}rem;opacity:${(1-i/40).toFixed(2)}" title="'${esc(w)}' 키워드 타임라인 보기">
+          #${esc(w)}
+        </a>
+      `).join('')}
     </div>
   </div>`:''}`;
+}
+
+function extractQuoteAiSummary(txt, speaker){
+  if(!txt) return '';
+  const clean = txt.replace(/^[“"']|[”"']$/g, '').trim();
+  const prefix = speaker ? (speaker + ' 의원: ') : '';
+  if(clean.length <= 40) return prefix + '"' + clean + '" 핵심 메시지 보도';
+  return prefix + '"' + clean.slice(0, 52) + '…" 관련 주요 발언 및 보도 맥락 요약';
 }
 
 function getOrgSymbolHtml(text, size=28){
@@ -1826,9 +2010,44 @@ function renderCareerSection(p, arc){
   </div>`;
 }
 
+function triggerCoinShower(targetSec){
+  if(!targetSec || targetSec.dataset.showered) return;
+  targetSec.dataset.showered = 'true';
+
+  let showerWrap = targetSec.querySelector('.coin-shower-wrap');
+  if(!showerWrap){
+    showerWrap = document.createElement('div');
+    showerWrap.className = 'coin-shower-wrap';
+    showerWrap.setAttribute('aria-hidden', 'true');
+    targetSec.style.position = 'relative';
+    targetSec.appendChild(showerWrap);
+  }
+
+  const coinCount = 18;
+  for(let i = 0; i < coinCount; i++){
+    const coin = document.createElement('span');
+    coin.className = 'coin-drop-particle';
+    const leftPercent = 5 + Math.random() * 90;
+    const delay = Math.random() * 0.9;
+    const duration = 1.2 + Math.random() * 0.8;
+    const size = 16 + Math.random() * 12;
+    coin.style.left = `${leftPercent}%`;
+    coin.style.animationDelay = `${delay}s`;
+    coin.style.animationDuration = `${duration}s`;
+    coin.style.fontSize = `${size}px`;
+    coin.textContent = (i % 3 === 0) ? '🪙' : (i % 3 === 1 ? '💰' : '✨');
+    showerWrap.appendChild(coin);
+
+    setTimeout(() => {
+      coin.remove();
+    }, (delay + duration + 0.3) * 1000);
+  }
+}
+
 function renderLifeTimelineSection(arc){
   if(!arc||!arc.events||!arc.events.length)return'';
-  const E=arc.events;
+  // Exclude duplicate media reports from life timeline stage
+  const E=(arc.events||[]).filter(e => e.stage !== '언론 보도');
   const types=[...new Set(E.map(e=>e.typ))];
 
   return `<div class="sec" id="sec-lifetl">
@@ -1936,16 +2155,89 @@ function entity(n){
   <div class="entity-full-dash">
    <div id="pol-dashboard-container"><div style="text-align:center;padding:16px;color:var(--mute);font-size:.84rem">인물 상세 데이터베이스(활동·재산·가족·언행·사건)를 불러오는 중…</div></div>
    <div class="sec" id="sec-newstl"><h2><small>News Timeline</small>시대별 보도량 및 뉴스 타임라인</h2></div>
-   <div class="card" style="padding:10px 14px" id="era"></div>
+   <div class="card" style="padding:14px 16px" id="era"></div>
+   <div id="etl-filter-banner" style="display:none;align-items:center;justify-content:space-between;padding:10px 14px;background:#f0f7ff;border:1px solid #bfdbfe;border-radius:10px;margin-top:12px;font-size:.82rem">
+     <span id="etl-filter-text"></span>
+     <button type="button" id="etl-filter-reset" style="border:none;background:#2563eb;color:#fff;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer">전체 기간 보기</button>
+   </div>
    <div style="margin-top:12px">${sec(esc(e.name)+' 뉴스 타임라인','Timeline','<div class="zoom" id="tz"><button data-z="hour">시간</button><button data-z="day" class="on">일</button><button data-z="month">월</button><button data-z="year">시대</button></div>','clock')}</div>
    <div class="vt" id="etl"></div>
   </div>`;
 
   let curEz='month';
-  const drawE=z=>{curEz=z;$('#era').innerHTML=eraChart(tl,z,pTheme?pTheme.color:null);const x=$('#era .era');if(x)x.scrollLeft=1e5};drawE('month');
-  $('#ez')&&($('#ez').onclick=ev=>{const z=ev.target.dataset.z;if(!z)return;$('#ez').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===ev.target));drawE(z)});
-  const drawT=z=>vtl($('#etl'),z==='hour'?tl.filter(x=>Date.now()-new Date(x.t)<3*864e5):tl,z,z==='year'?6:4);drawT('day');
+  let activeFilterPeriod = null;
+  let cachedDetail = null;
+
+  const drawE = (z, pDet) => {
+    curEz = z;
+    if(pDet) cachedDetail = pDet;
+    const eraEl = $('#era');
+    if(!eraEl) return;
+    eraEl.innerHTML = `
+      <div class="pol-seg-tabs" id="era-seg-tabs" role="tablist" style="margin-bottom:10px">
+        <button type="button" class="pol-seg-btn ${z==='month'?'on':''}" data-ez="month">월별 추이</button>
+        <button type="button" class="pol-seg-btn ${z==='year'?'on':''}" data-ez="year">연도별 추이</button>
+      </div>
+      ${eraChart(tl, z, pTheme?pTheme.color:null, cachedDetail)}
+    `;
+    const x = eraEl.querySelector('.era');
+    if(x) x.scrollLeft = 1e5;
+
+    eraEl.querySelectorAll('#era-seg-tabs button').forEach(b => {
+      b.onclick = () => {
+        const newZ = b.dataset.ez;
+        if(newZ) drawE(newZ, cachedDetail);
+      };
+    });
+
+    eraEl.querySelectorAll('.era-bar-grp').forEach(grp => {
+      grp.onclick = () => {
+        const period = grp.dataset.period;
+        if(activeFilterPeriod === period){
+          activeFilterPeriod = null;
+          eraEl.querySelectorAll('.era-bar-grp rect').forEach(r => r.style.outline = '');
+          const banner = $('#etl-filter-banner');
+          if(banner) banner.style.display = 'none';
+          drawT('day');
+        } else {
+          activeFilterPeriod = period;
+          eraEl.querySelectorAll('.era-bar-grp rect').forEach(r => r.style.outline = '');
+          const rect = grp.querySelector('rect');
+          if(rect) rect.style.outline = '2px solid #2563eb';
+          const filtered = tl.filter(x => (x.t||'').startsWith(period));
+          const banner = $('#etl-filter-banner');
+          const bannerText = $('#etl-filter-text');
+          if(banner && bannerText){
+            banner.style.display = 'flex';
+            bannerText.innerHTML = `📅 <b>${esc(period)}</b> 보도 기사 <b>${filtered.length}건</b>을 표시하고 있습니다.`;
+          }
+          vtl($('#etl'), filtered, 'day', 99);
+          $('#etl')?.scrollIntoView({behavior:'smooth', block:'nearest'});
+        }
+      };
+    });
+  };
+
+  const drawT = z => {
+    activeFilterPeriod = null;
+    const banner = $('#etl-filter-banner');
+    if(banner) banner.style.display = 'none';
+    vtl($('#etl'), z==='hour'?tl.filter(x=>Date.now()-new Date(x.t)<3*864e5):tl, z, z==='year'?6:4);
+  };
+  drawE('month');
+  drawT('day');
   $('#tz')&&($('#tz').onclick=ev=>{const z=ev.target.dataset.z;if(!z)return;$('#tz').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===ev.target));drawT(z)});
+
+  const filterResetBtn = document.getElementById('etl-filter-reset');
+  if(filterResetBtn){
+    filterResetBtn.onclick = () => {
+      activeFilterPeriod = null;
+      document.querySelectorAll('#era .era-bar-grp rect').forEach(r => r.style.outline = '');
+      const banner = document.getElementById('etl-filter-banner');
+      if(banner) banner.style.display = 'none';
+      drawT('day');
+    };
+  }
 
   ensurePolIndex().then(()=>loadFullPersonData(e.name, pol?.id)).then(res=>{
     const pDetail=res?.pol;
@@ -2019,7 +2311,7 @@ function entity(n){
         elPolLink.innerHTML=`<a class="pol-act-btn" href="#sec-activity" onclick="event.preventDefault();document.querySelector('#sec-activity')?.scrollIntoView({behavior:'smooth'})"><span style="font-size:14px">🏛️</span><span>의정 활동·법안·재산 대시보드 바로보기</span>${NBI('arrow-down')}</a>
         ${res?.id?`<a href="politicians/?id=${esc(res.id)}" target="_blank" class="pol-src-link">정치인 DB 원본 ↗</a>`:''}`;
         elProf.querySelectorAll('.kpis div b')[0]&&(elProf.querySelectorAll('.kpis div b')[0].style.color=th.color);
-        $('#era')&&($('#era').innerHTML=eraChart(tl,'month',th.color));
+        drawE(curEz, pDetail);
       }
     }
 
@@ -2058,6 +2350,29 @@ function entity(n){
     container.innerHTML=html;
     initDragScrolls(container);
     container.querySelectorAll('.arc-gwrap').forEach(initArcGraphInteraction);
+
+    // 재산 신고 섹션 스크롤 진입 시 코인 샤워 애니메이션 실행 및 클릭 반응
+    const assetSec = container.querySelector('#sec-assets');
+    if(assetSec && 'IntersectionObserver' in window){
+      const coinObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            triggerCoinShower(assetSec);
+            coinObs.disconnect();
+          }
+        });
+      }, { threshold: 0.15 });
+      coinObs.observe(assetSec);
+
+      assetSec.querySelectorAll('.pol-k, .card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.title = '클릭하여 코인 드롭 효과 다시 보기';
+        card.addEventListener('click', () => {
+          delete assetSec.dataset.showered;
+          triggerCoinShower(assetSec);
+        });
+      });
+    }
 
     container.querySelectorAll('.pol-dash-tabs button').forEach(b=>{
       b.onclick=()=>{
