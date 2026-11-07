@@ -1,0 +1,327 @@
+{
+  "schema": "newsboard.editorial-queue.v2",
+  "date": "2026-11-07",
+  "generated_at": "2026-11-07T20:53:37+09:00",
+  "handoff": {
+    "state": "brief_ready",
+    "owner": "unassigned",
+    "daily_minimum": "Select one highest-priority reviewed candidate for a bespoke visual asset. Other candidates may use the safe fallback.",
+    "daily_caps": {
+      "comics": 3,
+      "card_news": 3
+    },
+    "providers": [
+      "Claude",
+      "Gemini",
+      "Grok",
+      "local Apple model",
+      "human editor"
+    ],
+    "next_action": "Select one item, check every story beat against linked sources, create or reuse an asset that satisfies visual_contract, then register it in assets/editorial-art.json.",
+    "resume_commands": [
+      "python scripts/editorial_queue.py --validate",
+      "FUN_DATA=data FUN_AI_SEC=0 python scripts/fun.py",
+      "npm run validate"
+    ],
+    "completion_definition": "A comic/card item has four evidence-backed beats, a registered visual asset or safe fallback, and passes the no-filler validator."
+  },
+  "candidates": [
+    {
+      "issue_id": "id03fdbe5",
+      "title": "일주일 만에 '3조' 사들였다…코스피 급락장에 무슨 일",
+      "category": "경제",
+      "rank": 6,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "최근 국내 증시가 급락세를 보이면서 개인 투자자들의 미국 주식 매수세가 급격히 확대되고 있다.",
+        "11월 6일 주가 [sbs캡처] 미국발 기술주 급락 여파로 코스피가 이틀 새 10.98% 하락하고 장중 5000선 아래로...",
+        "결과, 이재명 정부의 경제정책을 '잘못하고 있다'는 응답은 55.9%였다.",
+        "'잘하고 있다'는 38.5%로 부정 평가가 17.4...",
+        "코스피 6% 급락한 날 ETF 128주 매수 인증…\"우리 경제 저력 믿는다\" \"정치적 공방 위해 국민 불안 자극하는 건..."
+      ],
+      "sources": [
+        {
+          "press": "ilyoseoul.co.kr",
+          "title": "코스피 이틀 새 10.98% 급락…경제 비관론 속 野 \"정부 증시정책 실패\"",
+          "url": "https://www.ilyoseoul.co.kr/news/articleView.html?idxno=524749"
+        },
+        {
+          "press": "sisajournal.com",
+          "title": "폭락장에 1000만원 '풀매수'한 박용진…한동훈 향해 \"불난 집 부채질\"",
+          "url": "https://n.news.naver.com/mnews/article/586/0000141821?sid=100"
+        },
+        {
+          "press": "매일경제",
+          "title": "“코스피에 정말 질렸다”…실망한 개미들 일주일 새 2조 5000억 쓸어담은 ‘이것’",
+          "url": "https://www.mk.co.kr/news/economy/12201494"
+        },
+        {
+          "press": "joongang.co.kr",
+          "title": "박용진 “1000만원어치 주식 샀어요”…폭락장에 매수 인증샷",
+          "url": "https://n.news.naver.com/mnews/article/025/0003563498?sid=100"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "최근 국내 증시가 급락세를 보이면서 개인 투자자들의 미국 주식 매수세가 급격히 확대되고 있다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "11월 6일 주가 [sbs캡처] 미국발 기술주 급락 여파로 코스피가 이틀 새 10.98% 하락하고 장중 5000선 아래로..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "결과, 이재명 정부의 경제정책을 '잘못하고 있다'는 응답은 55.9%였다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "코스피 급락과 환율 하락이 맞물려 일주일 만에 3조 원 규모의 폭풍 매수가 발생하며, 투자자들의 국장 기피 현상이 극에 달했음을 보여준다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i659a5bd8",
+      "title": "\"트럼프 살해하란 목소리 들렸다\"‥백악관 인근서 무장 남성 체포",
+      "category": "세계",
+      "rank": 5,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "도널드 트럼프 미국 대통령을 살해할 목적으로 총기와 탄약을 소지한 채 백악관 인근에 접근한 베네수엘라 국적의 남성이 미 비밀경호국 요원들에게 체포됐다.",
+        "\"머릿속에서 트럼프 죽이라는 목소리 들려\"…백악관 주변 '총기무장' 남성 체포",
+        "도널드 트럼프 미국 대통령을 살해하겠다며 총기 여러 점을 갖고 백악관 근처에 접근한 남성이 경호당국...",
+        "용의자는 체포 당시 \"워싱턴DC로 가서 트럼프 대통령을 살해하라고 말하는 목소리가 머릿속에서 들렸다\"고...",
+        "\"트럼프 살해하란 목소리 들렸다\"‥백악관 인근서 무장 남성 체포"
+      ],
+      "sources": [
+        {
+          "press": "JTBC",
+          "title": "\"머릿속에서 트럼프 죽이라는 목소리 들려\"…백악관 주변 '총기무장' 남성 체포",
+          "url": "https://n.news.naver.com/article/437/0000519628"
+        },
+        {
+          "press": "kbs.co.kr",
+          "title": "백악관 옆 ‘수상한 차’ 털자 총기 ‘와르르’…“트럼프 살해 위협”...",
+          "url": "https://n.news.naver.com/mnews/article/056/0012289356?sid=121"
+        },
+        {
+          "press": "MBC",
+          "title": "\"트럼프 살해하란 목소리 들렸다\"‥백악관 인근서 무장 남성 체포",
+          "url": "https://n.news.naver.com/article/214/0001534124"
+        },
+        {
+          "press": "연합뉴스TV",
+          "title": "\"트럼프 살해하란 목소리 들려\"…총기들고 백악관 접근한 남성 체포",
+          "url": "https://n.news.naver.com/article/422/0000923820"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "도널드 트럼프 미국 대통령을 살해할 목적으로 총기와 탄약을 소지한 채 백악관 인근에 접근한 베네수엘라 국적의 남성이 미 비밀경호국 요원들에게 체포됐다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "◀ 리포트 ▶ 중간선거 참패 사흘 만에 트럼프 대통령이 단행한 백악관 핵심 인사."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "6일(현지시간) CNN 방송에 따르면 미 비밀경호국은 전날 백악관 주변에 주차된 차량에서 수상한..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "영국 공군기지 테러 모의 용의자 체포 사건이 다뤄졌다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ibce49dbb",
+      "title": "단양 만천하스카이워크 짚라인 멈춤 사고…승객 30분간 공중에 매달려",
+      "category": "사회",
+      "rank": 7,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "충북 단양군의 대표 관광시설인 만천하스카이워크에서 짚라인이 운행 도중 멈춰 승객이 약 30분간 공중에 매달리는 사고가 발생했다.",
+        "고장난 집라인에 30분간 공중에 매달려…여성 승객 ‘아찔’",
+        "충북 단양군의 대표 관광지인 만천하스카이워크 짚라인이 운행 중 멈춰 승객이 약 30분간 공중에 매달리는 사고가 발생했다.",
+        "7일 단양관광공사와 소방당국에 따르면 이날 오후 3시 20분쯤 단양군 만천하스카이워크에서...",
+        "단양 관광지 짚와이어 멈춰… 승객 30분간 공중에 대롱대롱"
+      ],
+      "sources": [
+        {
+          "press": "한겨레",
+          "title": "고장난 집라인에 30분간 공중에 매달려…여성 승객 ‘아찔’",
+          "url": "https://n.news.naver.com/article/028/0002831150"
+        },
+        {
+          "press": "joongang.co.kr",
+          "title": "출발 30m만에 멈춰선 짚라인…탑승한 女승객 ‘공포의 30분’",
+          "url": "https://n.news.naver.com/mnews/article/025/0003563516?sid=102"
+        },
+        {
+          "press": "조선일보",
+          "title": "단양 관광지 짚와이어 멈춰… 승객 30분간 공중에 대롱대롱",
+          "url": "https://n.news.naver.com/article/023/0004008353"
+        },
+        {
+          "press": "SBS",
+          "title": "갑자기 '뚝' 멈춘 집라인…승객 30분간 공중에",
+          "url": "https://n.news.naver.com/article/055/0001401372"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "충북 단양군의 대표 관광시설인 만천하스카이워크에서 짚라인이 운행 도중 멈춰 승객이 약 30분간 공중에 매달리는 사고가 발생했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "만천하스카이워크를 관리하는 단양관광공사 측은 정확한 사고 원인을 조사하고 있다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "고장난 집라인에 30분간 공중에 매달려…여성 승객 ‘아찔’"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    }
+  ]
+}
