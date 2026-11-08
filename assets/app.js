@@ -2103,20 +2103,79 @@ function renderProfFactsHtml(pDetail){
 
 /* ---------- 인물 상세 ---------- */
 function entity(n){
-  const e=ent(n);if(!e)return people();
+  let e=ent(n);
+  if(!e){
+    // URL로 직접 접속했거나 오늘의 실시간 36대 화제 인물에 포함되지 않았으나,
+    // 국회의원 DB, 아카이브 인물, 또는 기자 데스크에 등록된 인물인지 비동기 확인
+    app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a></div>
+      <div class="loading" style="padding:60px 16px;text-align:center">
+        <div class="spin" style="margin:0 auto 12px"></div>
+        <p style="color:var(--mute);font-size:.9rem"><b>${esc(n)}</b> 인물 데이터를 불러오는 중입니다…</p>
+      </div>`;
+    ensurePolIndex().then(()=>{
+      const pol=getPol(n);
+      return loadFullPersonData(n, pol?.id).then(res=>{
+        const rep=typeof reporters==='function'?reporters().find(r=>r.name===n):null;
+        if(!pol && !res?.pol && !res?.arc && !res?.graph && !rep){
+          app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a></div>
+            <div class="card" style="padding:48px 20px;text-align:center;margin-top:20px">
+              <p style="font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:8px">‘${esc(n)}’ 인물 정보를 찾을 수 없습니다.</p>
+              <p style="color:var(--mute);font-size:.86rem;margin-bottom:20px">현재 등록된 의원 DB 및 보도 타임라인에 해당 인물의 기록이 존재하지 않습니다.</p>
+              <a href="people" class="btn primary" style="display:inline-block;padding:8px 18px;border-radius:8px;font-weight:700">화제 인물 목록으로 돌아가기</a>
+            </div>`;
+          return;
+        }
+        const pDet=res?.pol||pol;
+        const rawNews=pDet?.news||[];
+        e={
+          name: n,
+          type: 'person',
+          score: pDet?.news_count||(Array.isArray(rawNews)?rawNews.length:(pDet?.news||50)),
+          history: [],
+          related: [],
+          issues: [],
+          timeline: Array.isArray(rawNews)?rawNews.map(x=>({
+            t: x.date?(x.date.length===10?(x.date+' 12:00:00'):x.date):'',
+            title: x.title,
+            url: x.url,
+            press: x.press||'',
+            img: x.img||''
+          })):[],
+          visual: {url: pDet?.photo_local||pDet?.photo||'', kind: 'portrait'},
+          aliases: [pDet?.en, pDet?.hanja].filter(Boolean),
+          desc: pDet?.party?`${pDet.party}${pDet.district?' · '+pDet.district:''} 대한민국 제${(pDet.ages||[]).slice(-1)[0]||22}대 국회의원`:'인물'
+        };
+        if(!D.entities) D.entities=[];
+        D.entities.push(e);
+        renderEntityDashboard(n, e, res);
+      });
+    }).catch(err=>{
+      console.error('Failed to resolve entity:', err);
+      people();
+    });
+    return;
+  }
+  renderEntityDashboard(n, e);
+}
+
+function renderEntityDashboard(n, e, preloadedRes){
+  setMeta(e.name + ' · 인물 대시보드', entDesc(e) || `${e.name} 관련 보도 및 의정 활동 정보`);
   const pol=getPol(e.name);
   const rep=typeof reporters==='function'?reporters().find(r=>r.name===e.name):null;
   const pTheme=pol?partyTheme(pol.party):null;
   const desc=entDesc(e);
   const rawTl=e.timeline||[];
-  const tl=rawTl.filter(x=>{
+  let tl=rawTl.filter(x=>{
     if(!x||!x.title)return false;
     if(x.title.includes(e.name))return true;
     if(e.aliases&&e.aliases.some(al=>al&&x.title.includes(al)))return true;
     return false;
   });
+  if(!tl.length && rawTl.length){
+    tl=rawTl.slice();
+  }
   const first=tl.length?tl[tl.length-1].t:null;
-  const iss=e.issues.map(id=>D.issues.find(x=>x.id===id)).filter(Boolean);
+  const iss=(e.issues||[]).map(id=>D.issues?.find(x=>x.id===id)).filter(Boolean);
   const w=why(e),wi=w.issue;
   const em=entityMedia(e);
 
@@ -2134,8 +2193,8 @@ function entity(n){
 
   const asideContent = `
     ${iss.length?sec('오늘 관련 이슈','Today','','fire')+`<div class="side">${iss.map(i=>`<a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><h3>${esc(i.title)}</h3></div></a>`).join('')}</div>`:''}
-    ${e.related.length?sec('함께 언급된 인물','Related','','graph')+`<div class="chips">${e.related.map(r=>chipE(r.name)).join('')}</div>`:''}
-    ${e.history.length>1?sec('NewsBoard 누적 화제도','Daily score','','chart')+`<div class="card" style="padding:14px">${line(e.history.map(x=>x[1]),300,60,pTheme?pTheme.color:'#2f6bff')}</div>`:'<div class="note">매시간 수집이 누적되면 일자별 화제도 그래프가 이곳에 쌓입니다.</div>'}
+    ${(e.related||[]).length?sec('함께 언급된 인물','Related','','graph')+`<div class="chips">${(e.related||[]).map(r=>chipE(r.name)).join('')}</div>`:''}
+    ${(e.history||[]).length>1?sec('NewsBoard 누적 화제도','Daily score','','chart')+`<div class="card" style="padding:14px">${line(e.history.map(x=>x[1]),300,60,pTheme?pTheme.color:'#2f6bff')}</div>`:'<div class="note">매시간 수집이 누적되면 일자별 화제도 그래프가 이곳에 쌓입니다.</div>'}
   `;
 
   app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a>${shareBtn()}</div>
@@ -2239,11 +2298,35 @@ function entity(n){
     };
   }
 
-  ensurePolIndex().then(()=>loadFullPersonData(e.name, pol?.id)).then(res=>{
+  const dataPromise=preloadedRes?Promise.resolve(preloadedRes):ensurePolIndex().then(()=>loadFullPersonData(e.name, pol?.id));
+  dataPromise.then(res=>{
     const pDetail=res?.pol;
     const aDetail=res?.arc;
     const gDetail=res?.graph;
     const p=pDetail||pol||(aDetail?{name:e.name,party:aDetail.party}:null);
+
+    // Merge news from pDetail into tl if present
+    if(pDetail?.news && Array.isArray(pDetail.news)){
+      const seenUrls = new Set(tl.map(x=>x.url).filter(Boolean));
+      let added = false;
+      pDetail.news.forEach(item => {
+        if(!item) return;
+        if(item.url && seenUrls.has(item.url)) return;
+        if(item.url) seenUrls.add(item.url);
+        tl.push({
+          t: item.date ? (item.date.length === 10 ? item.date + ' 12:00:00' : item.date) : '',
+          title: item.title,
+          url: item.url,
+          press: item.press || '',
+          img: item.img || ''
+        });
+        added = true;
+      });
+      if(added){
+        tl.sort((a,b) => (b.t||'').localeCompare(a.t||''));
+      }
+    }
+
     if(p){
       const th=partyTheme(p.party)||{color:'#2f6bff',dark:'#1c4bb8',light:'#f0f4ff'};
       const curEm=entityMedia(e);
@@ -2259,8 +2342,12 @@ function entity(n){
           elHero.querySelector('.in')?.insertAdjacentHTML('afterbegin',makeHeroMetaRow(e,p));
         }
         elHero.querySelectorAll('.in > .chip').forEach(c=>c.remove());
-        if(curEm.url&&!elHero.style.backgroundImage){
-          elHero.style.backgroundImage=`url('${curEm.url}')`;
+        if((pDetail?.photo_local||pDetail?.photo||curEm.url)&&!elHero.style.backgroundImage){
+          elHero.style.backgroundImage=`url('${pDetail?.photo_local||pDetail?.photo||curEm.url}')`;
+        }
+        const elBig=elHero.querySelector('p.big');
+        if(elBig&&!wi&&tl.length&&tl[0]?.title){
+          elBig.textContent=tl[0].title;
         }
       }
       const elProf=$('.prof');
@@ -2311,7 +2398,14 @@ function entity(n){
         elPolLink.innerHTML=`<a class="pol-act-btn" href="#sec-activity" onclick="event.preventDefault();document.querySelector('#sec-activity')?.scrollIntoView({behavior:'smooth'})"><span style="font-size:14px">🏛️</span><span>의정 활동·법안·재산 대시보드 바로보기</span>${NBI('arrow-down')}</a>
         ${res?.id?`<a href="politicians/?id=${esc(res.id)}" target="_blank" class="pol-src-link">정치인 DB 원본 ↗</a>`:''}`;
         elProf.querySelectorAll('.kpis div b')[0]&&(elProf.querySelectorAll('.kpis div b')[0].style.color=th.color);
+        const kpis=elProf.querySelectorAll('.kpis div b');
+        if(kpis&&kpis[1])kpis[1].textContent=tl.length;
+        if(kpis&&kpis[2]&&tl.length){
+          const oldest=tl[tl.length-1].t;
+          if(oldest)kpis[2].textContent=new Date(oldest).getFullYear();
+        }
         drawE(curEz, pDetail);
+        drawT('day');
       }
     }
 
