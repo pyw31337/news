@@ -102,18 +102,47 @@ function voteCardAsk(i){
   </div>`;
 }
 
+function getVoteSummary(i){
+  let raw = '';
+  if (Array.isArray(i.summary) && i.summary.length) {
+    raw = i.summary.slice(0, 2).filter(Boolean).join(' ');
+  } else if (typeof i.summary === 'string' && i.summary.trim()) {
+    raw = i.summary.trim();
+  } else if (i.lead && typeof i.lead === 'string') {
+    raw = i.lead.trim();
+  } else if (Array.isArray(i.leads) && i.leads.length) {
+    raw = i.leads.slice(0, 2).filter(Boolean).join(' ');
+  } else if (i.desc) {
+    raw = i.desc.trim();
+  }
+  return raw
+    .replace(/^\[[^\]]+\]\s*/, '')
+    .replace(/^\([^\)]+\)\s*/, '')
+    .replace(/^[◀◁▶▷■◆▲▼].*?[◀◁▶▷■◆▲▼]\s*/, '')
+    .replace(/^[가-힣]{2,4}\s*(기자|특파원|앵커)\s*[:=]\s*/, '')
+    .replace(/\([가-힣\s·]+=(연합뉴스|뉴스1|뉴시스|공동취재단)[^\)]*\)\s*/g, '')
+    .replace(/[가-힣]{2,4}\s*(기자|특파원)\s*=\s*/g, '')
+    .replace(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function voteHTML(I){
   const valid = I.filter(hasPic);
   const P = (valid.length ? valid : I).filter(i => (((i.ai||{}).opinion||{}).stances||[]).length >= 2 || lk(i) + dl(i) > 8);
   if(!P.length) return '';
   const VT = LS('nb-v2-vote', {});
   return sec('나라면?','What would you say?','','chat')+
-    `<div class="tvrow grab-carousel" id="tvote">${P.map(i=>`<div class="tvc card" data-id="${i.id}">
-      <a class="tvp" href="issue/${i.id}" ${pic(i)?bg(pic(i)):''}></a>
-      <div class="tv-cat"><span class="cat ${i.category}">${esc(i.category)}</span></div>
-      <div class="tvb-title"><a href="issue/${i.id}"><b>${esc(i.title)}</b></a></div>
-      <div class="tvq">${VT[i.id]!=null ? voteCardRes(i, VT[i.id]) : voteCardAsk(i)}</div>
-    </div>`).join('')}</div>`;
+    `<div class="tvrow grab-carousel" id="tvote">${P.map(i=>{
+      const sum = getVoteSummary(i);
+      return `<div class="tvc card" data-id="${i.id}">
+        <a class="tvp" href="issue/${i.id}" ${pic(i)?bg(pic(i)):''}></a>
+        <div class="tv-cat"><span class="cat ${i.category}">${esc(i.category)}</span></div>
+        <div class="tvb-title"><a href="issue/${i.id}"><b>${esc(i.title)}</b></a></div>
+        ${sum ? `<p class="tvb-summary">${esc(sum)}</p>` : ''}
+        <div class="tvq">${VT[i.id]!=null ? voteCardRes(i, VT[i.id]) : voteCardAsk(i)}</div>
+      </div>`;
+    }).join('')}</div>`;
 }
 
 function vote(I){
@@ -204,13 +233,15 @@ function wordsHTML(W){if(!W||!W.length)return'';
       const sq = '□'.repeat(w.word ? w.word.length : 2);
       const blank = has ? esc(t).split(esc(w.word)).join(`<u>${sq}</u>`) : '';
       const mean = (w.easy||w.mean||(w.wiki||{}).desc||'').split(w.word).join(sq);
+      const rawDef = (w.easy || (w.wiki||{}).extract || w.mean || (w.wiki||{}).desc || '').trim();
+      const ansDef = rawDef.split(sq).join(w.word);
       return `<div class="twc card">
         <div class="tw-head">
           <small class="twn">Q${k+1}${w.field?` · ${esc(w.field)}`:''}</small>
           <div class="twq">${has ? `<p>${blank}</p>` : `<p><b>${sq}</b> · 이 뜻을 가진 시사 단어는?</p>`}</div>
         </div>
         <div class="twa">
-          <div class="twr"><b>${esc(w.word)}</b><small>${esc(((w.wiki||{}).desc||mean||'').split(/(?<=[.!?])\s+/)[0] || ((w.wiki||{}).desc||mean||''))}</small>${ex.url?`<a href="${esc(ex.url)}" target="_blank" rel="noopener">기사 보기 ${NBI('arrow-up-right')}</a>`:''}</div>
+          <div class="twr"><b>${esc(w.word)}</b><small>${esc(ansDef)}</small>${ex.url?`<a href="${esc(ex.url)}" target="_blank" rel="noopener">기사 보기 ${NBI('arrow-up-right')}</a>`:''}</div>
           <canvas aria-label="긁어서 정답 보기"></canvas>
         </div>
         ${mean ? `<button type="button" class="twh" data-hint="${esc(mean)}" title="${esc(mean)}"><span>힌트</span></button><p class="tw-tip" hidden>${esc(mean)}</p>` : ''}
