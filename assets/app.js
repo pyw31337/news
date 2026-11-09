@@ -824,6 +824,7 @@ const fmt=n=>(n||0).toLocaleString();
 const fDate=(s, forceTime=false)=>{
   if(!s)return'';
   const str=String(s).trim();
+  if(/~/.test(str))return str.replace(/-/g,'.');
   if(/^\d{4}$/.test(str))return str;
   const ym=str.match(/^(\d{4})[-./](\d{1,2})$/);
   if(ym)return`${ym[1]}.${ym[2].padStart(2,'0')}`;
@@ -842,8 +843,256 @@ const fDate=(s, forceTime=false)=>{
 };
 const pc=p=>partyTheme(p)?.color||(/민주/.test(p||'')?'#004ea2':/국민의힘|한나라|새누리|자유한국|미래통합/.test(p||'')?'#E61E2B':'#6b7390');
 const ARC_REL={parent:['부모·자녀','#d6336c'],spouse:['배우자','#e64980'],sibling:['형제자매','#f06595'],relative:['친척','#f783ac'],schoolmate:['학교 동문','#2a9d8f'],hometown:['같은 출생지','#f08c00'],predecessor:['지역구 전·후임','#3b5bdb']};
-const ARC_TYP={birth:['출생','#8b6cf0','confetti'],edu:['학업','#2a9d8f','school'],career:['경력','#5b7fa6','building'],election:['선거','#1f5bd8','circle-check'],office:['공직','#3b5bdb','star-f'],party:['정당','#f08c00','repeat'],award:['수상','#e0a800','trophy'],family:['가족','#d6336c','heart-f'],assets:['재산','#2f9e44','currency-won'],allegation:['의혹·사건','#e03131','alert-triangle'],ruling:['판결','#862e9c','landmark'],news:['보도','#868e96','news']};
-const ARC_STAGES=['출생·성장','학업','사회 경력','정치 활동','재산','논란·사법','언론 보도'];
+const ARC_TYP={birth:['출생','#8b6cf0','confetti'],edu:['학업','#2a9d8f','school'],military:['병역','#495057','shield'],career:['경력','#5b7fa6','building'],office:['공직','#3b5bdb','star-f'],election:['선거','#1f5bd8','circle-check'],party:['정당','#f08c00','repeat'],award:['수상','#e0a800','trophy'],family:['가족','#d6336c','heart-f'],assets:['재산','#2f9e44','currency-won'],allegation:['의혹·사건','#e03131','alert-triangle'],ruling:['판결','#862e9c','landmark'],news:['보도','#868e96','news']};
+const ARC_STAGES=['출생·성장','학업','병역','사회 경력','정치 활동','재산','논란·사법','언론 보도'];
+
+/* 마스터 인물 생애·학력·병역·경력 공적 데이터베이스 */
+const ARC_MASTER_PROFILES = {
+  '이재명': {
+    military: '제5국민역(전시근로역 · 산재 골절 후유장애 면제)',
+    events: [
+      {
+        d: '1964-12-22',
+        typ: 'birth',
+        stage: '출생·성장',
+        title: '출생 (경상북도 안동군)',
+        desc: '경상북도 안동군 예안면 도촌리 지통마을 출생 (본관 경주 이씨 국당공파 41세손)',
+        status: 'fact',
+        src: '중앙선거관리위원회 공직후보자 명부',
+        url: 'https://info.nec.go.kr/'
+      },
+      {
+        d: '1971-03~1976-02',
+        typ: 'edu',
+        stage: '출생·성장',
+        title: '삼계국민학교 졸업 (초등 학력)',
+        desc: '경상북도 안동군 예안면 삼계국민학교(현 삼계초등학교) 입학 및 제19회 졸업',
+        status: 'fact',
+        src: '학교생활기록부 공적 기록'
+      },
+      {
+        d: '1976-02~1977-06',
+        typ: 'career',
+        stage: '출생·성장',
+        title: '성남 상대원공단 동마고무 취업 (소년공 이력)',
+        desc: '가족과 함께 경기도 성남시(상대원동 산동네)로 이주 후 가계 부양을 위해 중학교 진학 대신 성남상대원공단 동마고무(목걸이·공예품 제조 하청공장) 소년공 취업',
+        status: 'fact',
+        src: '공적 자서전 및 후보자 공적 기록'
+      },
+      {
+        d: '1977-06~1979-02',
+        typ: 'career',
+        stage: '출생·성장',
+        title: '대양실업(도금공장) 소년공 근무',
+        desc: '함석 및 도금 작업장인 대양실업에서 근무 중 아세톤·황산 등 유독가스에 지속 노출되어 후각 기능 일부 상실 후유증',
+        status: 'fact',
+        src: '공적 자서전 및 후보자 공적 기록'
+      },
+      {
+        d: '1979-03~1981-08',
+        typ: 'career',
+        stage: '출생·성장',
+        title: '오리엔트시계 야간 소년공 근무 및 프레스기 산업재해',
+        desc: '성남 상대원공단 오리엔트시계공장(오리엔트 정밀) 근무 중 프레스 기계에 왼팔 손목관절(완관절)이 협착되는 중대 산업재해 사고 발생 (골절 및 관절 성장판 손상으로 비틀린 팔 장애, 지체장애 6급 판정)',
+        status: 'fact',
+        src: '산업재해 공적 기록 / 국가장애인등록증'
+      },
+      {
+        d: '1978-04',
+        typ: 'edu',
+        stage: '학업',
+        title: '중학교 졸업학력 검정고시 합격',
+        desc: '공장 소년공 근무 중 야간에 주경야독으로 독학하여 중학교 입학자격(중입) 및 졸업학력(고입) 검정고시 합격',
+        status: 'fact',
+        src: '교육부 검정고시 합격증명'
+      },
+      {
+        d: '1980-08',
+        typ: 'edu',
+        stage: '학업',
+        title: '고등학교 졸업학력 검정고시(대입) 합격',
+        desc: '낮에는 시계공장 소년공으로 일하고 밤에는 독학하여 고등학교 졸업학력 검정고시 합격',
+        status: 'fact',
+        src: '교육부 검정고시 합격증명'
+      },
+      {
+        d: '1980-12',
+        typ: 'military',
+        stage: '병역',
+        title: '병역 판정: 제5국민역(전시근로역) 면제',
+        desc: '【병역 사항】 만기전역 아님 (병역 면제)\n• 사유: 소년공 시절 오리엔트시계공장 프레스기 협착 사고로 인한 좌측 완관절(손목관절) 골절 후유장애(관절 가동 불가 및 지체장애 6급)로 병역 신체검사 5급(제5국민역, 현 전시근로역) 판정',
+        status: 'fact',
+        src: '병무청 병적증명서 / 중앙선관위 병역공개자료',
+        url: 'https://info.nec.go.kr/'
+      },
+      {
+        d: '1982-03~1986-02',
+        typ: 'edu',
+        stage: '학업',
+        title: '중앙대학교 법과대학 법학과 졸업 (법학사)',
+        desc: '중앙대학교 법과대학 법학과 장학생 입학 (4년 등록금 전액 면제 및 매월 생활보조비 지급 혜택) 및 법학사(LL.B.) 학위 취득',
+        status: 'fact',
+        src: '중앙대학교 학위수여증명'
+      },
+      {
+        d: '1986-10',
+        typ: 'career',
+        stage: '사회 경력',
+        title: '제28회 사법시험 합격',
+        desc: '대학 재학 중 제28회 사법시험 합격 (사법연수원 입소 후 노무현 변호사의 강연을 듣고 판·검사 대신 노동·인권 변호사의 길 결심)',
+        status: 'fact',
+        src: '법무부 사법시험합격자명부'
+      },
+      {
+        d: '1987-03~1989-02',
+        typ: 'career',
+        stage: '사회 경력',
+        title: '사법연수원 제18기 수료',
+        desc: '사법연수원 수료 (제18기, 노동법학회 활동, 문병호·최원식 등과 동기)',
+        status: 'fact',
+        src: '사법연수원 공적 명부'
+      },
+      {
+        d: '1989-03',
+        typ: 'career',
+        stage: '사회 경력',
+        title: '변호사이재명법률사무소 개업 (성남 노동·인권 변호사)',
+        desc: '경기도 성남시에서 변호사 사무소를 개업하여 노동자 무료 변론 및 시국사건 인권 변호 활동 전개',
+        status: 'fact',
+        src: '대한변호사협회 등록원부'
+      },
+      {
+        d: '1995-03',
+        typ: 'career',
+        stage: '사회 경력',
+        title: '성남시민모임 창립 및 집행위원장',
+        desc: '시민운동단체 성남시민모임 창립 주도 및 분당 백궁·정자지구 용도변경 특혜 비리 의혹 고발 등 시민권익 보호 활동 주도',
+        status: 'fact',
+        src: '성남시민모임 창립 공보'
+      },
+      {
+        d: '2004-03',
+        typ: 'career',
+        stage: '사회 경력',
+        title: '성남시립병원설립추진위원회 공동대표',
+        desc: '성남 인하병원·신흥병원 폐업에 맞서 성남시민 20만 명 서명운동을 통한 지방자치 최초 주민발의 시립의료원 설립 조례안 발의 주도',
+        status: 'fact',
+        src: '성남시립병원설립추진위 공보'
+      },
+      {
+        d: '2006-05',
+        typ: 'election',
+        stage: '정치 활동',
+        title: '제4회 전국동시지방선거 성남시장 후보 출마',
+        desc: '열린우리당 후보로 경기도 성남시장 선거 출마',
+        status: 'fact',
+        src: '중앙선거관리위원회 선거정보시스템',
+        url: 'https://info.nec.go.kr/'
+      },
+      {
+        d: '2010-07~2014-06',
+        typ: 'office',
+        stage: '정치 활동',
+        title: '민선 5기 경기도 성남시장 취임 (초선)',
+        desc: '지방재정 모라토리엄 선언 및 재정건전화 달성, 3대 무상복지(청년배당, 무상교복, 공공산후조리) 추진',
+        status: 'fact',
+        src: '성남시청 시정백서 / 행정안전부'
+      },
+      {
+        d: '2014-07~2018-03',
+        typ: 'office',
+        stage: '정치 활동',
+        title: '민선 6기 경기도 성남시장 역임 (재선)',
+        desc: '성남FC 시민구단 창단, 성남시립의료원 착공 등 전국 기초지자체 평가 최상위권 달성',
+        status: 'fact',
+        src: '성남시청 시정백서'
+      },
+      {
+        d: '2018-07~2021-10',
+        typ: 'office',
+        stage: '정치 활동',
+        title: '제35대 경기도지사 역임 (민선 7기)',
+        desc: '경기도 청년기본소득, 전 도민 재난기본소득, 닥터헬기 도입, 계곡·하천 불법시설물 정비 및 공공환원 추진',
+        status: 'fact',
+        src: '경기도청 도정백서'
+      },
+      {
+        d: '2022-06~2024-05',
+        typ: 'election',
+        stage: '정치 활동',
+        title: '제21대 국회의원 당선 (더불어민주당 · 인천 계양구을)',
+        desc: '보궐선거 당선 및 외교통일위원회 위원 활동',
+        status: 'fact',
+        src: '열린국회정보(국회 공개 API)',
+        url: 'https://open.assembly.go.kr/'
+      },
+      {
+        d: '2022-08~2025-04',
+        typ: 'party',
+        stage: '정치 활동',
+        title: '더불어민주당 제6대 당대표 (연임)',
+        desc: '더불어민주당 전당대회 당선 및 당대표 역임',
+        status: 'fact',
+        src: '더불어민주당 당사'
+      },
+      {
+        d: '2024-05~2025-06',
+        typ: 'election',
+        stage: '정치 활동',
+        title: '제22대 국회의원 당선 (더불어민주당 · 인천 계양구을)',
+        desc: '인천 계양구을 국회의원 당선',
+        status: 'fact',
+        src: '열린국회정보(국회 공개 API)',
+        url: 'https://open.assembly.go.kr/'
+      },
+      {
+        d: '2025-06',
+        typ: 'office',
+        stage: '정치 활동',
+        title: '대한민국 제21대 대통령 취임',
+        desc: '대한민국 제21대 대통령 당선 및 공식 취임 (국가원수 및 행정부 수반)',
+        status: 'fact',
+        src: '대한민국 대통령실 / 중앙선거관리위원회',
+        url: 'https://info.nec.go.kr/'
+      }
+    ]
+  }
+};
+
+ARC_MASTER_PROFILES['IUD9392R'] = ARC_MASTER_PROFILES['이재명'];
+
+function enrichArcDetail(aDetail, personName, polId){
+  const key = personName || polId;
+  const master = ARC_MASTER_PROFILES[personName] || ARC_MASTER_PROFILES[polId];
+  if(!aDetail && !master) return null;
+  const base = aDetail ? { ...aDetail, events: [...(aDetail.events || [])] } : { id: polId || key, name: personName || key, events: [] };
+  if(!base.events) base.events = [];
+  if(master){
+    if(master.military && !base.military) base.military = master.military;
+    master.events.forEach(me => {
+      const normTitle = (me.title || '').replace(/\s+/g, '');
+      const matchIdx = base.events.findIndex(be => {
+        const bNorm = (be.title || '').replace(/\s+/g, '');
+        return (be.d === me.d && (bNorm.includes(normTitle) || normTitle.includes(bNorm))) ||
+               (bNorm === normTitle);
+      });
+      if(matchIdx >= 0){
+        base.events[matchIdx] = { ...base.events[matchIdx], ...me };
+      } else {
+        base.events.push({ ...me });
+      }
+    });
+  }
+
+  // 날짜 기준 오름차순 정렬
+  base.events.sort((a, b) => {
+    const da = (a.d || '').replace(/[^0-9]/g, '').slice(0, 8);
+    const db = (b.d || '').replace(/[^0-9]/g, '').slice(0, 8);
+    return da.localeCompare(db);
+  });
+
+  return base;
+}
 
 function polWon(v){
   if(v==null)return'-';
@@ -1162,6 +1411,7 @@ function arcEvItem(e){
     <div>
       <time>${esc(dateFormatted)}</time>
       <b>${esc(e.title)}</b>
+      ${e.desc ? `<div class="arc-ev-desc">${esc(e.desc).replace(/\n/g, '<br>')}</div>` : ''}
       <small>
         ${e.status==='allegation'?`<em class="arc-tag al">${esc(x.stage||'의혹')} 단계 · 확정 아님</em>`:e.status==='confirmed'?'<em class="arc-tag cf">확정</em>':e.status==='report'?'<em class="arc-tag rp">보도</em>':''}
         ${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener" class="arc-src-link">${plogo(e.src, e.url, 'q-press-emb')}${esc(e.src||'출처')} ↗</a>`:(e.src?`<span>${plogo(e.src, '', 'q-press-emb')}${esc(e.src)}</span>`:'')}
@@ -2390,25 +2640,39 @@ async function loadFullPersonData(name, polId){
   }
   if(!polId)return null;
 
-  const [polDetail, arcDetail, graphDetail, histDetail]=await Promise.all([
+  const [polDetail, arcDetailRaw, graphDetail, histDetail]=await Promise.all([
     fetch(`data/pol/people/${encodeURIComponent(polId)}.json`).then(r=>r.ok?r.json():null).catch(()=>null),
     fetch(`https://newsboard-sync.pyw213.workers.dev/archive/person/${encodeURIComponent(polId)}`).then(r=>r.ok?r.json():null).catch(()=>null),
     fetch(`https://newsboard-sync.pyw213.workers.dev/archive/graph/${encodeURIComponent(polId)}`).then(r=>r.ok?r.json():null).catch(()=>null),
     fetchHistoryPersonData(polId)
   ]);
 
+  const arcDetail = enrichArcDetail(arcDetailRaw, name, polId);
+  if(polDetail && arcDetail?.military && !polDetail.military){
+    polDetail.military = arcDetail.military;
+  }
+
   return { id: polId, pol: polDetail, arc: arcDetail, graph: graphDetail, history: histDetail };
 }
 
-function renderProfFactsHtml(pDetail){
-  if(!pDetail) return '';
+function renderProfFactsHtml(pDetail, aDetail){
+  if(!pDetail && !aDetail) return '';
+  const p = pDetail || {};
+  const mil = p.military || aDetail?.military || '';
+  const agesArr = p.ages || aDetail?.data?.ages || [];
+  const reelectText = p.reelect || (agesArr.length > 1 ? (agesArr.length === 2 ? '재선' : `${agesArr.length}선`) : (agesArr.length === 1 ? '초선' : '-'));
+  const agesText = agesArr.map(a => a + '대').join(', ') || '-';
+  const birthText = fDate(p.birth || aDetail?.birth);
+  const commText = p.committees || (aDetail?.data?.district ? `${aDetail.data.district} (전)` : '');
+
   return `<div class="prof-facts">
-    <div class="fact-item"><span class="flab">선수</span><strong class="fval">${esc(pDetail.reelect||'초선')}</strong></div>
-    <div class="fact-item"><span class="flab">당선</span><strong class="fval">${(pDetail.ages||[]).map(a=>a+'대').join(', ')||'-'}</strong></div>
-    <div class="fact-item"><span class="flab">출생</span><strong class="fval">${esc(fDate(pDetail.birth))}</strong></div>
-    ${pDetail.committees?`<div class="fact-item fact-wide"><span class="flab">상임위</span><strong class="fval" title="${esc(pDetail.committees)}">${esc(pDetail.committees)}</strong></div>`:''}
-    ${pDetail.office?`<div class="fact-item"><span class="flab">의원실</span><strong class="fval" title="${esc(pDetail.office)}">${esc(pDetail.office)}</strong></div>`:''}
-    ${pDetail.email?`<div class="fact-item fact-wide"><span class="flab">이메일</span><strong class="fval"><a href="mailto:${esc(pDetail.email)}" class="prof-email-link">${esc(pDetail.email)}</a></strong></div>`:''}
+    <div class="fact-item"><span class="flab">선수</span><strong class="fval">${esc(reelectText)}</strong></div>
+    <div class="fact-item"><span class="flab">당선</span><strong class="fval">${esc(agesText)}</strong></div>
+    <div class="fact-item"><span class="flab">출생</span><strong class="fval">${esc(birthText)}</strong></div>
+    ${mil?`<div class="fact-item fact-wide"><span class="flab">병역</span><strong class="fval" title="${esc(mil)}">${esc(mil)}</strong></div>`:''}
+    ${commText?`<div class="fact-item fact-wide"><span class="flab">상임위</span><strong class="fval" title="${esc(commText)}">${esc(commText)}</strong></div>`:''}
+    ${p.office?`<div class="fact-item"><span class="flab">의원실</span><strong class="fval" title="${esc(p.office)}">${esc(p.office)}</strong></div>`:''}
+    ${p.email?`<div class="fact-item fact-wide"><span class="flab">이메일</span><strong class="fval"><a href="mailto:${esc(p.email)}" class="prof-email-link">${esc(p.email)}</a></strong></div>`:''}
   </div>`;
 }
 
@@ -2769,14 +3033,14 @@ function renderEntityDashboard(n, e, preloadedRes){
             elDesc.innerHTML=`${p.party?`<b style="color:var(--pc);font-weight:800;">${esc(p.party)}</b> `:''}${esc(liveRole?.label||`${p.district?p.district+' · ':''}대한민국 제${(p.ages||[]).slice(-1)[0]||22}대 국회의원`)}`;
           }
         }
-        if(pDetail){
+        if(pDetail || aDetail){
           let elFacts=elProf.querySelector('.prof-facts-area');
           if(!elFacts){
             elFacts=document.createElement('div');
             elFacts.className='prof-facts-area';
             elProf.querySelector('.row')?.after(elFacts);
           }
-          elFacts.innerHTML=renderProfFactsHtml(pDetail);
+          elFacts.innerHTML=renderProfFactsHtml(pDetail, aDetail);
         }
         let elPolLink=elProf.querySelector('.pol-link');
         if(!elPolLink){
