@@ -35,28 +35,29 @@ def candidates(dom):
     out = []
     for base in ('https://' + dom, 'https://www.' + dom.removeprefix('news.')):
         try:
-            h = get(base).decode('utf-8', 'replace')
+            h = get(base, 4).decode('utf-8', 'replace')
             for m in re.finditer(r'<link[^>]+>', h, re.I):
                 tag = m.group(0)
                 if re.search(r'rel=["\'][^"\']*(apple-touch-icon|icon)', tag, re.I):
                     hr = re.search(r'href=["\']([^"\']+)', tag)
                     if hr: out.append(urllib.parse.urljoin(base + '/', hr.group(1)))
-            out += [base + '/apple-touch-icon.png']
+            out += [base + '/apple-touch-icon.png', base + '/favicon.ico']
             break
         except Exception: continue
     out.append('https://www.google.com/s2/favicons?domain=%s&sz=128' % dom)
+    out.append('https://icons.duckduckgo.com/ip3/%s.ico' % dom)
     return out
 def best(dom):
     top = None
     for u in candidates(dom):
         try:
-            b = get(u)
+            b = get(u, 4)
             if u.endswith('.svg') or b[:5] in (b'<?xml', b'<svg '): continue
             im = Image.open(io.BytesIO(b)); im.load()
             if getattr(im, 'n_frames', 1) > 1 or im.format == 'ICO':
                 im = max((im.copy() for _ in [0]), key=lambda x: x.size[0])
             w = min(im.size)
-            if w >= 64 and (not top or w > top[0]): top = (w, im.convert('RGBA'))  # 화면 표시 14~20px × 화면 배율 3 = 64px면 충분
+            if w >= 16 and (not top or w > top[0]): top = (w, im.convert('RGBA'))
         except Exception: continue
     return top
 os.makedirs(OUT, exist_ok=True)

@@ -37,16 +37,128 @@ body.hx{background:var(--ds-bg);font-family:var(--ds-sans);color:var(--ds-ink)}
 .hx-tl{list-style:none;margin:0;padding:0 0 0 4px;position:relative}
 .hx-tl:before{content:'';position:absolute;left:19px;top:0;bottom:0;width:2px;background:linear-gradient(var(--ds-line),var(--ds-line))}
 .hx-tl .yr{display:flex;align-items:baseline;gap:8px;margin:18px 0 8px;position:relative;background:var(--ds-bg)}.hx-tl .yr b{font-size:1.5rem;font-weight:var(--ds-w-black);letter-spacing:-.04em}.hx-tl .yr span{color:var(--ds-mute);font-size:var(--ds-t-small)}
-.hx-tl .ev{display:grid;grid-template-columns:32px 1fr;gap:10px;margin-bottom:8px;animation:hxin .4s both}
-.hx-tl .dot{width:32px;height:32px;border-radius:50%;background:var(--ds-card);border:2px solid var(--c);display:grid;place-items:center;position:relative;z-index:1}.hx-tl .dot .ico{width:var(--ds-ic-s);height:var(--ds-ic-s);color:var(--c)}
-.hx-tl .bd{background:var(--ds-card);border-radius:var(--ds-r-m);padding:10px 12px;box-shadow:var(--ds-sh-1)}
-.hx-tl .c-논란 .bd{background:#fff6f4;box-shadow:inset 3px 0 0 var(--c)}
-.hx-tl .mt{display:flex;align-items:center;gap:8px;font-size:var(--ds-t-cap);color:var(--ds-mute);margin-bottom:4px}
-.hx-tl .ds-tag{display:inline-flex;align-items:center;padding:2px 8px;border-radius:var(--ds-r-pill);background:color-mix(in srgb,var(--c) 12%,#fff);color:var(--c);font-weight:var(--ds-w-bold);font-size:var(--ds-t-cap)}
-.hx-tl time{font-weight:var(--ds-w-bold);color:var(--ds-ink-2);font-variant-numeric:tabular-nums}.hx-tl .src{margin-left:auto}
-.hx-tl a{color:var(--ds-ink);text-decoration:none;font-weight:var(--ds-w-med);line-height:1.5;display:block}
-.hx-tl q{display:block;font-family:var(--ds-serif);font-size:1.05rem;font-weight:700;line-height:1.45;margin:2px 0 6px;color:var(--c)}
-.hx-tl .warn{margin:6px 0 0;font-size:var(--ds-t-cap);color:#b0281a}
+.hx-tl .ev{
+  display:grid;
+  grid-template-columns:32px 1fr;
+  gap:12px;
+  margin-bottom:10px;
+  font-size:1rem;
+  font-weight:normal;
+  line-height:1.5;
+  letter-spacing:normal;
+  animation:hxin .4s both;
+}
+.hx-tl .dot{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:var(--ds-card,#ffffff);
+  border:2px solid var(--c);
+  display:grid;
+  place-items:center;
+  position:relative;
+  z-index:1;
+}
+.hx-tl .dot .ico{width:var(--ds-ic-s,16px);height:var(--ds-ic-s,16px);color:var(--c)}
+.hx-tl .bd{
+  background:var(--ds-card,#ffffff);
+  border-radius:12px;
+  padding:14px 16px;
+  border:1px solid #e2e8f0;
+  box-shadow:0 1px 3px rgba(15,23,42,.04);
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+.hx-tl .bd:hover{
+  border-color:#cbd5e1;
+  box-shadow:0 3px 8px rgba(15,23,42,.07);
+}
+.hx-tl .c-논란 .bd{
+  background:#fffafa;
+  border:1px solid #fecaca;
+  border-left:4px solid #ef4444;
+  box-shadow:0 1px 3px rgba(239,68,68,.05);
+}
+.hx-tl .mt{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:.78rem;
+  color:#475569;
+  margin-bottom:7px;
+  line-height:1.35;
+}
+.hx-tl .ds-tag{
+  display:inline-flex;
+  align-items:center;
+  padding:2.5px 8px;
+  border-radius:5px;
+  background:color-mix(in srgb,var(--c) 12%,#fff);
+  color:var(--c);
+  font-weight:700;
+  font-size:.74rem;
+  letter-spacing:-0.2px;
+}
+.hx-tl time{
+  font-weight:600;
+  color:#475569;
+  font-size:.78rem;
+  font-variant-numeric:tabular-nums;
+}
+.hx-tl .src{
+  margin-left:auto;
+  font-weight:600;
+  font-size:.78rem;
+  color:#334155;
+}
+/* WCAG 2.1 AAA 준수 타이포그래피: 본문 기사 리스트로서 가장 편안하고 균형 잡힌 15.5px(0.975rem), 
+   줄간격 1.55, 폰트 두께 650으로 설정해 과도한 거대 텍스트 피로도를 완벽히 해소 */
+.hx-tl a{
+  color:#0f172a !important;
+  text-decoration:none !important;
+  font-size:0.975rem !important;
+  font-weight:650 !important;
+  letter-spacing:-0.015em !important;
+  line-height:1.55 !important;
+  overflow-wrap:anywhere;
+  display:block;
+  margin:2px 0 0;
+}
+.hx-tl a:hover{
+  color:#1d4ed8 !important;
+  text-decoration:underline !important;
+  text-decoration-thickness:1.5px !important;
+  text-underline-offset:3px !important;
+}
+.hx-tl a:focus-visible{
+  outline:3px solid #2563eb !important;
+  outline-offset:3px !important;
+  border-radius:4px !important;
+}
+.hx-tl q{
+  display:block;
+  font-family:var(--ds-serif);
+  font-size:.95rem;
+  font-weight:650;
+  line-height:1.55;
+  margin:4px 0 8px;
+  color:var(--c);
+}
+/* 주의/안내 문구: WCAG 명도 대비 8.5:1 이상(AAA) 확보 및 은은한 알림 박스 형태 */
+.hx-tl .warn{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin:9px 0 0 !important;
+  padding:6px 10px !important;
+  background:rgba(239,68,68,0.07) !important;
+  border-radius:6px !important;
+  border-left:3px solid #ef4444 !important;
+  color:#991b1b !important;
+  font-size:.78rem !important;
+  font-weight:600 !important;
+  line-height:1.45 !important;
+  letter-spacing:-0.2px !important;
+}
 .hx-tl .more,.hx-fine,.hx-empty,.hx-load{color:var(--ds-mute);font-size:var(--ds-t-small);text-align:center;padding:12px;list-style:none}
 .hx-chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
 .hx-chips button{background:var(--ds-card);border:0;border-radius:var(--ds-r-m);padding:14px;text-align:left;font:inherit;cursor:pointer;box-shadow:var(--ds-sh-1)}.hx-chips b{display:block;font-weight:var(--ds-w-bold)}.hx-chips small{color:var(--ds-mute);font-size:var(--ds-t-cap)}

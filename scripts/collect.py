@@ -248,7 +248,14 @@ for c in clusters:
     c['score'] = sum(a['w'] for a in A) * (1 + 0.15 * (len(presses) - 1))
     kc = collections.Counter(n for a in A for n in a['nouns'])
     c['keywords'] = [k for k, _ in kc.most_common(8) if df[k] < N * 0.2][:6]
-    c['proper'] = [k for k, _ in collections.Counter(n for a in A for n in a['proper']).most_common(5)]
+    raw_proper = [k for k, _ in collections.Counter(n for a in A for n in a['proper']).most_common(10)]
+    seen_prop = {}
+    for n in raw_proper:
+        k = re.sub(r'[\s\-_.]+', '', n).lower()
+        if not k: continue
+        if k not in seen_prop or (' ' in n and ' ' not in seen_prop[k]) or len(n) > len(seen_prop[k]):
+            seen_prop[k] = n
+    c['proper'] = list(seen_prop.values())[:5]
     c['trend'] = [k for k in trend_kw if any(k.replace(' ', '') in a['title'].replace(' ', '') for a in A)]
     if c['trend']: c['score'] *= 1.25
     srcs = set(portal_name(a['src']) for a in A)

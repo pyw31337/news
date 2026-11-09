@@ -68,20 +68,39 @@ def page(cid, name):
     """RSS가 막힐 때(키 없이): 채널 공개 '동영상' 페이지에서 최근 영상 목록을 읽음."""
     try:
         h = urllib.request.urlopen(urllib.request.Request(f'https://www.youtube.com/channel/{cid}/videos', headers={'User-Agent': 'Mozilla/5.0', 'Accept-Language': 'ko-KR'}), timeout=15).read().decode('utf-8', 'ignore')
-        out, seen = [], set()
-        for m in re.finditer(r'"contentId":"([\w-]{11})","contentType":"LOCKUP_CONTENT_TYPE_VIDEO"', h):
-            vid = m.group(1)
-            if vid in seen: continue
-            w = h[m.end():m.end() + 30000]; tm = re.search(r'"lockupMetadataViewModel":\{"title":\{"content":"((?:[^"\\]|\\.)*)"', w)
-            if not tm: continue
-            seen.add(vid); t = json.loads('"' + tm.group(1) + '"')
-            vm = re.search(r'"accessibilityLabel":"조회수 ([\d,]+)회', w[tm.end():tm.end() + 800])
-            out.append({'id': vid, 'title': t, 'ch': name, 'pf': 'youtube', 'url': f'https://www.youtube.com/watch?v={vid}', 'thumb': f'https://i.ytimg.com/vi/{vid}/mqdefault.jpg',
-                        'views': int(vm.group(1).replace(',', '')) if vm else 0, 't': now.isoformat(timespec='seconds'), '_d': ''})
-            if len(out) >= 30: break
-        diag['page_ok'] = diag.get('page_ok', 0) + (1 if out else 0); return out
+        out = []
+        m = re.search(r'var ytInitialData = ({.*?});</script>', h)
+        if m:
+            data = json.loads(m.group(1))
+            lockups = []
+            def find_lockups(obj):
+                if isinstance(obj, dict):
+                    if 'lockupViewModel' in obj: lockups.append(obj['lockupViewModel'])
+                    for v in obj.values(): find_lockups(v)
+                elif isinstance(obj, list):
+                    for item in obj: find_lockups(item)
+            find_lockups(data)
+            for lk in lockups:
+                vid = lk.get('contentId')
+                if not vid: continue
+                meta = lk.get('metadata', {}).get('lockupMetadataViewModel', {})
+                title = meta.get('title', {}).get('content')
+                if not title: continue
+                views = 0
+                meta_rows = meta.get('metadata', {}).get('contentMetadataViewModel', {}).get('metadataRows', [])
+                for r in meta_rows:
+                    for p in r.get('parts', []):
+                        txt = p.get('text', {}).get('content', '')
+                        vm = re.search(r'([\d,]+)회', txt)
+                        if vm: views = int(vm.group(1).replace(',', ''))
+                out.append({'id': vid, 'title': title, 'ch': name, 'pf': 'youtube', 'url': f'https://www.youtube.com/watch?v={vid}', 'thumb': f'https://i.ytimg.com/vi/{vid}/mqdefault.jpg',
+                            'views': views, 't': now.isoformat(timespec='seconds'), '_d': ''})
+                if len(out) >= 30: break
+            diag['page_ok'] = diag.get('page_ok', 0) + (1 if out else 0)
+            return out
     except Exception as e:
-        diag['errors'].append(f'page {getattr(e, "code", type(e).__name__)}'); return []
+        diag['errors'].append(f'page {getattr(e, "code", type(e).__name__)}')
+    return []
 def rss():
     V = []
     for cid, name in CH.items():

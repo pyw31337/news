@@ -24,3 +24,8 @@
 
 .vdot:before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--c);margin-right:6px}.vdot{color:var(--c)}
 .vqc small .ico,.vht .ico{width:.9em;height:.9em;vertical-align:-1px}
+.vmerge{margin-top:16px;background:var(--ds-bg-elevated,#fafafa);border:1px solid var(--ds-line,#eee)}
+.vmore-wrap{margin-top:12px;text-align:center}
+.vmore-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:20px;background:var(--ds-card-elevated,#fff);border:1px solid var(--ds-line,#e0e0e0);font-size:.84rem;font-weight:600;color:var(--ds-ink,#222);text-decoration:none;box-shadow:var(--ds-sh-1,0 1px 3px rgba(0,0,0,.06));transition:all .15s}
+.vmore-btn:hover{background:var(--ds-brand,#ff4d2e);color:#fff;border-color:var(--ds-brand,#ff4d2e)}
+.vmore-btn .ico{width:1.1em;height:1.1em;vertical-align:-2px}

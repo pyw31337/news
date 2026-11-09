@@ -143,6 +143,8 @@ jobs:
         continue-on-error: true
         timeout-minutes: 5
         run: python scripts/people/mentions.py data
+      - name: 오늘의 이슈 정합성 검증 및 소독(Sanitize)
+        run: python scripts/sanitize_today.py data/today.json
       - name: 품질 점수(사진·기사·이슈·인물 채점 → 좋은 것 먼저 배열, docs/QUALITY.md)
         continue-on-error: true
         timeout-minutes: 6

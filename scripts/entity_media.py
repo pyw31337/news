@@ -91,6 +91,11 @@ def wikidata_files(title):
     # 원형·정사각 배지에는 심볼(P8972 작은 로고·아이콘), 가로로 긴 자리에는 심볼+글자 로고(P154)
     return value('P154'), value('P18'), value('P8972')
 
+def pol_priority(p):
+    ages = p.get('ages') or []
+    latest_age = max(ages) if ages else 0
+    return (1 if p.get('current') else 0, latest_age, len(ages))
+
 _POL_MAP = None
 def load_politicians():
     global _POL_MAP
@@ -121,7 +126,7 @@ def load_politicians():
         for p in data.get('people', []):
             name = p.get('name')
             if name:
-                if name not in _POL_MAP or (p.get('current') and not _POL_MAP[name].get('current')):
+                if name not in _POL_MAP or pol_priority(p) > pol_priority(_POL_MAP[name]):
                     _POL_MAP[name] = p
     return _POL_MAP
 
@@ -131,6 +136,33 @@ def resolve(entity, cache):
     entity['type'] = typ
     if name in COUNTRIES:
         return {'url': 'https://flagcdn.com/w320/%s.png' % COUNTRIES[name], 'kind': 'flag'}
+
+    # Wiki desc fallback from extract if desc is empty
+    wiki = entity.get('wiki') or {}
+    if not wiki.get('desc') and wiki.get('extract'):
+        sent = re.split(r'(?<=[.!?다요])\s+', wiki['extract'])[0].strip()
+        if sent and len(sent) < 80:
+            wiki['desc'] = sent
+            entity['wiki'] = wiki
+
+    # 대통령(전·현직) 등 국가원수는 국회의원 명부의 옛 증명사진보다 위키데이터/위키백과의 공식 대통령 초상화(P18)를 최우선 적용
+    is_president = bool(re.search(r'대통령', (wiki.get('desc') or '') + ' ' + (wiki.get('extract') or '')))
+
+    key = '%s:%s' % (typ, name)
+    cached = cache.get(key)
+    # 예전 캐시의 로고는 심볼·가로형 구분 전이라 한 번 다시 확인
+    # 단, 대통령인데 pol_id(국회의원 사진)로 잘못 캐시되어 있는 경우는 재평가
+    if isinstance(cached, dict) and cached.get('url') and not (cached.get('kind') == 'logo' and 'symchk' not in cached):
+        if not (is_president and cached.get('pol_id')):
+            return cached
+
+    logo, photo, sym = wikidata_files(wiki.get('title') or name)
+
+    # 대통령이고 위키데이터에 초상 사진이 있다면 공식 초상화 적용
+    if is_president and photo:
+        visual = {'url': commons_file(photo), 'kind': 'portrait'}
+        cache[key] = dict(visual, updated=int(time.time()))
+        return visual
 
     pols = load_politicians()
     pol = pols.get(name) if pols else None
@@ -145,25 +177,8 @@ def resolve(entity, cache):
         pol_photo = pol.get('photo_local') or pol.get('photo')
         if pol_photo:
             visual = {'url': pol_photo, 'kind': 'portrait', 'pol_id': pol.get('id')}
-            key = '%s:%s' % (typ, name)
             cache[key] = dict(visual, updated=int(time.time()))
             return visual
-
-    # Wiki desc fallback from extract if desc is empty
-    wiki = entity.get('wiki') or {}
-    if not wiki.get('desc') and wiki.get('extract'):
-        sent = re.split(r'(?<=[.!?다요])\s+', wiki['extract'])[0].strip()
-        if sent and len(sent) < 80:
-            wiki['desc'] = sent
-            entity['wiki'] = wiki
-
-    key = '%s:%s' % (typ, name)
-    cached = cache.get(key)
-    # 예전 캐시의 로고는 심볼·가로형 구분 전이라 한 번 다시 확인
-    if isinstance(cached, dict) and cached.get('url') and not (cached.get('kind') == 'logo' and 'symchk' not in cached):
-        return cached
-
-    logo, photo, sym = wikidata_files(wiki.get('title') or name)
     if typ == 'org' and (logo or sym):
         visual = {'url': commons_file(sym or logo), 'kind': 'logo'}
         if logo: visual['wide'] = commons_file(logo)

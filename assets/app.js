@@ -119,8 +119,28 @@ function partyMark(party,size=20,mode=false){
   if(mode==='white-icon')return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark"><circle cx="12" cy="12" r="9" stroke="#ffffff" stroke-width="1.5"/><text x="12" y="15" text-anchor="middle" font-size="7" font-weight="900" fill="#ffffff">국회</text></svg>`;
   return`<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" class="p-mark" aria-label="국회"><circle cx="12" cy="12" r="10.5" fill="${mode?'#ffffff':'#475569'}" stroke="#94a3b8" stroke-width="1"/><circle cx="12" cy="12" r="8" fill="none" stroke="${mode?'#475569':'#e2e8f0'}" stroke-width="0.8" stroke-dasharray="1.5 1.5"/><text x="12" y="15" text-anchor="middle" font-size="7" font-weight="900" fill="${mode?'#475569':'#ffffff'}" font-family="'Pretendard Variable',sans-serif">국회</text></svg>`;
 }
+/* 대한민국 헌정사 역대 및 현직 대통령 마스터 데이터 (국가 최고 원수 직무 서열 1순위) */
+const KOREA_PRESIDENTS = {
+  '이재명': { ord: '제21대', current: true, title: '대한민국 제21대 대통령', badge: '현직 대통령', rank: 10000, subBadges: ['제21·22대 국회의원', '제35대 경기도지사', '민선 5·6기 성남시장'] },
+  '윤석열': { ord: '제20대', current: false, title: '대한민국 제20대 대통령', badge: '제20대 대통령', rank: 9900, subBadges: ['제43대 검찰총장'] },
+  '문재인': { ord: '제19대', current: false, title: '대한민국 제19대 대통령', badge: '제19대 대통령', rank: 9900, subBadges: ['제19대 국회의원', '대통령비서실장'] },
+  '박근혜': { ord: '제18대', current: false, title: '대한민국 제18대 대통령', badge: '제18대 대통령', rank: 9900, subBadges: ['제15·16·17·18·19대 국회의원'] },
+  '이명박': { ord: '제17대', current: false, title: '대한민국 제17대 대통령', badge: '제17대 대통령', rank: 9900, subBadges: ['제32대 서울특별시장', '제14·15대 국회의원'] },
+  '노무현': { ord: '제16대', current: false, title: '대한민국 제16대 대통령', badge: '제16대 대통령', rank: 9900, subBadges: ['제13·15대 국회의원', '해양수산부 장관'] },
+  '김대중': { ord: '제15대', current: false, title: '대한민국 제15대 대통령', badge: '제15대 대통령', rank: 9900, subBadges: ['제6·7·8·13·14대 국회의원', '노벨평화상 수상'] },
+  '김영삼': { ord: '제14대', current: false, title: '대한민국 제14대 대통령', badge: '제14대 대통령', rank: 9900, subBadges: ['제3·5·6·7·8·9·10·13·14대 9선 국회의원'] },
+  '노태우': { ord: '제13대', current: false, title: '대한민국 제13대 대통령', badge: '제13대 대통령', rank: 9900, subBadges: ['제12대 국회의원', '내무부 장관'] },
+  '전두환': { ord: '제11·12대', current: false, title: '대한민국 제11·12대 대통령', badge: '역대 대통령', rank: 9900, subBadges: ['국가보위비상대책상임위원장'] },
+  '최규하': { ord: '제10대', current: false, title: '대한민국 제10대 대통령', badge: '역대 대통령', rank: 9900, subBadges: ['제12대 국무총리', '외무부 장관'] },
+  '박정희': { ord: '제5~9대', current: false, title: '대한민국 제5~9대 대통령', badge: '역대 대통령', rank: 9900, subBadges: ['국가재건최고회의 의장'] },
+  '윤보선': { ord: '제4대', current: false, title: '대한민국 제4대 대통령', badge: '역대 대통령', rank: 9900, subBadges: ['제3·4·5대 국회의원', '제2대 서울특별시장'] },
+  '이승만': { ord: '초대~3대', current: false, title: '대한민국 초대~3대 대통령', badge: '초대 대통령', rank: 9900, subBadges: ['제헌국회 의장', '임시정부 초대 대통령'] }
+};
+
 function entDesc(e){
   if(!e)return'';
+  const role=primaryPublicRole(e,getPol(e.name));
+  if(role)return role.label;
   if(e.wiki&&e.wiki.desc)return e.wiki.desc;
   const p=getPol(e.name);
   if(p)return`제${(p.ages||[]).slice(-1)[0]||22}대 국회의원 (${p.party||''}${p.district?' · '+p.district:''})`;
@@ -133,6 +153,75 @@ function entDesc(e){
     if(s&&s.length<80)return s;
   }
   return TYPE[e.type]||'';
+}
+
+/* 직함은 단순히 수집 순서대로 노출하지 않는다. 대통령·국무총리처럼 공적 서열이
+   높은 직무가 국회의원 같은 과거·병행 이력보다 먼저 보이도록 한다. */
+function primaryPublicRole(e,pol){
+  const name=e?.name||pol?.name||'';
+  if(KOREA_PRESIDENTS[name]){
+    const pres=KOREA_PRESIDENTS[name];
+    return{
+      rank:pres.rank,
+      label:pres.title,
+      badge:pres.badge,
+      kind:'president',
+      current:pres.current,
+      ord:pres.ord,
+      subBadges:pres.subBadges||[]
+    };
+  }
+  const texts=[
+    e?.wiki?.desc,e?.wiki?.extract,pol?.office,pol?.position,pol?.role,
+    ...(Array.isArray(pol?.history)?pol.history:[])
+  ].filter(Boolean).map(String);
+  const candidates=[];
+  const add=(rank,label,badge,kind,current=false)=>candidates.push({rank,label,badge,kind,current});
+  texts.forEach(text=>{
+    if(/(?<!선거|후보\s*)(?:대한민국(?:의)?\s*)?(제\s*\d+대\s*)?대통령(?!\s*후보|\s*선거)/.test(text)){
+      const m=text.match(/(?:대한민국(?:의)?\s*)?(제\s*\d+대\s*)?대통령/);
+      const ord=(m?.[1]||'').replace(/\s/g,'');
+      add(10000,ord?`대한민국 ${ord} 대통령`:'대한민국 대통령','대통령','president',false);
+    }
+    if(/국무총리(?!\s*후보)/.test(text))add(9000,'대한민국 국무총리','국무총리','prime-minister');
+    if(/국회의장(?!\s*후보)/.test(text))add(8500,'대한민국 국회의장','국회의장','speaker');
+    if(/대법원장/.test(text))add(8400,'대한민국 대법원장','대법원장','chief-justice');
+    if(/헌법재판소장/.test(text))add(8350,'대한민국 헌법재판소장','헌법재판소장','chief-justice');
+    if(/당대표|대표최고위원/.test(text))add(7500,text.match(/[^·,·()]{0,18}(?:당대표|대표최고위원)/)?.[0]?.trim()||'정당 대표','당대표','party-leader');
+    if(/원내대표/.test(text))add(7200,text.match(/[^·,·()]{0,18}원내대표/)?.[0]?.trim()||'원내대표','원내대표','floor-leader');
+    if(/장관(?!\s*후보)/.test(text))add(7000,text.match(/[^·,·()]{0,18}장관/)?.[0]?.trim()||'대한민국 장관','국무위원','minister');
+    if(/(특별시장|광역시장|도지사)/.test(text))add(6000,text.match(/[^·,·()]{0,18}(?:특별시장|광역시장|도지사)/)?.[0]?.trim()||'광역자치단체장','광역단체장','gov-chief');
+    if(/(시장|구청장|군수)/.test(text))add(4500,text.match(/[^·,·()]{0,18}(?:시장|구청장|군수)/)?.[0]?.trim()||'기초자치단체장','기초단체장','local-chief');
+    if(/국회의원|의원/.test(text))add(3000,'대한민국 국회의원','국회의원','legislator');
+  });
+  candidates.sort((a,b)=>b.rank-a.rank||a.label.length-b.label.length);
+  return candidates[0]||null;
+}
+
+function profilePhoto(e,pDetail,gDetail){
+  const center=(gDetail?.nodes||[]).find(n=>n?.id===gDetail?.center||n?.name===e?.name);
+  const pol=getPol(e?.name);
+  let u=pDetail?.photo||pDetail?.photo_local;
+  if(!u) u=pol?.photo||pol?.photo_local;
+  if(!u) u=center?.photo;
+  if(!u) u=entityMedia(e).url;
+  if(!u && (e?.name==='이재명'||pol?.name==='이재명')){
+    u='https://www.assembly.go.kr/static/portal/img/openassm/IUD9392R.jpg';
+  }
+  return u||'';
+}
+
+function publicOfficePill(role){
+  if(!role)return'';
+  if(role.kind==='president'){
+    return `<div class="prof-presidential-badge ${role.current?'current-pres':''}">
+      <span class="ppb-crown">${role.current?'👑':'🏛️'}</span>
+      <span class="ppb-title">${esc(role.label)}</span>
+      <span class="ppb-tag">${esc(role.badge)}</span>
+    </div>`;
+  }
+  const icon=role.kind==='prime-minister'?'landmark':'star-f';
+  return`<div class="prof-office-pill ${esc(role.kind)}">${ic(icon)}<span>${esc(role.badge)}</span><b>${esc(role.label)}</b></div>`;
 }
 function entityMedia(e){
   if(!e)return{url:'',kind:''};
@@ -401,12 +490,25 @@ function biasB(s){if(!s.bias)return'';return`<span class="bias ${s.bias.lean}" t
 function issue(id){
   const i=D.issues.find(x=>x.id===id);if(!i){today();app.insertAdjacentHTML('afterbegin','<div class="note">공유된 이슈가 지금 TOP 10에서 내려갔어요. 지난 이슈는 <a href="archive">아카이브</a>에서 볼 수 있어요.</div>');return}
   setMeta(i.title,Array.isArray(i.summary)?i.summary.join(' '):i.summary);
-  const ents=i.entities.map(ent).filter(Boolean),terms=[...i.entities,...i.keywords];
+  const seenEnt = new Set();
+  const ents = [];
+  (i.entities || []).map(ent).filter(Boolean).forEach(e => {
+    const k = (e.name || '').replace(/[\s\-_.]+/g, '').toLowerCase();
+    const wTitle = (e.wiki && e.wiki.title) ? e.wiki.title.replace(/[\s\-_.]+/g, '').toLowerCase() : '';
+    const wItem = (e.wiki && e.wiki.wikibase_item) ? e.wiki.wikibase_item.toLowerCase() : '';
+    if (!k || seenEnt.has(k) || (wTitle && seenEnt.has(wTitle)) || (wItem && seenEnt.has(wItem))) return;
+    seenEnt.add(k);
+    if (wTitle) seenEnt.add(wTitle);
+    if (wItem) seenEnt.add(wItem);
+    ents.push(e);
+  });
+  const entNames = ents.map(e => e.name);
+  const terms = [...entNames, ...i.keywords];
   app.innerHTML=`<div class="bkrow"><a class="back" href="./">${NBI('arrow-left')} 오늘의 TOP 10</a>${shareBtn()}</div>
   <section class="dgal" aria-label="이 사건 사진"></section>
   <article class="dhead card ds-head"><div class="bd"><div class="dh-top"><span class="dh-rank" aria-label="오늘의 이슈 ${i.rank}위"><b>${String(i.rank).padStart(2,'0')}</b><small>오늘의<br>이슈</small></span><span class="cat ${i.category}">${i.category}</span></div><h1 class="ds-title">${esc(i.title)}</h1>
     <div class="dh-bar"><div class="schips light">${schips(i,'')}</div><div class="dh-act"></div></div>
-    <div class="chips">${i.entities.map(n=>chipE(n)).join('')}${i.keywords.filter(k=>!i.entities.includes(k)).slice(0,4).map(k=>`<span class="ds-tag">#${esc(k)}</span>`).join('')}</div></div></article>
+    <div class="chips">${entNames.map(n=>chipE(n)).join('')}${i.keywords.filter(k=>!seenEnt.has(k.replace(/[\s\-_.]+/g,'').toLowerCase())).slice(0,4).map(k=>`<span class="ds-tag">#${esc(k)}</span>`).join('')}</div></div></article>
   ${i.easy&&i.easy.length?`<details class="easyb card" ${S.read==='easy'?'open':''}><summary>${ic('spark')}쉽게 풀어 보기<small>처음 보는 분도 이해하기 쉬운 말로</small></summary><ul>${i.easy.map(t=>`<li>${glossWrap(esc(t),i)}</li>`).join('')}</ul></details>`:''}
   ${i.gloss&&Object.keys(i.gloss).length?`<div class="glb"><b>이 기사 속 용어</b>${Object.entries(i.gloss).map(([w,m])=>`<span tabindex="0" data-tip="${esc(m)}">${esc(w)}</span>`).join('')}</div>`:''}
   <nav class="toc ds-tabs"><a href="#s-sum">${ic('news')}<span>요약</span></a><a href="#s-flow">${ic('clock')}<span>흐름</span></a><a href="#related">${ic('news')}<span>관련 기사</span></a><a href="#press">${ic('press')}<span>언론사</span></a><a href="#comments">${ic('chat')}<span>댓글</span></a></nav>
@@ -690,11 +792,13 @@ function eraChart(items, z, themeCol, pDetail){
 
 function makeHeroMetaRow(e, pol){
   const sub=SUB.find(x=>x[0]===subtype(e))?.[1]||TYPE[e.type];
+  const role=primaryPublicRole(e,pol);
   if(!pol){
-    return `<div class="ehero-meta-row"><span class="ehero-badge type-badge ${e.type}">${esc(sub)}</span></div>`;
+    return `<div class="ehero-meta-row">${role?`<span class="ehero-badge office-badge ${esc(role.kind)}">${ic(role.kind==='president'?'star-f':'landmark')}${esc(role.label)}</span>`:''}<span class="ehero-badge type-badge ${e.type}">${esc(sub)}</span></div>`;
   }
   const age=(pol.ages||[]).slice(-1)[0]||22;
-  return `<div class="ehero-meta-row"><span class="ehero-badge party-badge"><span class="pm-wrap">${partyMark(pol.party,16,true)}</span><b>${esc(pol.party)}</b></span><span class="ehero-badge">제${age}대 국회의원</span>${pol.district?`<span class="ehero-badge">${esc(pol.district)}</span>`:''}${pol.reelect?`<span class="ehero-badge">${esc(pol.reelect)}</span>`:''}<span class="ehero-badge type-badge ${e.type}">${esc(sub)}</span></div>`;
+  const legislator=role?.rank>300?'':`<span class="ehero-badge">제${age}대 국회의원</span>`;
+  return `<div class="ehero-meta-row"><span class="ehero-badge party-badge"><span class="pm-wrap">${partyMark(pol.party,16,true)}</span><b>${esc(pol.party)}</b></span>${role?`<span class="ehero-badge office-badge ${esc(role.kind)}">${ic(role.kind==='president'?'star-f':'landmark')}${esc(role.label)}</span>`:''}${legislator}${pol.district&&role?.rank<=300?`<span class="ehero-badge">${esc(pol.district)}</span>`:''}${pol.reelect&&role?.rank<=300?`<span class="ehero-badge">${esc(pol.reelect)}</span>`:''}<span class="ehero-badge type-badge ${e.type}">${esc(sub)}</span></div>`;
 }
 
 /* ---------- 통합 인물 & 정치인 상세 대시보드 헬퍼 ---------- */
@@ -1091,7 +1195,8 @@ function initArcGraphInteraction(wrap){
 
   const hintBar = wrap.querySelector('.arc-hint-bar .arc-hint-text');
   const defaultHint = '노드를 드래그하거나 롤오버하면 관계 선과 정보가 연결됩니다';
-  const W = 520, H = 320;
+  const BASE_W = 760, BASE_H = 360;
+  let W = BASE_W, H = BASE_H;
 
   const nodesById = {};
   wrap.querySelectorAll('.gn').forEach(g => {
@@ -1109,7 +1214,11 @@ function initArcGraphInteraction(wrap){
       ext: g.dataset.ext === 'true',
       x,
       y,
-      r: c ? 20 : 14,
+      bx: Number(g.dataset.bx || x),
+      by: Number(g.dataset.by || y),
+      br: Number(g.dataset.br || (c ? 24 : 16)),
+      r: Number(g.dataset.br || (c ? 24 : 16)),
+      center: g.dataset.center === '1',
       el: g
     };
   });
@@ -1117,10 +1226,7 @@ function initArcGraphInteraction(wrap){
   const edgeLines = wrap.querySelectorAll('.arc-edge');
   const flowLines = wrap.querySelectorAll('.arc-flow');
 
-  const updateNodePosition = (node, nx, ny) => {
-    const pad = 24;
-    node.x = Math.max(pad, Math.min(W - pad, nx));
-    node.y = Math.max(pad, Math.min(H - pad - 10, ny));
+  const syncEdges = (node) => {
     node.el.setAttribute('transform', `translate(${node.x.toFixed(1)},${node.y.toFixed(1)})`);
 
     edgeLines.forEach(l => {
@@ -1143,6 +1249,104 @@ function initArcGraphInteraction(wrap){
       }
     });
   };
+
+  const updateNodePosition = (node, nx, ny) => {
+    const labelHalf = Math.max(28, Math.min(84, (node.name||'').length * node.r * .46));
+    const padX = Math.max(node.r + 12, labelHalf + 6), padY = node.r + 14;
+    node.x = Math.max(padX, Math.min(W - padX, nx));
+    node.y = Math.max(padY, Math.min(H - (node.r + 34), ny));
+    syncEdges(node);
+  };
+
+  /* 반응형 자동 맞춤: 컨테이너 크기(W, H)에 맞게 노드 위치를 가변 확장하여
+     중앙에 축소되어 뭉치는 현상을 막고, 전체 영역을 시원하게 채운다.
+     모바일에서는 노드 크기와 폰트를 축소하여 글자가 겹치지 않게 최적화한다. */
+  const applyResponsiveLayout = () => {
+    const rect = wrap.getBoundingClientRect();
+    const nextW = Math.max(280, Math.round(rect.width || BASE_W));
+    const nextH = Math.max(260, Math.round(rect.height || BASE_H));
+    W = nextW; H = nextH;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+    const isMobile = W < 540;
+    const allNodes = Object.values(nodesById);
+    if(!allNodes.length) return;
+
+    // 원본 기준 좌표들의 최소/최대 바운딩 계산
+    let minBx = Infinity, maxBx = -Infinity, minBy = Infinity, maxBy = -Infinity;
+    allNodes.forEach(n => {
+      if(n.bx < minBx) minBx = n.bx;
+      if(n.bx > maxBx) maxBx = n.bx;
+      if(n.by < minBy) minBy = n.by;
+      if(n.by > maxBy) maxBy = n.by;
+    });
+
+    const spanBx = Math.max(1, maxBx - minBx);
+    const spanBy = Math.max(1, maxBy - minBy);
+
+    // 타겟 영역 마진 설정 (모바일 vs 데스크톱)
+    const marginX = isMobile ? Math.min(42, W * 0.12) : Math.min(78, W * 0.14);
+    const marginY = isMobile ? Math.min(36, H * 0.14) : Math.min(52, H * 0.16);
+    const availW = W - marginX * 2;
+    const availH = H - marginY * 2;
+
+    allNodes.forEach((node, idx) => {
+      // 모바일/데스크톱 반응형 노드 크기 자동 조절
+      if(isMobile){
+        node.r = node.center ? Math.max(16, Math.min(22, W * 0.05)) : Math.max(11, Math.min(15, W * 0.038));
+      } else {
+        node.r = node.center ? Math.max(22, Math.min(28, W * 0.035)) : Math.max(13, Math.min(18, W * 0.024));
+      }
+
+      // 정규화 좌표를 컨테이너 전체에 비례 매핑
+      let normX = spanBx > 10 ? (node.bx - minBx) / spanBx : 0.5;
+      let normY = spanBy > 10 ? (node.by - minBy) / spanBy : 0.5;
+
+      let nx = marginX + normX * availW;
+      let ny = marginY + normY * availH;
+
+      // 모바일 세로 화면에서 2차 노드 텍스트 겹침 방지 지그재그
+      if(isMobile && !node.center){
+        ny += (idx % 2 === 0 ? -12 : 14);
+      }
+
+      const outer = node.el.querySelector(':scope > circle');
+      if(outer) outer.setAttribute('r', node.r.toFixed(1));
+      const clip = node.el.querySelector('clipPath circle'), img = node.el.querySelector('image');
+      if(clip) clip.setAttribute('r', Math.max(1, node.r - 1.5).toFixed(1));
+      if(img){
+        img.setAttribute('x', (-node.r).toFixed(1));
+        img.setAttribute('y', (-node.r).toFixed(1));
+        img.setAttribute('width', (node.r * 2).toFixed(1));
+        img.setAttribute('height', (node.r * 2).toFixed(1));
+      }
+      const label = node.el.querySelector('.gl'), desc = node.el.querySelector('.gr-desc'), initial = node.el.querySelector('.gi');
+      const font = isMobile ? Math.max(8.5, node.r * 0.58) : Math.max(10, node.r * 0.62);
+      if(label){
+        label.setAttribute('y', (node.r + font + 2).toFixed(1));
+        label.style.fontSize = `${font}px`;
+      }
+      if(desc){
+        desc.setAttribute('y', (node.r + font * 2.25 + 3).toFixed(1));
+        desc.style.fontSize = `${Math.max(7.5, font * 0.82)}px`;
+      }
+      if(initial){
+        initial.style.fontSize = `${Math.max(8, node.r * 0.75)}px`;
+        initial.setAttribute('y', (node.r * 0.29).toFixed(1));
+      }
+      updateNodePosition(node, nx, ny);
+    });
+  };
+
+  applyResponsiveLayout();
+  if(window.ResizeObserver){
+    let resizeFrame = 0;
+    const observer = new ResizeObserver(() => {
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(applyResponsiveLayout);
+    });
+    observer.observe(wrap);
+  }
 
   const setHover = (nodeId) => {
     if(!nodeId){
@@ -1175,86 +1379,115 @@ function initArcGraphInteraction(wrap){
 
     wrap.querySelectorAll('.gn').forEach(g => {
       const id = g.dataset.id;
-      const isTarget = (id === nodeId);
-      const isConn = connectedNodes.has(id);
-      g.classList.toggle('on', isTarget);
-      g.classList.toggle('highlight', isConn && !isTarget);
-      g.classList.toggle('dimmed', !isConn);
+      if(id === nodeId){
+        g.classList.add('on');
+        g.classList.remove('dimmed', 'highlight');
+      } else if(connectedNodes.has(id)){
+        g.classList.add('highlight');
+        g.classList.remove('dimmed', 'on');
+      } else {
+        g.classList.add('dimmed');
+        g.classList.remove('on', 'highlight');
+      }
     });
   };
 
-  let dragNode = null, dragStart = null, moved = false;
+  let dragTarget = null, dragMoved = false, startPointerX = 0, startPointerY = 0, startNodeX = 0, startNodeY = 0;
 
-  const getSvgPt = (ev) => {
+  const getEventPoint = (e) => {
+    if(e.touches && e.touches[0]){
+      return { clientX: e.touches[0].clientX, clientY: e.touches[0].clientY };
+    }
+    return { clientX: e.clientX, clientY: e.clientY };
+  };
+
+  const getSvgCoordinates = (clientX, clientY) => {
+    const pt = svg.createSVGPoint();
+    pt.x = clientX;
+    pt.y = clientY;
+    const ctm = svg.getScreenCTM();
+    if(ctm){
+      return pt.matrixTransform(ctm.inverse());
+    }
     const rect = svg.getBoundingClientRect();
     return {
-      x: ((ev.clientX - rect.left) / (rect.width || 1)) * W,
-      y: ((ev.clientY - rect.top) / (rect.height || 1)) * H
+      x: (clientX - rect.left) * (W / rect.width),
+      y: (clientY - rect.top) * (H / rect.height)
     };
   };
 
-  svg.addEventListener('pointerdown', ev => {
-    const g = ev.target.closest('.gn');
+  const onPointerDown = (e) => {
+    const g = e.target.closest('.gn');
     if(!g) return;
-    const n = nodesById[g.dataset.id];
-    if(!n) return;
+    const id = g.dataset.id;
+    const node = nodesById[id];
+    if(!node) return;
 
-    dragNode = n;
-    dragStart = getSvgPt(ev);
-    moved = false;
-    dragNode.el.classList.add('dragging');
-    setHover(dragNode.id);
+    dragTarget = node;
+    dragMoved = false;
+    const pt = getEventPoint(e);
+    startPointerX = pt.clientX;
+    startPointerY = pt.clientY;
+    startNodeX = node.x;
+    startNodeY = node.y;
 
-    try { svg.setPointerCapture(ev.pointerId); } catch(_) {}
-  });
+    node.el.classList.add('dragging');
+    setHover(node.id);
 
-  svg.addEventListener('pointermove', ev => {
-    if(dragNode){
-      const p = getSvgPt(ev);
-      if(!moved && Math.hypot(p.x - dragStart.x, p.y - dragStart.y) < 5) return;
-      moved = true;
-      updateNodePosition(dragNode, p.x, p.y);
-      ev.preventDefault();
-      return;
-    }
-
-    if(ev.pointerType === 'mouse'){
-      const g = ev.target.closest('.gn');
-      setHover(g ? g.dataset.id : null);
-    }
-  });
-
-  const onPointerEnd = ev => {
-    if(dragNode){
-      try { svg.releasePointerCapture(ev.pointerId); } catch(_) {}
-      dragNode.el.classList.remove('dragging');
-
-      if(!moved){
-        const href = dragNode.href;
-        if(href){
-          if(dragNode.ext || href.startsWith('http')){
-            window.open(href, '_blank', 'noopener');
-          } else {
-            go(href);
-          }
-        }
-      }
-      dragNode = null;
-    }
+    window.addEventListener('pointermove', onPointerMove, { passive: false });
+    window.addEventListener('pointerup', onPointerUp);
+    window.addEventListener('pointercancel', onPointerUp);
   };
 
-  svg.addEventListener('pointerup', onPointerEnd);
-  svg.addEventListener('pointercancel', onPointerEnd);
-  svg.addEventListener('pointerleave', ev => {
-    if(ev.pointerType === 'mouse' && !dragNode){
-      setHover(null);
+  const onPointerMove = (e) => {
+    if(!dragTarget) return;
+    const pt = getEventPoint(e);
+    const dx = pt.clientX - startPointerX;
+    const dy = pt.clientY - startPointerY;
+    if(Math.hypot(dx, dy) > 4){
+      dragMoved = true;
+      e.preventDefault();
     }
+    const currentSvgPt = getSvgCoordinates(pt.clientX, pt.clientY);
+    const startSvgPt = getSvgCoordinates(startPointerX, startPointerY);
+    const newX = startNodeX + (currentSvgPt.x - startSvgPt.x);
+    const newY = startNodeY + (currentSvgPt.y - startSvgPt.y);
+    updateNodePosition(dragTarget, newX, newY);
+  };
+
+  const onPointerUp = (e) => {
+    if(!dragTarget) return;
+    const node = dragTarget;
+    node.el.classList.remove('dragging');
+
+    if(!dragMoved){
+      if(node.ext && node.href){
+        window.open(node.href, '_blank', 'noopener,noreferrer');
+      } else if(node.href){
+        location.href = node.href;
+      }
+    }
+
+    dragTarget = null;
+    window.removeEventListener('pointermove', onPointerMove);
+    window.removeEventListener('pointerup', onPointerUp);
+    window.removeEventListener('pointercancel', onPointerUp);
+  };
+
+  wrap.querySelectorAll('.gn').forEach(g => {
+    g.addEventListener('pointerdown', onPointerDown);
+    g.addEventListener('mouseenter', () => { if(!dragTarget) setHover(g.dataset.id); });
+    g.addEventListener('mouseleave', () => { if(!dragTarget) setHover(null); });
+  });
+
+  wrap.addEventListener('mouseleave', () => {
+    if(!dragTarget) setHover(null);
   });
 }
 
 function renderArcGraph(g, targetName){
   if(!g||!g.nodes||!g.edges||!g.edges.length)return'<p class="mute">확인된 인맥·관계망 자료가 쌓이면 자동으로 시각화됩니다.</p>';
-  const W=520,H=320,cx=W/2,cy=H/2-6,N={};
+  const W=760,H=360,cx=W/2,cy=H/2-6,N={};
   g.nodes.forEach(n=>N[n.id]=n);
   const C=g.center,direct=[],second=[];
   const ds=new Set();
@@ -1272,31 +1505,47 @@ function renderArcGraph(g, targetName){
   const ord=Object.keys(ARC_REL);
   direct.sort((a,b)=>ord.indexOf(a[1].typ)-ord.indexOf(b[1].typ));
   const pos={[C]:[cx,cy]};
-  const R1=Math.max(85,Math.min(125,60+direct.length*6));
-  if(direct.length===1){
-    pos[direct[0][0]]=[cx+105,cy];
+
+  // 관계망 레이아웃: 중심과 1차·2차 관계자가 전체 영역을 시원하게 채우도록 분산
+  const R1x = Math.max(140, Math.min(W * 0.28, 220));
+  const R1y = Math.max(85, Math.min(H * 0.32, 120));
+
+  if(direct.length === 1){
+    // 단일 직접 연결(예: 이재명-송영길): 중심을 좌측, 1차 노드를 중앙 우측에 시원하게 배치
+    pos[C] = [W * 0.22, cy];
+    pos[direct[0][0]] = [W * 0.52, cy];
   } else {
-    direct.forEach(([o],i)=>{
-      const a=-Math.PI/2+i*2*Math.PI/Math.max(direct.length,1);
-      pos[o]=[cx+R1*Math.cos(a),cy+R1*Math.sin(a)];
+    direct.forEach(([o], i) => {
+      const a = direct.length === 2 ? i * Math.PI : -Math.PI / 2 + i * 2 * Math.PI / Math.max(direct.length, 1);
+      pos[o] = [cx + R1x * Math.cos(a), cy + R1y * Math.sin(a)];
     });
   }
-  const secL=second.slice(0,20),grp={};
-  secL.forEach(s=>{
-    const L=(grp[s[2]]=grp[s[2]]||[]);
-    if(L.length<4)L.push(s[0]);
+
+  const secL = second.slice(0, 24), grp = {};
+  secL.forEach(s => {
+    const L = (grp[s[2]] = grp[s[2]] || []);
+    if(L.length < 6) L.push(s[0]);
   });
-  Object.entries(grp).forEach(([p,L])=>{
-    const[px,py]=pos[p]||[cx,cy];
-    const base=Math.atan2(py-cy,px-cx),spread=Math.min(1.8,0.5*(L.length-1));
-    L.forEach((o,i)=>{
-      const a=base+(L.length>1?-spread/2+spread*i/(L.length-1):0),r=55+(i%2)*18;
-      let nx=px+r*Math.cos(a),ny=py+r*Math.sin(a);
-      nx=Math.max(28,Math.min(W-28,nx));
-      ny=Math.max(26,Math.min(H-34,ny));
-      pos[o]=[nx,ny];
+
+  Object.entries(grp).forEach(([p, L]) => {
+    const [px, py] = pos[p] || [cx, cy];
+    let base = Math.atan2(py - cy, px - cx);
+    if(direct.length === 1 && p === direct[0][0]){
+      base = 0; // 1차 노드 기준 오른쪽으로 부채꼴 분산
+    }
+    const spread = Math.min(2.5, Math.max(1.2, 0.7 * (L.length - 1)));
+    L.forEach((o, i) => {
+      const angle = base + (L.length > 1 ? -spread / 2 + spread * i / (L.length - 1) : 0);
+      const rx = 135 + (i % 2) * 36;
+      const ry = 75 + (i % 2) * 25;
+      let nx = px + rx * Math.cos(angle);
+      let ny = py + ry * Math.sin(angle);
+      nx = Math.max(50, Math.min(W - 50, nx));
+      ny = Math.max(42, Math.min(H - 46, ny));
+      pos[o] = [nx, ny];
     });
   });
+
   const show=new Set(Object.keys(pos));
 
   // Node descriptions mapping
@@ -1324,25 +1573,25 @@ function renderArcGraph(g, targetName){
     const r=ARC_REL[e.typ]||['관계','#94a3b8'];
     const prim=e.a===C||e.b===C;
     const isDashed=e.typ==='schoolmate'||e.typ==='hometown';
-    return `<line class="arc-edge" data-edge-idx="${idx}" data-a="${esc(e.a)}" data-b="${esc(e.b)}" x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${r[1]}" stroke-width="${prim?2.2:1.2}" opacity="${prim?0.8:0.4}" ${isDashed?'stroke-dasharray="4 3"':''}><title>${esc(e.label||r[0])} · 출처 ${esc(e.src||'')}</title></line>
+    return `<line class="arc-edge" data-edge-idx="${idx}" data-a="${esc(e.a)}" data-b="${esc(e.b)}" x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${r[1]}" stroke-width="${prim?2.4:1.4}" opacity="${prim?0.85:0.45}" ${isDashed?'stroke-dasharray="4 3"':''}><title>${esc(e.label||r[0])} · 출처 ${esc(e.src||'')}</title></line>
     <line class="arc-flow" data-edge-idx="${idx}" data-a="${esc(e.a)}" data-b="${esc(e.b)}" x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${r[1]}" style="--fc:${r[1]}"></line>`;
   }).join('');
 
   const nd=[...show].map(id=>{
     const n=N[id]||{name:'?'};
     const[x,y]=pos[id];
-    const c=id===C,r=c?20:ds.has(id)?14:10;
+    const c=id===C,r=c?24:ds.has(id)?17:13;
     const col=n.party?(partyTheme(n.party)?.color||'#64748b'):'#94a3b8';
     const link=id.startsWith('wd:')?`https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}`:`entity/${encodeURIComponent(n.name)}`;
     const isExt=id.startsWith('wd:');
     const rel=relMap[id]||{label:'',desc:''};
     const safeId=esc(id).replace(/\W/g,'');
 
-    return `<g class="gn ${c?'c':''}" data-id="${esc(id)}" data-name="${esc(n.name)}" data-rel="${esc(rel.desc)}" data-href="${link}" data-ext="${isExt}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})">
-      <circle cx="0" cy="0" r="${r}" fill="#fff" stroke="${col}" stroke-width="${c?3.5:2}"/>
+    return `<g class="gn ${c?'c':''}" data-id="${esc(id)}" data-name="${esc(n.name)}" data-rel="${esc(rel.desc)}" data-href="${link}" data-ext="${isExt}" data-bx="${x.toFixed(2)}" data-by="${y.toFixed(2)}" data-br="${r}" data-center="${c?'1':'0'}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})">
+      <circle cx="0" cy="0" r="${r}" fill="#fff" stroke="${col}" stroke-width="${c?3.8:2.2}"/>
       ${n.photo?`<clipPath id="cp_${safeId}"><circle cx="0" cy="0" r="${r-1.5}"/></clipPath><image href="${esc(n.photo)}" x="${-r}" y="${-r}" width="${2*r}" height="${2*r}" clip-path="url(#cp_${safeId})" preserveAspectRatio="xMidYMin slice"/>`:`<text x="0" y="4" text-anchor="middle" class="gi">${esc((n.name||'?')[0])}</text>`}
-      <text x="0" y="${r+12}" text-anchor="middle" class="gl">${esc(n.name||'')}</text>
-      <text x="0" y="${r+23}" text-anchor="middle" class="gr-desc">${esc(rel.label)}</text>
+      <text x="0" y="${r+13}" text-anchor="middle" class="gl">${esc(n.name||'')}</text>
+      <text x="0" y="${r+25}" text-anchor="middle" class="gr-desc">${esc(rel.label)}</text>
       <title>${esc(n.name)} (${esc(rel.desc)})</title>
     </g>`;
   }).join('');
@@ -1369,7 +1618,6 @@ function renderArcGraph(g, targetName){
   <ul class="arc-glist">${rows}</ul>
   <p class="fine" style="margin-top:8px">※ 점선은 같은 학교 동문이나 출생지처럼 공통 배경이 겹치는 관계입니다. 노드를 끌어서 위치를 재배치하거나 터치해 상호 관계를 확인할 수 있습니다.</p>`;
 }
-
 function renderFamilySection(p, arc, g){
   const familyTypes=['parent','spouse','sibling','relative'];
   const directFamilyEdges=(g?.edges||[]).filter(e=>{
@@ -2091,6 +2339,26 @@ function renderLifeTimelineSection(arc){
   </div>`;
 }
 
+async function fetchHistoryPersonData(polId){
+  if(!polId) return null;
+  const urls = [
+    `https://raw.githubusercontent.com/pyw31337/news/history/h/p/a${encodeURIComponent(polId)}.json.gz`,
+    `https://raw.githubusercontent.com/pyw31337/news/history/h/p/${encodeURIComponent(polId)}.json.gz`
+  ];
+  for(const u of urls){
+    try{
+      const r = await fetch(u);
+      if(r.ok && typeof DecompressionStream !== 'undefined'){
+        const ds = r.body.pipeThrough(new DecompressionStream('gzip'));
+        const jsonText = await new Response(ds).text();
+        const json = JSON.parse(jsonText);
+        if(json && Array.isArray(json.it) && json.it.length) return json;
+      }
+    }catch(_){}
+  }
+  return null;
+}
+
 async function loadFullPersonData(name, polId){
   if(!polId){
     const pm=await ensurePolIndex();
@@ -2104,13 +2372,14 @@ async function loadFullPersonData(name, polId){
   }
   if(!polId)return null;
 
-  const [polDetail, arcDetail, graphDetail]=await Promise.all([
+  const [polDetail, arcDetail, graphDetail, histDetail]=await Promise.all([
     fetch(`data/pol/people/${encodeURIComponent(polId)}.json`).then(r=>r.ok?r.json():null).catch(()=>null),
     fetch(`https://newsboard-sync.pyw213.workers.dev/archive/person/${encodeURIComponent(polId)}`).then(r=>r.ok?r.json():null).catch(()=>null),
-    fetch(`https://newsboard-sync.pyw213.workers.dev/archive/graph/${encodeURIComponent(polId)}`).then(r=>r.ok?r.json():null).catch(()=>null)
+    fetch(`https://newsboard-sync.pyw213.workers.dev/archive/graph/${encodeURIComponent(polId)}`).then(r=>r.ok?r.json():null).catch(()=>null),
+    fetchHistoryPersonData(polId)
   ]);
 
-  return { id: polId, pol: polDetail, arc: arcDetail, graph: graphDetail };
+  return { id: polId, pol: polDetail, arc: arcDetail, graph: graphDetail, history: histDetail };
 }
 
 function renderProfFactsHtml(pDetail){
@@ -2208,18 +2477,25 @@ function renderEntityDashboard(n, e, preloadedRes){
   const iss=(e.issues||[]).map(id=>D.issues?.find(x=>x.id===id)).filter(Boolean);
   const w=why(e),wi=w.issue;
   const em=entityMedia(e);
+  const publicRole=primaryPublicRole(e,pol);
+  const initialPhoto=profilePhoto(e,preloadedRes?.pol||pol,preloadedRes?.graph);
+  const isPres=(publicRole?.kind==='president');
 
   const pcVars=pTheme?`--pc:${pTheme.color};--pc-dark:${pTheme.dark};--pc-light:${pTheme.light};`:'';
 
-  const polProfilePill=pol?`<div class="prof-party-pill">
+  const polProfilePill=isPres?`<div class="prof-party-pill pres-party-pill">
+    <span class="pm-wrap">${partyMark(pol?.party||'더불어민주당',16,true)}</span>
+    <span>${esc(pol?.party||'더불어민주당')}</span>
+    <span style="opacity:.92;font-size:.74rem;font-weight:700;">· 대한민국 제21대 정부</span>
+  </div>`:pol?`<div class="prof-party-pill">
     <span class="pm-wrap">${partyMark(pol.party,16,true)}</span>
     <span>${esc(pol.party)}</span>
-    <span style="opacity:.85;font-size:.72rem;font-weight:600;">· 제${(pol.ages||[]).slice(-1)[0]||22}대 국회의원</span>
+    ${publicRole?.rank>300?'':`<span style="opacity:.85;font-size:.72rem;font-weight:600;">· 제${(pol.ages||[]).slice(-1)[0]||22}대 국회의원</span>`}
   </div>`:'';
 
   const polSealHtml=pol?`<span class="av-seal" title="${esc(pol.party)}">${partyMark(pol.party,18,'white-icon')}</span>`:'';
 
-  const polLinkHtml=pol?`<div class="pol-link" style="margin-top:10px"><a class="pol-act-btn" href="#sec-activity" onclick="event.preventDefault();document.querySelector('#sec-activity')?.scrollIntoView({behavior:'smooth'})"><span style="font-size:14px">🏛️</span><span>의정 활동·법안·재산 대시보드 바로보기</span>${NBI('arrow-down')}</a></div>`:rep?`<div class="rep-link" style="margin-top:10px"><a class="chip" href="${rh(rep.id)}" style="display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:var(--blue);font-weight:700;padding:6px 14px;border-radius:99px;font-size:12px">${ic('press')} 기자 데스크 프로필 보기 ${NBI('arrow-right')}</a></div>`:'';
+  const polLinkHtml=pol?`<div class="pol-link" style="margin-top:10px"><a class="pol-act-btn" href="#sec-activity" onclick="event.preventDefault();document.querySelector('#sec-activity')?.scrollIntoView({behavior:'smooth'})"><span style="font-size:14px">🏛️</span><span>${publicRole?.rank>300?'공직 활동·기록':'의정 활동·법안·재산'} 대시보드 바로보기</span>${NBI('arrow-down')}</a></div>`:rep?`<div class="rep-link" style="margin-top:10px"><a class="chip" href="${rh(rep.id)}" style="display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:var(--blue);font-weight:700;padding:6px 14px;border-radius:99px;font-size:12px">${ic('press')} 기자 데스크 프로필 보기 ${NBI('arrow-right')}</a></div>`:'';
 
   const asideContent = `
     ${iss.length?sec('오늘 관련 이슈','Today','','fire')+`<div class="side">${iss.map(i=>`<a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><h3>${esc(i.title)}</h3></div></a>`).join('')}</div>`:''}
@@ -2228,11 +2504,11 @@ function renderEntityDashboard(n, e, preloadedRes){
   `;
 
   app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a>${shareBtn()}</div>
-  <section class="ehero card ${pTheme?'ehero-party':''}" style="${pcVars}${bg(wi&&wi.image||em.url||e.wiki?.thumb)}"><div class="in">${makeHeroMetaRow(e,pol)}${em.wide?`<img class="ewide" src="${esc(em.wide)}" alt="${esc(e.name)} 로고">`:''}<h1>${esc(e.name)}</h1>
+  <section class="ehero card ${pTheme?'ehero-party':''}" style="${pcVars}${bg(wi&&wi.image||initialPhoto||em.url||e.wiki?.thumb)}"><div class="in">${makeHeroMetaRow(e,pol)}${em.wide?`<img class="ewide" src="${esc(em.wide)}" alt="${esc(e.name)} 로고">`:''}<h1>${esc(e.name)}</h1>
    <p class="big">${wi?`지금 화제인 이유 — ${esc(wi.title)}`:esc(tl[0]?.title||desc)}</p>${wi?`<a class="go" href="issue/${wi.id}">이슈 자세히 보기 ${NBI('arrow-right')}</a>`:''}</div></section>
   <div class="entity-overview-grid">
    <section class="card prof ${pTheme?'prof-party':''}" style="${pcVars}">
-    <div class="row"><div style="position:relative;flex:none">${av(e)}${polSealHtml}</div><div>${polProfilePill}<h1>${esc(e.name)}</h1><p class="prof-desc">${esc(desc)}</p>${polLinkHtml}</div></div>
+    <div class="row"><div style="position:relative;flex:none"><div class="av media-portrait" ${bg(initialPhoto)}>${initialPhoto?`<img src="${esc(initialPhoto)}" alt="${esc(e.name)}" class="av-img" onerror="this.onerror=null;this.src='https://www.assembly.go.kr/static/portal/img/openassm/IUD9392R.jpg'"/>`:ic('user')}</div>${polSealHtml}</div><div>${publicOfficePill(publicRole)}${polProfilePill}<h1>${esc(e.name)}</h1>${isPres?`<p class="prof-desc presidential-desc">대한민국 <b>${esc(publicRole.ord||'제21대')} 대통령</b> (국가원수 및 행정부 수반)</p>${publicRole.subBadges?.length?`<div class="prof-sub-badges">${publicRole.subBadges.map(b=>`<span class="prof-sub-badge">${esc(b)}</span>`).join('')}</div>`:''}`:`<p class="prof-desc">${esc(desc)}</p>`}${polLinkHtml}</div></div>
     <div class="prof-facts-area">${renderProfFactsHtml(pol)}</div>
     ${e.wiki?.extract?`<p class="prof-wiki">${esc(e.wiki.extract)} ${e.wiki.url?`<a href="${esc(e.wiki.url)}" target="_blank" rel="noopener" style="color:${pTheme?pTheme.color:'var(--blue)'};font-weight:700">위키백과 ${NBI('arrow-up-right')}</a>`:''}</p>`:''}
     <div class="kpis"><div><b style="${pTheme?`color:${pTheme.color}`:''}">${e.score}</b><span>오늘 화제도</span></div><div><b>${tl.length}</b><span>수집된 기록</span></div><div><b>${first?new Date(first).getFullYear():'-'}</b><span>가장 오래된 기록</span></div></div>
@@ -2336,15 +2612,19 @@ function renderEntityDashboard(n, e, preloadedRes){
     const p=pDetail||pol||(aDetail?{name:e.name,party:aDetail.party}:null);
 
     // Merge news from pDetail into tl if present
+    const seenTitles = new Set(tl.map(x=>x.title).filter(Boolean));
+    const seenUrls = new Set(tl.map(x=>x.url).filter(Boolean));
+    let tlUpdated = false;
+
     if(pDetail?.news && Array.isArray(pDetail.news)){
-      const seenUrls = new Set(tl.map(x=>x.url).filter(Boolean));
-      let added = false;
       pDetail.news.forEach(item => {
         if(!item) return;
         const itemTime=normTime(item.date);
         if(!itemTime || !item.title) return;
         if(item.url && seenUrls.has(item.url)) return;
+        if(seenTitles.has(item.title)) return;
         if(item.url) seenUrls.add(item.url);
+        seenTitles.add(item.title);
         tl.push({
           t: itemTime,
           title: item.title,
@@ -2352,16 +2632,50 @@ function renderEntityDashboard(n, e, preloadedRes){
           press: item.press || '',
           img: item.img || ''
         });
-        added = true;
+        tlUpdated = true;
       });
-      if(added){
-        tl.sort((a,b) => (b.t||'').localeCompare(a.t||''));
+    }
+
+    // Merge massive historical news timeline (인물 수십 년 기록 보관소 연동)
+    const hDetail = res?.history;
+    if(hDetail && Array.isArray(hDetail.it) && hDetail.it.length){
+      hDetail.it.forEach(item => {
+        // item: [date, title, press_idx, type, quote]
+        if(!item || !item[0] || !item[1]) return;
+        const itemTime = normTime(item[0]);
+        if(!itemTime || seenTitles.has(item[1])) return;
+        seenTitles.add(item[1]);
+        const pressName = (hDetail.o && hDetail.o[item[2]]) || '';
+        const searchUrl = `https://news.google.com/search?q=${encodeURIComponent('"' + item[1].slice(0, 60) + '"')}&hl=ko&gl=KR&ceid=KR:ko`;
+        tl.push({
+          t: itemTime,
+          title: item[1],
+          press: pressName,
+          url: searchUrl,
+          typ: item[3] || '보도',
+          quote: item[4] || ''
+        });
+        tlUpdated = true;
+      });
+    }
+
+    if(tlUpdated){
+      tl.sort((a,b) => (b.t||'').localeCompare(a.t||''));
+      drawE(curEz, cachedDetail);
+      drawT('day');
+      const kpis = document.querySelectorAll('.prof .kpis div b');
+      if(kpis && kpis[1]) kpis[1].textContent = tl.length;
+      if(kpis && kpis[2] && tl.length){
+        kpis[2].textContent = new Date(tl[tl.length-1].t).getFullYear();
       }
     }
 
     if(p){
       const th=partyTheme(p.party)||{color:'#2f6bff',dark:'#1c4bb8',light:'#f0f4ff'};
       const curEm=entityMedia(e);
+      const liveRole=primaryPublicRole(e,pDetail||pol||p);
+      const livePhoto=profilePhoto(e,pDetail||pol,gDetail);
+      const liveIsPres=(liveRole?.kind==='president');
       const elHero=$('.ehero');
       if(elHero){
         elHero.classList.add('ehero-party');
@@ -2374,8 +2688,8 @@ function renderEntityDashboard(n, e, preloadedRes){
           elHero.querySelector('.in')?.insertAdjacentHTML('afterbegin',makeHeroMetaRow(e,p));
         }
         elHero.querySelectorAll('.in > .chip').forEach(c=>c.remove());
-        if((pDetail?.photo_local||pDetail?.photo||curEm.url)&&!elHero.style.backgroundImage){
-          elHero.style.backgroundImage=`url('${pDetail?.photo_local||pDetail?.photo||curEm.url}')`;
+        if(livePhoto&&!elHero.style.backgroundImage){
+          elHero.style.backgroundImage=`url('${livePhoto}')`;
         }
         const elBig=elHero.querySelector('p.big');
         if(elBig&&!wi&&tl.length&&tl[0]?.title){
@@ -2402,14 +2716,38 @@ function renderEntityDashboard(n, e, preloadedRes){
           pill.innerHTML=`<span class="pm-wrap">${partyMark(p.party,16,true)}</span><span>${esc(p.party||'')}</span><span style="opacity:.85;font-size:.72rem;font-weight:600;">· 제${(p.ages||[]).slice(-1)[0]||22}대 국회의원</span>`;
           textWrap.prepend(pill);
         }
+        const oldOffice=textWrap?.querySelector('.prof-office-pill, .prof-presidential-badge');
+        if(liveRole){
+          const office=document.createElement('div');
+          office.innerHTML=publicOfficePill(liveRole);
+          if(oldOffice){
+            oldOffice.replaceWith(office.firstElementChild);
+          } else {
+            textWrap?.prepend(office.firstElementChild);
+          }
+        }else{
+          oldOffice?.remove();
+        }
         const elAv=elProf.querySelector('.av');
-        if(elAv&&(pDetail?.photo_local||pDetail?.photo||curEm.url)&&(!elAv.style.backgroundImage||elAv.querySelector('svg'))){
-          elAv.style.backgroundImage=`url('${pDetail?.photo_local||pDetail?.photo||curEm.url}')`;
-          elAv.innerHTML='';
+        if(elAv&&livePhoto){
+          elAv.style.backgroundImage=`url('${livePhoto}')`;
+          elAv.innerHTML=`<img src="${esc(livePhoto)}" alt="${esc(e.name)}" class="av-img" onerror="this.onerror=null;this.src='https://www.assembly.go.kr/static/portal/img/openassm/IUD9392R.jpg'"/>`;
         }
         const elDesc=elProf.querySelector('.prof-desc');
         if(elDesc){
-          elDesc.innerHTML=`<b style="color:var(--pc);font-weight:800;">${esc(p.party||'')}</b> ${esc(p.district?p.district+' · ':'')}대한민국 제${(p.ages||[]).slice(-1)[0]||22}대 국회의원`;
+          if(liveIsPres){
+            elDesc.className='prof-desc presidential-desc';
+            elDesc.innerHTML=`대한민국 <b>${esc(liveRole.ord||'제21대')} 대통령</b> (국가원수 및 행정부 수반)`;
+            let subEl=textWrap?.querySelector('.prof-sub-badges');
+            if(!subEl&&liveRole.subBadges?.length){
+              subEl=document.createElement('div');
+              subEl.className='prof-sub-badges';
+              subEl.innerHTML=liveRole.subBadges.map(b=>`<span class="prof-sub-badge">${esc(b)}</span>`).join('');
+              elDesc.after(subEl);
+            }
+          } else {
+            elDesc.innerHTML=`${p.party?`<b style="color:var(--pc);font-weight:800;">${esc(p.party)}</b> `:''}${esc(liveRole?.label||`${p.district?p.district+' · ':''}대한민국 제${(p.ages||[]).slice(-1)[0]||22}대 국회의원`)}`;
+          }
         }
         if(pDetail){
           let elFacts=elProf.querySelector('.prof-facts-area');
