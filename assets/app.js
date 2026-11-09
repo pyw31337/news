@@ -2024,14 +2024,19 @@ function renderFamilySection(p, arc, g){
     <h2><small>Family & Relationship</small>가족 관계 및 인맥 관계도</h2>
   </div>
   <div class="card pad" style="margin-bottom:14px">
-    <h3>가족 관계 현황</h3>
+    <h3 style="margin:0 0 10px;font-size:0.96rem">가족 관계 현황</h3>
     ${content}
-  </div>
-  ${g&&g.edges&&g.edges.length?`
-  <div class="card pad">
-    <h3>인맥·동문·지역 관계도 네트워크</h3>
-    ${renderArcGraph(g,p.name)}
-  </div>`:''}`;
+    ${g&&g.edges&&g.edges.length?`
+    <details class="pol-fold" id="fold-network" style="margin-top:14px">
+      <summary class="pol-fold-summary">
+        <span class="pfs-left">👥 인맥·동문·지역 관계도 인터랙티브 네트워크 <mark class="pfs-badge">${g.edges.length}개 연결</mark></span>
+        <span class="pfs-arr">관계망 그래프 펼치기 ▼</span>
+      </summary>
+      <div class="pol-fold-body">
+        ${renderArcGraph(g,p.name)}
+      </div>
+    </details>`:''}
+  </div>`;
 }
 
 function renderAssetsSection(p, c){
@@ -2104,10 +2109,31 @@ function renderAssetsSection(p, c){
       <p class="fine">부동산(건물+토지) ${polWon((last.land||0)+(last.building||0))} · 증권 ${polWon(last.securities||0)}</p>
     </div>
   </div>
-  <div class="card pad">
-    <p class="fine">본인·배우자·직계존비속 합산 신고액(고지거부 제외)이며, 부동산은 공시가격 등 신고가액이라 실거래 시세와 다를 수 있습니다.<br>
-    출처: ${R.map(r=>`<a href="${esc(r.url||'#')}" target="_blank" rel="noopener">${esc(r.issue||'국회공보')}</a>`).join(', ')} (국회공직자윤리위원회 공고)</p>
-  </div>`;
+
+  <details class="pol-fold" id="fold-assets">
+    <summary class="pol-fold-summary">
+      <span class="pfs-left">💰 연도별 상세 재산 변동 신고 내역 & 공보 출처 <mark class="pfs-badge">${R.length}회</mark></span>
+      <span class="pfs-arr">상세 신고 내역 펼치기 ▼</span>
+    </summary>
+    <div class="pol-fold-body">
+      <div style="display:grid;gap:8px">
+        ${R.slice().reverse().map(r=>`
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--bg);border-radius:8px;font-size:0.86rem">
+            <div>
+              <b style="color:var(--ink)">${esc(r.date)} (${esc(r.kind||'정기재산변동신고')})</b>
+              <div style="font-size:0.75rem;color:var(--ink2);margin-top:2px">${esc(r.issue||'국회공보')} · 관보 공고</div>
+            </div>
+            <div style="text-align:right">
+              <strong style="color:var(--ink);font-size:0.95rem">${polWon(r.total)}</strong>
+              ${r.change!=null?`<span style="display:block;font-size:0.75rem;color:${r.change>=0?'#16a34a':'#dc2626'}">${r.change>=0?'+':''}${polWon(r.change)}</span>`:''}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <p class="fine" style="margin-top:12px">본인·배우자·직계존비속 합산 신고액(고지거부 제외)이며, 부동산은 공시가격 등 신고가액이라 실거래 시세와 다를 수 있습니다.<br>
+      출처: ${R.map(r=>`<a href="${esc(r.url||'#')}" target="_blank" rel="noopener">${esc(r.issue||'국회공보')}</a>`).join(', ')} (국회공직자윤리위원회 공고)</p>
+    </div>
+  </details>`;
 }
 
 function renderIncidentsSection(p, arc){
@@ -2149,24 +2175,41 @@ function renderIncidentsSection(p, arc){
     </div>
     ${inc.length?`
     <ul class="pol-ilist" id="pol-inc-list">
-      ${inc.slice(0,30).map(x=>`<li data-stage="${esc(x.stage==='기소'?'기소·재판':x.stage)}">
+      ${inc.slice(0, 3).map(x=>`<li data-stage="${esc(x.stage==='기소'?'기소·재판':x.stage)}">
         <em class="${STG[x.stage]||'s1'}">${esc(x.stage)}</em>
         <a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a>
         <span>${plogo(x.press, x.url, 'q-press-emb')}${esc(fDate(x.date))} · ${esc(x.press||'')}</span>
       </li>`).join('')}
     </ul>
+
+    ${inc.length > 3 || arcAllegations.length ? `
+    <details class="pol-fold" id="fold-incidents">
+      <summary class="pol-fold-summary">
+        <span class="pfs-left">🚨 수사·기소·재판 및 의혹·사건사고 전체 타임라인 <mark class="pfs-badge">${inc.length + arcAllegations.length}건</mark></span>
+        <span class="pfs-arr">사건 기록 전체 펼치기 ▼</span>
+      </summary>
+      <div class="pol-fold-body">
+        <ul class="pol-ilist">
+          ${inc.slice(3, 40).map(x=>`<li data-stage="${esc(x.stage==='기소'?'기소·재판':x.stage)}">
+            <em class="${STG[x.stage]||'s1'}">${esc(x.stage)}</em>
+            <a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title)}</a>
+            <span>${plogo(x.press, x.url, 'q-press-emb')}${esc(fDate(x.date))} · ${esc(x.press||'')}</span>
+          </li>`).join('')}
+        </ul>
+        ${arcAllegations.length?`
+        <div style="margin-top:16px;border-top:1px solid var(--line);padding-top:12px">
+          <h4 style="font-size:.86rem;margin-bottom:8px;color:var(--ink)">아카이브 사법·논란 주요 단계</h4>
+          <ul class="pol-ilist">
+            ${arcAllegations.map(ae=>`<li>
+              <em class="${ae.typ==='ruling'?'s4':'s1'}">${ae.typ==='ruling'?'판결':'의혹·사건'}</em>
+              <a href="${esc(ae.url||'#')}" target="_blank" rel="noopener">${esc(ae.title)}</a>
+              <span>${plogo(ae.src, ae.url||'', 'q-press-emb')}${esc(fDate(ae.d))} · ${esc(ae.src||'')}</span>
+            </li>`).join('')}
+          </ul>
+        </div>`:''}
+      </div>
+    </details>`:''}
     <p id="pol-inc-empty" class="mute" style="display:none;padding:12px 0;text-align:center">선택하신 단계로 분류된 보도가 없습니다.</p>`:'<p class="mute">연결된 사건 관련 보도가 없습니다.</p>'}
-    ${arcAllegations.length?`
-    <div style="margin-top:16px;border-top:1px solid var(--line);padding-top:12px">
-      <h4 style="font-size:.86rem;margin-bottom:8px;color:var(--ink)">아카이브 기록된 주요 사법·논란 단계</h4>
-      <ul class="pol-ilist">
-        ${arcAllegations.map(ae=>`<li>
-          <em class="${ae.typ==='ruling'?'s4':'s1'}">${ae.typ==='ruling'?'판결':'의혹·사건'}</em>
-          <a href="${esc(ae.url||'#')}" target="_blank" rel="noopener">${esc(ae.title)}</a>
-          <span>${plogo(ae.src, ae.url||'', 'q-press-emb')}${esc(fDate(ae.d))} · ${esc(ae.src||'')}</span>
-        </li>`).join('')}
-      </ul>
-    </div>`:''}
   </div>`;
 }
 
@@ -2219,52 +2262,61 @@ function renderActivitySection(p, c){
   <div class="card pad" style="margin-top:10px">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
       <h3 style="margin:0">대표발의 처리 결과</h3>
-      <small style="color:var(--mute);font-size:.74rem">항목을 누르면 해당 법안 목록으로 즉시 필터링</small>
+      <small style="color:var(--mute);font-size:.74rem">가결률 ${bl.lead_count?Math.round(bl.passed/bl.lead_count*100):0}%</small>
     </div>
     ${polBars(bl.by_result,c)}
-  </div>
-  <div class="card pad pol-month-chart-card" id="pol-month-box" style="margin-top:10px">
-    <div class="pol-month-header">
-      <div>
-        <h3 style="margin:0;display:inline-flex;align-items:center;gap:8px">
-          <span>월별 대표발의 추이</span>
-          <span class="pol-chart-badge">최근 24개월</span>
-        </h3>
-        <p class="pol-chart-sub">막대를 누르면 해당 월의 발의 법안만 필터링됩니다. (마우스 드래그 및 터치 스와이프로 좌우 탐색 가능)</p>
+
+    <details class="pol-fold" id="fold-bills">
+      <summary class="pol-fold-summary">
+        <span class="pfs-left">🏛️ 대표발의 법안 상세 목록 & 월별 발의 추이 <mark class="pfs-badge">${(bl.recent||[]).length}건</mark></span>
+        <span class="pfs-arr">법안 목록 펼치기 ▼</span>
+      </summary>
+      <div class="pol-fold-body">
+        <div class="pol-month-chart-card" id="pol-month-box" style="margin-bottom:14px">
+          <div class="pol-month-header">
+            <div>
+              <h4 style="margin:0;display:inline-flex;align-items:center;gap:8px">
+                <span>월별 대표발의 추이</span>
+                <span class="pol-chart-badge">최근 24개월</span>
+              </h4>
+              <p class="pol-chart-sub">막대를 누르면 해당 월의 발의 법안만 필터링됩니다.</p>
+            </div>
+            <div class="pol-month-stat-pill" id="pol-month-active-pill">
+              <span>선택: <b>전체 기간</b></span>
+            </div>
+          </div>
+          ${polMonths(bl.by_month,c,'bill')}
+        </div>
+        <div class="pol-bill-card" id="pol-bill-box">
+          <div class="pol-bill-header">
+            <div>
+              <h4 style="margin:0;display:inline-flex;align-items:center;gap:8px">
+                <span>대표발의 법안 목록</span>
+                <span id="pol-bill-count-pill" class="pol-bill-count-pill">전체 ${(bl.recent||[]).length}건</span>
+              </h4>
+              <p class="pol-bill-sub" id="pol-bill-sub">상태별 탭을 눌러 심층 필터링할 수 있습니다.</p>
+            </div>
+            <div class="pol-bill-filter-tabs" id="pol-bill-filter-tabs">
+              <button type="button" class="on" data-bill-res="all">전체 (${(bl.recent||[]).length})</button>
+              ${Object.entries(bl.by_result||{}).map(([k,v])=>`<button type="button" data-bill-res="${esc(k)}">${esc(k)} (${v})</button>`).join('')}
+            </div>
+          </div>
+          <div id="pol-bill-filter-banner" class="pol-bill-filter-banner" style="display:none">
+            <span id="pol-bill-filter-text"></span>
+            <button type="button" id="pol-bill-filter-reset">✕ 전체 보기</button>
+          </div>
+          <ul class="pol-blist" id="pol-bill-list">
+            ${renderBillListHtml(bl.recent||[], 'all', c)}
+          </ul>
+          <div id="pol-bill-ext-link" class="pol-bill-ext-link">
+            <a href="https://likms.assembly.go.kr/bill/main.do" target="_blank" rel="noopener">
+              🏛️ 국회 의안정보시스템에서 <b>${esc(p.name)} 의원</b>의 대표발의안 전체 원문 검색하기 ↗
+            </a>
+          </div>
+          <p class="fine" style="margin-top:10px">출처: <a href="${esc(bl.source?.url||'https://likms.assembly.go.kr/bill/main.do')}" target="_blank" rel="noopener">${esc(bl.source?.name||'국회 의안정보시스템')}</a></p>
+        </div>
       </div>
-      <div class="pol-month-stat-pill" id="pol-month-active-pill">
-        <span>선택: <b>전체 기간</b></span>
-      </div>
-    </div>
-    ${polMonths(bl.by_month,c,'bill')}
-  </div>
-  <div class="card pad pol-bill-card" id="pol-bill-box" style="margin-top:10px">
-    <div class="pol-bill-header">
-      <div>
-        <h3 style="margin:0;display:inline-flex;align-items:center;gap:8px">
-          <span>대표발의 법안 목록</span>
-          <span id="pol-bill-count-pill" class="pol-bill-count-pill">전체 ${(bl.recent||[]).length}건</span>
-        </h3>
-        <p class="pol-bill-sub" id="pol-bill-sub">계류·가결·폐기 상태나 소관위원회를 눌러 심층 필터링할 수 있습니다.</p>
-      </div>
-      <div class="pol-bill-filter-tabs" id="pol-bill-filter-tabs">
-        <button type="button" class="on" data-bill-res="all">전체 (${(bl.recent||[]).length})</button>
-        ${Object.entries(bl.by_result||{}).map(([k,v])=>`<button type="button" data-bill-res="${esc(k)}">${esc(k)} (${v})</button>`).join('')}
-      </div>
-    </div>
-    <div id="pol-bill-filter-banner" class="pol-bill-filter-banner" style="display:none">
-      <span id="pol-bill-filter-text"></span>
-      <button type="button" id="pol-bill-filter-reset">✕ 전체 보기</button>
-    </div>
-    <ul class="pol-blist" id="pol-bill-list">
-      ${renderBillListHtml(bl.recent||[], 'all', c)}
-    </ul>
-    <div id="pol-bill-ext-link" class="pol-bill-ext-link">
-      <a href="https://likms.assembly.go.kr/bill/main.do" target="_blank" rel="noopener">
-        🏛️ 국회 의안정보시스템에서 <b>${esc(p.name)} 의원</b>의 대표발의안 전체 원문 검색하기 ↗
-      </a>
-    </div>
-    <p class="fine" style="margin-top:10px">출처: <a href="${esc(bl.source?.url||'https://likms.assembly.go.kr/bill/main.do')}" target="_blank" rel="noopener">${esc(bl.source?.name||'국회 의안정보시스템')}</a></p>
+    </details>
   </div>`:''}
 
   ${V?(()=>{
@@ -2284,13 +2336,20 @@ function renderActivitySection(p, c){
         </span>`).join('')}
       </div>
       ${V.dissent&&V.dissent.length?`
-      <h4 style="font-size:.85rem;margin:14px 0 6px">소신 표결 안건 (반대·기권)</h4>
-      <ul class="pol-blist">
-        ${V.dissent.slice(0,10).map(x=>`<li>
-          <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=${esc(x.id)}" target="_blank" rel="noopener">${esc(x.name)}</a>
-          <span>${esc(fDate(x.date))} · <b style="color:${C[x.vote]||'#000'}">${esc(x.vote)}</b></span>
-        </li>`).join('')}
-      </ul>`:''}
+      <details class="pol-fold" id="fold-votes">
+        <summary class="pol-fold-summary">
+          <span class="pfs-left">🗳️ 본회의 소신 표결 안건 (반대·기권 상세) <mark class="pfs-badge">${V.dissent.length}건</mark></span>
+          <span class="pfs-arr">안건 목록 펼치기 ▼</span>
+        </summary>
+        <div class="pol-fold-body">
+          <ul class="pol-blist">
+            ${V.dissent.slice(0,20).map(x=>`<li>
+              <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=${esc(x.id)}" target="_blank" rel="noopener">${esc(x.name)}</a>
+              <span>${esc(fDate(x.date))} · <b style="color:${C[x.vote]||'#000'}">${esc(x.vote)}</b></span>
+            </li>`).join('')}
+          </ul>
+        </div>
+      </details>`:''}
     </div>`;
   })():''}`;
 }
@@ -2372,33 +2431,59 @@ function renderQuotesSection(p, id){
   }).join('');
 
   return `<div class="sec" id="sec-quotes">
-    <h2><small>Quotes & Media</small>언행 및 미디어 노출 경향</h2>
+    <h2><small>Quotes & Media</small>언론 보도 및 주요 발언 대시보드</h2>
   </div>
-  <a class="pol-abb" href="history/?t=p&id=a${encodeURIComponent(id)}" target="_blank" title="발언·언행 블랙박스 전수 아카이브 열기">
-    <span class="bb-cam-icon">
-      <svg class="bb-cam-svg" viewBox="0 0 28 22" fill="none" aria-hidden="true">
-        <rect x="2" y="3" width="20" height="16" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
-        <circle cx="12" cy="11" r="5" fill="#1e293b" stroke="#64748b" stroke-width="1.2"/>
-        <circle cx="12" cy="11" r="2.8" fill="#0b0f19"/>
-        <circle cx="13.2" cy="9.8" r="1" fill="#60a5fa" opacity="0.85"/>
-        <path d="M9 3V1h6v2" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
-        <circle class="bb-rec-light" cx="18.5" cy="6.5" r="2" fill="#ef4444"/>
-      </svg>
-      <span class="bb-rec-pill"><i class="bb-rec-dot"></i>REC</span>
-    </span>
-    <span class="bb-title">블랙박스 아카이브</span>
-    <span class="bb-desc-pill">24h 상시 기록</span>
-    <span class="bb-ext-arrow">과거 발언·언행 및 행적 전수 조사 보기 ↗</span>
-  </a>
   ${quotesHtml ? `
   <div class="card pad" style="margin-top:10px">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:12px">
       <h3 style="margin:0">헤드라인에 실린 주요 발언·어록</h3>
       <span class="pol-press-subtag">화제성 높은 보도 우선 하이라이트</span>
     </div>
     <ul class="pol-qlist">
-      ${quotesHtml}
+      ${scoredQuotes.slice(0, 3).map(q => {
+        const d = (q.date || '').slice(0, 10);
+        const y = d.slice(0, 4);
+        return `<li class="pol-qitem">
+          <div class="pol-qhead">
+            <span class="pol-qdate">${esc(d)}</span>
+            <span class="pol-qheat">🔥 <b>${q.score}</b>점</span>
+          </div>
+          <div class="pol-qbody">
+            <q class="pol-quote">${esc(q.quote)}</q>
+            <div class="pol-qmeta">
+              <span class="q-press-name">${esc(q.press || '언론사')}</span>
+            </div>
+          </div>
+        </li>`;
+      }).join('')}
     </ul>
+
+    ${scoredQuotes.length > 3 ? `
+    <details class="pol-fold" id="fold-quotes">
+      <summary class="pol-fold-summary">
+        <span class="pfs-left">💬 수집된 주요 발언·어록 전체 목록 펼쳐보기 <mark class="pfs-badge">${scoredQuotes.length}건</mark></span>
+        <span class="pfs-arr">발언 전체 펼치기 ▼</span>
+      </summary>
+      <div class="pol-fold-body">
+        <ul class="pol-qlist">
+          ${scoredQuotes.slice(3).map(q => {
+            const d = (q.date || '').slice(0, 10);
+            return `<li class="pol-qitem">
+              <div class="pol-qhead">
+                <span class="pol-qdate">${esc(d)}</span>
+                <span class="pol-qheat">🔥 <b>${q.score}</b>점</span>
+              </div>
+              <div class="pol-qbody">
+                <q class="pol-quote">${esc(q.quote)}</q>
+                <div class="pol-qmeta">
+                  <span class="q-press-name">${esc(q.press || '언론사')}</span>
+                </div>
+              </div>
+            </li>`;
+          }).join('')}
+        </ul>
+      </div>
+    </details>`:''}
   </div>`:''}
 
   ${md&&(md.top_words||[]).length?`
@@ -2614,7 +2699,7 @@ function renderCareerSection(p, arc){
       <span class="pol-press-subtag">활동 및 직책</span>
     </h3>
     <ul class="pol-career-list">
-      ${hist.map(h=>{
+      ${hist.slice(0, 4).map(h=>{
         const sym=getOrgSymbolHtml(h, 28);
         const isCur=/現\)|현재|현직/.test(h);
         const isPast=/前\)|전직/.test(h);
@@ -2631,6 +2716,34 @@ function renderCareerSection(p, arc){
         </li>`;
       }).join('')}
     </ul>
+
+    ${hist.length > 4 ? `
+    <details class="pol-fold" id="fold-career" style="margin-top:14px">
+      <summary class="pol-fold-summary">
+        <span class="pfs-left">🎓 전체 상세 경력 및 이전 직책 목록 펼쳐보기 <mark class="pfs-badge">${hist.length}개</mark></span>
+        <span class="pfs-arr">경력 전체 펼치기 ▼</span>
+      </summary>
+      <div class="pol-fold-body">
+        <ul class="pol-career-list">
+          ${hist.slice(4).map(h=>{
+            const sym=getOrgSymbolHtml(h, 28);
+            const isCur=/現\)|현재|현직/.test(h);
+            const isPast=/前\)|전직/.test(h);
+            const badgeText=isCur?'現':(isPast?'前':'');
+            const cleanText=h.replace(/^(現\)|前\)|現|前)\s*/,'');
+            return `<li class="pol-career-item ${isCur?'cur':''}">
+              <div class="pci-symbol">${sym}</div>
+              <div class="pci-body">
+                <div class="pci-title-row">
+                  ${badgeText?`<span class="pci-badge ${isCur?'cur':'past'}">${badgeText}</span>`:''}
+                  <strong class="pci-title">${esc(cleanText)}</strong>
+                </div>
+              </div>
+            </li>`;
+          }).join('')}
+        </ul>
+      </div>
+    </details>`:''}
   </div>`;
 }
 
@@ -2670,24 +2783,46 @@ function triggerCoinShower(targetSec){
 
 function renderLifeTimelineSection(arc){
   if(!arc||!arc.events||!arc.events.length)return'';
-  // Exclude duplicate media reports from life timeline stage
   const E=(arc.events||[]).filter(e => e.stage !== '언론 보도');
   const types=[...new Set(E.map(e=>e.typ))];
 
+  const births = E.filter(x=>x.typ==='birth');
+  const edus = E.filter(x=>x.typ==='edu');
+  const careers = E.filter(x=>x.typ==='career').slice(0, 4);
+  const mil = arc.military || E.find(x=>x.typ==='military')?.title;
+
   return `<div class="sec" id="sec-lifetl">
-    <h2><small>Life Timeline</small>생애 타임라인 <em class="cnt">${fmt(E.length)}건</em></h2>
+    <h2><small>Life Timeline & Bio</small>생애 타임라인 및 상세 이력서 <em class="cnt">${fmt(E.length)}건</em></h2>
   </div>
-  <div class="card pad">
-    <div class="arc-legend">
-      <span><i class="arc-st fact"></i>확인된 공적 기록</span>
-      <span><i class="arc-st allegation"></i>의혹·사건 단계(사실 확정 아님)</span>
-      <span><i class="arc-st confirmed"></i>판결 확정</span>
-    </div>
-    <div class="arc-fil" id="arc-fil">
-      <button class="on" data-t="">전체 (${E.length})</button>
-      ${types.map(t=>`<button data-t="${t}" style="--tc:${ARC_TYP[t]?.[1]||'#0f1630'}">${ARC_TYP[t]?.[0]||t} ${E.filter(e=>e.typ===t).length}</button>`).join('')}
-    </div>
-    <div id="arc-tl-box"></div>
+  <div class="card pad" style="margin-bottom:12px">
+    <h3 style="margin:0 0 10px;font-size:0.96rem;display:flex;align-items:center;gap:6px">
+      <span>📌 생애 핵심 이력 요약</span>
+    </h3>
+    <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:0.86rem;color:var(--ink)">
+      ${births[0]?`<li style="display:flex;gap:8px"><b>· 출생:</b> <span>${esc(births[0].title)} (${esc(births[0].desc||'')})</span></li>`:''}
+      ${edus.length?`<li style="display:flex;gap:8px"><b>· 학력:</b> <span>${edus.map(x=>esc(x.title)).join(' → ')}</span></li>`:''}
+      ${mil?`<li style="display:flex;gap:8px"><b>· 병역:</b> <span>${esc(mil)}</span></li>`:''}
+      ${careers.length?`<li style="display:flex;gap:8px"><b>· 주요 경력:</b> <span>${careers.map(x=>esc(x.title)).join(' · ')}</span></li>`:''}
+    </ul>
+
+    <details class="pol-fold" id="fold-lifetl" style="margin-top:14px">
+      <summary class="pol-fold-summary">
+        <span class="pfs-left">📜 출생부터 현재까지 생애 전체 타임라인 & 상세 이력서 <mark class="pfs-badge">${E.length}건</mark></span>
+        <span class="pfs-arr">이력서 전체 펼치기 ▼</span>
+      </summary>
+      <div class="pol-fold-body">
+        <div class="arc-legend" style="margin-bottom:12px">
+          <span><i class="arc-st fact"></i>확인된 공적 기록</span>
+          <span><i class="arc-st allegation"></i>의혹·사건 단계(사실 확정 아님)</span>
+          <span><i class="arc-st confirmed"></i>판결 확정</span>
+        </div>
+        <div class="arc-fil" id="arc-fil" style="margin-bottom:14px">
+          <button class="on" data-t="">전체 (${E.length})</button>
+          ${types.map(t=>`<button data-t="${t}" style="--tc:${ARC_TYP[t]?.[1]||'#0f1630'}">${ARC_TYP[t]?.[0]||t} ${E.filter(e=>e.typ===t).length}</button>`).join('')}
+        </div>
+        <div id="arc-tl-box"></div>
+      </div>
+    </details>
   </div>`;
 }
 
@@ -2749,11 +2884,20 @@ function renderProfFactsHtml(pDetail, aDetail){
   const birthText = fDate(p.birth || aDetail?.birth);
   const commText = p.committees || (aDetail?.data?.district ? `${aDetail.data.district} (전)` : '');
 
+  // 학력 요약: 최종 학력
+  const eduEv = (aDetail?.events||[]).filter(x=>x.typ==='edu');
+  const lastEdu = eduEv.length ? eduEv[eduEv.length-1].title.replace(/\s*\([^)]*\)/, '') : '';
+
+  // 재산 요약: 최신 신고 총액
+  const lastAsset = p.assets?.records?.length ? polWon(p.assets.records[p.assets.records.length-1].total) : '';
+
   return `<div class="prof-facts">
     <div class="fact-item"><span class="flab">선수</span><strong class="fval">${esc(reelectText)}</strong></div>
     <div class="fact-item"><span class="flab">당선</span><strong class="fval">${esc(agesText)}</strong></div>
     <div class="fact-item"><span class="flab">출생</span><strong class="fval">${esc(birthText)}</strong></div>
+    ${lastEdu?`<div class="fact-item fact-wide"><span class="flab">학력</span><strong class="fval" title="${esc(lastEdu)}">${esc(lastEdu)}</strong></div>`:''}
     ${mil?`<div class="fact-item fact-wide"><span class="flab">병역</span><strong class="fval" title="${esc(mil)}">${esc(mil)}</strong></div>`:''}
+    ${lastAsset?`<div class="fact-item"><span class="flab">최근 재산</span><strong class="fval" style="color:#2f9e44">${esc(lastAsset)}</strong></div>`:''}
     ${commText?`<div class="fact-item fact-wide"><span class="flab">상임위</span><strong class="fval" title="${esc(commText)}">${esc(commText)}</strong></div>`:''}
     ${p.office?`<div class="fact-item"><span class="flab">의원실</span><strong class="fval" title="${esc(p.office)}">${esc(p.office)}</strong></div>`:''}
     ${p.email?`<div class="fact-item fact-wide"><span class="flab">이메일</span><strong class="fval"><a href="mailto:${esc(p.email)}" class="prof-email-link">${esc(p.email)}</a></strong></div>`:''}
@@ -2861,7 +3005,11 @@ function renderEntityDashboard(n, e, preloadedRes){
 
   const polSealHtml=pol?`<span class="av-seal" title="${esc(pol.party)}">${partyMark(pol.party,18,'white-icon')}</span>`:'';
 
-  const polLinkHtml=pol?`<div class="pol-link" style="margin-top:10px"><a class="pol-act-btn" href="#sec-activity" onclick="event.preventDefault();document.querySelector('#sec-activity')?.scrollIntoView({behavior:'smooth'})"><span style="font-size:14px">🏛️</span><span>${publicRole?.rank>300?'공직 활동·기록':'의정 활동·법안·재산'} 대시보드 바로보기</span>${NBI('arrow-down')}</a></div>`:rep?`<div class="rep-link" style="margin-top:10px"><a class="chip" href="${rh(rep.id)}" style="display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:var(--blue);font-weight:700;padding:6px 14px;border-radius:99px;font-size:12px">${ic('press')} 기자 데스크 프로필 보기 ${NBI('arrow-right')}</a></div>`:'';
+  const polLinkHtml=pol?`<div class="pol-link" style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+    <a class="pol-act-btn" href="#sec-lifetl" onclick="event.preventDefault();const s=document.querySelector('#sec-lifetl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span style="font-size:14px">📜</span><span>생애·학력·병역</span>${NBI('arrow-down')}</a>
+    <a class="pol-act-btn" href="#sec-activity" onclick="event.preventDefault();const s=document.querySelector('#sec-activity');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span style="font-size:14px">🏛️</span><span>의정·입법 활동</span>${NBI('arrow-down')}</a>
+    <a class="pol-act-btn" href="#sec-assets" onclick="event.preventDefault();const s=document.querySelector('#sec-assets');if(s){document.querySelector('#sec-assets .pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span style="font-size:14px">💰</span><span>재산 신고</span>${NBI('arrow-down')}</a>
+  </div>`:rep?`<div class="rep-link" style="margin-top:10px"><a class="chip" href="${rh(rep.id)}" style="display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:var(--blue);font-weight:700;padding:6px 14px;border-radius:99px;font-size:12px">${ic('press')} 기자 데스크 프로필 보기 ${NBI('arrow-right')}</a></div>`:'';
 
   const asideContent = `
     ${iss.length?sec('오늘 관련 이슈','Today','','fire')+`<div class="side">${iss.map(i=>`<a class="card mini" href="issue/${i.id}"><div class="n">${i.rank}</div>${th(i.image)}<div class="tx"><h3>${esc(i.title)}</h3></div></a>`).join('')}</div>`:''}
@@ -2886,13 +3034,21 @@ function renderEntityDashboard(n, e, preloadedRes){
   <div class="entity-full-dash">
    <div id="pol-dashboard-container"><div style="text-align:center;padding:16px;color:var(--mute);font-size:.84rem">인물 상세 데이터베이스(활동·재산·가족·언행·사건)를 불러오는 중…</div></div>
    <div class="sec" id="sec-newstl"><h2><small>News Timeline</small>시대별 보도량 및 뉴스 타임라인</h2></div>
-   <div class="card" style="padding:14px 16px" id="era"></div>
-   <div id="etl-filter-banner" style="display:none;align-items:center;justify-content:space-between;padding:10px 14px;background:#f0f7ff;border:1px solid #bfdbfe;border-radius:10px;margin-top:12px;font-size:.82rem">
-     <span id="etl-filter-text"></span>
-     <button type="button" id="etl-filter-reset" style="border:none;background:#2563eb;color:#fff;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer">전체 기간 보기</button>
-   </div>
-   <div style="margin-top:12px">${sec(esc(e.name)+' 뉴스 타임라인','Timeline','<div class="zoom" id="tz"><button data-z="hour">시간</button><button data-z="day" class="on">일</button><button data-z="month">월</button><button data-z="year">시대</button></div>','clock')}</div>
-   <div class="vt" id="etl"></div>
+   <div class="card pad" style="padding:14px 16px" id="era"></div>
+   <details class="pol-fold" id="fold-newstl" open style="margin-top:14px">
+     <summary class="pol-fold-summary">
+       <span class="pfs-left">📰 뉴스 기사 타임라인 상세 피드 <mark class="pfs-badge">${tl.length}건</mark></span>
+       <span class="pfs-arr">기사 피드 접기/펼치기 ▼</span>
+     </summary>
+     <div class="pol-fold-body">
+       <div id="etl-filter-banner" style="display:none;align-items:center;justify-content:space-between;padding:10px 14px;background:#f0f7ff;border:1px solid #bfdbfe;border-radius:10px;margin-bottom:12px;font-size:.82rem">
+         <span id="etl-filter-text"></span>
+         <button type="button" id="etl-filter-reset" style="border:none;background:#2563eb;color:#fff;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer">전체 기간 보기</button>
+       </div>
+       <div style="margin-bottom:12px">${sec(esc(e.name)+' 뉴스 타임라인','Timeline','<div class="zoom" id="tz"><button data-z="hour">시간</button><button data-z="day" class="on">일</button><button data-z="month">월</button><button data-z="year">시대</button></div>','clock')}</div>
+       <div class="vt" id="etl"></div>
+     </div>
+   </details>
   </div>`;
 
   let curEz='month';
@@ -3133,8 +3289,9 @@ function renderEntityDashboard(n, e, preloadedRes){
           elPolLink.style.marginTop='10px';
           elProf.querySelector('.row > div:last-child')?.appendChild(elPolLink);
         }
-        elPolLink.innerHTML=`<a class="pol-act-btn" href="#sec-activity" onclick="event.preventDefault();document.querySelector('#sec-activity')?.scrollIntoView({behavior:'smooth'})"><span style="font-size:14px">🏛️</span><span>의정 활동·법안·재산 대시보드 바로보기</span>${NBI('arrow-down')}</a>
-        ${res?.id?`<a href="politicians/?id=${esc(res.id)}" target="_blank" class="pol-src-link">정치인 DB 원본 ↗</a>`:''}`;
+        elPolLink.innerHTML=`<a class="pol-act-btn" href="#sec-lifetl" onclick="event.preventDefault();const s=document.querySelector('#sec-lifetl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span style="font-size:14px">📜</span><span>생애·학력·병역</span>${NBI('arrow-down')}</a>
+        <a class="pol-act-btn" href="#sec-activity" onclick="event.preventDefault();const s=document.querySelector('#sec-activity');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span style="font-size:14px">🏛️</span><span>의정 활동·법안</span>${NBI('arrow-down')}</a>
+        <a class="pol-act-btn" href="#sec-assets" onclick="event.preventDefault();const s=document.querySelector('#sec-assets');if(s){document.querySelector('#sec-assets .pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span style="font-size:14px">💰</span><span>재산 신고</span>${NBI('arrow-down')}</a>`;
         elProf.querySelectorAll('.kpis div b')[0]&&(elProf.querySelectorAll('.kpis div b')[0].style.color=th.color);
         const kpis=elProf.querySelectorAll('.kpis div b');
         if(kpis&&kpis[1])kpis[1].textContent=tl.length;
@@ -3157,61 +3314,69 @@ function renderEntityDashboard(n, e, preloadedRes){
 
     const thCol=p?.party?partyTheme(p.party)?.color:'#2f6bff';
     const tabs=[
+      aDetail?.events?.length?['#sec-lifetl','📜 생애·이력']:null,
       pDetail?['#sec-activity','🏛️ 의정·입법']:null,
       pDetail?.assets?.records?.length?['#sec-assets','💰 재산 신고']:null,
-      (gDetail||aDetail)?['#sec-network','👥 가족·관계도']:null,
-      pDetail?.media?.quotes?.length?['#sec-quotes','💬 발언·언행']:null,
+      (gDetail||aDetail)?['#sec-network','👥 인물 관계도']:null,
+      pDetail?.media?.quotes?.length?['#sec-quotes','💬 주요 발언']:null,
       (pDetail?.incidents?.items?.length||aDetail?.events?.some(x=>x.typ==='allegation'||x.typ==='ruling'))?['#sec-incidents','🚨 사건·사고']:null,
       (pDetail?.history?.length||aDetail?.events?.some(x=>x.typ==='edu'))?['#sec-career','🎓 경력·학력']:null,
-      aDetail?.events?.length?['#sec-lifetl','📜 생애사']:null,
       ['#sec-newstl','📰 뉴스']
     ].filter(Boolean);
 
-    let html=`<nav class="pol-dash-tabs" aria-label="인물 대시보드">
-      ${tabs.map((t,idx)=>`<button type="button" class="${idx===0?'on':''}" data-target="${t[0]}">${t[1]}</button>`).join('')}
-    </nav>`;
+    let html=`
+    <div class="pol-dash-topbar" style="margin-top:14px">
+      <nav class="pol-dash-tabs" aria-label="인물 대시보드">
+        ${tabs.map((t,idx)=>`<button type="button" class="${idx===0?'on':''}" data-target="${t[0]}">${t[1]}</button>`).join('')}
+      </nav>
+      <div class="pol-dash-fold-ctl">
+        <span>💡 기본 정보 외 세부 목록은 접혀 있습니다. 원하는 항목을 눌러 펼쳐보세요.</span>
+        <div style="display:flex;gap:6px">
+          <button type="button" id="btn-expand-all">모두 펼치기 ＋</button>
+          <button type="button" id="btn-collapse-all">모두 접기 －</button>
+        </div>
+      </div>
+    </div>`;
 
+    if(aDetail)html+=renderLifeTimelineSection(aDetail);
     if(pDetail)html+=renderActivitySection(pDetail,thCol);
     if(pDetail)html+=renderAssetsSection(pDetail,thCol);
     if(pDetail||aDetail||gDetail)html+=renderFamilySection(pDetail||{name:e.name},aDetail,gDetail);
     if(pDetail)html+=renderQuotesSection(pDetail,res.id);
     if(pDetail||aDetail)html+=renderIncidentsSection(pDetail||{},aDetail);
     if(pDetail||aDetail)html+=renderCareerSection(pDetail||{},aDetail);
-    if(aDetail)html+=renderLifeTimelineSection(aDetail);
 
     container.innerHTML=html;
     initDragScrolls(container);
     container.querySelectorAll('.arc-gwrap').forEach(initArcGraphInteraction);
+    if(aDetail)drawArcTimeline(aDetail.events||[]);
 
-    // 재산 신고 섹션 스크롤 진입 시 코인 샤워 애니메이션 실행 및 클릭 반응
-    const assetSec = container.querySelector('#sec-assets');
-    if(assetSec && 'IntersectionObserver' in window){
-      const coinObs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting){
-            triggerCoinShower(assetSec);
-            coinObs.disconnect();
-          }
-        });
-      }, { threshold: 0.15 });
-      coinObs.observe(assetSec);
-
-      assetSec.querySelectorAll('.pol-k, .card').forEach(card => {
-        card.style.cursor = 'pointer';
-        card.title = '클릭하여 코인 드롭 효과 다시 보기';
-        card.addEventListener('click', () => {
-          delete assetSec.dataset.showered;
-          triggerCoinShower(assetSec);
-        });
-      });
+    // 전체 펼치기 / 접기
+    const btnExp = container.querySelector('#btn-expand-all');
+    const btnCol = container.querySelector('#btn-collapse-all');
+    if(btnExp){
+      btnExp.onclick=()=>{
+        document.querySelectorAll('.pol-fold').forEach(d=>d.open=true);
+      };
+    }
+    if(btnCol){
+      btnCol.onclick=()=>{
+        document.querySelectorAll('.pol-fold').forEach(d=>d.open=false);
+      };
     }
 
+    // 탭 클릭 시 해당 섹션 스크롤 및 내부 폴딩 자동 열기
     container.querySelectorAll('.pol-dash-tabs button').forEach(b=>{
       b.onclick=()=>{
         container.querySelectorAll('.pol-dash-tabs button').forEach(x=>x.classList.remove('on'));
         b.classList.add('on');
         const target=document.querySelector(b.dataset.target);
-        if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+        if(target){
+          target.querySelectorAll('.pol-fold').forEach(f=>f.open=true);
+          const nextFold = target.nextElementSibling?.classList?.contains('pol-fold') ? target.nextElementSibling : null;
+          if(nextFold) nextFold.open=true;
+          target.scrollIntoView({behavior:'smooth',block:'start'});
+        }
       };
     });
 

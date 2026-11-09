@@ -318,6 +318,11 @@ async function person(id){
     ensurePeopleBio().catch(()=>({}))
   ]);
   const p=enrichArcDetail(rawP, rawP?.name, id, bioDb);
+  if(p?.name){
+    // 인물 1페이지 통합: 해당 인물의 종합 포털 페이지로 즉시 연결
+    location.replace('entity/'+encodeURIComponent(p.name)+'/');
+    return;
+  }
   if(!p) return;
   document.title=p.name+' 인물 아카이브 · NewsBoard';
   fetch('https://raw.githubusercontent.com/pyw31337/news/history/h/index.json').then(r=>r.json()).then(X=>{const v=X['a'+id],el=document.getElementById('abb');if(!el)return;if(v&&v.c)el.querySelector('small').textContent=`${v.y[0]}년부터 ${v.c.toLocaleString()}건의 기록`;else el.querySelector('small').textContent='기록을 모으는 중이에요'}).catch(()=>{});

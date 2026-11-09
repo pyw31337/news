@@ -27,6 +27,11 @@ function pView(){$('#hxv').innerHTML=`<div class="hx-search">${I('search')}<inpu
   <div class="hx-legend">${ORD.map(k=>`<span><i style="--c:${C[k][2]}"></i>${C[k][0]}</span>`).join('')}</div><div class="hx-plist" id="hxpl">${plist('')}</div>`;
   $('#hxq').oninput=e=>$('#hxpl').innerHTML=plist(e.target.value.trim())}
 async function person(id){const v=IX[id];$('#hxv').innerHTML=`<div class="hx-load">불러오는 중…</div>`;let d;try{d=await gz(`p/${id}.json.gz`)}catch(e){$('#hxv').innerHTML='<p class="hx-empty">기록을 불러오지 못했어요.</p>';return}
+  if(d&&d.n){
+    // 인물 1페이지 통합: 해당 인물의 종합 포털 페이지로 즉시 연결
+    location.replace('entity/'+encodeURIComponent(d.n)+'/');
+    return;
+  }
   const it=d.it,cc={};it.forEach(r=>cc[r[3]]=(cc[r[3]]||0)+1);let sel='';const y0=+it[0][0].slice(0,4),y1=+it.at(-1)[0].slice(0,4);
   const quotes=it.filter(r=>r[4]).slice(-3).reverse();
   const draw=()=>{const L=it.filter(r=>!sel||r[3]===sel).slice().reverse();let html='',py='';
