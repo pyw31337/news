@@ -332,7 +332,7 @@ section[id^=s-]{scroll-margin-top:120px}
 .gbar{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;min-height:36px;height:auto;overflow:visible;margin:6px 0 14px;font-size:.84rem;font-weight:800;color:var(--ink2)}
 .obtn{border:2px solid var(--ink);background:#fff;color:var(--ink);font:inherit;font-weight:800;font-size:.78rem;padding:6px 12px;border-radius:99px;cursor:pointer;display:inline-flex;align-items:center}.obtn.on{background:var(--ink);color:#fff}
 .otit{font-size:.82rem;color:var(--mute);margin-top:6px;font-style:italic}.fe p{font-style:normal}
-body.en .ticker .lab{background:#7a4dff}
+body.en .ticker .lab, body.global-mode .ticker .lab, .ticker .lab.global, #ticker[data-k="world"] .lab, .ticker .tksel.global{background:#7a4dff !important}
 /* v6 3단 전환: 국내(흰색) / 해외 KR(흰색) / 해외 EN(주황) — 320px에서도 세 칸이 구분되도록 */
 .rsw button[data-region-mode=kr].on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15);font-weight:900}
 .rsw button[data-region-mode=ko].on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15);font-weight:900}

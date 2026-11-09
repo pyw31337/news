@@ -100,8 +100,8 @@ function nav(){const tb=document.querySelector('.tabbar');if(!tb)return;
   tb.innerHTML=T.map(([h,v,l])=>v==='today'?`<a href="./" data-v="today" class="ctr" aria-label="오늘"><span class="cb${CLK?' clk':''}"><span class="pinh"></span>${CLK?clkHTML():NS==='date'?`<b class="dn">${dnum}</b><small>TODAY</small>`:SV(P.today)}</span><span class="cl">${l}</span></a>`:`<a href="${h}" data-v="${v}">${SV(P[v])}<span>${l}</span></a>`).join('');
   if(CLK){tb.classList.add('clkv');tick()}
   /* PC 상단: 오늘 · 타임라인 · 마켓 · 배우기, 오른쪽 끝은 검색 · 알림 · 마이페이지 · 메뉴 */
-  const TP=[['','today','오늘'],['timeline','timeline','타임라인'],['market','market','마켓'],['learn','learn','배우기']];
-  const tn=document.querySelector('.topnav');if(tn)tn.innerHTML=TP.map(([h,v,l])=>`<a href="${h||'./'}" data-v="${v}">${l}</a>`).join('');
+  const TP=english?[['','today','Today'],['timeline','timeline','Timeline'],['market','market','Markets'],['learn','learn','Learn']]:[['','today','오늘'],['timeline','timeline','타임라인'],['market','market','마켓'],['learn','learn','배우기']];
+  const tn=document.querySelector('.topnav');if(tn){tn.innerHTML=TP.map(([h,v,l])=>`<a href="${h||'./'}" data-v="${v}">${l}</a>`).join('');hl()}
   const top=document.querySelector('header.top');if(top&&!document.getElementById('hsrch')){const q=document.createElement('button');q.type='button';q.id='hsrch';q.className='hsrch';q.setAttribute('aria-label','검색');q.innerHTML=SV(P.search);q.onclick=()=>window.NBT?NBT.search():(location.href='/news/#search');const ac=top.querySelector('.acct');if(ac)ac.before(q);else top.appendChild(q)}
   if(top&&!document.getElementById('tmenu')){
     const m=document.createElement('a');m.id='tmenu';m.href='menu';m.className='tmenu';m.dataset.v='menu';m.setAttribute('aria-label','메뉴');m.innerHTML=SV(P.menu);top.appendChild(m)}

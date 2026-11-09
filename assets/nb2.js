@@ -61,7 +61,8 @@ let tkcur='live';
 function renderTicker(){const el=document.getElementById('ticker');if(!el||!gD())return;tkcur=tkCur();const o=TK.find(x=>x.v===tkcur)||TK[0];const R=S.region==='en'&&gG(),EN=R&&S.orig;
   let it=tkItems(o.v);if(!it.length){tkcur='live';it=tkItems('live')}const lab=tkcur==='live'&&R?(EN?'Global trends':'해외 트렌드'):(TK.find(x=>x.v===tkcur)||TK[0]).label;
   const tk=it.map((x,i)=>`<a href="${x.h}"><b>${i+1}</b>${E(x.t)}${x.x||''}</a>`).join('');
-  el.innerHTML=`<button type="button" class="lab tksel" aria-haspopup="listbox" aria-expanded="false" aria-label="실시간 순위 종류 고르기 (지금: ${E(lab)})">${I(o.icon)}<span>${E(lab)}</span>${I('chevron-down')}</button><div class="tw" id="tw"><div class="run">${tk}<i class="sp"></i>${tk}</div></div>`;
+  const isGlobal = (tkcur==='live'&&R) || tkcur==='world';
+  el.innerHTML=`<button type="button" class="lab tksel ${isGlobal?'global':''}" style="${isGlobal?'background:#7a4dff !important;':''}" aria-haspopup="listbox" aria-expanded="false" aria-label="실시간 순위 종류 고르기 (지금: ${E(lab)})">${I(o.icon)}<span>${E(lab)}</span>${I('chevron-down')}</button><div class="tw" id="tw"><div class="run">${tk}<i class="sp"></i>${tk}</div></div>`;
   el.dataset.k=tkcur;typeof tickerDrag==='function'&&tickerDrag(document.getElementById('tw'));
   // 원문·번역 전환은 해외 화면 머리줄 오른쪽 끝(app.js origBtn)
   const b=el.querySelector('.tksel');b.onclick=()=>{if(openPop&&openPop.btn===b)return closePop();popList(b,TK.filter(x=>x.v!=='world'||gG()),tkcur,x=>{localStorage.setItem('nb-tk',x.v);if(x.v==='apt')loadApt().then(renderTicker);renderTicker()},{title:'무엇의 순위를 볼까요?',w:240,cls:'tkpop'})}}

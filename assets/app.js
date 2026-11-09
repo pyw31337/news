@@ -391,16 +391,28 @@ function header(){
 function header2(){
   const R=!!(S.region==='en'&&G),EN=R&&S.orig;
   document.querySelectorAll('[data-region-mode]').forEach(b=>{const on=b.dataset.regionMode===regionMode();b.classList.toggle('on',on);b.setAttribute('aria-checked',on)});
-  document.body.classList.toggle('en',EN);document.documentElement.lang=EN?'en':'ko';window.dispatchEvent(new CustomEvent('nb:region-changed'));
+  document.body.classList.toggle('en',EN);
+  document.body.classList.toggle('global-mode',R);
+  document.documentElement.lang=EN?'en':'ko';
+  window.dispatchEvent(new CustomEvent('nb:region-changed'));
   const top=EN?['Today','Timeline','Markets','Learn']:['오늘','타임라인','마켓','배우기'];
-  document.querySelectorAll('.topnav a').forEach((a,i)=>a.textContent=top[i]||a.textContent);
+  const cp=decodeURIComponent(location.pathname.slice(BASEP.length)).split('/')[0];
+  const isTodayView = !cp || cp==='g' || cp==='gt' || cp==='issue' || cp==='kw';
+  document.querySelectorAll('.topnav a').forEach((a,i)=>{
+    a.textContent=top[i]||a.textContent;
+    if(a.dataset.v==='today'){
+      a.classList.toggle('on', isTodayView);
+    }
+  });
   // 바닥글은 영어 원문 모드에서만 영어로 전환한다.
   document.querySelectorAll('.flinks a').forEach(a=>{const t=/terms/.test(a.getAttribute('href'));a.textContent=EN?(t?'Terms':'Privacy'):(t?'이용약관':'개인정보처리방침')});
   // 하단 탭 이름은 my.js nav()가 nb:region-changed에서 다시 그림(여기서 덮어쓰면 가운데 '오늘' 시계가 사라짐)
   const T=R?G.trends:D.trends;
   const tk=T.map((t,i)=>`<a href="${R?'gt/'+i:kh(t.keyword)}" title="${TTIP}"><b>${i+1}</b>${esc(R&&!S.orig?(t.keyword_ko||t.keyword):t.keyword)}<small>${tlab(t)}</small></a>`).join('');
-  $('#ticker').innerHTML=`<div class="lab">${ic('fire')}${R?(EN?'Global trends':'해외 트렌드'):'실시간'}</div><div class="tw" id="tw"><div class="run">${tk}<i class="sp"></i>${tk}</div></div>`;
+  const labBg = R ? 'background:#7a4dff !important;' : '';
+  $('#ticker').innerHTML=`<div class="lab ${R?'global':''}" style="${labBg}">${ic('fire')}${R?(EN?'Global trends':'해외 트렌드'):'실시간'}</div><div class="tw" id="tw"><div class="run">${tk}<i class="sp"></i>${tk}</div></div>`;
   tickerDrag($('#tw'));
+  if(typeof hl==='function') hl();
 }
 /* 티커: 자동 흐름 + 마우스 드래그·터치 스와이프 */
 /* 헤더 순위 띠: 평소엔 CSS 애니메이션(합성기만 사용, 메인 스레드 부담 0)으로 왼쪽으로 흐르고,
