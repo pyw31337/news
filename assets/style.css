@@ -1733,12 +1733,19 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
   position:relative;
   overflow:hidden;
   background-color:#e2e8f0;
+  background-position:center top !important;
+  background-size:cover !important;
 }
 .prof .av .av-img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center 20%;
-  border-radius:inherit;
-  display:block;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center 15% !important;
+  border-radius:inherit !important;
+  display:block !important;
+  opacity:1 !important;
+}
+.prof .av.sq-low, .prof .av.sq-deep, .prof .av.sq-soft{
+  background-color:#e2e8f0 !important;
+  background-image:none !important;
 }

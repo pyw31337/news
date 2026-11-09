@@ -43,6 +43,26 @@ def sanitize_today(path):
         if iss.get('gallery'):
             iss['gallery'] = [g for g in iss['gallery'] if 'ogtag/navernews' not in g.get('img', '')]
 
+    # 3. 엔티티 미디어 URL을 로컬 보존 WebP로 확정 매핑 (외부 위키미디어 hotlink 차단 방지)
+    ent_idx_path = 'media/ent/index.json'
+    ent_idx = {}
+    if os.path.exists(ent_idx_path):
+        try:
+            with open(ent_idx_path, 'r', encoding='utf-8') as f:
+                ent_idx = json.load(f)
+        except Exception:
+            pass
+    for e in d.get('entities', []):
+        v = e.get('visual') or {}
+        src = v.get('src') or v.get('url') or ''
+        if src in ent_idx and ent_idx[src].get('f'):
+            v['url'] = 'media/' + ent_idx[src]['f']
+            v['src'] = src
+            e['visual'] = v
+        if e.get('name') == '이재명':
+            v['url'] = 'media/ent/da/da37f2330225f1ef.webp'
+            e['visual'] = v
+
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(d, f, ensure_ascii=False, indent=2)
     print(f'Sanitized {path} successfully.')

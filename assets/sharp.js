@@ -6,8 +6,8 @@ const CAPW=1600,CAPH=1000;
 const C=new Map();
 const dims=u=>{if(!C.has(u))C.set(u,new Promise(r=>{const i=new Image();i.decoding='async';i.onload=()=>r([i.naturalWidth,i.naturalHeight]);i.onerror=()=>r([0,0]);i.src=u}));return C.get(u)};
 const urlOf=el=>{if(el.tagName==='IMG')return el.currentSrc||el.src;const m=(el.getAttribute('style')||'').match(/(?:background-image|--im)\s*:\s*url\((['"]?)(.*?)\1\)/);return m?m[2]:''};
-/* 배지·게임 그림은 사진이 아님(연출 중 확대 크기로 재면 숨겨지던 문제) */
-const skip=el=>el.closest('.pp,.ds-logo,.plat,svg,.tabbar,.gm-medal,.gm-slot,.gm-cele,.sb-st,.lbx')||/favicons|data:image\/svg|\/badges\/|\/platforms\/|\/press\/|games\/assets\//.test(urlOf(el));
+/* 배지·게임 그림은 사진이 아님(연출 중 확대 크기로 재면 숨겨지던 문제). 프로필 아바타(.av, .prof) 및 자체 보존 인물 사진도 보호 */
+const skip=el=>el.closest('.av,.prof,.pp,.ds-logo,.plat,svg,.tabbar,.gm-medal,.gm-slot,.gm-cele,.sb-st,.lbx')||/favicons|data:image\/svg|\/badges\/|\/platforms\/|\/press\/|media\/ent\/|data\/pol\/|games\/assets\//.test(urlOf(el));
 async function check(el){const u=urlOf(el);if(!u){el.classList.add('sq-ok');return}
   const [w,h]=await dims(u);const r=el.getBoundingClientRect();if(!r.width||!r.height){el.classList.add('sq-ok');return}
   /* 사진이 없는 것보다 조금 덜 선명한 사진이 낫다: 칸 크기(1배)의 60% 이상이거나 가로 480px 이상이면 보여줌.

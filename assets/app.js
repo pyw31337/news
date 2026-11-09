@@ -201,14 +201,32 @@ function primaryPublicRole(e,pol){
 function profilePhoto(e,pDetail,gDetail){
   const center=(gDetail?.nodes||[]).find(n=>n?.id===gDetail?.center||n?.name===e?.name);
   const pol=getPol(e?.name);
-  let u=pDetail?.photo||pDetail?.photo_local;
-  if(!u) u=pol?.photo||pol?.photo_local;
+  if(e?.name==='이재명'||pol?.name==='이재명'){
+    return 'media/ent/da/da37f2330225f1ef.webp';
+  }
+  let u=pDetail?.photo_local||pDetail?.photo;
+  if(!u) u=pol?.photo_local||pol?.photo;
   if(!u) u=center?.photo;
   if(!u) u=entityMedia(e).url;
-  if(!u && (e?.name==='이재명'||pol?.name==='이재명')){
-    u='https://www.assembly.go.kr/static/portal/img/openassm/IUD9392R.jpg';
-  }
   return u||'';
+}
+
+function profileFallback(img, name){
+  if(!img) return;
+  const falls = name==='이재명'?[
+    'media/ent/da/da37f2330225f1ef.webp',
+    'data/pol/photos/IUD9392R.webp',
+    'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/President_Lee_Jae-myung_2025_%28cropped%29.jpg/500px-President_Lee_Jae-myung_2025_%28cropped%29.jpg'
+  ]:[];
+  let idx = parseInt(img.dataset.fidx||'0', 10);
+  if(idx < falls.length){
+    img.dataset.fidx = String(idx + 1);
+    img.src = falls[idx];
+  } else {
+    img.onerror = null;
+    const p = img.parentElement;
+    if(p){ p.innerHTML = ic('user'); }
+  }
 }
 
 function publicOfficePill(role){
@@ -2508,7 +2526,7 @@ function renderEntityDashboard(n, e, preloadedRes){
    <p class="big">${wi?`지금 화제인 이유 — ${esc(wi.title)}`:esc(tl[0]?.title||desc)}</p>${wi?`<a class="go" href="issue/${wi.id}">이슈 자세히 보기 ${NBI('arrow-right')}</a>`:''}</div></section>
   <div class="entity-overview-grid">
    <section class="card prof ${pTheme?'prof-party':''}" style="${pcVars}">
-    <div class="row"><div style="position:relative;flex:none"><div class="av media-portrait" ${bg(initialPhoto)}>${initialPhoto?`<img src="${esc(initialPhoto)}" alt="${esc(e.name)}" class="av-img" onerror="this.onerror=null;this.src='https://www.assembly.go.kr/static/portal/img/openassm/IUD9392R.jpg'"/>`:ic('user')}</div>${polSealHtml}</div><div>${publicOfficePill(publicRole)}${polProfilePill}<h1>${esc(e.name)}</h1>${isPres?`<p class="prof-desc presidential-desc">대한민국 <b>${esc(publicRole.ord||'제21대')} 대통령</b> (국가원수 및 행정부 수반)</p>${publicRole.subBadges?.length?`<div class="prof-sub-badges">${publicRole.subBadges.map(b=>`<span class="prof-sub-badge">${esc(b)}</span>`).join('')}</div>`:''}`:`<p class="prof-desc">${esc(desc)}</p>`}${polLinkHtml}</div></div>
+    <div class="row"><div style="position:relative;flex:none"><div class="av media-portrait sq-ok" ${bg(initialPhoto)}>${initialPhoto?`<img src="${esc(initialPhoto)}" alt="${esc(e.name)}" class="av-img sq-ok" onerror="profileFallback(this, '${esc(e.name)}')"/>`:ic('user')}</div>${polSealHtml}</div><div>${publicOfficePill(publicRole)}${polProfilePill}<h1>${esc(e.name)}</h1>${isPres?`<p class="prof-desc presidential-desc">대한민국 <b>${esc(publicRole.ord||'제21대')} 대통령</b> (국가원수 및 행정부 수반)</p>${publicRole.subBadges?.length?`<div class="prof-sub-badges">${publicRole.subBadges.map(b=>`<span class="prof-sub-badge">${esc(b)}</span>`).join('')}</div>`:''}`:`<p class="prof-desc">${esc(desc)}</p>`}${polLinkHtml}</div></div>
     <div class="prof-facts-area">${renderProfFactsHtml(pol)}</div>
     ${e.wiki?.extract?`<p class="prof-wiki">${esc(e.wiki.extract)} ${e.wiki.url?`<a href="${esc(e.wiki.url)}" target="_blank" rel="noopener" style="color:${pTheme?pTheme.color:'var(--blue)'};font-weight:700">위키백과 ${NBI('arrow-up-right')}</a>`:''}</p>`:''}
     <div class="kpis"><div><b style="${pTheme?`color:${pTheme.color}`:''}">${e.score}</b><span>오늘 화제도</span></div><div><b>${tl.length}</b><span>수집된 기록</span></div><div><b>${first?new Date(first).getFullYear():'-'}</b><span>가장 오래된 기록</span></div></div>
@@ -2730,8 +2748,10 @@ function renderEntityDashboard(n, e, preloadedRes){
         }
         const elAv=elProf.querySelector('.av');
         if(elAv&&livePhoto){
+          elAv.classList.add('sq-ok');
+          elAv.classList.remove('sq-low','sq-deep','sq-soft');
           elAv.style.backgroundImage=`url('${livePhoto}')`;
-          elAv.innerHTML=`<img src="${esc(livePhoto)}" alt="${esc(e.name)}" class="av-img" onerror="this.onerror=null;this.src='https://www.assembly.go.kr/static/portal/img/openassm/IUD9392R.jpg'"/>`;
+          elAv.innerHTML=`<img src="${esc(livePhoto)}" alt="${esc(e.name)}" class="av-img sq-ok" onerror="profileFallback(this, '${esc(e.name)}')"/>`;
         }
         const elDesc=elProf.querySelector('.prof-desc');
         if(elDesc){
