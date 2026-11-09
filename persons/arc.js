@@ -226,15 +226,47 @@ const ARC_MASTER_PROFILES = {
 };
 ARC_MASTER_PROFILES['IUD9392R'] = ARC_MASTER_PROFILES['이재명'];
 
-function enrichArcDetail(aDetail, personName, polId){
+let _peopleBioCache = null;
+let _peopleBioPromise = null;
+
+async function ensurePeopleBio(){
+  if(_peopleBioCache) return _peopleBioCache;
+  if(_peopleBioPromise) return _peopleBioPromise;
+  _peopleBioPromise = (async () => {
+    try {
+      if (typeof DecompressionStream !== 'undefined') {
+        const r = await fetch('data/people_bio.json.gz');
+        if (r.ok) {
+          const ds = r.body.pipeThrough(new DecompressionStream('gzip'));
+          const text = await new Response(ds).text();
+          _peopleBioCache = JSON.parse(text);
+          return _peopleBioCache;
+        }
+      }
+    } catch (_) {}
+    try {
+      const r = await fetch('data/people_bio.json');
+      if (r.ok) {
+        _peopleBioCache = await r.json();
+        return _peopleBioCache;
+      }
+    } catch (_) {}
+    _peopleBioCache = {};
+    return _peopleBioCache;
+  })();
+  return _peopleBioPromise;
+}
+
+function enrichArcDetail(aDetail, personName, polId, bioDb){
   const key = personName || polId;
-  const master = ARC_MASTER_PROFILES[personName] || ARC_MASTER_PROFILES[polId];
+  const master = ARC_MASTER_PROFILES[personName] || ARC_MASTER_PROFILES[polId] || (bioDb && (bioDb[personName] || (polId && bioDb[polId])));
   if(!aDetail && !master) return null;
   const base = aDetail ? { ...aDetail, events: [...(aDetail.events || [])] } : { id: polId || key, name: personName || key, events: [] };
   if(!base.events) base.events = [];
   if(master){
     if(master.military && !base.military) base.military = master.military;
-    master.events.forEach(me => {
+    if(master.birth_desc && !base.birth_desc) base.birth_desc = master.birth_desc;
+    (master.events || []).forEach(me => {
       const normTitle = (me.title || '').replace(/\s+/g, '');
       const matchIdx = base.events.findIndex(be => {
         const bNorm = (be.title || '').replace(/\s+/g, '');
@@ -248,10 +280,16 @@ function enrichArcDetail(aDetail, personName, polId){
       }
     });
   }
+  const STAGE_ORDER = {'출생·성장': 1, '학업': 2, '병역': 3, '사회 경력': 4, '정치 활동': 5, '재산': 6, '논란·사법': 7, '언론 보도': 8};
   base.events.sort((a, b) => {
     const da = (a.d || '').replace(/[^0-9]/g, '').slice(0, 8);
     const db = (b.d || '').replace(/[^0-9]/g, '').slice(0, 8);
-    return da.localeCompare(db);
+    if(da && db) return da.localeCompare(db);
+    if(da && !db) return -1;
+    if(!da && db) return 1;
+    const sa = STAGE_ORDER[a.stage] || 99;
+    const sb = STAGE_ORDER[b.stage] || 99;
+    return sa - sb;
   });
   return base;
 }
@@ -270,8 +308,13 @@ async function list(){
 const cards=L=>L.map(p=>`<a class="acard" href="persons/?id=${p.id}">${ph(p.photo,p.name,pc(p.party))}<div><b>${esc(p.name)}</b><span style="color:${pc(p.party)}">${esc(p.party||'')}</span><em><i>사건 ${fmt(p.ev)}</i><i>관계 ${fmt(p.ed)}</i></em></div></a>`).join('');
 
 async function person(id){
-  const [rawP,g]=await Promise.all([j('person/'+encodeURIComponent(id)),j('graph/'+encodeURIComponent(id)).catch(()=>null)]);
-  const p=enrichArcDetail(rawP, rawP.name, id);
+  const [rawP,g,bioDb]=await Promise.all([
+    j('person/'+encodeURIComponent(id)).catch(()=>null),
+    j('graph/'+encodeURIComponent(id)).catch(()=>null),
+    ensurePeopleBio().catch(()=>({}))
+  ]);
+  const p=enrichArcDetail(rawP, rawP?.name, id, bioDb);
+  if(!p) return;
   document.title=p.name+' 인물 아카이브 · NewsBoard';
   fetch('https://raw.githubusercontent.com/pyw31337/news/history/h/index.json').then(r=>r.json()).then(X=>{const v=X['a'+id],el=document.getElementById('abb');if(!el)return;if(v&&v.c)el.querySelector('small').textContent=`${v.y[0]}년부터 ${v.c.toLocaleString()}건의 기록`;else el.querySelector('small').textContent='기록을 모으는 중이에요'}).catch(()=>{});
   const d=p.data||{},E=p.events||[],c=pc(p.party);
