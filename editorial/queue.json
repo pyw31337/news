@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-09",
-  "generated_at": "2026-11-09T15:22:08+09:00",
+  "generated_at": "2026-11-09T15:52:46+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,207 +27,9 @@
   },
   "candidates": [
     {
-      "issue_id": "i304d6798",
-      "title": "젠슨 황-中스파이 여성 불륜, 트럼프는 알고있었다",
-      "category": "세계",
-      "rank": 1,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "엔비디아의 젠슨 황 CEO가 중국 정보기관의 첩자로 의심받는 싱가포르 기업 임원 앨리스 황과의 불륜 관계를 시인했다.",
-        "\"허리 감싸고 볼에 입맞춤\"…젠슨 황, '불륜 여성'과 다정한 모습 재조명",
-        "젠슨 황 “아내에게 불충실했다” 中 간첩 의심녀와 불륜 인정",
-        "세계 인공지능(AI) 반도체 시장을 장악한 엔비디아의 젠슨 황 최고경영자(CEO)가 불륜을 인정하면서 사생활 논란이 기업 경영 위기로 번지고 있다.",
-        "특히 만약 황 CEO가 이혼 소송에 휘말릴 경우 천문학적인 재산분할..."
-      ],
-      "sources": [
-        {
-          "press": "머니투데이",
-          "title": "\"허리 감싸고 볼에 입맞춤\"…젠슨 황, '불륜 여성'과 다정한 모습 재조명",
-          "url": "https://n.news.naver.com/article/008/0005438309"
-        },
-        {
-          "press": "조선일보",
-          "title": "젠슨 황 “아내에게 불충실했다” 中 간첩 의심녀와 불륜 인정",
-          "url": "https://n.news.naver.com/article/023/0004008522"
-        },
-        {
-          "press": "mk.co.kr",
-          "title": "‘불륜 인정’ 젠슨 황, 이혼시 100조원대 재산분할?…엔비디아 흔드는...",
-          "url": "https://n.news.naver.com/mnews/article/009/0005761021?sid=101"
-        },
-        {
-          "press": "whitepaper.co.kr",
-          "title": "트럼프 \"젠슨 황은 훌륭한 사람…아시아 방문에 데려갈 것\"",
-          "url": "http://www.whitepaper.co.kr/news/articleView.html?idxno=268578"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "엔비디아의 젠슨 황 CEO가 중국 정보기관의 첩자로 의심받는 싱가포르 기업 임원 앨리스 황과의 불륜 관계를 시인했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "젠슨 황은 주말 사이 사내 메모를 통해 블륜을 인정하고 직원들에게 사과했고, 엔비디아 이사회가 자체..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "(사진=AP연합뉴스) 도널드 트럼프 미국 대통령이 8일(현지시간) 중국 스파이로 의심되는 여성과 불륜관계였음을 인정한 젠슨 황 엔비디아 최고경영자(CEO)를 \"훌륭한 사람\"이라며 옹호했다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "불륜 사실 인정과 스킨십 영상 공개가 동시에 보도되며 사건이 공론화되었다. 엔비디아 주가 하락과 이사회의 독립 조사 착수 소식이 전해지며 기업 경영 리스크로 확산되는 양상을 보인다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ib55f0db1",
-      "title": "‘줄기세포 논문 조작’ 황우석, 한국 국적 상실… UAE 국민 됐다",
-      "category": "사회",
-      "rank": 2,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "‘줄기세포 논문 조작’ 황우석, 한국 국적 상실… UAE 국민 됐다",
-        "'줄기세포 논문 조작' 황우석, 놀라운 근황...한국 국적 잃었다",
-        "‘줄기세포 논문 조작’ 황우석, 한국인 포기하고 UAE 국적 취득",
-        "‘줄기세포 조작 논란’ 황우석 전 서울대 교수 한국 국적 상실",
-        "'줄기세포 논문 조작' 황우석 박사, UAE 국적 취득… 韓 국적 상실"
-      ],
-      "sources": [
-        {
-          "press": "조선비즈",
-          "title": "‘줄기세포 논문 조작’ 황우석, 한국 국적 상실… UAE 국민 됐다",
-          "url": "https://n.news.naver.com/article/366/0001203396"
-        },
-        {
-          "press": "한국경제TV",
-          "title": "'줄기세포 논문 조작' 황우석, 놀라운 근황...한국 국적 잃었다",
-          "url": "https://n.news.naver.com/article/215/0001272091"
-        },
-        {
-          "press": "주간경향",
-          "title": "‘줄기세포 논문 조작’ 황우석, 한국인 포기하고 UAE 국적 취득",
-          "url": "https://n.news.naver.com/article/033/0000053265"
-        },
-        {
-          "press": "국제신문",
-          "title": "‘줄기세포 조작 논란’ 황우석 전 서울대 교수 한국 국적 상실",
-          "url": "https://n.news.naver.com/article/658/0000160737"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "‘줄기세포 논문 조작’ 황우석, 한국 국적 상실… UAE 국민 됐다"
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "낙타 복제 연구하는 황우석, 한국→UAE로 국적 변경"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "9일 연합뉴스 보도에 따르면 법무부 청주 출입국·외국인사무소는 1953년생인 황우석씨가 올해 4월 9일 UAE 국적을 취득해 한국 국적을 상실했다고 8월 13일 고시했다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i5e3f7b43",
-      "title": "(현장+)장충체육관보다 큰 LNG 탱크…버리던 냉기 ‘AI 데이터센터’ 활용 모색",
-      "category": "IT",
+      "issue_id": "if35a229b",
+      "title": "배민·쿠팡 과징금 6천억대 '역대 최대'‥최혜대우 요구 등 갑질",
+      "category": "경제",
       "rank": 9,
       "priority_score": 37,
       "production_types": [
@@ -236,49 +38,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "5일 오후 울산 북항 코리아에너지터미널(KET).",
-        "부두에 들어서자 세 개의 거대한 원통형 액화천연가스(LNG) 저장탱크가 모습을 드러냈다.",
-        "한 탱크 당 직경 21.5m, 높이 57m 규모로, 서울 장충체육관의 약 3배에 달한다.",
-        "영하 162도의 초저온 LNG를 보관하기 위해 내부는...",
-        "해가 서서히 기울자 거대한 액화천연가스(LNG) 저장탱크에 하나둘씩 조명이 켜졌다."
+        "공정거래위원회가 배달의민족과 쿠팡이츠의 불공정행위에 대해 배달앱 사업자 대상 역대 최대 규모인 6천319억 원의 과징금을 잠정 부과했습니다.",
+        "[속보]배민·쿠팡에 역대 최대 과징금 6319억…\"담합과 비슷한 경쟁제한\"",
+        "‘배달앱 불공정’ 배민·쿠팡 과징금 각각 3천여억 원",
+        "6319억원의 과징금을 부과받은 가운데 양사가 제재의 정당성에 의문을 제기하며 대응에 나섰다....",
+        "지난해 주문금액 기준 배민과 쿠팡이츠의 합산 시장점유율은 92.89%에 달한다."
       ],
       "sources": [
         {
-          "press": "edaily.co.kr",
-          "title": "“장충체육관 3배 크기 LNG 탱크 우뚝”…울산 에너지 허브 이끄는 KET [...",
-          "url": "https://n.news.naver.com/mnews/article/018/0006406690?sid=101"
+          "press": "뉴시스",
+          "title": "[속보]배민·쿠팡에 역대 최대 과징금 6319억…\"담합과 비슷한 경쟁제한\"",
+          "url": "https://n.news.naver.com/article/003/0014310517"
         },
         {
-          "press": "ddaily.co.kr",
-          "title": "[르포] \"20년간 빈 탱크 걱정 없다\"…LNG 319만톤 송출한 울산 KET",
-          "url": "https://n.news.naver.com/mnews/article/138/0002247759?sid=101"
+          "press": "KBS",
+          "title": "‘배달앱 불공정’ 배민·쿠팡 과징금 각각 3천여억 원",
+          "url": "https://n.news.naver.com/article/056/0012289893"
         },
         {
-          "press": "viva100.com",
-          "title": "[르포①] 국내 첫 석유·LNG 복합터미널 KET… 장충체육관 3배 LNG 탱크 ‘...",
-          "url": "https://www.viva100.com/article/20261109500620"
+          "press": "ezyeconomy.com",
+          "title": "[EZ 핫이슈] 공정위 \"과징금 6319억\"…배민·쿠팡이츠 \"법적 대응 검토\"",
+          "url": "https://www.ezyeconomy.com/news/articleView.html?idxno=241668"
         },
         {
-          "press": "디지털데일리",
-          "title": "[르포] \"20년간 빈 탱크 걱정 없다\"…LNG 319만톤 송출한 울산 KET",
-          "url": "https://n.news.naver.com/article/138/0002247759"
+          "press": "dailypop.kr",
+          "title": "요기요는 4억, 쿠팡은 3008억…쿠팡 \"이중잣대·방어권 침해\" 반발",
+          "url": "http://www.dailypop.kr/news/articleView.html?idxno=104355"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "5일 오후 울산 북항 코리아에너지터미널(KET)."
+          "evidence": "공정거래위원회가 배달의민족과 쿠팡이츠의 불공정행위에 대해 배달앱 사업자 대상 역대 최대 규모인 6천319억 원의 과징금을 잠정 부과했습니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "탱크 인근에는 탱크 안에 저장된 LNG가 인근 발전소로 공급될 때 필요한 파이프라인으로 얽혀 있었다...."
+          "evidence": "쿠팡이츠는 점주가 자발적으로 참여한 정책이라며, 위반 행위와 무관한 매출까지 과징금 산정에 포함됐다고 즉각 반박에 나섰다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "한 탱크 당 직경 21.5m, 높이 57m 규모로, 서울 장충체육관의 약 3배에 달한다."
+          "evidence": "[속보]배민·쿠팡에 역대 최대 과징금 6319억…\"담합과 비슷한 경쟁제한\""
         },
         {
           "panel": 4,
@@ -287,8 +89,206 @@
         }
       ],
       "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i8f011836",
+      "title": "젠슨황, 中스파이 의심 여성과 불륜 인정…이사회 독립조사 착수(종합)",
+      "category": "세계",
+      "rank": 2,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "젠슨 황 엔비디아 CEO가 중국 국가안전부(MSS) 스파이로 의심받는 여성 기업인 앨리스 황과의 불륜 관계를 인정하고 가족과 임직원에게 사과했다.",
+        "\"허리 감싸고 볼에 입맞춤\"…젠슨 황, '불륜 여성'과 다정한 모습 재조명",
+        "\"허리 감싸고 볼에 뽀뽀까지\"…젠슨 황, 中스파이 의심 여성과 다정한 모습 포착",
+        "젠슨 황 \"연인 맞다\"...트럼프, 알고도 뭉개 '일파만파'",
+        "불리는 젠슨 황 엔비디아 최고경영자(CEO)가 자신의 인생에서 절체절명의 위기를 맞고 있다."
+      ],
+      "sources": [
+        {
+          "press": "머니투데이",
+          "title": "\"허리 감싸고 볼에 입맞춤\"…젠슨 황, '불륜 여성'과 다정한 모습 재조명",
+          "url": "https://n.news.naver.com/article/008/0005438309"
+        },
+        {
+          "press": "아시아경제",
+          "title": "\"허리 감싸고 볼에 뽀뽀까지\"…젠슨 황, 中스파이 의심 여성과 다정한 모습 포착",
+          "url": "https://n.news.naver.com/article/277/0005839833"
+        },
+        {
+          "press": "YTN",
+          "title": "젠슨 황 \"연인 맞다\"...트럼프, 알고도 뭉개 '일파만파'",
+          "url": "https://n.news.naver.com/article/052/0002430254"
+        },
+        {
+          "press": "dt.co.kr",
+          "title": "어쩌다 AI 왕자 젠슨황은 ‘中 미인계’에 빠졌나…41년 해로한 아내 두...",
+          "url": "https://n.news.naver.com/mnews/article/029/0003057937?sid=104"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "젠슨 황 엔비디아 CEO가 중국 국가안전부(MSS) 스파이로 의심받는 여성 기업인 앨리스 황과의 불륜 관계를 인정하고 가족과 임직원에게 사과했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "- 하락 출발한 코스피, 등락 반복 후 상승 전환 성공 - 외인 7거래일 연속 '팔자'…삼전닉스 상승 폭↑ - 젠슨 황, 中MSS 스파이 지목 여성 불륜 의혹 인정 - 엔비디아 이사회, 독립위 꾸려 젠슨 황…"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "세계 반도체 산업을 좌지우지하며 거침없이 성공 가도를 달려온 그가 41년간 함께한 아내를 두고 다른 여성과 불륜을..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "사건의 전말이 드러나며 엔비디아의 독립 조사 착수와 황 CEO의 사과가 공식화되었다. 이번 스캔들이 단순한 사생활 문제를 넘어 미·중 반도체 패권 경쟁과 안보 정책에 미칠 파장에 주목하는 해석이 나온다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "security",
+        "direction": "보안 관제·접속 흔적·차단 절차를 사용, 실제 피해자·공격자 묘사는 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i8f0edaa7",
+      "title": "젠슨 황 “아내 배신했다”…中 간첩 의혹 여성과 불륜 인정",
+      "category": "세계",
+      "rank": 3,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "젠슨 황 “아내에 상처” 불륜 인정… 美, AI기술유출 ‘中미인계’ 조사",
+        "\"위자료 추정치만 110조원?\"…'불륜 논란' 젠슨황, 세기의 이혼 주인공 될까",
+        "젠슨 황 엔비디아 최고경영자(CEO)가 불륜 사실을 공개적으로 인정하면서 아내 로리 황(Lori Huang)과의 40여년 결혼 생활이 파경 위기를 맞았다.",
+        "젠슨 황 CEO는 지난 8일 임직원들에게 보낸 사내 이메일을 통해 \"가족과...",
+        "젠슨 황 “아내에게 불충실했다” 中 간첩 의심녀와 불륜 인정"
+      ],
+      "sources": [
+        {
+          "press": "문화일보",
+          "title": "젠슨 황 “아내에 상처” 불륜 인정… 美, AI기술유출 ‘中미인계’ 조사",
+          "url": "https://n.news.naver.com/article/021/0002831420"
+        },
+        {
+          "press": "한국경제TV",
+          "title": "\"위자료 추정치만 110조원?\"…'불륜 논란' 젠슨황, 세기의 이혼 주인공 될까",
+          "url": "https://n.news.naver.com/article/215/0001272109"
+        },
+        {
+          "press": "newsis.com",
+          "title": "젠슨 황, 로리와 40년 결혼 파경 위기…\"재산 분할 땐 100조원\"",
+          "url": "https://n.news.naver.com/mnews/article/003/0014311144?sid=104"
+        },
+        {
+          "press": "조선일보",
+          "title": "젠슨 황 “아내에게 불충실했다” 中 간첩 의심녀와 불륜 인정",
+          "url": "https://n.news.naver.com/article/023/0004008522"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "젠슨 황 “아내에 상처” 불륜 인정… 美, AI기술유출 ‘中미인계’ 조사"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "황 CEO는 엔비디아 이사회 발표에 앞서 사내 구성원들에게 이메일을 보내, 불륜 사실을 인정했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "\"위자료 추정치만 110조원?\"…'불륜 논란' 젠슨황, 세기의 이혼 주인공 될까"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
