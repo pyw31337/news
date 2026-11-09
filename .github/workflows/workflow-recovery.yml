@@ -1,0 +1,36 @@
+name: workflow-recovery
+
+on:
+  schedule:
+    - cron: '23 * * * *' # 매시 08:23 KST부터 한 시간마다 최근 실패를 점검
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 안전한 일시 오류를 한 번 재시도
+        type: boolean
+        default: true
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: 최근 실패 분류·안전 재시도
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          args="--hours 24"
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.apply }}" = "true" ]; then args="$args --apply"; fi
+          python3 scripts/workflow_recovery.py $args
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: workflow-recovery-report
+          path: reports/workflow-recovery.json
+          retention-days: 30

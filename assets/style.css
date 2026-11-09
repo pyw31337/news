@@ -1625,5 +1625,22 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
   .prof-facts{grid-template-columns:1fr}
 }
 
+/* 날씨 화면도 NewsBoard 공통 토큰을 사용한다. 데이터 밀도는 유지하되, 별도 서비스처럼
+   보이던 파란 대시보드 팔레트·모서리·그림자를 메인 카드 체계로 수렴시킨다. */
+.weather-dash{gap:var(--ds-6);font-family:var(--ds-sans)}
+.weather-intro,.weather-section,.weather-detail,.wx-alert-history,.wx-map-card,.wx-alerts{border-color:var(--ds-line);border-radius:var(--ds-r-l);box-shadow:var(--ds-sh-1)}
+.weather-intro{background:radial-gradient(circle at 89% 10%,#fff0e8 0 8%,transparent 8.3%),radial-gradient(circle at 84% 21%,#fff8ed 0 16%,transparent 16.3%),var(--ds-card)}
+.weather-intro:after{border-color:#ffe3da;box-shadow:0 0 0 22px #fff4ee80,0 0 0 44px #fff9f4}.weather-intro h1{font-family:var(--ds-sans);font-weight:var(--ds-w-black);color:var(--ds-ink)}
+.weather-intro aside{border-color:var(--ds-line);border-radius:var(--ds-r-m);box-shadow:var(--ds-sh-1)}.weather-intro aside b{color:var(--ds-ink)}
+.weather-hero{border-radius:var(--ds-r-l);background:linear-gradient(122deg,var(--ds-ink),#202957 62%,#513d61);box-shadow:var(--ds-sh-2)}.weather-hero:after{background:linear-gradient(135deg,transparent 0 49.5%,#fff0 50%),radial-gradient(circle at 7% 115%,#ff4d2e48 0 18%,transparent 18.4%)}
+.wx-hero-main span,.wx-hero-range>b{color:#ffcbbd}.wx-hero-range i{color:#ffd8ca}.wx-hero-meta span{color:#f0d9d3}
+.weather-sec-head small,.wx-card-title small{color:var(--ds-brand)}.weather-sec-head h2{font-family:var(--ds-sans);font-weight:var(--ds-w-heavy);color:var(--ds-ink)}.weather-sec-head a{background:#fff0eb;color:#cd4127}
+.wx-station{border-color:var(--ds-line);border-radius:var(--ds-r-m);background:#fff}.wx-station:hover,.wx-station:focus-visible,.wx-station.on{border-color:var(--ds-brand);background:#fff7f4;box-shadow:0 7px 15px -11px rgba(255,77,46,.55)}.wx-station em i{color:var(--ds-brand)}
+.wx-map-card,.wx-alerts{border-radius:var(--ds-r-l)}.wx-map{border-color:var(--ds-line);border-radius:var(--ds-r-m);background-color:#fafafb;background-image:linear-gradient(#e9eaf0 1px,transparent 1px),linear-gradient(90deg,#e9eaf0 1px,transparent 1px),radial-gradient(circle at 80% 18%,#fff 0 2px,transparent 2.4px)}.wx-map:before{background:linear-gradient(145deg,#fff,#eef1e9 70%,#dae6d0);filter:drop-shadow(0 8px 3px #0f163022)}.wx-map:after{color:#67805d33}.wx-map-dot{border-color:#fff;background:#fffffff2;color:var(--ds-ink);box-shadow:var(--ds-sh-1)}.wx-map-dot:hover,.wx-map-dot:focus-visible,.wx-map-dot.on{background:var(--ds-ink);color:#fff}
+.wx-alerts li{border-color:#f4dfd7;background:#fffaf8}.wx-alerts li>span{background:#fff0e8;color:var(--ds-brand)}.weather-detail{background:linear-gradient(155deg,#fff 0 64%,#fff8f5)}.weather-detail:after{border-color:#ffe7df;box-shadow:0 0 0 24px #fff7f3}.wx-metric,.wx-detail-card{border-color:var(--ds-line);border-radius:var(--ds-r-m)}
+.wx-chart-grid line{stroke:var(--ds-line)}.wx-chart-grid text,.wx-chart-labels text{fill:var(--ds-mute)}.wx-pop rect{fill:#ffb02040}.wx-chart polyline{stroke:var(--ds-brand)}.wx-chart-dots circle{stroke:var(--ds-brand)}.wx-chart-key{color:var(--ds-mute)}.wx-chart-key i{background:var(--ds-brand)}.wx-chart-key i.pop{background:#ffb02066}
+.wx-day{border-radius:var(--ds-r-m);background:#fafafb}.wx-day.today{background:#fff2ed;box-shadow:inset 0 0 0 1px #ffd5c8}.wx-day-temp i{color:var(--ds-down)}.wx-day-temp strong{color:var(--ds-brand)}.wx-alert-history li{background:#fafafb}.wx-alert-history li:before{color:var(--ds-brand)}
+@media(max-width:620px){.weather-dash{gap:var(--ds-4)}.weather-intro,.weather-section,.weather-detail,.wx-map-card,.wx-alerts,.wx-alert-history,.weather-hero{border-radius:var(--ds-r-l)}}
+
 
 

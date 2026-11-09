@@ -40,7 +40,11 @@ jobs:
           for f in global.json status.json; do curl -fsSL --retry 3 "$base/$f" -o "data/$f" || true; done
           # data 브랜치의 fun.json이 수집 직전 판본일 수 있으므로, 방금 받은 today.json으로
           # 학습 콘텐츠를 다시 조립한다. 외부 LLM 호출은 하지 않아 배포가 데이터 수집을 막지 않는다.
-          FUN_DATA=data FUN_AI_SEC=0 python scripts/fun.py
+          # 학습 보조 콘텐츠는 검수된 기존 판본을 안전판으로 둔다. 생성 실패가
+          # 원본 기사·날씨·아카이브 배포 전체를 멈추게 해서는 안 된다.
+          if ! FUN_DATA=data FUN_AI_SEC=0 python scripts/fun.py; then
+            echo "::warning::Learning content build failed; keeping the last reviewed fun.json for this deployment."
+          fi
           FUN_DATA=data python scripts/editorial_queue.py
           # 안전 폴백을 제공하는 정적 배포는 유지하면서, 편집 품질 이슈는 배포 로그에서 즉시 보이게 한다.
           FUN_DATA=data python scripts/editorial_queue.py --validate || echo "::warning::Editorial quality gate reported an issue; safe fallback content remains published."

@@ -53,6 +53,21 @@ def recent_words(days=14):
         pass
     return seen
 
+def word_last_seen():
+    """순환 복습이 필요할 때 가장 오래 전에 나온 검수 단어부터 고른다."""
+    seen = {}
+    try:
+        for path in glob.glob(P('fun/20??-??-??.json')):
+            day = os.path.basename(path)[:10]
+            item = json.load(open(path, encoding='utf-8'))
+            for x in (item.get('quiz') or {}).get('words', []):
+                word = str(x.get('word', '')).strip()
+                if word and day > seen.get(word, ''):
+                    seen[word] = day
+    except Exception:
+        pass
+    return seen
+
 def same_day_words():
     """30분마다 다시 수집돼도 그날의 열 문제는 바뀌지 않게 첫 생성본을 고정한다."""
     if OLD.get('date') != DATE:
@@ -133,6 +148,8 @@ iss_of = {i['id']: i for i in D['issues']}
 # 매일 정확히 10개. 최근 14일 답·같은 기사·같은 분야 쏠림을 피하고, 사전 정의가
 # 있는 말만 답으로 삼는다. 하루 첫 생성 결과는 다음 회차에서도 그대로 유지한다.
 WORDS = same_day_words()
+# 같은 날짜의 재실행은 단어뿐 아니라 순환 복습 표기도 첫 생성본을 유지한다.
+rotation_reused = list((((OLD.get('quiz') or {}).get('quality') or {}).get('rotation') or {}).get('reused_after_catalog_exhaustion') or [])
 if not WORDS:
     blocked = recent_words()
     pool = []
@@ -204,8 +221,27 @@ if not WORDS:
         mean, field, rel = GL[word]
         WORDS.append(dict(word=word, mean=mean, field=field, related=rel, examples=[], src='검수 사전', hits=0))
         used_words.add(word)
+    # 검수 사전은 현재 67개라 14일(140개) 완전 비중복을 물리적으로 보장할 수 없다.
+    # 이 경우에도 배포를 멈추거나 정답을 날조하지 않는다. 오늘 이미 고른 단어는
+    # 제외하고, 검수된 정의만 가장 오래된 순환 학습 후보로 되돌린다. 이 사실은
+    # quality 메타데이터에 명시해 운영 화면에서 보충 필요성을 추적할 수 있게 한다.
+    if len(WORDS) < WORD_TARGET:
+        last_seen = word_last_seen()
+        for word in sorted(GL, key=lambda x: (last_seen.get(x, ''), x)):
+            if len(WORDS) == WORD_TARGET:
+                break
+            if word in used_words:
+                continue
+            mean, field, rel = GL[word]
+            WORDS.append(dict(word=word, mean=mean, field=field, related=rel,
+                              examples=[], src='검수 사전 · 순환 복습', hits=0,
+                              rotation=True))
+            used_words.add(word)
+            rotation_reused.append(word)
+    # 여기까지는 모두 glossary.py의 검수된 정의다. 그래도 부족하면 사전 자체가
+    # 손상된 것이므로 오류를 내되, 정적 배포 단계에서는 이전 안전판을 유지한다.
     if len(WORDS) != WORD_TARGET:
-        raise RuntimeError('fun: not enough reviewed words (%d/%d)' % (len(WORDS), WORD_TARGET))
+        raise RuntimeError('fun: reviewed glossary is incomplete (%d/%d)' % (len(WORDS), WORD_TARGET))
 # AI 해설(선택): 왜 오늘 나왔는지 한 문장. 뜻 자체는 검수 사전을 따름
 ai = llm('wx:' + hk(DATE, *[w['word'] for w in WORDS]),
          '아래 단어마다 오늘 기사 제목을 근거로 "오늘 뉴스에서는 ~" 형식의 한 문장(40자 안팎) 맥락 설명과, 헷갈리기 쉬운 점 한 문장을 써라. 뜻은 주어진 뜻을 바꾸지 마라.\n' +
@@ -255,7 +291,10 @@ assert len(Q) == WORD_TARGET and len({q['word'] for q in Q}) == WORD_TARGET
 quiz = dict(date=DATE, words=WORDS, questions=Q,
             quality=dict(target=WORD_TARGET, delivered=len(Q), reviewed=len(Q),
                          levels={k: sum(q['level'] == k for q in Q) for k in ('기초', '보통', '심화')},
-                         rules=['검수 사전 정의 대조', '선택지 중복 검사', '빈칸 원문 포함 검사', '최근 14일 답 제외']))
+                         rules=['검수 사전 정의 대조', '선택지 중복 검사', '빈칸 원문 포함 검사', '최근 14일 답 제외'],
+                         rotation=dict(recent_exclusion_days=14,
+                                       reused_after_catalog_exhaustion=rotation_reused,
+                                       review_needed=bool(rotation_reused))))
 
 # ---------- 2) 설명 만화(4컷) ----------
 def sents(t):

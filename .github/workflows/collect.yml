@@ -178,15 +178,34 @@ jobs:
           # 수집 중간 파일(_arts.json)은 저장하지 않음 — 남아 있으면 다른 실행과 '수정/삭제' 충돌이 남
           grep -qx '_arts.json' .git/info/exclude 2>/dev/null || echo '_arts.json' >> .git/info/exclude
           git rm -q --cached --ignore-unmatch _arts.json
-          git add -A
-          # 메인 워킹트리는 data/를 무시하지만 data 브랜치에는 인수인계 큐를 보존한다.
-          git add -f editorial/queue.json 2>/dev/null || true
-          git diff --cached --quiet || git commit -qm "data: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
-          # 맥미니(overlay/·정치인)와 동시에 저장해도 충돌 없이: 최신을 받아 위에 얹고(같은 파일이면 이번 수집 결과 우선) 간격 늘려 재시도
+          commit_generated() {
+            # rebase 전 반드시 인덱스와 작업 트리를 깨끗하게 만든다. 이 보장이
+            # 없으면 동시 푸시 뒤 "cannot rebase: unstaged changes"로 끝난다.
+            git rm -q --cached --ignore-unmatch _arts.json
+            git add -A
+            # 메인 워킹트리는 data/를 무시하지만 data 브랜치에는 인수인계 큐를 보존한다.
+            git add -f editorial/queue.json 2>/dev/null || true
+            git diff --cached --quiet || git commit -qm "data: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          }
+          commit_generated
+          # 맥미니(overlay/·정치인)와 동시에 저장해도: 현재 수집 결과를 우선해
+          # 최신 data 위로 재적용한다. 강제 푸시나 reset은 사용하지 않는다.
           for n in 1 2 3 4 5 6; do
             git push -q origin HEAD:data && exit 0
             sleep $((n * 10 + RANDOM % 10))
-            (git fetch -q --unshallow origin data 2>/dev/null || git fetch -q origin data) && git rebase -q -X theirs origin/data || { git rebase --abort; git merge -q -X ours --no-edit origin/data || { git diff --name-only --diff-filter=U | while read -r f; do if git cat-file -e "HEAD:$f" 2>/dev/null; then git checkout -q --ours -- "$f" && git add -- "$f"; else git rm -q -- "$f"; fi; done; git commit -q --no-edit; }; }
+            commit_generated
+            git fetch -q --unshallow origin data 2>/dev/null || git fetch -q origin data
+            if ! git rebase -q -X theirs origin/data; then
+              # rebase 중 'theirs'는 지금 이 실행에서 만든 커밋이다. 충돌 파일도
+              # 현재 수집본을 보존한 뒤 계속 진행한다.
+              while conflicts="$(git diff --name-only --diff-filter=U)" && [ -n "$conflicts" ]; do
+                while IFS= read -r f; do git checkout -q --theirs -- "$f" && git add -- "$f"; done <<< "$conflicts"
+                GIT_EDITOR=true git rebase --continue >/dev/null 2>&1 || true
+              done
+              # 자동 해결할 수 없는 구조 충돌은 다음 재시도에서 최신을 다시
+              # 받아 처리한다. 진행 중 rebase 상태를 남겨 두지 않는다.
+              git rev-parse -q --verify REBASE_HEAD >/dev/null && git rebase --abort || true
+            fi
           done
           exit 1
       - name: 썸네일 커밋(media 브랜치, 이력은 1개 커밋으로 유지해 용량 증가 방지)
