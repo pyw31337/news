@@ -368,7 +368,10 @@ const kfmt=n=>S.region==='en'&&S.orig?(n>=1e6?(n/1e6)+'M':n>=1000?(n/1000)+'K':S
 const TTIP='Google 트렌드 기준 오늘 대략적인 검색 횟수(구간값)입니다. 순위는 검색량 → 관련 기사 수 순으로 매겼어요.';
 const tlab=t=>t.traffic_n?(S.region==='en'&&S.orig?`Search ${kfmt(t.traffic_n)}+`:`검색 ${kfmt(t.traffic_n)}+`):'';
 const regionMode=()=>S.region==='en'?(S.orig?'en':'ko'):'kr';
-function regionControl(){return`<div class="regionctl g-regionctl" data-region-control><div class="rsw" role="radiogroup" aria-label="뉴스 지역과 언어"><button type="button" role="radio" data-region-mode="kr" title="국내 뉴스">국내</button><button type="button" role="radio" data-region-mode="ko" title="해외 뉴스를 한국어로 보기">해외(국문)</button><button type="button" role="radio" data-region-mode="en" title="해외 뉴스를 영어 원문으로 보기">해외(영문)</button></div></div>`}
+function regionControl(){
+  const m=regionMode();
+  return`<div class="regionctl g-regionctl" data-region-control><div class="rsw" role="radiogroup" aria-label="뉴스 지역과 언어"><button type="button" role="radio" data-region-mode="kr" class="${m==='kr'?'on':''}" aria-checked="${m==='kr'}" title="국내 뉴스">국내</button><button type="button" role="radio" data-region-mode="ko" class="${m==='ko'?'on':''}" aria-checked="${m==='ko'}" title="해외 뉴스를 한국어로 보기">해외(국문)</button><button type="button" role="radio" data-region-mode="en" class="${m==='en'?'on':''}" aria-checked="${m==='en'}" title="해외 뉴스를 영어 원문으로 보기">해외(영문)</button></div></div>`;
+}
 function setRegionMode(mode){
   S.region=mode==='kr'?'kr':'en';S.orig=mode==='en';saveS();
   const cp=location.pathname.slice(BASEP.length);
@@ -382,10 +385,7 @@ function bindRegionControls(root=document){
 }
 function header(){
   const updated=$('#updated');
-  if(updated){
-    updated.innerHTML = regionControl();
-    bindRegionControls(updated);
-  }
+  if(updated) updated.textContent='';
   header2();
 }
 function header2(){
@@ -478,7 +478,7 @@ function today(){
   // 여기서 6개로 다시 자르면 실제 학습량과 홈 화면의 표시 수가 어긋난다.
   const W=(D.words||[]).slice(0,10);
   app.innerHTML=`
-  <div class="today-region-bar" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px;padding:4px 0">
+  <div class="today-region-bar" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 0 14px;padding:2px 0;min-height:36px;overflow:visible">
     <div style="font-size:0.88rem;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:6px">
       ${ic('news')} <span>오늘의 뉴스</span>
     </div>
@@ -508,6 +508,7 @@ function today(){
   NBT.vote(I);NBT.trends(D.trends.slice(0,10));NBT.words();NBT.ages(I);
   NBT.bindHorizontalCarousels(app);
   bindRegionControls(app);
+  header2();
 }
 /* 화제도 게이지: 카드가 화면에 들어오면 차오르기 시작(.go) */
 function heatIn(root){const H=[...(root||document).querySelectorAll('.ic .heat:not(.go)')];if(!H.length)return;
