@@ -489,6 +489,8 @@ b.up{color:#e2321b}b.down{color:#2f6bff}
 .gexp{margin-top:10px;font-size:.82rem;line-height:1.6}.gexp ul{margin:6px 0 0;padding-left:18px}
 .stkg{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}.stk{padding:10px 12px;display:flex;flex-direction:column;gap:2px;color:inherit;text-decoration:none}
 .stk b{font-size:.85rem}.stk span{font-weight:900;font-size:1.05rem}.stk em{font-style:normal;font-size:.75rem;font-weight:700}.stk em.up{color:#ff4d2e}.stk em.down{color:#2f6bff}.stk small{font-size:.68rem;color:var(--mute)}.stk svg{width:100%;height:30px}
+.nb-alert-slot{width:100%;display:block}
+.nb-alert-slot:empty{display:none}
 .galert.card{padding:10px 16px!important;margin:0 0 16px!important;background:#dc2626!important;color:#fff!important;box-shadow:none!important;border:none!important;border-radius:14px!important;font-size:.85rem;display:flex;flex-direction:column;gap:8px}
 .galert a{color:#fff;text-decoration:none}
 .galert .gw,.galert .gq{display:flex;align-items:center;justify-content:space-between;width:100%;gap:12px;padding:2px 0}

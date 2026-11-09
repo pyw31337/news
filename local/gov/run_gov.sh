@@ -14,12 +14,13 @@ git -C main fetch -q --depth 1 origin main && git -C main reset -q --hard origin
 [ -d main/data/.git ] || { rm -rf main/data; git clone -q --depth 1 -b data git@github-newsboard:pyw31337/news.git main/data; }
 git -C main/data fetch -q --depth 1 origin data && git -C main/data reset -q --hard origin/data
 python3 main/scripts/kr_gov.py
-mkdir -p /tmp/nb-gov && rm -rf /tmp/nb-gov/* && cp -r main/data/gov /tmp/nb-gov/ && cp main/data/briefs.json /tmp/nb-gov/ 2>/dev/null; mkdir -p /tmp/nb-gov/db && cp -r main/data/db/briefs /tmp/nb-gov/db/ 2>/dev/null
+python3 main/scripts/global_weather.py || true
+mkdir -p /tmp/nb-gov && rm -rf /tmp/nb-gov/* && cp -r main/data/gov /tmp/nb-gov/ && cp main/data/briefs.json /tmp/nb-gov/ 2>/dev/null; cp main/data/global_weather.json /tmp/nb-gov/ 2>/dev/null; mkdir -p /tmp/nb-gov/db && cp -r main/data/db/briefs /tmp/nb-gov/db/ 2>/dev/null
 cd main/data
 for n in 1 2 3 4 5 6; do
   git fetch -q --depth 1 origin data && git reset -q --hard origin/data
-  cp -r /tmp/nb-gov/gov . ; [ -f /tmp/nb-gov/briefs.json ] && cp /tmp/nb-gov/briefs.json .; [ -d /tmp/nb-gov/db/briefs ] && mkdir -p db && cp -r /tmp/nb-gov/db/briefs db/
-  git add -A gov briefs.json db/briefs 2>/dev/null
+  cp -r /tmp/nb-gov/gov . ; [ -f /tmp/nb-gov/briefs.json ] && cp /tmp/nb-gov/briefs.json .; [ -f /tmp/nb-gov/global_weather.json ] && cp /tmp/nb-gov/global_weather.json .; [ -d /tmp/nb-gov/db/briefs ] && mkdir -p db && cp -r /tmp/nb-gov/db/briefs db/
+  git add -A gov briefs.json global_weather.json db/briefs 2>/dev/null
   git -c user.name=newsboard-macmini -c user.email=macmini@users.noreply.github.com commit -qm "gov: data.go.kr $(date '+%Y-%m-%d %H:%M') KST" || { echo "nothing to commit"; break; }
   git push -q origin HEAD:data && { echo "pushed"; break; }; sleep $((n * 15 + RANDOM % 10))
 done

@@ -496,6 +496,7 @@ function today(){
     </div>
     ${regionControl()}
   </div>
+  <div id="nb-alert-slot" class="nb-alert-slot"></div>
   <section class="hero">
     <div class="rdeck" tabindex="0" aria-roledescription="카드 덱" aria-label="오늘의 이슈 카드. 좌우로 넘겨 보세요">
      <div class="rstage">${heroI.map((i,k)=>`<article class="lead rcard" data-i="${k}" data-id="${i.id}" data-img="${esc([...(i.gallery||[]).slice(0,1).map(g=>g.img),i.image,...(i.gallery||[]).map(g=>g.img)].filter(Boolean).filter((u,k,A)=>A.indexOf(u)===k).slice(0,6).join('|'))}"><div class="rimg"></div><a class="rlink" draggable="false" href="issue/${i.id}" aria-label="${esc(i.title)}"></a><button type="button" class="rlater" data-later="${i.id}" aria-label="나중에 읽기" aria-pressed="false">${window.GI?GI('bookmark-plus'):''}<span>나중에 읽기</span></button><div class="in"><div class="no">${String(i.rank).padStart(2,'0')}</div><span class="cat ${i.category}">${ic(i.category)}${i.category}</span>
@@ -3761,7 +3762,7 @@ const T_=(o,k)=>S.orig?o[k]:(o[k+'_ko']||o[k]);
 const gcat=c=>S.orig?(CATEN[c]||c):c;
 const gt=(en,ko)=>S.orig?en:ko;
 // 원문·번역 전환: 해외 화면 머리줄('해외 주요 뉴스 · 한국어 자동 번역') 오른쪽 끝
-function globalBar(label,icon='세계'){return`<div class="gbar"><span>${ic(icon)}${label}</span>${regionControl()}</div>`}
+function globalBar(label,icon='세계'){return`<div class="gbar"><span>${ic(icon)}${label}</span>${regionControl()}</div><div id="nb-alert-slot" class="nb-alert-slot"></div>`}
 /* 해외 카드 요약: AI 세 줄 요약(없으면 요약문을 문장으로 나눔) → 국내 카드처럼 주황 불릿, 핵심어 주황 강조 */
 function gbullets(i,n){const A=i.ai||{};let L=(A.bullets&&(A.bullets[S.orig?'en':'ko']||A.bullets.en))||[];
   if(!L.length){const ld=(i.leads||[])[0],t=T_(i,'summary')||(ld?(S.orig?ld.text:(ld.text_ko||ld.text)):'');L=t.split(/(?<=[.!?다요])\s+/).map(x=>x.trim()).filter(x=>x.length>12)}
