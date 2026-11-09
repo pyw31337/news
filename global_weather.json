@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T00:22:54.426057+09:00",
+  "updated": "2026-11-10T00:48:33.988042+09:00",
   "alerts_count": 75,
   "alerts": [
     {
@@ -19,22 +19,6 @@
       "desc": "A strong system is expected to move through the area Monday.\nTemperatures below freezing combined with snow levels below 1,000 ft\nare indicative of snowfall for upper elevations. Mid-level\nsoutheasterly flow suggests potential for White Pass to be sheltered\nfrom much of the precipitation, but would "
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.740756c4273988fb4de6e6bdc87e5e5112690d12.003.1",
-      "t": "2026-11-09 04:28",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "알래스카",
-      "area_en": "Alaska",
-      "event": "Storm Warning",
-      "event_en": "Storm Warning",
-      "severity": "Severe",
-      "headline_ko": "알래스카 Storm Warning",
-      "headline_en": "Alaska Storm Warning",
-      "desc": "Offshore waters forecast for Gulf of Alaska east of 144W\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest\none-third of the combined windwave and swell height.\n\n.TODAY...SE wind 50 kt. Seas 30 ft. Rain early in the morning,\nthen "
-    },
-    {
       "id": "urn:oid:2.49.0.1.840.0.740756c4273988fb4de6e6bdc87e5e5112690d12.002.1",
       "t": "2026-11-09 04:28",
       "country": "US",
@@ -49,6 +33,22 @@
       "headline_ko": "알래스카 Storm Warning",
       "headline_en": "Alaska Storm Warning",
       "desc": "Offshore waters forecast for Gulf of Alaska east of 144W\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest\none-third of the combined windwave and swell height.\n\n.TODAY...E wind 50 kt. Seas 22 ft building to 36 ft. Rain...heavy\nat"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.740756c4273988fb4de6e6bdc87e5e5112690d12.003.1",
+      "t": "2026-11-09 04:28",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "알래스카",
+      "area_en": "Alaska",
+      "event": "Storm Warning",
+      "event_en": "Storm Warning",
+      "severity": "Severe",
+      "headline_ko": "알래스카 Storm Warning",
+      "headline_en": "Alaska Storm Warning",
+      "desc": "Offshore waters forecast for Gulf of Alaska east of 144W\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest\none-third of the combined windwave and swell height.\n\n.TODAY...SE wind 50 kt. Seas 30 ft. Rain early in the morning,\nthen "
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.c70017498979844d3596980c95f655d559c2680d.006.1",
@@ -245,6 +245,14 @@
   ],
   "quakes": [
     {
+      "id": "us7000tx47",
+      "mag": 4.9,
+      "place": "Mid-Indian Ridge",
+      "t": "2026-11-09 15:04",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tx47"
+    },
+    {
       "id": "us7000tx3n",
       "mag": 4.7,
       "place": "17 km NW of İmamoğlu, Turkey",
@@ -315,14 +323,6 @@
       "t": "2026-11-09 04:52",
       "depth": 24.173,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tx1f"
-    },
-    {
-      "id": "us7000tx16",
-      "mag": 6.4,
-      "place": "30 km WSW of Lata, Solomon Islands",
-      "t": "2026-11-09 03:34",
-      "depth": 17,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tx16"
     }
   ],
   "cities": [
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 13.6,
-      "apparent_temp": 8.1,
-      "humidity": 52,
-      "code": 2,
-      "wind": 27.4
+      "temp": 13.9,
+      "apparent_temp": 8.5,
+      "humidity": 50,
+      "code": 1,
+      "wind": 26.7
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 17.8,
-      "apparent_temp": 15.0,
-      "humidity": 40,
+      "temp": 19.9,
+      "apparent_temp": 17.1,
+      "humidity": 35,
       "code": 0,
-      "wind": 9.6
+      "wind": 9.0
     },
     {
       "id": "london",
@@ -362,11 +362,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 10.3,
-      "apparent_temp": 7.4,
-      "humidity": 69,
-      "code": 1,
-      "wind": 11.2
+      "temp": 10.0,
+      "apparent_temp": 7.3,
+      "humidity": 71,
+      "code": 2,
+      "wind": 10.1
     },
     {
       "id": "paris",
@@ -377,8 +377,8 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "temp": 9.8,
-      "apparent_temp": 7.9,
-      "humidity": 86,
+      "apparent_temp": 8.0,
+      "humidity": 88,
       "code": 3,
       "wind": 8.6
     },
@@ -390,11 +390,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 8.0,
-      "apparent_temp": 5.8,
-      "humidity": 80,
+      "temp": 7.9,
+      "apparent_temp": 6.0,
+      "humidity": 81,
       "code": 3,
-      "wind": 6.2
+      "wind": 5.1
     },
     {
       "id": "tokyo",
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 8.7,
+      "temp": 8.8,
       "apparent_temp": 7.7,
-      "humidity": 96,
+      "humidity": 97,
       "code": 61,
-      "wind": 3.4
+      "wind": 4.5
     },
     {
       "id": "beijing",
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 3.4,
-      "apparent_temp": 1.0,
-      "humidity": 73,
+      "temp": 3.0,
+      "apparent_temp": 0.5,
+      "humidity": 75,
       "code": 0,
-      "wind": 0.6
+      "wind": 1.2
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 24.1,
-      "apparent_temp": 29.1,
+      "temp": 24.0,
+      "apparent_temp": 28.9,
       "humidity": 100,
       "code": 45,
-      "wind": 7.2
+      "wind": 7.7
     },
     {
       "id": "sydney",
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 12.7,
-      "apparent_temp": 11.2,
+      "temp": 12.5,
+      "apparent_temp": 11.0,
       "humidity": 79,
       "code": 1,
-      "wind": 8.5
+      "wind": 8.3
     },
     {
       "id": "toronto",
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 8.6,
-      "apparent_temp": 4.8,
-      "humidity": 71,
+      "temp": 9.2,
+      "apparent_temp": 4.9,
+      "humidity": 67,
       "code": 3,
-      "wind": 15.5
+      "wind": 19.3
     },
     {
       "id": "dubai",
@@ -474,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 30.1,
-      "apparent_temp": 33.6,
-      "humidity": 60,
+      "temp": 29.8,
+      "apparent_temp": 34.6,
+      "humidity": 69,
       "code": 0,
-      "wind": 8.3
+      "wind": 7.3
     },
     {
       "id": "saopaulo",
@@ -492,10 +492,18 @@
       "apparent_temp": 15.6,
       "humidity": 70,
       "code": 3,
-      "wind": 14.3
+      "wind": 13.9
     }
   ],
   "stories": [
+    {
+      "id": "gd0d50d89",
+      "title": "COP31 summit leaders urge world to move faster on climate",
+      "press": "Reuters",
+      "image": "https://dam.mediacorp.sg/image/upload/s--ELo0tXsc--/c_crop,h_1125,w_2000,x_0,y_75/c_fill,g_auto,h_676,w_1200/fl_relative,g_south_east,l_mediacorp:cna:watermark:2023-11:afp_watermark_14112023,w_0.1/f_auto,q_auto/v1/mediacorp/cna/image/2026/11/09/000_d6vu4dy.jpg?itok=U7gr3v3c",
+      "score": 12.0,
+      "url": "g/gd0d50d89"
+    },
     {
       "id": "g81ce1165",
       "title": "Heavy rain floods displaced families’ tents in Gaza – in pictures",
@@ -511,14 +519,6 @@
       "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/3377x1900+0+0/resize/1400/quality/85/format/webp/?url=http%3A%2F%2Fnpr-brightspot.s3.amazonaws.com%2F3e%2Fb3%2Fa9d944df4456aee16cb8fff42417%2F39fff43a-4bff-4cbe-8360-dae6999f072c.jpg",
       "score": 9.5,
       "url": "g/g01b31131"
-    },
-    {
-      "id": "gd0d50d89",
-      "title": "COP31 summit leaders urge world to move faster on climate",
-      "press": "Reuters",
-      "image": "https://dam.mediacorp.sg/image/upload/s--ELo0tXsc--/c_crop,h_1125,w_2000,x_0,y_75/c_fill,g_auto,h_676,w_1200/fl_relative,g_south_east,l_mediacorp:cna:watermark:2023-11:afp_watermark_14112023,w_0.1/f_auto,q_auto/v1/mediacorp/cna/image/2026/11/09/000_d6vu4dy.jpg?itok=U7gr3v3c",
-      "score": 9.5,
-      "url": "g/gd0d50d89"
     }
   ]
 }
