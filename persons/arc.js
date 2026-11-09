@@ -266,6 +266,10 @@ function enrichArcDetail(aDetail, personName, polId, bioDb){
   if(master){
     if(master.military && !base.military) base.military = master.military;
     if(master.birth_desc && !base.birth_desc) base.birth_desc = master.birth_desc;
+    if(master.role_title && !base.role_title) base.role_title = master.role_title;
+    if(master.kind && !base.kind) base.kind = master.kind;
+    if(master.org && !base.org) base.org = master.org;
+    if(master.photo && !base.photo) base.photo = master.photo;
     (master.events || []).forEach(me => {
       const normTitle = (me.title || '').replace(/\s+/g, '');
       const matchIdx = base.events.findIndex(be => {
@@ -320,9 +324,10 @@ async function person(id){
   const d=p.data||{},E=p.events||[],c=pc(p.party);
   const types=[...new Set(E.map(e=>e.typ))];
   const undated=E.filter(e=>!e.d),dated=E.filter(e=>e.d);
+  const roleDesc = p.role_title || p.party || '';
   app.innerHTML=`<a class="back" href="persons/">← 인물 아카이브</a><a class="abb" id="abb" href="history/?t=p&id=a${encodeURIComponent(id)}">${window.NBI?NBI('message-report'):''}<span>블랙박스</span><small>과거 발언·행적 보기</small></a>
-  <section class="aprof" style="--pc:${c}">${ph(d.photo,p.name,c,'big')}<div><small>${esc(d.hanja||'')}</small><h1>${esc(p.name)}</h1>
-   <p class="ameta"><i style="background:${c}"></i>${esc(p.party||'')}${p.birth?` · ${p.birth.slice(0,4)}년생`:''}${d.ages?.length?` · ${d.ages.map(a=>a+'대').join('·')} 국회의원`:''}</p>
+  <section class="aprof" style="--pc:${c}">${ph(d.photo||p.photo,p.name,c,'big')}<div><small>${esc(d.hanja||'')}</small><h1>${esc(p.name)}</h1>
+   <p class="ameta"><i style="background:${c}"></i>${esc(roleDesc)}${p.birth?` · ${p.birth.slice(0,4)}년생`:''}${d.ages?.length?` · ${d.ages.map(a=>a+'대').join('·')} 국회의원`:''}</p>
    <div class="achips"><a href="politicians/?id=${p.id}" class="chip">의정 활동 자세히</a><a href="#graph" class="chip">관계도 보기</a></div></div></section>
   ${d.wiki?`<section class="awiki"><p>${esc(d.wiki.text)}</p><small>출처: <a href="${esc(d.wiki.url)}" target="_blank" rel="noopener">한국어 위키백과 「${esc(d.wiki.title)}」</a> · ${esc(d.wiki.license)}</small></section>`:''}
   <section class="asec"><h2><small>Life Timeline</small>일생 타임라인 <em class="cnt">${fmt(E.length)}건</em></h2>

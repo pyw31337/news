@@ -171,9 +171,12 @@ function primaryPublicRole(e,pol){
       subBadges:pres.subBadges||[]
     };
   }
+  const bio = _peopleBioCache?.[name];
   const texts=[
+    bio?.role_title,
     e?.wiki?.desc,e?.wiki?.extract,pol?.office,pol?.position,pol?.role,
-    ...(Array.isArray(pol?.history)?pol.history:[])
+    ...(Array.isArray(pol?.history)?pol.history:[]),
+    ...(Array.isArray(bio?.events)?bio.events.map(ev=>ev.title):[])
   ].filter(Boolean).map(String);
   const candidates=[];
   const add=(rank,label,badge,kind,current=false)=>candidates.push({rank,label,badge,kind,current});
@@ -187,11 +190,17 @@ function primaryPublicRole(e,pol){
     if(/국회의장(?!\s*후보)/.test(text))add(8500,'대한민국 국회의장','국회의장','speaker');
     if(/대법원장/.test(text))add(8400,'대한민국 대법원장','대법원장','chief-justice');
     if(/헌법재판소장/.test(text))add(8350,'대한민국 헌법재판소장','헌법재판소장','chief-justice');
+    if(/대법관/.test(text))add(8300,'대한민국의 대법관','대법관','legal');
+    if(/헌법재판소\s*재판관/.test(text))add(8250,'헌법재판소 재판관','헌재재판관','legal');
+    if(/검찰총장/.test(text))add(8200,'대한민국 검찰총장','검찰총장','legal');
     if(/당대표|대표최고위원/.test(text))add(7500,text.match(/[^·,·()]{0,18}(?:당대표|대표최고위원)/)?.[0]?.trim()||'정당 대표','당대표','party-leader');
     if(/원내대표/.test(text))add(7200,text.match(/[^·,·()]{0,18}원내대표/)?.[0]?.trim()||'원내대표','원내대표','floor-leader');
     if(/장관(?!\s*후보)/.test(text))add(7000,text.match(/[^·,·()]{0,18}장관/)?.[0]?.trim()||'대한민국 장관','국무위원','minister');
     if(/(특별시장|광역시장|도지사)/.test(text))add(6000,text.match(/[^·,·()]{0,18}(?:특별시장|광역시장|도지사)/)?.[0]?.trim()||'광역자치단체장','광역단체장','gov-chief');
     if(/(시장|구청장|군수)/.test(text))add(4500,text.match(/[^·,·()]{0,18}(?:시장|구청장|군수)/)?.[0]?.trim()||'기초자치단체장','기초단체장','local-chief');
+    if(/회장|대표이사|총수|CEO/.test(text))add(4200,text.match(/[^·,·()]{0,22}(?:회장|대표이사|총수|CEO)/)?.[0]?.trim()||'기업인','기업인','corporate');
+    if(/부장판사|판사|검사장|검사/.test(text))add(4100,text.match(/[^·,·()]{0,22}(?:부장판사|판사|검사장|검사)/)?.[0]?.trim()||'법조인','법조인','legal');
+    if(/기자|앵커|논설위원/.test(text))add(4000,text.match(/[^·,·()]{0,22}(?:기자|앵커|논설위원)/)?.[0]?.trim()||'언론인','언론인','reporter');
     if(/국회의원|의원/.test(text))add(3000,'대한민국 국회의원','국회의원','legislator');
   });
   candidates.sort((a,b)=>b.rank-a.rank||a.label.length-b.label.length);
@@ -238,7 +247,11 @@ function publicOfficePill(role){
       <span class="ppb-tag">${esc(role.badge)}</span>
     </div>`;
   }
-  const icon=role.kind==='prime-minister'?'landmark':'star-f';
+  let icon='star-f';
+  if(role.kind==='prime-minister'||role.kind==='speaker'||role.kind==='gov-chief'||role.kind==='local-chief'||role.kind==='official') icon='landmark';
+  else if(role.kind==='chief-justice'||role.kind==='legal') icon='shield';
+  else if(role.kind==='corporate') icon='bank';
+  else if(role.kind==='reporter') icon='press';
   return`<div class="prof-office-pill ${esc(role.kind)}">${ic(icon)}<span>${esc(role.badge)}</span><b>${esc(role.label)}</b></div>`;
 }
 function entityMedia(e){
@@ -1107,6 +1120,10 @@ function enrichArcDetail(aDetail, personName, polId, bioDb){
   if(master){
     if(master.military && !base.military) base.military = master.military;
     if(master.birth_desc && !base.birth_desc) base.birth_desc = master.birth_desc;
+    if(master.role_title && !base.role_title) base.role_title = master.role_title;
+    if(master.kind && !base.kind) base.kind = master.kind;
+    if(master.org && !base.org) base.org = master.org;
+    if(master.photo && !base.photo) base.photo = master.photo;
     (master.events || []).forEach(me => {
       const normTitle = (me.title || '').replace(/\s+/g, '');
       const matchIdx = base.events.findIndex(be => {
