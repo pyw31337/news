@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-09",
-  "generated_at": "2026-11-09T17:35:18+09:00",
+  "generated_at": "2026-11-09T17:54:46+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,29 +27,24 @@
   },
   "candidates": [
     {
-      "issue_id": "if14983a8",
-      "title": "환율, 달러 강세에도 1,340원대로…4거래일만에 하락",
+      "issue_id": "i556e0d56",
+      "title": "장중 2%대 반등했던 코스피, 결국 0.8% 하락…5천피는 사수",
       "category": "경제",
-      "rank": 2,
-      "priority_score": 45,
+      "rank": 1,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "9일 코스피는 전 거래일 대비 40.84포인트 하락한 5,018.85에 장을 마감하며 3거래일 연속 하락세를 보였다.",
-        "9일 코스피는 전 거래일 대비 40.84포인트(0.81%) 하락한 5,018.85에 장을 끝냈습니다.",
-        "이날도 외국인이 폭풍 매도에 나섰습니다.",
-        "외국인은 이날 오후 3시 30분 기준 8,647억 원 매도 우위를 기록했습니다.",
-        "[속보] 코스피 5018.85(▼40.84p, 0.81%) 마감, 원·달러 환율 1347.1원"
+        "지난주 연일 급락한 코스피는 오늘(9일) 장중 반등을 시도했지만 결국 하락세를 이어갔습니다.",
+        "[속보] 코스피 5018.85(▼40.84p, 0.81%) 마감, 원·달러 환율 1347.1원",
+        "[마켓뷰] 장중 5200선 넘보던 코스피… 외국인 매도에 5000선 턱걸이",
+        "“코스피에 정말 질렸다”…실망한 개미들 일주일 새 2조 5000억 쓸어담은 ‘이것’",
+        "1만피 외치던 증권가, 코스피 5000선 후퇴하자 전망도 '뚝'"
       ],
       "sources": [
-        {
-          "press": "ikbc.co.kr",
-          "title": "[속보]\"오르는 척하더니 또\" 외인 7일째 폭풍 매도… 코스피 5,000선 턱걸...",
-          "url": "https://n.news.naver.com/mnews/article/660/0000120925?sid=101"
-        },
         {
           "press": "MBN",
           "title": "[속보] 코스피 5018.85(▼40.84p, 0.81%) 마감, 원·달러 환율 1347.1원",
@@ -64,122 +59,28 @@
           "press": "매일경제",
           "title": "“코스피에 정말 질렸다”…실망한 개미들 일주일 새 2조 5000억 쓸어담은 ‘이것’",
           "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5NaUlOcnR2Qk1Cb29scTBBZ0tKRWVGVHlEbTZJWjlzeXlMSV9CQkR1dkZHQ1kzbkZOdHk1WUhYd0M4YU1fT0lOWWp1RmEwYjliNGZZVw?oc=5"
+        },
+        {
+          "press": "전자신문",
+          "title": "1만피 외치던 증권가, 코스피 5000선 후퇴하자 전망도 '뚝'",
+          "url": "https://n.news.naver.com/article/030/0003483652"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "9일 코스피는 전 거래일 대비 40.84포인트 하락한 5,018.85에 장을 마감하며 3거래일 연속 하락세를 보였다."
+          "evidence": "지난주 연일 급락한 코스피는 오늘(9일) 장중 반등을 시도했지만 결국 하락세를 이어갔습니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "9일 코스피는 전 거래일 대비 40.84포인트(0.81%) 하락한 5,018.85에 장을 끝냈습니다."
+          "evidence": "[속보] 코스피 5018.85(▼40.84p, 0.81%) 마감, 원·달러 환율 1347.1원"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "외국인은 이날 오후 3시 30분 기준 8,647억 원 매도 우위를 기록했습니다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "장중 반등 시도에도 불구하고 외국인의 지속된 순매도 공세로 인해 코스피가 5000선 턱걸이로 마감했다는 점에서, 투자 심리가 크게 위축된 상태가 이어지고 있다는 해석이 나온다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i9c9ed59d",
-      "title": "젠슨 황과 은밀한 관계…'中 스파이 의혹' 앨리스 황 누구 [이슈+]",
-      "category": "세계",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "엔비디아 CEO 젠슨 황이 중국 스파이 의혹을 받는 여성과의 불륜 사실을 인정했습니다.",
-        "\"허리 감싸고 볼에 뽀뽀까지\"…젠슨 황, 中스파이 의심 여성과 다정한 모습 포착",
-        "젠슨황 불륜, 이미 5월 파악...트럼프 '앨리스 황' 스파이 의혹 알고도 뭉개",
-        "젠슨 황 \"연인 맞다\"...트럼프, 알고도 뭉개 '일파만파'",
-        "젠슨 황, 中 스파이 의심 여성과 2024년 사진 포착…美, 1년여간 극비 조사"
-      ],
-      "sources": [
-        {
-          "press": "아시아경제",
-          "title": "\"허리 감싸고 볼에 뽀뽀까지\"…젠슨 황, 中스파이 의심 여성과 다정한 모습 포착",
-          "url": "https://n.news.naver.com/article/277/0005839833"
-        },
-        {
-          "press": "머니투데이",
-          "title": "젠슨황 불륜, 이미 5월 파악...트럼프 '앨리스 황' 스파이 의혹 알고도 뭉개",
-          "url": "https://n.news.naver.com/article/008/0005438459"
-        },
-        {
-          "press": "YTN",
-          "title": "젠슨 황 \"연인 맞다\"...트럼프, 알고도 뭉개 '일파만파'",
-          "url": "https://n.news.naver.com/article/052/0002430254"
-        },
-        {
-          "press": "국민일보",
-          "title": "젠슨 황, 中 스파이 의심 여성과 2024년 사진 포착…美, 1년여간 극비 조사",
-          "url": "https://n.news.naver.com/article/005/0001883942"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "엔비디아 CEO 젠슨 황이 중국 스파이 의혹을 받는 여성과의 불륜 사실을 인정했습니다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "엔비디아 이사회는 같은..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "젠슨황 불륜, 이미 5월 파악...트럼프 '앨리스 황' 스파이 의혹 알고도 뭉개"
+          "evidence": "[마켓뷰] 장중 5200선 넘보던 코스피… 외국인 매도에 5000선 턱걸이"
         },
         {
           "panel": 4,
@@ -225,10 +126,10 @@
       }
     },
     {
-      "issue_id": "i0705a37b",
-      "title": "젠슨 황 불륜에 中 '미인계' 첩보전 재조명… 美 정치인도 당했다",
-      "category": "세계",
-      "rank": 9,
+      "issue_id": "i27a0421f",
+      "title": "점유율 93% 배민·쿠팡 역대최대 과징금 6천319억…사실상 담합(종합2보)",
+      "category": "경제",
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -236,49 +137,148 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "AI 왕자 젠슨황은 ‘中 미인계’에 빠졌나…41년 해로한 아내 두고 불륜 고백",
-        "“아내에게 불충실했다” 젠슨 황, 불륜 인정… 미모의 女기업인과 같이 다니더니 결국",
-        "엔비디아의 젠슨 황 CEO가 사내 메시지를 통해 \"아내에게 충실하지 못했다\"며 중국 정부에 포섭된 스파이로 의심되는 앨리스 황과의 불륜 사실을 직접 시인한 가운데, 불과 5개월 전 황 CEO가 방송에서 드러냈던 각별한...",
-        "“아내에 불충실했다”…젠슨황, 첩자 의혹女와 불륜 인정",
-        "이투데이=이진영 기자 | AI 시대의 황제로 불리는 젠슨 황 엔비디아 최고경영자(CEO)가 불륜을 시인하면서..."
+        "공정거래위원회가 배달의민족과 쿠팡이츠의 불공정행위에 대해 배달앱 사업자 대상 역대 최대 규모인 6천319억 원의 과징금을 잠정 부과했습니다.",
+        "\"사실상 담합\"…공정위, 쿠팡·배민에 배달앱 사건 중 '역대 최대' 과징금",
+        "쿠키뉴스=이다빈 기자 | 배달의민족과 쿠팡이츠가 공정거래위원회의 총 6319억원 규모 과징금 부과 결정에 반박했다.",
+        "배민 운영사 우아한형제들은 배민클럽가게 조건이 경쟁사의 최혜대우 요구에 대응하기 위한...",
+        "공정위, 배민·쿠팡 과징금 6319억…\"1·2위 동시 최혜대우, 담합같은 경쟁제한\""
       ],
       "sources": [
         {
-          "press": "디지털타임스",
-          "title": "어쩌다 AI 왕자 젠슨황은 ‘中 미인계’에 빠졌나…41년 해로한 아내 두고 불륜 고백",
-          "url": "https://n.news.naver.com/article/029/0003057937"
+          "press": "머니투데이",
+          "title": "\"사실상 담합\"…공정위, 쿠팡·배민에 배달앱 사건 중 '역대 최대' 과징금",
+          "url": "https://n.news.naver.com/article/008/0005438510"
         },
         {
-          "press": "서울신문",
-          "title": "“아내에게 불충실했다” 젠슨 황, 불륜 인정… 미모의 女기업인과 같이 다니더니 결국",
-          "url": "https://n.news.naver.com/article/081/0003697017"
+          "press": "kukinews.com",
+          "title": "배민·쿠팡이츠, 공정위 6000억 과징금에 ‘법적 대응’ 예고",
+          "url": "https://www.kukinews.com/article/view/kuk202611090201"
         },
         {
-          "press": "sbs.co.kr",
-          "title": "[자막뉴스] \"올A 받게 해주겠다\"며 결혼했는데…\"40년 지나도 아내 손 잡...",
-          "url": "https://n.news.naver.com/mnews/article/055/0001401738?sid=104"
+          "press": "아이뉴스24",
+          "title": "공정위, 배민·쿠팡 과징금 6319억…\"1·2위 동시 최혜대우, 담합같은 경쟁제한\"",
+          "url": "https://n.news.naver.com/article/031/0001073328"
         },
         {
-          "press": "문화일보",
-          "title": "“아내에 불충실했다”…젠슨황, 첩자 의혹女와 불륜 인정",
-          "url": "https://n.news.naver.com/article/021/0002831210"
+          "press": "mk.co.kr",
+          "title": "\"쿠팡·배민, 배달가격 개입해 사실상 담합\"",
+          "url": "https://n.news.naver.com/mnews/article/009/0005761191?sid=103"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "AI 왕자 젠슨황은 ‘中 미인계’에 빠졌나…41년 해로한 아내 두고 불륜 고백"
+          "evidence": "공정거래위원회가 배달의민족과 쿠팡이츠의 불공정행위에 대해 배달앱 사업자 대상 역대 최대 규모인 6천319억 원의 과징금을 잠정 부과했습니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "추진하면서도 젠슨 황 최고경영자(CEO)를 둘러싼 중국 정보기관 연루 의혹과 한국 사업에 미칠 영향에..."
+          "evidence": "참여연대 \"배민·쿠팡 각 3천억 과징금 적어…플랫폼규제법 필요\""
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "엔비디아의 젠슨 황 CEO가 사내 메시지를 통해 \"아내에게 충실하지 못했다\"며 중국 정부에 포섭된 스파이로 의심되는 앨리스 황과의 불륜 사실을 직접 시인한 가운데, 불과 5개월 전 황 CEO가 방송에서 드러냈던…"
+          "evidence": "쿠키뉴스=이다빈 기자 | 배달의민족과 쿠팡이츠가 공정거래위원회의 총 6319억원 규모 과징금 부과 결정에 반박했다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i2fd7b95b",
+      "title": "젠슨 황, 中스파이 의심 여성과 불륜 인정…트럼프는 옹호",
+      "category": "세계",
+      "rank": 7,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "젠슨 황 엔비디아 CEO가 중국 스파이로 의심받는 여성과의 불륜 사실을 인정했습니다.",
+        "없어” 젠슨 황 엔비디아 최고경영자(CEO)가 혼외 관계를 인정한 가운데, 상대 여성이 중국 정보기관의...",
+        "궈자쿤 중국 외교부 대변인은 9일 브리핑에서 황 CEO의 불륜 상대가 중국의 스파이라는 미국 정보기관발 보도에...",
+        "젠슨 황 엔비디아 최고경영자(CEO)가 불륜 사실을 시인한 가운데 중국 외교부는 불륜 상대를 둘러싼 ‘중국...",
+        "궈자쿤 중국 외교부 대변인은 9일 브리핑에서 황 CEO의 불륜 상대가 중국 정보기관의 스파이라는 미 언론..."
+      ],
+      "sources": [
+        {
+          "press": "m-economynews.com",
+          "title": "中 “젠슨 황 상대 ‘중국 간첩설’은 모략”...트럼프는 황 두둔",
+          "url": "https://www.m-economynews.com/news/article.html?no=72790"
+        },
+        {
+          "press": "joongang.co.kr",
+          "title": "젠슨 황 ‘스파이’ 불륜설에…中 “왜 중국을 끌어들이는가” 반발",
+          "url": "https://n.news.naver.com/mnews/article/025/0003563898?sid=104"
+        },
+        {
+          "press": "아시아경제",
+          "title": "\"허리 감싸고 볼에 뽀뽀까지\"…젠슨 황, 中스파이 의심 여성과 다정한 모습 포착",
+          "url": "https://n.news.naver.com/article/277/0005839833"
+        },
+        {
+          "press": "seoul.co.kr",
+          "title": "젠슨 황의 ‘불륜 나비효과’…“중국 간첩? 억측이자 중상모략” 中 정...",
+          "url": "https://n.news.naver.com/mnews/article/081/0003697354?sid=104"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "젠슨 황 엔비디아 CEO가 중국 스파이로 의심받는 여성과의 불륜 사실을 인정했습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "中스파이 의심 여성과 불륜 엔비디아 이사회 조사 착수 미국 의회도 진상 규명 나서 세계 최대 인공지능(AI) 반도체 기업 엔비디아가 젠슨 황 최고경영자(CEO)의 중국 정보기관 표적설에 대한 독립 조사에 착수했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "궈자쿤 중국 외교부 대변인은 9일 브리핑에서 황 CEO의 불륜 상대가 중국의 스파이라는 미국 정보기관발 보도에..."
         },
         {
           "panel": 4,
