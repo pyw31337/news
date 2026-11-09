@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-09",
-  "generated_at": "2026-11-09T14:51:48+09:00",
+  "generated_at": "2026-11-09T15:22:08+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,108 +27,9 @@
   },
   "candidates": [
     {
-      "issue_id": "iad59096d",
-      "title": "“한국시리즈 우승 기념, 삼성 주식 바겐세일?”… 개미들 풍자 이어져",
-      "category": "경제",
-      "rank": 8,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "삼성 라이온즈가 12년 만에 한국시리즈 정상에 오르며 통산 9번째 우승을 달성하자, 삼성그룹 계열사의 대규모 할인 행사에 대한 기대감이 커지고 있다.",
-        "\"삼성 우승 기념 세일인가요\"...개미들 반응 \"웃프네\"",
-        "\"삼성 우승 기념 63% 할인?\"…개미들 울린 '반전 세일'",
-        "잠실야구장의 마지막을 기념하는 특별 매치 '잠실 더 라스트 이닝'을 통해 각 시대를 상징하는 야구의 별들이 모두 잠실로 모입니다.",
-        "1982년 1호 홈런의 주인공이었던 삼성의 이만수, 원년 OB 베어스 우승을 상징하는..."
-      ],
-      "sources": [
-        {
-          "press": "한국경제TV",
-          "title": "\"삼성 우승 기념 세일인가요\"...개미들 반응 \"웃프네\"",
-          "url": "https://n.news.naver.com/article/215/0001272064"
-        },
-        {
-          "press": "TV조선",
-          "title": "\"삼성 우승 기념 63% 할인?\"…개미들 울린 '반전 세일'",
-          "url": "https://n.news.naver.com/article/448/0000649770"
-        },
-        {
-          "press": "kbs.co.kr",
-          "title": "잠실구장 ‘찐막’ 매치가 온다…이번 주말 ‘야구 레전드’ 총출동 [이...",
-          "url": "https://n.news.naver.com/mnews/article/056/0012289923?sid=121"
-        },
-        {
-          "press": "조선비즈",
-          "title": "“한국시리즈 우승 기념, 삼성 주식 바겐세일?”… 개미들 풍자 이어져",
-          "url": "https://n.news.naver.com/article/366/0001203415"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "삼성 라이온즈가 12년 만에 한국시리즈 정상에 오르며 통산 9번째 우승을 달성하자, 삼성그룹 계열사의 대규모 할인 행사에 대한 기대감이 커지고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "현대차·기아, 협력사 탄소규제 대응 지원 확대…정부·업계와 맞손"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "\"삼성 우승 기념 63% 할인?\"…개미들 울린 '반전 세일'"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "우승 기념 할인 행사를 빗댄 주가 풍자가 확산하며, 언론 보도를 통해 '바겐세일' 프레임이 본격적으로 공론화되었다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ie9edae60",
-      "title": "\"허리 감싸고 볼에 뽀뽀까지\"…젠슨 황, 中스파이 의심 여성과 다정한 모습 포착",
-      "category": "IT",
+      "issue_id": "i304d6798",
+      "title": "젠슨 황-中스파이 여성 불륜, 트럼프는 알고있었다",
+      "category": "세계",
       "rank": 1,
       "priority_score": 45,
       "production_types": [
@@ -137,54 +38,54 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "엔비디아의 젠슨 황 CEO가 중국 국가안전부(MSS) 정보원으로 의심받는 싱가포르 기업 전직 임원 앨리스 황과의 불륜 사실을 임직원 이메일을 통해 인정했다.",
-        "젠슨 황 “아내에게 불충실”…‘스파이 의혹’ 여성과 불륜 시인",
-        "불륜을 인정한 젠슨 황 엔비디아 최고경영자(CEO)를 도널드 트럼프 미국 대통령이 감쌌다.",
-        "장녀 매디슨 황은 가족 사유로 한국 방문 일정을 취소했다.",
-        "AP통신은 9일(한국시간) 트럼프가 취재진에게 황과 이번 사안에 관해..."
+        "엔비디아의 젠슨 황 CEO가 중국 정보기관의 첩자로 의심받는 싱가포르 기업 임원 앨리스 황과의 불륜 관계를 시인했다.",
+        "\"허리 감싸고 볼에 입맞춤\"…젠슨 황, '불륜 여성'과 다정한 모습 재조명",
+        "젠슨 황 “아내에게 불충실했다” 中 간첩 의심녀와 불륜 인정",
+        "세계 인공지능(AI) 반도체 시장을 장악한 엔비디아의 젠슨 황 최고경영자(CEO)가 불륜을 인정하면서 사생활 논란이 기업 경영 위기로 번지고 있다.",
+        "특히 만약 황 CEO가 이혼 소송에 휘말릴 경우 천문학적인 재산분할..."
       ],
       "sources": [
-        {
-          "press": "한겨레",
-          "title": "젠슨 황 “아내에게 불충실”…‘스파이 의혹’ 여성과 불륜 시인",
-          "url": "https://n.news.naver.com/article/028/0002831278"
-        },
-        {
-          "press": "osen.co.kr",
-          "title": "젠슨 황 불륜 인정에 트럼프 “사정 있을 것”…장녀는 ‘가족 사유’로...",
-          "url": "https://m.entertain.naver.com/article/109/0005637587"
-        },
-        {
-          "press": "celuvmedia.com",
-          "title": "젠슨 황, ‘유퀴즈’서 사랑꾼 자처하더니…’중국 첩자 의혹’ 여성과...",
-          "url": "http://www.celuvmedia.com/article.php?aid=1794198583530570006"
-        },
         {
           "press": "머니투데이",
           "title": "\"허리 감싸고 볼에 입맞춤\"…젠슨 황, '불륜 여성'과 다정한 모습 재조명",
           "url": "https://n.news.naver.com/article/008/0005438309"
+        },
+        {
+          "press": "조선일보",
+          "title": "젠슨 황 “아내에게 불충실했다” 中 간첩 의심녀와 불륜 인정",
+          "url": "https://n.news.naver.com/article/023/0004008522"
+        },
+        {
+          "press": "mk.co.kr",
+          "title": "‘불륜 인정’ 젠슨 황, 이혼시 100조원대 재산분할?…엔비디아 흔드는...",
+          "url": "https://n.news.naver.com/mnews/article/009/0005761021?sid=101"
+        },
+        {
+          "press": "whitepaper.co.kr",
+          "title": "트럼프 \"젠슨 황은 훌륭한 사람…아시아 방문에 데려갈 것\"",
+          "url": "http://www.whitepaper.co.kr/news/articleView.html?idxno=268578"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "엔비디아의 젠슨 황 CEO가 중국 국가안전부(MSS) 정보원으로 의심받는 싱가포르 기업 전직 임원 앨리스 황과의 불륜 사실을 임직원 이메일을 통해 인정했다."
+          "evidence": "엔비디아의 젠슨 황 CEO가 중국 정보기관의 첩자로 의심받는 싱가포르 기업 임원 앨리스 황과의 불륜 관계를 시인했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "젠슨황, 中스파이 의심 여성과 불륜 인정…이사회 독립조사 착수(종합)"
+          "evidence": "젠슨 황은 주말 사이 사내 메모를 통해 블륜을 인정하고 직원들에게 사과했고, 엔비디아 이사회가 자체..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "AP통신은 9일(한국시간) 트럼프가 취재진에게 황과 이번 사안에 관해..."
+          "evidence": "(사진=AP연합뉴스) 도널드 트럼프 미국 대통령이 8일(현지시간) 중국 스파이로 의심되는 여성과 불륜관계였음을 인정한 젠슨 황 엔비디아 최고경영자(CEO)를 \"훌륭한 사람\"이라며 옹호했다."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "과거 방송 출연 당시의 '사랑꾼' 이미지와 대비되는 현재의 불륜 인정 사실이 재조명되며, 대중적 실망감과 함께 재산 분할 등 현실적인 후폭풍에 대한 관심이 집중되고 있다."
+          "evidence": "불륜 사실 인정과 스킨십 영상 공개가 동시에 보도되며 사건이 공론화되었다. 엔비디아 주가 하락과 이사회의 독립 조사 착수 소식이 전해지며 기업 경영 리스크로 확산되는 양상을 보인다."
         }
       ],
       "visual_brief": {
@@ -225,10 +126,10 @@
       }
     },
     {
-      "issue_id": "i2b722935",
-      "title": "어쩌다 AI 왕자 젠슨황은 ‘中 미인계’에 빠졌나…41년 해로한 아내 두고 불륜 고백",
-      "category": "IT",
-      "rank": 5,
+      "issue_id": "ib55f0db1",
+      "title": "‘줄기세포 논문 조작’ 황우석, 한국 국적 상실… UAE 국민 됐다",
+      "category": "사회",
+      "rank": 2,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -236,49 +137,148 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "젠슨 황 엔비디아 최고경영자(CEO)가 불륜 상대로 지목된 싱가포르 데이터센터 기업 '메가스피드'의 고위 임원 앨리스 황(중국명 황러)과 다정한 모습을 보이는 사진이 공개됐다.",
-        "“아내에게 불충실했다” 젠슨 황, 불륜 인정… 미모의 女기업인과 같이 다니더니 결국",
-        "젠슨 황 엔비디아 CEO가 8일(현지시간) 임직원에게 보낸 사내 메일을 통해 불륜을 시인하고 사과했으나 도널드 트럼프 미국 대통령은 그를 “훌륭한 사람”이라고 옹호하며 이달 아시아 순방에 동행시킬 가능성을 열어...",
-        "젠슨황 엔비디아 최고경영자(CEO)가 직원들에게 불륜을 인정하는 이메일을 보내면서 엔비디아 이사회는 8일...",
-        "한편 중국의 ‘미인계’는 2011년 주중 한국 상하이 총영사관의 ‘덩신밍 스캔들’로 한국 외교가에도 큰..."
+        "‘줄기세포 논문 조작’ 황우석, 한국 국적 상실… UAE 국민 됐다",
+        "'줄기세포 논문 조작' 황우석, 놀라운 근황...한국 국적 잃었다",
+        "‘줄기세포 논문 조작’ 황우석, 한국인 포기하고 UAE 국적 취득",
+        "‘줄기세포 조작 논란’ 황우석 전 서울대 교수 한국 국적 상실",
+        "'줄기세포 논문 조작' 황우석 박사, UAE 국적 취득… 韓 국적 상실"
       ],
       "sources": [
         {
-          "press": "서울신문",
-          "title": "“아내에게 불충실했다” 젠슨 황, 불륜 인정… 미모의 女기업인과 같이 다니더니 결국",
-          "url": "https://n.news.naver.com/article/081/0003697017"
+          "press": "조선비즈",
+          "title": "‘줄기세포 논문 조작’ 황우석, 한국 국적 상실… UAE 국민 됐다",
+          "url": "https://n.news.naver.com/article/366/0001203396"
         },
         {
-          "press": "munhwa.com",
-          "title": "젠슨 황 “아내에 상처” 불륜 인정… 美, AI기술유출 ‘中미인계’ 조...",
-          "url": "https://n.news.naver.com/mnews/article/021/0002831420?sid=104"
+          "press": "한국경제TV",
+          "title": "'줄기세포 논문 조작' 황우석, 놀라운 근황...한국 국적 잃었다",
+          "url": "https://n.news.naver.com/article/215/0001272091"
         },
         {
-          "press": "seoul.co.kr",
-          "title": "젠슨황 불륜으로 본 중국 ‘미인계’…옹호한 트럼프도 ‘파장’",
-          "url": "https://n.news.naver.com/mnews/article/081/0003697110?sid=104"
+          "press": "주간경향",
+          "title": "‘줄기세포 논문 조작’ 황우석, 한국인 포기하고 UAE 국적 취득",
+          "url": "https://n.news.naver.com/article/033/0000053265"
         },
         {
-          "press": "newsis.com",
-          "title": "\"젠슨 황, 부자지만 가족 아끼고 소탈…불륜으로 결혼 파탄 아쉬워\"",
-          "url": "https://n.news.naver.com/mnews/article/003/0014310540?sid=104"
+          "press": "국제신문",
+          "title": "‘줄기세포 조작 논란’ 황우석 전 서울대 교수 한국 국적 상실",
+          "url": "https://n.news.naver.com/article/658/0000160737"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "젠슨 황 엔비디아 최고경영자(CEO)가 불륜 상대로 지목된 싱가포르 데이터센터 기업 '메가스피드'의 고위 임원 앨리스 황(중국명 황러)과 다정한 모습을 보이는 사진이 공개됐다."
+          "evidence": "‘줄기세포 논문 조작’ 황우석, 한국 국적 상실… UAE 국민 됐다"
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "젠슨황 엔비디아 최고경영자(CEO)가 직원들에게 불륜을 인정하는 이메일을 보내면서 엔비디아 이사회는 8일..."
+          "evidence": "낙타 복제 연구하는 황우석, 한국→UAE로 국적 변경"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "젠슨 황 엔비디아 CEO가 8일(현지시간) 임직원에게 보낸 사내 메일을 통해 불륜을 시인하고 사과했으나 도널드 트럼프 미국 대통령은 그를 “훌륭한 사람”이라고 옹호하며 이달 아시아 순방에 동행시킬 가능성을 열어..."
+          "evidence": "9일 연합뉴스 보도에 따르면 법무부 청주 출입국·외국인사무소는 1953년생인 황우석씨가 올해 4월 9일 UAE 국적을 취득해 한국 국적을 상실했다고 8월 13일 고시했다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i5e3f7b43",
+      "title": "(현장+)장충체육관보다 큰 LNG 탱크…버리던 냉기 ‘AI 데이터센터’ 활용 모색",
+      "category": "IT",
+      "rank": 9,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "5일 오후 울산 북항 코리아에너지터미널(KET).",
+        "부두에 들어서자 세 개의 거대한 원통형 액화천연가스(LNG) 저장탱크가 모습을 드러냈다.",
+        "한 탱크 당 직경 21.5m, 높이 57m 규모로, 서울 장충체육관의 약 3배에 달한다.",
+        "영하 162도의 초저온 LNG를 보관하기 위해 내부는...",
+        "해가 서서히 기울자 거대한 액화천연가스(LNG) 저장탱크에 하나둘씩 조명이 켜졌다."
+      ],
+      "sources": [
+        {
+          "press": "edaily.co.kr",
+          "title": "“장충체육관 3배 크기 LNG 탱크 우뚝”…울산 에너지 허브 이끄는 KET [...",
+          "url": "https://n.news.naver.com/mnews/article/018/0006406690?sid=101"
+        },
+        {
+          "press": "ddaily.co.kr",
+          "title": "[르포] \"20년간 빈 탱크 걱정 없다\"…LNG 319만톤 송출한 울산 KET",
+          "url": "https://n.news.naver.com/mnews/article/138/0002247759?sid=101"
+        },
+        {
+          "press": "viva100.com",
+          "title": "[르포①] 국내 첫 석유·LNG 복합터미널 KET… 장충체육관 3배 LNG 탱크 ‘...",
+          "url": "https://www.viva100.com/article/20261109500620"
+        },
+        {
+          "press": "디지털데일리",
+          "title": "[르포] \"20년간 빈 탱크 걱정 없다\"…LNG 319만톤 송출한 울산 KET",
+          "url": "https://n.news.naver.com/article/138/0002247759"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "5일 오후 울산 북항 코리아에너지터미널(KET)."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "탱크 인근에는 탱크 안에 저장된 LNG가 인근 발전소로 공급될 때 필요한 파이프라인으로 얽혀 있었다...."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "한 탱크 당 직경 21.5m, 높이 57m 규모로, 서울 장충체육관의 약 3배에 달한다."
         },
         {
           "panel": 4,
