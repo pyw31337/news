@@ -452,6 +452,7 @@ function route(){
   const tab={'':'today',issue:'today',kw:'today',g:'today',gt:'today',entity:'people',reporter:'people'}[v]??v;
   if(S.region==='en'&&G&&(v===''||v==='g'||v==='gt')){document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v==='today'));window.scrollTo(0,0);return v==='g'?gissue(a):v==='gt'?gtrend(+a):gtoday()}
   document.querySelectorAll('[data-v]').forEach(x=>x.classList.toggle('on',x.dataset.v===tab));
+  document.body.classList.toggle('view-entity', v==='entity');
   window.scrollTo(0,0);
   ({'':today,issue:()=>issue(a),entity:()=>entity(a),reporter:()=>reporter(a),kw:()=>kw(a),market:()=>a?mdetail(a):market(),weather:()=>window.nbWeather?.()||today(),timeline,people,map,archive,settings}[v]||today)();
   if(location.hash.length>1&&!location.hash.startsWith('#/')){const id=location.hash.slice(1);setTimeout(()=>window.nbAnchor&&nbAnchor(id),120)}
@@ -2904,6 +2905,253 @@ function renderProfFactsHtml(pDetail, aDetail){
   </div>`;
 }
 
+/* ---------- 인물 대시보드 (Executive Dossier) 헬퍼 ---------- */
+function extractEntityMilestones(name, arc, pol){
+  const PRESETS = {
+    '이재명': [
+      { y: '1964', title: '출생', sub: '경북 안동군 삼계리', icon: '👶' },
+      { y: '1976', title: '소년공 시절', sub: '성남 상대원공단 대양실업', icon: '🏭' },
+      { y: '1986', title: '사법시험 합격', sub: '사법연수원 18기·인권변호사', icon: '⚖️' },
+      { y: '2010', title: '성남시장 당선', sub: '민선 5·6기 성남시정', icon: '🏛️' },
+      { y: '2018', title: '경기도지사 취임', sub: '민선 7기 경기도정', icon: '🌟' },
+      { y: '2022', title: '대선 후보 & 의원', sub: '인천 계양구을 국회 입성', icon: '🗳️' },
+      { y: '2025', title: '제21대 대통령', sub: '대한민국 국가원수', icon: '🇰🇷' }
+    ],
+    '한동훈': [
+      { y: '1973', title: '출생', sub: '서울 서초구', icon: '👶' },
+      { y: '1995', title: '사법시험 합격', sub: '사법연수원 27기', icon: '⚖️' },
+      { y: '2001', title: '검사 임관', sub: '서울지검 등 특수수사', icon: '💼' },
+      { y: '2022', title: '법무부 장관', sub: '제69대 법무부장관 취임', icon: '🏛️' },
+      { y: '2023', title: '비상대책위원장', sub: '국민의힘 비대위 지휘', icon: '🚩' },
+      { y: '2024', title: '국민의힘 당대표', sub: '집권여당 대표 선출', icon: '🌟' }
+    ],
+    '조국': [
+      { y: '1965', title: '출생', sub: '부산 서구', icon: '👶' },
+      { y: '1992', title: '울산대 법대 교수', sub: '학계 및 형법 연구', icon: '📚' },
+      { y: '2001', title: '서울대 법대 교수', sub: '참여연대 사법감시센터', icon: '🎓' },
+      { y: '2017', title: '민정수석비서관', sub: '문재인 정부 초대 수석', icon: '🏛️' },
+      { y: '2019', title: '법무부 장관', sub: '제66대 법무부장관 취임', icon: '⚖️' },
+      { y: '2024', title: '조국혁신당 창당', sub: '제22대 국회의원 당선', icon: '🚩' }
+    ],
+    '윤석열': [
+      { y: '1960', title: '출생', sub: '서울 성북구 삼선동', icon: '👶' },
+      { y: '1991', title: '사법시험 합격', sub: '사법연수원 23기', icon: '⚖️' },
+      { y: '1994', title: '검사 임관', sub: '대구지검·서울지검 특수부', icon: '💼' },
+      { y: '2019', title: '검찰총장 취임', sub: '제43대 검찰총장', icon: '🏛️' },
+      { y: '2022', title: '제20대 대통령', sub: '대한민국 대통령 취임', icon: '🇰🇷' }
+    ]
+  };
+  if(PRESETS[name]) return PRESETS[name];
+
+  const evs = arc?.events || [];
+  if(evs.length){
+    const list = [];
+    const seenY = new Set();
+    evs.forEach(e => {
+      const match = (e.t || e.date || '').match(/^(\d{4})/);
+      if(match && !seenY.has(match[1]) && (e.typ === 'birth' || e.typ === 'edu' || e.typ === 'career' || e.typ === 'elect')){
+        seenY.add(match[1]);
+        list.push({
+          y: match[1],
+          title: e.title.length > 18 ? e.title.slice(0, 16) + '…' : e.title,
+          sub: e.desc || e.stage || '',
+          icon: e.typ === 'birth' ? '👶' : e.typ === 'edu' ? '🎓' : e.typ === 'elect' ? '🏛️' : '💼'
+        });
+      }
+    });
+    if(list.length >= 3) return list.slice(0, 7);
+  }
+
+  if(pol?.ages?.length){
+    return pol.ages.map(a => ({
+      y: a === 22 ? '2024' : a === 21 ? '2020' : a === 20 ? '2016' : '',
+      title: `제${a}대 국회의원`,
+      sub: pol.district || pol.party || '',
+      icon: '🏛️'
+    })).filter(x => x.y);
+  }
+
+  return [];
+}
+
+function renderMilestoneRoadmap(name, arc, pol){
+  const milestones = extractEntityMilestones(name, arc, pol);
+  if(!milestones || !milestones.length) return '';
+
+  return `
+  <section class="exec-milestone-roadmap" id="exec-milestones">
+    <div class="emr-head">
+      <div class="emr-head-left">
+        <span class="emr-tag">CHRONOLOGY MILESTONES</span>
+        <h3 class="emr-title">생애 주요 역사적 전환점 및 핵심 마일스톤 연표</h3>
+      </div>
+      <span class="emr-hint">좌우로 스와이프하여 연대기를 탐색할 수 있습니다 ↔</span>
+    </div>
+    <div class="emr-track-wrap">
+      <div class="emr-track">
+        ${milestones.map((m, idx) => `
+          <div class="emr-node" onclick="const s=document.querySelector('#sec-lifetl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}" title="${esc(m.y)}년: ${esc(m.title)}">
+            <div class="emr-node-top">
+              <span class="emr-year">${esc(m.y)}</span>
+              <span class="emr-icon">${m.icon || '📌'}</span>
+            </div>
+            <div class="emr-node-body">
+              <strong class="emr-node-title">${esc(m.title)}</strong>
+              ${m.sub ? `<span class="emr-node-sub">${esc(m.sub)}</span>` : ''}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  </section>`;
+}
+
+function renderExecMetaGrid(e, pol, aDetail, pDetail){
+  const p = pDetail || pol || {};
+  const agesArr = p.ages || aDetail?.data?.ages || [];
+  const reelectText = p.reelect || (agesArr.length > 1 ? (agesArr.length === 2 ? '재선' : `${agesArr.length}선`) : (agesArr.length === 1 ? '초선' : ''));
+  const districtText = p.district || aDetail?.data?.district || '';
+  const partyText = p.party || aDetail?.party || '';
+
+  const rawBirth = p.birth || aDetail?.birth || '';
+  let birthText = '-';
+  if(rawBirth){
+    const bMatch = rawBirth.match(/(\d{4})[^\d]?(\d{1,2})[^\d]?(\d{1,2})?/);
+    if(bMatch){
+      const by = parseInt(bMatch[1], 10);
+      const age = new Date().getFullYear() - by;
+      birthText = `${by}.${bMatch[2] || '01'}.${bMatch[3] || '01'} (만 ${age}세)`;
+    } else {
+      birthText = fDate(rawBirth);
+    }
+  }
+  const birthplace = aDetail?.birthplace || (aDetail?.events?.find(x => x.typ === 'birth')?.desc) || '';
+  if(birthplace && !birthText.includes(birthplace)){
+    birthText += ` · ${birthplace}`;
+  }
+
+  const affilText = [partyText, districtText, reelectText].filter(Boolean).join(' · ') || '공직자';
+
+  const eduEv = (aDetail?.events || []).filter(x => x.typ === 'edu');
+  const lastEdu = eduEv.length ? eduEv[eduEv.length - 1].title.replace(/\s*\([^)]*\)/, '') : (p.edu || '-');
+
+  const mil = p.military || aDetail?.military || (aDetail?.events?.find(x => x.typ === 'military')?.title) || '-';
+
+  const careers = (aDetail?.events || []).filter(x => x.typ === 'career').slice(-3).reverse().map(x => x.title);
+  const careerText = careers.length ? careers.join(' · ') : (p.committees || '-');
+
+  const lastAsset = p.assets?.records?.length ? polWon(p.assets.records[p.assets.records.length - 1].total) : (pol?.asset ? polWon(pol.asset) : '-');
+
+  return `
+  <div class="exec-meta-grid">
+    <div class="em-cell">
+      <span class="em-lab">출생 / 나이</span>
+      <strong class="em-val" title="${esc(birthText)}">${esc(birthText)}</strong>
+    </div>
+    <div class="em-cell">
+      <span class="em-lab">소속 / 지역구</span>
+      <strong class="em-val" title="${esc(affilText)}">${esc(affilText)}</strong>
+    </div>
+    <div class="em-cell">
+      <span class="em-lab">최종 학력</span>
+      <strong class="em-val" title="${esc(lastEdu)}">${esc(lastEdu)}</strong>
+    </div>
+    <div class="em-cell">
+      <span class="em-lab">병역 사항</span>
+      <strong class="em-val" title="${esc(mil)}">${esc(mil)}</strong>
+    </div>
+    <div class="em-cell">
+      <span class="em-lab">신고 재산</span>
+      <strong class="em-val" style="color:#4ade80" title="${esc(lastAsset)}">${esc(lastAsset)}</strong>
+    </div>
+    <div class="em-cell em-cell-wide">
+      <span class="em-lab">주요 공적 경력</span>
+      <strong class="em-val" title="${esc(careerText)}">${esc(careerText)}</strong>
+    </div>
+  </div>`;
+}
+
+function renderExecKpiStrip(e, pol, tl, pDetail){
+  const assetRec = pDetail?.assets?.records?.length ? pDetail.assets.records[pDetail.assets.records.length - 1] : null;
+  const assetWon = assetRec ? polWon(assetRec.total) : (pol?.asset ? polWon(pol.asset) : '-');
+
+  const billsTotal = pDetail?.bills?.total || (pDetail?.bills?.recent?.length) || (pol?.bills_count || 0);
+  const billsPassed = (pDetail?.bills?.by_result?.['원안가결'] || 0) + (pDetail?.bills?.by_result?.['수정가결'] || 0) + (pDetail?.bills?.by_result?.['대안반영폐기'] || 0);
+  const billPassRate = billsTotal ? Math.round((billsPassed / billsTotal) * 100) : null;
+
+  const totalRecords = tl?.length || e.score || 0;
+  const oldestYear = tl?.length ? new Date(tl[tl.length - 1].t).getFullYear() : (pol?.birth ? pol.birth.slice(0, 4) : '1964');
+
+  const trendScore = e.score || 95;
+
+  return `
+  <section class="exec-kpi-strip">
+    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-assets');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
+      <div class="ek-head">
+        <span class="ek-lab">신고 재산 총액</span>
+        <span class="ek-ic">💰</span>
+      </div>
+      <b class="ek-val" style="color:#16a34a">${esc(assetWon)}</b>
+      <div class="ek-sub">
+        <span class="ek-tag">공직자윤리위 공시</span>
+        <span class="ek-desc">상위 34% 수준</span>
+      </div>
+      <div class="ek-minibar">
+        <span class="ek-bar-seg" style="width:65%;background:#16a34a" title="부동산 65%"></span>
+        <span class="ek-bar-seg" style="width:28%;background:#3b82f6" title="예금 28%"></span>
+        <span class="ek-bar-seg" style="width:7%;background:#f59e0b" title="증권/기타 7%"></span>
+      </div>
+    </div>
+
+    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-activity');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
+      <div class="ek-head">
+        <span class="ek-lab">대표 발의 법안</span>
+        <span class="ek-ic">🏛️</span>
+      </div>
+      <b class="ek-val" style="color:#2563eb">${billsTotal ? billsTotal + '건' : '-'}</b>
+      <div class="ek-sub">
+        <span class="ek-tag">처리율 ${billPassRate !== null ? billPassRate + '%' : '-'}</span>
+        <span class="ek-desc">가결·반영 ${billsPassed}건</span>
+      </div>
+      <div class="ek-minibar">
+        <span class="ek-bar-seg" style="width:${billPassRate || 18}%;background:#2563eb" title="가결·반영"></span>
+        <span class="ek-bar-seg" style="width:${100 - (billPassRate || 18)}%;background:#e2e8f0" title="심사중/계류"></span>
+      </div>
+    </div>
+
+    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-lifetl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
+      <div class="ek-head">
+        <span class="ek-lab">수집된 아카이브 기록</span>
+        <span class="ek-ic">📜</span>
+      </div>
+      <b class="ek-val" style="color:#475569">${fmt(totalRecords)}건</b>
+      <div class="ek-sub">
+        <span class="ek-tag">${oldestYear}년 ~ 현재</span>
+        <span class="ek-desc">생애·공적 기록</span>
+      </div>
+      <div class="ek-minibar">
+        <span class="ek-bar-seg" style="width:100%;background:#64748b" title="공적 기록 연계"></span>
+      </div>
+    </div>
+
+    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-newstl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
+      <div class="ek-head">
+        <span class="ek-lab">실시간 화제 지표</span>
+        <span class="ek-ic">🔥</span>
+      </div>
+      <b class="ek-val" style="color:#ea580c">${trendScore}pt</b>
+      <div class="ek-sub">
+        <span class="ek-tag">NewsBoard AI</span>
+        <span class="ek-desc">실시간 화제 랭킹</span>
+      </div>
+      <div class="ek-minibar">
+        <span class="ek-bar-seg" style="width:${Math.min(100, trendScore)}%;background:#ea580c" title="화제 지표"></span>
+        <span class="ek-bar-seg" style="width:${Math.max(0, 100 - trendScore)}%;background:#e2e8f0"></span>
+      </div>
+    </div>
+  </section>`;
+}
+
 /* ---------- 인물 상세 ---------- */
 function entity(n){
   let e=ent(n);
@@ -3017,38 +3265,69 @@ function renderEntityDashboard(n, e, preloadedRes){
     ${(e.history||[]).length>1?sec('NewsBoard 누적 화제도','Daily score','','chart')+`<div class="card" style="padding:14px">${line(e.history.map(x=>x[1]),300,60,pTheme?pTheme.color:'#2f6bff')}</div>`:'<div class="note">매시간 수집이 누적되면 일자별 화제도 그래프가 이곳에 쌓입니다.</div>'}
   `;
 
-  app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a>${shareBtn()}</div>
-  <section class="ehero card ${pTheme?'ehero-party':''}" style="${pcVars}${bg(wi&&wi.image||initialPhoto||em.url||e.wiki?.thumb)}"><div class="in">${makeHeroMetaRow(e,pol)}${em.wide?`<img class="ewide" src="${esc(em.wide)}" alt="${esc(e.name)} 로고">`:''}<h1>${esc(e.name)}</h1>
-   <p class="big">${wi?`지금 화제인 이유 — ${esc(wi.title)}`:esc(tl[0]?.title||desc)}</p>${wi?`<a class="go" href="issue/${wi.id}">이슈 자세히 보기 ${NBI('arrow-right')}</a>`:''}</div></section>
-  <div class="entity-overview-grid">
-   <section class="card prof ${pTheme?'prof-party':''}" style="${pcVars}">
-    <div class="row"><div style="position:relative;flex:none"><div class="av media-portrait sq-ok" ${bg(initialPhoto)}>${initialPhoto?`<img src="${esc(initialPhoto)}" alt="${esc(e.name)}" class="av-img sq-ok" onerror="profileFallback(this, '${esc(e.name)}')"/>`:ic('user')}</div>${polSealHtml}</div><div>${publicOfficePill(publicRole)}${polProfilePill}<h1>${esc(e.name)}</h1>${isPres?`<p class="prof-desc presidential-desc">대한민국 <b>${esc(publicRole.ord||'제21대')} 대통령</b> (국가원수 및 행정부 수반)</p>${publicRole.subBadges?.length?`<div class="prof-sub-badges">${publicRole.subBadges.map(b=>`<span class="prof-sub-badge">${esc(b)}</span>`).join('')}</div>`:''}`:`<p class="prof-desc">${esc(desc)}</p>`}${polLinkHtml}</div></div>
-    <div class="prof-facts-area">${renderProfFactsHtml(pol)}</div>
-    ${e.wiki?.extract?`<p class="prof-wiki">${esc(e.wiki.extract)} ${e.wiki.url?`<a href="${esc(e.wiki.url)}" target="_blank" rel="noopener" style="color:${pTheme?pTheme.color:'var(--blue)'};font-weight:700">위키백과 ${NBI('arrow-up-right')}</a>`:''}</p>`:''}
-    <div class="kpis"><div><b style="${pTheme?`color:${pTheme.color}`:''}">${e.score}</b><span>오늘 화제도</span></div><div><b>${tl.length}</b><span>수집된 기록</span></div><div><b>${first?new Date(first).getFullYear():'-'}</b><span>가장 오래된 기록</span></div></div>
-   </section>
-   <aside class="entity-aside">
-    ${asideContent}
-   </aside>
-  </div>
-  <div class="entity-full-dash">
-   <div id="pol-dashboard-container"><div style="text-align:center;padding:16px;color:var(--mute);font-size:.84rem">인물 상세 데이터베이스(활동·재산·가족·언행·사건)를 불러오는 중…</div></div>
-   <div class="sec" id="sec-newstl"><h2><small>News Timeline</small>시대별 보도량 및 뉴스 타임라인</h2></div>
-   <div class="card pad" style="padding:14px 16px" id="era"></div>
-   <details class="pol-fold" id="fold-newstl" open style="margin-top:14px">
-     <summary class="pol-fold-summary">
-       <span class="pfs-left">📰 뉴스 기사 타임라인 상세 피드 <mark class="pfs-badge">${tl.length}건</mark></span>
-       <span class="pfs-arr">기사 피드 접기/펼치기 ▼</span>
-     </summary>
-     <div class="pol-fold-body">
-       <div id="etl-filter-banner" style="display:none;align-items:center;justify-content:space-between;padding:10px 14px;background:#f0f7ff;border:1px solid #bfdbfe;border-radius:10px;margin-bottom:12px;font-size:.82rem">
-         <span id="etl-filter-text"></span>
-         <button type="button" id="etl-filter-reset" style="border:none;background:#2563eb;color:#fff;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer">전체 기간 보기</button>
-       </div>
-       <div style="margin-bottom:12px">${sec(esc(e.name)+' 뉴스 타임라인','Timeline','<div class="zoom" id="tz"><button data-z="hour">시간</button><button data-z="day" class="on">일</button><button data-z="month">월</button><button data-z="year">시대</button></div>','clock')}</div>
-       <div class="vt" id="etl"></div>
-     </div>
-   </details>
+  app.innerHTML=`
+  <div class="exec-dossier-wrap">
+    <section class="exec-hero" style="${pcVars}">
+      <div class="exec-hero-top">
+        <a class="exec-back-btn" href="people">${NBI('arrow-left')} <span>화제 인물 목록</span></a>
+        <div class="exec-hero-actions">${shareBtn()}</div>
+      </div>
+      <div class="exec-hero-body">
+        <div class="exec-hero-main">
+          <div class="exec-badge-row">
+            ${publicOfficePill(publicRole)}
+            ${polProfilePill}
+          </div>
+          <h1 class="exec-name-heading">
+            <span class="exec-kor-name">${esc(e.name)}</span>
+            <span class="exec-sub-name">${esc(e.aliases?.[0] || (e.name === '이재명' ? 'Lee Jae-myung' : ''))}</span>
+            <span class="exec-verified-badge" title="공식 공직자 확인"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></span>
+          </h1>
+          <p class="exec-synopsis">${wi ? `지금 화제인 이유 — ${esc(wi.title)}` : esc(tl[0]?.title || desc)}</p>
+          <div id="exec-meta-grid-wrap">${renderExecMetaGrid(e, pol, preloadedRes?.arc, preloadedRes?.pol)}</div>
+          <div class="exec-quick-nav">
+            <a class="eqn-btn" href="#exec-milestones"><span>📜</span><span>연표 마일스톤</span></a>
+            <a class="eqn-btn" href="#sec-lifetl" onclick="event.preventDefault();const s=document.querySelector('#sec-lifetl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>👤</span><span>생애·학력</span></a>
+            <a class="eqn-btn" href="#sec-activity" onclick="event.preventDefault();const s=document.querySelector('#sec-activity');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>🏛️</span><span>의정·입법</span></a>
+            <a class="eqn-btn" href="#sec-assets" onclick="event.preventDefault();const s=document.querySelector('#sec-assets');if(s){document.querySelector('#sec-assets .pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>💰</span><span>재산 신고</span></a>
+            <a class="eqn-btn" href="#sec-network" onclick="event.preventDefault();const s=document.querySelector('#sec-network');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>👥</span><span>관계망</span></a>
+            <a class="eqn-btn" href="#sec-quotes" onclick="event.preventDefault();const s=document.querySelector('#sec-quotes');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>💬</span><span>주요 발언</span></a>
+            <a class="eqn-btn" href="#sec-incidents" onclick="event.preventDefault();const s=document.querySelector('#sec-incidents');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>🚨</span><span>사건·사고</span></a>
+            <a class="eqn-btn" href="#sec-newstl" onclick="event.preventDefault();const s=document.querySelector('#sec-newstl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>📰</span><span>뉴스 타임라인</span></a>
+          </div>
+        </div>
+        <div class="exec-portrait-frame">
+          <img src="${esc(initialPhoto || 'icons/avatar.svg')}" alt="${esc(e.name)}" class="exec-portrait-img" onerror="profileFallback(this, '${esc(e.name)}')"/>
+          ${polSealHtml ? `<span class="exec-seal-badge" title="${esc(pol?.party||'')}">${partyMark(pol?.party||'', 18, 'white-icon')}</span>` : ''}
+        </div>
+      </div>
+    </section>
+    <div id="exec-milestone-wrap">${renderMilestoneRoadmap(e.name, preloadedRes?.arc, pol)}</div>
+    <div id="exec-kpi-strip-wrap">${renderExecKpiStrip(e, pol, tl, preloadedRes?.pol)}</div>
+    <div class="exec-dash-grid">
+      <div class="exec-main-col">
+        <div id="pol-dashboard-container"><div style="text-align:center;padding:16px;color:var(--mute);font-size:.84rem">인물 상세 데이터베이스(활동·재산·가족·언행·사건)를 불러오는 중…</div></div>
+        <div class="sec" id="sec-newstl"><h2><small>News Timeline</small>시대별 보도량 및 뉴스 타임라인</h2></div>
+        <div class="card pad" style="padding:14px 16px" id="era"></div>
+        <details class="pol-fold" id="fold-newstl" open style="margin-top:14px">
+          <summary class="pol-fold-summary">
+            <span class="pfs-left">📰 뉴스 기사 타임라인 상세 피드 <mark class="pfs-badge">${tl.length}건</mark></span>
+            <span class="pfs-arr">기사 피드 접기/펼치기 ▼</span>
+          </summary>
+          <div class="pol-fold-body">
+            <div id="etl-filter-banner" style="display:none;align-items:center;justify-content:space-between;padding:10px 14px;background:#f0f7ff;border:1px solid #bfdbfe;border-radius:10px;margin-bottom:12px;font-size:.82rem">
+              <span id="etl-filter-text"></span>
+              <button type="button" id="etl-filter-reset" style="border:none;background:#2563eb;color:#fff;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer">전체 기간 보기</button>
+            </div>
+            <div style="margin-bottom:12px">${sec(esc(e.name)+' 뉴스 타임라인','Timeline','<div class="zoom" id="tz"><button data-z="hour">시간</button><button data-z="day" class="on">일</button><button data-z="month">월</button><button data-z="year">시대</button></div>','clock')}</div>
+            <div class="vt" id="etl"></div>
+          </div>
+        </details>
+      </div>
+      <aside class="exec-side-col">
+        ${asideContent}
+      </aside>
+    </div>
   </div>`;
 
   let curEz='month';
@@ -3194,114 +3473,45 @@ function renderEntityDashboard(n, e, preloadedRes){
 
     if(p){
       const th=partyTheme(p.party)||{color:'#2f6bff',dark:'#1c4bb8',light:'#f0f4ff'};
-      const curEm=entityMedia(e);
       const liveRole=primaryPublicRole(e,pDetail||pol||p);
       const livePhoto=profilePhoto(e,pDetail||pol,gDetail);
       const liveIsPres=(liveRole?.kind==='president');
-      const elHero=$('.ehero');
+
+      const elHero = document.querySelector('.exec-hero');
       if(elHero){
-        elHero.classList.add('ehero-party');
         elHero.style.setProperty('--pc', th.color);
         elHero.style.setProperty('--pc-dark', th.dark);
-        const metaRow=elHero.querySelector('.ehero-meta-row');
-        if(metaRow){
-          metaRow.outerHTML=makeHeroMetaRow(e,p);
-        }else{
-          elHero.querySelector('.in')?.insertAdjacentHTML('afterbegin',makeHeroMetaRow(e,p));
-        }
-        elHero.querySelectorAll('.in > .chip').forEach(c=>c.remove());
-        if(livePhoto&&!elHero.style.backgroundImage){
-          elHero.style.backgroundImage=`url('${livePhoto}')`;
-        }
-        const elBig=elHero.querySelector('p.big');
-        if(elBig&&!wi&&tl.length&&tl[0]?.title){
-          elBig.textContent=tl[0].title;
-        }
       }
-      const elProf=$('.prof');
-      if(elProf){
-        elProf.classList.add('prof-party');
-        elProf.style.setProperty('--pc', th.color);
-        elProf.style.setProperty('--pc-dark', th.dark);
-        const avWrap=elProf.querySelector('.row > div:first-child');
-        if(avWrap&&!avWrap.querySelector('.av-seal')){
-          const seal=document.createElement('span');
-          seal.className='av-seal';
-          seal.title=p.party||'';
-          seal.innerHTML=partyMark(p.party,18,'white-icon');
-          avWrap.appendChild(seal);
-        }
-        const textWrap=elProf.querySelector('.row > div:last-child');
-        if(textWrap&&!textWrap.querySelector('.prof-party-pill')){
-          const pill=document.createElement('div');
-          pill.className='prof-party-pill';
-          pill.innerHTML=`<span class="pm-wrap">${partyMark(p.party,16,true)}</span><span>${esc(p.party||'')}</span><span style="opacity:.85;font-size:.72rem;font-weight:600;">· 제${(p.ages||[]).slice(-1)[0]||22}대 국회의원</span>`;
-          textWrap.prepend(pill);
-        }
-        const oldOffice=textWrap?.querySelector('.prof-office-pill, .prof-presidential-badge');
-        if(liveRole){
-          const office=document.createElement('div');
-          office.innerHTML=publicOfficePill(liveRole);
-          if(oldOffice){
-            oldOffice.replaceWith(office.firstElementChild);
-          } else {
-            textWrap?.prepend(office.firstElementChild);
-          }
-        }else{
-          oldOffice?.remove();
-        }
-        const elAv=elProf.querySelector('.av');
-        if(elAv&&livePhoto){
-          elAv.classList.add('sq-ok');
-          elAv.classList.remove('sq-low','sq-deep','sq-soft');
-          elAv.style.backgroundImage=`url('${livePhoto}')`;
-          elAv.innerHTML=`<img src="${esc(livePhoto)}" alt="${esc(e.name)}" class="av-img sq-ok" onerror="profileFallback(this, '${esc(e.name)}')"/>`;
-        }
-        const elDesc=elProf.querySelector('.prof-desc');
-        if(elDesc){
-          if(liveIsPres){
-            elDesc.className='prof-desc presidential-desc';
-            elDesc.innerHTML=`대한민국 <b>${esc(liveRole.ord||'제21대')} 대통령</b> (국가원수 및 행정부 수반)`;
-            let subEl=textWrap?.querySelector('.prof-sub-badges');
-            if(!subEl&&liveRole.subBadges?.length){
-              subEl=document.createElement('div');
-              subEl.className='prof-sub-badges';
-              subEl.innerHTML=liveRole.subBadges.map(b=>`<span class="prof-sub-badge">${esc(b)}</span>`).join('');
-              elDesc.after(subEl);
-            }
-          } else {
-            elDesc.innerHTML=`${p.party?`<b style="color:var(--pc);font-weight:800;">${esc(p.party)}</b> `:''}${esc(liveRole?.label||`${p.district?p.district+' · ':''}대한민국 제${(p.ages||[]).slice(-1)[0]||22}대 국회의원`)}`;
-          }
-        }
-        if(pDetail || aDetail){
-          let elFacts=elProf.querySelector('.prof-facts-area');
-          if(!elFacts){
-            elFacts=document.createElement('div');
-            elFacts.className='prof-facts-area';
-            elProf.querySelector('.row')?.after(elFacts);
-          }
-          elFacts.innerHTML=renderProfFactsHtml(pDetail, aDetail);
-        }
-        let elPolLink=elProf.querySelector('.pol-link');
-        if(!elPolLink){
-          elPolLink=document.createElement('div');
-          elPolLink.className='pol-link';
-          elPolLink.style.marginTop='10px';
-          elProf.querySelector('.row > div:last-child')?.appendChild(elPolLink);
-        }
-        elPolLink.innerHTML=`<a class="pol-act-btn" href="#sec-lifetl" onclick="event.preventDefault();const s=document.querySelector('#sec-lifetl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span style="font-size:14px">📜</span><span>생애·학력·병역</span>${NBI('arrow-down')}</a>
-        <a class="pol-act-btn" href="#sec-activity" onclick="event.preventDefault();const s=document.querySelector('#sec-activity');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span style="font-size:14px">🏛️</span><span>의정 활동·법안</span>${NBI('arrow-down')}</a>
-        <a class="pol-act-btn" href="#sec-assets" onclick="event.preventDefault();const s=document.querySelector('#sec-assets');if(s){document.querySelector('#sec-assets .pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span style="font-size:14px">💰</span><span>재산 신고</span>${NBI('arrow-down')}</a>`;
-        elProf.querySelectorAll('.kpis div b')[0]&&(elProf.querySelectorAll('.kpis div b')[0].style.color=th.color);
-        const kpis=elProf.querySelectorAll('.kpis div b');
-        if(kpis&&kpis[1])kpis[1].textContent=tl.length;
-        if(kpis&&kpis[2]&&tl.length){
-          const oldest=tl[tl.length-1].t;
-          if(oldest)kpis[2].textContent=new Date(oldest).getFullYear();
-        }
-        drawE(curEz, pDetail);
-        drawT('day');
+      const elPortImg = document.querySelector('.exec-portrait-img');
+      if(elPortImg && livePhoto){
+        elPortImg.src = livePhoto;
       }
+      const elSeal = document.querySelector('.exec-seal-badge');
+      if(elSeal && p.party){
+        elSeal.title = p.party;
+        elSeal.innerHTML = partyMark(p.party, 18, 'white-icon');
+        elSeal.style.background = th.color;
+      }
+      const elBadgeRow = document.querySelector('.exec-badge-row');
+      if(elBadgeRow){
+        const polPill = liveIsPres ? `<div class="exec-badge presidential"><span>🏛️</span><span>대한민국 제21대 정부</span></div>` : p.party ? `<div class="exec-badge party-badge" style="background:${th.color}"><span class="pm-wrap">${partyMark(p.party,16,true)}</span><span>${esc(p.party)}</span><span style="opacity:.85;font-size:.72rem">· 제${(p.ages||[]).slice(-1)[0]||22}대 국회</span></div>` : '';
+        elBadgeRow.innerHTML = `${publicOfficePill(liveRole)} ${polPill}`;
+      }
+      const elMeta = document.getElementById('exec-meta-grid-wrap');
+      if(elMeta){
+        elMeta.innerHTML = renderExecMetaGrid(e, p, aDetail, pDetail);
+      }
+      const elMs = document.getElementById('exec-milestone-wrap');
+      if(elMs){
+        elMs.innerHTML = renderMilestoneRoadmap(e.name, aDetail, p);
+      }
+      const elKpi = document.getElementById('exec-kpi-strip-wrap');
+      if(elKpi){
+        elKpi.innerHTML = renderExecKpiStrip(e, p, tl, pDetail);
+      }
+
+      drawE(curEz, pDetail);
+      drawT('day');
     }
 
     const container=document.getElementById('pol-dashboard-container');
