@@ -381,9 +381,11 @@ function bindRegionControls(root=document){
   });
 }
 function header(){
-  /* 전환기는 해외 브리핑의 언어 안내 오른쪽으로 옮겼다. 빈 안내 영역은 유지해
-     헤더의 다른 정렬과 이전 마크업 호환성을 깨지 않는다. */
-  const updated=$('#updated');if(updated)updated.textContent='';
+  const updated=$('#updated');
+  if(updated){
+    updated.innerHTML = regionControl();
+    bindRegionControls(updated);
+  }
   header2();
 }
 function header2(){
@@ -476,6 +478,12 @@ function today(){
   // 여기서 6개로 다시 자르면 실제 학습량과 홈 화면의 표시 수가 어긋난다.
   const W=(D.words||[]).slice(0,10);
   app.innerHTML=`
+  <div class="today-region-bar" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px;padding:4px 0">
+    <div style="font-size:0.88rem;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:6px">
+      ${ic('news')} <span>오늘의 뉴스</span>
+    </div>
+    ${regionControl()}
+  </div>
   <section class="hero">
     <div class="rdeck" tabindex="0" aria-roledescription="카드 덱" aria-label="오늘의 이슈 카드. 좌우로 넘겨 보세요">
      <div class="rstage">${heroI.map((i,k)=>`<article class="lead rcard" data-i="${k}" data-id="${i.id}" data-img="${esc([...(i.gallery||[]).slice(0,1).map(g=>g.img),i.image,...(i.gallery||[]).map(g=>g.img)].filter(Boolean).filter((u,k,A)=>A.indexOf(u)===k).slice(0,6).join('|'))}"><div class="rimg"></div><a class="rlink" draggable="false" href="issue/${i.id}" aria-label="${esc(i.title)}"></a><button type="button" class="rlater" data-later="${i.id}" aria-label="나중에 읽기" aria-pressed="false">${window.GI?GI('bookmark-plus'):''}<span>나중에 읽기</span></button><div class="in"><div class="no">${String(i.rank).padStart(2,'0')}</div><span class="cat ${i.category}">${ic(i.category)}${i.category}</span>
@@ -499,6 +507,7 @@ function today(){
   window.nbDeck&&nbDeck($('.rdeck'));carousels(app);heatIn(app);
   NBT.vote(I);NBT.trends(D.trends.slice(0,10));NBT.words();NBT.ages(I);
   NBT.bindHorizontalCarousels(app);
+  bindRegionControls(app);
 }
 /* 화제도 게이지: 카드가 화면에 들어오면 차오르기 시작(.go) */
 function heatIn(root){const H=[...(root||document).querySelectorAll('.ic .heat:not(.go)')];if(!H.length)return;

@@ -28,11 +28,13 @@ jobs:
       - name: 모든 기사 → 인물 타임라인
         env: { PEOPLE_SEC: '900' }
         run: python scripts/people/mentions.py data
+      - name: 인물사전 마스터 DB 풀 리빌드
+        run: python scripts/people/collect_bio.py
       - name: data 브랜치에 저장
         working-directory: data
         run: |
           git config user.name "newsboard-bot"; git config user.email "actions@users.noreply.github.com"
-          git add db/people
+          git add db/people people_bio.json people_bio.json.gz
           git diff --cached --quiet && exit 0
           git commit -qm "people: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
           for n in 1 2 3 4 5 6; do

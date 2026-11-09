@@ -875,100 +875,233 @@ def load_registry_index(result):
         print(f"Warning: load registry failed: {e}")
 
 
-def main():
-    print("================================================================")
-    print("Building Ultimate Who's Who Encyclopedia Database (All Sectors)")
-    print("================================================================")
-    result = {}
+def load_discovered_figures(result):
+    """뉴스 기사에서 자동 발견된 신규 인물(db/people/discovered.json) 지속 편입"""
+    disc_path = os.path.join(DATA_DIR, "db", "people", "discovered.json")
+    if not os.path.exists(disc_path):
+        return
 
-    # 1. 정밀 검증 주요 인물 마스터 등록
-    for name, v in VERIFIED_PROFILES.items():
-        events = []
-        b_dt = v.get("birth_desc", "")
-        # 생년월일 추출
-        m_b = re.search(r"(\d{4}[-.]\d{2}[-.]\d{2})", b_dt)
-        b_date_str = m_b.group(1).replace(".", "-") if m_b else ""
+    print("Incorporating freshly discovered figures from news articles...")
+    try:
+        with open(disc_path, "r", encoding="utf-8") as f:
+            disc = json.load(f)
 
-        if b_dt:
-            events.append({
-                "d": b_date_str,
-                "typ": "birth",
-                "stage": "출생·성장",
-                "title": f"출생 ({b_dt})",
-                "desc": b_dt,
-                "status": "fact",
-                "src": "공적 인적사항 DB / 중앙선관위"
-            })
-
-        for ed in v.get("edu", []):
-            events.append({
-                "d": ed["d"],
-                "typ": "edu",
-                "stage": "출생·성장" if any(k in ed["title"] for k in ["초등", "국민학교", "중학교"]) else "학업",
-                "title": ed["title"],
-                "desc": ed.get("desc", ""),
-                "status": "fact",
-                "src": "공적 학력증명 / 학교생활기록부"
-            })
-
-        if v.get("mil_event"):
-            me = v["mil_event"]
-            events.append({
-                "d": me["d"],
-                "typ": "military",
-                "stage": "병역",
-                "title": me["title"],
-                "desc": me.get("desc", ""),
-                "status": "fact",
-                "src": "병무청 병적증명서 / 선관위 병역공개자료"
-            })
-
-        for cr in v.get("careers", []):
-            typ = "career"
-            if any(k in cr["title"] for k in ["취임", "역임", "임명"]):
-                typ = "office"
-            elif any(k in cr["title"] for k in ["당선", "출마"]):
-                typ = "election"
-            elif any(k in cr["title"] for k in ["창업", "설립", "개발", "인수", "발표"]):
-                typ = "business"
-            elif any(k in cr["title"] for k in ["판결", "사법시험", "합격"]):
-                typ = "ruling"
-
-            events.append({
-                "d": cr["d"],
-                "typ": typ,
-                "stage": cr.get("stage", "사회 경력"),
-                "title": cr["title"],
-                "desc": cr.get("desc", ""),
-                "status": "fact",
-                "src": "공적 관보 / 언론 보도 / 전자공시"
-            })
-
-        events.sort(key=lambda x: (x.get("d") or "9999", x.get("stage") or ""))
-
-        result[name] = {
-            "kind": v.get("kind", "public"),
-            "role_title": v.get("role_title", ""),
-            "org": v.get("org", ""),
-            "military": v.get("military", ""),
-            "birth_desc": v.get("birth_desc", ""),
-            "events": events
+        k_map = {
+            "정치": "politician",
+            "법조": "legal",
+            "경제": "corporate",
+            "언론": "reporter",
+            "학계": "scholar",
+            "연예": "public",
+            "스포츠": "sports"
         }
 
-    # 2. 국회의원 3,296명
-    load_politicians_archive(result)
+        added = 0
+        updated = 0
+        for name, info in disc.items():
+            if not name or len(name) < 2 or not info.get("ok"):
+                continue
+            role = info.get("role") or "공인"
+            cat = info.get("k") or ""
+            urls = info.get("u") or []
+            kind = k_map.get(cat, "public")
 
-    # 3. 법조인 (대법관, 헌법재판관, 각급 판사)
-    load_legal_people(result)
+            events = []
+            for u in urls[:3]:
+                events.append({
+                    "d": "2026",
+                    "typ": "article",
+                    "stage": "사회 경력",
+                    "title": f"주요 언론 보도 언급 ({role})",
+                    "desc": f"뉴스 보도 내 주요 공인 언급 ({role} · 분야: {cat or '사회'})",
+                    "status": "fact",
+                    "src": "언론 보도 아카이브",
+                    "url": u
+                })
 
-    # 4. 지방선거 당선인 (전국 광역/기초단체장, 교육감)
-    load_gov_winners(result)
+            if name in result:
+                p = result[name]
+                p_evs = p.get("events", [])
+                for ev in events:
+                    if not any(ev.get("url") == e.get("url") for e in p_evs):
+                        p_evs.append(ev)
+                        updated += 1
+            else:
+                result[name] = {
+                    "kind": kind,
+                    "role_title": f"{role} ({cat})" if cat else role,
+                    "org": "",
+                    "military": "",
+                    "birth_desc": "",
+                    "events": events
+                }
+                added += 1
 
-    # 5. 언론인 (기자, 앵커, 논설위원)
-    load_reporters(result)
+        print(f"Discovered figures update: added {added} new people, updated {updated} events.")
+    except Exception as e:
+        print(f"Warning: load discovered figures failed: {e}")
 
-    # 6. 위키데이터 & 글로벌 레지스트리 (경제, 문화, 학계 등 전수 연계)
-    load_registry_index(result)
+
+def enrich_recent_events_from_today(result):
+    """오늘의 뉴스(data/today.json)에서 실시간 인물 언급 활동을 타임라인에 누적"""
+    today_path = os.path.join(DATA_DIR, "today.json")
+    if not os.path.exists(today_path):
+        return
+
+    print("Enriching live timelines from data/today.json issues...")
+    try:
+        with open(today_path, "r", encoding="utf-8") as f:
+            tdata = json.load(f)
+
+        issues = tdata.get("issues", [])
+        now_dt = datetime.now().strftime("%Y-%m-%d")
+        added_evs = 0
+
+        for iss in issues:
+            title = iss.get("title", "")
+            iss_id = iss.get("id", "")
+            press = iss.get("press", "언론")
+            iss_url = f"https://pyw31337.github.io/news/issue/{iss_id}" if iss_id else ""
+
+            # 인물 매칭
+            for name, p in result.items():
+                if len(name) < 2 or not isinstance(p, dict):
+                    continue
+                if name in title:
+                    p_evs = p.get("events", [])
+                    norm_title = f"[오늘의 이슈] {title}"
+                    if not any(e.get("title") == norm_title for e in p_evs):
+                        p_evs.append({
+                            "d": now_dt,
+                            "typ": "article",
+                            "stage": "정치 활동" if p.get("kind") == "politician" else "사회 경력",
+                            "title": norm_title,
+                            "desc": f"{press} 등 주요 언론 보도 집중 조명 이슈",
+                            "status": "fact",
+                            "src": f"NewsBoard 오늘의 이슈 ({press})",
+                            "url": iss_url
+                        })
+                        p_evs.sort(key=lambda x: (x.get("d") or "9999", x.get("stage") or ""))
+                        added_evs += 1
+
+        print(f"Enriched {added_evs} live news events into people profiles.")
+    except Exception as e:
+        print(f"Warning: enrich today events failed: {e}")
+
+
+def main():
+    incremental = "--incremental" in sys.argv
+    mode_str = "Incremental Update" if incremental else "Full Database Build"
+    print("================================================================")
+    print(f"Who's Who Encyclopedia Pipeline: {mode_str}")
+    print("================================================================")
+
+    result = {}
+
+    if incremental and os.path.exists(OUT_FILE):
+        print(f"Loading existing database from {OUT_FILE}...")
+        try:
+            with open(OUT_FILE, "r", encoding="utf-8") as f:
+                result = json.load(f)
+            print(f"Loaded {len(result):,} existing entity profiles.")
+        except Exception as e:
+            print(f"Load failed ({e}), falling back to full build.")
+            incremental = False
+
+    if not incremental:
+        # 1. 정밀 검증 주요 인물 마스터 등록
+        for name, v in VERIFIED_PROFILES.items():
+            events = []
+            b_dt = v.get("birth_desc", "")
+            # 생년월일 추출
+            m_b = re.search(r"(\d{4}[-.]\d{2}[-.]\d{2})", b_dt)
+            b_date_str = m_b.group(1).replace(".", "-") if m_b else ""
+
+            if b_dt:
+                events.append({
+                    "d": b_date_str,
+                    "typ": "birth",
+                    "stage": "출생·성장",
+                    "title": f"출생 ({b_dt})",
+                    "desc": b_dt,
+                    "status": "fact",
+                    "src": "공적 인적사항 DB / 중앙선관위"
+                })
+
+            for ed in v.get("edu", []):
+                events.append({
+                    "d": ed["d"],
+                    "typ": "edu",
+                    "stage": "출생·성장" if any(k in ed["title"] for k in ["초등", "국민학교", "중학교"]) else "학업",
+                    "title": ed["title"],
+                    "desc": ed.get("desc", ""),
+                    "status": "fact",
+                    "src": "공적 학력증명 / 학교생활기록부"
+                })
+
+            if v.get("mil_event"):
+                me = v["mil_event"]
+                events.append({
+                    "d": me["d"],
+                    "typ": "military",
+                    "stage": "병역",
+                    "title": me["title"],
+                    "desc": me.get("desc", ""),
+                    "status": "fact",
+                    "src": "병무청 병적증명서 / 선관위 병역공개자료"
+                })
+
+            for cr in v.get("careers", []):
+                typ = "career"
+                if any(k in cr["title"] for k in ["취임", "역임", "임명"]):
+                    typ = "office"
+                elif any(k in cr["title"] for k in ["당선", "출마"]):
+                    typ = "election"
+                elif any(k in cr["title"] for k in ["창업", "설립", "개발", "인수", "발표"]):
+                    typ = "business"
+                elif any(k in cr["title"] for k in ["판결", "사법시험", "합격"]):
+                    typ = "ruling"
+
+                events.append({
+                    "d": cr["d"],
+                    "typ": typ,
+                    "stage": cr.get("stage", "사회 경력"),
+                    "title": cr["title"],
+                    "desc": cr.get("desc", ""),
+                    "status": "fact",
+                    "src": "공적 관보 / 언론 보도 / 전자공시"
+                })
+
+            events.sort(key=lambda x: (x.get("d") or "9999", x.get("stage") or ""))
+
+            result[name] = {
+                "kind": v.get("kind", "public"),
+                "role_title": v.get("role_title", ""),
+                "org": v.get("org", ""),
+                "military": v.get("military", ""),
+                "birth_desc": v.get("birth_desc", ""),
+                "events": events
+            }
+
+    if not incremental:
+        # 2. 국회의원 3,296명
+        load_politicians_archive(result)
+
+        # 3. 법조인 (대법관, 헌법재판관, 각급 판사)
+        load_legal_people(result)
+
+        # 4. 지방선거 당선인 (전국 광역/기초단체장, 교육감)
+        load_gov_winners(result)
+
+        # 5. 언론인 (기자, 앵커, 논설위원)
+        load_reporters(result)
+
+        # 6. 위키데이터 & 글로벌 레지스트리 (경제, 문화, 학계 등 전수 연계)
+        load_registry_index(result)
+
+    # 7. 뉴스 기사 자동 발견 신규 인물 및 오늘 이슈 라이브 누적 (풀/증분 공통 실행)
+    load_discovered_figures(result)
+    enrich_recent_events_from_today(result)
 
     # 직군별 통계 집계
     stats = Counter(p.get("kind", "unknown") for p in result.values() if isinstance(p, dict))
