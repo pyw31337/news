@@ -10,10 +10,9 @@ permissions:
   pages: write
   id-token: write
 
-# collect-news와 같은 그룹: 두 배포가 동시에 돌아 서로 덮어쓰지 않도록 차례로 실행
 concurrency:
-  group: collect
-  cancel-in-progress: false
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -66,3 +65,5 @@ jobs:
           path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          timeout: 1800000
