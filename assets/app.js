@@ -2909,29 +2909,29 @@ function renderProfFactsHtml(pDetail, aDetail){
 function extractEntityMilestones(name, arc, pol){
   const PRESETS = {
     '이재명': [
-      { y: '1964', title: '출생 (유년기)', sub: '경상북도 안동군 예안면 삼계리 1206 출생', icon: '👶', tag: '기반 형성', img: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=300&auto=format&fit=crop&q=60' },
-      { y: '1976', title: '소년공 시절', sub: '성남 상대원공단 대양실업·오리엔트 시계공장 프레스 노동자', icon: '🏭', tag: '노동 현장', img: 'https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?w=300&auto=format&fit=crop&q=60' },
-      { y: '1986', title: '사법시험 합격 & 인권변호사', sub: '제28회 사법시험 합격, 사법연수원 18기 수료 후 성남 인권변호사 개업', icon: '⚖️', tag: '시민 운동', img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=300&auto=format&fit=crop&q=60' },
-      { y: '2010', title: '성남시장 당선', sub: '민선 5·6기 경기도 성남시장 (모라토리엄 조기 극복 및 3대 무상복지 도입)', icon: '🏛️', tag: '지방 자치', img: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?w=300&auto=format&fit=crop&q=60' },
-      { y: '2018', title: '경기도지사 취임', sub: '제35대 경기도지사 (청년기본소득, 계곡 불법시설 정비, 지역화폐 전국화 견인)', icon: '🌟', tag: '광역 행정', img: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=300&auto=format&fit=crop&q=60' },
-      { y: '2022', title: '제20대 대선 후보 & 국회의원', sub: '제20대 대통령 선거 득표율 47.83% 기록, 인천 계양구을 국회의원 당선', icon: '🗳️', tag: '의정 진출', img: 'https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=300&auto=format&fit=crop&q=60' },
-      { y: '2025', title: '제21대 대한민국 대통령', sub: '대한민국 제21대 대통령 당선인 (국가원수 및 행정부 수반)', icon: '🇰🇷', tag: '국정 총괄', img: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=300&auto=format&fit=crop&q=60' }
+      { y: '1964', title: '출생 (유년기)', sub: '경상북도 안동군 예안면 삼계리 1206 출생', icon: '👶', tag: '기반 형성' },
+      { y: '1976', title: '소년공 시절', sub: '성남 상대원공단 대양실업·오리엔트 시계공장 프레스 노동자', icon: '🏭', tag: '노동 현장' },
+      { y: '1986', title: '사법시험 합격 & 인권변호사', sub: '제28회 사법시험 합격, 사법연수원 18기 수료 후 성남 인권변호사 개업', icon: '⚖️', tag: '시민 운동' },
+      { y: '2010', title: '성남시장 당선', sub: '민선 5·6기 경기도 성남시장 (모라토리엄 조기 극복 및 3대 무상복지 도입)', icon: '🏛️', tag: '지방 자치' },
+      { y: '2018', title: '경기도지사 취임', sub: '제35대 경기도지사 (청년기본소득, 계곡 불법시설 정비, 지역화폐 전국화 견인)', icon: '🌟', tag: '광역 행정' },
+      { y: '2022', title: '제20대 대선 후보 & 국회의원', sub: '제20대 대통령 선거 득표율 47.83% 기록, 인천 계양구을 국회의원 당선', icon: '🗳️', tag: '의정 진출' },
+      { y: '2025', title: '제21대 대한민국 대통령', sub: '대한민국 제21대 대통령 당선인 (국가원수 및 행정부 수반)', icon: '🇰🇷', tag: '국정 총괄' }
     ],
     '한동훈': [
-      { y: '1973', title: '출생', sub: '서울특별시 서초구 출생', icon: '👶', tag: '성장기', img: '' },
-      { y: '1995', title: '사법시험 합격', sub: '제37회 사법시험 합격, 사법연수원 27기 수료', icon: '⚖️', tag: '법조계', img: '' },
-      { y: '2001', title: '검사 임관', sub: '서울지검, 대검 중수부, 서울중앙지검 3차장', icon: '💼', tag: '검찰 특수수사', img: '' },
-      { y: '2022', title: '법무부 장관 취임', sub: '대한민국 제69대 법무부장관 취임', icon: '🏛️', tag: '국무위원', img: '' },
-      { y: '2023', title: '국민의힘 비대위원장', sub: '국민의힘 비상대책위원장 취임 및 총선 지휘', icon: '🚩', tag: '정계 입문', img: '' },
-      { y: '2024', title: '국민의힘 당대표', sub: '전당대회 과반 득표로 집권여당 대표 선출', icon: '🌟', tag: '정당 대표', img: '' }
+      { y: '1973', title: '출생', sub: '서울특별시 서초구 출생', icon: '👶', tag: '성장기' },
+      { y: '1995', title: '사법시험 합격', sub: '제37회 사법시험 합격, 사법연수원 27기 수료', icon: '⚖️', tag: '법조계' },
+      { y: '2001', title: '검사 임관', sub: '서울지검, 대검 중수부, 서울중앙지검 3차장', icon: '💼', tag: '검찰 특수수사' },
+      { y: '2022', title: '법무부 장관 취임', sub: '대한민국 제69대 법무부장관 취임', icon: '🏛️', tag: '국무위원' },
+      { y: '2023', title: '국민의힘 비대위원장', sub: '국민의힘 비상대책위원장 취임 및 총선 지휘', icon: '🚩', tag: '정계 입문' },
+      { y: '2024', title: '국민의힘 당대표', sub: '전당대회 과반 득표로 집권여당 대표 선출', icon: '🌟', tag: '정당 대표' }
     ],
     '조국': [
-      { y: '1965', title: '출생', sub: '부산광역시 서구 동대신동 출생', icon: '👶', tag: '성장기', img: '' },
-      { y: '1992', title: '학계 및 형법 연구', sub: '울산대 법대 교수, 참여연대 사법감시센터 소장', icon: '📚', tag: '학문·시민사회', img: '' },
-      { y: '2001', title: '서울대학교 법대 교수', sub: '서울대 법과대학·법학전문대학원 교수', icon: '🎓', tag: '교수 시절', img: '' },
-      { y: '2017', title: '대통령비서실 민정수석', sub: '문재인 정부 초대 대통령비서실 민정수석비서관', icon: '🏛️', tag: '청와대', img: '' },
-      { y: '2019', title: '법무부 장관 취임', sub: '대한민국 제66대 법무부장관 취임', icon: '⚖️', tag: '사법 개혁', img: '' },
-      { y: '2024', title: '조국혁신당 창당 & 국회의원', sub: '조국혁신당 창당 대표, 제22대 비례대표 국회의원', icon: '🚩', tag: '의회 진출', img: '' }
+      { y: '1965', title: '출생', sub: '부산광역시 서구 동대신동 출생', icon: '👶', tag: '성장기' },
+      { y: '1992', title: '학계 및 형법 연구', sub: '울산대 법대 교수, 참여연대 사법감시센터 소장', icon: '📚', tag: '학문·시민사회' },
+      { y: '2001', title: '서울대학교 법대 교수', sub: '서울대 법과대학·법학전문대학원 교수', icon: '🎓', tag: '교수 시절' },
+      { y: '2017', title: '대통령비서실 민정수석', sub: '문재인 정부 초대 대통령비서실 민정수석비서관', icon: '🏛️', tag: '청와대' },
+      { y: '2019', title: '법무부 장관 취임', sub: '대한민국 제66대 법무부장관 취임', icon: '⚖️', tag: '사법 개혁' },
+      { y: '2024', title: '조국혁신당 창당 & 국회의원', sub: '조국혁신당 창당 대표, 제22대 비례대표 국회의원', icon: '🚩', tag: '의회 진출' }
     ]
   };
   if(PRESETS[name]) return PRESETS[name];
@@ -2949,8 +2949,7 @@ function extractEntityMilestones(name, arc, pol){
           title: e.title,
           sub: e.desc || e.stage || '',
           icon: e.typ === 'birth' ? '👶' : e.typ === 'edu' ? '🎓' : e.typ === 'elect' ? '🏛️' : '💼',
-          tag: e.stage || '공적 기록',
-          img: ''
+          tag: e.stage || '공적 기록'
         });
       }
     });
@@ -2963,8 +2962,7 @@ function extractEntityMilestones(name, arc, pol){
       title: `제${a}대 국회의원`,
       sub: `${pol.district || ''} ${pol.party || ''} 소속`,
       icon: '🏛️',
-      tag: '의정 활동',
-      img: ''
+      tag: '의정 활동'
     })).filter(x => x.y);
   }
 
@@ -2979,27 +2977,39 @@ function renderMilestoneRoadmap(name, arc, pol){
   <section class="exec-milestone-roadmap" id="exec-milestones">
     <div class="emr-head">
       <div class="emr-head-left">
-        <span class="emr-tag">HISTORICAL CHRONOLOGY</span>
-        <h3 class="emr-title">생애 주요 역사적 전환점 및 핵심 마일스톤 연표</h3>
+        <span class="emr-tag">HISTORICAL TIMELINE & MILESTONES</span>
+        <h3 class="emr-title">시대별 주요 생애 전환점 및 공적 마일스톤 연표</h3>
       </div>
-      <span class="emr-hint">좌우로 부드럽게 스크롤하여 주요 전환점을 확인할 수 있습니다 ↔</span>
+      <span class="emr-hint">좌우 스크롤을 통해 주요 전환점을 확인할 수 있습니다 ↔</span>
     </div>
-    <div class="emr-track-wrap">
-      <div class="emr-track-line"></div>
-      <div class="emr-track">
+    <div class="emr-board">
+      <div class="emr-board-track">
         ${milestones.map((m, idx) => `
-          <div class="emr-node" onclick="const s=document.querySelector('#sec-lifetl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}" title="${esc(m.y)}년: ${esc(m.title)}">
-            <div class="emr-node-thumb" ${m.img ? `style="background-image:url('${esc(m.img)}')"` : ''}>
-              ${m.img ? '' : `<span class="emr-thumb-ic">${m.icon || '📌'}</span>`}
-              <span class="emr-thumb-tag">${esc(m.tag || '역사적 기록')}</span>
+          <div class="emr-step ${idx === milestones.length - 1 ? 'is-latest' : ''}" onclick="const s=document.querySelector('#sec-lifetl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}" title="${esc(m.y)}: ${esc(m.title)}">
+            <!-- 1단: 대형 볼드 연도 & 헤드라인 타이틀 (시안 2 상단 규격) -->
+            <div class="emr-step-top">
+              <span class="emr-step-year">${esc(m.y)}</span>
+              <strong class="emr-step-title">${esc(m.title)}</strong>
             </div>
-            <div class="emr-node-meta">
-              <div class="emr-node-year-row">
-                <span class="emr-year">${esc(m.y)}</span>
-                <span class="emr-icon">${m.icon || '📌'}</span>
+
+            <!-- 2단: 수평선 축 & 정밀 도트 인디케이터 (시안 2 중앙 규격) -->
+            <div class="emr-step-axis">
+              <div class="emr-step-line-before"></div>
+              <div class="emr-step-dot ${idx === milestones.length - 1 ? 'is-active' : ''}">
+                <span class="emr-dot-core"></span>
               </div>
-              <strong class="emr-node-title">${esc(m.title)}</strong>
-              <p class="emr-node-sub">${esc(m.sub)}</p>
+              <div class="emr-step-line-after"></div>
+            </div>
+
+            <!-- 3단: 에디토리얼 아카이브 카드 (스톡 사진 없음! 공식 심볼 + 풀텍스트) -->
+            <div class="emr-step-card">
+              <div class="emr-card-header">
+                <span class="emr-card-tag">${esc(m.tag || '공적 기록')}</span>
+                <span class="emr-card-badge-icon">${m.icon || '📌'}</span>
+              </div>
+              <div class="emr-card-body">
+                <p class="emr-card-text">${esc(m.sub)}</p>
+              </div>
             </div>
           </div>
         `).join('')}
