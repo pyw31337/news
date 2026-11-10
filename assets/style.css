@@ -3094,6 +3094,72 @@ details[open] .dfs-toggle svg{
   }
 }
 
+/* 전폭 와이드 대시보드 레이아웃 (시안 1 규격) */
+.exec-full-dash{
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.exec-bottom-side-bar{
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 2px solid #e2e8f0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+.exec-bottom-side-bar .sec{
+  margin-top: 0 !important;
+}
+
+/* 시안 1 스타일: 카드 배경과 여백, 보더의 극대화된 정갈함 */
+body.view-entity .card,
+body.view-entity .card.pad,
+body.view-entity .dossier-spec-card{
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.02) !important;
+  padding: 24px 28px !important;
+}
+
+/* 시안 1 스타일: 2열 정렬 헤드라인과 디바이더 */
+.dossier-sec-head{
+  border-bottom: 2px solid #0f172a !important;
+  padding-bottom: 12px !important;
+  margin-bottom: 20px !important;
+}
+.dsh-title{
+  font-size: 1.3rem !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  letter-spacing: -0.5px !important;
+}
+
+/* 가족 카드 그리드 반응형 강화 */
+.family-spec-grid{
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+  gap: 14px !important;
+}
+.family-spec-item{
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 14px !important;
+  padding: 14px 16px !important;
+}
+.family-spec-item:hover{
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06) !important;
+}
+.fsi-party{
+  font-size: 0.74rem;
+  font-weight: 700;
+  margin-top: 4px;
+  display: block;
+}
+
 
 
 

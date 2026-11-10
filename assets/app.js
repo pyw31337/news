@@ -2199,22 +2199,23 @@ function renderFamilySection(p, arc, g){
         const tagCol=ARC_REL[e.typ]?.[1]||'#d6336c';
         const isFam=node.kind==='family'||otherId.startsWith('fam_')||otherId.startsWith('ljm_')||otherId.startsWith('ysy_')||otherId.startsWith('hdh_')||otherId.startsWith('jg_')||otherId.startsWith('wd:');
         return `<div class="family-spec-item">
-          <div class="fsi-head">
-            <span class="fsi-tag" style="background:${tagCol}">${esc(relLabel)}</span>
-            <strong class="fsi-name">${isFam?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(node.name)}" target="_blank" rel="noopener">${esc(node.name)} ${dossierSvg('external', 11)}</a>`:`<a href="entity/${encodeURIComponent(node.name)}">${esc(node.name)}</a>`}</strong>
+          <div class="fsi-avatar" style="background:${tagCol}15;color:${tagCol}">${dossierSvg('user', 18)}</div>
+          <div class="fsi-meta">
+            <span class="fsi-role" style="color:${tagCol}">${esc(relLabel)}</span>
+            <strong class="fsi-name">${isFam?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(node.name)}" target="_blank" rel="noopener">${esc(node.name)} ${dossierSvg('external', 10)}</a>`:`<a href="entity/${encodeURIComponent(node.name)}">${esc(node.name)}</a>`}</strong>
+            ${node.desc?`<p class="fsi-desc">${esc(node.desc)}</p>`:''}
+            ${node.party?`<span class="fsi-party" style="color:${partyTheme(node.party)?.color||'#8189a3'}">${esc(node.party)}</span>`:''}
           </div>
-          ${node.desc?`<p class="fsi-desc">${esc(node.desc)}</p>`:''}
-          ${node.party?`<span class="fsi-party" style="color:${partyTheme(node.party)?.color||'#8189a3'}">${esc(node.party)}</span>`:''}
-          <small class="fsi-src">${esc(e.src||'공직자 재산등록 고보 / 공식 인적 기록')}</small>
         </div>`;
       }).join('')}
       ${familyEvents.map(fe=>`
-        <div class="family-spec-item event-item">
-          <div class="fsi-head">
-            <span class="fsi-tag" style="background:#475569">가족 기록</span>
+        <div class="family-spec-item">
+          <div class="fsi-avatar" style="background:#47556915;color:#475569">${dossierSvg('bio', 18)}</div>
+          <div class="fsi-meta">
+            <span class="fsi-role" style="color:#475569">가족 기록</span>
             <strong class="fsi-name">${esc(fe.title)}</strong>
+            <p class="fsi-desc">${esc(fDate(fe.d))} · ${esc(fe.src||'')}</p>
           </div>
-          <p class="fsi-desc">${esc(fDate(fe.d))} · ${esc(fe.src||'')}</p>
         </div>
       `).join('')}
     </div>`;
@@ -2231,29 +2232,31 @@ function renderFamilySection(p, arc, g){
 
   return `
   <section class="dossier-sec" id="sec-network">
-    <header class="dossier-sec-head">
+    <div class="dossier-sec-head">
       <div class="dsh-left">
-        <span class="dsh-tag">DOSSIER / 04 NETWORK & FAMILY</span>
-        <h2 class="dsh-title">${dossierSvg('network', 18)} 가족 관계 및 인맥·동문 네트워크</h2>
+        <span class="dsh-kicker">DOSSIER 04 / NETWORK & FAMILY</span>
+        <h3 class="dsh-title">${dossierSvg('network', 18)} 가족 관계 및 인맥·동문 네트워크</h3>
       </div>
-      ${g&&g.edges&&g.edges.length?`<span class="dsh-badge">${g.edges.length}개 관계망 연결</span>`:''}
-    </header>
+      ${g&&g.edges&&g.edges.length?`<span class="dsh-note">${g.edges.length}개 관계망 연결 분석</span>`:''}
+    </div>
 
     <div class="dossier-spec-card">
-      <div class="spec-subhead">
-        <h3 class="spec-subtitle">${dossierSvg('user', 14)} 가족 직계 및 주요 친인척 현황</h3>
+      <div style="margin-bottom:14px;display:flex;align-items:center;gap:6px">
+        <strong style="font-size:.88rem;color:#0f172a;display:inline-flex;align-items:center;gap:6px">
+          ${dossierSvg('user', 14)} 직계 가족 및 핵심 친인척 현황
+        </strong>
       </div>
       ${content}
 
       ${g&&g.edges&&g.edges.length?`
-      <details class="dossier-fold" id="fold-network" open style="margin-top:16px">
+      <details class="dossier-fold" id="fold-network" style="margin-top:16px">
         <summary class="dossier-fold-summary">
           <div class="dfs-left">
             ${dossierSvg('network', 15)}
             <span>인터랙티브 인맥·동문·지역 관계망 네트워크 그래프</span>
             <mark class="dfs-cnt">${g.edges.length}개 노드 연결</mark>
           </div>
-          <span class="dfs-toggle">관계망 접기/펼치기 ${dossierSvg('chevron-down', 13)}</span>
+          <span class="dfs-toggle">관계망 열기/접기 ${dossierSvg('chevron-down', 13)}</span>
         </summary>
         <div class="dossier-fold-body" style="padding-top:12px">
           ${renderArcGraph(g, p?.name)}
@@ -3737,41 +3740,39 @@ function renderEntityDashboard(n, e, preloadedRes){
     </section>
     <div id="exec-milestone-wrap">${renderMilestoneRoadmap(e.name, preloadedRes?.arc, pol)}</div>
     <div id="exec-kpi-strip-wrap">${renderExecKpiStrip(e, pol, tl, preloadedRes?.pol)}</div>
-    <div class="exec-dash-grid">
-      <div class="exec-main-col">
-        <div id="pol-dashboard-container"><div style="text-align:center;padding:16px;color:var(--mute);font-size:.84rem">인물 상세 데이터베이스(활동·재산·가족·언행·사건)를 불러오는 중…</div></div>
-        <section class="dossier-sec" id="sec-newstl">
-          <div class="dossier-sec-head">
-            <div class="dsh-left">
-              <span class="dsh-kicker">DOSSIER 08 / NEWS & MEDIA ARCHIVE</span>
-              <h3 class="dsh-title">${dossierSvg('news', 18)} 시대별 보도량 및 실시간 뉴스 타임라인</h3>
-            </div>
-            <span class="dsh-note">뉴스 수집 및 분석 아카이브</span>
+    <div class="exec-full-dash">
+      <div id="pol-dashboard-container"><div style="text-align:center;padding:16px;color:var(--mute);font-size:.84rem">인물 상세 데이터베이스(활동·재산·가족·언행·사건)를 불러오는 중…</div></div>
+      <section class="dossier-sec" id="sec-newstl">
+        <div class="dossier-sec-head">
+          <div class="dsh-left">
+            <span class="dsh-kicker">DOSSIER 08 / NEWS & MEDIA ARCHIVE</span>
+            <h3 class="dsh-title">${dossierSvg('news', 18)} 시대별 보도량 및 실시간 뉴스 타임라인</h3>
           </div>
-          <div class="card pad" style="padding:14px 16px" id="era"></div>
-          <details class="dossier-fold" id="fold-newstl" open style="margin-top:14px">
-            <summary class="dossier-fold-summary">
-              <div class="dfs-left">
-                ${dossierSvg('news', 15)}
-                <span>뉴스 기사 타임라인 상세 피드</span>
-                <mark class="dfs-cnt">${tl.length}건</mark>
-              </div>
-              <span class="dfs-toggle">기사 피드 접기/펼치기 ${dossierSvg('chevron-down', 13)}</span>
-            </summary>
-            <div class="dossier-fold-body">
-              <div id="etl-filter-banner" style="display:none;align-items:center;justify-content:space-between;padding:10px 14px;background:#f0f7ff;border:1px solid #bfdbfe;border-radius:10px;margin-bottom:12px;font-size:.82rem">
-                <span id="etl-filter-text"></span>
-                <button type="button" id="etl-filter-reset" style="border:none;background:#2563eb;color:#fff;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer">전체 기간 보기</button>
-              </div>
-              <div style="margin-bottom:12px">${sec(esc(e.name)+' 뉴스 타임라인','Timeline','<div class="zoom" id="tz"><button data-z="hour">시간</button><button data-z="day" class="on">일</button><button data-z="month">월</button><button data-z="year">시대</button></div>','clock')}</div>
-              <div class="vt" id="etl"></div>
+          <span class="dsh-note">뉴스 수집 및 분석 아카이브</span>
+        </div>
+        <div class="card pad" style="padding:14px 16px" id="era"></div>
+        <details class="dossier-fold" id="fold-newstl" open style="margin-top:14px">
+          <summary class="dossier-fold-summary">
+            <div class="dfs-left">
+              ${dossierSvg('news', 15)}
+              <span>뉴스 기사 타임라인 상세 피드</span>
+              <mark class="dfs-cnt">${tl.length}건</mark>
             </div>
-          </details>
-        </section>
-      </div>
-      <aside class="exec-side-col">
+            <span class="dfs-toggle">기사 피드 접기/펼치기 ${dossierSvg('chevron-down', 13)}</span>
+          </summary>
+          <div class="dossier-fold-body">
+            <div id="etl-filter-banner" style="display:none;align-items:center;justify-content:space-between;padding:10px 14px;background:#f0f7ff;border:1px solid #bfdbfe;border-radius:10px;margin-bottom:12px;font-size:.82rem">
+              <span id="etl-filter-text"></span>
+              <button type="button" id="etl-filter-reset" style="border:none;background:#2563eb;color:#fff;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer">전체 기간 보기</button>
+            </div>
+            <div style="margin-bottom:12px">${sec(esc(e.name)+' 뉴스 타임라인','Timeline','<div class="zoom" id="tz"><button data-z="hour">시간</button><button data-z="day" class="on">일</button><button data-z="month">월</button><button data-z="year">시대</button></div>','clock')}</div>
+            <div class="vt" id="etl"></div>
+          </div>
+        </details>
+      </section>
+      <div class="exec-bottom-side-bar">
         ${asideContent}
-      </aside>
+      </div>
     </div>
   </div>`;
 
@@ -4701,7 +4702,24 @@ function settings(){
   app.querySelectorAll('[data-fs]').forEach(x=>x.onclick=()=>{const v=x.dataset.fs;S.fs=v==='0'?100:Math.max(85,Math.min(130,S.fs+(v==='+'?5:-5)));saveS();draw()})};draw();
 }
 load().catch(()=>app.innerHTML='<div class="loading">잠시 후 다시 시도해 주세요. 소식을 불러오는 중 문제가 생겼어요.</div>');
-if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+if('serviceWorker' in navigator){
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').then(reg => {
+      reg.update().catch(()=>{});
+      reg.addEventListener('updatefound', () => {
+        const newWorker = reg.installing;
+        if(newWorker){
+          newWorker.addEventListener('statechange', () => {
+            if(newWorker.state === 'installed' && navigator.serviceWorker.controller){
+              // 새 캐시 버전이 등록되면 이전 캐시를 비우고 자동 갱신
+              window.location.reload();
+            }
+          });
+        }
+      });
+    }).catch(()=>{});
+  });
+}
 
 /* v6 공식 데이터: 한국은행 ECOS 지표·재정경제부 보도자료(마켓), OpenDART 공시(기업 타임라인) */
 var O=null,BR=null;
