@@ -296,7 +296,70 @@ function line(v,w=120,h=28,col='#ff4d2e',meta={}){if(!v||v.length<2)return'';con
 function sec(t,sub,more='',icon=''){return`<div class="sec"><h2><small>${sub}</small>${icon?ic(icon,'h'):''}${t}</h2>${more}</div>`}
 /* ---------- 타입별 UI 컴포넌트 ---------- */
 const host=u=>{try{return new URL(u).hostname}catch(x){return''}};
-const plogo=(name,url,cls='pl')=>{const f=PL[name]||PL[host(url).replace(/^www\./,'')],bd=f&&(PL._b||{})[f];return f?`<img class="${cls}${bd?' b':''}" src="assets/press/${bd||f}" alt="" loading="lazy" width="14" height="14">`:`<i class="${cls} mono" style="--h:${[...String(name)].reduce((a,c)=>a+c.charCodeAt(0),0)%360}" aria-hidden="true">${esc(String(name||'?').replace(/^[\s\[(\'"“‘]+/,'')[0]||'?')}</i>`};
+const getPressLogoFile = (name, url='') => {
+  if(!name && !url) return null;
+  const n = String(name || '').trim();
+  if(PL[n]) return PL[n];
+  if(url){
+    const h = host(url).replace(/^www\./, '');
+    if(PL[h]) return PL[h];
+  }
+  if(/충주방송|청주방송|cjb/i.test(n)) return PL['cjb.co.kr'] || 'cjb_co_kr.webp';
+  if(/기자협회/i.test(n)) return PL['한국기자협회'] || 'journalist_or_kr.webp';
+  if(/오마이뉴스|ohmynews/i.test(n)) return PL['오마이뉴스'] || 'ohmynews_com.webp';
+  if(/연합뉴스TV/i.test(n)) return PL['연합뉴스TV'] || 'yonhapnewstv_co_kr.webp';
+  if(/연합뉴스/i.test(n)) return PL['연합뉴스'] || 'yna_co_kr.webp';
+  if(/YTN/i.test(n)) return PL['YTN'] || 'ytn_co_kr.webp';
+  if(/KBS/i.test(n)) return PL['KBS'] || 'news_kbs_co_kr.webp';
+  if(/MBC/i.test(n)) return PL['MBC'] || 'imnews_imbc_com.webp';
+  if(/SBS/i.test(n)) return PL['SBS'] || 'news_sbs_co_kr.webp';
+  if(/JTBC/i.test(n)) return PL['JTBC'] || 'news_jtbc_co_kr.webp';
+  if(/TV조선/i.test(n)) return PL['TV조선'] || 'tvchosun_com.webp';
+  if(/MBN/i.test(n)) return PL['MBN'] || 'mbn_co_kr.webp';
+  if(/채널A/i.test(n)) return PL['채널A'] || 'ichannela_com.webp';
+  if(/조선일보|주간조선|조선비즈/i.test(n)) return PL['조선일보'] || 'chosun_com.webp';
+  if(/중앙일보|중앙SUNDAY/i.test(n)) return PL['중앙일보'] || 'joongang_co_kr.webp';
+  if(/동아일보|동아사이언스/i.test(n)) return PL['동아일보'] || 'donga_com.webp';
+  if(/한겨레/i.test(n)) return PL['한겨레'] || 'hani_co_kr.webp';
+  if(/경향신문|주간경향/i.test(n)) return PL['경향신문'] || 'khan_co_kr.webp';
+  if(/매일경제|매경/i.test(n)) return PL['매일경제'] || 'mk_co_kr.webp';
+  if(/한국경제|한경/i.test(n)) return PL['한국경제'] || 'hankyung_com.webp';
+  if(/한국일보/i.test(n)) return PL['한국일보'] || 'hankookilbo_com.webp';
+  if(/서울신문/i.test(n)) return PL['서울신문'] || 'seoul_co_kr.webp';
+  if(/세계일보/i.test(n)) return PL['세계일보'] || 'segye_com.webp';
+  if(/국민일보/i.test(n)) return PL['국민일보'] || 'kmib_co_kr.webp';
+  if(/문화일보/i.test(n)) return PL['문화일보'] || 'munhwa_com.webp';
+  if(/뉴스1/i.test(n)) return PL['뉴스1'] || 'news1_kr.webp';
+  if(/뉴시스/i.test(n)) return PL['뉴시스'] || 'newsis_com.webp';
+  if(/뉴스핌/i.test(n)) return PL['뉴스핌'] || 'newspim_com.webp';
+  if(/데일리안/i.test(n)) return PL['데일리안'] || 'dailian_co_kr.webp';
+  if(/시사저널/i.test(n)) return PL['시사저널'] || 'sisajournal_com.webp';
+  if(/시사IN/i.test(n)) return PL['시사IN'] || 'sisain_co_kr.webp';
+  if(/노컷뉴스/i.test(n)) return PL['노컷뉴스'] || 'nocutnews_co_kr.webp';
+  if(/프레시안/i.test(n)) return PL['프레시안'] || 'pressian_com.webp';
+  if(/더팩트/i.test(n)) return PL['더팩트'] || 'tf_co_kr.webp';
+  if(/펜앤마이크/i.test(n)) return PL['펜앤마이크'] || 'pennmike_com.webp';
+  if(/뉴데일리/i.test(n)) return PL['뉴데일리'] || 'newdaily_co_kr.webp';
+  if(/정책브리핑/i.test(n)) return PL['대한민국 정책브리핑'] || 'korea_kr.webp';
+  if(/경인일보/i.test(n)) return PL['경인일보'] || 'kyeongin_com.webp';
+  if(/인천투데이/i.test(n)) return PL['인천투데이'] || 'incheontoday_com.webp';
+  if(/법률신문/i.test(n)) return PL['법률신문'] || 'lawtimes_co_kr.webp';
+  if(/AI타임스/i.test(n)) return PL['AI타임스'] || 'aitimes_com.webp';
+  if(/고발뉴스/i.test(n)) return PL['고발뉴스'] || 'gobalnews_com.webp';
+  if(/뉴스타파/i.test(n)) return PL['뉴스타파'] || 'newstapa_org.webp';
+  if(/브레이크뉴스/i.test(n)) return PL['브레이크뉴스'] || 'breaknews_com.webp';
+  if(/매일일보/i.test(n)) return PL['매일일보'] || 'm-i_kr.webp';
+  if(/더구루/i.test(n)) return PL['더구루'] || 'theguru_co_kr.webp';
+  if(/딜사이트/i.test(n)) return PL['딜사이트'] || 'dealsite_co_kr.webp';
+  if(/전기신문/i.test(n)) return PL['전기신문'] || 'electimes_com.webp';
+  if(/톱스타뉴스/i.test(n)) return PL['톱스타뉴스'] || 'topstarnews_net.webp';
+  if(/kbc/i.test(n)) return PL['kbc광주방송'] || 'ikbc_co_kr.webp';
+  if(/voa/i.test(n)) return PL['VOA'] || 'voakorea_com.webp';
+  if(/bbc/i.test(n)) return PL['BBC'] || 'bbc_co_uk.webp';
+  if(/로이터|reuters/i.test(n)) return PL['로이터'] || 'reuters_com.webp';
+  return null;
+};
+const plogo=(name,url,cls='pl')=>{const f=getPressLogoFile(name,url),bd=f&&(PL._b||{})[f];return f?`<img class="${cls}${bd?' b':''}" src="assets/press/${bd||f}" alt="" loading="lazy" width="14" height="14">`:`<i class="${cls} mono" style="--h:${[...String(name)].reduce((a,c)=>a+c.charCodeAt(0),0)%360}" aria-hidden="true">${esc(String(name||'?').replace(/^[\s\[(\'"“‘]+/,'')[0]||'?')}</i>`};
 const pp=(name,url)=>name?`<span class="pp">${plogo(name,url)}${esc(name)}</span>`:'';
 const ts=(t,rel)=>t?`<time class="ts" title="${esc(fDate(t,true))}">${rel?ago(t):fDate(t,true)}</time>`:'';
 const cnt=(n,icn,tip)=>`<span class="cnt" title="${tip||''}">${icn?ic(icn):''}${n}</span>`;
@@ -809,9 +872,10 @@ function eraChart(items, z, themeCol, pDetail){
     `;
   }).join('');
 
-  // Top Press symbols with tooltips
+  // Top Press symbols with tooltips (sort descending by report volume)
   const pMediaPress = pDetail?.media?.by_press || [];
-  const pressEntries = (pMediaPress.length ? pMediaPress : Object.entries(pressCounts)).slice(0, 16);
+  const sortedPressCounts = Object.entries(pressCounts).sort((a,b) => b[1] - a[1]);
+  const pressEntries = (pMediaPress.length ? pMediaPress : sortedPressCounts).slice(0, 16);
   const pressSummaryHtml = pressEntries.length ? `
     <div class="era-press-summary">
       <div class="eps-head">
