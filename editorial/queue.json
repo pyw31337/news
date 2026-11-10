@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-10",
-  "generated_at": "2026-11-10T20:33:36+09:00",
+  "generated_at": "2026-11-10T22:24:56+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,206 +27,8 @@
   },
   "candidates": [
     {
-      "issue_id": "id33f693a",
-      "title": "'반도체 저승사자' 또 경고…삼전닉스 목표가 대폭 낮췄다 [종목+]",
-      "category": "경제",
-      "rank": 4,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "글로벌 투자은행 모건스탠리의 숀 킴 연구원이 삼성전자와 SK하이닉스의 목표주가를 각각 대폭 낮추며 반도체 업황 둔화 경고를 다시 내놓았다.",
-        "(IB) 모건스탠리가 삼성전자와 SK하이닉스의 목표주가를 각각 19%와 38% 낮췄다.",
-        "보고서를 작성한 숀 킴...",
-        "지난 2021년 8월 ‘메모리, 겨울이 온다’라는 보고서에서 업황 악화를 경고했고, 2024년 9월에는 ‘겨울이...",
-        "‘반도체 저승사자’로 불리는 숀 킴 모건스탠리 애널리스트가 삼성전자(005930)와 SK하이닉스(000660)의 내년 영업이익 전망치를 높이면서도 목표주가는 각각 19%, 38% 낮췄다."
-      ],
-      "sources": [
-        {
-          "press": "munhwa.com",
-          "title": "“2028년 반도체호황 꺾…” 모건이 낮춘 삼닉 목표가",
-          "url": "https://n.news.naver.com/mnews/article/021/0002831833?sid=101"
-        },
-        {
-          "press": "sedaily.com",
-          "title": "‘K반도체 저승사자’, 삼성전자·SK하이닉스 목표가 최대 38% 낮췄다[줍...",
-          "url": "https://n.news.naver.com/mnews/article/011/0004680689?sid=101"
-        },
-        {
-          "press": "한국경제TV",
-          "title": "\"삼전·닉스 목표가 대폭 하향\"…'반도체 저승사자' 섬뜩한 경고",
-          "url": "https://n.news.naver.com/article/215/0001272260"
-        },
-        {
-          "press": "SBS Biz",
-          "title": "'반도체 저승사자' 모건스탠리, 삼전닉스 목표가 대폭 내렸다…\"28년 이후 반도체 공급 확대\"",
-          "url": "https://n.news.naver.com/article/374/0000542737"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "글로벌 투자은행 모건스탠리의 숀 킴 연구원이 삼성전자와 SK하이닉스의 목표주가를 각각 대폭 낮추며 반도체 업황 둔화 경고를 다시 내놓았다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "인공지능(AI) 투자에 힘입어 메모리..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "(IB) 모건스탠리가 삼성전자와 SK하이닉스의 목표주가를 각각 19%와 38% 낮췄다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "모건스탠리와 숀 킴 연구원이 삼성전자와 SK하이닉스의 목표주가를 각각 19%와 38% 낮추고 메모리 호황의 유통기한을 경고한 보도가 집중적으로 이어졌다. 과거 업황 악화를 맞혔던 이력이 부각되면서 투자자들…"
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ibfc7fdfa",
-      "title": "역대 절반은 올해 발동된 사이드카, 사라지나?…금융위 \"사이드카 하는 나라 찾기 어려워\"",
-      "category": "경제",
-      "rank": 3,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "미국 중간선거에서 민주당이 압승한 블루 쓰나미로 인해 데이터센터 차질 우려로 인해 지난주 급락했던 코스피가 10일 삼성전자와 SK하이닉스 등 반도체 대형주 중심으로 급반등하고 있다.",
-        "역대 절반은 올해 발동된 사이드카, 사라지나?…금융위 \"사이드카 하는 나라 찾기 어려워\"",
-        "김형년 두나무 부회장 “삼성전자·SK하이닉스 해외서 거래, 가슴 아프다”",
-        "“스타트업 키다리 아저씨”… 삼성전자, 14년간 1000곳 키웠다",
-        "“폭락 사흘 만에 매수 사이드카”…코스피 4.4% 급등, 5200선 탈환"
-      ],
-      "sources": [
-        {
-          "press": "TV조선",
-          "title": "역대 절반은 올해 발동된 사이드카, 사라지나?…금융위 \"사이드카 하는 나라 찾기 어려워\"",
-          "url": "https://n.news.naver.com/article/448/0000650171"
-        },
-        {
-          "press": "전자신문",
-          "title": "김형년 두나무 부회장 “삼성전자·SK하이닉스 해외서 거래, 가슴 아프다”",
-          "url": "https://n.news.naver.com/article/030/0003484190"
-        },
-        {
-          "press": "국민일보",
-          "title": "“스타트업 키다리 아저씨”… 삼성전자, 14년간 1000곳 키웠다",
-          "url": "https://v.daum.net/v/20261110184630276"
-        },
-        {
-          "press": "디지털데일리",
-          "title": "“폭락 사흘 만에 매수 사이드카”…코스피 4.4% 급등, 5200선 탈환",
-          "url": "https://n.news.naver.com/article/138/0002247973"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "미국 중간선거에서 민주당이 압승한 블루 쓰나미로 인해 데이터센터 차질 우려로 인해 지난주 급락했던 코스피가 10일 삼성전자와 SK하이닉스 등 반도체 대형주 중심으로 급반등하고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "이날 상승세는 삼성전자와 SK하이닉스 등 반도체 대형주가 이끌었다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "“스타트업 키다리 아저씨”… 삼성전자, 14년간 1000곳 키웠다"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i4a6f1fae",
-      "title": "“항상 불 꺼져 있었다”…젠슨 황 내연녀 회사도 실체 불분명",
+      "issue_id": "i1362d092",
+      "title": "4거래일 만에 반등…코스피·코스닥서 매수 사이드카",
       "category": "경제",
       "rank": 5,
       "priority_score": 37,
@@ -236,49 +38,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "젠슨 황의 장녀 매디슨 황이 두 사람이 다정하게 서있는 장면을 사진으로 찍어 주는 장면이 포착됐다.",
-        "집단소송 당한 ‘불륜’ 젠슨 황…시총 260조 증발에 분노 터졌다",
-        "이어 자녀들의 이름을 부르면서 \"여러분의 아빠는 끝까지 임무를 다한 자랑스러운 소방관이다.",
-        "'불륜 시인' 젠슨황에…트럼프 \"훌륭한 사람, 중국 순방 함께\" 젠슨 황 엔비디아 최고경영자(CEO)가 중국...",
-        "\"차라리 젠슨 황 내연녀가 스파이면 좋겠다\"…中 관영논객, 간첩설 일축"
+        "삼성전자와 SK하이닉스의 거래대금이 18.7% 감소했으며, 이는 코스피 급등과 대조적이다.",
+        "“코스피 21% 폭락한 줄”…개장 전 코스피 예상지수의 함정",
+        "김형년 두나무 부회장 “삼성전자·SK하이닉스 해외서 거래, 가슴 아프다”",
+        "美훈풍에 삼전·닉스 4∼6%↑…코스피·코스닥 ’매수 사이드카’",
+        "“스타트업 키다리 아저씨”… 삼성전자, 14년간 1000곳 키웠다"
       ],
       "sources": [
         {
-          "press": "중앙일보",
-          "title": "집단소송 당한 ‘불륜’ 젠슨 황…시총 260조 증발에 분노 터졌다",
-          "url": "https://n.news.naver.com/article/025/0003564099"
+          "press": "조선비즈",
+          "title": "“코스피 21% 폭락한 줄”…개장 전 코스피 예상지수의 함정",
+          "url": "https://n.news.naver.com/article/366/0001203803"
         },
         {
-          "press": "mbn.mk.co.kr",
-          "title": "내일 국무회의 앞두고 여야 정면충돌…\"탄핵 뿐\" vs \"막말 파티\" [짤e몽...",
-          "url": "https://n.news.naver.com/mnews/article/057/0001977368?sid=102"
+          "press": "전자신문",
+          "title": "김형년 두나무 부회장 “삼성전자·SK하이닉스 해외서 거래, 가슴 아프다”",
+          "url": "https://n.news.naver.com/article/030/0003484190"
         },
         {
-          "press": "세계일보",
-          "title": "\"차라리 젠슨 황 내연녀가 스파이면 좋겠다\"…中 관영논객, 간첩설 일축",
-          "url": "https://n.news.naver.com/article/022/0004173906"
+          "press": "연합뉴스TV",
+          "title": "美훈풍에 삼전·닉스 4∼6%↑…코스피·코스닥 ’매수 사이드카’",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9jRS1XR0E0MzhZcmZvbC0tYndjcXNySnZXRlRPME9iU3g4ZFl2djg2aVJzcm1ra2RLd2Jyd3BCcTRjRUxqakF4ZWVyWUx6TnJ3Qzh3LU5mWUd5NHk2M25LN0VwR2poU1U?oc=5"
         },
         {
-          "press": "중앙일보",
-          "title": "“항상 불 꺼져 있었다”…젠슨 황 내연녀 회사도 실체 불분명",
-          "url": "https://n.news.naver.com/article/025/0003564139"
+          "press": "국민일보",
+          "title": "“스타트업 키다리 아저씨”… 삼성전자, 14년간 1000곳 키웠다",
+          "url": "https://v.daum.net/v/20261110184630276"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "젠슨 황의 장녀 매디슨 황이 두 사람이 다정하게 서있는 장면을 사진으로 찍어 주는 장면이 포착됐다."
+          "evidence": "삼성전자와 SK하이닉스의 거래대금이 18.7% 감소했으며, 이는 코스피 급등과 대조적이다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "젠슨 황 불륜 ➜ 엔비디아 위험 ➜ 삼전닉스 위험 ➜ 글로벌 공급망 위험 ➜ 기업가치 폭락 ➜ 자산의 썰물 ..."
+          "evidence": "“SK하이닉스, 메모리 가격 하락해도 2029년 영업이익 290조 원”"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "집단소송 당한 ‘불륜’ 젠슨 황…시총 260조 증발에 분노 터졌다"
+          "evidence": "“코스피 21% 폭락한 줄”…개장 전 코스피 예상지수의 함정"
         },
         {
           "panel": 4,
@@ -289,6 +91,204 @@
       "visual_brief": {
         "scene": "reportage",
         "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ie6088157",
+      "title": "\"겨울 온다\" 경고한 모건스탠리 또…삼전닉스 목표가 줄줄이 하향",
+      "category": "경제",
+      "rank": 7,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "SK하이닉스의 목표주가를 기존 260만원에서 160만원으로 약 38% 하향 조정했다.",
+        "삼성전자 목표주가도...",
+        "이번 보고서를 작성한 모건스탠리의 숀 킴 연구원은 2021년 8월과 2024년 9월에도 반도체 업황 악화를 경고하는...",
+        "\"삼전·닉스 목표가 대폭 하향\"…'반도체 저승사자' 섬뜩한 경고",
+        "삼전닉스 급락은 \"과했다\"면서도…월가 두 거물이 엇갈린 이유"
+      ],
+      "sources": [
+        {
+          "press": "seouleconews.com",
+          "title": "\"삼전 30만9천원·닉스 160만원\"…모건스탠리 목표주가 또 낮춰",
+          "url": "http://www.seouleconews.com/news/articleView.html?idxno=94922"
+        },
+        {
+          "press": "한국경제TV",
+          "title": "\"삼전·닉스 목표가 대폭 하향\"…'반도체 저승사자' 섬뜩한 경고",
+          "url": "https://n.news.naver.com/article/215/0001272260"
+        },
+        {
+          "press": "머니투데이",
+          "title": "삼전닉스 급락은 \"과했다\"면서도…월가 두 거물이 엇갈린 이유",
+          "url": "https://n.news.naver.com/article/008/0005439193"
+        },
+        {
+          "press": "한국경제",
+          "title": "\"메모리 돈잔치 끝 보인다\"…삼전닉스 목표가 38% 하락 경고 [분석+]",
+          "url": "https://v.daum.net/v/20261110220231318"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "SK하이닉스의 목표주가를 기존 260만원에서 160만원으로 약 38% 하향 조정했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "\"메모리 돈잔치 끝 보인다\"…삼전닉스 목표가 38% 하락 경고 [분석+]"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "이번 보고서를 작성한 모건스탠리의 숀 킴 연구원은 2021년 8월과 2024년 9월에도 반도체 업황 악화를 경고하는..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i3ae24abe",
+      "title": "금융보안원도 해킹 뚫렸다…금융사 보안정보 유출 가능성",
+      "category": "IT",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "금융보안원이 해킹 공격을 받아 금융사 보안상태 관련 일부 정보가 유출된 것으로 10일 파악됐다.",
+        "이날 금융당국 등에 따르면 금융보안원은 전날 해킹 공격으로 일부 정보가 유출된 사실을 확인해 금융위원회 등 당국에...",
+        "[속보] 금융보안원도 해킹 당해…금융사 보안 평가 정보 일부 유출",
+        "금융보안원도 뚫렸다…금융사 보안정보 유출 가능성",
+        "금융보안원도 해킹…금융사 보안 데이터 유출 가능성"
+      ],
+      "sources": [
+        {
+          "press": "munhwa.com",
+          "title": "[속보]‘보안 담당인데…’ 금융보안원, 해킹으로 정보유출",
+          "url": "https://n.news.naver.com/mnews/article/021/0002831842?sid=101"
+        },
+        {
+          "press": "한겨레",
+          "title": "[속보] 금융보안원도 해킹 당해…금융사 보안 평가 정보 일부 유출",
+          "url": "https://n.news.naver.com/article/028/0002831605"
+        },
+        {
+          "press": "한국경제TV",
+          "title": "금융보안원도 뚫렸다…금융사 보안정보 유출 가능성",
+          "url": "https://n.news.naver.com/article/215/0001272331"
+        },
+        {
+          "press": "채널A",
+          "title": "금융보안원도 해킹…금융사 보안 데이터 유출 가능성",
+          "url": "https://n.news.naver.com/article/449/0000367067"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "금융보안원이 해킹 공격을 받아 금융사 보안상태 관련 일부 정보가 유출된 것으로 10일 파악됐다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "금융당국은 금융보안원에 사고 원인과 유출 경로를 면밀히 조사하고 추가 피해를 차단하도록 지시했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "10일 금융당국 등에 따르면 금융보안원은 지난 9일 유출 사실을 파악하고 금융위원회 등 관계 당국에 신고했다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "security",
+        "direction": "보안 관제·접속 흔적·차단 절차를 사용, 실제 피해자·공격자 묘사는 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
