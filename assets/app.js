@@ -2226,6 +2226,10 @@ function renderFamilySection(p, arc, g){
       <p><b>북한 잔류 가족 신변 보호:</b> 북한에 거주 중인 친족의 안전을 위해 관계 법령에 따라 비공개 보호 대상입니다.</p>
     </div>`;
   }else{
+    // 공직자 재산등록 고보 대상이 아니거나 관계망 데이터가 아예 없는 일반 인물인 경우 섹션 전체 숨김
+    if(!p?.assets?.records?.length && (!g || !g.edges || !g.edges.length)) {
+      return '';
+    }
     content=`<div class="pol-family-empty">
       <p>공직자윤리법 제12조에 따른 재산등록상 직계존비속 고지 정보 기준입니다. (독립생계 유지에 따른 고지거부 가족은 비공개됩니다)</p>
     </div>`;
@@ -2464,6 +2468,9 @@ function renderActivitySection(p, c){
   const sw=swA.filter(s=>s.kind!=='rename');
   const V=p.votes;
 
+  // 의정/입법 데이터가 전혀 없는 인물인 경우 타이틀/섹션 전체 숨김 처리
+  if(!bl && !terms.length && !sw.length && !V) return '';
+
   return `<section class="dossier-sec" id="sec-activity">
     <div class="dossier-sec-head">
       <div class="dsh-left">
@@ -2613,11 +2620,12 @@ function renderActivitySection(p, c){
 }
 
 function renderQuotesSection(p, id){
-  const md=p.media;
-  if(!md&&(!p.history||!p.history.length))return'';
-
-  const quotesList = md?.quotes || [];
+  const md=p?.media;
+  const quotesList = (md?.quotes && md.quotes.length) ? md.quotes : (p?.quotes || []);
   const topWords = md?.top_words || [];
+
+  // 발언 데이터가 없으면 타이틀/섹션 전체 숨김 처리 (데이터가 없는 빈 껍데기 타이틀 노출 방지)
+  if(!quotesList.length) return '';
 
   // 화제성 점수(Topic Buzz / Heat Score) 및 썸네일 산출
   const topWordMap = new Map();
