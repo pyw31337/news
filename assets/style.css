@@ -2780,5 +2780,320 @@ body.view-entity .pol-hbar-row .ph-name{
   }
 }
 
+/* ==========================================================================
+   시안 1 기반 The Modern Executive Briefing (Bloomberg & Apple HIG 스타일)
+   - 불필요한 박스 중첩 및 둔탁한 그림자 완전 제거
+   - 여백, 타이포그래피, 정밀 2열 스펙 시트(칼정렬) 중심의 미니멀 에디토리얼
+   - 라인 SVG 아이콘 시스템 통합
+   ========================================================================== */
+
+.dossier-sec{
+  margin-bottom: 36px;
+  scroll-margin-top: 80px;
+}
+.dossier-sec-head{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #0f172a;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.dsh-left{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.dsh-kicker{
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 1.2px;
+  color: #2563eb;
+  text-transform: uppercase;
+}
+.dsh-title{
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dsh-title svg{
+  color: #2563eb;
+  flex-shrink: 0;
+}
+.dsh-note{
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* 2열 칼정렬 스펙 시트 카드 */
+.dossier-spec-card{
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 22px 24px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+}
+.spec-sheet-grid{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.spec-row{
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 16px;
+  align-items: baseline;
+  border-bottom: 1px dashed #f1f5f9;
+  padding-bottom: 10px;
+}
+.spec-row:last-child{
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.spec-label{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #475569;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+}
+.spec-label svg{
+  color: #2563eb;
+  flex-shrink: 0;
+}
+.spec-val{
+  font-size: 0.88rem;
+  color: #0f172a;
+  line-height: 1.6;
+  word-break: keep-all;
+  font-weight: 550;
+  overflow-wrap: break-word;
+}
+
+/* 가족 관계 스펙 그리드 */
+.family-spec-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.family-spec-item{
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: all .15s ease;
+}
+.family-spec-item:hover{
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+}
+.fsi-avatar{
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: #3b82f6;
+  overflow: hidden;
+}
+.fsi-avatar svg{
+  width: 20px;
+  height: 20px;
+}
+.fsi-meta{
+  flex: 1;
+  min-width: 0;
+}
+.fsi-role{
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #2563eb;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.fsi-name{
+  font-size: 0.95rem;
+  font-weight: 850;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-bottom: 3px;
+}
+.fsi-desc{
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+/* 미니멀 에디토리얼 폴딩 상세 이력서 */
+.dossier-fold{
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  overflow: hidden;
+  margin-top: 14px;
+}
+.dossier-fold-summary{
+  background: #f8fafc;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background .15s ease;
+}
+.dossier-fold-summary::-webkit-details-marker{
+  display: none;
+}
+.dossier-fold-summary:hover{
+  background: #f1f5f9;
+}
+.dfs-left{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  font-weight: 850;
+  color: #0f172a;
+}
+.dfs-left svg{
+  color: #2563eb;
+  flex-shrink: 0;
+}
+.dfs-cnt{
+  font-size: 0.7rem;
+  font-weight: 800;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+.dfs-toggle{
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.76rem;
+  font-weight: 750;
+  color: #64748b;
+}
+.dfs-toggle svg{
+  transition: transform .2s ease;
+}
+details[open] .dfs-toggle svg{
+  transform: rotate(180deg);
+}
+.dossier-fold-body{
+  padding: 18px 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* 상단 탭 및 컨트롤 바 */
+.pol-dash-topbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0 20px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 12px;
+}
+.pol-dash-tabs{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.pol-dash-tabs button{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 750;
+  padding: 7px 13px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all .15s ease;
+}
+.pol-dash-tabs button:hover{
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+.pol-dash-tabs button.on{
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+.pol-dash-tabs button.on svg{
+  color: #38bdf8;
+}
+.pol-dash-fold-ctl{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.dossier-fold-hint{
+  font-size: 0.74rem;
+  color: #64748b;
+  font-weight: 600;
+}
+.pol-dash-fold-ctl button{
+  font-size: 0.74rem;
+  font-weight: 750;
+  padding: 5px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #334155;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+.pol-dash-fold-ctl button:hover{
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+@media (max-width: 640px){
+  .spec-row{
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .spec-label{
+    font-size: 0.74rem;
+    color: #64748b;
+  }
+  .family-spec-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 

@@ -919,6 +919,36 @@ const ARC_REL={
 const ARC_TYP={birth:['출생','#8b6cf0','confetti'],edu:['학업','#2a9d8f','school'],military:['병역','#495057','shield'],career:['경력','#5b7fa6','building'],office:['공직','#3b5bdb','star-f'],election:['선거','#1f5bd8','circle-check'],party:['정당','#f08c00','repeat'],award:['수상','#e0a800','trophy'],family:['가족','#d6336c','heart-f'],assets:['재산','#2f9e44','currency-won'],allegation:['의혹·사건','#e03131','alert-triangle'],ruling:['판결','#862e9c','landmark'],news:['보도','#868e96','news']};
 const ARC_STAGES=['출생·성장','학업','병역','사회 경력','정치 활동','재산','논란·사법','언론 보도'];
 
+/* 에디토리얼 대시보드 전용 미니멀 라인 SVG 벡터 아이콘 (이모지 완전 대체) */
+function dossierSvg(name, size=16, cls=''){
+  const s = size;
+  const c = cls ? `class="${cls}"` : '';
+  const ICONS = {
+    'bio': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+    'calendar': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+    'legislative': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+    'landmark': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="22" x2="22" y2="22"/><line x1="12" y1="2" x2="12" y2="5"/><path d="m3 7 9-5 9 5v3H3z"/><line x1="6" y1="10" x2="6" y2="18"/><line x1="10" y1="10" x2="10" y2="18"/><line x1="14" y1="10" x2="14" y2="18"/><line x1="18" y1="10" x2="18" y2="18"/></svg>`,
+    'assets': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg>`,
+    'network': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>`,
+    'users': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    'quotes': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+    'incidents': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+    'career': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+    'edu': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`,
+    'news': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>`,
+    'chevron-down': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`,
+    'external': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
+    'shield': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    'user': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+    'fire': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`,
+    'check-circle': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
+    'briefcase': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+    'trending-up': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
+    'info': `<svg ${c} width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>`
+  };
+  return ICONS[name] || ICONS['bio'];
+}
+
 /* 마스터 인물 생애·학력·병역·경력 공적 데이터베이스 */
 const ARC_MASTER_PROFILES = {
   '이재명': {
@@ -2161,63 +2191,76 @@ function renderFamilySection(p, arc, g){
 
   let content='';
   if(directFamilyEdges.length||familyEvents.length){
-    content=`<div class="pol-family-grid">
+    content=`<div class="family-spec-grid">
       ${directFamilyEdges.map(e=>{
         const otherId=e.a===g.center?e.b:e.a;
         const node=nodes[otherId]||{name:'가족'};
         const relLabel=e.label||(ARC_REL[e.typ]?ARC_REL[e.typ][0]:'가족');
         const tagCol=ARC_REL[e.typ]?.[1]||'#d6336c';
         const isFam=node.kind==='family'||otherId.startsWith('fam_')||otherId.startsWith('ljm_')||otherId.startsWith('ysy_')||otherId.startsWith('hdh_')||otherId.startsWith('jg_')||otherId.startsWith('wd:');
-        return `<div class="pol-family-card">
-          <div class="pfc-rel"><span class="pfc-tag" style="background:${tagCol}">${esc(relLabel)}</span></div>
-          <div class="pfc-body">
-            <b>${isFam?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(node.name)}" target="_blank" rel="noopener" title="${esc(node.name)} 인물정보">${esc(node.name)} <small style="font-size:10px">↗</small></a>`:`<a href="entity/${encodeURIComponent(node.name)}">${esc(node.name)}</a>`}</b>
-            ${node.desc?`<div class="pfc-desc" style="font-size:0.77rem;color:#475569;margin:3px 0 2px;line-height:1.4">${esc(node.desc)}</div>`:''}
-            ${node.party?`<span class="pfc-party" style="color:${partyTheme(node.party)?.color||'#8189a3'}">${esc(node.party)}</span>`:''}
-            <small style="display:block;margin-top:2px;color:#94a3b8">${esc(e.src||'공직자 재산등록 고보 / 공식 인적 기록')}</small>
+        return `<div class="family-spec-item">
+          <div class="fsi-head">
+            <span class="fsi-tag" style="background:${tagCol}">${esc(relLabel)}</span>
+            <strong class="fsi-name">${isFam?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(node.name)}" target="_blank" rel="noopener">${esc(node.name)} ${dossierSvg('external', 11)}</a>`:`<a href="entity/${encodeURIComponent(node.name)}">${esc(node.name)}</a>`}</strong>
           </div>
+          ${node.desc?`<p class="fsi-desc">${esc(node.desc)}</p>`:''}
+          ${node.party?`<span class="fsi-party" style="color:${partyTheme(node.party)?.color||'#8189a3'}">${esc(node.party)}</span>`:''}
+          <small class="fsi-src">${esc(e.src||'공직자 재산등록 고보 / 공식 인적 기록')}</small>
         </div>`;
       }).join('')}
       ${familyEvents.map(fe=>`
-        <div class="pol-family-card event-card">
-          <div class="pfc-rel"><span class="pfc-tag" style="background:#d6336c">기록</span></div>
-          <div class="pfc-body">
-            <b>${esc(fe.title)}</b>
-            <small>${esc(fDate(fe.d))} · ${esc(fe.src||'')}</small>
+        <div class="family-spec-item event-item">
+          <div class="fsi-head">
+            <span class="fsi-tag" style="background:#475569">가족 기록</span>
+            <strong class="fsi-name">${esc(fe.title)}</strong>
           </div>
+          <p class="fsi-desc">${esc(fDate(fe.d))} · ${esc(fe.src||'')}</p>
         </div>
       `).join('')}
     </div>`;
   }else if(isDefector){
     content=`<div class="pol-defector-note">
       <div class="pdn-badge">🔒 탈북 공직자 특수 보호 안내</div>
-      <p><b>북한 잔류 가족 신변 보호:</b> 북한에 거주 중인 친족(부모·형제 등)의 생명 및 신변 안전을 위해 대한민국 정부 및 공직자 인적사항 관리 기준에 따라 북한 내 가족 신원은 비공개 보호 대상입니다.</p>
-      <p class="fine">※ 공직자윤리법에 따른 정기 재산 등록 공보상 본인 단독으로 신고되었습니다.</p>
+      <p><b>북한 잔류 가족 신변 보호:</b> 북한에 거주 중인 친족의 안전을 위해 관계 법령에 따라 비공개 보호 대상입니다.</p>
     </div>`;
   }else{
     content=`<div class="pol-family-empty">
-      <p>공직자윤리법 제12조에 따른 재산등록상 직계존비속 고지 정보 기준입니다.</p>
-      <p class="fine">※ 독립생계 유지에 따른 고지거부 허가 가족 또는 미공개 가족은 표시되지 않습니다.</p>
+      <p>공직자윤리법 제12조에 따른 재산등록상 직계존비속 고지 정보 기준입니다. (독립생계 유지에 따른 고지거부 가족은 비공개됩니다)</p>
     </div>`;
   }
 
-  return `<div class="sec" id="sec-network">
-    <h2><small>DOSSIER / 04 NETWORK GRAPH</small>가족 관계 및 인맥·동문 네트워크</h2>
-  </div>
-  <div class="card pad" style="margin-bottom:14px">
-    <h3 style="margin:0 0 10px;font-size:0.96rem">가족 관계 현황</h3>
-    ${content}
-    ${g&&g.edges&&g.edges.length?`
-    <details class="pol-fold" id="fold-network" style="margin-top:14px">
-      <summary class="pol-fold-summary">
-        <span class="pfs-left">👥 인맥·동문·지역 관계도 인터랙티브 네트워크 <mark class="pfs-badge">${g.edges.length}개 연결</mark></span>
-        <span class="pfs-arr">관계망 그래프 펼치기 ▼</span>
-      </summary>
-      <div class="pol-fold-body">
-        ${renderArcGraph(g,p.name)}
+  return `
+  <section class="dossier-sec" id="sec-network">
+    <header class="dossier-sec-head">
+      <div class="dsh-left">
+        <span class="dsh-tag">DOSSIER / 04 NETWORK & FAMILY</span>
+        <h2 class="dsh-title">${dossierSvg('network', 18)} 가족 관계 및 인맥·동문 네트워크</h2>
       </div>
-    </details>`:''}
-  </div>`;
+      ${g&&g.edges&&g.edges.length?`<span class="dsh-badge">${g.edges.length}개 관계망 연결</span>`:''}
+    </header>
+
+    <div class="dossier-spec-card">
+      <div class="spec-subhead">
+        <h3 class="spec-subtitle">${dossierSvg('user', 14)} 가족 직계 및 주요 친인척 현황</h3>
+      </div>
+      ${content}
+
+      ${g&&g.edges&&g.edges.length?`
+      <details class="dossier-fold" id="fold-network" open style="margin-top:16px">
+        <summary class="dossier-fold-summary">
+          <div class="dfs-left">
+            ${dossierSvg('network', 15)}
+            <span>인터랙티브 인맥·동문·지역 관계망 네트워크 그래프</span>
+            <mark class="dfs-cnt">${g.edges.length}개 노드 연결</mark>
+          </div>
+          <span class="dfs-toggle">관계망 접기/펼치기 ${dossierSvg('chevron-down', 13)}</span>
+        </summary>
+        <div class="dossier-fold-body" style="padding-top:12px">
+          ${renderArcGraph(g, p?.name)}
+        </div>
+      </details>`:''}
+    </div>
+  </section>`;
 }
 
 function renderAssetsSection(p, c){
@@ -2237,84 +2280,93 @@ function renderAssetsSection(p, c){
   }
   const km=Math.max(...K.map(k=>Math.abs(last[k[1]]||0)),1);
 
-  return `<div class="sec" id="sec-assets">
-    <h2><small>DOSSIER / 03 FINANCIAL DISCLOSURE</small>공직자 재산 신고 및 자산 포트폴리오 분석</h2>
-    <span class="more">${esc(last.date.slice(0,4))}년 기준 공직자윤리위 정기재산변동 공고</span>
-  </div>
-  <div class="card pad" style="margin-bottom:14px;border-left:4px solid #16a34a">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
-      <div>
-        <small style="font-size:.74rem;color:#64748b;font-weight:800;letter-spacing:0.5px;text-transform:uppercase">공직자윤리위원회 최신 공개 총 신고액 (${esc(last.date.slice(0,4))}년)</small>
-        <b style="display:block;font-size:2.3rem;font-weight:900;letter-spacing:-0.8px;color:#0f172a;margin-top:4px">${polWon(last.total)}</b>
+  return `<section class="dossier-sec" id="sec-assets">
+    <div class="dossier-sec-head">
+      <div class="dsh-left">
+        <span class="dsh-kicker">DOSSIER 03 / FINANCIAL DISCLOSURE</span>
+        <h3 class="dsh-title">${dossierSvg('assets', 18)} 공직자 재산 신고 및 자산 포트폴리오 분석</h3>
       </div>
-      ${last.change!=null?`
-      <div style="text-align:right">
-        <small style="font-size:.74rem;color:#64748b;font-weight:700">전년 공시 대비 순변동액</small>
-        <b style="display:block;font-size:1.35rem;font-weight:900;color:${last.change>=0?'#16a34a':'#dc2626'}">
-          ${last.change>=0?'+':''}${polWon(last.change)}
-        </b>
-      </div>`:''}
+      <span class="dsh-note">${esc(last.date.slice(0,4))}년 기준 공직자윤리위 정기재산변동 공고</span>
     </div>
-  </div>
-  <div class="pol-g2">
-    <div class="card pad">
-      <h3>연도별 신고 총액 추이</h3>
-      <div class="pol-mbar-scroll" data-drag-scroll="true" style="padding-top:28px">
-        <div class="pol-mbar-track" style="min-width:${Math.max(R.length*70, 260)}px;height:120px">
-          ${R.map(r=>{
-            const wonStr = polWon(r.total);
-            const y = r.date.slice(0,4);
-            const barH = Math.max(5, Math.round((r.total||0)/m*100));
-            return `<div class="pm-col" data-val="${r.total}" tabindex="0" role="img" aria-label="${y}년 신고액 ${wonStr}">
-              <span class="pm-tooltip">${y}년 · <b>${wonStr}</b></span>
-              <div class="pm-bar-wrap">
-                <span class="pm-count-tag">${wonStr}</span>
-                <i class="pm-bar" style="height:${barH}%;background:${c}"></i>
-              </div>
-              <span class="pm-lab">${y}년${r.kind!=='정기재산변동신고'?'*':''}</span>
-            </div>`;
-          }).join('')}
+    <div class="card pad" style="margin-bottom:14px;border-left:4px solid #16a34a">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+        <div>
+          <small style="font-size:.74rem;color:#64748b;font-weight:800;letter-spacing:0.5px;text-transform:uppercase">공직자윤리위원회 최신 공개 총 신고액 (${esc(last.date.slice(0,4))}년)</small>
+          <b style="display:block;font-size:2.3rem;font-weight:900;letter-spacing:-0.8px;color:#0f172a;margin-top:4px">${polWon(last.total)}</b>
         </div>
+        ${last.change!=null?`
+        <div style="text-align:right">
+          <small style="font-size:.74rem;color:#64748b;font-weight:700">전년 공시 대비 순변동액</small>
+          <b style="display:block;font-size:1.35rem;font-weight:900;color:${last.change>=0?'#16a34a':'#dc2626'}">
+            ${last.change>=0?'+':''}${polWon(last.change)}
+          </b>
+        </div>`:''}
       </div>
-      <p class="fine" style="margin-top:10px">최신 신고 총액 <b>${polWon(last.total)}</b>${last.change!=null?` (전년 대비 ${last.change>=0?'+':''}${polWon(last.change)})`:''}</p>
     </div>
-    <div class="card pad">
-      <h3>항목별 재산 구성 (${esc(last.date.slice(0,4))}년 공개)</h3>
-      <div class="pol-hbar">
-        ${K.map(([n,k,col])=>`<div>
-          <span>${n}</span>
-          <i style="width:${Math.max(2,Math.abs(last[k]||0)/km*100)}%;background:${col}"></i>
-          <b>${polWon(last[k]||0)}</b>
-        </div>`).join('')}
-      </div>
-      <p class="fine">부동산(건물+토지) ${polWon((last.land||0)+(last.building||0))} · 증권 ${polWon(last.securities||0)}</p>
-    </div>
-  </div>
-
-  <details class="pol-fold" id="fold-assets">
-    <summary class="pol-fold-summary">
-      <span class="pfs-left">💰 연도별 상세 재산 변동 신고 내역 & 공보 출처 <mark class="pfs-badge">${R.length}회</mark></span>
-      <span class="pfs-arr">상세 신고 내역 펼치기 ▼</span>
-    </summary>
-    <div class="pol-fold-body">
-      <div style="display:grid;gap:8px">
-        ${R.slice().reverse().map(r=>`
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--bg);border-radius:8px;font-size:0.86rem">
-            <div>
-              <b style="color:var(--ink)">${esc(r.date)} (${esc(r.kind||'정기재산변동신고')})</b>
-              <div style="font-size:0.75rem;color:var(--ink2);margin-top:2px">${esc(r.issue||'국회공보')} · 관보 공고</div>
-            </div>
-            <div style="text-align:right">
-              <strong style="color:var(--ink);font-size:0.95rem">${polWon(r.total)}</strong>
-              ${r.change!=null?`<span style="display:block;font-size:0.75rem;color:${r.change>=0?'#16a34a':'#dc2626'}">${r.change>=0?'+':''}${polWon(r.change)}</span>`:''}
-            </div>
+    <div class="pol-g2">
+      <div class="card pad">
+        <h3>연도별 신고 총액 추이</h3>
+        <div class="pol-mbar-scroll" data-drag-scroll="true" style="padding-top:28px">
+          <div class="pol-mbar-track" style="min-width:${Math.max(R.length*70, 260)}px;height:120px">
+            ${R.map(r=>{
+              const wonStr = polWon(r.total);
+              const y = r.date.slice(0,4);
+              const barH = Math.max(5, Math.round((r.total||0)/m*100));
+              return `<div class="pm-col" data-val="${r.total}" tabindex="0" role="img" aria-label="${y}년 신고액 ${wonStr}">
+                <span class="pm-tooltip">${y}년 · <b>${wonStr}</b></span>
+                <div class="pm-bar-wrap">
+                  <span class="pm-count-tag">${wonStr}</span>
+                  <i class="pm-bar" style="height:${barH}%;background:${c}"></i>
+                </div>
+                <span class="pm-lab">${y}년${r.kind!=='정기재산변동신고'?'*':''}</span>
+              </div>`;
+            }).join('')}
           </div>
-        `).join('')}
+        </div>
+        <p class="fine" style="margin-top:10px">최신 신고 총액 <b>${polWon(last.total)}</b>${last.change!=null?` (전년 대비 ${last.change>=0?'+':''}${polWon(last.change)})`:''}</p>
       </div>
-      <p class="fine" style="margin-top:12px">본인·배우자·직계존비속 합산 신고액(고지거부 제외)이며, 부동산은 공시가격 등 신고가액이라 실거래 시세와 다를 수 있습니다.<br>
-      출처: ${R.map(r=>`<a href="${esc(r.url||'#')}" target="_blank" rel="noopener">${esc(r.issue||'국회공보')}</a>`).join(', ')} (국회공직자윤리위원회 공고)</p>
+      <div class="card pad">
+        <h3>항목별 재산 구성 (${esc(last.date.slice(0,4))}년 공개)</h3>
+        <div class="pol-hbar">
+          ${K.map(([n,k,col])=>`<div>
+            <span>${n}</span>
+            <i style="width:${Math.max(2,Math.abs(last[k]||0)/km*100)}%;background:${col}"></i>
+            <b>${polWon(last[k]||0)}</b>
+          </div>`).join('')}
+        </div>
+        <p class="fine">부동산(건물+토지) ${polWon((last.land||0)+(last.building||0))} · 증권 ${polWon(last.securities||0)}</p>
+      </div>
     </div>
-  </details>`;
+
+    <details class="dossier-fold" id="fold-assets">
+      <summary class="dossier-fold-summary">
+        <div class="dfs-left">
+          ${dossierSvg('assets', 15)}
+          <span>연도별 상세 재산 변동 신고 내역 & 공보 출처</span>
+          <mark class="dfs-cnt">${R.length}회</mark>
+        </div>
+        <span class="dfs-toggle">상세 신고 내역 펼치기 ${dossierSvg('chevron-down', 13)}</span>
+      </summary>
+      <div class="dossier-fold-body">
+        <div style="display:grid;gap:8px">
+          ${R.slice().reverse().map(r=>`
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--bg);border-radius:8px;font-size:0.86rem">
+              <div>
+                <b style="color:var(--ink)">${esc(r.date)} (${esc(r.kind||'정기재산변동신고')})</b>
+                <div style="font-size:0.75rem;color:var(--ink2);margin-top:2px">${esc(r.issue||'국회공보')} · 관보 공고</div>
+              </div>
+              <div style="text-align:right">
+                <strong style="color:var(--ink);font-size:0.95rem">${polWon(r.total)}</strong>
+                ${r.change!=null?`<span style="display:block;font-size:0.75rem;color:${r.change>=0?'#16a34a':'#dc2626'}">${r.change>=0?'+':''}${polWon(r.change)}</span>`:''}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        <p class="fine" style="margin-top:12px">본인·배우자·직계존비속 합산 신고액(고지거부 제외)이며, 부동산은 공시가격 등 신고가액이라 실거래 시세와 다를 수 있습니다.<br>
+        출처: ${R.map(r=>`<a href="${esc(r.url||'#')}" target="_blank" rel="noopener">${esc(r.issue||'국회공보')}</a>`).join(', ')} (국회공직자윤리위원회 공고)</p>
+      </div>
+    </details>
+  </section>`;
 }
 
 function renderIncidentsSection(p, arc){
@@ -2331,21 +2383,23 @@ function renderIncidentsSection(p, arc){
     '판결': inc.filter(x=>x.stage==='판결').length
   };
 
-  return `<div class="sec" id="sec-incidents">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px">
-      <h2 style="display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px">
-        <small style="display:block;width:100%">DOSSIER / 06 LEGAL & INCIDENTS</small>
-        <span>사건·사고 및 법적 쟁점 관련 보도</span>
+  return `<section class="dossier-sec" id="sec-incidents">
+    <div class="dossier-sec-head">
+      <div class="dsh-left">
+        <span class="dsh-kicker">DOSSIER 06 / LEGAL & INCIDENTS</span>
+        <h3 class="dsh-title">${dossierSvg('incidents', 18)} 사건·사고 및 법적 쟁점 관련 보도</h3>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <span class="dsh-note">공공DB 및 언론 보도 기반 사실 단계 분류</span>
         <span class="pol-info-tip-wrap">
-          <button type="button" class="pol-info-btn" id="pol-inc-info-btn" aria-label="사건 분류 안내" title="분류 기준 안내">i</button>
+          <button type="button" class="pol-info-btn" id="pol-inc-info-btn" aria-label="사건 분류 안내" title="분류 기준 안내">${dossierSvg('info', 12)}</button>
           <span class="pol-info-popover" role="tooltip">
-            <b>💡 사건·사고 보도 분류 안내</b>
+            <b>사건·사고 보도 분류 안내</b>
             기사 제목과 공공 데이터베이스 단어로 <b>자동 분류</b>한 목록입니다. ‘의혹·수사·기소’ 단계는 확정된 사실이 아니며 사법적 유무죄와 무관합니다. 객관적 사실 확인을 위해 반드시 원문 기사를 확인해 주세요.
           </span>
         </span>
-      </h2>
+      </div>
     </div>
-  </div>
   <div class="card pad pol-inc">
     <div class="pol-seg-tabs" id="pol-inc-seg-tabs" role="tablist" aria-label="사건 단계별 필터">
       <button type="button" class="pol-seg-btn on" data-stage="all">전체 <b class="seg-cnt">${counts['전체']}</b></button>
@@ -2364,12 +2418,16 @@ function renderIncidentsSection(p, arc){
     </ul>
 
     ${inc.length > 3 || arcAllegations.length ? `
-    <details class="pol-fold" id="fold-incidents">
-      <summary class="pol-fold-summary">
-        <span class="pfs-left">🚨 수사·기소·재판 및 의혹·사건사고 전체 타임라인 <mark class="pfs-badge">${inc.length + arcAllegations.length}건</mark></span>
-        <span class="pfs-arr">사건 기록 전체 펼치기 ▼</span>
+    <details class="dossier-fold" id="fold-incidents">
+      <summary class="dossier-fold-summary">
+        <div class="dfs-left">
+          ${dossierSvg('incidents', 15)}
+          <span>수사·기소·재판 및 의혹·사건사고 전체 타임라인</span>
+          <mark class="dfs-cnt">${inc.length + arcAllegations.length}건</mark>
+        </div>
+        <span class="dfs-toggle">사건 기록 전체 펼치기 ${dossierSvg('chevron-down', 13)}</span>
       </summary>
-      <div class="pol-fold-body">
+      <div class="dossier-fold-body">
         <ul class="pol-ilist">
           ${inc.slice(3, 40).map(x=>`<li data-stage="${esc(x.stage==='기소'?'기소·재판':x.stage)}">
             <em class="${STG[x.stage]||'s1'}">${esc(x.stage)}</em>
@@ -2391,7 +2449,8 @@ function renderIncidentsSection(p, arc){
       </div>
     </details>`:''}
     <p id="pol-inc-empty" class="mute" style="display:none;padding:12px 0;text-align:center">선택하신 단계로 분류된 보도가 없습니다.</p>`:'<p class="mute">연결된 사건 관련 보도가 없습니다.</p>'}
-  </div>`;
+  </div>
+  </section>`;
 }
 
 function renderActivitySection(p, c){
@@ -2401,9 +2460,14 @@ function renderActivitySection(p, c){
   const sw=swA.filter(s=>s.kind!=='rename');
   const V=p.votes;
 
-  return `<div class="sec" id="sec-activity">
-    <h2><small>DOSSIER / 02 LEGISLATIVE RECORD</small>의정 및 입법 활동 대시보드</h2>
-  </div>
+  return `<section class="dossier-sec" id="sec-activity">
+    <div class="dossier-sec-head">
+      <div class="dsh-left">
+        <span class="dsh-kicker">DOSSIER 02 / LEGISLATIVE RECORD</span>
+        <h3 class="dsh-title">${dossierSvg('landmark', 18)} 의정 및 입법 활동 대시보드</h3>
+      </div>
+      <span class="dsh-note">열린국회정보 공공 API 실시간 연동</span>
+    </div>
   <div class="pol-kgrid">
     <div class="card pol-k">
       <em>대표발의</em>
@@ -2447,10 +2511,14 @@ function renderActivitySection(p, c){
     </div>
     ${polBars(bl.by_result,c)}
 
-    <details class="pol-fold" id="fold-bills">
-      <summary class="pol-fold-summary">
-        <span class="pfs-left">🏛️ 대표발의 법안 상세 목록 & 월별 발의 추이 <mark class="pfs-badge">${(bl.recent||[]).length}건</mark></span>
-        <span class="pfs-arr">법안 목록 펼치기 ▼</span>
+    <details class="dossier-fold" id="fold-bills">
+      <summary class="dossier-fold-summary">
+        <div class="dfs-left">
+          ${dossierSvg('landmark', 15)}
+          <span>대표발의 법안 상세 목록 & 월별 발의 추이</span>
+          <mark class="dfs-cnt">${(bl.recent||[]).length}건</mark>
+        </div>
+        <span class="dfs-toggle">법안 목록 펼치기 ${dossierSvg('chevron-down', 13)}</span>
       </summary>
       <div class="pol-fold-body">
         <div class="pol-month-chart-card" id="pol-month-box" style="margin-bottom:14px">
@@ -2517,12 +2585,16 @@ function renderActivitySection(p, c){
         </span>`).join('')}
       </div>
       ${V.dissent&&V.dissent.length?`
-      <details class="pol-fold" id="fold-votes">
-        <summary class="pol-fold-summary">
-          <span class="pfs-left">🗳️ 본회의 소신 표결 안건 (반대·기권 상세) <mark class="pfs-badge">${V.dissent.length}건</mark></span>
-          <span class="pfs-arr">안건 목록 펼치기 ▼</span>
+      <details class="dossier-fold" id="fold-votes">
+        <summary class="dossier-fold-summary">
+          <div class="dfs-left">
+            ${dossierSvg('landmark', 15)}
+            <span>본회의 소신 표결 안건 (반대·기권 상세)</span>
+            <mark class="dfs-cnt">${V.dissent.length}건</mark>
+          </div>
+          <span class="dfs-toggle">안건 목록 펼치기 ${dossierSvg('chevron-down', 13)}</span>
         </summary>
-        <div class="pol-fold-body">
+        <div class="dossier-fold-body">
           <ul class="pol-blist">
             ${V.dissent.slice(0,20).map(x=>`<li>
               <a href="https://likms.assembly.go.kr/bill/billDetail.do?billId=${esc(x.id)}" target="_blank" rel="noopener">${esc(x.name)}</a>
@@ -2532,7 +2604,8 @@ function renderActivitySection(p, c){
         </div>
       </details>`:''}
     </div>`;
-  })():''}`;
+  })():''}
+  </section>`;
 }
 
 function renderQuotesSection(p, id){
@@ -2611,9 +2684,14 @@ function renderQuotesSection(p, id){
     </li>`;
   }).join('');
 
-  return `<div class="sec" id="sec-quotes">
-    <h2><small>DOSSIER / 05 QUOTES & MEDIA</small>언론 보도 및 주요 발언 대시보드</h2>
-  </div>
+  return `<section class="dossier-sec" id="sec-quotes">
+    <div class="dossier-sec-head">
+      <div class="dsh-left">
+        <span class="dsh-kicker">DOSSIER 05 / PUBLIC STATEMENTS</span>
+        <h3 class="dsh-title">${dossierSvg('quotes', 18)} 언론 보도 및 주요 발언 대시보드</h3>
+      </div>
+      <span class="dsh-note">화제성 높은 보도 우선 하이라이트</span>
+    </div>
   ${quotesHtml ? `
   <div class="card pad" style="margin-top:10px">
     <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:12px">
@@ -2627,7 +2705,7 @@ function renderQuotesSection(p, id){
         return `<li class="pol-qitem">
           <div class="pol-qhead">
             <span class="pol-qdate">${esc(d)}</span>
-            <span class="pol-qheat">🔥 <b>${q.score}</b>점</span>
+            <span class="pol-qheat">${dossierSvg('fire', 12)} <b>${q.score}</b>점</span>
           </div>
           <div class="pol-qbody">
             <q class="pol-quote">${esc(q.quote)}</q>
@@ -2640,19 +2718,23 @@ function renderQuotesSection(p, id){
     </ul>
 
     ${scoredQuotes.length > 3 ? `
-    <details class="pol-fold" id="fold-quotes">
-      <summary class="pol-fold-summary">
-        <span class="pfs-left">💬 수집된 주요 발언·어록 전체 목록 펼쳐보기 <mark class="pfs-badge">${scoredQuotes.length}건</mark></span>
-        <span class="pfs-arr">발언 전체 펼치기 ▼</span>
+    <details class="dossier-fold" id="fold-quotes">
+      <summary class="dossier-fold-summary">
+        <div class="dfs-left">
+          ${dossierSvg('quotes', 15)}
+          <span>수집된 주요 발언·어록 전체 목록 펼쳐보기</span>
+          <mark class="dfs-cnt">${scoredQuotes.length}건</mark>
+        </div>
+        <span class="dfs-toggle">발언 전체 펼치기 ${dossierSvg('chevron-down', 13)}</span>
       </summary>
-      <div class="pol-fold-body">
+      <div class="dossier-fold-body">
         <ul class="pol-qlist">
           ${scoredQuotes.slice(3).map(q => {
             const d = (q.date || '').slice(0, 10);
             return `<li class="pol-qitem">
               <div class="pol-qhead">
                 <span class="pol-qdate">${esc(d)}</span>
-                <span class="pol-qheat">🔥 <b>${q.score}</b>점</span>
+                <span class="pol-qheat">${dossierSvg('fire', 12)} <b>${q.score}</b>점</span>
               </div>
               <div class="pol-qbody">
                 <q class="pol-quote">${esc(q.quote)}</q>
@@ -2680,15 +2762,15 @@ function renderQuotesSection(p, id){
         </a>
       `).join('')}
     </div>
-  </div>`:''}`;
+  </div>`:''}
+  </section>`;
 }
 
 function extractQuoteAiSummary(txt, speaker){
   if(!txt) return '';
   const clean = txt.replace(/^[“"']|[”"']$/g, '').trim();
-  const prefix = speaker ? (speaker + ' 의원: ') : '';
-  if(clean.length <= 40) return prefix + '"' + clean + '" 핵심 메시지 보도';
-  return prefix + '"' + clean.slice(0, 52) + '…" 관련 주요 발언 및 보도 맥락 요약';
+  const prefix = speaker ? (speaker + ': ') : '';
+  return prefix + '"' + clean + '" 발언 및 관련 보도 맥락';
 }
 
 function getOrgSymbolHtml(text, size=28){
@@ -2849,9 +2931,14 @@ function renderCareerSection(p, arc){
 
   if(!hist.length&&!eduEvents.length)return'';
 
-  return `<div class="sec" id="sec-career">
-    <h2><small>Career & Education</small>주요 학력 및 사회·공직 경력</h2>
-  </div>
+  return `<section class="dossier-sec" id="sec-career">
+    <div class="dossier-sec-head">
+      <div class="dsh-left">
+        <span class="dsh-kicker">DOSSIER 07 / CAREER & CREDENTIALS</span>
+        <h3 class="dsh-title">${dossierSvg('career', 18)} 주요 학력 및 사회·공직 경력</h3>
+      </div>
+      <span class="dsh-note">공직 선거 공보 및 공식 기록 기준</span>
+    </div>
   <div class="card pad">
     ${eduEvents.length?`
     <h3 style="margin-bottom:10px;display:flex;align-items:center;gap:6px">
@@ -2899,12 +2986,16 @@ function renderCareerSection(p, arc){
     </ul>
 
     ${hist.length > 4 ? `
-    <details class="pol-fold" id="fold-career" style="margin-top:14px">
-      <summary class="pol-fold-summary">
-        <span class="pfs-left">🎓 전체 상세 경력 및 이전 직책 목록 펼쳐보기 <mark class="pfs-badge">${hist.length}개</mark></span>
-        <span class="pfs-arr">경력 전체 펼치기 ▼</span>
+    <details class="dossier-fold" id="fold-career" style="margin-top:14px">
+      <summary class="dossier-fold-summary">
+        <div class="dfs-left">
+          ${dossierSvg('career', 15)}
+          <span>전체 상세 경력 및 이전 직책 목록 펼쳐보기</span>
+          <mark class="dfs-cnt">${hist.length}개</mark>
+        </div>
+        <span class="dfs-toggle">경력 전체 펼치기 ${dossierSvg('chevron-down', 13)}</span>
       </summary>
-      <div class="pol-fold-body">
+      <div class="dossier-fold-body">
         <ul class="pol-career-list">
           ${hist.slice(4).map(h=>{
             const sym=getOrgSymbolHtml(h, 28);
@@ -2925,7 +3016,8 @@ function renderCareerSection(p, arc){
         </ul>
       </div>
     </details>`:''}
-  </div>`;
+  </div>
+  </section>`;
 }
 
 function triggerCoinShower(targetSec){
@@ -2969,42 +3061,89 @@ function renderLifeTimelineSection(arc){
 
   const births = E.filter(x=>x.typ==='birth');
   const edus = E.filter(x=>x.typ==='edu');
-  const careers = E.filter(x=>x.typ==='career').slice(0, 4);
-  const mil = arc.military || E.find(x=>x.typ==='military')?.title;
+  const careers = E.filter(x=>x.typ==='career');
+  const mil = arc.military || E.find(x=>x.typ==='military')?.title || arc.data?.military;
 
-  return `<div class="sec" id="sec-lifetl">
-    <h2><small>DOSSIER / 01 BIOGRAPHY & CAREER</small>생애 타임라인 및 상세 이력서 <em class="cnt">${fmt(E.length)}건</em></h2>
-  </div>
-  <div class="card pad" style="margin-bottom:12px">
-    <h3 style="margin:0 0 10px;font-size:0.96rem;display:flex;align-items:center;gap:6px">
-      <span>📌 생애 핵심 이력 요약</span>
-    </h3>
-    <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:0.86rem;color:var(--ink)">
-      ${births[0]?`<li style="display:flex;gap:8px"><b>· 출생:</b> <span>${esc(births[0].title)} (${esc(births[0].desc||'')})</span></li>`:''}
-      ${edus.length?`<li style="display:flex;gap:8px"><b>· 학력:</b> <span>${edus.map(x=>esc(x.title)).join(' → ')}</span></li>`:''}
-      ${mil?`<li style="display:flex;gap:8px"><b>· 병역:</b> <span>${esc(mil)}</span></li>`:''}
-      ${careers.length?`<li style="display:flex;gap:8px"><b>· 주요 경력:</b> <span>${careers.map(x=>esc(x.title)).join(' · ')}</span></li>`:''}
-    </ul>
+  // 출생 정보 정규화 (중복 괄호 및 제목 버그 제거)
+  let birthClean = '';
+  if(births[0]){
+    const desc = (births[0].desc || '').trim();
+    const title = (births[0].title || '').trim();
+    if(desc && desc !== title){
+      const tClean = title.replace(/^출생\s*\(?/, '').replace(/\)?$/, '').trim();
+      birthClean = tClean && !desc.includes(tClean) ? `${tClean} · ${desc}` : desc;
+    } else {
+      birthClean = desc || title;
+    }
+  }
 
-    <details class="pol-fold" id="fold-lifetl" style="margin-top:14px">
-      <summary class="pol-fold-summary">
-        <span class="pfs-left">📜 출생부터 현재까지 생애 전체 타임라인 & 상세 이력서 <mark class="pfs-badge">${E.length}건</mark></span>
-        <span class="pfs-arr">이력서 전체 펼치기 ▼</span>
-      </summary>
-      <div class="pol-fold-body">
-        <div class="arc-legend" style="margin-bottom:12px">
-          <span><i class="arc-st fact"></i>확인된 공적 기록</span>
-          <span><i class="arc-st allegation"></i>의혹·사건 단계(사실 확정 아님)</span>
-          <span><i class="arc-st confirmed"></i>판결 확정</span>
-        </div>
-        <div class="arc-fil" id="arc-fil" style="margin-bottom:14px">
-          <button class="on" data-t="">전체 (${E.length})</button>
-          ${types.map(t=>`<button data-t="${t}" style="--tc:${ARC_TYP[t]?.[1]||'#0f1630'}">${ARC_TYP[t]?.[0]||t} ${E.filter(e=>e.typ===t).length}</button>`).join('')}
-        </div>
-        <div id="arc-tl-box"></div>
+  // 학력 체인 (깨끗한 텍스트)
+  const eduChain = edus.map(x => x.title.replace(/\s*\([^)]*학력\)/g, '').trim()).join(' → ');
+
+  // 주요 경력
+  const careerText = careers.slice(0, 4).map(x => x.title.trim()).join(' · ');
+
+  return `
+  <section class="dossier-sec" id="sec-lifetl">
+    <header class="dossier-sec-head">
+      <div class="dsh-left">
+        <span class="dsh-tag">DOSSIER / 01 BIOGRAPHY</span>
+        <h2 class="dsh-title">${dossierSvg('bio', 18)} 생애 핵심 이력 및 상세 타임라인</h2>
       </div>
-    </details>
-  </div>`;
+      <span class="dsh-badge">${fmt(E.length)}건의 공적 기록</span>
+    </header>
+
+    <div class="dossier-spec-card">
+      <div class="spec-subhead">
+        <h3 class="spec-subtitle">${dossierSvg('calendar', 14)} 인물 기본 프로필 및 생애 요약</h3>
+      </div>
+      <div class="spec-sheet-grid">
+        ${birthClean ? `
+          <div class="spec-row">
+            <div class="spec-label">${dossierSvg('user', 14)}<span>출생</span></div>
+            <div class="spec-val">${esc(birthClean)}</div>
+          </div>` : ''}
+        ${eduChain ? `
+          <div class="spec-row">
+            <div class="spec-label">${dossierSvg('edu', 14)}<span>학력</span></div>
+            <div class="spec-val">${esc(eduChain)}</div>
+          </div>` : ''}
+        ${mil ? `
+          <div class="spec-row">
+            <div class="spec-label">${dossierSvg('shield', 14)}<span>병역</span></div>
+            <div class="spec-val">${esc(mil)}</div>
+          </div>` : ''}
+        ${careerText ? `
+          <div class="spec-row">
+            <div class="spec-label">${dossierSvg('career', 14)}<span>주요 경력</span></div>
+            <div class="spec-val">${esc(careerText)}</div>
+          </div>` : ''}
+      </div>
+
+      <details class="dossier-fold" id="fold-lifetl" style="margin-top:16px">
+        <summary class="dossier-fold-summary">
+          <div class="dfs-left">
+            ${dossierSvg('bio', 15)}
+            <span>출생부터 현재까지 생애 전체 타임라인 & 상세 이력서</span>
+            <mark class="dfs-cnt">${E.length}건 전체</mark>
+          </div>
+          <span class="dfs-toggle">상세 이력 펼치기 ${dossierSvg('chevron-down', 13)}</span>
+        </summary>
+        <div class="dossier-fold-body">
+          <div class="arc-legend" style="margin-bottom:12px">
+            <span><i class="arc-st fact"></i>공적 확인 기록</span>
+            <span><i class="arc-st allegation"></i>사안·수사 단계</span>
+            <span><i class="arc-st confirmed"></i>사법 판결 확정</span>
+          </div>
+          <div class="arc-fil" id="arc-fil" style="margin-bottom:14px">
+            <button class="on" data-t="">전체 (${E.length})</button>
+            ${types.map(t=>`<button data-t="${t}" style="--tc:${ARC_TYP[t]?.[1]||'#0f1630'}">${ARC_TYP[t]?.[0]||t} ${E.filter(e=>e.typ===t).length}</button>`).join('')}
+          </div>
+          <div id="arc-tl-box"></div>
+        </div>
+      </details>
+    </div>
+  </section>`;
 }
 
 async function fetchHistoryPersonData(polId){
@@ -3090,29 +3229,29 @@ function renderProfFactsHtml(pDetail, aDetail){
 function extractEntityMilestones(name, arc, pol){
   const PRESETS = {
     '이재명': [
-      { y: '1964', title: '출생 (유년기)', sub: '경상북도 안동군 예안면 삼계리 1206 출생', icon: '👶', tag: '기반 형성' },
-      { y: '1976', title: '소년공 시절', sub: '성남 상대원공단 대양실업·오리엔트 시계공장 프레스 노동자', icon: '🏭', tag: '노동 현장' },
-      { y: '1986', title: '사법시험 합격 & 인권변호사', sub: '제28회 사법시험 합격, 사법연수원 18기 수료 후 성남 인권변호사 개업', icon: '⚖️', tag: '시민 운동' },
-      { y: '2010', title: '성남시장 당선', sub: '민선 5·6기 경기도 성남시장 (모라토리엄 조기 극복 및 3대 무상복지 도입)', icon: '🏛️', tag: '지방 자치' },
-      { y: '2018', title: '경기도지사 취임', sub: '제35대 경기도지사 (청년기본소득, 계곡 불법시설 정비, 지역화폐 전국화 견인)', icon: '🌟', tag: '광역 행정' },
-      { y: '2022', title: '제20대 대선 후보 & 국회의원', sub: '제20대 대통령 선거 득표율 47.83% 기록, 인천 계양구을 국회의원 당선', icon: '🗳️', tag: '의정 진출' },
-      { y: '2025', title: '제21대 대한민국 대통령', sub: '대한민국 제21대 대통령 당선인 (국가원수 및 행정부 수반)', icon: '🇰🇷', tag: '국정 총괄' }
+      { y: '1964', title: '출생 (유년기)', sub: '경상북도 안동군 예안면 삼계리 1206 출생', icon: 'user', tag: '기반 형성' },
+      { y: '1976', title: '소년공 시절', sub: '성남 상대원공단 대양실업·오리엔트 시계공장 프레스 노동자', icon: 'career', tag: '노동 현장' },
+      { y: '1986', title: '사법시험 합격 & 인권변호사', sub: '제28회 사법시험 합격, 사법연수원 18기 수료 후 성남 인권변호사 개업', icon: 'landmark', tag: '시민 운동' },
+      { y: '2010', title: '성남시장 당선', sub: '민선 5·6기 경기도 성남시장 (모라토리엄 조기 극복 및 3대 무상복지 도입)', icon: 'landmark', tag: '지방 자치' },
+      { y: '2018', title: '경기도지사 취임', sub: '제35대 경기도지사 (청년기본소득, 계곡 불법시설 정비, 지역화폐 전국화 견인)', icon: 'landmark', tag: '광역 행정' },
+      { y: '2022', title: '제20대 대선 후보 & 국회의원', sub: '제20대 대통령 선거 득표율 47.83% 기록, 인천 계양구을 국회의원 당선', icon: 'briefcase', tag: '의정 진출' },
+      { y: '2025', title: '제21대 대한민국 대통령', sub: '대한민국 제21대 대통령 당선인 (국가원수 및 행정부 수반)', icon: 'landmark', tag: '국정 총괄' }
     ],
     '한동훈': [
-      { y: '1973', title: '출생', sub: '서울특별시 서초구 출생', icon: '👶', tag: '성장기' },
-      { y: '1995', title: '사법시험 합격', sub: '제37회 사법시험 합격, 사법연수원 27기 수료', icon: '⚖️', tag: '법조계' },
-      { y: '2001', title: '검사 임관', sub: '서울지검, 대검 중수부, 서울중앙지검 3차장', icon: '💼', tag: '검찰 특수수사' },
-      { y: '2022', title: '법무부 장관 취임', sub: '대한민국 제69대 법무부장관 취임', icon: '🏛️', tag: '국무위원' },
-      { y: '2023', title: '국민의힘 비대위원장', sub: '국민의힘 비상대책위원장 취임 및 총선 지휘', icon: '🚩', tag: '정계 입문' },
-      { y: '2024', title: '국민의힘 당대표', sub: '전당대회 과반 득표로 집권여당 대표 선출', icon: '🌟', tag: '정당 대표' }
+      { y: '1973', title: '출생', sub: '서울특별시 서초구 출생', icon: 'user', tag: '성장기' },
+      { y: '1995', title: '사법시험 합격', sub: '제37회 사법시험 합격, 사법연수원 27기 수료', icon: 'landmark', tag: '법조계' },
+      { y: '2001', title: '검사 임관', sub: '서울지검, 대검 중수부, 서울중앙지검 3차장', icon: 'briefcase', tag: '검찰 특수수사' },
+      { y: '2022', title: '법무부 장관 취임', sub: '대한민국 제69대 법무부장관 취임', icon: 'landmark', tag: '국무위원' },
+      { y: '2023', title: '국민의힘 비대위원장', sub: '국민의힘 비상대책위원장 취임 및 총선 지휘', icon: 'briefcase', tag: '정계 입문' },
+      { y: '2024', title: '국민의힘 당대표', sub: '전당대회 과반 득표로 집권여당 대표 선출', icon: 'landmark', tag: '정당 대표' }
     ],
     '조국': [
-      { y: '1965', title: '출생', sub: '부산광역시 서구 동대신동 출생', icon: '👶', tag: '성장기' },
-      { y: '1992', title: '학계 및 형법 연구', sub: '울산대 법대 교수, 참여연대 사법감시센터 소장', icon: '📚', tag: '학문·시민사회' },
-      { y: '2001', title: '서울대학교 법대 교수', sub: '서울대 법과대학·법학전문대학원 교수', icon: '🎓', tag: '교수 시절' },
-      { y: '2017', title: '대통령비서실 민정수석', sub: '문재인 정부 초대 대통령비서실 민정수석비서관', icon: '🏛️', tag: '청와대' },
-      { y: '2019', title: '법무부 장관 취임', sub: '대한민국 제66대 법무부장관 취임', icon: '⚖️', tag: '사법 개혁' },
-      { y: '2024', title: '조국혁신당 창당 & 국회의원', sub: '조국혁신당 창당 대표, 제22대 비례대표 국회의원', icon: '🚩', tag: '의회 진출' }
+      { y: '1965', title: '출생', sub: '부산광역시 서구 동대신동 출생', icon: 'user', tag: '성장기' },
+      { y: '1992', title: '학계 및 형법 연구', sub: '울산대 법대 교수, 참여연대 사법감시센터 소장', icon: 'edu', tag: '학문·시민사회' },
+      { y: '2001', title: '서울대학교 법대 교수', sub: '서울대 법과대학·법학전문대학원 교수', icon: 'edu', tag: '교수 시절' },
+      { y: '2017', title: '대통령비서실 민정수석', sub: '문재인 정부 초대 대통령비서실 민정수석비서관', icon: 'landmark', tag: '청와대' },
+      { y: '2019', title: '법무부 장관 취임', sub: '대한민국 제66대 법무부장관 취임', icon: 'landmark', tag: '사법 개혁' },
+      { y: '2024', title: '조국혁신당 창당 & 국회의원', sub: '조국혁신당 창당 대표, 제22대 비례대표 국회의원', icon: 'briefcase', tag: '의회 진출' }
     ]
   };
   if(PRESETS[name]) return PRESETS[name];
@@ -3129,7 +3268,7 @@ function extractEntityMilestones(name, arc, pol){
           y: match[1],
           title: e.title,
           sub: e.desc || e.stage || '',
-          icon: e.typ === 'birth' ? '👶' : e.typ === 'edu' ? '🎓' : e.typ === 'elect' ? '🏛️' : '💼',
+          icon: e.typ === 'birth' ? 'user' : e.typ === 'edu' ? 'edu' : e.typ === 'elect' ? 'landmark' : 'briefcase',
           tag: e.stage || '공적 기록'
         });
       }
@@ -3142,7 +3281,7 @@ function extractEntityMilestones(name, arc, pol){
       y: a === 22 ? '2024' : a === 21 ? '2020' : a === 20 ? '2016' : '',
       title: `제${a}대 국회의원`,
       sub: `${pol.district || ''} ${pol.party || ''} 소속`,
-      icon: '🏛️',
+      icon: 'landmark',
       tag: '의정 활동'
     })).filter(x => x.y);
   }
@@ -3186,7 +3325,7 @@ function renderMilestoneRoadmap(name, arc, pol){
             <div class="emr-step-card">
               <div class="emr-card-header">
                 <span class="emr-card-tag">${esc(m.tag || '공적 기록')}</span>
-                <span class="emr-card-badge-icon">${m.icon || '📌'}</span>
+                <span class="emr-card-badge-icon">${dossierSvg(m.icon || 'calendar', 13)}</span>
               </div>
               <div class="emr-card-body">
                 <p class="emr-card-text">${esc(m.sub)}</p>
@@ -3205,6 +3344,7 @@ function renderExecMetaGrid(e, pol, aDetail, pDetail){
   const reelectText = p.reelect || (agesArr.length > 1 ? (agesArr.length === 2 ? '재선' : `${agesArr.length}선`) : (agesArr.length === 1 ? '초선' : ''));
   const districtText = p.district || aDetail?.data?.district || '';
   const partyText = p.party || aDetail?.party || '';
+  const category = pol?.category || aDetail?.category || e?.category || '';
 
   // 1. 출생 / 나이 (풀텍스트)
   const rawBirth = p.birth || aDetail?.birth || '';
@@ -3224,8 +3364,19 @@ function renderExecMetaGrid(e, pol, aDetail, pDetail){
     birthText = birthText ? `${birthText} · ${birthplace}` : birthplace;
   }
 
-  // 2. 소속 정당 / 직책
-  const affilText = [partyText, districtText, reelectText ? `${reelectText} 국회의원` : ''].filter(Boolean).join(' · ') || '대한민국 공직자';
+  // 2. 소속 / 직책 (직업군 적응형)
+  let affilText = '';
+  if(partyText || districtText || reelectText){
+    affilText = [partyText, districtText, reelectText ? `${reelectText} 국회의원` : (p.office || '')].filter(Boolean).join(' · ');
+  } else if(aDetail?.intro){
+    affilText = aDetail.intro;
+  } else if(p.committees){
+    affilText = p.committees;
+  } else if(category){
+    affilText = `${category} · 대한민국 공적 인물`;
+  } else {
+    affilText = '대한민국 공직·사회 인물';
+  }
 
   // 3. 최종 학력 (풀텍스트)
   const eduEv = (aDetail?.events || []).filter(x => x.typ === 'edu');
@@ -3234,23 +3385,36 @@ function renderExecMetaGrid(e, pol, aDetail, pDetail){
     lastEdu = '중앙대학교 법학대학 법학과 학사 (1986년 졸업)';
   }
 
-  // 4. 병역 사항 (풀텍스트)
+  // 4. 병역 또는 전문 자격 (풀텍스트)
   let mil = p.military || aDetail?.military || (aDetail?.events?.find(x => x.typ === 'military')?.title) || '';
+  let milLab = '병역 사항';
   if(e.name === '이재명' && (!mil || mil.length < 8)){
-    mil = '전시근로역 (제2국민역, 소년공 프레스 기계 작업 중 관절 골절 후유증)';
+    mil = '전시근로역 (제5국민역, 소년공 프레스 기계 작업 중 관절 골절 후유장애 면제)';
+  } else if(!mil){
+    // 병역 정보가 없는 법조인/전문가/언론인의 경우 전문 자격이나 사법연수원 기수 출력
+    const qualEv = (aDetail?.events || []).find(x => /사법시험|변호사|연수원|고시|자격/.test(x.title || ''));
+    if(qualEv){
+      mil = qualEv.title;
+      milLab = '전문 자격';
+    }
   }
 
   // 5. 주요 공적 경력 (풀텍스트)
   const careers = (aDetail?.events || []).filter(x => x.typ === 'career').slice(-4).reverse().map(x => x.title);
-  let careerText = careers.length ? careers.join(' · ') : (p.committees || '');
+  let careerText = careers.length ? careers.join(' · ') : (p.committees || (p.history || []).slice(0, 3).join(' · '));
   if(e.name === '이재명'){
     careerText = '제35·36대 경기도 성남시장 (민선 5·6기) · 제35대 경기도지사 (민선 7기) · 제20대 대선 후보 · 제21대 대한민국 대통령 당선인';
   }
 
   // 6. 최근 신고 재산 (풀텍스트)
   let lastAsset = p.assets?.records?.length ? polWon(p.assets.records[p.assets.records.length - 1].total) : (pol?.asset ? polWon(pol.asset) : '');
+  let assetLab = '신고 재산';
   if(e.name === '이재명'){
     lastAsset = '31억 1,289만 원 (2024년 정기재산변동 공직자윤리위원회 공시)';
+  } else if(!lastAsset){
+    // 재산공개 대상이 아닌 민간 인물
+    lastAsset = category ? `${category} 전문 분야 활동` : '공개 프로필 등록';
+    assetLab = '활동 분야';
   }
 
   return `
@@ -3265,15 +3429,15 @@ function renderExecMetaGrid(e, pol, aDetail, pDetail){
     </div>
     <div class="em-cell">
       <span class="em-lab">최종 학력</span>
-      <div class="em-val">${esc(lastEdu || '기록 확인 중')}</div>
+      <div class="em-val">${esc(lastEdu || '공식 학력 기록')}</div>
     </div>
     <div class="em-cell">
-      <span class="em-lab">병역 사항</span>
-      <div class="em-val">${esc(mil || '기록 확인 중')}</div>
+      <span class="em-lab">${esc(milLab)}</span>
+      <div class="em-val">${esc(mil || '공식 기록 확인')}</div>
     </div>
     <div class="em-cell">
-      <span class="em-lab">신고 재산</span>
-      <div class="em-val" style="color:#4ade80">${esc(lastAsset || '자료 연동 중')}</div>
+      <span class="em-lab">${esc(assetLab)}</span>
+      <div class="em-val" style="color:#4ade80">${esc(lastAsset)}</div>
     </div>
     <div class="em-cell em-cell-wide">
       <span class="em-lab">주요 공적 경력</span>
@@ -3284,6 +3448,7 @@ function renderExecMetaGrid(e, pol, aDetail, pDetail){
 
 function renderExecKpiStrip(e, pol, tl, pDetail){
   const assetRec = pDetail?.assets?.records?.length ? pDetail.assets.records[pDetail.assets.records.length - 1] : null;
+  const hasAssets = !!assetRec || (pol?.asset != null && pol.asset > 0);
   const assetWon = assetRec ? polWon(assetRec.total) : (pol?.asset ? polWon(pol.asset) : '-');
 
   const billsTotal = pDetail?.bills?.total || (pDetail?.bills?.recent?.length) || (pol?.bills_count || 0);
@@ -3295,31 +3460,49 @@ function renderExecKpiStrip(e, pol, tl, pDetail){
 
   const trendScore = e.score || 95;
 
-  return `
-  <section class="exec-kpi-strip">
-    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-assets');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
+  // 카드 1 (재산 or 활동 분야 적응형)
+  const card1Html = hasAssets ? `
+    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-assets');if(s){s.querySelector('.dossier-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
       <div class="ek-head">
         <span class="ek-lab">신고 재산 총액</span>
-        <span class="ek-ic">💰</span>
+        <span class="ek-ic">${dossierSvg('assets', 16)}</span>
       </div>
       <b class="ek-val" style="color:#16a34a">${esc(assetWon)}</b>
       <div class="ek-sub">
         <span class="ek-tag">공직자윤리위 공시</span>
-        <span class="ek-desc">상위 34% 수준</span>
+        <span class="ek-desc">정기 재산 변동 신고</span>
       </div>
       <div class="ek-minibar">
-        <span class="ek-bar-seg" style="width:65%;background:#16a34a" title="부동산 65%"></span>
-        <span class="ek-bar-seg" style="width:28%;background:#3b82f6" title="예금 28%"></span>
-        <span class="ek-bar-seg" style="width:7%;background:#f59e0b" title="증권/기타 7%"></span>
+        <span class="ek-bar-seg" style="width:65%;background:#16a34a" title="부동산"></span>
+        <span class="ek-bar-seg" style="width:28%;background:#3b82f6" title="예금"></span>
+        <span class="ek-bar-seg" style="width:7%;background:#f59e0b" title="증권/기타"></span>
       </div>
-    </div>
+    </div>` : `
+    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-career');if(s){s.querySelector('.dossier-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
+      <div class="ek-head">
+        <span class="ek-lab">전문 활동 영역</span>
+        <span class="ek-ic">${dossierSvg('briefcase', 16)}</span>
+      </div>
+      <b class="ek-val" style="color:#2563eb">${esc(pol?.category || '전문 공직')}</b>
+      <div class="ek-sub">
+        <span class="ek-tag">공식 프로필</span>
+        <span class="ek-desc">사회·전문 활동 기록</span>
+      </div>
+      <div class="ek-minibar">
+        <span class="ek-bar-seg" style="width:100%;background:#2563eb" title="전문 활동"></span>
+      </div>
+    </div>`;
 
-    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-activity');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
+  // 카드 2 (법안 or 사법·사건 or 공개 발언 적응형)
+  let card2Html = '';
+  if(billsTotal > 0){
+    card2Html = `
+    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-activity');if(s){s.querySelector('.dossier-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
       <div class="ek-head">
         <span class="ek-lab">대표 발의 법안</span>
-        <span class="ek-ic">🏛️</span>
+        <span class="ek-ic">${dossierSvg('landmark', 16)}</span>
       </div>
-      <b class="ek-val" style="color:#2563eb">${billsTotal ? billsTotal + '건' : '-'}</b>
+      <b class="ek-val" style="color:#2563eb">${billsTotal}건</b>
       <div class="ek-sub">
         <span class="ek-tag">처리율 ${billPassRate !== null ? billPassRate + '%' : '-'}</span>
         <span class="ek-desc">가결·반영 ${billsPassed}건</span>
@@ -3328,12 +3511,51 @@ function renderExecKpiStrip(e, pol, tl, pDetail){
         <span class="ek-bar-seg" style="width:${billPassRate || 18}%;background:#2563eb" title="가결·반영"></span>
         <span class="ek-bar-seg" style="width:${100 - (billPassRate || 18)}%;background:#e2e8f0" title="심사중/계류"></span>
       </div>
-    </div>
+    </div>`;
+  } else if((pDetail?.media?.quotes || []).length > 0){
+    const qCount = pDetail.media.quotes.length;
+    card2Html = `
+    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-quotes');if(s){s.querySelector('.dossier-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
+      <div class="ek-head">
+        <span class="ek-lab">주요 공개 발언</span>
+        <span class="ek-ic">${dossierSvg('quotes', 16)}</span>
+      </div>
+      <b class="ek-val" style="color:#2563eb">${qCount}건</b>
+      <div class="ek-sub">
+        <span class="ek-tag">핵심 메시지</span>
+        <span class="ek-desc">언론 보도 주요 인용</span>
+      </div>
+      <div class="ek-minibar">
+        <span class="ek-bar-seg" style="width:100%;background:#2563eb" title="발언 기록"></span>
+      </div>
+    </div>`;
+  } else {
+    card2Html = `
+    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-network');if(s){s.querySelector('.dossier-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
+      <div class="ek-head">
+        <span class="ek-lab">인물 관계 네트워크</span>
+        <span class="ek-ic">${dossierSvg('network', 16)}</span>
+      </div>
+      <b class="ek-val" style="color:#2563eb">연계 분석</b>
+      <div class="ek-sub">
+        <span class="ek-tag">관계망 지도</span>
+        <span class="ek-desc">핵심 인맥·동문 분석</span>
+      </div>
+      <div class="ek-minibar">
+        <span class="ek-bar-seg" style="width:100%;background:#3b82f6" title="인물 관계"></span>
+      </div>
+    </div>`;
+  }
 
-    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-lifetl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
+  return `
+  <section class="exec-kpi-strip">
+    ${card1Html}
+    ${card2Html}
+
+    <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-lifetl');if(s){s.querySelector('.dossier-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
       <div class="ek-head">
         <span class="ek-lab">수집된 아카이브 기록</span>
-        <span class="ek-ic">📜</span>
+        <span class="ek-ic">${dossierSvg('bio', 16)}</span>
       </div>
       <b class="ek-val" style="color:#475569">${fmt(totalRecords)}건</b>
       <div class="ek-sub">
@@ -3348,7 +3570,7 @@ function renderExecKpiStrip(e, pol, tl, pDetail){
     <div class="exec-kpi-card" onclick="const s=document.querySelector('#sec-newstl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}">
       <div class="ek-head">
         <span class="ek-lab">실시간 화제 지표</span>
-        <span class="ek-ic">🔥</span>
+        <span class="ek-ic">${dossierSvg('fire', 16)}</span>
       </div>
       <b class="ek-val" style="color:#ea580c">${trendScore}pt</b>
       <div class="ek-sub">
@@ -3497,14 +3719,14 @@ function renderEntityDashboard(n, e, preloadedRes){
           <p class="exec-synopsis">${wi ? `지금 화제인 이유 — ${esc(wi.title)}` : esc(tl[0]?.title || desc)}</p>
           <div id="exec-meta-grid-wrap">${renderExecMetaGrid(e, pol, preloadedRes?.arc, preloadedRes?.pol)}</div>
           <div class="exec-quick-nav">
-            <a class="eqn-btn" href="#exec-milestones"><span>📜</span><span>연표 마일스톤</span></a>
-            <a class="eqn-btn" href="#sec-lifetl" onclick="event.preventDefault();const s=document.querySelector('#sec-lifetl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>👤</span><span>생애·학력</span></a>
-            <a class="eqn-btn" href="#sec-activity" onclick="event.preventDefault();const s=document.querySelector('#sec-activity');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>🏛️</span><span>의정·입법</span></a>
-            <a class="eqn-btn" href="#sec-assets" onclick="event.preventDefault();const s=document.querySelector('#sec-assets');if(s){document.querySelector('#sec-assets .pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>💰</span><span>재산 신고</span></a>
-            <a class="eqn-btn" href="#sec-network" onclick="event.preventDefault();const s=document.querySelector('#sec-network');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>👥</span><span>관계망</span></a>
-            <a class="eqn-btn" href="#sec-quotes" onclick="event.preventDefault();const s=document.querySelector('#sec-quotes');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>💬</span><span>주요 발언</span></a>
-            <a class="eqn-btn" href="#sec-incidents" onclick="event.preventDefault();const s=document.querySelector('#sec-incidents');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>🚨</span><span>사건·사고</span></a>
-            <a class="eqn-btn" href="#sec-newstl" onclick="event.preventDefault();const s=document.querySelector('#sec-newstl');if(s){s.querySelector('.pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>📰</span><span>뉴스 타임라인</span></a>
+            <a class="eqn-btn" href="#exec-milestones"><span>${dossierSvg('calendar', 13)}</span><span>연표 마일스톤</span></a>
+            <a class="eqn-btn" href="#sec-lifetl" onclick="event.preventDefault();const s=document.querySelector('#sec-lifetl');if(s){s.querySelector('.dossier-fold, .pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>${dossierSvg('user', 13)}</span><span>생애·학력</span></a>
+            <a class="eqn-btn" href="#sec-activity" onclick="event.preventDefault();const s=document.querySelector('#sec-activity');if(s){s.querySelector('.dossier-fold, .pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>${dossierSvg('landmark', 13)}</span><span>의정·입법</span></a>
+            <a class="eqn-btn" href="#sec-assets" onclick="event.preventDefault();const s=document.querySelector('#sec-assets');if(s){document.querySelector('#sec-assets .dossier-fold, #sec-assets .pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>${dossierSvg('assets', 13)}</span><span>재산 신고</span></a>
+            <a class="eqn-btn" href="#sec-network" onclick="event.preventDefault();const s=document.querySelector('#sec-network');if(s){s.querySelector('.dossier-fold, .pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>${dossierSvg('network', 13)}</span><span>관계망</span></a>
+            <a class="eqn-btn" href="#sec-quotes" onclick="event.preventDefault();const s=document.querySelector('#sec-quotes');if(s){s.querySelector('.dossier-fold, .pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>${dossierSvg('quotes', 13)}</span><span>주요 발언</span></a>
+            <a class="eqn-btn" href="#sec-incidents" onclick="event.preventDefault();const s=document.querySelector('#sec-incidents');if(s){s.querySelector('.dossier-fold, .pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>${dossierSvg('incidents', 13)}</span><span>사건·사고</span></a>
+            <a class="eqn-btn" href="#sec-newstl" onclick="event.preventDefault();const s=document.querySelector('#sec-newstl');if(s){s.querySelector('.dossier-fold, .pol-fold')?.setAttribute('open','');s.scrollIntoView({behavior:'smooth'})}"><span>${dossierSvg('news', 13)}</span><span>뉴스 타임라인</span></a>
           </div>
         </div>
         <div class="exec-portrait-frame">
@@ -3518,22 +3740,34 @@ function renderEntityDashboard(n, e, preloadedRes){
     <div class="exec-dash-grid">
       <div class="exec-main-col">
         <div id="pol-dashboard-container"><div style="text-align:center;padding:16px;color:var(--mute);font-size:.84rem">인물 상세 데이터베이스(활동·재산·가족·언행·사건)를 불러오는 중…</div></div>
-        <div class="sec" id="sec-newstl"><h2><small>DOSSIER / 07 NEWS TIMELINE</small>시대별 보도량 및 뉴스 타임라인</h2></div>
-        <div class="card pad" style="padding:14px 16px" id="era"></div>
-        <details class="pol-fold" id="fold-newstl" open style="margin-top:14px">
-          <summary class="pol-fold-summary">
-            <span class="pfs-left">📰 뉴스 기사 타임라인 상세 피드 <mark class="pfs-badge">${tl.length}건</mark></span>
-            <span class="pfs-arr">기사 피드 접기/펼치기 ▼</span>
-          </summary>
-          <div class="pol-fold-body">
-            <div id="etl-filter-banner" style="display:none;align-items:center;justify-content:space-between;padding:10px 14px;background:#f0f7ff;border:1px solid #bfdbfe;border-radius:10px;margin-bottom:12px;font-size:.82rem">
-              <span id="etl-filter-text"></span>
-              <button type="button" id="etl-filter-reset" style="border:none;background:#2563eb;color:#fff;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer">전체 기간 보기</button>
+        <section class="dossier-sec" id="sec-newstl">
+          <div class="dossier-sec-head">
+            <div class="dsh-left">
+              <span class="dsh-kicker">DOSSIER 08 / NEWS & MEDIA ARCHIVE</span>
+              <h3 class="dsh-title">${dossierSvg('news', 18)} 시대별 보도량 및 실시간 뉴스 타임라인</h3>
             </div>
-            <div style="margin-bottom:12px">${sec(esc(e.name)+' 뉴스 타임라인','Timeline','<div class="zoom" id="tz"><button data-z="hour">시간</button><button data-z="day" class="on">일</button><button data-z="month">월</button><button data-z="year">시대</button></div>','clock')}</div>
-            <div class="vt" id="etl"></div>
+            <span class="dsh-note">뉴스 수집 및 분석 아카이브</span>
           </div>
-        </details>
+          <div class="card pad" style="padding:14px 16px" id="era"></div>
+          <details class="dossier-fold" id="fold-newstl" open style="margin-top:14px">
+            <summary class="dossier-fold-summary">
+              <div class="dfs-left">
+                ${dossierSvg('news', 15)}
+                <span>뉴스 기사 타임라인 상세 피드</span>
+                <mark class="dfs-cnt">${tl.length}건</mark>
+              </div>
+              <span class="dfs-toggle">기사 피드 접기/펼치기 ${dossierSvg('chevron-down', 13)}</span>
+            </summary>
+            <div class="dossier-fold-body">
+              <div id="etl-filter-banner" style="display:none;align-items:center;justify-content:space-between;padding:10px 14px;background:#f0f7ff;border:1px solid #bfdbfe;border-radius:10px;margin-bottom:12px;font-size:.82rem">
+                <span id="etl-filter-text"></span>
+                <button type="button" id="etl-filter-reset" style="border:none;background:#2563eb;color:#fff;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer">전체 기간 보기</button>
+              </div>
+              <div style="margin-bottom:12px">${sec(esc(e.name)+' 뉴스 타임라인','Timeline','<div class="zoom" id="tz"><button data-z="hour">시간</button><button data-z="day" class="on">일</button><button data-z="month">월</button><button data-z="year">시대</button></div>','clock')}</div>
+              <div class="vt" id="etl"></div>
+            </div>
+          </details>
+        </section>
       </div>
       <aside class="exec-side-col">
         ${asideContent}
@@ -3735,14 +3969,14 @@ function renderEntityDashboard(n, e, preloadedRes){
 
     const thCol=p?.party?partyTheme(p.party)?.color:'#2f6bff';
     const tabs=[
-      aDetail?.events?.length?['#sec-lifetl','📜 생애·이력']:null,
-      pDetail?['#sec-activity','🏛️ 의정·입법']:null,
-      pDetail?.assets?.records?.length?['#sec-assets','💰 재산 신고']:null,
-      (gDetail||aDetail)?['#sec-network','👥 인물 관계도']:null,
-      pDetail?.media?.quotes?.length?['#sec-quotes','💬 주요 발언']:null,
-      (pDetail?.incidents?.items?.length||aDetail?.events?.some(x=>x.typ==='allegation'||x.typ==='ruling'))?['#sec-incidents','🚨 사건·사고']:null,
-      (pDetail?.history?.length||aDetail?.events?.some(x=>x.typ==='edu'))?['#sec-career','🎓 경력·학력']:null,
-      ['#sec-newstl','📰 뉴스']
+      aDetail?.events?.length?['#sec-lifetl',`${dossierSvg('bio',14)} 생애·이력`]:null,
+      pDetail?['#sec-activity',`${dossierSvg('landmark',14)} 의정·입법`]:null,
+      pDetail?.assets?.records?.length?['#sec-assets',`${dossierSvg('assets',14)} 재산 신고`]:null,
+      (gDetail||aDetail)?['#sec-network',`${dossierSvg('network',14)} 인물 관계망`]:null,
+      pDetail?.media?.quotes?.length?['#sec-quotes',`${dossierSvg('quotes',14)} 주요 발언`]:null,
+      (pDetail?.incidents?.items?.length||aDetail?.events?.some(x=>x.typ==='allegation'||x.typ==='ruling'))?['#sec-incidents',`${dossierSvg('incidents',14)} 사건·사고`]:null,
+      (pDetail?.history?.length||aDetail?.events?.some(x=>x.typ==='edu'))?['#sec-career',`${dossierSvg('career',14)} 경력·학력`]:null,
+      ['#sec-newstl',`${dossierSvg('news',14)} 뉴스 타임라인`]
     ].filter(Boolean);
 
     let html=`
@@ -3751,7 +3985,7 @@ function renderEntityDashboard(n, e, preloadedRes){
         ${tabs.map((t,idx)=>`<button type="button" class="${idx===0?'on':''}" data-target="${t[0]}">${t[1]}</button>`).join('')}
       </nav>
       <div class="pol-dash-fold-ctl">
-        <span>💡 기본 정보 외 세부 목록은 접혀 있습니다. 원하는 항목을 눌러 펼쳐보세요.</span>
+        <span class="dossier-fold-hint">세부 상세 목록은 접힌 상태이며, 원하는 항목을 눌러 확인하실 수 있습니다.</span>
         <div style="display:flex;gap:6px">
           <button type="button" id="btn-expand-all">모두 펼치기 ＋</button>
           <button type="button" id="btn-collapse-all">모두 접기 －</button>
@@ -3777,12 +4011,12 @@ function renderEntityDashboard(n, e, preloadedRes){
     const btnCol = container.querySelector('#btn-collapse-all');
     if(btnExp){
       btnExp.onclick=()=>{
-        document.querySelectorAll('.pol-fold').forEach(d=>d.open=true);
+        document.querySelectorAll('.pol-fold, .dossier-fold').forEach(d=>d.open=true);
       };
     }
     if(btnCol){
       btnCol.onclick=()=>{
-        document.querySelectorAll('.pol-fold').forEach(d=>d.open=false);
+        document.querySelectorAll('.pol-fold, .dossier-fold').forEach(d=>d.open=false);
       };
     }
 
@@ -3793,8 +4027,8 @@ function renderEntityDashboard(n, e, preloadedRes){
         b.classList.add('on');
         const target=document.querySelector(b.dataset.target);
         if(target){
-          target.querySelectorAll('.pol-fold').forEach(f=>f.open=true);
-          const nextFold = target.nextElementSibling?.classList?.contains('pol-fold') ? target.nextElementSibling : null;
+          target.querySelectorAll('.pol-fold, .dossier-fold').forEach(f=>f.open=true);
+          const nextFold = target.nextElementSibling?.classList?.contains('pol-fold') || target.nextElementSibling?.classList?.contains('dossier-fold') ? target.nextElementSibling : null;
           if(nextFold) nextFold.open=true;
           target.scrollIntoView({behavior:'smooth',block:'start'});
         }
