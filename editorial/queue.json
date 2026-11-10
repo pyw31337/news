@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-11",
-  "generated_at": "2026-11-11T13:53:07+09:00",
+  "generated_at": "2026-11-11T05:52:54+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,109 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i6f406c2d",
-      "title": "[속보] '4% 급등' 코스닥, 연이틀 매수 사이드카 발동…700선 회복 시도",
+      "issue_id": "ib4270649",
+      "title": "“스타트업 키다리 아저씨”… 삼성전자, 14년간 1000곳 키웠다",
       "category": "경제",
-      "rank": 7,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "코스닥이 장중 5% 넘게 폭등하며 700선을 되찾았다.",
-        "[속보] '4% 급등' 코스닥, 연이틀 매수 사이드카 발동…700선 회복 시도",
-        "코스닥 4%대 급등에 이틀 연속 '매수 사이드카' 발동",
-        "“700선 탈환에 매수 사이드카까지”…코스닥 5.06% 폭등, 반도체·2차전지 질주",
-        "지속돼 매수 사이드카를 발동했다."
-      ],
-      "sources": [
-        {
-          "press": "한국일보",
-          "title": "[속보] '4% 급등' 코스닥, 연이틀 매수 사이드카 발동…700선 회복 시도",
-          "url": "https://n.news.naver.com/article/469/0000964933"
-        },
-        {
-          "press": "MBC",
-          "title": "코스닥 4%대 급등에 이틀 연속 '매수 사이드카' 발동",
-          "url": "https://n.news.naver.com/article/214/0001534867"
-        },
-        {
-          "press": "디지털데일리",
-          "title": "“700선 탈환에 매수 사이드카까지”…코스닥 5.06% 폭등, 반도체·2차전지 질주",
-          "url": "https://n.news.naver.com/article/138/0002248092"
-        },
-        {
-          "press": "lcnews.co.kr",
-          "title": "코스닥, 매수 사이드카 발동...올해 21번째",
-          "url": "https://www.lcnews.co.kr/news/articleView.html?idxno=211209"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "코스닥이 장중 5% 넘게 폭등하며 700선을 되찾았다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "오전 11시 28분 기준, 코스닥150 선물은 1092.40포인트였던 전일 종가 대비 6.06% 오른 1158.60포인트를, 코스닥150 지수는 1088.85포인트에서 6.19% 상승한 1156.27포인트를…"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "[속보] '4% 급등' 코스닥, 연이틀 매수 사이드카 발동…700선 회복 시도"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i2c873e0d",
-      "title": "“불륜 사과 다음 날 출근”…‘젠슨 황’에 엔비디아 내부 ‘슬프다’",
-      "category": "세계",
-      "rank": 2,
+      "rank": 4,
       "priority_score": 45,
       "production_types": [
         "comic",
@@ -137,59 +38,59 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "중국 국가안전부 연계 의혹을 받는 앨리스 황(황러)이 젠슨 황 엔비디아 최고경영자(CEO)와의 관계를 활용해 10조원 규모의 미국산 인공지능(AI) 반도체를 중국에 밀반입한 정황이 드러났다.",
-        "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”",
-        "\"젠슨 황 내연녀, 10조 엔비디아 칩 중국으로 밀반입\"",
-        "엔비디아 최고경영자(CEO) 젠슨 황이 이혼할 시 부인이 재산 절반에 해당하는 약 100조원을 가져갈 수 있다는...",
-        "황 CEO는 지난 8일 중국 정보기관을 위해 활동한 것으로 의심받는 중국 국적의 여성 기업인 앨리스 황..."
+        "최근 국내 증시에서는 미국 반도체주 반등과 국제유가 하락 등의 영향으로 코스피와 코스닥 양 시장에서 매수 사이드카가 발동되며 반도체 대형주가 큰 폭으로 상승했다.",
+        "TIGER 반도체TOP10은 삼성전자와 SK하이닉스 비중이 각각 27.88%, 26.10%로 절반을 넘었다.",
+        "1000만원을 넣으면 약 540만원이 두 기업에 들어가는 셈이다.",
+        "증권사 3곳 DC·IRP 평가금액 톱10 ETF 분석해 보니 코스피 200도...",
+        "삼성전자는 9000원(4.74%) 오른 19만 8900원에, SK하이닉스는 7만 6000원(6.69%) 오른 121만 1000원에 정규장을 마쳤다."
       ],
       "sources": [
         {
-          "press": "조선일보",
-          "title": "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”",
-          "url": "https://n.news.naver.com/article/023/0004008955"
+          "press": "seoul.co.kr",
+          "title": "임피 코앞인데 ‘-45%’…눈물 뚝뚝 퇴직연금",
+          "url": "https://n.news.naver.com/mnews/article/081/0003697943?sid=101"
         },
         {
-          "press": "YTN",
-          "title": "\"젠슨 황 내연녀, 10조 엔비디아 칩 중국으로 밀반입\"",
-          "url": "https://n.news.naver.com/article/052/0002431303"
+          "press": "seoul.co.kr",
+          "title": "“반도체 급락 과했다” 모처럼 상승… ‘삼전닉스’ 뛰어 코스피 5230선...",
+          "url": "https://n.news.naver.com/mnews/article/081/0003697946?sid=101"
         },
         {
-          "press": "khan.co.kr",
-          "title": "‘불륜 인정’ 젠슨 황 재산 200조원···“이혼 시 절반 분할 가능성도...",
-          "url": "https://n.news.naver.com/mnews/article/032/0003482005?sid=104"
+          "press": "전자신문",
+          "title": "김형년 두나무 부회장 “삼성전자·SK하이닉스 해외서 거래, 가슴 아프다”",
+          "url": "https://n.news.naver.com/article/030/0003484190"
         },
         {
-          "press": "채널A",
-          "title": "“젠슨 황, 외도 시인 하루 만에 정상 출근”…사과한 뒤 곧장 업무",
-          "url": "https://n.news.naver.com/article/449/0000367119"
+          "press": "kjdaily.com",
+          "title": "‘AI 시즌오프’ 우려 진정되나…코스피 4.39% 급반등",
+          "url": "http://www.kjdaily.com/article.php?aid=1794329647691782276"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "중국 국가안전부 연계 의혹을 받는 앨리스 황(황러)이 젠슨 황 엔비디아 최고경영자(CEO)와의 관계를 활용해 10조원 규모의 미국산 인공지능(AI) 반도체를 중국에 밀반입한 정황이 드러났다."
+          "evidence": "최근 국내 증시에서는 미국 반도체주 반등과 국제유가 하락 등의 영향으로 코스피와 코스닥 양 시장에서 매수 사이드카가 발동되며 반도체 대형주가 큰 폭으로 상승했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”"
+          "evidence": "이 밖에도 코스피 시가총액 상위 종목 대부분이 상승했다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "\"젠슨 황 내연녀, 10조 엔비디아 칩 중국으로 밀반입\""
+          "evidence": "TIGER 반도체TOP10은 삼성전자와 SK하이닉스 비중이 각각 27.88%, 26.10%로 절반을 넘었다."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "젠슨 황의 연인으로 지목된 앨리스 황의 10조 원 규모 AI칩 중국 유출 의혹이 연일 보도되며 파문이 확산되는 양상이다. 사내외에서 스캔들과 국가 안보적 유출 의혹이 동시에 제기되면서 엔비디아의 관리 체계가…"
+          "evidence": "미국 반도체주 반등과 유가 하락에 힘입어 양 시장에 매수 사이드카가 발동되었고, 과도한 하락이었다는 인식 속에 지수가 급반등했다."
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -225,9 +126,9 @@
       }
     },
     {
-      "issue_id": "i2c19af23",
-      "title": "젠슨황 스캔들 일파만파...\"앨리스황, 엔비디아 AI칩 중국 밀반입\" [시사정각]",
-      "category": "세계",
+      "issue_id": "i34e32f67",
+      "title": "GV90, 기본 1억3950만원부터…제네시스 첫 초대형 플래그십 출격",
+      "category": "경제",
       "rank": 8,
       "priority_score": 37,
       "production_types": [
@@ -236,49 +137,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "앨리스 황은 젠슨 황 엔비디아 CEO와의 관계를 이용해 미국산 인공지능(AI) 반도체를 중국으로 공급했다.",
-        "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”",
-        "\"젠슨황 연인 앨리스황, 10조원 엔비디아 AI칩 중국으로 밀반입\"",
-        "“젠슨 황 외도 상대 앨리스 황, 10조원 엔비디아 AI칩 中 밀반입”",
-        "“젠슨황 내연녀 앨리스황, 10조 엔비디아 AI칩 中으로 밀반입”"
+        "제네시스가 10일 플래그십 전기 스포츠유틸리티차량(SUV) GV90을 정식 출시하고 가격을 공개했다.",
+        "최고 2억3950만원…제네시스, 국산 최고가 ‘GV90 네오룬’ 출시",
+        "제네시스는 10일 국내에서 GV90와 GV90 네오룬을 출시하고 계약을 시작했다.",
+        "GV90는 7인승 1억3950만원, 6인승 1억4550만원부터 판매한다.",
+        "네오룬은 6인승 1억8990만원, 4인승 2억3950만원이다."
       ],
       "sources": [
         {
-          "press": "디지털타임스",
-          "title": "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”",
-          "url": "https://n.news.naver.com/article/029/0003058356"
+          "press": "동아일보",
+          "title": "최고 2억3950만원…제네시스, 국산 최고가 ‘GV90 네오룬’ 출시",
+          "url": "https://n.news.naver.com/article/020/0003761388"
         },
         {
-          "press": "연합뉴스",
-          "title": "\"젠슨황 연인 앨리스황, 10조원 엔비디아 AI칩 중국으로 밀반입\"",
-          "url": "https://n.news.naver.com/article/001/0016434519"
+          "press": "gpkorea.com",
+          "title": "\"벤츠·BMW보다 크고 강력하다\"…제네시스 GV90, 마이바흐까지 넘본다",
+          "url": "https://www.gpkorea.com/news/articleView.html?idxno=148487"
         },
         {
-          "press": "전자신문",
-          "title": "“젠슨 황 외도 상대 앨리스 황, 10조원 엔비디아 AI칩 中 밀반입”",
-          "url": "https://n.news.naver.com/article/030/0003484294"
+          "press": "segye.com",
+          "title": "[경제 단신] 전동화 ‘GV90’ 출시… 최고 2억3950만원 외",
+          "url": "https://n.news.naver.com/mnews/article/022/0004174147?sid=101"
         },
         {
-          "press": "중앙일보",
-          "title": "“젠슨황 내연녀 앨리스황, 10조 엔비디아 AI칩 中으로 밀반입”",
-          "url": "https://n.news.naver.com/article/025/0003564342"
+          "press": "joongang.co.kr",
+          "title": "[사진] 첫 2억원대 현대차 ‘GV90 네오룬’",
+          "url": "https://n.news.naver.com/mnews/article/025/0003564272?sid=101"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "앨리스 황은 젠슨 황 엔비디아 CEO와의 관계를 이용해 미국산 인공지능(AI) 반도체를 중국으로 공급했다."
+          "evidence": "제네시스가 10일 플래그십 전기 스포츠유틸리티차량(SUV) GV90을 정식 출시하고 가격을 공개했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "젠슨 황 엔비디아 CEO의 스캔들이 10조 원 규모의 AI 반도체 중국 공급 의혹으로 번졌습니다."
+          "evidence": "GV90는 약 2조원을 투자한 울산 전기차 전용공장의 첫 생산 차종으로 내년 초 미국에도 출시된다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”"
+          "evidence": "최고 2억3950만원…제네시스, 국산 최고가 ‘GV90 네오룬’ 출시"
         },
         {
           "panel": 4,
@@ -287,8 +188,107 @@
         }
       ],
       "visual_brief": {
-        "scene": "security",
-        "direction": "보안 관제·접속 흔적·차단 절차를 사용, 실제 피해자·공격자 묘사는 제외",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i64b3a926",
+      "title": "엔비디아 주주들 집단소송…젠슨 황 불륜녀 행방 묘연",
+      "category": "세계",
+      "rank": 5,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "젠슨 황 엔비디아 CEO의 불륜 스캔들로 인해 엔비디아 주가가 급락하며 하루 만에 시가총액 260조 원이 사라졌습니다.",
+        "“재산 220조” 불륜 인정한 젠슨 황, 이혼시 위자료 110조 폭탄?…“엔비디아 또다른 뇌관”",
+        "하루 만에 엔비디아 시총 258조원 증발… 주주 “리스크 숨겼다” 집단소송 [젠슨 황 스캔들 파장]",
+        "‘젠슨 황 스캔들’ 후폭풍...공개 일정 취소하고 주주 집단소송 당해",
+        "대장주 엔비디아가 젠슨 황 최고경영자(CEO)의 사생활 논란과 국가안보 리스크라는 대형 악재를 맞아 주가가 급락했다."
+      ],
+      "sources": [
+        {
+          "press": "전자신문",
+          "title": "“재산 220조” 불륜 인정한 젠슨 황, 이혼시 위자료 110조 폭탄?…“엔비디아 또다른 뇌관”",
+          "url": "https://n.news.naver.com/article/030/0003483754"
+        },
+        {
+          "press": "세계일보",
+          "title": "하루 만에 엔비디아 시총 258조원 증발… 주주 “리스크 숨겼다” 집단소송 [젠슨 황 스캔들 파장]",
+          "url": "https://n.news.naver.com/article/022/0004174050"
+        },
+        {
+          "press": "조선일보",
+          "title": "‘젠슨 황 스캔들’ 후폭풍...공개 일정 취소하고 주주 집단소송 당해",
+          "url": "https://n.news.naver.com/article/023/0004008761"
+        },
+        {
+          "press": "fnnews.com",
+          "title": "\"I am 신뢰에요\"…엔비디아 260조 증발하자 '전청조' 소환된 까닭",
+          "url": "https://n.news.naver.com/mnews/article/014/0005602358?sid=101"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "젠슨 황 엔비디아 CEO의 불륜 스캔들로 인해 엔비디아 주가가 급락하며 하루 만에 시가총액 260조 원이 사라졌습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "엔비디아 주주들은 회사와 황 CEO가 관련 위험을 충분히 공개하지 않아 투자자들에게 손해를 입혔다며 미국 연방법원에 집단소송을 제기했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "“재산 220조” 불륜 인정한 젠슨 황, 이혼시 위자료 110조 폭탄?…“엔비디아 또다른 뇌관”"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
