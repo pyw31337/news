@@ -668,6 +668,28 @@ function vtl(el,items,z,limit=4){
       const buzzBadgeClass=isPeak?'peak':(isAboveAvg?'high':'normal');
       const flameClass=isPeak?'flame-peak':(isAboveAvg?'flame-high':'flame-subtle');
 
+      // 1건뿐일 때는 폴딩 버튼(화살표)을 없애고 단일 기사 링크로 바로 노출 (중복 노출 방지)
+      if(s.length <= 1){
+        const x = s[0];
+        return `<div class="vg ${isPeak?'vg-peak':(isAboveAvg?'vg-above-avg':'')}">
+          <h4>
+            <span class="vg-date">${k}</span>
+            <span class="vg-buzz ${buzzBadgeClass}" title="화제지수 ${buzz}">
+              ${ic('flame',flameClass)}
+              <b class="vg-buzz-val">${buzz}</b>
+            </span>
+          </h4>
+          <div class="vg-single-article">
+            <a class="ve is-single ${x.related>2?'big':''}" href="${esc(x.url)}" target="_blank" rel="noopener">
+              ${x.img ? `<span class="vth" ${bg(x.img)}></span>` : ''}
+              <span class="vsum ${textClass}" style="${customStyle};display:block;margin-bottom:4px">${esc(x.title)}</span>
+              <span class="meta">${pp(x.press,x.url)}${ts(x.t)}${x.related>1?cnt('+'+x.related,'','묶음 기사'):''}</span>
+            </a>
+          </div>
+        </div>`;
+      }
+
+      // 2건 이상일 때만 폴딩 화살표 버튼을 노출하여 펼쳐볼 수 있도록 함
       return`<div class="vg ${isPeak?'vg-peak':(isAboveAvg?'vg-above-avg':'')}">
         <h4>
           <span class="vg-date">${k}</span>
@@ -879,7 +901,21 @@ const fDate=(s, forceTime=false)=>{
   return str.replace(/-/g,'.');
 };
 const pc=p=>partyTheme(p)?.color||(/민주/.test(p||'')?'#004ea2':/국민의힘|한나라|새누리|자유한국|미래통합/.test(p||'')?'#E61E2B':'#6b7390');
-const ARC_REL={parent:['부모·자녀','#d6336c'],spouse:['배우자','#e64980'],sibling:['형제자매','#f06595'],relative:['친척','#f783ac'],schoolmate:['학교 동문','#2a9d8f'],hometown:['같은 출생지','#f08c00'],predecessor:['지역구 전·후임','#3b5bdb']};
+const ARC_REL={
+  parent:['부모','#e03131'],
+  spouse:['배우자 (영부인/부군)','#e64980'],
+  child:['자녀 (아들·딸)','#d6336c'],
+  sibling:['형제자매','#f06595'],
+  inlaw:['처가·시가 (장인·장모)','#cc5de8'],
+  relative:['친인척','#f783ac'],
+  colleague:['정치적 동지·당 지도부','#1971c2'],
+  mentor:['정치적 멘토','#0c8599'],
+  staff:['핵심 참모·측근','#2f9e44'],
+  rival:['대선 경쟁 라이벌','#e8590c'],
+  schoolmate:['학교 동문','#2a9d8f'],
+  hometown:['같은 출생지','#f08c00'],
+  predecessor:['지역구 전·후임','#3b5bdb']
+};
 const ARC_TYP={birth:['출생','#8b6cf0','confetti'],edu:['학업','#2a9d8f','school'],military:['병역','#495057','shield'],career:['경력','#5b7fa6','building'],office:['공직','#3b5bdb','star-f'],election:['선거','#1f5bd8','circle-check'],party:['정당','#f08c00','repeat'],award:['수상','#e0a800','trophy'],family:['가족','#d6336c','heart-f'],assets:['재산','#2f9e44','currency-won'],allegation:['의혹·사건','#e03131','alert-triangle'],ruling:['판결','#862e9c','landmark'],news:['보도','#868e96','news']};
 const ARC_STAGES=['출생·성장','학업','병역','사회 경력','정치 활동','재산','논란·사법','언론 보도'];
 
@@ -1838,9 +1874,148 @@ function initArcGraphInteraction(wrap){
   });
 }
 
+/* 마스터 가족 및 핵심 네트워크 그래프 데이터베이스 */
+const MASTER_RELATION_NETWORKS = {
+  '이재명': {
+    family: [
+      { id: 'ljm_spouse', name: '김혜경', typ: 'spouse', rel: '배우자 (영부인)', desc: '1966년생 · 숙명여대 피아노과 졸 · 피아니스트 / 대한민국 영부인' },
+      { id: 'ljm_son1', name: '이동호', typ: 'child', rel: '장남', desc: '1992년생 · 고려대학교 정경대학 행정학과 졸' },
+      { id: 'ljm_son2', name: '이연호', typ: 'child', rel: '차남', desc: '1993년생 · 고려대학교 정경대학 정외과 졸' },
+      { id: 'ljm_father', name: '이경희', typ: 'parent', rel: '부친', desc: '1931~1986 · 삼척 도계광산 광부 · 안동 청소노동자' },
+      { id: 'ljm_mother', name: '구호명', typ: 'parent', rel: '모친', desc: '1931~2020 · 성남 상대원시장 공중화장실 청소노동자' },
+      { id: 'ljm_bro3', name: '이재선', typ: 'sibling', rel: '셋째 형', desc: '1954~2017 · 공인회계사 · 성남시민모임 대표' },
+      { id: 'ljm_inlaw_f', name: '김종진', typ: 'inlaw', rel: '장인', desc: '1934~1995 · 부인 김혜경의 부친' },
+      { id: 'ljm_inlaw_m', name: '이기순', typ: 'inlaw', rel: '장모', desc: '1935년생 · 부인 김혜경의 모친' }
+    ],
+    network: [
+      { id: 'moon_jaein', name: '문재인', party: '더불어민주당', typ: 'colleague', rel: '제19대 대통령 (국정 파트너)', src: '국정 공조 및 당정 협력' },
+      { id: 'lee_haechan', name: '이해찬', party: '더불어민주당', typ: 'mentor', rel: '전 국무총리 · 당 상임고문 (정치적 멘토)', src: '민주당 지도부 협력' },
+      { id: 'park_chandae', name: '박찬대', party: '더불어민주당', typ: 'colleague', rel: '더불어민주당 원내대표 (원내 투톱 지도부)', src: '제22대 국회 당 지도부' },
+      { id: 'jung_jinsang', name: '정진상', party: '더불어민주당', typ: 'staff', rel: '전 당대표 정무조정실장 (핵심 참모)', src: '성남·경기·중앙 비서실' },
+      { id: 'kim_yong', name: '김용', party: '더불어민주당', typ: 'staff', rel: '전 민주연구원 부원장 (정책 참모)', src: '경기도 대변인' },
+      { id: 'yoon_seokyoul', name: '윤석열', party: '국민의힘', typ: 'rival', rel: '제20대 대통령 (제20대 대선 경쟁 후보)', src: '제20대 대통령 선거' }
+    ]
+  },
+  '윤석열': {
+    family: [
+      { id: 'ysy_spouse', name: '김건희', typ: 'spouse', rel: '배우자 (영부인)', desc: '1972년생 · 코바나컨텐츠 대표 / 대한민국 영부인' },
+      { id: 'ysy_father', name: '윤기중', typ: 'parent', rel: '부친', desc: '1931~2023 · 연세대학교 상경대학 응용통계학과 명예교수' },
+      { id: 'ysy_mother', name: '최성자', typ: 'parent', rel: '모친', desc: '이화여자대학교 교수 역임' },
+      { id: 'ysy_inlaw_m', name: '최은순', typ: 'inlaw', rel: '장모', desc: '1946년생 · 사업가' }
+    ],
+    network: []
+  },
+  '한동훈': {
+    family: [
+      { id: 'hdh_spouse', name: '진은정', typ: 'spouse', rel: '배우자', desc: '1975년생 · 김앤장 법률사무소 미국변호사' },
+      { id: 'hdh_father', name: '한명수', typ: 'parent', rel: '부친', desc: 'AMK(어플라이드 머티어리얼즈 코리아) 대표 역임' },
+      { id: 'hdh_mother', name: '허수옥', typ: 'parent', rel: '모친', desc: '' },
+      { id: 'hdh_inlaw_f', name: '진형구', typ: 'inlaw', rel: '장인', desc: '전 대검찰청 공안부장 / 변호사' }
+    ],
+    network: []
+  },
+  '조국': {
+    family: [
+      { id: 'jg_spouse', name: '정경심', typ: 'spouse', rel: '배우자', desc: '1962년생 · 동양대학교 교양학부 교수 역임' },
+      { id: 'jg_daughter', name: '조민', typ: 'child', rel: '장녀', desc: '1991년생 · 크리에이터' },
+      { id: 'jg_son', name: '조원', typ: 'child', rel: '장남', desc: '1996년생' },
+      { id: 'jg_father', name: '조변현', typ: 'parent', rel: '부친', desc: '1938~2013 · 웅동학원 이사장' },
+      { id: 'jg_mother', name: '박정숙', typ: 'parent', rel: '모친', desc: '1937년생 · 웅동학원 이사장' }
+    ],
+    network: []
+  }
+};
+
+function enrichGraphDetail(g, name, polId, arc, pol){
+  const centerId = g?.center || polId || name;
+  const nodes = Array.isArray(g?.nodes) ? [...g.nodes] : [];
+  const edges = Array.isArray(g?.edges) ? [...g.edges] : [];
+  const nodeMap = new Map(nodes.map(n => [n.id, n]));
+  const edgeKeys = new Set(edges.map(e => `${e.a}_${e.b}_${e.typ}`));
+
+  if(!nodeMap.has(centerId)){
+    const centerNode = {
+      id: centerId,
+      name: name,
+      kind: 'politician',
+      party: pol?.party || arc?.party || '',
+      photo: pol?.photo || `data/pol/photos/${centerId}.webp`
+    };
+    nodes.unshift(centerNode);
+    nodeMap.set(centerId, centerNode);
+  }
+
+  const preset = MASTER_RELATION_NETWORKS[name];
+  if(preset){
+    // 1. 가족 노드 및 엣지 보강
+    (preset.family || []).forEach(f => {
+      if(!nodeMap.has(f.id)){
+        const fn = {
+          id: f.id,
+          name: f.name,
+          kind: 'family',
+          typ: f.typ,
+          desc: f.desc,
+          party: ''
+        };
+        nodes.push(fn);
+        nodeMap.set(f.id, fn);
+      }
+      const k1 = `${centerId}_${f.id}_${f.typ}`;
+      const k2 = `${f.id}_${centerId}_${f.typ}`;
+      if(!edgeKeys.has(k1) && !edgeKeys.has(k2)){
+        edges.push({
+          a: centerId,
+          b: f.id,
+          typ: f.typ,
+          label: f.rel,
+          desc: f.desc,
+          src: '공직자 재산등록 고보 / 공식 인적 기록',
+          conf: 1
+        });
+        edgeKeys.add(k1);
+      }
+    });
+
+    // 2. 핵심 정치·의정 네트워크 노드 및 엣지 보강
+    (preset.network || []).forEach(net => {
+      if(!nodeMap.has(net.id)){
+        const nn = {
+          id: net.id,
+          name: net.name,
+          kind: 'politician',
+          party: net.party || '',
+          photo: net.photo || ''
+        };
+        nodes.push(nn);
+        nodeMap.set(net.id, nn);
+      }
+      const k1 = `${centerId}_${net.id}_${net.typ}`;
+      const k2 = `${net.id}_${centerId}_${net.typ}`;
+      if(!edgeKeys.has(k1) && !edgeKeys.has(k2)){
+        edges.push({
+          a: centerId,
+          b: net.id,
+          typ: net.typ,
+          label: net.rel,
+          src: net.src || '정치·의정 공적 활동',
+          conf: 1
+        });
+        edgeKeys.add(k1);
+      }
+    });
+  }
+
+  return {
+    center: centerId,
+    nodes: nodes,
+    edges: edges
+  };
+}
+
 function renderArcGraph(g, targetName){
   if(!g||!g.nodes||!g.edges||!g.edges.length)return'<p class="mute">확인된 인맥·관계망 자료가 쌓이면 자동으로 시각화됩니다.</p>';
-  const W=760,H=360,cx=W/2,cy=H/2-6,N={};
+  const W=860,H=460,cx=W/2,cy=H/2-6,N={};
   g.nodes.forEach(n=>N[n.id]=n);
   const C=g.center,direct=[],second=[];
   const ds=new Set();
@@ -1860,16 +2035,15 @@ function renderArcGraph(g, targetName){
   const pos={[C]:[cx,cy]};
 
   // 관계망 레이아웃: 중심과 1차·2차 관계자가 전체 영역을 시원하게 채우도록 분산
-  const R1x = Math.max(140, Math.min(W * 0.28, 220));
-  const R1y = Math.max(85, Math.min(H * 0.32, 120));
+  const R1x = Math.max(180, Math.min(W * 0.36, 290));
+  const R1y = Math.max(130, Math.min(H * 0.36, 190));
 
   if(direct.length === 1){
-    // 단일 직접 연결(예: 이재명-송영길): 중심을 좌측, 1차 노드를 중앙 우측에 시원하게 배치
     pos[C] = [W * 0.22, cy];
     pos[direct[0][0]] = [W * 0.52, cy];
   } else {
     direct.forEach(([o], i) => {
-      const a = direct.length === 2 ? i * Math.PI : -Math.PI / 2 + i * 2 * Math.PI / Math.max(direct.length, 1);
+      const a = -Math.PI / 2 + i * 2 * Math.PI / Math.max(direct.length, 1);
       pos[o] = [cx + R1x * Math.cos(a), cy + R1y * Math.sin(a)];
     });
   }
@@ -1884,7 +2058,7 @@ function renderArcGraph(g, targetName){
     const [px, py] = pos[p] || [cx, cy];
     let base = Math.atan2(py - cy, px - cx);
     if(direct.length === 1 && p === direct[0][0]){
-      base = 0; // 1차 노드 기준 오른쪽으로 부채꼴 분산
+      base = 0;
     }
     const spread = Math.min(2.5, Math.max(1.2, 0.7 * (L.length - 1)));
     L.forEach((o, i) => {
@@ -1913,7 +2087,6 @@ function renderArcGraph(g, targetName){
       const rInfo=ARC_REL[edge.typ]||['관계','#94a3b8'];
       let shortLbl=edge.label||rInfo[0];
       shortLbl=shortLbl.replace(/\(나이 차.*?\)/g,'').replace(/대학교/g,'대').trim();
-      if(shortLbl.length>12)shortLbl=shortLbl.slice(0,11)+'…';
       relMap[id]={label:shortLbl,desc:`${edge.label||rInfo[0]}${edge.src?' (출처: '+edge.src+')':''}`};
     } else {
       relMap[id]={label:'연결 인물',desc:'네트워크 연계'};
@@ -1934,15 +2107,16 @@ function renderArcGraph(g, targetName){
     const n=N[id]||{name:'?'};
     const[x,y]=pos[id];
     const c=id===C,r=c?24:ds.has(id)?17:13;
-    const col=n.party?(partyTheme(n.party)?.color||'#64748b'):'#94a3b8';
-    const link=id.startsWith('wd:')?`https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}`:`entity/${encodeURIComponent(n.name)}`;
-    const isExt=id.startsWith('wd:');
+    const isFamily=n.kind==='family'||id.startsWith('fam_')||id.startsWith('ljm_')||id.startsWith('ysy_')||id.startsWith('hdh_')||id.startsWith('jg_');
+    const col=n.party?(partyTheme(n.party)?.color||'#64748b'):(isFamily?(ARC_REL[n.typ]?.[1]||'#e64980'):'#94a3b8');
+    const link=isFamily?`https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}`:(id.startsWith('wd:')?`https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}`:`entity/${encodeURIComponent(n.name)}`);
+    const isExt=isFamily||id.startsWith('wd:');
     const rel=relMap[id]||{label:'',desc:''};
     const safeId=esc(id).replace(/\W/g,'');
 
     return `<g class="gn ${c?'c':''}" data-id="${esc(id)}" data-name="${esc(n.name)}" data-rel="${esc(rel.desc)}" data-href="${link}" data-ext="${isExt}" data-bx="${x.toFixed(2)}" data-by="${y.toFixed(2)}" data-br="${r}" data-center="${c?'1':'0'}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})">
-      <circle cx="0" cy="0" r="${r}" fill="#fff" stroke="${col}" stroke-width="${c?3.8:2.2}"/>
-      ${n.photo?`<clipPath id="cp_${safeId}"><circle cx="0" cy="0" r="${r-1.5}"/></clipPath><image href="${esc(n.photo)}" x="${-r}" y="${-r}" width="${2*r}" height="${2*r}" clip-path="url(#cp_${safeId})" preserveAspectRatio="xMidYMin slice"/>`:`<text x="0" y="4" text-anchor="middle" class="gi">${esc((n.name||'?')[0])}</text>`}
+      <circle cx="0" cy="0" r="${r}" fill="#fff" stroke="${col}" stroke-width="${c?3.8:2.4}"/>
+      ${n.photo?`<clipPath id="cp_${safeId}"><circle cx="0" cy="0" r="${r-1.5}"/></clipPath><image href="${esc(n.photo)}" x="${-r}" y="${-r}" width="${2*r}" height="${2*r}" clip-path="url(#cp_${safeId})" preserveAspectRatio="xMidYMin slice"/>`:`<text x="0" y="4" text-anchor="middle" class="gi" fill="${col}">${esc((n.name||'?')[0])}</text>`}
       <text x="0" y="${r+13}" text-anchor="middle" class="gl">${esc(n.name||'')}</text>
       <text x="0" y="${r+25}" text-anchor="middle" class="gr-desc">${esc(rel.label)}</text>
       <title>${esc(n.name)} (${esc(rel.desc)})</title>
@@ -1953,7 +2127,8 @@ function renderArcGraph(g, targetName){
   const rows=direct.map(([o,e])=>{
     const n=N[o]||{};
     const r=ARC_REL[e.typ]||['관계','#94a3b8'];
-    return `<li style="--rc:${r[1]}"><i></i><b>${o.startsWith('wd:')?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}" target="_blank" rel="noopener" title="${esc(n.name)} 검색">${esc(n.name)} <small style="font-size:10px">↗</small></a>`:`<a href="entity/${encodeURIComponent(n.name)}">${esc(n.name)}</a>`}</b><span>${esc(e.label||r[0])}</span><small>${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.src)}</a>`:esc(e.src||'')}${e.conf<0.8?' · 추정':''}</small></li>`;
+    const isFam=n.kind==='family'||o.startsWith('fam_')||o.startsWith('ljm_')||o.startsWith('ysy_')||o.startsWith('hdh_')||o.startsWith('jg_');
+    return `<li style="--rc:${r[1]}"><i></i><b>${isFam||o.startsWith('wd:')?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}" target="_blank" rel="noopener" title="${esc(n.name)} 검색">${esc(n.name)} <small style="font-size:10px">↗</small></a>`:`<a href="entity/${encodeURIComponent(n.name)}">${esc(n.name)}</a>`}</b><span>${esc(e.label||r[0])}</span><small>${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.src)}</a>`:esc(e.src||'')}${e.conf<0.8?' · 추정':''}</small></li>`;
   }).join('');
 
   setTimeout(()=>{
@@ -1969,10 +2144,12 @@ function renderArcGraph(g, targetName){
     <svg viewBox="0 0 ${W} ${H}" class="arc-gsvg" role="img" aria-label="인맥 관계도">${lines}${nd}</svg>
   </div>
   <ul class="arc-glist">${rows}</ul>
-  <p class="fine" style="margin-top:8px">※ 점선은 같은 학교 동문이나 출생지처럼 공통 배경이 겹치는 관계입니다. 노드를 끌어서 위치를 재배치하거나 터치해 상호 관계를 확인할 수 있습니다.</p>`;
+  <p class="fine" style="margin-top:8px">※ 실선은 가족·공식 직계 및 정무·동지 관계이며, 점선은 학교 동문이나 출생지 등 공통 배경 관계입니다. 노드를 끌어서 위치를 재배치하거나 터치해 상호 관계를 확인할 수 있습니다.</p>`;
 }
+
 function renderFamilySection(p, arc, g){
-  const familyTypes=['parent','spouse','sibling','relative'];
+  g = enrichGraphDetail(g, p?.name, p?.id, arc, p);
+  const familyTypes=['parent','spouse','child','sibling','inlaw','relative'];
   const directFamilyEdges=(g?.edges||[]).filter(e=>{
     const isDirect=(e.a===g.center||e.b===g.center);
     return isDirect&&familyTypes.includes(e.typ);
@@ -1980,7 +2157,7 @@ function renderFamilySection(p, arc, g){
   const nodes={};
   (g?.nodes||[]).forEach(n=>nodes[n.id]=n);
   const familyEvents=(arc?.events||[]).filter(e=>e.typ==='family');
-  const isDefector=/탈북|북향민|함흥|평양|국방종합대/.test([p.name,(p.history||[]).join(' '),arc?.data?.summary,arc?.data?.wiki?.text].join(' '));
+  const isDefector=/탈북|북향민|함흥|평양|국방종합대/.test([p?.name,(p?.history||[]).join(' '),arc?.data?.summary,arc?.data?.wiki?.text].join(' '));
 
   let content='';
   if(directFamilyEdges.length||familyEvents.length){
@@ -1989,12 +2166,15 @@ function renderFamilySection(p, arc, g){
         const otherId=e.a===g.center?e.b:e.a;
         const node=nodes[otherId]||{name:'가족'};
         const relLabel=e.label||(ARC_REL[e.typ]?ARC_REL[e.typ][0]:'가족');
+        const tagCol=ARC_REL[e.typ]?.[1]||'#d6336c';
+        const isFam=node.kind==='family'||otherId.startsWith('fam_')||otherId.startsWith('ljm_')||otherId.startsWith('ysy_')||otherId.startsWith('hdh_')||otherId.startsWith('jg_')||otherId.startsWith('wd:');
         return `<div class="pol-family-card">
-          <div class="pfc-rel"><span class="pfc-tag" style="background:${ARC_REL[e.typ]?.[1]||'#d6336c'}">${esc(relLabel)}</span></div>
+          <div class="pfc-rel"><span class="pfc-tag" style="background:${tagCol}">${esc(relLabel)}</span></div>
           <div class="pfc-body">
-            <b>${otherId.startsWith('wd:')?esc(node.name):`<a href="entity/${encodeURIComponent(node.name)}">${esc(node.name)}</a>`}</b>
+            <b>${isFam?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(node.name)}" target="_blank" rel="noopener" title="${esc(node.name)} 인물정보">${esc(node.name)} <small style="font-size:10px">↗</small></a>`:`<a href="entity/${encodeURIComponent(node.name)}">${esc(node.name)}</a>`}</b>
+            ${node.desc?`<div class="pfc-desc" style="font-size:0.77rem;color:#475569;margin:3px 0 2px;line-height:1.4">${esc(node.desc)}</div>`:''}
             ${node.party?`<span class="pfc-party" style="color:${partyTheme(node.party)?.color||'#8189a3'}">${esc(node.party)}</span>`:''}
-            <small>${esc(e.src||'공식 프로필 / 위키데이터')}</small>
+            <small style="display:block;margin-top:2px;color:#94a3b8">${esc(e.src||'공직자 재산등록 고보 / 공식 인적 기록')}</small>
           </div>
         </div>`;
       }).join('')}
@@ -2871,8 +3051,9 @@ async function loadFullPersonData(name, polId){
   if(polDetail && arcDetail?.military && !polDetail.military){
     polDetail.military = arcDetail.military;
   }
+  const enrichedGraph = enrichGraphDetail(graphDetail, name, polId, arcDetail, polDetail);
 
-  return { id: polId || name, pol: polDetail, arc: arcDetail, graph: graphDetail, history: histDetail };
+  return { id: polId || name, pol: polDetail, arc: arcDetail, graph: enrichedGraph, history: histDetail };
 }
 
 function renderProfFactsHtml(pDetail, aDetail){
