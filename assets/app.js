@@ -2198,24 +2198,25 @@ function renderFamilySection(p, arc, g){
         const relLabel=e.label||(ARC_REL[e.typ]?ARC_REL[e.typ][0]:'가족');
         const tagCol=ARC_REL[e.typ]?.[1]||'#d6336c';
         const isFam=node.kind==='family'||otherId.startsWith('fam_')||otherId.startsWith('ljm_')||otherId.startsWith('ysy_')||otherId.startsWith('hdh_')||otherId.startsWith('jg_')||otherId.startsWith('wd:');
-        return `<div class="family-spec-item">
-          <div class="fsi-avatar" style="background:${tagCol}15;color:${tagCol}">${dossierSvg('user', 18)}</div>
-          <div class="fsi-meta">
-            <span class="fsi-role" style="color:${tagCol}">${esc(relLabel)}</span>
-            <strong class="fsi-name">${isFam?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(node.name)}" target="_blank" rel="noopener">${esc(node.name)} ${dossierSvg('external', 10)}</a>`:`<a href="entity/${encodeURIComponent(node.name)}">${esc(node.name)}</a>`}</strong>
-            ${node.desc?`<p class="fsi-desc">${esc(node.desc)}</p>`:''}
-            ${node.party?`<span class="fsi-party" style="color:${partyTheme(node.party)?.color||'#8189a3'}">${esc(node.party)}</span>`:''}
+        return `<div class="family-spec-card">
+          <div class="fsc-top">
+            <span class="fsc-badge" style="background:${tagCol}15;color:${tagCol};border:1px solid ${tagCol}30">${esc(relLabel)}</span>
+            <strong class="fsc-name">
+              ${isFam?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(node.name)}" target="_blank" rel="noopener">${esc(node.name)} <span class="fsc-ext">${dossierSvg('external', 11)}</span></a>`:`<a href="entity/${encodeURIComponent(node.name)}">${esc(node.name)}</a>`}
+            </strong>
+            ${node.party?`<span class="fsc-party" style="color:${partyTheme(node.party)?.color||'#64748b'}">${esc(node.party)}</span>`:''}
           </div>
+          ${node.desc?`<p class="fsc-desc">${esc(node.desc)}</p>`:''}
+          <div class="fsc-meta">${dossierSvg('bio', 11)} <span>${esc(e.src||'공직자 재산등록 고보 / 공식 인적 기록')}</span></div>
         </div>`;
       }).join('')}
       ${familyEvents.map(fe=>`
-        <div class="family-spec-item">
-          <div class="fsi-avatar" style="background:#47556915;color:#475569">${dossierSvg('bio', 18)}</div>
-          <div class="fsi-meta">
-            <span class="fsi-role" style="color:#475569">가족 기록</span>
-            <strong class="fsi-name">${esc(fe.title)}</strong>
-            <p class="fsi-desc">${esc(fDate(fe.d))} · ${esc(fe.src||'')}</p>
+        <div class="family-spec-card">
+          <div class="fsc-top">
+            <span class="fsc-badge" style="background:#47556915;color:#475569;border:1px solid #47556930">가족 기록</span>
+            <strong class="fsc-name">${esc(fe.title)}</strong>
           </div>
+          <p class="fsc-desc">${esc(fDate(fe.d))} · ${esc(fe.src||'공식 기록')}</p>
         </div>
       `).join('')}
     </div>`;
@@ -3102,24 +3103,24 @@ function renderLifeTimelineSection(arc){
       </div>
       <div class="spec-sheet-grid">
         ${birthClean ? `
-          <div class="spec-row">
-            <div class="spec-label">${dossierSvg('user', 14)}<span>출생</span></div>
-            <div class="spec-val">${esc(birthClean)}</div>
+          <div class="spec-block">
+            <span class="spec-block-label">${dossierSvg('user', 14)} 출생</span>
+            <div class="spec-block-val">${esc(birthClean)}</div>
           </div>` : ''}
         ${eduChain ? `
-          <div class="spec-row">
-            <div class="spec-label">${dossierSvg('edu', 14)}<span>학력</span></div>
-            <div class="spec-val">${esc(eduChain)}</div>
+          <div class="spec-block">
+            <span class="spec-block-label">${dossierSvg('edu', 14)} 학력</span>
+            <div class="spec-block-val">${esc(eduChain)}</div>
           </div>` : ''}
         ${mil ? `
-          <div class="spec-row">
-            <div class="spec-label">${dossierSvg('shield', 14)}<span>병역</span></div>
-            <div class="spec-val">${esc(mil)}</div>
+          <div class="spec-block">
+            <span class="spec-block-label">${dossierSvg('shield', 14)} 병역</span>
+            <div class="spec-block-val">${esc(mil)}</div>
           </div>` : ''}
         ${careerText ? `
-          <div class="spec-row">
-            <div class="spec-label">${dossierSvg('career', 14)}<span>주요 경력</span></div>
-            <div class="spec-val">${esc(careerText)}</div>
+          <div class="spec-block">
+            <span class="spec-block-label">${dossierSvg('career', 14)} 주요 경력</span>
+            <div class="spec-block-val">${esc(careerText)}</div>
           </div>` : ''}
       </div>
 
