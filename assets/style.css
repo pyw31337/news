@@ -110,6 +110,9 @@ main{max-width:1240px;margin:0 auto;padding:16px}
 .vg-buzz.peak .flame-live{color:#fff!important;fill:#fff!important}
 .vg-buzz.peak .vg-buzz-val{color:#fff!important;font-weight:850}
 .vg-buzz-val{font-size:.76rem;font-variant-numeric:tabular-nums}
+.vg-tags{display:inline-flex;align-items:center;gap:5px;flex-wrap:wrap;margin-left:4px}
+.vg-tag{display:inline-block;font-size:.72rem;font-weight:700;color:#2563eb;background:#eff6ff;border:1px solid #bfdbfe;border-radius:99px;padding:1px 8px;letter-spacing:-0.2px;line-height:1.4}
+[data-theme="dark"] .vg-tag{color:#93c5fd;background:rgba(37,99,235,.15);border-color:rgba(59,130,246,.3)}
 @keyframes peakBuzzPulse{0%,100%{transform:scale(1);box-shadow:0 2px 8px rgba(220,38,38,.45)}50%{transform:scale(1.06);box-shadow:0 3px 12px rgba(220,38,38,.65),0 0 14px rgba(255,69,0,.45)}}
 
 .vg-fold{border:none;margin:0;padding:0}

@@ -281,8 +281,7 @@ function chipE(n,nolink){const e=ent(n);if(e&&nolink)return`<span class="chip ${
 function normTime(value){
   if(value==null)return'';
   const s=String(value).trim();
-  if(/^\d{8}$/.test(s))return`${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)} 12:00:00`;
-  if(/^\d{4}-\d{2}-\d{2}$/.test(s))return s+' 12:00:00';
+  if(/^\d{8}$/.test(s))return`${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}`;
   return /^\d{4}-\d{2}-\d{2}/.test(s)?s:'';
 }
 function spark(daily,w=120,h=28,col='#ff4d2e'){const now=new Date();const bins=Array(24).fill(0);
@@ -696,7 +695,60 @@ function market(){
 
 /* ---------- 세로 타임라인 (줌) ---------- */
 const ZK={hour:t=>NBDate.compact(t),day:t=>NBDate.date(t),month:t=>{const d=new Date(t);return`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}`},year:t=>new Date(t).getFullYear()+'년'};
-function vtl(el,items,z,limit=4){
+
+function extractTimelineTags(items, personName=''){
+  if(!items || !items.length) return [];
+  const STOPWORDS = new Set([
+    '포토','단독','종합','속보','의원','대표','기자','관련','오늘','위한','등의','기사','논란',
+    '발표','언급','촉구','입장','진행','전말','사실','이유','경우','무엇','대통령','정부',
+    '민주당','국힘','국민의힘','후보','전면','공개','주목','결과','예정','상황','수사','조사'
+  ]);
+  const pName = String(personName || '').trim();
+  const safePName = pName ? pName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : '';
+  const counts = {};
+
+  items.forEach(it => {
+    const t = it?.title || '';
+    if(!t) return;
+    const quotes = t.match(/['"‘“]([^'"’”]{2,12})['"’”]/g) || [];
+    quotes.forEach(q => {
+      let qc = q.replace(/['"‘“’”\s.,!?~…]+/g, '');
+      if(safePName) qc = qc.replace(new RegExp(safePName, 'g'), '');
+      if(qc.length >= 2 && !STOPWORDS.has(qc)){
+        counts[qc] = (counts[qc] || 0) + 3;
+      }
+    });
+    const words = t.match(/[가-힣]{2,8}/g) || [];
+    words.forEach(w => {
+      let cl = w;
+      if(safePName && cl.includes(pName)) cl = cl.replace(new RegExp(safePName, 'g'), '');
+      if(cl.length < 2 || STOPWORDS.has(cl)) return;
+      if(cl.endsWith('에서') || cl.endsWith('으로') || cl.endsWith('에게') || cl.endsWith('까지') || cl.endsWith('부터')){
+        cl = cl.slice(0, -2);
+      } else if(cl.endsWith('은') || cl.endsWith('는') || cl.endsWith('이') || cl.endsWith('가') || cl.endsWith('을') || cl.endsWith('를') || cl.endsWith('에') || cl.endsWith('의') || cl.endsWith('로') || cl.endsWith('와') || cl.endsWith('과')){
+        cl = cl.slice(0, -1);
+      }
+      if(cl.length >= 2 && !STOPWORDS.has(cl)){
+        counts[cl] = (counts[cl] || 0) + 1;
+      }
+    });
+  });
+
+  const sorted = Object.entries(counts).sort((a,b) => b[1] - a[1]);
+  const tags = [];
+  if(pName){
+    tags.push('#' + pName);
+  }
+  for(const [w] of sorted){
+    if(tags.length >= 3) break;
+    if(!tags.some(tag => tag.includes(w) || w.includes(tag.slice(1)))){
+      tags.push('#' + w);
+    }
+  }
+  return tags;
+}
+
+function vtl(el,items,z,limit=4,personName=''){
   const g=[];items.forEach(x=>{const k=ZK[z](x.t);if(!g.length||g[g.length-1].k!==k)g.push({k,a:[]});g[g.length-1].a.push(x)});
   if(!g.length){el.innerHTML='<div class="note">아직 쌓인 기록이 없어요.</div>';return}
   let shown=Math.min(g.length,z==='year'?20:12);
@@ -730,6 +782,8 @@ function vtl(el,items,z,limit=4){
 
       const buzzBadgeClass=isPeak?'peak':(isAboveAvg?'high':'normal');
       const flameClass=isPeak?'flame-peak':(isAboveAvg?'flame-high':'flame-subtle');
+      const tags = extractTimelineTags(s, personName);
+      const tagsHtml = tags.length ? `<span class="vg-tags">${tags.map(t=>`<span class="vg-tag">${esc(t)}</span>`).join('')}</span>` : '';
 
       // 1건뿐일 때는 폴딩 버튼(화살표)을 없애고 단일 기사 링크로 바로 노출 (중복 노출 방지)
       if(s.length <= 1){
@@ -741,6 +795,7 @@ function vtl(el,items,z,limit=4){
               ${ic('flame',flameClass)}
               <b class="vg-buzz-val">${buzz}</b>
             </span>
+            ${tagsHtml}
           </h4>
           <div class="vg-single-article">
             <a class="ve is-single ${x.related>2?'big':''}" href="${esc(x.url)}" target="_blank" rel="noopener">
@@ -760,6 +815,7 @@ function vtl(el,items,z,limit=4){
             ${ic('flame',flameClass)}
             <b class="vg-buzz-val">${buzz}</b>
           </span>
+          ${tagsHtml}
         </h4>
         <details class="vg-fold">
           <summary class="vg-summary">
@@ -951,8 +1007,10 @@ const fDate=(s, forceTime=false)=>{
   if(/^\d{4}$/.test(str))return str;
   const ym=str.match(/^(\d{4})[-./](\d{1,2})$/);
   if(ym)return`${ym[1]}.${ym[2].padStart(2,'0')}`;
-  const hasTime = forceTime || /T|\s\d{1,2}:\d{2}/.test(str);
-  if(hasTime && typeof NBDate?.full === 'function'){
+  // 진짜 발행시간(더미 12:00:00, 00:00:00 등 제외)이 포함된 경우에만 시간까지 표기
+  const isDummyTime = /(?:T|\s)(?:12:00(?::00)?|00:00(?::00)?)(?:\+09:00|Z)?$/.test(str);
+  const hasRealTime = (forceTime || /(?:T|\s)\d{1,2}:\d{2}/.test(str)) && !isDummyTime && /(?:T|\s)\d{1,2}:\d{2}/.test(str);
+  if(hasRealTime && typeof NBDate?.full === 'function'){
     const formatted = NBDate.full(str);
     if(formatted) return formatted;
   }
@@ -3742,6 +3800,17 @@ function entity(n){
   renderEntityDashboard(n, e);
 }
 
+function isHomonymArticle(name, title, press=''){
+  if(!title) return false;
+  const pName = String(name || '').trim();
+  if(pName === '이재명'){
+    // 동명이인 이재명 내과클리닉 원장 등 의료기관 원장 기사 배제
+    if(/내과클리닉|의풍당당|내과의원|클리닉\s*원장|내과\s*원장/i.test(title)) return true;
+    if(/메디칼업저버/i.test(press) && /원장/i.test(title)) return true;
+  }
+  return false;
+}
+
 function renderEntityDashboard(n, e, preloadedRes){
   setMeta(e.name + ' · 인물 대시보드', entDesc(e) || `${e.name} 관련 보도 및 의정 활동 정보`);
   const pol=getPol(e.name);
@@ -3751,6 +3820,7 @@ function renderEntityDashboard(n, e, preloadedRes){
   const rawTl=Array.isArray(e.timeline)?e.timeline:[];
   let tl=rawTl.map(x=>({...x,t:normTime(x?.t||x?.date)})).filter(x=>{
     if(!x||!x.title)return false;
+    if(isHomonymArticle(e.name, x.title, x.press)) return false;
     if(x.title.includes(e.name))return true;
     if(e.aliases&&e.aliases.some(al=>al&&x.title.includes(al)))return true;
     return false;
@@ -3914,7 +3984,7 @@ function renderEntityDashboard(n, e, preloadedRes){
             banner.style.display = 'flex';
             bannerText.innerHTML = `📅 <b>${esc(period)}</b> 보도 기사 <b>${filtered.length}건</b>을 표시하고 있습니다.`;
           }
-          vtl($('#etl'), filtered, 'day', 99);
+          vtl($('#etl'), filtered, 'day', 99, e.name);
           $('#etl')?.scrollIntoView({behavior:'smooth', block:'nearest'});
         }
       };
@@ -3925,7 +3995,7 @@ function renderEntityDashboard(n, e, preloadedRes){
     activeFilterPeriod = null;
     const banner = $('#etl-filter-banner');
     if(banner) banner.style.display = 'none';
-    vtl($('#etl'), z==='hour'?tl.filter(x=>Date.now()-new Date(x.t)<3*864e5):tl, z, z==='year'?6:4);
+    vtl($('#etl'), z==='hour'?tl.filter(x=>Date.now()-new Date(x.t)<3*864e5):tl, z, z==='year'?6:4, e.name);
   };
   drawE('month');
   drawT('day');
@@ -3957,6 +4027,7 @@ function renderEntityDashboard(n, e, preloadedRes){
     if(pDetail?.news && Array.isArray(pDetail.news)){
       pDetail.news.forEach(item => {
         if(!item) return;
+        if(isHomonymArticle(e.name, item.title, item.press)) return;
         const itemTime=normTime(item.date);
         if(!itemTime || !item.title) return;
         if(item.url && seenUrls.has(item.url)) return;
@@ -3980,10 +4051,11 @@ function renderEntityDashboard(n, e, preloadedRes){
       hDetail.it.forEach(item => {
         // item: [date, title, press_idx, type, quote]
         if(!item || !item[0] || !item[1]) return;
+        const pressName = (hDetail.o && hDetail.o[item[2]]) || '';
+        if(isHomonymArticle(e.name, item[1], pressName)) return;
         const itemTime = normTime(item[0]);
         if(!itemTime || seenTitles.has(item[1])) return;
         seenTitles.add(item[1]);
-        const pressName = (hDetail.o && hDetail.o[item[2]]) || '';
         const searchUrl = `https://news.google.com/search?q=${encodeURIComponent('"' + item[1].slice(0, 60) + '"')}&hl=ko&gl=KR&ceid=KR:ko`;
         tl.push({
           t: itemTime,
