@@ -3184,3 +3184,309 @@ body.view-entity .dossier-spec-card{
 
 
 
+
+/* ==========================================================================
+   수사관 관점 인텔리전스 관계망 종합 분석 시스템 (INVESTIGATIVE INTELLIGENCE NETWORK)
+   ========================================================================== */
+.investigative-insight-box {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-left: 4px solid #2563eb;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+}
+.iib-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.iib-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #2563eb18;
+  color: #1d4ed8;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.iib-title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+.iib-desc {
+  margin: 0;
+  font-size: 0.84rem;
+  color: #475569;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+/* 범주 필터 탭 바 */
+.rel-cat-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+  scrollbar-width: thin;
+}
+.rel-cat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  flex: none;
+}
+.rel-cat-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+.rel-cat-btn.on {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+}
+.rel-cat-btn .rc-cnt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.2);
+  color: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.rel-cat-btn.on .rc-cnt {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* 관계망 그룹 섹션 */
+.rel-group-section {
+  margin-bottom: 24px;
+}
+.rgs-header {
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+}
+.rgs-title-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.rgs-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+}
+.rgs-title {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+.rgs-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.rgs-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+.rgs-desc {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.5;
+  word-break: keep-all;
+}
+
+/* 세로 적층 구조 관계 카드 (가로 분할 없음, 줄간격 1.6 규격) */
+.rel-card-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.rel-investigative-card {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  transition: all 0.18s ease;
+  box-sizing: border-box;
+}
+.rel-investigative-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.07);
+}
+.ric-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.ric-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ric-role-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.ric-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+.ric-name a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.ric-name a:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+.ric-party {
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+.ric-cat-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.ric-desc {
+  margin: 0 0 8px 0;
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+.ric-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 6px;
+  border-top: 1px dashed #f1f5f9;
+  font-size: 0.74rem;
+  color: #64748b;
+}
+.ric-src {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.ric-type-note {
+  font-size: 0.72rem;
+  color: #94a3b8;
+}
+
+/* 다크모드 대응 */
+[data-theme="dark"] .investigative-insight-box {
+  background: #1e293b;
+  border-color: #334155;
+  border-left-color: #3b82f6;
+}
+[data-theme="dark"] .iib-title {
+  color: #f1f5f9;
+}
+[data-theme="dark"] .iib-desc {
+  color: #94a3b8;
+}
+[data-theme="dark"] .rel-cat-btn {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+[data-theme="dark"] .rel-cat-btn:hover {
+  background: #334155;
+  color: #f8fafc;
+}
+[data-theme="dark"] .rel-cat-btn.on {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+[data-theme="dark"] .rel-investigative-card {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: none;
+}
+[data-theme="dark"] .rel-investigative-card:hover {
+  border-color: #475569;
+}
+[data-theme="dark"] .ric-name {
+  color: #f8fafc;
+}
+[data-theme="dark"] .ric-desc {
+  color: #cbd5e1;
+}
+[data-theme="dark"] .ric-meta-row {
+  border-top-color: #334155;
+  color: #94a3b8;
+}
+[data-theme="dark"] .rgs-title {
+  color: #f8fafc;
+}
+[data-theme="dark"] .rgs-desc {
+  color: #94a3b8;
+}

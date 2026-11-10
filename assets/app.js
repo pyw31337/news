@@ -299,12 +299,17 @@ const getPressLogoFile = (name, url='') => {
   if(!name && !url) return null;
   const n = String(name || '').trim();
   if(PL[n]) return PL[n];
+  if(PL[n.toLowerCase()]) return PL[n.toLowerCase()];
+  const cleanN = n.replace(/^(www\.|m\.)/, '').replace(/\s*(뉴스|신문|일보|닷컴|인터넷신문)$/, '').trim();
+  if(cleanN && PL[cleanN]) return PL[cleanN];
   if(url){
     const h = host(url).replace(/^www\./, '');
     if(PL[h]) return PL[h];
   }
   if(/충주방송|청주방송|cjb/i.test(n)) return PL['cjb.co.kr'] || 'cjb_co_kr.webp';
   if(/기자협회/i.test(n)) return PL['한국기자협회'] || 'journalist_or_kr.webp';
+  if(/전자일보|전자신문|etnews/i.test(n)) return PL['전자신문'] || 'etnews_com.webp';
+  if(/펜앤마이크|pennmike/i.test(n)) return PL['펜앤마이크'] || 'pennmike_com.webp';
   if(/오마이뉴스|ohmynews/i.test(n)) return PL['오마이뉴스'] || 'ohmynews_com.webp';
   if(/연합뉴스TV/i.test(n)) return PL['연합뉴스TV'] || 'yonhapnewstv_co_kr.webp';
   if(/연합뉴스/i.test(n)) return PL['연합뉴스'] || 'yna_co_kr.webp';
@@ -348,14 +353,16 @@ const getPressLogoFile = (name, url='') => {
   if(/뉴스타파/i.test(n)) return PL['뉴스타파'] || 'newstapa_org.webp';
   if(/브레이크뉴스/i.test(n)) return PL['브레이크뉴스'] || 'breaknews_com.webp';
   if(/매일일보/i.test(n)) return PL['매일일보'] || 'm-i_kr.webp';
+  if(/이데일리|edaily/i.test(n)) return PL['edaily.co.kr'] || 'edaily_co_kr.webp';
+  if(/디지털타임스|dt\.co\.kr/i.test(n)) return PL['dt.co.kr'] || 'dt_co_kr.webp';
+  if(/미디어워치/i.test(n)) return PL['mediawatch.kr'] || 'mediawatch_kr.webp';
+  if(/폴리뉴스/i.test(n)) return PL['polinews.co.kr'] || 'polinews_co_kr.webp';
+  if(/일간스포츠/i.test(n)) return PL['isplus.com'] || 'isplus_com.webp';
   if(/더구루/i.test(n)) return PL['더구루'] || 'theguru_co_kr.webp';
   if(/딜사이트/i.test(n)) return PL['딜사이트'] || 'dealsite_co_kr.webp';
   if(/전기신문/i.test(n)) return PL['전기신문'] || 'electimes_com.webp';
   if(/톱스타뉴스/i.test(n)) return PL['톱스타뉴스'] || 'topstarnews_net.webp';
   if(/kbc/i.test(n)) return PL['kbc광주방송'] || 'ikbc_co_kr.webp';
-  if(/voa/i.test(n)) return PL['VOA'] || 'voakorea_com.webp';
-  if(/bbc/i.test(n)) return PL['BBC'] || 'bbc_co_uk.webp';
-  if(/로이터|reuters/i.test(n)) return PL['로이터'] || 'reuters_com.webp';
   return null;
 };
 const plogo=(name,url,cls='pl')=>{const f=getPressLogoFile(name,url),bd=f&&(PL._b||{})[f];return f?`<img class="${cls}${bd?' b':''}" src="assets/press/${bd||f}" alt="" loading="lazy" width="14" height="14">`:`<i class="${cls} mono" style="--h:${[...String(name)].reduce((a,c)=>a+c.charCodeAt(0),0)%360}" aria-hidden="true">${esc(String(name||'?').replace(/^[\s\[(\'"“‘]+/,'')[0]||'?')}</i>`};
@@ -1030,6 +1037,7 @@ const ARC_REL={
   sibling:['형제자매','#f06595'],
   inlaw:['처가·시가 (장인·장모)','#cc5de8'],
   relative:['친인척','#f783ac'],
+  civic:['시민사회·법조 동지','#0891b2'],
   colleague:['정치적 동지·당 지도부','#1971c2'],
   mentor:['정치적 멘토','#0c8599'],
   staff:['핵심 참모·측근','#2f9e44'],
@@ -2026,55 +2034,119 @@ function initArcGraphInteraction(wrap){
   });
 }
 
-/* 마스터 가족 및 핵심 네트워크 그래프 데이터베이스 */
+/* 수사관 관점 인텔리전스 관계망 종합 데이터베이스 */
 const MASTER_RELATION_NETWORKS = {
   '이재명': {
-    family: [
-      { id: 'ljm_spouse', name: '김혜경', typ: 'spouse', rel: '배우자 (영부인)', desc: '1966년생 · 숙명여대 피아노과 졸 · 피아니스트 / 대한민국 영부인' },
-      { id: 'ljm_son1', name: '이동호', typ: 'child', rel: '장남', desc: '1992년생 · 고려대학교 정경대학 행정학과 졸' },
-      { id: 'ljm_son2', name: '이연호', typ: 'child', rel: '차남', desc: '1993년생 · 고려대학교 정경대학 정외과 졸' },
-      { id: 'ljm_father', name: '이경희', typ: 'parent', rel: '부친', desc: '1931~1986 · 삼척 도계광산 광부 · 안동 청소노동자' },
-      { id: 'ljm_mother', name: '구호명', typ: 'parent', rel: '모친', desc: '1931~2020 · 성남 상대원시장 공중화장실 청소노동자' },
-      { id: 'ljm_bro3', name: '이재선', typ: 'sibling', rel: '셋째 형', desc: '1954~2017 · 공인회계사 · 성남시민모임 대표' },
-      { id: 'ljm_inlaw_f', name: '김종진', typ: 'inlaw', rel: '장인', desc: '1934~1995 · 부인 김혜경의 부친' },
-      { id: 'ljm_inlaw_m', name: '이기순', typ: 'inlaw', rel: '장모', desc: '1935년생 · 부인 김혜경의 모친' }
+    relations: [
+      // 1. 가족 및 친인척·사돈 (16명)
+      { id: 'ljm_spouse', name: '김혜경', cat: 'family', typ: 'spouse', rel: '배우자 (영부인)', desc: '1966년생 · 숙명여대 피아노과 졸 · 피아니스트 / 대한민국 제21대 대통령 영부인 (공직선거법 및 법인카드 공방, 배우자 검증의 핵심 당사자)', src: '공직자 재산등록 고보 / 공식 인적 기록' },
+      { id: 'ljm_son1', name: '이동호', cat: 'family', typ: 'child', rel: '장남', desc: '1992년생 · 고려대학교 정경대학 행정학과 졸 (자녀 취업 및 사생활 검증 공방 관련)', src: '공직자 재산등록 고보' },
+      { id: 'ljm_son2', name: '이연호', cat: 'family', typ: 'child', rel: '차남', desc: '1993년생 · 고려대학교 정경대학 정외과 졸', src: '공직자 재산등록 고보' },
+      { id: 'ljm_father', name: '이경희', cat: 'family', typ: 'parent', rel: '부친', desc: '1931~1986 · 삼척 도계광산 광부 · 안동 청소노동자 (유년기 가계 형성 및 성남 이주 배경)', src: '공식 인적 기록' },
+      { id: 'ljm_mother', name: '구호명', cat: 'family', typ: 'parent', rel: '모친', desc: '1931~2020 · 성남 상대원시장 공중화장실 청소노동자 (정치적 원체험이자 상대원 텃밭 유대의 뿌리)', src: '공식 인적 기록' },
+      { id: 'ljm_bro1', name: '이재국', cat: 'family', typ: 'sibling', rel: '큰형 (장남)', desc: '1950년생 · 성남 거주 (가족사 5남 2녀 중 장남)', src: '공식 인적 기록' },
+      { id: 'ljm_bro2', name: '이재문', cat: 'family', typ: 'sibling', rel: '둘째 형 (차남)', desc: '1952년생 · 성남 개인택시 기사 (성남 서민 노동자 가계 배경)', src: '공식 인적 기록' },
+      { id: 'ljm_bro3', name: '이재선', cat: 'family', typ: 'sibling', rel: '셋째 형 (삼남)', desc: '1954~2017 · 공인회계사 · 성남시민모임 대표 (성남시장 재임기 시정 비판, 형수 녹취록 및 친형 강제입원 의혹의 핵심 인물)', src: '공식 인적 기록 / 사법 판결문' },
+      { id: 'ljm_inlaw_sis', name: '박인복', cat: 'family', typ: 'relative', rel: '셋째 형수', desc: '셋째 형 이재선의 배우자 (형수 녹취록 공방 및 대선 정국 고발 기자회견 당사자)', src: '공개 언론 보도 / 사법 판결문' },
+      { id: 'ljm_nephew', name: '이지호', cat: 'family', typ: 'relative', rel: '조카', desc: '셋째 형 이재선과 형수 박인복의 자녀 (가족 간 법적 공방 및 상속·녹취 관련 증언)', src: '공개 언론 보도' },
+      { id: 'ljm_sis1', name: '이재순', cat: 'family', typ: 'sibling', rel: '누나 (장녀)', desc: '1956년생 · 청소노동자 출신 (서민 노동 가계)', src: '공식 인적 기록' },
+      { id: 'ljm_sis2', name: '이재옥', cat: 'family', typ: 'sibling', rel: '여동생 (차녀)', desc: '1965~2014 · 야쿠르트 배달원, 미화원 근무 중 뇌출혈 사망 (산재 문제 및 취약노동자 복지에 대한 개인적 상흔)', src: '공식 인적 기록' },
+      { id: 'ljm_bro5', name: '이재영', cat: 'family', typ: 'sibling', rel: '남동생 (오남)', desc: '1967년생 · 환경미화원 근무 (성남 환경미화 노동)', src: '공식 인적 기록' },
+      { id: 'ljm_inlaw_f', name: '김종진', cat: 'family', typ: 'inlaw', rel: '장인 (처부)', desc: '1934~1995 · 부인 김혜경의 부친', src: '공식 인적 기록' },
+      { id: 'ljm_inlaw_m', name: '이기순', cat: 'family', typ: 'inlaw', rel: '장모 (처모)', desc: '1935년생 · 부인 김혜경의 모친 (공직자 재산등록 고지 대상)', src: '공직자 재산등록 고보' },
+      { id: 'ljm_inlaw_bro', name: '처남 김모 씨', cat: 'family', typ: 'inlaw', rel: '처남', desc: '부인 김혜경의 남동생 (대선 캠프 및 주변 인맥 연계 의혹 관련)', src: '공개 언론 보도' },
+
+      // 2. 학연 (중앙대 법대 & 사법연수원 18기 - 4명)
+      { id: 'jung_seongho', name: '정성호', cat: 'academic', typ: 'schoolmate', rel: '사법연수원 18기 동기', desc: '국회의원(5선, 동두천·양주·연천갑) · 사법연수원 18기 동기 · 친명계 최고 원로 좌장 (정무적 위기 시 옥중 측근 접견 및 결속 관리)', src: '사법연수원 18기 동기록 / 국회 공보', party: '더불어민주당' },
+      { id: 'moon_byeongho', name: '문병호', cat: 'academic', typ: 'schoolmate', rel: '사법연수원 18기 동기', desc: '전 국회의원(재선) · 사법연수원 18기 동기 · 인천 연고 법조 동문', src: '사법연수원 18기 동기록' },
+      { id: 'choi_wonsik', name: '최원식', cat: 'academic', typ: 'schoolmate', rel: '사법연수원 18기 동기', desc: '전 국회의원 · 사법연수원 18기 동기 · 인천 계양구을 전임 법조인', src: '사법연수원 18기 동기록' },
+      { id: 'seo_heonje', name: '서헌제', cat: 'academic', typ: 'mentor', rel: '중앙대 법대 학장 (은사)', desc: '중앙대학교 법과대학 학장 역임 · 이재명의 대학 시절 법학 지도교수', src: '중앙대 동문 기록' },
+
+      // 3. 지연 (경북 안동 고향 & 성남·인천 기반 - 4명)
+      { id: 'kwon_gichang', name: '권기창', cat: 'regional', typ: 'hometown', rel: '안동시장 (고향 지연)', desc: '안동시장 · 고향 경북 안동 예안면 도촌리 연고 및 고향사랑 기부·지역 현안 공조', src: '지방자치단체 공보', party: '국민의힘' },
+      { id: 'song_younggil', name: '송영길', cat: 'regional', typ: 'predecessor', rel: '인천 계양을 전임 의원', desc: '전 인천시장 · 전 더불어민주당 대표 · 인천 계양구을 5선 의원으로 이재명에게 지역구 인계 (전당대회 돈봉투 의혹 공방 연계)', src: '중앙선거관리위원회 / 국회 공보', party: '소나무당' },
+      { id: 'yoo_dongsoo', name: '유동수', cat: 'regional', typ: 'colleague', rel: '인천 계양갑 의원', desc: '국회의원(3선, 인천 계양구갑) · 인접 지역구 의원으로 계양 테크노밸리 등 인천 현안 공조', src: '국회 공보', party: '더불어민주당' },
+      { id: 'kim_boogyum', name: '김부겸', cat: 'regional', typ: 'colleague', rel: '전 국무총리 (TK 지연)', desc: '전 국무총리 · 대구·경북(TK) 출신 민주당 원로로 총선 공동선대위원장 국면 공조', src: '당정 공보', party: '더불어민주당' },
+
+      // 4. 시민사회 & 법조 동지 (인권변호사·민변·성남참여연대 - 4명)
+      { id: 'lee_heonwook', name: '이헌욱', cat: 'civic', typ: 'civic', rel: '전 GH 사장 (시민사회 동지)', desc: '전 경기주택도시공사(GH) 사장 · 민변 출신 · 성남참여연대 연계 · 기본주택 정책 설계 (합숙소 의혹 등 대선 쟁점화)', src: '경기주택도시공사 공보 / 공개 보도' },
+      { id: 'kim_yongjin', name: '김용진', cat: 'civic', typ: 'civic', rel: '전 경기 경제부지사', desc: '전 경기도 경제부지사 · 전 국민연금공단 이사장 · 시민 정책 협력', src: '경기도 공보' },
+      { id: 'park_gyuntaek', name: '박균택', cat: 'civic', typ: 'civic', rel: '당대표 법률특보 / 의원', desc: '국회의원(광주 광산구을) · 전 광주고검장 · 대선 캠프 법률대응총괄 및 당대표 사법리스크 변호단 총괄 (검찰 수사 대응 핵심 방패)', src: '국회 공보', party: '더불어민주당' },
+      { id: 'lee_seoktae', name: '이석태', cat: 'civic', typ: 'mentor', rel: '전 헌법재판관 (민변 선배)', desc: '전 헌법재판소 재판관 · 전 민주사회를위한변호사모임(민변) 회장 · 인권변호사 시절 법조계 멘토', src: '헌법재판소 공보' },
+
+      // 5. 정무·직무 핵심 참모 (성남·경기·중앙 비서실 - 5명)
+      { id: 'jung_jinsang', name: '정진상', cat: 'official', typ: 'staff', rel: '전 당대표 정무조정실장', desc: '성남시 정책비서관 · 경기도 정책실장 역임 · 이재명의 최고 복심이자 정책·정무 총괄 참모 (대장동·위례·백현동 개발 특혜 및 뇌물수수 재판 핵심 피고인)', src: '당대표 비서실 공보 / 사법 판결문', party: '더불어민주당' },
+      { id: 'kim_yong', name: '김용', cat: 'official', typ: 'staff', rel: '전 민주연구원 부원장', desc: '전 경기도 대변인 · 전 성남시의원 · 정진상과 함께 이재명의 좌우 날개로 불린 핵심 정책 참모 (불법 대선자금 수수 혐의 재판 핵심 피고인)', src: '민주연구원 공보 / 사법 판결문', party: '더불어민주당' },
+      { id: 'lee_hwayoung', name: '이화영', cat: 'official', typ: 'staff', rel: '전 경기도 평화부지사', desc: '전 국회의원 · 킨텍스 대표 역임 · 경기도 평화부지사로 대북 평화협력 사업 총괄 (쌍방울 그룹 대북송금 의혹 재판 핵심 피고인)', src: '경기도 공보 / 사법 판결문', party: '더불어민주당' },
+      { id: 'kang_wiwon', name: '강위원', cat: 'official', typ: 'staff', rel: '더민주혁신회의 상임대표', desc: '더민주전국혁신회의 상임대표 · 전 경기농수산진흥원장 · 이재명 팬덤 및 당내 원외 혁신조직 총괄', src: '혁신회의 공보', party: '더불어민주당' },
+      { id: 'yoo_donggyu', name: '유동규', cat: 'official', typ: 'staff', rel: '전 성남도개공 기획본부장', desc: '전 성남도시개발공사 기획본부장 · 전 경기관광공사 사장 (대장동 개발 사업 실무 총괄 및 이후 폭로자로 전향)', src: '성남도개공 공보 / 사법 판결문' },
+
+      // 6. 정치 지도부 및 대선 라이벌 (8명)
+      { id: 'moon_jaein', name: '문재인', cat: 'political', typ: 'colleague', rel: '제19대 대한민국 대통령', desc: '제19대 대한민국 대통령 · 민주당 정부 국정 공조 및 친문-친명 당정 연대 파트너', src: '청와대 공보', party: '더불어민주당' },
+      { id: 'lee_haechan', name: '이해찬', cat: 'political', typ: 'mentor', rel: '전 국무총리 · 상임고문', desc: '제36대 국무총리 · 전 더불어민주당 대표 · 상임고문으로 이재명의 대선 가도 최대 정치적 멘토이자 후견인', src: '민주당 공보', party: '더불어민주당' },
+      { id: 'park_chandae', name: '박찬대', cat: 'political', typ: 'colleague', rel: '더불어민주당 원내대표', desc: '제22대 국회 더불어민주당 원내대표 · 최고위원 · 원내 사령탑이자 당 지도부 핵심 투톱', src: '국회 공보', party: '더불어민주당' },
+      { id: 'cho_guk', name: '조국', cat: 'political', typ: 'colleague', rel: '조국혁신당 대표', desc: '조국혁신당 대표 · 전 법무부장관 · 범야권 연대 및 검찰개혁 입법 공조 파트너', src: '조국혁신당 공보', party: '조국혁신당' },
+      { id: 'kim_dongyeon', name: '김동연', cat: 'political', typ: 'colleague', rel: '경기도지사 (도정 계승)', desc: '제36대 경기도지사 · 전 경제부총리 · 제20대 대선 후보 단일화 파트너이자 경기도정 계승자', src: '경기도 공보', party: '더불어민주당' },
+      { id: 'yoon_seokyoul', name: '윤석열', cat: 'political', typ: 'rival', rel: '제20대 대한민국 대통령', desc: '제20대 대한민국 대통령 · 제20대 대선 0.73%p 박빙 경쟁 상대이자 정권 교체의 맞수', src: '중앙선거관리위원회 / 대통령실', party: '국민의힘' },
+      { id: 'han_donghoon', name: '한동훈', cat: 'political', typ: 'rival', rel: '전 법무부장관 · 여당대표', desc: '전 법무부장관 · 전 국민의힘 대표 · 이재명 검찰 수사 국면 지휘 및 여야 정국 대립의 상징적 라이벌', src: '국민의힘 공보', party: '국민의힘' },
+      { id: 'lee_nakyon', name: '이낙연', cat: 'political', typ: 'rival', rel: '전 국무총리 · 대선 경쟁자', desc: '전 국무총리 · 전 더불어민주당 대표 · 제20대 대선 당내 경선 최대 경쟁 상대이자 새로운미래 창당 분립', src: '중앙선관위 공보', party: '새로운미래' }
     ],
-    network: [
-      { id: 'moon_jaein', name: '문재인', party: '더불어민주당', typ: 'colleague', rel: '제19대 대통령 (국정 파트너)', src: '국정 공조 및 당정 협력' },
-      { id: 'lee_haechan', name: '이해찬', party: '더불어민주당', typ: 'mentor', rel: '전 국무총리 · 당 상임고문 (정치적 멘토)', src: '민주당 지도부 협력' },
-      { id: 'park_chandae', name: '박찬대', party: '더불어민주당', typ: 'colleague', rel: '더불어민주당 원내대표 (원내 투톱 지도부)', src: '제22대 국회 당 지도부' },
-      { id: 'jung_jinsang', name: '정진상', party: '더불어민주당', typ: 'staff', rel: '전 당대표 정무조정실장 (핵심 참모)', src: '성남·경기·중앙 비서실' },
-      { id: 'kim_yong', name: '김용', party: '더불어민주당', typ: 'staff', rel: '전 민주연구원 부원장 (정책 참모)', src: '경기도 대변인' },
-      { id: 'yoon_seokyoul', name: '윤석열', party: '국민의힘', typ: 'rival', rel: '제20대 대통령 (제20대 대선 경쟁 후보)', src: '제20대 대통령 선거' }
+    cross_edges: [
+      { a: 'ljm_spouse', b: 'ljm_inlaw_f', typ: 'inlaw', label: '부녀 관계', desc: '김혜경의 부친' },
+      { a: 'ljm_spouse', b: 'ljm_inlaw_m', typ: 'inlaw', label: '모녀 관계', desc: '김혜경의 모친' },
+      { a: 'ljm_spouse', b: 'ljm_inlaw_bro', typ: 'inlaw', label: '남매 관계', desc: '김혜경의 남동생' },
+      { a: 'ljm_son1', b: 'ljm_son2', typ: 'sibling', label: '형제 관계', desc: '장남과 차남' },
+      { a: 'ljm_bro3', b: 'ljm_inlaw_sis', typ: 'spouse', label: '부부 관계', desc: '이재선과 박인복' },
+      { a: 'ljm_bro3', b: 'ljm_nephew', typ: 'child', label: '부자 관계', desc: '이재선의 자녀' },
+      { a: 'jung_jinsang', b: 'kim_yong', typ: 'staff', label: '참모 라인 공조', desc: '성남시·경기도·중앙당 핵심 참모 투톱' },
+      { a: 'jung_seongho', b: 'moon_byeongho', typ: 'schoolmate', label: '연수원 18기 동기', desc: '사법연수원 18기 법조 동문' },
+      { a: 'song_younggil', b: 'choi_wonsik', typ: 'colleague', label: '인천 계양 정치 연계', desc: '인천 계양구 정치 네트워크' }
     ]
   },
   '윤석열': {
-    family: [
-      { id: 'ysy_spouse', name: '김건희', typ: 'spouse', rel: '배우자 (영부인)', desc: '1972년생 · 코바나컨텐츠 대표 / 대한민국 영부인' },
-      { id: 'ysy_father', name: '윤기중', typ: 'parent', rel: '부친', desc: '1931~2023 · 연세대학교 상경대학 응용통계학과 명예교수' },
-      { id: 'ysy_mother', name: '최성자', typ: 'parent', rel: '모친', desc: '이화여자대학교 교수 역임' },
-      { id: 'ysy_inlaw_m', name: '최은순', typ: 'inlaw', rel: '장모', desc: '1946년생 · 사업가' }
+    relations: [
+      { id: 'ysy_spouse', name: '김건희', cat: 'family', typ: 'spouse', rel: '배우자 (영부인)', desc: '1972년생 · 코바나컨텐츠 대표 / 대한민국 제20대 대통령 영부인 (도이치모터스 주가조작·명품가방 의혹 등 배우자 검증 공방 당사자)', src: '공직자 재산등록 고보' },
+      { id: 'ysy_father', name: '윤기중', cat: 'family', typ: 'parent', rel: '부친', desc: '1931~2023 · 연세대학교 상경대학 응용통계학과 명예교수 · 대한민국학술원 회원', src: '공식 인적 기록' },
+      { id: 'ysy_mother', name: '최성자', cat: 'family', typ: 'parent', rel: '모친', desc: '이화여자대학교 교수 역임', src: '공식 인적 기록' },
+      { id: 'ysy_inlaw_m', name: '최은순', cat: 'family', typ: 'inlaw', rel: '장모 (처모)', desc: '1946년생 · 사업가 (통장 잔고증명서 위조 및 요양병원 개설 관련 사법 판결 당사자)', src: '공직자 재산등록 고보 / 사법 판결문' },
+      { id: 'ysy_sis', name: '윤신원', cat: 'family', typ: 'sibling', rel: '여동생', desc: '연세대학교 불어불문학과 졸', src: '공식 인적 기록' },
+      { id: 'ysy_staff_hdh', name: '한동훈', cat: 'official', typ: 'staff', rel: '전 법무장관 · 최측근 후배', desc: '대검찰청·서울중앙지검 특수수사 시절부터 이어진 검찰 직속 후배이자 제69대 법무부장관 발탁 복심', src: '법무부 공보', party: '국민의힘' },
+      { id: 'ysy_staff_sm', name: '이상민', cat: 'official', typ: 'staff', rel: '행정안전부 장관 (고교·대학 후배)', desc: '충암고·서울법대 직속 후배로 행정안전부 장관 임명 (경찰국 신설 및 이태원 참사 국면)', src: '정부 공보', party: '국민의힘' },
+      { id: 'ysy_pol_ljm', name: '이재명', cat: 'political', typ: 'rival', rel: '제21대 대통령 당선인', desc: '제20대 대선 0.73%p 박빙 경쟁 상대이자 제21대 대통령 당선인', src: '선관위 공보', party: '더불어민주당' }
     ],
-    network: []
+    cross_edges: [
+      { a: 'ysy_spouse', b: 'ysy_inlaw_m', typ: 'inlaw', label: '모녀 관계', desc: '김건희의 모친' }
+    ]
   },
   '한동훈': {
-    family: [
-      { id: 'hdh_spouse', name: '진은정', typ: 'spouse', rel: '배우자', desc: '1975년생 · 김앤장 법률사무소 미국변호사' },
-      { id: 'hdh_father', name: '한명수', typ: 'parent', rel: '부친', desc: 'AMK(어플라이드 머티어리얼즈 코리아) 대표 역임' },
-      { id: 'hdh_mother', name: '허수옥', typ: 'parent', rel: '모친', desc: '' },
-      { id: 'hdh_inlaw_f', name: '진형구', typ: 'inlaw', rel: '장인', desc: '전 대검찰청 공안부장 / 변호사' }
+    relations: [
+      { id: 'hdh_spouse', name: '진은정', cat: 'family', typ: 'spouse', rel: '배우자', desc: '1975년생 · 서울대 법대 졸 · 컬럼비아대 로스쿨 LL.M · 김앤장 법률사무소 미국변호사', src: '공직자 재산등록 고보' },
+      { id: 'hdh_father', name: '한명수', cat: 'family', typ: 'parent', rel: '부친', desc: 'AMK(어플라이드 머티어리얼즈 코리아) 대표 역임', src: '공식 인적 기록' },
+      { id: 'hdh_mother', name: '허수옥', cat: 'family', typ: 'parent', rel: '모친', desc: '춘천 출신', src: '공식 인적 기록' },
+      { id: 'hdh_inlaw_f', name: '진형구', cat: 'family', typ: 'inlaw', rel: '장인', desc: '전 대검찰청 공안부장 / 대전고검장 역임 · 변호사 (법조 로열패밀리 배경)', src: '공식 인적 기록' },
+      { id: 'hdh_pol_ysy', name: '윤석열', cat: 'political', typ: 'mentor', rel: '제20대 대한민국 대통령', desc: '검찰 특수부 시절부터 함께한 직속 선배이자 대통령 (채상병 특검·김건희 여사 문제로 갈등 표출)', src: '대통령실 공보', party: '국민의힘' },
+      { id: 'hdh_pol_ljm', name: '이재명', cat: 'political', typ: 'rival', rel: '제21대 대통령 당선인', desc: '법무부 장관 시절 국회 체포동의안 설명 및 대야 전선 대립 라이벌', src: '국회 공보', party: '더불어민주당' }
     ],
-    network: []
+    cross_edges: [
+      { a: 'hdh_spouse', b: 'hdh_inlaw_f', typ: 'inlaw', label: '부녀 관계', desc: '진은정의 부친' }
+    ]
   },
   '조국': {
-    family: [
-      { id: 'jg_spouse', name: '정경심', typ: 'spouse', rel: '배우자', desc: '1962년생 · 동양대학교 교양학부 교수 역임' },
-      { id: 'jg_daughter', name: '조민', typ: 'child', rel: '장녀', desc: '1991년생 · 크리에이터' },
-      { id: 'jg_son', name: '조원', typ: 'child', rel: '장남', desc: '1996년생' },
-      { id: 'jg_father', name: '조변현', typ: 'parent', rel: '부친', desc: '1938~2013 · 웅동학원 이사장' },
-      { id: 'jg_mother', name: '박정숙', typ: 'parent', rel: '모친', desc: '1937년생 · 웅동학원 이사장' }
+    relations: [
+      { id: 'jg_spouse', name: '정경심', cat: 'family', typ: 'spouse', rel: '배우자', desc: '1962년생 · 서울대 영문과 졸 · 영국 애버딘대 박사 · 전 동양대학교 교양학부 교수 (표창장 및 입시 관련 사법 판결)', src: '사법 판결문 / 공직자 재산등록 고보' },
+      { id: 'jg_daughter', name: '조민', cat: 'family', typ: 'child', rel: '장녀', desc: '1991년생 · 부산대 의전원 석사 과정 이수 · 크리에이터 (입시 의혹 관련)', src: '공식 인적 기록' },
+      { id: 'jg_son', name: '조원', cat: 'family', typ: 'child', rel: '장남', desc: '1996년생 · 연세대 대학원 석사 (입시 공방 관련)', src: '공식 인적 기록' },
+      { id: 'jg_bro', name: '조권', cat: 'family', typ: 'sibling', rel: '남동생', desc: '전 웅동학원 사무국장 (웅동학원 소송 의혹 당사자)', src: '사법 판결문' },
+      { id: 'jg_father', name: '조변현', cat: 'family', typ: 'parent', rel: '부친', desc: '1938~2013 · 웅동학원 이사장 역임', src: '공식 인적 기록' },
+      { id: 'jg_mother', name: '박정숙', cat: 'family', typ: 'parent', rel: '모친', desc: '1937년생 · 웅동학원 이사장', src: '공식 인적 기록' },
+      { id: 'jg_pol_mj', name: '문재인', cat: 'political', typ: 'mentor', rel: '제19대 대한민국 대통령', desc: '청와대 초대 민정수석비서관 발탁 및 제66대 법무부장관 임명권자', src: '청와대 공보', party: '더불어민주당' },
+      { id: 'jg_pol_ljm', name: '이재명', cat: 'political', typ: 'colleague', rel: '제21대 대통령 당선인', desc: '범야권 총선 압승 및 검찰개혁 연대 파트너', src: '국회 공보', party: '더불어민주당' }
     ],
-    network: []
+    cross_edges: [
+      { a: 'jg_spouse', b: 'jg_daughter', typ: 'child', label: '모녀 관계', desc: '정경심과 조민' },
+      { a: 'jg_spouse', b: 'jg_son', typ: 'child', label: '모자 관계', desc: '정경심과 조원' },
+      { a: 'jg_father', b: 'jg_mother', typ: 'spouse', label: '부부 관계', desc: '조변현과 박정숙' }
+    ]
   }
 };
 
@@ -2090,6 +2162,7 @@ function enrichGraphDetail(g, name, polId, arc, pol){
       id: centerId,
       name: name,
       kind: 'politician',
+      cat: 'center',
       party: pol?.party || arc?.party || '',
       photo: pol?.photo || `data/pol/photos/${centerId}.webp`
     };
@@ -2099,58 +2172,62 @@ function enrichGraphDetail(g, name, polId, arc, pol){
 
   const preset = MASTER_RELATION_NETWORKS[name];
   if(preset){
-    // 1. 가족 노드 및 엣지 보강
-    (preset.family || []).forEach(f => {
-      if(!nodeMap.has(f.id)){
-        const fn = {
-          id: f.id,
-          name: f.name,
-          kind: 'family',
-          typ: f.typ,
-          desc: f.desc,
-          party: ''
+    const rels = preset.relations || [
+      ...(preset.family || []).map(f => ({ ...f, cat: 'family' })),
+      ...(preset.network || []).map(n => ({ ...n, cat: 'political' }))
+    ];
+
+    rels.forEach(r => {
+      const isFam = r.cat === 'family' || ['parent','spouse','child','sibling','inlaw','relative'].includes(r.typ);
+      if(!nodeMap.has(r.id)){
+        const rn = {
+          id: r.id,
+          name: r.name,
+          kind: isFam ? 'family' : 'politician',
+          cat: r.cat || (isFam ? 'family' : 'political'),
+          typ: r.typ,
+          desc: r.desc || '',
+          party: r.party || '',
+          photo: r.photo || ''
         };
-        nodes.push(fn);
-        nodeMap.set(f.id, fn);
+        nodes.push(rn);
+        nodeMap.set(r.id, rn);
+      } else {
+        const exist = nodeMap.get(r.id);
+        if(!exist.cat) exist.cat = r.cat;
+        if(!exist.desc) exist.desc = r.desc;
       }
-      const k1 = `${centerId}_${f.id}_${f.typ}`;
-      const k2 = `${f.id}_${centerId}_${f.typ}`;
+
+      const k1 = `${centerId}_${r.id}_${r.typ}`;
+      const k2 = `${r.id}_${centerId}_${r.typ}`;
       if(!edgeKeys.has(k1) && !edgeKeys.has(k2)){
         edges.push({
           a: centerId,
-          b: f.id,
-          typ: f.typ,
-          label: f.rel,
-          desc: f.desc,
-          src: '공직자 재산등록 고보 / 공식 인적 기록',
+          b: r.id,
+          cat: r.cat || 'family',
+          typ: r.typ,
+          label: r.rel,
+          desc: r.desc,
+          src: r.src || '공식 인적 기록 / 검증 보도',
           conf: 1
         });
         edgeKeys.add(k1);
       }
     });
 
-    // 2. 핵심 정치·의정 네트워크 노드 및 엣지 보강
-    (preset.network || []).forEach(net => {
-      if(!nodeMap.has(net.id)){
-        const nn = {
-          id: net.id,
-          name: net.name,
-          kind: 'politician',
-          party: net.party || '',
-          photo: net.photo || ''
-        };
-        nodes.push(nn);
-        nodeMap.set(net.id, nn);
-      }
-      const k1 = `${centerId}_${net.id}_${net.typ}`;
-      const k2 = `${net.id}_${centerId}_${net.typ}`;
-      if(!edgeKeys.has(k1) && !edgeKeys.has(k2)){
+    // Cross edges (배우자-처가, 형제자매 상호 연계 등)
+    (preset.cross_edges || []).forEach(ce => {
+      const k1 = `${ce.a}_${ce.b}_${ce.typ}`;
+      const k2 = `${ce.b}_${ce.a}_${ce.typ}`;
+      if(!edgeKeys.has(k1) && !edgeKeys.has(k2) && nodeMap.has(ce.a) && nodeMap.has(ce.b)){
         edges.push({
-          a: centerId,
-          b: net.id,
-          typ: net.typ,
-          label: net.rel,
-          src: net.src || '정치·의정 공적 활동',
+          a: ce.a,
+          b: ce.b,
+          cat: 'cross',
+          typ: ce.typ,
+          label: ce.label,
+          desc: ce.desc || '',
+          src: ce.src || '상호 연계 기록',
           conf: 1
         });
         edgeKeys.add(k1);
@@ -2167,10 +2244,12 @@ function enrichGraphDetail(g, name, polId, arc, pol){
 
 function renderArcGraph(g, targetName){
   if(!g||!g.nodes||!g.edges||!g.edges.length)return'<p class="mute">확인된 인맥·관계망 자료가 쌓이면 자동으로 시각화됩니다.</p>';
-  const W=860,H=460,cx=W/2,cy=H/2-6,N={};
+  const W=920,H=520,cx=W/2,cy=H/2-4,N={};
   g.nodes.forEach(n=>N[n.id]=n);
-  const C=g.center,direct=[],second=[];
+  const C=g.center;
+  const direct=[],second=[];
   const ds=new Set();
+
   g.edges.forEach(e=>{
     const o=e.a===C?e.b:e.b===C?e.a:null;
     if(o&&!ds.has(o)){ds.add(o);direct.push([o,e])}
@@ -2182,91 +2261,132 @@ function renderArcGraph(g, targetName){
       }
     }
   });
-  const ord=Object.keys(ARC_REL);
-  direct.sort((a,b)=>ord.indexOf(a[1].typ)-ord.indexOf(b[1].typ));
+
   const pos={[C]:[cx,cy]};
 
-  // 관계망 레이아웃: 중심과 1차·2차 관계자가 전체 영역을 시원하게 채우도록 분산
-  const R1x = Math.max(180, Math.min(W * 0.36, 290));
-  const R1y = Math.max(130, Math.min(H * 0.36, 190));
-
-  if(direct.length === 1){
-    pos[C] = [W * 0.22, cy];
-    pos[direct[0][0]] = [W * 0.52, cy];
-  } else {
-    direct.forEach(([o], i) => {
-      const a = -Math.PI / 2 + i * 2 * Math.PI / Math.max(direct.length, 1);
-      pos[o] = [cx + R1x * Math.cos(a), cy + R1y * Math.sin(a)];
+  // 노드가 많을 때 (다층 네트워크 분석 상황판): 섹터별 및 다중 동심원 궤도 분산
+  if(direct.length > 12){
+    const CAT_ORDER = ['family', 'academic', 'regional', 'civic', 'official', 'political'];
+    const groups = {};
+    CAT_ORDER.forEach(c => groups[c] = []);
+    direct.forEach(([o, e]) => {
+      const node = N[o] || {};
+      const cat = node.cat || e.cat || (node.kind === 'family' ? 'family' : 'political');
+      if(!groups[cat]) groups[cat] = [];
+      groups[cat].push([o, e]);
     });
+
+    // 섹터별 배치 각도 범위
+    const SECTORS = {
+      family:    { start: Math.PI * 0.70, end: Math.PI * 1.45, rMin: 140, rMax: 235 },
+      academic:  { start: Math.PI * 1.50, end: Math.PI * 1.70, rMin: 170, rMax: 235 },
+      regional:  { start: Math.PI * 1.75, end: Math.PI * 1.95, rMin: 175, rMax: 240 },
+      civic:     { start: Math.PI * 0.00, end: Math.PI * 0.22, rMin: 180, rMax: 245 },
+      official:  { start: Math.PI * 0.26, end: Math.PI * 0.48, rMin: 150, rMax: 235 },
+      political: { start: Math.PI * 0.52, end: Math.PI * 0.68, rMin: 175, rMax: 240 }
+    };
+
+    CAT_ORDER.forEach(cat => {
+      const list = groups[cat] || [];
+      if(!list.length) return;
+      const sec = SECTORS[cat] || { start: 0, end: Math.PI * 2, rMin: 180, rMax: 230 };
+      const span = sec.end - sec.start;
+
+      list.forEach(([o, e], i) => {
+        const step = list.length === 1 ? 0.5 : i / (list.length - 1);
+        const angle = sec.start + span * step;
+        // 교대 2중 궤도로 노드 간격 확보
+        const isOuter = (i % 2 === 1) || (list.length > 8 && i >= 6);
+        const r = isOuter ? sec.rMax : sec.rMin;
+        const rx = r * 1.45; // 가로 와이드 타원 궤도
+        const ry = r * 0.95;
+        let nx = cx + rx * Math.cos(angle);
+        let ny = cy + ry * Math.sin(angle);
+        nx = Math.max(50, Math.min(W - 50, nx));
+        ny = Math.max(42, Math.min(H - 46, ny));
+        pos[o] = [nx, ny];
+      });
+    });
+  } else {
+    // 12명 이하 소규모 네트워크 기본 분산
+    const R1x = Math.max(180, Math.min(W * 0.36, 290));
+    const R1y = Math.max(130, Math.min(H * 0.36, 190));
+    if(direct.length === 1){
+      pos[C] = [W * 0.22, cy];
+      pos[direct[0][0]] = [W * 0.52, cy];
+    } else {
+      direct.forEach(([o], i) => {
+        const a = -Math.PI / 2 + i * 2 * Math.PI / Math.max(direct.length, 1);
+        pos[o] = [cx + R1x * Math.cos(a), cy + R1y * Math.sin(a)];
+      });
+    }
   }
 
+  // 2차 관계자 (Second Degree) 배치
   const secL = second.slice(0, 24), grp = {};
   secL.forEach(s => {
     const L = (grp[s[2]] = grp[s[2]] || []);
-    if(L.length < 6) L.push(s[0]);
+    if(L.length < 5) L.push(s[0]);
   });
 
   Object.entries(grp).forEach(([p, L]) => {
     const [px, py] = pos[p] || [cx, cy];
     let base = Math.atan2(py - cy, px - cx);
-    if(direct.length === 1 && p === direct[0][0]){
-      base = 0;
-    }
-    const spread = Math.min(2.5, Math.max(1.2, 0.7 * (L.length - 1)));
+    const spread = Math.min(2.0, Math.max(1.0, 0.6 * (L.length - 1)));
     L.forEach((o, i) => {
       const angle = base + (L.length > 1 ? -spread / 2 + spread * i / (L.length - 1) : 0);
-      const rx = 135 + (i % 2) * 36;
-      const ry = 75 + (i % 2) * 25;
+      const rx = 85 + (i % 2) * 25;
+      const ry = 55 + (i % 2) * 20;
       let nx = px + rx * Math.cos(angle);
       let ny = py + ry * Math.sin(angle);
-      nx = Math.max(50, Math.min(W - 50, nx));
-      ny = Math.max(42, Math.min(H - 46, ny));
+      nx = Math.max(45, Math.min(W - 45, nx));
+      ny = Math.max(38, Math.min(H - 42, ny));
       pos[o] = [nx, ny];
     });
   });
 
-  const show=new Set(Object.keys(pos));
-
-  // Node descriptions mapping
-  const relMap={};
-  show.forEach(id=>{
-    if(id===C){
-      relMap[id]={label:'본인',desc:'의정 및 인맥 분석 대상'};
+  const show = new Set(Object.keys(pos));
+  const relMap = {};
+  show.forEach(id => {
+    if(id === C){
+      relMap[id] = { label: '본인', desc: '의정 및 인맥 분석 대상' };
       return;
     }
-    const edge=g.edges.find(e=>(e.a===id&&e.b===C)||(e.b===id&&e.a===C))||g.edges.find(e=>e.a===id||e.b===id);
+    const edge = g.edges.find(e => (e.a === id && e.b === C) || (e.b === id && e.a === C)) || g.edges.find(e => e.a === id || e.b === id);
     if(edge){
-      const rInfo=ARC_REL[edge.typ]||['관계','#94a3b8'];
-      let shortLbl=edge.label||rInfo[0];
-      shortLbl=shortLbl.replace(/\(나이 차.*?\)/g,'').replace(/대학교/g,'대').trim();
-      relMap[id]={label:shortLbl,desc:`${edge.label||rInfo[0]}${edge.src?' (출처: '+edge.src+')':''}`};
+      const rInfo = ARC_REL[edge.typ] || ['관계', '#94a3b8'];
+      let shortLbl = edge.label || rInfo[0];
+      shortLbl = shortLbl.replace(/\(나이 차.*?\)/g, '').replace(/대학교/g, '대').trim();
+      relMap[id] = { label: shortLbl, desc: `${edge.label || rInfo[0]}${edge.src ? ' (출처: ' + edge.src + ')' : ''}` };
     } else {
-      relMap[id]={label:'연결 인물',desc:'네트워크 연계'};
+      relMap[id] = { label: '연결 인물', desc: '네트워크 연계' };
     }
   });
 
-  const validEdges=g.edges.filter(e=>show.has(e.a)&&show.has(e.b));
-  const lines=validEdges.map((e,idx)=>{
-    const[a,b]=[pos[e.a],pos[e.b]];
-    const r=ARC_REL[e.typ]||['관계','#94a3b8'];
-    const prim=e.a===C||e.b===C;
-    const isDashed=e.typ==='schoolmate'||e.typ==='hometown';
-    return `<line class="arc-edge" data-edge-idx="${idx}" data-a="${esc(e.a)}" data-b="${esc(e.b)}" x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${r[1]}" stroke-width="${prim?2.4:1.4}" opacity="${prim?0.85:0.45}" ${isDashed?'stroke-dasharray="4 3"':''}><title>${esc(e.label||r[0])} · 출처 ${esc(e.src||'')}</title></line>
-    <line class="arc-flow" data-edge-idx="${idx}" data-a="${esc(e.a)}" data-b="${esc(e.b)}" x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${r[1]}" style="--fc:${r[1]}"></line>`;
+  const validEdges = g.edges.filter(e => show.has(e.a) && show.has(e.b));
+  const lines = validEdges.map((e, idx) => {
+    const [a, b] = [pos[e.a], pos[e.b]];
+    const r = ARC_REL[e.typ] || ['관계', '#94a3b8'];
+    const prim = e.a === C || e.b === C;
+    const isDashed = e.typ === 'schoolmate' || e.typ === 'hometown';
+    const edgeCat = e.cat || (N[e.a]?.cat || N[e.b]?.cat || 'other');
+    return `<line class="arc-edge" data-edge-idx="${idx}" data-cat="${esc(edgeCat)}" data-prim="${prim?'1':'0'}" data-a="${esc(e.a)}" data-b="${esc(e.b)}" x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${r[1]}" stroke-width="${prim?2.4:1.4}" opacity="${prim?0.85:0.45}" ${isDashed?'stroke-dasharray="4 3"':''}><title>${esc(e.label||r[0])} · 출처 ${esc(e.src||'')}</title></line>
+    <line class="arc-flow" data-edge-idx="${idx}" data-cat="${esc(edgeCat)}" data-a="${esc(e.a)}" data-b="${esc(e.b)}" x1="${a[0].toFixed(1)}" y1="${a[1].toFixed(1)}" x2="${b[0].toFixed(1)}" y2="${b[1].toFixed(1)}" stroke="${r[1]}" style="--fc:${r[1]}"></line>`;
   }).join('');
 
-  const nd=[...show].map(id=>{
-    const n=N[id]||{name:'?'};
-    const[x,y]=pos[id];
-    const c=id===C,r=c?24:ds.has(id)?17:13;
-    const isFamily=n.kind==='family'||id.startsWith('fam_')||id.startsWith('ljm_')||id.startsWith('ysy_')||id.startsWith('hdh_')||id.startsWith('jg_');
-    const col=n.party?(partyTheme(n.party)?.color||'#64748b'):(isFamily?(ARC_REL[n.typ]?.[1]||'#e64980'):'#94a3b8');
-    const link=isFamily?`https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}`:(id.startsWith('wd:')?`https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}`:`entity/${encodeURIComponent(n.name)}`);
-    const isExt=isFamily||id.startsWith('wd:');
-    const rel=relMap[id]||{label:'',desc:''};
-    const safeId=esc(id).replace(/\W/g,'');
+  const nd = [...show].map(id => {
+    const n = N[id] || { name: '?' };
+    const [x, y] = pos[id];
+    const c = id === C, r = c ? 24 : ds.has(id) ? 16 : 12;
+    const isFamily = n.kind === 'family' || n.cat === 'family' || id.startsWith('fam_') || id.startsWith('ljm_') || id.startsWith('ysy_') || id.startsWith('hdh_') || id.startsWith('jg_');
+    const col = n.party ? (partyTheme(n.party)?.color || '#64748b') : (isFamily ? (ARC_REL[n.typ]?.[1] || '#e64980') : (ARC_REL[n.typ]?.[1] || '#94a3b8'));
+    const link = isFamily ? `https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}` : (id.startsWith('wd:') ? `https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}` : `entity/${encodeURIComponent(n.name)}`);
+    const isExt = isFamily || id.startsWith('wd:');
+    const rel = relMap[id] || { label: '', desc: '' };
+    const safeId = esc(id).replace(/\W/g, '');
+    const nodeCat = n.cat || (c ? 'center' : (isFamily ? 'family' : 'political'));
 
-    return `<g class="gn ${c?'c':''}" data-id="${esc(id)}" data-name="${esc(n.name)}" data-rel="${esc(rel.desc)}" data-href="${link}" data-ext="${isExt}" data-bx="${x.toFixed(2)}" data-by="${y.toFixed(2)}" data-br="${r}" data-center="${c?'1':'0'}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})">
+    return `<g class="gn ${c?'c':''}" data-id="${esc(id)}" data-cat="${esc(nodeCat)}" data-name="${esc(n.name)}" data-rel="${esc(rel.desc)}" data-href="${link}" data-ext="${isExt}" data-bx="${x.toFixed(2)}" data-by="${y.toFixed(2)}" data-br="${r}" data-center="${c?'1':'0'}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})">
       <circle cx="0" cy="0" r="${r}" fill="#fff" stroke="${col}" stroke-width="${c?3.8:2.4}"/>
       ${n.photo?`<clipPath id="cp_${safeId}"><circle cx="0" cy="0" r="${r-1.5}"/></clipPath><image href="${esc(n.photo)}" x="${-r}" y="${-r}" width="${2*r}" height="${2*r}" clip-path="url(#cp_${safeId})" preserveAspectRatio="xMidYMin slice"/>`:`<text x="0" y="4" text-anchor="middle" class="gi" fill="${col}">${esc((n.name||'?')[0])}</text>`}
       <text x="0" y="${r+13}" text-anchor="middle" class="gl">${esc(n.name||'')}</text>
@@ -2275,122 +2395,225 @@ function renderArcGraph(g, targetName){
     </g>`;
   }).join('');
 
-  const used=[...new Set(validEdges.map(e=>e.typ))];
-  const rows=direct.map(([o,e])=>{
-    const n=N[o]||{};
-    const r=ARC_REL[e.typ]||['관계','#94a3b8'];
-    const isFam=n.kind==='family'||o.startsWith('fam_')||o.startsWith('ljm_')||o.startsWith('ysy_')||o.startsWith('hdh_')||o.startsWith('jg_');
-    return `<li style="--rc:${r[1]}"><i></i><b>${isFam||o.startsWith('wd:')?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}" target="_blank" rel="noopener" title="${esc(n.name)} 검색">${esc(n.name)} <small style="font-size:10px">↗</small></a>`:`<a href="entity/${encodeURIComponent(n.name)}">${esc(n.name)}</a>`}</b><span>${esc(e.label||r[0])}</span><small>${e.url?`<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.src)}</a>`:esc(e.src||'')}${e.conf<0.8?' · 추정':''}</small></li>`;
-  }).join('');
-
-  setTimeout(()=>{
+  setTimeout(() => {
     document.querySelectorAll('.arc-gwrap:not([data-bound])').forEach(initArcGraphInteraction);
   }, 25);
 
-  return `<div class="arc-glegend">${used.map(t=>`<span style="--rc:${ARC_REL[t]?.[1]||'#94a3b8'}"><i></i>${ARC_REL[t]?.[0]||t}</span>`).join('')}</div>
-  <div class="arc-gwrap">
+  return `<div class="arc-gwrap">
     <div class="arc-hint-bar" aria-live="polite">
       <span class="arc-hint-icon">✨</span>
-      <span class="arc-hint-text">노드를 드래그하거나 롤오버하면 관계 선과 정보가 연결됩니다</span>
+      <span class="arc-hint-text">노드를 드래그하거나 롤오버하면 상호 관계선과 법적·정무적 배경이 연결됩니다</span>
     </div>
     <svg viewBox="0 0 ${W} ${H}" class="arc-gsvg" role="img" aria-label="인맥 관계도">${lines}${nd}</svg>
   </div>
-  <ul class="arc-glist">${rows}</ul>
   <p class="fine" style="margin-top:8px">※ 실선은 가족·공식 직계 및 정무·동지 관계이며, 점선은 학교 동문이나 출생지 등 공통 배경 관계입니다. 노드를 끌어서 위치를 재배치하거나 터치해 상호 관계를 확인할 수 있습니다.</p>`;
 }
 
 function renderFamilySection(p, arc, g){
   g = enrichGraphDetail(g, p?.name, p?.id, arc, p);
-  const familyTypes=['parent','spouse','child','sibling','inlaw','relative'];
-  const directFamilyEdges=(g?.edges||[]).filter(e=>{
-    const isDirect=(e.a===g.center||e.b===g.center);
-    return isDirect&&familyTypes.includes(e.typ);
-  });
-  const nodes={};
-  (g?.nodes||[]).forEach(n=>nodes[n.id]=n);
-  const familyEvents=(arc?.events||[]).filter(e=>e.typ==='family');
-  const isDefector=/탈북|북향민|함흥|평양|국방종합대/.test([p?.name,(p?.history||[]).join(' '),arc?.data?.summary,arc?.data?.wiki?.text].join(' '));
+  const nodes = {};
+  (g?.nodes || []).forEach(n => nodes[n.id] = n);
 
-  let content='';
-  if(directFamilyEdges.length||familyEvents.length){
-    content=`<div class="family-spec-grid">
-      ${directFamilyEdges.map(e=>{
-        const otherId=e.a===g.center?e.b:e.a;
-        const node=nodes[otherId]||{name:'가족'};
-        const relLabel=e.label||(ARC_REL[e.typ]?ARC_REL[e.typ][0]:'가족');
-        const tagCol=ARC_REL[e.typ]?.[1]||'#d6336c';
-        const isFam=node.kind==='family'||otherId.startsWith('fam_')||otherId.startsWith('ljm_')||otherId.startsWith('ysy_')||otherId.startsWith('hdh_')||otherId.startsWith('jg_')||otherId.startsWith('wd:');
-        return `<div class="family-spec-card">
-          <div class="fsc-top">
-            <span class="fsc-badge" style="background:${tagCol}15;color:${tagCol};border:1px solid ${tagCol}30">${esc(relLabel)}</span>
-            <strong class="fsc-name">
-              ${isFam?`<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(node.name)}" target="_blank" rel="noopener">${esc(node.name)} <span class="fsc-ext">${dossierSvg('external', 11)}</span></a>`:`<a href="entity/${encodeURIComponent(node.name)}">${esc(node.name)}</a>`}
-            </strong>
-            ${node.party?`<span class="fsc-party" style="color:${partyTheme(node.party)?.color||'#64748b'}">${esc(node.party)}</span>`:''}
-          </div>
-          ${node.desc?`<p class="fsc-desc">${esc(node.desc)}</p>`:''}
-          <div class="fsc-meta">${dossierSvg('bio', 11)} <span>${esc(e.src||'공직자 재산등록 고보 / 공식 인적 기록')}</span></div>
-        </div>`;
-      }).join('')}
-      ${familyEvents.map(fe=>`
-        <div class="family-spec-card">
-          <div class="fsc-top">
-            <span class="fsc-badge" style="background:#47556915;color:#475569;border:1px solid #47556930">가족 기록</span>
-            <strong class="fsc-name">${esc(fe.title)}</strong>
-          </div>
-          <p class="fsc-desc">${esc(fDate(fe.d))} · ${esc(fe.src||'공식 기록')}</p>
-        </div>
-      `).join('')}
-    </div>`;
-  }else if(isDefector){
-    content=`<div class="pol-defector-note">
-      <div class="pdn-badge">🔒 탈북 공직자 특수 보호 안내</div>
-      <p><b>북한 잔류 가족 신변 보호:</b> 북한에 거주 중인 친족의 안전을 위해 관계 법령에 따라 비공개 보호 대상입니다.</p>
-    </div>`;
-  }else{
-    // 공직자 재산등록 고보 대상이 아니거나 관계망 데이터가 아예 없는 일반 인물인 경우 섹션 전체 숨김
-    if(!p?.assets?.records?.length && (!g || !g.edges || !g.edges.length)) {
-      return '';
+  // 카테고리 정의 (수사관·형사의 사건 분석 관점 다층 관계망)
+  const CATEGORIES = [
+    { key: 'family',    label: '직계 가족 & 사돈·친인척', badge: '1차 인적 배경', icon: 'heart',  color: '#e64980', desc: '배우자(영부인), 직계존비속, 형제자매 5남 2녀, 처가(장인·장모·처남) 등 사건·의혹 검증과 이해관계의 1차 출발선' },
+    { key: 'academic',  label: '학연 (대학·사법연수원)', badge: '법조·학업 동문', icon: 'school', color: '#2a9d8f', desc: '중앙대학교 법과대학 및 사법연수원 18기 등 법조 입문 시절부터 결속된 최고위 동문 네트워크' },
+    { key: 'regional',  label: '지연 (고향·정치적 텃밭)', badge: '지역 연고',     icon: 'map-pin', color: '#f08c00', desc: '고향 경북 안동 예안면, 소년공 시절 성남 상대원, 그리고 국회 진출의 교두보 인천 계양구을 연고' },
+    { key: 'civic',     label: '시민사회 & 법조 동지',   badge: '시민·사법 동지', icon: 'landmark',color: '#0891b2', desc: '성남참여연대, 시립병원설립추진위, 민변 시절부터 다져진 사회운동 및 사법 리스크 방어 네트워크' },
+    { key: 'official',  label: '정무·직무 핵심 참모',   badge: '핵심 복심·참모', icon: 'star-f',  color: '#2f9e44', desc: '성남시청·경기도청·중앙당 비서실을 거친 핵심 참모진 (대장동 등 주요 개발 정책 및 사건의 핵심 인물군)' },
+    { key: 'political', label: '정치 동지 & 대선 라이벌', badge: '정치 세력·라이벌',icon: 'building',color: '#1971c2', desc: '국정 공조 파트너, 당 원로 멘토, 원내 사령탑 및 0.73%p 대선 맞수·경쟁 후보군' }
+  ];
+
+  // 인물별 카테고리 그룹화
+  const groupedItems = {};
+  CATEGORIES.forEach(c => groupedItems[c.key] = []);
+
+  (g?.nodes || []).forEach(n => {
+    if(n.id === g.center) return;
+    const edge = (g?.edges || []).find(e => (e.a === n.id && e.b === g.center) || (e.b === n.id && e.a === g.center)) || (g?.edges || []).find(e => e.a === n.id || e.b === n.id);
+    let cat = n.cat;
+    if(!cat){
+      if(n.kind === 'family' || ['parent','spouse','child','sibling','inlaw','relative'].includes(n.typ)) cat = 'family';
+      else if(n.typ === 'schoolmate') cat = 'academic';
+      else if(n.typ === 'hometown' || n.typ === 'predecessor') cat = 'regional';
+      else if(n.typ === 'civic') cat = 'civic';
+      else if(n.typ === 'staff') cat = 'official';
+      else cat = 'political';
     }
-    content=`<div class="pol-family-empty">
-      <p>공직자윤리법 제12조에 따른 재산등록상 직계존비속 고지 정보 기준입니다. (독립생계 유지에 따른 고지거부 가족은 비공개됩니다)</p>
-    </div>`;
+    if(!groupedItems[cat]) groupedItems[cat] = [];
+    groupedItems[cat].push({
+      id: n.id,
+      name: n.name,
+      cat: cat,
+      typ: n.typ || edge?.typ || 'colleague',
+      rel: edge?.label || (ARC_REL[n.typ]?.[0] || '관계 인물'),
+      desc: n.desc || edge?.desc || '',
+      src: edge?.src || '공식 인적 기록 / 검증 보도',
+      party: n.party || '',
+      photo: n.photo || ''
+    });
+  });
+
+  const totalCount = Object.values(groupedItems).reduce((sum, arr) => sum + arr.length, 0);
+  if(totalCount === 0 && !p?.assets?.records?.length){
+    return '';
   }
+
+  // 세로 적층형 관계 분석 카드 섹션 HTML 생성 (가로 2단/3단 분할 금지, 국제표준 규격 1.6 줄간격)
+  const categorySectionsHtml = CATEGORIES.map(catMeta => {
+    const items = groupedItems[catMeta.key] || [];
+    if(!items.length) return '';
+
+    return `
+    <div class="rel-group-section" data-cat="${catMeta.key}">
+      <div class="rgs-header">
+        <div class="rgs-title-wrap">
+          <span class="rgs-icon" style="background:${catMeta.color}15;color:${catMeta.color}">${dossierSvg(catMeta.icon, 16)}</span>
+          <h4 class="rgs-title">${catMeta.label}</h4>
+          <span class="rgs-badge" style="background:${catMeta.color}15;color:${catMeta.color};border:1px solid ${catMeta.color}35">${catMeta.badge}</span>
+          <mark class="rgs-count">${items.length}명</mark>
+        </div>
+        <p class="rgs-desc">${catMeta.desc}</p>
+      </div>
+
+      <div class="rel-card-stack">
+        ${items.map(item => {
+          const badgeCol = ARC_REL[item.typ]?.[1] || catMeta.color;
+          const isFam = item.cat === 'family' || ['parent','spouse','child','sibling','inlaw','relative'].includes(item.typ);
+          const isExt = isFam || item.id.startsWith('wd:') || item.id.startsWith('ljm_') || item.id.startsWith('ysy_') || item.id.startsWith('hdh_') || item.id.startsWith('jg_');
+          const partyCol = item.party ? (partyTheme(item.party)?.color || '#64748b') : '';
+
+          return `
+          <div class="rel-investigative-card" data-cat="${item.cat}">
+            <div class="ric-top-row">
+              <div class="ric-left">
+                <span class="ric-role-badge" style="background:${badgeCol}18;color:${badgeCol};border:1px solid ${badgeCol}35">${esc(item.rel)}</span>
+                <strong class="ric-name">
+                  ${isExt ? `<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(item.name)}" target="_blank" rel="noopener" title="포털 인물·기록 검증 검색">${esc(item.name)} <span class="ric-ext">${dossierSvg('external', 11)}</span></a>` : `<a href="entity/${encodeURIComponent(item.name)}">${esc(item.name)}</a>`}
+                </strong>
+                ${item.party ? `<span class="ric-party" style="color:${partyCol}">${esc(item.party)}</span>` : ''}
+              </div>
+              <span class="ric-cat-badge">${catMeta.badge}</span>
+            </div>
+            ${item.desc ? `<p class="ric-desc">${esc(item.desc)}</p>` : ''}
+            <div class="ric-meta-row">
+              <span class="ric-src">${dossierSvg('bio', 12)} <span>출처: ${esc(item.src)}</span></span>
+              <span class="ric-type-note">분석 관점: ${esc(catMeta.label)}</span>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  }).join('');
+
+  setTimeout(() => {
+    const secEl = document.querySelector('#sec-network');
+    if(secEl) initRelFilterInteraction(secEl);
+  }, 40);
 
   return `
   <section class="dossier-sec" id="sec-network">
     <div class="dossier-sec-head">
       <div class="dsh-left">
-        <span class="dsh-kicker">DOSSIER 04 / NETWORK & FAMILY</span>
-        <h3 class="dsh-title">${dossierSvg('network', 18)} 가족 관계 및 인맥·동문 네트워크</h3>
+        <span class="dsh-kicker">DOSSIER 04 / INVESTIGATIVE INTELLIGENCE NETWORK</span>
+        <h3 class="dsh-title">${dossierSvg('network', 18)} 인물 배경 및 심층 연계망 종합 분석</h3>
       </div>
-      ${g&&g.edges&&g.edges.length?`<span class="dsh-note">${g.edges.length}개 관계망 연결 분석</span>`:''}
+      <span class="dsh-note">수사관·형사의 사건 이해 관점 다층 관계망</span>
     </div>
 
     <div class="dossier-spec-card">
-      <div style="margin-bottom:14px;display:flex;align-items:center;gap:6px">
-        <strong style="font-size:.88rem;color:#0f172a;display:inline-flex;align-items:center;gap:6px">
-          ${dossierSvg('user', 14)} 직계 가족 및 핵심 친인척 현황
-        </strong>
-      </div>
-      ${content}
-
-      ${g&&g.edges&&g.edges.length?`
-      <details class="dossier-fold" id="fold-network" style="margin-top:16px">
-        <summary class="dossier-fold-summary">
-          <div class="dfs-left">
-            ${dossierSvg('network', 15)}
-            <span>인터랙티브 인맥·동문·지역 관계망 네트워크 그래프</span>
-            <mark class="dfs-cnt">${g.edges.length}개 노드 연결</mark>
-          </div>
-          <span class="dfs-toggle">관계망 열기/접기 ${dossierSvg('chevron-down', 13)}</span>
-        </summary>
-        <div class="dossier-fold-body" style="padding-top:12px">
-          ${renderArcGraph(g, p?.name)}
+      <!-- 1. 수사관 관점 인텔리전스 인포박스 -->
+      <div class="investigative-insight-box">
+        <div class="iib-head">
+          <span class="iib-badge">🔍 수사관의 사건 분석 관점</span>
+          <strong class="iib-title">혈연(사돈·친인척)부터 학연·지연·직무 참모까지 입체적 이해관계 추적</strong>
         </div>
-      </details>`:''}
+        <p class="iib-desc">
+          공직자와 정치인을 둘러싼 사건과 의혹의 실마리는 직계 혈족과 처가·사돈에 이르는 1차 배경에서 시작하여, 학연·지연의 인적 토대, 그리고 권한을 위임받은 직무·정무 참모들의 상호 이해관계 지형도에서 비로소 완성됩니다. 아래 <b>범주별 필터</b>를 통해 의혹 규명과 배경 분석의 핵심 축을 다각도로 조회할 수 있습니다.
+        </p>
+      </div>
+
+      <!-- 2. 범주별 인터랙티브 필터 탭 -->
+      <div class="rel-cat-tabs" id="rel-filter-tabs" role="tablist" aria-label="관계망 범주 필터">
+        <button type="button" class="rel-cat-btn on" data-cat="all">
+          <span>전체 연계망</span><mark class="rc-cnt">${totalCount}</mark>
+        </button>
+        ${CATEGORIES.map(c => {
+          const cnt = (groupedItems[c.key] || []).length;
+          if(!cnt) return '';
+          return `<button type="button" class="rel-cat-btn" data-cat="${c.key}">
+            <span>${c.label.split(' ')[0]}</span><mark class="rc-cnt">${cnt}</mark>
+          </button>`;
+        }).join('')}
+      </div>
+
+      <!-- 3. 인터랙티브 SVG 네트워크 그래프 -->
+      <div class="rel-graph-container" style="margin-top:16px">
+        ${renderArcGraph(g, p?.name)}
+      </div>
+
+      <!-- 4. 세로 적층 구조의 상세 관계 분석 카드 (가로 2/3단 분할 금지, 균일 표준 줄간격 1.6) -->
+      <div class="rel-sections-wrap" id="rel-sections-wrap" style="margin-top:20px">
+        ${categorySectionsHtml}
+      </div>
     </div>
   </section>`;
+}
+
+function initRelFilterInteraction(container){
+  if(!container || container.dataset.filterBound) return;
+  container.dataset.filterBound = '1';
+
+  const tabBtns = container.querySelectorAll('.rel-cat-btn');
+  const sections = container.querySelectorAll('.rel-group-section');
+  const svg = container.querySelector('.arc-gsvg');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.cat;
+      tabBtns.forEach(b => b.classList.toggle('on', b === btn));
+
+      // 1. 카드 섹션 필터링
+      sections.forEach(sec => {
+        if(cat === 'all' || sec.dataset.cat === cat){
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+
+      // 2. SVG 그래프 노드 및 엣지 포커스 인터랙션
+      if(svg){
+        const nodes = svg.querySelectorAll('.gn');
+        const edges = svg.querySelectorAll('.arc-edge');
+        const flows = svg.querySelectorAll('.arc-flow');
+
+        if(cat === 'all'){
+          nodes.forEach(n => { n.style.opacity = '1'; n.style.pointerEvents = 'auto'; });
+          edges.forEach(e => {
+            const isPrim = e.getAttribute('data-prim') === '1';
+            e.style.opacity = isPrim ? '0.85' : '0.45';
+          });
+          flows.forEach(f => { f.style.opacity = '0'; });
+        } else {
+          nodes.forEach(n => {
+            const isCenter = n.classList.contains('c') || n.dataset.center === '1';
+            const match = isCenter || n.dataset.cat === cat;
+            n.style.opacity = match ? '1' : '0.12';
+            n.style.pointerEvents = match ? 'auto' : 'none';
+          });
+          edges.forEach(e => {
+            const match = e.dataset.cat === cat;
+            e.style.opacity = match ? '0.9' : '0.06';
+          });
+          flows.forEach(f => {
+            const match = f.dataset.cat === cat;
+            f.style.opacity = match ? '0.9' : '0';
+          });
+        }
+      }
+    });
+  });
 }
 
 function renderAssetsSection(p, c){
