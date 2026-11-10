@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T21:03:31.949307+09:00",
+  "updated": "2026-11-10T21:19:16.181287+09:00",
   "alerts_count": 46,
   "alerts": [
     {
@@ -147,22 +147,6 @@
       "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 35 kt. Seas 7 ft. Extreme freezing spray.\n.TUE...E winds 40 kt. "
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.f430cc14b4032669f2f960225a46a27af914640c.003.1",
-      "t": "2026-11-09 15:48",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Point Franklin to Cape Halkett out to 15 NM",
-      "area_en": "Point Franklin to Cape Halkett out to 15 NM",
-      "event": "해상 결빙 경보",
-      "event_en": "Heavy Freezing Spray Warning",
-      "severity": "Severe",
-      "headline_ko": "Point Franklin to Cape Halkett out to 15 NM 해상 결빙 경보",
-      "headline_en": "Point Franklin to Cape Halkett out to 15 NM Heavy Freezing Spray Warning",
-      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 30 kt. Seas 6 ft. Blowing snow. Heavy freezing\nspray.\n.TUE...NE "
-    },
-    {
       "id": "urn:oid:2.49.0.1.840.0.f430cc14b4032669f2f960225a46a27af914640c.004.1",
       "t": "2026-11-09 15:48",
       "country": "US",
@@ -177,6 +161,22 @@
       "headline_ko": "Cape Halkett to Flaxman Island out to 15 NM 해상 결빙 경보",
       "headline_en": "Cape Halkett to Flaxman Island out to 15 NM Heavy Freezing Spray Warning",
       "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 35 kt. Seas 7 ft. Blowing snow. Extreme\nfreezing spray.\n.TUE...E"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.f430cc14b4032669f2f960225a46a27af914640c.003.1",
+      "t": "2026-11-09 15:48",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Point Franklin to Cape Halkett out to 15 NM",
+      "area_en": "Point Franklin to Cape Halkett out to 15 NM",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
+      "severity": "Severe",
+      "headline_ko": "Point Franklin to Cape Halkett out to 15 NM 해상 결빙 경보",
+      "headline_en": "Point Franklin to Cape Halkett out to 15 NM Heavy Freezing Spray Warning",
+      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 30 kt. Seas 6 ft. Blowing snow. Heavy freezing\nspray.\n.TUE...NE "
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.f430cc14b4032669f2f960225a46a27af914640c.005.1",
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 7.1,
-      "apparent_temp": 4.2,
+      "temp": 7.4,
+      "apparent_temp": 4.5,
       "humidity": 77,
       "code": 1,
-      "wind": 9.5
+      "wind": 9.7
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 16.9,
-      "apparent_temp": 13.8,
+      "temp": 16.5,
+      "apparent_temp": 13.3,
       "humidity": 40,
       "code": 0,
-      "wind": 10.8
+      "wind": 10.5
     },
     {
       "id": "london",
@@ -362,11 +362,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 10.2,
+      "temp": 10.3,
       "apparent_temp": 6.1,
-      "humidity": 63,
+      "humidity": 61,
       "code": 3,
-      "wind": 17.6
+      "wind": 18.4
     },
     {
       "id": "paris",
@@ -376,8 +376,8 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 11.4,
-      "apparent_temp": 10.2,
+      "temp": 11.5,
+      "apparent_temp": 10.4,
       "humidity": 91,
       "code": 61,
       "wind": 8.1
@@ -390,11 +390,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 8.2,
-      "apparent_temp": 5.6,
+      "temp": 8.3,
+      "apparent_temp": 5.7,
       "humidity": 71,
-      "code": 2,
-      "wind": 7.2
+      "code": 3,
+      "wind": 7.1
     },
     {
       "id": "tokyo",
@@ -404,9 +404,9 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 9.9,
-      "apparent_temp": 8.1,
-      "humidity": 72,
+      "temp": 9.8,
+      "apparent_temp": 8.0,
+      "humidity": 71,
       "code": 1,
       "wind": 3.6
     },
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 6.9,
-      "apparent_temp": 4.0,
-      "humidity": 72,
+      "temp": 6.7,
+      "apparent_temp": 3.9,
+      "humidity": 73,
       "code": 0,
-      "wind": 7.9
+      "wind": 7.4
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 25.0,
+      "temp": 24.9,
       "apparent_temp": 31.1,
       "humidity": 99,
       "code": 3,
-      "wind": 3.7
+      "wind": 2.8
     },
     {
       "id": "sydney",
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 17.7,
-      "apparent_temp": 17.7,
+      "temp": 17.6,
+      "apparent_temp": 17.5,
       "humidity": 78,
       "code": 0,
-      "wind": 8.9
+      "wind": 8.5
     },
     {
       "id": "toronto",
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 7.5,
-      "apparent_temp": 4.0,
-      "humidity": 80,
+      "temp": 7.7,
+      "apparent_temp": 4.1,
+      "humidity": 79,
       "code": 3,
-      "wind": 14.5
+      "wind": 15.2
     },
     {
       "id": "dubai",
@@ -474,9 +474,9 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 31.0,
-      "apparent_temp": 34.0,
-      "humidity": 59,
+      "temp": 30.9,
+      "apparent_temp": 33.7,
+      "humidity": 58,
       "code": 0,
       "wind": 13.3
     },
@@ -488,11 +488,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 17.8,
-      "apparent_temp": 17.3,
-      "humidity": 66,
+      "temp": 18.3,
+      "apparent_temp": 18.1,
+      "humidity": 65,
       "code": 2,
-      "wind": 12.1
+      "wind": 11.9
     }
   ],
   "stories": []
