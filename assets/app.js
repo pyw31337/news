@@ -2778,16 +2778,33 @@ function renderQuotesSection(p, id){
   </section>`;
 }
 
+function cleanDossierText(str){
+  if(str == null) return '';
+  return String(str)
+    .replace(/&middot;/gi, '·')
+    .replace(/&bull;/gi, '•')
+    .replace(/&sim;/gi, '~')
+    .replace(/&shy;/gi, '')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&rsquo;|&lsquo;/gi, "'")
+    .replace(/&ldquo;|&rdquo;/gi, '"')
+    .replace(/&amp;/gi, '&')
+    .replace(/[▶▷]/g, '')
+    .replace(/^[•\*\-\s]+/, '')
+    .trim();
+}
+
 function extractQuoteAiSummary(txt, speaker){
   if(!txt) return '';
-  const clean = txt.replace(/^[“"']|[”"']$/g, '').trim();
+  const clean = cleanDossierText(txt).replace(/^[“"']|[”"']$/g, '').trim();
   const prefix = speaker ? (speaker + ': ') : '';
   return prefix + '"' + clean + '" 발언 및 관련 보도 맥락';
 }
 
 function getOrgSymbolHtml(text, size=28){
   if(!text)return'';
-  const str=String(text);
+  const str = cleanDossierText(text);
 
   // 1. Political Parties
   if(/국민의힘|새누리|한나라|자유한국|미래통합|국민의미래/.test(str)){
@@ -2938,7 +2955,7 @@ function getOrgSymbolHtml(text, size=28){
 }
 
 function renderCareerSection(p, arc){
-  const hist=p.history||[];
+  const hist=(p.history||[]).map(cleanDossierText).filter(Boolean);
   const eduEvents=(arc?.events||[]).filter(e=>e.typ==='edu');
 
   if(!hist.length&&!eduEvents.length)return'';
@@ -2959,7 +2976,7 @@ function renderCareerSection(p, arc){
     </h3>
     <ul class="pol-career-list pol-edu-list" style="margin-bottom:16px">
       ${eduEvents.map(e=>{
-        const titleText=e.title||'';
+        const titleText=cleanDossierText(e.title||'');
         const sym=getOrgSymbolHtml(titleText, 28);
         const dateStr=fDate(e.d?e.d.slice(0,7):'');
         return `<li class="pol-career-item">
@@ -2981,10 +2998,10 @@ function renderCareerSection(p, arc){
     <ul class="pol-career-list">
       ${hist.slice(0, 4).map(h=>{
         const sym=getOrgSymbolHtml(h, 28);
-        const isCur=/現\)|현재|현직/.test(h);
-        const isPast=/前\)|전직/.test(h);
+        const isCur=/^(現\)|現\s|현재|현직)/.test(h);
+        const isPast=/^(前\)|前\s|전직)/.test(h);
         const badgeText=isCur?'現':(isPast?'前':'');
-        const cleanText=h.replace(/^(現\)|前\)|現|前)\s*/,'');
+        const cleanText=h.replace(/^(現\)|前\)|現|前)\s*/,'').replace(/^[•\*\-\s]+/, '').trim();
         return `<li class="pol-career-item ${isCur?'cur':''}">
           <div class="pci-symbol">${sym}</div>
           <div class="pci-body">
@@ -3011,10 +3028,10 @@ function renderCareerSection(p, arc){
         <ul class="pol-career-list">
           ${hist.slice(4).map(h=>{
             const sym=getOrgSymbolHtml(h, 28);
-            const isCur=/現\)|현재|현직/.test(h);
-            const isPast=/前\)|전직/.test(h);
+            const isCur=/^(現\)|現\s|현재|현직)/.test(h);
+            const isPast=/^(前\)|前\s|전직)/.test(h);
             const badgeText=isCur?'現':(isPast?'前':'');
-            const cleanText=h.replace(/^(現\)|前\)|現|前)\s*/,'');
+            const cleanText=h.replace(/^(現\)|前\)|現|前)\s*/,'').replace(/^[•\*\-\s]+/, '').trim();
             return `<li class="pol-career-item ${isCur?'cur':''}">
               <div class="pci-symbol">${sym}</div>
               <div class="pci-body">
@@ -3079,8 +3096,8 @@ function renderLifeTimelineSection(arc){
   // 출생 정보 정규화 (중복 괄호 및 제목 버그 제거)
   let birthClean = '';
   if(births[0]){
-    const desc = (births[0].desc || '').trim();
-    const title = (births[0].title || '').trim();
+    const desc = cleanDossierText(births[0].desc || '');
+    const title = cleanDossierText(births[0].title || '');
     if(desc && desc !== title){
       const tClean = title.replace(/^출생\s*\(?/, '').replace(/\)?$/, '').trim();
       birthClean = tClean && !desc.includes(tClean) ? `${tClean} · ${desc}` : desc;
@@ -3090,10 +3107,11 @@ function renderLifeTimelineSection(arc){
   }
 
   // 학력 체인 (깨끗한 텍스트)
-  const eduChain = edus.map(x => x.title.replace(/\s*\([^)]*학력\)/g, '').trim()).join(' → ');
+  const eduChain = edus.map(x => cleanDossierText(x.title.replace(/\s*\([^)]*학력\)/g, '')).trim()).filter(Boolean).join(' → ');
 
   // 주요 경력
-  const careerText = careers.slice(0, 4).map(x => x.title.trim()).join(' · ');
+  const careerText = careers.slice(0, 4).map(x => cleanDossierText(x.title)).filter(Boolean).join(' · ');
+  const cleanMil = cleanDossierText(mil);
 
   return `
   <section class="dossier-sec" id="sec-lifetl">
@@ -3120,10 +3138,10 @@ function renderLifeTimelineSection(arc){
             <span class="spec-block-label">${dossierSvg('edu', 14)} 학력</span>
             <div class="spec-block-val">${esc(eduChain)}</div>
           </div>` : ''}
-        ${mil ? `
+        ${cleanMil ? `
           <div class="spec-block">
             <span class="spec-block-label">${dossierSvg('shield', 14)} 병역</span>
-            <div class="spec-block-val">${esc(mil)}</div>
+            <div class="spec-block-val">${esc(cleanMil)}</div>
           </div>` : ''}
         ${careerText ? `
           <div class="spec-block">
@@ -3278,10 +3296,10 @@ function extractEntityMilestones(name, arc, pol){
         seenY.add(match[1]);
         list.push({
           y: match[1],
-          title: e.title,
-          sub: e.desc || e.stage || '',
+          title: cleanDossierText(e.title),
+          sub: cleanDossierText(e.desc || e.stage || ''),
           icon: e.typ === 'birth' ? 'user' : e.typ === 'edu' ? 'edu' : e.typ === 'elect' ? 'landmark' : 'briefcase',
-          tag: e.stage || '공적 기록'
+          tag: cleanDossierText(e.stage || '공적 기록')
         });
       }
     });
@@ -3412,8 +3430,8 @@ function renderExecMetaGrid(e, pol, aDetail, pDetail){
   }
 
   // 5. 주요 공적 경력 (풀텍스트)
-  const careers = (aDetail?.events || []).filter(x => x.typ === 'career').slice(-4).reverse().map(x => x.title);
-  let careerText = careers.length ? careers.join(' · ') : (p.committees || (p.history || []).slice(0, 3).join(' · '));
+  const careers = (aDetail?.events || []).filter(x => x.typ === 'career').slice(-4).reverse().map(x => cleanDossierText(x.title)).filter(Boolean);
+  let careerText = careers.length ? careers.join(' · ') : (p.committees ? cleanDossierText(p.committees) : (p.history || []).slice(0, 3).map(cleanDossierText).filter(Boolean).join(' · '));
   if(e.name === '이재명'){
     careerText = '제35·36대 경기도 성남시장 (민선 5·6기) · 제35대 경기도지사 (민선 7기) · 제20대 대선 후보 · 제21대 대한민국 대통령 당선인';
   }
