@@ -3490,3 +3490,74 @@ body.view-entity .dossier-spec-card{
 [data-theme="dark"] .rgs-desc {
   color: #94a3b8;
 }
+
+/* ==========================================================================
+   다매체(포털·유튜브·블로그·카페·공적기록) 심층 아카이브 피드 스타일
+   ========================================================================== */
+.ms-source-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 14px;
+  scrollbar-width: thin;
+}
+.ms-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  flex: none;
+}
+.ms-tab-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+.ms-tab-btn.on {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+}
+.ms-tab-btn .ms-cnt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.2);
+  color: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.ms-tab-btn.on .ms-cnt {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ms-tab-btn {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+[data-theme="dark"] .ms-tab-btn:hover {
+  background: #334155;
+  color: #f8fafc;
+}
+[data-theme="dark"] .ms-tab-btn.on {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+}

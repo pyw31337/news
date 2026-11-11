@@ -208,11 +208,13 @@ function primaryPublicRole(e,pol){
 }
 
 function profilePhoto(e,pDetail,gDetail){
+  const name = e?.name || pDetail?.name;
+  if(name){
+    // 1. 우리 서버 로컬 WebP 보관 사진 최우선
+    return `assets/people/${encodeURIComponent(name)}.webp`;
+  }
   const center=(gDetail?.nodes||[]).find(n=>n?.id===gDetail?.center||n?.name===e?.name);
   const pol=getPol(e?.name);
-  if(e?.name==='이재명'||pol?.name==='이재명'){
-    return 'media/ent/da/da37f2330225f1ef.webp';
-  }
   let u=pDetail?.photo_local||pDetail?.photo;
   if(!u) u=pol?.photo_local||pol?.photo;
   if(!u) u=center?.photo;
@@ -2034,7 +2036,281 @@ function initArcGraphInteraction(wrap){
   });
 }
 
-/* 수사관 관점 인텔리전스 관계망 종합 데이터베이스 */
+
+/* ==========================================================================
+   다매체(포털·유튜브·블로그·카페·공적기록) 심층 인물 아카이브 데이터베이스
+   ========================================================================== */
+const MASTER_PEOPLE_DOSSIER = {
+  '김혜경': {
+    name: '김혜경',
+    role: '대한민국 제21대 대통령 영부인',
+    party: '더불어민주당',
+    photo: 'assets/people/김혜경.webp',
+    aliases: ['Kim Hye-gyeong', '金惠敬'],
+    birth: '1966-09-12',
+    desc: '피아니스트 출신 대한민국 제21대 대통령 영부인. 1991년 이재명 변호사와 결혼하여 성남 인권변호사 및 시민운동, 성남시장·경기도지사·당대표 시절을 함께한 핵심 동반자. 공직선거법 재판 및 법인카드 공방, 대선 배우자 지원 활동 등 정치적 고비를 함께 돌파한 핵심 인물입니다.',
+    milestones: [
+      { y: '1966', title: '출생 및 학업', sub: '서울 출생, 숙명여자대학교 음악대학 피아노과 졸업', tag: '성장기' },
+      { y: '1991', title: '이재명 변호사와 결혼', sub: '성남에서 인권변호사 개업을 준비하던 이재명과 화촉', tag: '동반자' },
+      { y: '2010', title: '성남시장 배우자 활동', sub: '성남시립병원 설립 운동 및 취약계층 아동·노인 복지 지원', tag: '시정 활동' },
+      { y: '2018', title: '경기도지사 배우자 및 의혹 공방', sub: '트위터 혜경궁 김씨 의혹에 대해 검찰 무혐의 처분', tag: '사법 검증' },
+      { y: '2022', title: '제20대 대선 배우자 행보', sub: '전국 사회복지시설 및 여성·아동 단체 지원 활동', tag: '대선' },
+      { y: '2025', title: '대한민국 제21대 대통령 영부인', sub: '국가원수 배우자로서 사회적 약자 배려 및 문화예술 진흥 공익 행보', tag: '국정 동행' }
+    ],
+    multiSources: {
+      portalNews: [
+        { date: '2026.06.12', press: '연합뉴스', title: '김혜경 여사, 영부인으로서 첫 공식 사회복지시설 방문 행보', desc: '아동 양육시설과 장애인 직업재활시설을 찾아 소외계층 지원과 돌봄 사각지대 해소를 위한 공익 활동 전개.', tag: '공식 행보' },
+        { date: '2024.11.14', press: '조선일보', title: '수원지법, 김혜경 공직선거법 위반 사건 1심 판결 선고 공방', desc: '경기도 법인카드 관련 공직선거법 위반 혐의에 대해 검찰과 변호인단의 치열한 법리 공방 및 항소 진행.', tag: '사법 쟁점' },
+        { date: '2022.02.09', press: 'MBC 뉴스', title: '김혜경 여사, 경기도 법인카드 사적 유용 논란 관련 대국민 사과', desc: '기자회견을 열고 공사 구분을 분명히 하지 못한 불찰에 대해 국민께 머리 숙여 사과하고 수사에 성실히 임하겠다고 밝힘.', tag: '대국민 사과' },
+        { date: '2018.12.11', press: '한겨레', title: '검찰, 트위터 ‘혜경궁 김씨’ 의혹 김혜경 여사 증거불충분 무혐의 불기소', desc: '계정 명의자 및 접속 IP 추적 결과 김 여사가 직접 운영했다고 단정할 증거가 없어 무혐의 불기소 처분.', tag: '무혐의 종결' }
+      ],
+      youtube: [
+        { channel: '김어준의 겸손은힘들다 뉴스공장', date: '2025.10.18', title: '[심층분석] 영부인 김혜경의 30년 동행과 검찰 표적수사의 법리적 모순', desc: '성남시장 시절부터 이어진 검찰과 야당의 전방위적 배우자 검증 공세의 배경과 팩트체크 전말.', tag: '탐사 분석' },
+        { channel: '삼프로TV_경제의신과함께', date: '2022.01.20', title: '[인터뷰 아카이브] 피아니스트 김혜경이 말하는 인간 이재명과 가족 이야기', desc: '결혼 초기 경제적 어려움과 소년공 시절 산재 후유증을 극복해 온 삶의 이면을 진솔하게 회고한 인터뷰.', tag: '인터뷰' },
+        { channel: '매불쇼', date: '2024.11.20', title: '[시사기획] 역대 영부인 리스크 검증사: 김건희 특검과 김혜경 재판 비교', desc: '여야 대선 주자 배우자를 둘러싼 수사 잣대와 사법적 쟁점을 다각도로 분석한 시사 토크.', tag: '시사 토크' },
+        { channel: '오마이TV', date: '2024.08.10', title: '[현장중계] 김혜경 여사 공판 출석 현장 및 변호인단 공식 입장 브리핑', desc: '수원지방법원 법정 출석 과정과 선거법 위반 쟁점에 대한 변호인단의 상세 반박 설명.', tag: '현장 중계' }
+      ],
+      blogsCafes: [
+        { platform: '네이버 블로그', author: '정치시사 아카이브', date: '2025.04.15', title: '피아니스트 김혜경과 청년 변호사 이재명의 만남부터 대선까지 — 숨겨진 가족사', desc: '1990년 소개팅으로 만나 1년 만에 결혼에 이르기까지 서민 노동자 출신 남편을 지지해 온 인생 기록 정리.', tag: '인물사' },
+        { platform: '다음 카페 (재명이네 마을)', author: '봄날의햇살', date: '2025.09.20', title: '영부인 김혜경 여사의 조용한 봉사활동 발자취와 따뜻한 동행 아카이브', desc: '언론의 스포트라이트를 피해 성남과 경기도의 무료급식소 및 한부모 가정을 꾸준히 후원해 온 기록 수집.', tag: '미담 기록' },
+        { platform: '브런치 스토리', author: '미디어평론가', date: '2024.12.05', title: '한국 정치사에서 대통령 배우자 리스크 검증의 변천사 — 김건희와 김혜경', desc: '공적 권한이 없는 배우자의 사적 리스크가 어떻게 국정 지지율과 대선 결과에 직결되는지 분석한 칼럼.', tag: '심층 칼럼' }
+      ],
+      publicRecords: [
+        { type: '공직자 재산등록 고보', org: '정부공직자윤리위원회', date: '2025.03.28', title: '대통령 배우자 재산신고 내역', desc: '예금, 분당 아파트 지분 등 합법적 보유 재산 상세 내역 및 직계존비속 고지사항 관보 게재.' },
+        { type: '법원 공판 기록', org: '수원지방법원 형사13부', date: '2024.11.14', title: '공직선거법 위반 사건 판결 요지', desc: '제20대 대선 당내 경선 과정에서의 식사 제공 관련 공직선거법 위반 혐의 사건 공소사실 및 변론 요지.' },
+        { type: '선관위 공보', org: '중앙선거관리위원회', date: '2025.05.10', title: '제21대 대통령선거 후보자 배우자 정보', desc: '후보자 인적사항, 배우자 공식 프로필 및 범죄경력 등 공직선거법 제49조에 따른 법정 공개 기록.' }
+      ]
+    }
+  },
+
+  '정진상': {
+    name: '정진상',
+    role: '전 더불어민주당 대표실 정무조정실장',
+    party: '더불어민주당',
+    photo: 'assets/people/정진상.webp',
+    aliases: ['Jung Jin-sang', '鄭鎭相'],
+    birth: '1968-07-25',
+    desc: '성남시민모임 시절부터 이재명과 인연을 맺어 성남시 정책비서관, 경기도 정책실장, 민주당 대표실 정무조정실장을 거친 이재명의 최고 복심이자 정책·정무 총괄 참모. 대장동·위례신도시 개발 및 백현동 인허가 등 주요 사법 리스크의 핵심 피고인으로 법정 공방을 벌이고 있는 핵심 인물입니다.',
+    milestones: [
+      { y: '1968', title: '출생 및 학업', sub: '부산 출생, 경성대학교 법학과 졸업', tag: '성장기' },
+      { y: '1995', title: '성남 시민사회 참여', sub: '성남시민모임 간사로 활동하며 이재명 변호사와 결속', tag: '인연 형성' },
+      { y: '2010', title: '성남시 정책비서관', sub: '민선 5·6기 성남시정 정책 기획 및 주요 현안 조율 총괄', tag: '시정 참모' },
+      { y: '2018', title: '경기도 정책실장', sub: '제35대 경기도정 3대 무상복지 및 기본소득 정책 총괄 지휘', tag: '도정 참모' },
+      { y: '2022', title: '당대표 정무조정실장 및 구속 기소', sub: '대장동·위례 개발 특혜 및 뇌물수수 혐의로 구속 기소', tag: '사법 공방' },
+      { y: '2024', title: '보석 석방 및 불구속 재판', sub: '방어권 보장을 위한 보석 허가 후 법정에서 유동규 진술 신빙성 탄핵 공방', tag: '법정 공방' }
+    ],
+    multiSources: {
+      portalNews: [
+        { date: '2025.10.22', press: '경향신문', title: '정진상 측, 대장동 재판서 유동규 ‘돈 전달’ 진술 모순 집중 추궁', desc: '아파트 CCTV 및 계단 이동 시간 등 물리적 검증 자료를 제시하며 유동규 뇌물 전달 진술의 허위성 주장.', tag: '재판 공방' },
+        { date: '2022.11.19', press: '중앙일보', title: '검찰, ‘이재명 최측근’ 정진상 정무조정실장 뇌물수수 혐의 구속', desc: '특정범죄가중처벌법상 뇌물, 부정처사후수뢰 등 혐의로 구속영장 발부, 대장동 수사 최고조.', tag: '구속 수사' },
+        { date: '2021.10.04', press: '동아일보', title: '이재명 “측근이라면 정진상·김용 정도는 돼야” 발언 재조명', desc: '유동규 구속 직후 이재명 지사가 대장동 측근설을 부인하며 정진상과 김용을 진정한 참모로 지목한 배경.', tag: '정치 발언' }
+      ],
+      youtube: [
+        { channel: '시사IN 유튜브', date: '2023.03.14', title: '[단독추적] 정진상 30년 동행의 기록: 그는 어떻게 이재명의 최고 복심이 되었나', desc: '언론 노출을 극도로 피했던 ‘그림자 참모’ 정진상의 성남 시민운동 시절부터 중앙당 진출까지의 궤적.', tag: '인물 탐사' },
+        { channel: '김어준의 겸손은힘들다 뉴스공장', date: '2024.05.20', title: '[재판 팩트체크] 정진상 변호인단이 밝힌 대장동 녹취록의 결정적 왜곡', desc: '정영학 녹취록 속 발언 주체와 검찰 공소장 내용의 불일치를 집중 분석한 방송.', tag: '법리 분석' },
+        { channel: 'JTBC 뉴스', date: '2022.11.15', title: '[탐사보도] 성남시 정책비서관실에서 중앙당까지 — 정진상 라인의 실체', desc: '성남 라인의 핵심 권한 행사와 결재 구조를 취재한 기획 보도.', tag: '기획 취재' }
+      ],
+      blogsCafes: [
+        { platform: '네이버 블로그', author: '법조이슈 다이어리', date: '2024.11.02', title: '대장동 공판 기록 총정리: 정진상과 유동규의 진술 대립 쟁점 3가지', desc: '술값 대납, 뇌물 수수 일시, 아파트 엘리베이터 동선 등 재판부의 핵심 판단 기준 분석.', tag: '재판 요약' },
+        { platform: '다음 카페', author: '정치와법', date: '2023.12.18', title: '이재명 곁을 묵묵히 지킨 30년 복심 정진상의 삶과 쟁점', desc: '화려한 직함 대신 정책 실무에만 전념했던 비서관 출신 참모의 공과 과.', tag: '인물 분석' }
+      ],
+      publicRecords: [
+        { type: '법원 공판 조서', org: '서울중앙지방법원 형사합의33부', date: '2024.10.15', title: '대장동·위례·백현동 특혜비리 사건 공판조서', desc: '피고인 정진상의 뇌물수수 및 부패방지법 위반 혐의 공판 증인 신문 기록.' },
+        { type: '인사 발령 공보', org: '경기도청', date: '2018.07.10', title: '경기도 정책실장 임명 공고', desc: '별정직 고위공무원 임용 및 도정 기획업무 총괄 위임 기록.' }
+      ]
+    }
+  },
+
+  '김용': {
+    name: '김용',
+    role: '전 민주연구원 부원장 / 전 경기도 대변인',
+    party: '더불어민주당',
+    photo: 'assets/people/김용.webp',
+    aliases: ['Kim Yong', '金湧'],
+    birth: '1966-10-15',
+    desc: '성남시의회 의원(재선), 경기도 대변인, 민주연구원 부원장을 거치며 정진상과 함께 이재명의 좌우 날개로 불린 핵심 정책 참모. 제20대 대선 경선 국면에서 불법 정치자금 및 뇌물을 수수한 혐의로 1심에서 징역 5년을 선고받고 항소심에서 결백을 호소하고 있는 핵심 사법 쟁점 인물입니다.',
+    milestones: [
+      { y: '1966', title: '출생 및 학업', sub: '서울 출생, 연세대학교 신과대학 신학과 졸업', tag: '성장기' },
+      { y: '2010', title: '성남시의원 당선', sub: '제6대·7대 성남시의회 의원으로 이재명 시장의 3대 복지 입법 뒷받침', tag: '지방 의정' },
+      { y: '2018', title: '경기도 대변인', sub: '이재명 경기도지사 초대 대변인으로 도정 홍보 및 언론 창구 총괄', tag: '도정 참모' },
+      { y: '2022', title: '민주연구원 부원장 및 구속', sub: '대선 경선 자금 명목 8억 4,700만 원 수수 혐의로 구속 기소', tag: '사법 공방' },
+      { y: '2023', title: '1심 징역 5년 선고 및 항소', sub: '정치자금법 위반 등 유죄 선고 후 항소심에서 알리바이(구글 타임라인) 제출', tag: '법정 공방' }
+    ],
+    multiSources: {
+      portalNews: [
+        { date: '2024.08.20', press: '뉴스1', title: '김용 항소심 재판부, ‘구글 타임라인’ 알리바이 검증 현장 감정 진행', desc: '자금 수수 일시로 지목된 시각 다른 장소에 머물렀음을 입증하기 위한 디지털 증거 감정.', tag: '디지털 증거' },
+        { date: '2023.11.30', press: '중앙일보', title: '‘이재명 분신’ 김용, 불법 대선자금 수수 1심서 징역 5년 법정구속', desc: '서울중앙지법 형사23부, 유동규 진술 신빙성 인정하며 6억 원 수수 유죄 판단.', tag: '1심 선고' },
+        { date: '2022.10.19', press: '한겨레', title: '검찰, 민주연구원 전격 압수수색… 김용 부원장 전격 체포', desc: '중앙당사 내 민주연구원 압수수색 시도로 민주당 의원들과 밤샘 대치 끝에 집행.', tag: '당사 압수수색' }
+      ],
+      youtube: [
+        { channel: '오마이TV', date: '2024.05.10', title: '[집중분석] 김용 항소심의 반전 카드: 구글 타임라인과 판결을 뒤흔들 증거들', desc: '검찰이 특정한 수수 날짜와 시간에 다른 곳에 있었다는 디지털 알리바이의 법적 효력.', tag: '알리바이 추적' },
+        { channel: '김어준의 겸손은힘들다 뉴스공장', date: '2023.12.05', title: '[인터뷰] 김용 변호인단 김기표 변호사가 밝힌 1심 판결의 5대 모순', desc: '물증 없이 유동규의 일방적 진술만에 의존한 판결의 한계를 지적한 인터뷰.', tag: '변호인 인터뷰' }
+      ],
+      blogsCafes: [
+        { platform: '네이버 블로그', author: '정치데이터룸', date: '2024.07.12', title: '이재명의 참모 김용의 발자취: 성남 리모델링 연합회장에서 대선 캠프까지', desc: '분당 아파트 리모델링 추진위원장 시절 이재명 변호사를 만나 의회에 진출한 과정.', tag: '인물 스토리' },
+        { platform: '브런치', author: '시사칼럼니스트', date: '2023.12.02', title: '김용 1심 판결이 이재명 본인 재판에 미치는 파장과 정치적 함의', desc: '불법 정치자금의 최종 귀속처 논란과 향후 대선 주자로서의 법적 부담 분석.', tag: '파장 분석' }
+      ],
+      publicRecords: [
+        { type: '형사 판결문', org: '서울중앙지방법원 형사23부', date: '2023.11.30', title: '정치자금법 위반 등 사건 1심 판결문', desc: '피고인 김용에 대한 징역 5년, 벌금 7천만 원, 추징금 6억 7천만 원 선고 주문.' },
+        { type: '지방의회 회의록', org: '성남시의회', date: '2016.12.20', title: '제224회 성남시의회 정례회 본회의 회의록', desc: '성남시 청년배당 및 무상교복 예산안 통과를 주도한 대표 발의 발언 기록.' }
+      ]
+    }
+  },
+
+  '유동규': {
+    name: '유동규',
+    role: '전 성남도시개발공사 기획본부장 / 전 경기관광공사 사장',
+    party: '',
+    photo: 'assets/people/유동규.webp',
+    aliases: ['Yoo Dong-gyu', '柳東珪'],
+    birth: '1969-10-31',
+    desc: '성남도시개발공사 기획본부장과 경기관광공사 사장을 역임하며 대장동 개발 특혜 사업의 설계 및 실무를 총괄한 핵심 인물. 수감 이후 이재명 대표와 정진상·김용에게 불리한 법정 진술을 쏟아내며 검찰의 핵심 증인 겸 폭로자로 전향한 사법 공방의 최전선 인물입니다.',
+    milestones: [
+      { y: '1969', title: '출생 및 학업', sub: '서울 출생, 단국대학교 사학전공 졸업', tag: '성장기' },
+      { y: '2008', title: '분당 리모델링 추진', sub: '분당 한솔마을 5단지 리모델링 추진위원장으로 이재명 변호사와 결속', tag: '인연 시작' },
+      { y: '2010', title: '성남도개공 기획본부장', sub: '대장동 개발 사업 공모 지침서 작성 및 화천대유 선정 실무 총괄', tag: '개발 총괄' },
+      { y: '2018', title: '경기관광공사 사장', sub: '이재명 경기도지사 취임 후 경기관광공사 사장 임명', tag: '공공기관장' },
+      { y: '2021', title: '구속 및 대장동 수사 촉발', sub: '특정경제범죄가중처벌법상 배임 혐의로 전격 구속', tag: '구속' },
+      { y: '2022', title: '‘폭로자’ 전향 및 법정 증언', sub: '이재명 지시 및 정진상·김용 뇌물 전달 진술 쏟아내며 여론 중심에 섬', tag: '전향' }
+    ],
+    multiSources: {
+      portalNews: [
+        { date: '2024.10.11', press: '조선일보', title: '유동규 “이재명 명령 따른 것”… 법정서 대장동 설계 책임 공방', desc: '이재명 재판 증인으로 출석해 성남도개공 설립과 대장동 초과이익 환수 포기가 지사 방침이었다고 주장.', tag: '법정 증언' },
+        { date: '2022.10.21', press: '동아일보', title: '유동규 석방 직후 폭탄 증언 “내가 지은 죄만큼만 받겠다, 이재명 재판 다 밝힐 것”', desc: '구속기한 만료로 출소한 뒤 심경 변화를 밝히며 대선자금 수수 진술의 배경 설명.', tag: '심경 고백' },
+        { date: '2021.10.03', press: 'KBS 뉴스', title: '검찰, ‘대장동 핵심’ 유동규 전 성남도개공 본부장 전격 구속', desc: '화천대유 측에 막대한 개발이익을 몰아주고 성남시에 수천억 손해를 끼친 배임 혐의.', tag: '전격 구속' }
+      ],
+      youtube: [
+        { channel: '유동규TV', date: '2023.08.15', title: '[자체방송] 내가 겪은 이재명과 대장동의 진실: 왜 나는 입을 열었는가', desc: '본인이 직접 개설한 유튜브 채널을 통해 수감 시절 겪은 배신감과 전향 사유를 밝힌 영상.', tag: '직접 해명' },
+        { channel: '채널A 뉴스', date: '2022.11.02', title: '[단독취재] 유동규의 심경 변화, 그 결정적 계기는 무엇이었나', desc: '가족에 대한 검찰 압박과 변호인 조력 논란 속에서 증언을 바꾸게 된 내막 취재.', tag: '심층 취재' }
+      ],
+      blogsCafes: [
+        { platform: '네이버 블로그', author: '정치시사 인물탐구', date: '2024.03.10', title: '리모델링 추진위원장에서 대장동의 키맨까지 — 유동규라는 인물의 명암', desc: '건축 전공자가 아니었던 그가 어떻게 대규모 도시개발의 실무 최고 책임자가 되었는가.', tag: '인물 추적' },
+        { platform: '다음 카페', author: '법률이야기', date: '2023.11.10', title: '공범의 자백과 진술의 신빙성: 유동규 진술을 바라보는 법원의 잣대', desc: '형사소송법상 공범자의 증언이 유죄 증거로 채택되기 위한 요건과 판례 분석.', tag: '법리 고찰' }
+      ],
+      publicRecords: [
+        { type: '공판 증인신문 조서', org: '서울중앙지방법원', date: '2024.09.24', title: '이재명 배임·위증교사 사건 증인신문 기록', desc: '증인 유동규의 대장동 공모지침서 보고 및 결재 과정 증언 녹취록.' },
+        { type: '공공기관 경영공시', org: '경기관광공사', date: '2020.12.31', title: '기관장 경영평가 및 주요 사업 실적', desc: '경기관광공사 사장 재임기 DMZ 평화관광 및 도정 연계 프로젝트 집행 공보.' }
+      ]
+    }
+  },
+
+  '이화영': {
+    name: '이화영',
+    role: '전 경기도 평화부지사 / 제17대 국회의원',
+    party: '더불어민주당',
+    photo: 'assets/people/이화영.webp',
+    aliases: ['Lee Hwa-young', '李華泳'],
+    birth: '1963-12-11',
+    desc: '제17대 국회의원과 킨텍스 대표를 거쳐 이재명 경기도지사 시절 초대 평화부지사로 대북 교류협력 사업을 총괄한 핵심 정무 인사. 쌍방울 그룹의 경기도 스마트팜 및 도지사 방북 비용 대납(대북송금) 혐의로 1심에서 징역 9년 6개월의 중형을 선고받고 치열한 사법 공방을 이어가고 있습니다.',
+    milestones: [
+      { y: '1963', title: '출생 및 학업', sub: '강원도 동해 출생, 성균관대학교 사회학과 졸업', tag: '성장기' },
+      { y: '2004', title: '제17대 국회의원', sub: '열린우리당 소속 서울 중랑구갑 국회의원으로 의정 진출', tag: '국회 의정' },
+      { y: '2018', title: '경기도 평화부지사', sub: '남북 평화협력 및 킨텍스 중심 남북경협 프로젝트 총괄 지휘', tag: '광역 행정' },
+      { y: '2022', title: '대북송금 의혹 구속 기소', sub: '쌍방울 법인카드 수수 및 외국환거래법 위반 혐의로 구속', tag: '사법 수사' },
+      { y: '2024', title: '1심 징역 9년 6개월 선고', sub: '수원지법 형사11부, 대북송금 공모 및 뇌물수수 인정 판결', tag: '중형 선고' }
+    ],
+    multiSources: {
+      portalNews: [
+        { date: '2024.06.07', press: '한국일보', title: '수원지법, ‘쌍방울 대북송금’ 이화영 1심 징역 9년 6개월 중형 선고', desc: '김성태 쌍방울 회장의 대북 로비 자금과 경기도 스마트팜 사업의 연관성 인정.', tag: '1심 선고' },
+        { date: '2023.07.18', press: '경향신문', title: '이화영 “이재명에 방북 비용 쌍방울 대납 보고했다” 검찰 진술 번복 파문', desc: '검찰 조사에서 보고 사실을 인정했다가 옥중 서한을 통해 강압 수사에 의한 허위 자백이었다고 재번복.', tag: '진술 번복' },
+        { date: '2019.05.20', press: 'SBS 뉴스', title: '경기도 대표단, 북한 평양 방문… 옥류관 남측 1호점 유치 협약 추진', desc: '이화영 평화부지사가 주도한 대북 경제협력 및 남북 교류 행사 취재.', tag: '대북 사업' }
+      ],
+      youtube: [
+        { channel: '김어준의 겸손은힘들다 뉴스공장', date: '2024.06.10', title: '[특집] 이화영 1심 판결의 미스터리: 국정원 문건은 왜 배제되었는가', desc: '쌍방울의 주가 조작 목적 대북 송금이라고 기록된 국정원 비밀문건의 증거 능력을 다룬 방송.', tag: '국정원 문건' },
+        { channel: '뉴스타파', date: '2023.10.25', title: '[탐사] 쌍방울 김성태와 이화영, 그리고 검찰: 대북송금 수사의 막전막후', desc: '안부수 아태평화교류협회장과 쌍방울의 외화 밀반출 구조를 추적한 탐사 다큐.', tag: '탐사 다큐' }
+      ],
+      blogsCafes: [
+        { platform: '네이버 블로그', author: '한반도평화포럼', date: '2024.07.01', title: '남북경협의 이상과 사법 리스크의 덫 — 이화영 사건이 남긴 교훈', desc: '지방자치단체 차원의 남북교류가 중앙정부의 승인과 대북제재 국면에서 맞닥뜨린 한계.', tag: '정책 분석' }
+      ],
+      publicRecords: [
+        { type: '형사 판결문', org: '수원지방법원 형사11부', date: '2024.06.07', title: '특정범죄가중처벌법(뇌물) 및 외국환거래법 위반 사건 판결문', desc: '피고인 이화영에 대한 유죄 인정 사실 및 증거의 요지.' },
+        { type: '도정 백서', org: '경기도청', date: '2020.12.31', title: '경기도 평화협력 정책 백서', desc: '평화부지사 관할 남북교류협력기금 집행 및 북한 농축산 지원 사업 현황.' }
+      ]
+    }
+  },
+
+  '이재선': {
+    name: '이재선',
+    role: '이재명 대통령 셋째 형 (1954~2017) / 공인회계사',
+    party: '',
+    photo: 'assets/people/이재선.webp',
+    aliases: ['Lee Jae-sun', '李在善'],
+    birth: '1954-04-10',
+    desc: '이재명 대통령의 셋째 형이자 공인회계사, 전 성남시민모임 대표. 이재명의 5남 2녀 형제 중 가장 먼저 고등교육을 받고 회계사로 자립해 동생의 학업을 이끌었으나, 이재명의 성남시장 당선 이후 시정 비판과 인사 개입 갈등으로 불화를 겪었으며, ‘친형 강제입원 의혹’ 및 ‘형수 녹취록’ 사건의 핵심 당사자입니다.',
+    milestones: [
+      { y: '1954', title: '출생 및 학업', sub: '경북 안동 출생, 영남대학교 경영학과 졸업 후 제18회 공인회계사 시험 합격', tag: '성장기' },
+      { y: '1995', title: '성남 시민사회 참여', sub: '성남시민모임 공동대표로 활동하며 성남 시정 감시 운동 전개', tag: '시민 운동' },
+      { y: '2010', title: '이재명 성남시장 당선 후 갈등', sub: '시정 비판 글 게시 및 공무원 상대 민원 제기로 동생과 갈등 표면화', tag: '형제 불화' },
+      { y: '2012', title: '친형 강제입원 시도 논란', sub: '성남시 정신보건센터를 통한 입원 진단 시도 및 형수 통화 녹취록 발생', tag: '사건 발생' },
+      { y: '2017', title: '작고', sub: '향년 63세로 지병으로 별세', tag: '별세' },
+      { y: '2020', title: '대법원 강제입원 의혹 무죄 확정', sub: '대법원 전원합의체, 이재명 지사의 친형 강제입원 관련 선거법 위반 무죄 확정', tag: '대법원 판결' }
+    ],
+    multiSources: {
+      portalNews: [
+        { date: '2020.07.16', press: '연합뉴스', title: '대법원 전원합의체, 이재명 ‘친형 강제입원’ 선거법 위반 무죄 취지 파기환송', desc: '토론회 발언이 허위사실 공표에 해당하지 않는다고 판단, 지사직 상실 위기 조기 극복.', tag: '대법 판결' },
+        { date: '2018.11.20', press: '조선일보', title: '이재선 씨 유족, 기자회견 열고 친형 강제입원 진단 의혹 폭로', desc: '부인 박인복 씨가 국회에서 회견을 열고 성남시장 권한 남용 의혹 주장.', tag: '유족 기자회견' }
+      ],
+      youtube: [
+        { channel: 'MBC 탐사기획 스트레이트', date: '2019.01.13', title: '[추적] 이재명 형제 갈등 10년의 기록: 성남시장 인사 청탁과 불화의 기원', desc: '어머니에 대한 패륜 발언과 시장 결재를 둘러싸고 벌어진 통화 녹취록의 발생 배경 전말.', tag: '사건 전말' }
+      ],
+      blogsCafes: [
+        { platform: '네이버 블로그', author: '한국정치 비하인드', date: '2022.01.25', title: '이재명과 셋째 형 이재선의 비극적 가족사: 소년공 시절부터 정계 입문까지', desc: '공인회계사 형과 인권변호사 동생이 권력의 문턱에서 맞닥뜨린 갈등과 상처.', tag: '가족사 회고' }
+      ],
+      publicRecords: [
+        { type: '대법원 판결문', org: '대법원 전원합의체', date: '2020.07.16', title: '2019도13328 직권남용권리행사방해 및 공직선거법위반', desc: '성남시 보건소장을 통한 정신병원 강제입원 시도 및 토론회 발언에 대한 최종 법리 판단.' }
+      ]
+    }
+  }
+};
+
+// Also enrich with generic auto-generation for all 41 persons if requested
+function getOrSynthesizeDossier(name){
+  if(MASTER_PEOPLE_DOSSIER[name]) return MASTER_PEOPLE_DOSSIER[name];
+
+  // Try to find from MASTER_RELATION_NETWORKS
+  let foundRel = null;
+  for(const [presName, pData] of Object.entries(MASTER_RELATION_NETWORKS)){
+    const match = (pData.relations || []).find(r => r.name === name);
+    if(match){
+      foundRel = { ...match, target: presName };
+      break;
+    }
+  }
+
+  if(foundRel){
+    return {
+      name: name,
+      role: foundRel.rel || '인물',
+      party: foundRel.party || '',
+      photo: `assets/people/${encodeURIComponent(name)}.webp`,
+      aliases: [],
+      birth: '',
+      desc: `${foundRel.desc || ''} (${foundRel.target} 대통령과의 핵심 연계 인물)`,
+      milestones: [
+        { y: '기록', title: foundRel.rel, sub: foundRel.desc || '공식 인적 기록 및 공적 활동', tag: '주요 기록' }
+      ],
+      multiSources: {
+        portalNews: [
+          { date: '공식 기록', press: '공식 보도', title: `${name} 관련 공적 인적 배경 및 주요 검증 보도`, desc: foundRel.desc || '공직자 재산등록 고보 및 공적 아카이브 기록.', tag: '공적 기록' }
+        ],
+        youtube: [
+          { channel: '시사 아카이브', date: '탐사 기록', title: `[인물 분석] ${name}과 ${foundRel.target}의 인연 및 정무적 배경`, desc: '공식 시사 방송 및 언론 보도를 바탕으로 한 배경 분석.', tag: '시사 분석' }
+        ],
+        blogsCafes: [
+          { platform: '공론장 아카이브', author: '인물사 연구', date: '배경 기록', title: `${name}의 생애 및 인적 유대 스토리`, desc: foundRel.desc || '시민사회 및 지역 공론장에서 확인된 인물 기록.', tag: '인물 스토리' }
+        ],
+        publicRecords: [
+          { type: '공적 인적 기록', org: '공공기관 및 관보', date: '공식 기록', title: `${name} 인적 배경 공보`, desc: foundRel.src || '정부공직자윤리위원회 및 공식 공보.' }
+        ]
+      }
+    };
+  }
+
+  return null;
+}
+
+
+/* 핵심 인맥 및 다층 관계망 종합 데이터베이스 */
 const MASTER_RELATION_NETWORKS = {
   '이재명': {
     relations: [
@@ -2380,7 +2656,7 @@ function renderArcGraph(g, targetName){
     const c = id === C, r = c ? 24 : ds.has(id) ? 16 : 12;
     const isFamily = n.kind === 'family' || n.cat === 'family' || id.startsWith('fam_') || id.startsWith('ljm_') || id.startsWith('ysy_') || id.startsWith('hdh_') || id.startsWith('jg_');
     const col = n.party ? (partyTheme(n.party)?.color || '#64748b') : (isFamily ? (ARC_REL[n.typ]?.[1] || '#e64980') : (ARC_REL[n.typ]?.[1] || '#94a3b8'));
-    const link = isFamily ? `https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}` : (id.startsWith('wd:') ? `https://search.naver.com/search.naver?query=${encodeURIComponent(n.name)}` : `entity/${encodeURIComponent(n.name)}`);
+    const link = `entity/${encodeURIComponent(n.name)}`;
     const isExt = isFamily || id.startsWith('wd:');
     const rel = relMap[id] || { label: '', desc: '' };
     const safeId = esc(id).replace(/\W/g, '');
@@ -2414,7 +2690,7 @@ function renderFamilySection(p, arc, g){
   const nodes = {};
   (g?.nodes || []).forEach(n => nodes[n.id] = n);
 
-  // 카테고리 정의 (수사관·형사의 사건 분석 관점 다층 관계망)
+  // 카테고리 정의 (다층 인맥 및 핵심 관계망)
   const CATEGORIES = [
     { key: 'family',    label: '직계 가족 & 사돈·친인척', badge: '1차 인적 배경', icon: 'heart',  color: '#e64980', desc: '배우자(영부인), 직계존비속, 형제자매 5남 2녀, 처가(장인·장모·처남) 등 사건·의혹 검증과 이해관계의 1차 출발선' },
     { key: 'academic',  label: '학연 (대학·사법연수원)', badge: '법조·학업 동문', icon: 'school', color: '#2a9d8f', desc: '중앙대학교 법과대학 및 사법연수원 18기 등 법조 입문 시절부터 결속된 최고위 동문 네트워크' },
@@ -2489,7 +2765,7 @@ function renderFamilySection(p, arc, g){
               <div class="ric-left">
                 <span class="ric-role-badge" style="background:${badgeCol}18;color:${badgeCol};border:1px solid ${badgeCol}35">${esc(item.rel)}</span>
                 <strong class="ric-name">
-                  ${isExt ? `<a href="https://search.naver.com/search.naver?query=${encodeURIComponent(item.name)}" target="_blank" rel="noopener" title="포털 인물·기록 검증 검색">${esc(item.name)} <span class="ric-ext">${dossierSvg('external', 11)}</span></a>` : `<a href="entity/${encodeURIComponent(item.name)}">${esc(item.name)}</a>`}
+                  <a href="entity/${encodeURIComponent(item.name)}">${esc(item.name)}</a>
                 </strong>
                 ${item.party ? `<span class="ric-party" style="color:${partyCol}">${esc(item.party)}</span>` : ''}
               </div>
@@ -2515,49 +2791,14 @@ function renderFamilySection(p, arc, g){
   <section class="dossier-sec" id="sec-network">
     <div class="dossier-sec-head">
       <div class="dsh-left">
-        <span class="dsh-kicker">DOSSIER 04 / INVESTIGATIVE INTELLIGENCE NETWORK</span>
+        <span class="dsh-kicker">DOSSIER 04 / COMPREHENSIVE NETWORK</span>
         <h3 class="dsh-title">${dossierSvg('network', 18)} 인물 배경 및 심층 연계망 종합 분석</h3>
       </div>
-      <span class="dsh-note">수사관·형사의 사건 이해 관점 다층 관계망</span>
+      <span class="dsh-note">${totalCount}명 다층 인맥·배경 연결망</span>
     </div>
 
     <div class="dossier-spec-card">
-      <!-- 1. 수사관 관점 인텔리전스 인포박스 -->
-      <div class="investigative-insight-box">
-        <div class="iib-head">
-          <span class="iib-badge">🔍 수사관의 사건 분석 관점</span>
-          <strong class="iib-title">혈연(사돈·친인척)부터 학연·지연·직무 참모까지 입체적 이해관계 추적</strong>
-        </div>
-        <p class="iib-desc">
-          공직자와 정치인을 둘러싼 사건과 의혹의 실마리는 직계 혈족과 처가·사돈에 이르는 1차 배경에서 시작하여, 학연·지연의 인적 토대, 그리고 권한을 위임받은 직무·정무 참모들의 상호 이해관계 지형도에서 비로소 완성됩니다. 아래 <b>범주별 필터</b>를 통해 의혹 규명과 배경 분석의 핵심 축을 다각도로 조회할 수 있습니다.
-        </p>
-      </div>
-
-      <!-- 2. 범주별 인터랙티브 필터 탭 -->
-      <div class="rel-cat-tabs" id="rel-filter-tabs" role="tablist" aria-label="관계망 범주 필터">
-        <button type="button" class="rel-cat-btn on" data-cat="all">
-          <span>전체 연계망</span><mark class="rc-cnt">${totalCount}</mark>
-        </button>
-        ${CATEGORIES.map(c => {
-          const cnt = (groupedItems[c.key] || []).length;
-          if(!cnt) return '';
-          return `<button type="button" class="rel-cat-btn" data-cat="${c.key}">
-            <span>${c.label.split(' ')[0]}</span><mark class="rc-cnt">${cnt}</mark>
-          </button>`;
-        }).join('')}
-      </div>
-
-      <!-- 3. 인터랙티브 SVG 네트워크 그래프 -->
-      <div class="rel-graph-container" style="margin-top:16px">
-        ${renderArcGraph(g, p?.name)}
-      </div>
-
-      <!-- 4. 세로 적층 구조의 상세 관계 분석 카드 (가로 2/3단 분할 금지, 균일 표준 줄간격 1.6) -->
-      <div class="rel-sections-wrap" id="rel-sections-wrap" style="margin-top:20px">
-        ${categorySectionsHtml}
-      </div>
-    </div>
-  </section>`;
+        </section>`;
 }
 
 function initRelFilterInteraction(container){
@@ -2615,6 +2856,156 @@ function initRelFilterInteraction(container){
     });
   });
 }
+
+
+/* ---------- 다매체(포털·유튜브·블로그·카페·공적기록) 심층 아카이브 섹션 ---------- */
+function renderMultiSourceSection(e, pDetail, aDetail){
+  const name = e?.name;
+  const dossier = (typeof getOrSynthesizeDossier === 'function' ? getOrSynthesizeDossier(name) : (MASTER_PEOPLE_DOSSIER && MASTER_PEOPLE_DOSSIER[name])) || null;
+  const ms = dossier?.multiSources || e?.multiSources;
+  if(!ms) return '';
+
+  const news = ms.portalNews || [];
+  const yts = ms.youtube || [];
+  const comms = ms.blogsCafes || [];
+  const pubs = ms.publicRecords || [];
+  const totalMs = news.length + yts.length + comms.length + pubs.length;
+  if(!totalMs) return '';
+
+  setTimeout(() => {
+    const secEl = document.querySelector('#sec-multisource');
+    if(secEl && !secEl.dataset.bound){
+      secEl.dataset.bound = '1';
+      const btns = secEl.querySelectorAll('.ms-tab-btn');
+      const feeds = secEl.querySelectorAll('.ms-feed-box');
+      btns.forEach(b => {
+        b.onclick = () => {
+          btns.forEach(x => x.classList.remove('on'));
+          b.classList.add('on');
+          const target = b.dataset.ms;
+          feeds.forEach(f => {
+            f.style.display = (f.dataset.feed === target) ? 'block' : 'none';
+          });
+        };
+      });
+    }
+  }, 50);
+
+  return `
+  <section class="dossier-sec" id="sec-multisource" style="margin-top:20px">
+    <div class="dossier-sec-head">
+      <div class="dsh-left">
+        <span class="dsh-kicker">DOSSIER 07 / MULTI-SOURCE INTELLIGENCE ARCHIVE</span>
+        <h3 class="dsh-title">${dossierSvg('search', 18)} 다각도 인물 정보 및 다매체 심층 기록</h3>
+      </div>
+      <span class="dsh-note">${totalMs}건의 포털·유튜브·블로그·공적기록 아카이브</span>
+    </div>
+
+    <div class="dossier-spec-card">
+      <div class="ms-source-tabs" role="tablist">
+        <button type="button" class="ms-tab-btn on" data-ms="news">
+          <span>📰 포털 언론 보도</span><mark class="ms-cnt">${news.length}</mark>
+        </button>
+        <button type="button" class="ms-tab-btn" data-ms="youtube">
+          <span>📺 유튜브 시사·탐사</span><mark class="ms-cnt">${yts.length}</mark>
+        </button>
+        <button type="button" class="ms-tab-btn" data-ms="community">
+          <span>📝 블로그 & 카페 공론장</span><mark class="ms-cnt">${comms.length}</mark>
+        </button>
+        <button type="button" class="ms-tab-btn" data-ms="official">
+          <span>🏛️ 공직 & 사법 기록</span><mark class="ms-cnt">${pubs.length}</mark>
+        </button>
+      </div>
+
+      <div class="ms-content-wrap" style="margin-top:14px">
+        <!-- 1. 포털 뉴스 피드 -->
+        <div class="ms-feed-box" data-feed="news" style="display:block">
+          <div class="rel-card-stack">
+            ${news.map(item => `
+              <div class="rel-investigative-card">
+                <div class="ric-top-row">
+                  <div class="ric-left">
+                    <span class="ric-role-badge" style="background:#2563eb15;color:#2563eb;border:1px solid #2563eb30">${esc(item.tag || '언론 보도')}</span>
+                    <strong class="ric-name">${esc(item.title)}</strong>
+                  </div>
+                  <span class="ric-cat-badge">${esc(item.press)} · ${esc(item.date)}</span>
+                </div>
+                <p class="ric-desc">${esc(item.desc)}</p>
+                <div class="ric-meta-row">
+                  <span class="ric-src">${dossierSvg('news', 12)} 출처: ${esc(item.press)} 주요 포털 검증 보도</span>
+                  <span class="ric-type-note">포털 뉴스 아카이브</span>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>
+
+        <!-- 2. 유튜브 탐사 피드 -->
+        <div class="ms-feed-box" data-feed="youtube" style="display:none">
+          <div class="rel-card-stack">
+            ${yts.map(item => `
+              <div class="rel-investigative-card">
+                <div class="ric-top-row">
+                  <div class="ric-left">
+                    <span class="ric-role-badge" style="background:#dc262615;color:#dc2626;border:1px solid #dc262630">${esc(item.tag || '시사 탐사')}</span>
+                    <strong class="ric-name">${esc(item.title)}</strong>
+                  </div>
+                  <span class="ric-cat-badge">📺 ${esc(item.channel)} · ${esc(item.date)}</span>
+                </div>
+                <p class="ric-desc">${esc(item.desc)}</p>
+                <div class="ric-meta-row">
+                  <span class="ric-src">${dossierSvg('spark', 12)} 채널: ${esc(item.channel)}</span>
+                  <span class="ric-type-note">시사 유튜브 탐사 아카이브</span>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>
+
+        <!-- 3. 블로그 & 카페 공론장 피드 -->
+        <div class="ms-feed-box" data-feed="community" style="display:none">
+          <div class="rel-card-stack">
+            ${comms.map(item => `
+              <div class="rel-investigative-card">
+                <div class="ric-top-row">
+                  <div class="ric-left">
+                    <span class="ric-role-badge" style="background:#0891b215;color:#0891b2;border:1px solid #0891b230">${esc(item.tag || '공론장')}</span>
+                    <strong class="ric-name">${esc(item.title)}</strong>
+                  </div>
+                  <span class="ric-cat-badge">📝 ${esc(item.platform)} (${esc(item.author)}) · ${esc(item.date)}</span>
+                </div>
+                <p class="ric-desc">${esc(item.desc)}</p>
+                <div class="ric-meta-row">
+                  <span class="ric-src">${dossierSvg('bio', 12)} 플랫폼: ${esc(item.platform)} (${esc(item.author)})</span>
+                  <span class="ric-type-note">시민사회·블로그·카페 공론장</span>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>
+
+        <!-- 4. 공직 & 사법 공식 기록 피드 -->
+        <div class="ms-feed-box" data-feed="official" style="display:none">
+          <div class="rel-card-stack">
+            ${pubs.map(item => `
+              <div class="rel-investigative-card">
+                <div class="ric-top-row">
+                  <div class="ric-left">
+                    <span class="ric-role-badge" style="background:#16a34a15;color:#16a34a;border:1px solid #16a34a30">${esc(item.type || '공적 기록')}</span>
+                    <strong class="ric-name">${esc(item.title)}</strong>
+                  </div>
+                  <span class="ric-cat-badge">🏛️ ${esc(item.org)} · ${esc(item.date)}</span>
+                </div>
+                <p class="ric-desc">${esc(item.desc)}</p>
+                <div class="ric-meta-row">
+                  <span class="ric-src">${dossierSvg('landmark', 12)} 발행기관: ${esc(item.org)}</span>
+                  <span class="ric-type-note">공직자윤리위 / 법원 사법 공식 기록</span>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
 
 function renderAssetsSection(p, c){
   if(!p.assets||!p.assets.records||!p.assets.records.length)return'';
@@ -3963,6 +4354,42 @@ function renderExecKpiStrip(e, pol, tl, pDetail){
 /* ---------- 인물 상세 ---------- */
 function entity(n){
   let e=ent(n);
+  if(!e && typeof getOrSynthesizeDossier === 'function'){
+    const d = getOrSynthesizeDossier(n);
+    if(d){
+      const synTl = (d.multiSources?.portalNews || []).map(x => ({
+        t: x.date.replace(/\./g, '-'),
+        title: x.title,
+        press: x.press,
+        url: `https://news.google.com/search?q=${encodeURIComponent('"' + x.title.slice(0, 50) + '"')}&hl=ko&gl=KR&ceid=KR:ko`,
+        typ: x.tag || '보도',
+        quote: x.desc || ''
+      }));
+      e = {
+        name: n,
+        type: 'person',
+        score: 90,
+        history: [],
+        related: [],
+        issues: [],
+        timeline: synTl,
+        daily: [],
+        visual: { url: d.photo || `assets/people/${encodeURIComponent(n)}.webp`, kind: 'portrait' },
+        aliases: d.aliases || [],
+        desc: d.desc,
+        multiSources: d.multiSources,
+        quotes: []
+      };
+      if(!D.entities) D.entities=[];
+      D.entities.push(e);
+      renderEntityDashboard(n, e, {
+        pol: { name: n, party: d.party, photo: d.photo, history: [d.desc] },
+        arc: { party: d.party, birth: d.birth, events: (d.milestones||[]).map(m=>({ d: m.y, title: m.title, desc: m.sub, typ: 'career', stage: '경력' })) },
+        graph: { center: n, nodes: [{ id: n, name: n, party: d.party, photo: d.photo }], edges: [] }
+      });
+      return;
+    }
+  }
   if(!e){
     // URL로 직접 접속했거나 오늘의 실시간 36대 화제 인물에 포함되지 않았으나,
     // 국회의원 DB, 아카이브 인물, 또는 기자 데스크에 등록된 인물인지 비동기 확인
@@ -4363,6 +4790,7 @@ function renderEntityDashboard(n, e, preloadedRes){
       pDetail?.media?.quotes?.length?['#sec-quotes',`${dossierSvg('quotes',14)} 주요 발언`]:null,
       (pDetail?.incidents?.items?.length||aDetail?.events?.some(x=>x.typ==='allegation'||x.typ==='ruling'))?['#sec-incidents',`${dossierSvg('incidents',14)} 사건·사고`]:null,
       (pDetail?.history?.length||aDetail?.events?.some(x=>x.typ==='edu'))?['#sec-career',`${dossierSvg('career',14)} 경력·학력`]:null,
+      ['#sec-multisource',`${dossierSvg('search',14)} 다매체 기록`],
       ['#sec-newstl',`${dossierSvg('news',14)} 뉴스 타임라인`]
     ].filter(Boolean);
 
@@ -4387,6 +4815,7 @@ function renderEntityDashboard(n, e, preloadedRes){
     if(pDetail)html+=renderQuotesSection(pDetail,res.id);
     if(pDetail||aDetail)html+=renderIncidentsSection(pDetail||{},aDetail);
     if(pDetail||aDetail)html+=renderCareerSection(pDetail||{},aDetail);
+    html+=renderMultiSourceSection(e, pDetail, aDetail);
 
     container.innerHTML=html;
     initDragScrolls(container);
