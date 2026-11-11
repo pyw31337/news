@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-12",
-  "generated_at": "2026-11-12T08:23:22+09:00",
+  "generated_at": "2026-11-12T07:50:52+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "ief58ac60",
-      "title": "SK하이닉스 ADR 9.71% 급등… 뉴욕증시 일제 상승 마감",
+      "issue_id": "ifaef593b",
+      "title": "코어위브 훈풍에 뉴욕증시 일제히 상승…나스닥 1.6%↑",
       "category": "경제",
-      "rank": 5,
+      "rank": 3,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -39,246 +39,147 @@
       "status": "ready_for_editorial_review",
       "facts": [
         "코어위브의 실적 덕분에 미국 반도체주들이 일제히 급등했고, 오늘(12일)은 엔비디아도 반등했습니다.",
-        "[속보] 美 반도체주 일제히 급등…SK하이닉스 ADR 10%·마이크론 12%↑",
-        "SK하이닉스 ADR 9.71% 급등… 뉴욕증시 일제 상승 마감",
+        "[속보]코어위브 호실적에 AI주 반등…나스닥 1.6% 상승",
         "엔비디아 사흘 만에 반등…\"젠슨 황 강제소환\" 경고",
-        "뉴욕증시가 인공지능(AI) 클라우드 기업 코어위브의 호실적과 자금조달 부담 완화 기대에 일제히 상승했..."
+        "코어위브 24.71% 폭등·마이크론 11.89% 상승...필라델피아 반도체지수 5.66% 급등 미국 뉴욕증시가 인공지능...",
+        "스탠더드앤드푸어스(S&P)500지수는 98.45포인트(1.31%) 상승한 7,619.38에, 기술주 중심의 나스닥종합지수는 400...."
       ],
       "sources": [
         {
-          "press": "헤럴드경제",
-          "title": "[속보] 美 반도체주 일제히 급등…SK하이닉스 ADR 10%·마이크론 12%↑",
-          "url": "https://n.news.naver.com/article/016/0002722313"
+          "press": "이데일리",
+          "title": "[속보]코어위브 호실적에 AI주 반등…나스닥 1.6% 상승",
+          "url": "https://n.news.naver.com/article/018/0006408529"
+        },
+        {
+          "press": "SBS",
+          "title": "엔비디아 사흘 만에 반등…\"젠슨 황 강제소환\" 경고",
+          "url": "https://n.news.naver.com/article/055/0001402382"
+        },
+        {
+          "press": "m-economynews.com",
+          "title": "뉴욕증시, AI 투자 기대감에 일제히 상승...나스닥 1.60%↑·반도체주 급...",
+          "url": "https://www.m-economynews.com/news/article.html?no=72914"
+        },
+        {
+          "press": "bigtanews.co.kr",
+          "title": "[데일리 머니마켓] 나스닥 1.6% 급등",
+          "url": "https://www.bigtanews.co.kr/article/view/big202611120002"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "코어위브의 실적 덕분에 미국 반도체주들이 일제히 급등했고, 오늘(12일)은 엔비디아도 반등했습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "[속보]코어위브 호실적에 AI주 반등…나스닥 1.6% 상승"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "코어위브 24.71% 폭등·마이크론 11.89% 상승...필라델피아 반도체지수 5.66% 급등 미국 뉴욕증시가 인공지능..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ie53e6f25",
+      "title": "\"불륜으로 끝날 줄 알았는데\"…젠슨 황 스캔들 '일파만파'",
+      "category": "세계",
+      "rank": 5,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "엔비디아의 CEO 젠슨 황의 중국 스파이로 추정되는 싱가포르 여성기업가 앨리스 황과의 불륜이 젠슨 황 뿐 아니라 트럼프 대통령과 하워드 러트닉 상무장관 등 미 정부로도 일파 만파 확대되고 있다.",
+        "“남자들 영혼 뺏는 달콤한 미소”…‘젠슨황 불륜’ 그녀의 과거사",
+        "‘10조 칩’ 중국 들어갔나… 젠슨 황 스캔들에 美 반도체 통제 비상",
+        "\"불륜 숨기려고도 안 했다?\"...'젠슨 황' 스캔들의 착시",
+        "\"불륜으로 끝날 줄 알았는데\"…젠슨 황 스캔들 '일파만파'"
+      ],
+      "sources": [
+        {
+          "press": "디지털타임스",
+          "title": "“남자들 영혼 뺏는 달콤한 미소”…‘젠슨황 불륜’ 그녀의 과거사",
+          "url": "https://n.news.naver.com/article/029/0003058636"
         },
         {
           "press": "국민일보",
-          "title": "SK하이닉스 ADR 9.71% 급등… 뉴욕증시 일제 상승 마감",
-          "url": "https://n.news.naver.com/article/005/0001884664"
+          "title": "‘10조 칩’ 중국 들어갔나… 젠슨 황 스캔들에 美 반도체 통제 비상",
+          "url": "https://n.news.naver.com/article/005/0001884578"
         },
         {
-          "press": "디지털데일리",
-          "title": "“700선 탈환에 매수 사이드카까지”…코스닥 5.06% 폭등, 반도체·2차전지 질주",
-          "url": "https://n.news.naver.com/article/138/0002248092"
+          "press": "YTN",
+          "title": "\"불륜 숨기려고도 안 했다?\"...'젠슨 황' 스캔들의 착시",
+          "url": "https://n.news.naver.com/article/052/0002431613"
         },
         {
-          "press": "m-i.kr",
-          "title": "코어위브 24.71% 폭등에 나스닥 1.60%↑... 반도체주 일제히 반등 [뉴욕증...",
-          "url": "https://www.m-i.kr/news/articleView.html?idxno=2017501"
+          "press": "한국경제",
+          "title": "\"불륜으로 끝날 줄 알았는데\"…젠슨 황 스캔들 '일파만파'",
+          "url": "https://n.news.naver.com/article/015/0005352960"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "코스닥이 11일 장중 5% 넘게 폭등하며 700선을 되찾았다."
+          "evidence": "엔비디아의 CEO 젠슨 황의 중국 스파이로 추정되는 싱가포르 여성기업가 앨리스 황과의 불륜이 젠슨 황 뿐 아니라 트럼프 대통령과 하워드 러트닉 상무장관 등 미 정부로도 일파 만파 확대되고 있다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "SK하이닉스 ADR 9.71% 급등… 뉴욕증시 일제 상승 마감"
+          "evidence": "■ 젠슨황 스캔들로 美의회 '對中 칩규제 3법' 탄력…韓영향 주목 젠슨 황 엔비디아 최고경영자(CEO)의 중국 스파이 의심 여성과의 불륜 스캔들을 계기로 미국 의회에서 대중국 반도체 수출 규제를..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "[속보] 美 반도체주 일제히 급등…SK하이닉스 ADR 10%·마이크론 12%↑"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i2762cf82",
-      "title": "[르포] “있는 줄도 몰랐어요”… 평촌 아파트 옆 데이터센터 가보니",
-      "category": "경제",
-      "rank": 7,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "지난 10일 오전 서울 송파구 가락시장에서 '헬리오시티' 아파트 맞은편 북문으로 대형 트럭과 승합차가 쉴 새 없이 드나들었다.",
-        "프리미엄 단기·중기 임대로 수익 만들기 ◇ 평촌학원가 차량 10분 학군지 단지 주변에서는 아파트와 학교, 상업시설이 한 생활권에 들어선 모습을 확인할 수 있었다.",
-        "단지 안쪽에는 녹지가 많았고, 어린 자녀를 둔...",
-        "관악역에서 안양예술공원까지 운전석 없는 레벨4 자율주행 셔틀을 새로 도입하고, 오는 4월부터는 기존 주간 자율주행 버스 노선을 평촌 엘프라우드 아파트까지 연장한다.",
-        "최대호 안양시장은 \"안양시는 자율주행 교통..."
-      ],
-      "sources": [
-        {
-          "press": "realty.chosun.com",
-          "title": "\"분당·평촌 제쳤다\"…1기 신도시 중 재건축 속도 1위 '이 동네' [르포]",
-          "url": "https://realty.chosun.com/site/data/html_dir/2026/09/30/2026093004518.html"
-        },
-        {
-          "press": "hankyung.com",
-          "title": "\"운전석도 핸들도 없네\"…안양 레벨4 자율주행 버스 타보니 [르포]",
-          "url": "https://n.news.naver.com/mnews/article/015/0005262019?sid=102"
-        },
-        {
-          "press": "viva100.com",
-          "title": "[르포] 버스 타려면 13분 걸어야… 안양 에버포레 자연& e편한세상 ‘입...",
-          "url": "https://www.viva100.com/article/20260504500668"
-        },
-        {
-          "press": "asiatoday.co.kr",
-          "title": "[르포] '진행형' 분당서 '완성형' 둔촌까지…포스코이앤씨, 리모델링 1위...",
-          "url": "https://www.asiatoday.co.kr/kn/view.php?key=20260909010003668"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "지난 10일 오전 서울 송파구 가락시장에서 '헬리오시티' 아파트 맞은편 북문으로 대형 트럭과 승합차가 쉴 새 없이 드나들었다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "견본주택을 찾은 한 20대 여성 내방객은 \"아이가 학교에 입학하기 전까지 살기에는 역 가깝고 새 아파트라 좋을 것 같다\"면서도 \"학군 때문에 아이가 크면 평촌이나 다른 곳으로 이사를 고려해야 할 것 같다\"고..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "프리미엄 단기·중기 임대로 수익 만들기 ◇ 평촌학원가 차량 10분 학군지 단지 주변에서는 아파트와 학교, 상업시설이 한 생활권에 들어선 모습을 확인할 수 있었다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i14959ff3",
-      "title": "트럼프 “이란전쟁 곧 끝난다…93% 아닌 완전한 승리 거둘 것”[1일1트]",
-      "category": "세계",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "도널드 트럼프 미국 대통령은 11일(현지 시간) 이란 전쟁이 '곧 끝날 것'이라고 밝혔다.",
-        "트럼프 “이란전쟁 곧 끝난다…93% 아닌 완전한 승리 거둘 것”[1일1트]",
-        "트럼프 \"이란에 이겼다…93% 아닌 완전한 승리 원해\"",
-        "트럼프 \"이란전쟁 곧 끝나…93% 아닌 완전한 승리 원해\"",
-        "아울러 트럼프 대통령은 \"언제 전쟁을 끝낼지 결정하기만 하면 된다\"며 \"우리는 93%의 승리가 아닌 완전한 승리를 원하며, 결국 완전한 승리가 될 것\"이라고 밝혔습니다."
-      ],
-      "sources": [
-        {
-          "press": "헤럴드경제",
-          "title": "트럼프 “이란전쟁 곧 끝난다…93% 아닌 완전한 승리 거둘 것”[1일1트]",
-          "url": "https://n.news.naver.com/article/016/0002722295"
-        },
-        {
-          "press": "뉴스1",
-          "title": "트럼프 \"이란에 이겼다…93% 아닌 완전한 승리 원해\"",
-          "url": "https://n.news.naver.com/article/421/0009284410"
-        },
-        {
-          "press": "조세일보",
-          "title": "가계빚 1200조원 첫 돌파…10월 은행 가계대출 5조 ‘껑충’",
-          "url": "https://n.news.naver.com/article/123/0002393815"
-        },
-        {
-          "press": "ichannela.com",
-          "title": "트럼프 “이란전 곧 끝나…93% 아닌 완전한 승리될 것”",
-          "url": "https://n.news.naver.com/mnews/article/449/0000367226?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "10월 가계대출이 6조4천억원 증가하며 다시 증가 전환했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "주식 물타기 했나 ‘빚투’ 역대급 증가…은행 가계대출 첫 1천200조 돌파"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "트럼프 “이란전쟁 곧 끝난다…93% 아닌 완전한 승리 거둘 것”[1일1트]"
+          "evidence": "‘10조 칩’ 중국 들어갔나… 젠슨 황 스캔들에 美 반도체 통제 비상"
         },
         {
           "panel": 4,
@@ -324,10 +225,10 @@
       }
     },
     {
-      "issue_id": "i85476dba",
-      "title": "\"젠슨 황 내연녀, 10조 엔비디아 칩 중국으로 밀반입\"",
+      "issue_id": "i30ac3d5c",
+      "title": "트럼프 “이란전 곧 끝나…93% 아닌 완전한 승리될 것”",
       "category": "세계",
-      "rank": 3,
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -335,49 +236,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "중국 정보기관과 연계됐다는 의혹을 받는 앨리스 황이 젠슨 황 엔비디아 CEO와의 사적 관계를 이용해 미국의 수출 통제 대상인 고성능 인공지능(AI) 반도체를 중국에 우회 공급했다는 의혹이 있다.",
-        "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”",
-        "\"젠슨황 연인 앨리스황, 10조원 엔비디아 AI칩 중국으로 밀반입\"",
-        "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”",
-        "“남자 감전시키는 미소”…10조 AI칩 빼돌린 젠슨황 그녀, 유부녀?"
+        "도널드 트럼프 미국 대통령은 11일(현지 시간) 이란 전쟁이 '곧 끝날 것'이라고 밝혔다.",
+        "톱스타뉴스가 연설 영상과 주요",
+        "외신 보도를 대조한 결과, 트럼프 대통령은 '완전한 승리'를 거듭 강조했지만 93%라는 수치가 무엇을 의미하는지, 어떤 조건을 충족해야 승리를 완성할 수 있는지는 구체적으로 설명하지...",
+        "트럼프 \"이란전쟁 곧 끝나…93% 아닌 완전한 승리 원해\"",
+        "도널드 트럼프 미국 대통령이 11일(현지시간) 이란 전쟁이 곧 끝날 것이라면서도 “우리는 93%의 승리가 아닌 완전한 승리를 거두기를 원한다”고 말했다."
       ],
       "sources": [
         {
-          "press": "디지털타임스",
-          "title": "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”",
-          "url": "https://n.news.naver.com/article/029/0003058356"
+          "press": "topstarnews.net",
+          "title": "트럼프 \"이란 전쟁 곧 끝난다\"면서 \"93% 아닌 완전한 승리\"…종전 예고에...",
+          "url": "https://www.topstarnews.net/news/articleView.html?idxno=16274368"
         },
         {
-          "press": "연합뉴스",
-          "title": "\"젠슨황 연인 앨리스황, 10조원 엔비디아 AI칩 중국으로 밀반입\"",
-          "url": "https://n.news.naver.com/article/001/0016434519"
+          "press": "뉴시스",
+          "title": "트럼프 \"이란전쟁 곧 끝나…93% 아닌 완전한 승리 원해\"",
+          "url": "https://n.news.naver.com/article/003/0014316962"
         },
         {
-          "press": "조선일보",
-          "title": "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”",
-          "url": "https://n.news.naver.com/article/023/0004008955"
+          "press": "joongang.co.kr",
+          "title": "트럼프 “이란 전쟁 곧 끝날 것…93% 아닌 완전한 승리 원한다”",
+          "url": "https://n.news.naver.com/mnews/article/025/0003564653?sid=104"
         },
         {
-          "press": "중앙일보",
-          "title": "“남자 감전시키는 미소”…10조 AI칩 빼돌린 젠슨황 그녀, 유부녀?",
-          "url": "https://n.news.naver.com/article/025/0003564408"
+          "press": "연합뉴스TV",
+          "title": "트럼프 \"이란전쟁 곧 끝날 것…완전한 승리 원해\"",
+          "url": "https://n.news.naver.com/article/422/0000925262"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "중국 정보기관과 연계됐다는 의혹을 받는 앨리스 황이 젠슨 황 엔비디아 CEO와의 사적 관계를 이용해 미국의 수출 통제 대상인 고성능 인공지능(AI) 반도체를 중국에 우회 공급했다는 의혹이 있다."
+          "evidence": "도널드 트럼프 미국 대통령은 11일(현지 시간) 이란 전쟁이 '곧 끝날 것'이라고 밝혔다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”"
+          "evidence": "미국: '재앙이다'...중간선거 패배에 공화당원들, 트럼프 탓하며 분노"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”"
+          "evidence": "외신 보도를 대조한 결과, 트럼프 대통령은 '완전한 승리'를 거듭 강조했지만 93%라는 수치가 무엇을 의미하는지, 어떤 조건을 충족해야 승리를 완성할 수 있는지는 구체적으로 설명하지..."
         },
         {
           "panel": 4,
@@ -386,8 +287,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
