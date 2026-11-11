@@ -2366,6 +2366,8 @@ function getOrSynthesizeDossier(name, opt = {}){
     }
   }
 
+  // 3계층(민간인·미확인) 가족·지인은 따로 인물 문서를 만들지 않음(docs/PEOPLE.md)
+  if(foundRel && !(foundRel.cat === 'family' ? isPublicFamily(name) : isPublicPerson(name))) foundRel = null;
   if(foundRel){
     const relNews = (entItem?.timeline || []).slice(0, 4).map(x => ({
       date: normTime(x.t || x.date || ''),
@@ -2923,6 +2925,46 @@ const MASTER_RELATION_NETWORKS = {
   }
 };
 
+/* 인물 공개 범위(docs/PEOPLE.md): 1·2계층 이름만 공개 관계도에 노출. 3계층(민간인·미확인)은 이름·사진·가족 관계를 공개하지 않음.
+   data/people_public.json은 매주 people-tiers가 만듦. 아직 못 불러왔으면 가족 관계만 닫아 둠(fail-closed). */
+let _peoplePublic = null, _peopleFam = null, _peoplePublicP = null;
+function loadPeoplePublic(){
+  if(_peoplePublicP) return _peoplePublicP;
+  _peoplePublicP = fetch('data/people_public.json').then(r => r.ok ? r.json() : null).then(d => {
+    _peoplePublic = d ? new Set([...(d.t1 || []), ...(d.t2 || [])]) : null;
+    _peopleFam = d && d.fam ? new Set(d.fam) : null;
+    return _peoplePublic;
+  }).catch(() => (_peoplePublic = null));
+  return _peoplePublicP;
+}
+const NB_FAMILY_TYP = new Set(['parent','spouse','child','sibling','inlaw','relative','father','mother','grandparent','grandchild']);
+function isPublicPerson(name){
+  if(!name) return false;
+  if(_peoplePublic) return _peoplePublic.has(name) || _peoplePublic.has(String(name).replace(/\s+/g, ''));
+  return false;
+}
+function isPublicFamily(name){
+  return !!(name && _peopleFam && _peopleFam.has(name));
+}
+function peoplePrivacyGate(g, centerName){
+  const nodes = g.nodes || [], edges = g.edges || [];
+  const known = !!_peoplePublic;
+  const famIds = new Set();
+  edges.forEach(e => { if(e.cat === 'family' || NB_FAMILY_TYP.has(e.typ)) { famIds.add(e.a); famIds.add(e.b); } });
+  const centerPublic = isPublicPerson(centerName) || (nodes.find(n => n.id === g.center) || {}).archived;
+  const PERSONISH = new Set([undefined, null, '', 'politician', 'person', 'family', 'legal', 'creator', 'underworld', 'reporter', 'official', 'corporate']);
+  const drop = new Set();
+  nodes.forEach(n => {
+    if(n.id === g.center) return;
+    const fam = n.kind === 'family' || n.cat === 'family' || famIds.has(n.id);
+    const isPol = n.kind === 'politician' && (n.archived || n.party);
+    if(fam && (!centerPublic || !isPublicFamily(n.name))) { drop.add(n.id); return; }
+    if(known && PERSONISH.has(n.kind) && !isPol && !isPublicPerson(n.name)) drop.add(n.id);
+  });
+  if(!drop.size) return g;
+  return { ...g, nodes: nodes.filter(n => !drop.has(n.id)), edges: edges.filter(e => !drop.has(e.a) && !drop.has(e.b)) };
+}
+
 function enrichGraphDetail(g, name, polId, arc, pol){
   const centerId = g?.center || polId || name;
   const nodes = Array.isArray(g?.nodes) ? [...g.nodes] : [];
@@ -3425,7 +3467,7 @@ function enrichGraphDetail(g, name, polId, arc, pol){
       }
     });
   }
-  return { center: centerId, nodes, edges };
+  return peoplePrivacyGate({ center: centerId, nodes, edges }, name);
 }
 
 function renderArcGraph(g, targetName){
@@ -4858,7 +4900,8 @@ async function loadFullPersonData(name, polId){
     polId ? fetch(`https://newsboard-sync.pyw213.workers.dev/archive/person/${encodeURIComponent(polId)}`).then(r=>r.ok?r.json():null).catch(()=>null) : null,
     polId ? fetch(`https://newsboard-sync.pyw213.workers.dev/archive/graph/${encodeURIComponent(polId)}`).then(r=>r.ok?r.json():null).catch(()=>null) : null,
     polId ? fetchHistoryPersonData(polId) : null,
-    ensurePeopleBio().catch(()=>({}))
+    ensurePeopleBio().catch(()=>({})),
+    loadPeoplePublic()
   ]);
 
   const arcDetail = enrichArcDetail(arcDetailRaw, name, polId, bioDb);
@@ -5272,7 +5315,7 @@ function entity(n){
 
   ensurePolIndex().then(async () => {
     const pol = getPol(n);
-    const [bioDb, eliteNet] = await Promise.all([ensurePeopleBio().catch(() => ({})), ensureEliteNetwork().catch(() => ({}))]);
+    const [bioDb, eliteNet] = await Promise.all([ensurePeopleBio().catch(() => ({})), ensureEliteNetwork().catch(() => ({})), loadPeoplePublic()]);
     const bio = bioDb?.[n] || null;
     const d = getOrSynthesizeDossier(n, { pol, bio });
 

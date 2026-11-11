@@ -1,0 +1,52 @@
+name: people-tiers
+# 인물 3계층 판정 + 관계(유형·출처·신뢰도) 갱신. 매주 일요일 05:10 KST(people 명부 갱신 03:23 뒤). 규칙: docs/PEOPLE.md
+on:
+  schedule:
+    - cron: '10 20 * * 6'   # 일요일 05:10 KST
+  workflow_dispatch:
+    inputs:
+      wd_max: { description: '이번 회차 위키데이터 관계 수집 인원', default: '6000' }
+permissions: { contents: write }
+concurrency: { group: people-tiers, cancel-in-progress: false }
+jobs:
+  tiers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: data, path: data }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: 국회·연표·법조 자료
+        run: |
+          repo="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git clone -q --depth 1 --branch politicians "$repo" pol_db || mkdir pol_db
+          git clone -q --depth 1 --branch history "$repo" hist || mkdir hist
+          git clone -q --depth 1 --branch legal "$repo" legal || mkdir legal
+      - name: 관계 수집(위키데이터 순환 + 국회 + 판결 보도 + 제미나이 관계망)
+        timeout-minutes: 30
+        env: { WD_MAX: "${{ github.event.inputs.wd_max || '6000' }}", WD_SEC: '1500' }
+        run: python scripts/people/edges.py data pol_db legal
+      - name: 계층 판정(점수·승격·강등·상한)
+        run: python scripts/people/tiers.py data pol_db hist legal
+      - name: 새 계층으로 관계 공개 여부 다시 판정
+        env: { WD_SKIP: '1' }
+        run: python scripts/people/edges.py data pol_db legal
+      - name: data 브랜치에 저장(추가 전용 기록 포함)
+        working-directory: data
+        run: |
+          git config user.name "newsboard-bot"; git config user.email "actions@users.noreply.github.com"
+          git add db/people/tiers db/people/edges people_public.json
+          git diff --cached --quiet && exit 0
+          git commit -qm "people-tiers: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          for n in 1 2 3 4 5 6; do
+            git push -q origin HEAD:data && exit 0
+            sleep $((n * 10 + RANDOM % 10)); git fetch -q origin data && git rebase -q -X theirs origin/data || { git rebase --abort; git merge -q -X ours --no-edit origin/data; }
+          done
+          exit 1
+      - name: 요약
+        if: always()
+        run: |
+          cat data/db/people/tiers/summary.json || true
+          cat data/db/people/edges/summary.json || true

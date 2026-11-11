@@ -1,11 +1,14 @@
 # NewsBoard 인수인계 (HANDOFF)
 
-> 최종 갱신: **2026-10-29 15:50 KST** (전체 인수인계판, Grok 이어받기용). 다음 에이전트는 **HANDOFF_PROMPT.md → 이 문서 0·10·11절 → docs/ROADMAP.md → docs/design-system.md → docs/icons.md → docs/GAMIFICATION.md → docs/BADGE_GUIDE.md** 순서로 읽으세요.
+> 최종 갱신: **2026-11-11 KST**(0절 인물 행·docs/PEOPLE.md 추가), 본문 대부분 2026-10-29 15:50 KST (전체 인수인계판, Grok 이어받기용). 다음 에이전트는 **HANDOFF_PROMPT.md → 이 문서 0·10·11절 → docs/ROADMAP.md → docs/design-system.md → docs/icons.md → docs/GAMIFICATION.md → docs/BADGE_GUIDE.md** 순서로 읽으세요.
 > 사이트: https://pyw31337.github.io/news/ · 저장소: `pyw31337/news`
 
-## 0. 지금 상태 한눈에 (2026-10-29 15:50 KST)
+## 0. 지금 상태 한눈에 (2026-10-29 15:50 KST, 인물 행 2026-11-11 갱신)
 | 항목 | 상태 | 다음 할 일 |
 |---|---|---|
+| **인물 3계층·관계·링크 점검(11.11)** | 규칙 `docs/PEOPLE.md`. `people-tiers`(일 05:10) → `db/people/tiers/`·`edges/`·`people_public.json`, `people-links`(매일 04:40) → `db/links/`. 첫 판정: 1계층 4,719 · 2계층 76,820 · 3계층 27,206(합 10.9만, '150만'은 저장소에 없음). 화면 관계도는 `peoplePrivacyGate`가 3계층·근거 없는 가족을 가림 | 1계층 사진은 R2로(media 98%·Pages 89%), 화면 관계도를 id 기반 `edges/public.json.gz`로 바꾸기, 제미나이의 지어낸 보도 목록(`getOrSynthesizeDossier`) 제거는 사용자 결정 |
+| 다른 에이전트(제미나이, 11.04~) | 같은 GitHub 계정으로 커밋(구분: `feat(entity)…`·한국어 긴 커밋). 맥미니 `~/Developer/newsboard-local`에서 `collect_bio.py`·`extract_elite_network.py`·`enrich_crime_creators.py` 실행, 결과 `people_bio.json`·`elite_network.json`을 data·politicians 브랜치에 올림 | 제미나이 자료는 지우지 말고 읽기만. 겹치는 작업 전 `git log --since` 확인 |
+| 무손실 데이터 층(t85u) | **미완료**: `ledger` 브랜치 뼈대(11.04)와 `/workspace/wt-data`의 커밋 안 된 `scripts/ledger/`·`scripts/local/analyze/`만 있음. 맥미니 LaunchAgent `newsboard-ai`(30분)·`dispatch`·`gov`·`pol`·`journalists`는 동작 중 | R2 원본·분석 층 마무리 여부 결정 |
 | 기자 수집(Mac mini) | 11.04~ 영우 님 Mac mini(한국 IP)가 매시 :20·로그인 시 `scripts/local/journalists.py` 실행 → `data` 브랜치 `reporters_local.json`. `collect.py`는 6시간 안의 이 파일을 우선 사용. 로그 `~/Library/Logs/newsboard-journalists.log` | 멈추기: `launchctl bootout gui/$(id -u)/com.pyw31337.newsboard-journalists` 후 plist 삭제. 상세 `scripts/local/README.md` |
 | 화제 '기자' 탭 | 11.04 수정: 홈 화제가 `entities`만 읽어 기자(`reporters`, 별도 배열)는 항상 비었음 → `D.reporters` 사용, 수집 8→20명·오늘 기사 수/이슈 수 순 정렬, 빈 탭은 숨김. sw 캐시 버전은 이제 `inject_cache_version.py`가 자동 주입(수동 nb-vNN 불필요) | **남은 원인:** 10.30부터 네이버가 GitHub 러너(해외 IP)에 기자 영역 없는 기사 HTML을 줌(60/60건 기자 링크 0). 그래서 매번 10.30 스냅샷 8명(`scripts/reporters_fallback.json`)만 노출. 한국 IP에서 돌릴 경로 필요(박스/로컬 루틴 또는 KR 프록시) |
 | Google 로그인 | 버튼 켜짐, 계정 선택까지 확인. 앱은 **테스트 중**(테스트 사용자만) | GCP 프로젝트는 옛 '메트로라이브'를 재사용 → 브랜딩에서 이름 NewsBoard로. `/news/privacy/`·`/news/terms/` 배포(커밋 3a7aa216)는 됐지만 **15:50 현재 404, Pages 반영 대기** → 열리면 사용자에게 알림 → 사용자가 브랜딩 저장(앱 이름·지원 이메일·홈 `https://pyw31337.github.io/news/`·개인정보 `/news/privacy/`·약관 `/news/terms/`·승인 도메인 `pyw31337.github.io`, `pyw213.workers.dev`) → 대상 메뉴에서 '앱 게시'. **로고는 올리지 말 것**(올리면 인증 심사 수주) |

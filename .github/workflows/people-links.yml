@@ -1,0 +1,38 @@
+name: people-links
+# 외부 링크 건강 점검: 매일 04:40 KST, 그날 차례인 주소만(1·2계층 14일, 3계층 30일, 위키데이터 30일 주기). 규칙: docs/PEOPLE.md
+on:
+  schedule:
+    - cron: '40 19 * * *'   # 매일 04:40 KST
+  workflow_dispatch:
+permissions: { contents: write }
+concurrency: { group: people-links, cancel-in-progress: false }
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: data, path: data }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: 법조 자료
+        run: |
+          repo="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git clone -q --depth 1 --branch legal "$repo" legal || mkdir legal
+      - name: 링크 점검
+        timeout-minutes: 32
+        env: { LINK_MAX: '2500', LINK_SEC: '1500' }
+        run: python scripts/people/linkcheck.py data legal
+      - name: data 브랜치에 저장
+        working-directory: data
+        run: |
+          git config user.name "newsboard-bot"; git config user.email "actions@users.noreply.github.com"
+          git add db/links
+          git diff --cached --quiet && exit 0
+          git commit -qm "people-links: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          for n in 1 2 3 4 5 6; do
+            git push -q origin HEAD:data && exit 0
+            sleep $((n * 10 + RANDOM % 10)); git fetch -q origin data && git rebase -q -X theirs origin/data || { git rebase --abort; git merge -q -X ours --no-edit origin/data; }
+          done
+          exit 1
