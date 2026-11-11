@@ -302,6 +302,9 @@ jobs:
           if git clone -q --depth 1 --branch politicians "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" pol_db 2>/dev/null; then
             mkdir -p _site/data/pol && cp -r pol_db/index.json pol_db/people _site/data/pol/ && (cp -r pol_db/photos _site/data/pol/ || true) && (cp pol_db/feed.json _site/data/pol/ || true)
           fi
+          # 공통 인물·분류 페이지(person/·e/): scripts/people/person_pages.py → _site/data/p (docs/design-system.md 「인물 페이지 v2」)
+          cp -r person e _site/
+          python scripts/people/person_pages.py data pol_db _site || echo "::warning::person pages build failed"
       - uses: actions/upload-pages-artifact@v3
         with: { path: _site }
       - id: deploy

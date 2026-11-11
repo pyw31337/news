@@ -1,0 +1,25 @@
+/* NewsBoard 인물·엔티티 디자인 시스템 토큰 (docs/design-system.md 「인물 페이지 v2」). 이 파일 하나만 바꾸면 전체 톤이 바뀜 */
+:root{
+  /* 색: 강조 1 + 의미 3, 나머지는 명도 단계 */
+  --c-bg:#fbfbfa; --c-surface:#ffffff; --c-sunken:#f1f1ef; --c-sunken-2:#e8e8e5;
+  --c-line:#e3e3df; --c-line-strong:#cfcfca;
+  --c-ink-1:#16181d; --c-ink-2:#3d424c; --c-ink-3:#6c717b; --c-ink-4:#a7abb2;
+  --c-accent:#2450e0; --c-accent-soft:rgba(36,80,224,.10);
+  --c-pos:#138a52; --c-pos-soft:#e5f4ec; --c-neg:#d33a3a; --c-neg-soft:#fbe9e9; --c-warn:#b7791f; --c-warn-soft:#fbf1df; --c-mute:#c9ccd1;
+  --c-k1:#2450e0; --c-k2:#5d7ff0; --c-k3:#93a9f5; --c-k4:#c2cffa; --c-k5:#dfe6fc;
+  /* 글꼴 */
+  --f-sans:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;
+  --f-serif:"Noto Serif KR","Nanum Myeongjo",serif;
+  --fs-xs:12px; --fs-sm:13px; --fs-md:15px; --fs-lg:17px; --fs-xl:21px; --fs-2xl:26px; --fs-3xl:34px; --fs-display:clamp(44px,5.4vw,72px);
+  --fw-regular:400; --fw-medium:500; --fw-semibold:600; --fw-bold:700; --fw-heavy:800;
+  --lh-tight:1.25; --lh-snug:1.45; --lh-body:1.65;
+  --ls-display:-0.035em; --ls-head:-0.02em; --ls-body:-0.01em;
+  /* 간격(4 배수) */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-7:32px; --s-8:48px; --s-9:64px; --s-10:96px;
+  --sec-y:clamp(40px,5vw,72px);
+  /* 모서리·높이 */
+  --r-sm:6px; --r-md:10px; --r-lg:16px; --r-full:999px;
+  --e-1:0 1px 2px rgba(20,22,28,.08),0 1px 1px rgba(20,22,28,.04); --e-2:0 8px 24px rgba(20,22,28,.08);
+  /* 레이아웃 */
+  --page-max:1440px; --gutter:clamp(20px,4.4vw,64px);
+}
