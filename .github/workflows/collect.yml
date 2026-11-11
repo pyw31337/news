@@ -15,6 +15,7 @@ concurrency: { group: collect, cancel-in-progress: false }
 jobs:
   collect:
     runs-on: ubuntu-latest
+    timeout-minutes: 80   # 한 단계가 멈춰도 다음 수집을 6시간 막지 않게
     environment: { name: github-pages, url: '${{ steps.deploy.outputs.page_url }}' }
     steps:
       - uses: actions/checkout@v4
@@ -186,6 +187,7 @@ jobs:
         run: python scripts/stats_detail.py
       - name: 누적 데이터 커밋(data 브랜치)
         working-directory: data
+        timeout-minutes: 15
         run: |
           git config user.name "newsboard-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -212,8 +214,11 @@ jobs:
             if ! git rebase -q -X theirs origin/data; then
               # rebase 중 'theirs'는 지금 이 실행에서 만든 커밋이다. 충돌 파일도
               # 현재 수집본을 보존한 뒤 계속 진행한다.
-              while conflicts="$(git diff --name-only --diff-filter=U)" && [ -n "$conflicts" ]; do
-                while IFS= read -r f; do git checkout -q --theirs -- "$f" && git add -- "$f"; done <<< "$conflicts"
+              # 한쪽이 지운 파일(수정/삭제 충돌)은 --theirs로 꺼낼 수 없어 예전에는 이 반복이 끝나지 않았음(2026-11-11 5시간 멈춤) → 지움으로 정리, 최대 30회
+              k=0
+              while conflicts="$(git diff --name-only --diff-filter=U)" && [ -n "$conflicts" ] && [ $k -lt 30 ]; do
+                k=$((k + 1))
+                while IFS= read -r f; do { git checkout -q --theirs -- "$f" 2>/dev/null && git add -- "$f"; } || git rm -q --cached --ignore-unmatch -- "$f"; done <<< "$conflicts"
                 GIT_EDITOR=true git rebase --continue >/dev/null 2>&1 || true
               done
               # 자동 해결할 수 없는 구조 충돌은 다음 재시도에서 최신을 다시
