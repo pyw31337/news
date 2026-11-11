@@ -37,11 +37,13 @@ jobs:
       - name: 새 계층으로 관계 공개 여부 다시 판정
         env: { WD_SKIP: '1' }
         run: python scripts/people/edges.py data pol_db legal
+      - name: 화면 관계도용 고정 id 조각(data/graph)
+        run: python scripts/people/graph.py data
       - name: data 브랜치에 저장(추가 전용 기록 포함)
         working-directory: data
         run: |
           git config user.name "newsboard-bot"; git config user.email "actions@users.noreply.github.com"
-          git add db/people/tiers db/people/edges people_public.json
+          git add db/people/tiers db/people/edges db/people/graph people_public.json
           git diff --cached --quiet && exit 0
           git commit -qm "people-tiers: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
           for n in 1 2 3 4 5 6; do

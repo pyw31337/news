@@ -2948,7 +2948,97 @@ function isPublicFamily(a, b){
   if(!a || !b || !_peopleFam) return false;
   return _peopleFam.has([a, b].sort().join('|'));
 }
+/* 고정 id 관계도(docs/PEOPLE.md 「화면 관계도」): data/graph/n/NN.json.gz(이름→후보) → 중심 id 확정 → data/graph/e/NN.json.gz(관계).
+   모든 관계에 출처(위키데이터·국회·판결 보도)와 신뢰도가 있음. 중심은 국회 id가 맞거나, 그 이름의 1·2계층 인물이 1명뿐일 때만 정함(동명이인 방지). */
+const _sgShard = {}, _sgCache = {};
+function sgHash(s){ /* graph.py shard(): sha1 앞 6자리 % 64 */ return crypto.subtle.digest('SHA-1', new TextEncoder().encode(s)).then(b => { const h = [...new Uint8Array(b)].slice(0, 3).map(x => x.toString(16).padStart(2, '0')).join(''); return parseInt(h, 16) % 64; }); }
+function sgLoad(kind, i){
+  const k = kind + i;
+  if(!_sgShard[k]) _sgShard[k] = fetch(`data/graph/${kind}/${String(i).padStart(2, '0')}.json.gz`).then(r => {
+    if(!r.ok || typeof DecompressionStream === 'undefined') return {};
+    return new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).json();
+  }).catch(() => ({}));
+  return _sgShard[k];
+}
+const SG_CAT = { family: 'family', school: 'academic', region: 'regional', career: 'official', party: 'political', case: 'civic' };
+const SG_GLABEL = { educated: '출신 학교', alumni: '동문회', birthplace: '출생지', district: '지역구', position: '직위', employer: '소속 기관', member_of: '소속 단체', team: '소속 팀', member: '소속 정당', court: '소속 법원' };
+const SG_PEERLABEL = { educated: '동문', birthplace: '같은 고향', employer: '같은 기관', member_of: '같은 단체', team: '같은 팀' };
+function sgFamily(sub, dir){
+  const M = { father: ['parent', '부친'], mother: ['parent', '모친'], spouse: ['spouse', '배우자'], child: ['child', '자녀'], sibling: ['sibling', '형제자매'], relative: ['relative', '친척'] };
+  if(dir === -1){ if(sub === 'father' || sub === 'mother') return ['child', '자녀']; if(sub === 'child') return ['parent', '부모']; }
+  if(dir === 0 && (sub === 'father' || sub === 'mother' || sub === 'child')) return ['relative', '가족'];
+  return M[sub] || ['relative', '친척'];
+}
+function sgSrc(code, subj){ return code === 'wd' ? ('위키데이터 ' + String(subj || '').replace(/^wd:/, '')) : code === 'na' ? '국회 의원 정보(열린국회정보)' : (code || ''); }
+async function loadStableGraph(name, polId){
+  if(!name) return null;
+  const key = name + '|' + (polId || '');
+  if(key in _sgCache) return _sgCache[key];
+  _sgCache[key] = null;
+  try{
+    const nm = String(name).replace(/\s+/g, '');
+    const ent = (await sgLoad('n', await sgHash(nm)))[name] || (await sgLoad('n', await sgHash(nm)))[nm];
+    if(!ent) return null;
+    let c = null;
+    if(polId) c = ent.x.find(x => x[0] === 'pol:' + polId || (x[6] || []).includes(polId));
+    if(!c && !polId && ent.c === 1 && ent.x.length === 1) c = ent.x[0];
+    if(!c) return null;
+    const cid = c[0], rec = (await sgLoad('e', await sgHash(cid)))[cid];
+    if(!rec) return null;
+    const nodes = [{ id: cid, name, kind: rec.k === '정치' ? 'politician' : 'person', cat: 'center', stable: true }], edges = [], have = new Set([cid]);
+    const L = rec.L || {};
+    const person = (id, cat, typ, desc) => { if(have.has(id)) return; have.add(id); const l = L[id] || []; nodes.push({ id, name: l[0] || id, kind: cat === 'family' ? 'family' : (l[1] === '정치' ? 'politician' : 'person'), cat, typ, desc: desc || l[1] || '', stable: true, photo: profilePhoto({ name: l[0] }) }); };
+    let peersAdded = 0;
+    for(const [o, t, sub, conf, src, dir] of rec.e){
+      const cat = SG_CAT[t] || 'political';
+      if(o.startsWith('g:')){
+        const label = o.split(':').slice(2).join(':');
+        if(!have.has(o)){ have.add(o); nodes.push({ id: o, name: label, kind: 'group', cat, typ: t === 'school' ? 'schoolmate' : t === 'region' ? 'hometown' : 'colleague', desc: SG_GLABEL[sub] || '', stable: true }); }
+        edges.push({ a: cid, b: o, cat, typ: t === 'school' ? 'schoolmate' : t === 'region' ? 'hometown' : 'colleague', label: SG_GLABEL[sub] || '소속', desc: label, src: sgSrc(src, cid), conf });
+        if(SG_PEERLABEL[sub] && peersAdded < 12) for(const p of ((rec.g || {})[o] || []).slice(0, 2)){
+          if(have.has(p)) continue;
+          person(p, cat, t === 'school' ? 'schoolmate' : t === 'region' ? 'hometown' : 'colleague', label + ' ' + SG_PEERLABEL[sub]);
+          edges.push({ a: p, b: o, cat, typ: 'colleague', label: label + ' ' + SG_PEERLABEL[sub], desc: '', src: '위키데이터', conf }); peersAdded++;
+        }
+      } else if(t === 'family'){
+        const [typ, label] = sgFamily(sub, dir);
+        person(o, 'family', typ);
+        edges.push({ a: cid, b: o, cat: 'family', typ, label, desc: '', src: sgSrc(src, dir === -1 ? o : cid), conf });
+      } else {
+        person(o, cat, 'colleague');
+        edges.push({ a: cid, b: o, cat, typ: 'colleague', label: t === 'case' ? '재판 관계' : '관계', desc: '', src: sgSrc(src, cid), conf });
+      }
+    }
+    return (_sgCache[key] = { center: cid, nodes, edges });
+  }catch(_){ return null; }
+}
+/* 서버(D1) 관계도와 고정 id 관계도 합치기: 고정 id 쪽 중심을 기존 중심 id로 맞춤 */
+function mergeStableGraph(g, sg){
+  if(!sg) return g;
+  const center = g?.center || sg.center;
+  const re = id => id === sg.center ? center : id;
+  const nodes = [...(g?.nodes || [])], ids = new Set(nodes.map(n => n.id));
+  sg.nodes.forEach(n => { if(n.id === sg.center) return; const id = re(n.id); if(!ids.has(id)){ ids.add(id); nodes.push({ ...n, id }); } });
+  const edges = [...(g?.edges || []), ...sg.edges.map(e => ({ ...e, a: re(e.a), b: re(e.b) }))];
+  return { ...(g || {}), center, nodes, edges };
+}
+/* 같은 이름 사람 노드가 둘 이상이면(고정 id 노드와 이름 기반 노드) 먼저 들어온 쪽(고정 id)으로 합침 */
+function dedupePeopleByName(g){
+  const keep = new Map(), alias = new Map(), nodes = [];
+  (g.nodes || []).forEach(n => {
+    if(n.kind === 'group' || n.id === g.center || !n.name){ nodes.push(n); return; }
+    const k = String(n.name).replace(/\s+/g, '');
+    const first = keep.get(k);
+    if(first){ alias.set(n.id, first.id); if(!first.desc && n.desc) first.desc = n.desc; if(!first.party && n.party) first.party = n.party; return; }
+    keep.set(k, n); nodes.push(n);
+  });
+  if(!alias.size) return g;
+  const seen = new Set(), edges = [];
+  (g.edges || []).forEach(e => { const a = alias.get(e.a) || e.a, b = alias.get(e.b) || e.b; if(a === b) return; const k = [a, b].sort().join('|') + '|' + e.cat; if(seen.has(k)) return; seen.add(k); edges.push({ ...e, a, b }); });
+  return { ...g, nodes, edges };
+}
 function peoplePrivacyGate(g, centerName){
+  g = dedupePeopleByName(g);
   const nodes = g.nodes || [], edges = g.edges || [];
   const known = !!_peoplePublic;
   const famIds = new Set();
@@ -4922,14 +5012,16 @@ async function loadFullPersonData(name, polId){
     polId ? fetch(`https://newsboard-sync.pyw213.workers.dev/archive/graph/${encodeURIComponent(polId)}`).then(r=>r.ok?r.json():null).catch(()=>null) : null,
     polId ? fetchHistoryPersonData(polId) : null,
     ensurePeopleBio().catch(()=>({})),
-    loadPeoplePublic()
+    loadPeoplePublic(),
+    loadStableGraph(name, polId)
   ]);
+  const stableGraph = await loadStableGraph(name, polId);
 
   const arcDetail = enrichArcDetail(arcDetailRaw, name, polId, bioDb);
   if(polDetail && arcDetail?.military && !polDetail.military){
     polDetail.military = arcDetail.military;
   }
-  const enrichedGraph = enrichGraphDetail(graphDetail, name, polId, arcDetail, polDetail);
+  const enrichedGraph = enrichGraphDetail(mergeStableGraph(graphDetail, stableGraph), name, polId, arcDetail, polDetail);
 
   return { id: polId || name, pol: polDetail, arc: arcDetail, graph: enrichedGraph, history: histDetail };
 }
