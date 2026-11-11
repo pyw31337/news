@@ -2367,7 +2367,7 @@ function getOrSynthesizeDossier(name, opt = {}){
   }
 
   // 3계층(민간인·미확인) 가족·지인은 따로 인물 문서를 만들지 않음(docs/PEOPLE.md)
-  if(foundRel && !(foundRel.cat === 'family' ? isPublicFamily(name) : isPublicPerson(name))) foundRel = null;
+  if(foundRel && !(foundRel.cat === 'family' ? isPublicFamily(foundRel.target, name) : isPublicPerson(name))) foundRel = null;
   if(foundRel){
     const relNews = (entItem?.timeline || []).slice(0, 4).map(x => ({
       date: normTime(x.t || x.date || ''),
@@ -2943,8 +2943,10 @@ function isPublicPerson(name){
   if(_peoplePublic) return _peoplePublic.has(name) || _peoplePublic.has(String(name).replace(/\s+/g, ''));
   return false;
 }
-function isPublicFamily(name){
-  return !!(name && _peopleFam && _peopleFam.has(name));
+function isPublicFamily(a, b){
+  // 가족은 '두 사람 쌍'이 출처 있는 공개 가족 관계일 때만 공개(동명이인 방지)
+  if(!a || !b || !_peopleFam) return false;
+  return _peopleFam.has([a, b].sort().join('|'));
 }
 function peoplePrivacyGate(g, centerName){
   const nodes = g.nodes || [], edges = g.edges || [];
@@ -2958,7 +2960,7 @@ function peoplePrivacyGate(g, centerName){
     if(n.id === g.center) return;
     const fam = n.kind === 'family' || n.cat === 'family' || famIds.has(n.id);
     const isPol = n.kind === 'politician' && (n.archived || n.party);
-    if(fam && (!centerPublic || !isPublicFamily(n.name))) { drop.add(n.id); return; }
+    if(fam && (!centerPublic || !isPublicFamily(centerName, n.name))) { drop.add(n.id); return; }
     if(known && PERSONISH.has(n.kind) && !isPol && !isPublicPerson(n.name)) drop.add(n.id);
   });
   if(!drop.size) return g;

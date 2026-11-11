@@ -265,13 +265,16 @@ lp = append_log(os.path.join(TD, 'log'), changes)
 # 사이트 공개용: 1·2계층 이름(이 목록에 없는 사람 = 3계층·미확인은 공개 관계도에서 빠짐). 이름 기준이라 동명이인은 보수적으로 같이 공개됨
 t1 = sorted({r['n'] for r in out.values() if r['t'] == 1 and r['n']})
 t2 = sorted({r['n'] for pid, r in out.items() if r['t'] == 2 and r['n']} - set(t1))
-# 가족 관계 공개 목록: 1·2계층 중 뉴스에 3번 이상 나왔거나(우리 기사 색인), 출처 있는 공개 가족 관계(위키데이터 등)의 당사자.
-# 흔한 이름의 동명이인이 남의 가족으로 공개되지 않도록 가족에는 더 엄격한 기준을 씀.
-fam_ids = set()
+# 가족 관계 공개 목록: '누구와 누구'의 쌍으로만 공개. 출처 있는 공개 가족 관계(위키데이터 등, 양쪽 1·2계층·미성년 아님)가 있는 쌍만.
+# 이름 하나로 판단하면 흔한 이름의 동명이인이 남의 가족으로 공개되므로 쌍으로 확인한다.
+pairs = set()
 for e in (load(os.path.join(PD, 'edges', 'current.json.gz'), {}) or {}).get('edges', []):
-    if e.get('t') == 'family' and e.get('pub') and not e.get('gone'):
-        fam_ids.update((e['a'], e['b']))
-fam = sorted({r['n'] for pid, r in out.items() if r['t'] in (1, 2) and r['n'] and not r.get('minor') and ((r.get('m') or 0) >= 3 or pid in fam_ids)})
+    if e.get('t') != 'family' or e.get('gone') or not e.get('src'):
+        continue
+    ra, rb = out.get(e['a']) or {}, out.get(e['b']) or {}
+    if ra.get('t') in (1, 2) and rb.get('t') in (1, 2) and not ra.get('minor') and not rb.get('minor') and ra.get('n') and rb.get('n'):
+        pairs.add('|'.join(sorted((ra['n'], rb['n']))))
+fam = sorted(pairs)
 save(os.path.join(ROOT, 'people_public.json'), dict(updated=summary['updated'], v=1, t1=t1, t2=t2, fam=fam))
 print('계층', dict(counts), '기준', thr, '변경', len(changes), '추정 저장량 MB', summary['storage_estimate_mb'], '기록', lp)
 print('공개 이름', len(t1), len(t2), '가족 공개', len(fam))
