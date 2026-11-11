@@ -1,7 +1,23 @@
 {
-  "updated": "2026-11-11T15:20:51.779542+09:00",
-  "alerts_count": 24,
+  "updated": "2026-11-11T16:18:05.248245+09:00",
+  "alerts_count": 25,
   "alerts": [
+    {
+      "id": "urn:oid:2.49.0.1.840.0.1d87d46ccd8ebe6e840ae505762938ded3890440.001.1",
+      "t": "2026-11-11 00:54",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Waters from Freeport to Matagorda Ship Channel TX from 20 to 60 NM",
+      "area_en": "Waters from Freeport to Matagorda Ship Channel TX from 20 to 60 NM",
+      "event": "Special Marine Warning",
+      "event_en": "Special Marine Warning",
+      "severity": "Severe",
+      "headline_ko": "Waters from Freeport to Matagorda Ship Channel TX from 20 to 60 NM Special Marine Warning",
+      "headline_en": "Waters from Freeport to Matagorda Ship Channel TX from 20 to 60 NM Special Marine Warning",
+      "desc": "SMWHGX\n\nThe National Weather Service in League City has issued a\n\n* Special Marine Warning for...\nWaters from Freeport to Matagorda Ship Channel TX from 20 to 60\nNM...\n\n* Until 130 AM CST.\n\n* At 1254 AM CST, a strong thunderstorm was located 7 nm northeast of\nBuoy 42019, moving east at around 25 kno"
+    },
     {
       "id": "urn:oid:2.49.0.1.840.0.9360ce98f35b5e5460bc4994d1a8f59c5ab36665.001.1",
       "t": "2026-11-10 22:33",
@@ -225,25 +241,17 @@
       "headline_ko": "Mono 겨울 폭풍 주의보",
       "headline_en": "Mono Winter Storm Watch",
       "desc": "* WHAT...Heavy wet snow. Snow accumulations near 12 inches above 7000\nto 7500 feet, up to 6 inches between 6000 and 7500 feet, and little\nto no accumulations below 6000 feet. Wind gusts of 60 to 80 mph\nover ridges and gusts of 40 to 55 mph for areas along Highway 395.\n\n* WHERE...Mono County.\n\n* WHEN"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.6919edc7e119bce46062e3c64c5e3fd608b5c01f.001.1",
-      "t": "2026-11-10 08:00",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Maricopa",
-      "area_en": "Maricopa",
-      "event": "홍수 경보",
-      "event_en": "Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Maricopa 홍수 경보",
-      "headline_en": "Maricopa Flood Warning",
-      "desc": "* WHAT...Flooding caused by upstream dam release is expected.\n\n* WHERE...Maricopa County in south central Arizona...\nNortheastern Yuma County in southwestern Arizona...\n\n* WHEN...Until 1100 AM MST Tuesday Nov 17.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone l"
     }
   ],
   "quakes": [
+    {
+      "id": "us7000txhi",
+      "mag": 5.1,
+      "place": "Balleny Islands region",
+      "t": "2026-11-11 06:21",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txhi"
+    },
     {
       "id": "us7000txgv",
       "mag": 5,
@@ -315,14 +323,6 @@
       "t": "2026-11-10 15:23",
       "depth": 58.52,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txbc"
-    },
-    {
-      "id": "us7000txb8",
-      "mag": 5.6,
-      "place": "43 km S of Puerto San José, Guatemala",
-      "t": "2026-11-10 14:54",
-      "depth": 35,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txb8"
     }
   ],
   "cities": [
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 11.0,
-      "apparent_temp": 7.1,
-      "humidity": 48,
+      "temp": 10.4,
+      "apparent_temp": 6.7,
+      "humidity": 46,
       "code": 0,
-      "wind": 12.3
+      "wind": 10.0
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 17.9,
-      "apparent_temp": 16.7,
-      "humidity": 59,
+      "temp": 17.7,
+      "apparent_temp": 16.5,
+      "humidity": 61,
       "code": 0,
-      "wind": 7.2
+      "wind": 8.0
     },
     {
       "id": "london",
@@ -362,11 +362,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 8.6,
-      "apparent_temp": 5.9,
-      "humidity": 90,
-      "code": 3,
-      "wind": 13.7
+      "temp": 8.2,
+      "apparent_temp": 5.6,
+      "humidity": 93,
+      "code": 53,
+      "wind": 13.0
     },
     {
       "id": "paris",
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 12.6,
-      "apparent_temp": 12.5,
-      "humidity": 94,
-      "code": 2,
-      "wind": 4.5
+      "temp": 12.1,
+      "apparent_temp": 11.6,
+      "humidity": 95,
+      "code": 3,
+      "wind": 6.2
     },
     {
       "id": "frankfurt",
@@ -390,11 +390,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 5.8,
-      "apparent_temp": 4.1,
-      "humidity": 95,
-      "code": 45,
-      "wind": 3.7
+      "temp": 5.9,
+      "apparent_temp": 4.4,
+      "humidity": 96,
+      "code": 51,
+      "wind": 2.7
     },
     {
       "id": "tokyo",
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 14.8,
-      "apparent_temp": 12.8,
-      "humidity": 48,
+      "temp": 14.5,
+      "apparent_temp": 13.1,
+      "humidity": 51,
       "code": 0,
-      "wind": 3.6
+      "wind": 0.5
     },
     {
       "id": "beijing",
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 10.8,
-      "apparent_temp": 8.7,
-      "humidity": 59,
+      "temp": 11.1,
+      "apparent_temp": 9.3,
+      "humidity": 67,
       "code": 0,
-      "wind": 3.5
+      "wind": 3.9
     },
     {
       "id": "singapore",
@@ -432,10 +432,10 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 31.0,
-      "apparent_temp": 36.9,
-      "humidity": 64,
-      "code": 51,
+      "temp": 26.3,
+      "apparent_temp": 33.2,
+      "humidity": 98,
+      "code": 80,
       "wind": 3.3
     },
     {
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 25.5,
-      "apparent_temp": 24.1,
-      "humidity": 40,
-      "code": 1,
-      "wind": 11.5
+      "temp": 24.7,
+      "apparent_temp": 23.5,
+      "humidity": 44,
+      "code": 0,
+      "wind": 10.7
     },
     {
       "id": "toronto",
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 5.9,
-      "apparent_temp": 2.7,
-      "humidity": 83,
+      "temp": 5.7,
+      "apparent_temp": 2.4,
+      "humidity": 84,
       "code": 0,
-      "wind": 11.0
+      "wind": 11.3
     },
     {
       "id": "dubai",
@@ -474,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 29.9,
-      "apparent_temp": 32.8,
-      "humidity": 58,
+      "temp": 30.1,
+      "apparent_temp": 32.7,
+      "humidity": 57,
       "code": 0,
-      "wind": 9.4
+      "wind": 11.2
     },
     {
       "id": "saopaulo",
@@ -488,21 +488,12 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 14.8,
-      "apparent_temp": 14.8,
-      "humidity": 95,
+      "temp": 14.5,
+      "apparent_temp": 14.7,
+      "humidity": 97,
       "code": 3,
-      "wind": 9.1
+      "wind": 7.1
     }
   ],
-  "stories": [
-    {
-      "id": "g08cdbe7f",
-      "title": "Greta Thunberg slams UN climate COPs as 'greenwashed circuses'",
-      "press": "CNA",
-      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/afp_6af3a30f98ea-1794351887.jpg?resize=1920%2C1440",
-      "score": 10.5,
-      "url": "g/g08cdbe7f"
-    }
-  ]
+  "stories": []
 }
