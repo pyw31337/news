@@ -607,7 +607,8 @@
         font-size: 11px;
         font-weight: 850;
       }
-      .node img {
+      .node img,
+      .node-identity {
         display: block;
         width: 50px;
         height: 50px;
@@ -617,6 +618,15 @@
         border-radius: 50%;
         box-shadow: 0 2px 9px #1832632b;
         margin: 0 auto 3px;
+      }
+      .node-identity,
+      .person-monogram {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(145deg, #dce8ff, #eef3fb);
+        color: #1f4c96;
+        font-weight: 900;
       }
       .node small {
         display: block;
@@ -690,7 +700,8 @@
         border-bottom: 1px solid var(--line);
         font-size: 12px;
       }
-      .person-row img {
+      .person-row img,
+      .person-row .person-monogram {
         width: 34px;
         height: 34px;
         border-radius: 50%;
@@ -1371,22 +1382,16 @@
               ><i class="relation-line rel-b"></i
               ><i class="relation-line rel-c"></i>
               <div class="node n1">
-                <img
-                  src="https://pyw31337.github.io/news/assets/people/%EA%B9%80%ED%98%9C%EA%B2%BD.webp"
-                  alt="김혜경"
-                /><b>김혜경</b><small>배우자</small>
+                <span class="node-identity" aria-label="김혜경 사진 출처 검증 전">김</span
+                ><b>김혜경</b><small>배우자</small>
               </div>
               <div class="node n2">
-                <img
-                  src="https://pyw31337.github.io/news/assets/people/%EC%A0%95%EC%84%B1%ED%98%B8.webp"
-                  alt="정성호"
-                /><b>정성호</b><small>법조 동문</small>
+                <span class="node-identity" aria-label="정성호 사진 출처 검증 전">정</span
+                ><b>정성호</b><small>법조 동문</small>
               </div>
               <div class="node n5">
-                <img
-                  src="https://pyw31337.github.io/news/assets/people/%EC%86%A1%EC%98%81%EA%B8%B8.webp"
-                  alt="송영길"
-                /><b>송영길</b><small>인천 연고</small>
+                <span class="node-identity" aria-label="송영길 사진 출처 검증 전">송</span
+                ><b>송영길</b><small>인천 연고</small>
               </div>
               <div class="node center">
                 <img
@@ -1396,16 +1401,12 @@
                 /><b>이재명</b><small>본인</small>
               </div>
               <div class="node n3">
-                <img
-                  src="https://pyw31337.github.io/news/assets/people/%EB%AC%B8%EC%9E%AC%EC%9D%B8.webp"
-                  alt="문재인"
-                /><b>문재인</b><small>정치 관계</small>
+                <span class="node-identity" aria-label="문재인 사진 출처 검증 전">문</span
+                ><b>문재인</b><small>정치 관계</small>
               </div>
               <div class="node n4">
-                <img
-                  src="https://pyw31337.github.io/news/assets/people/%EA%B9%80%EB%8F%99%EC%97%B0.webp"
-                  alt="김동연"
-                /><b>김동연</b><small>경기 행정</small>
+                <span class="node-identity" aria-label="김동연 사진 출처 검증 전">김</span
+                ><b>김동연</b><small>경기 행정</small>
               </div>
             </div>
             <aside class="relation-guide">
@@ -1414,6 +1415,7 @@
                 관계는 친밀도 순위가 아니라, 공개적으로 확인 가능한 연결 고리와
                 근거의 분류입니다.
               </p>
+              <p>사진은 인물 ID와 출처가 모두 확인될 때만 표시합니다.</p>
               <ul>
                 <li>
                   <b>가족·친인척</b><span>공직자 재산등록·공개 인적 기록</span>
@@ -1428,45 +1430,27 @@
           </div>
           <div class="people-list" aria-label="관계 인물 표본">
             <div class="person-row">
-              <img
-                src="https://pyw31337.github.io/news/assets/people/%EC%9D%B4%EC%9E%AC%EC%84%A0.webp"
-                alt="이재선"
-              />
+              <span class="person-monogram" aria-label="이재선 사진 출처 검증 전">이</span>
               <div><b>이재선</b><span>형제 · 가족 기록</span></div>
             </div>
             <div class="person-row">
-              <img
-                src="https://pyw31337.github.io/news/assets/people/%EC%9D%B4%ED%97%8C%EC%9A%B1.webp"
-                alt="이헌욱"
-              />
+              <span class="person-monogram" aria-label="이헌욱 사진 출처 검증 전">이</span>
               <div><b>이헌욱</b><span>시민사회·정책</span></div>
             </div>
             <div class="person-row">
-              <img
-                src="https://pyw31337.github.io/news/assets/people/%EC%9D%B4%ED%99%94%EC%98%81.webp"
-                alt="이화영"
-              />
+              <span class="person-monogram" aria-label="이화영 사진 출처 검증 전">이</span>
               <div><b>이화영</b><span>경기도 공직 이력</span></div>
             </div>
             <div class="person-row">
-              <img
-                src="https://pyw31337.github.io/news/assets/people/%EB%B0%95%EA%B7%A0%ED%83%9D.webp"
-                alt="박균택"
-              />
+              <span class="person-monogram" aria-label="박균택 사진 출처 검증 전">박</span>
               <div><b>박균택</b><span>법률·정치 관계</span></div>
             </div>
             <div class="person-row">
-              <img
-                src="https://pyw31337.github.io/news/assets/people/%EC%A1%B0%EA%B5%AD.webp"
-                alt="조국"
-              />
+              <span class="person-monogram" aria-label="조국 사진 출처 검증 전">조</span>
               <div><b>조국</b><span>정치 관계</span></div>
             </div>
             <div class="person-row">
-              <img
-                src="https://pyw31337.github.io/news/assets/people/%EC%9C%A4%EC%84%9D%EC%97%B4.webp"
-                alt="윤석열"
-              />
+              <span class="person-monogram" aria-label="윤석열 사진 출처 검증 전">윤</span>
               <div><b>윤석열</b><span>대선 경쟁 관계</span></div>
             </div>
           </div>

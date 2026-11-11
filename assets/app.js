@@ -244,6 +244,9 @@ function profilePhoto(e, pDetail, gDetail){
   const liveEntity=e?.visual?e:(D?.entities||[]).find(x=>x.name===name);
   const fromEntity=entityPortrait(liveEntity);
   if(fromEntity)return fromEntity;
+  const reporter=typeof reporters==='function'?(reporters()||[]).find(r=>r.name===name):null;
+  const reporterPhoto=verifiedReporterPhoto(reporter);
+  if(reporterPhoto)return reporterPhoto;
   const pol=getPol(name);
   const polId=pDetail?.id||pol?.id;
   if(polId)return'data/pol/photos/'+encodeURIComponent(polId)+'.webp';
@@ -2130,7 +2133,7 @@ const MASTER_PEOPLE_DOSSIER = {
     name: '김혜경',
     role: '대한민국 제21대 대통령 영부인',
     party: '더불어민주당',
-    photo: 'assets/people/김혜경.webp',
+    photo: '',
     aliases: ['Kim Hye-gyeong', '金惠敬'],
     birth: '1966-09-12',
     desc: '피아니스트 출신 대한민국 제21대 대통령 영부인. 1991년 이재명 변호사와 결혼하여 성남 인권변호사 및 시민운동, 성남시장·경기도지사·당대표 시절을 함께한 핵심 동반자. 공직선거법 재판 및 법인카드 공방, 대선 배우자 지원 활동 등 정치적 고비를 함께 돌파한 핵심 인물입니다.',
@@ -2149,7 +2152,7 @@ const MASTER_PEOPLE_DOSSIER = {
     name: '정진상',
     role: '전 더불어민주당 대표실 정무조정실장',
     party: '더불어민주당',
-    photo: 'assets/people/정진상.webp',
+    photo: '',
     aliases: ['Jung Jin-sang', '鄭鎭相'],
     birth: '1968-07-25',
     desc: '성남시민모임 시절부터 이재명과 인연을 맺어 성남시 정책비서관, 경기도 정책실장, 민주당 대표실 정무조정실장을 거친 이재명의 최고 복심이자 정책·정무 총괄 참모. 대장동·위례신도시 개발 및 백현동 인허가 등 주요 사법 리스크의 핵심 피고인으로 법정 공방을 벌이고 있는 핵심 인물입니다.',
@@ -2168,7 +2171,7 @@ const MASTER_PEOPLE_DOSSIER = {
     name: '김용',
     role: '전 민주연구원 부원장 / 전 경기도 대변인',
     party: '더불어민주당',
-    photo: 'assets/people/김용.webp',
+    photo: '',
     aliases: ['Kim Yong', '金湧'],
     birth: '1966-10-15',
     desc: '성남시의회 의원(재선), 경기도 대변인, 민주연구원 부원장을 거치며 정진상과 함께 이재명의 좌우 날개로 불린 핵심 정책 참모. 제20대 대선 경선 국면에서 불법 정치자금 및 뇌물을 수수한 혐의로 1심에서 징역 5년을 선고받고 항소심에서 결백을 호소하고 있는 핵심 사법 쟁점 인물입니다.',
@@ -2186,7 +2189,7 @@ const MASTER_PEOPLE_DOSSIER = {
     name: '유동규',
     role: '전 성남도시개발공사 기획본부장 / 전 경기관광공사 사장',
     party: '',
-    photo: 'assets/people/유동규.webp',
+    photo: '',
     aliases: ['Yoo Dong-gyu', '柳東珪'],
     birth: '1969-10-31',
     desc: '성남도시개발공사 기획본부장과 경기관광공사 사장을 역임하며 대장동 개발 특혜 사업의 설계 및 실무를 총괄한 핵심 인물. 수감 이후 이재명 대표와 정진상·김용에게 불리한 법정 진술을 쏟아내며 검찰의 핵심 증인 겸 폭로자로 전향한 사법 공방의 최전선 인물입니다.',
@@ -2205,7 +2208,7 @@ const MASTER_PEOPLE_DOSSIER = {
     name: '이화영',
     role: '전 경기도 평화부지사 / 제17대 국회의원',
     party: '더불어민주당',
-    photo: 'assets/people/이화영.webp',
+    photo: '',
     aliases: ['Lee Hwa-young', '李華泳'],
     birth: '1963-12-11',
     desc: '제17대 국회의원과 킨텍스 대표를 거쳐 이재명 경기도지사 시절 초대 평화부지사로 대북 교류협력 사업을 총괄한 핵심 정무 인사. 쌍방울 그룹의 경기도 스마트팜 및 도지사 방북 비용 대납(대북송금) 혐의로 1심에서 징역 9년 6개월의 중형을 선고받고 치열한 사법 공방을 이어가고 있습니다.',
@@ -2223,7 +2226,7 @@ const MASTER_PEOPLE_DOSSIER = {
     name: '이재선',
     role: '이재명 대통령 셋째 형 (1954~2017) / 공인회계사',
     party: '',
-    photo: 'assets/people/이재선.webp',
+    photo: '',
     aliases: ['Lee Jae-sun', '李在善'],
     birth: '1954-04-10',
     desc: '이재명 대통령의 셋째 형이자 공인회계사, 전 성남시민모임 대표. 이재명의 5남 2녀 형제 중 가장 먼저 고등교육을 받고 회계사로 자립해 동생의 학업을 이끌었으나, 이재명의 성남시장 당선 이후 시정 비판과 인사 개입 갈등으로 불화를 겪었으며, ‘친형 강제입원 의혹’ 및 ‘형수 녹취록’ 사건의 핵심 당사자입니다.',
@@ -2287,7 +2290,7 @@ function _dossierBase(name, opt = {}){
       name: name,
       role: foundRel.rel || '인물',
       party: foundRel.party || '',
-      photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+      photo: profilePhoto({ name }),
       aliases: [],
       birth: '',
       desc: (foundRel.desc || '') + ' (' + foundRel.target + '과의 핵심 연계 인물)',
@@ -2334,7 +2337,7 @@ function _dossierBase(name, opt = {}){
       name: name,
       role: bio.role_title || '공공 인물',
       party: bio.org || '',
-      photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+      photo: profilePhoto({ name }),
       aliases: [],
       birth: bio.birth_desc || '',
       desc: (bio.role_title || '') + ' (' + (bio.org || '') + '). ' + (bio.birth_desc ? bio.birth_desc + '. ' : '') + (bio.military ? '병역: ' + bio.military : ''),
@@ -2360,7 +2363,7 @@ function _dossierBase(name, opt = {}){
       name: name,
       role: polName + ' 의원의 ' + relName,
       party: polInfo.party || '',
-      photo: 'assets/people/' + encodeURIComponent(polName) + '.webp',
+      photo: profilePhoto({ name: polName }, polInfo),
       aliases: [],
       birth: '',
       desc: '국회공직자윤리위원회 관보에 정식 등재된 ' + polName + ' (' + (polInfo.role || '국회의원') + ')의 법정 ' + relName + '. ' + (refuseDesc || assetDesc || '공적 인적 기록 등재.'),
@@ -2379,7 +2382,7 @@ function _dossierBase(name, opt = {}){
       name: name,
       role: corpItem.role || '기업인',
       party: corpItem.org || '주요 기업',
-      photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+      photo: profilePhoto({ name }),
       aliases: [],
       birth: corpItem.birth || '',
       desc: (corpItem.role || '') + ' (' + (corpItem.org || '') + '). ' + (schList ? '학력: ' + schList + '. ' : '') + (corpItem.military ? '병역: ' + corpItem.military : ''),
@@ -2397,7 +2400,7 @@ function _dossierBase(name, opt = {}){
       name: name,
       role: legalItem.role || '법조인',
       party: legalItem.org || '대한민국 사법부/검찰',
-      photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+      photo: profilePhoto({ name }),
       aliases: [],
       birth: legalItem.birth || '',
       desc: (legalItem.role || '') + ' (' + (legalItem.org || '') + '). ' + (examList ? '자격: ' + examList + '. ' : '') + (schList ? '학력: ' + schList : ''),
@@ -2413,7 +2416,7 @@ function _dossierBase(name, opt = {}){
       name: name,
       role: officialItem.role || '고위공직자',
       party: officialItem.org || '대한민국 정부',
-      photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+      photo: profilePhoto({ name }),
       aliases: [],
       birth: officialItem.birth || '',
       desc: (officialItem.role || '') + ' (' + (officialItem.org || '') + '). 대한민국 정부 주요 정책 총괄 및 공직 수행.',
@@ -2431,7 +2434,7 @@ function _dossierBase(name, opt = {}){
       name: name,
       role: journoItem.role || '언론인',
       party: journoItem.org || '언론사',
-      photo: journoItem.photo || ('assets/people/' + encodeURIComponent(name) + '.webp'),
+      photo: verifiedReporterPhoto({ photo: journoItem.photo }) || profilePhoto({ name }),
       aliases: [],
       birth: '',
       desc: (journoItem.role || '') + ' (' + (journoItem.org || '') + '). 대한민국 주요 시사·보도 현장 취재 및 방송 저널리즘 활동.',
@@ -2450,7 +2453,7 @@ function _dossierBase(name, opt = {}){
       name: crimeItem.name,
       role: crimeItem.role || '주요 사건 인물',
       party: crimeItem.faction || '조직/사건',
-      photo: 'assets/people/' + encodeURIComponent(crimeItem.name) + '.webp',
+      photo: profilePhoto({ name: crimeItem.name }),
       aliases: (crimeItem.aliases || []).concat([crimeItem.hanja].filter(Boolean)),
       birth: crimeItem.birth || '',
       desc: (crimeItem.role || '') + ' (' + (crimeItem.faction || '') + '). ' + (crimeItem.summary || ''),
@@ -2474,7 +2477,7 @@ function _dossierBase(name, opt = {}){
       name: name,
       role: `${creatorItem.category || '크리에이터'} 유튜버${realText}`,
       party: creatorItem.mcn || '유튜브',
-      photo: 'assets/people/' + encodeURIComponent(creatorItem.real_name || creatorItem.channel_name) + '.webp',
+      photo: profilePhoto({ name: creatorItem.real_name || creatorItem.channel_name }),
       aliases: [creatorItem.channel_name, creatorItem.real_name, creatorItem.handle].filter(x => x && x !== name),
       birth: creatorItem.birth || '',
       desc: `${creatorItem.channel_name} (${creatorItem.handle || ''}) - 구독자 ${creatorItem.subscribers || '다수'}. 본명 ${creatorItem.real_name || ''}. 소속: ${creatorItem.mcn || '독립'}. 주요 분야: ${creatorItem.category || '콘텐츠'}.`,
@@ -2496,7 +2499,7 @@ function _dossierBase(name, opt = {}){
       name: name,
       role: (smeItem.role || '대표이사') + ' (' + (smeItem.company || '') + ')',
       party: smeItem.company || '혁신기업',
-      photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+      photo: profilePhoto({ name }),
       aliases: [],
       birth: '',
       desc: `${name} ${smeItem.role || '대표'}. 소속: ${smeItem.company || ''}. ${smeItem.summary || ''}`,
@@ -2512,7 +2515,7 @@ function _dossierBase(name, opt = {}){
     name: name,
     role: entItem?.type === 'person' ? '화제 인물' : '공공 인물',
     party: '',
-    photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+    photo: profilePhoto({ name }),
     aliases: entItem?.aliases || [],
     birth: '',
     desc: entItem?.desc || (name + ' 관련 뉴스 및 다각도 인물 데이터베이스.'),
@@ -3064,7 +3067,7 @@ function enrichGraphDetail(g, name, polId, arc, pol){
           typ: typ,
           desc: desc,
           party: memberFamData.party || '',
-          photo: 'assets/people/' + encodeURIComponent(name) + '.webp'
+          photo: profilePhoto({ name })
         };
         nodes.push(fn);
         nodeMap.set(famNodeId, fn);
@@ -3138,7 +3141,7 @@ function enrichGraphDetail(g, name, polId, arc, pol){
           typ: 'rival',
           desc: cr.desc || '',
           party: '조직/사건',
-          photo: 'assets/people/' + encodeURIComponent(cr.target) + '.webp'
+          photo: profilePhoto({ name: cr.target })
         };
         nodes.push(tn);
         nodeMap.set(targetId, tn);
@@ -3174,7 +3177,7 @@ function enrichGraphDetail(g, name, polId, arc, pol){
           typ: 'colleague',
           desc: rel.desc || '',
           party: creatorEntry.mcn || '유튜브',
-          photo: 'assets/people/' + encodeURIComponent(rel.target) + '.webp'
+          photo: profilePhoto({ name: rel.target })
         };
         nodes.push(tn);
         nodeMap.set(targetId, tn);
