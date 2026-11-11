@@ -175,6 +175,7 @@ git status --short
 | 2026-11-11 | 인물 보강 기반 추가 | 커버리지 분리, QID 기반 Wikidata 사실, Commons 초상 보강, R2 저장 경로를 구현 | 첫 회차: 사실 18명·초상 12명; 화면 노출 전 매칭 검수 필요 |
 | 2026-11-11 | 수집 공정성·정확도 수정 | 정치인 원장 미전달 시 `0` 대신 `data_available:false`; 큐를 10분야 라운드로빈으로 변경 | 다음 collect에서 공개 집계가 교체되는지 확인 |
 | 2026-11-11 | 이 문서 작성 | 여러 에이전트가 같은 기준·수치·금지 규칙을 공유하도록 정본화 | 새 작업은 이 표에 후속 기록 |
+| 2026-11-11 16:00 | 인물·분류 페이지 v2(Grokbot, 사용자 승인 시안 D) | `person/`·`e/` 새 경로 + `assets/nbp/`(원래 `entity/` 화면은 그대로, 유일한 1계층 이름만 새 페이지로 넘김). `scripts/people/person_pages.py`(배포 때 `_site/data/p` 생성, 커밋 없음), `wd_t1.py`·`people-photos.yml` → data `db/people/wd_t1.json.gz`·`photos_t1.json`, R2 `people/pt/`. 사진은 고정 QID의 P18 + Commons 자유 이용 허락만(기존 `portraits.json`·`wikidata_facts.json`은 읽기만). 선관위 동명이인 당선 기록은 정당 불일치 시 제외 | 사진 얼굴 일치는 사람 검수 전(표본 48장 모두 단독 인물 사진). 규칙 `docs/PEOPLE.md` 10장 |
 
 ## 10. 읽을 문서와 소유 범위
 
