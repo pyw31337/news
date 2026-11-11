@@ -7,27 +7,33 @@ on:
   workflow_dispatch:
     inputs:
       limit: { description: '시험용 인원 제한(0=전체)', default: '0' }
+      facts: { description: '위키데이터 사실·대표 사진 단계 실행(1/0)', default: '1' }
+      dated: { description: '연도별 사진 회차당 인원', default: '1200' }
 permissions: { contents: write, id-token: write, actions: write }
 concurrency: { group: people-photos, cancel-in-progress: false }
 jobs:
   photos:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with: { ref: data, path: data }
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
-      - run: pip install Pillow
+      - run: pip install Pillow "opencv-python-headless<5"
       - name: 위키데이터 사실 + 사진(R2)
+        if: ${{ github.event.inputs.facts != '0' }}
         timeout-minutes: 100
         run: python -u scripts/people/wd_t1.py data --photos pt_out --upload --limit "${{ github.event.inputs.limit || '0' }}"
+      - name: 기관 로고·상징 + 연도별 사진(R2)
+        timeout-minutes: 90
+        run: python -u scripts/people/wd_media.py data --upload --logos --dated --max-people "${{ github.event.inputs.dated || '1200' }}"
       - name: data 브랜치에 저장
         working-directory: data
         run: |
           git config user.name "newsboard-bot"; git config user.email "actions@users.noreply.github.com"
-          git add db/people/wd_t1.json.gz db/people/photos_t1.json
+          git add -A db/people
           git diff --cached --quiet && exit 0
           git commit -qm "people-photos: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
           for n in 1 2 3 4 5 6; do

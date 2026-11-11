@@ -18,7 +18,8 @@
     B.pol ? NB.load(`${B0}data/pol/people/${B.pol}.json`).catch(() => null) : null,
     B.h ? gz(`${RAW}history/h/p/${B.h}.json.gz`).catch(() => null) : null,
   ]);
-  const gl = (k, label) => `<a class="lk" href="${href.g(k)}">${esc(label)}</a>`;
+  const lgi = k => B.lg?.[k] ? `<img class="lg" src="${esc(B.lg[k])}" alt="" width="18" height="18" loading="lazy">` : '';
+  const gl = (k, label) => `<a class="lk" href="${href.g(k)}">${lgi(k)}${esc(label)}</a>`;
   const glist = (items, max = 99) => items.slice(0, max).map(([label, , , k]) => gl(k, label)).join('<i class="sep">·</i>');
   const yr = (a, b) => a ? `${a}${b ? '–' + b : '–'}` : '';
   const pcard = (o, sub) => { const c = L[o] || [o]; return NB.pchip({ name: c[0], photo: c[3] ? (/^https?:/.test(c[3]) ? c[3] : B0 + c[3]) : null }, sub, c[4] ? href.p(o) : null); };
@@ -75,6 +76,9 @@
 
   const SEC = [];
   const add = (sid, title, icon, count, body, opt = {}) => SEC.push({ id: sid, title, icon, count, html: `<section class="sec ${opt.cls || ''}" id="${sid}">${NB.sh(title, { icon, count, aside: opt.aside })}${body}</section>` });
+
+  /* ── 사진으로 본 변화(연도가 있는 사진 2장 이상) ── */
+  if ((B.pt || []).length >= 2) add('s-ph', '사진으로 본 변화', 'photo', B.pt.length + '장', NB.ptl(B.pt.map(([y, u, w, h, src, lic, by]) => ({ y, u, w, h, src, cap: [by, lic].filter(Boolean).join(' · ') }))));
 
   /* ── 경력 흐름 ── */
   const norm = s => String(s || '').replace(/\s+/g, '');
@@ -157,7 +161,7 @@
       const [o, , sub] = r;
       if (!o.startsWith('g:')) return `<div class="rnode">${pcard(o, RS[sub] || sub)}</div>`;
       const peers = B.gp?.[o] || [];
-      return `<div class="rnode"><a class="lk" href="${href.g(o)}"><b>${esc(o.split(':').slice(2).join(':'))}</b></a><small>${esc(RS[sub] || sub)}</small>${peers.length ? `<div class="rpeers"><span class="rpeer-l">${esc(PEER[sub] || '함께')}</span>${peers.map(p => pcard(p)).join('')}</div>` : ''}</div>`;
+      return `<div class="rnode"><a class="lk" href="${href.g(o)}">${lgi(o)}<b>${esc(o.split(':').slice(2).join(':'))}</b></a><small>${esc(RS[sub] || sub)}</small>${peers.length ? `<div class="rpeers"><span class="rpeer-l">${esc(PEER[sub] || '함께')}</span>${peers.map(p => pcard(p)).join('')}</div>` : ''}</div>`;
     }).join('')}</div>`).join('')}</div>`);
 
   /* ── 발언 ── */

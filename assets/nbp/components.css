@@ -480,3 +480,14 @@ a.pchip:hover b{color:var(--c-accent)}
 .sh-a .seg{max-width:100%;overflow-x:auto;scrollbar-width:none}
 .hero-ph--none{max-width:200px}
 .src-chip.is-on small{color:#fff;opacity:.85}
+/* 로고(분류 링크 앞) */
+.lg{display:inline-block;width:18px;height:18px;object-fit:contain;vertical-align:-3px;margin-right:6px;border-radius:4px}
+.rnode .lk{display:inline-flex;align-items:center}
+/* 연도별 사진 */
+.ptl{display:grid;grid-template-columns:repeat(var(--ptl-n),minmax(0,200px));gap:var(--s-6);list-style:none;margin:0;padding:0}
+.ptl-i{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ptl-ph img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 25%;border-radius:var(--r-md);display:block;margin-bottom:var(--s-3)}
+.ptl-y{font-size:var(--fs-lg);font-weight:var(--fw-bold);font-variant-numeric:tabular-nums}
+.ptl-a{font-size:var(--fs-sm);color:var(--c-ink-3)}
+.ptl-c{font-size:var(--fs-xs);color:var(--c-ink-4);overflow-wrap:anywhere}
+@media (max-width:767px){ .ptl{grid-template-columns:repeat(2,minmax(0,1fr))} }

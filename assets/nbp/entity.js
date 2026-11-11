@@ -42,7 +42,7 @@
       ].filter(Boolean))}
       ${W?.title ? `<div class="hero-src"><a class="src-chip" href="https://ko.wikipedia.org/wiki/${encodeURIComponent(W.title)}" target="_blank" rel="noopener">${ic('brand-wikipedia')}위키백과</a></div>` : ''}
     </div>
-    ${W?.thumb ? `<figure class="hero-ph hero-ph--logo" style="--ph-max:220px"><img src="${esc(W.thumb)}" alt="${esc(G.n)}"></figure>` : ''}
+    ${G.lg ? `<figure class="hero-ph hero-ph--logo" style="--ph-max:220px"><img src="${esc(G.lg.u)}" alt="${esc(G.n)}" width="${G.lg.w}" height="${G.lg.h}"><figcaption><a href="${esc(G.lg.src)}" target="_blank" rel="noopener">${esc([G.lg.by, G.lg.lic].filter(Boolean).join(' · '))}</a></figcaption></figure>` : W?.thumb ? `<figure class="hero-ph hero-ph--logo" style="--ph-max:220px"><img src="${esc(W.thumb)}" alt="${esc(G.n)}"></figure>` : ''}
   </section>`;
   const SEC = [];
   const add = (id, title, icon, count, body, aside = '') => SEC.push({ id, title, icon, count, html: `<section class="sec" id="${id}">${NB.sh(title, { icon, count, aside })}${body}</section>` });

@@ -29,6 +29,10 @@ edges = (load(os.path.join(PD, 'edges', 'public.json.gz'), {}) or {}).get('edges
 WD = (load(os.path.join(PD, 'wd_t1.json.gz'), {}) or {}).get('items', {})
 PH = (load(os.path.join(PD, 'photos_t1.json'), {}) or {}).get('items', {})
 PORT = (load(os.path.join(PD, 'portraits.json'), {}) or {}).get('items', {})
+_LG = load(os.path.join(PD, 'logos.json'), {}) or {}   # scripts/people/wd_media.py --logos
+LOGO = {g: _LG['items'][q] for g, q in (_LG.get('g') or {}).items() if q in (_LG.get('items') or {})}
+OGM = (load(os.path.join(DATA, 'db', 'og', 'map.json'), {}) or {}).get('u', {})   # scripts/og_backfill.py
+DATED = (load(os.path.join(PD, 'photos_dated.json'), {}) or {}).get('items', {})   # wd_media.py --dated
 AIX = load(os.path.join(PD, 'index.json'), {}) or {}
 BIO = load(os.path.join(DATA, 'people_bio.json.gz'), None) or load(os.path.join(DATA, 'people_bio.json'), {}) or {}
 pub = {k: v for k, v in tiers.items() if v.get('t') in (1, 2) and not v.get('minor')}
@@ -288,11 +292,24 @@ def bundle(cid):
     for d, t, i in issues_by.get(nm, [])[-12:]:
         iss.append([d, t, i])
     pa = [a for a in img_arts if nm and len(nm) >= 2 and nm in a[1]][:4]
+    ar = articles(cid)
+    if ar and len(pa) < 4:   # 보강된 대표 이미지가 있는 최근 기사로 채움
+        have = {a[2] for a in pa}
+        for row in ar.get('last', []):
+            if len(pa) >= 4:
+                break
+            if len(row) > 2 and row[2] in OGM and row[2] not in have:
+                pa.append([row[0], row[1], row[2], row[3] if len(row) > 3 else '', R2 + OGM[row[2]][0]])
     out = {'id': cid, 'n': nm, 'k': r.get('k', ''), 't': 1, 'o': r.get('o', ''), 'd': w.get('d') or rg.get('d', ''),
            'b': w.get('b') or birth(cid), 'dd': w.get('dd'), 'bp': (w.get('bp') or [None, None])[1],
            'ph': PHOTO.get(cid), 'src': src, 'pol': pp if pj else None, 'h': hist, 'ev': ev, 'x': extra, 'car': car,
            'ea': ehash(nm) if names.get(nm) == cid and ehash(nm) in ENT else None,
-           'rel': rel, 'L': L, 'gp': gp, 'ar': articles(cid), 'pa': pa, 'iss': iss, 'al': sorted(alias[cid])}
+           'rel': rel, 'L': L, 'gp': gp, 'ar': ar, 'pa': pa, 'iss': iss, 'al': sorted(alias[cid])}
+    gks = {x[3] for v in car.values() for x in v} | {x[0] for x in rel if x[0].startswith('g:')}
+    if pj and pj.get('party'):
+        gks.add('g:party:' + pj['party'])
+    out['lg'] = {g: R2 + LOGO[g]['s'] for g in sorted(gks) if g in LOGO}
+    out['pt'] = [[x['y'], R2 + x['k'], x['w'], x['h'], x['src'], x['lic'], re.sub(r'\s+', ' ', x.get('by') or '')[:60]] for x in DATED.get(cid, [])]
     if pj:
         out['hz'] = pj.get('hanja'); out['en'] = pj.get('en'); out['bd'] = pj.get('birth')
     return {k: v for k, v in out.items() if v not in (None, '', [], {})}
@@ -341,7 +358,9 @@ for g, mem in GROUPS.items():
     if not ms:
         continue
     gn = GNAME.get(g, g.split(':', 2)[-1])
+    lg = LOGO.get(g)
     GB[sh(g, GS)][g] = {'n': gn, 't': g.split(':')[1], 'c': len(ms), 'ea': ehash(gn) if ehash(gn) in ENT else None,
+                        'lg': {'u': R2 + lg['k'], 's': R2 + lg['s'], 'w': lg['w'], 'h': lg['h'], 'src': lg['src'], 'lic': lg['lic'], 'by': re.sub(r'\s+', ' ', lg.get('by') or '')[:60]} if lg else None,
                         'm': [[p] + card(p) + [role, y0, y1] for p, (role, y0, y1) in ms[:240]]}
 for i, d in enumerate(GB):
     jw(os.path.join(OUT, 'g', '%02d.json' % i), d)

@@ -1,0 +1,37 @@
+name: og-thumbs
+# 수집 기사 대표 이미지(og:image) 보강 → R2 img/og/(480px WebP), data 브랜치 db/og/map.json(추가 전용).
+# 3시간마다 최대 2,500건·40분. robots.txt 준수, 같은 사이트 1.5초 간격. 규칙: scripts/og_backfill.py 머리말
+on:
+  schedule:
+    - cron: '35 */3 * * *'
+  workflow_dispatch:
+    inputs:
+      max: { description: '이번 회차 최대 건수', default: '2500' }
+permissions: { contents: write, id-token: write }
+concurrency: { group: og-thumbs, cancel-in-progress: false }
+jobs:
+  og:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: data, path: data }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install Pillow
+      - name: 대표 이미지 → R2
+        timeout-minutes: 45
+        run: python -u scripts/og_backfill.py data --upload --max "${{ github.event.inputs.max || '2500' }}" --sec 2400
+      - name: data 브랜치에 저장
+        working-directory: data
+        run: |
+          git config user.name "newsboard-bot"; git config user.email "actions@users.noreply.github.com"
+          git add db/og/map.json
+          git diff --cached --quiet && exit 0
+          git commit -qm "og-thumbs: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          for n in 1 2 3 4 5 6; do
+            git push -q origin HEAD:data && exit 0
+            sleep $((n * 10 + RANDOM % 10)); git fetch -q origin data && git rebase -q origin/data || { git rebase --abort; git merge -q --no-edit origin/data; }
+          done
+          exit 1
