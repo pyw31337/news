@@ -135,6 +135,8 @@ def main():
                 M['u'][u] = rec; M['skip'].pop(u, None); ok += 1
             else:
                 M['skip'][u] = NOW.date().isoformat(); bad += 1; why[w.split(':')[0]] += 1
+            if (ok + bad) % 250 == 0:
+                json.dump(M, open(mp, 'w'), separators=(',', ':'))
     M['updated'] = NOW.isoformat(timespec='seconds')
     json.dump(M, open(mp, 'w'), separators=(',', ':'))
     print('저장', ok, '실패', bad, dict(why), '합계', len(M['u']), '/', len(T))

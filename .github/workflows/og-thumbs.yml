@@ -24,6 +24,7 @@ jobs:
         timeout-minutes: 45
         run: python -u scripts/og_backfill.py data --upload --max "${{ github.event.inputs.max || '2500' }}" --sec 2400
       - name: data 브랜치에 저장
+        if: always()
         working-directory: data
         run: |
           git config user.name "newsboard-bot"; git config user.email "actions@users.noreply.github.com"
