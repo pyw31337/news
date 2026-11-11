@@ -340,7 +340,9 @@ ready.then(()=>{nav();if(typeof BASEP==='undefined'){document.querySelectorAll('
 })();
 
 /* 이슈 상세 → 인물 아카이브 연결(이슈 본문에 등장하는 아카이브 인물) */
-let ARCN=null;async function arcLink(id){try{ARCN=ARCN||await (await fetch('https://newsboard-sync.pyw213.workers.dev/archive/people?n=200')).json();
+let ARCN=null;
+function archivePortrait(p){const id=String(p?.id||'').replace(/^pol_/,'');const photo=String(p?.photo||'');return/^[A-Za-z0-9_-]+$/.test(id)&&new RegExp(`^(?:data/pol/photos/|https://newsboard-sync\\.pyw213\\.workers\\.dev/m/pol/)${id}\\.webp$`).test(photo)?photo:''}
+async function arcLink(id){try{ARCN=ARCN||await (await fetch('https://newsboard-sync.pyw213.workers.dev/archive/people?n=200')).json();
  const tx=(document.querySelector('#app')?.innerText||'').slice(0,20000);const hit=ARCN.filter(p=>p.name.length>1&&tx.includes(p.name)).slice(0,6);
  if(!hit.length||document.querySelector('.arcrow'))return;const h=document.querySelector('#app .myact')||document.querySelector('#app h1,#app h2');
- h&&h.insertAdjacentHTML('afterend',`<div class="arcrow" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0"><span style="font-size:12px;color:#888;align-self:center">이 이슈의 인물 일생 보기</span>${hit.map(p=>`<a href="persons/?id=${p.id}" style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border-radius:999px;background:#fff;box-shadow:0 1px 5px #0f163020;text-decoration:none;color:#1b2140;font-size:13px;font-weight:700">${p.photo?`<img src="${p.photo}" alt="" style="width:24px;height:24px;border-radius:50%;object-fit:cover;object-position:top">`:''}${E(p.name)}</a>`).join('')}</div>`)}catch(e){}}
+ h&&h.insertAdjacentHTML('afterend',`<div class="arcrow" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0"><span style="font-size:12px;color:#888;align-self:center">이 이슈의 인물 일생 보기</span>${hit.map(p=>{const photo=archivePortrait(p);return`<a href="persons/?id=${p.id}" style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border-radius:999px;background:#fff;box-shadow:0 1px 5px #0f163020;text-decoration:none;color:#1b2140;font-size:13px;font-weight:700">${photo?`<img src="${photo}" alt="" style="width:24px;height:24px;border-radius:50%;object-fit:cover;object-position:top">`:''}${E(p.name)}</a>`}).join('')}</div>`)}catch(e){}}

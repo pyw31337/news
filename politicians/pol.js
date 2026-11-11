@@ -5,7 +5,16 @@ const PC={'더불어민주당':'#1f5bd8','국민의힘':'#e5243b','조국혁신�
 const pc=p=>PC[p]||(/민주/.test(p||'')?'#2b5fbf':/한나라|새누리|자유한국|미래통합|신한국|민자|민정/.test(p||'')?'#d63a4a':'#6b7390');
 const fmt=n=>(n||0).toLocaleString();
 const fDate=s=>String(s??'').replace(/(\d{4})-(\d{2})-(\d{2})/g,'$1.$2.$3').replace(/(\d{4})-(\d{2})/g,'$1.$2');
-const ph=(u,n,c)=>`<div class="pph" style="--pc:${c}">${u?`<img src="${esc(u)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:''}<span>${esc((n||'?').slice(0,1))}</span></div>`;
+/* 국회 공개 DB의 안정 ID와 사진 파일명이 일치할 때만 초상을 표시한다.
+   이름만 같은 외부 URL은 다른 사람의 사진일 수 있으므로 이니셜로 처리한다. */
+const polPortrait=p=>{
+  const id=String(p?.id||'');
+  const url=String(p?.photo_local||p?.photo||'');
+  if(!/^[A-Za-z0-9_-]+$/.test(id))return'';
+  const safeId=id.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  return new RegExp(`^(?:data/pol/photos/|https://newsboard-sync\\.pyw213\\.workers\\.dev/m/pol/)${safeId}\\.webp$`).test(url)?url:'';
+};
+const ph=(p,n,c)=>{const u=polPortrait(p);return`<div class="pph" style="--pc:${c}">${u?`<img src="${esc(u)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`:''}<span>${esc((n||'?').slice(0,1))}</span></div>`};
 let IDX=null,Q={q:'',f:'cur',party:'',sort:'name'};
 async function j(u){const r=await fetch(u,{cache:'no-cache'});if(!r.ok)throw new Error(r.status);return r.json()}
 async function boot(){
@@ -33,7 +42,7 @@ function list(){
    <div class="kpis"><b>${fmt(IDX.count)}<em>역대 의원</em></b><b>${fmt(IDX.current)}<em>현역 22대</em></b><b>${IDX.bills?fmt(IDX.bills):'준비 중'}<em>법안(${(IDX.bill_ages||[]).join(',')||'-'}대)</em></b>${IDX.votes_rows?`<b>${fmt(IDX.votes_rows)}<em>표결 기록(${IDX.vote_ages.join(',')}대)</em></b>`:''}<b>${fmt(sw)}<em>당적 변경 경험</em></b></div></section>
   <div class="sec"><h2><small>22nd Assembly</small>현역 의석 분포</h2></div>
   <div class="card pad"><div class="seat">${bar}</div><div class="legend">${pe.map(([k,v])=>`<button data-party="${esc(k)}" class="${Q.party===k?'on':''}"><i style="background:${pc(k)}"></i>${esc(k)} <b>${v}</b></button>`).join('')}</div></div>
-  ${hot.length?`<div class="sec"><h2><small>In the News</small>요즘 기사에 많이 나온 정치인</h2></div><div class="hotrow">${hot.map(p=>`<a class="hot card" data-pid href="politicians/?id=${p.id}">${ph(p.photo_local||p.photo,p.name,pc(p.party))}<b>${esc(p.name)}</b><span style="color:${pc(p.party)}">${esc(p.party||'')}</span><em>기사 ${fmt(p.news)}건${p.inc?` · 사건 키워드 ${p.inc}`:''}</em></a>`).join('')}</div>`:''}
+  ${hot.length?`<div class="sec"><h2><small>In the News</small>요즘 기사에 많이 나온 정치인</h2></div><div class="hotrow">${hot.map(p=>`<a class="hot card" data-pid href="politicians/?id=${p.id}">${ph(p,p.name,pc(p.party))}<b>${esc(p.name)}</b><span style="color:${pc(p.party)}">${esc(p.party||'')}</span><em>기사 ${fmt(p.news)}건${p.inc?` · 사건 키워드 ${p.inc}`:''}</em></a>`).join('')}</div>`:''}
   <div class="sec"><h2><small>By Term</small>대수별 의원 수</h2></div>
   <div class="card pad"><div class="agebar">${Object.entries(ageDist).sort((a,b)=>a[0]-b[0]).map(([a,v])=>`<div><i style="height:${Math.round(v/amax*100)}%"></i><span>${a}</span></div>`).join('')}</div></div>
   <div class="sec"><h2><small>Directory</small>의원 찾기</h2></div>
@@ -48,7 +57,7 @@ function list(){
     if(q)L=L.filter(p=>[p.name,p.hanja,p.party,p.district].join(' ').includes(q));
     const k={news:p=>-(p.news||0),lead:p=>-(p.lead||0),terms:p=>-(p.ages||[]).length}[Q.sort];
     L=[...L].sort((a,b)=>k?k(a)-k(b)||a.name.localeCompare(b.name):a.name.localeCompare(b.name));
-    $('#plist').innerHTML=(L.length?'':`<div class="note">찾는 의원이 없어요.</div>`)+L.slice(0,240).map(p=>`<a class="prow" data-pid href="politicians/?id=${p.id}">${ph(p.photo_local||p.photo,p.name,pc(p.party))}<div><b>${esc(p.name)}<small>${esc(p.hanja||'')}</small></b><span><i style="background:${pc(p.party)}"></i>${esc(p.party||'정당 정보 없음')} · ${esc(p.district||'')}</span><em>${(p.ages||[]).map(a=>a+'대').join(' ')}${p.switches?` · 당적 변경 ${p.switches}회`:''}${p.news?` · 기사 ${p.news}`:''}</em></div></a>`).join('')+(L.length>240?`<div class="note">${fmt(L.length)}명 중 240명만 보여요. 검색으로 좁혀 보세요.</div>`:'');
+    $('#plist').innerHTML=(L.length?'':`<div class="note">찾는 의원이 없어요.</div>`)+L.slice(0,240).map(p=>`<a class="prow" data-pid href="politicians/?id=${p.id}">${ph(p,p.name,pc(p.party))}<div><b>${esc(p.name)}<small>${esc(p.hanja||'')}</small></b><span><i style="background:${pc(p.party)}"></i>${esc(p.party||'정당 정보 없음')} · ${esc(p.district||'')}</span><em>${(p.ages||[]).map(a=>a+'대').join(' ')}${p.switches?` · 당적 변경 ${p.switches}회`:''}${p.news?` · 기사 ${p.news}`:''}</em></div></a>`).join('')+(L.length>240?`<div class="note">${fmt(L.length)}명 중 240명만 보여요. 검색으로 좁혀 보세요.</div>`:'');
   };draw();
   $('#q').oninput=e=>{Q.q=e.target.value;draw()};$('#sort').onchange=e=>{Q.sort=e.target.value;draw()};
   app.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{Q.f=b.dataset.f;app.querySelectorAll('[data-f]').forEach(x=>x.classList.toggle('on',x===b));draw()});
@@ -68,7 +77,7 @@ async function detail(id){
   const tl=[...terms.map(t=>({d:'',k:'term',t})),...news.slice(0,80).map(n=>({d:n.date,k:'news',n}))];
   app.innerHTML=`
   <a class="back" href="politicians/" data-pid>← 정치인 목록</a><a class="arcl" href="persons/?id=${encodeURIComponent(id)}" style="float:right;padding:6px 12px;border-radius:999px;background:#ff7a00;color:#fff;text-decoration:none;font-size:13px;font-weight:700">일생 타임라인·관계도 →</a>
-  <section class="pdhero card" style="--pc:${c}">${ph(p.photo_local||p.photo,p.name,c)}<div class="pdt">
+  <section class="pdhero card" style="--pc:${c}">${ph(p,p.name,c)}<div class="pdt">
     <span class="pbadge">${p.current?'현역 22대 국회의원':'전직 국회의원'}</span>
     <h1>${esc(p.name)} <small>${esc(p.hanja||'')} ${esc(p.en||'')}</small></h1>
     <p class="pty"><i></i>${esc(p.party||'')}${p.district?' · '+esc(p.district):''}</p>
