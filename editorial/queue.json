@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-12",
-  "generated_at": "2026-11-12T09:52:25+09:00",
+  "generated_at": "2026-11-12T08:53:09+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,107 +27,8 @@
   },
   "candidates": [
     {
-      "issue_id": "i391c7f70",
-      "title": "젠슨황 '사내불륜' 추가 폭로…NYT \"엔비디아 임원과 혼외관계\"",
-      "category": "경제",
-      "rank": 2,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "젠슨 황 엔비디아 CEO가 중국 스파이로 지목된 여성과의 외도 의혹에 이어, 자사 직속 여성 임원과도 혼외 관계를 맺어왔다는 추가 폭로가 뉴욕타임스(NYT)를 통해 보도되었다.",
-        "젠슨 황 ‘중국 스파이 의심 여성’ 말고도 또 외도?···NYT “엔비디아 임원과도 불륜 의혹”",
-        "앞서 같은날 미 일간 뉴욕타임스(NYT)는 황 CEO가 중국 스파이 의혹을 받는 여성과의 불륜에 이어 자신의 직속 부하인 엔비디아 임원과도 혼외 관계를 맺었다고 보도했다.",
-        "NYT는 전직 직원 5명을 인용해 상대 여성이...",
-        "젠슨황 '사내불륜' 추가 폭로…NYT \"엔비디아 임원과 혼외관계\""
-      ],
-      "sources": [
-        {
-          "press": "경향신문",
-          "title": "젠슨 황 ‘중국 스파이 의심 여성’ 말고도 또 외도?···NYT “엔비디아 임원과도 불륜 의혹”",
-          "url": "https://n.news.naver.com/article/032/0003482206"
-        },
-        {
-          "press": "joseilbo.com",
-          "title": "WSJ \"엔비디아, 젠슨 황 CEO 해임 추진\"… NYT \"회사 임원과도 불륜\"",
-          "url": "https://n.news.naver.com/mnews/article/123/0002393886?sid=104"
-        },
-        {
-          "press": "연합뉴스",
-          "title": "젠슨황 '사내불륜' 추가 폭로…NYT \"엔비디아 임원과 혼외관계\"",
-          "url": "https://n.news.naver.com/article/001/0016437196"
-        },
-        {
-          "press": "KBS",
-          "title": "NYT “젠슨 황, 엔비디아 임원과 혼외관계”…주가, 시간외 8% 급락",
-          "url": "https://n.news.naver.com/article/056/0012292241"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "젠슨 황 엔비디아 CEO가 중국 스파이로 지목된 여성과의 외도 의혹에 이어, 자사 직속 여성 임원과도 혼외 관계를 맺어왔다는 추가 폭로가 뉴욕타임스(NYT)를 통해 보도되었다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "젠슨황 '사내 불륜' 추가 폭로…\"엔비디아 이사회, 해임 준비\""
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "NYT는 전직 직원 5명을 인용해 상대 여성이..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "해임 추진 보도와 추가 불륜 의혹이 구체화되면서 주가 급락 등 시장의 부정적 반응이 가시화되고 있다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ieaf8f9de",
-      "title": "불륜에 부하 여성과 혼외관계 의혹…엔비디아 이사회, 젠슨황 해임 준비",
+      "issue_id": "i18efb405",
+      "title": "[속보] \"엔비디아 이사회, 젠슨황 해임 준비…이르면 오늘 회의\"",
       "category": "경제",
       "rank": 1,
       "priority_score": 37,
@@ -137,49 +38,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "엔비디아의 젠슨 황 CEO가 혼외 관계 사실을 인정한 후에도 출근하며 경영 일정을 소화하고 있지만, 회사 내부 분위기는 가라앉은 것으로 전해졌다.",
-        "WSJ “엔비디아 이사회, 젠슨 황 해임 준비”… NYT “사내 여성 임원과도 불륜”",
-        "미국 반도체 기업 엔비디아의 이사회가 젠슨 황 최고경영자(CEO)를 해임하는 방안을 추진하고 있다고 월스트리트저널(WSJ)이 11일(현지시간) 사안에 정통한 복수의 소식통을 인용해 보도했다.",
-        "보도에 따르면 이사회는...",
-        "\"엔비디아 이사회, 젠슨 황 해임 준비\"…시간외 주가 8% 급락"
+        "엔비디아 이사회가 젠슨 황 CEO를 해임할 준비를 하고 있다.",
+        "[속보] NYT \"젠슨 황, 엔비디아 여성 임원과도 불륜 관계\"",
+        "월스트리트저널(The Wall Street Journal, WSJ)은 취재원을 인용해 엔비디아 이사회가 젠슨 황(Jensen Huang) CEO 해임을 준비하고 있으며, 이르면 12일(한국시간) 회동해 거취를 결정할 수 있다고 보도했다.",
+        "불륜은 불륜, 출근은 출근?…엔비디아 찾은 젠슨 황, 사과했으니 일 합시다?",
+        "이투데이=김준형 기자 | 엔비디아 이사회가 잇따른 불륜 스캔들로 위기를 맞은 젠슨 황 최고경영자(CEO)의 해임을 준비 중인 가운데 후임자에 대한 관심도 커졌다."
       ],
       "sources": [
         {
-          "press": "조선비즈",
-          "title": "WSJ “엔비디아 이사회, 젠슨 황 해임 준비”… NYT “사내 여성 임원과도 불륜”",
-          "url": "https://n.news.naver.com/article/366/0001204202"
-        },
-        {
-          "press": "joseilbo.com",
-          "title": "WSJ \"엔비디아, 젠슨 황 CEO 해임 추진\"… NYT \"회사 임원과도 불륜\"",
-          "url": "https://n.news.naver.com/mnews/article/123/0002393886?sid=104"
-        },
-        {
-          "press": "한국경제",
-          "title": "\"엔비디아 이사회, 젠슨 황 해임 준비\"…시간외 주가 8% 급락",
-          "url": "https://n.news.naver.com/article/015/0005353003"
-        },
-        {
           "press": "연합뉴스TV",
-          "title": "[속보] \"엔비디아 이사회, 젠슨황 CEO 해임 준비\"",
-          "url": "https://n.news.naver.com/article/422/0000925324"
+          "title": "[속보] NYT \"젠슨 황, 엔비디아 여성 임원과도 불륜 관계\"",
+          "url": "https://n.news.naver.com/article/422/0000925319"
+        },
+        {
+          "press": "tokenpost.kr",
+          "title": "엔비디아($NVDA) 시간외 약 8% 하락…젠슨 황 해임 검토 보도",
+          "url": "https://www.tokenpost.kr/news/breaking/436849"
+        },
+        {
+          "press": "전자신문",
+          "title": "불륜은 불륜, 출근은 출근?…엔비디아 찾은 젠슨 황, 사과했으니 일 합시다?",
+          "url": "https://n.news.naver.com/article/030/0003484735"
+        },
+        {
+          "press": "etoday.co.kr",
+          "title": "젠슨황, 과거에도 엔비디아 후계 논의는 거부⋯\"딸 승계도 원치않아\"",
+          "url": "https://www.etoday.co.kr/news/view/2647130"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "엔비디아의 젠슨 황 CEO가 혼외 관계 사실을 인정한 후에도 출근하며 경영 일정을 소화하고 있지만, 회사 내부 분위기는 가라앉은 것으로 전해졌다."
+          "evidence": "엔비디아 이사회가 젠슨 황 CEO를 해임할 준비를 하고 있다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "WSJ “엔비디아 이사회, 젠슨 황 해임 준비”… NYT “사내 여성 임원과도 불륜”"
+          "evidence": "월스트리트저널(The Wall Street Journal, WSJ)은 취재원을 인용해 엔비디아 이사회가 젠슨 황(Jensen Huang) CEO 해임을 준비하고 있으며, 이르면 12일(한국시간) 회동해 거취를…"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "미국 반도체 기업 엔비디아의 이사회가 젠슨 황 최고경영자(CEO)를 해임하는 방안을 추진하고 있다고 월스트리트저널(WSJ)이 11일(현지시간) 사안에 정통한 복수의 소식통을 인용해 보도했다."
+          "evidence": "엔비디아 이사회가 젠슨 황 최고경영자(CEO)의 해임을 준비하고 있으며 이르면 11일(현지시간) 회의를 열어 그의 거취를 논의할 예정이라고 월스트리트저널(WSJ)이 보도했다."
         },
         {
           "panel": 4,
@@ -225,10 +126,10 @@
       }
     },
     {
-      "issue_id": "i14959ff3",
-      "title": "트럼프 “이란전쟁 곧 끝난다…93% 아닌 완전한 승리 거둘 것”[1일1트]",
-      "category": "세계",
-      "rank": 8,
+      "issue_id": "ief58ac60",
+      "title": "SK하이닉스 ADR 9.71% 급등… 뉴욕증시 일제 상승 마감",
+      "category": "경제",
+      "rank": 5,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -236,11 +137,110 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "도널드 트럼프 미국 대통령은 11일(현지시간) 이란 전쟁이 '곧 끝날 것'이라고 밝혔다.",
+        "11일(현지시간) 미국 뉴욕증시는 인공지능(AI) 투자 우려가 완화하고 기술주가 반등하면서 일제히 상승했다.",
+        "SK하이닉스 ADR 9.71% 급등… 뉴욕증시 일제 상승 마감",
+        "엔비디아 사흘 만에 반등…\"젠슨 황 강제소환\" 경고",
+        "美 반도체주 일제히 급등…SK하이닉스 ADR 10%·마이크론 12%↑",
+        "(현지시각) 뉴욕증권거래소에서 다우존스30 산업평균지수는 전장보다"
+      ],
+      "sources": [
+        {
+          "press": "국민일보",
+          "title": "SK하이닉스 ADR 9.71% 급등… 뉴욕증시 일제 상승 마감",
+          "url": "https://n.news.naver.com/article/005/0001884664"
+        },
+        {
+          "press": "SBS",
+          "title": "엔비디아 사흘 만에 반등…\"젠슨 황 강제소환\" 경고",
+          "url": "https://n.news.naver.com/article/055/0001402382"
+        },
+        {
+          "press": "헤럴드경제",
+          "title": "美 반도체주 일제히 급등…SK하이닉스 ADR 10%·마이크론 12%↑",
+          "url": "https://n.news.naver.com/article/016/0002722313"
+        },
+        {
+          "press": "newdaily.co.kr",
+          "title": "코어위브 실적에 AI주 일제히 반등 … 나스닥 1.6% 상승",
+          "url": "https://www.newdaily.co.kr/site/data/html/2026/11/12/2026111200026.html"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "11일(현지시간) 미국 뉴욕증시는 인공지능(AI) 투자 우려가 완화하고 기술주가 반등하면서 일제히 상승했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "SK하이닉스 ADR 9.71% 급등… 뉴욕증시 일제 상승 마감"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "美 반도체주 일제히 급등…SK하이닉스 ADR 10%·마이크론 12%↑"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i2f64fbe9",
+      "title": "트럼프 \"이란에 이겼다…93% 아닌 완전한 승리 원해\"",
+      "category": "세계",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "도널드 트럼프 미국 대통령은 11일(현지 시간) 이란 전쟁이 '곧 끝날 것'이라고 밝혔다.",
         "트럼프 “이란전쟁 곧 끝난다…93% 아닌 완전한 승리 거둘 것”[1일1트]",
-        "트럼프 “이란전쟁 곧 끝날 것…93% 아닌 완전한 승리 원해”",
+        "트럼프 \"이란에 이겼다…93% 아닌 완전한 승리 원해\"",
         "트럼프 \"이란전쟁 곧 끝나…93% 아닌 완전한 승리 원해\"",
-        "완전한 승리가 될 것\"이라고 밝혔습니다."
+        "트럼프 대통령은 현지시간 11일 재향군인의 날 기념식에서 \"이 분쟁이 끝나면 전 세계는 훨씬 더 안전한 곳이 될 것\"이라며 93%의 승리가 아니라 완전한 승리를 원한다고 전했습니다."
       ],
       "sources": [
         {
@@ -249,9 +249,9 @@
           "url": "https://n.news.naver.com/article/016/0002722295"
         },
         {
-          "press": "채널A",
-          "title": "트럼프 “이란전쟁 곧 끝날 것…93% 아닌 완전한 승리 원해”",
-          "url": "https://n.news.naver.com/article/449/0000367226"
+          "press": "뉴스1",
+          "title": "트럼프 \"이란에 이겼다…93% 아닌 완전한 승리 원해\"",
+          "url": "https://n.news.naver.com/article/421/0009284410"
         },
         {
           "press": "뉴시스",
@@ -259,16 +259,16 @@
           "url": "https://n.news.naver.com/article/003/0014316962"
         },
         {
-          "press": "biz.sbs.co.kr",
-          "title": "트럼프 \"이란 재건에 25년 걸릴 것…93% 아닌 완전한 승리\"",
-          "url": "https://n.news.naver.com/mnews/article/374/0000543193?sid=104"
+          "press": "ichannela.com",
+          "title": "트럼프 “이란전쟁 곧 끝날 것…93% 아닌 완전한 승리 원해”",
+          "url": "https://n.news.naver.com/mnews/article/449/0000367226?sid=104"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "도널드 트럼프 미국 대통령은 11일(현지시간) 이란 전쟁이 '곧 끝날 것'이라고 밝혔다."
+          "evidence": "도널드 트럼프 미국 대통령은 11일(현지 시간) 이란 전쟁이 '곧 끝날 것'이라고 밝혔다."
         },
         {
           "panel": 2,
