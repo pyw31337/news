@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-11",
-  "generated_at": "2026-11-11T22:52:06+09:00",
+  "generated_at": "2026-11-11T22:26:25+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,109 @@
   },
   "candidates": [
     {
+      "issue_id": "i1694e1be",
+      "title": "한국 30만원, 일본 10만원…내일부터 ‘스시자로’ 국내 반입 열린다",
+      "category": "경제",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "내일부터 개인이 해외에서 구매한 치료용 의약품을 국내로 가지고 들어올 수 있다.",
+        "비만약 ‘스시자로’ 허용된다…정부 “내일부터 비만약 등 치료용 의약품 반입 허용”",
+        "한국 30만원, 일본 10만원…내일부터 ‘스시자로’ 국내 반입 열린다",
+        "내일부터 ‘스시자로’ 국내 반입 가능, 3개월분까지 허용",
+        "한국에선 ‘아동학대’ 홀대 받는 귀신…일본은 ‘세계 문화유산’"
+      ],
+      "sources": [
+        {
+          "press": "채널A",
+          "title": "비만약 ‘스시자로’ 허용된다…정부 “내일부터 비만약 등 치료용 의약품 반입 허용”",
+          "url": "https://n.news.naver.com/article/449/0000367157"
+        },
+        {
+          "press": "매일경제",
+          "title": "한국 30만원, 일본 10만원…내일부터 ‘스시자로’ 국내 반입 열린다",
+          "url": "https://n.news.naver.com/article/009/0005762353"
+        },
+        {
+          "press": "조선일보",
+          "title": "내일부터 ‘스시자로’ 국내 반입 가능, 3개월분까지 허용",
+          "url": "https://n.news.naver.com/article/023/0004009058"
+        },
+        {
+          "press": "JTBC",
+          "title": "한국에선 ‘아동학대’ 홀대 받는 귀신…일본은 ‘세계 문화유산’",
+          "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9helpTdDZOeFBhY2NpNExtbHJmUFRLak9aVHlDNDNrektKVGFNc0VHU1lwVVVla0lsYlJ6Z3hrZ2RRTjFnMUVrUmFYTk1WQVVkRnZKeA?oc=5"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "내일부터 개인이 해외에서 구매한 치료용 의약품을 국내로 가지고 들어올 수 있다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "과잉규제란 반발이 잇따르자, 결국 식약처가 내일부터 1인당 6병씩, 6병을 초과하는 경우 3개월 복용량까지 휴대 반입을 허용하기로 했습니다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "한국 30만원, 일본 10만원…내일부터 ‘스시자로’ 국내 반입 열린다"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
       "issue_id": "i4dfc6c71",
       "title": "[단독] ETF 일평균 거래대금, 코스피 사상 첫 추월",
       "category": "경제",
-      "rank": 9,
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -126,10 +225,10 @@
       }
     },
     {
-      "issue_id": "i4b5a061e",
-      "title": "‘이란군 끝장냈다’는 트럼프…혁명수비대 지하 ‘미사일 도시’ 공개",
-      "category": "세계",
-      "rank": 8,
+      "issue_id": "ib3ac5d6e",
+      "title": "SK하이닉스, 학력 제한 없는 생산직 채용…파격적 성과급에 관심↑",
+      "category": "경제",
+      "rank": 10,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -137,49 +236,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "도널드 트럼프 미국 대통령이 9일 기자들에게 “이란은 군사적으로 사실상 끝났다(effectively over)”라고 말했지만, 이란은 10일 탄도 미사일과 순항 미사일, 미사일 발사대가 포함된 새로운 지하 시설을 공",
-        "사거리 미사일을 제공할 수 있다는 점이 도입 배경으로 꼽힌다”고 분석했다.",
-        "더불어 도널드 트럼프 미국...",
-        "미국은 이란과의 전쟁에서 해당 미사일 재고가 크게 감소하자 일부 미사일 수출을 금지했다.",
-        "‘이란군 끝장냈다’는 트럼프…혁명수비대 지하 ‘미사일 도시’ 공개"
+        "SK하이닉스가 올해 하반기 전임직(생산직) 직원 채용에 돌입했다.",
+        "\"나도 성과급 8억 받을 수 있나\"…SK하이닉스, 학력 무관 채용에 '들썩'",
+        "“나도 8억 성과급”...SK하이닉스 학력무관 생산직 채용",
+        "‘1인당 성과급 8억’…SK하이닉스, 학력 제한 없애고 생산직 채용",
+        "11일 반도체 업계에 따르면, SK하이닉스는 전날 자사 채용 홈페이지에 '11월 탤런트 하이웨이 메인트 및..."
       ],
       "sources": [
         {
-          "press": "nownews.seoul.co.kr",
-          "title": "“한국 ‘천무’에 시장 뺏기는 美 하이마스”…유럽에서도 안 밀리는 ...",
-          "url": "https://n.news.naver.com/mnews/article/081/0003698429?sid=104"
+          "press": "이코노미스트",
+          "title": "\"나도 성과급 8억 받을 수 있나\"…SK하이닉스, 학력 무관 채용에 '들썩'",
+          "url": "https://n.news.naver.com/article/243/0000105521"
         },
         {
-          "press": "한겨레",
-          "title": "‘이란군 끝장냈다’는 트럼프…혁명수비대 지하 ‘미사일 도시’ 공개",
-          "url": "https://n.news.naver.com/article/028/0002831760"
+          "press": "매경이코노미",
+          "title": "“나도 8억 성과급”...SK하이닉스 학력무관 생산직 채용",
+          "url": "https://n.news.naver.com/article/024/0000109563"
         },
         {
-          "press": "조선일보",
-          "title": "트럼프 “사실상 끝” 다음 날... 이란, 미사일 지하기지 공개",
-          "url": "https://n.news.naver.com/article/023/0004009059"
+          "press": "경기일보",
+          "title": "‘1인당 성과급 8억’…SK하이닉스, 학력 제한 없애고 생산직 채용",
+          "url": "https://n.news.naver.com/article/666/0000131611"
         },
         {
-          "press": "mt.co.kr",
-          "title": "\"미·중·러 APEC 회담서 북한 논의 제외…핵 관련 공동성명 목표\"",
-          "url": "https://n.news.naver.com/mnews/article/008/0005439880?sid=104"
+          "press": "hankyung.com",
+          "title": "\"이번엔 학력도 안 본대\"…SK 하이닉스 '킹산직' 채용 공고에 '관심'",
+          "url": "https://n.news.naver.com/mnews/article/015/0005352954?sid=101"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "도널드 트럼프 미국 대통령이 9일 기자들에게 “이란은 군사적으로 사실상 끝났다(effectively over)”라고 말했지만, 이란은 10일 탄도 미사일과 순항 미사일, 미사일 발사대가 포함된 새로운 지하 시설을 공"
+          "evidence": "SK하이닉스가 올해 하반기 전임직(생산직) 직원 채용에 돌입했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "사거리 미사일을 제공할 수 있다는 점이 도입 배경으로 꼽힌다”고 분석했다."
+          "evidence": "업황 호조에 따른 성과급 기대감까지 반영되면서 대규모 지원자가 몰릴 것이란 관측이..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "수잔 라이스 전 백악관 국가안보보좌관은 11일 트럼프 행정부의 외교정책을 두고 \"여러 면에서..."
+          "evidence": "\"나도 성과급 8억 받을 수 있나\"…SK하이닉스, 학력 무관 채용에 '들썩'"
         },
         {
           "panel": 4,
@@ -188,107 +287,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i2b633a29",
-      "title": "[그래픽] 자가 치료용 의약품 국내 휴대 반입 허용",
-      "category": "사회",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "내일부터는 해외에서 구매한 비만치료제 등 자가 치료용 의약품 3개월치를 가지고 국내로 들어올 수 있게 됩니다.",
-        "비만약 ‘스시자로’ 허용된다…정부 “내일부터 비만약 등 치료용 의약품 반입 허용”",
-        "한국 30만원, 일본 10만원…내일부터 ‘스시자로’ 국내 반입 열린다",
-        "내일부터 ‘스시자로’ 국내 반입 가능, 3개월분까지 허용",
-        "한국에선 ‘아동학대’ 홀대 받는 귀신…일본은 ‘세계 문화유산’"
-      ],
-      "sources": [
-        {
-          "press": "채널A",
-          "title": "비만약 ‘스시자로’ 허용된다…정부 “내일부터 비만약 등 치료용 의약품 반입 허용”",
-          "url": "https://n.news.naver.com/article/449/0000367157"
-        },
-        {
-          "press": "매일경제",
-          "title": "한국 30만원, 일본 10만원…내일부터 ‘스시자로’ 국내 반입 열린다",
-          "url": "https://n.news.naver.com/article/009/0005762353"
-        },
-        {
-          "press": "조선일보",
-          "title": "내일부터 ‘스시자로’ 국내 반입 가능, 3개월분까지 허용",
-          "url": "https://n.news.naver.com/article/023/0004009058"
-        },
-        {
-          "press": "JTBC",
-          "title": "한국에선 ‘아동학대’ 홀대 받는 귀신…일본은 ‘세계 문화유산’",
-          "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9helpTdDZOeFBhY2NpNExtbHJmUFRLak9aVHlDNDNrektKVGFNc0VHU1lwVVVla0lsYlJ6Z3hrZ2RRTjFnMUVrUmFYTk1WQVVkRnZKeA?oc=5"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "내일부터는 해외에서 구매한 비만치료제 등 자가 치료용 의약품 3개월치를 가지고 국내로 들어올 수 있게 됩니다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "과잉규제란 반발이 잇따르자, 결국 식약처가 내일부터 1인당 6병씩, 6병을 초과하는 경우 3개월 복용량까지 휴대 반입을 허용하기로 했습니다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "한국 30만원, 일본 10만원…내일부터 ‘스시자로’ 국내 반입 열린다"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "industry",
+        "direction": "공장 동선·안전 표지·가동 보드를 이용, 캐릭터 행동을 컷마다 바꿀 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
