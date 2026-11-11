@@ -41,6 +41,10 @@ bio_db = {}
 if os.path.exists(bio_file):
     with open(bio_file, encoding='utf-8') as f:
         bio_db = json.load(f)
+elif os.path.exists(bio_file + '.gz'):   # 2026-11-11부터 git에는 압축본만(원본 판본은 R2 ledger/raw/people-bio)
+    import gzip
+    with gzip.open(bio_file + '.gz', 'rt', encoding='utf-8') as f:
+        bio_db = json.load(f)
 print(f"2. 공공 인물 바이오 DB 로드: {len(bio_db)}명")
 
 # 3. 국회공보 PDF 전수 파싱 (pypdfium2 고속 엔진)
