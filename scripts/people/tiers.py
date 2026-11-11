@@ -85,7 +85,7 @@ for r in reg:
         b = int(str(r.get('b'))[:4]) if r.get('b') else None
     except ValueError:
         pass
-    cand(r['id'], r['n'], kind=r.get('k') or '기타', sl=int(r.get('sl') or 0), b=b, src='registry:' + str(r.get('src', '')))
+    cand(r['id'], r['n'], kind=r.get('k') or '기타', sl=int(r.get('sl') or 0), b=b, src='registry:' + str(r.get('src', '')), desc=r.get('d') or '')
 
 # 2) 국회의원(역대 전원, 현직 표시)
 pol = load(os.path.join(POL, 'index.json'), {}) or {}
@@ -124,6 +124,15 @@ for key, v in bio.items():
         sc, why = 20.0, '언론인'
     elif kind in ('official', 'politician'):
         sc, why = 16.0, '공직·선출직'
+    # 명부(위키데이터) 인물에 인물사전 직함을 붙일 때는 위키데이터 설명과 분야가 맞을 때만(동명이인 직함이 옮겨 붙는 것 방지)
+    d = (C.get(pid) or {}).get('desc', '')
+    if sc and not pid.startswith(('bio:', 'pol:')) and d:
+        need = {'법조인': r'법|판사|검사|변호사|재판', '기업 경영진': r'기업|경영|회장|사장|대표|CEO|창업', '언론인': r'기자|언론|앵커|방송|아나운서'}.get(
+            why, r'정치|의원|공무원|관료|시장|군수|구청장|도지사|교육감|장관|차관|외교관|대통령|총리|청장|위원장')
+        if not re.search(need, d):
+            sc, why = 0.0, ''
+    elif sc and not pid.startswith(('bio:', 'pol:')) and not d:
+        sc, why = 0.0, ''
     kmap = {'politician': '정치', 'official': '정치', 'legal': '법조', 'corporate': '경제', 'reporter': '언론', 'scholar': '학계', 'sports': '스포츠'}
     cand(pid, nm, kind=C.get(pid, {}).get('kind') or kmap.get(kind, '기타'), office=(sc, why), src='people_bio')
 
@@ -170,11 +179,19 @@ def raw_tier(s, thr):
     return 1 if s >= thr[1] else 2 if s >= thr[2] else 3
 
 
+# 위키데이터 설명이 '○○의 아버지/장남/배우자'처럼 가족으로만 알려진 사람 = 민간인 가족. 직위가 없고 본인 뉴스가 적으면 3계층.
+RELATIVE_ONLY = re.compile(r'의\s*(친|외)?(아버지|어머니|부친|모친|아들|딸|장남|차남|삼남|장녀|차녀|막내|자녀|배우자|부인|남편|아내|형|오빠|누나|언니|동생|남동생|여동생|손자|손녀|조카|장인|장모|사위|며느리|처남|처제|시아버지|시어머니)(이다)?\s*$')
 scored = []
 for p in C.values():
     if not p['n']:
         continue
+    rel_only = bool(RELATIVE_ONLY.search(p.get('desc') or ''))
+    if rel_only and p['office'] < 25:
+        p['office'], p['off_why'], p['kind'] = 0.0, '', '기타'
     s, parts = score(p)
+    if rel_only and p['office'] < 25 and p['news'] < 5 and p['sl'] < 5:
+        s = min(s, THR[2] - 0.1)              # 가족으로만 알려진 민간인은 3계층에 고정
+        p['off_why'] = '가족으로만 알려짐'
     minor = bool(p['b'] and YEAR - p['b'] < 19)
     scored.append((s, p, parts, minor))
 
@@ -185,7 +202,7 @@ for t in (1, 2):
     if len(ss) > CAP[t] and ss[CAP[t] - 1] >= thr[t]:
         thr[t] = max(thr[t], ss[CAP[t]] + 0.1)
 
-state = load(os.path.join(TD, 'state.json.gz'), {}) or {}
+state = {} if os.environ.get('TIERS_RESET') == '1' else (load(os.path.join(TD, 'state.json.gz'), {}) or {})   # 판정 규칙을 고친 뒤 한 번만 기준선 재설정
 out, changes, counts = {}, [], collections.Counter()
 for s, p, parts, minor in scored:
     pid = p['id']

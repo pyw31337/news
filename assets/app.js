@@ -3750,7 +3750,26 @@ function renderFamilySection(p, arc, g){
     </div>
 
     <div class="dossier-spec-card">
-        </section>`;
+      <div class="rel-cat-tabs" id="rel-filter-tabs" role="tablist" aria-label="관계망 범주 필터">
+        <button type="button" class="rel-cat-btn on" data-cat="all">
+          <span>전체 연계망</span><mark class="rc-cnt">${totalCount}</mark>
+        </button>
+        ${CATEGORIES.map(c => {
+          const cnt = (groupedItems[c.key] || []).length;
+          if(!cnt) return '';
+          return `<button type="button" class="rel-cat-btn" data-cat="${c.key}">
+            <span>${c.label.split(' ')[0]}</span><mark class="rc-cnt">${cnt}</mark>
+          </button>`;
+        }).join('')}
+      </div>
+      <div class="rel-graph-container" style="margin-top:16px">
+        ${renderArcGraph(g, p?.name)}
+      </div>
+      <div class="rel-sections-wrap" id="rel-sections-wrap" style="margin-top:20px">
+        ${categorySectionsHtml}
+      </div>
+    </div>
+  </section>`;
 }
 
 function initRelFilterInteraction(container){

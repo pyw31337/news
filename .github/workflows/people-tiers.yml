@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       wd_max: { description: '이번 회차 위키데이터 관계 수집 인원', default: '6000' }
+      reset: { description: '판정 규칙을 고친 뒤 승격·강등 이력 기준선 재설정(1)', default: '0' }
 permissions: { contents: write }
 concurrency: { group: people-tiers, cancel-in-progress: false }
 jobs:
@@ -31,6 +32,7 @@ jobs:
         env: { WD_MAX: "${{ github.event.inputs.wd_max || '6000' }}", WD_SEC: '1500' }
         run: python scripts/people/edges.py data pol_db legal
       - name: 계층 판정(점수·승격·강등·상한)
+        env: { TIERS_RESET: "${{ github.event.inputs.reset || '0' }}" }
         run: python scripts/people/tiers.py data pol_db hist legal
       - name: 새 계층으로 관계 공개 여부 다시 판정
         env: { WD_SKIP: '1' }
