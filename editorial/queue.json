@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-12",
-  "generated_at": "2026-11-12T05:22:29+09:00",
+  "generated_at": "2026-11-12T04:22:22+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,109 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i6d8e78a4",
-      "title": "李대통령, 국고채 담합 적발에 \"입찰 담합 꿈도 꾸지 마세요\"",
+      "issue_id": "i3e23b758",
+      "title": "성과급 얼마길래…학력 제한 뗀 SK하이닉스, 하반기 생산직 채용",
       "category": "경제",
-      "rank": 5,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "금융투자협회가 국고채 입찰 담합에 대한 공정거래위원회의 제재가 과도하다며 증권업계의 행정소송을 지원하겠다고 밝혔다.",
-        "국고채 담합에 사상 최대 1.6조원 과징금...업계 \"담합 아냐\" 항변",
-        "이번 사건의 총 과징금은 1조6265억7500만원이다.",
-        "담합의 영향을 받은 국고채 낙찰액(54조원)을 기준으로 과징금이 산정됐다.",
-        "업체별로는 KB증권 3321억7800만원으로 가장 많고, NH투자증권 2427억8500만원, 미래에셋증권..."
-      ],
-      "sources": [
-        {
-          "press": "비즈워치",
-          "title": "국고채 담합에 사상 최대 1.6조원 과징금...업계 \"담합 아냐\" 항변",
-          "url": "https://n.news.naver.com/article/648/0000052507"
-        },
-        {
-          "press": "chosun.com",
-          "title": "‘국고채 입찰 담합’ 15개 금융사 1.6조원 과징금",
-          "url": "https://n.news.naver.com/mnews/article/023/0004009093?sid=101"
-        },
-        {
-          "press": "joongang.co.kr",
-          "title": "공정위, 은행·증권사 15곳에 “국고채 담합” 1.6조 과징금",
-          "url": "https://n.news.naver.com/mnews/article/025/0003564574?sid=101"
-        },
-        {
-          "press": "비즈워치",
-          "title": "1.6조 과징금에 반발한 증권가…국고채 담합 소송전 예고",
-          "url": "https://n.news.naver.com/article/648/0000052530"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "금융투자협회가 국고채 입찰 담합에 대한 공정거래위원회의 제재가 과도하다며 증권업계의 행정소송을 지원하겠다고 밝혔다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "담합의 영향을 받은 국고채 낙찰액(54조원)을 기준으로 과징금이 산정됐다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "국고채 담합에 사상 최대 1.6조원 과징금...업계 \"담합 아냐\" 항변"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i2acde214",
-      "title": "\"나도 성과급 8억 받을 수 있나\"…SK하이닉스, 학력 무관 채용에 '들썩'",
-      "category": "경제",
-      "rank": 9,
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -225,10 +126,10 @@
       }
     },
     {
-      "issue_id": "i71dcbd02",
-      "title": "“군사력 끝” 트럼프 보란 듯…이란, 지하 미사일 도시 공개",
-      "category": "세계",
-      "rank": 8,
+      "issue_id": "i82f1f234",
+      "title": "아들에 성범죄, 그 아빠에 살해당한 15세…조건만남 동원 정황",
+      "category": "사회",
+      "rank": 3,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -236,49 +137,148 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "이란 이슬람혁명수비대(IRGC) 항공우주군이 11일(현지시간) 새로운 지하 '미사일 도시'를 공개했다.",
-        "“이란은 군사적으로 사실상 끝났다.” 도널드 트럼프 미국 대통령이 지난 9일(현지시간) 이같이 선언한 지...",
-        "10일 이란 타스님통신에 따르면 이슬람혁명수비대(IRGC)는 지하 ‘미사일 도시’를 공개했다.",
-        "6분짜리 영상에는...",
-        "11일(현지시간) 이란 국영 IRIB 방송과 반관영 타스님 통신 등 현지 매체에 따르면, 혁명수비대는 지하 벙커 형태의 대규모 미사일 기지를 언론에 공개했다."
+        "서울 성북구에서 10대 여성을 살해한 혐의로 경찰에 긴급체포된 50대 남성은 피의자 아들이 저지른 성범죄 사건의 피해자였다.",
+        "[단독] '10대 여성 살해' 50대, 아들 성범죄 합의 거부하자 범행",
+        "[속보] 심야에 ‘아들 성범죄 피해자’ 10대 여성 살해한 50대 남성…긴급체포",
+        "아들 성범죄 피해자 10대 살해한 50대…경찰 \"보복범죄 수사\"(종합3보)",
+        "아들 성범죄 피해자 15세 여성 살해…50대 남성 긴급체포"
       ],
       "sources": [
         {
-          "press": "joongang.co.kr",
-          "title": "트럼프 “이란 끝났다” 다음날…‘지하 미사일 도시’ 공개한 혁명수비...",
-          "url": "https://n.news.naver.com/mnews/article/025/0003564582?sid=104"
+          "press": "연합뉴스TV",
+          "title": "[단독] '10대 여성 살해' 50대, 아들 성범죄 합의 거부하자 범행",
+          "url": "https://n.news.naver.com/article/422/0000924959"
         },
         {
-          "press": "dt.co.kr",
-          "title": "“트럼프 보고 있나?”…이란 ‘지하 미사일 도시’ 공개, 극초음속 탄...",
-          "url": "https://n.news.naver.com/mnews/article/029/0003058641?sid=104"
+          "press": "디지털타임스",
+          "title": "[속보] 심야에 ‘아들 성범죄 피해자’ 10대 여성 살해한 50대 남성…긴급체포",
+          "url": "https://n.news.naver.com/article/029/0003058408"
         },
         {
-          "press": "이데일리",
-          "title": "트럼프 “이란전 곧 끝날 것”…이란 “7개 요구안 답하라”",
-          "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOT3VoNVlaRDFUelVVV3pYNnF3Q2tGNlNleElXSzJUNlVjN0c3Tnk2LWtHc3AtTzFmZDZKX2JNLWpuNWx3YkVjSlozMUUwZG1BaU1OMWFYRHBlSFlTd0MwbjdndWJ3LWVPZklYYjYteGZTc3U4NUFRTmFWQlp5RmwxZQ?oc=5"
+          "press": "뉴시스",
+          "title": "아들 성범죄 피해자 10대 살해한 50대…경찰 \"보복범죄 수사\"(종합3보)",
+          "url": "https://n.news.naver.com/article/003/0014315780"
         },
         {
-          "press": "news1.kr",
-          "title": "\"美공습에도 끄떡없다\"…이란 혁명수비대 '지하 미사일 도시' 공개",
-          "url": "https://n.news.naver.com/mnews/article/421/0009284123?sid=104"
+          "press": "국민일보",
+          "title": "아들 성범죄 피해자 15세 여성 살해…50대 남성 긴급체포",
+          "url": "https://n.news.naver.com/article/005/0001884429"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "이란 이슬람혁명수비대(IRGC) 항공우주군이 11일(현지시간) 새로운 지하 '미사일 도시'를 공개했다."
+          "evidence": "서울 성북구에서 10대 여성을 살해한 혐의로 경찰에 긴급체포된 50대 남성은 피의자 아들이 저지른 성범죄 사건의 피해자였다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "한편 트럼프 대통령은 중간선거 전에는 이란에 대한 군사 공격 가능성을 여러 차례 시사했지만, 선거에서 민주당에..."
+          "evidence": "때문에 경찰은 A 씨가 아들 성범죄 사건에 대한 보복 목적으로 범행을 저질렀을 가능성을 배제하지 않고 있습니다...."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "“이란은 군사적으로 사실상 끝났다.” 도널드 트럼프 미국 대통령이 지난 9일(현지시간) 이같이 선언한 지..."
+          "evidence": "[단독] '10대 여성 살해' 50대, 아들 성범죄 합의 거부하자 범행"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "industry",
+        "direction": "공장 동선·안전 표지·가동 보드를 이용, 캐릭터 행동을 컷마다 바꿀 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i655f62eb",
+      "title": "‘심정지’ 광주 아파트 화재 경비원…주민 구하려 불길 뛰어들었다",
+      "category": "사회",
+      "rank": 9,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "전남광주통합특별시 북구의 한 아파트에서 40대 남성이 자신이 사는 집에 불을 질러 70대 경비원이 심정지 상태로 발견되는 등 14명이 병원으로 옮겨졌습니다.",
+        "\"아들이 불을 질렀다\"...70대 경비원 심정지·14명 병원 이송",
+        "주민이 불지른 광주전남 아파트···불은 껐지만 경비원 심정지로 발견",
+        "\" 12일 자정께 찾은 전남광주 북구 운암동 한 아파트.",
+        "주민 공모(42)씨는 경비원이 쓰러졌다는 소식에..."
+      ],
+      "sources": [
+        {
+          "press": "kbc광주방송",
+          "title": "\"아들이 불을 질렀다\"...70대 경비원 심정지·14명 병원 이송",
+          "url": "https://n.news.naver.com/article/660/0000121115"
+        },
+        {
+          "press": "경향신문",
+          "title": "주민이 불지른 광주전남 아파트···불은 껐지만 경비원 심정지로 발견",
+          "url": "https://n.news.naver.com/article/032/0003482187"
+        },
+        {
+          "press": "jnilbo.com",
+          "title": "이웃에 불 알리려 나섰다가…13층서 쓰러진 경비 아저씨",
+          "url": "https://www.jnilbo.com/news/articleView.html?idxno=90000081890"
+        },
+        {
+          "press": "kwangju.co.kr",
+          "title": "광주 아파트서 방화 추정 화재로 14명 중경상",
+          "url": "http://www.kwangju.co.kr/article.php?aid=1794408369805291006"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "전남광주통합특별시 북구의 한 아파트에서 40대 남성이 자신이 사는 집에 불을 질러 70대 경비원이 심정지 상태로 발견되는 등 14명이 병원으로 옮겨졌습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "임씨는 주민들에게 화재 사실을 알리려..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "\"아들이 불을 질렀다\"...70대 경비원 심정지·14명 병원 이송"
         },
         {
           "panel": 4,

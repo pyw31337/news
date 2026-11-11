@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-12T05:18:11.310707+09:00",
-  "alerts_count": 23,
+  "updated": "2026-11-12T04:17:59.905316+09:00",
+  "alerts_count": 25,
   "alerts": [
     {
       "id": "urn:oid:2.49.0.1.840.0.27c4a3005b47304126e42a25d6cb6d3b48d027c6.002.1",
@@ -147,6 +147,22 @@
       "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TODAY...E winds 35 kt. Seas 11 ft. Snow. Extreme freezing spray.\n.TONIGHT...E wind"
     },
     {
+      "id": "urn:oid:2.49.0.1.840.0.febf73a57340cd3b6f415b2a87160c98c0f36083.003.1",
+      "t": "2026-11-11 01:04",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "캘리포니아",
+      "area_en": "California",
+      "event": "강풍 주의보",
+      "event_en": "High Wind Watch",
+      "severity": "Severe",
+      "headline_ko": "캘리포니아 강풍 주의보",
+      "headline_en": "California High Wind Watch",
+      "desc": "* WHAT...South winds 30 to 40 mph with gusts up to 65 mph.\n\n* WHERE...In California, Surprise Valley California. In Nevada,\nNorthern Washoe County.\n\n* WHEN...From Friday morning through Friday evening.\n\n* IMPACTS...Damaging winds could blow down trees and power lines.\nWidespread power outages are po"
+    },
+    {
       "id": "urn:oid:2.49.0.1.840.0.e432ea1f537befaa91cc7c1184b929facbd6b754.001.1",
       "t": "2026-11-11 00:15",
       "country": "US",
@@ -225,41 +241,9 @@
       "headline_ko": "Point Franklin to Cape Halkett from 15 to 75 NM 해상 결빙 경보",
       "headline_en": "Point Franklin to Cape Halkett from 15 to 75 NM Heavy Freezing Spray Warning",
       "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...NE winds 35 kt. Seas 9 ft. Blowing snow. Extreme\nfreezing spray.\n.WED..."
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.7de9e4ed87f711d07a548aef2bda761ba6f4a943.003.2",
-      "t": "2026-11-10 15:48",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Point Franklin to Cape Halkett out to 15 NM",
-      "area_en": "Point Franklin to Cape Halkett out to 15 NM",
-      "event": "해상 결빙 경보",
-      "event_en": "Heavy Freezing Spray Warning",
-      "severity": "Severe",
-      "headline_ko": "Point Franklin to Cape Halkett out to 15 NM 해상 결빙 경보",
-      "headline_en": "Point Franklin to Cape Halkett out to 15 NM Heavy Freezing Spray Warning",
-      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 35 kt. Seas 8 ft. Blowing snow. Extreme\nfreezing spray.\n.WED...E"
     }
   ],
   "quakes": [
-    {
-      "id": "us7000txmx",
-      "mag": 4.5,
-      "place": "south of the Fiji Islands",
-      "t": "2026-11-11 19:50",
-      "depth": 527.582,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txmx"
-    },
-    {
-      "id": "us7000txmq",
-      "mag": 5,
-      "place": "48 km NW of Ancud, Chile",
-      "t": "2026-11-11 19:21",
-      "depth": 34.893,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txmq"
-    },
     {
       "id": "us7000txm8",
       "mag": 5.1,
@@ -323,6 +307,22 @@
       "t": "2026-11-11 06:21",
       "depth": 10,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txhi"
+    },
+    {
+      "id": "us7000txgv",
+      "mag": 5,
+      "place": "152 km SE of Kuril’sk, Russia",
+      "t": "2026-11-11 05:26",
+      "depth": 30.338,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txgv"
+    },
+    {
+      "id": "us7000txgq",
+      "mag": 4.6,
+      "place": "54 km WNW of Malfa, Italy",
+      "t": "2026-11-11 05:12",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txgq"
     }
   ],
   "cities": [
@@ -334,9 +334,9 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 17.6,
-      "apparent_temp": 14.2,
-      "humidity": 34,
+      "temp": 17.7,
+      "apparent_temp": 14.5,
+      "humidity": 37,
       "code": 3,
       "wind": 10.5
     },
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 30.0,
-      "apparent_temp": 27.8,
-      "humidity": 15,
+      "temp": 28.8,
+      "apparent_temp": 26.0,
+      "humidity": 9,
       "code": 0,
-      "wind": 5.6
+      "wind": 3.1
     },
     {
       "id": "london",
@@ -362,11 +362,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 8.9,
-      "apparent_temp": 6.9,
-      "humidity": 85,
-      "code": 1,
-      "wind": 7.9
+      "temp": 9.5,
+      "apparent_temp": 7.7,
+      "humidity": 82,
+      "code": 3,
+      "wind": 6.5
     },
     {
       "id": "paris",
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 12.3,
-      "apparent_temp": 12.2,
-      "humidity": 91,
-      "code": 2,
-      "wind": 2.2
+      "temp": 13.2,
+      "apparent_temp": 13.2,
+      "humidity": 86,
+      "code": 1,
+      "wind": 1.8
     },
     {
       "id": "frankfurt",
@@ -392,9 +392,9 @@
       "lon": 8.6821,
       "temp": 8.8,
       "apparent_temp": 7.8,
-      "humidity": 98,
+      "humidity": 97,
       "code": 3,
-      "wind": 4.2
+      "wind": 4.0
     },
     {
       "id": "tokyo",
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 8.0,
-      "apparent_temp": 6.3,
-      "humidity": 80,
+      "temp": 8.5,
+      "apparent_temp": 6.8,
+      "humidity": 79,
       "code": 1,
-      "wind": 3.2
+      "wind": 3.4
     },
     {
       "id": "beijing",
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 2.5,
-      "apparent_temp": -0.1,
-      "humidity": 95,
+      "temp": 2.9,
+      "apparent_temp": 0.2,
+      "humidity": 92,
       "code": 0,
-      "wind": 4.9
+      "wind": 5.3
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 23.7,
-      "apparent_temp": 29.4,
+      "temp": 23.8,
+      "apparent_temp": 29.3,
       "humidity": 100,
-      "code": 53,
-      "wind": 0.4
+      "code": 45,
+      "wind": 3.4
     },
     {
       "id": "sydney",
@@ -446,9 +446,9 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 19.7,
-      "apparent_temp": 19.3,
-      "humidity": 83,
+      "temp": 19.3,
+      "apparent_temp": 19.5,
+      "humidity": 89,
       "code": 1,
       "wind": 19.2
     },
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 10.6,
-      "apparent_temp": 8.7,
-      "humidity": 73,
+      "temp": 11.4,
+      "apparent_temp": 9.0,
+      "humidity": 67,
       "code": 3,
-      "wind": 6.3
+      "wind": 8.5
     },
     {
       "id": "dubai",
@@ -475,10 +475,10 @@
       "lat": 25.2048,
       "lon": 55.2708,
       "temp": 28.4,
-      "apparent_temp": 28.5,
-      "humidity": 53,
+      "apparent_temp": 29.5,
+      "humidity": 56,
       "code": 0,
-      "wind": 18.9
+      "wind": 15.2
     },
     {
       "id": "saopaulo",
@@ -488,11 +488,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 22.7,
-      "apparent_temp": 23.5,
-      "humidity": 73,
-      "code": 1,
-      "wind": 12.9
+      "temp": 25.4,
+      "apparent_temp": 25.6,
+      "humidity": 51,
+      "code": 51,
+      "wind": 8.5
     }
   ],
   "stories": []
