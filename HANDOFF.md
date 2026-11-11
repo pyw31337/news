@@ -1,6 +1,8 @@
 # NewsBoard 인수인계 (HANDOFF)
 
-> 최종 갱신: **2026-11-11 13:20 KST**(0절 인물·무손실 층·R2 사진·지어낸 보도 제거 행, docs/PEOPLE.md·docs/DATA.md), 본문 대부분 2026-10-29 15:50 KST (전체 인수인계판, Grok 이어받기용). 다음 에이전트는 **HANDOFF_PROMPT.md → 이 문서 0·10·11절 → docs/ROADMAP.md → docs/design-system.md → docs/icons.md → docs/GAMIFICATION.md → docs/BADGE_GUIDE.md** 순서로 읽으세요.
+> **현재 공동 작업 정본:** [docs/AGENT_HANDOFF.md](docs/AGENT_HANDOFF.md) — 2026-11-11 현재 수집량, 분야별 방향, 검증 규칙, 실행 순서와 미해결 항목을 먼저 읽으세요. 이 문서의 오래된 수치와 과거 계획은 역사 기록으로만 사용합니다.
+>
+> 최종 갱신: **2026-11-11 14:51 KST 데이터 스냅샷 / 2026-11-11 코드 기준**. 다음 에이전트는 **HANDOFF_PROMPT.md → docs/AGENT_HANDOFF.md → docs/PEOPLE.md → 이 문서 10·11절 → 관련 설계 문서** 순서로 읽으세요.
 > 사이트: https://pyw31337.github.io/news/ · 저장소: `pyw31337/news`
 
 ## 0. 지금 상태 한눈에 (2026-10-29 15:50 KST, 인물·데이터 층·사진 행 2026-11-11 13:20 KST 갱신)
