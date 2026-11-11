@@ -11,12 +11,12 @@ def oidc():
     u, t = os.environ.get('ACTIONS_ID_TOKEN_REQUEST_URL'), os.environ.get('ACTIONS_ID_TOKEN_REQUEST_TOKEN')
     if not (u and t):
         return None
-    r = urllib.request.Request(u + '&audience=newsboard-sync', headers={'Authorization': 'bearer ' + t})
+    r = urllib.request.Request(u + '&audience=newsboard-sync', headers={'Authorization': 'bearer ' + t, 'User-Agent': 'curl/8 newsboard-ledger'})
     return json.load(urllib.request.urlopen(r, timeout=20))['value']
 
 
 def _req(method, path, tok, body=None, headers=None):
-    h = {'Authorization': 'Bearer ' + tok, 'Content-Type': 'application/octet-stream', **(headers or {})}
+    h = {'Authorization': 'Bearer ' + tok, 'Content-Type': 'application/octet-stream', 'User-Agent': 'curl/8 newsboard-ledger', **(headers or {})}
     r = urllib.request.Request(W + path, data=body, method=method, headers=h)
     try:
         with urllib.request.urlopen(r, timeout=180) as x:
