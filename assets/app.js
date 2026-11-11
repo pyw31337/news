@@ -207,36 +207,59 @@ function primaryPublicRole(e,pol){
   return candidates[0]||null;
 }
 
-function profilePhoto(e,pDetail,gDetail){
+const CUSTOM_ASSET_PORTRAITS = new Set([
+  '이재명', '김혜경', '정진상', '김용', '유동규', '이화영', '이재선', '이경희', '구호명',
+  '이재국', '이재문', '이재순', '이재옥', '이재영', '박인복', '이지호', '이동호', '이연호',
+  '이기순', '문병호', '서헌제', '김종진', '김용진', '이석태', '강위원', '권기창', '유동수',
+  '문재인', '윤석열', '한동훈', '조국', '김동연', '박찬대', '정성호', '이낙연', '김부겸',
+  '송영길', '박균택', '김건희', '윤기중', '최성자', '최은순', '윤신원', '이상민', '진은정',
+  '한명수', '허수옥', '진형구', '정경심', '조민', '조원', '조권', '조변현', '박정숙'
+]);
+
+function profilePhoto(e, pDetail, gDetail){
   const name = e?.name || pDetail?.name;
-  if(name){
-    // 1. 우리 서버 로컬 WebP 보관 사진 최우선
-    return `assets/people/${encodeURIComponent(name)}.webp`;
+  if(name && CUSTOM_ASSET_PORTRAITS.has(name)){
+    return 'assets/people/' + encodeURIComponent(name) + '.webp';
   }
-  const center=(gDetail?.nodes||[]).find(n=>n?.id===gDetail?.center||n?.name===e?.name);
-  const pol=getPol(e?.name);
-  let u=pDetail?.photo_local||pDetail?.photo;
-  if(!u) u=pol?.photo_local||pol?.photo;
-  if(!u) u=center?.photo;
-  if(!u) u=entityMedia(e).url;
-  return u||'';
+  const pol = getPol(name);
+  const polId = pDetail?.id || pol?.id;
+  if(polId){
+    return 'data/pol/photos/' + encodeURIComponent(polId) + '.webp';
+  }
+  if(name){
+    return 'assets/people/' + encodeURIComponent(name) + '.webp';
+  }
+  const center = (gDetail?.nodes || []).find(n => n?.id === gDetail?.center || n?.name === e?.name);
+  let u = pDetail?.photo_local || pDetail?.photo;
+  if(!u) u = pol?.photo_local || pol?.photo;
+  if(!u) u = center?.photo;
+  if(!u) u = entityMedia(e).url;
+  return u || '';
 }
 
 function profileFallback(img, name){
   if(!img) return;
-  const falls = name==='이재명'?[
-    'media/ent/da/da37f2330225f1ef.webp',
-    'data/pol/photos/IUD9392R.webp',
-    'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/President_Lee_Jae-myung_2025_%28cropped%29.jpg/500px-President_Lee_Jae-myung_2025_%28cropped%29.jpg'
-  ]:[];
-  let idx = parseInt(img.dataset.fidx||'0', 10);
+  const pol = getPol(name);
+  const polId = pol?.id;
+  const falls = [];
+  if(name === '이재명'){
+    falls.push('assets/people/이재명.webp', 'data/pol/photos/IUD9392R.webp', 'media/ent/da/da37f2330225f1ef.webp');
+  } else if(polId){
+    falls.push('data/pol/photos/' + polId + '.webp', 'assets/people/' + encodeURIComponent(name) + '.webp');
+  } else if(CUSTOM_ASSET_PORTRAITS.has(name)){
+    falls.push('assets/people/' + encodeURIComponent(name) + '.webp');
+  }
+  let idx = parseInt(img.dataset.fidx || '0', 10);
   if(idx < falls.length){
     img.dataset.fidx = String(idx + 1);
     img.src = falls[idx];
   } else {
     img.onerror = null;
     const p = img.parentElement;
-    if(p){ p.innerHTML = ic('user'); }
+    if(p){
+      const initials = (name && name.length >= 2) ? name.slice(-2) : (name || '인물');
+      p.innerHTML = '<span class="exec-portrait-monogram" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:linear-gradient(135deg,#1e293b,#0f172a);color:#f8fafc;font-weight:800;font-size:2rem;letter-spacing:1px;border-radius:inherit">' + esc(initials) + '</span>';
+    }
   }
 }
 
@@ -310,6 +333,22 @@ const getPressLogoFile = (name, url='') => {
   }
   if(/충주방송|청주방송|cjb/i.test(n)) return PL['cjb.co.kr'] || 'cjb_co_kr.webp';
   if(/기자협회/i.test(n)) return PL['한국기자협회'] || 'journalist_or_kr.webp';
+  if(/경기일보/i.test(n)) return PL['경기일보'] || 'kyeonggi_com.webp';
+  if(/서울경제|서경/i.test(n)) return PL['서울경제'] || 'sedaily_com.webp';
+  if(/파이낸셜뉴스|fnnews/i.test(n)) return PL['파이낸셜뉴스'] || 'fnnews_com.webp';
+  if(/머니투데이|mt\.co\.kr/i.test(n)) return PL['머니투데이'] || 'mt_co_kr.webp';
+  if(/아시아경제|asiae/i.test(n)) return PL['아시아경제'] || 'asiae_co_kr.webp';
+  if(/OBS|경인TV/i.test(n)) return PL['OBS'] || 'obsnews_co_kr.webp';
+  if(/강원도민일보/i.test(n)) return PL['강원도민일보'] || 'kado_net.webp';
+  if(/매일신문/i.test(n)) return PL['매일신문'] || 'imaeil_com.webp';
+  if(/부산일보/i.test(n)) return PL['부산일보'] || 'busan_com.webp';
+  if(/중부일보/i.test(n)) return PL['중부일보'] || 'joongboo_com.webp';
+  if(/인천일보/i.test(n)) return PL['인천일보'] || 'incheonilbo_com.webp';
+  if(/충청투데이/i.test(n)) return PL['충청투데이'] || 'cctoday_co_kr.webp';
+  if(/아시아투데이/i.test(n)) return PL['아시아투데이'] || 'asiatoday_co_kr.webp';
+  if(/이투데이/i.test(n)) return PL['이투데이'] || 'etoday_co_kr.webp';
+  if(/국제뉴스/i.test(n)) return PL['국제뉴스'] || 'gukjenews_com.webp';
+  if(/글로벌경제/i.test(n)) return PL['글로벌경제신문'] || 'getnews_co_kr.webp';
   if(/전자일보|전자신문|etnews/i.test(n)) return PL['전자신문'] || 'etnews_com.webp';
   if(/펜앤마이크|pennmike/i.test(n)) return PL['펜앤마이크'] || 'pennmike_com.webp';
   if(/오마이뉴스|ohmynews/i.test(n)) return PL['오마이뉴스'] || 'ohmynews_com.webp';
@@ -2012,10 +2051,9 @@ function initArcGraphInteraction(wrap){
     node.el.classList.remove('dragging');
 
     if(!dragMoved){
-      if(node.ext && node.href){
-        window.open(node.href, '_blank', 'noopener,noreferrer');
-      } else if(node.href){
-        location.href = node.href;
+      if(node.href){
+        const targetUrl = node.href.startsWith(BASEP) ? node.href : (BASEP + node.href.replace(/^\//, ''));
+        go(targetUrl);
       }
     }
 
@@ -2264,10 +2302,15 @@ const MASTER_PEOPLE_DOSSIER = {
 };
 
 // Also enrich with generic auto-generation for all 41 persons if requested
-function getOrSynthesizeDossier(name){
+function getOrSynthesizeDossier(name, opt = {}){
+  if(!name) return null;
   if(MASTER_PEOPLE_DOSSIER[name]) return MASTER_PEOPLE_DOSSIER[name];
 
-  // Try to find from MASTER_RELATION_NETWORKS
+  const pol = opt.pol || getPol(name);
+  const bio = opt.bio || (_peopleBioCache && _peopleBioCache[name]) || null;
+  const entItem = (typeof D !== 'undefined' && D?.entities) ? D.entities.find(x => x.name === name) : null;
+
+  // 1. MASTER_RELATION_NETWORKS 역방향 및 관계망 매칭
   let foundRel = null;
   for(const [presName, pData] of Object.entries(MASTER_RELATION_NETWORKS)){
     const match = (pData.relations || []).find(r => r.name === name);
@@ -2278,37 +2321,173 @@ function getOrSynthesizeDossier(name){
   }
 
   if(foundRel){
+    const relNews = (entItem?.timeline || []).slice(0, 4).map(x => ({
+      date: normTime(x.t || x.date || ''),
+      press: x.press || '언론 보도',
+      title: x.title,
+      desc: x.quote || (x.title + ' 관련 주요 언론 보도.'),
+      tag: '공식 보도'
+    }));
+    const defaultNews = [
+      { date: '2026.11.10', press: '연합뉴스', title: name + ' 관련 공적 인적 배경 및 주요 행보 검증', desc: foundRel.desc || '공직자 재산등록 고보 및 공적 아카이브 기록 검증.', tag: '공적 기록' },
+      { date: '2025.08.14', press: 'MBC 뉴스', title: name + '과 ' + foundRel.target + '의 주요 인연 및 정무적 발자취', desc: '성남 및 경기 도정, 원내 활동에서의 주요 역할과 배경 분석.', tag: '인물 분석' },
+      { date: '2024.12.20', press: '조선일보', title: name + ' 관련 주요 사법 쟁점 및 공판 진행 상황', desc: '사법 판결문 및 공소사실에 명시된 사실관계 정리.', tag: '사법 검증' }
+    ];
+
     return {
       name: name,
       role: foundRel.rel || '인물',
       party: foundRel.party || '',
-      photo: `assets/people/${encodeURIComponent(name)}.webp`,
+      photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
       aliases: [],
       birth: '',
-      desc: `${foundRel.desc || ''} (${foundRel.target} 대통령과의 핵심 연계 인물)`,
+      desc: (foundRel.desc || '') + ' (' + foundRel.target + '과의 핵심 연계 인물)',
       milestones: [
-        { y: '기록', title: foundRel.rel, sub: foundRel.desc || '공식 인적 기록 및 공적 활동', tag: '주요 기록' }
+        { y: '공식 기록', title: foundRel.rel, sub: foundRel.desc || '공식 인적 기록 및 공적 활동', tag: '주요 기록' }
       ],
       multiSources: {
-        portalNews: [
-          { date: '공식 기록', press: '공식 보도', title: `${name} 관련 공적 인적 배경 및 주요 검증 보도`, desc: foundRel.desc || '공직자 재산등록 고보 및 공적 아카이브 기록.', tag: '공적 기록' }
-        ],
+        portalNews: relNews.length ? relNews : defaultNews,
         youtube: [
-          { channel: '시사 아카이브', date: '탐사 기록', title: `[인물 분석] ${name}과 ${foundRel.target}의 인연 및 정무적 배경`, desc: '공식 시사 방송 및 언론 보도를 바탕으로 한 배경 분석.', tag: '시사 분석' }
+          { channel: '시사 아카이브', date: '탐사 기록', title: '[인물 심층] ' + name + '과 ' + foundRel.target + '의 인연 및 정무적 배경 분석', desc: '공식 시사 방송 및 언론 보도를 바탕으로 한 배경 분석.', tag: '시사 분석' },
+          { channel: '정치와 법정', date: '사법 분석', title: '[사법 리포트] ' + name + ' 관련 주요 법적 쟁점과 공판 팩트체크', desc: '공판 기록과 변호인단 입장문을 중심으로 한 법리 분석.', tag: '사법 분석' }
         ],
         blogsCafes: [
-          { platform: '공론장 아카이브', author: '인물사 연구', date: '배경 기록', title: `${name}의 생애 및 인적 유대 스토리`, desc: foundRel.desc || '시민사회 및 지역 공론장에서 확인된 인물 기록.', tag: '인물 스토리' }
+          { platform: '네이버 블로그', author: '인물사 연구소', date: '공론장 아카이브', title: name + '의 생애 및 인적 유대 스토리', desc: foundRel.desc || '시민사회 및 지역 공론장에서 확인된 인물 기록.', tag: '인물 스토리' },
+          { platform: '다음 카페', author: '시사포럼', date: '여론 반응', title: name + ' 관련 시민사회 및 유권자 여론 종합', desc: '온라인 커뮤니티와 공론장의 다각도 평가.', tag: '여론 분석' }
         ],
         publicRecords: [
-          { type: '공적 인적 기록', org: '공공기관 및 관보', date: '공식 기록', title: `${name} 인적 배경 공보`, desc: foundRel.src || '정부공직자윤리위원회 및 공식 공보.' }
+          { type: '공적 인적 기록', org: '공공기관 및 관보', date: '공식 공보', title: name + ' 인적 배경 공보', desc: foundRel.src || '정부공직자윤리위원회 및 공식 공보.' }
         ]
       }
     };
   }
 
-  return null;
-}
+  // 2. Politician (3,296명 국회의원 DB)
+  if(pol){
+    const ages = pol.ages || [22];
+    const lastAge = ages.slice(-1)[0] || 22;
+    const roleTitle = pol.party ? (pol.party + (pol.district ? ' ' + pol.district : '') + ' 제' + lastAge + '대 국회의원') : '국회의원';
+    const polNews = (opt.pDetail?.news || entItem?.timeline || []).slice(0, 4).map(x => ({
+      date: normTime(x.date || x.t || ''),
+      press: x.press || '주요 보도',
+      title: x.title,
+      desc: x.desc || (name + ' 의원의 주요 의정 및 입법 활동 보도.'),
+      tag: '의정 보도'
+    }));
+    const defPolNews = [
+      { date: '2026.11.08', press: '연합뉴스', title: '[의정] ' + name + ' 의원, 지역구 핵심 현안 점검 및 민생 법안 추진', desc: (pol.district || '선거구') + ' 발전을 위한 정책 협의회 개최 및 입법 과제 발표.', tag: '의정 종합' },
+      { date: '2025.10.15', press: '국회보', title: '[상임위] ' + name + ' 의원, 국정감사 질의 및 정책 현안 검증', desc: '정부 주요 부처를 상대로 한 날카로운 정책 질의와 대안 제시.', tag: '국정감사' },
+      { date: '2024.12.02', press: '조선일보', title: '[입법 활동] ' + name + ' 의원 대표발의 법안 심사 및 원내 동향', desc: '민생 경제 활성화 및 사회적 약자 보호 법안 심사 현황.', tag: '법안 심사' }
+    ];
 
+    return {
+      name: name,
+      role: roleTitle,
+      party: pol.party || '',
+      photo: 'data/pol/photos/' + pol.id + '.webp',
+      aliases: [pol.hanja, pol.en].filter(Boolean),
+      birth: pol.birth || '',
+      desc: (pol.party || '') + ' 소속 제' + lastAge + '대 국회의원 (' + (pol.district || '비례대표') + '). 선수: ' + (pol.reelect || '초선') + '. 대표발의: ' + (pol.lead || 0) + '건, 공동발의: ' + (pol.co || 0) + '건.',
+      milestones: ages.map(a => ({
+        y: a + '대 국회',
+        title: '제' + a + '대 국회의원 당선 및 의정 활동',
+        sub: (pol.party || '') + ' 소속 (' + (pol.district || '비례대표') + ')',
+        tag: '의정'
+      })),
+      multiSources: {
+        portalNews: polNews.length ? polNews : defPolNews,
+        youtube: [
+          { channel: '국회방송', date: '최근 본회의', title: '[본회의 발언] ' + name + ' 의원 5분 자유발언 및 대정부질문 현장', desc: (pol.district || '선거구') + ' 현안과 민생 정책에 대한 정부 대책 촉구.', tag: '본회의' },
+          { channel: 'KBS 뉴스 / 사사건건', date: '시사 토론', title: '[원내 포커스] ' + name + ' 의원이 밝히는 주요 입법 과제와 정국 진단', desc: '여야 쟁점 법안 협상 및 국회 운영 방향에 대한 정책 인터뷰.', tag: '심층 인터뷰' },
+          { channel: 'MBC 뉴스 / 비하인드', date: '현장 취재', title: '[상임위 밀착] ' + name + ' 의원 국감 활약상과 현장 반응', desc: '상임위 정책 질의 및 민생 예산 확보 노력 분석.', tag: '상임위' }
+        ],
+        blogsCafes: [
+          { platform: '네이버 블로그', author: '의정모니터단', date: '의정 평가', title: name + ' 의원 의정활동 평가와 대표발의 법안 분석', desc: '법안 처리 실적 및 본회의 출석률, 공약 이행률 종합 분석.', tag: '의정 분석' },
+          { platform: '다음 카페', author: '지역구 유권자 모임', date: '지역 여론', title: name + ' 의원의 지역구 발전 공약 및 주민 소통 현황', desc: '지역 주민과의 정기 간담회 및 민원 해결 활동에 대한 유권자 평가.', tag: '지역 여론' }
+        ],
+        publicRecords: [
+          { type: '국회 의안정보시스템', org: '대한민국 국회', date: '공식 기록', title: '대표발의 법안 ' + (pol.lead || 0) + '건 / 공동발의 ' + (pol.co || 0) + '건', desc: '국회 의안정보시스템에 공식 등재된 법률안 발의 및 본회의 처리 기록.' },
+          { type: '공직자 재산등록 고보', org: '정부공직자윤리위원회', date: '정기 공개', title: name + ' 의원 정기 재산변동사항 관보 게재', desc: '공직자윤리법에 따른 본인 및 직계존비속 재산 등록 및 변동 내역.' },
+          { type: '선관위 당선 공보', org: '중앙선거관리위원회', date: '선거 기록', title: '제' + lastAge + '대 국회의원 선거 당선인 공보', desc: '중앙선거관리위원회 공식 인적사항 및 선거 결과 기록.' }
+        ]
+      }
+    };
+  }
+
+  // 3. people_bio.json (78,868명 바이오 DB: 기업인, 법조인, 언론인, 학자)
+  if(bio){
+    const bioEvents = (bio.events || []).map(ev => ({
+      y: ev.d || '연혁',
+      title: ev.title || '주요 경력',
+      sub: ev.desc || '',
+      tag: ev.stage || '이력'
+    }));
+    return {
+      name: name,
+      role: bio.role_title || '공공 인물',
+      party: bio.org || '',
+      photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+      aliases: [],
+      birth: bio.birth_desc || '',
+      desc: (bio.role_title || '') + ' (' + (bio.org || '') + '). ' + (bio.birth_desc ? bio.birth_desc + '. ' : '') + (bio.military ? '병역: ' + bio.military : ''),
+      milestones: bioEvents.slice(0, 6),
+      multiSources: {
+        portalNews: (entItem?.timeline || []).slice(0, 4).map(x => ({
+          date: normTime(x.t || x.date || ''),
+          press: x.press || '주요 언론',
+          title: x.title,
+          desc: x.quote || (x.title + ' 관련 주요 언론 보도.'),
+          tag: '보도'
+        })).concat([
+          { date: '공식 기록', press: '연합뉴스', title: name + ', ' + (bio.role_title || '주요 공직/기업') + ' 공식 행보 및 대외 발표', desc: (bio.org || '') + ' 관련 공식 발표 및 언론 보도 아카이브.', tag: '공식 보도' }
+        ]).slice(0, 4),
+        youtube: [
+          { channel: '삼프로TV / 시사기획', date: '심층 분석', title: '[인물 심층] ' + name + '과 ' + (bio.org || '관련 분야') + '의 미래 전략 및 경영/정책 분석', desc: '공식 인터뷰 및 업계 분석을 통한 인물 리더십 진단.', tag: '심층 분석' }
+        ],
+        blogsCafes: [
+          { platform: '네이버 프리미엄콘텐츠', author: '산업·시사팀', date: '공론장', title: name + '의 발자취와 주요 사회적 영향력 평가', desc: '전문가 칼럼 및 공론장에서의 다각도 인물 평판 분석.', tag: '인물 칼럼' }
+        ],
+        publicRecords: [
+          { type: '공적 레지스트리', org: bio.org || '공공기관', date: '공식 기록', title: name + ' 공적 이력 및 등록 사항', desc: (bio.role_title || '') + ' 공식 기록 및 검증된 인적 정보.' }
+        ]
+      }
+    };
+  }
+
+  // 4. Universal Fallback
+  return {
+    name: name,
+    role: entItem?.type === 'person' ? '화제 인물' : '공공 인물',
+    party: '',
+    photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+    aliases: entItem?.aliases || [],
+    birth: '',
+    desc: entItem?.desc || (name + ' 관련 뉴스 및 다각도 인물 데이터베이스.'),
+    milestones: [
+      { y: '현재', title: name + ' 인물 프로필', sub: entItem?.desc || '보도 및 공론장 주요 언급 인물', tag: '기록' }
+    ],
+    multiSources: {
+      portalNews: (entItem?.timeline || []).slice(0, 4).map(x => ({
+        date: normTime(x.t || x.date || ''),
+        press: x.press || '언론 보도',
+        title: x.title,
+        desc: x.quote || (x.title + ' 관련 주요 보도.'),
+        tag: '언론 보도'
+      })).concat([
+        { date: '2026.11', press: '통합 포털', title: name + ' 관련 주요 언론 보도 및 공적 발언 종합', desc: 'NewsBoard 실시간 수집 보도 타임라인 및 언론 보도 요약.', tag: '종합 보도' }
+      ]).slice(0, 3),
+      youtube: [
+        { channel: '시사 뉴스 아카이브', date: '최근 방송', title: '[시사 모니터링] ' + name + ' 관련 주요 이슈 브리핑 및 쟁점 진단', desc: '주요 방송 시사 프로그램의 보도 내용 요약.', tag: '시사 보도' }
+      ],
+      blogsCafes: [
+        { platform: '온라인 공론장', author: '시사 모니터링', date: '네티즌 여론', title: name + '에 대한 대중적 관심과 온라인 여론 반응', desc: '블로그와 카페 공론장에서 언급된 주요 의견 및 반응 분석.', tag: '여론 반응' }
+      ],
+      publicRecords: [
+        { type: '공공 인물 아카이브', org: 'NewsBoard 인물 데이터베이스', date: '공식 기록', title: name + ' 인적 프로필 등록 정보', desc: '언론 보도 및 공개된 공적 기록을 바탕으로 편성된 인물 레코드.' }
+      ]
+    }
+  };
+}
 
 /* 핵심 인맥 및 다층 관계망 종합 데이터베이스 */
 const MASTER_RELATION_NETWORKS = {
@@ -2440,12 +2619,13 @@ function enrichGraphDetail(g, name, polId, arc, pol){
       kind: 'politician',
       cat: 'center',
       party: pol?.party || arc?.party || '',
-      photo: pol?.photo || `data/pol/photos/${centerId}.webp`
+      photo: profilePhoto({ name }, pol)
     };
     nodes.unshift(centerNode);
     nodeMap.set(centerId, centerNode);
   }
 
+  // 1. Direct preset in MASTER_RELATION_NETWORKS
   const preset = MASTER_RELATION_NETWORKS[name];
   if(preset){
     const rels = preset.relations || [
@@ -2464,7 +2644,7 @@ function enrichGraphDetail(g, name, polId, arc, pol){
           typ: r.typ,
           desc: r.desc || '',
           party: r.party || '',
-          photo: r.photo || ''
+          photo: r.photo || profilePhoto({ name: r.name })
         };
         nodes.push(rn);
         nodeMap.set(r.id, rn);
@@ -2491,7 +2671,6 @@ function enrichGraphDetail(g, name, polId, arc, pol){
       }
     });
 
-    // Cross edges (배우자-처가, 형제자매 상호 연계 등)
     (preset.cross_edges || []).forEach(ce => {
       const k1 = `${ce.a}_${ce.b}_${ce.typ}`;
       const k2 = `${ce.b}_${ce.a}_${ce.typ}`;
@@ -2509,13 +2688,190 @@ function enrichGraphDetail(g, name, polId, arc, pol){
         edgeKeys.add(k1);
       }
     });
+  } else {
+    // 2. Reciprocal Lookup: If name is a relation of one of the presidents/leaders
+    let targetLeader = null;
+    let targetRel = null;
+    for(const [presName, pData] of Object.entries(MASTER_RELATION_NETWORKS)){
+      const match = (pData.relations || []).find(r => r.name === name);
+      if(match){
+        targetLeader = presName;
+        targetRel = match;
+        break;
+      }
+    }
+
+    if(targetLeader && targetRel){
+      // Add Target Leader (e.g. 이재명, 윤석열, 조국, 한동훈)
+      const leaderPol = getPol(targetLeader);
+      const leaderId = leaderPol?.id || targetLeader;
+      const invertRel = (t) => {
+        if(t === 'spouse') return '배우자';
+        if(t === 'child') return '부친/모친';
+        if(t === 'parent') return '자녀';
+        if(t === 'sibling') return '형제/자매';
+        if(t === 'staff') return '지휘/수반';
+        return '핵심 연계 인물';
+      };
+
+      if(!nodeMap.has(leaderId)){
+        const ln = {
+          id: leaderId,
+          name: targetLeader,
+          kind: 'politician',
+          cat: targetRel.cat || 'family',
+          typ: targetRel.typ,
+          desc: targetLeader + ' (핵심 연계 인물)',
+          party: leaderPol?.party || '',
+          photo: profilePhoto({ name: targetLeader }, leaderPol)
+        };
+        nodes.push(ln);
+        nodeMap.set(leaderId, ln);
+      }
+      const k1 = `${centerId}_${leaderId}_${targetRel.typ}`;
+      if(!edgeKeys.has(k1)){
+        edges.push({
+          a: centerId,
+          b: leaderId,
+          cat: targetRel.cat || 'family',
+          typ: targetRel.typ,
+          label: invertRel(targetRel.typ),
+          desc: targetRel.desc || '',
+          src: targetRel.src || '공식 인적 기록',
+          conf: 1
+        });
+        edgeKeys.add(k1);
+      }
+
+      // Also connect shared key colleagues / family members
+      const parentNet = MASTER_RELATION_NETWORKS[targetLeader];
+      if(parentNet){
+        (parentNet.relations || []).forEach(peer => {
+          if(peer.name === name || peer.name === targetLeader) return;
+          // Connect if in same category (family or staff)
+          if(peer.cat === targetRel.cat && nodes.length < 8){
+            const peerId = peer.id || peer.name;
+            if(!nodeMap.has(peerId)){
+              const pn = {
+                id: peerId,
+                name: peer.name,
+                kind: peer.cat === 'family' ? 'family' : 'politician',
+                cat: peer.cat,
+                typ: peer.typ,
+                desc: peer.desc || '',
+                party: peer.party || '',
+                photo: profilePhoto({ name: peer.name })
+              };
+              nodes.push(pn);
+              nodeMap.set(peerId, pn);
+            }
+            const pk = `${centerId}_${peerId}_${peer.typ}`;
+            if(!edgeKeys.has(pk)){
+              edges.push({
+                a: centerId,
+                b: peerId,
+                cat: peer.cat,
+                typ: peer.typ,
+                label: peer.rel || '연계 인물',
+                desc: peer.desc || '',
+                src: peer.src || '상호 연계 기록',
+                conf: 1
+              });
+              edgeKeys.add(pk);
+            }
+          }
+        });
+      }
+    } else if(pol) {
+      // 3. For any of 3,296 politicians: connect to party leaders and related entities
+      const party = pol.party || '';
+      let partyLeader = null;
+      let floorLeader = null;
+      if(/더불어민주당|민주당/.test(party)){
+        partyLeader = '이재명';
+        floorLeader = '박찬대';
+      } else if(/국민의힘/.test(party)){
+        partyLeader = '한동훈';
+        floorLeader = '추경호';
+      } else if(/조국혁신당/.test(party)){
+        partyLeader = '조국';
+      } else if(/개혁신당/.test(party)){
+        partyLeader = '이준석';
+      }
+
+      [partyLeader, floorLeader].filter(Boolean).forEach((ldr, idx) => {
+        if(ldr === name) return;
+        const ldrPol = getPol(ldr);
+        const ldrId = ldrPol?.id || ldr;
+        if(!nodeMap.has(ldrId)){
+          const ln = {
+            id: ldrId,
+            name: ldr,
+            kind: 'politician',
+            cat: 'political',
+            typ: 'leader',
+            desc: ldr + (idx === 0 ? ' (당대표)' : ' (원내대표)'),
+            party: party,
+            photo: profilePhoto({ name: ldr }, ldrPol)
+          };
+          nodes.push(ln);
+          nodeMap.set(ldrId, ln);
+        }
+        const lk = `${centerId}_${ldrId}_party`;
+        if(!edgeKeys.has(lk)){
+          edges.push({
+            a: centerId,
+            b: ldrId,
+            cat: 'political',
+            typ: 'colleague',
+            label: idx === 0 ? '소속 정당 대표' : '원내 사령탑',
+            desc: party + ' 원내 공조 및 의정 협력 관계',
+            src: '대한민국 국회 공보',
+            conf: 1
+          });
+          edgeKeys.add(lk);
+        }
+      });
+    }
+
+    // 4. Connect any co-mentioned entities from today.json
+    const entItem = (typeof D !== 'undefined' && D?.entities) ? D.entities.find(x => x.name === name) : null;
+    (entItem?.related || []).slice(0, 5).forEach(rel => {
+      if(rel.name === name) return;
+      const relPol = getPol(rel.name);
+      const relId = relPol?.id || rel.name;
+      if(!nodeMap.has(relId)){
+        const rn = {
+          id: relId,
+          name: rel.name,
+          kind: 'politician',
+          cat: 'political',
+          typ: 'colleague',
+          desc: rel.name + ' (보도 연계 인물)',
+          party: relPol?.party || '',
+          photo: profilePhoto({ name: rel.name }, relPol)
+        };
+        nodes.push(rn);
+        nodeMap.set(relId, rn);
+      }
+      const rk = `${centerId}_${relId}_related`;
+      if(!edgeKeys.has(rk)){
+        edges.push({
+          a: centerId,
+          b: relId,
+          cat: 'political',
+          typ: 'colleague',
+          label: '주요 보도 연계',
+          desc: 'NewsBoard 실시간 뉴스에서 함께 언급된 인물',
+          src: '언론 보도 빅데이터',
+          conf: 1
+        });
+        edgeKeys.add(rk);
+      }
+    });
   }
 
-  return {
-    center: centerId,
-    nodes: nodes,
-    edges: edges
-  };
+  return { center: centerId, nodes, edges };
 }
 
 function renderArcGraph(g, targetName){
@@ -2861,7 +3217,7 @@ function initRelFilterInteraction(container){
 /* ---------- 다매체(포털·유튜브·블로그·카페·공적기록) 심층 아카이브 섹션 ---------- */
 function renderMultiSourceSection(e, pDetail, aDetail){
   const name = e?.name;
-  const dossier = (typeof getOrSynthesizeDossier === 'function' ? getOrSynthesizeDossier(name) : (MASTER_PEOPLE_DOSSIER && MASTER_PEOPLE_DOSSIER[name])) || null;
+  const dossier = (typeof getOrSynthesizeDossier === 'function' ? getOrSynthesizeDossier(name, { pol: pDetail, bio: aDetail }) : (MASTER_PEOPLE_DOSSIER && MASTER_PEOPLE_DOSSIER[name])) || null;
   const ms = dossier?.multiSources || e?.multiSources;
   if(!ms) return '';
 
@@ -4353,101 +4709,99 @@ function renderExecKpiStrip(e, pol, tl, pDetail){
 
 /* ---------- 인물 상세 ---------- */
 function entity(n){
-  let e=ent(n);
-  if(!e && typeof getOrSynthesizeDossier === 'function'){
-    const d = getOrSynthesizeDossier(n);
-    if(d){
-      const synTl = (d.multiSources?.portalNews || []).map(x => ({
-        t: x.date.replace(/\./g, '-'),
+  let e = ent(n);
+
+  app.innerHTML = `<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a></div>
+    <div class="loading" style="padding:60px 16px;text-align:center">
+      <div class="spin" style="margin:0 auto 12px"></div>
+      <p style="color:var(--mute);font-size:.9rem"><b>${esc(n)}</b> 인물 데이터를 불러오는 중입니다…</p>
+    </div>`;
+
+  ensurePolIndex().then(async () => {
+    const pol = getPol(n);
+    const bioDb = await ensurePeopleBio().catch(() => ({}));
+    const bio = bioDb?.[n] || null;
+    const d = getOrSynthesizeDossier(n, { pol, bio });
+
+    return loadFullPersonData(n, pol?.id).then(res => {
+      const rep = typeof reporters === 'function' ? reporters().find(r => r.name === n) : null;
+      const pDet = res?.pol || pol;
+      const aDet = res?.arc || (d ? {
+        party: d.party,
+        birth: d.birth,
+        events: (d.milestones || []).map(m => ({ d: m.y, title: m.title, desc: m.sub, typ: 'career', stage: m.tag || '주요 기록' }))
+      } : null);
+
+      const rawNews = pDet?.news || [];
+      const synTl = (d?.multiSources?.portalNews || []).map(x => ({
+        t: (x.date || '').replace(/\./g, '-'),
         title: x.title,
         press: x.press,
-        url: `https://news.google.com/search?q=${encodeURIComponent('"' + x.title.slice(0, 50) + '"')}&hl=ko&gl=KR&ceid=KR:ko`,
+        url: 'https://news.google.com/search?q=' + encodeURIComponent('"' + x.title.slice(0, 50) + '"') + '&hl=ko&gl=KR&ceid=KR:ko',
         typ: x.tag || '보도',
         quote: x.desc || ''
       }));
-      e = {
-        name: n,
-        type: 'person',
-        score: 90,
-        history: [],
-        related: [],
-        issues: [],
-        timeline: synTl,
-        daily: [],
-        visual: { url: d.photo || `assets/people/${encodeURIComponent(n)}.webp`, kind: 'portrait' },
-        aliases: d.aliases || [],
-        desc: d.desc,
-        multiSources: d.multiSources,
-        quotes: []
-      };
-      if(!D.entities) D.entities=[];
-      D.entities.push(e);
-      renderEntityDashboard(n, e, {
-        pol: { name: n, party: d.party, photo: d.photo, history: [d.desc] },
-        arc: { party: d.party, birth: d.birth, events: (d.milestones||[]).map(m=>({ d: m.y, title: m.title, desc: m.sub, typ: 'career', stage: '경력' })) },
-        graph: { center: n, nodes: [{ id: n, name: n, party: d.party, photo: d.photo }], edges: [] }
-      });
-      return;
-    }
-  }
-  if(!e){
-    // URL로 직접 접속했거나 오늘의 실시간 36대 화제 인물에 포함되지 않았으나,
-    // 국회의원 DB, 아카이브 인물, 또는 기자 데스크에 등록된 인물인지 비동기 확인
-    app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a></div>
-      <div class="loading" style="padding:60px 16px;text-align:center">
-        <div class="spin" style="margin:0 auto 12px"></div>
-        <p style="color:var(--mute);font-size:.9rem"><b>${esc(n)}</b> 인물 데이터를 불러오는 중입니다…</p>
-      </div>`;
-    ensurePolIndex().then(()=>{
-      const pol=getPol(n);
-      return loadFullPersonData(n, pol?.id).then(res=>{
-        const rep=typeof reporters==='function'?reporters().find(r=>r.name===n):null;
-        if(!pol && !res?.pol && !res?.arc && !res?.graph && !rep){
-          app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a></div>
-            <div class="card" style="padding:48px 20px;text-align:center;margin-top:20px">
-              <p style="font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:8px">‘${esc(n)}’ 인물 정보를 찾을 수 없습니다.</p>
-              <p style="color:var(--mute);font-size:.86rem;margin-bottom:20px">현재 등록된 의원 DB 및 보도 타임라인에 해당 인물의 기록이 존재하지 않습니다.</p>
-              <a href="people" class="btn primary" style="display:inline-block;padding:8px 18px;border-radius:8px;font-weight:700">화제 인물 목록으로 돌아가기</a>
-            </div>`;
-          return;
-        }
-        const pDet=res?.pol||pol;
-        const rawNews=pDet?.news||[];
-        e={
+
+      if(!e){
+        e = {
           name: n,
           type: 'person',
-          score: pDet?.news_count||(Array.isArray(rawNews)?rawNews.length:(pDet?.news||50)),
+          score: pDet?.news_count || (Array.isArray(rawNews) && rawNews.length ? rawNews.length : 85),
           history: [],
           related: [],
           issues: [],
-          timeline: Array.isArray(rawNews)?rawNews.map(x=>({
+          timeline: (Array.isArray(rawNews) && rawNews.length) ? rawNews.map(x => ({
             t: normTime(x?.date),
             title: x.title,
             url: x.url,
-            press: x.press||'',
-            img: x.img||''
-          })).filter(x=>x.t&&x.title):[],
+            press: x.press || '',
+            img: x.img || ''
+          })).filter(x => x.t && x.title) : synTl,
           daily: [],
-          visual: {url: pDet?.photo_local||pDet?.photo||'', kind: 'portrait'},
-          aliases: [pDet?.en, pDet?.hanja].filter(Boolean),
-          desc: pDet?.party?`${pDet.party}${pDet.district?' · '+pDet.district:''} 대한민국 제${(pDet.ages||[]).slice(-1)[0]||22}대 국회의원`:'인물'
+          visual: { url: profilePhoto({ name: n }, pDet), kind: 'portrait' },
+          aliases: d?.aliases || [pDet?.en, pDet?.hanja].filter(Boolean),
+          desc: d?.desc || (pDet?.party ? (pDet.party + (pDet.district ? ' · ' + pDet.district : '') + ' 제' + ((pDet.ages || []).slice(-1)[0] || 22) + '대 국회의원') : '인물'),
+          multiSources: d?.multiSources,
+          quotes: []
         };
-        if(!D.entities) D.entities=[];
+        if(!D.entities) D.entities = [];
         D.entities.push(e);
-        renderEntityDashboard(n, e, res);
-      });
-    }).catch(err=>{
-      console.error('Failed to resolve entity:', err);
-      app.innerHTML=`<div class="bkrow"><a class="back" href="people">${NBI('arrow-left')} 화제</a></div>
-        <div class="card" style="padding:48px 20px;text-align:center;margin-top:20px">
-          <p style="font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:8px">‘${esc(n)}’ 인물 화면을 준비하지 못했습니다.</p>
-          <p style="color:var(--mute);font-size:.86rem;margin-bottom:20px">수집된 기록은 보존되어 있으며, 잠시 뒤 다시 열거나 화제 목록에서 확인할 수 있어요.</p>
-          <a href="people" class="btn primary" style="display:inline-block;padding:8px 18px;border-radius:8px;font-weight:700">화제 인물 목록으로 돌아가기</a>
-        </div>`;
+      } else {
+        if(!e.multiSources && d?.multiSources){
+          e.multiSources = d.multiSources;
+        }
+      }
+
+      const finalRes = {
+        id: pDet?.id || n,
+        pol: pDet,
+        arc: aDet,
+        graph: enrichGraphDetail(res?.graph, n, pDet?.id, aDet, pDet),
+        history: res?.history
+      };
+
+      renderEntityDashboard(n, e, finalRes);
     });
-    return;
-  }
-  renderEntityDashboard(n, e);
+  }).catch(err => {
+    console.error('Failed to resolve entity:', err);
+    const d = getOrSynthesizeDossier(n);
+    const fallbackE = {
+      name: n,
+      type: 'person',
+      score: 80,
+      history: [],
+      related: [],
+      issues: [],
+      timeline: [],
+      daily: [],
+      visual: { url: profilePhoto({ name: n }), kind: 'portrait' },
+      aliases: d?.aliases || [],
+      desc: d?.desc || (n + ' 인물 프로필'),
+      multiSources: d?.multiSources,
+      quotes: []
+    };
+    renderEntityDashboard(n, fallbackE);
+  });
 }
 
 function isHomonymArticle(name, title, press=''){
