@@ -8,7 +8,7 @@
   db/people/wd_t1.json.gz   id → {l 이름, d 설명, b 출생연도, bp 출생지, dd 사망연도, w 위키백과 제목, img Commons 파일,
                                  pos/edu/emp/party/mem/team/award/occ: [[Q, 이름, 시작연도, 끝연도]], site 공식 사이트}
   db/people/photos_t1.json  id → {k R2 키(720px), s R2 키(128px), w,h 원본 크기, src Commons 파일 주소, lic 라이선스, by 저작자}
-규칙: 고정 QID만 사용(이름 검색 없음), 미성년(출생 19년 이내)·라이선스 미상·비자유 파일 제외, 사진은 원본이 128px 미만이면 제외.
+규칙: 고정 QID만 사용(이름 검색 없음), 미성년(출생 19년 이내)·라이선스 미상·비자유 파일 제외, 사진은 원본 짧은 변이 720px 미만이면 제외.
 사진 파일은 --photos 폴더에 쓰고 --upload면 Worker /pub/put(OIDC)으로 R2 people/pt/에 올림. 실패분은 14일 뒤 재시도.
 """
 import argparse, datetime as dt, gzip, hashlib, html, io, json, os, re, sys, time, urllib.parse, urllib.request
@@ -203,7 +203,11 @@ def main():
             continue
         cur = M['items'].get(pid)
         if cur and cur.get('file') == f:
-            continue
+            # 예전의 저해상도 항목은 고화질 규칙을 통과하지 않으므로 화면에서
+            # 제거하고 다음 Commons 검증 때만 다시 채운다. 억지 업스케일은 하지 않는다.
+            if min(cur.get('w') or 0, cur.get('h') or 0) >= 720:
+                continue
+            M['items'].pop(pid, None)
         sk = M['skip'].get(pid)
         if sk and sk.get('file') == f and not sk.get('why', '').startswith(('download', 'upload')) and (NOW.date() - dt.date.fromisoformat(sk['at'][:10])).days < 14:
             continue
@@ -220,7 +224,7 @@ def main():
             return pid, None, 'no_info'
         if not FREE.search(ii['lic']) or re.search(r'non[- ]?free|fair use', ii['lic'], re.I):
             return pid, None, 'license:' + ii['lic'][:40]
-        if min(ii['w'] or 0, ii['h'] or 0) < 128:
+        if min(ii['w'] or 0, ii['h'] or 0) < 720:
             return pid, None, 'small'
         blob, err = None, ''
         for n in range(5):  # upload.wikimedia.org는 몰리면 429 → 천천히 재시도

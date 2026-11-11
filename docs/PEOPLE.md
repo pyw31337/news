@@ -95,7 +95,7 @@
 ## 10. 1계층 인물 페이지·사진 (2026-11-11)
 - 화면: `/news/person/?id=<id>`(1계층 5,532명, `nw:` 잡음 id 제외), 분류 `/news/e/?k=g:<유형>:<이름>` 또는 `kind:<분야>`. 옛 `entity/<이름>`은 이름이 한 사람으로 정해질 때(`data/p/names.json`, 점수 1.5배 이상 차이)만 인물 페이지로 넘김.
 - 묶음: `scripts/people/person_pages.py data pol_db _site` → `_site/data/p/`(x 256조각·g 64조각, 약 26MB). `pages.yml`·`collect.yml`이 배포 때마다 만듦(커밋 안 함).
-- 위키데이터 사실·사진: `scripts/people/wd_t1.py`(`people-photos.yml`, 매일 06:20 KST 중 일요일 전량 + 수동) → data 브랜치 `db/people/wd_t1.json.gz`·`photos_t1.json`, 사진은 R2 `people/pt/<hh>/<hash>.webp`(720px)·`_s.webp`(128px). 공용(Commons)에서 **자유 이용 허락(CC·퍼블릭 도메인·공공누리 등)만**, 128px 미만·비자유는 제외, 저작자·허락을 화면에 표기. 미성년(최근 19년 출생) 제외.
+- 위키데이터 사실·사진: `scripts/people/wd_t1.py`(`people-photos.yml`, 매일 06:20 KST 중 일요일 전량 + 수동) → data 브랜치 `db/people/wd_t1.json.gz`·`photos_t1.json`, 사진은 R2 `people/pt/<hh>/<hash>.webp`(720px)·`_s.webp`(128px). 공용(Commons)에서 **자유 이용 허락(CC·퍼블릭 도메인·공공누리 등)만**, 원본 짧은 변 720px 미만·비자유는 제외, 저작자·허락을 화면에 표기. 미성년(최근 19년 출생) 제외.
 - 사진 우선순위: 위키미디어(R2) → 국회 공식(`data/pol/photos/`) → 검증 초상(`portraits.json`).
 - 인물사전(`people_bio`) 사건: id 키 우선, 이름 키는 동명이인이 없을 때만. **선관위 당선인 명부 행은 그 사람의 알려진 정당과 다르면 버림**(id 키에도 동명이인 당선 기록이 섞여 있었음, 예: 진천군 의원 이재명).
 - 생애 기록 제목은 두 명 이상 모인 학교·기관·직위·정당·소속·위원회 이름과 맞춰 분류 페이지에 연결하고 그 사람을 모임 구성원으로 넣음.
