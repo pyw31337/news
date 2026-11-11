@@ -1,0 +1,20 @@
+/* 시안 C · 컴팩트 프로필 + 고정 목차 — 디자인 토큰 */
+:root{
+  --c-bg:#faf9f6; --c-surface:#ffffff; --c-sunken:#f0eee9; --c-sunken-2:#e6e3dc;
+  --c-line:#e4e1da; --c-line-strong:#cbc7bd;
+  --c-ink-1:#1b1a17; --c-ink-2:#45423b; --c-ink-3:#77736a; --c-ink-4:#aeaaa0;
+  --c-accent:#0e7c6b; --c-accent-soft:rgba(14,124,107,.10);
+  --c-pos:#2f8a3e; --c-pos-soft:#e6f2e7; --c-neg:#cc3d33; --c-neg-soft:#f9e7e5; --c-warn:#b5781a; --c-warn-soft:#f8eedb; --c-mute:#cfcbc2;
+  --c-k1:#0e7c6b; --c-k2:#3e9a8b; --c-k3:#7bbcb0; --c-k4:#b2d8d1; --c-k5:#d9ece8;
+  --f-sans:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;
+  --f-serif:"Noto Serif KR","Nanum Myeongjo",serif;
+  --fs-xs:12px; --fs-sm:13px; --fs-md:15px; --fs-lg:17px; --fs-xl:20px; --fs-2xl:24px; --fs-3xl:30px; --fs-display:clamp(30px,2.6vw,38px);
+  --fw-regular:400; --fw-medium:500; --fw-semibold:600; --fw-bold:700; --fw-heavy:800;
+  --lh-tight:1.3; --lh-snug:1.45; --lh-body:1.65;
+  --ls-display:-0.03em; --ls-head:-0.02em; --ls-body:-0.01em;
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-7:32px; --s-8:44px; --s-9:60px; --s-10:88px;
+  --sec-y:clamp(32px,3.6vw,52px);
+  --r-sm:6px; --r-md:10px; --r-lg:14px; --r-full:999px;
+  --e-1:0 1px 2px rgba(27,26,23,.08); --e-2:0 6px 18px rgba(27,26,23,.08);
+  --page-max:1440px; --gutter:clamp(16px,3.6vw,56px); --side-w:clamp(248px,21vw,300px);
+}
