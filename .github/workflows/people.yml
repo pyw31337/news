@@ -30,6 +30,10 @@ jobs:
         run: python scripts/people/mentions.py data
       - name: 인물사전 마스터 DB 풀 리빌드
         run: python scripts/people/collect_bio.py
+      - name: 인물 데이터 충족도·검증 보강 큐 갱신
+        # 명부 수와 실제 출처 기반 프로필 수를 분리해 기록하고, 이름 검색 없이
+        # 고정 Wikidata ID가 있는 1계층 인물만 다음 보강 대상으로 남긴다.
+        run: python scripts/people/coverage.py data --pol-dir pol_db
       - name: data 브랜치에 저장
         working-directory: data
         run: |
@@ -39,6 +43,12 @@ jobs:
           git commit -qm "people: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
           for n in 1 2 3 4 5 6; do
             git push -q origin HEAD:data && exit 0
-            sleep $((n * 10 + RANDOM % 10)); git fetch -q origin data && git rebase -q -X theirs origin/data || { git rebase --abort; git merge -q -X ours --no-edit origin/data; }
+            sleep $((n * 10 + RANDOM % 10))
+            if git fetch -q origin data && git rebase -q -X theirs origin/data; then
+              :
+            else
+              git rebase --abort 2>/dev/null || true
+              git merge -q -X ours --no-edit origin/data
+            fi
           done
           exit 1

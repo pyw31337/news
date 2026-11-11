@@ -156,6 +156,23 @@ jobs:
         continue-on-error: true
         timeout-minutes: 5
         run: python scripts/people/collect_bio.py --incremental
+      - name: 인물 데이터 충족도·검증 보강 큐 갱신
+        # 수집 명부와 출처 기반 이력의 차이를 측정한다. 큐에는 동명이인 방지를 위해
+        # Wikidata 고정 ID가 있는 공개 1계층 인물만 넣는다.
+        continue-on-error: true
+        timeout-minutes: 3
+        run: python scripts/people/coverage.py data
+      - name: 검증된 1계층 인물 초상 보강(Wikidata·Wikimedia)
+        # 기사 대표사진·이름 검색 결과는 쓰지 않는다. P18→Commons 라이선스가
+        # 모두 확인된 소량(매회 12장)만 WebP와 출처 원장으로 누적한다.
+        continue-on-error: true
+        timeout-minutes: 3
+        env: { PEOPLE_PORTRAIT_LIMIT: '12' }
+        run: python scripts/people/portrait_backfill.py data media
+      - name: 인물 보강 결과 재집계
+        continue-on-error: true
+        timeout-minutes: 2
+        run: python scripts/people/coverage.py data
       - name: 오늘의 이슈 정합성 검증 및 소독(Sanitize)
         run: python scripts/sanitize_today.py data/today.json
       - name: 품질 점수(사진·기사·이슈·인물 채점 → 좋은 것 먼저 배열, docs/QUALITY.md)
@@ -259,7 +276,7 @@ jobs:
           GITHUB_SHA: ${{ github.sha }}
         run: |
           mkdir _site && cp -r index.html assets icons admin v2 manifest.webmanifest sw.js og-image.png favicon.ico _site/
-          mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/elite_network.json _site/data/ 2>/dev/null || true); (cp data/people_public.json _site/data/ 2>/dev/null || true); (mkdir -p _site/data/graph && cp -r data/db/people/graph/n data/db/people/graph/e _site/data/graph/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp data/stats.json data/stats_detail.json _site/data/ 2>/dev/null || cp data/stats.json _site/data/ 2>/dev/null || true); (cp data/market_detail.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true); (cp data/voice.json _site/data/ 2>/dev/null || true); (cp data/quiz.json _site/data/ 2>/dev/null || true); (cp data/social.json _site/data/ 2>/dev/null || true); (cp data/fun.json _site/data/ 2>/dev/null && python scripts/fun_og.py _site || true); (cp -r data/fun _site/data/ 2>/dev/null || true); (cp -r data/editorial _site/data/ 2>/dev/null || true)
+          mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/db/people/coverage.json _site/data/people_coverage.json 2>/dev/null || true); (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/elite_network.json _site/data/ 2>/dev/null || true); (cp data/people_public.json _site/data/ 2>/dev/null || true); (mkdir -p _site/data/graph && cp -r data/db/people/graph/n data/db/people/graph/e _site/data/graph/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp data/stats.json data/stats_detail.json _site/data/ 2>/dev/null || cp data/stats.json _site/data/ 2>/dev/null || true); (cp data/market_detail.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true); (cp data/voice.json _site/data/ 2>/dev/null || true); (cp data/quiz.json _site/data/ 2>/dev/null || true); (cp data/social.json _site/data/ 2>/dev/null || true); (cp data/fun.json _site/data/ 2>/dev/null && python scripts/fun_og.py _site || true); (cp -r data/fun _site/data/ 2>/dev/null || true); (cp -r data/editorial _site/data/ 2>/dev/null || true)
           # 사진은 R2(docs/DATA.md): R2에 올라간 것은 Worker 주소로 바꾸고, 아직 못 올린 것만 Pages에 실음
           (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null || true; cp -r media/ent _site/media/ 2>/dev/null || true)
           python scripts/media_r2.py rewrite _site media || true
