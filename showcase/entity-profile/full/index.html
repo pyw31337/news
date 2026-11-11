@@ -36,6 +36,8 @@
     <footer class="foot"><div><b>NewsBoard 인물 아카이브 전체 시안</b> · 원본 서비스와 분리된 디자인 검토용 화면입니다. 인물 식별·출처·라이선스·사진 메타데이터가 갖춰진 항목만 실제 서비스에 병합하는 것을 전제로 합니다.</div></footer>
   </article>
   <script>
+    const sourceCounts={articles:297};
+    document.querySelectorAll('b').forEach(node=>{if(node.textContent.trim()==='388건')node.textContent=`${sourceCounts.articles}건`});
     const filters=document.querySelectorAll('[data-filter]');const rows=document.querySelectorAll('.event-row');
     filters.forEach(button=>button.addEventListener('click',()=>{filters.forEach(x=>x.setAttribute('aria-pressed','false'));button.setAttribute('aria-pressed','true');const f=button.dataset.filter;rows.forEach(row=>row.hidden=f!=='all'&&row.dataset.group!==f)}));
   </script>
