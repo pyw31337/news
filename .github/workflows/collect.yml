@@ -162,6 +162,13 @@ jobs:
         continue-on-error: true
         timeout-minutes: 3
         run: python scripts/people/coverage.py data
+      - name: 검증된 1계층 인물 이력 보강(Wikidata)
+        # 이름 검색·생성형 작성 없이 고정 QID의 직업·직위·소속·수상·공식 사이트만
+        # 출처 링크와 함께 원장에 쌓는다. 화면 반영 전에는 별도 검토를 거친다.
+        continue-on-error: true
+        timeout-minutes: 3
+        env: { PEOPLE_WIKIDATA_LIMIT: '18' }
+        run: python scripts/people/wikidata_backfill.py data
       - name: 검증된 1계층 인물 초상 보강(Wikidata·Wikimedia)
         # 기사 대표사진·이름 검색 결과는 쓰지 않는다. P18→Commons 라이선스가
         # 모두 확인된 소량(매회 12장)만 WebP와 출처 원장으로 누적한다.

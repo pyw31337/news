@@ -122,7 +122,7 @@ def portrait_retry_pending(checked):
     return (today - last).days < 14
 
 
-def queue_candidates(rows, tiers, portraits, by_id, by_name, limit):
+def queue_candidates(rows, tiers, portraits, wikidata_facts, by_id, by_name, limit):
     # 정치·언론·연예·인플루언서·문화 순서로, 분야 확장과 뉴스 효용을 같이 고려한다.
     kind_rank = {"정치": 0, "언론": 1, "연예": 2, "인플루언서": 3, "문화": 4, "경제": 5, "법조": 6}
     items = []
@@ -139,6 +139,8 @@ def queue_candidates(rows, tiers, portraits, by_id, by_name, limit):
             continue
         bio = choose_bio(row, by_id, by_name)
         needs = ["verified_portrait"]
+        if pid not in wikidata_facts.get("items", {}):
+            needs.append("wikidata_facts")
         if not has_structured_profile(bio):
             needs.append("structured_profile")
         elif not has_cited_events(bio):
@@ -176,6 +178,9 @@ def main():
     portraits = read_json(os.path.join(people_dir, "portraits.json"), {"items": {}, "skipped": {}})
     portraits.setdefault("items", {})
     portraits.setdefault("skipped", {})
+    wikidata_facts = read_json(os.path.join(people_dir, "wikidata_facts.json"), {"items": {}, "skipped": {}})
+    wikidata_facts.setdefault("items", {})
+    wikidata_facts.setdefault("skipped", {})
 
     kind_totals = Counter(category(row) for row in rows)
     kind_profiles = Counter()
@@ -208,7 +213,7 @@ def main():
     reporters = read_json(os.path.join(data_dir, "reporters.json"), [])
     reporters = reporters if isinstance(reporters, list) else []
     history = read_json(os.path.join(data_dir, "reporter_history.json"), {})
-    queue = queue_candidates(rows, tiers, portraits, by_id, by_name, args.queue_limit)
+    queue = queue_candidates(rows, tiers, portraits, wikidata_facts, by_id, by_name, args.queue_limit)
 
     report = {
         "schema": 1,
@@ -251,6 +256,10 @@ def main():
         "portraits": {
             "verified_wikimedia_or_official": len(portraits["items"]),
             "pending_or_not_available": len(portraits["skipped"]),
+        },
+        "wikidata_facts": {
+            "source_linked_profiles": len(wikidata_facts["items"]),
+            "pending_or_not_available": len(wikidata_facts["skipped"]),
         },
         "next_queue": {"count": len(queue), "policy": "Tier-1, non-minor, stable Wikidata ID only"},
     }
