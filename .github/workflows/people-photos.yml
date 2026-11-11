@@ -1,9 +1,10 @@
 name: people-photos
 # 1계층 인물 위키데이터 사실(직위·학력·소속·정당·수상 등)과 자유 이용 사진(위키미디어 공용) → R2 people/pt/(2x WebP).
-# 매주 일요일 06:20 KST(people-tiers 05:10 뒤). 사진은 OIDC로만 R2에 씀(docs/DATA.md). 규칙: docs/PEOPLE.md 「1계층 사진」
+# 매일 06:20 KST. 사실·대표 사진은 일요일에만 전량, 로고·연도별 사진은 매일 증분 수집한다.
+# 사진은 OIDC로만 R2에 씀(docs/DATA.md). 규칙: docs/PEOPLE.md 「1계층 사진」
 on:
   schedule:
-    - cron: '20 21 * * 6'
+    - cron: '20 21 * * *'
   workflow_dispatch:
     inputs:
       limit: { description: '시험용 인원 제한(0=전체)', default: '0' }
@@ -15,6 +16,9 @@ jobs:
   photos:
     runs-on: ubuntu-latest
     timeout-minutes: 240
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+      GITHUB_REPOSITORY: ${{ github.repository }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
@@ -23,26 +27,26 @@ jobs:
         with: { python-version: '3.12' }
       - run: pip install Pillow "opencv-python-headless<5"
       - name: 위키데이터 사실 + 사진(R2)
-        if: ${{ github.event.inputs.facts != '0' }}
         timeout-minutes: 100
-        run: python -u scripts/people/wd_t1.py data --photos pt_out --upload --limit "${{ github.event.inputs.limit || '0' }}"
+        env:
+          FACTS: ${{ github.event.inputs.facts || '1' }}
+          LIMIT: ${{ github.event.inputs.limit || '0' }}
+        run: |
+          # 수동 실행은 facts=0으로 생략할 수 있고, 정기 실행은 일요일에만 전량 갱신한다.
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] && [ "$FACTS" = 0 ]; then exit 0; fi
+          if [ "$GITHUB_EVENT_NAME" = schedule ] && [ "$(TZ=Asia/Seoul date +%u)" != 7 ]; then exit 0; fi
+          python -u scripts/people/wd_t1.py data --photos pt_out --upload --limit "$LIMIT"
       - name: 기관 로고·상징 + 연도별 사진(R2)
         if: always()
         timeout-minutes: 90
         run: python -u scripts/people/wd_media.py data --upload --logos --dated --max-people "${{ github.event.inputs.dated || '1200' }}"
       - name: data 브랜치에 저장
         if: always()
-        working-directory: data
         run: |
-          git config user.name "newsboard-bot"; git config user.email "actions@users.noreply.github.com"
-          git add -A db/people
-          git diff --cached --quiet && exit 0
-          git commit -qm "people-photos: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
-          for n in 1 2 3 4 5 6; do
-            git push -q origin HEAD:data && exit 0
-            sleep $((n * 10 + RANDOM % 10)); git fetch -q origin data && git rebase -q origin/data || { git rebase --abort; git merge -q --no-edit origin/data; }
-          done
-          exit 1
+          python scripts/publish_data_snapshot.py data \
+            db/people/wd_t1.json.gz db/people/photos_t1.json \
+            db/people/logos.json db/people/photos_dated.json \
+            --message "people-photos: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
       - name: 사이트 다시 배포(새 사진·사실 반영)
         env: { GH_TOKEN: "${{ github.token }}" }
         run: gh workflow run pages.yml --ref main || true

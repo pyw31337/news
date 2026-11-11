@@ -47,6 +47,8 @@ NewsBoard는 단순 기사 목록이 아니라, 오늘의 이슈를 **기사 원
 | 정치인 원장 | `.github/workflows/politicians.yml` | `politicians` 브랜치 | 국회 원장과 사진을 별도 갱신한다. 인물 커버리지 계산 시 이 원장을 반드시 같이 읽는다. |
 | 관계·타임라인 | `edges.py`, `graph.py`, `history.yml` | `data/db/people/edges`, `history/h/p` | 관계는 출처·신뢰도·공개 여부를 각각 기록한다. 타임라인은 실제 원문 기사가 있을 때만 화면에 낸다. |
 | 무손실·미디어 | `ledger.yml`, `scripts/media_r2.py`, Worker | R2 `ledger/*`, `pub/*` | 원본은 append-only 스냅샷과 SHA-256 검증, 화면용 미디어는 R2/CDN으로 분리한다. |
+| 로고·연도별 사진 | `wd_media.py`, `people-photos.yml` | R2 `ent/lg/`, `people/ph/`; data `logos.json`, `photos_dated.json` | 정당·단체·학교 등은 Commons의 P154/P158/P94/P41 자유 이용 자산만. 인물은 QID=P180 단독 표기·날짜·단독 얼굴·원본 720px 이상일 때만 연도별 WebP로 쌓는다. |
+| 과거 기사 썸네일 | `og_backfill.py`, `og-thumbs.yml` | R2 `img/og/`; data `db/og/map.json` | 기사 원문 og:image만, robots.txt·도메인 간격을 지키며 480px WebP를 추가 전용으로 저장한다. |
 
 ## 4. 실제 현황: 무엇이 있고, 무엇이 아직 비어 있는가
 
@@ -151,6 +153,7 @@ git status --short
 | 외부 요청 오류 | 403/404/429 등 공급자별 정책·일시 장애 | 지수적 재시도/다음 회차 재시도로 한정하고, 가짜 대체 데이터를 만들지 않는다. |
 | AI 분석 지연 | 한 번의 느린 모델 응답이 원시 수집을 묶어 둘 수 있음 | 기사 원본 수집은 7분, AI 분석은 6분 상한이다. AI 분석이 실패해도 검증된 기존 캐시를 유지하고 원시 기사·인물·사진 저장은 계속한다. |
 | 최신 화면 스냅샷 | `today.json`은 배포용 최신 파일이고 data 브랜치에서는 무시된다 | 누적 검증은 날짜별 `archive/`, 기사 DB, `runlog.json`, 인물 커버리지 원장으로 한다. `origin/data:today.json`이 없다고 데이터 유실로 판단하지 않는다. |
+| 장기 미디어 작업의 data 충돌 | data 브랜치가 압축되거나 다른 수집기가 먼저 저장하면 오래된 checkout rebase가 생성 JSON을 충돌시킬 수 있음 | `publish_data_snapshot.py`가 최신 data 얕은 clone에 **선택한 결과 파일만** 복사해 재시도 push한다. 생성 작업에서 일반 rebase/merge로 전체 `db/`를 밀어 넣지 않는다. |
 | 카드뉴스·4컷만화 | 기사 사실을 템플릿으로 반복하거나 AI가 내용을 날조하면 안 됨 | 하루 카드뉴스·4컷만화는 각각 최대 3개, 누적 아카이브로 관리. 각 컷/카드의 근거를 원문과 대조한다. |
 
 ## 8. 화면·디자인 작업 시 맥락
@@ -178,6 +181,7 @@ git status --short
 | 2026-11-11 | 인물 보강 기반 추가 | 커버리지 분리, QID 기반 Wikidata 사실, Commons 초상 보강, R2 저장 경로를 구현 | 첫 회차: 사실 18명·초상 12명; 화면 노출 전 매칭 검수 필요 |
 | 2026-11-11 | 수집 공정성·정확도 수정 | 정치인 원장 미전달 시 `0` 대신 `data_available:false`; 큐를 10분야 라운드로빈으로 변경 | 다음 collect에서 공개 집계가 교체되는지 확인 |
 | 2026-11-11 | 동시 데이터 커밋·분석 지연 보호 | `_arts.json` 수정/삭제 충돌을 원격 보존 병합으로 바꾸고, 원본 수집·AI 분석에 7분/6분 상한을 설정 | 다음 `collect-news`에서 data 브랜치 새 커밋과 재시도 동작을 확인 |
+| 2026-11-12 | 로고·연도별 사진·과거 썸네일 저장 안정화 | `people-photos`를 매일 증분으로 전환하고, 720px 검증 연도별 사진 및 기관 로고의 인덱스를 새 data snapshot publisher로 저장 | 수동 `people-photos(facts=0)` 뒤 `logos.json`·`photos_dated.json`이 data에 있는지, 화면에서 2장 이상만 변화 과정으로 보이는지 확인 |
 | 2026-11-12 | 최신 수집 검증 | 워크플로 성공, 검증 사실 90명·초상 59명·정치인 원장 3,296명/사진 3,262개 확인 | 다음 예약 회차는 7분/6분 상한을 포함한 최신 main을 사용 |
 | 2026-11-11 | 이 문서 작성 | 여러 에이전트가 같은 기준·수치·금지 규칙을 공유하도록 정본화 | 새 작업은 이 표에 후속 기록 |
 | 2026-11-11 16:00 | 인물·분류 페이지 v2(Grokbot, 사용자 승인 시안 D) | `person/`·`e/` 새 경로 + `assets/nbp/`(원래 `entity/` 화면은 그대로, 유일한 1계층 이름만 새 페이지로 넘김). `scripts/people/person_pages.py`(배포 때 `_site/data/p` 생성, 커밋 없음), `wd_t1.py`·`people-photos.yml` → data `db/people/wd_t1.json.gz`·`photos_t1.json`, R2 `people/pt/`. 사진은 고정 QID의 P18 + Commons 자유 이용 허락만(기존 `portraits.json`·`wikidata_facts.json`은 읽기만). 선관위 동명이인 당선 기록은 정당 불일치 시 제외 | 사진 얼굴 일치는 사람 검수 전(표본 48장 모두 단독 인물 사진). 규칙 `docs/PEOPLE.md` 10장 |

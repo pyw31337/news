@@ -6,7 +6,7 @@
   R2 ent/lg/<hh>/<해시>.webp(512) · _s.webp(128). 목록 db/people/logos.json {items: QID → {...}, skip}.
 연도별 사진: 공용 구조화 데이터 'depicts(P180) = 그 사람 QID'인 파일만(이름 검색·얼굴 추정 없음),
   P180에 다른 사람이 함께 있으면 제외, 날짜(P571 또는 촬영일)가 있어야 함. 지금·5·10·20년 전에 가장 가까운 것.
-  R2 people/ph/<hh>/<해시>.webp(480). 목록 db/people/photos_dated.json {items: 인물id → [{y, k, w, h, src, lic, by, file}], done}.
+  R2 people/ph/<hh>/<해시>.webp(720). 목록 db/people/photos_dated.json {items: 인물id → [{y, k, w, h, src, lic, by, file}], done}.
 추가 전용: 이미 올린 파일은 다시 받지 않음. 회차당 --max-people 명씩 돌아가며 처리.
 """
 import argparse, datetime as dt, gzip, hashlib, io, json, os, re, sys, time, urllib.parse, urllib.request
@@ -168,11 +168,14 @@ def dated(PD, W, up, maxp):
             cands[t] = y
         if len(cands) < 2:
             continue
-        info = imageinfo(list(cands), 480)
+        # 원본도 최소 720px 이상인 자유 이용 사진만 받아 720px WebP로 보관한다.
+        # 화면은 두 장 이상일 때만 '변화 과정'을 보여 주지만, 한 장도 다음 회차의
+        # 비교 기준이 되므로 인덱스에는 축적한다.
+        info = imageinfo(list(cands), 720)
         rows = []
         for t, y in cands.items():
             ii = info.get(t)
-            if not ii or not free(ii['lic']) or min(ii['w'], ii['h']) < 300 or not ii['mime'].startswith('image/j'):
+            if not ii or not free(ii['lic']) or min(ii['w'], ii['h']) < 720 or not ii['mime'].startswith('image/j'):
                 continue
             y = y or year_of(ii['date'])
             if y and 1900 < y <= Y:
@@ -188,7 +191,7 @@ def dated(PD, W, up, maxp):
             if not blob or not one_face(blob):
                 continue
             try:
-                b, bs = webp(blob, 480)
+                b, bs = webp(blob, 720)
             except Exception:
                 continue
             h = hashlib.sha256((pid + '\0' + t).encode()).hexdigest()[:16]
@@ -199,7 +202,7 @@ def dated(PD, W, up, maxp):
                 continue
             out.append({'y': y, 'k': k, 'w': bs[0], 'h': bs[1], 'src': ii['src'], 'lic': ii['lic'], 'by': ii['by'], 'file': t}); break
         out.sort(key=lambda x: x['y'])
-        if len(out) >= 2:
+        if out:
             M['items'][pid] = out; got += 1
         if n % 200 == 0:
             print('  ', n, '/', len(people), '저장', got)

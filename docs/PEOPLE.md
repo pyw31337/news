@@ -95,10 +95,10 @@
 ## 10. 1계층 인물 페이지·사진 (2026-11-11)
 - 화면: `/news/person/?id=<id>`(1계층 5,532명, `nw:` 잡음 id 제외), 분류 `/news/e/?k=g:<유형>:<이름>` 또는 `kind:<분야>`. 옛 `entity/<이름>`은 이름이 한 사람으로 정해질 때(`data/p/names.json`, 점수 1.5배 이상 차이)만 인물 페이지로 넘김.
 - 묶음: `scripts/people/person_pages.py data pol_db _site` → `_site/data/p/`(x 256조각·g 64조각, 약 26MB). `pages.yml`·`collect.yml`이 배포 때마다 만듦(커밋 안 함).
-- 위키데이터 사실·사진: `scripts/people/wd_t1.py`(`people-photos.yml`, 매주 일 06:20 KST + 수동) → data 브랜치 `db/people/wd_t1.json.gz`·`photos_t1.json`, 사진은 R2 `people/pt/<hh>/<hash>.webp`(720px)·`_s.webp`(128px). 공용(Commons)에서 **자유 이용 허락(CC·퍼블릭 도메인·공공누리 등)만**, 128px 미만·비자유는 제외, 저작자·허락을 화면에 표기. 미성년(최근 19년 출생) 제외.
+- 위키데이터 사실·사진: `scripts/people/wd_t1.py`(`people-photos.yml`, 매일 06:20 KST 중 일요일 전량 + 수동) → data 브랜치 `db/people/wd_t1.json.gz`·`photos_t1.json`, 사진은 R2 `people/pt/<hh>/<hash>.webp`(720px)·`_s.webp`(128px). 공용(Commons)에서 **자유 이용 허락(CC·퍼블릭 도메인·공공누리 등)만**, 128px 미만·비자유는 제외, 저작자·허락을 화면에 표기. 미성년(최근 19년 출생) 제외.
 - 사진 우선순위: 위키미디어(R2) → 국회 공식(`data/pol/photos/`) → 검증 초상(`portraits.json`).
 - 인물사전(`people_bio`) 사건: id 키 우선, 이름 키는 동명이인이 없을 때만. **선관위 당선인 명부 행은 그 사람의 알려진 정당과 다르면 버림**(id 키에도 동명이인 당선 기록이 섞여 있었음, 예: 진천군 의원 이재명).
 - 생애 기록 제목은 두 명 이상 모인 학교·기관·직위·정당·소속·위원회 이름과 맞춰 분류 페이지에 연결하고 그 사람을 모임 구성원으로 넣음.
 - 기관 로고·상징(`scripts/people/wd_media.py --logos`, `people-photos.yml`): 1계층이 속한 정당·학교·기관·소속·팀·레이블 QID의 P154 로고 > P158 인장 > P94 문장 > P41 깃발, 공용 자유 이용 허락만. SVG는 공용 썸네일러로 512px 투명 WebP(Worker가 SVG를 내려 주지 않음). R2 `ent/lg/`, 목록 data `db/people/logos.json`(QID → 파일, `g`: 모임 키 → QID). 분류 페이지 첫 화면과 인물 페이지의 분류 링크·관계 칸 앞 18px 로고로 씀.
-- 연도별 사진(`wd_media.py --dated`): 공용 구조화 데이터 **depicts(P180)가 그 사람 QID 하나뿐**인 파일만(이름 검색 없음), 제목에 여럿·행사 표지(and·with·회담·부부 등)가 있으면 제외, 얼굴 검출로 **얼굴이 정확히 하나·세로형·얼굴 폭 15% 이상**일 때만, 날짜(P571·촬영일) 필수. 지금·5·10·20년 전에 가장 가까운 것. R2 `people/ph/`(480px), data `db/people/photos_dated.json`. 2장 미만이면 화면에서 숨김. 누구인지는 사람이 검수하지 않았음.
+- 연도별 사진(`wd_media.py --dated`): 공용 구조화 데이터 **depicts(P180)가 그 사람 QID 하나뿐**인 파일만(이름 검색 없음), 제목에 여럿·행사 표지(and·with·회담·부부 등)가 있으면 제외, 얼굴 검출로 **얼굴이 정확히 하나·세로형·얼굴 폭 15% 이상**일 때만, 날짜(P571·촬영일) 필수. 원본 짧은 변 720px 이상만 받아 지금·5·10·20년 전에 가장 가까운 720px WebP를 보관한다. R2 `people/ph/`, data `db/people/photos_dated.json`. 한 장도 누적하되 화면의 변화 과정은 2장 이상일 때만 보인다. 누구인지는 사람이 검수하지 않았음.
 - 기사 대표 이미지(`scripts/og_backfill.py`, `og-thumbs.yml` 3시간마다 2,500건): 인물 기사 타임라인 → 기사 DB 순. robots.txt 준수(네이버 뉴스는 금지라 제외), news.google.com 중계 주소 제외, 사이트별 1.5초 간격. R2 `img/og/`(긴 변 480px), data `db/og/map.json`(추가 전용). 인물 페이지 '보도' 사진 카드에 씀. 과거 히스토리(`history/h/p`) 150만 건은 원문 주소가 없어 대상이 아님.
