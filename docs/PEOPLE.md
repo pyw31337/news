@@ -65,7 +65,7 @@
 - 판정: 200 `ok` · 301/308 영구 이동 → **새 주소로 자동 교체**(`repaired`, 원래 주소는 `o`) · 302/307 `redirect` · 제목 해시 변화 `changed` ·
   404 1회 `missing` → 2회 연속(410은 즉시) `dead` · 깊은 주소가 홈페이지로 넘어가면 사실상 404로 봄 · 401/403/429/5xx/시간초과 `error`(재시도).
 - 다시 찾기: 위키백과 넘겨주기, 위키데이터 병합(새 Q번호), 같은 출처의 https/www/모바일/AMP 변형 중 제목이 같은 주소 → `refound`.
-- 해외 IP를 막는 국내 공공 사이트(*.go.kr·*.or.kr)는 GitHub에서 막히면 `geo`(미확인)로만 표시. 맥미니에서 `LINK_REGION=kr python3 scripts/people/linkcheck.py data legal`로 확인 가능.
+- 해외 IP를 막거나 늦추는 국내 사이트(*.go.kr·*.or.kr·네이버·다음)는 GitHub에서 막히면 `geo`(미확인)로만 표시. 맥미니에서 `LINK_REGION=kr python3 scripts/people/linkcheck.py data legal`로 확인 가능.
 - 저장: 현재 상태 `db/links/state/c<주기>-b<칸>.json.gz`(그날 칸만 다시 씀 → git 용량 증가 최소), 모든 점검 결과 `db/links/log/YYYY-MM/*.jsonl.gz`(추가 전용), 요약 `db/links/summary.json`, 위키데이터 상태 `db/links/wikidata_state.json.gz`.
 
 ## 8. 알려진 위험 (11.11 점검)

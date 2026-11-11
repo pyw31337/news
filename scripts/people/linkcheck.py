@@ -28,7 +28,7 @@ LINK_SEC = int(os.environ.get('LINK_SEC', 1500))
 HOST_GAP = float(os.environ.get('LINK_HOST_GAP', 2.0))
 REGION = os.environ.get('LINK_REGION', 'global')      # 'kr'이면 국내 공공 사이트도 판정
 CYCLE = {1: 14, 2: 14, 3: 30}
-GEO_HOSTS = re.compile(r'(\.go\.kr|\.or\.kr|assembly\.go\.kr|nec\.go\.kr|scourt\.go\.kr|ccourt\.go\.kr)$')
+GEO_HOSTS = re.compile(r'(naver\.com|daum\.net|\.go\.kr|\.or\.kr|assembly\.go\.kr|nec\.go\.kr|scourt\.go\.kr|ccourt\.go\.kr)$')
 SKIP = re.compile(r'^https?://(?:[^/]*\.)?github\.io/|^https?://news\.google\.com/rss/|^https?://[^/]+/?$')   # 우리 사이트·구글 중계·홈페이지 자체
 socket.setdefaulttimeout(15)
 
