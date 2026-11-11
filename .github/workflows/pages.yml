@@ -39,7 +39,7 @@ jobs:
           python scripts/sanitize_today.py data/today.json
           # 기존에 게시된 데이터도 같은 사진 출처·동명이인 규칙으로 재검사한다.
           # 검증되지 않은 사진은 배포 중단 대신 이니셜 표기로 안전하게 대체한다.
-          python scripts/portrait_audit.py data/today.json --entity-media data/entity_media.json --asset-dir assets/people --output data/portrait_audit.json --sanitize
+          python scripts/portrait_audit.py data/today.json --entity-media data/entity_media.json --entity-pool data/entity_pool.json --asset-dir assets/people --output data/portrait_audit.json --sanitize
           for f in global.json status.json; do curl -fsSL --retry 3 "$base/$f" -o "data/$f" || true; done
           # data 브랜치의 fun.json이 수집 직전 판본일 수 있으므로, 방금 받은 today.json으로
           # 학습 콘텐츠를 다시 조립한다. 외부 LLM 호출은 하지 않아 배포가 데이터 수집을 막지 않는다.

@@ -75,7 +75,20 @@ def reason_for(entity):
     return "approved"
 
 
-def audit(data, entity_media, asset_dir, sanitize):
+def entity_pool_by_name(path):
+    raw = load(path, {})
+    rows = raw.get("entities", []) if isinstance(raw, dict) else raw
+    result = {}
+    for row in rows if isinstance(rows, list) else []:
+        name = row.get("name") if isinstance(row, dict) else ""
+        if not name:
+            continue
+        if name not in result or row.get("score", 0) > result[name].get("score", 0):
+            result[name] = row
+    return result
+
+
+def audit(data, entity_media, asset_dir, sanitize, pool_by_name):
     items, changes = [], []
     for entity in data.get("entities") or []:
         status = reason_for(entity)
@@ -117,10 +130,16 @@ def audit(data, entity_media, asset_dir, sanitize):
             continue
         name = key.split(":", 1)[1]
         url = value.get("url", "") if isinstance(value, dict) else ""
-        if title_only(name):
-            cache_issues.append({"name": name, "reason": "title_or_nonperson", "url": url})
-        elif not trusted(url):
-            cache_issues.append({"name": name, "reason": "unverified_source", "url": url})
+        entity = pool_by_name.get(name)
+        if entity:
+            probe = dict(entity, type="person", visual={"url": url})
+            reason = reason_for(probe)
+            if entity.get("type") != "person":
+                reason = "cache_type_mismatch"
+        else:
+            reason = "title_or_nonperson" if title_only(name) else ("approved" if trusted(url) else "unverified_source")
+        if reason != "approved":
+            cache_issues.append({"name": name, "reason": reason, "url": url})
 
     counts = Counter(x["status"] for x in items)
     return {
@@ -145,19 +164,27 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("data", nargs="?", default="data/today.json")
     parser.add_argument("--entity-media", default="data/entity_media.json")
+    parser.add_argument("--entity-pool", default="data/entity_pool.json")
     parser.add_argument("--asset-dir", default="assets/people")
     parser.add_argument("--output", default="data/portrait_audit.json")
     parser.add_argument("--sanitize", action="store_true")
+    parser.add_argument("--prune-cache", action="store_true")
     args = parser.parse_args()
 
     data = load(args.data, {})
-    report = audit(data, load(args.entity_media, {}), args.asset_dir, args.sanitize)
+    entity_media = load(args.entity_media, {})
+    report = audit(data, entity_media, args.asset_dir, args.sanitize, entity_pool_by_name(args.entity_pool))
     os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
     if args.sanitize:
         with open(args.data, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
+    if args.prune_cache:
+        for issue in report["entity_media_cache_issues"]:
+            entity_media.pop("person:" + issue["name"], None)
+        with open(args.entity_media, "w", encoding="utf-8") as f:
+            json.dump(entity_media, f, ensure_ascii=False, separators=(",", ":"))
     summary = report["summary"]
     print(
         "portrait_audit: "
