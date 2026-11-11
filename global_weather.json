@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11T17:08:19.907419+09:00",
+  "updated": "2026-11-11T13:49:18.990521+09:00",
   "alerts_count": 25,
   "alerts": [
     {
@@ -33,6 +33,22 @@
       "headline_ko": "Val Verde 홍수 경보",
       "headline_en": "Val Verde Flood Warning",
       "desc": "...The National Weather Service in Austin/San Antonio has issued a\nFlood Warning for the following rivers in Texas...\n\nDevils River At Cauthorn Ranch Near Juno affecting Val Verde\nCounty.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Devils River at Cauthorn Ranch Near Juno.\n\n* WHEN...Until Wedne"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.5609965cd082440fb4cc153cfc1f4b8fdc50e756.001.1",
+      "t": "2026-11-10 18:05",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Mason",
+      "area_en": "Mason",
+      "event": "홍수 경보",
+      "event_en": "Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "Mason 홍수 경보",
+      "headline_en": "Mason Flood Warning",
+      "desc": "...The National Weather Service in Seattle has issued a Flood Warning\nfor the following rivers in Washington...\n\nSkokomish River At Potlatch affecting Mason County.\n\n.Heavy rainfall over the Olympic Basin today will lead to minor\nflooding on the Skokomish river through tonight.\n\n* WHAT...Minor flood"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.fd02ed8d4416613ada171cea96e88e0cafa64a88.001.1",
@@ -245,22 +261,6 @@
   ],
   "quakes": [
     {
-      "id": "us7000txhi",
-      "mag": 5.1,
-      "place": "Balleny Islands region",
-      "t": "2026-11-11 06:21",
-      "depth": 10,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txhi"
-    },
-    {
-      "id": "us7000txgv",
-      "mag": 5,
-      "place": "152 km SE of Kuril’sk, Russia",
-      "t": "2026-11-11 05:26",
-      "depth": 30.338,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txgv"
-    },
-    {
       "id": "us7000txgg",
       "mag": 4.6,
       "place": "130 km ENE of Hasaki, Japan",
@@ -323,6 +323,22 @@
       "t": "2026-11-10 15:23",
       "depth": 58.52,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txbc"
+    },
+    {
+      "id": "us7000txb8",
+      "mag": 5.6,
+      "place": "43 km S of Puerto San José, Guatemala",
+      "t": "2026-11-10 14:54",
+      "depth": 35,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txb8"
+    },
+    {
+      "id": "us7000txb6",
+      "mag": 4.7,
+      "place": "Java, Indonesia",
+      "t": "2026-11-10 14:31",
+      "depth": 101.214,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txb6"
     }
   ],
   "cities": [
@@ -334,11 +350,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 10.0,
-      "apparent_temp": 6.4,
-      "humidity": 48,
+      "temp": 11.7,
+      "apparent_temp": 8.4,
+      "humidity": 44,
       "code": 0,
-      "wind": 9.8
+      "wind": 8.4
     },
     {
       "id": "losangeles",
@@ -348,11 +364,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 17.5,
-      "apparent_temp": 15.8,
-      "humidity": 56,
+      "temp": 19.6,
+      "apparent_temp": 19.1,
+      "humidity": 55,
       "code": 0,
-      "wind": 9.1
+      "wind": 4.1
     },
     {
       "id": "london",
@@ -362,11 +378,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 8.4,
-      "apparent_temp": 5.9,
-      "humidity": 91,
+      "temp": 8.6,
+      "apparent_temp": 6.0,
+      "humidity": 90,
       "code": 3,
-      "wind": 12.2
+      "wind": 13.3
     },
     {
       "id": "paris",
@@ -376,11 +392,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 12.2,
-      "apparent_temp": 11.4,
-      "humidity": 95,
+      "temp": 12.5,
+      "apparent_temp": 12.3,
+      "humidity": 96,
       "code": 3,
-      "wind": 7.9
+      "wind": 4.8
     },
     {
       "id": "frankfurt",
@@ -390,11 +406,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 6.3,
-      "apparent_temp": 4.7,
-      "humidity": 96,
-      "code": 80,
-      "wind": 3.8
+      "temp": 5.7,
+      "apparent_temp": 4.1,
+      "humidity": 95,
+      "code": 61,
+      "wind": 2.2
     },
     {
       "id": "tokyo",
@@ -404,11 +420,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 13.7,
-      "apparent_temp": 12.8,
-      "humidity": 65,
-      "code": 1,
-      "wind": 1.6
+      "temp": 14.2,
+      "apparent_temp": 11.9,
+      "humidity": 47,
+      "code": 0,
+      "wind": 4.6
     },
     {
       "id": "beijing",
@@ -418,11 +434,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 10.8,
-      "apparent_temp": 9.1,
-      "humidity": 72,
+      "temp": 9.8,
+      "apparent_temp": 7.7,
+      "humidity": 63,
       "code": 0,
-      "wind": 4.4
+      "wind": 2.9
     },
     {
       "id": "singapore",
@@ -432,11 +448,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 25.9,
-      "apparent_temp": 31.4,
-      "humidity": 95,
-      "code": 80,
-      "wind": 8.4
+      "temp": 31.0,
+      "apparent_temp": 36.3,
+      "humidity": 61,
+      "code": 51,
+      "wind": 3.4
     },
     {
       "id": "sydney",
@@ -446,11 +462,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 23.6,
-      "apparent_temp": 23.1,
-      "humidity": 51,
-      "code": 0,
-      "wind": 9.4
+      "temp": 27.1,
+      "apparent_temp": 25.3,
+      "humidity": 33,
+      "code": 3,
+      "wind": 13.7
     },
     {
       "id": "toronto",
@@ -460,11 +476,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 5.1,
-      "apparent_temp": 1.8,
-      "humidity": 80,
+      "temp": 5.9,
+      "apparent_temp": 3.1,
+      "humidity": 85,
       "code": 0,
-      "wind": 10.5
+      "wind": 8.7
     },
     {
       "id": "dubai",
@@ -474,11 +490,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 30.3,
-      "apparent_temp": 32.4,
-      "humidity": 54,
+      "temp": 29.3,
+      "apparent_temp": 33.6,
+      "humidity": 65,
       "code": 0,
-      "wind": 12.0
+      "wind": 4.8
     },
     {
       "id": "saopaulo",
@@ -488,12 +504,21 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 14.2,
-      "apparent_temp": 14.3,
-      "humidity": 98,
+      "temp": 15.0,
+      "apparent_temp": 14.8,
+      "humidity": 94,
       "code": 3,
-      "wind": 7.2
+      "wind": 10.4
     }
   ],
-  "stories": []
+  "stories": [
+    {
+      "id": "g08cdbe7f",
+      "title": "Cop31 as it happened: ‘Everything and everyone we love is at stake,’ Greta Thunberg warns",
+      "press": "Guardian Environment",
+      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/afp_6af3a30f98ea-1794351887.jpg?resize=1920%2C1440",
+      "score": 12.0,
+      "url": "g/g08cdbe7f"
+    }
+  ]
 }
