@@ -87,7 +87,8 @@ def photo(cid):
         return {'u': u, 's': u, 'w': 167, 'h': 230, 'src': 'https://open.assembly.go.kr', 'lic': '국회 공식 사진', 'by': '대한민국 국회', 'o': 'na'}
     q = PORT.get(cid)
     if q:
-        return {'u': q['file'], 's': q['file'], 'w': 720, 'h': 720, 'src': q['source'], 'lic': q['license'], 'by': q.get('author', '')[:80], 'o': 'wm'}
+        f = re.sub(r'^/?(?:news/)?media/', R2, q['file'])  # media/ent/… 는 R2 ent/… 로 옮겨짐
+        return {'u': f, 's': f, 'w': 720, 'h': 720, 'src': q['source'], 'lic': q['license'], 'by': q.get('author', '')[:80], 'o': 'wm'}
     return None
 
 
