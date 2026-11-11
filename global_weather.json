@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-12T03:48:53.006777+09:00",
-  "alerts_count": 25,
+  "updated": "2026-11-12T02:48:49.861588+09:00",
+  "alerts_count": 26,
   "alerts": [
     {
       "id": "urn:oid:2.49.0.1.840.0.27c4a3005b47304126e42a25d6cb6d3b48d027c6.002.1",
@@ -245,14 +245,6 @@
   ],
   "quakes": [
     {
-      "id": "us7000txm8",
-      "mag": 5.1,
-      "place": "80 km W of Panguna, Papua New Guinea",
-      "t": "2026-11-11 17:38",
-      "depth": 58.822,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txm8"
-    },
-    {
       "id": "us7000txjg",
       "mag": 5.1,
       "place": "South Sandwich Islands region",
@@ -323,6 +315,14 @@
       "t": "2026-11-11 05:12",
       "depth": 10,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txgq"
+    },
+    {
+      "id": "us7000txgg",
+      "mag": 4.6,
+      "place": "130 km ENE of Hasaki, Japan",
+      "t": "2026-11-11 03:56",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txgg"
     }
   ],
   "cities": [
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 17.6,
-      "apparent_temp": 14.7,
-      "humidity": 39,
-      "code": 3,
-      "wind": 9.4
+      "temp": 17.0,
+      "apparent_temp": 13.9,
+      "humidity": 40,
+      "code": 0,
+      "wind": 10.9
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 27.9,
-      "apparent_temp": 25.9,
-      "humidity": 18,
+      "temp": 25.2,
+      "apparent_temp": 23.0,
+      "humidity": 26,
       "code": 0,
-      "wind": 4.0
+      "wind": 6.2
     },
     {
       "id": "london",
@@ -362,11 +362,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 9.6,
-      "apparent_temp": 7.7,
-      "humidity": 79,
+      "temp": 9.8,
+      "apparent_temp": 8.3,
+      "humidity": 82,
       "code": 3,
-      "wind": 6.5
+      "wind": 5.4
     },
     {
       "id": "paris",
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 13.5,
-      "apparent_temp": 13.5,
-      "humidity": 85,
-      "code": 2,
-      "wind": 2.2
+      "temp": 14.1,
+      "apparent_temp": 14.0,
+      "humidity": 84,
+      "code": 3,
+      "wind": 3.3
     },
     {
       "id": "frankfurt",
@@ -392,7 +392,7 @@
       "lon": 8.6821,
       "temp": 8.8,
       "apparent_temp": 7.8,
-      "humidity": 97,
+      "humidity": 98,
       "code": 3,
       "wind": 4.3
     },
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 8.7,
-      "apparent_temp": 7.0,
-      "humidity": 79,
-      "code": 1,
-      "wind": 3.2
+      "temp": 9.4,
+      "apparent_temp": 7.8,
+      "humidity": 77,
+      "code": 2,
+      "wind": 3.4
     },
     {
       "id": "beijing",
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 3.1,
-      "apparent_temp": 0.5,
+      "temp": 3.5,
+      "apparent_temp": 1.0,
       "humidity": 92,
       "code": 0,
-      "wind": 5.2
+      "wind": 5.1
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 23.9,
-      "apparent_temp": 29.4,
+      "temp": 24.0,
+      "apparent_temp": 29.5,
       "humidity": 100,
       "code": 45,
-      "wind": 3.0
+      "wind": 3.3
     },
     {
       "id": "sydney",
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 19.1,
-      "apparent_temp": 19.2,
+      "temp": 18.9,
+      "apparent_temp": 18.8,
       "humidity": 90,
       "code": 0,
-      "wind": 17.3
+      "wind": 18.0
     },
     {
       "id": "toronto",
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 11.4,
-      "apparent_temp": 8.9,
-      "humidity": 65,
+      "temp": 11.5,
+      "apparent_temp": 9.0,
+      "humidity": 71,
       "code": 3,
-      "wind": 9.2
+      "wind": 10.8
     },
     {
       "id": "dubai",
@@ -474,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 28.5,
-      "apparent_temp": 29.8,
-      "humidity": 56,
+      "temp": 28.6,
+      "apparent_temp": 30.1,
+      "humidity": 57,
       "code": 0,
-      "wind": 13.7
+      "wind": 13.8
     },
     {
       "id": "saopaulo",
@@ -488,11 +488,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 26.4,
-      "apparent_temp": 26.7,
-      "humidity": 45,
+      "temp": 26.5,
+      "apparent_temp": 27.7,
+      "humidity": 46,
       "code": 51,
-      "wind": 5.6
+      "wind": 4.2
     }
   ],
   "stories": []
