@@ -5155,7 +5155,8 @@ function entity(n){
       } : null);
 
       const rawNews = pDet?.news || [];
-      const synTl = (d?.multiSources?.portalNews || []).filter(x => x.url).map(x => ({   /* 실제로 모은 기사만(원문 주소) */
+      const dn = (res?.pol ? getOrSynthesizeDossier(n, { pol: pDet, bio }) : null) || d;   /* 상세 자료를 받은 뒤 실제 기사로 다시 고름 */
+      const synTl = (dn?.multiSources?.portalNews || []).filter(x => x.url).map(x => ({   /* 실제로 모은 기사만(원문 주소) */
         t: (x.date || '').replace(/\./g, '-'),
         title: x.title,
         press: x.press,
@@ -5183,14 +5184,14 @@ function entity(n){
           visual: { url: profilePhoto({ name: n }, pDet), kind: 'portrait' },
           aliases: d?.aliases || [pDet?.en, pDet?.hanja].filter(Boolean),
           desc: d?.desc || (pDet?.party ? (pDet.party + (pDet.district ? ' · ' + pDet.district : '') + ' 제' + ((pDet.ages || []).slice(-1)[0] || 22) + '대 국회의원') : '인물'),
-          multiSources: d?.multiSources,
+          multiSources: dn?.multiSources,
           quotes: []
         };
         if(!D.entities) D.entities = [];
         D.entities.push(e);
       } else {
-        if(!e.multiSources && d?.multiSources){
-          e.multiSources = d.multiSources;
+        if(!e.multiSources && dn?.multiSources){
+          e.multiSources = dn.multiSources;
         }
       }
 
