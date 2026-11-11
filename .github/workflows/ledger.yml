@@ -1,0 +1,52 @@
+name: ledger
+# 무손실 데이터 층(docs/DATA.md). 원본 스냅샷(매시 :50) → R2 raw/, 분석 층 보관(매일 03:30 KST) → R2 ana/, 무결성 점검(매주 월 04:40 KST).
+# 목록(manifest)·체크포인트·대기열은 ledger 브랜치(추가만). R2 쓰기는 Worker(GitHub OIDC)만 가능, 키 없음.
+on:
+  schedule:
+    - cron: '50 * * * *'     # 원본 스냅샷
+    - cron: '30 18 * * *'    # 03:30 KST 분석 층 보관
+    - cron: '40 19 * * 0'    # 월 04:40 KST 무결성 점검
+  workflow_dispatch:
+    inputs:
+      task: { description: 'snapshot | archive | verify | all', default: 'snapshot' }
+permissions: { contents: write, id-token: write }
+concurrency: { group: ledger, cancel-in-progress: false }
+jobs:
+  ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: scripts/ledger }
+      - name: 할 일
+        id: t
+        run: |
+          T="${{ github.event.inputs.task }}"
+          case "${{ github.event.schedule }}" in '30 18 * * *') T=archive;; '40 19 * * 0') T=verify;; '50 * * * *') T=snapshot;; esac
+          echo "task=${T:-snapshot}" >> "$GITHUB_OUTPUT"; echo "할 일: ${T:-snapshot}"
+      - name: ledger·data 브랜치
+        run: |
+          repo="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git clone -q --branch ledger "$repo" led
+          case "${{ steps.t.outputs.task }}" in snapshot|all) git clone -q --depth 1 --branch data "$repo" data;; esac
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: 원본 스냅샷 → R2 raw/
+        if: contains('snapshot all', steps.t.outputs.task)
+        run: python scripts/ledger/snapshot.py data led collect
+      - name: 분석 층 → R2 ana/
+        if: contains('archive all', steps.t.outputs.task)
+        run: python scripts/ledger/archive.py led
+      - name: 무결성 점검
+        id: v
+        if: contains('verify all', steps.t.outputs.task)
+        continue-on-error: true
+        run: python scripts/ledger/verify.py led
+      - name: ledger 브랜치에 기록(추가만)
+        if: always()
+        run: |
+          bash scripts/ledger/push.sh led "ledger ${{ steps.t.outputs.task }} $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+      - name: 점검 결과
+        if: steps.v.outcome == 'failure'
+        run: |
+          echo "무결성 점검 실패 - led/state/verify.jsonl 마지막 줄 확인"; tail -1 led/state/verify.jsonl; exit 1

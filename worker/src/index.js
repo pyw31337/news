@@ -224,6 +224,57 @@ async function branchBackup(env, req, url) {
   await env.BK.put('branches/' + k, req.body, { httpMetadata: { contentType: 'application/octet-stream' } });
   return J(env, req, { ok: true, k, bytes: n });
 }
+// ── R2 공개 파일(사진·큰 데이터): GET /m/<경로> = R2 pub/<경로>. 쓰기는 GitHub Actions(OIDC)만 PUT /pub/put?k=<경로> ──
+// 사진(img/·ent/·pol/)은 이름에 내용 해시가 있어 1년 캐시(immutable), data/는 1시간. Cloudflare CDN 캐시(caches.default)를 먼저 봄.
+const PUB_KEY = k => typeof k === 'string' && k.length <= 300 && /^(img|ent|pol|people|data)\/[^\\]+$/.test(k) && !k.includes('..') && !k.includes('//');
+const MIME = { webp: 'image/webp', jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', json: 'application/json; charset=utf-8', gz: 'application/gzip' };
+async function pubGet(env, req, ctx, k) {
+  if (!PUB_KEY(k)) return new Response('bad', { status: 400 });
+  const cache = caches.default, ck = new Request(new URL(req.url).origin + '/m/' + encodeURI(k), { method: 'GET' });
+  let res = await cache.match(ck);
+  if (!res) {
+    const o = await env.BK.get('pub/' + k);
+    if (!o) return new Response('not found', { status: 404, headers: { 'Cache-Control': 'public, max-age=300', ...cors(env, req) } });
+    const ext = k.split('.').pop().toLowerCase(), age = k.startsWith('data/') ? 3600 : 31536000;
+    res = new Response(o.body, { headers: { 'Content-Type': o.httpMetadata?.contentType || MIME[ext] || 'application/octet-stream', ETag: o.httpEtag,
+      'Cache-Control': 'public, max-age=' + age + (age > 3600 ? ', immutable' : ''), 'Access-Control-Allow-Origin': '*', 'X-Content-Type-Options': 'nosniff' } });
+    ctx && ctx.waitUntil(cache.put(ck, res.clone()));
+  }
+  if (req.headers.get('If-None-Match') && req.headers.get('If-None-Match') === res.headers.get('ETag')) return new Response(null, { status: 304, headers: res.headers });
+  return res;
+}
+async function pubPut(env, req, url) {
+  if (!await ghActions((req.headers.get('Authorization') || '').replace(/^Bearer\s+/i, ''))) return J(env, req, { error: 'auth' }, 401);
+  const k = url.searchParams.get('k') || '';
+  if (!PUB_KEY(k) || !req.body) return J(env, req, { error: 'bad' }, 400);
+  const ext = k.split('.').pop().toLowerCase();
+  const o = await env.BK.put('pub/' + k, req.body, { httpMetadata: { contentType: MIME[ext] || 'application/octet-stream' }, customMetadata: { sha256: req.headers.get('X-Sha256') || '' } });
+  return J(env, req, { ok: true, k, bytes: o.size, etag: o.etag });
+}
+// ── 무손실 원장(ledger): 추가 전용. PUT /ledger/put?k=raw/<출처>/YYYY/MM/DD/<이름> 또는 ana/<표>/YYYY/MM/<이름>
+// 같은 키가 이미 있으면 덮어쓰지 않음(같은 내용이면 200 dup, 다르면 409). 목록·해시 확인은 GET /ledger/list?prefix=(OIDC)
+const LEDGER_KEY = k => typeof k === 'string' && /^(raw|ana|manifest)\/[a-z0-9_-]{1,40}\/(\d{4}\/\d{2}(\/\d{2})?\/)?[A-Za-z0-9._-]{1,120}$/.test(k);
+async function ledgerPut(env, req, url) {
+  if (!await ghActions((req.headers.get('Authorization') || '').replace(/^Bearer\s+/i, ''))) return J(env, req, { error: 'auth' }, 401);
+  const k = url.searchParams.get('k') || '', sha = (req.headers.get('X-Sha256') || '').toLowerCase();
+  if (!LEDGER_KEY(k) || !/^[0-9a-f]{64}$/.test(sha)) return J(env, req, { error: 'bad' }, 400);
+  const cur = await env.BK.head('ledger/' + k);
+  if (cur) return J(env, req, { ok: cur.customMetadata?.sha256 === sha, dup: true, k, bytes: cur.size }, cur.customMetadata?.sha256 === sha ? 200 : 409);
+  const buf = await req.arrayBuffer();
+  const got = [...new Uint8Array(await crypto.subtle.digest('SHA-256', buf))].map(b => b.toString(16).padStart(2, '0')).join('');
+  if (got !== sha) return J(env, req, { error: 'sha_mismatch' }, 422);
+  await env.BK.put('ledger/' + k, buf, { httpMetadata: { contentType: 'application/gzip' }, customMetadata: { sha256: sha, at: new Date().toISOString() }, onlyIf: { etagDoesNotMatch: '*' } });
+  return J(env, req, { ok: true, k, bytes: buf.byteLength });
+}
+async function ledgerList(env, req, url) {
+  if (!await ghActions((req.headers.get('Authorization') || '').replace(/^Bearer\s+/i, ''))) return J(env, req, { error: 'auth' }, 401);
+  const prefix = 'ledger/' + (url.searchParams.get('prefix') || '');
+  const out = []; let cur = url.searchParams.get('cursor') || undefined, n = 0;
+  do { const l = await env.BK.list({ prefix, cursor: cur, limit: 1000, include: ['customMetadata'] });
+    for (const o of l.objects) out.push([o.key.slice(7), o.size, o.customMetadata?.sha256 || '']);
+    cur = l.truncated ? l.cursor : null; n++; } while (cur && n < 5);
+  return J(env, req, { objects: out, cursor: cur || null });
+}
 // ── 무료 한도 사용량(GitHub Actions만): D1 두 DB 크기, R2 백업 용량. quota.yml이 80% 넘으면 알림 ──
 async function usage(env, req) {
   if (!await ghActions((req.headers.get('Authorization') || '').replace(/^Bearer\s+/i, ''))) return J(env, req, { error: 'auth' }, 401);
@@ -395,12 +446,16 @@ async function events(env, req, url) {
     { headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=120', ...cors(env, req) } });
 }
 export default {
-  async fetch(req, env) {
+  async fetch(req, env, ctx) {
     const url = new URL(req.url), p = url.pathname;
     if (req.method === 'OPTIONS') return new Response(null, { headers: cors(env, req) });
     try {
-      if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env), keys: { id_salt: env.ID_SALT ? 'secret' : 'auto', archive: env.ARCHIVE_KEY ? 'key+github' : 'github' } });   // 값은 절대 내보내지 않음
+      if (p === '/' || p === '/health') return J(env, req, { ok: true, login: providers(env), keys: { id_salt: env.ID_SALT ? 'secret' : 'auto', archive: env.ARCHIVE_KEY ? 'key+github' : 'github' }, media: true, ledger: true });   // 값은 절대 내보내지 않음
       if (p === '/backup/put' && req.method === 'PUT') return branchBackup(env, req, url);
+      if (p.startsWith('/m/') && (req.method === 'GET' || req.method === 'HEAD')) return await pubGet(env, req, ctx, decodeURIComponent(p.slice(3)));
+      if (p === '/pub/put' && req.method === 'PUT') return await pubPut(env, req, url);
+      if (p === '/ledger/put' && req.method === 'PUT') return await ledgerPut(env, req, url);
+      if (p === '/ledger/list' && req.method === 'GET') return await ledgerList(env, req, url);
       if (p === '/usage' && req.method === 'GET') return usage(env, req);
       if (p.startsWith('/archive/') && env.AR) return archive(env, req, url, p);
       if (p === '/lb') return await leaderboard(env, req, url);
