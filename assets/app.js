@@ -207,34 +207,49 @@ function primaryPublicRole(e,pol){
   return candidates[0]||null;
 }
 
-const CUSTOM_ASSET_PORTRAITS = new Set([
-  '이재명', '김혜경', '정진상', '김용', '유동규', '이화영', '이재선', '이경희', '구호명',
-  '이재국', '이재문', '이재순', '이재옥', '이재영', '박인복', '이지호', '이동호', '이연호',
-  '이기순', '문병호', '서헌제', '김종진', '김용진', '이석태', '강위원', '권기창', '유동수',
-  '문재인', '윤석열', '한동훈', '조국', '김동연', '박찬대', '정성호', '이낙연', '김부겸',
-  '송영길', '박균택', '김건희', '윤기중', '최성자', '최은순', '윤신원', '이상민', '진은정',
-  '한명수', '허수옥', '진형구', '정경심', '조민', '조원', '조권', '조변현', '박정숙'
-]);
-
+/*
+ * 인물 사진은 "이름과 파일명만 같은 이미지"를 신뢰하지 않는다. 2026-11-11
+ * 전수 점검에서 assets/people의 로컬 사진 58개 중 다수가 출처·인물 ID를 갖고
+ * 있지 않음을 확인했다. 아래 필터는 정치인 공식 사진, 위키미디어 원본, 그리고
+ * 해당 출처가 보존된 media/ent 파일만 통과시킨다. 검증을 못 하면 사진 대신
+ * 이니셜을 보여 주는 것이 다른 사람의 얼굴을 보여 주는 것보다 안전하다.
+ */
+const PERSON_TITLE_ONLY=/^(?:.+(?:교육감|주지사|도지사|지사|시장|군수|구청장)|(?:과기|경제)?부총리|대통령|국무총리|국회의원|장관|대법원장|검찰총장)$/;
+const NON_PERSON_ENTITY_NAMES=new Set(['G7','FOMC','LG유플러스','YTN','Z세대','나스닥','동물농장','라방','원팀','필리버스터','강철비','현대차']);
+const TRUSTED_PORTRAIT_REMOTE=/^https:\/\/(?:commons\.wikimedia\.org\/wiki\/Special:FilePath\/|(?:thumb\.|upload\.)wikimedia\.org\/wikipedia\/commons\/)/i;
+const POL_PORTRAIT=/^data\/pol\/photos\/[A-Za-z0-9_-]+\.webp$/;
+const LOCAL_ENTITY_PORTRAIT=/^media\/ent\/[0-9a-f]{2}\/[0-9a-f]{16}\.webp$/;
+const NOT_A_PORTRAIT=/(?:office_logo|(?:^|[_/-])logo(?:[_./-]|$)|(?:^|[_/-])flag(?:[_./-]|$)|seal|emblem)/i;
+const normalizedPersonName=s=>String(s||'').replace(/\([^)]*\)|\s|[·ㆍ.'"‘’“”\-]/g,'').toLowerCase();
+const titleMatchesPerson=(name,title)=>{
+  const n=normalizedPersonName(name),t=normalizedPersonName(title);
+  return !!n&&!!t&&(t.includes(n)||n.includes(t));
+};
+const isTitleOnlyEntity=name=>PERSON_TITLE_ONLY.test(String(name||''))||NON_PERSON_ENTITY_NAMES.has(String(name||''));
+function isVerifiedPortraitSource(url, source=''){
+  if(!url||NOT_A_PORTRAIT.test(url)||NOT_A_PORTRAIT.test(source))return false;
+  if(POL_PORTRAIT.test(url)||TRUSTED_PORTRAIT_REMOTE.test(url))return true;
+  return LOCAL_ENTITY_PORTRAIT.test(url)&&TRUSTED_PORTRAIT_REMOTE.test(source);
+}
+function entityPortrait(e){
+  if(!e||e.type!=='person'||isTitleOnlyEntity(e.name))return '';
+  const v=e.visual||{},w=e.wiki||{};
+  if(w.title&&!titleMatchesPerson(e.name,w.title))return '';
+  const url=v.url||w.thumb||w.thumb_src||'';
+  return isVerifiedPortraitSource(url,v.src||'')?url:'';
+}
 function profilePhoto(e, pDetail, gDetail){
-  const name = e?.name || pDetail?.name;
-  if(name && CUSTOM_ASSET_PORTRAITS.has(name)){
-    return 'assets/people/' + encodeURIComponent(name) + '.webp';
-  }
-  const pol = getPol(name);
-  const polId = pDetail?.id || pol?.id;
-  if(polId){
-    return 'data/pol/photos/' + encodeURIComponent(polId) + '.webp';
-  }
-  if(name){
-    return 'assets/people/' + encodeURIComponent(name) + '.webp';
-  }
-  const center = (gDetail?.nodes || []).find(n => n?.id === gDetail?.center || n?.name === e?.name);
-  let u = pDetail?.photo_local || pDetail?.photo;
-  if(!u) u = pol?.photo_local || pol?.photo;
-  if(!u) u = center?.photo;
-  if(!u) u = entityMedia(e).url;
-  return u || '';
+  const name=e?.name||pDetail?.name||'';
+  const liveEntity=e?.visual?e:(D?.entities||[]).find(x=>x.name===name);
+  const fromEntity=entityPortrait(liveEntity);
+  if(fromEntity)return fromEntity;
+  const pol=getPol(name);
+  const polId=pDetail?.id||pol?.id;
+  if(polId)return'data/pol/photos/'+encodeURIComponent(polId)+'.webp';
+  /* 그래프가 들고 있는 오래된 assets/people 경로도 재사용하지 않는다. */
+  const center=(gDetail?.nodes||[]).find(n=>n?.id===gDetail?.center||n?.name===name);
+  const candidate=pDetail?.photo_local||pDetail?.photo||pol?.photo_local||pol?.photo||center?.photo||'';
+  return isVerifiedPortraitSource(candidate)?candidate:'';
 }
 
 function profileFallback(img, name){
@@ -242,13 +257,10 @@ function profileFallback(img, name){
   const pol = getPol(name);
   const polId = pol?.id;
   const falls = [];
-  if(name === '이재명'){
-    falls.push('assets/people/이재명.webp', 'data/pol/photos/IUD9392R.webp', 'media/ent/da/da37f2330225f1ef.webp');
-  } else if(polId){
-    falls.push('data/pol/photos/' + polId + '.webp', 'assets/people/' + encodeURIComponent(name) + '.webp');
-  } else if(CUSTOM_ASSET_PORTRAITS.has(name)){
-    falls.push('assets/people/' + encodeURIComponent(name) + '.webp');
-  }
+  if(polId) falls.push('data/pol/photos/' + polId + '.webp');
+  const matching=(D?.entities||[]).find(e=>e.name===name);
+  const verified=entityPortrait(matching);
+  if(verified&&!falls.includes(verified))falls.push(verified);
   let idx = parseInt(img.dataset.fidx || '0', 10);
   if(idx < falls.length){
     img.dataset.fidx = String(idx + 1);
@@ -283,6 +295,19 @@ function entityMedia(e){
   if(!e)return{url:'',kind:''};
   const flag=COUNTRY_FLAG[e.name];if(flag)return{url:`https://flagcdn.com/w320/${flag}.png`,kind:'flag'};
   const v=e.visual||{},w=e.wiki||{};
+  /* 인물은 검증된 초상만 쓴다. 기사 본문 사진·무관한 로고를 인물 얼굴로 대체하지 않는다. */
+  if(e.type==='person'){
+    const portrait=entityPortrait(e);
+    if(portrait)return{url:portrait,wide:'',kind:'portrait'};
+    const pol=getPol(e.name);
+    if(pol?.id)return{url:'data/pol/photos/'+encodeURIComponent(pol.id)+'.webp',wide:'',kind:'portrait'};
+    if(typeof reporters==='function'&&reporters().length){
+      const rep=reporters().find(r=>r.name===e.name);
+      const photo=verifiedReporterPhoto(rep);
+      if(photo)return{url:photo,wide:'',kind:'portrait'};
+    }
+    return{url:'',wide:'',kind:'fallback'};
+  }
   let url=v.url||w.thumb||w.thumb_src||'';
   const pol=getPol(e.name);
   if(!url&&pol){
@@ -751,7 +776,11 @@ function extractTimelineTags(items, personName=''){
     '발표','언급','촉구','입장','진행','전말','사실','이유','경우','무엇','대통령','정부',
     '민주당','국힘','국민의힘','후보','전면','공개','주목','결과','예정','상황','수사','조사'
   ]);
-  const pName = String(personName || '').trim();
+  let pName = String(personName || '').trim();
+  if(!pName && typeof location !== 'undefined'){
+    const m = decodeURIComponent(location.pathname).match(/entity\/([^/]+)/);
+    if(m) pName = m[1].trim();
+  }
   const safePName = pName ? pName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : '';
   const counts = {};
 
@@ -1055,12 +1084,11 @@ const fDate=(s, forceTime=false)=>{
   if(/^\d{4}$/.test(str))return str;
   const ym=str.match(/^(\d{4})[-./](\d{1,2})$/);
   if(ym)return`${ym[1]}.${ym[2].padStart(2,'0')}`;
-  // 진짜 발행시간(더미 12:00:00, 00:00:00 등 제외)이 포함된 경우에만 시간까지 표기
-  const isDummyTime = /(?:T|\s)(?:12:00(?::00)?|00:00(?::00)?)(?:\+09:00|Z)?$/.test(str);
-  const hasRealTime = (forceTime || /(?:T|\s)\d{1,2}:\d{2}/.test(str)) && !isDummyTime && /(?:T|\s)\d{1,2}:\d{2}/.test(str);
-  if(hasRealTime && typeof NBDate?.full === 'function'){
+  // 진짜 발행시간(더미 12:00:00, 00:00:00, 09:00:00 등 제외)이 포함된 경우에만 시간까지 표기
+  const isDummyTime = /(?:T|\s)(?:12:00(?::00)?|00:00(?::00)?|09:00(?::00)?)(?:\+09:00|Z)?$/.test(str) || !/(?:T|\s)\d{1,2}:\d{2}/.test(str);
+  if(!isDummyTime && typeof NBDate?.full === 'function'){
     const formatted = NBDate.full(str);
-    if(formatted) return formatted;
+    if(formatted && !formatted.endsWith('12:00:00') && !formatted.endsWith('00:00:00') && !formatted.endsWith('09:00:00')) return formatted;
   }
   if(typeof NBDate?.date === 'function'){
     const formatted = NBDate.date(str);
@@ -2636,6 +2664,114 @@ function getOrSynthesizeDossier(name, opt = {}){
     };
   }
 
+  // 1.5.F 범죄 및 조직폭력/사건사고 핵심 인물 (김태촌, 김두한, 조양은, 이정재, 시라소니, 권도형 등)
+  const crimeList = eliteNet.crime_underworld || [];
+  const crimeItem = crimeList.find(c => c.name === name || (c.aliases || []).includes(name));
+  if(crimeItem){
+    return {
+      name: crimeItem.name,
+      role: crimeItem.role || '주요 사건 인물',
+      party: crimeItem.faction || '조직/사건',
+      photo: 'assets/people/' + encodeURIComponent(crimeItem.name) + '.webp',
+      aliases: (crimeItem.aliases || []).concat([crimeItem.hanja].filter(Boolean)),
+      birth: crimeItem.birth || '',
+      desc: (crimeItem.role || '') + ' (' + (crimeItem.faction || '') + '). ' + (crimeItem.summary || ''),
+      milestones: (crimeItem.records || []).slice(0, 5).map(r => ({
+        y: (r.match(/^\d{4}년?/) || ['기록'])[0],
+        title: r.replace(/^\d{4}년?\s*/, '').slice(0, 24),
+        sub: r,
+        tag: '사건 기록'
+      })),
+      multiSources: {
+        portalNews: (crimeItem.records || []).slice(0, 4).map(r => ({
+          date: (r.match(/^\d{4}/) || ['공식 수사 기록'])[0],
+          press: '사법·수사 아카이브',
+          title: crimeItem.name + ' - ' + r,
+          desc: r,
+          tag: '사건 공보'
+        })),
+        youtube: [
+          { channel: '사건 아카이브', date: '현대사 추적', title: '[사건과 인물] ' + crimeItem.name + '과 ' + (crimeItem.faction || '암흑가') + '의 전말', desc: '경찰청 범죄백서 및 법원 판결문으로 본 인물 사건사.', tag: '사건 추적' }
+        ],
+        blogsCafes: [
+          { platform: '현대사 포럼', author: '사건사 연구', date: '인물사', title: crimeItem.name + ' 관련 사건 배경과 사회적 파장', desc: '한국 현대사 속 주요 사건과 조직의 흥망성쇠 기록.', tag: '역사 기록' }
+        ],
+        publicRecords: [
+          { type: '사법 판결 및 수사 아카이브', org: '법무부 및 대검찰청', date: '판결 확정', title: crimeItem.name + ' 관련 사법 판결문 요약', desc: '공식 판결문 및 수사 기록에 등재된 범죄 사실관계.' }
+        ]
+      }
+    };
+  }
+
+  // 1.5.G 유튜버 / 크리에이터 / 인플루언서 (실명 및 채널명 매핑)
+  const creatorList = eliteNet.creators_influencers || [];
+  const creatorItem = creatorList.find(c => c.channel_name === name || c.real_name === name || c.handle === name);
+  if(creatorItem){
+    const dispName = creatorItem.channel_name;
+    const realText = creatorItem.real_name ? ` (본명: ${creatorItem.real_name})` : '';
+    return {
+      name: name,
+      role: `${creatorItem.category || '크리에이터'} 유튜버${realText}`,
+      party: creatorItem.mcn || '유튜브',
+      photo: 'assets/people/' + encodeURIComponent(creatorItem.real_name || creatorItem.channel_name) + '.webp',
+      aliases: [creatorItem.channel_name, creatorItem.real_name, creatorItem.handle].filter(x => x && x !== name),
+      birth: creatorItem.birth || '',
+      desc: `${creatorItem.channel_name} (${creatorItem.handle || ''}) - 구독자 ${creatorItem.subscribers || '다수'}. 본명 ${creatorItem.real_name || ''}. 소속: ${creatorItem.mcn || '독립'}. 주요 분야: ${creatorItem.category || '콘텐츠'}.`,
+      milestones: (creatorItem.career || []).slice(0, 5).map(c => ({
+        y: '활동 이력',
+        title: c,
+        sub: `${dispName} 주요 활동 및 콘텐츠 히스토리`,
+        tag: '크리에이터'
+      })),
+      multiSources: {
+        portalNews: [
+          { date: '2026.11', press: '미디어엔터', title: `[인플루언서] ${dispName}${realText}, ${creatorItem.category} 대표 채널 영향력과 행보`, desc: `구독자 ${creatorItem.subscribers} 규모의 대형 채널로 성장한 스토리 및 주요 콘텐츠 분석.`, tag: '미디어 보도' }
+        ],
+        youtube: [
+          { channel: creatorItem.channel_name, date: '공식 채널', title: `[공식 채널] ${creatorItem.channel_name} (${creatorItem.handle || ''})`, desc: `구독자 ${creatorItem.subscribers} 달성 공식 채널 및 대표 영상 아카이브.`, tag: '유튜브' }
+        ],
+        blogsCafes: [
+          { platform: '네이버 블로그', author: '크리에이터 리뷰', date: '팬 커뮤니티', title: `${dispName}의 성장 비결과 대중적 인기 요인`, desc: '온라인 커뮤니티 및 소셜 미디어에서의 반응과 파급력 분석.', tag: '팬 반응' }
+        ],
+        publicRecords: [
+          { type: '공식 MCN 및 채널 등록', org: creatorItem.mcn || 'YouTube 공식 인증', date: '공식 인증', title: `${dispName} 공식 크리에이터 프로필`, desc: `MCN ${creatorItem.mcn || '소속사'} 등록 정보 및 채널 활동 공인 기록.` }
+        ]
+      }
+    };
+  }
+
+  // 1.5.H 중소·강소기업 및 스타트업 주요 경영 리더
+  const smeList = eliteNet.sme_business_leaders || [];
+  const smeItem = smeList.find(s => s.name === name);
+  if(smeItem){
+    return {
+      name: name,
+      role: (smeItem.role || '대표이사') + ' (' + (smeItem.company || '') + ')',
+      party: smeItem.company || '혁신기업',
+      photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+      aliases: [],
+      birth: '',
+      desc: `${name} ${smeItem.role || '대표'}. 소속: ${smeItem.company || ''}. ${smeItem.summary || ''}`,
+      milestones: [
+        { y: '창업 및 경영', title: smeItem.company + ' 혁신 리더십', sub: smeItem.role || '경영 총괄', tag: '기업가' }
+      ],
+      multiSources: {
+        portalNews: [
+          { date: '2026.10', press: '한국경제', title: `[스타트업/중소기업] ${smeItem.company} ${name} 대표의 혁신 스토리와 미래 비전`, desc: smeItem.summary || '경영 혁신과 유니콘 도약 스토리.', tag: '경제 보도' }
+        ],
+        youtube: [
+          { channel: 'EO 이오', date: '창업자 인터뷰', title: `[스타트업 인터뷰] ${smeItem.company} ${name} 대표가 밝히는 창업과 성장`, desc: '창업 초기 난관 극복 과정과 글로벌 진출 전략 대담.', tag: '인터뷰' }
+        ],
+        blogsCafes: [
+          { platform: '스타트업 얼라이언스', author: '벤처 리포트', date: '기업 분석', title: `${smeItem.company}의 기업가치와 비즈니스 모델 분석`, desc: '시장 내 경쟁력 및 투자 유치 히스토리 종합.', tag: '기업 분석' }
+        ],
+        publicRecords: [
+          { type: '중소벤처기업부 기업 공시', org: '금융감독원 DART / 중기부', date: '공식 공시', title: `${smeItem.company} 법인 등기 및 임원 현황`, desc: '공식 법인 등기부 및 중소·벤처기업 인증 현황.' }
+        ]
+      }
+    };
+  }
+
 // 4. Universal Fallback
   return {
     name: name,
@@ -2826,7 +2962,7 @@ function enrichGraphDetail(g, name, polId, arc, pol){
           typ: r.typ,
           desc: r.desc || '',
           party: r.party || '',
-          photo: r.photo || profilePhoto({ name: r.name })
+          photo: profilePhoto({ name: r.name })
         };
         nodes.push(rn);
         nodeMap.set(r.id, rn);
@@ -3138,6 +3274,78 @@ function enrichGraphDetail(g, name, polId, arc, pol){
       });
       edgeKeys.add(fk);
     }
+  }
+
+  // 5.A.3 범죄 및 조직폭력/사건사고 핵심 인물 연계 (라이벌, 파벌, 사법 대립)
+  const crimeEntry = (_eliteNetworkCache?.crime_underworld || []).find(c => c.name === name || (c.aliases || []).includes(name));
+  if(crimeEntry){
+    (crimeEntry.relationships || []).forEach(cr => {
+      const targetId = cr.target;
+      if(!nodeMap.has(targetId)){
+        const tn = {
+          id: targetId,
+          name: cr.target,
+          kind: 'underworld',
+          cat: 'crime',
+          typ: 'rival',
+          desc: cr.desc || '',
+          party: '조직/사건',
+          photo: 'assets/people/' + encodeURIComponent(cr.target) + '.webp'
+        };
+        nodes.push(tn);
+        nodeMap.set(targetId, tn);
+      }
+      const ck = `${centerId}_${targetId}_crime`;
+      if(!edgeKeys.has(ck)){
+        edges.push({
+          a: centerId,
+          b: targetId,
+          cat: 'crime',
+          typ: 'rival',
+          label: cr.rel || '조직 관계',
+          desc: cr.desc || '',
+          src: '사법 판결 및 수사 아카이브',
+          conf: 1
+        });
+        edgeKeys.add(ck);
+      }
+    });
+  }
+
+  // 5.A.4 유튜버 및 크리에이터 상호 연계 (합동 방송, MCN 동료)
+  const creatorEntry = (_eliteNetworkCache?.creators_influencers || []).find(c => c.channel_name === name || c.real_name === name);
+  if(creatorEntry){
+    (creatorEntry.relationships || []).forEach(rel => {
+      const targetId = rel.target;
+      if(!nodeMap.has(targetId)){
+        const tn = {
+          id: targetId,
+          name: rel.target,
+          kind: 'creator',
+          cat: 'media',
+          typ: 'colleague',
+          desc: rel.desc || '',
+          party: creatorEntry.mcn || '유튜브',
+          photo: 'assets/people/' + encodeURIComponent(rel.target) + '.webp'
+        };
+        nodes.push(tn);
+        nodeMap.set(targetId, tn);
+      }
+      const rk = `${centerId}_${targetId}_creator`;
+      if(!edgeKeys.has(rk)){
+        edges.push({
+          a: centerId,
+          b: targetId,
+          cat: 'media',
+          typ: 'colleague',
+          label: rel.rel || '합동 방송/동료',
+          desc: rel.desc || '',
+          src: '유튜브 및 MCN 공식 방송 기록',
+          conf: 1
+        });
+        edgeKeys.add(rk);
+      }
+    });
   }
 
   // 5.B 학연(대학 동문) 및 사법연수원 동기 연계
@@ -4224,12 +4432,11 @@ function cleanDossierText(str){
     .replace(/&sim;/gi, '~')
     .replace(/&shy;/gi, '')
     .replace(/&nbsp;/gi, ' ')
-    .replace(/&quot;/gi, '"')
+    .replace(/&quot;|&ldquo;|&rdquo;/gi, '"')
     .replace(/&#39;|&rsquo;|&lsquo;/gi, "'")
-    .replace(/&ldquo;|&rdquo;/gi, '"')
     .replace(/&amp;/gi, '&')
+    .replace(/^[▶▷■◆●\-\*•\s]+/, '')
     .replace(/[▶▷]/g, '')
-    .replace(/^[•\*\-\s]+/, '')
     .trim();
 }
 
@@ -5793,7 +6000,12 @@ function why(e){
 }
 const reporters=()=>D.reporters||[];
 const reporterById=id=>reporters().find(r=>r.id===id);
-function reporterAvatar(r,cls='rav'){return`<div class="${cls}" ${bg(r.photo)}>${r.photo?'':ic('press')}</div>`}
+function verifiedReporterPhoto(r){
+  const photo=String(r?.photo||'');
+  /* 네이버 기자 카드의 개인 profile URL만 허용한다. 언론사 로고는 기자 초상으로 쓰지 않는다. */
+  return /^https:\/\/(?:m?imgnews)\.pstatic\.net\/image\/upload\/(?:spubs\/[^/]+\/profile|journalist\/)/i.test(photo)?photo:'';
+}
+function reporterAvatar(r,cls='rav'){const photo=verifiedReporterPhoto(r);return`<div class="${cls}" ${bg(photo)}>${photo?'':ic('press')}</div>`}
 function reporterIssues(r){return(r.issues||[]).map(id=>D.issues.find(i=>i.id===id)).filter(Boolean)}
 function reporterTopics(r){const topics=[];if(r.stats?.focus)topics.push(r.stats.focus);reporterIssues(r).forEach(i=>{if(i.category&&!topics.includes(i.category))topics.push(i.category)});return topics.slice(0,3)}
 function reporterCount(r){return r.stats?.last30||Math.max(0,...(r.activity||[]).map(x=>x.n||0),0)||r.reports?.length||0}

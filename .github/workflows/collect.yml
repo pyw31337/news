@@ -36,6 +36,9 @@ jobs:
         continue-on-error: true
         timeout-minutes: 3
         run: python scripts/entity_assets.py
+      - name: 인물 초상 출처·동명이인 전수 감사(불일치 사진 비노출)
+        # 사진이 없으면 이니셜로 보이게 두되, 다른 사람·로고를 인물 얼굴로 쓰지 않는다.
+        run: python scripts/portrait_audit.py data/today.json --entity-media data/entity_media.json --asset-dir assets/people --output data/portrait_audit.json --sanitize
       - name: enrich (흐름·여론·시장·용어·AI)
         env:
           # AI 분석: Secret LLM_API_KEY 필수(기본 Gemini OpenAI 호환). 다른 LLM은 Variables LLM_ENDPOINT·LLM_MODEL로 교체

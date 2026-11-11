@@ -30,6 +30,8 @@ COUNTRIES = {
 }
 ORG_WORDS = re.compile(r'센터|연구원|연구소|재단|공단|협회|위원회|대학|병원|은행|증권|공사|청|부$|그룹|전자|항공|자동차|통신|기업|회사|당|당국|기구')
 PLACE_WORDS = re.compile(r'관$|궁$|청사|공항|역$|동$|구$|시$|군$|도$|광장|공원|타워|빌딩|산$|강$')
+TITLE_ONLY = re.compile(r'^(?:.+(?:교육감|주지사|도지사|지사|시장|군수|구청장)|(?:과기|경제)?부총리|대통령|국무총리|국회의원|장관|대법원장|검찰총장)$')
+NON_PERSON_NAMES = {'G7', 'FOMC', 'LG유플러스', 'YTN', 'Z세대', '나스닥', '동물농장', '라방', '원팀', '필리버스터', '강철비', '현대차'}
 
 def load_cache():
     try:
@@ -60,12 +62,26 @@ def normalize_type(entity):
     text = ' '.join((name, wiki.get('title', ''), wiki.get('desc', ''), wiki.get('extract', '')[:160]))
     if name in COUNTRIES:
         return 'place'
+    # '경기교육감', '텍사스주지사'처럼 특정 개인이 아니라 직위·개념만 추출된
+    # 항목은 사람 초상을 붙이면 안 된다. 사람 사진 수집 대상에서 제외한다.
+    if name in NON_PERSON_NAMES or TITLE_ONLY.fullmatch(name):
+        return 'event'
     # 백악관·청와대처럼 조직 설명에 대통령이라는 말이 들어가도 건물은 장소로 다룬다.
     if PLACE_WORDS.search(name) and not ORG_WORDS.search(name):
         return 'place'
+    if re.search(r'증권거래소|방송사|방송국|신문사|통신사|사업자|기업|회사|정당|기관', text):
+        return 'org'
     if ORG_WORDS.search(name) or re.search(r'연구|aerospace|space center', text, re.I):
         return 'org'
     return entity.get('type') or 'event'
+
+def _norm_name(value):
+    return re.sub(r'\([^)]*\)|\s|[·ㆍ.\'"‘’“”-]', '', value or '').lower()
+
+def title_matches_name(name, title):
+    """Wikipedia가 다른 동명이인 페이지로 해석한 경우 사진을 붙이지 않는다."""
+    name, title = _norm_name(name), _norm_name(title)
+    return bool(name and title and (name in title or title in name))
 
 def wikidata_files(title):
     """위키백과 문서에서 QID를 찾은 뒤 로고(P154), 대표사진(P18)을 얻는다."""
@@ -145,10 +161,15 @@ def resolve(entity, cache):
             wiki['desc'] = sent
             entity['wiki'] = wiki
 
+    key = '%s:%s' % (typ, name)
+    # 검색 결과가 다른 사람의 위키 문서를 가리키면, 출처가 있어도 인물 사진으로
+    # 쓰지 않는다. 예: 장예찬 → 장동혁처럼 이름과 문서 제목이 다른 경우.
+    if typ == 'person' and wiki.get('title') and not title_matches_name(name, wiki['title']):
+        cache.pop(key, None)
+        return {}
+
     # 대통령(전·현직) 등 국가원수는 국회의원 명부의 옛 증명사진보다 위키데이터/위키백과의 공식 대통령 초상화(P18)를 최우선 적용
     is_president = bool(re.search(r'대통령', (wiki.get('desc') or '') + ' ' + (wiki.get('extract') or '')))
-
-    key = '%s:%s' % (typ, name)
     cached = cache.get(key)
     # 예전 캐시의 로고는 심볼·가로형 구분 전이라 한 번 다시 확인
     # 단, 대통령인데 pol_id(국회의원 사진)로 잘못 캐시되어 있는 경우는 재평가
