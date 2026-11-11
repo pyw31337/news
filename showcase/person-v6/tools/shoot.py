@@ -42,7 +42,7 @@ async def main():
         await pg.wait_for_selector('body[data-ready="1"]',timeout=30000)
         await pg.evaluate('document.fonts.ready')
         # 이미지 로드 기다리기(지연 로딩 해제)
-        await pg.evaluate("""async()=>{for(let y=0;y<document.body.scrollHeight;y+=600){scrollTo(0,y);await new Promise(r=>setTimeout(r,60))}scrollTo(0,0);await Promise.all([...document.images].map(i=>i.complete&&i.naturalWidth?1:new Promise(r=>{i.addEventListener('load',r);i.addEventListener('error',r);setTimeout(r,8000)})))}""")
+        await pg.evaluate("""async()=>{for(let y=0;y<document.body.scrollHeight;y+=600){scrollTo(0,y);await new Promise(r=>setTimeout(r,60))}scrollTo(0,0);await new Promise(r=>setTimeout(r,300));await Promise.all([...document.images].map(i=>i.complete&&i.naturalWidth?1:new Promise(r=>{i.addEventListener('load',r);i.addEventListener('error',r);setTimeout(r,8000)})))}""")
         await pg.wait_for_timeout(600)
         res=await pg.evaluate(CHECK)
         print(pr,w,'hscroll',res['hscroll'],'ellipsis',res['ellipsis'],'errs',errs)
@@ -54,6 +54,12 @@ async def main():
           if w==1440:
             await pg.goto(BASE+pr+'/?open=1',wait_until='networkidle'); await pg.wait_for_selector('body[data-ready="1"]'); await pg.evaluate('document.fonts.ready'); await pg.evaluate("""async()=>{for(let y=0;y<document.body.scrollHeight;y+=600){scrollTo(0,y);await new Promise(r=>setTimeout(r,60))}scrollTo(0,0)}"""); await pg.wait_for_timeout(1500)
             await pg.screenshot(path=f'{OUT}{pr}-desktop-1440-expanded.png',full_page=True)
+            if pr=='d':
+              await pg.goto(BASE+pr+'/',wait_until='networkidle'); await pg.wait_for_selector('body[data-ready="1"]'); await pg.evaluate('document.fonts.ready')
+              await pg.evaluate("document.getElementById('s-pol').scrollIntoView()"); await pg.evaluate("scrollBy(0,-40)"); await pg.wait_for_timeout(1500)
+              act=await pg.evaluate("[...document.querySelectorAll('.toc:not(.toc--bar) .toc-i.is-on')].map(a=>a.textContent)")
+              print('   active toc:',act)
+              await pg.screenshot(path=f'{OUT}{pr}-desktop-1440-scrolled.png')
         await ctx.close()
     await b.close()
 asyncio.run(main())

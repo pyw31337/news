@@ -262,3 +262,19 @@ button{font:inherit;color:inherit;letter-spacing:inherit;background:none;border:
   .seg-i{padding:6px var(--s-3)}
   .seg-n{display:none}
 }
+
+/* 섹션 목차(toc): 넓은 화면은 왼쪽 고정 세로 목록, 좁은 화면은 위쪽 고정 칩 막대. 외곽선 아이콘=꺼짐, 채움=현재 */
+.toc{display:flex;flex-direction:column;gap:2px}
+.toc-i{display:flex;align-items:center;gap:var(--s-3);padding:8px var(--s-3);border-radius:var(--r-sm);font-size:var(--fs-md);font-weight:var(--fw-medium);color:var(--c-ink-3);white-space:nowrap;transition:background .15s,color .15s;margin:0}
+.toc-i:hover{color:var(--c-ink-1)}
+.toc-i .ic{width:18px;height:18px}
+.toc-i .u1{display:none}
+.toc-i small{margin-left:auto;padding-left:var(--s-3);font-size:var(--fs-xs);font-weight:var(--fw-medium);color:var(--c-ink-4)}
+.toc-i.is-on{color:var(--c-ink-1);font-weight:var(--fw-bold);background:var(--c-sunken)}
+.toc-i.is-on .ic{color:var(--c-accent)}
+.toc-i.is-on .u0{display:none}.toc-i.is-on .u1{display:inline}
+.toc--bar{flex-direction:row;gap:var(--s-1);overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:5;background:var(--c-bg);padding:var(--s-3) var(--gutter);margin:0 calc(var(--gutter) * -1);border-bottom:1px solid var(--c-line)}
+.toc--bar::-webkit-scrollbar{display:none}
+.toc--bar .toc-i{margin:0;padding:6px var(--s-3);font-size:var(--fs-sm);flex:none}
+.toc--bar .toc-i small{padding-left:var(--s-1);margin-left:0}
+@media (max-width:767px){ .gantt-ax span:nth-last-child(2),.gantt-ax span:nth-child(2){display:none} }

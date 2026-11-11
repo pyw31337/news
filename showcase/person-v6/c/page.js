@@ -19,7 +19,7 @@
   /* 의정 */
   const br = D.bills.by_result, vt = Object.entries(D.votes.summary);
   const vsum = Object.values(D.votes.summary).reduce((a, v) => { for (const k in v) a[k] = (a[k] || 0) + v[k]; return a; }, {});
-  add('s-pol', '의정 활동', 'building-bank', `제${P.ages.join('·')}대`, `<div class="lead">
+  add('s-pol', '의정 활동', 'scale', `제${P.ages.join('·')}대`, `<div class="lead">
       ${NB.stat('대표 발의', D.bills.lead_count, '건', `대안 반영 ${br['대안반영폐기'] || 0} · 계류 ${br['계류'] || 0}`)}
       ${NB.stat('공동 발의', D.bills.co_count, '건', '제22대')}
       ${NB.stat('본회의 표결', num(D.votes.count), '건', `찬성 ${Math.round(vsum['찬성'] / D.votes.count * 100)}%`)}
@@ -40,7 +40,7 @@
   if (D.quotes.length) add('s-q', '발언', 'quote', D.quotes.length + '건', `<div class="quotes">${D.quotes.slice(0, 4).map(NB.quote).join('')}</div>${NB.exp('발언 전체', (D.quotes.length - 4) + '건', `<div class="quotes">${D.quotes.slice(4).map(NB.quote).join('')}</div>`)}`);
   /* 보도 */
   const yrs = D.hist_years.map(([y, n]) => ["'" + y.slice(2), n, n === Math.max(...D.hist_years.map(x => x[1]))]);
-  add('s-news', '보도', 'news', num(D.articles_total) + '건', `<div class="daily"><div><h3 class="sub-t">최근 30일 <small>${num(X.daily.reduce((a, b) => a + b[1], 0))}건</small></h3>${NB.spark(X.daily.map(x => x[1]))}</div>
+  add('s-news', '보도', 'file-text', num(D.articles_total) + '건', `<div class="daily"><div><h3 class="sub-t">최근 30일 <small>${num(X.daily.reduce((a, b) => a + b[1], 0))}건</small></h3>${NB.spark(X.daily.map(x => x[1]))}</div>
       <div><h3 class="sub-t">연도별 <small>${num(D.hist_total)}건</small></h3>${NB.vbars(yrs).replace('class="vbars"', 'class="vbars" style="--vb-h:72px;--n:' + yrs.length + '"')}</div></div>
     <div class="acards">${D.photo_articles.slice(0, 3).map(NB.acard).join('')}</div>
     <div style="margin-top:var(--s-7)">${NB.agroup(D.articles.slice(0, 6), X.dc)}${NB.exp('이전 보도', (D.articles.length - 6) + '건', NB.agroup(D.articles.slice(6), X.dc))}</div>`);

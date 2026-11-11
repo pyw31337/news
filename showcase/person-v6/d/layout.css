@@ -1,0 +1,88 @@
+/* 시안 D 배치 = A(에디토리얼 와이드) + B 경력 흐름 + C 섹션 목차. 토큰은 ../a/tokens.css 그대로 */
+.top{display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{font-size:17px;font-weight:var(--fw-heavy);letter-spacing:-.02em}
+.brand i{color:var(--c-accent);font-style:normal}
+.top nav{display:flex;gap:var(--s-6);font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--c-ink-3)}
+.top nav a.on{color:var(--c-ink-1)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1fr) clamp(220px,22vw,300px);gap:var(--s-8);align-items:end;padding:var(--s-8) 0 var(--s-8)}
+.hero-role{display:inline-flex;align-items:center;gap:var(--s-2);font-size:var(--fs-sm);font-weight:var(--fw-bold);color:var(--c-accent)}
+.hero-role .ic{width:16px;height:16px}
+.hero h1{font-size:var(--fs-display);font-weight:var(--fw-heavy);letter-spacing:var(--ls-display);line-height:1.05;margin:var(--s-3) 0 var(--s-2)}
+.hero h1 small{font-size:var(--fs-xl);font-weight:var(--fw-medium);letter-spacing:var(--ls-head);color:var(--c-ink-3);margin-left:var(--s-3)}
+.hero-line{font-size:var(--fs-lg);font-weight:var(--fw-medium);color:var(--c-ink-2)}
+.hero .facts{margin-top:var(--s-7);grid-template-columns:repeat(2,minmax(0,1fr));padding-top:var(--s-6);border-top:1px solid var(--c-line)}
+.hero-ph{position:relative}
+.hero-ph img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r-lg)}
+.hero-ph figcaption{font-size:var(--fs-xs);color:var(--c-ink-4);margin-top:var(--s-2)}
+
+.eras{padding:var(--s-7) 0 var(--s-8)}
+.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--s-6)}
+.kpis .stat{padding-left:var(--s-4);border-left:2px solid var(--c-line)}
+.kpis .stat:first-child{border-left-color:var(--c-accent)}
+
+.cols{display:grid;gap:var(--s-8) var(--s-8)}
+.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.milestones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-6) var(--s-7)}
+.ms{display:flex;flex-direction:column;gap:var(--s-1)}
+.ms time{font-size:var(--fs-sm);font-weight:var(--fw-bold);color:var(--c-accent);font-variant-numeric:tabular-nums}
+.ms b{font-size:var(--fs-lg);font-weight:var(--fw-bold);letter-spacing:var(--ls-head);line-height:var(--lh-snug)}
+.ms p{font-size:var(--fs-sm);color:var(--c-ink-3)}
+.blk{display:flex;flex-direction:column;gap:var(--s-4)}
+.blk-v{display:flex;align-items:center;gap:var(--s-5)}
+.rels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s-7) var(--s-6)}
+.rels .rgroup{align-content:start}
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-7) var(--s-8)}
+.news-top{display:grid;grid-template-columns:7fr 5fr;gap:var(--s-8);margin-bottom:var(--s-8)}
+.foot{padding:var(--s-8) 0;border-top:1px solid var(--c-line);font-size:var(--fs-sm);color:var(--c-ink-3);display:flex;gap:var(--s-5)}
+
+@media (max-width:1279px){
+  .era--auto{--era-cols:4}
+  .kpis{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:var(--s-6)}
+  .rels{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+@media (max-width:1023px){
+  .acards{--ac-cols:2}
+  .cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .quotes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .news-top{grid-template-columns:1fr}
+}
+@media (max-width:767px){
+  .hero{grid-template-columns:1fr;gap:var(--s-6);padding-top:var(--s-6)}
+  .hero-ph{order:-1;width:132px}
+  .hero-ph figcaption{display:none}
+  .hero h1 small{display:block;margin:var(--s-2) 0 0;font-size:var(--fs-lg)}
+  .hero .facts{grid-template-columns:1fr}
+  .era--grid{--era-cols:1}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rels{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cols-3,.cols-2,.quotes,.milestones{grid-template-columns:1fr}
+  .top nav{display:none}
+  .vbars{--vb-odd:hidden;--vb-gap:3px}
+  }
+@media (max-width:479px){
+  .rels{grid-template-columns:1fr}
+  .acards{--ac-cols:1}
+  .arow{grid-template-columns:3em 1fr;row-gap:0}
+  .arow-p{grid-column:2;text-align:left}
+}
+
+/* 본문: 왼쪽 고정 목차(히어로 아래에서 시작) + 오른쪽 섹션 */
+.body{display:grid;grid-template-columns:clamp(176px,14vw,212px) minmax(0,1fr);gap:clamp(40px,4vw,72px);align-items:start;border-top:1px solid var(--c-line)}
+.body>aside{position:sticky;top:0;padding-top:var(--sec-y)}
+.body>aside .toc--bar{display:none}
+.body .sec:first-child{border-top:0}
+.sec{scroll-margin-top:var(--s-4)}
+.sec .sh-a{margin-left:auto}
+.career .sh{margin-bottom:var(--s-5)}
+@media (max-width:1279px){
+  .body{grid-template-columns:minmax(0,1fr);gap:0;border-top:0}
+  .body>aside{top:0;z-index:5;padding-top:0}
+  .body>aside .toc:not(.toc--bar){display:none}
+  .body>aside .toc--bar{display:flex}
+  .sec{scroll-margin-top:64px}
+}
+@media (max-width:767px){
+  .sec .sh-a{margin-left:0;width:100%}
+}

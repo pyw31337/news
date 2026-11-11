@@ -87,6 +87,18 @@ const NB = (() => {
   const gantt = (rows, y0, y1, ticks) => `<div class="gantt"><span class="gantt-ax-pad"></span><span class="gantt-ax-pad gantt-ax-pad2"></span><div class="gantt-ax">${ticks.map(t => `<span style="left:${((t - y0) / (y1 - y0) * 100).toFixed(2)}%">${t}</span>`).join('')}</div>${rows.map(r => { const [a, b] = span(r.d) || [y0, y0]; const l = (a - y0) / (y1 - y0) * 100, w = (b - a) / (y1 - y0) * 100; return `<div class="gantt-r${r.now ? ' is-now' : ''}" data-typ="${r.typ}"><span class="gantt-d">${esc(dot(r.d) || '출생')}</span><span class="gantt-l">${esc(r.title)}</span><span class="gantt-tr"><span class="gantt-b${b === a ? ' is-pt' : ''}" style="left:${l.toFixed(2)}%;width:${w.toFixed(2)}%"></span></span></div>`; }).join('')}</div>`;
   /* 관계 나무: 가운데 인물 → 분류 → 노드 */
   const rtree = (center, cats) => `<div class="rtree"><div class="rt-c">${center}</div><ul class="rt-br">${cats.map(([c, rs]) => `<li><span class="rt-cat">${esc(c)}<small>${rs.length}</small></span><div class="rt-n">${rs.map(r => r.kind === 'person' ? pchip(r.people[0], r.role) : `<span class="rt-g"><b>${esc(r.name)}</b><small>${esc(r.role)}</small></span>`).join('')}</div></li>`).join('')}</ul></div>`;
+  /* 섹션 목차 + 스크롤 위치 표시 */
+  const toc = (secs, cls = '') => `<nav class="toc ${cls}" aria-label="목차">${secs.map((x, i) => `<a class="toc-i${i ? '' : ' is-on'}" href="#${x.id}"><svg class="ic" aria-hidden="true">${document.getElementById('i-' + x.icon + '-f') ? `<use class="u0" href="#i-${x.icon}"/><use class="u1" href="#i-${x.icon}-f"/>` : `<use href="#i-${x.icon}"/>`}</svg>${esc(x.title)}${x.count ? `<small>${esc(x.count)}</small>` : ''}</a>`).join('')}</nav>`;
+  const spy = ids => {
+    const links = [...document.querySelectorAll('.toc-i')];
+    const set = id => links.forEach(a => { const on = a.getAttribute('href') === '#' + id; a.classList.toggle('is-on', on); if (on) { const bar = a.closest('.toc--bar'); if (bar && bar.offsetParent) bar.scrollTo({ left: Math.max(0, a.offsetLeft - bar.clientWidth / 2 + a.offsetWidth / 2), behavior: 'instant' }); } });
+    const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) set(en.target.id); }), { rootMargin: '-25% 0px -65% 0px' });
+    ids.forEach(id => io.observe(document.getElementById(id)));
+    /* 첫 섹션보다 위(히어로)에 있을 땐 첫 항목을 켬 */
+    const top = () => { if (document.getElementById(ids[0]).getBoundingClientRect().top > innerHeight * .25) set(ids[0]); };
+    addEventListener('scroll', top, { passive: true });
+    return set;
+  };
   /* 상호작용: 펼치기, 세그먼트 필터(연대기) */
   const bind = (root = document) => {
     root.addEventListener('click', ev => {
@@ -98,5 +110,5 @@ const NB = (() => {
   };
   const load = () => fetch('../shared/data.json').then(r => r.json());
   const openAll = () => { if (/[?&]open=1/.test(location.search)) document.querySelectorAll('.exp').forEach(x => { x.classList.add('is-open'); x.querySelector('.exp-b').setAttribute('aria-expanded', true); x.querySelector('.exp-c').hidden = false; }); };
-  return { vstack, span, gantt, rtree, agroup, esc, ic, num, won, eok1, dot, md, ymd, dayLabel, titleClean, EVG, EVI, FILTERS, ERAS, yearOf, sh, facts, stat, exp, seg, pchip, arow, acard, quote, tl, tlItem, era, hbars, vbars, stack, spark, donut, derive, assetParts, voteParts, bind, load, openAll };
+  return { toc, spy, vstack, span, gantt, rtree, agroup, esc, ic, num, won, eok1, dot, md, ymd, dayLabel, titleClean, EVG, EVI, FILTERS, ERAS, yearOf, sh, facts, stat, exp, seg, pchip, arow, acard, quote, tl, tlItem, era, hbars, vbars, stack, spark, donut, derive, assetParts, voteParts, bind, load, openAll };
 })();
