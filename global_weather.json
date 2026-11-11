@@ -1,7 +1,23 @@
 {
-  "updated": "2026-11-11T12:57:39.895361+09:00",
-  "alerts_count": 24,
+  "updated": "2026-11-11T14:20:15.918839+09:00",
+  "alerts_count": 25,
   "alerts": [
+    {
+      "id": "urn:oid:2.49.0.1.840.0.9360ce98f35b5e5460bc4994d1a8f59c5ab36665.001.1",
+      "t": "2026-11-10 22:33",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Val Verde",
+      "area_en": "Val Verde",
+      "event": "홍수 경보",
+      "event_en": "Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "Val Verde 홍수 경보",
+      "headline_en": "Val Verde Flood Warning",
+      "desc": "...The National Weather Service in Austin/San Antonio has issued a\nFlood Warning for the following rivers in Texas...\n\nDevils River At Cauthorn Ranch Near Juno affecting Val Verde\nCounty.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Devils River at Cauthorn Ranch Near Juno.\n\n* WHEN...Until Wedne"
+    },
     {
       "id": "urn:oid:2.49.0.1.840.0.5609965cd082440fb4cc153cfc1f4b8fdc50e756.001.1",
       "t": "2026-11-10 18:05",
@@ -225,25 +241,17 @@
       "headline_ko": "Mono 겨울 폭풍 주의보",
       "headline_en": "Mono Winter Storm Watch",
       "desc": "* WHAT...Heavy wet snow. Snow accumulations near 12 inches above 7000\nto 7500 feet, up to 6 inches between 6000 and 7500 feet, and little\nto no accumulations below 6000 feet. Wind gusts of 60 to 80 mph\nover ridges and gusts of 40 to 55 mph for areas along Highway 395.\n\n* WHERE...Mono County.\n\n* WHEN"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.6919edc7e119bce46062e3c64c5e3fd608b5c01f.001.1",
-      "t": "2026-11-10 08:00",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Maricopa",
-      "area_en": "Maricopa",
-      "event": "홍수 경보",
-      "event_en": "Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Maricopa 홍수 경보",
-      "headline_en": "Maricopa Flood Warning",
-      "desc": "* WHAT...Flooding caused by upstream dam release is expected.\n\n* WHERE...Maricopa County in south central Arizona...\nNortheastern Yuma County in southwestern Arizona...\n\n* WHEN...Until 1100 AM MST Tuesday Nov 17.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone l"
     }
   ],
   "quakes": [
+    {
+      "id": "us7000txgg",
+      "mag": 4.6,
+      "place": "130 km ENE of Hasaki, Japan",
+      "t": "2026-11-11 03:56",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txgg"
+    },
     {
       "id": "us7000txfz",
       "mag": 4.7,
@@ -315,14 +323,6 @@
       "t": "2026-11-10 14:31",
       "depth": 101.214,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txb6"
-    },
-    {
-      "id": "us7000txay",
-      "mag": 4.7,
-      "place": "111 km WNW of Höfn, Iceland",
-      "t": "2026-11-10 13:37",
-      "depth": 10,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txay"
     }
   ],
   "cities": [
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 12.9,
-      "apparent_temp": 8.7,
-      "humidity": 45,
+      "temp": 11.3,
+      "apparent_temp": 7.7,
+      "humidity": 44,
       "code": 0,
-      "wind": 15.6
+      "wind": 9.9
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 20.7,
-      "apparent_temp": 19.7,
-      "humidity": 50,
+      "temp": 18.8,
+      "apparent_temp": 18.1,
+      "humidity": 58,
       "code": 0,
-      "wind": 6.1
+      "wind": 5.0
     },
     {
       "id": "london",
@@ -363,9 +363,9 @@
       "lat": 51.5074,
       "lon": -0.1278,
       "temp": 8.7,
-      "apparent_temp": 6.2,
-      "humidity": 93,
-      "code": 51,
+      "apparent_temp": 6.1,
+      "humidity": 90,
+      "code": 3,
       "wind": 13.0
     },
     {
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 12.2,
-      "apparent_temp": 12.2,
-      "humidity": 96,
+      "temp": 12.5,
+      "apparent_temp": 12.4,
+      "humidity": 95,
       "code": 3,
-      "wind": 3.3
+      "wind": 4.6
     },
     {
       "id": "frankfurt",
@@ -391,10 +391,10 @@
       "lat": 50.1109,
       "lon": 8.6821,
       "temp": 5.7,
-      "apparent_temp": 3.7,
+      "apparent_temp": 4.3,
       "humidity": 95,
-      "code": 55,
-      "wind": 5.4
+      "code": 51,
+      "wind": 1.6
     },
     {
       "id": "tokyo",
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 13.7,
-      "apparent_temp": 11.4,
-      "humidity": 48,
+      "temp": 14.9,
+      "apparent_temp": 12.8,
+      "humidity": 49,
       "code": 0,
-      "wind": 4.6
+      "wind": 4.5
     },
     {
       "id": "beijing",
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 8.5,
-      "apparent_temp": 6.5,
-      "humidity": 68,
+      "temp": 10.2,
+      "apparent_temp": 8.1,
+      "humidity": 61,
       "code": 0,
-      "wind": 2.0
+      "wind": 3.1
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 30.8,
-      "apparent_temp": 36.7,
-      "humidity": 63,
+      "temp": 30.9,
+      "apparent_temp": 36.2,
+      "humidity": 62,
       "code": 3,
-      "wind": 2.6
+      "wind": 3.6
     },
     {
       "id": "sydney",
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 27.0,
-      "apparent_temp": 27.5,
-      "humidity": 39,
-      "code": 2,
-      "wind": 8.7
+      "temp": 26.6,
+      "apparent_temp": 24.3,
+      "humidity": 33,
+      "code": 3,
+      "wind": 13.9
     },
     {
       "id": "toronto",
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 6.3,
-      "apparent_temp": 3.5,
-      "humidity": 83,
+      "temp": 5.7,
+      "apparent_temp": 2.8,
+      "humidity": 84,
       "code": 0,
-      "wind": 8.8
+      "wind": 9.2
     },
     {
       "id": "dubai",
@@ -474,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 28.7,
-      "apparent_temp": 33.2,
-      "humidity": 67,
+      "temp": 29.6,
+      "apparent_temp": 33.6,
+      "humidity": 63,
       "code": 0,
-      "wind": 3.1
+      "wind": 6.2
     },
     {
       "id": "saopaulo",
@@ -488,21 +488,12 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 15.1,
-      "apparent_temp": 14.9,
-      "humidity": 94,
+      "temp": 14.9,
+      "apparent_temp": 14.8,
+      "humidity": 95,
       "code": 3,
-      "wind": 10.8
+      "wind": 10.1
     }
   ],
-  "stories": [
-    {
-      "id": "g08cdbe7f",
-      "title": "Cop31 as it happened: ‘Everything and everyone we love is at stake,’ Greta Thunberg warns",
-      "press": "Guardian Environment",
-      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/afp_6af3a30f98ea-1794351887.jpg?resize=1920%2C1440",
-      "score": 10.9,
-      "url": "g/g08cdbe7f"
-    }
-  ]
+  "stories": []
 }

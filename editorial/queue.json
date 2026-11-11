@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-11",
-  "generated_at": "2026-11-11T13:05:19+09:00",
+  "generated_at": "2026-11-11T14:24:23+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,8 +27,8 @@
   },
   "candidates": [
     {
-      "issue_id": "i78b5c366",
-      "title": "젠슨 황 스캔들에 美 내렸는데 코스닥 '사이드카'…2차전지·반도체↑",
+      "issue_id": "i55ff027e",
+      "title": "코스닥, 이틀 연속 매수 사이드카 발동…4%대 급등에 장중 700선 탈환",
       "category": "경제",
       "rank": 7,
       "priority_score": 37,
@@ -38,11 +38,11 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "코스닥 지수가 11일 장중 5% 넘게 폭등하며 700선을 되찾았다.",
+        "코스닥 지수가 11일 장중 5% 넘게 폭등하며 700선을 되찾았습니다.",
         "“700선 탈환에 매수 사이드카까지”…코스닥 5.06% 폭등, 반도체·2차전지 질주",
-        "코스닥 매수 사이드카는 전날에 이어 이틀 연속 발동됐다.",
-        "한편 이날 낮 12시 기준 코스피는 전 거래일보다",
-        "70.33포인트(1.34%) 오른 5,309.46을 나타냈다."
+        "지속돼 매수 사이드카를 발동했다.",
+        "오전 11시 28분 기준, 코스닥150 선물은 1092.40포인트였던 전일 종가 대비 6.06% 오른 1158.60포인트를, 코스닥150 지수는 1088.85포인트에서 6.19% 상승한 1156.27포인트를 기록했다....",
+        "코스닥지수는 이차전지·장비주 강세로 5% 넘게 급등하며, 이틀 연속 매수 사이드카가 발동됐다."
       ],
       "sources": [
         {
@@ -51,135 +51,36 @@
           "url": "https://n.news.naver.com/article/138/0002248092"
         },
         {
-          "press": "kjdaily.com",
-          "title": "메드팩토 29.99%·이수페타시스 19.65% 상승…반도체주 강세",
-          "url": "http://www.kjdaily.com/article.php?aid=1794368591691898276"
+          "press": "lcnews.co.kr",
+          "title": "코스닥, 매수 사이드카 발동...올해 21번째",
+          "url": "https://www.lcnews.co.kr/news/articleView.html?idxno=211209"
         },
         {
-          "press": "kjdaily.com",
-          "title": "SK하이닉스·삼성전자 8.7% 거래 감소…코스닥 6종목 포함",
-          "url": "http://www.kjdaily.com/article.php?aid=1794367883691897276"
+          "press": "view.asiae.co.kr",
+          "title": "'상승 전환' 코스피, 5300선 회복…코스닥은 5%대 급등",
+          "url": "https://n.news.naver.com/mnews/article/277/0005841202?sid=101"
         },
         {
-          "press": "junggi.co.kr",
-          "title": "[오전시황] 코스닥 이틀 연속 매수 사이드카, 상한가는 7종목",
-          "url": "https://www.junggi.co.kr/news/articleView.html?idxno=38452"
+          "press": "fnnews.com",
+          "title": "코스피 5300선 회복...외국인 매수세 전환, 코스닥은 5% 급등[fn오후시황...",
+          "url": "https://n.news.naver.com/mnews/article/014/0005602675?sid=101"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "코스닥 지수가 11일 장중 5% 넘게 폭등하며 700선을 되찾았다."
+          "evidence": "코스닥 지수가 11일 장중 5% 넘게 폭등하며 700선을 되찾았습니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "코스닥은 30.52포인트(4.57%) 상승한 698.13을 기록했다...."
+          "evidence": "오전 11시 28분 기준, 코스닥150 선물은 1092.40포인트였던 전일 종가 대비 6.06% 오른 1158.60포인트를, 코스닥150 지수는 1088.85포인트에서 6.19% 상승한 1156.27포인트를…"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
           "evidence": "“700선 탈환에 매수 사이드카까지”…코스닥 5.06% 폭등, 반도체·2차전지 질주"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i6dfe0dff",
-      "title": "[日 산림 현주소](1) 年 260만명 찾는 국유림 ‘다카오산’…지역 협의체가 운영ㆍ관리",
-      "category": "세계",
-      "rank": 10,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "등 산림교실 등도 운영 중”이라고 말했다.",
-        "일본의 국유림은 ‘레크레이션 숲’ 제도 아래 △자연휴양림(79곳) △교육림(84곳) △풍경림(141곳) △스포츠림(25곳) △야외스포츠지역(160곳) △탐승림(73곳) 등 6개 카테고리 총...",
-        "특히 피해가 '심 이상'으로 분류된 지역은 전국 발생 시·군·구의 16%인 27곳이지만, 이들...",
-        "산림청은 국유림과 사유림 구분 없이 폭 4㎞, 총연장 800㎞의 방제벨트를 2027년부터 시범 조성해 2030년까지...",
-        "남부지방산림청 구미국유림관리소 소속 산불재난 특수진화대를 대구 지역에 전진 배치한다."
-      ],
-      "sources": [
-        {
-          "press": "dnews.co.kr",
-          "title": "[日 산림 현주소](1) 年 260만명 찾는 국유림 ‘다카오산’…지역 협의...",
-          "url": "https://www.dnews.co.kr/uhtml/view.jsp?idxno=202611101336088500402"
-        },
-        {
-          "press": "bzeronews.com",
-          "title": "[탐사보도-소나무재선충병㉑] 대통령·총리·장관도 몰랐다…재선충병...",
-          "url": "https://www.bzeronews.com/news/articleView.html?idxno=822172"
-        },
-        {
-          "press": "ilyo.co.kr",
-          "title": "[대구시정] \"산불 골든타임 잡는다\" 外",
-          "url": "https://ilyo.co.kr/?ac=article_view&entry_id=508416"
-        },
-        {
-          "press": "etoday.co.kr",
-          "title": "[사설] ‘퍼펙트 스톰’ 봄철 산불…해마다 겪어야 하나",
-          "url": "https://www.etoday.co.kr/news/view/2456740"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "등 산림교실 등도 운영 중”이라고 말했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "인력 현주소 진단 - 숙련기능인력 추천제 등 정착 정책 설계에 활용 대구시는 '외국인 인력 고용·노동 실태조사..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "일본의 국유림은 ‘레크레이션 숲’ 제도 아래 △자연휴양림(79곳) △교육림(84곳) △풍경림(141곳) △스포츠림(25곳) △야외스포츠지역(160곳) △탐승림(73곳) 등 6개 카테고리 총..."
         },
         {
           "panel": 4,
@@ -225,8 +126,107 @@
       }
     },
     {
-      "issue_id": "ic774d4be",
-      "title": "철도노조 “12월 10일 9시부터 무기한 총파업”… 안전인력 충원 요구",
+      "issue_id": "ia46fa26a",
+      "title": "‘젠슨 황과 불륜’ 앨리스 황, 유부녀였나…감옥 간 남편의 정체",
+      "category": "세계",
+      "rank": 8,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "엔비디아 젠슨 황 최고경영자(CEO)의 불륜 상대이자 중국 간첩으로 지목된 앨리스 황(중국명 황 러)이 중국 증시 규정 위반으로 여러 차례 적발된 금융인과 오랜 기간 동업자이자 연인 관계를 맺어온 것으로 드러났다.",
+        "이날 로이터통신과 디인포메이션 등 외신 보도에 따르면, 중국 스파이 의혹을 받는 앨리스 황(중국명 황러)이 젠슨 황과의 불륜 관계를 악용해 최소 75억 달러(약 10조 원) 규모의 AI 반도체를 중국으로 유출한 것으로...",
+        "'젠슨 황 불륜' 앨리스 황의 남편은 이 사람?…\"중국 사모펀드 대표\"",
+        "‘젠슨 황 스캔들’ 상대 여성도 유부녀?...앨리스 황의 복잡한 사생활",
+        "젠슨 황 엔비디아 최고경영자(CEO)가 불륜 사실을 인정한 가운데, 과거 한국 방문 당시 방송인 신아영과..."
+      ],
+      "sources": [
+        {
+          "press": "mydaily.co.kr",
+          "title": "“불륜으로 10조 반도체 유출\" 파문, 마블 '샹치' 배우 \"젠슨 황 연기하...",
+          "url": "https://m.entertain.naver.com/article/117/0004124169"
+        },
+        {
+          "press": "MBN",
+          "title": "'젠슨 황 불륜' 앨리스 황의 남편은 이 사람?…\"중국 사모펀드 대표\"",
+          "url": "https://n.news.naver.com/article/057/0001977697"
+        },
+        {
+          "press": "조선비즈",
+          "title": "‘젠슨 황 스캔들’ 상대 여성도 유부녀?...앨리스 황의 복잡한 사생활",
+          "url": "https://n.news.naver.com/article/366/0001203975"
+        },
+        {
+          "press": "tenasia.co.kr",
+          "title": "\"이재용이 몇 번을 말리는데\"…'불륜 인정' 젠슨 황, 신아영 포옹→19禁...",
+          "url": "https://m.entertain.naver.com/article/312/0000783968"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "엔비디아 젠슨 황 최고경영자(CEO)의 불륜 상대이자 중국 간첩으로 지목된 앨리스 황(중국명 황 러)이 중국 증시 규정 위반으로 여러 차례 적발된 금융인과 오랜 기간 동업자이자 연인 관계를 맺어온 것으로 드러났다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "남편으로 지목된 인물은 중국 금융계에서 한때 '증시 신동'으로 불렸던 투자회사..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "이날 로이터통신과 디인포메이션 등 외신 보도에 따르면, 중국 스파이 의혹을 받는 앨리스 황(중국명 황러)이 젠슨 황과의 불륜 관계를 악용해 최소 75억 달러(약 10조 원) 규모의 AI 반도체를 중국으로 유출한…"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i38525797",
+      "title": "[속보] 철도노조, 12월10일 오전 9시부터 무기한 총파업",
       "category": "사회",
       "rank": 4,
       "priority_score": 45,
@@ -236,11 +236,11 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "전국철도노동조합(철도노조)이 공정한 승진제도 마련과 철도 안전인력 충원 등을 요구하며 다음 달 10일 오전 9시부터 무기한 총파업을 예고했다.",
+        "전국철도노동조합이 11일 서울역 광장 앞에서 기자회견을 열고 다음 달 10일 오전 9시부터 무기한 총파업에 돌입할 것을 예고했다.",
         "철도노조 “12월 10일 9시부터 무기한 총파업”… 안전인력 충원 요구",
         "‘경기남부광역철도’ 공동 건의…경제성 B/C 1.20 무기로 국토부 압박 더불어민주당 추미애 경기도지사...",
         "글로벌 반도체 패권 경쟁이 국가 대항전 양상으로 치닫는 시점에, 삼성전자 노조의 총파업과 맞물리며 이목을...",
-        "나혜윤 김승준 기자 = 삼성전자 노사 갈등이 총파업 국면으로 치닫는 가운데 김영훈 고용노동부 장관은..."
+        "철도 멈추나…철도 노조 \"12월 10일 오전 9시부터 무기한 총파업\""
       ],
       "sources": [
         {
@@ -254,9 +254,9 @@
           "url": "https://n.news.naver.com/mnews/article/022/0004129639?sid=162"
         },
         {
-          "press": "news1.kr",
-          "title": "\"긴급조정 없다\" 선 그은 노동장관…삼성전자 노사에 \"밤새워서라도 대...",
-          "url": "https://n.news.naver.com/mnews/article/421/0008941775?sid=101"
+          "press": "디지털데일리",
+          "title": "철도 멈추나…철도 노조 \"12월 10일 오전 9시부터 무기한 총파업\"",
+          "url": "https://n.news.naver.com/article/138/0002248091"
         },
         {
           "press": "laborplus.co.kr",
@@ -268,7 +268,7 @@
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "전국철도노동조합(철도노조)이 공정한 승진제도 마련과 철도 안전인력 충원 등을 요구하며 다음 달 10일 오전 9시부터 무기한 총파업을 예고했다."
+          "evidence": "전국철도노동조합이 11일 서울역 광장 앞에서 기자회견을 열고 다음 달 10일 오전 9시부터 무기한 총파업에 돌입할 것을 예고했다."
         },
         {
           "panel": 2,
@@ -283,7 +283,7 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "철도노조의 12월 10일 무기한 총파업 돌입 계획과 승진제도 개선·안전인력 충원 요구가 보도되었다. 공공부문 잇단 파업 예고 흐름의 연장선으로 볼 수 있다."
+          "evidence": "과거 성과급 정상화를 요구하던 철도노조가 파업을 유보하여 출근길 대란을 피했던 사례다. 이번 12월 총파업 예고 역시 과거처럼 협상 결과에 따라 유보될 가능성이 존재한다는 해석이 가능하다."
         }
       ],
       "visual_brief": {
