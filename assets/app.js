@@ -2142,30 +2142,7 @@ const MASTER_PEOPLE_DOSSIER = {
       { y: '2022', title: '제20대 대선 배우자 행보', sub: '전국 사회복지시설 및 여성·아동 단체 지원 활동', tag: '대선' },
       { y: '2025', title: '대한민국 제21대 대통령 영부인', sub: '국가원수 배우자로서 사회적 약자 배려 및 문화예술 진흥 공익 행보', tag: '국정 동행' }
     ],
-    multiSources: {
-      portalNews: [
-        { date: '2026.06.12', press: '연합뉴스', title: '김혜경 여사, 영부인으로서 첫 공식 사회복지시설 방문 행보', desc: '아동 양육시설과 장애인 직업재활시설을 찾아 소외계층 지원과 돌봄 사각지대 해소를 위한 공익 활동 전개.', tag: '공식 행보' },
-        { date: '2024.11.14', press: '조선일보', title: '수원지법, 김혜경 공직선거법 위반 사건 1심 판결 선고 공방', desc: '경기도 법인카드 관련 공직선거법 위반 혐의에 대해 검찰과 변호인단의 치열한 법리 공방 및 항소 진행.', tag: '사법 쟁점' },
-        { date: '2022.02.09', press: 'MBC 뉴스', title: '김혜경 여사, 경기도 법인카드 사적 유용 논란 관련 대국민 사과', desc: '기자회견을 열고 공사 구분을 분명히 하지 못한 불찰에 대해 국민께 머리 숙여 사과하고 수사에 성실히 임하겠다고 밝힘.', tag: '대국민 사과' },
-        { date: '2018.12.11', press: '한겨레', title: '검찰, 트위터 ‘혜경궁 김씨’ 의혹 김혜경 여사 증거불충분 무혐의 불기소', desc: '계정 명의자 및 접속 IP 추적 결과 김 여사가 직접 운영했다고 단정할 증거가 없어 무혐의 불기소 처분.', tag: '무혐의 종결' }
-      ],
-      youtube: [
-        { channel: '김어준의 겸손은힘들다 뉴스공장', date: '2025.10.18', title: '[심층분석] 영부인 김혜경의 30년 동행과 검찰 표적수사의 법리적 모순', desc: '성남시장 시절부터 이어진 검찰과 야당의 전방위적 배우자 검증 공세의 배경과 팩트체크 전말.', tag: '탐사 분석' },
-        { channel: '삼프로TV_경제의신과함께', date: '2022.01.20', title: '[인터뷰 아카이브] 피아니스트 김혜경이 말하는 인간 이재명과 가족 이야기', desc: '결혼 초기 경제적 어려움과 소년공 시절 산재 후유증을 극복해 온 삶의 이면을 진솔하게 회고한 인터뷰.', tag: '인터뷰' },
-        { channel: '매불쇼', date: '2024.11.20', title: '[시사기획] 역대 영부인 리스크 검증사: 김건희 특검과 김혜경 재판 비교', desc: '여야 대선 주자 배우자를 둘러싼 수사 잣대와 사법적 쟁점을 다각도로 분석한 시사 토크.', tag: '시사 토크' },
-        { channel: '오마이TV', date: '2024.08.10', title: '[현장중계] 김혜경 여사 공판 출석 현장 및 변호인단 공식 입장 브리핑', desc: '수원지방법원 법정 출석 과정과 선거법 위반 쟁점에 대한 변호인단의 상세 반박 설명.', tag: '현장 중계' }
-      ],
-      blogsCafes: [
-        { platform: '네이버 블로그', author: '정치시사 아카이브', date: '2025.04.15', title: '피아니스트 김혜경과 청년 변호사 이재명의 만남부터 대선까지 — 숨겨진 가족사', desc: '1990년 소개팅으로 만나 1년 만에 결혼에 이르기까지 서민 노동자 출신 남편을 지지해 온 인생 기록 정리.', tag: '인물사' },
-        { platform: '다음 카페 (재명이네 마을)', author: '봄날의햇살', date: '2025.09.20', title: '영부인 김혜경 여사의 조용한 봉사활동 발자취와 따뜻한 동행 아카이브', desc: '언론의 스포트라이트를 피해 성남과 경기도의 무료급식소 및 한부모 가정을 꾸준히 후원해 온 기록 수집.', tag: '미담 기록' },
-        { platform: '브런치 스토리', author: '미디어평론가', date: '2024.12.05', title: '한국 정치사에서 대통령 배우자 리스크 검증의 변천사 — 김건희와 김혜경', desc: '공적 권한이 없는 배우자의 사적 리스크가 어떻게 국정 지지율과 대선 결과에 직결되는지 분석한 칼럼.', tag: '심층 칼럼' }
-      ],
-      publicRecords: [
-        { type: '공직자 재산등록 고보', org: '정부공직자윤리위원회', date: '2025.03.28', title: '대통령 배우자 재산신고 내역', desc: '예금, 분당 아파트 지분 등 합법적 보유 재산 상세 내역 및 직계존비속 고지사항 관보 게재.' },
-        { type: '법원 공판 기록', org: '수원지방법원 형사13부', date: '2024.11.14', title: '공직선거법 위반 사건 판결 요지', desc: '제20대 대선 당내 경선 과정에서의 식사 제공 관련 공직선거법 위반 혐의 사건 공소사실 및 변론 요지.' },
-        { type: '선관위 공보', org: '중앙선거관리위원회', date: '2025.05.10', title: '제21대 대통령선거 후보자 배우자 정보', desc: '후보자 인적사항, 배우자 공식 프로필 및 범죄경력 등 공직선거법 제49조에 따른 법정 공개 기록.' }
-      ]
-    }
+    multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
   },
 
   '정진상': {
@@ -2184,26 +2161,7 @@ const MASTER_PEOPLE_DOSSIER = {
       { y: '2022', title: '당대표 정무조정실장 및 구속 기소', sub: '대장동·위례 개발 특혜 및 뇌물수수 혐의로 구속 기소', tag: '사법 공방' },
       { y: '2024', title: '보석 석방 및 불구속 재판', sub: '방어권 보장을 위한 보석 허가 후 법정에서 유동규 진술 신빙성 탄핵 공방', tag: '법정 공방' }
     ],
-    multiSources: {
-      portalNews: [
-        { date: '2025.10.22', press: '경향신문', title: '정진상 측, 대장동 재판서 유동규 ‘돈 전달’ 진술 모순 집중 추궁', desc: '아파트 CCTV 및 계단 이동 시간 등 물리적 검증 자료를 제시하며 유동규 뇌물 전달 진술의 허위성 주장.', tag: '재판 공방' },
-        { date: '2022.11.19', press: '중앙일보', title: '검찰, ‘이재명 최측근’ 정진상 정무조정실장 뇌물수수 혐의 구속', desc: '특정범죄가중처벌법상 뇌물, 부정처사후수뢰 등 혐의로 구속영장 발부, 대장동 수사 최고조.', tag: '구속 수사' },
-        { date: '2021.10.04', press: '동아일보', title: '이재명 “측근이라면 정진상·김용 정도는 돼야” 발언 재조명', desc: '유동규 구속 직후 이재명 지사가 대장동 측근설을 부인하며 정진상과 김용을 진정한 참모로 지목한 배경.', tag: '정치 발언' }
-      ],
-      youtube: [
-        { channel: '시사IN 유튜브', date: '2023.03.14', title: '[단독추적] 정진상 30년 동행의 기록: 그는 어떻게 이재명의 최고 복심이 되었나', desc: '언론 노출을 극도로 피했던 ‘그림자 참모’ 정진상의 성남 시민운동 시절부터 중앙당 진출까지의 궤적.', tag: '인물 탐사' },
-        { channel: '김어준의 겸손은힘들다 뉴스공장', date: '2024.05.20', title: '[재판 팩트체크] 정진상 변호인단이 밝힌 대장동 녹취록의 결정적 왜곡', desc: '정영학 녹취록 속 발언 주체와 검찰 공소장 내용의 불일치를 집중 분석한 방송.', tag: '법리 분석' },
-        { channel: 'JTBC 뉴스', date: '2022.11.15', title: '[탐사보도] 성남시 정책비서관실에서 중앙당까지 — 정진상 라인의 실체', desc: '성남 라인의 핵심 권한 행사와 결재 구조를 취재한 기획 보도.', tag: '기획 취재' }
-      ],
-      blogsCafes: [
-        { platform: '네이버 블로그', author: '법조이슈 다이어리', date: '2024.11.02', title: '대장동 공판 기록 총정리: 정진상과 유동규의 진술 대립 쟁점 3가지', desc: '술값 대납, 뇌물 수수 일시, 아파트 엘리베이터 동선 등 재판부의 핵심 판단 기준 분석.', tag: '재판 요약' },
-        { platform: '다음 카페', author: '정치와법', date: '2023.12.18', title: '이재명 곁을 묵묵히 지킨 30년 복심 정진상의 삶과 쟁점', desc: '화려한 직함 대신 정책 실무에만 전념했던 비서관 출신 참모의 공과 과.', tag: '인물 분석' }
-      ],
-      publicRecords: [
-        { type: '법원 공판 조서', org: '서울중앙지방법원 형사합의33부', date: '2024.10.15', title: '대장동·위례·백현동 특혜비리 사건 공판조서', desc: '피고인 정진상의 뇌물수수 및 부패방지법 위반 혐의 공판 증인 신문 기록.' },
-        { type: '인사 발령 공보', org: '경기도청', date: '2018.07.10', title: '경기도 정책실장 임명 공고', desc: '별정직 고위공무원 임용 및 도정 기획업무 총괄 위임 기록.' }
-      ]
-    }
+    multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
   },
 
   '김용': {
@@ -2221,25 +2179,7 @@ const MASTER_PEOPLE_DOSSIER = {
       { y: '2022', title: '민주연구원 부원장 및 구속', sub: '대선 경선 자금 명목 8억 4,700만 원 수수 혐의로 구속 기소', tag: '사법 공방' },
       { y: '2023', title: '1심 징역 5년 선고 및 항소', sub: '정치자금법 위반 등 유죄 선고 후 항소심에서 알리바이(구글 타임라인) 제출', tag: '법정 공방' }
     ],
-    multiSources: {
-      portalNews: [
-        { date: '2024.08.20', press: '뉴스1', title: '김용 항소심 재판부, ‘구글 타임라인’ 알리바이 검증 현장 감정 진행', desc: '자금 수수 일시로 지목된 시각 다른 장소에 머물렀음을 입증하기 위한 디지털 증거 감정.', tag: '디지털 증거' },
-        { date: '2023.11.30', press: '중앙일보', title: '‘이재명 분신’ 김용, 불법 대선자금 수수 1심서 징역 5년 법정구속', desc: '서울중앙지법 형사23부, 유동규 진술 신빙성 인정하며 6억 원 수수 유죄 판단.', tag: '1심 선고' },
-        { date: '2022.10.19', press: '한겨레', title: '검찰, 민주연구원 전격 압수수색… 김용 부원장 전격 체포', desc: '중앙당사 내 민주연구원 압수수색 시도로 민주당 의원들과 밤샘 대치 끝에 집행.', tag: '당사 압수수색' }
-      ],
-      youtube: [
-        { channel: '오마이TV', date: '2024.05.10', title: '[집중분석] 김용 항소심의 반전 카드: 구글 타임라인과 판결을 뒤흔들 증거들', desc: '검찰이 특정한 수수 날짜와 시간에 다른 곳에 있었다는 디지털 알리바이의 법적 효력.', tag: '알리바이 추적' },
-        { channel: '김어준의 겸손은힘들다 뉴스공장', date: '2023.12.05', title: '[인터뷰] 김용 변호인단 김기표 변호사가 밝힌 1심 판결의 5대 모순', desc: '물증 없이 유동규의 일방적 진술만에 의존한 판결의 한계를 지적한 인터뷰.', tag: '변호인 인터뷰' }
-      ],
-      blogsCafes: [
-        { platform: '네이버 블로그', author: '정치데이터룸', date: '2024.07.12', title: '이재명의 참모 김용의 발자취: 성남 리모델링 연합회장에서 대선 캠프까지', desc: '분당 아파트 리모델링 추진위원장 시절 이재명 변호사를 만나 의회에 진출한 과정.', tag: '인물 스토리' },
-        { platform: '브런치', author: '시사칼럼니스트', date: '2023.12.02', title: '김용 1심 판결이 이재명 본인 재판에 미치는 파장과 정치적 함의', desc: '불법 정치자금의 최종 귀속처 논란과 향후 대선 주자로서의 법적 부담 분석.', tag: '파장 분석' }
-      ],
-      publicRecords: [
-        { type: '형사 판결문', org: '서울중앙지방법원 형사23부', date: '2023.11.30', title: '정치자금법 위반 등 사건 1심 판결문', desc: '피고인 김용에 대한 징역 5년, 벌금 7천만 원, 추징금 6억 7천만 원 선고 주문.' },
-        { type: '지방의회 회의록', org: '성남시의회', date: '2016.12.20', title: '제224회 성남시의회 정례회 본회의 회의록', desc: '성남시 청년배당 및 무상교복 예산안 통과를 주도한 대표 발의 발언 기록.' }
-      ]
-    }
+    multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
   },
 
   '유동규': {
@@ -2258,25 +2198,7 @@ const MASTER_PEOPLE_DOSSIER = {
       { y: '2021', title: '구속 및 대장동 수사 촉발', sub: '특정경제범죄가중처벌법상 배임 혐의로 전격 구속', tag: '구속' },
       { y: '2022', title: '‘폭로자’ 전향 및 법정 증언', sub: '이재명 지시 및 정진상·김용 뇌물 전달 진술 쏟아내며 여론 중심에 섬', tag: '전향' }
     ],
-    multiSources: {
-      portalNews: [
-        { date: '2024.10.11', press: '조선일보', title: '유동규 “이재명 명령 따른 것”… 법정서 대장동 설계 책임 공방', desc: '이재명 재판 증인으로 출석해 성남도개공 설립과 대장동 초과이익 환수 포기가 지사 방침이었다고 주장.', tag: '법정 증언' },
-        { date: '2022.10.21', press: '동아일보', title: '유동규 석방 직후 폭탄 증언 “내가 지은 죄만큼만 받겠다, 이재명 재판 다 밝힐 것”', desc: '구속기한 만료로 출소한 뒤 심경 변화를 밝히며 대선자금 수수 진술의 배경 설명.', tag: '심경 고백' },
-        { date: '2021.10.03', press: 'KBS 뉴스', title: '검찰, ‘대장동 핵심’ 유동규 전 성남도개공 본부장 전격 구속', desc: '화천대유 측에 막대한 개발이익을 몰아주고 성남시에 수천억 손해를 끼친 배임 혐의.', tag: '전격 구속' }
-      ],
-      youtube: [
-        { channel: '유동규TV', date: '2023.08.15', title: '[자체방송] 내가 겪은 이재명과 대장동의 진실: 왜 나는 입을 열었는가', desc: '본인이 직접 개설한 유튜브 채널을 통해 수감 시절 겪은 배신감과 전향 사유를 밝힌 영상.', tag: '직접 해명' },
-        { channel: '채널A 뉴스', date: '2022.11.02', title: '[단독취재] 유동규의 심경 변화, 그 결정적 계기는 무엇이었나', desc: '가족에 대한 검찰 압박과 변호인 조력 논란 속에서 증언을 바꾸게 된 내막 취재.', tag: '심층 취재' }
-      ],
-      blogsCafes: [
-        { platform: '네이버 블로그', author: '정치시사 인물탐구', date: '2024.03.10', title: '리모델링 추진위원장에서 대장동의 키맨까지 — 유동규라는 인물의 명암', desc: '건축 전공자가 아니었던 그가 어떻게 대규모 도시개발의 실무 최고 책임자가 되었는가.', tag: '인물 추적' },
-        { platform: '다음 카페', author: '법률이야기', date: '2023.11.10', title: '공범의 자백과 진술의 신빙성: 유동규 진술을 바라보는 법원의 잣대', desc: '형사소송법상 공범자의 증언이 유죄 증거로 채택되기 위한 요건과 판례 분석.', tag: '법리 고찰' }
-      ],
-      publicRecords: [
-        { type: '공판 증인신문 조서', org: '서울중앙지방법원', date: '2024.09.24', title: '이재명 배임·위증교사 사건 증인신문 기록', desc: '증인 유동규의 대장동 공모지침서 보고 및 결재 과정 증언 녹취록.' },
-        { type: '공공기관 경영공시', org: '경기관광공사', date: '2020.12.31', title: '기관장 경영평가 및 주요 사업 실적', desc: '경기관광공사 사장 재임기 DMZ 평화관광 및 도정 연계 프로젝트 집행 공보.' }
-      ]
-    }
+    multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
   },
 
   '이화영': {
@@ -2294,24 +2216,7 @@ const MASTER_PEOPLE_DOSSIER = {
       { y: '2022', title: '대북송금 의혹 구속 기소', sub: '쌍방울 법인카드 수수 및 외국환거래법 위반 혐의로 구속', tag: '사법 수사' },
       { y: '2024', title: '1심 징역 9년 6개월 선고', sub: '수원지법 형사11부, 대북송금 공모 및 뇌물수수 인정 판결', tag: '중형 선고' }
     ],
-    multiSources: {
-      portalNews: [
-        { date: '2024.06.07', press: '한국일보', title: '수원지법, ‘쌍방울 대북송금’ 이화영 1심 징역 9년 6개월 중형 선고', desc: '김성태 쌍방울 회장의 대북 로비 자금과 경기도 스마트팜 사업의 연관성 인정.', tag: '1심 선고' },
-        { date: '2023.07.18', press: '경향신문', title: '이화영 “이재명에 방북 비용 쌍방울 대납 보고했다” 검찰 진술 번복 파문', desc: '검찰 조사에서 보고 사실을 인정했다가 옥중 서한을 통해 강압 수사에 의한 허위 자백이었다고 재번복.', tag: '진술 번복' },
-        { date: '2019.05.20', press: 'SBS 뉴스', title: '경기도 대표단, 북한 평양 방문… 옥류관 남측 1호점 유치 협약 추진', desc: '이화영 평화부지사가 주도한 대북 경제협력 및 남북 교류 행사 취재.', tag: '대북 사업' }
-      ],
-      youtube: [
-        { channel: '김어준의 겸손은힘들다 뉴스공장', date: '2024.06.10', title: '[특집] 이화영 1심 판결의 미스터리: 국정원 문건은 왜 배제되었는가', desc: '쌍방울의 주가 조작 목적 대북 송금이라고 기록된 국정원 비밀문건의 증거 능력을 다룬 방송.', tag: '국정원 문건' },
-        { channel: '뉴스타파', date: '2023.10.25', title: '[탐사] 쌍방울 김성태와 이화영, 그리고 검찰: 대북송금 수사의 막전막후', desc: '안부수 아태평화교류협회장과 쌍방울의 외화 밀반출 구조를 추적한 탐사 다큐.', tag: '탐사 다큐' }
-      ],
-      blogsCafes: [
-        { platform: '네이버 블로그', author: '한반도평화포럼', date: '2024.07.01', title: '남북경협의 이상과 사법 리스크의 덫 — 이화영 사건이 남긴 교훈', desc: '지방자치단체 차원의 남북교류가 중앙정부의 승인과 대북제재 국면에서 맞닥뜨린 한계.', tag: '정책 분석' }
-      ],
-      publicRecords: [
-        { type: '형사 판결문', org: '수원지방법원 형사11부', date: '2024.06.07', title: '특정범죄가중처벌법(뇌물) 및 외국환거래법 위반 사건 판결문', desc: '피고인 이화영에 대한 유죄 인정 사실 및 증거의 요지.' },
-        { type: '도정 백서', org: '경기도청', date: '2020.12.31', title: '경기도 평화협력 정책 백서', desc: '평화부지사 관할 남북교류협력기금 집행 및 북한 농축산 지원 사업 현황.' }
-      ]
-    }
+    multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
   },
 
   '이재선': {
@@ -2330,26 +2235,33 @@ const MASTER_PEOPLE_DOSSIER = {
       { y: '2017', title: '작고', sub: '향년 63세로 지병으로 별세', tag: '별세' },
       { y: '2020', title: '대법원 강제입원 의혹 무죄 확정', sub: '대법원 전원합의체, 이재명 지사의 친형 강제입원 관련 선거법 위반 무죄 확정', tag: '대법원 판결' }
     ],
-    multiSources: {
-      portalNews: [
-        { date: '2020.07.16', press: '연합뉴스', title: '대법원 전원합의체, 이재명 ‘친형 강제입원’ 선거법 위반 무죄 취지 파기환송', desc: '토론회 발언이 허위사실 공표에 해당하지 않는다고 판단, 지사직 상실 위기 조기 극복.', tag: '대법 판결' },
-        { date: '2018.11.20', press: '조선일보', title: '이재선 씨 유족, 기자회견 열고 친형 강제입원 진단 의혹 폭로', desc: '부인 박인복 씨가 국회에서 회견을 열고 성남시장 권한 남용 의혹 주장.', tag: '유족 기자회견' }
-      ],
-      youtube: [
-        { channel: 'MBC 탐사기획 스트레이트', date: '2019.01.13', title: '[추적] 이재명 형제 갈등 10년의 기록: 성남시장 인사 청탁과 불화의 기원', desc: '어머니에 대한 패륜 발언과 시장 결재를 둘러싸고 벌어진 통화 녹취록의 발생 배경 전말.', tag: '사건 전말' }
-      ],
-      blogsCafes: [
-        { platform: '네이버 블로그', author: '한국정치 비하인드', date: '2022.01.25', title: '이재명과 셋째 형 이재선의 비극적 가족사: 소년공 시절부터 정계 입문까지', desc: '공인회계사 형과 인권변호사 동생이 권력의 문턱에서 맞닥뜨린 갈등과 상처.', tag: '가족사 회고' }
-      ],
-      publicRecords: [
-        { type: '대법원 판결문', org: '대법원 전원합의체', date: '2020.07.16', title: '2019도13328 직권남용권리행사방해 및 공직선거법위반', desc: '성남시 보건소장을 통한 정신병원 강제입원 시도 및 토론회 발언에 대한 최종 법리 판단.' }
-      ]
-    }
+    multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
   }
 };
 
 // Also enrich with generic auto-generation for all 41 persons if requested
+/* 인물 문서의 '관련 보도'는 우리가 실제로 모은 기사(원문 주소 있음)만. 없으면 섹션을 숨김(2026-11-11 사용자 결정: 지어낸 목록 제거) */
+function realPersonNews(name, opt = {}){
+  const entItem = (typeof D !== 'undefined' && D?.entities) ? D.entities.find(x => x.name === name) : null;
+  const src = [...((opt.pol || opt.pDetail)?.news || []), ...(entItem?.timeline || [])];
+  const seen = new Set(), out = [];
+  for(const x of src){
+    const url = x?.url || '', title = x?.title || '';
+    if(!/^https?:\/\//.test(url) || !title || seen.has(title)) continue;
+    if(typeof isHomonymArticle === 'function' && isHomonymArticle(name, title, x.press || '')) continue;
+    seen.add(title);
+    out.push({ date: normTime(x.date || x.t || ''), press: x.press || '', title, desc: x.quote || x.desc || '', tag: '보도', url });
+    if(out.length >= 8) break;
+  }
+  return out;
+}
 function getOrSynthesizeDossier(name, opt = {}){
+  const d = _dossierBase(name, opt);
+  if(!d) return null;
+  const news = realPersonNews(name, opt);
+  return { ...d, multiSources: news.length ? { portalNews: news, youtube: [], blogsCafes: [], publicRecords: [] } : null };
+}
+function _dossierBase(name, opt = {}){
   if(!name) return null;
   if(MASTER_PEOPLE_DOSSIER[name]) return MASTER_PEOPLE_DOSSIER[name];
 
@@ -2370,18 +2282,6 @@ function getOrSynthesizeDossier(name, opt = {}){
   // 3계층(민간인·미확인) 가족·지인은 따로 인물 문서를 만들지 않음(docs/PEOPLE.md)
   if(foundRel && !(foundRel.cat === 'family' ? isPublicFamily(foundRel.target, name) : isPublicPerson(name))) foundRel = null;
   if(foundRel){
-    const relNews = (entItem?.timeline || []).slice(0, 4).map(x => ({
-      date: normTime(x.t || x.date || ''),
-      press: x.press || '언론 보도',
-      title: x.title,
-      desc: x.quote || (x.title + ' 관련 주요 언론 보도.'),
-      tag: '공식 보도'
-    }));
-    const defaultNews = [
-      { date: '2026.11.10', press: '연합뉴스', title: name + ' 관련 공적 인적 배경 및 주요 행보 검증', desc: foundRel.desc || '공직자 재산등록 고보 및 공적 아카이브 기록 검증.', tag: '공적 기록' },
-      { date: '2025.08.14', press: 'MBC 뉴스', title: name + '과 ' + foundRel.target + '의 주요 인연 및 정무적 발자취', desc: '성남 및 경기 도정, 원내 활동에서의 주요 역할과 배경 분석.', tag: '인물 분석' },
-      { date: '2024.12.20', press: '조선일보', title: name + ' 관련 주요 사법 쟁점 및 공판 진행 상황', desc: '사법 판결문 및 공소사실에 명시된 사실관계 정리.', tag: '사법 검증' }
-    ];
 
     return {
       name: name,
@@ -2394,20 +2294,7 @@ function getOrSynthesizeDossier(name, opt = {}){
       milestones: [
         { y: '공식 기록', title: foundRel.rel, sub: foundRel.desc || '공식 인적 기록 및 공적 활동', tag: '주요 기록' }
       ],
-      multiSources: {
-        portalNews: relNews.length ? relNews : defaultNews,
-        youtube: [
-          { channel: '시사 아카이브', date: '탐사 기록', title: '[인물 심층] ' + name + '과 ' + foundRel.target + '의 인연 및 정무적 배경 분석', desc: '공식 시사 방송 및 언론 보도를 바탕으로 한 배경 분석.', tag: '시사 분석' },
-          { channel: '정치와 법정', date: '사법 분석', title: '[사법 리포트] ' + name + ' 관련 주요 법적 쟁점과 공판 팩트체크', desc: '공판 기록과 변호인단 입장문을 중심으로 한 법리 분석.', tag: '사법 분석' }
-        ],
-        blogsCafes: [
-          { platform: '네이버 블로그', author: '인물사 연구소', date: '공론장 아카이브', title: name + '의 생애 및 인적 유대 스토리', desc: foundRel.desc || '시민사회 및 지역 공론장에서 확인된 인물 기록.', tag: '인물 스토리' },
-          { platform: '다음 카페', author: '시사포럼', date: '여론 반응', title: name + ' 관련 시민사회 및 유권자 여론 종합', desc: '온라인 커뮤니티와 공론장의 다각도 평가.', tag: '여론 분석' }
-        ],
-        publicRecords: [
-          { type: '공적 인적 기록', org: '공공기관 및 관보', date: '공식 공보', title: name + ' 인적 배경 공보', desc: foundRel.src || '정부공직자윤리위원회 및 공식 공보.' }
-        ]
-      }
+      multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
     };
   }
 
@@ -2416,18 +2303,6 @@ function getOrSynthesizeDossier(name, opt = {}){
     const ages = pol.ages || [22];
     const lastAge = ages.slice(-1)[0] || 22;
     const roleTitle = pol.party ? (pol.party + (pol.district ? ' ' + pol.district : '') + ' 제' + lastAge + '대 국회의원') : '국회의원';
-    const polNews = (opt.pDetail?.news || entItem?.timeline || []).slice(0, 4).map(x => ({
-      date: normTime(x.date || x.t || ''),
-      press: x.press || '주요 보도',
-      title: x.title,
-      desc: x.desc || (name + ' 의원의 주요 의정 및 입법 활동 보도.'),
-      tag: '의정 보도'
-    }));
-    const defPolNews = [
-      { date: '2026.11.08', press: '연합뉴스', title: '[의정] ' + name + ' 의원, 지역구 핵심 현안 점검 및 민생 법안 추진', desc: (pol.district || '선거구') + ' 발전을 위한 정책 협의회 개최 및 입법 과제 발표.', tag: '의정 종합' },
-      { date: '2025.10.15', press: '국회보', title: '[상임위] ' + name + ' 의원, 국정감사 질의 및 정책 현안 검증', desc: '정부 주요 부처를 상대로 한 날카로운 정책 질의와 대안 제시.', tag: '국정감사' },
-      { date: '2024.12.02', press: '조선일보', title: '[입법 활동] ' + name + ' 의원 대표발의 법안 심사 및 원내 동향', desc: '민생 경제 활성화 및 사회적 약자 보호 법안 심사 현황.', tag: '법안 심사' }
-    ];
 
     return {
       name: name,
@@ -2443,23 +2318,7 @@ function getOrSynthesizeDossier(name, opt = {}){
         sub: (pol.party || '') + ' 소속 (' + (pol.district || '비례대표') + ')',
         tag: '의정'
       })),
-      multiSources: {
-        portalNews: polNews.length ? polNews : defPolNews,
-        youtube: [
-          { channel: '국회방송', date: '최근 본회의', title: '[본회의 발언] ' + name + ' 의원 5분 자유발언 및 대정부질문 현장', desc: (pol.district || '선거구') + ' 현안과 민생 정책에 대한 정부 대책 촉구.', tag: '본회의' },
-          { channel: 'KBS 뉴스 / 사사건건', date: '시사 토론', title: '[원내 포커스] ' + name + ' 의원이 밝히는 주요 입법 과제와 정국 진단', desc: '여야 쟁점 법안 협상 및 국회 운영 방향에 대한 정책 인터뷰.', tag: '심층 인터뷰' },
-          { channel: 'MBC 뉴스 / 비하인드', date: '현장 취재', title: '[상임위 밀착] ' + name + ' 의원 국감 활약상과 현장 반응', desc: '상임위 정책 질의 및 민생 예산 확보 노력 분석.', tag: '상임위' }
-        ],
-        blogsCafes: [
-          { platform: '네이버 블로그', author: '의정모니터단', date: '의정 평가', title: name + ' 의원 의정활동 평가와 대표발의 법안 분석', desc: '법안 처리 실적 및 본회의 출석률, 공약 이행률 종합 분석.', tag: '의정 분석' },
-          { platform: '다음 카페', author: '지역구 유권자 모임', date: '지역 여론', title: name + ' 의원의 지역구 발전 공약 및 주민 소통 현황', desc: '지역 주민과의 정기 간담회 및 민원 해결 활동에 대한 유권자 평가.', tag: '지역 여론' }
-        ],
-        publicRecords: [
-          { type: '국회 의안정보시스템', org: '대한민국 국회', date: '공식 기록', title: '대표발의 법안 ' + (pol.lead || 0) + '건 / 공동발의 ' + (pol.co || 0) + '건', desc: '국회 의안정보시스템에 공식 등재된 법률안 발의 및 본회의 처리 기록.' },
-          { type: '공직자 재산등록 고보', org: '정부공직자윤리위원회', date: '정기 공개', title: name + ' 의원 정기 재산변동사항 관보 게재', desc: '공직자윤리법에 따른 본인 및 직계존비속 재산 등록 및 변동 내역.' },
-          { type: '선관위 당선 공보', org: '중앙선거관리위원회', date: '선거 기록', title: '제' + lastAge + '대 국회의원 선거 당선인 공보', desc: '중앙선거관리위원회 공식 인적사항 및 선거 결과 기록.' }
-        ]
-      }
+      multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
     };
   }
 
@@ -2480,26 +2339,7 @@ function getOrSynthesizeDossier(name, opt = {}){
       birth: bio.birth_desc || '',
       desc: (bio.role_title || '') + ' (' + (bio.org || '') + '). ' + (bio.birth_desc ? bio.birth_desc + '. ' : '') + (bio.military ? '병역: ' + bio.military : ''),
       milestones: bioEvents.slice(0, 6),
-      multiSources: {
-        portalNews: (entItem?.timeline || []).slice(0, 4).map(x => ({
-          date: normTime(x.t || x.date || ''),
-          press: x.press || '주요 언론',
-          title: x.title,
-          desc: x.quote || (x.title + ' 관련 주요 언론 보도.'),
-          tag: '보도'
-        })).concat([
-          { date: '공식 기록', press: '연합뉴스', title: name + ', ' + (bio.role_title || '주요 공직/기업') + ' 공식 행보 및 대외 발표', desc: (bio.org || '') + ' 관련 공식 발표 및 언론 보도 아카이브.', tag: '공식 보도' }
-        ]).slice(0, 4),
-        youtube: [
-          { channel: '삼프로TV / 시사기획', date: '심층 분석', title: '[인물 심층] ' + name + '과 ' + (bio.org || '관련 분야') + '의 미래 전략 및 경영/정책 분석', desc: '공식 인터뷰 및 업계 분석을 통한 인물 리더십 진단.', tag: '심층 분석' }
-        ],
-        blogsCafes: [
-          { platform: '네이버 프리미엄콘텐츠', author: '산업·시사팀', date: '공론장', title: name + '의 발자취와 주요 사회적 영향력 평가', desc: '전문가 칼럼 및 공론장에서의 다각도 인물 평판 분석.', tag: '인물 칼럼' }
-        ],
-        publicRecords: [
-          { type: '공적 레지스트리', org: bio.org || '공공기관', date: '공식 기록', title: name + ' 공적 이력 및 등록 사항', desc: (bio.role_title || '') + ' 공식 기록 및 검증된 인적 정보.' }
-        ]
-      }
+      multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
     };
   }
 
@@ -2527,20 +2367,7 @@ function getOrSynthesizeDossier(name, opt = {}){
       milestones: [
         { y: famData?.gongbo_year ? famData.gongbo_year + '년 공보' : '공직 기록', title: polName + ' 국회의원 ' + relName + ' 등록', sub: refuseDesc || assetDesc || '정기재산변동사항 공보 게재', tag: '공적 기록' }
       ],
-      multiSources: {
-        portalNews: [
-          { date: '공식 기록', press: '국회공보', title: polName + ' 의원 재산등록 고보 — ' + relName + ' 재산 및 권리관계', desc: assetDesc || refuseDesc || '국회공보 정기재산변동사항 공개 기록.', tag: '관보 기록' }
-        ],
-        youtube: [
-          { channel: '국회 모니터링', date: '공직 검증', title: '[공직 검증] ' + polName + ' 의원 일가 재산 현황 및 주요 공개 내역', desc: '공직자 재산등록에 따른 직계존비속 보유 자산 및 변동 사항 분석.', tag: '공직 검증' }
-        ],
-        blogsCafes: [
-          { platform: '의정 아카이브', author: '시민사회', date: '공직 기록', title: polName + ' 의원의 가족 배경 및 ' + relName + ' 관련 인적 정보', desc: '국회공보와 관보에 공시된 의원 일가 인적 배경 정리.', tag: '인적 배경' }
-        ],
-        publicRecords: [
-          { type: '국회공직자윤리위원회 공보', org: '대한민국 국회', date: '정기 공개', title: polName + ' 국회의원 ' + relName + ' 재산등록 내역', desc: famData?.refused ? (famData.refuse_reason + ' 고지거부') : (assetDesc || '정기재산변동사항 관보 게재') }
-        ]
-      }
+      multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
     };
   }
 
@@ -2557,20 +2384,7 @@ function getOrSynthesizeDossier(name, opt = {}){
       birth: corpItem.birth || '',
       desc: (corpItem.role || '') + ' (' + (corpItem.org || '') + '). ' + (schList ? '학력: ' + schList + '. ' : '') + (corpItem.military ? '병역: ' + corpItem.military : ''),
       milestones: (corpItem.schools || []).map(s => ({ y: '학업', title: s + ' 졸업', sub: '주요 학력 이수', tag: '학연' })),
-      multiSources: {
-        portalNews: [
-          { date: '최근 보도', press: '연합인포맥스', title: name + ' ' + (corpItem.role || '') + ', 핵심 사업 전략 및 경영 행보', desc: (corpItem.org || '') + ' 경영 혁신 및 대외 글로벌 파트너십 구축 총력.', tag: '기업 경영' }
-        ],
-        youtube: [
-          { channel: '삼프로TV', date: '기업 심층', title: '[기업 분석] ' + name + ' ' + (corpItem.role || '') + '의 리더십과 ' + (corpItem.org || '') + '의 미래 전략', desc: '산업 생태계 혁신과 미래 성장 동력 분석.', tag: '기업 분석' }
-        ],
-        blogsCafes: [
-          { platform: '네이버 프리미엄콘텐츠', author: '산업리포트', date: '산업 분석', title: name + '과 ' + (corpItem.org || '') + ' — 재계 지형도와 경영권 분석', desc: '지배구조 및 주요 투자 프로젝트 점검.', tag: '심층 분석' }
-        ],
-        publicRecords: [
-          { type: 'DART 전자공시', org: '금융감독원', date: '공시 기록', title: (corpItem.org || '') + ' 임원 및 최대주주 등 소유주식변동신고서', desc: '자본시장법에 따른 임원 선임 및 지분 공시.' }
-        ]
-      }
+      multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
     };
   }
 
@@ -2588,20 +2402,7 @@ function getOrSynthesizeDossier(name, opt = {}){
       birth: legalItem.birth || '',
       desc: (legalItem.role || '') + ' (' + (legalItem.org || '') + '). ' + (examList ? '자격: ' + examList + '. ' : '') + (schList ? '학력: ' + schList : ''),
       milestones: (legalItem.exams || []).map(e => ({ y: '법조 입문', title: e + ' 합격 및 연수', sub: '사법연수원 수료', tag: '법조 이력' })),
-      multiSources: {
-        portalNews: [
-          { date: '법조 보도', press: '법률신문', title: name + ' ' + (legalItem.role || '') + ', 주요 판결 및 법리 쟁점 심층 분석', desc: '법치주의 확립과 사법 정의 구현을 위한 주요 판결 및 수사 기록.', tag: '법조 기록' }
-        ],
-        youtube: [
-          { channel: '로톡뉴스', date: '판결 해설', title: '[판결 리뷰] ' + name + ' ' + (legalItem.role || '') + '의 주요 사건 판결문 팩트체크', desc: '주요 재판 과정에서의 법리 해석과 사회적 영향 진단.', tag: '법률 해설' }
-        ],
-        blogsCafes: [
-          { platform: '법률저널', author: '법조 아카이브', date: '법조 인물', title: name + ' ' + (legalItem.role || '') + '의 법조 궤적과 주요 이력', desc: '사법고시 합격부터 법조 요직에 이르는 경력 조망.', tag: '법조사' }
-        ],
-        publicRecords: [
-          { type: '대법원 판결문 및 법조 공보', org: '대한민국 법원', date: '공식 기록', title: name + ' 법조인 인적 등록 및 사법 기록', desc: '대법원 및 법무부 법조인명록 등재 정보.' }
-        ]
-      }
+      multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
     };
   }
 
@@ -2619,20 +2420,7 @@ function getOrSynthesizeDossier(name, opt = {}){
       milestones: [
         { y: '공직 임명', title: officialItem.role, sub: officialItem.org || '정부 부처', tag: '공직' }
       ],
-      multiSources: {
-        portalNews: [
-          { date: '정책 보도', press: '대한민국 정책브리핑', title: name + ' ' + (officialItem.role || '') + ', 주요 정부 국정과제 추진 브리핑', desc: '민생 경제 및 국가 주요 정책 추진 현황 발표.', tag: '정책 브리핑' }
-        ],
-        youtube: [
-          { channel: 'KTV 국민방송', date: '정부 브리핑', title: '[국정 브리핑] ' + name + ' ' + (officialItem.role || '') + ' 대국민 정책 발표 현장', desc: '정부 핵심 과제에 대한 종합 설명 및 질의응답.', tag: '정책 발표' }
-        ],
-        blogsCafes: [
-          { platform: '네이버 블로그', author: '행정 모니터링', date: '정책 평가', title: name + ' ' + (officialItem.role || '') + '의 부처 정책 성과 평가', desc: '시민사회 관점에서의 행정 혁신 및 국정 과제 이행 점검.', tag: '정책 평가' }
-        ],
-        publicRecords: [
-          { type: '대한민국 전자관보', org: '인사혁신처', date: '공식 관보', title: name + ' 정무직 공무원 임명 및 인사 발령', desc: '대통령 인사 발령 및 관보 게재 기록.' }
-        ]
-      }
+      multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
     };
   }
 
@@ -2650,20 +2438,7 @@ function getOrSynthesizeDossier(name, opt = {}){
       milestones: [
         { y: '언론 활동', title: journoItem.org + ' 보도', sub: journoItem.role, tag: '언론' }
       ],
-      multiSources: {
-        portalNews: [
-          { date: '기명 보도', press: journoItem.org || '언론사', title: name + ' 기자의 주요 기명 기사 및 단독 탐사 보도', desc: '정치·경제·사회 현장의 핵심 이슈를 집중 조명한 심층 보도 모음.', tag: '기명 보도' }
-        ],
-        youtube: [
-          { channel: journoItem.org || '보도국', date: '방송 리포트', title: '[기자 리포트] ' + name + ' 기자의 현장 취재 및 쟁점 진단', desc: '주요 뉴스 현장에서의 방송 리포트 및 해설.', tag: '뉴스 리포트' }
-        ],
-        blogsCafes: [
-          { platform: '미디어오늘', author: '미디어 비평', date: '언론 모니터', title: name + ' 기자의 보도 성향과 주요 탐사 보도 평가', desc: '저널리즘 관점에서의 취재 팩트체크 및 언론 영향력 분석.', tag: '미디어 분석' }
-        ],
-        publicRecords: [
-          { type: '한국기자협회 등록 명부', org: '한국기자협회', date: '공식 기록', title: name + ' 언론인 등록 및 기자협회 바이라인 기록', desc: '주요 포털 및 언론사 인증 기자 프로필.' }
-        ]
-      }
+      multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
     };
   }
 
@@ -2685,24 +2460,7 @@ function getOrSynthesizeDossier(name, opt = {}){
         sub: r,
         tag: '사건 기록'
       })),
-      multiSources: {
-        portalNews: (crimeItem.records || []).slice(0, 4).map(r => ({
-          date: (r.match(/^\d{4}/) || ['공식 수사 기록'])[0],
-          press: '사법·수사 아카이브',
-          title: crimeItem.name + ' - ' + r,
-          desc: r,
-          tag: '사건 공보'
-        })),
-        youtube: [
-          { channel: '사건 아카이브', date: '현대사 추적', title: '[사건과 인물] ' + crimeItem.name + '과 ' + (crimeItem.faction || '암흑가') + '의 전말', desc: '경찰청 범죄백서 및 법원 판결문으로 본 인물 사건사.', tag: '사건 추적' }
-        ],
-        blogsCafes: [
-          { platform: '현대사 포럼', author: '사건사 연구', date: '인물사', title: crimeItem.name + ' 관련 사건 배경과 사회적 파장', desc: '한국 현대사 속 주요 사건과 조직의 흥망성쇠 기록.', tag: '역사 기록' }
-        ],
-        publicRecords: [
-          { type: '사법 판결 및 수사 아카이브', org: '법무부 및 대검찰청', date: '판결 확정', title: crimeItem.name + ' 관련 사법 판결문 요약', desc: '공식 판결문 및 수사 기록에 등재된 범죄 사실관계.' }
-        ]
-      }
+      multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
     };
   }
 
@@ -2726,20 +2484,7 @@ function getOrSynthesizeDossier(name, opt = {}){
         sub: `${dispName} 주요 활동 및 콘텐츠 히스토리`,
         tag: '크리에이터'
       })),
-      multiSources: {
-        portalNews: [
-          { date: '2026.11', press: '미디어엔터', title: `[인플루언서] ${dispName}${realText}, ${creatorItem.category} 대표 채널 영향력과 행보`, desc: `구독자 ${creatorItem.subscribers} 규모의 대형 채널로 성장한 스토리 및 주요 콘텐츠 분석.`, tag: '미디어 보도' }
-        ],
-        youtube: [
-          { channel: creatorItem.channel_name, date: '공식 채널', title: `[공식 채널] ${creatorItem.channel_name} (${creatorItem.handle || ''})`, desc: `구독자 ${creatorItem.subscribers} 달성 공식 채널 및 대표 영상 아카이브.`, tag: '유튜브' }
-        ],
-        blogsCafes: [
-          { platform: '네이버 블로그', author: '크리에이터 리뷰', date: '팬 커뮤니티', title: `${dispName}의 성장 비결과 대중적 인기 요인`, desc: '온라인 커뮤니티 및 소셜 미디어에서의 반응과 파급력 분석.', tag: '팬 반응' }
-        ],
-        publicRecords: [
-          { type: '공식 MCN 및 채널 등록', org: creatorItem.mcn || 'YouTube 공식 인증', date: '공식 인증', title: `${dispName} 공식 크리에이터 프로필`, desc: `MCN ${creatorItem.mcn || '소속사'} 등록 정보 및 채널 활동 공인 기록.` }
-        ]
-      }
+      multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
     };
   }
 
@@ -2758,20 +2503,7 @@ function getOrSynthesizeDossier(name, opt = {}){
       milestones: [
         { y: '창업 및 경영', title: smeItem.company + ' 혁신 리더십', sub: smeItem.role || '경영 총괄', tag: '기업가' }
       ],
-      multiSources: {
-        portalNews: [
-          { date: '2026.10', press: '한국경제', title: `[스타트업/중소기업] ${smeItem.company} ${name} 대표의 혁신 스토리와 미래 비전`, desc: smeItem.summary || '경영 혁신과 유니콘 도약 스토리.', tag: '경제 보도' }
-        ],
-        youtube: [
-          { channel: 'EO 이오', date: '창업자 인터뷰', title: `[스타트업 인터뷰] ${smeItem.company} ${name} 대표가 밝히는 창업과 성장`, desc: '창업 초기 난관 극복 과정과 글로벌 진출 전략 대담.', tag: '인터뷰' }
-        ],
-        blogsCafes: [
-          { platform: '스타트업 얼라이언스', author: '벤처 리포트', date: '기업 분석', title: `${smeItem.company}의 기업가치와 비즈니스 모델 분석`, desc: '시장 내 경쟁력 및 투자 유치 히스토리 종합.', tag: '기업 분석' }
-        ],
-        publicRecords: [
-          { type: '중소벤처기업부 기업 공시', org: '금융감독원 DART / 중기부', date: '공식 공시', title: `${smeItem.company} 법인 등기 및 임원 현황`, desc: '공식 법인 등기부 및 중소·벤처기업 인증 현황.' }
-        ]
-      }
+      multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
     };
   }
 
@@ -2787,26 +2519,7 @@ function getOrSynthesizeDossier(name, opt = {}){
     milestones: [
       { y: '현재', title: name + ' 인물 프로필', sub: entItem?.desc || '보도 및 공론장 주요 언급 인물', tag: '기록' }
     ],
-    multiSources: {
-      portalNews: (entItem?.timeline || []).slice(0, 4).map(x => ({
-        date: normTime(x.t || x.date || ''),
-        press: x.press || '언론 보도',
-        title: x.title,
-        desc: x.quote || (x.title + ' 관련 주요 보도.'),
-        tag: '언론 보도'
-      })).concat([
-        { date: '2026.11', press: '통합 포털', title: name + ' 관련 주요 언론 보도 및 공적 발언 종합', desc: 'NewsBoard 실시간 수집 보도 타임라인 및 언론 보도 요약.', tag: '종합 보도' }
-      ]).slice(0, 3),
-      youtube: [
-        { channel: '시사 뉴스 아카이브', date: '최근 방송', title: '[시사 모니터링] ' + name + ' 관련 주요 이슈 브리핑 및 쟁점 진단', desc: '주요 방송 시사 프로그램의 보도 내용 요약.', tag: '시사 보도' }
-      ],
-      blogsCafes: [
-        { platform: '온라인 공론장', author: '시사 모니터링', date: '네티즌 여론', title: name + '에 대한 대중적 관심과 온라인 여론 반응', desc: '블로그와 카페 공론장에서 언급된 주요 의견 및 반응 분석.', tag: '여론 반응' }
-      ],
-      publicRecords: [
-        { type: '공공 인물 아카이브', org: 'NewsBoard 인물 데이터베이스', date: '공식 기록', title: name + ' 인적 프로필 등록 정보', desc: '언론 보도 및 공개된 공적 기록을 바탕으로 편성된 인물 레코드.' }
-      ]
-    }
+    multiSources: null   /* 2026-11-11 지어낸 보도·영상·블로그·기록 목록 제거(사용자 결정) */
   };
 }
 
@@ -3960,9 +3673,9 @@ function renderMultiSourceSection(e, pDetail, aDetail){
     <div class="dossier-sec-head">
       <div class="dsh-left">
         <span class="dsh-kicker">DOSSIER 07 / MULTI-SOURCE INTELLIGENCE ARCHIVE</span>
-        <h3 class="dsh-title">${dossierSvg('search', 18)} 다각도 인물 정보 및 다매체 심층 기록</h3>
+        <h3 class="dsh-title">${dossierSvg('search', 18)} 관련 보도</h3>
       </div>
-      <span class="dsh-note">${totalMs}건의 포털·유튜브·블로그·공적기록 아카이브</span>
+      <span class="dsh-note">수집한 기사 ${totalMs}건</span>
     </div>
 
     <div class="dossier-spec-card">
@@ -3970,15 +3683,15 @@ function renderMultiSourceSection(e, pDetail, aDetail){
         <button type="button" class="ms-tab-btn on" data-ms="news">
           <span>📰 포털 언론 보도</span><mark class="ms-cnt">${news.length}</mark>
         </button>
-        <button type="button" class="ms-tab-btn" data-ms="youtube">
+        ${yts.length ? `<button type="button" class="ms-tab-btn" data-ms="youtube">
           <span>📺 유튜브 시사·탐사</span><mark class="ms-cnt">${yts.length}</mark>
-        </button>
-        <button type="button" class="ms-tab-btn" data-ms="community">
+        </button>` : ''}
+        ${comms.length ? `<button type="button" class="ms-tab-btn" data-ms="community">
           <span>📝 블로그 & 카페 공론장</span><mark class="ms-cnt">${comms.length}</mark>
-        </button>
-        <button type="button" class="ms-tab-btn" data-ms="official">
+        </button>` : ''}
+        ${pubs.length ? `<button type="button" class="ms-tab-btn" data-ms="official">
           <span>🏛️ 공직 & 사법 기록</span><mark class="ms-cnt">${pubs.length}</mark>
-        </button>
+        </button>` : ''}
       </div>
 
       <div class="ms-content-wrap" style="margin-top:14px">
@@ -3990,14 +3703,13 @@ function renderMultiSourceSection(e, pDetail, aDetail){
                 <div class="ric-top-row">
                   <div class="ric-left">
                     <span class="ric-role-badge" style="background:#2563eb15;color:#2563eb;border:1px solid #2563eb30">${esc(item.tag || '언론 보도')}</span>
-                    <strong class="ric-name">${esc(item.title)}</strong>
+                    <strong class="ric-name"><a href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.title)}</a></strong>
                   </div>
-                  <span class="ric-cat-badge">${esc(item.press)} · ${esc(item.date)}</span>
+                  <span class="ric-cat-badge">${esc(item.press)}${item.date ? ' · ' + esc(item.date) : ''}</span>
                 </div>
-                <p class="ric-desc">${esc(item.desc)}</p>
+                ${item.desc ? `<p class="ric-desc">${esc(item.desc)}</p>` : ''}
                 <div class="ric-meta-row">
-                  <span class="ric-src">${dossierSvg('news', 12)} 출처: ${esc(item.press)} 주요 포털 검증 보도</span>
-                  <span class="ric-type-note">포털 뉴스 아카이브</span>
+                  <span class="ric-src">${dossierSvg('news', 12)} <a href="${esc(item.url)}" target="_blank" rel="noopener">원문 보기</a></span>
                 </div>
               </div>`).join('')}
           </div>
@@ -5443,11 +5155,11 @@ function entity(n){
       } : null);
 
       const rawNews = pDet?.news || [];
-      const synTl = (d?.multiSources?.portalNews || []).map(x => ({
+      const synTl = (d?.multiSources?.portalNews || []).filter(x => x.url).map(x => ({   /* 실제로 모은 기사만(원문 주소) */
         t: (x.date || '').replace(/\./g, '-'),
         title: x.title,
         press: x.press,
-        url: 'https://news.google.com/search?q=' + encodeURIComponent('"' + x.title.slice(0, 50) + '"') + '&hl=ko&gl=KR&ceid=KR:ko',
+        url: x.url,
         typ: x.tag || '보도',
         quote: x.desc || ''
       }));
