@@ -11,7 +11,7 @@
 
 1. 동기화한다: `git fetch origin --prune && git switch main && git pull --ff-only`.
 2. 최근 코드 기준을 확인한다: `git log --oneline -8 origin/main`.
-3. 이번 회차의 실제 데이터는 `origin/data:data/db/people/coverage.json`과 `origin/data:data/today.json`에서 읽는다. 화면의 숫자만 보고 판단하지 않는다.
+3. 이번 회차의 실제 데이터는 `origin/data:db/people/coverage.json`과 `origin/data:today.json`에서 읽는다. 화면의 숫자만 보고 판단하지 않는다.
 4. 작업을 시작하기 전에 이 문서의 **금지 규칙**과 `docs/PEOPLE.md` 2·5·6·8·9절을 읽는다.
 5. 데이터·화면·워크플로 중 무엇을 건드리는지 커밋 메시지와 PR/작업 설명에 명시한다. 서로 같은 원장을 동시에 재생성하지 않는다.
 
@@ -109,8 +109,8 @@ NewsBoard는 단순 기사 목록이 아니라, 오늘의 이슈를 **기사 원
 git fetch origin --prune
 git log --oneline -8 origin/main
 gh run list --repo pyw31337/news --workflow collect-news --limit 5
-git show origin/data:data/db/people/coverage.json | jq '{generated_at, registry, tiers, portraits, wikidata_facts, journalists, politicians}'
-git show origin/data:data/today.json | jq '{updated_at, issues:(.issues|length), reporters:(.reporters|length)}'
+git show origin/data:db/people/coverage.json | jq '{generated_at, registry, tiers, portraits, wikidata_facts, journalists, politicians}'
+git show origin/data:today.json | jq '{updated_at, issues:(.issues|length), reporters:(.reporters|length)}'
 ```
 
 - `collect-news` 최신 성공 후 정치인 항목이 `data_available: true`, 3,296/3,262/34에 가까운지 확인한다. 그렇지 않으면 `pol_coverage` clone·전달 단계부터 진단한다.
