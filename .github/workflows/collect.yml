@@ -32,6 +32,7 @@ jobs:
         with: { python-version: '3.12', cache: pip }
       - run: pip install -r requirements.txt
       - run: python scripts/collect.py
+        env: { MEDIA_MAX_MB: '4000' }   # 썸네일 원본은 R2(10GB 무료)라 media 브랜치 900MB 상한 대신 R2 몫으로
       - name: 인물 사진·로고·국기 WebP 보관(여러 화면에서 반복해 쓰는 그래픽이라 먼저 확보)
         continue-on-error: true
         timeout-minutes: 3
@@ -221,6 +222,14 @@ jobs:
             fi
           done
           exit 1
+      - name: 사진 → Cloudflare R2(새 파일만, 올린 것은 media 브랜치에서 뺌)
+        continue-on-error: true
+        timeout-minutes: 9
+        env: { MEDIA_R2_SEC: '420' }
+        run: |
+          git clone -q --depth 1 --branch politicians "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" pol_photos 2>/dev/null || mkdir -p pol_photos
+          python scripts/media_r2.py upload media pol_photos
+          rm -rf pol_photos
       - name: 썸네일 커밋(media 브랜치, 이력은 1개 커밋으로 유지해 용량 증가 방지)
         continue-on-error: true
         working-directory: media
@@ -246,7 +255,9 @@ jobs:
         run: |
           mkdir _site && cp -r index.html assets icons admin v2 manifest.webmanifest sw.js og-image.png favicon.ico _site/
           mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/elite_network.json _site/data/ 2>/dev/null || true); (cp data/people_public.json _site/data/ 2>/dev/null || true); (mkdir -p _site/data/graph && cp -r data/db/people/graph/n data/db/people/graph/e _site/data/graph/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp data/stats.json data/stats_detail.json _site/data/ 2>/dev/null || cp data/stats.json _site/data/ 2>/dev/null || true); (cp data/market_detail.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true); (cp data/voice.json _site/data/ 2>/dev/null || true); (cp data/quiz.json _site/data/ 2>/dev/null || true); (cp data/social.json _site/data/ 2>/dev/null || true); (cp data/fun.json _site/data/ 2>/dev/null && python scripts/fun_og.py _site || true); (cp -r data/fun _site/data/ 2>/dev/null || true); (cp -r data/editorial _site/data/ 2>/dev/null || true)
+          # 사진은 R2(docs/DATA.md): R2에 올라간 것은 Worker 주소로 바꾸고, 아직 못 올린 것만 Pages에 실음
           (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null; cp -r media/ent _site/media/ 2>/dev/null || true)
+          python scripts/media_r2.py rewrite _site media || true
           python scripts/build_pages.py _site
           python scripts/split_today.py _site || true
           python scripts/inject_cache_version.py _site || true

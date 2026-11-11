@@ -217,8 +217,9 @@ function primaryPublicRole(e,pol){
 const PERSON_TITLE_ONLY=/^(?:.+(?:교육감|주지사|도지사|지사|시장|군수|구청장)|(?:과기|경제)?부총리|대통령|국무총리|국회의원|장관|대법원장|검찰총장)$/;
 const NON_PERSON_ENTITY_NAMES=new Set(['G7','FOMC','LG유플러스','YTN','Z세대','나스닥','동물농장','라방','원팀','필리버스터','강철비','현대차']);
 const TRUSTED_PORTRAIT_REMOTE=/^https:\/\/(?:commons\.wikimedia\.org\/wiki\/Special:FilePath\/|(?:thumb\.|upload\.)wikimedia\.org\/wikipedia\/commons\/)/i;
-const POL_PORTRAIT=/^data\/pol\/photos\/[A-Za-z0-9_-]+\.webp$/;
-const LOCAL_ENTITY_PORTRAIT=/^media\/ent\/[0-9a-f]{2}\/[0-9a-f]{16}\.webp$/;
+const NB_MEDIA='https://newsboard-sync.pyw213.workers.dev/m/';   /* R2 사진(docs/DATA.md) */
+const POL_PORTRAIT=/^(?:data\/pol\/photos\/|https:\/\/newsboard-sync\.pyw213\.workers\.dev\/m\/pol\/)[A-Za-z0-9_-]+\.webp$/;
+const LOCAL_ENTITY_PORTRAIT=/^(?:media\/|https:\/\/newsboard-sync\.pyw213\.workers\.dev\/m\/)ent\/[0-9a-f]{2}\/[0-9a-f]{16}\.webp$/;
 const NOT_A_PORTRAIT=/(?:office_logo|(?:^|[_/-])logo(?:[_./-]|$)|(?:^|[_/-])flag(?:[_./-]|$)|seal|emblem)/i;
 const normalizedPersonName=s=>String(s||'').replace(/\([^)]*\)|\s|[·ㆍ.'"‘’“”\-]/g,'').toLowerCase();
 const titleMatchesPerson=(name,title)=>{

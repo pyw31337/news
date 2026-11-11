@@ -33,7 +33,11 @@ jobs:
         with: { python-version: '3.12' }
       - name: 원본 스냅샷 → R2 raw/
         if: contains('snapshot all', steps.t.outputs.task)
-        run: python scripts/ledger/snapshot.py data led collect
+        run: |
+          python scripts/ledger/snapshot.py data led collect
+          # 큰 원본(제미나이 인물사전 등)은 판본별로 따로 보관
+          python scripts/ledger/put_file.py data/people_bio.json.gz led people-bio || true
+          python scripts/ledger/put_file.py data/elite_network.json led elite-network || true
       - name: 분석 층 → R2 ana/
         if: contains('archive all', steps.t.outputs.task)
         run: python scripts/ledger/archive.py led

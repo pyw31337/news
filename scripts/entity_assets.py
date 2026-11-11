@@ -11,13 +11,16 @@ ROOT = 'data'; MEDIA = 'media'; ED = os.path.join(MEDIA, 'ent'); os.makedirs(ED,
 IP = os.path.join(ED, 'index.json'); UA = {'User-Agent': 'NewsBoard/1.0 (https://pyw31337.github.io/news/)'}
 try: IDX = json.load(open(IP))
 except Exception: IDX = {}
+# R2로 옮긴 사진(media/r2.json, scripts/media_r2.py)은 media 브랜치에 파일이 없어도 이미 받은 것으로 침
+try: R2 = json.load(open(os.path.join(MEDIA, 'r2.json'))).get('files', {})
+except Exception: R2 = {}
 def fetch(u):
     try: return urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=12).read()
     except Exception: return None
 def store(u, kind):
     h = hashlib.sha1(u.encode()).hexdigest()[:16]; rel = os.path.join('ent', h[:2], h + '.webp'); fp = os.path.join(MEDIA, rel)
     x = IDX.get(u)
-    if x and x.get('f') and os.path.exists(os.path.join(MEDIA, x['f'])): return x['f']
+    if x and x.get('f') and (os.path.exists(os.path.join(MEDIA, x['f'])) or x['f'] in R2): return x['f']
     if x and not x.get('f') and time.time() - x.get('at', 0) < 3 * 86400: return None
     b = fetch(u)
     try:

@@ -28,6 +28,17 @@ def rawkey(name):
     return f'raw/{p[1]}/{d[:4]}/{d[4:6]}/{d[6:8]}/{name}'
 
 
+def retry_pending(now):
+    pd = os.path.join(LED, 'pending', SRC)
+    for fn in sorted(os.listdir(pd)) if os.path.isdir(pd) else []:
+        b = open(os.path.join(pd, fn), 'rb').read()
+        ym = f'{fn.split(".")[2][:4]}-{fn.split(".")[2][4:6]}'
+        ok2, res2 = r2.put(rawkey(fn), b, legacy=f'{ym}/{fn}')
+        if ok2:
+            os.remove(os.path.join(pd, fn))
+            open(os.path.join(LED, 'manifest', 'raw', SRC, f'{now:%Y-%m}.jsonl'), 'a').write(json.dumps({'at': now.isoformat(timespec='seconds'), 'retry': fn, 'r2': res2, 'sha256': h(b), 'bytes': len(b), 'ok': True}) + '\n')
+
+
 def main():
     now = datetime.now(KST)
     st_p = os.path.join(LED, 'state', f'snapshot-{SRC}.json')
@@ -71,6 +82,7 @@ def main():
                 p = os.path.join(root, fn); rel = os.path.relpath(p, DATA)
                 if any(x in rel for x in days) and fn.endswith(('.json', '.json.gz')):
                     add(rel, open(p, 'rb').read(), 'dated')
+    retry_pending(now)   # 예전에 R2가 막혀 대기열에 남은 것 먼저 다시 올리기
     if not recs:
         print('snapshot: 바뀐 것 없음'); json.dump(st, open(st_p, 'w')); return
     blob = gzip.compress(('\n'.join(recs) + '\n').encode(), 9)
@@ -86,17 +98,6 @@ def main():
         line['err'] = str(res)[:80]
     os.makedirs(os.path.join(LED, 'manifest', 'raw', SRC), exist_ok=True)
     open(os.path.join(LED, 'manifest', 'raw', SRC, f'{now:%Y-%m}.jsonl'), 'a').write(json.dumps(line, ensure_ascii=False) + '\n')
-    # 예전에 실패한 것 다시 올리기
-    pd = os.path.join(LED, 'pending', SRC)
-    for fn in sorted(os.listdir(pd)) if os.path.isdir(pd) else []:
-        if fn == name:
-            continue
-        b = open(os.path.join(pd, fn), 'rb').read()
-        ym = f'{fn.split(".")[2][:4]}-{fn.split(".")[2][4:6]}'
-        ok2, res2 = r2.put(rawkey(fn), b, legacy=f'{ym}/{fn}')
-        if ok2:
-            os.remove(os.path.join(pd, fn))
-            open(os.path.join(LED, 'manifest', 'raw', SRC, f'{now:%Y-%m}.jsonl'), 'a').write(json.dumps({'at': now.isoformat(timespec='seconds'), 'retry': fn, 'r2': res2, 'sha256': h(b), 'bytes': len(b), 'ok': True}) + '\n')
     os.makedirs(os.path.dirname(st_p), exist_ok=True)
     json.dump(st, open(st_p, 'w'))
     print(f'snapshot: {len(recs)}개 파일, {len(blob)//1024}KB → {"R2" if ok else "대기열"}')

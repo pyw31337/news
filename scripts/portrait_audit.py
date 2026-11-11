@@ -19,8 +19,8 @@ TRUSTED_REMOTE = re.compile(
     r"^https://(?:commons\.wikimedia\.org/wiki/Special:FilePath/|(?:thumb\.|upload\.)wikimedia\.org/wikipedia/commons/)",
     re.I,
 )
-POL_PORTRAIT = re.compile(r"^data/pol/photos/[A-Za-z0-9_-]+\.webp$")
-LOCAL_ENTITY = re.compile(r"^media/ent/[0-9a-f]{2}/[0-9a-f]{16}\.webp$")
+POL_PORTRAIT = re.compile(r"^(?:data/pol/photos/|https://newsboard-sync\.pyw213\.workers\.dev/m/pol/)[A-Za-z0-9_-]+\.webp$")
+LOCAL_ENTITY = re.compile(r"^(?:media/|https://newsboard-sync\.pyw213\.workers\.dev/m/)ent/[0-9a-f]{2}/[0-9a-f]{16}\.webp$")   # R2로 옮긴 사진(scripts/media_r2.py)도 같은 파일
 NOT_A_PORTRAIT = re.compile(r"office_logo|(?:^|[_/\-])logo(?:[_./\-]|$)|(?:^|[_/\-])flag(?:[_./\-]|$)|seal|emblem", re.I)
 TITLE_ONLY = re.compile(r"^(?:.+(?:교육감|주지사|도지사|지사|시장|군수|구청장)|(?:과기|경제)?부총리|대통령|국무총리|국회의원|장관|대법원장|검찰총장)$")
 NON_PERSON = {"G7", "FOMC", "LG유플러스", "YTN", "Z세대", "나스닥", "동물농장", "라방", "원팀", "필리버스터", "강철비", "현대차"}
