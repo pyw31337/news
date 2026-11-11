@@ -4,9 +4,10 @@ BASE='http://127.0.0.1:8765/showcase/person-v6/'
 OUT='/workspace/newsboard-shots/person-v6/'
 props=sys.argv[1] if len(sys.argv)>1 else 'abc'
 shots='--shots' in sys.argv
+Q='?open=1' if '--open' in sys.argv else ''
 CHECK=r"""() => {
  const out={hscroll: document.documentElement.scrollWidth - innerWidth, overflow:[], wrapped:[], ellipsis:0};
- const LBL='dt,.stat-l,.stat-v,.era-n,.era-y,.seg-i,.tag,.hbars-l,.hbars-v,.sub-t,.sh-t,.tl-d,.arow time,.arow-p,.pchip-t b,.exp-b,.stack-lg li,.rg-h,.vbars-l,.ms time,.kpi-l,.nav-i,.side-i,.hero-role,.chip';
+ const LBL='dt,.stat-l,.stat-v,.era-n,.era-y,.seg-i,.tag,.hbars-l,.hbars-v,.sub-t,.sh-t,.tl-d,.arow time,.arow-p,.pchip-t b,.exp-b,.stack-lg li,.rg-h,.vbars-l,.ms time,.kpi-l,.nav-i,.side-i,.hero-role,.chip,.reg-d,.mini dt,.mini dd,.tbl td,.tbl th,.src-chip,.issue time,.more-b,.tl-s,.gantt-l,.gantt-d';
  for(const el of document.querySelectorAll('body *')){
    const cs=getComputedStyle(el);
    if(cs.textOverflow==='ellipsis') out.ellipsis++;
@@ -24,7 +25,7 @@ CHECK=r"""() => {
    const rs=[...el.getClientRects()]; const range=document.createRange(); range.selectNodeContents(el);
    const lines=new Set([...range.getClientRects()].filter(x=>x.width>1).map(x=>Math.round(x.top/ (lh*0.6)))).size;
    const h=el.getBoundingClientRect().height;
-   if(h>lh*1.7 && !el.matches('.exp-b,.seg-i,.stack-lg li,.era--auto .era-y,.era--list .era-y')) out.wrapped.push(el.className+'|'+el.tagName+': '+el.textContent.trim().slice(0,40)+' h='+Math.round(h));
+   if(h>lh*1.7 && !el.matches('.exp-b,.seg-i,.stack-lg li,.more-b,.era--auto .era-y,.era--list .era-y') && !(el.matches('.gantt-l') && innerWidth<1024)) out.wrapped.push(el.className+'|'+el.tagName+': '+el.textContent.trim().slice(0,40)+' h='+Math.round(h));
    if(el.matches('.exp-b,.seg-i,.stack-lg li,.tag') && h>lh*1.9+16) out.wrapped.push(el.className+': '+el.textContent.trim().slice(0,40));
  }
  if(out.hscroll>0){ for(const el of document.querySelectorAll('main *')){const r=el.getBoundingClientRect(); if(r.right>innerWidth+1 && r.width>0) {out.overflow.push('HS '+el.tagName+'.'+el.className+' '+Math.round(r.right)); if(out.overflow.length>12) break;}}}
@@ -38,14 +39,14 @@ async def main():
         ctx=await b.new_context(viewport={'width':w,'height':900},device_scale_factor=2 if (shots and w in (1440,390)) else 1)
         pg=await ctx.new_page()
         errs=[]; pg.on('pageerror',lambda e: errs.append(str(e)))
-        await pg.goto(BASE+pr+'/',wait_until='networkidle',timeout=90000)
+        await pg.goto(BASE+pr+'/'+Q,wait_until='networkidle',timeout=90000)
         await pg.wait_for_selector('body[data-ready="1"]',timeout=30000)
         await pg.evaluate('document.fonts.ready')
         # 이미지 로드 기다리기(지연 로딩 해제)
         await pg.evaluate("""async()=>{for(let y=0;y<document.body.scrollHeight;y+=600){scrollTo(0,y);await new Promise(r=>setTimeout(r,60))}scrollTo(0,0);await new Promise(r=>setTimeout(r,300));await Promise.all([...document.images].map(i=>i.complete&&i.naturalWidth?1:new Promise(r=>{i.addEventListener('load',r);i.addEventListener('error',r);setTimeout(r,8000)})))}""")
         await pg.wait_for_timeout(600)
         res=await pg.evaluate(CHECK)
-        print(pr,w,'hscroll',res['hscroll'],'ellipsis',res['ellipsis'],'errs',errs)
+        print(pr+Q,w,'hscroll',res['hscroll'],'ellipsis',res['ellipsis'],'errs',errs)
         for x in res['overflow'][:15]: print('   OVER',x)
         for x in res['wrapped'][:25]: print('   WRAP',x)
         if shots and w in (1440,390):

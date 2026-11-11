@@ -7,7 +7,7 @@ const NB = (() => {
   const num = n => Number(n).toLocaleString('ko-KR');
   const won = k => { /* 천원 → 'n억 n,nnn만 원' */
     const man = Math.round(k / 10), eok = Math.floor(man / 10000), rest = man % 10000;
-    return (eok ? eok + '억' : '') + (rest ? ' ' + num(rest) + '만' : '') + ' 원';
+    return ((eok ? eok + '억' : '') + (rest ? ' ' + num(rest) + '만' : '')).trim() + ' 원';
   };
   const eok1 = k => (k / 100000).toFixed(1).replace(/\.0$/, '') + '억';
   const dot = s => String(s || '').replace(/~/g, '–').replace(/-/g, '.');
@@ -48,7 +48,7 @@ const NB = (() => {
   const arow = a => `<a class="arow" href="${esc(a.url)}" target="_blank" rel="noopener"><time>${esc(md(a.t))}</time><span class="arow-t">${esc(titleClean(a.title))}</span><span class="arow-p">${esc(a.press)}</span></a>`;
   const acard = a => `<a class="acard" href="${esc(a.url)}" target="_blank" rel="noopener"><span class="acard-img"><img src="${esc(a.img)}" alt="" loading="lazy" decoding="async"></span><span class="acard-t">${esc(titleClean(a.title))}</span><span class="acard-m">${esc(a.press)}<i></i>${esc(ymd(a.t))}</span></a>`;
   const quote = q => `<figure class="quote"><blockquote>${esc(q.quote)}</blockquote><figcaption>${esc(q.press)}<i></i>${esc(ymd(q.d))}</figcaption></figure>`;
-  const tlItem = e => `<li class="tl-i" data-typ="${e.typ}"><span class="tl-d">${esc(e.d ? dot(e.d) : '출생')}</span><span class="tl-dot">${ic(EVI[e.typ] || 'calendar')}</span><div class="tl-b"><b class="tl-t">${esc(e.title)}</b><p class="tl-x">${esc(e.desc)}</p></div></li>`;
+  const tlItem = e => `<li class="tl-i" data-typ="${e.typ}"><span class="tl-d">${esc(e.d ? dot(e.d) : '출생')}</span><span class="tl-dot">${ic(EVI[e.typ] || 'calendar')}</span><div class="tl-b"><b class="tl-t">${esc(e.title)}</b><p class="tl-x">${esc(e.desc)}</p>${e.src ? (e.url ? `<a class="tl-s" href="${esc(e.url)}" target="_blank" rel="noopener">${ic('link')}${esc(e.src)}</a>` : `<span class="tl-s">${ic('file-text')}${esc(e.src)}</span>`) : ''}</div></li>`;
   const tl = evs => `<ol class="tl">${evs.map(tlItem).join('')}</ol>`;
   const era = (D, mode = 'grid') => `<ol class="era era--${mode}">${ERAS.map(r => {
     const n = D.events.filter(e => { const y = yearOf(e); return y >= r.from && y <= r.to; }).length;
@@ -60,7 +60,7 @@ const NB = (() => {
   /* 막대(HTML): items=[[label,value,cls?]] — 라벨은 HTML이라 폭이 바뀌어도 글자 크기 유지 */
   const hbars = (items, opt = {}) => { const max = Math.max(...items.map(x => x[1])); return `<ul class="hbars">${items.map(([l, v, c]) => `<li class="hbars-i ${c || ''}"><span class="hbars-l">${esc(l)}</span><span class="hbars-tr"><span class="hbars-f" style="width:${(v / max * 100).toFixed(1)}%"></span></span><span class="hbars-v">${opt.fmt ? opt.fmt(v) : num(v)}</span></li>`).join('')}</ul>`; };
   /* 세로 막대(연도별): 라벨 간격은 CSS가 폭에 따라 솎아 냄 */
-  const vbars = (items, opt = {}) => { const max = Math.max(...items.map(x => x[1])); return `<div class="vbars" style="--n:${items.length}">${items.map(([l, v, hi]) => `<div class="vbars-i${hi ? ' is-hi' : ''}" title="${esc(l)} · ${v}건"><span class="vbars-f" style="height:${Math.max(2, v / max * 100).toFixed(1)}%"></span><span class="vbars-l">${esc(l)}</span></div>`).join('')}</div>`; };
+  const vbars = (items, opt = {}) => { const max = Math.max(...items.map(x => x[1])); return `<div class="vbars ${opt.cls || ''}" style="--n:${items.length}">${items.map(([l, v, hi]) => `<div class="vbars-i${hi ? ' is-hi' : ''}" title="${esc(l)} · ${v}건"><span class="vbars-f" style="height:${Math.max(2, v / max * 100).toFixed(1)}%"></span>${l ? `<span class="vbars-l">${esc(l)}</span>` : ''}</div>`).join('')}</div>`; };
   /* 누적 막대: parts=[[label,value,cls]] */
   const stack = (parts, opt = {}) => { const tot = parts.reduce((s, p) => s + p[1], 0); return `<div class="stack"><div class="stack-bar">${parts.filter(p => p[1] > 0).map(([l, v, c]) => `<span class="stack-s ${c}" style="flex:${v}"></span>`).join('')}</div>${opt.legend === false ? '' : `<ul class="stack-lg">${parts.map(([l, v, c]) => `<li class="${c}"><i></i>${esc(l)}<b>${opt.fmt ? opt.fmt(v) : num(v)}</b>${opt.pct ? `<small>${Math.round(v / tot * 100)}%</small>` : ''}</li>`).join('')}</ul>`}</div>`; };
   /* 스파크라인(SVG 선만, 글자 없음) */
@@ -81,7 +81,7 @@ const NB = (() => {
   const voteParts = s => [['찬성', s['찬성'] || 0, 'pos'], ['반대', s['반대'] || 0, 'neg'], ['기권', s['기권'] || 0, 'warn'], ['불참', s['불참'] || 0, 'mute']];
 
   /* 누적 세로 막대(연도×분류) */
-  const vstack = (rows, keys, opt = {}) => { const max = Math.max(...rows.map(r => keys.reduce((s, k) => s + (r[1][k[0]] || 0), 0))); return `<div class="vbars vstack" style="--n:${rows.length}">${rows.map(([l, c]) => { const t = keys.reduce((s, k) => s + (c[k[0]] || 0), 0); return `<div class="vbars-i" title="${esc(l)} · ${t}건"><span class="vstack-col" style="height:${Math.max(2, t / max * 100).toFixed(1)}%">${keys.map(k => c[k[0]] ? `<span class="${k[1]}" style="flex:${c[k[0]]}"></span>` : '').join('')}</span><span class="vbars-l">${esc(l)}</span></div>`; }).join('')}</div>`; };
+  const vstack = (rows, keys, opt = {}) => { const tot = r => keys.reduce((s, k) => s + (r[1][k[0]] || 0), 0); const max = Math.max(...rows.map(tot)); return `<div class="vbars vstack ${opt.cls || ''}" style="--n:${rows.length}">${rows.map(r => { const [l, c] = r, t = tot(r), lb = opt.lab ? opt.lab(l) : l; return `<div class="vbars-i" title="${esc(opt.tip ? opt.tip(l) : l)} · ${t}건"><span class="vstack-col" style="height:${t ? Math.max(2, t / max * 100).toFixed(1) : 0}%">${keys.map(k => c[k[0]] ? `<span class="${k[1]}" style="flex:${c[k[0]]}"></span>` : '').join('')}</span>${lb ? `<span class="vbars-l${opt.lc ? ' ' + opt.lc(l) : ''}">${esc(lb)}</span>` : ''}</div>`; }).join('')}</div>`; };
   /* 재임 기간 막대(간트) */
   const span = d => { const m = String(d).match(/(\d{4})(?:[.\d]*)?(?:\s*[~–-]\s*(\d{4}))?/); if (!m) return null; return [+m[1], m[2] ? +m[2] : +m[1]]; };
   const gantt = (rows, y0, y1, ticks) => `<div class="gantt"><span class="gantt-ax-pad"></span><span class="gantt-ax-pad gantt-ax-pad2"></span><div class="gantt-ax">${ticks.map(t => `<span style="left:${((t - y0) / (y1 - y0) * 100).toFixed(2)}%">${t}</span>`).join('')}</div>${rows.map(r => { const [a, b] = span(r.d) || [y0, y0]; const l = (a - y0) / (y1 - y0) * 100, w = (b - a) / (y1 - y0) * 100; return `<div class="gantt-r${r.now ? ' is-now' : ''}" data-typ="${r.typ}"><span class="gantt-d">${esc(dot(r.d) || '출생')}</span><span class="gantt-l">${esc(r.title)}</span><span class="gantt-tr"><span class="gantt-b${b === a ? ' is-pt' : ''}" style="left:${l.toFixed(2)}%;width:${w.toFixed(2)}%"></span></span></div>`; }).join('')}</div>`;
@@ -108,7 +108,25 @@ const NB = (() => {
       if (s) { const g = s.parentElement; g.querySelectorAll('.seg-i').forEach(x => { const on = x === s; x.classList.toggle('is-on', on); x.setAttribute('aria-selected', on); }); g.dispatchEvent(new CustomEvent('seg', { bubbles: true, detail: { name: g.dataset.seg, i: +s.dataset.i } })); }
     });
   };
+  /* 부호 있는 금액(천원) */
+  const swon = k => (k < 0 ? '−' : '+') + won(Math.abs(k));
+  /* 작은 사실 줄(라벨 위, 값 아래) */
+  const mini = rows => `<dl class="mini">${rows.map(([k, v, icon]) => `<div class="mini-r"><dt>${icon ? ic(icon) : ''}${esc(k)}</dt><dd>${v}</dd></div>`).join('')}</dl>`;
+  /* 작은 표: head=[...], rows=[[...]] — 숫자 열은 오른쪽 정렬 */
+  const table = (head, rows, numCols = []) => `<div class="tbl-w"><table class="tbl"><thead><tr>${head.map((h, i) => `<th${numCols.includes(i) ? ' class="n"' : ''}>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map((c, i) => `<td${numCols.includes(i) ? ' class="n"' : ''}>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  /* 묶음 목록에 이어 붙이기: 같은 묶음이면 기존 목록 끝에 붙임 */
+  const grouper = (host, key, head, row) => { let k = null, list = null; return items => { for (const it of items) { const kk = key(it); if (kk !== k) { k = kk; host.insertAdjacentHTML('beforeend', `<div class="aday"><div class="aday-h">${head(kk)}</div><div class="alist"></div></div>`); list = host.lastElementChild.lastElementChild; } list.insertAdjacentHTML('beforeend', row(it)); } }; };
+  /* 점진 불러오기: step개씩 render(from,to), 남은 건수 버튼 */
+  const more = (host, n, step, render) => { let i = 0; const b = document.createElement('button'); b.type = 'button'; b.className = 'more-b';
+    const upd = () => { const left = n - i; b.hidden = left <= 0; b.innerHTML = `<span>더 보기</span><span class="exp-n">${num(left)}건</span>${ic('chevron-down')}`; };
+    const go = () => { const to = Math.min(n, i + step); render(i, to); i = to; upd(); };
+    host.after(b); b.addEventListener('click', go); go(); return b; };
+  /* 장기 기록 분류 → 색(의미 있는 것만 의미색) */
+  const HCAT = { '보도': 'k3', '발언': 'k1', '논란': 'warn', '법적': 'neg', '활동': 'mute', '수상': 'pos' };
+  const host = p => String(p || '').replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/$/, '');
+  const hrow = x => `<div class="arow hrow"><time>${esc(md(x.d))}</time><span class="arow-t">${esc(x.title)}</span><span class="arow-p">${x.press ? `<span>${esc(host(x.press))}</span>` : ''}<span class="tag ${['논란', '법적', '수상'].includes(x.cat) ? HCAT[x.cat] : ''}">${esc(x.cat)}</span></span></div>`;
+  const ym = t => { const d = String(t).slice(0, 7).split('-'); return `${d[0]}년 ${+d[1]}월`; };
   const load = () => fetch('../shared/data.json').then(r => r.json());
   const openAll = () => { if (/[?&]open=1/.test(location.search)) document.querySelectorAll('.exp').forEach(x => { x.classList.add('is-open'); x.querySelector('.exp-b').setAttribute('aria-expanded', true); x.querySelector('.exp-c').hidden = false; }); };
-  return { toc, spy, vstack, span, gantt, rtree, agroup, esc, ic, num, won, eok1, dot, md, ymd, dayLabel, titleClean, EVG, EVI, FILTERS, ERAS, yearOf, sh, facts, stat, exp, seg, pchip, arow, acard, quote, tl, tlItem, era, hbars, vbars, stack, spark, donut, derive, assetParts, voteParts, bind, load, openAll };
+  return { swon, mini, table, grouper, more, HCAT, hrow, ym, toc, spy, vstack, span, gantt, rtree, agroup, esc, ic, num, won, eok1, dot, md, ymd, dayLabel, titleClean, EVG, EVI, FILTERS, ERAS, yearOf, sh, facts, stat, exp, seg, pchip, arow, acard, quote, tl, tlItem, era, hbars, vbars, stack, spark, donut, derive, assetParts, voteParts, bind, load, openAll };
 })();

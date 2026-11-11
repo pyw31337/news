@@ -185,7 +185,7 @@ button{font:inherit;color:inherit;letter-spacing:inherit;background:none;border:
 .lnk{display:inline-flex;align-items:center;gap:4px;font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--c-accent)}
 .tag{display:inline-flex;align-items:center;gap:4px;font-size:var(--fs-xs);font-weight:var(--fw-semibold);padding:2px 8px;border-radius:var(--r-full);background:var(--c-sunken);color:var(--c-ink-2);white-space:nowrap}
 .tag.pos{background:var(--c-pos-soft);color:var(--c-pos)}.tag.warn{background:var(--c-warn-soft);color:var(--c-warn)}.tag.neg{background:var(--c-neg-soft);color:var(--c-neg)}
-.brow{display:grid;grid-template-columns:5.5em 1fr auto;gap:var(--s-3);align-items:baseline;padding:var(--s-2) 0;font-size:var(--fs-md);line-height:var(--lh-snug)}
+.brow{display:grid;grid-template-columns:5.5em minmax(0,1fr) auto;gap:var(--s-3);align-items:baseline;padding:var(--s-2) 0;font-size:var(--fs-md);line-height:var(--lh-snug)}
 .brow time{font-size:var(--fs-sm);color:var(--c-ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
 .brow b{font-weight:var(--fw-semibold)}
 .brow small{display:block;font-size:var(--fs-xs);color:var(--c-ink-3);font-weight:var(--fw-regular)}
@@ -278,3 +278,87 @@ button{font:inherit;color:inherit;letter-spacing:inherit;background:none;border:
 .toc--bar .toc-i{margin:0;padding:6px var(--s-3);font-size:var(--fs-sm);flex:none}
 .toc--bar .toc-i small{padding-left:var(--s-1);margin-left:0}
 @media (max-width:767px){ .gantt-ax span:nth-last-child(2),.gantt-ax span:nth-child(2){display:none} }
+
+/* ── 감사 복구분 컴포넌트 ── */
+.tag.acc{background:var(--c-accent-soft);color:var(--c-accent)}
+.tag .ic{width:13px;height:13px}
+[hidden]{display:none!important}
+/* 작은 사실 줄 */
+.mini{display:flex;flex-wrap:wrap;gap:var(--s-4) var(--s-8);margin-bottom:var(--s-8);padding:var(--s-5) var(--s-6);border-radius:var(--r-md);background:var(--c-sunken)}
+.mini-r{display:flex;flex-direction:column;gap:2px}
+.mini dt{display:flex;align-items:center;gap:6px;font-size:var(--fs-xs);font-weight:var(--fw-medium);color:var(--c-ink-3);white-space:nowrap}
+.mini dt .ic{color:var(--c-ink-4)}
+.mini dd{font-size:var(--fs-md);font-weight:var(--fw-semibold);color:var(--c-ink-1);white-space:nowrap}
+/* 작은 표(선 없이 행 배경 교차 없이 — 머리만 연하게) */
+.tbl-w{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--fs-sm);font-variant-numeric:tabular-nums}
+.tbl th{font-size:var(--fs-xs);font-weight:var(--fw-semibold);color:var(--c-ink-3);text-align:left;padding:0 0 var(--s-2);white-space:nowrap}
+.tbl td{padding:6px 0;color:var(--c-ink-2);white-space:nowrap;vertical-align:baseline}
+.tbl td:first-child{color:var(--c-ink-3);font-weight:var(--fw-medium);padding-right:var(--s-4)}
+.tbl .n{text-align:right;padding-left:var(--s-4)}
+.tbl b{color:var(--c-ink-1);font-weight:var(--fw-bold)}
+.tbl .neg{color:var(--c-neg);font-weight:var(--fw-semibold)}.tbl .pos{color:var(--c-pos);font-weight:var(--fw-semibold)}
+.tbl .lnk{font-size:var(--fs-xs)}
+/* 더 보기 */
+.more-b{display:flex;align-items:center;justify-content:center;gap:var(--s-2);width:100%;margin-top:var(--s-5);padding:var(--s-3);border-radius:var(--r-md);background:var(--c-sunken);font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--c-ink-2)}
+.more-b:hover{background:var(--c-sunken-2)}
+.more-b .ic{color:var(--c-ink-3)}
+/* 연대기 출처 */
+.tl-s{display:inline-flex;align-items:center;gap:4px;margin-top:4px;font-size:var(--fs-xs);color:var(--c-ink-4)}
+a.tl-s:hover{color:var(--c-accent)}
+.tl-s .ic{width:13px;height:13px}
+/* 국회 등록 경력 */
+.reg{margin-top:var(--s-8)}
+.reg .sub-t .ic{color:var(--c-ink-4);align-self:center}
+.reg-l{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-3) var(--s-6)}
+.reg-i{display:grid;grid-template-columns:5.5em 1fr;column-gap:var(--s-3);align-items:baseline}
+.reg-d{font-size:var(--fs-xs);color:var(--c-ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.reg-i b{font-size:var(--fs-sm);font-weight:var(--fw-semibold);line-height:var(--lh-snug)}
+.reg-g{grid-column:2;font-size:var(--fs-xs);color:var(--c-ink-4)}
+/* 출처 칩 */
+.hero-src{display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-6)}
+.src-chip{display:inline-flex;align-items:center;gap:6px;padding:6px var(--s-3);border-radius:var(--r-full);background:var(--c-sunken);font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--c-ink-2);white-space:nowrap}
+.src-chip small{font-weight:var(--fw-regular);color:var(--c-ink-3)}
+.src-chip:hover{background:var(--c-sunken-2)}
+/* 오늘의 이슈 연결 */
+.issue{display:grid;grid-template-columns:auto 1fr auto auto;gap:var(--s-3);align-items:center;margin-bottom:var(--s-7);padding:var(--s-4) var(--s-5);border-radius:var(--r-md);background:var(--c-accent-soft)}
+.issue b{font-size:var(--fs-md);font-weight:var(--fw-semibold);line-height:var(--lh-snug)}
+.issue time{font-size:var(--fs-sm);color:var(--c-ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.issue>.ic{color:var(--c-accent)}
+/* 차트 변형 */
+.vbars--sm{--vb-h:72px}
+.vbars--m{--vb-gap:1px}
+.vbars--m .vstack-col{border-radius:1px 1px 0 0}
+.vstack-col:empty{min-height:0!important}
+.vbars--m .vbars-i:nth-child(odd):not(:last-child) .vbars-l{visibility:visible}
+.vstack+.stack,.vbars+.stack{margin-top:var(--s-5)}
+.sub-h{display:flex;align-items:baseline;justify-content:space-between;gap:var(--s-3);flex-wrap:wrap;margin-bottom:var(--s-4)}
+.sub-h .sub-t{margin-bottom:0}
+.debt{display:flex;align-items:center;gap:var(--s-2);font-size:var(--fs-sm);color:var(--c-ink-3)}
+.debt .ic{color:var(--c-ink-4)}
+.debt b{margin-left:auto;font-weight:var(--fw-semibold);color:var(--c-neg);font-variant-numeric:tabular-nums}
+.bill-m{margin-bottom:var(--s-5)}
+.bill-m .stat-l{margin-bottom:var(--s-3)}
+.bill-f,.hist-f{margin-bottom:var(--s-4)}
+.blk-lnk{margin-top:var(--s-4)}
+.sub-g{margin-top:var(--s-5)}
+.hrow{cursor:default}
+.hrow:hover{background:none}
+.hrow .arow-p{display:inline-flex;align-items:center;gap:var(--s-2)}
+@media (max-width:1023px){ .reg-l{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:767px){
+  .reg-l{grid-template-columns:1fr}
+  .mini{gap:var(--s-4) var(--s-6);padding:var(--s-4)}
+  .issue{grid-template-columns:1fr auto;row-gap:var(--s-2)}
+  .issue .tag{grid-column:1/-1;justify-self:start}
+  .issue>.ic{display:none}
+  .vstack .vbars-l.is-odd{visibility:hidden}
+}
+@media (max-width:479px){
+  .hrow .arow-p{justify-content:flex-start}
+  .seg--scroll,.hist-f .seg{max-width:100%;overflow-x:auto;scrollbar-width:none}
+}
+/* 좁은 열(3단) 안의 행: 날짜를 제목 위로 */
+.blk .brow{grid-template-columns:minmax(0,1fr) auto;row-gap:2px;padding:var(--s-2) 0}
+.blk .brow time{grid-column:1/-1;font-size:var(--fs-xs)}
+.blk .brow .tag{align-self:start}

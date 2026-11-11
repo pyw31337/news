@@ -86,3 +86,6 @@
 @media (max-width:767px){
   .sec .sh-a{margin-left:0;width:100%}
 }
+/* 사건·사고 */
+.inc{display:grid;grid-template-columns:5fr 7fr;gap:var(--s-8)}
+@media (max-width:1023px){ .inc{grid-template-columns:1fr} }
