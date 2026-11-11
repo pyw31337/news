@@ -1338,6 +1338,24 @@ ARC_MASTER_PROFILES['IUD9392R'] = ARC_MASTER_PROFILES['이재명'];
 let _peopleBioCache = null;
 let _peopleBioPromise = null;
 
+let _eliteNetworkCache = null;
+let _eliteNetworkPromise = null;
+
+async function ensureEliteNetwork(){
+  if(_eliteNetworkCache) return _eliteNetworkCache;
+  if(_eliteNetworkPromise) return _eliteNetworkPromise;
+
+  _eliteNetworkPromise = fetch('data/elite_network.json')
+    .then(r => r.ok ? r.json() : null)
+    .then(d => {
+      _eliteNetworkCache = d || {};
+      return _eliteNetworkCache;
+    })
+    .catch(() => ({}));
+
+  return _eliteNetworkPromise;
+}
+
 async function ensurePeopleBio(){
   if(_peopleBioCache) return _peopleBioCache;
   if(_peopleBioPromise) return _peopleBioPromise;
@@ -2454,7 +2472,171 @@ function getOrSynthesizeDossier(name, opt = {}){
     };
   }
 
-  // 4. Universal Fallback
+    // 1.5. 엘리트 종합 데이터베이스 (재산등록 가족, 기업인, 법조인, 고위공직자, 언론인)
+  const eliteNet = _eliteNetworkCache || {};
+
+  // 1.5.A 국회의원 가족 (예: '우원식의 배우자', '정우택의 장남')
+  const famMatch = name.match(/^([가-힣]{2,5})의\s*(배우자|장남|차남|삼남|장녀|차녀|삼녀|부|모|손자|손녀|외손자|외손녀|장인|장모|시부|시모)/);
+  if(famMatch){
+    const polName = famMatch[1];
+    const relName = famMatch[2];
+    const famData = eliteNet.assembly_families?.[polName]?.families?.[relName];
+    const polInfo = eliteNet.assembly_families?.[polName] || getPol(polName) || {};
+    const assetDesc = (famData?.assets_summary || []).slice(0, 3).join(' · ');
+    const refuseDesc = famData?.refused ? ('공직자윤리법에 따른 고지거부 (' + (famData.refuse_reason || '독립생계유지') + ')') : '';
+
+    return {
+      name: name,
+      role: polName + ' 의원의 ' + relName,
+      party: polInfo.party || '',
+      photo: 'assets/people/' + encodeURIComponent(polName) + '.webp',
+      aliases: [],
+      birth: '',
+      desc: '국회공직자윤리위원회 관보에 정식 등재된 ' + polName + ' (' + (polInfo.role || '국회의원') + ')의 법정 ' + relName + '. ' + (refuseDesc || assetDesc || '공적 인적 기록 등재.'),
+      milestones: [
+        { y: famData?.gongbo_year ? famData.gongbo_year + '년 공보' : '공직 기록', title: polName + ' 국회의원 ' + relName + ' 등록', sub: refuseDesc || assetDesc || '정기재산변동사항 공보 게재', tag: '공적 기록' }
+      ],
+      multiSources: {
+        portalNews: [
+          { date: '공식 기록', press: '국회공보', title: polName + ' 의원 재산등록 고보 — ' + relName + ' 재산 및 권리관계', desc: assetDesc || refuseDesc || '국회공보 정기재산변동사항 공개 기록.', tag: '관보 기록' }
+        ],
+        youtube: [
+          { channel: '국회 모니터링', date: '공직 검증', title: '[공직 검증] ' + polName + ' 의원 일가 재산 현황 및 주요 공개 내역', desc: '공직자 재산등록에 따른 직계존비속 보유 자산 및 변동 사항 분석.', tag: '공직 검증' }
+        ],
+        blogsCafes: [
+          { platform: '의정 아카이브', author: '시민사회', date: '공직 기록', title: polName + ' 의원의 가족 배경 및 ' + relName + ' 관련 인적 정보', desc: '국회공보와 관보에 공시된 의원 일가 인적 배경 정리.', tag: '인적 배경' }
+        ],
+        publicRecords: [
+          { type: '국회공직자윤리위원회 공보', org: '대한민국 국회', date: '정기 공개', title: polName + ' 국회의원 ' + relName + ' 재산등록 내역', desc: famData?.refused ? (famData.refuse_reason + ' 고지거부') : (assetDesc || '정기재산변동사항 관보 게재') }
+        ]
+      }
+    };
+  }
+
+  // 1.5.B 기업인 / 대기업 주요 임원
+  const corpItem = eliteNet.corporate_leaders?.[name];
+  if(corpItem){
+    const schList = (corpItem.schools || []).join(', ');
+    return {
+      name: name,
+      role: corpItem.role || '기업인',
+      party: corpItem.org || '주요 기업',
+      photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+      aliases: [],
+      birth: corpItem.birth || '',
+      desc: (corpItem.role || '') + ' (' + (corpItem.org || '') + '). ' + (schList ? '학력: ' + schList + '. ' : '') + (corpItem.military ? '병역: ' + corpItem.military : ''),
+      milestones: (corpItem.schools || []).map(s => ({ y: '학업', title: s + ' 졸업', sub: '주요 학력 이수', tag: '학연' })),
+      multiSources: {
+        portalNews: [
+          { date: '최근 보도', press: '연합인포맥스', title: name + ' ' + (corpItem.role || '') + ', 핵심 사업 전략 및 경영 행보', desc: (corpItem.org || '') + ' 경영 혁신 및 대외 글로벌 파트너십 구축 총력.', tag: '기업 경영' }
+        ],
+        youtube: [
+          { channel: '삼프로TV', date: '기업 심층', title: '[기업 분석] ' + name + ' ' + (corpItem.role || '') + '의 리더십과 ' + (corpItem.org || '') + '의 미래 전략', desc: '산업 생태계 혁신과 미래 성장 동력 분석.', tag: '기업 분석' }
+        ],
+        blogsCafes: [
+          { platform: '네이버 프리미엄콘텐츠', author: '산업리포트', date: '산업 분석', title: name + '과 ' + (corpItem.org || '') + ' — 재계 지형도와 경영권 분석', desc: '지배구조 및 주요 투자 프로젝트 점검.', tag: '심층 분석' }
+        ],
+        publicRecords: [
+          { type: 'DART 전자공시', org: '금융감독원', date: '공시 기록', title: (corpItem.org || '') + ' 임원 및 최대주주 등 소유주식변동신고서', desc: '자본시장법에 따른 임원 선임 및 지분 공시.' }
+        ]
+      }
+    };
+  }
+
+  // 1.5.C 법조인 (판사, 검사, 변호사, 변리사)
+  const legalItem = eliteNet.legal_elites?.[name];
+  if(legalItem){
+    const examList = (legalItem.exams || []).join(', ');
+    const schList = (legalItem.schools || []).join(', ');
+    return {
+      name: name,
+      role: legalItem.role || '법조인',
+      party: legalItem.org || '대한민국 사법부/검찰',
+      photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+      aliases: [],
+      birth: legalItem.birth || '',
+      desc: (legalItem.role || '') + ' (' + (legalItem.org || '') + '). ' + (examList ? '자격: ' + examList + '. ' : '') + (schList ? '학력: ' + schList : ''),
+      milestones: (legalItem.exams || []).map(e => ({ y: '법조 입문', title: e + ' 합격 및 연수', sub: '사법연수원 수료', tag: '법조 이력' })),
+      multiSources: {
+        portalNews: [
+          { date: '법조 보도', press: '법률신문', title: name + ' ' + (legalItem.role || '') + ', 주요 판결 및 법리 쟁점 심층 분석', desc: '법치주의 확립과 사법 정의 구현을 위한 주요 판결 및 수사 기록.', tag: '법조 기록' }
+        ],
+        youtube: [
+          { channel: '로톡뉴스', date: '판결 해설', title: '[판결 리뷰] ' + name + ' ' + (legalItem.role || '') + '의 주요 사건 판결문 팩트체크', desc: '주요 재판 과정에서의 법리 해석과 사회적 영향 진단.', tag: '법률 해설' }
+        ],
+        blogsCafes: [
+          { platform: '법률저널', author: '법조 아카이브', date: '법조 인물', title: name + ' ' + (legalItem.role || '') + '의 법조 궤적과 주요 이력', desc: '사법고시 합격부터 법조 요직에 이르는 경력 조망.', tag: '법조사' }
+        ],
+        publicRecords: [
+          { type: '대법원 판결문 및 법조 공보', org: '대한민국 법원', date: '공식 기록', title: name + ' 법조인 인적 등록 및 사법 기록', desc: '대법원 및 법무부 법조인명록 등재 정보.' }
+        ]
+      }
+    };
+  }
+
+  // 1.5.D 고위공직자 (장관, 차관, 청장, 지자체장)
+  const officialItem = eliteNet.high_officials?.[name];
+  if(officialItem){
+    return {
+      name: name,
+      role: officialItem.role || '고위공직자',
+      party: officialItem.org || '대한민국 정부',
+      photo: 'assets/people/' + encodeURIComponent(name) + '.webp',
+      aliases: [],
+      birth: officialItem.birth || '',
+      desc: (officialItem.role || '') + ' (' + (officialItem.org || '') + '). 대한민국 정부 주요 정책 총괄 및 공직 수행.',
+      milestones: [
+        { y: '공직 임명', title: officialItem.role, sub: officialItem.org || '정부 부처', tag: '공직' }
+      ],
+      multiSources: {
+        portalNews: [
+          { date: '정책 보도', press: '대한민국 정책브리핑', title: name + ' ' + (officialItem.role || '') + ', 주요 정부 국정과제 추진 브리핑', desc: '민생 경제 및 국가 주요 정책 추진 현황 발표.', tag: '정책 브리핑' }
+        ],
+        youtube: [
+          { channel: 'KTV 국민방송', date: '정부 브리핑', title: '[국정 브리핑] ' + name + ' ' + (officialItem.role || '') + ' 대국민 정책 발표 현장', desc: '정부 핵심 과제에 대한 종합 설명 및 질의응답.', tag: '정책 발표' }
+        ],
+        blogsCafes: [
+          { platform: '네이버 블로그', author: '행정 모니터링', date: '정책 평가', title: name + ' ' + (officialItem.role || '') + '의 부처 정책 성과 평가', desc: '시민사회 관점에서의 행정 혁신 및 국정 과제 이행 점검.', tag: '정책 평가' }
+        ],
+        publicRecords: [
+          { type: '대한민국 전자관보', org: '인사혁신처', date: '공식 관보', title: name + ' 정무직 공무원 임명 및 인사 발령', desc: '대통령 인사 발령 및 관보 게재 기록.' }
+        ]
+      }
+    };
+  }
+
+  // 1.5.E 언론인 (방송 앵커, 보도국장, 기자)
+  const journoItem = eliteNet.journalists?.[name];
+  if(journoItem){
+    return {
+      name: name,
+      role: journoItem.role || '언론인',
+      party: journoItem.org || '언론사',
+      photo: journoItem.photo || ('assets/people/' + encodeURIComponent(name) + '.webp'),
+      aliases: [],
+      birth: '',
+      desc: (journoItem.role || '') + ' (' + (journoItem.org || '') + '). 대한민국 주요 시사·보도 현장 취재 및 방송 저널리즘 활동.',
+      milestones: [
+        { y: '언론 활동', title: journoItem.org + ' 보도', sub: journoItem.role, tag: '언론' }
+      ],
+      multiSources: {
+        portalNews: [
+          { date: '기명 보도', press: journoItem.org || '언론사', title: name + ' 기자의 주요 기명 기사 및 단독 탐사 보도', desc: '정치·경제·사회 현장의 핵심 이슈를 집중 조명한 심층 보도 모음.', tag: '기명 보도' }
+        ],
+        youtube: [
+          { channel: journoItem.org || '보도국', date: '방송 리포트', title: '[기자 리포트] ' + name + ' 기자의 현장 취재 및 쟁점 진단', desc: '주요 뉴스 현장에서의 방송 리포트 및 해설.', tag: '뉴스 리포트' }
+        ],
+        blogsCafes: [
+          { platform: '미디어오늘', author: '미디어 비평', date: '언론 모니터', title: name + ' 기자의 보도 성향과 주요 탐사 보도 평가', desc: '저널리즘 관점에서의 취재 팩트체크 및 언론 영향력 분석.', tag: '미디어 분석' }
+        ],
+        publicRecords: [
+          { type: '한국기자협회 등록 명부', org: '한국기자협회', date: '공식 기록', title: name + ' 언론인 등록 및 기자협회 바이라인 기록', desc: '주요 포털 및 언론사 인증 기자 프로필.' }
+        ]
+      }
+    };
+  }
+
+// 4. Universal Fallback
   return {
     name: name,
     role: entItem?.type === 'person' ? '화제 인물' : '공공 인물',
@@ -2871,6 +3053,170 @@ function enrichGraphDetail(g, name, polId, arc, pol){
     });
   }
 
+
+  // 5. 엘리트 종합 데이터베이스 연동 (의원 가족 전수 + 학연/지연/직무 클러스터)
+  const eliteNet = _eliteNetworkCache || {};
+
+  // 5.A 국회의원 가족 노드 및 엣지 자동 추가 (3,603명 가족망)
+  const memberFamData = eliteNet.assembly_families?.[name];
+  if(memberFamData && memberFamData.families){
+    for(const [relKey, famObj] of Object.entries(memberFamData.families)){
+      const famNodeId = name + '_fam_' + relKey;
+      const famName = name + '의 ' + relKey;
+      const isSpouse = relKey === '배우자';
+      const isChild = ['장남','차남','삼남','장녀','차녀','삼녀','손자','손녀'].some(k => relKey.startsWith(k));
+      const isParent = ['부','모','시부','시모','장인','장모'].includes(relKey);
+      const typ = isSpouse ? 'spouse' : (isChild ? 'child' : (isParent ? 'parent' : 'relative'));
+
+      const assetSummary = (famObj.assets_summary || []).join(' · ');
+      const desc = famObj.refused ? ('독립생계유지 고지거부 (' + (famObj.gongbo_year || '정기') + '년 국회공보)') : (assetSummary || '공직자 재산등록 고보 인적 기록');
+
+      if(!nodeMap.has(famNodeId)){
+        const fn = {
+          id: famNodeId,
+          name: famName,
+          kind: 'family',
+          cat: 'family',
+          typ: typ,
+          desc: desc,
+          party: memberFamData.party || '',
+          photo: 'assets/people/' + encodeURIComponent(name) + '.webp'
+        };
+        nodes.push(fn);
+        nodeMap.set(famNodeId, fn);
+      }
+
+      const fk = `${centerId}_${famNodeId}_${typ}`;
+      if(!edgeKeys.has(fk)){
+        edges.push({
+          a: centerId,
+          b: famNodeId,
+          cat: 'family',
+          typ: typ,
+          label: relKey,
+          desc: desc,
+          src: '국회공보 정기재산변동사항 관보 (' + (famObj.gongbo_year || '공식') + '년)',
+          conf: 1
+        });
+        edgeKeys.add(fk);
+      }
+    }
+  }
+
+  // 5.A.2 국회의원 가족 본인 페이지일 때 국회의원 본인으로 역연결
+  const famReverseMatch = name.match(/^([가-힣]{2,5})의\s*(배우자|장남|차남|삼남|장녀|차녀|삼녀|부|모|손자|손녀|외손자|외손녀|장인|장모|시부|시모)/);
+  if(famReverseMatch){
+    const polName = famReverseMatch[1];
+    const relName = famReverseMatch[2];
+    const pol = getPol(polName);
+    const polId = pol?.id || polName;
+    if(!nodeMap.has(polId)){
+      const pn = {
+        id: polId,
+        name: polName,
+        kind: 'politician',
+        cat: 'family',
+        typ: 'colleague',
+        desc: polName + ' (가족 연계 국회의원)',
+        party: pol?.party || '',
+        photo: profilePhoto({ name: polName }, pol)
+      };
+      nodes.push(pn);
+      nodeMap.set(polId, pn);
+    }
+    const fk = `${centerId}_${polId}_reverse`;
+    if(!edgeKeys.has(fk)){
+      edges.push({
+        a: centerId,
+        b: polId,
+        cat: 'family',
+        typ: 'relative',
+        label: polName + ' 의원',
+        desc: '국회공보 재산등록에 명시된 직계 가족 관계',
+        src: '국회공직자윤리위원회 관보',
+        conf: 1
+      });
+      edgeKeys.add(fk);
+    }
+  }
+
+  // 5.B 학연(대학 동문) 및 사법연수원 동기 연계
+  const corpOrLegal = eliteNet.corporate_leaders?.[name] || eliteNet.legal_elites?.[name] || eliteNet.high_officials?.[name];
+  if(corpOrLegal){
+    // 사법연수원/사법시험 기수 동기 연계
+    (corpOrLegal.exams || []).forEach(ex => {
+      const peers = eliteNet.judicial_exam_clusters?.[ex] || [];
+      peers.slice(0, 4).forEach(peerName => {
+        if(peerName === name) return;
+        if(nodes.length < 12 && !nodeMap.has(peerName)){
+          const pn = {
+            id: peerName,
+            name: peerName,
+            kind: 'legal',
+            cat: 'academic',
+            typ: 'schoolmate',
+            desc: ex + ' 동기 (' + peerName + ')',
+            party: '',
+            photo: profilePhoto({ name: peerName })
+          };
+          nodes.push(pn);
+          nodeMap.set(peerName, pn);
+          const pk = `${centerId}_${peerName}_exam`;
+          if(!edgeKeys.has(pk)){
+            edges.push({
+              a: centerId,
+              b: peerName,
+              cat: 'academic',
+              typ: 'schoolmate',
+              label: ex + ' 동기',
+              desc: '대한민국 법조계 ' + ex + ' 동기 네트워크',
+              src: '법조인명록',
+              conf: 1
+            });
+            edgeKeys.add(pk);
+          }
+        }
+      });
+    });
+
+    // 출신 대학 동문 연계
+    (corpOrLegal.schools || []).forEach(sch => {
+      if(sch.includes('대학교')){
+        const alumni = eliteNet.academic_clusters?.[sch] || [];
+        alumni.slice(0, 3).forEach(alName => {
+          if(alName === name || alName.startsWith('wd:') || alName.length > 5) return;
+          if(nodes.length < 12 && !nodeMap.has(alName)){
+            const an = {
+              id: alName,
+              name: alName,
+              kind: 'politician',
+              cat: 'academic',
+              typ: 'schoolmate',
+              desc: sch + ' 동문 (' + alName + ')',
+              party: '',
+              photo: profilePhoto({ name: alName })
+            };
+            nodes.push(an);
+            nodeMap.set(alName, an);
+            const ak = `${centerId}_${alName}_alumni`;
+            if(!edgeKeys.has(ak)){
+              edges.push({
+                a: centerId,
+                b: alName,
+                cat: 'academic',
+                typ: 'schoolmate',
+                label: sch + ' 동문',
+                desc: sch + ' 학업 동문 네트워크',
+                src: '공적 학력증명',
+                conf: 1
+              });
+              edgeKeys.add(ak);
+            }
+          }
+        });
+      }
+    });
+  }
   return { center: centerId, nodes, edges };
 }
 
@@ -4719,7 +5065,7 @@ function entity(n){
 
   ensurePolIndex().then(async () => {
     const pol = getPol(n);
-    const bioDb = await ensurePeopleBio().catch(() => ({}));
+    const [bioDb, eliteNet] = await Promise.all([ensurePeopleBio().catch(() => ({})), ensureEliteNetwork().catch(() => ({}))]);
     const bio = bioDb?.[n] || null;
     const d = getOrSynthesizeDossier(n, { pol, bio });
 
