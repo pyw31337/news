@@ -156,12 +156,19 @@ jobs:
         continue-on-error: true
         timeout-minutes: 5
         run: python scripts/people/collect_bio.py --incremental
+      - name: 정치인 공식 명부(인물 데이터 충족도용)
+        # 정치인 사진 충족도는 data 브랜치에 없는 politicians 원장을 기준으로 센다.
+        # 원장을 못 받으면 coverage는 0이 아니라 "미확인"으로 남긴다.
+        continue-on-error: true
+        run: |
+          repo="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git clone -q --depth 1 --branch politicians "$repo" pol_coverage || mkdir -p pol_coverage
       - name: 인물 데이터 충족도·검증 보강 큐 갱신
         # 수집 명부와 출처 기반 이력의 차이를 측정한다. 큐에는 동명이인 방지를 위해
         # Wikidata 고정 ID가 있는 공개 1계층 인물만 넣는다.
         continue-on-error: true
         timeout-minutes: 3
-        run: python scripts/people/coverage.py data
+        run: python scripts/people/coverage.py data --pol-dir pol_coverage
       - name: 검증된 1계층 인물 이력 보강(Wikidata)
         # 이름 검색·생성형 작성 없이 고정 QID의 직업·직위·소속·수상·공식 사이트만
         # 출처 링크와 함께 원장에 쌓는다. 화면 반영 전에는 별도 검토를 거친다.
@@ -179,7 +186,7 @@ jobs:
       - name: 인물 보강 결과 재집계
         continue-on-error: true
         timeout-minutes: 2
-        run: python scripts/people/coverage.py data
+        run: python scripts/people/coverage.py data --pol-dir pol_coverage
       - name: 오늘의 이슈 정합성 검증 및 소독(Sanitize)
         run: python scripts/sanitize_today.py data/today.json
       - name: 품질 점수(사진·기사·이슈·인물 채점 → 좋은 것 먼저 배열, docs/QUALITY.md)

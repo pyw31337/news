@@ -91,8 +91,11 @@ def has_cited_events(value):
 
 
 def load_pol_people(path):
-    raw = read_json(os.path.join(path, "index.json"), {}) if path else {}
-    return raw.get("people", []) if isinstance(raw, dict) else []
+    index = os.path.join(path, "index.json") if path else ""
+    if not index or not os.path.isfile(index):
+        return None
+    raw = read_json(index, {})
+    return raw.get("people", []) if isinstance(raw, dict) else None
 
 
 def choose_bio(row, by_id, by_name):
@@ -123,9 +126,11 @@ def portrait_retry_pending(checked):
 
 
 def queue_candidates(rows, tiers, portraits, wikidata_facts, by_id, by_name, limit):
-    # 정치·언론·연예·인플루언서·문화 순서로, 분야 확장과 뉴스 효용을 같이 고려한다.
-    kind_rank = {"정치": 0, "언론": 1, "연예": 2, "인플루언서": 3, "문화": 4, "경제": 5, "법조": 6}
-    items = []
+    # 한 분야를 먼저 모두 채우지 않는다. 첫 10건부터 정치·언론·연예·문화·경제·
+    # 법조·스포츠·크리에이터·학계·기타를 한 바퀴씩 섞어야 화면과 데이터 편향이
+    # 동시에 줄어든다. 같은 분야 안에서는 위키 언어판 수(sl)와 이름으로 안정 정렬한다.
+    kind_order = ["정치", "언론", "연예", "문화", "경제", "법조", "스포츠", "인플루언서", "학계", "기타"]
+    buckets = defaultdict(list)
     for row in rows:
         pid = row.get("id", "")
         state = tiers.get(pid, {})
@@ -145,18 +150,31 @@ def queue_candidates(rows, tiers, portraits, wikidata_facts, by_id, by_name, lim
             needs.append("structured_profile")
         elif not has_cited_events(bio):
             needs.append("cited_timeline")
-        items.append({
+        buckets[category(row)].append({
             "id": pid,
             "name": row.get("n", ""),
             "kind": category(row),
             "wikidata": "https://www.wikidata.org/wiki/" + pid.removeprefix("wd:"),
             "needs": needs,
-            "priority": [kind_rank.get(category(row), 9), -int(row.get("sl") or 0), row.get("n", "")],
+            "_score": [-int(row.get("sl") or 0), row.get("n", "")],
         })
-    items.sort(key=lambda item: tuple(item["priority"]))
-    for item in items:
-        item.pop("priority", None)
-    return items[:limit]
+    for values in buckets.values():
+        values.sort(key=lambda item: tuple(item["_score"]))
+    order = [kind for kind in kind_order if buckets.get(kind)]
+    order.extend(sorted(kind for kind in buckets if kind not in kind_order))
+    items = []
+    while order and len(items) < limit:
+        next_order = []
+        for kind in order:
+            values = buckets[kind]
+            if values and len(items) < limit:
+                item = values.pop(0)
+                item.pop("_score", None)
+                items.append(item)
+            if values:
+                next_order.append(kind)
+        order = next_order
+    return items
 
 
 def main():
@@ -209,7 +227,7 @@ def main():
     pol_photo_count = sum(
         1 for person in pol_people
         if person.get("photo_local") == "data/pol/photos/%s.webp" % person.get("id")
-    )
+    ) if pol_people is not None else None
     reporters = read_json(os.path.join(data_dir, "reporters.json"), [])
     reporters = reporters if isinstance(reporters, list) else []
     history = read_json(os.path.join(data_dir, "reporter_history.json"), {})
@@ -244,9 +262,10 @@ def main():
             for role in ROLE_RULES
         },
         "politicians": {
-            "roster": len(pol_people),
+            "data_available": pol_people is not None,
+            "roster": len(pol_people) if pol_people is not None else None,
             "official_photo_paths": pol_photo_count,
-            "photo_gap": max(0, len(pol_people) - pol_photo_count),
+            "photo_gap": max(0, len(pol_people) - pol_photo_count) if pol_people is not None else None,
         },
         "journalists": {
             "today_profiles": len(reporters),
