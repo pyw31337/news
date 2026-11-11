@@ -5983,7 +5983,9 @@ function graph(el,mini){
   entitiesPool.forEach(e=>{
     const media=entityMedia(e);
     let img=media.url;
-    if(!img){
+    /* 인물 노드에는 기사 대표 사진을 대신 채우지 않는다. 기사 사진 속 다른 사람이
+       해당 인물의 초상으로 보이는 사고를 막기 위해, 검증된 초상만 허용한다. */
+    if(!img && e.type!=='person'){
       const rel=(e.issues||[]).map(id=>D.issues.find(x=>x.id===id)).filter(Boolean)[0];
       if(rel && (rel.image || (rel.gallery && rel.gallery[0] && rel.gallery[0].img))){
         img = rel.image || rel.gallery[0].img;
