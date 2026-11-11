@@ -8,24 +8,24 @@
 - 무료 티어만. 공개 화면에 기술 문구 금지. 텍스트보다 차트·시각화.
 
 ## 시작 전 반드시 읽기
-1. `HANDOFF.md` (특히 0절 현재 상태, 10절 배포, 11절 함정)
-2. `docs/ROADMAP.md`, `docs/design-system.md`, `docs/icons.md`, `docs/GAMIFICATION.md`, `docs/QUALITY.md`, `docs/LEGAL_ARCHIVE.md`, `docs/API_KEYS_GUIDE.md`
-3. `git log --oneline -20 origin/main`, 그리고 `sw.js`의 현재 `nb-vNN`
+1. **`docs/AGENT_HANDOFF.md`** — 현재 수집량의 뜻, 분야별 방향, 검증 금지 규칙, 다음 실행 순서의 정본
+2. `docs/PEOPLE.md`(특히 2·5·6·8·9절), `docs/DATA.md`, 그 뒤 `HANDOFF.md` 10·11절
+3. `docs/ROADMAP.md`, `docs/design-system.md`, `docs/icons.md`, `docs/GAMIFICATION.md`, `docs/QUALITY.md`, `docs/LEGAL_ARCHIVE.md`, `docs/API_KEYS_GUIDE.md`
+4. `git fetch origin --prune && git log --oneline -20 origin/main`, 그리고 최근 `collect-news` 실행 결과
 
 ## 지금 우선순위 (순서대로)
-1. **Google 앱 게시 마무리:** `/news/privacy/`·`/news/terms/`가 실제로 열리는지 확인 → 열리면 영우 님께 브랜딩 저장 후 '대상 > 앱 게시' 안내(로고는 올리지 않기).
-2. **Kakao 로그인** 테스트를 영우 님께 요청하고 결과 확인.
-3. **배지 v3** 피드백 반영(레퍼런스 수준의 일러스트 메달, `assets/badges/`).
-4. **헌재결정례(detc) 0건** 원인 찾기(legal-archive 워크플로).
-5. 인물 아카이브·히스토리 백필 진행 감시(11.04~11.05 완료 예상), 썸네일 비율 90% 목표.
-6. 미결: data·media 브랜치 이력 정리(사용자 답 대기), BigKinds(선택).
+1. 최신 `collect-news`가 정치인 원장을 포함한 커버리지(`data_available:true`)와 10개 분야 라운드로빈 큐를 제대로 만든지 검증한다.
+2. 인물 페이지는 원본을 덮지 않는 시안 경로에서, **검증된 ID·출처·초상만**으로 데이터 밀도를 높인다. 기존 원시 자료를 그대로 자동 노출하지 않는다.
+3. 기자는 한국 IP 로컬 수집 결과가 6시간 이내인지 확인하고, 기사 원문·소속·직무를 갖춘 경우에만 보강한다.
+4. 분야별로 명부·고정 ID·원문 이력·검증 초상·화면 승인 수를 별도 집계해 목표와 기간을 갱신한다.
+5. 그 외 로그인·법률 아카이브·배지 등은 `docs/AGENT_HANDOFF.md`의 위험 표와 사용자 요청의 우선순위를 따르되, 생성 이미지나 임의 뱃지로 해결하지 않는다.
 
 ## 지켜야 할 규칙
 - **D1 예산:** 하루 쓰기 10만 줄(계정 전체), 아카이브는 4만 줄. diff upsert·배치·단일 트랜잭션만. 대량 데이터는 git 브랜치/R2. 초기화 09:00 KST.
 - **비밀값:** 채팅·커밋·로그에 값 절대 금지. 이름과 위치만 기록. 새 키는 비밀값 입력 카드로 받기.
 - **디자인:** Pretendard(세리프는 인용·의견만), Tabler 라인 아이콘(외곽선=꺼짐/채움=켜짐, 규격 통일), 브라우저 기본 컨트롤 금지 → 디자인 시스템 컴포넌트, 사진은 2배 이상 선명한 WebP만, 강한 시각 위계, 긴 목록 대신 묶음 보기.
-- **배포:** 별도 worktree → `git pull --rebase` → 화면 변경 시 sw `nb-vNN` 다음 빈 번호 → push main → `gh workflow run collect-news` → 라이브에서 확인 → 390px·PC 스크린샷(`/workspace/newsboard-shots/`).
+- **배포:** 별도 worktree → `git pull --rebase` → push main → 필요 시 `gh workflow run collect-news` → 라이브에서 확인 → 390px·PC 스크린샷. `sw.js` 캐시 버전은 배포 단계가 commit hash로 자동 주입하므로 수동 번호를 올리지 않는다.
 - 안전 검사에 막히면 우회하지 말고 보고.
 
 ## 보고 방식
-작업이 끝날 때마다: 무엇이 바뀌었는지(링크·스크린샷), 숫자 전후 비교, 영우 님이 하실 일(있으면 1~3단계로). 끝나면 `HANDOFF.md` 0절을 갱신하고 커밋해.
+작업이 끝날 때마다: 무엇이 바뀌었는지(링크·스크린샷), **지표의 뜻을 붙인** 숫자 전후 비교, 출처·저작권·개인정보 위험, 영우 님이 하실 일(있으면 1~3단계)을 남긴다. 끝나면 `docs/AGENT_HANDOFF.md`의 최근 작업 기록을 갱신하고 커밋해.

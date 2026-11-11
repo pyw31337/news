@@ -2,7 +2,7 @@
 
 https://pyw31337.github.io/news/
 
-> **작업을 이어받는 에이전트는 먼저 [HANDOFF.md](HANDOFF.md)와 [docs/ROADMAP.md](docs/ROADMAP.md)를 읽으세요.** (목표·사용자 선호·구조·진행 중 작업·백로그·데이터 현황)
+> **작업을 이어받는 에이전트는 먼저 [docs/AGENT_HANDOFF.md](docs/AGENT_HANDOFF.md), [HANDOFF.md](HANDOFF.md), [docs/ROADMAP.md](docs/ROADMAP.md)를 읽으세요.** 현재 수집량·검증 규칙·진행 중 작업의 정본은 `docs/AGENT_HANDOFF.md`입니다.
 
 ## 구조
 - `index.html`, `assets/` — 정적 프런트엔드 (모바일 우선, 1000px 이상 다단 레이아웃)
