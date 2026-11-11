@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-11",
-  "generated_at": "2026-11-11T17:54:49+09:00",
+  "generated_at": "2026-11-11T16:55:42+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,109 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "idc99fb2a",
-      "title": "'젠슨 황 내연녀' 앨리스 황, 중국에 또 다른 남자 있었나",
-      "category": "세계",
-      "rank": 4,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "엔비디아 CEO 젠슨 황의 불륜 상대로 알려진 앨리스 황이 과거 중국 증시 규정 위반으로 여러 차례 적발된 금융 기업인과 오랜 기간 동업 및 연인 관계를 맺어왔다는 보도가 나왔다.",
-        "“젠슨 황 외도 상대 앨리스 황, 10조원 엔비디아 AI칩 中 밀반입”",
-        "\"10년된 연인까지 있었다\"…잠적한 '젠슨 황의 그녀' 중국 도피설 '솔솔'",
-        "\"젠슨 황 내연녀, 10조 엔비디아 칩 중국으로 밀반입\"",
-        "젠슨 황 엔비디아 최고경영자(CEO)의 불륜 상대이자 중국 스파이로 지목된 앨리스 황의 과거 행적과 정체가 하나씩 드러나고 있다."
-      ],
-      "sources": [
-        {
-          "press": "전자신문",
-          "title": "“젠슨 황 외도 상대 앨리스 황, 10조원 엔비디아 AI칩 中 밀반입”",
-          "url": "https://n.news.naver.com/article/030/0003484294"
-        },
-        {
-          "press": "아시아경제",
-          "title": "\"10년된 연인까지 있었다\"…잠적한 '젠슨 황의 그녀' 중국 도피설 '솔솔'",
-          "url": "https://n.news.naver.com/article/277/0005841208"
-        },
-        {
-          "press": "YTN",
-          "title": "\"젠슨 황 내연녀, 10조 엔비디아 칩 중국으로 밀반입\"",
-          "url": "https://n.news.naver.com/article/052/0002431303"
-        },
-        {
-          "press": "donga.com",
-          "title": "“‘젠슨 황 불륜’ 앨리스 황, 42세 아닌 49세…”과거 행적 보니",
-          "url": "https://n.news.naver.com/mnews/article/020/0003761774?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "엔비디아 CEO 젠슨 황의 불륜 상대로 알려진 앨리스 황이 과거 중국 증시 규정 위반으로 여러 차례 적발된 금융 기업인과 오랜 기간 동업 및 연인 관계를 맺어왔다는 보도가 나왔다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "젠슨 황 내연녀 앨리스 황, 엔비디아 AI칩 24만개 중국 우회 공급 의혹"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "“젠슨 황 외도 상대 앨리스 황, 10조원 엔비디아 AI칩 中 밀반입”"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "앨리스 황에게 오랜 연인이 따로 있었으며 젠슨 황이 이용당했을 가능성을 제기했다. 나이를 42살이 아닌 49살로 속였다는 의혹과 홍콩 여권 사용 정황이 추가되면서, 그녀의 실체와 행각이 단순한 불륜을 넘어 조직적인…"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i11af561e",
-      "title": "옥천 주택서 노부부 숨진 채 발견… 일산화탄소 중독 추정",
-      "category": "환경",
-      "rank": 10,
+      "issue_id": "if1c70406",
+      "title": "美빅스텝 우려에도 코스피 2.6%·코스닥 5.6%↑…외국인 '사자'(종합)",
+      "category": "경제",
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -137,49 +38,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "충북 옥천의 한 주택에서 노부부가 숨진 채 발견됐다.",
-        "[속보]‘출근 안해서 신고’…주택서 부부 숨진 채 발견돼, 일산화탄소 중독 추정",
-        "충북 옥천의 한 주택에서 80대 노부부가 일산화탄소 중독으로 추정되는 사고로 숨진 채 발견됐다.",
-        "11일 연합뉴스와 소방당국 등에 따르면 전날 오후 1시 30분쯤 충북 옥천군 안남면의 한 주택에서 80대 A 씨와 부인 70대 B...",
-        "충북 옥천군 안남면의 한 주택에서 노부부가 숨진 채 발견돼 경찰이 수사에 나섰다."
+        "미국 연방준비제도(Fed)가 기준금리를 0.75% 인상할 것이라는 전망이 나오자 미국 증시는 급락했지만, 코스피와 코스닥은 상승세를 이어갔다.",
+        "[속보] 미 빅스텝 우려에도 급등…코스피 2.6%·코스닥 5.6%↑",
+        "코스피는 전장 대비 0.56% 내린 5209.71에 출발했지만 장중 상승 전환했다.",
+        "코스닥은 더 큰 폭으로 올랐다.",
+        "앞서 코스피는 지난 6일 미국 기술주 급락과 인공지능(AI) 규제 강화 우려에 전 거래일 대비 6.02% 내린 5059...."
       ],
       "sources": [
         {
-          "press": "문화일보",
-          "title": "[속보]‘출근 안해서 신고’…주택서 부부 숨진 채 발견돼, 일산화탄소 중독 추정",
-          "url": "https://n.news.naver.com/article/021/0002832080"
+          "press": "MBN",
+          "title": "[속보] 미 빅스텝 우려에도 급등…코스피 2.6%·코스닥 5.6%↑",
+          "url": "https://n.news.naver.com/article/057/0001977721"
         },
         {
-          "press": "busan.com",
-          "title": "옥천 주택서 노부부 숨진 채 발견… 장작 태우다 일산화탄소 중독?",
-          "url": "https://n.news.naver.com/mnews/article/082/0001406675?sid=102"
+          "press": "dailian.co.kr",
+          "title": "\"美 물가 쇼크도 안 통했다\"…코스피 뒤집은 '큰손' 정체는",
+          "url": "https://n.news.naver.com/mnews/article/119/0003154067?sid=101"
         },
         {
-          "press": "news1.kr",
-          "title": "충북 옥천서 노부부 숨진 채 발견…일산화탄소 중독 추정",
-          "url": "https://n.news.naver.com/mnews/article/421/0009283410?sid=102"
+          "press": "pointdaily.co.kr",
+          "title": "코스피, 美빅스텝 우려에도 급등…5375.36 마감",
+          "url": "https://www.pointdaily.co.kr/news/articleView.html?idxno=325608"
         },
         {
-          "press": "문화일보",
-          "title": "[속보]‘출근 안해서 신고’…주택서 부부 숨진 채 발견돼, 일산화탄소 중독 추정",
-          "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1lQkFtYnZTMzJYOUM5QVhSRDdZV0szNmNfYTRpdy1BcVlDX1NobHozNUFNSUJzQmZtanJlQXFQX2JJZ2hIUmMxOXBTd0xSY1Vn?oc=5"
+          "press": "edaily.co.kr",
+          "title": "긴축 공포 넘어선 AI 실적 신뢰…코스닥, 5거래일 만에 700선 탈환",
+          "url": "https://n.news.naver.com/mnews/article/018/0006408352?sid=101"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "충북 옥천의 한 주택에서 노부부가 숨진 채 발견됐다."
+          "evidence": "미국 연방준비제도(Fed)가 기준금리를 0.75% 인상할 것이라는 전망이 나오자 미국 증시는 급락했지만, 코스피와 코스닥은 상승세를 이어갔다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "일산화탄소 중독이 원인으로 추정된다."
+          "evidence": "코스피는 전장 대비 0.56% 내린 5209.71에 출발했지만 장중 상승 전환했다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "충북 옥천의 한 주택에서 80대 노부부가 일산화탄소 중독으로 추정되는 사고로 숨진 채 발견됐다."
+          "evidence": "[속보] 미 빅스텝 우려에도 급등…코스피 2.6%·코스닥 5.6%↑"
         },
         {
           "panel": 4,
@@ -225,65 +126,164 @@
       }
     },
     {
-      "issue_id": "i6680a923",
-      "title": "국힘 윤리위원 “한동훈 제명은 조작 징계” 주장",
-      "category": "정치",
-      "rank": 1,
-      "priority_score": 45,
+      "issue_id": "ie400aea3",
+      "title": "10월 가계대출 다시 증가 전환…주택담보대출 증가 폭 확대",
+      "category": "경제",
+      "rank": 9,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "국민의힘 황경선 윤리위원이 과거 한동훈 의원 제명과 진종오 의원 징계가 조작됐다고 폭로하면서 파장이 일었다.",
-        "\"장동혁 조작 징계\" 의혹에..한동훈 \"정치숙청 실체 드러나\" 진종오 \"사퇴하라\"",
-        "국힘 윤리위원 ‘조작징계’ 공식사과…한동훈 “정치적 숙청 실체 드러나”",
-        "국힘 윤리위원 “한동훈 제명은 조작징계”...장동혁 “정치 공세”",
-        "野 ‘징계정치’ 논란 재점화…장동혁·한동훈 갈등 다시 수면 위로 [이런정치]"
+        "10월 가계대출이 6조4천억원 증가하며 다시 증가 전환했다.",
+        "주식 물타기 했나 ‘빚투’ 역대급 증가…은행 가계대출 첫 1천200조 돌파",
+        "가계빚 1200조원 첫 돌파…10월 은행 가계대출 5조 ‘껑충’",
+        "11일 한국은행 발표에 따르면 10월 말 기준 예금은행의 가계대출 잔액은 1203조9000억 원으로 9월 말보다",
+        "가계대출 증가 폭은 지난 6월 22개월 만에 최대인 7조6000억 원이 증가한 뒤 점차..."
       ],
       "sources": [
         {
-          "press": "파이낸셜뉴스",
-          "title": "\"장동혁 조작 징계\" 의혹에..한동훈 \"정치숙청 실체 드러나\" 진종오 \"사퇴하라\"",
-          "url": "https://n.news.naver.com/article/014/0005602651"
+          "press": "경기일보",
+          "title": "주식 물타기 했나 ‘빚투’ 역대급 증가…은행 가계대출 첫 1천200조 돌파",
+          "url": "https://n.news.naver.com/article/666/0000131581"
         },
         {
-          "press": "중앙일보",
-          "title": "국힘 윤리위원 ‘조작징계’ 공식사과…한동훈 “정치적 숙청 실체 드러나”",
-          "url": "https://n.news.naver.com/article/025/0003564411"
+          "press": "조세일보",
+          "title": "가계빚 1200조원 첫 돌파…10월 은행 가계대출 5조 ‘껑충’",
+          "url": "https://n.news.naver.com/article/123/0002393815"
         },
         {
-          "press": "조선일보",
-          "title": "국힘 윤리위원 “한동훈 제명은 조작징계”...장동혁 “정치 공세”",
-          "url": "https://n.news.naver.com/article/023/0004009015"
+          "press": "seouleconews.com",
+          "title": "은행 가계대출 1200조원 첫 돌파…\"집단대출·빚투 증가 영향\"",
+          "url": "http://www.seouleconews.com/news/articleView.html?idxno=94953"
         },
         {
-          "press": "헤럴드경제",
-          "title": "野 ‘징계정치’ 논란 재점화…장동혁·한동훈 갈등 다시 수면 위로 [이런정치]",
-          "url": "https://n.news.naver.com/article/016/0002722124"
+          "press": "ccn.hcn.co.kr",
+          "title": "충북 가계대출 증가율 5.8%...전국 두 번째",
+          "url": "https://ccn.hcn.co.kr/user/news/BD_newsView.do?news_category=02&story_id=NS2026111100073&story_seq=0&soCode=114&socttSn=NS2026111100073&socttSeq=0"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "국민의힘 황경선 윤리위원이 과거 한동훈 의원 제명과 진종오 의원 징계가 조작됐다고 폭로하면서 파장이 일었다."
+          "evidence": "10월 가계대출이 6조4천억원 증가하며 다시 증가 전환했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "野 ‘징계정치’ 논란 재점화…장동혁·한동훈 갈등 다시 수면 위로 [이런정치]"
+          "evidence": "주식 물타기 했나 ‘빚투’ 역대급 증가…은행 가계대출 첫 1천200조 돌파"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "국민의힘 윤리위원이 11일 한동훈·진종오 의원에 대한 징계는 조작된 것이며 이를 은폐하기 위해 장동혁 대표가 윤리위원에 일괄 사퇴를 요구했다고 주장했습니다."
+          "evidence": "가계빚 1200조원 첫 돌파…10월 은행 가계대출 5조 ‘껑충’"
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "황경선 윤리위원의 '조작 징계' 폭로가 제기된 당일, 한동훈 의원은 징계 무효화와 장동혁 대표의 사과를 요구했다. 장 대표는 정치적 공세라며 반박하는 동시에 '언론 조작'을 징계한 것이라고 맞섰다. 친한계는 이를…"
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "iea5b2817",
+      "title": "앨리스 황은 49세 유부녀?…\"나이 7세 더 많아, 남편은 구금 중\"",
+      "category": "세계",
+      "rank": 7,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "엔비디아 젠슨 황 최고경영자(CEO)의 불륜 상대이자 중국 간첩으로 지목된 앨리스 황(중국명 황러)이 중국 증시 규정 위반으로 여러 차례 적발된 금융인과 오랜 기간 동업자이자 연인 관계를 맺어온 것으로 드러났다.",
+        "“실제론 42세 아닌 49세”…‘젠슨 황 스캔들’ 앨리스 황 의혹 눈덩이",
+        "젠슨 황, ‘中 간첩 의혹’ 앨리스 황과 3년간 세계 곳곳에서 만나",
+        "아주경제=강소영 기자 writerksy@ajunews.com 젠슨 황 엔디비아 최고경영자(CEO)와 그의 아내 로리 황.",
+        "중국 간첩으로 지목된 앨리스 황(중국명 황러)과의 불륜을 인정하면서다."
+      ],
+      "sources": [
+        {
+          "press": "국민일보",
+          "title": "“실제론 42세 아닌 49세”…‘젠슨 황 스캔들’ 앨리스 황 의혹 눈덩이",
+          "url": "https://n.news.naver.com/article/005/0001884464"
+        },
+        {
+          "press": "서울신문",
+          "title": "젠슨 황, ‘中 간첩 의혹’ 앨리스 황과 3년간 세계 곳곳에서 만나",
+          "url": "https://n.news.naver.com/article/081/0003698246"
+        },
+        {
+          "press": "ajunews.com",
+          "title": "가장 비싼 불륜…\"젠슨 황, 이혼 시 아내에 '100조원' 재산 분할\"",
+          "url": "https://www.ajunews.com/view/20261111152132560"
+        },
+        {
+          "press": "MBN",
+          "title": "'젠슨 황 불륜' 앨리스 황의 남편은 이 사람?…\"중국 사모펀드 대표\"",
+          "url": "https://n.news.naver.com/article/057/0001977697"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "엔비디아 젠슨 황 최고경영자(CEO)의 불륜 상대이자 중국 간첩으로 지목된 앨리스 황(중국명 황러)이 중국 증시 규정 위반으로 여러 차례 적발된 금융인과 오랜 기간 동업자이자 연인 관계를 맺어온 것으로 드러났다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "두 사람은 중국 금융계에서 소문난 커플이었으며, 앨리스 황은 투자자들에게 캉웨이를 '남편'으로 소개한..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "“실제론 42세 아닌 49세”…‘젠슨 황 스캔들’ 앨리스 황 의혹 눈덩이"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
