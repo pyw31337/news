@@ -2,9 +2,9 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 4,
-    "approved": 3,
-    "withheld": 1,
+    "current_person_entities": 5,
+    "approved": 5,
+    "withheld": 0,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 1,
     "sanitized": 1
@@ -25,11 +25,11 @@
       "wiki_title": "오세훈"
     },
     {
-      "name": "최민희",
-      "status": "no_portrait",
-      "url": "",
-      "source": "",
-      "wiki_title": ""
+      "name": "트럼프",
+      "status": "approved",
+      "url": "media/ent/51/51d80b245f6cbf5e.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29%20%283x4%29.jpg?width=360",
+      "wiki_title": "도널드 트럼프"
     },
     {
       "name": "박충권",
@@ -37,6 +37,13 @@
       "url": "data/pol/photos/GP21946O.webp",
       "source": "",
       "wiki_title": "박충권"
+    },
+    {
+      "name": "정동영",
+      "status": "approved",
+      "url": "media/ent/cc/ccfcd1b0f869acae.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Chung%20Dong-young%20taking%20a%20commemorative%20photo%20at%20the%20National%20Assembly.jpg?width=360",
+      "wiki_title": "정동영"
     }
   ],
   "legacy_local_assets": [

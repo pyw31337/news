@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-11",
-  "generated_at": "2026-11-11T23:55:06+09:00",
+  "generated_at": "2026-11-11T23:28:41+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,109 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i17ffda83",
-      "title": "불륜女 앨리스 황, 나이 속였나…“42세 아닌 49세” 사진 나와",
-      "category": "경제",
-      "rank": 7,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "젠슨 황의 불륜 상대이자 중국 정보기관의 첩보원 의심을 받는 앨리스 황의 나이가 49세라는 보도가 나왔다.",
-        "불륜女 앨리스 황, 나이 속였나…“42세 아닌 49세” 사진 나와",
-        "앨리스 황은 49세 유부녀?…\"나이 7세 더 많아, 남편은 구금 중\"",
-        "42세 아닌 49세?…홍콩 여권으로 美·대만 출입 당초 1984년생(42세)으로 알려진 앨리스의 나이도 실상은 달랐다는 주장이 나오고 있다.",
-        "홍콩 성도일보는 11일 앨리스의 것으로 추정되는 고등학교 시절 사진과 학급 기록을..."
-      ],
-      "sources": [
-        {
-          "press": "동아일보",
-          "title": "불륜女 앨리스 황, 나이 속였나…“42세 아닌 49세” 사진 나와",
-          "url": "https://n.news.naver.com/article/020/0003761774"
-        },
-        {
-          "press": "뉴시스",
-          "title": "앨리스 황은 49세 유부녀?…\"나이 7세 더 많아, 남편은 구금 중\"",
-          "url": "https://n.news.naver.com/article/003/0014316483"
-        },
-        {
-          "press": "joongang.co.kr",
-          "title": "“남자 감전시키는 미소”…10조 AI칩 빼돌린 젠슨황 그녀, 유부녀?",
-          "url": "https://n.news.naver.com/mnews/article/025/0003564408?sid=104"
-        },
-        {
-          "press": "JTBC",
-          "title": "\"49세 유부녀\"? 행방 묘연 앨리스 황…파면 팔수록 미궁",
-          "url": "https://n.news.naver.com/article/437/0000520283"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "젠슨 황의 불륜 상대이자 중국 정보기관의 첩보원 의심을 받는 앨리스 황의 나이가 49세라는 보도가 나왔다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "투자자 신분으로 중국의 한 자동차 기업에 방문한 앨리스 황."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "불륜女 앨리스 황, 나이 속였나…“42세 아닌 49세” 사진 나와"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
       "issue_id": "i1694e1be",
       "title": "한국 30만원, 일본 10만원…내일부터 ‘스시자로’ 국내 반입 열린다",
       "category": "경제",
-      "rank": 7,
+      "rank": 9,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -139,146 +40,47 @@
       "facts": [
         "내일부터 개인이 해외에서 구매한 치료용 의약품을 국내로 가지고 들어올 수 있게 됩니다.",
         "한국 30만원, 일본 10만원…내일부터 ‘스시자로’ 국내 반입 열린다",
-        "국내 반입이 한층 수월해진다.",
-        "일본에서 저렴하게 마운자로를 구매하는 이른바 ‘스시자로’ 열풍이...",
-        "니혼게이자이신문(닛케이)에 따르면 한국 관세청은 올해 1~8월 마운자로와 위고비 등 비만치료제의 불법 반입을..."
+        "일본에서 저렴하게 마운자로를 구매하는 이른바 ‘스시자로’ 열풍이 이어지는 가운데 앞으로는 위고비와...",
+        "한국릴리 측은 일본과 한국에서 판매되는 제품이 동일하다고 밝힌 바 있다.",
+        "처방전 있어도 통관 보류…올해..."
       ],
       "sources": [
         {
-          "press": "MBN",
-          "title": "[속보] 미 빅스텝 우려에도 급등…코스피 2.6%·코스닥 5.6%↑",
-          "url": "https://n.news.naver.com/article/057/0001977721"
+          "press": "매일경제",
+          "title": "한국 30만원, 일본 10만원…내일부터 ‘스시자로’ 국내 반입 열린다",
+          "url": "https://n.news.naver.com/article/009/0005762353"
         },
         {
-          "press": "디지털데일리",
-          "title": "“700선 탈환에 매수 사이드카까지”…코스닥 5.06% 폭등, 반도체·2차전지 질주",
-          "url": "https://n.news.naver.com/article/138/0002248092"
+          "press": "sedaily.com",
+          "title": "“日서 8만원인데 한국선 35만원”…내일부터 ‘스시자로’ 들고 입국 ...",
+          "url": "https://n.news.naver.com/mnews/article/011/0004681198?sid=101"
         },
         {
-          "press": "seoul.co.kr",
-          "title": "“국내선 35만원인데 일본선 8만원”…마운자로 사러 日 간다? 내일부터...",
-          "url": "https://n.news.naver.com/mnews/article/081/0003698416?sid=102"
+          "press": "hani.co.kr",
+          "title": "‘스시자로’, 국내 3분의1 값…국외 비만약 반입 허용에 일본 원정 늘...",
+          "url": "https://n.news.naver.com/mnews/article/028/0002831791?sid=102"
         },
         {
-          "press": "tf.co.kr",
-          "title": "코스닥, 매수 사이드카 켜고 700선 탈환…'최고가' 마무리",
-          "url": "https://n.news.naver.com/mnews/article/629/0000550970?sid=101"
+          "press": "JTBC",
+          "title": "한국에선 ‘아동학대’ 홀대 받는 귀신…일본은 ‘세계 문화유산’",
+          "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9helpTdDZOeFBhY2NpNExtbHJmUFRLak9aVHlDNDNrektKVGFNc0VHU1lwVVVla0lsYlJ6Z3hrZ2RRTjFnMUVrUmFYTk1WQVVkRnZKeA?oc=5"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "코스닥이 11일 장중 5% 넘게 폭등하며 700선을 되찾았다."
+          "evidence": "내일부터 개인이 해외에서 구매한 치료용 의약품을 국내로 가지고 들어올 수 있게 됩니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "훨씬 저렴한 것으로 알려져 있기 때문이다."
+          "evidence": "반면 한국에서 마운자로는 건강보험 급여 대상이 아니어서 정부가 정한 약가가 없고, 제약사가 공급가를..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "[속보] 미 빅스텝 우려에도 급등…코스피 2.6%·코스닥 5.6%↑"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ie400aea3",
-      "title": "10월 가계대출 다시 증가 전환…주택담보대출 증가 폭 확대",
-      "category": "경제",
-      "rank": 8,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "10월 가계대출이 6조4천억원 증가하며 다시 증가 전환했다.",
-        "주식 물타기 했나 ‘빚투’ 역대급 증가…은행 가계대출 첫 1천200조 돌파",
-        "가계빚 1200조원 첫 돌파…10월 은행 가계대출 5조 ‘껑충’",
-        "11일 한국은행 발표에 따르면 10월 말 기준 예금은행의 가계대출 잔액은 1203조9000억 원으로 9월 말보다",
-        "가계대출 증가 폭은 지난 6월 22개월 만에 최대인 7조6000억 원이 증가한 뒤 점차..."
-      ],
-      "sources": [
-        {
-          "press": "경기일보",
-          "title": "주식 물타기 했나 ‘빚투’ 역대급 증가…은행 가계대출 첫 1천200조 돌파",
-          "url": "https://n.news.naver.com/article/666/0000131581"
-        },
-        {
-          "press": "조세일보",
-          "title": "가계빚 1200조원 첫 돌파…10월 은행 가계대출 5조 ‘껑충’",
-          "url": "https://n.news.naver.com/article/123/0002393815"
-        },
-        {
-          "press": "seouleconews.com",
-          "title": "은행 가계대출 1200조원 첫 돌파…\"집단대출·빚투 증가 영향\"",
-          "url": "http://www.seouleconews.com/news/articleView.html?idxno=94953"
-        },
-        {
-          "press": "busan.com",
-          "title": "가계대출 한 달 만에 다시 6.4조 늘어…집단대출·빚투 영향",
-          "url": "https://n.news.naver.com/mnews/article/082/0001406709?sid=101"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "10월 가계대출이 6조4천억원 증가하며 다시 증가 전환했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "주식 물타기 했나 ‘빚투’ 역대급 증가…은행 가계대출 첫 1천200조 돌파"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "가계빚 1200조원 첫 돌파…10월 은행 가계대출 5조 ‘껑충’"
+          "evidence": "한국 30만원, 일본 10만원…내일부터 ‘스시자로’ 국내 반입 열린다"
         },
         {
           "panel": 4,
@@ -324,10 +126,109 @@
       }
     },
     {
-      "issue_id": "i3feffa84",
-      "title": "'불륜'에 흔들리는 젠슨 황에도…월가선 \"저가 매수하라\"",
-      "category": "경제",
-      "rank": 10,
+      "issue_id": "icd9ca1e7",
+      "title": "\"하이에나\" 사과했지만…또 도마 오른 최민희의 '언론관'",
+      "category": "정치",
+      "rank": 1,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "더불어민주당 최민희 의원이 지역구 당원 단체대화방에서 국회 출입 사진·영상 기자들을 '하이에나 떼들'이라고 표현한 사실이 알려져 논란이 확산했다.",
+        "더불어민주당 최고위원인 최민희 의원이 기자들을 하이에나 떼라고 지칭했던 사실이 알려졌습니다.",
+        "모욕이란 반발에 언론 혐오증이란 비판이 나오자, 최 의원은 부적절했다며 사과했습니다.",
+        "정연우 기자가 보도합니다....",
+        "촬영기자들 향해 \"하이에나 떼\"‥멸칭 쓴 최민희 '파문'"
+      ],
+      "sources": [
+        {
+          "press": "kbs.co.kr",
+          "title": "사진기자들 ‘하이에나 떼’라는 최민희…“모욕” 비판에 “사과”",
+          "url": "https://n.news.naver.com/mnews/article/056/0012292100?sid=100"
+        },
+        {
+          "press": "MBC",
+          "title": "촬영기자들 향해 \"하이에나 떼\"‥멸칭 쓴 최민희 '파문'",
+          "url": "https://n.news.naver.com/article/214/0001534971"
+        },
+        {
+          "press": "SBS",
+          "title": "기자들 향해 \"하이에나 떼\"…논란 퍼지자 결국",
+          "url": "https://n.news.naver.com/article/055/0001402334"
+        },
+        {
+          "press": "주간경향",
+          "title": "[단독] 기자들 향해 “하이에나 떼들”…최민희, 당원 단톡방에서 비하 글 논란",
+          "url": "https://n.news.naver.com/article/033/0000053303"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "더불어민주당 최민희 의원이 지역구 당원 단체대화방에서 국회 출입 사진·영상 기자들을 '하이에나 떼들'이라고 표현한 사실이 알려져 논란이 확산했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "더불어민주당 최고위원인 최민희 의원이 기자들을 하이에나 떼라고 지칭했던 사실이 알려졌습니다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "<질문 5> 여당에선 수석최고위원이 취재 중인 기자들을 하이에나 떼라고 지칭했다가 사과하는 소동도 있었습니다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "최민희 의원의 '하이에나 떼' 발언 및 사과 소동과 관련하여 야권의 비판과 언론단체의 성명이 집중 보도된 날로, 정치권 전반의 공방과 언론관 논란으로 확산되는 흐름을 보여준다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "if567fd58",
+      "title": "오세훈 “장동혁 체제, 수도권 총선 어려워”…장 “자리 바꾸자”",
+      "category": "정치",
+      "rank": 3,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -335,49 +236,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "젠슨 황 엔비디아 최고경영자(CEO)와의 관계로 주목받는 앨리스 황(중국명 황러)의 홍콩 유학 시절을 기억하는 지인의 증언이 나왔습니다.",
-        "“남자들 영혼 뺏는 달콤한 미소”…‘젠슨황 불륜’ 그녀의 과거사",
-        "그러면서 “앨리스 황은 매혹적이고 남자들을 마치 감전된 것처럼 느끼게 하는 달콤한 미소도 지녔다”고 설명했다.",
-        "또 “대학 시절 연애를 할 때 매우 적극적이었으며, 의도적으로 온 세상에 알리고 싶어 할 정도로...",
-        "지인은 “그녀의 달콤한 미소를 보면 남자들은 마치 감전된 듯 영혼까지 끌려갔다”며 주변 남성들을..."
+        "장동혁 국민의힘 대표는 오세훈 서울시장의 2028년 총선 승리를 위해 당의 비상대책위원회로의 전환 필요성을 제기한 것에 대해 '제가 서울시장을 하고 오 시장께서 당대표로 오시면서 자리를 바꾸면 될 것 같다'고 직격했다.",
+        "오세훈 “장동혁 체제, 수도권 총선 어려워”…장 “자리 바꾸자”",
+        "오세훈 “총선 비대위 전환을” 장동혁 “시장 역할이나 충실히”",
+        "오세훈 “張체제로 총선 어려워”...",
+        "장동혁 “저랑 자리 바꾸자” 반발"
       ],
       "sources": [
         {
-          "press": "디지털타임스",
-          "title": "“남자들 영혼 뺏는 달콤한 미소”…‘젠슨황 불륜’ 그녀의 과거사",
-          "url": "https://n.news.naver.com/article/029/0003058636"
+          "press": "한겨레",
+          "title": "오세훈 “장동혁 체제, 수도권 총선 어려워”…장 “자리 바꾸자”",
+          "url": "https://n.news.naver.com/article/028/0002831777"
         },
         {
-          "press": "donga.com",
-          "title": "불륜女 앨리스 황, 나이 속였나…“42세 아닌 49세” 사진 나와",
-          "url": "https://n.news.naver.com/mnews/article/020/0003761774?sid=104"
+          "press": "서울신문",
+          "title": "오세훈 “총선 비대위 전환을” 장동혁 “시장 역할이나 충실히”",
+          "url": "https://n.news.naver.com/article/081/0003698424"
         },
         {
-          "press": "dt.co.kr",
-          "title": "“남자들 영혼 뺏는 달콤한 미소”…‘젠슨황 불륜’ 그녀의 과거사",
-          "url": "https://n.news.naver.com/mnews/article/029/0003058636?sid=104"
+          "press": "조선일보",
+          "title": "오세훈 “張체제로 총선 어려워”... 장동혁 “저랑 자리 바꾸자” 반발",
+          "url": "https://n.news.naver.com/article/023/0004008975"
         },
         {
-          "press": "inews24.com",
-          "title": "\"앨리스 황의 무기는 '달콤한 미소'…남자들, 영혼까지 끌려가\"",
-          "url": "https://n.news.naver.com/mnews/article/031/0001074137?sid=104"
+          "press": "MBN",
+          "title": "충돌한 장동혁-오세훈…\"대표·시장 자리 바꾸자\" vs \"조기 비대위\"",
+          "url": "https://n.news.naver.com/article/057/0001977775"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "젠슨 황 엔비디아 최고경영자(CEO)와의 관계로 주목받는 앨리스 황(중국명 황러)의 홍콩 유학 시절을 기억하는 지인의 증언이 나왔습니다."
+          "evidence": "장동혁 국민의힘 대표는 오세훈 서울시장의 2028년 총선 승리를 위해 당의 비상대책위원회로의 전환 필요성을 제기한 것에 대해 '제가 서울시장을 하고 오 시장께서 당대표로 오시면서 자리를 바꾸면 될 것 같다'고…"
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "당시부터 외향적이고 자신감이 넘쳤다는 평가와 함께 집안 배경, 이후 경력도 일"
+          "evidence": "오 “총선은 비대위 체제로” 장 “서로 자리 바꾸면 될 듯” 한동훈, 장 겨냥해 “조작 징계” 대선 앞 중진 의원 확보 경쟁도 오세훈 서울시장이 11일 “장동혁 체제로 총선 치르면 수도권 선거 어렵다”며..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "11일(현지시간) 싱가포르 매체 '8월드'는 황씨의 50대 지인 A씨의..."
+          "evidence": "오세훈 서울시장이 11일 국민의힘 장동혁 대표 체제를 정면으로 겨누고 나섰다."
         },
         {
           "panel": 4,
@@ -386,8 +287,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },

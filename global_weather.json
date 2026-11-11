@@ -1,22 +1,22 @@
 {
-  "updated": "2026-11-11T23:49:38.043260+09:00",
-  "alerts_count": 26,
+  "updated": "2026-11-11T23:20:01.755246+09:00",
+  "alerts_count": 27,
   "alerts": [
     {
-      "id": "urn:oid:2.49.0.1.840.0.27c4a3005b47304126e42a25d6cb6d3b48d027c6.002.1",
-      "t": "2026-11-11 08:33",
+      "id": "urn:oid:2.49.0.1.840.0.d4c1f7b8784ac2736610c89e3007b197b1d5c1f3.001.1",
+      "t": "2026-11-11 08:18",
       "country": "US",
       "flag": "🇺🇸",
       "country_ko": "미국",
       "country_en": "United States",
-      "area": "Val Verde",
-      "area_en": "Val Verde",
-      "event": "홍수 경보",
-      "event_en": "Flood Warning",
+      "area": "Henry",
+      "area_en": "Henry",
+      "event": "중증 뇌우 경보",
+      "event_en": "Severe Thunderstorm Warning",
       "severity": "Severe",
-      "headline_ko": "Val Verde 홍수 경보",
-      "headline_en": "Val Verde Flood Warning",
-      "desc": "...The Flood Warning continues for the following rivers in Texas...\n\nDevils River At Bakers Crossing 19N Of Comstock affecting Val Verde\nCounty.\n\n...The Flood Warning is cancelled for the following rivers in\nTexas...\n\nDevils River At Cauthorn Ranch Near Juno affecting Val Verde\nCounty.\n\n* WHAT...Min"
+      "headline_ko": "Henry 중증 뇌우 경보",
+      "headline_en": "Henry Severe Thunderstorm Warning",
+      "desc": "SVRDVN\n\nThe National Weather Service in the Quad Cities has issued a\n\n* Severe Thunderstorm Warning for...\nEast central Rock Island County in northwestern Illinois...\nNorthern Henry County in northwestern Illinois...\n\n* Until 915 AM CST.\n\n* At 818 AM CST, a severe thunderstorm was located over Rock "
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.f1997497989ed0bec92e70ebf307ae7531b9d14c.001.2",
@@ -179,6 +179,22 @@
       "desc": "* WHAT...Heavy snow possible above 7000 feet. Total snow\naccumulations of 5 to 10 inches expected...with up to 1 foot near\nthe Sierra Crest.\n\n* WHERE...Eastern Sierra Slopes.\n\n* WHEN...From Friday afternoon through Saturday afternoon.\n\n* IMPACTS...Roads, and especially bridges and overpasses, will l"
     },
     {
+      "id": "urn:oid:2.49.0.1.840.0.9360ce98f35b5e5460bc4994d1a8f59c5ab36665.001.1",
+      "t": "2026-11-10 22:33",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Val Verde",
+      "area_en": "Val Verde",
+      "event": "홍수 경보",
+      "event_en": "Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "Val Verde 홍수 경보",
+      "headline_en": "Val Verde Flood Warning",
+      "desc": "...The National Weather Service in Austin/San Antonio has issued a\nFlood Warning for the following rivers in Texas...\n\nDevils River At Cauthorn Ranch Near Juno affecting Val Verde\nCounty.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Devils River at Cauthorn Ranch Near Juno.\n\n* WHEN...Until Wedne"
+    },
+    {
       "id": "urn:oid:2.49.0.1.840.0.7de9e4ed87f711d07a548aef2bda761ba6f4a943.001.2",
       "t": "2026-11-10 15:48",
       "country": "US",
@@ -225,33 +241,9 @@
       "headline_ko": "Cape Beaufort to Point Franklin out to 15 NM 해상 결빙 경보",
       "headline_en": "Cape Beaufort to Point Franklin out to 15 NM Heavy Freezing Spray Warning",
       "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 35 kt. Seas 9 ft. Extreme freezing spray.\n.WED...E winds 30 kt. "
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.7de9e4ed87f711d07a548aef2bda761ba6f4a943.008.2",
-      "t": "2026-11-10 15:48",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Point Franklin to Cape Halkett from 15 to 75 NM",
-      "area_en": "Point Franklin to Cape Halkett from 15 to 75 NM",
-      "event": "해상 결빙 경보",
-      "event_en": "Heavy Freezing Spray Warning",
-      "severity": "Severe",
-      "headline_ko": "Point Franklin to Cape Halkett from 15 to 75 NM 해상 결빙 경보",
-      "headline_en": "Point Franklin to Cape Halkett from 15 to 75 NM Heavy Freezing Spray Warning",
-      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...NE winds 35 kt. Seas 9 ft. Blowing snow. Extreme\nfreezing spray.\n.WED..."
     }
   ],
   "quakes": [
-    {
-      "id": "us7000txiz",
-      "mag": 4.5,
-      "place": "62 km NNE of Port-Olry, Vanuatu",
-      "t": "2026-11-11 12:45",
-      "depth": 149.444,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txiz"
-    },
     {
       "id": "us7000txis",
       "mag": 5.1,
@@ -301,6 +293,14 @@
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txgv"
     },
     {
+      "id": "us7000txgq",
+      "mag": 4.6,
+      "place": "54 km WNW of Malfa, Italy",
+      "t": "2026-11-11 05:12",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txgq"
+    },
+    {
       "id": "us7000txgg",
       "mag": 4.6,
       "place": "130 km ENE of Hasaki, Japan",
@@ -315,6 +315,14 @@
       "t": "2026-11-11 01:45",
       "depth": 10,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txfz"
+    },
+    {
+      "id": "us7000txea",
+      "mag": 4.9,
+      "place": "207 km NW of Port-Olry, Vanuatu",
+      "t": "2026-11-10 19:54",
+      "depth": 11.705,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txea"
     }
   ],
   "cities": [
@@ -326,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 14.3,
-      "apparent_temp": 11.5,
-      "humidity": 52,
+      "temp": 13.4,
+      "apparent_temp": 10.4,
+      "humidity": 49,
       "code": 0,
-      "wind": 10.1
+      "wind": 9.7
     },
     {
       "id": "losangeles",
@@ -340,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 15.2,
-      "apparent_temp": 12.0,
-      "humidity": 42,
+      "temp": 15.3,
+      "apparent_temp": 12.6,
+      "humidity": 51,
       "code": 0,
-      "wind": 10.0
+      "wind": 10.2
     },
     {
       "id": "london",
@@ -354,11 +362,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 10.4,
-      "apparent_temp": 8.1,
-      "humidity": 75,
+      "temp": 10.2,
+      "apparent_temp": 8.3,
+      "humidity": 85,
       "code": 3,
-      "wind": 9.4
+      "wind": 9.7
     },
     {
       "id": "paris",
@@ -370,9 +378,9 @@
       "lon": 2.3522,
       "temp": 15.5,
       "apparent_temp": 15.3,
-      "humidity": 78,
+      "humidity": 79,
       "code": 3,
-      "wind": 5.2
+      "wind": 5.4
     },
     {
       "id": "frankfurt",
@@ -382,11 +390,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 8.2,
-      "apparent_temp": 7.0,
+      "temp": 8.1,
+      "apparent_temp": 6.7,
       "humidity": 96,
-      "code": 51,
-      "wind": 4.5
+      "code": 80,
+      "wind": 5.4
     },
     {
       "id": "tokyo",
@@ -396,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 10.2,
+      "temp": 10.3,
       "apparent_temp": 8.9,
-      "humidity": 76,
+      "humidity": 73,
       "code": 1,
-      "wind": 1.9
+      "wind": 2.2
     },
     {
       "id": "beijing",
@@ -410,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 5.8,
-      "apparent_temp": 3.8,
+      "temp": 6.1,
+      "apparent_temp": 4.3,
       "humidity": 85,
       "code": 0,
-      "wind": 3.6
+      "wind": 2.2
     },
     {
       "id": "singapore",
@@ -424,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 24.4,
-      "apparent_temp": 30.1,
+      "temp": 24.6,
+      "apparent_temp": 30.4,
       "humidity": 100,
       "code": 45,
-      "wind": 4.3
+      "wind": 4.4
     },
     {
       "id": "sydney",
@@ -438,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 18.9,
-      "apparent_temp": 19.2,
-      "humidity": 88,
+      "temp": 19.1,
+      "apparent_temp": 20.3,
+      "humidity": 92,
       "code": 0,
-      "wind": 14.1
+      "wind": 11.4
     },
     {
       "id": "toronto",
@@ -452,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 7.8,
-      "apparent_temp": 6.4,
-      "humidity": 83,
+      "temp": 6.8,
+      "apparent_temp": 5.3,
+      "humidity": 87,
       "code": 3,
-      "wind": 1.3
+      "wind": 1.1
     },
     {
       "id": "dubai",
@@ -466,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 29.1,
-      "apparent_temp": 29.2,
-      "humidity": 61,
+      "temp": 28.7,
+      "apparent_temp": 29.1,
+      "humidity": 65,
       "code": 0,
-      "wind": 28.7
+      "wind": 28.9
     },
     {
       "id": "saopaulo",
@@ -480,21 +488,12 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 25.2,
-      "apparent_temp": 27.5,
-      "humidity": 50,
+      "temp": 24.8,
+      "apparent_temp": 27.0,
+      "humidity": 51,
       "code": 51,
-      "wind": 4.8
+      "wind": 5.1
     }
   ],
-  "stories": [
-    {
-      "id": "gc64866e2",
-      "title": "Climate COP31 Turkey",
-      "press": "chronicleonline.com",
-      "image": "https://bloximages.newyork1.vip.townnews.com/chronicleonline.com/content/tncms/assets/v3/editorial/3/9b/39b7e61f-e043-5b17-89cf-2b9cbc052944/6af46efced4ae.image.jpg?crop=1763%2C926%2C0%2C124&resize=1200%2C630&order=crop%2Cresize",
-      "score": 8.0,
-      "url": "g/gc64866e2"
-    }
-  ]
+  "stories": []
 }
