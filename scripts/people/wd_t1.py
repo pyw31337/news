@@ -250,6 +250,8 @@ def main():
                 M['items'][pid] = rec; M['skip'].pop(pid, None); ok += 1
             else:
                 M['skip'][pid] = {'file': todo[pid], 'why': why, 'at': NOW.isoformat(timespec='seconds')}; bad += 1
+            if (ok + bad) % 200 == 0:   # 도중에 멈춰도 올린 사진 목록은 남김
+                json.dump(M, open(mpath, 'w'), ensure_ascii=False, indent=0)
     M['updated'] = NOW.isoformat(timespec='seconds')
     json.dump(M, open(mpath, 'w'), ensure_ascii=False, indent=0)
     print('사진 저장', ok, '제외', bad, '합계', len(M['items']))
