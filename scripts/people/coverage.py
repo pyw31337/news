@@ -2,7 +2,7 @@
 """인물 데이터 충족도와 다음 보강 대상을 만든다.
 
 명부 숫자를 "완성된 인물 페이지 수"로 오해하지 않기 위해, 이 스크립트는
-명부·계층·구조화 이력·사진 원장을 분리해 집계한다.  큐에는 Wikidata의
+명부·계층·구조화 이력·출처 URL이 있는 이력·사진 원장을 분리해 집계한다.  큐에는 Wikidata의
 고정 ID가 있고 1계층으로 공개 가능한 인물만 넣는다. 이름만 같은 사람이나
 민간인 가족은 사진·상세 보강 대상으로 삼지 않는다.
 
@@ -79,7 +79,7 @@ def bio_index(data_dir):
     return by_id, by_name
 
 
-def has_profile(value):
+def has_structured_profile(value):
     if not isinstance(value, dict):
         return False
     events = value.get("events") or []
@@ -139,7 +139,7 @@ def queue_candidates(rows, tiers, portraits, by_id, by_name, limit):
             continue
         bio = choose_bio(row, by_id, by_name)
         needs = ["verified_portrait"]
-        if not has_profile(bio):
+        if not has_structured_profile(bio):
             needs.append("structured_profile")
         elif not has_cited_events(bio):
             needs.append("cited_timeline")
@@ -182,19 +182,22 @@ def main():
     kind_cited = Counter()
     role_totals = Counter()
     role_profiles = Counter()
+    role_cited = Counter()
     for row in rows:
         bio = choose_bio(row, by_id, by_name)
         kind = category(row)
         text = "%s %s" % (row.get("n", ""), row.get("d", ""))
-        if has_profile(bio):
+        if has_structured_profile(bio):
             kind_profiles[kind] += 1
         if has_cited_events(bio):
             kind_cited[kind] += 1
         for name, rule in ROLE_RULES.items():
             if rule.search(text):
                 role_totals[name] += 1
-                if has_profile(bio):
+                if has_structured_profile(bio):
                     role_profiles[name] += 1
+                if has_cited_events(bio):
+                    role_cited[name] += 1
 
     tier_counts = Counter(str(item.get("t")) for item in tiers.values())
     pol_people = load_pol_people(args.pol_dir)
@@ -210,7 +213,7 @@ def main():
     report = {
         "schema": 1,
         "updated": now_iso(),
-        "policy": "Counts distinguish roster entries from source-backed profiles. Portraits require a stable Wikidata or official ID plus a recorded source and license.",
+        "policy": "Counts distinguish roster entries, structured profiles, source-URL-backed timelines, and verified portraits. Portraits require a stable Wikidata or official ID plus a recorded source and license.",
         "goals": GOALS,
         "tiers": {
             "total": len(tiers),
@@ -223,12 +226,16 @@ def main():
             kind: {
                 "roster": kind_totals[kind],
                 "structured_profile": kind_profiles[kind],
-                "cited_timeline": kind_cited[kind],
+                "source_url_timeline": kind_cited[kind],
             }
             for kind in sorted(kind_totals)
         },
         "role_matches": {
-            role: {"roster": role_totals[role], "structured_profile": role_profiles[role]}
+            role: {
+                "roster": role_totals[role],
+                "structured_profile": role_profiles[role],
+                "source_url_timeline": role_cited[role],
+            }
             for role in ROLE_RULES
         },
         "politicians": {
