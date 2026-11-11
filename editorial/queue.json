@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-12",
-  "generated_at": "2026-11-12T01:19:49+09:00",
+  "generated_at": "2026-11-12T00:59:12+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,8 +27,107 @@
   },
   "candidates": [
     {
-      "issue_id": "i1b73ecec",
-      "title": "코스닥 급등에 이틀 연속 매수 사이드카…코스피도 2%대 상승[마감시황]",
+      "issue_id": "i60e1463e",
+      "title": "코스피 출렁이자 “아기 태어나면 주식 5000만원씩 주자”…30세엔 2억원 된다고?",
+      "category": "경제",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "아이가 태어나면 국가가 5000만원 상당의 주식을 배정하고 30세가 되면 이를 인출할 수 있도록 하자는 제안이 나왔다.",
+        "코스피 출렁이자 “아기 태어나면 주식 5000만원씩 주자”…30세엔 2억원 된다고?",
+        "가중 ETF로 업종 쏠림 완화 한국판 공포지수로 불리는 코스피200 변동성지수(VKOSPI)가 높은 수준을...",
+        "상장지수펀드(ETF)에 투자할 것을 제안했다.",
+        "9일 금융투자업계에 따르면, VKOSPI는 지난 10월 일평균 59.61을..."
+      ],
+      "sources": [
+        {
+          "press": "서울경제",
+          "title": "코스피 출렁이자 “아기 태어나면 주식 5000만원씩 주자”…30세엔 2억원 된다고?",
+          "url": "https://n.news.naver.com/article/011/0004681077"
+        },
+        {
+          "press": "biz.chosun.com",
+          "title": "‘韓 공포지수’ VKOSPI 고공행진…한투운용 “A·C·E 전략 주목”",
+          "url": "https://n.news.naver.com/mnews/article/366/0001203443?sid=101"
+        },
+        {
+          "press": "mk.co.kr",
+          "title": "‘2배’ 먹어본 개미들, 못 빠져나온다…종목 막자 지수형 레버리지 거...",
+          "url": "https://n.news.naver.com/mnews/article/009/0005761245?sid=101"
+        },
+        {
+          "press": "startuptoday.co.kr",
+          "title": "[기획] 몸집 줄어도 자금은 몰렸다…ETF 시장, 액티브가 새 성장축",
+          "url": "https://www.startuptoday.co.kr/news/articleView.html?idxno=818536"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "아이가 태어나면 국가가 5000만원 상당의 주식을 배정하고 30세가 되면 이를 인출할 수 있도록 하자는 제안이 나왔다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "상장지수펀드(ETF)에 투자할 것을 제안했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "코스피 출렁이자 “아기 태어나면 주식 5000만원씩 주자”…30세엔 2억원 된다고?"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i3feffa84",
+      "title": "'불륜'에 흔들리는 젠슨 황에도…월가선 \"저가 매수하라\"",
       "category": "경제",
       "rank": 8,
       "priority_score": 37,
@@ -38,247 +137,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "코스닥이 11일 장중 5% 넘게 폭등하며 700선을 되찾았다.",
-        "[속보] 미 빅스텝 우려에도 급등…코스피 2.6%·코스닥 5.6%↑",
-        "“700선 탈환에 매수 사이드카까지”…코스닥 5.06% 폭등, 반도체·2차전지 질주",
-        "외국인 6553억원 순매수…코스피 5,375.36 마감 삼성전자 3.57%·SK하이닉스 5.36% 동반 상승 코스닥 5.62% 급등…기관 홀로 3136억원 순매수 11일 코스피 지수가 전 거래일 대비 2.60% 오른 5,375.36에 마감했다.",
-        "급등 속도가 빨라지면서 오전 11시 28분 경에는 코스닥시장에 프로그램 매수호가 효력을 5분간..."
-      ],
-      "sources": [
-        {
-          "press": "MBN",
-          "title": "[속보] 미 빅스텝 우려에도 급등…코스피 2.6%·코스닥 5.6%↑",
-          "url": "https://n.news.naver.com/article/057/0001977721"
-        },
-        {
-          "press": "디지털데일리",
-          "title": "“700선 탈환에 매수 사이드카까지”…코스닥 5.06% 폭등, 반도체·2차전지 질주",
-          "url": "https://n.news.naver.com/article/138/0002248092"
-        },
-        {
-          "press": "news2day.co.kr",
-          "title": "(마감시황) 코스피, 반도체주 강세 속 5,370선 안착…코스닥 연이틀 매수...",
-          "url": "https://www.news2day.co.kr/article/20261111500272"
-        },
-        {
-          "press": "tf.co.kr",
-          "title": "코스닥, 매수 사이드카 켜고 700선 탈환…'최고가' 마무리",
-          "url": "https://n.news.naver.com/mnews/article/629/0000550970?sid=101"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "코스닥이 11일 장중 5% 넘게 폭등하며 700선을 되찾았다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "외국인 6553억원 순매수…코스피 5,375.36 마감 삼성전자 3.57%·SK하이닉스 5.36% 동반 상승 코스닥 5.62% 급등…기관 홀로 3136억원 순매수 11일 코스피 지수가 전 거래일 대비 2.60%…"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "[속보] 미 빅스텝 우려에도 급등…코스피 2.6%·코스닥 5.6%↑"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i2acde214",
-      "title": "\"나도 성과급 8억 받을 수 있나\"…SK하이닉스, 학력 무관 채용에 '들썩'",
-      "category": "경제",
-      "rank": 9,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "SK하이닉스가 올해 하반기 전임직(생산직) 직원 채용에 돌입했다.",
-        "\"나도 성과급 8억 받을 수 있나\"…SK하이닉스, 학력 무관 채용에 '들썩'",
-        "“SK하이닉스, 메모리 가격 하락해도 2029년 영업이익 290조 원”",
-        "“나도 8억 성과급”...SK하이닉스 학력무관 생산직 채용",
-        "11일 반도체 업계에 따르면, SK하이닉스는 전날 자사 채용 홈페이지에 '11월 탤런트 하이웨이 메인트 및..."
-      ],
-      "sources": [
-        {
-          "press": "이코노미스트",
-          "title": "\"나도 성과급 8억 받을 수 있나\"…SK하이닉스, 학력 무관 채용에 '들썩'",
-          "url": "https://n.news.naver.com/article/243/0000105521"
-        },
-        {
-          "press": "주간동아",
-          "title": "“SK하이닉스, 메모리 가격 하락해도 2029년 영업이익 290조 원”",
-          "url": "https://n.news.naver.com/article/037/0000039126"
-        },
-        {
-          "press": "매경이코노미",
-          "title": "“나도 8억 성과급”...SK하이닉스 학력무관 생산직 채용",
-          "url": "https://n.news.naver.com/article/024/0000109563"
-        },
-        {
-          "press": "hankyung.com",
-          "title": "\"이번엔 학력도 안 본대\"…SK 하이닉스 '킹산직' 채용 공고에 '관심'",
-          "url": "https://n.news.naver.com/mnews/article/015/0005352954?sid=101"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "SK하이닉스가 올해 하반기 전임직(생산직) 직원 채용에 돌입했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "“SK하이닉스, 메모리 가격 하락해도 2029년 영업이익 290조 원”"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "\"나도 성과급 8억 받을 수 있나\"…SK하이닉스, 학력 무관 채용에 '들썩'"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "industry",
-        "direction": "공장 동선·안전 표지·가동 보드를 이용, 캐릭터 행동을 컷마다 바꿀 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i4b5a061e",
-      "title": "‘이란군 끝장냈다’는 트럼프…혁명수비대 지하 ‘미사일 도시’ 공개",
-      "category": "세계",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "도널드 트럼프 미국 대통령이 9일 기자들에게 “이란은 군사적으로 사실상 끝났다(effectively over)”라고 말했지만, 이란은 10일 탄도 미사일과 순항 미사일, 미사일 발사대가 포함된 새로운 지하 시설을 공",
-        "이란 측은 해당 미사일이 이스라엘의 ‘애로’, ‘다윗의 돌팔매’와 미국의 패트리엇 등 첨단 방공망을 돌파할 수 있다고 주장해왔다.",
-        "이와 함께 사거리 1450km의 3세대 고체 연료 미사일인 ‘카이바르 셰칸(Kheibar...",
-        "“이란은 군사적으로 사실상 끝났다.” 도널드 트럼프 미국 대통령이 지난 9일(현지시간) 이같이 선언한 지 하루 만에 이란이 미사일 수백 기가 늘어선 지하 군사시설을 공개했다.",
-        "미국과 이스라엘의 공습에도 미사일..."
+        "젠슨 황 엔비디아 CEO는 불륜 스캔들로 국제적인 관심을 받고 있다.",
+        "“남자들 영혼 뺏는 달콤한 미소”…‘젠슨황 불륜’ 그녀의 과거사",
+        "\"남자들이 넋을 잃을 정도?\"…앨리스 황, 과거 지인 증언 나와",
+        "젠슨 황 엔비디아 최고경영자(CEO)와 불륜 스캔들로 국제적인 관심의 중심에 선 중국인 여성 앨리스 황(42...",
+        "지인은 “그녀의 달콤한 미소를 보면 남자들은 마치 감전된 듯 영혼까지 끌려갔다”며 주변 남성들을 단숨에..."
       ],
       "sources": [
         {
           "press": "디지털타임스",
-          "title": "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”",
-          "url": "https://n.news.naver.com/article/029/0003058356"
+          "title": "“남자들 영혼 뺏는 달콤한 미소”…‘젠슨황 불륜’ 그녀의 과거사",
+          "url": "https://n.news.naver.com/article/029/0003058636"
         },
         {
-          "press": "연합뉴스",
-          "title": "\"젠슨황 연인 앨리스황, 10조원 엔비디아 AI칩 중국으로 밀반입\"",
-          "url": "https://n.news.naver.com/article/001/0016434519"
+          "press": "연합뉴스TV",
+          "title": "\"남자들이 넋을 잃을 정도?\"…앨리스 황, 과거 지인 증언 나와",
+          "url": "https://n.news.naver.com/article/422/0000925106"
         },
         {
-          "press": "조선일보",
-          "title": "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”",
-          "url": "https://n.news.naver.com/article/023/0004008955"
+          "press": "dt.co.kr",
+          "title": "“남자들 영혼 뺏는 달콤한 미소”…‘젠슨황 불륜’ 그녀의 과거사",
+          "url": "https://n.news.naver.com/mnews/article/029/0003058636?sid=104"
         },
         {
-          "press": "중앙일보",
-          "title": "“남자 감전시키는 미소”…10조 AI칩 빼돌린 젠슨황 그녀, 유부녀?",
-          "url": "https://n.news.naver.com/article/025/0003564408"
+          "press": "inews24.com",
+          "title": "\"앨리스 황의 무기는 '달콤한 미소'…남자들, 영혼까지 끌려가\"",
+          "url": "https://n.news.naver.com/mnews/article/031/0001074137?sid=104"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "도널드 트럼프 미국 대통령이 9일 기자들에게 “이란은 군사적으로 사실상 끝났다(effectively over)”라고 말했지만, 이란은 10일 탄도 미사일과 순항 미사일, 미사일 발사대가 포함된 새로운 지하 시설을 공"
+          "evidence": "젠슨 황 엔비디아 CEO는 불륜 스캔들로 국제적인 관심을 받고 있다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”"
+          "evidence": "불륜 또 있었다…남편 몰래 여러 남자와 잠자리 알고 보니 건물 때문 데프콘까지 경악 너무 괴이해 탐비종합"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”"
+          "evidence": "젠슨 황 엔비디아 최고경영자(CEO)와 불륜 스캔들로 국제적인 관심의 중심에 선 중국인 여성 앨리스 황(42..."
         },
         {
           "panel": 4,
@@ -287,8 +188,107 @@
         }
       ],
       "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ie4644d2b",
+      "title": "트럼프 “사실상 끝” 다음 날... 이란, 미사일 지하기지 공개",
+      "category": "세계",
+      "rank": 7,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "이란 측은 해당 미사일이 이스라엘의 ‘애로’, ‘다윗의 돌팔매’와 미국의 패트리엇 등 첨단 방공망을 돌파할 수 있다고 주장해왔다.",
+        "이와 함께 사거리 1450km의 3세대 고체 연료 미사일인 ‘카이바르 셰칸(Kheibar...",
+        "“이란은 군사적으로 사실상 끝났다.” 도널드 트럼프 미국 대통령이 지난 9일(현지시간) 이같이 선언한 지 하루 만에 이란이 미사일 수백 기가 늘어선 지하 군사시설을 공개했다.",
+        "미국과 이스라엘의 공습에도 미사일...",
+        "사거리 미사일을 제공할 수 있다는 점이 도입 배경으로 꼽힌다”고 분석했다."
+      ],
+      "sources": [
+        {
+          "press": "dt.co.kr",
+          "title": "“트럼프 보고 있나?”…이란 ‘지하 미사일 도시’ 공개, 극초음속 탄...",
+          "url": "https://n.news.naver.com/mnews/article/029/0003058641?sid=104"
+        },
+        {
+          "press": "joongang.co.kr",
+          "title": "트럼프 “이란 끝났다” 다음날…‘지하 미사일 도시’ 공개한 혁명수비...",
+          "url": "https://n.news.naver.com/mnews/article/025/0003564582?sid=104"
+        },
+        {
+          "press": "nownews.seoul.co.kr",
+          "title": "“한국 ‘천무’에 시장 뺏기는 美 하이마스”…유럽에서도 안 밀리는 ...",
+          "url": "https://n.news.naver.com/mnews/article/081/0003698429?sid=104"
+        },
+        {
+          "press": "한겨레",
+          "title": "‘이란군 끝장냈다’는 트럼프…혁명수비대 지하 ‘미사일 도시’ 공개",
+          "url": "https://n.news.naver.com/article/028/0002831760"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "이란 측은 해당 미사일이 이스라엘의 ‘애로’, ‘다윗의 돌팔매’와 미국의 패트리엇 등 첨단 방공망을 돌파할 수 있다고 주장해왔다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "사거리 미사일을 제공할 수 있다는 점이 도입 배경으로 꼽힌다”고 분석했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "이와 함께 사거리 1450km의 3세대 고체 연료 미사일인 ‘카이바르 셰칸(Kheibar..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
