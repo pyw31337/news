@@ -1,7 +1,39 @@
 {
-  "updated": "2026-11-12T08:48:05.897305+09:00",
-  "alerts_count": 24,
+  "updated": "2026-11-12T08:19:21.135646+09:00",
+  "alerts_count": 26,
   "alerts": [
+    {
+      "id": "urn:oid:2.49.0.1.840.0.fb0ccd00324b6bccef4c6228f3a83eaedb9c25ab.001.1",
+      "t": "2026-11-11 18:16",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Morgan",
+      "area_en": "Morgan",
+      "event": "중증 뇌우 경보",
+      "event_en": "Severe Thunderstorm Warning",
+      "severity": "Severe",
+      "headline_ko": "Morgan 중증 뇌우 경보",
+      "headline_en": "Morgan Severe Thunderstorm Warning",
+      "desc": "SVRIND\n\nThe National Weather Service in Indianapolis has issued a\n\n* Severe Thunderstorm Warning for...\nCentral Morgan County in central Indiana...\nSoutheastern Putnam County in west central Indiana...\n\n* Until 700 PM EST.\n\n* At 616 PM EST, a severe thunderstorm was located 10 miles southeast\nof Gre"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.878a97ffb3b66f15e2e3b4f431c4998d6e23b377.001.1",
+      "t": "2026-11-11 18:12",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Crawford",
+      "area_en": "Crawford",
+      "event": "중증 뇌우 경보",
+      "event_en": "Severe Thunderstorm Warning",
+      "severity": "Severe",
+      "headline_ko": "Crawford 중증 뇌우 경보",
+      "headline_en": "Crawford Severe Thunderstorm Warning",
+      "desc": "SVRLMK\n\nThe National Weather Service in Louisville has issued a\n\n* Severe Thunderstorm Warning for...\nNorthwestern Crawford County in south central Indiana...\nEast Central Dubois County in south central Indiana...\nNorth Central Perry County in south central Indiana...\n\n* Until 645 PM EST /545 PM CST"
+    },
     {
       "id": "urn:oid:2.49.0.1.840.0.f9439f4146f95e6108504c25474f0684867493bb.001.2",
       "t": "2026-11-11 14:00",
@@ -62,9 +94,9 @@
       "event": "중증 뇌우 주의보",
       "event_en": "Severe Thunderstorm Watch",
       "severity": "Severe",
-      "headline_ko": "워싱턴 중증 뇌우 주의보",
-      "headline_en": "Washington Severe Thunderstorm Watch",
-      "desc": "THE NATIONAL WEATHER SERVICE HAS ISSUED SEVERE THUNDERSTORM WATCH\n704 IN EFFECT UNTIL 11 PM EST /10 PM CST/ THIS EVENING FOR THE\nFOLLOWING AREAS\n\nIN INDIANA THIS WATCH INCLUDES 9 COUNTIES\n\nIN SOUTH CENTRAL INDIANA\n\nCLARK                 CRAWFORD              DUBOIS\nFLOYD                 HARRISON    "
+      "headline_ko": "Val Verde 홍수 경보",
+      "headline_en": "Val Verde Flood Warning",
+      "desc": "...The National Weather Service in Austin/San Antonio has issued a\nFlood Warning for the following rivers in Texas...\n\nDevils River At Cauthorn Ranch Near Juno affecting Val Verde\nCounty.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Devils River at Cauthorn Ranch Near Juno.\n\n* WHEN...Until Wedne"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.7969483454771c86c1b4bb541a60e7961c74a7f4.001.1",
@@ -129,6 +161,86 @@
       "headline_ko": "Cape Halkett to Flaxman Island out to 15 NM 해상 결빙 경보",
       "headline_en": "Cape Halkett to Flaxman Island out to 15 NM Heavy Freezing Spray Warning",
       "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TODAY...E winds 35 kt. Seas 7 ft. Blowing snow. Extreme freezing\nspray.\n.TONIGHT.."
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.d6a70036bc5f4b14ca88602070582b8e69e8275b.005.1",
+      "t": "2026-11-11 03:45",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Flaxman Island to Demarcation Point out to 15 NM",
+      "area_en": "Flaxman Island to Demarcation Point out to 15 NM",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
+      "severity": "Severe",
+      "headline_ko": "Flaxman Island to Demarcation Point out to 15 NM 해상 결빙 경보",
+      "headline_en": "Flaxman Island to Demarcation Point out to 15 NM Heavy Freezing Spray Warning",
+      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 35 kt. Seas 6 ft. Blowing snow. Heavy freezing\nspray.\n.WED...E w"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.7de9e4ed87f711d07a548aef2bda761ba6f4a943.002.1",
+      "t": "2026-11-10 15:48",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Cape Beaufort to Point Franklin out to 15 NM",
+      "area_en": "Cape Beaufort to Point Franklin out to 15 NM",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
+      "severity": "Severe",
+      "headline_ko": "Cape Beaufort to Point Franklin out to 15 NM 해상 결빙 경보",
+      "headline_en": "Cape Beaufort to Point Franklin out to 15 NM Heavy Freezing Spray Warning",
+      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 35 kt. Seas 9 ft. Extreme freezing spray.\n.WED...E winds 30 kt. "
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.7de9e4ed87f711d07a548aef2bda761ba6f4a943.004.2",
+      "t": "2026-11-10 15:48",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Cape Halkett to Flaxman Island out to 15 NM",
+      "area_en": "Cape Halkett to Flaxman Island out to 15 NM",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
+      "severity": "Severe",
+      "headline_ko": "Cape Halkett to Flaxman Island from 15 to 80 NM 해상 결빙 경보",
+      "headline_en": "Cape Halkett to Flaxman Island from 15 to 80 NM Heavy Freezing Spray Warning",
+      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TODAY...E winds 35 kt. Seas 7 ft. Blowing snow. Extreme freezing\nspray.\n.TONIGHT.."
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.d6a70036bc5f4b14ca88602070582b8e69e8275b.007.2",
+      "t": "2026-11-11 03:45",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Cape Beaufort to Point Franklin from 15 to 85 NM",
+      "area_en": "Cape Beaufort to Point Franklin from 15 to 85 NM",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
+      "severity": "Severe",
+      "headline_ko": "Cape Beaufort to Point Franklin from 15 to 85 NM 해상 결빙 경보",
+      "headline_en": "Cape Beaufort to Point Franklin from 15 to 85 NM Heavy Freezing Spray Warning",
+      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TODAY...E winds 35 kt. Seas 11 ft. Snow. Extreme freezing spray.\n.TONIGHT...E wind"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.d6a70036bc5f4b14ca88602070582b8e69e8275b.003.2",
+      "t": "2026-11-11 03:45",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Point Franklin to Cape Halkett out to 15 NM",
+      "area_en": "Point Franklin to Cape Halkett out to 15 NM",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
+      "severity": "Severe",
+      "headline_ko": "Point Franklin to Cape Halkett out to 15 NM 해상 결빙 경보",
+      "headline_en": "Point Franklin to Cape Halkett out to 15 NM Heavy Freezing Spray Warning",
+      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TODAY...E winds 35 kt. Seas 7 ft. Blowing snow. Snow. Extreme\nfreezing spray.\n.TON"
     }
   ],
   "quakes": [
@@ -146,31 +258,15 @@
       "place": "110 km E of Georgetown, Saint Helena",
       "t": "2026-11-11 22:03",
       "depth": 10,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txpa"
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txhi"
     },
     {
-      "id": "us7000txni",
-      "mag": 4.5,
-      "place": "41 km SSE of Camiña, Chile",
-      "t": "2026-11-11 20:45",
-      "depth": 112.957,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txni"
-    },
-    {
-      "id": "us7000txmx",
-      "mag": 4.5,
-      "place": "south of the Fiji Islands",
-      "t": "2026-11-11 19:50",
-      "depth": 527.582,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txmx"
-    },
-    {
-      "id": "us7000txmq",
+      "id": "us7000txgv",
       "mag": 5,
-      "place": "48 km NW of Ancud, Chile",
-      "t": "2026-11-11 19:21",
-      "depth": 34.893,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txmq"
+      "place": "152 km SE of Kuril’sk, Russia",
+      "t": "2026-11-11 05:26",
+      "depth": 30.338,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txgv"
     },
     {
       "id": "us7000txm8",
@@ -222,11 +318,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 12.9,
+      "temp": 12.8,
       "apparent_temp": 10.5,
-      "humidity": 59,
+      "humidity": 64,
       "code": 3,
-      "wind": 7.9
+      "wind": 9.7
     },
     {
       "id": "losangeles",
@@ -236,11 +332,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 26.6,
-      "apparent_temp": 25.8,
-      "humidity": 45,
+      "temp": 27.8,
+      "apparent_temp": 25.6,
+      "humidity": 31,
       "code": 0,
-      "wind": 13.6
+      "wind": 13.5
     },
     {
       "id": "london",
@@ -250,11 +346,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 8.8,
-      "apparent_temp": 6.7,
-      "humidity": 84,
+      "temp": 8.6,
+      "apparent_temp": 6.4,
+      "humidity": 86,
       "code": 3,
-      "wind": 7.9
+      "wind": 8.6
     },
     {
       "id": "paris",
@@ -264,11 +360,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 9.3,
-      "apparent_temp": 8.8,
+      "temp": 9.1,
+      "apparent_temp": 8.7,
       "humidity": 100,
       "code": 45,
-      "wind": 2.3
+      "wind": 1.1
     },
     {
       "id": "frankfurt",
@@ -278,11 +374,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 9.3,
-      "apparent_temp": 8.4,
-      "humidity": 100,
+      "temp": 9.2,
+      "apparent_temp": 8.2,
+      "humidity": 98,
       "code": 3,
-      "wind": 5.2
+      "wind": 4.5
     },
     {
       "id": "tokyo",
@@ -292,11 +388,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 10.0,
-      "apparent_temp": 8.4,
-      "humidity": 69,
+      "temp": 9.2,
+      "apparent_temp": 7.6,
+      "humidity": 74,
       "code": 0,
-      "wind": 1.8
+      "wind": 2.2
     },
     {
       "id": "beijing",
@@ -306,11 +402,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 2.7,
-      "apparent_temp": 0.1,
-      "humidity": 90,
+      "temp": 2.1,
+      "apparent_temp": -0.4,
+      "humidity": 91,
       "code": 0,
-      "wind": 4.0
+      "wind": 3.8
     },
     {
       "id": "singapore",
@@ -320,11 +416,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 23.7,
-      "apparent_temp": 28.4,
+      "temp": 23.6,
+      "apparent_temp": 28.0,
       "humidity": 100,
       "code": 81,
-      "wind": 7.5
+      "wind": 9.3
     },
     {
       "id": "sydney",
@@ -334,11 +430,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 21.8,
-      "apparent_temp": 22.4,
-      "humidity": 65,
-      "code": 0,
-      "wind": 16.7
+      "temp": 21.5,
+      "apparent_temp": 21.7,
+      "humidity": 67,
+      "code": 1,
+      "wind": 17.1
     },
     {
       "id": "toronto",
@@ -348,11 +444,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 7.4,
-      "apparent_temp": 5.4,
-      "humidity": 82,
+      "temp": 7.6,
+      "apparent_temp": 6.2,
+      "humidity": 83,
       "code": 3,
-      "wind": 5.1
+      "wind": 1.1
     },
     {
       "id": "dubai",
@@ -363,10 +459,10 @@
       "lat": 25.2048,
       "lon": 55.2708,
       "temp": 27.8,
-      "apparent_temp": 28.9,
-      "humidity": 59,
+      "apparent_temp": 29.1,
+      "humidity": 60,
       "code": 0,
-      "wind": 16.3
+      "wind": 11.2
     },
     {
       "id": "saopaulo",
@@ -376,11 +472,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 20.0,
-      "apparent_temp": 22.1,
+      "temp": 20.2,
+      "apparent_temp": 22.2,
       "humidity": 86,
       "code": 3,
-      "wind": 4.5
+      "wind": 5.0
     }
   ],
   "stories": []
