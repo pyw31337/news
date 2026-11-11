@@ -32,7 +32,11 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: '3.12', cache: pip }
       - run: pip install -r requirements.txt
-      - run: python scripts/collect.py
+      - name: 기사·엔티티 원본 수집
+        # 원본 수집이 멈춘 회차는 불완전한 today.json을 만들 수 있으므로 실패로 남긴다.
+        # 7분을 넘기면 다음 30분 회차가 대신 실행한다.
+        timeout-minutes: 7
+        run: python scripts/collect.py
         env: { MEDIA_MAX_MB: '4000' }   # 썸네일 원본은 R2(10GB 무료)라 media 브랜치 900MB 상한 대신 R2 몫으로
       - name: 인물 사진·로고·국기 WebP 보관(여러 화면에서 반복해 쓰는 그래픽이라 먼저 확보)
         continue-on-error: true
@@ -42,6 +46,10 @@ jobs:
         # 사진이 없으면 이니셜로 보이게 두되, 다른 사람·로고를 인물 얼굴로 쓰지 않는다.
         run: python scripts/portrait_audit.py data/today.json --entity-media data/entity_media.json --entity-pool data/entity_pool.json --asset-dir assets/people --output data/portrait_audit.json --sanitize --prune-cache
       - name: enrich (흐름·여론·시장·용어·AI)
+        # AI 응답 지연은 원시 기사·사진·인물 저장을 막지 않는다. 기존 검증 캐시를
+        # 유지하고 다음 회차에 재시도한다.
+        continue-on-error: true
+        timeout-minutes: 6
         env:
           # AI 분석: Secret LLM_API_KEY 필수(기본 Gemini OpenAI 호환). 다른 LLM은 Variables LLM_ENDPOINT·LLM_MODEL로 교체
           LLM_ENDPOINT: ${{ vars.LLM_ENDPOINT }}
