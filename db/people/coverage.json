@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-11T14:51:19+09:00",
+ "updated": "2026-11-11T15:24:25+09:00",
  "policy": "Counts distinguish roster entries, structured profiles, source-URL-backed timelines, and verified portraits. Portraits require a stable Wikidata or official ID plus a recorded source and license.",
  "goals": {
   "tier_1_complete_profiles": 30000,
@@ -115,9 +115,10 @@
   }
  },
  "politicians": {
-  "roster": 0,
-  "official_photo_paths": 0,
-  "photo_gap": 0
+  "data_available": true,
+  "roster": 3296,
+  "official_photo_paths": 3262,
+  "photo_gap": 34
  },
  "journalists": {
   "today_profiles": 20,
@@ -125,11 +126,11 @@
   "cumulative_affiliation_records": 171
  },
  "portraits": {
-  "verified_wikimedia_or_official": 12,
+  "verified_wikimedia_or_official": 24,
   "pending_or_not_available": 0
  },
  "wikidata_facts": {
-  "source_linked_profiles": 18,
+  "source_linked_profiles": 36,
   "pending_or_not_available": 0
  },
  "next_queue": {

@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-11T14:46:54.562507+09:00",
-  "alerts_count": 25,
+  "updated": "2026-11-11T15:20:51.779542+09:00",
+  "alerts_count": 24,
   "alerts": [
     {
       "id": "urn:oid:2.49.0.1.840.0.9360ce98f35b5e5460bc4994d1a8f59c5ab36665.001.1",
@@ -17,22 +17,6 @@
       "headline_ko": "Val Verde 홍수 경보",
       "headline_en": "Val Verde Flood Warning",
       "desc": "...The National Weather Service in Austin/San Antonio has issued a\nFlood Warning for the following rivers in Texas...\n\nDevils River At Cauthorn Ranch Near Juno affecting Val Verde\nCounty.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Devils River at Cauthorn Ranch Near Juno.\n\n* WHEN...Until Wedne"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.5609965cd082440fb4cc153cfc1f4b8fdc50e756.001.1",
-      "t": "2026-11-10 18:05",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Mason",
-      "area_en": "Mason",
-      "event": "홍수 경보",
-      "event_en": "Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Mason 홍수 경보",
-      "headline_en": "Mason Flood Warning",
-      "desc": "...The National Weather Service in Seattle has issued a Flood Warning\nfor the following rivers in Washington...\n\nSkokomish River At Potlatch affecting Mason County.\n\n.Heavy rainfall over the Olympic Basin today will lead to minor\nflooding on the Skokomish river through tonight.\n\n* WHAT...Minor flood"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.fd02ed8d4416613ada171cea96e88e0cafa64a88.001.1",
@@ -241,6 +225,22 @@
       "headline_ko": "Mono 겨울 폭풍 주의보",
       "headline_en": "Mono Winter Storm Watch",
       "desc": "* WHAT...Heavy wet snow. Snow accumulations near 12 inches above 7000\nto 7500 feet, up to 6 inches between 6000 and 7500 feet, and little\nto no accumulations below 6000 feet. Wind gusts of 60 to 80 mph\nover ridges and gusts of 40 to 55 mph for areas along Highway 395.\n\n* WHERE...Mono County.\n\n* WHEN"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.6919edc7e119bce46062e3c64c5e3fd608b5c01f.001.1",
+      "t": "2026-11-10 08:00",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Maricopa",
+      "area_en": "Maricopa",
+      "event": "홍수 경보",
+      "event_en": "Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "Maricopa 홍수 경보",
+      "headline_en": "Maricopa Flood Warning",
+      "desc": "* WHAT...Flooding caused by upstream dam release is expected.\n\n* WHERE...Maricopa County in south central Arizona...\nNortheastern Yuma County in southwestern Arizona...\n\n* WHEN...Until 1100 AM MST Tuesday Nov 17.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone l"
     }
   ],
   "quakes": [
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 11.1,
-      "apparent_temp": 7.6,
+      "temp": 11.0,
+      "apparent_temp": 7.1,
       "humidity": 48,
       "code": 0,
-      "wind": 10.1
+      "wind": 12.3
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 18.1,
+      "temp": 17.9,
       "apparent_temp": 16.7,
-      "humidity": 53,
+      "humidity": 59,
       "code": 0,
-      "wind": 6.8
+      "wind": 7.2
     },
     {
       "id": "london",
@@ -362,8 +362,8 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 8.7,
-      "apparent_temp": 6.0,
+      "temp": 8.6,
+      "apparent_temp": 5.9,
       "humidity": 90,
       "code": 3,
       "wind": 13.7
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 12.7,
+      "temp": 12.6,
       "apparent_temp": 12.5,
       "humidity": 94,
-      "code": 3,
-      "wind": 5.1
+      "code": 2,
+      "wind": 4.5
     },
     {
       "id": "frankfurt",
@@ -391,10 +391,10 @@
       "lat": 50.1109,
       "lon": 8.6821,
       "temp": 5.8,
-      "apparent_temp": 4.2,
+      "apparent_temp": 4.1,
       "humidity": 95,
-      "code": 51,
-      "wind": 2.6
+      "code": 45,
+      "wind": 3.7
     },
     {
       "id": "tokyo",
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 14.9,
+      "temp": 14.8,
       "apparent_temp": 12.8,
       "humidity": 48,
       "code": 0,
-      "wind": 4.1
+      "wind": 3.6
     },
     {
       "id": "beijing",
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 10.6,
-      "apparent_temp": 8.4,
+      "temp": 10.8,
+      "apparent_temp": 8.7,
       "humidity": 59,
       "code": 0,
-      "wind": 3.2
+      "wind": 3.5
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 30.9,
-      "apparent_temp": 36.4,
-      "humidity": 63,
-      "code": 3,
-      "wind": 3.6
+      "temp": 31.0,
+      "apparent_temp": 36.9,
+      "humidity": 64,
+      "code": 51,
+      "wind": 3.3
     },
     {
       "id": "sydney",
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 25.9,
-      "apparent_temp": 24.2,
-      "humidity": 37,
-      "code": 2,
-      "wind": 11.8
+      "temp": 25.5,
+      "apparent_temp": 24.1,
+      "humidity": 40,
+      "code": 1,
+      "wind": 11.5
     },
     {
       "id": "toronto",
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 6.0,
-      "apparent_temp": 2.9,
+      "temp": 5.9,
+      "apparent_temp": 2.7,
       "humidity": 83,
       "code": 0,
-      "wind": 10.6
+      "wind": 11.0
     },
     {
       "id": "dubai",
@@ -474,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 30.0,
-      "apparent_temp": 33.2,
-      "humidity": 59,
+      "temp": 29.9,
+      "apparent_temp": 32.8,
+      "humidity": 58,
       "code": 0,
-      "wind": 8.1
+      "wind": 9.4
     },
     {
       "id": "saopaulo",
@@ -488,20 +488,20 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 14.9,
-      "apparent_temp": 14.7,
+      "temp": 14.8,
+      "apparent_temp": 14.8,
       "humidity": 95,
       "code": 3,
-      "wind": 9.8
+      "wind": 9.1
     }
   ],
   "stories": [
     {
       "id": "g08cdbe7f",
-      "title": "Cop31 as it happened: ‘Everything and everyone we love is at stake,’ Greta Thunberg warns",
-      "press": "Guardian Environment",
+      "title": "Greta Thunberg slams UN climate COPs as 'greenwashed circuses'",
+      "press": "CNA",
       "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/afp_6af3a30f98ea-1794351887.jpg?resize=1920%2C1440",
-      "score": 12.0,
+      "score": 10.5,
       "url": "g/g08cdbe7f"
     }
   ]
