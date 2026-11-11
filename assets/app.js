@@ -3420,12 +3420,15 @@ function renderArcGraph(g, targetName){
     const link = `entity/${encodeURIComponent(n.name)}`;
     const isExt = isFamily || id.startsWith('wd:');
     const rel = relMap[id] || { label: '', desc: '' };
+    /* 그래프 원본 노드가 보유한 photo 필드는 신뢰하지 않는다. 이름·출처 검증을
+       다시 통과한 사진만 SVG에 넣고, 나머지는 이니셜로 남긴다. */
+    const photo = profilePhoto({ name: n.name });
     const safeId = esc(id).replace(/\W/g, '');
     const nodeCat = n.cat || (c ? 'center' : (isFamily ? 'family' : 'political'));
 
     return `<g class="gn ${c?'c':''}" data-id="${esc(id)}" data-cat="${esc(nodeCat)}" data-name="${esc(n.name)}" data-rel="${esc(rel.desc)}" data-href="${link}" data-ext="${isExt}" data-bx="${x.toFixed(2)}" data-by="${y.toFixed(2)}" data-br="${r}" data-center="${c?'1':'0'}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})">
       <circle cx="0" cy="0" r="${r}" fill="#fff" stroke="${col}" stroke-width="${c?3.8:2.4}"/>
-      ${n.photo?`<clipPath id="cp_${safeId}"><circle cx="0" cy="0" r="${r-1.5}"/></clipPath><image href="${esc(n.photo)}" x="${-r}" y="${-r}" width="${2*r}" height="${2*r}" clip-path="url(#cp_${safeId})" preserveAspectRatio="xMidYMin slice"/>`:`<text x="0" y="4" text-anchor="middle" class="gi" fill="${col}">${esc((n.name||'?')[0])}</text>`}
+      ${photo?`<clipPath id="cp_${safeId}"><circle cx="0" cy="0" r="${r-1.5}"/></clipPath><image href="${esc(photo)}" x="${-r}" y="${-r}" width="${2*r}" height="${2*r}" clip-path="url(#cp_${safeId})" preserveAspectRatio="xMidYMin slice"/>`:`<text x="0" y="4" text-anchor="middle" class="gi" fill="${col}">${esc((n.name||'?')[0])}</text>`}
       <text x="0" y="${r+13}" text-anchor="middle" class="gl">${esc(n.name||'')}</text>
       <text x="0" y="${r+25}" text-anchor="middle" class="gr-desc">${esc(rel.label)}</text>
       <title>${esc(n.name)} (${esc(rel.desc)})</title>
