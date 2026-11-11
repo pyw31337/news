@@ -112,22 +112,24 @@ for key, v in bio.items():
     sc, why = 0.0, ''
     if re.search(TOP, role):
         sc, why = 38.0, '고위 공직'
-    elif kind == 'legal' or re.search(r'판사|검사|법관|재판관|검사장|법원장', role):
+    elif re.search(r'판사|검사|법관|재판관|검사장|법원장', role):
+        sc, why = 40.0, '판사·검사'
+    elif kind == 'legal':
         sc, why = 25.0, '법조인'
     elif re.search(LOCAL_HEAD, role) and kind in ('official', 'politician'):
         sc, why = 25.0, '자치단체장·교육감'
     elif re.search(LOCAL_COUNCIL, role):
         sc, why = 14.0, '지방의원'
     elif kind == 'corporate' and re.search(EXEC, role):
-        sc, why = 22.0, '기업 경영진'
+        sc, why = 30.0, '기업 경영진'
     elif kind == 'reporter':
-        sc, why = 20.0, '언론인'
+        sc, why = 40.0, '언론인'
     elif kind in ('official', 'politician'):
         sc, why = 16.0, '공직·선출직'
     # 명부(위키데이터) 인물에 인물사전 직함을 붙일 때는 위키데이터 설명과 분야가 맞을 때만(동명이인 직함이 옮겨 붙는 것 방지)
     d = (C.get(pid) or {}).get('desc', '')
     if sc and not pid.startswith(('bio:', 'pol:')) and d:
-        need = {'법조인': r'법|판사|검사|변호사|재판', '기업 경영진': r'기업|경영|회장|사장|대표|CEO|창업', '언론인': r'기자|언론|앵커|방송|아나운서'}.get(
+        need = {'법조인': r'법|판사|검사|변호사|재판', '판사·검사': r'법|판사|검사|재판', '기업 경영진': r'기업|경영|회장|사장|대표|CEO|창업', '언론인': r'기자|언론|앵커|방송|아나운서'}.get(
             why, r'정치|의원|공무원|관료|시장|군수|구청장|도지사|교육감|장관|차관|외교관|대통령|총리|청장|위원장')
         if not re.search(need, d):
             sc, why = 0.0, ''
@@ -139,7 +141,7 @@ for key, v in bio.items():
 # 4) 법조(판사: 판결 보도에 나온 이름+법원, 대법관·헌법재판관)
 for key, j in (load(os.path.join(LEGAL, 'legal', 'v1', 'people', 'judges_from_news.json'), {}) or {}).items():
     pid = 'jd:' + h(key, 10)
-    cand(pid, j.get('name', ''), kind='법조', office=(25.0, '판사(판결 보도)'), news=len(j.get('cases', [])), src='legal:judges_from_news')
+    cand(pid, j.get('name', ''), kind='법조', office=(40.0, '판사(판결 보도)'), news=len(j.get('cases', [])), src='legal:judges_from_news')
 for j in load(os.path.join(LEGAL, 'legal', 'v1', 'people', 'justices_wikidata.json'), []) or []:
     pid = 'wd:' + j['qid'] if j.get('qid') else 'jd:' + h(j.get('name'), 10)
     cand(pid, j.get('name', ''), kind='법조', office=(38.0, '대법관·헌법재판관'), src='legal:justices')
