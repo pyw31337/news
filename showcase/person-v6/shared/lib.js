@@ -1,0 +1,102 @@
+/* person-v6 공통 모듈: 실제 데이터 → 디자인 시스템 컴포넌트(HTML 문자열).
+   컴포넌트 클래스: .sh(섹션 헤더) .facts(사실 목록) .stat(수치) .tl(연대기) .era(생애 단계) .bars/.stack/.spark(차트)
+   .pchip(인물 칩) .arow(기사 행) .acard(썸네일 기사) .quote(발언) .exp(펼치기) .seg(세그먼트 필터) */
+const NB = (() => {
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const ic = (n, on) => `<svg class="ic" aria-hidden="true"><use href="#i-${n}${on ? '-f' : ''}"/></svg>`;
+  const num = n => Number(n).toLocaleString('ko-KR');
+  const won = k => { /* 천원 → 'n억 n,nnn만 원' */
+    const man = Math.round(k / 10), eok = Math.floor(man / 10000), rest = man % 10000;
+    return (eok ? eok + '억' : '') + (rest ? ' ' + num(rest) + '만' : '') + ' 원';
+  };
+  const eok1 = k => (k / 100000).toFixed(1).replace(/\.0$/, '') + '억';
+  const dot = s => String(s || '').replace(/~/g, '–').replace(/-/g, '.');
+  const md = t => { const d = String(t).slice(0, 10).split('-'); return `${+d[1]}.${+d[2]}`; };
+  const ymd = t => String(t).slice(0, 10).replace(/-/g, '.');
+  const DOW = '일월화수목금토';
+  const dayLabel = t => { const d = new Date(String(t).slice(0, 10) + 'T00:00:00+09:00'); return `${d.getMonth() + 1}월 ${d.getDate()}일 ${DOW[d.getDay()]}요일`; };
+  const titleClean = s => String(s).replace(/\s+-\s+[^-]{2,30}$/, '').trim();
+
+  /* 생애 이벤트 분류 */
+  const EVG = { birth: '성장', edu: '학업', career: '경력', military: '병역', ruling: '법조', business: '시민사회', election: '선거', office: '공직' };
+  const EVI = { birth: 'user', edu: 'school', career: 'briefcase', military: 'shield', ruling: 'gavel', business: 'building-community', election: 'checkbox', office: 'building-bank' };
+  const FILTERS = [
+    ['전체', () => true],
+    ['성장·학업', e => ['birth', 'edu', 'military'].includes(e.typ) || (e.typ === 'career' && e.stage === '출생·성장')],
+    ['법조·시민사회', e => ['ruling', 'business'].includes(e.typ) || (e.typ === 'career' && e.stage === '사회 경력')],
+    ['선거·공직', e => ['election', 'office'].includes(e.typ) || (e.typ === 'career' && e.stage === '정치 활동')],
+  ];
+  /* 생애 단계: 이벤트 제목에서 그대로 가져온 구간 */
+  const ERAS = [
+    { y: '1964–1981', name: '성장·노동', role: '성남 상대원공단 소년공', from: 1964, to: 1981 },
+    { y: '1982–1988', name: '학업·법조 입문', role: '중앙대 법학과 · 제28회 사법시험', from: 1982, to: 1988 },
+    { y: '1989–2009', name: '변호사·시민운동', role: '성남 노동·인권 변호사', from: 1989, to: 2009 },
+    { y: '2010–2018', name: '성남시장', role: '민선 5·6기', from: 2010, to: 2017 },
+    { y: '2018–2021', name: '경기도지사', role: '제35대 · 민선 7기', from: 2018, to: 2021 },
+    { y: '2022–2025', name: '국회의원·당대표', role: '인천 계양구을 · 더불어민주당 대표', from: 2022, to: 2024 },
+    { y: '2025–', name: '대통령', role: '대한민국 제21대', from: 2025, to: 2026, now: true },
+  ];
+  const yearOf = e => { const m = String(e.d).match(/\d{4}/); return m ? +m[0] : 1964; };
+
+  /* ── 컴포넌트 ── */
+  const sh = (title, opt = {}) => `<header class="sh"><h2 class="sh-t">${opt.icon ? ic(opt.icon) : ''}${esc(title)}</h2>${opt.count != null ? `<span class="sh-n">${esc(opt.count)}</span>` : ''}${opt.aside ? `<div class="sh-a">${opt.aside}</div>` : ''}</header>`;
+  const facts = rows => `<dl class="facts">${rows.map(([k, v, icon]) => `<div class="facts-r"><dt>${icon ? ic(icon) : ''}${esc(k)}</dt><dd>${v}</dd></div>`).join('')}</dl>`;
+  const stat = (label, value, unit = '', sub = '', extra = '') => `<div class="stat"><div class="stat-l">${esc(label)}</div><div class="stat-v">${esc(value)}<small>${esc(unit)}</small></div>${sub ? `<div class="stat-s">${sub}</div>` : ''}${extra}</div>`;
+  const exp = (label, count, body, open = false, id = '') => `<div class="exp${open ? ' is-open' : ''}"${id ? ` id="${id}"` : ''}><button class="exp-b" type="button" aria-expanded="${open}"><span>${esc(label)}</span>${count != null ? `<span class="exp-n">${esc(count)}</span>` : ''}${ic('chevron-down')}</button><div class="exp-c"${open ? '' : ' hidden'}>${body}</div></div>`;
+  const seg = (name, items, cur = 0) => `<div class="seg" role="tablist" data-seg="${name}">${items.map((t, i) => `<button type="button" role="tab" class="seg-i${i === cur ? ' is-on' : ''}" aria-selected="${i === cur}" data-i="${i}">${esc(t[0] ?? t)}${t[1] != null ? `<span class="seg-n">${t[1]}</span>` : ''}</button>`).join('')}</div>`;
+  const pchip = (p, sub = '') => `<span class="pchip">${p.photo ? `<img src="${esc(p.photo)}" alt="" loading="lazy" width="32" height="32">` : `<span class="pchip-av">${ic('user')}</span>`}<span class="pchip-t"><b>${esc(p.name)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</span></span>`;
+  const arow = a => `<a class="arow" href="${esc(a.url)}" target="_blank" rel="noopener"><time>${esc(md(a.t))}</time><span class="arow-t">${esc(titleClean(a.title))}</span><span class="arow-p">${esc(a.press)}</span></a>`;
+  const acard = a => `<a class="acard" href="${esc(a.url)}" target="_blank" rel="noopener"><span class="acard-img"><img src="${esc(a.img)}" alt="" loading="lazy" decoding="async"></span><span class="acard-t">${esc(titleClean(a.title))}</span><span class="acard-m">${esc(a.press)}<i></i>${esc(ymd(a.t))}</span></a>`;
+  const quote = q => `<figure class="quote"><blockquote>${esc(q.quote)}</blockquote><figcaption>${esc(q.press)}<i></i>${esc(ymd(q.d))}</figcaption></figure>`;
+  const tlItem = e => `<li class="tl-i" data-typ="${e.typ}"><span class="tl-d">${esc(e.d ? dot(e.d) : '출생')}</span><span class="tl-dot">${ic(EVI[e.typ] || 'calendar')}</span><div class="tl-b"><b class="tl-t">${esc(e.title)}</b><p class="tl-x">${esc(e.desc)}</p></div></li>`;
+  const tl = evs => `<ol class="tl">${evs.map(tlItem).join('')}</ol>`;
+  const era = (D, mode = 'grid') => `<ol class="era era--${mode}">${ERAS.map(r => {
+    const n = D.events.filter(e => { const y = yearOf(e); return y >= r.from && y <= r.to; }).length;
+    return `<li class="era-i${r.now ? ' is-now' : ''}"><span class="era-y">${r.y}</span><b class="era-n">${r.name}</b><span class="era-r">${r.role}</span><span class="era-c" aria-label="기록 ${n}건">${'<i></i>'.repeat(n)}</span></li>`;
+  }).join('')}</ol>`;
+
+  /* 날짜별 기사 묶음 */
+  const agroup = (list, cnt = {}) => { const g = {}; list.forEach(a => (g[a.t.slice(0, 10)] ||= []).push(a)); return Object.keys(g).sort().reverse().map(d => `<div class="aday"><div class="aday-h">${dayLabel(d)}<small>${cnt[d] ?? g[d].length}건</small></div><div class="alist">${g[d].map(arow).join('')}</div></div>`).join(''); };
+  /* 막대(HTML): items=[[label,value,cls?]] — 라벨은 HTML이라 폭이 바뀌어도 글자 크기 유지 */
+  const hbars = (items, opt = {}) => { const max = Math.max(...items.map(x => x[1])); return `<ul class="hbars">${items.map(([l, v, c]) => `<li class="hbars-i ${c || ''}"><span class="hbars-l">${esc(l)}</span><span class="hbars-tr"><span class="hbars-f" style="width:${(v / max * 100).toFixed(1)}%"></span></span><span class="hbars-v">${opt.fmt ? opt.fmt(v) : num(v)}</span></li>`).join('')}</ul>`; };
+  /* 세로 막대(연도별): 라벨 간격은 CSS가 폭에 따라 솎아 냄 */
+  const vbars = (items, opt = {}) => { const max = Math.max(...items.map(x => x[1])); return `<div class="vbars" style="--n:${items.length}">${items.map(([l, v, hi]) => `<div class="vbars-i${hi ? ' is-hi' : ''}" title="${esc(l)} · ${v}건"><span class="vbars-f" style="height:${Math.max(2, v / max * 100).toFixed(1)}%"></span><span class="vbars-l">${esc(l)}</span></div>`).join('')}</div>`; };
+  /* 누적 막대: parts=[[label,value,cls]] */
+  const stack = (parts, opt = {}) => { const tot = parts.reduce((s, p) => s + p[1], 0); return `<div class="stack"><div class="stack-bar">${parts.filter(p => p[1] > 0).map(([l, v, c]) => `<span class="stack-s ${c}" style="flex:${v}"></span>`).join('')}</div>${opt.legend === false ? '' : `<ul class="stack-lg">${parts.map(([l, v, c]) => `<li class="${c}"><i></i>${esc(l)}<b>${opt.fmt ? opt.fmt(v) : num(v)}</b>${opt.pct ? `<small>${Math.round(v / tot * 100)}%</small>` : ''}</li>`).join('')}</ul>`}</div>`; };
+  /* 스파크라인(SVG 선만, 글자 없음) */
+  const spark = (vals, opt = {}) => { const w = 300, h = 64, max = Math.max(...vals, 1), st = w / (vals.length - 1 || 1); const pts = vals.map((v, i) => `${(i * st).toFixed(1)},${(h - 4 - v / max * (h - 8)).toFixed(1)}`); return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path class="spark-a" d="M0,${h} L${pts.join(' L')} L${w},${h} Z"/><path class="spark-l" d="M${pts.join(' L')}" vector-effect="non-scaling-stroke"/></svg>`; };
+  /* 도넛(SVG 원호만) */
+  const donut = (parts, center = '') => { const tot = parts.reduce((s, p) => s + p[1], 0) || 1; let a = 0; const r = 15.915; return `<div class="donut"><svg viewBox="0 0 36 36" aria-hidden="true"><circle class="donut-bg" cx="18" cy="18" r="${r}"/>${parts.map(([l, v, c]) => { const s = `<circle class="donut-s ${c}" cx="18" cy="18" r="${r}" stroke-dasharray="${(v / tot * 100).toFixed(2)} ${(100 - v / tot * 100).toFixed(2)}" stroke-dashoffset="${(25 - a).toFixed(2)}"/>`; a += v / tot * 100; return s; }).join('')}</svg><div class="donut-c">${center}</div></div>`; };
+
+  /* 데이터 파생 */
+  const derive = D => {
+    const A = D.assets.records, last = A[A.length - 1], prev = A[A.length - 2];
+    const vs = D.votes.summary; const vt = k => Object.values(vs).reduce((s, x) => s + (x[k] || 0), 0);
+    const dc = Object.fromEntries(D.articles_daily); const end = new Date(D.updated + 'T12:00:00Z'); const daily = Array.from({ length: 30 }, (_, i) => { const d = new Date(end - (29 - i) * 864e5).toISOString().slice(0, 10); return [d, dc[d] || 0]; });
+    const byDay = {}; D.articles.forEach(a => (byDay[a.t.slice(0, 10)] ||= []).push(a));
+    const relCats = ['가족', '학연', '지연', '공직', '정당'].map(c => [c, D.relations.filter(r => r.cat === c)]).filter(x => x[1].length);
+    return { dc, last, prev, vt, daily, byDay, relCats, votesTotal: D.votes.count };
+  };
+  const assetParts = r => [['건물', r.cats['건물'] || 0, 'k1'], ['예금', r.cats['예금'] || 0, 'k2'], ['채권', r.cats['채권'] || 0, 'k3'], ['정치자금 예금', r.cats['정치자금법에따른정치자금의수입및지출을위한예금계좌의예금'] || 0, 'k4'], ['자동차 등', r.cats['부동산에관한규정이준용되는권리와자동차·건설기계·선박및항공기'] || 0, 'k5'], ['회원권', r.cats['회원권'] || 0, 'k5']];
+  const voteParts = s => [['찬성', s['찬성'] || 0, 'pos'], ['반대', s['반대'] || 0, 'neg'], ['기권', s['기권'] || 0, 'warn'], ['불참', s['불참'] || 0, 'mute']];
+
+  /* 누적 세로 막대(연도×분류) */
+  const vstack = (rows, keys, opt = {}) => { const max = Math.max(...rows.map(r => keys.reduce((s, k) => s + (r[1][k[0]] || 0), 0))); return `<div class="vbars vstack" style="--n:${rows.length}">${rows.map(([l, c]) => { const t = keys.reduce((s, k) => s + (c[k[0]] || 0), 0); return `<div class="vbars-i" title="${esc(l)} · ${t}건"><span class="vstack-col" style="height:${Math.max(2, t / max * 100).toFixed(1)}%">${keys.map(k => c[k[0]] ? `<span class="${k[1]}" style="flex:${c[k[0]]}"></span>` : '').join('')}</span><span class="vbars-l">${esc(l)}</span></div>`; }).join('')}</div>`; };
+  /* 재임 기간 막대(간트) */
+  const span = d => { const m = String(d).match(/(\d{4})(?:[.\d]*)?(?:\s*[~–-]\s*(\d{4}))?/); if (!m) return null; return [+m[1], m[2] ? +m[2] : +m[1]]; };
+  const gantt = (rows, y0, y1, ticks) => `<div class="gantt"><span class="gantt-ax-pad"></span><span class="gantt-ax-pad gantt-ax-pad2"></span><div class="gantt-ax">${ticks.map(t => `<span style="left:${((t - y0) / (y1 - y0) * 100).toFixed(2)}%">${t}</span>`).join('')}</div>${rows.map(r => { const [a, b] = span(r.d) || [y0, y0]; const l = (a - y0) / (y1 - y0) * 100, w = (b - a) / (y1 - y0) * 100; return `<div class="gantt-r${r.now ? ' is-now' : ''}" data-typ="${r.typ}"><span class="gantt-d">${esc(dot(r.d) || '출생')}</span><span class="gantt-l">${esc(r.title)}</span><span class="gantt-tr"><span class="gantt-b${b === a ? ' is-pt' : ''}" style="left:${l.toFixed(2)}%;width:${w.toFixed(2)}%"></span></span></div>`; }).join('')}</div>`;
+  /* 관계 나무: 가운데 인물 → 분류 → 노드 */
+  const rtree = (center, cats) => `<div class="rtree"><div class="rt-c">${center}</div><ul class="rt-br">${cats.map(([c, rs]) => `<li><span class="rt-cat">${esc(c)}<small>${rs.length}</small></span><div class="rt-n">${rs.map(r => r.kind === 'person' ? pchip(r.people[0], r.role) : `<span class="rt-g"><b>${esc(r.name)}</b><small>${esc(r.role)}</small></span>`).join('')}</div></li>`).join('')}</ul></div>`;
+  /* 상호작용: 펼치기, 세그먼트 필터(연대기) */
+  const bind = (root = document) => {
+    root.addEventListener('click', ev => {
+      const b = ev.target.closest('.exp-b');
+      if (b) { const x = b.parentElement, o = !x.classList.contains('is-open'); x.classList.toggle('is-open', o); b.setAttribute('aria-expanded', o); x.querySelector('.exp-c').hidden = !o; return; }
+      const s = ev.target.closest('.seg-i');
+      if (s) { const g = s.parentElement; g.querySelectorAll('.seg-i').forEach(x => { const on = x === s; x.classList.toggle('is-on', on); x.setAttribute('aria-selected', on); }); g.dispatchEvent(new CustomEvent('seg', { bubbles: true, detail: { name: g.dataset.seg, i: +s.dataset.i } })); }
+    });
+  };
+  const load = () => fetch('../shared/data.json').then(r => r.json());
+  const openAll = () => { if (/[?&]open=1/.test(location.search)) document.querySelectorAll('.exp').forEach(x => { x.classList.add('is-open'); x.querySelector('.exp-b').setAttribute('aria-expanded', true); x.querySelector('.exp-c').hidden = false; }); };
+  return { vstack, span, gantt, rtree, agroup, esc, ic, num, won, eok1, dot, md, ymd, dayLabel, titleClean, EVG, EVI, FILTERS, ERAS, yearOf, sh, facts, stat, exp, seg, pchip, arow, acard, quote, tl, tlItem, era, hbars, vbars, stack, spark, donut, derive, assetParts, voteParts, bind, load, openAll };
+})();
