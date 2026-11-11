@@ -1,6 +1,6 @@
 # NewsBoard 에이전트 공동 인수인계서
 
-> 기준 시각: **2026-11-11 14:51 KST 데이터 스냅샷 / 2026-11-11 코드 기준**
+> 기준 시각: **2026-11-12 08:25 KST 데이터 스냅샷 / 2026-11-12 코드 기준**
 >
 > 대상: Codex · Gemini · Grok · Grokbot · Claude · 로컬 에이전트
 >
@@ -11,7 +11,7 @@
 
 1. 동기화한다: `git fetch origin --prune && git switch main && git pull --ff-only`.
 2. 최근 코드 기준을 확인한다: `git log --oneline -8 origin/main`.
-3. 이번 회차의 실제 데이터는 `origin/data:db/people/coverage.json`과 `origin/data:today.json`에서 읽는다. 화면의 숫자만 보고 판단하지 않는다.
+3. 이번 회차의 실제 누적 데이터는 `origin/data:db/people/coverage.json`, `origin/data:archive/YYYY-MM-DD.json`, `origin/data:runlog.json`에서 읽는다. `today.json`은 배포용 최신 스냅샷이라 data 브랜치에 영구 보관하지 않는다. 화면의 숫자만 보고 판단하지 않는다.
 4. 작업을 시작하기 전에 이 문서의 **금지 규칙**과 `docs/PEOPLE.md` 2·5·6·8·9절을 읽는다.
 5. 데이터·화면·워크플로 중 무엇을 건드리는지 커밋 메시지와 PR/작업 설명에 명시한다. 서로 같은 원장을 동시에 재생성하지 않는다.
 
@@ -61,8 +61,8 @@ NewsBoard는 단순 기사 목록이 아니라, 오늘의 이슈를 **기사 원
 | 역사 블랙박스 | 15,702명 | `history/h/p`의 과거 기사 기록. 모든 사람이 완전하다는 뜻은 아니다. |
 | 기자 당일 데이터 | 기자 20명 / 기사 이력 171건 | 한국 IP 로컬 수집 회차 기준. GitHub만으로는 네이버 기자 영역 누락이 잦다. |
 | 정치인 공식 원장 | 3,296명 / 사진 경로 3,262개 / 공백 34개 | 정치인 원장을 직접 읽은 감사 결과. 공개 커버리지 JSON의 과거 0 표기를 인용하면 안 된다. |
-| 검증 Wikidata 사실 | 18명 | 첫 자동 회차에서 원문 URL과 라이선스 정보를 남긴 누적값이다. |
-| 검증 초상 | 12명 | 첫 자동 회차에서 P18·Commons 라이선스까지 확인한 누적값이다. |
+| 검증 Wikidata 사실 | 90명 | 고정 ID·원문 URL을 함께 남긴 누적값이다. |
+| 검증 초상 | 59명 | P18·Commons 라이선스까지 확인한 누적값이다. 대기/불가 1명은 표시하지 않는다. |
 | 공개 관계 | 54,547개 | 전체 관계 59,329개 중 계층·출처·미성년자 규칙을 통과한 것만 화면 후보가 된다. |
 | 관계 그래프 | 이름 14,119 · 관계 인물 17,515 · 연결 55,490 | `pol`↔`wd` 동일인 연결 1,170건 포함. 동명이인 자동 합침 금지 규칙이 적용된다. |
 | R2 미디어 | 17,208개 / 약 974MB | 기사·인물 등 전체 미디어의 합이며, 검증 인물 초상 수와 같은 값이 아니다. |
@@ -109,12 +109,13 @@ NewsBoard는 단순 기사 목록이 아니라, 오늘의 이슈를 **기사 원
 git fetch origin --prune
 git log --oneline -8 origin/main
 gh run list --repo pyw31337/news --workflow collect-news --limit 5
-git show origin/data:db/people/coverage.json | jq '{generated_at, registry, tiers, portraits, wikidata_facts, journalists, politicians}'
-git show origin/data:today.json | jq '{updated_at, issues:(.issues|length), reporters:(.reporters|length)}'
+git show origin/data:db/people/coverage.json | jq '{registry, tiers, portraits, wikidata_facts, journalists, politicians}'
+git show origin/data:archive/$(TZ=Asia/Seoul date '+%F').json | jq '{date, updated, issues:(.issues|length), trends:(.trends|length)}'
+git show origin/data:runlog.json | jq 'if type == "array" then .[-1] else . end'
 ```
 
 - `collect-news` 최신 성공 후 정치인 항목이 `data_available: true`, 3,296/3,262/34에 가까운지 확인한다. 그렇지 않으면 `pol_coverage` clone·전달 단계부터 진단한다.
-- 최근 외부 수집에서 403/404/429는 흔하다. 워크플로 전체 실패와 개별 외부 요청 실패를 구분해 기록한다. 우회 스크래핑이나 무한 재시도는 금지한다.
+- 최근 외부 수집에서 403/404/429는 흔하다. 11월 12일 08:23 KST 정상 회차는 10개 이슈·36개 엔티티·기자 20명·언론사 304곳, 성공 918건·개별 실패 71건을 기록했다. 워크플로 전체 실패와 개별 외부 요청 실패를 구분해 기록한다. 우회 스크래핑이나 무한 재시도는 금지한다.
 - `scripts/tier_manager.py`는 현재 사용자의 미추적 파일이다. 스테이징·수정·삭제하지 않는다.
 
 ### B. 현재 최우선 작업
@@ -149,6 +150,7 @@ git status --short
 | 인물 페이지 정보량 | 원시 자료는 많지만 고정 ID·출처·표시 승인으로 정제된 양은 적음 | ‘많이 보이게’보다 자료 종류별 검증 상태를 표시·측정한다. |
 | 외부 요청 오류 | 403/404/429 등 공급자별 정책·일시 장애 | 지수적 재시도/다음 회차 재시도로 한정하고, 가짜 대체 데이터를 만들지 않는다. |
 | AI 분석 지연 | 한 번의 느린 모델 응답이 원시 수집을 묶어 둘 수 있음 | 기사 원본 수집은 7분, AI 분석은 6분 상한이다. AI 분석이 실패해도 검증된 기존 캐시를 유지하고 원시 기사·인물·사진 저장은 계속한다. |
+| 최신 화면 스냅샷 | `today.json`은 배포용 최신 파일이고 data 브랜치에서는 무시된다 | 누적 검증은 날짜별 `archive/`, 기사 DB, `runlog.json`, 인물 커버리지 원장으로 한다. `origin/data:today.json`이 없다고 데이터 유실로 판단하지 않는다. |
 | 카드뉴스·4컷만화 | 기사 사실을 템플릿으로 반복하거나 AI가 내용을 날조하면 안 됨 | 하루 카드뉴스·4컷만화는 각각 최대 3개, 누적 아카이브로 관리. 각 컷/카드의 근거를 원문과 대조한다. |
 
 ## 8. 화면·디자인 작업 시 맥락
@@ -176,6 +178,7 @@ git status --short
 | 2026-11-11 | 인물 보강 기반 추가 | 커버리지 분리, QID 기반 Wikidata 사실, Commons 초상 보강, R2 저장 경로를 구현 | 첫 회차: 사실 18명·초상 12명; 화면 노출 전 매칭 검수 필요 |
 | 2026-11-11 | 수집 공정성·정확도 수정 | 정치인 원장 미전달 시 `0` 대신 `data_available:false`; 큐를 10분야 라운드로빈으로 변경 | 다음 collect에서 공개 집계가 교체되는지 확인 |
 | 2026-11-11 | 동시 데이터 커밋·분석 지연 보호 | `_arts.json` 수정/삭제 충돌을 원격 보존 병합으로 바꾸고, 원본 수집·AI 분석에 7분/6분 상한을 설정 | 다음 `collect-news`에서 data 브랜치 새 커밋과 재시도 동작을 확인 |
+| 2026-11-12 | 최신 수집 검증 | 워크플로 성공, 검증 사실 90명·초상 59명·정치인 원장 3,296명/사진 3,262개 확인 | 다음 예약 회차는 7분/6분 상한을 포함한 최신 main을 사용 |
 | 2026-11-11 | 이 문서 작성 | 여러 에이전트가 같은 기준·수치·금지 규칙을 공유하도록 정본화 | 새 작업은 이 표에 후속 기록 |
 | 2026-11-11 16:00 | 인물·분류 페이지 v2(Grokbot, 사용자 승인 시안 D) | `person/`·`e/` 새 경로 + `assets/nbp/`(원래 `entity/` 화면은 그대로, 유일한 1계층 이름만 새 페이지로 넘김). `scripts/people/person_pages.py`(배포 때 `_site/data/p` 생성, 커밋 없음), `wd_t1.py`·`people-photos.yml` → data `db/people/wd_t1.json.gz`·`photos_t1.json`, R2 `people/pt/`. 사진은 고정 QID의 P18 + Commons 자유 이용 허락만(기존 `portraits.json`·`wikidata_facts.json`은 읽기만). 선관위 동명이인 당선 기록은 정당 불일치 시 제외 | 사진 얼굴 일치는 사람 검수 전(표본 48장 모두 단독 인물 사진). 규칙 `docs/PEOPLE.md` 10장 |
 
