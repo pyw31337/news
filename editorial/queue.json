@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-12",
-  "generated_at": "2026-11-12T01:56:58+09:00",
+  "generated_at": "2026-11-12T01:19:49+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,107 +27,8 @@
   },
   "candidates": [
     {
-      "issue_id": "ie53e6f25",
-      "title": "\"불륜으로 끝날 줄 알았는데\"…젠슨 황 스캔들 '일파만파'",
-      "category": "경제",
-      "rank": 7,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "엔비디아의 CEO 젠슨 황의 중국 스파이로 추정되는 싱가포르 여성기업가 앨리스 황과의 불륜이 젠슨 황 뿐 아니라 트럼프 대통령과 하워드 러트닉 상무장관 등 미 정부로도 일파 만파 확대되고 있다.",
-        "‘10조 칩’ 중국 들어갔나… 젠슨 황 스캔들에 美 반도체 통제 비상",
-        "\"불륜으로 끝날 줄 알았는데\"…젠슨 황 스캔들 '일파만파'",
-        "젠슨 황 엔비디아 최고경영자(CEO)의 불륜 스캔들을 계기로 미국 의회에서 대중국 반도체 수출 규제를 강화하려는 움직임이 나타나고 있습니다.",
-        "월스트리트저널(WSJ)은 현지 시각 11일 미 의회 공화·민주 양당 주요..."
-      ],
-      "sources": [
-        {
-          "press": "국민일보",
-          "title": "‘10조 칩’ 중국 들어갔나… 젠슨 황 스캔들에 美 반도체 통제 비상",
-          "url": "https://n.news.naver.com/article/005/0001884578"
-        },
-        {
-          "press": "한국경제",
-          "title": "\"불륜으로 끝날 줄 알았는데\"…젠슨 황 스캔들 '일파만파'",
-          "url": "https://n.news.naver.com/article/015/0005352960"
-        },
-        {
-          "press": "kbs.co.kr",
-          "title": "젠슨황 스캔들로 미국 의회 ‘대중국 칩규제 3법’ 탄력",
-          "url": "https://n.news.naver.com/mnews/article/056/0012292168?sid=104"
-        },
-        {
-          "press": "donga.com",
-          "title": "美 소비자물가 0.4% 상승… 연내 기준금리 ‘빅스텝’ 가능성",
-          "url": "https://n.news.naver.com/mnews/article/020/0003761838?sid=101"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "엔비디아의 CEO 젠슨 황의 중국 스파이로 추정되는 싱가포르 여성기업가 앨리스 황과의 불륜이 젠슨 황 뿐 아니라 트럼프 대통령과 하워드 러트닉 상무장관 등 미 정부로도 일파 만파 확대되고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "젠슨 황 엔비디아 최고경영자(CEO)의 불륜 스캔들을 계기로 미국 의회에서 대중국 반도체 수출 규제를 강화하려는 움직임이 나타나고 있습니다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "‘10조 칩’ 중국 들어갔나… 젠슨 황 스캔들에 美 반도체 통제 비상"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i2a8bfd32",
-      "title": "국산 태양광 무인기 170시간 연속비행 성공",
+      "issue_id": "i1b73ecec",
+      "title": "코스닥 급등에 이틀 연속 매수 사이드카…코스피도 2%대 상승[마감시황]",
       "category": "경제",
       "rank": 8,
       "priority_score": 37,
@@ -137,49 +38,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "국내 기술로 개발한 태양광 무인기가 지상 20km 높이의 성층권에서 7일 이상 연속비행하는 데 성공했다.",
-        "우리 기술로 개발 중인 성층권 태양광 무인기가 170시간이 넘는 연속 비행에 성공했다.",
-        "우주당국은 앞으로...",
-        "초도 비행에 도전한다는 계획이다.",
-        "엔진과 배터리, 모터를 비롯한 핵심 부품의 국산화도 함께 추진한다...."
+        "코스닥이 11일 장중 5% 넘게 폭등하며 700선을 되찾았다.",
+        "[속보] 미 빅스텝 우려에도 급등…코스피 2.6%·코스닥 5.6%↑",
+        "“700선 탈환에 매수 사이드카까지”…코스닥 5.06% 폭등, 반도체·2차전지 질주",
+        "외국인 6553억원 순매수…코스피 5,375.36 마감 삼성전자 3.57%·SK하이닉스 5.36% 동반 상승 코스닥 5.62% 급등…기관 홀로 3136억원 순매수 11일 코스피 지수가 전 거래일 대비 2.60% 오른 5,375.36에 마감했다.",
+        "급등 속도가 빨라지면서 오전 11시 28분 경에는 코스닥시장에 프로그램 매수호가 효력을 5분간..."
       ],
       "sources": [
         {
-          "press": "hankookilbo.com",
-          "title": "’감시 자산’ 태양광 무인기 170시간 성층권 비행… “세계 2위 경쟁력...",
-          "url": "https://n.news.naver.com/mnews/article/469/0000965033?sid=105"
+          "press": "MBN",
+          "title": "[속보] 미 빅스텝 우려에도 급등…코스피 2.6%·코스닥 5.6%↑",
+          "url": "https://n.news.naver.com/article/057/0001977721"
         },
         {
-          "press": "joongang.co.kr",
-          "title": "[사진] 구름 한점 없는 시장…‘무인’지경으로 날다",
-          "url": "https://n.news.naver.com/mnews/article/025/0003564555?sid=105"
+          "press": "디지털데일리",
+          "title": "“700선 탈환에 매수 사이드카까지”…코스닥 5.06% 폭등, 반도체·2차전지 질주",
+          "url": "https://n.news.naver.com/article/138/0002248092"
         },
         {
-          "press": "thereport.co.kr",
-          "title": "성층권 무인기 170시간 연속 비행",
-          "url": "https://www.thereport.co.kr/news/articleView.html?idxno=93267"
+          "press": "news2day.co.kr",
+          "title": "(마감시황) 코스피, 반도체주 강세 속 5,370선 안착…코스닥 연이틀 매수...",
+          "url": "https://www.news2day.co.kr/article/20261111500272"
         },
         {
-          "press": "e-science.co.kr",
-          "title": "우주항공청, 태양광 무인기 170시간 연속비행 성공…활주로 없는 미래항...",
-          "url": "https://www.e-science.co.kr/news/articleView.html?idxno=139555"
+          "press": "tf.co.kr",
+          "title": "코스닥, 매수 사이드카 켜고 700선 탈환…'최고가' 마무리",
+          "url": "https://n.news.naver.com/mnews/article/629/0000550970?sid=101"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "국내 기술로 개발한 태양광 무인기가 지상 20km 높이의 성층권에서 7일 이상 연속비행하는 데 성공했다."
+          "evidence": "코스닥이 11일 장중 5% 넘게 폭등하며 700선을 되찾았다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "우주청 관계자는 “낮은 기압과 극한 온도 등 도전적인 성층권 환경 때문에..."
+          "evidence": "외국인 6553억원 순매수…코스피 5,375.36 마감 삼성전자 3.57%·SK하이닉스 5.36% 동반 상승 코스닥 5.62% 급등…기관 홀로 3136억원 순매수 11일 코스피 지수가 전 거래일 대비 2.60%…"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "우리 기술로 개발 중인 성층권 태양광 무인기가 170시간이 넘는 연속 비행에 성공했다."
+          "evidence": "[속보] 미 빅스텝 우려에도 급등…코스피 2.6%·코스닥 5.6%↑"
         },
         {
           "panel": 4,
@@ -188,8 +89,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -225,70 +126,169 @@
       }
     },
     {
-      "issue_id": "i253254fb",
-      "title": "\"젠슨황 연인 앨리스황, 10조원 엔비디아 AI칩 중국으로 밀반입\"",
-      "category": "세계",
-      "rank": 4,
-      "priority_score": 45,
+      "issue_id": "i2acde214",
+      "title": "\"나도 성과급 8억 받을 수 있나\"…SK하이닉스, 학력 무관 채용에 '들썩'",
+      "category": "경제",
+      "rank": 9,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "중국 스파이 의혹을 받는 앨리스 황(중국명 황러)이 엔비디아 최고경영자(CEO) 젠슨 황과의 관계를 악용해 10조 원 규모의 엔비디아 AI 칩 24만 장을 중국으로 밀반입했다는 보도가 나왔다.",
-        "\"젠슨황 연인 앨리스황, 10조원 엔비디아 AI칩 중국으로 밀반입\"",
-        "“젠슨 황 외도 상대 앨리스 황, 10조원 엔비디아 AI칩 中 밀반입”",
-        "무려 10조 원 규모의 칩, 24만 개가 중국에 흘러 들어갔다는 보도가 나왔습니다.",
-        "어떻게 우회 유출할 수 있었을까요? [앵커] 남편까지 동원했다, 그러면 젠슨 황의 불륜 상대인 앨리스 황이 기혼이었던 건가요? [앵커] 칩 24만..."
+        "SK하이닉스가 올해 하반기 전임직(생산직) 직원 채용에 돌입했다.",
+        "\"나도 성과급 8억 받을 수 있나\"…SK하이닉스, 학력 무관 채용에 '들썩'",
+        "“SK하이닉스, 메모리 가격 하락해도 2029년 영업이익 290조 원”",
+        "“나도 8억 성과급”...SK하이닉스 학력무관 생산직 채용",
+        "11일 반도체 업계에 따르면, SK하이닉스는 전날 자사 채용 홈페이지에 '11월 탤런트 하이웨이 메인트 및..."
       ],
       "sources": [
         {
-          "press": "연합뉴스",
-          "title": "\"젠슨황 연인 앨리스황, 10조원 엔비디아 AI칩 중국으로 밀반입\"",
-          "url": "https://n.news.naver.com/article/001/0016434519"
+          "press": "이코노미스트",
+          "title": "\"나도 성과급 8억 받을 수 있나\"…SK하이닉스, 학력 무관 채용에 '들썩'",
+          "url": "https://n.news.naver.com/article/243/0000105521"
         },
         {
-          "press": "전자신문",
-          "title": "“젠슨 황 외도 상대 앨리스 황, 10조원 엔비디아 AI칩 中 밀반입”",
-          "url": "https://n.news.naver.com/article/030/0003484294"
+          "press": "주간동아",
+          "title": "“SK하이닉스, 메모리 가격 하락해도 2029년 영업이익 290조 원”",
+          "url": "https://n.news.naver.com/article/037/0000039126"
         },
         {
-          "press": "kbs.co.kr",
-          "title": "꼬리 잡힌 ‘中 칩 밀반입’…불륜 스캔들, ‘깐부’에도 불똥?",
-          "url": "https://n.news.naver.com/mnews/article/056/0012292148?sid=104"
+          "press": "매경이코노미",
+          "title": "“나도 8억 성과급”...SK하이닉스 학력무관 생산직 채용",
+          "url": "https://n.news.naver.com/article/024/0000109563"
         },
         {
-          "press": "ichannela.com",
-          "title": "[김종석의 리포트]“10조 AI칩 중국 밀반입”…앨리스 황 가족 간첩단?",
-          "url": "https://n.news.naver.com/mnews/article/449/0000367208?sid=104"
+          "press": "hankyung.com",
+          "title": "\"이번엔 학력도 안 본대\"…SK 하이닉스 '킹산직' 채용 공고에 '관심'",
+          "url": "https://n.news.naver.com/mnews/article/015/0005352954?sid=101"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "중국 스파이 의혹을 받는 앨리스 황(중국명 황러)이 엔비디아 최고경영자(CEO) 젠슨 황과의 관계를 악용해 10조 원 규모의 엔비디아 AI 칩 24만 장을 중국으로 밀반입했다는 보도가 나왔다."
+          "evidence": "SK하이닉스가 올해 하반기 전임직(생산직) 직원 채용에 돌입했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "젠슨 황의 내연녀인 앨리스 황이 우리 돈 10조 원 규모의 첨단 AI 반도체를 중국에 우회 공급하는 데..."
+          "evidence": "“SK하이닉스, 메모리 가격 하락해도 2029년 영업이익 290조 원”"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "\"젠슨황 연인 앨리스황, 10조원 엔비디아 AI칩 중국으로 밀반입\""
+          "evidence": "\"나도 성과급 8억 받을 수 있나\"…SK하이닉스, 학력 무관 채용에 '들썩'"
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "디인포메이션의 보도를 인용하여 싱가포르와 말레이시아 등의 기업망을 통해 AI칩 24만 개가 우회 유출된 구체적인 수법과 미스터리가 상세히 보도되는 전개를 보인다."
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
-        "scene": "security",
-        "direction": "보안 관제·접속 흔적·차단 절차를 사용, 실제 피해자·공격자 묘사는 제외",
+        "scene": "industry",
+        "direction": "공장 동선·안전 표지·가동 보드를 이용, 캐릭터 행동을 컷마다 바꿀 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i4b5a061e",
+      "title": "‘이란군 끝장냈다’는 트럼프…혁명수비대 지하 ‘미사일 도시’ 공개",
+      "category": "세계",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "도널드 트럼프 미국 대통령이 9일 기자들에게 “이란은 군사적으로 사실상 끝났다(effectively over)”라고 말했지만, 이란은 10일 탄도 미사일과 순항 미사일, 미사일 발사대가 포함된 새로운 지하 시설을 공",
+        "이란 측은 해당 미사일이 이스라엘의 ‘애로’, ‘다윗의 돌팔매’와 미국의 패트리엇 등 첨단 방공망을 돌파할 수 있다고 주장해왔다.",
+        "이와 함께 사거리 1450km의 3세대 고체 연료 미사일인 ‘카이바르 셰칸(Kheibar...",
+        "“이란은 군사적으로 사실상 끝났다.” 도널드 트럼프 미국 대통령이 지난 9일(현지시간) 이같이 선언한 지 하루 만에 이란이 미사일 수백 기가 늘어선 지하 군사시설을 공개했다.",
+        "미국과 이스라엘의 공습에도 미사일..."
+      ],
+      "sources": [
+        {
+          "press": "디지털타임스",
+          "title": "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”",
+          "url": "https://n.news.naver.com/article/029/0003058356"
+        },
+        {
+          "press": "연합뉴스",
+          "title": "\"젠슨황 연인 앨리스황, 10조원 엔비디아 AI칩 중국으로 밀반입\"",
+          "url": "https://n.news.naver.com/article/001/0016434519"
+        },
+        {
+          "press": "조선일보",
+          "title": "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”",
+          "url": "https://n.news.naver.com/article/023/0004008955"
+        },
+        {
+          "press": "중앙일보",
+          "title": "“남자 감전시키는 미소”…10조 AI칩 빼돌린 젠슨황 그녀, 유부녀?",
+          "url": "https://n.news.naver.com/article/025/0003564408"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "도널드 트럼프 미국 대통령이 9일 기자들에게 “이란은 군사적으로 사실상 끝났다(effectively over)”라고 말했지만, 이란은 10일 탄도 미사일과 순항 미사일, 미사일 발사대가 포함된 새로운 지하 시설을 공"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
