@@ -455,21 +455,53 @@ def parse_history_line(line):
 
 
 def load_politicians_archive(result):
-    """git origin/politicians people/ 디렉토리 전수 파싱 (3,296명)"""
-    print("Parsing 3,296 politicians from git archive politicians:people...")
-    cmd = ["git", "archive", "remotes/origin/politicians", "people"]
-    p = subprocess.Popen(cmd, cwd=ROOT, stdout=subprocess.PIPE)
-    with tarfile.open(fileobj=p.stdout, mode="r|") as tar:
-        for member in tar:
-            if not member.name.endswith(".json") or not member.isfile():
-                continue
-            f = tar.extractfile(member)
-            if not f:
-                continue
-            try:
-                pdata = json.loads(f.read().decode("utf-8"))
-            except Exception:
-                continue
+    """국회의원 원장 전수 파싱.
+
+    people 워크플로는 politicians 브랜치를 ``pol_db``로 얕게 체크아웃한다.
+    GitHub Actions의 기본 checkout에는 ``origin/politicians`` 원격 참조가 없으므로,
+    그 스냅샷을 먼저 읽는다. 개발 환경처럼 스냅샷이 없을 때만 예전 git archive
+    경로를 시도하며, 그것도 실패가 전체 인물사전 빌드를 무너뜨리지는 않게 한다.
+    """
+    pol_dir = os.environ.get("POLITICIANS_DIR", os.path.join(ROOT, "pol_db"))
+    people_files = sorted(glob.glob(os.path.join(pol_dir, "people", "*.json")))
+
+    def records():
+        if people_files:
+            print(f"Parsing {len(people_files):,} politicians from {pol_dir}/people...")
+            for path in people_files:
+                try:
+                    with open(path, "r", encoding="utf-8") as f:
+                        yield json.load(f)
+                except Exception:
+                    continue
+            return
+
+        print("Politicians snapshot is absent; trying git archive politicians:people...")
+        cmd = ["git", "archive", "remotes/origin/politicians", "people"]
+        p = subprocess.Popen(cmd, cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            with tarfile.open(fileobj=p.stdout, mode="r|") as tar:
+                for member in tar:
+                    if not member.name.endswith(".json") or not member.isfile():
+                        continue
+                    f = tar.extractfile(member)
+                    if not f:
+                        continue
+                    try:
+                        yield json.loads(f.read().decode("utf-8"))
+                    except Exception:
+                        continue
+        except tarfile.ReadError:
+            # 원격 브랜치가 fetch되지 않은 환경이다. 정밀 검증 프로필과 다른
+            # 출처들의 데이터는 계속 빌드해, 일시적인 원격 참조 문제로 데이터를
+            # 비우거나 전체 워크플로가 실패하지 않게 한다.
+            print("Warning: politicians git archive is unavailable; skipping archive fallback.")
+        finally:
+            if p.stdout:
+                p.stdout.close()
+            p.wait()
+
+    for pdata in records():
 
             name = pdata.get("name")
             pid = pdata.get("id")
