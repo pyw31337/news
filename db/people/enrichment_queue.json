@@ -1,43 +1,47 @@
 {
  "schema": 1,
- "updated": "2026-11-13T04:21:49+09:00",
+ "updated": "2026-11-13T02:51:24+09:00",
  "policy": "Tier-1, non-minor, stable Wikidata ID only",
  "items": [
   {
    "id": "wd:Q23505",
    "name": "조지 H. W. 부시",
    "kind": "정치",
-   "wikidata": "https://www.wikidata.org/wiki/Q23505",
-   "needs": [
-    "verified_portrait"
-   ]
-  },
-  {
-   "id": "wd:Q6761526",
-   "name": "마리아 레사",
-   "kind": "언론",
-   "wikidata": "https://www.wikidata.org/wiki/Q6761526",
-   "needs": [
-    "verified_portrait"
-   ]
-  },
-  {
-   "id": "wd:Q2599",
-   "name": "폴 매카트니",
-   "kind": "연예",
-   "wikidata": "https://www.wikidata.org/wiki/Q2599",
+   "wikidata": "https://www.wikidata.org/wiki/Q6294",
    "needs": [
     "verified_portrait",
+    "wikidata_facts"
+   ]
+  },
+  {
+   "id": "wd:Q173417",
+   "name": "조지프 퓰리처",
+   "kind": "언론",
+   "wikidata": "https://www.wikidata.org/wiki/Q173417",
+   "needs": [
+    "verified_portrait",
+    "wikidata_facts"
+   ]
+  },
+  {
+   "id": "wd:Q7294",
+   "name": "요하네스 브람스",
+   "kind": "연예",
+   "wikidata": "https://www.wikidata.org/wiki/Q7294",
+   "needs": [
+    "verified_portrait",
+    "wikidata_facts",
     "structured_profile"
    ]
   },
   {
-   "id": "wd:Q295218",
-   "name": "다지리 사토시",
+   "id": "wd:Q219861",
+   "name": "폴 월포위츠",
    "kind": "경제",
-   "wikidata": "https://www.wikidata.org/wiki/Q295218",
+   "wikidata": "https://www.wikidata.org/wiki/Q219861",
    "needs": [
-    "verified_portrait"
+    "verified_portrait",
+    "wikidata_facts"
    ]
   },
   {
@@ -46,7 +50,8 @@
    "kind": "법조",
    "wikidata": "https://www.wikidata.org/wiki/Q15488345",
    "needs": [
-    "verified_portrait"
+    "verified_portrait",
+    "wikidata_facts"
    ]
   },
   {
@@ -72,44 +77,44 @@
    "id": "wd:Q329",
    "name": "니콜라 사르코지",
    "kind": "정치",
-   "wikidata": "https://www.wikidata.org/wiki/Q329",
+   "wikidata": "https://www.wikidata.org/wiki/Q33866",
    "needs": [
     "verified_portrait"
    ]
   },
   {
-   "id": "wd:Q224029",
-   "name": "앙드레 모루아",
+   "id": "wd:Q76586",
+   "name": "카를 카우츠키",
    "kind": "언론",
-   "wikidata": "https://www.wikidata.org/wiki/Q224029",
+   "wikidata": "https://www.wikidata.org/wiki/Q76586",
    "needs": [
     "verified_portrait"
    ]
   },
   {
-   "id": "wd:Q37175",
-   "name": "조니 뎁",
+   "id": "wd:Q35332",
+   "name": "브래드 피트",
    "kind": "연예",
-   "wikidata": "https://www.wikidata.org/wiki/Q37175",
+   "wikidata": "https://www.wikidata.org/wiki/Q35332",
    "needs": [
     "verified_portrait",
     "structured_profile"
    ]
   },
   {
-   "id": "wd:Q354768",
-   "name": "야마우치 히로시",
+   "id": "wd:Q18207172",
+   "name": "리사 수",
    "kind": "경제",
-   "wikidata": "https://www.wikidata.org/wiki/Q354768",
+   "wikidata": "https://www.wikidata.org/wiki/Q18207172",
    "needs": [
     "verified_portrait"
    ]
   },
   {
-   "id": "wd:Q942923",
-   "name": "로이 콘",
+   "id": "wd:Q942386",
+   "name": "할란 스톤",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q942923",
+   "wikidata": "https://www.wikidata.org/wiki/Q942386",
    "needs": [
     "verified_portrait"
    ]
@@ -121,6 +126,7 @@
    "wikidata": "https://www.wikidata.org/wiki/Q50603",
    "needs": [
     "verified_portrait",
+    "wikidata_facts",
     "structured_profile"
    ]
   },
@@ -130,7 +136,80 @@
    "kind": "기타",
    "wikidata": "https://www.wikidata.org/wiki/Q4516986",
    "needs": [
-    "verified_portrait"
+    "verified_portrait",
+    "wikidata_facts"
+   ]
+  },
+  {
+   "id": "wd:Q23505",
+   "name": "조지 H. W. 부시",
+   "kind": "정치",
+   "wikidata": "https://www.wikidata.org/wiki/Q23505",
+   "needs": [
+    "verified_portrait",
+    "wikidata_facts"
+   ]
+  },
+  {
+   "id": "wd:Q6761526",
+   "name": "마리아 레사",
+   "kind": "언론",
+   "wikidata": "https://www.wikidata.org/wiki/Q6761526",
+   "needs": [
+    "verified_portrait",
+    "wikidata_facts"
+   ]
+  },
+  {
+   "id": "wd:Q2599",
+   "name": "폴 매카트니",
+   "kind": "연예",
+   "wikidata": "https://www.wikidata.org/wiki/Q2599",
+   "needs": [
+    "verified_portrait",
+    "wikidata_facts",
+    "structured_profile"
+   ]
+  },
+  {
+   "id": "wd:Q295218",
+   "name": "다지리 사토시",
+   "kind": "경제",
+   "wikidata": "https://www.wikidata.org/wiki/Q295218",
+   "needs": [
+    "verified_portrait",
+    "wikidata_facts"
+   ]
+  },
+  {
+   "id": "wd:Q942923",
+   "name": "로이 콘",
+   "kind": "법조",
+   "wikidata": "https://www.wikidata.org/wiki/Q942923",
+   "needs": [
+    "verified_portrait",
+    "wikidata_facts"
+   ]
+  },
+  {
+   "id": "wd:Q495980",
+   "name": "봉준호",
+   "kind": "스포츠",
+   "wikidata": "https://www.wikidata.org/wiki/Q495980",
+   "needs": [
+    "verified_portrait",
+    "wikidata_facts",
+    "structured_profile"
+   ]
+  },
+  {
+   "id": "wd:Q497174",
+   "name": "한학자",
+   "kind": "기타",
+   "wikidata": "https://www.wikidata.org/wiki/Q497174",
+   "needs": [
+    "verified_portrait",
+    "wikidata_facts"
    ]
   },
   {
@@ -176,26 +255,29 @@
    "kind": "법조",
    "wikidata": "https://www.wikidata.org/wiki/Q942386",
    "needs": [
-    "verified_portrait"
+    "verified_portrait",
+    "wikidata_facts"
    ]
   },
   {
-   "id": "wd:Q495980",
-   "name": "봉준호",
+   "id": "wd:Q312472",
+   "name": "틴토 브라스",
    "kind": "스포츠",
-   "wikidata": "https://www.wikidata.org/wiki/Q495980",
+   "wikidata": "https://www.wikidata.org/wiki/Q312472",
    "needs": [
     "verified_portrait",
+    "wikidata_facts",
     "structured_profile"
    ]
   },
   {
-   "id": "wd:Q497174",
-   "name": "한학자",
+   "id": "wd:Q21825065",
+   "name": "조슈아",
    "kind": "기타",
-   "wikidata": "https://www.wikidata.org/wiki/Q497174",
+   "wikidata": "https://www.wikidata.org/wiki/Q21825065",
    "needs": [
-    "verified_portrait"
+    "verified_portrait",
+    "wikidata_facts"
    ]
   },
   {
@@ -236,10 +318,10 @@
    ]
   },
   {
-   "id": "wd:Q55729828",
-   "name": "문형배",
+   "id": "wd:Q48054569",
+   "name": "유남석",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q55729828",
+   "wikidata": "https://www.wikidata.org/wiki/Q48054569",
    "needs": [
     "verified_portrait"
    ]
@@ -269,8 +351,7 @@
    "kind": "정치",
    "wikidata": "https://www.wikidata.org/wiki/Q9588",
    "needs": [
-    "verified_portrait",
-    "wikidata_facts"
+    "verified_portrait"
    ]
   },
   {
@@ -305,10 +386,10 @@
    ]
   },
   {
-   "id": "wd:Q48054569",
-   "name": "유남석",
+   "id": "wd:Q131387699",
+   "name": "김형두",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q48054569",
+   "wikidata": "https://www.wikidata.org/wiki/Q131387699",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -374,10 +455,10 @@
    ]
   },
   {
-   "id": "wd:Q131387699",
-   "name": "김형두",
+   "id": "wd:Q31179718",
+   "name": "이선애",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q131387699",
+   "wikidata": "https://www.wikidata.org/wiki/Q31179718",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -442,15 +523,14 @@
    "wikidata": "https://www.wikidata.org/wiki/Q624109",
    "needs": [
     "verified_portrait",
-    "wikidata_facts",
-    "cited_timeline"
+    "wikidata_facts"
    ]
   },
   {
-   "id": "wd:Q31179718",
-   "name": "이선애",
+   "id": "wd:Q97226062",
+   "name": "김상환",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q31179718",
+   "wikidata": "https://www.wikidata.org/wiki/Q97226062",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -519,10 +599,10 @@
    ]
   },
   {
-   "id": "wd:Q97226062",
-   "name": "김상환",
+   "id": "wd:Q12609290",
+   "name": "원민경",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q97226062",
+   "wikidata": "https://www.wikidata.org/wiki/Q12609290",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -546,7 +626,8 @@
    "wikidata": "https://www.wikidata.org/wiki/Q486108",
    "needs": [
     "verified_portrait",
-    "wikidata_facts"
+    "wikidata_facts",
+    "structured_profile"
    ]
   },
   {
@@ -591,10 +672,10 @@
    ]
   },
   {
-   "id": "wd:Q12609290",
-   "name": "원민경",
+   "id": "wd:Q3565116",
+   "name": "강금실",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q12609290",
+   "wikidata": "https://www.wikidata.org/wiki/Q3565116",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -607,8 +688,7 @@
    "wikidata": "https://www.wikidata.org/wiki/Q887992",
    "needs": [
     "verified_portrait",
-    "wikidata_facts",
-    "structured_profile"
+    "wikidata_facts"
    ]
   },
   {
@@ -663,10 +743,10 @@
    ]
   },
   {
-   "id": "wd:Q3565116",
-   "name": "강금실",
+   "id": "wd:Q16080181",
+   "name": "김덕주",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q3565116",
+   "wikidata": "https://www.wikidata.org/wiki/Q16080181",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -737,10 +817,10 @@
    ]
   },
   {
-   "id": "wd:Q16080181",
-   "name": "김덕주",
+   "id": "wd:Q130539733",
+   "name": "김복형",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q16080181",
+   "wikidata": "https://www.wikidata.org/wiki/Q130539733",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -772,8 +852,7 @@
    "kind": "정치",
    "wikidata": "https://www.wikidata.org/wiki/Q9582",
    "needs": [
-    "verified_portrait",
-    "wikidata_facts"
+    "verified_portrait"
    ]
   },
   {
@@ -808,10 +887,10 @@
    ]
   },
   {
-   "id": "wd:Q130539733",
-   "name": "김복형",
+   "id": "wd:Q16080338",
+   "name": "김용철",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q130539733",
+   "wikidata": "https://www.wikidata.org/wiki/Q16080338",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -881,10 +960,10 @@
    ]
   },
   {
-   "id": "wd:Q16080338",
-   "name": "김용철",
+   "id": "wd:Q12590443",
+   "name": "노재헌",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q16080338",
+   "wikidata": "https://www.wikidata.org/wiki/Q12590443",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -964,10 +1043,10 @@
    ]
   },
   {
-   "id": "wd:Q12590443",
-   "name": "노재헌",
+   "id": "wd:Q16084815",
+   "name": "안창호",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q12590443",
+   "wikidata": "https://www.wikidata.org/wiki/Q16084815",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -980,8 +1059,7 @@
    "wikidata": "https://www.wikidata.org/wiki/Q313968",
    "needs": [
     "verified_portrait",
-    "wikidata_facts",
-    "structured_profile"
+    "wikidata_facts"
    ]
   },
   {
@@ -991,8 +1069,7 @@
    "wikidata": "https://www.wikidata.org/wiki/Q19162096",
    "needs": [
     "verified_portrait",
-    "wikidata_facts",
-    "structured_profile"
+    "wikidata_facts"
    ]
   },
   {
@@ -1037,10 +1114,10 @@
    ]
   },
   {
-   "id": "wd:Q16084815",
-   "name": "안창호",
+   "id": "wd:Q64151669",
+   "name": "이미선",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q16084815",
+   "wikidata": "https://www.wikidata.org/wiki/Q64151669",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1111,10 +1188,10 @@
    ]
   },
   {
-   "id": "wd:Q64151669",
-   "name": "이미선",
+   "id": "wd:Q16178221",
+   "name": "이석태",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q64151669",
+   "wikidata": "https://www.wikidata.org/wiki/Q16178221",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1183,10 +1260,10 @@
    ]
   },
   {
-   "id": "wd:Q16178221",
-   "name": "이석태",
+   "id": "wd:Q16091001",
+   "name": "이시윤",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q16178221",
+   "wikidata": "https://www.wikidata.org/wiki/Q16091001",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1255,10 +1332,10 @@
    ]
   },
   {
-   "id": "wd:Q16091001",
-   "name": "이시윤",
+   "id": "wd:Q55733420",
+   "name": "이종석",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q16091001",
+   "wikidata": "https://www.wikidata.org/wiki/Q55733420",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1271,7 +1348,8 @@
    "wikidata": "https://www.wikidata.org/wiki/Q350215",
    "needs": [
     "verified_portrait",
-    "wikidata_facts"
+    "wikidata_facts",
+    "structured_profile"
    ]
   },
   {
@@ -1326,10 +1404,10 @@
    ]
   },
   {
-   "id": "wd:Q55733420",
-   "name": "이종석",
+   "id": "wd:Q18684992",
+   "name": "이진성",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q55733420",
+   "wikidata": "https://www.wikidata.org/wiki/Q18684992",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1397,10 +1475,10 @@
    ]
   },
   {
-   "id": "wd:Q18684992",
-   "name": "이진성",
+   "id": "wd:Q127171453",
+   "name": "정형식",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q18684992",
+   "wikidata": "https://www.wikidata.org/wiki/Q127171453",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1469,10 +1547,10 @@
    ]
   },
   {
-   "id": "wd:Q127171453",
-   "name": "정형식",
+   "id": "wd:Q61772100",
+   "name": "김기영",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q127171453",
+   "wikidata": "https://www.wikidata.org/wiki/Q61772100",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1485,7 +1563,8 @@
    "wikidata": "https://www.wikidata.org/wiki/Q318757",
    "needs": [
     "verified_portrait",
-    "wikidata_facts"
+    "wikidata_facts",
+    "structured_profile"
    ]
   },
   {
@@ -1540,10 +1619,10 @@
    ]
   },
   {
-   "id": "wd:Q61772100",
-   "name": "김기영",
+   "id": "wd:Q12588211",
+   "name": "김용준",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q61772100",
+   "wikidata": "https://www.wikidata.org/wiki/Q12588211",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1611,10 +1690,10 @@
    ]
   },
   {
-   "id": "wd:Q12588211",
-   "name": "김용준",
+   "id": "wd:Q18683767",
+   "name": "김창종",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q12588211",
+   "wikidata": "https://www.wikidata.org/wiki/Q18683767",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1683,10 +1762,10 @@
    ]
   },
   {
-   "id": "wd:Q18683767",
-   "name": "김창종",
+   "id": "wd:Q28700137",
+   "name": "문유석",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q18683767",
+   "wikidata": "https://www.wikidata.org/wiki/Q28700137",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1699,8 +1778,7 @@
    "wikidata": "https://www.wikidata.org/wiki/Q359789",
    "needs": [
     "verified_portrait",
-    "wikidata_facts",
-    "structured_profile"
+    "wikidata_facts"
    ]
   },
   {
@@ -1755,10 +1833,10 @@
    ]
   },
   {
-   "id": "wd:Q28700137",
-   "name": "문유석",
+   "id": "wd:Q16169521",
+   "name": "서기석",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q28700137",
+   "wikidata": "https://www.wikidata.org/wiki/Q16169521",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1827,10 +1905,10 @@
    ]
   },
   {
-   "id": "wd:Q16169521",
-   "name": "서기석",
+   "id": "wd:Q12610186",
+   "name": "윤관",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q16169521",
+   "wikidata": "https://www.wikidata.org/wiki/Q12610186",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1898,10 +1976,10 @@
    ]
   },
   {
-   "id": "wd:Q12610186",
-   "name": "윤관",
+   "id": "wd:Q61714835",
+   "name": "이영진",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q12610186",
+   "wikidata": "https://www.wikidata.org/wiki/Q61714835",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -1914,7 +1992,8 @@
    "wikidata": "https://www.wikidata.org/wiki/Q485431",
    "needs": [
     "verified_portrait",
-    "wikidata_facts"
+    "wikidata_facts",
+    "structured_profile"
    ]
   },
   {
@@ -1969,10 +2048,10 @@
    ]
   },
   {
-   "id": "wd:Q61714835",
-   "name": "이영진",
+   "id": "wd:Q12612556",
+   "name": "이정미",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q61714835",
+   "wikidata": "https://www.wikidata.org/wiki/Q12612556",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2040,10 +2119,10 @@
    ]
   },
   {
-   "id": "wd:Q12612556",
-   "name": "이정미",
+   "id": "wd:Q16091838",
+   "name": "조규광",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q12612556",
+   "wikidata": "https://www.wikidata.org/wiki/Q16091838",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2056,8 +2135,7 @@
    "wikidata": "https://www.wikidata.org/wiki/Q16235005",
    "needs": [
     "verified_portrait",
-    "wikidata_facts",
-    "structured_profile"
+    "wikidata_facts"
    ]
   },
   {
@@ -2112,10 +2190,10 @@
    ]
   },
   {
-   "id": "wd:Q16091838",
-   "name": "조규광",
+   "id": "wd:Q134627587",
+   "name": "지귀연",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q16091838",
+   "wikidata": "https://www.wikidata.org/wiki/Q134627587",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2184,10 +2262,10 @@
    ]
   },
   {
-   "id": "wd:Q134627587",
-   "name": "지귀연",
+   "id": "wd:Q106792173",
+   "name": "천대엽",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q134627587",
+   "wikidata": "https://www.wikidata.org/wiki/Q106792173",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2254,10 +2332,10 @@
    ]
   },
   {
-   "id": "wd:Q106792173",
-   "name": "천대엽",
+   "id": "wd:Q61101017",
+   "name": "공상훈",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q106792173",
+   "wikidata": "https://www.wikidata.org/wiki/Q61101017",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2326,10 +2404,10 @@
    ]
   },
   {
-   "id": "wd:Q61101017",
-   "name": "공상훈",
+   "id": "wd:Q18683681",
+   "name": "권성",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q61101017",
+   "wikidata": "https://www.wikidata.org/wiki/Q18683681",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2397,10 +2475,10 @@
    ]
   },
   {
-   "id": "wd:Q18683681",
-   "name": "권성",
+   "id": "wd:Q117822481",
+   "name": "김문희",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q18683681",
+   "wikidata": "https://www.wikidata.org/wiki/Q117822481",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2469,10 +2547,10 @@
    ]
   },
   {
-   "id": "wd:Q117822481",
-   "name": "김문희",
+   "id": "wd:Q55728316",
+   "name": "김재형",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q117822481",
+   "wikidata": "https://www.wikidata.org/wiki/Q55728316",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2531,10 +2609,10 @@
    ]
   },
   {
-   "id": "wd:Q55728316",
-   "name": "김재형",
+   "id": "wd:Q115528369",
+   "name": "김정원",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q55728316",
+   "wikidata": "https://www.wikidata.org/wiki/Q115528369",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2592,10 +2670,10 @@
    ]
   },
   {
-   "id": "wd:Q115528369",
-   "name": "김정원",
+   "id": "wd:Q12588654",
+   "name": "김종대",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q115528369",
+   "wikidata": "https://www.wikidata.org/wiki/Q12588654",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2644,10 +2722,10 @@
    ]
   },
   {
-   "id": "wd:Q12588654",
-   "name": "김종대",
+   "id": "wd:Q55728361",
+   "name": "김주현",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q12588654",
+   "wikidata": "https://www.wikidata.org/wiki/Q55728361",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2696,10 +2774,10 @@
    ]
   },
   {
-   "id": "wd:Q55728361",
-   "name": "김주현",
+   "id": "wd:Q55728795",
+   "name": "노태악",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q55728361",
+   "wikidata": "https://www.wikidata.org/wiki/Q55728795",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2748,10 +2826,10 @@
    ]
   },
   {
-   "id": "wd:Q55728795",
-   "name": "노태악",
+   "id": "wd:Q133826305",
+   "name": "류경진",
    "kind": "법조",
-   "wikidata": "https://www.wikidata.org/wiki/Q55728795",
+   "wikidata": "https://www.wikidata.org/wiki/Q133826305",
    "needs": [
     "verified_portrait",
     "wikidata_facts"
@@ -2764,8 +2842,7 @@
    "wikidata": "https://www.wikidata.org/wiki/Q7137763",
    "needs": [
     "verified_portrait",
-    "wikidata_facts",
-    "structured_profile"
+    "wikidata_facts"
    ]
   },
   {
