@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-12",
-  "generated_at": "2026-11-12T17:27:30+09:00",
+  "generated_at": "2026-11-12T15:53:18+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "ie3e83d54",
-      "title": "국민연금 엔비디아 평가액, 네 달 새 4조원 증발",
-      "category": "경제",
-      "rank": 5,
+      "issue_id": "iaf49a581",
+      "title": "숨진 채 발견된 10대…집 안엔 어머니·동생 숨져 있었다",
+      "category": "사회",
+      "rank": 3,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -38,22 +38,220 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "앨리스 황 이어 사내 임원과도 불륜 의혹 엔비디아 이사회, 젠슨 황 해임 검토 인공지능(AI) 시대의 황제로 불리던 젠슨 황 엔비디아 최고경영자(CEO)가 불륜 스캔들로 최대 위기를 맞았다.",
-        "젠슨 황 엔비디아 최고경영자(CEO)와의 불륜 및 중국 스파이 의혹에 휩싸인 앨리스 황(중국명 황러)의 과거 이력이 온라인에서 재조명되고 있다.",
-        "학창 시절 사진에 이어 프랑스 요리학교에서 함께 공부했다는 인물의...",
-        "“젠슨황, 엔비디아 여성 임원과도 혼외관계”…‘사내불륜’ 추가 폭로",
+        "경기 시흥시 은계지구 한 아파트에서 40대 어머니와 10대 두 아들이 숨진 채 발견돼 경찰이 수사에 나섰다.",
+        "[속보] 시흥 아파트서 40대 어머니와 10대 두 아들 숨진 채 발견… \"흉기 상처\"",
+        "아파트 단지엔 10대 아들, 집안선 엄마-동생 숨진채 발견",
+        "시흥 아파트서 母子 3명 숨진 채 발견… 어머니와 둘째아들 몸엔 자상",
+        "경기도 시흥 아파트서 어머니와 10대 두 아들 숨진 채 발견"
+      ],
+      "sources": [
+        {
+          "press": "한국일보",
+          "title": "[속보] 시흥 아파트서 40대 어머니와 10대 두 아들 숨진 채 발견… \"흉기 상처\"",
+          "url": "https://n.news.naver.com/article/469/0000965144"
+        },
+        {
+          "press": "동아일보",
+          "title": "아파트 단지엔 10대 아들, 집안선 엄마-동생 숨진채 발견",
+          "url": "https://n.news.naver.com/article/020/0003761968"
+        },
+        {
+          "press": "조선일보",
+          "title": "시흥 아파트서 母子 3명 숨진 채 발견… 어머니와 둘째아들 몸엔 자상",
+          "url": "https://n.news.naver.com/article/023/0004009216"
+        },
+        {
+          "press": "MBC",
+          "title": "경기도 시흥 아파트서 어머니와 10대 두 아들 숨진 채 발견",
+          "url": "https://n.news.naver.com/article/214/0001535117"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "경기 시흥시 은계지구 한 아파트에서 40대 어머니와 10대 두 아들이 숨진 채 발견돼 경찰이 수사에 나섰다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "전남광주 북구 아파트 화재 70대 경비원 심정지 상태 발견"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "[속보] 시흥 아파트서 40대 어머니와 10대 두 아들 숨진 채 발견… \"흉기 상처\""
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "if3a5d681",
+      "title": "[속보] '성북구 15세 소녀 살해' 50대男 구속영장 신청…계획범죄 정황",
+      "category": "사회",
+      "rank": 7,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "경찰이 지난 10일 서울 성북구에서 15세 소녀를 살해한 혐의로 붙잡힌 50대 남성에 대한 구속영장을 신청했다.",
+        "[단독] '15살 소녀 살해' 50대 구속영장 신청...이 시각 성북경찰서",
+        "대한 구속영장을 신청했습니다.",
+        "앞으로 경찰이 어떤 부분에 대해서 집중적으로 수사를 해서 어떤 결과가 나올지 지켜봐야 될 것 같습니다.",
+        "지금까지 사회부 김혜린 기자와 15살 소녀가 살해된 사건의 배경과 남은..."
+      ],
+      "sources": [
+        {
+          "press": "YTN",
+          "title": "[단독] '15살 소녀 살해' 50대 구속영장 신청...이 시각 성북경찰서",
+          "url": "https://n.news.naver.com/article/052/0002431849"
+        },
+        {
+          "press": "ytn.co.kr",
+          "title": "[단독] '15살 소녀 살인' 숙소 예약한 전 연인...\"성매매·절도 강요\"",
+          "url": "https://n.news.naver.com/mnews/article/052/0002431897?sid=102"
+        },
+        {
+          "press": "연합뉴스TV",
+          "title": "경찰, '10대 소녀 살해' 50대 남성 구속영장 신청…살인 혐의",
+          "url": "https://n.news.naver.com/article/422/0000925427"
+        },
+        {
+          "press": "노컷뉴스",
+          "title": "[단독] 성북구 10대 살해, 前 연인 범죄 은폐 목적 가능성",
+          "url": "https://n.news.naver.com/article/079/0004208889"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "경찰이 지난 10일 서울 성북구에서 15세 소녀를 살해한 혐의로 붙잡힌 50대 남성에 대한 구속영장을 신청했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "지금까지 사회부 김혜린 기자와 15살 소녀가 살해된 사건의 배경과 남은..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "[단독] '15살 소녀 살해' 50대 구속영장 신청...이 시각 성북경찰서"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i17f33385",
+      "title": "AI 황제에서 '불륜의 제왕'으로…젠슨 황, 엔비디아서 쫓겨나나",
+      "category": "IT",
+      "rank": 1,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "엔비디아의 젠슨 황 CEO가 중국 정보기관과 연계된 것으로 의심되는 여성 기업가 앨리스 황 및 사내 고위 임원과의 연쇄 불륜 스캔들에 휘말리며 해임 위기에 처했다.",
+        "젠슨 황, 사내 불륜도 걸렸다...",
+        "“엔비디아 이사회서 해임 준비”",
+        "tvN '유 퀴즈 온 더 블럭'에서 첫사랑 아내와의 러브스토리를 공개하며 애정을 드러냈던 젠슨 황 엔비디아 최고경영자(CEO)가 외도 사실을 인정한 가운데, 불륜 상대로 지목된 여성의 행방에도 관심이 집중되고 있다....",
         "젠슨 황 ‘불륜 스캔들’에 불똥 튄 국민연금…엔비디아 4조원 ‘증발’"
       ],
       "sources": [
         {
-          "press": "mk.co.kr",
-          "title": "“젠슨 황 불륜女, 20대엔 수수했네?”…“젠슨 황 딸과 같은 요리학교...",
-          "url": "https://n.news.naver.com/mnews/article/009/0005762910?sid=104"
+          "press": "MBN",
+          "title": "[속보] 미 빅스텝 우려에도 급등…코스피 2.6%·코스닥 5.6%↑",
+          "url": "https://n.news.naver.com/article/057/0001977721"
         },
         {
-          "press": "강원일보",
-          "title": "“젠슨황, 엔비디아 여성 임원과도 혼외관계”…‘사내불륜’ 추가 폭로",
-          "url": "https://n.news.naver.com/article/087/0001230342"
+          "press": "sportschosun.com",
+          "title": "“49세·남편도 있어” 젠슨황 불륜女 '미스터리'...베이징 도피 '포착'",
+          "url": "https://m.entertain.naver.com/article/076/0004466237"
         },
         {
           "press": "경기일보",
@@ -61,21 +259,21 @@
           "url": "https://n.news.naver.com/article/666/0000131755"
         },
         {
-          "press": "주간조선",
-          "title": "\"CEO 불륜에 내 노후가 왜?\"…국민연금, 엔비디아 평가액 4조원 증발",
-          "url": "https://n.news.naver.com/article/053/0000062990"
+          "press": "SBS Biz",
+          "title": "WSJ \"엔비디아 이사회, 젠슨 황 해임 준비\"…NYT \"젠슨 황, 부하 임원과도 불륜",
+          "url": "https://n.news.naver.com/article/374/0000543237"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "앨리스 황 이어 사내 임원과도 불륜 의혹 엔비디아 이사회, 젠슨 황 해임 검토 인공지능(AI) 시대의 황제로 불리던 젠슨 황 엔비디아 최고경영자(CEO)가 불륜 스캔들로 최대 위기를 맞았다."
+          "evidence": "엔비디아의 젠슨 황 CEO가 중국 정보기관과 연계된 것으로 의심되는 여성 기업가 앨리스 황 및 사내 고위 임원과의 연쇄 불륜 스캔들에 휘말리며 해임 위기에 처했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "젠슨 황 엔비디아 최고경영자(CEO)를 둘러싼 불륜 스캔들이 미국과 중국의 무역 갈등을 재점화할 수 있다는 분석이 제기됐다."
+          "evidence": "외국인 6553억원 순매수…코스피 5,375.36 마감 삼성전자 3.57%·SK하이닉스 5.36% 동반 상승 코스닥 5.62% 급등…기관 홀로 3136억원 순매수 11일 코스피 지수가 전 거래일 대비 2.60%…"
         },
         {
           "panel": 3,
@@ -85,7 +283,7 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+          "evidence": "사내 임원과의 추가 불륜 의혹이 제기되면서 이사회가 해임 절차에 착수하는 등 CEO의 거취가 사실상 종착역에 다다랐다는 해석이 나온다."
         }
       ],
       "visual_brief": {
@@ -126,109 +324,10 @@
       }
     },
     {
-      "issue_id": "ife332526",
-      "title": "이재용 “온양을 최첨단 HBM 거점으로”…삼성, 56조 투입해 생산능력 확대",
-      "category": "경제",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "온양 HBM 신공장 2028년 6월 가동…기존 계획보다",
-        "이재용 “온양을 최첨단 HBM 거점으로”…삼성, 56조 투입해 생산능력 확대",
-        "충남대 학생 “삼성전자 면접 봅니다”…함께 웃음 터트린 李대통령-이재용 회장",
-        "이재용 \"또 한 번의 도약\"…삼성전자, 온양 HBM 거점 구축에 46조원 투자",
-        "이재용 \"온양, 최첨단 HBM 거점으로\"…공장 가동 1년 앞당긴다"
-      ],
-      "sources": [
-        {
-          "press": "경향신문",
-          "title": "후계자 없는 엔비디아···젠슨 황 ‘이중 불륜’에 해임 급물살, 차기 CEO로 유력한 인물은?",
-          "url": "https://n.news.naver.com/article/032/0003482341"
-        },
-        {
-          "press": "서울경제",
-          "title": "충남대 학생 “삼성전자 면접 봅니다”…함께 웃음 터트린 李대통령-이재용 회장",
-          "url": "https://n.news.naver.com/article/011/0004681454"
-        },
-        {
-          "press": "디지털데일리",
-          "title": "이재용 \"또 한 번의 도약\"…삼성전자, 온양 HBM 거점 구축에 46조원 투자",
-          "url": "https://n.news.naver.com/article/138/0002248310"
-        },
-        {
-          "press": "아이뉴스24",
-          "title": "이재용 \"온양, 최첨단 HBM 거점으로\"…공장 가동 1년 앞당긴다",
-          "url": "https://n.news.naver.com/article/031/0001074415"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "온양 HBM 신공장 2028년 6월 가동…기존 계획보다"
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "이재용 \"또 한 번의 도약\"…삼성전자, 온양 HBM 거점 구축에 46조원 투자"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "이재용 “온양을 최첨단 HBM 거점으로”…삼성, 56조 투입해 생산능력 확대"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i5efb3db4",
-      "title": "\"불륜 의혹 또 터졌다\"…젠슨황 해임 검토하는 엔비디아",
+      "issue_id": "i85476dba",
+      "title": "\"젠슨 황 내연녀, 10조 엔비디아 칩 중국으로 밀반입\"",
       "category": "세계",
-      "rank": 4,
+      "rank": 3,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -236,49 +335,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "젠슨 황 엔비디아 CEO가 사내 여성 임원과 혼외관계를 맺었다는 의혹을 받고 있다.",
-        "CNN \"엔비디아 이사회 진행 중, 젠슨 황 거취 논의\"…해임 관측도",
-        "젠슨 황, 사내 불륜도 걸렸다...",
-        "“엔비디아 이사회서 해임 준비”",
-        "젠슨 황 해임 기로…30년 함께한 엔비디아 이사진 선택 주목"
+        "중국 정보기관과 연계됐다는 의혹을 받는 앨리스 황이 젠슨 황 엔비디아 CEO와의 사적 관계를 이용해 미국의 수출 통제 대상인 고성능 인공지능(AI) 반도체를 중국에 우회 공급했다는 의혹이 있다.",
+        "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”",
+        "\"젠슨황 연인 앨리스황, 10조원 엔비디아 AI칩 중국으로 밀반입\"",
+        "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”",
+        "“남자 감전시키는 미소”…10조 AI칩 빼돌린 젠슨황 그녀, 유부녀?"
       ],
       "sources": [
         {
-          "press": "뉴시스",
-          "title": "CNN \"엔비디아 이사회 진행 중, 젠슨 황 거취 논의\"…해임 관측도",
-          "url": "https://n.news.naver.com/article/003/0014318414"
+          "press": "디지털타임스",
+          "title": "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”",
+          "url": "https://n.news.naver.com/article/029/0003058356"
+        },
+        {
+          "press": "연합뉴스",
+          "title": "\"젠슨황 연인 앨리스황, 10조원 엔비디아 AI칩 중국으로 밀반입\"",
+          "url": "https://n.news.naver.com/article/001/0016434519"
         },
         {
           "press": "조선일보",
-          "title": "젠슨 황, 사내 불륜도 걸렸다... “엔비디아 이사회서 해임 준비”",
-          "url": "https://n.news.naver.com/article/023/0004009193"
+          "title": "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”",
+          "url": "https://n.news.naver.com/article/023/0004008955"
         },
         {
-          "press": "뉴시스",
-          "title": "젠슨 황 해임 기로…30년 함께한 엔비디아 이사진 선택 주목",
-          "url": "https://n.news.naver.com/article/003/0014318544"
-        },
-        {
-          "press": "농민신문",
-          "title": "스캔들에 무너지는 ‘젠슨황’…“엔비디아 이사회, 해임 논의”",
-          "url": "https://n.news.naver.com/article/662/0000108268"
+          "press": "중앙일보",
+          "title": "“남자 감전시키는 미소”…10조 AI칩 빼돌린 젠슨황 그녀, 유부녀?",
+          "url": "https://n.news.naver.com/article/025/0003564408"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "젠슨 황 엔비디아 CEO가 사내 여성 임원과 혼외관계를 맺었다는 의혹을 받고 있다."
+          "evidence": "중국 정보기관과 연계됐다는 의혹을 받는 앨리스 황이 젠슨 황 엔비디아 CEO와의 사적 관계를 이용해 미국의 수출 통제 대상인 고성능 인공지능(AI) 반도체를 중국에 우회 공급했다는 의혹이 있다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "CNN \"엔비디아 이사회 진행 중, 젠슨 황 거취 논의\"…해임 관측도"
+          "evidence": "앨리스 황 뒤엔 가족 간첩단?…“10조원대 엔비디아 칩, 중국 공급 관여”"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "젠슨 황 해임 기로…30년 함께한 엔비디아 이사진 선택 주목"
+          "evidence": "서류 흔적없이…“‘中 스파이’ 앨리스황, 10조원 엔비디아 AI칩 중국 밀반입”"
         },
         {
           "panel": 4,
@@ -287,8 +386,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
