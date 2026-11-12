@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-12",
-  "generated_at": "2026-11-12T13:22:03+09:00",
+  "generated_at": "2026-11-12T12:28:11+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i3e5777a0",
-      "title": "젠슨황 '사내불륜' 추가 폭로…NYT \"엔비디아 임원과 혼외관계\"(종합)",
+      "issue_id": "ifda9f7b2",
+      "title": "젠슨 황 또 터졌다, 이번엔 '사내 불륜'…엔비디아 퇴출 위기",
       "category": "경제",
-      "rank": 6,
+      "rank": 1,
       "priority_score": 45,
       "production_types": [
         "comic",
@@ -38,13 +38,216 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "중국 스파이로 지목된 앨리스 황과의 외도 의혹으로 곤경에 처했던 젠슨 황 엔비디아 최고경영자(CEO)가 자사의 직속 부하인 킴벌리 파월 헬스케어 부문 부사장 등 여성 임원과도 혼외 관계를 맺었다는 추가 폭로가 제기됐다.",
-        "젠슨 황 외도 또 폭로됐다… NYT \"엔비디아 임원과도 혼외 관계\"",
-        "젠슨황 '사내불륜' 추가 폭로…\"엔비디아 임원과 외도\"",
-        "젠슨 황 '사내불륜' 추가 폭로…\"직원들도 알았다\"",
-        "그가 임원으로 활동했던 싱가포르 업체 메가스피드는 엔비디아 반도체를 중국에 불법 유출한 의혹으로 미..."
+        "엔비디아 이사회가 젠슨 황 최고경영자(CEO)의 해임을 준비하고 있다는 외신 보도가 나왔다.",
+        "[속보] “엔비디아 이사회, 젠슨황 거취결정 회의 중”…‘사내 불륜’에 기류 급변",
+        "\"엔비디아 이사회, 젠슨황 거취결정 회의…후임 CEO 찾는 중\"(종합2보)",
+        "젠슨 황, 사내 불륜도 걸렸다...",
+        "“엔비디아 이사회서 해임 준비”"
       ],
       "sources": [
+        {
+          "press": "디지털타임스",
+          "title": "[속보] “엔비디아 이사회, 젠슨황 거취결정 회의 중”…‘사내 불륜’에 기류 급변",
+          "url": "https://n.news.naver.com/article/029/0003058715"
+        },
+        {
+          "press": "연합뉴스",
+          "title": "\"엔비디아 이사회, 젠슨황 거취결정 회의…후임 CEO 찾는 중\"(종합2보)",
+          "url": "https://n.news.naver.com/article/001/0016437692"
+        },
+        {
+          "press": "조선일보",
+          "title": "젠슨 황, 사내 불륜도 걸렸다... “엔비디아 이사회서 해임 준비”",
+          "url": "https://n.news.naver.com/article/023/0004009193"
+        },
+        {
+          "press": "한겨레",
+          "title": "젠슨 황, 엔비디아 부사장과도 외도 의혹…“이사회 해임 준비”",
+          "url": "https://n.news.naver.com/article/028/0002831819"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "엔비디아 이사회가 젠슨 황 최고경영자(CEO)의 해임을 준비하고 있다는 외신 보도가 나왔다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "[속보] “엔비디아 이사회, 젠슨황 거취결정 회의 중”…‘사내 불륜’에 기류 급변"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "\"엔비디아 이사회, 젠슨황 거취결정 회의…후임 CEO 찾는 중\"(종합2보)"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "피해지원금 신청 서비스 오픈 등 기업 관련 소식이 전해진 날이다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i9b87d653",
+      "title": "[속보] 시흥 아파트서 40대 어머니와 10대 두 아들 숨진 채 발견… \"흉기 상처\"",
+      "category": "경제",
+      "rank": 3,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "2026년 11월 12일 오전 7시 28분경 경기 시흥시 은계지구의 한 아파트에서 40대 어머니와 10대 두 아들이 숨진 채 발견되었다.",
+        "[속보] 시흥 아파트서 40대 어머니와 10대 두 아들 숨진 채 발견… \"흉기 상처\"",
+        "시흥 아파트서 엄마·10대 두 아들 숨진 채 발견...흉기 추정 상처",
+        "경기도 시흥 아파트서 어머니와 10대 두 아들 숨진 채 발견",
+        "시흥 아파트서 일가족 3명 숨진 채 발견… 흉기에 의한 것으로 추정되는 상처 다수"
+      ],
+      "sources": [
+        {
+          "press": "한국일보",
+          "title": "[속보] 시흥 아파트서 40대 어머니와 10대 두 아들 숨진 채 발견… \"흉기 상처\"",
+          "url": "https://n.news.naver.com/article/469/0000965144"
+        },
+        {
+          "press": "한겨레",
+          "title": "시흥 아파트서 엄마·10대 두 아들 숨진 채 발견...흉기 추정 상처",
+          "url": "https://n.news.naver.com/article/028/0002831842"
+        },
+        {
+          "press": "MBC",
+          "title": "경기도 시흥 아파트서 어머니와 10대 두 아들 숨진 채 발견",
+          "url": "https://n.news.naver.com/article/214/0001535117"
+        },
+        {
+          "press": "서울신문",
+          "title": "시흥 아파트서 일가족 3명 숨진 채 발견… 흉기에 의한 것으로 추정되는 상처 다수",
+          "url": "https://n.news.naver.com/article/081/0003698624"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "2026년 11월 12일 오전 7시 28분경 경기 시흥시 은계지구의 한 아파트에서 40대 어머니와 10대 두 아들이 숨진 채 발견되었다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "화재 당시 A 씨와 함께 집에 있던 60대 어머니 B 씨는 경찰 조사에서 아들이 직접 불을 질렀다는 취지로..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "[속보] 시흥 아파트서 40대 어머니와 10대 두 아들 숨진 채 발견… \"흉기 상처\""
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "과거 시흥 아파트에서 발생한 20대 여신도 사망 사건과 관련된 목사 구속 수사가 보도되었으며, 이는 이번 사건과 지역적 공통점만 있을 뿐 별개의 사안으로 해석된다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i1bf005ea",
+      "title": "“젠슨황, 엔비디아 여성 임원과도 혼외관계”…‘사내불륜’ 추가 폭로",
+      "category": "경제",
+      "rank": 4,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "중국 스파이로 지목된 앨리스 황과의 외도로 벼랑 끝에 몰린 젠슨 황(63) 엔비디아 최고경영자(CEO)가 자사의 직속 여성 임원과도 혼외 관계를 맺어왔다고 뉴욕타임스(NYT)가 11일(현지시간) 보도했다.",
+        "\"젠슨황, 엔비디아 女임원과도 혼외관계\"...사내불륜 의혹 터지자, '해임' 급선회",
+        "젠슨 황 외도 또 폭로됐다… NYT \"엔비디아 임원과도 혼외 관계\"",
+        "젠슨황 '사내불륜' 추가 폭로…\"엔비디아 임원과 외도\"",
+        "젠슨 황 ‘사내 불륜’ 추가 폭로…주가, 시간외거래 급락"
+      ],
+      "sources": [
+        {
+          "press": "파이낸셜뉴스",
+          "title": "\"젠슨황, 엔비디아 女임원과도 혼외관계\"...사내불륜 의혹 터지자, '해임' 급선회",
+          "url": "https://n.news.naver.com/article/014/0005603085"
+        },
         {
           "press": "한국일보",
           "title": "젠슨 황 외도 또 폭로됐다… NYT \"엔비디아 임원과도 혼외 관계\"",
@@ -56,229 +259,26 @@
           "url": "https://n.news.naver.com/article/422/0000925340"
         },
         {
-          "press": "SBS",
-          "title": "젠슨 황 '사내불륜' 추가 폭로…\"직원들도 알았다\"",
-          "url": "https://n.news.naver.com/article/055/0001402488"
-        },
-        {
-          "press": "naeil.com",
-          "title": "젠슨 황 스캔들에 미국 ‘칩 규제 3법’ 탄력",
-          "url": "https://www.naeil.com/news/read/608527?ref=naver"
+          "press": "KBS",
+          "title": "젠슨 황 ‘사내 불륜’ 추가 폭로…주가, 시간외거래 급락",
+          "url": "https://n.news.naver.com/article/056/0012292241"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "중국 스파이로 지목된 앨리스 황과의 외도 의혹으로 곤경에 처했던 젠슨 황 엔비디아 최고경영자(CEO)가 자사의 직속 부하인 킴벌리 파월 헬스케어 부문 부사장 등 여성 임원과도 혼외 관계를 맺었다는 추가 폭로가…"
+          "evidence": "중국 스파이로 지목된 앨리스 황과의 외도로 벼랑 끝에 몰린 젠슨 황(63) 엔비디아 최고경영자(CEO)가 자사의 직속 여성 임원과도 혼외 관계를 맺어왔다고 뉴욕타임스(NYT)가 11일(현지시간) 보도했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "엔비디아 이사회가 젠슨 황의 해임을 추진하고 있다는 보도까지 나왔다."
+          "evidence": "엔비디아 이사회는 황 CEO의 거취를 결정하기 위한 회의를 진행중이며, 외부..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "12일 국내 온라인 커뮤니티와 소셜미디어(SNS)에서는 황 CEO가..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "뉴욕타임스(NYT) 등의 추가 폭로로 직속 부하인 엔비디아 여성 임원(킴벌리 파월 부사장 등)과의 혼외 관계가 드러나면서 이사회의 해임 추진 및 후임 물색 수순으로 급격히 전환되었다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i3a21a9e0",
-      "title": "시흥 아파트서 40대 어머니와 10대 두 아들 숨진 채 발견",
-      "category": "경제",
-      "rank": 3,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "경기 시흥시 은계지구 아파트 단지에서 10대 A군이 쓰러져 발견된 후, 경찰은 40대 어머니와 10대 두 아들 등 일가족 3명이 숨진 채 발견되었다고 밝혔다.",
-        "아파트 단지엔 10대 아들, 집안선 엄마-동생 숨진채 발견",
-        "시흥 아파트서 母子 3명 숨진 채 발견… 어머니와 둘째아들 몸엔 자상",
-        "경기도 시흥 아파트서 어머니와 10대 두 아들 숨진 채 발견",
-        "시흥 아파트서 엄마·10대 두 아들 숨진 채 발견...흉기 추정 상처"
-      ],
-      "sources": [
-        {
-          "press": "동아일보",
-          "title": "아파트 단지엔 10대 아들, 집안선 엄마-동생 숨진채 발견",
-          "url": "https://n.news.naver.com/article/020/0003761968"
-        },
-        {
-          "press": "조선일보",
-          "title": "시흥 아파트서 母子 3명 숨진 채 발견… 어머니와 둘째아들 몸엔 자상",
-          "url": "https://n.news.naver.com/article/023/0004009216"
-        },
-        {
-          "press": "MBC",
-          "title": "경기도 시흥 아파트서 어머니와 10대 두 아들 숨진 채 발견",
-          "url": "https://n.news.naver.com/article/214/0001535117"
-        },
-        {
-          "press": "한겨레",
-          "title": "시흥 아파트서 엄마·10대 두 아들 숨진 채 발견...흉기 추정 상처",
-          "url": "https://n.news.naver.com/article/028/0002831842"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "경기 시흥시 은계지구 아파트 단지에서 10대 A군이 쓰러져 발견된 후, 경찰은 40대 어머니와 10대 두 아들 등 일가족 3명이 숨진 채 발견되었다고 밝혔다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "화재 당시 A 씨와 함께 집에 있던 60대 어머니 B 씨는 경찰 조사에서 아들이 직접 불을 질렀다는 취지로..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "아파트 단지엔 10대 아들, 집안선 엄마-동생 숨진채 발견"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i1affe6fb",
-      "title": "[속보] '젠슨 황 불륜 상대' 의혹 앨리스 황, 중국 베이징 체류설",
-      "category": "세계",
-      "rank": 5,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "앨리스 황은 현재 베이징에 살고 있다.",
-        "‘젠슨 황과 불륜’ 앨리스 황…“중국 베이징 체류중” 블룸버그",
-        "사라진 젠슨 황 불륜 상대 앨리스 황…\"중국 인지 하에 베이징에 있다\"",
-        "엔비디아 '젠슨 황 거취 결정' 회의...\"앨리스 황은 베이징 거주\"",
-        "\"앨리스 황, 현재 베이징 체류 중…중국 보안당국 인지\""
-      ],
-      "sources": [
-        {
-          "press": "헤럴드경제",
-          "title": "‘젠슨 황과 불륜’ 앨리스 황…“중국 베이징 체류중” 블룸버그",
-          "url": "https://n.news.naver.com/article/016/0002722561"
-        },
-        {
-          "press": "JTBC",
-          "title": "사라진 젠슨 황 불륜 상대 앨리스 황…\"중국 인지 하에 베이징에 있다\"",
-          "url": "https://n.news.naver.com/article/437/0000520387"
-        },
-        {
-          "press": "YTN",
-          "title": "엔비디아 '젠슨 황 거취 결정' 회의...\"앨리스 황은 베이징 거주\"",
-          "url": "https://n.news.naver.com/article/052/0002431796"
-        },
-        {
-          "press": "MBN",
-          "title": "\"앨리스 황, 현재 베이징 체류 중…중국 보안당국 인지\"",
-          "url": "https://n.news.naver.com/article/057/0001977869"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "앨리스 황은 현재 베이징에 살고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "파장은 반도체 공급망 전반으로 확산하고 있다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "블룸버그 통신은 12일 앨리스 황이 현재 중국 보안 당국의..."
+          "evidence": "엔비디아 주가는 11일(현지시간) 2.87% 올랐으나 장 마감 뒤 사내 불륜 의혹과..."
         },
         {
           "panel": 4,

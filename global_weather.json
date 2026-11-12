@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T13:18:53.678797+09:00",
+  "updated": "2026-11-12T12:21:39.104503+09:00",
   "alerts_count": 20,
   "alerts": [
     {
@@ -245,14 +245,6 @@
   ],
   "quakes": [
     {
-      "id": "us7000txqr",
-      "mag": 5.4,
-      "place": "South Sandwich Islands region",
-      "t": "2026-11-12 03:45",
-      "depth": 121.557,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txqr"
-    },
-    {
       "id": "us7000txqa",
       "mag": 4.8,
       "place": "43 km SE of Severo-Kuril’sk, Russia",
@@ -323,6 +315,14 @@
       "t": "2026-11-11 12:45",
       "depth": 149.444,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txiz"
+    },
+    {
+      "id": "us7000txis",
+      "mag": 5.1,
+      "place": "27 km WSW of Calama, Chile",
+      "t": "2026-11-11 11:36",
+      "depth": 91.309,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000txis"
     }
   ],
   "cities": [
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 11.0,
-      "apparent_temp": 9.3,
-      "humidity": 73,
+      "temp": 11.7,
+      "apparent_temp": 9.7,
+      "humidity": 68,
       "code": 3,
-      "wind": 5.5
+      "wind": 7.3
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 18.8,
-      "apparent_temp": 19.6,
-      "humidity": 81,
+      "temp": 19.8,
+      "apparent_temp": 20.4,
+      "humidity": 73,
       "code": 0,
-      "wind": 6.5
+      "wind": 6.6
     },
     {
       "id": "london",
@@ -362,11 +362,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 6.4,
+      "temp": 6.6,
       "apparent_temp": 3.3,
       "humidity": 84,
-      "code": 2,
-      "wind": 11.2
+      "code": 0,
+      "wind": 12.6
     },
     {
       "id": "paris",
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 10.5,
-      "apparent_temp": 9.0,
-      "humidity": 93,
+      "temp": 10.6,
+      "apparent_temp": 9.8,
+      "humidity": 97,
       "code": 3,
-      "wind": 9.2
+      "wind": 6.1
     },
     {
       "id": "frankfurt",
@@ -390,11 +390,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 10.0,
-      "apparent_temp": 9.1,
-      "humidity": 98,
-      "code": 3,
-      "wind": 6.2
+      "temp": 9.9,
+      "apparent_temp": 9.0,
+      "humidity": 100,
+      "code": 61,
+      "wind": 6.1
     },
     {
       "id": "tokyo",
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 17.1,
-      "apparent_temp": 16.4,
-      "humidity": 58,
+      "temp": 16.3,
+      "apparent_temp": 15.8,
+      "humidity": 59,
       "code": 0,
-      "wind": 2.7
+      "wind": 1.9
     },
     {
       "id": "beijing",
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 9.2,
-      "apparent_temp": 7.7,
-      "humidity": 80,
-      "code": 0,
-      "wind": 3.2
+      "temp": 7.6,
+      "apparent_temp": 6.1,
+      "humidity": 86,
+      "code": 2,
+      "wind": 2.1
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 30.1,
-      "apparent_temp": 36.6,
-      "humidity": 69,
-      "code": 95,
-      "wind": 4.8
+      "temp": 29.7,
+      "apparent_temp": 35.4,
+      "humidity": 68,
+      "code": 3,
+      "wind": 3.1
     },
     {
       "id": "sydney",
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 22.1,
-      "apparent_temp": 22.7,
-      "humidity": 62,
+      "temp": 22.5,
+      "apparent_temp": 23.8,
+      "humidity": 60,
       "code": 0,
-      "wind": 15.4
+      "wind": 15.3
     },
     {
       "id": "toronto",
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 7.6,
-      "apparent_temp": 5.5,
-      "humidity": 95,
+      "temp": 7.8,
+      "apparent_temp": 6.4,
+      "humidity": 97,
       "code": 51,
-      "wind": 8.9
+      "wind": 5.2
     },
     {
       "id": "dubai",
@@ -474,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 27.6,
-      "apparent_temp": 29.0,
-      "humidity": 63,
+      "temp": 27.3,
+      "apparent_temp": 28.7,
+      "humidity": 65,
       "code": 0,
-      "wind": 16.6
+      "wind": 17.7
     },
     {
       "id": "saopaulo",
@@ -488,11 +488,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 17.6,
-      "apparent_temp": 19.0,
-      "humidity": 93,
+      "temp": 18.1,
+      "apparent_temp": 19.5,
+      "humidity": 91,
       "code": 2,
-      "wind": 5.8
+      "wind": 6.0
     }
   ],
   "stories": [
@@ -500,9 +500,9 @@
       "id": "g5de2447f",
       "title": "World leaders speak at COP31 climate conference",
       "press": "Reuters",
-      "image": "https://climateactiontracker.org/media/images/CAT_2026-11-12_LinkedIN_CAT-Therm.2e16d0ba.fill-1200x630.png",
-      "score": 10.8,
-      "url": "g/g5de2447f"
+      "image": "https://www.chinadailyhk.com/upload/main/image/2026/11/12/e599e58be1962a8ea2f9cef10eab3160.png",
+      "score": 9.7,
+      "url": "g/g1820a6c5"
     }
   ]
 }
