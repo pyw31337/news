@@ -173,8 +173,10 @@ def articles(cid):
             continue
         seen.add(k); uniq.append(r)
     press = collections.Counter(r[3] for r in uniq if r[3])
+    # 대표 OG가 실제로 확보된 URL만 보조 썸네일로 싣는다. 빈 이미지를
+    # 채우거나 별도 사진을 추정해서 인물·기사 정합성을 해치지 않는다.
     return {'c': len(uniq), 'f': paths, 'm': sorted(months.items()), 'pc': len(press), 'top': press.most_common(10),
-            'last': [[r[0], r[1], r[2], r[3]] for r in uniq[:8]]}
+            'last': [[r[0], r[1], r[2], r[3], R2 + OGM[r[2]][0] if r[2] in OGM else ''] for r in uniq[:8]]}
 
 
 # 5) 오늘·지난 이슈와 사진 기사

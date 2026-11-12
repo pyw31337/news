@@ -2,7 +2,10 @@
    컴포넌트 클래스: .sh(섹션 헤더) .facts(사실 목록) .stat(수치) .tl(연대기) .era(생애 단계) .bars/.stack/.spark(차트)
    .pchip(인물 칩) .arow(기사 행) .acard(썸네일 기사) .quote(발언) .exp(펼치기) .seg(세그먼트 필터) */
 const NB = (() => {
-  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  /* 원본 메타데이터에 남은 HTML 중점·공백 엔티티는 화면에 그대로 내보내지 않는다.
+     UI 구분자는 마크업에서만 별도로 만든다. */
+  const cleanText = s => String(s ?? '').replace(/&(middot|#183|#x0*B7);/gi, ' ').replace(/&(nbsp|#160);/gi, ' ').replace(/\s{2,}/g, ' ').trim();
+  const esc = s => cleanText(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const ic = (n, on) => `<svg class="ic" aria-hidden="true"><use href="#i-${n}${on ? '-f' : ''}"/></svg>`;
   const num = n => Number(n).toLocaleString('ko-KR');
   const won = k => { /* 천원 → 'n억 n,nnn만 원' */
@@ -35,8 +38,11 @@ const NB = (() => {
   const stat = (label, value, unit = '', sub = '', extra = '') => `<div class="stat"><div class="stat-l">${esc(label)}</div><div class="stat-v">${esc(value)}<small>${esc(unit)}</small></div>${sub ? `<div class="stat-s">${sub}</div>` : ''}${extra}</div>`;
   const exp = (label, count, body, open = false, id = '') => `<div class="exp${open ? ' is-open' : ''}"${id ? ` id="${id}"` : ''}><button class="exp-b" type="button" aria-expanded="${open}"><span>${esc(label)}</span>${count != null ? `<span class="exp-n">${esc(count)}</span>` : ''}${ic('chevron-down')}</button><div class="exp-c"${open ? '' : ' hidden'}>${body}</div></div>`;
   const seg = (name, items, cur = 0) => `<div class="seg" role="tablist" data-seg="${name}">${items.map((t, i) => `<button type="button" role="tab" class="seg-i${i === cur ? ' is-on' : ''}" aria-selected="${i === cur}" data-i="${i}">${esc(t[0] ?? t)}${t[1] != null ? `<span class="seg-n">${t[1]}</span>` : ''}</button>`).join('')}</div>`;
-  const pchip = (p, sub = '', href = p.href) => { const tag = href ? 'a' : 'span'; return `<${tag} class="pchip"${href ? ` href="${esc(href)}"` : ''}>${p.photo ? `<img src="${esc(p.photo)}" alt="" loading="lazy" width="32" height="32">` : `<span class="pchip-av">${ic('user')}</span>`}<span class="pchip-t"><b>${esc(p.name)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</span></${tag}>`; };
-  const arow = a => `<a class="arow" href="${esc(a.url)}" target="_blank" rel="noopener"><time>${esc(md(a.t))}</time><span class="arow-t">${esc(titleClean(a.title))}</span><span class="arow-p">${esc(a.press)}</span></a>`;
+  const pchip = (p, sub = '', href = p.href) => { const tag = href ? 'a' : 'span', tip = [p.name, sub].filter(Boolean).join('\n'); return `<${tag} class="pchip"${href ? ` href="${esc(href)}"` : ''}${tip ? ` data-tip="${esc(tip)}"` : ''}>${p.photo ? `<img src="${esc(p.photo)}" alt="" loading="lazy" width="32" height="32">` : `<span class="pchip-av">${ic('user')}</span>`}<span class="pchip-t"><b>${esc(p.name)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</span></${tag}>`; };
+  const arow = a => {
+    const title = titleClean(a.title), tip = [title, a.desc, [a.press, ymd(a.t)].filter(Boolean).join(' · ')].filter(Boolean).join('\n');
+    return `<a class="arow${a.img ? ' has-thumb' : ''}" href="${esc(a.url)}" target="_blank" rel="noopener" data-tip="${esc(tip)}"${a.img ? ` data-thumb="${esc(a.img)}"` : ''}><time>${esc(md(a.t))}</time>${a.img ? `<img class="arow-img" src="${esc(a.img)}" alt="" loading="lazy" decoding="async">` : ''}<span class="arow-t">${esc(title)}</span><span class="arow-p">${esc(a.press)}</span></a>`;
+  };
   const BASE = (document.querySelector('meta[name=nb-base]') || {}).content || '../';
   const href = { p: id => `${BASE}person/?id=${encodeURIComponent(id)}`, g: k => `${BASE}e/?k=${encodeURIComponent(k)}` };
   /* 압축 JSON(.json.gz) 읽기: 화면이 직접 풂 */
@@ -44,8 +50,11 @@ const NB = (() => {
   const shard = async (s, n) => { const b = new Uint8Array(await crypto.subtle.digest('SHA-1', new TextEncoder().encode(s))); return parseInt([...b.slice(0, 3)].map(x => x.toString(16).padStart(2, '0')).join(''), 16) % n; };
   const RAW = 'https://raw.githubusercontent.com/pyw31337/news/';
   const acard = a => `<a class="acard" href="${esc(a.url)}" target="_blank" rel="noopener"><span class="acard-img"><img src="${esc(a.img)}" alt="" loading="lazy" decoding="async"></span><span class="acard-t">${esc(titleClean(a.title))}</span><span class="acard-m">${esc(a.press)}<i></i>${esc(ymd(a.t))}</span></a>`;
-  const quote = q => `<figure class="quote"><blockquote>${esc(q.quote)}</blockquote><figcaption>${q.press ? `${esc(q.press)}<i></i>` : ''}${esc(ymd(q.d))}</figcaption></figure>`;
-  const tlItem = e => `<li class="tl-i" data-typ="${e.typ}"><span class="tl-d">${esc(dot(e.d))}</span><span class="tl-dot">${ic(EVI[e.typ] || 'calendar')}</span><div class="tl-b"><b class="tl-t">${esc(e.title)}</b><p class="tl-x">${esc(e.desc)}</p>${e.src ? (e.url ? `<a class="tl-s" href="${esc(e.url)}" target="_blank" rel="noopener">${ic('link')}${esc(e.src)}</a>` : `<span class="tl-s">${ic('file-text')}${esc(e.src)}</span>`) : ''}</div></li>`;
+  const quote = q => {
+    const evidence = [q.press, ymd(q.d)].filter(Boolean).join(' · '), tip = [q.quote, evidence].filter(Boolean).join('\n');
+    return `<figure class="quote${q.hot ? ' is-hot' : ''}"${q.heat ? ` data-heat="${q.heat}"` : ''}${tip ? ` data-tip="${esc(tip)}"` : ''}><blockquote>${q.hot ? `<span class="quote-hot">${ic('flame')}화제 ${q.heat}</span>` : ''}${esc(q.quote)}</blockquote><figcaption>${q.url ? `<a href="${esc(q.url)}" target="_blank" rel="noopener" class="quote-src">${esc(evidence || '원문 보기')}${ic('external-link')}</a>` : esc(evidence)}</figcaption></figure>`;
+  };
+  const tlItem = e => `<li class="tl-i" data-typ="${esc(e.typ)}"${e.url ? ` data-tip="${esc([e.title, e.desc, e.src].filter(Boolean).join('\n'))}"` : ''}><span class="tl-d">${esc(dot(e.d))}</span><span class="tl-dot">${ic(EVI[e.typ] || 'calendar')}</span><div class="tl-b">${e.url ? `<a class="tl-t" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title)}</a>` : `<b class="tl-t">${esc(e.title)}</b>`}<p class="tl-x">${esc(e.desc)}</p>${e.src ? (e.url ? `<a class="tl-s" href="${esc(e.url)}" target="_blank" rel="noopener" data-tip="${esc(e.src)}">${ic('info-circle')}<span class="sr-only">출처</span></a>` : `<span class="tl-s" data-tip="${esc(e.src)}">${ic('info-circle')}<span class="sr-only">출처</span></span>`) : ''}</div></li>`;
   const tl = evs => `<ol class="tl">${evs.map(tlItem).join('')}</ol>`;
   /* 생애 단계: eras=[{y,name,role,href,now,n}] — 데이터에서 만든 구간만 */
   const era = (eras, mode = 'auto') => `<ol class="era era--${mode}" style="--era-cols:${Math.min(7, eras.length)}">${eras.map(r => `<li class="era-i${r.now ? ' is-now' : ''}"><span class="era-y">${esc(r.y)}</span>${r.href ? `<a class="era-n" href="${esc(r.href)}">${esc(r.name)}</a>` : `<b class="era-n">${esc(r.name)}</b>`}${r.role ? `<span class="era-r">${esc(r.role)}</span>` : ''}${r.n ? `<span class="era-c" aria-hidden="true">${'<i></i>'.repeat(Math.min(12, r.n))}</span>` : ''}</li>`).join('')}</ol>`;
@@ -53,9 +62,9 @@ const NB = (() => {
   /* 날짜별 기사 묶음 */
   const agroup = (list, cnt = {}) => { const g = {}; list.forEach(a => (g[(a.t || '').slice(0, 10)] ||= []).push(a)); return Object.keys(g).sort().reverse().map(d => `<div class="aday"><div class="aday-h">${dayLabel(d)}<small>${cnt[d] ?? g[d].length}건</small></div><div class="alist">${g[d].map(arow).join('')}</div></div>`).join(''); };
   /* 막대(HTML): items=[[label,value,cls?]] — 라벨은 HTML이라 폭이 바뀌어도 글자 크기 유지 */
-  const hbars = (items, opt = {}) => { const max = Math.max(...items.map(x => x[1])); return `<ul class="hbars">${items.map(([l, v, c]) => `<li class="hbars-i ${c || ''}"><span class="hbars-l">${esc(l)}</span><span class="hbars-tr"><span class="hbars-f" style="width:${(v / max * 100).toFixed(1)}%"></span></span><span class="hbars-v">${opt.fmt ? opt.fmt(v) : num(v)}</span></li>`).join('')}</ul>`; };
+  const hbars = (items, opt = {}) => { const max = Math.max(...items.map(x => x[1]), 1); return `<ul class="hbars">${items.map(([l, v, c]) => `<li class="hbars-i ${c || ''}" tabindex="0" data-tip="${esc(`${l}\n${opt.fmt ? opt.fmt(v) : num(v)}`)}"><span class="hbars-l">${esc(l)}</span><span class="hbars-tr"><span class="hbars-f" style="width:${(v / max * 100).toFixed(1)}%"></span></span><span class="hbars-v">${opt.fmt ? opt.fmt(v) : num(v)}</span></li>`).join('')}</ul>`; };
   /* 세로 막대(연도별): 라벨 간격은 CSS가 폭에 따라 솎아 냄 */
-  const vbars = (items, opt = {}) => { const max = Math.max(...items.map(x => x[1])); return `<div class="vbars ${opt.cls || ''}" style="--n:${items.length}">${items.map(([l, v, hi]) => `<div class="vbars-i${hi ? ' is-hi' : ''}" title="${esc(l)} · ${v}건"><span class="vbars-f" style="height:${Math.max(2, v / max * 100).toFixed(1)}%"></span>${l ? `<span class="vbars-l">${esc(l)}</span>` : ''}</div>`).join('')}</div>`; };
+  const vbars = (items, opt = {}) => { const max = Math.max(...items.map(x => x[1]), 1); return `<div class="vbars ${opt.cls || ''}" style="--n:${items.length}">${items.map(([l, v, hi]) => `<div class="vbars-i${hi ? ' is-hi' : ''}" tabindex="0" role="img" aria-label="${esc(`${l}, ${v}건`)}" data-tip="${esc(`${l}\n${v}건`)}"><span class="vbars-f" style="height:${Math.max(2, v / max * 100).toFixed(1)}%"></span>${l ? `<span class="vbars-l">${esc(l)}</span>` : ''}</div>`).join('')}</div>`; };
   /* 누적 막대: parts=[[label,value,cls]] */
   const stack = (parts, opt = {}) => { const tot = parts.reduce((s, p) => s + p[1], 0); return `<div class="stack"><div class="stack-bar">${parts.filter(p => p[1] > 0).map(([l, v, c]) => `<span class="stack-s ${c}" style="flex:${v}"></span>`).join('')}</div>${opt.legend === false ? '' : `<ul class="stack-lg">${parts.map(([l, v, c]) => `<li class="${c}"><i></i>${esc(l)}<b>${opt.fmt ? opt.fmt(v) : num(v)}</b>${opt.pct ? `<small>${Math.round(v / tot * 100)}%</small>` : ''}</li>`).join('')}</ul>`}</div>`; };
   /* 스파크라인(SVG 선만, 글자 없음) */
@@ -67,10 +76,10 @@ const NB = (() => {
   const voteParts = s => [['찬성', s['찬성'] || 0, 'pos'], ['반대', s['반대'] || 0, 'neg'], ['기권', s['기권'] || 0, 'warn'], ['불참', s['불참'] || 0, 'mute']];
 
   /* 누적 세로 막대(연도×분류) */
-  const vstack = (rows, keys, opt = {}) => { const tot = r => keys.reduce((s, k) => s + (r[1][k[0]] || 0), 0); const max = Math.max(...rows.map(tot)); return `<div class="vbars vstack ${opt.cls || ''}" style="--n:${rows.length}">${rows.map(r => { const [l, c] = r, t = tot(r), lb = opt.lab ? opt.lab(l) : l; return `<div class="vbars-i" title="${esc(opt.tip ? opt.tip(l) : l)} · ${t}건"><span class="vstack-col" style="height:${t ? Math.max(2, t / max * 100).toFixed(1) : 0}%">${keys.map(k => c[k[0]] ? `<span class="${k[1]}" style="flex:${c[k[0]]}"></span>` : '').join('')}</span>${lb ? `<span class="vbars-l${opt.lc ? ' ' + opt.lc(l) : ''}">${esc(lb)}</span>` : ''}</div>`; }).join('')}</div>`; };
+  const vstack = (rows, keys, opt = {}) => { const tot = r => keys.reduce((s, k) => s + (r[1][k[0]] || 0), 0); const max = Math.max(...rows.map(tot), 1); return `<div class="vbars vstack ${opt.cls || ''}" style="--n:${rows.length}">${rows.map(r => { const [l, c] = r, t = tot(r), lb = opt.lab ? opt.lab(l) : l, label = opt.tip ? opt.tip(l) : l, detail = keys.filter(k => c[k[0]]).map(k => `${k[0]} ${c[k[0]]}건`).join('\n'); return `<div class="vbars-i" tabindex="0" role="img" aria-label="${esc(`${label}, ${detail || t + '건'}`)}" data-tip="${esc(`${label}\n${detail || t + '건'}`)}"><span class="vstack-col" style="height:${t ? Math.max(2, t / max * 100).toFixed(1) : 0}%">${keys.map(k => c[k[0]] ? `<span class="${k[1]}" style="flex:${c[k[0]]}"></span>` : '').join('')}</span>${lb ? `<span class="vbars-l${opt.lc ? ' ' + opt.lc(l) : ''}">${esc(lb)}</span>` : ''}</div>`; }).join('')}</div>`; };
   /* 재임 기간 막대(간트) */
   const span = d => { const m = String(d).match(/(\d{4})(?:[.\d]*)?(?:\s*[~–-]\s*(\d{4}))?/); if (!m) return null; return [+m[1], m[2] ? +m[2] : +m[1]]; };
-  const gantt = (rows, y0, y1, ticks) => `<div class="gantt"><span class="gantt-ax-pad"></span><span class="gantt-ax-pad gantt-ax-pad2"></span><div class="gantt-ax">${ticks.map(t => `<span style="left:${((t - y0) / (y1 - y0) * 100).toFixed(2)}%">${t}</span>`).join('')}</div>${rows.map(r => { const [a, b] = span(r.d) || [y0, y0]; const l = (a - y0) / (y1 - y0) * 100, w = (b - a) / (y1 - y0) * 100; return `<div class="gantt-r${r.now ? ' is-now' : ''}" data-typ="${r.typ}" data-g="${r.g || ''}"><span class="gantt-d">${esc(dot(r.d))}</span>${r.href ? `<a class="gantt-l" href="${esc(r.href)}">${esc(r.title)}</a>` : `<span class="gantt-l">${esc(r.title)}</span>`}<span class="gantt-tr"><span class="gantt-b${b === a ? ' is-pt' : ''}" style="left:${l.toFixed(2)}%;width:${w.toFixed(2)}%"></span></span></div>`; }).join('')}</div>`;
+  const gantt = (rows, y0, y1, ticks) => `<div class="gantt"><span class="gantt-ax-pad"></span><span class="gantt-ax-pad gantt-ax-pad2"></span><div class="gantt-ax">${ticks.map(t => `<span style="left:${((t - y0) / (y1 - y0) * 100).toFixed(2)}%">${t}</span>`).join('')}</div>${rows.map((r, i) => { const [a, b] = span(r.d) || [y0, y0]; const l = (a - y0) / (y1 - y0) * 100, w = (b - a) / (y1 - y0) * 100, tip = `${r.title}\n${dot(r.d)}`; return `<div class="gantt-r${r.now ? ' is-now' : ''}" data-typ="${esc(r.typ)}" data-g="${esc(r.g || '')}" data-pair="gt-${i}"><span class="gantt-d">${esc(dot(r.d))}</span>${r.href ? `<a class="gantt-l" href="${esc(r.href)}" data-tip="${esc(tip)}">${esc(r.title)}</a>` : `<button class="gantt-l" type="button" data-tip="${esc(tip)}">${esc(r.title)}</button>`}<span class="gantt-tr" tabindex="0" role="img" aria-label="${esc(tip)}" data-tip="${esc(tip)}"><span class="gantt-b${b === a ? ' is-pt' : ''}" style="left:${l.toFixed(2)}%;width:${w.toFixed(2)}%"></span></span></div>`; }).join('')}</div>`;
   /* 축 눈금: 양 끝 + 10년 단위, 너비의 7% 안쪽으로 붙는 눈금은 뺌 */
   const ticks = (y0, y1) => { const g = Math.max(4, (y1 - y0) * .07), t = [y0]; for (let y = Math.ceil(y0 / 10) * 10; y < y1; y += 10) if (y - y0 >= g && y1 - y >= g) t.push(y); t.push(y1); return t; };
   /* 연도별 사진: items=[{y,u,w,h,src,cap}] — 오래된 것부터, 'N년 전' 표기 */
@@ -89,7 +98,28 @@ const NB = (() => {
     addEventListener('scroll', top, { passive: true });
     return set;
   };
-  /* 상호작용: 펼치기, 세그먼트 필터(연대기) */
+  /* 포인터·키보드·터치 공통 정보 툴팁. 브라우저 title에 의존하지 않아 모바일에서도
+     그래프의 기간·값과 기사 미리보기를 같은 방식으로 확인할 수 있다. */
+  let tipEl, tipFor;
+  const hideTip = () => { if (tipEl) tipEl.hidden = true; tipFor = null; };
+  const showTip = (el, point) => {
+    const text = el?.dataset?.tip;
+    if (!text) return;
+    if (!tipEl) { tipEl = document.createElement('aside'); tipEl.id = 'nb-tip'; tipEl.className = 'nb-tip'; tipEl.setAttribute('role', 'tooltip'); document.body.append(tipEl); }
+    tipEl.replaceChildren();
+    const thumb = el.dataset.thumb;
+    if (thumb) { const img = document.createElement('img'); img.src = thumb; img.alt = ''; img.loading = 'lazy'; tipEl.append(img); tipEl.classList.add('has-thumb'); }
+    else tipEl.classList.remove('has-thumb');
+    const body = document.createElement('div');
+    text.split('\n').filter(Boolean).forEach((line, i) => { const n = document.createElement(i ? 'span' : 'b'); n.textContent = line; body.append(n); });
+    tipEl.append(body); tipEl.hidden = false; tipFor = el;
+    const r = el.getBoundingClientRect(), x = point?.clientX ?? r.left + r.width / 2, y = point?.clientY ?? r.bottom + 10;
+    const w = tipEl.offsetWidth || 240, h = tipEl.offsetHeight || 64;
+    tipEl.style.left = Math.max(12, Math.min(innerWidth - w - 12, x - w / 2)) + 'px';
+    tipEl.style.top = Math.max(12, Math.min(innerHeight - h - 12, y)) + 'px';
+  };
+  const pair = (el, on) => { const key = el?.closest('[data-pair]')?.dataset.pair; if (key) document.querySelectorAll(`[data-pair="${CSS.escape(key)}"]`).forEach(x => x.classList.toggle('is-focus', on)); };
+  /* 상호작용: 펼치기, 세그먼트 필터, 그래프/행 툴팁 */
   const bind = (root = document) => {
     root.addEventListener('click', ev => {
       const b = ev.target.closest('.exp-b');
@@ -97,6 +127,12 @@ const NB = (() => {
       const s = ev.target.closest('.seg-i');
       if (s) { const g = s.parentElement; g.querySelectorAll('.seg-i').forEach(x => { const on = x === s; x.classList.toggle('is-on', on); x.setAttribute('aria-selected', on); }); g.dispatchEvent(new CustomEvent('seg', { bubbles: true, detail: { name: g.dataset.seg, i: +s.dataset.i } })); }
     });
+    root.addEventListener('pointerover', ev => { const el = ev.target.closest('[data-tip],[data-pair]'); if (!el) return; pair(el, true); const tip = el.closest('[data-tip]'); if (tip) showTip(tip, ev); });
+    root.addEventListener('pointerout', ev => { const el = ev.target.closest('[data-tip],[data-pair]'); if (!el || el.contains(ev.relatedTarget)) return; pair(el, false); const tip = el.closest('[data-tip]'); if (tip === tipFor) hideTip(); });
+    root.addEventListener('focusin', ev => { const el = ev.target.closest('[data-tip],[data-pair]'); if (!el) return; pair(el, true); const tip = el.closest('[data-tip]'); if (tip) showTip(tip); });
+    root.addEventListener('focusout', ev => { const el = ev.target.closest('[data-tip],[data-pair]'); if (!el || el.contains(ev.relatedTarget)) return; pair(el, false); if (el.closest('[data-tip]') === tipFor) hideTip(); });
+    root.addEventListener('pointerdown', ev => { if (ev.pointerType !== 'touch') return; const tip = ev.target.closest('[data-tip]'); if (tip && !tip.closest('a')) { if (tipFor === tip) hideTip(); else showTip(tip, ev); } });
+    root.addEventListener('keydown', ev => { if (ev.key === 'Escape') hideTip(); });
   };
   /* 부호 있는 금액(천원) */
   const swon = k => (k < 0 ? '−' : '+') + won(Math.abs(k));
@@ -114,9 +150,15 @@ const NB = (() => {
   /* 장기 기록 분류 → 색(의미 있는 것만 의미색) */
   const HCAT = { '보도': 'k3', '발언': 'k1', '논란': 'warn', '법적': 'neg', '활동': 'mute', '수상': 'pos' };
   const host = p => String(p || '').replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/$/, '');
-  const hrow = x => `<div class="arow hrow"><time>${esc(md(x.d))}</time><span class="arow-t">${esc(x.title)}</span><span class="arow-p">${x.press ? `<span>${esc(host(x.press))}</span>` : ''}<span class="tag ${['논란', '법적', '수상'].includes(x.cat) ? HCAT[x.cat] : ''}">${esc(x.cat)}</span></span></div>`;
+  /* 장기 기록 행: 수집기가 보존한 원문 링크가 있을 때만 새 탭으로 연결한다.
+     URL이 없는 과거 스냅샷은 정보를 과장하지 않고, 같은 읽기 전용 행으로 남긴다. */
+  const hrow = x => {
+    const tag = x.url ? 'a' : 'div', attrs = x.url ? ` href="${esc(x.url)}" target="_blank" rel="noopener"` : '';
+    const title = titleClean(x.title), tip = [title, x.quote, [x.press, ymd(x.d)].filter(Boolean).join(' · ')].filter(Boolean).join('\n');
+    return `<${tag} class="arow hrow${x.img ? ' has-thumb' : ''}"${attrs}${tip ? ` data-tip="${esc(tip)}"` : ''}${x.img ? ` data-thumb="${esc(x.img)}"` : ''}><time>${esc(md(x.d))}</time>${x.img ? `<img class="arow-img" src="${esc(x.img)}" alt="" loading="lazy" decoding="async">` : ''}<span class="arow-t">${esc(title)}</span><span class="arow-p">${x.press ? `<span>${esc(host(x.press))}</span>` : ''}<span class="tag ${['논란', '법적', '수상'].includes(x.cat) ? HCAT[x.cat] : ''}">${esc(x.cat)}</span></span></${tag}>`;
+  };
   const ym = t => { const d = String(t).slice(0, 7).split('-'); return `${d[0]}년 ${+d[1]}월`; };
   const load = u => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
   const openAll = () => { if (/[?&]open=1/.test(location.search)) document.querySelectorAll('.exp').forEach(x => { x.classList.add('is-open'); x.querySelector('.exp-b').setAttribute('aria-expanded', true); x.querySelector('.exp-c').hidden = false; }); };
-  return { ptl, ticks, href, gz, shard, RAW, BASE, swon, mini, table, grouper, more, HCAT, hrow, ym, toc, spy, vstack, span, gantt, rtree, agroup, esc, ic, num, won, eok1, dot, md, ymd, dayLabel, titleClean, EVG, EVI, FILTERS, ERAS, yearOf, sh, facts, stat, exp, seg, pchip, arow, acard, quote, tl, tlItem, era, hbars, vbars, stack, spark, donut, assetParts, voteParts, bind, load, openAll };
+  return { ptl, ticks, href, gz, shard, RAW, BASE, swon, mini, table, grouper, more, HCAT, hrow, ym, toc, spy, vstack, span, gantt, rtree, agroup, esc, cleanText, ic, num, won, eok1, dot, md, ymd, dayLabel, titleClean, EVG, EVI, FILTERS, ERAS, yearOf, sh, facts, stat, exp, seg, pchip, arow, acard, quote, tl, tlItem, era, hbars, vbars, stack, spark, donut, assetParts, voteParts, bind, load, openAll };
 })();

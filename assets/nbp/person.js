@@ -1,7 +1,7 @@
 /* 인물 페이지(1계층, 데이터 기반 공통 화면). 묶음: data/p/x/NNN.json(scripts/people/person_pages.py)
    + 국회(data/pol/people/<id>.json) + 장기 기록(history 브랜치 h/p/<id>.json.gz) + 기사 전체(data 브랜치 t/·db/entities). 빈 섹션은 그리지 않음. */
 (async () => {
-  const { esc, ic, num, href, gz, shard, RAW } = NB, app = document.getElementById('app');
+  const { esc, cleanText, ic, num, href, gz, shard, RAW } = NB, app = document.getElementById('app');
   const qs = new URLSearchParams(location.search);
   const B0 = NB.BASE;
   let id = qs.get('id');
@@ -14,9 +14,10 @@
   if (!B) return fail();
   const nm = B.n, car = B.car || {}, L = B.L || {};
   document.title = `${nm} · NewsBoard`;
-  const [Pj, H] = await Promise.all([
+  const [Pj, H, Voice] = await Promise.all([
     B.pol ? NB.load(`${B0}data/pol/people/${B.pol}.json`).catch(() => null) : null,
     B.h ? gz(`${RAW}history/h/p/${B.h}.json.gz`).catch(() => null) : null,
+    NB.load(B0 + 'data/voice.json').catch(() => null),
   ]);
   const lgi = k => B.lg?.[k] ? `<img class="lg" src="${esc(B.lg[k])}" alt="" width="18" height="18" loading="lazy">` : '';
   const gl = (k, label) => `<a class="lk" href="${href.g(k)}">${lgi(k)}${esc(label)}</a>`;
@@ -57,9 +58,22 @@
   const pos = (car.pos || []).filter(x => x[1]).sort((a, b) => a[1] - b[1]);
   const eras = pos.slice(-7).map((x, i, a) => ({ y: yr(x[1], x[2]), name: x[0], href: href.g(x[3]), now: !x[2] && i === a.length - 1 }));
   /* 장기 기록 */
-  const HP = H?.o || [], HI = (H?.it || []).map(x => ({ d: x[0], title: x[1], press: HP[x[2]] || '', cat: x[3], quote: x[4] })).sort((a, b) => b.d.localeCompare(a.d));
+  const HP = H?.o || [], HI = (H?.it || []).map(x => ({ d: x[0], title: x[1], press: HP[x[2]] || '', cat: x[3], quote: x[4], url: x[5] || '' })).sort((a, b) => b.d.localeCompare(a.d));
   const own = x => { const i = x.title.indexOf(nm), q = x.title.search(/["“'‘]/); return i >= 0 && (q < 0 || i < q); };
   const Q = HI.filter(x => x.cat === '발언' && x.quote && own(x));
+  /* 발언은 채팅 로그가 아니다. 같은 핵심어가 서로 다른 시점의 인용에
+     반복될 때만 비교 묶음을 만든다. 표현이 다르다는 사실을 보여줄 뿐,
+     이 코드가 모순·진정성·입장 변화를 자동 판정하지는 않는다. */
+  const STOP_WORDS = new Set(['대한민국', '대통령', '국민', '정부', '우리', '이번', '오늘', '이날', '관련', '대해', '위해', '통해', '대한', '정말', '가장', '더욱', '하나', '이것', '그것', '발언', '주장', '밝혔', '말했', '강조', '있다', '한다', '했다', '것이다']);
+  const topicTokens = q => [...new Set(cleanText(`${q.quote} ${q.title}`).match(/[가-힣]{2,}|[A-Za-z][A-Za-z0-9-]{2,}/g) || [])]
+    .filter(w => !STOP_WORDS.has(w) && w !== nm && !/^(뉴스|기자|인터뷰|대표|의원)$/.test(w));
+  const topicMap = new Map();
+  Q.forEach(q => topicTokens(q).forEach(t => { const a = topicMap.get(t) || []; a.push(q); topicMap.set(t, a); }));
+  const speechTopics = [...topicMap.entries()].map(([term, items]) => {
+    const distinct = [...new Map(items.map(x => [`${x.d}|${x.title}`, x])).values()].sort((a, b) => a.d.localeCompare(b.d));
+    return { term, items: distinct, years: new Set(distinct.map(x => x.d.slice(0, 4))).size };
+  }).filter(x => x.items.length >= 2 && x.years >= 2)
+    .sort((a, b) => b.items.length - a.items.length || b.years - a.years || a.term.localeCompare(b.term, 'ko')).slice(0, 8);
   const INC = HI.filter(x => x.cat === '논란' || x.cat === '법적');
   const AR = B.ar;
   const relN = new Set((B.rel || []).flatMap(r => r[0].startsWith('g:') ? (B.gp?.[r[0]] || []) : [r[0]])).size;
@@ -83,7 +97,14 @@
   /* ── 경력 흐름 ── */
   const norm = s => String(s || '').replace(/\s+/g, '');
   const EV = (B.ev || []).map(e => ({ d: e[0], title: e[1], typ: e[2], stage: e[3], desc: e[4], src: e[5], url: e[6], g: e[7] || null }));
-  const rows = EV.filter(e => /\d{4}/.test(e.d)).map(e => ({ ...e }));
+  /* 출생은 연대기의 출발점이다. 정치인 데이터의 정확한 생년월일이 있는데도
+     이전 수집본에 사건이 없을 때만 한 번 보완한다. */
+  const timeline = EV.map(e => ({ ...e }));
+  if (B.bd && !timeline.some(e => e.typ === 'birth')) timeline.push({ d: B.bd, title: '출생', typ: 'birth', stage: '출생·성장', desc: B.bp ? `${B.bp} 출생` : '', src: B.src?.wd || B.src?.wiki || '' });
+  timeline.sort((a, b) => (NB.yearOf(a) - NB.yearOf(b)) || String(a.d).localeCompare(String(b.d)) || String(a.title).localeCompare(String(b.title), 'ko'));
+  /* 출생은 전체 연대기의 첫 항목으로 두되, 직무 기간을 설명하는 간트에는
+     넣지 않는다. 그래프의 빈 구간을 사실처럼 보이게 하지 않기 위해서다. */
+  const rows = timeline.filter(e => /\d{4}/.test(e.d) && e.typ !== 'birth').map(e => ({ ...e }));
   const WDK = { pos: '직위', edu: '학력', emp: '소속', party: '정당', mem: '소속', team: '소속 팀', label: '레이블' };
   for (const k of Object.keys(WDK)) for (const [label, a, b, g] of car[k] || []) {
     if (!a) continue;
@@ -96,20 +117,34 @@
   rows.sort((a, b) => (NB.span(a.d) || [0])[0] - (NB.span(b.d) || [0])[0]);
   const MAIN = new Set(['office', 'election', 'ruling', 'pos', 'party', 'team', 'emp', 'mem', 'label', 'career', 'business']);
   const main = rows.filter(r => MAIN.has(r.typ));
-  const y0 = Math.min(...rows.map(r => (NB.span(r.d) || [9999])[0]), B.b || 9999), y1 = new Date().getFullYear();
-  const undated = [];
-  for (const k of ['pos', 'edu', 'emp', 'mem', 'team', 'label']) for (const x of car[k] || []) if (!x[1]) undated.push([x, WDK[k]]);
+  const y0 = rows.length ? Math.min(...rows.map(r => (NB.span(r.d) || [9999])[0])) : (B.b || new Date().getFullYear());
+  const y1 = new Date().getFullYear();
+  const start = x => (NB.span(x.d || x.period || '') || [0])[0];
+  const period = x => x.d ? NB.dot(x.d) : (x.period ? NB.dot(x.period) : '기간 미상');
+  const knownCareer = s => {
+    const label = cleanText(s).replace(/^▶\s*/, '');
+    const key = norm(label);
+    const tail = norm(label.split(/\s+/).pop());
+    const hit = rows.find(r => norm(r.title).includes(key) || key.includes(norm(r.title))) || (tail.length > 2 && rows.find(r => norm(r.title).includes(tail)));
+    return { label, d: hit?.d || '', href: hit?.href || '' };
+  };
+  const assemblyCareers = (Pj?.history || []).map(knownCareer).filter(x => x.label).sort((a, b) => start(b) - start(a) || a.label.localeCompare(b.label, 'ko'));
+  const wikiCareers = [];
+  for (const k of ['pos', 'edu', 'emp', 'mem', 'team', 'label']) for (const [label, a, b, g] of car[k] || []) {
+    wikiCareers.push({ label: cleanText(label), d: a ? `${a}${b && b !== a ? '~' + b : ''}` : '', kind: WDK[k], href: g ? href.g(g) : '' });
+  }
+  wikiCareers.sort((a, b) => start(b) - start(a) || a.label.localeCompare(b.label, 'ko'));
   const regBlock = [
-    Pj?.history?.length && `<div class="reg"><h3 class="sub-t">${ic('id')}국회 등록 경력 <small>${Pj.history.length}건</small></h3><ul class="reg-l">${Pj.history.map(h => `<li class="reg-i"><b>${esc(h)}</b></li>`).join('')}</ul></div>`,
-    undated.length && `<div class="reg"><h3 class="sub-t">${ic('world')}위키데이터 경력 <small>${undated.length}건</small></h3><ul class="reg-l">${undated.map(([x, t]) => `<li class="reg-i"><a class="lk" href="${href.g(x[3])}"><b>${esc(x[0])}</b></a><span class="reg-g">${t}</span></li>`).join('')}</ul></div>`,
-    car.award?.length && `<div class="reg"><h3 class="sub-t">${ic('trophy')}수상 <small>${car.award.length}건</small></h3><ul class="reg-l">${car.award.map(x => `<li class="reg-i"><span class="reg-d">${x[1] || ''}</span><a class="lk" href="${href.g(x[3])}"><b>${esc(x[0])}</b></a></li>`).join('')}</ul></div>`,
+    assemblyCareers.length && `<div class="reg"><h3 class="sub-t">${ic('id')}국회 등록 경력 <small>${assemblyCareers.length}건</small><span class="src-i" data-tip="열린국회정보의 공개 경력입니다. 기간이 별도로 확보되지 않은 항목은 ‘기간 미상’으로 표시합니다.">${ic('info-circle')}<span class="sr-only">수집 기준</span></span></h3><ul class="reg-l">${assemblyCareers.map(x => `<li class="reg-i"><span class="reg-d">${esc(period(x))}</span>${x.href ? `<a class="lk" href="${esc(x.href)}"><b>${esc(x.label)}</b></a>` : `<b>${esc(x.label)}</b>`}</li>`).join('')}</ul></div>`,
+    wikiCareers.length && `<div class="reg"><h3 class="sub-t">${ic('world')}위키데이터 경력 <small>${wikiCareers.length}건</small><span class="src-i" data-tip="위키데이터의 공개 경력입니다. 최근 시작 시점 순으로 정렬하며, 원자료에 기간이 없으면 추정하지 않습니다.">${ic('info-circle')}<span class="sr-only">수집 기준</span></span></h3><ul class="reg-l">${wikiCareers.map(x => `<li class="reg-i"><span class="reg-d">${esc(period(x))}</span>${x.href ? `<a class="lk" href="${esc(x.href)}"><b>${esc(x.label)}</b></a>` : `<b>${esc(x.label)}</b>`}<span class="reg-g">${esc(x.kind)}</span></li>`).join('')}</ul></div>`,
+    car.award?.length && `<div class="reg"><h3 class="sub-t">${ic('trophy')}수상 <small>${car.award.length}건</small></h3><ul class="reg-l">${car.award.slice().sort((a, b) => Number(b[1] || 0) - Number(a[1] || 0)).map(x => `<li class="reg-i"><span class="reg-d">${esc(x[1] || '연도 미상')}</span><a class="lk" href="${href.g(x[3])}"><b>${esc(x[0])}</b></a></li>`).join('')}</ul></div>`,
   ].filter(Boolean).join('');
-  if (rows.length || regBlock || EV.length) {
-    const cnt = NB.FILTERS.map(([n, f]) => [n, EV.filter(f).length]);
-    add('s-career', '경력 흐름', 'timeline-event', (rows.length + undated.length + (Pj?.history?.length || 0)) + '건',
+  if (rows.length || regBlock || timeline.length) {
+    const cnt = NB.FILTERS.map(([n, f]) => [n, timeline.filter(f).length]);
+    add('s-career', '경력 흐름', 'timeline-event', (rows.length + wikiCareers.length + assemblyCareers.length) + '건',
       `${rows.length ? `<div id="gt">${NB.gantt(rows, y0, y1, NB.ticks(y0, y1))}</div>` : ''}
        ${regBlock}
-       ${EV.length ? NB.exp('전체 연대기', EV.length + '건', `<div style="margin-bottom:var(--s-6)">${NB.seg('tl', cnt)}</div>${NB.tl(EV)}`) : ''}`,
+       ${timeline.length ? NB.exp('전체 연대기', timeline.length + '건', `<div style="margin-bottom:var(--s-6)">${NB.seg('tl', cnt)}</div>${NB.tl(timeline)}`) : ''}`,
       { cls: 'career', aside: main.length && main.length < rows.length ? NB.seg('gt', [['주요 경력', main.length], ['전체', rows.length]]) : '' });
   }
 
@@ -165,8 +200,27 @@
     }).join('')}</div>`).join('')}</div>`);
 
   /* ── 발언 ── */
-  if (Q.length) add('s-q', '발언', 'quote', Q.length + '건', `<div class="quotes">${Q.slice(0, 6).map(NB.quote).join('')}</div>
-    ${Q.length > 6 ? NB.exp('발언 전체', (Q.length - 6) + '건', `<div class="quotes">${Q.slice(6).map(NB.quote).join('')}</div>`) : ''}`);
+  if (Q.length) {
+    const speechTabs = [['전체', Q.length], ...speechTopics.map(x => [x.term, x.items.length])];
+    add('s-q', '발언 비교', 'message-2', Q.length + '건', `<p class="compare-note">같은 핵심어가 서로 다른 시점의 인용에서 반복된 경우만 묶어 봅니다. 표현 차이만으로 입장 변화나 모순을 자동 판정하지 않으며, 날짜와 원문으로 직접 비교할 수 있습니다.</p>
+      ${speechTopics.length ? `<div class="speech-f">${NB.seg('sq', speechTabs)}</div>` : ''}
+      <div id="quote-list" class="quotes">${Q.slice(0, 6).map(NB.quote).join('')}</div>
+      ${Q.length > 6 ? `<div id="quote-more">${NB.exp('최근 발언 더 보기', (Q.length - 6) + '건', `<div class="quotes">${Q.slice(6).map(NB.quote).join('')}</div>`)}</div>` : ''}`);
+  }
+
+  /* ── 연결된 영상·공개 반응 ──
+     인물 이름만으로 외부 게시물을 붙이지 않는다. 이 인물에게 연결된
+     당일 이슈 ID를 공통 키로 삼은 공개 URL만 보여준다. */
+  const issueIds = new Set((B.iss || []).map(x => x[2]));
+  const voiceIssues = (Voice?.issues || []).filter(x => issueIds.has(x.id));
+  const mediaSeen = new Set();
+  const videos = [];
+  const posts = [];
+  voiceIssues.forEach(issue => {
+    (issue.videos || []).forEach(v => { if (v.url && !mediaSeen.has(v.url)) { mediaSeen.add(v.url); videos.push({ t: v.t, title: v.title, url: v.url, press: v.ch || '영상', img: v.thumb || issue.image || '', desc: issue.title }); } });
+    (issue.posts || []).forEach(p => { if (p.url && !mediaSeen.has(p.url)) { mediaSeen.add(p.url); posts.push({ t: String(p.d || '').replace(/^(\d{4})(\d{2})(\d{2}).*/, '$1-$2-$3'), title: p.title || issue.title, url: p.url, press: p.src || '공개 반응', desc: p.q || issue.title }); } });
+  });
+  if (videos.length || posts.length) add('s-media', '영상·공개 반응', 'video', videos.length + posts.length + '건', `${videos.length ? `<div class="acards">${videos.slice(0, 4).filter(x => x.img).map(NB.acard).join('')}</div>` : ''}${posts.length ? `<div class="alist social-list">${posts.slice(0, 8).map(NB.arow).join('')}</div>` : ''}`);
 
   /* ── 사건·사고 ── */
   const YRS = [...new Set(HI.map(x => x.d.slice(0, 4)))].sort();
@@ -190,8 +244,18 @@
   const hcSeg = [['전체', HI.length], ...CATS.filter(([c]) => c !== '논란' && c !== '법적')];
   if (INC.length) hcSeg.splice(Math.min(3, hcSeg.length), 0, ['사건·사고', INC.length]);
   const HF = { 전체: () => true, '사건·사고': x => x.cat === '논란' || x.cat === '법적' };
-  const toA = r => ({ t: r[0] || '', title: r[1], url: r[2], press: r[3] });
-  const lastA = (AR?.last || []).map(toA);
+  const toA = r => Array.isArray(r) ? ({ t: r[0] || '', title: r[1], url: r[2], press: r[3], img: r[4] || '' }) : ({ t: r.t || '', title: r.title, url: r.url, press: r.press, img: r.img || '', desc: r.desc || '' });
+  /* 제목 정규화 → 동일 제목은 한 번만. URL이 다른 재송고·제목 중복을
+     같은 기사로 취급하되, 비슷하다는 이유만으로 서로 다른 기사를 지우진 않는다. */
+  const articleKey = a => cleanText(NB.titleClean(a.title)).toLocaleLowerCase('ko-KR');
+  const dedupeArticles = list => {
+    const keys = new Set(), urls = new Set();
+    return list.slice().sort((a, b) => String(b.t || '').localeCompare(String(a.t || ''))).filter(a => {
+      const k = articleKey(a); if (!a?.url || !k || keys.has(k) || urls.has(a.url)) return false;
+      keys.add(k); urls.add(a.url); return true;
+    });
+  };
+  const lastA = dedupeArticles((AR?.last || []).map(toA));
   const dayN = {}; lastA.forEach(a => { const d = a.t.slice(0, 10); dayN[d] = (dayN[d] || 0) + 1; });
   const news = [
     (HI.length || press.length) && `<div class="news-top${HI.length && press.length ? '' : ' news-top--1'}">
@@ -204,15 +268,25 @@
     (B.pa || []).length && `<div class="acards">${B.pa.map(([t, title, url, pr, img]) => NB.acard({ t, title, url, press: pr, img: photo(img) })).join('')}</div>`,
     lastA.length && `<div style="margin-top:var(--s-8)">${NB.agroup(lastA, {})}
       ${AR.c > lastA.length ? NB.exp('이전 보도', num(AR.c - lastA.length) + '건', `<div id="arts"></div>`, false, 'x-arts') : ''}</div>`,
-    HI.length && NB.exp('장기 기록', num(HI.length) + '건', `<div class="hist-f">${NB.seg('hc', hcSeg)}</div><div id="hist"></div>`, false, 'x-hist'),
+    HI.length && NB.exp('모든 기록', num(HI.length) + '건', `<div class="hist-f">${NB.seg('hc', hcSeg)}</div><div id="hist"></div>`, false, 'x-hist'),
   ].filter(Boolean);
-  if (news.length) add('s-news', '보도', 'file-text', AR ? num(AR.c) + '건' : num(HI.length) + '건', news.join(''));
+  if (news.length) add('s-news', '보도·기록', 'file-text', AR ? num(AR.c) + '건' : num(HI.length) + '건', news.join(''));
 
   app.innerHTML = top + (SEC.length ? `<div class="body"><aside>${NB.toc(SEC)}${NB.toc(SEC, 'toc--bar')}</aside><div class="main">${SEC.map(x => x.html).join('')}</div></div>` : '');
   NB.bind();
   /* 상호작용 */
   const gt = i => document.querySelectorAll('#gt .gantt-r').forEach((r, k) => r.hidden = i === 0 && !MAIN.has(rows[k].typ));
   if (main.length && main.length < rows.length) gt(0);
+  const renderSpeech = i => {
+    const host = document.getElementById('quote-list'); if (!host) return;
+    const chosen = i > 0 ? speechTopics[i - 1] : null;
+    const list = chosen ? chosen.items : Q.slice(0, 6);
+    host.classList.toggle('quotes--compare', Boolean(chosen));
+    host.innerHTML = chosen
+      ? `<p class="compare-topic"><b>‘${esc(chosen.term)}’</b> 관련 인용 ${chosen.items.length}건 <span>오래된 발언부터 읽어 보세요.</span></p><div class="speech-timeline">${list.map(q => `<div class="speech-row"><time>${esc(NB.ymd(q.d))}</time>${NB.quote(q)}</div>`).join('')}</div>`
+      : list.map(NB.quote).join('');
+    const more = document.getElementById('quote-more'); if (more) more.hidden = Boolean(chosen);
+  };
   const histList = (hostId, list, step) => { const host = document.getElementById(hostId); if (!host) return; host.innerHTML = ''; host.nextElementSibling?.classList.contains('more-b') && host.nextElementSibling.remove();
     const c = {}; list.forEach(x => { const m = x.d.slice(0, 7); c[m] = (c[m] || 0) + 1; });
     const put = NB.grouper(host, x => x.d.slice(0, 7), m => `${NB.ym(m)}<small>${c[m]}건</small>`, NB.hrow);
@@ -222,15 +296,15 @@
   const arts = async () => {
     if (artsOn || !AR) return; artsOn = true;
     const host = document.getElementById('arts'); if (!host) return;
-    const seen = new Set(lastA.map(a => a.url));
+    const seen = new Set(lastA.map(articleKey));
     let all = [];
-    if (B.ea && AR.c < 200) { try { all = (await NB.load(`${RAW}data/db/entities/${B.ea}.json`)).timeline.filter(a => a.title.includes(nm)); } catch (e) { } }
+    if (B.ea && AR.c < 200) { try { all = (await NB.load(`${RAW}data/db/entities/${B.ea}.json`)).timeline.filter(a => a.title.includes(nm)).map(toA); } catch (e) { } }
     if (!all.length) {
       const mons = [...new Set((AR.m || []).map(m => m[0]))].sort().reverse();
       for (const m of mons) for (const f of AR.f) { try { all.push(...(await gz(`${RAW}data/db/people/${f}/${m}.json.gz`)).map(toA)); } catch (e) { } }
     }
     const dn = {}, uniq = [];
-    for (const a of all.sort((x, y) => (y.t || '').localeCompare(x.t || ''))) { if (seen.has(a.url)) continue; seen.add(a.url); uniq.push(a); const d = (a.t || '').slice(0, 10); dn[d] = (dn[d] || 0) + 1; }
+    for (const a of dedupeArticles(all)) { const k = articleKey(a); if (seen.has(k)) continue; seen.add(k); uniq.push(a); const d = (a.t || '').slice(0, 10); dn[d] = (dn[d] || 0) + 1; }
     const put = NB.grouper(host, a => (a.t || '').slice(0, 10) || '날짜 미상', d => `${d.length === 10 ? NB.dayLabel(d) : esc(d)}<small>${dn[d] || ''}건</small>`, NB.arow);
     NB.more(host, uniq.length, 50, (a, b) => put(uniq.slice(a, b)));
   };
@@ -242,7 +316,8 @@
   document.addEventListener('seg', e => {
     const { name, i } = e.detail;
     if (name === 'gt') gt(i);
-    if (name === 'tl') { const f = NB.FILTERS[i][1]; document.querySelectorAll('.tl-i').forEach((li, k) => li.hidden = !f(EV[k])); }
+    if (name === 'tl') { const f = NB.FILTERS[i][1]; document.querySelectorAll('.tl-i').forEach((li, k) => li.hidden = !f(timeline[k])); }
+    if (name === 'sq') renderSpeech(i);
     if (name === 'nc') { document.getElementById('nc0').hidden = i !== 0; document.getElementById('nc1').hidden = i !== 1; }
     if (name === 'bill') { const v = e.target.querySelectorAll('.seg-i')[i].firstChild.textContent; document.querySelectorAll('.brow--bill').forEach(r => r.hidden = i !== 0 && r.dataset.res !== v); }
     if (name === 'hc') { const c = hcSeg[i][0]; histList('hist', HI.filter(HF[c] || (x => x.cat === c)), 40); }
