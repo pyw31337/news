@@ -39,9 +39,15 @@ const NB = (() => {
   const exp = (label, count, body, open = false, id = '') => `<div class="exp${open ? ' is-open' : ''}"${id ? ` id="${id}"` : ''}><button class="exp-b" type="button" aria-expanded="${open}"><span>${esc(label)}</span>${count != null ? `<span class="exp-n">${esc(count)}</span>` : ''}${ic('chevron-down')}</button><div class="exp-c"${open ? '' : ' hidden'}>${body}</div></div>`;
   const seg = (name, items, cur = 0) => `<div class="seg" role="tablist" data-seg="${name}">${items.map((t, i) => `<button type="button" role="tab" class="seg-i${i === cur ? ' is-on' : ''}" aria-selected="${i === cur}" data-i="${i}">${esc(t[0] ?? t)}${t[1] != null ? `<span class="seg-n">${t[1]}</span>` : ''}</button>`).join('')}</div>`;
   const pchip = (p, sub = '', href = p.href) => { const tag = href ? 'a' : 'span', tip = [p.name, sub].filter(Boolean).join('\n'); return `<${tag} class="pchip"${href ? ` href="${esc(href)}"` : ''}${tip ? ` data-tip="${esc(tip)}"` : ''}>${p.photo ? `<img src="${esc(p.photo)}" alt="" loading="lazy" width="32" height="32">` : `<span class="pchip-av">${ic('user')}</span>`}<span class="pchip-t"><b>${esc(p.name)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</span></${tag}>`; };
+  /* 행에는 제목이 이미 보인다. 실제 수집한 요약이 있을 때만 미리보기를
+     띄워 같은 제목을 말풍선에 되풀이하지 않는다. */
+  const articleTip = a => {
+    const summary = cleanText(a.desc || '');
+    return summary ? [summary, [a.press, ymd(a.t || a.d)].filter(Boolean).join(' · ')].filter(Boolean).join('\n') : '';
+  };
   const arow = a => {
-    const title = titleClean(a.title), tip = [title, a.desc, [a.press, ymd(a.t)].filter(Boolean).join(' · ')].filter(Boolean).join('\n');
-    return `<a class="arow${a.img ? ' has-thumb' : ''}" href="${esc(a.url)}" target="_blank" rel="noopener" data-tip="${esc(tip)}"${a.img ? ` data-thumb="${esc(a.img)}"` : ''}><time>${esc(md(a.t))}</time>${a.img ? `<img class="arow-img" src="${esc(a.img)}" alt="" loading="lazy" decoding="async">` : ''}<span class="arow-t">${esc(title)}</span><span class="arow-p">${esc(a.press)}</span></a>`;
+    const title = titleClean(a.title), tip = articleTip(a);
+    return `<a class="arow${a.img ? ' has-thumb' : ''}" href="${esc(a.url)}" target="_blank" rel="noopener"${tip ? ` data-tip="${esc(tip)}"` : ''}${a.img ? ` data-thumb="${esc(a.img)}"` : ''}><time>${esc(md(a.t))}</time>${a.img ? `<img class="arow-img" src="${esc(a.img)}" alt="" loading="lazy" decoding="async">` : ''}<span class="arow-t">${esc(title)}</span><span class="arow-p">${esc(a.press)}</span></a>`;
   };
   const BASE = (document.querySelector('meta[name=nb-base]') || {}).content || '../';
   const href = { p: id => `${BASE}person/?id=${encodeURIComponent(id)}`, g: k => `${BASE}e/?k=${encodeURIComponent(k)}` };
@@ -154,7 +160,7 @@ const NB = (() => {
      URL이 없는 과거 스냅샷은 정보를 과장하지 않고, 같은 읽기 전용 행으로 남긴다. */
   const hrow = x => {
     const tag = x.url ? 'a' : 'div', attrs = x.url ? ` href="${esc(x.url)}" target="_blank" rel="noopener"` : '';
-    const title = titleClean(x.title), tip = [title, x.quote, [x.press, ymd(x.d)].filter(Boolean).join(' · ')].filter(Boolean).join('\n');
+    const title = titleClean(x.title), tip = articleTip(x);
     return `<${tag} class="arow hrow${x.img ? ' has-thumb' : ''}"${attrs}${tip ? ` data-tip="${esc(tip)}"` : ''}${x.img ? ` data-thumb="${esc(x.img)}"` : ''}><time>${esc(md(x.d))}</time>${x.img ? `<img class="arow-img" src="${esc(x.img)}" alt="" loading="lazy" decoding="async">` : ''}<span class="arow-t">${esc(title)}</span><span class="arow-p">${x.press ? `<span>${esc(host(x.press))}</span>` : ''}<span class="tag ${['논란', '법적', '수상'].includes(x.cat) ? HCAT[x.cat] : ''}">${esc(x.cat)}</span></span></${tag}>`;
   };
   const ym = t => { const d = String(t).slice(0, 7).split('-'); return `${d[0]}년 ${+d[1]}월`; };

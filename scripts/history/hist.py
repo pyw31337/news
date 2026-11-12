@@ -49,7 +49,7 @@ def quote(t, c):
     m = re.search(QRX, t); return m.group(1) if m else ''
 YCAP = 40  # 연도별 '보도' 상한(분류된 발언·논란·수상·법적·활동은 모두 보관)
 def pack(t, L):
-    """압축 형식: o=언론사 목록, it=[날짜, 제목, 언론사번호, 분류, 인용?, 원문URL?].
+    """압축 형식: o=언론사 목록, it=[날짜, 제목, 언론사번호, 분류, 인용?, 원문URL?, RSS요약?].
 
     기존 스냅샷의 앞 다섯 칸은 그대로 유지한다. URL은 발언·기록을
     제목만 나열하지 않고 날짜·원문으로 검증할 수 있게 하는 근거다.
@@ -68,11 +68,15 @@ def pack(t, L):
         if x.get('u'):
             if len(r) == 4: r.append('')
             r.append(x['u'])
+        if x.get('x'):
+            if len(r) == 4: r.append('')
+            if len(r) == 5: r.append('')
+            r.append(x['x'][:180])
         it.append(r)
     return {'n': t['n'], 'occ': t.get('occ', ''), 'k': t['k'], 'upd': NOW.isoformat(), 'o': list(O), 'it': it}
 def unpack(d):
     if not d: return []
-    return [{'d': r[0], 't': r[1], 'o': d['o'][r[2]], 'u': r[5] if len(r) > 5 else ''} for r in d.get('it', [])]
+    return [{'d': r[0], 't': r[1], 'o': d['o'][r[2]], 'u': r[5] if len(r) > 5 else '', 'x': r[6] if len(r) > 6 else ''} for r in d.get('it', [])]
 import gzip
 def gzw(p, o):
     with gzip.open(p, 'wt', encoding='utf-8', compresslevel=9) as f: json.dump(o, f, ensure_ascii=False, separators=(',', ':'))
@@ -93,7 +97,7 @@ def gnews(q, a, b):
         if src and t.endswith(' - ' + src): t = t[:-len(src) - 3]
         desc = re.sub(r'<[^>]+>', ' ', html.unescape(g('description'))); desc = re.sub(r'\s+', ' ', desc).strip()
         s = '' if t[:20] in desc else desc[:140]
-        out.append({'t': t.strip(), 'o': src, 'd': d, 'u': link})
+        out.append({'t': t.strip(), 'o': src, 'd': d, 'u': link, 'x': s})
     return out
 def windows(y0, y1):
     for y in range(y0, y1 + 1): yield f'{y}-01-01', f'{y+1}-01-01', y

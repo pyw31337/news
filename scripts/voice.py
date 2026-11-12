@@ -188,7 +188,13 @@ def ikey(i):
 def match(v, kws):
     t = v['title']; return sum(1 for k in kws if len(k) >= 2 and k in t)
 # ---------- 실행 ----------
-issues = (T.get('issues') or [])[:NTOP]
+# 홈 화면 상위 이슈 외에도, 그날의 공개 인물 엔티티가 명시된 이슈는
+# 소량 추가 수집한다. 인물 페이지는 이슈 ID로만 연결하므로 이름만 같은
+# 사람에게 영상·SNS 글이 섞이지 않는다.
+all_issues = T.get('issues') or []
+person_names = {str(e.get('name') or '') for e in (T.get('entities') or []) if e.get('type') == 'person'}
+person_extra = [i for i in all_issues[NTOP:] if any(n in person_names for n in (i.get('entities') or []))]
+issues = all_issues[:NTOP] + person_extra[:int(os.environ.get('VOICE_PERSON_EXTRA') or 2)]
 oldmap = {x['key']: x for x in OLD.get('issues', [])}
 VIDS = rss()
 out = []
@@ -259,10 +265,22 @@ for r in out:
     tr = [x for x in r['trend'] if x[0] != h] + [[h, s['pos'], s['neu'], s['neg'], r['n']]]
     r['trend'] = tr[-72:]
     for p in r['posts']: p.pop('_t', None)
-# 지난 이슈도 하루는 허브에 남김(용량 작게: 글·영상 빼고)
-keep = [dict(o, posts=[], videos=o.get('videos', [])[:2]) for k, o in oldmap.items() if k not in {r['key'] for r in out} and o.get('seen', '') > (now - datetime.timedelta(days=1)).isoformat()][:12]
+# 당일 상위 이슈에서 내려갔다고 영상·공개 반응 원본까지 지우면 인물
+# 페이지의 출처 연결이 끊어진다. 최근 30일은 URL·짧은 인용을 보존해
+# 같은 이슈 ID에서만 다시 연결한다. 이름/키워드만으로 다른 사람에게
+# 붙이는 일은 하지 않는다.
+KEEP_DAYS = int(os.environ.get('VOICE_KEEP_DAYS') or 30)
+fresh_keys = {r['key'] for r in out}
+cutoff = (now - datetime.timedelta(days=KEEP_DAYS)).isoformat()
+keep = []
+for k, old in oldmap.items():
+    if k in fresh_keys or old.get('seen', '') < cutoff:
+        continue
+    keep.append(dict(old, archived=1, posts=(old.get('posts') or [])[:24], videos=(old.get('videos') or [])[:6]))
+keep.sort(key=lambda x: x.get('seen', ''), reverse=True)
+keep = keep[:48]
 for r in out: r['seen'] = now.isoformat(timespec='seconds')
-json.dump({'updated': now.isoformat(timespec='seconds'), 'issues': out, 'past': [dict(k, past=1) for k in keep]}, open(P('voice.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+json.dump({'updated': now.isoformat(timespec='seconds'), 'issues': out + keep, 'past': [dict(k, past=1) for k in keep]}, open(P('voice.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 for k in list(use['day'])[:-40]: use['day'].pop(k)
 json.dump(use, open(U, 'w'))
 diag.update(issues=len(out), posts=sum(r['n'] for r in out), videos=sum(len(r['videos']) for r in out), ai=sum(1 for r in out if r['ai']), t=now.isoformat(timespec='seconds'))

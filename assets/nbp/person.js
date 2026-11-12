@@ -58,7 +58,7 @@
   const pos = (car.pos || []).filter(x => x[1]).sort((a, b) => a[1] - b[1]);
   const eras = pos.slice(-7).map((x, i, a) => ({ y: yr(x[1], x[2]), name: x[0], href: href.g(x[3]), now: !x[2] && i === a.length - 1 }));
   /* 장기 기록 */
-  const HP = H?.o || [], HI = (H?.it || []).map(x => ({ d: x[0], title: x[1], press: HP[x[2]] || '', cat: x[3], quote: x[4], url: x[5] || '' })).sort((a, b) => b.d.localeCompare(a.d));
+  const HP = H?.o || [], HI = (H?.it || []).map(x => ({ d: x[0], title: x[1], press: HP[x[2]] || '', cat: x[3], quote: x[4], url: x[5] || '', desc: x[6] || '' })).sort((a, b) => b.d.localeCompare(a.d));
   const own = x => { const i = x.title.indexOf(nm), q = x.title.search(/["“'‘]/); return i >= 0 && (q < 0 || i < q); };
   const Q = HI.filter(x => x.cat === '발언' && x.quote && own(x));
   /* 발언은 채팅 로그가 아니다. 같은 핵심어가 서로 다른 시점의 인용에
@@ -121,17 +121,61 @@
   const y1 = new Date().getFullYear();
   const start = x => (NB.span(x.d || x.period || '') || [0])[0];
   const period = x => x.d ? NB.dot(x.d) : (x.period ? NB.dot(x.period) : '기간 미상');
+  /* 출처별 표기가 달라도 같은 경력을 찾아 기간을 보강한다. 연도는 실제
+     생애 기록에 있는 것만 합치며, 추정값을 만들어 넣지 않는다. */
+  const careerKey = s => norm(cleanText(s)).replace(/[()]/g, '').replace(/대한민국/g, '').replace(/국민학교/g, '초등학교')
+    .replace(/(제\d+대)당대표/g, '$1대표').replace(/도도지사/g, '도지사')
+    .replace(/제\d+대|제\d+회|민선[\d,]+기|초선|재선|연임|취임|역임|수료|졸업|합격|출마|당선|학력|법학사/g, '');
+  const careerMatches = (label, d = '') => {
+    const key = careerKey(label);
+    if (!key || key.length < 2) return [];
+    let hit = rows.filter(r => { const k = careerKey(r.title); return k && (k.includes(key) || (key.length <= 5 && key.includes(k))); });
+    if (/민선/.test(cleanText(label))) {
+      const place = careerKey(label).replace(/민선[\d,]+기/g, '');
+      const local = rows.filter(r => /민선/.test(r.title) && careerKey(r.title).includes(place));
+      if (local.length) hit = local;
+    }
+    /* `중·고교 검정고시`처럼 상위 출처가 여러 실제 기록을 하나로 묶는
+       경우에는 같은 검증 키워드의 기록을 모두 보여 기간만 병합한다. */
+    if (!hit.length && key.includes('중고교')) hit = rows.filter(r => careerKey(r.title).includes('검정고시'));
+    if (d && hit.length > 1) {
+      const y = start({ d });
+      const beginsThatYear = hit.filter(r => start(r) === y);
+      const atYear = beginsThatYear.length ? beginsThatYear : hit.filter(r => { const [a, b] = NB.span(r.d) || []; return y && a <= y && y <= b; });
+      if (atYear.length) hit = atYear;
+    }
+    return hit;
+  };
+  const joinedPeriod = hit => {
+    if (!hit.length) return '';
+    const dated = hit.map(x => x.d).filter(Boolean);
+    if (dated.length === 1) return dated[0];
+    const range = dated.map(NB.span).filter(Boolean);
+    if (!range.length) return '';
+    const a = Math.min(...range.map(x => x[0])), b = Math.max(...range.map(x => x[1]));
+    return a === b ? String(a) : `${a}~${b}`;
+  };
+  const detailedLabel = (label, hit) => {
+    const clean = cleanText(label);
+    const best = hit[0]?.title || '';
+    if (/^대한민국\s*대통령$/.test(clean) && best) return best.replace(/\s*취임$/, '');
+    if (/^대한민국\s*국회의원$/.test(clean) && best) return (best.match(/제\d+대\s*국회의원/) || [best])[0];
+    if (/^사법연수원$/.test(clean) && best) return best.replace(/\s*수료$/, '');
+    return clean;
+  };
   const knownCareer = s => {
     const label = cleanText(s).replace(/^▶\s*/, '');
-    const key = norm(label);
-    const tail = norm(label.split(/\s+/).pop());
-    const hit = rows.find(r => norm(r.title).includes(key) || key.includes(norm(r.title))) || (tail.length > 2 && rows.find(r => norm(r.title).includes(tail)));
-    return { label, d: hit?.d || '', href: hit?.href || '' };
+    const hit = careerMatches(label);
+    return { label: detailedLabel(label, hit), d: joinedPeriod(hit), href: hit[0]?.href || '' };
   };
   const assemblyCareers = (Pj?.history || []).map(knownCareer).filter(x => x.label).sort((a, b) => start(b) - start(a) || a.label.localeCompare(b.label, 'ko'));
   const wikiCareers = [];
   for (const k of ['pos', 'edu', 'emp', 'mem', 'team', 'label']) for (const [label, a, b, g] of car[k] || []) {
-    wikiCareers.push({ label: cleanText(label), d: a ? `${a}${b && b !== a ? '~' + b : ''}` : '', kind: WDK[k], href: g ? href.g(g) : '' });
+    const raw = cleanText(label), ownPeriod = a ? `${a}${b && b !== a ? '~' + b : ''}` : '';
+    const hit = careerMatches(raw, ownPeriod);
+    const verifiedPeriod = joinedPeriod(hit);
+    const d = verifiedPeriod && /\./.test(verifiedPeriod) && !/\./.test(ownPeriod) ? verifiedPeriod : (ownPeriod || verifiedPeriod);
+    wikiCareers.push({ label: detailedLabel(raw, hit), d, kind: WDK[k], href: g ? href.g(g) : '' });
   }
   wikiCareers.sort((a, b) => start(b) - start(a) || a.label.localeCompare(b.label, 'ko'));
   const regBlock = [
@@ -196,13 +240,13 @@
       const [o, , sub] = r;
       if (!o.startsWith('g:')) return `<div class="rnode">${pcard(o, RS[sub] || sub)}</div>`;
       const peers = B.gp?.[o] || [];
-      return `<div class="rnode"><a class="lk" href="${href.g(o)}">${lgi(o)}<b>${esc(o.split(':').slice(2).join(':'))}</b></a><small>${esc(RS[sub] || sub)}</small>${peers.length ? `<div class="rpeers"><span class="rpeer-l">${esc(PEER[sub] || '함께')}</span>${peers.map(p => pcard(p)).join('')}</div>` : ''}</div>`;
+      return `<div class="rnode rnode--group"><a class="lk" href="${href.g(o)}">${lgi(o)}<b>${esc(o.split(':').slice(2).join(':'))}</b></a><small>${esc(RS[sub] || sub)}</small>${peers.length ? `<div class="rpeers"><span class="rpeer-l">${esc(PEER[sub] || '함께')}</span>${peers.map(p => pcard(p)).join('')}</div>` : ''}</div>`;
     }).join('')}</div>`).join('')}</div>`);
 
   /* ── 발언 ── */
   if (Q.length) {
     const speechTabs = [['전체', Q.length], ...speechTopics.map(x => [x.term, x.items.length])];
-    add('s-q', '발언 비교', 'message-2', Q.length + '건', `<p class="compare-note">같은 핵심어가 서로 다른 시점의 인용에서 반복된 경우만 묶어 봅니다. 표현 차이만으로 입장 변화나 모순을 자동 판정하지 않으며, 날짜와 원문으로 직접 비교할 수 있습니다.</p>
+    add('s-q', '발언 비교', 'messages', Q.length + '건', `<p class="compare-note">같은 핵심어가 서로 다른 시점의 인용에서 반복된 경우만 묶어 봅니다. 표현 차이만으로 입장 변화나 모순을 자동 판정하지 않으며, 날짜와 원문으로 직접 비교할 수 있습니다.</p>
       ${speechTopics.length ? `<div class="speech-f">${NB.seg('sq', speechTabs)}</div>` : ''}
       <div id="quote-list" class="quotes">${Q.slice(0, 6).map(NB.quote).join('')}</div>
       ${Q.length > 6 ? `<div id="quote-more">${NB.exp('최근 발언 더 보기', (Q.length - 6) + '건', `<div class="quotes">${Q.slice(6).map(NB.quote).join('')}</div>`)}</div>` : ''}`);
@@ -217,8 +261,8 @@
   const videos = [];
   const posts = [];
   voiceIssues.forEach(issue => {
-    (issue.videos || []).forEach(v => { if (v.url && !mediaSeen.has(v.url)) { mediaSeen.add(v.url); videos.push({ t: v.t, title: v.title, url: v.url, press: v.ch || '영상', img: v.thumb || issue.image || '', desc: issue.title }); } });
-    (issue.posts || []).forEach(p => { if (p.url && !mediaSeen.has(p.url)) { mediaSeen.add(p.url); posts.push({ t: String(p.d || '').replace(/^(\d{4})(\d{2})(\d{2}).*/, '$1-$2-$3'), title: p.title || issue.title, url: p.url, press: p.src || '공개 반응', desc: p.q || issue.title }); } });
+    (issue.videos || []).forEach(v => { if (v.url && !mediaSeen.has(v.url)) { mediaSeen.add(v.url); videos.push({ t: v.t, title: v.title, url: v.url, press: v.ch || '영상', img: v.thumb || issue.image || '', desc: (v.sum || []).join(' ') }); } });
+    (issue.posts || []).forEach(p => { if (p.url && !mediaSeen.has(p.url)) { mediaSeen.add(p.url); posts.push({ t: String(p.d || '').replace(/^(\d{4})(\d{2})(\d{2}).*/, '$1-$2-$3'), title: p.title || issue.title, url: p.url, press: p.src || '공개 반응', desc: p.q || '' }); } });
   });
   if (videos.length || posts.length) add('s-media', '영상·공개 반응', 'video', videos.length + posts.length + '건', `${videos.length ? `<div class="acards">${videos.slice(0, 4).filter(x => x.img).map(NB.acard).join('')}</div>` : ''}${posts.length ? `<div class="alist social-list">${posts.slice(0, 8).map(NB.arow).join('')}</div>` : ''}`);
 
