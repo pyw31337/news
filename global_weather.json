@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-12T21:19:24.824525+09:00",
-  "alerts_count": 23,
+  "updated": "2026-11-12T20:18:43.133032+09:00",
+  "alerts_count": 24,
   "alerts": [
     {
       "id": "urn:oid:2.49.0.1.840.0.e61f29d030be3e1b10c772f49aa8f218a71c2b4b.001.1",
@@ -99,22 +99,6 @@
       "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 35 kt. Seas 7 ft. Blowing snow. Extreme\nfreezing spray.\n.THU...E"
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.8b76d561a16ac88ed56e120569dfa9f374c059a1.009.2",
-      "t": "2026-11-11 15:48",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Cape Halkett to Flaxman Island from 15 to 80 NM",
-      "area_en": "Cape Halkett to Flaxman Island from 15 to 80 NM",
-      "event": "해상 결빙 경보",
-      "event_en": "Heavy Freezing Spray Warning",
-      "severity": "Severe",
-      "headline_ko": "Cape Halkett to Flaxman Island from 15 to 80 NM 해상 결빙 경보",
-      "headline_en": "Cape Halkett to Flaxman Island from 15 to 80 NM Heavy Freezing Spray Warning",
-      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...NE winds 35 kt. Seas 7 ft. Blowing snow. Extreme\nfreezing spray.\n.THU..."
-    },
-    {
       "id": "urn:oid:2.49.0.1.840.0.8b76d561a16ac88ed56e120569dfa9f374c059a1.002.1",
       "t": "2026-11-11 15:48",
       "country": "US",
@@ -129,6 +113,22 @@
       "headline_ko": "Cape Beaufort to Point Franklin out to 15 NM 해상 결빙 경보",
       "headline_en": "Cape Beaufort to Point Franklin out to 15 NM Heavy Freezing Spray Warning",
       "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 30 kt. Seas 8 ft. Blowing snow. Heavy freezing\nspray.\n.THU...E w"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.8b76d561a16ac88ed56e120569dfa9f374c059a1.009.2",
+      "t": "2026-11-11 15:48",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Cape Halkett to Flaxman Island from 15 to 80 NM",
+      "area_en": "Cape Halkett to Flaxman Island from 15 to 80 NM",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
+      "severity": "Severe",
+      "headline_ko": "Cape Halkett to Flaxman Island from 15 to 80 NM 해상 결빙 경보",
+      "headline_en": "Cape Halkett to Flaxman Island from 15 to 80 NM Heavy Freezing Spray Warning",
+      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...NE winds 35 kt. Seas 7 ft. Blowing snow. Extreme\nfreezing spray.\n.THU..."
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.8b76d561a16ac88ed56e120569dfa9f374c059a1.007.2",
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 10.3,
-      "apparent_temp": 8.2,
-      "humidity": 78,
+      "temp": 11.8,
+      "apparent_temp": 9.8,
+      "humidity": 75,
       "code": 3,
-      "wind": 13.1
+      "wind": 9.6
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 15.5,
-      "apparent_temp": 14.6,
-      "humidity": 72,
-      "code": 1,
-      "wind": 6.9
+      "temp": 15.6,
+      "apparent_temp": 15.1,
+      "humidity": 74,
+      "code": 0,
+      "wind": 5.6
     },
     {
       "id": "london",
@@ -362,11 +362,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 7.8,
-      "apparent_temp": 3.4,
-      "humidity": 59,
+      "temp": 7.3,
+      "apparent_temp": 3.1,
+      "humidity": 65,
       "code": 0,
-      "wind": 15.8
+      "wind": 15.5
     },
     {
       "id": "paris",
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 11.6,
-      "apparent_temp": 7.5,
-      "humidity": 55,
-      "code": 1,
-      "wind": 16.3
+      "temp": 10.4,
+      "apparent_temp": 6.6,
+      "humidity": 62,
+      "code": 2,
+      "wind": 15.0
     },
     {
       "id": "frankfurt",
@@ -390,9 +390,9 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 9.0,
-      "apparent_temp": 6.0,
-      "humidity": 70,
+      "temp": 9.2,
+      "apparent_temp": 6.5,
+      "humidity": 78,
       "code": 3,
       "wind": 11.3
     },
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 12.3,
-      "apparent_temp": 11.6,
-      "humidity": 82,
+      "temp": 13.0,
+      "apparent_temp": 12.4,
+      "humidity": 81,
       "code": 0,
-      "wind": 3.6
+      "wind": 3.9
     },
     {
       "id": "beijing",
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 8.0,
-      "apparent_temp": 6.8,
+      "temp": 8.1,
+      "apparent_temp": 6.7,
       "humidity": 86,
       "code": 0,
-      "wind": 1.3
+      "wind": 2.7
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 27.4,
-      "apparent_temp": 33.6,
-      "humidity": 86,
+      "temp": 27.5,
+      "apparent_temp": 34.2,
+      "humidity": 88,
       "code": 3,
-      "wind": 2.4
+      "wind": 1.0
     },
     {
       "id": "sydney",
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 18.0,
-      "apparent_temp": 19.2,
+      "temp": 18.3,
+      "apparent_temp": 20.1,
       "humidity": 86,
       "code": 0,
-      "wind": 4.4
+      "wind": 1.5
     },
     {
       "id": "toronto",
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 5.3,
-      "apparent_temp": 1.1,
-      "humidity": 82,
+      "temp": 5.7,
+      "apparent_temp": 1.4,
+      "humidity": 83,
       "code": 3,
-      "wind": 17.1
+      "wind": 18.6
     },
     {
       "id": "dubai",
@@ -474,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 28.1,
-      "apparent_temp": 27.7,
-      "humidity": 53,
+      "temp": 28.4,
+      "apparent_temp": 27.9,
+      "humidity": 52,
       "code": 0,
-      "wind": 21.7
+      "wind": 22.7
     },
     {
       "id": "saopaulo",
@@ -488,21 +488,21 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 24.2,
-      "apparent_temp": 25.6,
-      "humidity": 63,
-      "code": 51,
-      "wind": 9.6
+      "temp": 22.2,
+      "apparent_temp": 24.0,
+      "humidity": 72,
+      "code": 2,
+      "wind": 4.7
     }
   ],
   "stories": [
     {
-      "id": "gfe073c38",
-      "title": "Cop31 live: ‘No one is coming to rescue us,’ Greta Thunberg tells climate summit",
-      "press": "Guardian Environment",
-      "image": "https://i.guim.co.uk/img/media/314a310756f9e5747210ab28b8608e38e80fc95f/429_0_6573_5258/master/6573.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctbGl2ZS5wbmc&enable=upscale&s=0805a191726921af81f32598d36ac610",
-      "score": 10.9,
-      "url": "g/gfe073c38"
+      "id": "ga530b4d3",
+      "title": "PM speech at COP31 climate summit: 12 November 2026",
+      "press": "GOV.UK",
+      "image": "https://s.yimg.com/lo/mysterio/api/d9edac7848898f686b641e1d6abd2da43891081780c9eed7698178d5a4c38e68/lightyear_networkapi/resizefill_w1200%3Bquality_80%3Bformat_jpg/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fbbc_us_articles_995%2F6cbd6e0e15d2c66e4137ae9b568c1b46.jpg",
+      "score": 10.2,
+      "url": "g/ga530b4d3"
     }
   ]
 }
