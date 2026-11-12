@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-12",
-  "generated_at": "2026-11-12T09:24:33+09:00",
+  "generated_at": "2026-11-12T09:52:25+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,208 @@
   },
   "candidates": [
     {
-      "issue_id": "i473ee6bf",
-      "title": "트럼프 “이란전 곧 끝난다…완전한 승리 거둘 것”",
+      "issue_id": "i391c7f70",
+      "title": "젠슨황 '사내불륜' 추가 폭로…NYT \"엔비디아 임원과 혼외관계\"",
+      "category": "경제",
+      "rank": 2,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "젠슨 황 엔비디아 CEO가 중국 스파이로 지목된 여성과의 외도 의혹에 이어, 자사 직속 여성 임원과도 혼외 관계를 맺어왔다는 추가 폭로가 뉴욕타임스(NYT)를 통해 보도되었다.",
+        "젠슨 황 ‘중국 스파이 의심 여성’ 말고도 또 외도?···NYT “엔비디아 임원과도 불륜 의혹”",
+        "앞서 같은날 미 일간 뉴욕타임스(NYT)는 황 CEO가 중국 스파이 의혹을 받는 여성과의 불륜에 이어 자신의 직속 부하인 엔비디아 임원과도 혼외 관계를 맺었다고 보도했다.",
+        "NYT는 전직 직원 5명을 인용해 상대 여성이...",
+        "젠슨황 '사내불륜' 추가 폭로…NYT \"엔비디아 임원과 혼외관계\""
+      ],
+      "sources": [
+        {
+          "press": "경향신문",
+          "title": "젠슨 황 ‘중국 스파이 의심 여성’ 말고도 또 외도?···NYT “엔비디아 임원과도 불륜 의혹”",
+          "url": "https://n.news.naver.com/article/032/0003482206"
+        },
+        {
+          "press": "joseilbo.com",
+          "title": "WSJ \"엔비디아, 젠슨 황 CEO 해임 추진\"… NYT \"회사 임원과도 불륜\"",
+          "url": "https://n.news.naver.com/mnews/article/123/0002393886?sid=104"
+        },
+        {
+          "press": "연합뉴스",
+          "title": "젠슨황 '사내불륜' 추가 폭로…NYT \"엔비디아 임원과 혼외관계\"",
+          "url": "https://n.news.naver.com/article/001/0016437196"
+        },
+        {
+          "press": "KBS",
+          "title": "NYT “젠슨 황, 엔비디아 임원과 혼외관계”…주가, 시간외 8% 급락",
+          "url": "https://n.news.naver.com/article/056/0012292241"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "젠슨 황 엔비디아 CEO가 중국 스파이로 지목된 여성과의 외도 의혹에 이어, 자사 직속 여성 임원과도 혼외 관계를 맺어왔다는 추가 폭로가 뉴욕타임스(NYT)를 통해 보도되었다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "젠슨황 '사내 불륜' 추가 폭로…\"엔비디아 이사회, 해임 준비\""
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "NYT는 전직 직원 5명을 인용해 상대 여성이..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "해임 추진 보도와 추가 불륜 의혹이 구체화되면서 주가 급락 등 시장의 부정적 반응이 가시화되고 있다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ieaf8f9de",
+      "title": "불륜에 부하 여성과 혼외관계 의혹…엔비디아 이사회, 젠슨황 해임 준비",
+      "category": "경제",
+      "rank": 1,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "엔비디아의 젠슨 황 CEO가 혼외 관계 사실을 인정한 후에도 출근하며 경영 일정을 소화하고 있지만, 회사 내부 분위기는 가라앉은 것으로 전해졌다.",
+        "WSJ “엔비디아 이사회, 젠슨 황 해임 준비”… NYT “사내 여성 임원과도 불륜”",
+        "미국 반도체 기업 엔비디아의 이사회가 젠슨 황 최고경영자(CEO)를 해임하는 방안을 추진하고 있다고 월스트리트저널(WSJ)이 11일(현지시간) 사안에 정통한 복수의 소식통을 인용해 보도했다.",
+        "보도에 따르면 이사회는...",
+        "\"엔비디아 이사회, 젠슨 황 해임 준비\"…시간외 주가 8% 급락"
+      ],
+      "sources": [
+        {
+          "press": "조선비즈",
+          "title": "WSJ “엔비디아 이사회, 젠슨 황 해임 준비”… NYT “사내 여성 임원과도 불륜”",
+          "url": "https://n.news.naver.com/article/366/0001204202"
+        },
+        {
+          "press": "joseilbo.com",
+          "title": "WSJ \"엔비디아, 젠슨 황 CEO 해임 추진\"… NYT \"회사 임원과도 불륜\"",
+          "url": "https://n.news.naver.com/mnews/article/123/0002393886?sid=104"
+        },
+        {
+          "press": "한국경제",
+          "title": "\"엔비디아 이사회, 젠슨 황 해임 준비\"…시간외 주가 8% 급락",
+          "url": "https://n.news.naver.com/article/015/0005353003"
+        },
+        {
+          "press": "연합뉴스TV",
+          "title": "[속보] \"엔비디아 이사회, 젠슨황 CEO 해임 준비\"",
+          "url": "https://n.news.naver.com/article/422/0000925324"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "엔비디아의 젠슨 황 CEO가 혼외 관계 사실을 인정한 후에도 출근하며 경영 일정을 소화하고 있지만, 회사 내부 분위기는 가라앉은 것으로 전해졌다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "WSJ “엔비디아 이사회, 젠슨 황 해임 준비”… NYT “사내 여성 임원과도 불륜”"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "미국 반도체 기업 엔비디아의 이사회가 젠슨 황 최고경영자(CEO)를 해임하는 방안을 추진하고 있다고 월스트리트저널(WSJ)이 11일(현지시간) 사안에 정통한 복수의 소식통을 인용해 보도했다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i14959ff3",
+      "title": "트럼프 “이란전쟁 곧 끝난다…93% 아닌 완전한 승리 거둘 것”[1일1트]",
       "category": "세계",
-      "rank": 9,
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -40,8 +238,8 @@
       "facts": [
         "도널드 트럼프 미국 대통령은 11일(현지시간) 이란 전쟁이 '곧 끝날 것'이라고 밝혔다.",
         "트럼프 “이란전쟁 곧 끝난다…93% 아닌 완전한 승리 거둘 것”[1일1트]",
-        "트럼프 \"이란전쟁 곧 끝나…93% 아닌 완전한 승리 원해\"",
         "트럼프 “이란전쟁 곧 끝날 것…93% 아닌 완전한 승리 원해”",
+        "트럼프 \"이란전쟁 곧 끝나…93% 아닌 완전한 승리 원해\"",
         "완전한 승리가 될 것\"이라고 밝혔습니다."
       ],
       "sources": [
@@ -51,14 +249,14 @@
           "url": "https://n.news.naver.com/article/016/0002722295"
         },
         {
-          "press": "뉴시스",
-          "title": "트럼프 \"이란전쟁 곧 끝나…93% 아닌 완전한 승리 원해\"",
-          "url": "https://n.news.naver.com/article/003/0014316962"
-        },
-        {
           "press": "채널A",
           "title": "트럼프 “이란전쟁 곧 끝날 것…93% 아닌 완전한 승리 원해”",
           "url": "https://n.news.naver.com/article/449/0000367226"
+        },
+        {
+          "press": "뉴시스",
+          "title": "트럼프 \"이란전쟁 곧 끝나…93% 아닌 완전한 승리 원해\"",
+          "url": "https://n.news.naver.com/article/003/0014316962"
         },
         {
           "press": "biz.sbs.co.kr",
@@ -75,7 +273,7 @@
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "미국: '재앙이다'...중간선거 패배에 공화당원들, 트럼프 탓하며 분노"
+          "evidence": "93% 승리가 아니라 완전한 승리를 확실히 하고 싶습니다.\" 중간선거 패배 이후 이란전 종식을 위한 긍정적 흐름이..."
         },
         {
           "panel": 3,
@@ -91,204 +289,6 @@
       "visual_brief": {
         "scene": "reportage",
         "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i4692fba1",
-      "title": "‘가출·보호소 전전’ 15세 여성 살해한 50대…‘성범죄’ 아들은 ‘조건만남 절도’",
-      "category": "사회",
-      "rank": 5,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "아들의 성범죄 사건 피해자인 10대 중반의 여성을 살해한 50대 남성이 경찰에 긴급 체포됐다.",
-        "‘가출·보호소 전전’ 15세 여성 살해한 50대…‘성범죄’ 아들은 ‘조건만남 절도’",
-        "'아들 성범죄 피해자' 10대 살해한 아버지...알고보니 온가족 '범죄 집단'?(종합)",
-        "앞서 A 씨는 어제 새벽 1시 40분쯤 서울 정릉동에 있는 공유 숙박업소에서 15살 소녀를 살해한 혐의로 긴급 체포됐습니다.",
-        "경찰 조사 결과, A 씨의 아들은 피해자 측으로부터 지난 1월 성범죄 저지른 혐의로 고소당해 경찰..."
-      ],
-      "sources": [
-        {
-          "press": "디지털타임스",
-          "title": "‘가출·보호소 전전’ 15세 여성 살해한 50대…‘성범죄’ 아들은 ‘조건만남 절도’",
-          "url": "https://n.news.naver.com/article/029/0003058635"
-        },
-        {
-          "press": "이데일리",
-          "title": "'아들 성범죄 피해자' 10대 살해한 아버지...알고보니 온가족 '범죄 집단'?(종합)",
-          "url": "https://n.news.naver.com/article/018/0006408446"
-        },
-        {
-          "press": "ytn.co.kr",
-          "title": "[단독] '15살 소녀 살해' 50대 조사 재시도...이 시각 성북서",
-          "url": "https://n.news.naver.com/mnews/article/052/0002431677?sid=102"
-        },
-        {
-          "press": "SBS",
-          "title": "[단독] '아들 성범죄 피해자' 살해한 친부…긴급 체포",
-          "url": "https://n.news.naver.com/article/055/0001402335"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "아들의 성범죄 사건 피해자인 10대 중반의 여성을 살해한 50대 남성이 경찰에 긴급 체포됐다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "범행이 발생한 숙소를 빌린 20대 여성도 별도의 절도 사건으로 수사받고 있었던 사실이 드러나면서 사건의 배경에 관심이 쏠리고 있다.50대 남성이 아들의 성범죄 피해자인 여성을 살해한 주택가 현장 /…"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "‘가출·보호소 전전’ 15세 여성 살해한 50대…‘성범죄’ 아들은 ‘조건만남 절도’"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ic5a0c613",
-      "title": "AI에게 일본어로 ‘위안부 강제동원’ 물었더니 56.3%만 “그렇다” 답변…한국어 94.9%와 대비",
-      "category": "사회",
-      "rank": 10,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "인공지능(AI) 모델에 일제강점기 위안부 강제동원 문제를 한국어로 물으면 90% 이상이 강제동원이 맞다고 답변하지만, 일본어로 물으면 그 비율이 50%대로 떨어진다는 분석이 나왔다.",
-        "심지어 한국인이 일본어를 사용한다고 알고 있는 사람도 있었다.",
-        "충격을 받은 그는 자신이 할 수 있는 것부터...",
-        "세계 유력지에 독도와 동해, 일본군 위안부 등 우리 역사와 관련한 문제를 알리는 광고를 냈고 해외 유명...",
-        "반면, 2030 여성이 가장 먼저 떠올린 것은 일본군 ‘위안부’, 강제동원 등 ‘역사문제’(37.6%)였어요."
-      ],
-      "sources": [
-        {
-          "press": "kyeonggi.com",
-          "title": "“제가 아니면 누가 해요”…‘대한민국’ 위해 달려온 서경덕의 30년 [...",
-          "url": "https://n.news.naver.com/mnews/article/666/0000119296?sid=103"
-        },
-        {
-          "press": "khan.co.kr",
-          "title": "20대 남성 “일본 호감” 30대 여성 “일본 비호감” 왜 다를까?[점선면...",
-          "url": "https://n.news.naver.com/mnews/article/032/0003391188?sid=100"
-        },
-        {
-          "press": "chosun.com",
-          "title": "[단독] “英 MZ들에 한국어는 판타지”… 옥스퍼드대, 외국어로 채택",
-          "url": "https://n.news.naver.com/mnews/article/023/0003853967?sid=102"
-        },
-        {
-          "press": "joongang.co.kr",
-          "title": "일본 때리며 \"독도는 한국땅\"…중국의 韓·日 '반간계' 전략?",
-          "url": "https://n.news.naver.com/mnews/article/025/0003484296?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "인공지능(AI) 모델에 일제강점기 위안부 강제동원 문제를 한국어로 물으면 90% 이상이 강제동원이 맞다고 답변하지만, 일본어로 물으면 그 비율이 50%대로 떨어진다는 분석이 나왔다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "AI 투자금 찾아 일본까지…빅테크, 엔화 자금 22조원 끌어갔다"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "반면, 2030 여성이 가장 먼저 떠올린 것은 일본군 ‘위안부’, 강제동원 등 ‘역사문제’(37.6%)였어요."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
