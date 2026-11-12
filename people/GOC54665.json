@@ -54,27 +54,49 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-11-12"
+   "fetched": "2026-11-13"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-12"
+   "fetched": "2026-11-13"
   }
  ],
  "bills": {
   "ages": [
+   "17",
+   "18",
+   "19",
+   "20",
+   "21",
    "22"
   ],
-  "lead_count": 30,
-  "co_count": 722,
-  "passed": 12,
+  "lead_count": 63,
+  "co_count": 1425,
+  "passed": 20,
   "by_result": {
-   "계류": 18,
-   "대안반영폐기": 11,
-   "수정가결": 1
+   "임기만료폐기": 23,
+   "철회": 2,
+   "대안반영폐기": 17,
+   "수정가결": 3,
+   "계류": 18
   },
   "by_month": {
+   "2020-07": 1,
+   "2020-09": 1,
+   "2020-11": 4,
+   "2020-12": 3,
+   "2021-04": 3,
+   "2021-06": 5,
+   "2021-07": 2,
+   "2021-12": 1,
+   "2022-11": 1,
+   "2022-12": 1,
+   "2023-02": 1,
+   "2023-06": 6,
+   "2023-07": 2,
+   "2023-08": 1,
+   "2023-11": 1,
    "2024-06": 2,
    "2024-07": 5,
    "2024-08": 2,
@@ -457,7 +479,7 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-12"
+   "fetched": "2026-11-13"
   }
  },
  "news": [
@@ -1978,7 +2000,7 @@
   "source": {
    "name": "열린국회정보 국회의원 본회의 표결정보 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-12"
+   "fetched": "2026-11-13"
   }
  },
  "photo_local": "data/pol/photos/GOC54665.webp"
