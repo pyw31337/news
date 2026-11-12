@@ -1,23 +1,7 @@
 {
-  "updated": "2026-11-12T12:21:39.104503+09:00",
+  "updated": "2026-11-12T11:39:33.642078+09:00",
   "alerts_count": 20,
   "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.8b76d561a16ac88ed56e120569dfa9f374c059a1.002.1",
-      "t": "2026-11-11 15:48",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Cape Beaufort to Point Franklin out to 15 NM",
-      "area_en": "Cape Beaufort to Point Franklin out to 15 NM",
-      "event": "해상 결빙 경보",
-      "event_en": "Heavy Freezing Spray Warning",
-      "severity": "Severe",
-      "headline_ko": "Cape Beaufort to Point Franklin out to 15 NM 해상 결빙 경보",
-      "headline_en": "Cape Beaufort to Point Franklin out to 15 NM Heavy Freezing Spray Warning",
-      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 30 kt. Seas 8 ft. Blowing snow. Heavy freezing\nspray.\n.THU...E w"
-    },
     {
       "id": "urn:oid:2.49.0.1.840.0.8b76d561a16ac88ed56e120569dfa9f374c059a1.009.2",
       "t": "2026-11-11 15:48",
@@ -33,6 +17,22 @@
       "headline_ko": "Cape Halkett to Flaxman Island from 15 to 80 NM 해상 결빙 경보",
       "headline_en": "Cape Halkett to Flaxman Island from 15 to 80 NM Heavy Freezing Spray Warning",
       "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...NE winds 35 kt. Seas 7 ft. Blowing snow. Extreme\nfreezing spray.\n.THU..."
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.8b76d561a16ac88ed56e120569dfa9f374c059a1.002.1",
+      "t": "2026-11-11 15:48",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Cape Beaufort to Point Franklin out to 15 NM",
+      "area_en": "Cape Beaufort to Point Franklin out to 15 NM",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
+      "severity": "Severe",
+      "headline_ko": "Cape Beaufort to Point Franklin out to 15 NM 해상 결빙 경보",
+      "headline_en": "Cape Beaufort to Point Franklin out to 15 NM Heavy Freezing Spray Warning",
+      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 30 kt. Seas 8 ft. Blowing snow. Heavy freezing\nspray.\n.THU...E w"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.8b76d561a16ac88ed56e120569dfa9f374c059a1.007.2",
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 11.7,
-      "apparent_temp": 9.7,
-      "humidity": 68,
+      "temp": 11.9,
+      "apparent_temp": 9.5,
+      "humidity": 66,
       "code": 3,
-      "wind": 7.3
+      "wind": 8.8
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 19.8,
-      "apparent_temp": 20.4,
-      "humidity": 73,
+      "temp": 20.9,
+      "apparent_temp": 21.6,
+      "humidity": 69,
       "code": 0,
-      "wind": 6.6
+      "wind": 6.3
     },
     {
       "id": "london",
@@ -362,11 +362,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 6.6,
-      "apparent_temp": 3.3,
-      "humidity": 84,
+      "temp": 7.1,
+      "apparent_temp": 3.9,
+      "humidity": 83,
       "code": 0,
-      "wind": 12.6
+      "wind": 13.0
     },
     {
       "id": "paris",
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 10.6,
-      "apparent_temp": 9.8,
-      "humidity": 97,
+      "temp": 9.9,
+      "apparent_temp": 9.2,
+      "humidity": 100,
       "code": 3,
-      "wind": 6.1
+      "wind": 4.1
     },
     {
       "id": "frankfurt",
@@ -390,11 +390,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 9.9,
-      "apparent_temp": 9.0,
+      "temp": 9.7,
+      "apparent_temp": 8.7,
       "humidity": 100,
-      "code": 61,
-      "wind": 6.1
+      "code": 3,
+      "wind": 6.4
     },
     {
       "id": "tokyo",
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 16.3,
-      "apparent_temp": 15.8,
-      "humidity": 59,
+      "temp": 15.3,
+      "apparent_temp": 14.8,
+      "humidity": 60,
       "code": 0,
-      "wind": 1.9
+      "wind": 1.3
     },
     {
       "id": "beijing",
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 7.6,
-      "apparent_temp": 6.1,
-      "humidity": 86,
-      "code": 2,
-      "wind": 2.1
+      "temp": 6.0,
+      "apparent_temp": 4.4,
+      "humidity": 90,
+      "code": 3,
+      "wind": 1.8
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 29.7,
-      "apparent_temp": 35.4,
-      "humidity": 68,
+      "temp": 29.0,
+      "apparent_temp": 34.2,
+      "humidity": 72,
       "code": 3,
-      "wind": 3.1
+      "wind": 3.3
     },
     {
       "id": "sydney",
@@ -446,8 +446,8 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 22.5,
-      "apparent_temp": 23.8,
+      "temp": 22.6,
+      "apparent_temp": 24.2,
       "humidity": 60,
       "code": 0,
       "wind": 15.3
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 7.8,
-      "apparent_temp": 6.4,
-      "humidity": 97,
+      "temp": 7.9,
+      "apparent_temp": 6.5,
+      "humidity": 94,
       "code": 51,
-      "wind": 5.2
+      "wind": 4.1
     },
     {
       "id": "dubai",
@@ -474,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 27.3,
-      "apparent_temp": 28.7,
-      "humidity": 65,
+      "temp": 27.4,
+      "apparent_temp": 28.9,
+      "humidity": 66,
       "code": 0,
-      "wind": 17.7
+      "wind": 17.5
     },
     {
       "id": "saopaulo",
@@ -488,21 +488,29 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 18.1,
-      "apparent_temp": 19.5,
-      "humidity": 91,
-      "code": 2,
-      "wind": 6.0
+      "temp": 18.4,
+      "apparent_temp": 19.8,
+      "humidity": 90,
+      "code": 1,
+      "wind": 6.7
     }
   ],
   "stories": [
     {
-      "id": "g5de2447f",
+      "id": "g9568d90a",
+      "title": "Turkey’s president calls the war in Gaza an ‘ecocide’ at the UN climate summit",
+      "press": "AP News",
+      "image": "",
+      "score": 9.4,
+      "url": "g/g9568d90a"
+    },
+    {
+      "id": "g7376164a",
       "title": "World leaders speak at COP31 climate conference",
       "press": "Reuters",
-      "image": "https://www.chinadailyhk.com/upload/main/image/2026/11/12/e599e58be1962a8ea2f9cef10eab3160.png",
-      "score": 9.7,
-      "url": "g/g1820a6c5"
+      "image": "https://i.guim.co.uk/img/media/e8fccf9b5435bc3b341f2de6392ce34e6cc2cb45/537_0_4331_3466/master/4331.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=e82596f1e4cb105e1cf0d40d6ed31125",
+      "score": 8.6,
+      "url": "g/g7376164a"
     }
   ]
 }
