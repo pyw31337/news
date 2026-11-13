@@ -37,3 +37,20 @@ jobs:
           name: mobile-lighthouse-report
           path: reports/
           retention-days: 14
+
+  content-quality:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: 최근 기사 날짜·중복·썸네일 감사
+        run: |
+          mkdir -p reports
+          python3 scripts/content_audit.py --days 3 --output reports/content-audit.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: content-quality-report
+          path: reports/content-audit.json
+          retention-days: 14
