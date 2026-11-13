@@ -91,12 +91,12 @@
   {
    "name": "열린국회정보 국회의원 정보통합 API(ALLNAMEMBER)",
    "url": "https://open.assembly.go.kr/portal/data/service/selectAPIServicePage.do/OOWY4R001216HX11439",
-   "fetched": "2026-11-13"
+   "fetched": "2026-11-14"
   },
   {
    "name": "열린국회정보 국회의원 인적사항(nwvrqwxyaytdsfvhu)",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-13"
+   "fetched": "2026-11-14"
   }
  ],
  "bills": {
@@ -499,10 +499,37 @@
   "source": {
    "name": "열린국회정보 국회의원 발의법률안 API",
    "url": "https://open.assembly.go.kr",
-   "fetched": "2026-11-13"
+   "fetched": "2026-11-14"
   }
  },
  "news": [
+  {
+   "date": "2026-11-11",
+   "title": "이철규 의원, ‘공소취소 특검법’ 규탄 1인 피켓 시위",
+   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE91SDJYTGV2VTg4RFBLRGlyRE9fTmZnXy1XMWJPSWZQMkVfZlJqYlc5XzhGUkIyVUhWM08zcmFOcldESUViR1NxUDVZVzl3dHg3aUdGTGtSajUzWVE?oc=5",
+   "press": "강원일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-11-14"
+  },
+  {
+   "date": "2026-11-11",
+   "title": "이철규 의원, 청와대서 ‘공소취소 특검법’ 규탄 1인 시위...“죄 지우기 특검법 반대”",
+   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9KTnR2WkVBdGJCYmx4Y0gyM2doQlBxMHljNXEzYm13bi1fSHpRU2c5dmRuVGZJZUpjU1Bmdm91LWMtZ3VDR2VfRDdyTVoxanY3TEdMNENPMnBwdTRSbmVDQV9BNzMtdlE?oc=5",
+   "press": "강원도민일보",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-11-14"
+  },
+  {
+   "date": "2026-11-11",
+   "title": "이철규 의원 청와대 피켓 시위 '조작 기소 특검법' 비판",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBKUGI3RmFNNUNKZVI5ZUlSOTlnSnpJS2JUQndrOTd3aUNHbFAyaXY3N1h6d2RiMHdKOUpsNXlQZXFIMjlZT3pXd2pTV25kRS1ZMnF5SHFuM2xiMjRkcmRtWTE5NE4?oc=5",
+   "press": "G1방송",
+   "img": "",
+   "via": "구글 뉴스 검색",
+   "linked": "2026-11-14"
+  },
   {
    "date": "2026-11-10",
    "title": "이철규 \"전력망 확충, 특정 지역 일방 부담 안돼…주민 참여·이익 공유\"",
@@ -1739,7 +1766,7 @@
  ],
  "incidents": {
   "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
-  "updated": "2026-11-11",
+  "updated": "2026-11-14",
   "items": [
    {
     "date": "2025-11-27",
@@ -1801,7 +1828,7 @@
  },
  "media": {
   "method": "통계(연결된 기사 헤드라인 단어 빈도)",
-  "updated": "2026-11-11",
+  "updated": "2026-11-14",
   "top_words": [
    [
     "선정",
@@ -1900,6 +1927,10 @@
     5
    ],
    [
+    "특검법",
+    4
+   ],
+   [
     "확충",
     4
    ],
@@ -1918,13 +1949,15 @@
    [
     "국비",
     4
-   ],
-   [
-    "수사",
-    4
    ]
   ],
   "quotes": [
+   {
+    "date": "2026-11-11",
+    "quote": "죄 지우기 특검법 반대",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9KTnR2WkVBdGJCYmx4Y0gyM2doQlBxMHljNXEzYm13bi1fSHpRU2c5dmRuVGZJZUpjU1Bmdm91LWMtZ3VDR2VfRDdyTVoxanY3TEdMNENPMnBwdTRSbmVDQV9BNzMtdlE?oc=5",
+    "press": "강원도민일보"
+   },
    {
     "date": "2026-11-10",
     "quote": "전력망 확충, 특정 지역 일방 부담 안돼…주민 참여·이익 공유",
@@ -2266,16 +2299,16 @@
    "2026-08": 3,
    "2026-09": 7,
    "2026-10": 42,
-   "2026-11": 22
+   "2026-11": 25
   },
   "presses": [
    [
     "강원일보",
-    31
+    32
    ],
    [
     "강원도민일보",
-    10
+    11
    ],
    [
     "한겨레",
