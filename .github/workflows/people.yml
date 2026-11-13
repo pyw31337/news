@@ -13,14 +13,23 @@ jobs:
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
-        with: { ref: data, path: data }
+      # data는 자주 쓰이는 별도 브랜치다. actions/checkout의 참조 해석이 지연될
+      # 때가 있어, Pages 배포에서 검증된 얕은 clone 경로로 고정한다.
+      - name: data 스냅샷 가져오기
+        timeout-minutes: 3
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          repo="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git clone -q --depth 1 --branch data "$repo" data
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
       - name: 국회의원·연표 대상 가져오기
         run: |
           repo="https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
           git clone -q --depth 1 --branch politicians "$repo" pol_db || mkdir pol_db
+          git clone -q --depth 1 --branch legal "$repo" legal_db || mkdir legal_db
           git clone -q --depth 1 --branch history "$repo" hist || mkdir hist
       - name: 인물 명부
         timeout-minutes: 30
@@ -29,6 +38,9 @@ jobs:
         env: { PEOPLE_SEC: '900' }
         run: python scripts/people/mentions.py data
       - name: 인물사전 마스터 DB 풀 리빌드
+        env:
+          POLITICIANS_DIR: pol_db
+          LEGAL_DIR: legal_db
         run: python scripts/people/collect_bio.py
       - name: 인물 데이터 충족도·검증 보강 큐 갱신
         # 명부 수와 실제 출처 기반 프로필 수를 분리해 기록하고, 이름 검색 없이

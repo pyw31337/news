@@ -576,13 +576,25 @@ def load_politicians_archive(result):
 
 
 def load_legal_people(result):
-    """origin/legal 브랜치에서 대법관, 헌법재판관, 현역 판사 전수 파싱"""
-    print("Loading legal figures from origin/legal branch...")
+    """법조 원장 스냅샷에서 대법관·헌법재판관·판사를 파싱한다."""
+    legal_dir = os.environ.get("LEGAL_DIR", os.path.join(ROOT, "legal_db"))
+
+    def legal_json(relative_path):
+        snapshot_path = os.path.join(legal_dir, relative_path)
+        if os.path.isfile(snapshot_path):
+            with open(snapshot_path, "r", encoding="utf-8") as f:
+                return json.load(f)
+
+        # 로컬 개발 환경의 하위 호환 경로다. CI는 legal_db 스냅샷을 사용한다.
+        out = subprocess.check_output(
+            ["git", "show", f"origin/legal:{relative_path}"], cwd=ROOT, stderr=subprocess.DEVNULL
+        )
+        return json.loads(out.decode("utf-8"))
+
+    print(f"Loading legal figures from {legal_dir}...")
     # 1. justices_wikidata.json (대법원장, 대법관, 헌재소장, 헌재재판관)
     try:
-        cmd = ["git", "show", "origin/legal:legal/v1/people/justices_wikidata.json"]
-        out = subprocess.check_output(cmd, cwd=ROOT)
-        justices = json.loads(out.decode("utf-8"))
+        justices = legal_json("legal/v1/people/justices_wikidata.json")
         for j in justices:
             name = j.get("name")
             if not name:
@@ -638,9 +650,7 @@ def load_legal_people(result):
 
     # 2. judges_from_news.json (주요 판사 및 판결)
     try:
-        cmd2 = ["git", "show", "origin/legal:legal/v1/people/judges_from_news.json"]
-        out2 = subprocess.check_output(cmd2, cwd=ROOT)
-        judges = json.loads(out2.decode("utf-8"))
+        judges = legal_json("legal/v1/people/judges_from_news.json")
         count = 0
         for k, v in judges.items():
             name = v.get("name")
