@@ -173,7 +173,14 @@
   };
   /* 간트와 목록은 같은 세부 직함을 사용한다. 특히 역대 국회의원은
      재임 시기별 대수를 생략하지 않아 서로 다른 임기를 혼동하지 않는다. */
-  const detailedRows = rows.map(r => ({ ...r, title: detailedLabel(r.title, careerMatches(r.title, r.d)) }));
+  const detailedRows = rows.map(r => {
+    /* 위키데이터 경력에서 보강한 '대한민국 국회의원' 행은 같은 행 자신도
+       검색 결과에 들어온다. 자신을 근거로 삼으면 대수 없는 제목을 그대로
+       되돌리므로, 같은 기간의 원문 생애 기록을 우선 선택한다. */
+    const matches = careerMatches(r.title, r.d).filter(x => x !== r);
+    const specific = matches.filter(x => /제\d+대\s*(?:국회의원|대통령)/.test(x.title));
+    return { ...r, title: detailedLabel(r.title, specific.length ? specific : matches) };
+  });
   const assemblyCareers = (Pj?.history || []).map(knownCareer).filter(x => x.label).sort((a, b) => start(b) - start(a) || a.label.localeCompare(b.label, 'ko'));
   const wikiCareers = [];
   for (const k of ['pos', 'edu', 'emp', 'mem', 'team', 'label']) for (const [label, a, b, g] of car[k] || []) {
