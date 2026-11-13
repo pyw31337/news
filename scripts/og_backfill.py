@@ -13,6 +13,8 @@ UA = 'NewsBoardThumb/1.0 (+https://github.com/pyw31337/news)'
 NOW = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
 OG = re.compile(r'<meta[^>]+(?:property|name)=["\'](?:og:image|twitter:image)["\'][^>]*>', re.I)
 CONTENT = re.compile(r'content=["\']([^"\']+)["\']', re.I)
+META_DATE = re.compile(r'<meta[^>]+(?:property|name)=["\'](?:article:published_time|datepublished|publishdate|date)["\'][^>]+content=["\']([^"\']+)', re.I)
+META_DESC = re.compile(r'<meta[^>]+(?:property|name)=["\'](?:og:description|description|twitter:description)["\'][^>]+content=["\']([^"\']+)', re.I)
 SKIP_HOST = re.compile(r'(^|\.)news\.google\.com$')
 ROBOTS, LAST, LOCK = {}, defaultdict(float), threading.Lock()
 
@@ -58,16 +60,27 @@ def get(u, limit):
 
 def og_image(u):
     if not allowed(u):
-        return None, 'robots'
+        return None, 'robots', {}
     body, final = get(u, 600000)
-    m = OG.search(body.decode('utf-8', 'ignore'))
+    text = body.decode('utf-8', 'ignore')
+    meta = {}
+    dm = META_DATE.search(text)
+    if dm:
+        raw = html.unescape(dm.group(1)).strip()
+        try:
+            meta['t'] = dt.datetime.fromisoformat(raw.replace('Z', '+00:00')).astimezone(NOW.tzinfo).isoformat(timespec='seconds')
+        except ValueError:
+            if re.match(r'^\d{4}-\d{2}-\d{2}', raw): meta['t'] = raw[:19]
+    sm = META_DESC.search(text)
+    if sm: meta['desc'] = html.unescape(sm.group(1)).strip()[:300]
+    m = OG.search(text)
     c = CONTENT.search(m.group(0)) if m else None
     if not c:
-        return None, 'no_og'
+        return None, 'no_og', meta
     img = urllib.parse.urljoin(final, html.unescape(c.group(1)).strip())
     if not img.startswith('http') or re.search(r'logo|default|noimage|no_image|blank', img, re.I):
-        return None, 'generic'
-    return img, ''
+        return None, 'generic', meta
+    return img, '', meta
 
 
 def webp(blob):
@@ -100,7 +113,7 @@ def main():
     ap.add_argument('--max', type=int, default=2500); ap.add_argument('--sec', type=int, default=2400)
     a = ap.parse_args()
     mp = os.path.join(a.data, 'db', 'og', 'map.json'); os.makedirs(os.path.dirname(mp), exist_ok=True)
-    M = jl(mp, {}); M.setdefault('u', {}); M.setdefault('skip', {})
+    M = jl(mp, {}); M.setdefault('u', {}); M.setdefault('skip', {}); M.setdefault('m', {})
     T = targets(a.data)
     todo = [u for u in T if u not in M['u'] and (NOW.date() - dt.date.fromisoformat(M['skip'].get(u, '2000-01-01')[:10])).days >= 30][:a.max]
     print('대상', len(T), '완료', sum(1 for u in T if u in M['u']), '이번 회차', len(todo))
@@ -112,29 +125,31 @@ def main():
     t0 = time.time()
     def one(u):
         if time.time() - t0 > a.sec:
-            return u, None, None
+            return u, None, None, {}
         try:
-            img, why = og_image(u)
+            img, why, meta = og_image(u)
             if not img:
-                return u, None, why
+                return u, None, why, meta
             blob, _ = get(img, 6 * 1024 * 1024)
             b, sz = webp(blob)
         except Exception as e:
-            return u, None, 'err:' + str(e)[:30]
+            return u, None, 'err:' + str(e)[:30], {}
         h = hashlib.sha256(u.encode()).hexdigest()[:20]
         k = 'img/og/%s/%s.webp' % (h[:2], h)
         if put and not put(k, b):
-            return u, None, 'upload'
-        return u, [k, sz[0], sz[1]], ''
+            return u, None, 'upload', meta
+        meta['image'] = k
+        return u, [k, sz[0], sz[1]], '', meta
     ok = bad = 0; why = defaultdict(int)
     with ThreadPoolExecutor(6) as ex:
-        for u, rec, w in ex.map(one, todo):
+        for u, rec, w, meta in ex.map(one, todo):
             if w is None and rec is None:
                 continue
             if rec:
                 M['u'][u] = rec; M['skip'].pop(u, None); ok += 1
             else:
                 M['skip'][u] = NOW.date().isoformat(); bad += 1; why[w.split(':')[0]] += 1
+            if meta: M['m'][u] = meta
             if (ok + bad) % 250 == 0:
                 json.dump(M, open(mp, 'w'), separators=(',', ':'))
     M['updated'] = NOW.isoformat(timespec='seconds')

@@ -37,6 +37,9 @@ jobs:
           base=https://pyw31337.github.io/news/data
           curl -fsSL --retry 3 "$base/today.json" -o data/today.json
           python scripts/sanitize_today.py data/today.json
+          # 원문 페이지에서 확보한 날짜·요약·대표 이미지 오버레이를
+          # 비어 있는 기사 필드에만 적용한다. 원본 수집 레코드는 변경하지 않는다.
+          python scripts/merge_article_meta.py data/today.json data/db/og/map.json
           # 기존에 게시된 데이터도 같은 사진 출처·동명이인 규칙으로 재검사한다.
           # 검증되지 않은 사진은 배포 중단 대신 이니셜 표기로 안전하게 대체한다.
           python scripts/portrait_audit.py data/today.json --entity-media data/entity_media.json --entity-pool data/entity_pool.json --asset-dir assets/people --output data/portrait_audit.json --sanitize
