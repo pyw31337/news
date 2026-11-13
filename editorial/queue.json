@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-13",
-  "generated_at": "2026-11-13T16:22:48+09:00",
+  "generated_at": "2026-11-13T15:55:39+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i2019c702",
-      "title": "[속보] 코스피 5290.53(▼52.20p, 0.98%) 마감, 원·달러 환율 1336.7원",
+      "issue_id": "i28f3de7f",
+      "title": "젠슨 황, 사임 당일 세 번째 불륜 의혹… “또 다른 엔비디아 직원”",
       "category": "경제",
-      "rank": 9,
+      "rank": 6,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -38,49 +38,148 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "코스피 5290.53(▼52.20p, 0.98%) 마감, 원·달러 환율 1336.7원",
-        "[속보] 코스피 5290.53(▼52.20p, 0.98%) 마감, 원·달러 환율 1336.7원",
-        "\"오전에 좋았잖아\" 외인 '팔자' 변심에…코스피 하락·코스닥 상승분 반납",
-        "13일 젠슨 황 전 엔비디아 최고경영자(CEO)가 사퇴했다는 소식이 전해진 이후 상승 출발한 코스피 지수가 상승폭을 모두 반납하고 하락 마감했다.",
-        "엔비디아 사태로 미국의 대(對)중국 수출 규제가 강화될 수 있다는..."
+        "젠슨 황 전 엔비디아 CEO는 사임 후에도 사내 직원과 혼외 관계를 맺었다는 의혹이 제기되었습니다.",
+        "젠슨 황, 사임 당일 세 번째 불륜 의혹… “또 다른 엔비디아 직원”",
+        "젠슨 황, 사임 후 세 번째 불륜 의혹 터졌다…\"상대는 엔비디아 직원·이름은 비공개\"",
+        "젠슨황 사임에 시총 4조달러 위태 엔비디아...",
+        "밤잠 설치는 서학개미들"
       ],
       "sources": [
         {
-          "press": "MBN",
-          "title": "[속보] 코스피 5290.53(▼52.20p, 0.98%) 마감, 원·달러 환율 1336.7원",
-          "url": "https://n.news.naver.com/article/057/0001978084"
+          "press": "조선일보",
+          "title": "젠슨 황, 사임 당일 세 번째 불륜 의혹… “또 다른 엔비디아 직원”",
+          "url": "https://n.news.naver.com/article/023/0004009401"
         },
         {
-          "press": "머니투데이",
-          "title": "\"오전에 좋았잖아\" 외인 '팔자' 변심에…코스피 하락·코스닥 상승분 반납",
-          "url": "https://n.news.naver.com/article/008/0005440810"
+          "press": "데일리안",
+          "title": "젠슨 황, 사임 후 세 번째 불륜 의혹 터졌다…\"상대는 엔비디아 직원·이름은 비공개\"",
+          "url": "https://n.news.naver.com/article/119/0003154633"
         },
         {
-          "press": "hankyung.com",
-          "title": "\"잘가요 젠슨 황\"…불륜·사퇴 충격에 코스피 5300선 아래로",
-          "url": "https://n.news.naver.com/mnews/article/015/0005353613?sid=101"
+          "press": "조선일보",
+          "title": "젠슨황 사임에 시총 4조달러 위태 엔비디아... 밤잠 설치는 서학개미들",
+          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNSlA3c216X1Jva0t3MHdrZ3M1LS1RSUhYR19QM1VJUS02N2lrRVNORE4tNEVGQWtzMDNEU3FXVlQ4U1ZrQ211ckpNWWVpbDYyeFpHWEwxbC1qT0p6eW04MDhyeW9BeFFnajJEX095RVpibGUzNW1oaVRIYnAtZEVKc0xvZ19LU1JFOTgw?oc=5"
+        },
+        {
+          "press": "여성신문",
+          "title": "불륜 파문 젠슨 황, 엔비디아 최고경영자 사임...33년만에 불명예 퇴진",
+          "url": "https://n.news.naver.com/article/310/0000141674"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "젠슨 황 전 엔비디아 CEO는 사임 후에도 사내 직원과 혼외 관계를 맺었다는 의혹이 제기되었습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "[뉴스프레소] 뉴욕증시, 일제히 하락… '젠슨 황 없는 엔비디아' 회복할까? - 머니투데이"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "젠슨황 사임에 시총 4조달러 위태 엔비디아..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i1c3435af",
+      "title": "[속보] 박수홍, 친형 부부 상대 98억원 손배소 패소",
+      "category": "세계",
+      "rank": 3,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "코미디언 출신 방송인 박수홍(56)이 친형 부부를 상대로 제기한 98억원 규모의 손해배상청구 소송 1심에서 패소했다.",
+        "“98억 배상 하라”… 박수홍, 친형부부 상대 손배소 오늘 1심 선고",
+        "친형 횡령 인정됐지만…박수홍, ‘98억 손배소’는 패소",
+        "박수홍, 친형 부부 상대 98억 손배소 1심 패소",
+        "[속보] 횡령은 유죄인데…박수홍, 친형 부부 상대 '98억' 손배소 1심 패소"
+      ],
+      "sources": [
+        {
+          "press": "헤럴드경제",
+          "title": "“98억 배상 하라”… 박수홍, 친형부부 상대 손배소 오늘 1심 선고",
+          "url": "https://n.news.naver.com/article/016/0002722952"
         },
         {
           "press": "매일경제",
-          "title": "결국 ‘팔자’로 돌아선 외국인…장중 5500 찍은 코스피, 5200대 약세 마감",
-          "url": "https://www.mk.co.kr/news/stock/12208082"
+          "title": "친형 횡령 인정됐지만…박수홍, ‘98억 손배소’는 패소",
+          "url": "https://www.mk.co.kr/news/society/12208051"
+        },
+        {
+          "press": "채널A",
+          "title": "박수홍, 친형 부부 상대 98억 손배소 1심 패소",
+          "url": "https://n.news.naver.com/article/449/0000367407"
+        },
+        {
+          "press": "프레시안",
+          "title": "[속보] 횡령은 유죄인데…박수홍, 친형 부부 상대 '98억' 손배소 1심 패소",
+          "url": "https://n.news.naver.com/article/002/0002465762"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "코스피 5290.53(▼52.20p, 0.98%) 마감, 원·달러 환율 1336.7원"
+          "evidence": "코미디언 출신 방송인 박수홍(56)이 친형 부부를 상대로 제기한 98억원 규모의 손해배상청구 소송 1심에서 패소했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "[속보] 코스피 5290.53(▼52.20p, 0.98%) 마감, 원·달러 환율 1336.7원"
+          "evidence": "[속보] 박수홍, 1심서 패소..'98억' 친형 부부 상대 손배소 비용 부담"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "13일 젠슨 황 전 엔비디아 최고경영자(CEO)가 사퇴했다는 소식이 전해진 이후 상승 출발한 코스피 지수가 상승폭을 모두 반납하고 하락 마감했다."
+          "evidence": "“98억 배상 하라”… 박수홍, 친형부부 상대 손배소 오늘 1심 선고"
         },
         {
           "panel": 4,
@@ -126,109 +225,10 @@
       }
     },
     {
-      "issue_id": "if8bc44c6",
-      "title": "범LG家 3세 구본현, 해외 도피 8년 만에 캄보디아에서 검거",
-      "category": "사회",
-      "rank": 4,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "주가조작 혐의를 받는 범LG가 3세 구본현 씨가 8년간의 해외 도피 생활 끝에 캄보디아에서 검거되어 국내로 송환되었습니다.",
-        "주가조작 혐의 수사를 피해 해외 도피 생활을 한 LG가(家) 3세 구본현(57)씨가 8년 만에 수사기관에 붙잡혀 국내로 송환됐다.",
-        "13일 서울경찰청 광역수사단 금융범죄수사대는 자본시장법 위반·특정경제범죄법상 횡령...",
-        "8년간 해외도피 범LG家 3세 구본현 캄보디아서 송환…주가조작 혐의",
-        "'주가조작 혐의' 구본현 구속...8년 해외 도피 끝 검거"
-      ],
-      "sources": [
-        {
-          "press": "sedaily.com",
-          "title": "‘범LG家 3세’ 구본현, 8년간 해외도피 끝에 캄보디아서 검거",
-          "url": "https://n.news.naver.com/mnews/article/011/0004681935?sid=102"
-        },
-        {
-          "press": "연합뉴스",
-          "title": "8년간 해외도피 범LG家 3세 구본현 캄보디아서 송환…주가조작 혐의",
-          "url": "https://n.news.naver.com/article/001/0016440608"
-        },
-        {
-          "press": "YTN",
-          "title": "'주가조작 혐의' 구본현 구속...8년 해외 도피 끝 검거",
-          "url": "https://n.news.naver.com/article/052/0002432410"
-        },
-        {
-          "press": "머니투데이",
-          "title": "145억 주가조작, 8년 해외도피...범LG가 구본현, 캄보디아서 덜미",
-          "url": "https://n.news.naver.com/article/008/0005440808"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "주가조작 혐의를 받는 범LG가 3세 구본현 씨가 8년간의 해외 도피 생활 끝에 캄보디아에서 검거되어 국내로 송환되었습니다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "함께 주가를 조작한 등의 혐의로 재판에 넘겨져 2012년 대법원에서 징역 3년형 확정 판결을 받은 바 있다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "주가조작 혐의 수사를 피해 해외 도피 생활을 한 LG가(家) 3세 구본현(57)씨가 8년 만에 수사기관에 붙잡혀 국내로 송환됐다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "구본현 씨의 검거와 구속 사실이 공식화되면서 사건의 전말이 구체적으로 보도되었습니다. 8년이라는 긴 도피 기간과 145억 원 규모의 범죄 혐의가 강조되며, 사법 정의 실현에 대한 여론의 관심이 집중되는 흐름입니다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i239fa32f",
-      "title": "[속보] 박수홍, 친형 부부 상대 98억원 손배소 1심 패소",
-      "category": "사회",
-      "rank": 2,
+      "issue_id": "i58fd5f3b",
+      "title": "삼성 AI 안경 써보니…구글·젠몬과 메타 정조준",
+      "category": "IT",
+      "rank": 10,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -236,49 +236,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "방송인 박수홍(56) 씨가 친형 부부를 상대로 낸 98억원 상당 손해배상청구 소송에서 패소했다.",
-        "방송인 박수홍씨가 친형 부부를 상대로 낸 98억원 손해배상 청구 소송에서 패소했습니다.",
-        "서울서부지법 민사합의12부는 오늘(13일) 박수홍씨가 친형 박모 씨와 형수 이모 씨를 상대로 낸 손해배상 청구 소송에서 친형 부부...",
-        "뉴스토마토 = 송정은 기자 | 방송인 박수홍씨가 친형 부부를 상대로 제기한 98억원대 손해배상청구 소송 1심에서 패소했습니다.",
-        "친형 부부의 회사 자금 횡령 혐의는 형사재판에서 유죄가 확정됐지만, 법원은 박수홍씨가..."
+        "삼성전자가 구글, 젠틀몬스터, 워비파커와 협업한 인공지능(AI) 안경 '인텔리전트 아이웨어' 전체 라인업 30종을 공개했다.",
+        "“안경 하나에 70만원”…삼성 AI 안경 승부수",
+        "삼성, ‘제미나이 안경’ 출격…65만원대 AI 웨어러블 승부",
+        "삼성 첫 스마트안경 예약판매 시작…제미나이 장착, 가격 65만~75만원",
+        "삼성 첫 AI 안경 공개… 제미나이 탑재·국내 가격 65만원부터"
       ],
       "sources": [
         {
-          "press": "jtbc.co.kr",
-          "title": "\"횡령·배임 피해는 있었지만\"…박수홍, 친형 부부 상대 98억 손배소 1심...",
-          "url": "https://n.news.naver.com/mnews/article/437/0000520614?sid=102"
+          "press": "한경비즈니스",
+          "title": "“안경 하나에 70만원”…삼성 AI 안경 승부수",
+          "url": "https://n.news.naver.com/article/050/0000113197"
         },
         {
-          "press": "newstomato.com",
-          "title": "‘98억 손배소’ 박수홍, 친형 부부에 1심 패소",
-          "url": "http://www.newstomato.com/ReadNews.aspx?no=1320393&inflow=N"
+          "press": "매일경제",
+          "title": "삼성, ‘제미나이 안경’ 출격…65만원대 AI 웨어러블 승부",
+          "url": "https://www.mk.co.kr/news/business/12208007"
         },
         {
-          "press": "CJB청주방송",
-          "title": "[속보] 박수홍, 형 부부 상대 '98억대 손배소 1심 패소'...\"수익 배분 약정 인정 안돼\"",
-          "url": "https://n.news.naver.com/article/655/0000033560"
+          "press": "경향신문",
+          "title": "삼성 첫 스마트안경 예약판매 시작…제미나이 장착, 가격 65만~75만원",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5JUExVbldETXBYWmJxOE1NTUJTWDJIOGtHNmd0RlRtdTI4ZzF0NkM5V2hSRTc1TFltQUVqWXJXT0xTaS1SeHhSRWNnamU0ZEkyUEFTRGg0TC10UdIBX0FVX3lxTE1YenpRM0NfTXE2TVhuY3NzVUtyRGZKZUgwMFZmY2xra1hDaWl0c3NKdktrX2tEdTd3LUZsWXU3T19Vcm1FdmtnUlVKMVllX3NiQkxWYlpIUHdqSVhtdEpN?oc=5"
         },
         {
-          "press": "sportschosun.com",
-          "title": "박수홍, 친형부부 '98억 손배소' 패소한 이유는? \"회사의 손해, 개인에 ...",
-          "url": "https://m.entertain.naver.com/article/076/0004466465"
+          "press": "매경이코노미",
+          "title": "삼성, ‘제미나이 안경’ 출격…65만원대 AI 웨어러블 승부",
+          "url": "https://n.news.naver.com/article/024/0000109605"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "방송인 박수홍(56) 씨가 친형 부부를 상대로 낸 98억원 상당 손해배상청구 소송에서 패소했다."
+          "evidence": "삼성전자가 구글, 젠틀몬스터, 워비파커와 협업한 인공지능(AI) 안경 '인텔리전트 아이웨어' 전체 라인업 30종을 공개했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "5년 만에 판결…박수홍, 친형 부부 상대 98억 손배소 1심 패소"
+          "evidence": "엔비디아 혼란에 삼성·AMD 반사이익 보나…\"AI 공급망 다변화\""
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "방송인 박수홍씨가 친형 부부를 상대로 낸 98억원 손해배상 청구 소송에서 패소했습니다."
+          "evidence": "“안경 하나에 70만원”…삼성 AI 안경 승부수"
         },
         {
           "panel": 4,
@@ -287,8 +287,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
