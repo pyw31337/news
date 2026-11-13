@@ -56,7 +56,17 @@
   </section>`;
   /* 생애 단계: 연도가 있는 직위 */
   const pos = (car.pos || []).filter(x => x[1]).sort((a, b) => a[1] - b[1]);
-  const eras = pos.slice(-7).map((x, i, a) => ({ y: yr(x[1], x[2]), name: x[0], href: href.g(x[3]), now: !x[2] && i === a.length - 1 }));
+  /* 상단 생애 카드도 위키데이터의 일반 직함을 그대로 쓰지 않는다. 직위
+     시작 연도와 공식 국회·대통령 임기표를 이용해 대수를 표시한다. */
+  const assemblyTerm = y => ({ 2024: 22, 2022: 21, 2020: 21, 2016: 20, 2012: 19, 2008: 18, 2004: 17, 2000: 16, 1996: 15, 1992: 14, 1988: 13 }[Number(y)]);
+  const presidentTerm = y => ({ 2025: 21, 2022: 20, 2017: 19, 2013: 18, 2008: 17, 2003: 16, 1998: 15, 1993: 14, 1988: 13 }[Number(y)]);
+  const positionLabel = (label, y) => {
+    const clean = cleanText(label), year = Number(y);
+    if (/^대한민국\s*국회의원$/.test(clean)) { const term = assemblyTerm(year); return term ? `대한민국 제${term}대 국회의원` : clean; }
+    if (/^대한민국\s*대통령$/.test(clean)) { const term = presidentTerm(year); return term ? `대한민국 제${term}대 대통령` : clean; }
+    return clean;
+  };
+  const eras = pos.slice(-7).map((x, i, a) => ({ y: yr(x[1], x[2]), name: positionLabel(x[0], x[1]), href: href.g(x[3]), now: !x[2] && i === a.length - 1 }));
   /* 장기 기록 */
   const HP = H?.o || [], HI = (H?.it || []).map(x => ({ d: x[0], title: x[1], press: HP[x[2]] || '', cat: x[3], quote: x[4], url: x[5] || '', desc: x[6] || '' })).sort((a, b) => b.d.localeCompare(a.d));
   const own = x => { const i = x.title.indexOf(nm), q = x.title.search(/["“'‘]/); return i >= 0 && (q < 0 || i < q); };
