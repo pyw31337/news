@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-13",
-  "generated_at": "2026-11-13T14:54:05+09:00",
+  "generated_at": "2026-11-13T13:54:54+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i2f0c7f47",
-      "title": "“불륜 의혹에도 나가면 안 된다”…젠슨 황 퇴진에 직원들 74% ‘반대’",
+      "issue_id": "i6749500d",
+      "title": "젠슨 황 떠난 엔비디아의 빈틈…삼전닉스엔 '뜻밖의 호재'?",
       "category": "경제",
-      "rank": 9,
+      "rank": 10,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -38,11 +38,110 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "블라인드, 美 재직자 게시물 분석 주주 의견도 75%가 반대 젠슨 황 엔비디아 최고경영자(CEO)가 잇단 불륜 의혹 끝에 자리에서 물러났지만, 정작 사내 지지 여론은 압도적으로 높았던 것으로 나타났다.",
+        "33년 만에 막 내린 젠슨 황 시대…엔비디아 경영 시험대",
+        "젠슨 황(사진) 엔비디아 최고경영자(CEO)의 퇴진으로 인해 중국 인공지능(AI) 산업엔 이제 막 후폭풍이 시작될...",
+        "칼럼은 “그간 회색시장과 규제의 빈틈이 중국의 충격을 완충해 왔다”며 “실제 중국 AI 기업 문샷이 올...",
+        "젠슨 황 엔비디아 최고경영자(CEO)의 사퇴로 경영 불확실성이 커지면서 경쟁사인 AMD와 브로드컴 주가가 나란히 5%대 상승했다.",
+        "12일(현지시각) 뉴욕증시에서 AMD는 전 거래일보다"
+      ],
+      "sources": [
+        {
+          "press": "블로터",
+          "title": "33년 만에 막 내린 젠슨 황 시대…엔비디아 경영 시험대",
+          "url": "https://n.news.naver.com/article/293/0000093182"
+        },
+        {
+          "press": "edaily.co.kr",
+          "title": "\"젠슨황 퇴진에 中 AI '후폭풍' 이제 시작…'최대 응원군' 잃었다\"",
+          "url": "https://n.news.naver.com/mnews/article/018/0006409252?sid=101"
+        },
+        {
+          "press": "it.chosun.com",
+          "title": "[젠슨 황 스캔들] 엔비디아 빈틈 노리는 AMD·브로드컴… 5%대 상승",
+          "url": "https://it.chosun.com/news/articleView.html?idxno=3000000000942"
+        },
+        {
+          "press": "매일경제",
+          "title": "돈 녹는 속도, 유례가 없었다…단 5주 만에 2400조원 증발한 엔비디아",
+          "url": "https://n.news.naver.com/article/009/0005763172"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "33년 만에 막 내린 젠슨 황 시대…엔비디아 경영 시험대"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "칼럼은 “그간 회색시장과 규제의 빈틈이 중국의 충격을 완충해 왔다”며 “실제 중국 AI 기업 문샷이 올..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "젠슨 황 엔비디아 최고경영자(CEO)의 사퇴로 경영 불확실성이 커지면서 경쟁사인 AMD와 브로드컴 주가가 나란히 5%대 상승했다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i28f3de7f",
+      "title": "젠슨 황, 사임 당일 세 번째 불륜 의혹… “또 다른 엔비디아 직원”",
+      "category": "세계",
+      "rank": 3,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "젠슨 황 엔비디아 CEO가 사임했다.",
         "“불륜 의혹에도 나가면 안 된다”…젠슨 황 퇴진에 직원들 74% ‘반대’",
-        "젠슨 황 엔비디아 전 최고경영자(CEO)의 불륜 상대로 알려진 중국인 여성 앨리스 황(중국명 황러)이 중국 최고...",
-        "홍콩 현지매체 ‘hk01’에 따르면 앨리스 황은 싱가포르 기업 메가스피드의 이사직에서 사임한 뒤인 2024년...",
-        "젠슨 황, 사임 당일 세 번째 불륜 의혹… “또 다른 엔비디아 직원”"
+        "트럼프 “젠슨 황 후임은 팀 쿡”…엔비디아 수장에 애플 전 CEO 추천[1일1트]",
+        "젠슨 황, 사임 당일 세 번째 불륜 의혹… “또 다른 엔비디아 직원”",
+        "국민의힘은 젠슨 황 전 엔비디아 최고경영자(CEO)의 중국 스파이 의혹 여성과의 불륜 스캔들을 고리로 이재명 정부의 방첩정책을 비판했다."
       ],
       "sources": [
         {
@@ -51,9 +150,9 @@
           "url": "https://n.news.naver.com/article/009/0005763168"
         },
         {
-          "press": "mk.co.kr",
-          "title": "“앨리스 황, 中 정보기관 반도체 전담 ‘칩팀’ 요원”…외신 보도에 ...",
-          "url": "https://n.news.naver.com/mnews/article/009/0005763326?sid=102"
+          "press": "헤럴드경제",
+          "title": "트럼프 “젠슨 황 후임은 팀 쿡”…엔비디아 수장에 애플 전 CEO 추천[1일1트]",
+          "url": "https://n.news.naver.com/article/016/0002722844"
         },
         {
           "press": "조선일보",
@@ -61,21 +160,21 @@
           "url": "https://n.news.naver.com/article/023/0004009401"
         },
         {
-          "press": "edaily.co.kr",
-          "title": "엔비디아 직원 88% \"젠슨황 남아주길 바랐는데\"…눈물 흘리기도",
-          "url": "https://n.news.naver.com/mnews/article/018/0006409522?sid=101"
+          "press": "biz.heraldcorp.com",
+          "title": "국힘, ‘젠슨황 불륜’ 고리로 이재명 정부 ‘방첩’ 비판",
+          "url": "https://n.news.naver.com/mnews/article/016/0002723165?sid=100"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "블라인드, 美 재직자 게시물 분석 주주 의견도 75%가 반대 젠슨 황 엔비디아 최고경영자(CEO)가 잇단 불륜 의혹 끝에 자리에서 물러났지만, 정작 사내 지지 여론은 압도적으로 높았던 것으로 나타났다."
+          "evidence": "젠슨 황 엔비디아 CEO가 사임했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "삼전닉스에 LG·현대차·네이버까지 AI 팩토리·자율주행 등 긴밀 협력 “새 경영진 투자 기조에 생태계 달려” 젠슨 황 엔비디아 최고경영자(CEO)가 연이은 불륜 의혹 끝에 12일(현지 시각) 사임했다."
+          "evidence": "국민의힘은 젠슨 황 전 엔비디아 최고경영자(CEO)의 중국 스파이 의혹 여성과의 불륜 스캔들을 고리로 이재명 정부의 방첩정책을 비판했다."
         },
         {
           "panel": 3,
@@ -126,169 +225,70 @@
       }
     },
     {
-      "issue_id": "i3046fbf8",
-      "title": "‘AI 안경’ 파문… LEET 첫 만점자 “수능 국어 생중계로 풀겠다”",
+      "issue_id": "i9dd7293c",
+      "title": "정부, ‘AI 안경’ 우려에 “부정행위 무관용…세무사 시험 등 의혹 제기 사례 수사의뢰”",
       "category": "IT",
-      "rank": 4,
-      "priority_score": 37,
+      "rank": 5,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "올해 세무사 시험 수석 합격자의 ‘AI(인공지능) 안경’ 부정행위 의혹이 일파만파로 확산하고 있다.",
-        "‘AI 안경’ 불똥 튄 LEET 만점자 “수능 생중계로 풀겠다” 정면 돌파",
-        "‘AI 안경’ 파문… LEET 첫 만점자 “수능 국어 생중계로 풀겠다”",
-        "세무사 수석 불똥?… LEET 첫 만점자 \"19일 수능 국어 생중계로 풀겠다\"",
-        "“너도 AI 안경?” 불똥에…LEET 만점자 정면돌파 “수능 국어 실시간으로 풀겠다”"
+        "올해 세무사 자격시험 수석 합격자가 1차 시험 160문제 중 단 한 문제만 틀리는 이례적인 성적을 거두자, 온라인을 중심으로 인공지능(AI) 스마트 안경을 이용한 부정행위 의혹이 확산했다.",
+        "정부, ‘AI 안경’ 우려에 “부정행위 무관용…세무사 시험 등 의혹 제기 사례 수사의뢰”",
+        "제63회 세무사 자격시험 수석 합격자의 인공지능(AI) 안경 부정행위 의혹이 확산하는 가운데 현직 세무사 겸 변호사가 시험문제를 직접 풀어본 뒤 \"100점은 불가능하다.",
+        "형사고발이라도 하고 싶은 심정\"이라고 밝혔다.",
+        "이씨가 공개 검증을 자청한 것은 최근 세무사 시험 수석 합격자를 둘러싼 AI 스마트 안경 부정행위 의혹이 자신에게까지 번졌기 때문이다."
       ],
       "sources": [
         {
-          "press": "헤럴드경제",
-          "title": "‘AI 안경’ 불똥 튄 LEET 만점자 “수능 생중계로 풀겠다” 정면 돌파",
-          "url": "https://n.news.naver.com/article/016/0002723032"
+          "press": "KBS",
+          "title": "정부, ‘AI 안경’ 우려에 “부정행위 무관용…세무사 시험 등 의혹 제기 사례 수사의뢰”",
+          "url": "https://n.news.naver.com/article/056/0012293228"
         },
         {
-          "press": "국민일보",
-          "title": "‘AI 안경’ 파문… LEET 첫 만점자 “수능 국어 생중계로 풀겠다”",
-          "url": "https://n.news.naver.com/article/005/0001884938"
+          "press": "mt.co.kr",
+          "title": "\"100점 불가능, 형사고발 하고 싶다\"…직접 시험 본 세무사 출신 변호사...",
+          "url": "https://n.news.naver.com/mnews/article/008/0005440805?sid=102"
         },
         {
-          "press": "뉴스1",
-          "title": "세무사 수석 불똥?… LEET 첫 만점자 \"19일 수능 국어 생중계로 풀겠다\"",
-          "url": "https://n.news.naver.com/article/421/0009287107"
+          "press": "hidomin.com",
+          "title": "19년 만의 리트 만점에 \"AI 안경 쓴 거 아냐?\"…당사자 \"수능 생중계로 ...",
+          "url": "https://www.hidomin.com/news/articleView.html?idxno=729254"
         },
         {
-          "press": "서울신문",
-          "title": "“너도 AI 안경?” 불똥에…LEET 만점자 정면돌파 “수능 국어 실시간으로 풀겠다”",
-          "url": "https://n.news.naver.com/article/081/0003699117"
+          "press": "asiatoday.co.kr",
+          "title": "산업인력공단 \"세무사 수석 'AI 안경' 사용 증거 확인 안 돼\"…2차 답안...",
+          "url": "https://www.asiatoday.co.kr/kn/view.php?key=20261113010005197"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "올해 세무사 시험 수석 합격자의 ‘AI(인공지능) 안경’ 부정행위 의혹이 일파만파로 확산하고 있다."
+          "evidence": "올해 세무사 자격시험 수석 합격자가 1차 시험 160문제 중 단 한 문제만 틀리는 이례적인 성적을 거두자, 온라인을 중심으로 인공지능(AI) 스마트 안경을 이용한 부정행위 의혹이 확산했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "■ 리트 첫 만점자에게도 의혹 확산…수능 국어 생중계 풀이 예고 세무사 시험에서 시작된 AI 스마트안경 논란은 다른 전문시험의 고득점자에게까지 영향을 미쳤다."
+          "evidence": "이씨가 공개 검증을 자청한 것은 최근 세무사 시험 수석 합격자를 둘러싼 AI 스마트 안경 부정행위 의혹이 자신에게까지 번졌기 때문이다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "세무사 수석 불똥?… LEET 첫 만점자 \"19일 수능 국어 생중계로 풀겠다\""
+          "evidence": "제63회 세무사 자격시험 수석 합격자의 인공지능(AI) 안경 부정행위 의혹이 확산하는 가운데 현직 세무사 겸 변호사가 시험문제를 직접 풀어본 뒤 \"100점은 불가능하다."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+          "evidence": "국가시험에서 AI 안경 부정행위가 최초로 확인되며 기술적 부정행위 논란의 시발점이 되었다."
         }
       ],
       "visual_brief": {
         "scene": "science",
         "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i16eaa4bd",
-      "title": "[단독] 유홍준, 자택 담장을 문화재로 ‘셀프 등록’",
-      "category": "문화",
-      "rank": 10,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "문화재청장 당시 부여에 지은 집 본인이 마을 돌담길과 묶어 신청 지난달 본인 소유 서예 작품을 국립중앙박물관 주요",
-        "[단독] 유홍준, 자택 담장을 문화재로 ‘셀프 등록’",
-        "유홍준, 자택 완공 두 달 뒤 '담장' 문화재로 '셀프 등록'…세금으로 유지보수",
-        "유홍준, 자택 담장까지 국가문화재로…박물관 '셀프 출품' 이어 또 논란",
-        "유홍준 전 국립중앙박물관장이 과거 문화재청장(현 국가유산청장)으로 재직하던 2006년 자신의 충남 부여 주택인 '휴휴당'(休休堂) 담장이 포함된 마을 돌담길이 국가등록문화재로 등록한 것을 두고 '셀프 등록' 논란이..."
-      ],
-      "sources": [
-        {
-          "press": "조선일보",
-          "title": "[단독] 유홍준, 자택 담장을 문화재로 ‘셀프 등록’",
-          "url": "https://n.news.naver.com/article/023/0004009395"
-        },
-        {
-          "press": "조선일보",
-          "title": "[단독] 유홍준, 자택 담장을 문화재로 ‘셀프 등록’",
-          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQVkxGWlZZM3pjRk1kVTJBTWxvV0dTVjFxdzY1UGgzaUxncWFYbkM5ak5ud3k5a254SHl3MTh6eF9LS19XWURDLWUxb0hZa20td3NEZUZUdjY5WER5QzFUWlJPWk5CdHBpQjh4M19FRFB5dWJjdUhqeWtLdHVwRjZaTDVWQzhzaE1NN01WRjBPRk1FQjg0?oc=5"
-        },
-        {
-          "press": "JTBC",
-          "title": "유홍준, 자택 완공 두 달 뒤 '담장' 문화재로 '셀프 등록'…세금으로 유지보수",
-          "url": "https://n.news.naver.com/article/437/0000520553"
-        },
-        {
-          "press": "TV조선",
-          "title": "유홍준, 자택 담장까지 국가문화재로…박물관 '셀프 출품' 이어 또 논란",
-          "url": "https://n.news.naver.com/article/448/0000650815"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "문화재청장 당시 부여에 지은 집 본인이 마을 돌담길과 묶어 신청 지난달 본인 소유 서예 작품을 국립중앙박물관 주요"
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "[단독] 유홍준, 자택 담장을 문화재로 ‘셀프 등록’"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "유홍준 전 국립중앙박물관장이 과거 문화재청장(현 국가유산청장)으로 재직하던 2006년 자신의 충남 부여 주택인 '휴휴당'(休休堂) 담장이 포함된 마을 돌담길이 국가등록문화재로 등록한 것을 두고 '셀프 등록'…"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
