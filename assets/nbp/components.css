@@ -191,14 +191,14 @@ button{font:inherit;color:inherit;letter-spacing:inherit;background:none;border:
 .speech-row .quote{display:grid;grid-template-columns:minmax(0,1fr) max-content;gap:var(--s-4);align-items:baseline;width:100%;min-width:0}.speech-row .quote blockquote{min-width:0;font-size:var(--fs-md);line-height:var(--lh-snug)}.speech-row .quote figcaption{margin:0;white-space:nowrap;text-align:right}
 
 /* 관계 묶음 */
-.rgroup{display:grid;gap:var(--s-3)}
+.rgroup{display:grid;align-content:start;gap:var(--s-3);min-width:0;padding-top:var(--s-3);border-top:2px solid var(--c-line)}
 .rg-h{display:flex;align-items:baseline;gap:var(--s-2);font-size:var(--fs-sm);font-weight:var(--fw-bold);color:var(--c-ink-2)}
 .rg-h small{font-weight:var(--fw-medium);color:var(--c-ink-4)}
 .rnode{display:flex;flex-direction:column;gap:2px}
 .rnode b{font-size:var(--fs-md);font-weight:var(--fw-semibold);line-height:var(--lh-snug)}
 .rgroup .rnode--group+.rnode--group{margin-top:var(--s-2);padding-top:var(--s-4);border-top:1px solid var(--c-line)}
 .rnode small{font-size:var(--fs-xs);color:var(--c-ink-3)}
-.rpeers{display:flex;flex-wrap:wrap;gap:var(--s-3) var(--s-5);margin-top:var(--s-2)}
+.rpeers{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:var(--s-3) var(--s-4);margin-top:var(--s-2);align-items:start}
 
 /* 표준 링크 */
 .lnk{display:inline-flex;align-items:center;gap:4px;font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--c-accent)}
@@ -334,10 +334,10 @@ a.tl-s:hover{color:var(--c-accent)}
 .reg .sub-t .ic{color:var(--c-ink-4);align-self:center}
 .src-i{display:inline-flex;align-items:center;color:var(--c-ink-4);outline:none;cursor:help}.src-i:focus-visible{color:var(--c-accent)}.src-i .ic{width:14px;height:14px}
 .reg-l{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--s-6)}
-.reg-i{display:grid;grid-template-columns:5.8em minmax(0,1fr);column-gap:var(--s-3);align-items:baseline;min-height:3.1em;padding:var(--s-3) 0;border-top:1px solid var(--c-line);break-inside:avoid}
+.reg-i{display:grid;grid-template-columns:1fr;gap:4px;align-content:start;min-height:4.5em;padding:var(--s-4) 0;border-top:1px solid var(--c-line);break-inside:avoid}
 .reg-d{font-size:var(--fs-xs);color:var(--c-ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
 .reg-i b{font-size:var(--fs-sm);font-weight:var(--fw-semibold);line-height:var(--lh-snug)}
-.reg-g{grid-column:2;font-size:var(--fs-xs);color:var(--c-ink-4);margin-top:2px}
+.reg-g{font-size:var(--fs-xs);color:var(--c-ink-4);margin-top:2px}
 /* 출처 칩 */
 .hero-src{display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-6)}
 .src-chip{display:inline-flex;align-items:center;gap:6px;padding:6px var(--s-3);border-radius:var(--r-full);background:var(--c-sunken);font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--c-ink-2);white-space:nowrap}
@@ -420,8 +420,7 @@ a.hrow:hover,a.hrow:focus-visible{background:var(--c-sunken)}
 .ms p{font-size:var(--fs-sm);color:var(--c-ink-3)}
 .blk{display:flex;flex-direction:column;gap:var(--s-4)}
 .blk-v{display:flex;align-items:center;gap:var(--s-5)}
-.rels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s-7) var(--s-6)}
-.rels .rgroup{align-content:start}
+.rels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s-8) var(--s-7)}
 .quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-7) var(--s-8)}
 .news-top{display:grid;grid-template-columns:7fr 5fr;gap:var(--s-8);margin-bottom:var(--s-8)}
 .foot{padding:var(--s-8) 0;border-top:1px solid var(--c-line);font-size:var(--fs-sm);color:var(--c-ink-3);display:flex;gap:var(--s-5)}
@@ -487,7 +486,7 @@ a.hrow:hover,a.hrow:focus-visible{background:var(--c-sunken)}
 .hero-ph--none{aspect-ratio:3/4;border-radius:var(--r-lg);background:var(--c-sunken);display:grid;place-items:center;color:var(--c-ink-4)}
 .hero-ph--none .ic{width:40%;height:40%;stroke-width:1}
 .hero--empty{grid-template-columns:1fr;min-height:40vh;align-items:center}
-.rpeer-l{flex-basis:100%;font-size:var(--fs-xs);color:var(--c-ink-3)}
+.rpeer-l{grid-column:1/-1;font-size:var(--fs-xs);color:var(--c-ink-3)}
 .gantt-l.lk,a.gantt-l{color:inherit}
 a.gantt-l:hover,a.era-n:hover{color:var(--c-accent)}
 a.pchip:hover b{color:var(--c-accent)}

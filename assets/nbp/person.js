@@ -159,7 +159,10 @@
     const clean = cleanText(label);
     const best = hit[0]?.title || '';
     if (/^대한민국\s*대통령$/.test(clean) && best) return best.replace(/\s*취임$/, '');
-    if (/^대한민국\s*국회의원$/.test(clean) && best) return (best.match(/제\d+대\s*국회의원/) || [best])[0];
+    if (/^대한민국\s*국회의원$/.test(clean) && best) {
+      const term = best.match(/제\d+대\s*국회의원/)?.[0];
+      return term ? `대한민국 ${term}` : best;
+    }
     if (/^사법연수원$/.test(clean) && best) return best.replace(/\s*수료$/, '');
     return clean;
   };
@@ -168,6 +171,9 @@
     const hit = careerMatches(label);
     return { label: detailedLabel(label, hit), d: joinedPeriod(hit), href: hit[0]?.href || '' };
   };
+  /* 간트와 목록은 같은 세부 직함을 사용한다. 특히 역대 국회의원은
+     재임 시기별 대수를 생략하지 않아 서로 다른 임기를 혼동하지 않는다. */
+  const detailedRows = rows.map(r => ({ ...r, title: detailedLabel(r.title, careerMatches(r.title, r.d)) }));
   const assemblyCareers = (Pj?.history || []).map(knownCareer).filter(x => x.label).sort((a, b) => start(b) - start(a) || a.label.localeCompare(b.label, 'ko'));
   const wikiCareers = [];
   for (const k of ['pos', 'edu', 'emp', 'mem', 'team', 'label']) for (const [label, a, b, g] of car[k] || []) {
@@ -186,7 +192,7 @@
   if (rows.length || regBlock || timeline.length) {
     const cnt = NB.FILTERS.map(([n, f]) => [n, timeline.filter(f).length]);
     add('s-career', '경력 흐름', 'timeline-event', (rows.length + wikiCareers.length + assemblyCareers.length) + '건',
-      `${rows.length ? `<div id="gt">${NB.gantt(rows, y0, y1, NB.ticks(y0, y1))}</div>` : ''}
+      `${rows.length ? `<div id="gt">${NB.gantt(detailedRows, y0, y1, NB.ticks(y0, y1))}</div>` : ''}
        ${regBlock}
        ${timeline.length ? NB.exp('전체 연대기', timeline.length + '건', `<div style="margin-bottom:var(--s-6)">${NB.seg('tl', cnt)}</div>${NB.tl(timeline)}`) : ''}`,
       { cls: 'career', aside: main.length && main.length < rows.length ? NB.seg('gt', [['주요 경력', main.length], ['전체', rows.length]]) : '' });
