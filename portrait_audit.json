@@ -2,11 +2,11 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 7,
-    "approved": 6,
+    "current_person_entities": 8,
+    "approved": 7,
     "withheld": 1,
     "legacy_local_retired": 58,
-    "entity_media_cache_issues": 1,
+    "entity_media_cache_issues": 0,
     "sanitized": 0
   },
   "current_entities": [
@@ -16,6 +16,13 @@
       "url": "media/ent/bb/bbbc599cbde9d0d8.webp",
       "source": "https://commons.wikimedia.org/wiki/Special:FilePath/South%20Korea%20President%20Yoon%20Suk%20Yeol%20portrait.jpg?width=360",
       "wiki_title": "윤석열"
+    },
+    {
+      "name": "트럼프",
+      "status": "approved",
+      "url": "media/ent/51/51d80b245f6cbf5e.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29%20%283x4%29.jpg?width=360",
+      "wiki_title": "도널드 트럼프"
     },
     {
       "name": "김승우",
@@ -32,18 +39,11 @@
       "wiki_title": "한동훈"
     },
     {
-      "name": "오세훈",
+      "name": "이재명",
       "status": "approved",
-      "url": "data/pol/photos/LB24097N.webp",
-      "source": "",
-      "wiki_title": "오세훈"
-    },
-    {
-      "name": "트럼프",
-      "status": "approved",
-      "url": "media/ent/51/51d80b245f6cbf5e.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29%20%283x4%29.jpg?width=360",
-      "wiki_title": "도널드 트럼프"
+      "url": "media/ent/da/da37f2330225f1ef.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Lee%20Jae-myung%202025%20%28cropped%29.jpg?width=360",
+      "wiki_title": "이재명"
     },
     {
       "name": "조희대",
@@ -51,6 +51,13 @@
       "url": "media/ent/de/deac27e956f0f484.webp",
       "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Jo%20Heede%20in%20his%2017th%20Chief%20Justice%20inauguration%20ceremony.png?width=360",
       "wiki_title": "조희대"
+    },
+    {
+      "name": "오세훈",
+      "status": "approved",
+      "url": "data/pol/photos/LB24097N.webp",
+      "source": "",
+      "wiki_title": "오세훈"
     },
     {
       "name": "박희승",
@@ -410,12 +417,6 @@
       "replacement_available": false
     }
   ],
-  "entity_media_cache_issues": [
-    {
-      "name": "헤어질 결심",
-      "reason": "unverified_source",
-      "url": "https://upload.wikimedia.org/wikipedia/ko/c/c6/%ED%97%A4%EC%96%B4%EC%A7%88_%EA%B2%B0%EC%8B%AC_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg?utm_source=ko.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
-    }
-  ],
+  "entity_media_cache_issues": [],
   "changes": []
 }

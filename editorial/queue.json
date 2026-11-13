@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-13",
-  "generated_at": "2026-11-13T09:54:28+09:00",
+  "generated_at": "2026-11-13T10:25:09+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i7e4bd0c4",
-      "title": "젠슨황, 결국 불명예 퇴진...세번째 불륜 스캔들도 나와",
+      "issue_id": "id4b16dc6",
+      "title": "\"젠슨 황, 다른 여직원과 내연 관계\"…세 번째 불륜 의혹",
       "category": "경제",
-      "rank": 1,
+      "rank": 2,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -38,110 +38,11 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "중국 스파이 의심 여성 등과의 불륜 의혹에 휩싸인 젠슨 황 엔비디아 최고경영자가 결국 자리에서 물러났습니다.",
-        "\"불륜 스캔들 끝이 없네\"…젠슨 황, 사임 후 세 번째 불륜 의혹",
-        "'사임' 젠슨황, 세 번째 불륜 의혹…\"상대는 또다른 엔비디아 여직원\"",
-        "젠슨 황 엔비디아 최고경영자(CEO) 사퇴 발표 직전까지 직장인 익명 커뮤니티 블라인드에 올라온 엔비디아...",
-        "13일 블라인드에 따르면 황 CEO 관련해 첫 불륜 의혹이 제기된 이달 6일부터 추가 의혹이 보도된 11일까지..."
-      ],
-      "sources": [
-        {
-          "press": "뉴스1",
-          "title": "\"불륜 스캔들 끝이 없네\"…젠슨 황, 사임 후 세 번째 불륜 의혹",
-          "url": "https://n.news.naver.com/article/421/0009286857"
-        },
-        {
-          "press": "TV조선",
-          "title": "'사임' 젠슨황, 세 번째 불륜 의혹…\"상대는 또다른 엔비디아 여직원\"",
-          "url": "https://n.news.naver.com/article/448/0000650738"
-        },
-        {
-          "press": "biz.sbs.co.kr",
-          "title": "엔비디아 재직자 74% \"사퇴 반대\"",
-          "url": "https://n.news.naver.com/mnews/article/374/0000543447?sid=104"
-        },
-        {
-          "press": "머니투데이",
-          "title": "'불륜 스캔들' 젠슨 황, 1400억 날렸다…불명예 퇴진→주식보상 포기",
-          "url": "https://n.news.naver.com/article/008/0005440665"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "중국 스파이 의심 여성 등과의 불륜 의혹에 휩싸인 젠슨 황 엔비디아 최고경영자가 결국 자리에서 물러났습니다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "신고 의혹을 포착하고 회사 임원인 앨리스 황을 소환 조사했습니다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "13일 블라인드에 따르면 황 CEO 관련해 첫 불륜 의혹이 제기된 이달 6일부터 추가 의혹이 보도된 11일까지..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i3883774a",
-      "title": "'불명예 퇴진' 젠슨 황, 3번째 불륜 의혹…\"또 다른 여직원과 내연 관계\"",
-      "category": "경제",
-      "rank": 5,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "젠슨 황 엔비디아 CEO는 중국 스파이 연루 의혹과 사내 불륜 스캔들에 휩싸인 끝에 12일(현지 시각) 퇴진했다.",
+        "젠슨 황 엔비디아 CEO가 사생활 문제로 자리에서 물러난 후 추가 스캔들이 나왔다.",
         "‘불륜 불륜 불륜’ 젠슨 황 퇴진한 날 3번째 의혹…“또 다른 여직원과 부적절 관계”",
-        "'불명예 퇴진' 젠슨 황, 3번째 불륜 의혹…\"또 다른 여직원과 내연 관계\"",
         "\"젠슨 황, 사내 또 다른 직원과도 불륜 관계\"…총 3번째 스캔들",
-        "젠슨 황, 또 터진 3번째 불륜 의혹…“다른 여직원과 혼외관계”"
+        "'불명예 퇴진' 젠슨 황, 3번째 불륜 의혹…\"또 다른 여직원과 내연 관계\"",
+        "젠슨 황, 3번째 불륜 스캔들...“또 다른 직원도 내연녀”"
       ],
       "sources": [
         {
@@ -150,31 +51,31 @@
           "url": "https://n.news.naver.com/article/020/0003762251"
         },
         {
-          "press": "머니투데이",
-          "title": "'불명예 퇴진' 젠슨 황, 3번째 불륜 의혹…\"또 다른 여직원과 내연 관계\"",
-          "url": "https://n.news.naver.com/article/008/0005440634"
-        },
-        {
           "press": "뉴시스",
           "title": "\"젠슨 황, 사내 또 다른 직원과도 불륜 관계\"…총 3번째 스캔들",
           "url": "https://n.news.naver.com/article/003/0014319668"
         },
         {
-          "press": "중앙일보",
-          "title": "젠슨 황, 또 터진 3번째 불륜 의혹…“다른 여직원과 혼외관계”",
-          "url": "https://n.news.naver.com/article/025/0003564938"
+          "press": "머니투데이",
+          "title": "'불명예 퇴진' 젠슨 황, 3번째 불륜 의혹…\"또 다른 여직원과 내연 관계\"",
+          "url": "https://n.news.naver.com/article/008/0005440634"
+        },
+        {
+          "press": "서울경제",
+          "title": "젠슨 황, 3번째 불륜 스캔들...“또 다른 직원도 내연녀”",
+          "url": "https://n.news.naver.com/article/011/0004681706"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "젠슨 황 엔비디아 CEO는 중국 스파이 연루 의혹과 사내 불륜 스캔들에 휩싸인 끝에 12일(현지 시각) 퇴진했다."
+          "evidence": "젠슨 황 엔비디아 CEO가 사생활 문제로 자리에서 물러난 후 추가 스캔들이 나왔다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "당시 미 언론은 브린이 14세 연하의 구글 여직원인 어맨다"
+          "evidence": "형식은 자진 사임이지만 이사회가 해임..."
         },
         {
           "panel": 3,
@@ -225,70 +126,148 @@
       }
     },
     {
-      "issue_id": "iae4101e0",
-      "title": "트럼프 “이어받을 사람 애플 팀 쿡”…하원 “안 나오면 소환장”",
+      "issue_id": "i747e2516",
+      "title": "'젠슨황 퇴임'에도 증시 선방…코스피·코스닥, 2%대 상승세(종합)",
+      "category": "경제",
+      "rank": 9,
+      "priority_score": 25,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "코스피가 13일 젠슨 황 엔비디아 최고경영자(CEO)의 퇴임 소식에도 장 초반 2%대 상승세를 보이고 있다.",
+        "코스피·코스닥, 4%대 급등 마감…4거래일 만에 반등",
+        "코스피·코스닥, 4%대 급등 마감",
+        "[마감시황] 외국인·기관 매수에 코스피·코스닥 동반 상승…5200선 탈환",
+        "코스피·코스닥, 4%대 급등 마감…급락딛고 4거래일만 반등(종합)"
+      ],
+      "sources": [],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "코스피가 13일 젠슨 황 엔비디아 최고경영자(CEO)의 퇴임 소식에도 장 초반 2%대 상승세를 보이고 있다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "[마감시황] 외국인·기관 매수에 코스피·코스닥 동반 상승…5200선 탈환"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "코스피·코스닥, 4%대 급등 마감…4거래일 만에 반등"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 0,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ie1b0cdb0",
+      "title": "젠슨 황 ‘엔비디아 33년 천하’… 무너지는 데 단 4일 걸렸다",
       "category": "세계",
-      "rank": 4,
-      "priority_score": 45,
+      "rank": 6,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "인공지능 반도체 기업 엔비디아의 젠슨 황 CEO가 불륜 스캔들과 중국 스파이 연루 의혹 등으로 인해 33년 만에 전격 사임했습니다.",
-        "독이 된 ‘33년 원톱 체제’… 크레스 “기반 더욱 공고히 할 것” [젠슨 황 CEO 사퇴]",
-        "코스피가 젠슨 황 엔비디아 최고경영자(CEO)의 사임에도 2% 가량 오르고 있다.",
-        "13일 한국거래소에 따르면 코스피 지수는 오전 9시 45분 현재 전 거래일 대비 100.98포인트(1.89%) 오른 5443.71을 가리키고 있다....",
-        "엔비디아 임시 CEO에 CFO 크레스…트럼프 \"애플 팀 쿡 추천\""
+        "젠슨 황, 엔비디아 CEO 사퇴 부사장과도 혼외 관계 드러나 창업 33년 만에 불명예 퇴진 크레스 CFO가 임시 CEO 맡아 검은 가죽 재킷으로 무장하고 ‘인공지능(AI) 시대 아이콘’으로 군림해 온 젠슨 황(63)",
+        "젠슨 황 ‘엔비디아 33년 천하’… 무너지는 데 단 4일 걸렸다",
+        "날이다.” 젠슨 황 엔비디아 최고경영자(CEO)의 퇴진을 놓고 미국 실리콘밸리의 주요",
+        "기술 기업 창업자와...",
+        "벤처 투자사 세쿼이아캐피털의 숀 매과이어는 “젠슨 황은 이 시대 가장 위대한 기업가 중 한 명”이라며..."
       ],
       "sources": [
         {
-          "press": "세계일보",
-          "title": "독이 된 ‘33년 원톱 체제’… 크레스 “기반 더욱 공고히 할 것” [젠슨 황 CEO 사퇴]",
-          "url": "https://n.news.naver.com/article/022/0004174717"
+          "press": "조선일보",
+          "title": "젠슨 황 ‘엔비디아 33년 천하’… 무너지는 데 단 4일 걸렸다",
+          "url": "https://n.news.naver.com/article/023/0004009392"
         },
         {
-          "press": "dailian.co.kr",
-          "title": "젠슨 황 ‘불명예 퇴진’에도…코스피, 외인·기관 ‘사자’에 2%↑ [시...",
-          "url": "https://n.news.naver.com/mnews/article/119/0003154721?sid=101"
+          "press": "chosun.com",
+          "title": "젠슨 황 퇴진에 실리콘밸리 “제2의 잡스 사태” “인류에 슬픈 날”",
+          "url": "https://n.news.naver.com/mnews/article/023/0004009420?sid=105"
         },
         {
-          "press": "MBN",
-          "title": "엔비디아 임시 CEO에 CFO 크레스…트럼프 \"애플 팀 쿡 추천\"",
-          "url": "https://n.news.naver.com/article/057/0001977982"
+          "press": "블로터",
+          "title": "33년 만에 막 내린 젠슨 황 시대…엔비디아 경영 시험대",
+          "url": "https://n.news.naver.com/article/293/0000093182"
         },
         {
-          "press": "biz.heraldcorp.com",
-          "title": "젠슨 황 사임 충격에도 코스피 3% 급등…외국인 ‘사자’에 5500선 터치...",
-          "url": "https://n.news.naver.com/mnews/article/016/0002722962?sid=101"
+          "press": "아이뉴스24",
+          "title": "젠슨황, 엔비디아 창업 33년만에 불명예 퇴진…\"한 시대의 막 내렸다\"",
+          "url": "https://n.news.naver.com/article/031/0001074715"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "인공지능 반도체 기업 엔비디아의 젠슨 황 CEO가 불륜 스캔들과 중국 스파이 연루 의혹 등으로 인해 33년 만에 전격 사임했습니다."
+          "evidence": "젠슨 황, 엔비디아 CEO 사퇴 부사장과도 혼외 관계 드러나 창업 33년 만에 불명예 퇴진 크레스 CFO가 임시 CEO 맡아 검은 가죽 재킷으로 무장하고 ‘인공지능(AI) 시대 아이콘’으로 군림해 온 젠슨 황(63)"
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "젠슨 황 엔비디아 최고경영자(CEO)의 전격 사임으로 미국 증시가 일제히 하락했지만 코스피는 13일 장 초반 3% 가까이 급등하며 5500선을 터치했다."
+          "evidence": "벤처 투자사 세쿼이아캐피털의 숀 매과이어는 “젠슨 황은 이 시대 가장 위대한 기업가 중 한 명”이라며..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "독이 된 ‘33년 원톱 체제’… 크레스 “기반 더욱 공고히 할 것” [젠슨 황 CEO 사퇴]"
+          "evidence": "젠슨 황 ‘엔비디아 33년 천하’… 무너지는 데 단 4일 걸렸다"
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "불륜 스캔들 등 퇴진 배경이 구체화되고, 재직자들의 반대 여론과 함께 향후 경영진 교체에 대한 시장의 불안감이 증폭되었습니다."
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
