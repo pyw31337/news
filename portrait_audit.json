@@ -2,34 +2,20 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 8,
+    "current_person_entities": 7,
     "approved": 5,
-    "withheld": 3,
+    "withheld": 2,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 0,
     "sanitized": 1
   },
   "current_entities": [
     {
-      "name": "오세훈",
-      "status": "approved",
-      "url": "data/pol/photos/LB24097N.webp",
-      "source": "",
-      "wiki_title": "오세훈"
-    },
-    {
       "name": "트럼프",
       "status": "approved",
       "url": "media/ent/51/51d80b245f6cbf5e.webp",
       "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29%20%283x4%29.jpg?width=360",
       "wiki_title": "도널드 트럼프"
-    },
-    {
-      "name": "이재명",
-      "status": "approved",
-      "url": "media/ent/da/da37f2330225f1ef.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Lee%20Jae-myung%202025%20%28cropped%29.jpg?width=360",
-      "wiki_title": "이재명"
     },
     {
       "name": "초록불",
@@ -39,18 +25,11 @@
       "wiki_title": "이문영 (소설가)"
     },
     {
-      "name": "한동훈",
-      "status": "approved",
-      "url": "data/pol/photos/5DC8083A.webp",
+      "name": "김승우",
+      "status": "no_portrait",
+      "url": "",
       "source": "",
-      "wiki_title": "한동훈"
-    },
-    {
-      "name": "한덕수",
-      "status": "approved",
-      "url": "media/ent/76/76576ae35b263ce4.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Prime%20Minister%20of%20South%20Korea%20HAN%20Duck-soo%2020240516.jpg?width=360",
-      "wiki_title": "한덕수"
+      "wiki_title": "김승우"
     },
     {
       "name": "조희대",
@@ -60,11 +39,25 @@
       "wiki_title": "조희대"
     },
     {
-      "name": "김승우",
-      "status": "no_portrait",
-      "url": "",
+      "name": "박희승",
+      "status": "approved",
+      "url": "data/pol/photos/43Q3892U.webp",
       "source": "",
-      "wiki_title": "김승우"
+      "wiki_title": "박희승"
+    },
+    {
+      "name": "한동훈",
+      "status": "approved",
+      "url": "data/pol/photos/5DC8083A.webp",
+      "source": "",
+      "wiki_title": "한동훈"
+    },
+    {
+      "name": "오세훈",
+      "status": "approved",
+      "url": "data/pol/photos/LB24097N.webp",
+      "source": "",
+      "wiki_title": "오세훈"
     }
   ],
   "legacy_local_assets": [
