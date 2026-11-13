@@ -53,6 +53,9 @@ jobs:
           git add db/people people_bio.json.gz   # people_bio.json(73MB 원본)은 git에 안 둠: data/.gitignore, 판본은 R2 원장(ledger.yml put_file)
           git diff --cached --quiet && exit 0
           git commit -qm "people: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M') KST"
+          # 비압축 원본은 배포·Git 대상이 아닌 워커 전용 중간산출물이다.
+          # 남겨두면 동시 수집자가 data를 갱신했을 때 rebase/merge를 막는다.
+          rm -f people_bio.json
           for n in 1 2 3 4 5 6; do
             git push -q origin HEAD:data && exit 0
             sleep $((n * 10 + RANDOM % 10))
