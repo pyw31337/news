@@ -30,6 +30,19 @@ jobs:
           for key in ('performance', 'accessibility', 'best-practices'):
               score = cats.get(key, {}).get('score')
               print('%s: %s' % (key, 'n/a' if score is None else round(score * 100)))
+          # Lighthouse can omit the aggregate performance score when a headless
+          # run misses screenshots. Keep the raw user-facing metrics so the
+          # trend remains actionable instead of reporting a misleading n/a only.
+          ids = ('first-contentful-paint', 'largest-contentful-paint',
+                 'total-blocking-time', 'cumulative-layout-shift', 'speed-index')
+          out = {'generated_at': d.get('fetchTime'), 'aggregate': {}, 'metrics': {}}
+          for key in ('performance', 'accessibility', 'best-practices'):
+              out['aggregate'][key] = cats.get(key, {}).get('score')
+          for key in ids:
+              a = d.get('audits', {}).get(key, {})
+              out['metrics'][key] = {'score': a.get('score'), 'display': a.get('displayValue'), 'error': a.get('errorMessage')}
+          json.dump(out, open('reports/mobile-summary.json', 'w'), ensure_ascii=False, indent=2)
+          print('mobile metrics:', json.dumps(out['metrics'], ensure_ascii=False))
           PY
       - uses: actions/upload-artifact@v4
         if: always()
