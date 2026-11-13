@@ -3,6 +3,9 @@ name: workflow-recovery
 on:
   schedule:
     - cron: '23 * * * *' # 매시 08:23 KST부터 한 시간마다 최근 실패를 점검
+  workflow_run:
+    workflows: ["collect-news", "Deploy current site", "og-thumbs"]
+    types: [completed]
   workflow_dispatch:
     inputs:
       apply:
@@ -26,7 +29,7 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           args="--hours 24"
-          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.apply }}" = "true" ]; then args="$args --apply"; fi
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event_name }}" = "workflow_run" ] || [ "${{ inputs.apply }}" = "true" ]; then args="$args --apply"; fi
           python3 scripts/workflow_recovery.py $args
       - uses: actions/upload-artifact@v4
         if: always()
