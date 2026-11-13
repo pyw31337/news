@@ -1,0 +1,327 @@
+{
+  "schema": "newsboard.editorial-queue.v2",
+  "date": "2026-11-13",
+  "generated_at": "2026-11-13T16:54:19+09:00",
+  "handoff": {
+    "state": "brief_ready",
+    "owner": "unassigned",
+    "daily_minimum": "Select one highest-priority reviewed candidate for a bespoke visual asset. Other candidates may use the safe fallback.",
+    "daily_caps": {
+      "comics": 3,
+      "card_news": 3
+    },
+    "providers": [
+      "Claude",
+      "Gemini",
+      "Grok",
+      "local Apple model",
+      "human editor"
+    ],
+    "next_action": "Select one item, check every story beat against linked sources, create or reuse an asset that satisfies visual_contract, then register it in assets/editorial-art.json.",
+    "resume_commands": [
+      "python scripts/editorial_queue.py --validate",
+      "FUN_DATA=data FUN_AI_SEC=0 python scripts/fun.py",
+      "npm run validate"
+    ],
+    "completion_definition": "A comic/card item has four evidence-backed beats, a registered visual asset or safe fallback, and passes the no-filler validator."
+  },
+  "candidates": [
+    {
+      "issue_id": "i2019c702",
+      "title": "[속보] 코스피 5290.53(▼52.20p, 0.98%) 마감, 원·달러 환율 1336.7원",
+      "category": "경제",
+      "rank": 8,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "코스피 5290.53(▼52.20p, 0.98%) 마감, 원·달러 환율 1336.7원",
+        "[속보] 코스피 5290.53(▼52.20p, 0.98%) 마감, 원·달러 환율 1336.7원",
+        "코스피 1% 하락 마감…‘젠슨 황 퇴진’ 투자 심리 위축",
+        "이미지=아이클릭아트-13일 ETF 거래대금 상위 50종목 14조384억원 -KODEX 200·레버리지·인버스 3종에 4조7천794억원 집중 -코스피 5,500선 돌파 후 하락 전환…0.98% 내린 5,290.53 마감 -인버스 ETF 2종 거래대금...",
+        "사진=연합뉴스 코스피는 13일 강한 상승세로 출발했으나 하락 반전, 결국 1% 가까이 하락한 채 마감했다."
+      ],
+      "sources": [
+        {
+          "press": "MBN",
+          "title": "[속보] 코스피 5290.53(▼52.20p, 0.98%) 마감, 원·달러 환율 1336.7원",
+          "url": "https://n.news.naver.com/article/057/0001978084"
+        },
+        {
+          "press": "동아일보",
+          "title": "코스피 1% 하락 마감…‘젠슨 황 퇴진’ 투자 심리 위축",
+          "url": "https://www.donga.com/news/Economy/article/all/20261113/135021107/1"
+        },
+        {
+          "press": "kjdaily.com",
+          "title": "코스피200 ETF 레버리지·인버스 거래 활발",
+          "url": "http://www.kjdaily.com/article.php?aid=1794555614692175276"
+        },
+        {
+          "press": "pointdaily.co.kr",
+          "title": "'전강후약' 코스피, 약보합 종료…5290.53 마감",
+          "url": "https://www.pointdaily.co.kr/news/articleView.html?idxno=325937"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "코스피 5290.53(▼52.20p, 0.98%) 마감, 원·달러 환율 1336.7원"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "[속보] 코스피 5290.53(▼52.20p, 0.98%) 마감, 원·달러 환율 1336.7원"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "코스피 1% 하락 마감…‘젠슨 황 퇴진’ 투자 심리 위축"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i1c3435af",
+      "title": "박수홍, 친형 부부 상대 98억원 손배소 패소",
+      "category": "사회",
+      "rank": 2,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "방송인 박수홍이 친형 부부를 상대로 제기한 98억 원 규모의 손해배상 청구 소송 1심에서 원고 패소 판결이 나왔다.",
+        "방송인 박수홍(56) 씨가 친형 부부를 상대로 낸 손해배상청구 소송에서 패소했다.",
+        "13일 서울서부지법 민사합의12부(김진영 부장판사)는 박수홍 씨가 친형 박진홍(58) 씨와 형수 이모(55) 씨를 상대로 낸 손해배상청구소송...",
+        "방송인 박수홍(56)씨가 친형 부부를 상대로 제기한 98억원 상당의 손해배상 청구 소송 1심에서 패소했다.",
+        "서울서부지법 민사합의12부(김진영 부장판사)는 13일 박수홍씨가 친형 박진홍(58)씨와 형수 이모(55)씨를 상대로 낸..."
+      ],
+      "sources": [
+        {
+          "press": "view.asiae.co.kr",
+          "title": "\"비난받아 마땅하나\" 박수홍, 친형 부부에 98억 원 청구했지만 패소",
+          "url": "https://n.news.naver.com/mnews/article/277/0005842452?sid=102"
+        },
+        {
+          "press": "dt.co.kr",
+          "title": "“비난 받아야 마땅하지만…” 박수홍, 친형 부부 상대 98억 손배소 패소",
+          "url": "https://n.news.naver.com/mnews/article/029/0003058988?sid=102"
+        },
+        {
+          "press": "stoo.com",
+          "title": "박수홍, 친형 상대 98억 손배소 1심 패소…法 \"배상 책임 인정 어려워\" ...",
+          "url": "http://www.stoo.com/article.php?aid=109887273924"
+        },
+        {
+          "press": "sportsseoul.com",
+          "title": "‘친형 형사처벌 났는데 왜?’…박수홍, 98억 원대 손배소 1심 패소",
+          "url": "https://m.entertain.naver.com/article/468/0001280804"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "방송인 박수홍이 친형 부부를 상대로 제기한 98억 원 규모의 손해배상 청구 소송 1심에서 원고 패소 판결이 나왔다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "13일 서울서부지법 민사합의12부는 박수홍이 친형 부부를 상대로 낸 손해배상 청구 소송에서 원고 패소 판결을 내렸다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "방송인 박수홍(56) 씨가 친형 부부를 상대로 낸 손해배상청구 소송에서 패소했다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "1심 패소 판결이 나오면서 그간의 형사 처벌 논의와는 별개로 민사상 배상 책임은 인정되지 않았다는 점이 명확해졌다. 이에 따라 법원의 판단 기준에 대한 대중의 비판적 해석이 잇따르고 있다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ie20c1393",
+      "title": "젠슨 황 “나는 쓰레기 같은 놈”…완전 ‘딴사람’ 모습으로 무너졌다",
+      "category": "IT",
+      "rank": 1,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "젠슨 황 엔비디아 전 최고경영자가 사임하기 직전 자신을 '인간 쓰레기'라고 자책할 정도로 심리적으로 무너졌다고 블룸버그통신이 13일(현지시간) 보도했다.",
+        "젠슨 황 “난 쓰레기 같은 놈” 무너져…“그녀들이 걱정”",
+        "중국 스파이로 의심받는 여성과의 불륜 스캔들로 사임한 젠슨 황 전 엔비디아 최고경영자(CEO)가 사임 직전...",
+        "매체에 따르면 황 전 CEO는 자신을 “쓰레기 같은 놈(piece of sh--)”이라고 자책하는 등 사실상 모든 것을...",
+        "혼외 관계 논란으로 물러난 젠슨 황 전 엔비디아 최고경영자(CEO)가 사임을 앞두고 자신을 거칠게 비난하며..."
+      ],
+      "sources": [
+        {
+          "press": "동아일보",
+          "title": "젠슨 황 “난 쓰레기 같은 놈” 무너져…“그녀들이 걱정”",
+          "url": "https://n.news.naver.com/article/020/0003762307"
+        },
+        {
+          "press": "joongang.co.kr",
+          "title": "‘자포자기’ 젠슨 황 “난 쓰레기 자책…가장 큰 관심사는 부인”",
+          "url": "https://n.news.naver.com/mnews/article/025/0003565039?sid=104"
+        },
+        {
+          "press": "magazine.hankyung.com",
+          "title": "“쓰레기 같은 인간” 자책…불륜 스캔들로 추락한 ‘AI 황제’ 젠슨 황",
+          "url": "https://magazine.hankyung.com/money/article/202611135603c"
+        },
+        {
+          "press": "한겨레",
+          "title": "젠슨 황 “나는 쓰레기 같은 놈”…완전 ‘딴사람’ 모습으로 무너졌다",
+          "url": "https://n.news.naver.com/article/028/0002832071"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "젠슨 황 엔비디아 전 최고경영자가 사임하기 직전 자신을 '인간 쓰레기'라고 자책할 정도로 심리적으로 무너졌다고 블룸버그통신이 13일(현지시간) 보도했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "원격으로 이어진 이사회는 심야까지 이어졌고 결국 젠슨 황은 사임 밖에 선택지가 없다는 통보를 받았다...."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "블룸버그통신은 현지시간 13일 관계자들을 인용해, 황 전 CEO가 자신을 거칠게..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "no_generic_closing": true
+      }
+    }
+  ]
+}

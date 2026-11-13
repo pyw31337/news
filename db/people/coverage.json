@@ -1,0 +1,140 @@
+{
+ "schema": 1,
+ "updated": "2026-11-13T16:54:18+09:00",
+ "policy": "Counts distinguish roster entries, structured profiles, source-URL-backed timelines, and verified portraits. Portraits require a stable Wikidata or official ID plus a recorded source and license.",
+ "goals": {
+  "tier_1_complete_profiles": 30000,
+  "tier_2_verified_profiles": 150000,
+  "politicians": 3296,
+  "journalists_and_anchors": 5000,
+  "public_culture": 10000,
+  "creators": 3000
+ },
+ "tiers": {
+  "total": 108745,
+  "tier_1": 5582,
+  "tier_2": 66582,
+  "tier_3": 36581
+ },
+ "registry": {
+  "people": 95407,
+  "unique_names": 70363
+ },
+ "by_kind": {
+  "경제": {
+   "roster": 747,
+   "structured_profile": 746,
+   "source_url_timeline": 741
+  },
+  "기타": {
+   "roster": 50202,
+   "structured_profile": 24674,
+   "source_url_timeline": 24660
+  },
+  "문화": {
+   "roster": 2192,
+   "structured_profile": 1511,
+   "source_url_timeline": 1511
+  },
+  "법조": {
+   "roster": 301,
+   "structured_profile": 300,
+   "source_url_timeline": 300
+  },
+  "스포츠": {
+   "roster": 15939,
+   "structured_profile": 2232,
+   "source_url_timeline": 2229
+  },
+  "언론": {
+   "roster": 352,
+   "structured_profile": 349,
+   "source_url_timeline": 349
+  },
+  "연예": {
+   "roster": 11557,
+   "structured_profile": 1532,
+   "source_url_timeline": 1530
+  },
+  "인플루언서": {
+   "roster": 89,
+   "structured_profile": 29,
+   "source_url_timeline": 29
+  },
+  "정치": {
+   "roster": 10446,
+   "structured_profile": 10434,
+   "source_url_timeline": 10427
+  },
+  "학계": {
+   "roster": 3582,
+   "structured_profile": 3578,
+   "source_url_timeline": 3577
+  }
+ },
+ "role_matches": {
+  "presidents": {
+   "roster": 278,
+   "structured_profile": 278,
+   "source_url_timeline": 276
+  },
+  "reporters": {
+   "roster": 353,
+   "structured_profile": 334,
+   "source_url_timeline": 334
+  },
+  "anchors": {
+   "roster": 7,
+   "structured_profile": 4,
+   "source_url_timeline": 4
+  },
+  "broadcasters": {
+   "roster": 329,
+   "structured_profile": 73,
+   "source_url_timeline": 73
+  },
+  "producers_pd": {
+   "roster": 271,
+   "structured_profile": 27,
+   "source_url_timeline": 27
+  },
+  "directors_fd": {
+   "roster": 87,
+   "structured_profile": 30,
+   "source_url_timeline": 30
+  },
+  "writers": {
+   "roster": 1949,
+   "structured_profile": 1265,
+   "source_url_timeline": 1265
+  },
+  "youtubers": {
+   "roster": 107,
+   "structured_profile": 28,
+   "source_url_timeline": 28
+  }
+ },
+ "politicians": {
+  "data_available": true,
+  "roster": 3296,
+  "official_photo_paths": 3262,
+  "photo_gap": 34
+ },
+ "journalists": {
+  "today_profiles": 20,
+  "today_verified_profile_photos": 17,
+  "cumulative_affiliation_records": 307
+ },
+ "portraits": {
+  "verified_wikimedia_or_official": 81,
+  "pending_or_not_available": 3
+ },
+ "wikidata_facts": {
+  "source_linked_profiles": 126,
+  "pending_or_not_available": 0
+ },
+ "next_queue": {
+  "count": 300,
+  "policy": "Tier-1, non-minor, stable Wikidata ID only"
+ }
+}
