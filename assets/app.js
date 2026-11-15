@@ -2534,8 +2534,10 @@ const MASTER_RELATION_NETWORKS = {
     relations: [
       // 1. 가족 및 친인척·사돈 (16명)
       { id: 'ljm_spouse', name: '김혜경', cat: 'family', typ: 'spouse', rel: '배우자 (영부인)', desc: '1966년생 · 숙명여대 피아노과 졸 · 피아니스트 / 대한민국 제21대 대통령 영부인 (공직선거법 및 법인카드 공방, 배우자 검증의 핵심 당사자)', src: '공직자 재산등록 고보 / 공식 인적 기록' },
-      { id: 'ljm_son1', name: '이동호', cat: 'family', typ: 'child', rel: '장남', desc: '1992년생 · 고려대학교 정경대학 행정학과 졸 (자녀 취업 및 사생활 검증 공방 관련)', src: '공직자 재산등록 고보' },
-      { id: 'ljm_son2', name: '이연호', cat: 'family', typ: 'child', rel: '차남', desc: '1993년생 · 고려대학교 정경대학 정외과 졸', src: '공직자 재산등록 고보' },
+      // Wikidata에 직접 연결된 성인 자녀 관계. 사생활 상세·사진은 저장하지 않고
+      // 관계명과 공개 원천 링크만 표시한다(동명이인·민간인 가족 과노출 방지).
+      { id: 'wd:Q134774891', name: '이동호', cat: 'family', typ: 'child', rel: '장남', desc: '1992년생 · 공개 가족관계 원천에 등재된 성인 자녀', src: 'https://www.wikidata.org/wiki/Q12612463' },
+      { id: 'wd:Q134823137', name: '이윤호', cat: 'family', typ: 'child', rel: '차남', desc: '1993년생 · 공개 가족관계 원천에 등재된 성인 자녀', src: 'https://www.wikidata.org/wiki/Q12612463' },
       { id: 'ljm_father', name: '이경희', cat: 'family', typ: 'parent', rel: '부친', desc: '1931~1986 · 삼척 도계광산 광부 · 안동 청소노동자 (유년기 가계 형성 및 성남 이주 배경)', src: '공식 인적 기록' },
       { id: 'ljm_mother', name: '구호명', cat: 'family', typ: 'parent', rel: '모친', desc: '1931~2020 · 성남 상대원시장 공중화장실 청소노동자 (정치적 원체험이자 상대원 텃밭 유대의 뿌리)', src: '공식 인적 기록' },
       { id: 'ljm_bro1', name: '이재국', cat: 'family', typ: 'sibling', rel: '큰형 (장남)', desc: '1950년생 · 성남 거주 (가족사 5남 2녀 중 장남)', src: '공식 인적 기록' },
@@ -2589,7 +2591,7 @@ const MASTER_RELATION_NETWORKS = {
       { a: 'ljm_spouse', b: 'ljm_inlaw_f', typ: 'inlaw', label: '부녀 관계', desc: '김혜경의 부친' },
       { a: 'ljm_spouse', b: 'ljm_inlaw_m', typ: 'inlaw', label: '모녀 관계', desc: '김혜경의 모친' },
       { a: 'ljm_spouse', b: 'ljm_inlaw_bro', typ: 'inlaw', label: '남매 관계', desc: '김혜경의 남동생' },
-      { a: 'ljm_son1', b: 'ljm_son2', typ: 'sibling', label: '형제 관계', desc: '장남과 차남' },
+      { a: 'wd:Q134774891', b: 'wd:Q134823137', typ: 'sibling', label: '형제 관계', desc: '장남과 차남' },
       { a: 'ljm_bro3', b: 'ljm_inlaw_sis', typ: 'spouse', label: '부부 관계', desc: '이재선과 박인복' },
       { a: 'ljm_bro3', b: 'ljm_nephew', typ: 'child', label: '부자 관계', desc: '이재선의 자녀' },
       { a: 'jung_jinsang', b: 'kim_yong', typ: 'staff', label: '참모 라인 공조', desc: '성남시·경기도·중앙당 핵심 참모 투톱' },
@@ -2769,8 +2771,11 @@ function peoplePrivacyGate(g, centerName){
     if(n.id === g.center) return;
     const fam = n.kind === 'family' || n.cat === 'family' || famIds.has(n.id);
     const isPol = n.kind === 'politician' && (n.archived || n.party);
-    if(fam && (!centerPublic || !isPublicFamily(centerName, n.name))) { drop.add(n.id); return; }
-    if(known && PERSONISH.has(n.kind) && !isPol && !isPublicPerson(n.name)) drop.add(n.id);
+    // 직접 Wikidata P40로 확인된 성인 자녀는 이름·관계·출처만 공개한다.
+    // 사진·상세 프로필은 만들지 않으며, 부모·친척·미확인 가족은 기존처럼 숨긴다.
+    const verifiedAdultChild = fam && n.id.startsWith('wd:') && n.typ === 'child';
+    if(fam && !verifiedAdultChild && (!centerPublic || !isPublicFamily(centerName, n.name))) { drop.add(n.id); return; }
+    if(known && PERSONISH.has(n.kind) && !isPol && !isPublicPerson(n.name) && !verifiedAdultChild) drop.add(n.id);
   });
   if(!drop.size) return g;
   return { ...g, nodes: nodes.filter(n => !drop.has(n.id)), edges: edges.filter(e => !drop.has(e.a) && !drop.has(e.b)) };
