@@ -30,6 +30,9 @@ jobs:
         run: |
           args="--hours 24"
           if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event_name }}" = "workflow_run" ] || [ "${{ inputs.apply }}" = "true" ]; then args="$args --apply"; fi
+          # 예약 cron 누락으로 data 브랜치와 collect 실행이 함께 멈춘 경우에도
+          # 원본을 건드리지 않고 collect.yml을 한 번 깨운다.
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event_name }}" = "workflow_run" ] || [ "${{ inputs.apply }}" = "true" ]; then args="$args --recover-stale"; fi
           python3 scripts/workflow_recovery.py $args
       - uses: actions/upload-artifact@v4
         if: always()
