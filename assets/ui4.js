@@ -23,8 +23,8 @@ function draw(){const top=document.querySelector('header.top');if(!top)return;
   const gameW = (window.NBGame && NBGame.lvCard && NBGame.goals) ? `<div class="acm-game">${NBGame.lvCard(true)}${NBGame.goals()}</div>` : '';
   el.innerHTML=`<button type="button" class="acb" aria-label="내 계정" aria-haspopup="true" aria-expanded="false">${t?UF:U}<i class="acb-unread" style="display:${unreadCount?'':'none'}"></i></button>
   <div class="acm-backdrop"></div>
-  <div class="acm" role="menu">
-    <div class="acm-modal-hd"><span class="acm-modal-title">마이페이지</span><button type="button" class="acm-modal-x" aria-label="닫기">✕</button></div>
+  <div class="acm" role="dialog" aria-modal="true" aria-labelledby="acm-title">
+    <div class="acm-modal-hd"><span id="acm-title" class="acm-modal-title">마이페이지</span><button type="button" class="acm-modal-x" aria-label="닫기">✕</button></div>
     ${alertsHTML}
     <div class="ach">${UF}<div><b>${t?(({kakao:'카카오',naver:'네이버'})[p]||'구글')+' 계정':'게스트 독자'}</b><small class="${t?'ok':'guest'}">${t?'로그인됨':'로그인하고 기록 보관하기'}</small></div></div>
     ${gameW}
