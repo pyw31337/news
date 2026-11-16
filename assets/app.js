@@ -490,7 +490,7 @@ const ourl=o=>{if(Array.isArray(o))o.forEach(ourl);else if(o&&typeof o==='object
 let FULL=null;
 function fullData(){return FULL||(FULL=fetch('data/today.json?'+Date.now()).then(r=>r.json()).then(F=>{ourl(F);const m={};(F.entities||[]).forEach(e=>m[e.name]=e.timeline);D.entities.forEach(e=>{if(m[e.name])e.timeline=m[e.name]});if(F.reporters)D.reporters=F.reporters;D.lite=0}).catch(()=>{D.lite=0}))}
 async function load(){
-  let r=null;try{r=await fetch('data/today_lite.json?'+Date.now())}catch(e){}
+  let r=null;try{r=await fetch('data/today_lite.json',{cache:'no-cache'})}catch(e){}
   if(!r||!r.ok)r=await fetch('data/today.json?'+Date.now());
   D=await r.json();ourl(D);
   try{G=await (await fetch('data/global.json?'+Date.now())).json()}catch(e){G=null}
