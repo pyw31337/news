@@ -29,9 +29,58 @@ def main():
     if not page: return 0
     issues = json.loads(page).get('issues') or []
     R = load_reporters_module()
-    rows = R.collect(issues, tempfile.mkdtemp(), dt.datetime.now(dt.timezone.utc), get, limit=20)
+    rows = R.collect(issues, tempfile.mkdtemp(), dt.datetime.now(dt.timezone.utc), get, limit=80)
     fresh = [r for r in rows if r.get('today')]
     if not fresh: log('no fresh bylines (%d issues), skip' % len(issues)); return 0
+
+    # 로컬 data 클론이 존재하면 reporters_local.json 및 elite_network.json을 동시 갱신
+    local_data_dir = os.path.join(HERE, '..', 'news', 'data')
+    if os.path.isdir(local_data_dir):
+        try:
+            local_rl_path = os.path.join(local_data_dir, 'reporters_local.json')
+            with open(local_rl_path, 'w', encoding='utf-8') as f:
+                json.dump(dict(updated=dt.datetime.now(KST).isoformat(timespec='seconds'), source='mac-mini', reporters=fresh), f, ensure_ascii=False, indent=2)
+
+            local_en_path = os.path.join(local_data_dir, 'elite_network.json')
+            if os.path.isfile(local_en_path):
+                with open(local_en_path, 'r', encoding='utf-8') as f:
+                    en = json.load(f)
+                j_dict = en.setdefault('journalists', {})
+                for r in fresh:
+                    name = r.get('name')
+                    if not name: continue
+                    press = r.get('press', '')
+                    focus = r.get('stats', {}).get('focus', '')
+                    role_title = f"{press} {focus} 기자".strip() if (press and focus) else (f"{press} 기자" if press else "언론인")
+                    if name not in j_dict:
+                        j_dict[name] = {
+                            'name': name,
+                            'kind': 'reporter',
+                            'role': role_title,
+                            'org': press,
+                            'birth': '',
+                            'military': '',
+                            'schools': [],
+                            'exams': [],
+                            'photo': r.get('photo', ''),
+                            'profile': r.get('profile', ''),
+                            'office_id': r.get('office_id', ''),
+                            'journalist_id': r.get('journalist_id', ''),
+                            'tier': 2
+                        }
+                    else:
+                        if r.get('photo') and not j_dict[name].get('photo'):
+                            j_dict[name]['photo'] = r['photo']
+                        if r.get('profile') and not j_dict[name].get('profile'):
+                            j_dict[name]['profile'] = r['profile']
+                en.setdefault('counts', {})['reporter'] = len(j_dict)
+                en['updated'] = dt.datetime.now(KST).isoformat(timespec='seconds')
+                with open(local_en_path, 'w', encoding='utf-8') as f:
+                    json.dump(en, f, ensure_ascii=False, indent=2)
+                log('local data updated: %d reporters in elite_network' % len(j_dict))
+        except Exception as e:
+            log('local data update deferred: %s' % e)
+
     body = json.dumps(dict(updated=dt.datetime.now(KST).isoformat(timespec='seconds'), source='mac-mini', reporters=fresh), ensure_ascii=False, separators=(',', ':'))
     digest = lambda rs: hashlib.sha1(json.dumps([(r['id'], r.get('today'), r.get('issues')) for r in rs], ensure_ascii=False).encode()).hexdigest()
     code, out, _ = gh('repos/%s/contents/%s?ref=%s' % (REPO, PATH, BRANCH))

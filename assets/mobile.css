@@ -13,6 +13,18 @@
 
   /* 모바일 2단 컬럼 모듈: 증시·환율(4개 2x2), 인물 그리드, 트렌드 */
   .stats,.trends,.pgrid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:8px !important}
+
+  /* 인물 도시에 및 관계도·경력 모바일 390px 반응형 최적화 */
+  .pol-family-grid{grid-template-columns:minmax(0,1fr) !important;gap:8px !important}
+  .pol-family-card{padding:10px 12px;gap:10px}
+  .pol-career-item{padding:8px 10px;gap:8px}
+  .pci-symbol{width:26px;height:26px}
+  .pci-title{font-size:.82rem;word-break:keep-all;overflow-wrap:break-word}
+  .pci-title-row{gap:4px}
+  .dossier-sec-head{flex-direction:column;align-items:flex-start;gap:6px}
+  .dsh-title{font-size:1.05rem !important}
+  .dsh-note{align-self:flex-start;margin-top:2px}
+  .arc-gwrap{height:340px;max-height:360px}
 }
 
 /* 태블릿부터 TOP 카드의 배경과 본문 폭을 같은 한 열로 고정한다. */
