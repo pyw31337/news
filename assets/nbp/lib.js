@@ -123,8 +123,28 @@ const NB = (() => {
   const showTip = (el, point) => {
     const text = el?.dataset?.tip;
     if (!text) return;
-    if (!tipEl) { tipEl = document.createElement('aside'); tipEl.id = 'nb-tip'; tipEl.className = 'nb-tip'; tipEl.setAttribute('role', 'tooltip'); document.body.append(tipEl); }
+    if (!tipEl) {
+      tipEl = document.createElement('aside');
+      tipEl.id = 'nb-tip';
+      tipEl.className = 'nb-tip';
+      tipEl.setAttribute('role', 'tooltip');
+      document.body.append(tipEl);
+    }
     tipEl.replaceChildren();
+
+    // 우측 상단 X 닫기 버튼 탑재 (모바일 터치 및 데스크톱 공통 닫기 지원)
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'nb-tip-close';
+    closeBtn.setAttribute('aria-label', '닫기');
+    closeBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+    closeBtn.onclick = (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      hideTip();
+    };
+    tipEl.append(closeBtn);
+
     const thumb = el.dataset.thumb;
     if (thumb) { const img = document.createElement('img'); img.src = thumb; img.alt = ''; img.loading = 'lazy'; tipEl.append(img); tipEl.classList.add('has-thumb'); }
     else tipEl.classList.remove('has-thumb');
@@ -136,18 +156,96 @@ const NB = (() => {
       text.split('\n').filter(Boolean).forEach((line, i) => { const n = document.createElement(i ? 'span' : 'b'); n.textContent = line; body.append(n); });
     }
     tipEl.append(body); tipEl.hidden = false; tipFor = el;
-    const r = el.getBoundingClientRect(), x = point?.clientX ?? r.left + r.width / 2, y = point?.clientY ?? r.bottom + 10;
+
+    const r = el.getBoundingClientRect();
     const w = tipEl.offsetWidth || 340, h = tipEl.offsetHeight || 64;
-    tipEl.style.left = Math.max(12, Math.min(innerWidth - w - 12, x - w / 2)) + 'px';
-    let topPos = y;
+    const isMobile = window.innerWidth <= 640;
+
+    if (isMobile) {
+      // 모바일에서는 화면 중앙(좌우 12px 균등 여백)에 배치하여 절대 잘리지 않도록 함
+      tipEl.style.left = '12px';
+      tipEl.style.right = '12px';
+      tipEl.style.width = 'calc(100vw - 24px)';
+      tipEl.style.maxWidth = 'calc(100vw - 24px)';
+    } else {
+      tipEl.style.removeProperty('right');
+      tipEl.style.removeProperty('max-width');
+      tipEl.style.width = '';
+      const x = point?.clientX ?? r.left + r.width / 2;
+      tipEl.style.left = Math.max(12, Math.min(innerWidth - w - 12, x - w / 2)) + 'px';
+    }
+    let topPos = (point?.clientY ?? r.bottom + 10);
     if (topPos + h > innerHeight - 12) {
       topPos = Math.max(12, r.top - h - 10);
     }
     tipEl.style.top = topPos + 'px';
   };
   const pair = (el, on) => { const key = el?.closest('[data-pair]')?.dataset.pair; if (key) document.querySelectorAll(`[data-pair="${CSS.escape(key)}"]`).forEach(x => x.classList.toggle('is-focus', on)); };
+
+  /* 마우스 드래그 & 터치 스와이프 가로 스크롤 (Drag-to-Scroll) */
+  const enableDragScroll = (el) => {
+    if (!el || el._dragBound) return;
+    el._dragBound = true;
+    let isDown = false, startX = 0, scrollLeft = 0, isDragging = false;
+    el.classList.add('is-drag-scrollable');
+
+    el.addEventListener('mousedown', e => {
+      if (e.button !== 0) return;
+      isDown = true;
+      isDragging = false;
+      startX = e.pageX - el.offsetLeft;
+      scrollLeft = el.scrollLeft;
+    });
+
+    const onMove = e => {
+      if (!isDown) return;
+      const x = e.pageX - el.offsetLeft;
+      const walk = (x - startX);
+      if (Math.abs(walk) > 4) {
+        if (!isDragging) {
+          isDragging = true;
+          el.classList.add('is-dragging');
+        }
+        el.scrollLeft = scrollLeft - walk;
+      }
+    };
+
+    const onUp = () => {
+      if (!isDown) return;
+      isDown = false;
+      setTimeout(() => el.classList.remove('is-dragging'), 0);
+      if (isDragging) {
+        const prevent = ev => { ev.stopPropagation(); ev.preventDefault(); };
+        el.addEventListener('click', prevent, { capture: true, once: true });
+        setTimeout(() => el.removeEventListener('click', prevent, { capture: true }), 50);
+      }
+    };
+
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('blur', onUp);
+  };
+
+  const initDragScroll = (root = document) => {
+    const sel = '.seg, .toc--bar, .acards, .chips, .filters, .top nav, .tbl-w, [data-drag-scroll]';
+    root.querySelectorAll(sel).forEach(enableDragScroll);
+  };
+
   /* 상호작용: 펼치기, 세그먼트 필터, 그래프/행 툴팁 */
   const bind = (root = document) => {
+    initDragScroll(root);
+
+    if (!root._dragObserver && window.MutationObserver) {
+      root._dragObserver = new MutationObserver(mutations => {
+        for (const m of mutations) {
+          if (m.type === 'childList' && m.addedNodes.length) {
+            initDragScroll(root);
+          }
+        }
+      });
+      root._dragObserver.observe(root === document ? document.body : root, { childList: true, subtree: true });
+    }
+
     root.addEventListener('click', ev => {
       const b = ev.target.closest('.exp-b');
       if (b) { const x = b.parentElement, o = !x.classList.contains('is-open'); x.classList.toggle('is-open', o); b.setAttribute('aria-expanded', o); x.querySelector('.exp-c').hidden = !o; return; }
@@ -158,7 +256,28 @@ const NB = (() => {
     root.addEventListener('pointerout', ev => { const el = ev.target.closest('[data-tip],[data-pair]'); if (!el || el.contains(ev.relatedTarget)) return; pair(el, false); const tip = el.closest('[data-tip]'); if (tip === tipFor) hideTip(); });
     root.addEventListener('focusin', ev => { const el = ev.target.closest('[data-tip],[data-pair]'); if (!el) return; pair(el, true); const tip = el.closest('[data-tip]'); if (tip) showTip(tip); });
     root.addEventListener('focusout', ev => { const el = ev.target.closest('[data-tip],[data-pair]'); if (!el || el.contains(ev.relatedTarget)) return; pair(el, false); if (el.closest('[data-tip]') === tipFor) hideTip(); });
-    root.addEventListener('pointerdown', ev => { if (ev.pointerType !== 'touch') return; const tip = ev.target.closest('[data-tip]'); if (tip && !tip.closest('a')) { if (tipFor === tip) hideTip(); else showTip(tip, ev); } });
+
+    // 툴팁 외부 터치/클릭 닫기 및 모바일 터치 이벤트
+    root.addEventListener('pointerdown', ev => {
+      if (ev.target.closest('.nb-tip-close')) return;
+      if (tipEl && !tipEl.hidden) {
+        if (!tipEl.contains(ev.target) && !ev.target.closest('[data-tip]')) {
+          hideTip();
+        }
+      }
+      if (ev.pointerType !== 'touch') return;
+      const tip = ev.target.closest('[data-tip]');
+      if (tip) {
+        if (tipFor === tip) {
+          hideTip();
+        } else {
+          showTip(tip, ev);
+          if (tip.dataset.tipHtml || tip.classList.contains('pchip') || !tip.closest('a')) {
+            if (tip.closest('a')) ev.preventDefault();
+          }
+        }
+      }
+    });
     root.addEventListener('keydown', ev => { if (ev.key === 'Escape') hideTip(); });
   };
   /* 부호 있는 금액(천원) */
