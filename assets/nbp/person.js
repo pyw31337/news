@@ -969,6 +969,7 @@
       </div>`;
     }).join('');
   };
+  const hotQuotes = (Q || []).filter(q => q.hot || q.heat).slice(0, 10);
   const speechTabs = [
     ['타임라인 비교', speechAgendas.length || Q.length],
     ['주요 화제 발언', hotQuotes.length || Math.min(6, Q.length)],
