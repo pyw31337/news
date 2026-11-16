@@ -79,8 +79,19 @@
 <script defer src="assets/voice.js?v=202611100937"></script>
 <script defer src="assets/nb2.js?v=202611100937"></script>
 <script defer src="assets/gicons.js?v=202611100937"></script>
-<script async src="assets/game.js?v=202611100937"></script>
-<script async src="assets/game2.js?v=202611100937"></script>
+<script>
+/* 게임 기능은 홈 첫 화면의 핵심 경로가 아니므로 초기 메인 스레드를 차단하지 않는다.
+   게임·퀴즈 화면에서는 즉시, 그 외 화면에서는 브라우저 idle 시 순차 로드한다. */
+(function(){
+  var base='assets/', ver='?v=202611100937';
+  function add(src){return new Promise(function(resolve,reject){var s=document.createElement('script');s.src=base+src+ver;s.onload=resolve;s.onerror=reject;document.head.appendChild(s)})}
+  function load(){add('game.js').then(function(){return add('game2.js')}).catch(function(){})}
+  var critical=/\/(games|quiz)(?:\/|$)/.test(location.pathname);
+  if(critical) load();
+  else if('requestIdleCallback' in window) requestIdleCallback(load,{timeout:3500});
+  else setTimeout(load,2500);
+})();
+</script>
 </body>
 </html>
 <!-- rebuild Thu Oct 29 18:43:39 UTC 2026 -->
