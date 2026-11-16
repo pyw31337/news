@@ -1404,6 +1404,14 @@ a.mk{color:inherit;text-decoration:none;cursor:pointer;transition:transform .15s
 .pol-seg-btn.on.s3 .seg-cnt{background:#fee2e2;color:#991b1b}
 .pol-seg-btn.on.s4 .seg-cnt{background:#f3e8ff;color:#6b21a8}
 
+/* 통합 기록·주제별 발언 비교 */
+.record-badge{display:inline-flex;align-items:center;vertical-align:middle;margin-right:6px;padding:2px 6px;border-radius:999px;font-size:.66rem;font-weight:800;line-height:1.2;white-space:nowrap;background:#eef2f7;color:#475569}
+.record-badge.rb-incident{background:#fff1f2;color:#be123c}.record-badge.rb-ruling{background:#f3e8ff;color:#7e22ce}.record-badge.rb-report{background:#e8f1ff;color:#1d4ed8}
+.quote-topic-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.quote-topic-fold{border-top:1px solid var(--line);padding:9px 0}.quote-topic-fold summary{display:flex;align-items:center;gap:9px;cursor:pointer;list-style:none}.quote-topic-fold summary::-webkit-details-marker{display:none}.quote-topic-fold summary b{color:#1d4ed8}.quote-topic-fold summary span{font-size:.75rem;color:var(--mute);margin-right:auto}.quote-topic-fold summary svg{transition:transform .2s}.quote-topic-fold[open] summary svg{transform:rotate(180deg)}
+.quote-topic-list{margin:8px 0 0 10px;padding:0 0 0 14px;border-left:2px solid #dbeafe;display:grid;gap:7px}.quote-topic-list li{display:grid;grid-template-columns:90px minmax(0,1fr);gap:8px;align-items:baseline}.quote-topic-list time{font-size:.74rem;color:var(--mute)}.quote-topic-list a{color:var(--ink);font-weight:700;text-decoration:none}.quote-topic-list a:hover{text-decoration:underline}.quote-topic-list small{grid-column:2;color:var(--mute);font-size:.7rem}
+.vdup{display:inline-flex;margin-left:5px;font-size:.68rem;color:#64748b;font-weight:700}.ve-group{display:block}.vdup-fold{margin:4px 0 0 24px;font-size:.72rem;color:#64748b}.vdup-fold summary{cursor:pointer}.vdup-item{display:block;padding:4px 8px;color:#475569;text-decoration:none;border-left:2px solid #e2e8f0;margin-top:3px}.vdup-item:hover{color:#1d4ed8}
+
 .pol-ilist{list-style:none;display:grid;gap:9px;padding:0;margin:8px 0 0}
 .pol-ilist li{font-size:.85rem}
 .pol-ilist em{font-style:normal;font-size:.68rem;font-weight:800;padding:2px 7px;border-radius:6px;margin-right:6px}

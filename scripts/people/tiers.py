@@ -3,7 +3,8 @@
 
 1계층(공인·핵심 인물): 우리 서버에 전부 보관(프로필·사진·타임라인·관계).
 2계층(준공인): 프로필은 보관, 나머지는 외부 링크.
-3계층(민간인·미확인): 외부 링크 + 최소 필드(이름·분야·출처)만. 사진 저장 금지, 가족·관계 추론 금지,
+3계층(민간인·미확인): 외부 링크 + 최소 필드(이름·분야·출처)만. 포털 기사에서 반복 확인된 인물도 이 범위로 누적 관리하되,
+                     사진 저장 금지, 가족·관계 추론 금지,
                      공개 관계도에서 제외(뉴스에 반복 등장하면 점수가 올라 자동 승격).
 
 점수(0~100) = 직위·직업(0~40) + 뉴스 언급(0~35, 60일 반감) + 관심도(0~20, 위키 언어판 수) + 관계 중심성(0~10)
@@ -233,6 +234,8 @@ for s, p, parts, minor in scored:
     state[pid] = [t, since, below]
     counts[t] += 1
     rec = dict(t=t, s=s, n=p['n'], k=p['kind'] or '기타', p=parts)
+    if any(str(src).startswith('news:discovered') for src in p.get('src', ())):
+        rec['scope'] = 'portal-minimal'
     if p['off_why']:
         rec['o'] = p['off_why']
     if minor:

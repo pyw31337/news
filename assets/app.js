@@ -842,8 +842,12 @@ function vtl(el,items,z,limit=4,personName=''){
     const avgBuzz=counts.reduce((s,v)=>s+v,0)/(counts.length||1);
 
     el.innerHTML=slice.map(({k,a})=>{
-      const s=a.slice().sort((p,q)=>(q.related||0)-(p.related||0));
-      const leads=s.slice(0,2).map(x=>esc(x.title)).join(' · '),more=Math.max(0,s.length-2);
+      const rawSorted=a.slice().sort((p,q)=>(q.related||0)-(p.related||0));
+      // 제목이 같은 기사는 대표 1건만 요약하고 나머지는 접힌 상세 목록으로 묶는다.
+      const groups=[];const gidx=new Map();
+      rawSorted.forEach(x=>{const k=String(x.title||'').replace(/\[[^\]]+\]|\([^)]*\)|[^가-힣A-Za-z0-9]/g,'').slice(0,90);if(gidx.has(k))groups[gidx.get(k)].items.push(x);else{gidx.set(k,groups.length);groups.push({rep:x,items:[x]})}});
+      const s=groups.map(g=>({...g.rep, _groupCount:g.items.length, _groupItems:g.items}));
+      const leads=s.slice(0,2).map(x=>esc(x.title)).join(' · '),more=Math.max(0,s.length-2),dupGroups=groups.filter(g=>g.items.length>1).length;
       const buzz=a.length;
       const isAboveAvg=buzz>avgBuzz && maxBuzz>1;
       const isPeak=buzz===maxBuzz && maxBuzz>1;
@@ -883,7 +887,7 @@ function vtl(el,items,z,limit=4,personName=''){
           <div class="vg-single-article">
             <a class="ve is-single ${x.related>2?'big':''}" href="${esc(x.url)}" target="_blank" rel="noopener">
               ${x.img ? `<span class="vth" ${bg(x.img)}></span>` : ''}
-              <span class="vsum ${textClass}" style="${customStyle};display:block;margin-bottom:4px">${esc(x.title)}</span>
+              <span class="vsum ${textClass}" style="${customStyle};display:block;margin-bottom:4px">${recordBadge(x)}${esc(x.title)}</span>
               <span class="meta">${pp(x.press,x.url)}${ts(x.t)}${x.related>1?cnt('+'+x.related,'','묶음 기사'):''}</span>
             </a>
           </div>
@@ -902,15 +906,15 @@ function vtl(el,items,z,limit=4,personName=''){
         </h4>
         <details class="vg-fold">
           <summary class="vg-summary">
-            <p class="vsum ${textClass}" style="${customStyle}">${leads}${more?` <span class="vmore">외 ${more}건</span>`:''}</p>
+            <p class="vsum ${textClass}" style="${customStyle}">${recordBadge(s[0])}${leads}${more?` <span class="vmore">외 ${more}건</span>`:''}${dupGroups?` <span class="vdup">유사 기사 ${dupGroups}묶음</span>`:''}</p>
             <span class="vg-arrow" aria-label="기사 목록 펼치기/접기">${NBI('chevron-down')}</span>
           </summary>
           <div class="vg-articles">
-            ${s.map((x,j)=>`<a class="ve ${j===0&&x.related>2?'big':''}" href="${esc(x.url)}" target="_blank" rel="noopener">
+            ${s.map((x,j)=>`<div class="ve-group"><a class="ve ${j===0&&x.related>2?'big':''}" href="${esc(x.url)}" target="_blank" rel="noopener">
               ${x.img&&j<2?`<span class="vth" ${bg(x.img)}></span>`:''}
-              ${esc(x.title)}
+              ${recordBadge(x)}${esc(x.title)}
               <span class="meta">${pp(x.press,x.url)}${ts(x.t)}${x.related>1?cnt('+'+x.related,'','묶음 기사'):''}</span>
-            </a>`).join('')}
+            </a>${x._groupCount>1?`<details class="vdup-fold"><summary>같은 제목 ${x._groupCount}건 더 보기</summary>${x._groupItems.slice(1).map(y=>`<a class="ve vdup-item" href="${esc(y.url)}" target="_blank" rel="noopener">${esc(y.press||'언론사')} · ${esc(y.title)}</a>`).join('')}</details>`:''}</div>`).join('')}
           </div>
         </details>
       </div>`;
@@ -1123,6 +1127,22 @@ const ARC_REL={
 };
 const ARC_TYP={birth:['출생','#8b6cf0','confetti'],edu:['학업','#2a9d8f','school'],military:['병역','#495057','shield'],career:['경력','#5b7fa6','building'],office:['공직','#3b5bdb','star-f'],election:['선거','#1f5bd8','circle-check'],party:['정당','#f08c00','repeat'],award:['수상','#e0a800','trophy'],family:['가족','#d6336c','heart-f'],assets:['재산','#2f9e44','currency-won'],allegation:['의혹·사건','#e03131','alert-triangle'],ruling:['판결','#862e9c','landmark'],news:['보도','#868e96','news']};
 const ARC_STAGES=['출생·성장','학업','병역','사회 경력','정치 활동','재산','논란·사법','언론 보도'];
+
+/* 보도·사건 기록을 한 타임라인에서 다루기 위한 공통 분류.
+   분류명은 UI 배지와 세그먼트 필터에서 함께 사용한다. */
+function recordKind(x){
+  const t=String(x?.typ||x?.type||'').toLowerCase();
+  const s=String(x?.status||x?.stage||'').toLowerCase();
+  if(t==='ruling'||/판결|선고|확정/.test(`${t} ${s}`)) return 'ruling';
+  if(t==='allegation'||/의혹|사건|사고|수사|기소|재판/.test(`${t} ${s}`)) return 'incident';
+  if(t==='news'||/보도|기사|언론/.test(`${t} ${s}`)) return 'report';
+  return 'other';
+}
+function recordBadge(x){
+  const k=recordKind(x);
+  const labels={incident:'사건사고',ruling:'판결',report:'보도',other:'기록'};
+  return `<span class="record-badge rb-${k}" title="${k==='incident'?'사실 단계와 무관한 관련 보도':k==='ruling'?'공식 판결·선고 기록':'관련 기사 기록'}>${labels[k]}</span>`;
+}
 
 /* 에디토리얼 대시보드 전용 미니멀 라인 SVG 벡터 아이콘 (이모지 완전 대체) */
 function dossierSvg(name, size=16, cls=''){
@@ -4144,6 +4164,20 @@ function renderActivitySection(p, c){
   </section>`;
 }
 
+function quoteTopicGroups(quotes, topWords){
+  const stop=new Set('그리고 그러나 대한 관련 오늘 당시 통해 정부 사람 발언 말했다 밝혔다 기자'.split(' '));
+  const words=(topWords||[]).map(x=>String(x[0]||'')).filter(w=>w.length>=2);
+  const groups=new Map();
+  (quotes||[]).forEach(q=>{
+    const text=String(q.quote||'');
+    const tokens=[...new Set((text.match(/[가-힣A-Za-z]{2,8}/g)||[]).filter(w=>!stop.has(w)))];
+    const key=words.find(w=>text.includes(w))||tokens.sort((a,b)=>b.length-a.length)[0]||'단발 발언';
+    const g=groups.get(key)||{key,items:[]};g.items.push(q);groups.set(key,g);
+  });
+  return [...groups.values()].map(g=>{g.items.sort((a,b)=>String(a.date||'').localeCompare(String(b.date||'')));return g})
+    .sort((a,b)=>{const span=x=>x.items.length>1?(new Date(x.items.at(-1).date)-new Date(x.items[0].date))/864e5:0;return (b.items.length*10+span(b))-(a.items.length*10+span(a))});
+}
+
 function renderQuotesSection(p, id){
   const md=p?.media;
   const quotesList = (md?.quotes && md.quotes.length) ? md.quotes : (p?.quotes || []);
@@ -4181,6 +4215,15 @@ function renderQuotesSection(p, id){
     }
     return { ...q, score: finalScore, thumbImg };
   });
+
+  // 과거-현재의 관점 변화를 볼 수 있도록 반복 주제를 먼저 배치한다.
+  const topicGroups=quoteTopicGroups(scoredQuotes, topWords);
+  const longitudinal=topicGroups.filter(g=>g.items.length>=2);
+  const oneOff=topicGroups.filter(g=>g.items.length<2).flatMap(g=>g.items);
+  const topicHtml=longitudinal.slice(0,6).map(g=>`<details class="quote-topic-fold" open>
+    <summary><b>#${esc(g.key)}</b><span>${g.items.length}개 발언 · 과거→현재 흐름</span>${dossierSvg('chevron-down',13)}</summary>
+    <ol class="quote-topic-list">${g.items.map(q=>`<li><time>${esc(fDate(q.date))}</time><a href="${esc(q.url||'#')}" target="_blank" rel="noopener">“${esc(q.quote)}”</a><small>${esc(q.press||'출처')} · 화제 ${q.score}</small></li>`).join('')}</ol>
+  </details>`).join('');
 
   const scores = scoredQuotes.map(x => x.score);
   const maxBuzz = scores.length ? Math.max(...scores) : 70;
@@ -4229,6 +4272,7 @@ function renderQuotesSection(p, id){
       </div>
       <span class="dsh-note">화제성 높은 보도 우선 하이라이트</span>
     </div>
+  ${topicHtml?`<div class="card pad quote-topics"><div class="quote-topic-head"><h3 style="margin:0">주제별 발언 비교</h3><span class="pol-press-subtag">반복 주제가 있는 발언을 우선 정렬했어요</span></div>${topicHtml}</div>`:''}
   ${quotesHtml ? `
   <div class="card pad" style="margin-top:10px">
     <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:12px">
@@ -5347,7 +5391,7 @@ function renderEntityDashboard(n, e, preloadedRes){
         <div class="dossier-sec-head">
           <div class="dsh-left">
             <span class="dsh-kicker">DOSSIER 08 / NEWS & MEDIA ARCHIVE</span>
-            <h3 class="dsh-title">${dossierSvg('news', 18)} 시대별 보도량 및 실시간 뉴스 타임라인</h3>
+            <h3 class="dsh-title">${dossierSvg('news', 18)} 보도·사건 통합 기록 타임라인</h3>
           </div>
           <span class="dsh-note">뉴스 수집 및 분석 아카이브</span>
         </div>
@@ -5366,7 +5410,13 @@ function renderEntityDashboard(n, e, preloadedRes){
               <span id="etl-filter-text"></span>
               <button type="button" id="etl-filter-reset" style="border:none;background:#2563eb;color:#fff;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;cursor:pointer">전체 기간 보기</button>
             </div>
-            <div style="margin-bottom:12px">${sec(esc(e.name)+' 뉴스 타임라인','Timeline','<div class="zoom" id="tz"><button data-z="hour">시간</button><button data-z="day" class="on">일</button><button data-z="month">월</button><button data-z="year">시대</button></div>','clock')}</div>
+            <div style="margin-bottom:12px">${sec(esc(e.name)+' 기록 타임라인','Timeline','<div class="zoom" id="tz"><button data-z="hour">시간</button><button data-z="day" class="on">일</button><button data-z="month">월</button><button data-z="year">시대</button></div>','clock')}</div>
+            <div class="pol-seg-tabs record-seg-tabs" id="record-seg-tabs" role="tablist" aria-label="기록 유형 필터" style="margin-bottom:12px">
+              <button type="button" class="pol-seg-btn on" data-record="all">전체</button>
+              <button type="button" class="pol-seg-btn" data-record="report">보도</button>
+              <button type="button" class="pol-seg-btn" data-record="incident">사건사고·의혹</button>
+              <button type="button" class="pol-seg-btn" data-record="ruling">판결</button>
+            </div>
             <div class="vt" id="etl"></div>
           </div>
         </details>
@@ -5431,15 +5481,20 @@ function renderEntityDashboard(n, e, preloadedRes){
     });
   };
 
-  const drawT = z => {
+  let recordFilter='all';
+  const drawT = (z, rf=recordFilter) => {
     activeFilterPeriod = null;
     const banner = $('#etl-filter-banner');
     if(banner) banner.style.display = 'none';
-    vtl($('#etl'), z==='hour'?tl.filter(x=>Date.now()-new Date(x.t)<3*864e5):tl, z, z==='year'?6:4, e.name);
+    recordFilter=rf;
+    const src=z==='hour'?tl.filter(x=>Date.now()-new Date(x.t)<3*864e5):tl;
+    const filtered=rf==='all'?src:src.filter(x=>recordKind(x)===rf);
+    vtl($('#etl'), filtered, z, z==='year'?6:4, e.name);
   };
   drawE('month');
   drawT('day');
   $('#tz')&&($('#tz').onclick=ev=>{const z=ev.target.dataset.z;if(!z)return;$('#tz').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===ev.target));drawT(z)});
+  $('#record-seg-tabs')&&($('#record-seg-tabs').onclick=ev=>{const b=ev.target.closest('button[data-record]');if(!b)return;$('#record-seg-tabs').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));drawT(curEz==='hour'?'hour':'day',b.dataset.record)});
 
   const filterResetBtn = document.getElementById('etl-filter-reset');
   if(filterResetBtn){
@@ -5484,6 +5539,22 @@ function renderEntityDashboard(n, e, preloadedRes){
         tlUpdated = true;
       });
     }
+
+    // 사건·사고 데이터도 동일한 기록 피드로 합친다. UI에서는 배지와 세그먼트로 구분하되,
+    // 보도 목록과 별도 섹션으로 중복 노출하지 않는다.
+    const incidentItems=(pDetail?.incidents?.items||[]).map(x=>({
+      t:normTime(x.date||x.t), title:x.title, url:x.url, press:x.press||'', img:x.img||'',
+      typ:/판결|선고|확정/.test(x.stage||'')?'ruling':'allegation', status:/판결|선고|확정/.test(x.stage||'')?'confirmed':'allegation', stage:x.stage||'사건사고'
+    }));
+    incidentItems.forEach(item=>{
+      if(!item.t||!item.title||seenTitles.has(item.title)||(item.url&&seenUrls.has(item.url)))return;
+      seenTitles.add(item.title); if(item.url)seenUrls.add(item.url); tl.push(item); tlUpdated=true;
+    });
+    (aDetail?.events||[]).filter(x=>x.d&&(x.typ==='allegation'||x.typ==='ruling')).forEach(x=>{
+      const item={t:normTime(x.d),title:x.title,url:x.url||'',press:x.src||'',typ:x.typ,status:x.status|| (x.typ==='ruling'?'confirmed':'allegation'),stage:x.stage||''};
+      if(!item.t||!item.title||seenTitles.has(item.title))return;
+      seenTitles.add(item.title); if(item.url)seenUrls.add(item.url); tl.push(item); tlUpdated=true;
+    });
 
     // Merge massive historical news timeline (인물 수십 년 기록 보관소 연동)
     const hDetail = res?.history;
@@ -5578,10 +5649,9 @@ function renderEntityDashboard(n, e, preloadedRes){
       pDetail?.assets?.records?.length?['#sec-assets',`${dossierSvg('assets',14)} 재산 신고`]:null,
       (gDetail||aDetail)?['#sec-network',`${dossierSvg('network',14)} 인물 관계망`]:null,
       pDetail?.media?.quotes?.length?['#sec-quotes',`${dossierSvg('quotes',14)} 주요 발언`]:null,
-      (pDetail?.incidents?.items?.length||aDetail?.events?.some(x=>x.typ==='allegation'||x.typ==='ruling'))?['#sec-incidents',`${dossierSvg('incidents',14)} 사건·사고`]:null,
       (pDetail?.history?.length||aDetail?.events?.some(x=>x.typ==='edu'))?['#sec-career',`${dossierSvg('career',14)} 경력·학력`]:null,
       ['#sec-multisource',`${dossierSvg('search',14)} 다매체 기록`],
-      ['#sec-newstl',`${dossierSvg('news',14)} 뉴스 타임라인`]
+      ['#sec-newstl',`${dossierSvg('news',14)} 보도·사건 기록`]
     ].filter(Boolean);
 
     let html=`
@@ -5603,7 +5673,7 @@ function renderEntityDashboard(n, e, preloadedRes){
     if(pDetail)html+=renderAssetsSection(pDetail,thCol);
     if(pDetail||aDetail||gDetail)html+=renderFamilySection(pDetail||{name:e.name},aDetail,gDetail);
     if(pDetail)html+=renderQuotesSection(pDetail,res.id);
-    if(pDetail||aDetail)html+=renderIncidentsSection(pDetail||{},aDetail);
+    // 사건·사고는 뉴스 타임라인과 통합해 중복 섹션을 만들지 않는다.
     if(pDetail||aDetail)html+=renderCareerSection(pDetail||{},aDetail);
     html+=renderMultiSourceSection(e, pDetail, aDetail);
 
