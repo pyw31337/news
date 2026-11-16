@@ -1,9 +1,68 @@
-# Agent handoff rules
+# Agent Handoff & Operation Guide (NewsBoard)
 
-Before changing automation, read `WORKFLOW_HANDOFF.md` and the canonical private handoff repository: https://github.com/pyw31337/macmini-workflow-handoff
+> **기준 시각:** 2026-11-16 KST  
+> **정본 문서:** `AGENTS.md` (본 문서) 및 `docs/AGENT_HANDOFF.md`  
+> **배포 라이브:** https://pyw31337.github.io/news/ · **저장소:** `pyw31337/news`  
+> **대상 에이전트:** Antigravity · Codex · Gemini · Claude Code · Grok · 로컬 에이전트
 
-When changing `.github/workflows/`, schedules, deployment triggers, secret names, or local scheduler replacements:
-1. Preserve the existing trigger and rollback behavior unless the task explicitly changes it.
-2. Update `WORKFLOW_HANDOFF.md` in this repository.
-3. Update the canonical handoff inventory via its scheduled/manual sync workflow.
-4. Never commit secret values, `.env` files, tokens, cookies, or machine-specific paths.
+어느 에이전트가 투입되더라도 프로젝트 방향성, 최근 완료 작업, 향후 작업, 그리고 절대 지켜야 할 철칙을 즉시 파악하고 일관되게 작업할 수 있도록 이 지침을 숙지해야 합니다.
+
+---
+
+## 1. 최근 완료된 핵심 작업 (2026-11-16 기준)
+
+| 커밋 | 작업 내용 및 UI/데이터 성과 |
+|---|---|
+| `b3f4d64ae2` | **가족 4대 가계 세분화 & 중복 직위 배제 & 김혜경 사진 복구**<br>• 가족 섹터를 `직계가족(배우자·자녀)`, `부모`, `형제자매`, `처가·인척` 4개 독립 컬럼으로 분할.<br>• "같은 직위" 중복 문구를 전면 제거하고 사법연수원 기수차(문재인: 6기수 선배, 윤석열: 5기수 후배, 오세훈: 2기수 선배) 및 직책 부여.<br>• 김혜경 여사 R2 고해상도 WebP 사진 직결 복구. |
+| `a6e8dbc769` | **보도·사건사고 단일화, 중복 기사 폴딩(군집화), 발언 비교 타임라인 전면화**<br>• 일반 사용자 입장에서 모호했던 `사건·사고`와 `보도·기록` 섹터를 하나인 `보도·사건사고`(`s-news`)로 통합.<br>• 세그먼트 탭(`전체`, `사건·사고`, `의혹·논란`, `정책·의정`, `일반 보도`) 및 4대 뱃지(`tag--danger`, `tag--warn`, `tag--info`, `tag--neutral`) 부여.<br>• 48시간 내 동일 사건 보도를 토큰 유사도로 묶고 하단에 `[관련 보도 N건 묶음 (언론사들) ▾]` 접기/펼치기 폴딩 구현.<br>• 단발성 발언 단순 나열을 배제하고, 아젠다별(행정·지방자치, 사법·검찰, 국정·대권, 정당·정치) 과거 시점 ↔ 현재 시점의 입장 변화/일관성 대조 타임라인 카드를 전면 배치. |
+| `146ada1eac` | **런타임 에러 해소 및 방어 로직 강화**<br>• `assets/nbp/lib.js` 모듈 export에 `articleTip` 추가 및 `person.js`에 방어적 널 체크 적용하여 `TypeError: NB.articleTip is not a function`으로 인한 빈 화면 버그 완전 해소 및 브라우저 실사 검증 완료. |
+
+---
+
+## 2. 향후 진행할 작업 목록 (Next Action Roadmap)
+
+1. **타 직군 인물 프로필 및 아젠다 타임라인 확대 적용**
+   - 현재 이재명·윤석열·한동훈 등 주요 정치인 위주로 고도화된 타임라인 및 4대 가계/선후배 인텔리전스를 광역단체장, 주요 부처 장차관, 법조계, 경제계 등 1계층 공인 전반으로 점진적 확대.
+2. **외부 링크 유효성 검증(Link Health Check) 자동화**
+   - 2·3계층 인물 및 기사 원문 링크가 변경·삭제(404)되었는지 주기적으로 검증하는 `scripts/people/linkcheck.py` 모니터링 자동화 및 깨진 링크 자동 폴백 체계 보강.
+3. **포털 검색 및 미디어 노출 인물 3계층 수집 체계 지속 운영**
+   - `scripts/people/tiers.py` 기준:
+     - 1계층(공인): 사진, 프로필, 장기 타임라인, 관계도 서버 직접 보관 (무료 쿼터 내 관리).
+     - 2계층(준공인): 프로필 보관, 나머지는 검증된 외부 링크로 관리.
+     - 3계층(민간인/포털 노출): 외부 링크 + 최소 정보만 관리하되, 미디어 노출 빈도가 높아지면 자동 승격.
+4. **미디어 로고 및 고해상도 초상화 R2 파이프라인 유지**
+   - Wikimedia Commons 및 공인 소스 기반 정당·기관 SVG 엠블럼과 720px WebP 초상화 파이프라인 점검.
+5. **모바일 390px 뷰포트 반응형 UI 지속 감사**
+   - 아젠다 타임라인 카드 및 중복 기사 폴딩 버튼이 모바일 화면(390px)에서 가로 스크롤이나 넘침 없이 쾌적하게 렌더링되는지 확인.
+
+---
+
+## 3. 어느 에이전트든 반드시 지켜야 할 철칙 (Golden Rules)
+
+1. **절대 가짜 데이터를 생성하거나 지어내지 말 것**
+   - 공직자 재산등록, 국회 공보, 검증된 언론 기사 원문, 위키데이터 원본 등 공인된 팩트만 사용.
+   - 데이터가 없으면 솔직하게 빈 상태로 두거나 수집 범위를 넓히며, AI로 인물 이력, 가족 관계, 기사 내용을 임의로 작문(Hallucination)하는 것은 절대 금지.
+2. **중복 데이터 및 무의미한 텍스트 배제**
+   - 롤오버 툴팁이나 관계 칩에 "윤석열 ➔ 윤석열"처럼 이름 단순 반복, "같은 직위" 문구 중복 표기, `...` 말줄임표 남발 금지.
+   - 툴팁은 기본 화면에서 다 보여주지 못한 실질적 정보(선후배 기수차, 상세 학력/연고, 풀텍스트 요약)를 담아야 함.
+3. **에셋 수정 시 캐시 버스팅 및 3개 로컬 저장소 동기화**
+   - `assets/nbp/person.js`, `lib.js`, `components.css` 수정 시 `person/index.html` 내 에셋 파라미터(`?v=YYYYMMDDHHMM`)를 반드시 갱신.
+   - 맥미니 로컬 3개 저장소(`news`, `gov/main`, `pol/src`)에 동일 파일을 동기화 복사하여 로컬 및 브랜치 간 충돌 방지.
+4. **5개 로컬 저장소 Clean 상태 유지**
+   - `news` (main), `gov/main` (main), `pol/src` (main), `news/data` (data), `pol/pdata` (politicians)의 작업 트리는 커밋/푸시 후 항상 `clean` 상태로 유지.
+
+---
+
+## 4. 빠른 운영 및 상태 확인 명령어
+
+```bash
+# 1. 메인 코드 기준 확인
+git fetch origin --prune && git log --oneline -8 origin/main
+
+# 2. 로컬 빌드 및 문법 검증
+npm test
+python3 scripts/validate_project.py
+
+# 3. 배포 워크플로 확인
+gh run list --repo pyw31337/news --workflow "Deploy current site" --limit 3
+```
