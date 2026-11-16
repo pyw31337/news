@@ -187,5 +187,5 @@ const NB = (() => {
   const ym = t => { const d = String(t).slice(0, 7).split('-'); return `${d[0]}년 ${+d[1]}월`; };
   const load = u => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
   const openAll = () => { if (/[?&]open=1/.test(location.search)) document.querySelectorAll('.exp').forEach(x => { x.classList.add('is-open'); x.querySelector('.exp-b').setAttribute('aria-expanded', true); x.querySelector('.exp-c').hidden = false; }); };
-  return { ptl, ticks, href, gz, shard, RAW, BASE, swon, mini, table, grouper, more, HCAT, hrow, ym, toc, spy, vstack, span, gantt, rtree, agroup, esc, cleanText, ic, num, won, eok1, dot, md, ymd, dayLabel, titleClean, EVG, EVI, FILTERS, ERAS, yearOf, sh, facts, stat, exp, seg, pchip, arow, acard, quote, tl, tlItem, era, hbars, vbars, stack, spark, donut, assetParts, voteParts, bind, load, openAll };
+  return { articleTip, ptl, ticks, href, gz, shard, RAW, BASE, swon, mini, table, grouper, more, HCAT, hrow, ym, toc, spy, vstack, span, gantt, rtree, agroup, esc, cleanText, ic, num, won, eok1, dot, md, ymd, dayLabel, titleClean, EVG, EVI, FILTERS, ERAS, yearOf, sh, facts, stat, exp, seg, pchip, arow, acard, quote, tl, tlItem, era, hbars, vbars, stack, spark, donut, assetParts, voteParts, bind, load, openAll };
 })();

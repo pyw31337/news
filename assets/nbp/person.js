@@ -1041,7 +1041,7 @@
   const renderClusterRow = (a, opt = {}) => {
     const dateStr = esc(NB.md(a.t || a.d));
     const title = NB.titleClean(a.title);
-    const tip = NB.articleTip(a);
+    const tip = typeof NB.articleTip === 'function' ? NB.articleTip(a) : cleanText(a.desc || '');
     const tag = a.url ? 'a' : 'div';
     const attrs = a.url ? ` href="${esc(a.url)}" target="_blank" rel="noopener"` : '';
     const badge = a.cat ? catBadge(a.cat) : catBadge(inferCat(a.title));
