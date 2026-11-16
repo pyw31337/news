@@ -27,7 +27,7 @@
   /* 공직자 재산등록·공보 및 검증된 인적사항 기반 가족 레지스트리 */
   const FAMILY_REGISTRY = {
     '이재명': [
-      { name: '김혜경', sub: 'spouse', role: '배우자 · 숙명여대 피아노과', birth: 1966, id: 'wd:Q126683810', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Kim_Hye-kyung_%28cropped%29.jpg/240px-Kim_Hye-kyung_%28cropped%29.jpg', summary: '1991년 결혼 이래 정치 여정을 함께해 온 평생의 반려자', points: [{ label: '결혼 및 가족', val: '1991년 변호사 개업 초기 결혼, 슬하 2남' }, { label: '학력 및 이력', val: '숙명여자대학교 피아노과 85학번' }] },
+      { name: '김혜경', sub: 'spouse', role: '배우자 · 숙명여대 피아노과', birth: 1966, id: 'wd:Q126683810', photo: 'https://newsboard-sync.pyw213.workers.dev/m/people/pt/0d/0db828ae1e6064ec_s.webp', summary: '1991년 결혼 이래 정치 여정을 함께해 온 평생의 반려자', points: [{ label: '결혼 및 가족', val: '1991년 변호사 개업 초기 결혼, 슬하 2남' }, { label: '학력 및 이력', val: '숙명여자대학교 피아노과 85학번' }] },
       { name: '이경희', sub: 'father', role: '부친 (故 영양 이씨)', birth: 1932, death: 1986, id: 'fam:lee_kyung_hee', summary: '이재명 대표의 부친, 안동 삼계국교 교사 역임 후 광산 노무 및 환경미화', points: [{ label: '생몰 연도', val: '1932년 ~ 1986년 (향년 54세)' }, { label: '이력 및 연고', val: '경북 안동 삼계국민학교 교사 역임 후 1976년 가족과 경기 성남 이주' }, { label: '본관', val: '영양 이씨(英陽 李氏)' }] },
       { name: '구호명', sub: 'mother', role: '모친 (故 평산 신씨)', birth: 1931, death: 2020, id: 'fam:koo_ho_myung', summary: '이재명 대표의 모친, 성남 상대원시장 공중화장실 청소 관리 등 헌신', points: [{ label: '생몰 연도', val: '1931년 ~ 2020년 3월 13일 (향년 89세)' }, { label: '헌신 이력', val: '성남 상대원공단 및 시장 환경미화·화장실 관리로 7남매 부양' }, { label: '본관', val: '평산 신씨(平山 申氏)' }] },
       { name: '이동호', sub: 'son', role: '장남 (1992년생)', birth: 1992, id: 'fam:lee_dong_ho', summary: '이재명 대표의 장남으로 고려대학교 졸업', points: [{ label: '출생 및 학력', val: '1992년생 (만 34세) · 고려대학교 정경대학 정경학부 행정학과 졸업' }, { label: '공직자 재산신고', val: '국회공직자윤리위원회 재산공개 등록 대상' }] },
@@ -70,7 +70,10 @@
     const existingIds = new Set(B.rel.map(r => r[0]));
     const existingNames = new Set(B.rel.map(r => (L[r[0]] || [])[0]).filter(Boolean));
     for (const f of FAMILY_REGISTRY[nm]) {
-      L[f.id] = [f.name, 'family', f.role, f.photo || null, 0];
+      const prev = L[f.id];
+      const photo = f.photo || (prev && prev[3]) || null;
+      const hasPage = (prev && prev[4] != null) ? prev[4] : (f.id.startsWith('wd:') ? 1 : 0);
+      L[f.id] = [f.name, 'family', f.role, photo, hasPage];
       if (!existingIds.has(f.id) && !existingNames.has(f.name)) {
         B.rel.push([f.id, 'family', f.sub, 0.95, '공직자 재산등록 및 인적사항 공보', 1]);
         existingIds.add(f.id);
@@ -127,6 +130,7 @@
 
   const CURATED_PAIRS = {
     '이재명:윤석열': {
+      chipLabel: '사법연수원 5기수 후배',
       badge: '2022 대선 맞수 · 사법연수원 5기수 후배',
       summary: '2022년 제20대 대선 0.73%p차 최대 라이벌이자 현 대한민국 정치 권력의 양대 축',
       points: [
@@ -137,6 +141,7 @@
       ]
     },
     '이재명:문재인': {
+      chipLabel: '사법연수원 6기수 선배',
       badge: '사법연수원 6기수 선배 · 대선 경선 경쟁',
       summary: '참여정부 주역과 민선 5·6·7기 성남시장/경기지사로 이어진 정권 내 주요 파트너이자 대선 경쟁자',
       points: [
@@ -147,6 +152,7 @@
       ]
     },
     '이재명:김동연': {
+      chipLabel: '후임 경기도지사',
       badge: '후임 경기도지사 · 대선 후보 단일화',
       summary: '제35대(이재명)와 제36대(김동연) 경기도정을 연속으로 이끈 민주당 소속 광역단체장',
       points: [
@@ -156,6 +162,7 @@
       ]
     },
     '이재명:남경필': {
+      chipLabel: '직전 경기도지사',
       badge: '직전 전임 경기도지사 · 2018 경기지사 맞수',
       summary: '2018년 제7회 지방선거 경기도지사 선거에서 맞붙은 전임과 후임 지자체장',
       points: [
@@ -164,6 +171,7 @@
       ]
     },
     '이재명:김문수': {
+      chipLabel: '전전임 경기도지사',
       badge: '전임 경기도지사',
       summary: '민선 4·5기(김문수)와 민선 7기(이재명) 경기도지사 역임',
       points: [
@@ -172,6 +180,7 @@
       ]
     },
     '이재명:지귀연': {
+      chipLabel: '사법연수원 13기수 후배',
       badge: '사법연수원 13기수 후배',
       summary: '사법연수원 선후배 법조인이자 서울중앙지방법원 부장판사',
       points: [
@@ -180,6 +189,7 @@
       ]
     },
     '이재명:오세훈': {
+      chipLabel: '사법연수원 2기수 선배',
       badge: '사법연수원 8기수 후배 · 수도권 광역단체장 카운터파트',
       summary: '서울시장과 경기도지사로서 수도권 정책을 조율한 주요 여야 대권주자',
       points: [
@@ -189,6 +199,7 @@
       ]
     },
     '이재명:박균택': {
+      chipLabel: '사법연수원 3기수 후배',
       badge: '사법연수원 3기수 후배 · 당대표 법률특보',
       summary: '검찰 고위직 출신으로 이재명 대표의 법률 변호와 당 사법리스크 대응 총괄',
       points: [
@@ -198,6 +209,7 @@
       ]
     },
     '이재명:양부남': {
+      chipLabel: '사법연수원 4기수 후배',
       badge: '사법연수원 4기수 후배 · 당 법률위원장',
       summary: '고검장 출신으로 민주당 법률위원장을 맡아 당 사법 대응을 전담',
       points: [
@@ -206,6 +218,7 @@
       ]
     },
     '이재명:하정우': {
+      chipLabel: '연극영화학 15학번 후배',
       badge: '중앙대학교 연극영화학부 후배 동문',
       summary: '중앙대학교 15학번 터울의 문화예술계 대표 동문',
       points: [
@@ -214,6 +227,7 @@
       ]
     },
     '이재명:김수현': {
+      chipLabel: '연극영화학 27학번 후배',
       badge: '중앙대학교 연극영화학과 후배 동문',
       summary: '중앙대학교 글로벌 스타 후배 동문',
       points: [
@@ -328,6 +342,7 @@
       ]
     },
     '이재명:위근우': {
+      chipLabel: '국어국문학 동문',
       badge: '경원대학교 동문',
       summary: '경원대학교(현 가천대학교) 동문 관계',
       points: [
@@ -336,6 +351,7 @@
       ]
     },
     '이재명:지수원': {
+      chipLabel: '의상학과 동문',
       badge: '경원대학교 동문',
       summary: '경원대학교 동문 관계',
       points: [
@@ -344,6 +360,7 @@
       ]
     },
     '이재명:지윤': {
+      chipLabel: '경원대 동문',
       badge: '경원대학교 동문',
       summary: '경원대학교 동문 관계',
       points: [
@@ -351,6 +368,7 @@
       ]
     },
     '이재명:김남준': {
+      chipLabel: '계양을 정무 파트너',
       badge: '계양을 정무 파트너 · 제22대 국회의원',
       summary: '이재명 대표의 최측근 참모이자 인천 계양구을 기반 정치 파트너',
       points: [
@@ -359,6 +377,7 @@
       ]
     },
     '이재명:최원식': {
+      chipLabel: '연수원 5기 후배 · 19대 의원',
       badge: '인천 계양을 전임 의원 · 사법연수원 5기수 후배',
       summary: '인천 계양구을 제19대 국회의원이자 법조계 후배',
       points: [
@@ -367,6 +386,7 @@
       ]
     },
     '이재명:이상권': {
+      chipLabel: '연수원 4기 선배 · 18대 의원',
       badge: '인천 계양을 전임 의원 · 사법연수원 4기수 선배',
       summary: '인천 계양구을 제18대 국회의원이자 검사 출신 법조계 선배',
       points: [
@@ -375,6 +395,7 @@
       ]
     },
     '이재명:최불암': {
+      chipLabel: '제14대 국회의원',
       badge: '제14대 국회의원 역임 원로 국민배우',
       summary: '대한민국을 대표하는 국민배우이자 제14대 통일국민당·신한국당 국회의원 역임',
       points: [
@@ -383,6 +404,7 @@
       ]
     },
     '이재명:김민석': {
+      chipLabel: '82학번 대학 동기',
       badge: '1982년 대학 동기 · 당 지도부 수석최고위원',
       summary: '1982년 대학에 입학한 동년배 학번이자 더불어민주당 현 지도부의 핵심 러닝메이트',
       points: [
@@ -391,6 +413,7 @@
       ]
     },
     '이재명:권영진': {
+      chipLabel: '안동 동향 · 전 대구시장',
       badge: '경북 안동 동향 · 전 광역단체장 카운터파트',
       summary: '안동 출신 고향 동향이자 대구시장과 경기지사로 동시 재임한 광역단체장 관계',
       points: [
@@ -493,11 +516,63 @@
     </div>`;
   };
 
-  const pcard = (o, sub, groupKey = null) => {
+  /* 인물 칩 라벨 생성기 (동일 그룹 내 '같은 직위', '동문' 등 중복 텍스트 배제 및 구체적 선후배/직책 부여) */
+  const getChipSub = (subject, peerName, groupKey, defaultSub, o, c) => {
+    if (!groupKey) {
+      return RS[defaultSub] || defaultSub;
+    }
+    const pair1 = subject + ':' + peerName, pair2 = peerName + ':' + subject;
+    const curated = CURATED_PAIRS[pair1] || CURATED_PAIRS[pair2];
+    if (curated) {
+      if (curated.chipLabel) return curated.chipLabel;
+      const b = curated.badge.split('·')[0].trim();
+      if (b && !['같은 직위', '동문', '같은 고향', '소속'].includes(b)) return b;
+    }
+    const sInfo = SENIORITY_PEOPLE[subject] || {}, tInfo = SENIORITY_PEOPLE[peerName] || {};
+    if (sInfo.inst && tInfo.inst) {
+      const diff = sInfo.inst.n - tInfo.inst.n;
+      if (diff < 0) return '사법연수원 ' + Math.abs(diff) + '기수 선배';
+      if (diff > 0) return '사법연수원 ' + diff + '기수 후배';
+      if (diff === 0) return '사법연수원 ' + sInfo.inst.n + '기 동기';
+    }
+    if (sInfo.exam && tInfo.exam && sInfo.exam.kind === tInfo.exam.kind) {
+      const diff = sInfo.exam.n - tInfo.exam.n;
+      if (diff < 0) return sInfo.exam.kind + ' ' + Math.abs(diff) + '회 선배';
+      if (diff > 0) return sInfo.exam.kind + ' ' + diff + '회 후배';
+      if (diff === 0) return sInfo.exam.kind + ' ' + sInfo.exam.n + '회 동기';
+    }
+    if (sInfo.univ && tInfo.univ && sInfo.univ.name === tInfo.univ.name && sInfo.univ.classOf && tInfo.univ.classOf) {
+      const diff = sInfo.univ.classOf - tInfo.univ.classOf;
+      if (diff < 0) return Math.abs(diff) + '학번 선배';
+      if (diff > 0) return diff + '학번 후배';
+      if (diff === 0) return sInfo.univ.classOf + '학번 동기';
+    }
+    if (tInfo.univ && tInfo.univ.major) {
+      return tInfo.univ.major + ' 전공';
+    }
+    if (tInfo.role) {
+      const r = tInfo.role.split('·')[0].trim();
+      if (r && !r.includes('동문') && !r.includes('동향')) return r;
+    }
+    if (sInfo.birth && tInfo.birth) {
+      const diff = sInfo.birth - tInfo.birth;
+      if (diff < 0) return Math.abs(diff) + '살 연상';
+      if (diff > 0) return diff + '살 연하';
+      if (diff === 0) return '동갑';
+    }
+    if (['같은 직위', '동문', '같은 고향', '함께', '같은 정당', '같은 지역구'].includes(defaultSub)) {
+      if (c && c[1]) return c[1];
+      return '';
+    }
+    return defaultSub;
+  };
+
+  const pcard = (o, defaultSub, groupKey = null) => {
     const c = L[o] || [o];
     const peerName = c[0];
-    const tipHtml = buildRelationTooltip(nm, peerName, groupKey, sub, o, c);
-    return NB.pchip({ name: peerName, photo: c[3] ? (/^https?:/.test(c[3]) ? c[3] : B0 + c[3]) : null }, sub, c[4] ? href.p(o) : null, tipHtml);
+    const subLabel = getChipSub(nm, peerName, groupKey, defaultSub, o, c);
+    const tipHtml = buildRelationTooltip(nm, peerName, groupKey, subLabel, o, c);
+    return NB.pchip({ name: peerName, photo: c[3] ? (/^https?:/.test(c[3]) ? c[3] : B0 + c[3]) : null }, subLabel, c[4] ? href.p(o) : null, tipHtml);
   };
   const photo = u => /^https?:/.test(u) ? u : B0 + u;
 
@@ -730,7 +805,25 @@
   }
 
   /* ── 관계 ── */
-  const RC = [['family', '가족'], ['school', '학연'], ['region', '지연'], ['career', '경력·조직'], ['party', '정당'], ['case', '사건·재판']];
+  const FAM_CAT = {
+    spouse: 'family_direct', son: 'family_direct', son2: 'family_direct', daughter: 'family_direct', daughter2: 'family_direct', child: 'family_direct',
+    father: 'family_parents', mother: 'family_parents', stepparent: 'family_parents',
+    elder_brother: 'family_siblings', younger_brother: 'family_siblings', elder_sister: 'family_siblings', younger_sister: 'family_siblings',
+    brother: 'family_siblings', sister: 'family_siblings', sibling: 'family_siblings', brother_in_law: 'family_siblings', sister_in_law: 'family_siblings',
+    father_in_law: 'family_inlaw', mother_in_law: 'family_inlaw', relative: 'family_inlaw', cousin: 'family_inlaw'
+  };
+
+  const RC = [
+    ['family_direct', '직계가족 (배우자·자녀)'],
+    ['family_parents', '부모'],
+    ['family_siblings', '형제자매'],
+    ['family_inlaw', '처가·인척'],
+    ['school', '학연'],
+    ['region', '지연'],
+    ['career', '경력·조직'],
+    ['party', '정당'],
+    ['case', '사건·재판']
+  ];
   const RS = {
     spouse: '배우자', father: '부친', mother: '모친', child: '자녀', son: '장남', son2: '차남', daughter: '장녀', daughter2: '차녀',
     sibling: '형제자매', brother: '형제', sister: '자매', elder_brother: '형', younger_brother: '남동생', elder_sister: '누나', younger_sister: '여동생',
@@ -746,10 +839,13 @@
     father_in_law: 30, mother_in_law: 31,
     relative: 40, cousin: 41
   };
-  const relG = RC.map(([t, label]) => {
-    let items = (B.rel || []).filter(r => r[1] === t);
-    if (t === 'family') {
+  const relG = RC.map(([catKey, label]) => {
+    let items;
+    if (catKey.startsWith('family_')) {
+      items = (B.rel || []).filter(r => (r[1] === 'family' || r[1] === catKey) && (FAM_CAT[r[2]] || 'family_inlaw') === catKey);
       items.sort((a, b) => (FAM_ORDER[a[2]] || 99) - (FAM_ORDER[b[2]] || 99));
+    } else {
+      items = (B.rel || []).filter(r => r[1] === catKey);
     }
     return [label, items];
   }).filter(x => x[1].length);
