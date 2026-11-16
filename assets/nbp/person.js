@@ -1157,6 +1157,19 @@
           pool.push({ t, title, url, press: pr, img: photo(img) });
         }
       });
+      const issueIds = new Set((B.iss || []).map(x => x[2]));
+      (Voice?.issues || []).forEach(issue => {
+        if (!issue.title.includes(nm) && !issueIds.has(issue.id) && !issueIds.has(issue.key)) return;
+        const t = String(issue.d || issue.seen || '').replace(/^(\d{4})(\d{2})(\d{2}).*/, '$1-$2-$3').slice(0, 10);
+        const title = issue.title;
+        const img = issue.image || (issue.videos && issue.videos[0]?.thumb);
+        const url = (issue.posts && issue.posts[0]?.url) || (issue.videos && issue.videos[0]?.url) || `${B0}issue/${encodeURIComponent(issue.id || issue.key)}`;
+        const pr = (issue.videos && issue.videos[0]?.ch) || (issue.posts && issue.posts[0]?.src ? '오늘의 이슈' : '이슈');
+        if (img && url && !seenUrls.has(url) && !seenTitles.has(title)) {
+          seenUrls.add(url); seenTitles.add(title);
+          pool.push({ t, title, url, press: pr, img: photo(img) });
+        }
+      });
       [...lastA, ...HI].forEach(a => {
         if (a && a.url && a.img && !seenUrls.has(a.url) && !seenTitles.has(a.title)) {
           seenUrls.add(a.url); seenTitles.add(a.title);
@@ -1211,7 +1224,7 @@
     }
   };
 
-    const histList = (hostId, list, step = 35) => {
+  const histList = (hostId, list, step = 35) => {
     const host = document.getElementById(hostId); if (!host) return;
     host.innerHTML = '';
     host.nextElementSibling?.classList.contains('more-b') && host.nextElementSibling.remove();
@@ -1223,41 +1236,35 @@
     const put = NB.grouper(host, x => (x.lead.d || x.lead.t || '').slice(0, 7), m => {
       const ymLabel = NB.ym(m);
       const totalCount = c[m] || 0;
-      return `${ymLabel}<small>${totalCount}건</small>`;
-    }, (cluster, idx, arr, m) => {
-      const clusterHtml = renderCluster(cluster);
-      /* 월별 첫 번째 기사 앞에 분석 브리핑 카드 삽입 */
-      if (cluster === arr[0]) {
-        const monthClusters = arr;
-        const allMonthTokens = new Map();
-        let legalCount = 0, issueCount = 0, policyCount = 0;
-        monthClusters.forEach(cl => {
-          cl.tokens.forEach(tok => allMonthTokens.set(tok, (allMonthTokens.get(tok) || 0) + 1));
-          const cat = cl.lead.cat || inferCat(cl.lead.title);
-          if (cat === '법적') legalCount += 1 + cl.items.length;
-          else if (cat === '논란') issueCount += 1 + cl.items.length;
-          else policyCount += 1 + cl.items.length;
-        });
-        const topTokens = [...allMonthTokens.entries()].sort((a, b) => b[1] - a[1]).slice(0, 4).map(x => x[0]);
-        const mainCat = legalCount > issueCount && legalCount > policyCount ? '사법·수사 이슈' : (issueCount > policyCount ? '의혹·공방 이슈' : '정책·의정 활동');
-        const briefSummary = `${NB.ym(m)} 총 ${c[m]}개 보도 군집이 분석되었으며, 주로 <b>${mainCat}</b> 관련 보도가 집중되었습니다. 아래 목록은 해당 분석의 근거 기사들입니다.`;
+      const monthClusters = clusters.filter(cl => (cl.lead.d || cl.lead.t || '').slice(0, 7) === m);
+      const allMonthTokens = new Map();
+      let legalCount = 0, issueCount = 0, policyCount = 0;
+      monthClusters.forEach(cl => {
+        (cl.tokens || []).forEach(tok => allMonthTokens.set(tok, (allMonthTokens.get(tok) || 0) + 1));
+        const cat = cl.lead.cat || inferCat(cl.lead.title);
+        if (cat === '법적') legalCount += 1 + cl.items.length;
+        else if (cat === '논란') issueCount += 1 + cl.items.length;
+        else policyCount += 1 + cl.items.length;
+      });
+      const topTokens = [...allMonthTokens.entries()].sort((a, b) => b[1] - a[1]).slice(0, 4).map(x => x[0]);
+      const mainCat = legalCount > issueCount && legalCount > policyCount ? '사법·수사 이슈' : (issueCount > policyCount ? '의혹·공방 이슈' : '정책·의정 활동');
+      const briefSummary = `${NB.ym(m)} 총 ${totalCount}개 보도 군집이 분석되었으며, 주로 <b>${mainCat}</b> 관련 보도가 집중되었습니다. 아래 목록은 해당 분석의 근거 기사들입니다.`;
 
-        const analysisCardHtml = `
-          <div class="archive-analysis-card">
-            <div class="aac-head">
-              <span class="aac-title">📊 ${NB.ym(m)} 인텔리전스 분석 브리핑</span>
-              ${topTokens.length ? `<div class="aac-tags">${topTokens.map(t => `<span class="aac-tag">#${esc(t)}</span>`).join('')}</div>` : ''}
-            </div>
-            <p class="aac-summary">${briefSummary}</p>
+      const analysisCardHtml = `
+        <div class="archive-analysis-card">
+          <div class="aac-head">
+            <span class="aac-title">📊 ${ymLabel} 인텔리전스 분석 브리핑</span>
+            ${topTokens.length ? `<div class="aac-tags">${topTokens.map(t => `<span class="aac-tag">#${esc(t)}</span>`).join('')}</div>` : ''}
           </div>
-        `;
-        return analysisCardHtml + clusterHtml;
-      }
-      return clusterHtml;
-    });
+          <p class="aac-summary">${briefSummary}</p>
+        </div>
+      `;
+      return `${analysisCardHtml}<div class="aday-label">${ymLabel}<small>${totalCount}건</small></div>`;
+    }, renderCluster);
 
     NB.more(host, clusters.length, step, (a, b) => put(clusters.slice(a, b)));
   };
+  if (HI.length) histList('hist', HI, 35);
   let artsOn = false;
   const arts = async () => {
     if (artsOn || !AR) return; artsOn = true;

@@ -635,6 +635,8 @@ body[data-ready="1"] .gantt-b{animation:chart-reveal .7s cubic-bezier(.2,.8,.2,1
 }
 
 /* ── 아카이브 시기별 분석 브리핑 카드 ── */
+.aday-h:has(.archive-analysis-card){display:block}
+.aday-h:has(.archive-analysis-card) .aday-label{display:flex;align-items:baseline;gap:var(--s-2);font-size:var(--fs-sm);font-weight:var(--fw-bold);color:var(--c-ink-2);margin-bottom:var(--s-2)}
 .archive-analysis-card{background:linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);border:1px solid #bfdbfe;border-radius:12px;padding:14px 16px;margin-bottom:14px}
 .aac-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;flex-wrap:wrap}
 .aac-title{font-size:.95rem;font-weight:800;color:#1e3a8a}
