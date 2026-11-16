@@ -624,7 +624,7 @@
   /* 발언은 채팅 로그가 아니다. 같은 핵심어가 서로 다른 시점의 인용에
      반복될 때만 비교 묶음을 만든다. 표현이 다르다는 사실을 보여줄 뿐,
      이 코드가 모순·진정성·입장 변화를 자동 판정하지는 않는다. */
-  const STOP_WORDS = new Set(['대한민국', '대통령', '국민', '정부', '우리', '이번', '오늘', '이날', '관련', '대해', '위해', '통해', '대한', '정말', '가장', '더욱', '하나', '이것', '그것', '발언', '주장', '밝혔', '말했', '강조', '있다', '한다', '했다', '것이다']);
+  const STOP_WORDS = new Set(['대한민국', '대통령', '국민', '정부', '우리', '이번', '오늘', '이날', '관련', '대해', '위해', '통해', '대한', '정말', '가장', '더욱', '하나', '이것', '그것', '발언', '주장', '밝혔', '말했', '강조', '있다', '한다', '했다', '것이다', '내가', '두고', '통해', '의원들', '어려울', '비판']);
   const topicTokens = q => [...new Set(cleanText(`${q.quote} ${q.title}`).match(/[가-힣]{2,}|[A-Za-z][A-Za-z0-9-]{2,}/g) || [])]
     .filter(w => !STOP_WORDS.has(w) && w !== nm && !/^(뉴스|기자|인터뷰|대표|의원)$/.test(w));
   const topicMap = new Map();
@@ -634,6 +634,40 @@
     return { term, items: distinct, years: new Set(distinct.map(x => x.d.slice(0, 4))).size };
   }).filter(x => x.items.length >= 2 && x.years >= 2)
     .sort((a, b) => b.items.length - a.items.length || b.years - a.years || a.term.localeCompare(b.term, 'ko')).slice(0, 8);
+
+  /* 시점별 타임라인 비교 아젠다 (과거 입장 ↔ 현재 입장 추적) */
+  const PREDEFINED_AGENDAS = [
+    { title: '행정·지방자치·복지', icon: 'building-bank', keywords: ['성남시장', '성남', '경기', '복지', '청사', '예산', '시장', '도지사'] },
+    { title: '사법·검찰·기소 리스크', icon: 'scale', keywords: ['검찰', '기소', '재판', '사법', '수사', '특검', '헌재', '법원', '처벌', '선고', '부정선거'] },
+    { title: '국정·대권·권력구조', icon: 'flag', keywords: ['대통령', '정부', '개헌', '청와대', '박근혜', '노무현', '공약'] },
+    { title: '정당·의회·정치개혁', icon: 'users', keywords: ['국민의힘', '민주당', '국회', '의원', '이낙연', '정청래', '패스트트랙'] },
+  ];
+  const speechAgendas = [];
+  PREDEFINED_AGENDAS.forEach(ag => {
+    const matched = Q.filter(q => ag.keywords.some(kw => (q.quote + ' ' + q.title).includes(kw))).sort((a, b) => a.d.localeCompare(b.d));
+    const years = [...new Set(matched.map(x => x.d.slice(0, 4)))].sort();
+    if (matched.length >= 2 && years.length >= 2) {
+      speechAgendas.push({
+        term: ag.title,
+        icon: ag.icon,
+        items: matched,
+        years,
+        span: `${years[0]}년 ~ ${years[years.length - 1]}년 (${years.length}개 연도)`,
+      });
+    }
+  });
+  speechTopics.forEach(t => {
+    if (!speechAgendas.some(ag => ag.items.some(x => x.quote === t.items[0]?.quote))) {
+      const years = [...new Set(t.items.map(x => x.d.slice(0, 4)))].sort();
+      speechAgendas.push({
+        term: `‘${t.term}’ 아젠다`,
+        icon: 'message-circle',
+        items: t.items,
+        years,
+        span: `${years[0]}년 ~ ${years[years.length - 1]}년 (${years.length}개 연도)`,
+      });
+    }
+  });
   const INC = HI.filter(x => x.cat === '논란' || x.cat === '법적');
   const AR = B.ar;
   const relN = new Set((B.rel || []).flatMap(r => r[0].startsWith('g:') ? (B.gp?.[r[0]] || []) : [r[0]])).size;
@@ -856,13 +890,83 @@
       return `<div class="rnode rnode--group"><a class="lk" href="${href.g(o)}">${lgi(o)}<b>${esc(o.split(':').slice(2).join(':'))}</b></a><small>${esc(RS[sub] || sub)}</small>${peers.length ? `<div class="rpeers"><span class="rpeer-l">${esc(PEER[sub] || '함께')}</span>${peers.map(p => pcard(p, PEER[sub] || RS[sub] || sub, o)).join('')}</div>` : ''}</div>`;
     }).join('')}</div>`).join('')}</div>`);
 
-  /* ── 발언 ── */
+  /* ── 발언 비교 ──
+     단순 최신 발언 나열을 지양하고, 과거 시점의 입장과 현재 시점의 입장이 어떻게 변화했거나
+     일관되는지 비교·검증할 수 있는 아젠다별 타임라인을 기본 전면에 배치한다. */
+  const renderAgendaCards = () => {
+    if (!speechAgendas.length) return `<div class="quotes">${Q.slice(0, 6).map(NB.quote).join('')}</div>`;
+    return speechAgendas.map(ag => {
+      const milestones = [
+        { label: `과거 시점 (${ag.items[0].d.slice(0, 4)}년)`, q: ag.items[0] },
+        ag.items.length >= 4 ? { label: `중간 경과 (${ag.items[Math.floor(ag.items.length / 2)].d.slice(0, 4)}년)`, q: ag.items[Math.floor(ag.items.length / 2)] } : null,
+        { label: `최근 입장 (${ag.items[ag.items.length - 1].d.slice(0, 4)}년)`, q: ag.items[ag.items.length - 1] }
+      ].filter(Boolean);
+
+      return `<div class="agenda-card">
+        <div class="agenda-head">
+          <div class="agenda-title">
+            ${ic(ag.icon || 'messages')}
+            <b>${esc(ag.term)}</b>
+          </div>
+          <div class="agenda-meta">
+            <span class="tag acc">${esc(ag.span)}</span>
+            <span class="tag tag--info">${ag.items.length}개 발언 비교</span>
+          </div>
+        </div>
+        <div class="speech-timeline">
+          ${milestones.map(m => `
+            <div class="speech-row">
+              <div class="speech-phase">
+                <span class="phase-lbl">${m.label}</span>
+                <time>${esc(NB.ymd(m.q.d))}</time>
+                <span class="phase-src">${esc(m.q.press || '')}</span>
+              </div>
+              <div class="speech-body">
+                <blockquote class="speech-quote">“${esc(m.q.quote)}”</blockquote>
+                ${m.q.title ? `<div class="speech-ctx">${esc(m.q.title)}</div>` : ''}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        ${ag.items.length > 2 ? `
+          <div class="agenda-fold">
+            <button type="button" class="cluster-fold-btn" onclick="const f=this.nextElementSibling; f.hidden=!f.hidden; this.querySelector('.fold-arr').classList.toggle('is-up');">
+              <span class="fold-lbl">이 아젠다 전체 ${ag.items.length}개 발언 타임라인 보기</span>
+              <span class="fold-arr">▾</span>
+            </button>
+            <div class="speech-timeline speech-timeline--all" hidden>
+              ${ag.items.map(q => `
+                <div class="speech-row">
+                  <div class="speech-phase">
+                    <time>${esc(NB.ymd(q.d))}</time>
+                    <span class="phase-src">${esc(q.press || '')}</span>
+                  </div>
+                  <div class="speech-body">
+                    <blockquote class="speech-quote">“${esc(q.quote)}”</blockquote>
+                    ${q.title ? `<div class="speech-ctx">${esc(q.press || '')} · ${esc(q.title || '')}</div>` : ''}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+      </div>`;
+    }).join('');
+  };
+
+  const hotQuotes = Q.filter(q => q.hot || q.heat).slice(0, 10);
+  const speechTabs = [
+    ['타임라인 비교', speechAgendas.length || Q.length],
+    ['주요 화제 발언', hotQuotes.length || Math.min(6, Q.length)],
+    ['전체 발언', Q.length],
+    ...speechAgendas.map(ag => [ag.term, ag.items.length]),
+  ];
+
   if (Q.length) {
-    const speechTabs = [['전체', Q.length], ...speechTopics.map(x => [x.term, x.items.length])];
-    add('s-q', '발언 비교', 'messages', Q.length + '건', `<p class="compare-note">같은 핵심어가 서로 다른 시점의 인용에서 반복된 경우만 묶어 봅니다. 표현 차이만으로 입장 변화나 모순을 자동 판정하지 않으며, 날짜와 원문으로 직접 비교할 수 있습니다.</p>
-      ${speechTopics.length ? `<div class="speech-f">${NB.seg('sq', speechTabs)}</div>` : ''}
-      <div id="quote-list" class="quotes">${Q.slice(0, 6).map(NB.quote).join('')}</div>
-      ${Q.length > 6 ? `<div id="quote-more">${NB.exp('최근 발언 더 보기', (Q.length - 6) + '건', `<div class="quotes">${Q.slice(6).map(NB.quote).join('')}</div>`)}</div>` : ''}`);
+    add('s-q', '발언 비교', 'messages', Q.length + '건', `<p class="compare-note">동일한 핵심 아젠다에 대해 과거 시점의 입장과 현재의 입장이 어떻게 변화했거나 일관되는지 시점별 타임라인으로 직접 비교·검증할 수 있습니다.</p>
+      ${speechTabs.length ? `<div class="speech-f">${NB.seg('sq', speechTabs)}</div>` : ''}
+      <div id="quote-list" class="quotes-agendas">${renderAgendaCards()}</div>
+      <div id="quote-more" hidden></div>`);
   }
 
   /* ── 연결된 영상·공개 반응 ──
@@ -879,31 +983,141 @@
   });
   if (videos.length || posts.length) add('s-media', '영상·공개 반응', 'video', videos.length + posts.length + '건', `${videos.length ? `<div class="acards">${videos.slice(0, 4).filter(x => x.img).map(NB.acard).join('')}</div>` : ''}${posts.length ? `<div class="alist social-list">${posts.slice(0, 8).map(NB.arow).join('')}</div>` : ''}`);
 
-  /* ── 사건·사고 ── */
+  /* ── 보도·사건사고 (보도와 사건사고의 구분을 단일 섹터로 통합 관리) ── */
+  const cleanStem = w => {
+    let prev = '';
+    while (w !== prev && w.length > 2) {
+      prev = w;
+      w = w.replace(/(역서|에서|으로|부터|까지|에게|에는|서는|에도|이라|라는|하고|이나|은|는|이|가|을|를|의|에|로|과|와|도|서|역)$/, '');
+    }
+    return w;
+  };
+  const extractTokens = text => {
+    const raw = cleanText(text).replace(/\[[^\]]*\]|\([^\)]*\)|[‘“'"’”…‥·~!?]/g, ' ').match(/[가-힣]{2,}/g) || [];
+    return new Set(raw.map(cleanStem).filter(w => w.length >= 2 && !STOP_WORDS.has(w) && w !== nm && !/^(뉴스|기자|인터뷰|대표|의원|오늘|내일|관련|대해|위한)$/.test(w)));
+  };
+
+  const inferCat = title => {
+    if (/특검|기소|구속|체포|탈옥|재판|선고|1심|2심|대법|벌금|유죄|무죄|피고인|수사|압수수색/.test(title)) return '법적';
+    if (/논란|의혹|공방|규탄|비판|공세|설전|갈등|반발|충돌|집회/.test(title)) return '논란';
+    if (/공약|법안|발의|예산|정책|추진|의정|민생|지원|조례/.test(title)) return '정책';
+    return '보도';
+  };
+
+  const catBadge = cat => {
+    if (cat === '법적') return `<span class="tag tag--danger">사건사고</span>`;
+    if (cat === '논란') return `<span class="tag tag--warn">의혹·논란</span>`;
+    if (cat === '활동' || cat === '정책') return `<span class="tag tag--info">정책·의정</span>`;
+    return `<span class="tag tag--neutral">보도</span>`;
+  };
+
+  const clusterArticles = list => {
+    const clusters = [];
+    for (const a of list) {
+      const tokens = extractTokens(a.title);
+      let matched = null;
+      for (const c of clusters) {
+        const d1 = (a.t || a.d || '').slice(0, 10), d2 = (c.lead.t || c.lead.d || '').slice(0, 10);
+        const dayDiff = Math.abs(parseInt(d1.replace(/-/g, '') || '0', 10) - parseInt(d2.replace(/-/g, '') || '0', 10));
+        if (dayDiff <= 2) {
+          let commonCount = 0;
+          for (const t of tokens) if (c.tokens.has(t)) commonCount++;
+          if (commonCount >= 2 || (tokens.size >= 1 && commonCount >= 1 && ['탈옥법', '체포동의안', '구속영장', '선고', '기소', '특검', '단식', '대장동', '백현동', '위증교사', '공직선거법', '집회'].some(k => tokens.has(k) && c.tokens.has(k)))) {
+            matched = c;
+            break;
+          }
+        }
+      }
+      if (matched) {
+        matched.items.push(a);
+        tokens.forEach(t => matched.tokens.add(t));
+      } else {
+        clusters.push({ lead: a, items: [], tokens: new Set(tokens) });
+      }
+    }
+    return clusters;
+  };
+
+  const renderClusterRow = (a, opt = {}) => {
+    const dateStr = esc(NB.md(a.t || a.d));
+    const title = NB.titleClean(a.title);
+    const tip = NB.articleTip(a);
+    const tag = a.url ? 'a' : 'div';
+    const attrs = a.url ? ` href="${esc(a.url)}" target="_blank" rel="noopener"` : '';
+    const badge = a.cat ? catBadge(a.cat) : catBadge(inferCat(a.title));
+    const thumb = a.img ? `<div class="arow-img"><img src="${esc(a.img)}" alt="" loading="lazy"></div>` : '';
+    return `<${tag} class="arow${a.img ? ' has-thumb' : ''}${opt.isSub ? ' arow--sub' : ''}"${attrs}${tip ? ` data-tip="${esc(tip)}"` : ''}>
+      <time>${dateStr}</time>${thumb}
+      <div class="arow-c">
+        ${badge}
+        <span class="arow-t">${esc(title)}</span>
+      </div>
+      <span class="arow-p">${esc(a.press || '')}</span>
+    </${tag}>`;
+  };
+
+  const renderCluster = c => {
+    const leadHtml = renderClusterRow(c.lead, { isLead: true });
+    if (!c.items || !c.items.length) return leadHtml;
+    const pressList = [...new Set(c.items.map(x => x.press).filter(Boolean))].slice(0, 3).join(', ');
+    const morePress = new Set(c.items.map(x => x.press).filter(Boolean)).size > 3 ? ' 등' : '';
+    return `<div class="art-cluster">
+      ${leadHtml}
+      <div class="cluster-fold">
+        <button type="button" class="cluster-fold-btn" onclick="const p=this.closest('.art-cluster'); p.classList.toggle('is-open'); const list=p.querySelector('.cluster-fold-list'); if(list) list.hidden=!list.hidden;">
+          <span class="fold-lbl">${ic('layers')}관련 보도 <b>${c.items.length}건</b> 묶음 <small>(${esc(pressList + morePress)})</small></span>
+          <span class="fold-arr">▾</span>
+        </button>
+        <div class="cluster-fold-list" hidden>
+          ${c.items.map(sub => renderClusterRow(sub, { isSub: true })).join('')}
+        </div>
+      </div>
+    </div>`;
+  };
+
+  const renderClusteredDayGroup = list => {
+    const g = {};
+    list.forEach(a => {
+      const d = (a.t || a.d || '').slice(0, 10);
+      (g[d] ||= []).push(a);
+    });
+    return Object.keys(g).sort().reverse().map(d => {
+      const dayArticles = g[d];
+      const clusters = clusterArticles(dayArticles);
+      return `<div class="aday"><div class="aday-h">${NB.dayLabel(d)}<small>${dayArticles.length}건</small></div><div class="alist">${clusters.map(renderCluster).join('')}</div></div>`;
+    }).join('');
+  };
+
   const YRS = [...new Set(HI.map(x => x.d.slice(0, 4)))].sort();
   const yc = {}; HI.forEach(x => { const y = x.d.slice(0, 4); (yc[y] ||= {})[x.cat] = (yc[y][x.cat] || 0) + 1; });
-  if (INC.length) {
-    const n = { 논란: INC.filter(x => x.cat === '논란').length, 법적: INC.filter(x => x.cat === '법적').length };
-    add('s-inc', '사건·사고', 'alert-triangle', INC.length + '건', `<div class="inc">
-      <div><h3 class="sub-t">연도별 <small>${YRS[0]}–${YRS[YRS.length - 1]}</small></h3>${NB.vstack(YRS.map(y => [y, { 논란: yc[y]['논란'] || 0, 법적: yc[y]['법적'] || 0 }]), [['논란', 'warn'], ['법적', 'neg']], { lab: y => "'" + y.slice(2), lc: y => (+y % 2 ? 'is-odd' : '') })}
-        ${NB.stack([['논란', n['논란'], 'warn'], ['법적', n['법적'], 'neg']].filter(x => x[1]), { pct: true })}</div>
-      <div><h3 class="sub-t">최근 기록</h3><div class="alist">${INC.slice(0, 6).map(NB.hrow).join('')}</div></div></div>
-      ${INC.length > 6 ? NB.exp('이전 기록', (INC.length - 6) + '건', `<div id="inc-l"></div>`, false, 'x-inc') : ''}`);
-  }
-
-  /* ── 보도 ── */
   const cats = {}; HI.forEach(x => cats[x.cat] = (cats[x.cat] || 0) + 1);
   const CATS = Object.entries(cats).sort((a, b) => b[1] - a[1]);
   const mc = {}; HI.forEach(x => { const m = x.d.slice(0, 7); (mc[m] ||= {})[x.cat] = (mc[m][x.cat] || 0) + 1; });
   const mk = Object.keys(mc).sort(), mAll = [];
   if (mk.length) for (let d = new Date(mk[0] + '-01T00:00:00Z'); d.toISOString().slice(0, 7) <= mk[mk.length - 1]; d.setUTCMonth(d.getUTCMonth() + 1)) { const m = d.toISOString().slice(0, 7); mAll.push([m, mc[m] || {}]); }
   const press = AR?.top?.length ? AR.top : Object.entries(HI.reduce((o, x) => (x.press && (o[x.press] = (o[x.press] || 0) + 1), o), {})).sort((a, b) => b[1] - a[1]).slice(0, 10);
-  const hcSeg = [['전체', HI.length], ...CATS.filter(([c]) => c !== '논란' && c !== '법적')];
-  if (INC.length) hcSeg.splice(Math.min(3, hcSeg.length), 0, ['사건·사고', INC.length]);
-  const HF = { 전체: () => true, '사건·사고': x => x.cat === '논란' || x.cat === '법적' };
+
+  const incLegal = HI.filter(x => x.cat === '법적');
+  const incWarn = HI.filter(x => x.cat === '논란');
+  const incPol = HI.filter(x => x.cat === '활동' || x.cat === '정책');
+  const incGen = HI.filter(x => x.cat === '보도');
+  const unSeg = [
+    ['전체', HI.length],
+    incLegal.length && ['사건·사고', incLegal.length],
+    incWarn.length && ['의혹·논란', incWarn.length],
+    incPol.length && ['정책·의정', incPol.length],
+    incGen.length && ['일반 보도', incGen.length],
+  ].filter(Boolean);
+
+  const UN_FILTERS = {
+    '전체': () => true,
+    '사건·사고': x => x.cat === '법적',
+    '의혹·논란': x => x.cat === '논란',
+    '정책·의정': x => x.cat === '활동' || x.cat === '정책',
+    '일반 보도': x => x.cat === '보도' || (!['법적', '논란', '활동', '정책'].includes(x.cat)),
+  };
+
   const toA = r => Array.isArray(r) ? ({ t: r[0] || '', title: r[1], url: r[2], press: r[3], img: r[4] || '' }) : ({ t: r.t || '', title: r.title, url: r.url, press: r.press, img: r.img || '', desc: r.desc || '' });
-  /* 제목 정규화 → 동일 제목은 한 번만. URL이 다른 재송고·제목 중복을
-     같은 기사로 취급하되, 비슷하다는 이유만으로 서로 다른 기사를 지우진 않는다. */
   const articleKey = a => cleanText(NB.titleClean(a.title)).toLocaleLowerCase('ko-KR');
   const dedupeArticles = list => {
     const keys = new Set(), urls = new Set();
@@ -913,42 +1127,73 @@
     });
   };
   const lastA = dedupeArticles((AR?.last || []).map(toA));
-  const dayN = {}; lastA.forEach(a => { const d = a.t.slice(0, 10); dayN[d] = (dayN[d] || 0) + 1; });
+  const totalNewsCount = Math.max(AR?.c || 0, HI.length);
+
   const news = [
     (HI.length || press.length) && `<div class="news-top${HI.length && press.length ? '' : ' news-top--1'}">
       ${HI.length ? `<div><div class="sub-h"><h3 class="sub-t">기록 추이 <small>${num(HI.length)}건</small></h3>${mAll.length > 24 ? NB.seg('nc', [['연도별'], ['월별']]) : ''}</div>
-        <div id="nc0">${NB.vstack(YRS.map(y => [y, yc[y]]), CATS.map(([c]) => [c, NB.HCAT[c] || 'mute']), { lab: y => "'" + y.slice(2), lc: y => (+y % 2 ? 'is-odd' : '') })}</div>
-        ${mAll.length > 24 ? `<div id="nc1" hidden>${NB.vstack(mAll, CATS.map(([c]) => [c, NB.HCAT[c] || 'mute']), { cls: 'vbars--m', lab: m => m.endsWith('-01') && +m.slice(0, 4) % 2 === 0 ? "'" + m.slice(2, 4) : '', lc: m => (+m.slice(0, 4) % 4 ? 'is-odd' : ''), tip: m => m.replace('-', '.') })}</div>` : ''}
-        ${NB.stack(CATS.map(([c, n]) => [c, n, NB.HCAT[c] || 'mute']))}</div>` : ''}
+        <div id="nc0">${NB.vstack(YRS.map(y => [y, yc[y]]), CATS.map(([c]) => [c, NB.HCAT[c] || (c === '법적' ? 'neg' : c === '논란' ? 'warn' : c === '활동' ? 'pos' : 'mute')]), { lab: y => "'" + y.slice(2), lc: y => (+y % 2 ? 'is-odd' : '') })}</div>
+        ${mAll.length > 24 ? `<div id="nc1" hidden>${NB.vstack(mAll, CATS.map(([c]) => [c, NB.HCAT[c] || (c === '법적' ? 'neg' : c === '논란' ? 'warn' : c === '활동' ? 'pos' : 'mute')]), { cls: 'vbars--m', lab: m => m.endsWith('-01') && +m.slice(0, 4) % 2 === 0 ? "'" + m.slice(2, 4) : '', lc: m => (+m.slice(0, 4) % 4 ? 'is-odd' : ''), tip: m => m.replace('-', '.') })}</div>` : ''}
+        ${NB.stack(CATS.map(([c, n]) => [c, n, NB.HCAT[c] || (c === '법적' ? 'neg' : c === '논란' ? 'warn' : c === '활동' ? 'pos' : 'mute')]))}</div>` : ''}
       ${press.length ? `<div><h3 class="sub-t">많이 다룬 언론사 <small>${num(AR?.pc || press.length)}곳</small></h3>${NB.hbars(press.slice(0, 6))}</div>` : ''}</div>`,
     (B.iss || []).length && '<div class="issues">' + (B.iss || []).slice().reverse().slice(0, 3).map(([d, t, i]) => `<a class="issue" href="${B0}issue/${encodeURIComponent(i)}"><span class="tag acc">${ic('news')}오늘의 이슈</span><b>${esc(t)}</b><time>${NB.ymd(d)}</time>${ic('arrow-up-right')}</a>`).join('') + '</div>',
     (B.pa || []).length && `<div class="acards">${B.pa.map(([t, title, url, pr, img]) => NB.acard({ t, title, url, press: pr, img: photo(img) })).join('')}</div>`,
-    lastA.length && `<div style="margin-top:var(--s-8)">${NB.agroup(lastA, {})}
-      ${AR.c > lastA.length ? NB.exp('이전 보도', num(AR.c - lastA.length) + '건', `<div id="arts"></div>`, false, 'x-arts') : ''}</div>`,
-    HI.length && NB.exp('모든 기록', num(HI.length) + '건', `<div class="hist-f">${NB.seg('hc', hcSeg)}</div><div id="hist"></div>`, false, 'x-hist'),
+    lastA.length && `<div style="margin-top:var(--s-8)"><div class="sub-h"><h3 class="sub-t">최근 주요 보도 <small>${lastA.length}건</small></h3></div>${renderClusteredDayGroup(lastA)}
+      ${(AR?.c || 0) > lastA.length ? NB.exp('이전 보도 더 보기', num(AR.c - lastA.length) + '건', `<div id="arts"></div>`, false, 'x-arts') : ''}</div>`,
+    HI.length && `<div style="margin-top:var(--s-8)">
+      <div class="sub-h"><h3 class="sub-t">통합 기록 아카이브 <small>${num(HI.length)}건</small></h3>${unSeg.length ? `<div class="hist-f">${NB.seg('un', unSeg)}</div>` : ''}</div>
+      <div id="hist"></div>
+    </div>`,
   ].filter(Boolean);
-  if (news.length) add('s-news', '보도·기록', 'file-text', AR ? num(AR.c) + '건' : num(HI.length) + '건', news.join(''));
+  if (news.length) add('s-news', '보도·사건사고', 'file-text', num(totalNewsCount) + '건', news.join(''));
 
   app.innerHTML = top + (SEC.length ? `<div class="body"><aside>${NB.toc(SEC)}${NB.toc(SEC, 'toc--bar')}</aside><div class="main">${SEC.map(x => x.html).join('')}</div></div>` : '');
   NB.bind();
   /* 상호작용 */
   const gt = i => document.querySelectorAll('#gt .gantt-r').forEach((r, k) => r.hidden = i === 0 && !MAIN.has(rows[k].typ));
   if (main.length && main.length < rows.length) gt(0);
+
   const renderSpeech = i => {
     const host = document.getElementById('quote-list'); if (!host) return;
-    const chosen = i > 0 ? speechTopics[i - 1] : null;
-    const list = chosen ? chosen.items : Q.slice(0, 6);
-    host.classList.toggle('quotes--compare', Boolean(chosen));
-    host.innerHTML = chosen
-      ? `<p class="compare-topic"><b>‘${esc(chosen.term)}’</b> 관련 인용 ${chosen.items.length}건 <span>오래된 발언부터 읽어 보세요.</span></p><div class="speech-timeline">${list.map(q => `<div class="speech-row"><time>${esc(NB.ymd(q.d))}</time>${NB.quote(q)}</div>`).join('')}</div>`
-      : list.map(NB.quote).join('');
-    const more = document.getElementById('quote-more'); if (more) more.hidden = Boolean(chosen);
+    const more = document.getElementById('quote-more');
+    if (i === 0) {
+      host.className = 'quotes-agendas';
+      host.innerHTML = renderAgendaCards();
+      if (more) more.hidden = true;
+    } else if (i === 1) {
+      host.className = 'quotes';
+      const list = hotQuotes.length ? hotQuotes : Q.slice(0, 6);
+      host.innerHTML = list.map(NB.quote).join('');
+      if (more) more.hidden = true;
+    } else if (i === 2) {
+      host.className = 'quotes';
+      host.innerHTML = Q.slice(0, 10).map(NB.quote).join('');
+      if (more) {
+        more.hidden = false;
+        more.innerHTML = Q.length > 10 ? NB.exp('이전 발언 더 보기', (Q.length - 10) + '건', `<div class="quotes">${Q.slice(10).map(NB.quote).join('')}</div>`) : '';
+      }
+    } else {
+      const ag = speechAgendas[i - 3];
+      host.className = 'quotes--compare';
+      host.innerHTML = ag
+        ? `<p class="compare-topic"><b>‘${esc(ag.term)}’</b> 관련 인용 ${ag.items.length}건 <span>오래된 발언부터 순서대로 배치된 타임라인입니다.</span></p><div class="speech-timeline">${ag.items.map(q => `<div class="speech-row"><div class="speech-phase"><time>${esc(NB.ymd(q.d))}</time><span class="phase-src">${esc(q.press || '')}</span></div><div class="speech-body"><blockquote class="speech-quote">“${esc(q.quote)}”</blockquote>${q.title ? `<div class="speech-ctx">${esc(q.title)}</div>` : ''}</div></div>`).join('')}</div>`
+        : '';
+      if (more) more.hidden = true;
+    }
   };
-  const histList = (hostId, list, step) => { const host = document.getElementById(hostId); if (!host) return; host.innerHTML = ''; host.nextElementSibling?.classList.contains('more-b') && host.nextElementSibling.remove();
-    const c = {}; list.forEach(x => { const m = x.d.slice(0, 7); c[m] = (c[m] || 0) + 1; });
-    const put = NB.grouper(host, x => x.d.slice(0, 7), m => `${NB.ym(m)}<small>${c[m]}건</small>`, NB.hrow);
-    NB.more(host, list.length, step, (a, b) => put(list.slice(a, b))); };
-  histList('hist', HI, 40); histList('inc-l', INC.slice(6), 30);
+
+  const histList = (hostId, list, step = 35) => {
+    const host = document.getElementById(hostId); if (!host) return;
+    host.innerHTML = '';
+    host.nextElementSibling?.classList.contains('more-b') && host.nextElementSibling.remove();
+    const clusters = clusterArticles(list);
+    const c = {};
+    clusters.forEach(x => { const m = (x.lead.d || x.lead.t || '').slice(0, 7); c[m] = (c[m] || 0) + 1; });
+    const put = NB.grouper(host, x => (x.lead.d || x.lead.t || '').slice(0, 7), m => `${NB.ym(m)}<small>${c[m]}건</small>`, renderCluster);
+    NB.more(host, clusters.length, step, (a, b) => put(clusters.slice(a, b)));
+  };
+  if (HI.length) histList('hist', HI, 35);
+
   let artsOn = false;
   const arts = async () => {
     if (artsOn || !AR) return; artsOn = true;
@@ -962,14 +1207,28 @@
     }
     const dn = {}, uniq = [];
     for (const a of dedupeArticles(all)) { const k = articleKey(a); if (seen.has(k)) continue; seen.add(k); uniq.push(a); const d = (a.t || '').slice(0, 10); dn[d] = (dn[d] || 0) + 1; }
-    const put = NB.grouper(host, a => (a.t || '').slice(0, 10) || '날짜 미상', d => `${d.length === 10 ? NB.dayLabel(d) : esc(d)}<small>${dn[d] || ''}건</small>`, NB.arow);
-    NB.more(host, uniq.length, 50, (a, b) => put(uniq.slice(a, b)));
+    const clusters = clusterArticles(uniq);
+    const put = NB.grouper(host, c => (c.lead.t || c.lead.d || '').slice(0, 10) || '날짜 미상', d => `${d.length === 10 ? NB.dayLabel(d) : esc(d)}<small>${dn[d] || ''}건</small>`, renderCluster);
+    NB.more(host, clusters.length, 35, (a, b) => put(clusters.slice(a, b)));
   };
+
   document.addEventListener('click', e => {
     if (e.target.closest('#x-arts > .exp-b')) arts();
     const t = e.target.closest('[data-cat]');
-    if (t) { const i = hcSeg.findIndex(([n]) => n === t.dataset.cat || (n === '사건·사고' && ['논란', '법적'].includes(t.dataset.cat))); const x = document.getElementById('x-hist'); if (i >= 0 && x) { if (!x.classList.contains('is-open')) x.querySelector('.exp-b').click(); x.querySelector(`[data-seg=hc] .seg-i[data-i="${i}"]`).click(); x.scrollIntoView({ behavior: 'smooth', block: 'start' }); } }
+    if (t) {
+      const catName = t.dataset.cat;
+      const targetSeg = catName === '법적' ? '사건·사고' : catName === '논란' ? '의혹·논란' : (catName === '활동' || catName === '정책') ? '정책·의정' : '일반 보도';
+      const i = unSeg.findIndex(([n]) => n === targetSeg);
+      if (i >= 0) {
+        const segBtn = document.querySelector(`[data-seg="un"] .seg-i[data-i="${i}"]`);
+        if (segBtn) {
+          segBtn.click();
+          segBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    }
   });
+
   document.addEventListener('seg', e => {
     const { name, i } = e.detail;
     if (name === 'gt') gt(i);
@@ -977,8 +1236,13 @@
     if (name === 'sq') renderSpeech(i);
     if (name === 'nc') { document.getElementById('nc0').hidden = i !== 0; document.getElementById('nc1').hidden = i !== 1; }
     if (name === 'bill') { const v = e.target.querySelectorAll('.seg-i')[i].firstChild.textContent; document.querySelectorAll('.brow--bill').forEach(r => r.hidden = i !== 0 && r.dataset.res !== v); }
-    if (name === 'hc') { const c = hcSeg[i][0]; histList('hist', HI.filter(HF[c] || (x => x.cat === c)), 40); }
+    if (name === 'un') {
+      const c = unSeg[i][0];
+      const filtered = HI.filter(UN_FILTERS[c] || (x => x.cat === c));
+      histList('hist', filtered, 35);
+    }
   });
+
   if (SEC.length) NB.spy(SEC.map(x => x.id));
   NB.openAll();
   if (/[?&]open=1/.test(location.search)) await arts();

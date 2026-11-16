@@ -537,6 +537,44 @@ a.pchip:hover b{color:var(--c-accent)}
 .ptl-c{font-size:var(--fs-xs);color:var(--c-ink-4);overflow-wrap:anywhere}
 @media (max-width:767px){ .ptl{grid-template-columns:repeat(2,minmax(0,1fr))} }
 
+/* ── 기사 군집화 및 아코디언 폴딩 ── */
+.art-cluster{margin-bottom:2px;border-radius:var(--r-md);transition:background var(--t-fast)}
+.art-cluster.is-open{background:var(--c-sunken);padding-bottom:var(--s-2);border-radius:var(--r-md)}
+.cluster-fold{margin:2px 0 6px calc(3.2em + var(--s-3))}
+.cluster-fold-btn{display:inline-flex;align-items:center;gap:var(--s-2);padding:3px 10px;font-size:var(--fs-xs);font-weight:var(--fw-medium);color:var(--c-ink-2);background:var(--c-sunken);border:1px solid var(--c-line-soft);border-radius:var(--r-pill);cursor:pointer;transition:all var(--t-fast)}
+.cluster-fold-btn:hover{background:var(--c-surface);color:var(--c-ink-1);border-color:var(--c-accent)}
+.cluster-fold-btn .ic{width:12px;height:12px;transition:transform var(--t-fast)}
+.cluster-fold-btn .fold-arr{display:inline-block;transition:transform var(--t-fast)}
+.cluster-fold-btn .fold-arr.is-up,.art-cluster.is-open .cluster-fold-btn .fold-arr{transform:rotate(180deg)}
+.cluster-fold-list{display:grid;gap:2px;margin-top:4px;padding-left:var(--s-3);border-left:2px solid var(--c-line-soft)}
+.arow.arow--sub{opacity:.92;font-size:.95em;padding:var(--s-2) var(--s-3)}
+@media (max-width:640px){.cluster-fold{margin-left:var(--s-2)}}
+
+/* ── 분류 뱃지 ── */
+.tag--danger{background:rgba(220,38,38,.12);color:#dc2626!important;border:1px solid rgba(220,38,38,.25);font-weight:var(--fw-medium)}
+.tag--warn{background:rgba(217,119,6,.12);color:#d97706!important;border:1px solid rgba(217,119,6,.25);font-weight:var(--fw-medium)}
+.tag--info{background:rgba(37,99,235,.12);color:#2563eb!important;border:1px solid rgba(37,99,235,.25);font-weight:var(--fw-medium)}
+.tag--neutral{background:var(--c-sunken);color:var(--c-ink-3)!important;border:1px solid var(--c-line-soft)}
+.arow-c{display:flex;align-items:baseline;gap:var(--s-2);min-width:0;flex-wrap:wrap}
+.arow-c .tag{flex-shrink:0;font-size:11px;padding:1px 6px;line-height:1.4}
+
+/* ── 발언 타임라인 아젠다 카드 ── */
+.agenda-card{background:var(--c-surface);border:1px solid var(--c-line-soft);border-radius:var(--r-lg);padding:var(--s-5);margin-bottom:var(--s-5);box-shadow:var(--shadow-sm)}
+.agenda-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--s-2);margin-bottom:var(--s-4);padding-bottom:var(--s-3);border-bottom:1px solid var(--c-line-soft)}
+.agenda-title{font-size:var(--fs-md);font-weight:var(--fw-bold);color:var(--c-ink-1);display:flex;align-items:center;gap:var(--s-2)}
+.agenda-title .ic{width:18px;height:18px;color:var(--c-accent)}
+.agenda-meta{font-size:var(--fs-xs);display:flex;align-items:center;gap:var(--s-2);flex-wrap:wrap}
+.speech-phase{display:flex;flex-direction:column;gap:2px}
+.phase-lbl{font-size:var(--fs-xs);font-weight:var(--fw-bold);color:var(--c-accent)}
+.speech-phase time{font-size:var(--fs-xs);color:var(--c-ink-2);font-variant-numeric:tabular-nums}
+.phase-src{font-size:11px;color:var(--c-ink-4)}
+.speech-body{display:flex;flex-direction:column;gap:var(--s-1);min-width:0}
+.speech-quote{font-size:var(--fs-base);font-weight:var(--fw-medium);line-height:var(--lh-relaxed);color:var(--c-ink-1);margin:0}
+.speech-ctx{font-size:var(--fs-xs);color:var(--c-ink-3)}
+.agenda-fold{margin-top:var(--s-4);padding-top:var(--s-3);border-top:1px dashed var(--c-line-soft)}
+.speech-timeline--all{margin-top:var(--s-3);display:grid;gap:var(--s-3)}
+
+
 /* 차트는 페이지가 준비된 뒤 한 번만 채워진다. 모션 감소 설정에서는 즉시 표시한다. */
 @keyframes chart-grow-y{from{transform:scaleY(.04)}to{transform:scaleY(1)}}
 @keyframes chart-grow-x{from{transform:scaleX(.04)}to{transform:scaleX(1)}}
