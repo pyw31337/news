@@ -425,6 +425,12 @@
     const points = [];
     const targetRole = tInfo.role || (c && c[1] ? (c[1] + (c[2] ? ' · ' + c[2] + '계층' : '')) : '');
 
+    let targetPhoto = c && c[3] ? (/^https?:/.test(c[3]) ? c[3] : B0 + c[3]) : null;
+    if (!targetPhoto && FAMILY_REGISTRY[subject]) {
+      const fam = FAMILY_REGISTRY[subject].find(x => x.name === target || x.id === targetId);
+      if (fam && fam.photo) targetPhoto = fam.photo;
+    }
+
     if (curated) {
       badgeText = curated.badge;
       badgeClass = curated.badge.includes('선배') || curated.badge.includes('후배') ? 'sen' : (curated.badge.includes('맞수') || curated.badge.includes('경쟁') ? 'rival' : 'blue');
@@ -465,21 +471,40 @@
       if (!badgeText) badgeText = targetRole.split('·')[0].trim() || '인물 정보';
     }
 
+    const formatPointVal = v => {
+      if (v.includes(' : ')) {
+        const parts = v.split(' : ');
+        const context = parts[0];
+        const highlight = parts.slice(1).join(' : ');
+        return `<span class="nrt-ctx">${esc(context)}</span><strong class="nrt-strong">${esc(highlight)}</strong>`;
+      }
+      return `<span class="nrt-text">${esc(v)}</span>`;
+    };
+
     const rowsHtml = points.map(pt => `
-      <div class="tip-row">
-        <span class="tip-k">${esc(pt.label)}</span>
-        <span class="tip-v">${esc(pt.val)}</span>
-      </div>
+      <li class="nrt-item">
+        <span class="nrt-label">${esc(pt.label)}</span>
+        <div class="nrt-val">${formatPointVal(pt.val)}</div>
+      </li>
     `).join('');
 
     return `
-      <div class="tip-box">
-        <div class="tip-head">
-          <span class="tip-name">${esc(target)}</span>
-          ${badgeText ? `<span class="tip-badge tip-badge--${badgeClass}">${esc(badgeText)}</span>` : ''}
+      <div class="nb-rel-tip">
+        <div class="nrt-head">
+          <div class="nrt-profile">
+            ${targetPhoto 
+              ? `<img class="nrt-avatar" src="${esc(targetPhoto)}" alt="${esc(target)}" loading="lazy">` 
+              : `<div class="nrt-avatar nrt-avatar--placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>`
+            }
+            <div class="nrt-title-row">
+              <span class="nrt-name">${esc(target)}</span>
+              ${targetRole ? `<span class="nrt-role">${esc(targetRole)}</span>` : ''}
+            </div>
+          </div>
+          ${badgeText ? `<span class="nrt-badge ${badgeClass}">${esc(badgeText)}</span>` : ''}
         </div>
-        ${summary ? `<p class="tip-summary">${esc(summary)}</p>` : ''}
-        ${rowsHtml ? `<div class="tip-table">${rowsHtml}</div>` : ''}
+        ${summary ? `<p class="nrt-summary">${esc(summary)}</p>` : ''}
+        ${rowsHtml ? `<ul class="nrt-list">${rowsHtml}</ul>` : ''}
       </div>
     `;
   };
