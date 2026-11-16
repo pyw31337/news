@@ -68,9 +68,21 @@ def summarize(rows: list[dict]) -> dict:
             title_groups[key].append(row)
     duplicate_groups = [items for items in title_groups.values() if len(items) > 1]
     duplicate_rows = sum(len(items) for items in duplicate_groups)
-    dated = [x for x in rows if DATE_RE.match(str(x.get("t") or ""))]
-    with_thumb = [x for x in rows if any(x.get(k) for k in ("thumb", "thumbnail", "image", "image_url", "og_image"))]
-    with_summary = [x for x in rows if any(str(x.get(k) or "").strip() for k in ("desc", "summary", "description", "content"))]
+    # 수집기별 필드명이 달라도 동일 품질 지표로 집계한다.
+    date_values = [x.get(k) for x in ("t", "time", "date", "published_at", "published")]
+    dated = [x for x, values in zip(rows, zip(*[date_values[i::len(rows)] for i in range(len(rows))])) if any(DATE_RE.match(str(v or "")) for v in values)] if rows else []
+    date_keys = ("t", "time", "date", "published_at", "published")
+    dated = [x for x in rows if any(DATE_RE.match(str(x.get(k) or "")) for k in date_keys)]
+    with_thumb = [x for x in rows if any(x.get(k) for k in ("img", "thumb", "thumbnail", "image", "image_url", "og_image"))]
+    with_summary = [x for x in rows if any(str(x.get(k) or "").strip() for k in ("desc", "summary", "description", "content", "lead", "leads"))]
+    by_source = {}
+    for source in sorted({str(x.get("src") or x.get("press") or "unknown") for x in rows}):
+        subset = [x for x in rows if str(x.get("src") or x.get("press") or "unknown") == source]
+        by_source[source] = {
+            "articles": len(subset),
+            "date_coverage": round(sum(1 for x in subset if any(DATE_RE.match(str(x.get(k) or "")) for k in date_keys)) / len(subset), 4) if subset else 0,
+            "thumbnail_coverage": round(sum(1 for x in subset if any(x.get(k) for k in ("img", "thumb", "thumbnail", "image", "image_url", "og_image"))) / len(subset), 4) if subset else 0,
+        }
     return {
         "articles": len(rows),
         "unique_urls": unique_urls,
@@ -82,6 +94,7 @@ def summarize(rows: list[dict]) -> dict:
         "thumbnail_coverage": round(len(with_thumb) / len(rows), 4) if rows else 0,
         "summary_rows": len(with_summary),
         "summary_coverage": round(len(with_summary) / len(rows), 4) if rows else 0,
+        "by_source": by_source,
     }
 
 
