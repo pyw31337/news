@@ -23,7 +23,246 @@
   const gl = (k, label) => `<a class="lk" href="${href.g(k)}">${lgi(k)}${esc(label)}</a>`;
   const glist = (items, max = 99) => items.slice(0, max).map(([label, , , k]) => gl(k, label)).join('<i class="sep">·</i>');
   const yr = (a, b) => a ? `${a}${b ? '–' + b : '–'}` : '';
-  const pcard = (o, sub) => { const c = L[o] || [o]; return NB.pchip({ name: c[0], photo: c[3] ? (/^https?:/.test(c[3]) ? c[3] : B0 + c[3]) : null }, sub, c[4] ? href.p(o) : null); };
+
+  /* 인물 기수·선후배·이해관계 DB 및 툴팁 생성기 */
+  const SENIORITY_PEOPLE = {
+    '이재명': { name: '이재명', birth: 1963, exam: { kind: '사법시험', n: 28, y: 1986 }, inst: { kind: '사법연수원', n: 18, y: 1989 }, univ: { name: '중앙대학교', major: '법학', classOf: 82 }, role: '더불어민주당 당대표 · 제22대 국회의원', hometown: '경북 안동시' },
+    '윤석열': { name: '윤석열', birth: 1960, exam: { kind: '사법시험', n: 33, y: 1991, note: '9수 끝 합격' }, inst: { kind: '사법연수원', n: 23, y: 1994 }, univ: { name: '서울대학교', major: '법학', classOf: 79 }, role: '대한민국 제20대 대통령', hometown: '서울 성북구' },
+    '문재인': { name: '문재인', birth: 1953, exam: { kind: '사법시험', n: 22, y: 1980 }, inst: { kind: '사법연수원', n: 12, y: 1982, note: '차석 수료' }, univ: { name: '경희대학교', major: '법학', classOf: 72 }, role: '대한민국 제19대 대통령', hometown: '경남 거제시' },
+    '한동훈': { name: '한동훈', birth: 1973, exam: { kind: '사법시험', n: 37, y: 1995, note: '만 22세 재학 중 합격' }, inst: { kind: '사법연수원', n: 27, y: 1998 }, univ: { name: '서울대학교', major: '법학', classOf: 92 }, role: '국민의힘 대표 (전임) · 전 법무부 장관', hometown: '서울 서초구' },
+    '김동연': { name: '김동연', birth: 1957, exam: { kind: '행정고시', n: 26, y: 1982, note: '입법고시 6회 동시합격' }, univ: { name: '덕수상고 / 국제대학교', major: '법학', classOf: 78 }, role: '제36대 경기도지사 (현직)', hometown: '충북 음성군' },
+    '남경필': { name: '남경필', birth: 1965, univ: { name: '연세대학교', major: '사회학', classOf: 84 }, role: '제34대 경기도지사 (전직)', hometown: '경기 용인시' },
+    '김문수': { name: '김문수', birth: 1951, univ: { name: '서울대학교', major: '경영학', classOf: 70 }, role: '고용노동부 장관 · 전 경기도지사', hometown: '경북 영천시' },
+    '오세훈': { name: '오세훈', birth: 1961, exam: { kind: '사법시험', n: 26, y: 1984 }, inst: { kind: '사법연수원', n: 16, y: 1987 }, univ: { name: '고려대학교', major: '법학', classOf: 79 }, role: '제39대 서울특별시장 (현직)', hometown: '서울 성동구' },
+    '박균택': { name: '박균택', birth: 1966, exam: { kind: '사법시험', n: 31, y: 1989 }, inst: { kind: '사법연수원', n: 21, y: 1992 }, univ: { name: '서울대학교', major: '법학', classOf: 85 }, role: '더불어민주당 국회의원 (이재명 당대표 법률특보)', hometown: '광주 광산구' },
+    '양부남': { name: '양부남', birth: 1961, exam: { kind: '사법시험', n: 31, y: 1989 }, inst: { kind: '사법연수원', n: 22, y: 1993 }, univ: { name: '전남대학교', major: '법학', classOf: 80 }, role: '더불어민주당 국회의원 (민주당 법률위원장)', hometown: '전남 담양군' },
+    '김민석': { name: '김민석', birth: 1964, univ: { name: '서울대학교', major: '사회학', classOf: 82 }, role: '더불어민주당 수석최고위원 · 4선 국회의원', hometown: '서울 영등포구' },
+    '지귀연': { name: '지귀연', birth: 1974, exam: { kind: '사법시험', n: 41, y: 1999 }, inst: { kind: '사법연수원', n: 31, y: 2002 }, univ: { name: '고려대학교', major: '법학', classOf: 93 }, role: '서울중앙지방법원 부장판사', hometown: '경남 밀양시' },
+    '권영진': { name: '권영진', birth: 1962, univ: { name: '고려대학교', major: '영어영문학', classOf: 80 }, role: '국민의힘 국회의원 · 전 대구광역시장', hometown: '경북 안동시' },
+    '김혜경': { name: '김혜경', birth: 1966, univ: { name: '숙명여자대학교', major: '피아노과', classOf: 85 }, role: '이재명 더불어민주당 대표 배우자', hometown: '서울' },
+    '하정우': { name: '하정우 (본명 김성훈)', birth: 1978, univ: { name: '중앙대학교', major: '연극영화학부', classOf: 97 }, role: '영화배우 · 영화감독 (중앙대 동문)', hometown: '서울 서초구' },
+    '김수현': { name: '김수현', birth: 1988, univ: { name: '중앙대학교', major: '연극영화학과', classOf: 09 }, role: '배우 (중앙대 동문)', hometown: '서울 강남구' },
+    '백선희': { name: '백선희', birth: 1969, univ: { name: '중앙대학교', major: '사회복지학' }, role: '서울신학대 교수 · 전 저출산고령사회위 (중앙대 동문)', hometown: '서울' },
+    '박기웅': { name: '박기웅', birth: 1985, role: '배우 (안동 출생 동향)', hometown: '경북 안동시' },
+    '김병철': { name: '김병철', birth: 1974, univ: { name: '중앙대학교', major: '연극영화학과' }, role: '배우 (안동 출생 및 중앙대 동문)', hometown: '경북 안동시' },
+    '최불암': { name: '최불암 (본명 최영한)', birth: 1940, role: '원로 배우 · 제14대 국회의원', hometown: '인천' },
+    '조국': { name: '조국', birth: 1965, univ: { name: '서울대학교', major: '법학', classOf: 82 }, role: '조국혁신당 대표 · 제22대 국회의원', hometown: '부산 서구' },
+    '이원석': { name: '이원석', birth: 1969, exam: { kind: '사법시험', n: 37, y: 1995 }, inst: { kind: '사법연수원', n: 27, y: 1998 }, univ: { name: '서울대학교', major: '정치학', classOf: 88 }, role: '전 검찰총장', hometown: '전남 광주' },
+    '박범계': { name: '박범계', birth: 1963, exam: { kind: '사법시험', n: 34, y: 1992 }, inst: { kind: '사법연수원', n: 23, y: 1994 }, univ: { name: '연세대학교', major: '법학', classOf: 85 }, role: '더불어민주당 국회의원 · 전 법무부 장관', hometown: '충북 영동군' }
+  };
+
+  const CURATED_PAIRS = {
+    '이재명:윤석열': {
+      badge: '2022 대선 맞수 · 사법연수원 5기수 후배',
+      summary: '2022년 제20대 대선 0.73%p차 최대 라이벌이자 현 대한민국 정치 권력의 양대 축',
+      points: [
+        { label: '사법연수원', val: '이재명(18기, 1989년) ↔ 윤석열(23기, 1994년) : 이재명이 연수원 5기수 선배' },
+        { label: '사법시험', val: '이재명(28회, 1986년) ↔ 윤석열(33회, 1991년 9수 합격) : 이재명이 사시 5회 선배' },
+        { label: '출생·학번', val: '윤석열(1960년생, 서울법대 79학번) ↔ 이재명(1963년생, 중앙법대 82학번) : 출생은 윤석열이 3살 연상, 3학번 선배' },
+        { label: '대통령·국정', val: '2022년 대선 상대방, 2024년 4월 제20대 대통령과 제1야당 대표로서 영수회담 진행' }
+      ]
+    },
+    '이재명:문재인': {
+      badge: '사법연수원 6기수 선배 · 대선 경선 경쟁',
+      summary: '참여정부 주역과 민선 5·6·7기 성남시장/경기지사로 이어진 정권 내 주요 파트너이자 대선 경쟁자',
+      points: [
+        { label: '사법연수원', val: '문재인(12기, 1982년 차석) ↔ 이재명(18기, 1989년) : 문재인이 연수원 6기수 선배' },
+        { label: '사법시험', val: '문재인(22회, 1980년) ↔ 이재명(28회, 1986년) : 문재인이 사시 6회 선배' },
+        { label: '출생·학번', val: '문재인(1953년생, 경희법대 72학번) ↔ 이재명(1963년생, 중앙법대 82학번) : 문재인이 10살 연상' },
+        { label: '정치 이력', val: '2017년 민주당 대선 경선 후보 경쟁, 문재인 정부 시기 제35대 경기도지사로 지방자치 견인' }
+      ]
+    },
+    '이재명:김동연': {
+      badge: '후임 경기도지사 · 대선 후보 단일화',
+      summary: '제35대(이재명)와 제36대(김동연) 경기도정을 연속으로 이끈 민주당 소속 광역단체장',
+      points: [
+        { label: '도정 승계', val: '이재명(제35대 도지사, 2018~2021) ↔ 김동연(제36대 현 도지사, 2022~현재) : 직속 후임 도지사' },
+        { label: '대선 단일화', val: '2022년 제20대 대선 당시 새로운물결-민주당 후보 단일화 및 공동정부 추진 협약 체결' },
+        { label: '고시·공직', val: '김동연은 행시 26회·입법고시 6회 동시합격 정통 경제관료 출신(경제부총리 역임)' }
+      ]
+    },
+    '이재명:남경필': {
+      badge: '직전 전임 경기도지사 · 2018 경기지사 맞수',
+      summary: '2018년 제7회 지방선거 경기도지사 선거에서 맞붙은 전임과 후임 지자체장',
+      points: [
+        { label: '도정 승계', val: '남경필(제34대 도지사, 2014~2018) ↔ 이재명(제35대 도지사, 2018~2021) : 이재명이 도정 계승' },
+        { label: '선거 대결', val: '2018년 지방선거 맞대결에서 이재명 후보 56.4% 득표로 승리' }
+      ]
+    },
+    '이재명:김문수': {
+      badge: '전임 경기도지사',
+      summary: '민선 4·5기(김문수)와 민선 7기(이재명) 경기도지사 역임',
+      points: [
+        { label: '경기도지사', val: '김문수(제32·33대, 2006~2014) ↔ 이재명(제35대, 2018~2021) : 전임 도지사' },
+        { label: '정치 궤적', val: '노동운동가 출신 보수 정치인과 소년공·인권변호사 출신 진보 정치인의 대조적 궤적' }
+      ]
+    },
+    '이재명:지귀연': {
+      badge: '사법연수원 13기수 후배',
+      summary: '사법연수원 선후배 법조인이자 서울중앙지방법원 부장판사',
+      points: [
+        { label: '사법연수원', val: '이재명(18기, 1989년 수료) ↔ 지귀연(31기, 2002년 수료) : 이재명이 연수원 13기수 선배' },
+        { label: '법원 직무', val: '지귀연 판사는 서울중앙지법 형사합의부 부장판사로 재직' }
+      ]
+    },
+    '이재명:오세훈': {
+      badge: '사법연수원 8기수 후배 · 수도권 광역단체장 카운터파트',
+      summary: '서울시장과 경기도지사로서 수도권 정책을 조율한 주요 여야 대권주자',
+      points: [
+        { label: '사법연수원', val: '이재명(18기, 1989년) ↔ 오세훈(26기, 1997년) : 이재명이 연수원 8기수 선배 (사시 28회 vs 26회)' },
+        { label: '출생·연령', val: '오세훈(1961년생) ↔ 이재명(1963년생) : 오세훈이 2살 연상' },
+        { label: '지자체장', val: '수도권 광역단체장(서울시장·경기지사)으로서 수도권 통합환승·방역정책 등 실무 협의' }
+      ]
+    },
+    '이재명:박균택': {
+      badge: '사법연수원 3기수 후배 · 당대표 법률특보',
+      summary: '검찰 고위직 출신으로 이재명 대표의 법률 변호와 당 사법리스크 대응 총괄',
+      points: [
+        { label: '사법연수원', val: '이재명(18기, 1989년) ↔ 박균택(21기, 1992년) : 이재명이 연수원 3기수 선배' },
+        { label: '사법시험', val: '이재명(28회, 1986년) ↔ 박균택(31회, 1989년) : 이재명이 사시 3회 선배' },
+        { label: '당내 역할', val: '전 광주고검장·법무부 검찰국장 출신, 제22대 국회 진출 후 당대표 법률특보 역임' }
+      ]
+    },
+    '이재명:양부남': {
+      badge: '사법연수원 4기수 후배 · 당 법률위원장',
+      summary: '고검장 출신으로 민주당 법률위원장을 맡아 당 사법 대응을 전담',
+      points: [
+        { label: '사법연수원', val: '이재명(18기, 1989년) ↔ 양부남(22기, 1993년) : 이재명이 연수원 4기수 선배' },
+        { label: '당내 역할', val: '전 부산고검장 출신, 제22대 국회의원 및 민주당 법률위원회 위원장 역임' }
+      ]
+    },
+    '이재명:하정우': {
+      badge: '중앙대학교 연극영화학부 후배 동문',
+      summary: '중앙대학교 15학번 터울의 문화예술계 대표 동문',
+      points: [
+        { label: '학연 관계', val: '이재명(법과대학 법학과 82학번) ↔ 하정우(예술대학 연극영화학부 97학번) : 대학 15학번 후배' },
+        { label: '동문 활동', val: '중앙대학교 총동문회 주요 회원' }
+      ]
+    },
+    '이재명:김수현': {
+      badge: '중앙대학교 연극영화학과 후배 동문',
+      summary: '중앙대학교 글로벌 스타 후배 동문',
+      points: [
+        { label: '학연 관계', val: '이재명(법학 82학번) ↔ 김수현(연극영화학 09학번) : 대학 27학번 후배' }
+      ]
+    },
+    '이재명:김혜경': {
+      badge: '배우자 (가족 관계)',
+      summary: '1991년 결혼 이래 정치 여정을 함께해 온 평생의 반려자',
+      points: [
+        { label: '결혼 및 가족', val: '1991년 변호사 개업 초기 결혼, 슬하 2남' },
+        { label: '학력 및 이력', val: '숙명여자대학교 피아노과 85학번' }
+      ]
+    },
+    '이재명:권영진': {
+      badge: '경북 안동 동향 · 전 광역단체장 카운터파트',
+      summary: '안동 출신 고향 동향이자 대구시장과 경기지사로 동시 재임한 광역단체장 관계',
+      points: [
+        { label: '지연 관계', val: '경북 안동시 출생 동향 인물' },
+        { label: '지자체장', val: '권영진(제33·34대 대구광역시장) ↔ 이재명(제35대 경기도지사) : 시·도지사협의회 카운터파트' }
+      ]
+    }
+  };
+
+  const buildRelationTooltip = (subject, target, groupKey, sub, targetId, c) => {
+    if (!subject || !target || subject === target) return '';
+    const sInfo = SENIORITY_PEOPLE[subject] || {};
+    const tInfo = SENIORITY_PEOPLE[target] || {};
+
+    const pairKey1 = subject + ':' + target;
+    const pairKey2 = target + ':' + subject;
+    const curated = CURATED_PAIRS[pairKey1] || CURATED_PAIRS[pairKey2];
+
+    let badgeText = '';
+    let badgeClass = 'blue';
+    let summary = '';
+    const points = [];
+    const targetRole = tInfo.role || (c && c[1] ? (c[1] + (c[2] ? ' · ' + c[2] + '계층' : '')) : '');
+
+    if (curated) {
+      badgeText = curated.badge;
+      badgeClass = curated.badge.includes('선배') || curated.badge.includes('후배') ? 'sen' : (curated.badge.includes('맞수') || curated.badge.includes('경쟁') ? 'rival' : 'blue');
+      summary = curated.summary;
+      curated.points.forEach(pt => points.push({ label: pt.label, val: pt.val }));
+    } else {
+      if (sInfo.inst && tInfo.inst) {
+        const diff = sInfo.inst.n - tInfo.inst.n;
+        if (diff < 0) {
+          badgeText = `사법연수원 ${Math.abs(diff)}기수 선배`;
+          badgeClass = 'sen';
+          points.push({ label: '사법연수원', val: `${subject}(제${sInfo.inst.n}기, ${sInfo.inst.y}년) ↔ ${target}(제${tInfo.inst.n}기, ${tInfo.inst.y}년) : ${subject}이 ${Math.abs(diff)}기수 선배` });
+        } else if (diff > 0) {
+          badgeText = `사법연수원 ${diff}기수 후배`;
+          badgeClass = 'sen';
+          points.push({ label: '사법연수원', val: `${subject}(제${sInfo.inst.n}기, ${sInfo.inst.y}년) ↔ ${target}(제${tInfo.inst.n}기, ${tInfo.inst.y}년) : ${target}이 ${diff}기수 선배` });
+        } else {
+          badgeText = `사법연수원 ${sInfo.inst.n}기 동기`;
+          badgeClass = 'blue';
+          points.push({ label: '사법연수원', val: `제${sInfo.inst.n}기 동기 (${sInfo.inst.y}년 동시 수료)` });
+        }
+      }
+      if (sInfo.exam && tInfo.exam) {
+        const diff = sInfo.exam.n - tInfo.exam.n;
+        const valStr = `${subject}(제${sInfo.exam.n}회) ↔ ${target}(제${tInfo.exam.n}회) : ` + (diff < 0 ? `${subject}이 사시 ${Math.abs(diff)}회 선배 합격` : (diff > 0 ? `${target}이 사시 ${diff}회 선배 합격` : `사시 제${sInfo.exam.n}회 동기 합격`));
+        points.push({ label: '사법시험', val: valStr });
+        if (!badgeText) badgeText = diff < 0 ? `사시 ${Math.abs(diff)}회 선배` : (diff > 0 ? `사시 ${diff}회 후배` : `사시 ${sInfo.exam.n}회 동기`);
+      }
+      if (sInfo.birth && tInfo.birth) {
+        const diff = sInfo.birth - tInfo.birth;
+        const bStr = `${target}(${tInfo.birth}년생) ↔ ${subject}(${sInfo.birth}년생) : ` + (diff < 0 ? `${subject}이 ${Math.abs(diff)}살 연상` : (diff > 0 ? `${target}이 ${diff}살 연상` : `동갑 (${sInfo.birth}년생)`));
+        points.push({ label: '출생·연령', val: bStr });
+      }
+      if (sInfo.univ && tInfo.univ && sInfo.univ.name === tInfo.univ.name) {
+        const uStr = `${sInfo.univ.name} 동문 : ${subject}(${sInfo.univ.classOf ? sInfo.univ.classOf + '학번' : ''}) ↔ ${target}(${tInfo.univ.classOf ? tInfo.univ.classOf + '학번' : ''})`;
+        points.push({ label: '출신 대학', val: uStr });
+        if (!badgeText) badgeText = `${sInfo.univ.name} 동문`;
+      }
+      if (groupKey) {
+        const grpClean = groupKey.replace(/^g:(?:position|school|region|party|office):/, '');
+        if (groupKey.startsWith('g:position:')) {
+          points.push({ label: '역임 직위', val: `같은 직위(${grpClean}) 역임 공직자 관계` });
+          if (!badgeText) badgeText = `동일 직위(${grpClean})`;
+        } else if (groupKey.startsWith('g:school:')) {
+          points.push({ label: '출신 학교', val: `${grpClean} 출신 동문 관계` });
+          if (!badgeText) badgeText = `${grpClean} 동문`;
+        } else if (groupKey.startsWith('g:region:')) {
+          points.push({ label: '출생 지연', val: `${grpClean} 출생 및 연고 고향 동향 관계` });
+          if (!badgeText) badgeText = `${grpClean} 동향`;
+        } else if (groupKey.startsWith('g:party:')) {
+          points.push({ label: '소속 정당', val: `${grpClean} 소속 정당 동료 관계` });
+          if (!badgeText) badgeText = `${grpClean}`;
+        }
+      } else if (sub) {
+        points.push({ label: '관계 구분', val: sub });
+        if (!badgeText) badgeText = sub;
+      }
+    }
+    if (!badgeText) badgeText = sub || '인물 관계';
+
+    return `<div class="nb-rel-tip">
+      <div class="nrt-head">
+        <div class="nrt-title-row">
+          <strong class="nrt-name">${esc(target)}</strong>
+          ${targetRole ? `<span class="nrt-role">${esc(targetRole)}</span>` : ''}
+        </div>
+        <span class="nrt-badge ${badgeClass}">${esc(badgeText)}</span>
+      </div>
+      ${summary ? `<p class="nrt-summary">${esc(summary)}</p>` : ''}
+      <ul class="nrt-list">
+        ${points.map(pt => `<li class="nrt-item">
+          <span class="nrt-label">${esc(pt.label)}</span>
+          <span class="nrt-val">${esc(pt.val)}</span>
+        </li>`).join('')}
+      </ul>
+    </div>`;
+  };
+
+  const pcard = (o, sub, groupKey = null) => {
+    const c = L[o] || [o];
+    const peerName = c[0];
+    const tipHtml = buildRelationTooltip(nm, peerName, groupKey, sub, o, c);
+    return NB.pchip({ name: peerName, photo: c[3] ? (/^https?:/.test(c[3]) ? c[3] : B0 + c[3]) : null }, sub, c[4] ? href.p(o) : null, tipHtml);
+  };
   const photo = u => /^https?:/.test(u) ? u : B0 + u;
 
   /* ── 첫 화면 ── */
@@ -261,9 +500,9 @@
   const relG = RC.map(([t, label]) => [label, (B.rel || []).filter(r => r[1] === t)]).filter(x => x[1].length);
   if (relG.length) add('s-rel', '관계', 'affiliate', relN + '명', `<div class="rels">${relG.map(([c, rs]) => `<div class="rgroup"><div class="rg-h">${esc(c)}<small>${rs.length}</small></div>${rs.map(r => {
       const [o, , sub] = r;
-      if (!o.startsWith('g:')) return `<div class="rnode">${pcard(o, RS[sub] || sub)}</div>`;
+      if (!o.startsWith('g:')) return `<div class="rnode">${pcard(o, RS[sub] || sub, null)}</div>`;
       const peers = B.gp?.[o] || [];
-      return `<div class="rnode rnode--group"><a class="lk" href="${href.g(o)}">${lgi(o)}<b>${esc(o.split(':').slice(2).join(':'))}</b></a><small>${esc(RS[sub] || sub)}</small>${peers.length ? `<div class="rpeers"><span class="rpeer-l">${esc(PEER[sub] || '함께')}</span>${peers.map(p => pcard(p)).join('')}</div>` : ''}</div>`;
+      return `<div class="rnode rnode--group"><a class="lk" href="${href.g(o)}">${lgi(o)}<b>${esc(o.split(':').slice(2).join(':'))}</b></a><small>${esc(RS[sub] || sub)}</small>${peers.length ? `<div class="rpeers"><span class="rpeer-l">${esc(PEER[sub] || '함께')}</span>${peers.map(p => pcard(p, PEER[sub] || RS[sub] || sub, o)).join('')}</div>` : ''}</div>`;
     }).join('')}</div>`).join('')}</div>`);
 
   /* ── 발언 ── */

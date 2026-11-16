@@ -41,13 +41,14 @@ function onMove(e){mk();const f=find(e.target);if(!f){if(cur)hide();return}
   if(f.kind==='s'){cur=f.el;series(f.el,e);return}
   if(cur===f.el&&f.kind!=='s')return;cur=f.el;dot.hidden=true;
   const r=f.el.getBoundingClientRect(),txt=f.kind==='t'?f.el.dataset.tip:f.txt;if(!txt)return;
+  const isHtml = f.el.dataset.tipHtml || txt.startsWith('<');
   const x=e.pointerType==='mouse'&&r.width>160?e.clientX:r.left+r.width/2;
-  show(esc(txt).replace(/ · /g,'<br>'),x,r.top,r.top)}
+  show(isHtml ? txt : esc(txt).replace(/ · /g,'<br>'),x,r.top,r.top)}
 D.addEventListener('pointermove',e=>{if(e.pointerType==='mouse')onMove(e)},{passive:true});
 D.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'){const f=find(e.target);if(f)onMove(e);else hide()}},{passive:true});
 D.addEventListener('touchmove',e=>{if(!cur||!cur.dataset||!cur.dataset.series)return;const t=e.touches[0];series(cur,{clientX:t.clientX,clientY:t.clientY})},{passive:true});
 D.addEventListener('pointerleave',hide);addEventListener('scroll',()=>{if(cur&&!(cur.dataset&&cur.dataset.series))hide()},{passive:true});
-D.addEventListener('focusin',e=>{const f=find(e.target);if(f&&f.kind==='t'){const r=f.el.getBoundingClientRect();cur=f.el;show(esc(f.el.dataset.tip),r.left+r.width/2,r.top,r.top)}});
+D.addEventListener('focusin',e=>{const f=find(e.target);if(f&&f.kind==='t'){const r=f.el.getBoundingClientRect(),txt=f.el.dataset.tip||'';cur=f.el;const isHtml=f.el.dataset.tipHtml||txt.startsWith('<');show(isHtml?txt:esc(txt),r.left+r.width/2,r.top,r.top)}});
 D.addEventListener('focusout',hide);
 window.NBTip={show,hide};
 })();

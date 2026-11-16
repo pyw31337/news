@@ -38,7 +38,19 @@ const NB = (() => {
   const stat = (label, value, unit = '', sub = '', extra = '') => `<div class="stat"><div class="stat-l">${esc(label)}</div><div class="stat-v">${esc(value)}<small>${esc(unit)}</small></div>${sub ? `<div class="stat-s">${sub}</div>` : ''}${extra}</div>`;
   const exp = (label, count, body, open = false, id = '') => `<div class="exp${open ? ' is-open' : ''}"${id ? ` id="${id}"` : ''}><button class="exp-b" type="button" aria-expanded="${open}"><span>${esc(label)}</span>${count != null ? `<span class="exp-n">${esc(count)}</span>` : ''}${ic('chevron-down')}</button><div class="exp-c"${open ? '' : ' hidden'}>${body}</div></div>`;
   const seg = (name, items, cur = 0) => `<div class="seg" role="tablist" data-seg="${name}">${items.map((t, i) => `<button type="button" role="tab" class="seg-i${i === cur ? ' is-on' : ''}" aria-selected="${i === cur}" data-i="${i}">${esc(t[0] ?? t)}${t[1] != null ? `<span class="seg-n">${t[1]}</span>` : ''}</button>`).join('')}</div>`;
-  const pchip = (p, sub = '', href = p.href) => { const tag = href ? 'a' : 'span', tip = [p.name, sub].filter(Boolean).join('\n'); return `<${tag} class="pchip"${href ? ` href="${esc(href)}"` : ''}${tip ? ` data-tip="${esc(tip)}"` : ''}>${p.photo ? `<img src="${esc(p.photo)}" alt="" loading="lazy" width="32" height="32">` : `<span class="pchip-av">${ic('user')}</span>`}<span class="pchip-t"><b>${esc(p.name)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</span></${tag}>`; };
+  const pchip = (p, sub = '', href = p.href, customTip = null) => {
+    const tag = href ? 'a' : 'span';
+    const isHtml = customTip && (customTip.startsWith('<') || customTip.includes('class='));
+    let tipAttr = '';
+    if (isHtml) {
+      tipAttr = ` data-tip="${esc(customTip)}" data-tip-html="1"`;
+    } else if (customTip) {
+      tipAttr = ` data-tip="${esc(customTip)}"`;
+    } else if (sub && sub !== p.name) {
+      tipAttr = ` data-tip="${esc(sub)}"`;
+    }
+    return `<${tag} class="pchip"${href ? ` href="${esc(href)}"` : ''}${tipAttr}>${p.photo ? `<img src="${esc(p.photo)}" alt="" loading="lazy" width="32" height="32">` : `<span class="pchip-av">${ic('user')}</span>`}<span class="pchip-t"><b>${esc(p.name)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</span></${tag}>`;
+  };
   /* 행에는 제목이 이미 보인다. 실제 수집한 요약이 있을 때만 미리보기를
      띄워 같은 제목을 말풍선에 되풀이하지 않는다. */
   const articleTip = a => {
@@ -117,12 +129,21 @@ const NB = (() => {
     if (thumb) { const img = document.createElement('img'); img.src = thumb; img.alt = ''; img.loading = 'lazy'; tipEl.append(img); tipEl.classList.add('has-thumb'); }
     else tipEl.classList.remove('has-thumb');
     const body = document.createElement('div');
-    text.split('\n').filter(Boolean).forEach((line, i) => { const n = document.createElement(i ? 'span' : 'b'); n.textContent = line; body.append(n); });
+    body.className = 'nb-tip-body';
+    if (el.dataset.tipHtml || text.startsWith('<')) {
+      body.innerHTML = text;
+    } else {
+      text.split('\n').filter(Boolean).forEach((line, i) => { const n = document.createElement(i ? 'span' : 'b'); n.textContent = line; body.append(n); });
+    }
     tipEl.append(body); tipEl.hidden = false; tipFor = el;
     const r = el.getBoundingClientRect(), x = point?.clientX ?? r.left + r.width / 2, y = point?.clientY ?? r.bottom + 10;
-    const w = tipEl.offsetWidth || 240, h = tipEl.offsetHeight || 64;
+    const w = tipEl.offsetWidth || 340, h = tipEl.offsetHeight || 64;
     tipEl.style.left = Math.max(12, Math.min(innerWidth - w - 12, x - w / 2)) + 'px';
-    tipEl.style.top = Math.max(12, Math.min(innerHeight - h - 12, y)) + 'px';
+    let topPos = y;
+    if (topPos + h > innerHeight - 12) {
+      topPos = Math.max(12, r.top - h - 10);
+    }
+    tipEl.style.top = topPos + 'px';
   };
   const pair = (el, on) => { const key = el?.closest('[data-pair]')?.dataset.pair; if (key) document.querySelectorAll(`[data-pair="${CSS.escape(key)}"]`).forEach(x => x.classList.toggle('is-focus', on)); };
   /* 상호작용: 펼치기, 세그먼트 필터, 그래프/행 툴팁 */
