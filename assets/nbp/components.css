@@ -44,7 +44,7 @@ button{font:inherit;color:inherit;letter-spacing:inherit;background:none;border:
 @keyframes tip-in{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}to{opacity:1;transform:translateY(0)}}
 
 /* 섹션: 면 대신 선으로 구분 */
-.sec{padding:var(--sec-y) 0;border-top:1px solid var(--c-line)}
+.sec{padding:56px 0;border-top:1px solid var(--c-line)}
 .sec:first-child{border-top:0}
 .sh{display:flex;align-items:baseline;gap:var(--s-3);margin-bottom:var(--s-6);flex-wrap:wrap}
 .sh-t{display:flex;align-items:center;gap:var(--s-2);font-size:var(--fs-xl);font-weight:var(--fw-bold);line-height:var(--lh-tight);letter-spacing:var(--ls-head)}
@@ -591,3 +591,64 @@ body[data-ready="1"] .vbars-f,body[data-ready="1"] .vstack-col{transform-origin:
 body[data-ready="1"] .hbars-f{transform-origin:left;animation:chart-grow-x .58s cubic-bezier(.2,.8,.2,1) both}
 body[data-ready="1"] .gantt-b{animation:chart-reveal .7s cubic-bezier(.2,.8,.2,1) both}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* ── 섹터 간격 모듈화 & 일관성 ── */
+.sec:first-child{padding-top:28px;border-top:0}
+.sh{margin-bottom:24px}
+
+/* ── 관련보도 인라인 토글 버튼 및 하위 목록 ── */
+.cluster-toggle-btn{display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;color:#2563eb;background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:1.5px 8px;margin-left:8px;cursor:pointer;vertical-align:middle;transition:all .15s ease;outline:none}
+.cluster-toggle-btn:hover{background:#dbeafe;border-color:#93c5fd;color:#1d4ed8}
+.cluster-toggle-btn .ct-arrow{font-size:10px}
+.cluster-sub-list{margin:6px 0 10px 48px;padding-left:14px;border-left:2px solid #cbd5e1;display:flex;flex-direction:column;gap:5px}
+.cluster-sub-list[hidden]{display:none}
+.cluster-sub-list .arow{background:#f8fafc;border-radius:8px;padding:6px 12px;font-size:.88rem;border:1px solid #f1f5f9}
+
+/* ── 발언 비교 세그먼트 탭별 완벽 그리드/타임라인 ── */
+.agenda-card{background:var(--c-surface);border:1px solid var(--c-line-soft);border-radius:14px;padding:20px 22px;margin-bottom:22px;box-shadow:0 2px 8px rgba(0,0,0,0.03)}
+.agenda-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #e2e8f0}
+.agenda-title{font-size:1.12rem;font-weight:800;color:#0f172a;display:flex;align-items:center;gap:8px}
+.agenda-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:14px;margin-bottom:14px}
+.speech-step-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.step-phase-badge{align-self:flex-start;font-size:11px;font-weight:750;padding:2px 8px;border-radius:12px;background:#e0e7ff;color:#3730a3}
+.step-time-src{font-size:11px;color:#64748b}
+.step-quote{font-size:.95rem;font-weight:700;color:#0f172a;line-height:1.45;margin:4px 0}
+.step-ctx{font-size:.78rem;color:#64748b;line-height:1.35}
+
+/* 개별 아젠다 탭 수직 타임라인 완벽 정렬 */
+.quotes--compare{display:block;margin-top:16px}
+.compare-topic{font-size:.92rem;color:#334155;margin-bottom:18px;padding:10px 14px;background:#f1f5f9;border-radius:8px;font-weight:500}
+.speech-timeline{position:relative;margin:24px 0 24px 140px;padding-left:24px;border-left:2px solid #cbd5e1;display:flex;flex-direction:column;gap:22px}
+.speech-row{position:relative;display:flex;flex-direction:column;gap:4px;min-width:0}
+.speech-row::before{content:"";position:absolute;left:-31px;top:6px;width:12px;height:12px;border-radius:50%;background:#2563eb;border:2px solid #ffffff;box-shadow:0 0 0 2px #bfdbfe}
+.speech-row .speech-phase{position:absolute;left:-160px;top:2px;width:124px;text-align:right;display:flex;flex-direction:column;gap:2px}
+.speech-row .speech-phase time{font-size:.82rem;font-weight:750;color:#1e293b;font-variant-numeric:tabular-nums}
+.speech-row .speech-phase .phase-src{font-size:11px;color:#64748b}
+.speech-row .speech-body{background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;box-shadow:0 2px 5px rgba(0,0,0,0.03)}
+.speech-row .speech-quote{font-size:1.02rem;font-weight:700;color:#0f172a;line-height:1.45;margin:0}
+.speech-row .speech-ctx{font-size:.80rem;color:#64748b;margin-top:6px}
+
+@media(max-width:768px){
+  .speech-timeline{margin-left:0;padding-left:18px}
+  .speech-row .speech-phase{position:static;width:auto;text-align:left;margin-bottom:4px}
+  .speech-row::before{left:-25px;top:4px}
+}
+
+/* ── 아카이브 시기별 분석 브리핑 카드 ── */
+.archive-analysis-card{background:linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);border:1px solid #bfdbfe;border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.aac-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.aac-title{font-size:.95rem;font-weight:800;color:#1e3a8a}
+.aac-tags{display:flex;gap:6px;flex-wrap:wrap}
+.aac-tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#ffffff;color:#2563eb;border:1px solid #dbeafe}
+.aac-summary{font-size:.82rem;color:#334155;line-height:1.5;margin:0}
+
+/* ── 다중 썸네일 카드 가로 그리드 ── */
+.acards{display:grid;grid-template-columns:repeat(auto-fill, minmax(230px, 1fr));gap:14px;margin:18px 0}
+.acard{background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .15s ease, box-shadow .15s ease}
+.acard:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,0.08)}
+.acard img, .acard .acard-img{width:100%;height:132px;object-fit:cover;background:#f1f5f9;display:block}
+.acard b, .acard .acard-t{padding:10px 12px 4px 12px;font-size:.88rem;font-weight:750;color:#0f172a;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0}
+.acard time, .acard .acard-meta{padding:0 12px 10px 12px;font-size:11px;color:#64748b;margin-top:auto;display:flex;justify-content:space-between}
+
+/* ── 로고 SVG 스타일 ── */
+.lg--svg{vertical-align:middle;margin-right:6px;flex-shrink:0;border-radius:4px}
