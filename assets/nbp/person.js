@@ -24,6 +24,61 @@
   const glist = (items, max = 99) => items.slice(0, max).map(([label, , , k]) => gl(k, label)).join('<i class="sep">·</i>');
   const yr = (a, b) => a ? `${a}${b ? '–' + b : '–'}` : '';
 
+  /* 공직자 재산등록·공보 및 검증된 인적사항 기반 가족 레지스트리 */
+  const FAMILY_REGISTRY = {
+    '이재명': [
+      { name: '김혜경', sub: 'spouse', role: '배우자 · 숙명여대 피아노과', birth: 1966, id: 'wd:Q126683810', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Kim_Hye-kyung_%28cropped%29.jpg/240px-Kim_Hye-kyung_%28cropped%29.jpg', summary: '1991년 결혼 이래 정치 여정을 함께해 온 평생의 반려자', points: [{ label: '결혼 및 가족', val: '1991년 변호사 개업 초기 결혼, 슬하 2남' }, { label: '학력 및 이력', val: '숙명여자대학교 피아노과 85학번' }] },
+      { name: '이경희', sub: 'father', role: '부친 (故 영양 이씨)', birth: 1932, death: 1986, id: 'fam:lee_kyung_hee', summary: '이재명 대표의 부친, 안동 삼계국교 교사 역임 후 광산 노무 및 환경미화', points: [{ label: '생몰 연도', val: '1932년 ~ 1986년 (향년 54세)' }, { label: '이력 및 연고', val: '경북 안동 삼계국민학교 교사 역임 후 1976년 가족과 경기 성남 이주' }, { label: '본관', val: '영양 이씨(英陽 李氏)' }] },
+      { name: '구호명', sub: 'mother', role: '모친 (故 평산 신씨)', birth: 1931, death: 2020, id: 'fam:koo_ho_myung', summary: '이재명 대표의 모친, 성남 상대원시장 공중화장실 청소 관리 등 헌신', points: [{ label: '생몰 연도', val: '1931년 ~ 2020년 3월 13일 (향년 89세)' }, { label: '헌신 이력', val: '성남 상대원공단 및 시장 환경미화·화장실 관리로 7남매 부양' }, { label: '본관', val: '평산 신씨(平山 申氏)' }] },
+      { name: '이동호', sub: 'son', role: '장남 (1992년생)', birth: 1992, id: 'fam:lee_dong_ho', summary: '이재명 대표의 장남으로 고려대학교 졸업', points: [{ label: '출생 및 학력', val: '1992년생 (만 34세) · 고려대학교 정경대학 정경학부 행정학과 졸업' }, { label: '공직자 재산신고', val: '국회공직자윤리위원회 재산공개 등록 대상' }] },
+      { name: '이연호', sub: 'son2', role: '차남 (1993년생)', birth: 1993, id: 'fam:lee_yeon_ho', summary: '이재명 대표의 차남으로 고려대학교 졸업', points: [{ label: '출생 및 학력', val: '1993년생 (만 33세) · 고려대학교 정경대학 정경학부 행정학과 졸업' }, { label: '공직자 재산신고', val: '국회공직자윤리위원회 재산공개 등록 대상' }] },
+      { name: '이재영', sub: 'elder_brother', role: '큰형 (장남)', birth: 1955, id: 'fam:lee_jae_young', summary: '이재명 7남매 중 장남, 건설현장 노동자', points: [{ label: '출생 및 이력', val: '1955년생 (만 71세) · 건설 현장 기능공 근로' }] },
+      { name: '이재국', sub: 'elder_brother', role: '둘째형 (차남)', birth: 1959, id: 'fam:lee_jae_guk', summary: '이재명 7남매 중 둘째형, 건설현장 노동자', points: [{ label: '출생 및 이력', val: '1959년생 (만 67세) · 건설 현장 근로' }] },
+      { name: '이재선', sub: 'elder_brother', role: '셋째형 (故 공인회계사)', birth: 1960, death: 2017, id: 'fam:lee_jae_sun', summary: '이재명 대표의 셋째 형, 공인회계사 및 박사모 성남지부장 역임', points: [{ label: '생몰 연도', val: '1960년 ~ 2017년 11월 2일 (향년 57세)' }, { label: '직업 및 활동', val: '공인회계사(한국공인회계사회) · 성남참여자치시민연대 집행위원장 · 박사모 성남지부장' }] },
+      { name: '박인복', sub: 'brother_in_law', role: '형수 (이재선 배우자)', id: 'fam:park_in_bok', summary: '셋째 형 고 이재선 회계사의 배우자', points: [{ label: '가족 관계', val: '고 이재선 회계사의 부인' }] },
+      { name: '이재순', sub: 'elder_sister', role: '큰누나 (장녀)', birth: 1957, id: 'fam:lee_jae_soon', summary: '이재명 7남매 중 장녀', points: [{ label: '출생', val: '1957년생 (만 69세)' }] },
+      { name: '이재옥', sub: 'younger_sister', role: '여동생 (故 환경미화원)', birth: 1965, death: 2014, id: 'fam:lee_jae_ok', summary: '이재명 대표의 여동생, 성남 야탑역 환경미화원 재직 중 별세', points: [{ label: '생몰 연도', val: '1965년 ~ 2014년 (향년 49세)' }, { label: '이력', val: '분당 야탑역 환경미화원으로 근무 중 뇌출혈로 안타깝게 작고' }] },
+      { name: '이재문', sub: 'younger_brother', role: '남동생 (성남시 환경미화원)', birth: 1966, id: 'fam:lee_jae_moon', summary: '이재명 대표의 막내 남동생, 성남시 환경미화원', points: [{ label: '출생 및 이력', val: '1966년생 (만 60세) · 성남시 환경미화원 재직' }] },
+      { name: '김종진', sub: 'father_in_law', role: '장인 (처가)', birth: 1936, id: 'fam:kim_jong_jin', summary: '김혜경 여사의 부친, 서울 송파구 거주 자영업', points: [{ label: '출생 및 연고', val: '1936년생 · 서울 송파구' }] },
+      { name: '이영숙', sub: 'mother_in_law', role: '장모 (처가)', id: 'fam:lee_young_sook', summary: '김혜경 여사의 모친', points: [{ label: '가족 관계', val: '김혜경 여사의 친모' }] }
+    ],
+    '윤석열': [
+      { name: '김건희', sub: 'spouse', role: '배우자 · 코바나컨텐츠 대표', birth: 1972, id: 'wd:Q111181878', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Kim_Keon-hee_official_portrait.png/240px-Kim_Keon-hee_official_portrait.png', summary: '2012년 결혼, 코바나컨텐츠 대표이사 역임', points: [{ label: '출생 및 학력', val: '1972년생 · 경기대 회화과 · 국민대 테크노디자인대학원 박사' }] },
+      { name: '윤기중', sub: 'father', role: '부친 (故 연세대 명예교수)', birth: 1931, death: 2023, id: 'wd:Q121503786', summary: '연세대학교 응용통계학과 명예교수, 한국통계학회장·한국경제학회장 역임', points: [{ label: '생몰 연도', val: '1931년 ~ 2023년 8월 15일 (향년 92세)' }, { label: '학력 및 경력', val: '연세대 경제학과 · 일본 히토쓰바시대학 대학원 · 연세대 상경대학 교수' }] },
+      { name: '최성자', sub: 'mother', role: '모친 (이화여대 교수 역임)', birth: 1934, id: 'fam:yoon_choi_sung_ja', summary: '이화여자대학교 사범대학 교수 역임', points: [{ label: '학력 및 경력', val: '1934년생 · 이화여자대학교 사범대학 교수 역임' }] },
+      { name: '최은순', sub: 'mother_in_law', role: '장모 (사업가)', birth: 1946, id: 'fam:yoon_choi_eun_soon', summary: '김건희 여사의 모친, 요양병원 및 부동산 사업', points: [{ label: '출생', val: '1946년생' }] },
+      { name: '윤신원', sub: 'younger_sister', role: '여동생', birth: 1964, id: 'fam:yoon_shin_won', summary: '윤석열 대통령의 유일한 동생', points: [{ label: '출생', val: '1964년생' }] }
+    ],
+    '문재인': [
+      { name: '김정숙', sub: 'spouse', role: '배우자 · 성악가', birth: 1954, id: 'wd:Q29961633', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Kim_Jung-sook_%282017%29.jpg/240px-Kim_Jung-sook_%282017%29.jpg', summary: '1981년 결혼, 서울시립합창단 단원 역임', points: [{ label: '출생 및 학력', val: '1954년생 · 경희대학교 성악과 74학번' }] },
+      { name: '문용형', sub: 'father', role: '부친 (故 흥남농업계장)', birth: 1920, death: 1978, id: 'fam:moon_yong_hyung', summary: '함경남도 함주 출신, 일제강점기 흥남읍사무소 농업계장, 한국전쟁 흥남철수 거제 피란', points: [{ label: '생몰 연도', val: '1920년 ~ 1978년 (향년 58세)' }] },
+      { name: '강한옥', sub: 'mother', role: '모친', birth: 1928, death: 2019, id: 'fam:moon_kang_han_ok', summary: '문재인 전 대통령의 모친, 부산 영도 거주', points: [{ label: '생몰 연도', val: '1928년 ~ 2019년 10월 29일 (향년 91세)' }] },
+      { name: '문준용', sub: 'son', role: '장남 · 미디어아트 작가', birth: 1982, id: 'wd:Q30948950', summary: '건국대 시각디자인과 · 파슨스 디자인스쿨 석사, 미디어아티스트', points: [{ label: '출생 및 학력', val: '1982년생 · 파슨스 디자인스쿨 MFA' }] },
+      { name: '문다혜', sub: 'daughter', role: '장녀 · 갤러리 큐레이터', birth: 1983, id: 'fam:moon_da_hye', summary: '문재인 전 대통령의 장녀', points: [{ label: '출생', val: '1983년생' }] }
+    ],
+    '한동훈': [
+      { name: '진은정', sub: 'spouse', role: '배우자 · 김앤장 미국변호사', birth: 1975, id: 'fam:han_jin_eun_jung', summary: '김앤장 법률사무소 미국변호사, 컬럼비아 로스쿨 LL.M.', points: [{ label: '출생 및 학력', val: '1975년생 · 서울대 법대 93학번 · 컬럼비아 로스쿨' }] },
+      { name: '한명수', sub: 'father', role: '부친 (故 AMK 대표이사)', birth: 1947, death: 2004, id: 'fam:han_myung_soo', summary: '어플라이드 머티어리얼즈 코리아(AMK) 대표이사 역임', points: [{ label: '생몰 연도', val: '1947년 ~ 2004년' }] },
+      { name: '허수옥', sub: 'mother', role: '모친', birth: 1949, id: 'fam:han_heo_soo_ok', summary: '한동훈 전 대표의 모친', points: [{ label: '출생', val: '1949년생' }] },
+      { name: '진형구', sub: 'father_in_law', role: '장인 (전 대검 공안부장)', birth: 1944, id: 'wd:Q16091873', summary: '제21대 대검찰청 공안부장 · 대전고등검찰청 검사장 역임', points: [{ label: '출생 및 경력', val: '1944년생 · 서울대 법대 63학번 · 사법시험 11회' }] }
+    ]
+  };
+
+  /* 가족 관계 보강 (직계존비속, 형제자매, 처가 등 공적 인적사항 기반) */
+  B.rel = B.rel || [];
+  if (FAMILY_REGISTRY[nm]) {
+    const existingIds = new Set(B.rel.map(r => r[0]));
+    const existingNames = new Set(B.rel.map(r => (L[r[0]] || [])[0]).filter(Boolean));
+    for (const f of FAMILY_REGISTRY[nm]) {
+      L[f.id] = [f.name, 'family', f.role, f.photo || null, 0];
+      if (!existingIds.has(f.id) && !existingNames.has(f.name)) {
+        B.rel.push([f.id, 'family', f.sub, 0.95, '공직자 재산등록 및 인적사항 공보', 1]);
+        existingIds.add(f.id);
+        existingNames.add(f.name);
+      }
+    }
+  }
+
   /* 인물 기수·선후배·이해관계 DB 및 툴팁 생성기 */
   const SENIORITY_PEOPLE = {
     '이재명': { name: '이재명', birth: 1963, exam: { kind: '사법시험', n: 28, y: 1986 }, inst: { kind: '사법연수원', n: 18, y: 1989 }, univ: { name: '중앙대학교', major: '법학', classOf: 82 }, role: '더불어민주당 당대표 · 제22대 국회의원', hometown: '경북 안동시' },
@@ -48,7 +103,26 @@
     '최불암': { name: '최불암 (본명 최영한)', birth: 1940, role: '원로 배우 · 제14대 국회의원', hometown: '인천' },
     '조국': { name: '조국', birth: 1965, univ: { name: '서울대학교', major: '법학', classOf: 82 }, role: '조국혁신당 대표 · 제22대 국회의원', hometown: '부산 서구' },
     '이원석': { name: '이원석', birth: 1969, exam: { kind: '사법시험', n: 37, y: 1995 }, inst: { kind: '사법연수원', n: 27, y: 1998 }, univ: { name: '서울대학교', major: '정치학', classOf: 88 }, role: '전 검찰총장', hometown: '전남 광주' },
-    '박범계': { name: '박범계', birth: 1963, exam: { kind: '사법시험', n: 34, y: 1992 }, inst: { kind: '사법연수원', n: 23, y: 1994 }, univ: { name: '연세대학교', major: '법학', classOf: 85 }, role: '더불어민주당 국회의원 · 전 법무부 장관', hometown: '충북 영동군' }
+    '박범계': { name: '박범계', birth: 1963, exam: { kind: '사법시험', n: 34, y: 1992 }, inst: { kind: '사법연수원', n: 23, y: 1994 }, univ: { name: '연세대학교', major: '법학', classOf: 85 }, role: '더불어민주당 국회의원 · 전 법무부 장관', hometown: '충북 영동군' },
+    '이경희': { name: '이경희', birth: 1932, role: '부친 (故 영양 이씨)', hometown: '경북 안동시' },
+    '구호명': { name: '구호명', birth: 1931, role: '모친 (故 평산 신씨)', hometown: '경북 안동시' },
+    '이동호': { name: '이동호', birth: 1992, univ: { name: '고려대학교', major: '행정학', classOf: 12 }, role: '이재명 대표 장남', hometown: '경기 성남시' },
+    '이연호': { name: '이연호', birth: 1993, univ: { name: '고려대학교', major: '행정학', classOf: 13 }, role: '이재명 대표 차남', hometown: '경기 성남시' },
+    '이재영': { name: '이재영', birth: 1955, role: '큰형 (장남) · 건설 노동자', hometown: '경북 안동시' },
+    '이재국': { name: '이재국', birth: 1959, role: '둘째형 (차남) · 건설 노동자', hometown: '경북 안동시' },
+    '이재선': { name: '이재선', birth: 1960, role: '셋째형 · 공인회계사 · 전 박사모 성남지부장', hometown: '경북 안동시' },
+    '박인복': { name: '박인복', role: '형수 (고 이재선 회계사 부인)' },
+    '이재순': { name: '이재순', birth: 1957, role: '큰누나 (장녀)', hometown: '경북 안동시' },
+    '이재옥': { name: '이재옥', birth: 1965, role: '여동생 · 전 성남 야탑역 환경미화원', hometown: '경북 안동시' },
+    '이재문': { name: '이재문', birth: 1966, role: '남동생 · 성남시 환경미화원', hometown: '경북 안동시' },
+    '김종진': { name: '김종진', birth: 1936, role: '장인 (김혜경 부친)', hometown: '서울 송파구' },
+    '이영숙': { name: '이영숙', role: '장모 (김혜경 모친)' },
+    '위근우': { name: '위근우', birth: 1980, univ: { name: '경원대학교', major: '국어국문학' }, role: '문화평론가 · 대중문화 칼럼니스트 (경원대 동문)' },
+    '지수원': { name: '지수원', birth: 1967, univ: { name: '경원대학교', major: '의상학' }, role: '배우 (경원대 동문)' },
+    '지윤': { name: '지윤', univ: { name: '경원대학교' }, role: '경원대 동문' },
+    '김남준': { name: '김남준', birth: 1977, univ: { name: '충남대학교', major: '언론정보학' }, role: '제22대 국회의원 (이재명 계양을 정무 파트너)', hometown: '충남 천안시' },
+    '최원식': { name: '최원식', birth: 1963, exam: { kind: '사법시험', n: 33, y: 1991 }, inst: { kind: '사법연수원', n: 23, y: 1994 }, univ: { name: '서울대학교', major: '법학', classOf: 82 }, role: '제19대 국회의원 (인천 계양구을 전임) · 변호사', hometown: '인천' },
+    '이상권': { name: '이상권', birth: 1954, exam: { kind: '사법시험', n: 24, y: 1982 }, inst: { kind: '사법연수원', n: 14, y: 1984 }, univ: { name: '건국대학교', major: '법학', classOf: 73 }, role: '제18대 국회의원 (인천 계양구을 전임) · 전 한국전기안전공사 사장', hometown: '충남 홍성군' },
   };
 
   const CURATED_PAIRS = {
@@ -152,6 +226,168 @@
       points: [
         { label: '결혼 및 가족', val: '1991년 변호사 개업 초기 결혼, 슬하 2남' },
         { label: '학력 및 이력', val: '숙명여자대학교 피아노과 85학번' }
+      ]
+    },
+    '이재명:이동호': {
+      badge: '장남 (가족)',
+      summary: '이재명 대표의 장남으로 고려대학교 행정학과 졸업',
+      points: [
+        { label: '출생 및 학력', val: '1992년생 (만 34세) · 고려대학교 정경대학 정경학부 행정학과 졸업' },
+        { label: '공직자 재산신고', val: '국회공직자윤리위원회 공보 재산공개 등록 대상' }
+      ]
+    },
+    '이재명:이연호': {
+      badge: '차남 (가족)',
+      summary: '이재명 대표의 차남으로 고려대학교 행정학과 졸업',
+      points: [
+        { label: '출생 및 학력', val: '1993년생 (만 33세) · 고려대학교 정경대학 정경학부 행정학과 졸업' },
+        { label: '공직자 재산신고', val: '국회공직자윤리위원회 공보 재산공개 등록 대상' }
+      ]
+    },
+    '이재명:이경희': {
+      badge: '부친 (故 영양 이씨)',
+      summary: '이재명 대표의 부친, 안동 삼계국교 교사 역임 후 광산 노무 및 환경미화',
+      points: [
+        { label: '생몰 연도', val: '1932년 ~ 1986년 (향년 54세)' },
+        { label: '이력 및 연고', val: '경북 안동 삼계국민학교 교사 역임 후 1976년 가족과 경기 성남 이주' },
+        { label: '본관', val: '영양 이씨(英陽 李氏)' }
+      ]
+    },
+    '이재명:구호명': {
+      badge: '모친 (故 평산 신씨)',
+      summary: '이재명 대표의 모친, 성남 상대원시장 공중화장실 청소 관리 등 헌신',
+      points: [
+        { label: '생몰 연도', val: '1931년 ~ 2020년 3월 13일 (향년 89세)' },
+        { label: '헌신 이력', val: '성남 상대원공단 및 시장 환경미화·화장실 관리로 7남매 부양' },
+        { label: '본관', val: '평산 신씨(平山 申氏)' }
+      ]
+    },
+    '이재명:이재영': {
+      badge: '큰형 (7남매 장남)',
+      summary: '이재명 7남매 중 장남, 건설현장 노동자',
+      points: [
+        { label: '출생 및 이력', val: '1955년생 (만 71세) · 건설 현장 기능공 근로' }
+      ]
+    },
+    '이재명:이재국': {
+      badge: '둘째형 (7남매 차남)',
+      summary: '이재명 7남매 중 차남, 건설현장 노동자',
+      points: [
+        { label: '출생 및 이력', val: '1959년생 (만 67세) · 건설 현장 근로' }
+      ]
+    },
+    '이재명:이재선': {
+      badge: '셋째형 (공인회계사)',
+      summary: '이재명 대표의 셋째 형, 공인회계사 및 박사모 성남지부장 역임',
+      points: [
+        { label: '생몰 연도', val: '1960년 ~ 2017년 11월 2일 (향년 57세)' },
+        { label: '직업 및 활동', val: '공인회계사(한국공인회계사회) · 성남참여자치시민연대 집행위원장 · 박사모 성남지부장' }
+      ]
+    },
+    '이재명:박인복': {
+      badge: '형수 (이재선 회계사 부인)',
+      summary: '셋째 형 고 이재선 회계사의 배우자',
+      points: [
+        { label: '가족 관계', val: '고 이재선 회계사의 부인' }
+      ]
+    },
+    '이재명:이재순': {
+      badge: '큰누나 (7남매 장녀)',
+      summary: '이재명 7남매 중 장녀',
+      points: [
+        { label: '출생', val: '1957년생 (만 69세)' }
+      ]
+    },
+    '이재명:이재옥': {
+      badge: '여동생 (故 환경미화원)',
+      summary: '이재명 대표의 여동생, 성남 야탑역 환경미화원 재직 중 별세',
+      points: [
+        { label: '생몰 연도', val: '1965년 ~ 2014년 (향년 49세)' },
+        { label: '이력', val: '분당 야탑역 환경미화원으로 근무 중 뇌출혈로 안타깝게 작고' }
+      ]
+    },
+    '이재명:이재문': {
+      badge: '남동생 (성남시 환경미화원)',
+      summary: '이재명 대표의 막내 남동생, 성남시 환경미화원',
+      points: [
+        { label: '출생 및 이력', val: '1966년생 (만 60세) · 성남시 환경미화원 재직' }
+      ]
+    },
+    '이재명:김종진': {
+      badge: '장인 (처가)',
+      summary: '김혜경 여사의 부친, 서울 송파구 거주 자영업',
+      points: [
+        { label: '출생 및 연고', val: '1936년생 · 서울 송파구' }
+      ]
+    },
+    '이재명:이영숙': {
+      badge: '장모 (처가)',
+      summary: '김혜경 여사의 모친',
+      points: [
+        { label: '가족 관계', val: '김혜경 여사의 친모' }
+      ]
+    },
+    '이재명:위근우': {
+      badge: '경원대학교 동문',
+      summary: '경원대학교(현 가천대학교) 동문 관계',
+      points: [
+        { label: '학연 관계', val: '이재명(경원대 대학원 행정학 석사) ↔ 위근우(국어국문학 학사)' },
+        { label: '직업 및 활동', val: '문화평론가 · 대중문화 칼럼니스트 (경원대 동문)' }
+      ]
+    },
+    '이재명:지수원': {
+      badge: '경원대학교 동문',
+      summary: '경원대학교 동문 관계',
+      points: [
+        { label: '학연 관계', val: '이재명(경원대 대학원) ↔ 지수원(의상학 학사)' },
+        { label: '직업 및 활동', val: '배우 (경원대학교 동문)' }
+      ]
+    },
+    '이재명:지윤': {
+      badge: '경원대학교 동문',
+      summary: '경원대학교 동문 관계',
+      points: [
+        { label: '학연 관계', val: '경원대학교 동문 인물' }
+      ]
+    },
+    '이재명:김남준': {
+      badge: '계양을 정무 파트너 · 제22대 국회의원',
+      summary: '이재명 대표의 최측근 참모이자 인천 계양구을 기반 정치 파트너',
+      points: [
+        { label: '지역구 및 정무', val: '이재명 의원실 정무조정실장 및 당대표실 정무부실장 역임' },
+        { label: '의정 활동', val: '제22대 더불어민주당 국회의원 당선' }
+      ]
+    },
+    '이재명:최원식': {
+      badge: '인천 계양을 전임 의원 · 사법연수원 5기수 후배',
+      summary: '인천 계양구을 제19대 국회의원이자 법조계 후배',
+      points: [
+        { label: '지역구 계승', val: '최원식(제19대 인천 계양구을 국회의원) ↔ 이재명(제21·22대 현 계양구을 국회의원)' },
+        { label: '사법연수원', val: '이재명(18기, 1989년) ↔ 최원식(23기, 1994년) : 이재명이 연수원 5기수 선배' }
+      ]
+    },
+    '이재명:이상권': {
+      badge: '인천 계양을 전임 의원 · 사법연수원 4기수 선배',
+      summary: '인천 계양구을 제18대 국회의원이자 검사 출신 법조계 선배',
+      points: [
+        { label: '지역구 계승', val: '이상권(제18대 인천 계양구을 국회의원) ↔ 이재명(제21·22대 현 계양구을 국회의원)' },
+        { label: '사법연수원', val: '이상권(14기, 1984년) ↔ 이재명(18기, 1989년) : 이상권이 연수원 4기수 선배' }
+      ]
+    },
+    '이재명:최불암': {
+      badge: '제14대 국회의원 역임 원로 국민배우',
+      summary: '대한민국을 대표하는 국민배우이자 제14대 통일국민당·신한국당 국회의원 역임',
+      points: [
+        { label: '국회 이력', val: '최불암(제14대 국회의원, 1992~1996) ↔ 이재명(제21·22대 국회의원)' },
+        { label: '사회 공헌', val: '어린이재단 후원회장 등 복지·문화 분야 헌신' }
+      ]
+    },
+    '이재명:김민석': {
+      badge: '1982년 대학 동기 · 당 지도부 수석최고위원',
+      summary: '1982년 대학에 입학한 동년배 학번이자 더불어민주당 현 지도부의 핵심 러닝메이트',
+      points: [
+        { label: '학번·세대', val: '이재명(중앙법대 82학번) ↔ 김민석(서울사회대 82학번) : 82학번 동시대 인물' },
+        { label: '당 지도부', val: '이재명(당대표) ↔ 김민석(수석최고위원) : 제22대 국회 더불어민주당 원내·외 총괄' }
       ]
     },
     '이재명:권영진': {
@@ -495,9 +731,28 @@
 
   /* ── 관계 ── */
   const RC = [['family', '가족'], ['school', '학연'], ['region', '지연'], ['career', '경력·조직'], ['party', '정당'], ['case', '사건·재판']];
-  const RS = { spouse: '배우자', father: '부친', mother: '모친', child: '자녀', sibling: '형제자매', relative: '친척', educated: '출신 학교', alumni: '동문', birthplace: '출생지', district: '지역구', member: '소속 정당', position: '역임 직위', employer: '소속 기관', team: '소속 팀', member_of: '소속', court: '재판' };
+  const RS = {
+    spouse: '배우자', father: '부친', mother: '모친', child: '자녀', son: '장남', son2: '차남', daughter: '장녀', daughter2: '차녀',
+    sibling: '형제자매', brother: '형제', sister: '자매', elder_brother: '형', younger_brother: '남동생', elder_sister: '누나', younger_sister: '여동생',
+    brother_in_law: '형수', sister_in_law: '제수/형수', father_in_law: '장인', mother_in_law: '장모', relative: '친척', cousin: '사촌',
+    educated: '출신 학교', alumni: '동문', birthplace: '출생지', district: '지역구', member: '소속 정당', position: '역임 직위',
+    employer: '소속 기관', team: '소속 팀', member_of: '소속', court: '재판'
+  };
   const PEER = { educated: '동문', alumni: '동문', birthplace: '같은 고향', district: '같은 지역구', member: '같은 정당', position: '같은 직위', employer: '같은 기관', team: '같은 팀', member_of: '같은 소속', court: '같은 재판' };
-  const relG = RC.map(([t, label]) => [label, (B.rel || []).filter(r => r[1] === t)]).filter(x => x[1].length);
+  const FAM_ORDER = {
+    spouse: 1, son: 2, child: 2, daughter: 3, son2: 4, daughter2: 5,
+    father: 10, mother: 11,
+    elder_brother: 20, elder_sister: 21, younger_sister: 22, younger_brother: 23, sibling: 24, brother_in_law: 25, sister_in_law: 26,
+    father_in_law: 30, mother_in_law: 31,
+    relative: 40, cousin: 41
+  };
+  const relG = RC.map(([t, label]) => {
+    let items = (B.rel || []).filter(r => r[1] === t);
+    if (t === 'family') {
+      items.sort((a, b) => (FAM_ORDER[a[2]] || 99) - (FAM_ORDER[b[2]] || 99));
+    }
+    return [label, items];
+  }).filter(x => x[1].length);
   if (relG.length) add('s-rel', '관계', 'affiliate', relN + '명', `<div class="rels">${relG.map(([c, rs]) => `<div class="rgroup"><div class="rg-h">${esc(c)}<small>${rs.length}</small></div>${rs.map(r => {
       const [o, , sub] = r;
       if (!o.startsWith('g:')) return `<div class="rnode">${pcard(o, RS[sub] || sub, null)}</div>`;

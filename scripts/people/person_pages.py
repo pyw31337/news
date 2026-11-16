@@ -35,6 +35,8 @@ OGM = (load(os.path.join(DATA, 'db', 'og', 'map.json'), {}) or {}).get('u', {}) 
 DATED = (load(os.path.join(PD, 'photos_dated.json'), {}) or {}).get('items', {})   # wd_media.py --dated
 AIX = load(os.path.join(PD, 'index.json'), {}) or {}
 BIO = load(os.path.join(DATA, 'people_bio.json.gz'), None) or load(os.path.join(DATA, 'people_bio.json'), {}) or {}
+FAMILIES = load(os.path.join(PD, 'families.json'), {}) or load(os.path.join(DATA, 'db', 'people', 'families.json'), {}) or {}
+
 pub = {k: v for k, v in tiers.items() if v.get('t') in (1, 2) and not v.get('minor')}
 PERSON_ID = re.compile(r'^(wd:Q\d+|pol:[A-Z0-9]+|jd:[0-9a-f]+|bio:.+)$')   # nw:(뉴스에서 찾은 이름)은 사람 확인 전이라 페이지를 만들지 않음
 
@@ -257,6 +259,13 @@ def bundle(cid):
                     L[p] = card(p)
         else:
             L[o] = card(o)
+    for f in FAMILIES.get(nm, []):
+        fid = f['id']
+        k = (fid, 'family', f['sub'])
+        if k not in seen:
+            seen.add(k)
+            rel.append([fid, 'family', f['sub'], 0.95, f.get('src', '공직자 재산등록 및 인적사항 공보'), 1])
+            L[fid] = [f['name'], '가족', 3, f.get('photo'), 0]
     car = {}
     for k in WDG:
         if w.get(k):
