@@ -98,6 +98,27 @@ def summarize(rows: list[dict]) -> dict:
     }
 
 
+def summarize(rows: list[dict]) -> dict:
+    """Normalize collector-specific fields before producing the audit report."""
+    urls = [str(x.get("url") or "") for x in rows]
+    groups: dict[str, list[dict]] = collections.defaultdict(list)
+    for row in rows:
+        key = normalize_title(str(row.get("title") or ""))
+        if key:
+            groups[key].append(row)
+    duplicate_groups = [items for items in groups.values() if len(items) > 1]
+    date_keys = ("t", "time", "date", "published_at", "published")
+    thumb_keys = ("img", "thumb", "thumbnail", "image", "image_url", "og_image")
+    summary_keys = ("desc", "summary", "description", "content", "lead", "leads")
+    dated = [x for x in rows if any(DATE_RE.match(str(x.get(k) or "")) for k in date_keys)]
+    with_thumb = [x for x in rows if any(x.get(k) for k in thumb_keys)]
+    with_summary = [x for x in rows if any(str(x.get(k) or "").strip() for k in summary_keys)]
+    by_source = {}
+    for source in sorted({str(x.get("src") or x.get("press") or "unknown") for x in rows}):
+        subset = [x for x in rows if str(x.get("src") or x.get("press") or "unknown") == source]
+        by_source[source] = {"articles": len(subset), "date_coverage": round(sum(1 for x in subset if any(DATE_RE.match(str(x.get(k) or "")) for k in date_keys)) / len(subset), 4) if subset else 0, "thumbnail_coverage": round(sum(1 for x in subset if any(x.get(k) for k in thumb_keys)) / len(subset), 4) if subset else 0}
+    return {"articles": len(rows), "unique_urls": len(set(u for u in urls if u)), "duplicate_title_groups": len(duplicate_groups), "duplicate_title_rows": sum(len(x) for x in duplicate_groups), "missing_or_invalid_date": len(rows) - len(dated), "date_coverage": round(len(dated) / len(rows), 4) if rows else 0, "thumbnail_rows": len(with_thumb), "thumbnail_coverage": round(len(with_thumb) / len(rows), 4) if rows else 0, "summary_rows": len(with_summary), "summary_coverage": round(len(with_summary) / len(rows), 4) if rows else 0, "by_source": by_source}
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", default=".", help="repository root")
