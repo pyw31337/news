@@ -39,6 +39,19 @@ def _terms(i):
 def _score(title, terms):
     t = (title or '').lower()
     return sum((2 if len(x) >= 3 else 1) for x in terms if x in t)
+STRONG = {'수석', '합격자', '커닝', 'ai커닝', '안경', '부정행위', '자수', '경찰', '출석', '변호사', '법적', '의혹', '만점', '한원석'}
+def _relevant(title, terms):
+    t = (title or '').lower(); hits = {x for x in terms if x in t}; strong = {x for x in hits if x in STRONG or any(x in y for y in STRONG)}
+    return len(strong) >= 1 and (len(hits) >= 2 or bool(strong & {'자수','경찰','출석','변호사','부정행위','의혹','만점','안경'}))
+def _stage_rank(title):
+    import re
+    t = title or ''
+    if re.search(r'자수|인정|실토|시인', t): return 5
+    if re.search(r'경찰|출석|수사|피의자', t): return 4
+    if re.search(r'변호사|법적 대응|말도 안|부인|아니다', t): return 3
+    if re.search(r'의혹|만점|고득점|99\.38|안경', t): return 2
+    if re.search(r'합격|수석|발표', t): return 1
+    return 0
 def _stage(title):
     import re
     t = title or ''
@@ -56,10 +69,10 @@ def _archive_flow(i):
         date = g.get('date')
         for it in g.get('items') or []:
             sc = _score(it.get('title'), terms)
-            if date and sc:
+            if date and sc and _relevant(it.get('title'), terms):
                 e = dict(date=date, title=it.get('title'), body=it.get('body',''), url=it.get('url') or it.get('ourl'), img=it.get('img'), press=it.get('press'), stage=_stage(it.get('title')),
-                         score=sc)
-                if not groups.get(date) or e['score'] > groups[date]['score']: groups[date] = e
+                         score=sc, stage_rank=_stage_rank(it.get('title')))
+                if not groups.get(date) or (e['stage_rank'], e['score']) > (groups[date].get('stage_rank', 0), groups[date]['score']): groups[date] = e
     for ap in sorted(_glob.glob(os.path.join(SITE, 'data', 'archive', '20*.json'))):
         date = os.path.basename(ap)[:10]
         if date >= (D.get('date') or '9999-99-99'): continue
@@ -67,13 +80,13 @@ def _archive_flow(i):
         except Exception: continue
         for old in aj.get('issues') or []:
             ot = _terms(old); overlap = len(terms & ot)
-            if overlap < 2: continue
+            if overlap < 2 or not _relevant(old.get('title'), terms): continue
             sources = old.get('sources') or []
             if not sources: continue
-            best = max(sources, key=lambda s: _score(s.get('title'), terms))
+            best = max(sources, key=lambda s: (_stage_rank(s.get('title') or ''), _score(s.get('title'), terms)))
             sc = _score(best.get('title'), terms) + overlap
-            e = dict(date=date, title=best.get('title') or old.get('title'), body=(old.get('summary') or [''])[0], url=best.get('url') or best.get('ourl'), img=best.get('img'), press=best.get('press'), stage=_stage(best.get('title') or old.get('title')), score=sc)
-            if not groups.get(date) or e['score'] > groups[date]['score']: groups[date] = e
+            e = dict(date=date, title=best.get('title') or old.get('title'), body=(old.get('summary') or [''])[0], url=best.get('url') or best.get('ourl'), img=best.get('img'), press=best.get('press'), stage=_stage(best.get('title') or old.get('title')), score=sc, stage_rank=_stage_rank(best.get('title') or old.get('title')))
+            if not groups.get(date) or (e['stage_rank'], e['score']) > (groups[date].get('stage_rank', 0), groups[date]['score']): groups[date] = e
     return [groups[k] for k in sorted(groups)]
 for i in D.get('issues', []):
     fl = sorted({f.get('date') for f in i.get('flow') or [] if f.get('date')})
