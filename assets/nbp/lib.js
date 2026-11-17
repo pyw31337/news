@@ -62,7 +62,7 @@ const NB = (() => {
     return `<a class="arow${a.img ? ' has-thumb' : ''}" href="${esc(a.url)}" target="_blank" rel="noopener"${tip ? ` data-tip="${esc(tip)}"` : ''}${a.img ? ` data-thumb="${esc(a.img)}"` : ''}><time>${esc(md(a.t))}</time>${a.img ? `<img class="arow-img" src="${esc(a.img)}" alt="" loading="lazy" decoding="async">` : ''}<span class="arow-t">${esc(title)}</span><span class="arow-p">${esc(a.press)}</span></a>`;
   };
   const BASE = (document.querySelector('meta[name=nb-base]') || {}).content || '../';
-  const href = { p: id => `${BASE}person/?id=${encodeURIComponent(id)}`, g: k => `${BASE}e/?k=${encodeURIComponent(k)}` };
+  const href = { p: id => `${BASE}person/?id=${encodeURIComponent(id)}`, g: k => `${BASE}e/?k=${encodeURIComponent(k)}`, e: k => `${BASE}e/?k=${encodeURIComponent(k)}` };
   /* 압축 JSON(.json.gz) 읽기: 화면이 직접 풂 */
   const gz = async url => { const r = await fetch(url); if (!r.ok) throw new Error(r.status); if (!('DecompressionStream' in window)) throw new Error('no gzip'); return JSON.parse(await new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).text()); };
   const shard = async (s, n) => { const b = new Uint8Array(await crypto.subtle.digest('SHA-1', new TextEncoder().encode(s))); return parseInt([...b.slice(0, 3)].map(x => x.toString(16).padStart(2, '0')).join(''), 16) % n; };

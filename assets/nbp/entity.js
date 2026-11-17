@@ -2,6 +2,7 @@
    사람은 1계층만 인물 페이지로 연결, 2계층은 이름만, 3계층은 묶음에 들어오지 않음. 빈 섹션은 그리지 않음. */
 (async () => {
   const { esc, ic, num, href, shard, RAW } = NB, app = document.getElementById('app'), B0 = NB.BASE;
+  if (!href.e) href.e = href.g || (k => `${B0}e/?k=${encodeURIComponent(k)}`);
   const k = new URLSearchParams(location.search).get('k') || '';
   const TY = { school: ['학교', 'school'], career: ['경력·기관', 'briefcase'], party: ['정당', 'flag'], org: ['소속', 'building'], award: ['수상', 'trophy'], occ: ['직업', 'id-badge'], region: ['지역', 'map-pin'], committee: ['국회 위원회', 'users-group'], case: ['사건·재판', 'gavel'], kind: ['분야', 'category'] };
   const fail = () => { app.innerHTML = `<section class="hero hero--empty"><div><h1>항목을 찾지 못했어요</h1><p class="hero-line"><a class="lnk" href="${B0}persons/">인물 보기${ic('arrow-right')}</a></p></div></section>`; document.body.dataset.ready = '1'; };
@@ -199,13 +200,15 @@
 
     const schools = directNeighbors.filter(d => d.rel === 'ALUMNI_OF' || d.node.type === 'school');
     const exams = directNeighbors.filter(d => d.rel === 'EXAM_COHORT' || d.node.type === 'exam_cohort');
-    const execs = directNeighbors.filter(d => d.rel.includes('EXECUTIVE') || d.rel.includes('MEMBER'));
+    const kinships = directNeighbors.filter(d => d.rel.includes('KINSHIP') || d.meta.family);
+    const execs = directNeighbors.filter(d => d.rel.includes('EXECUTIVE') || d.rel.includes('MEMBER') || d.rel.includes('OFFICER') || d.rel.includes('STAKEHOLDER'));
+    const dartFilings = directNeighbors.filter(d => d.rel.includes('FILED') || d.rel.includes('CONTRACT') || d.rel.includes('BOND') || d.rel.includes('VALUE_UP') || d.rel.includes('ACCIDENT'));
     let crimes = directNeighbors.filter(d => d.node.type === 'legal_guideline' || d.rel.includes('GUIDELINE'));
-    const themes = directNeighbors.filter(d => d.node.type === 'theme' || d.node.type === 'incident' || d.node.type === 'current_issue');
+    const themes = directNeighbors.filter(d => d.node.type === 'theme' || d.node.type === 'incident' || d.node.type === 'current_issue' || d.node.type === 'corporate_event' || d.node.type === 'industry' || d.node.type === 'ontology_crossing');
 
     if (!crimes.length) {
-      // 2-Hop 로테크 양형기준 추적 (연루 사건·이슈 경유)
-      for (const t of themes) {
+      // 2-Hop 로테크 양형기준 추적 (연루 사건·이슈 또는 소속/직책 경유)
+      for (const t of [...themes, ...execs]) {
         const tEdges = (ontoGraph.edges || []).filter(e => e.src === t.node.id || e.tgt === t.node.id);
         for (const te of tEdges) {
           const gId = te.src === t.node.id ? te.tgt : te.src;
@@ -217,20 +220,65 @@
       }
     }
 
+    // 2-Hop 멀티홉 횡단 경로 추출 (현재 노드 ➔ 이웃 ➔ 2-Hop 노드)
+    const multiHopPaths = [];
+    const keyNeighbors = directNeighbors.filter(d => d.node.name && !d.node.name.startsWith('corp_') && d.node.type !== 'legal_guideline').slice(0, 4);
+    for (const kn of keyNeighbors) {
+      const secondHopEdges = (ontoGraph.edges || []).filter(e => (e.src === kn.node.id || e.tgt === kn.node.id) && e.src !== ontoNode.id && e.tgt !== ontoNode.id);
+      for (const se of secondHopEdges.slice(0, 2)) {
+        const hop2Id = se.src === kn.node.id ? se.tgt : se.src;
+        const hop2Node = (ontoGraph.nodes || []).find(n => n.id === hop2Id);
+        if (hop2Node && hop2Node.id !== ontoNode.id && !multiHopPaths.some(p => p.to.id === hop2Node.id)) {
+          multiHopPaths.push({
+            via: kn.node,
+            viaRel: kn.rel,
+            to: hop2Node,
+            toRel: se.rel
+          });
+        }
+      }
+    }
+
     let ontoBody = `<div class="card" style="padding:var(--s-4, 16px);background:var(--paper-soft, #f8f9fc);border-radius:var(--r-md, 12px);border:1px solid var(--line, #e2e8f0);margin-bottom:var(--s-4, 16px)">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
-        <span style="font-size:13px;font-weight:700">다차원 온톨로지 지식망 (총 ${ontoLinks.length}개 교차 관계망)</span>
-        <span class="src-chip" style="font-size:11px">정재계·법조·공시·여론 온톨로지</span>
+        <span style="font-size:13px;font-weight:700">다차원 온톨로지 지식망 (총 ${ontoLinks.length}개 직결 관계망)</span>
+        <span class="src-chip" style="font-size:11px">정재계·법조·공시·여론 온톨로지 v3</span>
       </div>
       <p style="font-size:12px;color:var(--ink-muted, #64748b);margin:0 0 12px">
-        인물·기업·학연·지연·사법연수원·DART 공시·대법원 양형기준이 상호 유기적으로 결합된 온톨로지 연결 체계입니다.
+        인물·기업·혈연·학연·지연·사법연수원·DART 공시·대법원 양형기준이 상호 유기적으로 결합된 온톨로지 연결 체계입니다. 클릭하여 연계 엔티티로 즉시 이동할 수 있습니다.
       </p>
+
+      ${multiHopPaths.length ? `
+        <div style="background:#fff;border:1px solid #cbd5e1;border-radius:8px;padding:10px 12px;margin-bottom:12px">
+          <div style="font-size:12px;font-weight:700;color:var(--ink, #0f172a);margin-bottom:8px">🌐 2-Hop 다차원 교차 횡단 경로 (Multi-Hop Traversal)</div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            ${multiHopPaths.slice(0, 4).map(p => `
+              <div style="font-size:12px;display:flex;align-items:center;flex-wrap:wrap;gap:6px;line-height:1.4">
+                <span class="src-chip is-on" style="font-weight:700;font-size:11px">${esc(ontoNode.name)}</span>
+                <span style="color:#94a3b8">➔</span>
+                <a href="${href.e(p.via.name)}" class="src-chip" style="font-size:11px;font-weight:600">${esc(p.via.name)} <small style="color:#64748b">(${esc(p.viaRel.replace('REV_', ''))})</small></a>
+                <span style="color:#94a3b8">➔</span>
+                <a href="${href.e(p.to.name)}" class="src-chip" style="font-size:11px;border-color:#3b82f6;color:#1d4ed8;font-weight:600">${esc(p.to.name)} <small style="color:#3b82f6">(${esc(p.toRel)})</small></a>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      ` : ''}
+
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px">
+        ${kinships.length ? `
+          <div style="background:#fff;border:1px solid #fbcfe8;border-radius:8px;padding:10px">
+            <div style="font-size:12px;font-weight:700;color:#be185d;margin-bottom:6px">👪 정재계 혈연·혼맥 지식망 (${kinships.length}명)</div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px">
+              ${kinships.map(k => `<a href="${href.e(k.node.name)}" class="src-chip" style="font-size:11.5px;border-color:#f472b6;color:#be185d;background:#fdf2f8">${esc(k.node.name)} <small>가족</small></a>`).join('')}
+            </div>
+          </div>
+        ` : ''}
         ${schools.length ? `
           <div style="background:#fff;border:1px solid var(--line, #e2e8f0);border-radius:8px;padding:10px">
             <div style="font-size:12px;font-weight:700;color:var(--ink, #0f172a);margin-bottom:6px">🎓 학연 네트워크 (${schools.length}개)</div>
             <div style="display:flex;flex-wrap:wrap;gap:4px">
-              ${schools.map(s => `<span class="src-chip" style="font-size:11.5px">${esc(s.node.name)}</span>`).join('')}
+              ${schools.map(s => `<a href="${href.e(s.node.name)}" class="src-chip" style="font-size:11.5px">${esc(s.node.name)}</a>`).join('')}
             </div>
           </div>
         ` : ''}
@@ -238,7 +286,7 @@
           <div style="background:#fff;border:1px solid var(--line, #e2e8f0);border-radius:8px;padding:10px">
             <div style="font-size:12px;font-weight:700;color:var(--ink, #0f172a);margin-bottom:6px">⚖️ 사법시험·연수원 기수 동기</div>
             <div style="display:flex;flex-wrap:wrap;gap:4px">
-              ${exams.map(x => `<span class="src-chip is-on" style="font-size:11.5px">${esc(x.node.name)}</span>`).join('')}
+              ${exams.map(x => `<a href="${href.e(x.node.name)}" class="src-chip is-on" style="font-size:11.5px">${esc(x.node.name)}</a>`).join('')}
             </div>
           </div>
         ` : ''}
@@ -246,7 +294,20 @@
           <div style="background:#fff;border:1px solid var(--line, #e2e8f0);border-radius:8px;padding:10px">
             <div style="font-size:12px;font-weight:700;color:var(--ink, #0f172a);margin-bottom:6px">🏛️ 소속·재직 및 지배구조 관계망 (${execs.length}건)</div>
             <div style="display:flex;flex-wrap:wrap;gap:4px">
-              ${execs.slice(0, 8).map(x => `<a href="${href.p(x.node.name)}" class="src-chip" style="font-size:11.5px">${esc(x.node.name)} <small>${esc(x.meta?.role || x.rel)}</small></a>`).join('')}
+              ${execs.slice(0, 10).map(x => `<a href="${href.e(x.node.name)}" class="src-chip" style="font-size:11.5px">${esc(x.node.name)} <small>${esc(x.meta?.role || x.rel)}</small></a>`).join('')}
+            </div>
+          </div>
+        ` : ''}
+        ${dartFilings.length ? `
+          <div style="background:#fff;border:1px solid #bfdbfe;border-radius:8px;padding:10px">
+            <div style="font-size:12px;font-weight:700;color:#1e40af;margin-bottom:6px">📋 DART 주요 경영·공시 연계 (${dartFilings.length}건)</div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              ${dartFilings.slice(0, 4).map(df => `
+                <div style="font-size:11.5px;line-height:1.4">
+                  <span class="src-chip" style="font-size:10px;padding:1px 5px;background:#eff6ff;color:#1e40af">${esc(df.node.name)}</span>
+                  ${df.meta.title ? `<a href="${esc(df.meta.url || '#')}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">${esc(df.meta.title)}</a>` : ''}
+                </div>
+              `).join('')}
             </div>
           </div>
         ` : ''}
@@ -260,22 +321,26 @@
         ` : ''}
       </div>
       ${crimes.length ? `
-        <div style="margin-top:12px;background:#fff5f5;border:1px solid #fed7d7;border-radius:8px;padding:10px 12px">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
-            <span style="font-size:12.5px;font-weight:700;color:#c53030">⚖️ 로테크(LegalTech) 대법원 양형기준 통계 연동</span>
-            <span class="src-chip" style="font-size:10px;background:#fff;color:#c53030;border-color:#feb2b2">양형위원회 공식</span>
+        <div style="margin-top:12px;background:#fff5f5;border:1px solid #fed7d7;border-radius:8px;padding:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-size:13px;font-weight:700;color:#c53030">⚖️ 로테크(LegalTech) 대법원 양형기준 통계 연동</span>
+            <span class="src-chip" style="font-size:10.5px;background:#fff;color:#c53030;border-color:#feb2b2;font-weight:600">대법원 양형위원회 공식</span>
           </div>
           ${crimes.map(c => {
             const cp = c.node.props || {};
+            const basic = cp.basic_sentence || cp.base_range || '—';
+            const disq = cp.disqualification_risk || (cp.loss_of_seat_rate ? `${cp.loss_of_seat_rate}%` : (cp.disqualification_rate ? `${cp.disqualification_rate}%` : null));
+            const prob = cp.probation_rate || '—';
             return `
-              <div style="font-size:12px;color:#2d3748;line-height:1.6">
-                <div><b>적용 혐의:</b> ${esc(c.node.name)}</div>
-                <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:4px">
-                  <span>기본 권고형량: <b>${esc(cp.base_range || '—')}</b></span>
-                  ${cp.loss_of_seat_rate ? `<span>당선무효(벌금 100만↑) 확률: <b style="color:#e53e3e">${cp.loss_of_seat_rate}%</b></span>` : ''}
-                  ${cp.disqualification_rate ? `<span>임원 결격사유 확률: <b style="color:#e53e3e">${cp.disqualification_rate}%</b></span>` : ''}
-                  <span>집행유예 확률: <b>${cp.probation_rate || 0}%</b></span>
+              <div style="font-size:12px;color:#2d3748;line-height:1.6;margin-top:6px;padding-top:6px;border-top:1px dashed #fed7d7">
+                <div><b>적용 범죄군:</b> <span style="font-weight:700;color:#9b2c2c">${esc(c.node.name)}</span> ${c.meta.via ? `<small style="color:#718096">(${esc(c.meta.via)} 경유)</small>` : ''}</div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px;margin-top:4px">
+                  <div>• 기본 권고형량: <b>${esc(basic)}</b></div>
+                  ${cp.aggravated_sentence ? `<div>• 가중 영역: <b style="color:#c53030">${esc(cp.aggravated_sentence)}</b></div>` : ''}
+                  ${disq ? `<div>• 당선무효/임원결격 위험: <b style="color:#e53e3e">${esc(disq)}</b></div>` : ''}
+                  <div>• 집행유예율: <b>${esc(prob)}</b></div>
                 </div>
+                ${cp.key_mitigation_factors ? `<div style="margin-top:4px;font-size:11px;color:#4a5568">• 주요 감경 인자: ${esc(cp.key_mitigation_factors)}</div>` : ''}
               </div>
             `;
           }).join('')}

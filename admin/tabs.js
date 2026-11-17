@@ -389,20 +389,20 @@ async pipeline(el){const{E,N,K}=B();
     <div style="background:#f8faff;border:1px solid #c8d9fb;border-radius:10px;padding:12px;margin-bottom:12px">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:.8rem;margin-bottom:6px">
         <span><b>지식그래프 규모:</b> 총 노드 <b>${N(ost.total_nodes)}개</b> · 연결 관계망 <b>${N(ost.total_edges)}개</b></span>
-        <span class="fine">기업 ${N(ost.corporations_count)}사 · 인물 ${N(ost.persons_count)}명 · 법조 ${ost.legal_institutions_count||43}곳 · 학교 ${ost.schools_count||309}개 · 연수원 ${ost.exam_cohorts_count||6}기수</span>
+        <span class="fine">기업 ${N(ost.corporations_count)}사 · 인물 ${N(ost.persons_count)}명 · 학교 ${ost.schools_count||309}개 · 혈연 ${ost.family_pairs_count||852}쌍 · DART 공시연계 ${N(ost.dart_filings_linked_count||1720)}건</span>
       </div>
       <p style="font-size:.76rem;color:var(--mute);margin:0">
-        * 단편적 데이터 나열을 넘어, 인물 ⇄ 기업 ⇄ 학연/지연 ⇄ 사법연수원 ⇄ DART 공시 ⇄ 판결 양형기준 ⇄ 커뮤니티 민심을 유기적으로 넘나드는 온톨로지 탐색망입니다.
+        * 단편적 데이터 나열을 넘어, 인물 ⇄ 기업 ⇄ 혈연 ⇄ 학연/지연 ⇄ 사법연수원 ⇄ DART 공시 ⇄ 판결 양형기준 ⇄ 커뮤니티 민심을 유기적으로 넘나드는 온톨로지 탐색망입니다.
       </p>
     </div>
 
     <div style="margin-bottom:12px">
       <label style="display:block;font-size:.78rem;font-weight:700;margin-bottom:4px">🔍 온톨로지 전수 엔티티 교차 검색 (인물·기업·학교·기수·법률·이슈·커뮤니티)</label>
-      <input type="search" id="onto-node-q" placeholder="검색어 입력 (예: 이재명, 조희대, 삼성전자, 중앙대학교, 사법연수원34기, 공직선거법, HBM, 디시인사이드)" value="${E(filterNodeText)}" style="width:100%;padding:8px 12px;font-size:.8rem;border:1px solid var(--line);border-radius:8px">
+      <input type="search" id="onto-node-q" placeholder="검색어 입력 (예: 이재명, 조희대, 삼성전자, 현대자동차, 중앙대학교, 사법연수원34기, 공직선거법, HBM, 디시인사이드)" value="${E(filterNodeText)}" style="width:100%;padding:8px 12px;font-size:.8rem;border:1px solid var(--line);border-radius:8px">
       ${searchNodeResult}
     </div>
 
-    <h4 style="margin:0 0 8px;font-size:.82rem">다차원 온톨로지 교차 탐색 경로 (Multi-hop Crossings - 8개 심층 테마)</h4>
+    <h4 style="margin:0 0 8px;font-size:.82rem">다차원 온톨로지 교차 탐색 경로 (Multi-hop Crossings - ${sc.length}개 심층 테마)</h4>
     <div class="onto-grid">
       ${sc.map(s => `
         <div class="onto-card">
@@ -499,9 +499,9 @@ async pipeline(el){const{E,N,K}=B();
   <div class="kpis">
     ${kpi('가동 수집 장비','6기 정상','100% 가동률 (30분~일 단위)')}
     ${kpi('지능 분석 엔진','6기 정상','스탠스·교차분석·양형·메타')}
-    ${kpi('누적 기사 수집',N((st.stats?.naver||0)+(st.stats?.google||0)+180000)+'건','국내 14.8만 + 해외 3.5만')}
-    ${kpi('인물·임원 명부','81,660명','정치·공직 7.9만 + DART 2,167명')}
-    ${kpi('기업·공시 데이터','6,742건','코스피·코스닥 70개사 5개년')}
+    ${kpi('온톨로지 지식망','22,804 노드','6,736개 정재계·법조·공시 연결망')}
+    ${kpi('인물·임원 명부','81,660명','정치·공직 7.9만 + DART 임원진')}
+    ${kpi('기업·공시 데이터','8,787건','DART 2,500사 + 공시 6,289건')}
     ${kpi('커뮤니티 민심','5대 채널','디시·펨코·뽐뿌·오유·클리앙')}
   </div>
 
