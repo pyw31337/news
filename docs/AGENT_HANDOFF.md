@@ -1,5 +1,7 @@
 # NewsBoard 에이전트 공동 인수인계서
 
+> **자동화 공동 인수인계 정본:** [`docs/AGENT_AUTOMATION_HANDOFF.md`](AGENT_AUTOMATION_HANDOFF.md) — 수집·분석·품질 장치의 실행 순서, 에이전트 경계, 장애 복구와 현재 운영 판정을 먼저 확인하세요.
+
 > 기준 시각: **2026-11-16 17:00 KST 데이터 스냅샷 / 2026-11-16 코드 기준**
 >
 > 대상: Antigravity · Codex · Gemini · Grok · Claude Code · 로컬 에이전트

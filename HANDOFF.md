@@ -1,5 +1,7 @@
 # NewsBoard 인수인계 (HANDOFF)
 
+> **자동화 공동 인수인계 정본:** [docs/AGENT_AUTOMATION_HANDOFF.md](docs/AGENT_AUTOMATION_HANDOFF.md) — Codex·Claude·Gemini·Grok·로컬 에이전트가 공유하는 수집·분석·품질 실행 계약입니다.
+
 > **현재 공동 작업 정본:** [docs/AGENT_HANDOFF.md](docs/AGENT_HANDOFF.md) — 2026-11-11 현재 수집량, 분야별 방향, 검증 규칙, 실행 순서와 미해결 항목을 먼저 읽으세요. 이 문서의 오래된 수치와 과거 계획은 역사 기록으로만 사용합니다.
 >
 > 최종 갱신: **2026-11-11 14:51 KST 데이터 스냅샷 / 2026-11-11 코드 기준**. 다음 에이전트는 **HANDOFF_PROMPT.md → docs/AGENT_HANDOFF.md → docs/PEOPLE.md → 이 문서 10·11절 → 관련 설계 문서** 순서로 읽으세요.
