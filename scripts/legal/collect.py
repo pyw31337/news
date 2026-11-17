@@ -79,7 +79,9 @@ def lawgo(oc):
     if not oc or not probe('law.go.kr', f'http://www.law.go.kr/DRF/lawSearch.do?OC={up.quote(oc)}&target=law&type=XML&query=%EB%AF%BC%EB%B2%95'): return
     # 행정심판례(decc)는 개인 분쟁·행정처분의 실제 흐름을 보완한다.
     # 다른 대상과 같은 증분 페이지 방식으로 보관하되, 원문 개인정보는 공식 비실명화 결과만 사용한다.
-    for target, idkey in (('prec', '판례일련번호'), ('detc', '헌재결정례일련번호'), ('expc', '법령해석례일련번호'), ('decc', '행정심판례일련번호')):
+    # 행정심판례 목록 API의 실제 필드명은 '행정심판재결례일련번호'다
+    # (본문 가이드의 '행정심판례일련번호'와 표기가 다르므로 별도 매핑).
+    for target, idkey in (('prec', '판례일련번호'), ('detc', '헌재결정례일련번호'), ('expc', '법령해석례일련번호'), ('decc', '행정심판재결례일련번호')):
         st = STATE.setdefault('law_' + target, {'page': 1, 'ids': []}); ids = set(st['ids']); added = 0; t0 = time.time()
         for _ in range(30):
             if time.time() - t0 > 600: break
@@ -99,7 +101,7 @@ def lawgo(oc):
             if not rows:
                 LOG['sources']['law.go.kr'][target + '_keys'] = list(body.keys())[:12]; st['page'] = 1; break
             for row in rows:
-                i = str(row.get(idkey) or row.get('id') or next((v for k, v in row.items() if k.endswith('일련번호')), '') or '')
+                i = str(row.get(idkey) or (row.get('행정심판례일련번호') if target == 'decc' else '') or row.get('id') or next((v for k, v in row.items() if k.endswith('일련번호')), '') or '')
                 if not i or i in ids: continue
                 try: det = json.loads(get(f'http://www.law.go.kr/DRF/lawService.do?OC={oc}&target={target}&ID={i}&type=JSON'))
                 except Exception: continue
