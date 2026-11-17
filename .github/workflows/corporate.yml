@@ -23,6 +23,7 @@ jobs:
         with: { python-version: '3.12' }
       - name: 기업 기본 도시에 구축
         run: |
+          python scripts/dart_all_corps.py
           python scripts/corporate_dossier.py
           python scripts/dart_executives.py
       - name: 결과 저장
