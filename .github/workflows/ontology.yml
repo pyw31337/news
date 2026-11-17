@@ -35,7 +35,7 @@ jobs:
         run: |
           git config user.name "newsboard-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add ontology_graph.json serendipity_insights.json db/ontology_extracted.json lawtech/precedents_db.json insu/policy_terms_db.json 2>/dev/null || true
+          git add ontology_graph.json serendipity_insights.json extracted_relations.json lawtech/precedents_db.json insu/policy_terms_db.json 2>/dev/null || true
           git diff --cached --quiet || git commit -qm "data: ontology graph"
           for n in 1 2 3; do
             git push -q origin HEAD:data && exit 0
