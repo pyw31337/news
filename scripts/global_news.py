@@ -5,6 +5,8 @@ from concurrent.futures import ThreadPoolExecutor
 ROOT = os.path.join(os.path.dirname(__file__), '..', 'data')
 KST = dt.timezone(dt.timedelta(hours=9)); NOW = dt.datetime.now(KST)
 UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36'}
+PAPAGO_ID = os.environ.get('NAVER_CLIENT_ID', '')
+PAPAGO_SECRET = os.environ.get('NAVER_CLIENT_SECRET', '')
 
 import atexit as _ax, collections as _co, urllib.parse as _up
 DIAG = {'ok': _co.Counter(), 'fail': _co.Counter(), 'errors': []}
@@ -118,6 +120,23 @@ def tr_batch(texts):
                     time.sleep(1.5 * (attempt + 1))
                 if ok: break
             if ok: break
+        # Google Translate가 무료 호출 제한(429)에 걸리면, 이미 등록된
+        # 네이버 API 자격증명의 Papago NMT를 짧은 보조 경로로 사용한다.
+        # 자격증명이 없거나 quota가 거부되면 원문을 유지하고 다음 회차에 재시도한다.
+        if not ok and PAPAGO_ID and PAPAGO_SECRET:
+            try:
+                body = urllib.parse.urlencode({'source': 'en', 'target': 'ko', 'text': marked[:5000]}).encode()
+                req = urllib.request.Request('https://naveropenapi.apigw.ntruss.com/nmt/v1/translation', body,
+                    {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'X-Naver-Client-Id': PAPAGO_ID, 'X-Naver-Client-Secret': PAPAGO_SECRET})
+                raw = urllib.request.urlopen(req, timeout=15).read().decode('utf-8', 'replace')
+                translated = (json.loads(raw).get('message') or {}).get('result', {}).get('translatedText', '')
+                parts = re.split(r'<<<NBSEP\d{4}>>>\s*', translated)
+                if len(parts) == len(group):
+                    for text, value in zip(group, parts): TC[text] = value.strip(); out[text] = value.strip()
+                    TR_STAT['papago_batches'] += 1; TR_STAT['papago_items'] += len(group); ok = True
+            except Exception as e:
+                DIAG['fail']['papago'] += 1
+                DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S', time.gmtime(time.time() + 32400)), host='papago', path='/nmt/v1/translation', err=str(e)[:120]))
         if ok: continue
         TR_STAT['deferred'] += len(group)
     return out

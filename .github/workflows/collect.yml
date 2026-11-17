@@ -76,6 +76,9 @@ jobs:
       - name: 해외 뉴스(번역)
         continue-on-error: true
         timeout-minutes: 12
+        env:
+          NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+          NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
         run: python scripts/global_news.py
       - name: 해외 이슈 AI 해설(요약·배경·왜 중요한가 · 영어 원문+한국어)
         continue-on-error: true
