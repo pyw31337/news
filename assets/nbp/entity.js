@@ -111,59 +111,107 @@
   ].filter(Boolean);
   const kinds_nav = kinds ? `<div class="ent-k">${Object.entries(kinds).map(([n, v]) => `<a class="src-chip${n === G.n ? ' is-on' : ''}" href="${href.g('kind:' + n)}">${esc(n)}<small>${num(v.c)}</small></a>`).join('')}</div>` : '';
   if (corpData) {
-    const cf = corpData.financials || [], cemp = (corpData.employees || []).at(-1) || {}, cexec = corpData.executives_history || [], chis = corpData.history || [];
-    const maxSales = Math.max(1, ...cf.map(x => x.sales || 0));
+    const cf15 = corpData.financials_15y || [];
+    const cf = cf15.length ? cf15 : (corpData.financials || []);
+    const cemp = (corpData.employees || []).at(-1) || {};
+    const cexec = corpData.ceo_history || corpData.executives_history || [];
+    const chis = corpData.history || [];
+    const bmilestones = corpData.blackbox_milestones || [];
+    const hnames = corpData.historical_names || [];
+
+    const maxSales = Math.max(1, ...cf.map(x => (x.sales || x.revenue || 0)));
     const finHtml = `<div class="card" style="padding:var(--s-4, 16px);background:var(--paper-soft, #f8f9fc);border-radius:var(--r-md, 12px);border:1px solid var(--line, #e2e8f0);margin-bottom:var(--s-4, 16px)">
-      <div style="font-size:13px;color:var(--ink-muted, #64748b);margin-bottom:12px;display:flex;justify-content:space-between">
-        <span>최근 5개년 매출·영업이익·자산 시계열 추이 (단위: 억원)</span>
-        <span class="src-chip" style="font-size:11px">금융감독원 OpenDART 공시 기반</span>
+      <div style="font-size:13px;color:var(--ink-muted, #64748b);margin-bottom:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px">
+        <span><b>${cf.length}개년</b> 일대기 재무 시계열 성장 추이 (단위: 억원)</span>
+        <span class="src-chip" style="font-size:11px">금융감독원 OpenDART 공시 원장</span>
       </div>
-      <div style="display:grid;gap:8px">
-        ${cf.map(r => `
+      <div style="display:grid;gap:8px;max-height:420px;overflow-y:auto;padding-right:4px">
+        ${cf.map(r => {
+          const s = r.sales || r.revenue || 0;
+          const op = r.op_income || 0;
+          const ni = r.net_income || 0;
+          const asst = r.assets || 0;
+          const mg = r.margin !== undefined ? r.margin : (s ? ((op/s)*100).toFixed(1) : 0);
+          return `
           <div style="display:grid;grid-template-columns:55px 1fr 110px;align-items:center;gap:10px;font-size:13px">
             <span style="font-weight:700">${r.year}년</span>
             <div style="height:14px;background:#e2e8f0;border-radius:7px;overflow:hidden;display:flex">
-              <i style="height:100%;width:${(r.sales/maxSales*100).toFixed(0)}%;background:#1d4ed8;border-radius:7px"></i>
+              <i style="height:100%;width:${(s/maxSales*100).toFixed(0)}%;background:#1d4ed8;border-radius:7px"></i>
             </div>
-            <div style="text-align:right">매출 <b>${(r.sales/10000).toFixed(1)}조</b></div>
+            <div style="text-align:right">매출 <b>${(s/10000).toFixed(1)}조</b></div>
           </div>
           <div style="display:grid;grid-template-columns:55px 1fr 110px;font-size:11px;color:var(--ink-muted, #64748b);padding-bottom:6px;border-bottom:1px dashed #e2e8f0">
             <span></span>
-            <span>영업이익 ${(r.op_income/10000).toFixed(2)}조 · 순이익 ${(r.net_income/10000).toFixed(2)}조</span>
-            <span style="text-align:right">자산 ${(r.assets/10000).toFixed(1)}조</span>
+            <span>영업익 ${(op/10000).toFixed(2)}조 (${mg}%) · 순익 ${(ni/10000).toFixed(2)}조</span>
+            <span style="text-align:right">${asst ? `자산 ${(asst/10000).toFixed(1)}조` : ''}</span>
           </div>
-        `).join('')}
+        `;}).join('')}
       </div>
     </div>`;
-    add('s-corp-fin', '기업 재무 시계열 성장 추이', 'chart-bar', `${cf.length}개년`, finHtml);
+    add('s-corp-fin', '기업 15개년 재무 시계열 성장 추이', 'chart-bar', `${cf.length}개년`, finHtml);
+
+    if (bmilestones.length) {
+      const bbHtml = `<div class="card" style="padding:var(--s-4, 16px);background:var(--paper-soft, #f8f9fc);border-radius:var(--r-md, 12px);border:1px solid var(--line, #e2e8f0);margin-bottom:var(--s-4, 16px)">
+        <div style="font-size:13px;color:var(--ink-muted, #64748b);margin-bottom:12px;display:flex;justify-content:space-between">
+          <span>창립부터 현재까지 기업 명맥을 관통하는 중대 사건 블랙박스</span>
+          <span class="src-chip" style="font-size:11px">역사적 변곡점 ${bmilestones.length}선</span>
+        </div>
+        <div style="position:relative;padding-left:18px;border-left:2px solid #3b82f6;margin-left:6px;display:grid;gap:12px">
+          ${bmilestones.map(m => `
+            <div style="position:relative">
+              <div style="position:absolute;left:-24px;top:4px;width:10px;height:10px;border-radius:50%;background:#2563eb;border:2px solid #fff"></div>
+              <div style="font-size:13px;font-weight:700;color:var(--ink, #0f172a)">
+                <span class="src-chip" style="font-size:11px;margin-right:6px">${m.year}년</span> ${esc(m.event)}
+              </div>
+              <div style="font-size:12px;color:var(--ink-muted, #64748b);margin-top:2px;line-height:1.5">${esc(m.impact)}</div>
+            </div>
+          `).join('')}
+        </div>
+        ${hnames.length ? `
+          <div style="margin-top:16px;padding-top:12px;border-top:1px dashed #cbd5e1">
+            <h4 style="font-size:12.5px;margin:0 0 8px;color:#334155">사명 변천사 (최초 창립부터 현재까지)</h4>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              ${hnames.map(hn => `
+                <div style="background:#fff;border:1px solid #cbd5e1;border-radius:6px;padding:6px 10px;font-size:12px">
+                  <b>${esc(hn.name)}</b> <span style="color:#64748b">(${esc(hn.period)})</span>
+                  <div style="font-size:11px;color:#94a3b8">${esc(hn.reason)}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+      </div>`;
+      add('s-corp-blackbox', '기업 일대기 15개년 블랙박스 타임라인', 'history', `${bmilestones.length}대 사건`, bbHtml);
+    }
 
     const empHtml = `<div class="card" style="padding:var(--s-4, 16px);background:var(--paper-soft, #f8f9fc);border-radius:var(--r-md, 12px);border:1px solid var(--line, #e2e8f0);margin-bottom:var(--s-4, 16px)">
       <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;font-size:13px">
-        <div>총 임직원: <b>${num(cemp.total)}명</b> (정규직 ${((cemp.regular/cemp.total)*100).toFixed(1)}%)</div>
-        <div>평균 근속: <b>${cemp.avg_tenure_years}년</b></div>
-        <div>성비: 남성 <b>${cemp.male_ratio}%</b> · 여성 <b>${cemp.female_ratio}%</b></div>
+        <div>총 임직원: <b>${cemp.total ? num(cemp.total) + '명' : '공시 집계 중'}</b> ${cemp.regular && cemp.total ? `(정규직 ${((cemp.regular/cemp.total)*100).toFixed(1)}%)` : ''}</div>
+        <div>평균 근속: <b>${cemp.avg_tenure_years || cemp.avg_tenure || '—'}년</b></div>
+        <div>성비: 남성 <b>${cemp.male_ratio || '—'}%</b> · 여성 <b>${cemp.female_ratio || '—'}%</b></div>
       </div>
+      ${cemp.male_ratio ? `
       <div style="height:12px;border-radius:6px;background:#e2e8f0;overflow:hidden;display:flex;margin-bottom:14px">
         <i style="height:100%;width:${cemp.male_ratio}%;background:#2563eb" title="남성 ${cemp.male_ratio}%"></i>
         <i style="height:100%;width:${cemp.female_ratio}%;background:#ea580c" title="여성 ${cemp.female_ratio}%"></i>
-      </div>
+      </div>` : ''}
       <h4 style="font-size:13px;margin:12px 0 6px">사명 변천사 및 기업 주요 연혁</h4>
       <ul style="margin:0;padding-left:18px;font-size:12.5px;line-height:1.7;color:var(--ink-sub, #334155)">
         ${chis.map(h => `<li><span style="color:var(--ink-muted, #64748b)">${esc(h.date)}</span> <b>[${esc(h.type)}]</b> ${esc(h.event)}</li>`).join('')}
       </ul>
     </div>`;
-    add('s-corp-emp', '고용 구조 & 사명 변천사', 'users', `${num(cemp.total)}명`, empHtml);
+    add('s-corp-emp', '고용 구조 & 사명 변천사', 'users', `${cemp.total ? num(cemp.total) + '명' : '인력'}`, empHtml);
 
     if (cexec.length) {
       const execHtml = `<div style="overflow-x:auto">
         <table class="tbl" style="width:100%;border-collapse:collapse;font-size:13px">
-          <thead><tr><th style="text-align:left;padding:8px">성명</th><th style="text-align:left;padding:8px">직위/역할</th><th style="text-align:right;padding:8px">재직 기간</th><th style="text-align:right;padding:8px">출생</th><th style="text-align:left;padding:8px">주요 이력</th></tr></thead>
+          <thead><tr><th style="text-align:left;padding:8px">성명</th><th style="text-align:left;padding:8px">직위/역할</th><th style="text-align:right;padding:8px">재직 기간</th><th style="text-align:right;padding:8px">출생</th><th style="text-align:left;padding:8px">주요 이력 및 치적</th></tr></thead>
           <tbody>
-            ${cexec.map(x => `<tr style="border-bottom:1px solid var(--line, #e2e8f0)"><td style="padding:8px"><b>${esc(x.name)}</b></td><td style="padding:8px"><span class="src-chip" style="font-size:11px">${esc(x.role)}</span></td><td style="text-align:right;padding:8px">${esc(x.period)}</td><td style="text-align:right;padding:8px">${esc(x.birth_year || '—')}</td><td style="padding:8px;font-size:12px;color:var(--ink-muted, #64748b)">${esc(x.note)}</td></tr>`).join('')}
+            ${cexec.map(x => `<tr style="border-bottom:1px solid var(--line, #e2e8f0)"><td style="padding:8px"><b>${esc(x.name)}</b></td><td style="padding:8px"><span class="src-chip" style="font-size:11px">${esc(x.role || '대표이사')}</span></td><td style="text-align:right;padding:8px">${esc(x.period)}</td><td style="text-align:right;padding:8px">${esc(x.birth_year || '—')}</td><td style="padding:8px;font-size:12px;color:var(--ink-muted, #64748b)">${esc(x.achievement || x.note || '')}</td></tr>`).join('')}
           </tbody>
         </table>
       </div>`;
-      add('s-corp-exec', '역대 대표이사 및 주요 경영진', 'id-badge', `${cexec.length}명`, execHtml);
+      add('s-corp-exec', '역대 대표이사 및 리더십 일대기', 'id-badge', `${cexec.length}명`, execHtml);
     }
   }
   if (corpFilings) {

@@ -112,7 +112,7 @@ async sched(el){const{E,N,bars,tog,md}=B();const S=await get(),C=S.schedule,R=C.
    <div class="dots">${w.live.recent.map(([s,c,m])=>`<i class="${c==='success'?'ok':c==='failure'||c==='timed_out'?'bad':c==='cancelled'||c==='skipped'?'':'run'}" data-t="${E(t(s))} · ${E(c||'')}${m?' · '+m+'분':''}"></i>`).join('')}</div>`:'<p class="fine">최근 7일 실행 기록 없음</p>'}
    <p class="fine">${E((w.desc||'').slice(0,140))}</p></div>`).join('')}</div>`},
 async pipeline(el){const{E,N,K}=B();
-  let cd=null,cs=null,st={},og=null,cidx=null,seren=null,lawdb=null,insudb=null;
+  let cd=null,cs=null,st={},og=null,cidx=null,seren=null,lawdb=null,insudb=null,cbuzz=null,cmat=null,cdaemon=null;
   try{cd=await(await fetch('../data/corporate_dossier.json',{cache:'no-store'})).json()}catch(e){}
   try{cs=await(await fetch('../data/community_sentiment.json',{cache:'no-store'})).json()}catch(e){}
   try{st=await(await fetch('../data/status.json',{cache:'no-store'})).json()}catch(e){}
@@ -121,14 +121,17 @@ async pipeline(el){const{E,N,K}=B();
   try{seren=await(await fetch('../data/serendipity_insights.json',{cache:'no-store'})).json()}catch(e){}
   try{lawdb=await(await fetch('../data/lawtech/precedents_db.json',{cache:'no-store'})).json()}catch(e){}
   try{insudb=await(await fetch('../data/insu/policy_terms_db.json',{cache:'no-store'})).json()}catch(e){}
+  try{cbuzz=await(await fetch('../data/community/buzz_index.json',{cache:'no-store'})).json()}catch(e){}
+  try{cmat=await(await fetch('../data/community/sentiment_matrix.json',{cache:'no-store'})).json()}catch(e){}
+  try{cdaemon=await(await fetch('../data/db/corps/batch_status.json',{cache:'no-store'})).json()}catch(e){}
 
   const Harvesters=[
     {id:'h-news',name:'종합 뉴스 하베스터',code:'News Harvester',period:'30분 주기 (매시 07분/37분)',src:'네이버 뉴스 (80개 언론사) · 구글 뉴스 RSS · 주요 외신',obj:'국내외 1보·속보·종합 기사, 포토 썸네일, 댓글 지표',load:'일 2,400+ 건 / 누적 18.3만 건',st:'정상 가동',ok:true,desc:'언론사 랭킹·섹션별 기사 수집 및 해상도 높은 썸네일 검증 적재'},
     {id:'h-gov',name:'공공 의정·선거 수집기',code:'Gov Assembly Collector',period:'매일 06:00 KST / 실시간',src:'열린국회정보 API · 의안정보시스템 · 중앙선관위 명부',obj:'21~22대 국회의원 전수, 지방자치단체장, 선거·재산 이력',load:'인물 79,493명 / 의안 3.2만 건',st:'정상 가동',ok:true,desc:'국회 발의 의안, 본회의 표결 결과 및 공직자 재산 변동 내역 전수 연동'},
-    {id:'h-dart',name:'DART 기업·임원 공시 수집기',code:'DART Corporate Ingestion',period:'매일 18:30 KST (장 마감 직후)',src:'금융감독원 전자공시시스템(OpenDART) · KIND 상장공시',obj:'코스피·코스닥 70개사 사업보고서, 5개년 재무, 역대 임원',load:'임원 2,988명 / 대표이사 161명 등재',st:'정상 가동',ok:true,desc:'사명 변경 이력, 매출/영업익/자산 5개년 시계열 및 고용 구조(성비/근속) 추출'},
-    {id:'h-legal',name:'법조·판결문 로테크 수집기',code:'Legal Caselaw Harvester',period:'주간 배치 & 주요 선고 실시간',src:'대법원 양형위원회 양형기준표 · 형사 선고문 · 종합법률정보',obj:'공직선거법(허위사실), 뇌물수수, 특정경제범죄 횡령·배임 판례',load:'양형 기준 3대 범죄군 / 판례 1,200+건',st:'정상 가동',ok:true,desc:'감경/기본/가중 인자별 권고 형량표 및 집행유예·의원직상실 확률 모델 구축'},
-    {id:'h-comm',name:'5대 커뮤니티 민심 수집기',code:'Community Pulse Crawler',period:'매시 정각 (시간당 1회)',src:'디시인사이드 · 에펨코리아 · 뽐뿌 · 오늘의유머 · 클리앙',obj:'주요 이슈별 실시간 추천글, 베스트 게시물, 댓글 텍스트',load:'5개 채널 / 이슈당 반응 500+ 건',st:'정상 가동',ok:true,desc:'이슈별 조회수, 추천수, 댓글 감성 온도(긍정/부정/중립) 및 대중 여론 추적'},
-    {id:'h-net',name:'정재계 엘리트 관계망 수집기',code:'Elite Network Collector',period:'상시 배치 동기화',src:'위키데이터 SPARQL · 대학 총동문회보 · 사법연수원 기수',obj:'학연(고교/대학), 지연(출신지), 사법연수원 동기, 상임위 연계',load:'관계 섹터 12종 / 연계망 4.5만 건',st:'정상 가동',ok:true,desc:'중앙대·경원대 등 학연, 안동·성남 등 지연, 연수원 18기 등 다차원 관계망 교차 구축'}
+    {id:'h-dart',name:'DART 2,500사 15개년 블랙박스 수집 데몬',code:'DART 15-Year Blackbox Daemon',period:'매일 18:30 KST (장 마감 직후) & 백그라운드',src:'금융감독원 전자공시시스템(OpenDART) · KIND 상장공시',obj:'코스피·코스닥 2,498개사 15개년(2010~2024) 재무, 역대 CEO, 사명변천, 사건사고',load:'진행률 19.9% (498/2,498사) / 일 2만 쿼터',st:'정상 가동',ok:true,desc:'15개년 재무(매출·영업익·순익·마진·부채비율) 및 기업 일대기 중대 사건 블랙박스 순차 적재'},
+    {id:'h-legal',name:'법률서비스 렛츠로(Let’s Law) 리딩 판례 수집기',code:'Legal Caselaw Harvester',period:'주간 배치 & 주요 선고 실시간',src:'대법원 양형위원회 양형기준표 · 형사 선고문 · 종합법률정보',obj:'횡령·배임, 선거법, 시세조종, 중대재해, 전세사기, 음주운전, 명예훼손 등 15대 리딩 판례',load:'15대 핵심 판례 온톨로지 / 양형기준 연계',st:'정상 가동',ok:true,desc:'감경/기본/가중 인자별 권고 형량표 및 집행유예·의원직상실 확률 모델 구축'},
+    {id:'h-insu',name:'보험상담 렛츠인슈(Let’s Insu) 약관·분쟁 수집기',code:'Insurance Dispute Harvester',period:'매월 정기 배치',src:'생·손보사 표준약관 공시실 · 금융감독원 분쟁조정위원회 · 대법원 판례',obj:'4세대 실손, 3대 질병(암/뇌/심), 가족일배책, 운전자, 백내장 등 7대 표준약관 및 분쟁례',load:'7대 표준약관 및 부지급 방어 전략 DB',st:'정상 가동',ok:true,desc:'보험사 면책 주장 논리 반박을 위한 KCD 질병코드 ⇄ 약관 ⇄ 대법원/금감원 판례 매핑'},
+    {id:'h-comm',name:'11대 커뮤니티 전수 민심 여론 수집기',code:'11-Community Pulse Crawler',period:'매시 정각 (시간당 1회)',src:'블라인드 · 보배드림 · 더쿠 · 인벤 · SLR클럽 · 디시 · 펨코 · 뽐뿌 · 오유 · 클리앙 · 루리웹',obj:'주요 이슈별 실시간 추천글, 베스트 게시물, 여론 온도(-100~+100)',load:'11개 채널 / 일 2,500+ 건 아카이브',st:'정상 가동',ok:true,desc:'채널별 직장인·소비자·2030·여성·시사 여론 온도 및 대중 버즈 추적'}
   ];
 
   const Engines=[
@@ -193,60 +196,71 @@ async pipeline(el){const{E,N,K}=B();
   const drawCorp=()=>{
     const corp=corps[curCorpKey];
     if(!corp)return '<p class="mute">기업 정보가 없습니다.</p>';
-    const f=corp.financials||[], emp=(corp.employees||[]).at(-1)||{}, execs=corp.executives_history||[], his=corp.history||[];
-    const mxSales=Math.max(1,...f.map(x=>x.sales||0));
+    const f=corp.financials_15y || corp.financials || [], emp=(corp.employees||[]).at(-1)||{}, execs=corp.ceo_history || corp.executives_history||[], his=corp.blackbox_milestones || corp.history||[];
+    const mxSales=Math.max(1,...f.map(x=>x.revenue || x.sales || 0));
+    const is15y = !!corp.financials_15y;
     return `
     <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:12px;border-bottom:1px solid var(--line);padding-bottom:8px">
-      <div><span class="pill ok" style="margin-right:6px">${E(corp.market)}</span><b>${E(corp.corp_name)}</b> <span class="mute">(${E(curCorpKey)}) · ${E(corp.industry)}</span></div>
-      <div class="fine">설립일: ${E(corp.founded)} · 상장일: ${E(corp.listed)}</div>
+      <div><span class="pill ok" style="margin-right:6px">${E(corp.market)}</span><b>${E(corp.corp_name)}</b> <span class="mute">(${E(curCorpKey)}) · ${E(corp.industry||corp.sector||'')}</span></div>
+      <div class="fine">설립일: ${E(corp.founded||corp.foundation_date||'')} · 상장일: ${E(corp.listed||corp.listing_date||'')}</div>
     </div>
     <div class="grid2">
       <div>
-        <h4 style="margin:0 0 6px;font-size:.82rem">5개년 재무 시계열 성장 추이 <small class="mute">(단위: 억원)</small></h4>
-        <div style="background:#fafbfd;border:1px solid var(--line);border-radius:8px;padding:8px 12px">
-          ${f.map(r=>`
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+          <h4 style="margin:0;font-size:.82rem">${is15y ? '15개년 일대기' : '5개년'} 재무 시계열 성장 추이 <small class="mute">(단위: 억원)</small></h4>
+          <span class="pill ok" style="font-size:.65rem">${f.length}개년 시계열</span>
+        </div>
+        <div style="background:#fafbfd;border:1px solid var(--line);border-radius:8px;padding:8px 12px;max-height:360px;overflow-y:auto">
+          ${f.map(r=>{
+            const s = r.revenue || r.sales || 0;
+            const op = r.op_income || 0;
+            const ni = r.net_income || 0;
+            const asst = r.assets || 0;
+            const mg = r.margin !== undefined ? r.margin : (s ? ((op/s)*100).toFixed(1) : 0);
+            return `
             <div style="display:grid;grid-template-columns:50px 1fr 100px;align-items:center;gap:8px;font-size:.75rem;padding:3px 0">
               <span class="mute">${r.year}년</span>
-              <div class="bar"><i style="width:${(r.sales/mxSales*100).toFixed(0)}%;background:#2f6bff"></i></div>
-              <div style="text-align:right">매출 <b>${(r.sales/10000).toFixed(1)}조</b></div>
+              <div class="bar"><i style="width:${(s/mxSales*100).toFixed(0)}%;background:#2f6bff"></i></div>
+              <div style="text-align:right">매출 <b>${(s/10000).toFixed(1)}조</b></div>
             </div>
             <div style="display:grid;grid-template-columns:50px 1fr 100px;align-items:center;gap:8px;font-size:.7rem;padding:0 0 4px;color:var(--mute)">
               <span></span>
-              <span class="fine">영업익 ${(r.op_income/10000).toFixed(2)}조 · 순익 ${(r.net_income/10000).toFixed(2)}조</span>
-              <span style="text-align:right">자산 ${(r.assets/10000).toFixed(1)}조</span>
+              <span class="fine">영업익 ${(op/10000).toFixed(2)}조 (${mg}%) · 순익 ${(ni/10000).toFixed(2)}조</span>
+              <span style="text-align:right">${asst ? `자산 ${(asst/10000).toFixed(1)}조` : ''}</span>
             </div>
-          `).join('')}
+          `;}).join('')}
         </div>
       </div>
       <div>
         <h4 style="margin:0 0 6px;font-size:.82rem">임직원 고용 구조 & 사명 변천사</h4>
         <div style="background:#fafbfd;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin-bottom:10px">
           <div style="display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:4px">
-            <span>총 임직원: <b>${N(emp.total)}명</b></span>
-            <span>평균 근속: <b>${emp.avg_tenure_years}년</b></span>
+            <span>총 임직원: <b>${emp.total ? N(emp.total) + '명' : '공시 집계 중'}</b></span>
+            <span>평균 근속: <b>${emp.avg_tenure_years || emp.avg_tenure || '—'}년</b></span>
           </div>
+          ${emp.male_ratio ? `
           <div class="gauge-bar" title="남성 ${emp.male_ratio}% · 여성 ${emp.female_ratio}%">
             <i class="pos" style="width:${emp.male_ratio}%;background:#2f6bff"></i>
             <i class="neg" style="width:${emp.female_ratio}%;background:#ff4d2e"></i>
           </div>
           <div class="fine" style="display:flex;justify-content:space-between;margin-top:2px">
             <span>남성 ${emp.male_ratio}%</span>
-            <span>정규직 ${((emp.regular/emp.total)*100).toFixed(1)}%</span>
+            <span>정규직 ${emp.regular ? ((emp.regular/emp.total)*100).toFixed(1) + '%' : '—'}</span>
             <span>여성 ${emp.female_ratio}%</span>
-          </div>
+          </div>` : ''}
         </div>
-        <h4 style="margin:0 0 4px;font-size:.82rem">주요 연혁 & 사명 변천 타임라인</h4>
-        <ul style="margin:0;padding-left:1.2rem;font-size:.76rem;color:#333;line-height:1.6">
-          ${his.slice(0,4).map(h=>`<li><span class="mute">${E(h.date)}</span> <b>[${E(h.type)}]</b> ${E(h.event)}</li>`).join('')}
+        <h4 style="margin:0 0 4px;font-size:.82rem">기업 일대기 중대 사건 블랙박스 (${his.length}선)</h4>
+        <ul style="margin:0;padding-left:1.2rem;font-size:.76rem;color:#333;line-height:1.6;max-height:220px;overflow-y:auto">
+          ${his.map(h=>`<li><span class="mute">${E(h.year ? h.year + '년' : h.date)}</span> <b>[${E(h.event || h.type)}]</b> ${E(h.impact || h.event)}</li>`).join('')}
         </ul>
       </div>
     </div>
     <div style="margin-top:12px">
-      <h4 style="margin:0 0 6px;font-size:.82rem">역대 대표이사 및 주요 경영진 라인업 (${execs.length}명)</h4>
+      <h4 style="margin:0 0 6px;font-size:.82rem">역대 대표이사 및 리더십 일대기 (${execs.length}명)</h4>
       <table class="tbl">
-        <thead><tr><th>성명</th><th>직위/역할</th><th>재직 기간</th><th>출생</th><th>경력 및 특이사항</th></tr></thead>
+        <thead><tr><th>성명</th><th>직위/역할</th><th>재직 기간</th><th>출생</th><th>경력 및 주요 치적</th></tr></thead>
         <tbody>
-          ${execs.map(x=>`<tr><td><b>${E(x.name)}</b></td><td><span class="pill ok">${E(x.role)}</span></td><td class="n">${E(x.period)}</td><td class="n">${E(x.birth_year||'—')}</td><td class="w">${E(x.note)}</td></tr>`).join('')}
+          ${execs.map(x=>`<tr><td><b>${E(x.name)}</b></td><td><span class="pill ok">${E(x.role||'대표이사')}</span></td><td class="n">${E(x.period)}</td><td class="n">${E(x.birth_year||'—')}</td><td class="w">${E(x.achievement||x.note||'')}</td></tr>`).join('')}
         </tbody>
       </table>
     </div>`;
@@ -291,53 +305,113 @@ async pipeline(el){const{E,N,K}=B();
   };
 
   const drawComm=()=>{
-    if(!cs||!cs.issues)return '<p class="mute">커뮤니티 수집 데이터를 준비하는 중입니다.</p>';
+    const matList = cmat ? Object.entries(cmat) : [];
+    const buzzList = (cbuzz && cbuzz.buzz_list) || [];
     return `
-    <div class="grid2">
-      ${cs.issues.map(iss=>{
-        const bd = iss.breakdown || iss.sentiment_ratio || { positive: 0, neutral: 0, negative: 0 };
-        const score = iss.sentiment_score !== undefined ? iss.sentiment_score : Math.round(bd.positive - bd.negative);
-        const title = iss.issue_title || iss.title || '주요 이슈';
-        const channels = iss.channels || [];
-        const posts = iss.community_posts || [];
-        return `
-        <div class="card" style="background:#fafbfd;border:1px solid var(--line);padding:12px;border-radius:10px">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
-            <b>${E(title)}</b>
-            <span class="pill run">${E(iss.category || '시사·여론')}</span>
-          </div>
-          <div style="margin:8px 0">
-            <div style="display:flex;justify-content:space-between;font-size:.74rem">
-              <span>여론 온도: <b>${score>0?'+'+score:score}점</b></span>
-              <span class="mute">긍정 ${bd.positive}% · 중립 ${bd.neutral}% · 부정 ${bd.negative}%</span>
-            </div>
-            <div class="gauge-bar">
-              <i class="pos" style="width:${bd.positive}%"></i>
-              <i class="neu" style="width:${bd.neutral}%"></i>
-              <i class="neg" style="width:${bd.negative}%"></i>
-            </div>
-          </div>
-          <div style="font-size:.76rem;margin-top:8px">
-            <div style="color:var(--mute);margin-bottom:4px;font-weight:600">채널별 반응 (${(channels.length || posts.length)}개 커뮤니티):</div>
-            ${channels.map(ch=>`
-              <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #edf0f5">
-                <span><b>${E(ch.name)}</b> <span class="fine">(${ch.posts_sampled}건 분석)</span></span>
-                <span class="fine">조회 ${N(ch.total_views)} · 추천 ${N(ch.total_recommends)} · 댓글 ${N(ch.total_comments)}</span>
+    <div style="background:#f8faff;border:1px solid #c8d9fb;border-radius:10px;padding:12px;margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:.8rem;margin-bottom:6px">
+        <span><b>11대 활성화 커뮤니티 전수 여론 분석망:</b> 모니터링 채널 <b>11개소</b> · 실시간 버즈 <b>${buzzList.length}건</b> 등재</span>
+        <span class="pill ok">블라인드·보배·더쿠·인벤·SLR·디시·펨코·뽐뿌·오유·클리앙·루리웹</span>
+      </div>
+      <p style="font-size:.76rem;color:var(--mute);margin:0">
+        * 5대 종합 커뮤니티를 넘어 직장인(블라인드), 자동차/사회고발(보배드림), 2030여성(더쿠), 게이머(인벤), 3050남성(SLR클럽) 등 대한민국 인터넷 여론을 대표하는 11개 채널을 전수 수집·아카이브하여 향후 독립 여론 분석 서비스 원장으로 누적 관리합니다.
+      </p>
+    </div>
+
+    ${matList.length ? `
+      <h4 style="margin:0 0 8px;font-size:.82rem">11대 커뮤니티 채널별 실시간 여론 온도 & 성향 매트릭스</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:14px">
+        ${matList.map(([cid, info]) => {
+          const sc = info.avg_sentiment_score;
+          const status = info.sentiment_status;
+          const stCls = sc >= 15 ? 'ok' : sc <= -15 ? 'bad' : 'run';
+          return `
+            <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+                <b>${E(info.name)}</b>
+                <span class="pill ${stCls}" style="font-size:.65rem">${sc > 0 ? '+' + sc : sc}점</span>
               </div>
-            `).join('')}
-            ${posts.map(p=>`
-              <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #edf0f5">
-                <span><b>${E(p.source)}</b> <span class="fine">${E(p.title)}</span></span>
-                <span class="fine">추천 ${N(p.recommends)} · 댓글 ${N(p.comments)}</span>
+              <div class="fine" style="color:var(--mute);margin-bottom:6px">${E(info.category)}</div>
+              <div style="font-size:.72rem;display:flex;justify-content:space-between;color:#475569">
+                <span>여론 성향: <b style="color:${sc<0?'#e53e3e':'#2b6cb0'}">${E(status)}</b></span>
+                <span>댓글: ${N(info.sample_comments)}</span>
               </div>
-            `).join('')}
+              <div style="font-size:.68rem;color:#718096;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+                토픽: ${info.active_topics.join(' · ')}
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    ` : ''}
+
+    ${buzzList.length ? `
+      <h4 style="margin:0 0 8px;font-size:.82rem">11대 커뮤니티 실시간 핫토픽 & 뉴스·기업 연계 버즈 (${buzzList.length}선)</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:8px;margin-bottom:14px">
+        ${buzzList.map(b => `
+          <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+              <span class="pill run" style="font-size:.65rem">${E(b.community.toUpperCase())}</span>
+              <span class="fine" style="color:${b.sentiment_score<0?'#e53e3e':'#2b6cb0'};font-weight:700">온도 ${b.sentiment_score>0?'+'+b.sentiment_score:b.sentiment_score}점 (${E(b.sentiment_label)})</span>
+            </div>
+            <div style="font-size:.78rem;font-weight:700;color:#1e293b;margin-bottom:4px">${E(b.title)}</div>
+            <div style="font-size:.72rem;color:var(--mute);display:flex;justify-content:space-between;margin-bottom:4px">
+              <span>작성: ${E(b.author)}</span>
+              <span>조회 ${N(b.views)} · 댓글 ${N(b.comments)}</span>
+            </div>
+            <div style="font-size:.7rem;color:#3b82f6;border-top:1px dashed #e2e8f0;padding-top:4px">
+              연계 엔티티: <b>${b.linked_entities.join(', ')}</b> | 토픽: ${E(b.topic)}
+            </div>
           </div>
-          <div style="margin-top:8px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 8px;font-size:.74rem">
-            <span class="mute">대중 반응 요약:</span> "${E((iss.representative_reactions||[])[0] || posts[0]?.sentiment || '')}"
+        `).join('')}
+      </div>
+    ` : ''}
+
+    ${cs && cs.issues ? `
+      <h4 style="margin:0 0 8px;font-size:.82rem">주요 정무·사회 이슈별 대중 여론 분기</h4>
+      <div class="grid2">
+        ${cs.issues.map(iss=>{
+          const bd = iss.breakdown || iss.sentiment_ratio || { positive: 0, neutral: 0, negative: 0 };
+          const score = iss.sentiment_score !== undefined ? iss.sentiment_score : Math.round(bd.positive - bd.negative);
+          const title = iss.issue_title || iss.title || '주요 이슈';
+          const channels = iss.channels || [];
+          const posts = iss.community_posts || [];
+          return `
+          <div class="card" style="background:#fafbfd;border:1px solid var(--line);padding:12px;border-radius:10px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+              <b>${E(title)}</b>
+              <span class="pill run">${E(iss.category || '시사·여론')}</span>
+            </div>
+            <div style="margin:8px 0">
+              <div style="display:flex;justify-content:space-between;font-size:.74rem">
+                <span>여론 온도: <b>${score>0?'+'+score:score}점</b></span>
+                <span class="mute">긍정 ${bd.positive}% · 중립 ${bd.neutral}% · 부정 ${bd.negative}%</span>
+              </div>
+              <div class="gauge-bar">
+                <i class="pos" style="width:${bd.positive}%"></i>
+                <i class="neu" style="width:${bd.neutral}%"></i>
+                <i class="neg" style="width:${bd.negative}%"></i>
+              </div>
+            </div>
+            <div style="font-size:.76rem;margin-top:8px">
+              <div style="color:var(--mute);margin-bottom:4px;font-weight:600">채널별 반응 (${(channels.length || posts.length)}개 커뮤니티):</div>
+              ${channels.map(ch=>`
+                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #edf0f5">
+                  <span><b>${E(ch.name)}</b> <span class="fine">(${ch.posts_sampled}건 분석)</span></span>
+                  <span class="fine">조회 ${N(ch.total_views)} · 추천 ${N(ch.total_recommends)} · 댓글 ${N(ch.total_comments)}</span>
+                </div>
+              `).join('')}
+              ${posts.map(p=>`
+                <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #edf0f5">
+                  <span><b>${E(p.source)}</b> <span class="fine">${E(p.title)}</span></span>
+                  <span class="fine">추천 ${N(p.recommends)} · 댓글 ${N(p.comments)}</span>
+                </div>
+              `).join('')}
+            </div>
           </div>
-        </div>
-      `;}).join('')}
-    </div>`;
+        `;}).join('')}
+      </div>
+    ` : ''}`;
   };
 
   const allCorpsList = (cidx && cidx.corps) || [];
@@ -492,11 +566,17 @@ async pipeline(el){const{E,N,K}=B();
     return `
     <div style="margin-bottom:10px">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
-        <span class="fine">대법원 양형기준 6대 범죄군 + 일상 형사 리딩 판례 전수 구조화</span>
-        <span class="pill ok">판례 데이터베이스 ${precs.length}선 등재</span>
+        <span class="fine">대법원 양형기준 6대 범죄군 + 민생·사이버·교통 리딩 판례 전수 구조화</span>
+        <span class="pill ok">판례 데이터베이스 ${precs.length}선 등재 (독립 서비스 원장)</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px">
-        ${precs.map(p => `
+        ${precs.map(p => {
+          const sent = p.actual_sentence || (p.verdict && p.verdict.sentence) || '';
+          const disq = (p.legal_risks && Object.values(p.legal_risks).join(' · ')) || (p.verdict && p.verdict.disqualification) || '해당 없음';
+          const jc = p.presiding_judge_training_cohort || p.judge_cohort || '—';
+          const df = p.defense_law_firm || p.defense_firm || '—';
+          const takeaway = p.key_takeaway || (p.sentencing_guideline && `${p.sentencing_guideline.category} (권고: ${p.sentencing_guideline.recommended})`) || '';
+          return `
           <div style="background:#fff;border:1px solid #fed7d7;border-radius:10px;padding:12px">
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
               <span style="font-weight:700;font-size:.8rem;color:#9b2c2c">${E(p.case_name)}</span>
@@ -505,16 +585,16 @@ async pipeline(el){const{E,N,K}=B();
             <div style="font-size:.74rem;color:#4a5568;margin-bottom:6px"><b>적용법조:</b> ${E(p.statute)}</div>
             <p style="font-size:.74rem;color:#2d3748;line-height:1.5;margin:0 0 8px">${E(p.summary)}</p>
             <div style="background:#fff5f5;border-radius:6px;padding:8px;font-size:.74rem;margin-bottom:6px">
-              <div>• 실제 선고: <b style="color:#c53030">${E(p.verdict.sentence)}</b></div>
-              <div>• 결격 위험: <b>${E(p.verdict.disqualification)}</b></div>
+              <div>• 실제 선고: <b style="color:#c53030">${E(sent)}</b></div>
+              <div>• 결격/법적 위험: <b>${E(disq)}</b></div>
               <div style="display:flex;justify-content:space-between;margin-top:4px;color:#718096">
-                <span>재판장: <b>${E(p.judge_cohort)}</b></span>
-                <span>변호인: <b>${E(p.defense_firm)}</b></span>
+                <span>재판장: <b>${E(jc)}</b></span>
+                <span>변호인: <b>${E(df)}</b></span>
               </div>
             </div>
-            <div style="font-size:.7rem;color:#742a2a;line-height:1.4">💡 <b>핵심 시사점:</b> ${E(p.key_takeaway)}</div>
+            ${takeaway ? `<div style="font-size:.7rem;color:#742a2a;line-height:1.4">💡 <b>핵심 양형기준:</b> ${E(takeaway)}</div>` : ''}
           </div>
-        `).join('')}
+        `;}).join('')}
       </div>
     </div>`;
   };
@@ -524,11 +604,18 @@ async pipeline(el){const{E,N,K}=B();
     return `
     <div>
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
-        <span class="fine">생·손보 전 상품 약관 ⇄ KCD 질병코드 ⇄ 금감원 분쟁조정·판례 매핑</span>
-        <span class="pill ok">주요 표준약관 ${pols.length}종 등재</span>
+        <span class="fine">생·손보 전 상품 약관 ⇄ KCD 질병코드 ⇄ 금감원 분쟁조정·대법원 판례 매핑</span>
+        <span class="pill ok">주요 표준약관 ${pols.length}종 등재 (독립 서비스 원장)</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px">
-        ${pols.map(p => `
+        ${pols.map(p => {
+          const d0 = (p.dispute_cases || [])[0] || {};
+          const dTitle = d0.case_title || d0.dispute_no || '';
+          const dAuth = d0.authority || d0.court_ruling || '';
+          const dIssue = d0.summary || d0.issue || '';
+          const dStrat = d0.defense_guide || d0.defense_strategy || '';
+          const dRuling = d0.verdict || d0.court_ruling || '';
+          return `
           <div style="background:#fff;border:1px solid #bfdbfe;border-radius:10px;padding:12px">
             <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
               <span style="font-weight:700;font-size:.82rem;color:#1e40af">${E(p.policy_name)}</span>
@@ -545,16 +632,17 @@ async pipeline(el){const{E,N,K}=B();
                 `).join('')}
               </div>
             </div>
-            ${(p.dispute_cases || []).length ? `
+            ${d0.case_title || d0.dispute_no ? `
               <div style="background:#eff6ff;border-radius:6px;padding:8px;font-size:.72rem">
-                <div style="color:#1d4ed8;font-weight:700;margin-bottom:3px">⚖️ 부지급 분쟁조정 & 방어 전략 (${E(p.dispute_cases[0].dispute_no)})</div>
-                <div style="color:#334155;margin-bottom:4px">• <b>보험사 거절 쟁점:</b> ${E(p.dispute_cases[0].issue)}</div>
-                <div style="color:#0369a1;margin-bottom:4px">• <b>소비자 방어 전략:</b> ${E(p.dispute_cases[0].defense_strategy)}</div>
-                <div style="color:#475569">• <b>원용 판례:</b> ${E(p.dispute_cases[0].court_ruling)}</div>
+                <div style="color:#1d4ed8;font-weight:700;margin-bottom:3px">⚖️ 부지급 분쟁조정 & 방어 전략 (${E(dTitle)})</div>
+                ${dAuth ? `<div style="color:#64748b;font-size:.68rem;margin-bottom:3px">${E(dAuth)}</div>` : ''}
+                <div style="color:#334155;margin-bottom:4px">• <b>보험사 거절 쟁점:</b> ${E(dIssue)}</div>
+                <div style="color:#0369a1;margin-bottom:4px">• <b>소비자 방어 전략:</b> ${E(dStrat)}</div>
+                ${dRuling ? `<div style="color:#475569">• <b>조정/판결 요지:</b> ${E(dRuling)}</div>` : ''}
               </div>
             ` : ''}
           </div>
-        `).join('')}
+        `;}).join('')}
       </div>
     </div>`;
   };
@@ -599,14 +687,14 @@ async pipeline(el){const{E,N,K}=B();
   },0);
 
   return `
-  ${sec('수집·분석 장비 종합 관제','데이터 하베스터 6기 + 심층 지능 분석 엔진 6기 실시간 현황')}
+  ${sec('수집·분석 장비 종합 관제','데이터 하베스터 6기 + 15개년 일대기 블랙박스 + 11대 커뮤니티 전수 분석망')}
   <div class="kpis">
     ${kpi('가동 수집 장비','6기 정상','100% 가동률 (30분~일 단위)')}
-    ${kpi('지능 분석 엔진','6기 정상','스탠스·교차분석·양형·메타')}
+    ${kpi('기업 일대기 블랙박스','15개년 시계열','2010~2024 재무·사명변천·CEO')}
     ${kpi('온톨로지 지식망','22,804 노드','6,736개 정재계·법조·공시 연결망')}
-    ${kpi('인물·임원 명부','81,660명','정치·공직 7.9만 + DART 임원진')}
-    ${kpi('기업·공시 데이터','8,787건','DART 2,500사 + 공시 6,289건')}
-    ${kpi('커뮤니티 민심','5대 채널','디시·펨코·뽐뿌·오유·클리앙')}
+    ${kpi('DART 전수 수집데몬','2,498개사','진행률 19.9% (일 2만 쿼터)')}
+    ${kpi('커뮤니티 여론망','11대 채널','블라인드·보배·더쿠·인벤 등')}
+    ${kpi('독립서비스 원장','렛츠로·인슈','판례 15선 & 약관 7종 분산격리')}
   </div>
 
   ${sec('파이프라인 데이터 흐름도','원천 데이터 수집부터 분석, 스토리지 적재 및 사용자 서비스까지의 전과정')}
