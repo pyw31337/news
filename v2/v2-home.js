@@ -58,13 +58,14 @@
     const byName = new Map(graph.nodes.map(n => [String(n.name || '').trim(), n]));
     const seed = issueTerms(i).map(t => byName.get(t)).find(Boolean);
     if (!seed) return '';
+    const relation = (a, b) => graph.edges.find(e => (e.src === a && e.tgt === b) || (e.src === b && e.tgt === a))?.rel || '연결';
     const directIds = new Set(graph.edges.filter(e => e.src === seed.id || e.tgt === seed.id).flatMap(e => [e.src, e.tgt]).filter(x => x !== seed.id));
     const secondIds = new Set(graph.edges.filter(e => directIds.has(e.src) || directIds.has(e.tgt)).flatMap(e => [e.src, e.tgt]).filter(x => x !== seed.id && !directIds.has(x)));
     const node = id => graph.nodes.find(n => n.id === id);
     const chips = [...directIds].map(id => node(id)).filter(Boolean).slice(0, 6);
     const second = [...secondIds].map(id => node(id)).filter(Boolean).slice(0, 8);
     if (!chips.length) return '';
-    return `<section class="section intelligence-section" id="ontology"><div class="section-head"><div><div class="eyebrow">ONTOLOGY EXPLORER</div><h2>연결망에서 더 멀리</h2></div><p>현재 이슈에서 1단계, 2단계로 이어지는 관계를 탐색합니다.</p></div><div class="hop-chain"><span class="hop-seed">${icon('sparkles', true)} ${esc(seed.name)}</span><span class="hop-arrow">→</span>${chips.map(n => `<a class="hop-chip" href="${hrefEntity(n.name)}"><b>${esc(n.name)}</b><small>${esc(n.type || '연결 노드')}</small></a>`).join('')}</div><div class="hop-second"><span class="hop-label">2-hop</span>${second.map(n => `<a href="${hrefEntity(n.name)}" class="hop-chip is-light"><b>${esc(n.name)}</b><small>${esc(n.type || '원거리 노드')}</small></a>`).join('')}</div></section>`;
+    return `<section class="section intelligence-section" id="ontology"><div class="section-head"><div><div class="eyebrow">ONTOLOGY EXPLORER</div><h2>연결망에서 더 멀리</h2></div><p>현재 이슈에서 1단계, 2단계로 이어지는 관계를 탐색합니다.</p></div><div class="hop-chain"><span class="hop-seed">${icon('sparkles', true)} ${esc(seed.name)}<small>${esc(seed.type || '핵심 엔티티')}</small></span><span class="hop-arrow">→</span>${chips.map(n => `<a class="hop-chip" href="${hrefEntity(n.name)}"><b>${esc(n.name)}</b><small>${esc(relation(seed.id,n.id))} · ${esc(n.props?.role || n.type || '연결 노드')}</small></a>`).join('')}</div><div class="hop-second"><span class="hop-label">2-hop</span>${second.map(n => `<a href="${hrefEntity(n.name)}" class="hop-chip is-light"><b>${esc(n.name)}</b><small>${esc(n.props?.role || n.type || '원거리 노드')}</small></a>`).join('')}</div></section>`;
   }
   function serendipityView(data) {
     const rows = Array.isArray(data) ? data : (data?.insights || data?.items || []);
