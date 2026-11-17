@@ -20,6 +20,7 @@
     NB.load(B0 + 'data/voice.json').catch(() => null),
   ]);
     const EXTRA_LOGOS = {
+    '중앙대학교': `<svg class="lg lg--svg" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="10" fill="#00356b"/><path d="M7 12h10M12 7v10" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="12" r="5" fill="none" stroke="#22d3ee" stroke-width="1.5"/></svg>`,
     '사법연수원': `<svg class="lg lg--svg" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="10" fill="#1e3a8a"/><path d="M12 4v16M4 12h16M7 8l10 8M17 8L7 16" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3" fill="#ffffff"/></svg>`,
     '경원대학교': `<svg class="lg lg--svg" viewBox="0 0 24 24" width="18" height="18"><rect width="24" height="24" rx="5" fill="#0284c7"/><path d="M6 12l6-6 6 6-6 6z" fill="#ffffff"/><path d="M9 12h6" stroke="#0284c7" stroke-width="2"/></svg>`,
     '서울대학교': `<svg class="lg lg--svg" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="10" fill="#0f2042"/><path d="M7 17l5-11 5 11M8.5 13h7" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/><path d="M5 19h14" stroke="#d4af37" stroke-width="1.5"/></svg>`,
@@ -33,13 +34,27 @@
     '국민의힘': `<svg class="lg lg--svg" viewBox="0 0 24 24" width="18" height="18"><rect width="24" height="24" rx="5" fill="#e61e2b"/><path d="M6 8h12v3.5H9.5v4.5H6z" fill="#ffffff"/></svg>`,
     '조국혁신당': `<svg class="lg lg--svg" viewBox="0 0 24 24" width="18" height="18"><rect width="24" height="24" rx="5" fill="#002d62"/><path d="M12 5l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8z" fill="#0091ff"/></svg>`
   };
-  const lgi = k => {
-    if (B.lg?.[k]) return `<img class="lg" src="${esc(B.lg[k])}" alt="" width="18" height="18" loading="lazy">`;
+  const lgi = (k, isAvatar = false) => {
+    let icon = '';
     const name = k.split(':').slice(2).join(':') || k;
-    for (const [key, icon] of Object.entries(EXTRA_LOGOS)) {
-      if (k.includes(key) || name.includes(key)) return icon;
+    if (B.lg?.[k]) {
+      const cls = isAvatar ? 'lg lg--avatar' : 'lg';
+      const size = isAvatar ? 36 : 18;
+      return `<img class="${cls}" src="${esc(B.lg[k])}" alt="" width="${size}" height="${size}" loading="lazy">`;
     }
-    return '';
+    for (const [key, icStr] of Object.entries(EXTRA_LOGOS)) {
+      if (k.includes(key) || name.includes(key)) {
+        icon = icStr;
+        break;
+      }
+    }
+    if (!icon) {
+      icon = `<svg class="lg lg--svg" viewBox="0 0 24 24" width="18" height="18"><rect width="24" height="24" rx="5" fill="#334155"/><path d="M4 10l8-5 8 5-8 5-8-5z" fill="#94a3b8"/><path d="M7 13v4c0 2 2.5 3 5 3s5-1 5-3v-4" stroke="#94a3b8" stroke-width="1.8" fill="none"/></svg>`;
+    }
+    if (isAvatar) {
+      return icon.replace('class="lg lg--svg"', 'class="lg lg--svg lg--avatar"').replace('width="18" height="18"', 'width="36" height="36"');
+    }
+    return icon;
   };
   const gl = (k, label) => `<a class="lk" href="${href.g(k)}">${lgi(k)}${esc(label)}</a>`;
   const glist = (items, max = 99) => items.slice(0, max).map(([label, , , k]) => gl(k, label)).join('<i class="sep">·</i>');
@@ -790,7 +805,11 @@
   const mergedCareers = [...careerMap.values()].sort((a, b) => start(b) - start(a) || a.label.localeCompare(b.label, 'ko'));
 
   const regBlock = [
-    mergedCareers.length && `<div class="reg"><h3 class="sub-t">${ic('briefcase')}공직·주요 경력 <small>${mergedCareers.length}건</small><span class="src-i" data-tip="국회 공보 및 위키데이터에 공식 등록된 공직·사회 경력입니다. 각 항목 우측 배지 및 툴팁으로 출처를 안내합니다.">${ic('info-circle')}<span class="sr-only">수집 기준</span></span></h3><ul class="reg-l">${mergedCareers.map(x => `<li class="reg-i" data-tip="출처: ${esc(x.sources.join(' · '))}${x.d ? ' (기간: ' + esc(x.d) + ')' : ''}"><span class="reg-d">${esc(x.period)}</span>${x.href ? `<a class="lk" href="${esc(x.href)}"><b>${esc(x.label)}</b></a>` : `<b>${esc(x.label)}</b>`}<span class="reg-g" title="${esc(x.sources.join(', '))}">${esc(x.sources.join('·'))}</span></li>`).join('')}</ul></div>`,
+    mergedCareers.length && `<div class="reg"><h3 class="sub-t">${ic('briefcase')}공직·주요 경력 <small>${mergedCareers.length}건</small><span class="src-i" data-tip="국회 공보 및 위키데이터에 공식 등록된 공직·사회 경력입니다.">${ic('info-circle')}<span class="sr-only">수집 기준</span></span></h3><ul class="reg-l">${mergedCareers.map(x => {
+      const tipText = [x.d && x.d !== '기간 미상' ? `활동 기간: ${x.d}` : '', x.sources.length > 1 ? `등록 출처: ${x.sources.join(' · ')}` : ''].filter(Boolean).join('\n');
+      const tipAttr = tipText ? ` data-tip="${esc(tipText)}"` : '';
+      return `<li class="reg-i"${tipAttr}><span class="reg-d">${esc(x.period)}</span>${x.href ? `<a class="lk" href="${esc(x.href)}"><b>${esc(x.label)}</b></a>` : `<b>${esc(x.label)}</b>`}<span class="reg-g">${esc(x.sources.join('·'))}</span></li>`;
+    }).join('')}</ul></div>`,
     car.award?.length && `<div class="reg"><h3 class="sub-t">${ic('trophy')}수상 <small>${car.award.length}건</small></h3><ul class="reg-l">${car.award.slice().sort((a, b) => Number(b[1] || 0) - Number(a[1] || 0)).map(x => `<li class="reg-i"><span class="reg-d">${esc(x[1] || '연도 미상')}</span><a class="lk" href="${href.g(x[3])}"><b>${esc(x[0])}</b></a></li>`).join('')}</ul></div>`,
   ].filter(Boolean).join('');
   if (rows.length || regBlock || timeline.length) {
@@ -926,12 +945,29 @@
     }
     return [label, items];
   }).filter(x => x[1].length);
-  if (relG.length) add('s-rel', '관계', 'affiliate', relN + '명', `<div class="rels">${relG.map(([c, rs]) => `<div class="rgroup"><div class="rg-h">${esc(c)}<small>${rs.length}</small></div>${rs.map(r => {
-      const [o, , sub] = r;
-      if (!o.startsWith('g:')) return `<div class="rnode">${pcard(o, RS[sub] || sub, null)}</div>`;
-      const peers = B.gp?.[o] || [];
-      return `<div class="rnode rnode--group"><a class="lk" href="${href.g(o)}">${lgi(o)}<b>${esc(o.split(':').slice(2).join(':'))}</b></a><small>${esc(RS[sub] || sub)}</small>${peers.length ? `<div class="rpeers"><span class="rpeer-l">${esc(PEER[sub] || '함께')}</span>${peers.map(p => pcard(p, PEER[sub] || RS[sub] || sub, o)).join('')}</div>` : ''}</div>`;
-    }).join('')}</div>`).join('')}</div>`);
+  if (relG.length) add('s-rel', '관계', 'affiliate', relN + '명', `<div class="rels">${relG.map(([c, rs]) => {
+    const directItems = rs.filter(r => !r[0].startsWith('g:'));
+    const groupItems = rs.filter(r => r[0].startsWith('g:'));
+    return `<div class="rgroup">
+      <div class="rg-h">${esc(c)}<small>${rs.length}</small></div>
+      ${directItems.length ? `<div class="rpeers rpeers--direct">${directItems.map(r => pcard(r[0], RS[r[2]] || r[2], null)).join('')}</div>` : ''}
+      ${groupItems.map(r => {
+        const [o, , sub] = r;
+        const peers = B.gp?.[o] || [];
+        const orgName = o.split(':').slice(2).join(':') || o;
+        return `<div class="rnode rnode--group">
+          <div class="rgroup-header">
+            ${lgi(o, true)}
+            <div class="rgroup-header-text">
+              <a class="lk rgroup-title" href="${href.g(o)}"><b>${esc(orgName)}</b></a>
+              <small class="rgroup-sub">${esc(RS[sub] || sub)}</small>
+            </div>
+          </div>
+          ${peers.length ? `<div class="rpeers"><span class="rpeer-l">${esc(PEER[sub] || '함께')}</span>${peers.map(p => pcard(p, PEER[sub] || RS[sub] || sub, o)).join('')}</div>` : ''}
+        </div>`;
+      }).join('')}
+    </div>`;
+  }).join('')}</div>`);
 
     /* ── 발언 비교 ──
      단순 최신 발언 나열을 지양하고, 과거 시점의 입장과 현재 시점의 입장이 어떻게 변화했거나

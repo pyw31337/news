@@ -67,7 +67,7 @@ const NB = (() => {
   const gz = async url => { const r = await fetch(url); if (!r.ok) throw new Error(r.status); if (!('DecompressionStream' in window)) throw new Error('no gzip'); return JSON.parse(await new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).text()); };
   const shard = async (s, n) => { const b = new Uint8Array(await crypto.subtle.digest('SHA-1', new TextEncoder().encode(s))); return parseInt([...b.slice(0, 3)].map(x => x.toString(16).padStart(2, '0')).join(''), 16) % n; };
   const RAW = 'https://raw.githubusercontent.com/pyw31337/news/';
-  const acard = a => `<a class="acard" href="${esc(a.url)}" target="_blank" rel="noopener"><span class="acard-img"><img src="${esc(a.img)}" alt="" loading="lazy" decoding="async"></span><span class="acard-t">${esc(titleClean(a.title))}</span><span class="acard-m">${esc(a.press)}<i></i>${esc(ymd(a.t))}</span></a>`;
+  const acard = a => `<a class="acard" href="${esc(a.url)}" target="_blank" rel="noopener"><span class="acard-img"><img src="${esc(a.img)}" alt="" loading="lazy" decoding="async"><span class="acard-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span><span class="acard-t">${esc(titleClean(a.title))}</span><span class="acard-m"><span class="acard-src">${esc(a.press)}</span><time>${esc(ymd(a.t))}</time></span></a>`;
   const quote = q => {
     const evidence = [q.press, ymd(q.d)].filter(Boolean).join(' · '), tip = [q.quote, evidence].filter(Boolean).join('\n');
     return `<figure class="quote${q.hot ? ' is-hot' : ''}"${q.heat ? ` data-heat="${q.heat}"` : ''}${tip ? ` data-tip="${esc(tip)}"` : ''}><blockquote>${q.hot ? `<span class="quote-hot">${ic('flame')}화제 ${q.heat}</span>` : ''}${esc(q.quote)}</blockquote><figcaption>${q.url ? `<a href="${esc(q.url)}" target="_blank" rel="noopener" class="quote-src">${esc(evidence || '원문 보기')}${ic('external-link')}</a>` : esc(evidence)}</figcaption></figure>`;
@@ -108,7 +108,16 @@ const NB = (() => {
   const toc = (secs, cls = '') => `<nav class="toc ${cls}" aria-label="목차">${secs.map((x, i) => `<a class="toc-i${i ? '' : ' is-on'}" href="#${x.id}"><svg class="ic" aria-hidden="true">${document.getElementById('i-' + x.icon + '-f') ? `<use class="u0" href="#i-${x.icon}"/><use class="u1" href="#i-${x.icon}-f"/>` : `<use href="#i-${x.icon}"/>`}</svg>${esc(x.title)}${x.count ? `<small>${esc(x.count)}</small>` : ''}</a>`).join('')}</nav>`;
   const spy = ids => {
     const links = [...document.querySelectorAll('.toc-i')];
-    const set = id => links.forEach(a => { const on = a.getAttribute('href') === '#' + id; a.classList.toggle('is-on', on); if (on) { const bar = a.closest('.toc--bar'); if (bar && bar.offsetParent) bar.scrollTo({ left: Math.max(0, a.offsetLeft - bar.clientWidth / 2 + a.offsetWidth / 2), behavior: 'instant' }); } });
+    const set = id => links.forEach(a => {
+      const on = a.getAttribute('href') === '#' + id;
+      a.classList.toggle('is-on', on);
+      if (on) {
+        const bar = a.closest('.toc--bar');
+        if (bar && bar.offsetParent && !bar._userDragging) {
+          bar.scrollTo({ left: Math.max(0, a.offsetLeft - bar.clientWidth / 2 + a.offsetWidth / 2), behavior: 'smooth' });
+        }
+      }
+    });
     const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) set(en.target.id); }), { rootMargin: '-25% 0px -65% 0px' });
     ids.forEach(id => io.observe(document.getElementById(id)));
     /* 첫 섹션보다 위(히어로)에 있을 땐 첫 항목을 켬 */
@@ -123,6 +132,13 @@ const NB = (() => {
   const showTip = (el, point) => {
     const text = el?.dataset?.tip;
     if (!text) return;
+
+    // 의미없는 중복 툴팁 필터링: 엘리먼트 본문과 툴팁 텍스트가 동일하거나 단순 출처 이름만 있는 경우 미노출
+    const trimmed = text.trim();
+    const elText = el.textContent?.trim();
+    if (elText && (elText === trimmed || elText === trimmed.replace(/^[#\s]+/, '').trim())) return;
+    if (['위키데이터', '위키백과', '대한민국 국회', '열린국회정보', '국회 공보'].includes(trimmed)) return;
+
     if (!tipEl) {
       tipEl = document.createElement('aside');
       tipEl.id = 'nb-tip';
@@ -187,26 +203,32 @@ const NB = (() => {
     if (!el || el._dragBound) return;
     el._dragBound = true;
     let isDown = false, startX = 0, scrollLeft = 0, isDragging = false;
+    let dragTimeout = null;
     el.classList.add('is-drag-scrollable');
+
+    // 브라우저 네이티브 링크/이미지 드래그(고스트 끌림 간섭) 원천 차단
+    el.addEventListener('dragstart', e => e.preventDefault());
 
     el.addEventListener('mousedown', e => {
       if (e.button !== 0) return;
       isDown = true;
       isDragging = false;
-      startX = e.pageX - el.offsetLeft;
+      startX = e.clientX;
       scrollLeft = el.scrollLeft;
+      el._userDragging = true;
+      if (dragTimeout) clearTimeout(dragTimeout);
     });
 
     const onMove = e => {
       if (!isDown) return;
-      const x = e.pageX - el.offsetLeft;
-      const walk = (x - startX);
-      if (Math.abs(walk) > 4) {
-        if (!isDragging) {
-          isDragging = true;
-          el.classList.add('is-dragging');
-        }
-        el.scrollLeft = scrollLeft - walk;
+      const dx = e.clientX - startX;
+      if (!isDragging && Math.abs(dx) > 3) {
+        isDragging = true;
+        el.classList.add('is-dragging');
+      }
+      if (isDragging) {
+        el.scrollLeft = scrollLeft - dx;
+        e.preventDefault();
       }
     };
 
@@ -214,6 +236,7 @@ const NB = (() => {
       if (!isDown) return;
       isDown = false;
       setTimeout(() => el.classList.remove('is-dragging'), 0);
+      dragTimeout = setTimeout(() => { el._userDragging = false; }, 800);
       if (isDragging) {
         const prevent = ev => { ev.stopPropagation(); ev.preventDefault(); };
         el.addEventListener('click', prevent, { capture: true, once: true });
