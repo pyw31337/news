@@ -1,6 +1,6 @@
 """해외 뉴스 수집: 여러 권역 Google News·BBC·Guardian·Al Jazeera·NPR·DW RSS + 권역별 Google 트렌드
 → 한국 관련 보도를 제외한 영어 제목 군집화 → TOP 이슈 → 선택적 한국어 번역 → data/global.json"""
-import re, json, os, html, time, math, collections, urllib.request, urllib.parse, datetime as dt
+import re, json, os, html, time, math, collections, urllib.request, urllib.parse, urllib.error, datetime as dt
 from concurrent.futures import ThreadPoolExecutor
 ROOT = os.path.join(os.path.dirname(__file__), '..', 'data')
 KST = dt.timezone(dt.timedelta(hours=9)); NOW = dt.datetime.now(KST)
@@ -19,10 +19,19 @@ def _dsave():
 _ax.register(_dsave)
 
 def get(u, timeout=20):
-    for n in range(2):
+    # RSS/원문 서버는 짧은 시간에 429를 반환한다. 즉시 재호출하면
+    # 제한 시간을 늘리므로 Retry-After를 존중하고 지수 백오프한다.
+    for n in range(3):
         try:
             _r = urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=timeout).read().decode('utf-8', 'replace'); DIAG['ok'][_dhost(u)] += 1; return _r
-        except Exception as e: err = e; time.sleep(2)
+        except urllib.error.HTTPError as e:
+            err = e
+            if e.code not in (408, 425, 429, 500, 502, 503, 504): break
+            try: delay = min(12, max(2, int(e.headers.get('Retry-After', '2'))))
+            except Exception: delay = 2 * (n + 1)
+            DIAG['retry'][_dhost(u)] += 1; time.sleep(delay)
+        except Exception as e:
+            err = e; time.sleep(2 * (n + 1))
     DIAG['fail'][_dhost(u)] += 1; DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S', time.gmtime(time.time() + 32400)), host=_dhost(u), path=_up.urlsplit(u).path[:60], err=str(err)[:120])); print('fail', u[:120], err); return ''
 def un(s): return html.unescape(re.sub(r'<[^>]+>', '', html.unescape(s or ''))).strip()
 GN = 'https://news.google.com/rss%s?hl=en-%s&gl=%s&ceid=%s:en'
@@ -67,27 +76,49 @@ try: TC = json.load(open(TC_P))
 except Exception: TC = {}
 TR_STAT = collections.Counter()
 def tr_batch(texts):
-    """기사마다 무료 번역을 호출하지 않고 3.8KB 묶음만 보낸다. 제한 시 원문을 남긴다."""
+    """무료 번역을 작은 묶음으로 처리한다.
+
+    비공식 Translate 엔드포인트는 큰 묶음이 한 번 429가 되면 묶음 전체가
+    보류되는 문제가 있어, 1.8KB 묶음·재시도·대체 호스트를 사용한다.
+    실패한 항목은 빈 번역으로 남겨 원문 화면을 유지하고 다음 회차 캐시에서
+    재시도한다.
+    """
     values = list(dict.fromkeys((x or '').strip() for x in texts if (x or '').strip()))
     out = {x: TC[x] for x in values if x in TC}; missing = [x for x in values if x not in out]
     TR_STAT['cache'] += len(out); groups, current, size = [], [], 0
     for text in missing:
         add = len(text) + 28
-        if current and size + add > 3800: groups.append(current); current, size = [], 0
+        if current and size + add > 1800: groups.append(current); current, size = [], 0
         current.append(text[:1800]); size += add
     if current: groups.append(current)
     for group in groups:
         marked = '\n\n'.join((f'<<<NBSEP{n:04d}>>>\n{text}' if n else text) for n, text in enumerate(group))
-        try:
-            u = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q=' + urllib.parse.quote(marked)
-            raw = urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=12).read().decode('utf-8', 'replace')
-            translated = ''.join(x[0] for x in json.loads(raw)[0] if x[0]); parts = re.split(r'<<<NBSEP\d{4}>>>\s*', translated)
-            if len(parts) == len(group):
-                for text, value in zip(group, parts): TC[text] = value.strip(); out[text] = value.strip()
-                TR_STAT['google_batches'] += 1; TR_STAT['google_items'] += len(group); continue
-        except Exception as e:
-            DIAG['fail']['translate.googleapis.com'] += 1
-            DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S', time.gmtime(time.time() + 32400)), host='translate.googleapis.com', path='/translate_a/single', err=str(e)[:120]))
+        ok = False
+        for host in ('translate.googleapis.com', 'translate.google.com'):
+            for attempt in range(3):
+                try:
+                    u = 'https://' + host + '/translate_a/single?client=gtx&sl=en&tl=ko&dt=t&q=' + urllib.parse.quote(marked)
+                    raw = urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=12).read().decode('utf-8', 'replace')
+                    translated = ''.join(x[0] for x in json.loads(raw)[0] if x[0]); parts = re.split(r'<<<NBSEP\d{4}>>>\s*', translated)
+                    if len(parts) != len(group): raise ValueError('separator mismatch')
+                    for text, value in zip(group, parts): TC[text] = value.strip(); out[text] = value.strip()
+                    TR_STAT['google_batches'] += 1; TR_STAT['google_items'] += len(group)
+                    if host != 'translate.googleapis.com': TR_STAT['fallback_batches'] += 1
+                    ok = True; break
+                except urllib.error.HTTPError as e:
+                    DIAG['fail'][host] += 1
+                    if e.code not in (408, 425, 429, 500, 502, 503, 504): break
+                    TR_STAT['retries'] += 1
+                    try: delay = min(10, max(2, int(e.headers.get('Retry-After', '2'))))
+                    except Exception: delay = 2 * (attempt + 1)
+                    time.sleep(delay)
+                except Exception as e:
+                    DIAG['fail'][host] += 1
+                    if attempt == 2: DIAG['errors'].append(dict(t=time.strftime('%H:%M:%S', time.gmtime(time.time() + 32400)), host=host, path='/translate_a/single', err=str(e)[:120]))
+                    time.sleep(1.5 * (attempt + 1))
+                if ok: break
+            if ok: break
+        if ok: continue
         TR_STAT['deferred'] += len(group)
     return out
 # ---- 원문 주소·대표 사진(캐시): 구글 뉴스 중계 주소를 실제 기사 주소로 풀고, 기사 페이지의 큰 대표 사진(og:image)을 씀 ----

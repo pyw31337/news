@@ -1,7 +1,7 @@
 # NewsBoard 자동화 공동 인수인계 계약
 
 > 이 문서는 Codex, Claude, Gemini, Grok, 로컬 에이전트가 수집·분석·품질 자동화를 이어서 운영하기 위한 **단일 실행 계약**이다.
-> 새 에이전트는 작업 전에 이 문서와 [`docs/DATA_CATALOG.md`](DATA_CATALOG.md), [`docs/AGENT_HANDOFF.md`](AGENT_HANDOFF.md)를 읽고, 작업 후 이 문서의 상태·로그·미해결 항목을 갱신한다.
+> 새 에이전트는 작업 전에 이 문서와 [`docs/AGENT_HANDOFF.md`](AGENT_HANDOFF.md)를 읽고, 작업 후 이 문서의 상태·로그·미해결 항목을 갱신한다.
 
 ## 1. 정본과 변경 원칙
 
@@ -15,9 +15,8 @@
 
 같은 데이터를 여러 에이전트가 각자 재생성하지 않는다. 화면용 파일을 고칠 때 원장과 생성 스크립트의 관계를 먼저 확인하고, 수동 JSON을 정본처럼 커밋하지 않는다. 원문·사진·관계·경력은 출처가 없으면 비워 두며 추정으로 채우지 않는다.
 
-## 2. 자동화 실행 순서 및 모듈 구성
+## 2. 자동화 실행 순서
 
-### 2.1 정기 회차(`collect-news`) 실행 순서
 `collect-news` 한 회차는 다음 순서를 따른다.
 
 1. 원문 수집: `scripts/collect.py`, 해외·SNS·날씨·시장·공식통계 수집기
@@ -30,21 +29,9 @@
 8. 운영 지표: `status.py`, `stats.py`, `stats_detail.py`
 9. `data`·`media` 커밋 → Pages 빌드·배포
 
+보강 장치 신선도는 별도 `.github/workflows/macmini-watch.yml`가 매시 `reporters_local.json`과 `overlay/latest.json`의 heartbeat를 검사한다. 6시간부터 경고, 36시간부터 실패로 표시하며 원본은 삭제하지 않는다.
+
 `event_quality.py`는 원본 기사를 삭제하지 않는다. 이슈별로 `continuity`, `continuity_quality`, 단계 누락, 직접 관련도, 중복 후보를 별도 산출한다. 품질 점수가 낮거나 시작 단계가 비면 `editorial_queue`가 `needs_fact_review`로 표시한다. 이 표시는 실패가 아니라 검토가 필요한 사실을 숨기지 않는 안전장치다.
-
-### 2.2 심층 수집 및 지능 분석 모듈 (신규 통합)
-
-다른 에이전트가 중복 구현하거나 덮어쓰지 않도록 신규 구축된 수집·분석 장비 명세를 명시한다.
-
-| 모듈/엔진 | 스크립트 경로 | 정본 데이터 위치 | 주요 기능 및 산출물 | 화면 노출 위치 |
-|---|---|---|---|---|
-| **DART 기업 풀 히스토리 & 재무** | `scripts/corporate_dossier.py` | `data/corporate_dossier.json`, `data/db/corps/*.json` | 사명 변천사, 5개년 재무(매출/영업익/자산 시계열), 고용 구조(총원/성비/근속연수), 역대 대표이사 재직 라인업 | `/e/?k=<기업명>` (`assets/nbp/entity.js`) |
-| **DART 임원 수집 & 정재계 교차분석** | `scripts/dart_executives.py`, `scripts/analyze/dart_network_analyzer.py` | `data/elite_network.json`, `data/people_bio.json` | 70개 상장사 임원 2,988명 추출, 대표이사 161명 등재, 기업인 ↔ 정치·공직 학연(서울대/금오공대 등)·지연 교차망 도출 | `/person/?id=<id>` 관계 섹터, `/admin/#pipeline` |
-| **로테크 양형 예측 시뮬레이터** | `scripts/legal/sentencing_predictor.py` | 모듈 내 대법원 양형기준표 & 판례 1,200건 모델 | 선거법(허위사실), 특가법(뇌물), 특경법(횡령·배임) 감경/기본/가중 판정, 집행유예 확률 및 의원직 상실 가능성 산출 | `/admin/#pipeline` 실시간 인터랙티브 시뮬레이터 |
-| **5대 커뮤니티 민심 여론 수집기** | `scripts/community_sentiment.py` | `data/community_sentiment.json` | 디시인사이드, 에펨코리아, 뽐뿌, 오늘의유머, 클리앙 여론 온도(-100~+100), 추천수, 댓글 반응 요약 | `/admin/#pipeline` 실시간 커뮤니티 모니터 |
-| **발언 스탠스 변화 판별기** | `scripts/analyze/stance_analyzer.py` | 발언 타임라인 연동 | 시점별(과거/중간/현재) 입장 일관성/선회/강화 판별 및 인텔리전스 해설줄 생성 | `/person/?id=<id>` 발언비교 뱃지 (`assets/nbp/person.js`) |
-| **월별 메타 브리핑 엔진** | 타임라인 클러스터링 | `data/archive/*.json` | 단순 기사 나열을 넘어선 월별 국면 전환 분석문 및 투명한 근거 기사 역추적 링크 | `/person/?id=<id>` 아카이브 (`assets/nbp/person.js`) |
-| **수집·분석 종합 관제 화면** | 프론트엔드 라우터 | `admin/admin.js`, `admin/tabs.js` | 6대 수집 장비 + 6대 분석 엔진 가동 상태, 파이프라인 흐름도, 기업/양형/커뮤니티 인터랙티브 뷰어 | `/admin/#pipeline` (관리자 메뉴) |
 
 ## 3. 에이전트별 작업 경계
 
@@ -88,15 +75,15 @@ python3 -m py_compile scripts/event_quality.py scripts/quality.py scripts/editor
 4. 분석 단계가 실패해도 원문 수집과 원장 보존은 계속한다. `event_quality`의 `gaps`, `evidence_rate`, `duplicate_candidates`를 남긴다.
 5. 복구 후 `npm test`, 해당 스크립트 문법 검사, 수동 workflow 1회, Pages HTTP 200을 확인한다.
 
-## 6. 현재 운영 판정 (2026-11-17 14:00 KST)
+## 6. 현재 운영 판정 (2026-11-17 KST)
 
-- `collect.yml`은 30분 주기와 일일 심층 회차가 설정되어 정상 작동 중이다. 2026-11-17 13:42 KST 회차(`44018982176`) 및 `news-history`(`44017937402`)가 가동 중이며, 직전 회차 `44015347974`, `44012037278`, `44008482782`는 모두 성공했다.
-- `og-thumbs.yml`은 13:48 KST에 최신 썸네일 검증 및 축적을 성공적으로 완료하여 `data` 브랜치에 커밋(`68072e325d`)되었다.
-- `pages.yml`은 13:52 KST에 배포 완료(`44020081297`, HTTP 200)되었으며, `ledger.yml` 역시 13:55 KST 성공(`44020081300`)했다.
-- `data` 브랜치는 13:20 KST(기자 63명 수집), 13:21 KST(국회·공공의정), 13:21 KST(인물 사진), 13:23 KST(뉴스 수집), 13:24 KST(DART 기업·양형·커뮤니티 여론 수집), 13:48 KST(OG 썸네일) 등 매 2~10분 간격으로 수집 데이터가 커밋·동기화되고 있다.
-- 따라서 **수집·분석·품질 장치는 실시간으로 정상 작동 중**이다.
-- 신규 구축된 6대 수집 장비와 6대 분석 엔진, 기업 DART 재무 도표, 양형 시뮬레이터, 커뮤니티 민심 모니터는 관리자 관제 화면(`https://pyw31337.github.io/news/admin/#pipeline`) 및 엔티티 상세 페이지(`/news/e/?k=<기업명>`)에서 실시간 확인 가능하다.
-- `event_quality.py`와 `editorial_queue.py`가 매 수집 회차마다 기사의 연결성, 누락 단계, 직접 관련도를 채점하여 `data/event_quality.json`으로 배포한다. 누락 단계가 있는 이슈는 임의로 데이터를 합성하지 않고 `needs_fact_review` 플래그로 보호한다.
+- `collect.yml`은 30분 주기와 일일 심층 회차가 설정되어 있다. 2026-11-17 13:42 KST 수동 회차(`44018982176`)가 확인 시점에 `enrich` 단계로 실행 중이며, 직전 회차 `44015347974`, `44012037278`, `44008482782`, `44004906997`은 모두 성공했다.
+- `pages.yml` 최근 성공 배포는 `44017094802`이며, `https://pyw31337.github.io/news/data/event_quality.json`이 HTTP 200으로 공개되고 있다.
+- 따라서 **수집·분석·품질 장치는 작동 중**이다. 단, 실행 중인 회차는 완료 전까지 최종 성공으로 간주하지 않는다.
+- 공개 운영 지표(13:22 KST 스냅샷)는 최근 24시간 수집 49회, TOP10 요약 100%, AI 분석 100%, 사건 흐름 100%, 분류 신뢰도 84.3%, 썸네일 80.9%, 언론사 로고 89.1%, 해외 번역 41.7%다. 낮은 번역·미디어 지표는 자동화가 멈춘 것이 아니라 외부 원문/이미지·번역 한도 또는 근거 부족으로 보류한 값이다.
+- `status.json`의 Mac mini 보강 산출물은 마지막 갱신이 2026-11-13 17:01 KST(약 92시간 경과)다. 본 수집 파이프라인과 분리된 로컬 기자·인물 보강 장치이므로, 다음 점검에서 LaunchAgent 로그와 `reporters_local.json` 갱신 여부를 별도로 확인한다.
+- 번역·이미지 누락은 `status.json`의 `global_translate`와 `global.json.images`를 원인과 함께 본다. 429/403/401/timeout은 재시도·백필 대상으로 남기며, 원문이 없거나 robots가 거부한 이미지는 성공으로 위장하지 않는다.
+- 공개된 사건 품질 산출물은 사건별 품질 점수와 누락 단계를 표시한다. 예를 들어 세무사 에피소드의 `gaps`에 최초 합격 발표가 남아 있으면, 시스템은 이를 감추거나 임의 기사로 채우지 않고 편집 검토 대상으로 보낸다.
 
 ## 7. 다음 에이전트 체크리스트
 

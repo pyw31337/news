@@ -4,7 +4,7 @@
 robots.txt를 지키고, 같은 사이트는 1.5초에 한 번만, 회차당 --max 건·--sec 초 안에서만. 실패는 30일 뒤 다시.
 목록: db/og/map.json {u: {기사주소: [키, 폭, 높이]}, skip: {기사주소: 날짜}} — 지우지 않고 더하기만.
 """
-import argparse, datetime as dt, glob, gzip, hashlib, html, io, json, os, re, sys, time, urllib.parse, urllib.request, urllib.robotparser
+import argparse, datetime as dt, glob, gzip, hashlib, html, io, json, os, re, sys, time, urllib.parse, urllib.request, urllib.error, urllib.robotparser
 from concurrent.futures import ThreadPoolExecutor
 from collections import defaultdict
 import threading
@@ -54,8 +54,17 @@ def polite(host):
 def get(u, limit):
     polite(urllib.parse.urlsplit(u).netloc)
     r = urllib.request.Request(u, headers={'User-Agent': UA, 'Accept': '*/*'})
-    with urllib.request.urlopen(r, timeout=20) as x:
-        return x.read(limit), x.geturl()
+    for n in range(3):
+        try:
+            with urllib.request.urlopen(r, timeout=20) as x:
+                return x.read(limit), x.geturl()
+        except urllib.error.HTTPError as e:
+            # 403/401은 재시도해도 robots/접근 정책이므로 즉시 보류한다.
+            if e.code not in (408, 425, 429, 500, 502, 503, 504): raise
+            try: delay = min(10, max(2, int(e.headers.get('Retry-After', '2'))))
+            except Exception: delay = 2 * (n + 1)
+            time.sleep(delay)
+    raise urllib.error.HTTPError(u, 503, 'temporary retry exhausted', {}, None)
 
 
 def og_image(u):
