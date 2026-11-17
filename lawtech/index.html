@@ -218,7 +218,7 @@ async function loadPrecedents() {
     
     document.getElementById('prec-search').oninput = e => {
       const q = e.target.value.toLowerCase();
-      const filtered = list.filter(p => (p.case_no + p.case_name + p.charge + p.key_issue).toLowerCase().includes(q));
+      const filtered = list.filter(p => ((p.case_no||'') + (p.case_name||'') + (p.category||'') + (p.crime_type||'') + (p.summary||'') + (p.key_takeaway||'')).toLowerCase().includes(q));
       renderPrecedents(filtered);
     };
   } catch (err) {
@@ -236,11 +236,11 @@ function renderPrecedents(list) {
     <div class="prec-card">
       <div class="prec-h">
         <b style="font-size:.84rem;color:#0f172a">${p.case_name}</b>
-        <span class="pill pill-blue">${p.category}</span>
+        <span class="pill pill-blue">${p.category || '형사범죄'}</span>
       </div>
-      <div style="font-size:.74rem;color:var(--mute);margin-bottom:4px">선고번호: <b>${p.case_no}</b> (${p.court})</div>
-      <div style="font-size:.76rem;color:#1e40af;margin-bottom:4px">선고형: <b>${p.sentence}</b></div>
-      <p style="font-size:.74rem;color:#475569;line-height:1.4">${p.key_issue}</p>
+      <div style="font-size:.74rem;color:var(--mute);margin-bottom:4px">선고번호: <b>${p.case_no}</b> (${p.court}) · ${p.date || ''}</div>
+      <div style="font-size:.76rem;color:#1e40af;margin-bottom:4px">선고형: <b>${p.verdict?.sentence || p.sentence || '실형/집행유예'}</b></div>
+      <p style="font-size:.74rem;color:#475569;line-height:1.4">${p.summary || p.key_takeaway || ''}</p>
     </div>
   `).join('');
 }

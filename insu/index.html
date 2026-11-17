@@ -75,11 +75,15 @@ async function init() {
   }
 }
 
+function getTerms() {
+  return (policyData && (policyData.policies || policyData.terms)) || [];
+}
+
 function renderTabs() {
   const tabs = document.getElementById('term-tabs');
-  const terms = policyData.terms || [];
+  const terms = getTerms();
   tabs.innerHTML = terms.map((t, i) => `
-    <button class="tab-btn ${i===curTab?'on':''}" onclick="setTab(${i})">${t.name.split('(')[0]}</button>
+    <button class="tab-btn ${i===curTab?'on':''}" onclick="setTab(${i})">${(t.policy_name || t.name || '').split('(')[0]}</button>
   `).join('');
 }
 
@@ -91,26 +95,34 @@ function setTab(idx) {
 
 function renderContent() {
   const box = document.getElementById('term-content');
-  const terms = policyData.terms || [];
+  const terms = getTerms();
   const item = terms[curTab];
   if (!item) return;
+
+  const exList = (item.exclusion_clauses || []).map(e => `• <b>${e.clause || ''}</b>: ${e.item || e.description || ''}`).join('<br>') || item.exclusion_clause || '의학적 소견 및 치료 목적성 불인정';
+  const dpList = (item.dispute_cases || []).map(d => `
+    <div style="margin-top:6px;border-top:1px dashed #bfdbfe;padding-top:6px">
+      <b>[${d.dispute_no || '금감원 분조위'}]</b> ${d.issue || ''}<br>
+      <span style="color:#1e3a8a;font-weight:600">방어 전략: ${d.defense_strategy || ''}</span>
+    </div>
+  `).join('') || item.defense_strategy || '';
 
   box.innerHTML = `
     <div class="term-detail">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
-        <h3 style="font-size:1.05rem;color:#065f46">${item.name}</h3>
-        <span class="pill pill-ok">표준약관 개정판</span>
+        <h3 style="font-size:1.05rem;color:#065f46">${item.policy_name || item.name}</h3>
+        <span class="pill pill-ok">${item.coverage_category || '표준약관 개정판'}</span>
       </div>
       <p style="font-size:.82rem;color:var(--mute);margin-bottom:10px">${item.summary || ''}</p>
       
       <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:10px">
         <h4 style="font-size:.85rem;color:#b91c1c;margin-bottom:6px">⚠️ 보험사 주요 면책 주장 사유</h4>
-        <p style="font-size:.78rem;color:#475569">${item.exclusion_clause || '의학적 소견 및 치료 목적성 불인정'}</p>
+        <div style="font-size:.78rem;color:#475569;line-height:1.5">${exList}</div>
       </div>
 
       <div class="defense-box">
         <h4 style="font-size:.85rem;color:#1e40af;margin-bottom:6px">🛡️ 소비자 승소 및 부지급 방어 전략 (금감원 분쟁조정례)</h4>
-        <p style="font-size:.78rem;color:#1e3a8a;line-height:1.5">${item.defense_strategy || 'KCD 질병분류코드 및 주치의 진단서 객관적 입증을 통한 지급 관철'}</p>
+        <div style="font-size:.78rem;color:#1e3a8a;line-height:1.5">${dpList}</div>
       </div>
     </div>
   `;
