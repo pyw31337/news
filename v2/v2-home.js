@@ -16,13 +16,33 @@
 
   function dataIssue(v, full) { return full || {id:v.id, title:v.title, category:v.cat, image:v.img, summary:v.summary || [], gallery:(v.imgs || []).map(img => ({img})), sources:[], flow:[], opinion:v.op, entities:v.ents || [], keywords:v.kw || [], past:[]}; }
   function heroImage(i) { return i.image || (i.gallery || [])[0]?.img || ''; }
-  function buildFlow(i) {
-    const events = (i.flow || []).flatMap(x => (x.items || []).slice(0,1).map(it => ({date:x.date, title:it.title, body:it.body, url:it.url, img:it.img, press:it.press}))).slice(-5);
-    if (events.length) return events;
-    const sources = (i.sources || []).slice(0,5);
-    return sources.map(s => ({date:'', title:s.title, body:s.press, url:s.url, img:s.img, press:s.press}));
+  const genericTerms = new Set(['ai','뉴스','기사','논란','관련','오늘','현재','정부','한국','사람','이슈','사건','보도']);
+  function issueTerms(i) {
+    return uniq([...(i.keywords || []), ...(i.entities || []), ...String(i.title || '').split(/[\s·“”‘’'"…,:!?()[\]{}]+/)]).map(x => String(x).trim()).filter(x => x.length >= 2 && !genericTerms.has(x.toLowerCase()));
   }
-  function reports(i) { return (i.sources || []).slice(0,6); }
+  function relevance(item, terms) {
+    const text = `${item.title || ''} ${item.body || ''} ${item.press || ''}`.toLowerCase();
+    return terms.reduce((score, term) => score + (text.includes(term.toLowerCase()) ? (term.length >= 3 ? 2 : 1) : 0), 0);
+  }
+  function buildFlow(i) {
+    const terms = issueTerms(i);
+    const candidates = (i.flow || []).flatMap(x => (x.items || []).map(it => ({date:x.date, title:it.title, body:it.body, url:it.url || it.ourl, img:it.img, press:it.press})))
+      .map(e => ({...e, score: relevance(e, terms)})).filter(e => e.score > 0);
+    const bestByDate = new Map();
+    candidates.forEach(e => { const prior = bestByDate.get(e.date) || null; if (!prior || e.score > prior.score) bestByDate.set(e.date, e); });
+    const events = [...bestByDate.values()].sort((a,b) => String(a.date).localeCompare(String(b.date))).slice(-6);
+    if (events.length >= 3) return events;
+    const sources = (i.sources || []).map(s => ({date:s.time || s.t || '', title:s.title, body:s.body || s.press, url:s.url || s.ourl, img:s.img, press:s.press, score:relevance(s, terms)})).sort((a,b) => b.score - a.score || String(b.date).localeCompare(String(a.date)));
+    return [...events, ...sources.filter(s => !events.some(e => e.title === s.title)).slice(0, 6 - events.length)].sort((a,b) => String(a.date).localeCompare(String(b.date)));
+  }
+  function reports(i) {
+    const terms = issueTerms(i);
+    const seen = new Set();
+    return (i.sources || []).map(s => ({...s, _score: relevance(s, terms)})).sort((a,b) => b._score - a._score || String(b.time || b.t || '').localeCompare(String(a.time || a.t || ''))).filter(s => {
+      const key = String(s.title || '').replace(/[\s\p{P}\p{S}]+/gu, '').toLowerCase();
+      if (!key || seen.has(key)) return false; seen.add(key); return true;
+    }).slice(0, 8);
+  }
   function personFor(name, v) { return (v.people || []).find(p => p.n === name) || {}; }
 
   function render(V) {
@@ -44,11 +64,10 @@
           <div class="meta"><span>${day(full.updated || full.date)}</span><span>${icon('news')} 보도 ${nf(i.presses || v.presses)}곳</span><span>${icon('message-circle')} ${nf((i.opinion || v.op || {}).total || v.comments)} 반응</span><span>화제도 ${nf(Math.round(v.score || i.score || 0))}</span></div>
           <div class="entity-strip">${entities.map(e => `<a class="entity-chip" href="${root}e/?k=${encodeURIComponent(e)}">${icon('bookmark')} ${esc(e)}</a>`).join('')}</div>
           ${currentSummary.length ? `<ul class="hero-summary">${currentSummary.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
-          <div class="flow"><div class="flow-title">${icon('timeline-event')} 이 이슈의 현재 위치</div><div class="flow-line">${flow.slice(-5).map((e, n) => `<a class="flow-step" href="${esc(e.url || '#')}" target="_blank" rel="noopener"><i></i><time>${esc(day(e.date) || `단계 ${n+1}`)}</time><b>${esc(short(e.title, 38))}</b><small>${esc(e.press || '')}</small></a>`).join('')}</div></div>
         </div>
       </section>
       <section class="section" id="flow"><div class="section-head"><div><div class="eyebrow">ISSUE CONTINUITY</div><h2>어떻게 이어졌나</h2></div><p>수집된 이슈 흐름의 원문을 시간순으로 연결했습니다.</p></div><div class="band"><div class="timeline-grid">${flow.map(e => `<article class="timeline-node"><i></i><time>${esc(day(e.date) || '날짜 미상')}</time><a href="${esc(e.url || '#')}" target="_blank" rel="noopener">${esc(e.title || '관련 보도')}</a><p>${esc(short(e.body || e.press || '', 110))}</p></article>`).join('')}</div></div></section>
-      <section class="section" id="reports"><div class="section-head"><div><div class="eyebrow">PRIMARY REPORTS</div><h2>주요 보도</h2></div><p>같은 이슈를 원문·썸네일과 함께 비교합니다.</p><a class="more" href="${root}issue/${esc(i.id)}">전체 보도 보기 →</a></div>${reps.length ? `<div class="report-grid"><div class="report-list">${reps.slice(0,3).map(report).join('')}</div><div class="report-list">${reps.slice(3,6).map(report).join('')}</div></div>` : '<div class="empty">이 이슈의 세부 출처 목록을 준비 중입니다.</div>'}</section>
+      <section class="section" id="reports"><div class="section-head"><div><div class="eyebrow">PRIMARY REPORTS</div><h2>주요 보도</h2></div><p>같은 이슈를 원문·썸네일과 함께 비교합니다.</p><a class="more" href="${root}issue/${esc(i.id)}">전체 보도 보기 →</a></div>${reps.length ? `<div class="report-grid"><div class="report-list">${reps.slice(0,4).map(report).join('')}</div><div class="report-list">${reps.slice(4,8).map(report).join('')}</div></div>` : '<div class="empty">이 이슈의 세부 출처 목록을 준비 중입니다.</div>'}</section>
       ${past.length ? `<section class="section" id="quotes"><div class="section-head"><div><div class="eyebrow">PAST & CURRENT</div><h2>과거와 현재의 발언·기록</h2></div><p>같은 주제의 과거 기록과 현재 이슈를 나란히 확인합니다.</p></div><div class="quote-list">${past.map(p => `<div class="quote-row"><div class="person"><span class="avatar"${imgStyle((v.faces || [])[0]?.img)}></span><div><b>${esc((v.faces || [])[0]?.n || (i.entities || [])[0] || '관련 인물')}</b><small>관련 기록</small></div></div><a class="quote" href="${esc(p.url || '#')}" target="_blank" rel="noopener"><span class="tag">과거 · ${esc(day(p.date))}</span><p>“${esc(p.title)}”</p><small>원문 기록 보기 ↗</small></a><div class="quote-arrow">→</div><a class="quote" href="${esc(currentRecord.url || '#')}" target="_blank" rel="noopener"><span class="tag">현재 · ${esc(day(full.date))}</span><p>“${esc(i.title)}”</p><small>현재 이슈 보기 ↗</small></a></div>`).join('')}</div></section>` : ''}
       <section class="section dual" id="relations"><div><div class="section-head"><div><div class="eyebrow">RELATED PEOPLE & ORGS</div><h2>관련 인물·기관</h2></div></div><div class="relation"><div class="rel-col">${entities.slice(0,3).map(e => `<a class="rel-node" href="${root}e/?k=${encodeURIComponent(e)}"><b>${esc(e)}</b><small>이슈 엔티티 · 상세 보기</small></a>`).join('')}</div><div class="rel-center">${icon('hierarchy-2', true)}<br>${esc(short(i.title, 20))}</div><div class="rel-col">${(i.keywords || v.kw || []).slice(0,3).map(e => `<a class="rel-node" href="${root}e/?k=${encodeURIComponent(e)}"><b>${esc(e)}</b><small>핵심 키워드 · 관련 기사</small></a>`).join('')}</div></div></div><div id="social"><div class="section-head"><div><div class="eyebrow">LIVE REACTION</div><h2>지금 SNS에서</h2></div></div>${social.length ? `<div class="social-list">${social.map(p => `<article class="social"><span class="avatar"${imgStyle(p.avatar)}></span><div><b>${esc(p.name || p.handle || '공개 계정')}</b><small> ${esc(p.handle || '')} · ${esc(day(p.t))}</small><p>${esc(short(p.text_ko || p.text || '', 180))}</p><div class="social-actions"><span>${esc(p.net || 'SNS')}</span><a href="${esc(p.url || '#')}" target="_blank" rel="noopener">원문 참여 ↗</a></div></div></article>`).join('')}</div>` : `<div class="empty">현재 수집된 공개 SNS 반응이 없습니다.</div>`}</div></section>
       <section class="section" id="data"><div class="section-head"><div><div class="eyebrow">LATEST BY SECTOR</div><h2>분야별 주요 헤드라인</h2></div><p>메인 이슈와 독립적인 최신 분야 흐름입니다.</p></div><div class="sector-grid">${sectors.map(([name, list]) => `<article class="sector"><h3>${esc(name)} <small>${list.length}건</small></h3><p class="sector-note">오늘 수집된 대표 흐름</p>${(list || []).slice(0,2).map(x => `<a href="${esc(x.url || '#')}" target="_blank" rel="noopener">${esc(x.title)}<small>${esc(x.press || '')} · ${esc(day(x.time))}</small></a>`).join('')}</article>`).join('')}</div></section>
