@@ -132,3 +132,8 @@ python3 -m py_compile scripts/event_quality.py scripts/quality.py scripts/editor
 - **보험상담 '렛츠인슈(Let’s Insu)'**: 전 보험사 약관 전수 수집 및 질병코드(KCD-8) ⇄ 대법원/금감원 분쟁조정례를 결합하여, 보험금 청구 및 부지급 방어 생활밀착형 서비스로 독립 분화 예정.
 
 마지막 갱신 시에는 날짜(KST), 커밋 SHA, 확인한 workflow run ID, 남은 품질 누락을 기록한다. “완료”라는 말은 코드가 커밋됐다는 뜻이 아니라, 원장 보존·분석 산출물·품질 검증·배포 확인까지 끝났다는 뜻으로만 사용한다.
+
+### 8.5. v2 배포·공공데이터 엔드포인트 주의사항 (2026-11-17)
+- v2 Pages 배포는 `corporate_dossier.json`, `db/corps/*.json`, `ontology_graph.json`, `serendipity_insights.json`, `lawtech/precedents_db.json`, `insu/policy_terms_db.json`을 **존재할 때만** `_site/data`로 복사한다. 원장이 아직 생성되지 않은 회차에는 해당 UI 모듈을 숨기며 합성 데이터를 만들지 않는다.
+- `.github/workflows/ontology.yml`이 data 브랜치의 기업·인물 원장을 바탕으로 온톨로지 그래프 → 증거 기반 관계 추출 → 세렌디피티 레이더 → 렛츠로·렛츠인슈 파생 원장을 순서대로 생성한다.
+- `DATA_GO_KR_KEY`는 국가법령정보 공동활용(법제처 `LAW_OC`)을 대체하는 필수 키가 아니다. 법령·판례·헌재·법령해석·행정심판 핵심 수집은 `LAW_OC`로 동작하며, data.go.kr 화면의 “제공처 바로가기” 항목은 별도 신청 엔드포인트가 없는 공개 안내/미러인 경우가 많다. 따라서 현재 추가 등록할 필요가 없고, 실제 사용할 보조 API URL·서비스가 확인될 때만 `legal/v1/state.json`의 `dgk_endpoints`에 등록한다.
