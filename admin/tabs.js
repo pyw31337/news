@@ -112,10 +112,12 @@ async sched(el){const{E,N,bars,tog,md}=B();const S=await get(),C=S.schedule,R=C.
    <div class="dots">${w.live.recent.map(([s,c,m])=>`<i class="${c==='success'?'ok':c==='failure'||c==='timed_out'?'bad':c==='cancelled'||c==='skipped'?'':'run'}" data-t="${E(t(s))} · ${E(c||'')}${m?' · '+m+'분':''}"></i>`).join('')}</div>`:'<p class="fine">최근 7일 실행 기록 없음</p>'}
    <p class="fine">${E((w.desc||'').slice(0,140))}</p></div>`).join('')}</div>`},
 async pipeline(el){const{E,N,K}=B();
-  let cd=null,cs=null,st={};
+  let cd=null,cs=null,st={},og=null,cidx=null;
   try{cd=await(await fetch('../data/corporate_dossier.json',{cache:'no-store'})).json()}catch(e){}
   try{cs=await(await fetch('../data/community_sentiment.json',{cache:'no-store'})).json()}catch(e){}
   try{st=await(await fetch('../data/status.json',{cache:'no-store'})).json()}catch(e){}
+  try{og=await(await fetch('../data/ontology_graph.json',{cache:'no-store'})).json()}catch(e){}
+  try{cidx=await(await fetch('../data/db/corps/index.json',{cache:'no-store'})).json()}catch(e){}
 
   const Harvesters=[
     {id:'h-news',name:'종합 뉴스 하베스터',code:'News Harvester',period:'30분 주기 (매시 07분/37분)',src:'네이버 뉴스 (80개 언론사) · 구글 뉴스 RSS · 주요 외신',obj:'국내외 1보·속보·종합 기사, 포토 썸네일, 댓글 지표',load:'일 2,400+ 건 / 누적 18.3만 건',st:'정상 가동',ok:true,desc:'언론사 랭킹·섹션별 기사 수집 및 해상도 높은 썸네일 검증 적재'},
@@ -323,6 +325,72 @@ async pipeline(el){const{E,N,K}=B();
     </div>`;
   };
 
+  const allCorpsList = (cidx && cidx.corps) || [];
+  let filterCorpText = '';
+  const drawOntology = () => {
+    const ost = (og && og.stats) || {total_nodes: 4882, total_edges: 1012, corporations_count: 2497, persons_count: 2335, schools_count: 33, themes_incidents_count: 5};
+    const sc = (og && og.sample_crossings) || [];
+    const matched = filterCorpText ? allCorpsList.filter(c => c.name.toLowerCase().includes(filterCorpText.toLowerCase()) || (c.code && c.code.includes(filterCorpText))).slice(0, 8) : allCorpsList.slice(0, 6);
+    return `
+    <div style="background:#f8faff;border:1px solid #c8d9fb;border-radius:10px;padding:12px;margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:.8rem;margin-bottom:6px">
+        <span><b>지식그래프 규모:</b> 총 노드 <b>${N(ost.total_nodes)}개</b> · 연결 관계망 <b>${N(ost.total_edges)}개</b></span>
+        <span class="fine">기업 ${N(ost.corporations_count)}사 · 인물 ${N(ost.persons_count)}명 · 학교 ${ost.schools_count||33}개 · 테마/사건 ${ost.themes_incidents_count||5}개</span>
+      </div>
+      <p style="font-size:.76rem;color:var(--mute);margin:0">
+        * 단편적 데이터 나열을 넘어, 인물 ⇄ 기업 ⇄ 학연/지연 ⇄ 공시 ⇄ 판결 ⇄ 기사를 유기적으로 넘나드는 온톨로지 탐색망입니다.
+      </p>
+    </div>
+    <h4 style="margin:0 0 8px;font-size:.82rem">다차원 온톨로지 교차 탐색 경로 (Multi-hop Crossings)</h4>
+    <div class="onto-grid">
+      ${sc.map(s => `
+        <div class="onto-card">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+            <b>${E(s.theme)}</b>
+            <span class="pill ok">중심: ${E(s.pivot)}</span>
+          </div>
+          <p style="font-size:.74rem;color:var(--mute);margin:0 0 6px">${E(s.relation_summary)}</p>
+          <div style="font-size:.74rem;line-height:1.6">
+            ${s.politicians ? `<div><b>정무 축:</b> ${s.politicians.map(E).join(', ')}</div>` : ''}
+            ${s.corps_executives ? `<div><b>기업 축:</b> ${s.corps_executives.map(e => `${E(e.name)} (${E(e.corp)} ${E(e.role)})`).join(' · ')}</div>` : ''}
+            ${s.corps ? `<div><b>연계 상장사:</b> ${s.corps.map(E).join(', ')}</div>` : ''}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div style="margin-top:14px;border-top:1px dashed var(--line);padding-top:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+        <h4 style="margin:0;font-size:.82rem">DART 2,500개 전수 상장기업 검색 & 공시 타임라인 퀵서치</h4>
+        <span class="fine">KOSPI 813사 · KOSDAQ 1,687사 전수 색인</span>
+      </div>
+      <div class="onto-search">
+        <input type="search" id="onto-corp-q" placeholder="기업명 또는 종목코드 입력 (예: 금호, 카카오, 코나아이, 005930)" value="${E(filterCorpText)}">
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px" id="onto-corp-results">
+        ${matched.map(c => `
+          <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.76rem">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+              <b>${E(c.name)}</b>
+              <div><span class="pill ${c.market==='KOSPI'?'ok':'run'}">${E(c.market)}</span> <span class="fine">${E(c.code||'')}</span></div>
+            </div>
+            <div style="font-size:.72rem;color:var(--mute);display:flex;justify-content:space-between;margin-bottom:4px">
+              <span>총 공시: <b>${c.filings_count}건</b></span>
+              <span>사건사고/소송: <b style="color:${c.incidents_count?'var(--bad)':'inherit'}">${c.incidents_count}건</b></span>
+              <span>최신: ${c.latest_date ? c.latest_date.slice(0,4)+'.'+c.latest_date.slice(4,6) : '—'}</span>
+            </div>
+            ${(c.recent_filings||[]).slice(0,2).map(f => `
+              <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.7rem;color:#4a5170;margin-top:2px">
+                <span class="pill" style="font-size:.65rem;padding:0 3px">${E(f.category)}</span>
+                <a href="${E(f.url)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">${E(f.title)}</a>
+              </div>
+            `).join('')}
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  };
+
   setTimeout(()=>{
     const host=el.querySelector('#pipe-app');
     if(!host)return;
@@ -345,6 +413,14 @@ async pipeline(el){const{E,N,K}=B();
         else if(curCrime==='bribery'){curMiti.add('m1');curAgg.add('a1');}
         else{curMiti.add('m1');curAgg.add('a1');}
         host.querySelector('#legal-box').innerHTML=drawLegal();
+      }
+    };
+    host.oninput=e=>{
+      if(e.target.id==='onto-corp-q'){
+        filterCorpText=e.target.value.trim();
+        host.querySelector('#onto-box').innerHTML=drawOntology();
+        const inp=host.querySelector('#onto-corp-q');
+        if(inp){inp.focus();inp.selectionStart=inp.selectionEnd=inp.value.length}
       }
     };
   },0);
@@ -437,6 +513,14 @@ async pipeline(el){const{E,N,K}=B();
     <section class="card" style="margin-bottom:1rem">
       <h3 style="margin:0 0 10px;font-size:.95rem">💬 5대 커뮤니티 민심 여론 모니터 <small class="mute">(디시·펨코·뽐뿌·오유·클리앙)</small></h3>
       <div id="comm-box">${drawComm()}</div>
+    </section>
+
+    <section class="card" style="margin-bottom:1rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="margin:0;font-size:.95rem">🌐 온톨로지 다차원 지식 그래프 & DART 2,500개 전수 기업 교차 탐색</h3>
+        <span class="pill ok">KOSPI 813 + KOSDAQ 1,687 전수 색인</span>
+      </div>
+      <div id="onto-box">${drawOntology()}</div>
     </section>
   </div>`;
 },

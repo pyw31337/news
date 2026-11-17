@@ -29,12 +29,22 @@
   const dated = M.filter(m => m[7]).sort((a, b) => a[7] - b[7]);
   const withPh = M.filter(m => m[4]).length;
   const W = E?.wiki;
-  let corpData = null, corpCode = null;
+  let corpData = null, corpCode = null, corpFilings = null;
   try {
     const cd = await NB.load(B0 + 'data/corporate_dossier.json').catch(() => null);
     if (cd?.corps) {
       const match = Object.entries(cd.corps).find(([code, c]) => c.corp_name === G.n || G.n.includes(c.corp_name) || c.corp_name.includes(G.n));
       if (match) { corpCode = match[0]; corpData = match[1]; }
+    }
+  } catch(e){}
+  try {
+    const cidx = await NB.load(B0 + 'data/db/corps/index.json').catch(() => null);
+    if (cidx?.corps) {
+      const cm = cidx.corps.find(c => c.name === G.n || G.n.includes(c.name) || c.name.includes(G.n));
+      if (cm) {
+        corpCode = corpCode || cm.code;
+        corpFilings = cm;
+      }
     }
   } catch(e){}
   const head = `<section class="hero">
@@ -45,6 +55,8 @@
       ${NB.facts([
         ['인물', `${num(G.c)}명`, 'users'],
         corpData && ['상장시장', `${corpData.market} (${corpCode})`, 'chart-bar'],
+        corpFilings && !corpData && ['상장시장', `${corpFilings.market} (${corpCode})`, 'chart-bar'],
+        corpFilings && ['DART 공시', `${num(corpFilings.filings_count)}건`, 'file-text'],
         corpData && ['업종', corpData.industry, 'building'],
         corpData && ['설립일', corpData.founded, 'calendar'],
         KC.length > 1 && ['분야', KC.slice(0, 4).map(([n, c]) => `<a class="lk" href="${href.g('kind:' + n)}">${esc(n)}</a> ${c}`).join('<i class="sep">·</i>'), 'category'],
@@ -121,6 +133,29 @@
       </div>`;
       add('s-corp-exec', '역대 대표이사 및 주요 경영진', 'id-badge', `${cexec.length}명`, execHtml);
     }
+  }
+  if (corpFilings) {
+    const dartHtml = `<div class="card" style="padding:var(--s-4, 16px);background:var(--paper-soft, #f8f9fc);border-radius:var(--r-md, 12px);border:1px solid var(--line, #e2e8f0);margin-bottom:var(--s-4, 16px)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;font-size:13px">
+        <span><b>${esc(corpFilings.name)}</b> DART 전자공시 및 사건사고 타임라인 (총 ${corpFilings.filings_count}건 · 사건사고/소송 ${corpFilings.incidents_count}건)</span>
+        <span class="src-chip" style="font-size:11px">DART 전자공시</span>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+        ${Object.entries(corpFilings.categories || {}).map(([cat, cnt]) => `<span class="src-chip" style="font-size:11px">${esc(cat)} <b>${cnt}</b></span>`).join('')}
+      </div>
+      <div style="display:grid;gap:6px">
+        ${(corpFilings.recent_filings || []).map(f => `
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #edf2f7;font-size:12.5px">
+            <div style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:8px">
+              <span class="src-chip" style="font-size:10px;padding:2px 6px;margin-right:6px">${esc(f.category)}</span>
+              <a href="${esc(f.url)}" target="_blank" rel="noopener" style="font-weight:600;color:inherit">${esc(f.title)}</a>
+            </div>
+            <time style="font-size:11px;color:var(--ink-muted, #64748b);flex:none">${esc(f.date)}</time>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+    add('s-corp-dart', 'DART 공시 & 사건사고 이력', 'file-text', `${corpFilings.filings_count}건`, dartHtml);
   }
   if (M.length) add('s-m', '인물', 'users', num(G.c) + '명', `${KC.length > 1 && !kinds ? `<div style="margin-bottom:var(--s-6)">${NB.stack(KC.map(([n, c], i) => [n, c, 'k' + Math.min(5, i + 1)]), { pct: true })}</div>` : ''}<div class="ent-grid" id="mg"></div>`,
     RL.length > 1 && !kinds ? NB.seg('role', [['전체', M.length], ...RL.slice(0, 5)]) : (kinds ? '' : ''));

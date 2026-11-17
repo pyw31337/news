@@ -106,3 +106,13 @@ a{color:#2f6bff}.pill{display:inline-block;font-size:.7rem;padding:.05rem .45rem
 .corp-subnav button{font-size:.75rem;padding:4px 10px;min-height:32px;background:#eceff5;color:#4a5170;border-radius:6px}
 .corp-subnav button.on{background:var(--navy);color:#fff}
 
+/* 온톨로지 지식 그래프 탐색기 */
+.onto-grid{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:850px){.onto-grid{grid-template-columns:1fr 1fr}}
+.onto-card{background:#fafbfd;border:1px solid var(--line);border-radius:10px;padding:12px}
+.onto-path{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:8px 0;font-size:.78rem}
+.onto-path span{padding:3px 8px;border-radius:6px;background:#e9edf5;font-weight:600;color:var(--navy)}
+.onto-path i{font-style:normal;color:var(--mute);font-weight:800}
+.onto-search{display:flex;gap:8px;margin-bottom:10px}
+.onto-search input{padding:7px 12px;font-size:.82rem;border:1px solid var(--line);border-radius:8px;flex:1}
+
+
