@@ -291,37 +291,49 @@ async pipeline(el){const{E,N,K}=B();
     if(!cs||!cs.issues)return '<p class="mute">커뮤니티 수집 데이터를 준비하는 중입니다.</p>';
     return `
     <div class="grid2">
-      ${cs.issues.map(iss=>`
+      ${cs.issues.map(iss=>{
+        const bd = iss.breakdown || iss.sentiment_ratio || { positive: 0, neutral: 0, negative: 0 };
+        const score = iss.sentiment_score !== undefined ? iss.sentiment_score : Math.round(bd.positive - bd.negative);
+        const title = iss.issue_title || iss.title || '주요 이슈';
+        const channels = iss.channels || [];
+        const posts = iss.community_posts || [];
+        return `
         <div class="card" style="background:#fafbfd;border:1px solid var(--line);padding:12px;border-radius:10px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
-            <b>${E(iss.issue_title)}</b>
-            <span class="pill run">${E(iss.category)}</span>
+            <b>${E(title)}</b>
+            <span class="pill run">${E(iss.category || '시사·여론')}</span>
           </div>
           <div style="margin:8px 0">
             <div style="display:flex;justify-content:space-between;font-size:.74rem">
-              <span>여론 온도: <b>${iss.sentiment_score>0?'+'+iss.sentiment_score:iss.sentiment_score}점</b></span>
-              <span class="mute">긍정 ${iss.breakdown.positive}% · 중립 ${iss.breakdown.neutral}% · 부정 ${iss.breakdown.negative}%</span>
+              <span>여론 온도: <b>${score>0?'+'+score:score}점</b></span>
+              <span class="mute">긍정 ${bd.positive}% · 중립 ${bd.neutral}% · 부정 ${bd.negative}%</span>
             </div>
             <div class="gauge-bar">
-              <i class="pos" style="width:${iss.breakdown.positive}%"></i>
-              <i class="neu" style="width:${iss.breakdown.neutral}%"></i>
-              <i class="neg" style="width:${iss.breakdown.negative}%"></i>
+              <i class="pos" style="width:${bd.positive}%"></i>
+              <i class="neu" style="width:${bd.neutral}%"></i>
+              <i class="neg" style="width:${bd.negative}%"></i>
             </div>
           </div>
           <div style="font-size:.76rem;margin-top:8px">
-            <div style="color:var(--mute);margin-bottom:4px;font-weight:600">채널별 반응 (${iss.channels.length}개 커뮤니티):</div>
-            ${iss.channels.map(ch=>`
+            <div style="color:var(--mute);margin-bottom:4px;font-weight:600">채널별 반응 (${(channels.length || posts.length)}개 커뮤니티):</div>
+            ${channels.map(ch=>`
               <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #edf0f5">
                 <span><b>${E(ch.name)}</b> <span class="fine">(${ch.posts_sampled}건 분석)</span></span>
                 <span class="fine">조회 ${N(ch.total_views)} · 추천 ${N(ch.total_recommends)} · 댓글 ${N(ch.total_comments)}</span>
               </div>
             `).join('')}
+            ${posts.map(p=>`
+              <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #edf0f5">
+                <span><b>${E(p.source)}</b> <span class="fine">${E(p.title)}</span></span>
+                <span class="fine">추천 ${N(p.recommends)} · 댓글 ${N(p.comments)}</span>
+              </div>
+            `).join('')}
           </div>
           <div style="margin-top:8px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 8px;font-size:.74rem">
-            <span class="mute">대중 반응 요약:</span> "${E(iss.representative_reactions[0]||'')}"
+            <span class="mute">대중 반응 요약:</span> "${E((iss.representative_reactions||[])[0] || posts[0]?.sentiment || '')}"
           </div>
         </div>
-      `).join('')}
+      `;}).join('')}
     </div>`;
   };
 

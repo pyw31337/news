@@ -12,9 +12,29 @@
       const v = kinds[k.slice(5)]; if (!v) return fail();
       G = { n: k.slice(5), t: 'kind', c: v.c, m: v.m.map(([id, n, kd, t, ph, pg, o]) => [id, n, kd, t, ph, pg, o, null, null]) };
     } else {
-      G = (await NB.load(`${B0}data/p/g/${String(await shard(k, 64)).padStart(2, '0')}.json`))[k];
+      G = (await NB.load(`${B0}data/p/g/${String(await shard(k, 64)).padStart(2, '0')}.json`).catch(() => null))?.[k];
     }
-  } catch (e) { return fail(); }
+  } catch (e) { G = null; }
+  if (!G) {
+    let cd = null, cidx = null, og = null;
+    try { cd = await NB.load(B0 + 'data/corporate_dossier.json').catch(() => null); } catch(e){}
+    try { cidx = await NB.load(B0 + 'data/db/corps/index.json').catch(() => null); } catch(e){}
+    try { og = await NB.load(B0 + 'data/ontology_graph.json').catch(() => null); } catch(e){}
+    let cname = k, code = null;
+    if (cd?.corps) {
+      const match = Object.entries(cd.corps).find(([c, val]) => val.corp_name === k || k.includes(val.corp_name) || val.corp_name.includes(k));
+      if (match) { code = match[0]; cname = match[1].corp_name; }
+    }
+    if (!code && cidx?.corps) {
+      const cm = cidx.corps.find(c => c.name === k || k.includes(c.name) || c.name.includes(k));
+      if (cm) { code = cm.code; cname = cm.name; }
+    }
+    const matchedNode = og?.nodes?.find(n => n.name === k || (code && n.props?.code === code));
+    if (code || matchedNode) {
+      const typ = matchedNode?.type || (code ? 'org' : 'career');
+      G = { n: cname || k, t: typ === 'corporation' ? 'org' : (TY[typ] ? typ : 'org'), c: 0, m: [] };
+    }
+  }
   if (!G) return fail();
   const [tl, ti] = TY[G.t] || ['분류', 'category'];
   document.title = `${G.n} · NewsBoard`;
