@@ -32,6 +32,8 @@ jobs:
           LAW_OC: ${{ secrets.LAW_OC }}
           DATA_GO_KR_KEY: ${{ secrets.DATA_GO_KR_KEY }}
         run: python scripts/legal/collect.py lg dd/db/articles
+      - name: 범주별 현황·분류 큐
+        run: python scripts/legal/catalog.py lg
       - name: 저장
         run: |
           cd lg && git config user.name newsboard-bot && git config user.email bot@users.noreply.github.com

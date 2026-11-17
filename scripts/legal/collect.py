@@ -77,7 +77,9 @@ def lawgo(oc):
     raw_oc = oc or ''; oc = raw_oc.strip().split('@')[0]   # OC는 이메일 아이디 부분만(예: abc@naver.com → abc)
     LOG['sources']['law.go.kr'] = {'key': bool(oc), 'oc_fixed': oc != raw_oc, 'oc_len': len(oc)}
     if not oc or not probe('law.go.kr', f'http://www.law.go.kr/DRF/lawSearch.do?OC={up.quote(oc)}&target=law&type=XML&query=%EB%AF%BC%EB%B2%95'): return
-    for target, idkey in (('prec', '판례일련번호'), ('detc', '헌재결정례일련번호'), ('expc', '법령해석례일련번호')):
+    # 행정심판례(decc)는 개인 분쟁·행정처분의 실제 흐름을 보완한다.
+    # 다른 대상과 같은 증분 페이지 방식으로 보관하되, 원문 개인정보는 공식 비실명화 결과만 사용한다.
+    for target, idkey in (('prec', '판례일련번호'), ('detc', '헌재결정례일련번호'), ('expc', '법령해석례일련번호'), ('decc', '행정심판례일련번호')):
         st = STATE.setdefault('law_' + target, {'page': 1, 'ids': []}); ids = set(st['ids']); added = 0; t0 = time.time()
         for _ in range(30):
             if time.time() - t0 > 600: break
@@ -104,7 +106,7 @@ def lawgo(oc):
                 d = next(iter(det.values())) if isinstance(det, dict) and det else {}
                 if not isinstance(d, dict): continue
                 txt = re.sub(r'<[^>]+>', ' ', html.unescape(str(d.get('판례내용') or d.get('전문') or d.get('회답') or '')))
-                rec = {'id': f'{target}:{i}', 'meta': row, 'summary': {k: d.get(k) for k in ('판시사항', '판결요지', '참조조문', '참조판례', '결정요지', '질의요지', '회답') if d.get(k)}}
+                rec = {'id': f'{target}:{i}', 'meta': row, 'summary': {k: d.get(k) for k in ('판시사항', '판결요지', '참조조문', '참조판례', '결정요지', '질의요지', '회답', '사건명', '처분청', '재결청', '청구취지', '재결요지', '주문', '이유') if d.get(k)}}
                 tail = txt[-1500:]
                 rec['justices'] = re.findall(NAME_RX + r'\s*\(?(?:재판장|주심)?\)?\s*(?=대법관|재판관)', tail)[:14] or re.findall(r'(?:대법관|재판관)\s+' + NAME_RX, tail)[:14]
                 rec['judges'] = re.findall(r'(?:재판장\s*)?판사\s+' + NAME_RX, tail)[:5]
@@ -174,6 +176,6 @@ for f, a in ((news, (sys.argv[2] if len(sys.argv) > 2 else None,)), (lawgo, (os.
 jsave(f'{OUT}/state.json', STATE)
 runs = jload(f'{OUT}/runs.json', []); runs.append(LOG); jsave(f'{OUT}/runs.json', runs[-500:])
 cnt = lambda d: sum(len(jload(os.path.join(dp, fn), [])) for dp, _, fs in os.walk(d) for fn in fs if fn.endswith('.json.gz')) if os.path.isdir(d) else 0
-jsave(f'{OUT}/index.json', {'updated': NOW.isoformat(timespec='minutes'), 'news_cases': cnt(f'{OUT}/news'), 'lawgo': {t: cnt(f'{OUT}/lawgo/{t}') for t in ('prec', 'detc', 'expc')},
+jsave(f'{OUT}/index.json', {'updated': NOW.isoformat(timespec='minutes'), 'news_cases': cnt(f'{OUT}/news'), 'lawgo': {t: cnt(f'{OUT}/lawgo/{t}') for t in ('prec', 'detc', 'expc', 'decc')},
      'judges_from_news': len(jload(f'{OUT}/people/judges_from_news.json', {})), 'justices': len(jload(f'{OUT}/people/justices_wikidata.json', [])), 'last': LOG})
 print(json.dumps(LOG, ensure_ascii=False, indent=1))
