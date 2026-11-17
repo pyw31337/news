@@ -200,8 +200,22 @@
     const schools = directNeighbors.filter(d => d.rel === 'ALUMNI_OF' || d.node.type === 'school');
     const exams = directNeighbors.filter(d => d.rel === 'EXAM_COHORT' || d.node.type === 'exam_cohort');
     const execs = directNeighbors.filter(d => d.rel.includes('EXECUTIVE') || d.rel.includes('MEMBER'));
-    const crimes = directNeighbors.filter(d => d.node.type === 'legal_guideline' || d.rel.includes('GUIDELINE'));
+    let crimes = directNeighbors.filter(d => d.node.type === 'legal_guideline' || d.rel.includes('GUIDELINE'));
     const themes = directNeighbors.filter(d => d.node.type === 'theme' || d.node.type === 'incident' || d.node.type === 'current_issue');
+
+    if (!crimes.length) {
+      // 2-Hop 로테크 양형기준 추적 (연루 사건·이슈 경유)
+      for (const t of themes) {
+        const tEdges = (ontoGraph.edges || []).filter(e => (e.src === t.node.id || e.tgt === t.node.id) && (e.rel.includes('GUIDELINE') || e.rel.includes('APPLIES')));
+        for (const te of tEdges) {
+          const gId = te.src === t.node.id ? te.tgt : te.src;
+          const gNode = (ontoGraph.nodes || []).find(n => n.id === gId && n.type === 'legal_guideline');
+          if (gNode && !crimes.some(c => c.node.id === gNode.id)) {
+            crimes.push({ node: gNode, rel: 'APPLIES_GUIDELINE', meta: { via: t.node.name } });
+          }
+        }
+      }
+    }
 
     let ontoBody = `<div class="card" style="padding:var(--s-4, 16px);background:var(--paper-soft, #f8f9fc);border-radius:var(--r-md, 12px);border:1px solid var(--line, #e2e8f0);margin-bottom:var(--s-4, 16px)">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
