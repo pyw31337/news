@@ -112,12 +112,15 @@ async sched(el){const{E,N,bars,tog,md}=B();const S=await get(),C=S.schedule,R=C.
    <div class="dots">${w.live.recent.map(([s,c,m])=>`<i class="${c==='success'?'ok':c==='failure'||c==='timed_out'?'bad':c==='cancelled'||c==='skipped'?'':'run'}" data-t="${E(t(s))} · ${E(c||'')}${m?' · '+m+'분':''}"></i>`).join('')}</div>`:'<p class="fine">최근 7일 실행 기록 없음</p>'}
    <p class="fine">${E((w.desc||'').slice(0,140))}</p></div>`).join('')}</div>`},
 async pipeline(el){const{E,N,K}=B();
-  let cd=null,cs=null,st={},og=null,cidx=null;
+  let cd=null,cs=null,st={},og=null,cidx=null,seren=null,lawdb=null,insudb=null;
   try{cd=await(await fetch('../data/corporate_dossier.json',{cache:'no-store'})).json()}catch(e){}
   try{cs=await(await fetch('../data/community_sentiment.json',{cache:'no-store'})).json()}catch(e){}
   try{st=await(await fetch('../data/status.json',{cache:'no-store'})).json()}catch(e){}
   try{og=await(await fetch('../data/ontology_graph.json',{cache:'no-store'})).json()}catch(e){}
   try{cidx=await(await fetch('../data/db/corps/index.json',{cache:'no-store'})).json()}catch(e){}
+  try{seren=await(await fetch('../data/serendipity_insights.json',{cache:'no-store'})).json()}catch(e){}
+  try{lawdb=await(await fetch('../data/lawtech/precedents_db.json',{cache:'no-store'})).json()}catch(e){}
+  try{insudb=await(await fetch('../data/insu/policy_terms_db.json',{cache:'no-store'})).json()}catch(e){}
 
   const Harvesters=[
     {id:'h-news',name:'종합 뉴스 하베스터',code:'News Harvester',period:'30분 주기 (매시 07분/37분)',src:'네이버 뉴스 (80개 언론사) · 구글 뉴스 RSS · 주요 외신',obj:'국내외 1보·속보·종합 기사, 포토 썸네일, 댓글 지표',load:'일 2,400+ 건 / 누적 18.3만 건',st:'정상 가동',ok:true,desc:'언론사 랭킹·섹션별 기사 수집 및 해상도 높은 썸네일 검증 적재'},
@@ -455,6 +458,107 @@ async pipeline(el){const{E,N,K}=B();
     </div>`;
   };
 
+  const drawSerendipity = () => {
+    const list = (seren && seren.top_insights) || [];
+    if (!list.length) return '<p class="fine" style="color:var(--mute)">세렌디피티 인사이트를 준비 중입니다.</p>';
+    return `
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px">
+      ${list.slice(0, 6).map(s => `
+        <div style="background:#fff;border:1px solid #dbeafe;border-radius:10px;padding:12px;display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <span class="pill ok" style="font-size:.7rem">${E(s.category)}</span>
+              <span style="font-size:.72rem;font-weight:700;color:#2563eb">화제성 점수: ${s.heat}</span>
+            </div>
+            <h4 style="margin:0 0 6px;font-size:.82rem;font-weight:700;color:#0f172a">${E(s.title)}</h4>
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:8px;font-size:.74rem">
+              ${(s.hops || []).map((h, idx) => `
+                <span class="src-chip is-on" style="font-size:.7rem;padding:2px 6px">${E(h.name)}</span>
+                ${idx < s.hops.length - 1 ? '<span style="color:#94a3b8">➔</span>' : ''}
+              `).join('')}
+            </div>
+            <p style="font-size:.74rem;color:#475569;line-height:1.5;margin:0 0 8px">${E(s.story)}</p>
+          </div>
+          <div style="font-size:.7rem;color:#64748b;border-top:1px dashed #e2e8f0;padding-top:6px">
+            중심 축: <b>${E(s.pivot)}</b>
+          </div>
+        </div>
+      `).join('')}
+    </div>`;
+  };
+
+  const drawLetsLaw = () => {
+    const precs = (lawdb && lawdb.precedents) || [];
+    return `
+    <div style="margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+        <span class="fine">대법원 양형기준 6대 범죄군 + 일상 형사 리딩 판례 전수 구조화</span>
+        <span class="pill ok">판례 데이터베이스 ${precs.length}선 등재</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px">
+        ${precs.map(p => `
+          <div style="background:#fff;border:1px solid #fed7d7;border-radius:10px;padding:12px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+              <span style="font-weight:700;font-size:.8rem;color:#9b2c2c">${E(p.case_name)}</span>
+              <span class="pill bad" style="font-size:.65rem">${E(p.court)} (${E(p.case_no)})</span>
+            </div>
+            <div style="font-size:.74rem;color:#4a5568;margin-bottom:6px"><b>적용법조:</b> ${E(p.statute)}</div>
+            <p style="font-size:.74rem;color:#2d3748;line-height:1.5;margin:0 0 8px">${E(p.summary)}</p>
+            <div style="background:#fff5f5;border-radius:6px;padding:8px;font-size:.74rem;margin-bottom:6px">
+              <div>• 실제 선고: <b style="color:#c53030">${E(p.verdict.sentence)}</b></div>
+              <div>• 결격 위험: <b>${E(p.verdict.disqualification)}</b></div>
+              <div style="display:flex;justify-content:space-between;margin-top:4px;color:#718096">
+                <span>재판장: <b>${E(p.judge_cohort)}</b></span>
+                <span>변호인: <b>${E(p.defense_firm)}</b></span>
+              </div>
+            </div>
+            <div style="font-size:.7rem;color:#742a2a;line-height:1.4">💡 <b>핵심 시사점:</b> ${E(p.key_takeaway)}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  };
+
+  const drawLetsInsu = () => {
+    const pols = (insudb && insudb.policies) || [];
+    return `
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+        <span class="fine">생·손보 전 상품 약관 ⇄ KCD 질병코드 ⇄ 금감원 분쟁조정·판례 매핑</span>
+        <span class="pill ok">주요 표준약관 ${pols.length}종 등재</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px">
+        ${pols.map(p => `
+          <div style="background:#fff;border:1px solid #bfdbfe;border-radius:10px;padding:12px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+              <span style="font-weight:700;font-size:.82rem;color:#1e40af">${E(p.policy_name)}</span>
+              <span class="pill ok" style="font-size:.65rem">${E(p.coverage_category)}</span>
+            </div>
+            <div style="margin-bottom:8px">
+              <b style="font-size:.74rem;color:#1e3a8a">주요 보장 담보:</b>
+              <div style="display:flex;flex-direction:column;gap:3px;margin-top:4px">
+                ${(p.key_benefits || []).slice(0, 3).map(b => `
+                  <div style="font-size:.72rem;display:flex;justify-content:space-between;background:#f0f9ff;padding:3px 6px;border-radius:4px">
+                    <span>${E(b.name)}</span>
+                    <b style="color:#0284c7">${E(b.reimbursement_rate || b.annual_limit || b.payout_rule || '')}</b>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+            ${(p.dispute_cases || []).length ? `
+              <div style="background:#eff6ff;border-radius:6px;padding:8px;font-size:.72rem">
+                <div style="color:#1d4ed8;font-weight:700;margin-bottom:3px">⚖️ 부지급 분쟁조정 & 방어 전략 (${E(p.dispute_cases[0].dispute_no)})</div>
+                <div style="color:#334155;margin-bottom:4px">• <b>보험사 거절 쟁점:</b> ${E(p.dispute_cases[0].issue)}</div>
+                <div style="color:#0369a1;margin-bottom:4px">• <b>소비자 방어 전략:</b> ${E(p.dispute_cases[0].defense_strategy)}</div>
+                <div style="color:#475569">• <b>원용 판례:</b> ${E(p.dispute_cases[0].court_ruling)}</div>
+              </div>
+            ` : ''}
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+  };
+
   setTimeout(()=>{
     const host=el.querySelector('#pipe-app');
     if(!host)return;
@@ -590,6 +694,30 @@ async pipeline(el){const{E,N,K}=B();
         <span class="pill ok">KOSPI 813 + KOSDAQ 1,687 전수 색인</span>
       </div>
       <div id="onto-box">${drawOntology()}</div>
+    </section>
+
+    <section class="card" style="margin-bottom:1rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="margin:0;font-size:.95rem">📡 오늘의 숨은 연결고리 (Serendipity Radar) <small class="mute">(AI 다차원 횡단 탐색)</small></h3>
+        <span class="pill ok">2~3-Hop 의외의 관계망 23건 감지</span>
+      </div>
+      <div id="seren-box">${drawSerendipity()}</div>
+    </section>
+
+    <section class="card" style="margin-bottom:1rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="margin:0;font-size:.95rem">⚖️ 법률서비스 '렛츠로(Let’s Law)' 판례 데이터베이스 & 실전 리딩케이스</h3>
+        <span class="pill ok">형사·기업·선거 6대 판례 온톨로지</span>
+      </div>
+      <div id="law-box">${drawLetsLaw()}</div>
+    </section>
+
+    <section class="card" style="margin-bottom:1rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="margin:0;font-size:.95rem">🛡️ 보험상담 '렛츠인슈(Let’s Insu)' 약관 온톨로지 & 부지급 방어 관제</h3>
+        <span class="pill ok">실손·암·뇌혈관·일배책 분쟁조정 매핑</span>
+      </div>
+      <div id="insu-box">${drawLetsInsu()}</div>
     </section>
   </div>`;
 },
