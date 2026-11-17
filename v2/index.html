@@ -1,22 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#0f1630">
-<title>NewsBoard v2 미리보기</title>
-<base href="/news/">
-<link rel="icon" href="favicon.ico?v=11" sizes="any">
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fbfbfa"><title>NewsBoard v2 · 이슈 흐름</title><base href="/news/">
+<link rel="icon" href="favicon.ico?v=11"><link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="preload" href="data/today_v2.json" as="fetch" crossorigin>
-<link rel="stylesheet" href="v2/v2.css?v=6">
+<link rel="stylesheet" href="v2/v2-home.css?v=1">
 </head>
 <body>
-<header class="hd"><a class="brand" href="v2/"><b>News</b>Board<i>.</i></a><span class="pv">v2 미리보기</span><span class="hut"><button type="button" id="v2s" aria-label="검색"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="7"/><path d="M21 21l-6-6"/></svg></button><a href="alerts" aria-label="알림"><svg viewBox="0 0 24 24"><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2-3v-3a7 7 0 0 1 4-6"/><path d="M9 17v1a3 3 0 0 0 6 0v-1"/></svg></a><a href="my" aria-label="마이페이지"><svg viewBox="0 0 24 24"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></a></span></header>
-<main id="app"><p class="ld">오늘의 뉴스를 불러오는 중…</p></main>
-<nav class="tb2" aria-label="주요 메뉴"><a href="v2/" class="on"><svg viewBox="0 0 24 24"><path d="M5 12H3l9-9l9 9h-2"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>오늘</a><a href="timeline"><svg viewBox="0 0 24 24"><path d="M4 17l5-6l4 4l7-8"/><circle cx="4" cy="17" r="1.5"/><circle cx="20" cy="7" r="1.5"/></svg>흐름</a><a href="market"><svg viewBox="0 0 24 24"><path d="M3 17l6-6l4 4l8-8"/><path d="M14 7h7v7"/></svg>마켓</a><a href="learn"><svg viewBox="0 0 24 24"><path d="M22 9L12 5L2 9l10 4l10-4v6"/><path d="M6 10.6V16a6 3 0 0 0 12 0v-5.4"/></svg>배우기</a><a href="v2/map/"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>전체</a></nav>
-<script src="v2/v2.js?v=6"></script>
+<header class="site-head"><div class="head-in"><a class="brand" href="v2/">NewsBoard<i>.</i></a><nav class="main-nav" aria-label="주요 메뉴"><a class="is-on" href="#issue">이슈</a><a href="#flow">흐름</a><a href="#quotes">발언 비교</a><a href="#relations">관계</a><a href="#social">민심</a><a href="#data">데이터</a></nav><div class="region" role="group" aria-label="뉴스 지역"><button class="is-on" data-region="kr">국내</button><button data-region="global-ko">해외(국문)</button><button data-region="global-en">해외(영문)</button></div><div class="head-tools"><button class="tool" id="searchBtn" aria-label="검색"><svg class="icon"><use href="#i-search"></use></svg></button><a class="tool" href="login/" aria-label="로그인"><svg class="icon"><use href="#i-user"></use></svg></a></div></div></header>
+<main class="wrap page" id="app"><p class="load">오늘의 뉴스를 불러오는 중…</p></main>
+<footer class="wrap footer"><div class="footer-inner"><strong>NewsBoard v2</strong><span>인물 페이지 디자인시스템 기반 · 원문과 데이터 흐름을 한 화면에</span></div></footer>
+<script src="assets/nbp/icons.js"></script><script src="v2/v2-home.js?v=1"></script>
 </body>
 </html>
