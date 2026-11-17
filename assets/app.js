@@ -172,6 +172,9 @@ function primaryPublicRole(e,pol){
     };
   }
   const bio = _peopleBioCache?.[name];
+  const isSitting22nd = (pol?.ages || []).includes(22) || pol?.current === true;
+  const latestAge = (pol?.ages || []).slice(-1)[0] || (isSitting22nd ? 22 : null);
+
   const texts=[
     bio?.role_title,
     e?.wiki?.desc,e?.wiki?.extract,pol?.office,pol?.position,pol?.role,
@@ -179,29 +182,49 @@ function primaryPublicRole(e,pol){
     ...(Array.isArray(bio?.events)?bio.events.map(ev=>ev.title):[])
   ].filter(Boolean).map(String);
   const candidates=[];
-  const add=(rank,label,badge,kind,current=false)=>candidates.push({rank,label,badge,kind,current});
+  const add=(baseRank,label,badge,kind,current=false,isPast=false)=>{
+    let rank = baseRank;
+    if(current) rank += 3000;
+    if(isPast) rank -= 3500;
+    candidates.push({rank,label,badge,kind,current});
+  };
+
+  if(isSitting22nd){
+    add(6000, `제22대 국회의원`, '국회의원', 'legislator', true, false);
+  } else if(latestAge){
+    add(5000, `제${latestAge}대 국회의원`, '국회의원', 'legislator', false, true);
+  }
+
   texts.forEach(text=>{
+    const isPast = /^(?:前|전|전직|\(전\))\s*/.test(text);
+    const isCur = /^(?:現|현|현재|현직|\(현\))\s*/.test(text);
+
     if(/(?<!선거|후보\s*)(?:대한민국(?:의)?\s*)?(제\s*\d+대\s*)?대통령(?!\s*후보|\s*선거)/.test(text)){
       const m=text.match(/(?:대한민국(?:의)?\s*)?(제\s*\d+대\s*)?대통령/);
       const ord=(m?.[1]||'').replace(/\s/g,'');
-      add(10000,ord?`대한민국 ${ord} 대통령`:'대한민국 대통령','대통령','president',false);
+      add(10000,ord?`대한민국 ${ord} 대통령`:'대한민국 대통령','대통령','president',isCur,!isCur&&isPast);
     }
-    if(/국무총리(?!\s*후보)/.test(text))add(9000,'대한민국 국무총리','국무총리','prime-minister');
-    if(/국회의장(?!\s*후보)/.test(text))add(8500,'대한민국 국회의장','국회의장','speaker');
-    if(/대법원장/.test(text))add(8400,'대한민국 대법원장','대법원장','chief-justice');
-    if(/헌법재판소장/.test(text))add(8350,'대한민국 헌법재판소장','헌법재판소장','chief-justice');
-    if(/대법관/.test(text))add(8300,'대한민국의 대법관','대법관','legal');
-    if(/헌법재판소\s*재판관/.test(text))add(8250,'헌법재판소 재판관','헌재재판관','legal');
-    if(/검찰총장/.test(text))add(8200,'대한민국 검찰총장','검찰총장','legal');
-    if(/당대표|대표최고위원/.test(text))add(7500,text.match(/[^·,·()]{0,18}(?:당대표|대표최고위원)/)?.[0]?.trim()||'정당 대표','당대표','party-leader');
-    if(/원내대표/.test(text))add(7200,text.match(/[^·,·()]{0,18}원내대표/)?.[0]?.trim()||'원내대표','원내대표','floor-leader');
-    if(/장관(?!\s*후보)/.test(text))add(7000,text.match(/[^·,·()]{0,18}장관/)?.[0]?.trim()||'대한민국 장관','국무위원','minister');
-    if(/(특별시장|광역시장|도지사)/.test(text))add(6000,text.match(/[^·,·()]{0,18}(?:특별시장|광역시장|도지사)/)?.[0]?.trim()||'광역자치단체장','광역단체장','gov-chief');
-    if(/(시장|구청장|군수)/.test(text))add(4500,text.match(/[^·,·()]{0,18}(?:시장|구청장|군수)/)?.[0]?.trim()||'기초자치단체장','기초단체장','local-chief');
-    if(/회장|대표이사|총수|CEO/.test(text))add(4200,text.match(/[^·,·()]{0,22}(?:회장|대표이사|총수|CEO)/)?.[0]?.trim()||'기업인','기업인','corporate');
-    if(/부장판사|판사|검사장|검사/.test(text))add(4100,text.match(/[^·,·()]{0,22}(?:부장판사|판사|검사장|검사)/)?.[0]?.trim()||'법조인','법조인','legal');
-    if(/기자|앵커|논설위원/.test(text))add(4000,text.match(/[^·,·()]{0,22}(?:기자|앵커|논설위원)/)?.[0]?.trim()||'언론인','언론인','reporter');
-    if(/국회의원|의원/.test(text))add(3000,'대한민국 국회의원','국회의원','legislator');
+    if(/국무총리(?!\s*후보)/.test(text))add(9000,'대한민국 국무총리','국무총리','prime-minister',isCur,isPast);
+    if(/국회의장(?!\s*후보)/.test(text))add(8800,'대한민국 국회의장','국회의장','speaker',isCur,isPast);
+    if(/대법원장/.test(text))add(8700,'대한민국 대법원장','대법원장','chief-justice',isCur,isPast);
+    if(/헌법재판소장/.test(text))add(8650,'대한민국 헌법재판소장','헌법재판소장','chief-justice',isCur,isPast);
+    if(/대법관/.test(text))add(8500,'대한민국의 대법관','대법관','legal',isCur,isPast);
+    if(/헌법재판소\s*재판관/.test(text))add(8450,'헌법재판소 재판관','헌재재판관','legal',isCur,isPast);
+    if(/검찰총장/.test(text))add(8300,'대한민국 검찰총장','검찰총장','legal',isCur,isPast);
+    if(/당대표|대표최고위원/.test(text))add(8000,text.match(/[^·,·()]{0,18}(?:당대표|대표최고위원)/)?.[0]?.trim()||'정당 대표','당대표','party-leader',isCur,isPast);
+    if(/원내대표/.test(text))add(7500,text.match(/[^·,·()]{0,18}원내대표/)?.[0]?.trim()||'원내대표','원내대표','floor-leader',isCur,isPast);
+    if(/장관(?!\s*후보)/.test(text))add(7000,text.match(/[^·,·()]{0,18}장관/)?.[0]?.trim()||'대한민국 장관','국무위원','minister',isCur,isPast);
+    if(/(특별시장|광역시장|도지사)/.test(text))add(6500,text.match(/[^·,·()]{0,18}(?:특별시장|광역시장|도지사)/)?.[0]?.trim()||'광역자치단체장','광역단체장','gov-chief',isCur,isPast);
+    if(/차관(?!\s*보)/.test(text))add(5800,text.match(/[^·,·()]{0,18}차관/)?.[0]?.trim()||'대한민국 차관','차관','minister',isCur,isPast);
+    if(/(시장|구청장|군수)/.test(text))add(4500,text.match(/[^·,·()]{0,18}(?:시장|구청장|군수)/)?.[0]?.trim()||'기초자치단체장','기초단체장','local-chief',isCur,isPast);
+    if(/회장|대표이사|총수|CEO/.test(text))add(4200,text.match(/[^·,·()]{0,22}(?:회장|대표이사|총수|CEO)/)?.[0]?.trim()||'기업인','기업인','corporate',isCur,isPast);
+    if(/부장판사|판사|검사장|검사/.test(text))add(4100,text.match(/[^·,·()]{0,22}(?:부장판사|판사|검사장|검사)/)?.[0]?.trim()||'법조인','법조인','legal',isCur,isPast);
+    if(/기자|앵커|논설위원/.test(text))add(4000,text.match(/[^·,·()]{0,22}(?:기자|앵커|논설위원)/)?.[0]?.trim()||'언론인','언론인','reporter',isCur,isPast);
+    if(/국회의원|의원/.test(text)){
+      const mAge = text.match(/제\s*(\d{1,2})대\s*국회의원/);
+      const ageStr = mAge ? `제${mAge[1]}대 국회의원` : (latestAge ? `제${latestAge}대 국회의원` : '대한민국 국회의원');
+      add(isSitting22nd ? 6000 : 4800, ageStr, '국회의원', 'legislator', isCur || isSitting22nd, isPast && !isSitting22nd);
+    }
   });
   candidates.sort((a,b)=>b.rank-a.rank||a.label.length-b.label.length);
   return candidates[0]||null;
@@ -4470,6 +4493,191 @@ function getOrgSymbolHtml(text, size=28){
         <circle cx="12" cy="12" r="11" fill="#003764" stroke="#60a5fa" stroke-width="1"/>
         <circle cx="12" cy="12" r="8.5" fill="none" stroke="#93c5fd" stroke-width="0.8"/>
         <text x="12" y="15" text-anchor="middle" font-size="6.5" font-weight="900" fill="#ffffff">YS</text>
+      </svg>
+    </span>`;
+  }
+
+  // 성균관대
+  if(/성균관대/.test(str)){
+    return`<span class="c-symbol c-skku" title="성균관대학교">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#006140" stroke="#a7f3d0" stroke-width="1"/>
+        <text x="12" y="15" text-anchor="middle" font-size="6" font-weight="900" fill="#ffffff">SKKU</text>
+      </svg>
+    </span>`;
+  }
+
+  // 한양대
+  if(/한양대/.test(str)){
+    return`<span class="c-symbol c-hyu" title="한양대학교">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#0e4194" stroke="#93c5fd" stroke-width="1"/>
+        <text x="12" y="15" text-anchor="middle" font-size="6.5" font-weight="900" fill="#ffffff">HYU</text>
+      </svg>
+    </span>`;
+  }
+
+  // 서강대
+  if(/서강대/.test(str)){
+    return`<span class="c-symbol c-sogang" title="서강대학교">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#a6192e" stroke="#fca5a5" stroke-width="1"/>
+        <text x="12" y="15" text-anchor="middle" font-size="5.8" font-weight="900" fill="#ffffff">SOGANG</text>
+      </svg>
+    </span>`;
+  }
+
+  // 중앙대
+  if(/중앙대/.test(str)){
+    return`<span class="c-symbol c-cau" title="중앙대학교">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#004098" stroke="#38bdf8" stroke-width="1"/>
+        <text x="12" y="15" text-anchor="middle" font-size="6.8" font-weight="900" fill="#ffffff">CAU</text>
+      </svg>
+    </span>`;
+  }
+
+  // 경희대
+  if(/경희대/.test(str)){
+    return`<span class="c-symbol c-khu" title="경희대학교">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#9d2235" stroke="#fda4af" stroke-width="1"/>
+        <text x="12" y="15" text-anchor="middle" font-size="6.8" font-weight="900" fill="#ffffff">KHU</text>
+      </svg>
+    </span>`;
+  }
+
+  // 이화여대
+  if(/이화여대|이화여자/.test(str)){
+    return`<span class="c-symbol c-ewha" title="이화여자대학교">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#00462a" stroke="#86efac" stroke-width="1"/>
+        <text x="12" y="15" text-anchor="middle" font-size="6" font-weight="900" fill="#ffffff">EWHA</text>
+      </svg>
+    </span>`;
+  }
+
+  // 포항공대 / POSTECH
+  if(/포항공대|포항공과대|POSTECH/.test(str)){
+    return`<span class="c-symbol c-postech" title="포항공과대학교">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#c8102e" stroke="#fdba74" stroke-width="1"/>
+        <text x="12" y="14.8" text-anchor="middle" font-size="5" font-weight="900" fill="#ffffff">POSTECH</text>
+      </svg>
+    </span>`;
+  }
+
+  // 사법연수원
+  if(/사법연수원|사법시험|사시/.test(str)){
+    return`<span class="c-symbol c-jrti" title="사법연수원">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#1e293b" stroke="#d4af37" stroke-width="1.2"/>
+        <path d="M12 5v14M7 8l5-2 5 2M6 13h2M16 13h2" stroke="#e2b842" stroke-width="1.2" stroke-linecap="round"/>
+        <text x="12" y="19" text-anchor="middle" font-size="4.5" font-weight="900" fill="#f8fafc">연수원</text>
+      </svg>
+    </span>`;
+  }
+
+  // 경찰대학 / 경찰
+  if(/경찰대학|경찰간부|경찰청|지방경찰청|해양경찰/.test(str)){
+    return`<span class="c-symbol c-knpu" title="경찰">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#0f2a4a" stroke="#38bdf8" stroke-width="1"/>
+        <path d="M12 5l2 3.5 4 .5-3 2.8.8 4-3.8-2-3.8 2 .8-4-3-2.8 4-.5z" fill="#e2b842"/>
+        <text x="12" y="19.5" text-anchor="middle" font-size="4.5" font-weight="900" fill="#ffffff">경찰</text>
+      </svg>
+    </span>`;
+  }
+
+  // 사관학교 (육군/해군/공군사관학교)
+  if(/육군사관|해군사관|공군사관|육사|해사|공사|3사관|ROTC|학사장교/.test(str)){
+    return`<span class="c-symbol c-military-acad" title="사관학교 / 군장교">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#1c3829" stroke="#d4af37" stroke-width="1"/>
+        <path d="M12 5l2.2 4.4 4.8.7-3.5 3.4.8 4.8-4.3-2.3-4.3 2.3.8-4.8-3.5-3.4 4.8-.7z" fill="#f59e0b"/>
+        <text x="12" y="19.8" text-anchor="middle" font-size="4.5" font-weight="900" fill="#ffffff">장교</text>
+      </svg>
+    </span>`;
+  }
+
+  // 주요 거점국립대 (부산대, 경북대, 전남대, 충남대 등)
+  if(/부산대/.test(str)){
+    return`<span class="c-symbol c-pnu" title="부산대학교"><svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none"><circle cx="12" cy="12" r="11" fill="#003876" stroke="#38bdf8" stroke-width="1"/><text x="12" y="15" text-anchor="middle" font-size="6.8" font-weight="900" fill="#ffffff">PNU</text></svg></span>`;
+  }
+  if(/경북대/.test(str)){
+    return`<span class="c-symbol c-knu" title="경북대학교"><svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none"><circle cx="12" cy="12" r="11" fill="#c8102e" stroke="#fca5a5" stroke-width="1"/><text x="12" y="15" text-anchor="middle" font-size="6.8" font-weight="900" fill="#ffffff">KNU</text></svg></span>`;
+  }
+  if(/전남대/.test(str)){
+    return`<span class="c-symbol c-jnu" title="전남대학교"><svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none"><circle cx="12" cy="12" r="11" fill="#005930" stroke="#86efac" stroke-width="1"/><text x="12" y="15" text-anchor="middle" font-size="6.8" font-weight="900" fill="#ffffff">JNU</text></svg></span>`;
+  }
+  if(/충남대/.test(str)){
+    return`<span class="c-symbol c-cnu" title="충남대학교"><svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none"><circle cx="12" cy="12" r="11" fill="#002855" stroke="#93c5fd" stroke-width="1"/><text x="12" y="15" text-anchor="middle" font-size="6.8" font-weight="900" fill="#ffffff">CNU</text></svg></span>`;
+  }
+
+  // 대한민국 정부 핵심 부처 (검찰, 법원, 기재부, 외교부, 국방부, 국정원 등)
+  if(/검찰청|대검찰청|지방검찰청|고등검찰청|검사|검사장/.test(str)){
+    return`<span class="c-symbol c-prosecution" title="검찰청">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+        <path d="M12 5v14M6 9l6-3 6 3M5 14h2M17 14h2" stroke="#38bdf8" stroke-width="1.2" stroke-linecap="round"/>
+        <text x="12" y="19" text-anchor="middle" font-size="4.5" font-weight="900" fill="#f8fafc">검찰</text>
+      </svg>
+    </span>`;
+  }
+  if(/대법원|헌법재판소|지방법원|고등법원|판사|부장판사/.test(str)){
+    return`<span class="c-symbol c-court" title="법원·헌재">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#1e1b4b" stroke="#c084fc" stroke-width="1"/>
+        <path d="M12 5v14M7 8l5-2 5 2M6 13h2M16 13h2" stroke="#c084fc" stroke-width="1.2" stroke-linecap="round"/>
+        <text x="12" y="19" text-anchor="middle" font-size="4.5" font-weight="900" fill="#ffffff">법원</text>
+      </svg>
+    </span>`;
+  }
+  if(/기획재정부|금융위원회|한국은행|금융감독원|국세청|관세청/.test(str)){
+    return`<span class="c-symbol c-finance" title="재정·금융">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#064e3b" stroke="#34d399" stroke-width="1"/>
+        <circle cx="12" cy="11" r="5" stroke="#34d399" stroke-width="1.2" fill="none"/>
+        <text x="12" y="13" text-anchor="middle" font-size="5.5" font-weight="900" fill="#34d399">₩</text>
+        <text x="12" y="20" text-anchor="middle" font-size="4.2" font-weight="800" fill="#ecfdf5">기재·금융</text>
+      </svg>
+    </span>`;
+  }
+  if(/외교부|대사관|외교통상|통일부|재외공관/.test(str)){
+    return`<span class="c-symbol c-foreign" title="외교·통일">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#1e3a8a" stroke="#93c5fd" stroke-width="1"/>
+        <circle cx="12" cy="12" r="7" stroke="#60a5fa" stroke-width="1" fill="none"/>
+        <path d="M5 12h14M12 5a9 9 0 0 1 0 14M12 5a9 9 0 0 0 0 14" stroke="#bfdbfe" stroke-width="0.8" fill="none"/>
+        <text x="12" y="20" text-anchor="middle" font-size="4.2" font-weight="800" fill="#ffffff">외교</text>
+      </svg>
+    </span>`;
+  }
+  if(/국방부|합동참모본부|합참|육군|해군|공군|해병대|방위사업청/.test(str)){
+    return`<span class="c-symbol c-defense" title="국방·군사">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#14532d" stroke="#86efac" stroke-width="1"/>
+        <path d="M12 5l2 4 4.5.6-3.2 3.2.8 4.5-4.1-2.2-4.1 2.2.8-4.5-3.2-3.2 4.5-.6z" fill="#86efac"/>
+        <text x="12" y="20" text-anchor="middle" font-size="4.2" font-weight="800" fill="#ffffff">국방</text>
+      </svg>
+    </span>`;
+  }
+  if(/국가정보원|국정원|안기부/.test(str)){
+    return`<span class="c-symbol c-nis" title="국가정보원">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#020617" stroke="#38bdf8" stroke-width="1"/>
+        <circle cx="12" cy="10.5" r="4.5" stroke="#38bdf8" stroke-width="1" fill="none"/>
+        <circle cx="12" cy="10.5" r="1.8" fill="#38bdf8"/>
+        <text x="12" y="19.5" text-anchor="middle" font-size="4.5" font-weight="900" fill="#ffffff">국정원</text>
+      </svg>
+    </span>`;
+  }
+  if(/감사원/.test(str)){
+    return`<span class="c-symbol c-bai" title="감사원">
+      <svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none">
+        <circle cx="12" cy="12" r="11" fill="#334155" stroke="#94a3b8" stroke-width="1"/>
+        <circle cx="12" cy="11" r="5" stroke="#e2e8f0" stroke-width="1.2" fill="none"/>
+        <text x="12" y="19.5" text-anchor="middle" font-size="4.5" font-weight="900" fill="#ffffff">감사원</text>
       </svg>
     </span>`;
   }

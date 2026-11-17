@@ -238,7 +238,21 @@ details.ds-fg .ds-dot{left:1px!important;top:16px!important}
 .ic.text .heat .bar{background:#262f55}
 /* 그래프 말풍선(assets/tip.js): 가리킨 지점 위에 뜨는 어두운 말풍선 + 점 */
 html.nbtip [data-tip]::after,html.nbtip [data-tip]::before{display:none!important}
-.nbt{position:fixed;left:0;top:0;z-index:9999;max-width:min(280px,86vw);padding:8px 11px;border-radius:10px;background:rgba(25,31,40,.94);color:#fff;font-size:.75rem;line-height:1.45;pointer-events:none;box-shadow:0 8px 22px rgba(0,0,0,.2);font-variant-numeric:tabular-nums;--ax:50%}
+.nbt{position:fixed;left:0;top:0;z-index:9999;max-width:min(380px,86vw);padding:10px 14px;border-radius:12px;background:rgba(25,31,40,.96);color:#fff;font-size:.78rem;line-height:1.45;pointer-events:none;box-shadow:0 12px 28px rgba(0,0,0,.3);font-variant-numeric:tabular-nums;--ax:50%}
+.nbt .nb-rel-tip{display:flex;flex-direction:column;gap:8px}
+.nbt .nrt-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:6px}
+.nbt .nrt-title-row{display:flex;flex-direction:column;gap:2px}
+.nbt .nrt-name{font-size:1.02rem;font-weight:800;color:#ffffff;line-height:1.2}
+.nbt .nrt-role{font-size:.72rem;font-weight:600;color:#94a3b8}
+.nbt .nrt-badge{font-size:.72rem;font-weight:750;padding:2px 7px;border-radius:5px;white-space:nowrap;flex-shrink:0}
+.nbt .nrt-badge.sen{background:#fef3c7;color:#92400e}
+.nbt .nrt-badge.rival{background:#fee2e2;color:#991b1b}
+.nbt .nrt-badge.blue{background:#eff6ff;color:#1e40af}
+.nbt .nrt-summary{font-size:.76rem;color:#e2e8f0;line-height:1.42;margin:0;font-weight:500;word-break:keep-all;overflow-wrap:break-word}
+.nbt .nrt-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px}
+.nbt .nrt-item{display:flex;align-items:flex-start;gap:6px;font-size:.74rem;line-height:1.4;background:rgba(255,255,255,0.08);padding:4px 7px;border-radius:6px}
+.nbt .nrt-label{font-weight:750;color:#cbd5e1;flex-shrink:0;min-width:58px}
+.nbt .nrt-val{color:#f1f5f9;word-break:keep-all;overflow-wrap:break-word}
 .nbt::after{content:'';position:absolute;left:var(--ax);bottom:-5px;width:10px;height:10px;margin-left:-5px;background:inherit;transform:rotate(45deg);border-radius:2px}
 .nbt.below::after{bottom:auto;top:-5px}
 .nbt b{display:block;font-size:.7rem;color:#c5cad6;font-weight:700}.nbt span{display:block;color:#dfe3ec}.nbt em{display:block;font-style:normal;font-weight:800;font-size:.95rem}.nbt small{display:block;color:#aab1c2;font-size:.68rem}

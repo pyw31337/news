@@ -38,7 +38,19 @@ const NB = (() => {
   const stat = (label, value, unit = '', sub = '', extra = '') => `<div class="stat"><div class="stat-l">${esc(label)}</div><div class="stat-v">${esc(value)}<small>${esc(unit)}</small></div>${sub ? `<div class="stat-s">${sub}</div>` : ''}${extra}</div>`;
   const exp = (label, count, body, open = false, id = '') => `<div class="exp${open ? ' is-open' : ''}"${id ? ` id="${id}"` : ''}><button class="exp-b" type="button" aria-expanded="${open}"><span>${esc(label)}</span>${count != null ? `<span class="exp-n">${esc(count)}</span>` : ''}${ic('chevron-down')}</button><div class="exp-c"${open ? '' : ' hidden'}>${body}</div></div>`;
   const seg = (name, items, cur = 0) => `<div class="seg" role="tablist" data-seg="${name}">${items.map((t, i) => `<button type="button" role="tab" class="seg-i${i === cur ? ' is-on' : ''}" aria-selected="${i === cur}" data-i="${i}">${esc(t[0] ?? t)}${t[1] != null ? `<span class="seg-n">${t[1]}</span>` : ''}</button>`).join('')}</div>`;
-  const pchip = (p, sub = '', href = p.href) => { const tag = href ? 'a' : 'span', tip = [p.name, sub].filter(Boolean).join('\n'); return `<${tag} class="pchip"${href ? ` href="${esc(href)}"` : ''}${tip ? ` data-tip="${esc(tip)}"` : ''}>${p.photo ? `<img src="${esc(p.photo)}" alt="" loading="lazy" width="32" height="32">` : `<span class="pchip-av">${ic('user')}</span>`}<span class="pchip-t"><b>${esc(p.name)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</span></${tag}>`; };
+  const pchip = (p, sub = '', href = p.href, customTip = null) => {
+    const tag = href ? 'a' : 'span';
+    const isHtml = customTip && (customTip.startsWith('<') || customTip.includes('class='));
+    let tipAttr = '';
+    if (isHtml) {
+      tipAttr = ` data-tip="${esc(customTip)}" data-tip-html="1"`;
+    } else if (customTip) {
+      tipAttr = ` data-tip="${esc(customTip)}"`;
+    } else if (sub && sub !== p.name) {
+      tipAttr = ` data-tip="${esc(sub)}"`;
+    }
+    return `<${tag} class="pchip"${href ? ` href="${esc(href)}"` : ''}${tipAttr}>${p.photo ? `<img src="${esc(p.photo)}" alt="" loading="lazy" width="32" height="32">` : `<span class="pchip-av">${ic('user')}</span>`}<span class="pchip-t"><b>${esc(p.name)}</b>${sub ? `<small>${esc(sub)}</small>` : ''}</span></${tag}>`;
+  };
   /* 행에는 제목이 이미 보인다. 실제 수집한 요약이 있을 때만 미리보기를
      띄워 같은 제목을 말풍선에 되풀이하지 않는다. */
   const articleTip = a => {
@@ -55,7 +67,7 @@ const NB = (() => {
   const gz = async url => { const r = await fetch(url); if (!r.ok) throw new Error(r.status); if (!('DecompressionStream' in window)) throw new Error('no gzip'); return JSON.parse(await new Response(r.body.pipeThrough(new DecompressionStream('gzip'))).text()); };
   const shard = async (s, n) => { const b = new Uint8Array(await crypto.subtle.digest('SHA-1', new TextEncoder().encode(s))); return parseInt([...b.slice(0, 3)].map(x => x.toString(16).padStart(2, '0')).join(''), 16) % n; };
   const RAW = 'https://raw.githubusercontent.com/pyw31337/news/';
-  const acard = a => `<a class="acard" href="${esc(a.url)}" target="_blank" rel="noopener"><span class="acard-img"><img src="${esc(a.img)}" alt="" loading="lazy" decoding="async"></span><span class="acard-t">${esc(titleClean(a.title))}</span><span class="acard-m">${esc(a.press)}<i></i>${esc(ymd(a.t))}</span></a>`;
+  const acard = a => `<a class="acard" href="${esc(a.url)}" target="_blank" rel="noopener"><span class="acard-img"><img src="${esc(a.img)}" alt="" loading="lazy" decoding="async"><span class="acard-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span><span class="acard-t">${esc(titleClean(a.title))}</span><span class="acard-m"><span class="acard-src">${esc(a.press)}</span><time>${esc(ymd(a.t))}</time></span></a>`;
   const quote = q => {
     const evidence = [q.press, ymd(q.d)].filter(Boolean).join(' · '), tip = [q.quote, evidence].filter(Boolean).join('\n');
     return `<figure class="quote${q.hot ? ' is-hot' : ''}"${q.heat ? ` data-heat="${q.heat}"` : ''}${tip ? ` data-tip="${esc(tip)}"` : ''}><blockquote>${q.hot ? `<span class="quote-hot">${ic('flame')}화제 ${q.heat}</span>` : ''}${esc(q.quote)}</blockquote><figcaption>${q.url ? `<a href="${esc(q.url)}" target="_blank" rel="noopener" class="quote-src">${esc(evidence || '원문 보기')}${ic('external-link')}</a>` : esc(evidence)}</figcaption></figure>`;
@@ -96,7 +108,16 @@ const NB = (() => {
   const toc = (secs, cls = '') => `<nav class="toc ${cls}" aria-label="목차">${secs.map((x, i) => `<a class="toc-i${i ? '' : ' is-on'}" href="#${x.id}"><svg class="ic" aria-hidden="true">${document.getElementById('i-' + x.icon + '-f') ? `<use class="u0" href="#i-${x.icon}"/><use class="u1" href="#i-${x.icon}-f"/>` : `<use href="#i-${x.icon}"/>`}</svg>${esc(x.title)}${x.count ? `<small>${esc(x.count)}</small>` : ''}</a>`).join('')}</nav>`;
   const spy = ids => {
     const links = [...document.querySelectorAll('.toc-i')];
-    const set = id => links.forEach(a => { const on = a.getAttribute('href') === '#' + id; a.classList.toggle('is-on', on); if (on) { const bar = a.closest('.toc--bar'); if (bar && bar.offsetParent) bar.scrollTo({ left: Math.max(0, a.offsetLeft - bar.clientWidth / 2 + a.offsetWidth / 2), behavior: 'instant' }); } });
+    const set = id => links.forEach(a => {
+      const on = a.getAttribute('href') === '#' + id;
+      a.classList.toggle('is-on', on);
+      if (on) {
+        const bar = a.closest('.toc--bar');
+        if (bar && bar.offsetParent && !bar._userDragging) {
+          bar.scrollTo({ left: Math.max(0, a.offsetLeft - bar.clientWidth / 2 + a.offsetWidth / 2), behavior: 'smooth' });
+        }
+      }
+    });
     const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) set(en.target.id); }), { rootMargin: '-25% 0px -65% 0px' });
     ids.forEach(id => io.observe(document.getElementById(id)));
     /* 첫 섹션보다 위(히어로)에 있을 땐 첫 항목을 켬 */
@@ -111,22 +132,143 @@ const NB = (() => {
   const showTip = (el, point) => {
     const text = el?.dataset?.tip;
     if (!text) return;
-    if (!tipEl) { tipEl = document.createElement('aside'); tipEl.id = 'nb-tip'; tipEl.className = 'nb-tip'; tipEl.setAttribute('role', 'tooltip'); document.body.append(tipEl); }
+
+    // 의미없는 중복 툴팁 필터링: 엘리먼트 본문과 툴팁 텍스트가 동일하거나 단순 출처 이름만 있는 경우 미노출
+    const trimmed = text.trim();
+    const elText = el.textContent?.trim();
+    if (elText && (elText === trimmed || elText === trimmed.replace(/^[#\s]+/, '').trim())) return;
+    if (['위키데이터', '위키백과', '대한민국 국회', '열린국회정보', '국회 공보'].includes(trimmed)) return;
+
+    if (!tipEl) {
+      tipEl = document.createElement('aside');
+      tipEl.id = 'nb-tip';
+      tipEl.className = 'nb-tip';
+      tipEl.setAttribute('role', 'tooltip');
+      document.body.append(tipEl);
+    }
     tipEl.replaceChildren();
+
+    // 우측 상단 X 닫기 버튼 탑재 (모바일 터치 및 데스크톱 공통 닫기 지원)
+    const closeBtn = document.createElement('button');
+    closeBtn.type = 'button';
+    closeBtn.className = 'nb-tip-close';
+    closeBtn.setAttribute('aria-label', '닫기');
+    closeBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+    closeBtn.onclick = (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      hideTip();
+    };
+    tipEl.append(closeBtn);
+
     const thumb = el.dataset.thumb;
     if (thumb) { const img = document.createElement('img'); img.src = thumb; img.alt = ''; img.loading = 'lazy'; tipEl.append(img); tipEl.classList.add('has-thumb'); }
     else tipEl.classList.remove('has-thumb');
     const body = document.createElement('div');
-    text.split('\n').filter(Boolean).forEach((line, i) => { const n = document.createElement(i ? 'span' : 'b'); n.textContent = line; body.append(n); });
+    body.className = 'nb-tip-body';
+    if (el.dataset.tipHtml || text.startsWith('<')) {
+      body.innerHTML = text;
+    } else {
+      text.split('\n').filter(Boolean).forEach((line, i) => { const n = document.createElement(i ? 'span' : 'b'); n.textContent = line; body.append(n); });
+    }
     tipEl.append(body); tipEl.hidden = false; tipFor = el;
-    const r = el.getBoundingClientRect(), x = point?.clientX ?? r.left + r.width / 2, y = point?.clientY ?? r.bottom + 10;
-    const w = tipEl.offsetWidth || 240, h = tipEl.offsetHeight || 64;
-    tipEl.style.left = Math.max(12, Math.min(innerWidth - w - 12, x - w / 2)) + 'px';
-    tipEl.style.top = Math.max(12, Math.min(innerHeight - h - 12, y)) + 'px';
+
+    const r = el.getBoundingClientRect();
+    const w = tipEl.offsetWidth || 340, h = tipEl.offsetHeight || 64;
+    const isMobile = window.innerWidth <= 640;
+
+    if (isMobile) {
+      // 모바일에서는 화면 중앙(좌우 12px 균등 여백)에 배치하여 절대 잘리지 않도록 함
+      tipEl.style.left = '12px';
+      tipEl.style.right = '12px';
+      tipEl.style.width = 'calc(100vw - 24px)';
+      tipEl.style.maxWidth = 'calc(100vw - 24px)';
+    } else {
+      tipEl.style.removeProperty('right');
+      tipEl.style.removeProperty('max-width');
+      tipEl.style.width = '';
+      const x = point?.clientX ?? r.left + r.width / 2;
+      tipEl.style.left = Math.max(12, Math.min(innerWidth - w - 12, x - w / 2)) + 'px';
+    }
+    let topPos = (point?.clientY ?? r.bottom + 10);
+    if (topPos + h > innerHeight - 12) {
+      topPos = Math.max(12, r.top - h - 10);
+    }
+    tipEl.style.top = topPos + 'px';
   };
   const pair = (el, on) => { const key = el?.closest('[data-pair]')?.dataset.pair; if (key) document.querySelectorAll(`[data-pair="${CSS.escape(key)}"]`).forEach(x => x.classList.toggle('is-focus', on)); };
+
+  /* 마우스 드래그 & 터치 스와이프 가로 스크롤 (Drag-to-Scroll) */
+  const enableDragScroll = (el) => {
+    if (!el || el._dragBound) return;
+    el._dragBound = true;
+    let isDown = false, startX = 0, scrollLeft = 0, isDragging = false;
+    let dragTimeout = null;
+    el.classList.add('is-drag-scrollable');
+
+    // 브라우저 네이티브 링크/이미지 드래그(고스트 끌림 간섭) 원천 차단
+    el.addEventListener('dragstart', e => e.preventDefault());
+
+    el.addEventListener('mousedown', e => {
+      if (e.button !== 0) return;
+      isDown = true;
+      isDragging = false;
+      startX = e.clientX;
+      scrollLeft = el.scrollLeft;
+      el._userDragging = true;
+      if (dragTimeout) clearTimeout(dragTimeout);
+    });
+
+    const onMove = e => {
+      if (!isDown) return;
+      const dx = e.clientX - startX;
+      if (!isDragging && Math.abs(dx) > 3) {
+        isDragging = true;
+        el.classList.add('is-dragging');
+      }
+      if (isDragging) {
+        el.scrollLeft = scrollLeft - dx;
+        e.preventDefault();
+      }
+    };
+
+    const onUp = () => {
+      if (!isDown) return;
+      isDown = false;
+      setTimeout(() => el.classList.remove('is-dragging'), 0);
+      dragTimeout = setTimeout(() => { el._userDragging = false; }, 800);
+      if (isDragging) {
+        const prevent = ev => { ev.stopPropagation(); ev.preventDefault(); };
+        el.addEventListener('click', prevent, { capture: true, once: true });
+        setTimeout(() => el.removeEventListener('click', prevent, { capture: true }), 50);
+      }
+    };
+
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('blur', onUp);
+  };
+
+  const initDragScroll = (root = document) => {
+    const sel = '.seg, .toc--bar, .acards, .chips, .filters, .top nav, .tbl-w, [data-drag-scroll]';
+    root.querySelectorAll(sel).forEach(enableDragScroll);
+  };
+
   /* 상호작용: 펼치기, 세그먼트 필터, 그래프/행 툴팁 */
   const bind = (root = document) => {
+    initDragScroll(root);
+
+    if (!root._dragObserver && window.MutationObserver) {
+      root._dragObserver = new MutationObserver(mutations => {
+        for (const m of mutations) {
+          if (m.type === 'childList' && m.addedNodes.length) {
+            initDragScroll(root);
+          }
+        }
+      });
+      root._dragObserver.observe(root === document ? document.body : root, { childList: true, subtree: true });
+    }
+
     root.addEventListener('click', ev => {
       const b = ev.target.closest('.exp-b');
       if (b) { const x = b.parentElement, o = !x.classList.contains('is-open'); x.classList.toggle('is-open', o); b.setAttribute('aria-expanded', o); x.querySelector('.exp-c').hidden = !o; return; }
@@ -137,7 +279,28 @@ const NB = (() => {
     root.addEventListener('pointerout', ev => { const el = ev.target.closest('[data-tip],[data-pair]'); if (!el || el.contains(ev.relatedTarget)) return; pair(el, false); const tip = el.closest('[data-tip]'); if (tip === tipFor) hideTip(); });
     root.addEventListener('focusin', ev => { const el = ev.target.closest('[data-tip],[data-pair]'); if (!el) return; pair(el, true); const tip = el.closest('[data-tip]'); if (tip) showTip(tip); });
     root.addEventListener('focusout', ev => { const el = ev.target.closest('[data-tip],[data-pair]'); if (!el || el.contains(ev.relatedTarget)) return; pair(el, false); if (el.closest('[data-tip]') === tipFor) hideTip(); });
-    root.addEventListener('pointerdown', ev => { if (ev.pointerType !== 'touch') return; const tip = ev.target.closest('[data-tip]'); if (tip && !tip.closest('a')) { if (tipFor === tip) hideTip(); else showTip(tip, ev); } });
+
+    // 툴팁 외부 터치/클릭 닫기 및 모바일 터치 이벤트
+    root.addEventListener('pointerdown', ev => {
+      if (ev.target.closest('.nb-tip-close')) return;
+      if (tipEl && !tipEl.hidden) {
+        if (!tipEl.contains(ev.target) && !ev.target.closest('[data-tip]')) {
+          hideTip();
+        }
+      }
+      if (ev.pointerType !== 'touch') return;
+      const tip = ev.target.closest('[data-tip]');
+      if (tip) {
+        if (tipFor === tip) {
+          hideTip();
+        } else {
+          showTip(tip, ev);
+          if (tip.dataset.tipHtml || tip.classList.contains('pchip') || !tip.closest('a')) {
+            if (tip.closest('a')) ev.preventDefault();
+          }
+        }
+      }
+    });
     root.addEventListener('keydown', ev => { if (ev.key === 'Escape') hideTip(); });
   };
   /* 부호 있는 금액(천원) */
@@ -166,5 +329,5 @@ const NB = (() => {
   const ym = t => { const d = String(t).slice(0, 7).split('-'); return `${d[0]}년 ${+d[1]}월`; };
   const load = u => fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
   const openAll = () => { if (/[?&]open=1/.test(location.search)) document.querySelectorAll('.exp').forEach(x => { x.classList.add('is-open'); x.querySelector('.exp-b').setAttribute('aria-expanded', true); x.querySelector('.exp-c').hidden = false; }); };
-  return { ptl, ticks, href, gz, shard, RAW, BASE, swon, mini, table, grouper, more, HCAT, hrow, ym, toc, spy, vstack, span, gantt, rtree, agroup, esc, cleanText, ic, num, won, eok1, dot, md, ymd, dayLabel, titleClean, EVG, EVI, FILTERS, ERAS, yearOf, sh, facts, stat, exp, seg, pchip, arow, acard, quote, tl, tlItem, era, hbars, vbars, stack, spark, donut, assetParts, voteParts, bind, load, openAll };
+  return { articleTip, ptl, ticks, href, gz, shard, RAW, BASE, swon, mini, table, grouper, more, HCAT, hrow, ym, toc, spy, vstack, span, gantt, rtree, agroup, esc, cleanText, ic, num, won, eok1, dot, md, ymd, dayLabel, titleClean, EVG, EVI, FILTERS, ERAS, yearOf, sh, facts, stat, exp, seg, pchip, arow, acard, quote, tl, tlItem, era, hbars, vbars, stack, spark, donut, assetParts, voteParts, bind, load, openAll };
 })();
