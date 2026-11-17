@@ -1,7 +1,7 @@
 # NewsBoard 자동화 공동 인수인계 계약
 
 > 이 문서는 Codex, Claude, Gemini, Grok, 로컬 에이전트가 수집·분석·품질 자동화를 이어서 운영하기 위한 **단일 실행 계약**이다.
-> 새 에이전트는 작업 전에 이 문서와 [`docs/AGENT_HANDOFF.md`](AGENT_HANDOFF.md)를 읽고, 작업 후 이 문서의 상태·로그·미해결 항목을 갱신한다.
+> 새 에이전트는 작업 전에 이 문서와 [`docs/DATA_CATALOG.md`](DATA_CATALOG.md), [`docs/AGENT_HANDOFF.md`](AGENT_HANDOFF.md)를 읽고, 작업 후 이 문서의 상태·로그·미해결 항목을 갱신한다.
 
 ## 1. 정본과 변경 원칙
 

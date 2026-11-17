@@ -1,6 +1,7 @@
 # NewsBoard 인수인계 (HANDOFF)
 
 > **자동화 공동 인수인계 정본:** [docs/AGENT_AUTOMATION_HANDOFF.md](docs/AGENT_AUTOMATION_HANDOFF.md) — Codex·Claude·Gemini·Grok·로컬 에이전트가 공유하는 수집·분석·품질 실행 계약입니다.
+> **데이터 카탈로그 & 저장소 분기 정본:** [docs/DATA_CATALOG.md](docs/DATA_CATALOG.md) — 7대 핵심 데이터셋 스키마, 저장소 분기 원칙, 무료 티어 잔여 한도 및 런웨이 시뮬레이션입니다.
 
 > **현재 공동 작업 정본:** [docs/AGENT_HANDOFF.md](docs/AGENT_HANDOFF.md) — 2026-11-11 현재 수집량, 분야별 방향, 검증 규칙, 실행 순서와 미해결 항목을 먼저 읽으세요. 이 문서의 오래된 수치와 과거 계획은 역사 기록으로만 사용합니다.
 >
