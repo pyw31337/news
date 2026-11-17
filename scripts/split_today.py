@@ -59,6 +59,7 @@ def _stage_rank(title):
 def _stage(title):
     import re
     t = title or ''
+    if re.search(r'반납|경위서|처분|시험무효', t): return '후속 조치'
     if re.search(r'자수|인정|실토|시인', t): return '인정·자수'
     if re.search(r'변호사|법적 대응|말도 안|부인|아니다', t): return '부인·법적 대응'
     if re.search(r'의혹|만점|고득점|99\.38', t): return '만점·의혹'
@@ -75,7 +76,7 @@ def _archive_flow(i):
             searchable = f"{it.get('title','')} {it.get('body','')}"
             sc = _score(searchable, terms)
             if date and sc and _relevant(searchable, terms):
-                e = dict(date=date, title=it.get('title'), body=it.get('body',''), url=it.get('url') or it.get('ourl'), img=it.get('img'), press=it.get('press'), stage=_stage(it.get('title')),
+                e = dict(date=date, title=it.get('title'), body=it.get('body',''), url=it.get('url') or it.get('ourl'), img=it.get('img'), press=it.get('press'), stage=_stage(f"{it.get('title','')} {it.get('body','')}"),
                          score=sc, stage_rank=_stage_rank(it.get('title')))
                 if not groups.get(date) or (e['stage_rank'], e['score']) > (groups[date].get('stage_rank', 0), groups[date]['score']): groups[date] = e
     for ap in sorted(_glob.glob(os.path.join(SITE, 'data', 'archive', '20*.json'))):
