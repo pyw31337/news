@@ -15,7 +15,8 @@
   let V = null;
 
   function dataIssue(v, full) { const base = {id:v.id, title:v.title, category:v.cat, image:v.img, summary:v.summary || [], gallery:(v.imgs || []).map(img => ({img})), sources:[], flow:[], opinion:v.op, entities:v.ents || [], keywords:v.kw || [], past:[]}; const out = {...base, ...(full || {})}; if (v.flow?.length) out.flow = v.flow; out.flow_gap = v.flow_gap || ''; return out; }
-  function heroImage(i) { return i.image || (i.gallery || [])[0]?.img || ''; }
+  function heroImage(i) { return i.image || (i.gallery || []).find(g => g.img)?.img || (i.sources || []).find(s => s.img)?.img || ''; }
+  function heroFallback(i) { return `<div class="hero-fallback"><span>${icon('trending-up', true)}</span><b>${esc(i.category || '오늘의 이슈')}</b><small>대표 이미지 준비 중 · 원문과 흐름을 먼저 확인하세요</small></div>`; }
   const genericTerms = new Set(['ai','뉴스','기사','논란','관련','오늘','현재','정부','한국','사람','이슈','사건','보도']);
   function issueTerms(i) {
     return uniq([...(i.keywords || []), ...(i.entities || []), ...String(i.title || '').split(/[\s·“”‘’'"…,:!?()[\]{}]+/)]).map(x => String(x).trim()).filter(x => x.length >= 2 && !genericTerms.has(x.toLowerCase()));
@@ -90,7 +91,7 @@
     document.title = `NewsBoard v2 · ${short(i.title, 32)}`;
     $('#app').innerHTML = `
       <section class="section hero" id="issue">
-        <div class="hero-media" style="--hero-cat:${color(i.category)}">${heroImage(i) ? `<img src="${esc(heroImage(i))}" alt="">` : ''}<span class="media-caption">${esc(i.category || '오늘의 이슈')} · ${day(full.updated || full.date)}</span></div>
+        <div class="hero-media" style="--hero-cat:${color(i.category)}">${heroImage(i) ? `<img src="${esc(heroImage(i))}" alt="">` : heroFallback(i)}<span class="media-caption">${esc(i.category || '오늘의 이슈')} · ${day(full.updated || full.date)}</span></div>
         <div class="hero-copy"><span class="badge">${icon('trending-up', true)} ${esc(i.category || '핫이슈')}</span><h1>${esc(i.title)}</h1><p class="hero-lead">${esc((i.lead || currentSummary[0] || '오늘 가장 많이 주목받은 이슈의 핵심 흐름을 한 화면에 정리했습니다.'))}</p>
           <div class="meta"><span>${day(full.updated || full.date)}</span><span>${icon('news')} 보도 ${nf(i.presses || v.presses)}곳</span><span>${icon('message-circle')} ${nf((i.opinion || v.op || {}).total || v.comments)} 반응</span><span>화제도 ${nf(Math.round(v.score || i.score || 0))}</span></div>
           <div class="entity-strip">${entities.map(e => `<a class="entity-chip" href="${root}e/?k=${encodeURIComponent(e)}">${icon('bookmark')} ${esc(e)}</a>`).join('')}</div>
