@@ -92,9 +92,11 @@ def brief(issue, manifest):
     sources = [dict(press=x.get('press', ''), title=x.get('title', ''), url=x.get('url', '')) for x in issue.get('sources', [])[:4]]
     asset = has_asset(issue, manifest)
     score = (15 if CAUSE.search(cause) else 0) + (10 if NUMBER.search(evidence) else 0) + min(len(sources), 4) * 3 + (8 if flow else 0)
+    continuity = issue.get('continuity_quality') or {}
+    continuity_ok = not continuity or (continuity.get('quality', 0) >= .55 and len(continuity.get('gaps') or []) <= 2)
     return dict(
         issue_id=issue.get('id', ''), title=issue.get('title', ''), category=issue.get('category', ''), rank=issue.get('rank'),
-        priority_score=score, production_types=['comic', 'card_news'], status='ready_for_editorial_review' if facts and sources else 'needs_fact_review',
+        priority_score=score, production_types=['comic', 'card_news'], status='ready_for_editorial_review' if facts and sources and continuity_ok else 'needs_fact_review',
         facts=[compact(x, 150) for x in facts[:5]], sources=sources,
         story_beats=[
             dict(panel=1, purpose='무슨 일이 있었나', evidence=compact(facts[0] if facts else issue.get('title', ''), 120)),
@@ -114,7 +116,7 @@ def brief(issue, manifest):
             forbid=['read-the-original CTA', 'generic city sunset', 'generic classroom chalkboard', 'copied panel composition', 'invented chart number', 'real-person likeness'],
             acceptance=['four distinct panel scenes', 'no rasterized text or speech bubbles', 'source beats checked', 'asset registered in assets/editorial-art.json']),
         asset=dict(existing=asset, action='reuse_existing' if asset else 'generate_after_human_fact_check'),
-        quality_gate=dict(cause_grounded=bool(CAUSE.search(cause)), numeric_or_specific_evidence=bool(NUMBER.search(evidence) or evidence), sources=len(sources), no_generic_closing=True),
+        quality_gate=dict(cause_grounded=bool(CAUSE.search(cause)), numeric_or_specific_evidence=bool(NUMBER.search(evidence) or evidence), sources=len(sources), continuity_quality=continuity.get('quality'), continuity_gaps=continuity.get('gaps', []), no_generic_closing=True),
     )
 
 

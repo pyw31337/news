@@ -40,6 +40,7 @@ jobs:
           # 원문 페이지에서 확보한 날짜·요약·대표 이미지 오버레이를
           # 비어 있는 기사 필드에만 적용한다. 원본 수집 레코드는 변경하지 않는다.
           python scripts/merge_article_meta.py data/today.json data/db/og/map.json
+          python scripts/event_quality.py data/today.json || echo "::warning::event continuity quality build failed; keeping raw flow"
           # 기존에 게시된 데이터도 같은 사진 출처·동명이인 규칙으로 재검사한다.
           # 검증되지 않은 사진은 배포 중단 대신 이니셜 표기로 안전하게 대체한다.
           python scripts/portrait_audit.py data/today.json --entity-media data/entity_media.json --entity-pool data/entity_pool.json --asset-dir assets/people --output data/portrait_audit.json --sanitize
@@ -59,6 +60,7 @@ jobs:
           # 사진은 R2(docs/DATA.md): R2에 올라간 것은 Worker 주소로 바꾸고, 아직 못 올린 것만 Pages에 실음
           (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null || true; cp -r media/ent _site/media/ 2>/dev/null || true)
           python scripts/media_r2.py rewrite _site media || true
+          (cp data/event_quality.json _site/data/ 2>/dev/null || true)
           python scripts/build_pages.py _site
           python scripts/split_today.py _site || true
           python scripts/inject_cache_version.py _site || true

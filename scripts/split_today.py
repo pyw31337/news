@@ -112,10 +112,11 @@ except Exception: QZ = []
 for v, i in zip(V['issues'], D.get('issues', [])):
     v['imgs'] = list(dict.fromkeys([x.get('img') for x in (i.get('gallery') or []) if x.get('img')] + ([i['image']] if i.get('image') else [])))[:4]
     v['faces'] = [f for f in (face(n) for n in (i.get('entities') or [])[:6]) if f][:4]
-    flow = _archive_flow(i)
+    flow = i.get('continuity') or _archive_flow(i)
     if flow:
         v['flow'] = flow[-8:]
-        v['flow_gap'] = '최초 합격 발표 원문이 현재 누적 데이터에서 확인되지 않음' if len(flow) and flow[0].get('stage') != '합격 발표' else ''
+        gaps = (i.get('continuity_quality') or {}).get('gaps') or []
+        v['flow_gap'] = '확인되지 않은 단계: ' + ', '.join(gaps) if gaps else ''
     op = i.get('opinion') or {}; aop = (i.get('ai') or {}).get('opinion') or {}
     if op.get('total'):
         v['op'] = dict(total=op.get('total'), like=op.get('like'), dislike=op.get('dislike'), gender=op.get('gender'), ages=op.get('ages'),
