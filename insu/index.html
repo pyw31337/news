@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>렛츠인슈 (Let’s Insu) · 독립 AI 보험약관 & 분쟁조정 인텔리전스</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--bg:#f8fafc;--card:#ffffff;--text:#0f172a;--mute:#64748b;--primary:#047857;--green:#10b981;--line:#e2e8f0;--ok:#10b981;--warn:#f59e0b;--err:#ef4444}
+*{box-sizing:border-box;margin:0;padding:0;font-family:"Pretendard Variable",-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
+body{background:var(--bg);color:var(--text);line-height:1.6;padding-bottom:3rem}
+.wrap{max-width:1120px;margin:0 auto;padding:0 1rem}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.top-nav{display:flex;justify-content:space-between;align-items:center;height:60px}
+.brand{font-size:1.2rem;font-weight:800;color:var(--primary);text-decoration:none;display:flex;align-items:center;gap:6px}
+.brand span{color:var(--green)}
+.pill{display:inline-flex;align-items:center;padding:2px 8px;border-radius:999px;font-size:.7rem;font-weight:600}
+.pill-ok{background:#d1fae5;color:#065f46}
+.pill-green{background:#ecfdf5;color:#047857}
+.hero{background:linear-gradient(135deg,#065f46 0%,#047857 100%);color:#fff;padding:2.5rem 0;margin-bottom:1.5rem}
+.hero h1{font-size:1.8rem;margin-bottom:.5rem;font-weight:800}
+.hero p{font-size:.9rem;color:#a7f3d0;max-width:720px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem;margin-bottom:1.5rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.25rem;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.card h2{font-size:1.05rem;font-weight:700;margin-bottom:.75rem;color:var(--primary);display:flex;align-items:center;gap:6px}
+.tab-row{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:12px}
+.tab-btn{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:600;cursor:pointer;white-space:nowrap}
+.tab-btn.on{background:#047857;color:#fff;border-color:#047857}
+.term-detail{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:14px}
+.defense-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:12px;margin-top:10px}
+.back-link{font-size:.78rem;color:var(--mute);text-decoration:none}
+.back-link:hover{color:var(--primary)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap top-nav">
+    <a href="./" class="brand">🛡️ 렛츠인슈 <span>Let’s Insu</span> <span class="pill pill-ok">독립 서비스 v1</span></a>
+    <div>
+      <a href="../" class="back-link">← 뉴스보드 코어로 이동</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="pill pill-green" style="background:#10b981;color:#fff;margin-bottom:8px">금융감독원 분쟁조정위원회 & 대법원 판례 연동</span>
+    <h1>생활밀착형 보험약관 분석 & 부지급 방어 가이드</h1>
+    <p>4세대 실손의료비, 3대 질병(암/뇌혈관/허혈성심장), 일상생활배상책임 등 7대 핵심 표준약관과 KCD 질병코드, 금감원 분쟁조정례를 1:1 매핑하여 보험금 청구 및 보험사 면책 방어 전략을 제공합니다.</p>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="card" style="margin-bottom:1.5rem">
+    <h2>📑 7대 핵심 표준약관 & 부지급 방어 온톨로지</h2>
+    <div class="tab-row" id="term-tabs"></div>
+    <div id="term-content">
+      <p style="color:var(--mute);font-size:.85rem">약관 데이터를 로드하는 중입니다...</p>
+    </div>
+  </div>
+</main>
+
+<script>
+let policyData = null;
+let curTab = 0;
+
+async function init() {
+  try {
+    const res = await fetch('../data/insu/policy_terms_db.json');
+    policyData = await res.json();
+    renderTabs();
+    renderContent();
+  } catch (err) {
+    document.getElementById('term-content').innerHTML = '<p style="color:#ef4444;font-size:.85rem">약관 데이터를 로드할 수 없습니다.</p>';
+  }
+}
+
+function renderTabs() {
+  const tabs = document.getElementById('term-tabs');
+  const terms = policyData.terms || [];
+  tabs.innerHTML = terms.map((t, i) => `
+    <button class="tab-btn ${i===curTab?'on':''}" onclick="setTab(${i})">${t.name.split('(')[0]}</button>
+  `).join('');
+}
+
+function setTab(idx) {
+  curTab = idx;
+  renderTabs();
+  renderContent();
+}
+
+function renderContent() {
+  const box = document.getElementById('term-content');
+  const terms = policyData.terms || [];
+  const item = terms[curTab];
+  if (!item) return;
+
+  box.innerHTML = `
+    <div class="term-detail">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px">
+        <h3 style="font-size:1.05rem;color:#065f46">${item.name}</h3>
+        <span class="pill pill-ok">표준약관 개정판</span>
+      </div>
+      <p style="font-size:.82rem;color:var(--mute);margin-bottom:10px">${item.summary || ''}</p>
+      
+      <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:10px">
+        <h4 style="font-size:.85rem;color:#b91c1c;margin-bottom:6px">⚠️ 보험사 주요 면책 주장 사유</h4>
+        <p style="font-size:.78rem;color:#475569">${item.exclusion_clause || '의학적 소견 및 치료 목적성 불인정'}</p>
+      </div>
+
+      <div class="defense-box">
+        <h4 style="font-size:.85rem;color:#1e40af;margin-bottom:6px">🛡️ 소비자 승소 및 부지급 방어 전략 (금감원 분쟁조정례)</h4>
+        <p style="font-size:.78rem;color:#1e3a8a;line-height:1.5">${item.defense_strategy || 'KCD 질병분류코드 및 주치의 진단서 객관적 입증을 통한 지급 관철'}</p>
+      </div>
+    </div>
+  `;
+}
+
+init();
+</script>
+</body>
+</html>

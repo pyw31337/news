@@ -1202,7 +1202,10 @@ async pipeline(el){const{E,N,K}=B();
     <section class="card" style="margin-bottom:1rem">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
         <h3 style="margin:0;font-size:.95rem">⚖️ 법률서비스 '렛츠로(Let’s Law)' 판례 데이터베이스 & 실전 리딩케이스</h3>
-        <span class="pill ok">형사·기업·선거 6대 판례 온톨로지</span>
+        <div style="display:flex;gap:6px;align-items:center">
+          <a href="../lawtech/" target="_blank" class="pill ok" style="text-decoration:none;cursor:pointer">🔗 독립 서비스 열기 ↗</a>
+          <span class="pill ok">형사·기업·선거 6대 판례 온톨로지</span>
+        </div>
       </div>
       <div id="law-box">${drawLetsLaw()}</div>
     </section>
@@ -1210,7 +1213,10 @@ async pipeline(el){const{E,N,K}=B();
     <section class="card" style="margin-bottom:1rem">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
         <h3 style="margin:0;font-size:.95rem">🛡️ 보험상담 '렛츠인슈(Let’s Insu)' 약관 온톨로지 & 부지급 방어 관제</h3>
-        <span class="pill ok">실손·암·뇌혈관·일배책 분쟁조정 매핑</span>
+        <div style="display:flex;gap:6px;align-items:center">
+          <a href="../insu/" target="_blank" class="pill ok" style="text-decoration:none;cursor:pointer">🔗 독립 서비스 열기 ↗</a>
+          <span class="pill ok">실손·암·뇌혈관·일배책 분쟁조정 매핑</span>
+        </div>
       </div>
       <div id="insu-box">${drawLetsInsu()}</div>
     </section>
@@ -1218,7 +1224,10 @@ async pipeline(el){const{E,N,K}=B();
     <section class="card" style="margin-bottom:1rem">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
         <h3 style="margin:0;font-size:.95rem">📈 독립 자산시장 인텔리전스 '렛츠에셋(Let’s Asset)' 글로벌 공급망 & 멀티자산 관제</h3>
-        <span class="pill ok">빅테크 7사 · 크로스보더 공급망 7선 · 매크로 4종</span>
+        <div style="display:flex;gap:6px;align-items:center">
+          <a href="../market/" target="_blank" class="pill ok" style="text-decoration:none;cursor:pointer">🔗 독립 서비스 열기 ↗</a>
+          <span class="pill ok">빅테크 7사 · 크로스보더 공급망 7선 · 매크로 4종</span>
+        </div>
       </div>
       <div id="asset-box">${drawLetsAsset()}</div>
     </section>

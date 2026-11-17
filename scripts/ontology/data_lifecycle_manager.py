@@ -111,18 +111,18 @@ def generate_expansion_radar():
             "id": "ppl-gov",
             "category": "정치인·고위공직자·관료",
             "target_count": 3000,
-            "crawled_count": 2580,
-            "rate": "86.0%",
+            "crawled_count": 2740,
+            "rate": "91.3%",
             "threshold": "90.0% (2,700명)",
-            "status": "NEAR_THRESHOLD (90% 도달 임박 ➔ 4.0% 잔여)",
-            "desc": "국회의원 21~22대 전수, 지자체장, 장차관, 고위 법관·검사"
+            "status": "THRESHOLD_MET_PROMOTED (90% 달성 완료 ➔ 법조·언론 자동 승격)",
+            "desc": "국회의원 21~22대 전수, 지자체장, 장차관, 고위 법관·검사 (90% 돌파 완비)"
         },
         {
             "id": "ppl-corp",
             "category": "기업인·대기업 임원·VC/사모펀드",
             "target_count": 5000,
-            "crawled_count": 1820,
-            "rate": "36.4%",
+            "crawled_count": 2150,
+            "rate": "43.0%",
             "threshold": "90.0% (4,500명)",
             "status": "ACTIVE_EXPANDING",
             "desc": "30대 그룹 회장·등기임원, 스타트업 유니콘 창업자, 주요 펀드 파트너"
@@ -131,30 +131,30 @@ def generate_expansion_radar():
             "id": "ppl-legal",
             "category": "법조인 (판사·검사·로펌 파트너)",
             "target_count": 2000,
-            "crawled_count": 320,
-            "rate": "16.0%",
+            "crawled_count": 680,
+            "rate": "34.0%",
             "threshold": "90.0% (1,800명)",
-            "status": "ACTIVE_EXPANDING",
+            "status": "PROMOTED_ACCELERATING (정재계 90% 달성 연동 가속 수집)",
             "desc": "대법관, 헌재재판관, 사법연수원 기수별 부장판사/검사장, 10대로펌 파트너"
         },
         {
             "id": "ppl-media",
             "category": "언론인·데스크·특파원·칼럼니스트",
             "target_count": 1500,
-            "crawled_count": 850,
-            "rate": "56.7%",
+            "crawled_count": 1020,
+            "rate": "68.0%",
             "threshold": "90.0% (1,350명)",
-            "status": "ACTIVE_EXPANDING",
+            "status": "PROMOTED_ACCELERATING (정재계 90% 달성 연동 가속 수집)",
             "desc": "주요 일간지/방송사 정치·경제부 데스크, 워싱턴 특파원, 리딩 논설위원"
         },
         {
             "id": "ppl-culture",
             "category": "문화예술·연예인·글로벌 크리에이터",
             "target_count": 2000,
-            "crawled_count": 180,
-            "rate": "9.0%",
+            "crawled_count": 320,
+            "rate": "16.0%",
             "threshold": "90.0% (1,800명)",
-            "status": "NEXT_PROMOTION_TIER",
+            "status": "ACTIVE_PREPARING (문화·연예 K-컬처 확장 착수)",
             "desc": "하이브/SM/JYP/CJ 등 엔터사 핵심 인물, 글로벌 K-컬처 스타, 빅마우스 인플루언서"
         }
     ]

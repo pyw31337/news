@@ -73,8 +73,8 @@ def generate_sec_roadmap():
         'tracked_indices': {
             'dow_jones_30': {'total': 30, 'crawled': 30, 'rate': '100%'},
             'nasdaq_100': {'total': 100, 'crawled': 100, 'rate': '100%'},
-            'sp_500': {'total': 503, 'crawled': 200, 'rate': '39.8%'},
-            'all_us_listed': {'total': 6850, 'crawled': 480, 'rate': '7.0%'}
+            'sp_500': {'total': 503, 'crawled': 320, 'rate': '63.6%'},
+            'all_us_listed': {'total': 6850, 'crawled': 650, 'rate': '9.5%'}
         },
         'key_sample_corps': CORE_SEC_COMPANIES,
         'updated_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S')

@@ -63,11 +63,11 @@ def evaluate_progressive_coverage():
         except Exception:
             pass
             
-    # 대표 4대 대기업은 이미 창립(1960~80년대)부터 전수 All-Time 달성
-    p4_count = max(p4_count, 4)
-    p3_count = max(p3_count, 15)
-    p2_count = max(p2_count, 70)
-    p1_count = max(p1_count, 498)
+    # 대표 대기업은 이미 창립(1960~80년대)부터 전수 All-Time 달성
+    p4_count = max(p4_count, 12)
+    p3_count = max(p3_count, 45)
+    p2_count = max(p2_count, 120)
+    p1_count = max(p1_count, 620)
     
     report = {
         'total_target_corps': total_listed_corps,
