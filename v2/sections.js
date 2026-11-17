@@ -2,9 +2,10 @@
   const $ = (s,r=document) => r.querySelector(s), esc = v => String(v ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const day = s => { if(!s)return ''; const d=new Date(s); return Number.isNaN(d.getTime())?String(s).slice(0,10).replaceAll('-','.'):d.toLocaleDateString('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit'}).replaceAll(' ',''); };
   const root='../../', dataRoot=location.protocol==='file:'?'https://pyw31337.github.io/news/data/':'../../data/';
+  let DATA=null, MODE='';
   const img = u => u ? ` style="background-image:url('${esc(u)}')"` : '';
   const link = x => x.url || x.ourl || '#';
-  function header(){document.querySelectorAll('[data-region]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-region]').forEach(x=>x.classList.toggle('is-on',x===b));}));}
+  function header(){document.querySelectorAll('[data-region]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-region]').forEach(x=>x.classList.toggle('is-on',x===b));if(DATA){const d=b.dataset.region==='kr'?DATA.kr:DATA.global;MODE==='live'?live(d):reports(d);}}));}
   function live(D){
     const sections=Object.entries(D.sections||{}).filter(([k])=>k!=='주요');
     $('#app').innerHTML=`<div class="title"><div><div class="eyebrow">LIVE NEWS</div><h1>라이브</h1></div><p>지금 각 분야에서 가장 빠르게 움직이는 주요 기사입니다. 분야별 10건씩 제공합니다.</p></div><div class="filters"><button class="is-on" data-filter="all">전체</button>${sections.map(([k])=>`<button data-filter="${esc(k)}">${esc(k)}</button>`).join('')}</div>${sections.map(([name,list])=>`<section class="sector" data-sector="${esc(name)}"><div class="sector-head"><h2>${esc(name)}</h2><small>상위 ${Math.min(10,list.length)}건 · ${esc(day(D.updated||D.date))}</small></div><div class="article-grid">${(list||[]).slice(0,10).map(x=>`<a class="article" href="${esc(link(x))}" target="_blank" rel="noopener"><span class="thumb"${img(x.img)}></span><span><b>${esc(x.title)}</b><small>${esc(x.press||'')} · ${esc(day(x.time||x.t))}</small></span></a>`).join('')}</div></section>`).join('')}`;
@@ -17,5 +18,5 @@
     document.querySelectorAll('[data-min]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-min]').forEach(x=>x.classList.toggle('is-on',x===b));const n=Number(b.dataset.min);document.querySelectorAll('.theme').forEach(x=>x.hidden=Number(x.dataset.span)<n);}));
   }
   header();
-  Promise.all([fetch(`${dataRoot}today.json`,{cache:'no-cache'}).then(r=>r.json()),fetch(`${dataRoot}global.json`,{cache:'no-cache'}).then(r=>r.json()).catch(()=>({}))]).then(([D])=>location.pathname.includes('/live/')?live(D):reports(D)).catch(()=>{$('#app').innerHTML='<div class="empty">데이터를 불러오지 못했습니다. 잠시 후 다시 열어 주세요.</div>';});
+  Promise.all([fetch(`${dataRoot}today.json`,{cache:'no-cache'}).then(r=>r.json()),fetch(`${dataRoot}global.json`,{cache:'no-cache'}).then(r=>r.json()).catch(()=>({}))]).then(([D,G])=>{DATA={kr:D,global:G};MODE=location.pathname.includes('/live/')?'live':'reports';MODE==='live'?live(D):reports(D);}).catch(()=>{$('#app').innerHTML='<div class="empty">데이터를 불러오지 못했습니다. 잠시 후 다시 열어 주세요.</div>';});
 })();
