@@ -14,6 +14,7 @@
 - 수집·분석: `.github/workflows/collect.yml` → 결과를 `data`/`media`에 커밋한 뒤 Pages를 호출한다.
 - 법률·기업 보강: `.github/workflows/legal.yml`(3시간)와 `.github/workflows/corporate.yml`(매일 04:30 KST)이 뉴스 배포와 분리된 후처리를 담당한다.
 - 섹터별 현재량·속도·ETA: [`docs/COVERAGE_SIMULATION.md`](COVERAGE_SIMULATION.md)를 기준으로 보고한다.
+- 법률 API 발급·연결: [`docs/LEGAL_API_SETUP.md`](LEGAL_API_SETUP.md)를 따른다. 키는 `LAW_OC`, `DATA_GO_KR_KEY` GitHub Secret으로만 관리한다.
 
 같은 데이터를 여러 에이전트가 각자 재생성하지 않는다. 화면용 파일을 고칠 때 원장과 생성 스크립트의 관계를 먼저 확인하고, 수동 JSON을 정본처럼 커밋하지 않는다. 원문·사진·관계·경력은 출처가 없으면 비워 두며 추정으로 채우지 않는다.
 
