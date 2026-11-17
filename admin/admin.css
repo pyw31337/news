@@ -77,3 +77,32 @@ a{color:#2f6bff}.pill{display:inline-block;font-size:.7rem;padding:.05rem .45rem
 .dots{display:flex;flex-wrap:wrap;gap:3px;margin-top:6px}.dots i{width:10px;height:10px;border-radius:50%;background:#c9cfdd}.dots i.ok{background:var(--ok)}.dots i.bad{background:var(--bad)}.dots i.run{background:var(--warn)}
 .wsel{margin:0 0 10px}.tbl.bots td{min-width:90px}.tbl.bots td.w{min-width:200px}
 @media(max-width:560px){.lkg{grid-template-columns:repeat(2,1fr)}.fr{grid-template-columns:1fr}}
+
+/* 수집·분석 장비 종합 관제 (admin/tabs.js - pipeline) */
+.pipe-flow{display:flex;gap:8px;overflow-x:auto;padding:8px 0 12px;scrollbar-width:none}
+.pipe-step{flex:1;min-width:180px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;position:relative}
+.pipe-step h4{margin:0 0 4px;font-size:.82rem;display:flex;align-items:center;gap:6px}
+.pipe-step p{margin:0;font-size:.72rem;color:var(--mute)}
+.pipe-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:10px;margin-bottom:1rem}
+.pipe-card{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff;display:flex;flex-direction:column;justify-content:space-between}
+.pipe-card-h{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.pipe-card-h b{font-size:.88rem;display:flex;align-items:center;gap:6px}
+.pipe-meta{display:grid;grid-template-columns:85px 1fr;gap:4px 8px;font-size:.76rem;margin:8px 0;border-top:1px dashed var(--line);padding-top:8px}
+.pipe-meta dt{color:var(--mute);font-weight:600}
+.pipe-meta dd{margin:0;color:#141a2e}
+.pipe-foot{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--mute);margin-top:6px;border-top:1px solid #f1f3f8;padding-top:6px}
+.sim-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:1rem}
+.sim-controls{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:800px){.sim-controls{grid-template-columns:1fr 1fr}}
+.sim-checks{display:grid;gap:6px;font-size:.8rem;margin-top:6px}
+.sim-checks label{display:flex;align-items:center;gap:6px;cursor:pointer;padding:5px 8px;border-radius:6px;background:#f6f8fb}
+.sim-result{background:#f8faff;border:1px solid #c8d9fb;border-radius:10px;padding:14px;margin-top:12px}
+.sim-result-kpi{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.sim-result-kpi .val{font-size:1.35rem;font-weight:800;color:var(--navy)}
+.gauge-bar{height:12px;border-radius:6px;background:#e9edf5;overflow:hidden;display:flex;margin:6px 0}
+.gauge-bar .pos{background:var(--ok)}
+.gauge-bar .neg{background:var(--bad)}
+.gauge-bar .neu{background:#8a91a8}
+.corp-subnav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.corp-subnav button{font-size:.75rem;padding:4px 10px;min-height:32px;background:#eceff5;color:#4a5170;border-radius:6px}
+.corp-subnav button.on{background:var(--navy);color:#fff}
+
