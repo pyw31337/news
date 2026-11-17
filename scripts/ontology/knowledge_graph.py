@@ -408,7 +408,8 @@ def run():
         for target in iss['targets']:
             matched = [nid for nid, n in nodes.items() if n['name'] == target or target in nid]
             for mn in matched[:3]:
-                add_edge(iid, mn, 'COVERS_ENTITY', weight=2.2)
+                is_guideline = mn.startswith('crime_')
+                add_edge(iid, mn, 'APPLIES_GUIDELINE' if is_guideline else 'COVERS_ENTITY', weight=2.2)
 
     # -------------------------------------------------------------
     # 6. 테마 & 사건사고 노드 연계 (Ontology Themes)
@@ -453,8 +454,9 @@ def run():
             matched = [nid for nid, n in nodes.items() if n['name'] == target or target in nid]
             if not matched:
                 matched = [add_node(f"entity_{target}", target, 'entity')]
-            for mn in matched[:2]:
-                add_edge(mn, tid, 'THEME_MEMBER' if th['type'] == 'theme' else 'INVOLVED_IN', weight=2.0)
+            for mn in matched[:3]:
+                is_guideline = mn.startswith('crime_')
+                add_edge(mn, tid, 'APPLIES_GUIDELINE' if is_guideline else ('THEME_MEMBER' if th['type'] == 'theme' else 'INVOLVED_IN'), weight=2.0)
 
     # -------------------------------------------------------------
     # 7. 다차원 멀티홉 교차 탐색 경로 (Multi-hop Crossings)

@@ -206,7 +206,7 @@
     if (!crimes.length) {
       // 2-Hop 로테크 양형기준 추적 (연루 사건·이슈 경유)
       for (const t of themes) {
-        const tEdges = (ontoGraph.edges || []).filter(e => (e.src === t.node.id || e.tgt === t.node.id) && (e.rel.includes('GUIDELINE') || e.rel.includes('APPLIES')));
+        const tEdges = (ontoGraph.edges || []).filter(e => e.src === t.node.id || e.tgt === t.node.id);
         for (const te of tEdges) {
           const gId = te.src === t.node.id ? te.tgt : te.src;
           const gNode = (ontoGraph.nodes || []).find(n => n.id === gId && n.type === 'legal_guideline');
