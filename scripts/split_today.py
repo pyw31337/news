@@ -41,8 +41,12 @@ def _score(title, terms):
     return sum((2 if len(x) >= 3 else 1) for x in terms if x in t)
 STRONG = {'수석', '합격자', '커닝', 'ai커닝', '안경', '부정행위', '자수', '경찰', '출석', '변호사', '법적', '의혹', '만점', '한원석'}
 def _relevant(title, terms):
-    t = (title or '').lower(); hits = {x for x in terms if x in t}; strong = {x for x in hits if x in STRONG or any(x in y for y in STRONG)}
-    return len(strong) >= 1 and (len(hits) >= 2 or bool(strong & {'자수','경찰','출석','변호사','부정행위','의혹','만점','안경'}))
+    raw = title or ''; parts = raw.split(' ', 1); head = parts[0].lower() if parts else ''; t = raw.lower()
+    event = ('자수','인정','실토','시인','경찰','출석','수사','피의자','변호사','법적 대응','부정행위','커닝','의혹','만점','안경','반납','경위서','소환','구속','공소','시험무효')
+    anchor = ('세무사','수석 합격','수석합격','세무냥이','한원석')
+    title_event = any(x in head or x in t.split('…',1)[0] for x in event)
+    has_anchor = any(x in t for x in anchor)
+    return title_event and (has_anchor or any(x in t for x in ('세무사','수석','한원석')))
 def _stage_rank(title):
     import re
     t = title or ''
