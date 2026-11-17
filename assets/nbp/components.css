@@ -678,8 +678,11 @@ body[data-ready="1"] .gantt-b{animation:chart-reveal .7s cubic-bezier(.2,.8,.2,1
 
 /* ── 발언 비교 세그먼트 탭별 완벽 그리드/타임라인 ── */
 .agenda-card{background:var(--c-surface);border:1px solid var(--c-line-soft);border-radius:14px;padding:20px 22px;margin-bottom:22px;box-shadow:0 2px 8px rgba(0,0,0,0.03)}
-.agenda-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #e2e8f0}
+.agenda-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #e2e8f0}
 .agenda-title{font-size:1.12rem;font-weight:800;color:#0f172a;display:flex;align-items:center;gap:8px}
+.agenda-shift-box{background:#f1f5f9;border-left:3px solid #3b82f6;border-radius:6px;padding:8px 12px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.asb-icon{font-size:14px}
+.asb-text{font-size:.82rem;color:#334155;line-height:1.4}
 .agenda-grid{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:14px;margin-bottom:14px;justify-content:center}
 @media (max-width:1023px){
   .agenda-grid{grid-template-columns:repeat(2, minmax(0, 1fr))}
@@ -688,7 +691,11 @@ body[data-ready="1"] .gantt-b{animation:chart-reveal .7s cubic-bezier(.2,.8,.2,1
   .agenda-grid{grid-template-columns:1fr;gap:12px}
 }
 .speech-step-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.step-head-row{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}
 .step-phase-badge{align-self:flex-start;font-size:11px;font-weight:750;padding:2px 8px;border-radius:12px;background:#e0e7ff;color:#3730a3}
+.step-stance-chip{font-size:10px;font-weight:750;padding:1px 6px;border-radius:8px;background:#e2e8f0;color:#475569}
+.step-stance-chip.chip--first{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.step-stance-chip.chip--last{background:#ecfdf5;color:#059669;border:1px solid #a7f3d0}
 .step-time-src{font-size:11px;color:#64748b}
 .step-quote{font-size:.95rem;font-weight:700;color:#0f172a;line-height:1.45;margin:4px 0}
 .step-ctx{font-size:.78rem;color:#64748b;line-height:1.35}
@@ -718,9 +725,13 @@ body[data-ready="1"] .gantt-b{animation:chart-reveal .7s cubic-bezier(.2,.8,.2,1
 .archive-analysis-card{background:linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);border:1px solid #bfdbfe;border-radius:12px;padding:14px 16px;margin-bottom:14px}
 .aac-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;flex-wrap:wrap}
 .aac-title{font-size:.95rem;font-weight:800;color:#1e3a8a}
-.aac-tags{display:flex;gap:6px;flex-wrap:wrap}
+.aac-breakdown{display:flex;gap:6px;flex-wrap:wrap}
+.aac-tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
 .aac-tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;background:#ffffff;color:#2563eb;border:1px solid #dbeafe}
 .aac-summary{font-size:.82rem;color:#334155;line-height:1.5;margin:0}
+.aac-grounding{margin-top:10px;padding-top:8px;border-top:1px dashed #bfdbfe;font-size:11px;color:#64748b;display:flex;align-items:center;gap:6px}
+.aac-grounding-icon{font-size:13px}
+.aac-grounding-text{line-height:1.35}
 
 /* ── 다중 썸네일 카드 가로 그리드 (PC 4단 -> 태블릿 2단 -> 모바일 1단) ── */
 .acards{display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:14px;margin:18px 0;justify-content:center}

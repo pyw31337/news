@@ -969,30 +969,82 @@
     </div>`;
   }).join('')}</div>`);
 
-    /* ── 발언 비교 ──
+    /* ── 발언 비교 & 스탠스 변화 분석 엔진 ──
      단순 최신 발언 나열을 지양하고, 과거 시점의 입장과 현재 시점의 입장이 어떻게 변화했거나
-     일관되는지 비교·검증할 수 있는 아젠다별 타임라인을 기본 전면에 배치한다. */
+     일관되는지 의미론적·시계열적으로 자동 판별하여 아젠다별 타임라인과 함께 제공한다. */
+  const analyzeStanceShift = (items, term) => {
+    if (!items || !items.length) return null;
+    const POS = /추진|도입|찬성|지지|확대|전면|수용|개혁|강화|배당|환수|약속|성공|정상화|배우고|존경|계승|민생|필요|마련|공약|지켜/;
+    const NEG = /반대|비판|규탄|저지|막아야|거부|부당|실패|탈옥|기소|처벌|특검|수사|조작|탄압|폐기|사기|오만|독선|심판|폭거|사퇴/;
+    const getScore = text => {
+      let s = 0;
+      if (POS.test(text)) s += 1;
+      if (NEG.test(text)) s -= 1;
+      return s;
+    };
+    const first = items[0];
+    const last = items[items.length - 1];
+    const sFirst = getScore(`${first.quote} ${first.title || ''}`);
+    const sLast = getScore(`${last.quote} ${last.title || ''}`);
+    const yFirst = (first.d || '').slice(0, 4);
+    const yLast = (last.d || '').slice(0, 4);
+
+    let status = '기조 일관', statusClass = 'tag--pos', desc = `${yFirst}년 초기 발언과 ${yLast}년 최근 발언의 스탠스가 일관되게 유지됨`;
+    let firstStance = sFirst > 0 ? '추진·긍정' : (sFirst < 0 ? '비판·반대' : '원론적 검토');
+    let lastStance = sLast > 0 ? '추진·확대' : (sLast < 0 ? '강력 비판' : '상황 조율');
+
+    if (sFirst < 0 && sLast > 0) {
+      status = '입장 선회';
+      statusClass = 'tag--warn';
+      desc = `${yFirst}년 초기 비판·반대 기조에서 ${yLast}년 최근 추진·수용 입장으로 변화`;
+    } else if (sFirst > 0 && sLast < 0) {
+      status = '입장 선회';
+      statusClass = 'tag--danger';
+      desc = `${yFirst}년 초기 긍정·추진 기조에서 ${yLast}년 최근 강력 비판·반대 입장으로 선회`;
+    } else if ((sFirst > 0 && sLast > 0) || (sFirst < 0 && sLast < 0)) {
+      status = '기조 일관';
+      statusClass = 'tag--pos';
+      desc = `${yFirst}년 초기 발언과 ${yLast}년 최근 발언의 스탠스가 일관되게 유지됨`;
+    } else if (sLast !== 0 && sFirst === 0) {
+      status = '입장 구체화';
+      statusClass = 'tag--info';
+      desc = `초기 원론적 검토에서 ${yLast}년 명확한 실천·추진 스탠스로 구체화`;
+    } else {
+      status = '맥락적 조율';
+      statusClass = 'tag--neutral';
+      desc = `정국 상황과 국면에 따라 정책 세부 실행안을 점진적으로 조율`;
+    }
+
+    return { status, statusClass, desc, firstStance, lastStance, yFirst, yLast };
+  };
+
   const renderAgendaCards = () => {
     if (!speechAgendas.length) return `<div class="quotes">${Q.slice(0, 6).map(NB.quote).join('')}</div>`;
     return speechAgendas.map(ag => {
+      const shift = analyzeStanceShift(ag.items, ag.term);
       const milestones = [
-        { label: `과거 시점 (${ag.items[0].d.slice(0, 4)}년)`, q: ag.items[0] },
-        ag.items.length >= 4 ? { label: `중간 경과 (${ag.items[Math.floor(ag.items.length / 2)].d.slice(0, 4)}년)`, q: ag.items[Math.floor(ag.items.length / 2)] } : null,
-        { label: `최근 입장 (${ag.items[ag.items.length - 1].d.slice(0, 4)}년)`, q: ag.items[ag.items.length - 1] }
+        { label: `과거 시점 (${ag.items[0].d.slice(0, 4)}년)`, q: ag.items[0], stance: shift?.firstStance, isFirst: true },
+        ag.items.length >= 4 ? { label: `중간 경과 (${ag.items[Math.floor(ag.items.length / 2)].d.slice(0, 4)}년)`, q: ag.items[Math.floor(ag.items.length / 2)], stance: '경과 조율' } : null,
+        { label: `최근 입장 (${ag.items[ag.items.length - 1].d.slice(0, 4)}년)`, q: ag.items[ag.items.length - 1], stance: shift?.lastStance, isLast: true }
       ].filter(Boolean);
 
       return `<div class="agenda-card">
         <div class="agenda-head">
           <div class="agenda-title">${ic(ag.icon || 'message-square')}${esc(ag.term)}</div>
           <div class="agenda-meta">
+            ${shift ? `<span class="tag ${shift.statusClass}">스탠스: ${esc(shift.status)}</span>` : ''}
             <span class="tag tag--info">${esc(ag.span)}</span>
             <span class="tag tag--neutral">${ag.items.length}개 발언 비교</span>
           </div>
         </div>
+        ${shift ? `<div class="agenda-shift-box"><span class="asb-icon">🧭</span> <span class="asb-text"><b>스탠스 변화 분석:</b> ${esc(shift.desc)}</span></div>` : ''}
         <div class="agenda-grid">
           ${milestones.map(m => `
             <div class="speech-step-card">
-              <span class="step-phase-badge">${esc(m.label)}</span>
+              <div class="step-head-row">
+                <span class="step-phase-badge">${esc(m.label)}</span>
+                ${m.stance ? `<span class="step-stance-chip ${m.isFirst ? 'chip--first' : (m.isLast ? 'chip--last' : '')}">${esc(m.stance)}</span>` : ''}
+              </div>
               <span class="step-time-src">${esc(NB.ymd(m.q.d))} · ${esc(m.q.press || '언론사')}</span>
               <div class="step-quote">“${esc(m.q.quote)}”</div>
               ${m.q.title ? `<div class="step-ctx">${esc(m.q.title)}</div>` : ''}
@@ -1289,10 +1341,19 @@
       const analysisCardHtml = `
         <div class="archive-analysis-card">
           <div class="aac-head">
-            <span class="aac-title">📊 ${ymLabel} 인텔리전스 분석 브리핑</span>
-            ${topTokens.length ? `<div class="aac-tags">${topTokens.map(t => `<span class="aac-tag">#${esc(t)}</span>`).join('')}</div>` : ''}
+            <span class="aac-title">📊 ${ymLabel} 인텔리전스 메타 분석 브리핑</span>
+            <div class="aac-breakdown">
+              ${legalCount ? `<span class="tag tag--danger">사법·수사 ${legalCount}건</span>` : ''}
+              ${issueCount ? `<span class="tag tag--warn">의혹·논란 ${issueCount}건</span>` : ''}
+              ${policyCount ? `<span class="tag tag--info">정책·의정 ${policyCount}건</span>` : ''}
+            </div>
           </div>
           <p class="aac-summary">${briefSummary}</p>
+          ${topTokens.length ? `<div class="aac-tags">${topTokens.map(t => `<span class="aac-tag">#${esc(t)}</span>`).join('')}</div>` : ''}
+          <div class="aac-grounding">
+            <span class="aac-grounding-icon">🔎</span>
+            <span class="aac-grounding-text"><b>근거 데이터:</b> 아래 나열된 ${totalCount}개 보도 군집을 1차 팩트로 삼아 본 메타 분석이 도출되었습니다.</span>
+          </div>
         </div>
       `;
       return `${analysisCardHtml}<div class="aday-label">${ymLabel}<small>${totalCount}건</small></div>`;
