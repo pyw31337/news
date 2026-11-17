@@ -31,6 +31,50 @@ def _seen(t):
     b = _bi(t)
     return any(len(b & _bi(y)) / max(1, min(len(b), len(_bi(y)))) >= .45 for y in ytit)
 V = dict(date=D.get('date'), updated=D.get('updated'), yday=Y.get('date'), issues=[], trends=[], market=[])
+GENERIC = {'ai', '뉴스', '기사', '논란', '관련', '오늘', '현재', '정부', '한국', '사람', '이슈', '사건', '보도'}
+def _terms(i):
+    import re
+    raw = list(i.get('keywords') or []) + list(i.get('entities') or []) + re.split(r'[\s·“”‘’\'"…,:!?()[\]{}]+', i.get('title', ''))
+    return {str(x).strip().lower() for x in raw if len(str(x).strip()) >= 2 and str(x).strip().lower() not in GENERIC}
+def _score(title, terms):
+    t = (title or '').lower()
+    return sum((2 if len(x) >= 3 else 1) for x in terms if x in t)
+def _stage(title):
+    import re
+    t = title or ''
+    if re.search(r'자수|인정|실토|시인', t): return '인정·자수'
+    if re.search(r'변호사|법적 대응|말도 안|부인|아니다', t): return '부인·법적 대응'
+    if re.search(r'의혹|만점|고득점|99\.38', t): return '만점·의혹'
+    if re.search(r'경찰|출석|수사|피의자', t): return '수사·출석'
+    if re.search(r'합격|수석|발표', t): return '합격 발표'
+    return '후속 보도'
+def _archive_flow(i):
+    """현재 flow가 놓친 초기·중간 국면을 날짜별 archive에서 복원한다."""
+    import glob as _glob
+    terms = _terms(i); groups = {}
+    for g in i.get('flow') or []:
+        date = g.get('date')
+        for it in g.get('items') or []:
+            sc = _score(it.get('title'), terms)
+            if date and sc:
+                e = dict(date=date, title=it.get('title'), body=it.get('body',''), url=it.get('url') or it.get('ourl'), img=it.get('img'), press=it.get('press'), stage=_stage(it.get('title')),
+                         score=sc)
+                if not groups.get(date) or e['score'] > groups[date]['score']: groups[date] = e
+    for ap in sorted(_glob.glob(os.path.join(SITE, 'data', 'archive', '20*.json'))):
+        date = os.path.basename(ap)[:10]
+        if date >= (D.get('date') or '9999-99-99'): continue
+        try: aj = json.load(open(ap, encoding='utf-8'))
+        except Exception: continue
+        for old in aj.get('issues') or []:
+            ot = _terms(old); overlap = len(terms & ot)
+            if overlap < 2: continue
+            sources = old.get('sources') or []
+            if not sources: continue
+            best = max(sources, key=lambda s: _score(s.get('title'), terms))
+            sc = _score(best.get('title'), terms) + overlap
+            e = dict(date=date, title=best.get('title') or old.get('title'), body=(old.get('summary') or [''])[0], url=best.get('url') or best.get('ourl'), img=best.get('img'), press=best.get('press'), stage=_stage(best.get('title') or old.get('title')), score=sc)
+            if not groups.get(date) or e['score'] > groups[date]['score']: groups[date] = e
+    return [groups[k] for k in sorted(groups)]
 for i in D.get('issues', []):
     fl = sorted({f.get('date') for f in i.get('flow') or [] if f.get('date')})
     last = sorted(i.get('flow') or [], key=lambda f: f.get('date', ''))[-1:] if i.get('flow') else []
@@ -49,6 +93,10 @@ except Exception: QZ = []
 for v, i in zip(V['issues'], D.get('issues', [])):
     v['imgs'] = list(dict.fromkeys([x.get('img') for x in (i.get('gallery') or []) if x.get('img')] + ([i['image']] if i.get('image') else [])))[:4]
     v['faces'] = [f for f in (face(n) for n in (i.get('entities') or [])[:6]) if f][:4]
+    flow = _archive_flow(i)
+    if flow:
+        v['flow'] = flow[-8:]
+        v['flow_gap'] = '최초 합격 발표 원문이 현재 누적 데이터에서 확인되지 않음' if len(flow) and flow[0].get('stage') != '합격 발표' else ''
     op = i.get('opinion') or {}; aop = (i.get('ai') or {}).get('opinion') or {}
     if op.get('total'):
         v['op'] = dict(total=op.get('total'), like=op.get('like'), dislike=op.get('dislike'), gender=op.get('gender'), ages=op.get('ages'),
