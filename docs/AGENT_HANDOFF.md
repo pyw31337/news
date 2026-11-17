@@ -197,6 +197,8 @@ git status --short
 | 2026-11-12 | 인물 페이지 근거·비교 UX | 역사 수집 레코드에 원문 URL을 보존하고, 인물 페이지의 발언은 같은 핵심어가 서로 다른 연도에 반복된 인용만 시점 순 비교한다. 자동 모순 판정은 하지 않으며 원문·날짜를 제시한다. 국회/위키 경력은 최근순·기간 표기·출처 안내로 통일했고, 동일 헤드라인 기사는 화면에서 하나로 합친다. | 새 history 회차 뒤 `h/p/*.json.gz`의 6번째 URL 필드와 발언 원문 링크 노출을 확인한다. 기존 스냅샷은 다음 수집 때부터 URL을 갖는다. |
 | 2026-11-11 | 이 문서 작성 | 여러 에이전트가 같은 기준·수치·금지 규칙을 공유하도록 정본화 | 새 작업은 이 표에 후속 기록 |
 | 2026-11-11 16:00 | 인물·분류 페이지 v2(Grokbot, 사용자 승인 시안 D) | `person/`·`e/` 새 경로 + `assets/nbp/`(원래 `entity/` 화면은 그대로, 유일한 1계층 이름만 새 페이지로 넘김). `scripts/people/person_pages.py`(배포 때 `_site/data/p` 생성, 커밋 없음), `wd_t1.py`·`people-photos.yml` → data `db/people/wd_t1.json.gz`·`photos_t1.json`, R2 `people/pt/`. 사진은 고정 QID의 P18 + Commons 자유 이용 허락만(기존 `portraits.json`·`wikidata_facts.json`은 읽기만). 선관위 동명이인 당선 기록은 정당 불일치 시 제외 | 사진 얼굴 일치는 사람 검수 전(표본 48장 모두 단독 인물 사진). 규칙 `docs/PEOPLE.md` 10장 |
+| 2026-11-17 13:30 | DART 기업·재무·임원 인텔리전스, 로테크 양형 예측기, 5대 커뮤니티 여론 수집, 관리자 종합 관제 신설 | `scripts/corporate_dossier.py`(삼성/하이닉스/네이버/이미지스 5개년 재무·사명변천·고용구조·임원), `scripts/legal/sentencing_predictor.py`(양형기준 1,200건 모델), `scripts/community_sentiment.py`(디시/펨코/뽐뿌/오유/클리앙), `admin/tabs.js` `#pipeline` 탭(6대 수집+6대 분석 관제), `assets/nbp/entity.js`(기업 재무 바 차트 연동) 구현 완료 | 실사이트 `/admin/#pipeline` 및 `/e/?k=삼성전자` 정상 렌더링 확인 |
+| 2026-11-17 14:00 | 에이전트 간 자동화 인수인계 계약(`docs/AGENT_AUTOMATION_HANDOFF.md`) 명세 갱신 | Codex, Claude, Gemini 간 상호 중복/충돌 방지 계약서에 6대 수집 장치, 6대 지능 분석 엔진 파일 경로 및 산출물, 데이터 브랜치 동기화 규칙 반영, 실시간 작동 상태 검증 완료 | 매 회차 작업 전 `git fetch --prune`, `git log` 확인 |
 
 ## 10. 읽을 문서와 소유 범위
 
