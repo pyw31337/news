@@ -153,6 +153,9 @@ Q = [
     dict(key='presslogo', name='언론사 로고 확보', value=pct(sum(1 for s in srcs if s.get('press') in PL), len(srcs)), target=95),
     dict(key='dedupe', name='중복 기사 비율(낮을수록 좋음)', value=(S[[x['key'] for x in S].index('dupes')]['extra'] or {}).get('dup_ratio'), target=None, note='같은 내용 기사가 전체에서 차지하는 비율'),
     dict(key='translate', name='해외 이슈 번역률', value=pct(sum(1 for i in G.get('issues', []) if i.get('title_ko')), len(G.get('issues', []))), target=100),
+    dict(key='global_ai', name='해외 이슈 AI 해설', value=pct(sum(1 for i in G.get('issues', []) if i.get('ai')), len(G.get('issues', []))), target=100,
+         note='해외 이슈별 근거 기반 한국어 해설'),
+    dict(key='global_img', name='해외 이슈 대표 이미지', value=pct(sum(1 for i in G.get('issues', []) if i.get('image')), len(G.get('issues', []))), target=100),
     dict(key='registry', name='인물 명부 대비 연결된 인물', value=pct(len(PI), PR.get('total') or 0), target=None, note='뉴스에 실제 등장해 타임라인이 생긴 비율'),
     dict(key='runs', name='최근 24시간 수집 실행', value=len(last24), target=48, unit='회', note='30분마다 = 하루 48회'),
 ]
