@@ -1,0 +1,37 @@
+name: build-intelligence-ledgers
+
+on:
+  schedule:
+    - cron: '17 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: { group: intelligence-ledgers, cancel-in-progress: false }
+
+jobs:
+  ontology:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: data, path: data }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Build ontology graph when source ledgers are available
+        run: python scripts/ontology/knowledge_graph.py
+      - name: Publish generated graph to data branch
+        working-directory: data
+        run: |
+          git config user.name "newsboard-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add ontology_graph.json
+          git diff --cached --quiet || git commit -qm "data: ontology graph"
+          for n in 1 2 3; do
+            git push -q origin HEAD:data && exit 0
+            git fetch -q origin data
+            git merge -q --no-edit -X ours origin/data || { git merge --abort || true; }
+          done
+          exit 1
