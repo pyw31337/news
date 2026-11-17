@@ -47,6 +47,16 @@
       }
     }
   } catch(e){}
+  let ontoGraph = null, ontoNode = null, ontoLinks = [];
+  try {
+    ontoGraph = await NB.load(B0 + 'data/ontology_graph.json').catch(() => null);
+    if (ontoGraph?.nodes) {
+      ontoNode = ontoGraph.nodes.find(n => n.name === G.n || (corpCode && n.props?.code === corpCode) || (n.name && (G.n === n.name || (G.n.length >= 3 && n.name.includes(G.n)))));
+      if (ontoNode && ontoGraph.edges) {
+        ontoLinks = ontoGraph.edges.filter(e => e.src === ontoNode.id || e.tgt === ontoNode.id);
+      }
+    }
+  } catch(e){}
   const head = `<section class="hero">
     <div>
       <span class="hero-role">${ic(ti)}${esc(tl)}</span>
@@ -57,6 +67,7 @@
         corpData && ['상장시장', `${corpData.market} (${corpCode})`, 'chart-bar'],
         corpFilings && !corpData && ['상장시장', `${corpFilings.market} (${corpCode})`, 'chart-bar'],
         corpFilings && ['DART 공시', `${num(corpFilings.filings_count)}건`, 'file-text'],
+        ontoLinks.length && ['온톨로지 관계', `${num(ontoLinks.length)}개 연결`, 'topology-star-3'],
         corpData && ['업종', corpData.industry, 'building'],
         corpData && ['설립일', corpData.founded, 'calendar'],
         KC.length > 1 && ['분야', KC.slice(0, 4).map(([n, c]) => `<a class="lk" href="${href.g('kind:' + n)}">${esc(n)}</a> ${c}`).join('<i class="sep">·</i>'), 'category'],
@@ -156,6 +167,88 @@
       </div>
     </div>`;
     add('s-corp-dart', 'DART 공시 & 사건사고 이력', 'file-text', `${corpFilings.filings_count}건`, dartHtml);
+  }
+  if (ontoNode && ontoLinks.length) {
+    const directNeighbors = ontoLinks.map(e => {
+      const isSrc = e.src === ontoNode.id;
+      const targetId = isSrc ? e.tgt : e.src;
+      const targetNode = ontoGraph.nodes.find(n => n.id === targetId) || { name: targetId, type: 'entity' };
+      const rel = isSrc ? e.rel : `REV_${e.rel}`;
+      return { node: targetNode, rel, weight: e.weight, meta: e.meta || {} };
+    });
+
+    const schools = directNeighbors.filter(d => d.rel === 'ALUMNI_OF' || d.node.type === 'school');
+    const exams = directNeighbors.filter(d => d.rel === 'EXAM_COHORT' || d.node.type === 'exam_cohort');
+    const execs = directNeighbors.filter(d => d.rel.includes('EXECUTIVE') || d.rel.includes('MEMBER'));
+    const crimes = directNeighbors.filter(d => d.node.type === 'legal_guideline' || d.rel.includes('GUIDELINE'));
+    const themes = directNeighbors.filter(d => d.node.type === 'theme' || d.node.type === 'incident' || d.node.type === 'current_issue');
+
+    let ontoBody = `<div class="card" style="padding:var(--s-4, 16px);background:var(--paper-soft, #f8f9fc);border-radius:var(--r-md, 12px);border:1px solid var(--line, #e2e8f0);margin-bottom:var(--s-4, 16px)">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+        <span style="font-size:13px;font-weight:700">다차원 온톨로지 지식망 (총 ${ontoLinks.length}개 교차 관계망)</span>
+        <span class="src-chip" style="font-size:11px">정재계·법조·공시·여론 온톨로지</span>
+      </div>
+      <p style="font-size:12px;color:var(--ink-muted, #64748b);margin:0 0 12px">
+        인물·기업·학연·지연·사법연수원·DART 공시·대법원 양형기준이 상호 유기적으로 결합된 온톨로지 연결 체계입니다.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px">
+        ${schools.length ? `
+          <div style="background:#fff;border:1px solid var(--line, #e2e8f0);border-radius:8px;padding:10px">
+            <div style="font-size:12px;font-weight:700;color:var(--ink, #0f172a);margin-bottom:6px">🎓 학연 네트워크 (${schools.length}개)</div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px">
+              ${schools.map(s => `<span class="src-chip" style="font-size:11.5px">${esc(s.node.name)}</span>`).join('')}
+            </div>
+          </div>
+        ` : ''}
+        ${exams.length ? `
+          <div style="background:#fff;border:1px solid var(--line, #e2e8f0);border-radius:8px;padding:10px">
+            <div style="font-size:12px;font-weight:700;color:var(--ink, #0f172a);margin-bottom:6px">⚖️ 사법시험·연수원 기수 동기</div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px">
+              ${exams.map(x => `<span class="src-chip is-on" style="font-size:11.5px">${esc(x.node.name)}</span>`).join('')}
+            </div>
+          </div>
+        ` : ''}
+        ${execs.length ? `
+          <div style="background:#fff;border:1px solid var(--line, #e2e8f0);border-radius:8px;padding:10px">
+            <div style="font-size:12px;font-weight:700;color:var(--ink, #0f172a);margin-bottom:6px">🏛️ 소속·재직 및 지배구조 관계망 (${execs.length}건)</div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px">
+              ${execs.slice(0, 8).map(x => `<a href="${href.p(x.node.name)}" class="src-chip" style="font-size:11.5px">${esc(x.node.name)} <small>${esc(x.meta?.role || x.rel)}</small></a>`).join('')}
+            </div>
+          </div>
+        ` : ''}
+        ${themes.length ? `
+          <div style="background:#fff;border:1px solid var(--line, #e2e8f0);border-radius:8px;padding:10px">
+            <div style="font-size:12px;font-weight:700;color:var(--ink, #0f172a);margin-bottom:6px">📌 연관 테마·사건사고 타임라인 (${themes.length}건)</div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              ${themes.slice(0, 4).map(t => `<div style="font-size:12px;line-height:1.4"><span class="src-chip" style="font-size:10px;padding:1px 5px">${esc(t.node.type)}</span> <b>${esc(t.node.name)}</b></div>`).join('')}
+            </div>
+          </div>
+        ` : ''}
+      </div>
+      ${crimes.length ? `
+        <div style="margin-top:12px;background:#fff5f5;border:1px solid #fed7d7;border-radius:8px;padding:10px 12px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+            <span style="font-size:12.5px;font-weight:700;color:#c53030">⚖️ 로테크(LegalTech) 대법원 양형기준 통계 연동</span>
+            <span class="src-chip" style="font-size:10px;background:#fff;color:#c53030;border-color:#feb2b2">양형위원회 공식</span>
+          </div>
+          ${crimes.map(c => {
+            const cp = c.node.props || {};
+            return `
+              <div style="font-size:12px;color:#2d3748;line-height:1.6">
+                <div><b>적용 혐의:</b> ${esc(c.node.name)}</div>
+                <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:4px">
+                  <span>기본 권고형량: <b>${esc(cp.base_range || '—')}</b></span>
+                  ${cp.loss_of_seat_rate ? `<span>당선무효(벌금 100만↑) 확률: <b style="color:#e53e3e">${cp.loss_of_seat_rate}%</b></span>` : ''}
+                  ${cp.disqualification_rate ? `<span>임원 결격사유 확률: <b style="color:#e53e3e">${cp.disqualification_rate}%</b></span>` : ''}
+                  <span>집행유예 확률: <b>${cp.probation_rate || 0}%</b></span>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      ` : ''}
+    </div>`;
+    add('s-onto', '다차원 온톨로지 지식망', 'topology-star-3', `${ontoLinks.length}개 관계`, ontoBody);
   }
   if (M.length) add('s-m', '인물', 'users', num(G.c) + '명', `${KC.length > 1 && !kinds ? `<div style="margin-bottom:var(--s-6)">${NB.stack(KC.map(([n, c], i) => [n, c, 'k' + Math.min(5, i + 1)]), { pct: true })}</div>` : ''}<div class="ent-grid" id="mg"></div>`,
     RL.length > 1 && !kinds ? NB.seg('role', [['전체', M.length], ...RL.slice(0, 5)]) : (kinds ? '' : ''));

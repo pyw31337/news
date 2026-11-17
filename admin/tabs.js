@@ -326,22 +326,71 @@ async pipeline(el){const{E,N,K}=B();
   };
 
   const allCorpsList = (cidx && cidx.corps) || [];
-  let filterCorpText = '';
+  let filterCorpText = '', filterNodeText = '';
   const drawOntology = () => {
-    const ost = (og && og.stats) || {total_nodes: 4882, total_edges: 1012, corporations_count: 2497, persons_count: 2335, schools_count: 33, themes_incidents_count: 5};
+    const ost = (og && og.stats) || {total_nodes: 7737, total_edges: 5046, corporations_count: 2497, persons_count: 4709, schools_count: 309, themes_incidents_count: 111};
     const sc = (og && og.sample_crossings) || [];
+    const allNodes = (og && og.nodes) || [];
+    const allEdges = (og && og.edges) || [];
     const matched = filterCorpText ? allCorpsList.filter(c => c.name.toLowerCase().includes(filterCorpText.toLowerCase()) || (c.code && c.code.includes(filterCorpText))).slice(0, 8) : allCorpsList.slice(0, 6);
+
+    let searchNodeResult = '';
+    if (filterNodeText) {
+      const q = filterNodeText.toLowerCase();
+      const matchedNodes = allNodes.filter(n => n.name && n.name.toLowerCase().includes(q)).slice(0, 3);
+      if (matchedNodes.length) {
+        searchNodeResult = `
+        <div style="background:#fff;border:1.5px solid #2f6bff;border-radius:8px;padding:12px;margin:10px 0">
+          <div style="font-size:.8rem;font-weight:700;color:#2f6bff;margin-bottom:8px">🔍 온톨로지 지식망 실시간 교차 탐색 결과 (${matchedNodes.length}건 매칭)</div>
+          ${matchedNodes.map(mn => {
+            const nodeEdges = allEdges.filter(e => e.src === mn.id || e.tgt === mn.id);
+            const neighbors = nodeEdges.map(e => {
+              const isSrc = e.src === mn.id;
+              const tId = isSrc ? e.tgt : e.src;
+              const tNode = allNodes.find(n => n.id === tId) || { name: tId, type: 'entity' };
+              return { name: tNode.name, type: tNode.type, rel: isSrc ? e.rel : `REV_${e.rel}` };
+            });
+            return `
+              <div style="border-bottom:1px solid #edf0f5;padding:8px 0">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                  <span><b style="font-size:.85rem">${E(mn.name)}</b> <span class="pill ok">${E(mn.type)}</span></span>
+                  <span class="fine">직접 연결망 <b>${neighbors.length}개</b></span>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:4px;font-size:.72rem">
+                  ${neighbors.slice(0, 15).map(nb => `
+                    <span class="pill" style="font-size:.68rem;padding:2px 6px;background:#f0f4ff;border:1px solid #d0e0fc">
+                      <b style="color:#2f6bff">${E(nb.rel)}</b>: ${E(nb.name)}
+                    </span>
+                  `).join('')}
+                  ${neighbors.length > 15 ? `<span class="fine">+${neighbors.length - 15}개 더보기</span>` : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>`;
+      } else {
+        searchNodeResult = `<div class="fine" style="padding:6px 0;color:var(--mute)">'${E(filterNodeText)}'에 해당하는 온톨로지 노드가 없습니다.</div>`;
+      }
+    }
+
     return `
     <div style="background:#f8faff;border:1px solid #c8d9fb;border-radius:10px;padding:12px;margin-bottom:12px">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:.8rem;margin-bottom:6px">
         <span><b>지식그래프 규모:</b> 총 노드 <b>${N(ost.total_nodes)}개</b> · 연결 관계망 <b>${N(ost.total_edges)}개</b></span>
-        <span class="fine">기업 ${N(ost.corporations_count)}사 · 인물 ${N(ost.persons_count)}명 · 학교 ${ost.schools_count||33}개 · 테마/사건 ${ost.themes_incidents_count||5}개</span>
+        <span class="fine">기업 ${N(ost.corporations_count)}사 · 인물 ${N(ost.persons_count)}명 · 법조 ${ost.legal_institutions_count||43}곳 · 학교 ${ost.schools_count||309}개 · 연수원 ${ost.exam_cohorts_count||6}기수</span>
       </div>
       <p style="font-size:.76rem;color:var(--mute);margin:0">
-        * 단편적 데이터 나열을 넘어, 인물 ⇄ 기업 ⇄ 학연/지연 ⇄ 공시 ⇄ 판결 ⇄ 기사를 유기적으로 넘나드는 온톨로지 탐색망입니다.
+        * 단편적 데이터 나열을 넘어, 인물 ⇄ 기업 ⇄ 학연/지연 ⇄ 사법연수원 ⇄ DART 공시 ⇄ 판결 양형기준 ⇄ 커뮤니티 민심을 유기적으로 넘나드는 온톨로지 탐색망입니다.
       </p>
     </div>
-    <h4 style="margin:0 0 8px;font-size:.82rem">다차원 온톨로지 교차 탐색 경로 (Multi-hop Crossings)</h4>
+
+    <div style="margin-bottom:12px">
+      <label style="display:block;font-size:.78rem;font-weight:700;margin-bottom:4px">🔍 온톨로지 전수 엔티티 교차 검색 (인물·기업·학교·기수·법률·이슈·커뮤니티)</label>
+      <input type="search" id="onto-node-q" placeholder="검색어 입력 (예: 이재명, 조희대, 삼성전자, 중앙대학교, 사법연수원34기, 공직선거법, HBM, 디시인사이드)" value="${E(filterNodeText)}" style="width:100%;padding:8px 12px;font-size:.8rem;border:1px solid var(--line);border-radius:8px">
+      ${searchNodeResult}
+    </div>
+
+    <h4 style="margin:0 0 8px;font-size:.82rem">다차원 온톨로지 교차 탐색 경로 (Multi-hop Crossings - 8개 심층 테마)</h4>
     <div class="onto-grid">
       ${sc.map(s => `
         <div class="onto-card">
@@ -352,8 +401,11 @@ async pipeline(el){const{E,N,K}=B();
           <p style="font-size:.74rem;color:var(--mute);margin:0 0 6px">${E(s.relation_summary)}</p>
           <div style="font-size:.74rem;line-height:1.6">
             ${s.politicians ? `<div><b>정무 축:</b> ${s.politicians.map(E).join(', ')}</div>` : ''}
+            ${s.legal_elites ? `<div><b>법조 축:</b> ${s.legal_elites.map(E).join(', ')}</div>` : ''}
             ${s.corps_executives ? `<div><b>기업 축:</b> ${s.corps_executives.map(e => `${E(e.name)} (${E(e.corp)} ${E(e.role)})`).join(' · ')}</div>` : ''}
             ${s.corps ? `<div><b>연계 상장사:</b> ${s.corps.map(E).join(', ')}</div>` : ''}
+            ${s.legal_guideline ? `<div><b>로테크 양형:</b> <span class="pill bad" style="font-size:.65rem">${E(s.legal_guideline)}</span></div>` : ''}
+            ${s.community_pulse ? `<div><b>커뮤니티 여론:</b> <span class="fine">${E(s.community_pulse)}</span></div>` : ''}
           </div>
         </div>
       `).join('')}
@@ -420,6 +472,11 @@ async pipeline(el){const{E,N,K}=B();
         filterCorpText=e.target.value.trim();
         host.querySelector('#onto-box').innerHTML=drawOntology();
         const inp=host.querySelector('#onto-corp-q');
+        if(inp){inp.focus();inp.selectionStart=inp.selectionEnd=inp.value.length}
+      } else if(e.target.id==='onto-node-q'){
+        filterNodeText=e.target.value.trim();
+        host.querySelector('#onto-box').innerHTML=drawOntology();
+        const inp=host.querySelector('#onto-node-q');
         if(inp){inp.focus();inp.selectionStart=inp.selectionEnd=inp.value.length}
       }
     };
