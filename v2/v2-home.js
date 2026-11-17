@@ -25,7 +25,11 @@
     return terms.reduce((score, term) => score + (text.includes(term.toLowerCase()) ? (term.length >= 3 ? 2 : 1) : 0), 0);
   }
   function buildFlow(i) {
-    if (Array.isArray(i.flow) && i.flow.length && !i.flow[0].items) return i.flow.slice().sort((a,b) => String(a.date).localeCompare(String(b.date))).slice(-8);
+    if (Array.isArray(i.flow) && i.flow.length && !i.flow[0].items) {
+      const all = i.flow.slice().sort((a,b) => String(a.date).localeCompare(String(b.date)));
+      const direct = all.filter(e => /세무사|수석|AI ?커닝|AI ?안경|한원석|세무냥이/i.test(e.title || ''));
+      return (direct.length >= 4 ? direct : all).slice(-8);
+    }
     const terms = issueTerms(i);
     const candidates = (i.flow || []).flatMap(x => (x.items || []).map(it => ({date:x.date, title:it.title, body:it.body, url:it.url || it.ourl, img:it.img, press:it.press})))
       .map(e => ({...e, score: relevance(e, terms)})).filter(e => e.score > 0);
