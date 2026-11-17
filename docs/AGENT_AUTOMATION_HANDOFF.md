@@ -149,3 +149,42 @@ python3 -m py_compile scripts/event_quality.py scripts/quality.py scripts/editor
 - v2 Pages 배포는 `corporate_dossier.json`, `db/corps/*.json`, `ontology_graph.json`, `serendipity_insights.json`, `lawtech/precedents_db.json`, `insu/policy_terms_db.json`을 **존재할 때만** `_site/data`로 복사한다. 원장이 아직 생성되지 않은 회차에는 해당 UI 모듈을 숨기며 합성 데이터를 만들지 않는다.
 - `.github/workflows/ontology.yml`이 data 브랜치의 기업·인물 원장을 바탕으로 온톨로지 그래프 → 증거 기반 관계 추출 → 세렌디피티 레이더 → 렛츠로·렛츠인슈 파생 원장을 순서대로 생성한다.
 - `DATA_GO_KR_KEY`는 국가법령정보 공동활용(법제처 `LAW_OC`)을 대체하는 필수 키가 아니다. 법령·판례·헌재·법령해석·행정심판 핵심 수집은 `LAW_OC`로 동작하며, data.go.kr 화면의 “제공처 바로가기” 항목은 별도 신청 엔드포인트가 없는 공개 안내/미러인 경우가 많다. 따라서 현재 추가 등록할 필요가 없고, 실제 사용할 보조 API URL·서비스가 확인될 때만 `legal/v1/state.json`의 `dgk_endpoints`에 등록한다.
+
+## 9. DART 상장사 전수 점진적 시계열 심층화(Progressive History) 파이프라인 (2026-11-17)
+
+### 9.1. 4단계 점진적 승격 수집 전략
+- 15개년 한정이 아니며, 전 상장사(2,498개사)에 대해 5개년 수집 완료 시 ➔ 10개년 ➔ 15개년 ➔ 창립 이래 전수(All-Time)로 범위를 끝없이 넓혀가는 무한 확장 아키텍처.
+  1. **1단계 (5개년 코어)**: 2020~2024년 최근 재무실적 및 고용 인력 현황 (현재 498사 완료, 19.9%)
+  2. **2단계 (10개년 확장)**: 2015~2024년 재무 시계열 및 역대 대표이사/경영진 계보 (현재 70사 완료, 2.8%)
+  3. **3단계 (15개년 블랙박스)**: 2010~2024년 재무 시계열 및 사명 변천사, 중대 사건 타임라인 (현재 15사 완료, 0.6%)
+  4. **4단계 (창립 이래 전수 All-Time)**: 창립부터 상장, IMF 외환위기, 금융위기, M&A, 분할합병 전 기간 일대기 전수 (현재 삼성전자, SK하이닉스, 현대차, 카카오 등 4대 대표사 완료, 0.2%)
+- **수집 엔진**: `scripts/ontology/progressive_history_crawler.py`
+- **관제 원장**: `data/db/corps/progressive_crawl_status.json`
+
+## 10. 제4의 독립 서비스: 글로벌 자산시장 인텔리전스 '렛츠에셋(Let’s Asset)' 아키텍처 (2026-11-17)
+
+### 10.1. 서비스 분화 목적 및 배경
+- **뉴스보드 본연의 집중**: 뉴스보드는 국내외 진성 이슈, 정무, 사회 현안, 팩트 저널리즘에 고도로 집중.
+- **자산시장 독립 서비스 분화**: 기존 뉴스보드의 '마켓' 탭을 발전시켜, DART 국내 전 상장사 + 글로벌 빅테크 + 글로벌 핵심 기업인 + 멀티자산(주식·국채금리·선물원자재·환율)을 온톨로지로 엮은 독자적인 자산시장 인텔리전스 서비스('렛츠에셋 / Let's Asset')로 독립 구축.
+
+### 10.2. 렛츠에셋 전용 데이터 원장 명세 (`data/market/`)
+- `data/market/global_corps.json`: 엔비디아(NVDA), 애플(AAPL), 마이크로소프트(MSFT), 테슬라(TSLA), TSMC(TSM), ASML(ASML), 소프트뱅크(9984) 등 글로벌 7대 빅테크 시총·CEO·제품·국내 파트너십 도시에.
+- `data/market/global_people.json`: 젠슨 황, 일론 머스크, 손정의, 샘 알트만, 워런 버핏 등 글로벌 리더 5인의 학력, 경력, 자산, 핵심 인맥 온톨로지.
+- `data/market/global_supply_chain.json`:
+  - SK하이닉스 ➔ 엔비디아 (HBM3E 독점 공급)
+  - ASML ➔ TSMC (High-NA EUV 노광장비 공급)
+  - 한미반도체 ➔ SK하이닉스 (듀얼 TC본더 납품)
+  - LG에너지솔루션 ➔ 테슬라 (원통형 4680 배터리 공급)
+  - 오픈AI ➔ 마이크로소프트 ➔ 삼성/하이닉스 (애저 AI 인프라 얼라이언스)
+  - 소프트뱅크 ➔ ARM (90% 지분 및 AP 설계자산 독점)
+- `data/market/macro_assets.json`:
+  - 증시 지수: KOSPI, KOSDAQ, S&P 500, NASDAQ 100, 필라델피아 반도체(SOX)
+  - 국채 금리: 미 국채 10년물/2년물(장단기 금리 역전 스프레드), 한국 국채 3년물/10년물
+  - 선물 원자재: WTI 원유, 금(Gold), 구리(Copper - 닥터 코퍼 경기선행지수), 천연가스
+  - 환율·디지털: USD/KRW 원달러 환율, DXY 달러 인덱스, 비트코인(BTC)
+- `data/market/asset_ontology.json`: 국내 기업 ⇄ 글로벌 빅테크 ⇄ 글로벌 리더 ⇄ 멀티자산 시장 변동성 전용 온톨로지 그래프.
+
+### 10.3. 자동화 파이프라인 스크립트
+1. `scripts/market/global_asset_engine.py`: 글로벌 기업·인물·공급망·멀티자산 온톨로지 생성 엔진
+2. `scripts/ontology/progressive_history_crawler.py`: DART 기업 일대기 4단계 점진적 승격 크롤러
+

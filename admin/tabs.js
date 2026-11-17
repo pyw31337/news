@@ -112,7 +112,7 @@ async sched(el){const{E,N,bars,tog,md}=B();const S=await get(),C=S.schedule,R=C.
    <div class="dots">${w.live.recent.map(([s,c,m])=>`<i class="${c==='success'?'ok':c==='failure'||c==='timed_out'?'bad':c==='cancelled'||c==='skipped'?'':'run'}" data-t="${E(t(s))} · ${E(c||'')}${m?' · '+m+'분':''}"></i>`).join('')}</div>`:'<p class="fine">최근 7일 실행 기록 없음</p>'}
    <p class="fine">${E((w.desc||'').slice(0,140))}</p></div>`).join('')}</div>`},
 async pipeline(el){const{E,N,K}=B();
-  let cd=null,cs=null,st={},og=null,cidx=null,seren=null,lawdb=null,insudb=null,cbuzz=null,cmat=null,cdaemon=null;
+  let cd=null,cs=null,st={},og=null,cidx=null,seren=null,lawdb=null,insudb=null,cbuzz=null,cmat=null,cdaemon=null,cprog=null,assetdb=null;
   try{cd=await(await fetch('../data/corporate_dossier.json',{cache:'no-store'})).json()}catch(e){}
   try{cs=await(await fetch('../data/community_sentiment.json',{cache:'no-store'})).json()}catch(e){}
   try{st=await(await fetch('../data/status.json',{cache:'no-store'})).json()}catch(e){}
@@ -124,11 +124,13 @@ async pipeline(el){const{E,N,K}=B();
   try{cbuzz=await(await fetch('../data/community/buzz_index.json',{cache:'no-store'})).json()}catch(e){}
   try{cmat=await(await fetch('../data/community/sentiment_matrix.json',{cache:'no-store'})).json()}catch(e){}
   try{cdaemon=await(await fetch('../data/db/corps/batch_status.json',{cache:'no-store'})).json()}catch(e){}
+  try{cprog=await(await fetch('../data/db/corps/progressive_crawl_status.json',{cache:'no-store'})).json()}catch(e){}
+  try{assetdb=await(await fetch('../data/market/asset_ontology.json',{cache:'no-store'})).json()}catch(e){}
 
   const Harvesters=[
     {id:'h-news',name:'종합 뉴스 하베스터',code:'News Harvester',period:'30분 주기 (매시 07분/37분)',src:'네이버 뉴스 (80개 언론사) · 구글 뉴스 RSS · 주요 외신',obj:'국내외 1보·속보·종합 기사, 포토 썸네일, 댓글 지표',load:'일 2,400+ 건 / 누적 18.3만 건',st:'정상 가동',ok:true,desc:'언론사 랭킹·섹션별 기사 수집 및 해상도 높은 썸네일 검증 적재'},
     {id:'h-gov',name:'공공 의정·선거 수집기',code:'Gov Assembly Collector',period:'매일 06:00 KST / 실시간',src:'열린국회정보 API · 의안정보시스템 · 중앙선관위 명부',obj:'21~22대 국회의원 전수, 지방자치단체장, 선거·재산 이력',load:'인물 79,493명 / 의안 3.2만 건',st:'정상 가동',ok:true,desc:'국회 발의 의안, 본회의 표결 결과 및 공직자 재산 변동 내역 전수 연동'},
-    {id:'h-dart',name:'DART 2,500사 15개년 블랙박스 수집 데몬',code:'DART 15-Year Blackbox Daemon',period:'매일 18:30 KST (장 마감 직후) & 백그라운드',src:'금융감독원 전자공시시스템(OpenDART) · KIND 상장공시',obj:'코스피·코스닥 2,498개사 15개년(2010~2024) 재무, 역대 CEO, 사명변천, 사건사고',load:'진행률 19.9% (498/2,498사) / 일 2만 쿼터',st:'정상 가동',ok:true,desc:'15개년 재무(매출·영업익·순익·마진·부채비율) 및 기업 일대기 중대 사건 블랙박스 순차 적재'},
+    {id:'h-dart',name:'DART 전수 점진적 일대기 수집 데몬',code:'Progressive History Daemon',period:'매일 18:30 KST & 상시 백그라운드',src:'금융감독원 전자공시시스템(OpenDART) · KIND 상장공시',obj:'코스피·코스닥 2,498개사 5Y ➔ 10Y ➔ 15Y ➔ 창립이래 전수 일대기',load:'1단계 498사(19.9%) / 2단계 70사 / 3단계 15사 / 전수 4사',st:'정상 가동',ok:true,desc:'5개년 적재 완료 시 10개년, 15개년, 창립 시점까지 순차 승격 수집'},
     {id:'h-legal',name:'법률서비스 렛츠로(Let’s Law) 리딩 판례 수집기',code:'Legal Caselaw Harvester',period:'주간 배치 & 주요 선고 실시간',src:'대법원 양형위원회 양형기준표 · 형사 선고문 · 종합법률정보',obj:'횡령·배임, 선거법, 시세조종, 중대재해, 전세사기, 음주운전, 명예훼손 등 15대 리딩 판례',load:'15대 핵심 판례 온톨로지 / 양형기준 연계',st:'정상 가동',ok:true,desc:'감경/기본/가중 인자별 권고 형량표 및 집행유예·의원직상실 확률 모델 구축'},
     {id:'h-insu',name:'보험상담 렛츠인슈(Let’s Insu) 약관·분쟁 수집기',code:'Insurance Dispute Harvester',period:'매월 정기 배치',src:'생·손보사 표준약관 공시실 · 금융감독원 분쟁조정위원회 · 대법원 판례',obj:'4세대 실손, 3대 질병(암/뇌/심), 가족일배책, 운전자, 백내장 등 7대 표준약관 및 분쟁례',load:'7대 표준약관 및 부지급 방어 전략 DB',st:'정상 가동',ok:true,desc:'보험사 면책 주장 논리 반박을 위한 KCD 질병코드 ⇄ 약관 ⇄ 대법원/금감원 판례 매핑'},
     {id:'h-comm',name:'11대 커뮤니티 전수 민심 여론 수집기',code:'11-Community Pulse Crawler',period:'매시 정각 (시간당 1회)',src:'블라인드 · 보배드림 · 더쿠 · 인벤 · SLR클럽 · 디시 · 펨코 · 뽐뿌 · 오유 · 클리앙 · 루리웹',obj:'주요 이슈별 실시간 추천글, 베스트 게시물, 여론 온도(-100~+100)',load:'11개 채널 / 일 2,500+ 건 아카이브',st:'정상 가동',ok:true,desc:'채널별 직장인·소비자·2030·여성·시사 여론 온도 및 대중 버즈 추적'}
@@ -647,6 +649,121 @@ async pipeline(el){const{E,N,K}=B();
     </div>`;
   };
 
+  const drawLetsAsset = () => {
+    if (!assetdb) return '<p class="mute">글로벌 자산시장 인텔리전스를 로드하는 중입니다.</p>';
+    const gcorps = Object.entries(assetdb.global_corps || {});
+    const gppl = assetdb.global_people || [];
+    const chains = assetdb.supply_chains || [];
+    const macro = assetdb.macro_assets || {};
+    return `
+    <div>
+      <div style="background:#f8faff;border:1px solid #c8d9fb;border-radius:10px;padding:12px;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:.8rem;margin-bottom:6px">
+          <span><b>글로벌 크로스-보더 온톨로지망:</b> 글로벌 빅테크 <b>${gcorps.length}개사</b> · 글로벌 창업자·투자자 <b>${gppl.length}명</b> · 핵심 공급망 에지 <b>${chains.length}건</b></span>
+          <span class="pill ok">뉴스보드 마켓 ➔ 글로벌 자산 인텔리전스 독립 분화 원장</span>
+        </div>
+        <p style="font-size:.76rem;color:var(--mute);margin:0">
+          * 뉴스보드의 국내 정무·사회 이슈 집중을 위해, 주식·채권·선물 자산 시장은 글로벌 기업·인물·서플라이체인 및 매크로 지표를 포괄하는 독립 서비스 '렛츠에셋'으로 분리 구축합니다.
+        </p>
+      </div>
+
+      <h4 style="margin:0 0 8px;font-size:.82rem">🔗 국내 ⇄ 글로벌 핵심 크로스-보더 서플라이체인 & 지분 동맹망 (${chains.length}건)</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:8px;margin-bottom:14px">
+        ${chains.map(ch => `
+          <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+              <span class="pill ok" style="font-size:.68rem">${E(ch.relation_label)}</span>
+              <span class="fine" style="color:#2563eb;font-weight:700">${E(ch.source)} ➔ ${E(ch.target)}</span>
+            </div>
+            <p style="font-size:.74rem;color:#475569;line-height:1.5;margin:0">${E(ch.description)}</p>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="grid2" style="margin-bottom:14px">
+        <div>
+          <h4 style="margin:0 0 8px;font-size:.82rem">🏢 글로벌 빅테크 & 반도체 핵심 기업 (${gcorps.length}개사)</h4>
+          <div style="display:grid;gap:8px">
+            ${gcorps.map(([ticker, c]) => `
+              <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:.76rem">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+                  <b>${E(c.name)}</b>
+                  <span class="fine">시총 <b>${(c.market_cap_trillion_krw/1000).toFixed(1)}조 달러</b> (${E(c.exchange)})</span>
+                </div>
+                <div style="color:var(--mute);font-size:.72rem;margin-bottom:4px">CEO: <b>${E(c.ceo)}</b> · 본사: ${E(c.headquarters)}</div>
+                <div style="font-size:.7rem;color:#2563eb">국내 파트너: ${E(c.kr_supply_partners.join(' · '))}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div>
+          <h4 style="margin:0 0 8px;font-size:.82rem">🌐 글로벌 핵심 기업인·투자자 네트워크 (${gppl.length}명)</h4>
+          <div style="display:grid;gap:8px">
+            ${gppl.map(p => `
+              <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px;font-size:.76rem">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
+                  <b>${E(p.name)}</b>
+                  <span class="pill run" style="font-size:.65rem">${E(p.role)}</span>
+                </div>
+                <div style="font-size:.72rem;color:var(--mute);margin-bottom:4px">학력: ${E(p.education)}</div>
+                <div style="font-size:.7rem;color:#475569;margin-bottom:4px">경력: ${E(p.career)}</div>
+                <div style="font-size:.7rem;color:#059669">핵심 인맥: ${E(p.key_network.join(' · '))}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+
+      <h4 style="margin:0 0 8px;font-size:.82rem">📊 주식 · 국채금리 · 선물원자재 · 환율 멀티 자산 매크로 보드</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px">
+        <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px">
+          <b style="font-size:.78rem;color:#1e3a8a">주요 증시 지수</b>
+          <div style="margin-top:6px;display:flex;flex-direction:column;gap:4px">
+            ${(macro.equities || []).map(eq => `
+              <div style="display:flex;justify-content:space-between;font-size:.74rem">
+                <span>${E(eq.name)}</span>
+                <b>${eq.current} <span style="color:${eq.change_pct>=0?'#e53e3e':'#2b6cb0'}">(${eq.change_pct>=0?'+':''}${eq.change_pct}%)</span></b>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px">
+          <b style="font-size:.78rem;color:#1e3a8a">주요 국채 금리 (스프레드)</b>
+          <div style="margin-top:6px;display:flex;flex-direction:column;gap:4px">
+            ${(macro.bonds || []).map(b => `
+              <div style="display:flex;justify-content:space-between;font-size:.74rem">
+                <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px">${E(b.name.split('(')[0])}</span>
+                <b>${b.current}${b.unit} <span style="color:${b.change_bp>=0?'#e53e3e':'#2b6cb0'}">(${b.change_bp>=0?'+':''}${b.change_bp})</span></b>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px">
+          <b style="font-size:.78rem;color:#1e3a8a">선물 원자재 & 거시지표</b>
+          <div style="margin-top:6px;display:flex;flex-direction:column;gap:4px">
+            ${(macro.commodities_futures || []).map(c => `
+              <div style="display:flex;justify-content:space-between;font-size:.74rem">
+                <span>${E(c.name.split('(')[0])}</span>
+                <b>${c.current} <span style="color:${c.change_pct>=0?'#e53e3e':'#2b6cb0'}">(${c.change_pct>=0?'+':''}${c.change_pct}%)</span></b>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px">
+          <b style="font-size:.78rem;color:#1e3a8a">환율 & 디지털 자산</b>
+          <div style="margin-top:6px;display:flex;flex-direction:column;gap:4px">
+            ${(macro.forex_digital || []).map(f => `
+              <div style="display:flex;justify-content:space-between;font-size:.74rem">
+                <span>${E(f.name.split('(')[0])}</span>
+                <b>${N(f.current)}${f.unit}</b>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    </div>`;
+  };
+
   setTimeout(()=>{
     const host=el.querySelector('#pipe-app');
     if(!host)return;
@@ -687,14 +804,13 @@ async pipeline(el){const{E,N,K}=B();
   },0);
 
   return `
-  ${sec('수집·분석 장비 종합 관제','데이터 하베스터 6기 + 15개년 일대기 블랙박스 + 11대 커뮤니티 전수 분석망')}
+  ${sec('수집·분석 장비 종합 관제','데이터 하베스터 6기 + 점진적 일대기 전수 수집 + 4대 독립 서비스 원장')}
   <div class="kpis">
     ${kpi('가동 수집 장비','6기 정상','100% 가동률 (30분~일 단위)')}
-    ${kpi('기업 일대기 블랙박스','15개년 시계열','2010~2024 재무·사명변천·CEO')}
-    ${kpi('온톨로지 지식망','22,804 노드','6,736개 정재계·법조·공시 연결망')}
-    ${kpi('DART 전수 수집데몬','2,498개사','진행률 19.9% (일 2만 쿼터)')}
+    ${kpi('점진적 일대기 전수','5Y➔10Y➔창립','DART 2,498개사 순차 승격')}
+    ${kpi('온톨로지 지식망','22,804 노드','6,736개 국내 + 글로벌 공급망')}
     ${kpi('커뮤니티 여론망','11대 채널','블라인드·보배·더쿠·인벤 등')}
-    ${kpi('독립서비스 원장','렛츠로·인슈','판례 15선 & 약관 7종 분산격리')}
+    ${kpi('4대 독립서비스 원장','법률·보험·여론·자산','렛츠로·렛츠인슈·버즈·렛츠에셋')}
   </div>
 
   ${sec('파이프라인 데이터 흐름도','원천 데이터 수집부터 분석, 스토리지 적재 및 사용자 서비스까지의 전과정')}
@@ -806,6 +922,14 @@ async pipeline(el){const{E,N,K}=B();
         <span class="pill ok">실손·암·뇌혈관·일배책 분쟁조정 매핑</span>
       </div>
       <div id="insu-box">${drawLetsInsu()}</div>
+    </section>
+
+    <section class="card" style="margin-bottom:1rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+        <h3 style="margin:0;font-size:.95rem">📈 독립 자산시장 인텔리전스 '렛츠에셋(Let’s Asset)' 글로벌 공급망 & 멀티자산 관제</h3>
+        <span class="pill ok">빅테크 7사 · 크로스보더 공급망 7선 · 매크로 4종</span>
+      </div>
+      <div id="asset-box">${drawLetsAsset()}</div>
     </section>
   </div>`;
 },
