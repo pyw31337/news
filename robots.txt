@@ -1,0 +1,18 @@
+# NewsBoard public site policy
+# This file is an advisory crawler policy. It cannot replace authentication,
+# signed URLs, rate limiting, or copyright controls at the edge.
+User-agent: *
+Disallow: /data/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /person/
+Disallow: /entity/
+Disallow: /e/
+Disallow: /v2/
+Disallow: /media/
+Disallow: /history/
+Disallow: /politicians/
+Disallow: /showcase/
+
+# Keep the public landing page discoverable while opting out of bulk mirrors.
+Allow: /
