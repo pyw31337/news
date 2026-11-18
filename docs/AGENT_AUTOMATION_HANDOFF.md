@@ -363,6 +363,8 @@ python3 -m py_compile scripts/event_quality.py scripts/quality.py scripts/editor
 
 보험 공식 원문은 `data/insu/source_manifest.json`에 `official: true`와 HTTPS 원문 URL를 등록한 항목만 `scripts/insu/source_adapter.py`가 수집한다. 예시 파일은 `scripts/insu/source_manifest.example.json`이며, 임의 검색 결과나 출처 없는 약관은 자동 거부한다.
 
+이즈보험 약관 디렉터리(`dazabi.com/.../insurance_Terms.php`)는 2026-11-18부터 `scripts/insu/dazabi_catalog.py`로 보험사 공식 약관·상품공시 링크를 발견하는 보조 색인으로 사용한다. 현재 확인된 공식 링크는 32개이며, 발견된 링크는 기본적으로 `enabled: false`다. 담당 에이전트가 실제 상품목록·약관 다운로드 가능 여부와 이용조건을 확인한 뒤 개별 항목만 활성화한다. 디렉터리 자체의 설명이나 요약을 약관 원문으로 저장하지 않는다.
+
 새 수집기를 추가할 때는 먼저 이 표와 `collection_inventory.json`에 고유 id·출처·주기·출력 경로를 등록한다. 기존 id와 같은 원장에 쓰지 말고, 원문(raw)·정제(clean)·분석(derived) 출력을 분리한다.
 
 ## 20. 패밀리 마이크로서비스 독립 레포지토리 원장 분산 및 데이터 메시 연합 계약 (2026-11-18)

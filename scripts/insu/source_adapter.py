@@ -24,7 +24,7 @@ def run():
     results = []
     for item in entries:
         url = item.get("url", "")
-        if not url.startswith("https://") or not item.get("official"):
+        if not url.startswith("https://") or not item.get("official") or not item.get("enabled"):
             results.append({"id": item.get("id"), "status": "REJECTED_UNVERIFIED"})
             continue
         try:
