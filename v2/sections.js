@@ -1,3 +1,27 @@
+/* NewsBoard v2 section pages share the canonical Lets family primitives. */
+(() => {
+  const cssHref = 'https://pyw31337.github.io/lets/css/lets-design-system.css?v=1.1.0';
+  if (!document.querySelector(`link[href^="${cssHref.split('?')[0]}"]`)) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = cssHref;
+    document.head.appendChild(link);
+  }
+  const scriptSrc = 'https://pyw31337.github.io/lets/js/lets-design-system.js?v=1.1.0';
+  const ready = window.LDS ? Promise.resolve(window.LDS) : new Promise(resolve => {
+    const script = document.createElement('script');
+    script.src = scriptSrc;
+    script.defer = true;
+    script.onload = () => resolve(window.LDS);
+    script.onerror = () => resolve(null);
+    document.head.appendChild(script);
+  });
+  ready.then(lds => {
+    lds?.init?.();
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('../sw.js').catch(() => {});
+  });
+})();
+
 (() => {
   const $ = (s,r=document) => r.querySelector(s), esc = v => String(v ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const day = s => { if(!s)return ''; const d=new Date(s); return Number.isNaN(d.getTime())?String(s).slice(0,10).replaceAll('-','.'):d.toLocaleDateString('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit'}).replaceAll(' ',''); };
