@@ -357,9 +357,11 @@ python3 -m py_compile scripts/event_quality.py scripts/quality.py scripts/editor
 | 판례·헌재·해석례 분석 | `.github/workflows/ontology.yml` | 매일 | seed를 보존하되 공식 source URL가 붙은 원문만 확장 게이트에 반영 |
 | 보험 약관·분쟁례 | `scripts/insu/policy_terms_engine.py` | 매일 분석, 변경 감지 | 기존 공식 레코드를 보존하는 병합 방식이며, 보험사 공시 원문 확보 전에는 완료로 표시하지 않음 |
 | DART 기업·임원·감사의견 | `corporate.yml`, `collect.yml` | 매일·장중 | `data/db/corps`와 `db/dart`의 실제 파일·공시 수를 기준으로 결측을 큐에 기록 |
-| SEC 미국 기업 | market crawler | 일 100개사 배치·8-K 증분 | 티커 인덱스와 기업별 공시 원문을 분리하여, 인덱스만으로 완료 처리하지 않음 |
+| SEC 미국 기업 | `sec-market.yml` → `sec_snapshot.py` + `sec_detail_batch.py` | 일 100개사 배치·8-K 증분 | SEC 공식 티커를 갱신한 뒤 CIK submissions를 기업별로 저장하며, 인덱스만으로 완료 처리하지 않음 |
 | 커뮤니티 | community source adapter | 1시간 | `data/community/posts` 원천 파일만 민심 분석에 사용하고 seed fixture는 별도 표기 |
 | 인물·사진·로고 | `people-photos.yml` | 매일 증분, 대표 사실 주 1회 | 사진 매칭 후 WebP로 R2 업로드, 동일 시기 재수집 대신 장기 변화만 추적 |
+
+보험 공식 원문은 `data/insu/source_manifest.json`에 `official: true`와 HTTPS 원문 URL를 등록한 항목만 `scripts/insu/source_adapter.py`가 수집한다. 예시 파일은 `scripts/insu/source_manifest.example.json`이며, 임의 검색 결과나 출처 없는 약관은 자동 거부한다.
 
 새 수집기를 추가할 때는 먼저 이 표와 `collection_inventory.json`에 고유 id·출처·주기·출력 경로를 등록한다. 기존 id와 같은 원장에 쓰지 말고, 원문(raw)·정제(clean)·분석(derived) 출력을 분리한다.
 

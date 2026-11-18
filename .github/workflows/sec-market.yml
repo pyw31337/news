@@ -19,12 +19,17 @@ jobs:
         env:
           SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
         run: python scripts/market/sec_snapshot.py
+      - name: Fetch SEC company submissions batch
+        env:
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
+          SEC_BATCH_SIZE: '100'
+        run: python scripts/market/sec_detail_batch.py
       - name: Publish data ledger
         working-directory: data
         run: |
           git config user.name newsboard-bot
           git config user.email bot@users.noreply.github.com
-          git add -f market/sec_tickers_index.json
+          git add -f market/sec_tickers_index.json market/sec_companies
           git diff --cached --quiet || git commit -qm "market: refresh SEC universe"
           for i in 1 2 3; do git push origin HEAD:data && exit 0; git fetch origin data; git rebase origin/data; done
           exit 1

@@ -30,6 +30,8 @@ jobs:
         run: python scripts/lawtech/precedents_engine.py
       - name: Build Letsinsu policy ledger
         run: python scripts/insu/policy_terms_engine.py
+      - name: Fetch approved official insurance sources when configured
+        run: python scripts/insu/source_adapter.py
       - name: Measure real coverage and gate expansion
         run: python scripts/ontology/expansion_controller.py
       - name: Write collection handoff inventory
@@ -39,7 +41,7 @@ jobs:
         run: |
           git config user.name "newsboard-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -f ontology_graph.json serendipity_insights.json extracted_relations.json lawtech/precedents_db.json insu/policy_terms_db.json db/system/global_expansion_radar.json db/system/collection_inventory.json 2>/dev/null || true
+          git add -f ontology_graph.json serendipity_insights.json extracted_relations.json lawtech/precedents_db.json insu/policy_terms_db.json insu/raw_sources insu/source_fetch_log.json db/system/global_expansion_radar.json db/system/collection_inventory.json 2>/dev/null || true
           git diff --cached --quiet || git commit -qm "data: ontology graph"
           for n in 1 2 3; do
             git push -q origin HEAD:data && exit 0
