@@ -337,6 +337,10 @@ python3 -m py_compile scripts/event_quality.py scripts/quality.py scripts/editor
 
 이전 문서에 적힌 완료율·완비 수치는 일부가 계획값 또는 seed 원장값과 섞여 있어 실제 수집 완료로 간주하면 안 된다. 에이전트는 `scripts/ontology/expansion_controller.py`가 데이터 브랜치의 파일과 레코드를 직접 세어 만든 `data/db/system/global_expansion_radar.json`만 진행률의 기준으로 사용한다.
 
+## 18. 실측 진행률·확장 게이트 운영 규칙 (2026-11-18)
+
+이전 문서에 적힌 완료율·완비 수치는 일부가 계획값 또는 seed 원장값과 섞여 있어 실제 수집 완료로 간주하면 안 된다. 에이전트는 `scripts/ontology/expansion_controller.py`가 데이터 브랜치의 파일과 레코드를 직접 세어 만든 `data/db/system/global_expansion_radar.json`만 진행률의 기준으로 사용한다.
+
 - 90% 도달만으로 다음 국가·직군·속성을 활성화하지 않는다. `coverage >= 0.90`에 더해 품질 점수 `>= 0.85`, 공식 출처 필드, 최신성 검사를 모두 통과해야 `READY_TO_EXPAND`가 된다.
 - `lawtech/precedents_db.json`과 `insu/policy_terms_db.json`에 공식 `source_url`/효력일이 없는 항목은 UI용 seed로 표시하며, 정상 원천 수집 완료로 보고하지 않는다.
 - LAW_OC 법률 수집은 `.github/workflows/legal.yml`에서 3시간 주기로 계속 실행한다. 보험은 현재 스키마·seed 원장과 공식 출처 수집 큐를 분리하고, 보험사별 약관 원문 확보 전에는 완료율을 부풀리지 않는다.
@@ -358,6 +362,29 @@ python3 -m py_compile scripts/event_quality.py scripts/quality.py scripts/editor
 | 인물·사진·로고 | `people-photos.yml` | 매일 증분, 대표 사실 주 1회 | 사진 매칭 후 WebP로 R2 업로드, 동일 시기 재수집 대신 장기 변화만 추적 |
 
 새 수집기를 추가할 때는 먼저 이 표와 `collection_inventory.json`에 고유 id·출처·주기·출력 경로를 등록한다. 기존 id와 같은 원장에 쓰지 말고, 원문(raw)·정제(clean)·분석(derived) 출력을 분리한다.
+
+## 20. 패밀리 마이크로서비스 독립 레포지토리 원장 분산 및 데이터 메시 연합 계약 (2026-11-18)
+
+### 20.1. 독립 레포지토리 분산 및 SSOT (Single Source of Truth) 원칙
+컬처플로우(CultureFlow)가 공연 데이터를 전담하고 렛츠캠핑(Let's Camping)이 소비하듯, 도메인별 원장 데이터의 수집·분석·관리는 전용 독립 레포지토리에서 배타적으로 수행한다:
+1. **렛츠로 (`/Users/pyw31337/Developer/law`)**:
+   - 헌법재판소·대법원·하급심 판례 및 양형기준 시뮬레이터 전담 독립 레포.
+   - 원장: `data/precedents_db.json`, 식별자: `urn:law:precedent:{case_no}`.
+2. **렛츠인슈 (`/Users/pyw31337/Developer/insu`)**:
+   - 전 생보/손보사 시기별(1~4세대) 개정 약관 및 부지급 방어 보험금 상담 전담 독립 레포.
+   - 원장: `data/policy_terms_db.json`, 식별자: `urn:insu:policy:{insurer}:{code}:{gen}`.
+3. **렛츠에셋 (`/Users/pyw31337/Developer/asset`)**:
+   - DART 15년 재무/임원/감사의견/제재 및 미·중·일·러 글로벌 상장사 자산 전담 독립 레포.
+   - 원장: `data/all_dimensions_dossier.json`, `data/sec_tickers_index.json`, 식별자: `urn:asset:corp:{market}:{code}`.
+4. **렛츠피플 (`/Users/pyw31337/Developer/people`, 예정)**:
+   - 다차원 인물 백과 및 학연/지연/경력/노화 타임랩스 전담 독립 레포.
+   - 식별자: `urn:people:person:{p_id}`.
+
+### 20.2. 서비스 간 온톨로지 연합 교류 프로토콜 (Federated Data Bridge)
+1. **소비 방식**: 뉴스보드 등 타 서비스는 `scripts/federation_client.py` 및 `assets/federation_bridge.js`를 통해 로컬 우선(`../{service}/data/...`), 원격 배포(`https://pyw31337.github.io/{service}/data/...`) 하이브리드로 원장 데이터를 온디맨드 fetch한다.
+2. **온톨로지 상호 연결**: 뉴스 사건사고(`urn:news:issue:...`) ⇄ 법원 판례(`urn:law:...`) ⇄ 관련 기업(`urn:asset:...`) ⇄ 연루 인물(`urn:people:...`)이 URN 링크 그래프로 완전 결합된다.
+3. **상세 아키텍처 명세**: [`docs/FEDERATED_ONTOLOGY_ARCHITECTURE.md`](FEDERATED_ONTOLOGY_ARCHITECTURE.md)를 정본으로 따른다.
+
 
 
 
