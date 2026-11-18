@@ -36,6 +36,7 @@ jobs:
           python scripts/insu/official_catalog.py || true
           python scripts/insu/bootstrap_fetch.py || true
           python scripts/insu/document_extract.py || true
+          python scripts/insu/coverage_target.py || true
           python scripts/insu/source_adapter.py
           python scripts/insu/policy_contract.py
           python scripts/insu/version_diff.py
@@ -48,7 +49,7 @@ jobs:
         run: |
           git config user.name "newsboard-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -f ontology_graph.json serendipity_insights.json extracted_relations.json lawtech/precedents_db.json insu/policy_terms_db.json insu/provider_catalog.json insu/source_manifest.json insu/product_candidates.json insu/policy_version_index.json insu/policy_change_log.json insu/bootstrap_checkpoint.json insu/bootstrap_fetch_log.json insu/document_index.json insu/document_text insu/raw_documents insu/raw_sources insu/source_fetch_log.json db/system/global_expansion_radar.json db/system/collection_inventory.json 2>/dev/null || true
+          git add -f ontology_graph.json serendipity_insights.json extracted_relations.json lawtech/precedents_db.json insu/policy_terms_db.json insu/provider_catalog.json insu/source_manifest.json insu/product_candidates.json insu/policy_version_index.json insu/policy_change_log.json insu/bootstrap_checkpoint.json insu/bootstrap_fetch_log.json insu/document_index.json insu/coverage_target.json insu/document_text insu/raw_documents insu/raw_sources insu/source_fetch_log.json db/system/global_expansion_radar.json db/system/collection_inventory.json 2>/dev/null || true
           git diff --cached --quiet || git commit -qm "data: ontology graph"
           for n in 1 2 3; do
             git push -q origin HEAD:data && exit 0

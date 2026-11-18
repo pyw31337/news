@@ -62,7 +62,7 @@ jobs:
           (cp data/corporate_dossier.json _site/data/ 2>/dev/null || true)
           (mkdir -p _site/data/db/corps && cp -r data/db/corps/*.json _site/data/db/corps/ 2>/dev/null || true)
           (cp data/ontology_graph.json data/serendipity_insights.json _site/data/ 2>/dev/null || true)
-          (mkdir -p _site/data/lawtech _site/data/insu && cp data/lawtech/*.json _site/data/lawtech/ 2>/dev/null || true; cp data/insu/*.json _site/data/insu/ 2>/dev/null || true)
+          # 렛츠로·렛츠인슈 원장은 독립 서비스 전용이다. 뉴스보드 v2에는 복사하지 않는다.
           # 사진은 R2(docs/DATA.md): R2에 올라간 것은 Worker 주소로 바꾸고, 아직 못 올린 것만 Pages에 실음
           (mkdir -p _site/media && cp -r media/img _site/media/ 2>/dev/null || true; cp -r media/ent _site/media/ 2>/dev/null || true)
           python scripts/media_r2.py rewrite _site media || true
