@@ -1,15 +1,33 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-18 22:54:43",
+  "updated_at": "2026-11-18 23:23:35",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.82,
+  "average_quality": 0.83,
   "issues": [
+    {
+      "id": "i4638b995",
+      "title": "[속보] 이 대통령, 조작 기소 특검법 공포안 재가...특검 임명만 남아",
+      "episode": "episode:b3aac39b50980b",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "수사·대응",
+        "사법·처분",
+        "파장·후속",
+        "발단·의혹"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 56,
+      "event_count": 128,
+      "evidence_rate": 1.0
+    },
     {
       "id": "i5d926638",
       "title": "초등생 유인해 술 먹이고 성폭행한 30대 강남 학원장…긴급체포",
       "episode": "episode:b093fdc729f9e8",
-      "quality": 0.66,
+      "quality": 0.76,
       "stages": [
         "일반 보도",
         "사법·처분"
@@ -19,145 +37,71 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 3,
+      "duplicate_candidates": 29,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6821825d",
-      "title": "추경호 '계엄 해제 방해' 1심 무죄…\"윤석열 요청 없었다\"",
-      "episode": "episode:9b09d13fd524ce",
-      "quality": 1.0,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "수사·대응",
-        "사법·처분",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "입장·공방"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 45,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i2def3326",
-      "title": "추미애가 김민석 때리자, 정청래 \"최민희 징계 반대\"... 與 내홍 격화",
-      "episode": "episode:ff908a179c973a",
-      "quality": 1.0,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if5f23ddd",
-      "title": "수능 '커닝' 신고에 최대 1억 원 포상… 시험 직후 범정부 추적 나선다",
-      "episode": "episode:99127bd48509f3",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 23,
-      "event_count": 60,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8a603907",
-      "title": "미중러 3자 회담 시작…시진핑이 주재",
-      "episode": "episode:dbe71813b3c142",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 39,
-      "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7e3597a9",
-      "title": "\"독도 상륙한 조국씨는...\" 일본 의회서 세 차례나 문제삼았다",
-      "episode": "episode:31be4402b63d63",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie7b091af",
-      "title": "뉴욕증시 혼조 마감.. AI 제동에 SK하이닉스 ADR도 흔들",
-      "episode": "episode:70a3d7f7bc2c0b",
-      "quality": 0.84,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 42,
-      "event_count": 60,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if301c5ac",
-      "title": "트럼프 '러브콜'에도…北 김정은, 나흘째 지방 경제 시찰에 집중",
-      "episode": "episode:cca24d05505ce2",
+      "id": "id60b45ca",
+      "title": "\"최민희 징계 반대\" 정청래 참전에 '폭풍전야'",
+      "episode": "episode:7217027b23a0d2",
       "quality": 0.92,
       "stages": [
+        "파장·후속",
         "일반 보도",
-        "사법·처분",
-        "수사·대응",
-        "입장·공방"
+        "입장·공방",
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 35,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id3dfb428",
+      "title": "하남 아파트 헌옷수거함에 신생아 시신 유기한 30대 친모 긴급체포",
+      "episode": "episode:adb3f965b4e049",
+      "quality": 0.84,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
         "파장·후속"
       ],
       "duplicate_candidates": 30,
-      "event_count": 17,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "i99fd4250",
-      "title": "\"삼전닉스에 또 돈벼락 쏟아지나\"…엔비디아가 꺼낸 '비장의 카드'",
-      "episode": "episode:775cd77ef1f65b",
+      "id": "i23faeac0",
+      "title": "“복귀 원한다”…젠슨 황 첫 입장",
+      "episode": "episode:1d33f7d77cff40",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 51,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i4f7a22ae",
+      "title": "삼전닉스만 믿었는데 이럴 줄은…개미들 비명 터지는데 ‘희망고문’ 여전",
+      "episode": "episode:604a4b2f9403b5",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -168,8 +112,8 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 16,
-      "event_count": 6,
+      "duplicate_candidates": 21,
+      "event_count": 11,
       "evidence_rate": 1.0
     },
     {
@@ -186,17 +130,35 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 22,
+      "duplicate_candidates": 24,
       "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "iec16ea53",
-      "title": "마침내 한한령 해제 신호탄… 엔터·게임·여행주 ‘불기둥’",
-      "episode": "episode:bf4683f3599a86",
-      "quality": 0.56,
+      "id": "i2e4530f5",
+      "title": "李대통령 \"수능 끝나도 부정행위 끝까지 추적…무관용 엄정 대응\"",
+      "episode": "episode:ec3b9b0746de17",
+      "quality": 0.92,
       "stages": [
-        "파장·후속",
+        "수사·대응",
+        "입장·공방",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 13,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id65b3f5c",
+      "title": "中 한한령 해제 여부에…靑 “어느정도 진전 있지만 공연은 민감”",
+      "episode": "episode:a530b2391b6a50",
+      "quality": 0.48,
+      "stages": [
         "일반 보도"
       ],
       "gaps": [
@@ -204,8 +166,27 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 23,
+      "duplicate_candidates": 26,
       "event_count": 2,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "idb2182c1",
+      "title": "시대인재, ‘리트 만점’ 이진우와 계약 8일 만에 해지 결정…“의혹 검증 우선”",
+      "episode": "episode:331870fcfd7fb9",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "gaps": [
+        "입장·공방",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 7,
       "evidence_rate": 1.0
     }
   ]
