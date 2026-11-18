@@ -33,12 +33,13 @@ def build():
     corps = load(DATA / "db" / "corps" / "index.json")
     insu = load(DATA / "insu" / "policy_terms_db.json")
     providers = load(DATA / "insu" / "provider_catalog.json")
+    product_candidates = load(DATA / "insu" / "product_candidates.json")
     law = load(DATA / "lawtech" / "precedents_db.json")
     sec = load(DATA / "market" / "sec_tickers_index.json")
     rows = [
         {"id": "legal-lawoc", "domain": "법률 원문", "cadence": "3시간", "workflow": "legal.yml", "evidence": legal.get("local_counts", {}), "status": "ACTIVE", "blocker": "legal 브랜치 원장을 data 분석층과 연결"},
         {"id": "precedents", "domain": "판례·헌재·법령해석", "cadence": "일 1회 분석 + 원문 증분", "workflow": "ontology.yml + legal.yml", "evidence": {"records": len(law.get("precedents", [])), "source_backed": sum(1 for x in law.get("precedents", []) if x.get("source_url") or x.get("source"))}, "status": "SEED_AND_INCREMENTAL", "blocker": "공식 원문 URL가 있는 레코드 확대"},
-        {"id": "insurance", "domain": "보험 약관·분쟁례", "cadence": "약관 변경 감지 + 주 1회 큐", "workflow": "ontology.yml", "evidence": {"records": len(insu.get("policies", [])), "source_backed": sum(1 for x in insu.get("policies", []) if x.get("source_url") or x.get("effective_date")), "provider_links": providers.get("count", 0)}, "status": "SEED_AND_SOURCE_QUEUE", "blocker": "보험사 공시 원문·효력일 수집"},
+        {"id": "insurance", "domain": "보험 약관·분쟁례", "cadence": "약관 변경 감지 + 주 1회 큐", "workflow": "ontology.yml", "evidence": {"records": len(insu.get("policies", [])), "source_backed": sum(1 for x in insu.get("policies", []) if x.get("source_url") or x.get("effective_date")), "provider_links": providers.get("count", 0), "approved_providers": len(product_candidates.get("providers", []))}, "status": "SEED_AND_SOURCE_QUEUE", "blocker": "보험사 공시 원문·효력일 수집"},
         {"id": "dart", "domain": "DART 기업·임원·감사의견", "cadence": "매일 + 장중 공시", "workflow": "corporate.yml + collect.yml", "evidence": {"corp_files": count(DATA / "db" / "corps"), "indexed_corps": corps.get("total_corps", 0), "filings": corps.get("total_filings", 0)}, "status": "ACTIVE", "blocker": "기업별 감사의견·임원·재무 필드 결측 보강"},
         {"id": "sec", "domain": "미국 SEC 기업·임원·공시", "cadence": "일 100개사 배치 + 실시간 8-K", "workflow": "sec-market.yml", "evidence": {"indexed": bool(sec), "companies": sec.get("total_sec_listed_companies", 0), "crawled": sec.get("crawled", 0), "detail_files": count(DATA / "market" / "sec_companies")}, "status": "INCREMENTAL", "blocker": "10-K·10-Q·8-K 문서 본문 파싱"},
         {"id": "community", "domain": "커뮤니티 버즈·민심", "cadence": "1시간", "workflow": "community crawler", "evidence": {"post_files": count(DATA / "community" / "posts", "*.jsonl")}, "status": "SOURCE_SEPARATED", "blocker": "샘플 seed와 실제 원천 게시물 분리"},
