@@ -1,151 +1,278 @@
 {
-  "corp_name": "삼성전자",
+  "corp_code": "005930",
+  "name": "삼성전자",
   "market": "KOSPI",
-  "industry": "반도체 및 전자제품 제조업",
-  "founded": "1969-01-13",
-  "listed": "1975-06-11",
-  "history": [
+  "sector": "전기전자 / 반도체·스마트폰",
+  "foundation_date": "1969-01-13",
+  "listing_date": "1975-06-11",
+  "historical_names": [
     {
-      "date": "1969-01-13",
-      "event": "삼성전자공업주식회사 설립",
-      "type": "설립"
+      "name": "삼성전자공업주식회사",
+      "period": "1969~1984",
+      "reason": "설립 및 흑백 TV 생산 개시"
     },
     {
-      "date": "1975-06-11",
-      "event": "한국증권거래소 상장",
-      "type": "상장"
-    },
-    {
-      "date": "1984-02-28",
-      "event": "삼성전자주식회사로 사명 변경",
-      "type": "사명변경"
-    },
-    {
-      "date": "1993-06-07",
-      "event": "이건희 회장 프랑크푸르트 신경영 선언",
-      "type": "경영전략"
-    },
-    {
-      "date": "2018-05-04",
-      "event": "50:1 주식 액면분할 단행",
-      "type": "주식"
-    },
-    {
-      "date": "2022-10-27",
-      "event": "이재용 회장 취임",
-      "type": "지배구조"
+      "name": "삼성전자주식회사",
+      "period": "1984~현재",
+      "reason": "삼성반도체통신 흡수합병 및 종합 전자·반도체 기업 도약"
     }
   ],
-  "name_changes": [
+  "financials_15y": [
     {
-      "date": "1969-01-13",
-      "name": "삼성전자공업주식회사"
+      "year": 2010,
+      "revenue": 1546303,
+      "op_income": 172965,
+      "net_income": 161465,
+      "assets": 1342887,
+      "liab": 449397,
+      "margin": 11.2,
+      "debt_ratio": 50.3
     },
     {
-      "date": "1984-02-28",
-      "name": "삼성전자주식회사"
-    }
-  ],
-  "financials": [
+      "year": 2011,
+      "revenue": 1650017,
+      "op_income": 162497,
+      "net_income": 137340,
+      "assets": 1556313,
+      "liab": 537027,
+      "margin": 9.8,
+      "debt_ratio": 52.7
+    },
     {
-      "year": "2021",
-      "sales": 2796048,
+      "year": 2012,
+      "revenue": 2011036,
+      "op_income": 290493,
+      "net_income": 238453,
+      "assets": 1810716,
+      "liab": 595914,
+      "margin": 14.4,
+      "debt_ratio": 49.1
+    },
+    {
+      "year": 2013,
+      "revenue": 2286927,
+      "op_income": 367850,
+      "net_income": 304748,
+      "assets": 2140750,
+      "liab": 640590,
+      "margin": 16.1,
+      "debt_ratio": 42.7
+    },
+    {
+      "year": 2014,
+      "revenue": 2062060,
+      "op_income": 250251,
+      "net_income": 233944,
+      "assets": 2304230,
+      "liab": 623348,
+      "margin": 12.1,
+      "debt_ratio": 37.1
+    },
+    {
+      "year": 2015,
+      "revenue": 2006535,
+      "op_income": 264134,
+      "net_income": 190601,
+      "assets": 2421795,
+      "liab": 631197,
+      "margin": 13.2,
+      "debt_ratio": 35.3
+    },
+    {
+      "year": 2016,
+      "revenue": 2018667,
+      "op_income": 292407,
+      "net_income": 227261,
+      "assets": 2621743,
+      "liab": 692113,
+      "margin": 14.5,
+      "debt_ratio": 35.9
+    },
+    {
+      "year": 2017,
+      "revenue": 2395754,
+      "op_income": 536450,
+      "net_income": 421867,
+      "assets": 3017521,
+      "liab": 872607,
+      "margin": 22.4,
+      "debt_ratio": 40.7
+    },
+    {
+      "year": 2018,
+      "revenue": 2437714,
+      "op_income": 588867,
+      "net_income": 443449,
+      "assets": 3393572,
+      "liab": 916040,
+      "margin": 24.2,
+      "debt_ratio": 37.0
+    },
+    {
+      "year": 2019,
+      "revenue": 2304009,
+      "op_income": 277685,
+      "net_income": 217389,
+      "assets": 3525645,
+      "liab": 896841,
+      "margin": 12.1,
+      "debt_ratio": 34.1
+    },
+    {
+      "year": 2020,
+      "revenue": 2368070,
+      "op_income": 359939,
+      "net_income": 264078,
+      "assets": 3782357,
+      "liab": 1022877,
+      "margin": 15.2,
+      "debt_ratio": 37.1
+    },
+    {
+      "year": 2021,
+      "revenue": 2796048,
       "op_income": 516339,
       "net_income": 399074,
-      "assets": 4266212
+      "assets": 4266212,
+      "liab": 1217212,
+      "margin": 18.5,
+      "debt_ratio": 39.9
     },
     {
-      "year": "2022",
-      "sales": 3022314,
+      "year": 2022,
+      "revenue": 3022314,
       "op_income": 433766,
       "net_income": 556541,
-      "assets": 4484245
+      "assets": 4484245,
+      "liab": 936749,
+      "margin": 14.4,
+      "debt_ratio": 26.4
     },
     {
-      "year": "2023",
-      "sales": 2589355,
+      "year": 2023,
+      "revenue": 2589355,
       "op_income": 65670,
       "net_income": 154871,
-      "assets": 4559060
+      "assets": 4559060,
+      "liab": 922281,
+      "margin": 2.5,
+      "debt_ratio": 25.4
     },
     {
-      "year": "2024",
-      "sales": 3008000,
+      "year": 2024,
+      "revenue": 3058000,
       "op_income": 327000,
       "net_income": 285000,
-      "assets": 4720000
-    },
-    {
-      "year": "2025",
-      "sales": 3250000,
-      "op_income": 450000,
-      "net_income": 380000,
-      "assets": 4900000
+      "assets": 4720000,
+      "liab": 945000,
+      "margin": 10.7,
+      "debt_ratio": 25.0
     }
   ],
-  "employees": [
+  "blackbox_milestones": [
     {
-      "year": "2021",
-      "total": 113485,
-      "regular": 111893,
-      "contract": 1592,
-      "male_ratio": 70.2,
-      "female_ratio": 29.8,
-      "avg_tenure_years": 12.6
+      "year": 1969,
+      "event": "삼성전자공업 창립",
+      "impact": "대한민국 가전·전자 산업 진출의 효시"
     },
     {
-      "year": "2022",
-      "total": 121404,
-      "regular": 119842,
-      "contract": 1562,
-      "male_ratio": 69.8,
-      "female_ratio": 30.2,
-      "avg_tenure_years": 12.8
+      "year": 1983,
+      "event": "이병철 선대회장 2·8 도쿄선언",
+      "impact": "반도체(64K DRAM) 독자 개발 착수 선언"
     },
     {
-      "year": "2023",
-      "total": 124804,
-      "regular": 123284,
-      "contract": 1520,
-      "male_ratio": 69.5,
-      "female_ratio": 30.5,
-      "avg_tenure_years": 13.0
+      "year": 1993,
+      "event": "이건희 회장 프랑크푸르트 신경영 선언",
+      "impact": "\"마누라와 자식 빼고 다 바꿔라\", 품질경영 대전환"
     },
     {
-      "year": "2024",
-      "total": 128500,
-      "regular": 126900,
-      "contract": 1600,
-      "male_ratio": 69.2,
-      "female_ratio": 30.8,
-      "avg_tenure_years": 13.2
+      "year": 2004,
+      "event": "순이익 10조원 돌파",
+      "impact": "국내 기업 최초 영업이익 및 순이익 10조원 클럽 달성"
+    },
+    {
+      "year": 2010,
+      "event": "갤럭시 S 출시 및 스마트폰 글로벌 패권 장악",
+      "impact": "피처폰에서 안드로이드 스마트폰 글로벌 1위 도약"
+    },
+    {
+      "year": 2016,
+      "event": "갤럭시 노트7 배터리 발화 리콜 & 하만(Harman) 9조원 전격 인수",
+      "impact": "역대 최대 품질 위기 극복 및 전장(오토모티브) 전격 진출"
+    },
+    {
+      "year": 2018,
+      "event": "영업이익 58.8조원 사상 최대 실적",
+      "impact": "글로벌 슈퍼사이클에 따른 메모리 반도체 독점적 이익 향유"
+    },
+    {
+      "year": 2022,
+      "event": "이재용 회장 공식 취임",
+      "impact": "뉴 삼성 비전 선포 및 파운드리·AI 반도체 초격차 추진"
+    },
+    {
+      "year": 2024,
+      "event": "HBM3E 엔비디아 공급망 퀄테스트 및 AI 반도체 재도약",
+      "impact": "HBM 메모리 경쟁 심화에 따른 전사적 R&D 역량 결집"
     }
   ],
-  "leadership_lineage": [
+  "ceo_history": [
     {
-      "role": "대표이사 회장",
-      "name": "이재용",
-      "period": "2022.10 ~ 현재"
+      "name": "윤종용",
+      "period": "1996~2008",
+      "achievement": "IMF 극복, 디지털 르네상스 주도, 반도체·LCD 글로벌 1위"
     },
     {
-      "role": "대표이사 부회장 (전 DS부문장)",
-      "name": "경계현",
-      "period": "2021.12 ~ 2024.05"
+      "name": "이윤우",
+      "period": "2008~2009",
+      "achievement": "글로벌 금융위기 신속 방어, 차세대 메모리 투자"
     },
     {
-      "role": "대표이사 부회장 (DS부문장)",
-      "name": "전영현",
-      "period": "2024.05 ~ 현재"
+      "name": "최지성",
+      "period": "2009~2012",
+      "achievement": "갤럭시 스마트폰 신화 창출, TV 글로벌 6년 연속 1위"
     },
     {
-      "role": "대표이사 부회장 (DX부문장)",
-      "name": "한종희",
-      "period": "2021.12 ~ 현재"
+      "name": "권오현·윤부근·신종균",
+      "period": "2013~2017",
+      "achievement": "3각 대표체제, 반도체 슈퍼사이클 및 스마트폰 전성기"
     },
     {
-      "role": "전 대표이사 부회장",
-      "name": "김기남",
-      "period": "2017.10 ~ 2021.12"
+      "name": "김기남·김현석·고동진",
+      "period": "2018~2021",
+      "achievement": "역대 최대 영업이익 58조원 달성, 5G 세계 최초 상용화"
+    },
+    {
+      "name": "한종희·경계현/전영현",
+      "period": "2022~현재",
+      "achievement": "DX/DS 통합 시너지, AI 혁신 및 HBM 대전환 주도"
     }
-  ]
+  ],
+  "employment_15y": {
+    "2010": {
+      "employees": 95659,
+      "regular_ratio": 97.8,
+      "avg_tenure": 8.0,
+      "avg_salary_million": 86
+    },
+    "2015": {
+      "employees": 96898,
+      "regular_ratio": 98.4,
+      "avg_tenure": 10.3,
+      "avg_salary_million": 101
+    },
+    "2020": {
+      "employees": 109490,
+      "regular_ratio": 99.1,
+      "avg_tenure": 12.1,
+      "avg_salary_million": 127
+    },
+    "2024": {
+      "employees": 124804,
+      "regular_ratio": 99.4,
+      "avg_tenure": 12.8,
+      "avg_salary_million": 135
+    }
+  },
+  "updated_at": "2026-11-17 16:28:25"
 }

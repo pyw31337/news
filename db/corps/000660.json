@@ -1,138 +1,273 @@
 {
-  "corp_name": "SK하이닉스",
+  "corp_code": "000660",
+  "name": "SK하이닉스",
   "market": "KOSPI",
-  "industry": "메모리 반도체 제조업",
-  "founded": "1949-10-15",
-  "listed": "1996-12-26",
-  "history": [
+  "sector": "전기전자 / HBM·메모리반도체",
+  "foundation_date": "1983-02-23",
+  "listing_date": "1996-12-26",
+  "historical_names": [
     {
-      "date": "1949-10-15",
-      "event": "국도건설 설립",
-      "type": "설립"
+      "name": "현대전자산업주식회사",
+      "period": "1983~2001",
+      "reason": "현대그룹 반도체·전자 계열사 설립"
     },
     {
-      "date": "1983-02-23",
-      "event": "현대전자산업주식회사로 사명 변경 및 반도체 진출",
-      "type": "사명변경"
+      "name": "하이닉스반도체주식회사",
+      "period": "2001~2012",
+      "reason": "빅딜로 LG반도체 합병 후 현대그룹 분리 및 채권단 관리"
     },
     {
-      "date": "1999-10-13",
-      "event": "LG반도체 흡수합병",
-      "type": "M&A"
-    },
-    {
-      "date": "2001-03-29",
-      "event": "주식회사 하이닉스반도체로 사명 변경",
-      "type": "사명변경"
-    },
-    {
-      "date": "2012-03-23",
-      "event": "SK그룹 인수 완료 및 에스케이하이닉스주식회사로 사명 변경",
-      "type": "지배구조"
-    },
-    {
-      "date": "2024-03-20",
-      "event": "HBM3E 세계 최초 양산 및 엔비디아 공급",
-      "type": "기술혁신"
+      "name": "에스케이하이닉스주식회사",
+      "period": "2012~현재",
+      "reason": "SK그룹 인수 후 글로벌 AI 메모리 탑티어 도약"
     }
   ],
-  "name_changes": [
+  "financials_15y": [
     {
-      "date": "1983-02-23",
-      "name": "현대전자산업(주)"
+      "year": 2010,
+      "revenue": 121058,
+      "op_income": 29743,
+      "net_income": 26214,
+      "assets": 179124,
+      "liab": 97890,
+      "margin": 24.6,
+      "debt_ratio": 120.5
     },
     {
-      "date": "2001-03-29",
-      "name": "하이닉스반도체(주)"
+      "year": 2011,
+      "revenue": 103958,
+      "op_income": 3691,
+      "net_income": -563,
+      "assets": 172340,
+      "liab": 89200,
+      "margin": 3.6,
+      "debt_ratio": 107.3
     },
     {
-      "date": "2012-03-23",
-      "name": "에스케이하이닉스(주)"
-    }
-  ],
-  "financials": [
+      "year": 2012,
+      "revenue": 101622,
+      "op_income": -2273,
+      "net_income": -1593,
+      "assets": 187700,
+      "liab": 95100,
+      "margin": -2.2,
+      "debt_ratio": 102.7
+    },
     {
-      "year": "2021",
-      "sales": 429978,
+      "year": 2013,
+      "revenue": 141651,
+      "op_income": 33798,
+      "net_income": 28729,
+      "assets": 208000,
+      "liab": 78000,
+      "margin": 23.9,
+      "debt_ratio": 60.0
+    },
+    {
+      "year": 2014,
+      "revenue": 171256,
+      "op_income": 51095,
+      "net_income": 41952,
+      "assets": 268600,
+      "liab": 88400,
+      "margin": 29.8,
+      "debt_ratio": 49.1
+    },
+    {
+      "year": 2015,
+      "revenue": 187980,
+      "op_income": 53361,
+      "net_income": 43236,
+      "assets": 298000,
+      "liab": 84000,
+      "margin": 28.4,
+      "debt_ratio": 39.3
+    },
+    {
+      "year": 2016,
+      "revenue": 171980,
+      "op_income": 32767,
+      "net_income": 29600,
+      "assets": 322000,
+      "liab": 81500,
+      "margin": 19.1,
+      "debt_ratio": 33.9
+    },
+    {
+      "year": 2017,
+      "revenue": 301094,
+      "op_income": 137213,
+      "net_income": 106422,
+      "assets": 454180,
+      "liab": 116000,
+      "margin": 45.6,
+      "debt_ratio": 34.3
+    },
+    {
+      "year": 2018,
+      "revenue": 404451,
+      "op_income": 208438,
+      "net_income": 155400,
+      "assets": 636583,
+      "liab": 168000,
+      "margin": 51.5,
+      "debt_ratio": 35.8
+    },
+    {
+      "year": 2019,
+      "revenue": 269907,
+      "op_income": 27127,
+      "net_income": 20164,
+      "assets": 647895,
+      "liab": 168500,
+      "margin": 10.0,
+      "debt_ratio": 35.2
+    },
+    {
+      "year": 2020,
+      "revenue": 319004,
+      "op_income": 50126,
+      "net_income": 47589,
+      "assets": 711731,
+      "liab": 192600,
+      "margin": 15.7,
+      "debt_ratio": 37.1
+    },
+    {
+      "year": 2021,
+      "revenue": 429978,
       "op_income": 124103,
       "net_income": 96162,
-      "assets": 963856
+      "assets": 963853,
+      "liab": 341800,
+      "margin": 28.9,
+      "debt_ratio": 54.9
     },
     {
-      "year": "2022",
-      "sales": 446481,
+      "year": 2022,
+      "revenue": 446481,
       "op_income": 70067,
-      "net_income": 24389,
-      "assets": 1038719
+      "net_income": 22416,
+      "assets": 1038723,
+      "liab": 405000,
+      "margin": 15.7,
+      "debt_ratio": 63.9
     },
     {
-      "year": "2023",
-      "sales": 327657,
+      "year": 2023,
+      "revenue": 327657,
       "op_income": -77303,
       "net_income": -91375,
-      "assets": 1047805
+      "assets": 989803,
+      "liab": 452000,
+      "margin": -23.6,
+      "debt_ratio": 84.0
     },
     {
-      "year": "2024",
-      "sales": 662000,
-      "op_income": 235000,
-      "net_income": 182000,
-      "assets": 1250000
+      "year": 2024,
+      "revenue": 661900,
+      "op_income": 234600,
+      "net_income": 198000,
+      "assets": 1180000,
+      "liab": 420000,
+      "margin": 35.4,
+      "debt_ratio": 55.3
     }
   ],
-  "employees": [
+  "blackbox_milestones": [
     {
-      "year": "2021",
-      "total": 30135,
-      "regular": 29688,
-      "contract": 447,
-      "male_ratio": 64.5,
-      "female_ratio": 35.5,
-      "avg_tenure_years": 11.8
+      "year": 1983,
+      "event": "현대전자산업 설립",
+      "impact": "현대그룹 정주영 회장의 반도체 도전"
     },
     {
-      "year": "2022",
-      "total": 31944,
-      "regular": 31520,
-      "contract": 424,
-      "male_ratio": 64.0,
-      "female_ratio": 36.0,
-      "avg_tenure_years": 12.0
+      "year": 1999,
+      "event": "정부 주도 반도체 빅딜로 LG반도체 흡수합병",
+      "impact": "DRAM 시장점유율 세계 2위로 도약했으나 막대한 부채 승계"
     },
     {
-      "year": "2023",
-      "total": 32065,
-      "regular": 31650,
-      "contract": 415,
-      "male_ratio": 63.8,
-      "female_ratio": 36.2,
-      "avg_tenure_years": 12.3
+      "year": 2001,
+      "event": "현대그룹에서 계열 분리 및 채권단 공동관리(워크아웃)",
+      "impact": "하이닉스반도체 사명 변경, 채권단 출자전환으로 독자 생존 모색"
     },
     {
-      "year": "2024",
-      "total": 33200,
-      "regular": 32800,
-      "contract": 400,
-      "male_ratio": 63.5,
-      "female_ratio": 36.5,
-      "avg_tenure_years": 12.5
+      "year": 2012,
+      "event": "SK그룹 최태원 회장의 결단으로 하이닉스 전격 인수",
+      "impact": "SK하이닉스로 사명 변경, 매년 10조원대 공격적 R&D 및 설비투자 단행"
+    },
+    {
+      "year": 2013,
+      "event": "세계 최초 TSV 기술 적용 HBM(고대역폭메모리) 개발",
+      "impact": "향후 AI 시대 엔비디아 독점 공급의 씨앗을 뿌림"
+    },
+    {
+      "year": 2020,
+      "event": "인텔(Intel) 낸드플래시 사업부 10.3조원 인수 계약",
+      "impact": "솔리다임(Solidigm) 출범 및 낸드 포트폴리오 강화"
+    },
+    {
+      "year": 2023,
+      "event": "반도체 다운턴으로 7.7조원 적자 속에서도 HBM3/3E 집중 투자",
+      "impact": "엔비디아 H100/H200 독점 공급 확정"
+    },
+    {
+      "year": 2024,
+      "event": "영업이익 23.4조원 사상 최대 흑자 턴어라운드",
+      "impact": "HBM 세계 1위 시장 점유율 기반 글로벌 AI 반도체 황제주 등극"
     }
   ],
-  "leadership_lineage": [
+  "ceo_history": [
     {
-      "role": "대표이사 사장 (CEO)",
-      "name": "곽노정",
-      "period": "2022.03 ~ 현재"
+      "name": "김종갑",
+      "period": "2007~2010",
+      "achievement": "워크아웃 조기 졸업 기반 마련, 재무건전성 회복"
     },
     {
-      "role": "대표이사 부회장",
-      "name": "박정호",
-      "period": "2021.03 ~ 2023.12"
+      "name": "권오철",
+      "period": "2010~2013",
+      "achievement": "SK그룹 인수 매각 협상 완수, SK하이닉스 성공적 출범"
     },
     {
-      "role": "전 대표이사 사장",
+      "name": "박성욱",
+      "period": "2013~2018",
+      "achievement": "HBM 선제 개발, 반도체 슈퍼사이클 20조원 영업이익 신화"
+    },
+    {
       "name": "이석희",
-      "period": "2018.12 ~ 2022.03"
+      "period": "2018~2022",
+      "achievement": "인텔 낸드 사업부 10조 인수 주도, M16 팹 준공"
+    },
+    {
+      "name": "박정호·곽노정",
+      "period": "2022~현재",
+      "achievement": "AI HBM 혁명 선도, 엔비디아 전략적 동맹 구축"
     }
-  ]
+  ],
+  "employment_15y": {
+    "2010": {
+      "employees": 19300,
+      "regular_ratio": 98.1,
+      "avg_tenure": 8.9,
+      "avg_salary_million": 65
+    },
+    "2015": {
+      "employees": 22139,
+      "regular_ratio": 98.9,
+      "avg_tenure": 10.2,
+      "avg_salary_million": 96
+    },
+    "2020": {
+      "employees": 29008,
+      "regular_ratio": 99.2,
+      "avg_tenure": 11.6,
+      "avg_salary_million": 115
+    },
+    "2024": {
+      "employees": 32474,
+      "regular_ratio": 99.6,
+      "avg_tenure": 12.4,
+      "avg_salary_million": 138
+    }
+  },
+  "updated_at": "2026-11-17 16:28:25"
 }
