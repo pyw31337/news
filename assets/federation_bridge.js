@@ -19,6 +19,10 @@ window.FederationBridge = {
     asset: {
       remote: 'https://pyw31337.github.io/asset/data/all_dimensions_dossier.json',
       local: '../asset/data/all_dimensions_dossier.json'
+    },
+    people: {
+      remote: 'https://pyw31337.github.io/people/data/aging_photos_index.json',
+      local: '../people/data/aging_photos_index.json'
     }
   },
 
