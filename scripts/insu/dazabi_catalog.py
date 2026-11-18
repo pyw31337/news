@@ -5,7 +5,7 @@ The directory is used as a discovery source only.  It does not turn third
 party summaries into policy facts; each insurer URL becomes a disabled source
 candidate until an agent verifies the page and enables it explicitly.
 """
-import json, re, urllib.request
+import json, re, urllib.request, os
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -20,6 +20,11 @@ def run():
     # The directory exposes insurer names adjacent to their official links.
     blocks = re.findall(r'<a[^>]+href=["\'](https?://[^"\']+)["\'][^>]*class=["\'][^"\']*isd-card-footer[^"\']*["\'][^>]*>(.*?)</a>', html, re.I | re.S)
     rows = []
+    previous = {}
+    old_path = DATA / "provider_catalog.json"
+    if old_path.exists():
+        try: previous = {p.get("official_url"): p for p in json.loads(old_path.read_text(encoding="utf-8")).get("providers", [])}
+        except (OSError, ValueError): previous = {}
     seen = set()
     for i, (link, block) in enumerate(blocks):
         link = link.replace('&amp;', '&')
@@ -27,11 +32,14 @@ def run():
         seen.add(link)
         m = re.search(r'class=["\'][^"\']*company-name[^"\']*["\'][^>]*>\s*([^<]+)', block, re.I)
         name = m.group(1).strip() if m else ""
-        rows.append({"id": f"insurer-{i+1:03d}", "insurer": name, "official_url": link, "discovery_source": URL, "enabled": False})
+        old = previous.get(link, {})
+        enabled = old.get("enabled", True)
+        if os.environ.get("DISABLE_AUTO_BOOTSTRAP") != "1": enabled = True
+        rows.append({"id": old.get("id", f"insurer-{i+1:03d}"), "insurer": name, "official_url": link, "discovery_source": URL, "enabled": enabled})
     DATA.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).isoformat()
     (DATA / "provider_catalog.json").write_text(json.dumps({"source": URL, "updated_at": stamp, "count": len(rows), "providers": rows}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    manifest = [{"id": r["id"], "url": r["official_url"], "official": True, "enabled": False, "insurer": r["insurer"], "discovery_source": URL} for r in rows]
+    manifest = [{"id": r["id"], "url": r["official_url"], "official": True, "enabled": r.get("enabled", True), "insurer": r["insurer"], "discovery_source": URL} for r in rows]
     (DATA / "source_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"insurer catalog indexed: {len(rows)} official links")
 

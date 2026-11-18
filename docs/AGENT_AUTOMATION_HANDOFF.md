@@ -374,6 +374,8 @@ python3 -m py_compile scripts/event_quality.py scripts/quality.py scripts/editor
 5. `policy_contract.py`: 보험사·상품·판매기간·효력기간·근거 필드의 버전 인덱스 생성 및 가입자 로컬 입력과 근거 검색
 6. `version_diff.py`: 원문 해시 변화 감지와 개정 로그 생성
 
+초기 부트스트랩은 `bootstrap_fetch.py`가 공식 도메인에서 발견한 공개 문서를 회차당 최대 200개씩 수집하고 `bootstrap_checkpoint.json`으로 재개한다. 25MB 초과·비HTTPS·타 도메인·접근 제한 응답은 격리한다. 초기 색인이 끝난 뒤에는 URL별 SHA-256 변경 여부만 확인하는 증분 모드로 전환한다. 기본 갱신 정책은 판매중 상품·약관 변경 감지 일 1회, 판매중지·과거 버전은 주 1회, 전체 공식 링크 재탐색은 월 1회다.
+
 가입자 보험 이력은 `data/insu/`나 깃에 저장하지 않는다. 사용자가 별도 로컬 JSON으로 제공한 경우에만 근거 검색을 수행하며, 결과는 원문 링크·효력기간·근거 필드와 함께 표시하고 지급 가능성이나 법률 결론으로 단정하지 않는다.
 
 새 수집기를 추가할 때는 먼저 이 표와 `collection_inventory.json`에 고유 id·출처·주기·출력 경로를 등록한다. 기존 id와 같은 원장에 쓰지 말고, 원문(raw)·정제(clean)·분석(derived) 출력을 분리한다.
