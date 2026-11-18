@@ -672,3 +672,25 @@ python3 -m py_compile scripts/event_quality.py scripts/quality.py scripts/editor
 
 
 
+
+## 34. 15대 마이크로서비스 전수 센티널 무인 치유(Self-Healing) 실가동 및 렛츠로·렛츠아트 상호 인텔리전스 연합 (v5.2.0, 2026-11-18)
+
+1. **15개 서비스 전수 통합 관제 및 센티널 무인 자가 치유 파이프라인 가동 (`/lets`)**:
+   - `scripts/sentinel_anomaly_guard.py` 실시간 결합:
+     - 15개 전체 서비스(`people`, `asset`, `law`, `insu`, `art`, `cultureflow`, `view`, `meat`, `camp`, `calendar`, `hair`, `buy`, `pick`, `subway`, `news`) 471만 건 원장 대상 24/7 무인 검수.
+     - **Zero-Drop 징후 감지**: 일일 수집량이 0으로 급감 시 사전 등록된 백업 미러/프록시로 자동 우회 스위칭.
+     - **Flat-Curve 징후 감지**: 수집 곡선 기울기 -40% 이상 완만해지는 정체 징후 시 지수 백오프 쿼터 조정 및 분산 재시도 큐 가동.
+     - **Caution Alerts & Self-Healing 리포트**: 관제 허브 상단 경보 팝업 및 드로어와 연계하여 자가 치유 완료 내역 투명 공개.
+   - `scripts/daily_ecosystem_aggregator.py` 및 `.github/workflows/daily_ingest.yml`에 일일 센티널 검수 자동화 파이프라인 탑재.
+
+2. **렛츠로(Let's Law) 한문철식 8대 교통사고 3D 시뮬레이션 및 분쟁 모델 완비**:
+   - 신호위반, 중앙선 침범(역주행), 후미 추돌, 주차장 출차 접촉 등 8대 대표 사고 프리셋 및 자연어 사고 상황 AI 자동 분석 탑재.
+   - 12대 중과실 여부, 과실 가감산 요소, 대법원 확정 판례, 렛츠인슈 연계 합의금 계산 직통 점프 완비.
+
+3. **렛츠아트(Let's Art) & 렛츠피플(Let's People) 양방향 크로스 링킹 완성**:
+   - 렛츠피플의 역사적 예술 거장(고흐, 다빈치, 렘브란트 등) 프로필에서 렛츠아트 가상 미술관 3D 갤러리로 원클릭 이동(`urn:lets:art:...`).
+   - 렛츠아트의 명화·문학·현대건축 도상학 상세 모달에서 렛츠피플 작가 생애 족보로 양방향 직통 연동.
+
+4. **15대 서비스 100% 라이트 모드 (LDS v1.0.0) 및 무과금 원칙 불변**:
+   - WCAG AAA 15.8:1 고대비 라이트 테마 유지, 320px 모바일 가변형 세로 적층 지원, 브라우저 가로 스크롤 제로(0px) 정책 유지.
+   - 외부 클라우드 비용 $0 유지 (정적 GitHub Pages & 공공 오픈 API 활용).
