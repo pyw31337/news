@@ -69,6 +69,8 @@ def run():
                         'total_filings': 0,
                         'category_counts': {},
                         'incidents_count': 0,
+                    'audit_opinions': [],
+                    'executives': [],
                         'latest_date': date_str,
                         'filings': []
                     }
@@ -89,6 +91,15 @@ def run():
                     'date': f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:8]}" if len(date_str) == 8 else date_str,
                     'url': url
                 })
+                # DART adapters may expose these fields under either the
+                # Korean or normalized key. Preserve them when present so
+                # auditors and people enrichers can consume the same ledger.
+                audit = row.get('audit_opinion') or row.get('감사의견') or row.get('auditor_opinion')
+                if audit and audit not in corp['audit_opinions']:
+                    corp['audit_opinions'].append({'date': date_str, 'opinion': audit, 'auditor': row.get('auditor') or row.get('감사인', '')})
+                executive = row.get('executive') or row.get('임원') or row.get('representative')
+                if executive:
+                    corp['executives'].append(executive if isinstance(executive, dict) else {'name': str(executive), 'date': date_str})
 
     print(f"1. 전체 공시 {total_filings}건 수집 완료")
     print(f"2. 전체 상장 기업 {len(all_corps)}개사 분석 및 분류 완료")
@@ -104,6 +115,8 @@ def run():
             'incidents_count': cdata['incidents_count'],
             'latest_date': cdata['latest_date'],
             'categories': cdata['category_counts'],
+            'audit_opinions_count': len(cdata.get('audit_opinions', [])),
+            'executives_count': len(cdata.get('executives', [])),
             'recent_filings': cdata['filings'][:5]
         })
 
@@ -131,6 +144,8 @@ def run():
                     'market': cdata['market'],
                     'total_filings': cdata['total_filings'],
                     'category_counts': cdata['category_counts'],
+                    'audit_opinions': cdata.get('audit_opinions', []),
+                    'executives': cdata.get('executives', []),
                     'filings': sorted(cdata['filings'], key=lambda x: x['date'], reverse=True)
                 }, f, ensure_ascii=False, indent=2)
             saved_details += 1
