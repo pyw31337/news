@@ -18,13 +18,24 @@ fi
 printf '%s\n' "$$" > "$B/.lock/pid"
 trap 'rm -f "$B/.lock/pid"; rmdir "$B/.lock" 2>/dev/null || true' EXIT
 export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
+bounded_fetch() {
+  local remote="${1:-origin}" refspec="${2:-}"
+  GIT_SSH_COMMAND="ssh -o ConnectTimeout=15 -o ServerAliveInterval=5 -o ServerAliveCountMax=2" \
+    git -C "${3:-.}" fetch -q "$remote" $refspec &
+  local child="$!" watchdog
+  ( sleep 30; kill -TERM "$child" 2>/dev/null || true ) & watchdog="$!"
+  wait "$child"; local rc="$?"
+  kill "$watchdog" 2>/dev/null || true
+  wait "$watchdog" 2>/dev/null || true
+  return "$rc"
+}
 [ -f "$B/local.env" ] && set -a && . "$B/local.env" && set +a
 R="${NB_REMOTE:-git@github-newsboard:pyw31337/news.git}"
 [ -d news ] || git clone -q "$R" news
 cd news || exit 1
 # 작업 중인 소스나 수집 결과를 초기화하지 않는다. 원격 변경은 fast-forward일 때만 반영한다.
 GIT_SSH_COMMAND="ssh -o ConnectTimeout=15 -o ServerAliveInterval=5 -o ServerAliveCountMax=2" \
-  git fetch -q origin && git merge -q --ff-only origin/main || echo "source update deferred; local checkout retained"
+bounded_fetch origin "" . && git merge -q --ff-only origin/main || echo "source update deferred; local checkout retained"
 # data는 절대 reset하지 않는다. 원격보다 앞선 로컬 커밋이 업로드 대기열이다.
 if [ ! -d data ]; then git clone -q -b data "$R" data
 elif [ ! -e data/.git ]; then echo "data가 Git 저장소가 아닙니다. 기존 데이터를 보호하기 위해 중단합니다."; exit 1
@@ -35,7 +46,7 @@ queue_status(){
 sync_data(){
   git -C data add -A
   git -C data diff --cached --quiet || git -C data -c user.name="newsboard-$(hostname -s)" -c user.email=local@users.noreply.github.com commit -qm "local data: $(date '+%Y-%m-%d %H:%M') KST"
-  git -C data fetch -q origin data || { echo "원격 확인 실패: 로컬 큐에 보존"; queue_status; return 1; }
+  bounded_fetch origin data data || { echo "원격 확인 실패: 로컬 큐에 보존"; queue_status; return 1; }
   if ! git -C data merge-base --is-ancestor origin/data HEAD; then
     git -C data rebase -X theirs origin/data || { git -C data rebase --abort 2>/dev/null || true; echo "원격 충돌: 로컬 큐 유지"; queue_status; return 1; }
   fi
