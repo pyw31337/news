@@ -86,7 +86,10 @@
 (function(){
   var base='assets/', ver='?v=202611100937';
   function add(src){return new Promise(function(resolve,reject){var s=document.createElement('script');s.src=base+src+ver;s.onload=resolve;s.onerror=reject;document.head.appendChild(s)})}
-  function load(){add('game.js').then(function(){return add('game2.js')}).catch(function(){})}
+  function load(){
+    add('game.js').then(function(){return add('game2.js')}).catch(function(){});
+    add('federation_bridge.js').then(function(){return add('deep_timeline.js')}).catch(function(){});
+  }
   var critical=/\/(games|quiz)(?:\/|$)/.test(location.pathname);
   if(critical) load();
   else if('requestIdleCallback' in window) requestIdleCallback(load,{timeout:3500});
