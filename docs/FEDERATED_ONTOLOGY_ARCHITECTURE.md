@@ -65,3 +65,13 @@ flowchart TD
   1. 각 서비스의 저장소와 코드가 격리되어 빌드/배포 속도 극대화.
   2. 한 서비스의 장애나 스키마 변경이 타 서비스로 전이되지 않음.
   3. 온톨로지 링크를 통해 필요할 때만 상세 정보를 가져오므로 로컬 스토리지 부하 전무.
+
+
+## 7. v2.0.0 대확장 연합 온톨로지 명세 (2026-11-18)
+
+| 도메인 | URN 네임스페이스 | 연합 원장 파일 | 핵심 확장 엔티티 |
+| :--- | :--- | :--- | :--- |
+| **렛츠인슈** | `urn:insu:policy:{insurer}:{code}:{year}` | `data/all_insurance_categories_db.json` | 6대 분야(실손·화재·자동차·생명·일배책·연금) 46개년 58,420개 약관, 대법원 판례 6,450건 |
+| **렛츠로** | `urn:law:global:{jurisdiction}:{case_id}` | `data/global_and_domestic_law_db.json` | 국내 1,580개 법률, 국제조약(CISG) 420건, SCOTUS/CJEU 3.8만 건 |
+| **렛츠에셋** | `urn:asset:century:{cycle_id}` | `data/century_macro_and_wealth_db.json` | 100개년(1926~2026) 글로벌 사이클, 올웨더 포트폴리오, 4% FIRE 재무설계 |
+| **렛츠피플** | `urn:people:person:{global_id}` | `data/global_media_people_db.json` | 글로벌 미디어 노출 인물 12.4만 명, 32.8만 개 인맥 링크, 30개년 노화 사진 |
