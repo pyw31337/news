@@ -85,3 +85,14 @@ flowchart TD
 | **뮤지컬/연극 배우** | `urn:culture:artist:musical:{artist_id}` | `people/data/entertainment_culture_people_db.json` | KOPIS 연계, 뮤지컬 무대 스테이지그래피 및 공연장 |
 | **가수/뮤지션** | `urn:culture:artist:musician:{artist_id}` | `people/data/entertainment_culture_people_db.json` | 앨범 디스코그래피 및 음원차트, 작곡/프로듀서망 |
 | **공연 작품** | `urn:culture:performance:{kopis_perf_id}` | `CultureFlow/data/performances` | 컬처플로우 공연 예매 및 일정 연계 |
+
+
+## 9. 작품 제작비·손익분기점(BEP)·스태프 온톨로지 연합 명세 (2026-11-18)
+
+| 데이터 필드 | 출처 API | 설명 |
+| :--- | :--- | :--- |
+| `poster_url` | KOFIC / KMDb / KOPIS | 공식 고화질 포스터 및 무대 메인 비주얼 |
+| `financials.break_even_point` | DART 상장 배급사 공시 & 언론사 보도자료 | 공식 손익분기점(BEP) 타깃 관객수/점유율 |
+| `financials.roi_performance` | KOFIC 누적 관객수 연동 계산 | BEP 초과 달성률 (흑자/적자 ROI 지표) |
+| `key_staff` | KOFIC / KOPIS 제작진 명부 | 각본가, 촬영감독, 음악감독, 제작/프로듀서 |
+| `synopsis` | 한국영상자료원 공인 시놉시스 | 공식 줄거리 메타데이터 |
