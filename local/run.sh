@@ -4,15 +4,27 @@ set -u
 B="${NB_HOME:-$HOME/Developer/newsboard-local}"; cd "$B" || exit 1
 mkdir -p logs upload-queue; exec >> "$B/logs/run-$(date +%Y%m%d).log" 2>&1
 echo "== start $(date)"
-mkdir "$B/.lock" 2>/dev/null || { echo "already running"; exit 0; }
-trap 'rmdir "$B/.lock"' EXIT
+if ! mkdir "$B/.lock" 2>/dev/null; then
+  lock_pid="$(cat "$B/.lock/pid" 2>/dev/null || true)"
+  if [ -n "$lock_pid" ] && kill -0 "$lock_pid" 2>/dev/null; then
+    echo "already running (pid $lock_pid)"
+    exit 0
+  fi
+  echo "removing stale lock${lock_pid:+ (pid $lock_pid is not running)}"
+  rm -f "$B/.lock/pid"
+  rmdir "$B/.lock" 2>/dev/null || { echo "lock is being acquired; exiting"; exit 0; }
+  mkdir "$B/.lock" 2>/dev/null || { echo "already running"; exit 0; }
+fi
+printf '%s\n' "$$" > "$B/.lock/pid"
+trap 'rm -f "$B/.lock/pid"; rmdir "$B/.lock" 2>/dev/null || true' EXIT
 export PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
 [ -f "$B/local.env" ] && set -a && . "$B/local.env" && set +a
 R="${NB_REMOTE:-git@github-newsboard:pyw31337/news.git}"
 [ -d news ] || git clone -q "$R" news
 cd news || exit 1
 # 작업 중인 소스나 수집 결과를 초기화하지 않는다. 원격 변경은 fast-forward일 때만 반영한다.
-git fetch -q origin && git merge -q --ff-only origin/main || echo "source update deferred; local checkout retained"
+GIT_SSH_COMMAND="ssh -o ConnectTimeout=15 -o ServerAliveInterval=5 -o ServerAliveCountMax=2" \
+  git fetch -q origin && git merge -q --ff-only origin/main || echo "source update deferred; local checkout retained"
 # data는 절대 reset하지 않는다. 원격보다 앞선 로컬 커밋이 업로드 대기열이다.
 if [ ! -d data ]; then git clone -q -b data "$R" data
 elif [ ! -e data/.git ]; then echo "data가 Git 저장소가 아닙니다. 기존 데이터를 보호하기 위해 중단합니다."; exit 1
