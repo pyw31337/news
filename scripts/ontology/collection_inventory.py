@@ -27,7 +27,9 @@ def load(path):
 
 
 def build():
-    legal = load(DATA / "legal" / "v1" / "coverage.json")
+    legal = load(DATA / "db" / "system" / "legal_coverage.json")
+    if not legal:
+        legal = load(DATA / "legal" / "v1" / "coverage.json")
     corps = load(DATA / "db" / "corps" / "index.json")
     insu = load(DATA / "insu" / "policy_terms_db.json")
     law = load(DATA / "lawtech" / "precedents_db.json")
