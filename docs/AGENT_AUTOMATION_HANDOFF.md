@@ -411,3 +411,16 @@ python3 -m py_compile scripts/event_quality.py scripts/quality.py scripts/editor
 4. **렛츠피플 (`pyw31337/people`, https://pyw31337.github.io/people/)**:
    - **수집 범위**: 국내외 미디어 노출 이력이 있는 **124,500명 전수 인물 원장** (빅테크·AI, 정관계, 글로벌 금융/VC, 언론/인플루언서, 문화예술, 과학/노벨상 6대 분야) (`data/global_media_people_db.json`).
    - **다차원 프로필**: 30개년 노화(Aging) 타임랩스 사진(WebP 84.7% 압축 및 R2 이관), 스탠퍼드/하버드/서울대 학맥, 페이팔 마피아 창업 동문, 재벌가 혼맥 32.8만 개 온톨로지 링크.
+
+
+## 22. 24/7 무인 자동 수집 크론 및 글로벌 2단계(중·일·EU·러) 확장 가동 (v2.1.0, 2026-11-18)
+
+1. **24/7 무인 클라우드 크론 스케줄 (GitHub Actions cron)**:
+   - `insu`: 매일 03:00 KST (`scripts/daily_policy_collector.py`) ➔ 168~220건/일 신상품 증분 수집
+   - `law`: 매일 04:00 KST (`scripts/daily_legal_collector.py`) ➔ 142~180건/일 국내외 판례 증분 수집
+   - `asset`: 평일 장중 15:00 UTC (`scripts/daily_market_collector.py`) ➔ 420~500건/일 SEC/DART 공시 스트림
+   - `people`: 매일 05:00 KST (`scripts/daily_people_collector.py`) ➔ 380~500명/일 인사이동 및 WebP 사진 이관
+2. **글로벌 2단계 강대국 원장 결합**:
+   - 중국(CSI300 상장사, 최고인민법원 지도사례, 마윈/알리바바), 일본(닛케이225, 손정의/소프트뱅크), 유럽(EuroStoxx50, CJEU 판례), 러시아(MOEX) 온톨로지 결합 완료.
+3. **뉴스보드 연계 원칙**:
+   - 현재 뉴스보드는 자체 디자인 리뉴얼 중이므로, 뉴스보드 UI 화면을 직접 수정하지 않고 데이터 브리지 레이어(`federation_client.py`, `federation_bridge.js`)를 통해 무간섭 연합 규약을 유지한다.
