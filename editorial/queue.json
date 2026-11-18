@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-19",
-  "generated_at": "2026-11-19T08:23:36+09:00",
+  "generated_at": "2026-11-19T08:53:20+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,113 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i23faeac0",
-      "title": "“복귀 원한다”…젠슨 황 첫 입장",
+      "issue_id": "if43f3e11",
+      "title": "'1만2000→9000→7500' 내렸는데…\"삼전닉스 아직 안 끝났다\"는 이유",
       "category": "경제",
-      "rank": 5,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "불륜 파문으로 엔비디아를 떠난 젠슨 황이 사임 닷새 만에 경영 복귀 의사를 밝혔습니다.",
-        "한편 황 전 CEO는 엔비디아 이사회가 요청할 경우 복귀하겠다는 뜻을 밝혔지만, 하비 존스 이사회 의장은 “젠슨 황을 CEO로 재선임할 뜻이 없다”고 말했다.",
-        "엔비디아 이사회는 크레스 CFO를 임시 CEO로 선임하고 외부...",
-        "대장주 엔비디아가 창업자 젠슨 황 전 최고경영자(CEO) 사임 충격에서 벗어나기 위해 내부 결속에 나섰다....",
-        "콜렛 크레스 엔비디아 임시 CEO는 18일(현지시각) 스캔들로 회사를 떠난 황 전 CEO 복귀설에 확실히 선을 긋고..."
-      ],
-      "sources": [
-        {
-          "press": "mk.co.kr",
-          "title": "“젠슨 황 돌아오거나, ‘이 사람’이 이어받거나”…엔비디아 직원들...",
-          "url": "https://n.news.naver.com/mnews/article/009/0005765920?sid=104"
-        },
-        {
-          "press": "biz.chosun.com",
-          "title": "4만7300명 임직원 다독인 엔비디아… ‘젠슨 황 시대 공식 작별’ 내부...",
-          "url": "https://n.news.naver.com/mnews/article/366/0001205821?sid=104"
-        },
-        {
-          "press": "이데일리",
-          "title": "\"임금 인상 앞당길것\"…엔비디아, 젠슨황 사태 후 직원 달래기",
-          "url": "https://n.news.naver.com/article/018/0006412174"
-        },
-        {
-          "press": "연합뉴스",
-          "title": "엔비디아 직원 56% \"젠슨황 복귀 원해\"…후임 후보 이언 벅 선두",
-          "url": "https://n.news.naver.com/article/001/0016450496"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "불륜 파문으로 엔비디아를 떠난 젠슨 황이 사임 닷새 만에 경영 복귀 의사를 밝혔습니다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "한편 황 전 CEO는 엔비디아 이사회가 요청할 경우 복귀하겠다는 뜻을 밝혔지만, 하비 존스 이사회 의장은 “젠슨 황을 CEO로 재선임할 뜻이 없다”고 말했다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "콜렛 크레스 엔비디아 임시 CEO는 18일(현지시각) 스캔들로 회사를 떠난 황 전 CEO 복귀설에 확실히 선을 긋고..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "발단·의혹"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i4f7a22ae",
-      "title": "삼전닉스만 믿었는데 이럴 줄은…개미들 비명 터지는데 ‘희망고문’ 여전",
-      "category": "경제",
-      "rank": 6,
+      "rank": 7,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -141,7 +38,7 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "‘반도체 투톱’ 삼성전자와 SK하이닉스 주가가 고점 대비 50% 넘게 빠지면서 증권가에서 제시하는 목표주가와 실제 주가 간 괴리가 커지고 있다.",
+        "골드만삭스가 코스피 12개월 목표치를 9000에서 7500으로 내려잡았다.",
         "“오르든 내리든 무조건 판다”…외국인 올 들어 222조 ‘매도 폭탄’, 85%가 삼전닉스 [투자360]",
         "'1만2000→9000→7500' 내렸는데…\"삼전닉스 아직 안 끝났다\"는 이유",
         "삼전닉스만 믿었는데 이럴 줄은…개미들 비명 터지는데 ‘희망고문’ 여전",
@@ -173,7 +70,7 @@
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "‘반도체 투톱’ 삼성전자와 SK하이닉스 주가가 고점 대비 50% 넘게 빠지면서 증권가에서 제시하는 목표주가와 실제 주가 간 괴리가 커지고 있다."
+          "evidence": "골드만삭스가 코스피 12개월 목표치를 9000에서 7500으로 내려잡았다."
         },
         {
           "panel": 2,
@@ -189,111 +86,6 @@
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
           "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i5d926638",
-      "title": "초등생 유인해 술 먹이고 성폭행한 30대 강남 학원장…긴급체포",
-      "category": "사회",
-      "rank": 2,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "서울 강남에서 학원을 운영하는 30대 남성이 채팅 앱을 통해 알게 된 초등학생을 가출을 돕겠다는 명목으로 유인해 숙박업소로 데려갔다.",
-        "[단독] \"가출 돕겠다\" 유인해 초등생 성폭행…강남 유명 학원장이었다",
-        "[단독] '채팅 앱으로 초등생 유인해 성폭행'…강남 유명 학원장 긴급체포",
-        "초등학생 유인해 성폭행 혐의‥30대 강남 학원장 긴급체포",
-        "서울 강남의 한 유명 학원 원장인 30대 남성이 성폭행 혐의로 경찰에 붙잡혔습니다."
-      ],
-      "sources": [
-        {
-          "press": "SBS",
-          "title": "[단독] \"가출 돕겠다\" 유인해 초등생 성폭행…강남 유명 학원장이었다",
-          "url": "https://n.news.naver.com/article/055/0001404061"
-        },
-        {
-          "press": "SBS",
-          "title": "[단독] '채팅 앱으로 초등생 유인해 성폭행'…강남 유명 학원장 긴급체포",
-          "url": "https://n.news.naver.com/article/055/0001404027"
-        },
-        {
-          "press": "MBC",
-          "title": "초등학생 유인해 성폭행 혐의‥30대 강남 학원장 긴급체포",
-          "url": "https://n.news.naver.com/article/214/0001536480"
-        },
-        {
-          "press": "sbs.co.kr",
-          "title": "[단독] 강남 유명 학원장, 초등생 유인해 성범죄",
-          "url": "https://n.news.naver.com/mnews/article/055/0001404116?sid=102"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "서울 강남에서 학원을 운영하는 30대 남성이 채팅 앱을 통해 알게 된 초등학생을 가출을 돕겠다는 명목으로 유인해 숙박업소로 데려갔다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "서울 25개 구 중 21곳 초등학생 감소…강남·서초·양천은 달랐다"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "초등학생 유인해 성폭행 혐의‥30대 강남 학원장 긴급체포"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "사건 발생 직후 언론들이 일제히 긴급체포 사실을 보도하며 범행 수법과 가해자의 직업적 특수성을 강조했다. 이후 경찰이 구속영장을 신청했다는 소식이 이어지며 수사가 본격적인 사법 절차로 진입했음을 보여준다."
         }
       ],
       "visual_brief": {
@@ -330,11 +122,221 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.76,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
+          "발단·의혹",
+          "수사·대응",
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i5c7825cd",
+      "title": "김건희 '3대 의혹' 오늘 대법원 판단…기소 1년 3개월만",
+      "category": "경제",
+      "rank": 10,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "1심 징역 23년→2심 징역 15년…12·3 계엄 716일 만에 결론 12·3 비상계엄 관련 내란 중요임무에 종사한 혐의로 기소된 한덕수(77) 전 국무총리에 대한 대법원 판단이 19일 나온다.",
+        "12·3 계엄→'내란', 716일 만에 대법 전원합의체 첫 판단 나온다",
+        "무죄가 선고된 것을 두고 \"기이하다\"고 평가했다.",
+        "김 대표는 19일 민주당 유튜브 생방송 민티07에 출연해...",
+        "김 대표는 이날 예정된 한덕수 전 국무총리에 대한 내란중요임무종사 등 혐의와 김건희씨에 대한 3대 의혹..."
+      ],
+      "sources": [
+        {
+          "press": "뉴시스",
+          "title": "12·3 계엄→'내란', 716일 만에 대법 전원합의체 첫 판단 나온다",
+          "url": "https://n.news.naver.com/article/003/0014331478"
+        },
+        {
+          "press": "mt.co.kr",
+          "title": "김민석 \"추경호 무죄, 기이하다…한덕수·김건희는 뒤집지 못할 것\"",
+          "url": "https://n.news.naver.com/mnews/article/008/0005443329?sid=100"
+        },
+        {
+          "press": "news1.kr",
+          "title": "김민석, '한덕수 상고심'에 \"의외 결과면 즉응 결정…못 뒤집을 것\"",
+          "url": "https://n.news.naver.com/mnews/article/421/0009297727?sid=100"
+        },
+        {
+          "press": "mk.co.kr",
+          "title": "12·3 비상계엄 첫 대법 판단 나온다…‘내란 중요임무’ 한덕수 오늘 선...",
+          "url": "https://n.news.naver.com/mnews/article/009/0005765919?sid=102"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "1심 징역 23년→2심 징역 15년…12·3 계엄 716일 만에 결론 12·3 비상계엄 관련 내란 중요임무에 종사한 혐의로 기소된 한덕수(77) 전 국무총리에 대한 대법원 판단이 19일 나온다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "받는 한덕수 전 국무총리 사건 상고심 판결을 선고하는 것에 대해 \"의외의 결과가 나오면 그에 즉응하는..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "12·3 계엄→'내란', 716일 만에 대법 전원합의체 첫 판단 나온다"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.84,
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
-          "수사·대응"
+          "파장·후속"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i6c8369c0",
+      "title": "[단독] \"가출 돕겠다\" 유인해 초등생 성폭행…강남 유명 학원장이었다",
+      "category": "사회",
+      "rank": 3,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "서울 강남의 한 학원 원장인 30대 남성 A씨가 채팅 앱을 통해 알게 된 초등학생을 숙박업소로 유인해 술을 먹이고 성폭행한 혐의로 경찰에 긴급체포됐다.",
+        "[단독] \"가출 돕겠다\" 유인해 초등생 성폭행…강남 유명 학원장이었다",
+        "[단독] '채팅 앱으로 초등생 유인해 성폭행'…강남 유명 학원장 긴급체포",
+        "초등학생 유인해 성폭행 혐의‥30대 강남 학원장 긴급체포",
+        "서울 강남의 한 유명 학원 원장인 30대 남성이 성폭행 혐의로 경찰에 붙잡혔습니다."
+      ],
+      "sources": [
+        {
+          "press": "SBS",
+          "title": "[단독] \"가출 돕겠다\" 유인해 초등생 성폭행…강남 유명 학원장이었다",
+          "url": "https://n.news.naver.com/article/055/0001404061"
+        },
+        {
+          "press": "SBS",
+          "title": "[단독] '채팅 앱으로 초등생 유인해 성폭행'…강남 유명 학원장 긴급체포",
+          "url": "https://n.news.naver.com/article/055/0001404027"
+        },
+        {
+          "press": "MBC",
+          "title": "초등학생 유인해 성폭행 혐의‥30대 강남 학원장 긴급체포",
+          "url": "https://n.news.naver.com/article/214/0001536480"
+        },
+        {
+          "press": "sbs.co.kr",
+          "title": "[단독] 강남 유명 학원장, 초등생 유인해 성범죄",
+          "url": "https://n.news.naver.com/mnews/article/055/0001404116?sid=102"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "서울 강남의 한 학원 원장인 30대 남성 A씨가 채팅 앱을 통해 알게 된 초등학생을 숙박업소로 유인해 술을 먹이고 성폭행한 혐의로 경찰에 긴급체포됐다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "서울 25개 구 중 21곳 초등학생 감소…강남·서초·양천은 달랐다"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "초등학생 유인해 성폭행 혐의‥30대 강남 학원장 긴급체포"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "사건 발생 직후 다수의 언론이 강남 유명 학원장의 긴급체포 사실을 일제히 보도하며 사건의 심각성을 알렸다. 학원장이라는 직업적 특수성과 피해자가 초등학생이라는 점이 강조되면서, 사회적 충격과 함께 강력한 처벌을…"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.66,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "파장·후속"
         ],
         "no_generic_closing": true
       }
