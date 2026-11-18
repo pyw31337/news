@@ -29,6 +29,16 @@ bounded_fetch() {
   wait "$watchdog" 2>/dev/null || true
   return "$rc"
 }
+run_bounded() {
+  local seconds="$1"; shift
+  "$@" &
+  local child="$!" watchdog
+  ( sleep "$seconds"; kill -TERM "$child" 2>/dev/null || true ) & watchdog="$!"
+  wait "$child"; local rc="$?"
+  kill "$watchdog" 2>/dev/null || true
+  wait "$watchdog" 2>/dev/null || true
+  return "$rc"
+}
 [ -f "$B/local.env" ] && set -a && . "$B/local.env" && set +a
 R="${NB_REMOTE:-git@github-newsboard:pyw31337/news.git}"
 [ -d news ] || git clone -q "$R" news
@@ -76,7 +86,7 @@ esac
 # 원본 수집을 분석 결과와 분리하여 즉시 보존한다.
 sync_data || true
 # 번역·해외 데이터는 AI 심층 분석보다 먼저 갱신한다. 분석이 오래 걸려도 독자가 보는 뉴스는 지연되지 않는다.
-"$PY" scripts/global_news.py > "$B/logs/global.last.log" 2>&1 || echo "global collect deferred"
+run_bounded "${NB_GLOBAL_TIMEOUT:-300}" "$PY" scripts/global_news.py > "$B/logs/global.last.log" 2>&1 || echo "global collect deferred"
 sync_data || true
 OVERLAY_WRITE=1 LLM_BUDGET=${LLM_BUDGET:-90} "$PY" scripts/enrich.py > "$B/logs/enrich.last.log" 2>&1 || { echo "enrich failed"; tail -5 "$B/logs/enrich.last.log"; sync_data || true; exit 1; }
 tail -1 "$B/logs/enrich.last.log"
