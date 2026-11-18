@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-19",
-  "generated_at": "2026-11-19T09:52:03+09:00",
+  "generated_at": "2026-11-19T07:54:44+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,8 +27,8 @@
   },
   "candidates": [
     {
-      "issue_id": "i4a59f947",
-      "title": "“현 삼전닉스 주가는 시장이 펀더멘털 오해하거나 과잉 공포에 빠진 결과”",
+      "issue_id": "ie7b091af",
+      "title": "뉴욕증시 혼조 마감.. AI 제동에 SK하이닉스 ADR도 흔들",
       "category": "경제",
       "rank": 6,
       "priority_score": 37,
@@ -38,11 +38,116 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "골드만삭스가 코스피 12개월 목표치를 9000에서 7500으로 내려잡았다.",
+        "미국 뉴욕증시가 18일(현지시간) 엔비디아의 시장 예상을 웃도는 실적에도 혼조로 마감했다.",
+        "밀려나며 공포 심리가 극에 달했다.",
+        "하지만 간밤 뉴욕증시에서 인공지능(AI) 대장주 엔비디아가 시장...",
+        "SK하이닉스(000660)는 전 거래일 대비 6.28%(6만9000원) 폭등한 116만7000원에 거래 중이며, 삼성전자(005930)...",
+        "[속보]엔비디아 호실적에도 美증시 혼조…다우 1.1%↓"
+      ],
+      "sources": [
+        {
+          "press": "edaily.co.kr",
+          "title": "‘엔비디아 서프라이즈에 외인 귀환?’ 코스피 5000 회복…삼전닉스 4~6...",
+          "url": "https://n.news.naver.com/mnews/article/018/0006411592?sid=101"
+        },
+        {
+          "press": "이데일리",
+          "title": "[속보]엔비디아 호실적에도 美증시 혼조…다우 1.1%↓",
+          "url": "https://n.news.naver.com/article/018/0006412171"
+        },
+        {
+          "press": "biz.heraldcorp.com",
+          "title": "“실적 좋아도 소용없네”…엔비디아 급락에 연준 금리 인상론도 ‘고개...",
+          "url": "https://n.news.naver.com/mnews/article/016/0002725462?sid=101"
+        },
+        {
+          "press": "jemin.com",
+          "title": "뉴욕증시 희비 엇갈려…나스닥 0.42% 상승, 다우 561포인트 하락",
+          "url": "https://www.jemin.com/news/articleView.html?idxno=847651"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "미국 뉴욕증시가 18일(현지시간) 엔비디아의 시장 예상을 웃도는 실적에도 혼조로 마감했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "인공지능(AI) 반도체 대장주 엔비디아가 시장 예상치를 웃도는 실적을 발표하고도 3% 가까이 하락했다...."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "SK하이닉스(000660)는 전 거래일 대비 6.28%(6만9000원) 폭등한 116만7000원에 거래 중이며, 삼성전자(005930)..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i99fd4250",
+      "title": "\"삼전닉스에 또 돈벼락 쏟아지나\"…엔비디아가 꺼낸 '비장의 카드'",
+      "category": "경제",
+      "rank": 8,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "엔비디아가 올해 3분기 매출을 전년보다",
         "“오르든 내리든 무조건 판다”…외국인 올 들어 222조 ‘매도 폭탄’, 85%가 삼전닉스 [투자360]",
         "'1만2000→9000→7500' 내렸는데…\"삼전닉스 아직 안 끝났다\"는 이유",
-        "‘성과급 파티’ 삼전닉스 인력 대체하나…아틀라스, 美 반도체 공장서 일 배운다",
-        "전날 코스피 지수는 9개월여 만에 5000선 아래로 밀려나며 공포 심리가 극에 달했다."
+        "\"삼전닉스에 또 돈벼락 쏟아지나\"…엔비디아가 꺼낸 '비장의 카드'",
+        "삼전닉스만 믿었는데 이럴 줄은…개미들 비명 터지는데 ‘희망고문’ 여전"
       ],
       "sources": [
         {
@@ -56,21 +161,21 @@
           "url": "https://n.news.naver.com/article/215/0001273190"
         },
         {
-          "press": "서울경제",
-          "title": "‘성과급 파티’ 삼전닉스 인력 대체하나…아틀라스, 美 반도체 공장서 일 배운다 [biz-플러스]",
-          "url": "https://n.news.naver.com/article/011/0004683779"
+          "press": "한국경제",
+          "title": "\"삼전닉스에 또 돈벼락 쏟아지나\"…엔비디아가 꺼낸 '비장의 카드'",
+          "url": "https://n.news.naver.com/article/015/0005355309"
         },
         {
-          "press": "edaily.co.kr",
-          "title": "‘엔비디아 서프라이즈에 외인 귀환?’ 코스피 5000 회복…삼전닉스 4~6...",
-          "url": "https://n.news.naver.com/mnews/article/018/0006411592?sid=101"
+          "press": "서울경제",
+          "title": "삼전닉스만 믿었는데 이럴 줄은…개미들 비명 터지는데 ‘희망고문’ 여전",
+          "url": "https://n.news.naver.com/article/011/0004683736"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "골드만삭스가 코스피 12개월 목표치를 9000에서 7500으로 내려잡았다."
+          "evidence": "엔비디아가 올해 3분기 매출을 전년보다"
         },
         {
           "panel": 2,
@@ -132,10 +237,10 @@
       }
     },
     {
-      "issue_id": "ib7f27c3c",
-      "title": "美, 유엔 북한인권결의안 21년 만에 기권… ICC 회부 조항에 반발",
-      "category": "세계",
-      "rank": 9,
+      "issue_id": "iec16ea53",
+      "title": "마침내 한한령 해제 신호탄… 엔터·게임·여행주 ‘불기둥’",
+      "category": "경제",
+      "rank": 10,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -143,49 +248,49 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "미국이 유엔 북한인권결의안에 21년 만에 기권하면서 국제사회의 대북 인권 압박 공조에 균열이 생겼다.",
-        "美, 21년 만에 북한인권결의안 기권… 트럼프의 ICC 반감에 대북 공조 '균열'",
-        "미국은 또한 이날 미국 뉴욕에서 진행된 유엔 총회 북한인권결의안 표결에서도 처음으로 기권했다.",
-        "미국은 2005년부터 북한인권결의안 공동발의국이었으나, 올해는 국제형사재판소(ICC) 문구를 이유로 지지를 철회했으며...",
-        "이번 기권이 북한인권 문제를 국제사회 차원에서 다루는 데 반대하는 것은 아니라는 취지로 설명했다."
+        "한한령 10년, 드디어…中 \"K영화·게임 차별 안 한다\"",
+        "마침내 한한령 해제 신호탄… 엔터·게임·여행주 ‘불기둥’",
+        "이날 실질 타결된 한·중 FTA 2단계 협상 결과물에는 영화와 게임 분야에서 중국이 우리나라 콘텐츠를 제3국 콘텐츠에 비해 불리하게 대우하지 않는다(최혜국 대우)는 약속이 담겼다.",
+        "중국 당국의 콘텐츠 사전심사...",
+        "중국, K영화·게임에 ‘최혜국 대우’ 약속…10년 한한령 끝나나"
       ],
       "sources": [
         {
-          "press": "한국일보",
-          "title": "美, 21년 만에 북한인권결의안 기권… 트럼프의 ICC 반감에 대북 공조 '균열'",
-          "url": "https://n.news.naver.com/article/469/0000966459"
+          "press": "한국경제TV",
+          "title": "한한령 10년, 드디어…中 \"K영화·게임 차별 안 한다\"",
+          "url": "https://n.news.naver.com/article/215/0001273171"
         },
         {
-          "press": "newsis.com",
-          "title": "美국무부, 트럼프 북미대화 추진에도 \"北비핵화 계속 전념\"",
-          "url": "https://n.news.naver.com/mnews/article/003/0014331610?sid=104"
+          "press": "국민일보",
+          "title": "마침내 한한령 해제 신호탄… 엔터·게임·여행주 ‘불기둥’",
+          "url": "https://n.news.naver.com/article/005/0001886077"
         },
         {
-          "press": "news1.kr",
-          "title": "유엔총회 제3위, 북한인권결의 채택…美는 21년 만에 기권",
-          "url": "https://n.news.naver.com/mnews/article/421/0009297833?sid=100"
+          "press": "hankyung.com",
+          "title": "靑 \"한·중 FTA 2단계 실질 타결…한한령 일부 진전\"",
+          "url": "https://n.news.naver.com/mnews/article/015/0005355598?sid=100"
         },
         {
-          "press": "hani.co.kr",
-          "title": "미, 21년 만에 유엔 북한인권결의안 기권…“ICC 조항 반대”",
-          "url": "https://n.news.naver.com/mnews/article/028/0002832928?sid=104"
+          "press": "주간경향",
+          "title": "중국, K영화·게임에 ‘최혜국 대우’ 약속…10년 한한령 끝나나",
+          "url": "https://n.news.naver.com/article/033/0000053475"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "미국이 유엔 북한인권결의안에 21년 만에 기권하면서 국제사회의 대북 인권 압박 공조에 균열이 생겼다."
+          "evidence": "한한령 10년, 드디어…中 \"K영화·게임 차별 안 한다\""
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "결의안에는 유엔 안전보장이사회가 북한 인권 상황의 국제형사재판소 회부 등을 검토하도록 촉구하는 내용이 담겼다."
+          "evidence": "중국 쪽 규제와 심사 때문에 진출이 막혔던 영화와 게임 분야가 혜택을 볼 수 있다는 기대가 나옵니다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "美, 21년 만에 북한인권결의안 기권… 트럼프의 ICC 반감에 대북 공조 '균열'"
+          "evidence": "이날 실질 타결된 한·중 FTA 2단계 협상 결과물에는 영화와 게임 분야에서 중국이 우리나라 콘텐츠를 제3국 콘텐츠에 비해 불리하게 대우하지 않는다(최혜국 대우)는 약속이 담겼다."
         },
         {
           "panel": 4,
@@ -227,112 +332,7 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "입장·공방",
-          "수사·대응",
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i6c8369c0",
-      "title": "[단독] \"가출 돕겠다\" 유인해 초등생 성폭행…강남 유명 학원장이었다",
-      "category": "사회",
-      "rank": 7,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "서울 강남의 한 학원 원장인 30대 남성 A씨가 채팅 앱을 통해 알게 된 초등학생을 숙박업소로 유인해 술을 먹이고 성폭행한 혐의로 경찰에 긴급체포됐다.",
-        "[단독] \"가출 돕겠다\" 유인해 초등생 성폭행…강남 유명 학원장이었다",
-        "서울 강남의 한 유명 학원 원장인 30대 남성이 성폭행 혐의로 경찰에 붙잡혔습니다.",
-        "피해자는 13살도 되지...",
-        "경찰 조사 결과 A 씨는 서울 강남의 유명 학원 원장으로, 채팅 앱을 통해 피해자에게 접근한 뒤 범행 일주일..."
-      ],
-      "sources": [
-        {
-          "press": "SBS",
-          "title": "[단독] \"가출 돕겠다\" 유인해 초등생 성폭행…강남 유명 학원장이었다",
-          "url": "https://n.news.naver.com/article/055/0001404061"
-        },
-        {
-          "press": "sbs.co.kr",
-          "title": "[단독] 강남 유명 학원장, 초등생 유인해 성범죄",
-          "url": "https://n.news.naver.com/mnews/article/055/0001404116?sid=102"
-        },
-        {
-          "press": "MBN",
-          "title": "숙소로 초등생 유인한 강남 학원장…성범죄 정황에 긴급 체포",
-          "url": "https://n.news.naver.com/article/057/0001978848"
-        },
-        {
-          "press": "조선일보",
-          "title": "‘채팅앱서 유인한 초등생 성폭행’ 강남 유명 학원장 긴급체포",
-          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNTkw1MnFHeUx3QVU4LXRFbGJMNFd4RllKd0ZvQnlubDlLbjkyd0NwVklPUUppRnZoQjN5RkFORExOd2VnUDB0MlZZVlZaOG9MZmxvTzM1c0NvM3NJQmpkNjNvc0FfdW5CVUMyaE4xLXVUaWV4MmgwRjZfLVFvOFRhNlhOYWEzM0hnUGd5LTV2b0Y?oc=5"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "서울 강남의 한 학원 원장인 30대 남성 A씨가 채팅 앱을 통해 알게 된 초등학생을 숙박업소로 유인해 술을 먹이고 성폭행한 혐의로 경찰에 긴급체포됐다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "서울 25개 구 중 21곳 초등학생 감소…강남·서초·양천은 달랐다"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "서울 강남의 한 유명 학원 원장인 30대 남성이 성폭행 혐의로 경찰에 붙잡혔습니다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "사건 발생 직후 다수의 언론이 강남 유명 학원장의 긴급체포 사실을 일제히 보도하며 사건의 심각성을 알렸다. 학원장이라는 직업적 특수성과 피해자가 초등학생이라는 점이 강조되면서, 사회적 충격과 함께 강력한 처벌을…"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.48,
+        "continuity_quality": 0.56,
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
