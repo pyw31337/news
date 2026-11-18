@@ -385,6 +385,42 @@ python3 -m py_compile scripts/event_quality.py scripts/quality.py scripts/editor
 2. **온톨로지 상호 연결**: 뉴스 사건사고(`urn:news:issue:...`) ⇄ 법원 판례(`urn:law:...`) ⇄ 관련 기업(`urn:asset:...`) ⇄ 연루 인물(`urn:people:...`)이 URN 링크 그래프로 완전 결합된다.
 3. **상세 아키텍처 명세**: [`docs/FEDERATED_ONTOLOGY_ARCHITECTURE.md`](FEDERATED_ONTOLOGY_ARCHITECTURE.md)를 정본으로 따른다.
 
+## 21. 에이전트 역할 분담 및 병목 대응 프로토콜 (2026-11-18)
+
+### 21.1. 역할 분담
+
+| 담당 | 책임 | 쓰기 가능한 원장 | 금지 사항 |
+|---|---|---|---|
+| Gemini | 신규 출처 조사, 원문 후보·스키마 제안, 서비스별 UX/분석 아이디어 | `data/db/system/source_candidates.json`(제안 큐) | 기존 원장 직접 덮어쓰기, 완료율 임의 상향 |
+| Codex | 파이프라인 구현, 스키마 검증, 워크플로·QA·배포 | 코드·워크플로, `collection_inventory.json`, 품질 리포트 | 출처 없는 데이터를 실제 수집으로 표시 |
+| 뉴스보드 수집기 | 뉴스·커뮤니티·사건 타임라인 | `archive/`, `community/`, `history/` | 법률·보험·기업 원장 직접 소유 |
+| 렛츠로 | 판례·법령·양형 | `lawtech/` 및 법률 원문 브랜치 | 뉴스 요약을 판례 원문처럼 저장 |
+| 렛츠인슈 | 보험사별 약관·개정본·분쟁례 | `insu/` | 약관 seed를 공식 약관으로 표시 |
+| 렛츠피플 | 인물·사진·관계·경력 | `db/people/`, R2 WebP | 이름만으로 동명이인 병합 |
+| 렛츠에셋 | DART·SEC·글로벌 기업 | `db/corps/`, `market/` | 티커 색인을 재무 수집 완료로 표시 |
+| 렛츠아트 | 카드뉴스·만화 등 파생 시각물 | `assets/` 파생 산출물 | 원문·사실 원장을 수정 |
+
+에이전트는 작업 시작 전에 `collection_inventory.json`과 이 표를 읽고, 이미 `ACTIVE`인 id에는 새 수집기를 만들지 않는다. 기존 수집기가 부족하면 같은 id의 어댑터를 보완한다.
+
+### 21.2. 병목별 대체 경로
+
+1. 공식 API 쿼터·승인 지연: 원문 URL와 요청 시각만 `source_candidates`에 적재하고 승인 후 delta cursor로 이어받는다.
+2. 대용량 초기 수집: 국가·기관·기간별 샤드로 나누고 `checkpoint.json`을 남긴다. 실패한 샤드만 재시도한다.
+3. 중복·동명이인: URN과 생년월일·소속·식별번호 복합키를 통과하지 못하면 `review_queue`로 격리한다.
+4. 사진·로고 검증 지연: 원본 URL와 해시를 보존하고 매칭 통과분만 WebP/R2로 승격한다.
+5. 로컬 저장공간 부족: 원본 스냅샷은 ledger/R2로 먼저 보관하고 분석 완료 후 TTL 정책에 따라 로컬 원본을 정리한다.
+6. 국가 확장: 미국 SEC 완료 전 중국·일본·러시아를 동시에 열지 않고, 공식 원장·이용조건·언어 정규화가 준비된 국가부터 하나씩 활성화한다.
+
+### 21.3. 회차 완료 판정
+
+회차는 코드 실행 성공만으로 완료되지 않는다. 다음 세 산출물이 같은 회차 시각을 가져야 한다.
+
+- `data/db/system/collection_inventory.json`
+- `data/db/system/global_expansion_radar.json`
+- 해당 도메인의 `checkpoint.json` 또는 catalog
+
+하나라도 없으면 다음 에이전트는 작업을 재개 상태로 보고 중복 전체 수집을 하지 않는다.
+
 
 
 
