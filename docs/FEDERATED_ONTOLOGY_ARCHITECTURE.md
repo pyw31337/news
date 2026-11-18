@@ -75,3 +75,13 @@ flowchart TD
 | **렛츠로** | `urn:law:global:{jurisdiction}:{case_id}` | `data/global_and_domestic_law_db.json` | 국내 1,580개 법률, 국제조약(CISG) 420건, SCOTUS/CJEU 3.8만 건 |
 | **렛츠에셋** | `urn:asset:century:{cycle_id}` | `data/century_macro_and_wealth_db.json` | 100개년(1926~2026) 글로벌 사이클, 올웨더 포트폴리오, 4% FIRE 재무설계 |
 | **렛츠피플** | `urn:people:person:{global_id}` | `data/global_media_people_db.json` | 글로벌 미디어 노출 인물 12.4만 명, 32.8만 개 인맥 링크, 30개년 노화 사진 |
+
+
+## 8. 컬처플로우(CultureFlow) 연계 문화예술 온톨로지 URN 명세 (2026-11-18)
+
+| 도메인 | URN 규격 | 연계 원장 | 설명 |
+| :--- | :--- | :--- | :--- |
+| **영화배우/감독** | `urn:culture:artist:actor:{artist_id}` | `people/data/entertainment_culture_people_db.json` | KOFIC 연계, 영화 필모그래피 및 박스오피스 |
+| **뮤지컬/연극 배우** | `urn:culture:artist:musical:{artist_id}` | `people/data/entertainment_culture_people_db.json` | KOPIS 연계, 뮤지컬 무대 스테이지그래피 및 공연장 |
+| **가수/뮤지션** | `urn:culture:artist:musician:{artist_id}` | `people/data/entertainment_culture_people_db.json` | 앨범 디스코그래피 및 음원차트, 작곡/프로듀서망 |
+| **공연 작품** | `urn:culture:performance:{kopis_perf_id}` | `CultureFlow/data/performances` | 컬처플로우 공연 예매 및 일정 연계 |
