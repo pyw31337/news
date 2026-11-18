@@ -38,7 +38,8 @@ def run():
         rows.append({"id": old.get("id", f"insurer-{i+1:03d}"), "insurer": name, "official_url": link, "discovery_source": URL, "enabled": enabled})
     DATA.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).isoformat()
-    (DATA / "provider_catalog.json").write_text(json.dumps({"source": URL, "updated_at": stamp, "count": len(rows), "providers": rows}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    reported = [int(x) for x in re.findall(r'(\d+)개', html)]
+    (DATA / "provider_catalog.json").write_text(json.dumps({"source": URL, "updated_at": stamp, "count": len(rows), "directory_reported_count": max(reported) if reported else None, "providers": rows}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     manifest = [{"id": r["id"], "url": r["official_url"], "official": True, "enabled": r.get("enabled", True), "insurer": r["insurer"], "discovery_source": URL} for r in rows]
     (DATA / "source_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"insurer catalog indexed: {len(rows)} official links")

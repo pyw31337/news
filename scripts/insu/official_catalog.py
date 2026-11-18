@@ -27,6 +27,13 @@ def run():
                 label = re.sub(r"<[^>]+>", " ", text); label = re.sub(r"\s+", " ", label).strip()
                 if re.search(r"약관|상품요약서|사업방법서|상품설명서|판매기간|공시", label, re.I):
                     links.append({"url": urljoin(url, href), "label": label[:200], "verified": False})
+            # Many insurer disclosure portals render their product table with
+            # JavaScript, so no product anchors appear in the HTML response.
+            # Keep the official catalog page as an explicit seed instead of
+            # silently reporting zero candidates; the next bootstrap pass can
+            # still hash and diff the page while a renderer/API adapter is added.
+            if not links:
+                links.append({"url": url, "label": "공식 상품·약관 공시 페이지(렌더링 후보)", "verified": False, "kind": "catalog_page"})
             return {"provider_id": item.get("id"), "insurer": item.get("insurer"), "source_url": url, "candidate_links": links, "discovered_at": datetime.now(timezone.utc).isoformat()}
         except Exception as exc:
             return {"provider_id": item.get("id"), "insurer": item.get("insurer"), "source_url": url, "error": str(exc)[:200]}
