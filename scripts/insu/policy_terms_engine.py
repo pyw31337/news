@@ -153,18 +153,33 @@ def run():
     print("=== 보험상담 '렛츠인슈(Let's Insu)' 약관 온톨로지 & 분쟁조정 DB 구축 시작 ===")
     os.makedirs(INSU_DIR, exist_ok=True)
 
+    # Never discard records produced by an official-source collector.  The
+    # ontology build supplies the schema seeds, then merges them with the
+    # persistent ledger by policy_id.
+    existing = {}
+    try:
+        with open(DB_PATH, encoding='utf-8') as f:
+            existing = json.load(f)
+    except (OSError, ValueError):
+        existing = {}
+    merged = {p.get('policy_id'): p for p in POLICIES if p.get('policy_id')}
+    for row in existing.get('policies', []) if isinstance(existing, dict) else []:
+        key = row.get('policy_id')
+        if key and (row.get('source_url') or row.get('effective_date') or key not in merged):
+            merged[key] = row
+    policies = list(merged.values())
     db_data = {
         'updated': datetime.now().isoformat(),
         'service': '렛츠인슈 (Let’s Insu)',
         'description': '생·손보 전 상품 약관 온톨로지, KCD 질병코드 매핑, 금감원 분쟁조정 및 부지급 방어 가이드 DB',
-        'total_policies': len(POLICIES),
-        'policies': POLICIES
+        'total_policies': len(policies),
+        'policies': policies
     }
 
     with open(DB_PATH, 'w', encoding='utf-8') as f:
         json.dump(db_data, f, ensure_ascii=False, indent=2)
 
-    print(f"1. 렛츠인슈 약관 데이터베이스 구축 완료: {len(POLICIES)}개 표준약관 및 분쟁조정례 저장 ({DB_PATH})")
+    print(f"1. 렛츠인슈 약관 데이터베이스 구축 완료: {len(policies)}개 표준약관 및 분쟁조정례 저장 ({DB_PATH})")
 
     # 가이드 테스트 검증 (갑상선암 림프절 전이)
     test_claim = check_claim_defense('C73', condition_desc='갑상선암 수술 후 림프절 전이 소견')

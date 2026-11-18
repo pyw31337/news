@@ -271,18 +271,32 @@ def run():
     print("=== 법률서비스 '렛츠로(Let's Law)' 코어 판례 데이터베이스 구축 시작 ===")
     os.makedirs(LAWTECH_DIR, exist_ok=True)
 
+    # Preserve rows appended by LAW_OC/court collectors; the engine only
+    # provides seed cases and must not erase source-backed evidence.
+    existing = {}
+    try:
+        with open(DB_PATH, encoding='utf-8') as f:
+            existing = json.load(f)
+    except (OSError, ValueError):
+        existing = {}
+    merged = {p.get('case_no'): p for p in PRECEDENTS if p.get('case_no')}
+    for row in existing.get('precedents', []) if isinstance(existing, dict) else []:
+        key = row.get('case_no')
+        if key and (row.get('source_url') or row.get('source') or key not in merged):
+            merged[key] = row
+    precedents = list(merged.values())
     db_data = {
         'updated': datetime.now().isoformat(),
         'service': '렛츠로 (Let’s Law)',
         'description': '판례 중심 형량 분석, 대법원 양형기준 시뮬레이션, 법조인 인맥 온톨로지 연계 코어 DB',
-        'total_cases': len(PRECEDENTS),
-        'precedents': PRECEDENTS
+        'total_cases': len(precedents),
+        'precedents': precedents
     }
 
     with open(DB_PATH, 'w', encoding='utf-8') as f:
         json.dump(db_data, f, ensure_ascii=False, indent=2)
 
-    print(f"1. 렛츠로 판례 데이터베이스 구축 완료: {len(PRECEDENTS)}개 리딩 판례 저장 ({DB_PATH})")
+    print(f"1. 렛츠로 판례 데이터베이스 구축 완료: {len(precedents)}개 리딩 판례 저장 ({DB_PATH})")
 
     # 시뮬레이터 테스트 검증
     test_sim = simulate_verdict('특경법상 횡령·배임', amount=60, is_settled=False)
