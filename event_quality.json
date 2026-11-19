@@ -1,52 +1,166 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 09:23:32",
+  "updated_at": "2026-11-19 08:30:08",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.9,
+  "average_quality": 0.85,
   "issues": [
     {
-      "id": "i1e7e8b07",
-      "title": "대법, 한덕수 사건 파기 환송 “계엄 전 내란 가담으로 보기 어려워”",
-      "episode": "episode:4c2a086ce24844",
+      "id": "i22f440d2",
+      "title": "[속보] '리트 만점자' 이진우 사망...유서 추정 메모 발견",
+      "episode": "episode:2b77c6408cede1",
       "quality": 1.0,
       "stages": [
-        "사법·처분",
-        "수사·대응",
         "일반 보도",
+        "사법·처분",
         "발단·의혹",
+        "입장·공방",
         "파장·후속"
       ],
       "gaps": [
-        "입장·공방"
+        "수사·대응"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 32,
+      "duplicate_candidates": 32,
+      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "id70f6624",
-      "title": "\"상고를 모두 기각한다\"...대법, 김건희 '3대 의혹' 징역 4년 확정 [현장영상+]",
-      "episode": "episode:af9dae137a9d44",
+      "id": "iac94dd45",
+      "title": "[속보] 대법, 김건희 '3대 의혹' 징역 4년 확정…정치자금법 위반 무죄",
+      "episode": "episode:d579f49f69d630",
       "quality": 0.92,
       "stages": [
         "수사·대응",
         "사법·처분",
         "일반 보도",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 40,
+      "event_count": 37,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9346b81f",
+      "title": "[단독] 경기도 용인 수능 시험장서 초소형 카메라 발견",
+      "episode": "episode:2cd6091985ea8e",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i718b999d",
+      "title": "'리트 만점' 이진우, 심정지 상태... 서울 강동구 모텔서 발견",
+      "episode": "episode:fcb7420f382a81",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i00cfeb99",
+      "title": "[속보] 대법, 한덕수 혐의 중 일부 무죄 취지로 파기환송",
+      "episode": "episode:42152ccbaf2d87",
+      "quality": 0.84,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i24c135b3",
+      "title": "초소형카메라 나왔다…스마트폰 소지도 22명 적발",
+      "episode": "episode:13eeb0736b09a1",
+      "quality": 0.74,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방"
+        "입장·공방",
+        "사법·처분"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 26,
+      "duplicate_candidates": 30,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "i52002ca2",
-      "title": "[속보] “용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
-      "episode": "episode:e4906a4e919e21",
+      "id": "icec66d18",
+      "title": "[속보] 한국 수출 ‘꿈의 1조달러’ 달성…세계 4번째",
+      "episode": "episode:4255f93c105a7e",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 13,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i0d759aaa",
+      "title": "코스피, 앤트로픽 상장 앞두고 등락 끝에 1.4% 상승 마감(종합)",
+      "episode": "episode:dfa2e688791167",
+      "quality": 0.84,
+      "stages": [
+        "사법·처분",
+        "파장·후속",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 25,
+      "event_count": 34,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iec8fa401",
+      "title": "우크라, 크림대교 이틀만에 또 공격…이번엔 철도 교량 타격(종합)",
+      "episode": "episode:ae20ecc0f740aa",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -57,90 +171,14 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 26,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iefd81945",
-      "title": "'리트 만점자' 사망 확인…발견된 모텔서 '5줄짜리 글' 나와",
-      "episode": "episode:1bef5a35e50949",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 32,
+      "duplicate_candidates": 24,
       "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i4292e2da",
-      "title": "김건희 징역 4년 확정… ‘명태균 여론조사’는 무죄",
-      "episode": "episode:0b07ea46bf0d46",
-      "quality": 1.0,
-      "stages": [
-        "수사·대응",
-        "사법·처분",
-        "발단·의혹",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 30,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3cea7471",
-      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
-      "episode": "episode:cdf463069557a8",
-      "quality": 0.84,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 14,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i6664a46b",
-      "title": "천안 시험장에서 스마트안경 적발…부정행위 처리 돼",
-      "episode": "episode:80cae81e7d4f0e",
-      "quality": 0.84,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i049e4f88",
-      "title": "\"삐\" 소리에 수능 시험장서 22개 스마트폰 적발…\"현재까지 시간 지연 사례는 없어\"[2027 수능]",
-      "episode": "episode:505de5b2e8447d",
+      "id": "i14bfd775",
+      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
+      "episode": "episode:5ea4792d055f60",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -152,46 +190,8 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 28,
+      "duplicate_candidates": 27,
       "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7803e41e",
-      "title": "\"이게 오늘 수능 국어야, 풀어봐\" 시켰더니…AI, 2분 만에 100점",
-      "episode": "episode:496cb70c29d433",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib695384a",
-      "title": "두달여만 만난 미·중, 트럼프 “전쟁 끝내자” 시진핑 “대만 똑바로”(종합)",
-      "episode": "episode:48366735031d8a",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "사법·처분",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 27,
       "evidence_rate": 1.0
     }
   ]

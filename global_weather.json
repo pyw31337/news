@@ -1,39 +1,7 @@
 {
-  "updated": "2026-11-19T18:19:08.776120+09:00",
-  "alerts_count": 14,
+  "updated": "2026-11-19T17:20:31.364054+09:00",
+  "alerts_count": 13,
   "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.9111aa9e39d1873be94e6ab95f7b80d7307ad9a6.001.1",
-      "t": "2026-11-19 01:05",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "San Luis Obispo",
-      "area_en": "San Luis Obispo",
-      "event": "홍수 경보",
-      "event_en": "Flash Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "San Luis Obispo 홍수 경보",
-      "headline_en": "San Luis Obispo Flash Flood Warning",
-      "desc": "FFWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Flash Flood Warning for...\nSouthern San Luis Obispo County in southwestern California...\nNorthwestern Santa Barbara County in southwestern California...\n\n* Until 300 AM PST.\n\n* At 105 AM PST, Doppler radar and automated rain "
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.18dc89620786164bf10669ff0ee964ad30532553.001.1",
-      "t": "2026-11-19 00:44",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Santa Barbara",
-      "area_en": "Santa Barbara",
-      "event": "홍수 경보",
-      "event_en": "Flash Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Santa Barbara 홍수 경보",
-      "headline_en": "Santa Barbara Flash Flood Warning",
-      "desc": "FFWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Flash Flood Warning for...\nWest Central Santa Barbara County in southwestern California...\n\n* Until 245 AM PST.\n\n* At 1244 AM PST, Doppler radar and automated rain gauges indicated\nheavy rain falling across the warned area. B"
-    },
     {
       "id": "urn:oid:2.49.0.1.840.0.6ecde6045dce842a7c99f5f6ba9f68f6be6659f3.001.1",
       "t": "2026-11-19 00:19",
@@ -97,6 +65,22 @@
       "headline_ko": "Brevard 홍수 경보",
       "headline_en": "Brevard Flash Flood Warning",
       "desc": "FFWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Flash Flood Warning for...\nCentral Brevard County in east central Florida...\n\n* Until 515 AM EST.\n\n* At 213 AM EST, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 2 and 2.5 inches of rain\nha"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.970ae3c2a2ee7809c6cb6bee6106236bfdf9c6e8.001.1",
+      "t": "2026-11-18 22:43",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "San Luis Obispo",
+      "area_en": "San Luis Obispo",
+      "event": "홍수 경보",
+      "event_en": "Flash Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "San Luis Obispo 홍수 경보",
+      "headline_en": "San Luis Obispo Flash Flood Warning",
+      "desc": "FFWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Flash Flood Warning for...\nCentral San Luis Obispo County in southwestern California...\n\n* Until 1245 AM PST.\n\n* At 1043 PM PST, Doppler radar and automated rain gauges indicated\nheavy rain falling across the warned area. Bet"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.7ecd4acdb39d520ece6282cd21ce8b81ad9413f6.001.1",
@@ -318,11 +302,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 5.0,
-      "apparent_temp": 1.6,
-      "humidity": 66,
+      "temp": 5.5,
+      "apparent_temp": 2.3,
+      "humidity": 70,
       "code": 0,
-      "wind": 7.4
+      "wind": 8.4
     },
     {
       "id": "losangeles",
@@ -332,11 +316,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 15.9,
-      "apparent_temp": 14.9,
-      "humidity": 69,
+      "temp": 16.2,
+      "apparent_temp": 15.6,
+      "humidity": 68,
       "code": 3,
-      "wind": 7.3
+      "wind": 5.1
     },
     {
       "id": "london",
@@ -346,11 +330,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 7.6,
-      "apparent_temp": 5.9,
-      "humidity": 90,
-      "code": 3,
-      "wind": 4.7
+      "temp": 7.4,
+      "apparent_temp": 5.6,
+      "humidity": 92,
+      "code": 2,
+      "wind": 5.8
     },
     {
       "id": "paris",
@@ -360,11 +344,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 11.3,
-      "apparent_temp": 8.2,
-      "humidity": 77,
-      "code": 3,
-      "wind": 16.6
+      "temp": 10.6,
+      "apparent_temp": 7.5,
+      "humidity": 78,
+      "code": 2,
+      "wind": 15.7
     },
     {
       "id": "frankfurt",
@@ -374,11 +358,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 10.6,
-      "apparent_temp": 7.7,
-      "humidity": 83,
-      "code": 3,
-      "wind": 16.4
+      "temp": 9.8,
+      "apparent_temp": 7.6,
+      "humidity": 91,
+      "code": 61,
+      "wind": 12.4
     },
     {
       "id": "tokyo",
@@ -388,11 +372,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 13.1,
-      "apparent_temp": 10.0,
-      "humidity": 43,
+      "temp": 14.0,
+      "apparent_temp": 10.6,
+      "humidity": 40,
       "code": 0,
-      "wind": 7.1
+      "wind": 8.8
     },
     {
       "id": "beijing",
@@ -402,11 +386,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 3.5,
-      "apparent_temp": -2.1,
-      "humidity": 27,
-      "code": 0,
-      "wind": 14.2
+      "temp": 4.5,
+      "apparent_temp": -1.8,
+      "humidity": 24,
+      "code": 1,
+      "wind": 18.8
     },
     {
       "id": "singapore",
@@ -416,11 +400,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 27.5,
-      "apparent_temp": 32.3,
-      "humidity": 78,
+      "temp": 28.1,
+      "apparent_temp": 32.8,
+      "humidity": 75,
       "code": 3,
-      "wind": 6.1
+      "wind": 5.8
     },
     {
       "id": "sydney",
@@ -430,11 +414,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 21.2,
-      "apparent_temp": 20.9,
-      "humidity": 77,
-      "code": 2,
-      "wind": 18.7
+      "temp": 21.7,
+      "apparent_temp": 21.5,
+      "humidity": 74,
+      "code": 3,
+      "wind": 18.1
     },
     {
       "id": "toronto",
@@ -444,11 +428,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 3.1,
-      "apparent_temp": -0.1,
-      "humidity": 77,
-      "code": 0,
-      "wind": 6.5
+      "temp": 3.5,
+      "apparent_temp": -0.0,
+      "humidity": 80,
+      "code": 2,
+      "wind": 9.8
     },
     {
       "id": "dubai",
@@ -458,11 +442,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 28.2,
-      "apparent_temp": 30.1,
-      "humidity": 58,
+      "temp": 28.3,
+      "apparent_temp": 31.0,
+      "humidity": 55,
       "code": 0,
-      "wind": 11.2
+      "wind": 6.7
     },
     {
       "id": "saopaulo",
@@ -472,12 +456,21 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 20.6,
-      "apparent_temp": 23.4,
-      "humidity": 93,
+      "temp": 19.9,
+      "apparent_temp": 23.0,
+      "humidity": 98,
       "code": 2,
-      "wind": 5.4
+      "wind": 3.9
     }
   ],
-  "stories": []
+  "stories": [
+    {
+      "id": "gbe966c60",
+      "title": "Tag team: dual waterspouts appear in San Francisco Bay amid stormy weather",
+      "press": "Guardian Environment",
+      "image": "https://i.guim.co.uk/img/media/f9f5212fc0956900ba97c6edec783a649f9bb14b/630_0_6300_5042/master/6300.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=0d473755fcf9607a2ec2dc7a2b090824",
+      "score": 12.0,
+      "url": "g/gbe966c60"
+    }
+  ]
 }
