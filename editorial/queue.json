@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-19",
-  "generated_at": "2026-11-19T10:28:02+09:00",
+  "generated_at": "2026-11-19T10:45:30+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,259 +27,50 @@
   },
   "candidates": [
     {
-      "issue_id": "ia67ce938",
-      "title": "한중 FTA로 K콘텐츠 ‘최혜국 대우’…K팝 공연은 추가 협의",
-      "category": "경제",
-      "rank": 8,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "中 정부, 한중 FTA 2단계에 “일방·보호주의 반대하는 공동 조치”",
-        "\"한한령, 공식 조치는 아니지만…韓콘텐츠 '불리한 대우 않는다' 확인\" 하준경, 한중 FTA 서비스·투자협상 타결에 \"한중 경제협력 질적 도약\" 하준경 청와대 정책실장이 오늘(19일) 한중 자유무역협정, FTA 서비스·투자 후속...",
-        "한중 FTA 후속 협상 타결…靑, \"한한령 진전, 공연 가능성도 열려\"",
-        "한중 FTA 타결에 靑 “한한령 해제 기대”…K팝 공연 빗장 풀릴까",
-        "한국경제인협회(한경협)는 18일 논평을 통해 \"이번 한중 정상회담에서 FTA 서비스·투자 후속 협상의 실질적 타결이 선언된 것을 환영한다\"고 밝혔다."
-      ],
-      "sources": [
-        {
-          "press": "이데일리",
-          "title": "中 정부, 한중 FTA 2단계에 “일방·보호주의 반대하는 공동 조치”",
-          "url": "https://v.daum.net/v/20261119094436106"
-        },
-        {
-          "press": "yonhapnewstv.co.kr",
-          "title": "靑, 한한령 해빙 기대감에 \"진전 있다…공연도 가능성 열려\"",
-          "url": "https://n.news.naver.com/mnews/article/422/0000927737?sid=100"
-        },
-        {
-          "press": "한국경제",
-          "title": "한중 FTA 후속 협상 타결…靑, \"한한령 진전, 공연 가능성도 열려\"",
-          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBtN3FpZldsQU5FelJIUzM2U2lWSmNlTEg3UnN3alBMMlYxbS1Fb09SNGN4SFZGc3hNUjA4ZkdPZjY4cDJsajJwT3FwSEp4NU1KaGpKTWdsSDU5UQ?oc=5"
-        },
-        {
-          "press": "매일경제",
-          "title": "한중 FTA 타결에 靑 “한한령 해제 기대”…K팝 공연 빗장 풀릴까",
-          "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1GNnRpajRzQUR2cHJJTUVJYXFGZU9mWE8tVm1nbkVVc3ZjQ2VBTm9KRmU0X2oxS2JOdGVvdzZTQ1Jkb0E4ZlpZNXo2R2hSdkwxdWtOeUF3?oc=5"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "中 정부, 한중 FTA 2단계에 “일방·보호주의 반대하는 공동 조치”"
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "\"한한령, 공식 조치는 아니지만…韓콘텐츠 '불리한 대우 않는다' 확인\" 하준경, 한중 FTA 서비스·투자협상 타결에 \"한중 경제협력 질적 도약\" 하준경 청와대 정책실장이 오늘(19일) 한중 자유무역협정, FTA…"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "한국경제인협회(한경협)는 18일 논평을 통해 \"이번 한중 정상회담에서 FTA 서비스·투자 후속 협상의 실질적 타결이 선언된 것을 환영한다\"고 밝혔다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "입장·공방",
-          "수사·대응",
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ibfa3d27e",
-      "title": "시진핑 양옆에 트럼프·푸틴…APEC 단체사진에 세계 이목 집중",
-      "category": "세계",
-      "rank": 9,
-      "priority_score": 37,
+      "issue_id": "i1feff74d",
+      "title": "'리트 만점' 이진우, 연락 끊고 잠수...\"잘 있는지 확인해달라\"",
+      "category": "사회",
+      "rank": 3,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "사상 첫 3자 정상회담을 하루 앞두고 미국과 중국, 러시아 정상이 아시아태평양경제협력체(APEC) 정상회의 환영행사에서 조우하며 인사를 나눴다.",
-        "시진핑 내외 양옆에 트럼프·푸틴…사상 첫 미·중·러 3자 회담 앞두고 첫인사",
-        "트럼프 대통령을 맞이한 인물은 시진핑 중국 국가주석이었다.",
-        "두 정상은 활주로에서 반갑게 포옹하며...",
-        "블라디미르 푸틴 러시아 대통령에게는 일관된 최고위급 실세 의전이 제공됐다."
+        "법학적성시험(LEET) 만점자로 알려진 이진우씨가 인공지능(AI)을 활용한 부정행위 의혹을 받아오던 중, 19일 예정된 대학수학능력시험 국어 영역 공개 검증에 불참하며 연락이 두절되었다.",
+        "‘LEET 만점’ 이진우, 현장검증 안 나타나 무산…“어제부터 연락 안돼.",
+        "잘 있는지 확인 부탁”",
+        "[현장] ‘리트 만점’ 이진우, 결국 안 나타났다…\"16일부터 연락 두절\"",
+        "[속보] 경찰 \"'리트 만점' 이진우 관련 112 신고 접수\""
       ],
       "sources": [
         {
-          "press": "디지털타임스",
-          "title": "시진핑 내외 양옆에 트럼프·푸틴…사상 첫 미·중·러 3자 회담 앞두고 첫인사",
-          "url": "https://n.news.naver.com/article/029/0003059959"
+          "press": "헤럴드경제",
+          "title": "‘LEET 만점’ 이진우, 현장검증 안 나타나 무산…“어제부터 연락 안돼. 잘 있는지 확인 부탁”",
+          "url": "https://n.news.naver.com/article/016/0002725485"
         },
         {
-          "press": "hani.co.kr",
-          "title": "[포토] 한·미·일·러 정상 향한 중국의 ‘공항 의전 정치학’",
-          "url": "https://n.news.naver.com/mnews/article/028/0002832939?sid=104"
+          "press": "국민일보",
+          "title": "[현장] ‘리트 만점’ 이진우, 결국 안 나타났다…\"16일부터 연락 두절\"",
+          "url": "https://n.news.naver.com/article/005/0001886118"
         },
         {
-          "press": "joongang.co.kr",
-          "title": "다카이치엔 환영 꽃도 없다…시진핑 무표정 악수에 “무례” 日 발칵",
-          "url": "https://n.news.naver.com/mnews/article/025/0003566364?sid=104"
+          "press": "YTN",
+          "title": "[속보] 경찰 \"'리트 만점' 이진우 관련 112 신고 접수\"",
+          "url": "https://n.news.naver.com/article/052/0002434982"
         },
         {
-          "press": "widedaily.com",
-          "title": "사상 첫 '미·중·러 3자 정상회담' 개막…코스피 향방 가를 분수령",
-          "url": "https://www.widedaily.com/news/articleView.html?idxno=304100"
+          "press": "jtbc.co.kr",
+          "title": "[단독] \"리트만점 이진우와 구치소 수감\"...신상정보 일치 '공갈 판결문...",
+          "url": "https://n.news.naver.com/mnews/article/437/0000521448?sid=102"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "사상 첫 3자 정상회담을 하루 앞두고 미국과 중국, 러시아 정상이 아시아태평양경제협력체(APEC) 정상회의 환영행사에서 조우하며 인사를 나눴다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "엔비디아 이사회의 경영진 선임에 개입하겠다는 뜻을 밝히지는 않았다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "시진핑 내외 양옆에 트럼프·푸틴…사상 첫 미·중·러 3자 회담 앞두고 첫인사"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i0c18b869",
-      "title": "'리트 만점자' 공개검증 불참·연락두절‥주최측 \"경찰에도 협조 요청\"",
-      "category": "사회",
-      "rank": 2,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "법학적성시험(LEET) 만점자로 알려진 서울대생 이진우 씨가 인공지능 부정행위 의혹을 해소하기 위해 예고했던 수능 국어 실시간 공개 검증에 끝내 불참했다.",
-        "‘리트 만점자’ 공개 검증장에 안 왔다...",
-        "주최측 “잘 있는지 확인해달라”",
-        "'리트 만점자' 공개검증 불참·연락두절‥주최측 \"경찰에도 협조 요청\"",
-        "리트 만점자, 공개검증 약속 시간에 도착 안 해…“휴대전화 꺼져있어”"
-      ],
-      "sources": [
-        {
-          "press": "조선일보",
-          "title": "‘리트 만점자’ 공개 검증장에 안 왔다... 주최측 “잘 있는지 확인해달라”",
-          "url": "https://n.news.naver.com/article/023/0004010504"
-        },
-        {
-          "press": "MBC",
-          "title": "'리트 만점자' 공개검증 불참·연락두절‥주최측 \"경찰에도 협조 요청\"",
-          "url": "https://n.news.naver.com/article/214/0001536573"
-        },
-        {
-          "press": "채널A",
-          "title": "리트 만점자, 공개검증 약속 시간에 도착 안 해…“휴대전화 꺼져있어”",
-          "url": "https://n.news.naver.com/article/449/0000368012"
-        },
-        {
-          "press": "dailian.co.kr",
-          "title": "\"3주 만에 그게 가능해?\"...백지연, '리트 만점자' 이진우 설명에 갸우뚱",
-          "url": "https://n.news.naver.com/mnews/article/119/0003157040?sid=102"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "법학적성시험(LEET) 만점자로 알려진 서울대생 이진우 씨가 인공지능 부정행위 의혹을 해소하기 위해 예고했던 수능 국어 실시간 공개 검증에 끝내 불참했다."
+          "evidence": "법학적성시험(LEET) 만점자로 알려진 이진우씨가 인공지능(AI)을 활용한 부정행위 의혹을 받아오던 중, 19일 예정된 대학수학능력시험 국어 영역 공개 검증에 불참하며 연락이 두절되었다."
         },
         {
           "panel": 2,
@@ -289,12 +80,12 @@
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "의혹을 해소하기 위해 19일 수능 국어 영역 공개 검증을 예고했으나 약속된 시간까지 현장에 나타나지 않아..."
+          "evidence": "[현장] ‘리트 만점’ 이진우, 결국 안 나타났다…\"16일부터 연락 두절\""
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "이진우 씨가 현장에 나타나지 않고 연락이 두절되면서 검증이 무산되었고, 경찰 수사 및 정치권의 시험지 확보 시도 등 사태가 법적·정치적 영역으로 확대되는 양상을 보인다."
+          "evidence": "공개 검증 당일 이씨가 잠적하며 실종 신고가 접수되었고, 경찰 수사가 시작되면서 의혹 해소보다는 사건의 심각성이 커지는 국면으로 전환되었다."
         }
       ],
       "visual_brief": {
@@ -329,6 +120,213 @@
       },
       "quality_gate": {
         "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "입장·공방",
+          "파장·후속"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "id60b45ca",
+      "title": "\"최민희 징계 반대\" 정청래 참전에 '폭풍전야'",
+      "category": "정치",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "정청래 전 더불어민주당 대표는 최민희 최고위원에 대한 징계에 반대한다며, 최 최고위원 녹취록이 지난달 이미 일부 입수됐다는 김민석 대표의 고백을 두고 \"타이밍을 조절했다는 걸까\"라고 의문을 제기했다.",
+        "[단독] 정청래 \"최민희 녹취록 타이밍 조절?\"…김우영 \"김민석, 전체 녹취 없었다\"",
+        "정청래 \"최민희 믿는다\" 공개 지지, 왜?...",
+        "계파 싸움에 두 쪽 난 민주당",
+        "직접 나선 정청래 \"최민희 징계 강력 반대\"…추미애도 '김민석 직격'"
+      ],
+      "sources": [
+        {
+          "press": "시사저널",
+          "title": "[단독] 정청래 \"최민희 녹취록 타이밍 조절?\"…김우영 \"김민석, 전체 녹취 없었다\"",
+          "url": "https://n.news.naver.com/article/586/0000142574"
+        },
+        {
+          "press": "한국일보",
+          "title": "정청래 \"최민희 믿는다\" 공개 지지, 왜?... 계파 싸움에 두 쪽 난 민주당",
+          "url": "https://n.news.naver.com/article/469/0000966452"
+        },
+        {
+          "press": "TV조선",
+          "title": "직접 나선 정청래 \"최민희 징계 강력 반대\"…추미애도 '김민석 직격'",
+          "url": "https://n.news.naver.com/article/448/0000651915"
+        },
+        {
+          "press": "imnews.imbc.com",
+          "title": "정성호 \"최민희 징계는 불가피‥최고위가 정치력 발휘해야\"",
+          "url": "https://n.news.naver.com/mnews/article/214/0001536612?sid=100"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "정청래 전 더불어민주당 대표는 최민희 최고위원에 대한 징계에 반대한다며, 최 최고위원 녹취록이 지난달 이미 일부 입수됐다는 김민석 대표의 고백을 두고 \"타이밍을 조절했다는 걸까\"라고 의문을 제기했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "\"윤리심판원의 최민희 심판 받아들여야\" 김영진 더불어민주당 의원은 19일 친명-친청 극한갈등으로 당이..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "이재명 대통령의 최측근 인사로 꼽히는 정성호 더불어민주당 의원은 19일 당내 통합을 위해 김민석 대표와 정청래 전 대표가 만나는 데 대해 \"별로 어렵다고 생각하지 않는다\"고 밝혔다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ifef07c8d",
+      "title": "[속보] 리트 만점자, 공개검증 약속시간 도착안해…\"폰 꺼져있어\"",
+      "category": "사회",
+      "rank": 1,
+      "priority_score": 30,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "법학적성시험(LEET) 만점 이후 부정행위 의혹을 받아온 서울대 치대생 이진우씨가 대학수학능력시험 국어 영역 실시간 풀이 공개 검증에 불참했다.",
+        "[속보]“전화 꺼지고 카톡도 무응답”…‘리트 만점자’ 이진우, 공개 검증 현장에 끝내 안 나타나",
+        "‘리트 만점’ 이진우씨, 생중계 불참·연락두절… “휴대전화 꺼져 있어”",
+        "‘리트 만점자’ 이진우씨, 공개 검증 현장 안 나타나… 휴대전화도 꺼둬",
+        "'리트 만점자' 수능 공개검증 약속시간 도착 안 해…\"폰 꺼지고 카톡 안 봐\""
+      ],
+      "sources": [
+        {
+          "press": "문화일보",
+          "title": "[속보]“전화 꺼지고 카톡도 무응답”…‘리트 만점자’ 이진우, 공개 검증 현장에 끝내 안 나타나",
+          "url": "https://n.news.naver.com/article/021/0002833896"
+        },
+        {
+          "press": "서울신문",
+          "title": "‘리트 만점’ 이진우씨, 생중계 불참·연락두절… “휴대전화 꺼져 있어”",
+          "url": "https://n.news.naver.com/article/081/0003700999"
+        },
+        {
+          "press": "조선비즈",
+          "title": "‘리트 만점자’ 이진우씨, 공개 검증 현장 안 나타나… 휴대전화도 꺼둬",
+          "url": "https://n.news.naver.com/article/366/0001205828"
+        },
+        {
+          "press": "뉴스1",
+          "title": "'리트 만점자' 수능 공개검증 약속시간 도착 안 해…\"폰 꺼지고 카톡 안 봐\"",
+          "url": "https://n.news.naver.com/article/421/0009297773"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "법학적성시험(LEET) 만점 이후 부정행위 의혹을 받아온 서울대 치대생 이진우씨가 대학수학능력시험 국어 영역 실시간 풀이 공개 검증에 불참했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": ""
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "쿠키뉴스=남동균 기자 | 인공지능(AI)을 활용한 시험 부정행위 의혹을 받는 법학적성시험(LEET·리트) 만점자 이진우씨가 19일 예고한 수능 국어 공개검증에 불참한 뒤 연락이 끊겼다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "이진우씨가 현장에 나타나지 않고 연락이 두절되면서 공개 검증이 무산되었으며, 과거 전과 의혹과 실종신고 사실까지 보도되며 사건이 범죄 의혹으로 확대되는 양상이다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": false,
         "numeric_or_specific_evidence": true,
         "sources": 4,
         "continuity_quality": 0.66,
