@@ -1,60 +1,97 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 03:08:14",
+  "updated_at": "2026-11-19 03:21:58",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.8,
+  "average_quality": 0.79,
   "issues": [
     {
-      "id": "id2153fa4",
-      "title": "李대통령, 중국 순방 중 ‘조작기소 특검법’ 재가…공포 즉시 시행",
-      "episode": "episode:7024fbaeda7140",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 93,
-      "event_count": 163,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib589be64",
-      "title": "리트 만점자, 공개 검증 불참... “이틀 전 집 나가 안 돌아와”",
-      "episode": "episode:72284563316c7d",
+      "id": "i8ceae6b8",
+      "title": "[속보] 李대통령, 조작기소 특검법 재가…19일 공포 즉시 시행",
+      "episode": "episode:2fde32d02e794e",
       "quality": 0.84,
       "stages": [
         "일반 보도",
-        "입장·공방",
-        "사법·처분"
+        "사법·처분",
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
-        "수사·대응",
-        "파장·후속"
+        "입장·공방",
+        "수사·대응"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 4,
+      "duplicate_candidates": 34,
+      "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "ie28ab83d",
-      "title": "[현장] ‘리트 만점’ 이진우, 결국 안 나타났다…\"16일부터 연락 두절\"",
-      "episode": "episode:714b4d4f77add2",
-      "quality": 0.74,
+      "id": "i6e58cbd0",
+      "title": "[속보] 교육부 “재난문자 발송으로 스마트폰 소지 22명 적발”",
+      "episode": "episode:9ae3d32d7a4136",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
-        "입장·공방",
+        "파장·후속",
         "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3d4a5de6",
+      "title": "교육부 \"위급재난문자 발송으로 부정행위 22명 적발…엄정 조치\"",
+      "episode": "episode:86f87e2a28066e",
+      "quality": 0.74,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i952b2521",
+      "title": "'리트 만점자' 이진우 씨 실종신고 접수‥경찰, 광진구 일대 수색 중",
+      "episode": "episode:bb510467f76717",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "gaps": [
+        "입장·공방",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i0c18b869",
+      "title": "'리트 만점자' 공개검증 불참·연락두절‥주최측 \"경찰에도 협조 요청\"",
+      "episode": "episode:0a9d77ea7a410e",
+      "quality": 0.66,
+      "stages": [
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "gaps": [
+        "입장·공방",
         "사법·처분",
         "파장·후속"
       ],
@@ -63,47 +100,46 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i8a59f703",
-      "title": "'리트 만점' 이진우, 공개 검증장 안 왔다... 연락두절",
-      "episode": "episode:99387b5954930f",
-      "quality": 0.74,
+      "id": "i61b40af5",
+      "title": "이 대통령, 푸틴과 첫 대면…한러 관계·북핵 문제 등 논의",
+      "episode": "episode:3671131668d376",
+      "quality": 1.0,
       "stages": [
-        "일반 보도",
         "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
+        "일반 보도",
+        "파장·후속",
         "발단·의혹",
-        "사법·처분",
-        "파장·후속"
+        "수사·대응",
+        "사법·처분"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 3,
+      "gaps": [],
+      "duplicate_candidates": 32,
+      "event_count": 54,
       "evidence_rate": 1.0
     },
     {
-      "id": "i4cd3a560",
-      "title": "[속보]잠적한 '리트 만점자' 이진우, '서울대 치대 합격' 수능 시험지 폐기될 수도",
-      "episode": "episode:51eda3a50e50d8",
-      "quality": 0.84,
+      "id": "i3d51a623",
+      "title": "당국 “리트 만점자, 신변우려 신고 접수…주거지에 없어”",
+      "episode": "episode:c49233d187cdff",
+      "quality": 0.92,
       "stages": [
+        "파장·후속",
         "일반 보도",
         "발단·의혹",
         "수사·대응"
       ],
       "gaps": [
         "입장·공방",
-        "사법·처분",
-        "파장·후속"
+        "사법·처분"
       ],
-      "duplicate_candidates": 40,
+      "duplicate_candidates": 29,
       "event_count": 6,
       "evidence_rate": 1.0
     },
     {
       "id": "i06bc18ee",
       "title": "박지윤, 상간 소송 심경 밝혔다 “성소수자와 부정행위? 최동석 언플에 지쳐가”",
-      "episode": "episode:b5d928d511e446",
+      "episode": "episode:1691046fef9a6a",
       "quality": 0.76,
       "stages": [
         "사법·처분",
@@ -114,14 +150,32 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 9,
+      "duplicate_candidates": 24,
+      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "i457932fd",
-      "title": "승리, 만삭 20대 아내와 동반 입국…D라인 포착",
-      "episode": "episode:8d552bd48004a5",
+      "id": "i65870117",
+      "title": "조국 \"이재용은 日 방문 문제 없어\"…독도 재방문 예고",
+      "episode": "episode:9f44926c25f957",
+      "quality": 0.66,
+      "stages": [
+        "파장·후속",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5135450b",
+      "title": "승리, 만삭 아내와 공항 포착…취재진에 “여기까지 찍으시죠”",
+      "episode": "episode:4d4212fb016e5e",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -131,64 +185,8 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i9504c54a",
-      "title": "[르포] \"불안하나 정직함 믿어\"…AI 우려 속 씩씩하게 시험장으로",
-      "episode": "episode:73b52af1df1ec0",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ia127fdb4",
-      "title": "'수능 부정행위 적발' 위급재난문자 불시에 추가 발송한다(종합)",
-      "episode": "episode:c72b349ccc645a",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i976ce90b",
-      "title": "한중 정상회담 뒤 ‘한한령’ 해빙 기대감 [이슈&뷰]",
-      "episode": "episode:6a7e62e861a89a",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 5,
+      "duplicate_candidates": 26,
+      "event_count": 9,
       "evidence_rate": 1.0
     }
   ]
