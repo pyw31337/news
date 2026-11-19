@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T04:22:00+09:00",
+  "generated_at": "2026-11-20T04:50:32+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -36,13 +36,13 @@
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
         "미중러 회담 앞두고 미러 정상 40분 동안 약식회담 가져…러시아 측 \"우크라이나 문제 주요",
         "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
         "푸틴 보좌관, 보란 듯 '핵가방' 들고 이동…\"핵위력 과시\"",
-        "미국 ‘시진핑 돕는 트럼프’ 영상공개…중국 ‘조는듯한 트럼프’ 중계",
-        "트럼프 \"핵위협 맞서야\"·시진핑 \"전면 폐기\"·푸틴 \"공동 책임\""
+        "도널드 트럼프 미국 대통령은 핵무기 감축 논의를 강조했고, 시진핑 중국 국가주석과 블라디미르 푸틴 러시아 대통령은 세계 평화와 안정을 위한 협력을 촉구했다.",
+        "핵보유국이자 유엔 안전보장이사회 상임이사국인..."
       ],
       "sources": [
         {
@@ -56,14 +56,14 @@
           "url": "https://n.news.naver.com/article/422/0000927883"
         },
         {
-          "press": "KBS",
-          "title": "미국 ‘시진핑 돕는 트럼프’ 영상공개…중국 ‘조는듯한 트럼프’ 중계",
-          "url": "https://v.daum.net/v/20261120034827182"
+          "press": "mt.co.kr",
+          "title": "트럼프 \"핵무기 감축… 習 \"완전폐기\"",
+          "url": "https://n.news.naver.com/mnews/article/008/0005443904?sid=104"
         },
         {
-          "press": "연합뉴스",
-          "title": "트럼프 \"핵위협 맞서야\"·시진핑 \"전면 폐기\"·푸틴 \"공동 책임\"",
-          "url": "https://www.yna.co.kr/view/AKR20261119172400009"
+          "press": "newspim.com",
+          "title": "[종합] 트럼프 \"김정은과 언젠가 만날 것…회의가 너무 많았다\"",
+          "url": "https://www.newspim.com/news/view/20261120000045"
         }
       ],
       "story_beats": [
@@ -75,116 +75,12 @@
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "트럼프, 사상 첫 3자 정상회담 배경으로 “중·러 협력하고 있기 때문···오바마 탓”"
+          "evidence": "핵보유국이자 유엔 안전보장이사회 상임이사국인..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "블라디미르 푸틴 러시아 대통령은 이날 중국 선전에서 도널드 트럼프 미국 대통령, 시진핑 중국 국가주석과 3자 정상회담을 하고 핵확산 방지 등이 담긴 평화 선언을 발표했습니다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "iaceb38d7",
-      "title": "\"김정은, 핵보유국 전략외교…트럼프와 만남에 가치 못느껴\"",
-      "category": "세계",
-      "rank": 9,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "김정은 북한 국무위원장은 최근 미국 대통령 트럼프와의 정상회담을 통해 핵보유국으로서의 전략외교적 가치를 인정받지 못했다고 평가했다.",
-        "고문은 \"김정은은 전략 외교 차원에서 핵보유국 지위를 공고히 하려 하고 있다\"며 이같이 말했습니다.",
-        "또 \"한국은 북한과 대화를 나눌 유일하고 신뢰할 기회는 트럼프와 김정은의 회담이나 트럼프가 강력히 촉구하는...",
-        "시드니 사일러 CSIS 선임고문은 \"기본적으로 김정은은 지금 전략외교 단계에서 헥무기 보유국 지위를 공고히하고 세계가 비핵화나 제재 압박 같은 것을 잊게 만들려고 노력하고 있다\"며 \"현재로서는 트럼프를 만날 필요가...",
-        "시드 사일러 국제전략문제연구소 선임 고문도 \"김정은이 전략 외교 차원에서 핵보유국 지위를 공고히 하려 한다\"며 \"트럼프와의 만남에 가치를 느끼지 못한다\"고 평가했습니다."
-      ],
-      "sources": [
-        {
-          "press": "ytn.co.kr",
-          "title": "\"북한 김정은, 트럼프와의 만남에 가치 못 느껴\"",
-          "url": "https://n.news.naver.com/mnews/article/052/0002435427?sid=104"
-        },
-        {
-          "press": "newsis.com",
-          "title": "\"북미회동 불발…김정은, 트럼프와 대화 필요없다 느껴\"",
-          "url": "https://n.news.naver.com/mnews/article/003/0014334518?sid=104"
-        },
-        {
-          "press": "yonhapnewstv.co.kr",
-          "title": "북미회담 불발…\"김정은, 트럼프와 만남에 가치 못느껴\"",
-          "url": "https://n.news.naver.com/mnews/article/422/0000928010?sid=104"
-        },
-        {
-          "press": "연합뉴스",
-          "title": "트럼프 '러브콜' 외면한 김정은…APEC 계기 북미정상회담 2년째 불발",
-          "url": "https://www.yna.co.kr/view/AKR20261119177400504"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "김정은 북한 국무위원장은 최근 미국 대통령 트럼프와의 정상회담을 통해 핵보유국으로서의 전략외교적 가치를 인정받지 못했다고 평가했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "또 중국이나 러시아의 실질적 영향력이..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "트럼프 '러브콜' 외면한 김정은…APEC 계기 북미정상회담 2년째 불발"
+          "evidence": "한편 트럼프 대통령은 19일 중국 선전에서 시진핑 중국 국가주석, 푸틴 대통령과 3국 정상회의를 열고 '평화를 향한 선언'을 채택했다."
         },
         {
           "panel": 4,
@@ -236,33 +132,133 @@
       }
     },
     {
-      "issue_id": "ida891437",
-      "title": "경찰 “이진우 수사 계속”… 서울대 “사망 제적 처리”",
+      "issue_id": "iaceb38d7",
+      "title": "\"김정은, 핵보유국 전략외교…트럼프와 만남에 가치 못느껴\"",
+      "category": "세계",
+      "rank": 8,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "김정은 북한 국무위원장은 최근 미국 대통령 트럼프와의 정상회담을 통해 핵보유국으로서의 전략외교적 가치를 인정받지 못했다고 평가했다.",
+        "전문보기: https://www.yna.co.kr/view/AKR20261119057100001 ■ 트럼프 中체류 마지막날…통일부 \"김정은 방중 동향...",
+        "한은은 원화가치 절상이 수출기업 채산성을 악화하지만, 내수기업의 원가 부담을 줄이고 저소득층의...",
+        "기본적으로 김정은은 지금 전략외교 단계에서 헥무기 보유국 지위를 공고히하고 세계가 비핵화나 제재 압박 같은 것을 잊게 만들려고 노력하고 있다\"며 \"현재로서는 트럼프를 만날 필요가 없고, 거기에 가치를 두지 않고...",
+        "공식화할 트럼프는 사전 접촉도 없는데 김정은이 선전에 올지도 모른다는 ‘아니면 말고’ 식의 화법으로..."
+      ],
+      "sources": [
+        {
+          "press": "yna.co.kr",
+          "title": "[연합뉴스 이 시각 헤드라인] - 14:30",
+          "url": "https://n.news.naver.com/mnews/article/001/0016452199?sid=102"
+        },
+        {
+          "press": "newsis.com",
+          "title": "\"북미회동 불발…김정은, 트럼프와 대화 필요없다 느껴\"",
+          "url": "https://n.news.naver.com/mnews/article/003/0014334518?sid=104"
+        },
+        {
+          "press": "munhwa.com",
+          "title": "美·中·러 회담 본질과 ‘코리아 패싱’[포럼]",
+          "url": "https://n.news.naver.com/mnews/article/021/0002833976?sid=110"
+        },
+        {
+          "press": "yonhapnewstv.co.kr",
+          "title": "북미회담 불발…\"김정은, 트럼프와 만남에 가치 못느껴\"",
+          "url": "https://n.news.naver.com/mnews/article/422/0000928010?sid=104"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "김정은 북한 국무위원장은 최근 미국 대통령 트럼프와의 정상회담을 통해 핵보유국으로서의 전략외교적 가치를 인정받지 못했다고 평가했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "또 중국이나 러시아의 실질적 영향력이..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "전문보기: https://www.yna.co.kr/view/AKR20261119057100001 ■ 트럼프 中체류 마지막날…통일부 \"김정은 방중 동향..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
+          "발단·의혹",
+          "수사·대응",
+          "파장·후속"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i4993f934",
+      "title": "LEET 만점자, 서울대 '사망 제적' 예정…\"입학취소는 불가\"",
       "category": "사회",
       "rank": 4,
-      "priority_score": 37,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "서울대와 고려대 등의 입학 취소 등 후속 조치가 사실상 불가한 것으로 파악됐다.",
+        "법학적성시험(LEET) 및 수능 부정행위 의혹에 휩싸였던 이진우(32) 씨가 19일 사망하면서 관련 후속 조치에 이목이 쏠리고 있다.",
         "[속보] 서울대, ‘리트 만점자’ 사망 제적 예정…“입학취소는 불가”",
-        "“입학 취소 불가”…‘리트 만점자’ 사망에 서울대가 밝힌 입장, 왜?",
         "경찰 “이진우 수사 계속”… 서울대 “사망 제적 처리”",
-        "수능 의혹 어쩌나…'리트 만점자', 서울대 “입학 취소 불가” 왜?"
+        "수능 의혹 어쩌나…'리트 만점자', 서울대 “입학 취소 불가” 왜?",
+        "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사"
       ],
       "sources": [
         {
           "press": "디지털타임스",
           "title": "[속보] 서울대, ‘리트 만점자’ 사망 제적 예정…“입학취소는 불가”",
           "url": "https://n.news.naver.com/article/029/0003060189"
-        },
-        {
-          "press": "매일경제",
-          "title": "“입학 취소 불가”…‘리트 만점자’ 사망에 서울대가 밝힌 입장, 왜?",
-          "url": "https://n.news.naver.com/article/009/0005766317"
         },
         {
           "press": "조선일보",
@@ -273,18 +269,23 @@
           "press": "전자신문",
           "title": "수능 의혹 어쩌나…'리트 만점자', 서울대 “입학 취소 불가” 왜?",
           "url": "https://n.news.naver.com/article/030/0003487791"
+        },
+        {
+          "press": "YTN",
+          "title": "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사",
+          "url": "https://n.news.naver.com/article/052/0002435211"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "서울대와 고려대 등의 입학 취소 등 후속 조치가 사실상 불가한 것으로 파악됐다."
+          "evidence": "법학적성시험(LEET) 및 수능 부정행위 의혹에 휩싸였던 이진우(32) 씨가 19일 사망하면서 관련 후속 조치에 이목이 쏠리고 있다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "19일 사망한 법학적성시험(LEET·리트) 최초 만점자 이진우 씨 때문에 대학 진학 입시 피해를 봤다는..."
+          "evidence": "\"너 때문에 재수했잖아\"…리트 만점자 사망 뒤 나온 주장"
         },
         {
           "panel": 3,
@@ -294,7 +295,7 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+          "evidence": "이 씨가 AI 커닝 의혹 해명을 위한 공개검증에 불참한 뒤 숨진 채 발견된 경위와 함께, 경찰의 수사 지속 방침 및 대학가의 반응이 이어졌다. 이로 인해 AI를 활용한 부정행위 의혹과 입시 제도의 허점에 대한…"
         }
       ],
       "visual_brief": {
