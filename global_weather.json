@@ -1,39 +1,7 @@
 {
-  "updated": "2026-11-20T04:47:17.980470+09:00",
-  "alerts_count": 15,
+  "updated": "2026-11-20T04:16:30.951915+09:00",
+  "alerts_count": 14,
   "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.5c48efb57d702df9984a6aeca4061ef24b7b6b38.001.1",
-      "t": "2026-11-19 14:38",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Brevard",
-      "area_en": "Brevard",
-      "event": "홍수 경보",
-      "event_en": "Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Brevard 홍수 경보",
-      "headline_en": "Brevard Flood Warning",
-      "desc": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Central Brevard County in east central Florida...\n\n* WHEN...Until 700 PM EST.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring. Numerous roads\nremain closed "
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.e7e30ee272caa1ea396a55317dc2dde4f375e02d.001.1",
-      "t": "2026-11-19 14:27",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Flagler Beach to Volusia-Brevard County Line 0-20 nm",
-      "area_en": "Flagler Beach to Volusia-Brevard County Line 0-20 nm",
-      "event": "Special Marine Warning",
-      "event_en": "Special Marine Warning",
-      "severity": "Severe",
-      "headline_ko": "Flagler Beach to Volusia-Brevard County Line 0-20 nm Special Marine Warning",
-      "headline_en": "Flagler Beach to Volusia-Brevard County Line 0-20 nm Special Marine Warning",
-      "desc": "SMWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Special Marine Warning for...\nFlagler Beach to Volusia-Brevard County Line 0-20 nm...\nVolusia-Brevard County Line to Sebastian Inlet 0-20 nm...\nFlagler Beach to Volusia-Brevard County Line 20-60 nm...\nVolusia-Brevard County Line to Se"
-    },
     {
       "id": "urn:oid:2.49.0.1.840.0.0fc503d3679754e4fea7429654e80c4a96453838.001.1",
       "t": "2026-11-19 14:53",
@@ -81,6 +49,22 @@
       "headline_ko": "Mariposa 홍수 경보",
       "headline_en": "Mariposa Flash Flood Warning",
       "desc": "FFWHNX\n\nThe National Weather Service in Hanford has issued a\n\n* Flash Flood Warning for...\nNorthwestern Mariposa County in central California...\nNortheastern Merced County in central California...\n\n* Until 1230 PM PST.\n\n* At 1030 AM PST, Doppler radar indicated thunderstorms producing\nheavy rain acr"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.3aa8c270b338d09507cedda824892e95bebdb6cf.001.1",
+      "t": "2026-11-19 09:44",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Inner waters from Point Mugu to San Mateo Pt. CA including Santa Catalina and Anacapa Islands",
+      "area_en": "Inner waters from Point Mugu to San Mateo Pt. CA including Santa Catalina and Anacapa Islands",
+      "event": "Special Marine Warning",
+      "event_en": "Special Marine Warning",
+      "severity": "Severe",
+      "headline_ko": "Inner waters from Point Mugu to San Mateo Pt. CA including Santa Catalina and Anacapa Islands Special Marine Warning",
+      "headline_en": "Inner waters from Point Mugu to San Mateo Pt. CA including Santa Catalina and Anacapa Islands Special Marine Warning",
+      "desc": "SMWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Special Marine Warning for...\nInner waters from Point Mugu to San Mateo Pt. CA including Santa\nCatalina and Anacapa Islands...\n\n* Until 1130 AM PST.\n\n* At 944 AM PST, strong showers were located along a line from near\nPort of"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.5394bd510673eb98bbfd3de67035e624cee92608.001.1",
@@ -334,11 +318,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 17.9,
-      "apparent_temp": 15.4,
+      "temp": 18.0,
+      "apparent_temp": 15.2,
       "humidity": 31,
       "code": 0,
-      "wind": 2.8
+      "wind": 5.4
     },
     {
       "id": "losangeles",
@@ -348,11 +332,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 15.7,
-      "apparent_temp": 15.8,
-      "humidity": 88,
-      "code": 65,
-      "wind": 7.5
+      "temp": 17.0,
+      "apparent_temp": 17.3,
+      "humidity": 85,
+      "code": 3,
+      "wind": 8.0
     },
     {
       "id": "london",
@@ -362,11 +346,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 8.7,
-      "apparent_temp": 6.9,
-      "humidity": 80,
+      "temp": 8.8,
+      "apparent_temp": 6.8,
+      "humidity": 81,
       "code": 3,
-      "wind": 5.0
+      "wind": 6.5
     },
     {
       "id": "paris",
@@ -376,11 +360,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 11.9,
-      "apparent_temp": 8.5,
+      "temp": 12.0,
+      "apparent_temp": 8.7,
       "humidity": 73,
       "code": 3,
-      "wind": 18.1
+      "wind": 17.9
     },
     {
       "id": "frankfurt",
@@ -391,10 +375,10 @@
       "lat": 50.1109,
       "lon": 8.6821,
       "temp": 9.9,
-      "apparent_temp": 7.7,
-      "humidity": 87,
+      "apparent_temp": 7.1,
+      "humidity": 86,
       "code": 63,
-      "wind": 11.0
+      "wind": 14.7
     },
     {
       "id": "tokyo",
@@ -404,11 +388,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 8.3,
+      "temp": 8.5,
       "apparent_temp": 5.3,
       "humidity": 52,
       "code": 0,
-      "wind": 5.4
+      "wind": 6.4
     },
     {
       "id": "beijing",
@@ -419,10 +403,10 @@
       "lat": 39.9042,
       "lon": 116.4074,
       "temp": -0.3,
-      "apparent_temp": -4.8,
+      "apparent_temp": -4.6,
       "humidity": 44,
       "code": 2,
-      "wind": 8.3
+      "wind": 6.7
     },
     {
       "id": "singapore",
@@ -433,10 +417,10 @@
       "lat": 1.3521,
       "lon": 103.8198,
       "temp": 23.5,
-      "apparent_temp": 27.9,
-      "humidity": 97,
+      "apparent_temp": 28.2,
+      "humidity": 98,
       "code": 3,
-      "wind": 7.4
+      "wind": 6.4
     },
     {
       "id": "sydney",
@@ -446,11 +430,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 19.2,
-      "apparent_temp": 20.6,
-      "humidity": 87,
+      "temp": 18.9,
+      "apparent_temp": 20.1,
+      "humidity": 88,
       "code": 3,
-      "wind": 6.8
+      "wind": 8.4
     },
     {
       "id": "toronto",
@@ -461,10 +445,10 @@
       "lat": 43.6532,
       "lon": -79.3832,
       "temp": 15.8,
-      "apparent_temp": 11.4,
-      "humidity": 48,
+      "apparent_temp": 11.9,
+      "humidity": 51,
       "code": 0,
-      "wind": 22.1
+      "wind": 19.5
     },
     {
       "id": "dubai",
@@ -474,11 +458,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 26.8,
-      "apparent_temp": 28.1,
+      "temp": 27.1,
+      "apparent_temp": 28.4,
       "humidity": 48,
       "code": 0,
-      "wind": 2.6
+      "wind": 2.5
     },
     {
       "id": "saopaulo",
@@ -488,11 +472,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 29.7,
-      "apparent_temp": 30.3,
-      "humidity": 45,
+      "temp": 29.6,
+      "apparent_temp": 30.8,
+      "humidity": 48,
       "code": 51,
-      "wind": 11.0
+      "wind": 9.7
     }
   ],
   "stories": []
