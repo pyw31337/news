@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T03:20:46+09:00",
+  "generated_at": "2026-11-20T02:03:45+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,115 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i30bff471",
-      "title": "앤트로픽 나스닥 데뷔… 반도체·인프라→AI 기업 투자 이동할까 [팩플]",
-      "category": "경제",
-      "rank": 4,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "인공지능 모델 클로드 개발사 앤트로픽이 나스닥에 성공적으로 상장하며 첫 거래에서 공모가 대비 34.3% 상승한 111.50달러를 기록했다.",
-        "공모가 83달러서 111.50달러로 출발 기업가치 한때 2조1000억달러까지 813억달러 조달, 역대 최대 IPO 기록 인공지능(AI) 챗봇 ‘클로드’ 개발사 앤트로픽이 미국 나스닥 상장 첫날 주가가 공모가보다",
-        "“2720억 넣었는데 4조 됐다” 앤트로픽 투자한 韓 기업 대박",
-        "인공지능(AI) 챗봇 '클로드' 개발사 앤트로픽의 다리오 아모데이 최고경영자(CEO)가 나스닥 상장식에서 AI의 안전성을 확인할 때까지 모델 학습과 출시 속도를 조절하겠다고 밝혔다.",
-        "안전 원칙을 지키면서도 기업을..."
-      ],
-      "sources": [
-        {
-          "press": "mk.co.kr",
-          "title": "앤트로픽, 상장 첫 거래서 34% 급등…“연산 자원 75% R&D 투입”",
-          "url": "https://n.news.naver.com/mnews/article/009/0005766476?sid=105"
-        },
-        {
-          "press": "한경비즈니스",
-          "title": "“2720억 넣었는데 4조 됐다” 앤트로픽 투자한 韓 기업 대박",
-          "url": "https://n.news.naver.com/article/050/0000113508"
-        },
-        {
-          "press": "newsis.com",
-          "title": "앤트로픽 CEO \"AI, 인간 통제 아래 있도록 속도 조절\"",
-          "url": "https://n.news.naver.com/mnews/article/003/0014334530?sid=104"
-        },
-        {
-          "press": "ytn.co.kr",
-          "title": "아모데이 앤트로픽 CEO \"AI 안전 집착은 회사 DNA\"",
-          "url": "https://n.news.naver.com/mnews/article/052/0002435420?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "인공지능 모델 클로드 개발사 앤트로픽이 나스닥에 성공적으로 상장하며 첫 거래에서 공모가 대비 34.3% 상승한 111.50달러를 기록했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "“2720억 넣었는데 4조 됐다” 앤트로픽 투자한 韓 기업 대박"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "공모가 83달러서 111.50달러로 출발 기업가치 한때 2조1000억달러까지 813억달러 조달, 역대 최대 IPO 기록 인공지능(AI) 챗봇 ‘클로드’ 개발사 앤트로픽이 미국 나스닥 상장 첫날 주가가 공모가보다"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "상장 직후 주가가 급등하며 AI 산업의 성장 기대와 높은 기업가치에 대한 경계심이 공존하는 시장 흐름을 보여주었다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "iaceb38d7",
-      "title": "\"김정은, 핵보유국 전략외교…트럼프와 만남에 가치 못느껴\"",
+      "issue_id": "if7bedce0",
+      "title": "[미중러 정상회담] 트럼프에게 \"내 친구\"로 불린 푸틴…종전협상 영향은",
       "category": "세계",
-      "rank": 9,
+      "rank": 6,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -143,49 +38,49 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "시드니 사일러 CSIS 선임고문은 \"기본적으로 김정은은 지금 전략외교 단계에서 헥무기 보유국 지위를 공고히하고 세계가 비핵화나 제재 압박 같은 것을 잊게 만들려고 노력하고 있다\"며 \"현재로서는 트럼프를 만날 필요가...",
-        "시드 사일러 국제전략문제연구소 선임 고문도 \"김정은이 전략 외교 차원에서 핵보유국 지위를 공고히 하려 한다\"며 \"트럼프와의 만남에 가치를 느끼지 못한다\"고 평가했습니다.",
-        "또 중국이나 러시아의 실질적 영향력이...",
-        "그는 세계 3대 핵보유국인 미국·중국·러시아가 핵무기 수를 줄이고, 실제 사용 위험을 낮출 방안을 논의할...",
-        "◇ 러시아, 전략폭격기·핵가방 노출…트럼프, 김정은과 회동 없이 귀국러시아는 정상회담을 전후해 아시아..."
+        "미중러 회담 앞두고 미러 정상 40분 동안 약식회담 가져…러시아 측 \"우크라이나 문제 주요",
+        "SCMP는 트럼프 대통령이 조는 듯한 모습을 보이는 동안 블라디미르 푸틴 러시아 대통령은 회의에 시선을...",
+        "3자 정상회담 등 외교 일정을 소화했다.",
+        "한편 AP통신은 중국 방송이 트럼프 대통령의 졸린 듯한 모습을 내보낸...",
+        "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애"
       ],
       "sources": [
         {
-          "press": "newsis.com",
-          "title": "\"북미회동 불발…김정은, 트럼프와 대화 필요없다 느껴\"",
-          "url": "https://n.news.naver.com/mnews/article/003/0014334518?sid=104"
+          "press": "seoul.co.kr",
+          "title": "“전세계 웃음거리”…트럼프, 시진핑 연설 중 꾸벅? ‘졸음 논란’에 ...",
+          "url": "https://n.news.naver.com/mnews/article/081/0003701316?sid=104"
         },
         {
-          "press": "yonhapnewstv.co.kr",
-          "title": "북미회담 불발…\"김정은, 트럼프와 만남에 가치 못느껴\"",
-          "url": "https://n.news.naver.com/mnews/article/422/0000928010?sid=104"
+          "press": "한겨레",
+          "title": "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQRU1LTTVIX1FKTEZmVl9aazhOdXFsbGViZVNCZHJvV1dXLTVOVG5NN0J5SEZ4TzRJWVNwQnVvNVRDN0ctTXktZjF3dWFRUml0QlYzcV9sX2hqTkFGbUVLWnFsQ2xWU2dpWVlFMENBQ1JDV2d2QnVhdEpfSHUzWWpHSkF3?oc=5"
         },
         {
-          "press": "asiatoday.co.kr",
-          "title": "트럼프·시진핑·푸틴, 첫 3자 정상회담…핵위험 감소·정제유 공급 확...",
-          "url": "https://www.asiatoday.co.kr/kn/view.php?key=20261119010007846"
+          "press": "연합뉴스TV",
+          "title": "푸틴 보좌관, 보란 듯 '핵가방' 들고 이동…\"핵위력 과시\"",
+          "url": "https://n.news.naver.com/article/422/0000927883"
         },
         {
-          "press": "연합뉴스",
-          "title": "트럼프 '러브콜' 외면한 김정은…APEC 계기 북미정상회담 2년째 불발",
-          "url": "https://www.yna.co.kr/view/AKR20261119177400504"
+          "press": "헤럴드경제",
+          "title": "‘상석’은 시진핑…미·중·러 첫 정상회담, 푸틴은 ‘오른쪽’ 트럼프는 ‘왼쪽’",
+          "url": "https://v.daum.net/v/20261119221033613"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "시드니 사일러 CSIS 선임고문은 \"기본적으로 김정은은 지금 전략외교 단계에서 헥무기 보유국 지위를 공고히하고 세계가 비핵화나 제재 압박 같은 것을 잊게 만들려고 노력하고 있다\"며 \"현재로서는 트럼프를 만날…"
+          "evidence": "미중러 회담 앞두고 미러 정상 40분 동안 약식회담 가져…러시아 측 \"우크라이나 문제 주요"
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "또 중국이나 러시아의 실질적 영향력이..."
+          "evidence": "[미중러 정상회담] 트럼프에게 \"내 친구\"로 불린 푸틴…종전협상 영향은"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "그는 세계 3대 핵보유국인 미국·중국·러시아가 핵무기 수를 줄이고, 실제 사용 위험을 낮출 방안을 논의할..."
+          "evidence": "3자 정상회담 등 외교 일정을 소화했다."
         },
         {
           "panel": 4,
@@ -237,10 +132,10 @@
       }
     },
     {
-      "issue_id": "i85251e44",
-      "title": "트럼프, 푸틴에게 \"내 친구\"...러시아, 우크라이나 한층 더 압박 전망",
-      "category": "세계",
-      "rank": 10,
+      "issue_id": "i91e4c9b9",
+      "title": "리트 첫 만점자 이진우 씨 심정지 상태로 발견",
+      "category": "사회",
+      "rank": 3,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -248,49 +143,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "미중러 회담 앞두고 미러 정상 40분 동안 약식회담 가져…러시아 측 \"우크라이나 문제 주요",
-        "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
-        "푸틴 보좌관, 보란 듯 '핵가방' 들고 이동…\"핵위력 과시\"",
-        "트럼프 대통령은 세계 양대 권위주의 지도자인 시 주석과 푸틴 대통령을 \"친구\"로 부르며 친밀감을 강조했다.",
-        "주요국 정상과의 개인적 친분은 트럼프 대통령이 내세우는 자신만의 외교적 강점이다."
+        "서울 강동구 천호역 인근 모텔에서 법학적성시험(LEET) 만점자 이진우(32)씨가 심정지 상태로 발견되었습니다.",
+        "‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
+        "당시 이진우 수방사령관 지시를 하달했다고 의심한다.",
+        "특검팀은 조 대령이 휘하 부하에게 내린 지시에 대한...",
+        "그러면서 “2지역대(당시 대장 윤덕규)를 서강대교 북단에 정지시키고 의도와 다르게 2특임대대가 이동하고..."
       ],
       "sources": [
         {
-          "press": "한겨레",
-          "title": "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
-          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQRU1LTTVIX1FKTEZmVl9aazhOdXFsbGViZVNCZHJvV1dXLTVOVG5NN0J5SEZ4TzRJWVNwQnVvNVRDN0ctTXktZjF3dWFRUml0QlYzcV9sX2hqTkFGbUVLWnFsQ2xWU2dpWVlFMENBQ1JDV2d2QnVhdEpfSHUzWWpHSkF3?oc=5"
+          "press": "매일경제",
+          "title": "‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
+          "url": "https://n.news.naver.com/article/009/0005766140"
         },
         {
-          "press": "연합뉴스TV",
-          "title": "푸틴 보좌관, 보란 듯 '핵가방' 들고 이동…\"핵위력 과시\"",
-          "url": "https://n.news.naver.com/article/422/0000927883"
+          "press": "biz.heraldcorp.com",
+          "title": "[단독] 조성현 대령 “‘국회의원을 끌어내라’ 이후 내란 저지…서강대...",
+          "url": "https://n.news.naver.com/mnews/article/016/0002672585?sid=102"
         },
         {
-          "press": "yna.co.kr",
-          "title": "[미중러 정상회담] \"돌파구 없는 선언적 만남…배타적 세력권 강조\"",
-          "url": "https://n.news.naver.com/mnews/article/001/0016453367?sid=104"
+          "press": "khan.co.kr",
+          "title": "‘세무사 수석 합격’ 이어 ‘LEET 만점자’까지 번진 AI 안경 의혹…수...",
+          "url": "https://n.news.naver.com/mnews/article/032/0003482537?sid=102"
         },
         {
-          "press": "chosun.com",
-          "title": "트럼프, 선거 참패 만회 승부수… 추상적 합의에 ‘사진찍기용’ 평가",
-          "url": "https://n.news.naver.com/mnews/article/023/0004010720?sid=104"
+          "press": "hankookilbo.com",
+          "title": "\"야당 상관없이 권력 찬탈하려 계엄\"... 특검, '노상원 수첩'으로 1심 반...",
+          "url": "https://n.news.naver.com/mnews/article/469/0000922827?sid=102"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "미중러 회담 앞두고 미러 정상 40분 동안 약식회담 가져…러시아 측 \"우크라이나 문제 주요"
+          "evidence": "서울 강동구 천호역 인근 모텔에서 법학적성시험(LEET) 만점자 이진우(32)씨가 심정지 상태로 발견되었습니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "[미중러 정상회담] 트럼프에게 \"내 친구\"로 불린 푸틴…종전협상 영향은"
+          "evidence": "이진우 메리츠증권 리서치센터장도 내년 증시의 상승 가능성을 제시했다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "푸틴 대통령을 두고는 “그는 내 친구”라고 했고, 3자 회담 자리에서는 “블라디미르와 함께해 영광”이라고 말했다."
+          "evidence": "그러면서 “2지역대(당시 대장 윤덕규)를 서강대교 북단에 정지시키고 의도와 다르게 2특임대대가 이동하고..."
         },
         {
           "panel": 4,
@@ -299,8 +194,111 @@
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i4993f934",
+      "title": "LEET 만점자, 서울대 '사망 제적' 예정…\"입학취소는 불가\"",
+      "category": "사회",
+      "rank": 5,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "\"수능성적 무효화 선행돼야\"…고려대측도 \"수사 있어야 가능\" 윤민혁 이민영 기자 = 법학적성시험(LEET) 및 수능 부정 행위 의혹 등에 휩싸였던 이진우(32)씨가 19일 사망하면서 대학 입학 취소 등 후속 조치는",
+        "[속보] 서울대, ‘리트 만점자’ 사망 제적 예정…“입학취소는 불가”",
+        "“입학 취소 불가”…‘리트 만점자’ 사망에 서울대가 밝힌 입장, 왜?",
+        "경찰 “이진우 수사 계속”… 서울대 “사망 제적 처리”",
+        "받아 서울대 치대로 진학했다고 밝혔다."
+      ],
+      "sources": [
+        {
+          "press": "디지털타임스",
+          "title": "[속보] 서울대, ‘리트 만점자’ 사망 제적 예정…“입학취소는 불가”",
+          "url": "https://n.news.naver.com/article/029/0003060189"
+        },
+        {
+          "press": "매일경제",
+          "title": "“입학 취소 불가”…‘리트 만점자’ 사망에 서울대가 밝힌 입장, 왜?",
+          "url": "https://n.news.naver.com/article/009/0005766317"
+        },
+        {
+          "press": "조선일보",
+          "title": "경찰 “이진우 수사 계속”… 서울대 “사망 제적 처리”",
+          "url": "https://n.news.naver.com/article/023/0004010614"
+        },
+        {
+          "press": "sedaily.com",
+          "title": "“사람은 미워하지 맙시다” 650만명 쏠린 ‘리트 만점자’ 공개검증…...",
+          "url": "https://n.news.naver.com/mnews/article/011/0004684180?sid=102"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "\"수능성적 무효화 선행돼야\"…고려대측도 \"수사 있어야 가능\" 윤민혁 이민영 기자 = 법학적성시험(LEET) 및 수능 부정 행위 의혹 등에 휩싸였던 이진우(32)씨가 19일 사망하면서 대학 입학 취소 등 후속 조치는"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "19일 사망한 법학적성시험(LEET·리트) 최초 만점자 이진우 씨 때문에 대학 진학 입시 피해를 봤다는..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "이씨는 사망 전날인 18일 언론..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -334,8 +332,8 @@
         "sources": 4,
         "continuity_quality": 0.92,
         "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
+          "수사·대응",
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
