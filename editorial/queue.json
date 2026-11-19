@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T07:58:57+09:00",
+  "generated_at": "2026-11-20T07:25:47+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,270 +27,60 @@
   },
   "candidates": [
     {
-      "issue_id": "i726dffe8",
-      "title": "앤트로픽, 상장 첫날 111.5달러에 거래 시작…시총 2조달러 돌파",
+      "issue_id": "iad16c72b",
+      "title": "[속보] 앤트로픽, 상장 첫날 97.17달러로 마감… 공모가 대비 17.07% 올라",
       "category": "경제",
-      "rank": 4,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "인공지능 기업 앤트로픽이 역대 최대 규모의 기업공개(IPO)를 통해 2026년 11월 19일 나스닥 시장에 성공적으로 입성했다.",
-        "앤트로픽 주가가 나스닥 상장 첫날 공모가보다",
-        "17.1% 오른 97.17달러에 거래를 마쳤다.",
-        "앤트로픽 주가는 19일(현지시간) 공모가인 83달러보다",
-        "시초가는 111.5달러였다."
-      ],
-      "sources": [
-        {
-          "press": "kmib.co.kr",
-          "title": "나스닥 데뷔한 ‘앤트로픽’…공모가보다 17% 오른 97.17달러 마감",
-          "url": "https://n.news.naver.com/mnews/article/005/0001886416?sid=104"
-        },
-        {
-          "press": "문화일보",
-          "title": "[속보]앤트로픽 상장 첫날, 뉴욕증시 2%대 급락…다우 5만선 아래로",
-          "url": "https://n.news.naver.com/article/021/0002834152"
-        },
-        {
-          "press": "조선비즈",
-          "title": "앤트로픽, 상장 첫날 111.5달러에 거래 시작…시총 2조달러 돌파",
-          "url": "https://n.news.naver.com/article/366/0001206125"
-        },
-        {
-          "press": "이데일리",
-          "title": "[속보]앤스로픽 상장 첫날 뉴욕증시 2%대 급락…다우 5만선 붕괴",
-          "url": "https://n.news.naver.com/article/018/0006412856"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "인공지능 기업 앤트로픽이 역대 최대 규모의 기업공개(IPO)를 통해 2026년 11월 19일 나스닥 시장에 성공적으로 입성했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "34% 높았지만, 매물이..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "17.1% 오른 97.17달러에 거래를 마쳤다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "상장 첫날의 주가 상승과 증시 급락이 동시에 보도되며, 앤트로픽의 흥행이 시장 전체에는 악재로 작용했다는 평가가 지배적이다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i4cb8c202",
-      "title": "앤트로픽, 111.5달러에 나스닥 상장 첫 거래 시작",
-      "category": "경제",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "코스피가 오르내림을 반복한 끝에 5100선을 회복했다.",
-        "[속보] 앤트로픽 상장 첫날 17% 폭등에도…나스닥은 2%대 급락",
-        "앤트로픽 '나스닥 상장' 첫 거래서 34% 상승…시총 2조달러",
-        "[속보]앤트로픽 상장 첫날 17% 상승…나스닥은 2%대 하락",
-        "19일(현지시간) 뉴욕증시는 앤트로픽(Anthropic)이 나스닥 상장 첫날 공모가(83달러)보다"
-      ],
-      "sources": [
-        {
-          "press": "중앙일보",
-          "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-          "url": "https://n.news.naver.com/article/025/0003566361"
-        },
-        {
-          "press": "서울경제",
-          "title": "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
-          "url": "https://n.news.naver.com/article/011/0004683998"
-        },
-        {
-          "press": "세계일보",
-          "title": "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
-          "url": "https://n.news.naver.com/article/022/0004176505"
-        },
-        {
-          "press": "digitaltoday.co.kr",
-          "title": "앤트로픽 상장 첫날 +17%에도 美증시 2%대 급락…비트코인 보합",
-          "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=716883"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "코스피가 오르내림을 반복한 끝에 5100선을 회복했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "판결문에 따르면 해당 인물은 고의로 교통사고를 낸 뒤 합의금을 받아낸 혐의 등으로 2022년 9월 징역 6개월을..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "법학적성시험(LEET·리트) 만점자로 알려진 이진우(32) 씨가 과거 고의 교통사고를 이용한 공갈 범죄와 경찰관..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "실제 인사가 발표되면서 경영 연속성을 위한 투톱 유지와 미래 사업 집중을 위한 겸직 해소라는 삼성의 전략이 공식화되었다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.76,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i73b7c1d8",
-      "title": "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\"",
-      "category": "세계",
       "rank": 5,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
-        "도널드 트럼프 미국 대통령은 시진핑 중국 국가주석과 아시아태평양경제협력체(APEC) 정상회의에서 회담을 가졌고, 백악관은 이를 통해 우호 관계를 강조했습니다.",
-        "반면 도널드 트럼프 미국 대통령은 시진핑 주석이 공항에 직접 나와 맞이했다.",
-        "블라디미르 푸틴 러시아 대통령과 이재명 대통령 등 다른 정상들도 고위급 인사와 환영 인파의 영접을 받았다.",
-        "이 같은 차이가 일본 언론을...",
-        "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\""
+        "19일(현지시간) 앤트로픽은 주당 111.5달러로 거래를 시작해 97.17달러로 마감했다.",
+        "[속보]앤트로픽 상장 첫날, 뉴욕증시 2%대 급락…다우 5만선 아래로",
+        "[속보]앤스로픽 상장 첫날 뉴욕증시 2%대 급락…다우 5만선 붕괴",
+        "생성형 인공지능(AI) 모델 '클로드(Claude)' 개발사 앤트로픽이 19일(현지시간) 뉴욕 증시에 입성하면서...",
+        "앤트로픽의 상장 공모가가 주당 83달러로 확정되며 상장 기준 기업가치가 1조4000억달러(약 1860조원)를 돌파..."
       ],
       "sources": [
         {
-          "press": "newspim.com",
-          "title": "\"다카이치 日총리 냉대?\"...中 \"적절한 의전 제공했다\" 반박",
-          "url": "https://www.newspim.com/news/view/20261120000066"
+          "press": "문화일보",
+          "title": "[속보]앤트로픽 상장 첫날, 뉴욕증시 2%대 급락…다우 5만선 아래로",
+          "url": "https://n.news.naver.com/article/021/0002834152"
         },
         {
-          "press": "연합뉴스",
-          "title": "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\"",
-          "url": "https://n.news.naver.com/article/001/0016453374"
+          "press": "이데일리",
+          "title": "[속보]앤스로픽 상장 첫날 뉴욕증시 2%대 급락…다우 5만선 붕괴",
+          "url": "https://n.news.naver.com/article/018/0006412856"
         },
         {
-          "press": "한겨레",
-          "title": "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
-          "url": "https://n.news.naver.com/article/028/0002832987"
+          "press": "financialpost.co.kr",
+          "title": "앤트로픽 IPO 대박…직원 1인당 평균 480억원 주식 보상",
+          "url": "https://www.financialpost.co.kr/news/articleView.html?idxno=302076"
         },
         {
-          "press": "헤럴드경제",
-          "title": "트럼프는 ‘내 친구’ 연발했지만…“시진핑·푸틴은 美패권흔들기”",
-          "url": "https://v.daum.net/v/20261120065921394"
+          "press": "thefairnews.co.kr",
+          "title": "[뉴욕증시 마감] 앤트로픽 17% 상승에도 AI주 급락…다우 2.19%↓",
+          "url": "https://www.thefairnews.co.kr/news/articleView.html?idxno=94874"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "도널드 트럼프 미국 대통령은 시진핑 중국 국가주석과 아시아태평양경제협력체(APEC) 정상회의에서 회담을 가졌고, 백악관은 이를 통해 우호 관계를 강조했습니다."
+          "evidence": "19일(현지시간) 앤트로픽은 주당 111.5달러로 거래를 시작해 97.17달러로 마감했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "시진핑 중국 국가주석과 도널드 트럼프 미국 대통령, 블라디미르 푸틴 러시아 대통령이 한자리에 모여 핵전쟁 방지와 전략적 안정, 에너지 공급 문제 등을 논의하고 공동선언을 채택했다."
+          "evidence": "상장 기대감에 상승..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "실제로 트럼프 대통령과 시진핑 중국 국가주석, 푸틴 대통령은 이날 3자 회담 뒤 발표한 공동성명에서 ICC와 유사 기구를 향해 “관할권을 남용해서는 안 된다”고 날을 세웠다."
+          "evidence": "[속보]앤트로픽 상장 첫날, 뉴욕증시 2%대 급락…다우 5만선 아래로"
         },
         {
           "panel": 4,
@@ -332,10 +122,219 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.92,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
+          "입장·공방",
+          "수사·대응",
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i31389b17",
+      "title": "[MUST KNOW5]앤트로픽, 상장 30분 만에 시초가 대비 13% 급락...변동성 '극심'",
+      "category": "경제",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "공모가 83달러·시초가 111.50달러·종가 97.17달러",
+        "[속보] 앤트로픽 상장 첫날 17% 폭등에도…나스닥은 2%대 급락",
+        "앤트로픽 '나스닥 상장' 첫 거래서 34% 상승…시총 2조달러",
+        "[속보]앤트로픽 상장 첫날 17% 상승…나스닥은 2%대 하락",
+        "앤트로픽, 역대 최대 IPO로 나스닥 데뷔…첫 체결가 111.50달러"
+      ],
+      "sources": [
+        {
+          "press": "뉴스1",
+          "title": "[속보] 앤트로픽 상장 첫날 17% 폭등에도…나스닥은 2%대 급락",
+          "url": "https://n.news.naver.com/article/421/0009300422"
+        },
+        {
+          "press": "머니투데이",
+          "title": "앤트로픽 '나스닥 상장' 첫 거래서 34% 상승…시총 2조달러",
+          "url": "https://n.news.naver.com/article/008/0005443878"
+        },
+        {
+          "press": "머니투데이",
+          "title": "[속보]앤트로픽 상장 첫날 17% 상승…나스닥은 2%대 하락",
+          "url": "https://n.news.naver.com/article/008/0005443932"
+        },
+        {
+          "press": "뉴시스",
+          "title": "앤트로픽, 역대 최대 IPO로 나스닥 데뷔…첫 체결가 111.50달러",
+          "url": "https://n.news.naver.com/article/003/0014334524"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "공모가 83달러·시초가 111.50달러·종가 97.17달러"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "앤트로픽 '나스닥 상장' 첫 거래서 34% 상승…시총 2조달러"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "[속보] 앤트로픽 상장 첫날 17% 폭등에도…나스닥은 2%대 급락"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.84,
         "continuity_gaps": [
           "발단·의혹",
-          "입장·공방"
+          "입장·공방",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ia6f9d773",
+      "title": "시진핑 돕는 트럼프?…'조는 듯한 트럼프' 모습도",
+      "category": "세계",
+      "rank": 4,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "중국 선전에서 열린 APEC 정상회의 기간 중 도널드 트럼프 미국 대통령은 시진핑 중국 국가주석 및 푸틴 러시아 대통령과 연쇄 회담을 갖고 개인적 친분을 강조했습니다.",
+        "도널드 트럼프 미국 대통령과 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령이 중국 선전에서 열린 아시아태평양경제협력체(APEC) 정상회의를 계기로 회동했습니다.",
+        "세 사람이 동시에 한 자리에서 만나 회담을...",
+        "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
+        "트럼프는 ‘내 친구’ 연발했지만…“시진핑·푸틴은 美패권흔들기”"
+      ],
+      "sources": [
+        {
+          "press": "ichannela.com",
+          "title": "21세기 얄타회담? 역사적 ‘3샷’ 첫 미중러 정상회담 개최…트럼프 “...",
+          "url": "https://n.news.naver.com/mnews/article/449/0000368129?sid=104"
+        },
+        {
+          "press": "한겨레",
+          "title": "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQRU1LTTVIX1FKTEZmVl9aazhOdXFsbGViZVNCZHJvV1dXLTVOVG5NN0J5SEZ4TzRJWVNwQnVvNVRDN0ctTXktZjF3dWFRUml0QlYzcV9sX2hqTkFGbUVLWnFsQ2xWU2dpWVlFMENBQ1JDV2d2QnVhdEpfSHUzWWpHSkF3?oc=5"
+        },
+        {
+          "press": "헤럴드경제",
+          "title": "트럼프는 ‘내 친구’ 연발했지만…“시진핑·푸틴은 美패권흔들기”",
+          "url": "https://v.daum.net/v/20261120065921394"
+        },
+        {
+          "press": "연합뉴스",
+          "title": "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\"",
+          "url": "https://n.news.naver.com/article/001/0016453374"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "중국 선전에서 열린 APEC 정상회의 기간 중 도널드 트럼프 미국 대통령은 시진핑 중국 국가주석 및 푸틴 러시아 대통령과 연쇄 회담을 갖고 개인적 친분을 강조했습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "이는 시진핑과 푸틴의 장기 집권과 대조적으로 트럼프의 외교적 영향력이 제한적일 수 있음을 의미한다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "미국 블룸버그통신 등에 따르면 도널드 트럼프 미국 대통령과 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령은 어제(19일) 중국 광둥성 선전에서 약 1시간 30분간 회담을 가졌습니다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "친분 과시에도 불구하고 실익 없는 외교라는 비판이 이어졌습니다. 특히 트럼프 대통령의 행보가 미국의 패권을 흔들려는 중·러의 전략에 이용당하고 있다는 해석이 강화되는 양상을 보입니다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.76,
+        "continuity_gaps": [
+          "사법·처분"
         ],
         "no_generic_closing": true
       }

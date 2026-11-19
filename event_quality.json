@@ -1,71 +1,106 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 22:58:57",
+  "updated_at": "2026-11-19 22:25:46",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.85,
+  "average_quality": 0.8,
   "issues": [
     {
-      "id": "i612fb5ca",
-      "title": "김민석 “대법원 판결, 역사적 반역…조희대 탄핵해야”",
-      "episode": "episode:b2f156d427cd5d",
+      "id": "i44d7ba3a",
+      "title": "민주당, 조희대 탄핵 추진…“한덕수 판결은 역사적 반역”",
+      "episode": "episode:8e15c4acf0c4f4",
       "quality": 0.92,
       "stages": [
-        "사법·처분",
         "일반 보도",
         "입장·공방",
+        "사법·처분",
         "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
         "파장·후속"
       ],
-      "duplicate_candidates": 41,
+      "duplicate_candidates": 43,
+      "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i8b704c0d",
+      "title": "‘리트 만점자’ 이진우, 모텔서 숨진 채 발견",
+      "episode": "episode:5b6024703fa66b",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
+      "episode": "episode:28b5802722ebe0",
+      "quality": 0.84,
+      "stages": [
+        "발단·의혹",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 34,
       "event_count": 18,
       "evidence_rate": 1.0
     },
     {
-      "id": "i942112c6",
-      "title": "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]",
-      "episode": "episode:6b090e9eecbd64",
+      "id": "i44a3fa32",
+      "title": "한덕수 파기환송에 與 '조희대 탄핵' 카드…野 반발 속 정국 격랑",
+      "episode": "episode:cd79dff35bc079",
       "quality": 1.0,
       "stages": [
-        "일반 보도",
         "사법·처분",
-        "수사·대응",
+        "일반 보도",
+        "발단·의혹",
         "입장·공방",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 36,
+      "event_count": 20,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia6f9d773",
+      "title": "시진핑 돕는 트럼프?…'조는 듯한 트럼프' 모습도",
+      "episode": "episode:3081df6e8601d8",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
         "파장·후속"
       ],
       "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i9ca42256",
-      "title": "민주, 끝내 '조희대 탄핵' 공식화...국힘 \"의회 쿠데타\"",
-      "episode": "episode:a6dcb94adc5b60",
-      "quality": 1.0,
-      "stages": [
+        "발단·의혹",
         "입장·공방",
-        "수사·대응",
-        "파장·후속",
-        "일반 보도",
-        "사법·처분"
+        "수사·대응"
       ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 41,
-      "event_count": 10,
+      "duplicate_candidates": 30,
+      "event_count": 13,
       "evidence_rate": 1.0
     },
     {
-      "id": "i726dffe8",
-      "title": "앤트로픽, 상장 첫날 111.5달러에 거래 시작…시총 2조달러 돌파",
-      "episode": "episode:96163391eb69e2",
+      "id": "iad16c72b",
+      "title": "[속보] 앤트로픽, 상장 첫날 97.17달러로 마감… 공모가 대비 17.07% 올라",
+      "episode": "episode:38c208b4867d8b",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -77,37 +112,19 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 46,
-      "event_count": 58,
+      "duplicate_candidates": 37,
+      "event_count": 72,
       "evidence_rate": 1.0
     },
     {
-      "id": "i73b7c1d8",
-      "title": "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\"",
-      "episode": "episode:468928e05f4f18",
-      "quality": 0.92,
+      "id": "i31389b17",
+      "title": "[MUST KNOW5]앤트로픽, 상장 30분 만에 시초가 대비 13% 급락...변동성 '극심'",
+      "episode": "episode:5aed53750a5a6a",
+      "quality": 0.84,
       "stages": [
-        "일반 보도",
-        "수사·대응",
         "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i4cb8c202",
-      "title": "앤트로픽, 111.5달러에 나스닥 상장 첫 거래 시작",
-      "episode": "episode:63839aa2732d34",
-      "quality": 0.76,
-      "stages": [
         "일반 보도",
-        "파장·후속"
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
@@ -115,7 +132,26 @@
         "수사·대응"
       ],
       "duplicate_candidates": 32,
-      "event_count": 13,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iaceb38d7",
+      "title": "\"김정은, 핵보유국 전략외교…트럼프와 만남에 가치 못느껴\"",
+      "episode": "episode:e0186d457eb9b2",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 44,
+      "event_count": 11,
       "evidence_rate": 1.0
     },
     {
@@ -125,34 +161,16 @@
       "quality": 0.92,
       "stages": [
         "일반 보도",
-        "수사·대응",
+        "입장·공방",
         "파장·후속",
-        "입장·공방"
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
         "사법·처분"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iaceb38d7",
-      "title": "\"김정은, 핵보유국 전략외교…트럼프와 만남에 가치 못느껴\"",
-      "episode": "episode:8c9c296287eb6d",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 40,
-      "event_count": 12,
+      "duplicate_candidates": 29,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
@@ -161,32 +179,32 @@
       "episode": "episode:ff57cc44ceb6e9",
       "quality": 0.58,
       "stages": [
-        "수사·대응",
-        "사법·처분",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8b27399e",
-      "title": "AI안경 쓰고, 폰으로 수능문제 촬영… 신발 속에 폰 숨기기도",
-      "episode": "episode:4c3acacdeef959",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "수사·대응"
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
       "duplicate_candidates": 22,
-      "event_count": 6,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5869c7ce",
+      "title": "초토화된 겨울수박, 쩍쩍 갈라진 배… 극한 기후 후유증",
+      "episode": "episode:1e23837253c27a",
+      "quality": 0.38,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 3,
+      "event_count": 1,
       "evidence_rate": 1.0
     }
   ]
