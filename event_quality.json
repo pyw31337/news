@@ -1,32 +1,90 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 04:51:33",
+  "updated_at": "2026-11-19 05:20:35",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.82,
+  "average_quality": 0.87,
   "issues": [
     {
-      "id": "i5b940f09",
-      "title": "[단독] ‘리트 만점자’ 이진우 연락 두절…경찰, 송파구 수색 중",
-      "episode": "episode:f54afb0c9c902e",
-      "quality": 0.76,
+      "id": "i4b32f6df",
+      "title": "[속보] ‘리트 만점자’ 이진우, 천호동 모텔서 심정지 상태로 발견",
+      "episode": "episode:75da05e4a0d4f0",
+      "quality": 0.92,
       "stages": [
-        "수사·대응",
+        "일반 보도",
+        "발단·의혹",
+        "사법·처분",
+        "수사·대응"
+      ],
+      "gaps": [
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i089816b0",
+      "title": "교육부 \"긴급재난문자 발송으로 스마트폰 소지 22명 적발\"",
+      "episode": "episode:79e40f227d8f6f",
+      "quality": 0.74,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i21db63ef",
+      "title": "수능 ‘위급재난문자’ 쐈더니…숨긴 스마트폰 22대 적발",
+      "episode": "episode:9c4bb02e0ac8f7",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
         "입장·공방"
       ],
       "gaps": [
         "발단·의혹",
-        "사법·처분",
-        "파장·후속"
+        "수사·대응",
+        "사법·처분"
       ],
-      "duplicate_candidates": 34,
+      "duplicate_candidates": 32,
       "event_count": 4,
       "evidence_rate": 1.0
     },
     {
-      "id": "ib7cc35a6",
-      "title": "이 대통령, 조작 기소 특검법 공포안 재가...특검 임명만 남아",
-      "episode": "episode:904971e3db1c07",
+      "id": "ifdfc2a60",
+      "title": "[속보] 경찰, 행방불명 ‘리트 만점자’ 광진→송파→강동 추적중",
+      "episode": "episode:fadb656f9f27cc",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "gaps": [
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i20ae50bd",
+      "title": "이 대통령, 순방 중 조작기소 특검 재가·공포... 즉시 시행",
+      "episode": "episode:730873abb522ee",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -38,88 +96,32 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 35,
-      "event_count": 44,
+      "duplicate_candidates": 31,
+      "event_count": 50,
       "evidence_rate": 1.0
     },
     {
-      "id": "ib8ce9fa8",
-      "title": "수능 부정행위 22건 적발...\"위급재난문자로 확인\"",
-      "episode": "episode:608743374e91f1",
-      "quality": 0.92,
+      "id": "i1b3ce19a",
+      "title": "韓총리, '폐기시한 도래' 지난해 수능 시험지 보관 긴급 지시",
+      "episode": "episode:b8de73dfb6c647",
+      "quality": 0.76,
       "stages": [
-        "일반 보도",
-        "파장·후속",
         "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3993df4c",
-      "title": "재난문자로 스마트폰 22명 적발, 부정행위 처리…시험 지연 없어",
-      "episode": "episode:72f1aed85de571",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "수사·대응"
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 35,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i52d72b90",
-      "title": "김건희·한덕수 오늘 대법 선고...3대 의혹·내란 최종 판단",
-      "episode": "episode:9c7cca5d10d724",
-      "quality": 0.92,
-      "stages": [
-        "사법·처분",
-        "수사·대응",
-        "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 30,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1896f62b",
-      "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-      "episode": "episode:4abe012bf871a9",
-      "quality": 1.0,
-      "stages": [
-        "파장·후속",
-        "사법·처분",
-        "발단·의혹",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 32,
-      "event_count": 7,
+      "duplicate_candidates": 26,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
       "id": "iab250fb5",
       "title": "[지스타 2026] [현장] 대형사 빠져도 북적…추위 뚫은 게임 팬심",
-      "episode": "episode:4622061e7d1dfa",
+      "episode": "episode:b509011acf43f4",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -129,14 +131,52 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 22,
+      "duplicate_candidates": 21,
       "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "ie50fe4a7",
-      "title": "[속보] 리트 만점자 천호동 모텔에서 발견",
-      "episode": "episode:a00fe02988b9a6",
+      "id": "i427d2a9f",
+      "title": "[선전 APEC]트럼프, 푸틴과 짧은 비공개 회동…\"많은 좋은 일 생길 것\"",
+      "episode": "episode:b5257e7b74eccc",
+      "quality": 1.0,
+      "stages": [
+        "입장·공방",
+        "파장·후속",
+        "일반 보도",
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "gaps": [
+        "수사·대응"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 36,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id0d27ff9",
+      "title": "장애 아들 앞 폭행… ‘김창민 감독 살해’ 피의자들 징역 12년·3년",
+      "episode": "episode:8008d355067f47",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "사법·처분",
+        "입장·공방",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 30,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i4cd3a560",
+      "title": "[속보]잠적한 '리트 만점자' 이진우, '서울대 치대 합격' 수능 시험지 폐기될 수도",
+      "episode": "episode:bd904f51df33a8",
       "quality": 0.92,
       "stages": [
         "일반 보도",
@@ -148,42 +188,8 @@
         "사법·처분",
         "파장·후속"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie6c42873",
-      "title": "17m 시계탑에 캐럴까지…잠실 한복판에 펼쳐진 '19세기 영국' [르포]",
-      "episode": "episode:bef64ad3312c8c",
-      "quality": 0.48,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 9,
-      "event_count": 2,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i457932fd",
-      "title": "승리, 만삭 20대 아내와 동반 입국…D라인 포착",
-      "episode": "episode:8d552bd48004a5",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 21,
-      "event_count": 9,
+      "duplicate_candidates": 28,
+      "event_count": 8,
       "evidence_rate": 1.0
     }
   ]

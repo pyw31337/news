@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-19",
-  "generated_at": "2026-11-19T13:51:34+09:00",
+  "generated_at": "2026-11-19T14:20:36+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,220 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i5b940f09",
-      "title": "[단독] ‘리트 만점자’ 이진우 연락 두절…경찰, 송파구 수색 중",
-      "category": "사회",
-      "rank": 1,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "법학적성시험(LEET) 최초 만점자로 알려진 이진우 씨가 부정시험 의혹을 해소하기 위해 2027학년도 수능 국어 영역 실시간 풀이 공개 검증을 예고했으나, 당일 현장에 나타나지 않아 검증이 불발되었습니다.",
-        "[단독] ‘리트 만점자’ 이진우 연락 두절…경찰, 송파구 수색 중",
-        "리트 만점자 이진우 사망 여부 확인 중 (사진=유튜브 영상 캡쳐) 인공지능(AI)을 활용한 법학적성시험(LEET...",
-        "신고를 받은 경찰과 소방 당국은 일대 수색 작업을 벌인 끝에 신고 접수 약 4시간 30분 만인 오후 1시 12분경 서울...",
-        "[속보]경찰에 리트 만점자 이진우씨 실종신고 접수…“집에 없는 것 확인”"
-      ],
-      "sources": [
-        {
-          "press": "KBS",
-          "title": "[단독] ‘리트 만점자’ 이진우 연락 두절…경찰, 송파구 수색 중",
-          "url": "https://n.news.naver.com/article/056/0012297009"
-        },
-        {
-          "press": "gukjenews.com",
-          "title": "[2보] \"4시간 30분 만에 발견\"… 공개 검증 불참 이진우 사망 여부 확인...",
-          "url": "https://www.gukjenews.com/news/articleView.html?idxno=3757087"
-        },
-        {
-          "press": "경향신문",
-          "title": "[속보]경찰에 리트 만점자 이진우씨 실종신고 접수…“집에 없는 것 확인”",
-          "url": "https://n.news.naver.com/article/032/0003483664"
-        },
-        {
-          "press": "한겨레",
-          "title": "경찰, 실종신고 ‘리트 만점’ 이진우 서울 광진구서 수색 중",
-          "url": "https://n.news.naver.com/article/028/0002832929"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "법학적성시험(LEET) 최초 만점자로 알려진 이진우 씨가 부정시험 의혹을 해소하기 위해 2027학년도 수능 국어 영역 실시간 풀이 공개 검증을 예고했으나, 당일 현장에 나타나지 않아 검증이 불발되었습니다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "경찰과 소방 당국은 이 씨가 모텔에 머물게 된 경위와 심정지에 이르게 된 구체적인 원인 등 사건 전반을..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "신고를 받은 경찰과 소방 당국은 일대 수색 작업을 벌인 끝에 신고 접수 약 4시간 30분 만인 오후 1시 12분경 서울..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "공개 검증 당일 이 씨가 돌연 연락 두절 및 불참하면서 의혹이 사실로 굳어지는 분위기이며, 경찰 수사가 시작되었습니다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.76,
-        "continuity_gaps": [
-          "발단·의혹",
-          "사법·처분",
-          "파장·후속"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i3993df4c",
-      "title": "재난문자로 스마트폰 22명 적발, 부정행위 처리…시험 지연 없어",
-      "category": "사회",
-      "rank": 4,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "2026년 11월 19일 치러진 2027학년도 대학수학능력시험에서 교육부가 1교시 시작 전 발송한 위급재난문자를 통해 시험장에 스마트폰을 소지한 수험생 22명을 적발했다.",
-        "교육부 \"시험장 스마트폰 22대 적발…시험 지연 사례 아직 없어\"[2027 수능]",
-        "[속보]교육부 “재난문자로 전국서 22개 스마트폰 적발”",
-        "수능 시험 진행…“재난문자로 스마트폰 22개 적발”",
-        "최은옥 교육부 차관이 19일 오전 세종시 정부세종청사에서 2027년도 대학수학능력시험 중 수능 위급재난문자 발송으로 적발된 22대 스마트폰의 수험생에 대한 브리핑을 하고 있다."
-      ],
-      "sources": [
-        {
-          "press": "뉴시스",
-          "title": "교육부 \"시험장 스마트폰 22대 적발…시험 지연 사례 아직 없어\"[2027 수능]",
-          "url": "https://n.news.naver.com/article/003/0014332544"
-        },
-        {
-          "press": "문화일보",
-          "title": "[속보]교육부 “재난문자로 전국서 22개 스마트폰 적발”",
-          "url": "https://n.news.naver.com/article/021/0002833941"
-        },
-        {
-          "press": "KBS",
-          "title": "수능 시험 진행…“재난문자로 스마트폰 22개 적발”",
-          "url": "https://n.news.naver.com/article/056/0012297165"
-        },
-        {
-          "press": "wikitree.co.kr",
-          "title": "“와..똑똑하다”… 하필이면 오늘 수능 당일 ‘14시 21분’에 재난문자...",
-          "url": "https://www.wikitree.co.kr/articles/1175960"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "2026년 11월 19일 치러진 2027학년도 대학수학능력시험에서 교육부가 1교시 시작 전 발송한 위급재난문자를 통해 시험장에 스마트폰을 소지한 수험생 22명을 적발했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "[특징주] 수능 스마트폰 22대 적발 속 지슨 5%대 상승"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "교육부 \"시험장 스마트폰 22대 적발…시험 지연 사례 아직 없어\"[2027 수능]"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "수능 당일 오전 재난문자 발송을 통한 스마트폰 적발 사실이 공개되었으며, 이후 교육부가 추가적인 부정행위 방지를 위해 2차 재난문자 발송 계획을 밝히며 대응 수위를 높이는 흐름을 보인다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i1896f62b",
-      "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-      "category": "사회",
-      "rank": 6,
+      "issue_id": "i427d2a9f",
+      "title": "[선전 APEC]트럼프, 푸틴과 짧은 비공개 회동…\"많은 좋은 일 생길 것\"",
+      "category": "세계",
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -248,49 +38,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "집행유예 중에도 같은 수법으로 범행 저질러 징역 6개월 선고 이영섭 김빛나 기자 = 부정시험 의혹으로 고발된 법학적성시험(LEET·리트) 만점자 이진우(32)씨가 과거 여러 차례 형사처벌을 받은 것으로 보인다.",
-        "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-        "만점자 이진우(32) 씨가 과거 경찰관 폭행을 비롯해 여러 차례 형사처벌을 받은 전력이 드러났다.",
-        "19일 연합뉴스가 확보한 판결문에 따르면, 이 씨와 생년월일 및 개명 전 이름이 일치하는 인물은 고의로 교통사고를 낸...",
-        "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다"
+        "아시아태평양경제협력체(APEC) 정상회의 참석을 위해 중국 선전을 방문한 이재명 대통령이 18일(현지시각) 블라디미르 푸틴 러시아 대통령과 취임 후 첫 만남을 가졌다.",
+        "이 대통령, 푸틴 러 대통령과 10여분 회동…“한반도 정세 악화 방지 의견 일치”",
+        "트럼프 대통령은 푸틴 대통령과 회동한 후 이날 오후 시진핑 중국 국가주석과 양자 회담을 한다.",
+        "이후 곧바로 시 주석, 푸틴 대통령과 함께 3국 정상회담을 진행할 예정이다.",
+        "이들 3국 정상이 함께 회담을 갖는 것은..."
       ],
       "sources": [
         {
-          "press": "중앙일보",
-          "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-          "url": "https://n.news.naver.com/article/025/0003566361"
+          "press": "경향신문",
+          "title": "이 대통령, 푸틴 러 대통령과 10여분 회동…“한반도 정세 악화 방지 의견 일치”",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1oM2FnSExGTnA0TDNyaVUzSWFJU0lEalZDMkNZNV9KQUJvLWhZam5GTlNJVDE1Y2swRmFlNXB4ZU84ZHk5cnBqOWtIc0xoeU9FM0pKN3ZWYjdmZ9IBX0FVX3lxTE9PSHVaR09RUjVkRU4yLVdkUVVSdThTcGtURGU1eExCMy1LS0JOdXpBVzZXY3EwcTdrcktGemJlajBJTWw5MmdGb0tXdk04MTNXUGhDSEtadzh2R25pWU1z?oc=5"
         },
         {
-          "press": "mydaily.co.kr",
-          "title": "“전과자가 대한민국 뒤흔들었다”…‘AI 리트 만점 의혹’ 이진우, 경...",
-          "url": "https://m.entertain.naver.com/article/117/0004126392"
+          "press": "sidae.com",
+          "title": "트럼프·푸틴, APEC서 약식 회담…\"훌륭한 일 나올 수 있어\"",
+          "url": "https://n.news.naver.com/mnews/article/417/0001164908?sid=104"
         },
         {
-          "press": "동아일보",
-          "title": "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다",
-          "url": "https://n.news.naver.com/article/020/0003763620"
+          "press": "news1.kr",
+          "title": "트럼프·푸틴 APEC서 약식 양자회담…\"많은 훌륭한 일 나올 것\"",
+          "url": "https://n.news.naver.com/mnews/article/421/0009299002?sid=104"
         },
         {
-          "press": "주간경향",
-          "title": "‘리트냥이’ 이진우 ‘고의 교통사고’ 실형, 경찰 폭행도",
-          "url": "https://n.news.naver.com/article/033/0000053481"
+          "press": "yonhapnewstv.co.kr",
+          "title": "북한 \"조용원, 러시아 상원의장과 회동 후 귀국\" 보도",
+          "url": "https://n.news.naver.com/mnews/article/422/0000927809?sid=100"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "집행유예 중에도 같은 수법으로 범행 저질러 징역 6개월 선고 이영섭 김빛나 기자 = 부정시험 의혹으로 고발된 법학적성시험(LEET·리트) 만점자 이진우(32)씨가 과거 여러 차례 형사처벌을 받은 것으로 보인다."
+          "evidence": "아시아태평양경제협력체(APEC) 정상회의 참석을 위해 중국 선전을 방문한 이재명 대통령이 18일(현지시각) 블라디미르 푸틴 러시아 대통령과 취임 후 첫 만남을 가졌다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "19일 연합뉴스가 확보한 판결문에 따르면, 이 씨와 생년월일 및 개명 전 이름이 일치하는 인물은 고의로 교통사고를 낸..."
+          "evidence": "유럽은 트럼프 미국 대통령과 푸틴 러시아 대통령이 우크라이나의 의사를 충분히 반영하지 않고 종전 조건에..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "만점자 이진우(32) 씨가 과거 경찰관 폭행을 비롯해 여러 차례 형사처벌을 받은 전력이 드러났다."
+          "evidence": "이 대통령, 푸틴 러 대통령과 10여분 회동…“한반도 정세 악화 방지 의견 일치”"
         },
         {
           "panel": 4,
@@ -333,7 +123,217 @@
         "numeric_or_specific_evidence": true,
         "sources": 4,
         "continuity_quality": 1.0,
-        "continuity_gaps": [],
+        "continuity_gaps": [
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i4b32f6df",
+      "title": "[속보] ‘리트 만점자’ 이진우, 천호동 모텔서 심정지 상태로 발견",
+      "category": "사회",
+      "rank": 1,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "법학적성시험(LEET) 첫 전 영역 만점자로 알려진 이진우 씨가 인공지능(AI) 부정행위 의혹에 휩싸인 가운데, 19일 오후 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견되었습니다.",
+        "[속보] ‘리트 만점자’ 이진우씨, 천호역 인근서 심정지 상태로 발견",
+        "'리트 만점자' 심정지 상태로 발견…\"자세한 경위 확인\"",
+        "[속보]‘리트 만점자’, 천호동 모텔서 심정지 상태 발견",
+        "흔적을 발견할 수 없었다."
+      ],
+      "sources": [
+        {
+          "press": "조선일보",
+          "title": "[속보] ‘리트 만점자’ 이진우씨, 천호역 인근서 심정지 상태로 발견",
+          "url": "https://n.news.naver.com/article/023/0004010551"
+        },
+        {
+          "press": "JTBC",
+          "title": "'리트 만점자' 심정지 상태로 발견…\"자세한 경위 확인\"",
+          "url": "https://n.news.naver.com/article/437/0000521479"
+        },
+        {
+          "press": "문화일보",
+          "title": "[속보]‘리트 만점자’, 천호동 모텔서 심정지 상태 발견",
+          "url": "https://n.news.naver.com/article/021/0002834040"
+        },
+        {
+          "press": "sentv.co.kr",
+          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
+          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "법학적성시험(LEET) 첫 전 영역 만점자로 알려진 이진우 씨가 인공지능(AI) 부정행위 의혹에 휩싸인 가운데, 19일 오후 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견되었습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "회사는 하청업체 소속 60대 근로자가 세대 내부 보일러실 벽체 도장 준비작업(테이핑) 중 원인 미상의 심정지 상태로 발견돼 119로 병원에 옮겨졌으나 사망했다고 밝혔다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "4억포린트 벌금은 2025년 12월 적발된..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "공개 검증 당일 이 씨가 심정지 상태로 발견되면서, 의혹에 대한 진상 규명보다는 사건의 경위 파악이 우선시되는 상황으로 전개되었습니다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "입장·공방",
+          "파장·후속"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i4cd3a560",
+      "title": "[속보]잠적한 '리트 만점자' 이진우, '서울대 치대 합격' 수능 시험지 폐기될 수도",
+      "category": "사회",
+      "rank": 10,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "법학적성시험(LEET) 만점자로 알려진 이진우씨가 인공지능(AI) 부정행위 의혹에 휩싸인 가운데, 그가 합격한 서울대 치대 입학의 근거가 된 지난해 수능 시험지가 폐기될 위기에 처했다.",
+        "'최하위권→치대' 이진우뿐이겠나...\"수능 3년 전부터 다",
+        "법학적성시험(리트·LEET) 만점자 이진우씨가 공개검증 당일 불참으로 무산된 가운데, 검증을 주관한...",
+        "2026학년도 수능에서는 전 과목 1등급을 달성해 서울대 치대로 옮겼다.",
+        "자신의 성적 상승 비결을 담은 책 ‘브레인..."
+      ],
+      "sources": [
+        {
+          "press": "머니투데이",
+          "title": "'최하위권→치대' 이진우뿐이겠나...\"수능 3년 전부터 다 부정행위\"",
+          "url": "https://n.news.naver.com/article/008/0005443531"
+        },
+        {
+          "press": "kyeonggi.com",
+          "title": "‘리트 만점자’ 공개검증 주관사, “소송 안 할 것”…생중계 수익은 ...",
+          "url": "https://n.news.naver.com/mnews/article/666/0000132852?sid=102"
+        },
+        {
+          "press": "newsen.com",
+          "title": "“마음 무겁다” 미미미누 백지연, 심정지 상태 발견 ‘리트 만점’ 이...",
+          "url": "https://m.entertain.naver.com/article/609/0001189171"
+        },
+        {
+          "press": "한겨레",
+          "title": "리트 만점자 ‘서울대 합격’ 수능시험지 아직 있다…경찰, 증거보전 요청",
+          "url": "https://n.news.naver.com/article/028/0002832981"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "법학적성시험(LEET) 만점자로 알려진 이진우씨가 인공지능(AI) 부정행위 의혹에 휩싸인 가운데, 그가 합격한 서울대 치대 입학의 근거가 된 지난해 수능 시험지가 폐기될 위기에 처했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "자신의 성적 상승 비결을 담은 책 ‘브레인..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "'최하위권→치대' 이진우뿐이겠나...\"수능 3년 전부터 다"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "시험지 폐기 시점이 임박했다는 우려가 커지면서, 증거 확보를 위한 경찰의 긴급한 움직임과 정치권의 진상 규명 요구가 맞물려 긴장감이 고조되었다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "사법·처분",
+          "파장·후속"
+        ],
         "no_generic_closing": true
       }
     }
