@@ -1,106 +1,51 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 19:50:31",
+  "updated_at": "2026-11-19 18:56:38",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.88,
+  "average_quality": 0.85,
   "issues": [
     {
-      "id": "i942112c6",
-      "title": "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]",
-      "episode": "episode:d23cb3dadc1d02",
+      "id": "id74595d9",
+      "title": "경찰, ‘리트 만점’ 이진우 심정지 상태로 발견",
+      "episode": "episode:e811c4324b946a",
       "quality": 1.0,
       "stages": [
-        "사법·처분",
+        "일반 보도",
         "발단·의혹",
+        "사법·처분",
         "입장·공방",
         "파장·후속",
         "수사·대응"
       ],
       "gaps": [],
       "duplicate_candidates": 33,
-      "event_count": 5,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i612fb5ca",
-      "title": "김민석 “대법원 판결, 역사적 반역…조희대 탄핵해야”",
-      "episode": "episode:a1ba66dce2062d",
+      "id": "i8ceae6b8",
+      "title": "[속보] 李대통령, 조작기소 특검법 재가…19일 공포 즉시 시행",
+      "episode": "episode:2fde32d02e794e",
       "quality": 0.92,
       "stages": [
         "일반 보도",
         "사법·처분",
-        "입장·공방",
+        "파장·후속",
         "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 41,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if2d2f086",
-      "title": "李대통령, 순방 중 조작기소 특검법 재가…공포돼 즉시 시행",
-      "episode": "episode:15dc1b3685e4b1",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "수사·대응",
         "입장·공방"
       ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 20,
+      "duplicate_candidates": 25,
+      "event_count": 15,
       "evidence_rate": 1.0
     },
     {
-      "id": "i4993f934",
-      "title": "LEET 만점자, 서울대 '사망 제적' 예정…\"입학취소는 불가\"",
-      "episode": "episode:cd98df3f20ec2b",
-      "quality": 1.0,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "사법·처분",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 45,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if30f7013",
-      "title": "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\"",
-      "episode": "episode:8cb8188bd02fbd",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i6230700a",
-      "title": "[속보] 경기도 용인 수능 시험장에서 초소형카메라 발견",
-      "episode": "episode:2f412d97e6b0ab",
+      "id": "i1be66b15",
+      "title": "[속보]“용인 수능 시험장서 초소형카메라·이어폰 발견”",
+      "episode": "episode:f9f8238dbe3a8a",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -112,8 +57,27 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 4,
+      "duplicate_candidates": 32,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iaf95e927",
+      "title": "재난문자 세 번 울린 수능…49명 들통나 '성적 무효'",
+      "episode": "episode:f971fc84069d67",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
@@ -134,32 +98,69 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "iaceb38d7",
-      "title": "\"김정은, 핵보유국 전략외교…트럼프와 만남에 가치 못느껴\"",
-      "episode": "episode:bed9cce860e80e",
+      "id": "i9588a945",
+      "title": "[수능] 대전서 재난문자 울려 2명 퇴실…부정행위 모두 23건 적발(종합)",
+      "episode": "episode:8482de5d9d9c46",
       "quality": 0.84,
       "stages": [
         "일반 보도",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
         "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 39,
-      "event_count": 51,
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "if11d90b0",
-      "title": "'신발 벗겨보니' 휴대폰이…수능장 경고에도 기어이 들고 갔다",
-      "episode": "episode:726f144d81d80c",
+      "id": "ibfd9833f",
+      "title": "푸틴 보좌관, 보란 듯 '핵가방' 들고 이동…\"핵위력 과시\"",
+      "episode": "episode:da0e349dd2b9e4",
+      "quality": 0.76,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3d40b014",
+      "title": "\"국어 1등급 커트라인 90∼95점, 수학 84∼90점\"",
+      "episode": "episode:feb22b31c6c247",
+      "quality": 0.66,
+      "stages": [
+        "파장·후속",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 25,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i6e27ef5c",
+      "title": "시험도중에도 \"삐~\"…위급재난문자로 49명 등 총 98명 적발",
+      "episode": "episode:29d753037cce35",
       "quality": 0.92,
       "stages": [
-        "수사·대응",
         "일반 보도",
+        "수사·대응",
         "파장·후속",
         "입장·공방"
       ],
@@ -168,25 +169,25 @@
         "사법·처분"
       ],
       "duplicate_candidates": 23,
-      "event_count": 10,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i3ea90338",
-      "title": "\"부정행위자 총 98명 처리...시험 도중 스마트기기 활용 5건\" [현장영상+]",
-      "episode": "episode:2fbdc5e3868095",
-      "quality": 0.84,
+      "id": "i942a0799",
+      "title": "수능 부정행위 98명 적발…초소형 카메라에 '신발 깔창 속 휴대폰'까지",
+      "episode": "episode:66483e7213978a",
+      "quality": 1.0,
       "stages": [
-        "파장·후속",
         "일반 보도",
-        "수사·대응"
+        "발단·의혹",
+        "수사·대응",
+        "파장·후속",
+        "입장·공방"
       ],
       "gaps": [
-        "발단·의혹",
-        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 32,
+      "duplicate_candidates": 30,
       "event_count": 9,
       "evidence_rate": 1.0
     }
