@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-19T19:52:41.738521+09:00",
-  "alerts_count": 13,
+  "updated": "2026-11-19T19:18:13.502333+09:00",
+  "alerts_count": 14,
   "alerts": [
     {
       "id": "urn:oid:2.49.0.1.840.0.56247f053e50af9d5740713ecb1b4fbc9b93307c.001.2",
@@ -81,6 +81,22 @@
       "headline_ko": "San Luis Obispo 홍수 경보",
       "headline_en": "San Luis Obispo Flash Flood Warning",
       "desc": "FFWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Flash Flood Warning for...\nSouthern San Luis Obispo County in southwestern California...\nNorthwestern Santa Barbara County in southwestern California...\n\n* Until 300 AM PST.\n\n* At 105 AM PST, Doppler radar and automated rain "
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.18dc89620786164bf10669ff0ee964ad30532553.001.1",
+      "t": "2026-11-19 00:44",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Santa Barbara",
+      "area_en": "Santa Barbara",
+      "event": "홍수 경보",
+      "event_en": "Flash Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "Santa Barbara 홍수 경보",
+      "headline_en": "Santa Barbara Flash Flood Warning",
+      "desc": "FFWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Flash Flood Warning for...\nWest Central Santa Barbara County in southwestern California...\n\n* Until 245 AM PST.\n\n* At 1244 AM PST, Doppler radar and automated rain gauges indicated\nheavy rain falling across the warned area. B"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.2fd23a4b6db8f00869fcd41bfa9a20f8d550cc13.001.1",
@@ -302,11 +318,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 4.5,
-      "apparent_temp": 1.5,
+      "temp": 4.4,
+      "apparent_temp": 1.2,
       "humidity": 68,
       "code": 0,
-      "wind": 5.4
+      "wind": 6.4
     },
     {
       "id": "losangeles",
@@ -316,11 +332,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 15.0,
-      "apparent_temp": 13.8,
-      "humidity": 80,
+      "temp": 15.4,
+      "apparent_temp": 14.5,
+      "humidity": 78,
       "code": 3,
-      "wind": 11.4
+      "wind": 8.9
     },
     {
       "id": "london",
@@ -330,11 +346,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 7.8,
-      "apparent_temp": 5.8,
-      "humidity": 89,
-      "code": 3,
-      "wind": 7.2
+      "temp": 7.6,
+      "apparent_temp": 5.7,
+      "humidity": 90,
+      "code": 51,
+      "wind": 6.8
     },
     {
       "id": "paris",
@@ -344,11 +360,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 12.2,
-      "apparent_temp": 8.8,
-      "humidity": 72,
+      "temp": 11.9,
+      "apparent_temp": 8.0,
+      "humidity": 73,
       "code": 3,
-      "wind": 18.3
+      "wind": 21.4
     },
     {
       "id": "frankfurt",
@@ -358,11 +374,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 11.9,
-      "apparent_temp": 8.7,
-      "humidity": 75,
+      "temp": 11.1,
+      "apparent_temp": 8.1,
+      "humidity": 82,
       "code": 2,
-      "wind": 17.7
+      "wind": 17.3
     },
     {
       "id": "tokyo",
@@ -372,9 +388,9 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 12.0,
-      "apparent_temp": 9.1,
-      "humidity": 47,
+      "temp": 12.3,
+      "apparent_temp": 9.4,
+      "humidity": 46,
       "code": 0,
       "wind": 6.0
     },
@@ -386,11 +402,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 2.4,
-      "apparent_temp": -2.9,
-      "humidity": 30,
+      "temp": 2.7,
+      "apparent_temp": -2.6,
+      "humidity": 29,
       "code": 0,
-      "wind": 11.7
+      "wind": 12.1
     },
     {
       "id": "singapore",
@@ -400,11 +416,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 26.2,
-      "apparent_temp": 32.0,
-      "humidity": 88,
+      "temp": 26.7,
+      "apparent_temp": 31.9,
+      "humidity": 84,
       "code": 3,
-      "wind": 1.9
+      "wind": 4.8
     },
     {
       "id": "sydney",
@@ -415,10 +431,10 @@
       "lat": -33.8688,
       "lon": 151.2093,
       "temp": 21.0,
-      "apparent_temp": 20.5,
-      "humidity": 79,
-      "code": 1,
-      "wind": 20.0
+      "apparent_temp": 20.6,
+      "humidity": 78,
+      "code": 0,
+      "wind": 20.3
     },
     {
       "id": "toronto",
@@ -428,11 +444,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 3.2,
-      "apparent_temp": -0.8,
+      "temp": 3.4,
+      "apparent_temp": 0.0,
       "humidity": 72,
-      "code": 0,
-      "wind": 11.7
+      "code": 1,
+      "wind": 7.4
     },
     {
       "id": "dubai",
@@ -443,10 +459,10 @@
       "lat": 25.2048,
       "lon": 55.2708,
       "temp": 28.1,
-      "apparent_temp": 29.7,
+      "apparent_temp": 29.9,
       "humidity": 58,
       "code": 0,
-      "wind": 12.3
+      "wind": 4.7
     },
     {
       "id": "saopaulo",
@@ -456,12 +472,21 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 23.2,
-      "apparent_temp": 25.5,
-      "humidity": 79,
+      "temp": 22.3,
+      "apparent_temp": 25.0,
+      "humidity": 83,
       "code": 1,
-      "wind": 8.9
+      "wind": 5.6
     }
   ],
-  "stories": []
+  "stories": [
+    {
+      "id": "gbe966c60",
+      "title": "Tag team: dual waterspouts appear in San Francisco Bay amid stormy weather",
+      "press": "Guardian Environment",
+      "image": "https://i.guim.co.uk/img/media/f9f5212fc0956900ba97c6edec783a649f9bb14b/630_0_6300_5042/master/6300.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=0d473755fcf9607a2ec2dc7a2b090824",
+      "score": 12.0,
+      "url": "g/gbe966c60"
+    }
+  ]
 }

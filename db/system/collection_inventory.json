@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "measured_at": "2026-11-20T10:00:52.538524+00:00",
+  "measured_at": "2026-11-19T10:20:22.880883+00:00",
   "rows": [
     {
       "id": "legal-lawoc",
@@ -35,9 +35,9 @@
       "evidence": {
         "directory_reported_providers": 33,
         "provider_links": 32,
-        "approved_providers": 24,
-        "candidate_links": 317,
-        "candidate_errors": 8,
+        "approved_providers": 23,
+        "candidate_links": 288,
+        "candidate_errors": 9,
         "bootstrap_seen": 130,
         "raw_documents": 260,
         "text_extracted": 259,
@@ -56,7 +56,7 @@
       "cadence": "매일 + 장중 공시",
       "workflow": "corporate.yml + collect.yml",
       "evidence": {
-        "corp_files": 550,
+        "corp_files": 532,
         "indexed_corps": 2505,
         "filings": 8121
       },
@@ -94,7 +94,7 @@
       "cadence": "매일 증분 / 대표 사실 일요일",
       "workflow": "people-photos.yml",
       "evidence": {
-        "people_files": 5435,
+        "people_files": 5270,
         "media_files": 0
       },
       "status": "ACTIVE_R2",
