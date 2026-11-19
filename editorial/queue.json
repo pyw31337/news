@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T06:53:16+09:00",
+  "generated_at": "2026-11-20T05:59:05+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,244 +27,24 @@
   },
   "candidates": [
     {
-      "issue_id": "ie7c3a1c6",
-      "title": "뉴욕증시, 하락 마감… 다우 5만선 붕괴·나스닥 2.25% 급락",
-      "category": "경제",
+      "issue_id": "i2bb9bdc4",
+      "title": "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\"",
+      "category": "세계",
       "rank": 10,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
-      "facts": [
-        "미국 뉴욕 증시가 19일(현지 시각) 일제히 상승 출발했다.",
-        "이날 뉴욕 증시는 앤트로픽의 나스닥시장 상장으로 장 초반에는 오름세로 출발했다.",
-        "전날 앤트로픽은 상장 공모가를 기존 희망 공모가인 70~78달러보다",
-        "높은 83달러로 책정해 투자심리를 끌어올렸다.",
-        "앤트로픽 상장 기대감에…뉴욕증시 일제히 상승 출발"
-      ],
-      "sources": [
-        {
-          "press": "sedaily.com",
-          "title": "‘앤트로픽 쏠림’에 AI주 약세...다우, 5개월만에 5만선 붕괴 [데일리국...",
-          "url": "https://n.news.naver.com/mnews/article/011/0004684228?sid=104"
-        },
-        {
-          "press": "조선비즈",
-          "title": "앤트로픽 상장 기대감에…뉴욕증시 일제히 상승 출발",
-          "url": "https://n.news.naver.com/article/366/0001206098"
-        },
-        {
-          "press": "sidae.com",
-          "title": "[속보] 앤트로픽 상장 첫날 17% 급등…뉴욕 3대 지수는 모두 하락",
-          "url": "https://n.news.naver.com/mnews/article/417/0001165009?sid=101"
-        },
-        {
-          "press": "mediapen.com",
-          "title": "[美증시] 3대 지수 동반급락, 앤트로픽 상장이 '악재'…대형기술주·반...",
-          "url": "https://www.mediapen.com/news/view/1138728"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "미국 뉴욕 증시가 19일(현지 시각) 일제히 상승 출발했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "높은 83달러로 책정해 투자심리를 끌어올렸다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "전날 앤트로픽은 상장 공모가를 기존 희망 공모가인 70~78달러보다"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i096dfece",
-      "title": "'늑대, 아니 김정은이 나타났다' 트럼프의 허풍외교…결국 '빈손' 귀국",
-      "category": "세계",
-      "rank": 4,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "도널드 트럼프 미국 대통령은 아시아 순방 기간 중 김정은 북한 국무위원장과의 만남 가능성을 수차례 언급했으나, 결국 회담은 성사되지 않은 채 19일 귀국길에 올랐다.",
-        "도널드 트럼프 미국 대통령은 시진핑 중국 국가주석과 인공지능(AI) 기술에 대한 제한적인 안전장치...",
-        "아울러 김정은 북한 국무위원장과의 회담이 성사되지 않은 데 아쉬움을 표하면서도 양측의 관계는...",
-        "도널드 트럼프 미국 대통령이 중국 방문 중 김정은 북한 국무위원장과의 회담이 불발되자 재회 가능성을 열어뒀다.",
-        "19일(현지시간) NBC 방송 등에 따르면 트럼프 대통령은 이날 전화 인터뷰에서 \"북한 지도자와 좋은..."
-      ],
-      "sources": [
-        {
-          "press": "news2day.co.kr",
-          "title": "[N2 모닝 경제 브리핑-11월 20일] 美 증시, 다우 5만선 붕괴 ‘검은 목요...",
-          "url": "https://www.news2day.co.kr/article/20261119500038"
-        },
-        {
-          "press": "inews24.com",
-          "title": "트럼프, 김정은과 회담 불발에 \"언젠가 만날 것\"",
-          "url": "https://n.news.naver.com/mnews/article/031/0001076834?sid=104"
-        },
-        {
-          "press": "imnews.imbc.com",
-          "title": "트럼프 \"김정은과 좋은 관계지만, 이번엔 회담 성사 안 돼\"",
-          "url": "https://n.news.naver.com/mnews/article/214/0001536830?sid=104"
-        },
-        {
-          "press": "jtbc.co.kr",
-          "title": "트럼프 \"김정은과 관계 좋지만 만남 성사 안 돼…언젠간 회담할 것\"",
-          "url": "https://n.news.naver.com/mnews/article/437/0000521596?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "도널드 트럼프 미국 대통령은 아시아 순방 기간 중 김정은 북한 국무위원장과의 만남 가능성을 수차례 언급했으나, 결국 회담은 성사되지 않은 채 19일 귀국길에 올랐다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "순방에서 김정은 북한 국무위원장과 만나지 못한 데 대해 일정이 바빴기 때문이라고 설명했다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "19일(현지시간) NBC 방송 등에 따르면 트럼프 대통령은 이날 전화 인터뷰에서 \"북한 지도자와 좋은..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "회담 불발에 대한 트럼프 대통령의 직접적인 해명이 보도되었으며, 이를 두고 정치적 허풍이라는 평가와 함께 외교적 한계가 지적된다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i3b553c54",
-      "title": "“푸틴은 평화 원한다” 트럼프의 깜짝 전화…유럽은 “근거 없다”",
-      "category": "세계",
-      "rank": 7,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
         "미중러 회담 앞두고 미러 정상 40분 동안 약식회담 가져…러시아 측 \"우크라이나 문제 주요",
-        "트럼프 대통령은 회담장에 들어서면서 푸틴 대통령에게 “이게 누구야, 나의 친구네”(“Who is he, he is my friend”)라고 인사했다.",
-        "시 주석과 트럼프 대통령은 전날 APEC 정상회의 환영 만찬에서도 나란히 앉아 2시간 동안...",
-        "트럼프가 취재진 앞에서 푸틴을 “내 친구”라고 소개한 점은 분노마저 자아냈다.",
-        "도날트 투스크 폴란드 총리는 “미스터(Mr.) 푸틴은 우리 친구가 아니고 앞으로도 그럴 것”이라며 냉소했다."
+        "트럼프는 이런 푸틴을 보자 “이게 누구야.",
+        "내 친구”라며 친밀감을 드러냈다.",
+        "이어 회담장에서 취재진을 향해 “저분이 누구냐고? 제 친구”라고 말하기도 했다.",
+        "트럼프 대통령은 미중 정상회담에서도 시진핑 중국..."
       ],
       "sources": [
-        {
-          "press": "donga.com",
-          "title": "‘지각왕’ 푸틴이 먼저 왔다… 트럼프 “이게 누구야, 내 친구네”",
-          "url": "https://n.news.naver.com/mnews/article/020/0003763826?sid=104"
-        },
-        {
-          "press": "segye.com",
-          "title": "“아빠” 이어 “헤라클레스”…트럼프 향한 나토 총장의 ‘아부’ 어디...",
-          "url": "https://n.news.naver.com/mnews/article/022/0004176713?sid=104"
-        },
         {
           "press": "seoul.co.kr",
           "title": "트럼프, 시진핑·푸틴에 “내 친구”… 러 ‘핵가방 장교’ 포착에 긴장...",
@@ -274,6 +54,16 @@
           "press": "한겨레",
           "title": "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
           "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQRU1LTTVIX1FKTEZmVl9aazhOdXFsbGViZVNCZHJvV1dXLTVOVG5NN0J5SEZ4TzRJWVNwQnVvNVRDN0ctTXktZjF3dWFRUml0QlYzcV9sX2hqTkFGbUVLWnFsQ2xWU2dpWVlFMENBQ1JDV2d2QnVhdEpfSHUzWWpHSkF3?oc=5"
+        },
+        {
+          "press": "연합뉴스TV",
+          "title": "푸틴 보좌관, 보란 듯 '핵가방' 들고 이동…\"핵위력 과시\"",
+          "url": "https://n.news.naver.com/article/422/0000927883"
+        },
+        {
+          "press": "동아일보",
+          "title": "‘지각왕’ 푸틴이 먼저 왔다… 트럼프 “이게 누구야, 내 친구네”",
+          "url": "https://www.donga.com/news/Inter/article/all/20261120/135057903/2"
         }
       ],
       "story_beats": [
@@ -290,7 +80,7 @@
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "시 주석과 트럼프 대통령은 전날 APEC 정상회의 환영 만찬에서도 나란히 앉아 2시간 동안..."
+          "evidence": "3국 정상이 언제 다시 만날지도 불투명하다."
         },
         {
           "panel": 4,
@@ -332,11 +122,320 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "발단·의혹",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i6230700a",
+      "title": "[속보] 경기도 용인 수능 시험장에서 초소형카메라 발견",
+      "category": "사회",
+      "rank": 4,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "2027학년도 대학수학능력시험(수능)이 치러지고 있는 19일 경기 용인시의 한 시험장에서 초소형카메라와 이어폰이 발견되었습니다.",
+        "[단독] 경기도 용인 수능 시험장서 초소형 카메라 발견",
+        "“용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
+        "[속보]“용인 수능 시험장서 초소형카메라·이어폰 발견”",
+        "경기 용인시의 한 고등학교에서 수능을 본 수험생 김모(18)군은 시험 도중 들려온 경보음에 깜짝 놀랐다고..."
+      ],
+      "sources": [
+        {
+          "press": "MBN",
+          "title": "[단독] 경기도 용인 수능 시험장서 초소형 카메라 발견",
+          "url": "https://n.news.naver.com/article/057/0001978931"
+        },
+        {
+          "press": "매일경제",
+          "title": "“용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
+          "url": "https://n.news.naver.com/article/009/0005766186"
+        },
+        {
+          "press": "헤럴드경제",
+          "title": "[속보]“용인 수능 시험장서 초소형카메라·이어폰 발견”",
+          "url": "https://n.news.naver.com/article/016/0002725801"
+        },
+        {
+          "press": "seoul.co.kr",
+          "title": "시험 중 5명 스마트 기기 썼다… “다른 수능은 어땠나” 공포",
+          "url": "https://n.news.naver.com/mnews/article/081/0003701335?sid=102"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "2027학년도 대학수학능력시험(수능)이 치러지고 있는 19일 경기 용인시의 한 시험장에서 초소형카메라와 이어폰이 발견되었습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "신진용 교육부 대입정책과장은 “(이..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "경기 용인시의 한 고등학교에서 수능을 본 수험생 김모(18)군은 시험 도중 들려온 경보음에 깜짝 놀랐다고..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ib0b88852",
+      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
+      "category": "IT",
+      "rank": 1,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다.",
+        "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
+        "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
+        "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
+        "흔적을 발견할 수 없었다."
+      ],
+      "sources": [
+        {
+          "press": "매일경제",
+          "title": "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
+          "url": "https://n.news.naver.com/article/009/0005766140"
+        },
+        {
+          "press": "한겨레",
+          "title": "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
+          "url": "https://n.news.naver.com/article/028/0002832987"
+        },
+        {
+          "press": "KBS",
+          "title": "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
+          "url": "https://n.news.naver.com/article/056/0012297227"
+        },
+        {
+          "press": "sentv.co.kr",
+          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
+          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "게임 속 풍경을 단순한 배경으로 활용하는 데 그치지 않고, 이용자가 새로운 장소를 발견하고 직접..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "‘리트 만점’ 이진우 모텔서 숨진 채 발견···“요즘 힘들다” 5줄 메모 남겨"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
-          "수사·대응"
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i44c4096a",
+      "title": "재난문자 피하는 ‘탈옥’ 있었을 수도? 수능 부정행위 98건 적발",
+      "category": "사회",
+      "rank": 9,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "정부가 인공지능(AI)을 활용한 부정행위를 막기 위해 강도 높은 대책을 시행한 19일 대학수학능력시험에서 다양한 부정행위 의심 사례가 적발됐다.",
+        "재난문자 피하는 ‘탈옥’ 있었을 수도? 수능 부정행위 98건 적발",
+        "교육부 “재난문자 발송으로 스마트폰 소지 22명 적발”",
+        "20일 교육계에 따르면 전날 수능에서 AI 안경·소형 카메라를 이용한 부정행위자는 98명 적발됐다.",
+        "미제출 전자기기를 찾아내기 위한 위급재난문자 발송 계획 역시 수능 이틀 전에야 마련됐다."
+      ],
+      "sources": [
+        {
+          "press": "국민일보",
+          "title": "재난문자 피하는 ‘탈옥’ 있었을 수도? 수능 부정행위 98건 적발",
+          "url": "https://n.news.naver.com/article/005/0001886330"
+        },
+        {
+          "press": "국민일보",
+          "title": "교육부 “재난문자 발송으로 스마트폰 소지 22명 적발”",
+          "url": "https://n.news.naver.com/article/005/0001886158"
+        },
+        {
+          "press": "newsis.com",
+          "title": "'AI 커닝'에 시험 직전까지 갈팡질팡 …\"내년엔 미리 대비했으면\"[2027 수...",
+          "url": "https://n.news.naver.com/mnews/article/003/0014334543?sid=102"
+        },
+        {
+          "press": "joongang.co.kr",
+          "title": "그렇게 경고해도 98명 걸렸다…“만점자 많이 나올까 걱정”",
+          "url": "https://n.news.naver.com/mnews/article/025/0003566639?sid=102"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "정부가 인공지능(AI)을 활용한 부정행위를 막기 위해 강도 높은 대책을 시행한 19일 대학수학능력시험에서 다양한 부정행위 의심 사례가 적발됐다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "이해숙 교육부 고등평생정책실장은 “긴급재난문자 등을 통해 휴대전화를 상당히 적발했고, 공공..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "재난문자 피하는 ‘탈옥’ 있었을 수도? 수능 부정행위 98건 적발"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "입장·공방",
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
