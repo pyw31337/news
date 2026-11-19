@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T08:27:09+09:00",
+  "generated_at": "2026-11-20T07:58:57+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,33 +27,28 @@
   },
   "candidates": [
     {
-      "issue_id": "i30a1aa77",
-      "title": "앤트로픽 상장에도 뉴욕증시 2%대 급락…국제유가, 보합세",
+      "issue_id": "i726dffe8",
+      "title": "앤트로픽, 상장 첫날 111.5달러에 거래 시작…시총 2조달러 돌파",
       "category": "경제",
-      "rank": 5,
-      "priority_score": 37,
+      "rank": 4,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "needs_fact_review",
       "facts": [
-        "■ 모닝벨 '증시전략' - 박석현 우리은행 WM그룹 부부장 Q.",
-        "앤트로픽은 상장 첫날부터 일부 임직원 보유 주식의 최대 10%를 매각할 수 있도록 했다.",
-        "2026회계연도 실적 발표 이후에도 추가 물량이 풀릴 예정이다.",
-        "한화투자증권은 앤트로픽의 락업 해제 일정이 총 23차례에 걸쳐...",
-        "앤트로픽 상장 첫날 91.17달러 마감···다우 50,000선 아래로"
+        "인공지능 기업 앤트로픽이 역대 최대 규모의 기업공개(IPO)를 통해 2026년 11월 19일 나스닥 시장에 성공적으로 입성했다.",
+        "앤트로픽 주가가 나스닥 상장 첫날 공모가보다",
+        "17.1% 오른 97.17달러에 거래를 마쳤다.",
+        "앤트로픽 주가는 19일(현지시간) 공모가인 83달러보다",
+        "시초가는 111.5달러였다."
       ],
       "sources": [
         {
-          "press": "einfomax.co.kr",
-          "title": "앤트로픽, 상장 첫날 17% 급등했지만…\"지수 편입 후 매물 주의\"",
-          "url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4445657"
-        },
-        {
-          "press": "경향신문",
-          "title": "앤트로픽 상장 첫날 91.17달러 마감···다우 50,000선 아래로",
-          "url": "https://n.news.naver.com/article/032/0003483942"
+          "press": "kmib.co.kr",
+          "title": "나스닥 데뷔한 ‘앤트로픽’…공모가보다 17% 오른 97.17달러 마감",
+          "url": "https://n.news.naver.com/mnews/article/005/0001886416?sid=104"
         },
         {
           "press": "문화일보",
@@ -61,36 +56,41 @@
           "url": "https://n.news.naver.com/article/021/0002834152"
         },
         {
-          "press": "tvchosun.com",
-          "title": "앤트로픽 증시 데뷔에 \"경제 붕괴 첫걸음될 것\" 반대 시위",
-          "url": "https://n.news.naver.com/mnews/article/448/0000652248?sid=104"
+          "press": "조선비즈",
+          "title": "앤트로픽, 상장 첫날 111.5달러에 거래 시작…시총 2조달러 돌파",
+          "url": "https://n.news.naver.com/article/366/0001206125"
+        },
+        {
+          "press": "이데일리",
+          "title": "[속보]앤스로픽 상장 첫날 뉴욕증시 2%대 급락…다우 5만선 붕괴",
+          "url": "https://n.news.naver.com/article/018/0006412856"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "■ 모닝벨 '증시전략' - 박석현 우리은행 WM그룹 부부장 Q."
+          "evidence": "인공지능 기업 앤트로픽이 역대 최대 규모의 기업공개(IPO)를 통해 2026년 11월 19일 나스닥 시장에 성공적으로 입성했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "한화투자증권은 앤트로픽의 락업 해제 일정이 총 23차례에 걸쳐..."
+          "evidence": "34% 높았지만, 매물이..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "앤트로픽은 상장 첫날부터 일부 임직원 보유 주식의 최대 10%를 매각할 수 있도록 했다."
+          "evidence": "17.1% 오른 97.17달러에 거래를 마쳤다."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+          "evidence": "상장 첫날의 주가 상승과 증시 급락이 동시에 보도되며, 앤트로픽의 흥행이 시장 전체에는 악재로 작용했다는 평가가 지배적이다."
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -132,8 +132,8 @@
       }
     },
     {
-      "issue_id": "ic361d8fa",
-      "title": "강남 급매물 쌓이고 한강벨트 '뚝'…\"집값 드디어 꺾이나\" 전망 갈렸다",
+      "issue_id": "i4cb8c202",
+      "title": "앤트로픽, 111.5달러에 나스닥 상장 첫 거래 시작",
       "category": "경제",
       "rank": 6,
       "priority_score": 37,
@@ -141,51 +141,51 @@
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
-        "93주 연속 상승으로 최장기간 오른 서울 집값 상승폭이 초반 수준으로 내린 배경에는 강남3구(강남·서초·송파구)와 한강벨트 지역의 하락세가 있다.",
-        "\"198억 땅 전액 현금으로 샀다\"…유재석, 강남에 건물 짓더니 [집코노미-핫!부동산]",
-        "강남 급매물 쌓이고 한강벨트 '뚝'…\"집값 드디어 꺾이나\" 전망 갈렸다",
-        "■ 강남3구 낙폭 키우고 한강벨트도 하락권으로 하락폭이 가장 큰 곳은 송파구(-0.42%)다.",
-        "단지를 중심으로 내려 전주(-0.35%)보다"
+        "코스피가 오르내림을 반복한 끝에 5100선을 회복했다.",
+        "[속보] 앤트로픽 상장 첫날 17% 폭등에도…나스닥은 2%대 급락",
+        "앤트로픽 '나스닥 상장' 첫 거래서 34% 상승…시총 2조달러",
+        "[속보]앤트로픽 상장 첫날 17% 상승…나스닥은 2%대 하락",
+        "19일(현지시간) 뉴욕증시는 앤트로픽(Anthropic)이 나스닥 상장 첫날 공모가(83달러)보다"
       ],
       "sources": [
         {
-          "press": "한국경제",
-          "title": "\"198억 땅 전액 현금으로 샀다\"…유재석, 강남에 건물 짓더니 [집코노미-핫!부동산]",
-          "url": "https://n.news.naver.com/article/015/0005356175"
+          "press": "중앙일보",
+          "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
+          "url": "https://n.news.naver.com/article/025/0003566361"
         },
         {
-          "press": "머니투데이",
-          "title": "강남 급매물 쌓이고 한강벨트 '뚝'…\"집값 드디어 꺾이나\" 전망 갈렸다",
-          "url": "https://n.news.naver.com/article/008/0005443903"
+          "press": "서울경제",
+          "title": "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
+          "url": "https://n.news.naver.com/article/011/0004683998"
         },
         {
-          "press": "news2day.co.kr",
-          "title": "[N2 포커스] 서울 집값 오름폭 '반토막'…강남·한강변 내리고 외곽만 상...",
-          "url": "https://www.news2day.co.kr/article/20261119500378"
+          "press": "세계일보",
+          "title": "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
+          "url": "https://n.news.naver.com/article/022/0004176505"
         },
         {
-          "press": "seoul.co.kr",
-          "title": "용산·동작도 아파트값 하락세 전환… 서울 5주째 둔화",
-          "url": "https://n.news.naver.com/mnews/article/081/0003701390?sid=101"
+          "press": "digitaltoday.co.kr",
+          "title": "앤트로픽 상장 첫날 +17%에도 美증시 2%대 급락…비트코인 보합",
+          "url": "https://www.digitaltoday.co.kr/news/articleView.html?idxno=716883"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "93주 연속 상승으로 최장기간 오른 서울 집값 상승폭이 초반 수준으로 내린 배경에는 강남3구(강남·서초·송파구)와 한강벨트 지역의 하락세가 있다."
+          "evidence": "코스피가 오르내림을 반복한 끝에 5100선을 회복했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "강남 급매물 쌓이고 한강벨트 '뚝'…\"집값 드디어 꺾이나\" 전망 갈렸다"
+          "evidence": "판결문에 따르면 해당 인물은 고의로 교통사고를 낸 뒤 합의금을 받아낸 혐의 등으로 2022년 9월 징역 6개월을..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "\"198억 땅 전액 현금으로 샀다\"…유재석, 강남에 건물 짓더니 [집코노미-핫!부동산]"
+          "evidence": "법학적성시험(LEET·리트) 만점자로 알려진 이진우(32) 씨가 과거 고의 교통사고를 이용한 공갈 범죄와 경찰관..."
         },
         {
           "panel": 4,
@@ -227,11 +227,11 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
+        "continuity_quality": 0.76,
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
-          "사법·처분"
+          "수사·대응"
         ],
         "no_generic_closing": true
       }
@@ -240,62 +240,62 @@
       "issue_id": "i73b7c1d8",
       "title": "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\"",
       "category": "세계",
-      "rank": 3,
-      "priority_score": 45,
+      "rank": 5,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
-        "도널드 트럼프 미국 대통령이 중국과 러시아 정상을 '내 친구들'이라 부르며 3자 회동을 가졌으나, 미 언론은 이를 두고 시진핑 중국 국가주석과 블라디미르 푸틴 러시아 대통령이 미국의 패권 종식을 위한 결속으로 활용하고 있다고 지적했다.",
-        "도널드 트럼프 미국 대통령이 중국 선전에서 열린 아시아태평양경제협력체(APEC) 정상회의 기간 성사된 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령과의 사상 첫 3국 정상회담에 대해 \"매우 중대한...",
-        "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
-        "미중러 3자 회동 '동상이몽'…시진핑·푸틴 웃고 트럼프 '빈손'",
-        "중국 선전에서 열린 미·중·러 정상회담에서 나란히 선 도널드 트럼프 미국 대통령, 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령(오른쪽부터)."
+        "도널드 트럼프 미국 대통령은 시진핑 중국 국가주석과 아시아태평양경제협력체(APEC) 정상회의에서 회담을 가졌고, 백악관은 이를 통해 우호 관계를 강조했습니다.",
+        "반면 도널드 트럼프 미국 대통령은 시진핑 주석이 공항에 직접 나와 맞이했다.",
+        "블라디미르 푸틴 러시아 대통령과 이재명 대통령 등 다른 정상들도 고위급 인사와 환영 인파의 영접을 받았다.",
+        "이 같은 차이가 일본 언론을...",
+        "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\""
       ],
       "sources": [
         {
-          "press": "hankookilbo.com",
-          "title": "트럼프 \"시진핑·푸틴과 중대한 회담\"…김정은과는 \"언젠가 만날 것\"",
-          "url": "https://n.news.naver.com/mnews/article/469/0000966706?sid=104"
+          "press": "newspim.com",
+          "title": "\"다카이치 日총리 냉대?\"...中 \"적절한 의전 제공했다\" 반박",
+          "url": "https://www.newspim.com/news/view/20261120000066"
+        },
+        {
+          "press": "연합뉴스",
+          "title": "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\"",
+          "url": "https://n.news.naver.com/article/001/0016453374"
         },
         {
           "press": "한겨레",
-          "title": "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
-          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQRU1LTTVIX1FKTEZmVl9aazhOdXFsbGViZVNCZHJvV1dXLTVOVG5NN0J5SEZ4TzRJWVNwQnVvNVRDN0ctTXktZjF3dWFRUml0QlYzcV9sX2hqTkFGbUVLWnFsQ2xWU2dpWVlFMENBQ1JDV2d2QnVhdEpfSHUzWWpHSkF3?oc=5"
+          "title": "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
+          "url": "https://n.news.naver.com/article/028/0002832987"
         },
         {
-          "press": "머니투데이",
-          "title": "미중러 3자 회동 '동상이몽'…시진핑·푸틴 웃고 트럼프 '빈손'",
-          "url": "https://n.news.naver.com/article/008/0005443931"
-        },
-        {
-          "press": "segye.com",
-          "title": "“김정은 만날 수 있다”했던 트럼프, “그와 좋은 관계지만 이번엔 성...",
-          "url": "https://n.news.naver.com/mnews/article/022/0004176726?sid=104"
+          "press": "헤럴드경제",
+          "title": "트럼프는 ‘내 친구’ 연발했지만…“시진핑·푸틴은 美패권흔들기”",
+          "url": "https://v.daum.net/v/20261120065921394"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "도널드 트럼프 미국 대통령이 중국과 러시아 정상을 '내 친구들'이라 부르며 3자 회동을 가졌으나, 미 언론은 이를 두고 시진핑 중국 국가주석과 블라디미르 푸틴 러시아 대통령이 미국의 패권 종식을 위한 결속으로…"
+          "evidence": "도널드 트럼프 미국 대통령은 시진핑 중국 국가주석과 아시아태평양경제협력체(APEC) 정상회의에서 회담을 가졌고, 백악관은 이를 통해 우호 관계를 강조했습니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "중간선거 참패로 흔들리는 리더십을 만회하려는 행보이지만, 정작 성과는 거의..."
+          "evidence": "시진핑 중국 국가주석과 도널드 트럼프 미국 대통령, 블라디미르 푸틴 러시아 대통령이 한자리에 모여 핵전쟁 방지와 전략적 안정, 에너지 공급 문제 등을 논의하고 공동선언을 채택했다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "도널드 트럼프 미국 대통령이 중국 선전에서 열린 아시아태평양경제협력체(APEC) 정상회의 기간 성사된 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령과의 사상 첫 3국 정상회담에 대해 \"매우 중대한..."
+          "evidence": "실제로 트럼프 대통령과 시진핑 중국 국가주석, 푸틴 대통령은 이날 3자 회담 뒤 발표한 공동성명에서 ICC와 유사 기구를 향해 “관할권을 남용해서는 안 된다”고 날을 세웠다."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "푸틴 대통령이 3자 회담에서 트럼프 대통령의 '노벨평화상' 추천을 거론하고, 트럼프 대통령은 이란 전쟁 종식에 대한 입장을 전달하는 등의 발언이 이어졌다. 그러나 유럽 등지에서는 푸틴이 평화를 원한다는 트럼프의…"
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
@@ -332,11 +332,10 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
+        "continuity_quality": 0.92,
         "continuity_gaps": [
           "발단·의혹",
-          "입장·공방",
-          "수사·대응"
+          "입장·공방"
         ],
         "no_generic_closing": true
       }

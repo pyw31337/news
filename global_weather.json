@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20T08:21:35.491157+09:00",
-  "alerts_count": 10,
+  "updated": "2026-11-20T07:54:05.578604+09:00",
+  "alerts_count": 11,
   "alerts": [
     {
       "id": "urn:oid:2.49.0.1.840.0.850221d8e664288dd71d174e6b7a98bdff557322.001.1",
@@ -19,30 +19,14 @@
       "desc": "FFWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Flash Flood Warning for...\nNorthwestern Brevard County in east central Florida...\nSoutheastern Volusia County in east central Florida...\n\n* Until 700 PM EST.\n\n* At 447 PM EST, Doppler radar indicated heavy rain across the warned\narea."
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.f8311d1fc8f1f5c755799610eb6b9c6407fa738a.001.1",
-      "t": "2026-11-19 13:06",
+      "id": "urn:oid:2.49.0.1.840.0.970ae3c2a2ee7809c6cb6bee6106236bfdf9c6e8.001.1",
+      "t": "2026-11-18 22:43",
       "country": "US",
       "flag": "🇺🇸",
       "country_ko": "미국",
       "country_en": "United States",
-      "area": "Bear River Range",
-      "area_en": "Bear River Range",
-      "event": "겨울 폭풍 경보",
-      "event_en": "Winter Storm Warning",
-      "severity": "Severe",
-      "headline_ko": "Bear River Range 겨울 폭풍 경보",
-      "headline_en": "Bear River Range Winter Storm Warning",
-      "desc": "* WHAT...Heavy snow expected. Total snow accumulations between 10 and\n20 inches.\n\n* WHERE...Big Hole Mountains and Bear River Range.\n\n* WHEN...From 5 PM this afternoon to 5 AM MST Saturday.\n\n* IMPACTS...Travel could be very difficult."
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.de87fa85e32e148156bc017e9a9d57a012ad5049.001.1",
-      "t": "2026-11-19 14:55",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Brevard",
-      "area_en": "Brevard",
+      "area": "San Luis Obispo",
+      "area_en": "San Luis Obispo",
       "event": "홍수 경보",
       "event_en": "Flood Warning",
       "severity": "Severe",
@@ -97,6 +81,22 @@
       "headline_ko": "Wasatch Mountains I-80 North 겨울 폭풍 경보",
       "headline_en": "Wasatch Mountains I-80 North Winter Storm Warning",
       "desc": "* WHAT...Snow expected. Total snow accumulations between 12 and 24\ninches, highest in the Upper Cottonwoods and for mountains near the\nUtah/Idaho border.\n\n* WHERE...The Wasatch Mountains.\n\n* WHEN...Until 11 AM MST Saturday.\n\n* IMPACTS...Winter driving conditions are expected. Roads, and\nespecially b"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.aa9e61723dc137841a2e93697b7e4513aac791e5.001.2",
+      "t": "2026-11-19 08:25",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Southern Sangre De Cristo Mountains Between 7500 and 11000 Ft",
+      "area_en": "Southern Sangre De Cristo Mountains Between 7500 and 11000 Ft",
+      "event": "강풍 경보",
+      "event_en": "High Wind Warning",
+      "severity": "Severe",
+      "headline_ko": "Southern Sangre De Cristo Mountains Between 7500 and 11000 Ft 강풍 경보",
+      "headline_en": "Southern Sangre De Cristo Mountains Between 7500 and 11000 Ft High Wind Warning",
+      "desc": "* WHAT...Southwest winds 25 to 40 mph with gusts up to 75 mph\npossible across the southern Sangre De Cristo mountains, to up to\n65 mph along the I-25 corridor in Huerfano county.\n\n* WHERE...Southern Sangre de Cristo Mountains and Huerfano county\nincluding Walsenburg.\n\n* WHEN...From 11 PM this evenin"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.79ff407c4bc1ec15944e9f795c52b9ac7a34fb36.001.1",
@@ -254,11 +254,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 11.2,
-      "apparent_temp": 8.0,
-      "humidity": 47,
+      "temp": 12.0,
+      "apparent_temp": 8.9,
+      "humidity": 43,
       "code": 0,
-      "wind": 7.9
+      "wind": 6.5
     },
     {
       "id": "losangeles",
@@ -268,11 +268,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 16.1,
-      "apparent_temp": 14.0,
-      "humidity": 71,
+      "temp": 17.1,
+      "apparent_temp": 15.9,
+      "humidity": 78,
       "code": 3,
-      "wind": 16.1
+      "wind": 15.5
     },
     {
       "id": "london",
@@ -282,11 +282,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 7.2,
-      "apparent_temp": 6.0,
-      "humidity": 92,
-      "code": 51,
-      "wind": 1.8
+      "temp": 7.3,
+      "apparent_temp": 5.9,
+      "humidity": 89,
+      "code": 53,
+      "wind": 2.2
     },
     {
       "id": "paris",
@@ -296,11 +296,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 10.9,
-      "apparent_temp": 8.0,
-      "humidity": 77,
-      "code": 2,
-      "wind": 14.8
+      "temp": 10.8,
+      "apparent_temp": 7.8,
+      "humidity": 76,
+      "code": 3,
+      "wind": 15.1
     },
     {
       "id": "frankfurt",
@@ -311,10 +311,10 @@
       "lat": 50.1109,
       "lon": 8.6821,
       "temp": 10.0,
-      "apparent_temp": 7.4,
-      "humidity": 85,
+      "apparent_temp": 7.1,
+      "humidity": 83,
       "code": 61,
-      "wind": 13.8
+      "wind": 15.2
     },
     {
       "id": "tokyo",
@@ -324,11 +324,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 9.8,
-      "apparent_temp": 6.7,
-      "humidity": 49,
+      "temp": 8.5,
+      "apparent_temp": 5.4,
+      "humidity": 52,
       "code": 0,
-      "wind": 5.9
+      "wind": 9.6
     },
     {
       "id": "beijing",
@@ -338,11 +338,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": -0.7,
-      "apparent_temp": -5.2,
-      "humidity": 45,
+      "temp": -0.5,
+      "apparent_temp": -5.1,
+      "humidity": 44,
       "code": 1,
-      "wind": 8.0
+      "wind": 8.3
     },
     {
       "id": "singapore",
@@ -352,11 +352,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 23.6,
-      "apparent_temp": 28.5,
-      "humidity": 98,
+      "temp": 23.4,
+      "apparent_temp": 28.1,
+      "humidity": 97,
       "code": 3,
-      "wind": 4.4
+      "wind": 4.9
     },
     {
       "id": "sydney",
@@ -366,11 +366,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 23.4,
-      "apparent_temp": 26.0,
-      "humidity": 65,
+      "temp": 22.9,
+      "apparent_temp": 25.0,
+      "humidity": 66,
       "code": 2,
-      "wind": 7.7
+      "wind": 7.0
     },
     {
       "id": "toronto",
@@ -380,11 +380,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 11.7,
-      "apparent_temp": 7.7,
-      "humidity": 60,
+      "temp": 12.3,
+      "apparent_temp": 7.9,
+      "humidity": 54,
       "code": 3,
-      "wind": 17.8
+      "wind": 19.3
     },
     {
       "id": "dubai",
@@ -394,11 +394,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 24.0,
-      "apparent_temp": 26.6,
-      "humidity": 74,
+      "temp": 24.4,
+      "apparent_temp": 26.8,
+      "humidity": 70,
       "code": 0,
-      "wind": 5.3
+      "wind": 5.0
     },
     {
       "id": "saopaulo",
@@ -408,11 +408,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 24.8,
-      "apparent_temp": 27.6,
-      "humidity": 75,
+      "temp": 25.3,
+      "apparent_temp": 28.0,
+      "humidity": 72,
       "code": 2,
-      "wind": 7.2
+      "wind": 6.7
     }
   ],
   "stories": [

@@ -1,33 +1,109 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 23:27:08",
+  "updated_at": "2026-11-19 22:58:57",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.85,
   "issues": [
     {
-      "id": "i636fee3a",
-      "title": "민주당 분노 속 의총…'조희대 탄핵 추진' 결론",
-      "episode": "episode:bbffa8d7d771dd",
+      "id": "i612fb5ca",
+      "title": "김민석 “대법원 판결, 역사적 반역…조희대 탄핵해야”",
+      "episode": "episode:b2f156d427cd5d",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 41,
+      "event_count": 18,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i942112c6",
+      "title": "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]",
+      "episode": "episode:6b090e9eecbd64",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "입장·공방",
-        "수사·대응",
         "사법·처분",
+        "수사·대응",
+        "입장·공방",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 42,
-      "event_count": 11,
+      "duplicate_candidates": 32,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "id13f103e",
-      "title": "서울 지하철 오늘 첫차부터 준법투쟁…출퇴근길 지연 우려",
-      "episode": "episode:df6ba920169463",
+      "id": "i9ca42256",
+      "title": "민주, 끝내 '조희대 탄핵' 공식화...국힘 \"의회 쿠데타\"",
+      "episode": "episode:a6dcb94adc5b60",
+      "quality": 1.0,
+      "stages": [
+        "입장·공방",
+        "수사·대응",
+        "파장·후속",
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 41,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i726dffe8",
+      "title": "앤트로픽, 상장 첫날 111.5달러에 거래 시작…시총 2조달러 돌파",
+      "episode": "episode:96163391eb69e2",
+      "quality": 0.84,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 46,
+      "event_count": 58,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i73b7c1d8",
+      "title": "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\"",
+      "episode": "episode:468928e05f4f18",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 20,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i4cb8c202",
+      "title": "앤트로픽, 111.5달러에 나스닥 상장 첫 거래 시작",
+      "episode": "episode:63839aa2732d34",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -38,95 +114,23 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 35,
-      "event_count": 10,
+      "duplicate_candidates": 32,
+      "event_count": 13,
       "evidence_rate": 1.0
     },
     {
-      "id": "i73b7c1d8",
-      "title": "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\"",
-      "episode": "episode:d78667c949bc05",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 16,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i00ab53bc",
-      "title": "LEET 만점자 이진우 사망… AI 커닝 의혹 수사 중단 가능성",
-      "episode": "episode:a44a816d68f4b1",
-      "quality": 1.0,
-      "stages": [
-        "수사·대응",
-        "사법·처분",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 41,
-      "event_count": 61,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i30a1aa77",
-      "title": "앤트로픽 상장에도 뉴욕증시 2%대 급락…국제유가, 보합세",
-      "episode": "episode:fcc6014032e190",
-      "quality": 0.84,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 39,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic361d8fa",
-      "title": "강남 급매물 쌓이고 한강벨트 '뚝'…\"집값 드디어 꺾이나\" 전망 갈렸다",
-      "episode": "episode:78df041826135a",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 25,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1966d9de",
-      "title": "'리트 만점자' 이진우 사망…출신 대학 서울대·고려대 후속 조치 주목",
-      "episode": "episode:ef91483a5713bb",
+      "id": "if98717c2",
+      "title": "\"죄는 미워해도 사람은 미워하지 말라\"…서울대 교수, 이진우 논란에 쓴소리",
+      "episode": "episode:661868178d6785",
       "quality": 0.92,
       "stages": [
         "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속"
+        "수사·대응",
+        "파장·후속",
+        "입장·공방"
       ],
       "gaps": [
-        "수사·대응",
+        "발단·의혹",
         "사법·처분"
       ],
       "duplicate_candidates": 31,
@@ -136,45 +140,40 @@
     {
       "id": "iaceb38d7",
       "title": "\"김정은, 핵보유국 전략외교…트럼프와 만남에 가치 못느껴\"",
-      "episode": "episode:e9db7114f015c1",
-      "quality": 0.84,
+      "episode": "episode:8c9c296287eb6d",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
-        "파장·후속",
-        "사법·처분"
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 39,
-      "event_count": 11,
+      "duplicate_candidates": 40,
+      "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "id829cce9",
-      "title": "앤트로픽 상장에 AI 거품 우려 폭발…나스닥 2.25%↓",
-      "episode": "episode:6be2069c965d44",
-      "quality": 0.84,
+      "id": "i06bc18ee",
+      "title": "박지윤, 상간 소송 심경 밝혔다 “성소수자와 부정행위? 최동석 언플에 지쳐가”",
+      "episode": "episode:ff57cc44ceb6e9",
+      "quality": 0.58,
       "stages": [
+        "수사·대응",
         "사법·처분",
-        "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 24,
+      "duplicate_candidates": 24,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "i4f05600b",
+      "id": "i8b27399e",
       "title": "AI안경 쓰고, 폰으로 수능문제 촬영… 신발 속에 폰 숨기기도",
-      "episode": "episode:8e24e7f01f3774",
+      "episode": "episode:4c3acacdeef959",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -186,8 +185,8 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 23,
-      "event_count": 5,
+      "duplicate_candidates": 22,
+      "event_count": 6,
       "evidence_rate": 1.0
     }
   ]
