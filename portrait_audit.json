@@ -2,48 +2,48 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 9,
+    "current_person_entities": 8,
     "approved": 7,
-    "withheld": 2,
+    "withheld": 1,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 0,
-    "sanitized": 1
+    "sanitized": 0
   },
   "current_entities": [
     {
-      "name": "이재명",
+      "name": "김건희",
       "status": "approved",
-      "url": "media/ent/da/da37f2330225f1ef.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Lee%20Jae-myung%202025%20%28cropped%29.jpg?width=360",
-      "wiki_title": "이재명"
+      "url": "media/ent/e1/e10a9797f977a335.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Kim%20Keon-hee%202023.jpg?width=360",
+      "wiki_title": "김건희"
     },
     {
-      "name": "트럼프",
+      "name": "한덕수",
       "status": "approved",
-      "url": "media/ent/51/51d80b245f6cbf5e.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29%20%283x4%29.jpg?width=360",
-      "wiki_title": "도널드 트럼프"
+      "url": "media/ent/76/76576ae35b263ce4.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Prime%20Minister%20of%20South%20Korea%20HAN%20Duck-soo%2020240516.jpg?width=360",
+      "wiki_title": "한덕수"
     },
     {
-      "name": "나경원",
+      "name": "윤석열",
       "status": "approved",
-      "url": "media/ent/1d/1d7270af80b536ed.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Na%20Kyung-won%202019.jpg?width=360",
-      "wiki_title": "나경원"
+      "url": "media/ent/bb/bbbc599cbde9d0d8.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/South%20Korea%20President%20Yoon%20Suk%20Yeol%20portrait.jpg?width=360",
+      "wiki_title": "윤석열"
     },
     {
-      "name": "푸틴",
+      "name": "명태균",
       "status": "approved",
-      "url": "media/ent/fa/fab593ba1c73d1fa.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Putin%20V%202026%2008%2010.png?width=360",
-      "wiki_title": "블라디미르 푸틴"
+      "url": "media/ent/cc/ccc71398a162c231.webp",
+      "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Myung_Tae-kyun%2C_8_November_2024.jpg/330px-Myung_Tae-kyun%2C_8_November_2024.jpg?utm_source=ko.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "wiki_title": "명태균"
     },
     {
-      "name": "N수생",
-      "status": "wiki_title_mismatch",
-      "url": "",
-      "source": "",
-      "wiki_title": "재수"
+      "name": "조희대",
+      "status": "approved",
+      "url": "media/ent/de/deac27e956f0f484.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Jo%20Heede%20in%20his%2017th%20Chief%20Justice%20inauguration%20ceremony.png?width=360",
+      "wiki_title": "조희대"
     },
     {
       "name": "김민석",
@@ -53,18 +53,18 @@
       "wiki_title": ""
     },
     {
-      "name": "추미애",
+      "name": "서일준",
       "status": "approved",
-      "url": "data/pol/photos/URV1689Q.webp",
+      "url": "data/pol/photos/MR210505.webp",
       "source": "",
       "wiki_title": "서일준"
     },
     {
-      "name": "한동훈",
+      "name": "트럼프",
       "status": "approved",
-      "url": "data/pol/photos/5DC8083A.webp",
-      "source": "",
-      "wiki_title": "한동훈"
+      "url": "media/ent/51/51d80b245f6cbf5e.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29%20%283x4%29.jpg?width=360",
+      "wiki_title": "도널드 트럼프"
     }
   ],
   "legacy_local_assets": [
@@ -418,10 +418,5 @@
     }
   ],
   "entity_media_cache_issues": [],
-  "changes": [
-    {
-      "name": "N수생",
-      "reason": "wiki_title_mismatch"
-    }
-  ]
+  "changes": []
 }
