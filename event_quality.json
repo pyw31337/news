@@ -1,14 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 15:30:54",
+  "updated_at": "2026-11-19 16:02:34",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.88,
   "issues": [
     {
-      "id": "iefd81945",
-      "title": "'리트 만점자' 사망 확인…발견된 모텔서 '5줄짜리 글' 나와",
-      "episode": "episode:6ff8fd2a518940",
+      "id": "i28f3c46f",
+      "title": "'리트 만점자' 이진우, 천호역 무인 모텔서 발견…심정지 상태",
+      "episode": "episode:d78ffd51f0cec3",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -20,8 +20,8 @@
       "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 10,
+      "duplicate_candidates": 28,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
@@ -32,40 +32,59 @@
       "stages": [
         "사법·처분",
         "파장·후속",
+        "일반 보도",
         "입장·공방",
-        "수사·대응",
-        "일반 보도"
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 44,
+      "duplicate_candidates": 40,
       "event_count": 15,
       "evidence_rate": 1.0
     },
     {
-      "id": "ie6b2de26",
-      "title": "한덕수 징역 15년 파기환송…“계엄 전 내란 가담 인정 어려워”",
-      "episode": "episode:f60fdfc6e73ff4",
-      "quality": 1.0,
+      "id": "id2153fa4",
+      "title": "李대통령, 중국 순방 중 ‘조작기소 특검법’ 재가…공포 즉시 시행",
+      "episode": "episode:bffdf6ff5576ba",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia50b35b2",
+      "title": "대법, 한덕수 내란 혐의 일부 무죄로 파기환송",
+      "episode": "episode:ba6863bab52a8d",
+      "quality": 0.92,
       "stages": [
         "사법·처분",
         "수사·대응",
         "일반 보도",
-        "발단·의혹",
-        "파장·후속"
+        "발단·의혹"
       ],
       "gaps": [
-        "입장·공방"
+        "입장·공방",
+        "파장·후속"
       ],
       "duplicate_candidates": 39,
-      "event_count": 46,
+      "event_count": 31,
       "evidence_rate": 1.0
     },
     {
-      "id": "i52002ca2",
-      "title": "“용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
-      "episode": "episode:d7c1528ca21c42",
+      "id": "i6230700a",
+      "title": "[속보] 경기도 용인 수능 시험장에서 초소형카메라 발견",
+      "episode": "episode:193629aeefab3c",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -77,70 +96,52 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 5,
+      "duplicate_candidates": 26,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
-      "id": "iaf95e927",
-      "title": "재난문자 세 번 울린 수능…49명 들통나 '성적 무효'",
-      "episode": "episode:f971fc84069d67",
-      "quality": 0.92,
+      "id": "i3ea90338",
+      "title": "\"부정행위자 총 98명 처리...시험 도중 스마트기기 활용 5건\" [현장영상+]",
+      "episode": "episode:c6018a5ce0b294",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
-        "발단·의혹",
-        "수사·대응",
-        "파장·후속"
+        "파장·후속",
+        "수사·대응"
       ],
       "gaps": [
+        "발단·의혹",
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 6,
+      "duplicate_candidates": 32,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "ibfbceb99",
-      "title": "[수능] 교육부 \"부정행위자 98명 적발…시험중 스마트기기 활용 5건\"(종합)",
-      "episode": "episode:c79dc53c391dbc",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7472fb4e",
-      "title": "‘리트 만점자’ 숨진채 발견... 유서엔 “몸과 마음 지쳤다”",
-      "episode": "episode:be4eb99c207084",
+      "id": "i9cf1e3e3",
+      "title": "\"한국 대통령과 너무 달랐다\"…일본 총리 의전 어땠길래",
+      "episode": "episode:9c4cb671725d2a",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "사법·처분",
-        "발단·의혹",
         "입장·공방",
-        "파장·후속"
+        "파장·후속",
+        "수사·대응",
+        "사법·처분"
       ],
       "gaps": [
-        "수사·대응"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 8,
+      "duplicate_candidates": 25,
+      "event_count": 43,
       "evidence_rate": 1.0
     },
     {
-      "id": "i7226f297",
-      "title": "[미중러 정상회담] 시진핑, 국제무대서 존재감 과시…'자유무역 수호자' 자처",
-      "episode": "episode:5a130de6c51f15",
+      "id": "i3d94aa81",
+      "title": "[미중러 정상회담] 한반도 어떤 논의했나…美 \"핵확산\" 언급 주목",
+      "episode": "episode:1c1958c31fbaf2",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -150,44 +151,46 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 21,
-      "event_count": 6,
+      "duplicate_candidates": 27,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib4debf02",
+      "title": "[수능] \"1등급 커트라인 국어 90∼95점, 수학 84∼90점\"",
+      "episode": "episode:7e5c13b0013da9",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 19,
+      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
       "id": "i015e6665",
       "title": "\"박지윤, 남사친과 호텔서 잠옷만 입고...\" 상간소송서 최동석이 일부 승소한 이유",
-      "episode": "episode:1d14ca96bb4e4f",
-      "quality": 0.76,
+      "episode": "episode:2c8d99d4224d7c",
+      "quality": 0.84,
       "stages": [
+        "발단·의혹",
         "일반 보도",
         "사법·처분"
       ],
       "gaps": [
-        "발단·의혹",
         "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3d94aa81",
-      "title": "[미중러 정상회담] 한반도 어떤 논의했나…美 \"핵확산\" 언급 주목",
-      "episode": "episode:c58bfa8a8829db",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
+        "수사·대응",
         "파장·후속"
       ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 11,
+      "duplicate_candidates": 26,
+      "event_count": 8,
       "evidence_rate": 1.0
     }
   ]
