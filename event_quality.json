@@ -1,51 +1,52 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 16:32:08",
+  "updated_at": "2026-11-19 16:02:34",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.88,
   "issues": [
     {
-      "id": "i942112c6",
-      "title": "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]",
-      "episode": "episode:0f9479f687b8c8",
-      "quality": 0.84,
-      "stages": [
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie24a6ac2",
-      "title": "김민석 \"조희대 탄핵해야겠다 판단\"… 한덕수 파기환송에 \"역사적 반역\"",
-      "episode": "episode:2aef5348352416",
-      "quality": 0.92,
+      "id": "i28f3c46f",
+      "title": "'리트 만점자' 이진우, 천호역 무인 모텔서 발견…심정지 상태",
+      "episode": "episode:d78ffd51f0cec3",
+      "quality": 1.0,
       "stages": [
         "일반 보도",
+        "발단·의혹",
         "입장·공방",
-        "사법·처분",
+        "파장·후속",
         "수사·대응"
       ],
       "gaps": [
-        "발단·의혹",
-        "파장·후속"
+        "사법·처분"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 13,
+      "duplicate_candidates": 28,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i612fb5ca",
+      "title": "김민석 “대법원 판결, 역사적 반역…조희대 탄핵해야”",
+      "episode": "episode:14273f9d515749",
+      "quality": 1.0,
+      "stages": [
+        "사법·처분",
+        "파장·후속",
+        "일반 보도",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 40,
+      "event_count": 15,
       "evidence_rate": 1.0
     },
     {
       "id": "id2153fa4",
       "title": "李대통령, 중국 순방 중 ‘조작기소 특검법’ 재가…공포 즉시 시행",
-      "episode": "episode:f7e68ef2375d5a",
+      "episode": "episode:bffdf6ff5576ba",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -55,16 +56,35 @@
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
-      "duplicate_candidates": 25,
+      "duplicate_candidates": 26,
       "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia50b35b2",
+      "title": "대법, 한덕수 내란 혐의 일부 무죄로 파기환송",
+      "episode": "episode:ba6863bab52a8d",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "수사·대응",
+        "일반 보도",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 39,
+      "event_count": 31,
       "evidence_rate": 1.0
     },
     {
       "id": "i6230700a",
       "title": "[속보] 경기도 용인 수능 시험장에서 초소형카메라 발견",
-      "episode": "episode:2f412d97e6b0ab",
+      "episode": "episode:193629aeefab3c",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -76,147 +96,69 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 6,
+      "duplicate_candidates": 26,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
-      "id": "i4993f934",
-      "title": "LEET 만점자, 서울대 '사망 제적' 예정…\"입학취소는 불가\"",
-      "episode": "episode:0c0d84d18e431f",
+      "id": "i3ea90338",
+      "title": "\"부정행위자 총 98명 처리...시험 도중 스마트기기 활용 5건\" [현장영상+]",
+      "episode": "episode:c6018a5ce0b294",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9cf1e3e3",
+      "title": "\"한국 대통령과 너무 달랐다\"…일본 총리 의전 어땠길래",
+      "episode": "episode:9c4cb671725d2a",
       "quality": 1.0,
       "stages": [
-        "수사·대응",
         "일반 보도",
-        "발단·의혹",
         "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "사법·처분"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if7bedce0",
-      "title": "[미중러 정상회담] 트럼프에게 \"내 친구\"로 불린 푸틴…종전협상 영향은",
-      "episode": "episode:b7a3b8a6b38f35",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
         "파장·후속",
-        "사법·처분",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 57,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i6e58cbd0",
-      "title": "교육부 “재난문자 발송으로 스마트폰 소지 22명 적발”",
-      "episode": "episode:fffbe2d55ef69c",
-      "quality": 0.84,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i6f8b0a18",
-      "title": "\"같은 호텔방에 잠옷 차림으로\"…최동석, 박지윤에 재반박",
-      "episode": "episode:0976e16f4e5a5f",
-      "quality": 0.84,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
         "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 33,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i14bfd775",
-      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
-      "episode": "episode:332016de20ed99",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "입장·공방"
-      ],
       "gaps": [
-        "발단·의혹",
-        "사법·처분"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 10,
+      "duplicate_candidates": 25,
+      "event_count": 43,
       "evidence_rate": 1.0
     },
     {
-      "id": "id0d27ff9",
-      "title": "장애 아들 앞 폭행… ‘김창민 감독 살해’ 피의자들 징역 12년·3년",
-      "episode": "episode:f616ea440abebf",
-      "quality": 0.92,
+      "id": "i3d94aa81",
+      "title": "[미중러 정상회담] 한반도 어떤 논의했나…美 \"핵확산\" 언급 주목",
+      "episode": "episode:1c1958c31fbaf2",
+      "quality": 0.68,
       "stages": [
-        "수사·대응",
-        "사법·처분",
-        "입장·공방",
         "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "파장·후속"
+        "입장·공방",
+        "수사·대응"
       ],
       "duplicate_candidates": 27,
-      "event_count": 8,
+      "event_count": 14,
       "evidence_rate": 1.0
     },
     {
-      "id": "iaadcca94",
-      "title": "푸틴, 미중러 회담 끝난 뒤 나홀로 기자회견…“얄타회담이 뭐가 나빴나”",
-      "episode": "episode:a3143a00639ab1",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ibfbceb99",
-      "title": "[수능] 교육부 \"부정행위자 98명 적발…시험중 스마트기기 활용 5건\"(종합)",
-      "episode": "episode:ef3b319cbbdb86",
+      "id": "ib4debf02",
+      "title": "[수능] \"1등급 커트라인 국어 90∼95점, 수학 84∼90점\"",
+      "episode": "episode:7e5c13b0013da9",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -228,8 +170,27 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 9,
+      "duplicate_candidates": 19,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i015e6665",
+      "title": "\"박지윤, 남사친과 호텔서 잠옷만 입고...\" 상간소송서 최동석이 일부 승소한 이유",
+      "episode": "episode:2c8d99d4224d7c",
+      "quality": 0.84,
+      "stages": [
+        "발단·의혹",
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 8,
       "evidence_rate": 1.0
     }
   ]
