@@ -1,94 +1,108 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 12:23:03",
+  "updated_at": "2026-11-19 11:52:26",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.88,
+  "average_quality": 0.85,
   "issues": [
     {
-      "id": "i2088686e",
-      "title": "민주, 조희대 대법원장 탄핵 추진…김민석 “절차·내용 지도부 위임”",
-      "episode": "episode:8e45301dca4181",
+      "id": "ie6b2de26",
+      "title": "한덕수 징역 15년 파기환송…“계엄 전 내란 가담 인정 어려워”",
+      "episode": "episode:50a7e2d401f60d",
       "quality": 1.0,
       "stages": [
-        "수사·대응",
         "일반 보도",
         "파장·후속",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if942a4ee",
-      "title": "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사",
-      "episode": "episode:9f2346647823ad",
-      "quality": 1.0,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "사법·처분",
-        "파장·후속",
-        "발단·의혹"
+        "발단·의혹",
+        "파장·후속"
       ],
       "gaps": [
         "입장·공방"
       ],
-      "duplicate_candidates": 43,
-      "event_count": 61,
+      "duplicate_candidates": 37,
+      "event_count": 44,
       "evidence_rate": 1.0
     },
     {
-      "id": "i97363e10",
-      "title": "[속보] 교육부 “수능 부정행위자 98명…시험중 스마트기기 활용 5건”",
-      "episode": "episode:22457d4afd4002",
-      "quality": 0.92,
+      "id": "i942112c6",
+      "title": "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]",
+      "episode": "episode:982d94e37fecdf",
+      "quality": 0.74,
       "stages": [
         "발단·의혹",
         "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i00cfeb99",
+      "title": "대법, 김건희 '3대 의혹' 징역 4년 확정…한덕수 일부 무죄 취지 파기환송·구속 2개월 연장",
+      "episode": "episode:1fbfb086709abf",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "사법·처분",
+        "일반 보도",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 41,
+      "event_count": 37,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic159901c",
+      "title": "수능 부정행위자 98명 적발…“시험 중 스마트기기 활용 5건”",
+      "episode": "episode:758bdd267caffe",
+      "quality": 0.76,
+      "stages": [
         "일반 보도",
         "파장·후속"
       ],
       "gaps": [
+        "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
-      "duplicate_candidates": 32,
+      "duplicate_candidates": 26,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i7472fb4e",
+      "title": "‘리트 만점자’ 숨진채 발견... 메모엔 “몸과 마음 지쳤다”",
+      "episode": "episode:43f66ea4b003f7",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
       "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i535e951a",
-      "title": "[속보] 실종된 '리트 만점자' 이진우 씨, 결국 천호동 모텔서 심정지로 발견",
-      "episode": "episode:d6a70d14c64f75",
-      "quality": 0.92,
-      "stages": [
-        "입장·공방",
-        "일반 보도",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i41138707",
-      "title": "수신 차단 안된다더니…“수능 재난문자 나는 안왔다” 왜?",
-      "episode": "episode:17b4c4e8ec81fb",
-      "quality": 0.84,
+      "id": "icc7073be",
+      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
+      "episode": "episode:b4571ab00be66b",
+      "quality": 0.66,
       "stages": [
         "일반 보도",
-        "파장·후속",
         "수사·대응"
       ],
       "gaps": [
@@ -96,19 +110,91 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 28,
+      "duplicate_candidates": 34,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if942a4ee",
+      "title": "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사",
+      "episode": "episode:fb3aa8db6194e2",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "사법·처분",
+        "파장·후속",
+        "일반 보도",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방"
+      ],
+      "duplicate_candidates": 39,
+      "event_count": 60,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3676a4d6",
+      "title": "시진핑 “핵무기 완전 폐기해야, 금지선 넘지 말라” [사상 첫 미중러 정상회담]",
+      "episode": "episode:1cf1a873d6dcfe",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 31,
       "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "i7803e41e",
-      "title": "\"이게 오늘 수능 국어야, 풀어봐\" 시켰더니…AI, 2분 만에 100점",
-      "episode": "episode:f44bb0258b4d25",
+      "id": "i448be39e",
+      "title": "[속보] 대법, 한덕수 계엄 전 국무회의 '무죄 취지'로 파기환송",
+      "episode": "episode:81f657e42d9abc",
+      "quality": 0.76,
+      "stages": [
+        "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 40,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i0f3f49a8",
+      "title": "“같은 시험장서 AI 부정행위 충격”…수능 끝났지만 공정성 논란 여전 [현장, 그곳&]",
+      "episode": "episode:c0af5659b0ddc9",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i160804e0",
+      "title": "천안 수능 시험장서 '스마트안경' 소지한 수험생 적발…부정행위 처리[2027수능]",
+      "episode": "episode:f9aeb5529e37d6",
       "quality": 0.84,
       "stages": [
         "일반 보도",
-        "수사·대응",
-        "파장·후속"
+        "파장·후속",
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
@@ -116,31 +202,13 @@
         "사법·처분"
       ],
       "duplicate_candidates": 29,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i853304e3",
-      "title": "시진핑 “핵무기, 인류 머리 위의 ‘다모클레스의 검’…전면 폐기해야”(종합)",
-      "episode": "episode:3d7ed76e1ea902",
-      "quality": 0.66,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 21,
-      "event_count": 3,
+      "event_count": 11,
       "evidence_rate": 1.0
     },
     {
       "id": "id1f9b23d",
       "title": "[선전 APEC] 트럼프는 이란, 시진핑은 강대국, 푸틴은 우크라...3국 정상회담 동상이몽",
-      "episode": "episode:14b087b9cbd97c",
+      "episode": "episode:88e0efc5f31a55",
       "quality": 0.92,
       "stages": [
         "입장·공방",
@@ -152,45 +220,8 @@
         "발단·의혹",
         "수사·대응"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 61,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3f731563",
-      "title": "“올해 수능 풀어줘” AI에 입력하니…챗GPT 10분도 안돼 만점 [팩플]",
-      "episode": "episode:d9ce521738358e",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i2e7790d4",
-      "title": "[속보] 대법 \"계엄 선포 전 한덕수 국헌문란 목적 증명됐나‥전후 행위 별개로 판단해야\"",
-      "episode": "episode:82e44a66c49159",
-      "quality": 0.84,
-      "stages": [
-        "사법·처분",
-        "입장·공방",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "수사·대응",
-        "파장·후속"
-      ],
       "duplicate_candidates": 31,
-      "event_count": 10,
+      "event_count": 61,
       "evidence_rate": 1.0
     }
   ]
