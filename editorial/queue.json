@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-19",
-  "generated_at": "2026-11-19T12:54:59+09:00",
+  "generated_at": "2026-11-19T13:22:28+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,114 +27,9 @@
   },
   "candidates": [
     {
-      "issue_id": "i66cac2fd",
-      "title": "리트 만점자, 공개 검증 받겠다더니 결국 '노쇼'…어제부터 연락두절",
+      "issue_id": "i8a56caa8",
+      "title": "[한중 FTA 경제학] 中에 묶인 K콘텐츠 투자금…'잃어버린 10년' 회수하나",
       "category": "경제",
-      "rank": 5,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "서울대 치대생 이진우 씨는 법학적성시험(LEET) 만점을 받은 뒤 부정행위 의혹에 휩싸여 수능 국어 문제를 실시간으로 풀어 부정행위 의혹을 정면돌파하겠다고 밝힌 바 있다.",
-        "‘리트 만점자’ 공개 검증장에 안 왔다...",
-        "주최측 “잘 있는지 확인해달라”",
-        "'리트 만점자' 공개검증 불참·연락두절‥주최측 \"경찰에도 협조 요청\"",
-        "리트 만점자, 공개검증 약속시간에 안와…\"폰 꺼져있어\""
-      ],
-      "sources": [
-        {
-          "press": "조선일보",
-          "title": "‘리트 만점자’ 공개 검증장에 안 왔다... 주최측 “잘 있는지 확인해달라”",
-          "url": "https://n.news.naver.com/article/023/0004010504"
-        },
-        {
-          "press": "MBC",
-          "title": "'리트 만점자' 공개검증 불참·연락두절‥주최측 \"경찰에도 협조 요청\"",
-          "url": "https://n.news.naver.com/article/214/0001536573"
-        },
-        {
-          "press": "한국경제TV",
-          "title": "리트 만점자, 공개검증 약속시간에 안와…\"폰 꺼져있어\"",
-          "url": "https://n.news.naver.com/article/215/0001273223"
-        },
-        {
-          "press": "세계일보",
-          "title": "오전 8시까지 온다더니…전화 꺼진 리트 만점자, 검증장에도 안 나타나",
-          "url": "https://n.news.naver.com/article/022/0004176414"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "서울대 치대생 이진우 씨는 법학적성시험(LEET) 만점을 받은 뒤 부정행위 의혹에 휩싸여 수능 국어 문제를 실시간으로 풀어 부정행위 의혹을 정면돌파하겠다고 밝힌 바 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "(LEET·리트) 첫 만점자 이진우 씨를 향한 인공지능(AI) 부정행위 의혹 제기 배경을 공개석상에서 털어놨다...."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "오전 8시까지 온다더니…전화 꺼진 리트 만점자, 검증장에도 안 나타나"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "사법·처분",
-          "파장·후속"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i29ca9398",
-      "title": "환영단 1명 없이 썰렁‥중국, 日 다카이치에 대놓고 '냉대'",
-      "category": "세계",
       "rank": 9,
       "priority_score": 37,
       "production_types": [
@@ -143,49 +38,49 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "아시아태평양경제협력체(APEC) 정상회의가 열리고 있는 중국 광둥성 선전의 바오안 국제공항.",
-        "이같은 모습이 공개되자 일본 언론들은 \"환영에 온도차가 있었다\"며 중국이 다카이치 총리를 냉대했다고...",
-        "실제로, 다카이치 총리보다",
-        "먼저 도착한 이재명 대통령은 군악대와 의장대, 120명 규모의 청년 환영단의 환대를...",
-        "\"李대통령엔 꽃 흔들더니\"…썰렁한 다카이치 공항의전 日언론 비판"
+        "한중 자유무역협정(FTA) 서비스·투자 후속협상 타결로 한한령(限韓令·한류 제한령) 해제 기대감이 커지지만 정작 K팝 공연은 쏙 빠져 ‘앙꼬없는 찐빵’이라는 반응이 나온다.",
+        "中 \"한중 2단계 FTA 타결…문화·인터넷 협력 실행계획 마련\"",
+        "사진/문화체육관광부 정부가 18일 아시아태평양경제협력체(APEC) 정상회의를 계기로 열린 한중 정상회담에서 양국이 '한중 FTA 서비스·투자 후속협상'의 실질타결을 선언했다고 밝혔다.",
+        "협상은 사실상 종료됐으며 일부...",
+        "‘한·중 자유무역협정(FTA) 서비스·투자 후속 협상’이 타결되면서 국내 게임업계에도 수혜가 예상된다."
       ],
       "sources": [
         {
-          "press": "imnews.imbc.com",
-          "title": "계단 단차부터 환영단까지‥\"한국과 대우 달라\" \"무례\" 日 불쾌감",
-          "url": "https://n.news.naver.com/mnews/article/214/0001536635?sid=104"
+          "press": "연합뉴스",
+          "title": "中 \"한중 2단계 FTA 타결…문화·인터넷 협력 실행계획 마련\"",
+          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1WM2VUVjVENWp4aW9DMTBDSmNtcmE4OU85YzNfanQ0ZHQ5YnpUXzlyM3oyYTdudE5zS3FWdEgwaU5zVjVpLXhYTlNmVm5JQ0szVWtiYnNtTTRXUGvSAWBBVV95cUxPNDdjVXVBdFY0cjFyMkhGN3diQm84SzA0VzhMVUdrMzZzazdRNW1ocDB5b1FDSjRBeU9pVUZYaEEzWUFHTjhBSzc0VUo0RHZ4RTVvMHJ6cnJuR2xWYkRMS24?oc=5"
         },
         {
-          "press": "TV조선",
-          "title": "\"李대통령엔 꽃 흔들더니\"…썰렁한 다카이치 공항의전 日언론 비판",
-          "url": "https://n.news.naver.com/article/448/0000651950"
+          "press": "gukjenews.com",
+          "title": "한중 FTA 서비스·투자 후속협상 8년 8개월 만에 실질타결…관광업계 \"중...",
+          "url": "https://www.gukjenews.com/news/articleView.html?idxno=3757005"
         },
         {
-          "press": "조선비즈",
-          "title": "다카이치 日 총리에 中 노골적 냉대… 꽃·음악 없는 의전 이어 ‘무표정 악수’",
-          "url": "https://n.news.naver.com/article/366/0001205817"
+          "press": "mk.co.kr",
+          "title": "한중 FTA 후속 협상 타결…조이시티 ‘프리스타일’ IP 수혜 기대",
+          "url": "https://n.news.naver.com/mnews/article/009/0005766133?sid=101"
         },
         {
-          "press": "동아일보",
-          "title": "日언론 “韓 대통령은 中서 환대…우리 총리는 노골적 냉대”",
-          "url": "https://n.news.naver.com/article/020/0003763455"
+          "press": "view.asiae.co.kr",
+          "title": "브이티, 中 한한령 해제 기대에 공략 속도…내년 신규 제품 25종 투입",
+          "url": "https://n.news.naver.com/mnews/article/277/0005845064?sid=101"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "아시아태평양경제협력체(APEC) 정상회의가 열리고 있는 중국 광둥성 선전의 바오안 국제공항."
+          "evidence": "한중 자유무역협정(FTA) 서비스·투자 후속협상 타결로 한한령(限韓令·한류 제한령) 해제 기대감이 커지지만 정작 K팝 공연은 쏙 빠져 ‘앙꼬없는 찐빵’이라는 반응이 나온다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "‘대만 갈등’ 후 시진핑과 첫 대면 앞둔 다카이치…日, 냉대 막으려 안간힘"
+          "evidence": "사진/문화체육관광부 정부가 18일 아시아태평양경제협력체(APEC) 정상회의를 계기로 열린 한중 정상회담에서 양국이 '한중 FTA 서비스·투자 후속협상'의 실질타결을 선언했다고 밝혔다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "먼저 도착한 이재명 대통령은 군악대와 의장대, 120명 규모의 청년 환영단의 환대를..."
+          "evidence": "中 \"한중 2단계 FTA 타결…문화·인터넷 협력 실행계획 마련\""
         },
         {
           "panel": 4,
@@ -194,8 +89,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -227,7 +122,7 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.76,
+        "continuity_quality": 0.58,
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
@@ -237,60 +132,165 @@
       }
     },
     {
-      "issue_id": "ia2df7f2b",
-      "title": "리트 만점자 이진우씨, 공개검증 장소에 나타나지 않아…휴대전화 어제부터 꺼져 있는 상태",
+      "issue_id": "i6e58cbd0",
+      "title": "교육부 “재난문자 발송으로 스마트폰 소지 22명 적발”",
       "category": "사회",
-      "rank": 6,
-      "priority_score": 37,
+      "rank": 3,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "needs_fact_review",
       "facts": [
-        "[속보] “수능 생중계” 리트 만점 이진우, 현장 안 나타나…주최 측 ‘검증 중단’",
-        "‘리트 만점자’ 이진우, 수능 생중계 잠적…“휴대전화 꺼져있어”",
-        "‘리트 만점’ 이진우씨, 생중계 불참·연락두절… “휴대전화 꺼져 있어”",
-        "[속보] 경찰 \"'리트 만점' 이진우 관련 112 신고 접수\"",
-        "방송인 백지연이 올해 법학적성시험(LEET·리트) 만점을 받은 후 인공지능(AI) 부정행위 의혹에 휩싸인 이진우와의 인터뷰를 공개했다."
+        "2027학년도 대학수학능력시험 당일인 19일, 교육부는 시험 시작 10분 전 전국에 발송한 위급재난문자를 통해 시험장에 스마트폰을 반입한 수험생 22명을 적발했다.",
+        "교육부 차관 “재난문자로 시험장서 스마트폰 22개 적발…카메라 소지 여부 확인 중”",
+        "[속보]교육부 “재난문자로 전국서 22개 스마트폰 적발”",
+        "교육부 “재난문자 발송으로 스마트폰 소지 22명 적발”",
+        "수능 시험 진행…“재난문자로 스마트폰 22개 적발”"
       ],
       "sources": [
         {
-          "press": "매일경제",
-          "title": "[속보] “수능 생중계” 리트 만점 이진우, 현장 안 나타나…주최 측 ‘검증 중단’",
-          "url": "https://n.news.naver.com/article/009/0005765930"
+          "press": "조선비즈",
+          "title": "교육부 차관 “재난문자로 시험장서 스마트폰 22개 적발…카메라 소지 여부 확인 중”",
+          "url": "https://n.news.naver.com/article/366/0001205922"
         },
         {
-          "press": "아시아경제",
-          "title": "‘리트 만점자’ 이진우, 수능 생중계 잠적…“휴대전화 꺼져있어”",
-          "url": "https://n.news.naver.com/article/277/0005844817"
+          "press": "문화일보",
+          "title": "[속보]교육부 “재난문자로 전국서 22개 스마트폰 적발”",
+          "url": "https://n.news.naver.com/article/021/0002833941"
         },
         {
-          "press": "서울신문",
-          "title": "‘리트 만점’ 이진우씨, 생중계 불참·연락두절… “휴대전화 꺼져 있어”",
-          "url": "https://n.news.naver.com/article/081/0003700999"
+          "press": "국민일보",
+          "title": "교육부 “재난문자 발송으로 스마트폰 소지 22명 적발”",
+          "url": "https://n.news.naver.com/article/005/0001886158"
         },
         {
-          "press": "YTN",
-          "title": "[속보] 경찰 \"'리트 만점' 이진우 관련 112 신고 접수\"",
-          "url": "https://n.news.naver.com/article/052/0002434982"
+          "press": "KBS",
+          "title": "수능 시험 진행…“재난문자로 스마트폰 22개 적발”",
+          "url": "https://n.news.naver.com/article/056/0012297165"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "[속보] “수능 생중계” 리트 만점 이진우, 현장 안 나타나…주최 측 ‘검증 중단’"
+          "evidence": "2027학년도 대학수학능력시험 당일인 19일, 교육부는 시험 시작 10분 전 전국에 발송한 위급재난문자를 통해 시험장에 스마트폰을 반입한 수험생 22명을 적발했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "메가로스쿨 노형석 강사가 법학적성시험(LEET·리트) 첫 만점자 이진우 씨를 향한 인공지능(AI) 부정행위 의혹 제기 배경을 공개석상에서 털어놨다."
+          "evidence": "[특징주] 수능 스마트폰 22대 적발 속 지슨 5%대 상승"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "[속보] 경찰 \"'리트 만점' 이진우 관련 112 신고 접수\""
+          "evidence": "교육부 차관 “재난문자로 시험장서 스마트폰 22개 적발…카메라 소지 여부 확인 중”"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "실제 시험 당일 재난문자를 통해 22명의 스마트폰 소지자가 적발되면서, 사전 예고에도 불구하고 부정행위를 시도한 수험생들에 대한 비판과 정부 대책의 효과성에 대한 평가가 이어졌다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.66,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i59ef3d23",
+      "title": "엔비디아 임시 CEO \"이사회는 젠슨 황 복귀시키지 않기로 결정\"",
+      "category": "IT",
+      "rank": 7,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "엔비디아 임시 CEO \"이사회는 젠슨 황 복귀시키지 않기로 결정\"",
+        "젠슨황” 엔비디아 직원 56% CEO 복귀 지지",
+        "엔비디아 임시 CEO “앞으로 나아가자” 임금 인상 시사…직원들 56% “젠슨 황 복귀 원해”",
+        "그는 12일 사임한 젠슨 황 엔비디아 전 CEO를 \"내 친구\"라며 CEO 복귀를 지지한다고 밝혔습니다.",
+        "그러면서 \"그가 미국에 불충하다고 생각하지 않는다\"고 덧붙였습니다."
+      ],
+      "sources": [
+        {
+          "press": "YTN",
+          "title": "엔비디아 임시 CEO \"이사회는 젠슨 황 복귀시키지 않기로 결정\"",
+          "url": "https://n.news.naver.com/article/052/0002435050"
+        },
+        {
+          "press": "매일경제",
+          "title": "“돌아와요 젠슨황” 엔비디아 직원 56% CEO 복귀 지지",
+          "url": "https://www.mk.co.kr/news/world/12213457"
+        },
+        {
+          "press": "경향신문",
+          "title": "엔비디아 임시 CEO “앞으로 나아가자” 임금 인상 시사…직원들 56% “젠슨 황 복귀 원해”",
+          "url": "https://v.daum.net/v/20261119125156265"
+        },
+        {
+          "press": "sbs.co.kr",
+          "title": "머스크 뒤늦은 후회…\"중간선거에 거액 지출 어리석었다\"",
+          "url": "https://n.news.naver.com/mnews/article/055/0001404229?sid=104"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "엔비디아 임시 CEO \"이사회는 젠슨 황 복귀시키지 않기로 결정\""
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "AP통신(Associated Press)은 17일 실적 발표 전화회의에서 하비 존스(Harvey Jones) 엔비디아 이사회 의장이 이사회가 젠슨 황(Jensen Huang)의 사임을 만장일치로 수용했고 CEO로…"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "젠슨황” 엔비디아 직원 56% CEO 복귀 지지"
         },
         {
           "panel": 4,
@@ -332,11 +332,9 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
+        "continuity_quality": 1.0,
         "continuity_gaps": [
-          "발단·의혹",
-          "사법·처분",
-          "파장·후속"
+          "발단·의혹"
         ],
         "no_generic_closing": true
       }

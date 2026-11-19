@@ -1,51 +1,32 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 03:54:58",
+  "updated_at": "2026-11-19 04:22:27",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.85,
+  "average_quality": 0.78,
   "issues": [
     {
-      "id": "i93ee5948",
-      "title": "이 난리에도 간큰 수험생들... 재난문자로 스마트폰 22개 적발",
-      "episode": "episode:5fba5d6ad48ae4",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i952b2521",
-      "title": "'리트 만점자' 이진우 씨 실종신고 접수‥경찰, 광진구 일대 수색 중",
-      "episode": "episode:5a42745cadb708",
+      "id": "i115d9854",
+      "title": "'리트 만점자' 이진우 공개검증 무산...경찰 수색 중",
+      "episode": "episode:3f60e8c740ef37",
       "quality": 0.76,
       "stages": [
         "수사·대응",
-        "발단·의혹"
+        "입장·공방"
       ],
       "gaps": [
-        "입장·공방",
+        "발단·의혹",
         "사법·처분",
         "파장·후속"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 4,
+      "duplicate_candidates": 33,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
       "id": "i96988a84",
       "title": "이 대통령, 순방 중 ‘조작기소 특검법’ 재가",
-      "episode": "episode:9f1c15b8330fd1",
+      "episode": "episode:3d0ae2fb3177b4",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -57,93 +38,109 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 50,
+      "duplicate_candidates": 35,
+      "event_count": 58,
       "evidence_rate": 1.0
     },
     {
-      "id": "ic8ab6522",
-      "title": "[속보]\"모텔서 인근 산으로 이동\" '리트 만점' 이진우 실종, 경찰 수색 중",
-      "episode": "episode:ed82597ce24dc1",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "사법·처분",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i66cac2fd",
-      "title": "리트 만점자, 공개 검증 받겠다더니 결국 '노쇼'…어제부터 연락두절",
-      "episode": "episode:5be70bb78b5c72",
-      "quality": 0.84,
+      "id": "i6e58cbd0",
+      "title": "교육부 “재난문자 발송으로 스마트폰 소지 22명 적발”",
+      "episode": "episode:b1ec4cd22e6da5",
+      "quality": 0.66,
       "stages": [
         "일반 보도",
-        "입장·공방",
         "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "사법·처분",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib8ce9fa8",
+      "title": "수능 부정행위 22건 적발...\"위급재난문자로 확인\"",
+      "episode": "episode:7821e5794b1fc6",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
         "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
       ],
       "duplicate_candidates": 33,
       "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia2df7f2b",
-      "title": "리트 만점자 이진우씨, 공개검증 장소에 나타나지 않아…휴대전화 어제부터 꺼져 있는 상태",
-      "episode": "episode:f3757d1e5f11b9",
+      "id": "ie50fe4a7",
+      "title": "‘실종 신고' 리트 만점자 광진→송파→강동으로…경찰 수색 중",
+      "episode": "episode:69ad0c6b67fc2d",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "일반 보도",
+        "사법·처분",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "gaps": [
+        "파장·후속"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 13,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i05d069dd",
+      "title": "與 \"수능 부정행위 발본색원\" 野 \"李 대통령, 수능냥이\"",
+      "episode": "episode:9334335e93adcb",
       "quality": 0.84,
       "stages": [
         "일반 보도",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 17,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i59ef3d23",
+      "title": "엔비디아 임시 CEO \"이사회는 젠슨 황 복귀시키지 않기로 결정\"",
+      "episode": "episode:d69ffff37bebe8",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
         "입장·공방",
         "수사·대응"
       ],
       "gaps": [
-        "발단·의혹",
-        "사법·처분",
-        "파장·후속"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 4,
+      "duplicate_candidates": 40,
+      "event_count": 17,
       "evidence_rate": 1.0
     },
     {
-      "id": "i4cd3a560",
-      "title": "[속보]잠적한 '리트 만점자' 이진우, '서울대 치대 합격' 수능 시험지 폐기될 수도",
-      "episode": "episode:51eda3a50e50d8",
-      "quality": 0.84,
+      "id": "i3c6be5e9",
+      "title": "머스크 \"MAGA 아니다\"…젠슨 황 사임엔 \"조던 퇴출\"",
+      "episode": "episode:39b14df041b80e",
+      "quality": 0.68,
       "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i015e6665",
-      "title": "\"박지윤, 남사친과 호텔서 잠옷만 입고...\" 상간소송서 최동석이 일부 승소한 이유",
-      "episode": "episode:644a85536083dc",
-      "quality": 0.76,
-      "stages": [
-        "사법·처분",
         "일반 보도"
       ],
       "gaps": [
@@ -151,17 +148,16 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 22,
-      "event_count": 10,
+      "duplicate_candidates": 10,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i29ca9398",
-      "title": "환영단 1명 없이 썰렁‥중국, 日 다카이치에 대놓고 '냉대'",
-      "episode": "episode:804539b639f6c0",
-      "quality": 0.76,
+      "id": "i8a56caa8",
+      "title": "[한중 FTA 경제학] 中에 묶인 K콘텐츠 투자금…'잃어버린 10년' 회수하나",
+      "episode": "episode:50fc53e794e448",
+      "quality": 0.58,
       "stages": [
-        "일반 보도",
         "파장·후속"
       ],
       "gaps": [
@@ -169,27 +165,25 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 16,
-      "event_count": 7,
+      "duplicate_candidates": 22,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "ie6efb0b5",
-      "title": "한중 FTA 후속협상 타결…10년 만에 한한령 해제 수순 밟나",
-      "episode": "episode:25cc79ca3de404",
-      "quality": 0.92,
+      "id": "ie6c42873",
+      "title": "17m 시계탑에 캐럴까지…잠실 한복판에 펼쳐진 '19세기 영국' [르포]",
+      "episode": "episode:bef64ad3312c8c",
+      "quality": 0.48,
       "stages": [
-        "일반 보도",
-        "사법·처분",
-        "파장·후속",
-        "수사·대응"
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방"
+        "입장·공방",
+        "수사·대응"
       ],
-      "duplicate_candidates": 23,
-      "event_count": 10,
+      "duplicate_candidates": 11,
+      "event_count": 2,
       "evidence_rate": 1.0
     }
   ]
