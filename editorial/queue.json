@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T05:29:47+09:00",
+  "generated_at": "2026-11-20T04:50:32+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,113 +27,8 @@
   },
   "candidates": [
     {
-      "issue_id": "i21c08a08",
-      "title": "앤트로픽, 111.5달러에 거래 시작…장중 100달러 밑으로(종합)",
-      "category": "경제",
-      "rank": 8,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "인공지능(AI) 모델 클로드 개발사 앤트로픽의 기업공개(IPO)로 초기 투자자인 SK텔레콤이 큰 투자 성과를 거둘 전망이다.",
-        "“2720억 넣었는데 4조 됐다” 앤트로픽 투자한 韓 기업 대박",
-        "19일(현지시간) 나스닥과 외신에 따르면 앤트로픽은 이날 오전 11시 48분 종목코드 'ANT'로 첫 거래를 시작했다.",
-        "시초가는 111.50달러로 공모가 83달러보다",
-        "거래 시작 이후 주가는 장 초반 최고 114.99달러까지..."
-      ],
-      "sources": [
-        {
-          "press": "한경비즈니스",
-          "title": "“2720억 넣었는데 4조 됐다” 앤트로픽 투자한 韓 기업 대박",
-          "url": "https://n.news.naver.com/article/050/0000113508"
-        },
-        {
-          "press": "zdnet.co.kr",
-          "title": "앤트로픽, 나스닥 첫날 장중 38% 급등…주가 '출렁'",
-          "url": "https://n.news.naver.com/mnews/article/092/0002446138?sid=105"
-        },
-        {
-          "press": "geconomy.co.kr",
-          "title": "앤트로픽 상장 첫날 기업가치 2조달러 돌파…AI 열풍에도 월가는 '냉랭...",
-          "url": "https://www.geconomy.co.kr/news/article.html?no=325875"
-        },
-        {
-          "press": "imnews.imbc.com",
-          "title": "'역대 최대 IPO' 앤트로픽, 111.5달러에 거래 시작‥시총 2조달러",
-          "url": "https://n.news.naver.com/mnews/article/214/0001536812?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "인공지능(AI) 모델 클로드 개발사 앤트로픽의 기업공개(IPO)로 초기 투자자인 SK텔레콤이 큰 투자 성과를 거둘 전망이다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "“2720억 넣었는데 4조 됐다” 앤트로픽 투자한 韓 기업 대박"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "19일(현지시간) 나스닥과 외신에 따르면 앤트로픽은 이날 오전 11시 48분 종목코드 'ANT'로 첫 거래를 시작했다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ieebe2180",
-      "title": "미중러 첫 정상회담 “핵확산 방지” 그들만의 평화선언",
+      "issue_id": "if30f7013",
+      "title": "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\"",
       "category": "세계",
       "rank": 5,
       "priority_score": 37,
@@ -143,49 +38,49 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "중국 선전에서 19일 열린 사상 첫 미·중·러 3자 정상회담에서 세 정상은 핵무기 통제의 필요성에는 뜻을...",
-        "이와 동시에 트럼프 대통령은 “(미중러가) 전 세계 다른 국가들의 핵확산 위협에 맞서기 위해 협력하는 것도...",
-        "반면 이번 선전 회담 직후 발표된 ‘미중러 정상 평화선언’에는 우크라이나 영토 문제나 유럽 안보 체계...",
-        "결국 각국은 외교적 파국을 피하고 책임 있는 강대국의 면모를 과시할 수 있는 ‘핵확산 방지’와 같은 최소한의...",
-        "세 정상은 회담 뒤 4개 항으로 된 '미·중·러 정상 평화선언'을 채택했다."
+        "미중러 회담 앞두고 미러 정상 40분 동안 약식회담 가져…러시아 측 \"우크라이나 문제 주요",
+        "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
+        "푸틴 보좌관, 보란 듯 '핵가방' 들고 이동…\"핵위력 과시\"",
+        "도널드 트럼프 미국 대통령은 핵무기 감축 논의를 강조했고, 시진핑 중국 국가주석과 블라디미르 푸틴 러시아 대통령은 세계 평화와 안정을 위한 협력을 촉구했다.",
+        "핵보유국이자 유엔 안전보장이사회 상임이사국인..."
       ],
       "sources": [
         {
-          "press": "dt.co.kr",
-          "title": "[분석] 미중러, ‘핵무기 통제’ 합의했지만…‘군축 방식·책임 범위’...",
-          "url": "https://n.news.naver.com/mnews/article/029/0003060196?sid=104"
+          "press": "한겨레",
+          "title": "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
+          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQRU1LTTVIX1FKTEZmVl9aazhOdXFsbGViZVNCZHJvV1dXLTVOVG5NN0J5SEZ4TzRJWVNwQnVvNVRDN0ctTXktZjF3dWFRUml0QlYzcV9sX2hqTkFGbUVLWnFsQ2xWU2dpWVlFMENBQ1JDV2d2QnVhdEpfSHUzWWpHSkF3?oc=5"
         },
         {
-          "press": "dt.co.kr",
-          "title": "[분석] ‘제2의 얄타’는 기우… 미·중·러 독단적 질서 재편은 애초 불...",
-          "url": "https://n.news.naver.com/mnews/article/029/0003060198?sid=104"
+          "press": "연합뉴스TV",
+          "title": "푸틴 보좌관, 보란 듯 '핵가방' 들고 이동…\"핵위력 과시\"",
+          "url": "https://n.news.naver.com/article/422/0000927883"
         },
         {
-          "press": "news1.kr",
-          "title": "미중러 정상 \"핵 줄이자·없애자\" 말뿐…선언문엔 '감축 약속' 없었다",
-          "url": "https://n.news.naver.com/mnews/article/421/0009300347?sid=104"
+          "press": "mt.co.kr",
+          "title": "트럼프 \"핵무기 감축… 習 \"완전폐기\"",
+          "url": "https://n.news.naver.com/mnews/article/008/0005443904?sid=104"
         },
         {
-          "press": "ytn.co.kr",
-          "title": "미중러 \"핵위험 감소·핵확산 방지 대화할 것\"...국제질서 재편 우려도",
-          "url": "https://n.news.naver.com/mnews/article/052/0002435404?sid=104"
+          "press": "newspim.com",
+          "title": "[종합] 트럼프 \"김정은과 언젠가 만날 것…회의가 너무 많았다\"",
+          "url": "https://www.newspim.com/news/view/20261120000045"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "중국 선전에서 19일 열린 사상 첫 미·중·러 3자 정상회담에서 세 정상은 핵무기 통제의 필요성에는 뜻을..."
+          "evidence": "미중러 회담 앞두고 미러 정상 40분 동안 약식회담 가져…러시아 측 \"우크라이나 문제 주요"
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "선언문에는 △유엔 개혁 △정제 석유제품 생산·공급 확대 △국제형사재판소(ICC)의 관할권 남용 경고 △핵위험 감소와 핵확산 방지를 위한 대화가..."
+          "evidence": "핵보유국이자 유엔 안전보장이사회 상임이사국인..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "세 정상은 회담 뒤 4개 항으로 된 '미·중·러 정상 평화선언'을 채택했다."
+          "evidence": "한편 트럼프 대통령은 19일 중국 선전에서 시진핑 중국 국가주석, 푸틴 대통령과 3국 정상회의를 열고 '평화를 향한 선언'을 채택했다."
         },
         {
           "panel": 4,
@@ -237,10 +132,10 @@
       }
     },
     {
-      "issue_id": "ic63b8dce",
-      "title": "좌 트럼프·우 푸틴 앉혔다…‘상석’ 시진핑이 노린 장면",
+      "issue_id": "iaceb38d7",
+      "title": "\"김정은, 핵보유국 전략외교…트럼프와 만남에 가치 못느껴\"",
       "category": "세계",
-      "rank": 6,
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -248,49 +143,49 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "청와대 고위관계자는 전날 선전 시내에 마련된 프레스센터에서 기자들과 만나 “이 대통령은 (18일) 시진핑...",
-        "청와대 고위관계자는 “이 대통령은 이번 계기에 미국 도널드 트럼프 대통령, 시 주석, 푸틴 대통령과 모두...",
-        "‘지각왕’ 푸틴이 먼저 왔다… 트럼프 “이게 누구야, 내 친구네”",
-        "트럼프는 이런 푸틴을 보자 “이게 누구야.",
-        "내 친구”라며 친밀감을 드러냈다."
+        "김정은 북한 국무위원장은 최근 미국 대통령 트럼프와의 정상회담을 통해 핵보유국으로서의 전략외교적 가치를 인정받지 못했다고 평가했다.",
+        "전문보기: https://www.yna.co.kr/view/AKR20261119057100001 ■ 트럼프 中체류 마지막날…통일부 \"김정은 방중 동향...",
+        "한은은 원화가치 절상이 수출기업 채산성을 악화하지만, 내수기업의 원가 부담을 줄이고 저소득층의...",
+        "기본적으로 김정은은 지금 전략외교 단계에서 헥무기 보유국 지위를 공고히하고 세계가 비핵화나 제재 압박 같은 것을 잊게 만들려고 노력하고 있다\"며 \"현재로서는 트럼프를 만날 필요가 없고, 거기에 가치를 두지 않고...",
+        "공식화할 트럼프는 사전 접촉도 없는데 김정은이 선전에 올지도 모른다는 ‘아니면 말고’ 식의 화법으로..."
       ],
       "sources": [
         {
-          "press": "seoul.co.kr",
-          "title": "7년 만에 만난 한·러 정상… “한반도 긴장 완화 필요성 공감대”",
-          "url": "https://n.news.naver.com/mnews/article/081/0003701338?sid=100"
+          "press": "yna.co.kr",
+          "title": "[연합뉴스 이 시각 헤드라인] - 14:30",
+          "url": "https://n.news.naver.com/mnews/article/001/0016452199?sid=102"
         },
         {
-          "press": "동아일보",
-          "title": "‘지각왕’ 푸틴이 먼저 왔다… 트럼프 “이게 누구야, 내 친구네”",
-          "url": "https://www.donga.com/news/Inter/article/all/20261120/135057903/2"
+          "press": "newsis.com",
+          "title": "\"북미회동 불발…김정은, 트럼프와 대화 필요없다 느껴\"",
+          "url": "https://n.news.naver.com/mnews/article/003/0014334518?sid=104"
         },
         {
-          "press": "seoul.co.kr",
-          "title": "트럼프, 시진핑·푸틴에 “내 친구”… 러 ‘핵가방 장교’ 포착에 긴장...",
-          "url": "https://n.news.naver.com/mnews/article/081/0003701336?sid=104"
+          "press": "munhwa.com",
+          "title": "美·中·러 회담 본질과 ‘코리아 패싱’[포럼]",
+          "url": "https://n.news.naver.com/mnews/article/021/0002833976?sid=110"
         },
         {
-          "press": "seoul.co.kr",
-          "title": "[사설] 핵 안보 ‘새판’ 미중러 첫 정상회담, 외교 역량 다져 대비를",
-          "url": "https://n.news.naver.com/mnews/article/081/0003701411?sid=110"
+          "press": "yonhapnewstv.co.kr",
+          "title": "북미회담 불발…\"김정은, 트럼프와 만남에 가치 못느껴\"",
+          "url": "https://n.news.naver.com/mnews/article/422/0000928010?sid=104"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "청와대 고위관계자는 전날 선전 시내에 마련된 프레스센터에서 기자들과 만나 “이 대통령은 (18일) 시진핑..."
+          "evidence": "김정은 북한 국무위원장은 최근 미국 대통령 트럼프와의 정상회담을 통해 핵보유국으로서의 전략외교적 가치를 인정받지 못했다고 평가했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "트럼프 대통령은 \"푸틴이 러시아가 점령한 크림반도를 연결하는 다리에 대한 공격 때문에 젤렌스키 (우크라이나)..."
+          "evidence": "또 중국이나 러시아의 실질적 영향력이..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "신화통신에 따르면 도널드 트럼프 미국 대통령과 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령은 이날 중국 선전 치린산장에서 회담을 갖고 4개항으로 구성된 ‘미중러 정상 평화선언’을 발표했다."
+          "evidence": "전문보기: https://www.yna.co.kr/view/AKR20261119057100001 ■ 트럼프 中체류 마지막날…통일부 \"김정은 방중 동향..."
         },
         {
           "panel": 4,
@@ -335,8 +230,111 @@
         "continuity_quality": 0.84,
         "continuity_gaps": [
           "발단·의혹",
-          "입장·공방",
-          "수사·대응"
+          "수사·대응",
+          "파장·후속"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i4993f934",
+      "title": "LEET 만점자, 서울대 '사망 제적' 예정…\"입학취소는 불가\"",
+      "category": "사회",
+      "rank": 4,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "법학적성시험(LEET) 및 수능 부정행위 의혹에 휩싸였던 이진우(32) 씨가 19일 사망하면서 관련 후속 조치에 이목이 쏠리고 있다.",
+        "[속보] 서울대, ‘리트 만점자’ 사망 제적 예정…“입학취소는 불가”",
+        "경찰 “이진우 수사 계속”… 서울대 “사망 제적 처리”",
+        "수능 의혹 어쩌나…'리트 만점자', 서울대 “입학 취소 불가” 왜?",
+        "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사"
+      ],
+      "sources": [
+        {
+          "press": "디지털타임스",
+          "title": "[속보] 서울대, ‘리트 만점자’ 사망 제적 예정…“입학취소는 불가”",
+          "url": "https://n.news.naver.com/article/029/0003060189"
+        },
+        {
+          "press": "조선일보",
+          "title": "경찰 “이진우 수사 계속”… 서울대 “사망 제적 처리”",
+          "url": "https://n.news.naver.com/article/023/0004010614"
+        },
+        {
+          "press": "전자신문",
+          "title": "수능 의혹 어쩌나…'리트 만점자', 서울대 “입학 취소 불가” 왜?",
+          "url": "https://n.news.naver.com/article/030/0003487791"
+        },
+        {
+          "press": "YTN",
+          "title": "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사",
+          "url": "https://n.news.naver.com/article/052/0002435211"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "법학적성시험(LEET) 및 수능 부정행위 의혹에 휩싸였던 이진우(32) 씨가 19일 사망하면서 관련 후속 조치에 이목이 쏠리고 있다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "\"너 때문에 재수했잖아\"…리트 만점자 사망 뒤 나온 주장"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "19일 대학생활 플랫폼 에브리타임 등 온라인 커뮤니티에는 '이진우 고소하려고 준비 중이었다'는 제목의 글이 올라왔다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "이 씨가 AI 커닝 의혹 해명을 위한 공개검증에 불참한 뒤 숨진 채 발견된 경위와 함께, 경찰의 수사 지속 방침 및 대학가의 반응이 이어졌다. 이로 인해 AI를 활용한 부정행위 의혹과 입시 제도의 허점에 대한…"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "발단·의혹"
         ],
         "no_generic_closing": true
       }
