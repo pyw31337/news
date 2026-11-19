@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-18T09:23:16+09:00",
+ "updated": "2026-11-19T09:25:18+09:00",
  "policy": "Counts distinguish roster entries, structured profiles, source-URL-backed timelines, and verified portraits. Portraits require a stable Wikidata or official ID plus a recorded source and license.",
  "goals": {
   "tier_1_complete_profiles": 30000,
@@ -29,7 +29,7 @@
   "기타": {
    "roster": 50207,
    "structured_profile": 24886,
-   "source_url_timeline": 24660
+   "source_url_timeline": 24661
   },
   "문화": {
    "roster": 2194,
@@ -122,19 +122,19 @@
  },
  "journalists": {
   "today_profiles": 20,
-  "today_verified_profile_photos": 17,
-  "cumulative_affiliation_records": 310
+  "today_verified_profile_photos": 19,
+  "cumulative_affiliation_records": 323
  },
  "portraits": {
-  "verified_wikimedia_or_official": 1162,
-  "pending_or_not_available": 300
+  "verified_wikimedia_or_official": 1692,
+  "pending_or_not_available": 346
  },
  "wikidata_facts": {
-  "source_linked_profiles": 1750,
+  "source_linked_profiles": 1768,
   "pending_or_not_available": 0
  },
  "next_queue": {
-  "count": 300,
+  "count": 83,
   "policy": "Tier-1, non-minor, stable Wikidata ID only"
  }
 }
