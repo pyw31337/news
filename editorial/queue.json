@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-19",
-  "generated_at": "2026-11-19T22:24:37+09:00",
+  "generated_at": "2026-11-19T21:23:04+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,111 +27,6 @@
   },
   "candidates": [
     {
-      "issue_id": "i42a18e2a",
-      "title": "[미중러 정상회담] 대형원탁에 마주앉았지만…시진핑이 사실상 '가운데'(종합)",
-      "category": "세계",
-      "rank": 7,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "시진핑 중국 국가주석이 19일(현지시간) 도널드 트럼프 미국 대통령, 블라디미르 푸틴 러시아 대통령과 가진 사상 첫 미중러 3자 정상회담에서 핵무기의 전면 금지와 완전한 폐기를 촉구했다.",
-        "19일(이하 현지시간) 중국 선전 기린 산장에서 도널드 트럼프 미국 대통령과 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령 등 미중러 3국의 정상이 최초로 정상회담을 가졌다.",
-        "회담 이후 3국은 4개 항으로 구성된...",
-        "시진핑, 첫 미중러 정상회담에 \"긍정적·건설적 회담…3국 견해 일치\"(종합)",
-        "다음은 '평화를 향한 중국·러시아·미국 정상 선언' 전문이다."
-      ],
-      "sources": [
-        {
-          "press": "pressian.com",
-          "title": "‘핵가방’ 들고 나타난 푸틴…트럼프·시진핑과 첫 3자 회담서 '유엔 개...",
-          "url": "https://n.news.naver.com/mnews/article/002/0002466762?sid=104"
-        },
-        {
-          "press": "아시아경제",
-          "title": "시진핑, 첫 미중러 정상회담에 \"긍정적·건설적 회담…3국 견해 일치\"(종합)",
-          "url": "https://v.daum.net/v/20261119213421997"
-        },
-        {
-          "press": "mt.co.kr",
-          "title": "미중러 첫 공동성명…\"유엔 개혁·석유 증산·핵확산 방지 합의\"[전문]",
-          "url": "https://n.news.naver.com/mnews/article/008/0005443865?sid=104"
-        },
-        {
-          "press": "moneystorm.kr",
-          "title": "미중러 3강, 국제질서 재편 시동…'승자는 푸틴' 거래외교 현실화하나",
-          "url": "https://www.moneystorm.kr/news/articleView.html?idxno=8624"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "시진핑 중국 국가주석이 19일(현지시간) 도널드 트럼프 미국 대통령, 블라디미르 푸틴 러시아 대통령과 가진 사상 첫 미중러 3자 정상회담에서 핵무기의 전면 금지와 완전한 폐기를 촉구했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "이 대통령은 전날 시진핑 주석과 정상회담을 하고 한중 자유무역협정(FTA) 서비스·투자 후속협상의 실질 타결을..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "19일(이하 현지시간) 중국 선전 기린 산장에서 도널드 트럼프 미국 대통령과 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령 등 미중러 3국의 정상이 최초로 정상회담을 가졌다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.76,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
       "issue_id": "id1f9b23d",
       "title": "[선전 APEC] 트럼프는 이란, 시진핑은 강대국, 푸틴은 우크라...3국 정상회담 동상이몽",
       "category": "세계",
@@ -144,21 +39,21 @@
       "status": "ready_for_editorial_review",
       "facts": [
         "트럼프 미국 대통령은 11월 19일 중국 베이징에서 열린 APEC 정상회의에서 이란과 시진핑 중국 국가주석을 만나 양국 관계를 개선하기 위한 방안을 논의했다.",
-        "시진핑 중국 국가주석과의 회담 시각으로 공지된 것보다",
-        "45분가량 늦은 도착이었다.",
-        "직전까지 트럼프 대통령은 아시아태평양경제협력체(APEC·아펙) 회의장에서 블라디미르 푸틴 러시아 대통령과 공식 일정에 없던 약식...",
-        "BBC방송·로이터통신 등에 따르면 푸틴 대통령은 이날 중국 선전에서 도널드 트럼프 미국 대통령·시진핑 중국 국가주석과 3자 정상회담을 진행한 뒤 브리핑에서 이번 회담을 얄타 회담과 비유하는 시각에 대해 이같이..."
+        "트럼프는 19일 중국 선전에서 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령과 회담했지만 김정은과의 만남은 이뤄지지 않았다.",
+        "앞서 그는 16일 순방길에 오르면서 취재진의 질문이 없는데 먼저 “김정은...",
+        "트럼프, 시진핑 만나 “농산물 구입 늘려달라”…시 “양국 관계 대등”",
+        "트럼프 \"핵위협 맞서야\"·시진핑 \"전면 폐기\"·푸틴 \"공동 책임\""
       ],
       "sources": [
         {
-          "press": "hani.co.kr",
-          "title": "‘지각 대장’ 푸틴이 먼저 기다렸다…미소·악수 오간 선전의 6시간",
-          "url": "https://n.news.naver.com/mnews/article/028/0002833112?sid=104"
+          "press": "chosun.com",
+          "title": "“김정은 올 수도” 호언하더니…또 빈손 떠난 트럼프의 ‘허풍 외교’",
+          "url": "https://n.news.naver.com/mnews/article/023/0004010627?sid=104"
         },
         {
-          "press": "news1.kr",
-          "title": "푸틴 \"얄타 회담 뭐가 문제?…덕분에 80년간 세계 평화\"",
-          "url": "https://n.news.naver.com/mnews/article/421/0009300308?sid=104"
+          "press": "한겨레",
+          "title": "트럼프, 시진핑 만나 “농산물 구입 늘려달라”…시 “양국 관계 대등”",
+          "url": "https://v.daum.net/v/20261119204628012"
         },
         {
           "press": "연합뉴스",
@@ -168,7 +63,7 @@
         {
           "press": "매일경제",
           "title": "習 \"中·美 갈등 격화 막아야\"… 트럼프 \"대만 독립 지지안해\"",
-          "url": "https://www.mk.co.kr/news/world/12213938"
+          "url": "https://v.daum.net/v/20261119201801452"
         }
       ],
       "story_beats": [
@@ -185,7 +80,7 @@
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "45분가량 늦은 도착이었다."
+          "evidence": "트럼프는 19일 중국 선전에서 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령과 회담했지만 김정은과의 만남은 이뤄지지 않았다."
         },
         {
           "panel": 4,
@@ -236,60 +131,60 @@
       }
     },
     {
-      "issue_id": "i97363e10",
-      "title": "[속보] 교육부 “수능 부정행위자 98명…시험중 스마트기기 활용 5건”",
+      "issue_id": "i41138707",
+      "title": "수신 차단 안된다더니…“수능 재난문자 나는 안왔다” 왜?",
       "category": "사회",
-      "rank": 2,
+      "rank": 5,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
-        "2027학년도 수능에서 인공지능과 스마트기기를 활용한 부정행위로 총 98명이 적발되었습니다.",
-        "[속보]수능 부정행위자 98명, 스마트기기 활용 5건…최다적발 ‘이곳’",
-        "[수능] 교육부 \"부정행위자 98명 적발…시험중 스마트기기 활용 5건\"(종합)",
-        "교육부 \"수능 스마트기기 부정행위 98명…시험 중 활용 5건 적발\"",
-        "수능 부정행위자 98명 적발…“시험 중 스마트기기 활용 5건”"
+        "SNS서 잇달아 제기…정부 “기기·통신 환경 따라 예외적 미수신 가능” 2027학년도 대학수학능력시험(수능) 당일인 19일 정부가 휴대전화를 이용한 부정행위를 막기 위해 전국에 위급재난문자를 발송했지만, 일부 이용자",
+        "재난문자로만 49명 잡았다…\"수능 부정행위자 총 98명\"",
+        "\"차단 못 한다더니...수능 재난문자 안 울렸다\" 미수신 원인은?",
+        "수신 차단 안된다더니…“수능 재난문자 나는 안왔다” 왜?",
+        "재난문자 세 번 울린 수능…49명 들통나 '성적 무효'"
       ],
       "sources": [
         {
-          "press": "문화일보",
-          "title": "[속보]수능 부정행위자 98명, 스마트기기 활용 5건…최다적발 ‘이곳’",
-          "url": "https://n.news.naver.com/article/021/0002834125"
+          "press": "JTBC",
+          "title": "재난문자로만 49명 잡았다…\"수능 부정행위자 총 98명\"",
+          "url": "https://n.news.naver.com/article/437/0000521554"
         },
         {
-          "press": "연합뉴스",
-          "title": "[수능] 교육부 \"부정행위자 98명 적발…시험중 스마트기기 활용 5건\"(종합)",
-          "url": "https://n.news.naver.com/article/001/0016453241"
+          "press": "머니투데이",
+          "title": "\"차단 못 한다더니...수능 재난문자 안 울렸다\" 미수신 원인은?",
+          "url": "https://n.news.naver.com/article/008/0005443532"
         },
         {
-          "press": "연합뉴스TV",
-          "title": "교육부 \"수능 스마트기기 부정행위 98명…시험 중 활용 5건 적발\"",
-          "url": "https://n.news.naver.com/article/422/0000927927"
+          "press": "전자신문",
+          "title": "수신 차단 안된다더니…“수능 재난문자 나는 안왔다” 왜?",
+          "url": "https://n.news.naver.com/article/030/0003487621"
         },
         {
-          "press": "KBS",
-          "title": "수능 부정행위자 98명 적발…“시험 중 스마트기기 활용 5건”",
-          "url": "https://n.news.naver.com/article/056/0012297420"
+          "press": "SBS",
+          "title": "재난문자 세 번 울린 수능…49명 들통나 '성적 무효'",
+          "url": "https://n.news.naver.com/article/055/0001404331"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "2027학년도 수능에서 인공지능과 스마트기기를 활용한 부정행위로 총 98명이 적발되었습니다."
+          "evidence": "SNS서 잇달아 제기…정부 “기기·통신 환경 따라 예외적 미수신 가능” 2027학년도 대학수학능력시험(수능) 당일인 19일 정부가 휴대전화를 이용한 부정행위를 막기 위해 전국에 위급재난문자를 발송했지만, 일부 이용자"
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "로이터 통신은 이 때문에 한국 수험생들이 부정행위자로 보이지 않도록 조심해야 하는 부담을 떠안았다고..."
+          "evidence": "\"차단 못 한다더니...수능 재난문자 안 울렸다\" 미수신 원인은?"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "[속보]수능 부정행위자 98명, 스마트기기 활용 5건…최다적발 ‘이곳’"
+          "evidence": "재난문자로만 49명 잡았다…\"수능 부정행위자 총 98명\""
         },
         {
           "panel": 4,
@@ -331,8 +226,114 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.92,
+        "continuity_quality": 0.84,
         "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i7803e41e",
+      "title": "\"이게 오늘 수능 국어야, 풀어봐\" 시켰더니…AI, 2분 만에 100점",
+      "category": "IT",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "한국교육과정평가원은 2027학년도 대학수학능력시험 1교시 국어 시험 문제를 홈페이지에 공개했습니다.",
+        "\"이게 오늘 수능 국어야, 풀어봐\" 시켰더니…AI, 2분 만에 100점",
+        "인공지능(AI) 기기를 활용한 부정행위가 잇따라 적발된 것과 관련, 정부가 과거 변호사시험에서도 유사한...",
+        "이 대통령은 대학수학능력시험(수능)을 이틀 앞둔 17일 필리핀 현지에서 화상으로 비상점검회의를 주재하고...",
+        "AI 커닝 패가망신 경고에도…수능 스마트기기 98명 적발·시험 중 5건(종합)"
+      ],
+      "sources": [
+        {
+          "press": "JTBC",
+          "title": "\"이게 오늘 수능 국어야, 풀어봐\" 시켰더니…AI, 2분 만에 100점",
+          "url": "https://n.news.naver.com/article/437/0000521475"
+        },
+        {
+          "press": "segye.com",
+          "title": "변호사시험 ‘AI 커닝’ 전수조사도 검토… “5년치 논술형 답안 분석”",
+          "url": "https://n.news.naver.com/mnews/article/022/0004176609?sid=102"
+        },
+        {
+          "press": "뉴스1",
+          "title": "AI 커닝 패가망신 경고에도…수능 스마트기기 98명 적발·시험 중 5건(종합)",
+          "url": "https://n.news.naver.com/article/421/0009300214"
+        },
+        {
+          "press": "뉴스1",
+          "title": "AI 커닝 우려 속 수능 부정행위 98명…스마트기기 5건 적발",
+          "url": "https://n.news.naver.com/article/421/0009300194"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "한국교육과정평가원은 2027학년도 대학수학능력시험 1교시 국어 시험 문제를 홈페이지에 공개했습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "최근 국가자격시험에서 인공지능(AI)과 초소형 기기를 이용한 부정행위가 드러나면서 수능 공정성에 대한 우려가 커졌기 때문이다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "\"이게 오늘 수능 국어야, 풀어봐\" 시켰더니…AI, 2분 만에 100점"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
+          "발단·의혹",
           "입장·공방",
           "사법·처분"
         ],

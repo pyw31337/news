@@ -1,27 +1,46 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 13:24:36",
+  "updated_at": "2026-11-19 12:23:03",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.9,
+  "average_quality": 0.88,
   "issues": [
     {
-      "id": "ie24a6ac2",
-      "title": "[속보] 김민석 \"조희대 탄핵해야겠다 판단\"… 한덕수 파기환송에 \"역사적 반역\"",
-      "episode": "episode:768e5488f27446",
+      "id": "i2088686e",
+      "title": "민주, 조희대 대법원장 탄핵 추진…김민석 “절차·내용 지도부 위임”",
+      "episode": "episode:8e45301dca4181",
       "quality": 1.0,
       "stages": [
-        "사법·처분",
+        "수사·대응",
+        "일반 보도",
         "파장·후속",
         "입장·공방",
-        "수사·대응",
-        "일반 보도"
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 38,
-      "event_count": 13,
+      "duplicate_candidates": 33,
+      "event_count": 20,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if942a4ee",
+      "title": "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사",
+      "episode": "episode:9f2346647823ad",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "일반 보도",
+        "사법·처분",
+        "파장·후속",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방"
+      ],
+      "duplicate_candidates": 43,
+      "event_count": 61,
       "evidence_rate": 1.0
     },
     {
@@ -30,99 +49,81 @@
       "episode": "episode:22457d4afd4002",
       "quality": 0.92,
       "stages": [
-        "일반 보도",
         "발단·의혹",
         "수사·대응",
+        "일반 보도",
         "파장·후속"
       ],
       "gaps": [
         "입장·공방",
         "사법·처분"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i955160a6",
-      "title": "민주당, 조희대 탄핵 추진…한덕수 파기환송에 \"역사적 반역\"",
-      "episode": "episode:3602224279db8d",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 44,
-      "event_count": 19,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic22d7002",
-      "title": "리트 만점자, 모텔서 심정지 상태 발견…유서엔 “심신 지쳤다”",
-      "episode": "episode:00c4bc66bae627",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "gaps": [
-        "입장·공방",
-        "파장·후속"
       ],
       "duplicate_candidates": 32,
-      "event_count": 7,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "if942a4ee",
-      "title": "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사",
-      "episode": "episode:be6cfd133ebd55",
-      "quality": 1.0,
+      "id": "i535e951a",
+      "title": "[속보] 실종된 '리트 만점자' 이진우 씨, 결국 천호동 모텔서 심정지로 발견",
+      "episode": "episode:d6a70d14c64f75",
+      "quality": 0.92,
       "stages": [
-        "수사·대응",
+        "입장·공방",
         "일반 보도",
-        "사법·처분",
-        "파장·후속",
-        "발단·의혹"
+        "수사·대응",
+        "사법·처분"
       ],
       "gaps": [
-        "입장·공방"
+        "발단·의혹",
+        "파장·후속"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 60,
+      "duplicate_candidates": 33,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
-      "id": "i530e6dc2",
-      "title": "대법, 한덕수 내란죄 파기환송…“계엄 전 가담 의도 단정 못 해”",
-      "episode": "episode:1274e442fe3b5a",
+      "id": "i41138707",
+      "title": "수신 차단 안된다더니…“수능 재난문자 나는 안왔다” 왜?",
+      "episode": "episode:17b4c4e8ec81fb",
       "quality": 0.84,
       "stages": [
+        "일반 보도",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i7803e41e",
+      "title": "\"이게 오늘 수능 국어야, 풀어봐\" 시켰더니…AI, 2분 만에 100점",
+      "episode": "episode:f44bb0258b4d25",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
         "수사·대응",
-        "사법·처분",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방"
+        "입장·공방",
+        "사법·처분"
       ],
       "duplicate_candidates": 29,
-      "event_count": 11,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i42a18e2a",
-      "title": "[미중러 정상회담] 대형원탁에 마주앉았지만…시진핑이 사실상 '가운데'(종합)",
-      "episode": "episode:ed645cbfb55b38",
-      "quality": 0.76,
+      "id": "i853304e3",
+      "title": "시진핑 “핵무기, 인류 머리 위의 ‘다모클레스의 검’…전면 폐기해야”(종합)",
+      "episode": "episode:3d7ed76e1ea902",
+      "quality": 0.66,
       "stages": [
         "일반 보도",
         "파장·후속"
@@ -132,8 +133,8 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 26,
-      "event_count": 7,
+      "duplicate_candidates": 21,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
@@ -151,46 +152,45 @@
         "발단·의혹",
         "수사·대응"
       ],
-      "duplicate_candidates": 35,
-      "event_count": 60,
+      "duplicate_candidates": 37,
+      "event_count": 61,
       "evidence_rate": 1.0
     },
     {
-      "id": "i48eceaf0",
-      "title": "챗GPT·제미나이, 수능 국영수 만점…'3분' 만에 풀었다",
-      "episode": "episode:70672448296a40",
+      "id": "i3f731563",
+      "title": "“올해 수능 풀어줘” AI에 입력하니…챗GPT 10분도 안돼 만점 [팩플]",
+      "episode": "episode:d9ce521738358e",
       "quality": 0.84,
       "stages": [
         "일반 보도",
-        "발단·의혹",
+        "파장·후속",
         "입장·공방"
       ],
       "gaps": [
+        "발단·의혹",
         "수사·대응",
-        "사법·처분",
-        "파장·후속"
+        "사법·처분"
       ],
       "duplicate_candidates": 28,
       "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "i021e9f3d",
-      "title": "소형카메라에 이어폰까지…경기도 수능 부정행위 108건",
-      "episode": "episode:a660972ab4bc8a",
-      "quality": 0.92,
+      "id": "i2e7790d4",
+      "title": "[속보] 대법 \"계엄 선포 전 한덕수 국헌문란 목적 증명됐나‥전후 행위 별개로 판단해야\"",
+      "episode": "episode:82e44a66c49159",
+      "quality": 0.84,
       "stages": [
-        "일반 보도",
-        "파장·후속",
+        "사법·처분",
         "입장·공방",
-        "수사·대응"
+        "발단·의혹"
       ],
       "gaps": [
-        "발단·의혹",
-        "사법·처분"
+        "수사·대응",
+        "파장·후속"
       ],
-      "duplicate_candidates": 22,
-      "event_count": 7,
+      "duplicate_candidates": 31,
+      "event_count": 10,
       "evidence_rate": 1.0
     }
   ]
