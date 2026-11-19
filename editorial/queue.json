@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-19",
-  "generated_at": "2026-11-19T23:32:54+09:00",
+  "generated_at": "2026-11-19T22:56:20+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,218 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i2db7063d",
-      "title": "스마트안경에 시험지 촬영…부정행위자 98명 수능성적 무효",
-      "category": "경제",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "19일 경기 용인시 처인구의 한 대학수학능력시험(수능) 시험장에서는 초소형 카메라와 무선 이어폰으로 부정행위를 시도하던 수험생이 감독관에게 적발됐다.",
-        "[2027 수능] 스마트안경도, 소형캠도 있었다… 교육차관 “부정행위 98명 적발”",
-        "스마트안경 쓰고 문제지 촬영까지...수능 스마트기기 부정행위 98명",
-        "별도로 교육부가 공개한 주요",
-        "스마트기기 관련 사례는 5건이다."
-      ],
-      "sources": [
-        {
-          "press": "조선비즈",
-          "title": "[2027 수능] 스마트안경도, 소형캠도 있었다… 교육차관 “부정행위 98명 적발”",
-          "url": "https://n.news.naver.com/article/366/0001206088"
-        },
-        {
-          "press": "서울경제",
-          "title": "스마트안경 쓰고 문제지 촬영까지...수능 스마트기기 부정행위 98명",
-          "url": "https://n.news.naver.com/article/011/0004684162"
-        },
-        {
-          "press": "joongangenews.com",
-          "title": "수능 스마트기기 부정행위 98명 적발...\"재난문자로 49명 잡았다\"",
-          "url": "https://www.joongangenews.com/news/articleView.html?idxno=565307"
-        },
-        {
-          "press": "kbs.co.kr",
-          "title": "“부정행위 엄단” 경고에도…스마트 안경·카메라 등 98명 적발",
-          "url": "https://n.news.naver.com/mnews/article/056/0012297707?sid=102"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "19일 경기 용인시 처인구의 한 대학수학능력시험(수능) 시험장에서는 초소형 카메라와 무선 이어폰으로 부정행위를 시도하던 수험생이 감독관에게 적발됐다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "이해숙 교육부 고등평생정책실장은 \"부정행위자 98명은 모두 스마트기기 관련 대상자라고 보면 된다\"며..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "[2027 수능] 스마트안경도, 소형캠도 있었다… 교육차관 “부정행위 98명 적발”"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i52fc4a09",
-      "title": "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
+      "issue_id": "i98f469f0",
+      "title": "'양떼, 아니 김정은이 나타났다' 트럼프의 허풍외교…결국 '빈손' 귀국",
       "category": "세계",
-      "rank": 8,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
-        "‘상석’은 시진핑…미·중·러 첫 정상회담, 푸틴은 ‘오른쪽’ 트럼프는 ‘왼쪽’",
-        "시진핑 중국 국가주석이 도널드 트럼프 미국 대통령, 블라디미르 푸틴 러시아 대통령과의 3자 정상회담을 \"긍정적이고 건설적이며 풍성한 성과를 거둔 회담\"으로 평가했다.",
-        "특히 대화와 협상을 통한 갈등 해결과 3국 간...",
-        "트럼프 \"핵위협 맞서야\"·시진핑 \"전면 폐기\"·푸틴 \"공동 책임\""
-      ],
-      "sources": [
-        {
-          "press": "한겨레",
-          "title": "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
-          "url": "https://v.daum.net/v/20261119221125631"
-        },
-        {
-          "press": "헤럴드경제",
-          "title": "‘상석’은 시진핑…미·중·러 첫 정상회담, 푸틴은 ‘오른쪽’ 트럼프는 ‘왼쪽’",
-          "url": "https://v.daum.net/v/20261119221033613"
-        },
-        {
-          "press": "the-today.com",
-          "title": "시진핑 \"3자 회담서 뿌린 씨앗, 반드시 열매 맺을 것\"",
-          "url": "https://www.the-today.com/news/articleView.html?idxno=93837"
-        },
-        {
-          "press": "연합뉴스",
-          "title": "트럼프 \"핵위협 맞서야\"·시진핑 \"전면 폐기\"·푸틴 \"공동 책임\"",
-          "url": "https://www.yna.co.kr/view/AKR20261119172400009"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애"
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "특히 대화와 협상을 통한 갈등 해결과 3국 간..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "시진핑 중국 국가주석이 도널드 트럼프 미국 대통령, 블라디미르 푸틴 러시아 대통령과의 3자 정상회담을 \"긍정적이고 건설적이며 풍성한 성과를 거둔 회담\"으로 평가했다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i3d94aa81",
-      "title": "[미중러 정상회담] 한반도 어떤 논의했나…美 \"핵확산\" 언급 주목",
-      "category": "세계",
-      "rank": 10,
+      "rank": 7,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -246,49 +38,49 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "미국·중국·러시아 정상이 19일 3자 정상회담에서 한반도와 우크라이나 전쟁, 중동 정세에 관해 논의했다고 중국 관영 신화통신이 보도했다.",
-        "“미중러 정상, 한반도 문제 등도 논의”-신화통신 [사상 첫 미중러 정상회담]",
-        "3자 정상회담을 마쳤다.",
-        "도널드 트럼프 미국 대통령은 핵무기 수와 사용 위험을 줄이기 위한 3국 간 논의를...",
-        "중국 관영 신화통신은 세 정상이 \"우크라이나 위기, 핵무기 확산 방지, 중동 정세, 한반도 등 주요"
+        "김정은 북한 국무위원장과의 회동 가능성을 연이어 띄운 도널드 트럼프 미국 대통령이 19일(현지시간) 중국 선전에서 아시아태평양경제협력체(APEC) 정상회의 참석 등 순방 일정을 마무리하고 귀국길에 올랐다.",
+        "“김정은” 애타게 부르던 트럼프, 그냥 귀국길…북미 회동 사실상 불발",
+        "대통령과 김정은 북한 국무위원장의 정상회담이 불발됐다.",
+        "트럼프 대통령이 19일 저녁 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령과의 정상회담을 마치고 귀국길에 오르면서 북미 정상 간 만남도 무산된...",
+        "트럼프, 중간선거 패배 후 숨가쁜 2박3일 아시아 순방 마쳐"
       ],
       "sources": [
         {
           "press": "서울신문",
-          "title": "“미중러 정상, 한반도 문제 등도 논의”-신화통신 [사상 첫 미중러 정상회담]",
-          "url": "https://n.news.naver.com/article/081/0003701309"
+          "title": "“김정은” 애타게 부르던 트럼프, 그냥 귀국길…북미 회동 사실상 불발",
+          "url": "https://n.news.naver.com/article/081/0003701307"
         },
         {
-          "press": "news1.kr",
-          "title": "미중러 정상 '핵확산 방지·유엔개혁' 평화선언…\"한반도 논의\"(종합4보...",
-          "url": "https://n.news.naver.com/mnews/article/421/0009300319?sid=104"
+          "press": "yna.co.kr",
+          "title": "트럼프 '러브콜' 외면한 김정은…APEC 계기 북미정상회담 2년째 불발",
+          "url": "https://n.news.naver.com/mnews/article/001/0016453324?sid=100"
         },
         {
-          "press": "연합뉴스",
-          "title": "[미중러 정상회담] 트럼프 \"핵감축 논의…다른 나라 핵확산 맞서 협력해야\"(종합)",
-          "url": "https://www.yna.co.kr/view/AKR20261119163151071"
+          "press": "뉴시스",
+          "title": "트럼프, 중간선거 패배 후 숨가쁜 2박3일 아시아 순방 마쳐",
+          "url": "https://v.daum.net/v/20261119220724571"
         },
         {
-          "press": "매일경제",
-          "title": "[속보] 트럼프 “미중러, 다른 국가들 핵확산 위협에 맞서 협력 필요”",
-          "url": "https://www.mk.co.kr/news/world/12213893"
+          "press": "viewsnnews.com",
+          "title": "트럼프 귀국길 올라. 김정은과 회담 불발",
+          "url": "https://www.viewsnnews.com/article?q=239821"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "미국·중국·러시아 정상이 19일 3자 정상회담에서 한반도와 우크라이나 전쟁, 중동 정세에 관해 논의했다고 중국 관영 신화통신이 보도했다."
+          "evidence": "김정은 북한 국무위원장과의 회동 가능성을 연이어 띄운 도널드 트럼프 미국 대통령이 19일(현지시간) 중국 선전에서 아시아태평양경제협력체(APEC) 정상회의 참석 등 순방 일정을 마무리하고 귀국길에 올랐다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "미중러 정상 역사적 첫 3자회담… \"핵위험 감소·핵확산 방지\" 공동성명"
+          "evidence": "트럼프, 중간선거 패배 후 숨가쁜 2박3일 아시아 순방 마쳐"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "3자 정상회담을 마쳤다."
+          "evidence": "트럼프 대통령이 19일 저녁 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령과의 정상회담을 마치고 귀국길에 오르면서 북미 정상 간 만남도 무산된..."
         },
         {
           "panel": 4,
@@ -330,11 +122,220 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
+        "continuity_quality": 0.76,
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "if4417179",
+      "title": "미중러 정상 '핵확산 방지·유엔개혁' 평화선언…\"한반도 논의\"(종합4보)",
+      "category": "세계",
+      "rank": 9,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "시진핑, 첫 미중러 정상회담에 \"긍정적·건설적 회담…3국 견해 일치\"(종합)",
+        "줄이고 핵확산을 막기 위해 대화하기로 했다.",
+        "구체적인 핵무기 감축 목표나 협상 일정은 명시하지 않았다....",
+        "중국 관영 신화통신은 세 정상이 \"우크라이나 위기, 핵무기 확산 방지, 중동 정세, 한반도 등 주요",
+        "공동성명 '미중러 정상 평화선언'을 발표했다."
+      ],
+      "sources": [
+        {
+          "press": "아시아경제",
+          "title": "시진핑, 첫 미중러 정상회담에 \"긍정적·건설적 회담…3국 견해 일치\"(종합)",
+          "url": "https://v.daum.net/v/20261119213421997"
+        },
+        {
+          "press": "news1.kr",
+          "title": "미중러 정상 '핵확산 방지·유엔개혁' 평화선언…\"한반도 논의\"(종합4보...",
+          "url": "https://n.news.naver.com/mnews/article/421/0009300319?sid=104"
+        },
+        {
+          "press": "moneystorm.kr",
+          "title": "미중러 3강, 국제질서 재편 시동…'승자는 푸틴' 거래외교 현실화하나",
+          "url": "https://www.moneystorm.kr/news/articleView.html?idxno=8624"
+        },
+        {
+          "press": "sbs.co.kr",
+          "title": "미중러 '평화선언' 발표…4개 항 합의 면면 따져보니",
+          "url": "https://n.news.naver.com/mnews/article/055/0001404370?sid=104"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "시진핑, 첫 미중러 정상회담에 \"긍정적·건설적 회담…3국 견해 일치\"(종합)"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "세 정상은 공동성명에서 \"핵전쟁은 이길 수도 없고 벌여서도 안 된다\"는 원칙을 재확인하고 핵 위험 감소와 핵확산 방지를 위한 대화를 진행하기로 했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "▲ 미중러 정상 기념촬영 미국과 중국, 러시아 정상이 사상 첫 3자 정상회담에서 석유제품의 생산과 공급을..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.74,
+        "continuity_gaps": [
+          "입장·공방",
+          "수사·대응",
           "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i7472fb4e",
+      "title": "‘리트 만점자’ 숨진채 발견... 유서엔 “몸과 마음 지쳤다”",
+      "category": "사회",
+      "rank": 2,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "서울 천호역 인근 모텔서 찾아 인공지능(AI)을 이용한 부정행위로 올해 법학적성시험(리트·LEET)에서 만점을 받았다는 의혹을 받는 이진우(32)씨가 19일 오후 1시 12분쯤 서울 지하철 천호역 인근 모텔에서 경찰",
+        "‘리트 만점자’ 숨진채 발견...",
+        "유서엔 “몸과 마음 지쳤다”",
+        "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]",
+        "법학적성시험(LEET·리트) 만점자의 인공지능(AI) 부정행위 의혹을 검증하려던 유튜브 방송이 650만회 넘는 조회수를 기록했다."
+      ],
+      "sources": [
+        {
+          "press": "조선일보",
+          "title": "‘리트 만점자’ 숨진채 발견... 유서엔 “몸과 마음 지쳤다”",
+          "url": "https://n.news.naver.com/article/023/0004010551"
+        },
+        {
+          "press": "헤럴드경제",
+          "title": "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]",
+          "url": "https://n.news.naver.com/article/016/0002725836"
+        },
+        {
+          "press": "sedaily.com",
+          "title": "“사람은 미워하지 맙시다” 650만명 쏠린 ‘리트 만점자’ 공개검증…...",
+          "url": "https://n.news.naver.com/mnews/article/011/0004684180?sid=102"
+        },
+        {
+          "press": "연합뉴스TV",
+          "title": "[단독] '리트 만점자' 이진우 유서 추정 메모 발견…부정행위 인정·사과는 없어",
+          "url": "https://n.news.naver.com/article/422/0000927828"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "서울 천호역 인근 모텔서 찾아 인공지능(AI)을 이용한 부정행위로 올해 법학적성시험(리트·LEET)에서 만점을 받았다는 의혹을 받는 이진우(32)씨가 19일 오후 1시 12분쯤 서울 지하철 천호역 인근 모텔에서 경찰"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "19일 사망한 법학적성시험(LEET·리트) 최조 만점자 이진우씨 때문에 대학 진학 입시 피해를 입었다는..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "입장·공방",
+          "파장·후속"
         ],
         "no_generic_closing": true
       }

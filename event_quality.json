@@ -1,75 +1,95 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 14:32:53",
+  "updated_at": "2026-11-19 13:56:19",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.91,
+  "average_quality": 0.87,
   "issues": [
     {
-      "id": "i612fb5ca",
-      "title": "김민석 “대법원 판결, 역사적 반역…조희대 탄핵해야”",
-      "episode": "episode:45d30ed9497c6b",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "입장·공방",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i636fee3a",
-      "title": "민주당 분노 속 의총…'조희대 탄핵 추진' 결론",
-      "episode": "episode:8fa9009c093962",
-      "quality": 1.0,
+      "id": "i041cf9a8",
+      "title": "민주당, 조희대 대법원장 탄핵 추진",
+      "episode": "episode:cce4ce0c24a1c7",
+      "quality": 0.92,
       "stages": [
         "수사·대응",
         "일반 보도",
         "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 40,
+      "event_count": 21,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i7472fb4e",
+      "title": "‘리트 만점자’ 숨진채 발견... 유서엔 “몸과 마음 지쳤다”",
+      "episode": "episode:c51a1424b2a650",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
         "사법·처분",
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "gaps": [
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia3abeee1",
+      "title": "정부 엄포에도 수능 부정행위자 98명 적발…'시험 도중 사용' 5건",
+      "episode": "episode:3d85e0d5cb512f",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "수사·대응",
         "파장·후속"
       ],
       "gaps": [
-        "발단·의혹"
+        "입장·공방",
+        "사법·처분"
       ],
-      "duplicate_candidates": 40,
-      "event_count": 23,
+      "duplicate_candidates": 36,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "if942a4ee",
-      "title": "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사",
-      "episode": "episode:be6cfd133ebd55",
+      "id": "idcb5ac47",
+      "title": "숨진 ‘리트 만점자’ 남긴 메모엔 “힘들었다”…부정 의혹 언급 없어",
+      "episode": "episode:e3e23bfb864996",
       "quality": 1.0,
       "stages": [
         "수사·대응",
-        "일반 보도",
         "사법·처분",
+        "일반 보도",
         "파장·후속",
-        "발단·의혹",
+        "발단·의혹"
+      ],
+      "gaps": [
         "입장·공방"
       ],
-      "gaps": [],
-      "duplicate_candidates": 34,
-      "event_count": 61,
+      "duplicate_candidates": 36,
+      "event_count": 63,
       "evidence_rate": 1.0
     },
     {
-      "id": "i310492a2",
-      "title": "\"삐~\" 수능 재난문자에 49명 걸렸다…어떻게 되나",
-      "episode": "episode:7c8a906e74b67a",
+      "id": "i50fad01b",
+      "title": "“재난문자 못 받아”…정부 “예외적으로 못 받을 수도”",
+      "episode": "episode:5de8a2089d4c3f",
       "quality": 0.84,
       "stages": [
         "일반 보도",
-        "파장·후속",
-        "수사·대응"
+        "수사·대응",
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
@@ -77,13 +97,13 @@
         "사법·처분"
       ],
       "duplicate_candidates": 29,
-      "event_count": 9,
+      "event_count": 11,
       "evidence_rate": 1.0
     },
     {
-      "id": "icc07c9bf",
-      "title": "대법원, ‘내란 중요 임무 종사’ 혐의 한덕수 사건 일부 파기환송",
-      "episode": "episode:6a5320328d3d02",
+      "id": "ia50b35b2",
+      "title": "대법, 한덕수 내란 혐의 일부 무죄로 파기환송",
+      "episode": "episode:781b1b5fafa9ae",
       "quality": 1.0,
       "stages": [
         "사법·처분",
@@ -95,102 +115,83 @@
       "gaps": [
         "입장·공방"
       ],
-      "duplicate_candidates": 42,
+      "duplicate_candidates": 41,
       "event_count": 17,
       "evidence_rate": 1.0
     },
     {
-      "id": "i2db7063d",
-      "title": "스마트안경에 시험지 촬영…부정행위자 98명 수능성적 무효",
-      "episode": "episode:e18c8984bc31ff",
-      "quality": 0.92,
+      "id": "i98f469f0",
+      "title": "'양떼, 아니 김정은이 나타났다' 트럼프의 허풍외교…결국 '빈손' 귀국",
+      "episode": "episode:3419c85561f789",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
-        "파장·후속",
-        "입장·공방",
-        "수사·대응"
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
-        "사법·처분"
+        "입장·공방",
+        "수사·대응"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 11,
+      "duplicate_candidates": 34,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "i0f3f49a8",
-      "title": "“같은 시험장서 AI 부정행위 충격”…수능 끝났지만 공정성 논란 여전 [현장, 그곳&]",
-      "episode": "episode:c0af5659b0ddc9",
-      "quality": 0.92,
+      "id": "ief3f1dba",
+      "title": "“입학 취소 어려워”…LEET 만점자 숨지자 서울대가 밝힌 입장",
+      "episode": "episode:55f48d2e17ec28",
+      "quality": 0.74,
       "stages": [
         "일반 보도",
         "수사·대응",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
         "사법·처분"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i52fc4a09",
-      "title": "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
-      "episode": "episode:d90a5ee3026e0f",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 55,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie0da8872",
-      "title": "[속보] 경기도 용인 수능 시험장에서 초소형카메라 발견",
-      "episode": "episode:538f1301191d99",
-      "quality": 0.66,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "파장·후속"
       ],
-      "duplicate_candidates": 21,
+      "duplicate_candidates": 27,
       "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "i3d94aa81",
-      "title": "[미중러 정상회담] 한반도 어떤 논의했나…美 \"핵확산\" 언급 주목",
-      "episode": "episode:118a035e37c6fa",
-      "quality": 0.84,
+      "id": "if4417179",
+      "title": "미중러 정상 '핵확산 방지·유엔개혁' 평화선언…\"한반도 논의\"(종합4보)",
+      "episode": "episode:b0f40ce1f53cee",
+      "quality": 0.74,
       "stages": [
+        "발단·의혹",
         "일반 보도",
-        "파장·후속",
-        "수사·대응"
+        "파장·후속"
       ],
       "gaps": [
-        "발단·의혹",
         "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 25,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i14bfd775",
+      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
+      "episode": "episode:3b3fb49a0c1927",
+      "quality": 0.84,
+      "stages": [
+        "발단·의혹",
+        "파장·후속",
+        "일반 보도"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
         "사법·처분"
       ],
       "duplicate_candidates": 23,
-      "event_count": 16,
+      "event_count": 4,
       "evidence_rate": 1.0
     }
   ]
