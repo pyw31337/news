@@ -1,70 +1,50 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 21:24:22",
+  "updated_at": "2026-11-19 20:29:46",
   "date": "2026-11-20",
   "total_issues": 10,
   "average_quality": 0.88,
   "issues": [
     {
-      "id": "i3019017c",
-      "title": "민주, 조희대 탄핵 추진 결의…김민석 \"절차·내용 지도부에 위임\"",
-      "episode": "episode:eb49c04405941d",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 39,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
-    {
       "id": "i942112c6",
       "title": "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]",
-      "episode": "episode:51089b737bdd28",
-      "quality": 0.92,
+      "episode": "episode:d23cb3dadc1d02",
+      "quality": 1.0,
       "stages": [
+        "사법·처분",
         "발단·의혹",
         "입장·공방",
         "파장·후속",
         "수사·대응"
       ],
-      "gaps": [
-        "사법·처분"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 5,
+      "gaps": [],
+      "duplicate_candidates": 33,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "i073e39c7",
-      "title": "‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
-      "episode": "episode:cd979c61ceb81c",
+      "id": "if2d2f086",
+      "title": "李대통령, 순방 중 조작기소 특검법 재가…공포돼 즉시 시행",
+      "episode": "episode:7448a1f70854de",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "발단·의혹",
-        "입장·공방",
+        "사법·처분",
         "파장·후속",
-        "수사·대응"
+        "수사·대응",
+        "입장·공방"
       ],
       "gaps": [
-        "사법·처분"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 32,
-      "event_count": 10,
+      "duplicate_candidates": 30,
+      "event_count": 19,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6230700a",
-      "title": "[속보] 경기도 용인 수능 시험장에서 초소형카메라 발견",
-      "episode": "episode:2f412d97e6b0ab",
+      "id": "i9346b81f",
+      "title": "[단독] 경기도 용인 수능 시험장서 초소형 카메라 발견",
+      "episode": "episode:5edd59b44be890",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -76,14 +56,14 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 33,
-      "event_count": 5,
+      "duplicate_candidates": 29,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia40ee85f",
-      "title": "“입학 취소 불가”…‘리트 만점자’ 사망에 서울대가 밝힌 입장, 왜?",
-      "episode": "episode:17d2d8a8863b1f",
+      "id": "ida891437",
+      "title": "경찰 “이진우 수사 계속”… 서울대 “사망 제적 처리”",
+      "episode": "episode:64f64d9be84dd9",
       "quality": 1.0,
       "stages": [
         "수사·대응",
@@ -95,33 +75,69 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 35,
-      "event_count": 42,
+      "duplicate_candidates": 34,
+      "event_count": 44,
       "evidence_rate": 1.0
     },
     {
-      "id": "idcd1545d",
-      "title": "“부정행위 엄단” 경고에도…스마트 안경·카메라 등 98명 적발",
-      "episode": "episode:7da1d6da9fe464",
-      "quality": 1.0,
+      "id": "ieebe2180",
+      "title": "미중러 첫 정상회담 “핵확산 방지” 그들만의 평화선언",
+      "episode": "episode:3e55fd20d34d4d",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
-        "발단·의혹",
-        "파장·후속",
-        "수사·대응",
-        "입장·공방"
+        "파장·후속"
       ],
       "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic63b8dce",
+      "title": "좌 트럼프·우 푸틴 앉혔다…‘상석’ 시진핑이 노린 장면",
+      "episode": "episode:e890410a4b0216",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
         "사법·처분"
       ],
-      "duplicate_candidates": 34,
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 30,
       "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "iaceb38d7",
-      "title": "\"김정은, 핵보유국 전략외교…트럼프와 만남에 가치 못느껴\"",
-      "episode": "episode:c497967b2475e1",
+      "id": "i6f8b0a18",
+      "title": "\"같은 호텔방에 잠옷 차림으로\"…최동석, 박지윤에 재반박",
+      "episode": "episode:d45a06950397bb",
+      "quality": 0.68,
+      "stages": [
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i21c08a08",
+      "title": "앤트로픽, 111.5달러에 거래 시작…장중 100달러 밑으로(종합)",
+      "episode": "episode:4cb7e063338e5d",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -133,63 +149,47 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 41,
-      "event_count": 13,
+      "duplicate_candidates": 23,
+      "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "i68edb620",
-      "title": "앤트로픽, 상장 첫날 장중 시총 2조弗...“中 AI에 품질로 앞설 것”",
-      "episode": "episode:754b6c7a50de79",
-      "quality": 0.84,
+      "id": "i942a0799",
+      "title": "수능 부정행위 98명 적발…초소형 카메라에 '신발 깔창 속 휴대폰'까지",
+      "episode": "episode:66483e7213978a",
+      "quality": 1.0,
       "stages": [
         "일반 보도",
+        "발단·의혹",
+        "수사·대응",
         "파장·후속",
+        "입장·공방"
+      ],
+      "gaps": [
         "사법·처분"
       ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 17,
+      "duplicate_candidates": 34,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "if43f3e11",
-      "title": "'1만2000→9000→7500' 내렸는데…\"삼전닉스 아직 안 끝났다\"는 이유",
-      "episode": "episode:5aba1b6acbfcac",
-      "quality": 0.48,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 4,
-      "event_count": 2,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ibf2dae4a",
-      "title": "트럼프와 웃으며 악수한 푸틴…등 뒤엔 ‘검은 핵가방’ 있었다",
-      "episode": "episode:12057acd7ab200",
+      "id": "i44c4096a",
+      "title": "재난문자 피하는 ‘탈옥’ 있었을 수도? 수능 부정행위 98건 적발",
+      "episode": "episode:d1c337887c8865",
       "quality": 0.92,
       "stages": [
         "발단·의혹",
         "일반 보도",
-        "입장·공방",
+        "수사·대응",
+        "발단·의혹",
         "파장·후속"
       ],
       "gaps": [
-        "수사·대응",
+        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 17,
+      "duplicate_candidates": 28,
+      "event_count": 11,
       "evidence_rate": 1.0
     }
   ]
