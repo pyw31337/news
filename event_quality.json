@@ -1,14 +1,52 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 13:56:19",
+  "updated_at": "2026-11-19 13:24:36",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.9,
   "issues": [
     {
-      "id": "i041cf9a8",
-      "title": "민주당, 조희대 대법원장 탄핵 추진",
-      "episode": "episode:cce4ce0c24a1c7",
+      "id": "ie24a6ac2",
+      "title": "[속보] 김민석 \"조희대 탄핵해야겠다 판단\"… 한덕수 파기환송에 \"역사적 반역\"",
+      "episode": "episode:768e5488f27446",
+      "quality": 1.0,
+      "stages": [
+        "사법·처분",
+        "파장·후속",
+        "입장·공방",
+        "수사·대응",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 13,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i97363e10",
+      "title": "[속보] 교육부 “수능 부정행위자 98명…시험중 스마트기기 활용 5건”",
+      "episode": "episode:22457d4afd4002",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 36,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i955160a6",
+      "title": "민주당, 조희대 탄핵 추진…한덕수 파기환송에 \"역사적 반역\"",
+      "episode": "episode:3602224279db8d",
       "quality": 0.92,
       "stages": [
         "수사·대응",
@@ -20,14 +58,14 @@
         "발단·의혹",
         "파장·후속"
       ],
-      "duplicate_candidates": 40,
-      "event_count": 21,
+      "duplicate_candidates": 44,
+      "event_count": 19,
       "evidence_rate": 1.0
     },
     {
-      "id": "i7472fb4e",
-      "title": "‘리트 만점자’ 숨진채 발견... 유서엔 “몸과 마음 지쳤다”",
-      "episode": "episode:c51a1424b2a650",
+      "id": "ic22d7002",
+      "title": "리트 만점자, 모텔서 심정지 상태 발견…유서엔 “심신 지쳤다”",
+      "episode": "episode:00c4bc66bae627",
       "quality": 0.92,
       "stages": [
         "일반 보도",
@@ -40,158 +78,119 @@
         "파장·후속"
       ],
       "duplicate_candidates": 32,
-      "event_count": 8,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia3abeee1",
-      "title": "정부 엄포에도 수능 부정행위자 98명 적발…'시험 도중 사용' 5건",
-      "episode": "episode:3d85e0d5cb512f",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "idcb5ac47",
-      "title": "숨진 ‘리트 만점자’ 남긴 메모엔 “힘들었다”…부정 의혹 언급 없어",
-      "episode": "episode:e3e23bfb864996",
+      "id": "if942a4ee",
+      "title": "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사",
+      "episode": "episode:be6cfd133ebd55",
       "quality": 1.0,
       "stages": [
         "수사·대응",
-        "사법·처분",
         "일반 보도",
+        "사법·처분",
         "파장·후속",
         "발단·의혹"
       ],
       "gaps": [
         "입장·공방"
       ],
-      "duplicate_candidates": 36,
-      "event_count": 63,
+      "duplicate_candidates": 37,
+      "event_count": 60,
       "evidence_rate": 1.0
     },
     {
-      "id": "i50fad01b",
-      "title": "“재난문자 못 받아”…정부 “예외적으로 못 받을 수도”",
-      "episode": "episode:5de8a2089d4c3f",
+      "id": "i530e6dc2",
+      "title": "대법, 한덕수 내란죄 파기환송…“계엄 전 가담 의도 단정 못 해”",
+      "episode": "episode:1274e442fe3b5a",
       "quality": 0.84,
       "stages": [
-        "일반 보도",
         "수사·대응",
+        "사법·처분",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "사법·처분"
+        "입장·공방"
       ],
       "duplicate_candidates": 29,
       "event_count": 11,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia50b35b2",
-      "title": "대법, 한덕수 내란 혐의 일부 무죄로 파기환송",
-      "episode": "episode:781b1b5fafa9ae",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
-        "발단·의혹",
-        "수사·대응",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방"
-      ],
-      "duplicate_candidates": 41,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i98f469f0",
-      "title": "'양떼, 아니 김정은이 나타났다' 트럼프의 허풍외교…결국 '빈손' 귀국",
-      "episode": "episode:3419c85561f789",
+      "id": "i42a18e2a",
+      "title": "[미중러 정상회담] 대형원탁에 마주앉았지만…시진핑이 사실상 '가운데'(종합)",
+      "episode": "episode:ed645cbfb55b38",
       "quality": 0.76,
       "stages": [
         "일반 보도",
-        "사법·처분"
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 34,
+      "duplicate_candidates": 26,
       "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "ief3f1dba",
-      "title": "“입학 취소 어려워”…LEET 만점자 숨지자 서울대가 밝힌 입장",
-      "episode": "episode:55f48d2e17ec28",
-      "quality": 0.74,
+      "id": "id1f9b23d",
+      "title": "[선전 APEC] 트럼프는 이란, 시진핑은 강대국, 푸틴은 우크라...3국 정상회담 동상이몽",
+      "episode": "episode:14b087b9cbd97c",
+      "quality": 0.92,
       "stages": [
+        "입장·공방",
+        "파장·후속",
         "일반 보도",
-        "수사·대응",
         "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "파장·후속"
+        "수사·대응"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 3,
+      "duplicate_candidates": 35,
+      "event_count": 60,
       "evidence_rate": 1.0
     },
     {
-      "id": "if4417179",
-      "title": "미중러 정상 '핵확산 방지·유엔개혁' 평화선언…\"한반도 논의\"(종합4보)",
-      "episode": "episode:b0f40ce1f53cee",
-      "quality": 0.74,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i14bfd775",
-      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
-      "episode": "episode:3b3fb49a0c1927",
+      "id": "i48eceaf0",
+      "title": "챗GPT·제미나이, 수능 국영수 만점…'3분' 만에 풀었다",
+      "episode": "episode:70672448296a40",
       "quality": 0.84,
       "stages": [
+        "일반 보도",
         "발단·의혹",
-        "파장·후속",
-        "일반 보도"
+        "입장·공방"
       ],
       "gaps": [
-        "입장·공방",
         "수사·대응",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i021e9f3d",
+      "title": "소형카메라에 이어폰까지…경기도 수능 부정행위 108건",
+      "episode": "episode:a660972ab4bc8a",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
         "사법·처분"
       ],
-      "duplicate_candidates": 23,
-      "event_count": 4,
+      "duplicate_candidates": 22,
+      "event_count": 7,
       "evidence_rate": 1.0
     }
   ]
