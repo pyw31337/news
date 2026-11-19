@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-19",
-  "generated_at": "2026-11-19T20:25:23+09:00",
+  "generated_at": "2026-11-19T19:57:41+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,173 +27,70 @@
   },
   "candidates": [
     {
-      "issue_id": "if942a4ee",
-      "title": "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사",
-      "category": "사회",
-      "rank": 3,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "법학적성시험(LEET·리트) 만점자이자 생성형 인공지능(AI)을 활용한 부정행위 의혹으로 수사를 받던 이진우 씨가 숨진 사건이 발생했다.",
-        "경찰, ‘리트 만점자’ 계속 수사…“실체적 진실 확인”",
-        "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사",
-        "(LEET·리트) 만점자’ 이진우(32)씨가 숨진 채 발견됐다.",
-        "이씨 사망에도 경찰은 부정행위 실체를 파악하기 위한 수사는 이어갈 방침이다."
-      ],
-      "sources": [
-        {
-          "press": "국민일보",
-          "title": "경찰, ‘리트 만점자’ 계속 수사…“실체적 진실 확인”",
-          "url": "https://n.news.naver.com/article/005/0001886274"
-        },
-        {
-          "press": "YTN",
-          "title": "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사",
-          "url": "https://n.news.naver.com/article/052/0002435211"
-        },
-        {
-          "press": "hani.co.kr",
-          "title": "‘리트 만점자’ 숨졌지만…경찰 “의혹 수사 이어가겠다”",
-          "url": "https://n.news.naver.com/mnews/article/028/0002833092?sid=102"
-        },
-        {
-          "press": "한국경제TV",
-          "title": "'리트 만점' 이진우 사망에도…경찰 \"실체적 진실 수사\"",
-          "url": "https://n.news.naver.com/article/215/0001273314"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "법학적성시험(LEET·리트) 만점자이자 생성형 인공지능(AI)을 활용한 부정행위 의혹으로 수사를 받던 이진우 씨가 숨진 사건이 발생했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "AI 부정행위 의혹에 휩싸인 법학적성시험 만점자 이진우 씨가 사망하면서 사건은 '공소권 없음'으로 종결 수순을 밟을 가능성이 제기됐지만 경찰은 AI 부정행위와 관련해 국민적 의혹과 관심이 크기 때문에 수사를…"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "(LEET·리트) 만점자’ 이진우(32)씨가 숨진 채 발견됐다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "이진우 씨의 사망 소식에도 불구하고 경찰이 실체적 진실 확인을 위해 수사를 이어가겠다는 입장을 밝힌 보도로, 피해자들의 고소 준비 움직임 등 파장이 확산되는 양상이다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i985e57eb",
-      "title": "교육부 “수능 부정행위자 98명 적발…시험중 스마트기기 활용 5건”",
-      "category": "사회",
-      "rank": 4,
-      "priority_score": 45,
+      "issue_id": "iaeb4e6a0",
+      "title": "한국 연간 수출 사상 첫 1조 달러 돌파…세계 네 번째",
+      "category": "경제",
+      "rank": 7,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "needs_fact_review",
       "facts": [
-        "교육부는 19일 치러진 2027학년도 대학수학능력시험에서 총 98명의 부정행위자가 적발되었다고 밝혔다.",
-        "[속보] 수능 부정행위자 98명 적발…“시험 중 스마트기기 활용 5건”",
-        "교육부 \"수능 부정행위자 98명‥시험 중 스마트기기 활용 5건\"",
-        "교육부 “수능 부정행위자 98명…스마트기기 활용 5건”",
-        "교육부 “수능 부정행위자 98명 적발…시험중 스마트기기 활용 5건”"
+        "대한민국이 사상 처음으로 연간 수출 1조 달러를 돌파했다.",
+        "한국이 세계 네 번째로 수출 1조달러를 돌파한 데에는 기업들의 역할이 컸다.",
+        "과거 박정희 정부 시절에는 정부의 강력한 수출부흥 정책에 힘입어 100억달러를 돌파했지만, 이제는 반도체를 비롯한 첨단산업을...",
+        "이형일 부총리 겸 재정경제부 장관은 한국이 사상 첫 연간 수출 1조달러를 달성한 19일 \"수출의 성과가 더...",
+        "그는 \"대한민국 연간 수출이 사상 처음으로 1조달러를 돌파했다\"며 \"독일·미국·중국에 이어 세계 네 번째\"라고..."
       ],
       "sources": [
         {
-          "press": "KBS",
-          "title": "[속보] 수능 부정행위자 98명 적발…“시험 중 스마트기기 활용 5건”",
-          "url": "https://n.news.naver.com/article/056/0012297420"
+          "press": "dt.co.kr",
+          "title": "[기획] 반도체 기대어 1조달러 돌파… 더 절실해진 ‘포스트 반도체’",
+          "url": "https://n.news.naver.com/mnews/article/029/0003060185?sid=101"
         },
         {
-          "press": "MBC",
-          "title": "교육부 \"수능 부정행위자 98명‥시험 중 스마트기기 활용 5건\"",
-          "url": "https://n.news.naver.com/article/214/0001536744"
+          "press": "view.asiae.co.kr",
+          "title": "이형일, 수출 1조달러에 \"서비스 수출, 새로운 성장축으로\"",
+          "url": "https://n.news.naver.com/mnews/article/277/0005845316?sid=101"
         },
         {
-          "press": "국민일보",
-          "title": "교육부 “수능 부정행위자 98명…스마트기기 활용 5건”",
-          "url": "https://n.news.naver.com/article/005/0001886288"
+          "press": "yeongnam.com",
+          "title": "[수출 1조 달러 시대] TK 수출도 반등했지만 비중은 ‘역대 최저’",
+          "url": "https://www.yeongnam.com/web/view.php?key=20261119022301961"
         },
         {
-          "press": "서울신문",
-          "title": "교육부 “수능 부정행위자 98명 적발…시험중 스마트기기 활용 5건”",
-          "url": "https://n.news.naver.com/article/081/0003701281"
+          "press": "JIBS",
+          "title": "이 대통령 \"세계 4번째 '수출 1조 달러' 달성.. 반세기 만에 100배 성장  감격\"",
+          "url": "https://n.news.naver.com/article/661/0000086800"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "교육부는 19일 치러진 2027학년도 대학수학능력시험에서 총 98명의 부정행위자가 적발되었다고 밝혔다."
+          "evidence": "대한민국이 사상 처음으로 연간 수출 1조 달러를 돌파했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "이해숙 교육부 고등평생정책실장은 \"부정행위자 98명은 모두 스마트기기 관련 대상자라고 보면 된다\"며..."
+          "evidence": "과거 박정희 정부 시절에는 정부의 강력한 수출부흥 정책에 힘입어 100억달러를 돌파했지만, 이제는 반도체를 비롯한 첨단산업을..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "[속보] 수능 부정행위자 98명 적발…“시험 중 스마트기기 활용 5건”"
+          "evidence": "한국이 세계 네 번째로 수출 1조달러를 돌파한 데에는 기업들의 역할이 컸다."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "수능 시험 종료 후 교육부가 총 98명의 부정행위자를 적발했다고 공식 발표했다. 대대적인 단속과 경고에도 불구하고 수십 명의 적발자가 나오면서, 이전 연도에는 더 많은 부정행위가 있었을 것이라는 반응과 정부 대처가…"
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -225,70 +122,70 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.76,
+        "continuity_quality": 0.84,
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
-          "사법·처분"
+          "수사·대응"
         ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "ic22d7002",
-      "title": "리트 만점자, 모텔서 심정지 상태 발견…유서엔 “심신 지쳤다”",
-      "category": "사회",
-      "rank": 2,
+      "issue_id": "i3676a4d6",
+      "title": "[속보] 사상 첫 미중러 정상회담…시진핑 “핵무기 완전 폐기해야, 금지선 넘지 말라”",
+      "category": "세계",
+      "rank": 10,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
-        "법학적성시험(LEET) 만점자 이진우(32)씨가 19일 오후 강동구 천호동의 한 숙박업소에서 심정지 상태로 발견됐다.",
-        "‘리트 만점자’ 숨진채 발견...",
-        "유서엔 “몸과 마음 지쳤다”",
-        "[단독] '리트 만점자' 이진우 유서 추정 메모 발견…부정행위 인정·사과는 없어",
-        "법학적성시험(LEET·리트) 만점자로 유명세를 얻은 이진우가 과거 전과가 있었던 것으로 전해졌다."
+        "시진핑 중국 국가주석은 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령을 마주한 자리에서 핵무기의 전면 금지와 완전한 폐기를 촉구했다.",
+        "[속보] 사상 첫 미중러 정상회담…시진핑 “핵무기 완전 폐기해야, 금지선 넘지 말라”",
+        "역사상 처음 열린 미중러 정상회담에서 세 정상은 각자 이해관계에 맞는 발언으로 ‘동상이몽’ 국면을 빚어냈다.",
+        "도널드 트럼프 미국 대통령은 세 나라의 핵감축 협력을 강조하며 중국과 러시아를 압박했다.",
+        "푸틴과 시진핑, 트럼프, 이 대통령 순으로 나란히 서서 기념 촬영을 했습니다."
       ],
       "sources": [
         {
-          "press": "조선일보",
-          "title": "‘리트 만점자’ 숨진채 발견... 유서엔 “몸과 마음 지쳤다”",
-          "url": "https://n.news.naver.com/article/023/0004010551"
+          "press": "서울신문",
+          "title": "[속보] 사상 첫 미중러 정상회담…시진핑 “핵무기 완전 폐기해야, 금지선 넘지 말라”",
+          "url": "https://n.news.naver.com/article/081/0003701276"
         },
         {
-          "press": "연합뉴스TV",
-          "title": "[단독] '리트 만점자' 이진우 유서 추정 메모 발견…부정행위 인정·사과는 없어",
-          "url": "https://n.news.naver.com/article/422/0000927828"
+          "press": "sedaily.com",
+          "title": "트럼프, 중러에 “핵 줄이자”…習 “서로 레드라인 건드려선 안돼”[미...",
+          "url": "https://n.news.naver.com/mnews/article/011/0004684158?sid=104"
         },
         {
-          "press": "starnewskorea.com",
-          "title": "알고 보니 전과 4범?..\"'리트 만점' 이진우, 공갈·경찰 폭행\" [스타이슈...",
-          "url": "https://m.entertain.naver.com/article/108/0003488772"
+          "press": "ichannela.com",
+          "title": "한러정상 첫 회동 ‘북핵 논의’",
+          "url": "https://n.news.naver.com/mnews/article/449/0000368100?sid=100"
         },
         {
-          "press": "국민일보",
-          "title": "리트 만점자, 모텔서 심정지 상태 발견…유서엔 “심신 지쳤다”",
-          "url": "https://n.news.naver.com/article/005/0001886179"
+          "press": "mbn.co.kr",
+          "title": "미중러 앞 \"북한과 대화\"…푸틴과 첫 대면서 '북핵' 논의",
+          "url": "https://n.news.naver.com/mnews/article/057/0001979001?sid=100"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "법학적성시험(LEET) 만점자 이진우(32)씨가 19일 오후 강동구 천호동의 한 숙박업소에서 심정지 상태로 발견됐다."
+          "evidence": "시진핑 중국 국가주석은 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령을 마주한 자리에서 핵무기의 전면 금지와 완전한 폐기를 촉구했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "경찰은 부검 결과 등을 종합해 정확한 사망 원인과 경위를 확인할 방침이다...."
+          "evidence": "역사적인 미중러 회담…푸틴에게는 영향력을 과시할 기회"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "JTBC는 19일..."
+          "evidence": "[2026 APEC 정상회의 세션] \"북측과의 대화의..."
         },
         {
           "panel": 4,
@@ -330,10 +227,115 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "iefd81945",
+      "title": "'리트 만점자' 사망 확인…발견된 모텔서 '5줄짜리 글' 나와",
+      "category": "사회",
+      "rank": 1,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "인공지능(AI) 부정행위 의혹을 받던 법학적성시험(LEET) 만점자 이진우 씨가 2026년 11월 19일 서울 강동구 천호동의 한 숙박업소에서 심정지 상태로 발견되었다.",
+        "‘리트 만점자’ 사망…경찰 “수사 이어가겠다”",
+        "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]",
+        "19일 연합뉴스에 따르면, 서울대 정시모집 일반전형으로 합격한 이씨는 사망에 따른 제적 처리가 될...",
+        "법학적성시험(LEET) 만점자 이진우 씨가 19일 서울 강동구 한 숙박업소에서 심정지 상태로 발견됐다."
+      ],
+      "sources": [
+        {
+          "press": "서울신문",
+          "title": "‘리트 만점자’ 사망…경찰 “수사 이어가겠다”",
+          "url": "https://n.news.naver.com/article/081/0003701264"
+        },
+        {
+          "press": "헤럴드경제",
+          "title": "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]",
+          "url": "https://n.news.naver.com/article/016/0002725836"
+        },
+        {
+          "press": "edaily.co.kr",
+          "title": "“수능 의혹은 어쩌나”… ‘리트 만점’ 이진우 사망, 서울대 입장은",
+          "url": "https://n.news.naver.com/mnews/article/018/0006412758?sid=102"
+        },
+        {
+          "press": "YTN",
+          "title": "[단독] 이진우 사망에도...경찰, '리트·수능 의혹' 계속 수사",
+          "url": "https://n.news.naver.com/article/052/0002435211"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "인공지능(AI) 부정행위 의혹을 받던 법학적성시험(LEET) 만점자 이진우 씨가 2026년 11월 19일 서울 강동구 천호동의 한 숙박업소에서 심정지 상태로 발견되었다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "경찰은 검안과 부검 결과 등을 종합해 정확한 사망 원인과 경위를 확인할..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "이진우 씨의 사망 소식이 전해졌음에도 경찰이 실체적 진실 확인을 위해 수사를 계속하겠다고 밝힌 날이다. 사망으로 인한 공소권 없음 종결 대신 수사를 지속한다는 점에서, 의혹의 실체를 끝까지 파헤쳐야 한다는 사회적…"
+        }
+      ],
+      "visual_brief": {
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
         "continuity_quality": 0.92,
         "continuity_gaps": [
-          "입장·공방",
-          "파장·후속"
+          "발단·의혹",
+          "입장·공방"
         ],
         "no_generic_closing": true
       }

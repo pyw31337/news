@@ -1,23 +1,7 @@
 {
-  "updated": "2026-11-19T20:20:56.867513+09:00",
-  "alerts_count": 12,
+  "updated": "2026-11-19T19:52:41.738521+09:00",
+  "alerts_count": 13,
   "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.39d6b96ec86371bf390ab465d9820d4fa15876ce.001.1",
-      "t": "2026-11-19 02:56",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Santa Barbara",
-      "area_en": "Santa Barbara",
-      "event": "홍수 경보",
-      "event_en": "Flash Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Santa Barbara 홍수 경보",
-      "headline_en": "Santa Barbara Flash Flood Warning",
-      "desc": "FFWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Flash Flood Warning for...\nThe Lake burn scar in...\nCentral Santa Barbara County in southwestern California...\n\n* Until 430 AM PST.\n\n* At 256 AM PST, Doppler radar and automated rain gauges indicated\nheavy rain falling over t"
-    },
     {
       "id": "urn:oid:2.49.0.1.840.0.56247f053e50af9d5740713ecb1b4fbc9b93307c.001.2",
       "t": "2026-11-19 01:59",
@@ -65,6 +49,38 @@
       "headline_ko": "Brevard 홍수 경보",
       "headline_en": "Brevard Flash Flood Warning",
       "desc": "FFWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Flash Flood Warning for...\nCentral Brevard County in east central Florida...\n\n* Until 745 AM EST.\n\n* At 450 AM EST, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 4 and 6.5 inches of rain\nha"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.9a115dbe3facdada7b267514d2cd52b3bfe9b62a.001.1",
+      "t": "2026-11-19 01:24",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Santa Barbara",
+      "area_en": "Santa Barbara",
+      "event": "홍수 경보",
+      "event_en": "Flash Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "Santa Barbara 홍수 경보",
+      "headline_en": "Santa Barbara Flash Flood Warning",
+      "desc": "FFWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Flash Flood Warning for...\nThe Gifford burn scar in...\nNorth Central Santa Barbara County in southwestern California...\n\n* Until 330 AM PST.\n\n* At 124 AM PST, Doppler radar and automated rain gauges indicated\nheavy rain falli"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.9111aa9e39d1873be94e6ab95f7b80d7307ad9a6.001.1",
+      "t": "2026-11-19 01:05",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "San Luis Obispo",
+      "area_en": "San Luis Obispo",
+      "event": "홍수 경보",
+      "event_en": "Flash Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "San Luis Obispo 홍수 경보",
+      "headline_en": "San Luis Obispo Flash Flood Warning",
+      "desc": "FFWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Flash Flood Warning for...\nSouthern San Luis Obispo County in southwestern California...\nNorthwestern Santa Barbara County in southwestern California...\n\n* Until 300 AM PST.\n\n* At 105 AM PST, Doppler radar and automated rain "
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.2fd23a4b6db8f00869fcd41bfa9a20f8d550cc13.001.1",
@@ -197,22 +213,6 @@
   ],
   "quakes": [
     {
-      "id": "us6000ubz1",
-      "mag": 5,
-      "place": "31 km WSW of Rabaul, Papua New Guinea",
-      "t": "2026-11-19 10:53",
-      "depth": 194.803,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ubz1"
-    },
-    {
-      "id": "us6000ubyt",
-      "mag": 4.7,
-      "place": "92 km W of San Juan, Peru",
-      "t": "2026-11-19 09:08",
-      "depth": 10,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ubyt"
-    },
-    {
       "id": "us6000uby4",
       "mag": 4.8,
       "place": "23 km SSE of Guayaquil, Ecuador",
@@ -275,6 +275,22 @@
       "t": "2026-11-18 19:14",
       "depth": 10,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tz37"
+    },
+    {
+      "id": "us7000tz33",
+      "mag": 4.5,
+      "place": "23 km SSW of Ollagüe, Chile",
+      "t": "2026-11-18 18:46",
+      "depth": 133.871,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tz33"
+    },
+    {
+      "id": "us7000tz2w",
+      "mag": 5,
+      "place": "46 km NNE of Kilimatinde, Tanzania",
+      "t": "2026-11-18 18:08",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tz2w"
     }
   ],
   "cities": [
@@ -286,11 +302,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 4.4,
-      "apparent_temp": 1.8,
-      "humidity": 71,
+      "temp": 4.5,
+      "apparent_temp": 1.5,
+      "humidity": 68,
       "code": 0,
-      "wind": 2.9
+      "wind": 5.4
     },
     {
       "id": "losangeles",
@@ -300,11 +316,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 15.1,
-      "apparent_temp": 13.7,
-      "humidity": 78,
+      "temp": 15.0,
+      "apparent_temp": 13.8,
+      "humidity": 80,
       "code": 3,
-      "wind": 12.1
+      "wind": 11.4
     },
     {
       "id": "london",
@@ -314,11 +330,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 8.0,
-      "apparent_temp": 6.1,
+      "temp": 7.8,
+      "apparent_temp": 5.8,
       "humidity": 89,
-      "code": 51,
-      "wind": 6.8
+      "code": 3,
+      "wind": 7.2
     },
     {
       "id": "paris",
@@ -328,11 +344,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 12.7,
-      "apparent_temp": 9.6,
-      "humidity": 70,
+      "temp": 12.2,
+      "apparent_temp": 8.8,
+      "humidity": 72,
       "code": 3,
-      "wind": 16.6
+      "wind": 18.3
     },
     {
       "id": "frankfurt",
@@ -342,11 +358,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 12.2,
-      "apparent_temp": 9.1,
-      "humidity": 72,
-      "code": 3,
-      "wind": 16.7
+      "temp": 11.9,
+      "apparent_temp": 8.7,
+      "humidity": 75,
+      "code": 2,
+      "wind": 17.7
     },
     {
       "id": "tokyo",
@@ -356,11 +372,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 11.9,
-      "apparent_temp": 9.0,
-      "humidity": 48,
+      "temp": 12.0,
+      "apparent_temp": 9.1,
+      "humidity": 47,
       "code": 0,
-      "wind": 6.4
+      "wind": 6.0
     },
     {
       "id": "beijing",
@@ -370,11 +386,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 2.1,
-      "apparent_temp": -3.1,
-      "humidity": 31,
-      "code": 1,
-      "wind": 11.8
+      "temp": 2.4,
+      "apparent_temp": -2.9,
+      "humidity": 30,
+      "code": 0,
+      "wind": 11.7
     },
     {
       "id": "singapore",
@@ -384,11 +400,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 25.8,
-      "apparent_temp": 31.7,
-      "humidity": 91,
+      "temp": 26.2,
+      "apparent_temp": 32.0,
+      "humidity": 88,
       "code": 3,
-      "wind": 2.3
+      "wind": 1.9
     },
     {
       "id": "sydney",
@@ -398,11 +414,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 20.9,
+      "temp": 21.0,
       "apparent_temp": 20.5,
       "humidity": 79,
-      "code": 2,
-      "wind": 19.7
+      "code": 1,
+      "wind": 20.0
     },
     {
       "id": "toronto",
@@ -412,11 +428,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 3.0,
+      "temp": 3.2,
       "apparent_temp": -0.8,
-      "humidity": 77,
+      "humidity": 72,
       "code": 0,
-      "wind": 11.0
+      "wind": 11.7
     },
     {
       "id": "dubai",
@@ -426,11 +442,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 28.0,
-      "apparent_temp": 29.5,
+      "temp": 28.1,
+      "apparent_temp": 29.7,
       "humidity": 58,
       "code": 0,
-      "wind": 13.0
+      "wind": 12.3
     },
     {
       "id": "saopaulo",
@@ -440,11 +456,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 24.2,
-      "apparent_temp": 26.3,
-      "humidity": 75,
+      "temp": 23.2,
+      "apparent_temp": 25.5,
+      "humidity": 79,
       "code": 1,
-      "wind": 11.1
+      "wind": 8.9
     }
   ],
   "stories": []
