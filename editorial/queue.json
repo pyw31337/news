@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-19",
-  "generated_at": "2026-11-19T15:24:32+09:00",
+  "generated_at": "2026-11-19T16:23:23+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,65 +27,170 @@
   },
   "candidates": [
     {
-      "issue_id": "i8638681a",
-      "title": "[속보] ‘리트 만점’ 이진우, 천호역 인근서 심정지 상태로 발견",
+      "issue_id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
       "category": "경제",
-      "rank": 1,
-      "priority_score": 45,
+      "rank": 6,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
-        "인공지능을 이용한 부정행위 의혹을 받던 법학적성시험(LEET) 만점자 이진우씨가 19일 오후 서울 강동구 천호동의 한 숙박업소에서 심정지 상태로 발견되었다.",
-        "‘리트 만점자’ 이진우 사망...",
-        "천호역 인근 모텔서 발견",
-        "흔적을 발견할 수 없었다.",
-        "사실상 정체가 불분명한 유령법인 측에 대규모 회삿돈이 향한 모양새다."
+        "한국이 사상 처음으로 연간 수출 1조 달러 시대를 열었습니다.",
+        "대한국민의 도전과 헌신이 만든 결실\"이라고 밝혔다.",
+        "이 대통령은 이날 엑스(X·옛 트위터)를 통해 \"대한민국이 방금(11월 19일 14시 9분) 수출 1조 달러 시대를 열었다.",
+        "세계에서 네 번째로 이룬 값진 성과\"라면서 이같이...",
+        "\"한국 대통령과 너무 달랐다\"…일본 총리 의전 어땠길래"
       ],
       "sources": [
         {
-          "press": "조선일보",
-          "title": "‘리트 만점자’ 이진우 사망... 천호역 인근 모텔서 발견",
-          "url": "https://n.news.naver.com/article/023/0004010551"
+          "press": "shinailbo.co.kr",
+          "title": "李대통령 \"수출 1조 달러 시대…도전과 헌신이 만든 결실\"",
+          "url": "https://www.shinailbo.co.kr/news/articleView.html?idxno=5085583"
         },
         {
-          "press": "sentv.co.kr",
-          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
-          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
+          "press": "SBS",
+          "title": "\"한국 대통령과 너무 달랐다\"…일본 총리 의전 어땠길래",
+          "url": "https://n.news.naver.com/article/055/0001404200"
         },
         {
-          "press": "the-today.com",
-          "title": "[단독] 솔루스 헝가리 자회사, 전해액 500t 야외보관…4억포린트 벌금",
-          "url": "https://www.the-today.com/news/articleView.html?idxno=93789"
+          "press": "연합뉴스",
+          "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
+          "url": "https://n.news.naver.com/article/001/0016452204"
         },
         {
-          "press": "조선비즈",
-          "title": "경찰, ‘리트 만점’ 이진우 심정지 상태로 발견",
-          "url": "https://n.news.naver.com/article/366/0001205955"
+          "press": "연합뉴스TV",
+          "title": "[속보] 연간 수출 1조 달러 첫 돌파…전 세계 4번째",
+          "url": "https://n.news.naver.com/article/422/0000927834"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "인공지능을 이용한 부정행위 의혹을 받던 법학적성시험(LEET) 만점자 이진우씨가 19일 오후 서울 강동구 천호동의 한 숙박업소에서 심정지 상태로 발견되었다."
+          "evidence": "한국이 사상 처음으로 연간 수출 1조 달러 시대를 열었습니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "회사는 하청업체 소속 60대 근로자가 세대 내부 보일러실 벽체 도장 준비작업(테이핑) 중 원인 미상의 심정지 상태로 발견돼 119로 병원에 옮겨졌으나 사망했다고 밝혔다."
+          "evidence": "경제계 \"수출 1조 달러 성과, 국내 투자·일자리로 이어갈 것\""
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "4억포린트 벌금은 2025년 12월 적발된..."
+          "evidence": "이 대통령은 이날 엑스(X·옛 트위터)를 통해 \"대한민국이 방금(11월 19일 14시 9분) 수출 1조 달러 시대를 열었다."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "검증 당일 이씨가 심정지 상태로 발견되면서 수사 동력이 상실될 가능성이 제기되며, 사건이 비극적인 결말로 치달았다는 해석이 나온다."
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
+          "입장·공방",
+          "수사·대응",
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ie705ce3e",
+      "title": "트럼프·푸틴, APEC서 약식 양자회담…우크라 종전 등 논의(종합2보)",
+      "category": "세계",
+      "rank": 9,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "장동혁 국민의힘 대표가 수능 부정행위 대책, APEC-아세안 정상외교 등 정부 정책 전반에 대해 \"북한 5호...",
+        "이어, 푸틴 러시아 대통령과 10여 분간 약식 회담을 진행하고, 17·18일(현지시간) 트럼프 대통령과 만찬장에서 짧게...",
+        "트럼프 대통령은 또 시 주석과 푸틴 대통령 모두 자신을 좋아한다고 강조했다.",
+        "양쪽과 관계가 좋은 자신이...",
+        "3국 회담은 19일 오후 아시아태평양경제협력체(APEC) 정상회의 장소인 중국 선전에서 열릴 예정이다."
+      ],
+      "sources": [
+        {
+          "press": "pressian.com",
+          "title": "장동혁 \"李 '1억 포상', 북한 5호 담당제?\", \"북핵 인정 바라나\" 색깔론",
+          "url": "https://n.news.naver.com/mnews/article/002/0002466705?sid=100"
+        },
+        {
+          "press": "hani.co.kr",
+          "title": "트럼프, 3국회담 개최는 “오바마가 중·러 가깝게 만들어서”",
+          "url": "https://n.news.naver.com/mnews/article/028/0002833028?sid=104"
+        },
+        {
+          "press": "중앙일보",
+          "title": "‘상습지각’ 푸틴, 먼저 가서 기다렸다…트럼프 “훌륭한 성과 나올 것”",
+          "url": "https://v.daum.net/v/20261119155944757"
+        },
+        {
+          "press": "khan.co.kr",
+          "title": "시진핑과 ‘악수’만 하고 떠난 다카이치에 일본 언론도 탄식···의전...",
+          "url": "https://n.news.naver.com/mnews/article/032/0003483770?sid=104"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "장동혁 국민의힘 대표가 수능 부정행위 대책, APEC-아세안 정상외교 등 정부 정책 전반에 대해 \"북한 5호..."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "역사적인 미중러 회담…푸틴에게는 영향력을 과시할 기회"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "이어, 푸틴 러시아 대통령과 10여 분간 약식 회담을 진행하고, 17·18일(현지시간) 트럼프 대통령과 만찬장에서 짧게..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
@@ -122,124 +227,18 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.92,
+        "continuity_quality": 1.0,
         "continuity_gaps": [
-          "입장·공방",
-          "수사·대응"
+          "발단·의혹"
         ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "ic964dbb1",
-      "title": "돼지털 팔던 나라서 반도체 강국으로…1조 달러 시대 연 한국 수출 80년",
-      "category": "경제",
+      "issue_id": "ifdf488f0",
+      "title": "[속보] '리트 만점' 이진우, 강동구서 심정지 상태로 발견",
+      "category": "사회",
       "rank": 7,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "한국 수출 ‘꿈의 1조달러’ 달성…세계 4번째",
-        "1948년 수출 통계 작성 이래 첫 1조달러 돌파이자, 1964년 수출 1억 달러를 달성한 지 60여 년 만에 이룬 이정표다.",
-        "한국 수출은 작년 총 7093억달러로 사상 첫 7000억 달러 시대를 연 데 이어 올해 10월까지 누적 9300억...",
-        "한국이 사상 처음 연간 수출 1조 달러를 돌파한 가운데, 정부는 정책적 노력을 기울이면 내년에도 1조 달러를 달성할 수 있다고 봤다.",
-        "다만 전체 수출의 40% 이상을 반도체가 차지하는 만큼, 반도체 가격이 떨어지면 내년..."
-      ],
-      "sources": [
-        {
-          "press": "daily.hankooki.com",
-          "title": "韓 수출 연 1조 달러 돌파…SK하이닉스 \"반도체 동반성장 지속 앞장\"",
-          "url": "https://daily.hankooki.com/news/articleView.html?idxno=1427010"
-        },
-        {
-          "press": "news1.kr",
-          "title": "정부 \"내년에도 수출 1조 달러대 가능…반도체 쏠림은 우려\"[문답]",
-          "url": "https://n.news.naver.com/mnews/article/421/0009299400?sid=101"
-        },
-        {
-          "press": "경향신문",
-          "title": "[속보]한국 연 수출 1조달러 달성…독·미·중 이어 세계 네번째",
-          "url": "https://n.news.naver.com/article/032/0003483731"
-        },
-        {
-          "press": "파이낸셜뉴스",
-          "title": "\"반도체 빼도 20.2% 증가\"…한국, 수출 1조달러 문턱 넘었다",
-          "url": "https://v.daum.net/v/20261119144240721"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "한국 수출 ‘꿈의 1조달러’ 달성…세계 4번째"
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "한국이 사상 처음 연간 수출 1조 달러를 돌파한 가운데, 정부는 정책적 노력을 기울이면 내년에도 1조 달러를 달성할 수 있다고 봤다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "1948년 수출 통계 작성 이래 첫 1조달러 돌파이자, 1964년 수출 1억 달러를 달성한 지 60여 년 만에 이룬 이정표다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.76,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "icdebf349",
-      "title": "트럼프 \"AI 규제 용납 못 해\"…시진핑에는 \"놀라운 지도자\"",
-      "category": "세계",
-      "rank": 9,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -247,49 +246,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "도널드 트럼프 미국 대통령과 시진핑 중국 국가주석이 19일(현지시간) 중국 선전에서 아시아태평양경제협력체(APEC) 계기로 열린 양자 회담을 시작했다.",
-        "33차 APEC 정상회의에서 각국 정상은 역내 인공지능(AI) 협력을 강조했다.",
-        "의장국인 중국의 시진핑...",
-        "도널드 트럼프 미국 대통령은 AI 규제 반대를 강조했다.",
-        "그는 “미국이 슈퍼지능(SI, 트럼프 행정부가 AI를 지칭하는..."
+        "법학적성시험(LEET) 만점자 이진우(32)씨가 강동구 모텔에서 심정지 상태로 발견됐다.",
+        "흔적을 발견할 수 없었다.",
+        "사실상 정체가 불분명한 유령법인 측에 대규모 회삿돈이 향한 모양새다.",
+        "◇ 소송 채무·대여 문제로 ‘의견 거절’ 이런 가운데 회사는 소송 채무 등을 이유로 거래정지에...",
+        "두 사안은 발생 시점과 행정처분의 성격이 다르다."
       ],
       "sources": [
         {
-          "press": "joongang.co.kr",
-          "title": "트럼프 “AI 규제 반대” 시진핑 “데이터 협력 개선”…APEC ‘선전 선...",
-          "url": "https://n.news.naver.com/mnews/article/025/0003566445?sid=104"
+          "press": "sentv.co.kr",
+          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
+          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
         },
         {
-          "press": "MBN",
-          "title": "트럼프 \"AI 규제 용납 못 해\"…시진핑에는 \"놀라운 지도자\"",
-          "url": "https://v.daum.net/v/20261119150421866"
+          "press": "the-today.com",
+          "title": "[단독] 솔루스 헝가리 자회사, 전해액 500t 야외보관…4억포린트 벌금",
+          "url": "https://www.the-today.com/news/articleView.html?idxno=93789"
         },
         {
-          "press": "newscj.com",
-          "title": "美中 정상회담 돌입… 트럼프 \"시진핑은 친구\"",
-          "url": "https://www.newscj.com/news/articleView.html?idxno=3450327"
+          "press": "세계일보",
+          "title": "‘리트 만점자’ 이진우, 강동구 숙박업소서 심정지 상태로 발견",
+          "url": "https://n.news.naver.com/article/022/0004176484"
         },
         {
-          "press": "etoday.co.kr",
-          "title": "트럼프ㆍ푸틴, 15개월 만에 회동⋯우크라이나 논의",
-          "url": "https://www.etoday.co.kr/news/view/2650440"
+          "press": "woman.donga.com",
+          "title": "“비누 조각상에 사람들의 손길이 닿을 때 비로소 작품이 완성됩니다”",
+          "url": "https://woman.donga.com/3/all/12/6461719/1"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "도널드 트럼프 미국 대통령과 시진핑 중국 국가주석이 19일(현지시간) 중국 선전에서 아시아태평양경제협력체(APEC) 계기로 열린 양자 회담을 시작했다."
+          "evidence": "법학적성시험(LEET) 만점자 이진우(32)씨가 강동구 모텔에서 심정지 상태로 발견됐다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "도널드 트럼프 미국 대통령은 AI 규제 반대를 강조했다."
+          "evidence": "회사는 하청업체 소속 60대 근로자가 세대 내부 보일러실 벽체 도장 준비작업(테이핑) 중 원인 미상의 심정지 상태로 발견돼 119로 병원에 옮겨졌으나 사망했다고 밝혔다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "33차 APEC 정상회의에서 각국 정상은 역내 인공지능(AI) 협력을 강조했다."
+          "evidence": "4억포린트 벌금은 2025년 12월 적발된..."
         },
         {
           "panel": 4,
@@ -298,8 +297,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -331,10 +330,9 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.92,
+        "continuity_quality": 1.0,
         "continuity_gaps": [
-          "발단·의혹",
-          "수사·대응"
+          "입장·공방"
         ],
         "no_generic_closing": true
       }

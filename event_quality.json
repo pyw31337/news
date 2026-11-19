@@ -1,52 +1,71 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 06:24:31",
+  "updated_at": "2026-11-19 07:23:17",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.9,
   "issues": [
     {
-      "id": "i8638681a",
-      "title": "[속보] ‘리트 만점’ 이진우, 천호역 인근서 심정지 상태로 발견",
-      "episode": "episode:0502a513adde67",
-      "quality": 0.92,
+      "id": "ic269b746",
+      "title": "리트 만점자, 심정지 상태로 발견",
+      "episode": "episode:15820983f88fcf",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
         "발단·의혹",
-        "파장·후속",
-        "사법·처분"
+        "수사·대응"
       ],
       "gaps": [
         "입장·공방",
-        "수사·대응"
+        "사법·처분",
+        "파장·후속"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 9,
+      "duplicate_candidates": 31,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "ie50fe4a7",
-      "title": "리트 만점자 천호동 모텔에서 발견",
-      "episode": "episode:3bee300f637351",
+      "id": "i7b545b08",
+      "title": "수능 부정행위 초비상인데...용인 고사장서 초소형카메라·이어폰 발견 [2027수능]",
+      "episode": "episode:0c5aab6f1d47d5",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id45a5033",
+      "title": "[속보] '리트 만점자' 이진우, 천호동 모텔서 심정지 상태로 발견",
+      "episode": "episode:be0d9cfadd1245",
       "quality": 1.0,
       "stages": [
-        "파장·후속",
-        "발단·의혹",
         "일반 보도",
+        "발단·의혹",
+        "파장·후속",
         "입장·공방",
         "수사·대응"
       ],
       "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 5,
+      "duplicate_candidates": 22,
+      "event_count": 13,
       "evidence_rate": 1.0
     },
     {
-      "id": "i12ff3e46",
-      "title": "“용인 수능 고사장서 초소형 카메라·이어폰 발견”",
-      "episode": "episode:8c99b8df7ed5ac",
+      "id": "i21db63ef",
+      "title": "수능 ‘위급재난문자’ 쐈더니…스마트폰 22대 적발",
+      "episode": "episode:608e62fdf3d8a3",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -57,137 +76,120 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iea0c2c6a",
-      "title": "[속보] '리트 만점자', 서울 강동구 모텔서 심정지 상태로 발견",
-      "episode": "episode:af5f6800fdce5a",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "발단·의혹",
-        "파장·후속",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 24,
-      "event_count": 16,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i21db63ef",
-      "title": "수능 ‘위급재난문자’ 쐈더니…스마트폰 22대 적발",
-      "episode": "episode:45944eaaf790f1",
-      "quality": 0.66,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 3,
+      "duplicate_candidates": 30,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
       "id": "i6b114507",
       "title": "[속보] 한 총리, '지난해 수능 시험지 보관' 긴급 지시",
-      "episode": "episode:1172e613ffebce",
-      "quality": 0.92,
+      "episode": "episode:31d969c533f658",
+      "quality": 0.84,
       "stages": [
         "수사·대응",
         "파장·후속",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
+      "episode": "episode:f7d67d229c5f34",
+      "quality": 0.84,
+      "stages": [
+        "발단·의혹",
         "일반 보도",
-        "발단·의혹"
+        "파장·후속"
       ],
       "gaps": [
         "입장·공방",
+        "수사·대응",
         "사법·처분"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ifdf488f0",
+      "title": "[속보] '리트 만점' 이진우, 강동구서 심정지 상태로 발견",
+      "episode": "episode:b7730e31548103",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "파장·후속",
+        "사법·처분",
+        "수사·대응"
+      ],
+      "gaps": [
+        "입장·공방"
       ],
       "duplicate_candidates": 27,
       "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "ic964dbb1",
-      "title": "돼지털 팔던 나라서 반도체 강국으로…1조 달러 시대 연 한국 수출 80년",
-      "episode": "episode:0c30bcd0732dc9",
-      "quality": 0.76,
+      "id": "i4a8b5d8a",
+      "title": "[속보] '리트 만점자' 사망 판정…관련 사건 '공소권 없음' 종결 수순",
+      "episode": "episode:c13412f0350ec3",
+      "quality": 1.0,
       "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 16,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic183d373",
-      "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-      "episode": "episode:aa80c9277f0474",
-      "quality": 0.92,
-      "stages": [
-        "파장·후속",
+        "수사·대응",
         "사법·처분",
         "발단·의혹",
-        "입장·공방"
+        "입장·공방",
+        "파장·후속"
       ],
-      "gaps": [
-        "수사·대응"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 7,
+      "gaps": [],
+      "duplicate_candidates": 25,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "icdebf349",
-      "title": "트럼프 \"AI 규제 용납 못 해\"…시진핑에는 \"놀라운 지도자\"",
-      "episode": "episode:4b60d39dae3e2b",
-      "quality": 0.92,
+      "id": "ie705ce3e",
+      "title": "트럼프·푸틴, APEC서 약식 양자회담…우크라 종전 등 논의(종합2보)",
+      "episode": "episode:fcb890f7351b29",
+      "quality": 1.0,
       "stages": [
         "입장·공방",
         "파장·후속",
         "일반 보도",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
+        "사법·처분",
         "수사·대응"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 26,
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 19,
       "evidence_rate": 1.0
     },
     {
-      "id": "iaecb316a",
-      "title": "\"다카이치, 푸틴과 직접 대화로 돌파구 모색…관계 개선까진 험로\"",
-      "episode": "episode:092add41a7798b",
-      "quality": 0.84,
+      "id": "i11ef0d0e",
+      "title": "아들 보는 앞에서 숨진 김창민 감독…가해자들 징역 12년·3년 선고",
+      "episode": "episode:e7f8fb0f5a8899",
+      "quality": 0.92,
       "stages": [
-        "일반 보도",
         "수사·대응",
-        "파장·후속"
+        "사법·처분",
+        "입장·공방",
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "사법·처분"
+        "파장·후속"
       ],
-      "duplicate_candidates": 22,
-      "event_count": 10,
+      "duplicate_candidates": 30,
+      "event_count": 37,
       "evidence_rate": 1.0
     }
   ]
