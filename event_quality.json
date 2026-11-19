@@ -1,172 +1,56 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 08:54:17",
+  "updated_at": "2026-11-19 06:55:49",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.9,
+  "average_quality": 0.8,
   "issues": [
     {
-      "id": "i72ede278",
-      "title": "대법, 김건희 ‘3대 의혹’ 징역 4년 확정",
-      "episode": "episode:7cd52436c8fbc7",
-      "quality": 0.92,
+      "id": "i4bcb8707",
+      "title": "LEET 만점자, 잠적 후 천호동 모텔서 심정지 상태로 발견(종합)",
+      "episode": "episode:bec61dd58836b1",
+      "quality": 1.0,
       "stages": [
-        "수사·대응",
-        "사법·처분",
         "일반 보도",
-        "발단·의혹"
+        "발단·의혹",
+        "파장·후속",
+        "사법·처분",
+        "수사·대응"
       ],
       "gaps": [
-        "입장·공방",
-        "파장·후속"
+        "입장·공방"
       ],
-      "duplicate_candidates": 38,
-      "event_count": 36,
+      "duplicate_candidates": 28,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "ic22d7002",
-      "title": "리트 만점자, 모텔서 심정지 상태 발견…유서엔 “심신 지쳤다”",
-      "episode": "episode:a918067163766c",
-      "quality": 0.92,
+      "id": "ic71e5156",
+      "title": "“용인 모 고등학교 수능 고사장서 초소형카메라·이어폰 발견”",
+      "episode": "episode:aae890ccd87587",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
-        "사법·처분",
-        "발단·의혹",
-        "입장·공방"
+        "수사·대응"
       ],
       "gaps": [
-        "수사·대응",
-        "파장·후속"
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
       ],
-      "duplicate_candidates": 27,
+      "duplicate_candidates": 30,
       "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "i1be66b15",
-      "title": "[속보]“용인 수능 시험장서 초소형카메라·이어폰 발견”",
-      "episode": "episode:125e5acef2c422",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i942112c6",
-      "title": "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]",
-      "episode": "episode:2208a3b345ef94",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "수사·대응"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3cea7471",
-      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
-      "episode": "episode:cdf463069557a8",
-      "quality": 0.92,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 15,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i85f0537a",
-      "title": "리트 만점자 사망에 ‘공소권없음’ 수순…고발 변호사 “수사 종결 않기를”",
-      "episode": "episode:d5d6970ca60854",
-      "quality": 1.0,
+      "id": "i22865a75",
+      "title": "한 총리, ‘지난해 수능 시험지 보관’ 긴급 지시",
+      "episode": "episode:f5729216660255",
+      "quality": 0.84,
       "stages": [
         "수사·대응",
-        "사법·처분",
-        "일반 보도",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 11,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i59cb690e",
-      "title": "수능날 울린 재난문자에 '딱 걸렸다'…\"부정행위 22명 적발\"",
-      "episode": "episode:233e12c36d31c6",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
         "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib534cb35",
-      "title": "코스피, 앤트로픽 상장 앞두고 등락 끝에 1.4% 상승 마감",
-      "episode": "episode:f71904981a25b7",
-      "quality": 0.84,
-      "stages": [
-        "파장·후속",
-        "사법·처분",
         "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 38,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie46ed317",
-      "title": "트럼프·시진핑, 에너지·무역은 손잡았지만...AI는 '온도차'",
-      "episode": "episode:117b05268d811e",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "사법·처분",
-        "입장·공방",
-        "파장·후속"
       ],
       "gaps": [
         "발단·의혹"
@@ -190,8 +74,135 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 27,
+      "duplicate_candidates": 29,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i2e7cd15a",
+      "title": "'리트만점자' 이진우, 고의 사고로 242만원 갈취...경찰 폭행 전력까지?",
+      "episode": "episode:edf7b19f0d1ce4",
+      "quality": 0.92,
+      "stages": [
+        "파장·후속",
+        "사법·처분",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "gaps": [
+        "수사·대응"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic964dbb1",
+      "title": "돼지털 팔던 나라서 반도체 강국으로…1조 달러 시대 연 한국 수출 80년",
+      "episode": "episode:fa3e162a25993d",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ibf0fc7fa",
+      "title": "'리트 만점' 이진우, 공개 검증 불참 뒤 천호동서 심정지 발견",
+      "episode": "episode:01860d699cb117",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia816e1d2",
+      "title": "오후 2시21분 수능 2차 재난문자 발송…영어 시험 직후",
+      "episode": "episode:a65c3a4a9bbb92",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if1aa9634",
+      "title": "박지윤, 상간 소송 판결 반박 \"최동석 언론플레이에 지쳐간다\"",
+      "episode": "episode:2bbd4839e2daa1",
+      "quality": 0.76,
+      "stages": [
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 22,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i97acabb0",
+      "title": "“한국어 가사 계속 듣고 싶어”…로이드 웨버도 인정한, 한국판 ‘오페라의 유령’ [현장]",
+      "episode": "episode:a3d616bc117c26",
+      "quality": 0.38,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 16,
+      "event_count": 1,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i291353ae",
+      "title": "트럼프·시진핑·푸틴 한자리에...세계 질서 재편 분수령",
+      "episode": "episode:e5fa49f73e1c5c",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "사법·처분",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 61,
       "evidence_rate": 1.0
     }
   ]
