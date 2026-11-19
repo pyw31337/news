@@ -1,75 +1,114 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 18:56:38",
+  "updated_at": "2026-11-19 18:02:34",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.85,
+  "average_quality": 0.88,
   "issues": [
     {
-      "id": "id74595d9",
-      "title": "경찰, ‘리트 만점’ 이진우 심정지 상태로 발견",
-      "episode": "episode:e811c4324b946a",
+      "id": "i91e4c9b9",
+      "title": "리트 첫 만점자 이진우 씨 심정지 상태로 발견",
+      "episode": "episode:793aa18e0b651c",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "발단·의혹",
-        "사법·처분",
         "입장·공방",
         "파장·후속",
         "수사·대응"
       ],
-      "gaps": [],
+      "gaps": [
+        "사법·처분"
+      ],
       "duplicate_candidates": 33,
-      "event_count": 9,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i8ceae6b8",
-      "title": "[속보] 李대통령, 조작기소 특검법 재가…19일 공포 즉시 시행",
-      "episode": "episode:2fde32d02e794e",
+      "id": "i2088686e",
+      "title": "민주, 조희대 대법원장 탄핵 추진…김민석 “절차·내용 지도부 위임”",
+      "episode": "episode:5cb87055a0b15e",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 40,
+      "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if2d2f086",
+      "title": "李대통령, 순방 중 조작기소 특검법 재가…공포돼 즉시 시행",
+      "episode": "episode:7448a1f70854de",
       "quality": 0.92,
       "stages": [
         "일반 보도",
         "사법·처분",
         "파장·후속",
-        "수사·대응"
+        "입장·공방"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방"
+        "수사·대응"
       ],
-      "duplicate_candidates": 25,
-      "event_count": 15,
+      "duplicate_candidates": 26,
+      "event_count": 18,
       "evidence_rate": 1.0
     },
     {
-      "id": "i1be66b15",
-      "title": "[속보]“용인 수능 시험장서 초소형카메라·이어폰 발견”",
-      "episode": "episode:f9f8238dbe3a8a",
+      "id": "i30bff471",
+      "title": "앤트로픽 나스닥 데뷔… 반도체·인프라→AI 기업 투자 이동할까 [팩플]",
+      "episode": "episode:3fa8a160fb9758",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 22,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if4d34bdb",
+      "title": "[속보] 서울대, ‘리트 만점자’ 사망 제적 예정…“입학취소는 불가”",
+      "episode": "episode:bfe61055ffafcf",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i463bd3c2",
+      "title": "용인 수능 시험장서 초소형 카메라·이어폰 발견… 교육당국, 경찰에 수사 의뢰",
+      "episode": "episode:33ddcbd190cd19",
       "quality": 0.84,
       "stages": [
         "일반 보도",
         "파장·후속",
         "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iaf95e927",
-      "title": "재난문자 세 번 울린 수능…49명 들통나 '성적 무효'",
-      "episode": "episode:f971fc84069d67",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
@@ -77,15 +116,16 @@
         "사법·처분"
       ],
       "duplicate_candidates": 29,
-      "event_count": 7,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6f8b0a18",
-      "title": "\"같은 호텔방에 잠옷 차림으로\"…최동석, 박지윤에 재반박",
-      "episode": "episode:d45a06950397bb",
-      "quality": 0.68,
+      "id": "i1faf253f",
+      "title": "\"성소수자와 부정행위?\"…분노한 박지윤, 상간 2심 작심 반박",
+      "episode": "episode:9221bafded05af",
+      "quality": 0.76,
       "stages": [
+        "일반 보도",
         "사법·처분"
       ],
       "gaps": [
@@ -93,8 +133,27 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 4,
+      "duplicate_candidates": 28,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
+      "episode": "episode:c66b538204cbb0",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 22,
+      "event_count": 22,
       "evidence_rate": 1.0
     },
     {
@@ -112,14 +171,14 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 30,
+      "duplicate_candidates": 29,
       "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "ibfd9833f",
-      "title": "푸틴 보좌관, 보란 듯 '핵가방' 들고 이동…\"핵위력 과시\"",
-      "episode": "episode:da0e349dd2b9e4",
+      "id": "i1060d3ba",
+      "title": "사우디 리야드 80층 빌딩 피격…빈 살만 왕세자 개혁의 상징 파손",
+      "episode": "episode:5463324763cd1c",
       "quality": 0.76,
       "stages": [
         "파장·후속",
@@ -131,63 +190,7 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3d40b014",
-      "title": "\"국어 1등급 커트라인 90∼95점, 수학 84∼90점\"",
-      "episode": "episode:feb22b31c6c247",
-      "quality": 0.66,
-      "stages": [
-        "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i6e27ef5c",
-      "title": "시험도중에도 \"삐~\"…위급재난문자로 49명 등 총 98명 적발",
-      "episode": "episode:29d753037cce35",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 23,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i942a0799",
-      "title": "수능 부정행위 98명 적발…초소형 카메라에 '신발 깔창 속 휴대폰'까지",
-      "episode": "episode:66483e7213978a",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "수사·대응",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "사법·처분"
-      ],
-      "duplicate_candidates": 30,
+      "duplicate_candidates": 24,
       "event_count": 9,
       "evidence_rate": 1.0
     }
