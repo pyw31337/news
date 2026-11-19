@@ -1,7 +1,23 @@
 {
-  "updated": "2026-11-19T17:20:31.364054+09:00",
+  "updated": "2026-11-19T17:50:27.391535+09:00",
   "alerts_count": 13,
   "alerts": [
+    {
+      "id": "urn:oid:2.49.0.1.840.0.18dc89620786164bf10669ff0ee964ad30532553.001.1",
+      "t": "2026-11-19 00:44",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Santa Barbara",
+      "area_en": "Santa Barbara",
+      "event": "홍수 경보",
+      "event_en": "Flash Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "Santa Barbara 홍수 경보",
+      "headline_en": "Santa Barbara Flash Flood Warning",
+      "desc": "FFWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Flash Flood Warning for...\nWest Central Santa Barbara County in southwestern California...\n\n* Until 245 AM PST.\n\n* At 1244 AM PST, Doppler radar and automated rain gauges indicated\nheavy rain falling across the warned area. B"
+    },
     {
       "id": "urn:oid:2.49.0.1.840.0.6ecde6045dce842a7c99f5f6ba9f68f6be6659f3.001.1",
       "t": "2026-11-19 00:19",
@@ -65,22 +81,6 @@
       "headline_ko": "Brevard 홍수 경보",
       "headline_en": "Brevard Flash Flood Warning",
       "desc": "FFWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Flash Flood Warning for...\nCentral Brevard County in east central Florida...\n\n* Until 515 AM EST.\n\n* At 213 AM EST, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 2 and 2.5 inches of rain\nha"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.970ae3c2a2ee7809c6cb6bee6106236bfdf9c6e8.001.1",
-      "t": "2026-11-18 22:43",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "San Luis Obispo",
-      "area_en": "San Luis Obispo",
-      "event": "홍수 경보",
-      "event_en": "Flash Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "San Luis Obispo 홍수 경보",
-      "headline_en": "San Luis Obispo Flash Flood Warning",
-      "desc": "FFWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Flash Flood Warning for...\nCentral San Luis Obispo County in southwestern California...\n\n* Until 1245 AM PST.\n\n* At 1043 PM PST, Doppler radar and automated rain gauges indicated\nheavy rain falling across the warned area. Bet"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.7ecd4acdb39d520ece6282cd21ce8b81ad9413f6.001.1",
@@ -302,11 +302,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 5.5,
-      "apparent_temp": 2.3,
-      "humidity": 70,
+      "temp": 5.4,
+      "apparent_temp": 2.1,
+      "humidity": 67,
       "code": 0,
-      "wind": 8.4
+      "wind": 7.3
     },
     {
       "id": "losangeles",
@@ -316,11 +316,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 16.2,
-      "apparent_temp": 15.6,
-      "humidity": 68,
+      "temp": 16.0,
+      "apparent_temp": 15.4,
+      "humidity": 71,
       "code": 3,
-      "wind": 5.1
+      "wind": 6.1
     },
     {
       "id": "london",
@@ -330,11 +330,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 7.4,
-      "apparent_temp": 5.6,
+      "temp": 7.6,
+      "apparent_temp": 6.0,
       "humidity": 92,
-      "code": 2,
-      "wind": 5.8
+      "code": 3,
+      "wind": 5.0
     },
     {
       "id": "paris",
@@ -344,11 +344,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 10.6,
-      "apparent_temp": 7.5,
-      "humidity": 78,
+      "temp": 10.9,
+      "apparent_temp": 7.9,
+      "humidity": 79,
       "code": 2,
-      "wind": 15.7
+      "wind": 16.0
     },
     {
       "id": "frankfurt",
@@ -358,11 +358,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 9.8,
+      "temp": 10.4,
       "apparent_temp": 7.6,
-      "humidity": 91,
+      "humidity": 85,
       "code": 61,
-      "wind": 12.4
+      "wind": 16.3
     },
     {
       "id": "tokyo",
@@ -372,11 +372,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 14.0,
-      "apparent_temp": 10.6,
-      "humidity": 40,
+      "temp": 13.5,
+      "apparent_temp": 10.3,
+      "humidity": 41,
       "code": 0,
-      "wind": 8.8
+      "wind": 8.0
     },
     {
       "id": "beijing",
@@ -386,11 +386,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 4.5,
-      "apparent_temp": -1.8,
-      "humidity": 24,
-      "code": 1,
-      "wind": 18.8
+      "temp": 3.9,
+      "apparent_temp": -2.0,
+      "humidity": 25,
+      "code": 0,
+      "wind": 16.2
     },
     {
       "id": "singapore",
@@ -400,11 +400,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 28.1,
-      "apparent_temp": 32.8,
-      "humidity": 75,
+      "temp": 27.8,
+      "apparent_temp": 32.6,
+      "humidity": 77,
       "code": 3,
-      "wind": 5.8
+      "wind": 5.9
     },
     {
       "id": "sydney",
@@ -414,9 +414,9 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 21.7,
-      "apparent_temp": 21.5,
-      "humidity": 74,
+      "temp": 21.4,
+      "apparent_temp": 21.2,
+      "humidity": 76,
       "code": 3,
       "wind": 18.1
     },
@@ -428,11 +428,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 3.5,
-      "apparent_temp": -0.0,
-      "humidity": 80,
-      "code": 2,
-      "wind": 9.8
+      "temp": 3.2,
+      "apparent_temp": -0.3,
+      "humidity": 78,
+      "code": 1,
+      "wind": 8.6
     },
     {
       "id": "dubai",
@@ -443,10 +443,10 @@
       "lat": 25.2048,
       "lon": 55.2708,
       "temp": 28.3,
-      "apparent_temp": 31.0,
-      "humidity": 55,
+      "apparent_temp": 30.6,
+      "humidity": 56,
       "code": 0,
-      "wind": 6.7
+      "wind": 9.4
     },
     {
       "id": "saopaulo",
@@ -456,11 +456,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 19.9,
-      "apparent_temp": 23.0,
-      "humidity": 98,
+      "temp": 20.1,
+      "apparent_temp": 22.9,
+      "humidity": 96,
       "code": 2,
-      "wind": 3.9
+      "wind": 5.2
     }
   ],
   "stories": [

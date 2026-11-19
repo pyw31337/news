@@ -1,33 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 08:30:08",
+  "updated_at": "2026-11-19 08:54:17",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.85,
+  "average_quality": 0.9,
   "issues": [
     {
-      "id": "i22f440d2",
-      "title": "[속보] '리트 만점자' 이진우 사망...유서 추정 메모 발견",
-      "episode": "episode:2b77c6408cede1",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "수사·대응"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iac94dd45",
-      "title": "[속보] 대법, 김건희 '3대 의혹' 징역 4년 확정…정치자금법 위반 무죄",
-      "episode": "episode:d579f49f69d630",
+      "id": "i72ede278",
+      "title": "대법, 김건희 ‘3대 의혹’ 징역 4년 확정",
+      "episode": "episode:7cd52436c8fbc7",
       "quality": 0.92,
       "stages": [
         "수사·대응",
@@ -39,113 +20,131 @@
         "입장·공방",
         "파장·후속"
       ],
-      "duplicate_candidates": 40,
-      "event_count": 37,
+      "duplicate_candidates": 38,
+      "event_count": 36,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9346b81f",
-      "title": "[단독] 경기도 용인 수능 시험장서 초소형 카메라 발견",
-      "episode": "episode:2cd6091985ea8e",
-      "quality": 0.84,
+      "id": "ic22d7002",
+      "title": "리트 만점자, 모텔서 심정지 상태 발견…유서엔 “심신 지쳤다”",
+      "episode": "episode:a918067163766c",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
-        "파장·후속",
-        "수사·대응"
+        "사법·처분",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "gaps": [
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i1be66b15",
+      "title": "[속보]“용인 수능 시험장서 초소형카메라·이어폰 발견”",
+      "episode": "episode:125e5acef2c422",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
       "duplicate_candidates": 26,
       "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "i718b999d",
-      "title": "'리트 만점' 이진우, 심정지 상태... 서울 강동구 모텔서 발견",
-      "episode": "episode:fcb7420f382a81",
-      "quality": 0.92,
+      "id": "i942112c6",
+      "title": "사망한 채 발견된 ‘리트 만점자’ 이진우씨…현장서 5줄짜리 유서 발견 [세상&]",
+      "episode": "episode:2208a3b345ef94",
+      "quality": 1.0,
       "stages": [
         "일반 보도",
+        "사법·처분",
         "발단·의혹",
         "입장·공방",
         "파장·후속"
       ],
       "gaps": [
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i00cfeb99",
-      "title": "[속보] 대법, 한덕수 혐의 중 일부 무죄 취지로 파기환송",
-      "episode": "episode:42152ccbaf2d87",
-      "quality": 0.84,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
         "수사·대응"
       ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 19,
+      "duplicate_candidates": 28,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i24c135b3",
-      "title": "초소형카메라 나왔다…스마트폰 소지도 22명 적발",
-      "episode": "episode:13eeb0736b09a1",
-      "quality": 0.74,
+      "id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
+      "episode": "episode:cdf463069557a8",
+      "quality": 0.92,
       "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "icec66d18",
-      "title": "[속보] 한국 수출 ‘꿈의 1조달러’ 달성…세계 4번째",
-      "episode": "episode:4255f93c105a7e",
-      "quality": 0.84,
-      "stages": [
         "일반 보도",
         "파장·후속",
         "사법·처분"
       ],
       "gaps": [
-        "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
       "duplicate_candidates": 28,
-      "event_count": 13,
+      "event_count": 15,
       "evidence_rate": 1.0
     },
     {
-      "id": "i0d759aaa",
-      "title": "코스피, 앤트로픽 상장 앞두고 등락 끝에 1.4% 상승 마감(종합)",
-      "episode": "episode:dfa2e688791167",
+      "id": "i85f0537a",
+      "title": "리트 만점자 사망에 ‘공소권없음’ 수순…고발 변호사 “수사 종결 않기를”",
+      "episode": "episode:d5d6970ca60854",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "사법·처분",
+        "일반 보도",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 11,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i59cb690e",
+      "title": "수능날 울린 재난문자에 '딱 걸렸다'…\"부정행위 22명 적발\"",
+      "episode": "episode:233e12c36d31c6",
       "quality": 0.84,
       "stages": [
-        "사법·처분",
+        "일반 보도",
         "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib534cb35",
+      "title": "코스피, 앤트로픽 상장 앞두고 등락 끝에 1.4% 상승 마감",
+      "episode": "episode:f71904981a25b7",
+      "quality": 0.84,
+      "stages": [
+        "파장·후속",
+        "사법·처분",
         "일반 보도"
       ],
       "gaps": [
@@ -153,45 +152,46 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 25,
-      "event_count": 34,
+      "duplicate_candidates": 26,
+      "event_count": 38,
       "evidence_rate": 1.0
     },
     {
-      "id": "iec8fa401",
-      "title": "우크라, 크림대교 이틀만에 또 공격…이번엔 철도 교량 타격(종합)",
-      "episode": "episode:ae20ecc0f740aa",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i14bfd775",
-      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
-      "episode": "episode:5ea4792d055f60",
-      "quality": 0.84,
+      "id": "ie46ed317",
+      "title": "트럼프·시진핑, 에너지·무역은 손잡았지만...AI는 '온도차'",
+      "episode": "episode:117b05268d811e",
+      "quality": 1.0,
       "stages": [
         "일반 보도",
         "수사·대응",
+        "사법·처분",
+        "입장·공방",
         "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 23,
+      "event_count": 60,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i8a603907",
+      "title": "미중러 3자 회담 시작…시진핑이 주재",
+      "episode": "episode:dbe71813b3c142",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 6,
+      "duplicate_candidates": 24,
+      "event_count": 27,
       "evidence_rate": 1.0
     }
   ]
