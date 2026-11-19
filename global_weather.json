@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20T02:54:46.240575+09:00",
-  "alerts_count": 13,
+  "updated": "2026-11-20T03:16:31.682282+09:00",
+  "alerts_count": 11,
   "alerts": [
     {
       "id": "urn:oid:2.49.0.1.840.0.3aa8c270b338d09507cedda824892e95bebdb6cf.001.1",
@@ -33,22 +33,6 @@
       "headline_ko": "North Snowy Range Foothills Red Flag Warning",
       "headline_en": "North Snowy Range Foothills Red Flag Warning",
       "desc": "...RED FLAG WARNING IN EFFECT UNTIL 5 PM MST THIS AFTERNOON DUE TO\nWIND AND LOW RELATIVE HUMIDITY FOR NORTH SNOWY RANGE FOOTHILLS,\nSOUTHERN LARAMIE VALLEY, AND SOUTHERN LARAMIE RANGE...\n\nThe National Weather Service in Cheyenne WY has issued a Red Flag\nWarning.\n\n* AFFECTED AREA...Fire Weather Zones "
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.9d5ed48926403733a12dcc6f95a89c6fb26283b6.001.1",
-      "t": "2026-11-19 08:35",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Inner waters from Point Mugu to San Mateo Pt. CA including Santa Catalina and Anacapa Islands",
-      "area_en": "Inner waters from Point Mugu to San Mateo Pt. CA including Santa Catalina and Anacapa Islands",
-      "event": "Special Marine Warning",
-      "event_en": "Special Marine Warning",
-      "severity": "Severe",
-      "headline_ko": "Inner waters from Point Mugu to San Mateo Pt. CA including Santa Catalina and Anacapa Islands Special Marine Warning",
-      "headline_en": "Inner waters from Point Mugu to San Mateo Pt. CA including Santa Catalina and Anacapa Islands Special Marine Warning",
-      "desc": "SMWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Special Marine Warning for...\nInner waters from Point Mugu to San Mateo Pt. CA including Santa\nCatalina and Anacapa Islands...\n\n* Until 1000 AM PST.\n\n* At 835 AM PST, gusty showers capable of producing waterspouts were\nlocate"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.3630af10624b8577444db9d60f2d1bb2b08ec909.001.2",
@@ -97,22 +81,6 @@
       "headline_ko": "Ruby Mountains and East Humboldt Range 겨울 폭풍 경보",
       "headline_en": "Ruby Mountains and East Humboldt Range Winter Storm Warning",
       "desc": "* WHAT...Heavy snow expected. Total snow accumulations between 8 and\n18 inches. Winds gusting as high as 40 mph.\n\n* WHERE...Ruby Mountains and East Humboldt Range in Elko County.\n\n* WHEN...Until 4 PM PST Friday.\n\n* IMPACTS...Travel could be very difficult to impossible. The\nhazardous conditions will"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.1c3b00de9fbed4e01e768ab7362864b919e6e2ad.001.1",
-      "t": "2026-11-19 10:09",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Brevard",
-      "area_en": "Brevard",
-      "event": "홍수 경보",
-      "event_en": "Flash Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Brevard 홍수 경보",
-      "headline_en": "Brevard Flash Flood Warning",
-      "desc": "FFWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Flash Flood Warning for...\nNorthwestern Brevard County in east central Florida...\nEastern Volusia County in east central Florida...\n\n* Until 115 PM EST.\n\n* At 1009 AM EST, Doppler radar and automated rain gauges indicated\nheavy rain f"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.013a96340b75cfc869dacec3621c89556baf3c0d.001.1",
@@ -302,11 +270,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 17.0,
+      "temp": 17.4,
       "apparent_temp": 14.5,
-      "humidity": 35,
+      "humidity": 32,
       "code": 0,
-      "wind": 4.4
+      "wind": 5.7
     },
     {
       "id": "losangeles",
@@ -316,11 +284,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 15.3,
-      "apparent_temp": 14.6,
-      "humidity": 93,
-      "code": 3,
-      "wind": 14.0
+      "temp": 15.6,
+      "apparent_temp": 15.2,
+      "humidity": 91,
+      "code": 53,
+      "wind": 11.5
     },
     {
       "id": "london",
@@ -330,11 +298,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 9.5,
-      "apparent_temp": 8.0,
+      "temp": 9.3,
+      "apparent_temp": 7.7,
       "humidity": 84,
       "code": 3,
-      "wind": 4.7
+      "wind": 5.4
     },
     {
       "id": "paris",
@@ -344,11 +312,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 12.7,
-      "apparent_temp": 9.8,
+      "temp": 12.5,
+      "apparent_temp": 9.5,
       "humidity": 72,
       "code": 3,
-      "wind": 15.8
+      "wind": 16.3
     },
     {
       "id": "frankfurt",
@@ -358,9 +326,9 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 10.3,
+      "temp": 10.2,
       "apparent_temp": 7.0,
-      "humidity": 78,
+      "humidity": 80,
       "code": 61,
       "wind": 16.8
     },
@@ -372,11 +340,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 8.7,
-      "apparent_temp": 5.5,
+      "temp": 8.6,
+      "apparent_temp": 5.3,
       "humidity": 52,
       "code": 0,
-      "wind": 6.6
+      "wind": 7.2
     },
     {
       "id": "beijing",
@@ -386,11 +354,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 0.2,
-      "apparent_temp": -3.7,
-      "humidity": 42,
+      "temp": -0.3,
+      "apparent_temp": -4.2,
+      "humidity": 45,
       "code": 0,
-      "wind": 3.3
+      "wind": 4.1
     },
     {
       "id": "singapore",
@@ -400,11 +368,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 23.3,
+      "temp": 23.2,
       "apparent_temp": 28.1,
       "humidity": 100,
       "code": 80,
-      "wind": 5.7
+      "wind": 4.7
     },
     {
       "id": "sydney",
@@ -414,11 +382,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 19.0,
+      "temp": 18.8,
       "apparent_temp": 19.4,
-      "humidity": 84,
+      "humidity": 85,
       "code": 3,
-      "wind": 11.8
+      "wind": 10.5
     },
     {
       "id": "toronto",
@@ -429,10 +397,10 @@
       "lat": 43.6532,
       "lon": -79.3832,
       "temp": 14.9,
-      "apparent_temp": 12.1,
-      "humidity": 56,
+      "apparent_temp": 11.9,
+      "humidity": 55,
       "code": 1,
-      "wind": 12.6
+      "wind": 13.6
     },
     {
       "id": "dubai",
@@ -443,10 +411,10 @@
       "lat": 25.2048,
       "lon": 55.2708,
       "temp": 27.5,
-      "apparent_temp": 28.3,
-      "humidity": 46,
+      "apparent_temp": 28.5,
+      "humidity": 47,
       "code": 0,
-      "wind": 5.5
+      "wind": 4.5
     },
     {
       "id": "saopaulo",
@@ -456,11 +424,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 30.9,
-      "apparent_temp": 34.1,
-      "humidity": 48,
-      "code": 1,
-      "wind": 8.8
+      "temp": 30.5,
+      "apparent_temp": 33.0,
+      "humidity": 49,
+      "code": 51,
+      "wind": 9.2
     }
   ],
   "stories": []
