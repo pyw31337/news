@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T02:24:11+09:00",
+  "generated_at": "2026-11-20T01:32:09+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,249 +27,43 @@
   },
   "candidates": [
     {
-      "issue_id": "i19d6c604",
-      "title": "앤트로픽 IPO 대박…직원 400명 '1300억 부자'",
-      "category": "경제",
-      "rank": 9,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "코스피가 오르내림을 반복한 끝에 5100선에 올랐다.",
-        "비트코인(Bitcoin, BTC)이 6주 연속 내리막을 걷고 있지만 근본적 악화가 아니라 회복 사이클의 초입이라는...",
-        "비롯됐다며 앤트로픽 IPO도 유동성 부담 요인으로 꼽았다.",
-        "-그는 비트코인이 시장 사이클의 \"봄\" 단계에...",
-        "한 연구원은 \"상장 직후 단기 변동성은 있겠으나, 높은 주가와 밸류에이션을 유지할 가능성이 있는 만큼 앤트로픽 IPO가 냉각 상태에 있는 AI주 투자심리를 회복시켜줄 가능성을 열고 가야 한다\"고 밝혔다."
-      ],
-      "sources": [
-        {
-          "press": "coinreaders.com",
-          "title": "비트코인(BTC), 6주 연속 내림세인데...마크 유스코 \"지금은 회복 중\"",
-          "url": "http://coinreaders.com/271746"
-        },
-        {
-          "press": "startuptoday.co.kr",
-          "title": "[기획] 앤트로픽에 쏠린 1073억 달러…韓증시, 수급 불안 풀어낼까",
-          "url": "https://www.startuptoday.co.kr/news/articleView.html?idxno=819503"
-        },
-        {
-          "press": "coinreaders.com",
-          "title": "월가 투자은행 4곳 \"스페이스X(SPCX) 계속 산다\"...스타십 부스터 포획에...",
-          "url": "http://coinreaders.com/271731"
-        },
-        {
-          "press": "비즈워치",
-          "title": "코스피 등락 끝에 5100선 회복, 다음 변수는 앤트로픽 IPO",
-          "url": "https://n.news.naver.com/article/648/0000052800"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "코스피가 오르내림을 반복한 끝에 5100선에 올랐다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "한 연구원은 \"상장 직후 단기 변동성은 있겠으나, 높은 주가와 밸류에이션을 유지할 가능성이 있는 만큼 앤트로픽 IPO가 냉각 상태에 있는 AI주 투자심리를 회복시켜줄 가능성을 열고 가야 한다\"고 밝혔다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "비트코인(Bitcoin, BTC)이 6주 연속 내리막을 걷고 있지만 근본적 악화가 아니라 회복 사이클의 초입이라는..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i8bafdef8",
-      "title": "엄정 처벌 경고에도 부정행위 98명… 스마트안경·초소형 카메라도 덜미 [2027 수능]",
-      "category": "경제",
-      "rank": 10,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "2027학년도 대학수학능력시험(수능)에서 인공지능(AI) 스마트안경과 초소형 카메라 등 첨단기기를 활용한 부정행위가 잇따라 적발됐다.",
-        "엄정 처벌 경고에도 부정행위 98명… 스마트안경·초소형 카메라도 덜미 [2027 수능]",
-        "휴대전화를 신발에 숨기거나 소형 카메라·무선 이어폰을 소지하고, 스마트 안경을 사용한...",
-        "19일 교육부에 따르면 이날 수능에서 부정행위로 적발된 사례는 총 98건이다.",
-        "정부는 시험 전 스마트 기기를..."
-      ],
-      "sources": [
-        {
-          "press": "파이낸셜뉴스",
-          "title": "엄정 처벌 경고에도 부정행위 98명… 스마트안경·초소형 카메라도 덜미 [2027 수능]",
-          "url": "https://n.news.naver.com/article/014/0005607134"
-        },
-        {
-          "press": "kmib.co.kr",
-          "title": "재난문자 피하는 ‘탈옥’ 있었을 수도? 수능 부정행위 98건 적발",
-          "url": "https://n.news.naver.com/mnews/article/005/0001886330?sid=102"
-        },
-        {
-          "press": "kbs.co.kr",
-          "title": "“부정행위 엄단” 경고에도…스마트 안경·카메라 등 98명 적발",
-          "url": "https://n.news.naver.com/mnews/article/056/0012297707?sid=102"
-        },
-        {
-          "press": "TV조선",
-          "title": "수능 부정행위 98명 적발…초소형 카메라에 '신발 깔창 속 휴대폰'까지",
-          "url": "https://n.news.naver.com/article/448/0000652171"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "2027학년도 대학수학능력시험(수능)에서 인공지능(AI) 스마트안경과 초소형 카메라 등 첨단기기를 활용한 부정행위가 잇따라 적발됐다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "수능 부정행위자 98명 적발...입시업계 \"수학 영향력 커질 것\" - 머니투데이"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "엄정 처벌 경고에도 부정행위 98명… 스마트안경·초소형 카메라도 덜미 [2027 수능]"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ia129ec7a",
-      "title": "[미중러 정상회담] \"우리는 푸틴 친구 아냐\"…발끈한 유럽",
+      "issue_id": "if7bedce0",
+      "title": "[미중러 정상회담] 트럼프에게 \"내 친구\"로 불린 푸틴…종전협상 영향은",
       "category": "세계",
-      "rank": 8,
+      "rank": 6,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
         "미중러 회담 앞두고 미러 정상 40분 동안 약식회담 가져…러시아 측 \"우크라이나 문제 주요",
-        "푸틴 대통령은 도널드 트럼프 미국 대통령과 시진핑 중국 국가주석도 우크라이나 전쟁 종식이 전 세계의...",
-        "선전 정상회담은 푸틴 대통령이 꿈꾸는 얄타회담이 아니라면서 오히려 러시아가 실제 얄타가 있는 크림반도로...",
-        "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
-        "푸틴 보좌관, 보란 듯 '핵가방' 들고 이동…\"핵위력 과시\""
+        "SCMP는 트럼프 대통령이 조는 듯한 모습을 보이는 동안 블라디미르 푸틴 러시아 대통령은 회의에 시선을...",
+        "3자 정상회담 등 외교 일정을 소화했다.",
+        "한편 AP통신은 중국 방송이 트럼프 대통령의 졸린 듯한 모습을 내보낸...",
+        "‘상석’은 시진핑…미·중·러 첫 정상회담, 푸틴은 ‘오른쪽’ 트럼프는 ‘왼쪽’"
       ],
       "sources": [
         {
           "press": "seoul.co.kr",
-          "title": "푸틴 “얄타회담이 뭐가 나빴나”…우크라 점령지 ‘현실 인정’ 요구 ...",
-          "url": "https://n.news.naver.com/mnews/article/081/0003701317?sid=104"
-        },
-        {
-          "press": "한겨레",
-          "title": "‘지각 대장’ 푸틴 먼저 오고, 트럼프는 “내 친구들”…미·중·러 화기애애",
-          "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQRU1LTTVIX1FKTEZmVl9aazhOdXFsbGViZVNCZHJvV1dXLTVOVG5NN0J5SEZ4TzRJWVNwQnVvNVRDN0ctTXktZjF3dWFRUml0QlYzcV9sX2hqTkFGbUVLWnFsQ2xWU2dpWVlFMENBQ1JDV2d2QnVhdEpfSHUzWWpHSkF3?oc=5"
-        },
-        {
-          "press": "연합뉴스TV",
-          "title": "푸틴 보좌관, 보란 듯 '핵가방' 들고 이동…\"핵위력 과시\"",
-          "url": "https://n.news.naver.com/article/422/0000927883"
+          "title": "“전세계 웃음거리”…트럼프, 시진핑 연설 중 꾸벅? ‘졸음 논란’에 ...",
+          "url": "https://n.news.naver.com/mnews/article/081/0003701316?sid=104"
         },
         {
           "press": "헤럴드경제",
           "title": "‘상석’은 시진핑…미·중·러 첫 정상회담, 푸틴은 ‘오른쪽’ 트럼프는 ‘왼쪽’",
           "url": "https://v.daum.net/v/20261119221033613"
+        },
+        {
+          "press": "연합뉴스",
+          "title": "트럼프 \"핵위협 맞서야\"·시진핑 \"전면 폐기\"·푸틴 \"공동 책임\"",
+          "url": "https://www.yna.co.kr/view/AKR20261119172400009"
+        },
+        {
+          "press": "newsworks.co.kr",
+          "title": "미·중·러 첫 정상회담 \"핵 확산 방지 대화할 것\"…'평화선언' 발표",
+          "url": "https://www.newsworks.co.kr/news/articleView.html?idxno=903762"
         }
       ],
       "story_beats": [
@@ -286,7 +80,111 @@
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "블라디미르 푸틴 러시아 대통령도 평화와 안보 유지를 위한 3개 국가의 공동 책임을 강조했습니다."
+          "evidence": "3자 정상회담 등 외교 일정을 소화했다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "발단·의혹",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "iaadcca94",
+      "title": "푸틴, 미중러 회담 끝난 뒤 나홀로 기자회견…“얄타회담이 뭐가 나빴나”",
+      "category": "세계",
+      "rank": 9,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "푸틴 “얄타회담이 무슨 문제”… 3강 중심 ‘선전체제’ 가동하나",
+        "블라디미르 푸틴 러시아 대통령이 미중러 정상회담을 계기로 국제무대에 복귀하면서 우크라이나 종전협상에 어떤 영향을 미칠지 관심이 쏠린다.",
+        "19일(현지시간) 러시아 관영 타스통신 등 외신에 따르면 푸틴 대통령은...",
+        "도널드 트럼프 미국 대통령과 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령이 19일 중국 선전에서 사상 첫 미중러 3자 정상회담을 가졌으나, 이름에 걸맞은 성과 없이 막을 내렸다.",
+        "전 세계 핵무기의 90% 이상을..."
+      ],
+      "sources": [
+        {
+          "press": "국민일보",
+          "title": "푸틴 “얄타회담이 무슨 문제”… 3강 중심 ‘선전체제’ 가동하나",
+          "url": "https://v.daum.net/v/20261119235719686"
+        },
+        {
+          "press": "yna.co.kr",
+          "title": "[미중러 정상회담] 트럼프에게 \"내 친구\"로 불린 푸틴…종전협상 영향은",
+          "url": "https://n.news.naver.com/mnews/article/001/0016453351?sid=104"
+        },
+        {
+          "press": "hankookilbo.com",
+          "title": "'얄타 2.0'은 없었다…평화 선언 내놨지만 우크라이나·이란 언급 안 해",
+          "url": "https://n.news.naver.com/mnews/article/469/0000966685?sid=104"
+        },
+        {
+          "press": "KBS",
+          "title": "푸틴, 미중러 회담 끝난 뒤 나홀로 기자회견…“얄타회담이 뭐가 나빴나”",
+          "url": "https://v.daum.net/v/20261120001520157"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "푸틴 “얄타회담이 무슨 문제”… 3강 중심 ‘선전체제’ 가동하나"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "블라디미르 푸틴 러시아 대통령이 미중러 정상회담을 계기로 국제무대에 복귀하면서 우크라이나 종전협상에 어떤 영향을 미칠지 관심이 쏠린다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "19일(현지시간) 러시아 관영 타스통신 등 외신에 따르면 푸틴 대통령은..."
         },
         {
           "panel": 4,
@@ -330,9 +228,114 @@
         "sources": 4,
         "continuity_quality": 0.84,
         "continuity_gaps": [
+          "입장·공방",
+          "수사·대응",
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i6e58cbd0",
+      "title": "교육부 “재난문자 발송으로 스마트폰 소지 22명 적발”",
+      "category": "사회",
+      "rank": 7,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "2027학년도 대학수학능력시험 당일인 19일, 교육부는 시험 시작 10분 전 전국에 발송한 위급재난문자를 통해 시험장에 스마트폰을 반입한 수험생 22명을 적발했다.",
+        "재난문자 피하는 ‘탈옥’ 있었을 수도? 수능 부정행위 98건 적발",
+        "교육부 “재난문자 발송으로 스마트폰 소지 22명 적발”",
+        "20일 교육 당국에 따르면 수능이 치러진 전날 오전 8시 30분쯤 전남광주 구례군 한 시험장에서 1교시 시작을 앞두고 수험생 A(51·남) 씨의 가방 안에서 위급재난 문자 알림음이 울렸다.",
+        "A 씨는 스마트폰을 감독관에게..."
+      ],
+      "sources": [
+        {
+          "press": "국민일보",
+          "title": "재난문자 피하는 ‘탈옥’ 있었을 수도? 수능 부정행위 98건 적발",
+          "url": "https://n.news.naver.com/article/005/0001886330"
+        },
+        {
+          "press": "국민일보",
+          "title": "교육부 “재난문자 발송으로 스마트폰 소지 22명 적발”",
+          "url": "https://n.news.naver.com/article/005/0001886158"
+        },
+        {
+          "press": "munhwa.com",
+          "title": "‘수능도전’ 승려 출신 50대, 가방서 스마트폰 ‘삐’ 퇴실",
+          "url": "https://n.news.naver.com/mnews/article/021/0002834144?sid=102"
+        },
+        {
+          "press": "ytn.co.kr",
+          "title": "\"스마트기기 부정행위 98건\"...화장실에서 몰래 스마트폰까지",
+          "url": "https://n.news.naver.com/mnews/article/052/0002435388?sid=102"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "2027학년도 대학수학능력시험 당일인 19일, 교육부는 시험 시작 10분 전 전국에 발송한 위급재난문자를 통해 시험장에 스마트폰을 반입한 수험생 22명을 적발했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "\"차단 못 한다더니...수능 재난문자 안 울렸다\" 미수신 원인은? - 머니투데이"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "재난문자 피하는 ‘탈옥’ 있었을 수도? 수능 부정행위 98건 적발"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "실제 시험 당일 재난문자를 통해 22명의 스마트폰 소지자가 적발되면서, 사전 예고에도 불구하고 부정행위를 시도한 수험생들에 대한 비판과 정부 대책의 효과성에 대한 평가가 이어졌다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
-          "수사·대응"
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
