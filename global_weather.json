@@ -1,39 +1,7 @@
 {
-  "updated": "2026-11-19T15:51:36.371414+09:00",
-  "alerts_count": 9,
+  "updated": "2026-11-19T13:48:37.249450+09:00",
+  "alerts_count": 7,
   "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.970ae3c2a2ee7809c6cb6bee6106236bfdf9c6e8.001.1",
-      "t": "2026-11-18 22:43",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "San Luis Obispo",
-      "area_en": "San Luis Obispo",
-      "event": "홍수 경보",
-      "event_en": "Flash Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "San Luis Obispo 홍수 경보",
-      "headline_en": "San Luis Obispo Flash Flood Warning",
-      "desc": "FFWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Flash Flood Warning for...\nCentral San Luis Obispo County in southwestern California...\n\n* Until 1245 AM PST.\n\n* At 1043 PM PST, Doppler radar and automated rain gauges indicated\nheavy rain falling across the warned area. Bet"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.7ecd4acdb39d520ece6282cd21ce8b81ad9413f6.001.1",
-      "t": "2026-11-18 21:58",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Santa Lucia Mountains and Los Padres National Forest",
-      "area_en": "Santa Lucia Mountains and Los Padres National Forest",
-      "event": "홍수 주의보",
-      "event_en": "Flash Flood Watch",
-      "severity": "Severe",
-      "headline_ko": "Santa Lucia Mountains and Los Padres National Forest 홍수 주의보",
-      "headline_en": "Santa Lucia Mountains and Los Padres National Forest Flash Flood Watch",
-      "desc": "Between 3 to 6 inches of rain have fallen across the Santa Lucia\nRange impacting the Timber and Plaskett Fire Burn Scars over the last\n24 hours. Expect additional rounds of scattered moderate to heavy\nrain impacting the Central Coast and Napa County through Thursday\nevening.\n\n* WHAT...Flash flooding"
-    },
     {
       "id": "urn:oid:2.49.0.1.840.0.401892b377f74317910c079f073a5d266dec60f2.005.1",
       "t": "2026-11-18 15:48",
@@ -149,14 +117,6 @@
   ],
   "quakes": [
     {
-      "id": "us6000uby4",
-      "mag": 4.8,
-      "place": "23 km SSE of Guayaquil, Ecuador",
-      "t": "2026-11-19 05:49",
-      "depth": 69.493,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uby4"
-    },
-    {
       "id": "us6000ubxg",
       "mag": 4.9,
       "place": "36 km NNE of Kilimatinde, Tanzania",
@@ -227,6 +187,14 @@
       "t": "2026-11-18 18:08",
       "depth": 10,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tz2w"
+    },
+    {
+      "id": "us7000tz1n",
+      "mag": 5.3,
+      "place": "4 km NNW of Tsunagi, Japan",
+      "t": "2026-11-18 17:22",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tz1n"
     }
   ],
   "cities": [
@@ -238,11 +206,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 6.4,
-      "apparent_temp": 2.9,
-      "humidity": 61,
+      "temp": 7.9,
+      "apparent_temp": 4.8,
+      "humidity": 59,
       "code": 0,
-      "wind": 8.5
+      "wind": 7.3
     },
     {
       "id": "losangeles",
@@ -252,11 +220,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 16.4,
-      "apparent_temp": 16.6,
-      "humidity": 75,
+      "temp": 16.3,
+      "apparent_temp": 15.6,
+      "humidity": 65,
       "code": 3,
-      "wind": 3.1
+      "wind": 4.0
     },
     {
       "id": "london",
@@ -266,11 +234,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 7.6,
-      "apparent_temp": 6.0,
-      "humidity": 92,
+      "temp": 8.6,
+      "apparent_temp": 6.7,
+      "humidity": 93,
       "code": 2,
-      "wind": 6.1
+      "wind": 8.6
     },
     {
       "id": "paris",
@@ -280,11 +248,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 10.7,
-      "apparent_temp": 7.6,
-      "humidity": 77,
-      "code": 2,
-      "wind": 15.3
+      "temp": 11.7,
+      "apparent_temp": 8.5,
+      "humidity": 74,
+      "code": 3,
+      "wind": 17.1
     },
     {
       "id": "frankfurt",
@@ -294,11 +262,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 10.1,
-      "apparent_temp": 8.1,
-      "humidity": 86,
-      "code": 3,
-      "wind": 10.2
+      "temp": 9.3,
+      "apparent_temp": 7.7,
+      "humidity": 89,
+      "code": 61,
+      "wind": 6.8
     },
     {
       "id": "tokyo",
@@ -308,11 +276,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 15.8,
-      "apparent_temp": 12.2,
+      "temp": 18.5,
+      "apparent_temp": 15.5,
       "humidity": 37,
       "code": 0,
-      "wind": 11.2
+      "wind": 10.1
     },
     {
       "id": "beijing",
@@ -322,11 +290,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 5.1,
-      "apparent_temp": -1.5,
-      "humidity": 24,
+      "temp": 5.7,
+      "apparent_temp": -1.1,
+      "humidity": 25,
       "code": 1,
-      "wind": 20.9
+      "wind": 22.7
     },
     {
       "id": "singapore",
@@ -336,11 +304,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 30.6,
-      "apparent_temp": 36.4,
-      "humidity": 66,
+      "temp": 29.3,
+      "apparent_temp": 34.4,
+      "humidity": 70,
       "code": 3,
-      "wind": 5.9
+      "wind": 3.5
     },
     {
       "id": "sydney",
@@ -350,11 +318,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 22.8,
-      "apparent_temp": 21.7,
-      "humidity": 67,
-      "code": 3,
-      "wind": 22.3
+      "temp": 23.7,
+      "apparent_temp": 23.1,
+      "humidity": 62,
+      "code": 2,
+      "wind": 23.4
     },
     {
       "id": "toronto",
@@ -364,11 +332,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 3.9,
-      "apparent_temp": 0.9,
-      "humidity": 77,
+      "temp": 5.1,
+      "apparent_temp": 2.1,
+      "humidity": 83,
       "code": 3,
-      "wind": 6.4
+      "wind": 8.9
     },
     {
       "id": "dubai",
@@ -378,11 +346,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 27.8,
-      "apparent_temp": 30.9,
-      "humidity": 58,
+      "temp": 25.8,
+      "apparent_temp": 29.0,
+      "humidity": 69,
       "code": 0,
-      "wind": 3.6
+      "wind": 4.0
     },
     {
       "id": "saopaulo",
@@ -392,11 +360,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 19.0,
-      "apparent_temp": 22.0,
-      "humidity": 99,
-      "code": 2,
-      "wind": 2.3
+      "temp": 19.7,
+      "apparent_temp": 22.8,
+      "humidity": 97,
+      "code": 0,
+      "wind": 3.0
     }
   ],
   "stories": []
