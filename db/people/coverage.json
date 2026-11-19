@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-19T11:21:48+09:00",
+ "updated": "2026-11-19T11:55:00+09:00",
  "policy": "Counts distinguish roster entries, structured profiles, source-URL-backed timelines, and verified portraits. Portraits require a stable Wikidata or official ID plus a recorded source and license.",
  "goals": {
   "tier_1_complete_profiles": 30000,
@@ -123,18 +123,18 @@
  "journalists": {
   "today_profiles": 20,
   "today_verified_profile_photos": 16,
-  "cumulative_affiliation_records": 341
+  "cumulative_affiliation_records": 348
  },
  "portraits": {
-  "verified_wikimedia_or_official": 1713,
-  "pending_or_not_available": 361
+  "verified_wikimedia_or_official": 1720,
+  "pending_or_not_available": 366
  },
  "wikidata_facts": {
-  "source_linked_profiles": 1822,
+  "source_linked_profiles": 1840,
   "pending_or_not_available": 0
  },
  "next_queue": {
-  "count": 47,
+  "count": 35,
   "policy": "Tier-1, non-minor, stable Wikidata ID only"
  }
 }

@@ -1,7 +1,23 @@
 {
-  "updated": "2026-11-19T11:18:37.462527+09:00",
+  "updated": "2026-11-19T11:51:17.936871+09:00",
   "alerts_count": 9,
   "alerts": [
+    {
+      "id": "urn:oid:2.49.0.1.840.0.ad5d91a22506093bf8bf1b03398d08d7f0752be6.001.1",
+      "t": "2026-11-18 21:28",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Volusia-Brevard County Line to Sebastian Inlet 0-20 nm",
+      "area_en": "Volusia-Brevard County Line to Sebastian Inlet 0-20 nm",
+      "event": "Special Marine Warning",
+      "event_en": "Special Marine Warning",
+      "severity": "Severe",
+      "headline_ko": "Volusia-Brevard County Line to Sebastian Inlet 0-20 nm Special Marine Warning",
+      "headline_en": "Volusia-Brevard County Line to Sebastian Inlet 0-20 nm Special Marine Warning",
+      "desc": "SMWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Special Marine Warning for...\nVolusia-Brevard County Line to Sebastian Inlet 0-20 nm...\nSebastian Inlet to Jupiter Inlet 0-20 nm...\nVolusia-Brevard County Line to Sebastian Inlet 20-60 nm...\nSebastian Inlet to Jupiter Inlet 20-60 nm.."
+    },
     {
       "id": "urn:oid:2.49.0.1.840.0.e313d09d13b7cf56b4d936b310f370a2afb63d83.001.1",
       "t": "2026-11-18 20:19",
@@ -17,22 +33,6 @@
       "headline_ko": "Palm Beach 홍수 경보",
       "headline_en": "Palm Beach Flash Flood Warning",
       "desc": "FFWMFL\n\nThe National Weather Service in Miami has issued a\n\n* Flash Flood Warning for...\nEast Central Palm Beach County in southeastern Florida...\n\n* Until 1015 PM EST.\n\n* At 819 PM EST, Doppler radar indicated thunderstorms producing\nheavy rain across the warned area. Between 2 and 4 inches of rain"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.6a28df71222d185d1d0608c6e827a05e2b216183.001.1",
-      "t": "2026-11-18 20:02",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Volusia-Brevard County Line to Sebastian Inlet 20-60 nm",
-      "area_en": "Volusia-Brevard County Line to Sebastian Inlet 20-60 nm",
-      "event": "Special Marine Warning",
-      "event_en": "Special Marine Warning",
-      "severity": "Severe",
-      "headline_ko": "Volusia-Brevard County Line to Sebastian Inlet 20-60 nm Special Marine Warning",
-      "headline_en": "Volusia-Brevard County Line to Sebastian Inlet 20-60 nm Special Marine Warning",
-      "desc": "SMWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Special Marine Warning for...\nVolusia-Brevard County Line to Sebastian Inlet 20-60 nm...\nSebastian Inlet to Jupiter Inlet 20-60 nm...\n\n* Until 930 PM EST.\n\n* At 802 PM EST, a strong thunderstorm was located 50 NM east of\nIndian River "
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.401892b377f74317910c079f073a5d266dec60f2.005.1",
@@ -149,6 +149,14 @@
   ],
   "quakes": [
     {
+      "id": "us6000ubxg",
+      "mag": 4.9,
+      "place": "36 km NNE of Kilimatinde, Tanzania",
+      "t": "2026-11-19 02:11",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ubxg"
+    },
+    {
       "id": "us6000ubxb",
       "mag": 5.2,
       "place": "141 km W of Teluk Dalam, Indonesia",
@@ -219,14 +227,6 @@
       "t": "2026-11-18 17:22",
       "depth": 10,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tz1n"
-    },
-    {
-      "id": "us7000tz1a",
-      "mag": 5.3,
-      "place": "149 km SSW of Merizo Village, Guam",
-      "t": "2026-11-18 16:06",
-      "depth": 10,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tz1a"
     }
   ],
   "cities": [
@@ -238,11 +238,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 9.5,
-      "apparent_temp": 6.4,
-      "humidity": 53,
+      "temp": 9.3,
+      "apparent_temp": 6.1,
+      "humidity": 54,
       "code": 0,
-      "wind": 7.2
+      "wind": 7.8
     },
     {
       "id": "losangeles",
@@ -252,11 +252,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 15.5,
-      "apparent_temp": 14.0,
+      "temp": 16.1,
+      "apparent_temp": 14.7,
       "humidity": 59,
       "code": 3,
-      "wind": 6.2
+      "wind": 5.9
     },
     {
       "id": "london",
@@ -266,11 +266,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 9.0,
-      "apparent_temp": 7.3,
-      "humidity": 95,
-      "code": 3,
-      "wind": 8.6
+      "temp": 9.2,
+      "apparent_temp": 7.6,
+      "humidity": 94,
+      "code": 2,
+      "wind": 7.6
     },
     {
       "id": "paris",
@@ -280,9 +280,9 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 11.9,
-      "apparent_temp": 8.9,
-      "humidity": 80,
+      "temp": 12.1,
+      "apparent_temp": 9.2,
+      "humidity": 79,
       "code": 3,
       "wind": 17.6
     },
@@ -294,11 +294,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 8.7,
+      "temp": 8.6,
       "apparent_temp": 7.1,
-      "humidity": 91,
+      "humidity": 92,
       "code": 61,
-      "wind": 6.0
+      "wind": 5.3
     },
     {
       "id": "tokyo",
@@ -308,11 +308,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 18.1,
-      "apparent_temp": 15.5,
-      "humidity": 39,
+      "temp": 18.5,
+      "apparent_temp": 15.9,
+      "humidity": 38,
       "code": 0,
-      "wind": 9.2
+      "wind": 8.9
     },
     {
       "id": "beijing",
@@ -322,11 +322,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 4.6,
-      "apparent_temp": -1.5,
-      "humidity": 30,
-      "code": 0,
-      "wind": 18.5
+      "temp": 4.9,
+      "apparent_temp": -1.4,
+      "humidity": 28,
+      "code": 1,
+      "wind": 19.7
     },
     {
       "id": "singapore",
@@ -336,11 +336,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 26.5,
-      "apparent_temp": 32.5,
-      "humidity": 91,
+      "temp": 26.8,
+      "apparent_temp": 32.8,
+      "humidity": 89,
       "code": 3,
-      "wind": 3.9
+      "wind": 4.5
     },
     {
       "id": "sydney",
@@ -350,11 +350,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 23.7,
-      "apparent_temp": 24.7,
-      "humidity": 63,
+      "temp": 23.9,
+      "apparent_temp": 24.8,
+      "humidity": 61,
       "code": 1,
-      "wind": 22.0
+      "wind": 21.9
     },
     {
       "id": "toronto",
@@ -364,11 +364,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 7.2,
-      "apparent_temp": 4.3,
+      "temp": 6.3,
+      "apparent_temp": 3.4,
       "humidity": 83,
-      "code": 2,
-      "wind": 11.2
+      "code": 0,
+      "wind": 9.5
     },
     {
       "id": "dubai",
@@ -378,11 +378,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 24.9,
-      "apparent_temp": 28.4,
-      "humidity": 76,
+      "temp": 24.7,
+      "apparent_temp": 28.2,
+      "humidity": 78,
       "code": 0,
-      "wind": 4.1
+      "wind": 4.6
     },
     {
       "id": "saopaulo",
@@ -392,11 +392,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 20.7,
-      "apparent_temp": 24.2,
+      "temp": 20.5,
+      "apparent_temp": 23.5,
       "humidity": 98,
       "code": 1,
-      "wind": 3.3
+      "wind": 5.5
     }
   ],
   "stories": []
