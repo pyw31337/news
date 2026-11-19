@@ -1,33 +1,88 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 05:57:10",
+  "updated_at": "2026-11-19 06:24:31",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.86,
+  "average_quality": 0.87,
   "issues": [
     {
-      "id": "i03e55aaa",
-      "title": "[속보]'리트 만점' 이진우, 천호역 인근 숙박업소서 심정지 상태 발견",
-      "episode": "episode:3a371da2ce3356",
-      "quality": 1.0,
+      "id": "i8638681a",
+      "title": "[속보] ‘리트 만점’ 이진우, 천호역 인근서 심정지 상태로 발견",
+      "episode": "episode:0502a513adde67",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
-        "파장·후속",
         "발단·의혹",
-        "사법·처분",
-        "수사·대응"
+        "파장·후속",
+        "사법·처분"
       ],
       "gaps": [
-        "입장·공방"
+        "입장·공방",
+        "수사·대응"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 8,
+      "duplicate_candidates": 28,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6e58cbd0",
-      "title": "교육부 “재난문자 발송으로 스마트폰 소지 22명 적발”",
-      "episode": "episode:f403f1bf3f5cc0",
+      "id": "ie50fe4a7",
+      "title": "리트 만점자 천호동 모텔에서 발견",
+      "episode": "episode:3bee300f637351",
+      "quality": 1.0,
+      "stages": [
+        "파장·후속",
+        "발단·의혹",
+        "일반 보도",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i12ff3e46",
+      "title": "“용인 수능 고사장서 초소형 카메라·이어폰 발견”",
+      "episode": "episode:8c99b8df7ed5ac",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iea0c2c6a",
+      "title": "[속보] '리트 만점자', 서울 강동구 모텔서 심정지 상태로 발견",
+      "episode": "episode:af5f6800fdce5a",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "발단·의혹",
+        "파장·후속",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 24,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i21db63ef",
+      "title": "수능 ‘위급재난문자’ 쐈더니…스마트폰 22대 적발",
+      "episode": "episode:45944eaaf790f1",
       "quality": 0.66,
       "stages": [
         "일반 보도",
@@ -43,152 +98,96 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "iff949897",
-      "title": "[속보] 교육차관 \"위급재난문자 발송으로 부정행위 22명 적발\"",
-      "episode": "episode:d845f373488dbb",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ifdfc2a60",
-      "title": "[속보] 경찰, 행방불명 ‘리트 만점자’ 광진→송파→강동 추적중",
-      "episode": "episode:fadb656f9f27cc",
+      "id": "i6b114507",
+      "title": "[속보] 한 총리, '지난해 수능 시험지 보관' 긴급 지시",
+      "episode": "episode:1172e613ffebce",
       "quality": 0.92,
       "stages": [
         "수사·대응",
+        "파장·후속",
         "일반 보도",
-        "발단·의혹",
-        "입장·공방"
+        "발단·의혹"
       ],
       "gaps": [
-        "사법·처분",
-        "파장·후속"
+        "입장·공방",
+        "사법·처분"
       ],
       "duplicate_candidates": 27,
       "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i50c43501",
-      "title": "이 대통령, 조작기소 특검법 재가…공포 즉시 시행",
-      "episode": "episode:8cce17aed8c04e",
-      "quality": 0.92,
+      "id": "ic964dbb1",
+      "title": "돼지털 팔던 나라서 반도체 강국으로…1조 달러 시대 연 한국 수출 80년",
+      "episode": "episode:0c30bcd0732dc9",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
-        "수사·대응",
-        "사법·처분",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic183d373",
+      "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
+      "episode": "episode:aa80c9277f0474",
+      "quality": 0.92,
+      "stages": [
+        "파장·후속",
+        "사법·처분",
+        "발단·의혹",
         "입장·공방"
+      ],
+      "gaps": [
+        "수사·대응"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icdebf349",
+      "title": "트럼프 \"AI 규제 용납 못 해\"…시진핑에는 \"놀라운 지도자\"",
+      "episode": "episode:4b60d39dae3e2b",
+      "quality": 0.92,
+      "stages": [
+        "입장·공방",
+        "파장·후속",
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응"
       ],
       "duplicate_candidates": 30,
       "event_count": 26,
       "evidence_rate": 1.0
     },
     {
-      "id": "icc60d30e",
-      "title": "[속보]리트 만점자, 서울 강동구서 심정지 상태로 발견",
-      "episode": "episode:0ed0556dea3e3c",
-      "quality": 0.92,
+      "id": "iaecb316a",
+      "title": "\"다카이치, 푸틴과 직접 대화로 돌파구 모색…관계 개선까진 험로\"",
+      "episode": "episode:092add41a7798b",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
-        "발단·의혹",
-        "사법·처분",
-        "수사·대응"
-      ],
-      "gaps": [
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i169f43a0",
-      "title": "[속보] 韓총리, ‘지난해 수능 시험지 보관’ 긴급 지시",
-      "episode": "episode:569f7aea1dc45b",
-      "quality": 0.68,
-      "stages": [
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7cc46716",
-      "title": "교육부 \"2차 위급 재난문자, 오후 2시 21분 발송… 3교시 종료 직후\"",
-      "episode": "episode:3ad5a3871be68f",
-      "quality": 0.76,
-      "stages": [
-        "수사·대응",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i4b7b1fdd",
-      "title": "경찰 “리트 만점자 수능시험지, 교육청에 증거보전 요청”",
-      "episode": "episode:ff9c33d0298eb3",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
         "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i06bc18ee",
-      "title": "박지윤, 상간 소송 심경 밝혔다 “성소수자와 부정행위? 최동석 언플에 지쳐가”",
-      "episode": "episode:ca3d5b44e2bcc3",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
-        "파장·후속",
-        "수사·대응",
-        "발단·의혹",
-        "일반 보도"
-      ],
       "gaps": [
-        "입장·공방"
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
       ],
-      "duplicate_candidates": 20,
-      "event_count": 9,
+      "duplicate_candidates": 22,
+      "event_count": 10,
       "evidence_rate": 1.0
     }
   ]
