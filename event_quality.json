@@ -1,28 +1,10 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 01:45:29",
+  "updated_at": "2026-11-19 02:21:50",
   "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.81,
+  "average_quality": 0.85,
   "issues": [
-    {
-      "id": "ifef07c8d",
-      "title": "[속보] 리트 만점자, 공개검증 약속시간 도착안해…\"폰 꺼져있어\"",
-      "episode": "episode:6ecbb1aba1844e",
-      "quality": 0.66,
-      "stages": [
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "gaps": [
-        "입장·공방",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
     {
       "id": "i4638b995",
       "title": "[속보] 이 대통령, 조작 기소 특검법 공포안 재가...특검 임명만 남아",
@@ -33,40 +15,21 @@
         "입장·공방",
         "수사·대응",
         "사법·처분",
-        "파장·후속"
-      ],
-      "gaps": [
+        "파장·후속",
         "발단·의혹"
       ],
-      "duplicate_candidates": 64,
-      "event_count": 130,
+      "gaps": [],
+      "duplicate_candidates": 59,
+      "event_count": 129,
       "evidence_rate": 1.0
     },
     {
-      "id": "i1feff74d",
-      "title": "'리트 만점' 이진우, 연락 끊고 잠수...\"잘 있는지 확인해달라\"",
-      "episode": "episode:a5105f2fcdaeb1",
-      "quality": 0.92,
+      "id": "ib1bbf48b",
+      "title": "[속보] '공개 검증 불참' 리트 만점자 행방불명…광진구 일대 수색",
+      "episode": "episode:b4e7a7c0e9900f",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1240455e",
-      "title": "[속보] 리트 만점자, 수능 국어 공개검증 불참…연락두절",
-      "episode": "episode:110e93ce8b11d5",
-      "quality": 0.66,
-      "stages": [
         "발단·의혹",
         "수사·대응"
       ],
@@ -76,51 +39,50 @@
         "파장·후속"
       ],
       "duplicate_candidates": 33,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3d51a623",
-      "title": "당국 “리트 만점자, 신변우려 신고 접수…주거지에 없어”",
-      "episode": "episode:28bf1a8d644626",
-      "quality": 0.92,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 26,
       "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "id60b45ca",
-      "title": "\"최민희 징계 반대\" 정청래 참전에 '폭풍전야'",
-      "episode": "episode:c6dfc97808fa9e",
+      "id": "i8a59f703",
+      "title": "'리트 만점' 이진우, 공개 검증장 안 왔다... 연락두절",
+      "episode": "episode:aa1445436a6dfb",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i539a47eb",
+      "title": "[속보] 경찰, 리트만점자 이진우 수사 착수…수능 시험지 증거보전 요청",
+      "episode": "episode:724d87a7db2923",
       "quality": 1.0,
       "stages": [
+        "수사·대응",
+        "사법·처분",
         "파장·후속",
         "일반 보도",
-        "수사·대응",
-        "발단·의혹",
-        "사법·처분"
+        "발단·의혹"
       ],
       "gaps": [
         "입장·공방"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 12,
+      "duplicate_candidates": 31,
+      "event_count": 46,
       "evidence_rate": 1.0
     },
     {
       "id": "i06bc18ee",
       "title": "박지윤, 상간 소송 심경 밝혔다 “성소수자와 부정행위? 최동석 언플에 지쳐가”",
-      "episode": "episode:70e53ae7664337",
+      "episode": "episode:b5d928d511e446",
       "quality": 0.76,
       "stages": [
         "사법·처분",
@@ -136,9 +98,47 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "ieaa8a23b",
-      "title": "승리, 임신한 20대 아내와 공항 포착…얼굴 가리는 아내",
-      "episode": "episode:9a023f65985e69",
+      "id": "i4cd3a560",
+      "title": "[속보]잠적한 '리트 만점자' 이진우, '서울대 치대 합격' 수능 시험지 폐기될 수도",
+      "episode": "episode:51eda3a50e50d8",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "gaps": [
+        "입장·공방",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 39,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5918d9a1",
+      "title": "與 \"수능 끝나도 AI 서비스 기록 확인…부정행위 발본색원\"",
+      "episode": "episode:7f01c444511d74",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 35,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i457932fd",
+      "title": "승리, 만삭 20대 아내와 동반 입국…D라인 포착",
+      "episode": "episode:8d552bd48004a5",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -149,31 +149,14 @@
         "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 26,
+      "duplicate_candidates": 25,
       "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "i048093dd",
-      "title": "인천문예회관, 수험생 대상 공연 50% 할인…연말 문화공연 마련",
-      "episode": "episode:0cfaf3dd26be8f",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i281a4791",
-      "title": "[수능]\"오늘은 너희의 날이야\"…수능 한파도 녹인 뜨거운 응원(종합)",
-      "episode": "episode:8fd9322be9f765",
+      "id": "i4414713c",
+      "title": "\"수험표만 가지고 오세요\"…인천문화예술회관 50% 할인[2027 수능]",
+      "episode": "episode:6bfdef71f7b7eb",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -185,7 +168,26 @@
         "수사·대응"
       ],
       "duplicate_candidates": 24,
-      "event_count": 4,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i68cbc499",
+      "title": "연준 '빅스텝' 경고, 오천피 하루만에 내주나",
+      "episode": "episode:c155e92cf925dc",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "파장·후속",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 9,
       "evidence_rate": 1.0
     }
   ]
