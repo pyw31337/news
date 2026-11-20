@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T11:47:32+09:00",
+  "generated_at": "2026-11-20T12:22:15+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,50 +27,153 @@
   },
   "candidates": [
     {
-      "issue_id": "ib3f229a9",
-      "title": "\"코스피 9000에서 5000으로\"…개미들 손실 563조원 추정",
+      "issue_id": "i051bf05b",
+      "title": "'SM 주가조작' 혐의 카카오 김범수 2심도 무죄",
       "category": "경제",
-      "rank": 2,
+      "rank": 4,
       "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
-        "2026년 11월 20일 코스피 지수가 4%대 급락하며 4900선 아래로 밀려났다.",
-        "\"코스피 9000에서 5000으로\"…개미들 손실 563조원 추정",
-        "“반도체주 손절? 후회할 수도”…삼전닉스에 무슨 일이",
-        "삼전닉스 4~5%대 급락…코스피 5000선 깨진 채 출발[이런국장 저런주식]",
-        "[속보]코스피, 장중 낙폭 5% 가까이 확대…4900선도 내줘"
+        "SM엔터테인먼트 인수 과정에서 시세를 조종한 혐의로 기소된 김범수 카카오 미래이니셔티브센터장이 1심에 이어 항소심에서도 무죄를 선고받았습니다.",
+        "SM 시세조종 혐의 카카오 김범수 2심 무죄…\"회사 성장 힘 보탤 것\"",
+        "[속보] ‘SM 주가조작’ 카카오 김범수 창업자, 2심도 무죄",
+        "카카오 창업자 김범수 미래이니셔티브센터장 SM엔터테인먼트(SM엔터) 인수 과정에서 시세를 조종한 혐의로 기소된 카카오 창업자 김범수 미래이니셔티브센터장이 항소심에서도 무죄를 선고받았다.",
+        "법원은 주식 매수가..."
       ],
       "sources": [
         {
-          "press": "파이낸셜뉴스",
-          "title": "\"코스피 9000에서 5000으로\"…개미들 손실 563조원 추정",
-          "url": "https://n.news.naver.com/article/014/0005607174"
+          "press": "블로터",
+          "title": "SM 시세조종 혐의 카카오 김범수 2심 무죄…\"회사 성장 힘 보탤 것\"",
+          "url": "https://n.news.naver.com/article/293/0000093591"
         },
         {
-          "press": "전자신문",
-          "title": "“반도체주 손절? 후회할 수도”…삼전닉스에 무슨 일이",
-          "url": "https://n.news.naver.com/article/030/0003487899"
+          "press": "세계일보",
+          "title": "[속보] ‘SM 주가조작’ 카카오 김범수 창업자, 2심도 무죄",
+          "url": "https://n.news.naver.com/article/022/0004176761"
         },
         {
-          "press": "서울경제",
-          "title": "삼전닉스 4~5%대 급락…코스피 5000선 깨진 채 출발[이런국장 저런주식]",
-          "url": "https://n.news.naver.com/article/011/0004684275"
+          "press": "newsfc.co.kr",
+          "title": "김범수 'SM엔터 주가조작' 2심도 무죄…\"시세조종 입증 안돼\"",
+          "url": "http://www.newsfc.co.kr/news/articleView.html?idxno=82620"
         },
         {
-          "press": "뉴시스",
-          "title": "[속보]코스피, 장중 낙폭 5% 가까이 확대…4900선도 내줘",
-          "url": "https://n.news.naver.com/article/003/0014334943"
+          "press": "매경이코노미",
+          "title": "[속보] ‘SM 주가조작’ 혐의 카카오 김범수 2심도 무죄",
+          "url": "https://n.news.naver.com/article/024/0000109764"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "2026년 11월 20일 코스피 지수가 4%대 급락하며 4900선 아래로 밀려났다."
+          "evidence": "SM엔터테인먼트 인수 과정에서 시세를 조종한 혐의로 기소된 김범수 카카오 미래이니셔티브센터장이 1심에 이어 항소심에서도 무죄를 선고받았습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "내년 2월 AI 사업과 계열사 투자·육성 부문을 분리하는..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "SM 시세조종 혐의 카카오 김범수 2심 무죄…\"회사 성장 힘 보탤 것\""
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "항소심에서도 무죄가 선고되면서 카카오 경영진은 사법 리스크를 덜고 미래 사업에 집중하겠다는 공식 입장을 표명했습니다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "파장·후속"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i67846e46",
+      "title": "[속보] 코스피 4% 급락·5천선 무너진채 출발",
+      "category": "경제",
+      "rank": 5,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "코스피 4% 급락·4928 출발",
+        "코스피 5000선 붕괴...기술주 자금 블랙홀 '앤트로픽' 영향",
+        "코스피, 4.08% 내린 4,928.51에 출발…코스닥도 3.48% 하락",
+        "앤트로픽, ‘역대 최대 IPO’로 143조원 조달… 순환금융 우려 속 수익성 시험대",
+        "코스피 3% 하락 출발…‘앤트로픽 IPO 흥행’에도 기술주 전반 부진"
+      ],
+      "sources": [
+        {
+          "press": "머니투데이",
+          "title": "코스피 5000선 붕괴...기술주 자금 블랙홀 '앤트로픽' 영향",
+          "url": "https://n.news.naver.com/article/008/0005443999"
+        },
+        {
+          "press": "연합뉴스TV",
+          "title": "코스피, 4.08% 내린 4,928.51에 출발…코스닥도 3.48% 하락",
+          "url": "https://n.news.naver.com/article/422/0000928079"
+        },
+        {
+          "press": "조선비즈",
+          "title": "앤트로픽, ‘역대 최대 IPO’로 143조원 조달… 순환금융 우려 속 수익성 시험대",
+          "url": "https://v.daum.net/v/20261120120828595"
+        },
+        {
+          "press": "한겨레",
+          "title": "코스피 3% 하락 출발…‘앤트로픽 IPO 흥행’에도 기술주 전반 부진",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBONHl6UTRENzd3Sm1fSk5rRE1qZEFZRkl1bmtUUU9ZZUgxcnhkeTVWWkF2YlNsc2ZuMTdHbmlUVlh4Qm5zMjBRYnRmNURqbTE3aFM2SnhERDQyckdka0tBTkRmM1JwR00?oc=5"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "코스피 4% 급락·4928 출발"
         },
         {
           "panel": 2,
@@ -80,217 +183,7 @@
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "\"코스피 9000에서 5000으로\"…개미들 손실 563조원 추정"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "앤트로픽 상장 등 대외 악재가 겹치며 낙폭이 4%대로 확대되어 4900선마저 붕괴되었다. 증시 급락에 따른 개인 투자자들의 대규모 손실 우려가 부각되는 시점이다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i0e1f5a73",
-      "title": "[속보] ‘SM 주가조작’ 카카오 김범수 창업자, 2심도 무죄",
-      "category": "경제",
-      "rank": 3,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "카카오 창업자 김범수 미래이니셔티브센터장이 SM엔터테인먼트 인수 과정에서 시세를 조종한 혐의로 기소되었으나, 20일 서울고등법원에서 열린 항소심에서 1심과 같이 무죄를 선고받았다.",
-        "[속보] ‘SM 주가조작’ 카카오 김범수 창업자, 2심도 무죄",
-        "[속보]‘SM엔터 주가조작’ 혐의 카카오 김범수 2심도 무죄",
-        "배재현 등도 무죄…金 \"재도약 위한 과감한 변화 필요\" 아주경제=원은미 기자 silverbeauty@ajunews.com SM엔터테인먼트 시세조종 공모 의혹으로 1심에서 무죄를 선고받은 김범수 카카오 미래이니셔티브센터장이 20일 서울...",
-        "SM엔터테인먼트 시세조종 의혹으로 1심에서 무죄를 선고받은 김범수(사진) 카카오 미래이니셔티브센터장이 2심에서도 무죄를 선고받았다."
-      ],
-      "sources": [
-        {
-          "press": "세계일보",
-          "title": "[속보] ‘SM 주가조작’ 카카오 김범수 창업자, 2심도 무죄",
-          "url": "https://n.news.naver.com/article/022/0004176761"
-        },
-        {
-          "press": "채널A",
-          "title": "[속보]‘SM엔터 주가조작’ 혐의 카카오 김범수 2심도 무죄",
-          "url": "https://n.news.naver.com/article/449/0000368144"
-        },
-        {
-          "press": "ajunews.com",
-          "title": "'SM 인수전' 김범수 무죄 유지…2심 \"시세조종 목적·공모 입증 부족\"",
-          "url": "https://www.ajunews.com/view/20261120110520558"
-        },
-        {
-          "press": "biz.heraldcorp.com",
-          "title": "카카오 김범수 ‘시세조종 혐의’ 2심도 무죄",
-          "url": "https://n.news.naver.com/mnews/article/016/0002726268?sid=102"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "카카오 창업자 김범수 미래이니셔티브센터장이 SM엔터테인먼트 인수 과정에서 시세를 조종한 혐의로 기소되었으나, 20일 서울고등법원에서 열린 항소심에서 1심과 같이 무죄를 선고받았다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "정신아 카카오(035720) 대표가 창업자 김범수 미래이니셔티브센터장을 포함한 카카오 전·현직 임직원들의 SM엔터테인먼트 시세조종 의혹 항소심 무죄 판결에 대해 “카카오를 둘러싼 우려를 해소하고, 사회의 신뢰를…"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "[속보] ‘SM 주가조작’ 카카오 김범수 창업자, 2심도 무죄"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "항소심 무죄 판결이 확정되면서 사법 리스크가 해소 국면에 접어들었고, 카카오의 경영 정상화와 AI 사업 가속화에 대한 기대가 표출되었다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i302f9674",
-      "title": "삼성전자, 전영현·노태문 '투톱' 유지…메모리·모바일 겸직 해소(종합)",
-      "category": "경제",
-      "rank": 8,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "삼성전자, 반도체 전영현·갤럭시 노태문 ‘투톱’ 유지…‘안정과 연속성’ 택했다",
-        "[속보] 삼성전자 사장단 인사…전영현·노태문 ‘투톱’ 체제 유지",
-        "파운드리·로봇 등 미래사업 육성에 집중 인싸잇=한민철 편집국장 ｜ 삼성전자가 내년 정기 사장단 인사에서 전영현 디바이스솔루션(DS)부문장 겸 대표이사 부회장과 노태문 디바이스경험(DX)부문장 겸 대표이사 사장의...",
-        "\"반도체 성과주의·세대교체\"…삼성전자, 2027년 사장단 인사 단행",
-        "▶‘1인 다역’ 전영현·노태문, 겸직 해제…미래전략 수립 전념=삼성전자는 반도체와 완제품(세트) 사업부문을 각각 이끌고 있는 전영현·노태문 대표이사 투톱 체제를 2년 연속 유지했다."
-      ],
-      "sources": [
-        {
-          "press": "디지털타임스",
-          "title": "삼성전자, 반도체 전영현·갤럭시 노태문 ‘투톱’ 유지…‘안정과 연속성’ 택했다",
-          "url": "https://n.news.naver.com/article/029/0003060210"
-        },
-        {
-          "press": "국민일보",
-          "title": "[속보] 삼성전자 사장단 인사…전영현·노태문 ‘투톱’ 체제 유지",
-          "url": "https://n.news.naver.com/article/005/0001886421"
-        },
-        {
-          "press": "mediawatch.kr",
-          "title": "삼성전자, 전영현·노태문 ‘투톱 체제’ 유지… 반도체서 사장 3명 승진",
-          "url": "https://www.mediawatch.kr/news/article.html?no=261821"
-        },
-        {
-          "press": "디지털데일리",
-          "title": "\"반도체 성과주의·세대교체\"…삼성전자, 2027년 사장단 인사 단행",
-          "url": "https://n.news.naver.com/article/138/0002249317"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "삼성전자, 반도체 전영현·갤럭시 노태문 ‘투톱’ 유지…‘안정과 연속성’ 택했다"
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "삼성전자는 20일 사장 승진 3명, 위촉업무 변경 3명 등 총 6명 규모의 '2027년 정기 사장단 인사'를 발표했다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "\"반도체 성과주의·세대교체\"…삼성전자, 2027년 사장단 인사 단행"
+          "evidence": "코스피, 4.08% 내린 4,928.51에 출발…코스닥도 3.48% 하락"
         },
         {
           "panel": 4,
@@ -332,11 +225,112 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
+        "continuity_quality": 1.0,
         "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
           "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i85abdab8",
+      "title": "“北 비핵화 사라지고… 웃는 푸틴·만족한 시진핑·씁쓸한 트럼프만 남아”",
+      "category": "세계",
+      "rank": 8,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "CNN은 시진핑과 푸틴에 대한 트럼프의 친분 과시가 \"의미 있는 돌파구를 마련하지 못했다\"고 비판했습니다.",
+        "로이터통신도 \"트럼프에게는 국제사회가 자신에게 경의를 표하는 모습 자체가 가치를 지니는 것\"이라고...",
+        "시진핑 중국 국가주석과 푸틴 대통령은 대놓고 ‘힘의 지배’를 강조하고, 도널드 트럼프 대통령은 끌려가는 모양새가 됐다.",
+        "시 주석이 “3국은 상대방의 금지선을 건드리면 안 된다”고 하자, 푸틴 대통령은 ‘상호...",
+        "시진핑(習近平) 중국 국가주석이 19일 오후 광둥(廣東)성 선전(深?)시에서 블라디미르 푸틴 러시아 대통령, 도널드 트럼프 미국 대통령과 중·러·미 정상회담을 갖고 이번 회담에서 이룬 주요"
+      ],
+      "sources": [
+        {
+          "press": "yonhapnewstv.co.kr",
+          "title": "트럼프 \"3자 회담 성공적…언젠가 김정은 만날 것\"",
+          "url": "https://n.news.naver.com/mnews/article/422/0000928168?sid=104"
+        },
+        {
+          "press": "munhwa.com",
+          "title": "‘힘의 지배’ 과시한 3頭 회담과 더 불안해진 한국 안보[사설]",
+          "url": "https://n.news.naver.com/mnews/article/021/0002834341?sid=110"
+        },
+        {
+          "press": "kr.people.com.cn",
+          "title": "시진핑 주석 “3자 회담에서 뿌린 씨앗, 반드시 뿌리내리고 싹 틔워 꽃...",
+          "url": "http://kr.people.com.cn/n3/2026/1120/c203278-20521320.html"
+        },
+        {
+          "press": "newsis.com",
+          "title": "\"중러가 미중러 회의서 전승국 강조한 것은 日 고립 목적\"",
+          "url": "https://n.news.naver.com/mnews/article/003/0014335528?sid=104"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "CNN은 시진핑과 푸틴에 대한 트럼프의 친분 과시가 \"의미 있는 돌파구를 마련하지 못했다\"고 비판했습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "트럼프 \"시진핑·푸틴과 '매우 중대한' 회담…중국과 AI 규제 논의\""
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "시 주석이 “3국은 상대방의 금지선을 건드리면 안 된다”고 하자, 푸틴 대통령은 ‘상호..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "발단·의혹"
         ],
         "no_generic_closing": true
       }
