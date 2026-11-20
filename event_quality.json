@@ -1,34 +1,70 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 13:27:23",
+  "updated_at": "2026-11-20 12:25:28",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.93,
+  "average_quality": 0.88,
   "issues": [
     {
-      "id": "ifb5b3124",
-      "title": "박지윤 ‘이혼 악플러’ 잡고 보니 전남편 최동석…명예훼손 혐의 송치",
-      "episode": "episode:4cf66a70e96576",
+      "id": "id552b423",
+      "title": "한동훈, 조희대 탄핵 추진 민주당에 \"친위 쿠데타 세력\" 맹비판",
+      "episode": "episode:c0696a75df63e4",
+      "quality": 1.0,
+      "stages": [
+        "사법·처분",
+        "파장·후속",
+        "일반 보도",
+        "수사·대응",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 37,
+      "event_count": 22,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i6c347c07",
+      "title": "‘박지윤 악플러’ 정체 알고보니 전 남편 최동석…명예훼손 혐의 송치",
+      "episode": "episode:c7b3db57f40b70",
       "quality": 0.92,
       "stages": [
         "일반 보도",
         "사법·처분",
-        "발단·의혹",
+        "입장·공방",
         "수사·대응"
       ],
       "gaps": [
-        "입장·공방",
-        "수사·대응",
+        "발단·의혹",
         "파장·후속"
       ],
-      "duplicate_candidates": 32,
-      "event_count": 37,
+      "duplicate_candidates": 33,
+      "event_count": 36,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia7834185",
-      "title": "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
-      "episode": "episode:3d45d0eb2b80fa",
+      "id": "ie8b75c3b",
+      "title": "李대통령 \"AI 부정행위는 현실…국가시험 A부터 Z까지 전면 개편\"",
+      "episode": "episode:4c3d0b4ef9289a",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "입장·공방",
+        "파장·후속",
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 29,
+      "event_count": 52,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i4aa20a81",
+      "title": "[속보]'검은 금요일' 코스피 5% 급락…반도체 투매에 4900선 붕괴",
+      "episode": "episode:ecaf15c5cdab54",
       "quality": 1.0,
       "stages": [
         "발단·의혹",
@@ -40,89 +76,32 @@
       "gaps": [
         "수사·대응"
       ],
-      "duplicate_candidates": 33,
-      "event_count": 32,
+      "duplicate_candidates": 30,
+      "event_count": 29,
       "evidence_rate": 1.0
     },
     {
-      "id": "ife6b27f8",
-      "title": "민주당, 조희대 탄핵 소추 당론 채택…국힘 \"광기·국가 비극\"",
-      "episode": "episode:7334cd18a37302",
+      "id": "i1ebabd0c",
+      "title": "이진우 사망에 서울대 교수 “속죄한 죽음마저 손가락질”…대중 비판",
+      "episode": "episode:e715500850f76d",
       "quality": 1.0,
       "stages": [
+        "사법·처분",
         "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 41,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3211f95b",
-      "title": "李 “AI 부정행위 일벌백계… 국가시험 전면 개편”",
-      "episode": "episode:f37a3115b96528",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i5eb96fe8",
-      "title": "리트 만점자 고발인 \"남은 흔적 어떻게든 찾아달라\" 수사 촉구",
-      "episode": "episode:e5df0fa6bda477",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "파장·후속",
-        "발단·의혹",
-        "일반 보도"
-      ],
-      "gaps": [
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 40,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if6c74288",
-      "title": "\"좋은 형·오빠 였다\" 서울대 동기들 이진우 추모...\"혼란\"",
-      "episode": "episode:797398d4bfe7b3",
-      "quality": 0.92,
-      "stages": [
         "발단·의혹",
         "입장·공방",
         "파장·후속",
         "수사·대응"
       ],
-      "gaps": [
-        "사법·처분"
-      ],
+      "gaps": [],
       "duplicate_candidates": 27,
-      "event_count": 4,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i1c15a9f7",
-      "title": "법원 \"배우 김수현, 쿠쿠 전자에 8억 7500만 원 지급해야\"",
-      "episode": "episode:54d963b869d4f3",
+      "id": "ie406fd47",
+      "title": "법원 \"배우 김수현 소속사, 쿠쿠에 8억7000만원 배상해야\"",
+      "episode": "episode:a7544113b039af",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -135,65 +114,81 @@
         "파장·후속"
       ],
       "duplicate_candidates": 29,
-      "event_count": 17,
+      "event_count": 16,
       "evidence_rate": 1.0
     },
     {
-      "id": "i0e235c7f",
-      "title": "트럼프, 푸틴 회담 뒤 유럽에 \"우크라 지원 끊어라\"",
-      "episode": "episode:c65d0b953f9b33",
+      "id": "ia939ce03",
+      "title": "미중러 회담 뒤 '러 목소리 커진다' \"나토 회원, 준회원도 안돼\"",
+      "episode": "episode:d6f4e7e9b36347",
       "quality": 0.92,
       "stages": [
-        "파장·후속",
+        "입장·공방",
         "일반 보도",
         "사법·처분",
-        "파장·후속",
-        "입장·공방"
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
         "수사·대응"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 16,
+      "duplicate_candidates": 29,
+      "event_count": 19,
       "evidence_rate": 1.0
     },
     {
-      "id": "i3c5aafc7",
-      "title": "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\"",
-      "episode": "episode:150787aba96d62",
-      "quality": 0.92,
+      "id": "ifc2ec958",
+      "title": "국내서 10년 만에 콜레라 환자 나왔다",
+      "episode": "episode:5a8e6616e6b941",
+      "quality": 0.48,
       "stages": [
-        "수사·대응",
-        "일반 보도",
-        "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "파장·후속"
+        "입장·공방",
+        "사법·처분"
       ],
-      "duplicate_candidates": 21,
-      "event_count": 14,
+      "duplicate_candidates": 23,
+      "event_count": 2,
       "evidence_rate": 1.0
     },
     {
-      "id": "i8fb7caf6",
-      "title": "컬리서 1만여명 개인정보 유출…“최대 15만원 적립금 보상”",
-      "episode": "episode:82685fd60c8164",
-      "quality": 0.92,
+      "id": "i83b21747",
+      "title": "‘미트 수석 합격자’ AI 부정행위 의혹 부인…“1년 아닌 6년 준비, 법적 대응” [전문]",
+      "episode": "episode:b51d4440cca2e1",
+      "quality": 0.84,
       "stages": [
-        "일반 보도",
         "수사·대응",
-        "사법·처분",
+        "파장·후속",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 39,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5a2b07d0",
+      "title": "개미들 어쩌나…반대매매 껑충 '비명'",
+      "episode": "episode:6bcf3ca5e9422d",
+      "quality": 0.84,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
         "입장·공방"
       ],
       "gaps": [
         "발단·의혹",
-        "파장·후속"
+        "수사·대응",
+        "사법·처분"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 11,
+      "duplicate_candidates": 12,
+      "event_count": 8,
       "evidence_rate": 1.0
     }
   ]
