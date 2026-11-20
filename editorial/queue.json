@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T23:26:26+09:00",
+  "generated_at": "2026-11-20T22:27:24+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -30,19 +30,19 @@
       "issue_id": "ia7834185",
       "title": "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
       "category": "경제",
-      "rank": 3,
-      "priority_score": 45,
+      "rank": 2,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "20일 국내 증시는 미국발 기술주 급락과 앤트로픽 상장에 따른 자금 쏠림, 인공지능(AI) 규제 및 통화 긴축 우려 등이 겹치면서 '검은 금요일'을 맞이했다.",
+        "코스피가 미국 반도체주 약세에 발목 잡혀 10개월 만에 4900선 아래로 하락했다.",
         "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
         "증권가도 \"팔기엔 늦었고 사기엔 무섭다\"…5000 깨진 코스피 고민",
-        "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
-        "검은 금요일…코스피 5000 붕괴, 앤트로픽 상장 흥행에도 美 기술주 급락"
+        "코스피 5% 급락 ‘검은 금요일’...",
+        "10개월 만에 4900선 아래로"
       ],
       "sources": [
         {
@@ -56,26 +56,26 @@
           "url": "https://n.news.naver.com/article/421/0009302014"
         },
         {
-          "press": "디지털데일리",
-          "title": "“하루 만에 5000선 와르르”…코스피 3%대 급락, 삼성전자 18만원대로",
-          "url": "https://n.news.naver.com/article/138/0002249322"
+          "press": "조선일보",
+          "title": "코스피 5% 급락 ‘검은 금요일’... 10개월 만에 4900선 아래로",
+          "url": "https://n.news.naver.com/article/023/0004010809"
         },
         {
-          "press": "국민일보",
-          "title": "검은 금요일…코스피 5000 붕괴, 앤트로픽 상장 흥행에도 美 기술주 급락",
-          "url": "https://n.news.naver.com/article/005/0001886489"
+          "press": "머니투데이",
+          "title": "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
+          "url": "https://n.news.naver.com/article/008/0005444256"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "20일 국내 증시는 미국발 기술주 급락과 앤트로픽 상장에 따른 자금 쏠림, 인공지능(AI) 규제 및 통화 긴축 우려 등이 겹치면서 '검은 금요일'을 맞이했다."
+          "evidence": "코스피가 미국 반도체주 약세에 발목 잡혀 10개월 만에 4900선 아래로 하락했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "'검은 금요일'을 맞은 20일 대장주 삼성전자와 SK하이닉스가 동반 급락하면서 반등을 기다리던 투자자의..."
+          "evidence": "9% 하락한 코스피의 시가총액은 3,991조 3,977억 원을 기록하며 올 1월 15일 이후 10개월 만에 처음으로 4,000조 원대가 붕괴됐다."
         },
         {
           "panel": 3,
@@ -85,7 +85,7 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "미국발 기술주 급락과 앤트로픽 상장 등 악재가 겹쳐 코스피 4900선과 코스닥 650선이 무너지고 매도 사이드카가 발동되는 '검은 금요일' 폭락 사태로 이어졌다."
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
@@ -123,169 +123,67 @@
         "numeric_or_specific_evidence": true,
         "sources": 4,
         "continuity_quality": 1.0,
-        "continuity_gaps": [],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i2540df50",
-      "title": "앤트로픽 '세기의 IPO'도 못 살렸다…코스피 급락에 매도 사이드카 발동",
-      "category": "경제",
-      "rank": 9,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "삼성전자·SK하이닉스 동반 급락하며 지수 끌어내려 뉴욕증시도 일제히 하락…AI 투자 우려 여전 역대 최대 규모의 기업공개(IPO)에 성공한 인공지능(AI) 기업 앤트로픽도 얼어붙은 투자심리를 되돌리지는 못했다.",
-        "코스피 이어 코스닥도 매도 사이드카…삼성전자·하이닉스 6%대 급락",
-        "코스피 3% 하락 출발…‘앤트로픽 IPO 흥행’에도 기술주 전반 부진",
-        "“또 매도 사이드카”…코스피 5.05% 폭락, 4800선 추락",
-        "엔비디아의 3분기 실적 호조와 앤트로픽의 대규모 기업공개(IPO) 관련 소식에 힘입어 코스피는 지난 18일 1.99%, 19일 1.39% 상승하며 5100선을 회복했다."
-      ],
-      "sources": [
-        {
-          "press": "한국경제",
-          "title": "코스피 이어 코스닥도 매도 사이드카…삼성전자·하이닉스 6%대 급락",
-          "url": "https://n.news.naver.com/article/015/0005356328"
-        },
-        {
-          "press": "한겨레",
-          "title": "코스피 3% 하락 출발…‘앤트로픽 IPO 흥행’에도 기술주 전반 부진",
-          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBONHl6UTRENzd3Sm1fSk5rRE1qZEFZRkl1bmtUUU9ZZUgxcnhkeTVWWkF2YlNsc2ZuMTdHbmlUVlh4Qm5zMjBRYnRmNURqbTE3aFM2SnhERDQyckdka0tBTkRmM1JwR00?oc=5"
-        },
-        {
-          "press": "디지털데일리",
-          "title": "“또 매도 사이드카”…코스피 5.05% 폭락, 4800선 추락",
-          "url": "https://n.news.naver.com/article/138/0002249356"
-        },
-        {
-          "press": "etnews.com",
-          "title": "“AI 커닝해 주식 샀으니 취소해 달라”…차라리 '부정행위?' 자수하고...",
-          "url": "https://n.news.naver.com/mnews/article/030/0003488063?sid=101"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "삼성전자·SK하이닉스 동반 급락하며 지수 끌어내려 뉴욕증시도 일제히 하락…AI 투자 우려 여전 역대 최대 규모의 기업공개(IPO)에 성공한 인공지능(AI) 기업 앤트로픽도 얼어붙은 투자심리를 되돌리지는 못했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "코스피 이어 코스닥도 매도 사이드카…삼성전자·하이닉스 6%대 급락"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "코스피 3% 하락 출발…‘앤트로픽 IPO 흥행’에도 기술주 전반 부진"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
         "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
+          "수사·대응"
         ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "if933243e",
-      "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
-      "category": "세계",
+      "issue_id": "i1c15a9f7",
+      "title": "법원 \"배우 김수현, 쿠쿠 전자에 8억 7500만 원 지급해야\"",
+      "category": "경제",
       "rank": 7,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
-        "미중러 3자 정상회담 이후 도널드 트럼프 미국 대통령이 유럽 정상들과 통화에서 우크라이나에 대한 재정 지원을 중단하라고 요구했다고 영국 일간 텔레그래프가 19일(현지 시간) 보도했다.",
-        "그는 블라디미르 푸틴 러시아 대통령이 도널드 트럼프 미국 대통령, 시진핑 중국 국가주석과의 회담 이후 대규모 공습을 감행한 점도 비판했다.",
-        "젤렌스키 대통령은 \"러시아는 군사적·외교적 무능을 이러한 테러 행위로...",
-        "시진핑은 한창 연설 중인데...",
-        "80세 트럼프 꾸벅, 졸았나?"
+        "서울중앙지법 민사합의25부(부장 권기만)는 20일 쿠쿠전자·쿠쿠홈시스·쿠쿠인터랙티브가 김수현의 사생활 논란을 계기로 낸 손해배상 소송에서 김수현 소속사가 약 8억 7천만원을 쿠쿠 측에 지급해야 한다는 판결을 내렸다.",
+        "‘10년 광고 모델’ 김수현 결국…법원 “김수현 소속사, 쿠쿠에 8억 배상하라”",
+        "法 “김수현 소속사, 광고주 ‘쿠쿠’에 8억원 배상하라”",
+        "법원 \"배우 김수현, 쿠쿠 전자에 8억 7500만 원 지급해야\"",
+        "법원 \"배우 김수현 소속사, 쿠쿠에 8억7000만원 배상해야\""
       ],
       "sources": [
         {
-          "press": "newspim.com",
-          "title": "러 미사일·드론 3대 폴란드 영공 침범…폴란드 \"의도적 도발\" 반발",
-          "url": "https://www.newspim.com/news/view/20261120001223"
+          "press": "서울경제",
+          "title": "‘10년 광고 모델’ 김수현 결국…법원 “김수현 소속사, 쿠쿠에 8억 배상하라”",
+          "url": "https://n.news.naver.com/article/011/0004684496"
         },
         {
-          "press": "조선일보",
-          "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
-          "url": "https://n.news.naver.com/article/023/0004010794"
+          "press": "조선비즈",
+          "title": "法 “김수현 소속사, 광고주 ‘쿠쿠’에 8억원 배상하라”",
+          "url": "https://n.news.naver.com/article/366/0001206321"
         },
         {
-          "press": "news1.kr",
-          "title": "러 \"영·프·독 'E3' 대표단, 방러 추진\"…우크라 종전 협상 참여엔 선 ...",
-          "url": "https://n.news.naver.com/mnews/article/421/0009302244?sid=104"
+          "press": "한국일보",
+          "title": "법원 \"배우 김수현, 쿠쿠 전자에 8억 7500만 원 지급해야\"",
+          "url": "https://n.news.naver.com/article/469/0000966835"
         },
         {
-          "press": "sedaily.com",
-          "title": "미중러 APEC 3자 회담 성과…전문가 “푸틴에게 압도적인 승리”",
-          "url": "https://n.news.naver.com/mnews/article/011/0004684535?sid=104"
+          "press": "뉴시스",
+          "title": "법원 \"배우 김수현 소속사, 쿠쿠에 8억7000만원 배상해야\"",
+          "url": "https://n.news.naver.com/article/003/0014336690"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "미중러 3자 정상회담 이후 도널드 트럼프 미국 대통령이 유럽 정상들과 통화에서 우크라이나에 대한 재정 지원을 중단하라고 요구했다고 영국 일간 텔레그래프가 19일(현지 시간) 보도했다."
+          "evidence": "서울중앙지법 민사합의25부(부장 권기만)는 20일 쿠쿠전자·쿠쿠홈시스·쿠쿠인터랙티브가 김수현의 사생활 논란을 계기로 낸 손해배상 소송에서 김수현 소속사가 약 8억 7천만원을 쿠쿠 측에 지급해야 한다는 판결을 내렸다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "중간선거 패배로 국내 입지가 좁아진 상황에서 두 강대국 정상과 직접 담판해 외교 성과를 보여줄 기회로 판단한..."
+          "evidence": "배우 김수현의 사생활 논란으로 불거진 광고 계약 분쟁을 두고 법원이 김수현의 소속사에 \"쿠쿠 측에 8억 8천여만 원을 배상하라\"고 판결했다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "80세 트럼프 꾸벅, 졸았나?"
+          "evidence": "‘10년 광고 모델’ 김수현 결국…법원 “김수현 소속사, 쿠쿠에 8억 배상하라”"
         },
         {
           "panel": 4,
@@ -327,9 +225,115 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 1.0,
+        "continuity_quality": 0.84,
         "continuity_gaps": [
-          "발단·의혹"
+          "발단·의혹",
+          "입장·공방",
+          "파장·후속"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i3c5aafc7",
+      "title": "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\"",
+      "category": "경제",
+      "rank": 9,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "KB증권이 삼성전자와 SK하이닉스의 내년 D램 평균판매가격이 40%, 낸드(NAND)는 30% 각각 상승할 것이라는 전망을 내놓았다.",
+        "■ 코스피 폭락·서킷브레이커 발동…개미들 비명 6일 오전 9시 3분, 코스피가 8% 넘게 폭락하면서 주식...",
+        "■ \"삼전닉스 몰빵\"…국민연금 182조 증발 공방 증시 폭락은 국민연금의 투자 결정 논란으로 번졌다.",
+        "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\"",
+        "개인, 한 달간 삼성전자·SK하이닉스 9조1924억원 순매수 5일 폭락장 2조1179억원 순매수…6일 두 종목 추가..."
+      ],
+      "sources": [
+        {
+          "press": "tvchosun.com",
+          "title": "[티조챗] \"전 국민 거지 만드냐\" \"연봉 녹았다\"…李 \"5000 충분히 넘겨\"...",
+          "url": "https://n.news.naver.com/mnews/article/448/0000649437?sid=101"
+        },
+        {
+          "press": "한국경제TV",
+          "title": "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\"",
+          "url": "https://n.news.naver.com/article/215/0001273355"
+        },
+        {
+          "press": "segye.com",
+          "title": "5000피 깨졌는데 또 샀다…삼전·닉스 9조 베팅한 개미 ‘비명’ [숫자 ...",
+          "url": "https://n.news.naver.com/mnews/article/022/0004173169?sid=101"
+        },
+        {
+          "press": "한국경제",
+          "title": "\"2억7000만원이 1억 됐다\"…버티다 지친 삼전닉스 개미들",
+          "url": "https://n.news.naver.com/article/015/0005356450"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "KB증권이 삼성전자와 SK하이닉스의 내년 D램 평균판매가격이 40%, 낸드(NAND)는 30% 각각 상승할 것이라는 전망을 내놓았다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "■ \"삼전닉스 몰빵\"…국민연금 182조 증발 공방 증시 폭락은 국민연금의 투자 결정 논란으로 번졌다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "■ 코스피 폭락·서킷브레이커 발동…개미들 비명 6일 오전 9시 3분, 코스피가 8% 넘게 폭락하면서 주식..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "발단·의혹",
+          "파장·후속"
         ],
         "no_generic_closing": true
       }

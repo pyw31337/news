@@ -1,35 +1,17 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 14:26:26",
+  "updated_at": "2026-11-20 13:27:23",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.93,
   "issues": [
-    {
-      "id": "id552b423",
-      "title": "한동훈, 조희대 탄핵 추진 민주당에 \"친위 쿠데타 세력\" 맹비판",
-      "episode": "episode:a4bd5ffa55f2fe",
-      "quality": 1.0,
-      "stages": [
-        "수사·대응",
-        "사법·처분",
-        "파장·후속",
-        "일반 보도",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 23,
-      "evidence_rate": 1.0
-    },
     {
       "id": "ifb5b3124",
       "title": "박지윤 ‘이혼 악플러’ 잡고 보니 전남편 최동석…명예훼손 혐의 송치",
-      "episode": "episode:f4da9851c04e28",
-      "quality": 0.84,
+      "episode": "episode:4cf66a70e96576",
+      "quality": 0.92,
       "stages": [
+        "일반 보도",
         "사법·처분",
         "발단·의혹",
         "수사·대응"
@@ -39,8 +21,8 @@
         "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 36,
+      "duplicate_candidates": 32,
+      "event_count": 37,
       "evidence_rate": 1.0
     },
     {
@@ -53,31 +35,70 @@
         "일반 보도",
         "사법·처분",
         "파장·후속",
-        "입장·공방",
+        "입장·공방"
+      ],
+      "gaps": [
         "수사·대응"
       ],
-      "gaps": [],
-      "duplicate_candidates": 39,
-      "event_count": 33,
+      "duplicate_candidates": 33,
+      "event_count": 32,
       "evidence_rate": 1.0
     },
     {
-      "id": "i5eb96fe8",
-      "title": "리트 만점자 고발인 \"남은 흔적 어떻게든 찾아달라\" 수사 촉구",
-      "episode": "episode:e044d86a5dffbe",
-      "quality": 0.92,
+      "id": "ife6b27f8",
+      "title": "민주당, 조희대 탄핵 소추 당론 채택…국힘 \"광기·국가 비극\"",
+      "episode": "episode:7334cd18a37302",
+      "quality": 1.0,
       "stages": [
+        "일반 보도",
         "수사·대응",
         "파장·후속",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 41,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3211f95b",
+      "title": "李 “AI 부정행위 일벌백계… 국가시험 전면 개편”",
+      "episode": "episode:f37a3115b96528",
+      "quality": 0.92,
+      "stages": [
         "일반 보도",
-        "입장·공방"
+        "입장·공방",
+        "수사·대응",
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
         "사법·처분"
       ],
-      "duplicate_candidates": 36,
-      "event_count": 12,
+      "duplicate_candidates": 28,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5eb96fe8",
+      "title": "리트 만점자 고발인 \"남은 흔적 어떻게든 찾아달라\" 수사 촉구",
+      "episode": "episode:e5df0fa6bda477",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "파장·후속",
+        "발단·의혹",
+        "일반 보도"
+      ],
+      "gaps": [
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 40,
+      "event_count": 13,
       "evidence_rate": 1.0
     },
     {
@@ -94,46 +115,8 @@
       "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 26,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iad66b3e3",
-      "title": "컬리 큐레이터 1만여명 개인정보 유출… 주민번호·계좌번호도 포함",
-      "episode": "episode:b96b5a6f2a5e1f",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "사법·처분",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
       "duplicate_candidates": 27,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if933243e",
-      "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
-      "episode": "episode:18d805fa6cb976",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "사법·처분",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 24,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
@@ -151,43 +134,66 @@
         "입장·공방",
         "파장·후속"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 18,
+      "duplicate_candidates": 29,
+      "event_count": 17,
       "evidence_rate": 1.0
     },
     {
-      "id": "i2540df50",
-      "title": "앤트로픽 '세기의 IPO'도 못 살렸다…코스피 급락에 매도 사이드카 발동",
-      "episode": "episode:0d53faa5866360",
+      "id": "i0e235c7f",
+      "title": "트럼프, 푸틴 회담 뒤 유럽에 \"우크라 지원 끊어라\"",
+      "episode": "episode:c65d0b953f9b33",
       "quality": 0.92,
       "stages": [
         "파장·후속",
         "일반 보도",
+        "사법·처분",
+        "파장·후속",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3c5aafc7",
+      "title": "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\"",
+      "episode": "episode:150787aba96d62",
+      "quality": 0.92,
+      "stages": [
         "수사·대응",
+        "일반 보도",
+        "입장·공방",
         "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방"
+        "파장·후속"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 35,
+      "duplicate_candidates": 21,
+      "event_count": 14,
       "evidence_rate": 1.0
     },
     {
-      "id": "i072b86da",
-      "title": "공사 생도 '명예시험' 중 스마트폰으로 시험지 촬영…퇴교 처분",
-      "episode": "episode:4b4370dd7bfc87",
-      "quality": 0.38,
+      "id": "i8fb7caf6",
+      "title": "컬리서 1만여명 개인정보 유출…“최대 15만원 적립금 보상”",
+      "episode": "episode:82685fd60c8164",
+      "quality": 0.92,
       "stages": [
-        "사법·처분"
+        "일반 보도",
+        "수사·대응",
+        "사법·처분",
+        "입장·공방"
       ],
       "gaps": [
-        "입장·공방",
-        "수사·대응"
+        "발단·의혹",
+        "파장·후속"
       ],
-      "duplicate_candidates": 25,
-      "event_count": 1,
+      "duplicate_candidates": 24,
+      "event_count": 11,
       "evidence_rate": 1.0
     }
   ]
