@@ -1,16 +1,80 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"><meta name="theme-color" content="#fbfbfa"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta property="og:type" content="website"><meta property="og:site_name" content="NewsBoard"><meta property="og:title" content="NewsBoard v2 · 오늘의 이슈 흐름"><meta property="og:description" content="오늘 가장 뜨거운 이슈 하나를 주요 보도·흐름·발언·관계·민심으로 탐구합니다."><meta property="og:image" content="https://pyw31337.github.io/news/og-image.png?v=12"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><link rel="manifest" href="manifest.webmanifest"><title>NewsBoard v2 · 이슈 흐름</title>
-<link rel="icon" href="favicon.ico?v=11"><link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="v2-home.css?v=4"><link rel="stylesheet" href="timeline.css?v=1">
-<link rel="stylesheet" href="https://pyw31337.github.io/lets/css/lets-design-system.css?v=1.1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>오늘 · NewsBoard v2</title>
+  <link rel="stylesheet" href="../assets/nbp/tokens.css?v=202611171200">
+  <link rel="stylesheet" href="./style.css?v=1">
 </head>
 <body>
-<header class="site-head"><div class="head-in"><a class="brand" href="./">NewsBoard<i>.</i></a><nav class="main-nav" aria-label="주요 메뉴"><a class="is-on" href="./">이슈</a><a href="live/">라이브</a><a href="reports/">보도</a></nav><div class="region" role="group" aria-label="뉴스 지역"><button class="is-on" data-region="kr">국내</button><button data-region="global-ko">해외(국문)</button><button data-region="global-en">해외(영문)</button></div><div class="head-tools"><button class="tool" id="searchBtn" aria-label="검색"><svg class="icon"><use href="#i-search"></use></svg></button><button class="tool" data-lds-notify aria-label="알림 설정">🔔</button><a class="tool" href="../login/" aria-label="로그인"><svg class="icon"><use href="#i-user"></use></svg></a></div></div></header>
-<main class="wrap page" id="app"><p class="load">오늘의 뉴스를 불러오는 중…</p></main>
-<footer class="wrap footer"><div class="footer-inner"><strong>NewsBoard v2</strong><span>인물 페이지 디자인시스템 기반 · 원문과 데이터 흐름을 한 화면에</span></div></footer>
-<script src="../assets/nbp/icons.js"></script><script src="https://pyw31337.github.io/lets/js/lets-design-system.js?v=1.1.0"></script><script src="lds-init.js?v=1"></script><script src="v2-home.js?v=3"></script>
+  <header class="site-head">
+    <a class="brand" href="../"><b>News</b>Board<i>.</i></a>
+    <nav class="primary" aria-label="주 메뉴">
+      <a class="is-active" href="#today">오늘</a><a href="#flow">흐름</a><a href="#people">인물</a><a href="#market">마켓</a><a href="#archive">아카이브</a>
+    </nav>
+    <div class="head-tools"><span class="live-dot"></span><span>2026.11.20 (금) 09:49:27</span><button class="icon-btn" aria-label="검색">⌕</button></div>
+  </header>
+
+  <main class="page" id="today">
+    <section class="masthead">
+      <div>
+        <p class="eyebrow">TODAY / NEWSBOARD V2</p>
+        <h1>오늘의 흐름</h1>
+        <p class="lede">가장 많이 움직인 이슈와, 그 이슈를 만든 사람·숫자·근거를 한 화면에서 봅니다.</p>
+      </div>
+      <div class="mast-meta"><strong>10</strong><span>오늘의 이슈</span><i></i><strong>194</strong><span>확인된 출처</span></div>
+    </section>
+
+    <section class="hero-grid" aria-label="오늘의 핵심 이슈">
+      <article class="lead-story">
+        <div class="story-kicker"><span class="signal">01</span><span>정치 · 사법</span><time title="2026.11.20 (금) 09:12:04">20분 전</time></div>
+        <h2>삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동</h2>
+        <p class="story-summary">시장 충격은 반도체 대형주에서 시작해 코스피 전반으로 번졌습니다. 오늘 움직임을 가격·정책·발언의 순서로 추적합니다.</p>
+        <div class="story-foot"><span>근거 41건</span><span>언론사 28곳</span><span>인물 12명</span><button class="text-action" data-expand="lead-detail">상세 보기 <span>⌄</span></button></div>
+        <div class="inline-detail" id="lead-detail" hidden>
+          <div><b>핵심 수치</b><span>코스피 −6.7%</span></div><div><b>첫 보도</b><span>07:42 · 연합뉴스</span></div><div><b>현재 단계</b><span>파장·후속</span></div>
+        </div>
+      </article>
+      <aside class="signal-panel">
+        <div class="panel-head"><span>이슈 신호</span><button class="icon-btn" aria-label="도움말">?</button></div>
+        <div class="signal-score"><strong>94</strong><span>/ 100</span><em>근거 밀도</em></div>
+        <div class="meter"><i style="width:94%"></i></div>
+        <dl class="mini-stats"><div><dt>중복 묶음</dt><dd>43</dd></div><div><dt>사건 단계</dt><dd>5/6</dd></div><div><dt>새 출처</dt><dd>+18</dd></div></dl>
+        <p class="muted">마지막 확인 <time title="2026.11.20 (금) 09:29:27">20분 전</time></p>
+      </aside>
+    </section>
+
+    <section class="section" id="flow">
+      <div class="section-head"><div><p class="eyebrow">READ THE FLOW</p><h2>오늘의 흐름</h2></div><div class="seg" role="tablist"><button class="seg-btn is-active" role="tab">전체 10</button><button class="seg-btn" role="tab">정치 4</button><button class="seg-btn" role="tab">경제 3</button><button class="seg-btn" role="tab">사회 3</button></div></div>
+      <div class="flow-layout">
+        <div class="flow-list">
+          <article class="flow-row is-featured"><span class="flow-index">02</span><div class="flow-copy"><div class="flow-meta"><span class="tag tag-blue">정치</span><time title="2026.11.20 (금) 09:12:04">20분 전</time></div><h3>민주당, ‘조희대 대법원장 탄핵’ 당론 채택</h3><p>수사·대응에서 사법·처분 단계로 이동 중인 이슈입니다.</p></div><div class="flow-value"><strong>1.0</strong><span>근거율</span></div></article>
+          <article class="flow-row"><span class="flow-index">03</span><div class="flow-copy"><div class="flow-meta"><span class="tag tag-red">사회</span><time title="2026.11.20 (금) 08:49:30">1시간 전</time></div><h3>수능 전자기기 부정행위 111건…13명 추가 적발</h3><p>수사·대응 9건, 후속 보도 4건이 연결됐습니다.</p></div><div class="flow-value"><strong>0.84</strong><span>근거율</span></div></article>
+          <article class="flow-row"><span class="flow-index">04</span><div class="flow-copy"><div class="flow-meta"><span class="tag tag-green">국제</span><time title="2026.11.20 (금) 07:49:30">1일 전</time></div><h3>트럼프·시진핑·푸틴 “핵전쟁 안 돼”…북 비핵화 압박</h3><p>일반 보도 24건, 후속·공방 2개 단계가 확인됐습니다.</p></div><div class="flow-value"><strong>0.92</strong><span>근거율</span></div></article>
+        </div>
+        <aside class="flow-chart" aria-label="시간대별 출처 변화">
+          <div class="panel-head"><span>출처 유입</span><span class="muted">최근 24시간</span></div>
+          <svg viewBox="0 0 420 150" role="img" aria-label="출처 유입 그래프"><defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#2450e0" stop-opacity=".18"/><stop offset="1" stop-color="#2450e0" stop-opacity="0"/></linearGradient></defs><path class="chart-area" d="M0 124L45 115L90 118L135 83L180 94L225 52L270 72L315 31L360 45L420 14V150H0Z"/><path class="chart-line" d="M0 124L45 115L90 118L135 83L180 94L225 52L270 72L315 31L360 45L420 14"/><circle cx="420" cy="14" r="4"/><text x="0" y="145">00시</text><text x="192" y="145">12시</text><text x="390" y="145">현재</text></svg>
+          <div class="chart-note"><strong>194</strong><span>확인된 출처</span><em>+18.4%</em></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="people">
+      <div class="section-head"><div><p class="eyebrow">PEOPLE IN MOTION</p><h2>지금 움직이는 인물</h2></div><a class="section-link" href="../persons/">전체 인물 보기 <span>↗</span></a></div>
+      <div class="people-strip"><a class="person-row" href="../person/?id=wd%3AQ12612463"><span class="avatar avatar-blue">李</span><span><b>이재명</b><small>대통령 · 발언 16건</small></span><strong>+32%</strong></a><a class="person-row" href="#"><span class="avatar avatar-dark">韓</span><span><b>한동훈</b><small>국회의원 · 보도 12건</small></span><strong>+18%</strong></a><a class="person-row" href="#"><span class="avatar avatar-rose">趙</span><span><b>조희대</b><small>대법원장 · 관계 8건</small></span><strong>+11%</strong></a><a class="person-row" href="#"><span class="avatar avatar-sand">崔</span><span><b>최민희</b><small>방통위원장 · 보도 7건</small></span><strong>+8%</strong></a></div>
+    </section>
+
+    <section class="section evidence" id="archive">
+      <div class="section-head"><div><p class="eyebrow">EVIDENCE LAYER</p><h2>근거를 펼쳐보기</h2></div><span class="muted">모든 시간은 한국 표준시</span></div>
+      <div class="evidence-list"><details open><summary><span>오늘 수집</span><b>992건</b><small>네이버·다음·RSS</small></summary><div class="detail-body"><span>국내 기사</span><strong>9,921</strong><span>해외 기사</span><strong>268</strong><span>중복 묶음</span><strong>1,562</strong></div></details><details><summary><span>분석 상태</span><b>506건 성공</b><small>29건 재시도 대기</small></summary><div class="detail-body"><span>최종 분석</span><strong>2026.11.20 (금) 09:29:27</strong><span>원장</span><strong>확인 가능</strong></div></details><details><summary><span>데이터 품질</span><b>94점</b><small>근거율 평균</small></summary><div class="detail-body"><span>사진·출처 보강</span><strong>10건</strong><span>사건 단계 누락</span><strong>4건</strong></div></details></div>
+    </section>
+  </main>
+  <footer class="site-foot"><span>NewsBoard v2 concept</span><span>근거가 있는 정보만 남깁니다.</span></footer>
+  <script>
+    document.querySelectorAll('[data-expand]').forEach(function(btn){btn.addEventListener('click',function(){var el=document.getElementById(btn.dataset.expand);var open=!el.hidden;el.hidden=open;btn.querySelector('span').textContent=open?'⌄':'⌃';});});
+    document.querySelectorAll('.seg-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.seg-btn').forEach(function(x){x.classList.remove('is-active')});btn.classList.add('is-active');});});
+  </script>
 </body>
 </html>
