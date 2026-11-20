@@ -1,13 +1,17 @@
 {
   "schema": 1,
-  "measured_at": "2026-11-18T10:09:10.196069+00:00",
+  "measured_at": "2026-11-20T10:00:52.538524+00:00",
   "rows": [
     {
       "id": "legal-lawoc",
       "domain": "법률 원문",
       "cadence": "3시간",
       "workflow": "legal.yml",
-      "evidence": {},
+      "evidence": {
+        "lawgo_files": 41571,
+        "news_case_files": 2213,
+        "press_items": 51
+      },
       "status": "ACTIVE",
       "blocker": "legal 브랜치 원장을 data 분석층과 연결"
     },
@@ -31,9 +35,9 @@
       "evidence": {
         "directory_reported_providers": 33,
         "provider_links": 32,
-        "approved_providers": 23,
-        "candidate_links": 269,
-        "candidate_errors": 9,
+        "approved_providers": 24,
+        "candidate_links": 317,
+        "candidate_errors": 8,
         "bootstrap_seen": 130,
         "raw_documents": 260,
         "text_extracted": 259,
@@ -52,9 +56,9 @@
       "cadence": "매일 + 장중 공시",
       "workflow": "corporate.yml + collect.yml",
       "evidence": {
-        "corp_files": 530,
-        "indexed_corps": 2504,
-        "filings": 8117
+        "corp_files": 550,
+        "indexed_corps": 2505,
+        "filings": 8121
       },
       "status": "ACTIVE",
       "blocker": "기업별 감사의견·임원·재무 필드 결측 보강"
@@ -66,9 +70,9 @@
       "workflow": "sec-market.yml",
       "evidence": {
         "indexed": true,
-        "companies": 6850,
-        "crawled": 0,
-        "detail_files": 0
+        "companies": 10398,
+        "crawled": 100,
+        "detail_files": 200
       },
       "status": "INCREMENTAL",
       "blocker": "10-K·10-Q·8-K 문서 본문 파싱"
@@ -90,7 +94,7 @@
       "cadence": "매일 증분 / 대표 사실 일요일",
       "workflow": "people-photos.yml",
       "evidence": {
-        "people_files": 5091,
+        "people_files": 5435,
         "media_files": 0
       },
       "status": "ACTIVE_R2",
