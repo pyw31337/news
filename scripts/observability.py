@@ -10,6 +10,7 @@ import json
 import os
 import platform
 import sys
+import re
 from pathlib import Path
 
 KST = dt.timezone(dt.timedelta(hours=9))
@@ -43,6 +44,41 @@ def diag_summary(data):
     # 원본 산출물이 남아 있어도 일부 원천/AI 단계가 실패할 수 있다.
     # 전체 회차를 실패로 뭉개지 않고 degraded로 남겨 수집 성공과 부분 오류를 함께 보존한다.
     return {"status": "degraded" if fail or errors else "success", "ok": ok, "fail": fail, "errors": errors}
+
+
+def error_kind(error):
+    """실패 문자열을 운영자가 바로 조치할 수 있는 범주로 정규화한다."""
+    s = json.dumps(error, ensure_ascii=False).lower() if isinstance(error, dict) else str(error).lower()
+    if "429" in s or "rate" in s or "quota" in s or "too many" in s:
+        return "rate_limit"
+    if "timeout" in s or "timed out" in s or "timeoutex" in s:
+        return "timeout"
+    if re.search(r"\b(500|502|503|504)\b", s) or "service unavailable" in s:
+        return "upstream_5xx"
+    if "json" in s or "decode" in s or "parse" in s or "response must" in s:
+        return "response_parse"
+    if "404" in s or "not found" in s:
+        return "not_found"
+    if "ssl" in s or "certificate" in s:
+        return "tls"
+    if "urlerror" in s or "connection" in s or "network" in s:
+        return "network"
+    return "other"
+
+
+def diag_detail(data):
+    if not isinstance(data, dict):
+        return {"by_kind": {}, "by_host": {}, "examples": []}
+    by_kind = {}
+    by_host = {}
+    for host, count in (data.get("fail") or {}).items():
+        host = str(host or "unknown")
+        by_host[host] = by_host.get(host, 0) + int(count or 0)
+    examples = data.get("errors") or []
+    for item in examples:
+        kind = error_kind(item)
+        by_kind[kind] = by_kind.get(kind, 0) + 1
+    return {"by_kind": by_kind, "by_host": by_host, "examples": examples[-8:]}
 
 
 def stage(name, diag, artifact):
@@ -92,6 +128,13 @@ def main():
         "status": digest(root / "status.json"),
         "event_quality": digest(root / "event_quality.json"),
     }
+    quality_rows = quality.get("issues") or []
+    quality_detail = {
+        "low_score": sum(1 for row in quality_rows if float(row.get("q", 100) or 0) < 70),
+        "low_photo": sum(1 for row in quality_rows if float(row.get("photo_best", 100) or 0) < 70),
+        "low_source": sum(1 for row in quality_rows if float(row.get("src_top", 100) or 0) < 70),
+        "missing_event_stages": sum(1 for row in (event_quality.get("issues") or []) if row.get("gaps")),
+    }
     event = {
         "run_id": str(run_id),
         "observed_at": now.isoformat(timespec="seconds"),
@@ -107,6 +150,7 @@ def main():
                 "status": "success" if quality or event_quality else "unknown",
                 "quality_issue_count": len(quality.get("issues") or []),
                 "event_quality_present": bool(event_quality),
+                "detail": quality_detail,
             },
             "publish": {"status": "pending", "note": "기록 시점에는 data 브랜치 커밋 전"},
         },
@@ -118,6 +162,16 @@ def main():
             "quality_issues": len(quality.get("issues") or []),
         },
         "artifacts": artifacts,
+        "diagnostics": {
+            "collect": diag_detail(diag.get("collect")),
+            "analyze": diag_detail(diag.get("enrich")),
+            "global": diag_detail(diag.get("global")),
+            "other": {
+                name: diag_detail(value)
+                for name, value in diag.items()
+                if name not in {"collect", "enrich", "global"} and isinstance(value, dict)
+            },
+        },
         "status_snapshot": {
             "updated": status.get("updated"),
             "error_count": len(status.get("errors") or []),
