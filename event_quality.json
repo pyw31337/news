@@ -1,33 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 22:59:36",
+  "updated_at": "2026-11-20 23:22:26",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.86,
+  "average_quality": 0.84,
   "issues": [
     {
-      "id": "i5b14a2e6",
-      "title": "조희대 탄핵 추진에…판사들 \"결과 맘에 안들 때마다 비판, 어떻게 일 하나\"",
-      "episode": "episode:4e97daed5e21ed",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
-        "파장·후속",
-        "수사·대응",
-        "일반 보도",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 37,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib51e9320",
-      "title": "뉴욕증시, AI 기술주 매도세에 혼조 출발… 앤트로픽 상장 이틀째 10% 급락",
-      "episode": "episode:eebec2ac02a51c",
+      "id": "i43e73b46",
+      "title": "[뉴욕증시] 앤스로픽 급락 속 AI 매도세…나스닥, 5.3% 폭락",
+      "episode": "episode:adf3f6c479e4dd",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -40,13 +21,51 @@
         "수사·대응"
       ],
       "duplicate_candidates": 50,
-      "event_count": 70,
+      "event_count": 65,
       "evidence_rate": 1.0
     },
     {
-      "id": "i74946234",
-      "title": "\"남친이랑 포르노보다 걸린 찌질한 박지윤\"…악플러는 최동석이었다",
-      "episode": "episode:ae2a283717a6a8",
+      "id": "ia9cfb162",
+      "title": "한덕수 '파기환송' 후폭풍...'탄핵 추진'에 조희대 묵묵부답",
+      "episode": "episode:a3999c6055cc48",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "수사·대응",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 45,
+      "event_count": 25,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ie9c40a7e",
+      "title": "[속보] 이 대통령, '대장동 인터뷰' 공유하며 기소 반박 \"5500억 공익환수가 배임인가”",
+      "episode": "episode:e09b20a737e993",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "수사·대응",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 59,
+      "event_count": 118,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i42b8fd2f",
+      "title": "\"박지윤이...\" 악성 댓글 5건 작성자 알고 보니 전 남편 최동석",
+      "episode": "episode:e757d3e5b68725",
       "quality": 0.84,
       "stages": [
         "수사·대응",
@@ -58,27 +77,80 @@
         "입장·공방",
         "파장·후속"
       ],
-      "duplicate_candidates": 40,
-      "event_count": 35,
+      "duplicate_candidates": 39,
+      "event_count": 36,
       "evidence_rate": 1.0
     },
     {
-      "id": "icbdc8355",
-      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
-      "episode": "episode:0ccf9d5f29cd92",
+      "id": "ib903ddc5",
+      "title": "“내년 코스피 7000 넘는다”…자문사 대표 3명 중 2명이 답했다",
+      "episode": "episode:7f3185341d84ec",
       "quality": 1.0,
       "stages": [
+        "파장·후속",
         "발단·의혹",
         "일반 보도",
         "사법·처분",
-        "파장·후속",
         "입장·공방"
       ],
       "gaps": [
         "수사·대응"
       ],
-      "duplicate_candidates": 44,
-      "event_count": 28,
+      "duplicate_candidates": 30,
+      "event_count": 13,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if933243e",
+      "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
+      "episode": "episode:b688ee0acc05a9",
+      "quality": 0.92,
+      "stages": [
+        "입장·공방",
+        "파장·후속",
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 43,
+      "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3dfcdb08",
+      "title": "[속보]평택 소정리역서 화물열차 탈선…경부선 열차 운행 차질",
+      "episode": "episode:44703e3200cb7c",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id529a231",
+      "title": "김정은, 트럼프 대화제의 외면하고 교육공장으로…내치행보 지속",
+      "episode": "episode:58829ec8c9a782",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 25,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
@@ -94,88 +166,14 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 31,
+      "duplicate_candidates": 26,
       "event_count": 2,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if933243e",
-      "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
-      "episode": "episode:9065277103d743",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 19,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i6033b622",
-      "title": "법원 \"김수현 소속사, 쿠쿠에 모델료 8억 7천만 원 돌려줘야\"",
-      "episode": "episode:cbd6a6b496f3ba",
-      "quality": 0.84,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 16,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i6db5cc80",
-      "title": "대장동 인터뷰 공유한 李 대통령…'5500억 환수' 다시 꺼냈다",
-      "episode": "episode:ead05659248ae4",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "파장·후속",
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "gaps": [
-        "입장·공방"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 50,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "id529a231",
-      "title": "김정은, 트럼프 대화제의 외면하고 교육공장으로…내치행보 지속",
-      "episode": "episode:3d4623ccdcfb0a",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
       "id": "ic83ccfac",
       "title": "김범수 2심 무죄에 한숨 돌린 카카오…AI 사업 재편·인적분할 '탄력'",
-      "episode": "episode:bab2bd9fc9b1c9",
+      "episode": "episode:1ce3adbc537d90",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -187,7 +185,7 @@
       "gaps": [
         "입장·공방"
       ],
-      "duplicate_candidates": 24,
+      "duplicate_candidates": 25,
       "event_count": 16,
       "evidence_rate": 1.0
     }

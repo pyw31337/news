@@ -1,7 +1,39 @@
 {
-  "updated": "2026-11-21T07:55:05.766950+09:00",
-  "alerts_count": 17,
+  "updated": "2026-11-21T08:19:52.674351+09:00",
+  "alerts_count": 18,
   "alerts": [
+    {
+      "id": "urn:oid:2.49.0.1.840.0.e9b4990549fb1607fb68273d64026d8f7333bba7.001.1",
+      "t": "2026-11-20 18:10",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Waters from St. Augustine to Flagler Beach FL from 20 to 60 NM",
+      "area_en": "Waters from St. Augustine to Flagler Beach FL from 20 to 60 NM",
+      "event": "Special Marine Warning",
+      "event_en": "Special Marine Warning",
+      "severity": "Severe",
+      "headline_ko": "Waters from St. Augustine to Flagler Beach FL from 20 to 60 NM Special Marine Warning",
+      "headline_en": "Waters from St. Augustine to Flagler Beach FL from 20 to 60 NM Special Marine Warning",
+      "desc": "SMWJAX\n\nThe National Weather Service in Jacksonville has issued a\n\n* Special Marine Warning for...\nWaters from St. Augustine to Flagler Beach FL from 20 to 60 NM...\n\n* Until 645 PM EST.\n\n* At 610 PM EST, a severe thunderstorm capable of producing\nwaterspouts was located 56 NM east of Palm Coast, mov"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.78fd27ea6cc01362d19f260aec4010367d0edd8a.001.1",
+      "t": "2026-11-20 18:10",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Brevard",
+      "area_en": "Brevard",
+      "event": "홍수 경보",
+      "event_en": "Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "Brevard 홍수 경보",
+      "headline_en": "Brevard Flood Warning",
+      "desc": "* WHAT...Urban and small stream flooding caused by excessive rainfall\nis occurring.\n\n* WHERE...Northern Brevard County in east central Florida...\nEastern Volusia County in east central Florida...\n\n* WHEN...Until 800 AM EST Saturday.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lyi"
+    },
     {
       "id": "urn:oid:2.49.0.1.840.0.7c3009fb0ba23631e2ec9388cd109962b0cd83b6.001.1",
       "t": "2026-11-20 14:52",
@@ -163,22 +195,6 @@
       "desc": "* WHAT...Significant coastal flooding.\n\n* WHERE...Inland Flagler County.\n\n* WHEN...Until 7 AM EST Sunday.\n\n* IMPACTS...Numerous roads may be closed. Low lying property\nincluding homes, businesses, and some critical infrastructure\nwill be inundated. Some shoreline erosion will occur."
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.567b72661c0690692993e8cb7860fb760aa7f01a.001.1",
-      "t": "2026-11-20 12:22",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Brevard",
-      "area_en": "Brevard",
-      "event": "홍수 경보",
-      "event_en": "Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Brevard 홍수 경보",
-      "headline_en": "Brevard Flood Warning",
-      "desc": "* WHAT...Flooding caused by excessive rainfall is expected.\n\n* WHERE...Northern Brevard County in east central Florida...\nNortheastern Seminole County in east central Florida...\nSoutheastern Volusia County in east central Florida...\n\n* WHEN...Until 615 PM EST.\n\n* IMPACTS...Flooding of rivers, creeks"
-    },
-    {
       "id": "urn:oid:2.49.0.1.840.0.f368520d1de3d88bd754cc4012f90907a2a21ee2.001.1",
       "t": "2026-11-20 11:36",
       "country": "US",
@@ -225,25 +241,17 @@
       "headline_ko": "Nikolski to Seguam Bering Side out to 15 NM Storm Warning",
       "headline_en": "Nikolski to Seguam Bering Side out to 15 NM Storm Warning",
       "desc": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.83deef828dfd35360566967c061c71e2cce67b98.019.1",
-      "t": "2026-11-20 02:57",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Nikolski to Seguam Bering Side from 15 to 85 NM",
-      "area_en": "Nikolski to Seguam Bering Side from 15 to 85 NM",
-      "event": "Storm Warning",
-      "event_en": "Storm Warning",
-      "severity": "Severe",
-      "headline_ko": "Nikolski to Seguam Bering Side from 15 to 85 NM Storm Warning",
-      "headline_en": "Nikolski to Seguam Bering Side from 15 to 85 NM Storm Warning",
-      "desc": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height"
     }
   ],
   "quakes": [
+    {
+      "id": "us6000ucf0",
+      "mag": 4.9,
+      "place": "113 km ESE of Pangai, Tonga",
+      "t": "2026-11-20 22:34",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucf0"
+    },
     {
       "id": "us6000ucd6",
       "mag": 5.1,
@@ -315,14 +323,6 @@
       "t": "2026-11-20 06:49",
       "depth": 6.69999980926514,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75468702"
-    },
-    {
-      "id": "us6000uc6c",
-      "mag": 4.9,
-      "place": "54 km W of Madang, Papua New Guinea",
-      "t": "2026-11-20 05:17",
-      "depth": 97.583,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc6c"
     }
   ],
   "cities": [
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 15.7,
-      "apparent_temp": 13.2,
-      "humidity": 42,
+      "temp": 14.9,
+      "apparent_temp": 12.5,
+      "humidity": 45,
       "code": 0,
-      "wind": 5.4
+      "wind": 5.1
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 18.6,
-      "apparent_temp": 15.0,
-      "humidity": 28,
+      "temp": 18.3,
+      "apparent_temp": 14.5,
+      "humidity": 27,
       "code": 0,
-      "wind": 10.1
+      "wind": 10.0
     },
     {
       "id": "london",
@@ -362,11 +362,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 7.9,
-      "apparent_temp": 5.3,
-      "humidity": 60,
+      "temp": 7.8,
+      "apparent_temp": 5.1,
+      "humidity": 61,
       "code": 3,
-      "wind": 4.3
+      "wind": 5.0
     },
     {
       "id": "paris",
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 9.5,
-      "apparent_temp": 8.0,
+      "temp": 9.4,
+      "apparent_temp": 7.9,
       "humidity": 86,
       "code": 3,
-      "wind": 5.7
+      "wind": 5.2
     },
     {
       "id": "frankfurt",
@@ -390,11 +390,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 6.6,
-      "apparent_temp": 3.4,
-      "humidity": 78,
-      "code": 3,
-      "wind": 10.9
+      "temp": 6.3,
+      "apparent_temp": 3.0,
+      "humidity": 74,
+      "code": 1,
+      "wind": 10.2
     },
     {
       "id": "tokyo",
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 7.0,
-      "apparent_temp": 3.9,
-      "humidity": 54,
+      "temp": 7.2,
+      "apparent_temp": 4.6,
+      "humidity": 56,
       "code": 0,
-      "wind": 4.6
+      "wind": 1.8
     },
     {
       "id": "beijing",
@@ -422,7 +422,7 @@
       "apparent_temp": -4.5,
       "humidity": 41,
       "code": 0,
-      "wind": 8.4
+      "wind": 8.2
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 24.5,
-      "apparent_temp": 29.5,
-      "humidity": 97,
+      "temp": 24.7,
+      "apparent_temp": 29.8,
+      "humidity": 96,
       "code": 3,
-      "wind": 7.3
+      "wind": 6.9
     },
     {
       "id": "sydney",
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 25.0,
-      "apparent_temp": 27.3,
-      "humidity": 61,
+      "temp": 25.7,
+      "apparent_temp": 28.5,
+      "humidity": 56,
       "code": 0,
-      "wind": 8.1
+      "wind": 7.1
     },
     {
       "id": "toronto",
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 9.0,
-      "apparent_temp": 7.2,
-      "humidity": 80,
+      "temp": 8.8,
+      "apparent_temp": 6.9,
+      "humidity": 77,
       "code": 0,
-      "wind": 5.0
+      "wind": 4.7
     },
     {
       "id": "dubai",
@@ -475,10 +475,10 @@
       "lat": 25.2048,
       "lon": 55.2708,
       "temp": 27.1,
-      "apparent_temp": 29.2,
+      "apparent_temp": 29.4,
       "humidity": 63,
       "code": 0,
-      "wind": 9.7
+      "wind": 8.9
     },
     {
       "id": "saopaulo",
@@ -488,29 +488,21 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 23.1,
-      "apparent_temp": 25.6,
-      "humidity": 77,
-      "code": 81,
-      "wind": 5.0
+      "temp": 22.2,
+      "apparent_temp": 24.7,
+      "humidity": 84,
+      "code": 3,
+      "wind": 6.7
     }
   ],
   "stories": [
     {
-      "id": "g3489f489",
+      "id": "gc6669fc2",
       "title": "Factious climate talks enter overtime without new draft deal in sight – as it happened",
       "press": "Guardian Environment",
-      "image": "https://static.dw.com/image/79999578_6.jpg",
-      "score": 14.1,
-      "url": "g/g3489f489"
-    },
-    {
-      "id": "g368ef063",
-      "title": "Cop31 talks go into overtime as debate rages over lack of fossil fuels in draft deal",
-      "press": "Guardian Environment",
-      "image": "https://courthousenews.com/wp-content/uploads/2026/11/un-cop-31-shame.jpg",
-      "score": 11.3,
-      "url": "g/g368ef063"
+      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/afp_6b00c08d262a-1795211405.jpg?resize=1920%2C1440",
+      "score": 26.7,
+      "url": "g/gc6669fc2"
     }
   ]
 }
