@@ -1,45 +1,46 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 19:22:37",
+  "updated_at": "2026-11-20 19:54:44",
   "date": "2026-11-21",
   "total_issues": 10,
   "average_quality": 0.85,
   "issues": [
     {
-      "id": "id9b0d126",
-      "title": "\"천재라며 띄워놓고…죄는 미워해도 사람은 미워하지 말라\" 이진우 사태에 서울대 교수 쓴소리",
-      "episode": "episode:a7129950df8f9b",
+      "id": "i4cfabfce",
+      "title": "국민의힘, 조희대 탄핵 추진에 ‘반색’···“민주당도 참 힘든 길 간다”",
+      "episode": "episode:316fb16d2a7f0a",
       "quality": 1.0,
       "stages": [
+        "일반 보도",
+        "수사·대응",
         "사법·처분",
+        "파장·후속",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 37,
+      "event_count": 24,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ie7177138",
+      "title": "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
+      "episode": "episode:b3578f3b08680c",
+      "quality": 1.0,
+      "stages": [
         "일반 보도",
         "파장·후속",
         "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "gaps": [],
-      "duplicate_candidates": 28,
-      "event_count": 11,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iba103b10",
-      "title": "민주, 의총서 ‘조희대 대법원장 탄핵 추진’ 당론 결정",
-      "episode": "episode:784b2b8d561754",
-      "quality": 1.0,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "파장·후속",
-        "입장·공방",
+      "gaps": [
         "사법·처분"
       ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 21,
+      "duplicate_candidates": 34,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
@@ -57,22 +58,22 @@
         "발단·의혹",
         "파장·후속"
       ],
-      "duplicate_candidates": 36,
+      "duplicate_candidates": 41,
       "event_count": 19,
       "evidence_rate": 1.0
     },
     {
-      "id": "iebe0b1c9",
-      "title": "박지윤 악플러, 경찰이 잡고보니…전 남편 최동석",
-      "episode": "episode:45d91ab296a404",
-      "quality": 0.84,
+      "id": "ifb5b3124",
+      "title": "박지윤 ‘이혼 악플러’ 잡고 보니 전남편 최동석…명예훼손 혐의 송치",
+      "episode": "episode:55f92d5130dfb8",
+      "quality": 0.92,
       "stages": [
         "사법·처분",
         "수사·대응",
-        "일반 보도"
+        "일반 보도",
+        "발단·의혹"
       ],
       "gaps": [
-        "발단·의혹",
         "입장·공방",
         "파장·후속"
       ],
@@ -81,109 +82,96 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "ibcfe6b92",
-      "title": "\"2억7000만원이 1억 됐다\"…버티다 지친 삼전닉스 개미들",
-      "episode": "episode:939c3f6c59c3aa",
+      "id": "i3ba51eb9",
+      "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
+      "episode": "episode:6888182926061f",
       "quality": 0.92,
       "stages": [
+        "파장·후속",
         "일반 보도",
-        "사법·처분",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "icc7073be",
-      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
-      "episode": "episode:b4571ab00be66b",
-      "quality": 0.66,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
+        "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 42,
-      "event_count": 40,
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 36,
+      "event_count": 38,
       "evidence_rate": 1.0
     },
     {
-      "id": "ib6822c18",
-      "title": "‘10년 광고 모델’ 김수현 결국…법원 “김수현 소속사, 쿠쿠에 8억 배상하라”",
-      "episode": "episode:3a5f659cde585e",
+      "id": "i95d12aa9",
+      "title": "법원 \"사생활 논란' 김수현 측, 쿠쿠에 모델료 8억원 돌려줘야\"(종합)",
+      "episode": "episode:6ff12fd1624b33",
       "quality": 0.84,
       "stages": [
-        "발단·의혹",
+        "사법·처분",
         "일반 보도",
-        "파장·후속"
+        "발단·의혹"
       ],
       "gaps": [
         "입장·공방",
         "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 33,
+      "duplicate_candidates": 34,
       "event_count": 18,
       "evidence_rate": 1.0
     },
     {
-      "id": "i483d84b5",
-      "title": "[단독] 공사 생도 부정행위 퇴교…시험지 스마트폰 촬영",
-      "episode": "episode:5f3b1c6a90fc38",
+      "id": "i072b86da",
+      "title": "공사 생도 '명예시험' 중 스마트폰으로 시험지 촬영…퇴교 처분",
+      "episode": "episode:eb8488e52f5424",
       "quality": 0.48,
       "stages": [
         "사법·처분"
       ],
-      "duplicate_candidates": 33,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i64679c80",
-      "title": "‘7만전자·20만닉스’ 간다는 전문가 “폭락 시작도 안 했다”…증권가는 정반대 전망",
-      "episode": "episode:5e0ef9a66ddbec",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "파장·후속",
-        "일반 보도",
-        "사법·처분"
-      ],
       "gaps": [
         "발단·의혹",
-        "입장·공방"
+        "입장·공방",
+        "수사·대응"
       ],
       "duplicate_candidates": 29,
-      "event_count": 12,
+      "event_count": 2,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia939ce03",
-      "title": "미중러 회담 뒤 '러 목소리 커진다' \"나토 회원, 준회원도 안돼\"",
-      "episode": "episode:55a3f5e64812db",
+      "id": "icbdc8355",
+      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
+      "episode": "episode:4eb69c0d815995",
       "quality": 0.92,
       "stages": [
+        "발단·의혹",
         "일반 보도",
-        "수사·대응",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if933243e",
+      "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
+      "episode": "episode:c4ae311aeb6cb9",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
         "파장·후속",
         "입장·공방"
       ],
       "gaps": [
         "발단·의혹",
+        "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 9,
+      "duplicate_candidates": 34,
+      "event_count": 17,
       "evidence_rate": 1.0
     },
     {
@@ -201,25 +189,6 @@
       ],
       "duplicate_candidates": 25,
       "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "id0d27ff9",
-      "title": "장애 아들 앞 폭행… ‘김창민 감독 살해’ 피의자들 징역 12년·3년",
-      "episode": "episode:f616ea440abebf",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "사법·처분",
-        "입장·공방",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 39,
       "evidence_rate": 1.0
     }
   ]
