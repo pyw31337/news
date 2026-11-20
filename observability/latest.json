@@ -1,24 +1,24 @@
 {
-  "run_id": "44686126531",
-  "observed_at": "2026-11-20T06:21:23+00:00",
-  "observed_at_kst": "2026-11-20T15:21:23+09:00",
+  "run_id": "44689655385",
+  "observed_at": "2026-11-20T06:57:42+00:00",
+  "observed_at_kst": "2026-11-20T15:57:42+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
-  "commit": "dc821904920a235c09b405d1ad5b8ed1e22db2d2",
+  "commit": "2285dd816511c8631dca55031f37d903e9025339",
   "host": "github-actions",
   "stages": {
     "collect": {
       "status": "degraded",
-      "ok": 270,
-      "fail": 16,
-      "errors": 16,
+      "ok": 263,
+      "fail": 20,
+      "errors": 20,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 485,
-      "fail": 43,
-      "errors": 40,
+      "ok": 499,
+      "fail": 34,
+      "errors": 34,
       "artifact": true
     },
     "quality": {
@@ -35,20 +35,20 @@
   },
   "counts": {
     "issues": 10,
-    "sources": 196,
+    "sources": 194,
     "entities": 36,
-    "global_issues": 0,
+    "global_issues": 12,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "71a4c426587bc2b76b6f08ee4edf2c03efe5f3af8cb5dc7feb3d732cfb440d7d",
-    "global": null,
-    "quality": "f9e42ba80001992af172cef8c4b5c096b93e6093b6dd043cff7cae02d64dd6bc",
-    "status": "07d506789c7e74173651f589bf41fdc07d9e10b11c8d83859b20345d99ecc032",
-    "event_quality": "7777d877360ab413282a8f5d7334f6c3b3f7eeca94961b90bd3fedb7f69c5b08"
+    "today": "0b3f259bf9d98547dce24335e25672d459def593a8426096d0787f829c0db667",
+    "global": "2357d9da12aa0934d6f3e72d067bd94084b319c32338e142d7f720b992445721",
+    "quality": "8f3dec9121fe866d137d06516bffed4df45e05d29aff9221d733084d8c536d6e",
+    "status": "ecfb6ab29d36e565403eb5717c2a5457e3be9d803cca7c990e854b6953a6a277",
+    "event_quality": "c3e3da947104fe6016e2edeb4da85d4abfd55eae02ed4adfc3af874212014a52"
   },
   "status_snapshot": {
-    "updated": "2026-11-20T15:20:56.680006+09:00",
+    "updated": "2026-11-20T15:57:05.702658+09:00",
     "error_count": 60
   }
 }

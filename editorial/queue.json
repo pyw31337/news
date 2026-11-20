@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T15:20:56+09:00",
+  "generated_at": "2026-11-20T15:57:05+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -30,25 +30,25 @@
       "issue_id": "ibd3da8cb",
       "title": "급락장에 코스피 이어 코스닥서도 매도 사이드카",
       "category": "경제",
-      "rank": 2,
+      "rank": 1,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
         "코스피가 20일 장중 4%대 급락세를 보이자 프로그램 매도호가 일시효력정지(매도 사이드카)가 발동되었습니다.",
-        "코스피 매도 사이드카는 지난 6일 이후 10거래일 만이다.",
-        "올해 코스피 사이드카 발동은 59번째로 매도 31회·매수 28회다.",
-        "종전 연간 최다인 2008년 26회의 두 배를 넘었다.",
-        "현행 요건을 적용한 2002년 이후 누적..."
+        "유가증권시장에 매도 사이드카가 발동됐다.",
+        "사이드카 발동 이후에도 지수는 낙폭을 오히려 키웠고, 결국 4900선마저 깨진 채 거래를 마감했다.",
+        "코스피가 종가 기준 4900선을 밑돈 건 지난 1월 20일(4885.75) 이후...",
+        "'검은 금요일' 코스피, 4900선 밑으로…코스닥까지 동반 '매도 사이드카'"
       ],
       "sources": [
         {
-          "press": "weekly.hankooki.com",
-          "title": "\"美 기술주 투매에 앤트로픽 쇼크\"…코스피 4900선 붕괴",
-          "url": "https://weekly.hankooki.com/news/articleView.html?idxno=7194970"
+          "press": "seoul.co.kr",
+          "title": "[속보] 코스피 5% 급락 4869.96 마감…삼전 7%↓ ‘검은 금요일’",
+          "url": "https://n.news.naver.com/mnews/article/081/0003701632?sid=101"
         },
         {
           "press": "뉴시스",
@@ -56,9 +56,9 @@
           "url": "https://n.news.naver.com/article/003/0014335753"
         },
         {
-          "press": "sisajournal.com",
-          "title": "李 대통령 \"수출 1조 달러 시대…이제는 '모두의 성장'으로\"",
-          "url": "https://n.news.naver.com/mnews/article/586/0000142653?sid=101"
+          "press": "조선비즈",
+          "title": "코스피 4%대 하락세에 매도 사이드카…외국인 1조원 넘게 매도",
+          "url": "https://n.news.naver.com/article/366/0001206224"
         },
         {
           "press": "한국일보",
@@ -75,12 +75,12 @@
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "코스피 매도 사이드카는 지난 6일 이후 10거래일 만이다."
+          "evidence": "유가증권시장에 매도 사이드카가 발동됐다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "올해 코스피 사이드카 발동은 59번째로 매도 31회·매수 28회다."
+          "evidence": "사이드카 발동 이후에도 지수는 낙폭을 오히려 키웠고, 결국 4900선마저 깨진 채 거래를 마감했다."
         },
         {
           "panel": 4,
@@ -123,15 +123,17 @@
         "numeric_or_specific_evidence": true,
         "sources": 4,
         "continuity_quality": 1.0,
-        "continuity_gaps": [],
+        "continuity_gaps": [
+          "입장·공방"
+        ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "i5242c18c",
-      "title": "코스피 장중 4%대 급락…매도 사이드카",
+      "issue_id": "ifb1d05ac",
+      "title": "\"'7만전자·20만닉스' 갈 수밖에 없다\"…전문가의 섬뜩한 경고",
       "category": "경제",
-      "rank": 5,
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -139,49 +141,152 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "코스피가 20일 장중 4%대 급락세를 보이자 프로그램 매도호가 일시효력정지(매도 사이드카)가 발동되었습니다.",
-        "“반도체주 손절? 후회할 수도”…삼전닉스에 무슨 일이",
-        "삼전닉스 4~5%대 급락…코스피 5000선 깨진 채 출발[이런국장 저런주식]",
-        "코스피 이어 코스닥도 매도 사이드카…삼전닉스 6%대 급락(종합)",
-        "코스피·코스닥 동반 매도사이드카…삼전닉스 6%대 급락(종합)"
+        "삼성전자와 SK하이닉스의 적정 주가를 각각 7만원과 20만원으로 제시한 애널리스트가 메모리 반도체 가격이 꺾이면 주가가 다시 추락할 수 있다고 경고했다.",
+        "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\"",
+        "\"본격 폭락 아직 시작 안 했다\"…'7만전자·20만닉스' 제시한 애널리스트의 경고",
+        "\"아직 본격적인 폭락은 시작이 안 됐다.",
+        "1년 안에 50%도 떨어질 수 있다."
       ],
       "sources": [
         {
-          "press": "전자신문",
-          "title": "“반도체주 손절? 후회할 수도”…삼전닉스에 무슨 일이",
-          "url": "https://n.news.naver.com/article/030/0003487899"
+          "press": "이데일리",
+          "title": "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\"",
+          "url": "https://n.news.naver.com/article/018/0006412855"
         },
         {
-          "press": "서울경제",
-          "title": "삼전닉스 4~5%대 급락…코스피 5000선 깨진 채 출발[이런국장 저런주식]",
-          "url": "https://n.news.naver.com/article/011/0004684275"
+          "press": "파이낸셜뉴스",
+          "title": "\"본격 폭락 아직 시작 안 했다\"…'7만전자·20만닉스' 제시한 애널리스트의 경고",
+          "url": "https://n.news.naver.com/article/014/0005607219"
         },
         {
-          "press": "연합뉴스",
-          "title": "코스피 이어 코스닥도 매도 사이드카…삼전닉스 6%대 급락(종합)",
-          "url": "https://n.news.naver.com/article/001/0016454358"
+          "press": "hidomin.com",
+          "title": "\"삼전닉스, 1년내 50% 떨어질 수도... 본격 폭락 아직 시작 안 했다\"",
+          "url": "https://www.hidomin.com/news/articleView.html?idxno=730279"
         },
         {
-          "press": "뉴스1",
-          "title": "코스피·코스닥 동반 매도사이드카…삼전닉스 6%대 급락(종합)",
-          "url": "https://n.news.naver.com/article/421/0009301319"
+          "press": "insight.co.kr",
+          "title": "'7만전자·20만닉스' 제시한 전문가 \"아직 본격적인 폭락 시작도 안 해\"",
+          "url": "https://www.insight.co.kr/news/582872"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "코스피가 20일 장중 4%대 급락세를 보이자 프로그램 매도호가 일시효력정지(매도 사이드카)가 발동되었습니다."
+          "evidence": "삼성전자와 SK하이닉스의 적정 주가를 각각 7만원과 20만원으로 제시한 애널리스트가 메모리 반도체 가격이 꺾이면 주가가 다시 추락할 수 있다고 경고했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "코스피 이어 코스닥도 매도 사이드카…삼전닉스 6%대 급락(종합)"
+          "evidence": "이 애널리스트는 지난 10월 삼성전자 21만원, SK하이닉스 126만원까지 폭락했을 당시 삼성전자와 SK하이닉스의 적정 주가를 각각 7만원과 20만원으로 제시해 개인투자자들의 관심을 받았다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "삼전닉스 4~5%대 급락…코스피 5000선 깨진 채 출발[이런국장 저런주식]"
+          "evidence": "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\""
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i0b3d7aeb",
+      "title": "트럼프·시진핑·푸틴 \"핵전쟁 안 돼\"…北 비핵화 압박 나설까",
+      "category": "세계",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "시 주석은 19일 도널드 트럼프 미국 대통령, 블라디미르 푸틴 러시아 대통령과 첫 3자 회담을 가진 자리에서 “‘투키디데스의 함정’은 결코 숙명이 아니며 핵심은 주요",
+        "강대국들이 어떻게 선택하느냐에 달려 있다”고...",
+        "“트럼프, 푸틴 만난 뒤 유럽에 ’우크라 지원 끊어’ 신경질“",
+        "도널드 트럼프 미국 대통령은 미국 엔비시(NBC)와의 전화 인터뷰에서 회담 성과가 10점 만점에 “12점”이라고...",
+        "영국 가디언은 19일 3국 회담이 푸틴 대통령의 주장처럼 ‘외교사의 새로운 한 페이지’가 아니라 “21세기..."
+      ],
+      "sources": [
+        {
+          "press": "newsis.com",
+          "title": "머스크, 6살 아들 X와 함께 첫 선전 방문 “나는 열렬한 중국 팬”",
+          "url": "https://n.news.naver.com/mnews/article/003/0014336168?sid=104"
+        },
+        {
+          "press": "연합뉴스TV",
+          "title": "“트럼프, 푸틴 만난 뒤 유럽에 ’우크라 지원 끊어’ 신경질“",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5CVU0wQmZBZC1MZUxUcGx0STFuNWNFZjd4V3lYcm1qR21wUGpuZ1RxLVRYbl9GTTRXNGswd3JKWDBxZ3VXbDBORk5ONDBiNGppXzJ1VG9aYk1ya3NYeFV2ZDNQZ09oMTA?oc=5"
+        },
+        {
+          "press": "hani.co.kr",
+          "title": "미·중·러 “외교사 중요 페이지” 자화자찬에…“역사책의 작은 각주...",
+          "url": "https://n.news.naver.com/mnews/article/028/0002833230?sid=104"
+        },
+        {
+          "press": "edaily.co.kr",
+          "title": "미중러 회담 직후 李 \"한반도 문제 우리가 주도…국익 앞에 정쟁 안돼\"",
+          "url": "https://n.news.naver.com/mnews/article/018/0006413189?sid=100"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "시 주석은 19일 도널드 트럼프 미국 대통령, 블라디미르 푸틴 러시아 대통령과 첫 3자 회담을 가진 자리에서 “‘투키디데스의 함정’은 결코 숙명이 아니며 핵심은 주요"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "트럼프 \"시진핑·푸틴과 '매우 중대한' 회담…중국과 AI 규제 논의\""
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "도널드 트럼프 미국 대통령은 미국 엔비시(NBC)와의 전화 인터뷰에서 회담 성과가 10점 만점에 “12점”이라고..."
         },
         {
           "panel": 4,
@@ -228,111 +333,6 @@
           "발단·의혹",
           "수사·대응",
           "파장·후속"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i9f5e1743",
-      "title": "역사적 미중러 회담서 평화 말한 푸틴, 크림대교 공격엔 “더 고통스러운 보복”",
-      "category": "세계",
-      "rank": 10,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "이번 회의는 도널드 트럼프 미국 대통령과 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령이 중국 선전에서 3자 정상회담을 개최한 직후 열렸다.",
-        "유럽에서는 미국과 러시아가 우크라이나 종전 조건을 일방적으로...",
-        "이 대통령은 이번 순방 일정 도중 시진핑 중국 국가주석과 37분간 정상회담을, 블라디미르 푸틴 러시아 대통령과 만찬장에서 10여분간 약식회담을 갖고, 도널드 트럼프 미국 대통령과는 만찬장에서 두 차례 만나 짧게...",
-        "미중러 정상회담 혹평 속에…트럼프 “10점 만점에 12점” 자평",
-        "앞줄에는 이재명 대통령(오른쪽 네번째), 도널드 트럼프 미국 대통령, 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령, 또 럼 베트남 국가주석이 서 있다."
-      ],
-      "sources": [
-        {
-          "press": "dailian.co.kr",
-          "title": "미·중·러 밀실 담합에 유럽 37개국 반발…\"제2의 얄타는 없다\"",
-          "url": "https://n.news.naver.com/mnews/article/119/0003157737?sid=104"
-        },
-        {
-          "press": "pressian.com",
-          "title": "李대통령, '제2얄타회담' 우려에 \"더이상 80년전 약소국 아냐\"",
-          "url": "https://n.news.naver.com/mnews/article/002/0002466851?sid=100"
-        },
-        {
-          "press": "동아일보",
-          "title": "미중러 정상회담 혹평 속에…트럼프 “10점 만점에 12점” 자평",
-          "url": "https://www.donga.com/news/Inter/article/all/20261120/135059775/1"
-        },
-        {
-          "press": "newspim.com",
-          "title": "李대통령 \"한반도 현안, 직접 당사자인 우리가 주도적으로 풀어야\"",
-          "url": "https://www.newspim.com/news/view/20261120000761"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "이번 회의는 도널드 트럼프 미국 대통령과 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령이 중국 선전에서 3자 정상회담을 개최한 직후 열렸다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "[미중러 정상회담] 트럼프에게 \"내 친구\"로 불린 푸틴…종전협상 영향은"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "이 대통령은 이번 순방 일정 도중 시진핑 중국 국가주석과 37분간 정상회담을, 블라디미르 푸틴 러시아 대통령과 만찬장에서 10여분간 약식회담을 갖고, 도널드 트럼프 미국 대통령과는 만찬장에서 두 차례 만나 짧게..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.76,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
         ],
         "no_generic_closing": true
       }
