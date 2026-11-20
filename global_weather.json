@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20T10:42:10.968590+09:00",
-  "alerts_count": 5,
+  "updated": "2026-11-20T11:18:17.052248+09:00",
+  "alerts_count": 7,
   "alerts": [
     {
       "id": "urn:oid:2.49.0.1.840.0.5031086e93ddbd67ff9105f0fdd484bb2fb3b2e2.001.1",
@@ -65,6 +65,22 @@
       "headline_ko": "Wasatch Mountains I-80 North 겨울 폭풍 경보",
       "headline_en": "Wasatch Mountains I-80 North Winter Storm Warning",
       "desc": "* WHAT...Snow expected. Total snow accumulations between 12 and 24\ninches, highest in the Upper Cottonwoods and for mountains near the\nUtah/Idaho border.\n\n* WHERE...The Wasatch Mountains.\n\n* WHEN...Until 11 AM MST Saturday.\n\n* IMPACTS...Winter driving conditions are expected. Roads, and\nespecially b"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.79ff407c4bc1ec15944e9f795c52b9ac7a34fb36.001.1",
+      "t": "2026-11-19 07:16",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Ruby Mountains and East Humboldt Range",
+      "area_en": "Ruby Mountains and East Humboldt Range",
+      "event": "겨울 폭풍 경보",
+      "event_en": "Winter Storm Warning",
+      "severity": "Severe",
+      "headline_ko": "Ruby Mountains and East Humboldt Range 겨울 폭풍 경보",
+      "headline_en": "Ruby Mountains and East Humboldt Range Winter Storm Warning",
+      "desc": "* WHAT...Heavy snow expected. Total snow accumulations between 8 and\n18 inches. Winds gusting as high as 40 mph.\n\n* WHERE...Ruby Mountains and East Humboldt Range in Elko County.\n\n* WHEN...Until 4 PM PST Friday.\n\n* IMPACTS...Travel could be very difficult to impossible. The\nhazardous conditions will"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.8c7da12b200f3238aeaaa881761a15b7b168325e.001.1",
@@ -190,11 +206,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 9.1,
-      "apparent_temp": 7.4,
-      "humidity": 79,
-      "code": 0,
-      "wind": 4.0
+      "temp": 8.6,
+      "apparent_temp": 6.3,
+      "humidity": 80,
+      "code": 1,
+      "wind": 7.8
     },
     {
       "id": "losangeles",
@@ -204,11 +220,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 14.3,
-      "apparent_temp": 14.4,
-      "humidity": 82,
-      "code": 1,
-      "wind": 1.9
+      "temp": 14.0,
+      "apparent_temp": 14.2,
+      "humidity": 81,
+      "code": 3,
+      "wind": 0.5
     },
     {
       "id": "london",
@@ -218,11 +234,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 7.6,
+      "temp": 7.8,
       "apparent_temp": 6.2,
-      "humidity": 87,
+      "humidity": 86,
       "code": 3,
-      "wind": 5.0
+      "wind": 3.2
     },
     {
       "id": "paris",
@@ -232,11 +248,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 10.4,
-      "apparent_temp": 7.4,
-      "humidity": 78,
-      "code": 80,
-      "wind": 15.0
+      "temp": 10.6,
+      "apparent_temp": 7.5,
+      "humidity": 80,
+      "code": 3,
+      "wind": 16.3
     },
     {
       "id": "frankfurt",
@@ -246,11 +262,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 9.8,
-      "apparent_temp": 7.8,
-      "humidity": 90,
+      "temp": 10.0,
+      "apparent_temp": 7.2,
+      "humidity": 84,
       "code": 61,
-      "wind": 13.3
+      "wind": 14.8
     },
     {
       "id": "tokyo",
@@ -260,11 +276,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 13.2,
-      "apparent_temp": 9.1,
+      "temp": 13.7,
+      "apparent_temp": 9.8,
       "humidity": 35,
       "code": 0,
-      "wind": 12.1
+      "wind": 12.3
     },
     {
       "id": "beijing",
@@ -274,11 +290,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 2.0,
-      "apparent_temp": -1.9,
-      "humidity": 45,
+      "temp": 4.1,
+      "apparent_temp": 0.5,
+      "humidity": 41,
       "code": 0,
-      "wind": 4.7
+      "wind": 3.1
     },
     {
       "id": "singapore",
@@ -288,11 +304,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 27.8,
-      "apparent_temp": 33.2,
-      "humidity": 77,
+      "temp": 28.6,
+      "apparent_temp": 33.7,
+      "humidity": 72,
       "code": 3,
-      "wind": 2.3
+      "wind": 2.6
     },
     {
       "id": "sydney",
@@ -302,11 +318,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 24.5,
-      "apparent_temp": 26.6,
-      "humidity": 63,
-      "code": 3,
-      "wind": 14.3
+      "temp": 25.1,
+      "apparent_temp": 27.2,
+      "humidity": 62,
+      "code": 2,
+      "wind": 16.0
     },
     {
       "id": "toronto",
@@ -316,11 +332,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 9.8,
-      "apparent_temp": 6.2,
-      "humidity": 59,
-      "code": 2,
-      "wind": 12.5
+      "temp": 9.7,
+      "apparent_temp": 6.0,
+      "humidity": 60,
+      "code": 3,
+      "wind": 13.0
     },
     {
       "id": "dubai",
@@ -330,11 +346,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 22.7,
-      "apparent_temp": 25.3,
-      "humidity": 80,
+      "temp": 22.9,
+      "apparent_temp": 25.4,
+      "humidity": 77,
       "code": 0,
-      "wind": 5.5
+      "wind": 4.8
     },
     {
       "id": "saopaulo",
@@ -344,21 +360,12 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 25.4,
-      "apparent_temp": 27.4,
-      "humidity": 66,
+      "temp": 24.7,
+      "apparent_temp": 27.1,
+      "humidity": 73,
       "code": 3,
-      "wind": 7.5
+      "wind": 8.3
     }
   ],
-  "stories": [
-    {
-      "id": "gf74b625f",
-      "title": "Tensions Flare Over Fossil Fuels at UN Climate Talks",
-      "press": "Inside Climate News",
-      "image": "https://insideclimatenews.org/wp-content/uploads/2026/11/GettyImages-2305193518.jpg",
-      "score": 10.1,
-      "url": "g/gf74b625f"
-    }
-  ]
+  "stories": []
 }
