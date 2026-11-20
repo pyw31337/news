@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
-  "date": "2026-11-20",
-  "generated_at": "2026-11-20T23:56:44+09:00",
+  "date": "2026-11-21",
+  "generated_at": "2026-11-21T00:29:54+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,22 +27,125 @@
   },
   "candidates": [
     {
-      "issue_id": "i9a6e7f91",
-      "title": "검은 금요일…코스피 5000 붕괴, 앤트로픽 상장 흥행에도 美 기술주 급락",
+      "issue_id": "i959729d9",
+      "title": "“하루 만에 5000선 와르르”…코스피 3%대 급락, 삼성전자 18만원대로",
       "category": "경제",
-      "rank": 3,
-      "priority_score": 37,
+      "rank": 4,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "국내 증시가 다시 '검은 금요일'을 맞았습니다.",
+        "2026년 11월 20일, 전날 5100선을 회복했던 코스피가 미국 AI 관련주 급락과 앤트로픽 IPO의 부진 등 대외 악재로 인해 하루 만에 5000선 아래로 추락했다.",
+        "코스피 또 4%대 급락…'5천피' 무너지고 반도체주 와르르",
+        "강했던 AMD 쇼크...코스피 다시 5000선 밑으로",
+        "“하루 만에 5000선 와르르”…코스피 3%대 급락, 삼성전자 18만원대로",
+        "“또 매도 사이드카”…코스피 5.05% 폭락, 4800선 추락"
+      ],
+      "sources": [
+        {
+          "press": "한국경제TV",
+          "title": "코스피 또 4%대 급락…'5천피' 무너지고 반도체주 와르르",
+          "url": "https://n.news.naver.com/article/215/0001273377"
+        },
+        {
+          "press": "비즈워치",
+          "title": "앤트로픽 흥행보다 강했던 AMD 쇼크...코스피 다시 5000선 밑으로",
+          "url": "https://n.news.naver.com/article/648/0000052819"
+        },
+        {
+          "press": "디지털데일리",
+          "title": "“하루 만에 5000선 와르르”…코스피 3%대 급락, 삼성전자 18만원대로",
+          "url": "https://n.news.naver.com/article/138/0002249322"
+        },
+        {
+          "press": "디지털데일리",
+          "title": "“또 매도 사이드카”…코스피 5.05% 폭락, 4800선 추락",
+          "url": "https://n.news.naver.com/article/138/0002249356"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "2026년 11월 20일, 전날 5100선을 회복했던 코스피가 미국 AI 관련주 급락과 앤트로픽 IPO의 부진 등 대외 악재로 인해 하루 만에 5000선 아래로 추락했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "“또 매도 사이드카”…코스피 5.05% 폭락, 4800선 추락"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "코스피 또 4%대 급락…'5천피' 무너지고 반도체주 와르르"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "이전의 반등 흐름이 미국발 악재로 인해 완전히 꺾였으며, 5000선 붕괴와 매도 사이드카 발동으로 시장의 변동성이 극대화된 상태로 볼 수 있다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "icbdc8355",
+      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
+      "category": "경제",
+      "rank": 10,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "미 뉴욕증시에 앤트로픽이 상장한 뒤 기술주에 불어닥친 삭풍에 20일 코스피가 5%대 급락 마감했다.",
         "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
-        "증권가도 \"팔기엔 늦었고 사기엔 무섭다\"…5000 깨진 코스피 고민",
         "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
-        "\"코스피 9000에서 5000으로\"…개미들 손실 563조원 추정"
+        "9% 하락한 코스피의 시가총액은 3,991조 3,977억 원을 기록하며 올 1월 15일 이후 10개월 만에 처음으로 4,000조 원대가 붕괴됐다.",
+        "장중 급락세가 이어지면서 양대 증시에는 매도 사이드카가 잇따라 발동됐다."
       ],
       "sources": [
         {
@@ -51,26 +154,26 @@
           "url": "https://n.news.naver.com/article/081/0003701632"
         },
         {
-          "press": "뉴스1",
-          "title": "증권가도 \"팔기엔 늦었고 사기엔 무섭다\"…5000 깨진 코스피 고민",
-          "url": "https://n.news.naver.com/article/421/0009302014"
-        },
-        {
           "press": "머니투데이",
           "title": "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
           "url": "https://n.news.naver.com/article/008/0005444256"
         },
         {
-          "press": "파이낸셜뉴스",
-          "title": "\"코스피 9000에서 5000으로\"…개미들 손실 563조원 추정",
-          "url": "https://n.news.naver.com/article/014/0005607174"
+          "press": "fntoday.co.kr",
+          "title": "\"검은 금요일\" 덮친 국내 증시…코스피 4,800대로 후퇴, 10개월만 최저",
+          "url": "https://www.fntoday.co.kr/news/articleView.html?idxno=399515"
+        },
+        {
+          "press": "m-economynews.com",
+          "title": "‘검은 금요일’ 코스피 4,900선 붕괴...AI 투자 불안에 글로벌 증시 동...",
+          "url": "https://www.m-economynews.com/news/article.html?no=73395"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "국내 증시가 다시 '검은 금요일'을 맞았습니다."
+          "evidence": "미 뉴욕증시에 앤트로픽이 상장한 뒤 기술주에 불어닥친 삭풍에 20일 코스피가 5%대 급락 마감했다."
         },
         {
           "panel": 2,
@@ -122,122 +225,19 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 1.0,
+        "continuity_quality": 0.84,
         "continuity_gaps": [
+          "입장·공방",
           "수사·대응"
         ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "ia3070785",
-      "title": "코스피 이어 코스닥도 매도 사이드카…삼성전자·하이닉스 6%대 급락",
-      "category": "경제",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "코스피가 외국인과 기관의 동반 매도에 5% 넘게 급락하고 있다.",
-        "코스피 이어 코스닥도 매도 사이드카…삼성전자·하이닉스 6%대 급락",
-        "다시 5천선 내준 코스피…앤트로픽도 못 막은 AI 불안",
-        "코스피 3% 하락 출발…‘앤트로픽 IPO 흥행’에도 기술주 전반 부진",
-        "“또 매도 사이드카”…코스피 5.05% 폭락, 4800선 추락"
-      ],
-      "sources": [
-        {
-          "press": "한국경제",
-          "title": "코스피 이어 코스닥도 매도 사이드카…삼성전자·하이닉스 6%대 급락",
-          "url": "https://n.news.naver.com/article/015/0005356328"
-        },
-        {
-          "press": "KBS",
-          "title": "다시 5천선 내준 코스피…앤트로픽도 못 막은 AI 불안",
-          "url": "https://n.news.naver.com/article/056/0012298243"
-        },
-        {
-          "press": "한겨레",
-          "title": "코스피 3% 하락 출발…‘앤트로픽 IPO 흥행’에도 기술주 전반 부진",
-          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBONHl6UTRENzd3Sm1fSk5rRE1qZEFZRkl1bmtUUU9ZZUgxcnhkeTVWWkF2YlNsc2ZuMTdHbmlUVlh4Qm5zMjBRYnRmNURqbTE3aFM2SnhERDQyckdka0tBTkRmM1JwR00?oc=5"
-        },
-        {
-          "press": "디지털데일리",
-          "title": "“또 매도 사이드카”…코스피 5.05% 폭락, 4800선 추락",
-          "url": "https://n.news.naver.com/article/138/0002249356"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "코스피가 외국인과 기관의 동반 매도에 5% 넘게 급락하고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "코스피 이어 코스닥도 매도 사이드카…삼성전자·하이닉스 6%대 급락"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "다시 5천선 내준 코스피…앤트로픽도 못 막은 AI 불안"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ic8440093",
-      "title": "시진핑 양옆에 트럼프·푸틴 자리…자리 의전 논란",
+      "issue_id": "i1b9890a7",
+      "title": "러, 미중러 회담 직후 우크라에 미사일 110발·드론 400대 대공습…키이우 교량·에너지망 타격",
       "category": "세계",
-      "rank": 9,
+      "rank": 7,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -245,44 +245,44 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "미중러 3자 정상회담 이후 도널드 트럼프 미국 대통령이 유럽 정상들과 통화에서 우크라이나에 대한 재정 지원을 중단하라고 요구했다고 영국 일간 텔레그래프가 19일(현지 시간) 보도했다.",
-        "그는 블라디미르 푸틴 러시아 대통령이 도널드 트럼프 미국 대통령, 시진핑 중국 국가주석과의 회담 이후 대규모 공습을 감행한 점도 비판했다.",
-        "젤렌스키 대통령은 \"러시아는 군사적·외교적 무능을 이러한 테러 행위로...",
+        "미국·중국·러시아 3자 정상회담에서 시진핑 국가주석이 한가운데 앉은 모습을 두고 의전 논란이 일었다.",
         "시진핑은 한창 연설 중인데...",
-        "80세 트럼프 꾸벅, 졸았나?"
+        "80세 트럼프 꾸벅, 졸았나?",
+        "앞서 브라질과 남아공에서 열린 G20 때엔 안전이 보장되지 않아 푸틴 대통령 참석이 무산됐습니다.",
+        "미중러 정상이 이번 회담에서 국제형사재판소가 관할권을 남용해선 안 된다고 합의한 건 푸틴 대통령 배려용으로..."
       ],
       "sources": [
-        {
-          "press": "newspim.com",
-          "title": "러 미사일·드론 3대 폴란드 영공 침범…폴란드 \"의도적 도발\" 반발",
-          "url": "https://www.newspim.com/news/view/20261120001223"
-        },
         {
           "press": "조선일보",
           "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
           "url": "https://n.news.naver.com/article/023/0004010794"
         },
         {
-          "press": "news1.kr",
-          "title": "러 \"영·프·독 'E3' 대표단, 방러 추진\"…우크라 종전 협상 참여엔 선 ...",
-          "url": "https://n.news.naver.com/mnews/article/421/0009302244?sid=104"
+          "press": "kbs.co.kr",
+          "title": "“대화 이어갈 것”…다음달 미국 G20서 2차 미중러 회담?",
+          "url": "https://n.news.naver.com/mnews/article/056/0012298382?sid=104"
         },
         {
-          "press": "sedaily.com",
-          "title": "미중러 APEC 3자 회담 성과…전문가 “푸틴에게 압도적인 승리”",
-          "url": "https://n.news.naver.com/mnews/article/011/0004684535?sid=104"
+          "press": "tvchosun.com",
+          "title": "중·러가 짠 회담…동맹 뺀 트럼프에 \"사진 행사\" 혹평",
+          "url": "https://n.news.naver.com/mnews/article/448/0000652444?sid=104"
+        },
+        {
+          "press": "kbs.co.kr",
+          "title": "“선언적 내용 그친 세기의 회담”…유럽은 반발",
+          "url": "https://n.news.naver.com/mnews/article/056/0012298374?sid=104"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "미중러 3자 정상회담 이후 도널드 트럼프 미국 대통령이 유럽 정상들과 통화에서 우크라이나에 대한 재정 지원을 중단하라고 요구했다고 영국 일간 텔레그래프가 19일(현지 시간) 보도했다."
+          "evidence": "미국·중국·러시아 3자 정상회담에서 시진핑 국가주석이 한가운데 앉은 모습을 두고 의전 논란이 일었다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "중간선거 패배로 국내 입지가 좁아진 상황에서 두 강대국 정상과 직접 담판해 외교 성과를 보여줄 기회로 판단한..."
+          "evidence": "[미중러 정상회담] 트럼프에게 \"내 친구\"로 불린 푸틴…종전협상 영향은"
         },
         {
           "panel": 3,

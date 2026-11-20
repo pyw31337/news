@@ -1,14 +1,52 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 14:56:42",
-  "date": "2026-11-20",
+  "updated_at": "2026-11-20 15:29:53",
+  "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.89,
   "issues": [
     {
-      "id": "i7ffe62f5",
-      "title": "최동석, 전처 박지윤에게 익명 악플 달아 명예훼손 혐의로 송치돼",
-      "episode": "episode:1c3074575a720e",
+      "id": "ie7177138",
+      "title": "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
+      "episode": "episode:b3578f3b08680c",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i47526961",
+      "title": "與, '조희대 대법원장 탄핵' 당론 채택",
+      "episode": "episode:7e45379a69a4f1",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "일반 보도",
+        "파장·후속",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 36,
+      "event_count": 22,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i74946234",
+      "title": "\"남친이랑 포르노보다 걸린 찌질한 박지윤\"…악플러는 최동석이었다",
+      "episode": "episode:839ed4fc1158a3",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -19,84 +57,82 @@
         "입장·공방",
         "파장·후속"
       ],
-      "duplicate_candidates": 33,
-      "event_count": 24,
+      "duplicate_candidates": 34,
+      "event_count": 13,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia43b9b65",
-      "title": "홍준표 \"민주당, 조희대 탄핵?… 전두환 정권과 다름없는 폭거\"",
-      "episode": "episode:9721e7bb59661a",
+      "id": "i959729d9",
+      "title": "“하루 만에 5000선 와르르”…코스피 3%대 급락, 삼성전자 18만원대로",
+      "episode": "episode:3330ed299e5aeb",
       "quality": 1.0,
       "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "파장·후속",
         "수사·대응",
-        "사법·처분",
-        "파장·후속",
-        "일반 보도",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 22,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i9a6e7f91",
-      "title": "검은 금요일…코스피 5000 붕괴, 앤트로픽 상장 흥행에도 美 기술주 급락",
-      "episode": "episode:395075b996ea36",
-      "quality": 1.0,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "사법·처분",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "수사·대응"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 35,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3211f95b",
-      "title": "李 “AI 부정행위 일벌백계… 국가시험 전면 개편”",
-      "episode": "episode:d0dfa0a7b69166",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
         "사법·처분"
+      ],
+      "gaps": [
+        "입장·공방"
+      ],
+      "duplicate_candidates": 39,
+      "event_count": 40,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ifb04c7a2",
+      "title": "김민석 “조희대 탄핵, 정무적 판단으로 미뤘지만 더는 용인 못해”",
+      "episode": "episode:3839ae6d324d36",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "사법·처분",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
       ],
       "duplicate_candidates": 33,
-      "event_count": 12,
+      "event_count": 15,
       "evidence_rate": 1.0
     },
     {
-      "id": "i761add81",
-      "title": "\"장례식장서 무슨 말을\"…이진우 동기들 잇단 글 봤더니",
-      "episode": "episode:7574cab719ee32",
-      "quality": 1.0,
+      "id": "i483d84b5",
+      "title": "[단독] 공사 생도 부정행위 퇴교…시험지 스마트폰 촬영",
+      "episode": "episode:abec38f6c084a5",
+      "quality": 0.48,
       "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 25,
-      "event_count": 5,
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 2,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i1b9890a7",
+      "title": "러, 미중러 회담 직후 우크라에 미사일 110발·드론 400대 대공습…키이우 교량·에너지망 타격",
+      "episode": "episode:16c8286285a7ca",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "파장·후속",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 23,
       "evidence_rate": 1.0
     },
     {
@@ -116,81 +152,46 @@
         "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 11,
+      "duplicate_candidates": 27,
+      "event_count": 13,
       "evidence_rate": 1.0
     },
     {
       "id": "ie406fd47",
       "title": "법원 \"배우 김수현 소속사, 쿠쿠에 8억7000만원 배상해야\"",
-      "episode": "episode:a7544113b039af",
-      "quality": 0.84,
+      "episode": "episode:829f2e8e6cc7d3",
+      "quality": 0.92,
       "stages": [
         "사법·처분",
         "일반 보도",
+        "발단·의혹",
         "수사·대응"
       ],
       "gaps": [
-        "발단·의혹",
         "입장·공방",
         "파장·후속"
       ],
-      "duplicate_candidates": 26,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ia3070785",
-      "title": "코스피 이어 코스닥도 매도 사이드카…삼성전자·하이닉스 6%대 급락",
-      "episode": "episode:79b6ea6e9fbb53",
-      "quality": 0.92,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 37,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic8440093",
-      "title": "시진핑 양옆에 트럼프·푸틴 자리…자리 의전 논란",
-      "episode": "episode:fcd14228ded2c7",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 35,
+      "duplicate_candidates": 29,
       "event_count": 16,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9c966326",
-      "title": "감독관 없는 '명예시험'조차 시험지 찰칵...공사 생도, 결국",
-      "episode": "episode:030b1c4d4408ce",
-      "quality": 0.38,
+      "id": "icbdc8355",
+      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
+      "episode": "episode:c4281816fdfc96",
+      "quality": 0.92,
       "stages": [
-        "사법·처분"
+        "발단·의혹",
+        "일반 보도",
+        "사법·처분",
+        "파장·후속"
       ],
       "gaps": [
-        "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 25,
-      "event_count": 1,
+      "duplicate_candidates": 30,
+      "event_count": 15,
       "evidence_rate": 1.0
     }
   ]
