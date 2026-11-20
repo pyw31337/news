@@ -1,23 +1,7 @@
 {
-  "updated": "2026-11-20T17:48:42.302201+09:00",
+  "updated": "2026-11-20T16:51:50.719856+09:00",
   "alerts_count": 9,
   "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.f794b0133832820f5164f28df947e82963603b39.001.1",
-      "t": "2026-11-20 02:58",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Brevard",
-      "area_en": "Brevard",
-      "event": "홍수 경보",
-      "event_en": "Flash Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Brevard 홍수 경보",
-      "headline_en": "Brevard Flash Flood Warning",
-      "desc": "FFWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Flash Flood Warning for...\nCentral Brevard County in east central Florida...\n\n* Until 600 AM EST.\n\n* At 258 AM EST, Doppler radar indicated heavy rain across the warned\narea. Up to 1.5 and 2.5 inches of rain have fallen over the past\n"
-    },
     {
       "id": "urn:oid:2.49.0.1.840.0.50d34416579a97f2fc160e2d13f6788bb3330b5b.001.2",
       "t": "2026-11-20 01:30",
@@ -97,6 +81,22 @@
       "headline_ko": "Guadalupe Mountains of Eddy County 강풍 주의보",
       "headline_en": "Guadalupe Mountains of Eddy County High Wind Watch",
       "desc": "* WHAT...West winds 35 to 45 mph with gusts up to 60 mph possible.\n\n* WHERE...Guadalupe/Delaware Mountains of west Texas and southeast\nNew Mexico.\n\n* WHEN...From Saturday morning through Saturday evening.\n\n* IMPACTS...Travel will be difficult, especially for high profile\nvehicles like campers, vans,"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.f046cf64287e4a56e014d6b0ad959dc5a7f98622.001.1",
+      "t": "2026-11-19 23:59",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Brevard",
+      "area_en": "Brevard",
+      "event": "홍수 경보",
+      "event_en": "Flash Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "Brevard 홍수 경보",
+      "headline_en": "Brevard Flash Flood Warning",
+      "desc": "FFWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Flash Flood Warning for...\nNorthern Brevard County in east central Florida...\n\n* Until 300 AM EST.\n\n* At 1159 PM EST, Doppler radar indicated heavy rain across the\nwarned area. Up to 1 and 2 inches of rain have fallen over the past\nfe"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.94dfc2e2efa497f8078780fe9297bb4a54333cf4.001.1",
@@ -229,6 +229,184 @@
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ubzm"
     }
   ],
-  "cities": [],
-  "stories": []
+  "cities": [
+    {
+      "id": "newyork",
+      "name_ko": "뉴욕",
+      "name_en": "New York",
+      "country": "US",
+      "flag": "🇺🇸",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "temp": 6.5,
+      "apparent_temp": 3.9,
+      "humidity": 64,
+      "code": 3,
+      "wind": 3.3
+    },
+    {
+      "id": "losangeles",
+      "name_ko": "로스앤젤레스",
+      "name_en": "Los Angeles",
+      "country": "US",
+      "flag": "🇺🇸",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "temp": 11.2,
+      "apparent_temp": 9.9,
+      "humidity": 84,
+      "code": 0,
+      "wind": 6.8
+    },
+    {
+      "id": "london",
+      "name_ko": "런던",
+      "name_en": "London",
+      "country": "GB",
+      "flag": "🇬🇧",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "temp": 7.1,
+      "apparent_temp": 4.9,
+      "humidity": 89,
+      "code": 3,
+      "wind": 7.2
+    },
+    {
+      "id": "paris",
+      "name_ko": "파리",
+      "name_en": "Paris",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "temp": 11.1,
+      "apparent_temp": 7.9,
+      "humidity": 79,
+      "code": 3,
+      "wind": 17.4
+    },
+    {
+      "id": "frankfurt",
+      "name_ko": "프랑크푸르트",
+      "name_en": "Frankfurt",
+      "country": "DE",
+      "flag": "🇩🇪",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "temp": 10.1,
+      "apparent_temp": 7.7,
+      "humidity": 83,
+      "code": 61,
+      "wind": 11.5
+    },
+    {
+      "id": "tokyo",
+      "name_ko": "도쿄",
+      "name_en": "Tokyo",
+      "country": "JP",
+      "flag": "🇯🇵",
+      "lat": 35.6895,
+      "lon": 139.6917,
+      "temp": 11.0,
+      "apparent_temp": 7.6,
+      "humidity": 44,
+      "code": 0,
+      "wind": 7.6
+    },
+    {
+      "id": "beijing",
+      "name_ko": "베이징",
+      "name_en": "Beijing",
+      "country": "CN",
+      "flag": "🇨🇳",
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "temp": 7.6,
+      "apparent_temp": 2.0,
+      "humidity": 25,
+      "code": 0,
+      "wind": 14.9
+    },
+    {
+      "id": "singapore",
+      "name_ko": "싱가포르",
+      "name_en": "Singapore",
+      "country": "SG",
+      "flag": "🇸🇬",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "temp": 28.4,
+      "apparent_temp": 33.0,
+      "humidity": 78,
+      "code": 55,
+      "wind": 11.0
+    },
+    {
+      "id": "sydney",
+      "name_ko": "시드니",
+      "name_en": "Sydney",
+      "country": "AU",
+      "flag": "🇦🇺",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "temp": 22.4,
+      "apparent_temp": 22.0,
+      "humidity": 77,
+      "code": 3,
+      "wind": 23.5
+    },
+    {
+      "id": "toronto",
+      "name_ko": "토론토",
+      "name_en": "Toronto",
+      "country": "CA",
+      "flag": "🇨🇦",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "temp": 7.3,
+      "apparent_temp": 4.4,
+      "humidity": 74,
+      "code": 0,
+      "wind": 8.7
+    },
+    {
+      "id": "dubai",
+      "name_ko": "두바이",
+      "name_en": "Dubai",
+      "country": "AE",
+      "flag": "🇦🇪",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "temp": 28.5,
+      "apparent_temp": 29.9,
+      "humidity": 43,
+      "code": 0,
+      "wind": 7.9
+    },
+    {
+      "id": "saopaulo",
+      "name_ko": "상파울루",
+      "name_en": "São Paulo",
+      "country": "BR",
+      "flag": "🇧🇷",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "temp": 22.0,
+      "apparent_temp": 25.7,
+      "humidity": 91,
+      "code": 3,
+      "wind": 2.8
+    }
+  ],
+  "stories": [
+    {
+      "id": "g820cc4b6",
+      "title": "Cop31 as it happened: Fossil fuels dumped from latest draft deal at climate summit",
+      "press": "Guardian Environment",
+      "image": "https://courthousenews.com/wp-content/uploads/2026/11/climate-cop31-energy-report.jpg",
+      "score": 12.8,
+      "url": "g/g820cc4b6"
+    }
+  ]
 }
