@@ -1,6 +1,6 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 20:26:50",
+  "updated_at": "2026-11-20 19:54:44",
   "date": "2026-11-21",
   "total_issues": 10,
   "average_quality": 0.85,
@@ -21,25 +21,45 @@
         "발단·의혹"
       ],
       "duplicate_candidates": 37,
-      "event_count": 25,
+      "event_count": 24,
       "evidence_rate": 1.0
     },
     {
-      "id": "id9b0d126",
-      "title": "\"천재라며 띄워놓고…죄는 미워해도 사람은 미워하지 말라\" 이진우 사태에 서울대 교수 쓴소리",
-      "episode": "episode:31bb54dc1e533e",
+      "id": "ie7177138",
+      "title": "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
+      "episode": "episode:b3578f3b08680c",
       "quality": 1.0,
       "stages": [
-        "사법·처분",
         "일반 보도",
         "파장·후속",
         "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "gaps": [],
+      "gaps": [
+        "사법·처분"
+      ],
       "duplicate_candidates": 34,
-      "event_count": 10,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i612fb5ca",
+      "title": "김민석 “대법원 판결, 역사적 반역…조희대 탄핵해야”",
+      "episode": "episode:0e2cd88c2f71d2",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 41,
+      "event_count": 19,
       "evidence_rate": 1.0
     },
     {
@@ -48,13 +68,13 @@
       "episode": "episode:55f92d5130dfb8",
       "quality": 0.92,
       "stages": [
-        "입장·공방",
         "사법·처분",
         "수사·대응",
-        "일반 보도"
+        "일반 보도",
+        "발단·의혹"
       ],
       "gaps": [
-        "발단·의혹",
+        "입장·공방",
         "파장·후속"
       ],
       "duplicate_candidates": 37,
@@ -62,9 +82,9 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "ic0d87e8d",
-      "title": "코스피 이어 코스닥도 매도 사이드카 발동…삼전닉스 급락",
-      "episode": "episode:307f2d8fd87a15",
+      "id": "i3ba51eb9",
+      "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
+      "episode": "episode:6888182926061f",
       "quality": 0.92,
       "stages": [
         "일반 보도",
@@ -76,26 +96,26 @@
         "발단·의혹",
         "수사·대응"
       ],
-      "duplicate_candidates": 45,
-      "event_count": 41,
+      "duplicate_candidates": 36,
+      "event_count": 38,
       "evidence_rate": 1.0
     },
     {
-      "id": "i612fb5ca",
-      "title": "김민석 “대법원 판결, 역사적 반역…조희대 탄핵해야”",
-      "episode": "episode:6f35aff982b58b",
-      "quality": 0.92,
+      "id": "i95d12aa9",
+      "title": "법원 \"사생활 논란' 김수현 측, 쿠쿠에 모델료 8억원 돌려줘야\"(종합)",
+      "episode": "episode:6ff12fd1624b33",
+      "quality": 0.84,
       "stages": [
         "사법·처분",
         "일반 보도",
-        "입장·공방",
-        "수사·대응"
+        "발단·의혹"
       ],
       "gaps": [
-        "발단·의혹",
+        "입장·공방",
+        "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 39,
+      "duplicate_candidates": 34,
       "event_count": 18,
       "evidence_rate": 1.0
     },
@@ -117,41 +137,41 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "id8700ea5",
-      "title": "앤트로픽 화려한 데뷔‥코스피는 4,800대로",
-      "episode": "episode:4a7692f2875a21",
+      "id": "icbdc8355",
+      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
+      "episode": "episode:4eb69c0d815995",
       "quality": 0.92,
       "stages": [
         "발단·의혹",
-        "사법·처분",
         "일반 보도",
+        "사법·처분",
         "파장·후속"
       ],
       "gaps": [
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 33,
-      "event_count": 11,
+      "duplicate_candidates": 27,
+      "event_count": 14,
       "evidence_rate": 1.0
     },
     {
-      "id": "ib6822c18",
-      "title": "‘10년 광고 모델’ 김수현 결국…법원 “김수현 소속사, 쿠쿠에 8억 배상하라”",
-      "episode": "episode:838a0fd87d3c16",
+      "id": "if933243e",
+      "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
+      "episode": "episode:c4ae311aeb6cb9",
       "quality": 0.84,
       "stages": [
-        "사법·처분",
         "일반 보도",
-        "발단·의혹"
+        "파장·후속",
+        "입장·공방"
       ],
       "gaps": [
-        "입장·공방",
+        "발단·의혹",
         "수사·대응",
-        "파장·후속"
+        "사법·처분"
       ],
-      "duplicate_candidates": 32,
-      "event_count": 18,
+      "duplicate_candidates": 34,
+      "event_count": 17,
       "evidence_rate": 1.0
     },
     {
@@ -169,25 +189,6 @@
       ],
       "duplicate_candidates": 25,
       "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i6cb16c1f",
-      "title": "미중러 회담뒤 美동맹들 우려… “푸틴은 유럽 친구 아냐” “日엔 악몽”",
-      "episode": "episode:bb006d1ae04be2",
-      "quality": 0.84,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 7,
       "evidence_rate": 1.0
     }
   ]
