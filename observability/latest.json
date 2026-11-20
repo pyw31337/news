@@ -1,7 +1,7 @@
 {
-  "run_id": "44770944214",
-  "observed_at": "2026-11-20T16:29:48+00:00",
-  "observed_at_kst": "2026-11-21T01:29:48+09:00",
+  "run_id": "44755983894",
+  "observed_at": "2026-11-20T14:57:23+00:00",
+  "observed_at_kst": "2026-11-20T23:57:23+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
   "commit": "48a5c032e2b5906a97f257025ffe5ed34ec622ae",
@@ -9,16 +9,16 @@
   "stages": {
     "collect": {
       "status": "degraded",
-      "ok": 256,
-      "fail": 23,
-      "errors": 23,
+      "ok": 277,
+      "fail": 15,
+      "errors": 15,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 490,
-      "fail": 30,
-      "errors": 30,
+      "ok": 511,
+      "fail": 33,
+      "errors": 33,
       "artifact": true
     },
     "quality": {
@@ -26,242 +26,243 @@
       "quality_issue_count": 10,
       "event_quality_present": true,
       "detail": {
-        "low_score": 8,
-        "low_photo": 7,
-        "low_source": 0,
+        "low_score": 6,
+        "low_photo": 8,
+        "low_source": 4,
         "missing_event_stages": 10
       }
     },
     "publish": {
       "status": "success",
-      "published_at": "2026-11-20T16:30:24+00:00",
-      "data_commit": "1e5fba45f111bd4731271e12f605bec3da4946cf",
+      "published_at": "2026-11-20T14:59:18+00:00",
+      "data_commit": "6f1ff6fb36a7fdb61c3807c890d1594cec577c8f",
       "note": "data 브랜치 커밋 이후 게시 확인"
     }
   },
   "counts": {
     "issues": 10,
-    "sources": 214,
+    "sources": 211,
     "entities": 36,
     "global_issues": 12,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "d52dc497094b1ed3ccb9c791c23615c77e1004e83eacc6b27a4e1395e8c251bb",
-    "global": "d9971d629f577f99ddbea5b32fd55be45c3a0d845b19ff8cd744eef9ae9a0a2f",
-    "quality": "ae4ba42f7f52d30453d582649b0bac2ef80923a54c87dfc7e6a4712c2c0c83be",
-    "status": "97726fd9db2e57c35c247955d9eb8473018e488705df8a0e0a8aad2e4ddf415c",
-    "event_quality": "bf4da0b849e4a9772f75803da4cabac4531a6c5fa46954e15b5b4bda66357b46"
+    "today": "c7e216905fcf66af511ec8905c0c548a226a1b7f111d0c58f1bb29be6b3bcc40",
+    "global": null,
+    "quality": "918f9dda3a7fe0fc7ad0523c2c8fa22683ad1ff31edcaa2978a8970abbe7eac1",
+    "status": "7ce55830e7823a959fc2138bfa23a3b43241fa3062d815dc75098e2bcc1e6909",
+    "event_quality": "ab0358dab5c3a63d7ff3494265074ca92a0df172e3ede2a4809fee10d25f4d78"
   },
   "diagnostics": {
     "collect": {
       "by_kind": {
-        "timeout": 9,
-        "not_found": 14
+        "timeout": 3,
+        "not_found": 12
       },
       "by_host": {
-        "n.news.naver.com": 8,
-        "m.news.naver.com": 1,
-        "ko.wikipedia.org": 14
+        "n.news.naver.com": 3,
+        "ko.wikipedia.org": 12
       },
       "surface": {
-        "core": 14,
-        "auxiliary": 9
+        "core": 12,
+        "auxiliary": 3
       },
       "examples": [
         {
-          "t": "01:14:36",
+          "t": "23:43:52",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EB%AF%B8%EC%A4%91%EB%9F%AC",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "23:43:52",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EB%A6%AC%ED%8A%B8%EB%A7%8C%EC%A0%",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "01:14:36",
+          "t": "23:43:52",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%84%9C%EC%9A%B8%EC%95%84%EC%82%",
+          "path": "/api/rest_v1/page/summary/%EA%B0%9C%EB%AF%B8%EB%93%A4",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "01:14:36",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%95%84%EC%82%B0%EC%9D%98%EB%A3%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "01:14:36",
+          "t": "23:43:52",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%ED%95%9C%EA%B5%AD%EC%8B%9D%ED%92%",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "01:14:36",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9D%B4%EC%A0%9C%ED%99%98",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "01:14:36",
+          "t": "23:43:52",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%ED%95%9C%EA%B5%AD%EC%8B%9D%ED%92%",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "01:14:36",
+          "t": "23:43:52",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EB%A7%9E%EC%86%90",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "01:14:36",
+          "t": "23:43:53",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/DMZ%EC%98%81%ED%99%94%EC%A0%9C",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "23:43:53",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%82%BC%EC%A0%84%EB%8B%89%EC%8A%",
           "err": "HTTP Error 404: Not Found"
         }
       ]
     },
     "analyze": {
       "by_kind": {
-        "other": 7,
-        "timeout": 7,
-        "not_found": 11,
-        "rate_limit": 5
+        "other": 10,
+        "timeout": 4,
+        "not_found": 15,
+        "rate_limit": 4
       },
       "by_host": {
-        "search.naver.com": 7,
-        "n.news.naver.com": 7,
-        "ko.wikipedia.org": 16
+        "search.naver.com": 10,
+        "n.news.naver.com": 4,
+        "ko.wikipedia.org": 19
       },
       "surface": {
-        "core": 30,
+        "core": 33,
         "auxiliary": 0
       },
       "examples": [
         {
-          "t": "01:17:22",
+          "t": "23:46:22",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%AA%85%EC%98%88%EC%8B%9C%ED%97%",
-          "err": "HTTP Error 404: Not Found"
+          "path": "/api/rest_v1/page/summary/%EA%B5%90%EB%9F%89",
+          "err": "HTTP Error 429: Too Many Requests"
         },
         {
-          "t": "01:17:23",
+          "t": "23:46:23",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%8B%9D%ED%92%88%EA%B3%BC%ED%95%",
-          "err": "HTTP Error 404: Not Found"
+          "path": "/api/rest_v1/page/summary/%EC%A0%84%EC%95%A1",
+          "err": "HTTP Error 429: Too Many Requests"
         },
         {
-          "t": "01:17:23",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%8B%9D%ED%92%88%EC%9C%84%EC%83%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "01:17:40",
+          "t": "23:46:23",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EC%B2%98%EB%B6%84",
           "err": "HTTP Error 429: Too Many Requests"
         },
         {
-          "t": "01:17:41",
+          "t": "23:46:23",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EA%B0%90%EB%8F%85%EA%B4%80",
-          "err": "HTTP Error 429: Too Many Requests"
+          "path": "/api/rest_v1/page/summary/%EC%B4%89%EA%B5%AC",
+          "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "01:17:41",
+          "t": "23:46:23",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EB%A7%8C%EC%A0%90%EC%9E%90",
-          "err": "HTTP Error 429: Too Many Requests"
+          "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "01:17:58",
+          "t": "23:46:23",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A3%BD%EC%9D%8C",
-          "err": "HTTP Error 429: Too Many Requests"
+          "path": "/api/rest_v1/page/summary/%EC%82%BC%EC%A0%84%EB%8B%89%EC%8A%",
+          "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "01:17:59",
+          "t": "23:46:23",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A0%81%EB%B0%9C",
+          "path": "/api/rest_v1/page/summary/%EC%8B%9D%ED%92%88%EC%9C%84%EC%83%",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "23:46:41",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EA%B0%90%EB%8F%85%EA%B4%80",
           "err": "HTTP Error 429: Too Many Requests"
         }
       ]
     },
     "global": {
       "by_kind": {
-        "other": 20,
+        "other": 18,
         "not_found": 1,
-        "tls": 1
+        "tls": 1,
+        "timeout": 3
       },
       "by_host": {
-        "www.usatoday.com": 2,
-        "news.sky.com": 2,
+        "www.reuters.com": 2,
+        "www.bloomberg.com": 1,
+        "www.ft.com": 1,
+        "gizmodo.com": 1,
+        "www.scmp.com": 1,
         "www.news24.com.au": 1,
-        "www.newstatesman.com": 1,
-        "www.wsj.com": 1,
         "www.forbes.com": 1,
-        "www.barrons.com": 1,
+        "businesstech.co.za": 1,
+        "www.moneyweb.co.za": 1,
         "www.sabcnews.com": 1,
-        "www.nytimes.com": 5,
-        "www.courier-journal.com": 1,
-        "www.krem.com": 1,
-        "medicalxpress.com": 1,
-        "apnews.com": 1,
-        "www.politico.com": 1,
-        "www.abajournal.com": 1,
-        "www.gamespot.com": 1
+        "jimehansen.substack.com": 1,
+        "www.usatoday.com": 1,
+        "www.nytimes.com": 4,
+        "www.politico.com": 2,
+        "www.barrons.com": 1,
+        "www.washingtonpost.com": 2,
+        "bioengineer.org": 1
       },
       "surface": {
-        "core": 22,
+        "core": 23,
         "auxiliary": 0
       },
       "examples": [
         {
-          "t": "01:19:31",
-          "host": "www.nytimes.com",
-          "path": "/athletic/7796196/2026/11/20/afc-north-postseason-awards-ben",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "01:19:31",
+          "t": "23:47:51",
           "host": "www.nytimes.com",
           "path": "/athletic/7795096/2026/11/19/troy-aikman-joe-buck-espn-nfl-s",
           "err": "HTTP Error 403: Forbidden"
         },
         {
-          "t": "01:19:31",
-          "host": "apnews.com",
-          "path": "/article/lance-broadway-dies-de8f9d569621c8a06a15c070100224b",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "01:19:31",
+          "t": "23:47:51",
           "host": "www.nytimes.com",
-          "path": "/2026/11/20/technology/jensen-huang-nvidia-culture.html",
+          "path": "/athletic/7795881/2026/11/20/mlb-offseason-moves-yankees-pad",
           "err": "HTTP Error 403: Forbidden"
         },
         {
-          "t": "01:19:32",
+          "t": "23:47:51",
+          "host": "www.barrons.com",
+          "path": "/articles/sandisk-stock-shares-fall-memory-8c01863d",
+          "err": "HTTP Error 401: HTTP Forbidden"
+        },
+        {
+          "t": "23:47:51",
           "host": "www.politico.com",
-          "path": "/gallery/2026/11/20/the-nations-cartoonists-on-the-week-in-p",
+          "path": "/news/2026/11/20/elon-musk-spacex-texas-democrats-election-0",
           "err": "HTTP Error 403: Forbidden"
         },
         {
-          "t": "01:19:32",
+          "t": "23:47:51",
           "host": "www.nytimes.com",
           "path": "/2026/11/20/science/quantum-contextuality.html",
           "err": "HTTP Error 403: Forbidden"
         },
         {
-          "t": "01:19:32",
-          "host": "www.abajournal.com",
-          "path": "/news/article/new-research-from-stanford-shows-more-people-a",
-          "err": "HTTP Error 403: Forbidden"
+          "t": "23:48:31",
+          "host": "www.washingtonpost.com",
+          "path": "/climate-environment/2026/11/20/iowans-say-warning-army-is-g",
+          "err": "The read operation timed out"
         },
         {
-          "t": "01:19:32",
-          "host": "www.gamespot.com",
-          "path": "/articles/how-to-save-weapons-you-find-in-gta-6/",
-          "err": "HTTP Error 403: Forbidden"
+          "t": "23:48:32",
+          "host": "bioengineer.org",
+          "path": "/bibliometric-study-maps-global-research-on-gut-microbiota-a",
+          "err": "The read operation timed out"
+        },
+        {
+          "t": "23:48:33",
+          "host": "www.washingtonpost.com",
+          "path": "/entertainment/movies/2026/11/19/packed-holiday-movie-slate-",
+          "err": "The read operation timed out"
         }
       ]
     },
@@ -277,9 +278,7 @@
       },
       "official": {
         "by_kind": {},
-        "by_host": {
-          "dart": 1
-        },
+        "by_host": {},
         "surface": {
           "core": 0,
           "auxiliary": 0
@@ -298,8 +297,8 @@
     }
   },
   "status_snapshot": {
-    "updated": "2026-11-21T01:29:18.547050+09:00",
+    "updated": "2026-11-20T23:56:44.443261+09:00",
     "error_count": 60
   },
-  "publish_verified_at": "2026-11-20T16:30:24+00:00"
+  "publish_verified_at": "2026-11-20T14:59:18+00:00"
 }
