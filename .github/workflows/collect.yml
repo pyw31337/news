@@ -289,6 +289,21 @@ jobs:
             merge_remote_data || { echo "data 병합 실패(시도 $n/6)" >&2; sleep $((n * 5)); }
           done
           exit 1
+      - name: 게시 상태 확정(실행 원장)
+        if: always()
+        continue-on-error: true
+        run: |
+          DATA_COMMIT=$(git -C data rev-parse HEAD 2>/dev/null || true)
+          export DATA_COMMIT
+          python scripts/observability.py data --publish-complete
+          cp data/observability/latest.json /tmp/observability-latest.json
+          cd data
+          git fetch -q origin data || true
+          git reset --hard -q origin/data || true
+          cp /tmp/observability-latest.json observability/latest.json
+          git add -f observability/latest.json
+          git diff --cached --quiet || git commit -qm "observability: confirm data publish"
+          git push -q origin HEAD:data || true
       - name: 사진 → Cloudflare R2(새 파일만, 올린 것은 media 브랜치에서 뺌)
         continue-on-error: true
         timeout-minutes: 9

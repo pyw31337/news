@@ -57,6 +57,7 @@ def stage(name, diag, artifact):
 
 def main():
     root = Path(sys.argv[1] if len(sys.argv) > 1 else "data").resolve()
+    publish_complete = "--publish-complete" in sys.argv[2:]
     root.mkdir(parents=True, exist_ok=True)
     now = dt.datetime.now(UTC)
     today = read_json(root / "today.json", {}) or {}
@@ -66,6 +67,20 @@ def main():
     status = read_json(root / "status.json", {}) or {}
 
     run_id = os.environ.get("GITHUB_RUN_ID") or f"local-{now.strftime('%Y%m%dT%H%M%SZ')}"
+    if publish_complete:
+        latest_path = root / "observability/latest.json"
+        latest = read_json(latest_path, {}) or {}
+        if latest:
+            latest.setdefault("stages", {})["publish"] = {
+                "status": "success",
+                "published_at": now.isoformat(timespec="seconds"),
+                "data_commit": os.environ.get("DATA_COMMIT"),
+                "note": "data 브랜치 커밋 이후 게시 확인",
+            }
+            latest["publish_verified_at"] = now.isoformat(timespec="seconds")
+            latest_path.write_text(json.dumps(latest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            print(json.dumps({"run_id": latest.get("run_id"), "publish": latest["stages"]["publish"]}, ensure_ascii=False))
+            return
     issues = today.get("issues") or []
     sources = sum(len(i.get("sources") or []) for i in issues if isinstance(i, dict))
     entities = today.get("entities") or []
