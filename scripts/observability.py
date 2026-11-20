@@ -71,6 +71,7 @@ def diag_detail(data):
         return {"by_kind": {}, "by_host": {}, "examples": []}
     by_kind = {}
     by_host = {}
+    surface = {"core": 0, "auxiliary": 0}
     for host, count in (data.get("fail") or {}).items():
         host = str(host or "unknown")
         by_host[host] = by_host.get(host, 0) + int(count or 0)
@@ -78,7 +79,10 @@ def diag_detail(data):
     for item in examples:
         kind = error_kind(item)
         by_kind[kind] = by_kind.get(kind, 0) + 1
-    return {"by_kind": by_kind, "by_host": by_host, "examples": examples[-8:]}
+        raw = json.dumps(item, ensure_ascii=False).lower()
+        auxiliary = any(token in raw for token in ("reporter", "profile", "image", "thumbnail", "portrait", "logo", "avatar"))
+        surface["auxiliary" if auxiliary else "core"] += 1
+    return {"by_kind": by_kind, "by_host": by_host, "surface": surface, "examples": examples[-8:]}
 
 
 def stage(name, diag, artifact):
