@@ -1,39 +1,7 @@
 {
-  "updated": "2026-11-20T09:52:58.255038+09:00",
+  "updated": "2026-11-20T10:23:45.464953+09:00",
   "alerts_count": 5,
   "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.5031086e93ddbd67ff9105f0fdd484bb2fb3b2e2.001.1",
-      "t": "2026-11-19 21:09",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Indian River",
-      "area_en": "Indian River",
-      "event": "홍수 경보",
-      "event_en": "Flash Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Indian River 홍수 경보",
-      "headline_en": "Indian River Flash Flood Warning",
-      "desc": "FFWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Flash Flood Warning for...\nEastern Indian River County in east central Florida...\n\n* Until 1115 PM EST.\n\n* At 909 PM EST, emergency management reported flooding is occurring\non multiple roadways in Sebastian. Up to 1.5 inches of rain "
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.94dfc2e2efa497f8078780fe9297bb4a54333cf4.001.1",
-      "t": "2026-11-19 20:46",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Orange",
-      "area_en": "Orange",
-      "event": "홍수 경보",
-      "event_en": "Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Orange 홍수 경보",
-      "headline_en": "Orange Flood Warning",
-      "desc": "* WHAT...Flooding caused by excessive rainfall is occurring.\n\n* WHERE...Southeastern Orange County in east central Florida...\n\n* WHEN...Until 600 AM EST Friday.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring.\n\n* ADDITIONAL DET"
-    },
     {
       "id": "urn:oid:2.49.0.1.840.0.f8311d1fc8f1f5c755799610eb6b9c6407fa738a.001.1",
       "t": "2026-11-19 13:06",
@@ -125,14 +93,6 @@
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc4v"
     },
     {
-      "id": "us6000uc3v",
-      "mag": 4.5,
-      "place": "236 km W of Tual, Indonesia",
-      "t": "2026-11-19 21:49",
-      "depth": 124.788,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc3v"
-    },
-    {
       "id": "us6000uc2q",
       "mag": 5.3,
       "place": "South Georgia Island region",
@@ -195,6 +155,14 @@
       "t": "2026-11-19 05:49",
       "depth": 69.493,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uby4"
+    },
+    {
+      "id": "us6000ubxg",
+      "mag": 4.9,
+      "place": "36 km NNE of Kilimatinde, Tanzania",
+      "t": "2026-11-19 02:11",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ubxg"
     }
   ],
   "cities": [
@@ -206,11 +174,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 9.7,
-      "apparent_temp": 7.1,
-      "humidity": 65,
+      "temp": 9.3,
+      "apparent_temp": 7.7,
+      "humidity": 78,
       "code": 0,
-      "wind": 6.8
+      "wind": 3.8
     },
     {
       "id": "losangeles",
@@ -220,11 +188,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 14.6,
-      "apparent_temp": 13.8,
-      "humidity": 82,
-      "code": 0,
-      "wind": 8.7
+      "temp": 14.4,
+      "apparent_temp": 14.5,
+      "humidity": 83,
+      "code": 2,
+      "wind": 2.4
     },
     {
       "id": "london",
@@ -234,11 +202,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 7.5,
+      "temp": 7.6,
       "apparent_temp": 6.2,
       "humidity": 88,
       "code": 3,
-      "wind": 1.8
+      "wind": 2.2
     },
     {
       "id": "paris",
@@ -248,11 +216,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 10.5,
+      "temp": 10.4,
       "apparent_temp": 7.5,
-      "humidity": 77,
-      "code": 3,
-      "wind": 14.9
+      "humidity": 78,
+      "code": 80,
+      "wind": 14.6
     },
     {
       "id": "frankfurt",
@@ -263,10 +231,10 @@
       "lat": 50.1109,
       "lon": 8.6821,
       "temp": 9.8,
-      "apparent_temp": 7.4,
+      "apparent_temp": 7.3,
       "humidity": 87,
       "code": 61,
-      "wind": 11.0
+      "wind": 13.0
     },
     {
       "id": "tokyo",
@@ -276,11 +244,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 12.5,
-      "apparent_temp": 8.4,
-      "humidity": 36,
+      "temp": 13.0,
+      "apparent_temp": 8.8,
+      "humidity": 35,
       "code": 0,
-      "wind": 11.4
+      "wind": 12.4
     },
     {
       "id": "beijing",
@@ -290,11 +258,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 0.2,
-      "apparent_temp": -3.8,
-      "humidity": 46,
-      "code": 1,
-      "wind": 5.3
+      "temp": 1.3,
+      "apparent_temp": -2.6,
+      "humidity": 45,
+      "code": 0,
+      "wind": 4.8
     },
     {
       "id": "singapore",
@@ -304,11 +272,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 26.4,
-      "apparent_temp": 32.1,
-      "humidity": 85,
+      "temp": 27.5,
+      "apparent_temp": 33.0,
+      "humidity": 80,
       "code": 3,
-      "wind": 1.7
+      "wind": 2.1
     },
     {
       "id": "sydney",
@@ -318,11 +286,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 23.9,
-      "apparent_temp": 26.1,
-      "humidity": 65,
+      "temp": 24.3,
+      "apparent_temp": 26.4,
+      "humidity": 64,
       "code": 3,
-      "wind": 13.6
+      "wind": 14.0
     },
     {
       "id": "toronto",
@@ -332,11 +300,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 11.0,
-      "apparent_temp": 7.2,
-      "humidity": 62,
-      "code": 0,
-      "wind": 16.1
+      "temp": 10.1,
+      "apparent_temp": 6.5,
+      "humidity": 60,
+      "code": 1,
+      "wind": 13.0
     },
     {
       "id": "dubai",
@@ -350,7 +318,7 @@
       "apparent_temp": 25.4,
       "humidity": 82,
       "code": 0,
-      "wind": 6.4
+      "wind": 6.0
     },
     {
       "id": "saopaulo",
@@ -360,11 +328,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 26.1,
-      "apparent_temp": 28.1,
-      "humidity": 60,
+      "temp": 25.6,
+      "apparent_temp": 27.5,
+      "humidity": 63,
       "code": 3,
-      "wind": 5.3
+      "wind": 7.2
     }
   ],
   "stories": [
