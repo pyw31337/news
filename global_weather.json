@@ -1,39 +1,7 @@
 {
-  "updated": "2026-11-21T03:09:04.335717+09:00",
-  "alerts_count": 18,
+  "updated": "2026-11-21T02:50:24.886123+09:00",
+  "alerts_count": 17,
   "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.55b92cd2615f1925d4096d1413600437e39daa8f.001.1",
-      "t": "2026-11-20 13:00",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Flagler Beach to Volusia-Brevard County Line 0-20 nm",
-      "area_en": "Flagler Beach to Volusia-Brevard County Line 0-20 nm",
-      "event": "Special Marine Warning",
-      "event_en": "Special Marine Warning",
-      "severity": "Severe",
-      "headline_ko": "Flagler Beach to Volusia-Brevard County Line 0-20 nm Special Marine Warning",
-      "headline_en": "Flagler Beach to Volusia-Brevard County Line 0-20 nm Special Marine Warning",
-      "desc": "SMWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Special Marine Warning for...\nFlagler Beach to Volusia-Brevard County Line 0-20 nm...\nFlagler Beach to Volusia-Brevard County Line 20-60 nm...\nVolusia-Brevard County Line to Sebastian Inlet 20-60 nm...\n\n* Until 300 PM EST.\n\n* At 100 P"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.a43290a39629874926f553cf04793f3b4f6dfcef.001.1",
-      "t": "2026-11-20 10:58",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "워싱턴",
-      "area_en": "Washington",
-      "event": "Freeze Warning",
-      "event_en": "Freeze Warning",
-      "severity": "Severe",
-      "headline_ko": "워싱턴 Freeze Warning",
-      "headline_en": "Washington Freeze Warning",
-      "desc": "* WHAT...Sub-freezing temperatures as low as 25 expected.\n\n* WHERE...Lower Washington County and Zion National Park.\n\n* WHEN...From 9 PM this evening to 9 AM MST Saturday.\n\n* IMPACTS...Frost and freeze conditions could kill crops, other\nsensitive vegetation and possibly damage unprotected outdoor\npl"
-    },
     {
       "id": "urn:oid:2.49.0.1.840.0.56c3d9cd681b61ce5e4fcac2a6acfb56593cabbe.002.2",
       "t": "2026-11-20 12:37",
@@ -129,6 +97,22 @@
       "headline_ko": "Inland Nassau 홍수 주의보",
       "headline_en": "Inland Nassau Flood Watch",
       "desc": "* WHAT...Flooding caused by excessive rainfall continues to be\npossible.\n\n* WHERE...A portion of northeast Florida, including the following\nareas, Coastal Nassau and Inland Nassau.\n\n* WHEN...Through Saturday afternoon.\n\n* IMPACTS...Excessive runoff may result in flooding of rivers,\ncreeks, streams, "
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.937d0536fedd12e218685d580abb46253e045808.001.1",
+      "t": "2026-11-20 11:27",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Coastal waters from Fernandina Beach to St. Augustine FL out 20 NM",
+      "area_en": "Coastal waters from Fernandina Beach to St. Augustine FL out 20 NM",
+      "event": "Special Marine Warning",
+      "event_en": "Special Marine Warning",
+      "severity": "Severe",
+      "headline_ko": "Coastal waters from Fernandina Beach to St. Augustine FL out 20 NM Special Marine Warning",
+      "headline_en": "Coastal waters from Fernandina Beach to St. Augustine FL out 20 NM Special Marine Warning",
+      "desc": "SMWJAX\n\nThe National Weather Service in Jacksonville has issued a\n\n* Special Marine Warning for...\nNortheast Florida coastal waters from Fernandina Beach FL to\nFlagler Beach FL out to 20 NM...\n\n* Until 100 PM EST.\n\n* At 1127 AM EST, a strong thunderstorm was located 23 NM east of\nPalm Coast, moving "
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.399e290b9930682e6796770ac35d60a8a0b6fee5.001.1",
@@ -241,6 +225,22 @@
       "headline_ko": "Joshua Tree NP West Freeze Warning",
       "headline_en": "Joshua Tree NP West Freeze Warning",
       "desc": "* WHAT...Sub-freezing temperatures as low as 29 expected.\n\n* WHERE...Western portions of Joshua Tree National Park.\n\n* WHEN...From 11 PM Friday to 8 AM PST Saturday.\n\n* IMPACTS...Frost and freeze conditions could kill sensitive\nvegetation, possibly damage unprotected outdoor plumbing, and\naffect tho"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.4ad25dab50f7d3c2994d7e7435d547346f1000a4.001.1",
+      "t": "2026-11-19 23:13",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Southeast Gila County",
+      "area_en": "Southeast Gila County",
+      "event": "Freeze Warning",
+      "event_en": "Freeze Warning",
+      "severity": "Severe",
+      "headline_ko": "Southeast Gila County Freeze Warning",
+      "headline_en": "Southeast Gila County Freeze Warning",
+      "desc": "* WHAT...For Friday night into Saturday morning, expect sub-freezing\ntemperatures as low as 28 degrees. For Saturday night into Sunday\nmorning, expect sub-freezing temperatures and localized hard freeze\nconditions as low as 25 degrees.\n\n* WHERE...Portions of southeast Gila County.\n\n* WHEN...For the "
     }
   ],
   "quakes": [
@@ -325,6 +325,192 @@
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc5s"
     }
   ],
-  "cities": [],
-  "stories": []
+  "cities": [
+    {
+      "id": "newyork",
+      "name_ko": "뉴욕",
+      "name_en": "New York",
+      "country": "US",
+      "flag": "🇺🇸",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "temp": 20.1,
+      "apparent_temp": 16.7,
+      "humidity": 26,
+      "code": 0,
+      "wind": 8.6
+    },
+    {
+      "id": "losangeles",
+      "name_ko": "로스앤젤레스",
+      "name_en": "Los Angeles",
+      "country": "US",
+      "flag": "🇺🇸",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "temp": 13.8,
+      "apparent_temp": 13.2,
+      "humidity": 71,
+      "code": 0,
+      "wind": 1.6
+    },
+    {
+      "id": "london",
+      "name_ko": "런던",
+      "name_en": "London",
+      "country": "GB",
+      "flag": "🇬🇧",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "temp": 9.0,
+      "apparent_temp": 6.4,
+      "humidity": 65,
+      "code": 3,
+      "wind": 6.1
+    },
+    {
+      "id": "paris",
+      "name_ko": "파리",
+      "name_en": "Paris",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "temp": 10.7,
+      "apparent_temp": 7.7,
+      "humidity": 74,
+      "code": 3,
+      "wind": 14.1
+    },
+    {
+      "id": "frankfurt",
+      "name_ko": "프랑크푸르트",
+      "name_en": "Frankfurt",
+      "country": "DE",
+      "flag": "🇩🇪",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "temp": 9.2,
+      "apparent_temp": 8.3,
+      "humidity": 94,
+      "code": 61,
+      "wind": 3.3
+    },
+    {
+      "id": "tokyo",
+      "name_ko": "도쿄",
+      "name_en": "Tokyo",
+      "country": "JP",
+      "flag": "🇯🇵",
+      "lat": 35.6895,
+      "lon": 139.6917,
+      "temp": 6.3,
+      "apparent_temp": 3.5,
+      "humidity": 57,
+      "code": 0,
+      "wind": 3.4
+    },
+    {
+      "id": "beijing",
+      "name_ko": "베이징",
+      "name_en": "Beijing",
+      "country": "CN",
+      "flag": "🇨🇳",
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "temp": -0.5,
+      "apparent_temp": -4.4,
+      "humidity": 47,
+      "code": 0,
+      "wind": 4.5
+    },
+    {
+      "id": "singapore",
+      "name_ko": "싱가포르",
+      "name_en": "Singapore",
+      "country": "SG",
+      "flag": "🇸🇬",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "temp": 24.5,
+      "apparent_temp": 29.8,
+      "humidity": 99,
+      "code": 3,
+      "wind": 7.1
+    },
+    {
+      "id": "sydney",
+      "name_ko": "시드니",
+      "name_en": "Sydney",
+      "country": "AU",
+      "flag": "🇦🇺",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "temp": 18.9,
+      "apparent_temp": 20.3,
+      "humidity": 95,
+      "code": 3,
+      "wind": 10.5
+    },
+    {
+      "id": "toronto",
+      "name_ko": "토론토",
+      "name_en": "Toronto",
+      "country": "CA",
+      "flag": "🇨🇦",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "temp": 14.7,
+      "apparent_temp": 13.0,
+      "humidity": 66,
+      "code": 0,
+      "wind": 8.5
+    },
+    {
+      "id": "dubai",
+      "name_ko": "두바이",
+      "name_en": "Dubai",
+      "country": "AE",
+      "flag": "🇦🇪",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "temp": 26.9,
+      "apparent_temp": 28.6,
+      "humidity": 61,
+      "code": 0,
+      "wind": 10.9
+    },
+    {
+      "id": "saopaulo",
+      "name_ko": "상파울루",
+      "name_en": "São Paulo",
+      "country": "BR",
+      "flag": "🇧🇷",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "temp": 28.8,
+      "apparent_temp": 30.3,
+      "humidity": 47,
+      "code": 55,
+      "wind": 6.0
+    }
+  ],
+  "stories": [
+    {
+      "id": "g14f95c7d",
+      "title": "Cop31 live: factious climate talks enter overtime without new draft deal in sight",
+      "press": "Guardian Environment",
+      "image": "https://i.guim.co.uk/img/media/014e8e90cb60127dc1056169cec2565890ae8e84/309_0_3092_2473/master/3092.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctbGl2ZS5wbmc&enable=upscale&s=68e9496359d8a6f7d91292ba92aab497",
+      "score": 9.4,
+      "url": "g/g14f95c7d"
+    },
+    {
+      "id": "g56ac1412",
+      "title": "Tensions Flare Over Fossil Fuels at UN Climate Talks",
+      "press": "Inside Climate News",
+      "image": "https://www.mercurynews.com/wp-content/uploads/2026/11/AP26324388435609.jpg?w=2000&h=1333",
+      "score": 8.1,
+      "url": "g/g56ac1412"
+    }
+  ]
 }

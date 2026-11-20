@@ -1,19 +1,19 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 18:13:04",
+  "updated_at": "2026-11-20 17:58:05",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.85,
   "issues": [
     {
-      "id": "i5b14a2e6",
-      "title": "조희대 탄핵 추진에…판사들 \"결과 맘에 안들 때마다 비판, 어떻게 일 하나\"",
-      "episode": "episode:544d5615a5d4bd",
+      "id": "i94f83d93",
+      "title": "민주당 '조희대 탄핵' 추진 결론... 김민석 \"이 판결은 역사적 반역\"",
+      "episode": "episode:cad88182d89d42",
       "quality": 1.0,
       "stages": [
-        "일반 보도",
         "사법·처분",
         "파장·후속",
+        "일반 보도",
         "수사·대응",
         "입장·공방"
       ],
@@ -21,100 +21,101 @@
         "발단·의혹"
       ],
       "duplicate_candidates": 38,
-      "event_count": 21,
+      "event_count": 22,
       "evidence_rate": 1.0
     },
     {
-      "id": "id9b0d126",
-      "title": "\"천재라며 띄워놓고…죄는 미워해도 사람은 미워하지 말라\" 이진우 사태에 서울대 교수 쓴소리",
-      "episode": "episode:31bb54dc1e533e",
+      "id": "ie7177138",
+      "title": "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
+      "episode": "episode:215ef7a0130827",
       "quality": 1.0,
       "stages": [
-        "사법·처분",
         "일반 보도",
         "파장·후속",
         "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "gaps": [],
-      "duplicate_candidates": 29,
-      "event_count": 9,
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9d5ca5b3",
-      "title": "조희대 탄핵 추진하는 與 “한덕수 선고도 사유로 검토”",
-      "episode": "episode:2748c56184b7c1",
-      "quality": 1.0,
+      "id": "i140bd4c3",
+      "title": "[속보] 경찰, 박지윤 '악플러' 잡고 보니 前남편 최동석…명예훼손 혐의 공소청 송치",
+      "episode": "episode:4988e163a2489d",
+      "quality": 0.84,
       "stages": [
-        "일반 보도",
-        "입장·공방",
         "수사·대응",
         "사법·처분",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
         "파장·후속"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 50,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i6a5abd21",
+      "title": "[속보] '검은 금요일'…'매도 사이드카' 발동한 코스피·코스닥 동시 5% 이상 급락",
+      "episode": "episode:cc5e626f1cf841",
+      "quality": 1.0,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "수사·대응",
+        "사법·처분",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방"
+      ],
+      "duplicate_candidates": 42,
+      "event_count": 41,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i369a878d",
+      "title": "“한덕수 판결은 역사적 반역”… 與, 조희대에 쌓였던 불만 폭발",
+      "episode": "episode:ccef67fc1d9b84",
+      "quality": 0.92,
+      "stages": [
+        "파장·후속",
+        "입장·공방",
+        "사법·처분",
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 45,
+      "duplicate_candidates": 40,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icbdc8355",
+      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
+      "episode": "episode:cd7eb27005c4b8",
+      "quality": 0.92,
+      "stages": [
+        "발단·의혹",
+        "일반 보도",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 35,
       "event_count": 14,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3ba51eb9",
-      "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
-      "episode": "episode:afd24141b43dfb",
-      "quality": 0.92,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 42,
-      "event_count": 40,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i74946234",
-      "title": "\"남친이랑 포르노보다 걸린 찌질한 박지윤\"…악플러는 최동석이었다",
-      "episode": "episode:8116396127e624",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "수사·대응"
-      ],
-      "gaps": [
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 36,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ia7834185",
-      "title": "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
-      "episode": "episode:9540e2f275ce9e",
-      "quality": 0.92,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 15,
       "evidence_rate": 1.0
     },
     {
@@ -132,14 +133,14 @@
         "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 36,
+      "duplicate_candidates": 33,
       "event_count": 17,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9759b809",
-      "title": "공사 생도 '명예시험' 중 스마트폰으로 시험지 촬영…퇴교 처분",
-      "episode": "episode:0560f6dac7e396",
+      "id": "i90e55eb4",
+      "title": "공군사관학교서 '명예시험' 중 스마트폰 촬영 부정행위…생도 퇴교 처분",
+      "episode": "episode:48d1aec254e2eb",
       "quality": 0.48,
       "stages": [
         "사법·처분"
@@ -154,22 +155,21 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "id17be8f4",
-      "title": "이 대통령 \"AI 커닝 막기 어려워… 국가시험제도 전면 개편해야\"",
-      "episode": "episode:9cf97dd1abc04c",
-      "quality": 0.92,
+      "id": "i9e033bfb",
+      "title": "李 “AI 부정행위 막기 어려워… 국가시험 A부터 Z까지 개편”",
+      "episode": "episode:5ed07ffd8b0405",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "입장·공방"
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
+        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 20,
+      "duplicate_candidates": 29,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
