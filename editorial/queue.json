@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-21",
-  "generated_at": "2026-11-21T06:57:53+09:00",
+  "generated_at": "2026-11-21T07:23:29+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,22 +27,22 @@
   },
   "candidates": [
     {
-      "issue_id": "i448e114c",
-      "title": "다시 5천선 내준 코스피…앤트로픽도 못 막은 AI 불안",
+      "issue_id": "icbdc8355",
+      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
       "category": "경제",
-      "rank": 5,
-      "priority_score": 37,
+      "rank": 3,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "핵심요약'검은 금요일' 맞은 코스피 10개월 만에 최저 시가총액도 1월 이후 첫 4천조원 붕괴 삼성전자 7% 급락·양시장 매도 사이드 인공지능(AI) 투자심리 위축에 코스피가 20일 5%대 급락하며 지난 1월 중순",
+        "20일 미 뉴욕증시의 기술주 급락 여파로 코스피가 전 거래일 대비 5.21% 하락한 4869.96에 마감하며 1월 수준으로 회귀했다.",
         "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
         "증권가도 \"팔기엔 늦었고 사기엔 무섭다\"…5000 깨진 코스피 고민",
-        "\"코스피 9000에서 5000으로\"…개미들 손실 563조원 추정",
-        "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?"
+        "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
+        "앤스로픽 쏠림-對中규제 강화에, 韓-日-대만 증시 ‘검은 금요일’ 코스피 4900 붕괴 삼성전자 7%-하이닉스 5.9% ‘뚝’ 키옥시아 등 亞반도체주 전반 하락… 앤스로픽 사려고 AI 관련주 매도세 삼성-AMD에도 美 ‘대중..."
       ],
       "sources": [
         {
@@ -56,21 +56,21 @@
           "url": "https://n.news.naver.com/article/421/0009302014"
         },
         {
-          "press": "파이낸셜뉴스",
-          "title": "\"코스피 9000에서 5000으로\"…개미들 손실 563조원 추정",
-          "url": "https://n.news.naver.com/article/014/0005607174"
-        },
-        {
           "press": "머니투데이",
           "title": "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
           "url": "https://n.news.naver.com/article/008/0005444256"
+        },
+        {
+          "press": "donga.com",
+          "title": "앤스로픽 호재 덮은 ‘AI 거품론’… 코스피 4900 붕괴",
+          "url": "https://n.news.naver.com/mnews/article/020/0003764066?sid=101"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "핵심요약'검은 금요일' 맞은 코스피 10개월 만에 최저 시가총액도 1월 이후 첫 4천조원 붕괴 삼성전자 7% 급락·양시장 매도 사이드 인공지능(AI) 투자심리 위축에 코스피가 20일 5%대 급락하며 지난 1월 중순"
+          "evidence": "20일 미 뉴욕증시의 기술주 급락 여파로 코스피가 전 거래일 대비 5.21% 하락한 4869.96에 마감하며 1월 수준으로 회귀했다."
         },
         {
           "panel": 2,
@@ -81,6 +81,110 @@
           "panel": 3,
           "purpose": "핵심 수치·근거",
           "evidence": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "전일의 급락세가 이어지며 AI 거품론과 함께 증시 침체가 고착화되는 양상을 보였다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "입장·공방",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ic9b3c49b",
+      "title": "나스닥, 기술주 매도에 5.3% 폭락…다우·S&P500도 조정 진입",
+      "category": "경제",
+      "rank": 7,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "김연숙 특파원 = 20일(현지시간) 미국 뉴욕 증시 주요",
+        "\"호재도 안 통한다\" 나스닥 5%대 폭락 쇼크...엔비디아 14%↓[뉴욕마감]",
+        "미국 뉴욕증시가 인공지능(AI) 산업의 과잉 투자 우려와 기술주 중심의 차익실현 매물에 휩쓸리며 일제히...",
+        "스탠더드앤드푸어스(S&P)500지수는 265.44포인트(3.70%) 하락한 6910.39, 나스닥 종합지수는 1261.47포인트(5.28...",
+        "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져"
+      ],
+      "sources": [
+        {
+          "press": "머니투데이",
+          "title": "\"호재도 안 통한다\" 나스닥 5%대 폭락 쇼크...엔비디아 14%↓[뉴욕마감]",
+          "url": "https://n.news.naver.com/article/008/0005444356"
+        },
+        {
+          "press": "joseilbo.com",
+          "title": "‘AI 투매’에 나스닥 5.3% 추락하며 올해 상승분 반납…엔비디아 14%↓",
+          "url": "https://n.news.naver.com/mnews/article/123/0002394534?sid=101"
+        },
+        {
+          "press": "디지털타임스",
+          "title": "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져",
+          "url": "https://n.news.naver.com/article/029/0003060294"
+        },
+        {
+          "press": "파이낸셜뉴스",
+          "title": "[속보][뉴욕증시] 앤스로픽 급락에 붕괴…나스닥, 5.3% 폭락",
+          "url": "https://n.news.naver.com/article/014/0005607591"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "김연숙 특파원 = 20일(현지시간) 미국 뉴욕 증시 주요"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "미국 뉴욕증시가 인공지능(AI) 산업의 과잉 투자 우려와 기술주 중심의 차익실현 매물에 휩쓸리며 일제히..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "\"호재도 안 통한다\" 나스닥 5%대 폭락 쇼크...엔비디아 14%↓[뉴욕마감]"
         },
         {
           "panel": 4,
@@ -131,112 +235,8 @@
       }
     },
     {
-      "issue_id": "i3ba51eb9",
-      "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
-      "category": "경제",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "삼성전자가 차세대 서버용 메모리 솔루션 '소캠2(SOCAMM2)'를 앞세워 글로벌 D램 시장 1위 자리를 굳히기 위해 노력하고 있다.",
-        "\"저전력 D램 시장 2배 커진다\"…삼성전자, '소캠2'로 1위 굳히기",
-        "\"2억7000만원이 1억 됐다\"…버티다",
-        "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\"",
-        "코스피 5%대 급락…개인만 1.5조 '사자' 한국거래소에 따르면 20일 코스피는 전 거래일보다"
-      ],
-      "sources": [
-        {
-          "press": "블로터",
-          "title": "\"저전력 D램 시장 2배 커진다\"…삼성전자, '소캠2'로 1위 굳히기",
-          "url": "https://n.news.naver.com/article/293/0000093528"
-        },
-        {
-          "press": "한국경제",
-          "title": "\"2억7000만원이 1억 됐다\"…버티다 지친 삼전닉스 개미들",
-          "url": "https://n.news.naver.com/article/015/0005356450"
-        },
-        {
-          "press": "한국경제TV",
-          "title": "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\"",
-          "url": "https://n.news.naver.com/article/215/0001273355"
-        },
-        {
-          "press": "fnnews.com",
-          "title": "\"6월 꿈같다, 구조대 오긴 하나요\"…5000선 또 무너진 코스피에 '한숨' ...",
-          "url": "https://n.news.naver.com/mnews/article/014/0005607576?sid=101"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "삼성전자가 차세대 서버용 메모리 솔루션 '소캠2(SOCAMM2)'를 앞세워 글로벌 D램 시장 1위 자리를 굳히기 위해 노력하고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "코스피200 선물지수 변동으로 유가증권시장의 프로그램 매도호가 효력이 5분간 정지되는 매도 사이드카..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "\"저전력 D램 시장 2배 커진다\"…삼성전자, '소캠2'로 1위 굳히기"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i7e9deff4",
-      "title": "법원 \"사생활 논란' 김수현 측, 쿠쿠에 모델료 8억원 돌려줘야\"(종합)",
+      "issue_id": "i70d10cca",
+      "title": "법원 \"김수현 소속사, 쿠쿠에 모델료 8억 원 지급해야\"",
       "category": "경제",
       "rank": 8,
       "priority_score": 37,
@@ -247,22 +247,12 @@
       "status": "ready_for_editorial_review",
       "facts": [
         "서울중앙지법은 쿠쿠전자 측이 김수현과 소속사에 제기한 20억대 손배소 김수현 소속사가 8억 7천여만 원을 지급해야 한다는 1심 판단이 나왔습니다.",
-        "법원 \"사생활 논란' 김수현 측, 쿠쿠에 모델료 8억원 돌려줘야\"(종합)",
-        "법원 \"배우 김수현, 쿠쿠 전자에 8억 7500만 원 지급해야\"",
         "법원 \"배우 김수현 소속사, 쿠쿠에 8억7000만원 배상해야\"",
-        "김수현은 쿠쿠 외에도 프롬바이오, 트렌드메이커, 클래시스, 아이더, 미도 등의 업체와도 소송 중이다."
+        "김수현은 쿠쿠 외에도 프롬바이오, 트렌드메이커, 클래시스, 아이더, 미도 등의 업체와도 소송 중이다.",
+        "소송가액은 100억원에 달하는 것으로 알려져 있다.",
+        "앞서 법원은 시계 브랜드 미도가 골드메달리스트를 상대로 낸..."
       ],
       "sources": [
-        {
-          "press": "연합뉴스",
-          "title": "법원 \"사생활 논란' 김수현 측, 쿠쿠에 모델료 8억원 돌려줘야\"(종합)",
-          "url": "https://n.news.naver.com/article/001/0016455291"
-        },
-        {
-          "press": "한국일보",
-          "title": "법원 \"배우 김수현, 쿠쿠 전자에 8억 7500만 원 지급해야\"",
-          "url": "https://n.news.naver.com/article/469/0000966835"
-        },
         {
           "press": "뉴시스",
           "title": "법원 \"배우 김수현 소속사, 쿠쿠에 8억7000만원 배상해야\"",
@@ -272,6 +262,16 @@
           "press": "biz.heraldcorp.com",
           "title": "“김수현 측, 광고주에 8억 배상하라” 또 패소…‘김새론 의혹’에 품...",
           "url": "https://n.news.naver.com/mnews/article/016/0002726428?sid=102"
+        },
+        {
+          "press": "segye.com",
+          "title": "법원 “김수현 소속사, 쿠쿠 측에 8억 7000여만 원 배상해야”",
+          "url": "https://n.news.naver.com/mnews/article/022/0004176882?sid=102"
+        },
+        {
+          "press": "kmib.co.kr",
+          "title": "법원 “김수현 소속사, 쿠쿠에 8억원 지급” 판결",
+          "url": "https://n.news.naver.com/mnews/article/005/0001886505?sid=102"
         }
       ],
       "story_beats": [
@@ -288,7 +288,7 @@
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "법원 \"사생활 논란' 김수현 측, 쿠쿠에 모델료 8억원 돌려줘야\"(종합)"
+          "evidence": "법원 \"배우 김수현 소속사, 쿠쿠에 8억7000만원 배상해야\""
         },
         {
           "panel": 4,
