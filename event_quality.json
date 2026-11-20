@@ -1,22 +1,22 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 01:28:33",
+  "updated_at": "2026-11-20 00:23:26",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.89,
+  "average_quality": 0.88,
   "issues": [
     {
-      "id": "i636fee3a",
-      "title": "민주당 분노 속 의총…'조희대 탄핵 추진' 결론",
-      "episode": "episode:127b7706f20c82",
+      "id": "i612fb5ca",
+      "title": "김민석 “대법원 판결, 역사적 반역…조희대 탄핵해야”",
+      "episode": "episode:4e9aff33e480f6",
       "quality": 0.92,
       "stages": [
-        "수사·대응",
+        "사법·처분",
         "일반 보도",
         "발단·의혹",
         "파장·후속",
         "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
       "gaps": [],
       "duplicate_candidates": 38,
@@ -39,108 +39,90 @@
         "파장·후속"
       ],
       "duplicate_candidates": 41,
+      "event_count": 18,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id1b0be38",
+      "title": "앤트로픽 성공적 상장에…30조원대 부자 창업자 7명 탄생(종합)",
+      "episode": "episode:ff495a4467eb06",
+      "quality": 0.84,
+      "stages": [
+        "사법·처분",
+        "파장·후속",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i373413d2",
+      "title": "트럼프 ‘푸틴은 내 친구’ 발언에 유럽 발칵…“우리는 푸틴 친구 아냐”",
+      "episode": "episode:459a81dd0a0ba6",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "파장·후속",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 30,
       "event_count": 16,
       "evidence_rate": 1.0
     },
     {
-      "id": "i8d5c6a36",
-      "title": "삼성전자, 전영현·노태문 '투톱' 유지…메모리·스마트폰 수장엔 새 얼굴",
-      "episode": "episode:06f5c07ff37b2c",
+      "id": "if98717c2",
+      "title": "\"죄는 미워해도 사람은 미워하지 말라\"…서울대 교수, 이진우 논란에 쓴소리",
+      "episode": "episode:589ce1b1eeb620",
       "quality": 0.84,
       "stages": [
-        "사법·처분",
         "일반 보도",
+        "입장·공방",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1570ff54",
-      "title": "코스피, 4.08% 내린 4928.51에 개장",
-      "episode": "episode:f10a2402b6d0c5",
-      "quality": 1.0,
-      "stages": [
         "수사·대응",
-        "발단·의혹",
-        "일반 보도",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 35,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ieb53cf08",
-      "title": "\"'스펙 열광'에서 '사적 제재'까지. 이진우 사망 안타까워\"…서울대 교수 '일침'",
-      "episode": "episode:0c26af1c149d31",
-      "quality": 0.92,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응"
+        "사법·처분"
       ],
       "duplicate_candidates": 34,
-      "event_count": 8,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "if4d34bdb",
-      "title": "[속보] 서울대, ‘리트 만점자’ 사망 제적 예정…“입학취소는 불가”",
-      "episode": "episode:b7e34f7c9183ad",
-      "quality": 0.84,
+      "id": "iff33c979",
+      "title": "수능 도전한 스님 출신 50대...가방 속 ‘재난문자 알림’에 결국 퇴실",
+      "episode": "episode:35a45b20153836",
+      "quality": 0.92,
       "stages": [
-        "발단·의혹",
+        "일반 보도",
         "입장·공방",
+        "수사·대응",
         "파장·후속"
       ],
       "gaps": [
-        "수사·대응",
+        "발단·의혹",
         "사법·처분"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 4,
+      "duplicate_candidates": 24,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "idcd1545d",
-      "title": "“부정행위 엄단” 경고에도…스마트 안경·카메라 등 98명 적발",
-      "episode": "episode:ac11638fccb8bf",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 39,
-      "event_count": 11,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ied5d8727",
-      "title": "“그땐 챗GPT 별로였는데”… ‘고대 정외과 합격’ 이진우, AI 썼을까",
-      "episode": "episode:f0ba2b833958bd",
-      "quality": 0.92,
+      "id": "i2f27b309",
+      "title": "“진우님, 잘못했습니다”…리트 만점자 검증 나섰던 강사 추모글",
+      "episode": "episode:c9038b9e2432b4",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
         "발단·의혹",
@@ -193,37 +175,75 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i73b7c1d8",
-      "title": "트럼프는 '친구'라 했지만…\"시진핑·푸틴은 美패권종식 맞손\"",
-      "episode": "episode:6833d8ae75def4",
-      "quality": 0.76,
+      "id": "i3b7a5bfe",
+      "title": "수능 부정행위 98명 적발…AI 스마트안경·초소형 카메라 사용",
+      "episode": "episode:8a790b788c2772",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
-        "파장·후속"
+        "입장·공방",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 36,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i8f638b08",
+      "title": "'리트 만점' 이진우, 사망으로도 끝나지 않는 의혹… 경찰 수사 계속",
+      "episode": "episode:e7b177f592df6f",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "사법·처분",
+        "파장·후속",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 60,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i165fa92a",
+      "title": "'드디어 터졌다' 29% 잭팟…버린 자식 취급받더니 '대반전'",
+      "episode": "episode:a0178d563f438b",
+      "quality": 0.76,
+      "stages": [
+        "파장·후속",
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 22,
+      "duplicate_candidates": 26,
       "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9f5e1743",
-      "title": "역사적 미중러 회담서 평화 말한 푸틴, 크림대교 공격엔 “더 고통스러운 보복”",
-      "episode": "episode:0addabcf768302",
-      "quality": 0.76,
+      "id": "id829cce9",
+      "title": "앤트로픽 상장에 AI 거품 우려 폭발…나스닥 2.25%↓",
+      "episode": "episode:9aeee8dd1ca401",
+      "quality": 0.92,
       "stages": [
+        "사법·처분",
+        "파장·후속",
         "일반 보도",
-        "파장·후속"
+        "발단·의혹"
       ],
       "gaps": [
-        "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 17,
+      "duplicate_candidates": 31,
+      "event_count": 12,
       "evidence_rate": 1.0
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T10:23:45.464953+09:00",
+  "updated": "2026-11-20T09:18:44.716995+09:00",
   "alerts_count": 5,
   "alerts": [
     {
@@ -85,14 +85,6 @@
   ],
   "quakes": [
     {
-      "id": "us6000uc4v",
-      "mag": 5.6,
-      "place": "southeast of the Loyalty Islands",
-      "t": "2026-11-20 00:49",
-      "depth": 10,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc4v"
-    },
-    {
       "id": "us6000uc2q",
       "mag": 5.3,
       "place": "South Georgia Island region",
@@ -163,6 +155,14 @@
       "t": "2026-11-19 02:11",
       "depth": 10,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ubxg"
+    },
+    {
+      "id": "us6000ubxb",
+      "mag": 5.2,
+      "place": "130 km W of Teluk Dalam, Indonesia",
+      "t": "2026-11-19 01:34",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ubxb"
     }
   ],
   "cities": [
@@ -174,11 +174,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 9.3,
+      "temp": 10.3,
       "apparent_temp": 7.7,
-      "humidity": 78,
+      "humidity": 63,
       "code": 0,
-      "wind": 3.8
+      "wind": 7.5
     },
     {
       "id": "losangeles",
@@ -188,11 +188,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 14.4,
-      "apparent_temp": 14.5,
-      "humidity": 83,
-      "code": 2,
-      "wind": 2.4
+      "temp": 15.4,
+      "apparent_temp": 13.7,
+      "humidity": 79,
+      "code": 0,
+      "wind": 15.3
     },
     {
       "id": "london",
@@ -202,9 +202,9 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 7.6,
-      "apparent_temp": 6.2,
-      "humidity": 88,
+      "temp": 7.3,
+      "apparent_temp": 6.0,
+      "humidity": 89,
       "code": 3,
       "wind": 2.2
     },
@@ -216,11 +216,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 10.4,
+      "temp": 10.6,
       "apparent_temp": 7.5,
       "humidity": 78,
-      "code": 80,
-      "wind": 14.6
+      "code": 3,
+      "wind": 15.3
     },
     {
       "id": "frankfurt",
@@ -230,9 +230,9 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 9.8,
+      "temp": 9.7,
       "apparent_temp": 7.3,
-      "humidity": 87,
+      "humidity": 88,
       "code": 61,
       "wind": 13.0
     },
@@ -244,11 +244,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 13.0,
-      "apparent_temp": 8.8,
-      "humidity": 35,
+      "temp": 11.3,
+      "apparent_temp": 8.1,
+      "humidity": 46,
       "code": 0,
-      "wind": 12.4
+      "wind": 7.4
     },
     {
       "id": "beijing",
@@ -258,11 +258,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 1.3,
-      "apparent_temp": -2.6,
-      "humidity": 45,
-      "code": 0,
-      "wind": 4.8
+      "temp": -0.5,
+      "apparent_temp": -4.8,
+      "humidity": 46,
+      "code": 1,
+      "wind": 7.0
     },
     {
       "id": "singapore",
@@ -272,11 +272,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 27.5,
-      "apparent_temp": 33.0,
-      "humidity": 80,
-      "code": 3,
-      "wind": 2.1
+      "temp": 24.8,
+      "apparent_temp": 30.4,
+      "humidity": 95,
+      "code": 51,
+      "wind": 2.6
     },
     {
       "id": "sydney",
@@ -286,11 +286,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 24.3,
-      "apparent_temp": 26.4,
-      "humidity": 64,
-      "code": 3,
-      "wind": 14.0
+      "temp": 24.2,
+      "apparent_temp": 27.6,
+      "humidity": 65,
+      "code": 2,
+      "wind": 9.2
     },
     {
       "id": "toronto",
@@ -300,11 +300,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 10.1,
-      "apparent_temp": 6.5,
-      "humidity": 60,
+      "temp": 11.1,
+      "apparent_temp": 7.2,
+      "humidity": 62,
       "code": 1,
-      "wind": 13.0
+      "wind": 16.6
     },
     {
       "id": "dubai",
@@ -314,11 +314,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 22.7,
-      "apparent_temp": 25.4,
-      "humidity": 82,
+      "temp": 23.0,
+      "apparent_temp": 25.5,
+      "humidity": 80,
       "code": 0,
-      "wind": 6.0
+      "wind": 6.6
     },
     {
       "id": "saopaulo",
@@ -328,21 +328,12 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 25.6,
-      "apparent_temp": 27.5,
-      "humidity": 63,
-      "code": 3,
-      "wind": 7.2
+      "temp": 23.7,
+      "apparent_temp": 26.8,
+      "humidity": 83,
+      "code": 1,
+      "wind": 7.1
     }
   ],
-  "stories": [
-    {
-      "id": "g95b59b28",
-      "title": "COP31 draft climate deal removes mention of fossil fuels",
-      "press": "AFP.com",
-      "image": "https://i.guim.co.uk/img/media/0dcf2f4e26be89799494e7fe6683b3cdce430515/1005_0_6600_5280/master/6600.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=19e17c23104aaed7fb1bcf69debf29a5",
-      "score": 10.5,
-      "url": "g/g95b59b28"
-    }
-  ]
+  "stories": []
 }
