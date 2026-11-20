@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-21",
-  "generated_at": "2026-11-21T02:27:26+09:00",
+  "generated_at": "2026-11-21T00:57:41+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -31,39 +31,39 @@
       "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
       "category": "경제",
       "rank": 3,
-      "priority_score": 37,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
-        "삼성전자와 SK하이닉스가 6.6% 안팎으로 곤두박질 치는 등 코스피가 20일 장중 4%대 급락세를 보이자 프로그램 매도호가 일시효력정지(매도 사)가 발동되었습니다.",
-        "\"저전력 D램 시장 2배 커진다\"…삼성전자, '소캠2'로 1위 굳히기",
+        "2026년 11월 20일, 엔비디아발 쇼크와 글로벌 AI 생태계 불안으로 코스피가 4%대 급락하며 매도 사이드카가 발동되는 등 '검은 금요일'을 맞이했다.",
         "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\"",
-        "20일 코스피는 전 거래일보다",
-        "5.21% 하락한 4,869.96으로 마감했다."
+        "코스피 또 4%대 급락…'5천피' 무너지고 반도체주 와르르",
+        "“삼성전자·SK하이닉스 과도하게 빠졌다”…KB증권 “내년 D램 가격 40% 상승”",
+        "\"2억7000만원이 1억 됐다\"…버티다"
       ],
       "sources": [
-        {
-          "press": "블로터",
-          "title": "\"저전력 D램 시장 2배 커진다\"…삼성전자, '소캠2'로 1위 굳히기",
-          "url": "https://n.news.naver.com/article/293/0000093528"
-        },
         {
           "press": "한국경제TV",
           "title": "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\"",
           "url": "https://n.news.naver.com/article/215/0001273355"
         },
         {
-          "press": "donga.com",
-          "title": "앤스로픽 호재 덮은 ‘AI 거품론’… 코스피 4900 붕괴",
-          "url": "https://n.news.naver.com/mnews/article/020/0003764066?sid=101"
-        },
-        {
           "press": "한국경제TV",
           "title": "코스피 또 4%대 급락…'5천피' 무너지고 반도체주 와르르",
           "url": "https://n.news.naver.com/article/215/0001273377"
+        },
+        {
+          "press": "디지털데일리",
+          "title": "“삼성전자·SK하이닉스 과도하게 빠졌다”…KB증권 “내년 D램 가격 40% 상승”",
+          "url": "https://n.news.naver.com/article/138/0002249331"
+        },
+        {
+          "press": "한국경제",
+          "title": "\"2억7000만원이 1억 됐다\"…버티다 지친 삼전닉스 개미들",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5tOFB6aS1FOTI5dGpUQV9mWkNQekd2UHlEeWR3aUZDNFRiZFg0clZxeTI5MUFzanJheE94R2VDb2VoZXVLSEczdEJBTzBSdm1OQjg4U0lhb2hZQQ?oc=5"
         }
       ],
       "story_beats": [
@@ -75,12 +75,12 @@
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "5.21% 하락한 4,869.96으로 마감했다."
+          "evidence": "“삼성전자·SK하이닉스 과도하게 빠졌다”…KB증권 “내년 D램 가격 40% 상승”"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "\"저전력 D램 시장 2배 커진다\"…삼성전자, '소캠2'로 1위 굳히기"
+          "evidence": "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다."
         },
         {
           "panel": 4,
@@ -131,10 +131,10 @@
       }
     },
     {
-      "issue_id": "icbdc8355",
-      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
+      "issue_id": "i9a6e7f91",
+      "title": "검은 금요일…코스피 5000 붕괴, 앤트로픽 상장 흥행에도 美 기술주 급락",
       "category": "경제",
-      "rank": 6,
+      "rank": 7,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -142,11 +142,11 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "국내 증시가 다시 '검은 금요일'을 맞았습니다.",
+        "코스피지수 5000선이 또 다시 무너졌다.",
         "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
-        "증권가도 \"팔기엔 늦었고 사기엔 무섭다\"…5000 깨진 코스피 고민",
         "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
-        "같은 기간 코스피 전체 외국인 순매도액의 73%가 반도체 투톱에 집중됐다."
+        "9% 하락한 코스피의 시가총액은 3,991조 3,977억 원을 기록하며 올 1월 15일 이후 10개월 만에 처음으로 4,000조 원대가 붕괴됐다.",
+        "장중 급락세가 이어지면서 양대 증시에는 매도 사이드카가 잇따라 발동됐다."
       ],
       "sources": [
         {
@@ -155,31 +155,31 @@
           "url": "https://n.news.naver.com/article/081/0003701632"
         },
         {
-          "press": "뉴스1",
-          "title": "증권가도 \"팔기엔 늦었고 사기엔 무섭다\"…5000 깨진 코스피 고민",
-          "url": "https://n.news.naver.com/article/421/0009302014"
-        },
-        {
           "press": "머니투데이",
           "title": "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
           "url": "https://n.news.naver.com/article/008/0005444256"
         },
         {
-          "press": "fnnews.com",
-          "title": "\"삼전 7% 폭락보다 무서운 45조\"…외국인은 왜 한국 주식을 버리나 [머니...",
-          "url": "https://n.news.naver.com/mnews/article/014/0005607555?sid=101"
+          "press": "fntoday.co.kr",
+          "title": "\"검은 금요일\" 덮친 국내 증시…코스피 4,800대로 후퇴, 10개월만 최저",
+          "url": "https://www.fntoday.co.kr/news/articleView.html?idxno=399515"
+        },
+        {
+          "press": "m-economynews.com",
+          "title": "‘검은 금요일’ 코스피 4,900선 붕괴...AI 투자 불안에 글로벌 증시 동...",
+          "url": "https://www.m-economynews.com/news/article.html?no=73395"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "국내 증시가 다시 '검은 금요일'을 맞았습니다."
+          "evidence": "코스피지수 5000선이 또 다시 무너졌다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "같은 기간 코스피 전체 외국인 순매도액의 73%가 반도체 투톱에 집중됐다."
+          "evidence": "9% 하락한 코스피의 시가총액은 3,991조 3,977억 원을 기록하며 올 1월 15일 이후 10개월 만에 처음으로 4,000조 원대가 붕괴됐다."
         },
         {
           "panel": 3,
@@ -193,8 +193,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -235,22 +235,22 @@
       }
     },
     {
-      "issue_id": "i95d12aa9",
-      "title": "법원 \"사생활 논란' 김수현 측, 쿠쿠에 모델료 8억원 돌려줘야\"(종합)",
+      "issue_id": "i6033b622",
+      "title": "법원 \"김수현 소속사, 쿠쿠에 모델료 8억 7천만 원 돌려줘야\"",
       "category": "경제",
-      "rank": 8,
+      "rank": 6,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
-        "서울중앙지법은 쿠쿠전자 측이 김수현과 소속사에 제기한 20억대 손배소 김수현 개인 상대 청구 기각, 말레이시아 법인 청구는 기각한 후 김수현 소속사가 쿠쿠전자 측에 약 8억 7,500만 원을 지급해야 한다는 1심 판결을 내렸습니다.",
+        "서울중앙지법 민사합의25부(부장 권기만)는 20일 쿠쿠전자 측에 약 8억7,500만 원을 배상해야 한다는 법원 판결이 나왔다.",
         "‘10년 광고 모델’ 김수현 결국…법원 “김수현 소속사, 쿠쿠에 8억 배상하라”",
         "법원 \"배우 김수현, 쿠쿠 전자에 8억 7500만 원 지급해야\"",
         "법원 \"배우 김수현 소속사, 쿠쿠에 8억7000만원 배상해야\"",
-        "김수현은 쿠쿠 외에도 프롬바이오, 트렌드메이커, 클래시스, 아이더, 미도 등의 업체와도 소송 중이다."
+        "법원 \"사생활 논란' 김수현 측, 쿠쿠에 모델료 8억원 돌려줘야\"(종합)"
       ],
       "sources": [
         {
@@ -269,16 +269,16 @@
           "url": "https://n.news.naver.com/article/003/0014336690"
         },
         {
-          "press": "biz.heraldcorp.com",
-          "title": "“김수현 측, 광고주에 8억 배상하라” 또 패소…‘김새론 의혹’에 품...",
-          "url": "https://n.news.naver.com/mnews/article/016/0002726428?sid=102"
+          "press": "연합뉴스",
+          "title": "법원 \"사생활 논란' 김수현 측, 쿠쿠에 모델료 8억원 돌려줘야\"(종합)",
+          "url": "https://n.news.naver.com/article/001/0016455291"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "서울중앙지법은 쿠쿠전자 측이 김수현과 소속사에 제기한 20억대 손배소 김수현 개인 상대 청구 기각, 말레이시아 법인 청구는 기각한 후 김수현 소속사가 쿠쿠전자 측에 약 8억 7,500만 원을 지급해야 한다는 1심…"
+          "evidence": "서울중앙지법 민사합의25부(부장 권기만)는 20일 쿠쿠전자 측에 약 8억7,500만 원을 배상해야 한다는 법원 판결이 나왔다."
         },
         {
           "panel": 2,
@@ -330,10 +330,9 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
+        "continuity_quality": 0.92,
         "continuity_gaps": [
           "입장·공방",
-          "수사·대응",
           "파장·후속"
         ],
         "no_generic_closing": true
