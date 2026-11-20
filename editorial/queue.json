@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T17:31:22+09:00",
+  "generated_at": "2026-11-20T17:54:04+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i6a986efe",
-      "title": "[속보] 4,800선까지 밀린 코스피...반도체주 급락",
+      "issue_id": "i3ba51eb9",
+      "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
       "category": "경제",
-      "rank": 3,
+      "rank": 2,
       "priority_score": 45,
       "production_types": [
         "comic",
@@ -38,11 +38,11 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "2026년 11월 20일 코스피와 코스닥 시장이 5% 넘게 급락하며 양 시장에 매도 사이드카가 발동되었다.",
+        "2026년 11월 20일, 코스피와 코스닥 지수가 5% 넘게 급락하며 장중 매도 사이드카가 발동되는 '검은 금요일' 장세가 연출되었다.",
         "코스피 ‘검은 금요일’…5.21% 급락한 4869.96 마감",
-        "20일 한국거래소에 따르면 코스피는 전 거래일보다",
-        "267.93포인트(5.21%) 내린 4869.96에, 코스닥은 39.13포인트(5.71%) 하락한 645.68에 마감했다.",
-        "두 시장 모두 매도 사이드카(프로그램 매도호가 일시 효력 정지)가..."
+        "이날 코스피와 코스닥 모두 매도 사이드카가 발동되며 급락해 손실은 더 불어났을 것으로 추정된다.",
+        "코스피는 전 거래일보다",
+        "267.93포인트(5.21%) 급락한 4869.96에, 코스닥지수는 39.13포인트(5.71%) 하락한 645.68에..."
       ],
       "sources": [
         {
@@ -61,31 +61,31 @@
           "url": "https://n.news.naver.com/article/005/0001886472"
         },
         {
-          "press": "joongang.co.kr",
-          "title": "亞증시 ‘검은 금요일’…코스피, 수익률 116%→15% 급락",
-          "url": "https://n.news.naver.com/mnews/article/025/0003566781?sid=101"
+          "press": "sedaily.com",
+          "title": "“韓 개미, 하반기만 563조 손실”",
+          "url": "https://n.news.naver.com/mnews/article/011/0004684462?sid=101"
         },
         {
-          "press": "m-economynews.com",
-          "title": "‘검은 금요일’ 코스피 4,900선 붕괴...AI 투자 불안에 글로벌 증시 동...",
-          "url": "https://www.m-economynews.com/news/article.html?no=73395"
+          "press": "newscham.net",
+          "title": "‘주가 5000’을 약속한 정부, 하루 5%는 개인이 떠안았다",
+          "url": "https://newscham.net/130203/"
         },
         {
-          "press": "youthdaily.co.kr",
-          "title": "한국 \"추락\"·유럽 \"선전\"...세계 증시 '수익률 1위' 내준 코스피",
-          "url": "https://www.youthdaily.co.kr/news/article.html?no=230156"
+          "press": "뉴시스",
+          "title": "'검은 금요일' 코스피, 4900선 밑으로…코스닥까지 동반 '매도 사이드카'",
+          "url": "https://n.news.naver.com/article/003/0014335753"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "2026년 11월 20일 코스피와 코스닥 시장이 5% 넘게 급락하며 양 시장에 매도 사이드카가 발동되었다."
+          "evidence": "2026년 11월 20일, 코스피와 코스닥 지수가 5% 넘게 급락하며 장중 매도 사이드카가 발동되는 '검은 금요일' 장세가 연출되었다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "267.93포인트(5.21%) 내린 4869.96에, 코스닥은 39.13포인트(5.71%) 하락한 645.68에 마감했다."
+          "evidence": "이날 코스피와 코스닥 모두 매도 사이드카가 발동되며 급락해 손실은 더 불어났을 것으로 추정된다."
         },
         {
           "panel": 3,
@@ -95,7 +95,7 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "전날까지의 5100선 방어 실패로 코스피가 하루 만에 5% 넘게 폭락하며 4800선까지 후퇴했고, 양 시장에 매도 사이드카가 발동되는 등 '검은 금요일' 장세를 나타냈다."
+          "evidence": "코스피가 4~5%대 급락하고 삼성전자와 SK하이닉스가 휘청였다. 과거에도 반도체주 중심의 충격이 지수 전체를 흔드는 패턴이 반복되어 왔음을 보여준다."
         }
       ],
       "visual_brief": {
@@ -132,19 +132,18 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.92,
+        "continuity_quality": 1.0,
         "continuity_gaps": [
-          "발단·의혹",
           "입장·공방"
         ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "if69b6941",
-      "title": "코스피 추락 어디까지…앤트로픽 역대급 IPO에도 투심 회복 실패(종합)",
+      "issue_id": "ieb302281",
+      "title": "앤트로픽 IPO에 역대급 뭉칫돈…AI 산업 반등 분수령 되나",
       "category": "경제",
-      "rank": 6,
+      "rank": 7,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -153,26 +152,26 @@
       "status": "needs_fact_review",
       "facts": [
         "AI 모델 개발사 앤트로픽이 나스닥에 입성했지만 AI주의 급락을 막지 못했다.",
-        "코스피는 전 거래일보다",
-        "267.93포인트(5.21%) 급락한 4869.96에 거래를 마쳤다.",
-        "코스닥도 5.71% 하락한 645.68로...",
-        "AI 기업 앤트로픽이 역대 최대 규모 기업공개(IPO)를 통해 증시에 입성해 첫날 17% 넘게 올랐지만 기술주..."
+        "코스피가 올해 한때 9000선을 돌파하며 뜨거운 투자 열기를 뿜어냈지만, 최근 5000선까지 무너지는 사이...",
+        "오히려 앤트로픽의 상장이 수급 측면에서는 부담이 될 가능성도 있다.",
+        "초대형 IPO에 투자자금이 쏠리면서...",
+        "종가 기준 3거래일 만에 5천선을 다시 반납한 코스피는 올해 1월 이후 10개월 만에 최저치로 밀려났으며..."
       ],
       "sources": [
         {
-          "press": "nownews.seoul.co.kr",
-          "title": "“폭락 시작도 안 했다”는데…JP모건 美 금리 3연속 인상 전망, IMF도 경...",
-          "url": "https://n.news.naver.com/mnews/article/081/0003701687?sid=104"
+          "press": "biz.heraldcorp.com",
+          "title": "‘구천피’ 넘어 ‘1만피’ 간다더니…‘돌아오지 않는 활력’ 코스피 ...",
+          "url": "https://n.news.naver.com/mnews/article/016/0002726405?sid=101"
         },
         {
-          "press": "m-economynews.com",
-          "title": "‘검은 금요일’ 코스피 4,900선 붕괴...AI 투자 불안에 글로벌 증시 동...",
-          "url": "https://www.m-economynews.com/news/article.html?no=73395"
+          "press": "globalepic.co.kr",
+          "title": "코스피 5.21% 급락 ‘검은 금요일’…4천860선 후퇴하며 10개월 만 최저",
+          "url": "https://www.globalepic.co.kr/view.php?ud=2026112017260687127cc35ccc5c_29"
         },
         {
-          "press": "비즈워치",
-          "title": "앤트로픽 흥행보다 강했던 AMD 쇼크...코스피 다시 5000선 밑으로",
-          "url": "https://n.news.naver.com/article/648/0000052819"
+          "press": "매일경제",
+          "title": "“골드만·모건스탠리 1500억씩 챙겼다”…앤트로픽 IPO에 월가 ‘잭팟’",
+          "url": "https://www.mk.co.kr/news/stock/12214851"
         },
         {
           "press": "머니투데이",
@@ -189,12 +188,12 @@
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "코스닥도 5.71% 하락한 645.68로..."
+          "evidence": "코스피가 올해 한때 9000선을 돌파하며 뜨거운 투자 열기를 뿜어냈지만, 최근 5000선까지 무너지는 사이..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "267.93포인트(5.21%) 급락한 4869.96에 거래를 마쳤다."
+          "evidence": "종가 기준 3거래일 만에 5천선을 다시 반납한 코스피는 올해 1월 이후 10개월 만에 최저치로 밀려났으며..."
         },
         {
           "panel": 4,
@@ -246,10 +245,10 @@
       }
     },
     {
-      "issue_id": "ie7177138",
-      "title": "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
+      "issue_id": "ic8fc76dc",
+      "title": "리트 만점자 사망에…서울대 교수 \"하늘로 둥둥 띄우곤 사냥개처럼 몰아붙여\" 일침",
       "category": "사회",
-      "rank": 7,
+      "rank": 6,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -257,7 +256,7 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "올해 법학적성시험(LEET·리트) 만점자 이진우 씨가 AI 부정행위 논란 끝에 어제(19일) 숨진 채 발견됐습니다.",
+        "올해 법학적성시험(LEET·리트) 만점자 이진우 씨가 AI 부정행위 논란 끝에 숨진 채 발견됐습니다.",
         "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
         "사냥개처럼 몰아붙여”…서울대 교수, 이진우 사망에 쓴소리",
         "“마지막 선택마저 손가락질”…이진우씨 사망에 서울대 교수 작심 발언",
@@ -289,7 +288,7 @@
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "올해 법학적성시험(LEET·리트) 만점자 이진우 씨가 AI 부정행위 논란 끝에 어제(19일) 숨진 채 발견됐습니다."
+          "evidence": "올해 법학적성시험(LEET·리트) 만점자 이진우 씨가 AI 부정행위 논란 끝에 숨진 채 발견됐습니다."
         },
         {
           "panel": 2,
@@ -308,8 +307,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -341,216 +340,9 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
+        "continuity_quality": 0.92,
         "continuity_gaps": [
-          "입장·공방",
           "수사·대응",
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "if68e1f2d",
-      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
-      "category": "사회",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "법학적성시험(LEET·리트) 만점과 서울대 치의학과 합격 이력을 두고 부정행위 의혹을 받는 이진우(32)씨가 과거 경찰관을 폭행해 벌금형을 선고받은 것으로 드러났다.",
-        "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-        "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
-        "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
-        "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다"
-      ],
-      "sources": [
-        {
-          "press": "중앙일보",
-          "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-          "url": "https://n.news.naver.com/article/025/0003566361"
-        },
-        {
-          "press": "서울경제",
-          "title": "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
-          "url": "https://n.news.naver.com/article/011/0004683998"
-        },
-        {
-          "press": "세계일보",
-          "title": "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
-          "url": "https://n.news.naver.com/article/022/0004176505"
-        },
-        {
-          "press": "동아일보",
-          "title": "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다",
-          "url": "https://n.news.naver.com/article/020/0003763620"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "법학적성시험(LEET·리트) 만점과 서울대 치의학과 합격 이력을 두고 부정행위 의혹을 받는 이진우(32)씨가 과거 경찰관을 폭행해 벌금형을 선고받은 것으로 드러났다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "판결문에 따르면 해당 인물은 고의로 교통사고를 낸 뒤 합의금을 받아낸 혐의 등으로 2022년 9월 징역 6개월을..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "법학적성시험(LEET·리트) 만점자로 알려진 이진우(32) 씨가 과거 고의 교통사고를 이용한 공갈 범죄와 경찰관..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ib0b88852",
-      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
-      "category": "IT",
-      "rank": 1,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다.",
-        "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
-        "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
-        "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
-        "흔적을 발견할 수 없었다."
-      ],
-      "sources": [
-        {
-          "press": "매일경제",
-          "title": "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
-          "url": "https://n.news.naver.com/article/009/0005766140"
-        },
-        {
-          "press": "한겨레",
-          "title": "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
-          "url": "https://n.news.naver.com/article/028/0002832987"
-        },
-        {
-          "press": "KBS",
-          "title": "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
-          "url": "https://n.news.naver.com/article/056/0012297227"
-        },
-        {
-          "press": "sentv.co.kr",
-          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
-          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "게임 속 풍경을 단순한 배경으로 활용하는 데 그치지 않고, 이용자가 새로운 장소를 발견하고 직접..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "‘리트 만점’ 이진우 모텔서 숨진 채 발견···“요즘 힘들다” 5줄 메모 남겨"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
           "사법·처분"
         ],
         "no_generic_closing": true
