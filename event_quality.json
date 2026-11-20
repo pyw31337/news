@@ -1,111 +1,130 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 16:54:09",
+  "updated_at": "2026-11-20 17:27:25",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.89,
   "issues": [
-    {
-      "id": "ie7177138",
-      "title": "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
-      "episode": "episode:b3578f3b08680c",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "사법·처분"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
     {
       "id": "i4cfabfce",
       "title": "국민의힘, 조희대 탄핵 추진에 ‘반색’···“민주당도 참 힘든 길 간다”",
-      "episode": "episode:9df337f8020182",
+      "episode": "episode:c86d97ee1a2b47",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "수사·대응",
-        "파장·후속",
         "사법·처분",
+        "파장·후속",
+        "수사·대응",
         "입장·공방"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 36,
-      "event_count": 28,
+      "duplicate_candidates": 37,
+      "event_count": 21,
       "evidence_rate": 1.0
     },
     {
-      "id": "i7ffe62f5",
-      "title": "최동석, 전처 박지윤에게 익명 악플 달아 명예훼손 혐의로 송치돼",
-      "episode": "episode:27ea78d1a97970",
-      "quality": 0.92,
+      "id": "i761add81",
+      "title": "\"장례식장서 무슨 말을\"…이진우 동기들 잇단 글 봤더니",
+      "episode": "episode:11b536df4f1ee2",
+      "quality": 1.0,
       "stages": [
-        "사법·처분",
-        "발단·의혹",
         "일반 보도",
+        "사법·처분",
+        "파장·후속",
+        "발단·의혹",
+        "입장·공방",
         "수사·대응"
       ],
-      "gaps": [
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 48,
+      "gaps": [],
+      "duplicate_candidates": 27,
+      "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "i3c5aafc7",
-      "title": "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\"",
-      "episode": "episode:98453ae59b1353",
-      "quality": 1.0,
+      "id": "i3ba51eb9",
+      "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
+      "episode": "episode:3ca9fd085a6ca8",
+      "quality": 0.92,
       "stages": [
         "파장·후속",
         "일반 보도",
-        "수사·대응",
-        "사법·처분",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "입장·공방"
-      ],
-      "duplicate_candidates": 44,
-      "event_count": 41,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ifb04c7a2",
-      "title": "김민석 “조희대 탄핵, 정무적 판단으로 미뤘지만 더는 용인 못해”",
-      "episode": "episode:3839ae6d324d36",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
         "수사·대응",
         "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 42,
+      "event_count": 39,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ifb5b3124",
+      "title": "박지윤 ‘이혼 악플러’ 잡고 보니 전남편 최동석…명예훼손 혐의 송치",
+      "episode": "episode:55f92d5130dfb8",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "수사·대응",
+        "일반 보도",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
         "파장·후속"
       ],
-      "duplicate_candidates": 43,
+      "duplicate_candidates": 37,
+      "event_count": 36,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i612fb5ca",
+      "title": "김민석 “대법원 판결, 역사적 반역…조희대 탄핵해야”",
+      "episode": "episode:6f35aff982b58b",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 39,
+      "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icbdc8355",
+      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
+      "episode": "episode:cd7eb27005c4b8",
+      "quality": 0.92,
+      "stages": [
+        "발단·의혹",
+        "일반 보도",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 36,
       "event_count": 14,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9759b809",
-      "title": "공사 생도 '명예시험' 중 스마트폰으로 시험지 촬영…퇴교 처분",
-      "episode": "episode:888416142015be",
-      "quality": 0.48,
+      "id": "ib6a34559",
+      "title": "감독관 없는 ‘명예시험’서 스마트폰 부정행위…공사 3학년 생도 퇴교",
+      "episode": "episode:e2a442c3b1c87c",
+      "quality": 0.66,
       "stages": [
+        "일반 보도",
         "사법·처분"
       ],
       "gaps": [
@@ -113,53 +132,17 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 26,
-      "event_count": 7,
+      "duplicate_candidates": 28,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
       "id": "i95d12aa9",
       "title": "법원 \"사생활 논란' 김수현 측, 쿠쿠에 모델료 8억원 돌려줘야\"(종합)",
-      "episode": "episode:f930eb5b5f7fa0",
+      "episode": "episode:e7e0ef44d5df0d",
       "quality": 0.84,
       "stages": [
         "사법·처분",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "icc7073be",
-      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
-      "episode": "episode:b4571ab00be66b",
-      "quality": 0.66,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 14,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if933243e",
-      "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
-      "episode": "episode:c4ae311aeb6cb9",
-      "quality": 0.84,
-      "stages": [
         "일반 보도",
         "발단·의혹"
       ],
@@ -168,68 +151,36 @@
         "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 18,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i58a10da3",
-      "title": "실적도 안먹히는 시장...'검은 금요일' 코스피 4900선도 붕괴",
-      "episode": "episode:079c17123a0f0a",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "수사·대응",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 29,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i32f6a682",
-      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
-      "episode": "episode:bb1f3458304a26",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 37,
-      "event_count": 13,
+      "duplicate_candidates": 32,
+      "event_count": 16,
       "evidence_rate": 1.0
     },
     {
       "id": "ia939ce03",
       "title": "미중러 회담 뒤 '러 목소리 커진다' \"나토 회원, 준회원도 안돼\"",
       "episode": "episode:ba5631cbee441b",
-      "quality": 1.0,
+      "quality": 0.92,
       "stages": [
         "일반 보도",
         "입장·공방",
-        "발단·의혹",
         "사법·처분",
         "파장·후속"
       ],
       "gaps": [
+        "발단·의혹",
         "수사·대응"
       ],
       "duplicate_candidates": 30,
-      "event_count": 10,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i53bf684e",
-      "title": "[속보] \"해외여행 안 갔는데\"…10년 만에 국내서 콜레라 환자 발생",
-      "episode": "episode:97b8bfbbd4d495",
-      "quality": 0.58,
+      "id": "i40a6b0ad",
+      "title": "李대통령 “AI 변화 맞춰 시험제도 A부터 Z까지 전면 개편”",
+      "episode": "episode:b07442f44ee306",
+      "quality": 0.76,
       "stages": [
+        "일반 보도",
         "수사·대응"
       ],
       "gaps": [
@@ -237,8 +188,8 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 21,
-      "event_count": 3,
+      "duplicate_candidates": 22,
+      "event_count": 9,
       "evidence_rate": 1.0
     }
   ]
