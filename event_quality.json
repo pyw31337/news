@@ -1,14 +1,33 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 06:57:04",
+  "updated_at": "2026-11-20 05:53:35",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.94,
+  "average_quality": 0.92,
   "issues": [
     {
-      "id": "i3ba51eb9",
-      "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
-      "episode": "episode:6b3e8b4ccf73b6",
+      "id": "ie0d5f5ab",
+      "title": "한동훈 \"조희대 탄핵하면 사법부 마비…대한민국 후진국 될 것\"",
+      "episode": "episode:661a414c883464",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "수사·대응",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 41,
+      "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic0d87e8d",
+      "title": "[속보] 코스피 이어 코스닥도 매도 사이드카 발동…삼전닉스 급락",
+      "episode": "episode:a6a8677099bcdc",
       "quality": 1.0,
       "stages": [
         "파장·후속",
@@ -20,179 +39,159 @@
       "gaps": [
         "입장·공방"
       ],
-      "duplicate_candidates": 43,
-      "event_count": 41,
+      "duplicate_candidates": 39,
+      "event_count": 42,
       "evidence_rate": 1.0
     },
     {
-      "id": "i4e0d4d18",
-      "title": "민주당, '조희대 대법원장 탄핵' 당론 채택",
-      "episode": "episode:3df6e1104b2382",
-      "quality": 1.0,
-      "stages": [
-        "수사·대응",
-        "사법·처분",
-        "일반 보도",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 27,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i5c4c4254",
-      "title": "李 “국가시험제도 전면 개편…이미 치러진 시험 부정도 단죄”",
-      "episode": "episode:6e2d0d64a997ee",
-      "quality": 0.84,
+      "id": "i44ef98ad",
+      "title": "수능 전자기기 부정행위자 111명...하루 새 13명 추가",
+      "episode": "episode:989c38a119ea19",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
         "발단·의혹",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1edca5ec",
-      "title": "“마지막 선택마저 손가락질”…이진우씨 사망에 서울대 교수 작심 발언",
-      "episode": "episode:e9a0423c328a5b",
-      "quality": 1.0,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "입장·공방",
         "파장·후속",
         "수사·대응"
       ],
       "gaps": [
-        "사법·처분"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iea4bed6d",
-      "title": "수능 전자기기 부정행위 111건…13명 추가 적발",
-      "episode": "episode:b904315c259675",
-      "quality": 0.84,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 37,
+      "duplicate_candidates": 40,
       "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i0b3d7aeb",
-      "title": "트럼프·시진핑·푸틴 \"핵전쟁 안 돼\"…北 비핵화 압박 나설까",
-      "episode": "episode:daa64ba9d12310",
-      "quality": 0.92,
+      "id": "i6d29847f",
+      "title": "'리트 만점자' 이진우 부검 결과 나왔다…경찰, 공범 여부 추적",
+      "episode": "episode:3ce5bd6971f211",
+      "quality": 1.0,
       "stages": [
         "일반 보도",
-        "수사·대응",
         "사법·처분",
+        "수사·대응",
+        "발단·의혹",
+        "입장·공방",
         "파장·후속"
       ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 24,
+      "gaps": [],
+      "duplicate_candidates": 42,
+      "event_count": 20,
       "evidence_rate": 1.0
     },
     {
-      "id": "ic657444f",
-      "title": "천안 '스마트안경' 적발 수능 수험생, 시험서 사용 인정",
-      "episode": "episode:cc889cba8ea1ee",
+      "id": "i81849ffb",
+      "title": "“살갑고 고맙던 형이었는데”…이진우 서울대 치대 동기 애도",
+      "episode": "episode:aba5909ef52b59",
       "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i251a9a49",
+      "title": "李대통령 지지율 40%…민주 36%·국힘 28%로 오차밖 與우세[한국갤럽](종합)",
+      "episode": "episode:ecd15e21c7df07",
+      "quality": 1.0,
       "stages": [
         "일반 보도",
         "파장·후속",
         "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
+        "사법·처분",
         "입장·공방"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 13,
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 51,
+      "event_count": 119,
       "evidence_rate": 1.0
     },
     {
-      "id": "ifb1d05ac",
-      "title": "\"'7만전자·20만닉스' 갈 수밖에 없다\"…전문가의 섬뜩한 경고",
-      "episode": "episode:fcd806d41bccd5",
+      "id": "iebc6057e",
+      "title": "[속보] 2심 재판부, 김범수 카카오 창업자에 '무죄'",
+      "episode": "episode:e7f18a3549c172",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "수사·대응",
-        "발단·의혹",
+        "사법·처분",
         "입장·공방",
         "파장·후속"
       ],
       "gaps": [
-        "사법·처분"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 11,
+      "duplicate_candidates": 27,
+      "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9f782930",
-      "title": "카카오 김범수 2심도 무죄…“카카오 도전·성장에 힘 보태겠다”",
-      "episode": "episode:f5d1aab1810405",
-      "quality": 0.92,
+      "id": "i9f5e1743",
+      "title": "역사적 미중러 회담서 평화 말한 푸틴, 크림대교 공격엔 “더 고통스러운 보복”",
+      "episode": "episode:3f9fa91f1c5079",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
-        "수사·대응",
         "사법·처분",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방"
+        "입장·공방",
+        "수사·대응"
       ],
-      "duplicate_candidates": 21,
-      "event_count": 12,
+      "duplicate_candidates": 33,
+      "event_count": 20,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9322c051",
-      "title": "“박지윤, 남친과 음란물 보다 걸려”... 악성댓글 잡고보니 前남편 최동석",
-      "episode": "episode:4a5435ac19dbd8",
+      "id": "ibd8eee6c",
+      "title": "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\"",
+      "episode": "episode:0a8f5ac0a2c4c6",
       "quality": 0.92,
       "stages": [
-        "발단·의혹",
         "수사·대응",
+        "파장·후속",
         "일반 보도",
         "사법·처분"
       ],
       "gaps": [
-        "입장·공방",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 20,
+      "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ifbef4fe4",
+      "title": "“유재석, 198억 땅 전액 현금으로 샀다”…강남 건물 드디어 완공",
+      "episode": "episode:043a59587aac32",
+      "quality": 0.68,
+      "stages": [
+        "수사·대응",
+        "일반 보도",
         "파장·후속"
       ],
-      "duplicate_candidates": 17,
-      "event_count": 10,
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 18,
+      "event_count": 5,
       "evidence_rate": 1.0
     }
   ]
