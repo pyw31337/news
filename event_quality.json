@@ -1,19 +1,38 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 13:53:15",
+  "updated_at": "2026-11-20 14:26:26",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.85,
+  "average_quality": 0.87,
   "issues": [
     {
-      "id": "ic6f5baf9",
-      "title": "박지윤 악플러, 잡고 보니 전 남편 최동석…명예훼손 혐의 송치",
-      "episode": "episode:b15f6782aef8b6",
+      "id": "id552b423",
+      "title": "한동훈, 조희대 탄핵 추진 민주당에 \"친위 쿠데타 세력\" 맹비판",
+      "episode": "episode:a4bd5ffa55f2fe",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "사법·처분",
+        "파장·후속",
+        "일반 보도",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 23,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ifb5b3124",
+      "title": "박지윤 ‘이혼 악플러’ 잡고 보니 전남편 최동석…명예훼손 혐의 송치",
+      "episode": "episode:f4da9851c04e28",
       "quality": 0.84,
       "stages": [
         "사법·처분",
-        "수사·대응",
-        "발단·의혹"
+        "발단·의혹",
+        "수사·대응"
       ],
       "gaps": [
         "입장·공방",
@@ -25,166 +44,150 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i9a9acab5",
-      "title": "김민석의 국면전환 카드?…조희대 탄핵 강행",
-      "episode": "episode:6617bce1d3a43a",
+      "id": "ia7834185",
+      "title": "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
+      "episode": "episode:3d45d0eb2b80fa",
+      "quality": 1.0,
+      "stages": [
+        "발단·의혹",
+        "일반 보도",
+        "사법·처분",
+        "파장·후속",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 39,
+      "event_count": 33,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5eb96fe8",
+      "title": "리트 만점자 고발인 \"남은 흔적 어떻게든 찾아달라\" 수사 촉구",
+      "episode": "episode:e044d86a5dffbe",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "파장·후속",
+        "일반 보도",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 36,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if6c74288",
+      "title": "\"좋은 형·오빠 였다\" 서울대 동기들 이진우 추모...\"혼란\"",
+      "episode": "episode:797398d4bfe7b3",
+      "quality": 0.92,
+      "stages": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iad66b3e3",
+      "title": "컬리 큐레이터 1만여명 개인정보 유출… 주민번호·계좌번호도 포함",
+      "episode": "episode:b96b5a6f2a5e1f",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "사법·처분",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if933243e",
+      "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
+      "episode": "episode:18d805fa6cb976",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "발단·의혹",
-        "파장·후속",
         "수사·대응",
         "사법·처분",
-        "일반 보도",
         "파장·후속",
         "입장·공방"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 25,
+      "duplicate_candidates": 33,
+      "event_count": 24,
       "evidence_rate": 1.0
     },
     {
-      "id": "i58a10da3",
-      "title": "실적도 안먹히는 시장...'검은 금요일' 코스피 4900선도 붕괴",
-      "episode": "episode:15b24fb8ca2b15",
-      "quality": 0.92,
+      "id": "i1c15a9f7",
+      "title": "법원 \"배우 김수현, 쿠쿠 전자에 8억 7500만 원 지급해야\"",
+      "episode": "episode:54d963b869d4f3",
+      "quality": 0.84,
       "stages": [
-        "발단·의혹",
-        "일반 보도",
         "사법·처분",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 30,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i52002ca2",
-      "title": "[속보] “용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
-      "episode": "episode:42a56cd22c055b",
-      "quality": 0.76,
-      "stages": [
         "일반 보도",
-        "파장·후속"
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ibb52e43f",
-      "title": "“이진우, 좋은 형이었지만 배신감도”…서울대 치대 동기들 추모",
-      "episode": "episode:6f3379e93923bc",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "사법·처분",
         "파장·후속"
       ],
       "duplicate_candidates": 27,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib6822c18",
-      "title": "‘10년 광고 모델’ 김수현 결국…법원 “김수현 소속사, 쿠쿠에 8억 배상하라”",
-      "episode": "episode:c7351949992a84",
-      "quality": 0.84,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 29,
       "event_count": 18,
       "evidence_rate": 1.0
     },
     {
-      "id": "if933243e",
-      "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
-      "episode": "episode:f7b3cd99c4f520",
+      "id": "i2540df50",
+      "title": "앤트로픽 '세기의 IPO'도 못 살렸다…코스피 급락에 매도 사이드카 발동",
+      "episode": "episode:0d53faa5866360",
       "quality": 0.92,
       "stages": [
+        "파장·후속",
         "일반 보도",
         "수사·대응",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 19,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic0a32255",
-      "title": "'리트 만점자' 이진우 유품에 2018 수능 수험표…무슨 사연",
-      "episode": "episode:ef6648b227dd6e",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 5,
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 35,
       "evidence_rate": 1.0
     },
     {
-      "id": "i2996505e",
-      "title": "[그래픽] 공시가격 현실화율 추이",
-      "episode": "episode:8cb57a34ec40c5",
-      "quality": 0.76,
+      "id": "i072b86da",
+      "title": "공사 생도 '명예시험' 중 스마트폰으로 시험지 촬영…퇴교 처분",
+      "episode": "episode:4b4370dd7bfc87",
+      "quality": 0.38,
       "stages": [
-        "일반 보도",
-        "파장·후속"
+        "사법·처분"
       ],
       "gaps": [
         "입장·공방",
         "수사·대응"
       ],
       "duplicate_candidates": 25,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i53bf684e",
-      "title": "[속보] \"해외여행 안 갔는데\"…10년 만에 국내서 콜레라 환자 발생",
-      "episode": "episode:97b8bfbbd4d495",
-      "quality": 0.48,
-      "stages": [
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 22,
-      "event_count": 2,
+      "event_count": 1,
       "evidence_rate": 1.0
     }
   ]
