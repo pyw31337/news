@@ -15,7 +15,7 @@ URL = "https://www.sec.gov/files/company_tickers.json"
 
 
 def run():
-    ua = os.environ.get("SEC_USER_AGENT", "NewsBoard research contact: admin@newsboard.local")
+    ua = os.environ.get("SEC_USER_AGENT", "").strip() or "NewsBoard research contact: admin@newsboard.local"
     req = urllib.request.Request(URL, headers={"User-Agent": ua, "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=30) as response:
         raw = json.load(response)

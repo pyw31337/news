@@ -26,7 +26,7 @@ def run():
     index = json.loads(INDEX.read_text(encoding="utf-8"))
     companies = index.get("companies", [])
     OUT.mkdir(parents=True, exist_ok=True)
-    ua = os.environ.get("SEC_USER_AGENT", "NewsBoard research contact: admin@newsboard.local")
+    ua = os.environ.get("SEC_USER_AGENT", "").strip() or "NewsBoard research contact: admin@newsboard.local"
     todo = [c for c in companies if not (OUT / f"{c['cik']}.json").exists()][:LIMIT]
     done = 0
     for c in todo:

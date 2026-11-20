@@ -77,4 +77,8 @@ out = {
 os.makedirs(BASE, exist_ok=True)
 with open(os.path.join(BASE, 'coverage.json'), 'w', encoding='utf-8') as f:
     json.dump(out, f, ensure_ascii=False, indent=2)
+# legal.yml의 '법률 수집 현황을 분석 원장에 게시' 단계는 아카이브 루트(lg/coverage.json)를
+# 복사하므로, 정식 경로(legal/v1/coverage.json)와 같은 내용을 루트에도 함께 기록한다.
+with open(os.path.join(ROOT, 'coverage.json'), 'w', encoding='utf-8') as f:
+    json.dump(out, f, ensure_ascii=False, indent=2)
 print(json.dumps(out, ensure_ascii=False, indent=2))
