@@ -1,4 +1,6 @@
 /* NewsBoard v2 section pages share the canonical Lets family primitives. */
+(() => { const link = document.createElement('link'); link.rel = 'stylesheet'; link.href = '../gutters.css?v=2'; document.head.appendChild(link); })();
+(() => { const main = document.querySelector('main.page'); if (main) { main.style.setProperty('padding-left', 'clamp(20px,4.4vw,64px)', 'important'); main.style.setProperty('padding-right', 'clamp(20px,4.4vw,64px)', 'important'); } })();
 (() => {
   const cssHref = 'https://pyw31337.github.io/lets/css/lets-design-system.css?v=1.1.0';
   if (!document.querySelector(`link[href^="${cssHref.split('?')[0]}"]`)) {
