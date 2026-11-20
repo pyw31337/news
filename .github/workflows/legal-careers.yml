@@ -25,7 +25,7 @@ jobs:
         run: |
           git config user.name "newsboard-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add db/people/legal_careers.json db/people/legal_career_queue.json
+          git add db/people/legal_careers.json db/people/legal_career_queue.json db/people/legal_firm_affiliations.json db/people/legal_profile_enrichment.json
           git diff --cached --quiet && exit 0
           git commit -qm "people: refresh legal career evidence queue"
           for n in 1 2 3 4 5; do

@@ -8,6 +8,7 @@
 import argparse
 import datetime as dt
 import gzip
+import html
 import json
 import re
 from pathlib import Path
@@ -15,6 +16,9 @@ from pathlib import Path
 ROLE_RE = re.compile(r"판사|검사|검찰|법관|대법관|재판관|변호사|법조|사법연수원|변호사시험")
 JUDICIAL_RE = re.compile(r"판사|검사|검찰|법관|대법관|재판관")
 PRIVATE_RE = re.compile(r"법무법인|법률사무소|로펌|변호사(?:사무소|개업|로 활동|로서)")
+FIRM_RE = re.compile(r"(?:법무법인(?:\s*\([^)]{1,20}\))?\s*[가-힣A-Za-z·&]{2,30}|[가-힣A-Za-z·&]{2,30}\s*법률사무소|[가-힣A-Za-z·&]{2,30}법률사무소|김앤장|태평양|광장|율촌|세종|화우|바른|대륙아주|지평|동인|한결|민본|해마루|이공|다산|창조|호민|엘플러스|대한중앙)")
+EXAM_RE = re.compile(r"사법연수원\s*(?:제\s*)?(\d+)기|제\s*(\d+)회\s*사법시험|변호사시험\s*(\d+)회")
+INSTITUTION_RE = re.compile(r"(?:대법원|헌법재판소|[가-힣]{2,10}(?:지방)?검찰청|[가-힣]{2,10}(?:지방)?법원|고등법원|지방법원)")
 
 
 def load(path, default):
@@ -53,6 +57,21 @@ def source_kind(url, label):
     return "declared_source" if label else "unknown"
 
 
+def firm_names(text):
+    text = html.unescape(str(text or ""))
+    out = []
+    for match in FIRM_RE.finditer(text):
+        value = re.sub(r"\s+", " ", match.group(0)).strip(" .·,;:()")
+        value = re.sub(r"(?:대표)?\s*변호사.*$", "", value).strip()
+        if value in {"법률사무소", "법무법인", "법률사무소 개업", "법률사무소 설립"}:
+            continue
+        if value.endswith(("개업", "설립", "변호사", "등")):
+            value = re.sub(r"\s*(개업|설립|변호사|등)$", "", value).strip()
+        if len(value) >= 3 and value not in out:
+            out.append(value)
+    return out
+
+
 def legal_roster(data):
     registry = load(data / "db/people/registry.json.gz", [])
     out = {}
@@ -88,7 +107,7 @@ def main():
             id_names[raw_id] = roster_name
             id_names[raw_id.removeprefix("pol:")] = roster_name
             id_names[raw_id.removeprefix("wd:")] = roster_name
-    records, queue = [], []
+    records, queue, firms, profiles = [], [], [], []
     now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 
     for person_key, bio in bios.items() if isinstance(bios, dict) else []:
@@ -106,6 +125,7 @@ def main():
         judicial_seen = False
         private_seen = False
         cited_count = 0
+        profile = {"person_key": str(person_key), "name": name, "name_status": "unresolved" if unresolved_name else "resolved", "credentials": [], "judicial_institutions": [], "firm_affiliations": [], "appointments": []}
         for idx, event in enumerate(legal_events):
             state, url = source_state(event)
             ev_text = text_event(event)
@@ -133,6 +153,20 @@ def main():
                 "source_kind": source_kind(url, str(event.get("src") or "")),
                 "collected_at": now,
             })
+            raw_text = html.unescape(ev_text)
+            for credential in EXAM_RE.finditer(raw_text):
+                value = credential.group(0)
+                if value not in profile["credentials"]:
+                    profile["credentials"].append(value)
+            for institution in INSTITUTION_RE.findall(raw_text):
+                if institution not in profile["judicial_institutions"]:
+                    profile["judicial_institutions"].append(institution)
+            for firm in firm_names(raw_text):
+                affiliation = {"firm": firm, "date": event.get("d"), "title": event.get("title"), "source_status": state, "source_url": url}
+                profile["firm_affiliations"].append(affiliation)
+                firms.append(dict(affiliation, person_key=str(person_key), name=name))
+            if re.search(r"임명|취임|선임|위촉|위원|원장|장관|총장", raw_text):
+                profile["appointments"].append({"date": event.get("d"), "title": event.get("title"), "source_status": state, "source_url": url})
         if judicial_seen and private_seen:
             transition = "judicial_to_private_practice_signal"
         elif private_seen:
@@ -141,6 +175,8 @@ def main():
             transition = "judicial_service_signal"
         else:
             transition = "legal_identity_signal"
+        profile["transition_signal"] = transition
+        profiles.append(profile)
         needs = []
         if not cited_count:
             needs.append("official_source_url")
@@ -204,9 +240,37 @@ def main():
         else:
             dedup[key]["person_keys"] = sorted(set(dedup[key]["person_keys"] + [row["person_key"]]))
     records = list(dedup.values())
+    firm_dedup = {}
+    for row in firms:
+        key = (row["name"], row["firm"], row.get("date"), row.get("title"), row.get("source_url"))
+        firm_dedup[key] = row
+    firms = list(firm_dedup.values())
     queue.sort(key=lambda x: (0 if "verify_transition_dates_and_firm" in x["needs"] else 1, x["name"]))
     out = data / "db/people"
     dump(out / "legal_careers.json", {"schema": 1, "updated": now, "records": records, "policy": "출처 URL이 있는 경력만 cited로 공개 후보가 되며, 미확인 전환은 needs_source 상태로 보관"})
+    dump(out / "legal_firm_affiliations.json", {"schema": 1, "updated": now, "affiliations": firms, "policy": "로펌·법률사무소명은 원문 경력 이벤트에서 추출한 후보이며 공식 출처 확인 전에는 확정 경력으로 표시하지 않음"})
+    # 동일 인물의 내부 ID가 여러 개면 profile은 aliases를 보존하고 검토 대상으로 둔다.
+    profile_map = {}
+    for profile in profiles:
+        key = profile["name"]
+        if key not in profile_map:
+            profile_map[key] = profile
+        else:
+            current = profile_map[key]
+            current["person_keys"] = sorted(set(current.get("person_keys", [current["person_key"]]) + [profile["person_key"]]))
+            for field in ("credentials", "judicial_institutions", "firm_affiliations", "appointments"):
+                if field == "firm_affiliations":
+                    for item in profile[field]:
+                        if item not in current[field]:
+                            current[field].append(item)
+                elif field == "appointments":
+                    for item in profile[field]:
+                        if item not in current[field]:
+                            current[field].append(item)
+                else:
+                    current[field] = sorted(set(current[field] + profile[field]))
+            current["identity_review"] = True
+    dump(out / "legal_profile_enrichment.json", {"schema": 1, "updated": now, "profiles": list(profile_map.values()), "policy": "신원 병합이 불확실한 경우 identity_review를 유지하며 공개 확정하지 않음"})
     dump(out / "legal_career_queue.json", {"schema": 1, "updated": now, "queue": queue, "counts": {
         "roster": len(roster), "people_with_legal_events": len(queue), "resolved_people": sum(x.get("name_status") == "resolved" for x in queue), "career_records": len(records),
         "cited_records": sum(r["source_status"] == "cited" for r in records),
