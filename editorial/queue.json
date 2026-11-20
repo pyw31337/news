@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-21",
-  "generated_at": "2026-11-21T04:54:45+09:00",
+  "generated_at": "2026-11-21T04:22:37+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,8 +27,8 @@
   },
   "candidates": [
     {
-      "issue_id": "i3ba51eb9",
-      "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
+      "issue_id": "ibcfe6b92",
+      "title": "\"2억7000만원이 1억 됐다\"…버티다 지친 삼전닉스 개미들",
       "category": "경제",
       "rank": 5,
       "priority_score": 37,
@@ -38,17 +38,22 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "코스피와 코스닥에서 나란히 매도 사이드카가 발동되었습니다.",
+        "삼성전자와 SK하이닉스 주가가 급락했지만 메모리 반도체 업황은 여전히 견조하다는 분석이 나왔다.",
         "\"저전력 D램 시장 2배 커진다\"…삼성전자, '소캠2'로 1위 굳히기",
+        "\"2억7000만원이 1억 됐다\"…버티다",
         "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\"",
-        "20일 코스피는 전 거래일보다",
-        "5.21% 하락한 4,869.96으로 마감했다."
+        "20일 코스피는 전 거래일보다"
       ],
       "sources": [
         {
           "press": "블로터",
           "title": "\"저전력 D램 시장 2배 커진다\"…삼성전자, '소캠2'로 1위 굳히기",
           "url": "https://n.news.naver.com/article/293/0000093528"
+        },
+        {
+          "press": "한국경제",
+          "title": "\"2억7000만원이 1억 됐다\"…버티다 지친 삼전닉스 개미들",
+          "url": "https://n.news.naver.com/article/015/0005356450"
         },
         {
           "press": "한국경제TV",
@@ -59,18 +64,13 @@
           "press": "donga.com",
           "title": "앤스로픽 호재 덮은 ‘AI 거품론’… 코스피 4900 붕괴",
           "url": "https://n.news.naver.com/mnews/article/020/0003764066?sid=101"
-        },
-        {
-          "press": "한국경제TV",
-          "title": "코스피 또 4%대 급락…'5천피' 무너지고 반도체주 와르르",
-          "url": "https://n.news.naver.com/article/215/0001273377"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "코스피와 코스닥에서 나란히 매도 사이드카가 발동되었습니다."
+          "evidence": "삼성전자와 SK하이닉스 주가가 급락했지만 메모리 반도체 업황은 여전히 견조하다는 분석이 나왔다."
         },
         {
           "panel": 2,
@@ -89,8 +89,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -131,8 +131,8 @@
       }
     },
     {
-      "issue_id": "icbdc8355",
-      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
+      "issue_id": "i64679c80",
+      "title": "‘7만전자·20만닉스’ 간다는 전문가 “폭락 시작도 안 했다”…증권가는 정반대 전망",
       "category": "경제",
       "rank": 8,
       "priority_score": 37,
@@ -142,49 +142,153 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "국내 증시는 20일 급락하며 코스피 4900·코스닥 650선을 반납했습니다.",
-        "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
-        "증권가도 \"팔기엔 늦었고 사기엔 무섭다\"…5000 깨진 코스피 고민",
-        "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
-        "같은 기간 코스피 전체 외국인 순매도액의 73%가 반도체 투톱에 집중됐다."
+        "삼성전자와 SK하이닉스가 나란히 급락한 가운데 두 기업의 적정 주가를 각각 7만원과 20만원으로 제시했던 전문가가 추가 폭락을 경고했다.",
+        "“본격 폭락 시작도 안 했다”…삼성전자 7만원·하이닉스 20만원 경고한 전문가 [이슈픽]",
+        "\"본격 폭락 아직 시작 안 했다\"…'7만전자·20만닉스' 제시한 애널리스트의 경고",
+        "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\"",
+        "‘7만전자·20만닉스’ 간다는 전문가 “폭락 시작도 안 했다”…증권가는 정반대 전망"
       ],
       "sources": [
         {
           "press": "서울신문",
-          "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
-          "url": "https://n.news.naver.com/article/081/0003701632"
+          "title": "“본격 폭락 시작도 안 했다”…삼성전자 7만원·하이닉스 20만원 경고한 전문가 [이슈픽]",
+          "url": "https://n.news.naver.com/article/081/0003701423"
         },
         {
-          "press": "뉴스1",
-          "title": "증권가도 \"팔기엔 늦었고 사기엔 무섭다\"…5000 깨진 코스피 고민",
-          "url": "https://n.news.naver.com/article/421/0009302014"
+          "press": "파이낸셜뉴스",
+          "title": "\"본격 폭락 아직 시작 안 했다\"…'7만전자·20만닉스' 제시한 애널리스트의 경고",
+          "url": "https://n.news.naver.com/article/014/0005607219"
         },
         {
-          "press": "머니투데이",
-          "title": "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
-          "url": "https://n.news.naver.com/article/008/0005444256"
+          "press": "이데일리",
+          "title": "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\"",
+          "url": "https://n.news.naver.com/article/018/0006412855"
         },
         {
-          "press": "fnnews.com",
-          "title": "\"삼전 7% 폭락보다 무서운 45조\"…외국인은 왜 한국 주식을 버리나 [머니...",
-          "url": "https://n.news.naver.com/mnews/article/014/0005607555?sid=101"
+          "press": "서울경제",
+          "title": "‘7만전자·20만닉스’ 간다는 전문가 “폭락 시작도 안 했다”…증권가는 정반대 전망",
+          "url": "https://n.news.naver.com/article/011/0004684536"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "국내 증시는 20일 급락하며 코스피 4900·코스닥 650선을 반납했습니다."
+          "evidence": "삼성전자와 SK하이닉스가 나란히 급락한 가운데 두 기업의 적정 주가를 각각 7만원과 20만원으로 제시했던 전문가가 추가 폭락을 경고했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "같은 기간 코스피 전체 외국인 순매도액의 73%가 반도체 투톱에 집중됐다."
+          "evidence": "메모리 기업들의 주가 폭락은 가격이 하락하기 시작해야 일어난다\"며 이 같이 전망했다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’"
+          "evidence": "“본격 폭락 시작도 안 했다”…삼성전자 7만원·하이닉스 20만원 경고한 전문가 [이슈픽]"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ia939ce03",
+      "title": "미중러 회담 뒤 '러 목소리 커진다' \"나토 회원, 준회원도 안돼\"",
+      "category": "세계",
+      "rank": 9,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "블라디미르 푸틴 러시아 대통령이 19일(현지시간) 중국에서 사상 첫 미국·중국·러시아 3자 정상회담을 한 직후부터 우크라이나에 대한 공격을 강화하고 있습니다.",
+        "도널드 트럼프 미국 대통령은 20일(현지시간) 백악관에서 기자회견을 갖고 미중러 3국 정상이 지난 19일 중국...",
+        "트럼프 대통령과 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령은 정상회담 후 공동성명을 내놨다....",
+        "블라디미르 푸틴 러시아 대통령과의 3자 회담에서 북한 문제가 논의됐다고 20일(현지 시간) 밝혔다.",
+        "트럼프 대통령은 이날 백악관에서 기자회견을 열고 전날 중국 선전에서 이뤄진 미중러 3자 정상회담과 관련해 \"세계 3대..."
+      ],
+      "sources": [
+        {
+          "press": "hankyung.com",
+          "title": "미중러 회담 트럼프 \"3대 핵보유국 책임 논의했다\" [이상은의 워싱턴나...",
+          "url": "https://n.news.naver.com/mnews/article/015/0005356547?sid=104"
+        },
+        {
+          "press": "newsis.com",
+          "title": "트럼프 \"미중러 3자 회담서 한반도 위험 대응 논의했다\"",
+          "url": "https://n.news.naver.com/mnews/article/003/0014336916?sid=104"
+        },
+        {
+          "press": "ytn.co.kr",
+          "title": "소득 없었던 첫 미중러 정상회담...트럼프·푸틴 \"역사 만들었다\" 자화...",
+          "url": "https://n.news.naver.com/mnews/article/052/0002435955?sid=104"
+        },
+        {
+          "press": "동아일보",
+          "title": "미중러 회담뒤 美동맹들 우려… “푸틴은 유럽 친구 아냐” “日엔 악몽”",
+          "url": "https://v.daum.net/v/20261121014222815"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "블라디미르 푸틴 러시아 대통령이 19일(현지시간) 중국에서 사상 첫 미국·중국·러시아 3자 정상회담을 한 직후부터 우크라이나에 대한 공격을 강화하고 있습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "[미중러 정상회담] 트럼프에게 \"내 친구\"로 불린 푸틴…종전협상 영향은"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "도널드 트럼프 미국 대통령은 20일(현지시간) 백악관에서 기자회견을 갖고 미중러 3국 정상이 지난 19일 중국..."
         },
         {
           "panel": 4,
@@ -228,113 +332,8 @@
         "sources": 4,
         "continuity_quality": 0.92,
         "continuity_gaps": [
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "if933243e",
-      "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
-      "category": "세계",
-      "rank": 9,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "약 10초 간 눈감고 고개 숙이고 손 깍지 낀채 정지 백악관 “가짜 뉴스! 서류 보고 있었다” 반박 루비오 국무 “이 사람은 안 자고 오전 2시 전화해서 문제” 19일 중국 선전(深圳)에서 열린 APEC",
-        "중국 선전의 아시아태평양경제협력체(APEC) 회의에 참석한 트럼프 대통령은 지난 19일 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령과 가진 3자 회담 뒤 러시아가 \"평화 준비가 됐다\"고 밝힌 바 있다.",
-        "푸틴, 트럼프·시진핑 회담 끝나자마자 \"우크라이나 총공격\"",
-        "트럼프 대통령과 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령은 정상회담 후 공동성명을 내놨다.",
-        "성명은 \"핵전쟁에서는 승자가 있을 수 없으며, 결코 일어나서는 안 된다는 점을 재확인했다\"면서 \"3국은 핵 위험..."
-      ],
-      "sources": [
-        {
-          "press": "fnnews.com",
-          "title": "\"트럼프, 우크라에 내년 1월 초까지 전쟁 끝내라\"",
-          "url": "https://n.news.naver.com/mnews/article/014/0005607572?sid=104"
-        },
-        {
-          "press": "JTBC",
-          "title": "푸틴, 트럼프·시진핑 회담 끝나자마자 \"우크라이나 총공격\"",
-          "url": "https://n.news.naver.com/article/437/0000521775"
-        },
-        {
-          "press": "hankyung.com",
-          "title": "미중러 회담 트럼프 \"3대 핵보유국 책임 논의했다\" [이상은의 워싱턴나...",
-          "url": "https://n.news.naver.com/mnews/article/015/0005356547?sid=104"
-        },
-        {
-          "press": "newsis.com",
-          "title": "트럼프 \"미중러 3자 회담서 한반도 위험 대응 논의했다\"",
-          "url": "https://n.news.naver.com/mnews/article/003/0014336916?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "약 10초 간 눈감고 고개 숙이고 손 깍지 낀채 정지 백악관 “가짜 뉴스! 서류 보고 있었다” 반박 루비오 국무 “이 사람은 안 자고 오전 2시 전화해서 문제” 19일 중국 선전(深圳)에서 열린 APEC"
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "트럼프 대통령은 \"그들이 법안을..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "중국 선전의 아시아태평양경제협력체(APEC) 회의에 참석한 트럼프 대통령은 지난 19일 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령과 가진 3자 회담 뒤 러시아가 \"평화 준비가 됐다\"고 밝힌 바 있다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
           "발단·의혹",
-          "수사·대응",
-          "사법·처분"
+          "수사·대응"
         ],
         "no_generic_closing": true
       }
