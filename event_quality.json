@@ -1,14 +1,33 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 00:08:10",
+  "updated_at": "2026-11-20 22:59:36",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.85,
+  "average_quality": 0.86,
   "issues": [
     {
-      "id": "icea0f205",
-      "title": "[속보]AI주 투매에 나스닥 5%대 급락…올해 상승분 반납",
-      "episode": "episode:77448c668f6292",
+      "id": "i5b14a2e6",
+      "title": "조희대 탄핵 추진에…판사들 \"결과 맘에 안들 때마다 비판, 어떻게 일 하나\"",
+      "episode": "episode:4e97daed5e21ed",
+      "quality": 1.0,
+      "stages": [
+        "사법·처분",
+        "파장·후속",
+        "수사·대응",
+        "일반 보도",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 37,
+      "event_count": 20,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib51e9320",
+      "title": "뉴욕증시, AI 기술주 매도세에 혼조 출발… 앤트로픽 상장 이틀째 10% 급락",
+      "episode": "episode:eebec2ac02a51c",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -20,74 +39,18 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 52,
-      "event_count": 63,
+      "duplicate_candidates": 50,
+      "event_count": 70,
       "evidence_rate": 1.0
     },
     {
-      "id": "i0abd8296",
-      "title": "민주당 '조희대 탄핵' 당론 채택…\"소추안 연내 처리\"",
-      "episode": "episode:c2d94a1d6e30fe",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "파장·후속",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 41,
-      "event_count": 23,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "id68ea53c",
-      "title": "세종시 소정리역서 화물열차 탈선…경부선 대전-천안 일반열차 운행중지",
-      "episode": "episode:04110851f21c33",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i86989573",
-      "title": "결국 고꾸라진 코스피 … “바닥이 어디?”보다 중요한 질문은",
-      "episode": "episode:1a2e76d52d0e72",
-      "quality": 1.0,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "사법·처분",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "수사·대응"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 18,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i98b20ce4",
-      "title": "\"찌질한 건 박지윤\" 악플러 잡고 보니 전 남편 최동석",
-      "episode": "episode:9e81230bc7960f",
+      "id": "i74946234",
+      "title": "\"남친이랑 포르노보다 걸린 찌질한 박지윤\"…악플러는 최동석이었다",
+      "episode": "episode:ae2a283717a6a8",
       "quality": 0.84,
       "stages": [
-        "사법·처분",
         "수사·대응",
+        "사법·처분",
         "일반 보도"
       ],
       "gaps": [
@@ -95,27 +58,27 @@
         "입장·공방",
         "파장·후속"
       ],
-      "duplicate_candidates": 36,
+      "duplicate_candidates": 40,
       "event_count": 35,
       "evidence_rate": 1.0
     },
     {
-      "id": "i8c43eb3d",
-      "title": "167년 수학 난제 풀었나…앤트로픽 연구 “클로드로 리만 가설 증명”",
-      "episode": "episode:35be08bc398051",
-      "quality": 0.84,
+      "id": "icbdc8355",
+      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
+      "episode": "episode:0ccf9d5f29cd92",
+      "quality": 1.0,
       "stages": [
-        "수사·대응",
+        "발단·의혹",
         "일반 보도",
+        "사법·처분",
+        "파장·후속",
         "입장·공방"
       ],
       "gaps": [
-        "발단·의혹",
-        "사법·처분",
-        "파장·후속"
+        "수사·대응"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 8,
+      "duplicate_candidates": 44,
+      "event_count": 28,
       "evidence_rate": 1.0
     },
     {
@@ -131,67 +94,101 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 28,
+      "duplicate_candidates": 31,
       "event_count": 2,
       "evidence_rate": 1.0
     },
     {
-      "id": "ib0f20010",
-      "title": "푸틴, 미중러 회담 직후 대공습...폴란드 \"러 미사일 넘어와\"",
-      "episode": "episode:7eada26af8781c",
+      "id": "if933243e",
+      "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
+      "episode": "episode:9065277103d743",
       "quality": 0.92,
       "stages": [
         "일반 보도",
-        "사법·처분",
         "파장·후속",
-        "사법·처분",
-        "수사·대응",
-        "입장·공방"
+        "입장·공방",
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
         "수사·대응"
       ],
-      "duplicate_candidates": 38,
-      "event_count": 18,
+      "duplicate_candidates": 35,
+      "event_count": 19,
       "evidence_rate": 1.0
     },
     {
-      "id": "i705c3036",
-      "title": "트럼프, 젠슨 황 복귀 촉구…“두 번째 기회 주어져야”",
-      "episode": "episode:ce517c3f7e2604",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 48,
-      "event_count": 15,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i53bf684e",
-      "title": "[속보] \"해외여행 안 갔는데\"…10년 만에 국내서 콜레라 환자 발생",
-      "episode": "episode:97b8bfbbd4d495",
+      "id": "i6033b622",
+      "title": "법원 \"김수현 소속사, 쿠쿠에 모델료 8억 7천만 원 돌려줘야\"",
+      "episode": "episode:cbd6a6b496f3ba",
       "quality": 0.84,
       "stages": [
+        "사법·처분",
         "일반 보도",
-        "발단·의혹",
-        "수사·대응"
+        "발단·의혹"
       ],
       "gaps": [
         "입장·공방",
-        "사법·처분",
+        "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 23,
-      "event_count": 6,
+      "duplicate_candidates": 30,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i6db5cc80",
+      "title": "대장동 인터뷰 공유한 李 대통령…'5500억 환수' 다시 꺼냈다",
+      "episode": "episode:ead05659248ae4",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "파장·후속",
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "gaps": [
+        "입장·공방"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 50,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id529a231",
+      "title": "김정은, 트럼프 대화제의 외면하고 교육공장으로…내치행보 지속",
+      "episode": "episode:3d4623ccdcfb0a",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic83ccfac",
+      "title": "김범수 2심 무죄에 한숨 돌린 카카오…AI 사업 재편·인적분할 '탄력'",
+      "episode": "episode:bab2bd9fc9b1c9",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "사법·처분",
+        "파장·후속",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 16,
       "evidence_rate": 1.0
     }
   ]
