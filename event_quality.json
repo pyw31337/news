@@ -1,83 +1,83 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 12:25:28",
+  "updated_at": "2026-11-20 12:52:08",
   "date": "2026-11-20",
   "total_issues": 10,
   "average_quality": 0.88,
   "issues": [
-    {
-      "id": "id552b423",
-      "title": "한동훈, 조희대 탄핵 추진 민주당에 \"친위 쿠데타 세력\" 맹비판",
-      "episode": "episode:c0696a75df63e4",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
-        "파장·후속",
-        "일반 보도",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 37,
-      "event_count": 22,
-      "evidence_rate": 1.0
-    },
     {
       "id": "i6c347c07",
       "title": "‘박지윤 악플러’ 정체 알고보니 전 남편 최동석…명예훼손 혐의 송치",
       "episode": "episode:c7b3db57f40b70",
       "quality": 0.92,
       "stages": [
-        "일반 보도",
         "사법·처분",
         "입장·공방",
-        "수사·대응"
+        "수사·대응",
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
         "파장·후속"
       ],
-      "duplicate_candidates": 33,
+      "duplicate_candidates": 34,
       "event_count": 36,
       "evidence_rate": 1.0
     },
     {
-      "id": "ie8b75c3b",
-      "title": "李대통령 \"AI 부정행위는 현실…국가시험 A부터 Z까지 전면 개편\"",
-      "episode": "episode:4c3d0b4ef9289a",
+      "id": "i4cfabfce",
+      "title": "국민의힘, 조희대 탄핵 추진에 ‘반색’···“민주당도 참 힘든 길 간다”",
+      "episode": "episode:54775e1fb1900c",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "사법·처분",
-        "입장·공방",
         "파장·후속",
-        "발단·의혹",
-        "수사·대응"
+        "수사·대응",
+        "입장·공방"
       ],
-      "gaps": [],
-      "duplicate_candidates": 29,
-      "event_count": 52,
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 21,
       "evidence_rate": 1.0
     },
     {
-      "id": "i4aa20a81",
-      "title": "[속보]'검은 금요일' 코스피 5% 급락…반도체 투매에 4900선 붕괴",
-      "episode": "episode:ecaf15c5cdab54",
+      "id": "i5eb96fe8",
+      "title": "리트 만점자 고발인 \"남은 흔적 어떻게든 찾아달라\" 수사 촉구",
+      "episode": "episode:1e23fc4d682c8a",
+      "quality": 0.84,
+      "stages": [
+        "수사·대응",
+        "파장·후속",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 39,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic0af5070",
+      "title": "'4869' 1월로 되돌아간 코스피…시총 4천조원 붕괴(종합)",
+      "episode": "episode:89d0f2cdef575c",
       "quality": 1.0,
       "stages": [
         "발단·의혹",
+        "입장·공방",
         "일반 보도",
         "사법·처분",
-        "파장·후속",
-        "입장·공방"
+        "파장·후속"
       ],
       "gaps": [
         "수사·대응"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 29,
+      "duplicate_candidates": 38,
+      "event_count": 20,
       "evidence_rate": 1.0
     },
     {
@@ -86,8 +86,8 @@
       "episode": "episode:e715500850f76d",
       "quality": 1.0,
       "stages": [
-        "사법·처분",
         "일반 보도",
+        "사법·처분",
         "발단·의혹",
         "입장·공방",
         "파장·후속",
@@ -95,26 +95,43 @@
       ],
       "gaps": [],
       "duplicate_candidates": 27,
-      "event_count": 8,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "ie406fd47",
-      "title": "법원 \"배우 김수현 소속사, 쿠쿠에 8억7000만원 배상해야\"",
-      "episode": "episode:a7544113b039af",
-      "quality": 0.84,
+      "id": "i4e4789c2",
+      "title": "“김수현 소속사, 쿠쿠에 8억7500만원 배상”…법원 판결 나왔다",
+      "episode": "episode:e4ba44dfb238e1",
+      "quality": 0.92,
       "stages": [
         "사법·처분",
+        "파장·후속",
         "일반 보도",
         "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "파장·후속"
+        "입장·공방"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 16,
+      "duplicate_candidates": 32,
+      "event_count": 34,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i53bf684e",
+      "title": "[속보] \"해외여행 안 갔는데\"…10년 만에 국내서 콜레라 환자 발생",
+      "episode": "episode:97b8bfbbd4d495",
+      "quality": 0.48,
+      "stages": [
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 23,
+      "event_count": 2,
       "evidence_rate": 1.0
     },
     {
@@ -132,44 +149,8 @@
         "발단·의혹",
         "수사·대응"
       ],
-      "duplicate_candidates": 29,
+      "duplicate_candidates": 28,
       "event_count": 19,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ifc2ec958",
-      "title": "국내서 10년 만에 콜레라 환자 나왔다",
-      "episode": "episode:5a8e6616e6b941",
-      "quality": 0.48,
-      "stages": [
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 23,
-      "event_count": 2,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i83b21747",
-      "title": "‘미트 수석 합격자’ AI 부정행위 의혹 부인…“1년 아닌 6년 준비, 법적 대응” [전문]",
-      "episode": "episode:b51d4440cca2e1",
-      "quality": 0.84,
-      "stages": [
-        "수사·대응",
-        "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 39,
-      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
@@ -187,8 +168,27 @@
         "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 12,
-      "event_count": 8,
+      "duplicate_candidates": 13,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i89ef0d35",
+      "title": "“혼자 죽기 무서웠다”···세 번째 만남서 일본인 여성 살해한 30대 구속기소",
+      "episode": "episode:03140781976838",
+      "quality": 0.92,
+      "stages": [
+        "입장·공방",
+        "사법·처분",
+        "파장·후속",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 20,
+      "event_count": 16,
       "evidence_rate": 1.0
     }
   ]

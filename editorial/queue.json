@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T21:25:29+09:00",
+  "generated_at": "2026-11-20T21:52:09+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,18 +27,18 @@
   },
   "candidates": [
     {
-      "issue_id": "i4aa20a81",
-      "title": "[속보]'검은 금요일' 코스피 5% 급락…반도체 투매에 4900선 붕괴",
+      "issue_id": "ic0af5070",
+      "title": "'4869' 1월로 되돌아간 코스피…시총 4천조원 붕괴(종합)",
       "category": "경제",
       "rank": 4,
-      "priority_score": 45,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "20일 인공지능(AI) 투자 불확실성과 미국의 대중 반도체 규제 강화 우려, 외국인 매도세가 겹치면서 국내 증시가 5%대 급락을 기록했다.",
+        "미 뉴욕증시에 앤트로픽이 상장한 뒤 기술주에 불어닥친 삭풍에 20일 코스피가 5%대 급락 마감했다.",
         "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
         "증권가도 \"팔기엔 늦었고 사기엔 무섭다\"…5000 깨진 코스피 고민",
         "코스피 5% 급락 ‘검은 금요일’...",
@@ -70,7 +70,7 @@
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "20일 인공지능(AI) 투자 불확실성과 미국의 대중 반도체 규제 강화 우려, 외국인 매도세가 겹치면서 국내 증시가 5%대 급락을 기록했다."
+          "evidence": "미 뉴욕증시에 앤트로픽이 상장한 뒤 기술주에 불어닥친 삭풍에 20일 코스피가 5%대 급락 마감했다."
         },
         {
           "panel": 2,
@@ -85,12 +85,12 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "AI 투자심리 위축과 반도체 규제 우려가 다시 폭발하면서 5000선이 완전히 무너지고 '검은 금요일'이라는 극단적인 폭락 장세로 이어졌다는 해석이 가능하다."
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -130,10 +130,114 @@
       }
     },
     {
+      "issue_id": "i4e4789c2",
+      "title": "“김수현 소속사, 쿠쿠에 8억7500만원 배상”…법원 판결 나왔다",
+      "category": "경제",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "서울중앙지법 민사합의25부(부장 권기만)는 20일 쿠쿠전자·쿠쿠홈시스·쿠쿠인터랙티브가 사생활 논란에 휩싸였던 배우 김수현 측이 광고계약을 해지한 광고주 쿠쿠 측에 약 8억 7천만원을 지급해야 한다는 법원 판단이 나왔다.",
+        "‘10년 광고 모델’ 김수현 결국…법원 “김수현 소속사, 쿠쿠에 8억 배상하라”",
+        "法 “김수현 소속사, 광고주 ‘쿠쿠’에 8억원 배상하라”",
+        "법원 \"배우 김수현, 쿠쿠 전자에 8억 7500만 원 지급해야\"",
+        "법원 \"배우 김수현 소속사, 쿠쿠에 8억7000만원 배상해야\""
+      ],
+      "sources": [
+        {
+          "press": "서울경제",
+          "title": "‘10년 광고 모델’ 김수현 결국…법원 “김수현 소속사, 쿠쿠에 8억 배상하라”",
+          "url": "https://n.news.naver.com/article/011/0004684496"
+        },
+        {
+          "press": "조선비즈",
+          "title": "法 “김수현 소속사, 광고주 ‘쿠쿠’에 8억원 배상하라”",
+          "url": "https://n.news.naver.com/article/366/0001206321"
+        },
+        {
+          "press": "한국일보",
+          "title": "법원 \"배우 김수현, 쿠쿠 전자에 8억 7500만 원 지급해야\"",
+          "url": "https://n.news.naver.com/article/469/0000966835"
+        },
+        {
+          "press": "뉴시스",
+          "title": "법원 \"배우 김수현 소속사, 쿠쿠에 8억7000만원 배상해야\"",
+          "url": "https://n.news.naver.com/article/003/0014336690"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "서울중앙지법 민사합의25부(부장 권기만)는 20일 쿠쿠전자·쿠쿠홈시스·쿠쿠인터랙티브가 사생활 논란에 휩싸였던 배우 김수현 측이 광고계약을 해지한 광고주 쿠쿠 측에 약 8억 7천만원을 지급해야 한다는 법원 판단이…"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "배우 김수현의 사생활 논란으로 불거진 광고 계약 분쟁을 두고 법원이 김수현의 소속사에 \"쿠쿠 측에 8억 8천여만 원을 배상하라\"고 판결했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "‘10년 광고 모델’ 김수현 결국…법원 “김수현 소속사, 쿠쿠에 8억 배상하라”"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
       "issue_id": "i5a2b07d0",
       "title": "개미들 어쩌나…반대매매 껑충 '비명'",
       "category": "경제",
-      "rank": 10,
+      "rank": 9,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -230,110 +334,6 @@
           "발단·의혹",
           "수사·대응",
           "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ia939ce03",
-      "title": "미중러 회담 뒤 '러 목소리 커진다' \"나토 회원, 준회원도 안돼\"",
-      "category": "세계",
-      "rank": 7,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "미중러 회담 이후, 러시아의 발언이 증가하고 있다.",
-        "회담 중과 직후 푸틴 대통령과 트럼프 대통령은 국제형사재판소(ICC)를 강하게 비판했다.",
-        "ICC는 2023년 3월부터 푸틴 대통령에 대한 체포영장을 유지하고 있다.",
-        "트럼프 대통령은 자신의 행정부가 제재한 이 재판소를 통제...",
-        "미중 정상과 어깨를 나란히 하며 존재감을 과시한 푸틴 대통령이 최대 수혜자라는 분석도 나왔습니다."
-      ],
-      "sources": [
-        {
-          "press": "sedaily.com",
-          "title": "미중러 APEC 3자 회담 성과…전문가 “푸틴에게 압도적인 승리”",
-          "url": "https://n.news.naver.com/mnews/article/011/0004684535?sid=104"
-        },
-        {
-          "press": "obsnews.co.kr",
-          "title": "3국 정상 '평화 선언'…국제질서 재편 우려도",
-          "url": "https://www.obsnews.co.kr/news/articleView.html?idxno=1544526"
-        },
-        {
-          "press": "연합뉴스",
-          "title": "트럼프 \"시진핑과 AI안전 논의…크림대교 피격에 화난 푸틴 이해해\"",
-          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5CTVB6MVlxdGNlUGIwd1k2X1F5ZUNfNGpfN1RBQXhSSEdvemlza1lyb1EzTG1qNzlLZlZOZlJFQ29fRVdON3J4ZlpSTENiWWZPMW1TR0JENGtMczDSAWBBVV95cUxQQlJkWjlWeUJOWkFIYzZpVlJXMk9aaS16V1AxR1cxQnVvNXhRWS1fSF82X0pSaWdTNHFsa0dDYUx2MmZoWUR4SXJpQlNoNFNvUnZHNktPeVhwZy1yR1hmTms?oc=5"
-        },
-        {
-          "press": "jtbc.co.kr",
-          "title": "진짜 승자는 시진핑·푸틴? 막 내린 '3자 회담' 평가 보니",
-          "url": "https://n.news.naver.com/mnews/article/437/0000521754?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "미중러 회담 이후, 러시아의 발언이 증가하고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "트럼프에 날 세운 힐러리…\"우크라 정책 탓 푸틴 더 대담해져\""
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "ICC는 2023년 3월부터 푸틴 대통령에 대한 체포영장을 유지하고 있다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "수사·대응"
         ],
         "no_generic_closing": true
       }
