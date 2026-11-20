@@ -1,14 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 08:54:04",
+  "updated_at": "2026-11-20 09:20:19",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.9,
+  "average_quality": 0.85,
   "issues": [
     {
-      "id": "i4ee5b88b",
-      "title": "[속보] 민주당, '조희대 대법원장 탄핵소추' 당론 채택",
-      "episode": "episode:0a5e4131381034",
+      "id": "i4e0d4d18",
+      "title": "민주당, '조희대 대법원장 탄핵' 당론 채택…\"임계점 넘어\"",
+      "episode": "episode:b94316af585eb7",
       "quality": 1.0,
       "stages": [
         "수사·대응",
@@ -21,13 +21,89 @@
         "발단·의혹"
       ],
       "duplicate_candidates": 38,
-      "event_count": 25,
+      "event_count": 28,
       "evidence_rate": 1.0
     },
     {
-      "id": "i3ba51eb9",
-      "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
-      "episode": "episode:a0ea5a965b2f31",
+      "id": "i6c5522dd",
+      "title": "李대통령 “국가시험 전면 개편…기존 시험도 AI 부정행위 엄정 단죄”",
+      "episode": "episode:16110c642ac88f",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 43,
+      "event_count": 55,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ie97e049a",
+      "title": "“박지윤, 남친과 음란물 봐” 악플러 잡고보니 전남편 최동석… 여성 커뮤니티 익명 활동",
+      "episode": "episode:a26e5a191eb6ae",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i58a10da3",
+      "title": "실적도 안먹히는 시장...'검은 금요일' 코스피 4900선도 붕괴",
+      "episode": "episode:4d355799d1fa43",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 36,
+      "event_count": 56,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic8fc76dc",
+      "title": "리트 만점자 사망에…서울대 교수 \"하늘로 둥둥 띄우곤 사냥개처럼 몰아붙여\" 일침",
+      "episode": "episode:2a17cd882c034e",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id502e0f3",
+      "title": "코스피 4900선마저 무너졌다…코스피·코스닥 동반 '사이드카'",
+      "episode": "episode:38631e0dbea789",
       "quality": 1.0,
       "stages": [
         "파장·후속",
@@ -39,14 +115,68 @@
       "gaps": [
         "입장·공방"
       ],
-      "duplicate_candidates": 43,
-      "event_count": 40,
+      "duplicate_candidates": 40,
+      "event_count": 39,
       "evidence_rate": 1.0
     },
     {
-      "id": "i5c4c4254",
-      "title": "李 “국가시험제도 전면 개편…이미 치러진 시험 부정도 단죄”",
-      "episode": "episode:a75d5df3d5852d",
+      "id": "i00470f54",
+      "title": "\"좋은 형이었는데\"…서울대 치대 동기들 애도글",
+      "episode": "episode:65e5fbb3cc5609",
+      "quality": 0.56,
+      "stages": [
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 21,
+      "event_count": 2,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i53bf684e",
+      "title": "[속보] \"해외여행 안 갔는데\"…10년 만에 국내서 콜레라 환자 발생",
+      "episode": "episode:b68bb2940553b4",
+      "quality": 0.38,
+      "stages": [
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 21,
+      "event_count": 1,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i80c775b7",
+      "title": "김범수, 항소심도 '무죄'…\"카카오 불확실성 해소되길\"",
+      "episode": "episode:2810d8cf48f7c0",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 22,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia43e581d",
+      "title": "\"수능 공정성 믿어도 되나요\"…'AI 커닝'에 입시설명회도 '술렁'",
+      "episode": "episode:ca32beb51c7f8e",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -56,138 +186,10 @@
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 11,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iae634821",
-      "title": "“남친이랑 포르노 보다가…” 박지윤 악플러 정체는 전남편 최동석",
-      "episode": "episode:ac57b81c9b9523",
-      "quality": 0.92,
-      "stages": [
-        "입장·공방",
-        "발단·의혹",
-        "일반 보도",
-        "사법·처분"
-      ],
-      "gaps": [
-        "수사·대응",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iec85820e",
-      "title": "숨진 ‘리트 만점자’ 부검 결과 나왔다…“타살 정황 발견 안 돼”",
-      "episode": "episode:1f77fa22a864c0",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "사법·처분"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic8fc76dc",
-      "title": "리트 만점자 사망에…서울대 교수 \"하늘로 둥둥 띄우곤 사냥개처럼 몰아붙여\" 일침",
-      "episode": "episode:2a17cd882c034e",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "수사·대응",
         "사법·처분"
       ],
       "duplicate_candidates": 28,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ieb302281",
-      "title": "앤트로픽 IPO에 역대급 뭉칫돈…AI 산업 반등 분수령 되나",
-      "episode": "episode:3859349e50cffc",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 25,
       "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i162e861a",
-      "title": "'안경 만지작' 천안 수능 부정행위 수험생 스마트안경 활용 시인(종합)",
-      "episode": "episode:1763b57f504c44",
-      "quality": 0.92,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ifbef4fe4",
-      "title": "“유재석, 198억 땅 전액 현금으로 샀다”…강남 건물 드디어 완공",
-      "episode": "episode:561f850909087f",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 19,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3ac9ce5b",
-      "title": "친구 살해 후 나체로 돌아다닌 정재환…정신감정 결과 나왔다",
-      "episode": "episode:79a97738a835b4",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 5,
-      "event_count": 4,
       "evidence_rate": 1.0
     }
   ]
