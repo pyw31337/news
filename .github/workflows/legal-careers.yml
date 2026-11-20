@@ -1,0 +1,36 @@
+name: legal-career-layer
+
+on:
+  schedule:
+    - cron: '15 19 * * *' # 매일 04:15 KST
+  workflow_dispatch:
+
+permissions: { contents: write }
+concurrency: { group: legal-career-layer, cancel-in-progress: false }
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: data, path: data }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: 법조 경력 원장·검증 대기열 생성
+        run: python scripts/people/legal_career_layer.py data
+      - name: data 브랜치 저장
+        working-directory: data
+        run: |
+          git config user.name "newsboard-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add db/people/legal_careers.json db/people/legal_career_queue.json
+          git diff --cached --quiet && exit 0
+          git commit -qm "people: refresh legal career evidence queue"
+          for n in 1 2 3 4 5; do
+            git push -q origin HEAD:data && exit 0
+            sleep $((n * 8))
+            git fetch -q origin data && git rebase -q -X theirs origin/data || { git rebase --abort 2>/dev/null || true; }
+          done
+          exit 1
