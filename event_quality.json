@@ -1,52 +1,33 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 03:22:14",
+  "updated_at": "2026-11-20 01:44:51",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.9,
+  "average_quality": 0.89,
   "issues": [
     {
-      "id": "ifb04c7a2",
-      "title": "김민석 “조희대 탄핵, 정무적 판단으로 미뤘지만 더는 용인 못해”",
-      "episode": "episode:b6a0e13a38cdfb",
+      "id": "i9ca42256",
+      "title": "민주, 끝내 '조희대 탄핵' 공식화...국힘 \"의회 쿠데타\"",
+      "episode": "episode:aa968077a16c0e",
       "quality": 0.92,
       "stages": [
         "일반 보도",
         "입장·공방",
-        "수사·대응",
-        "사법·처분"
+        "사법·처분",
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
         "파장·후속"
       ],
-      "duplicate_candidates": 41,
+      "duplicate_candidates": 43,
       "event_count": 14,
       "evidence_rate": 1.0
     },
     {
-      "id": "iea4bed6d",
-      "title": "[속보] 수능 전자기기 부정행위 111건…13명 추가 적발",
-      "episode": "episode:138bfa111ee3c1",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 11,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1ebabd0c",
-      "title": "이진우 사망에 서울대 교수 “속죄한 죽음마저 손가락질”…대중 비판",
-      "episode": "episode:8c0dd98748d8ec",
+      "id": "i309aff6c",
+      "title": "\"좋은 형이었는데\"…이진우 서울대 치대 동기들 애도",
+      "episode": "episode:65b3d385a38df0",
       "quality": 0.92,
       "stages": [
         "사법·처분",
@@ -58,138 +39,157 @@
         "발단·의혹",
         "수사·대응"
       ],
-      "duplicate_candidates": 48,
-      "event_count": 9,
+      "duplicate_candidates": 38,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i051bf05b",
-      "title": "'SM 주가조작' 혐의 카카오 김범수 2심도 무죄",
-      "episode": "episode:d17fdafc2fee2c",
-      "quality": 1.0,
-      "stages": [
-        "수사·대응",
-        "사법·처분",
-        "입장·공방",
-        "일반 보도",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i67846e46",
-      "title": "[속보] 코스피 4% 급락·5천선 무너진채 출발",
-      "episode": "episode:0ab2d63d828def",
+      "id": "i1570ff54",
+      "title": "코스피, 4.08% 내린 4928.51에 개장",
+      "episode": "episode:69328cecc05f95",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "입장·공방",
-        "사법·처분",
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "gaps": [
-        "수사·대응"
-      ],
-      "duplicate_candidates": 39,
-      "event_count": 34,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i9b77133a",
-      "title": "리트 만점자 사망에 강사 자책…“평생 미안한 마음 잊지 않겠다”",
-      "episode": "episode:4d9a2813084c4b",
-      "quality": 0.92,
-      "stages": [
-        "발단·의혹",
-        "입장·공방",
         "파장·후속",
+        "발단·의혹",
+        "입장·공방",
         "수사·대응"
       ],
       "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 33,
+      "duplicate_candidates": 35,
+      "event_count": 37,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i693bd73e",
+      "title": "[속보] 삼성전자 사장단 인사…전영현·노태문 ‘투톱’ 체제 유지",
+      "episode": "episode:7a6c879b8b4a75",
+      "quality": 0.92,
+      "stages": [
+        "입장·공방",
+        "사법·처분",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 11,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i2f27b309",
+      "title": "“진우님, 잘못했습니다”…리트 만점자 검증 나섰던 강사 추모글",
+      "episode": "episode:0d563db0edb0d3",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 29,
       "event_count": 4,
       "evidence_rate": 1.0
     },
     {
-      "id": "i103b1346",
-      "title": "천안 수능 시험장서 ‘스마트 안경’ 썼던 20대 입건",
-      "episode": "episode:77aa65c01dc842",
-      "quality": 0.84,
+      "id": "i1ebc4abc",
+      "title": "카메라에 스마트안경…그렇게 경고해도 수능 부정행위 98명 적발",
+      "episode": "episode:44d81961e536e0",
+      "quality": 1.0,
       "stages": [
         "일반 보도",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
         "발단·의혹",
+        "수사·대응",
+        "파장·후속",
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 32,
-      "event_count": 9,
+      "gaps": [],
+      "duplicate_candidates": 34,
+      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "i85abdab8",
-      "title": "“北 비핵화 사라지고… 웃는 푸틴·만족한 시진핑·씁쓸한 트럼프만 남아”",
-      "episode": "episode:1e760aa071285e",
-      "quality": 1.0,
+      "id": "i6edf22b1",
+      "title": "클린턴도 비판한 트럼프의 ‘푸틴 친구 외교’…유럽은 “사진 찍기용”",
+      "episode": "episode:e8f1b65c0121f5",
+      "quality": 0.84,
       "stages": [
-        "파장·후속",
         "일반 보도",
         "사법·처분",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 39,
-      "event_count": 43,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iaba0f9b8",
-      "title": "논술장엔 앞치마, 면접장엔 가운…대학별고사도 ‘AI 커닝’ 막기 총력전",
-      "episode": "episode:9879f7e975c945",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "수사·대응"
+        "사법·처분"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 5,
+      "duplicate_candidates": 29,
+      "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "ifbef4fe4",
-      "title": "“유재석, 198억 땅 전액 현금으로 샀다”…강남 건물 드디어 완공",
-      "episode": "episode:277a0f33f89e01",
-      "quality": 0.76,
+      "id": "i31da96c9",
+      "title": "“깊이 생각 못해 잘못했다”…‘리트 만점자’ 이진우씨 사망에 강사 추모글",
+      "episode": "episode:c88daa2d0e16c4",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
-        "수사·대응"
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9efd8d49",
+      "title": "스님 출신 늦깎이 수험생의 수능 도전…가방 속 스마트폰 알림에 ‘퇴실’",
+      "episode": "episode:9e9b86010eef80",
+      "quality": 0.58,
+      "stages": [
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 19,
-      "event_count": 5,
+      "duplicate_candidates": 23,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i33c9c541",
+      "title": "중국 관영지 “APEC·3자 회담 역사적 사건”…시진핑 치적 과시",
+      "episode": "episode:a7ffbadd45b13e",
+      "quality": 1.0,
+      "stages": [
+        "입장·공방",
+        "파장·후속",
+        "일반 보도",
+        "사법·처분",
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 45,
+      "event_count": 118,
       "evidence_rate": 1.0
     },
     {
