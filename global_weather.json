@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20T15:51:50.751314+09:00",
-  "alerts_count": 10,
+  "updated": "2026-11-20T16:15:37.911570+09:00",
+  "alerts_count": 9,
   "alerts": [
     {
       "id": "urn:oid:2.49.0.1.840.0.50d34416579a97f2fc160e2d13f6788bb3330b5b.001.2",
@@ -99,22 +99,6 @@
       "desc": "FFWMLB\n\nThe National Weather Service in Melbourne has issued a\n\n* Flash Flood Warning for...\nNorthern Brevard County in east central Florida...\n\n* Until 300 AM EST.\n\n* At 1159 PM EST, Doppler radar indicated heavy rain across the\nwarned area. Up to 1 and 2 inches of rain have fallen over the past\nfe"
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.b2855b152edf9bc358708e39fbfb226167639cef.001.1",
-      "t": "2026-11-19 23:09",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Indian River",
-      "area_en": "Indian River",
-      "event": "홍수 경보",
-      "event_en": "Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Indian River 홍수 경보",
-      "headline_en": "Indian River Flood Warning",
-      "desc": "* WHAT...Flooding caused by excessive rainfall is occurring.\n\n* WHERE...Eastern Indian River County in east central Florida...\n\n* WHEN...Until 215 AM EST.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lying\nand flood-prone locations is imminent or occurring. Expect many\nareas of sl"
-    },
-    {
       "id": "urn:oid:2.49.0.1.840.0.94dfc2e2efa497f8078780fe9297bb4a54333cf4.001.1",
       "t": "2026-11-19 20:46",
       "country": "US",
@@ -165,12 +149,12 @@
   ],
   "quakes": [
     {
-      "id": "ew1795157360",
-      "mag": 5.4,
-      "place": "19 km NNE of Soledad, California",
+      "id": "nc75468702",
+      "mag": 5,
+      "place": "10 km NW of Pinnacles, CA",
       "t": "2026-11-20 06:49",
-      "depth": 9,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ew1795157360"
+      "depth": 6.69999980926514,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/nc75468702"
     },
     {
       "id": "us6000uc6c",
@@ -254,11 +238,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 6.0,
-      "apparent_temp": 2.8,
-      "humidity": 58,
+      "temp": 5.7,
+      "apparent_temp": 2.5,
+      "humidity": 60,
       "code": 3,
-      "wind": 6.0
+      "wind": 5.5
     },
     {
       "id": "losangeles",
@@ -268,11 +252,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 11.8,
-      "apparent_temp": 10.6,
-      "humidity": 75,
+      "temp": 11.6,
+      "apparent_temp": 9.9,
+      "humidity": 78,
       "code": 0,
-      "wind": 4.1
+      "wind": 7.4
     },
     {
       "id": "london",
@@ -283,10 +267,10 @@
       "lat": 51.5074,
       "lon": -0.1278,
       "temp": 7.1,
-      "apparent_temp": 4.8,
+      "apparent_temp": 4.9,
       "humidity": 89,
       "code": 3,
-      "wind": 7.9
+      "wind": 7.6
     },
     {
       "id": "paris",
@@ -297,10 +281,10 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "temp": 10.9,
-      "apparent_temp": 7.8,
+      "apparent_temp": 7.9,
       "humidity": 79,
-      "code": 2,
-      "wind": 16.9
+      "code": 3,
+      "wind": 16.4
     },
     {
       "id": "frankfurt",
@@ -311,10 +295,10 @@
       "lat": 50.1109,
       "lon": 8.6821,
       "temp": 9.9,
-      "apparent_temp": 7.3,
-      "humidity": 85,
-      "code": 61,
-      "wind": 13.2
+      "apparent_temp": 7.2,
+      "humidity": 84,
+      "code": 3,
+      "wind": 13.5
     },
     {
       "id": "tokyo",
@@ -324,11 +308,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 12.4,
-      "apparent_temp": 8.9,
-      "humidity": 40,
+      "temp": 11.7,
+      "apparent_temp": 8.3,
+      "humidity": 42,
       "code": 0,
-      "wind": 8.7
+      "wind": 8.0
     },
     {
       "id": "beijing",
@@ -338,11 +322,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 7.9,
-      "apparent_temp": 2.1,
+      "temp": 8.0,
+      "apparent_temp": 2.3,
       "humidity": 25,
       "code": 1,
-      "wind": 17.3
+      "wind": 16.0
     },
     {
       "id": "singapore",
@@ -352,11 +336,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 30.8,
-      "apparent_temp": 35.3,
-      "humidity": 62,
-      "code": 3,
-      "wind": 6.4
+      "temp": 30.6,
+      "apparent_temp": 36.1,
+      "humidity": 68,
+      "code": 55,
+      "wind": 4.4
     },
     {
       "id": "sydney",
@@ -367,10 +351,10 @@
       "lat": -33.8688,
       "lon": 151.2093,
       "temp": 22.7,
-      "apparent_temp": 22.4,
-      "humidity": 75,
+      "apparent_temp": 22.3,
+      "humidity": 76,
       "code": 3,
-      "wind": 21.1
+      "wind": 23.0
     },
     {
       "id": "toronto",
@@ -380,11 +364,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 7.8,
-      "apparent_temp": 5.0,
-      "humidity": 74,
+      "temp": 7.4,
+      "apparent_temp": 4.5,
+      "humidity": 75,
       "code": 0,
-      "wind": 8.9
+      "wind": 9.1
     },
     {
       "id": "dubai",
@@ -394,11 +378,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 27.8,
-      "apparent_temp": 29.9,
-      "humidity": 49,
+      "temp": 28.3,
+      "apparent_temp": 30.1,
+      "humidity": 45,
       "code": 0,
-      "wind": 4.6
+      "wind": 5.9
     },
     {
       "id": "saopaulo",
@@ -408,21 +392,12 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 22.2,
-      "apparent_temp": 25.6,
+      "temp": 22.3,
+      "apparent_temp": 25.9,
       "humidity": 90,
       "code": 3,
-      "wind": 4.6
+      "wind": 3.2
     }
   ],
-  "stories": [
-    {
-      "id": "g29998aee",
-      "title": "COP31: Outcry as fossil fuels removed from draft UN climate deal",
-      "press": "Le Monde.fr",
-      "image": "https://i.guim.co.uk/img/media/0dcf2f4e26be89799494e7fe6683b3cdce430515/1005_0_6600_5280/master/6600.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=19e17c23104aaed7fb1bcf69debf29a5",
-      "score": 8.0,
-      "url": "g/g29998aee"
-    }
-  ]
+  "stories": []
 }

@@ -1,24 +1,24 @@
 {
-  "run_id": "44689655385",
-  "observed_at": "2026-11-20T06:57:42+00:00",
-  "observed_at_kst": "2026-11-20T15:57:42+09:00",
+  "run_id": "44692915835",
+  "observed_at": "2026-11-20T07:19:43+00:00",
+  "observed_at_kst": "2026-11-20T16:19:43+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
-  "commit": "2285dd816511c8631dca55031f37d903e9025339",
+  "commit": "30df436faa19ab51a18e1dedff8fc5e6adfc3bde",
   "host": "github-actions",
   "stages": {
     "collect": {
       "status": "degraded",
-      "ok": 263,
+      "ok": 265,
       "fail": 20,
       "errors": 20,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 499,
-      "fail": 34,
-      "errors": 34,
+      "ok": 506,
+      "fail": 29,
+      "errors": 29,
       "artifact": true
     },
     "quality": {
@@ -33,20 +33,20 @@
   },
   "counts": {
     "issues": 10,
-    "sources": 194,
+    "sources": 188,
     "entities": 36,
-    "global_issues": 12,
+    "global_issues": 0,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "0b3f259bf9d98547dce24335e25672d459def593a8426096d0787f829c0db667",
-    "global": "2357d9da12aa0934d6f3e72d067bd94084b319c32338e142d7f720b992445721",
-    "quality": "8f3dec9121fe866d137d06516bffed4df45e05d29aff9221d733084d8c536d6e",
-    "status": "ecfb6ab29d36e565403eb5717c2a5457e3be9d803cca7c990e854b6953a6a277",
-    "event_quality": "c3e3da947104fe6016e2edeb4da85d4abfd55eae02ed4adfc3af874212014a52"
+    "today": "89986ac8738ae12f6ad6931ec80ee6882fd2d957f2a4b04e8105e42643b06a4f",
+    "global": null,
+    "quality": "ab76f160fe7e43403ffa3d500eed18324019cac270d57382565850b2cc78572f",
+    "status": "8ffeca40d4dff86e1be97919ea474364c154846db9310dabf6b031ca2ef51599",
+    "event_quality": "ef4fc2b538181f4c1866d713f2ba250f500914919bcb31777f33f94378d00f1b"
   },
   "status_snapshot": {
-    "updated": "2026-11-20T15:57:05.702658+09:00",
-    "error_count": 60
+    "updated": "2026-11-20T16:19:14.552930+09:00",
+    "error_count": 49
   }
 }

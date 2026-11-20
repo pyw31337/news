@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T15:57:05+09:00",
+  "generated_at": "2026-11-20T16:19:14+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i3ba51eb9",
-      "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
+      "issue_id": "ibd3da8cb",
+      "title": "급락장에 코스피 이어 코스닥서도 매도 사이드카",
       "category": "경제",
-      "rank": 1,
+      "rank": 2,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -39,16 +39,16 @@
       "status": "ready_for_editorial_review",
       "facts": [
         "코스피가 20일 장중 4%대 급락세를 보이자 프로그램 매도호가 일시효력정지(매도 사이드카)가 발동되었습니다.",
-        "유가증권시장에 매도 사이드카가 발동됐다.",
-        "사이드카 발동 이후에도 지수는 낙폭을 오히려 키웠고, 결국 4900선마저 깨진 채 거래를 마감했다.",
-        "코스피가 종가 기준 4900선을 밑돈 건 지난 1월 20일(4885.75) 이후...",
+        "코스피 매도 사이드카가 발동한 것은 지난 6일 이후 약 2주 만이다.",
+        "코스닥 지수는 39.13포인트(5.71%) 급락한 645.68에 마감했다.",
+        "종가 기준 지난해 4월 9일(643.39) 이후 1년 7개월 만에 640선까지 밀려났다.",
         "'검은 금요일' 코스피, 4900선 밑으로…코스닥까지 동반 '매도 사이드카'"
       ],
       "sources": [
         {
-          "press": "seoul.co.kr",
-          "title": "[속보] 코스피 5% 급락 4869.96 마감…삼전 7%↓ ‘검은 금요일’",
-          "url": "https://n.news.naver.com/mnews/article/081/0003701632?sid=101"
+          "press": "munhwa.com",
+          "title": "[속보]‘주말 맘고생 예정’…5천피 깨진 코스피, 10개월만 최저",
+          "url": "https://n.news.naver.com/mnews/article/021/0002834392?sid=101"
         },
         {
           "press": "뉴시스",
@@ -56,14 +56,14 @@
           "url": "https://n.news.naver.com/article/003/0014335753"
         },
         {
-          "press": "조선비즈",
-          "title": "코스피 4%대 하락세에 매도 사이드카…외국인 1조원 넘게 매도",
-          "url": "https://n.news.naver.com/article/366/0001206224"
+          "press": "gukjenews.com",
+          "title": "\"삼성전자 7.01%·리노공업 15.07% 급락\"… 외인·기관 2조원대 투매",
+          "url": "https://www.gukjenews.com/news/articleView.html?idxno=3758485"
         },
         {
-          "press": "YTN",
-          "title": "[속보] 코스피 4%대 급락세...매도 사이드카 발동",
-          "url": "https://n.news.naver.com/article/052/0002435602"
+          "press": "한국일보",
+          "title": "코스피·코스닥 매도 사이드카… 삼성전자, SK하이닉스 7% 급락",
+          "url": "https://n.news.naver.com/article/469/0000966758"
         }
       ],
       "story_beats": [
@@ -75,115 +75,12 @@
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "유가증권시장에 매도 사이드카가 발동됐다."
+          "evidence": "코스피 매도 사이드카가 발동한 것은 지난 6일 이후 약 2주 만이다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "사이드카 발동 이후에도 지수는 낙폭을 오히려 키웠고, 결국 4900선마저 깨진 채 거래를 마감했다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ifb1d05ac",
-      "title": "\"'7만전자·20만닉스' 갈 수밖에 없다\"…전문가의 섬뜩한 경고",
-      "category": "경제",
-      "rank": 8,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "삼성전자와 SK하이닉스의 적정 주가를 각각 7만원과 20만원으로 제시한 애널리스트가 메모리 반도체 가격이 꺾이면 주가가 다시 추락할 수 있다고 경고했다.",
-        "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\"",
-        "\"본격 폭락 아직 시작 안 했다\"…'7만전자·20만닉스' 제시한 애널리스트의 경고",
-        "\"아직 본격적인 폭락은 시작이 안 됐다.",
-        "1년 안에 50%도 떨어질 수 있다."
-      ],
-      "sources": [
-        {
-          "press": "이데일리",
-          "title": "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\"",
-          "url": "https://n.news.naver.com/article/018/0006412855"
-        },
-        {
-          "press": "파이낸셜뉴스",
-          "title": "\"본격 폭락 아직 시작 안 했다\"…'7만전자·20만닉스' 제시한 애널리스트의 경고",
-          "url": "https://n.news.naver.com/article/014/0005607219"
-        },
-        {
-          "press": "hidomin.com",
-          "title": "\"삼전닉스, 1년내 50% 떨어질 수도... 본격 폭락 아직 시작 안 했다\"",
-          "url": "https://www.hidomin.com/news/articleView.html?idxno=730279"
-        },
-        {
-          "press": "insight.co.kr",
-          "title": "'7만전자·20만닉스' 제시한 전문가 \"아직 본격적인 폭락 시작도 안 해\"",
-          "url": "https://www.insight.co.kr/news/582872"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "삼성전자와 SK하이닉스의 적정 주가를 각각 7만원과 20만원으로 제시한 애널리스트가 메모리 반도체 가격이 꺾이면 주가가 다시 추락할 수 있다고 경고했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "이 애널리스트는 지난 10월 삼성전자 21만원, SK하이닉스 126만원까지 폭락했을 당시 삼성전자와 SK하이닉스의 적정 주가를 각각 7만원과 20만원으로 제시해 개인투자자들의 관심을 받았다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\""
+          "evidence": "코스닥 지수는 39.13포인트(5.71%) 급락한 645.68에 마감했다."
         },
         {
           "panel": 4,
@@ -227,16 +124,16 @@
         "sources": 4,
         "continuity_quality": 1.0,
         "continuity_gaps": [
-          "사법·처분"
+          "입장·공방"
         ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "i0b3d7aeb",
-      "title": "트럼프·시진핑·푸틴 \"핵전쟁 안 돼\"…北 비핵화 압박 나설까",
-      "category": "세계",
-      "rank": 6,
+      "issue_id": "ibd8eee6c",
+      "title": "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\"",
+      "category": "경제",
+      "rank": 5,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -244,49 +141,153 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "시 주석은 19일 도널드 트럼프 미국 대통령, 블라디미르 푸틴 러시아 대통령과 첫 3자 회담을 가진 자리에서 “‘투키디데스의 함정’은 결코 숙명이 아니며 핵심은 주요",
-        "강대국들이 어떻게 선택하느냐에 달려 있다”고...",
-        "“트럼프, 푸틴 만난 뒤 유럽에 ’우크라 지원 끊어’ 신경질“",
-        "도널드 트럼프 미국 대통령은 미국 엔비시(NBC)와의 전화 인터뷰에서 회담 성과가 10점 만점에 “12점”이라고...",
-        "영국 가디언은 19일 3국 회담이 푸틴 대통령의 주장처럼 ‘외교사의 새로운 한 페이지’가 아니라 “21세기..."
+        "지난 10월 삼성전자와 SK하이닉스의 적정 주가를 각각 7만원과 20만원으로 제시해 주목을 받은 이주완 인더스트리 애널리스트가 메모리 가격 상승에 따른 실적 개선이 꺾일 경우 주가가 큰 폭으로 추가 하락할 수 있다고",
+        "“본격 폭락 시작도 안 했다”…삼성전자 7만원·하이닉스 20만원 경고한 전문가 [이슈픽]",
+        "\"본격 폭락 아직 시작 안 했다\"…'7만전자·20만닉스' 제시한 애널리스트의 경고",
+        "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\"",
+        "\"지금이 바닥?…진짜 무서운 건 따로 있다\"…삼전·하닉에 날아든 섬뜩한 경고"
       ],
       "sources": [
         {
-          "press": "newsis.com",
-          "title": "머스크, 6살 아들 X와 함께 첫 선전 방문 “나는 열렬한 중국 팬”",
-          "url": "https://n.news.naver.com/mnews/article/003/0014336168?sid=104"
+          "press": "서울신문",
+          "title": "“본격 폭락 시작도 안 했다”…삼성전자 7만원·하이닉스 20만원 경고한 전문가 [이슈픽]",
+          "url": "https://n.news.naver.com/article/081/0003701423"
         },
         {
-          "press": "연합뉴스TV",
-          "title": "“트럼프, 푸틴 만난 뒤 유럽에 ’우크라 지원 끊어’ 신경질“",
-          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5CVU0wQmZBZC1MZUxUcGx0STFuNWNFZjd4V3lYcm1qR21wUGpuZ1RxLVRYbl9GTTRXNGswd3JKWDBxZ3VXbDBORk5ONDBiNGppXzJ1VG9aYk1ya3NYeFV2ZDNQZ09oMTA?oc=5"
+          "press": "파이낸셜뉴스",
+          "title": "\"본격 폭락 아직 시작 안 했다\"…'7만전자·20만닉스' 제시한 애널리스트의 경고",
+          "url": "https://n.news.naver.com/article/014/0005607219"
         },
         {
-          "press": "hani.co.kr",
-          "title": "미·중·러 “외교사 중요 페이지” 자화자찬에…“역사책의 작은 각주...",
-          "url": "https://n.news.naver.com/mnews/article/028/0002833230?sid=104"
+          "press": "이데일리",
+          "title": "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\"",
+          "url": "https://n.news.naver.com/article/018/0006412855"
         },
         {
-          "press": "edaily.co.kr",
-          "title": "미중러 회담 직후 李 \"한반도 문제 우리가 주도…국익 앞에 정쟁 안돼\"",
-          "url": "https://n.news.naver.com/mnews/article/018/0006413189?sid=100"
+          "press": "아시아경제",
+          "title": "\"지금이 바닥?…진짜 무서운 건 따로 있다\"…삼전·하닉에 날아든 섬뜩한 경고",
+          "url": "https://n.news.naver.com/article/277/0005845716"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "시 주석은 19일 도널드 트럼프 미국 대통령, 블라디미르 푸틴 러시아 대통령과 첫 3자 회담을 가진 자리에서 “‘투키디데스의 함정’은 결코 숙명이 아니며 핵심은 주요"
+          "evidence": "지난 10월 삼성전자와 SK하이닉스의 적정 주가를 각각 7만원과 20만원으로 제시해 주목을 받은 이주완 인더스트리 애널리스트가 메모리 가격 상승에 따른 실적 개선이 꺾일 경우 주가가 큰 폭으로 추가 하락할 수 있다고"
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "트럼프 \"시진핑·푸틴과 '매우 중대한' 회담…중국과 AI 규제 논의\""
+          "evidence": "삼성전자와 SK하이닉스 적정주가를 7만원과 20만원으로 제시해 화제가 됐던 이주완 인더스트리 애널리스트가 메모리 반도체 가격 상승세가 꺾이면 주가 폭락이 본격화할 것이라고 경고했다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "도널드 트럼프 미국 대통령은 미국 엔비시(NBC)와의 전화 인터뷰에서 회담 성과가 10점 만점에 “12점”이라고..."
+          "evidence": "“본격 폭락 시작도 안 했다”…삼성전자 7만원·하이닉스 20만원 경고한 전문가 [이슈픽]"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i80c775b7",
+      "title": "김범수, 항소심도 '무죄'…\"카카오 불확실성 해소되길\"",
+      "category": "경제",
+      "rank": 10,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "SM엔터테인먼트 시세조종 혐의로 기소된 김범수 카카오 창업자가 항소심에서도 무죄를 선고 받았다.",
+        "SM엔터테인먼트 인수 과정에서 시세조종에 공모한 혐의로 기소된 김범수 카카오 창업자가 항소심에서도 무죄를 선고받았다.",
+        "김 창업자의 법적 리스크가 소폭 해소되면서, 그가 인공지능(AI) 신사업과 인적 분할을 앞둔...",
+        "김범수, 항소심도 '무죄'…\"카카오 불확실성 해소되길\"",
+        "카카오 김범수, 2심도 무죄…法 “SM 시세조종 목적 증명 안 돼”"
+      ],
+      "sources": [
+        {
+          "press": "byline.network",
+          "title": "카카오 김범수 ‘SM엔터 시세조종’ 2심도 무죄…”카카오 미래에 힘 보...",
+          "url": "https://byline.network/?p=9004111222628605"
+        },
+        {
+          "press": "비즈워치",
+          "title": "김범수, 항소심도 '무죄'…\"카카오 불확실성 해소되길\"",
+          "url": "https://n.news.naver.com/article/648/0000052827"
+        },
+        {
+          "press": "동아일보",
+          "title": "카카오 김범수, 2심도 무죄…法 “SM 시세조종 목적 증명 안 돼”",
+          "url": "https://www.donga.com/news/Society/article/all/20261120/135060884/1"
+        },
+        {
+          "press": "중앙일보",
+          "title": "카카오 김범수 2심도 무죄…“카카오 도전·성장에 힘 보태겠다”",
+          "url": "https://v.daum.net/v/20261120153941050"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "SM엔터테인먼트 시세조종 혐의로 기소된 김범수 카카오 창업자가 항소심에서도 무죄를 선고 받았다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "사진=카카오 정신아 카카오 대표가 김범수 창업자의 SM엔터테인먼트 시세조종 혐의 항소심 무죄 판결에 후 구성원들에게 감사를 표했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "카카오 김범수, 2심도 무죄…法 “SM 시세조종 목적 증명 안 돼”"
         },
         {
           "panel": 4,
@@ -328,10 +329,11 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.92,
+        "continuity_quality": 0.84,
         "continuity_gaps": [
           "발단·의혹",
-          "입장·공방"
+          "수사·대응",
+          "파장·후속"
         ],
         "no_generic_closing": true
       }
