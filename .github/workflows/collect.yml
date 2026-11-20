@@ -233,6 +233,10 @@ jobs:
         timeout-minutes: 4
         env: { GH_TOKEN: '${{ github.token }}' }
         run: python scripts/stats_detail.py
+      - name: 실행 원장·품질 증거 기록
+        if: always()
+        continue-on-error: true
+        run: python scripts/observability.py data
       - name: 누적 데이터 커밋(data 브랜치)
         working-directory: data
         timeout-minutes: 15
