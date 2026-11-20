@@ -48,7 +48,18 @@ jobs:
           for i in 1 2 3; do git push origin HEAD:legal && break; git pull --rebase -X theirs origin legal; done
       - name: 법률 현황 원장 저장
         run: |
+          # data 브랜치는 collect·맥미니·법률 작업이 동시에 갱신한다.
+          # 현재 checkout의 이력에 rebase하지 않고, 매 시도마다 최신 원격 위에
+          # 이 workflow가 만든 coverage 파일만 다시 얹어 push한다.
+          cp data/db/system/legal_coverage.json /tmp/legal_coverage.json
           cd data && git config user.name newsboard-bot && git config user.email bot@users.noreply.github.com
-          git add -f db/system/legal_coverage.json
-          git diff --cached --quiet || git commit -qm "legal: publish measured coverage"
-          for i in 1 2 3; do git push origin HEAD:data && break; git fetch origin data && git rebase origin/data; done
+          for i in 1 2 3 4 5; do
+            git fetch -q origin data
+            git reset --hard -q origin/data
+            cp /tmp/legal_coverage.json db/system/legal_coverage.json
+            git add -f db/system/legal_coverage.json
+            git diff --cached --quiet || git commit -qm "legal: publish measured coverage"
+            git push -q origin HEAD:data && exit 0
+            sleep $((i * 8))
+          done
+          exit 1
