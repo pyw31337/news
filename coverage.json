@@ -1,23 +1,23 @@
 {
   "schema": 1,
-  "updated": "2026-11-20T12:22+09:00",
+  "updated": "2026-11-20T13:04+09:00",
   "purpose": "개인 학습·검토용 법률정보 아카이브",
   "categories": {
     "court_precedent": {
       "label": "법원 판례",
-      "current": 8902,
+      "current": 9083,
       "official_catalog": 90000,
       "status": "collecting",
-      "coverage_pct": 9.89,
-      "remaining": 81098
+      "coverage_pct": 10.09,
+      "remaining": 80917
     },
     "constitutional": {
       "label": "헌재 결정례",
-      "current": 21152,
+      "current": 21551,
       "official_catalog": 34000,
       "status": "collecting",
-      "coverage_pct": 62.21,
-      "remaining": 12848
+      "coverage_pct": 63.39,
+      "remaining": 12449
     },
     "interpretation": {
       "label": "법령해석례",
@@ -29,15 +29,15 @@
     },
     "administrative_appeal": {
       "label": "행정심판례",
-      "current": 845,
+      "current": 1044,
       "official_catalog": 550000,
       "status": "new_target",
-      "coverage_pct": 0.15,
-      "remaining": 549155
+      "coverage_pct": 0.19,
+      "remaining": 548956
     },
     "news_cases": {
       "label": "판결 보도 구조화",
-      "current": 2145,
+      "current": 2164,
       "official_catalog": null,
       "status": "supplemental",
       "coverage_pct": null,
@@ -45,7 +45,7 @@
     },
     "judges_from_news": {
       "label": "판사·재판관 색인",
-      "current": 223,
+      "current": 224,
       "official_catalog": null,
       "status": "supplemental",
       "coverage_pct": null,
@@ -91,8 +91,8 @@
     }
   ],
   "local_counts": {
-    "lawgo_files": 39834,
-    "news_case_files": 2145,
+    "lawgo_files": 40613,
+    "news_case_files": 2164,
     "press_items": 51
   },
   "quality_rules": [
