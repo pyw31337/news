@@ -1,196 +1,190 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 11:24:39",
+  "updated_at": "2026-11-20 09:35:31",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.88,
+  "average_quality": 0.86,
   "issues": [
     {
-      "id": "ia668f005",
-      "title": "박지윤이 고소한 악플러, 잡고 보니 전남편 최동석…명예훼손 혐의 송치",
-      "episode": "episode:cad45c872442f7",
+      "id": "i082bdb29",
+      "title": "與, 조희대 탄핵소추 추진 당론 채택…\"처리 올해 안 넘길 것\"",
+      "episode": "episode:5d2a74f1507986",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 35,
+      "event_count": 22,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i40a6b0ad",
+      "title": "李대통령 “AI 변화 맞춰 시험제도 A부터 Z까지 전면 개편”",
+      "episode": "episode:5db7994832206b",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "사법·처분",
+        "파장·후속",
+        "입장·공방",
+        "발단·의혹"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 37,
+      "event_count": 55,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i35c7c3d0",
+      "title": "박지윤 악플러, 잡고 보니 전남편 최동석…명예훼손 혐의 송치",
+      "episode": "episode:5467233334889c",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "수사·대응",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 39,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icbdc8355",
+      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
+      "episode": "episode:b24dafb5202058",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "발단·의혹",
+        "사법·처분",
+        "입장·공방"
+      ],
+      "gaps": [
+        "수사·대응"
+      ],
+      "duplicate_candidates": 37,
+      "event_count": 58,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i631371a9",
+      "title": "이진우 서울대 치대 동기들 \"좋은 형이자 오빠… 자수 바랐다\"",
+      "episode": "episode:4fc7fc97918761",
+      "quality": 0.56,
+      "stages": [
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 22,
+      "event_count": 2,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id502e0f3",
+      "title": "코스피 4900선마저 무너졌다…코스피·코스닥 동반 '사이드카'",
+      "episode": "episode:99136e37acb2dd",
+      "quality": 0.92,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 42,
+      "event_count": 40,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ie7177138",
+      "title": "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
+      "episode": "episode:bae01ea1995001",
+      "quality": 0.92,
+      "stages": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i162e861a",
+      "title": "'안경 만지작' 천안 수능 부정행위 수험생 스마트안경 활용 시인(종합)",
+      "episode": "episode:1763b57f504c44",
       "quality": 0.92,
       "stages": [
         "사법·처분",
-        "입장·공방",
-        "수사·대응",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 36,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "id552b423",
-      "title": "한동훈, 조희대 탄핵 추진 민주당에 \"친위 쿠데타 세력\" 맹비판",
-      "episode": "episode:770294fb6467b7",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
-        "파장·후속",
         "일반 보도",
         "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 37,
-      "event_count": 23,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i434e5f2d",
-      "title": "외국인·기관 2조원 팔아치웠다…코스피 5% 폭락에 10개월 만에 4800선 [투자360]",
-      "episode": "episode:3862eff1d20124",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
         "파장·후속",
-        "사법·처분",
         "입장·공방"
-      ],
-      "gaps": [
-        "수사·대응"
       ],
       "duplicate_candidates": 33,
-      "event_count": 15,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3211f95b",
-      "title": "李 “AI 부정행위 일벌백계… 국가시험 전면 개편”",
-      "episode": "episode:92197d117192d1",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 11,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i81affea2",
-      "title": "法 “김수현 소속사, 광고주 ‘쿠쿠’에 8억원 배상하라”",
-      "episode": "episode:7662195e93d817",
-      "quality": 0.84,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 39,
-      "event_count": 18,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ia8da5122",
-      "title": "\"이진우 사망 안타까워...대중의 손가락질 지나쳐\"...서울대 교수 일침",
-      "episode": "episode:0861ae92ea37f8",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "사법·처분"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie2450ad5",
-      "title": "엔비디아 이어 … AMD도 '중국 리스크'",
-      "episode": "episode:55ae4f43d60e5f",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 12,
-      "event_count": 31,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
       "id": "i53bf684e",
       "title": "[속보] \"해외여행 안 갔는데\"…10년 만에 국내서 콜레라 환자 발생",
-      "episode": "episode:b6baedac61ba89",
-      "quality": 0.48,
+      "episode": "episode:b68bb2940553b4",
+      "quality": 0.56,
       "stages": [
+        "발단·의혹",
         "수사·대응"
       ],
       "gaps": [
-        "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "사법·처분",
+        "파장·후속"
       ],
-      "duplicate_candidates": 23,
+      "duplicate_candidates": 21,
       "event_count": 2,
       "evidence_rate": 1.0
     },
     {
-      "id": "ice56581a",
-      "title": "트럼프 러브콜에도 침묵한 김정은…12월 전원회의 대미 메시지 주목",
-      "episode": "episode:14fbde14fe9ee1",
+      "id": "i43d2a0d0",
+      "title": "수능 끝나도 'AI 커닝' 추적…빅테크 협조로 부정행위 가린다",
+      "episode": "episode:67944aa37bd193",
       "quality": 0.84,
       "stages": [
-        "일반 보도",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
         "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 23,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iba4a04c3",
-      "title": "'뿔테 안경' 제출했던 수험생… 스마트안경 활용 시인했다",
-      "episode": "episode:0ac76e0c8b53a4",
-      "quality": 0.84,
-      "stages": [
         "일반 보도",
-        "파장·후속",
-        "수사·대응"
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 8,
+      "duplicate_candidates": 31,
+      "event_count": 9,
       "evidence_rate": 1.0
     }
   ]

@@ -7,11 +7,7 @@
       "domain": "법률 원문",
       "cadence": "3시간",
       "workflow": "legal.yml",
-      "evidence": {
-        "lawgo_files": 41571,
-        "news_case_files": 2213,
-        "press_items": 51
-      },
+      "evidence": {},
       "status": "ACTIVE",
       "blocker": "legal 브랜치 원장을 data 분석층과 연결"
     },
@@ -70,9 +66,9 @@
       "workflow": "sec-market.yml",
       "evidence": {
         "indexed": true,
-        "companies": 10398,
-        "crawled": 100,
-        "detail_files": 200
+        "companies": 6850,
+        "crawled": 0,
+        "detail_files": 0
       },
       "status": "INCREMENTAL",
       "blocker": "10-K·10-Q·8-K 문서 본문 파싱"

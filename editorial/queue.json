@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T20:24:40+09:00",
+  "generated_at": "2026-11-20T18:35:31+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i434e5f2d",
-      "title": "외국인·기관 2조원 팔아치웠다…코스피 5% 폭락에 10개월 만에 4800선 [투자360]",
+      "issue_id": "icbdc8355",
+      "title": "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
       "category": "경제",
-      "rank": 3,
+      "rank": 4,
       "priority_score": 45,
       "production_types": [
         "comic",
@@ -38,11 +38,11 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "미국 인공지능(AI) 관련 규제 우려와 투자심리 악화가 겹치면서 국내 주식시장에서 외국인과 기관이 대규모 매도세를 보였다.",
+        "20일 코스피 지수가 전 거래일 대비 5.21% 급락한 4869.96에 마감하며 지난 1월 수준으로 되돌아갔다.",
         "‘4869.96’ 코스피, 1월로 돌아갔다…삼전 7%↓ ‘검은 금요일’",
         "코스피 5% 급락 ‘검은 금요일’...",
         "10개월 만에 4900선 아래로",
-        "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?"
+        "코스피 ‘검은 금요일’…5.21% 급락한 4869.96 마감"
       ],
       "sources": [
         {
@@ -56,21 +56,21 @@
           "url": "https://n.news.naver.com/article/023/0004010809"
         },
         {
-          "press": "머니투데이",
-          "title": "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
-          "url": "https://n.news.naver.com/article/008/0005444256"
+          "press": "국민일보",
+          "title": "코스피 ‘검은 금요일’…5.21% 급락한 4869.96 마감",
+          "url": "https://n.news.naver.com/article/005/0001886472"
         },
         {
-          "press": "파이낸셜뉴스",
-          "title": "\"코스피 9000에서 5000으로\"…개미들 손실 563조원 추정",
-          "url": "https://n.news.naver.com/article/014/0005607174"
+          "press": "fntoday.co.kr",
+          "title": "\"검은 금요일\" 덮친 국내 증시…코스피 4,800대로 후퇴, 10개월만 최저",
+          "url": "https://www.fntoday.co.kr/news/articleView.html?idxno=399515"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "미국 인공지능(AI) 관련 규제 우려와 투자심리 악화가 겹치면서 국내 주식시장에서 외국인과 기관이 대규모 매도세를 보였다."
+          "evidence": "20일 코스피 지수가 전 거래일 대비 5.21% 급락한 4869.96에 마감하며 지난 1월 수준으로 되돌아갔다."
         },
         {
           "panel": 2,
@@ -85,12 +85,12 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "외국인과 기관의 2조원대 매도 폭탄과 함께 앤스로픽 상장에도 불구하고 'AI 거품론'을 극복하지 못하고 코스피가 4800선까지 급락했다. 양 시장에 매도 사이드카가 발동되며 실적이나 호재가 통하지 않는 시장의…"
+          "evidence": "이전부터 5500선 붕괴 등 증시 변동성이 확대되는 조짐이 나타나고 있었다."
         }
       ],
       "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -130,8 +130,8 @@
       }
     },
     {
-      "issue_id": "ie2450ad5",
-      "title": "엔비디아 이어 … AMD도 '중국 리스크'",
+      "issue_id": "id502e0f3",
+      "title": "코스피 4900선마저 무너졌다…코스피·코스닥 동반 '사이드카'",
       "category": "경제",
       "rank": 7,
       "priority_score": 37,
@@ -141,32 +141,32 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "삼성전자와 SK하이닉스 주가가 급락했지만 메모리 반도체 업황은 여전히 견조하다는 분석이 나왔다.",
-        "\"2억7000만원이 1억 됐다\"…버티다",
-        "납입한 '서학개미'가 지난 7월 증시 급락기에 큰 손실을 입은 것으로 나타났다.",
-        "특히 이 기간 RIA 계좌 납입금액 2조 원 가운데 1조 1300억 원을 삼성전자(005930), SK하이닉스(000660)에 집중 투자해 피해가 더 컸다....",
-        "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\""
+        "한국 증시는 20일 오후 1시 46분 현재 코스피 4,869.96, 코스닥 645.68으로 장을 마감하며 '검은 금요일'을 연출했다.",
+        "코스피·코스닥 5%대 폭락…양 시장 ‘매도 사이드카’",
+        "기술주 중심으로 급락세가 이어지면서 유가증권시장은 물론 코스닥시장에도 매도 사이드카(프로그램 매도 호가 일시 효력 정지)도 발동됐다.",
+        "코스피는 장중 연고점(9,114.55) 대비 46% 넘게 하락하기도 했다....",
+        "코스피와 코스닥 양 시장에 매도 사이드카가 잇따라 발동됐고, 삼성전자와 SK하이닉스 등 대형 반도체주는 일제히 급락했다."
       ],
       "sources": [
         {
+          "press": "KBS",
+          "title": "코스피·코스닥 5%대 폭락…양 시장 ‘매도 사이드카’",
+          "url": "https://n.news.naver.com/article/056/0012298152"
+        },
+        {
+          "press": "donga.com",
+          "title": "亞증시 덮친 ‘AI 거품론’…코스피는 4900 밑으로 ‘검은 금요일’",
+          "url": "https://n.news.naver.com/mnews/article/020/0003764031?sid=101"
+        },
+        {
+          "press": "ntoday.co.kr",
+          "title": "[마켓펄스] \"꽁꽁 얼어붙은 삼전닉스 투심\"...코스피 5% 급락 마감",
+          "url": "https://www.ntoday.co.kr/news/articleView.html?idxno=131029"
+        },
+        {
           "press": "한국경제",
-          "title": "\"2억7000만원이 1억 됐다\"…버티다 지친 삼전닉스 개미들",
-          "url": "https://n.news.naver.com/article/015/0005356450"
-        },
-        {
-          "press": "news1.kr",
-          "title": "[단독] 서학개미 2조 들고왔더니 '국장 와르르'…삼전닉스 1.1조 베팅했...",
-          "url": "https://n.news.naver.com/mnews/article/421/0009114809?sid=101"
-        },
-        {
-          "press": "한국경제TV",
-          "title": "삼전닉스 개미들, 모처럼 '화색'...\"D램 가격 이만큼 오른다\"",
-          "url": "https://n.news.naver.com/article/215/0001273355"
-        },
-        {
-          "press": "ekn.kr",
-          "title": "“3조 던진 외국인, 3조 받은 개미”...삼전닉스, 하루 새 ‘와르르’",
-          "url": "https://www.ekn.kr/web/view.php?key=20260806020420287"
+          "title": "코스피 이어 코스닥도 매도 사이드카…삼성전자·하이닉스 6%대 급락",
+          "url": "https://n.news.naver.com/article/015/0005356328"
         }
       ],
       "story_beats": [
@@ -178,115 +178,12 @@
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "특히 이 기간 RIA 계좌 납입금액 2조 원 가운데 1조 1300억 원을 삼성전자(005930), SK하이닉스(000660)에 집중 투자해 피해가 더 컸다...."
+          "evidence": "코스피·코스닥 5%대 폭락…양 시장 ‘매도 사이드카’"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "\"2억7000만원이 1억 됐다\"…버티다"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "발단·의혹"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ice56581a",
-      "title": "트럼프 러브콜에도 침묵한 김정은…12월 전원회의 대미 메시지 주목",
-      "category": "세계",
-      "rank": 9,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "미중러 회담 이후, 러시아의 발언이 증가하고 있다.",
-        "어제(19일) 열린 사상 첫 미중러 정상회담에 세계의 이목이 쏠렸죠.",
-        "세 정상은 친분을 과시하며 화기애애한...",
-        "\" 만나자마자 포옹을 했던 시진핑 국가주석에게도 친구란 사실을 또 강조합니다.",
-        "▶ 도널드 트럼프 / 미국..."
-      ],
-      "sources": [
-        {
-          "press": "mbn.co.kr",
-          "title": "\"역사적 사건\", \"우리는 친구\" 자평하지만…실속 없던 미중러 회담",
-          "url": "https://n.news.naver.com/mnews/article/057/0001979193?sid=104"
-        },
-        {
-          "press": "mbn.co.kr",
-          "title": "이틀 동안 '30초' 홀대 넘어 조롱?…일본 내부도 \"외교 고립” 우려",
-          "url": "https://n.news.naver.com/mnews/article/057/0001979195?sid=104"
-        },
-        {
-          "press": "한국일보",
-          "title": "트럼프 \"시진핑·푸틴과 중대한 회담\"…김정은과는 \"언젠가 만날 것\"",
-          "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFB5Ql9TN3N2ZVlOZGswNTR5LVFIa1NlUkdTMFFWNUFZMzNMMU4xdm9nbElwOUdKMjhUZVZkUWZIVWF0UmZtS0tWYkNfT2toZnJia2VCamtnM1hxZjRLaF9JRTIta2pvQ2ZOOHFJbmJ3?oc=5"
-        },
-        {
-          "press": "newspim.com",
-          "title": "러, 미·중·러 정상회담 직후 우크라 교량 3곳 타격… 푸틴 \"우리 공격...",
-          "url": "https://www.newspim.com/news/view/20261120001189"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "미중러 회담 이후, 러시아의 발언이 증가하고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "[미중러 정상회담] 트럼프에게 \"내 친구\"로 불린 푸틴…종전협상 영향은"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "어제(19일) 열린 사상 첫 미중러 정상회담에 세계의 이목이 쏠렸죠."
+          "evidence": "코스피는 장중 연고점(9,114.55) 대비 46% 넘게 하락하기도 했다...."
         },
         {
           "panel": 4,
@@ -331,7 +228,109 @@
         "continuity_quality": 0.84,
         "continuity_gaps": [
           "발단·의혹",
-          "수사·대응",
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ie7177138",
+      "title": "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
+      "category": "사회",
+      "rank": 7,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "올해 법학적성시험(LEET·리트) 만점자 이진우 씨가 AI 부정행위 논란 끝에 숨진 채 발견됐습니다.",
+        "“깊이 생각 못해 잘못했다”…‘리트 만점자’ 이진우씨 사망에 강사 추모글",
+        "숨진 ‘리트 만점자’ 부검 결과 나왔다…“타살 정황 발견 안 돼”",
+        "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
+        "사냥개처럼 몰아붙여”…서울대 교수, 이진우 사망에 쓴소리"
+      ],
+      "sources": [
+        {
+          "press": "디지털타임스",
+          "title": "“깊이 생각 못해 잘못했다”…‘리트 만점자’ 이진우씨 사망에 강사 추모글",
+          "url": "https://n.news.naver.com/article/029/0003060215"
+        },
+        {
+          "press": "서울경제",
+          "title": "숨진 ‘리트 만점자’ 부검 결과 나왔다…“타살 정황 발견 안 돼”",
+          "url": "https://n.news.naver.com/article/011/0004684374"
+        },
+        {
+          "press": "JTBC",
+          "title": "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
+          "url": "https://n.news.naver.com/article/437/0000521633"
+        },
+        {
+          "press": "디지털타임스",
+          "title": "“열광하다 사냥개처럼 몰아붙여”…서울대 교수, 이진우 사망에 쓴소리",
+          "url": "https://n.news.naver.com/article/029/0003060213"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "올해 법학적성시험(LEET·리트) 만점자 이진우 씨가 AI 부정행위 논란 끝에 숨진 채 발견됐습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "경찰은 최종 부검 결과를 토대로 정확한 사망 원인을 조사하고 이 씨의 시험 부정행위 의혹에 대한 수사도..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "숨진 채 발견된 법학적성시험(LEET·리트) 만점자 고(故) 이진우씨의 사망 현장에서 8년 전 치른 대학수학능력시험(수능) 수험표가 발견된 것으로 파악됐다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
           "사법·처분"
         ],
         "no_generic_closing": true
