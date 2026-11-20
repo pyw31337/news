@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated": "2026-11-20T06:19:49+00:00",
+  "updated": "2026-11-20T06:28:44+00:00",
   "queue": [
     {
       "person_key": "곽상언",
@@ -19845,6 +19845,26 @@
       ]
     },
     {
+      "person_key": "안전성",
+      "name": "안전성",
+      "name_status": "resolved",
+      "kind": "법조",
+      "transition_signal": "judicial_service_signal",
+      "event_count": 3,
+      "cited_event_count": 3,
+      "needs": [
+        "search_post_service_law_firm"
+      ],
+      "discovery_sources": [
+        "existing_people_bio",
+        "legal_registry",
+        "news_case_index"
+      ],
+      "person_keys": [
+        "안전성"
+      ]
+    },
+    {
       "person_key": "안창호",
       "name": "안창호",
       "name_status": "resolved",
@@ -26658,12 +26678,12 @@
     }
   ],
   "counts": {
-    "roster": 1242,
-    "people_with_legal_events": 1242,
-    "resolved_people": 626,
-    "career_records": 2316,
-    "cited_records": 2286,
+    "roster": 1243,
+    "people_with_legal_events": 1243,
+    "resolved_people": 627,
+    "career_records": 2319,
+    "cited_records": 2289,
     "transition_signals": 13,
-    "needs_firm_verification": 1199
+    "needs_firm_verification": 1200
   }
 }
