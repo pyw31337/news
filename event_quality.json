@@ -1,129 +1,54 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 07:19:13",
+  "updated_at": "2026-11-20 06:20:56",
   "date": "2026-11-20",
   "total_issues": 10,
-  "average_quality": 0.88,
+  "average_quality": 0.87,
   "issues": [
     {
-      "id": "i891911a6",
-      "title": "[속보] 민주당, 조희대 대법원장 탄핵 추진 당론 결정",
-      "episode": "episode:eab05953647539",
+      "id": "i4cfabfce",
+      "title": "국민의힘, 조희대 탄핵 추진에 ‘반색’···“민주당도 참 힘든 길 간다”",
+      "episode": "episode:c1829199ff766f",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "수사·대응",
-        "사법·처분",
         "파장·후속",
-        "입장·공방"
+        "입장·공방",
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 36,
-      "event_count": 27,
+      "duplicate_candidates": 40,
+      "event_count": 24,
       "evidence_rate": 1.0
     },
     {
-      "id": "ibd3da8cb",
-      "title": "급락장에 코스피 이어 코스닥서도 매도 사이드카",
-      "episode": "episode:6363fb460edcef",
+      "id": "i3ba51eb9",
+      "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
+      "episode": "episode:6b3e8b4ccf73b6",
       "quality": 1.0,
       "stages": [
         "파장·후속",
         "일반 보도",
         "수사·대응",
         "사법·처분",
-        "발단·의혹"
-      ],
-      "gaps": [
+        "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 43,
+      "gaps": [],
+      "duplicate_candidates": 44,
       "event_count": 41,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6eccd4a3",
-      "title": "李대통령 \"국가시험제도 전면 개편…수능 부정행위 일벌백계\"",
-      "episode": "episode:d8728e17f9a789",
-      "quality": 1.0,
+      "id": "iea4bed6d",
+      "title": "수능 전자기기 부정행위 111건…13명 추가 적발",
+      "episode": "episode:ce3fa7b1f0a463",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
-        "수사·대응",
-        "사법·처분",
-        "파장·후속",
-        "입장·공방",
-        "발단·의혹"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 41,
-      "event_count": 55,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i538aa46a",
-      "title": "문제 풀이 없이 안경만 만지작…천안 '수능 부정행위' 수험생의 수상한 행동",
-      "episode": "episode:dabb3b4989e3a6",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 11,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ibd8eee6c",
-      "title": "'7만전자·20만닉스' 말한 전문가 \"아직 본격 폭락 시작 안 했다\"",
-      "episode": "episode:0a8f5ac0a2c4c6",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "파장·후속",
-        "일반 보도",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 20,
-      "event_count": 11,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i9322c051",
-      "title": "“박지윤, 남친과 음란물 보다 걸려”... 악성댓글 잡고보니 前남편 최동석",
-      "episode": "episode:8300fd6349b241",
-      "quality": 0.92,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "수사·대응",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i81849ffb",
-      "title": "“살갑고 고맙던 형이었는데”…이진우 서울대 치대 동기 애도",
-      "episode": "episode:1ee93809b182d4",
-      "quality": 0.56,
-      "stages": [
         "파장·후속",
         "수사·대응"
       ],
@@ -132,14 +57,51 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 21,
-      "event_count": 2,
+      "duplicate_candidates": 34,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9c2b3f7c",
+      "title": "[속보] 李대통령 \"AI 부정 등 환경 변화 맞춰 국가시험제도 전면 개편\"",
+      "episode": "episode:923d92fcd4d680",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5242c18c",
+      "title": "코스피 장중 4%대 급락…매도 사이드카",
+      "episode": "episode:bb99428f651f14",
+      "quality": 0.92,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 38,
       "evidence_rate": 1.0
     },
     {
       "id": "ie7177138",
       "title": "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
-      "episode": "episode:bae01ea1995001",
+      "episode": "episode:453718cfcc8f8b",
       "quality": 1.0,
       "stages": [
         "발단·의혹",
@@ -151,7 +113,7 @@
       "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 30,
+      "duplicate_candidates": 36,
       "event_count": 5,
       "evidence_rate": 1.0
     },
@@ -166,29 +128,97 @@
       "gaps": [
         "발단·의혹",
         "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if68e1f2d",
+      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
+      "episode": "episode:87c2b2d986a387",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "수사·대응",
+        "파장·후속",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 29,
+      "event_count": 20,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i32f6a682",
+      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
+      "episode": "episode:bb1f3458304a26",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방",
         "수사·대응"
       ],
       "duplicate_candidates": 19,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i74946234",
+      "title": "\"남친이랑 포르노보다 걸린 찌질한 박지윤\"…악플러는 최동석이었다",
+      "episode": "episode:f9c5d407902b5d",
+      "quality": 1.0,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "발단·의혹",
+        "수사·대응",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 16,
+      "event_count": 13,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i7cc78ccf",
+      "title": "\"섬 안에서 응급·분만 대응\"…정은경, 제주 의료격차 해법 논의",
+      "episode": "episode:065940af14ff52",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 23,
       "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i80c775b7",
-      "title": "김범수, 항소심도 '무죄'…\"카카오 불확실성 해소되길\"",
-      "episode": "episode:3c225f9b0eb838",
-      "quality": 0.84,
+      "id": "i9f5e1743",
+      "title": "역사적 미중러 회담서 평화 말한 푸틴, 크림대교 공격엔 “더 고통스러운 보복”",
+      "episode": "episode:0addabcf768302",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
-        "사법·처분",
-        "입장·공방"
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
-        "수사·대응",
-        "파장·후속"
+        "입장·공방",
+        "수사·대응"
       ],
-      "duplicate_candidates": 20,
-      "event_count": 6,
+      "duplicate_candidates": 29,
+      "event_count": 17,
       "evidence_rate": 1.0
     }
   ]
