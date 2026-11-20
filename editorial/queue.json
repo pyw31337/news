@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-20",
-  "generated_at": "2026-11-20T13:26:03+09:00",
+  "generated_at": "2026-11-20T12:52:23+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,161 +27,60 @@
   },
   "candidates": [
     {
-      "issue_id": "i5ea3c955",
-      "title": "[속보] 코스피, 4%대 급락에 매도 사이드카 발동",
+      "issue_id": "i32ed1756",
+      "title": "코스피 5%대 급락에 매도 사이드카 발동…외국인 1조원 ‘팔자’",
       "category": "경제",
-      "rank": 1,
-      "priority_score": 45,
+      "rank": 6,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "코스피가 장중 4%대 급락세를 보이며 유가증권시장에 프로그램 매도호가 일시효력정지인 매도 사이드카가 발동되었다.",
-        "코스피 매도 사이드카 발동은 올해 들어 31번째다.",
-        "엔비디아의 실적 발표 이후 반도체 투심이 살아나며 2거래일 동안 상승했던 삼성전자와 SK하이닉스는 6%대 하락하고 있다.",
-        "앞서 삼성전자는 2거래일 동안 4% 넘게...",
-        "급락세가 이어지자 한국거래소는 이날 오전 11시54분5초 유가증권시장에 매도 사이드카를 발동했다."
+        "전날 5100선을 회복했던 코스피가 하루 만에 5000선 아래로 추락했다.",
+        "[속보]코스피 또 5000선 붕괴…美증시 한파에 3%대 하락",
+        "코스피, 4.08% 내린 4,928.51에 출발…코스닥도 3.48% 하락",
+        "“하루 만에 5000선 와르르”…코스피 3%대 급락, 삼성전자 18만원대로",
+        "코스피 매도 사이드카 발동·대만 가권 6.3%·日 닛케이 4.8% 급락… 아시아 AI 공급망 투매 국내 유가증권시장에서 코스피(KOSPI) 지수는 전 거래일 대비 4.08% 내린 4,928.51로 출발해 핵심 지지선인 5,000선을 곧바로 내준..."
       ],
       "sources": [
         {
-          "press": "seoul.co.kr",
-          "title": "이틀동안 17% 오르더니 하루아침에 12%↓…삼전닉스 7%↓ ‘폭싹’ [내가...",
-          "url": "https://n.news.naver.com/mnews/article/081/0003701554?sid=101"
+          "press": "이데일리",
+          "title": "[속보]코스피 또 5000선 붕괴…美증시 한파에 3%대 하락",
+          "url": "https://n.news.naver.com/article/018/0006412945"
         },
         {
-          "press": "ddaily.co.kr",
-          "title": "“또 매도 사이드카”…코스피 5.05% 폭락, 4800선 추락",
-          "url": "https://n.news.naver.com/mnews/article/138/0002249356?sid=101"
+          "press": "연합뉴스TV",
+          "title": "코스피, 4.08% 내린 4,928.51에 출발…코스닥도 3.48% 하락",
+          "url": "https://n.news.naver.com/article/422/0000928079"
         },
         {
-          "press": "YTN",
-          "title": "[속보] 코스피 4%대 급락세...매도 사이드카 발동",
-          "url": "https://n.news.naver.com/article/052/0002435602"
+          "press": "디지털데일리",
+          "title": "“하루 만에 5000선 와르르”…코스피 3%대 급락, 삼성전자 18만원대로",
+          "url": "https://n.news.naver.com/article/138/0002249322"
         },
         {
-          "press": "파이낸셜뉴스",
-          "title": "[속보]코스피, 4%대 급락...매도 사이드카 발동",
-          "url": "https://n.news.naver.com/article/014/0005607367"
+          "press": "g-enews.com",
+          "title": "앤스로픽 상장 첫날 亞 증시 폭락… 韓·日 4~5%·대만 6%에 中·홍콩도...",
+          "url": "https://www.g-enews.com/view.php?ud=2026112012252020820c8c1c064d_1"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "코스피가 장중 4%대 급락세를 보이며 유가증권시장에 프로그램 매도호가 일시효력정지인 매도 사이드카가 발동되었다."
+          "evidence": "전날 5100선을 회복했던 코스피가 하루 만에 5000선 아래로 추락했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "코스피 매도 사이드카 발동은 올해 들어 31번째다."
+          "evidence": "[속보]코스피 또 5000선 붕괴…美증시 한파에 3%대 하락"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "엔비디아의 실적 발표 이후 반도체 투심이 살아나며 2거래일 동안 상승했던 삼성전자와 SK하이닉스는 6%대 하락하고 있다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "과거 지수가 8% 이상 급락하며 1단계 서킷브레이커가 발동되었던 대폭락 국면의 연장선상으로 볼 수 있다. 연이은 급등락 장세 속에서 시장의 변동성이 극심하게 확대된 상태라는 해석이 가능하다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i0e1f5a73",
-      "title": "[속보] ‘SM 주가조작’ 카카오 김범수 창업자, 2심도 무죄",
-      "category": "경제",
-      "rank": 5,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "SM엔터테인먼트 시세조종 공모 의혹으로 1심에서 무죄를 선고받은 김범수 카카오 미래이니셔티브센터장이 20일 서울 서초구 고등법원에서 열린 항소심 선고 공판에 출석했다.",
-        "SM 시세조종 혐의 카카오 김범수 2심 무죄…\"회사 성장 힘 보탤 것\"",
-        "[속보] ‘SM 주가조작’ 카카오 김범수 창업자, 2심도 무죄",
-        "[속보] 김범수 카카오 창업자, ‘SM 주가조작’ 혐의 항소심도 무죄",
-        "김범수 'SM엔터 주가조작' 2심도 무죄…\"시세조종 입증 안돼\"(종합)"
-      ],
-      "sources": [
-        {
-          "press": "블로터",
-          "title": "SM 시세조종 혐의 카카오 김범수 2심 무죄…\"회사 성장 힘 보탤 것\"",
-          "url": "https://n.news.naver.com/article/293/0000093591"
-        },
-        {
-          "press": "세계일보",
-          "title": "[속보] ‘SM 주가조작’ 카카오 김범수 창업자, 2심도 무죄",
-          "url": "https://n.news.naver.com/article/022/0004176761"
-        },
-        {
-          "press": "한겨레",
-          "title": "[속보] 김범수 카카오 창업자, ‘SM 주가조작’ 혐의 항소심도 무죄",
-          "url": "https://n.news.naver.com/article/028/0002833181"
-        },
-        {
-          "press": "연합뉴스",
-          "title": "김범수 'SM엔터 주가조작' 2심도 무죄…\"시세조종 입증 안돼\"(종합)",
-          "url": "https://www.yna.co.kr/view/AKR20261120066051004"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "SM엔터테인먼트 시세조종 공모 의혹으로 1심에서 무죄를 선고받은 김범수 카카오 미래이니셔티브센터장이 20일 서울 서초구 고등법원에서 열린 항소심 선고 공판에 출석했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "임직원에 사내 메시지…\"사회적 신뢰 회복 계기 되길\" \"이용자가 믿고 쓸 수 있는 서비스로 가치 증명해야\" 정신아 카카오 대표가 김범수 창업자의 SM엔터테인먼트 시세조종 혐의 항소심 무죄 판결에 환영의 뜻을…"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "SM 시세조종 혐의 카카오 김범수 2심 무죄…\"회사 성장 힘 보탤 것\""
+          "evidence": "코스피, 4.08% 내린 4,928.51에 출발…코스닥도 3.48% 하락"
         },
         {
           "panel": 4,
@@ -223,9 +122,112 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.38,
+        "continuity_quality": 0.92,
         "continuity_gaps": [
           "발단·의혹",
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i257ffdac",
+      "title": "코스피, 4%대 급락에 5,000선 밑으로…삼전닉스, 5~6%↓",
+      "category": "경제",
+      "rank": 7,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "KB증권 “반도체 비관론 정점” D램 계약가격 40% 상승 전망 내년 글로벌 D램 공급 부족이 심화하면서 삼성전자와 SK하이닉스의 D램 평균판매가격(ASP)이 올해보다",
+        "“반도체주 손절? 후회할 수도”…삼전닉스에 무슨 일이",
+        "삼전닉스 4~5%대 급락…코스피 5000선 깨진 채 출발[이런국장 저런주식]",
+        "[속보]코스피, 장중 낙폭 5% 가까이 확대…4900선도 내줘",
+        "앤트로픽 역대급 IPO에도 투심 회복 실패…삼전·닉스, 6% 하락 코스피 올해 수익률 116%→16% 추락..."
+      ],
+      "sources": [
+        {
+          "press": "전자신문",
+          "title": "“반도체주 손절? 후회할 수도”…삼전닉스에 무슨 일이",
+          "url": "https://n.news.naver.com/article/030/0003487899"
+        },
+        {
+          "press": "서울경제",
+          "title": "삼전닉스 4~5%대 급락…코스피 5000선 깨진 채 출발[이런국장 저런주식]",
+          "url": "https://n.news.naver.com/article/011/0004684275"
+        },
+        {
+          "press": "뉴시스",
+          "title": "[속보]코스피, 장중 낙폭 5% 가까이 확대…4900선도 내줘",
+          "url": "https://n.news.naver.com/article/003/0014334943"
+        },
+        {
+          "press": "yna.co.kr",
+          "title": "검은 금요일 맞은 亞증시…韓·日·대만, 일제히 4∼6%대 급락",
+          "url": "https://n.news.naver.com/mnews/article/001/0016454252?sid=101"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "KB증권 “반도체 비관론 정점” D램 계약가격 40% 상승 전망 내년 글로벌 D램 공급 부족이 심화하면서 삼성전자와 SK하이닉스의 D램 평균판매가격(ASP)이 올해보다"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "앤트로픽 역대급 IPO에도 투심 회복 실패…삼전·닉스, 6% 하락 코스피 올해 수익률 116%→16% 추락..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "삼전닉스 4~5%대 급락…코스피 5000선 깨진 채 출발[이런국장 저런주식]"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
           "입장·공방",
           "수사·대응"
         ],
@@ -242,51 +244,51 @@
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
-        "20일 중국 관영 CCTV와 로이터통신 등에 따르면 트럼프 대통령과 시진핑 중국 국가주석, 블라디미르 푸틴...",
-        "세 정상은 회담 후 ‘미중러 정상 평화선언’을 발표했다.",
-        "핵위험 감소와 핵확산 방지를 위한 대화, 석유 공급...",
-        "없다\"며 미중러 3자 협상을 강도 높게 비판했습니다.",
-        "에마뉘엘 마크롱 프랑스 대통령도 \"우크라이나, 유럽..."
+        "도널드 트럼프 미국 대통령은 사상 처음으로 열린 미중러 3자 정상회담이 매우 성공적이었다고...",
+        "CNN은 시진핑과 푸틴에 대한 트럼프의 친분 과시가 \"의미 있는 돌파구를 마련하지 못했다\"고 비판했습니다.",
+        "앉은 미중러 정상은 세계 평화를 위해 협력해야 한다는 점에 공감했습니다.",
+        "[시진핑/중국 국가 주석 : \"우리는...",
+        "[블라디미르 푸틴/러시아 대통령 : \"우리 세 나라는 지역 분쟁의 해결과 관련해 많은 공동의 이해관계를 갖고..."
       ],
       "sources": [
         {
-          "press": "naeil.com",
-          "title": "미중러 첫 정상회담 ‘선언’만 내놔",
-          "url": "https://www.naeil.com/news/read/609480?ref=naver"
+          "press": "khan.co.kr",
+          "title": "“10년 만에 중국 빗장 열리나”···한한령 해제 기대 커지지만 K팝 공...",
+          "url": "https://n.news.naver.com/mnews/article/032/0003483787?sid=103"
         },
         {
-          "press": "ichannela.com",
-          "title": "유럽 “우크라 없는 종전협상 안 돼”…미중러 회담 겨냥",
-          "url": "https://n.news.naver.com/mnews/article/449/0000368153?sid=104"
+          "press": "kbs.co.kr",
+          "title": "사상 첫 미중러 정상회담…‘평화를 위한 선언’ 발표",
+          "url": "https://n.news.naver.com/mnews/article/056/0012298019?sid=104"
         },
         {
-          "press": "yna.co.kr",
-          "title": "\"전문가들, 미중러 합의 실효성에 의구심…핵군축 등 이견 여전\"",
-          "url": "https://n.news.naver.com/mnews/article/001/0016454291?sid=104"
+          "press": "donga.com",
+          "title": "시진핑 중앙 차지하고 ‘左트럼프 右푸틴’…中이 원한 그림이었다",
+          "url": "https://n.news.naver.com/mnews/article/020/0003763937?sid=104"
         },
         {
-          "press": "imnews.imbc.com",
-          "title": "사상 첫 미중러 정상회담‥\"기념 사진용 만남\"",
-          "url": "https://n.news.naver.com/mnews/article/214/0001536937?sid=104"
+          "press": "asiatime.co.kr",
+          "title": "수출 1조달러 시대…李대통령 ‘봉제·신발공장 선배 세대 덕분’",
+          "url": "https://www.asiatime.co.kr/article/20261119500437"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "20일 중국 관영 CCTV와 로이터통신 등에 따르면 트럼프 대통령과 시진핑 중국 국가주석, 블라디미르 푸틴..."
+          "evidence": "도널드 트럼프 미국 대통령은 사상 처음으로 열린 미중러 3자 정상회담이 매우 성공적이었다고..."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "핵위험 감소와 핵확산 방지를 위한 대화, 석유 공급..."
+          "evidence": "[미중러 정상회담] 공동성명 \"핵위험 감소·핵확산 방지 대화할 것\""
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "없다\"며 미중러 3자 협상을 강도 높게 비판했습니다."
+          "evidence": "전날 3국 정상회담에서는 시진핑(習近平) 중국 국가주석이 카메라 기준으로 원형 탁자의 정면 중앙에서 앉았고, 양쪽에 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령이 자리했다."
         },
         {
           "panel": 4,
@@ -328,9 +330,11 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 1.0,
+        "continuity_quality": 0.84,
         "continuity_gaps": [
-          "발단·의혹"
+          "발단·의혹",
+          "입장·공방",
+          "수사·대응"
         ],
         "no_generic_closing": true
       }
