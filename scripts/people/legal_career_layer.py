@@ -74,6 +74,20 @@ def main():
     data = Path(args.data)
     bios = load(data / "people_bio.json.gz", {})
     roster = legal_roster(data)
+    id_names = {}
+    all_registry = load(data / "db/people/registry.json.gz", [])
+    for registry_row in all_registry if isinstance(all_registry, list) else []:
+        if registry_row.get("id") and registry_row.get("n"):
+            raw_id = str(registry_row["id"])
+            id_names[raw_id] = str(registry_row["n"])
+            id_names[raw_id.removeprefix("pol:")] = str(registry_row["n"])
+            id_names[raw_id.removeprefix("wd:")] = str(registry_row["n"])
+    for roster_name, roster_row in roster.items():
+        if roster_row.get("person_id"):
+            raw_id = str(roster_row["person_id"])
+            id_names[raw_id] = roster_name
+            id_names[raw_id.removeprefix("pol:")] = roster_name
+            id_names[raw_id.removeprefix("wd:")] = roster_name
     records, queue = [], []
     now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 
@@ -86,7 +100,8 @@ def main():
         is_legal = bool(legal_events) or bool(ROLE_RE.search(role_text)) or bio.get("kind") == "legal"
         if not is_legal:
             continue
-        name = str(bio.get("name") or person_key)
+        name = str(bio.get("name") or id_names.get(str(person_key)) or id_names.get(str(person_key).removeprefix("pol:")) or id_names.get(str(person_key).removeprefix("wd:")) or person_key)
+        unresolved_name = bool(re.fullmatch(r"(?:pol:|wd:|wd:a)?[A-Za-z0-9]{6,}", name))
         roster.setdefault(name, {"name": name, "person_id": person_key, "kind": "법조", "registry": False})
         judicial_seen = False
         private_seen = False
@@ -103,6 +118,8 @@ def main():
                 "schema": 1,
                 "person_key": str(person_key),
                 "name": name,
+                "name_status": "unresolved" if unresolved_name else "resolved",
+                "visibility": "review" if unresolved_name else "candidate",
                 "event_index": idx,
                 "event_date": event.get("d"),
                 "event_type": event.get("typ"),
@@ -136,11 +153,12 @@ def main():
         queue.append({
             "person_key": str(person_key),
             "name": name,
+            "name_status": "unresolved" if bool(re.fullmatch(r"(?:pol:|wd:|wd:a)?[A-Za-z0-9]{6,}", name)) else "resolved",
             "kind": "법조",
             "transition_signal": transition,
             "event_count": len(legal_events),
             "cited_event_count": cited_count,
-            "needs": sorted(set(needs)),
+            "needs": sorted(set(needs + (["identity_resolution"] if bool(re.fullmatch(r"(?:pol:|wd:|wd:a)?[A-Za-z0-9]{6,}", name)) else []))),
             "discovery_sources": ["existing_people_bio", "legal_registry", "news_case_index"],
         })
 
@@ -152,25 +170,45 @@ def main():
         queue.append({
             "person_key": str(row.get("person_id") or name),
             "name": name,
+            "name_status": "resolved",
             "kind": "법조",
             "transition_signal": "roster_only",
             "event_count": 0,
             "cited_event_count": 0,
-            "needs": ["build_cited_career_timeline", "search_post_service_law_firm"],
+        "needs": ["build_cited_career_timeline", "search_post_service_law_firm"],
             "discovery_sources": ["legal_registry", "legal_elites"],
         })
+
+    # 동일 인물에 연결된 pol:/wd:/내부 키가 함께 존재할 수 있다.
+    # 이름만으로 병합하면 동명이인 위험이 있으므로 aliases를 보존하고 검토 플래그를 단다.
+    grouped_queue = {}
+    for row in queue:
+        key = (row["name"], row["transition_signal"])
+        current = grouped_queue.setdefault(key, dict(row, person_keys=[]))
+        current["person_keys"] = sorted(set(current["person_keys"] + [row["person_key"]]))
+        current["event_count"] = max(current["event_count"], row["event_count"])
+        current["cited_event_count"] = max(current["cited_event_count"], row["cited_event_count"])
+        current["needs"] = sorted(set(current["needs"] + row["needs"]))
+        current["discovery_sources"] = sorted(set(current["discovery_sources"] + row["discovery_sources"]))
+    queue = list(grouped_queue.values())
+    for row in queue:
+        if len(row["person_keys"]) > 1:
+            row["needs"] = sorted(set(row["needs"] + ["identity_disambiguation"]))
 
     # 같은 사람·같은 이벤트의 중복 키를 제거하되, 출처 상태와 근거는 보존한다.
     dedup = {}
     for row in records:
-        key = (row["person_key"], row.get("event_date"), row.get("title"), row.get("source_url"))
-        dedup[key] = row
+        key = (row["name"], row.get("event_date"), row.get("title"), row.get("source_url"))
+        if key not in dedup:
+            dedup[key] = dict(row, person_keys=[row["person_key"]])
+        else:
+            dedup[key]["person_keys"] = sorted(set(dedup[key]["person_keys"] + [row["person_key"]]))
     records = list(dedup.values())
     queue.sort(key=lambda x: (0 if "verify_transition_dates_and_firm" in x["needs"] else 1, x["name"]))
     out = data / "db/people"
     dump(out / "legal_careers.json", {"schema": 1, "updated": now, "records": records, "policy": "출처 URL이 있는 경력만 cited로 공개 후보가 되며, 미확인 전환은 needs_source 상태로 보관"})
     dump(out / "legal_career_queue.json", {"schema": 1, "updated": now, "queue": queue, "counts": {
-        "roster": len(roster), "people_with_legal_events": len(queue), "career_records": len(records),
+        "roster": len(roster), "people_with_legal_events": len(queue), "resolved_people": sum(x.get("name_status") == "resolved" for x in queue), "career_records": len(records),
         "cited_records": sum(r["source_status"] == "cited" for r in records),
         "transition_signals": sum(r["transition_signal"] == "judicial_to_private_practice_signal" for r in queue),
         "needs_firm_verification": sum("search_post_service_law_firm" in r["needs"] for r in queue),
