@@ -1,7 +1,7 @@
 {
-  "run_id": "44679430530",
-  "observed_at": "2026-11-20T05:28:15+00:00",
-  "observed_at_kst": "2026-11-20T14:28:15+09:00",
+  "run_id": "44676157540",
+  "observed_at": "2026-11-20T04:57:03+00:00",
+  "observed_at_kst": "2026-11-20T13:57:03+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
   "commit": "2285dd816511c8631dca55031f37d903e9025339",
@@ -9,16 +9,16 @@
   "stages": {
     "collect": {
       "status": "degraded",
-      "ok": 265,
-      "fail": 33,
-      "errors": 33,
+      "ok": 299,
+      "fail": 19,
+      "errors": 19,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 513,
-      "fail": 35,
-      "errors": 35,
+      "ok": 476,
+      "fail": 40,
+      "errors": 40,
       "artifact": true
     },
     "quality": {
@@ -35,20 +35,20 @@
   },
   "counts": {
     "issues": 10,
-    "sources": 205,
+    "sources": 189,
     "entities": 36,
     "global_issues": 12,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "bc3e656d00e08aceecc27ff22879180e522e7af23d39904e7c4272af98419fc8",
-    "global": "ecb5612d0f7828cfd0165056daafbc488462bf070385be94476efe519b91b578",
-    "quality": "aaafc9798fe8e3c4ced641ce0bf98808a7631527f5b69c7fb6395a39be7c1c47",
-    "status": "6465f980bc1a4606bf24f2e3e02c4e34491f175829c7df86654c011e40bec02d",
-    "event_quality": "0ecf74c7ee0cd15e05545ed51c9dd80a86724db5f2bff8273dd8041798fd3d81"
+    "today": "e111eb6c5ba412d6909c6a341f546572163f6f641503fd4f4d479ce09fa54ebb",
+    "global": "dd63bc98885f2fab4d5d8a5b7aef65bb2a4dde64015e7fa2372fdf2546ccb44a",
+    "quality": "6dfc466a1fc3766c1aed115bf2855132cffe96fba5393a9fe86d519757f62294",
+    "status": "c52ed32b25ab2e61dc53535042d9f72dae016a5e7fe44702872edf9e61cb5740",
+    "event_quality": "8b1ae4e4039479d7b5cbb789b1956120dcab8852dfb04f659e2ebf4c75c121eb"
   },
   "status_snapshot": {
-    "updated": "2026-11-20T14:27:47.421390+09:00",
+    "updated": "2026-11-20T13:56:35.321138+09:00",
     "error_count": 60
   }
 }
