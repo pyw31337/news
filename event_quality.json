@@ -1,90 +1,126 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 09:20:19",
+  "updated_at": "2026-11-20 08:31:21",
   "date": "2026-11-20",
   "total_issues": 10,
   "average_quality": 0.85,
   "issues": [
     {
-      "id": "i4e0d4d18",
-      "title": "민주당, '조희대 대법원장 탄핵' 당론 채택…\"임계점 넘어\"",
-      "episode": "episode:b94316af585eb7",
+      "id": "i47526961",
+      "title": "與, '조희대 대법원장 탄핵' 당론 채택",
+      "episode": "episode:204c59dd3beadf",
       "quality": 1.0,
       "stages": [
-        "수사·대응",
-        "사법·처분",
         "일반 보도",
         "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 28,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i6c5522dd",
-      "title": "李대통령 “국가시험 전면 개편…기존 시험도 AI 부정행위 엄정 단죄”",
-      "episode": "episode:16110c642ac88f",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
         "입장·공방",
-        "파장·후속",
         "사법·처분"
       ],
       "gaps": [
-        "발단·의혹"
+        "사법·처분"
       ],
-      "duplicate_candidates": 43,
-      "event_count": 55,
+      "duplicate_candidates": 36,
+      "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5c4c4254",
+      "title": "李 “국가시험제도 전면 개편…이미 치러진 시험 부정도 단죄”",
+      "episode": "episode:ff45d473f896e7",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 35,
+      "event_count": 13,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i6a986efe",
+      "title": "[속보] 4,800선까지 밀린 코스피...반도체주 급락",
+      "episode": "episode:6c4dcfbe05e955",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 48,
+      "event_count": 39,
       "evidence_rate": 1.0
     },
     {
       "id": "ie97e049a",
       "title": "“박지윤, 남친과 음란물 봐” 악플러 잡고보니 전남편 최동석… 여성 커뮤니티 익명 활동",
       "episode": "episode:a26e5a191eb6ae",
-      "quality": 0.92,
+      "quality": 0.84,
       "stages": [
-        "일반 보도",
         "발단·의혹",
-        "수사·대응",
+        "일반 보도",
         "사법·처분"
       ],
       "gaps": [
         "입장·공방",
+        "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 32,
+      "duplicate_candidates": 30,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i6d29847f",
+      "title": "'리트 만점자' 이진우 부검 결과 나왔다…경찰, 공범 여부 추적",
+      "episode": "episode:22cfa8a8e4b7c0",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 29,
       "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i58a10da3",
-      "title": "실적도 안먹히는 시장...'검은 금요일' 코스피 4900선도 붕괴",
-      "episode": "episode:4d355799d1fa43",
-      "quality": 0.92,
+      "id": "if69b6941",
+      "title": "코스피 추락 어디까지…앤트로픽 역대급 IPO에도 투심 회복 실패(종합)",
+      "episode": "episode:644dc75145b48d",
+      "quality": 0.84,
       "stages": [
-        "일반 보도",
         "파장·후속",
-        "발단·의혹",
+        "일반 보도",
         "사법·처분"
       ],
       "gaps": [
+        "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 36,
-      "event_count": 56,
+      "duplicate_candidates": 28,
+      "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "ic8fc76dc",
-      "title": "리트 만점자 사망에…서울대 교수 \"하늘로 둥둥 띄우곤 사냥개처럼 몰아붙여\" 일침",
-      "episode": "episode:2a17cd882c034e",
+      "id": "ie7177138",
+      "title": "'리트 만점자' 사망에…서울대 교수 \"열광하다가 사냥개처럼 몰아붙여\"",
+      "episode": "episode:bae01ea1995001",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -96,100 +132,64 @@
       "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 31,
+      "duplicate_candidates": 28,
       "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "id502e0f3",
-      "title": "코스피 4900선마저 무너졌다…코스피·코스닥 동반 '사이드카'",
-      "episode": "episode:38631e0dbea789",
-      "quality": 1.0,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "수사·대응",
-        "사법·처분",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "입장·공방"
-      ],
-      "duplicate_candidates": 40,
-      "event_count": 39,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i00470f54",
-      "title": "\"좋은 형이었는데\"…서울대 치대 동기들 애도글",
-      "episode": "episode:65e5fbb3cc5609",
-      "quality": 0.56,
-      "stages": [
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 21,
-      "event_count": 2,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i53bf684e",
-      "title": "[속보] \"해외여행 안 갔는데\"…10년 만에 국내서 콜레라 환자 발생",
-      "episode": "episode:b68bb2940553b4",
-      "quality": 0.38,
-      "stages": [
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 21,
-      "event_count": 1,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i80c775b7",
-      "title": "김범수, 항소심도 '무죄'…\"카카오 불확실성 해소되길\"",
-      "episode": "episode:2810d8cf48f7c0",
-      "quality": 0.84,
+      "id": "i162e861a",
+      "title": "'안경 만지작' 천안 수능 부정행위 수험생 스마트안경 활용 시인(종합)",
+      "episode": "episode:1763b57f504c44",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
-        "사법·처분",
-        "입장·공방"
+        "파장·후속",
+        "수사·대응",
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
-        "수사·대응",
-        "파장·후속"
+        "입장·공방"
       ],
-      "duplicate_candidates": 22,
+      "duplicate_candidates": 33,
       "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia43e581d",
-      "title": "\"수능 공정성 믿어도 되나요\"…'AI 커닝'에 입시설명회도 '술렁'",
-      "episode": "episode:ca32beb51c7f8e",
+      "id": "i3ac9ce5b",
+      "title": "친구 살해 후 나체로 돌아다닌 정재환…정신감정 결과 나왔다",
+      "episode": "episode:79a97738a835b4",
       "quality": 0.84,
       "stages": [
         "일반 보도",
         "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 9,
+      "gaps": [
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 5,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id51df786",
+      "title": "국내서 10년 만에 콜레라 환자 나왔다",
+      "episode": "episode:5c3c0aa4da4ffc",
+      "quality": 0.84,
+      "stages": [
+        "발단·의혹",
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "입장·공방",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 19,
+      "event_count": 5,
       "evidence_rate": 1.0
     }
   ]
