@@ -1,27 +1,27 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-20 19:54:44",
+  "updated_at": "2026-11-20 18:54:07",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.85,
+  "average_quality": 0.84,
   "issues": [
     {
-      "id": "i4cfabfce",
-      "title": "국민의힘, 조희대 탄핵 추진에 ‘반색’···“민주당도 참 힘든 길 간다”",
-      "episode": "episode:316fb16d2a7f0a",
+      "id": "i47526961",
+      "title": "與, '조희대 대법원장 탄핵' 당론 채택",
+      "episode": "episode:1a16a1b7d6035e",
       "quality": 1.0,
       "stages": [
-        "일반 보도",
         "수사·대응",
-        "사법·처분",
+        "일반 보도",
         "파장·후속",
-        "입장·공방"
+        "입장·공방",
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 24,
+      "duplicate_candidates": 36,
+      "event_count": 21,
       "evidence_rate": 1.0
     },
     {
@@ -39,52 +39,33 @@
       "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 9,
+      "duplicate_candidates": 32,
+      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "i612fb5ca",
-      "title": "김민석 “대법원 판결, 역사적 반역…조희대 탄핵해야”",
-      "episode": "episode:0e2cd88c2f71d2",
+      "id": "ifb04c7a2",
+      "title": "김민석 “조희대 탄핵, 정무적 판단으로 미뤘지만 더는 용인 못해”",
+      "episode": "episode:d0316a24b1f0ee",
       "quality": 0.92,
       "stages": [
-        "사법·처분",
         "일반 보도",
         "입장·공방",
+        "사법·처분",
         "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
         "파장·후속"
       ],
-      "duplicate_candidates": 41,
-      "event_count": 19,
+      "duplicate_candidates": 38,
+      "event_count": 14,
       "evidence_rate": 1.0
     },
     {
-      "id": "ifb5b3124",
-      "title": "박지윤 ‘이혼 악플러’ 잡고 보니 전남편 최동석…명예훼손 혐의 송치",
-      "episode": "episode:55f92d5130dfb8",
-      "quality": 0.92,
-      "stages": [
-        "사법·처분",
-        "수사·대응",
-        "일반 보도",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 37,
-      "event_count": 36,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3ba51eb9",
-      "title": "삼성전자·SK하이닉스 6.7% 곤두박질…코스피, 매도 사이드카 발동",
-      "episode": "episode:6888182926061f",
+      "id": "i9e436945",
+      "title": "“삼성전자·SK하이닉스 과도하게 빠졌다”…KB증권 “내년 D램 가격 40% 상승”",
+      "episode": "episode:4e662be687a752",
       "quality": 0.92,
       "stages": [
         "파장·후속",
@@ -96,14 +77,32 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 36,
-      "event_count": 38,
+      "duplicate_candidates": 47,
+      "event_count": 44,
       "evidence_rate": 1.0
     },
     {
-      "id": "i95d12aa9",
-      "title": "법원 \"사생활 논란' 김수현 측, 쿠쿠에 모델료 8억원 돌려줘야\"(종합)",
-      "episode": "episode:6ff12fd1624b33",
+      "id": "ic6f5baf9",
+      "title": "박지윤 악플러, 잡고 보니 전 남편 최동석…명예훼손 혐의 송치",
+      "episode": "episode:c82d4e9dec5496",
+      "quality": 0.84,
+      "stages": [
+        "수사·대응",
+        "사법·처분",
+        "일반 보도"
+      ],
+      "gaps": [
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 36,
+      "event_count": 36,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i6033b622",
+      "title": "법원 \"김수현 소속사, 쿠쿠에 모델료 8억 7천만 원 돌려줘야\"",
+      "episode": "episode:cbd6a6b496f3ba",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -115,14 +114,14 @@
         "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 18,
+      "duplicate_candidates": 35,
+      "event_count": 16,
       "evidence_rate": 1.0
     },
     {
-      "id": "i072b86da",
-      "title": "공사 생도 '명예시험' 중 스마트폰으로 시험지 촬영…퇴교 처분",
-      "episode": "episode:eb8488e52f5424",
+      "id": "i90e55eb4",
+      "title": "공군사관학교서 '명예시험' 중 스마트폰 촬영 부정행위…생도 퇴교 처분",
+      "episode": "episode:48d1aec254e2eb",
       "quality": 0.48,
       "stages": [
         "사법·처분"
@@ -132,8 +131,44 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 29,
+      "duplicate_candidates": 28,
       "event_count": 2,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia7834185",
+      "title": "\"대체 바닥이 어디야\"…코스피 4900선 붕괴, 반등 열쇠는?",
+      "episode": "episode:750f0a7e9eecd9",
+      "quality": 0.92,
+      "stages": [
+        "발단·의혹",
+        "일반 보도",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i53bf684e",
+      "title": "[속보] \"해외여행 안 갔는데\"…10년 만에 국내서 콜레라 환자 발생",
+      "episode": "episode:97b8bfbbd4d495",
+      "quality": 0.58,
+      "stages": [
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 22,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
@@ -162,33 +197,16 @@
       "quality": 0.84,
       "stages": [
         "일반 보도",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ia31dbc68",
-      "title": "아산의료원장에 박승일, 서울아산병원장 이제환",
-      "episode": "episode:0f9eaa4377ec66",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
         "입장·공방",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
         "수사·대응"
       ],
-      "duplicate_candidates": 25,
-      "event_count": 4,
+      "duplicate_candidates": 30,
+      "event_count": 10,
       "evidence_rate": 1.0
     }
   ]
