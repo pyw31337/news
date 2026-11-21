@@ -1,69 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 05:49:37",
+  "updated_at": "2026-11-21 02:50:59",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.82,
+  "average_quality": 0.87,
   "issues": [
     {
-      "id": "i8a8d2bb0",
-      "title": "집주인에 \"탈출 도와달라\"... 리트 만점자, 사망 당일 새벽 자취방 들러",
-      "episode": "episode:3a7e5eade45d10",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 33,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7b0a1bf8",
-      "title": "[속보] 일반열차 중단 '천안~대전'에 KTX·ITX-새마을 등 임시열차 15대 투입",
-      "episode": "episode:639eba027d4f69",
-      "quality": 0.66,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if180a79c",
-      "title": "이 대통령, 대장동 인터뷰 공유…“5,500억 공익 환수가 배임인가”",
-      "episode": "episode:3e63455fa7a3ed",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 64,
-      "event_count": 122,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if3ab93cc",
-      "title": "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져",
-      "episode": "episode:0454acb73fc03f",
+      "id": "i0c3ea97e",
+      "title": "뉴욕증시, 기술주 투매에 일제히 흔들…나스닥 5.3% 급락",
+      "episode": "episode:cf9533b593a929",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -75,33 +20,52 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 40,
-      "event_count": 49,
+      "duplicate_candidates": 43,
+      "event_count": 71,
       "evidence_rate": 1.0
     },
     {
-      "id": "i890e6191",
-      "title": "젠슨 황, 스캔들에서 게이트로… 이제 시작이다",
-      "episode": "episode:7242c18b1502cd",
+      "id": "ic966062b",
+      "title": "‘리트 만점자’, 숨진 당일 새벽 자택서 짐 정리…이틀 전엔 “탈출 도와달라” 요청도",
+      "episode": "episode:2b5fe93d6f2435",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "파장·후속",
-        "사법·처분",
+        "발단·의혹",
         "수사·대응",
+        "파장·후속",
         "입장·공방"
+      ],
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 42,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i4bc9ab6f",
+      "title": "李, 대장동 업자 인터뷰 공유하며 “5500억 공익환수가 배임이면…”",
+      "episode": "episode:0bec0e5b180642",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "수사·대응",
+        "파장·후속",
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 51,
-      "event_count": 15,
+      "duplicate_candidates": 59,
+      "event_count": 119,
       "evidence_rate": 1.0
     },
     {
-      "id": "i4e1d34dc",
-      "title": "李대통령, 울산 AI 데이터센터 찾아 \"속도가 생명, 인력 부족 고민\"(종합)",
-      "episode": "episode:2391d7e747c73f",
+      "id": "i83b0871d",
+      "title": "경부선 화물열차 탈선…천안-대전 일반열차 운행 중지",
+      "episode": "episode:eb23509f37f4a7",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -113,30 +77,51 @@
         "수사·대응"
       ],
       "duplicate_candidates": 27,
-      "event_count": 7,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "if945dc68",
-      "title": "'나 홀로 집에' 속편 나온다…원조 '케빈' 맥컬리 컬킨도 함께",
-      "episode": "episode:dbbf07c920aa52",
-      "quality": 0.68,
+      "id": "iccf70491",
+      "title": "與, '조희대 탄핵' 당론 채택…사유에 '한덕수 파기환송' 포함 놓고 '오락가락'",
+      "episode": "episode:cb399f8cc4b135",
+      "quality": 1.0,
       "stages": [
-        "일반 보도"
+        "사법·처분",
+        "파장·후속",
+        "수사·대응",
+        "일반 보도",
+        "입장·공방"
       ],
       "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 12,
-      "event_count": 4,
+      "duplicate_candidates": 32,
+      "event_count": 21,
       "evidence_rate": 1.0
     },
     {
-      "id": "i21de1d6f",
-      "title": "시진핑 연설하는데 트럼프 '드르렁'?…백악관 \"서류 보는 것\"",
-      "episode": "episode:faac6f0c28b046",
+      "id": "i6a11716d",
+      "title": "트럼프 “두번째 기회 주어졌으면”… 젠슨 황 복귀 촉구",
+      "episode": "episode:f4fd17c8643f22",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "입장·공방",
+        "일반 보도",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 46,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iee875357",
+      "title": "트럼프 “미·중·러 정상회담서 한반도 위험 대응 논의”",
+      "episode": "episode:ea55f3a8ca74cb",
       "quality": 0.92,
       "stages": [
         "일반 보도",
@@ -148,15 +133,34 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 34,
+      "duplicate_candidates": 34,
+      "event_count": 17,
       "evidence_rate": 1.0
     },
     {
-      "id": "i2612a21b",
-      "title": "[르포] 대학 논술시험도 AI발 혼란…진동 울려 금속탐지기 조사도(종합)",
-      "episode": "episode:78054f7caf0c08",
-      "quality": 0.76,
+      "id": "i82cc8104",
+      "title": "[게임위드인] AI로 외연 확장 노린 지스타…관람객은 게임에 몰렸다",
+      "episode": "episode:3711deaa4659e1",
+      "quality": 0.84,
+      "stages": [
+        "입장·공방",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icc7073be",
+      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
+      "episode": "episode:b4571ab00be66b",
+      "quality": 0.66,
       "stages": [
         "일반 보도",
         "수사·대응"
@@ -166,17 +170,18 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 9,
-      "event_count": 8,
+      "duplicate_candidates": 30,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "i405b22e2",
-      "title": "배우 김민, 고성 대형 산불 막았다…소화기 들고 불길 뛰어들어 [포착]",
-      "episode": "episode:e0058023496e55",
-      "quality": 0.56,
+      "id": "i94664736",
+      "title": "'방송인 박지윤 악플러' 정체 알고 보니…전 남편 최동석, 명예훼손 혐의 송치",
+      "episode": "episode:9f8f8c75143fe1",
+      "quality": 0.84,
       "stages": [
         "수사·대응",
+        "파장·후속",
         "일반 보도"
       ],
       "gaps": [
@@ -184,8 +189,45 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 23,
-      "event_count": 2,
+      "duplicate_candidates": 38,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if68e1f2d",
+      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
+      "episode": "episode:87c2b2d986a387",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "수사·대응",
+        "파장·후속",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 29,
+      "event_count": 20,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i32f6a682",
+      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
+      "episode": "episode:bb1f3458304a26",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 38,
       "evidence_rate": 1.0
     }
   ]

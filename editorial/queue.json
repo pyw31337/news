@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-21",
-  "generated_at": "2026-11-21T14:49:37+09:00",
+  "generated_at": "2026-11-21T11:50:59+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,8 +27,8 @@
   },
   "candidates": [
     {
-      "issue_id": "if3ab93cc",
-      "title": "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져",
+      "issue_id": "i83b0871d",
+      "title": "경부선 화물열차 탈선…천안-대전 일반열차 운행 중지",
       "category": "경제",
       "rank": 4,
       "priority_score": 45,
@@ -38,11 +38,116 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "미국 증시에서 엔비디아의 14% 폭락과 기술주 전반에 대한 매도세가 이어지며 나스닥 지수가 5.3% 급락했다.",
+        "21일 오전 5시 37분경 세종시 소정면 경부선 소정리역에서 화물열차가 궤도를 이탈하는 사고가 발생했다.",
+        "한국철도공사(코레일)은 21일 오전 발생한 경부선 소정리역 화물열차 탈선 사고와 관련, 운행 중지 구간인 천안~대전 간 버스를 이용한 연계수송에 들어간다고 밝혔다.",
+        "코레일은 일부 일반열차를 서울·용산역에서...",
+        "한국철도공사(코레일)은 21일 오전 발생한 경부선 소정리역 화물열차 탈선 사고와 관련, 운행 중지 구간인 천안∼대전 간 버스를 이용한 연계수송에 들어간다고 밝혔다.",
+        "경부선 화물열차 탈선으로 일반열차 멈춰…수험생들 어쩌나"
+      ],
+      "sources": [
+        {
+          "press": "kookje.co.kr",
+          "title": "열차 운행 중단에 “천안∼조치원∼대전·서대전 구간 버스 연계 수송”",
+          "url": "https://n.news.naver.com/mnews/article/658/0000161848?sid=102"
+        },
+        {
+          "press": "jasm.co.kr",
+          "title": "코레일 \"천안∼조치원∼대전 구간 버스 연계 수송\"",
+          "url": "https://www.jasm.co.kr/news/view/326030/?sc=Naver"
+        },
+        {
+          "press": "MBN",
+          "title": "경부선 화물열차 탈선으로 일반열차 멈춰…수험생들 어쩌나",
+          "url": "https://n.news.naver.com/article/057/0001979205"
+        },
+        {
+          "press": "연합뉴스",
+          "title": "[속보] 코레일 \"천안∼조치원∼대전·서대전 구간 버스로 연계 수송\"",
+          "url": "https://www.yna.co.kr/view/AKR20261121028900063"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "21일 오전 5시 37분경 세종시 소정면 경부선 소정리역에서 화물열차가 궤도를 이탈하는 사고가 발생했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "사고로 천안~전의 구간의 전력 공급이 중단됐으며, 철도 당국은 긴급 복구 작업에 나섰다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "한국철도공사(코레일)은 21일 오전 발생한 경부선 소정리역 화물열차 탈선 사고와 관련, 운행 중지 구간인 천안~대전 간 버스를 이용한 연계수송에 들어간다고 밝혔다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "지하철 사고 등 대중교통 관련 안전 이슈가 연초부터 이어져 왔음을 보여준다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.76,
+        "continuity_gaps": [
+          "입장·공방",
+          "수사·대응",
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i0c3ea97e",
+      "title": "뉴욕증시, 기술주 투매에 일제히 흔들…나스닥 5.3% 급락",
+      "category": "경제",
+      "rank": 1,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "미국 뉴욕 증시의 주요",
         "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”",
-        "인공지능(AI) 모델 ‘클로드’ 개발사 앤트로픽의 성공적인 나스닥시장 데뷔에도 뉴욕 증시가 최악의...",
-        "17%) 등 대다수 기술주가 폭락했다.",
-        "이날은 주식뿐 아니라 가상화폐 등 다른 위험자산도 맥을 추지 못했다...."
+        "기술주 중심의 나스닥100지수는 5.6% 폭락하며 코로나19 팬데믹이 본격화했던 2020년 3월 이후 최악의 한 주를 마감했다.",
+        "이 지수는 이번 급락으로 연초 이후 상승분을 모두 반납하고 마이너스 수익률로 돌아섰으며...",
+        "기술주에서 시작된 매도 압력은 뉴욕증시 전체로 번졌다."
       ],
       "sources": [
         {
@@ -51,26 +156,26 @@
           "url": "https://n.news.naver.com/article/056/0012298559"
         },
         {
-          "press": "sedaily.com",
-          "title": "‘마이너스’ 된 美수익률, ‘AI 대탈출’ 신호탄인가 [트럼프 스톡커]",
-          "url": "https://n.news.naver.com/mnews/article/011/0004684641?sid=104"
+          "press": "ekn.kr",
+          "title": "“내가 경고했잖아”…AI株 폭락에 금융시장 패닉, ‘빅쇼트’가 옳았나...",
+          "url": "https://www.ekn.kr/web/view.php?key=20261121024572796"
         },
         {
-          "press": "segye.com",
-          "title": "나스닥 5.3% 폭락… ‘AI 거품’ 공포에 다우·S&P500도 조정 진입",
-          "url": "https://n.news.naver.com/mnews/article/022/0004176983?sid=104"
+          "press": "viva100.com",
+          "title": "나스닥 5.3% 폭락…AI 투자 불안에 美증시 ‘검은 금요일’",
+          "url": "https://www.viva100.com/article/20261121500035"
         },
         {
-          "press": "ddaily.co.kr",
-          "title": "비트코인 7000만원대로 ‘털썩’…한 달 새 33% 폭락",
-          "url": "https://n.news.naver.com/mnews/article/138/0002249446?sid=101"
+          "press": "디지털타임스",
+          "title": "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져",
+          "url": "https://n.news.naver.com/article/029/0003060294"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "미국 증시에서 엔비디아의 14% 폭락과 기술주 전반에 대한 매도세가 이어지며 나스닥 지수가 5.3% 급락했다."
+          "evidence": "미국 뉴욕 증시의 주요"
         },
         {
           "panel": 2,
@@ -80,17 +185,17 @@
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "17%) 등 대다수 기술주가 폭락했다."
+          "evidence": "기술주 중심의 나스닥100지수는 5.6% 폭락하며 코로나19 팬데믹이 본격화했던 2020년 3월 이후 최악의 한 주를 마감했다."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "뉴욕증시의 폭락이 확정되면서 AI 거품 공포가 극대화되었고, 국내 투자자들 사이에서는 정부 대응에 대한 비판 여론이 고조되었다."
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -132,65 +237,65 @@
       }
     },
     {
-      "issue_id": "i890e6191",
-      "title": "젠슨 황, 스캔들에서 게이트로… 이제 시작이다",
+      "issue_id": "i6a11716d",
+      "title": "트럼프 “두번째 기회 주어졌으면”… 젠슨 황 복귀 촉구",
       "category": "세계",
-      "rank": 5,
-      "priority_score": 45,
+      "rank": 6,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "엔비디아 창업자 젠슨 황이 불륜 및 중국 스파이 연루 의혹으로 최고경영자 자리에서 물러난 가운데, 도널드 트럼프 미국 대통령이 그의 복귀를 공개적으로 촉구하고 나섰다.",
-        "트럼프, 미국 기자들과 문답 나누던 도중 젠슨 황 주제로 시진핑과 나눈 대화 공개 “엔비디아 복귀했으면” 거듭 희망하기도 시진핑(習近平) 중국 국가주석이 도널드 트럼프 미국 대통령과 대화하는 도중 젠슨 황(66) 전...",
-        "\"젠슨 황, '낙태'까지 들먹이더니…\" 추가 폭로 또 나왔다",
-        "만나 \"젠슨에게 두 번째 기회가 주어졌으면 좋겠다\"며 \"복귀하는 모습을 보고 싶다.",
-        "세계에서 가장 똑똑한 사람 중 하나인데 그가 어디로 가야 하겠느냐\"고 말했습니다."
+        "트럼프 대통령은 20일 백악관에서 기자회견을 열고, 미국 기술 대기업이 다른 나라에 인공지능 데이터센터를 지을 경우 고액의 세금을 부과하겠다고 밝혔습니다.",
+        "트럼프 “두번째 기회 주어졌으면”… 젠슨 황 복귀 촉구",
+        "AFP통신에 따르면 트럼프 대통령은 20일(현지시간) 기자들과 만나 “젠슨에게 두 번째 기회가 주어졌으면 좋겠다”며 “복귀하는 모습을 보고 싶다”고 말했다.",
+        "트럼프 대통령은 황 전 CEO를 몇몇 잘못된 선택을 내린...",
+        "도널드 트럼프 미국 대통령이 20일(현지시간) 젠슨 황 전 엔비디아 CEO의 복귀를 재차 촉구했습니다."
       ],
       "sources": [
         {
-          "press": "segye.com",
-          "title": "“시진핑, 트럼프 면전에서 ‘젠슨 황 뛰어난 사람’ 극찬해”",
-          "url": "https://n.news.naver.com/mnews/article/022/0004176974?sid=104"
+          "press": "국민일보",
+          "title": "트럼프 “두번째 기회 주어졌으면”… 젠슨 황 복귀 촉구",
+          "url": "https://n.news.naver.com/article/005/0001886551"
         },
         {
-          "press": "SBS",
-          "title": "\"젠슨 황, '낙태'까지 들먹이더니…\" 추가 폭로 또 나왔다",
-          "url": "https://n.news.naver.com/article/055/0001404743"
+          "press": "sedaily.com",
+          "title": "젠슨 황 스캔들 후 서학개미 평가액 6조 증발…트럼프는 “복귀하길”",
+          "url": "https://n.news.naver.com/mnews/article/011/0004684614?sid=101"
         },
         {
-          "press": "mbnmoney.mbn.co.kr",
-          "title": "트럼프, 젠슨 황 복귀 촉구…\"잘못된 선택을 내린 좋은 사람\"",
-          "url": "http://mbnmoney.mbn.co.kr/news/view?news_no=MM1005963841"
+          "press": "ichannela.com",
+          "title": "트럼프 “젠슨 황 돌아오길…시진핑도 ‘회사 현명하면 기회줄 것’ 말...",
+          "url": "https://n.news.naver.com/mnews/article/449/0000368242?sid=104"
         },
         {
-          "press": "econonews.co.kr",
-          "title": "트럼프 \"젠슨 황, 두 번째 기회얻어  복귀해야\"…엔비디아 이사회는 후...",
-          "url": "http://www.econonews.co.kr/news/articleView.html?idxno=447502"
+          "press": "newsis.com",
+          "title": "트럼프 \"푸틴·시진핑과 친해\"…이란전·AI·의회 현안 해법은 모호",
+          "url": "https://n.news.naver.com/mnews/article/003/0014337195?sid=104"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "엔비디아 창업자 젠슨 황이 불륜 및 중국 스파이 연루 의혹으로 최고경영자 자리에서 물러난 가운데, 도널드 트럼프 미국 대통령이 그의 복귀를 공개적으로 촉구하고 나섰다."
+          "evidence": "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "엔비디아 이사회는 앞서 황 전 CEO를 다시 선임할 계획이 없다는 입장을 밝히고 후임..."
+          "evidence": "중국에 대한 첨단 반도체 수출 규제를 둘러싼 논란과 관련해서도 트럼프 대통령은 엔비디아의 젠슨 황 전..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "트럼프, 미국 기자들과 문답 나누던 도중 젠슨 황 주제로 시진핑과 나눈 대화 공개 “엔비디아 복귀했으면” 거듭 희망하기도 시진핑(習近平) 중국 국가주석이 도널드 트럼프 미국 대통령과 대화하는 도중 젠슨 황(66)…"
+          "evidence": "AFP통신에 따르면 트럼프 대통령은 20일(현지시간) 기자들과 만나 “젠슨에게 두 번째 기회가 주어졌으면 좋겠다”며 “복귀하는 모습을 보고 싶다”고 말했다."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "트럼프 대통령이 복귀를 재차 촉구하며 시진핑 주석의 발언까지 언급했으나, 주식 매매 논란과 맞물려 정치적 공방으로 확대되는 양상이다."
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
@@ -229,112 +334,7 @@
         "sources": 4,
         "continuity_quality": 1.0,
         "continuity_gaps": [
-          "발단·의혹"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i7b0a1bf8",
-      "title": "[속보] 일반열차 중단 '천안~대전'에 KTX·ITX-새마을 등 임시열차 15대 투입",
-      "category": "사회",
-      "rank": 2,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "2026년 11월 21일 오전 5시 37분경 세종시 소정리역 인근에서 화물열차 궤도 이탈 사고가 발생했다.",
-        "일반열차 중단 ‘천안∼대전’에 KTX·ITX-새마을 등 15대 투입",
-        "경부선 소정리역에서 화물열차가 궤도를 이탈하는 사고가 발생해 경부선 천안~대전·서대전 일반열차 운행이 중단되자, 한국철도공사(코레일)가 긴급 임시열차 15대를 투입했다.",
-        "21일 오후 코레일은 “열차 이용객의...",
-        "코레일이 고속철도를 제외한 천안~대전 구간 일반열차 운행을 전면 중단하고 버스를 투입해 연계수송에 나섰지만 목적지까지 이동하려면 버스와 열차를 갈아타야 해 승객들의 불편이 이어졌다."
-      ],
-      "sources": [
-        {
-          "press": "중앙일보",
-          "title": "일반열차 중단 ‘천안∼대전’에 KTX·ITX-새마을 등 15대 투입",
-          "url": "https://n.news.naver.com/article/025/0003566858"
-        },
-        {
-          "press": "chosun.com",
-          "title": "코레일, 경부선 화물열차 궤도 이탈에 “긴급 임시열차 15대 투입”",
-          "url": "https://n.news.naver.com/mnews/article/023/0004010959?sid=102"
-        },
-        {
-          "press": "tf.co.kr",
-          "title": "경부선 탈선에 일반열차 운행 중단…승객들 \"발만 동동\" [TF현장]",
-          "url": "https://n.news.naver.com/mnews/article/629/0000554264?sid=102"
-        },
-        {
-          "press": "헤럴드경제",
-          "title": "[속보] 경부선 탈선, 천안→조치원→대전·서대전 구간 버스로 연계 수송",
-          "url": "https://n.news.naver.com/article/016/0002726516"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "2026년 11월 21일 오전 5시 37분경 세종시 소정리역 인근에서 화물열차 궤도 이탈 사고가 발생했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "이 사고 여파로 천안∼대전 구간 일반열차 운행은 모두 중지됐습니다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "일반열차 중단 ‘천안∼대전’에 KTX·ITX-새마을 등 15대 투입"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "앞선 비상 대응 체계 구축에도 불구하고 실제 화물열차 탈선 사고가 발생하면서, 코레일이 긴급 임시열차를 투입하는 등 사후 수습 국면으로 전환되었다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.66,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
