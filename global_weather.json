@@ -1,23 +1,7 @@
 {
-  "updated": "2026-11-21T22:19:18.107782+09:00",
+  "updated": "2026-11-21T21:49:08.741482+09:00",
   "alerts_count": 14,
   "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.52d9d6ed4f21e6b8d6204530bff19a2955a9e0c3.001.1",
-      "t": "2026-11-21 08:02",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Coastal waters from Chokoloskee to Bonita Beach FL out 20 NM",
-      "area_en": "Coastal waters from Chokoloskee to Bonita Beach FL out 20 NM",
-      "event": "Special Marine Warning",
-      "event_en": "Special Marine Warning",
-      "severity": "Severe",
-      "headline_ko": "Coastal waters from Chokoloskee to Bonita Beach FL out 20 NM Special Marine Warning",
-      "headline_en": "Coastal waters from Chokoloskee to Bonita Beach FL out 20 NM Special Marine Warning",
-      "desc": "SMWMFL\n\nThe National Weather Service in Miami has issued a\n\n* Special Marine Warning for...\nCoastal waters from Chokoloskee to Bonita Beach FL out 20 NM...\nCoastal waters from East Cape Sable to Chokoloskee FL out 20 NM...\n\n* Until 900 AM EST.\n\n* At 802 AM EST, strong thunderstorms were located alon"
-    },
     {
       "id": "urn:oid:2.49.0.1.840.0.f3eeca8195b0e594493c8390042baf36e0d67614.021.1",
       "t": "2026-11-21 02:37",
@@ -113,6 +97,22 @@
       "headline_ko": "Nikolski to Seguam Pacific Side from 15 to 75 NM Storm Warning",
       "headline_en": "Nikolski to Seguam Pacific Side from 15 to 75 NM Storm Warning",
       "desc": "Coastal Waters Forecast for Southwest Alaska+Bristol Bay+The\nAlaska Peninsula Waters and the Aleutian Islands up to 100 nm out.\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent an average of the highest\none-third of the combined wind wave and swell height"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.78fd27ea6cc01362d19f260aec4010367d0edd8a.001.1",
+      "t": "2026-11-20 18:10",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Brevard",
+      "area_en": "Brevard",
+      "event": "홍수 경보",
+      "event_en": "Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "Brevard 홍수 경보",
+      "headline_en": "Brevard Flood Warning",
+      "desc": "* WHAT...Urban and small stream flooding caused by excessive rainfall\nis occurring.\n\n* WHERE...Northern Brevard County in east central Florida...\nEastern Volusia County in east central Florida...\n\n* WHEN...Until 800 AM EST Saturday.\n\n* IMPACTS...Flooding of rivers, creeks, streams, and other low-lyi"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.7c3009fb0ba23631e2ec9388cd109962b0cd83b6.001.1",
@@ -318,11 +318,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 9.7,
-      "apparent_temp": 7.6,
-      "humidity": 72,
+      "temp": 8.0,
+      "apparent_temp": 6.1,
+      "humidity": 75,
       "code": 3,
-      "wind": 5.7
+      "wind": 3.0
     },
     {
       "id": "losangeles",
@@ -332,11 +332,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 9.2,
-      "apparent_temp": 5.6,
+      "temp": 9.4,
+      "apparent_temp": 5.8,
       "humidity": 48,
       "code": 0,
-      "wind": 8.6
+      "wind": 9.0
     },
     {
       "id": "london",
@@ -346,11 +346,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 7.0,
-      "apparent_temp": 4.0,
-      "humidity": 73,
-      "code": 2,
-      "wind": 9.4
+      "temp": 6.7,
+      "apparent_temp": 3.7,
+      "humidity": 72,
+      "code": 3,
+      "wind": 8.6
     },
     {
       "id": "paris",
@@ -360,11 +360,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 11.7,
-      "apparent_temp": 9.7,
-      "humidity": 75,
+      "temp": 11.6,
+      "apparent_temp": 9.6,
+      "humidity": 76,
       "code": 3,
-      "wind": 9.3
+      "wind": 9.2
     },
     {
       "id": "frankfurt",
@@ -374,11 +374,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 7.4,
-      "apparent_temp": 4.8,
+      "temp": 7.2,
+      "apparent_temp": 4.5,
       "humidity": 74,
       "code": 1,
-      "wind": 6.9
+      "wind": 7.4
     },
     {
       "id": "tokyo",
@@ -388,11 +388,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 8.0,
-      "apparent_temp": 5.3,
+      "temp": 8.2,
+      "apparent_temp": 5.7,
       "humidity": 55,
       "code": 0,
-      "wind": 2.9
+      "wind": 2.6
     },
     {
       "id": "beijing",
@@ -402,11 +402,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 1.4,
-      "apparent_temp": -2.9,
-      "humidity": 48,
+      "temp": 1.7,
+      "apparent_temp": -2.7,
+      "humidity": 47,
       "code": 0,
-      "wind": 8.0
+      "wind": 8.5
     },
     {
       "id": "singapore",
@@ -416,11 +416,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 26.3,
-      "apparent_temp": 32.2,
-      "humidity": 90,
+      "temp": 26.5,
+      "apparent_temp": 32.1,
+      "humidity": 86,
       "code": 3,
-      "wind": 3.4
+      "wind": 3.8
     },
     {
       "id": "sydney",
@@ -430,11 +430,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 22.7,
-      "apparent_temp": 24.0,
-      "humidity": 77,
+      "temp": 23.0,
+      "apparent_temp": 24.9,
+      "humidity": 79,
       "code": 0,
-      "wind": 12.4
+      "wind": 9.9
     },
     {
       "id": "toronto",
@@ -444,11 +444,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 6.7,
-      "apparent_temp": 5.4,
+      "temp": 6.1,
+      "apparent_temp": 4.6,
       "humidity": 100,
       "code": 45,
-      "wind": 2.9
+      "wind": 3.6
     },
     {
       "id": "dubai",
@@ -458,11 +458,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 27.9,
+      "temp": 28.1,
       "apparent_temp": 29.9,
-      "humidity": 62,
+      "humidity": 61,
       "code": 0,
-      "wind": 13.1
+      "wind": 13.8
     },
     {
       "id": "saopaulo",
@@ -472,11 +472,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 29.0,
-      "apparent_temp": 32.2,
-      "humidity": 55,
+      "temp": 28.2,
+      "apparent_temp": 32.1,
+      "humidity": 61,
       "code": 3,
-      "wind": 11.7
+      "wind": 12.0
     }
   ],
   "stories": []
