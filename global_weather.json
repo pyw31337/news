@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T14:22:32.071162+09:00",
+  "updated": "2026-11-21T14:46:51.372560+09:00",
   "alerts_count": 16,
   "alerts": [
     {
@@ -245,6 +245,14 @@
   ],
   "quakes": [
     {
+      "id": "us6000uchd",
+      "mag": 5,
+      "place": "0 km NE of Carhuamayo, Peru",
+      "t": "2026-11-21 05:12",
+      "depth": 110.928,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uchd"
+    },
+    {
       "id": "us6000ucgj",
       "mag": 4.9,
       "place": "Reykjanes Ridge",
@@ -315,202 +323,8 @@
       "t": "2026-11-20 10:48",
       "depth": 10,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc8k"
-    },
-    {
-      "id": "us6000uc8g",
-      "mag": 5,
-      "place": "southeast of the Loyalty Islands",
-      "t": "2026-11-20 10:30",
-      "depth": 10,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc8g"
     }
   ],
-  "cities": [
-    {
-      "id": "newyork",
-      "name_ko": "뉴욕",
-      "name_en": "New York",
-      "country": "US",
-      "flag": "🇺🇸",
-      "lat": 40.7128,
-      "lon": -74.006,
-      "temp": 9.5,
-      "apparent_temp": 7.1,
-      "humidity": 66,
-      "code": 0,
-      "wind": 6.4
-    },
-    {
-      "id": "losangeles",
-      "name_ko": "로스앤젤레스",
-      "name_en": "Los Angeles",
-      "country": "US",
-      "flag": "🇺🇸",
-      "lat": 34.0522,
-      "lon": -118.2437,
-      "temp": 12.5,
-      "apparent_temp": 8.3,
-      "humidity": 39,
-      "code": 0,
-      "wind": 13.0
-    },
-    {
-      "id": "london",
-      "name_ko": "런던",
-      "name_en": "London",
-      "country": "GB",
-      "flag": "🇬🇧",
-      "lat": 51.5074,
-      "lon": -0.1278,
-      "temp": 4.8,
-      "apparent_temp": 2.0,
-      "humidity": 72,
-      "code": 1,
-      "wind": 5.0
-    },
-    {
-      "id": "paris",
-      "name_ko": "파리",
-      "name_en": "Paris",
-      "country": "FR",
-      "flag": "🇫🇷",
-      "lat": 48.8566,
-      "lon": 2.3522,
-      "temp": 9.2,
-      "apparent_temp": 7.7,
-      "humidity": 90,
-      "code": 3,
-      "wind": 5.6
-    },
-    {
-      "id": "frankfurt",
-      "name_ko": "프랑크푸르트",
-      "name_en": "Frankfurt",
-      "country": "DE",
-      "flag": "🇩🇪",
-      "lat": 50.1109,
-      "lon": 8.6821,
-      "temp": 1.4,
-      "apparent_temp": -1.2,
-      "humidity": 93,
-      "code": 1,
-      "wind": 4.3
-    },
-    {
-      "id": "tokyo",
-      "name_ko": "도쿄",
-      "name_en": "Tokyo",
-      "country": "JP",
-      "flag": "🇯🇵",
-      "lat": 35.6895,
-      "lon": 139.6917,
-      "temp": 13.7,
-      "apparent_temp": 10.9,
-      "humidity": 39,
-      "code": 0,
-      "wind": 4.4
-    },
-    {
-      "id": "beijing",
-      "name_ko": "베이징",
-      "name_en": "Beijing",
-      "country": "CN",
-      "flag": "🇨🇳",
-      "lat": 39.9042,
-      "lon": 116.4074,
-      "temp": 5.1,
-      "apparent_temp": 1.1,
-      "humidity": 25,
-      "code": 0,
-      "wind": 3.1
-    },
-    {
-      "id": "singapore",
-      "name_ko": "싱가포르",
-      "name_en": "Singapore",
-      "country": "SG",
-      "flag": "🇸🇬",
-      "lat": 1.3521,
-      "lon": 103.8198,
-      "temp": 30.4,
-      "apparent_temp": 35.8,
-      "humidity": 71,
-      "code": 3,
-      "wind": 10.1
-    },
-    {
-      "id": "sydney",
-      "name_ko": "시드니",
-      "name_en": "Sydney",
-      "country": "AU",
-      "flag": "🇦🇺",
-      "lat": -33.8688,
-      "lon": 151.2093,
-      "temp": 26.8,
-      "apparent_temp": 28.4,
-      "humidity": 64,
-      "code": 51,
-      "wind": 14.6
-    },
-    {
-      "id": "toronto",
-      "name_ko": "토론토",
-      "name_en": "Toronto",
-      "country": "CA",
-      "flag": "🇨🇦",
-      "lat": 43.6532,
-      "lon": -79.3832,
-      "temp": 4.6,
-      "apparent_temp": 2.6,
-      "humidity": 100,
-      "code": 45,
-      "wind": 4.9
-    },
-    {
-      "id": "dubai",
-      "name_ko": "두바이",
-      "name_en": "Dubai",
-      "country": "AE",
-      "flag": "🇦🇪",
-      "lat": 25.2048,
-      "lon": 55.2708,
-      "temp": 27.3,
-      "apparent_temp": 29.5,
-      "humidity": 64,
-      "code": 0,
-      "wind": 11.0
-    },
-    {
-      "id": "saopaulo",
-      "name_ko": "상파울루",
-      "name_en": "São Paulo",
-      "country": "BR",
-      "flag": "🇧🇷",
-      "lat": -23.5505,
-      "lon": -46.6333,
-      "temp": 22.4,
-      "apparent_temp": 25.6,
-      "humidity": 87,
-      "code": 3,
-      "wind": 4.0
-    }
-  ],
-  "stories": [
-    {
-      "id": "g3489f489",
-      "title": "Factious climate talks enter overtime without new draft deal in sight – as it happened",
-      "press": "Guardian Environment",
-      "image": "https://i0.wp.com/healthpolicy-watch.news/wp-content/uploads/2026/11/55664468883_d1b645f164_k.jpg",
-      "score": 14.4,
-      "url": "g/g3489f489"
-    },
-    {
-      "id": "g281d10ad",
-      "title": "Climate talks are now in overtime",
-      "press": "NPR",
-      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/afp_6b00c08d262a-1795211405.jpg?resize=1920%2C1440",
-      "score": 13.3,
-      "url": "g/g281d10ad"
-    }
-  ]
+  "cities": [],
+  "stories": []
 }

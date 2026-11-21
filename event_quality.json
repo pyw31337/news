@@ -1,90 +1,69 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 05:25:05",
+  "updated_at": "2026-11-21 05:49:37",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.81,
+  "average_quality": 0.82,
   "issues": [
     {
-      "id": "ia08e593c",
-      "title": "이 대통령 \"5,500억 환수한 게 배임인가\"‥대장동 의혹 거듭 반박",
-      "episode": "episode:18f38e9d7b0859",
+      "id": "i8a8d2bb0",
+      "title": "집주인에 \"탈출 도와달라\"... 리트 만점자, 사망 당일 새벽 자취방 들러",
+      "episode": "episode:3a7e5eade45d10",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "입장·공방",
         "수사·대응",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 60,
-      "event_count": 115,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic966062b",
-      "title": "‘리트 만점자’, 숨진 당일 새벽 자택서 짐 정리…이틀 전엔 “탈출 도와달라” 요청도",
-      "episode": "episode:71e03c90df7d39",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
+        "발단·의혹",
         "입장·공방",
         "파장·후속",
         "사법·처분"
       ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 6,
+      "gaps": [],
+      "duplicate_candidates": 33,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "ib13a3e93",
-      "title": "화물열차 이탈·일반열차 중단에 KTX·ITX-새마을 등 15대 임시 투입",
-      "episode": "episode:975e3df19c2e52",
-      "quality": 0.84,
+      "id": "i7b0a1bf8",
+      "title": "[속보] 일반열차 중단 '천안~대전'에 KTX·ITX-새마을 등 임시열차 15대 투입",
+      "episode": "episode:639eba027d4f69",
+      "quality": 0.66,
       "stages": [
         "일반 보도",
-        "발단·의혹",
         "파장·후속"
       ],
       "gaps": [
+        "발단·의혹",
         "입장·공방",
-        "수사·대응",
-        "사법·처분"
+        "수사·대응"
       ],
       "duplicate_candidates": 30,
-      "event_count": 4,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "i396c3172",
-      "title": "젠슨 황, 스캔들에서 게이트로… 이제 시작이다",
-      "episode": "episode:2df736dade4b71",
+      "id": "if180a79c",
+      "title": "이 대통령, 대장동 인터뷰 공유…“5,500억 공익 환수가 배임인가”",
+      "episode": "episode:3e63455fa7a3ed",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "파장·후속",
-        "사법·처분",
+        "입장·공방",
         "수사·대응",
-        "입장·공방"
+        "파장·후속",
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 49,
-      "event_count": 16,
+      "duplicate_candidates": 64,
+      "event_count": 122,
       "evidence_rate": 1.0
     },
     {
       "id": "if3ab93cc",
       "title": "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져",
-      "episode": "episode:3ee4249b955d9d",
+      "episode": "episode:0454acb73fc03f",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -96,34 +75,36 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 38,
-      "event_count": 45,
+      "duplicate_candidates": 40,
+      "event_count": 49,
       "evidence_rate": 1.0
     },
     {
-      "id": "if7d69a34",
-      "title": "與 “조희대 탄핵안, 12·3 ‘내란 2주기’ 맞춰 발의 전망”",
-      "episode": "episode:2bdad9ea14b38b",
+      "id": "i890e6191",
+      "title": "젠슨 황, 스캔들에서 게이트로… 이제 시작이다",
+      "episode": "episode:7242c18b1502cd",
       "quality": 1.0,
       "stages": [
-        "발단·의혹",
-        "사법·처분",
         "일반 보도",
-        "수사·대응",
         "파장·후속",
+        "사법·처분",
+        "수사·대응",
         "입장·공방"
       ],
-      "gaps": [],
-      "duplicate_candidates": 31,
-      "event_count": 25,
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 51,
+      "event_count": 15,
       "evidence_rate": 1.0
     },
     {
-      "id": "i4a17def2",
-      "title": "코레일, 경부선 화물열차 탈선사고에 임시열차 15대 긴급투입",
-      "episode": "episode:16c60323eb6856",
-      "quality": 0.38,
+      "id": "i4e1d34dc",
+      "title": "李대통령, 울산 AI 데이터센터 찾아 \"속도가 생명, 인력 부족 고민\"(종합)",
+      "episode": "episode:2391d7e747c73f",
+      "quality": 0.76,
       "stages": [
+        "일반 보도",
         "파장·후속"
       ],
       "gaps": [
@@ -131,31 +112,14 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 23,
-      "event_count": 1,
+      "duplicate_candidates": 27,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6ae16793",
-      "title": "한국에 친근감 느끼는 일본인, 62%로 역대 최고…중국엔 냉랭",
-      "episode": "episode:b83ae277a50ddd",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 22,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic2676442",
-      "title": "'나 홀로 집에' 속편 나온다‥맥컬리 컬킨 34년 만에 복귀",
-      "episode": "episode:a22a45190d0d2e",
+      "id": "if945dc68",
+      "title": "'나 홀로 집에' 속편 나온다…원조 '케빈' 맥컬리 컬킨도 함께",
+      "episode": "episode:dbbf07c920aa52",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -166,7 +130,26 @@
         "수사·대응"
       ],
       "duplicate_candidates": 12,
-      "event_count": 5,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i21de1d6f",
+      "title": "시진핑 연설하는데 트럼프 '드르렁'?…백악관 \"서류 보는 것\"",
+      "episode": "episode:faac6f0c28b046",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 37,
+      "event_count": 34,
       "evidence_rate": 1.0
     },
     {
@@ -185,6 +168,24 @@
       ],
       "duplicate_candidates": 9,
       "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i405b22e2",
+      "title": "배우 김민, 고성 대형 산불 막았다…소화기 들고 불길 뛰어들어 [포착]",
+      "episode": "episode:e0058023496e55",
+      "quality": 0.56,
+      "stages": [
+        "수사·대응",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 23,
+      "event_count": 2,
       "evidence_rate": 1.0
     }
   ]
