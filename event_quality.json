@@ -1,14 +1,32 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 03:04:59",
+  "updated_at": "2026-11-21 03:22:20",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.9,
+  "average_quality": 0.88,
   "issues": [
     {
-      "id": "ic4132ec0",
-      "title": "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”",
-      "episode": "episode:df5e48eb39eeb9",
+      "id": "i4bc9ab6f",
+      "title": "李, 대장동 업자 인터뷰 공유하며 “5500억 공익환수가 배임이면…”",
+      "episode": "episode:c04c47897e595f",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icf0fa0bb",
+      "title": "AI 투자 열기 식었나… 나스닥 5.28% 급락, 엔비디아 14%↓",
+      "episode": "episode:99ad60892e8c9e",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -20,121 +38,83 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 44,
-      "event_count": 76,
+      "duplicate_candidates": 42,
+      "event_count": 53,
       "evidence_rate": 1.0
     },
     {
-      "id": "i1b843536",
-      "title": "경부선 화물열차 탈선…논술·면접 수험생 불편 우려",
-      "episode": "episode:16592ca389b88b",
-      "quality": 0.84,
+      "id": "ic1db1eb6",
+      "title": "리트 만점자, 사망 이틀전 “탈출 도와달라”…새벽엔 짐정리",
+      "episode": "episode:f05a09e20a2748",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
-        "수사·대응",
-        "파장·후속"
+        "입장·공방",
+        "파장·후속",
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
       "duplicate_candidates": 31,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic8369a17",
-      "title": "대법 한덕수 판결, ‘다음엔 계엄 성공하길’ 기원하나 [논썰]",
-      "episode": "episode:24cb1a449ffe72",
-      "quality": 0.92,
-      "stages": [
-        "사법·처분",
-        "수사·대응",
-        "입장·공방",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 39,
-      "event_count": 19,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i4bc9ab6f",
-      "title": "李, 대장동 업자 인터뷰 공유하며 “5500억 공익환수가 배임이면…”",
-      "episode": "episode:0bec0e5b180642",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 61,
-      "event_count": 117,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i812d99b0",
-      "title": "리트 만점자, 사망당일 새벽 짐정리…이틀전엔 \"탈출 도와달라\"",
-      "episode": "episode:de44d7ec07a7c5",
-      "quality": 0.92,
-      "stages": [
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 29,
       "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i705c3036",
-      "title": "트럼프, 젠슨 황 복귀 촉구…“두 번째 기회 주어져야”",
-      "episode": "episode:d0670f3540ff9e",
+      "id": "i360e56bd",
+      "title": "나경원 \"주식 폭락, 결혼·은퇴자금 반토막...李정권, 국민 돈 물어내라\"",
+      "episode": "episode:0c83a4c4dd04dc",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "수사·대응",
+        "발단·의혹",
         "입장·공방",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "수사·대응"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 23,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i6db1dcda",
+      "title": "트럼프, 젠슨 황 복귀 촉구…\"두 번째 기회 줘야\"",
+      "episode": "episode:d5487f319a26b6",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
         "파장·후속",
-        "사법·처분"
+        "사법·처분",
+        "수사·대응",
+        "입장·공방"
       ],
       "gaps": [
         "발단·의혹"
       ],
       "duplicate_candidates": 47,
-      "event_count": 21,
+      "event_count": 15,
       "evidence_rate": 1.0
     },
     {
-      "id": "i25fb08cf",
-      "title": "트럼프 “젠슨황, 사과하고 복귀하길…미국은 두 번째 기회 주는 나라”",
-      "episode": "episode:b62c22c54f0e51",
-      "quality": 1.0,
+      "id": "idbc73513",
+      "title": "[속보]코레일 \"천안~조치원~대전·서대전 구간 버스 연계 수송\"",
+      "episode": "episode:189eccc95c5ef7",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
-        "사법·처분",
-        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
         "발단·의혹",
-        "파장·후속",
+        "입장·공방",
         "수사·대응"
       ],
-      "gaps": [],
-      "duplicate_candidates": 39,
-      "event_count": 73,
+      "duplicate_candidates": 33,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
@@ -157,28 +137,46 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "ib9807d0d",
-      "title": "\"남친과 음란물 보다 걸려\" \"딸에게 폭언\"…박지윤 저격 악플러, 알고 보니 최동석",
-      "episode": "episode:b157e2bdec63ef",
-      "quality": 0.84,
+      "id": "ibd38a6f3",
+      "title": "미중러 '한반도' 셈법 주시...이 대통령 \"국제정세 파장 철저 대비\"",
+      "episode": "episode:e9701a156395df",
+      "quality": 1.0,
       "stages": [
-        "사법·처분",
+        "일반 보도",
+        "파장·후속",
         "수사·대응",
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 32,
+      "event_count": 49,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib9ccd9be",
+      "title": "\"이진우, 사망 당일 집 왔었다\"…이틀 전 집주인에 한 말",
+      "episode": "episode:e1f577aab18101",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "파장·후속",
+        "입장·공방",
         "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "파장·후속"
+        "사법·처분"
       ],
-      "duplicate_candidates": 32,
-      "event_count": 37,
+      "duplicate_candidates": 28,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9018c6d5",
-      "title": "'나 홀로 집에' 속편 추진 중…맥컬리 컬킨 34년 만에 복귀",
-      "episode": "episode:6ffb848fd2e19b",
+      "id": "ic2676442",
+      "title": "'나 홀로 집에' 속편 나온다‥맥컬리 컬킨 34년 만에 복귀",
+      "episode": "episode:ad2eee33906409",
       "quality": 0.76,
       "stages": [
         "일반 보도",
