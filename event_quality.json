@@ -1,14 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 02:24:25",
+  "updated_at": "2026-11-21 00:56:19",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.83,
+  "average_quality": 0.9,
   "issues": [
     {
-      "id": "if3ab93cc",
-      "title": "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져",
-      "episode": "episode:662565386ad80e",
+      "id": "ia21452d7",
+      "title": "\"호재도 안 통한다\" 나스닥 5%대 폭락 쇼크...엔비디아 14%↓[뉴욕마감]",
+      "episode": "episode:69ca055cded526",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -20,143 +20,109 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 27,
+      "duplicate_candidates": 42,
       "event_count": 58,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if180a79c",
-      "title": "이 대통령, 대장동 인터뷰 공유…“5,500억 공익 환수가 배임인가”",
-      "episode": "episode:e645ef5da71cc7",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 56,
-      "event_count": 119,
       "evidence_rate": 1.0
     },
     {
       "id": "i0fa02baa",
       "title": "한동훈, 조희대 탄핵 추진에 \"민주당, 미쳐도 곱게 미쳐라\"",
-      "episode": "episode:7782c8183510cc",
-      "quality": 0.92,
-      "stages": [
-        "사법·처분",
-        "수사·대응",
-        "입장·공방",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i812d99b0",
-      "title": "리트 만점자, 사망당일 새벽 짐정리…이틀전엔 \"탈출 도와달라\"",
-      "episode": "episode:db54ad59405a3e",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i705c3036",
-      "title": "트럼프, 젠슨 황 복귀 촉구…“두 번째 기회 주어져야”",
-      "episode": "episode:cf0700fc07df2b",
+      "episode": "episode:1935c9379d5c97",
       "quality": 1.0,
       "stages": [
+        "사법·처분",
+        "파장·후속",
         "수사·대응",
-        "입장·공방",
         "일반 보도",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 37,
+      "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i4bc9ab6f",
+      "title": "李, 대장동 업자 인터뷰 공유하며 “5500억 공익환수가 배임이면…”",
+      "episode": "episode:0cbe72ff4161f7",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "수사·대응",
         "파장·후속",
         "사법·처분"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 48,
-      "event_count": 16,
+      "duplicate_candidates": 54,
+      "event_count": 115,
       "evidence_rate": 1.0
     },
     {
-      "id": "ib208db97",
-      "title": "코레일 \"천안∼조치원∼대전·서대전 구간 버스 연계 수송\"",
-      "episode": "episode:87246b41653afe",
-      "quality": 0.58,
+      "id": "i1d5443d0",
+      "title": "트럼프 “두번째 기회 주어졌으면”… 젠슨 황 복귀 촉구",
+      "episode": "episode:af85d95eb7f600",
+      "quality": 1.0,
       "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib9ccd9be",
-      "title": "\"이진우, 사망 당일 집 왔었다\"…이틀 전 집주인에 한 말",
-      "episode": "episode:1e26d88fe708c0",
-      "quality": 0.84,
-      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
         "수사·대응",
-        "발단·의혹",
-        "파장·후속"
+        "입장·공방"
       ],
       "gaps": [
-        "입장·공방",
-        "사법·처분"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 38,
-      "event_count": 6,
+      "duplicate_candidates": 48,
+      "event_count": 14,
       "evidence_rate": 1.0
     },
     {
-      "id": "i25fb08cf",
-      "title": "트럼프 “젠슨황, 사과하고 복귀하길…미국은 두 번째 기회 주는 나라”",
-      "episode": "episode:b62c22c54f0e51",
+      "id": "ib0f20010",
+      "title": "푸틴, 미중러 회담 직후 대공습...폴란드 \"러 미사일 넘어와\"",
+      "episode": "episode:72a4e1173fda17",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "사법·처분",
         "입장·공방",
-        "발단·의혹",
         "파장·후속",
         "수사·대응"
       ],
-      "gaps": [],
-      "duplicate_candidates": 38,
-      "event_count": 72,
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 37,
+      "event_count": 18,
       "evidence_rate": 1.0
     },
     {
-      "id": "i5ac1d597",
-      "title": "시험지 스마트폰으로 찍었다…공사 생도 부정행위 퇴교",
-      "episode": "episode:733d81d7476a4f",
+      "id": "i42b8fd2f",
+      "title": "\"박지윤이...\" 악성 댓글 5건 작성자 알고 보니 전 남편 최동석",
+      "episode": "episode:cc8c25e344d332",
+      "quality": 0.84,
+      "stages": [
+        "사법·처분",
+        "수사·대응",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 35,
+      "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i90e55eb4",
+      "title": "공군사관학교서 '명예시험' 중 스마트폰 촬영 부정행위…생도 퇴교 처분",
+      "episode": "episode:359201b8358d3d",
       "quality": 0.48,
       "stages": [
         "사법·처분"
@@ -171,22 +137,60 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "ib9807d0d",
-      "title": "\"남친과 음란물 보다 걸려\" \"딸에게 폭언\"…박지윤 저격 악플러, 알고 보니 최동석",
-      "episode": "episode:b157e2bdec63ef",
-      "quality": 0.84,
+      "id": "i812d99b0",
+      "title": "리트 만점자, 사망당일 새벽 짐정리…이틀전엔 \"탈출 도와달라\"",
+      "episode": "episode:5daa3e0bad2c52",
+      "quality": 1.0,
       "stages": [
-        "사법·처분",
+        "일반 보도",
+        "입장·공방",
+        "파장·후속",
         "수사·대응",
-        "일반 보도"
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i8ca1aa18",
+      "title": "컬리, 해킹에 주민번호·계좌까지 샜는데…보상은 최대 15만원",
+      "episode": "episode:7e33e6e2e20548",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "사법·처분",
+        "입장·공방"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
         "파장·후속"
       ],
-      "duplicate_candidates": 32,
-      "event_count": 37,
+      "duplicate_candidates": 26,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i98274de8",
+      "title": "코스피 4900선마저... 삼전닉스 폭락에 '검은 금요일'",
+      "episode": "episode:6203d5802ddc3f",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 48,
       "evidence_rate": 1.0
     }
   ]
