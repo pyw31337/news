@@ -1,23 +1,7 @@
 {
-  "updated": "2026-11-21T19:21:39.712117+09:00",
+  "updated": "2026-11-21T17:50:09.280302+09:00",
   "alerts_count": 15,
   "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.df411283d06682936d0a956e45a659ee09dbd173.001.1",
-      "t": "2026-11-21 05:15",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Coastal waters from Chokoloskee to Bonita Beach FL out 20 NM",
-      "area_en": "Coastal waters from Chokoloskee to Bonita Beach FL out 20 NM",
-      "event": "Special Marine Warning",
-      "event_en": "Special Marine Warning",
-      "severity": "Severe",
-      "headline_ko": "Coastal waters from Chokoloskee to Bonita Beach FL out 20 NM Special Marine Warning",
-      "headline_en": "Coastal waters from Chokoloskee to Bonita Beach FL out 20 NM Special Marine Warning",
-      "desc": "SMWMFL\n\nThe National Weather Service in Miami has issued a\n\n* Special Marine Warning for...\nCoastal waters from Chokoloskee to Bonita Beach FL out 20 NM...\nCoastal waters from East Cape Sable to Chokoloskee FL out 20 NM...\nWaters from Chokoloskee to Bonita Beach FL from 20 to 60 NM...\n\n* Until 615 A"
-    },
     {
       "id": "urn:oid:2.49.0.1.840.0.d35fe0da814a4fe2e5ec7cbc8665bf9fe1dd680d.001.2",
       "t": "2026-11-21 01:42",
@@ -49,6 +33,22 @@
       "headline_ko": "Central Douglas County Freeze Warning",
       "headline_en": "Central Douglas County Freeze Warning",
       "desc": "* WHAT...Sub-freezing temperatures as low as 31.\n\n* WHERE...Central Douglas County including the Umpqua Valley. This\nincludes Roseburg, Sutherlin, Winston, Canyonville and surrounding\nareas.\n\n* WHEN...Until 8 AM PST this morning.\n\n* IMPACTS...Frost and freeze conditions could kill crops, other\nsensi"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.2598522953f168f222e8b8c40b6370fb504f8661.001.1",
+      "t": "2026-11-21 02:45",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Coastal waters from Bonita Beach to Englewood FL out 20 NM",
+      "area_en": "Coastal waters from Bonita Beach to Englewood FL out 20 NM",
+      "event": "Special Marine Warning",
+      "event_en": "Special Marine Warning",
+      "severity": "Severe",
+      "headline_ko": "Coastal waters from Bonita Beach to Englewood FL out 20 NM Special Marine Warning",
+      "headline_en": "Coastal waters from Bonita Beach to Englewood FL out 20 NM Special Marine Warning",
+      "desc": "SMWTBW\n\nThe National Weather Service in Ruskin has issued a\n\n* Special Marine Warning for...\nCoastal waters from Bonita Beach to Englewood FL out 20 NM...\nWaters from Bonita Beach to Englewood FL out 20 to 60 NM...\n\n* Until 415 AM EST.\n\n* At 244 AM EST, strong thunderstorms were located along a line"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.a6fa5086145354d0ed1a90a690364b8badc81719.001.2",
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 7.4,
-      "apparent_temp": 4.8,
-      "humidity": 79,
-      "code": 3,
-      "wind": 7.9
+      "temp": 8.0,
+      "apparent_temp": 5.8,
+      "humidity": 78,
+      "code": 0,
+      "wind": 5.4
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 10.1,
-      "apparent_temp": 6.4,
-      "humidity": 50,
+      "temp": 10.7,
+      "apparent_temp": 6.9,
+      "humidity": 42,
       "code": 0,
-      "wind": 10.8
+      "wind": 9.5
     },
     {
       "id": "london",
@@ -362,11 +362,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 5.5,
-      "apparent_temp": 2.6,
-      "humidity": 74,
+      "temp": 4.6,
+      "apparent_temp": 1.9,
+      "humidity": 78,
       "code": 3,
-      "wind": 7.2
+      "wind": 5.4
     },
     {
       "id": "paris",
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 10.4,
-      "apparent_temp": 8.9,
-      "humidity": 87,
+      "temp": 9.0,
+      "apparent_temp": 7.4,
+      "humidity": 91,
       "code": 3,
-      "wind": 6.7
+      "wind": 6.2
     },
     {
       "id": "frankfurt",
@@ -390,11 +390,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 3.9,
-      "apparent_temp": 1.0,
-      "humidity": 87,
-      "code": 2,
-      "wind": 7.7
+      "temp": 1.9,
+      "apparent_temp": -0.8,
+      "humidity": 93,
+      "code": 1,
+      "wind": 5.5
     },
     {
       "id": "tokyo",
@@ -404,9 +404,9 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 10.1,
-      "apparent_temp": 7.6,
-      "humidity": 53,
+      "temp": 11.8,
+      "apparent_temp": 9.7,
+      "humidity": 52,
       "code": 0,
       "wind": 3.0
     },
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 3.7,
-      "apparent_temp": -0.7,
-      "humidity": 35,
+      "temp": 4.8,
+      "apparent_temp": 0.5,
+      "humidity": 30,
       "code": 0,
-      "wind": 8.0
+      "wind": 6.1
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 28.4,
-      "apparent_temp": 33.4,
-      "humidity": 75,
+      "temp": 29.8,
+      "apparent_temp": 33.9,
+      "humidity": 68,
       "code": 3,
-      "wind": 5.9
+      "wind": 9.5
     },
     {
       "id": "sydney",
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 22.8,
-      "apparent_temp": 24.2,
-      "humidity": 80,
-      "code": 0,
-      "wind": 14.2
+      "temp": 23.4,
+      "apparent_temp": 25.0,
+      "humidity": 78,
+      "code": 1,
+      "wind": 13.2
     },
     {
       "id": "toronto",
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 6.2,
-      "apparent_temp": 4.7,
+      "temp": 6.1,
+      "apparent_temp": 4.2,
       "humidity": 99,
       "code": 45,
-      "wind": 3.6
+      "wind": 5.8
     },
     {
       "id": "dubai",
@@ -474,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 28.8,
-      "apparent_temp": 30.2,
+      "temp": 28.5,
+      "apparent_temp": 30.3,
       "humidity": 57,
       "code": 0,
-      "wind": 15.1
+      "wind": 15.2
     },
     {
       "id": "saopaulo",
@@ -488,11 +488,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 22.2,
-      "apparent_temp": 24.9,
-      "humidity": 88,
+      "temp": 20.4,
+      "apparent_temp": 23.0,
+      "humidity": 96,
       "code": 3,
-      "wind": 8.1
+      "wind": 8.0
     }
   ],
   "stories": [
