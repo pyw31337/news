@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "measured_at": "2026-11-18T10:09:10.196069+00:00",
+  "rows": [
+    {
+      "id": "legal-lawoc",
+      "domain": "법률 원문",
+      "cadence": "3시간",
+      "workflow": "legal.yml",
+      "evidence": {
+        "lawgo_files": 41571,
+        "news_case_files": 2213,
+        "press_items": 51
+      },
+      "status": "ACTIVE",
+      "blocker": "legal 브랜치 원장을 data 분석층과 연결"
+    },
+    {
+      "id": "precedents",
+      "domain": "판례·헌재·법령해석",
+      "cadence": "일 1회 분석 + 원문 증분",
+      "workflow": "ontology.yml + legal.yml",
+      "evidence": {
+        "records": 25,
+        "source_backed": 0
+      },
+      "status": "SEED_AND_INCREMENTAL",
+      "blocker": "공식 원문 URL가 있는 레코드 확대"
+    },
+    {
+      "id": "insurance",
+      "domain": "보험 약관·분쟁례",
+      "cadence": "약관 변경 감지 + 주 1회 큐",
+      "workflow": "ontology.yml",
+      "evidence": {
+        "directory_reported_providers": 33,
+        "provider_links": 32,
+        "approved_providers": 23,
+        "candidate_links": 269,
+        "candidate_errors": 9,
+        "bootstrap_seen": 130,
+        "raw_documents": 260,
+        "text_extracted": 259,
+        "pdfs": 0,
+        "ocr_documents": 0,
+        "classified_documents": 249,
+        "structured_policy_records": 3,
+        "source_backed": 0
+      },
+      "status": "BOOTSTRAP_AND_NORMALIZE",
+      "blocker": "JS/API 공시표에서 상품명·판매기간·약관 원문을 구조화해 정책 레코드로 매핑"
+    },
+    {
+      "id": "dart",
+      "domain": "DART 기업·임원·감사의견",
+      "cadence": "매일 + 장중 공시",
+      "workflow": "corporate.yml + collect.yml",
+      "evidence": {
+        "corp_files": 530,
+        "indexed_corps": 2504,
+        "filings": 8117
+      },
+      "status": "ACTIVE",
+      "blocker": "기업별 감사의견·임원·재무 필드 결측 보강"
+    },
+    {
+      "id": "sec",
+      "domain": "미국 SEC 기업·임원·공시",
+      "cadence": "일 100개사 배치 + 실시간 8-K",
+      "workflow": "sec-market.yml",
+      "evidence": {
+        "indexed": true,
+        "companies": 10398,
+        "crawled": 100,
+        "detail_files": 200
+      },
+      "status": "INCREMENTAL",
+      "blocker": "10-K·10-Q·8-K 문서 본문 파싱"
+    },
+    {
+      "id": "community",
+      "domain": "커뮤니티 버즈·민심",
+      "cadence": "1시간",
+      "workflow": "community crawler",
+      "evidence": {
+        "post_files": 11
+      },
+      "status": "SOURCE_SEPARATED",
+      "blocker": "샘플 seed와 실제 원천 게시물 분리"
+    },
+    {
+      "id": "people-media",
+      "domain": "인물 사진·로고·관계",
+      "cadence": "매일 증분 / 대표 사실 일요일",
+      "workflow": "people-photos.yml",
+      "evidence": {
+        "people_files": 5091,
+        "media_files": 0
+      },
+      "status": "ACTIVE_R2",
+      "blocker": "동명이인·사진 매칭 검증률 향상"
+    }
+  ],
+  "rules": [
+    "계획값을 수집 완료로 표시하지 않음",
+    "출처·수집시각·원문 URL 보존",
+    "중복 수집기는 동일 id/workflow를 재사용"
+  ]
+}

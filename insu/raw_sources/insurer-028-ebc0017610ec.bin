@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>서비스 이용 안내</title>
+<style>
+    body {
+        font-family: "Malgun Gothic", sans-serif;
+        background: #f5f7fa;
+        margin: 0;
+        padding: 30px;
+        color: #333;
+    }
+
+    .notice-box {
+        max-width: 700px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border-top: 5px solid #ffbc00;
+    }
+
+    .title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 20px;
+    }
+
+    .message {
+        line-height: 1.8;
+        font-size: 15px;
+        margin-bottom: 24px;
+    }
+
+    .contact-box {
+        background: #f8f9fb;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .contact-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: #222;
+    }
+
+    .contact-item {
+        margin: 8px 0;
+        font-size: 15px;
+    }
+
+    .label {
+        font-weight: 600;
+        display: inline-block;
+        width: 90px;
+    }
+
+    .footer {
+        font-size: 14px;
+        color: #666;
+        line-height: 1.6;
+    }
+</style>
+</head>
+<body>
+
+<div class="notice-box">
+    <div class="title">KB라이프 앱(웹) 서비스 이용 안내</div>
+
+    <div class="message">
+        고객님의 안전한 금융거래를 위해 일부 지역에서는
+        <strong>KB라이프생명 홈페이지 및 앱(웹) 서비스 이용이 제한</strong>됩니다.<br>
+
+        업무 처리가 필요하신 경우 아래 고객센터로 문의해 주시면
+        성심껏 안내해 드리겠습니다.
+    </div>
+
+    <div class="contact-box">
+        <div class="contact-title">고객센터 안내</div>
+
+        <div class="contact-item">
+            <span class="label">국내</span>1588-3374
+        </div>
+
+        <div class="contact-item">
+            <span class="label">해외</span>+82-2-331-4620
+        </div>
+
+        <div class="contact-item">
+            <span class="label">주요 업무</span>
+            보험료 납입, 보험계약대출 및 상환, 고객정보 변경 등
+        </div>
+
+        <div class="contact-item">
+            <span class="label">운영시간</span>
+            한국시간 기준 09:00 ~ 18:00
+        </div>
+    </div>
+
+    <div class="footer">
+        보다 안전한 금융서비스 제공을 위한 조치이오니
+        고객님의 이해와 양해를 부탁드립니다.
+    </div>
+</div>
+
+</body>
+</html>

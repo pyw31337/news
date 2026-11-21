@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>해외 IP 로그인 일시 제한 안내</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .waf-block-container {
+            background-color: #ffffff;
+            padding: 50px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /*text-align: center;*/
+            max-width: 670px;
+            width: 90%;
+            
+            font-family: '바탕', 'Batang', serif;
+            font-size: 19px;
+            color: #333333;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="waf-block-container">
+        <!-- 아래 영역에 안내 문구를 입력해 주세요 -->
+	<b>해외 IP 로그인 일시 제한 안내</b><br><br>
+       	  최근 AI를 이용한, 은행권 개인정보 유출 사고에 신속 대응을 위해<br>
+	<span style="color: #0020C2; text-decoration: underline;"><b>모바일/사이버창구 이용 시, 해외 서비스의 공격 경로(해외IP)를 차단</b></span><br>
+	하여 고객님의 소중한 개인정보와 금융거래를 안전하게 보호하고자 합니다.<br><br>
+	고객님께 불편을 드리게 되어 진심으로 죄송합니다.<br>
+	이용이 필요하신 경우, 고객센터로 문의해 주시면 도움드리겠습니다.<br><br>
+	<b>■︎ 제한 일시</b><br>
+	 - 2026년 10월 7일(수)  00:00 ~ 이슈 해소 시까지<br>
+ 	 * 작업 일정에 따라 변동될 수 있습니다.<br><br>
+	<b>■︎ 제한 서비스</b><br>
+	 - 모바일창구 & 사이버창구<br><br>
+	<b>[고객센터]</b><br>
+	<b>해외 이용</b>  +82-031-789-9200<br>
+	국내 이용  1588-2288<br>
+	<b>상담 시간</b>  평일 [09:00~18:00] · 한국시간 기준<br><br>
+
+	흥국생명은 고객님의 정보보호를 위해 최선을 다하겠습니다.<br>
+	감사합니다.<br>
+        <!-- 안내 문구 입력 끝 -->
+    </div>
+</body>
+</html>

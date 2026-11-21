@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "updated": "2026-11-20T16:14+09:00",
+  "purpose": "개인 학습·검토용 법률정보 아카이브",
+  "categories": {
+    "court_precedent": {
+      "label": "법원 판례",
+      "current": 9246,
+      "official_catalog": 90000,
+      "status": "collecting",
+      "coverage_pct": 10.27,
+      "remaining": 80754
+    },
+    "constitutional": {
+      "label": "헌재 결정례",
+      "current": 22151,
+      "official_catalog": 34000,
+      "status": "collecting",
+      "coverage_pct": 65.15,
+      "remaining": 11849
+    },
+    "interpretation": {
+      "label": "법령해석례",
+      "current": 8935,
+      "official_catalog": 8300,
+      "status": "collecting",
+      "coverage_pct": 107.65,
+      "remaining": 0
+    },
+    "administrative_appeal": {
+      "label": "행정심판례",
+      "current": 1239,
+      "official_catalog": 550000,
+      "status": "new_target",
+      "coverage_pct": 0.23,
+      "remaining": 548761
+    },
+    "news_cases": {
+      "label": "판결 보도 구조화",
+      "current": 2213,
+      "official_catalog": null,
+      "status": "supplemental",
+      "coverage_pct": null,
+      "remaining": null
+    },
+    "judges_from_news": {
+      "label": "판사·재판관 색인",
+      "current": 227,
+      "official_catalog": null,
+      "status": "supplemental",
+      "coverage_pct": null,
+      "remaining": null
+    }
+  },
+  "planned_sources": [
+    {
+      "key": "law",
+      "label": "현행법령·시행령·시행규칙·연혁",
+      "priority": "P0",
+      "reason": "시행일과 당시 조문을 재현"
+    },
+    {
+      "key": "admrul",
+      "label": "행정규칙·고시·훈령·예규",
+      "priority": "P1",
+      "reason": "행정처분과 내부 기준 연결"
+    },
+    {
+      "key": "ordin",
+      "label": "자치법규·조례",
+      "priority": "P1",
+      "reason": "지역별 생활·부동산·영업 규정"
+    },
+    {
+      "key": "byl",
+      "label": "별표·별지·법정 서식",
+      "priority": "P1",
+      "reason": "개인 문서 초안의 근거와 제출 형식"
+    },
+    {
+      "key": "term",
+      "label": "법령용어·일상용어·관련법령 그래프",
+      "priority": "P1",
+      "reason": "일반어 질문을 법률어로 연결"
+    },
+    {
+      "key": "committee",
+      "label": "위원회 결정문·전문 행정심판",
+      "priority": "P2",
+      "reason": "노동·조세·개인정보·공정거래 확장"
+    }
+  ],
+  "local_counts": {
+    "lawgo_files": 41571,
+    "news_case_files": 2213,
+    "press_items": 51
+  },
+  "quality_rules": [
+    "공식 원문 URL·조회 시각·시행일을 보존",
+    "법령 개정 전후를 별도 버전으로 저장",
+    "판례는 사실관계·쟁점·판단·결과·참조조문을 분리",
+    "개인정보·민감 사건은 공식 비실명화 범위만 저장",
+    "출처 없는 요약이나 법률 결론을 생성하지 않음"
+  ]
+}
