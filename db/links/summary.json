@@ -1,33 +1,35 @@
 {
- "updated": "2026-11-19T10:30:44+09:00",
- "urls_known": 902,
- "urls_checked_ever": 485,
+ "updated": "2026-11-21T10:00:05+09:00",
+ "urls_known": 977,
+ "urls_checked_ever": 625,
  "status": {
-  "ok": 446,
-  "repaired": 6,
-  "geo": 27,
-  "error": 6
+  "ok": 573,
+  "geo": 37,
+  "error": 7,
+  "repaired": 8
  },
  "by_kind": {
-  "bio": 371,
-  "photo": 14,
-  "case": 36,
-  "news": 64
+  "bio": 468,
+  "case": 55,
+  "photo": 17,
+  "news": 85
  },
  "today": {
-  "checked": 56,
+  "checked": 80,
   "status": {
-   "geo": 4,
-   "ok": 52
+   "ok": 75,
+   "error": 1,
+   "repaired": 1,
+   "geo": 3
   },
-  "wikidata_checked": 3018,
+  "wikidata_checked": 3003,
   "wikidata_status": {
-   "ok": 3018
+   "ok": 3003
   }
  },
  "wikidata_known": 88796,
  "wikidata_status": {
-  "ok": 17800
+  "ok": 20803
  },
  "schedule": {
   "tier12_days": 14,
@@ -37,5 +39,5 @@
   "max_per_day": 2500
  },
  "full_cycle_days": 30,
- "seconds": 200
+ "seconds": 210
 }
