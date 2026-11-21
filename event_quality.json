@@ -1,45 +1,64 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 06:55:04",
+  "updated_at": "2026-11-21 06:19:56",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.89,
+  "average_quality": 0.85,
   "issues": [
     {
-      "id": "i39f8ddd1",
-      "title": "나경원 \"10개월 만에 주가 반토막…결혼·은퇴자금 사라져\"",
-      "episode": "episode:682137a9ccee81",
-      "quality": 1.0,
+      "id": "i5546106d",
+      "title": "[속보] 일반열차 중단 천안~대전에 KTX 등 15대 투입",
+      "episode": "episode:02b4b37e074554",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분",
         "파장·후속"
       ],
       "gaps": [
+        "발단·의혹",
+        "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 25,
-      "event_count": 21,
+      "duplicate_candidates": 27,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i45accb22",
-      "title": "이 대통령, 울산 AI 데이터센터 깜짝 방문…\"속도가 생명\"",
-      "episode": "episode:6d1d9717d0243a",
+      "id": "i5ba69ffd",
+      "title": "李대통령 \"5,500억 환수한 게 배임죄라면\"…대장동 의혹 정면 반박",
+      "episode": "episode:3eb0fae2cd3d81",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "입장·공방",
         "수사·대응",
         "파장·후속",
-        "사법·처분",
+        "사법·처분"
+      ],
+      "gaps": [
         "발단·의혹"
       ],
-      "gaps": [],
-      "duplicate_candidates": 60,
-      "event_count": 125,
+      "duplicate_candidates": 94,
+      "event_count": 148,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic966062b",
+      "title": "‘리트 만점자’, 숨진 당일 새벽 자택서 짐 정리…이틀 전엔 “탈출 도와달라” 요청도",
+      "episode": "episode:71e03c90df7d39",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 35,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
@@ -56,14 +75,14 @@
         "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 34,
+      "duplicate_candidates": 35,
       "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6f1bfbf3",
-      "title": "한국엔 따뜻·중국엔 냉랭… \"한국 친근\" 일본인 62%로 역대 최고",
-      "episode": "episode:d2ae0536185ebc",
+      "id": "i1907c2f4",
+      "title": "[속보] \"한국에 친근감 느낀다\" 일본인 62% 역대 최고…중국은 86%가 비호감",
+      "episode": "episode:f0d99c68216512",
       "quality": 0.92,
       "stages": [
         "일반 보도",
@@ -75,107 +94,33 @@
         "발단·의혹",
         "수사·대응"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 24,
+      "duplicate_candidates": 28,
+      "event_count": 22,
       "evidence_rate": 1.0
     },
     {
-      "id": "ic1db1eb6",
-      "title": "리트 만점자, 사망 이틀전 “탈출 도와달라”…새벽엔 짐정리",
-      "episode": "episode:f05a09e20a2748",
-      "quality": 1.0,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "입장·공방",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i0c3ea97e",
-      "title": "뉴욕증시, 기술주 투매에 일제히 흔들…나스닥 5.3% 급락",
-      "episode": "episode:a701104602d62d",
+      "id": "i66327601",
+      "title": "“수능 대책 실효성 없고 혼란만 초래”… 수험생 연대, 최교진 장관 사퇴 촉구",
+      "episode": "episode:2af66fcd313038",
       "quality": 0.84,
       "stages": [
-        "사법·처분",
+        "파장·후속",
         "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 46,
-      "event_count": 60,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i53ad9e31",
-      "title": "\"이거 사면 부자 된다더니\"…반토막도 모자라 와르르 무너진 비트코인",
-      "episode": "episode:294dadce497d4b",
-      "quality": 0.76,
-      "stages": [
-        "발단·의혹",
-        "일반 보도"
-      ],
       "gaps": [
+        "발단·의혹",
         "입장·공방",
-        "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 17,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i5546106d",
-      "title": "[속보] 일반열차 중단 천안~대전에 KTX 등 15대 투입",
-      "episode": "episode:f4cc0713a22744",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3ef18b4e",
-      "title": "\"젠슨 황, '낙태'까지 들먹이더니…\" 추가 폭로 또 나왔다",
-      "episode": "episode:9ae08a040d4512",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "수사·대응",
-        "입장·공방",
-        "발단·의혹"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 32,
-      "event_count": 10,
+      "duplicate_candidates": 30,
+      "event_count": 12,
       "evidence_rate": 1.0
     },
     {
       "id": "i9018c6d5",
       "title": "'나 홀로 집에' 속편 추진 중…맥컬리 컬킨 34년 만에 복귀",
-      "episode": "episode:278884ae32c33f",
+      "episode": "episode:bb2d5c5a548f12",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -184,10 +129,67 @@
       "gaps": [
         "발단·의혹",
         "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 14,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib9ccd9be",
+      "title": "\"이진우, 사망 당일 집 왔었다\"…이틀 전 집주인에 한 말",
+      "episode": "episode:19baf131a201d6",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
         "수사·대응"
       ],
-      "duplicate_candidates": 12,
-      "event_count": 5,
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iee9c3b50",
+      "title": "멜라니아가 밝힌 ‘결혼 20년’ 비결…539억짜리 새 다큐서 다 깠다",
+      "episode": "episode:8a220ba0704ece",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 17,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i32f6a682",
+      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
+      "episode": "episode:bb1f3458304a26",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 8,
       "evidence_rate": 1.0
     }
   ]
