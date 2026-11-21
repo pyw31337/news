@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-21",
-  "generated_at": "2026-11-21T10:54:37+09:00",
+  "generated_at": "2026-11-21T11:24:26+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,115 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "ic4132ec0",
-      "title": "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”",
+      "issue_id": "if3ab93cc",
+      "title": "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져",
       "category": "경제",
-      "rank": 8,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "간밤 뉴욕증시가 또 한 번 급락했습니다.",
-        "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”",
-        "\"호재도 안 통한다\" 나스닥 5%대 폭락 쇼크...엔비디아 14%↓[뉴욕마감]",
-        "기술주 중심의 나스닥100지수는 5.6% 폭락하며 코로나19 팬데믹이 본격화했던 2020년 3월 이후 최악의 한 주를 마감했다.",
-        "이 지수는 이번 급락으로 연초 이후 상승분을 모두 반납하고 마이너스 수익률로 돌아섰으며..."
-      ],
-      "sources": [
-        {
-          "press": "khan.co.kr",
-          "title": "“10년 만에 중국 빗장 열리나”···한한령 해제 기대 커지지만 K팝 공...",
-          "url": "https://n.news.naver.com/mnews/article/032/0003483787?sid=103"
-        },
-        {
-          "press": "sisajournal.com",
-          "title": "李 대통령 \"수출 1조 달러 시대…이제는 '모두의 성장'으로\"",
-          "url": "https://n.news.naver.com/mnews/article/586/0000142653?sid=101"
-        },
-        {
-          "press": "ekn.kr",
-          "title": "“내가 경고했잖아”…AI株 폭락에 금융시장 패닉, ‘빅쇼트’가 옳았나...",
-          "url": "https://www.ekn.kr/web/view.php?key=20261121024572796"
-        },
-        {
-          "press": "viva100.com",
-          "title": "나스닥 5.3% 폭락…AI 투자 불안에 美증시 ‘검은 금요일’",
-          "url": "https://www.viva100.com/article/20261121500035"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "간밤 뉴욕증시가 또 한 번 급락했습니다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "경제계 \"수출 1조 달러 성과, 국내 투자·일자리로 이어갈 것\""
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.76,
-        "continuity_gaps": [
-          "입장·공방",
-          "수사·대응",
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i90c9db8e",
-      "title": "[속보] 세종 소정리역서 화물열차 탈선…경부선 열차 운행 지장",
-      "category": "사회",
-      "rank": 4,
+      "rank": 1,
       "priority_score": 45,
       "production_types": [
         "comic",
@@ -143,164 +38,59 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "2026년 11월 21일 오전 5시 37분께 세종시 소정면 경부선 소정리역으로 진입하던 화물열차 21량 중 5량이 궤도를 이탈하는 사고가 발생했다.",
-        "경부선 화물열차 5량 탈선에 일반열차 운행 중지…\"수험생 유의해야\"(종합)",
-        "코레일에 따르면 이날 오전 5시 37분께 세종시 소정면 경부선 소정리역으로 들어오던 화물열차가 궤도를 벗어나 21량 중 5량이 탈선했다.",
-        "탈선한 열차가 전차선을 지탱하는 철제 빔을 들이받으면서 전차선이 끊어졌고...",
-        "탈선 과정서 전차선 고장…인명피해 없어 21일 오전 5시 37분쯤 세종시 소정면 경부선 소정리역에 진입하던 화물열차가 궤도를 이탈해 일반열차 운행이 중단됐다."
+        "2026년 11월 20일, 미국 뉴욕증시에서 엔비디아의 14% 폭락과 기술주 전반에 걸친 매도세가 이어지며 나스닥 지수가 5.3% 급락했다.",
+        "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”",
+        "기술주 중심의 나스닥100지수는 5.6% 폭락하며 코로나19 팬데믹이 본격화했던 2020년 3월 이후 최악의 한 주를 마감했다.",
+        "이 지수는 이번 급락으로 연초 이후 상승분을 모두 반납하고 마이너스 수익률로 돌아섰으며...",
+        "\"엔비디아 너마저\" 14%↓ 서학개미 '철렁'…나스닥, 기술주 매도에 5% '급락'"
       ],
       "sources": [
         {
-          "press": "연합뉴스",
-          "title": "경부선 화물열차 5량 탈선에 일반열차 운행 중지…\"수험생 유의해야\"(종합)",
-          "url": "https://www.yna.co.kr/view/AKR20261121012752061"
+          "press": "KBS",
+          "title": "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”",
+          "url": "https://n.news.naver.com/article/056/0012298559"
         },
         {
-          "press": "kookje.co.kr",
-          "title": "[속보] “논술 보러 가야 하는데 KTX 매진” 경부선 탈선에 수험생들 ‘...",
-          "url": "https://n.news.naver.com/mnews/article/658/0000161845?sid=102"
+          "press": "ekn.kr",
+          "title": "“내가 경고했잖아”…AI株 폭락에 금융시장 패닉, ‘빅쇼트’가 옳았나...",
+          "url": "https://www.ekn.kr/web/view.php?key=20261121024572796"
         },
         {
-          "press": "segye.com",
-          "title": "수험생들 ‘발 동동’…경부선 화물열차 탈선에 일반열차 운행 중단",
-          "url": "https://n.news.naver.com/mnews/article/022/0004176958?sid=102"
+          "press": "이코노미스트",
+          "title": "\"엔비디아 너마저\" 14%↓ 서학개미 '철렁'…나스닥, 기술주 매도에 5% '급락'",
+          "url": "https://n.news.naver.com/article/243/0000105988"
         },
         {
-          "press": "한국경제",
-          "title": "[속보] 세종 소정리역서 화물열차 탈선…경부선 열차 운행 지장",
-          "url": "https://n.news.naver.com/article/015/0005356556"
+          "press": "yna.co.kr",
+          "title": "[연합뉴스 이 시각 헤드라인] - 10:30",
+          "url": "https://n.news.naver.com/mnews/article/001/0016455628?sid=100"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "2026년 11월 21일 오전 5시 37분께 세종시 소정면 경부선 소정리역으로 진입하던 화물열차 21량 중 5량이 궤도를 이탈하는 사고가 발생했다."
+          "evidence": "2026년 11월 20일, 미국 뉴욕증시에서 엔비디아의 14% 폭락과 기술주 전반에 걸친 매도세가 이어지며 나스닥 지수가 5.3% 급락했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "사고 과정에서 철도 전력 공급시설까지 파손되면서 복구 작업이 진행..."
+          "evidence": "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "경부선 화물열차 5량 탈선에 일반열차 운행 중지…\"수험생 유의해야\"(종합)"
+          "evidence": "기술주 중심의 나스닥100지수는 5.6% 폭락하며 코로나19 팬데믹이 본격화했던 2020년 3월 이후 최악의 한 주를 마감했다."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "행안부 주관의 합동 훈련 보도로, 철도 사고 대응 체계 점검이 과거부터 정부 차원에서 이루어져 왔음을 알 수 있다."
+          "evidence": "엔비디아의 폭락과 나스닥의 급락이 확정되면서 AI 버블 공포가 현실화되었고, 투자자들 사이에서 시장 조정에 대한 우려가 극에 달했다."
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.76,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ia95ba336",
-      "title": "[지스타 2026] 자동차·AI·웹툰까지⋯넓어진 무대, 좁아진 게임 [현장]",
-      "category": "IT",
-      "rank": 9,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "19일 부산 벡스코에서 국제게임전시회 지스타 2026이 나흘간의 일정으로 개최됐다.",
-        "사진=지스타조직위원회...",
-        "통해 게임과 자동차 산업의 접점을 확인했다.",
-        "다만 전시 영역의 확장이 국내 주요",
-        "게임사들의 불참 공백을..."
-      ],
-      "sources": [
-        {
-          "press": "weekly.hankooki.com",
-          "title": "\"AI와 모빌리티까지\" 달라진 '지스타 2026'...크래프톤, 신작 5종으로 韓...",
-          "url": "https://weekly.hankooki.com/news/articleView.html?idxno=7194862"
-        },
-        {
-          "press": "gameshot.net",
-          "title": "‘타래’ 시연에 4시간 대기…현대차는 레이싱 체험",
-          "url": "https://www.gameshot.net/common/con_view.php?code=GA6b003b66c19b1"
-        },
-        {
-          "press": "gamefocus.co.kr",
-          "title": "[지스타26]카와모리 쇼지 감독, “AI가 대체할 수 없는 창작의 영역은 인...",
-          "url": "https://gamefocus.co.kr/detail.php?number=180682"
-        },
-        {
-          "press": "zdnet.co.kr",
-          "title": "'지스타 2026' 첫 주말, 벡스코에 관람객 북적…게임 축제 열기 고조",
-          "url": "https://n.news.naver.com/mnews/article/092/0002446305?sid=105"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "19일 부산 벡스코에서 국제게임전시회 지스타 2026이 나흘간의 일정으로 개최됐다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "증기기관차, 자동차 등 새로운 문물을 접한 경험이 큰 영향을 미쳤다는 설명이다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "제2전시장 현대자동차 부스에서는 아이의 손을 잡은 아버지가 레이싱 시뮬레이터 체험 순서를 기다렸다...."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -337,6 +127,214 @@
           "발단·의혹",
           "입장·공방",
           "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ib208db97",
+      "title": "코레일 \"천안∼조치원∼대전·서대전 구간 버스 연계 수송\"",
+      "category": "경제",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "21일 오전 경부선 소정리역(세종시 소정면)에서 화물열차 탈선 사고가 일어나 전차선이 끊어지면서 경부선 일반 열차 운행이 중지됐다.",
+        "경부선 화물열차 5량 탈선에 일반열차 운행 중지…\"수험생 유의해야\"(종합)",
+        "경부선 화물열차 탈선에 일반열차 운행 중지…“수험생 유의” 21일 오전 5시37분쯤 경부선 소정리역으로 진입하던 제3810 화물열차가 궤도를 이탈하는 사고가 났다.",
+        "장항선으로 향하던 후속 1271호 열차는 오전...",
+        "한국철도공사(코레일)는 21일 오전 발생한 경부선 소정리역 화물열차 탈선 사고와 관련해 운행 중지 구간인 천안~대전역을 버스를 이용해 연계수송한다고 밝혔다."
+      ],
+      "sources": [
+        {
+          "press": "연합뉴스",
+          "title": "경부선 화물열차 5량 탈선에 일반열차 운행 중지…\"수험생 유의해야\"(종합)",
+          "url": "https://www.yna.co.kr/view/AKR20261121012752061"
+        },
+        {
+          "press": "khan.co.kr",
+          "title": "[속보]코레일 “천안∼대전 구간 버스로 연계 수송”…화물열차 탈선 사...",
+          "url": "https://n.news.naver.com/mnews/article/032/0003484116?sid=102"
+        },
+        {
+          "press": "nocutnews.co.kr",
+          "title": "열차 탈선에 코레일 \"천안~조치원~대전·서대전 버스 수송\"",
+          "url": "https://n.news.naver.com/mnews/article/079/0004212334?sid=102"
+        },
+        {
+          "press": "MBN",
+          "title": "경부선 화물열차 탈선으로 일반열차 멈춰…수험생들 어쩌나",
+          "url": "https://n.news.naver.com/article/057/0001979205"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "21일 오전 경부선 소정리역(세종시 소정면)에서 화물열차 탈선 사고가 일어나 전차선이 끊어지면서 경부선 일반 열차 운행이 중지됐다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "화물열차 탈선 사고 여파"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "경부선 화물열차 5량 탈선에 일반열차 운행 중지…\"수험생 유의해야\"(종합)"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.58,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i705c3036",
+      "title": "트럼프, 젠슨 황 복귀 촉구…“두 번째 기회 주어져야”",
+      "category": "세계",
+      "rank": 5,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "트럼프 대통령은 20일 백악관에서 기자회견을 열고, 미국 기술 대기업이 다른 나라에 인공지능 데이터센터를 지을 경우 고액의 세금을 부과하겠다고 밝혔습니다.",
+        "도널드 트럼프 미국 대통령이 시진핑 중국 국가주석과 젠슨 황 전 엔비디아 최고경영자(CEO)를 화제로...",
+        "트럼프 대통령은 황 전 CEO가 엔비디아 수장으로 복귀하기를 바란다는 뜻도 재차 밝혔다.",
+        "그는 “황에게 두 번째...",
+        "트럼프 “두번째 기회 주어졌으면”… 젠슨 황 복귀 촉구"
+      ],
+      "sources": [
+        {
+          "press": "etoday.co.kr",
+          "title": "트럼프 “시진핑과 젠슨 황 논의”⋯베선트 “H200 대중국 수출정책 불...",
+          "url": "https://www.etoday.co.kr/news/view/2651181"
+        },
+        {
+          "press": "국민일보",
+          "title": "트럼프 “두번째 기회 주어졌으면”… 젠슨 황 복귀 촉구",
+          "url": "https://n.news.naver.com/article/005/0001886551"
+        },
+        {
+          "press": "yonhapnewstv.co.kr",
+          "title": "트럼프 \"미중러 회담서 한반도 위험 대응 논의\"",
+          "url": "https://n.news.naver.com/mnews/article/422/0000928445?sid=104"
+        },
+        {
+          "press": "yna.co.kr",
+          "title": "[연합뉴스 이 시각 헤드라인] - 10:30",
+          "url": "https://n.news.naver.com/mnews/article/001/0016455628?sid=100"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "트럼프 대통령은 20일 백악관에서 기자회견을 열고, 미국 기술 대기업이 다른 나라에 인공지능 데이터센터를 지을 경우 고액의 세금을 부과하겠다고 밝혔습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "“잘못된 선택했지만 두 번째 기회 줘야” 엔비디아 이사회는 복귀 불가 입장 도널드 트럼프 미국 대통령이 불륜 스캔들로 사임한 젠슨 황 전 엔비디아 최고경영자(CEO)의 복귀를 공개적으로 촉구했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "전문보기: https://www.yna.co.kr/view/AKR20261120151500004 ■ 트럼프, 젠슨 황 복귀 촉구…\"두 번째 기회 주어져야\" 도널드 트럼프 미국 대통령이 최근 잇단 불륜 스캔들에…"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "발단·의혹"
         ],
         "no_generic_closing": true
       }

@@ -1,18 +1,18 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 01:54:36",
+  "updated_at": "2026-11-21 02:24:25",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.86,
+  "average_quality": 0.83,
   "issues": [
     {
-      "id": "ic4132ec0",
-      "title": "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”",
-      "episode": "episode:fa88c6792dcabf",
+      "id": "if3ab93cc",
+      "title": "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져",
+      "episode": "episode:662565386ad80e",
       "quality": 0.84,
       "stages": [
-        "사법·처분",
         "일반 보도",
+        "사법·처분",
         "파장·후속"
       ],
       "gaps": [
@@ -20,89 +20,143 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 49,
-      "event_count": 84,
+      "duplicate_candidates": 27,
+      "event_count": 58,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia9cfb162",
-      "title": "한덕수 '파기환송' 후폭풍...'탄핵 추진'에 조희대 묵묵부답",
-      "episode": "episode:bd315bd53dfaab",
+      "id": "if180a79c",
+      "title": "이 대통령, 대장동 인터뷰 공유…“5,500억 공익 환수가 배임인가”",
+      "episode": "episode:e645ef5da71cc7",
       "quality": 1.0,
       "stages": [
-        "사법·처분",
         "일반 보도",
+        "입장·공방",
         "수사·대응",
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 40,
-      "event_count": 18,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic12d3971",
-      "title": "‘대장동 인터뷰’ 공유한 이 대통령 “5500억 공익환수가 배임인가”",
-      "episode": "episode:a072c72d302acd",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "사법·처분",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 16,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i90c9db8e",
-      "title": "[속보] 세종 소정리역서 화물열차 탈선…경부선 열차 운행 지장",
-      "episode": "episode:7b5a5e289ef51d",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i5d404b06",
-      "title": "트럼프 \"젠슨 황, 사과하고 복귀해야\"…中엔 '구형 칩'만 수출 허용",
-      "episode": "episode:82980ac270d561",
-      "quality": 1.0,
-      "stages": [
         "파장·후속",
-        "일반 보도",
-        "수사·대응",
-        "입장·공방",
         "사법·처분"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 42,
-      "event_count": 41,
+      "duplicate_candidates": 56,
+      "event_count": 119,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i0fa02baa",
+      "title": "한동훈, 조희대 탄핵 추진에 \"민주당, 미쳐도 곱게 미쳐라\"",
+      "episode": "episode:7782c8183510cc",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "수사·대응",
+        "입장·공방",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 17,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i812d99b0",
+      "title": "리트 만점자, 사망당일 새벽 짐정리…이틀전엔 \"탈출 도와달라\"",
+      "episode": "episode:db54ad59405a3e",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i705c3036",
+      "title": "트럼프, 젠슨 황 복귀 촉구…“두 번째 기회 주어져야”",
+      "episode": "episode:cf0700fc07df2b",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "입장·공방",
+        "일반 보도",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 48,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib208db97",
+      "title": "코레일 \"천안∼조치원∼대전·서대전 구간 버스 연계 수송\"",
+      "episode": "episode:87246b41653afe",
+      "quality": 0.58,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib9ccd9be",
+      "title": "\"이진우, 사망 당일 집 왔었다\"…이틀 전 집주인에 한 말",
+      "episode": "episode:1e26d88fe708c0",
+      "quality": 0.84,
+      "stages": [
+        "수사·대응",
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i25fb08cf",
+      "title": "트럼프 “젠슨황, 사과하고 복귀하길…미국은 두 번째 기회 주는 나라”",
+      "episode": "episode:b62c22c54f0e51",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "입장·공방",
+        "발단·의혹",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 38,
+      "event_count": 72,
       "evidence_rate": 1.0
     },
     {
       "id": "i5ac1d597",
       "title": "시험지 스마트폰으로 찍었다…공사 생도 부정행위 퇴교",
-      "episode": "episode:956205d3699648",
+      "episode": "episode:733d81d7476a4f",
       "quality": 0.48,
       "stages": [
         "사법·처분"
@@ -112,14 +166,14 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 28,
+      "duplicate_candidates": 27,
       "event_count": 2,
       "evidence_rate": 1.0
     },
     {
-      "id": "i98b20ce4",
-      "title": "\"찌질한 건 박지윤\" 악플러 잡고 보니 전 남편 최동석",
-      "episode": "episode:9e81230bc7960f",
+      "id": "ib9807d0d",
+      "title": "\"남친과 음란물 보다 걸려\" \"딸에게 폭언\"…박지윤 저격 악플러, 알고 보니 최동석",
+      "episode": "episode:b157e2bdec63ef",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -131,64 +185,8 @@
         "입장·공방",
         "파장·후속"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 36,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i68483b2e",
-      "title": "[속보] 트럼프, 젠슨 황 복귀 촉구",
-      "episode": "episode:dcfbb83cc08489",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 46,
-      "event_count": 14,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ia95ba336",
-      "title": "[지스타 2026] 자동차·AI·웹툰까지⋯넓어진 무대, 좁아진 게임 [현장]",
-      "episode": "episode:11d2b042aaac67",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib9ccd9be",
-      "title": "\"이진우, 사망 당일 집 왔었다\"…이틀 전 집주인에 한 말",
-      "episode": "episode:28cbe61686afca",
-      "quality": 1.0,
-      "stages": [
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속",
-        "수사·대응",
-        "일반 보도"
-      ],
-      "gaps": [
-        "사법·처분"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 5,
+      "duplicate_candidates": 32,
+      "event_count": 37,
       "evidence_rate": 1.0
     }
   ]
