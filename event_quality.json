@@ -1,14 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 08:57:24",
+  "updated_at": "2026-11-21 09:22:52",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.9,
+  "average_quality": 0.92,
   "issues": [
     {
-      "id": "i929b505c",
-      "title": "[속보] 이 대통령 \"수능 부정 신고 포상, 1건당 최소 1억\"",
-      "episode": "episode:9bbb6727ab3122",
+      "id": "ieda0c69f",
+      "title": "[속보]李대통령 \"수능 부정 신고, 건당 최소 1억원…공직자 부패만큼 심각한 범죄\"",
+      "episode": "episode:9dd075a140de14",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -19,14 +19,50 @@
         "발단·의혹"
       ],
       "gaps": [],
-      "duplicate_candidates": 54,
-      "event_count": 119,
+      "duplicate_candidates": 86,
+      "event_count": 148,
       "evidence_rate": 1.0
     },
     {
       "id": "i1475184c",
       "title": "“손정의, 1346조원에 SK하이닉스 인수 구상…월가에 자금 조달안 문의”",
-      "episode": "episode:5565cd23c77908",
+      "episode": "episode:7cf18d44085f9b",
+      "quality": 0.76,
+      "stages": [
+        "발단·의혹",
+        "일반 보도"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 37,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i7ad53363",
+      "title": "\"조희대 탄핵안, 12월 3일 기점 발의 공감대\"…민주당 대변인이 밝힌 탄핵 사유",
+      "episode": "episode:259501afdcc104",
+      "quality": 1.0,
+      "stages": [
+        "발단·의혹",
+        "수사·대응",
+        "파장·후속",
+        "사법·처분",
+        "입장·공방",
+        "일반 보도"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 33,
+      "event_count": 17,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ied764395",
+      "title": "\"한국인 좋아\" 일본인 역대 최고…중국은 93%가 '안 좋다' 응답",
+      "episode": "episode:414bdb150fe4d5",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -36,90 +72,51 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 32,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if180a79c",
-      "title": "이 대통령, 대장동 인터뷰 공유…“5,500억 공익 환수가 배임인가”",
-      "episode": "episode:c9e981d7384ffc",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "사법·처분",
-        "수사·대응",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 25,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i4e0f0fb9",
-      "title": "사망 당일 새벽 짐 정리...집주인에 \"탈출 도와달라\" [앵커리포트]",
-      "episode": "episode:bd7c23e3634479",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ifaa1a037",
-      "title": "비트코인, 8000만원선 붕괴…AI발 위험회피에 '극단적 공포'",
-      "episode": "episode:b5b4ba68a74773",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "수사·대응",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 15,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i531e23e9",
-      "title": "일본인 10명 중 6명 '한국에 친근감 느껴'…2020년 이래 '최고'",
-      "episode": "episode:b03f75618683eb",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분"
-      ],
       "duplicate_candidates": 31,
       "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i3ef18b4e",
-      "title": "\"젠슨 황, '낙태'까지 들먹이더니…\" 추가 폭로 또 나왔다",
-      "episode": "episode:30aff739395819",
+      "id": "i8a8d2bb0",
+      "title": "집주인에 \"탈출 도와달라\"... 리트 만점자, 사망 당일 새벽 자취방 들러",
+      "episode": "episode:da5feb5713b97f",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ifaa1a037",
+      "title": "비트코인, 8000만원선 붕괴…AI발 위험회피에 '극단적 공포'",
+      "episode": "episode:e247d4402a4885",
+      "quality": 0.76,
+      "stages": [
+        "발단·의혹",
+        "일반 보도"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 20,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5112719d",
+      "title": "\"머리 열어 소변 보겠다\"⋯젠슨 황, 또 폭언·모욕·거짓말 논란",
+      "episode": "episode:26394a447713f7",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -132,17 +129,55 @@
         "파장·후속"
       ],
       "gaps": [],
-      "duplicate_candidates": 39,
-      "event_count": 13,
+      "duplicate_candidates": 47,
+      "event_count": 18,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3ef18b4e",
+      "title": "\"젠슨 황, '낙태'까지 들먹이더니…\" 추가 폭로 또 나왔다",
+      "episode": "episode:8e3d107b05e764",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "수사·대응",
+        "입장·공방",
+        "발단·의혹"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 32,
+      "event_count": 14,
       "evidence_rate": 1.0
     },
     {
       "id": "i54ca174c",
       "title": "[단독] 리트 만점자, 유서에 “죽어도 가려 했지만…조롱 당하겠지”",
       "episode": "episode:b82b7f79909171",
-      "quality": 0.92,
+      "quality": 1.0,
+      "stages": [
+        "파장·후속",
+        "발단·의혹",
+        "일반 보도",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib1447f6e",
+      "title": "\"이 글도 조롱 당하겠지\"...리트 만점자 남긴 메모 봤더니",
+      "episode": "episode:43dac33b02b484",
+      "quality": 1.0,
       "stages": [
         "발단·의혹",
+        "일반 보도",
         "입장·공방",
         "파장·후속",
         "수사·대응"
@@ -150,45 +185,8 @@
       "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 27,
+      "duplicate_candidates": 33,
       "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i90656fd1",
-      "title": "사형수에 주삿바늘 꽂는 데만 34분…미 텍사스주 “고문 같은 사형 집행” 논란",
-      "episode": "episode:2e8dac95864a25",
-      "quality": 0.84,
-      "stages": [
-        "입장·공방",
-        "일반 보도",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "수사·대응",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ia69f272b",
-      "title": "“불륜 아니다” “너의 뇌에 오줌 누겠다”···젠슨 황 퇴출 부른 건 거짓말과 상습 폭언",
-      "episode": "episode:ebf584324b6e9a",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "수사·대응",
-        "입장·공방",
-        "발단·의혹"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 40,
-      "event_count": 16,
       "evidence_rate": 1.0
     }
   ]
