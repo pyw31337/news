@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-21",
-  "generated_at": "2026-11-21T10:26:14+09:00",
+  "generated_at": "2026-11-21T09:08:10+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,33 +27,33 @@
   },
   "candidates": [
     {
-      "issue_id": "ic119f371",
-      "title": "나스닥, 기술주 매도에 5.3% 폭락…다우·S&P500 조정 진입",
+      "issue_id": "icea0f205",
+      "title": "[속보]AI주 투매에 나스닥 5%대 급락…올해 상승분 반납",
       "category": "경제",
       "rank": 1,
-      "priority_score": 37,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "needs_fact_review",
       "facts": [
-        "20일(현지시간) 미국 뉴욕 증시 주요",
-        "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”",
+        "미국 뉴욕증시가 20일 인공지능(AI) 관련주 투매와 기술주 매도세로 인해 일제히 급락하며 나스닥 지수가 5.3% 폭락하고 올해 상승분을 반납했다.",
         "\"호재도 안 통한다\" 나스닥 5%대 폭락 쇼크...엔비디아 14%↓[뉴욕마감]",
+        "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”",
         "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져",
-        "기술주 중심의 나스닥지수가 불과 일주일 만에 10% 폭락하며 올해 쌓아 올린 상승분을 모조리 반납했다."
+        "뉴욕증시, 기술주 투매에 일제히 흔들…나스닥 5.3% 급락"
       ],
       "sources": [
-        {
-          "press": "KBS",
-          "title": "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”",
-          "url": "https://n.news.naver.com/article/056/0012298559"
-        },
         {
           "press": "머니투데이",
           "title": "\"호재도 안 통한다\" 나스닥 5%대 폭락 쇼크...엔비디아 14%↓[뉴욕마감]",
           "url": "https://n.news.naver.com/article/008/0005444356"
+        },
+        {
+          "press": "KBS",
+          "title": "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”",
+          "url": "https://n.news.naver.com/article/056/0012298559"
         },
         {
           "press": "디지털타임스",
@@ -61,16 +61,16 @@
           "url": "https://n.news.naver.com/article/029/0003060294"
         },
         {
-          "press": "fnnews.com",
-          "title": "\"일주일 만에 1년 수익 모두 증발\"…엔비디아 14% 폭락, 월가 초토화 'A...",
-          "url": "https://n.news.naver.com/mnews/article/014/0005607624?sid=101"
+          "press": "조선비즈",
+          "title": "뉴욕증시, 기술주 투매에 일제히 흔들…나스닥 5.3% 급락",
+          "url": "https://n.news.naver.com/article/366/0001206366"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "20일(현지시간) 미국 뉴욕 증시 주요"
+          "evidence": "미국 뉴욕증시가 20일 인공지능(AI) 관련주 투매와 기술주 매도세로 인해 일제히 급락하며 나스닥 지수가 5.3% 폭락하고 올해 상승분을 반납했다."
         },
         {
           "panel": 2,
@@ -85,7 +85,7 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "엔비디아의 폭락과 나스닥의 급락이 확정되면서 AI 버블 공포가 현실화되었고, 투자자들 사이에서 시장 조정에 대한 우려가 극에 달했다."
+          "evidence": "나스닥이 이틀째 급락하며 뉴욕증시 주요 지수가 1%대 하락 마감했던 시점이다. 연초부터 기술주 중심의 변동성과 하락 압력이 반복되어 왔음을 나타낸다."
         }
       ],
       "visual_brief": {
@@ -132,170 +132,65 @@
       }
     },
     {
-      "issue_id": "ib24fc3dd",
-      "title": "비트코인 4달 만에 6만달러 아래로…2022년 이후 최장 약세",
+      "issue_id": "i86989573",
+      "title": "결국 고꾸라진 코스피 … “바닥이 어디?”보다 중요한 질문은",
       "category": "경제",
-      "rank": 8,
-      "priority_score": 37,
+      "rank": 4,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "needs_fact_review",
       "facts": [
-        "비트코인이 20일(현지시간) 미국 가상화폐 거래소 코인베이스에 따르면 1개의 가격이 미 동부시간 낮 12시께 24시간 전보다",
-        "‘4869.96’ 올해 1월 수준 돌아간 코스피…고점 대비 3400조 증발",
-        "S&P500지수도 7거래일 연속 하락하면서 코로나19 팬데믹(대유행) 초기였던 2020년 2월 이후 최장 하락...",
-        "5%선 아래로 내려갔다.",
-        "반면 비트코인은 5% 이상 하락한 5만 8000달러대에서 거래됐다."
+        "2026년 11월 20일, 미국발 인공지능 및 반도체 관련 악재가 겹치며 코스피 지수가 5000선 아래인 4869.69로 급락했다.",
+        "9% 하락한 코스피의 시가총액은 3,991조 3,977억 원을 기록하며 올 1월 15일 이후 10개월 만에 처음으로 4,000조 원대가 붕괴됐다.",
+        "장중 급락세가 이어지면서 양대 증시에는 매도 사이드카가 잇따라 발동됐다.",
+        "[이슈체크] 코스피 4800대로 '곤두박질'…개인 손실 563조, “주식 계좌 열기 겁난다”",
+        "앤스로픽 호재 덮은 ‘AI 거품론’… 코스피 4900 붕괴"
       ],
       "sources": [
         {
-          "press": "한겨레",
-          "title": "‘4869.96’ 올해 1월 수준 돌아간 코스피…고점 대비 3400조 증발",
-          "url": "https://n.news.naver.com/article/028/0002833245"
+          "press": "fntoday.co.kr",
+          "title": "\"검은 금요일\" 덮친 국내 증시…코스피 4,800대로 후퇴, 10개월만 최저",
+          "url": "https://www.fntoday.co.kr/news/articleView.html?idxno=399515"
         },
         {
-          "press": "sedaily.com",
-          "title": "나스닥, AI주 ‘패닉셀’에 5.3% 폭락...올 수익률 마이너스 전환 [데일...",
-          "url": "https://n.news.naver.com/mnews/article/011/0004684578?sid=104"
+          "press": "SBS Biz",
+          "title": "[이슈체크] 코스피 4800대로 '곤두박질'…개인 손실 563조, “주식 계좌 열기 겁난다”",
+          "url": "https://n.news.naver.com/article/374/0000545015"
         },
         {
-          "press": "디지털타임스",
-          "title": "비트코인, 6만달러 아래로 추락… 2022년 이후 최장 약세",
-          "url": "https://n.news.naver.com/article/029/0003060295"
+          "press": "동아일보",
+          "title": "앤스로픽 호재 덮은 ‘AI 거품론’… 코스피 4900 붕괴",
+          "url": "https://www.donga.com/news/Economy/article/all/20261120/135064160/2"
         },
         {
-          "press": "fnnews.com",
-          "title": "'고점 대비 반토막' 비트코인 6만 달러 붕괴...이더리움도 6.5% 급락",
-          "url": "https://n.news.naver.com/mnews/article/014/0005607612?sid=105"
+          "press": "디지털데일리",
+          "title": "“외국인·기관 반도체주 매도 집중”…코스피 5.21%·코스닥 5.71% 급락",
+          "url": "https://n.news.naver.com/article/138/0002249394"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "비트코인이 20일(현지시간) 미국 가상화폐 거래소 코인베이스에 따르면 1개의 가격이 미 동부시간 낮 12시께 24시간 전보다"
+          "evidence": "2026년 11월 20일, 미국발 인공지능 및 반도체 관련 악재가 겹치며 코스피 지수가 5000선 아래인 4869.69로 급락했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "S&P500지수도 7거래일 연속 하락하면서 코로나19 팬데믹(대유행) 초기였던 2020년 2월 이후 최장 하락..."
+          "evidence": "9% 하락한 코스피의 시가총액은 3,991조 3,977억 원을 기록하며 올 1월 15일 이후 10개월 만에 처음으로 4,000조 원대가 붕괴됐다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "‘4869.96’ 올해 1월 수준 돌아간 코스피…고점 대비 3400조 증발"
+          "evidence": "[이슈체크] 코스피 4800대로 '곤두박질'…개인 손실 563조, “주식 계좌 열기 겁난다”"
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i787deab4",
-      "title": "트럼프, 젠슨 황 복귀 촉구…\"두 번째 기회 주어져야\"",
-      "category": "세계",
-      "rank": 7,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "도널드 트럼프 미국 대통령은 최근 사임한 젠슨 황 엔비디아 전 CEO를 복귀를 촉구했다.",
-        "“젠슨 황 불충한가” 질문했다가…中 경호원에 막혀",
-        "젠슨 황 전 CEO에 대해 이야기를 나눴고 \"시 주석이 '그는 뛰어난 사람이야'라고 했다\"며 \"실제로도 그렇다\"고 밝혔다.",
-        "트럼프 대통령은 젠슨 황의 복귀를 희망한다는 의사를 재차 강조했다.",
-        "트럼프 대통령은 \"젠슨에게 두..."
-      ],
-      "sources": [
-        {
-          "press": "채널A",
-          "title": "“젠슨 황 불충한가” 질문했다가…中 경호원에 막혀",
-          "url": "https://n.news.naver.com/article/449/0000368209"
-        },
-        {
-          "press": "view.asiae.co.kr",
-          "title": "트럼프 \"시진핑도 젠슨황 '뛰어나다' 평가, 두번째 기회 주어져야\"",
-          "url": "https://n.news.naver.com/mnews/article/277/0005845861?sid=101"
-        },
-        {
-          "press": "edaily.co.kr",
-          "title": "트럼프 \"젠슨 황 복귀해야…몇 가지 잘못된 선택했을 뿐\"",
-          "url": "https://n.news.naver.com/mnews/article/018/0006413442?sid=105"
-        },
-        {
-          "press": "kmib.co.kr",
-          "title": "트럼프 “두번째 기회 주어졌으면”… 젠슨 황 복귀 촉구",
-          "url": "https://n.news.naver.com/mnews/article/005/0001886551?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "도널드 트럼프 미국 대통령은 최근 사임한 젠슨 황 엔비디아 전 CEO를 복귀를 촉구했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "도널드 트럼프 미국 대통령과 일부 투자자, 실리콘밸리 인사들 사이에서..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "20일(현지시간) AFP통신에 따르면 트럼프 대통령은 이날 기자들과 만나 “젠슨에게 두 번째 기회가 주어졌으면 좋겠다”며 “그가 복귀하는 모습을 보고 싶다”고 말했다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+          "evidence": "미국 증시의 악재가 국내로 전이되며 4800선까지 후퇴하는 '검은 금요일'을 맞이했다."
         }
       ],
       "visual_brief": {
@@ -334,7 +229,111 @@
         "sources": 4,
         "continuity_quality": 1.0,
         "continuity_gaps": [
-          "발단·의혹"
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ib0f20010",
+      "title": "푸틴, 미중러 회담 직후 대공습...폴란드 \"러 미사일 넘어와\"",
+      "category": "세계",
+      "rank": 8,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "미국·중국·러시아 3자 정상회담에서 시진핑 국가주석이 한가운데 앉은 모습을 두고 의전 논란이 일었다.",
+        "트럼프 대통령은 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령과 한반도 문제도 논의했다고 밝혔다.",
+        "그는 “한반도의 위험에 대응하고 우크라이나에서 벌어지는 살상을 멈추는 문제를 얘기했다”고 말했다....",
+        "푸틴, 미중러 회담 직후 대공습...폴란드 \"러 미사일 넘어와\"",
+        "트럼프 대통령은 19일 중국 선전에서 귀국길에 오르기 직전 NBC방송과 가진 전화 인터뷰에서 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령과의 3자 정상회담이 주로 우크라이나 전쟁에 집중됐다고 밝혔다."
+      ],
+      "sources": [
+        {
+          "press": "etoday.co.kr",
+          "title": "트럼프 “아시아 순방 성공” 자화자찬⋯외신들 “3자 회담 원칙 합의 ...",
+          "url": "https://www.etoday.co.kr/news/view/2651165"
+        },
+        {
+          "press": "YTN",
+          "title": "푸틴, 미중러 회담 직후 대공습...폴란드 \"러 미사일 넘어와\"",
+          "url": "https://n.news.naver.com/article/052/0002435969"
+        },
+        {
+          "press": "seoul.co.kr",
+          "title": "우크라전, 2027년 1월 3일 끝난다? “내 친구 푸틴” 트럼프의 종전 그림...",
+          "url": "https://n.news.naver.com/mnews/article/081/0003701744?sid=104"
+        },
+        {
+          "press": "조선일보",
+          "title": "시진핑은 한창 연설 중인데... 80세 트럼프 꾸벅, 졸았나?",
+          "url": "https://n.news.naver.com/article/023/0004010794"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "미국·중국·러시아 3자 정상회담에서 시진핑 국가주석이 한가운데 앉은 모습을 두고 의전 논란이 일었다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "트럼프 “푸틴·시진핑과 잘 지내는 내가 대통령인 건 행운···선거 패배는 공화당이 내 법안 통과 못 시켜서” 도널드 트럼프 미국 대통령이 아시아 순방 성과를 설명하는 기자회견에서 블라디미르 푸틴 러시아..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "트럼프 대통령은 19일 중국 선전에서 귀국길에 오르기 직전 NBC방송과 가진 전화 인터뷰에서 시진핑 중국 국가주석, 블라디미르 푸틴 러시아 대통령과의 3자 정상회담이 주로 우크라이나 전쟁에 집중됐다고 밝혔다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "발단·의혹",
+          "수사·대응"
         ],
         "no_generic_closing": true
       }
