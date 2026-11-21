@@ -1,14 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 02:50:59",
+  "updated_at": "2026-11-21 03:04:59",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.9,
   "issues": [
     {
-      "id": "i0c3ea97e",
-      "title": "뉴욕증시, 기술주 투매에 일제히 흔들…나스닥 5.3% 급락",
-      "episode": "episode:cf9533b593a929",
+      "id": "ic4132ec0",
+      "title": "나스닥, 기술주 매도에 5.3% 폭락…“S&P500도 6년 사이 최장 하락”",
+      "episode": "episode:df5e48eb39eeb9",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -20,27 +20,46 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 43,
-      "event_count": 71,
+      "duplicate_candidates": 44,
+      "event_count": 76,
       "evidence_rate": 1.0
     },
     {
-      "id": "ic966062b",
-      "title": "‘리트 만점자’, 숨진 당일 새벽 자택서 짐 정리…이틀 전엔 “탈출 도와달라” 요청도",
-      "episode": "episode:2b5fe93d6f2435",
-      "quality": 1.0,
+      "id": "i1b843536",
+      "title": "경부선 화물열차 탈선…논술·면접 수험생 불편 우려",
+      "episode": "episode:16592ca389b88b",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
-        "발단·의혹",
         "수사·대응",
-        "파장·후속",
-        "입장·공방"
+        "파장·후속"
       ],
       "gaps": [
+        "발단·의혹",
+        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 42,
-      "event_count": 7,
+      "duplicate_candidates": 31,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic8369a17",
+      "title": "대법 한덕수 판결, ‘다음엔 계엄 성공하길’ 기원하나 [논썰]",
+      "episode": "episode:24cb1a449ffe72",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "수사·대응",
+        "입장·공방",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 39,
+      "event_count": 19,
       "evidence_rate": 1.0
     },
     {
@@ -58,83 +77,64 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 59,
-      "event_count": 119,
+      "duplicate_candidates": 61,
+      "event_count": 117,
       "evidence_rate": 1.0
     },
     {
-      "id": "i83b0871d",
-      "title": "경부선 화물열차 탈선…천안-대전 일반열차 운행 중지",
-      "episode": "episode:eb23509f37f4a7",
-      "quality": 0.76,
+      "id": "i812d99b0",
+      "title": "리트 만점자, 사망당일 새벽 짐정리…이틀전엔 \"탈출 도와달라\"",
+      "episode": "episode:de44d7ec07a7c5",
+      "quality": 0.92,
       "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
         "발단·의혹",
         "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iccf70491",
-      "title": "與, '조희대 탄핵' 당론 채택…사유에 '한덕수 파기환송' 포함 놓고 '오락가락'",
-      "episode": "episode:cb399f8cc4b135",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
         "파장·후속",
-        "수사·대응",
-        "일반 보도",
-        "입장·공방"
+        "일반 보도"
       ],
       "gaps": [
-        "발단·의혹"
+        "수사·대응",
+        "사법·처분"
       ],
-      "duplicate_candidates": 32,
-      "event_count": 21,
+      "duplicate_candidates": 29,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6a11716d",
-      "title": "트럼프 “두번째 기회 주어졌으면”… 젠슨 황 복귀 촉구",
-      "episode": "episode:f4fd17c8643f22",
+      "id": "i705c3036",
+      "title": "트럼프, 젠슨 황 복귀 촉구…“두 번째 기회 주어져야”",
+      "episode": "episode:d0670f3540ff9e",
       "quality": 1.0,
       "stages": [
+        "일반 보도",
         "수사·대응",
         "입장·공방",
-        "일반 보도",
         "파장·후속",
         "사법·처분"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 46,
-      "event_count": 16,
+      "duplicate_candidates": 47,
+      "event_count": 21,
       "evidence_rate": 1.0
     },
     {
-      "id": "iee875357",
-      "title": "트럼프 “미·중·러 정상회담서 한반도 위험 대응 논의”",
-      "episode": "episode:ea55f3a8ca74cb",
-      "quality": 0.92,
+      "id": "i25fb08cf",
+      "title": "트럼프 “젠슨황, 사과하고 복귀하길…미국은 두 번째 기회 주는 나라”",
+      "episode": "episode:b62c22c54f0e51",
+      "quality": 1.0,
       "stages": [
         "일반 보도",
-        "수사·대응",
         "사법·처분",
-        "파장·후속"
-      ],
-      "gaps": [
+        "입장·공방",
         "발단·의혹",
-        "입장·공방"
+        "파장·후속",
+        "수사·대응"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 17,
+      "gaps": [],
+      "duplicate_candidates": 39,
+      "event_count": 73,
       "evidence_rate": 1.0
     },
     {
@@ -143,8 +143,8 @@
       "episode": "episode:3711deaa4659e1",
       "quality": 0.84,
       "stages": [
-        "입장·공방",
         "일반 보도",
+        "입장·공방",
         "파장·후속"
       ],
       "gaps": [
@@ -152,82 +152,45 @@
         "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 30,
+      "duplicate_candidates": 27,
       "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "icc7073be",
-      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
-      "episode": "episode:b4571ab00be66b",
-      "quality": 0.66,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i94664736",
-      "title": "'방송인 박지윤 악플러' 정체 알고 보니…전 남편 최동석, 명예훼손 혐의 송치",
-      "episode": "episode:9f8f8c75143fe1",
+      "id": "ib9807d0d",
+      "title": "\"남친과 음란물 보다 걸려\" \"딸에게 폭언\"…박지윤 저격 악플러, 알고 보니 최동석",
+      "episode": "episode:b157e2bdec63ef",
       "quality": 0.84,
       "stages": [
+        "사법·처분",
         "수사·대응",
-        "파장·후속",
         "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if68e1f2d",
-      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
-      "episode": "episode:87c2b2d986a387",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "수사·대응",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 29,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i32f6a682",
-      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
-      "episode": "episode:bb1f3458304a26",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "사법·처분",
         "파장·후속"
       ],
       "duplicate_candidates": 32,
-      "event_count": 38,
+      "event_count": 37,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9018c6d5",
+      "title": "'나 홀로 집에' 속편 추진 중…맥컬리 컬킨 34년 만에 복귀",
+      "episode": "episode:6ffb848fd2e19b",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 11,
+      "event_count": 5,
       "evidence_rate": 1.0
     }
   ]
