@@ -1,39 +1,7 @@
 {
-  "updated": "2026-11-21T17:18:20.066748+09:00",
-  "alerts_count": 15,
+  "updated": "2026-11-21T16:06:19.980089+09:00",
+  "alerts_count": 13,
   "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.0cf6a879d72e730b97e826f9d73ac2d806ecc6f7.001.1",
-      "t": "2026-11-21 00:15",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Central Douglas County",
-      "area_en": "Central Douglas County",
-      "event": "Freeze Warning",
-      "event_en": "Freeze Warning",
-      "severity": "Severe",
-      "headline_ko": "Central Douglas County Freeze Warning",
-      "headline_en": "Central Douglas County Freeze Warning",
-      "desc": "* WHAT...Sub-freezing temperatures as low as 31.\n\n* WHERE...Central Douglas County including the Umpqua Valley. This\nincludes Roseburg, Sutherlin, Winston, Canyonville and surrounding\nareas.\n\n* WHEN...Until 8 AM PST this morning.\n\n* IMPACTS...Frost and freeze conditions could kill crops, other\nsensi"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.2598522953f168f222e8b8c40b6370fb504f8661.001.1",
-      "t": "2026-11-21 02:45",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Coastal waters from Bonita Beach to Englewood FL out 20 NM",
-      "area_en": "Coastal waters from Bonita Beach to Englewood FL out 20 NM",
-      "event": "Special Marine Warning",
-      "event_en": "Special Marine Warning",
-      "severity": "Severe",
-      "headline_ko": "Coastal waters from Bonita Beach to Englewood FL out 20 NM Special Marine Warning",
-      "headline_en": "Coastal waters from Bonita Beach to Englewood FL out 20 NM Special Marine Warning",
-      "desc": "SMWTBW\n\nThe National Weather Service in Ruskin has issued a\n\n* Special Marine Warning for...\nCoastal waters from Bonita Beach to Englewood FL out 20 NM...\nWaters from Bonita Beach to Englewood FL out 20 to 60 NM...\n\n* Until 415 AM EST.\n\n* At 244 AM EST, strong thunderstorms were located along a line"
-    },
     {
       "id": "urn:oid:2.49.0.1.840.0.a6fa5086145354d0ed1a90a690364b8badc81719.001.2",
       "t": "2026-11-21 01:30",
@@ -213,22 +181,6 @@
   ],
   "quakes": [
     {
-      "id": "us6000ucij",
-      "mag": 6.8,
-      "place": "103 km NE of Lospalos, Timor Leste",
-      "t": "2026-11-21 09:42",
-      "depth": 143.423,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucij"
-    },
-    {
-      "id": "us6000uci2",
-      "mag": 4.9,
-      "place": "65 km NNW of Port-Vila, Vanuatu",
-      "t": "2026-11-21 07:20",
-      "depth": 43.228,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uci2"
-    },
-    {
       "id": "us6000uchd",
       "mag": 5,
       "place": "0 km NE of Carhuamayo, Peru",
@@ -291,6 +243,22 @@
       "t": "2026-11-20 14:16",
       "depth": 10,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc9c"
+    },
+    {
+      "id": "us6000uc96",
+      "mag": 5.1,
+      "place": "15 km SSW of Balangonan, Philippines",
+      "t": "2026-11-20 13:09",
+      "depth": 73.392,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc96"
+    },
+    {
+      "id": "us6000uc8k",
+      "mag": 4.7,
+      "place": "southeast of the Loyalty Islands",
+      "t": "2026-11-20 10:48",
+      "depth": 10,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000uc8k"
     }
   ],
   "cities": [
@@ -302,11 +270,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 8.3,
-      "apparent_temp": 5.8,
-      "humidity": 75,
+      "temp": 9.0,
+      "apparent_temp": 6.7,
+      "humidity": 73,
       "code": 0,
-      "wind": 7.6
+      "wind": 6.4
     },
     {
       "id": "losangeles",
@@ -316,11 +284,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 11.2,
+      "temp": 12.1,
       "apparent_temp": 7.7,
-      "humidity": 44,
+      "humidity": 38,
       "code": 0,
-      "wind": 8.7
+      "wind": 13.8
     },
     {
       "id": "london",
@@ -330,11 +298,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 4.5,
-      "apparent_temp": 1.5,
-      "humidity": 74,
+      "temp": 4.3,
+      "apparent_temp": 1.6,
+      "humidity": 76,
       "code": 3,
-      "wind": 6.1
+      "wind": 4.3
     },
     {
       "id": "paris",
@@ -344,9 +312,9 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 8.7,
-      "apparent_temp": 7.2,
-      "humidity": 90,
+      "temp": 8.9,
+      "apparent_temp": 7.6,
+      "humidity": 92,
       "code": 3,
       "wind": 4.8
     },
@@ -358,11 +326,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 0.8,
-      "apparent_temp": -1.7,
+      "temp": 0.4,
+      "apparent_temp": -2.2,
       "humidity": 99,
-      "code": 2,
-      "wind": 3.5
+      "code": 3,
+      "wind": 3.2
     },
     {
       "id": "tokyo",
@@ -372,11 +340,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 12.2,
-      "apparent_temp": 10.5,
-      "humidity": 56,
+      "temp": 13.7,
+      "apparent_temp": 11.2,
+      "humidity": 38,
       "code": 0,
-      "wind": 1.3
+      "wind": 1.8
     },
     {
       "id": "beijing",
@@ -386,11 +354,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 5.3,
-      "apparent_temp": 0.9,
-      "humidity": 27,
+      "temp": 5.9,
+      "apparent_temp": 1.7,
+      "humidity": 25,
       "code": 0,
-      "wind": 6.8
+      "wind": 5.2
     },
     {
       "id": "singapore",
@@ -400,11 +368,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 30.2,
-      "apparent_temp": 34.3,
-      "humidity": 65,
-      "code": 3,
-      "wind": 9.7
+      "temp": 30.1,
+      "apparent_temp": 34.6,
+      "humidity": 71,
+      "code": 51,
+      "wind": 11.1
     },
     {
       "id": "sydney",
@@ -414,11 +382,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 23.8,
-      "apparent_temp": 25.6,
-      "humidity": 77,
-      "code": 1,
-      "wind": 12.6
+      "temp": 25.2,
+      "apparent_temp": 26.6,
+      "humidity": 72,
+      "code": 0,
+      "wind": 15.7
     },
     {
       "id": "toronto",
@@ -428,8 +396,8 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 5.1,
-      "apparent_temp": 2.8,
+      "temp": 4.9,
+      "apparent_temp": 2.6,
       "humidity": 100,
       "code": 45,
       "wind": 7.1
@@ -442,11 +410,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 28.3,
-      "apparent_temp": 30.4,
+      "temp": 28.1,
+      "apparent_temp": 30.0,
       "humidity": 59,
       "code": 0,
-      "wind": 14.8
+      "wind": 12.9
     },
     {
       "id": "saopaulo",
@@ -456,11 +424,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 20.4,
-      "apparent_temp": 23.0,
-      "humidity": 95,
+      "temp": 22.4,
+      "apparent_temp": 25.3,
+      "humidity": 84,
       "code": 3,
-      "wind": 6.8
+      "wind": 5.7
     }
   ],
   "stories": []

@@ -1,52 +1,145 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 08:27:09",
+  "updated_at": "2026-11-21 07:09:12",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.88,
+  "average_quality": 0.86,
   "issues": [
     {
-      "id": "iaf8876aa",
-      "title": "[속보] 李 \"수능 부정행위 신고포상, 건당 최소 1억…행위자 수만큼 가산\"",
-      "episode": "episode:27133a90139c76",
+      "id": "i2aaa0d29",
+      "title": "與 “조희대 대법원장 탄핵안, 내란 2주기인 12월3일 발의 추진”",
+      "episode": "episode:200c6a82f7430d",
       "quality": 1.0,
+      "stages": [
+        "발단·의혹",
+        "수사·대응",
+        "사법·처분",
+        "일반 보도",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 37,
+      "event_count": 23,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib13a3e93",
+      "title": "화물열차 이탈·일반열차 중단에 KTX·ITX-새마을 등 15대 임시 투입",
+      "episode": "episode:c1db80f62f55c8",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ice07f206",
+      "title": "“손정의 회장, SK하이닉스 1조달러에 인수 검토”",
+      "episode": "episode:c10e5e05aebe82",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic1db1eb6",
+      "title": "리트 만점자, 사망 이틀전 “탈출 도와달라”…새벽엔 짐정리",
+      "episode": "episode:f05a09e20a2748",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
         "입장·공방",
-        "수사·대응",
         "파장·후속",
         "사법·처분"
       ],
       "gaps": [
-        "발단·의혹"
+        "발단·의혹",
+        "수사·대응"
       ],
-      "duplicate_candidates": 56,
-      "event_count": 126,
+      "duplicate_candidates": 31,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia08e593c",
-      "title": "이 대통령 \"5,500억 환수한 게 배임인가\"‥대장동 의혹 거듭 반박",
-      "episode": "episode:37ed9b56d4d0b8",
-      "quality": 1.0,
+      "id": "i5bf4c23b",
+      "title": "[속보] 일본인 93% “중국과 관계 좋지 않다”…한국 호감도는 상승",
+      "episode": "episode:74a22f82f9764c",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
-        "수사·대응",
         "파장·후속",
         "입장·공방",
         "사법·처분"
       ],
       "gaps": [
-        "발단·의혹"
+        "발단·의혹",
+        "수사·대응"
       ],
-      "duplicate_candidates": 36,
-      "event_count": 46,
+      "duplicate_candidates": 28,
+      "event_count": 27,
       "evidence_rate": 1.0
     },
     {
-      "id": "i1475184c",
-      "title": "“손정의, 1346조원에 SK하이닉스 인수 구상…월가에 자금 조달안 문의”",
-      "episode": "episode:2b5656c4f79bc3",
+      "id": "i3ef18b4e",
+      "title": "\"젠슨 황, '낙태'까지 들먹이더니…\" 추가 폭로 또 나왔다",
+      "episode": "episode:a8509d9f41e7fd",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "수사·대응",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 45,
+      "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if3ab93cc",
+      "title": "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져",
+      "episode": "episode:44792e44893608",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 37,
+      "event_count": 43,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i53ad9e31",
+      "title": "\"이거 사면 부자 된다더니\"…반토막도 모자라 와르르 무너진 비트코인",
+      "episode": "episode:4faeb0ced9eefc",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -56,69 +149,14 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 35,
-      "event_count": 7,
+      "duplicate_candidates": 16,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i3ef18b4e",
-      "title": "\"젠슨 황, '낙태'까지 들먹이더니…\" 추가 폭로 또 나왔다",
-      "episode": "episode:3a404976464706",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "수사·대응",
-        "입장·공방",
-        "발단·의혹"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 40,
-      "event_count": 16,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic896c05c",
-      "title": "리트 만점자, 사망 당일 새벽 자취방서 짐정리…이틀 전엔 \"탈출 도와달라\"",
-      "episode": "episode:b4f8ea704e2708",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i53ad9e31",
-      "title": "\"이거 사면 부자 된다더니\"…반토막도 모자라 와르르 무너진 비트코인",
-      "episode": "episode:ee666947c25fa5",
-      "quality": 0.76,
-      "stages": [
-        "발단·의혹",
-        "일반 보도"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 20,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1907c2f4",
-      "title": "\"한국에 친근감 느낀다\" 일본인 62% 역대 최고…중국은 86%가 비호감",
-      "episode": "episode:7c960a487b7b6b",
+      "id": "i1ac48d32",
+      "title": "맥컬리 컬킨, 34년 만에 ‘나 홀로 집에’ 속편 복귀하나",
+      "episode": "episode:ebc393078a0448",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -128,64 +166,28 @@
         "발단·의혹",
         "입장·공방",
         "수사·대응"
+      ],
+      "duplicate_candidates": 13,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib9ccd9be",
+      "title": "\"이진우, 사망 당일 집 왔었다\"…이틀 전 집주인에 한 말",
+      "episode": "episode:19baf131a201d6",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "발단·의혹"
       ],
       "duplicate_candidates": 32,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3374b9e2",
-      "title": "46세 된 ‘케빈’ 돌아오나…맥컬리 컬킨 ‘나 홀로 집에’ 속편 제안",
-      "episode": "episode:dd0bf0fe8bcc39",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 10,
       "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i54ca174c",
-      "title": "[단독] 리트 만점자, 유서에 “죽어도 가려 했지만…조롱 당하겠지”",
-      "episode": "episode:b82b7f79909171",
-      "quality": 0.92,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "입장·공방",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "사법·처분"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i79618f63",
-      "title": "\"머리 열어 소변 보겠다\"⋯젠슨 황, 또 폭언·모욕·거짓말 논란",
-      "episode": "episode:58abdddcf9c3d2",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "수사·대응",
-        "입장·공방",
-        "발단·의혹"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 38,
-      "event_count": 16,
       "evidence_rate": 1.0
     }
   ]
