@@ -1,68 +1,32 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 09:22:52",
+  "updated_at": "2026-11-21 07:56:37",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.92,
+  "average_quality": 0.87,
   "issues": [
-    {
-      "id": "ieda0c69f",
-      "title": "[속보]李대통령 \"수능 부정 신고, 건당 최소 1억원…공직자 부패만큼 심각한 범죄\"",
-      "episode": "episode:9dd075a140de14",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "파장·후속",
-        "사법·처분",
-        "발단·의혹"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 86,
-      "event_count": 148,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1475184c",
-      "title": "“손정의, 1346조원에 SK하이닉스 인수 구상…월가에 자금 조달안 문의”",
-      "episode": "episode:7cf18d44085f9b",
-      "quality": 0.76,
-      "stages": [
-        "발단·의혹",
-        "일반 보도"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 37,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
     {
       "id": "i7ad53363",
       "title": "\"조희대 탄핵안, 12월 3일 기점 발의 공감대\"…민주당 대변인이 밝힌 탄핵 사유",
-      "episode": "episode:259501afdcc104",
+      "episode": "episode:1c1674219ba1bd",
       "quality": 1.0,
       "stages": [
         "발단·의혹",
-        "수사·대응",
         "파장·후속",
+        "일반 보도",
         "사법·처분",
-        "입장·공방",
-        "일반 보도"
+        "수사·대응",
+        "입장·공방"
       ],
       "gaps": [],
-      "duplicate_candidates": 33,
-      "event_count": 17,
+      "duplicate_candidates": 36,
+      "event_count": 24,
       "evidence_rate": 1.0
     },
     {
-      "id": "ied764395",
-      "title": "\"한국인 좋아\" 일본인 역대 최고…중국은 93%가 '안 좋다' 응답",
-      "episode": "episode:414bdb150fe4d5",
+      "id": "ic5f38b5a",
+      "title": "\"소프트뱅크 손정의, 한때 SK하이닉스 1조달러 인수안 검토\"",
+      "episode": "episode:b3ffcec473ec92",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -72,121 +36,158 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 9,
+      "duplicate_candidates": 32,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i8a8d2bb0",
-      "title": "집주인에 \"탈출 도와달라\"... 리트 만점자, 사망 당일 새벽 자취방 들러",
-      "episode": "episode:da5feb5713b97f",
+      "id": "i81f428c2",
+      "title": "장동혁 \"李 '대장동 배임 혐의' 반박에 \"1000만원 훔치고 500만원 돌려줘\"",
+      "episode": "episode:adb59183b7c44a",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "수사·대응",
-        "발단·의혹",
         "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
+        "수사·대응",
+        "파장·후속",
         "사법·처분"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ifaa1a037",
-      "title": "비트코인, 8000만원선 붕괴…AI발 위험회피에 '극단적 공포'",
-      "episode": "episode:e247d4402a4885",
-      "quality": 0.76,
-      "stages": [
-        "발단·의혹",
-        "일반 보도"
-      ],
       "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 20,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i5112719d",
-      "title": "\"머리 열어 소변 보겠다\"⋯젠슨 황, 또 폭언·모욕·거짓말 논란",
-      "episode": "episode:26394a447713f7",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "수사·대응",
-        "사법·처분",
-        "일반 보도",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 47,
-      "event_count": 18,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3ef18b4e",
-      "title": "\"젠슨 황, '낙태'까지 들먹이더니…\" 추가 폭로 또 나왔다",
-      "episode": "episode:8e3d107b05e764",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "수사·대응",
-        "입장·공방",
         "발단·의혹"
       ],
-      "gaps": [],
-      "duplicate_candidates": 32,
-      "event_count": 14,
+      "duplicate_candidates": 64,
+      "event_count": 136,
       "evidence_rate": 1.0
     },
     {
-      "id": "i54ca174c",
-      "title": "[단독] 리트 만점자, 유서에 “죽어도 가려 했지만…조롱 당하겠지”",
-      "episode": "episode:b82b7f79909171",
-      "quality": 1.0,
+      "id": "i7649156c",
+      "title": "일본 국민 61% “한국에 친근감”…86% “중국에 친근감 없어”",
+      "episode": "episode:ffd9afac0dba9f",
+      "quality": 0.92,
       "stages": [
+        "일반 보도",
         "파장·후속",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 35,
+      "event_count": 29,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic1db1eb6",
+      "title": "리트 만점자, 사망 이틀전 “탈출 도와달라”…새벽엔 짐정리",
+      "episode": "episode:f05a09e20a2748",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "일반 보도",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 37,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ifca4aed2",
+      "title": "비트코인 추락 어디까지… 한 달 새 33% 하락",
+      "episode": "episode:fb59856c1491fa",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "gaps": [
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 35,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i84b73451",
+      "title": "\"케빈이 돌아온다\"...'나 홀로 집에' 속편 제작, 맥컬리 컬킨 복귀",
+      "episode": "episode:392ddb022ab31f",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 13,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if3ab93cc",
+      "title": "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져",
+      "episode": "episode:3e67966413ad60",
+      "quality": 0.84,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 43,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i122809a5",
+      "title": "“이 글도 조롱하겠지”… ‘리트 만점자’ 이진우의 마지막 메모",
+      "episode": "episode:b06cf3818b251f",
+      "quality": 0.92,
+      "stages": [
         "발단·의혹",
         "일반 보도",
         "입장·공방",
+        "파장·후속",
         "수사·대응"
       ],
       "gaps": [
         "사법·처분"
       ],
       "duplicate_candidates": 31,
-      "event_count": 8,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "ib1447f6e",
-      "title": "\"이 글도 조롱 당하겠지\"...리트 만점자 남긴 메모 봤더니",
-      "episode": "episode:43dac33b02b484",
-      "quality": 1.0,
+      "id": "i2612a21b",
+      "title": "[르포] 대학 논술시험도 AI발 혼란…진동 울려 금속탐지기 조사도(종합)",
+      "episode": "episode:c54c032a12070e",
+      "quality": 0.76,
       "stages": [
-        "발단·의혹",
         "일반 보도",
-        "입장·공방",
-        "파장·후속",
         "수사·대응"
       ],
       "gaps": [
+        "발단·의혹",
+        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 33,
-      "event_count": 6,
+      "duplicate_candidates": 8,
+      "event_count": 8,
       "evidence_rate": 1.0
     }
   ]
