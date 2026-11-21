@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-21",
-  "generated_at": "2026-11-21T22:50:21+09:00",
+  "generated_at": "2026-11-21T22:24:46+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,22 +27,22 @@
   },
   "candidates": [
     {
-      "issue_id": "ie6661867",
+      "issue_id": "ic5f38b5a",
       "title": "\"소프트뱅크 손정의, 한때 SK하이닉스 1조달러 인수안 검토\"",
       "category": "경제",
       "rank": 4,
-      "priority_score": 45,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "needs_fact_review",
       "facts": [
-        "손정의 일본 소프트뱅크그룹 회장이 과거 SK하이닉스를 약 1조 달러(약 1350조원)에 인수하기 위해 미국 월가 금융기관들에 자금 조달 방안을 문의했다는 미국 매체의 보도가 나왔다.",
         "\"소프트뱅크 손정의, 1조 달러에 SK하이닉스 인수 검토했다\"",
         "“손정의 회장, SK하이닉스 1조 달러에 인수하려 했다”",
         "美 매체 \"월가 금융기관에 조달 방안 문의\" 소프트뱅크 \"더 이상 고려 안 해\" 손정의 일본 소프트뱅크그룹 회장이 한때 SK하이닉스를 약 1조 달러에 인수하는 방안을 검토했다는 외신보도가 나왔습니다.",
-        "자금 조달 가능성을 문의한 것과 기업 인수 협상에 착수한 것은 구분해야 한다."
+        "자금 조달 가능성을 문의한 것과 기업 인수 협상에 착수한 것은 구분해야 한다.",
+        "○ 손정의가 SK하이닉스를 검토한 이유는 SK하이닉스는 인공지능(AI) 반도체에 필수적인 고대역폭메모리(HBM)의 주요"
       ],
       "sources": [
         {
@@ -70,7 +70,7 @@
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "손정의 일본 소프트뱅크그룹 회장이 과거 SK하이닉스를 약 1조 달러(약 1350조원)에 인수하기 위해 미국 월가 금융기관들에 자금 조달 방안을 문의했다는 미국 매체의 보도가 나왔다."
+          "evidence": "\"소프트뱅크 손정의, 1조 달러에 SK하이닉스 인수 검토했다\""
         },
         {
           "panel": 2,
@@ -80,12 +80,12 @@
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "\"소프트뱅크 손정의, 1조 달러에 SK하이닉스 인수 검토했다\""
+          "evidence": "“손정의 회장, SK하이닉스 1조 달러에 인수하려 했다”"
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "손정의 소프트뱅크 회장이 과거 SK하이닉스를 1조 달러에 인수하는 방안을 검토하고 월가에 자금을 문의했다는 미국 매체 보도가 집중적으로 확산되었으며, 소프트뱅크는 추진 계획이 없다고 선을 그었다."
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
@@ -125,6 +125,111 @@
         "continuity_quality": 0.76,
         "continuity_gaps": [
           "입장·공방",
+          "수사·대응",
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "id44aa7ca",
+      "title": "개미들 피눈물 쏟아지는데…무디스가 본 '삼전닉스의 미래'",
+      "category": "경제",
+      "rank": 9,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "최근 삼성전자와 하이닉스 주가가 부진을 면치 못하는 가운데 국제 신용평가사 무디스가 이들 K-반도체 기업에 대해 긍정적인 전망을 내놓았다.",
+        "“시진핑, 트럼프 면전에서 ‘젠슨 황 뛰어난 사람’ 극찬해”",
+        "삼성전자와 SK하이닉스 등 반도체 관련주의 변동성이 커질 수 있다는 분석도 나온다.",
+        "17일(현지시간)...",
+        "국제신용평가사 무디스가 최근 한국 성장률 전망을 3.5%로 올리며 \"반도체 사이클이 2027년 중반까지 강하게 유지될..."
+      ],
+      "sources": [
+        {
+          "press": "세계일보",
+          "title": "“시진핑, 트럼프 면전에서 ‘젠슨 황 뛰어난 사람’ 극찬해”",
+          "url": "https://n.news.naver.com/article/022/0004176974"
+        },
+        {
+          "press": "hankyung.com",
+          "title": "\"닷컴 버블처럼 터진다\" 섬뜩한 경고…삼전닉스 개미들 '초비상'",
+          "url": "https://n.news.naver.com/mnews/article/015/0005321929?sid=101"
+        },
+        {
+          "press": "한국경제TV",
+          "title": "\"삼전닉스, 반전은 온다\"...무디스 전망에 개미들 '반색'",
+          "url": "https://n.news.naver.com/article/215/0001273483"
+        },
+        {
+          "press": "biz.sbs.co.kr",
+          "title": "[투자전략 따라잡기] '300조 주주환원' 전망까지 하반기도 '삼전닉스'가...",
+          "url": "https://n.news.naver.com/mnews/article/374/0000527960?sid=101"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "최근 삼성전자와 하이닉스 주가가 부진을 면치 못하는 가운데 국제 신용평가사 무디스가 이들 K-반도체 기업에 대해 긍정적인 전망을 내놓았다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "회복 - 무디스 등 신평사 韓 경제성장률 상향 조정 - 단기 급등 차익실현 물량 출회 가능성도 - 美 국채 금리..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "17일(현지시간)..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
+          "발단·의혹",
           "수사·대응",
           "사법·처분"
         ],
@@ -232,107 +337,6 @@
           "발단·의혹",
           "수사·대응"
         ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ia948e12c",
-      "title": "트럼프, 민주당 주도 의회 출범전 이란전 재개 할까",
-      "category": "세계",
-      "rank": 9,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "러시아가 우크라이나 전장에 투입한 제트 추진 드론 '게란(Geran)-4'가 러시아·중국·이란·북한 4개국의 협력 체계로 만들어졌다는 분석이 나왔다.",
-        "도널드 트럼프 미국 대통령이 이란 전쟁이 공화당의 중간선거 패배에 영향을 미쳤다는 JD 밴스 부통령의...",
-        "그는 \"이란은 최대의 테러 지원국\"이라며 \"핵무기를 보유한다면 이를 압박 수단으로 사용하거나 최악의 경우...",
-        "[단독] 게란-4 드론, 러·중·이란·북이 함께 만들었다",
-        "일부 미국 관리들도 대통령에게 이란 문제를 완전히 마무리하라며 압박하고 있는 것으로 전해졌다."
-      ],
-      "sources": [
-        {
-          "press": "fntoday.co.kr",
-          "title": "트럼프 \"중간선거 패배에도 이란 공격 다시 결정할 것\"…밴스 \"대통령 ...",
-          "url": "https://www.fntoday.co.kr/news/articleView.html?idxno=399591"
-        },
-        {
-          "press": "동행미디어 시대",
-          "title": "[단독] 게란-4 드론, 러·중·이란·북이 함께 만들었다",
-          "url": "https://n.news.naver.com/article/417/0001165133"
-        },
-        {
-          "press": "newsis.com",
-          "title": "네타냐후, 새해 전 이란 공격 압박…트럼프 \"서두르지 않겠다\"",
-          "url": "https://n.news.naver.com/mnews/article/003/0014337466?sid=104"
-        },
-        {
-          "press": "mbn.mk.co.kr",
-          "title": "미·이스라엘서 이란 공격 재개 압박…트럼프는 \"서두르지 않겠다\"",
-          "url": "https://n.news.naver.com/mnews/article/057/0001979240?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "러시아가 우크라이나 전장에 투입한 제트 추진 드론 '게란(Geran)-4'가 러시아·중국·이란·북한 4개국의 협력 체계로 만들어졌다는 분석이 나왔다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "도널드 트럼프 미국 대통령이 이란 전쟁이 공화당의 중간선거 패배에 영향을 미쳤다는 JD 밴스 부통령의..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "[단독] 게란-4 드론, 러·중·이란·북이 함께 만들었다"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [],
         "no_generic_closing": true
       }
     }

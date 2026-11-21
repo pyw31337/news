@@ -1,7 +1,7 @@
 {
-  "run_id": "44910166069",
-  "observed_at": "2026-11-21T13:50:51+00:00",
-  "observed_at_kst": "2026-11-21T22:50:51+09:00",
+  "run_id": "44907670266",
+  "observed_at": "2026-11-21T13:25:16+00:00",
+  "observed_at_kst": "2026-11-21T22:25:16+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
   "commit": "48a5c032e2b5906a97f257025ffe5ed34ec622ae",
@@ -9,16 +9,16 @@
   "stages": {
     "collect": {
       "status": "degraded",
-      "ok": 299,
-      "fail": 15,
-      "errors": 15,
+      "ok": 293,
+      "fail": 28,
+      "errors": 28,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 433,
-      "fail": 27,
-      "errors": 27,
+      "ok": 444,
+      "fail": 30,
+      "errors": 30,
       "artifact": true
     },
     "quality": {
@@ -26,235 +26,232 @@
       "quality_issue_count": 10,
       "event_quality_present": true,
       "detail": {
-        "low_score": 9,
-        "low_photo": 6,
-        "low_source": 3,
-        "missing_event_stages": 8
+        "low_score": 8,
+        "low_photo": 7,
+        "low_source": 1,
+        "missing_event_stages": 9
       }
     },
     "publish": {
       "status": "success",
-      "published_at": "2026-11-21T13:51:06+00:00",
-      "data_commit": "900228cf8e70bdd0f78ee29a1210545db384c29e",
+      "published_at": "2026-11-21T13:28:03+00:00",
+      "data_commit": "2f841c295f7748674a95660592c89c1615e2bc98",
       "note": "data 브랜치 커밋 이후 게시 확인"
     }
   },
   "counts": {
     "issues": 10,
-    "sources": 195,
+    "sources": 190,
     "entities": 36,
     "global_issues": 0,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "3cf1163f1d807596b1cac322b29539001dd032aa7e54fdde1a8c750057f5d134",
+    "today": "c635e9ee9b6bd5ec921db843281e4f1cd020f7a833fa58e7fc5c666c589fd913",
     "global": null,
-    "quality": "498c23074310f6d33619c55787e7d7264bda668d65af2caca0141dc671f7d302",
-    "status": "422cfe9ff27e2bd3366cc6828030cc7bf1dd5124ba31ed9249008e98200b3357",
-    "event_quality": "d15b5348550f2eb1fb97a1caf304197555346164950f7c718fd746bbe23ce766"
+    "quality": "c0e0a7bec25818be34d6493c1c88c2ab9bd9b786f113f7415e180f121982b64a",
+    "status": "c71b23acf441ef2cac1ae3a618117f5bdcadc22a5e0a344174517730e545d2de",
+    "event_quality": "1a5e6f99413562b92124db700cf578b7749b9741fc186005980cd0f3f9334dd8"
   },
   "diagnostics": {
     "collect": {
       "by_kind": {
+        "timeout": 13,
         "not_found": 15
       },
       "by_host": {
+        "n.news.naver.com": 13,
         "ko.wikipedia.org": 15
       },
       "surface": {
-        "core": 15,
-        "auxiliary": 0
+        "core": 21,
+        "auxiliary": 7
       },
       "examples": [
         {
-          "t": "22:44:05",
+          "t": "22:14:52",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EA%B2%8C%EB%9E%80",
+          "path": "/api/rest_v1/page/summary/%EB%A7%9E%EC%86%90",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "22:44:05",
+          "t": "22:14:52",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%ED%95%9C%EA%B5%AD%EC%8B%9D%ED%92%",
+          "path": "/api/rest_v1/page/summary/AI%EB%B0%9C",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "22:44:05",
+          "t": "22:14:52",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/AI%EB%B6%80%EC%A0%95%ED%96%89%EC%9",
+          "path": "/api/rest_v1/page/summary/%ED%99%8D%EB%8C%80%EC%9E%85%EA%B5%",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "22:44:06",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%82%BC%EC%A0%84%EB%8B%89%EC%8A%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "22:44:06",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%AF%B8%EC%A4%91%EB%9F%AC",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "22:44:06",
+          "t": "22:14:52",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EB%8C%80%EA%B5%AC%EC%84%9C",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "22:44:06",
+          "t": "22:14:52",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%ED%8F%89%EC%B0%BD%EC%84%9C",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "22:44:06",
+          "t": "22:14:52",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%ED%99%8D%EB%8C%80%EC%9E%85%EA%B5%",
+          "path": "/api/rest_v1/page/summary/%EC%82%BC%EC%A0%84%EB%8B%89%EC%8A%",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "22:14:53",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%ED%95%9C%EA%B5%AD%EC%84%9C",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "22:14:53",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%9A%B0%EC%97%98%EB%B2%A1",
           "err": "HTTP Error 404: Not Found"
         }
       ]
     },
     "analyze": {
       "by_kind": {
-        "other": 9,
-        "not_found": 12,
+        "other": 8,
+        "not_found": 16,
         "rate_limit": 6
       },
       "by_host": {
-        "search.naver.com": 9,
-        "ko.wikipedia.org": 18
+        "search.naver.com": 8,
+        "ko.wikipedia.org": 22
       },
       "surface": {
-        "core": 27,
+        "core": 30,
         "auxiliary": 0
       },
       "examples": [
         {
-          "t": "22:45:31",
+          "t": "22:17:59",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%82%B4%EB%85%84",
+          "path": "/api/rest_v1/page/summary/%EC%B9%9C%EA%B7%BC%EA%B0%90",
+          "err": "HTTP Error 429: Too Many Requests"
+        },
+        {
+          "t": "22:18:02",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%9E%A5%EC%99%B8%EC%A7%91%ED%9A%",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "22:45:49",
+          "t": "22:18:02",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A2%85%EC%A0%84",
-          "err": "HTTP Error 429: Too Many Requests"
+          "path": "/api/rest_v1/page/summary/%EA%B1%B4%EB%8B%B9",
+          "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "22:45:50",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%ED%8F%AD%EB%9D%BD",
-          "err": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "t": "22:45:50",
+          "t": "22:18:03",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EC%B5%9C%EB%8C%80",
-          "err": "HTTP Error 429: Too Many Requests"
+          "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "22:46:08",
+          "t": "22:18:03",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%B6%94%EA%B0%80%EA%B3%B5%EA%B2%",
-          "err": "HTTP Error 429: Too Many Requests"
+          "path": "/api/rest_v1/page/summary/%EC%8B%9D%ED%92%88%EC%9C%84%EC%83%",
+          "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "22:46:08",
+          "t": "22:18:03",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/AI%EC%A3%BC",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "22:18:03",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%8B%9D%ED%92%88%EA%B3%BC%ED%95%",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "22:18:03",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EA%B0%9C%EC%B5%9C",
           "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "22:46:08",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%8B%9D%ED%92%88%EC%9C%84%EC%83%",
-          "err": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "t": "22:46:08",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%8B%9D%ED%92%88%EA%B3%BC%ED%95%",
-          "err": "HTTP Error 429: Too Many Requests"
         }
       ]
     },
     "global": {
       "by_kind": {
-        "other": 14,
-        "timeout": 2
+        "other": 10,
+        "not_found": 1
       },
       "by_host": {
-        "www.telegraphindia.com": 1,
         "www.wsj.com": 1,
+        "news.sky.com": 2,
         "www.politico.com": 1,
         "www.barrons.com": 1,
         "www.nytimes.com": 1,
-        "www.rfi.fr": 1,
         "apnews.com": 1,
-        "news.sky.com": 1,
-        "www.azcentral.com": 1,
-        "www.bloomberg.com": 1,
-        "davisvanguard.org": 1,
-        "www.axios.com": 1,
-        "www.techpowerup.com": 1,
-        "www.wwltv.com": 1,
-        "www.washingtonpost.com": 2
+        "www.indiatv.in": 1,
+        "www.ndtv.com": 1,
+        "newsday.co.za": 1,
+        "mybroadband.co.za": 1
       },
       "surface": {
-        "core": 16,
+        "core": 11,
         "auxiliary": 0
       },
       "examples": [
         {
-          "t": "22:46:45",
-          "host": "www.azcentral.com",
-          "path": "/press-release/story/155393/from-police-cars-to-call-centers",
-          "err": "HTTP Error 402: Payment Required"
+          "t": "22:18:32",
+          "host": "www.barrons.com",
+          "path": "/articles/nvidia-stock-technical-analysis-ai-chips-2b0667d5",
+          "err": "HTTP Error 401: HTTP Forbidden"
         },
         {
-          "t": "22:46:46",
-          "host": "www.bloomberg.com",
-          "path": "/news/articles/2026-11-20/bitcoin-falls-to-more-than-two-yea",
+          "t": "22:18:32",
+          "host": "www.nytimes.com",
+          "path": "/2026/11/20/technology/jensen-huang-nvidia-culture.html",
           "err": "HTTP Error 403: Forbidden"
         },
         {
-          "t": "22:46:47",
-          "host": "davisvanguard.org",
-          "path": "/2026/11/davis-inventopia-agtech-research-farm/",
+          "t": "22:18:33",
+          "host": "apnews.com",
+          "path": "/article/un-drones-robots-un-lethal-ai-weapons-ebe057d2a47cd",
           "err": "HTTP Error 403: Forbidden"
         },
         {
-          "t": "22:46:47",
-          "host": "www.axios.com",
-          "path": "/pro/health-tech-deals/2026/11/21/health-tech-deals-science-",
+          "t": "22:18:37",
+          "host": "news.sky.com",
+          "path": "/story/german-bidder-stages-last-gasp-bid-to-rescue-poundlan",
           "err": "HTTP Error 403: Forbidden"
         },
         {
-          "t": "22:46:48",
-          "host": "www.techpowerup.com",
-          "path": "/355072/nvidias-ssd-write-bug-gets-patched-in-geforce-hotfix",
+          "t": "22:18:37",
+          "host": "www.indiatv.in",
+          "path": "/sports/cricket/indian-has-secured-the-top-position-in-the-p",
           "err": "HTTP Error 403: Forbidden"
         },
         {
-          "t": "22:46:48",
-          "host": "www.wwltv.com",
-          "path": "/article/news/local/thousands-stuck-outside-superdome-for-us",
+          "t": "22:18:38",
+          "host": "www.ndtv.com",
+          "path": "/lifestyle/from-sequins-to-classic-whites-breaking-down-kavy",
           "err": "HTTP Error 403: Forbidden"
         },
         {
-          "t": "22:47:28",
-          "host": "www.washingtonpost.com",
-          "path": "/health/2026/11/21/drones-may-deliver-emergency-medicine-us-",
-          "err": "The read operation timed out"
+          "t": "22:18:38",
+          "host": "newsday.co.za",
+          "path": "/business/40466/dstv-supersport-changing-in-front-of-everyon",
+          "err": "HTTP Error 403: Forbidden"
         },
         {
-          "t": "22:47:28",
-          "host": "www.washingtonpost.com",
-          "path": "/technology/2026/11/21/welcome-age-endless-digital-breakdown",
-          "err": "The read operation timed out"
+          "t": "22:18:38",
+          "host": "mybroadband.co.za",
+          "path": "/news/broadcasting/678485-dstv-brings-back-open-time-with-fr",
+          "err": "HTTP Error 403: Forbidden"
         }
       ]
     },
@@ -291,8 +288,8 @@
     }
   },
   "status_snapshot": {
-    "updated": "2026-11-21T22:50:21.230309+09:00",
-    "error_count": 58
+    "updated": "2026-11-21T22:24:46.584938+09:00",
+    "error_count": 60
   },
-  "publish_verified_at": "2026-11-21T13:51:06+00:00"
+  "publish_verified_at": "2026-11-21T13:28:03+00:00"
 }
