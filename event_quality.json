@@ -1,231 +1,190 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 10:53:17",
+  "updated_at": "2026-11-21 11:24:04",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.91,
+  "average_quality": 0.86,
   "issues": [
     {
-      "id": "ieda0c69f",
-      "title": "[속보]李대통령 \"수능 부정 신고, 건당 최소 1억원…공직자 부패만큼 심각한 범죄\"",
-      "episode": "episode:7af8be881ccc62",
+      "id": "i7f4bfea4",
+      "title": "이 대통령 \"수능 부정행위 신고포상금 건당 최소 1억‥행위자 수만큼 가산\"",
+      "episode": "episode:02e672178ff29b",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "입장·공방",
         "수사·대응",
         "파장·후속",
-        "사법·처분",
+        "사법·처분"
+      ],
+      "gaps": [
         "발단·의혹"
+      ],
+      "duplicate_candidates": 60,
+      "event_count": 114,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i809100c2",
+      "title": "민주 \"12·3 기점 조희대 탄핵안 발의 공감대\"...국민의힘 장외투쟁",
+      "episode": "episode:6835b1a8844863",
+      "quality": 1.0,
+      "stages": [
+        "발단·의혹",
+        "수사·대응",
+        "사법·처분",
+        "일반 보도",
+        "입장·공방",
+        "파장·후속"
       ],
       "gaps": [],
-      "duplicate_candidates": 88,
-      "event_count": 146,
+      "duplicate_candidates": 35,
+      "event_count": 29,
       "evidence_rate": 1.0
     },
     {
-      "id": "ie4e60f2c",
-      "title": "李 “수능 부정행위 신고포상금 건당 1억... 행위자 수만큼 가산”",
-      "episode": "episode:43f78a5bb28eae",
-      "quality": 1.0,
+      "id": "ic5f38b5a",
+      "title": "\"소프트뱅크 손정의, 한때 SK하이닉스 1조달러 인수안 검토\"",
+      "episode": "episode:4710716486d89f",
+      "quality": 0.68,
       "stages": [
-        "일반 보도",
-        "사법·처분",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "사법·처분"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1475184c",
-      "title": "“손정의, 1346조원에 SK하이닉스 인수 구상…월가에 자금 조달안 문의”",
-      "episode": "episode:31f968066924e1",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 26,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7472fb4e",
-      "title": "‘리트 만점자’ 숨진채 발견... 메모엔 “몸과 마음 지쳤다”",
-      "episode": "episode:43f66ea4b003f7",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 54,
-      "event_count": 115,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iaed3ead0",
-      "title": "\"소프트뱅크 손정의, SK하이닉스 1조달러 인수 검토했다 중단\"",
-      "episode": "episode:1eae017d51130f",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 34,
+      "duplicate_candidates": 39,
       "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia69f272b",
-      "title": "“불륜 아니다” “너의 뇌에 오줌 누겠다”···젠슨 황 퇴출 부른 건 거짓말과 상습 폭언",
-      "episode": "episode:e6ef9238500471",
+      "id": "ib9ccd9be",
+      "title": "\"이진우, 사망 당일 집 왔었다\"…이틀 전 집주인에 한 말",
+      "episode": "episode:41d9a5cba25043",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "파장·후속",
-        "사법·처분",
         "수사·대응",
-        "입장·공방",
-        "발단·의혹"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 49,
-      "event_count": 15,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic966062b",
-      "title": "‘리트 만점자’, 숨진 당일 새벽 자택서 짐 정리…이틀 전엔 “탈출 도와달라” 요청도",
-      "episode": "episode:262de610706dba",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
         "발단·의혹",
         "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 36,
+      "duplicate_candidates": 40,
       "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i53ad9e31",
-      "title": "\"이거 사면 부자 된다더니\"…반토막도 모자라 와르르 무너진 비트코인",
-      "episode": "episode:66d612f0aec740",
+      "id": "ia61ac541",
+      "title": "코레일 \"22일 첫차부터 경부선 일반열차 운행 정상 운행\"",
+      "episode": "episode:8ca46fd86c3d0c",
       "quality": 0.84,
       "stages": [
-        "발단·의혹",
         "일반 보도",
+        "수사·대응",
         "파장·후속"
       ],
       "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 11,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ifaa1a037",
+      "title": "비트코인, 8000만원선 붕괴…AI발 위험회피에 '극단적 공포'",
+      "episode": "episode:3dfeebc4372db5",
+      "quality": 0.68,
+      "stages": [
+        "발단·의혹"
+      ],
+      "gaps": [
         "입장·공방",
         "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 8,
+      "duplicate_candidates": 21,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6c5b8d5c",
-      "title": "[속보] 일본인 “한국인 좋다” 역대 최고… 중국은 93%가 ‘안 좋다’ 응답",
-      "episode": "episode:79f8fb9f08810d",
+      "id": "i122809a5",
+      "title": "“이 글도 조롱하겠지”… ‘리트 만점자’ 이진우의 마지막 메모",
+      "episode": "episode:4789f909356a52",
       "quality": 0.92,
       "stages": [
-        "일반 보도",
-        "파장·후속",
         "발단·의혹",
+        "입장·공방",
+        "파장·후속",
         "수사·대응"
       ],
       "gaps": [
-        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 10,
+      "duplicate_candidates": 34,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "ied75b01c",
-      "title": "AI 의혹 리트 만점자 5줄 유서서 “죽어도 가서 죽으려 했는데…”",
-      "episode": "episode:c421ff1881d0d1",
+      "id": "i82db2c08",
+      "title": "부안서 80∼90도 온천탕에 빠진 60대 화상…헬기 이송",
+      "episode": "episode:b7fc83f783756e",
+      "quality": 0.58,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 22,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i54ca174c",
+      "title": "[단독] 리트 만점자, 유서에 “죽어도 가려 했지만…조롱 당하겠지”",
+      "episode": "episode:b82b7f79909171",
       "quality": 1.0,
       "stages": [
-        "파장·후속",
-        "발단·의혹",
         "일반 보도",
+        "발단·의혹",
         "입장·공방",
+        "파장·후속",
         "수사·대응"
       ],
       "gaps": [
         "사법·처분"
       ],
       "duplicate_candidates": 29,
-      "event_count": 8,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "id48cc629",
-      "title": "대만, 증시 급락 대응 “직전 거래일 종가 미만 공매도 금지”",
-      "episode": "episode:06cadc1801b11f",
+      "id": "i531e23e9",
+      "title": "일본인 10명 중 6명 '한국에 친근감 느껴'…2020년 이래 '최고'",
+      "episode": "episode:9adaa6106d0e90",
       "quality": 0.92,
       "stages": [
         "일반 보도",
+        "입장·공방",
         "파장·후속",
-        "사법·처분",
         "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 18,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i54f5e8e0",
-      "title": "“AI 안경으로 치대 가도 치과의사 가능”…서울대 교수 주장, 이유는?",
-      "episode": "episode:32d9d6f4515a34",
-      "quality": 0.66,
-      "stages": [
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 18,
-      "event_count": 3,
+      "duplicate_candidates": 28,
+      "event_count": 9,
       "evidence_rate": 1.0
     }
   ]
