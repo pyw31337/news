@@ -1,45 +1,45 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-21 07:09:12",
+  "updated_at": "2026-11-21 06:55:04",
   "date": "2026-11-21",
   "total_issues": 10,
-  "average_quality": 0.86,
+  "average_quality": 0.89,
   "issues": [
     {
-      "id": "i2aaa0d29",
-      "title": "與 “조희대 대법원장 탄핵안, 내란 2주기인 12월3일 발의 추진”",
-      "episode": "episode:200c6a82f7430d",
+      "id": "i39f8ddd1",
+      "title": "나경원 \"10개월 만에 주가 반토막…결혼·은퇴자금 사라져\"",
+      "episode": "episode:682137a9ccee81",
       "quality": 1.0,
       "stages": [
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분",
         "일반 보도",
+        "발단·의혹",
         "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 37,
-      "event_count": 23,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib13a3e93",
-      "title": "화물열차 이탈·일반열차 중단에 KTX·ITX-새마을 등 15대 임시 투입",
-      "episode": "episode:c1db80f62f55c8",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
+        "사법·처분",
         "파장·후속"
       ],
       "gaps": [
+        "수사·대응"
+      ],
+      "duplicate_candidates": 25,
+      "event_count": 21,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i45accb22",
+      "title": "이 대통령, 울산 AI 데이터센터 깜짝 방문…\"속도가 생명\"",
+      "episode": "episode:6d1d9717d0243a",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
         "입장·공방",
         "수사·대응",
-        "사법·처분"
+        "파장·후속",
+        "사법·처분",
+        "발단·의혹"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 7,
+      "gaps": [],
+      "duplicate_candidates": 60,
+      "event_count": 125,
       "evidence_rate": 1.0
     },
     {
@@ -61,70 +61,51 @@
       "evidence_rate": 1.0
     },
     {
+      "id": "i6f1bfbf3",
+      "title": "한국엔 따뜻·중국엔 냉랭… \"한국 친근\" 일본인 62%로 역대 최고",
+      "episode": "episode:d2ae0536185ebc",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 24,
+      "evidence_rate": 1.0
+    },
+    {
       "id": "ic1db1eb6",
       "title": "리트 만점자, 사망 이틀전 “탈출 도와달라”…새벽엔 짐정리",
       "episode": "episode:f05a09e20a2748",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i5bf4c23b",
-      "title": "[속보] 일본인 93% “중국과 관계 좋지 않다”…한국 호감도는 상승",
-      "episode": "episode:74a22f82f9764c",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 27,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3ef18b4e",
-      "title": "\"젠슨 황, '낙태'까지 들먹이더니…\" 추가 폭로 또 나왔다",
-      "episode": "episode:a8509d9f41e7fd",
       "quality": 1.0,
       "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
         "수사·대응",
-        "입장·공방"
+        "일반 보도",
+        "입장·공방",
+        "파장·후속",
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 45,
-      "event_count": 15,
+      "duplicate_candidates": 31,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "if3ab93cc",
-      "title": "[속보] 엔비디아 14% 폭락… 뉴욕증시 기술주 매도에 나스닥 5.3% 떨어져",
-      "episode": "episode:44792e44893608",
+      "id": "i0c3ea97e",
+      "title": "뉴욕증시, 기술주 투매에 일제히 흔들…나스닥 5.3% 급락",
+      "episode": "episode:a701104602d62d",
       "quality": 0.84,
       "stages": [
-        "일반 보도",
         "사법·처분",
+        "일반 보도",
         "파장·후속"
       ],
       "gaps": [
@@ -132,31 +113,69 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 43,
+      "duplicate_candidates": 46,
+      "event_count": 60,
       "evidence_rate": 1.0
     },
     {
       "id": "i53ad9e31",
       "title": "\"이거 사면 부자 된다더니\"…반토막도 모자라 와르르 무너진 비트코인",
-      "episode": "episode:4faeb0ced9eefc",
-      "quality": 0.68,
+      "episode": "episode:294dadce497d4b",
+      "quality": 0.76,
       "stages": [
+        "발단·의혹",
         "일반 보도"
       ],
       "gaps": [
-        "발단·의혹",
         "입장·공방",
-        "수사·대응"
+        "수사·대응",
+        "사법·처분"
       ],
-      "duplicate_candidates": 16,
-      "event_count": 8,
+      "duplicate_candidates": 17,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i1ac48d32",
-      "title": "맥컬리 컬킨, 34년 만에 ‘나 홀로 집에’ 속편 복귀하나",
-      "episode": "episode:ebc393078a0448",
+      "id": "i5546106d",
+      "title": "[속보] 일반열차 중단 천안~대전에 KTX 등 15대 투입",
+      "episode": "episode:f4cc0713a22744",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3ef18b4e",
+      "title": "\"젠슨 황, '낙태'까지 들먹이더니…\" 추가 폭로 또 나왔다",
+      "episode": "episode:9ae08a040d4512",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "수사·대응",
+        "입장·공방",
+        "발단·의혹"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 32,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9018c6d5",
+      "title": "'나 홀로 집에' 속편 추진 중…맥컬리 컬킨 34년 만에 복귀",
+      "episode": "episode:278884ae32c33f",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -167,27 +186,8 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 13,
+      "duplicate_candidates": 12,
       "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib9ccd9be",
-      "title": "\"이진우, 사망 당일 집 왔었다\"…이틀 전 집주인에 한 말",
-      "episode": "episode:19baf131a201d6",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 4,
       "evidence_rate": 1.0
     }
   ]
