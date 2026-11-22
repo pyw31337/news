@@ -351,7 +351,10 @@ jobs:
           fi
           # 공통 인물·분류 페이지(person/·e/): scripts/people/person_pages.py → _site/data/p (docs/design-system.md 「인물 페이지 v2」)
           cp -r person e _site/
-          python scripts/people/person_pages.py data pol_db _site || echo "::warning::person pages build failed"
+          # A partial person index is worse than a failed run: it produces a
+          # misleading site and can leave Pages without a valid artifact.
+          python scripts/people/person_pages.py data pol_db _site
+          test -f _site/index.html
       - uses: actions/upload-pages-artifact@v3
         with: { path: _site }
       - id: deploy
