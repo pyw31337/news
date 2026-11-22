@@ -172,9 +172,14 @@ def big(img):
     if w and int(w.group(1)) < 400: return ''
     return img
 BOIL = re.compile(r'cookie|subscribe|sign up|newsletter|advertis|all rights reserved|javascript|your browser|copyright|©|click here|read more|follow us', re.I)
+PAYWALLED_HOSTS = re.compile(r'(^|\.)((nytimes|bloomberg|wsj|ft|economist|usatoday|inc)\.com|reuters\.com)$', re.I)
 def page(u):
     """원문 기사 페이지 한 번 읽어 대표 사진·설명·첫 문단들을 캐시(pg:주소). 막힌 사이트는 빈 값"""
     if not u or 'news.google.com' in u: return {}
+    # These publishers require a subscription or actively block automated
+    # article reads. Their RSS metadata remains usable, so skip futile page
+    # fetches and keep the feed item instead.
+    if PAYWALLED_HOSTS.search(urllib.parse.urlsplit(u).netloc): return {}
     k = 'pg:' + u
     if k in GC: return GC[k]
     t = get(u, 10)

@@ -46,6 +46,7 @@ def ndate(txt):
     if m: return dt.datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)), 12, tzinfo=KST).isoformat()
     return ''
 NAVER_OK = [True]; NAVER_FAIL = [0]
+ALLOW_NAVER_HTML = os.environ.get('ALLOW_NAVER_HTML', '').lower() in ('1', 'true', 'yes')
 def gsearch(q, period=None):
     """네이버 검색이 막힌 환경(예: 클라우드 IP)용 대체: Google 뉴스 RSS 기간 검색"""
     qq = q
@@ -64,7 +65,10 @@ def nsearch(q, sort=0, period=None, start=1):
     if period:
         a, b = period
         u += '&pd=3&ds=%s&de=%s&nso=%s' % (a.strftime('%Y.%m.%d'), b.strftime('%Y.%m.%d'), urllib.parse.quote('so:%s,p:from%sto%s' % ('dd' if sort == 1 else 'r', a.strftime('%Y%m%d'), b.strftime('%Y%m%d'))))
-    if NAVER_OK[0]:
+    # GitHub-hosted runners are routinely blocked by Naver's HTML anti-bot
+    # layer.  Use the free Google News RSS path by default; opt into HTML only
+    # from a trusted/local runner with ALLOW_NAVER_HTML=1.
+    if NAVER_OK[0] and ALLOW_NAVER_HTML:
         t = get(u, {'Referer': 'https://search.naver.com/'})
         if not t: NAVER_FAIL[0] += 1
         if NAVER_FAIL[0] >= 4: NAVER_OK[0] = False; print('naver search blocked -> google news fallback')
