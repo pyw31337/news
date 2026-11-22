@@ -181,6 +181,7 @@ async function oauthCallback(env, url, p) {
   catch (e) { return back(env, { nbe: 'busy' }); }
 }
 async function backup(env) {
+  await ensureSchema(env);   // 스키마가 덜 만들어진 DB에서도 백업이 죽지 않도록(2026-11-22: identities·config 누락으로 24일간 export 0건)
   const out = {};
   for (const t of ['users', 'identities', 'docs', 'push_subs']) out[t] = (await env.DB.prepare('SELECT * FROM ' + t).all()).results;
   const d = new Date(now() + 9 * 36e5).toISOString().slice(0, 10);
@@ -222,7 +223,21 @@ async function branchBackup(env, req, url) {
   if (!/^(latest|20\d\d-\d\d)\/[a-z0-9._-]{1,80}$/.test(k) || !req.body) return J(env, req, { error: 'bad' }, 400);
   const n = +(req.headers.get('Content-Length') || 0); if (!n) return J(env, req, { error: 'length' }, 411);
   await env.BK.put('branches/' + k, req.body, { httpMetadata: { contentType: 'application/octet-stream' } });
-  return J(env, req, { ok: true, k, bytes: n });
+  // 이번 주 첫 조각(part-00)이 올라오면 지난주에 남은 같은 이름의 조각(part-01~)을 지운다.
+  // 지우지 않으면 새 백업에 지난주 조각이 섞여 이어 붙일 때 깨진 tar가 된다(2026-11-16 media 사고).
+  let pruned = 0;
+  const m = k.match(/^(latest|20\d\d-\d\d)\/([a-z0-9_-]+)\.tgz\.part-00$/);
+  if (m) {
+    const prefix = 'branches/' + m[1] + '/' + m[2] + '.tgz.part-', keep = 'branches/' + k, stale = [];
+    let cur;
+    do {
+      const l = await env.BK.list({ prefix, cursor: cur, limit: 1000 });
+      for (const o of l.objects) if (o.key !== keep) stale.push(o.key);
+      cur = l.truncated ? l.cursor : null;
+    } while (cur);
+    for (let i = 0; i < stale.length; i += 1000) { await env.BK.delete(stale.slice(i, i + 1000)); pruned += Math.min(1000, stale.length - i); }
+  }
+  return J(env, req, { ok: true, k, bytes: n, pruned });
 }
 // ── R2 공개 파일(사진·큰 데이터): GET /m/<경로> = R2 pub/<경로>. 쓰기는 GitHub Actions(OIDC)만 PUT /pub/put?k=<경로> ──
 // 사진(img/·ent/·pol/)은 이름에 내용 해시가 있어 1년 캐시(immutable), data/는 1시간. Cloudflare CDN 캐시(caches.default)를 먼저 봄.
