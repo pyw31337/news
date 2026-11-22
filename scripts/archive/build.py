@@ -230,6 +230,13 @@ def token():
 def post(body):
     tk = token()
     if not tk: print('인증 수단 없음(ARCHIVE_KEY·GitHub OIDC): 업로드 생략'); return
+    # Cloudflare D1 rejects oversized batch() requests with an opaque 500.
+    # Keep a local guard so a future caller fails with an actionable message.
+    statements = (len(body.get('persons') or []) * 2 + len(body.get('replace') or [])
+                  + len(body.get('events') or []) + len(body.get('edges') or [])
+                  + len(body.get('nodes') or []) + (1 if body.get('run') else 0))
+    if statements > 90:
+        raise RuntimeError(f'archive batch too large: {statements} statements (max 90)')
     r = urllib.request.Request(API + '/archive/ingest', json.dumps(body, ensure_ascii=False).encode(), {'User-Agent': UA, 'Authorization': 'Bearer ' + tk, 'Content-Type': 'application/json'})
     for i in range(3):
         try:
