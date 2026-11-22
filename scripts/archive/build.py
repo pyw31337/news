@@ -246,11 +246,23 @@ def post(body):
             if i == 2: raise
         time.sleep(5 * (i + 1))
 try:
-    for i in range(0, len(P_OUT), 25):
-        ch = P_OUT[i:i+25]; ids = {x['id'] for x in ch}
-        post({'persons': ch, 'replace': list(ids), 'events': [x for x in E_OUT if x['pid'] in ids]})
+    # D1 batch() has a hard statement limit.  A person contributes three
+    # statements (upsert, touch, prune) plus one per event, so batching by a
+    # fixed number of people is unsafe when one person has a long history.
+    # Keep every request comfortably below the limit and split large histories
+    # without losing the replace/prune semantics.
+    for person in P_OUT:
+        pev = [x for x in E_OUT if x['pid'] == person['id']]
+        if not pev:
+            post({'persons': [person], 'replace': [person['id']], 'events': []})
+            continue
+        for i in range(0, len(pev), 60):
+            post({'persons': [person] if i == 0 else [],
+                  'replace': [person['id']] if i == 0 else [],
+                  'events': pev[i:i + 60]})
     EL, NL = list(edges.values()), list(nodes.values())
-    for i in range(0, max(len(EL), len(NL)), 400): post({'edges': EL[i:i+400], 'nodes': NL[i:i+400]})
+    for i in range(0, len(EL), 60): post({'edges': EL[i:i + 60]})
+    for i in range(0, len(NL), 60): post({'nodes': NL[i:i + 60]})
     post({'run': {'persons': len(P_OUT), 'events': len(E_OUT), 'edges': len(EL), 'note': f'wikidata {len(qid_of)}'}})
     print('완료')
 except Defer as e:
