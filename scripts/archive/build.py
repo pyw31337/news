@@ -236,6 +236,11 @@ def post(body):
             with urllib.request.urlopen(r, timeout=120) as f: o = json.loads(f.read()); print('  쓰기', o.get('written'), '오늘 누적', o.get('used'), '/', o.get('cap')); return o
         except urllib.error.HTTPError as e:
             if e.code == 429: raise Defer(e.read().decode()[:200])
+            # Cloudflare occasionally returns a transient 5xx while D1 is busy.
+            # Retry with backoff instead of aborting the entire nightly run.
+            if 500 <= e.code < 600 and i < 2:
+                time.sleep(8 * (i + 1))
+                continue
             if i == 2: raise
         except Exception:
             if i == 2: raise

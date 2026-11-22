@@ -138,7 +138,13 @@ for cid in T1:
     for cm in re.split(r'\s*[,·]\s*', pj.get('committees') or ''):
         if cm:
             g = gkey('committee', cm); GROUPS[g][cid] = ('위원', None, None); GNAME[g] = cm
-score = lambda p: (pub.get(p) or {}).get('s', 0)
+def score(p):
+    """Return a sortable numeric score even when an upstream record is incomplete."""
+    value = (pub.get(p) or {}).get('s', 0)
+    try:
+        return float(value or 0)
+    except (TypeError, ValueError):
+        return 0.0
 # 생애 기록 제목 → 모임 페이지 연결(두 명 이상 모인 학교·기관·직위·정당·소속·위원회, 세 글자 이상 이름 중 가장 긴 것)
 _GN = {}
 for g, mem in GROUPS.items():
