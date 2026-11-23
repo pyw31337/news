@@ -1,5 +1,6 @@
 /* NewsBoard v2 section pages share the canonical Lets family primitives. */
 document.querySelectorAll('.main-nav').forEach(nav=>{if(nav.querySelectorAll('a').length<5){nav.innerHTML='<a href="../">오늘</a><a href="../live/">흐름</a><a href="../persons/">인물</a><a href="../market/">마켓</a><a href="../archive/">아카이브</a>'}});
+(() => { const link = document.createElement('link'); link.rel = 'stylesheet'; link.href = '../title.css?v=1'; document.head.appendChild(link); })();
 (() => { const link = document.createElement('link'); link.rel = 'stylesheet'; link.href = '../gutters.css?v=2'; document.head.appendChild(link); })();
 (() => { const main = document.querySelector('main.page'); if (main) { main.style.setProperty('padding-left', 'clamp(20px,4.4vw,64px)', 'important'); main.style.setProperty('padding-right', 'clamp(20px,4.4vw,64px)', 'important'); } })();
 (() => {
