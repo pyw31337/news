@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   audit:
@@ -16,6 +17,16 @@ jobs:
       - uses: actions/checkout@v4
       - name: 공개 산출물 계약 점검
         run: python3 scripts/public_audit.py
+      - name: 장애 이슈 자동 기록
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title='[자동감사] 공개 산출물 계약 위반'
+          open_count=$(gh issue list --state open --search "$title in:title" --json number --jq 'length')
+          if [ "$open_count" = "0" ]; then
+            gh issue create --title "$title" --body "공개 JSON·페이지·사진·원본 노출 계약 감사가 실패했습니다.\n\n실행: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID\n\n아티팩트의 public-audit.json을 확인하고, 원인 수정 후 재배포하세요."
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
