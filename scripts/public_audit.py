@@ -36,7 +36,7 @@ def fetch(path: str):
 
 
 def main() -> int:
-    report = {'checked_at': dt.datetime.now(dt.timezone.utc).isoformat(), 'base': BASE, 'checks': {}, 'failures': []}
+    report = {'checked_at': dt.datetime.now(dt.timezone.utc).isoformat(), 'base': BASE, 'checks': {}, 'warnings': [], 'failures': []}
     payloads = {}
     for name, path in CHECKS.items():
         try:
@@ -57,6 +57,33 @@ def main() -> int:
             report['checks'][name]['items'] = len(data) if isinstance(data, (dict, list)) else None
         except json.JSONDecodeError as exc:
             report['failures'].append(f'{name}: invalid JSON ({exc})')
+
+    # Content contract: a published day must contain usable article records and
+    # a fresh timestamp. Low image coverage is a warning because SVG fallbacks
+    # keep the UI usable while the next collector run repairs the source field.
+    if 'today' in payloads and report['checks'].get('today', {}).get('status') == 200:
+        today = json.loads(payloads['today'])
+        updated = str(today.get('updated') or '')
+        try:
+            stamp = dt.datetime.fromisoformat(updated.replace('Z', '+00:00'))
+            age_h = (dt.datetime.now(dt.timezone.utc) - stamp).total_seconds() / 3600
+            report['checks']['freshness_hours'] = round(age_h, 2)
+            if age_h > 36:
+                report['failures'].append(f'today.json is {age_h:.1f}h old')
+        except ValueError:
+            report['failures'].append('today.json has no valid updated timestamp')
+        issues = [x for x in today.get('issues', []) if isinstance(x, dict)]
+        usable = [x for x in issues if x.get('title') and x.get('url')]
+        if len(usable) < 5:
+            report['failures'].append(f'today.json has only {len(usable)} usable issue rows')
+        duplicate_urls = len(usable) - len({x.get('url') for x in usable})
+        report['checks']['issue_quality'] = {'rows': len(issues), 'usable': len(usable), 'duplicate_urls': duplicate_urls}
+        section_rows = [x for rows in (today.get('sections') or {}).values() if isinstance(rows, list) for x in rows if isinstance(x, dict)]
+        section_images = sum(bool(x.get('image') or x.get('img')) for x in section_rows)
+        section_rate = section_images / max(1, len(section_rows))
+        report['checks']['section_image_coverage'] = round(section_rate, 4)
+        if section_rate < 0.5:
+            report['warnings'].append(f'section image coverage is {section_rate:.1%}; fallback visuals are active')
 
     if 'person_ids' in payloads and 'person_photos' in payloads:
         ids, photos = json.loads(payloads['person_ids']), json.loads(payloads['person_photos'])
