@@ -110,10 +110,13 @@ def gnews(url, label):
         link = un((re.search(r'<link>(.*?)</link>', it) or [0, ''])[1])
         pd = (re.search(r'<pubDate>(.*?)</pubDate>', it) or [0, ''])[1]
         desc = html.unescape((re.search(r'<description>(.*?)</description>', it, re.S) or [0, ''])[1])
+        # RSS 기사에 포함된 대표 이미지가 있으면 라이브 섹션 카드에도 보존한다.
+        media = re.search(r'<(?:media:content|media:thumbnail|enclosure)[^>]+(?:url|href)=["\']([^"\']+)', it, re.I)
+        img = html.unescape(media.group(1)) if media else ''
         related = len(re.findall(r'<li>', desc)) or 1
         try: ts = email.utils.parsedate_to_datetime(pd).astimezone(KST).isoformat()
         except Exception: ts = ''
-        arts.append(dict(src='google', section=label, title=title, url=link, press=press, time=ts, related=related))
+        arts.append(dict(src='google', section=label, title=title, url=link, press=press, time=ts, related=related, img=img))
     return arts
 
 GN = 'https://news.google.com/rss%s?hl=ko&gl=KR&ceid=KR:ko'
