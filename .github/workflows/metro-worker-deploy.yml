@@ -1,0 +1,33 @@
+name: Deploy Metro data proxy
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout metro worker
+        uses: actions/checkout@v4
+        with:
+          repository: pyw31337/metro
+          ref: main
+          path: metro
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Deploy Metro Worker using existing Cloudflare credential
+        working-directory: metro/workers/seoul-subway-proxy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN"
+          npx --yes wrangler@4 deploy --config wrangler.toml
+      - name: Verify Metro Worker
+        run: |
+          curl --fail --silent --show-error --retry 5 --retry-delay 3 \
+            https://seoul-subway-proxy.pyw213.workers.dev/health
