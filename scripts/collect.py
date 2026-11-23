@@ -536,12 +536,17 @@ try:
 except Exception as ex:
     print('entity media', ex)
 
+# 대표 이슈에서 확보한 사진을 같은 제목·URL의 라이브 기사에도 전달한다.
+# 라이브 섹션은 원래 RSS 행만 사용해 이미지가 비는 문제가 있었다.
+issue_images_by_url = {i.get('url'): i.get('image') for i in issues if i.get('url') and i.get('image')}
+issue_images_by_title = {i.get('title'): i.get('image') for i in issues if i.get('title') and i.get('image')}
+
 data = dict(updated=NOW.isoformat(), date=today,
             stats=dict(naver=len(nv_pop) + len(nv_memo), daum=len(dm), rss=len(mr), google=len(gn), trends=len(tr), clusters=len(clusters), reporters=len(reporters),
                        presses=len(set(a['press'] for a in arts))),
             issues=issues, entities=entities, reporters=reporters, trends=tr[:20],
             links=[dict(a=a, b=b, n=n) for (a, b), n in co.most_common(60)],
-            sections={k: [dict(title=a['title'], url=a['url'], press=a['press'], time=a.get('time') or '', related=a.get('related', 1), img=a.get('img') or '')
+            sections={k: [dict(title=a['title'], url=a['url'], press=a['press'], time=a.get('time') or '', related=a.get('related', 1), img=a.get('img') or issue_images_by_url.get(a.get('url')) or issue_images_by_title.get(a.get('title')) or '')
                           for a in (gn + dm + mr) if a.get('section') == k][:12] for k in SECTIONS})
 # TOP 10 밖 상위 이슈(11~40위)도 아카이브용으로 가볍게 남김
 top_ids = {id(c) for c in top}; more = []
