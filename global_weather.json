@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24T18:52:48.910705+09:00",
+  "updated": "2026-11-24T19:19:14.062178+09:00",
   "alerts_count": 43,
   "alerts": [
     {
@@ -301,23 +301,184 @@
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucy6"
     }
   ],
-  "cities": [],
-  "stories": [
+  "cities": [
     {
-      "id": "gec35b168",
-      "title": "Countries react as COP31 climate talks collapse",
-      "press": "Reuters",
-      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/epa_6b0411b25b37-1795428786.jpg?resize=1920%2C1440",
-      "score": 16.8,
-      "url": "g/gec35b168"
+      "id": "newyork",
+      "name_ko": "뉴욕",
+      "name_en": "New York",
+      "country": "US",
+      "flag": "🇺🇸",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "temp": 5.4,
+      "apparent_temp": 1.0,
+      "humidity": 63,
+      "code": 0,
+      "wind": 14.6
     },
     {
-      "id": "g3c68d533",
-      "title": "COP31 climate talks fail after stand-off over fossil fuels",
-      "press": "Financial Times",
-      "image": "https://www.reccessary.com/data/news/cover/1795490318186578483.jpg",
-      "score": 15.1,
-      "url": "g/g3c68d533"
+      "id": "losangeles",
+      "name_ko": "로스앤젤레스",
+      "name_en": "Los Angeles",
+      "country": "US",
+      "flag": "🇺🇸",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "temp": 12.0,
+      "apparent_temp": 9.7,
+      "humidity": 70,
+      "code": 3,
+      "wind": 9.6
+    },
+    {
+      "id": "london",
+      "name_ko": "런던",
+      "name_en": "London",
+      "country": "GB",
+      "flag": "🇬🇧",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "temp": 4.9,
+      "apparent_temp": 1.5,
+      "humidity": 86,
+      "code": 3,
+      "wind": 11.5
+    },
+    {
+      "id": "paris",
+      "name_ko": "파리",
+      "name_en": "Paris",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "temp": 5.0,
+      "apparent_temp": 1.8,
+      "humidity": 86,
+      "code": 3,
+      "wind": 10.5
+    },
+    {
+      "id": "frankfurt",
+      "name_ko": "프랑크푸르트",
+      "name_en": "Frankfurt",
+      "country": "DE",
+      "flag": "🇩🇪",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "temp": -2.0,
+      "apparent_temp": -5.5,
+      "humidity": 85,
+      "code": 1,
+      "wind": 5.4
+    },
+    {
+      "id": "tokyo",
+      "name_ko": "도쿄",
+      "name_en": "Tokyo",
+      "country": "JP",
+      "flag": "🇯🇵",
+      "lat": 35.6895,
+      "lon": 139.6917,
+      "temp": 13.1,
+      "apparent_temp": 12.6,
+      "humidity": 86,
+      "code": 3,
+      "wind": 5.4
+    },
+    {
+      "id": "beijing",
+      "name_ko": "베이징",
+      "name_en": "Beijing",
+      "country": "CN",
+      "flag": "🇨🇳",
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "temp": 3.3,
+      "apparent_temp": -1.3,
+      "humidity": 31,
+      "code": 0,
+      "wind": 8.0
+    },
+    {
+      "id": "singapore",
+      "name_ko": "싱가포르",
+      "name_en": "Singapore",
+      "country": "SG",
+      "flag": "🇸🇬",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "temp": 25.7,
+      "apparent_temp": 31.1,
+      "humidity": 97,
+      "code": 51,
+      "wind": 9.5
+    },
+    {
+      "id": "sydney",
+      "name_ko": "시드니",
+      "name_en": "Sydney",
+      "country": "AU",
+      "flag": "🇦🇺",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "temp": 17.9,
+      "apparent_temp": 15.6,
+      "humidity": 78,
+      "code": 53,
+      "wind": 24.1
+    },
+    {
+      "id": "toronto",
+      "name_ko": "토론토",
+      "name_en": "Toronto",
+      "country": "CA",
+      "flag": "🇨🇦",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "temp": -3.2,
+      "apparent_temp": -7.7,
+      "humidity": 82,
+      "code": 0,
+      "wind": 11.0
+    },
+    {
+      "id": "dubai",
+      "name_ko": "두바이",
+      "name_en": "Dubai",
+      "country": "AE",
+      "flag": "🇦🇪",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "temp": 29.4,
+      "apparent_temp": 30.0,
+      "humidity": 45,
+      "code": 0,
+      "wind": 11.2
+    },
+    {
+      "id": "saopaulo",
+      "name_ko": "상파울루",
+      "name_en": "São Paulo",
+      "country": "BR",
+      "flag": "🇧🇷",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "temp": 23.1,
+      "apparent_temp": 26.2,
+      "humidity": 86,
+      "code": 1,
+      "wind": 6.3
+    }
+  ],
+  "stories": [
+    {
+      "id": "gc66be5ab",
+      "title": "Countries react as COP31 climate talks collapse",
+      "press": "Reuters",
+      "image": "https://globalpost.com/wp-content/uploads/2025/03/World-Map-2.jpg",
+      "score": 24.7,
+      "url": "g/gc66be5ab"
     }
   ]
 }
