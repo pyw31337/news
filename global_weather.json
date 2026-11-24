@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24T11:18:29.379817+09:00",
+  "updated": "2026-11-24T11:47:57.408759+09:00",
   "alerts_count": 43,
   "alerts": [
     {
@@ -245,6 +245,14 @@
   ],
   "quakes": [
     {
+      "id": "us6000ud3m",
+      "mag": 4.5,
+      "place": "9 km NNW of La Tronosa, Panama",
+      "t": "2026-11-24 01:55",
+      "depth": 15.655,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ud3m"
+    },
+    {
       "id": "us6000ud3i",
       "mag": 5.3,
       "place": "67 km WNW of Mangan, India",
@@ -315,14 +323,6 @@
       "t": "2026-11-23 07:36",
       "depth": 119.267,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucx6"
-    },
-    {
-      "id": "us6000ucwx",
-      "mag": 4.5,
-      "place": "Kepulauan Babar, Indonesia",
-      "t": "2026-11-23 06:47",
-      "depth": 117.725,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucwx"
     }
   ],
   "cities": [
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 11.3,
-      "apparent_temp": 7.5,
-      "humidity": 54,
+      "temp": 11.6,
+      "apparent_temp": 8.0,
+      "humidity": 53,
       "code": 3,
-      "wind": 14.3
+      "wind": 12.7
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 15.4,
-      "apparent_temp": 14.1,
-      "humidity": 67,
+      "temp": 15.3,
+      "apparent_temp": 14.2,
+      "humidity": 69,
       "code": 0,
-      "wind": 7.1
+      "wind": 7.2
     },
     {
       "id": "london",
@@ -362,10 +362,10 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 2.8,
-      "apparent_temp": -0.5,
-      "humidity": 84,
-      "code": 2,
+      "temp": 3.0,
+      "apparent_temp": -0.2,
+      "humidity": 85,
+      "code": 3,
       "wind": 8.6
     },
     {
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 3.1,
-      "apparent_temp": 0.3,
-      "humidity": 85,
+      "temp": 3.3,
+      "apparent_temp": 0.5,
+      "humidity": 84,
       "code": 3,
-      "wind": 6.0
+      "wind": 5.9
     },
     {
       "id": "frankfurt",
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 16.0,
-      "apparent_temp": 14.6,
-      "humidity": 73,
+      "temp": 17.1,
+      "apparent_temp": 15.5,
+      "humidity": 69,
       "code": 2,
-      "wind": 11.4
+      "wind": 13.6
     },
     {
       "id": "beijing",
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 1.5,
-      "apparent_temp": -3.3,
-      "humidity": 25,
+      "temp": 2.2,
+      "apparent_temp": -2.5,
+      "humidity": 23,
       "code": 0,
-      "wind": 7.4
+      "wind": 6.3
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 29.1,
-      "apparent_temp": 35.0,
-      "humidity": 78,
+      "temp": 29.5,
+      "apparent_temp": 35.4,
+      "humidity": 76,
       "code": 51,
-      "wind": 5.2
+      "wind": 4.9
     },
     {
       "id": "sydney",
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 22.6,
-      "apparent_temp": 23.0,
+      "temp": 22.5,
+      "apparent_temp": 22.6,
       "humidity": 65,
       "code": 3,
-      "wind": 21.3
+      "wind": 21.1
     },
     {
       "id": "toronto",
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 1.3,
-      "apparent_temp": -2.9,
-      "humidity": 73,
-      "code": 1,
-      "wind": 10.8
+      "temp": 1.4,
+      "apparent_temp": -2.7,
+      "humidity": 70,
+      "code": 3,
+      "wind": 10.2
     },
     {
       "id": "dubai",
@@ -474,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 24.1,
-      "apparent_temp": 26.7,
-      "humidity": 73,
+      "temp": 24.0,
+      "apparent_temp": 26.5,
+      "humidity": 72,
       "code": 0,
-      "wind": 5.4
+      "wind": 5.1
     },
     {
       "id": "saopaulo",
@@ -489,20 +489,20 @@
       "lat": -23.5505,
       "lon": -46.6333,
       "temp": 21.1,
-      "apparent_temp": 24.2,
+      "apparent_temp": 24.1,
       "humidity": 97,
       "code": 3,
-      "wind": 7.1
+      "wind": 7.9
     }
   ],
   "stories": [
     {
-      "id": "gec35b168",
-      "title": "Cop31 collapses: why did climate talks fall apart? - The Latest",
-      "press": "Guardian World",
-      "image": "https://bc.gmg.io/image/upload/c_thumb,q_auto,w_700,f_jpg/media/gmg/65EYXVBLQ5BB3AHVQAXG3YXRPQ.jpg?api_key=ksat_9a37fc89631abedf",
-      "score": 32.0,
-      "url": "g/gec35b168"
+      "id": "gde5c2ef7",
+      "title": "EU officials reject Cop31 deal as it 'doesn't speak to reality of the climate crisis' – video",
+      "press": "Guardian Environment",
+      "image": "https://i.guim.co.uk/img/media/889097b33a9db4d990e02f63f627671657fe64ce/265_0_3447_2758/master/3447.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=d3e0fd6e6e5a3f0f89e492d313e8e1fa",
+      "score": 14.4,
+      "url": "g/gde5c2ef7"
     }
   ]
 }
