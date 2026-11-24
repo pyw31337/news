@@ -1,109 +1,90 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-24 06:28:58",
+  "updated_at": "2026-11-24 06:54:59",
   "date": "2026-11-24",
   "total_issues": 10,
-  "average_quality": 0.92,
+  "average_quality": 0.93,
   "issues": [
     {
-      "id": "ibbbcd244",
-      "title": "윤서인 “이승환에 ‘이혼당한 선동꾼’ 발언, 모욕 의도 없었다”",
-      "episode": "episode:ec03f2ffedfeb6",
-      "quality": 0.92,
+      "id": "ia1e2d692",
+      "title": "대한변협 \"대법원장 탄핵 추진 우려…신중히 재고해야\"",
+      "episode": "episode:3284407c4d077f",
+      "quality": 1.0,
       "stages": [
-        "사법·처분",
+        "수사·대응",
         "일반 보도",
-        "발단·의혹",
+        "사법·처분",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 36,
+      "event_count": 31,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i18b88905",
+      "title": "김민석 \"당청관계 안정\" 정청래 \"폭탄에 초토화\"…金 취임 100일 '말말말'",
+      "episode": "episode:8d0642a9cc4763",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "입장·공방",
+        "일반 보도",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 13,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5f79b4a8",
+      "title": "젠슨 황 깜짝 복귀에 코스피 5000 탈환 '축포'",
+      "episode": "episode:f3969638d75216",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "파장·후속",
+        "수사·대응",
         "입장·공방"
       ],
       "gaps": [
-        "수사·대응",
-        "파장·후속"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 4,
+      "duplicate_candidates": 25,
+      "event_count": 17,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9a2e2395",
-      "title": "\"정무적 부담 있지만\"... '조희대 탄핵' 밀어붙이는 민주당 속내",
-      "episode": "episode:ebf57cf042ea60",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 19,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i9f88d46b",
-      "title": "김민석, 'SNS 폭주' 정청래에…\"노크멘트, 지지율 분발할 것\"",
-      "episode": "episode:bc5fafc73a4473",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i015acd87",
-      "title": "트럼프가 빨간 브래지어를 치켜든 젠슨 황 합성사진 공유한 이유",
-      "episode": "episode:ac39cd45f7efff",
+      "id": "i015adb52",
+      "title": "\"끔찍한 실수...두 번째 기회 직원들께 감사\"...출근한 젠슨 황에 환호",
+      "episode": "episode:b5ec4b52f11219",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "파장·후속",
         "사법·처분",
-        "입장·공방",
-        "수사·대응"
+        "수사·대응",
+        "입장·공방"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 19,
+      "duplicate_candidates": 40,
+      "event_count": 22,
       "evidence_rate": 1.0
     },
     {
-      "id": "iee5f9701",
-      "title": "[속보] 엔비디아 이사회, 젠슨 황 CEO 복귀 결정",
-      "episode": "episode:32f82c39383314",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 16,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i32323eeb",
-      "title": "“대리만 불렀으면 됐잖아”…고경표 경찰 조사에 쓴소리 한 개그맨",
-      "episode": "episode:286db4e79310d5",
+      "id": "i9a8d7635",
+      "title": "“하…” 음주운전 고경표, 다친 미화원께 연락드렸냐 물었더니",
+      "episode": "episode:5873df63539a11",
       "quality": 0.76,
       "stages": [
         "수사·대응",
@@ -114,83 +95,101 @@
         "입장·공방",
         "파장·후속"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 5,
+      "duplicate_candidates": 27,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "id9f979fa",
-      "title": "젠슨 황 돌아오자 코스피도 살아났다…장중 5000선 탈환",
-      "episode": "episode:ecf3ef068abe58",
+      "id": "ie63775cd",
+      "title": "잡스·올트먼·젠슨 황까지…쫓겨났다가 부활한 ‘CEO 클럽’",
+      "episode": "episode:3d084206e9c309",
       "quality": 1.0,
       "stages": [
-        "발단·의혹",
         "일반 보도",
-        "사법·처분",
         "파장·후속",
-        "발단·의혹",
+        "사법·처분",
         "입장·공방",
         "수사·대응"
       ],
-      "gaps": [],
-      "duplicate_candidates": 33,
-      "event_count": 23,
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 35,
+      "event_count": 15,
       "evidence_rate": 1.0
     },
     {
-      "id": "i70853317",
-      "title": "삼성전자 2027년 정기 임원 인사 명단",
-      "episode": "episode:9de32adda5156f",
-      "quality": 0.92,
+      "id": "i525870a8",
+      "title": "‘삼전닉스’보다 더 오른다…개미들 울리더니 11%↑ 불기둥 [나만없어]",
+      "episode": "episode:db3bfcefe9391b",
+      "quality": 1.0,
       "stages": [
-        "사법·처분",
-        "파장·후속",
         "일반 보도",
-        "수사·대응"
+        "사법·처분",
+        "수사·대응",
+        "입장·공방",
+        "파장·후속"
       ],
       "gaps": [
-        "발단·의혹",
-        "입장·공방"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 22,
+      "duplicate_candidates": 29,
       "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "i77ab91da",
-      "title": "[포토] 젠슨 황 복귀 발표에 분주한 트레이더들",
-      "episode": "episode:6a6a018590d9e7",
+      "id": "i829b7534",
+      "title": "‘피 흘리며 여성 속옷 번쩍 치켜든 젠슨 황’…트럼프, 합성 밈으로 복귀 축하",
+      "episode": "episode:53e78b9685a9b9",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "파장·후속",
         "사법·처분",
-        "입장·공방",
-        "수사·대응"
+        "수사·대응",
+        "입장·공방"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 18,
+      "duplicate_candidates": 26,
+      "event_count": 14,
       "evidence_rate": 1.0
     },
     {
-      "id": "id1724162",
-      "title": "[현장] AWS, 20년 클라우드 공식 깬다…AI 에이전트 시대 개막",
-      "episode": "episode:7f93450f30afe8",
-      "quality": 0.76,
+      "id": "i21281569",
+      "title": "채팅앱에서 만난 초등생 성폭행…30대 강남 학원장 구속",
+      "episode": "episode:31ee78047baf75",
+      "quality": 0.58,
       "stages": [
-        "일반 보도",
-        "수사·대응"
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
-      "duplicate_candidates": 23,
-      "event_count": 9,
+      "duplicate_candidates": 27,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9cfe7326",
+      "title": "젠슨 황 복귀 하루 전 16억 매입…SK하닉 사장 '절묘한 타이밍'",
+      "episode": "episode:30a54067da302b",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "수사·대응",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 14,
       "evidence_rate": 1.0
     }
   ]

@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-24",
-  "generated_at": "2026-11-24T15:28:59+09:00",
+  "generated_at": "2026-11-24T15:54:59+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,8 +27,111 @@
   },
   "candidates": [
     {
-      "issue_id": "id9f979fa",
-      "title": "젠슨 황 돌아오자 코스피도 살아났다…장중 5000선 탈환",
+      "issue_id": "i5f79b4a8",
+      "title": "젠슨 황 깜짝 복귀에 코스피 5000 탈환 '축포'",
+      "category": "경제",
+      "rank": 3,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "젠슨 황이 엔비디아 CEO로 복귀하면서 미국과 한국 증시가 AI 관련주에 힘입어 급등했다.",
+        "젠슨 황이 엔비디아 최고경영자(CEO)로 복귀하면서 미국 뉴욕증시에서 인공지능(AI) 관련주가 급등한...",
+        "엔비디아 이사회는 황 CEO의 경영 및 이사회 복귀를 만장일치로 승인했다.",
+        "도널드 트럼프 미국 대통령은 언론...",
+        "젠슨 황 엔비디아 최고경영자(CEO)의 경영 복귀 소식에 반도체주가 일제히 상승하면서 국내 증시도 큰 폭으로 반등했다."
+      ],
+      "sources": [
+        {
+          "press": "ekn.kr",
+          "title": "젠슨 황 돌아오자 코스피도 날았다…5000선 회복[마감시황]",
+          "url": "https://www.ekn.kr/web/view.php?key=20261124027123990"
+        },
+        {
+          "press": "slist.kr",
+          "title": "코스피 6%대 급등하며 5000선 마감…삼성전자·하이닉스 동반 강세",
+          "url": "https://www.slist.kr/news/articleView.html?idxno=784402"
+        },
+        {
+          "press": "biz.sbs.co.kr",
+          "title": "돌아온 젠슨 황 훈풍…단숨에 5천피 탈환",
+          "url": "https://n.news.naver.com/mnews/article/374/0000545609?sid=101"
+        },
+        {
+          "press": "ebn.co.kr",
+          "title": "코스피, 젠슨 황 복귀에 6.32% 급등…5000선 회복 성공",
+          "url": "https://www.ebn.co.kr/news/articleView.html?idxno=1732850"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "젠슨 황이 엔비디아 CEO로 복귀하면서 미국과 한국 증시가 AI 관련주에 힘입어 급등했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "엔비디아 이사회는 황 CEO의 경영 및 이사회 복귀를 만장일치로 승인했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "297.49포인트(6.32%) 오른 5006.03에 거래를 마쳤다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "발단·의혹"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i525870a8",
+      "title": "‘삼전닉스’보다 더 오른다…개미들 울리더니 11%↑ 불기둥 [나만없어]",
       "category": "경제",
       "rank": 7,
       "priority_score": 37,
@@ -36,19 +139,24 @@
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
-        "코스피가 미국 인공지능(AI) 관련주 급등에 힘입어 장중 5000선을 회복했다.",
-        "코스피가 장중 5000선을 넘어선 것은 3거래일 만이다.",
-        "국내 반도체 '투톱'인 삼성전자와 SK하이닉스도 나란히 8%대 강세를 보이고 있다.",
-        "대만 가권지수는 9% 오른 4만122.35을 기록하며 나흘 만에 4만선을 탈환했다.",
+        "젠슨 황이 엔비디아 CEO로 복귀했지만 미국 당국의 회계·반독점 조사와 중국 관련 국가안보 의혹 등 해결해야 할 과제가 여전히 남아 있다.",
+        "더 오른다…개미들 울리더니 11%↑ 불기둥 [나만없어]",
+        "‘젠슨 황’ 컴백에도…삼전닉스 가장 많이 팔았다",
+        "[주식 초고수는 지금]",
         "- 젠슨황 귀환에 나스닥 6.5%↑…19개월 만에 최대 - 젠슨황 복귀에 '반도체주 강세' 아시아증시 급등 - 삼전닉스·TSMC·키옥시아 일제히 상승 - 젠슨 황, 11일 만에 엔비디아 CEO 복귀 - 엔비디아 이사회 만장일치로 복귀..."
       ],
       "sources": [
         {
-          "press": "ekn.kr",
-          "title": "“젠슨 황도 못 살린 비트코인”…1만달러 경고 나왔다 [머니+]",
-          "url": "https://www.ekn.kr/web/view.php?key=20261124027233937"
+          "press": "서울신문",
+          "title": "‘삼전닉스’보다 더 오른다…개미들 울리더니 11%↑ 불기둥 [나만없어]",
+          "url": "https://n.news.naver.com/article/081/0003702613"
+        },
+        {
+          "press": "서울경제",
+          "title": "‘젠슨 황’ 컴백에도…삼전닉스 가장 많이 팔았다 [주식 초고수는 지금]",
+          "url": "https://n.news.naver.com/article/011/0004685531"
         },
         {
           "press": "biz.sbs.co.kr",
@@ -56,21 +164,16 @@
           "url": "https://n.news.naver.com/mnews/article/374/0000545585?sid=101"
         },
         {
-          "press": "yonhapnewstv.co.kr",
-          "title": "젠슨 황 복귀에 5,000피 회복…매수 사이드카",
-          "url": "https://n.news.naver.com/mnews/article/422/0000929403?sid=101"
-        },
-        {
-          "press": "magazine.hankyung.com",
-          "title": "돌아온 젠슨 황이 쏘아 올린 ‘에브리싱 랠리’",
-          "url": "https://n.news.naver.com/mnews/article/050/0000113678?sid=101"
+          "press": "donga.com",
+          "title": "“경차 타는데 외제차급 손실”…젠슨 황 복귀에도 웃지못한 ‘최고층...",
+          "url": "https://n.news.naver.com/mnews/article/020/0003764739?sid=101"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "코스피가 미국 인공지능(AI) 관련주 급등에 힘입어 장중 5000선을 회복했다."
+          "evidence": "젠슨 황이 엔비디아 CEO로 복귀했지만 미국 당국의 회계·반독점 조사와 중국 관련 국가안보 의혹 등 해결해야 할 과제가 여전히 남아 있다."
         },
         {
           "panel": 2,
@@ -80,7 +183,7 @@
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "코스피가 장중 5000선을 넘어선 것은 3거래일 만이다."
+          "evidence": "더 오른다…개미들 울리더니 11%↑ 불기둥 [나만없어]"
         },
         {
           "panel": 4,
@@ -123,119 +226,17 @@
         "numeric_or_specific_evidence": true,
         "sources": 4,
         "continuity_quality": 1.0,
-        "continuity_gaps": [],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i70853317",
-      "title": "삼성전자 2027년 정기 임원 인사 명단",
-      "category": "경제",
-      "rank": 8,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "삼성전자는 24일 부사장 39명, 상무 78명, 펠로우(Fellow) 2명, 마스터(Master) 12명 등 총 131명에 대한 2027년 정기 임원인사를 단행했다.",
-        "24일 삼성전자는 2027년 정기 임원 인사를 통해 반도체 사업을 담당하는 DS부문에서 부사장 19명, 상무 40명을 승진, 펠로우 1명, 마스터 10명을 선임했다.",
-        "올해 131명(부사장 39명·상무 78명·펠로우 2명...",
-        "부사장으로 승진시켰다.",
-        "삼성SDI는 24일 2027년 정기 임원 인사에서 부사장 4명, 상무 6명, 마스터 1명 등 총..."
-      ],
-      "sources": [
-        {
-          "press": "newstopkorea.com",
-          "title": "‘HBM4 양산·역대급실적’ 힘 실었다…삼성전자,반도체임원 70명 승진",
-          "url": "https://www.newstopkorea.com/ko-kr/articles/49270"
-        },
-        {
-          "press": "seoul.co.kr",
-          "title": "삼성SDI, 최주선 대표 체제 속 부사장 4명 승진…“미래 성장 기반 강화...",
-          "url": "https://n.news.naver.com/mnews/article/081/0003702636?sid=101"
-        },
-        {
-          "press": "한경비즈니스",
-          "title": "“승진 잔치 끝났다”…삼성전자, 임원 승진 19% 줄였다",
-          "url": "https://n.news.naver.com/article/050/0000113671"
-        },
-        {
-          "press": "etoday.co.kr",
-          "title": "승진 문 좁힌 삼성, 반도체는 늘렸다…임원 53%가 DS [종합]",
-          "url": "https://www.etoday.co.kr/news/view/2652262"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "삼성전자는 24일 부사장 39명, 상무 78명, 펠로우(Fellow) 2명, 마스터(Master) 12명 등 총 131명에 대한 2027년 정기 임원인사를 단행했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "삼성전자는 24일 부사장 39명, 상무 78명, 펠로우(Fellow) 2명, 마스터(Master) 12명 등 총 131명을 승진시키는 정기 임원인사를 실시했다고 밝혔다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "24일 삼성전자는 2027년 정기 임원 인사를 통해 반도체 사업을 담당하는 DS부문에서 부사장 19명, 상무 40명을 승진, 펠로우 1명, 마스터 10명을 선임했다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
         "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
+          "발단·의혹"
         ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "i015acd87",
-      "title": "트럼프가 빨간 브래지어를 치켜든 젠슨 황 합성사진 공유한 이유",
-      "category": "세계",
-      "rank": 4,
+      "issue_id": "i9cfe7326",
+      "title": "젠슨 황 복귀 하루 전 16억 매입…SK하닉 사장 '절묘한 타이밍'",
+      "category": "경제",
+      "rank": 10,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -243,49 +244,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "엔비디아 주가가 하루 만에 30% 넘게 폭등하면서 하락에 베팅했던 공매도 투자자들이 15조원이 넘는 손실을 입었다.",
-        "\"트럼프, 젠슨 황 복귀로 하루 만에 200억 챙겨\"",
-        "\"끔찍한 실수...두 번째 기회 직원들께 감사\"...출근한 젠슨 황에 환호",
-        "11일 만에 돌아온 젠슨 황…엔비디아는 왜 '안보 리스크'를 감수했나",
-        "젠슨 황 엔비디아 최고경영자(CEO)가 복귀 첫날 본사를 찾아가 직원들에게 사과와 감사의 뜻을..."
+        "젠슨 황이 엔비디아 최고경영자(CEO)직에 복귀했다는 소식에 반도체 투자심리가 살아나면서 24일 프리마켓에서 SK하이닉스가 12%대 급등하고 있는 가운데 윤풍영 SK하이닉스 사장의 자사주 매입이 화제다.",
+        "\"젠슨 황 복귀 예상했나\"…SK하닉 사장, 하루 전 자사주 1500주 매수 대박",
+        "24일 금융감독원 전자공시시스템에 따르면 윤 사장은 전날 SK하이닉스 보통주 1500주를 장내 매수했다....",
+        "젠슨 황 엔비디아 최고경영자(CEO)의 복귀 소식이 전해지면서 반도체 투자심리가 회복되는 등 코스피에...",
+        "젠슨 황 복귀 전날 16억 매입…하이닉스 사장 '신의 한 수'"
       ],
       "sources": [
         {
-          "press": "YTN",
-          "title": "\"트럼프, 젠슨 황 복귀로 하루 만에 200억 챙겨\"",
-          "url": "https://n.news.naver.com/article/052/0002437272"
+          "press": "뉴스1",
+          "title": "\"젠슨 황 복귀 예상했나\"…SK하닉 사장, 하루 전 자사주 1500주 매수 대박",
+          "url": "https://n.news.naver.com/article/421/0009306950"
         },
         {
-          "press": "YTN",
-          "title": "\"끔찍한 실수...두 번째 기회 직원들께 감사\"...출근한 젠슨 황에 환호",
-          "url": "https://n.news.naver.com/article/052/0002437271"
+          "press": "view.asiae.co.kr",
+          "title": "\"젠슨황 복귀 하루 전 16억원어치 샀다\"…'책임경영' SK하닉 사장 '촉' 화...",
+          "url": "https://n.news.naver.com/mnews/article/277/0005847126?sid=101"
         },
         {
-          "press": "비즈워치",
-          "title": "11일 만에 돌아온 젠슨 황…엔비디아는 왜 '안보 리스크'를 감수했나",
-          "url": "https://n.news.naver.com/article/648/0000052924"
+          "press": "이데일리",
+          "title": "젠슨 황 복귀 전날 16억 매입…하이닉스 사장 '신의 한 수'",
+          "url": "https://n.news.naver.com/article/018/0006414709"
         },
         {
-          "press": "yna.co.kr",
-          "title": "[영상] 가죽재킷 벗고 11일 만에 복귀…\"젠슨!\" 직원들 환호에 '울컥'",
-          "url": "https://n.news.naver.com/mnews/article/001/0016460897?sid=104"
+          "press": "세계일보",
+          "title": "젠슨 황 귀환에 엔비디아 31%·SK하닉 20%↑…나스닥 6.5%↑",
+          "url": "https://n.news.naver.com/article/022/0004177594"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "엔비디아 주가가 하루 만에 30% 넘게 폭등하면서 하락에 베팅했던 공매도 투자자들이 15조원이 넘는 손실을 입었다."
+          "evidence": "젠슨 황이 엔비디아 최고경영자(CEO)직에 복귀했다는 소식에 반도체 투자심리가 살아나면서 24일 프리마켓에서 SK하이닉스가 12%대 급등하고 있는 가운데 윤풍영 SK하이닉스 사장의 자사주 매입이 화제다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "도널드 트럼프 미국 대통령이 황의 복귀에 따른 안보 위험이 없다고 이사회에 보증했고, 미 정부가 그의 불법..."
+          "evidence": "젠슨 황 엔비디아 최고경영자(CEO)의 복귀 소식이 전해지면서 반도체 투자심리가 회복되는 등 코스피에..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다."
+          "evidence": "\"젠슨 황 복귀 예상했나\"…SK하닉 사장, 하루 전 자사주 1500주 매수 대박"
         },
         {
           "panel": 4,
@@ -294,8 +295,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
