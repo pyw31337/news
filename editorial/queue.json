@@ -334,6 +334,210 @@
         ],
         "no_generic_closing": true
       }
+    },
+    {
+      "issue_id": "if68e1f2d",
+      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
+      "category": "사회",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "법학적성시험(LEET·리트) 만점과 서울대 치의학과 합격 이력을 두고 부정행위 의혹을 받는 이진우(32)씨가 과거 경찰관을 폭행해 벌금형을 선고받은 것으로 드러났다.",
+        "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
+        "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
+        "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
+        "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다"
+      ],
+      "sources": [
+        {
+          "press": "중앙일보",
+          "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
+          "url": "https://n.news.naver.com/article/025/0003566361"
+        },
+        {
+          "press": "서울경제",
+          "title": "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
+          "url": "https://n.news.naver.com/article/011/0004683998"
+        },
+        {
+          "press": "세계일보",
+          "title": "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
+          "url": "https://n.news.naver.com/article/022/0004176505"
+        },
+        {
+          "press": "동아일보",
+          "title": "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다",
+          "url": "https://n.news.naver.com/article/020/0003763620"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "법학적성시험(LEET·리트) 만점과 서울대 치의학과 합격 이력을 두고 부정행위 의혹을 받는 이진우(32)씨가 과거 경찰관을 폭행해 벌금형을 선고받은 것으로 드러났다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "판결문에 따르면 해당 인물은 고의로 교통사고를 낸 뒤 합의금을 받아낸 혐의 등으로 2022년 9월 징역 6개월을..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "법학적성시험(LEET·리트) 만점자로 알려진 이진우(32) 씨가 과거 고의 교통사고를 이용한 공갈 범죄와 경찰관..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ib0b88852",
+      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
+      "category": "IT",
+      "rank": 1,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다.",
+        "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
+        "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
+        "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
+        "흔적을 발견할 수 없었다."
+      ],
+      "sources": [
+        {
+          "press": "매일경제",
+          "title": "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
+          "url": "https://n.news.naver.com/article/009/0005766140"
+        },
+        {
+          "press": "한겨레",
+          "title": "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
+          "url": "https://n.news.naver.com/article/028/0002832987"
+        },
+        {
+          "press": "KBS",
+          "title": "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
+          "url": "https://n.news.naver.com/article/056/0012297227"
+        },
+        {
+          "press": "sentv.co.kr",
+          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
+          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "게임 속 풍경을 단순한 배경으로 활용하는 데 그치지 않고, 이용자가 새로운 장소를 발견하고 직접..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "‘리트 만점’ 이진우 모텔서 숨진 채 발견···“요즘 힘들다” 5줄 메모 남겨"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
     }
   ]
 }
