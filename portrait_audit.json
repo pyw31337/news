@@ -2,27 +2,41 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 9,
-    "approved": 9,
-    "withheld": 0,
+    "current_person_entities": 6,
+    "approved": 5,
+    "withheld": 1,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 0,
     "sanitized": 0
   },
   "current_entities": [
     {
-      "name": "한동훈",
+      "name": "이재명",
       "status": "approved",
-      "url": "data/pol/photos/5DC8083A.webp",
-      "source": "",
-      "wiki_title": "한동훈"
+      "url": "media/ent/da/da37f2330225f1ef.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Lee%20Jae-myung%202025%20%28cropped%29.jpg?width=360",
+      "wiki_title": "이재명"
     },
     {
       "name": "오세훈",
       "status": "approved",
-      "url": "data/pol/photos/LB24097N.webp",
+      "url": "media/ent/1d/1d7270af80b536ed.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Na%20Kyung-won%202019.jpg?width=360",
+      "wiki_title": "나경원"
+    },
+    {
+      "name": "푸틴",
+      "status": "approved",
+      "url": "media/ent/fa/fab593ba1c73d1fa.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Putin%20V%202026%2008%2010.png?width=360",
+      "wiki_title": "블라디미르 푸틴"
+    },
+    {
+      "name": "김민석",
+      "status": "no_portrait",
+      "url": "",
       "source": "",
-      "wiki_title": "오세훈"
+      "wiki_title": ""
     },
     {
       "name": "이재명",
