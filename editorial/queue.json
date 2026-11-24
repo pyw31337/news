@@ -1,0 +1,324 @@
+{
+  "schema": "newsboard.editorial-queue.v2",
+  "date": "2026-11-24",
+  "generated_at": "2026-11-24T10:55:43+09:00",
+  "handoff": {
+    "state": "brief_ready",
+    "owner": "unassigned",
+    "daily_minimum": "Select one highest-priority reviewed candidate for a bespoke visual asset. Other candidates may use the safe fallback.",
+    "daily_caps": {
+      "comics": 3,
+      "card_news": 3
+    },
+    "providers": [
+      "Claude",
+      "Gemini",
+      "Grok",
+      "local Apple model",
+      "human editor"
+    ],
+    "next_action": "Select one item, check every story beat against linked sources, create or reuse an asset that satisfies visual_contract, then register it in assets/editorial-art.json.",
+    "resume_commands": [
+      "python scripts/editorial_queue.py --validate",
+      "FUN_DATA=data FUN_AI_SEC=0 python scripts/fun.py",
+      "npm run validate"
+    ],
+    "completion_definition": "A comic/card item has four evidence-backed beats, a registered visual asset or safe fallback, and passes the no-filler validator."
+  },
+  "candidates": [
+    {
+      "issue_id": "ibaa34e09",
+      "title": "젠슨 황, 가죽 재킷 벗고 출근 “더 나은 CEO 될 것”…직원들 박수 환호",
+      "category": "경제",
+      "rank": 1,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "복귀한 젠슨 황 엔비디아 최고경영자(CEO)가 23일(현지 시간) 미국 캘리포니아주 샌타클래라 본사로 다시 출근했다.",
+        "트레이드마크 가죽 재킷 벗고 복귀한 젠슨 황···“러브 유 젠슨!” “웰컴 백” 직원들 환호",
+        "젠슨 황, 가죽 재킷 벗고 출근 “더 나은 CEO 될 것”…직원들 박수 환호",
+        "가죽자켓 벗고 복귀한 젠슨황 \"두번째엔 더나은 CEO 될것\"(종합)",
+        "젠슨 황, 엔비디아 복귀 첫날 직원들에 사과…“두 번째 기회 감사”"
+      ],
+      "sources": [
+        {
+          "press": "경향신문",
+          "title": "트레이드마크 가죽 재킷 벗고 복귀한 젠슨 황···“러브 유 젠슨!” “웰컴 백” 직원들 환호",
+          "url": "https://n.news.naver.com/article/032/0003484588"
+        },
+        {
+          "press": "동아일보",
+          "title": "젠슨 황, 가죽 재킷 벗고 출근 “더 나은 CEO 될 것”…직원들 박수 환호",
+          "url": "https://n.news.naver.com/article/020/0003764650"
+        },
+        {
+          "press": "연합뉴스",
+          "title": "가죽자켓 벗고 복귀한 젠슨황 \"두번째엔 더나은 CEO 될것\"(종합)",
+          "url": "https://n.news.naver.com/article/001/0016459518"
+        },
+        {
+          "press": "디지털타임스",
+          "title": "젠슨 황, 엔비디아 복귀 첫날 직원들에 사과…“두 번째 기회 감사”",
+          "url": "https://n.news.naver.com/article/029/0003060766"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "복귀한 젠슨 황 엔비디아 최고경영자(CEO)가 23일(현지 시간) 미국 캘리포니아주 샌타클래라 본사로 다시 출근했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "도널드 트럼프 미국 대통령이 엔비디아 이사회에 젠슨 황 최고경영자(CEO)의 복직을 압박한 것을 두고 기업 경영에 대한 정부 개입이 도마에 올랐다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "'복귀' 젠슨 황 \"두 번째엔 더 나은 CEO될 것\"...엔비디아 31% '폭등'"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "발단·의혹"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "icc79a117",
+      "title": "[속보] 젠슨 황 복귀에 코스피 이어 코스닥도 매수 사이드카 발동",
+      "category": "경제",
+      "rank": 5,
+      "priority_score": 36,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "2026년 11월 24일, 젠슨 황 엔비디아 CEO의 경영 복귀 소식이 전해지며 국내 증시가 급등해 코스피와 코스닥 시장에 매수 사이드카가 발동되었다.",
+        "코스피200 선물지수가 5% 넘게 오른 상태가 1분 이상 이어지면서 한국거래소는 오전 9시 6분께 유가증권시장에 매수 사이드카를 발동했다.",
+        "직전 거래일 지수 하락을 주도했던 외국인이 장 초반 순매수로 돌아서면서...",
+        "코스피 5%대 급락에 매도 사이드카 발동‥4,600까지 밀려",
+        "\"외인도 팔자\" 매도 사이드카 터졌다…4600선 밀린 코스피, 반등 조건은 - 머니투데이"
+      ],
+      "sources": [
+        {
+          "press": "00news.co.kr",
+          "title": "젠슨 황 '깜짝' 귀환에 되살아난 AI 투심",
+          "url": "http://www.00news.co.kr/news/articleView.html?idxno=108297"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "2026년 11월 24일, 젠슨 황 엔비디아 CEO의 경영 복귀 소식이 전해지며 국내 증시가 급등해 코스피와 코스닥 시장에 매수 사이드카가 발동되었다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "직전 거래일 지수 하락을 주도했던 외국인이 장 초반 순매수로 돌아서면서..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "코스피200 선물지수가 5% 넘게 오른 상태가 1분 이상 이어지면서 한국거래소는 오전 9시 6분께 유가증권시장에 매수 사이드카를 발동했다."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "전날의 급락세에서 반전하여 젠슨 황 복귀 소식에 힘입어 매수 사이드카가 발동되었다. 하루 만에 매도에서 매수로 시장 분위기가 급변하며 극심한 변동성을 나타내고 있다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 1,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "발단·의혹"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ie23ebc8b",
+      "title": "트럼프, 젠슨 황 엔비디아 복귀에 “내가 이사회 설득”…美 정가 논란 확산 [美슐랭]",
+      "category": "세계",
+      "rank": 4,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "중국 정보기관 연루 의혹과 불륜 스캔들로 사임했던 젠슨 황 엔비디아 CEO가 11일 만에 경영 일선에 복귀했다.",
+        "주가부터 살리고 보자…젠슨 황 복귀에 트럼프 \"내가 설득했다\"",
+        "도널드 트럼프 미국 대통령이 지난 며칠간 젠슨 황 엔비디아 최고경영자(CEO)의 복귀를 위해 물밑 작업을 벌인 것으로 전해진 가운데, 황 CEO의 복귀로 엔비디아 주가가 폭등하면서 트럼프 대통령이 하루 동안 약 200억...",
+        "도널드 트럼프 미국 대통령이 엔비디아 이사회에 젠슨 황 최고경영자(CEO)의 복직을 압박한 것을 두고 기업...",
+        "황의 복귀를 결정했다."
+      ],
+      "sources": [
+        {
+          "press": "아시아경제",
+          "title": "주가부터 살리고 보자…젠슨 황 복귀에 트럼프 \"내가 설득했다\"",
+          "url": "https://n.news.naver.com/article/277/0005846689"
+        },
+        {
+          "press": "mbn.mk.co.kr",
+          "title": "젠슨 황 복귀에 엔비디아 시총 1,275조원↑…\"트럼프, 200억 번 듯\"",
+          "url": "https://n.news.naver.com/mnews/article/057/0001979605?sid=104"
+        },
+        {
+          "press": "mt.co.kr",
+          "title": "젠슨황 복귀 vs 인텔엔 지분 요구…\"트럼프식 국가자본주의\"",
+          "url": "https://n.news.naver.com/mnews/article/008/0005445493?sid=104"
+        },
+        {
+          "press": "newsis.com",
+          "title": "美 의회, 젠슨 황 복귀에 초당적 비판…\"국가 안보 위협 해명해야\"",
+          "url": "https://n.news.naver.com/mnews/article/003/0014341601?sid=104"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "중국 정보기관 연루 의혹과 불륜 스캔들로 사임했던 젠슨 황 엔비디아 CEO가 11일 만에 경영 일선에 복귀했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "도널드 트럼프 미국 대통령이 엔비디아 이사회에 젠슨 황 최고경영자(CEO)의 복직을 압박한 것을 두고 기업..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "도널드 트럼프 미국 대통령이 지난 며칠간 젠슨 황 엔비디아 최고경영자(CEO)의 복귀를 위해 물밑 작업을 벌인 것으로 전해진 가운데, 황 CEO의 복귀로 엔비디아 주가가 폭등하면서 트럼프 대통령이 하루 동안 약…"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "트럼프가 이사회 표결에 직접 개입한 사실이 알려지며 정치적 논란이 심화되었고, 주가 폭등과 함께 행정부 내 갈등 등 후폭풍이 가시화되는 양상이다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "security",
+        "direction": "보안 관제·접속 흔적·차단 절차를 사용, 실제 피해자·공격자 묘사는 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "발단·의혹"
+        ],
+        "no_generic_closing": true
+      }
+    }
+  ]
+}

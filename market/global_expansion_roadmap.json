@@ -1,0 +1,32 @@
+{
+  "title": "글로벌 전수 상장사(나스닥·다우·S&P500 6,850사) SEC 수집 계획",
+  "principles": [
+    "1. SEC EDGAR 공개 API(/submissions, /company_facts) 기반 10-K, 10-Q, 8-K 수집",
+    "2. 국내 DART 2,498개사 ⇄ 미국 6,850개사 서플라이체인·경쟁사 1:1 온톨로지 에지 매핑",
+    "3. 13F 기관투자자(워런버핏, 블랙록, 뱅가드) 포트폴리오 변동 매 분기 자동 동기화"
+  ],
+  "phases": {
+    "tier_1_megacap": {
+      "name": "Tier 1: 매그니피센트 7 & 글로벌 핵심 10대사 (완료)",
+      "target_corps": 10,
+      "coverage": "NVDA, AAPL, MSFT, TSLA, GOOGL, AMZN, META, TSM, ASML, SOFTBANK",
+      "status": "OPERATIONAL",
+      "metrics": "15개년 재무, 서플라이체인, CEO 네트워크 완비"
+    },
+    "tier_2_sp500_ndx": {
+      "name": "Tier 2: 나스닥 100 & S&P 500 핵심 500대 기업 (착수)",
+      "target_corps": 500,
+      "coverage": "반도체(AVGO, QCOM, AMD, INTC, MU), AI/클라우드(ORCL, PLTR, CRM, NOW), 바이오(LLY, NVO, PFE), 방산/우주(LMT, RTX, BA), 금융(JPM, GS, MS)",
+      "status": "IN_PROGRESS",
+      "metrics": "10-K 5개년 재무, 기관 지분율(13F), 이사회 명단"
+    },
+    "tier_3_nasdaq_dow_all": {
+      "name": "Tier 3: 나스닥 & 다우·NYSE 전 상장사 전수 (목표)",
+      "target_corps": 6850,
+      "coverage": "NASDAQ(3,600여사) + NYSE/AMEX(3,200여사) 전 미국 상장 법인 전수",
+      "status": "ROADMAP_ACTIVE",
+      "metrics": "SEC EDGAR 실시간 공시 수집 데몬(일 100개사 배치)"
+    }
+  },
+  "updated_at": "2026-11-17 18:00:12"
+}

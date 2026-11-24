@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 하나손해보험 해외접속 제한안내</title>
+    <style>
+        /* Eric Meyer`s Reset CS 2.0 */
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl,  dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside,
+
+        /* Eric Meyer`s Reset CS 2.0 */
+
+        html{
+            font-family: sans-serif;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+        body{
+            margin: 0;
+        }
+
+        /*  HTML5 display definitions */
+        article, aside, 
+        details, figcaption,
+        figure,footer, 
+        header, hgroup, 
+        main, menu, nav, 
+        section, summary{
+            display: block;
+        }
+        audio, canvas, progress, video{
+            display: inline-block;
+            vertical-align: baseline;
+        }
+        audio:not([controls]){
+            display: none;
+            height: 0;
+        }
+        template{
+            display: none;
+        }
+
+        /* Links */
+        a{
+            background-color: transparent;
+        }
+        a:active, a:hover{
+            outline: 0;
+        }
+
+        /* Text-level semantics */
+        abbr[title]{
+            border-bottom: 1px dotted;
+        }
+        b, strong{
+            font-weight: bold;
+        }
+        dfn{
+            font-style: italic;
+        }
+        h1{
+            font-style: 2em;
+            margin:0.67em 0;
+        }
+        mark{
+            background: #ff0;
+            color: #000;
+        }
+        small{
+            font-size: 80%;
+        }
+        sub, sup{
+            font-style: 75%;
+            line-height: 0;
+            position: relative;
+            vertical-align: baseline;
+        }
+        sup{
+            top:-0.5em;
+        }
+        sub{
+            bottom: -0.25em;
+        }
+
+        /* remove border when inside 'a' element */
+        img{
+            border:0;
+        }
+        svg:not(:root){
+            overflow: hidden;
+        }
+
+        /* Grouping content */
+        figure{
+            margin: 1em 40px;
+        }
+        hr{
+        -moz-box-sizing: content-box; 
+        box-sizing: content-box;
+        height: 0;
+        }
+
+        pre{
+            overflow: auto;
+        }
+        /* Address odd */
+        code, kbd, pre, samp{
+            font-family: monospace, monospace;
+            font-style: 1em;
+        }
+
+        /* Forms */
+        button, input, 
+        optgroup, select, textarea{
+            color: inherit;
+            font: inherit;
+            margin: 0;
+        }
+        button{
+            overflow: visible;
+        }button, select{
+            text-transform: none;
+        }
+
+        /* elements */
+        button, 
+        html input[type="button"],
+        input[type="reset"],
+        input[type="submit"]{
+            -webkit-appearance:button;
+            cursor: pointer;
+        }
+        button[disabled],
+        html input[disabled]{
+            cursor: default;
+        }
+        button::-moz-focus-inner,
+        input::-moz-focus-inner{
+            border: 0;
+            padding:0;
+        }
+        input{
+            line-height: normal;
+        }
+        input[type="checkbox"],
+        input[type="radio"]{
+            box-sizing: border-box;
+            padding:0;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button{
+            height: auto;
+        }
+        input[type="search"]{
+            -webkit-appearance:textfield;
+            -moz-box-sizing: content-box;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-decoration{
+            -webkit-appearance: none;
+        }
+
+        /* Define consistent border, margin, and padding */
+        fieldset{
+            border:1px solid #c0c0c0;
+            margin:0 2px;
+            padding:0.35em 0.625em 0.75em;    
+        }
+        legend{
+            border: 0;
+            padding: 0;
+        }
+        textarea{
+            overflow:auto;
+        }
+        optgroup{
+            font-weight: bold;
+        }
+
+        /* Tables */
+        tabel{
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        td, th{
+            padding: 0;
+        }
+
+        .base_tb{font-size:16px;border-top:1px solid #009591;border-bottom:1px solid #ddd;width: 100%;}
+        .base_tb th, .base_tb td{padding:7px;text-align:center;}
+        .base_tb th:last-child, .base_tb td:last-child{border-right:0;}
+        .base_tb thead tr:first-child th {border-top:none;}
+        .base_tb thead tr th,.base_tb tbody tr th {background: #f9f9fb;}
+        .base_tb thead th,.base_tb tbody th{color:#333;font-weight:500;background:#e7f3fd;vertical-align:middle;border-top:1px solid #ddd;}
+        .base_tb tbody td{color:#555;font-weight:400;background:#fff;vertical-align:middle;border-top:1px solid #ddd;}
+        .base_tb tfoot tr{background:#fef7f9;border-top:1px solid #ddd}
+        .base_tb tfoot th, .base_tb tfoot td{color:#555;font-weight:500;border-top:1px solid #ddd;}
+        .base_tb.col_tb tbody th{color:#333;font-size:15px;font-weight:500;background:#f9f9f9;vertical-align:middle;}/* 황금돼지 2019-03-05 디자인고도화 수정 */
+        .base_tb.col_tb tbody td{text-align:left;}
+
+    </style>
+</head>
+
+<body style="padding: 0 20px 60px;color: #333;font-size: 16px;">
+    <header style="margin-bottom: 60px;text-align:center;width: calc(100% + 40px);margin-left: -20px;padding-top: 10px;border-bottom: 1px solid #dedede;">
+        <img src="images/img_logo.png" style="height: 35px;">
+    </header>
+    
+    <div>
+        <div style="text-align: center;margin-bottom: 40px;">
+            <img src="images/icon_popup_starGen.png">
+        </div>
+        <h2>접속하신 해외 네크워크에서는 보험 서비스 이용이 제한됩니다</h2>
+        <p>고객님의 소중한 개인정보 및 금융거래 보호를 위해 해외IP를 통한 서비스 이용을 제한하고 있습니다.</p>
+        <p>해외 체류 등으로 서비스 이용이 필요한 경우 아래 고객센터 또는 이메일로 문의해주시기 바랍니다</p>
+
+        <h3 style="margin-top: 50px;">[하나손해보험 해외고객 문의처]</h3>
+        <div style="padding:5px 25px;border: 1px solid #555;border-radius: 10px; color: #666;">
+            <p style="font-weight: 600;font-size: 18px;">대표 고객센터 </p>
+            <p><span style="color: #009591;font-weight: 600;font-size: 18px;">+82-2-6670-8400</span> (유료)</p>
+            <p style="margin-top: -10px;"><span style="color: #009591;font-weight: 600;font-size: 18px;">+82-80-800-8578</span> (무료)</p>
+            <p style="margin-top: 40px;">무료 전화의 경우에도 통신사 사정에 따라 일부 통신요금이 부과될 수 있습니다.</p>
+            <p>대표 고객센터는 한국시간 기준 평일 09:00 ~ 18:00 사이 문의하실 수 있습니다.</p>
+        </div>
+        <div style="padding:5px 25px;border: 1px solid #555;border-radius: 10px; color: #666;margin: 20px 0;">
+            <p style="font-weight: 600;font-size: 18px;">이메일</p>
+            <p style="margin-bottom: 10px;">보험 가입/갱신/변경 관련 문의</p>
+            <p style="margin-top: -10px;"><span style="color: #009591;font-weight: 600;font-size: 18px;">hanainsuqna@hanafn.com</span></p>
+            <p style="margin-bottom: 10px;">보상접수 관련 문의</p>
+            <p style="margin-top: -10px;"><span style="color: #009591;font-weight: 600;font-size: 18px;">hanaclaim@hanafn.com</span></p>
+        </div>
+
+        <p style="margin-top: 50px;">
+            서비스 이용에 불편을 드려 죄송합니다.<br>
+            더욱 안전한 서비스를 제공할 수 있도록 최선을 다하겠습니다.<br><br>
+            접수하신 문의사항은 신속하게 확인하여 처리하겠습니다.
+        </p>
+
+        <h3 style="margin-top: 50px;margin-bottom: 10px;">파일 다운로드</h3>
+        <table class="base_tb base_line sel_tb">        
+            <colgroup>
+                <col width="%">
+                <col width="100px">            
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col" class="col">서류명</th>                
+                    <th scope="col" class="col">다운로드</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tal">보험금청구서 (자동차, 장기, 일반)</td>                
+                    <td>
+                        <a href="downloads/doc_01.zip" target="_blank"> 다운로드 </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tal">장기 계약관리 구비서류</td>                
+                    <td>
+                        <a href="downloads/doc_02.zip" target="_blank"> 다운로드 </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="border-top: 1px dashed #c2bdbd;margin:100px 0"></div>
+
+    <div>
+        <div style="text-align: center;margin-bottom: 40px;">
+            <img src="images/icon_popup_starGen.png">
+        </div>
+        <h2>Access to insurance services is restricted from your current overseas network</h2>
+        <p>To protect your personal information and financial transactions, service access via overseas IP addresses is restricted.</p>
+        <p>If you need to use our services while abroad, please contact our Customer Center or reach out via email below.</p>
+
+        <h3 style="margin-top: 50px;">[Hana Insurance Overseas Customer Contact Information]</h3>
+        <div style="padding:5px 25px;border: 1px solid #555;border-radius: 10px; color: #666;">
+            <p style="font-weight: 600;font-size: 18px;">Phone (Main Customer Center)</p>
+            <p><span style="color: #009591;font-weight: 600;font-size: 18px;">+82-2-6670-8400</span> (Toll)</p>
+            <p style="margin-top: -10px;"><span style="color: #009591;font-weight: 600;font-size: 18px;">+82-80-800-8578</span> (Toll-free)</p>
+            <p style="margin-top: 40px;">(Please note that carrier charges may still apply to toll-free calls depending on your mobile provider.)</p>
+            <p>Operating Hours: 09:00 – 18:00 KST</p>
+        </div>
+        <div style="padding:5px 25px;border: 1px solid #555;border-radius: 10px; color: #666;margin: 20px 0;">
+            <p style="font-weight: 600;font-size: 18px;">Email</p>
+            <p style="margin-bottom: 10px;">Policy subscription and renewal inquiries</p>
+            <p style="margin-top: -10px;"><span style="color: #009591;font-weight: 600;font-size: 18px;">hanainsuqna@hanafn.com</span></p>
+            <p style="margin-bottom: 10px;">Claims inquiries</p>
+            <p style="margin-top: -10px;"><span style="color: #009591;font-weight: 600;font-size: 18px;">hanaclaim@hanafn.com</span></p>
+        </div>
+
+        <p style="margin-top: 50px;">
+            We apologize for the inconvenience and remain committed to providing safer services. <br><br>
+            We will handle your inquiry promptly.
+        </p>        
+
+        <h3 style="margin-top: 50px;margin-bottom: 10px;">File download</h3>
+        <table class="base_tb base_line sel_tb">        
+            <colgroup>
+                <col width="*">
+                <col width="100px">            
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col" class="col">document</th>                
+                    <th scope="col" class="col">download</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tal">Claims inquiries</td>
+                    <td>
+                        <a href="downloads/doc_01.zip" target="_blank"> download</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tal">Policy subscription<br>and renewal inquiries</td>                
+                    <td>
+                        <a href="downloads/doc_02.zip" target="_blank"> download</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

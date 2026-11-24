@@ -1,0 +1,132 @@
+{
+  "assets": {
+    "equities": [
+      {
+        "name": "KOSPI",
+        "ticker": "^KS11",
+        "current": 2520.4,
+        "change_pct": 0.85,
+        "unit": "pt"
+      },
+      {
+        "name": "KOSDAQ",
+        "ticker": "^KQ11",
+        "current": 715.2,
+        "change_pct": -0.32,
+        "unit": "pt"
+      },
+      {
+        "name": "S&P 500",
+        "ticker": "^GSPC",
+        "current": 5890.2,
+        "change_pct": 0.42,
+        "unit": "pt"
+      },
+      {
+        "name": "NASDAQ 100",
+        "ticker": "^NDX",
+        "current": 20450.8,
+        "change_pct": 0.78,
+        "unit": "pt"
+      },
+      {
+        "name": "필라델피아 반도체 (SOX)",
+        "ticker": "^SOX",
+        "current": 4980.5,
+        "change_pct": 1.65,
+        "unit": "pt"
+      }
+    ],
+    "bonds": [
+      {
+        "name": "미국 국채 10년물 금리 (글로벌 무위험수익률)",
+        "ticker": "US10Y",
+        "current": 4.42,
+        "change_bp": 3.5,
+        "unit": "%"
+      },
+      {
+        "name": "미국 국채 2년물 금리 (연준 기준금리 반영)",
+        "ticker": "US02Y",
+        "current": 4.31,
+        "change_bp": -1.2,
+        "unit": "%"
+      },
+      {
+        "name": "미국 장단기 금리차 (10Y - 2Y 스프레드)",
+        "ticker": "T10Y2Y",
+        "current": 0.11,
+        "change_bp": 4.7,
+        "unit": "%p (정상화)"
+      },
+      {
+        "name": "한국 국채 3년물 금리 (한은 기준금리 반영)",
+        "ticker": "KR03Y",
+        "current": 2.92,
+        "change_bp": -2.0,
+        "unit": "%"
+      },
+      {
+        "name": "한국 국채 10년물 금리",
+        "ticker": "KR10Y",
+        "current": 3.08,
+        "change_bp": -1.5,
+        "unit": "%"
+      }
+    ],
+    "commodities_futures": [
+      {
+        "name": "WTI 원유 선물",
+        "ticker": "CL=F",
+        "current": 69.15,
+        "change_pct": -1.45,
+        "unit": "$/배럴"
+      },
+      {
+        "name": "금(Gold) 선물 (안전자산·인플레 헤지)",
+        "ticker": "GC=F",
+        "current": 2610.5,
+        "change_pct": 0.65,
+        "unit": "$/온스"
+      },
+      {
+        "name": "구리 선물 (닥터 코퍼 - 글로벌 경기선행지표)",
+        "ticker": "HG=F",
+        "current": 4.15,
+        "change_pct": 0.35,
+        "unit": "$/파운드"
+      },
+      {
+        "name": "천연가스 선물",
+        "ticker": "NG=F",
+        "current": 2.85,
+        "change_pct": 3.2,
+        "unit": "$/MMBtu"
+      }
+    ],
+    "forex_digital": [
+      {
+        "name": "원/달러 환율 (USD/KRW)",
+        "ticker": "USDKRW=X",
+        "current": 1395.2,
+        "change_krw": -4.8,
+        "unit": "원"
+      },
+      {
+        "name": "달러 인덱스 (DXY)",
+        "ticker": "DX-Y.NYB",
+        "current": 106.4,
+        "change_pct": -0.15,
+        "unit": "pt"
+      },
+      {
+        "name": "비트코인 (BTC/USD)",
+        "ticker": "BTC-USD",
+        "current": 91800.0,
+        "change_pct": 2.45,
+        "unit": "$"
+      }
+    ]
+  },
+  "updated_at": "2026-11-17 16:44:18"
+}

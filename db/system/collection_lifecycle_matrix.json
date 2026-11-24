@@ -1,0 +1,91 @@
+{
+  "title": "데이터 라이프사이클 및 갱신 주기 이원화 매트릭스 (Dual-Track TTL Matrix)",
+  "principles": [
+    "1. 고빈도(동적) 데이터: 사건사고, 속보, 여론, 매크로는 분/시간/일 단위로 기민하게 추적",
+    "2. 저빈도(정적 원장) 데이터: 법률, 보험, 학연·지연, 기업일대기는 초기에 바짝 수집(Bootstrap) 완료 후 90~365일 롱텀 TTL 적용",
+    "3. 롱텀 정적 데이터는 불필요한 반복 조회를 제거하고 변경 감지(Delta Verification)만 수행하여 API 쿼터 95% 절약"
+  ],
+  "tracks": {
+    "high_frequency": [
+      {
+        "domain": "사건사고 & 실시간 속보",
+        "sources": "네이버 랭킹 뉴스 (80개 언론사) · 방송사 속보 RSS",
+        "cycle": "10분 ~ 30분 주기",
+        "ttl": "30분 (Realtime Invalidation)",
+        "daily_volume": "2,400+ 건/일",
+        "storage_policy": "일자별 `archive/YYYY-MM-DD/` 자동 파티셔닝",
+        "status": "ACTIVE_RUNNING"
+      },
+      {
+        "domain": "11대 커뮤니티 민심 여론 & 추천글",
+        "sources": "블라인드 · 보배드림 · 더쿠 · 인벤 · SLR · 디시 · 펨코 등 11개 채널",
+        "cycle": "매시 정각 (시간당 1회)",
+        "ttl": "1시간 (Hourly Flush)",
+        "daily_volume": "2,500+ 건/일",
+        "storage_policy": "감성 온도(-100~+100) 및 버즈 키워드 실시간 계산",
+        "status": "ACTIVE_RUNNING"
+      },
+      {
+        "domain": "글로벌 멀티자산 & 거시 매크로 지표",
+        "sources": "주요 증시 지수 · 국채 10Y/2Y · 원자재(유가/구리) · 원달러/BTC",
+        "cycle": "장중 15분 / 마감 1일 1회",
+        "ttl": "15분 ~ 1일",
+        "daily_volume": "핵심 16개 지표 시계열 누적",
+        "storage_policy": "`data/market/macro_assets.json` 최신치 갱신",
+        "status": "ACTIVE_RUNNING"
+      },
+      {
+        "domain": "DART 장중 실시간 수시공시 (8-K)",
+        "sources": "OpenDART 실시간 공시 피드 (영업정지, 횡령, 유상증자, 전환사채)",
+        "cycle": "장중 1시간 주기",
+        "ttl": "1시간",
+        "daily_volume": "일 300~500건 공시 필터링",
+        "storage_policy": "중대 공시 발생 시 기업 일대기 블랙박스 즉시 편입",
+        "status": "ACTIVE_RUNNING"
+      }
+    ],
+    "low_frequency_long_term": [
+      {
+        "domain": "법률서비스 렛츠로(Let’s Law) 리딩 판례 원장",
+        "sources": "대법원 종합법률정보 · 양형기준표 · 헌재 결정문",
+        "collection_strategy": "초기 집중 전수 수집 완료 ➔ 분기별(90일) 선고문 증분 검증",
+        "ttl": "90일 (Quarterly Refresh)",
+        "current_db": "15대 핵심 리딩 판례 온톨로지 완비",
+        "maintenance": "대법원 전원합의체 선고 및 양형기준 개정 시에만 부분 패치",
+        "quota_saving": "98.5% 리소스 절감",
+        "status": "BOOTSTRAP_DONE_LONG_TERM_MODE"
+      },
+      {
+        "domain": "보험상담 렛츠인슈(Let’s Insu) 표준약관 & 분쟁례",
+        "sources": "생·손보사 표준약관 공시실 · 금융감독원 분쟁조정위원회",
+        "collection_strategy": "초기 7대 표준약관 전수 적재 완료 ➔ 반기별(180일) 약관 개정 검증",
+        "ttl": "180일 (Semi-Annual Refresh)",
+        "current_db": "7대 표준약관 및 면책 방어 논리 DB 완비",
+        "maintenance": "금감원 표준약관 개정안 고시 시에만 증분 수집",
+        "quota_saving": "99.0% 리소스 절감",
+        "status": "BOOTSTRAP_DONE_LONG_TERM_MODE"
+      },
+      {
+        "domain": "인물 불변 속성 (출생지·학연·지연·기수)",
+        "sources": "정부공직자윤리위 관보 · 국회 공보 · 동문회보",
+        "collection_strategy": "초기 전수 수집 ➔ 반기별(180일) 무결성 감사(Audit)",
+        "ttl": "180일 (Semi-Annual Audit)",
+        "current_db": "79,493명 인물 기본 인적사항 적재 완료",
+        "maintenance": "학력/출생지/기수는 사실상 불변, 변동 보고 발생 시만 패치",
+        "quota_saving": "97.0% 리소스 절감",
+        "status": "BOOTSTRAP_DONE_LONG_TERM_MODE"
+      },
+      {
+        "domain": "기업 창립 일대기 & 사명 변천사",
+        "sources": "금융감독원 정기 사업보고서 · 회사 역사 연혁",
+        "collection_strategy": "15개년~창립이래 전수 적재 완료 ➔ 연 1회(365일) 사업보고서 결산 시 동기화",
+        "ttl": "365일 (Annual Refresh)",
+        "current_db": "498사 시계열 적재 (삼성·현대·SK·카카오 전수 완비)",
+        "maintenance": "매년 3월 31일 사업보고서 접수 시 1년분만 자동 Append",
+        "quota_saving": "99.5% 리소스 절감",
+        "status": "BOOTSTRAP_EXPANDING_ANNUAL_MODE"
+      }
+    ]
+  },
+  "updated_at": "2026-11-17 18:00:42"
+}

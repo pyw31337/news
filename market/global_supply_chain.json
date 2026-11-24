@@ -1,0 +1,55 @@
+{
+  "total_edges": 7,
+  "edges": [
+    {
+      "source": "SK하이닉스 (000660)",
+      "target": "엔비디아 (NVDA)",
+      "relation": "SUPPLIES_HBM3E_EXCLUSIVE",
+      "relation_label": "HBM3E 독점 및 주력 공급",
+      "description": "엔비디아 H100 및 Blackwell B200 AI 가속기에 탑재되는 고대역폭메모리 HBM3E 8단/12단 전세계 최고 수율 독점 공급"
+    },
+    {
+      "source": "삼성전자 (005930)",
+      "target": "엔비디아 (NVDA)",
+      "relation": "QUAL_TESTING_HBM3E",
+      "relation_label": "HBM3E 12단 퀄테스트 및 공급망 진입",
+      "description": "엔비디아 블랙웰 플랫폼 납품을 위한 최종 퀄테스트 진행 및 패키징 공정 다변화 협상"
+    },
+    {
+      "source": "ASML (ASML)",
+      "target": "TSMC (TSM)",
+      "relation": "SUPPLIES_HIGH_NA_EUV",
+      "relation_label": "High-NA EUV 노광장비 공급",
+      "description": "대당 5,000억원에 달하는 극자외선(EUV) 노광장비를 TSMC 2나노 공정에 최우선 독점 납품"
+    },
+    {
+      "source": "한미반도체 (042700)",
+      "target": "SK하이닉스 (000660)",
+      "relation": "SUPPLIES_TC_BONDER",
+      "relation_label": "듀얼 TC본더 장비 독점 납품",
+      "description": "HBM 칩 적층에 필수적인 열압착(TC) 본더 장비를 SK하이닉스 및 마이크론에 납품하여 엔비디아 공급망 핵심 축 형성"
+    },
+    {
+      "source": "LG에너지솔루션 (373220)",
+      "target": "테슬라 (TSLA)",
+      "relation": "SUPPLIES_EV_BATTERY",
+      "relation_label": "원통형 4680 배터리 공급",
+      "description": "테슬라 모델Y 및 사이버트럭용 차세대 원통형 4680 배터리 셀 충북 오창 공장에서 양산 납품"
+    },
+    {
+      "source": "소프트뱅크 (SOFTBANK)",
+      "target": "ARM (ARM)",
+      "relation": "OWNS_MAJORITY_STAKE",
+      "relation_label": "90% 지배 지분 보유",
+      "description": "전세계 스마트폰 AP 설계자산의 99%를 독점하는 영국 ARM의 최대주주"
+    },
+    {
+      "source": "오픈AI (OpenAI)",
+      "target": "마이크로소프트 (MSFT)",
+      "relation": "EXCLUSIVE_CLOUD_PARTNER",
+      "relation_label": "애저(Azure) 독점 클라우드 인프라 제휴",
+      "description": "MS가 오픈AI에 130억 달러 투자하고 전세계 GPT API 서빙을 애저 데이터센터에서 독점 구동"
+    }
+  ],
+  "updated_at": "2026-11-17 16:44:18"
+}

@@ -1,0 +1,102 @@
+{
+  "title": "실측 기반 90% 자동 확장 레이더",
+  "protocol": {
+    "coverage_threshold": 0.9,
+    "quality_threshold": 0.85,
+    "requires_source_evidence": true,
+    "rule": "수집량 90%만으로 확장하지 않고 품질·출처 검증까지 통과한 영역만 다음 범주로 승격"
+  },
+  "metrics": [
+    {
+      "id": "kr-corporates",
+      "label": "한국 상장사·DART",
+      "target": 2498,
+      "completed": 548,
+      "coverage": 0.2194,
+      "coverage_percent": 21.9,
+      "source": "OpenDART",
+      "source_verified": true,
+      "quality_score": null,
+      "quality_gate": false,
+      "status": "COLLECTING",
+      "note": ""
+    },
+    {
+      "id": "us-corporates",
+      "label": "미국 상장사·SEC",
+      "target": 10398,
+      "completed": 100,
+      "coverage": 0.0096,
+      "coverage_percent": 1.0,
+      "source": "SEC EDGAR",
+      "source_verified": true,
+      "quality_score": null,
+      "quality_gate": false,
+      "status": "COLLECTING",
+      "note": ""
+    },
+    {
+      "id": "community",
+      "label": "커뮤니티 원천 아카이브",
+      "target": 11,
+      "completed": 11,
+      "coverage": 1.0,
+      "coverage_percent": 100.0,
+      "source": "공개 커뮤니티",
+      "source_verified": true,
+      "quality_score": null,
+      "quality_gate": false,
+      "status": "HOLD_QUALITY_OR_SOURCE",
+      "note": ""
+    },
+    {
+      "id": "people-ledger",
+      "label": "인물·관계 원장",
+      "target": 1,
+      "completed": 1,
+      "coverage": 1.0,
+      "coverage_percent": 100.0,
+      "source": "Wikidata·공공자료",
+      "source_verified": true,
+      "quality_score": null,
+      "quality_gate": false,
+      "status": "HOLD_QUALITY_OR_SOURCE",
+      "note": ""
+    },
+    {
+      "id": "law-precedents",
+      "label": "법원·헌재 판례",
+      "target": 25,
+      "completed": 25,
+      "coverage": 1.0,
+      "coverage_percent": 100.0,
+      "source": "국가법령정보·법원 공개자료",
+      "source_verified": false,
+      "quality_score": null,
+      "quality_gate": false,
+      "status": "HOLD_QUALITY_OR_SOURCE",
+      "note": "source_url/source 필드가 있는 원문 수집분만 확장 게이트에 반영"
+    },
+    {
+      "id": "insurance-terms",
+      "label": "보험 약관·분쟁례",
+      "target": 3,
+      "completed": 3,
+      "coverage": 1.0,
+      "coverage_percent": 100.0,
+      "source": "보험사 공시·금융감독원",
+      "source_verified": false,
+      "quality_score": null,
+      "quality_gate": false,
+      "status": "HOLD_QUALITY_OR_SOURCE",
+      "note": "현재 원장에 공식 source_url/effective_date가 없는 항목은 seed로 표시"
+    }
+  ],
+  "next_queue": [
+    "미국 SEC 상세 재무·임원",
+    "중국·일본·러시아 공개 상장사",
+    "보험사별 역사 약관",
+    "법원·헌재 원문 증분"
+  ],
+  "measured_at": "2026-11-23T10:46:07.494897+00:00"
+}

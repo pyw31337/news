@@ -1,0 +1,2307 @@
+<!doctype html>
+<html
+	lang="ko">
+	<head>
+		
+
+		<title>전체상품조회-교보생명</title>
+
+		
+
+		
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=1280">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta name="format-detection" content="telephone=no">
+
+		<meta name="description" content="전체상품조회">
+		<meta name="og_type" property="og:type" content="website">
+		<meta name="og_title" property="og:title" content="전체상품 조회">
+		<meta name="og_url" property="og:url" content="https://www.kyobo.com/dgt/web/product-official/all-product/search">
+		<meta name="og_description" property="og:description" content="교보생명 홈페이지에서 보험계약 및 다양한 혜택을 만나보세요!">
+		<meta name="og_image" property="og:image" content="https://www.kyobo.com/dgt/web/common/img/sns/facebook/fa_kyobo.png?date=20221016">
+
+
+    <meta name="twitter:card"  content="전체상품조회"/>
+    <meta name="twitter:title"  content="전체상품 조회"/>
+    <meta name="twitter:description"  content="전체상품조회"/>
+    <meta name="twitter:image"  content="https://www.kyobo.com/dgt/web/common/img/sns/facebook/fa_kyobo.png?date=20221016"/>
+    <script type="application/ld+json">
+      {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Organization",
+                    "@id": "https://www.kyobo.com/#organization",
+                    "name": "교보생명",
+                    "url": "https://www.kyobo.com/",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://resource.kyobo.com/dgt/web/pc/common/img/common/ci_kyobo_header.png"
+                    },
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "종로1(종로1가) 교보생명보험주식회사",
+                        "addressLocality": "종로구",
+                        "addressRegion": "서울특별시",
+                        "postalCode": "03154",
+                        "addressCountry": "KR"
+                    },
+                    "contactPoint": [
+                        {
+                            "@type": "ContactPoint",
+                            "telephone": "+82-1588-1001",
+                            "contactType": "customer service",
+                            "availableLanguage": [
+                                "ko"
+                            ]
+                        }
+                    ],
+                    "sameAs": [
+                        "https://www.facebook.com/kyobolife",
+                        "https://www.youtube.com/@kyobo_official",
+                        "https://news.kyobo.com/"
+                    ]
+                },
+                {
+                    "@type": "WebSite",
+                    "@id": "https://www.kyobo.com/#website",
+                    "url": "https://www.kyobo.com/",
+                    "name": "교보생명",
+                    "publisher": {
+                        "@id": "https://www.kyobo.com/#organization"
+                    },
+                    "inLanguage": "ko-KR"
+                }
+            ]
+        }
+    </script>
+	
+
+	
+	
+		
+	 <link rel="canonical" href="https://www.kyobo.com/dgt/web/product-official/all-product/search" />
+		<link href="//resource.kyobo.com/dgt/web/pc/common/img/common/favicon.ico" rel="shrtcut icon">
+		<link href="//resource.kyobo.com/dgt/web/pc/common/img/common/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="//resource.kyobo.com/dgt/web/pc/common/css/style.css?ver=2026111814" rel="stylesheet">
+		<!-- 생활plus > 금융/자산 > 건강/자산정보 css분리 -->
+		
+		
+	
+		
+		
+<script type="text/javascript">
+var _webCtxPath = "/";
+var _inPaDatas = "";
+var _showMenu = "Y";
+var _nowPageCd = "PDSDRNL9001PS";
+var _deviceType = "PC";
+var _profile="prd";
+var _ajaxUrl = location.origin;
+var _pensionUrl = "";	// 미사용property
+var _apiUrl = "";				// 미사용property
+var _inihubUrl = "";
+var _inihubClientId = "ca124950-0abd-4733-8c0e-9b33ca8ff687";
+var _kakaoKey = "dd1ad6883e2540d1f6436519c42f9d61";
+var apiUrl__ = _apiUrl;
+var _ajaxOriginUrl = location.origin;
+var _snsKakaoImgUrl = "https://www.kyobo.com/dgt/web/common/img/sns/kakao/ka_kyobo.png";
+var _nowDate = "20261118";
+var _headerMenuTitle = "전체상품 조회";
+
+
+var _USER = {
+	isLogin : false,					// 로그인여부
+	roleId : "DGT_MMR_0001",					// ROLE_ID
+	loginCorpYn : "N",			// 법인로그인여부
+	loginIgCsYn : "N",			// 통합고객여부
+	isLoginCs : false,				// 개인금융
+	isLoginRtp : false,			// 퇴직연금
+	isLoginRie : false,			// 기업퇴직보험
+	isLoginGp : false,				// 기업단체보험
+	isLoginCw : false,				// 기업복지
+	isTestLogin : false,			// 테스트로그인
+	igCsYn : null// 통합고객여부
+}
+
+</script>
+
+		
+		<script type="text/javascript" src="//resource.kyobo.com/dgt/web/pc/common/js/jquery-3.4.1.js"></script>
+		<script type="text/javascript" src="//resource.kyobo.com/dgt/web/pc/common/js/jquery-ui.js"></script>
+		<script type="text/javascript" src="//resource.kyobo.com/dgt/web/pc/common/js/jquery.ui.touch-punch.js"></script>
+		<script type="text/javascript" src="//resource.kyobo.com/dgt/web/pc/common/js/jquery-printArea.js"></script>
+		<script type="text/javascript" src="//resource.kyobo.com/dgt/web/pc/common/js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="//resource.kyobo.com/dgt/web/pc/common/js/perfect-scrollbar.js"></script>
+		<script type="text/javascript" src="//resource.kyobo.com/dgt/web/pc/common/js/swiper.js"></script>
+		<script type="text/javascript" src="//resource.kyobo.com/dgt/web/mobile/common/js/heic2any.index.js"></script>
+
+		
+		<script type="text/javascript" src="/dgt/web/pc/common/js/ui.js?ver=2026111814"></script>
+		
+		<script type="text/javascript" src="/dgt/web/pc/common/js/ajax_common.js"></script>
+		<script type="text/javascript" src="/dgt/web/pc/common/js/util.js"></script>
+		<script type="text/javascript" src="/dgt/web/common/js/dtm/kyobo.common.js"></script>
+
+		<!-- 네이버페이 간편결제 SDK -->
+		<script type="text/javascript" src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
+
+
+	
+
+		<script>
+			/*<![CDATA[*/
+			var _isEtpLoginRt = false;
+			var _isEtpLoginCw = false;
+			var _isEtpLoginGp = false;
+			var _isEtpLoginRi = false;
+			var _isNoneDisplayLnb = null;
+			var _initMenuType = "dcs";
+			/*]]>*/
+		</script>
+
+		
+
+		
+		
+
+		<script src="/dgt/web/common/js/dtm/fun_common.js?ver=2026111814"></script>
+		<script src="/dgt/web/common/js/dtm/app_common.js?ver=2026111814"></script>
+		<script src="/dgt/web/common/js/dtm/utils_common.js?ver=2026111814"></script>
+		<script src="/dgt/web/pc/common/js/menu_action.js?ver=2026111814"></script>
+		
+		
+
+		<!-- /* 페이지별 추가적으로 로딩되는 script 파일 */-->
+		
+		
+
+		
+		
+
+
+<script type="text/javascript">
+
+const nth_url = kyobo.env.isPrd() ? 'weblog.kyobo.com'
+					: 'tweblog.kyobo.com';
+var nth_screenid = _nowPageCd;
+var nth_type = location.pathname.indexOf('/pension') > -1 ? 'pension' : '';
+
+let nth_sid = '17047';
+//var nth1_isLogin = /*false*/ false;
+//var nth1_isLoginCs = /*false*/ false;
+
+// 로그인전 또는 개인금융고객로그인
+//if(!nth1_isLogin || nth1_isLoginCs){
+if(!_USER.isLogin || _USER.isLoginCs){
+	if(kyobo.env.isApp()){
+		nth_sid = '27152';
+	}
+	else if(kyobo.env.isMobile()){
+		nth_sid = '64336';
+	}
+}
+// 이외는 다 기업으로 판단
+else{
+	if(kyobo.env.isApp()){
+		nth_sid = '71930';
+	}
+	else{
+		nth_sid = '45841';
+	}
+}
+
+(function(f,d,k,h){var b;var a=m()+"ver="+c(d);g();function e(){var o=document.getElementsByTagName(f)[0];var n=document.createElement(f);n.async=true;n.charset="utf-8";n.src=a;o.parentNode.insertBefore(n,o)}function m(){return window.location.protocol=="https:"?"https://" + nth_url + "/static/" + nth_sid + "/install.js?":"http://" + nth_url + "/static/" + nth_sid + "/install.js?"}function c(n){var o=new Date().getTime();var p=n*1000*60;return n>0?Math.floor(o/p)*p:o}function g(){var n=l();if(!n){return false}n.open("GET",a,true);n.withCredentials=h;n.send(null);n.onload=function(){j();e()};n.onerror=n.onabort=function(){j()};i(function(){n.abort()},k)}function l(){var q;var o=[function(){return new XDomainRequest()},function(){return new XMLHttpRequest()},function(){return new ActiveXObject("Msxml2.XMLHTTP")},function(){return new ActiveXObject("Msxml3.XMLHTTP")},function(){return new ActiveXObject("Microsoft.XMLHTTP")}];for(var n=0;n<o.length;n++){try{q=o[n]()}catch(p){continue}break}return q}function i(o,n){b=setTimeout(o,n)}function j(){if(b){clearTimeout(b);b=null}}})("script",1440,/*{{timeout}}*/1000,/*{{withCredentials}}*/false);
+</script>
+		
+		<script type="text/javascript">
+var _adbrixYn = "N";
+if(!kyobo.env.isApp() && kyobo.env.isSecure()){
+	!function(e,r){if(void 0!==e&&!e.adbrix){var o={queue:[]},t=navigator.userAgent.toLowerCase(),c=r.createElement("script"),a="Netscape"===navigator.appName&&-1!==navigator.userAgent.search("Trident")||-1!==t.indexOf("msie")?"abx-web-sdk.ie.min.js":"abx-web-sdk.min.js";c.type="text/javascript",c.async=!0,c.src="//static.adbrix.io/web-sdk/latest/"+a,c.onload=function(){e.adbrix.runQueuedFunctions?e.adbrix.runQueuedFunctions():console.log("[adbrix] Error: could not load SDK")};var i=r.getElementsByTagName("script")[0];i.parentNode.insertBefore(c,i);["init","onInitialized","login","getUserId","logout","userProperty.get","userProperty.getAll","userProperty.addOrUpdate","userProperty.remove","userProperty.removes","common.signUp","common.invite","common.useCredit","common.purchase","event.send","debug.traceListener","commerceAttr.categories","commerceAttr.product","commerce.viewHome","commerce.categoryView","commerce.productView","commerce.addToCart","commerce.addToWishList","commerce.reviewOrder","commerce.refund","commerce.search","commerce.share","commerce.listView","commerce.cartView","commerce.paymentInfoAdded","game.tutorialComplete","game.characterCreated","game.stageCleared","game.levelAchieved"].forEach(function(e){var r=e.split("."),t=r.pop();r.reduce(function(e,r){return e[r]=e[r]||{}},o)[t]=function(){o.queue.push([e,arguments])}}),e.adbrix=o}}(window,document);
+
+	let adbrix_appkey = 'kmZZRAs0nkqzs8qmKREAoQ';
+	let adbrix_webSecretkey = 'cemupq94L0q5XymsVRkGFw';
+	if(kyobo.env.isPrd()){
+		adbrix_appkey = 'dGui2ZBF4EGzbugK49rCVA';
+		adbrix_webSecretkey = 'qA9yLAkWy0mqPYYxr1ustw';
+	}
+
+	window.adbrix.init({
+		appkey : adbrix_appkey,
+		webSecretkey : adbrix_webSecretkey
+	});
+}
+</script>
+
+		
+		
+
+		
+
+		<!-- 네이버페이 간편결제 SDK -->
+		<script type="text/javascript" src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
+
+		<!-- sentry 추가 -->
+		<!-- 2026.10 sentry 제거
+		<th:block th:if="${@environment.getProperty('spring.profiles.active') == 'stg'}">
+			<script type="text/javascript" th:src="@{${resource}+'/dgt/web/pc/common/js/sentry-loader-stg.js'}"></script>
+		</th:block>
+		<th:block th:if="${@environment.getProperty('spring.profiles.active') == 'prd'}">
+			<script type="text/javascript" th:src="@{${resource}+'/dgt/web/pc/common/js/sentry-loader-prd.js'}"></script>
+		</th:block>
+		<script type="text/javascript" th:src="@{${resource}+'/dgt/web/mobile/common/js/sentry-bundle.min.js'}"></script>
+		-->
+		<!-- sentry 종료 -->
+
+		<!-- 스크립트 상수 설정  -->
+		<script>
+
+			var _gaYn = "N";
+
+			$(document).ready(function() {
+				let initMenuType = "dcs";
+
+				if(_adbrixYn === 'Y'){
+					// 각 화면별 adbrixParam 설정되어 있는 경우 파라미터까지 태깅
+					if(typeof adbrixParam !== "undefined") {
+						kyobo.adbrix.event(_nowPageCd, adbrixParam);
+					} else {
+						kyobo.adbrix.event(_nowPageCd);
+					}
+				}
+
+				if (_showMenu == 'Y') {
+					let loginRoleId   = "DGT_MMR_0001";
+					const isLoginUser = false;
+					if(!isLoginUser){
+						// 비로그인 경우 기업, 개인 구분
+						loginRoleId=initMenuType=="etp"?"DGT_MMR_0010":"DGT_MMR_0001";
+					}
+					//회사소개,공시실 동일.
+					if(initMenuType=="abt"||initMenuType=="dcs"||initMenuType=="abteng"){
+						loginRoleId="DGT_MMR_0007";
+					}
+					Menu.initPc(loginRoleId,'PC','0000',initMenuType);
+				}
+
+				// 검색하기
+				$(document).on("click", ".user .bts .bt.schs", function(evt) {
+					console.debug(`>>>::0:: 검색하기 - click!!`);
+					/* /dgt/web/dtm/co/integSearch/page-form : 통합검색 page 인경우 동작 없음! */
+					if((location.href).indexOf("/dtm/co/integSearch/page-form") > -1) return;
+					let menuNavBarTop = $("#menu-nav-bar-top").html();
+					// console.debug(`>>>>menuNavBarTop::: ${menuNavBarTop}`);
+					sessionStorage.setItem("menuTopNaviBar", menuNavBarTop);
+					// LNB메뉴 display:none 을 위한 저장.
+					sessionStorage.setItem("isNoneDisplayLnb", "Y");
+					location.href = "/dgt/web/dtm/co/integSearch/page-form?menuType="+initMenuType;
+				});
+				// 검색하기 - popup 전체메뉴
+				$(document).on("click", ".all-menu-header button.btn-sch", function(evt) {
+					let schKeyWd = $(this).parent().siblings("input").val();
+					console.debug(`>>>:: popup전체메뉴 - schKeyWd:${schKeyWd}`);
+					integSearchAction(schKeyWd, this);
+				});
+				$(document).on("keyup", ".all-menu-header #pop-sch-input", function(evt) {
+					if(evt.keyCode === 13) { //엔터키
+						let schKeyWd = $("#pop-sch-input").val();
+						console.debug(`>>>:: popup전체메뉴 - with EnterKey - schKeyWd:${schKeyWd}`);
+						if(!schKeyWd) return false;
+						integSearchAction(schKeyWd, this);
+					}
+				});
+				//검색버튼 - 메인page
+				$(".bt-sch#btn-integ-sch-main").on("click", function(evt) {
+					//TODO: 메인page 검색 버튼 달기. DTMCONLNLM001-01.html
+					// input id="keywords" -> input id="keywords-main", 추가: id="btn-integ-sch-main"
+					const schKeyWd = $("#keywords-main").val();
+					console.debug("click btn-integ-sch-main :::", schKeyWd);
+					integSearchAction(schKeyWd, this);
+				});
+				$("#keywords-main").keydown(function(evt) {
+					if(evt.keyCode === 13) {
+						let schKeyWd = $(this).val();
+						console.debug("click btn-sch - main :::", schKeyWd);
+						integSearchAction(schKeyWd, this);
+					}
+				});
+				// 이런 키워드 검색 어떠세요?(인기검색어) click! - 메인page
+				$(".ut-hash-box a").each(function(idx){
+					$(this).on("click", function(evt){
+						// const ndName = evt.target.nodeName;
+						const schKeyWd = $(this).text().substring(1);
+						// console.debug(`>>> a:: idx::${idx}, nodeName:${ndName}, schKeyWd:${schKeyWd}`);
+						integSearchAction(schKeyWd, this);
+					});
+				});
+
+				//전체메뉴 pop-up
+				$(document).on("click", ".bt.menu", function(evt) {
+					// evt.preventDefault();
+					//console.debug(`>>> 전체메뉴-popup::initMenuType::${initMenuType}`);
+					if(initMenuType === "ind" || initMenuType === "NA") { //개인
+						ui.popup.open('pop-menu-ind'); // fragment-page is "popWholeMenu.html"
+						removeTabindex('pop-menu-ind');
+					} else if(initMenuType === "etp") { //기업
+						ui.popup.open('pop-menu-etp');
+						removeTabindex('pop-menu-etp');
+					} else { //공시실(dcs), 회사소개(abt)
+						ui.popup.open('pop-menu-da');
+						removeTabindex('pop-menu-da');
+					}
+
+					function removeTabindex(id, n){
+						if((n = n || 0) < 5) {
+							setTimeout(_=>{
+								$("#"+id).find('.pct').removeAttr('tabindex');
+								removeTabindex(id, n + 1);
+							}, 500);
+						}
+					}
+				});
+
+
+		        //에디터의 외부 링크 처리
+		        $(document).on("click", ".editor-open-url", function() {
+		          let linkUrl = $(this).attr("href");
+		          const isApp = _deviceType === "APP" ? true : false;
+		          if(isApp) { // native call
+		            native.openURL({ url : linkUrl }, () => {});
+		          } else {
+		            window.open(linkUrl, "_system", "location=no");
+		          }
+		        });
+
+				// #Disappear Footer accordion!
+				// $(document).on("click", "body", function(evt) {
+				// 	evt.preventDefault();
+				// 	const elem = evt.target;
+				// 	if($(elem).is(".dimmed")) {
+				// 		console.log(">>> body target:::", elem);
+				// 		$(".footer .footer-rules .rules li .bt").eq(0).trigger("click");
+				// 	}
+				// });
+
+				//------------------------------ ----------------------------------
+				Com.OnReadyAction();
+
+			});// jquery document ready.
+
+
+			function integSearchAction(schKeyWd, el) {
+				if(!schKeyWd) {
+					ui.alert("검색어를 입력해 주세요!", {ycb:_=>el&&el.focus()});
+					return false;
+				} else {
+					schKeyWd = "?schCond=" + schKeyWd;
+				}
+				location.href= "/dgt/web/dtm/co/integSearch/search-form" + schKeyWd;
+			}
+
+			var commonBackActionFlag = true;
+			function commonBackAction() {
+				if (commonBackActionFlag) {
+					history.back();
+				} else {
+					Com.BackBtnAction();
+				}
+			}
+
+			/*]]>*/
+		</script>
+	</head>
+
+	<body class="body">
+		<div class="wrap" id="wrap">
+			
+				
+  
+    
+      <header class="header cate" id="header"> 
+    
+      <div class="inr">
+        <div class="hdr">
+
+          <!-- main page URL -->
+          
+
+          <h1 class="logo">
+          	<a class="bt" href="#" onclick="moveForLogo(this);">
+            <i class="blind">교보생명</i></a>
+          </h1>
+
+          
+
+		  <!-- 공시실, 회사소개인 경우 None Display -->
+		  
+		  <!-- 공시실 -->
+		  <ul class="link">
+			<li><a class="bt target" href="#" data-url="main" onclick="headerPageMove(this);">교보생명 홈페이지</a></li>
+			<li><a class="bt target"  href="#" data-url="abt" onclick="headerPageMove(this);">회사소개</a></li>
+		  </ul>
+		  <!-- 회사소개(한글)-->
+		  
+		  <!-- 회사소개(영문)-->
+		  
+
+
+          <nav class="gnb" id="gnb">
+              <!-- 교보 loggo 옆 영역 -->
+              
+              <h2 class="mtog" style="display:block">
+                <button type="button" class="menu corps">공시실</button>
+              </h2>
+              <h2 class="mtog" style="display:none">
+                <button type="button" class="menu corps" data-url="abt-main" onclick="headerPageMove(this);">회사소개</button>
+              </h2>
+              <h2 class="mtog" style="display:none">
+                <button type="button" class="menu-eng corps" data-url="abt-main-eng" onclick="headerPageMove(this);">Corporate<br/>Information</button>
+              </h2>
+
+            <!-- menu START -->
+            <ul class="menu" id="menu-pc-top">
+              <!-- li-a-div-ul-li-a-ul-li-a -->
+            </ul>
+
+          </nav> <!-- class=gnb END -->
+
+
+          <div class="user">
+            <!-- 개인고객 //link때문에 a tag로 변환: 2022.07.26  -->
+            
+            
+            
+            
+            
+            
+            <!-- 기업고객 -->
+            
+            
+            
+            <!-- <div class="name" th:if="${isLoginRi && isEtp }">퇴직보험</div> --> <!-- 무조건 공백 -->
+
+            <div class="bts">
+
+              <!-- TODO:임시-테스트: -->
+              
+              <!-- TODO:임시-테스트: -->
+
+              
+              
+              <button type="button" class="bt menu"><i class="blind">메뉴보기</i></button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <article class="pop-layer xs a" id="pop-grade">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h2 class="ptit"><span id="nob_crt_year"></span>년 우수고객 안내</h2>
+				</div>
+			</div>
+			<div class="pct">
+				<main class="poptents diamond">
+					<div class="imgbox">
+						<img src="/dgt/web/pc/common/img/msc/ico_diamond.png" alt="다이아몬드">
+					</div>
+					<p>고객님을 위한 우수 고객 전용 서비스는<br><span data-url="nobley-service" onclick="headerPageMove(this);">MY교보 > 혜택 > 교보 노블리에 서비스</span> 에서<br>확인하실 수 있습니다.</p>
+				</main>
+			</div>
+			<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button>
+		</div>
+		</article>
+    </header>
+
+
+
+    <!-- navi: header아래 menu navigation bar ! main page인 경우 제거 -->
+    <nav class="location">
+      <div class="inr">
+        <ul class="loc" id="menu-nav-bar-top"> <!-- 여기는 link 없음! -->
+          <!-- <li class="hm"><a href="#" class="tt">홈으로</a></li> -->
+          <li class="hm"><a class="tt">홈으로</a></li>
+          <!--
+            <li><a href="javascript:;" class="tt">메뉴 1 뎁스</a></li>
+            <li><a href="javascript:;" class="tt">메뉴 2 뎁스</a></li>
+            <li><a href="javascript:;" class="tt">메뉴 3 뎁스</a></li>
+            <li><a href="javascript:;" class="tt">메뉴 4 뎁스</a></li>
+            <li><a href="javascript:;" class="tt">메뉴 5 뎁스</a></li>
+          -->
+        </ul>
+      </div>
+    </nav>
+
+
+    <script>
+        const indMainUrl = "/dgt/web/dtm/co/main";
+        const etpMainUrl = "/dgt/web/corp-main";
+
+        $(function() {
+          //노블리에서비스화면문구내 현재년도값 자동세팅
+		  $("#nob_crt_year").text(_nowDate.substring(0,4));
+
+          $(document).on("click", ".user .bt.login", function(){
+
+            //TODO: 로그인 테스트.............................
+            if( $(this).hasClass("temp") ) {
+              console.debug(">>> 기업 로그인 테스트 - 임시!!!");
+              location.href = "/dgt/web/dtm/lc/tu/testLogin?corpYn=Y"; //temp login page.
+            }
+            else {
+            //TODO: 로그인 테스트.............................
+
+
+              // ------ 정상 코드 ---------------------------//
+              let isEtp = false;
+              console.debug(">>> clicked::::: href:, isEtp:", window.location.href, isEtp);
+              if(isEtp) { //__기업
+                location.href = "/dgt/web/dtm/cp/lc/corpLogin"; //login page.
+              } else { //__개인
+                location.href = "/dgt/web/dtm/lc/tu/login"; //login page.
+              }
+              // ------ 정상 코드 ---------------------------//
+
+
+            }//TODO: 로그인 테스트.............................
+
+          });
+
+          // 개인, 기업 button click
+          $(".gnb").on("click", ".mtog button.bt", function(evt){
+            evt.preventDefault();
+            let isInd = false;
+            let isEtp = false;
+            const currMainUrl = location.href;
+            const isCurrMainInd = currMainUrl.indexOf(indMainUrl) > 0;
+            const isCurrMainEtp = currMainUrl.indexOf(etpMainUrl) > 0;
+            console.debug(">>> indMainUrl::", currMainUrl.indexOf(indMainUrl), isCurrMainInd);
+            console.debug(">>> etpMainUrl::", currMainUrl.indexOf(etpMainUrl), isCurrMainEtp);
+            if( $(this).hasClass("psl") ) {//psl(개인), cpy(기업)
+              if(isCurrMainInd) return;
+              if(isInd)
+                location.href = indMainUrl;
+              else
+                Menu.logOut(indMainUrl); //session 삭제를 위함
+            } else if( $(this).hasClass("cpy") ) {
+              if(isCurrMainEtp) return;
+              if(isEtp)
+                location.href = etpMainUrl;
+              else
+                Menu.logOut(etpMainUrl); //session 삭제를 위함
+            }
+          });
+
+        }); // jQuery document ready
+
+        function moveForLogo(aTag) {
+          // let isHomeLogo  = $(aTag).parents().hasClass('logo'); //왼쪽 교보-LOGO
+          let isEtp = false;
+          console.debug(">>> moveForLogo to main - isEtp::", isEtp);
+          let menuType = "ind";
+          let trgUrl = indMainUrl;  //__개인 페이지
+          if(isEtp) {
+            menuType = "etp";
+            trgUrl = etpMainUrl;//_기업 페이지
+          }
+          console.debug(">>> moveForLog - trgUrl:::", trgUrl, menuType);
+          Menu.clearLocalStgSession(menuType);
+          location.href = trgUrl;
+        }
+
+        function moveForLogout(aTag) {
+          let isEtp = false;
+          console.debug(">>> moveMain - isEtp::", isEtp);
+          if(isEtp) { //__기업 페이지
+            Menu.logOut(etpMainUrl);
+          } else { //__개인 페이지
+            return kyobo.ajax.json({url: '/dtm/co/popup-event', data: {pc:1}})
+            .then(datas=> {
+              const target=datas.reduce((target, v)=>(target || (v.targets?.indexOf('pc03') != -1 && v)), undefined);
+              if(!target) return Menu.logOut(indMainUrl);
+              else {
+                const getImgHtml=arg=>(arg && [
+                '<div class="imgBox"><img src="/file/ajax/display-img?fName=',
+                arg.replace(/^D:?/i, '').replace(/\\\\/g, '/'),
+                '" alt="'+(target.dgt_img_alt||'')+'"></div>'
+                ].join(''));
+                const html=getImgHtml(target.dgt_img_src)||(target.dgt_pp_txt||'');
+                Object.assign(target, {
+                  dgt_pp_txt:(target.dgt_url_adr?('<a href="'+target.dgt_url_adr+'">'+html+'</a>'):html)
+              });
+                [...document.getElementById('sign-out-person').querySelectorAll('[data-fild]')]
+                .forEach(el=> {
+                  const {dataset:{fild}} = el, innerHTML = target[fild];
+                  innerHTML && Object.assign(el, {innerHTML});
+                });
+                ui.popup.open('sign-out-person');
+              }
+            }), false;
+          }
+        }
+
+        function certPageMove() {
+          let isEtp = false;
+          // TODO:아래의 menuIds 변경 to 인증센터 메인.
+          // DGT004000000000|DGT004001000000|DGT004001007000|DGT004001007001
+          let menuIds = Menu.getSessMenuIdByMenuNm("인증센터|인증관리|공동인증서(구.공인인증서)|인증서등록");
+          //TODO: 향후변경.예정 (인증센터|인증관리|인증센터) ////////////////////
+          let trgUrl = "/dgt/web/dtm/cc/cert/main";
+          let menuType = "ind";
+          if(isEtp) { //__기업 페이지
+            menuType = "etp"; //"DGT028000000000000|DGT028001000000000|DGT028001001000000"
+            menuIds = Menu.getSessMenuIdByMenuNm("인증센터|공동인증서|인증서등록");
+            trgUrl = "/dgt/web/dtm/cc/coPblcCertSel";
+          }
+          Menu.setSessLocLnbMenu(trgUrl, menuIds, menuType, true); //menu_action.js 에 있는 function.
+          location.href = trgUrl; //TODO: URL 변경 to 인증센터 메인.
+        }
+
+        function headerPageMove(aTag) {
+          // header 에서 button 클릭한 경우
+          let isNewWindow = $(aTag).hasClass('target'); //새창으로 OPEN
+          let linkUrlType = aTag.dataset.url;
+          console.debug(`>>> isNewWindow:${isNewWindow}`);
+          console.debug(`>>> linkUrlType:${linkUrlType}`);
+          let linkUrl;
+          if(linkUrlType === 'main') { //교보홈페이지
+            linkUrl = '/dgt/web/dtm/co/main';
+          } else if(linkUrlType === 'abt-main') {
+            linkUrl = '/dgt/web/company-introduction/main';
+            Menu.setSessLocLnbMenu(linkUrl, "", "abt", false); //상단 navigation bar 삭제.
+          } else if(linkUrlType === 'abt-main-eng') {
+              linkUrl = '/dgt/web/company-introduction/en-main';
+              Menu.setSessLocLnbMenu(linkUrl, "", "abteng", false); //상단 navigation bar 삭제.
+          } else if(linkUrlType === 'abt') { //회사소개 - old:/dgt/web/company-introduction/information-in-an-enterprise/brand/greeting-words
+            linkUrl = '/dgt/web/company-introduction/main';
+          } else if(linkUrlType === 'abt_eng') { //회사소개_영문
+            linkUrl = '/dgt/web/company-introduction/en-main';
+          } else if(linkUrlType === 'career') { //채용정보
+              linkUrl = 'https://career.kyobo.co.kr';
+          } else if(linkUrlType === 'dcs') { //공시실
+            linkUrl = '/dgt/web/product-official/information';
+          } else if(linkUrlType === 'rp_dcs') { //퇴직연금 공시실
+            linkUrl = '/dgt/web/retirement-pension/official/save-money/operation-money';
+          } else if(linkUrlType === 'csc_portal') { //소비자포털
+            linkUrl = '/dgt/web/customer/consumer-portal/consumer-portal-introduction';
+          } else if(linkUrlType === 'nobley-service') { //노블리에서비스
+            linkUrl = '/dgt/web/customer/service/nobley-service';
+          }
+          // check - 새창
+          if(isNewWindow) {
+            if( checkValidUrl(linkUrl) ) {
+              window.open(linkUrl, "_blank", "noopener noreferrer"); //New window
+            }
+          } else {
+            if( checkValidUrl(linkUrl) ) {
+              location.href = linkUrl; //현재창
+            }
+          }
+        }
+
+        function footerPageMove(aTag) {
+          // let isEtp = /*false*/ "";
+          let linkUrl = aTag.dataset.url;
+          let menuIdNames = aTag.dataset.menunms;
+          let urlTarget = aTag.dataset.target;
+          // let menuIds = Menu.getSessMenuIdByMenuNm(menuIdNames);
+          let menuType = "ind";
+          // if(isEtp) menuType = "etp";
+          // Menu.setSessLocLnbMenu(linkUrl, menuIds, menuType, true); //menu_action.js 에 있는 function.
+          console.debug(`>>> footerPageMove - menuType:${menuType}, linkUrl:${linkUrl}, urlTarget:${urlTarget}`);
+
+          if(urlTarget === '_popup') {
+            ui.popup.open(linkUrl);  // 팝업 열기
+          } else if(linkUrl) {
+            location.href = linkUrl;
+          }
+
+        }
+
+        function checkValidUrl(linkUrl) {
+          if(!linkUrl) {
+            ui.alert(`Link URL is [${linkUrl}]`);
+            return false;
+          } else {
+            return true;
+          }
+        }
+
+    </script>
+
+   <!-- th:with -->
+
+				
+	
+
+				
+	<div class="wrap" id="wrap">
+		<main class="container page dcs" id="container">
+			<div class="contents" id="contents">
+				<input type="hidden" id="pams" name="pams" value=""/>
+				<input type="hidden" id="saleYn" name="saleYn" value=""/>
+				<input type="hidden" id="preNnnn" name="preNnnn" value=""/>
+				<div class="page-hdt">
+					<h2 class="stit hd-tit2">전체상품조회</h2>
+				</div>
+				<ul class="sch-upper">
+					<li>
+						<span class="th-tit">검색조건</span>
+						<div class="td-cont">
+							<div class="sel-group col3">
+								<span class="select">
+									<label class="lb blind" for="select-11" role="text">판매여부 선택하기</label>
+									<select name="select-11" id="select-11">
+										<option value="99" selected>전체</option>
+										<option value="Y">판매중</option>
+										<option value="N">판매중지</option>
+									</select>
+								</span>
+								<span class="select">
+									<label class="lb blind" for="select-12" role="text">보험종류 선택하기</label>
+									<select name="select-12" id="select-12" onchange="javascript:optionCase(this);">
+										<option value="99" selected>전체</option>
+										<option value="PAMS01">교육보험</option>
+										<option value="PAMS02">연금보험</option>
+										<option value="PAMS03">저축보험</option>
+										<option value="PAMS04">보장성보험</option>
+										<option value="PAMS05">기업보험</option>
+										<option value="PAMS06">통신판매전용상품</option>
+										<option value="PAMS07">방카슈랑스전용상품</option>
+										<option value="PAMS08">퇴직연금</option>
+										<option value="PAMS09">퇴직보험</option>
+										<option value="PAMS10">온라인보험</option>
+									</select>
+								</span>
+								<span class="select">
+									<label class="lb blind" for="select-13" role="text">소분류 선택하기</label>
+									<select name="select-13" id="select-13">
+										<option value="99" selected>전체</option>
+									</select>
+								</span>
+							</div>
+							<span class="input a w100p mt16"> <!-- 수정: mt16으로 간격 수정 2022-05-22 -->
+								<label class="lb blind" for="input-01">검색어</label><input type="text" title="키워드 또는 상품명 입력" placeholder="키워드 또는 상품명 입력" id="input-01">
+							</span>
+						</div>
+					</li>
+				</ul>
+				<div class="btn-set">
+					<button type="button" class="btn md ico-search" id="searchBtn">검색</button>
+				</div>
+				<h3 class="hd-tit3">상품 목록</h3>
+				<div class="ut-optset optset">
+					<div class="opt pl">
+						<span class="tot">전체 <i class="n" id="totalCnt"></i> 건</span>
+					</div>
+					<div class="opt pr">
+						<span class="select sort">
+							<select name="select-4" id="select-quan" title="목록 개수 선택" onchange="javascript:viewCount(this);">
+								<option value="10">10개씩 보기</option>
+								<option value="20">20개씩 보기</option>
+								<option value="50">50개씩 보기</option>
+								<option value="100">100개씩 보기</option>
+							</select>
+						</span>
+					</div>
+				</div>
+				<div class="ut-tbl a">
+					<table class="tblist nl">
+						<caption><span class="tit">상품 목록</span><span class="cap"></span></caption>
+						<colgroup>
+							<col style="width: 18%">
+							<col style="width: auto">
+							<col style="width: 15%">
+							<col style="width: 18%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">보험종류</th>
+								<th scope="col">상품명</th>
+								<th scope="col">판매여부</th>
+								<th scope="col">기간별 다운로드</th>
+							</tr>
+						</thead>
+						<tbody id="insuList">
+						</tbody>
+					</table>
+				</div>
+				<div id="pageNevArea" class="ut-paging"></div>
+				<article class="pop-layer a md pop-dcs" id="pop-period-down">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h2 class="ptit "><!--h1 to h2-->기간별 다운로드 확인</h2>
+				</div>
+			</div>
+			<div class="pct">
+				<div class="sky-box">
+					<h2 class="hd-tit5" id="pop-titlNm"></h2>
+				</div>
+				<div class="ut-optset optset">
+					<div class="opt pl">
+						<span class="tot">전체 <i class="n" id="pop-totalCnt"></i>건</span>
+					</div>
+				</div>
+
+				<div class="ut-tbl a">
+					<table class="tblist">
+						<caption><span class="tit">상품 목록</span><span class="cap"></span></caption>
+						<colgroup id="pop-periodColgroup">
+							<col style="width: auto">
+							<col style="width: 15%">
+							<col style="width: 15%">
+							<col style="width: 15%">
+						</colgroup>
+						<thead id="pop-periodColumn">
+							<tr>
+								<th scope="col">판매기간</th>
+								<th scope="col">상품요약서</th>
+								<th scope="col">약관</th>
+								<th scope="col">사업방법서</th>
+							</tr>
+						</thead>
+						<tbody id="pop-periodDownList">
+						</tbody>
+					</table>
+				</div>
+
+				<!-- [D] 2022-08-09 상품상세설명 추가-->
+				<div class="pro-explain" id="descArea">
+					<div class="tit">상품상세설명</div>
+					<div class="txt" id="desc"></div> <!-- 설명 -->
+				</div>
+				<!--//[D] 2022-08-09 상품상세설명 추가-->
+
+				<div class="ut-gudbox b open" data-tog-cls="box">
+					<div class="gtit">꼭 알아두세요</div>
+					<button type="button" data-tog-cls="btn" class="bt-tog">안내문</button>
+					<div class="gctn" data-tog-cls="ctn">
+						<ul class="bullet a glst">
+							<li>특정 문서가 보이지 않으면 해당 파일의 뷰어 프로그램을 설치해 주세요.</li>
+							<li>뷰어가 설치되었는데도 문서가 보이지 않으면 프로그램을 최신 버전으로 업데이트해 주세요.</li>
+						</ul>
+						<div class="btn-set">
+							<button type="button" class="btn sm ico-down ico-r" id="pdfviewerBtn" title="다운로드">PDF 뷰어</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button>
+		</div>
+	</article>
+			</div>
+			<div id="rDownload"></div>
+		</main>
+	</div>
+
+				
+  
+
+  <footer class="footer" id="footer">
+    <div class="inr">
+      
+      <ul class="lst-nav">
+		<li><a href="javascript:void(0);" onclick="ui.popup.open('pop-blockinfo-pftnlnl8719pp',{ocb:function(){},ccb:function(){focus(this)}});">정보 접근성 정책</a></li>
+		<article class="pop-layer a sm pop-emailpolic" id="pop-emailpolic">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h2 class="ptit "><!--h1 to h2-->이메일 무단수집거부</h2>
+				</div>
+			</div>
+			<div class="pct">
+				<main class="poptents">
+
+					<div class="ftrbox">
+						홈페이지에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여 무단으로 수집되는 것을 거부하며, 이를 위반 시 정보통신망법에 의해 형사처벌됨을 유념하시기 바랍니다.
+					</div>
+					<div class="ftlist">
+						<div class="ptxt">게시일: 2012년 11월 19일</div>
+					</div>
+
+				</main>
+			</div>
+			<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button>
+		</div>
+	</article>
+      </ul>
+      <div class="info-box">
+        <div class="corp">
+          <ul class="lst-corp">
+            <li>대표이사 : 신창재, 조대규</li>
+            <li>사업자등록번호 : 102-81-11097</li>
+            <li class="addr">주소 : (03154) 서울시 종로구 종로1(종로1가) 교보생명보험주식회사</li>
+            <li class="copy">© KYOBO LIFE INSURANCE CO.,LTD.</li>
+          </ul>
+        </div>
+
+        <div class="util">
+          <ul class="lst-link">
+            <!-- <li><a href="https://www.kyobostory.co.kr" target="_blank" title="광화문에서 읽다,거닐다,느끼다" class="ic-link a"><i>광화문에서 읽다,거닐다,느끼다</i></a></li> --><!-- 2024.06.18 삭제 -->
+            <li style="float:right;"><a href="https://career.kyobo.co.kr" target="_blank" title="교보생명 채용" class="ic-link b"><i>교보생명 채용</i></a></li>
+          </ul>
+
+          <ul class="lst-sns">
+            <li><a href="http://www.facebook.com/kyobolife" target="_blank" class="btn-facebook" title="교보생명 페이스북. 바로가기"><span class="blind">페이스북</span></a>
+            </li>
+            <li><a href="http://www.youtube.com/c/%ED%8F%89%EC%83%9D%EB%93%A0%EB%93%A0%EA%B5%90%EB%B3%B4%EC%83%9D%EB%AA%85" target="_blank" class="btn-ytube" title="교보생명 유튜브. 바로가기"><span class="blind">유튜브</span></a></li>
+            <!-- add/chg 20260722 | 뉴스룸 아이콘+텍스트 (원본 btn-blog → btn-newsroom)  -->
+            <li class="newsroom"><a href="https://news.kyobo.com/" target="_blank" class="btn-newsroom" title="교보생명 뉴스룸. 바로가기"><i>뉴스룸</i></a></li>
+          </ul>
+
+
+          <ul class="lst-mark">
+            <li class="ccm">
+            	<span class="blind">소비자중심 공정거래위원회</span>
+            	<span>소비자중심경영<br>인증획득</span>
+            </li>
+			
+            
+            <!-- //23.11.01 추가 -->
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+</footer>
+  <article class="pop-layer a sm pop-blockinfo pop-a11y" id="pop-blockinfo-pftnlnl8719pp">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h1 class="hd-tit3">교보생명 정보 접근성 정책</h1>
+				</div>
+			</div>
+			<div class="pct">
+				<main class="poptents">
+					<div class="ftlist">
+						<div class="htit mt0">정보 접근성 개요</div>
+						<ul class="bullet a">
+							<li>교보생명에서 운영하고 있는 모든 웹서비스는 디지털 포용을 위한 정보 접근성 확보를 위한 지속적인 품질 유지 활동을 수행하고 있습니다.</li>
+							<li>자세한 활동 내역은 아래 내용을 확인해 주시기를 바랍니다.</li>
+						</ul>
+						<div class="htit">정보 접근성 준수를 위한 활동 내역</div>
+						<ul class="bullet a">
+							<li>교보생명에서 운영하는 모든 웹 서비스는 한국형 웹 콘텐츠 접근성 지침 2.2에 근거하여 지침 내 모든 항목들을 준수하여 운영되고 있으며, 정보 접근성 관점의 품질 향상을 위해 지속적으로 자체적인 진단 및 개선을 진행하고 있습니다.</li>
+							<li>교보생명 대표 홈페이지, 교보생명 애플리케이션은 매년 정보 접근성 품질 인증심사를 진행하여 품질 인증마크를 획득하고 있습니다.</li>
+							<li>교보생명에서 운영하는 모든 웹 서비스는 기본적으로 화면낭독 프로그램(스크린 리더) 등 보조기기를 이용하여 서비스에 접근 가능하도록 제공하고 있습니다.</li>
+							<li>
+								지침별 정보 접근성 준수 항목
+								<ul class="bullet c pl16">
+									<li>대체 콘텐츠: 이미지, 동영상 등에 대체 콘텐츠를 제공하여 화면 낭독 보조기기로 콘텐츠를 탐색할 수 있도록 제공하고 있습니다.</li>
+									<li>색에 무관한 콘텐츠 디자인: 그래프 등의 도식 자료를 색상 뿐만이 아닌, 무늬나 패턴, 대체 콘텐츠로 확인할 수 있도록 제공하고 있습니다.</li>
+									<li>키보드 사용 보장: 키보드만으로 페이지를 탐색할 수 있도록 구현되어 있으며, 페이지마다 반복되는 영역을 건너뛸 수 있는 링크를 제공하고 있습니다.</li>
+									<li>선형 구조: 화면 낭독 보조기기 사용자가 홈페이지를 순차적으로 탐색할 수 있도록 논리적인 순서대로 콘텐츠를 배치하여 제공하고 있습니다.</li>
+									<li>이 외 웹 콘텐츠 접근성 지침 2.2 내 모든 항목들에 대해 주기적인 모니터링 및 개선을 수행하고 있습니다.</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+
+					<div class="ftlist">
+						<div class="htit">정보 접근성 준수 한계 고지</div>
+						<ul class="bullet a">
+							<li>교보생명에서 운영하는 웹 서비스들은 기본적으로 웹 콘텐츠 접근성 지침 2.2을 준수하고 있으나, 일부 서비스에서 화면 낭독 보조기기 등을 활용하여 사용 중에 불편사항이 발생할 수 있습니다.</li>
+							<li>이러한 불편사항이 발생하게 될 경우 접근성 관련 불편사항 접수를 통해 말씀해주시면 의견을 수용하고 신속하게 조치할 수 있도록 하겠습니다.</li>
+						</ul>
+					</div>
+					<div class="ftlist">
+						<div class="htit">정보 접근성 관련 불편사항 접수</div>
+						<p class="ptxt">교보생명은 정보 접근성 문제를 해결하기 위해 장애인 및 디지털 취약 계층의 의견을 수렴하고, 정보 접근성 준수 여부를 지속적으로 검토하고 있습니다. 본 서비스를 이용하시면서 정보 접근성과 관련하여 불편 사항이 발생한 경우 아래 문의처로 접수해 주시기를 바랍니다.</p>
+					</div>
+
+					<div class="ftlist">
+						<div class="htit">교보생명 정보 접근성 문의처(이메일 접수)</div>
+						<ul class="bullet a">
+							<li>이메일: jihyechoi@kyobo.com, jiwon.kang@kyobo.com</li>
+						</ul>
+					</div>
+				</main>
+			</div>
+			<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button>
+		</div>
+
+	</article> <!-- 정보접근성정책 -->
+  <article class="pop-layer a sm pop-blockinfo" id="pop-blockinfo-pftnlnl8712pp">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h2 class="ptit "><!--h1 to h2-->정보교류차단 주요내용공개</h2>
+				</div>
+			</div>
+			<div class="pct">
+				<main class="poptents">
+
+					<div class="ftlist">
+						<div class="htit">교보생명은 엄격한 정보교류 차단 규제체계를 구축·운용하고 있습니다.</div>
+						<p class="ptxt">「자본시장과 금융투자업에 관한 법률 시행령」 제50조 및 「금융투자업이해상충방지규정」 <br> 제15조 등에 의거하여 아래와 같이 교보생명의 정보교류 차단과 관련된 주요 내용을 공개합니다. <br> 자세한 내용은 첨부파일을 참조해 주시기 바랍니다.</p>
+					</div>
+
+					<div class="ftlist">
+						<div class="htit">금융투자업이해상충방지규정 개정안 전문</div>
+						<div class="btn-set">
+
+							<button type="button" id="conflictDown" class="btn sm ico-down ico-r">다운로드</button>
+
+						</div>
+					</div>
+
+				</main>
+			</div>
+			<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button>
+		</div>
+
+
+		<script>
+			$("#conflictDown").click(function(){
+				fileName = encodeURI('/dtc/fileupload/ft/_Regulations_for_the_prevention_of_conflict_of_interest_in_the_financial_investment_industry.docx');
+
+				//파일 다운로드 element 생성
+				var url = apiUrl__+"/file/ajax/download?fName="+fileName;
+				var lnk = document.createElement('a');
+				lnk.href = url;
+
+				$("#rDownload").append(lnk);
+				lnk.click();
+			});
+
+
+		</script>
+
+	</article> <!-- 정보교류차단 -->
+  <article class="pop-layer a md pop-recversys" id="pop-blockinfo-pftnlnl8711pp">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h2 class="ptit "><!--h1 to h2-->신용회복제도</h2>
+				</div>
+			</div>
+			<div class="pct">
+				<main class="poptents">
+
+					<div class="ftrbox">
+						금융채무 연체자를 위하여 시행되고 있는 신용회복지원제도에 대해 안내해 드립니다.
+					</div>
+
+					<div class="ftlist">
+						<div class="btn-set">
+							<button type="button" class="btn" value="1">주요 신용회복지원제도 비교</button>
+							<button type="button" class="btn" value="2">신용회복위원회를 통한 개인워크아웃제도</button>
+							<button type="button" class="btn" value="3">신용회복위원회를 통한 생계형 신용회복지원제도</button>
+							<!-- <button type="button" class="btn" value="4">자산관리공사를 통한 신용회복지원제도</button> -->
+							<button type="button" class="btn" value="5">법원의 개인 채무자회생제도 및 파산제도</button>
+						</div>
+					</div>
+
+
+				</main>
+			</div>
+			<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button>
+		</div>
+
+		<article class="pop-layer a pop-recversys" id="pop-blockinfo-pftnlnl8711pp-1">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h2 class="ptit "><!--h1 to h2-->신용회복지원제도</h2>
+				</div>
+			</div>
+			<div class="pct">
+				<main class="poptents">
+
+					<div class="hd-tit4"> 주요 신용회복지원제도 비교 </div>
+
+
+
+					<div class="ut-tbl a scroll-x">
+						<table class="tblist nl tbfix" cellspacing="0" cellpadding="0">
+							<caption><span class="tit">신용회복지원제도</span><span class="cap"></span></caption>
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">구분</th>
+									<th scope="col">영세자영업자 등 지원</th>
+									<th scope="col">개인워크아웃 <br>	 (개인신용회복)</th>
+									<th scope="col">개인회생제도</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="bg">신청기관</td>
+									<td>신용회복위원회</td>
+									<td>신용회복위원회</td>
+									<td>법원</td>
+								</tr>
+								<tr>
+									<td class="bg">시행시기</td>
+									<td class="txt-l">2005년 5월부터 시행</td>
+									<td class="txt-l">2002년 10월 1일부터</td>
+									<td class="txt-l">2004년 9월 23일부터</td>
+								</tr>
+								<tr>
+									<td class="bg">대상채권</td>
+									<td class="txt-l">1개 금융기관 <br> 단독채무자 및 <br>다중채무자 모두 대상</td>
+									<td class="txt-l">협약에 가입한 <br> 2개 이상 금융기관 채권</td>
+									<td class="txt-l">제한 없음(사채 포함)</td>
+								</tr>
+								<tr>
+									<td class="bg">채무범위</td>
+									<td>제한 없음</td>
+									<td>5억원 이하</td>
+									<td>무담보채무(5억) <br> 담보채무(10억)</td>
+								</tr>
+								<tr>
+									<td class="bg">대상채무자</td>
+									<td class="txt-l">
+										<ul class="bullet a">
+											<li>영세 자영업자중<br>신용불량자<br>(2004.12.31 기준)</li>
+											<li>청년층 신용불량자 <br>(상동)</li>
+											<li>기초수급자 중<br>신용불량미등록자</li>
+										</ul>
+									</td>
+									<td class="txt-l">신용불량자이며 <br> 최저생계비 이상 <br> 소득자</td>
+									<td class="txt-l">파산지경에 이른 <br> 봉급생활자 또는 <br> 영업소득자</td>
+								</tr>
+								<tr>
+									<td class="bg">채무조정수준</td>
+									<td class="txt-l">채무자의 총채무액을 <br> 채무조정을 통해 <br> 장기분할상환</td>
+									<td class="txt-l">채무자의 총채무액을 <br> 채무조정을 통해 <br> 장기분할상환</td>
+									<td class="txt-l">8년 이내 변제기간에 <br> 채무자가 정한 <br> 변제계획에 의한 변제</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</main>
+			</div>
+			<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button>
+		</div>
+	</article>
+
+
+	<article class="pop-layer a pop-recversys" id="pop-blockinfo-pftnlnl8711pp-2">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h2 class="ptit "><!--h1 to h2-->신용회복위원회 개인워크아웃제도</h2>
+				</div>
+			</div>
+			<div class="pct">
+				<main class="poptents">
+
+					<div class="hd-tit4">신용회복위원회를 통한 개인워크아웃제도</div>
+
+
+					<div class="ftlist">
+						<div class="htit">신용회원지원 신청 자격</div>
+						<p class="ptxt">신용회복지원을 신청하기 위해서는 다음의 3가지 요건을 모두 갖추어야 함</p>
+						<ul class="bullet h">
+							<li>신용정보집중기관(전국은행연합회)에 연체 등의 신용거래정보가 등록된 자</li>
+							<li>최저생계비 이상의 수입이 있는 자</li>
+							<li>2개 이상의 협약가입 금융기관에 채무가 있고 총채무액이 5억원 이하인 자</li>
+						</ul>
+					</div>
+
+
+
+
+					<div class="ftlist">
+						<div class="htit">신청이 불가능한 경우</div>
+						<p class="ptxt">다음 사유 중 하나라도 해당되면 신용회복지원신청을 할 수 없음</p>
+						<ul class="bullet a">
+							<li>신용회복지원제도에 의한 신용회복지원을 1년 이내에 3회 이상 신청한 자</li>
+							<li>신용회복지원제도에 의한 신용회복지원을 신청하여 최근 1년 이내에 기각된 자</li>
+							<li>조세 또는 금융기관 등으로부터 채무이행을 회피하기 위하여 재산을 도피하거나 은닉, 기타 책임재산의 감소 행위를 초래한 경력이 있는 자</li>
+							<li>어음, 수표 부도거래처인 개인사업자로서 동 사유를 해소하지 못한 자</li>
+							<li>신용정보의 이용 및 보호에 관한 법률」에서 정하는 금융질서 문란자</li>
+							<li>신용회복지원협약에 가입하지 아니한 금융기관의 채무합계액이 총채무액의 20%이상인 경우. 다만, 협약 외 채권자가 신용회복 위원회의 채무조정안 내용과 유사한 조건으로 채무를 조정해 주기로 동의하는 경우에는 동 채권을 협약 외 채권에서 제외</li>
+							<li>신용불량정보 등록사유 발생일로부터 5개월 전 이내의 대출실적이 총채무액의 30%이상인 경우. 다만, 기존 대출의 상환에 전액 사용된 대출은 제외</li>
+							<li>납부하지 않은 각종 조세금이 총채무액의 30%이상인 경우</li>
+							<li>법원에서 채무주존재 확인소송 또는 대출의 무효, 취소를 다투거나 분쟁상태에 있는 자</li>
+							<li>자금의 사용이 도박, 투기 등 사행성으로 그 용도가 부적절하거나 기타 사회 통념상 신용회복지원 대상자로 인정하기 곤란한 자</li>
+
+
+
+						</ul>
+					</div>
+
+
+					<div class="hd-tit4">상담소 위치안내</div>
+
+					<div class="ut-tbl a scroll-x">
+						<table class="tblist nl tbfix" cellspacing="0" cellpadding="0">
+							<caption><span class="tit">상담소 위치안내</span><span class="cap"></span></caption>
+							<colgroup>
+								<col>
+								<col>
+								<col>
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">지부명</th>
+									<th scope="col">전화번호</th>
+									<th scope="col">지부정보 (주소/위치 안내)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="txt-l">서울 명동본관</td>
+									<td>02-6337-2000</td>
+									<td class="txt-l">서울특별시 중구 명동 1가 10-1 명동센트럴빌딩 6층 (한국 외환은행본점 뒤편)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">서울 영등포지부</td>
+									<td>02-6337-2000</td>
+									<td class="txt-l">서울특별시 영등포구 영등포동 3가 18 영등포프라자 10층 (영등포 마사회빌딩 10층)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">부산지부</td>
+									<td>051-638-8890</td>
+									<td class="txt-l">부산광역시 동구 범일동 825-3 (눌원빌딩 6층)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">대구지부</td>
+									<td>053-428-9360</td>
+									<td class="txt-l">대구광역시 중구 북성로 1가 6-1번지 (대우빌딩 4층(대구역 앞))</td>
+								</tr>
+								<tr>
+									<td class="txt-l">광주지부</td>
+									<td>062-233-1872</td>
+									<td class="txt-l">광주광역시 동구 금남로 5가 127 (금호종합금융(주) 6층)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">대전지부</td>
+									<td>042-538-0320</td>
+									<td class="txt-l">대전광역시 중구 오류동 188-15 (사학연금회관 5층)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">인천지부</td>
+									<td>032-864-9460</td>
+									<td class="txt-l">인천광역시 남구 주안동 205-11 (주안역에서 (구)시민회관 방향 400미터 전방)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">경기도지부</td>
+									<td>031-234-6108</td>
+									<td class="txt-l">경기도 수원시 권선구 권선동 1246 (경기지방공사 내 1층)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">의정부상담소</td>
+									<td>031-844-9848</td>
+									<td class="txt-l">경기도 의정부시 의정부동 195-6 (의정부역앞 동부광장 건너편 한국시티(한미)은행 4층)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">원주상담소</td>
+									<td>033-764-1439</td>
+									<td class="txt-l">강원도 원주시 원동 58-1,마노벨라 빌딩 3층 (원주우체국에서 원주KBS방향 100m 지점)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">천안상담소</td>
+									<td>041-522-1459</td>
+									<td class="txt-l">충남 천안시 신부동 472-2, 천안축협 신부동지점 2층 (천안 시민회관 건너편)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">청주상담소</td>
+									<td>043-224-9521</td>
+									<td class="txt-l">충청북도 청주시 상당구 남문로 2가 21-2 (하나로상호저축은행 남문로지점 2층)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">전주상담소</td>
+									<td>063-253-5941</td>
+									<td class="txt-l">전북 전주시 덕진구 덕진동 1가 1220-1 (전주종합경기장 1층 직5문)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">울산상담소</td>
+									<td>052-260-9413</td>
+									<td class="txt-l">울산광역시 남구 달동 873-6 (삼호빌딩 3층)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">마산상담소</td>
+									<td>055-292-5495</td>
+									<td class="txt-l">경상남도 마산시 석전2동 259-6 (석전4거리 경남은행본점 옆 무학빌딩 3층)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">순천상담소</td>
+									<td>061-742-9415</td>
+									<td class="txt-l">전라남도 순천시 저전동 206-2 (남교 5거리에서 순천여고 방향 30미터 지점)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">제주상담소</td>
+									<td>064-758-9413</td>
+									<td class="txt-l">제주시 이도1동 1736-1 (흥국생명빌딩 3층)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">강릉상담소</td>
+									<td>033-641-2765</td>
+									<td class="txt-l">강원도 강릉시 옥천동 95-3 (옥천오거리 인근 옥천빌딩 3층)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">광명상담소</td>
+									<td>02-2066-8539</td>
+									<td class="txt-l">경기도 광명시 철산 3동 384 (농협중앙회 광명시지부 지하1층)</td>
+								</tr>
+								<tr>
+									<td class="txt-l">안동출장상담</td>
+									<td>054-851-6046</td>
+									<td class="txt-l">경북 안동시 명륜동 344 (안동시청 민원실)</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</main>
+			</div>
+			<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button>
+		</div>
+	</article>
+
+
+	<article class="pop-layer a pop-recversys" id="pop-blockinfo-pftnlnl8711pp-3">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h2 class="ptit "><!--h1 to h2-->신용회복위원회를 통한 생계형 신용회복지원제도</h2>
+				</div>
+			</div>
+			<div class="pct">
+				<main class="poptents">
+
+					<div class="hd-tit4">신용회복위원회를 통한 생계형 신용회복지원제도</div>
+
+
+					<div class="ftlist">
+						<div class="htit">영세자영업자</div>
+						<p class="ptxt">2004년 12월 31일 현재 신용불량자로서 다음의 요건을 충족하는 영세자영업자</p>
+						<ul class="bullet h">
+							<li>부가가치세법상 간이과세자 또는 면세업자 중 연 매출액이 4,800만원 미만인 자로서 생계비를 제외한 월평균 순소득이 채무원금을 분할상환하기 위한 변제액에 미달하는 자</li>
+							<li>소득세법상 과세미달자 중 단순경비율 적용 대상자인 자 또는 월평균 순소득이 최저생계비의 150% 이하인 자</li>
+							<li>사업자등록증 미개설, 휴업, 폐업 등으로 부가가치세법상 사업자가 아닌 실질 영세자영업자로서 신원이 확실한 제3자의 확인 또는 증명자료를 제출하여 실질적인 영업사실이 인정되는 자</li>
+							<li>퇴폐, 향락 등 사회 통념상 불건전 업종을 영위하지 않는 자</li>
+						</ul>
+						<div class="ptit">지원내용</div>
+						<ul class="bullet a">
+							<li>6개월 단위로 최장 1년 동안 채무상환을 유예할 수 있으며, 유예기간 종료 후 최장 8년 동안 채무원금 분할 상환</li>
+							<li>채무상환 유예기간은 매 6개월마다 본인의 연장신청에 따라 관련 내용을 심사하여 추가 연장 여부를 결정</li>
+							<li>상환 유예기간 중에는 소정의 금리(연 5%)를 납부하고 채무원금 상환기간 중의 이자는 채무원금을 분할상환기간 내 전액 상환하는 경우 면제 가능</li>
+						</ul>
+					</div>
+
+
+					<div class="ftlist">
+						<div class="htit">미취업 청년층</div>
+						<p class="ptxt">2004년 12월 31일 기준 만 29세 이하의 미취업자로서 다음의 기준에 해당하는 채무자</p>
+						<ul class="bullet h">
+							<li>2004년 12월 31일 현재 신용불량자로 등록된 자로서 졸업 후 취업이 되지 않아 학자금 대출 등을 연체중인 자</li>
+							<li>2004년 12월 31일 현재 신용불량자로 등록된 자로서 신용불량자 등록 당시 미성년자(만 19세 이하)였고 신청일 현재 학생이거나 실업상태인 자</li>
+							<li>2004년 12월 31일 현재 신용불량자로 등록된 자로서 신청일 현재 병역법에 의한 의무 군복무 중이거나 6개월 내 입대 예정인 자. 신청일 현재 전역자의 경우 상기 1항의 기준을 적용</li>
+							<li>2004년 12월 31일 현재 부모의 금융채무 등에 보증을 하였으나, 부모가 상환능력이 없어 보증채무 이행부담을 지고 있는 자</li>
+						</ul>
+						<div class="ptit">지원내용</div>
+						<ul class="bullet a">
+							<li>최장 2년까지 채무상환을 유예할 수 있으며, 유예기간 종료 후 최장 8년 동안 분할상환</li>
+							<li>상환 유예기간은 매 6개월마다 본인의 연장신청에 따라 관련 내용을 심사하여 추가 연장 여부를 결정</li>
+							<li>군복무자의 경우에는 별도의 유예기간 연장신청 없이 전역 시점까지 유예하고, 전역 후에는 취업 시까지 6개월 단위로 최장 2년까지 채무상환을 유예</li>
+							<li>상환 유예기간 중의 발생이자 및 채무원금 상환기간 중의 이자는 채무원금을 분할상환기간 내 전액 상환하는 경우 면제 가능</li>
+						</ul>
+						<div class="ptit">신청기간</div>
+						<p class="ptxt">2005년 4월 1일부터 6개월간</p>
+					</div>
+
+
+
+
+
+					<div class="ftlist">
+						<div class="htit">국민기초생활보장수급자</div>
+						<p class="ptxt">2004년 12월 31일 현재 국민기초생활보장수급자 중</p>
+						<ul class="bullet h">
+							<li>신용불량정보에 등록된 채무자는 한국자산관리공사(KAMCO)에 방문하여 채무조정을 신청 <br> - 신청시기는 약 1개월 후(2005년 4월 말경) 한국자산관리공사 홈페이지를 통하여 확인 가능</li>
+							<li>신용불량정보에 등록되지 않은 채무자는 신용회복위원회에 채무조정을 신청 <br> - 2005년 4월 1일부터 신청접수업무 개시</li>
+						</ul>
+						<div class="ptit">지원내용</div>
+						<ul class="bullet a">
+							<li>신용회복위원회: 조정된 채무 원금을 최장 10년 동안 장기분할 상환</li>
+							<li>한국자산관리공사(KAMCO): 국민기초생활보장수급자에서 벗어날 때까지 채무상환을 유예한 후 수급자에서 벗어나면 채무원금을 10년 동안 장기분할 상환</li>
+						</ul>
+						<div class="ptit">신용관리교육</div>
+						<ul class="bullet a">
+							<li>한국자산관리공사(KAMCO) 및 신용회복위원회에서 채무조정을 받은 신청인은 신용회복위원회의 신용관리교육을 의무적으로 이수</li>
+						</ul>
+						<div class="ptit">신청기간</div>
+						<p class="ptxt">신용회복위원회 : 2005년 4월 1일부터 6개월간</p>
+					</div>
+
+
+
+
+
+				</main>
+			</div>
+			<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button>
+		</div>
+	</article>
+
+	<article class="pop-layer a sm pop-blockinfo" id="pop-blockinfo-pftnlnl8711pp-5">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h2 class="ptit "><!--h1 to h2-->법원의 개인채무자 회생제도 및 파산제도</h2>
+				</div>
+			</div>
+			<div class="pct">
+				<main class="poptents">
+
+					<div class="hd-tit4">법원의 개인채무자 회생제도 및 파산제도</div>
+
+
+					<div class="ftlist">
+						<p class="ptxt">각종 신용회복지원제도를 통해서 신용회복이 어려운 경우에는 법원의 개인채무자회생 제도 또는 파산제도를 이용하세요. <br> 개인채무자회생제도는 2004년 9월 중에 실시할 예정이며, 파산제도는 이미 시행 중에 있어 언제든지 신청이 가능합니다. </p>
+					</div>
+
+					<div class="ftlist">
+						<div class="htit">개인채무자회생제도</div>
+						<div class="ptxt">빚이 15억원(담보채권 10억원, 무담보채권 5억원 이내)을 초과하지 않는 범위내에서 대법원 규칙으로 정한 금액 이하의 빚이 있는 급여소득자 또는 영업소득자는 모든 빚(사채 포함)에 대해서 신용불량등록 여부와 상관없이 신청할 수 있습니다.8년 이내의 상환기간으로 채무자가 정한 상환계획(요건: 채무자가 상환할 금액이 채무자 보유재산을 현재 처분해서 회수할 수 있는 금액보다 많을 것)을 법원에 제출하면 법원의 인가를 받아 확정되고 채무자가 상환계획대로 상환하게 되면 나머지 빚은 탕감됩니다.</div>
+					</div>
+
+					<div class="ftlist">
+						<div class="htit">파산제도</div>
+						<div class="ptxt">
+							빚을 갚을 능력이 없는 경우에는 법원에 파산신청을 할 수 있습니다. <br>
+							채무자에게 파산원인이 있다고 인정되는 경우에 파산선고를 받게 되며 채무자의 총재산을 모든 채권자에게 공평하게 나누어 주게 됩니다. <br>
+							파산선고 뒤 채무자는 법원에 더 이상 채무를 갚지 않도록 허가해 달라는 면책신청을 할 수 있으며, 허가를 받아 결정이 되면 조세 등 일부 예외를 제외하고는 책임을 면하게 됩니다. 그러나 파산선고와 면책은 엄격한 기준에 의해 결정되므로 신청시 법률전문가의 도움을 받아 신중하게 신청 여부를 정하여야 합니다.<br>
+							파산선고 후 면책을 받지 못하게 되는 경우에는 여러 가지 제한이 있어 정상적인 사회활동이 어려워집니다.<br>
+							개인파산 사실은 전국은행연합회 등 신용정보집중기관 등에 상당기간 보관됨에 따라 향후 신용카드 발급, 대출신청 등에 불이익을 받을 수 있습니다.
+						</div>
+					</div>
+
+				</main>
+			</div>
+			<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button>
+		</div>
+	</article>
+
+		<script>
+			$(".btn").click(function(){
+				ui.popup.open("pop-blockinfo-pftnlnl8711pp-" + $(this).attr("value"));
+			})
+		</script>
+
+	</article>
+  <article class="pop-layer a sm pop-blockinfo" id="pop-blockinfo-pftnlnl8710pp">
+
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h2 class="ptit "><!--h1 to h2-->채권추심업무 처리절차 안내</h2>
+				</div>
+			</div>
+			<div class="pct">
+				<main class="poptents">
+
+					<div class="ut-tabs a">
+						<ul class="menu">
+							<li class="active"><a class="bt" data-ui-tab-btn="tab_a" aria-controls="tab_a_1" href="javascript:;">채권추심업무 처리절차 안내문</a></li>
+							<li><a class="bt" data-ui-tab-btn="tab_a" aria-controls="tab_a_2" href="javascript:;">불법채권추심 대응요령</a></li>
+						</ul>
+					</div>
+
+					<div data-ui-tab-ctn="tab_a" aria-labelledby="tab_a_1" class="active">
+						<div class="ftrbox">
+							저희 교보생명보험(주)는 연체안내 및 채권추심업무를 '에이앤디신용정보(주)'에 위탁하고 있습니다. <br>
+							채권추심 행위는 채무자 앞으로 채권추심 수임사실 통지 이후, 다음과 같이 이루어집니다. <br>
+							채권추심 업무진행과 관련하여 문의사항이 있으시면 언제든지 에이앤디신용정보(주) CS팀
+							(전화번호 : 3705-4013, 4017) 및 담당자에게 연락하여 주시면 친절히 안내해 드리겠습니다.
+						</div>
+
+						<div class="ftlist">
+							<ul class="bullet a">
+								<li>'채무변제촉구문' 등의 우편물을 발송하여 채무상환을 요구하게 되고, 채무변제 불이행시 불이익(연체정보 등록에 따른 금융거래 제한 등)에 대한 안내를 하게 됩니다.</li>
+								<li>우편물과 별도로 전화나 문자메시지를 통해 채무상환을 요구하게 되며, 채무 불이행시 불이익에 대한 안내를 하게 됩니다.</li>
+								<li>우편물이나 전화 또는 문자메시지 등을 통한 채무상환 요구에도 불구하고 변제가 이루어지지 않거나 귀하와 연락이 닿지 않는 경우에는 우편물이나 전화 또는 문자메시지 등을 통해 ‘방문추심’에 관한 사전 안내를 한 후 채무상환 요구나 소재파악 또는 재산조사 등을 위해 자택이나 근무지, 기타 소재지에 대한 방문을 할 수 있습니다.</li>
+								<li>상당기간 채무변제가 이루어지지 않을 경우 우편물이나 전화 또는 문자메시지 등을 통해 채권자 또는 채권자협의회에 의한 채무금액 강제회수에 관한 법적조치(가압류신청, 지급명령신청, 강제경매신청 등) 예고통보를 할 수 있으며, 이에 불구하고 변제가 이루어지지 않는 경우에는 법원으로부터 집행권원을 부여받아 강제집행을 통한 채권 회수를 하게 됩니다. 그 밖에도 채권자 또는 채권자협의회에 의하여 법원에 재산관계명시 신청이나 채무불이행등록 신청이 이루어질 수 있습니다.</li>
+							</ul>
+						</div>
+
+
+					</div>
+					<div data-ui-tab-ctn="tab_a" aria-labelledby="tab_a_2">
+						<div class="ftrbox">
+							저희 교보생명보험(주)는 연체안내 및 채권추심업무를 '에이앤디신용정보(주)'에 위탁하고 있습니다. <br>
+							채권추심 과정에서 아래와 같은 사실이 발생할 경우 에이앤디신용정보(주) CS팀
+							(전화번호: 02-3705-4013, 4017)으로 연락주시면 적극 도움을 드리도록 하겠습니다.
+						</div>
+						<div class="ftlist">
+							<div class="htit">채권추심자의 신분이 의심스러울 경우</div>
+							<ul class="bullet c">
+								<li>채권추심자가 방문, 전화 등으로 처음 접촉해 올 때는 신분을 확인할 수 있는 증표(사원증 또는 신용정보업종사원증)를 제시토록 요구하고, 이를 제시하지 못하거나 사진 미부착·훼손 등 신원이 의심스러운 경우 소속회사나 신용정보협회*에 재직 여부 등을 확인하시기 바랍니다.
+									<ul class="bullet b">
+										<li>전화 : 02-3775-2761~3</li>
+										<li>홈페이지 : <a href="http://www.cica.or.kr" class="link-text" target="_blank" title="새창열림">www.cica.or.kr</a></li>
+									</ul>
+								</li>
+
+								<li>또한 채권추심자가 검찰·법원 등 사법당국을 사칭하거나 법무사, 법원집행관, 법원집행관대리 등의 사실과 다른 직함을 사용할 수 없습니다. <br> (예시) 채권추심자가 법률담당관, 법원집행관, 소송대리인 등으로 허위 기재한 명함을 사용하거나 이들 명의로 독촉장을 발송</li>
+
+							</ul>
+							<div class="htit">추심채권이 추심제한요건에 해당할 경우</div>
+							<ul class="bullet c">
+								<li>본인의 채무가 추심제한요건*에 해당되는지를 확인하고 추심제한 대상인 경우 채권추심자에게 서면으로 추심중단을 요청(전화로 요청 시 통화내용 녹음)하시고 이를 확인할 수 있는 증빙자료를 제시해 주시기 바랍니다. <br> (예시) 채무부존재 소송이 제기된 채권에 대해 채권추심</li>
+							</ul>
+						</div>
+
+						<div class="ut-gudbox a open" data-tog-cls="box">
+							<div class="gtit">채권추심 제한대상이란?</div>
+							<div class="gctn open" data-tog-cls="ctn">
+								<ul class="bullet c glst">
+									<li>판결 등에 따라 권원이 인정되지 않은 민사채권</li>
+									<li>채무자가 채권소멸시효 완성에 따라 추심중단을 요청한 경우</li>
+									<li>채무부존재 소송을 제기한 경우</li>
+									<li>채무자로부터 신용회복위원회의 신용회복지원 신청사실을 통지받은 경우</li>
+									<li>개인회생절차개시 또는 파산·회생에 따라 면책된 경우</li>
+									<li>중증환자 등으로 사회적 생활부조를 요하는 경우</li>
+									<li>채무자 사망 후 상속인이 상속포기하거나 한정승인한 경우</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+
+
+				</main>
+			</div>
+			<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button>
+		</div>
+	</article>
+
+<script>
+
+  $(function() {
+
+    $(".box").on("click", ".items .lst a", function(evt){
+      evt.preventDefault();
+      let isNewWin  = $(this).attr("target") === "_blank";
+      let isNewWin2 = $(this).attr("target") === "_newsite";
+      let linkUrl   = $(this).attr("href");
+      console.debug(`>>> isNewWin:${isNewWin}, isNewWin2:${isNewWin2}, linkUrl:${linkUrl}`);
+
+      if(isNewWin) {
+        if( checkValidUrl(linkUrl) ) {
+          window.open(linkUrl, "_blank", "noopener noreferrer"); //New window
+        }
+      } else if(isNewWin2) {
+        if( checkValidUrl(linkUrl) ) {
+          linkUrl = apiUrl__ + linkUrl;
+          window.open(linkUrl, "_blank", "noopener noreferrer"); //New window
+        }
+      }else {
+        if( checkValidUrl(linkUrl) ) {
+          location.href = linkUrl; //현재창
+        }
+      }
+    });
+
+    var footerISMSP = $('#footer .lst-mark .is');
+    var removeEvent = ($this) => $($this).children('.ball').removeClass('none');
+    var addEvent = ($this) => $($this).children('.ball').addClass('none');
+
+    footerISMSP.hover(
+    	function(){removeEvent(this)},
+  	 	function(){addEvent(this)}
+    );
+
+    footerISMSP.focus(function(){
+    	removeEvent(this)
+    })
+
+    footerISMSP.blur(function(){
+    	addEvent(this)
+    })
+  }); //jQuery document ready.
+
+  function checkValidUrl(linkUrl) {
+    if(!linkUrl) {
+      ui.alert(`Link URL is [${linkUrl}]`);
+      return false;
+    } else {
+      return true;
+    }
+  }
+  /* 24.10.17 추가 */
+  function newPdfviewer(fileName){
+		let urlPath = window.location.origin+"/dgt/web/contents/pdf/dtc/co/" + encodeURI(fileName);
+		//location.href = urlPath;
+		window.open(urlPath);
+	}
+</script>
+
+
+				
+<!-- mnType is 개인(ind), 기업(etp), 공시실(dcs), 회사소개(abt), 비로그인(NA) -->
+<!-- abt :: 공시실?, dcs :: 회사소개? -->
+
+
+	<!-- ind :: 개인 or NA :: 비로그인 -->
+	 <!-- 개인, 비로그인 -->
+
+
+	<!-- etp :: 기업 -->
+	 <!-- 기업 -->
+
+
+	<!-- dcs :: 공시실, abt :: 회사소개 -->
+	<article class="pop-layer full" id="pop-menu-da">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<div class="hdr">
+						<!-- 전체메뉴:상단:: 공시실 or 회사소개 -->
+						<div class="all-menu-header">
+							<h2 class="ptit "><!--h1 to h2-->전체메뉴</h2>
+							<div class="item-r">
+								<ul class="link">
+									<li><a class="bt target" href="#" data-url="main" onclick="headerPageMove(this);">교보생명 홈페이지</a></li>
+									<li><a class="bt target" href="#" data-url="abt" onclick="headerPageMove(this);">회사소개</a></li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="pct">
+				<main class="poptents" id="pop-whole-menu-body"></main>
+				<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button><!-- 접근성 포커싱 : 버튼 위치 변경 23.12.21 -->
+			</div>
+
+		</div>
+	</article> <!-- dcs :: 공시실, abt :: 회사소개 -->
+
+	<!-- dcs :: 공시실, abt :: 회사소개 -->
+	 <!-- dcs :: 공시실, abt :: 회사소개 -->
+
+	<!-- 개인 로그아웃 -->
+	<article class="pop-layer md b" id="sign-out-person">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h2 class="ptit" data-fild="dgt_pp_titl_nm"><!-- 이벤트팝업 --></h2>
+				</div>
+			</div>
+			<div class="pct frame-scroll">
+				<main class="poptents" data-fild="dgt_pp_txt"></main>
+			</div>
+			<div class="pbt">
+				<div class="btn-set b2">
+					<button type="button" class="btn b rd lg" onclick="ui.popup.close('sign-out-person')">취소</button>
+					<button type="button" class="btn a rd lg" onclick="Menu.logOut('/dgt/web/dtm/co/main')">로그아웃</button>
+				</div>
+			</div>
+			<button type="button" class="btn-pop-close"><i class="blind">닫기</i></button>
+		</div>
+	</article>
+
+	<!-- ie브라우저 사용제한 -->
+	<article class="pop-layer sm a pop-browser" id="can-not-used-ie">
+		<div class="pbd">
+			<div class="phd">
+				<div class="in">
+					<h2 class="ptit "><!--h1 to h2-->안내</h2>
+				</div>
+			</div>
+			<div class="pct">
+				<main class="poptents">
+					<h2 class="hd-tit3"><span class="ico">MS 인터넷 익스플로러(IE)<br>브라우저 지원 종료 안내</span></h2>
+					<div class="txt-box">
+						<p class="txt">MS 인터넷 익스플로러(IE) 브라우저 서비스 지원이 <span class="color11">2022년 06월 15일 종료</span>됨에 따라 교보생명 홈페이지를 보다 안전하고 원활한 서비스 제공을 위해 구글 크롬 브라우저 또는 MS 엣지 브라우저를 이용해 주시길 바랍니다. </p>
+					</div>
+					<ul class="bullet b">
+						<li>기존 IE 브라우저 사용은 보안에 매우 취약합니다.<br>고객님의 안전한 홈페이지 이용을 위해 최신 웹브라우저를 권장드립니다.</li>
+					</ul>
+					<div class="btn-set ct">
+						<a href="https://www.google.co.kr/chrome/thank-you.html?brand=CHBD&statcb=1&installdataindex=empty&defaultbrowser=0" target="_blank" title="새창 열림" class="btn ico-google ico-arrow">구글 크롬브라우저 설치하기</a>
+						<a href="https://www.microsoft.com/ko-kr/edge#evergreen" target="_blank" title="새창 열림" class="btn ico-edge ico-arrow">MS 엣지브라우저 설치하기</a>
+					</div>
+				</main>
+			</div>
+		</div>
+	</article>
+	<script>try {Symbol('ie')} catch(e) {$("#can-not-used-ie").attr("role","dialog").attr("aria-modal","true").attr("aria-labelledby","can-not-used-ie-title").addClass('on').find(".phd .ptit").attr("tabindex","-1").attr({"id":"can-not-used-ie-title"})}</script>
+
+				
+	<script>
+	var currentPage__ = 1;
+	var pagePerSize__ = 10;
+	var pageNumber__ = 10; //1~10, 11~20 보여주는 페이지nav 갯수
+	var deviceDv__ = "pc";
+
+	let Com = {
+		OnReadyAction : function(){},
+		BackBtnAction : function(){}
+	}
+
+	$(function(){
+		searchList();
+
+		//엔터키적용
+		$('#input-01').keyup(function($key){
+			if($key.keycode == 13 || $key.which == 13) {
+				$('#searchBtn').trigger("click");
+			}
+		});
+
+		//검색
+		$('#searchBtn').on('click', function(){
+			currentPage__ = 1;
+			searchList();
+		});
+
+		//pdf뷰어버튼
+		$("#pdfviewerBtn").on('click', function(){
+			window.open("http://get.adobe.com/kr/reader/");
+		});
+
+	});
+
+	//selectbox settings
+	function optionCase(obj){
+		let value = obj.value;
+		let str = "";
+
+		if(value == "PAMS02"){
+			str += "<option value='99'>전체</option>";
+			str += "<option value='01'>적격</option>";
+			str += "<option value='02'>비적격</option>";
+			str += "<option value='03'>계약인수</option>";
+			str += "<option value='04'>기타</option>";
+		} else if(value == "PAMS04"){
+			str += "<option value='99'>전체</option>";
+			str += "<option value='01'>재해상해</option>";
+			str += "<option value='02'>암/건강</option>";
+			str += "<option value='03'>종신/정기</option>";
+			str += "<option value='04'>중도부가특약/기타</option>";
+		} else if(value == "PAMS05"){
+			str += "<option value='99'>전체</option>";
+			str += "<option value='01'>보장</option>";
+			str += "<option value='02'>저축</option>";
+			str += "<option value='03'>연금</option>";
+		} else if(value == "PAMS08"){
+			str += "<option value='99'>전체</option>";
+			str += "<option value='01'>운용관리계약</option>";
+			str += "<option value='02'>보험자산관리계약</option>";
+		} else {
+			if(value == '99')
+				str += "<option value='99' selected>전체</option>";
+			else
+				str += "<option value='99' selected>선택할 항목이 없습니다.</option>";
+		}
+
+		$('#select-13').empty();
+		$('#select-13').append(str);
+		ui.update();
+
+		if(value == "PAMS02" || value == "PAMS04" || value == "PAMS05" || value == "PAMS08" || value == "99"){
+			$('.btsel:eq(2)').prop("disabled", false);
+		} else {
+			$('.btsel:eq(2)').prop("disabled", true);
+		}
+	}
+
+	function viewCount(obj){
+		let value = obj.value;
+		pagePerSize__ = value;
+		currentPage__ = 1;
+		searchList();
+	}
+
+	//상품목록조회
+	function searchList(){
+		let reqData = {
+			"dgtPdtAtrDvCd"	: "M",
+			"dgtPdtAtrLclCd" : "",
+			"dgtPdtAtrMclCd" : $('#select-12').val(),
+			"dgtPdtAtrSmclCd" : $('#select-13').val(),
+			"saleYn" : $('#select-11').val(),
+			"dgtMseAddiPsYn" : "",
+			"searchTxt" : $('#input-01').val()
+		};
+		reqData.currentPage = currentPage__;
+		reqData.pagePerSize = pagePerSize__;
+		reqData.pageNumber = pageNumber__;
+		reqData.deviceDv = deviceDv__;
+
+		kyobo.ajax.json({
+			url: "/dtc/product-official/find-allProductSearch",
+			data: reqData
+		}).then(data=>{
+			requestCallBack(data);
+		});
+	};
+
+	function requestCallBack(resp){
+		let list = resp.list;
+		let listCnt = resp.listCnt;
+		let str = "";
+
+		$('#totalCnt').text(listCnt);
+
+		if(list.length > 0){
+			for(let i=0; i<list.length; i++){
+
+// 				if(list[i].dgtPdtAtrNm != null){
+					let dgtPdtAtrMclCd = list[i].dgtPdtAtrMclCd;
+					let dgtPdtAtrSmclCd = list[i].dgtPdtAtrSmclCd;
+					let saleYn = list[i].saleYn;
+
+					if(!dgtPdtAtrSmclCd) dgtPdtAtrSmclCd = "";
+					if(!(dgtPdtAtrMclCd == "PAMS02" || dgtPdtAtrMclCd == "PAMS04" || dgtPdtAtrMclCd == "PAMS05" || dgtPdtAtrMclCd == "PAMS06")) dgtPdtAtrSmclCd = "";
+					if(dgtPdtAtrMclCd == "PAMS01"){
+						dgtPdtAtrMclCd = "교육보험";
+						dgtPdtAtrSmclCd = "";
+					} else if(dgtPdtAtrMclCd == "PAMS02"){
+						dgtPdtAtrMclCd = "연금보험";
+						if(dgtPdtAtrSmclCd == "01"){
+							dgtPdtAtrSmclCd = "(적격)";
+						} else if(dgtPdtAtrSmclCd == "02"){
+							dgtPdtAtrSmclCd = "(비적격)";
+						} else if(dgtPdtAtrSmclCd == "03"){
+							dgtPdtAtrSmclCd = "(계약인수)";
+						} else if(dgtPdtAtrSmclCd == "04"){
+							dgtPdtAtrSmclCd = "(기타)";
+						}
+					} else if(dgtPdtAtrMclCd == "PAMS03"){
+						dgtPdtAtrMclCd = "저축보험";
+						dgtPdtAtrSmclCd = "";
+					} else if(dgtPdtAtrMclCd == "PAMS04"){
+						dgtPdtAtrMclCd = "보장성보험";
+						if(dgtPdtAtrSmclCd == "01"){
+							dgtPdtAtrSmclCd = "(재해상해)";
+						} else if(dgtPdtAtrSmclCd == "02"){
+							dgtPdtAtrSmclCd = "(암/건강)";
+						} else if(dgtPdtAtrSmclCd == "03"){
+							dgtPdtAtrSmclCd = "(종신/정기)";
+						} else if(dgtPdtAtrSmclCd == "04"){
+							dgtPdtAtrSmclCd = "(중도부가특약/기타)";
+						}
+					} else if(dgtPdtAtrMclCd == "PAMS05"){
+						dgtPdtAtrMclCd = "기업보험";
+						if(dgtPdtAtrSmclCd == "01"){
+							dgtPdtAtrSmclCd = "(보장)";
+						} else if(dgtPdtAtrSmclCd == "02"){
+							dgtPdtAtrSmclCd = "(저축)";
+						} else if(dgtPdtAtrSmclCd == "03"){
+							dgtPdtAtrSmclCd = "(연금)";
+						}
+					} else if(dgtPdtAtrMclCd == "PAMS06"){
+						dgtPdtAtrMclCd = "통신판매전용상품";
+						dgtPdtAtrSmclCd = "";
+					} else if(dgtPdtAtrMclCd == "PAMS07"){
+						dgtPdtAtrMclCd = "방카슈랑스전용상품";
+						dgtPdtAtrSmclCd = "";
+					} else if(dgtPdtAtrMclCd == "PAMS08"){
+						dgtPdtAtrMclCd = "퇴직연금";
+						if(dgtPdtAtrSmclCd == "01"){
+							dgtPdtAtrSmclCd = "(운용관리계약)";
+						} else if(dgtPdtAtrSmclCd == "02"){
+							dgtPdtAtrSmclCd = "(보험자산관리계약)";
+						}
+					} else if(dgtPdtAtrMclCd == "PAMS09"){
+						dgtPdtAtrMclCd = "퇴직보험";
+						dgtPdtAtrSmclCd = "";
+					} else if(dgtPdtAtrMclCd == "PAMS10"){
+						dgtPdtAtrMclCd = "온라인보험";
+						dgtPdtAtrSmclCd = "";
+					}  else {
+						dgtPdtAtrMclCd = "";
+						dgtPdtAtrSmclCd = "";
+					}
+
+					if(saleYn == 'Y') saleYn = "판매중";
+					else saleYn = "판매중지";
+
+					// 상품명 null -> 공백 처리
+					var dgtPdtAtrNm = '';
+					if (list[i].dgtPdtAtrNm) {
+						dgtPdtAtrNm = list[i].dgtPdtAtrNm
+					}
+
+					var pdtDesc = null;
+					if(list[i].dgtPdtDsc){
+						pdtDesc = "\""+list[i].dgtPdtDsc+"\""; //null or "문자열"
+					}
+// 					if(dgtPdtAtrMclCd != ""){
+						str+= "<tr>";
+						str+= "<td class='txt-l'>"+ dgtPdtAtrMclCd + dgtPdtAtrSmclCd +"</td>";
+						str+= "<td class='txt-l'>"+ dgtPdtAtrNm +"</td>";
+						str+= "<td>"+ saleYn +"</td>";
+						str+= "<td><button type='button' id='" + list[i].dgtPdtAtrSeqtId +"'class='btn sm' onclick='getProdDtlList(\""+ list[i].dgtPdtAtrSeqtId +"\",\""+ list[i].saleYn +"\",\""+ dgtPdtAtrNm + "\","+pdtDesc+",\""+ list[i].preNnnn+"\",\""+ list[i].endYymmdd +"\",\""+ list[i].dgtMseAddiPsYn +"\",\""+ list[i].dgtPdtCd +"\",\""+ list[i].maxSlsTerm +"\",\""+ dgtPdtAtrMclCd +"\",\""+ dgtPdtAtrSmclCd +"\"); return false;' title='"+dgtPdtAtrNm+"'>확인</button></td>";
+						str+= "</tr>";
+// 					}
+// 				}
+			}
+		}
+		$('#insuList').empty();
+		$('#insuList').html(str);
+
+		drawPageNevArea(resp.pageInfo);
+	}
+
+	//기간별다운로드 팝업
+	function getProdDtlList(dgtPdtAtrSeqtId, saleYn, dgtPdtAtrNm, dgtPdtDsc, preNnnn ,endYymmdd, dgtMseAddiPsYn, dgtPdtCd, maxSlsTerm, dgtPdtAtrMclCd, dgtPdtAtrSmclCd){
+		$('#pams').val(dgtPdtAtrMclCd);
+		$('#saleYn').val(saleYn);
+		$('#preNnnn').val(preNnnn);
+		ui.popup.open('pop-period-down',{
+			ccb : function(){
+				setTimeout(function(){
+					$("#" + dgtPdtAtrSeqtId).focus();
+			  	}, 10);
+			}
+		});
+
+		$('#pop-periodColgroup').empty();
+		$('#pop-titlNm').text(dgtPdtAtrNm);
+
+		//상품설명 영역 노출/미노출
+		if(dgtPdtDsc){
+			$("#descArea").show();
+			$("#descArea #desc").html(dgtPdtDsc); //상품상세설명
+		}else{
+			$("#descArea").hide();
+			$("#descArea #desc").html(""); //상품상세설명
+		}
+
+		let reqData = {
+			"dgtPdtPdSeqtId" : dgtPdtAtrSeqtId
+		};
+
+		kyobo.ajax.json({
+			url: "/dtc/product-official/find-allProductSearchDetail",
+			data: reqData
+		}).then(data=>{
+			requestDtlCallBack(data);
+		});
+	}
+
+	function requestDtlCallBack(resp){
+		let list = resp.list;
+		let list2 = resp.list2;
+		let pams = $('#pams').val();
+		let saleYn = $('#saleYn').val();
+		let preNnnn = $('#preNnnn').val();
+		let str = "";
+
+			$('#pop-totalCnt').text(list.length > 0 ? list.length : 0);
+
+		if(saleYn == 'Y'){//판매중
+			if(preNnnn == 'Y'){//1999년이전
+				if(pams == 'PAMS05' || preNnnn == 'Y'){
+					str += "<col style='width: auto'>";
+					str += "<col style='width: 15%'>";
+					str += "<col style='width: 15%'>";
+					str += "<col style='width: 15%'>";
+
+					$("#pop-periodColumn").empty();
+					$('#pop-periodColumn').html(str);
+
+					str = "";
+
+					str += "<tr>";
+					str += "<th scope='col'>판매기간</th>";
+					str += "<th scope='col'>상품요약서</th>";
+					str += "<th scope='col'>약관</th>";
+					str += "<th scope='col'>사업방법서</th>";
+					str += "</tr>";
+
+					$("#pop-periodColumn").empty();
+					$('#pop-periodColumn').html(str);
+
+					str = "";
+
+					if(list.length > 0){
+						for(let i=0; i<list.length; i++){
+							let tmp = '';
+							if (list[i].saleEdDt && list[i].saleEdDt != '0001-01-01 BC') {
+								tmp = list[i].saleEdDt;
+							}
+							str += "<tr>";
+							str += "<td class='txt-l'>"+ list[i].saleStDt + " ~ " + tmp +"</td>";
+							if(list2[i].temp01 && list2[i].temp01 != null && list2[i].temp01 != ""){
+								let temp01 = list2[i].temp01;
+								str += "<td><a href='javascript:fileDownload(\""+ temp01 +"\")'; class='ico file'><span class='blind'>다운로드</span></a></td>";
+							}
+
+							if(!(list2[i].temp01 && list2[i].temp01 != null && list2[i].temp01 != ""))
+								str += "<td></td>";
+
+							if(list2[i].temp02 && list2[i].temp02 != null && list2[i].temp02 != ""){
+								let temp02 = list2[i].temp02;
+								str += "<td><a href='javascript:fileDownload(\""+ temp02 +"\")'; class='ico file'><span class='blind'>다운로드</span></a></td>";
+							}
+
+							if(!(list2[i].temp02 && list2[i].temp02 != null && list2[i].temp02 != ""))
+								str += "<td></td>";
+
+							if(list2[i].temp03 && list2[i].temp03 != null && list2[i].temp03 != ""){
+								let temp03 = list2[i].temp03;
+								str += "<td><a href='javascript:fileDownload(\""+ temp03 +"\")'; class='ico file'><span class='blind'>다운로드</span></a></td>";
+							}
+							if(!(list2[i].temp03 && list2[i].temp03 != null && list2[i].temp03 != ""))
+								str += "<td></td>";
+							str += "</tr>";
+						}
+					}
+				} else {
+					str += "<col style='width: auto'>";
+					str += "<col style='width: 45%'>";
+
+					$("#pop-periodColumn").empty();
+					$('#pop-periodColumn').html(str);
+
+					str = "";
+
+					str += "<tr>";
+					str += "<th scope='col'>판매기간</th>";
+					str += "<th scope='col'>약관</th>";
+					str += "</tr>";
+
+					$("#pop-periodColumn").empty();
+					$('#pop-periodColumn').html(str);
+
+					str = "";
+
+					if(list.length > 0){
+						for(let i=0; i<list.length; i++){
+							let tmp = '';
+							if (list[i].saleEdDt && list[i].saleEdDt != '0001-01-01 BC') {
+								tmp = list[i].saleEdDt;
+							}
+							str += "<tr>";
+							str += "<td class='txt-l'>"+ list[i].saleStDt + " ~ " + tmp +"</td>";
+							if(list2[i].temp02 && list2[i].temp02 != null && list2[i].temp02 != ""){
+								let temp02 = list2[i].temp02;
+								str += "<td><a href='javascript:fileDownload(\""+ temp02 +"\")'; class='ico file'><span class='blind'>다운로드</span></a></td>";
+							}
+
+							if(!(list2[i].temp02 && list2[i].temp02 != null && list2[i].temp02 != ""))
+								str += "<td></td>";
+
+							str += "</tr>";
+						}
+					}
+				}
+			} else {
+				str += "<col style='width: auto'>";
+				str += "<col style='width: 15%'>";
+				str += "<col style='width: 15%'>";
+				str += "<col style='width: 15%'>";
+
+				$('#pop-periodColgroup').html(str);
+
+				str = "";
+
+				if(pams == 'PAMS08' || pams == 'PAMS09'){
+					str += "<tr>";
+					str += "<th scope='col'>판매기간</th>";
+					str += "<th scope='col'>계약서</th>";
+					str += "<th scope='col'>약관</th>";
+					str += "<th scope='col'>사업방법서</th>";
+					str += "</tr>";
+				} else {
+					str += "<tr>";
+					str += "<th scope='col'>판매기간</th>";
+					str += "<th scope='col'>상품요약서</th>";
+					str += "<th scope='col'>약관</th>";
+					str += "<th scope='col'>사업방법서</th>";
+					str += "</tr>";
+				}
+				$("#pop-periodColumn").empty();
+				$('#pop-periodColumn').html(str);
+
+				str = "";
+
+				if(list.length > 0){
+					for(let i=0; i<list.length; i++){
+						let tmp = '';
+						if (list[i].saleEdDt && list[i].saleEdDt != '0001-01-01 BC') {
+							tmp = list[i].saleEdDt;
+						}
+						str += "<tr>";
+						str += "<td class='txt-l'>"+ list[i].saleStDt + " ~ " + tmp +"</td>";
+						if(list2[i].temp01 && list2[i].temp01 != null && list2[i].temp01 != ""){
+							let temp01 = list2[i].temp01;
+							str += "<td><a href='javascript:fileDownload(\""+ temp01 +"\")'; class='ico file'><span class='blind'>다운로드</span></a></td>";
+						}
+
+						if(!(list2[i].temp01 && list2[i].temp01 != null && list2[i].temp01 != ""))
+							str += "<td></td>";
+
+						if(list2[i].temp02 && list2[i].temp02 != null && list2[i].temp02 != ""){
+							let temp02 = list2[i].temp02;
+							str += "<td><a href='javascript:fileDownload(\""+ temp02 +"\")'; class='ico file'><span class='blind'>다운로드</span></a></td>";
+						}
+
+						if(!(list2[i].temp02 && list2[i].temp02 != null && list2[i].temp02 != ""))
+							str += "<td></td>";
+
+						if(list2[i].temp03 && list2[i].temp03 != null && list2[i].temp03 != ""){
+							let temp03 = list2[i].temp03;
+							str += "<td><a href='javascript:fileDownload(\""+ temp03 +"\")'; class='ico file'><span class='blind'>다운로드</span></a></td>";
+						}
+
+						if(!(list2[i].temp03 && list2[i].temp03 != null && list2[i].temp03 != ""))
+							str += "<td></td>";
+
+						str += "</tr>";
+					}
+				}
+			}
+
+		} else {
+			str += "<col style='width: auto'>";
+			str += "<col style='width: 22.5%'>";
+			str += "<col style='width: 22.5%'>";
+
+			$('#pop-periodColgroup').html(str);
+
+			str = "";
+
+			str += "<tr>";
+			str += "<th scope='col'>판매기간</th>";
+			str += "<th scope='col'>약관</th>";
+			str += "<th scope='col'>사업방법서</th>";
+			str += "</tr>";
+
+			$('#pop-periodColumn').empty();
+			$('#pop-periodColumn').html(str);
+
+			str = "";
+
+			if(list.length > 0){
+				for(let i=0; i<list.length; i++){
+					let tmp = '';
+					if (list[i].saleEdDt) {
+						tmp = list[i].saleEdDt;
+					}
+					str += "<tr>";
+					str += "<td class='txt-l'>"+ list[i].saleStDt + " ~ " + tmp +"</td>";
+
+					if(list2[i].temp02 && list2[i].temp02 != null && list2[i].temp02 != ""){
+						let temp02 = list2[i].temp02;
+						str += "<td><a href='javascript:fileDownload(\""+ temp02 +"\")'; class='ico file'><span class='blind'>다운로드</span></a></td>";
+					}
+
+					if(!(list2[i].temp02 && list2[i].temp02 != null && list2[i].temp02 != ""))
+						str += "<td></td>";
+
+					if(list2[i].temp03 && list2[i].temp03 != null && list2[i].temp03 != ""){
+						let temp03 = list2[i].temp03;
+						str += "<td><a href='javascript:fileDownload(\""+ temp03 +"\")'; class='ico file'><span class='blind'>다운로드</span></a></td>";
+					}
+
+					if(!(list2[i].temp03 && list2[i].temp03 != null && list2[i].temp03 != ""))
+						str += "<td></td>";
+
+					str += "</tr>";
+				}
+			}
+		}
+
+		$('#pop-periodDownList').empty();
+		$('#pop-periodDownList').html(str);
+	}
+
+	//페이징
+	function drawPageNevArea(data){
+		var str = "";
+
+		str += "<div class=\"nav prev\">";
+		str += "<a href=\"javascript:;\" onclick=\"movePage(1)\" role=\"button\" class=\"bt prev end\"><i class=\"blind\">처음 페이지</i></a>";
+		if(data.scrCurPage > 1){ //현재페이지가 1보다 크면 이전페이지 이동 버튼에 현재페이지-1 세팅
+			str += "<a href=\"javascript:;\" onclick=\"movePage("+ (data.scrCurPage-1) +")\" role=\"button\" class=\"bt prev\"><i class=\"blind\">이전 페이지</i></a>";
+		}else{ //현재페이지가 1이면 이전페이지 이동 버튼에 1로 세팅
+			str += "<a href=\"javascript:;\" onclick=\"movePage(1)\" role=\"button\" class=\"bt prev\"><i class=\"blind\">이전 페이지</i></a>";
+		}
+		str += "</div>";
+		str += "<div class=\"link\">";
+		for(var i=data.startNumber ; i<=data.endNumber ; i++){
+			if(i == data.scrCurPage){ //현재페이지 버튼 활성화
+				str += "<a href=\"javascript:;\" role=\"button\" class=\"bt active\"><i class=\"n\">"+i+"</i> <i class=\"blind\">번째 페이지</i></a>";
+
+			}else{
+				str += "<a href=\"javascript:;\" onclick=\"movePage('"+i+"')\" role=\"button\" class=\"bt\"><i class=\"n\">"+i+"</i> <i class=\"blind\">번째 페이지</i></a>";
+			}
+		}
+		str += "</div>";
+		str += "<div class=\"nav next\">";
+		if(data.scrCurPage == data.totPageCnt){ //현재페이지와 총페이지갯수가 같으면 총페이지갯수로 세팅
+			str += "<a href=\"javascript:;\" onclick=\"movePage("+data.totPageCnt+")\" role=\"button\" class=\"bt next\"><i class=\"blind\">다음 페이지</i></a>";
+		}else{
+			str += "<a href=\"javascript:;\" onclick=\"movePage("+ (data.scrCurPage+1) +")\" role=\"button\" class=\"bt next\"><i class=\"blind\">다음 페이지</i></a>";
+		}
+		str += "<a href=\"javascript:;\" onclick=\"movePage("+data.totPageCnt+")\" role=\"button\" class=\"bt next end\"><i class=\"blind\">마지막 페이지</i></a>";
+		str += "</div>";
+
+		$("#pageNevArea").empty();
+		$("#pageNevArea").append(str);
+	}
+
+	function movePage(v){
+		currentPage__ = v;
+		searchList();
+	}
+
+	//파일다운로드
+	function fileDownload(fileName){
+		$("#rDownload").empty();
+
+		fileName = encodeURI(fileName);
+
+		//파일 다운로드 element 생성
+		let fn = fileName.substring(fileName.indexOf("_")+1);
+		var url = apiUrl__+"/file/ajax/download?fName=/dtc/pdf/mm/"+fileName;
+		var lnk = document.createElement('a');
+		lnk.href = url;
+
+		$("#rDownload").append(lnk);
+		lnk.click();
+
+		$("#rDownload").empty();
+	}
+
+	//상품군 목록 이동
+	function movePdtDetail(isPdtCd){
+		location.href="/dgt/web/dtp/insurance-detail?isPdtCd="+isPdtCd;
+	}
+
+	function donSelCheckAlert(){
+		ui.alert("판매중지된 상품입니다.",{
+		    ycb:function(){
+
+		    },
+		    ybt:"확인"
+		});
+	}
+
+	</script>
+
+
+				<div id="totalAuthLayout" ></div>
+				<div id="commonAuthLayout" ></div>
+				<div id="commonFunctionLayout" ></div>
+			
+		</div>
+	</body>
+</html>
