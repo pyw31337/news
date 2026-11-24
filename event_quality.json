@@ -1,37 +1,149 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 07:54:45",
-  "date": "2026-11-19",
+  "updated_at": "2026-11-24 17:58:50",
+  "date": "2026-11-25",
   "total_issues": 10,
   "average_quality": 0.89,
   "issues": [
     {
-      "id": "ib0b88852",
-      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
-      "episode": "episode:6240c7cf2c14d8",
+      "id": "ic9fda1bf",
+      "title": "'12·3 국민주권의 날' 기념일 지정…정부·국회 첫 공동 기념식",
+      "episode": "episode:b8614c8a5c626e",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "파장·후속",
+        "사법·처분",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 41,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iec4dc99e",
+      "title": "오세훈 “특검·탄핵 얘기하자, 李대통령 의사봉 3번 치고 자리 떠”",
+      "episode": "episode:d3f288b88dd278",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "사법·처분",
+        "일반 보도",
+        "입장·공방",
+        "파장·후속",
+        "발단·의혹"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 37,
+      "event_count": 63,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib281729a",
+      "title": "\"젠슨황, 알려진 두명 말고도 '추가 불륜' 이사회에 털어놔\"",
+      "episode": "episode:714d94a8a8c22d",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "파장·후속",
+        "사법·처분",
+        "수사·대응",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 47,
+      "event_count": 18,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic47b1613",
+      "title": "이란, 히잡 없이 공연한 여성 가수에 태형 74대",
+      "episode": "episode:322756ab9fa808",
+      "quality": 0.84,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "입장·공방"
+      ],
+      "gaps": [
         "발단·의혹",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i12288418",
+      "title": "젠슨 황 복귀에 코스피도 5000선 회복…6.32% 급등",
+      "episode": "episode:f607f6e360ad73",
+      "quality": 1.0,
+      "stages": [
+        "발단·의혹",
+        "파장·후속",
+        "일반 보도",
+        "사법·처분",
+        "수사·대응",
+        "입장·공방"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 28,
+      "event_count": 22,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i73158b76",
+      "title": "울릉도 향해 ‘초속 200m 돌진’ 러 군용기…폭격기까지 끼어 있었다",
+      "episode": "episode:73e20c83f6f457",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i487476c9",
+      "title": "젠슨 황, 11일 만에 전격 복귀…엔비디아 30%대 급등",
+      "episode": "episode:d658ac7af55126",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
         "입장·공방",
         "수사·대응"
       ],
       "gaps": [
-        "사법·처분"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 7,
+      "duplicate_candidates": 40,
+      "event_count": 22,
       "evidence_rate": 1.0
     },
     {
-      "id": "i52002ca2",
-      "title": "[속보] “용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
-      "episode": "episode:42a56cd22c055b",
+      "id": "ica646e48",
+      "title": "초등학생 숙박업소로 불러내 술 먹이고 성폭행…30대 강남 유명 학원장 구속",
+      "episode": "episode:8e539483de57cc",
       "quality": 0.76,
       "stages": [
         "일반 보도",
-        "파장·후속"
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
@@ -43,28 +155,28 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i7472fb4e",
-      "title": "‘리트 만점자’ 숨진채 발견... 메모엔 “몸과 마음 지쳤다”",
-      "episode": "episode:43f66ea4b003f7",
-      "quality": 1.0,
+      "id": "i6714d152",
+      "title": "'리트 만점자' 생명과학 과외 교사, 25일 경찰 참고인 조사",
+      "episode": "episode:0b52d96ab57f1b",
+      "quality": 0.84,
       "stages": [
+        "수사·대응",
         "일반 보도",
-        "사법·처분",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
         "파장·후속"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 8,
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 46,
+      "event_count": 15,
       "evidence_rate": 1.0
     },
     {
-      "id": "icc7073be",
-      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
-      "episode": "episode:b4571ab00be66b",
+      "id": "i59797373",
+      "title": "‘더 글로리 커플’ 이도현·임지연, 공개열애 3년여만에 결별",
+      "episode": "episode:6d8041de38b7f8",
       "quality": 0.66,
       "stages": [
         "일반 보도",
@@ -75,121 +187,8 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 30,
+      "duplicate_candidates": 21,
       "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ibfb65b25",
-      "title": "한 총리 \"작년 수능 시험지 보관하라\" 긴급 지시",
-      "episode": "episode:70917d4ab49bf4",
-      "quality": 0.84,
-      "stages": [
-        "수사·대응",
-        "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if68e1f2d",
-      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
-      "episode": "episode:87c2b2d986a387",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "수사·대응",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 29,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i32f6a682",
-      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
-      "episode": "episode:bb1f3458304a26",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3cea7471",
-      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
-      "episode": "episode:28b5802722ebe0",
-      "quality": 0.84,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i14bfd775",
-      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
-      "episode": "episode:332016de20ed99",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "id0d27ff9",
-      "title": "장애 아들 앞 폭행… ‘김창민 감독 살해’ 피의자들 징역 12년·3년",
-      "episode": "episode:f616ea440abebf",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "사법·처분",
-        "입장·공방",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 39,
       "evidence_rate": 1.0
     }
   ]
