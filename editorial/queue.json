@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-25",
-  "generated_at": "2026-11-25T04:25:53+09:00",
+  "generated_at": "2026-11-25T04:56:19+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,60 +27,60 @@
   },
   "candidates": [
     {
-      "issue_id": "i487476c9",
-      "title": "젠슨 황, 11일 만에 전격 복귀…엔비디아 30%대 급등",
+      "issue_id": "i12288418",
+      "title": "젠슨 황 복귀에 코스피도 5000선 회복…6.32% 급등",
       "category": "경제",
-      "rank": 3,
+      "rank": 5,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
-        "인공지능 황제의 복귀는 퇴장보다",
-        "\"5000피 탈환 코스피, 바닥 다졌나?\"…전문가 판단은",
+        "젠슨 황 엔비디아 CEO의 경영 복귀 소식에 국내 증시가 큰 폭으로 반등했다.",
         "\"차안에서 펑펑 울었다\"…젠슨 황 복귀에도 회복 못한 '최고층 개미'",
-        "젠슨 황 돌아오자 코스피도 살아났다…장중 5000선 탈환",
-        "젠슨 황, 11일 만에 전격 복귀…엔비디아 30%대 급등"
+        "24일 젠슨 황 복귀 소식 후 열린 국내 증시에서 코스피는 6.32% 급등한 5006.03에 거래를 마쳤다.",
+        "삼성전자와 SK하이닉스는 각각 6.7%, 6.73% 폭등한 18만9400원과 115만8000원에 마감했다.",
+        "아시아 등 글로벌 증시도 크게 올랐다...."
       ],
       "sources": [
-        {
-          "press": "이데일리",
-          "title": "\"5000피 탈환 코스피, 바닥 다졌나?\"…전문가 판단은",
-          "url": "https://n.news.naver.com/article/018/0006415016"
-        },
         {
           "press": "뉴스1",
           "title": "\"차안에서 펑펑 울었다\"…젠슨 황 복귀에도 회복 못한 '최고층 개미'",
           "url": "https://n.news.naver.com/article/421/0009306537"
         },
         {
-          "press": "비즈워치",
-          "title": "젠슨 황 돌아오자 코스피도 살아났다…장중 5000선 탈환",
-          "url": "https://n.news.naver.com/article/648/0000052913"
+          "press": "chosun.com",
+          "title": "증안 펀드보다 강력했던 ‘젠슨 황 효과’",
+          "url": "https://n.news.naver.com/mnews/article/023/0004011564?sid=101"
         },
         {
-          "press": "KBS",
-          "title": "젠슨 황, 11일 만에 전격 복귀…엔비디아 30%대 급등",
-          "url": "https://n.news.naver.com/article/056/0012300305"
+          "press": "donga.com",
+          "title": "폐위된 AI 황제 불러낸 ‘시장의 비명’",
+          "url": "https://n.news.naver.com/mnews/article/020/0003764922?sid=104"
+        },
+        {
+          "press": "kjdaily.com",
+          "title": "휴림로봇·큐리언트 등 6종목 공매도 과열 지정",
+          "url": "http://www.kjdaily.com/article.php?aid=1795535317693454276"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "인공지능 황제의 복귀는 퇴장보다"
+          "evidence": "젠슨 황 엔비디아 CEO의 경영 복귀 소식에 국내 증시가 큰 폭으로 반등했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "경제계 \"수출 1조 달러 성과, 국내 투자·일자리로 이어갈 것\""
+          "evidence": "297.49포인트(6.32%) 상승한 5,006.03으로 마감했다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "\"5000피 탈환 코스피, 바닥 다졌나?\"…전문가 판단은"
+          "evidence": "24일 젠슨 황 복귀 소식 후 열린 국내 증시에서 코스피는 6.32% 급등한 5006.03에 거래를 마쳤다."
         },
         {
           "panel": 4,
@@ -89,8 +89,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -123,67 +123,65 @@
         "numeric_or_specific_evidence": true,
         "sources": 4,
         "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "발단·의혹"
-        ],
+        "continuity_gaps": [],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "i5bb7040a",
-      "title": "서울 지하철 1·2노조 협상 극적 타결…파업 철회 임박(종합)",
-      "category": "사회",
-      "rank": 6,
+      "issue_id": "i9a9a35cd",
+      "title": "‘젠슨황 복귀’ 트럼프 개입에 비판 고조…공화 강경파도 반발",
+      "category": "세계",
+      "rank": 9,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
-        "서울 지하철 1·2노조 임단협이 타결되어 파업이 철회되었습니다.",
-        "“서울도 아닌데 30억?”…집값 들썩이는 ‘이곳’",
-        "현재 교섭이 진행 중인 제3노조(올바른노조)까지 타결이 결정되면 25일로 예고됐던 서울 지하철 총파업은 진행되지 않는다.",
-        "서울교통공사 제2노조는 25일 오전 3시 16분 언론 공지를 통해 \"(2026년 임금·단체협약)...",
-        "서울 지하철 1~8호선을 운영하는 서울교통공사가 25일 첫차 운행을 앞두고 제1·2노조와 잇따라 2026년 임금·단체협약(임단협) 교섭을 타결했다."
+        "양당 모두 엔비디아 철저 조사 다짐…\"국가 자본주의·기업지배구조 멸종\" 경제지도 맹비난 도널드 트럼프 미국 대통령이 중국 간첩 의심 여성과 불륜 의혹을 받는 젠슨 황의 엔비디아 최고경영자(CEO) 복귀에 개입한 것을",
+        "“개탄스러운 국가 자본주의(regrettable state capitalism) 겸 정치적 구제금융(political bailout)이다.” 도널드 트럼프 미국 대통령이 주도한 젠슨 황 엔비디아 최고경영자(CEO)의 복귀를 두고 23일 월스트리트저널(WSJ)이…",
+        "도널드 트럼프 대통령이 엔비디아(NVDA) 이사회에 개입해 젠슨 황을 최고경영자(CEO)로 복귀시킨 데 대해...",
+        "미국 공화당 소속 데이브 매코믹 상원의원 [사진=블룸버그] 매코믹 의원은 엔비디아 이사회가 황 CEO를 복귀시킨...",
+        "“엔비디아뿐 아니라 미국 경제의 번영과 성공을 위해 젠슨의 리더십이 필요하다.” 도널드 트럼프 미국 대통령은 23일(현지 시간) 트루스소셜을 통해 사실상 자신이 주도한 젠슨 황 엔비디아 최고경영자(CEO)의 복귀..."
       ],
       "sources": [
         {
-          "press": "한경비즈니스",
-          "title": "“서울도 아닌데 30억?”…집값 들썩이는 ‘이곳’",
-          "url": "https://n.news.naver.com/article/050/0000113674"
+          "press": "donga.com",
+          "title": "“젠슨 황 복귀는 정치적 구제금융”… 트럼프 국가자본주의 도마에",
+          "url": "https://n.news.naver.com/mnews/article/020/0003764973?sid=104"
         },
         {
           "press": "newspim.com",
-          "title": "서울교통공사 2노조도 임단협 타결...3노조는 교섭 진행",
-          "url": "https://www.newspim.com/news/view/20261125000023"
+          "title": "[미국 특징주] 매코믹 \"트럼프의 엔비디아 이사회 개입, 위험한 선례\"",
+          "url": "https://www.newspim.com/news/view/20261125000027"
         },
         {
-          "press": "edaily.co.kr",
-          "title": "서울지하철 1·2노조, 잇따라 임단협 타결…파업 피하나(상보)",
-          "url": "https://n.news.naver.com/mnews/article/018/0006415041?sid=102"
+          "press": "donga.com",
+          "title": "트럼프, 밴스 통해 “젠슨 황 안보위협 안해” 전달… 이사회 논의 개입",
+          "url": "https://n.news.naver.com/mnews/article/020/0003764950?sid=104"
         },
         {
-          "press": "fnnews.com",
-          "title": "서울 지하철 노사 극적 타결..1~8호선 첫차부터 정상 운행",
-          "url": "https://n.news.naver.com/mnews/article/014/0005609244?sid=102"
+          "press": "donga.com",
+          "title": "美의회 “반도체 中반입 의혹 아직 해소 안돼”",
+          "url": "https://n.news.naver.com/mnews/article/020/0003764951?sid=104"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "서울 지하철 1·2노조 임단협이 타결되어 파업이 철회되었습니다."
+          "evidence": "양당 모두 엔비디아 철저 조사 다짐…\"국가 자본주의·기업지배구조 멸종\" 경제지도 맹비난 도널드 트럼프 미국 대통령이 중국 간첩 의심 여성과 불륜 의혹을 받는 젠슨 황의 엔비디아 최고경영자(CEO) 복귀에 개입한 것을"
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "현재 교섭이 진행 중인 제3노조(올바른노조)까지 타결이 결정되면 25일로 예고됐던 서울 지하철 총파업은 진행되지 않는다."
+          "evidence": "도널드 트럼프 대통령이 엔비디아(NVDA) 이사회에 개입해 젠슨 황을 최고경영자(CEO)로 복귀시킨 데 대해..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "“서울도 아닌데 30억?”…집값 들썩이는 ‘이곳’"
+          "evidence": "“개탄스러운 국가 자본주의(regrettable state capitalism) 겸 정치적 구제금융(political bailout)이다.” 도널드 트럼프 미국 대통령이 주도한 젠슨 황 엔비디아…"
         },
         {
           "panel": 4,
@@ -192,8 +190,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "industry",
-        "direction": "공장 동선·안전 표지·가동 보드를 이용, 캐릭터 행동을 컷마다 바꿀 것",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -225,20 +223,16 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "파장·후속"
-        ],
+        "continuity_quality": 1.0,
+        "continuity_gaps": [],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "i9a9a35cd",
-      "title": "‘젠슨황 복귀’ 트럼프 개입에 비판 고조…공화 강경파도 반발",
-      "category": "정치",
-      "rank": 1,
+      "issue_id": "i570baf91",
+      "title": "젠슨 황 \"추가 불륜 있다\"…엔비디아 복귀 직전 이사회에 고백",
+      "category": "IT",
+      "rank": 3,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -246,11 +240,11 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "트럼프 미국 대통령이 중국 간첩 의심 여성과 불륜 의혹을 받는 젠슨 황의 엔비디아 최고경영자(CEO) 복귀에 개입한 것을 양당 모두 철저 조사 다짐하며 맹비난하고 있다.",
+        "젠슨 황 엔비디아 CEO가 사임 11일 만에 복귀하기 전 회사 이사회에 기존에 알려지지 않았던 추가 불륜 사실을 털어놓았습니다.",
         "복귀엔 성공, ‘바람둥이’인 건 맞다…젠슨 황, 2건 외 불륜 더 있어",
         "[속보]‘돌아오려 솔직하게…’ 젠슨황, 이사회에 추가 불륜 2명 고백",
-        "\"젠슨황, 알려진 두명 말고도 '추가 불륜' 이사회에 털어놔\"",
-        "젠슨 황 불륜 몇 명과?..."
+        "젠슨 황 따라 사표 던진 엔비디아 직원…“내가 성급했다, 나도 다시 돌아가고 싶다”",
+        "젠슨 황 \"추가 불륜 있다\"…엔비디아 복귀 직전 이사회에 고백"
       ],
       "sources": [
         {
@@ -264,21 +258,21 @@
           "url": "https://n.news.naver.com/article/021/0002835209"
         },
         {
-          "press": "연합뉴스",
-          "title": "\"젠슨황, 알려진 두명 말고도 '추가 불륜' 이사회에 털어놔\"",
-          "url": "https://n.news.naver.com/article/001/0016461264"
+          "press": "전자신문",
+          "title": "젠슨 황 따라 사표 던진 엔비디아 직원…“내가 성급했다, 나도 다시 돌아가고 싶다”",
+          "url": "https://n.news.naver.com/article/030/0003489305"
         },
         {
-          "press": "조선일보",
-          "title": "젠슨 황 불륜 몇 명과?... 2명 말고도 더 있었다",
-          "url": "https://n.news.naver.com/article/023/0004011472"
+          "press": "뉴스1",
+          "title": "젠슨 황 \"추가 불륜 있다\"…엔비디아 복귀 직전 이사회에 고백",
+          "url": "https://n.news.naver.com/article/421/0009307700"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "트럼프 미국 대통령이 중국 간첩 의심 여성과 불륜 의혹을 받는 젠슨 황의 엔비디아 최고경영자(CEO) 복귀에 개입한 것을 양당 모두 철저 조사 다짐하며 맹비난하고 있다."
+          "evidence": "젠슨 황 엔비디아 CEO가 사임 11일 만에 복귀하기 전 회사 이사회에 기존에 알려지지 않았던 추가 불륜 사실을 털어놓았습니다."
         },
         {
           "panel": 2,
@@ -332,7 +326,7 @@
         "sources": 4,
         "continuity_quality": 1.0,
         "continuity_gaps": [
-          "사법·처분"
+          "발단·의혹"
         ],
         "no_generic_closing": true
       }
