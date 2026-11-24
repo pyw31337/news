@@ -31,6 +31,69 @@
   const dataRoot = location.protocol === 'file:' ? 'https://pyw31337.github.io/news/data/' : '../data/';
   let V = null;
 
+  const KNOWN_PORTRAITS = {
+    '이재명': `${root}data/pol/photos/IUD9392R.webp`,
+    '한동훈': `${root}data/pol/photos/5DC8083A.webp`,
+    '서영교': `${root}data/pol/photos/TKJ4800F.webp`,
+    '정청래': `${root}data/pol/photos/2385336L.webp`,
+    '추미애': `${root}data/pol/photos/URV1689Q.webp`,
+    '조국': `${root}data/pol/photos/T3E4932G.webp`,
+    '나경원': `${root}data/pol/photos/SLW27496.webp`,
+    '안철수': `${root}data/pol/photos/YOG1280B.webp`,
+    '박지원': `${root}data/pol/photos/KFX3165F.webp`,
+    '우원식': `${root}data/pol/photos/XBT9550Q.webp`,
+    '김민석': `${root}data/pol/photos/MLH1404S.webp`,
+    '이준석': `${root}data/pol/photos/QWL7778X.webp`,
+    '오세훈': `${root}data/pol/photos/LB24097N.webp`,
+    '홍준표': `${root}data/pol/photos/NAL4555X.webp`,
+    '유승민': `${root}data/pol/photos/PWU27609.webp`,
+    '천하람': `${root}data/pol/photos/YGB8604T.webp`,
+    '배현진': `${root}data/pol/photos/4X525582.webp`,
+    '장동혁': `${root}data/pol/photos/KFM1081G.webp`,
+    '김기현': `${root}data/pol/photos/X7I4680R.webp`,
+    '박찬대': `${root}data/pol/photos/BT62420K.webp`,
+    '고민정': `${root}data/pol/photos/WCD5518S.webp`,
+    '진성준': `${root}data/pol/photos/3C23171A.webp`,
+    '김용민': `${root}data/pol/photos/OFE45081.webp`,
+    '박주민': `${root}data/pol/photos/6AU2417B.webp`,
+    '용혜인': `${root}data/pol/photos/GE71932C.webp`,
+    '조희대': 'https://upload.wikimedia.org/wikipedia/commons/b/be/Jo_Heede_in_his_17th_Chief_Justice_inauguration_ceremony.png',
+    '강금실': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/KumsilKang.JPG/330px-KumsilKang.JPG',
+    '이승환': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/LSH_-_2019_No_Enemy_Legend.jpg/330px-LSH_-_2019_No_Enemy_Legend.jpg',
+    '트럼프': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29.jpg/330px-Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29.jpg',
+    '젠슨 황': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Jensen_Huang_Stanford_2026-04-30_010_%28cropped%29.jpg/330px-Jensen_Huang_Stanford_2026-04-30_010_%28cropped%29.jpg',
+    '윤석열': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/South_Korea_President_Yoon_Suk_Yeol_portrait_%28crop%29.jpg/330px-South_Korea_President_Yoon_Suk_Yeol_portrait_%28crop%29.jpg',
+    '김건희': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Kim_Keon-hee_2023.jpg/330px-Kim_Keon-hee_2023.jpg',
+    '이재용': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Lee_Jae-yong_in_2023.jpg/330px-Lee_Jae-yong_in_2023.jpg',
+    '일론 머스크': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg/330px-Elon_Musk_Colorado_2022_%28cropped2%29.jpg'
+  };
+
+  function personPhoto(p) {
+    if (!p) return '';
+    const name = String(p.name || '').trim();
+    if (KNOWN_PORTRAITS[name]) return KNOWN_PORTRAITS[name];
+    if (p.photo && typeof p.photo === 'string') return p.photo;
+    const wThumb = p.wiki?.thumb;
+    if (wThumb && typeof wThumb === 'string') {
+      return wThumb.split('?')[0];
+    }
+    return p.thumb || '';
+  }
+
+  function catIcon(cat, filled = false) {
+    const c = String(cat || '').trim();
+    let name = 'news';
+    if (/정치/i.test(c)) name = 'building-bank';
+    else if (/경제|금융|증시|시장/i.test(c)) name = 'chart-bar';
+    else if (/사회|법원|검찰|노동/i.test(c)) name = 'scale';
+    else if (/세계|국제|외신/i.test(c)) name = 'world';
+    else if (/IT|과학|기술|AI/i.test(c)) name = 'cpu';
+    else if (/문화|연예|생활/i.test(c)) name = 'sparkles';
+    else if (/스포츠/i.test(c)) name = 'flame';
+    else if (/핫이슈|주요|종합/i.test(c)) name = 'trending-up';
+    return icon(name, filled);
+  }
+
   function dataIssue(v, full) {
     const base = {
       id: v.id, title: v.title, category: v.cat, image: v.img,
@@ -198,7 +261,7 @@
             </a>
             <div class="agenda-card-head" style="margin-top:2px; margin-bottom:8px;">
               <span class="badge" style="background:${color(iss.category || iss.cat)}18; color:${color(iss.category || iss.cat)}; padding:2px 8px; font-size:11px;">
-                ${esc(iss.category || iss.cat || '종합')}
+                ${catIcon(iss.category || iss.cat, false)} ${esc(iss.category || iss.cat || '종합')}
               </span>
               <span style="font-size:11px; color:var(--muted); font-weight:700;">${esc(iss.press || '주요 언론')}</span>
             </div>
@@ -206,7 +269,7 @@
             <div class="agenda-card-head">
               <span class="agenda-rank">#${rank}</span>
               <span class="badge" style="background:${color(iss.category || iss.cat)}18; color:${color(iss.category || iss.cat)}; padding:2px 8px; font-size:11px;">
-                ${esc(iss.category || iss.cat || '종합')}
+                ${catIcon(iss.category || iss.cat, false)} ${esc(iss.category || iss.cat || '종합')}
               </span>
             </div>
           `}
@@ -332,12 +395,16 @@
         <div class="people-strip">
           ${persons.map(p => {
             const wiki = p.wiki || {};
-            const thumb = wiki.thumb || '';
+            const photoUrl = personPhoto(p);
             const desc = wiki.desc || p.role || '주요 관련 인물';
             const recentQuote = (p.timeline || [])[0]?.title || '오늘의 주요 사건에 핵심 인물로 등장했습니다.';
             return `
               <div class="person-card">
-                <div class="person-avatar" style="${thumb ? `background-image:url('${esc(thumb)}')` : ''}"></div>
+                <div class="person-avatar">
+                  ${photoUrl ? `
+                    <img class="person-avatar-img" src="${esc(photoUrl)}" alt="${esc(p.name)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'avatar-fallback\\'>${esc((p.name || '人')[0])}</span>';">
+                  ` : `<span class="avatar-fallback">${esc((p.name || '人')[0])}</span>`}
+                </div>
                 <b><a href="${hrefEntity(p.name)}">${esc(p.name)}</a></b>
                 <span class="role">${esc(desc)}</span>
                 <p class="quote-snippet">"${esc(short(recentQuote, 46))}"</p>
@@ -481,199 +548,221 @@
     document.title = `NewsBoard v2 · ${short(i.title, 32)}`;
 
     $('#app').innerHTML = `
-      <!-- Lead Hero Issue (Issue #01) -->
-      <section class="section hero" id="issue">
-        <div class="hero-media" style="--hero-cat:${color(i.category)}">
-          ${heroImage(i) ? `<img src="${esc(heroImage(i))}" alt="">` : heroFallback(i)}
-          <span class="media-caption">${esc(i.category || '오늘의 이슈')} · ${day(full.updated || full.date)}</span>
-        </div>
-        <div class="hero-copy">
-          <span class="badge">${icon('trending-up', true)} ${esc(i.category || '핫이슈')}</span>
-          <h1><a href="${root}issue/${esc(i.id)}">${esc(i.title)}</a></h1>
-          <p class="hero-lead">${esc((i.lead || currentSummary[0] || '오늘 가장 많이 주목받은 이슈의 핵심 흐름을 한 화면에 정리했습니다.'))}</p>
-          <div class="meta">
-            <span>${day(full.updated || full.date)}</span>
-            <span>${icon('news')} 보도 ${nf(i.presses || v.presses)}곳</span>
-            <span>${icon('message-circle')} ${nf((i.opinion || v.op || {}).total || v.comments)} 반응</span>
-            <span>화제도 ${nf(Math.round(v.score || i.score || 0))}</span>
+      <!-- ========================================== -->
+      <!-- ZONE A (상단): 오늘의 1위 단일 이슈 심층 분석 -->
+      <!-- ========================================== -->
+      <div class="lead-dossier-zone">
+        <!-- Lead Hero Issue (Issue #01) -->
+        <section class="section hero" id="issue">
+          <div class="hero-media" style="--hero-cat:${color(i.category)}">
+            ${heroImage(i) ? `<img src="${esc(heroImage(i))}" alt="">` : heroFallback(i)}
+            <span class="media-caption">${esc(i.category || '오늘의 이슈')} · ${day(full.updated || full.date)}</span>
           </div>
-          <div class="entity-strip">
-            ${entities.map(e => `<a class="entity-chip" href="${hrefEntity(e)}">${icon('bookmark')} ${esc(e)}</a>`).join('')}
+          <div class="hero-copy">
+            <span class="badge">${catIcon(i.category, true)} ${esc(i.category || '핫이슈')}</span>
+            <h1><a href="${root}issue/${esc(i.id)}">${esc(i.title)}</a></h1>
+            <p class="hero-lead">${esc((i.lead || currentSummary[0] || '오늘 가장 많이 주목받은 이슈의 핵심 흐름을 한 화면에 정리했습니다.'))}</p>
+            <div class="meta">
+              <span>${day(full.updated || full.date)}</span>
+              <span>${icon('news')} 보도 ${nf(i.presses || v.presses)}곳</span>
+              <span>${icon('message-circle')} ${nf((i.opinion || v.op || {}).total || v.comments)} 반응</span>
+              <span>화제도 ${nf(Math.round(v.score || i.score || 0))}</span>
+            </div>
+            <div class="entity-strip">
+              ${entities.map(e => `<a class="entity-chip" href="${hrefEntity(e)}">${icon('bookmark')} ${esc(e)}</a>`).join('')}
+            </div>
+            ${currentSummary.length ? `<ul class="hero-summary">${currentSummary.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
           </div>
-          ${currentSummary.length ? `<ul class="hero-summary">${currentSummary.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
-        </div>
-      </section>
+        </section>
 
-      <!-- Fused: 10-Agenda Deck (Issues 02~10 with Inline Accordion Drawer) -->
-      ${agendaDeckView(full.issues || issues)}
-
-      <!-- Fused: People 5-Card Radar -->
-      ${peopleRadarView(full)}
-
-      <!-- Knowledge Graph Ontology Explorer -->
-      ${ontologyView(V.ontology, i)}
-
-      <!-- Lead Issue Timeline Flow -->
-      <section class="section" id="flow">
-        <div class="section-head">
-          <div><div class="eyebrow">ISSUE CONTINUITY</div><h2>어떻게 이어졌나</h2></div>
-          <p>사건 단계별로 관련도가 검증된 원문과 보도사진을 시간순으로 연결했습니다.${i.flow_gap ? ` · ${esc(i.flow_gap)}` : ''}</p>
-        </div>
-        <div class="band">
-          <div class="timeline-grid">
-            ${flow.map((e, eIdx) => {
-              const thumb = flowThumb(e, i, eIdx);
-              return `
-                <article class="timeline-node">
-                  ${thumb ? `
-                    <a class="timeline-thumb-link" href="${esc(e.url || '#')}" target="_blank" rel="noopener">
-                      <div class="timeline-thumb">
-                        <img src="${esc(thumb)}" alt="${esc(e.title || '')}" loading="lazy" onerror="this.onerror=null;this.src='${esc(i.image || '')}'">
-                        ${e.press ? `<span class="timeline-press-tag">${esc(e.press)}</span>` : ''}
-                      </div>
-                    </a>
-                  ` : ''}
-                  <div class="timeline-track-node">
-                    <i class="timeline-dot"></i>
-                  </div>
-                  <div class="timeline-content">
-                    <div class="timeline-meta">
-                      <time>${esc(day(e.date) || '날짜 미상')}</time>
-                      <small class="timeline-stage">${esc(e.stage || '관련 보도')}</small>
+        <!-- Lead Issue Timeline Flow -->
+        <section class="section" id="flow">
+          <div class="section-head">
+            <div><div class="eyebrow">${icon('trending-up')} ISSUE CONTINUITY</div><h2>어떻게 이어졌나</h2></div>
+            <p>사건 단계별로 관련도가 검증된 원문과 보도사진을 시간순으로 연결했습니다.${i.flow_gap ? ` · ${esc(i.flow_gap)}` : ''}</p>
+          </div>
+          <div class="band">
+            <div class="timeline-grid">
+              ${flow.map((e, eIdx) => {
+                const thumb = flowThumb(e, i, eIdx);
+                return `
+                  <article class="timeline-node">
+                    ${thumb ? `
+                      <a class="timeline-thumb-link" href="${esc(e.url || '#')}" target="_blank" rel="noopener">
+                        <div class="timeline-thumb">
+                          <img src="${esc(thumb)}" alt="${esc(e.title || '')}" loading="lazy" onerror="this.onerror=null;this.src='${esc(i.image || '')}'">
+                          ${e.press ? `<span class="timeline-press-tag">${esc(e.press)}</span>` : ''}
+                        </div>
+                      </a>
+                    ` : ''}
+                    <div class="timeline-track-node">
+                      <i class="timeline-dot"></i>
                     </div>
-                    <a class="timeline-title" href="${esc(e.url || '#')}" target="_blank" rel="noopener">${esc(e.title || '관련 보도')}</a>
-                    <p class="timeline-summary">${esc(short(e.body || e.press || '', 110))}</p>
+                    <div class="timeline-content">
+                      <div class="timeline-meta">
+                        <time>${esc(day(e.date) || '날짜 미상')}</time>
+                        <small class="timeline-stage">${esc(e.stage || '관련 보도')}</small>
+                      </div>
+                      <a class="timeline-title" href="${esc(e.url || '#')}" target="_blank" rel="noopener">${esc(e.title || '관련 보도')}</a>
+                      <p class="timeline-summary">${esc(short(e.body || e.press || '', 110))}</p>
+                    </div>
+                  </article>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        </section>
+
+        <!-- Primary Reports Comparison (12 Sources) -->
+        <section class="section" id="reports">
+          <div class="section-head">
+            <div><div class="eyebrow">${icon('news')} PRIMARY REPORTS</div><h2>주요 보도 비교</h2></div>
+            <p>같은 이슈를 원문·썸네일과 함께 비교합니다.</p>
+            <a class="more" href="${root}issue/${esc(i.id)}">전체 보도 보기 →</a>
+          </div>
+          ${reps.length ? `<div class="report-grid"><div class="report-list">${reps.slice(0, 6).map(report).join('')}</div><div class="report-list">${reps.slice(6, 12).map(report).join('')}</div></div>` : '<div class="empty">이 이슈의 세부 출처 목록을 준비 중입니다.</div>'}
+        </section>
+
+        <!-- Past & Current Quotes -->
+        ${past.length ? `
+          <section class="section" id="quotes">
+            <div class="section-head">
+              <div><div class="eyebrow">${icon('quote')} PAST & CURRENT</div><h2>과거와 현재의 발언·기록</h2></div>
+              <p>같은 주제의 과거 기록과 현재 이슈를 나란히 확인합니다.</p>
+            </div>
+            <div class="quote-list">
+              ${past.slice(0, 4).map(p => `
+                <div class="quote-row">
+                  <div class="person">
+                    <span class="avatar"${imgStyle((v.faces || [])[0]?.img)}></span>
+                    <div><b>${esc((v.faces || [])[0]?.n || (i.entities || [])[0] || '관련 인물')}</b><small>관련 기록</small></div>
                   </div>
-                </article>
-              `;
-            }).join('')}
-          </div>
-        </div>
-      </section>
-
-      <!-- Primary Reports Comparison (12 Sources) -->
-      <section class="section" id="reports">
-        <div class="section-head">
-          <div><div class="eyebrow">PRIMARY REPORTS</div><h2>주요 보도 비교</h2></div>
-          <p>같은 이슈를 원문·썸네일과 함께 비교합니다.</p>
-          <a class="more" href="${root}issue/${esc(i.id)}">전체 보도 보기 →</a>
-        </div>
-        ${reps.length ? `<div class="report-grid"><div class="report-list">${reps.slice(0, 6).map(report).join('')}</div><div class="report-list">${reps.slice(6, 12).map(report).join('')}</div></div>` : '<div class="empty">이 이슈의 세부 출처 목록을 준비 중입니다.</div>'}
-      </section>
-
-      <!-- Past & Current Quotes -->
-      ${past.length ? `
-        <section class="section" id="quotes">
-          <div class="section-head">
-            <div><div class="eyebrow">PAST & CURRENT</div><h2>과거와 현재의 발언·기록</h2></div>
-            <p>같은 주제의 과거 기록과 현재 이슈를 나란히 확인합니다.</p>
-          </div>
-          <div class="quote-list">
-            ${past.slice(0, 4).map(p => `
-              <div class="quote-row">
-                <div class="person">
-                  <span class="avatar"${imgStyle((v.faces || [])[0]?.img)}></span>
-                  <div><b>${esc((v.faces || [])[0]?.n || (i.entities || [])[0] || '관련 인물')}</b><small>관련 기록</small></div>
+                  <a class="quote" href="${esc(p.url || '#')}" target="_blank" rel="noopener">
+                    <span class="tag">과거 · ${esc(day(p.date))}</span>
+                    <p>“${esc(p.title)}”</p>
+                    <small>원문 기록 보기 ↗</small>
+                  </a>
+                  <div class="quote-arrow">→</div>
+                  <a class="quote" href="${esc(currentRecord.url || '#')}" target="_blank" rel="noopener">
+                    <span class="tag">현재 · ${esc(day(full.date))}</span>
+                    <p>“${esc(i.title)}”</p>
+                    <small>현재 이슈 보기 ↗</small>
+                  </a>
                 </div>
-                <a class="quote" href="${esc(p.url || '#')}" target="_blank" rel="noopener">
-                  <span class="tag">과거 · ${esc(day(p.date))}</span>
-                  <p>“${esc(p.title)}”</p>
-                  <small>원문 기록 보기 ↗</small>
-                </a>
-                <div class="quote-arrow">→</div>
-                <a class="quote" href="${esc(currentRecord.url || '#')}" target="_blank" rel="noopener">
-                  <span class="tag">현재 · ${esc(day(full.date))}</span>
-                  <p>“${esc(i.title)}”</p>
-                  <small>현재 이슈 보기 ↗</small>
-                </a>
+              `).join('')}
+            </div>
+          </section>
+        ` : ''}
+
+        <!-- Knowledge Graph Ontology Explorer -->
+        ${ontologyView(V.ontology, i)}
+
+        <!-- Relations & Social Reactions -->
+        <section class="section dual" id="relations">
+          <div>
+            <div class="section-head">
+              <div><div class="eyebrow">${icon('users')} RELATED PEOPLE & ORGS</div><h2>관련 인물·기관</h2></div>
+            </div>
+            <div class="relation">
+              <div class="rel-col">
+                ${entities.slice(0, 3).map(e => `<a class="rel-node" href="${hrefEntity(e)}"><b>${esc(e)}</b><small>이슈 엔티티 · 상세 보기</small></a>`).join('')}
               </div>
-            `).join('')}
+              <div class="rel-center">${icon('hierarchy-2', true)}<br>${esc(short(i.title, 20))}</div>
+              <div class="rel-col">
+                ${(i.keywords || v.kw || []).slice(0, 3).map(e => `<a class="rel-node" href="${hrefEntity(e)}"><b>${esc(e)}</b><small>핵심 키워드 · 관련 기사</small></a>`).join('')}
+              </div>
+            </div>
+          </div>
+          <div id="social">
+            <div class="section-head">
+              <div><div class="eyebrow">${icon('message-circle')} LIVE REACTION</div><h2>지금 SNS에서</h2></div>
+            </div>
+            ${social.length ? `<div class="social-list">${social.map(p => `<article class="social"><span class="avatar"${imgStyle(p.avatar)}></span><div><b>${esc(p.name || p.handle || '공개 계정')}</b><small> ${esc(p.handle || '')} · ${esc(day(p.t))}</small><p>${esc(short(p.text_ko || p.text || '', 180))}</p><div class="social-actions"><span>${esc(p.net || 'SNS')}</span><a href="${esc(p.url || '#')}" target="_blank" rel="noopener">원문 참여 ↗</a></div></div></article>`).join('')}</div>` : `<div class="empty">현재 수집된 공개 SNS 반응이 없습니다.</div>`}
           </div>
         </section>
-      ` : ''}
 
-      <!-- Fused: World Perspective Global View -->
-      ${globalView(V.globalData)}
-
-      <!-- Relations & Social Reactions -->
-      <section class="section dual" id="relations">
-        <div>
+        <!-- Public Sentiment & Word Cloud -->
+        <section class="section reaction" id="sentiment">
           <div class="section-head">
-            <div><div class="eyebrow">RELATED PEOPLE & ORGS</div><h2>관련 인물·기관</h2></div>
+            <div><div class="eyebrow">${icon('mood-smile')} PUBLIC SENTIMENT</div><h2>민심과 댓글</h2></div>
+            <p>원문 댓글·반응에서 집계된 이슈별 여론을 요약합니다.</p>
           </div>
-          <div class="relation">
-            <div class="rel-col">
-              ${entities.slice(0, 3).map(e => `<a class="rel-node" href="${hrefEntity(e)}"><b>${esc(e)}</b><small>이슈 엔티티 · 상세 보기</small></a>`).join('')}
+          <div class="sentiment-grid">
+            <div class="sentiment-main">
+              <div class="sentiment-bars">
+                <div><span>공감·긍정</span><b>${nf(opinion.like || 0)}</b></div>
+                <i style="--w:${Math.min(100, Number(opinion.total) ? Math.round((Number(opinion.like || 0) / Number(opinion.total)) * 100) : 0)}%"></i>
+                <div><span>우려·비판</span><b>${nf(opinion.dislike || 0)}</b></div>
+              </div>
+              <p class="comment-top">“${esc(topComment || '대표 댓글이 아직 집계되지 않았습니다.')}”</p>
             </div>
-            <div class="rel-center">${icon('hierarchy-2', true)}<br>${esc(short(i.title, 20))}</div>
-            <div class="rel-col">
-              ${(i.keywords || v.kw || []).slice(0, 3).map(e => `<a class="rel-node" href="${hrefEntity(e)}"><b>${esc(e)}</b><small>핵심 키워드 · 관련 기사</small></a>`).join('')}
+            <div class="word-cloud">
+              ${(opinion.words || []).slice(0, 8).map(w => `<span>${esc(Array.isArray(w) ? w[0] : w)}</span>`).join('') || '<span>댓글 키워드 수집 중</span>'}
             </div>
-          </div>
-        </div>
-        <div id="social">
-          <div class="section-head">
-            <div><div class="eyebrow">LIVE REACTION</div><h2>지금 SNS에서</h2></div>
-          </div>
-          ${social.length ? `<div class="social-list">${social.map(p => `<article class="social"><span class="avatar"${imgStyle(p.avatar)}></span><div><b>${esc(p.name || p.handle || '공개 계정')}</b><small> ${esc(p.handle || '')} · ${esc(day(p.t))}</small><p>${esc(short(p.text_ko || p.text || '', 180))}</p><div class="social-actions"><span>${esc(p.net || 'SNS')}</span><a href="${esc(p.url || '#')}" target="_blank" rel="noopener">원문 참여 ↗</a></div></div></article>`).join('')}</div>` : `<div class="empty">현재 수집된 공개 SNS 반응이 없습니다.</div>`}
-        </div>
-      </section>
-
-      <!-- Public Sentiment & Word Cloud -->
-      <section class="section reaction" id="sentiment">
-        <div class="section-head">
-          <div><div class="eyebrow">PUBLIC SENTIMENT</div><h2>민심과 댓글</h2></div>
-          <p>원문 댓글·반응에서 집계된 이슈별 여론을 요약합니다.</p>
-        </div>
-        <div class="sentiment-grid">
-          <div class="sentiment-main">
-            <div class="sentiment-bars">
-              <div><span>공감·긍정</span><b>${nf(opinion.like || 0)}</b></div>
-              <i style="--w:${Math.min(100, Number(opinion.total) ? Math.round((Number(opinion.like || 0) / Number(opinion.total)) * 100) : 0)}%"></i>
-              <div><span>우려·비판</span><b>${nf(opinion.dislike || 0)}</b></div>
-            </div>
-            <p class="comment-top">“${esc(topComment || '대표 댓글이 아직 집계되지 않았습니다.')}”</p>
-          </div>
-          <div class="word-cloud">
-            ${(opinion.words || []).slice(0, 8).map(w => `<span>${esc(Array.isArray(w) ? w[0] : w)}</span>`).join('') || '<span>댓글 키워드 수집 중</span>'}
-          </div>
-        </div>
-      </section>
-
-      <!-- Media & Video Clips -->
-      ${media.length ? `
-        <section class="section" id="media">
-          <div class="section-head">
-            <div><div class="eyebrow">MEDIA & VIDEO</div><h2>영상·현장 자료</h2></div>
-            <p>이슈를 다룬 대표 이미지와 영상 링크를 한곳에 모았습니다.</p>
-          </div>
-          <div class="media-grid">
-            ${media.map(m => `<a class="media-card" href="${esc(m.url || '#')}" target="_blank" rel="noopener"><span${imgStyle(m.img)}></span><b>${esc(m.title || '관련 자료')}</b></a>`).join('')}
           </div>
         </section>
-      ` : ''}
 
-      <!-- Fused: Intelligence Lab & Daily Quiz -->
-      ${labAndQuizView(V.serendipity, V.quiz)}
+        <!-- Media & Video Clips -->
+        ${media.length ? `
+          <section class="section" id="media">
+            <div class="section-head">
+              <div><div class="eyebrow">${icon('brand-youtube')} MEDIA & VIDEO</div><h2>영상·현장 자료</h2></div>
+              <p>이슈를 다룬 대표 이미지와 영상 링크를 한곳에 모았습니다.</p>
+            </div>
+            <div class="media-grid">
+              ${media.map(m => `<a class="media-card" href="${esc(m.url || '#')}" target="_blank" rel="noopener"><span${imgStyle(m.img)}></span><b>${esc(m.title || '관련 자료')}</b></a>`).join('')}
+            </div>
+          </section>
+        ` : ''}
+      </div>
 
-      <!-- Sector Headlines -->
-      <section class="section" id="data">
-        <div class="section-head">
-          <div><div class="eyebrow">LATEST BY SECTOR</div><h2>분야별 주요 헤드라인</h2></div>
-          <p>메인 이슈와 독립적인 최신 분야 흐름입니다.</p>
+      <!-- ========================================== -->
+      <!-- ZONE B (하단): 오늘의 뉴스 종합 & 전체 아젠다 브리핑 (구분 배경색) -->
+      <!-- ========================================== -->
+      <div class="today-overview-zone">
+        <div class="zone-divider-header">
+          <div class="zone-badge">${icon('news', true)} TODAY'S OVERVIEW</div>
+          <h2>오늘의 뉴스 종합 브리핑 · 종합 아젠다</h2>
+          <p>오늘 하루 발행된 9개 주요 어젠다, 글로벌 외신 AI 해설, 화제의 인물 5인 및 일일 금융 상식입니다.</p>
         </div>
-        <div class="sector-grid">
-          ${sectors.map(([name, list]) => `<article class="sector"><h3>${esc(name)} <small>${list.length}건</small></h3><p class="sector-note">오늘 수집된 대표 흐름</p>${(list || []).slice(0, 3).map(x => `<a href="${esc(x.url || '#')}" target="_blank" rel="noopener">${esc(x.title)}<small>${esc(x.press || '')} · ${esc(day(x.time))}</small></a>`).join('')}</article>`).join('')}
-        </div>
-      </section>
 
-      <!-- KPI Numbers -->
-      <section class="section">
-        <div class="section-head">
-          <div><div class="eyebrow">TODAY IN NUMBERS</div><h2>오늘의 데이터</h2></div>
-          <p>수집 시점 ${esc(day(full.updated || full.date))}</p>
-        </div>
-        <div class="kpi-row">
+        <!-- Fused: 10-Agenda Deck (Issues 02~10 with Inline Accordion Drawer) -->
+        ${agendaDeckView(full.issues || issues)}
+
+        <!-- Fused: World Perspective Global View -->
+        ${globalView(V.globalData)}
+
+        <!-- Fused: People 5-Card Radar -->
+        ${peopleRadarView(full)}
+
+        <!-- Fused: Intelligence Lab & Daily Quiz -->
+        ${labAndQuizView(V.serendipity, V.quiz)}
+
+        <!-- Sector Headlines -->
+        <section class="section" id="data">
+          <div class="section-head">
+            <div><div class="eyebrow">${icon('chart-bar')} LATEST BY SECTOR</div><h2>분야별 주요 헤드라인</h2></div>
+            <p>메인 이슈와 독립적인 최신 분야 흐름입니다.</p>
+          </div>
+          <div class="sector-grid">
+            ${sectors.map(([name, list]) => `<article class="sector"><h3>${esc(name)} <small>${list.length}건</small></h3><p class="sector-note">오늘 수집된 대표 흐름</p>${(list || []).slice(0, 3).map(x => `<a href="${esc(x.url || '#')}" target="_blank" rel="noopener">${esc(x.title)}<small>${esc(x.press || '')} · ${esc(day(x.time))}</small></a>`).join('')}</article>`).join('')}
+          </div>
+        </section>
+
+        <!-- KPI Numbers -->
+        <section class="section" id="kpi">
+          <div class="section-head">
+            <div><div class="eyebrow">${icon('sparkles')} TODAY IN NUMBERS</div><h2>오늘의 데이터</h2></div>
+            <p>수집 시점 ${esc(day(full.updated || full.date))}</p>
+          </div>
+          <div class="kpi-row">
+            <div class="kpi"><small>오늘의 이슈</small><b>${nf(issues.length)}<em>건</em></b></div>
+            <div class="kpi"><small>수집 기사</small><b>${nf((full.stats || {}).naver || (vm.nums || {}).arts)}<em>건</em></b></div>
+            <div class="kpi"><small>언론사</small><b>${nf(i.presses || (vm.nums || {}).presses || 0)}<em>곳</em></b></div>
+            <div class="kpi"><small>누적 반응</small><b>${nf((i.opinion || {}).total || (vm.nums || {}).comments || 0)}<em>건</em></b></div>
+          </div>
+        </section>
+      </div>
           <div class="kpi"><small>오늘의 이슈</small><b>${nf(issues.length)}<em>건</em></b></div>
           <div class="kpi"><small>수집 기사</small><b>${nf((full.stats || {}).naver || (vm.nums || {}).arts)}<em>건</em></b></div>
           <div class="kpi"><small>언론사</small><b>${nf(i.presses || (vm.nums || {}).presses || 0)}<em>곳</em></b></div>

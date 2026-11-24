@@ -94,23 +94,29 @@
 
 /* Image-Centric Visual Upgrades */
 .timeline-grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 20px;
+  display: flex;
+  overflow-x: auto;
+  gap: 24px;
   position: relative;
   align-items: start;
+  padding: 6px 4px 20px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(36, 80, 224, .3) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+.timeline-grid::-webkit-scrollbar {
+  height: 6px;
+}
+.timeline-grid::-webkit-scrollbar-thumb {
+  background: rgba(36, 80, 224, .25);
+  border-radius: 999px;
 }
 .timeline-grid:before {
-  content: "";
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  top: 144px;
-  height: 2px;
-  background: #c8d1f6;
-  z-index: 1;
+  display: none !important;
 }
 .timeline-node {
+  flex: 0 0 clamp(220px, 20vw, 260px);
+  min-width: 210px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -162,11 +168,25 @@
 }
 .timeline-track-node {
   position: relative;
-  height: 20px;
+  height: 24px;
   display: flex;
   align-items: center;
-  z-index: 2;
+  justify-content: flex-start;
   margin-bottom: 10px;
+}
+.timeline-track-node:after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  right: -31px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: #c8d1f6;
+  z-index: 1;
+}
+.timeline-node:last-child .timeline-track-node:after {
+  display: none !important;
 }
 .timeline-track-node .timeline-dot,
 .timeline-node i {
@@ -180,6 +200,9 @@
   display: block;
   top: auto;
   left: auto;
+  z-index: 2;
+  margin: 0;
+  flex-shrink: 0;
 }
 .timeline-node:last-child .timeline-dot,
 .timeline-node:last-child i {
@@ -232,6 +255,116 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Person Avatar with High-Res Image & Fallback */
+.person-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  background: var(--sunken);
+  border: 2px solid var(--surface);
+  box-shadow: 0 3px 10px rgba(0,0,0,.08);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.person-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.avatar-fallback {
+  font-size: 24px;
+  font-weight: 850;
+  color: var(--accent);
+  background: var(--accent-soft);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Zone Separation */
+.lead-dossier-zone {
+  position: relative;
+}
+.today-overview-zone {
+  margin-top: 56px;
+  padding: 64px var(--gutter) 88px;
+  margin-left: calc(-1 * var(--gutter));
+  margin-right: calc(-1 * var(--gutter));
+  background: #f0f3f8;
+  border-top: 2px solid var(--accent);
+  box-shadow: inset 0 2px 14px rgba(20,24,36,.04);
+}
+.zone-divider-header {
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(36, 80, 224, .12);
+}
+.zone-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .12em;
+  color: var(--accent);
+  background: rgba(36, 80, 224, .1);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.zone-divider-header h2 {
+  font-size: clamp(24px, 3.2vw, 36px);
+  font-weight: 850;
+  line-height: 1.18;
+  letter-spacing: -0.04em;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+.zone-divider-header p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Icon Standards */
+.icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: -0.18em;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+.badge .icon {
+  width: 13px;
+  height: 13px;
+  vertical-align: -0.12em;
+  margin-right: 3px;
+}
+.eyebrow .icon {
+  width: 12px;
+  height: 12px;
+  vertical-align: -0.12em;
+  margin-right: 4px;
+}
+.site-head .tool svg.icon {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.75;
+  color: var(--ink2);
+}
+.site-head .tool:hover svg.icon {
+  color: var(--accent);
 }
 
 /* 2. Agenda Deck: Rich Media Thumbnails */
@@ -301,33 +434,18 @@
   text-transform: uppercase;
 }
 
-@media(max-width:1050px){
-  .timeline-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .timeline-grid:before {
-    display: none;
-  }
-}
 @media(max-width:700px){
   .timeline-grid {
-    display: flex;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
     gap: 16px;
     padding: 4px 4px 16px;
-    scrollbar-width: none;
-  }
-  .timeline-grid::-webkit-scrollbar {
-    display: none;
-  }
-  .timeline-grid:before {
-    display: none;
+    scroll-snap-type: x mandatory;
   }
   .timeline-node {
     flex: 0 0 220px;
+    min-width: 220px;
     scroll-snap-align: start;
-    padding: 0;
+  }
+  .timeline-track-node:after {
+    right: -23px; /* 16px gap + 7px next dot center */
   }
 }
