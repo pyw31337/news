@@ -64,6 +64,8 @@
     '젠슨 황': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Jensen_Huang_Stanford_2026-04-30_010_%28cropped%29.jpg/330px-Jensen_Huang_Stanford_2026-04-30_010_%28cropped%29.jpg',
     '윤석열': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/South_Korea_President_Yoon_Suk_Yeol_portrait_%28crop%29.jpg/330px-South_Korea_President_Yoon_Suk_Yeol_portrait_%28crop%29.jpg',
     '김건희': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Kim_Keon-hee_2023.jpg/330px-Kim_Keon-hee_2023.jpg',
+    '노무현': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Roh_Moo-hyun_presidential_portrait.jpg/330px-Roh_Moo-hyun_presidential_portrait.jpg',
+    '권양숙': 'https://upload.wikimedia.org/wikipedia/commons/5/58/Kwon_Yang-sook.jpg',
     '이재용': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Lee_Jae-yong_in_2023.jpg/330px-Lee_Jae-yong_in_2023.jpg',
     '일론 머스크': 'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg/330px-Elon_Musk_Colorado_2022_%28cropped2%29.jpg'
   };
@@ -73,6 +75,7 @@
     const name = String(p.name || '').trim();
     if (KNOWN_PORTRAITS[name]) return KNOWN_PORTRAITS[name];
     if (p.photo && typeof p.photo === 'string') return p.photo;
+    if (p.visual && typeof p.visual.url === 'string') return p.visual.url;
     const wThumb = p.wiki?.thumb;
     if (wThumb && typeof wThumb === 'string') {
       return wThumb.split('?')[0];
@@ -402,7 +405,7 @@
               <div class="person-card">
                 <div class="person-avatar">
                   ${photoUrl ? `
-                    <img class="person-avatar-img" src="${esc(photoUrl)}" alt="${esc(p.name)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'avatar-fallback\\'>${esc((p.name || '人')[0])}</span>';">
+                    <img class="person-avatar-img" src="${esc(photoUrl)}" alt="${esc(p.name)}" referrerpolicy="no-referrer" loading="eager" onerror="this.onerror=null;this.parentElement.innerHTML='<span class=\\'avatar-fallback\\'>${esc((p.name || '人')[0])}</span>';">
                   ` : `<span class="avatar-fallback">${esc((p.name || '人')[0])}</span>`}
                 </div>
                 <b><a href="${hrefEntity(p.name)}">${esc(p.name)}</a></b>
