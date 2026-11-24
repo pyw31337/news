@@ -1,73 +1,72 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-24 05:26:29",
+  "updated_at": "2026-11-24 05:44:14",
   "date": "2026-11-24",
   "total_issues": 10,
-  "average_quality": 0.88,
+  "average_quality": 0.89,
   "issues": [
     {
-      "id": "i77ab91da",
-      "title": "[포토] 젠슨 황 복귀 발표에 분주한 트레이더들",
-      "episode": "episode:b92e7d31ad2826",
+      "id": "i82552a7e",
+      "title": "젠슨황 복귀시킨 트럼프, 엔비디아 급등에 최대 221억 원 수익",
+      "episode": "episode:adf13b0e08a5f3",
       "quality": 1.0,
       "stages": [
         "일반 보도",
+        "발단·의혹",
         "사법·처분",
         "파장·후속",
         "입장·공방",
         "수사·대응"
       ],
+      "gaps": [],
+      "duplicate_candidates": 35,
+      "event_count": 22,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i1b18bbbf",
+      "title": "[속보]李대통령 \"12월3일, 국가기념일 '국민주권의 날' 지정 안건 처리 예정\"",
+      "episode": "episode:22ec04ddd49df0",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "파장·후속",
+        "입장·공방",
+        "사법·처분"
+      ],
       "gaps": [
         "발단·의혹"
       ],
       "duplicate_candidates": 39,
-      "event_count": 21,
+      "event_count": 64,
       "evidence_rate": 1.0
     },
     {
-      "id": "i118d7801",
-      "title": "불륜·간첩도 이겨낸 젠슨황, 한국에 ‘121번째 사이드카’ 선물했다",
-      "episode": "episode:155c9b257d9368",
-      "quality": 1.0,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "사법·처분",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 37,
-      "event_count": 35,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8dceb940",
-      "title": "李대통령 \"빛의 혁명 12·3 국가기념일 '국민주권의 날'로 지정\"",
-      "episode": "episode:b336139d6ad878",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "사법·처분",
-        "입장·공방",
-        "발단·의혹"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 33,
-      "event_count": 62,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i0fe3dc55",
-      "title": "신세계백화점 폭파 협박범, 중학생으로 확인…“폭발물 설치했다” 경찰에 협박 팩스 보내",
-      "episode": "episode:929c04a770f974",
+      "id": "i10a10a1c",
+      "title": "\"당일 전과목 0점…최대 퇴학\" 중고교 내신에도 칼 뽑았다",
+      "episode": "episode:25accc96863ff2",
       "quality": 0.84,
       "stages": [
         "일반 보도",
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 23,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib9ec70ec",
+      "title": "신세계백화점 폭파 협박범, 울산 사는 중학생으로 확인",
+      "episode": "episode:67428d20ad0c07",
+      "quality": 0.66,
+      "stages": [
         "사법·처분",
         "수사·대응"
       ],
@@ -77,32 +76,31 @@
         "파장·후속"
       ],
       "duplicate_candidates": 30,
-      "event_count": 5,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "i80441078",
-      "title": "중고교 내신 부정행위 처벌 강화…스마트기기 적발 시 '전 과목 0점'",
-      "episode": "episode:3d64e78b36773d",
-      "quality": 1.0,
+      "id": "i8bd7a44c",
+      "title": "\"러 군용기 카디즈 진입\"...울릉도에 한때 경계경보",
+      "episode": "episode:c1054f0412f317",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
-        "발단·의혹",
-        "파장·후속",
-        "입장·공방",
         "수사·대응"
       ],
       "gaps": [
+        "발단·의혹",
+        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 7,
+      "duplicate_candidates": 26,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
       "id": "i0aa813a1",
       "title": "삼성전자, 9년만에 최소 131명 승진…반도체서만 70명 발탁(종합2보)",
-      "episode": "episode:5578d09525587a",
+      "episode": "episode:f9df13ee8bc757",
       "quality": 0.92,
       "stages": [
         "사법·처분",
@@ -114,33 +112,15 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 8,
+      "duplicate_candidates": 26,
+      "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "i48349dd6",
-      "title": "3분만에 해제된 울릉도 경계경보…軍 \"영공침범 우려에 선제조치\"",
-      "episode": "episode:1c5a26bde41944",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ia0e4e06c",
-      "title": "\"이혼당한 이승환\" 비난 글 올린 윤서인 측 \"모욕 의도 없어\"",
-      "episode": "episode:f7eff191ace199",
-      "quality": 0.74,
+      "id": "i9fd6a06b",
+      "title": "이승환에 “이혼 당하고 정치 망상”…윤서인 측 “모욕 의도 없었다”",
+      "episode": "episode:38e7aee1a012aa",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
         "발단·의혹",
@@ -152,13 +132,13 @@
         "파장·후속"
       ],
       "duplicate_candidates": 27,
-      "event_count": 3,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
       "id": "if978949a",
       "title": "‘음주운전’ 배우 고경표, 첫 경찰 조사…“무책임한 모습, 죄송해”",
-      "episode": "episode:fc1b9a98991ac4",
+      "episode": "episode:51285de9d49317",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -174,20 +154,40 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i5b2e6eaa",
-      "title": "[현장] \"AI 에이전트 보안 위협 막아라\"…AWS, '칩 단위 격리' 해법 제시",
-      "episode": "episode:5e48bc722c25fd",
-      "quality": 0.68,
+      "id": "i1e572424",
+      "title": "\"대통령이 CEO까지 정하나\"…트럼프 나서자 뒤집힌 엔비디아 [영상]",
+      "episode": "episode:854681431e71a9",
+      "quality": 1.0,
       "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 8,
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 36,
+      "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i8e8c54ad",
+      "title": "코스피, 외국인 ‘사자’ 강세에 5000선 탈환… 코스닥도 4%대↑",
+      "episode": "episode:a720e67792851b",
+      "quality": 1.0,
+      "stages": [
+        "발단·의혹",
+        "사법·처분",
+        "수사·대응",
+        "일반 보도",
+        "파장·후속",
+        "입장·공방"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 32,
+      "event_count": 24,
       "evidence_rate": 1.0
     }
   ]
