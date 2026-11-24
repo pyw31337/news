@@ -1,14 +1,51 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-24 01:55:42",
+  "updated_at": "2026-11-24 02:21:42",
   "date": "2026-11-24",
   "total_issues": 10,
-  "average_quality": 0.88,
+  "average_quality": 0.84,
   "issues": [
     {
-      "id": "ibaa34e09",
-      "title": "젠슨 황, 가죽 재킷 벗고 출근 “더 나은 CEO 될 것”…직원들 박수 환호",
-      "episode": "episode:9b7ee80f3ea0e0",
+      "id": "id5d23795",
+      "title": "가죽자켓 벗고 복귀한 젠슨황 \"두번째엔 더나은 CEO 될것\"(종합)",
+      "episode": "episode:d46c1529abd222",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia72fe8c3",
+      "title": "러시아 군용기 수 대 동해 KADIZ 진입…울릉도 경계경보 3분 만에 해제",
+      "episode": "episode:57f887cd18669a",
+      "quality": 0.66,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i4ea41456",
+      "title": "\"다 잃었다\"…엔비디아 31% 폭등에 공매도 15조원 날려",
+      "episode": "episode:f12e8df2975f30",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -20,32 +57,32 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 36,
-      "event_count": 20,
+      "duplicate_candidates": 38,
+      "event_count": 21,
       "evidence_rate": 1.0
     },
     {
-      "id": "iea28ad84",
-      "title": "\"러시아 군용기 동해 카디즈 진입해 울릉도 근접‥영공 침범 없어\"",
-      "episode": "episode:f5388c38ef6cf3",
-      "quality": 0.56,
+      "id": "i8dceb940",
+      "title": "[속보]李대통령 \"빛의 혁명 12·3 국가기념일 '국민주권의 날'로 지정\"",
+      "episode": "episode:d4b614403b472b",
+      "quality": 1.0,
       "stages": [
+        "일반 보도",
         "수사·대응",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
+        "파장·후속",
+        "사법·처분",
         "입장·공방",
-        "사법·처분"
+        "발단·의혹"
       ],
+      "gaps": [],
       "duplicate_candidates": 28,
-      "event_count": 2,
+      "event_count": 58,
       "evidence_rate": 1.0
     },
     {
-      "id": "i40c0d90a",
-      "title": "[속보] 북한 항공기 추정 비행체 영공 침범에 울릉 지역 경계경보…5분 뒤 해제",
-      "episode": "episode:231e4ad7b50599",
+      "id": "ia1787b13",
+      "title": "[속보] 북한 항공기 추정 비행체 영공 침범…울릉군 지역에 위급 문자",
+      "episode": "episode:2ec76a997e663b",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -57,91 +94,15 @@
         "사법·처분",
         "파장·후속"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 10,
+      "duplicate_candidates": 26,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "ie23ebc8b",
-      "title": "트럼프, 젠슨 황 엔비디아 복귀에 “내가 이사회 설득”…美 정가 논란 확산 [美슐랭]",
-      "episode": "episode:1bc394be2cdc5f",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 40,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "icc79a117",
-      "title": "[속보] 젠슨 황 복귀에 코스피 이어 코스닥도 매수 사이드카 발동",
-      "episode": "episode:281dae61cb63f4",
-      "quality": 1.0,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "수사·대응",
-        "사법·처분",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 37,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i56c40162",
-      "title": "“한동훈 제명, 尹 사형 구형일 맞춘 기획”…국힘 전·현 윤리위원 폭로",
-      "episode": "episode:14766d2a3fd48c",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "입장·공방",
-        "발단·의혹",
-        "사법·처분"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 15,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i90a8220e",
-      "title": "'음주운전' 고경표, 1시간 40분 경찰 조사…\"무책임한 모습 죄송\"",
-      "episode": "episode:0de404954af402",
-      "quality": 0.92,
-      "stages": [
-        "사법·처분",
-        "수사·대응",
-        "입장·공방",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 14,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic9765517",
-      "title": "'9440억 분할' 수용한 최태원…상고취하 아닌 '화해권고' 신청 배경은",
-      "episode": "episode:2b48052e87ab8f",
-      "quality": 0.68,
+      "id": "i4b71d224",
+      "title": "변호사 부친도 못 말렸다…난리 난 ‘광명 붕은우’ 붕어빵 파는 사연",
+      "episode": "episode:57426d7e599709",
+      "quality": 0.58,
       "stages": [
         "일반 보도"
       ],
@@ -151,45 +112,79 @@
         "수사·대응"
       ],
       "duplicate_candidates": 26,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if978949a",
+      "title": "‘음주운전’ 배우 고경표, 첫 경찰 조사…“무책임한 모습, 죄송해”",
+      "episode": "episode:cf4a01425f6b47",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "수사·대응",
+        "입장·공방",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i84a04306",
+      "title": "'피 흘리며 속옷 치켜든 젠슨황'…트럼프, 복귀 축하 밈 게시",
+      "episode": "episode:6fbe92b4cb7a04",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic9765517",
+      "title": "'9440억 분할' 수용한 최태원…상고취하 아닌 '화해권고' 신청 배경은",
+      "episode": "episode:1f1c12b3f50faf",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 25,
       "event_count": 4,
       "evidence_rate": 1.0
     },
     {
-      "id": "ie29b94fb",
-      "title": "‘185만닉스’ 경고했던 애널리스트…이번엔 목표가 ‘105만원’ 제시",
-      "episode": "episode:d3aeadb6a0c825",
-      "quality": 0.92,
+      "id": "if90a98b6",
+      "title": "삼성전자, 2027년 임원인사…HBM4 주역 승진·AI·로봇 인재 발탁",
+      "episode": "episode:ed1582a3bf3709",
+      "quality": 0.68,
       "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "사법·처분"
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i337fcdc9",
-      "title": "부산서 80대 운전자 승용차 전신주 충격…동승자 사망",
-      "episode": "episode:06404c922765fd",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "사법·처분",
+        "입장·공방",
         "수사·대응"
       ],
-      "gaps": [
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 22,
-      "event_count": 24,
+      "duplicate_candidates": 21,
+      "event_count": 5,
       "evidence_rate": 1.0
     }
   ]
