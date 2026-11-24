@@ -1,112 +1,73 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-24 03:55:23",
+  "updated_at": "2026-11-24 04:23:35",
   "date": "2026-11-24",
   "total_issues": 10,
-  "average_quality": 0.81,
+  "average_quality": 0.84,
   "issues": [
     {
-      "id": "i0ef2dc49",
-      "title": "불법 계엄 선포된 12월 3일, '국민주권의 날'로… 이 대통령 \"오늘 안건 처리\"",
-      "episode": "episode:c9aa20793d008a",
-      "quality": 0.84,
+      "id": "id9f979fa",
+      "title": "젠슨 황 돌아오자 코스피도 살아났다…장중 5000선 탈환",
+      "episode": "episode:1a3d05f5258b78",
+      "quality": 1.0,
       "stages": [
+        "발단·의혹",
+        "파장·후속",
+        "사법·처분",
         "일반 보도",
         "수사·대응",
-        "파장·후속"
+        "입장·공방"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 25,
+      "event_count": 35,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i7de551aa",
+      "title": "이 대통령 “12·3 ‘국민주권의 날’ 지정…빛의 혁명은 국민의 승리”",
+      "episode": "episode:eae11ee4c2962c",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "파장·후속",
+        "일반 보도",
+        "입장·공방"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 27,
+      "duplicate_candidates": 25,
+      "event_count": 28,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i2bdd77f0",
+      "title": "취임 100일 김민석 “만만찮던 기간…당내 더 안정돼야”",
+      "episode": "episode:729779ea81d736",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "입장·공방",
+        "파장·후속",
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 11,
       "evidence_rate": 1.0
     },
     {
       "id": "i0a47a4a4",
       "title": "러시아 군용기 울릉도 근접에 경계경보…'北항공기' 안내 소동",
-      "episode": "episode:57b986ee271b44",
-      "quality": 0.56,
+      "episode": "episode:44a62ecba602d3",
+      "quality": 0.48,
       "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 2,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i44b22970",
-      "title": "젠슨 황의 드라마 같은 복귀, 어떻게 이뤄졌나?",
-      "episode": "episode:faf67c16330fdd",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 47,
-      "event_count": 18,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i004aec5d",
-      "title": "돌아온 젠슨 황…서명한 박현주, 침묵한 ‘깐부’들",
-      "episode": "episode:3bc05da1310313",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "파장·후속",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 15,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7d687fc1",
-      "title": "안철수 “중국 간첩이 국정원 접수했다고 보지 않겠나”…강금실 지명 맹공",
-      "episode": "episode:7ce5aae5791cf8",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 15,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i57d353bc",
-      "title": "삼성전자, 임원 131명 승진 인사…HBM·로봇 핵심 인재 중용",
-      "episode": "episode:e42fb71237d560",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
@@ -114,14 +75,33 @@
         "수사·대응"
       ],
       "duplicate_candidates": 27,
-      "event_count": 7,
+      "event_count": 2,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iee765aa7",
+      "title": "엔비디아 복귀한 젠슨 황 \"오늘이 제 첫 출근일\"…직원들 박수치며 환호",
+      "episode": "episode:74b6e09de2bc4f",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 35,
+      "event_count": 19,
       "evidence_rate": 1.0
     },
     {
       "id": "idf9164cd",
       "title": "중고교 내신시험에서 스마트기기 적발땐 당일 전과목 0점…최대 퇴학",
-      "episode": "episode:c6e0612750fc6b",
-      "quality": 0.66,
+      "episode": "episode:8a29522ba3ef6a",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
         "수사·대응"
@@ -131,14 +111,51 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 22,
-      "event_count": 3,
+      "duplicate_candidates": 23,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "i425bffea",
-      "title": "붕어빵 파는 ‘광명 붕은우’는 명문대생?…“변호사 부친 반대에도 붕어빵 굽는 이유는”",
-      "episode": "episode:e2f7e764a76823",
+      "id": "i84a04306",
+      "title": "'피 흘리며 속옷 치켜든 젠슨황'…트럼프, 복귀 축하 밈 게시",
+      "episode": "episode:f0e799681e1800",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 13,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9a8d7635",
+      "title": "“하…” 음주운전 고경표, 다친 미화원께 연락드렸냐 물었더니",
+      "episode": "episode:b6ba98c6337655",
+      "quality": 0.76,
+      "stages": [
+        "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i4b71d224",
+      "title": "변호사 부친도 못 말렸다…난리 난 ‘광명 붕은우’ 붕어빵 파는 사연",
+      "episode": "episode:af1243623e9f84",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -146,29 +163,28 @@
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
-      "duplicate_candidates": 38,
-      "event_count": 12,
+      "duplicate_candidates": 22,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i8b097184",
-      "title": "젠슨 황이 구한 엔비디아 주가…하지만 WSJ “글쎄”",
-      "episode": "episode:53c51231232768",
-      "quality": 1.0,
+      "id": "i3ad84a9a",
+      "title": "채팅 앱서 만난 초등생 술 먹여 성폭행… 강남 유명 학원장 구속",
+      "episode": "episode:ee58fa2b815fc5",
+      "quality": 0.76,
       "stages": [
-        "일반 보도",
+        "사법·처분",
+        "일반 보도"
+      ],
+      "gaps": [
         "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "gaps": [
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 17,
+      "duplicate_candidates": 28,
+      "event_count": 4,
       "evidence_rate": 1.0
     }
   ]

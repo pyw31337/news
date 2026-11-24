@@ -1,24 +1,24 @@
 {
-  "run_id": "45321319090",
-  "observed_at": "2026-11-24T03:55:54+00:00",
-  "observed_at_kst": "2026-11-24T12:55:54+09:00",
+  "run_id": "45324717942",
+  "observed_at": "2026-11-24T04:24:07+00:00",
+  "observed_at_kst": "2026-11-24T13:24:07+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
-  "commit": "2285dd816511c8631dca55031f37d903e9025339",
+  "commit": "a0c0d4acf5889bf228e568b110110f30fdbae79a",
   "host": "github-actions",
   "stages": {
     "collect": {
       "status": "degraded",
-      "ok": 269,
-      "fail": 29,
-      "errors": 29,
+      "ok": 298,
+      "fail": 28,
+      "errors": 28,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 507,
-      "fail": 35,
-      "errors": 35,
+      "ok": 490,
+      "fail": 37,
+      "errors": 37,
       "artifact": true
     },
     "quality": {
@@ -26,182 +26,229 @@
       "quality_issue_count": 10,
       "event_quality_present": true,
       "detail": {
-        "low_score": 4,
-        "low_photo": 1,
-        "low_source": 1,
-        "missing_event_stages": 10
+        "low_score": 6,
+        "low_photo": 0,
+        "low_source": 2,
+        "missing_event_stages": 9
       }
     },
     "publish": {
-      "status": "success",
-      "published_at": "2026-11-24T03:56:53+00:00",
-      "data_commit": "da2e2bc6c4e23a27328af947db79741b41f8b2b1",
-      "note": "data 브랜치 커밋 이후 게시 확인"
+      "status": "pending",
+      "note": "기록 시점에는 data 브랜치 커밋 전"
     }
   },
   "counts": {
     "issues": 10,
-    "sources": 202,
+    "sources": 179,
     "entities": 36,
     "global_issues": 12,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "9dd23f83151edd47b5a69eb84f59c5d7e135ae13540efd5a109dc472edefdaab",
-    "global": "15eb9d17b104e5954b0b02a125997f5ae7d89dd098891497579f8266701a30d9",
-    "quality": "2ba12c319d74ade8bdd2e6aa446efd4b222e65396a7f651b3b8b12c1e9a7e2a0",
-    "status": "23782506b8f5f5750f829a99d7ba3e2dc5a54159d23e34d1882d3c086d87fcf9",
-    "event_quality": "034711781041e8ba9e87b8d4c09b95d7a270ab0c071bbcd8a286ecb7c9532a11"
+    "today": "6dec6e072ad6f561acad84fbbdbe03ee01fdce2d2482634403c23b1d90ad0e62",
+    "global": "58251b7e9a636e5a931d21b11ab8761b98ce78ccfa385207120f512570d31069",
+    "quality": "2b78d14c1a8d14f3a20b8d9bc75d8cac3002b3325bf42b33e067011155d5e8f5",
+    "status": "28eaf9ebba2edb3e37357bb6087ba6c857f21891864674845af3700602215404",
+    "event_quality": "206c6e7692c375b001442cd636c04fee96a1b64f0bc96211b87ecb4a5b2a01a3"
   },
   "diagnostics": {
     "collect": {
       "by_kind": {
-        "network": 1,
-        "timeout": 19,
-        "not_found": 9
+        "timeout": 20,
+        "not_found": 8
       },
       "by_host": {
-        "rss.donga.com": 1,
-        "n.news.naver.com": 17,
-        "m.news.naver.com": 2,
-        "ko.wikipedia.org": 9
+        "n.news.naver.com": 16,
+        "m.news.naver.com": 4,
+        "ko.wikipedia.org": 8
       },
       "surface": {
-        "core": 10,
-        "auxiliary": 19
+        "core": 8,
+        "auxiliary": 20
       },
       "examples": [
         {
-          "t": "12:45:17",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9E%90%EB%A7%89%EB%89%B4%EC%8A%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "12:45:17",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%E8%88%87%EC%A0%95%EC%84%B1%ED%98%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "12:45:17",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A4%91%EA%B5%AD%EA%B0%84%EC%B2%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "12:45:17",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%82%BC%EC%84%B1%EA%B0%80",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "12:45:17",
+          "t": "13:15:18",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EC%9E%90%EC%97%B0%EA%B3%BC%ED%95%",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "12:45:18",
+          "t": "13:15:18",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%E8%88%87%EC%A0%95%EC%84%B1%ED%98%",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "13:15:18",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%9E%90%EB%A7%89%EB%89%B4%EC%8A%",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "13:15:18",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%A1%B0%EC%9E%91%EC%A7%95%EA%B3%",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "13:15:18",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EB%B6%95%EC%9D%80%EC%9A%B0",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "12:45:18",
+          "t": "13:15:18",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A4%91%ED%8F%AD",
+          "path": "/api/rest_v1/page/summary/%EA%B5%AD%EA%B0%80%EA%B3%BC%ED%95%",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "12:45:19",
+          "t": "13:15:18",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EA%B5%AD%EA%B0%80%EA%B3%BC%ED%95%",
+          "path": "/api/rest_v1/page/summary/%EC%82%BC%EC%84%B1%EA%B0%80",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "13:15:19",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%97%94%EB%B9%84%EB%94%94%EC%95%",
           "err": "HTTP Error 404: Not Found"
         }
       ]
     },
     "analyze": {
       "by_kind": {
-        "timeout": 17,
-        "rate_limit": 4,
-        "not_found": 14
+        "timeout": 16,
+        "not_found": 15,
+        "rate_limit": 6
       },
       "by_host": {
-        "n.news.naver.com": 18,
-        "ko.wikipedia.org": 17
+        "n.news.naver.com": 16,
+        "ko.wikipedia.org": 21
       },
       "surface": {
-        "core": 35,
+        "core": 37,
         "auxiliary": 0
       },
       "examples": [
         {
-          "t": "12:48:35",
+          "t": "13:19:03",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EA%B5%AD%EA%B0%80%EA%B8%B0%EB%85%",
+          "path": "/api/rest_v1/page/summary/%EC%B4%88%EB%93%B1",
+          "err": "HTTP Error 429: Too Many Requests"
+        },
+        {
+          "t": "13:19:03",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EA%B8%89%EB%93%B1",
+          "err": "HTTP Error 429: Too Many Requests"
+        },
+        {
+          "t": "13:19:04",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EB%82%B4%EC%8B%A0",
+          "err": "HTTP Error 429: Too Many Requests"
+        },
+        {
+          "t": "13:19:04",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EB%AA%A8%EC%8A%B5",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "12:48:53",
+          "t": "13:19:04",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%98%AC%ED%95%B4",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "13:19:04",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EB%AA%85%EB%AC%B8%EB%8C%80",
-          "err": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "t": "12:48:53",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%95%88%EB%82%B4",
-          "err": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "t": "12:48:53",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%B0%9C%ED%83%81",
-          "err": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "t": "12:49:02",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%93%B1%EC%9E%A5",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "12:49:02",
+          "t": "13:19:04",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A0%91%EC%88%98",
+          "path": "/api/rest_v1/page/summary/%EB%B0%9C%EB%8F%99",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "12:49:02",
+          "t": "13:19:05",
           "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A7%84%EC%9E%85",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "12:49:02",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%B6%9C%EA%B7%BC%EA%B8%B8",
+          "path": "/api/rest_v1/page/summary/%EC%B6%95%ED%95%98",
           "err": "HTTP Error 404: Not Found"
         }
       ]
     },
     "global": {
       "by_kind": {
-        "other": 1
+        "timeout": 2,
+        "other": 8
       },
       "by_host": {
-        "www.theaustralian.com.au": 1
+        "www.washingtonpost.com": 2,
+        "www.theaustralian.com.au": 1,
+        "people.com": 1,
+        "www.moneyweb.co.za": 1,
+        "www.news.com.au": 1,
+        "www.marketscreener.com": 1,
+        "www.undp.org": 1,
+        "www.king5.com": 1,
+        "www.ft.com": 1
       },
       "surface": {
-        "core": 1,
+        "core": 10,
         "auxiliary": 0
       },
       "examples": [
         {
-          "t": "12:49:15",
+          "t": "13:20:01",
           "host": "www.theaustralian.com.au",
-          "path": "/business/markets/nvidia-ceo-jensen-huang-returns-after-trum",
+          "path": "/business/aviation/major-airlines-launch-massive-black-frida",
+          "err": "HTTP Error 403: Forbidden"
+        },
+        {
+          "t": "13:20:01",
+          "host": "people.com",
+          "path": "/jessica-alba-ordered-to-pay-ex-husband-cash-warren-577k-in-",
+          "err": "HTTP Error 403: Forbidden"
+        },
+        {
+          "t": "13:20:01",
+          "host": "www.moneyweb.co.za",
+          "path": "/news/companies-and-deals/more-spar-directors-quit-leaving-t",
+          "err": "HTTP Error 403: Forbidden"
+        },
+        {
+          "t": "13:20:01",
+          "host": "www.news.com.au",
+          "path": "/finance/economy/australian-economy/car-dealership-giant-axe",
+          "err": "HTTP Error 403: Forbidden"
+        },
+        {
+          "t": "13:20:01",
+          "host": "www.marketscreener.com",
+          "path": "/news/rba-now-expected-to-start-easing-policy-in-june-2027-a",
+          "err": "HTTP Error 403: Forbidden"
+        },
+        {
+          "t": "13:20:03",
+          "host": "www.undp.org",
+          "path": "/jamaica/press-releases/undp-and-buei-sign-mou-strengthen-yo",
+          "err": "HTTP Error 403: Forbidden"
+        },
+        {
+          "t": "13:20:03",
+          "host": "www.king5.com",
+          "path": "/video/entertainment/television/programs/evening/seattle-kra",
+          "err": "HTTP Error 403: Forbidden"
+        },
+        {
+          "t": "13:20:03",
+          "host": "www.ft.com",
+          "path": "/content/2c1fcdc0-eb16-4cee-9041-736527c2ae83",
           "err": "HTTP Error 403: Forbidden"
         }
       ]
@@ -237,8 +284,7 @@
     }
   },
   "status_snapshot": {
-    "updated": "2026-11-24T12:55:24.447687+09:00",
+    "updated": "2026-11-24T13:23:36.140877+09:00",
     "error_count": 60
-  },
-  "publish_verified_at": "2026-11-24T03:56:53+00:00"
+  }
 }
