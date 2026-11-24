@@ -325,13 +325,24 @@ jobs:
             git push -q -f origin HEAD:media
           fi
       - name: 데이터 브랜치 용량 관리(.git 400MB 넘으면 최신 상태 1개 커밋으로 압축)
+        continue-on-error: true
         working-directory: data
         run: |
           git fetch -q --unshallow 2>/dev/null || true
           SZ=$(git count-objects -vH | awk '/size-pack/{print $2$3}'); echo "pack: $SZ"
           KB=$(git count-objects -v | awk '/size-pack/{print $2}')
           if [ "$KB" -gt 409600 ]; then
-            git checkout -q --orphan squash && git add -A && git commit -qm "data: squashed $(TZ=Asia/Seoul date '+%Y-%m-%d') KST" && git push -q -f origin squash:data
+            for attempt in 1 2 3; do
+              git fetch -q origin data || true
+              git checkout -q -B squash origin/data && git add -A
+              git commit -qm "data: squashed $(TZ=Asia/Seoul date '+%Y-%m-%d') KST" || true
+              if git push -q -f origin squash:data; then
+                echo "squash push succeeded on attempt $attempt"
+                break
+              fi
+              echo "squash push failed on attempt $attempt, retrying..."
+              sleep 5
+            done
           fi
       - name: 사이트 묶기
         env:

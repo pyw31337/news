@@ -58,7 +58,10 @@ sync_data(){
   git -C data diff --cached --quiet || git -C data -c user.name="newsboard-$(hostname -s)" -c user.email=local@users.noreply.github.com commit -qm "local data: $(date '+%Y-%m-%d %H:%M') KST"
   bounded_fetch origin data data || { echo "원격 확인 실패: 로컬 큐에 보존"; queue_status; return 1; }
   if ! git -C data merge-base --is-ancestor origin/data HEAD; then
-    git -C data rebase -X theirs origin/data || { git -C data rebase --abort 2>/dev/null || true; echo "원격 충돌: 로컬 큐 유지"; queue_status; return 1; }
+    # 원격이 squash 등으로 히스토리가 재작성되었을 때 수백 개 구버전 커밋 rebase 루프 방지:
+    # origin/data 기준으로 soft reset 후 로컬 변경분만 단일 커밋으로 깔끔하게 통합
+    git -C data reset --soft origin/data
+    git -C data commit -qm "local data: $(date '+%Y-%m-%d %H:%M') KST" 2>/dev/null || true
   fi
   for delay in 0 5 15; do
     [ "$delay" -eq 0 ] || sleep "$delay"
