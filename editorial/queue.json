@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-24",
-  "generated_at": "2026-11-24T23:03:39+09:00",
+  "generated_at": "2026-11-24T23:32:21+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,111 +27,8 @@
   },
   "candidates": [
     {
-      "issue_id": "ibb661c23",
-      "title": "젠슨 황, 추가 혼외관계 고백…불륜 2건이 끝 아니었다",
-      "category": "경제",
-      "rank": 1,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "젠슨 황 엔비디아 CEO가 사임 11일 만에 복귀하기 전 회사 이사회에 기존에 알려지지 않았던 추가 불륜 사실을 털어놓았습니다.",
-        "[속보]‘돌아오려 솔직하게…’ 젠슨황, 이사회에 추가 불륜 2명 고백",
-        "젠슨 황, 복귀 전 이사회에 추가 불륜 고백…\"끔찍한 실수\"",
-        "\"젠슨 황, 엔비디아 이사회에 추가 불륜 사실 털어놔\"",
-        "젠슨 황, 추가 혼외관계 고백…불륜 2건이 끝 아니었다"
-      ],
-      "sources": [
-        {
-          "press": "문화일보",
-          "title": "[속보]‘돌아오려 솔직하게…’ 젠슨황, 이사회에 추가 불륜 2명 고백",
-          "url": "https://n.news.naver.com/article/021/0002835209"
-        },
-        {
-          "press": "뉴시스",
-          "title": "젠슨 황, 복귀 전 이사회에 추가 불륜 고백…\"끔찍한 실수\"",
-          "url": "https://n.news.naver.com/article/003/0014342929"
-        },
-        {
-          "press": "이데일리",
-          "title": "\"젠슨 황, 엔비디아 이사회에 추가 불륜 사실 털어놔\"",
-          "url": "https://n.news.naver.com/article/018/0006414973"
-        },
-        {
-          "press": "국민일보",
-          "title": "젠슨 황, 추가 혼외관계 고백…불륜 2건이 끝 아니었다",
-          "url": "https://n.news.naver.com/article/005/0001887160"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "젠슨 황 엔비디아 CEO가 사임 11일 만에 복귀하기 전 회사 이사회에 기존에 알려지지 않았던 추가 불륜 사실을 털어놓았습니다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "[속보]‘돌아오려 솔직하게…’ 젠슨황, 이사회에 추가 불륜 2명 고백"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "젠슨 황, 추가 혼외관계 고백…불륜 2건이 끝 아니었다"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "발단·의혹"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i55ce84bc",
-      "title": "‘증안펀드 카드’도 못 살린 코스피… ‘황타랠리’에 5000선 회복",
+      "issue_id": "id9f979fa",
+      "title": "젠슨 황 돌아오자 코스피도 살아났다…장중 5000선 탈환",
       "category": "경제",
       "rank": 6,
       "priority_score": 37,
@@ -142,31 +39,31 @@
       "status": "ready_for_editorial_review",
       "facts": [
         "코스피가 미국 인공지능(AI) 관련주 급등에 힘입어 장중 5000선을 회복했다.",
-        "‘증안펀드 카드’도 못 살린 코스피… ‘황타랠리’에 5000선 회복",
-        "국내 증시에서 외국인 투자자의 매도세가 이어지는 가운데 다음 달 중순이 외국인 수급 회복의 분수령이...",
-        "이날 코스피는 젠슨 황 엔비디아 최고경영자(CEO)의 복귀 소식에 5%대 상승 출발했다.",
-        "다만 증권가는 코스피의..."
+        "\"차안에서 펑펑 울었다\"…젠슨 황 복귀에도 회복 못한 '최고층 개미'",
+        "투자심리가 회복된 영향으로 풀이된다.",
+        "24일 한국거래소에 따르면 삼성전자는 전 거래일보다",
+        "1만1900원(6...."
       ],
       "sources": [
         {
-          "press": "서울신문",
-          "title": "‘증안펀드 카드’도 못 살린 코스피… ‘황타랠리’에 5000선 회복",
-          "url": "https://n.news.naver.com/article/081/0003702788"
+          "press": "뉴스1",
+          "title": "\"차안에서 펑펑 울었다\"…젠슨 황 복귀에도 회복 못한 '최고층 개미'",
+          "url": "https://n.news.naver.com/article/421/0009306537"
         },
         {
-          "press": "biz.heraldcorp.com",
-          "title": "‘드디어, 마침내!’ 외국인 투자 돌아오나…‘이때’가 진짜 분수령[투...",
-          "url": "https://n.news.naver.com/mnews/article/016/0002727960?sid=101"
+          "press": "inews24.com",
+          "title": "젠슨 황 돌아오자 삼성전자·SK하이닉스 시총 123조원 껑충",
+          "url": "https://n.news.naver.com/mnews/article/031/0001078109?sid=105"
         },
         {
-          "press": "kyeonggi.com",
-          "title": "‘명픽’ 이광수의 ‘코스피 5000 붕괴 눈물’...그 영상 공유한 조국",
-          "url": "https://n.news.naver.com/mnews/article/666/0000133658?sid=101"
+          "press": "biz.sbs.co.kr",
+          "title": "삼전닉스 6%대 '불기둥'…사흘 만에 5천피 탈환",
+          "url": "https://n.news.naver.com/mnews/article/374/0000545658?sid=101"
         },
         {
-          "press": "edaily.co.kr",
-          "title": "\"5000피 탈환 코스피, 바닥 다졌나?\"…전문가 판단은",
-          "url": "https://n.news.naver.com/mnews/article/018/0006415016?sid=101"
+          "press": "yonhapnewstv.co.kr",
+          "title": "[이시각헤드라인] 11월 24일 뉴스리뷰",
+          "url": "https://n.news.naver.com/mnews/article/422/0000929561?sid=102"
         }
       ],
       "story_beats": [
@@ -178,12 +75,12 @@
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "국내 증시에서 외국인 투자자의 매도세가 이어지는 가운데 다음 달 중순이 외국인 수급 회복의 분수령이..."
+          "evidence": "투자심리가 회복된 영향으로 풀이된다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "‘증안펀드 카드’도 못 살린 코스피… ‘황타랠리’에 5000선 회복"
+          "evidence": "24일 한국거래소에 따르면 삼성전자는 전 거래일보다"
         },
         {
           "panel": 4,
@@ -192,8 +89,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -231,10 +128,10 @@
       }
     },
     {
-      "issue_id": "iee5f9701",
-      "title": "[속보] 엔비디아 이사회, 젠슨 황 CEO 복귀 결정",
-      "category": "세계",
-      "rank": 8,
+      "issue_id": "i5b80c1a2",
+      "title": "지난해 수능 시험지 최소 17만부 이미 폐기됐다",
+      "category": "경제",
+      "rank": 7,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -242,49 +139,153 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "아내가 있는데도 중국 스파이로 의심받는 여성, 사내 부하 직원 등 여러 명과 불륜을 저지른 젠슨 황 엔비디아 최고경영자(CEO)가 11일 만에 복귀하자 직원들이 환호로 맞이해 그 배경에 이목이 쏠린다.",
-        "“바람 피웠어도 젠슨 황, 웰컴백”…엔비디아 직원들 열광한 진짜 이유 따로 있었다?",
-        "젠슨 황 따라 사표 던진 엔비디아 직원…“내가 성급했다, 나도 다시 돌아가고 싶다”",
-        "이날 코스피는 젠슨 황 엔비디아 최고경영자(CEO)의 복귀 소식에 5%대 상승 출발했다.",
-        "다만 증권가는 코스피의 추세적인 반등에 대해 신중한 입장이다."
+        "전국 16개 시도교육청 가운데 세종시교육청을 제외한 대부분 지역에서 지난해 치러진 대학수학능력시험(수능) 시험지 십수만부가 폐기된 것으로 나타났다.",
+        "[단독] 폐기된 수능 시험지 14만여 부…인천 등 2만천여 부 추가 확인",
+        "각 학교에서 보관해 온 지난해 수능 시험지 상당수가 이미 파기됐기 때문입니다.",
+        "강원 10만 8천여 부, 경기 2만...",
+        "지난해 수능일인 11월 13일 이후 1년 간은 의무 보존해야 하는데, 그 전에 폐기한 학교도 있습니다."
       ],
       "sources": [
         {
-          "press": "전자신문",
-          "title": "“바람 피웠어도 젠슨 황, 웰컴백”…엔비디아 직원들 열광한 진짜 이유 따로 있었다?",
-          "url": "https://n.news.naver.com/article/030/0003489262"
+          "press": "KBS",
+          "title": "[단독] 폐기된 수능 시험지 14만여 부…인천 등 2만천여 부 추가 확인",
+          "url": "https://n.news.naver.com/article/056/0012300140"
         },
         {
-          "press": "전자신문",
-          "title": "젠슨 황 따라 사표 던진 엔비디아 직원…“내가 성급했다, 나도 다시 돌아가고 싶다”",
-          "url": "https://n.news.naver.com/article/030/0003489305"
+          "press": "kbs.co.kr",
+          "title": "‘부정행위’ 여진 계속…교사노조 “수능 개편해야”",
+          "url": "https://n.news.naver.com/mnews/article/056/0012300320?sid=102"
         },
         {
-          "press": "biz.heraldcorp.com",
-          "title": "‘드디어, 마침내!’ 외국인 투자 돌아오나…‘이때’가 진짜 분수령[투...",
-          "url": "https://n.news.naver.com/mnews/article/016/0002727960?sid=101"
+          "press": "news1.kr",
+          "title": "작년 수능 시험지 '증발'…정성국 \"10만부 이상 폐기 규정 위반\"",
+          "url": "https://n.news.naver.com/mnews/article/421/0009308094?sid=100"
         },
         {
-          "press": "헤럴드경제",
-          "title": "젠슨황 해고에 사표 던졌던 엔비디아 직원 “너무 성급했던 것 같다”",
-          "url": "https://n.news.naver.com/article/016/0002727735"
+          "press": "kyeonggi.com",
+          "title": "“1년 보관한다더니”…작년 수능 시험지 17만여부, 이미 파쇄",
+          "url": "https://n.news.naver.com/mnews/article/666/0000133662?sid=102"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "아내가 있는데도 중국 스파이로 의심받는 여성, 사내 부하 직원 등 여러 명과 불륜을 저지른 젠슨 황 엔비디아 최고경영자(CEO)가 11일 만에 복귀하자 직원들이 환호로 맞이해 그 배경에 이목이 쏠린다."
+          "evidence": "전국 16개 시도교육청 가운데 세종시교육청을 제외한 대부분 지역에서 지난해 치러진 대학수학능력시험(수능) 시험지 십수만부가 폐기된 것으로 나타났다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "이날 코스피는 젠슨 황 엔비디아 최고경영자(CEO)의 복귀 소식에 5%대 상승 출발했다."
+          "evidence": "각 학교에서 보관해 온 지난해 수능 시험지 상당수가 이미 파기됐기 때문입니다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "11일 만에 돌아온 젠슨 황…엔비디아는 왜 '안보 리스크'를 감수했나"
+          "evidence": "[단독] 폐기된 수능 시험지 14만여 부…인천 등 2만천여 부 추가 확인"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "발단·의혹",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ibb661c23",
+      "title": "젠슨 황, 추가 혼외관계 고백…불륜 2건이 끝 아니었다",
+      "category": "세계",
+      "rank": 1,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "젠슨 황 엔비디아 CEO가 사임 11일 만에 복귀를 결정하기 전 이사회에 추가 불륜 관계가 있었다고 인정했습니다.",
+        "[속보]‘돌아오려 솔직하게…’ 젠슨황, 이사회에 추가 불륜 2명 고백",
+        "\"젠슨 황, 엔비디아 이사회에 추가 불륜 사실 털어놔\"",
+        "젠슨 황, 복귀 전 이사회에 추가 불륜 고백…\"끔찍한 실수\"",
+        "젠슨 황 \"추가 불륜 있다\"…엔비디아 복귀 직전 이사회에 고백"
+      ],
+      "sources": [
+        {
+          "press": "문화일보",
+          "title": "[속보]‘돌아오려 솔직하게…’ 젠슨황, 이사회에 추가 불륜 2명 고백",
+          "url": "https://n.news.naver.com/article/021/0002835209"
+        },
+        {
+          "press": "이데일리",
+          "title": "\"젠슨 황, 엔비디아 이사회에 추가 불륜 사실 털어놔\"",
+          "url": "https://n.news.naver.com/article/018/0006414973"
+        },
+        {
+          "press": "뉴시스",
+          "title": "젠슨 황, 복귀 전 이사회에 추가 불륜 고백…\"끔찍한 실수\"",
+          "url": "https://n.news.naver.com/article/003/0014342929"
+        },
+        {
+          "press": "뉴스1",
+          "title": "젠슨 황 \"추가 불륜 있다\"…엔비디아 복귀 직전 이사회에 고백",
+          "url": "https://n.news.naver.com/article/421/0009307700"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "젠슨 황 엔비디아 CEO가 사임 11일 만에 복귀를 결정하기 전 이사회에 추가 불륜 관계가 있었다고 인정했습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "[속보]‘돌아오려 솔직하게…’ 젠슨황, 이사회에 추가 불륜 2명 고백"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "젠슨 황, 추가 혼외관계 고백…불륜 2건이 끝 아니었다"
         },
         {
           "panel": 4,

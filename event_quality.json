@@ -1,14 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-24 14:03:37",
+  "updated_at": "2026-11-24 14:32:20",
   "date": "2026-11-24",
   "total_issues": 10,
-  "average_quality": 0.82,
+  "average_quality": 0.86,
   "issues": [
     {
       "id": "ibb661c23",
       "title": "젠슨 황, 추가 혼외관계 고백…불륜 2건이 끝 아니었다",
-      "episode": "episode:4794223498d2d3",
+      "episode": "episode:4235da0ff58627",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -20,8 +20,27 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 51,
+      "duplicate_candidates": 59,
       "event_count": 22,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i73158b76",
+      "title": "울릉도 향해 ‘초속 200m 돌진’ 러 군용기…폭격기까지 끼어 있었다",
+      "episode": "episode:91c14b71feb9e8",
+      "quality": 0.84,
+      "stages": [
+        "입장·공방",
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
@@ -44,12 +63,12 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i96356e16",
-      "title": "\"이번엔 달랐다\"‥러시아 군용기, 울릉도 영공 코앞 통과",
-      "episode": "episode:7ca48e21c52ac6",
-      "quality": 0.56,
+      "id": "i815f3c07",
+      "title": "이용철 \"유동규와 닭백숙집서 도박? 육식을 못한다\"",
+      "episode": "episode:88eea4313e05a8",
+      "quality": 0.76,
       "stages": [
-        "일반 보도",
+        "사법·처분",
         "파장·후속"
       ],
       "gaps": [
@@ -57,51 +76,32 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 25,
-      "event_count": 2,
+      "duplicate_candidates": 30,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "id4edfded",
-      "title": "[속보]장동혁 “한동훈, 보수 궤멸의 중심…발붙일 곳 없어”",
-      "episode": "episode:c2363a5bb95e61",
+      "id": "ib09e2245",
+      "title": "이태현 KBS 사장 후보, '12·3 내란?' 질문에 \"가이드라인 부적절\"",
+      "episode": "episode:06febd4b35b3d8",
       "quality": 1.0,
       "stages": [
-        "일반 보도",
+        "사법·처분",
         "수사·대응",
+        "일반 보도",
         "파장·후속",
-        "입장·공방",
         "발단·의혹",
-        "사법·처분"
+        "입장·공방"
       ],
       "gaps": [],
-      "duplicate_candidates": 31,
-      "event_count": 16,
+      "duplicate_candidates": 28,
+      "event_count": 21,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6a55d82e",
-      "title": "오세훈, 특검·탄핵 발언하려 하자…이 대통령 “국무회의 마치겠다”",
-      "episode": "episode:25e82c39128ff9",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "사법·처분",
-        "입장·공방",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 41,
-      "event_count": 30,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i55ce84bc",
-      "title": "‘증안펀드 카드’도 못 살린 코스피… ‘황타랠리’에 5000선 회복",
-      "episode": "episode:073b69ef2f1624",
+      "id": "id9f979fa",
+      "title": "젠슨 황 돌아오자 코스피도 살아났다…장중 5000선 탈환",
+      "episode": "episode:468dc3dcb9d1b1",
       "quality": 1.0,
       "stages": [
         "발단·의혹",
@@ -112,51 +112,34 @@
         "입장·공방"
       ],
       "gaps": [],
-      "duplicate_candidates": 41,
+      "duplicate_candidates": 25,
       "event_count": 24,
       "evidence_rate": 1.0
     },
     {
-      "id": "i408760db",
-      "title": "12월 3일 '국민주권의날' 기념일 지정...공휴일은 아냐",
-      "episode": "episode:50f06001bada03",
-      "quality": 0.48,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 23,
-      "event_count": 2,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iee5f9701",
-      "title": "[속보] 엔비디아 이사회, 젠슨 황 CEO 복귀 결정",
-      "episode": "episode:273ef7e1629846",
-      "quality": 1.0,
+      "id": "i5b80c1a2",
+      "title": "지난해 수능 시험지 최소 17만부 이미 폐기됐다",
+      "episode": "episode:0389ca7a56e9b7",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
         "파장·후속",
-        "사법·처분",
         "입장·공방",
-        "수사·대응"
+        "사법·처분"
       ],
       "gaps": [
-        "발단·의혹"
+        "발단·의혹",
+        "수사·대응"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 19,
+      "duplicate_candidates": 27,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i033135d8",
-      "title": "군대까지 기다렸는데…임지연·이도현, 3년 공개 열애 끝 결별",
-      "episode": "episode:cdb5b634b9b970",
-      "quality": 0.66,
+      "id": "i1109a4fe",
+      "title": "임지연·이도현, 교제 4년 만에 결별…\"좋은 동료로 남기로\"",
+      "episode": "episode:f493100d2fd9f9",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
         "수사·대응"
@@ -166,26 +149,44 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 20,
-      "event_count": 3,
+      "duplicate_candidates": 19,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
-      "id": "i06c710c5",
-      "title": "초등 여학생 숙박업소 불러내 술 먹이고 성폭행한 30대 강남 유명 학원장 구속",
-      "episode": "episode:330bf228aefd46",
+      "id": "ib780ae20",
+      "title": "초등생에 술 먹이고 성폭행한 30대男, 알고보니…강남 학원장이었다",
+      "episode": "episode:90411204eb9a47",
       "quality": 0.76,
       "stages": [
-        "사법·처분",
-        "일반 보도"
+        "일반 보도",
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 6,
+      "duplicate_candidates": 26,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i408760db",
+      "title": "12월 3일 '국민주권의날' 기념일 지정...공휴일은 아냐",
+      "episode": "episode:aec430329e5a14",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 5,
       "evidence_rate": 1.0
     }
   ]
