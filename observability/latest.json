@@ -1,7 +1,7 @@
 {
-  "run_id": "45485123052",
-  "observed_at": "2026-11-24T21:14:49+00:00",
-  "observed_at_kst": "2026-11-25T06:14:49+09:00",
+  "run_id": "44666085152",
+  "observed_at": "2026-11-20T03:22:45+00:00",
+  "observed_at_kst": "2026-11-20T12:22:45+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
   "commit": "2285dd816511c8631dca55031f37d903e9025339",
@@ -9,225 +9,47 @@
   "stages": {
     "collect": {
       "status": "degraded",
-      "ok": 289,
-      "fail": 43,
-      "errors": 40,
+      "ok": 266,
+      "fail": 24,
+      "errors": 24,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 456,
-      "fail": 32,
-      "errors": 32,
+      "ok": 505,
+      "fail": 23,
+      "errors": 23,
       "artifact": true
     },
     "quality": {
       "status": "success",
       "quality_issue_count": 10,
-      "event_quality_present": true,
-      "detail": {
-        "low_score": 8,
-        "low_photo": 9,
-        "low_source": 1,
-        "missing_event_stages": 9
-      }
+      "event_quality_present": true
     },
     "publish": {
       "status": "success",
-      "published_at": "2026-11-24T21:17:03+00:00",
-      "data_commit": "ec5b3e72a09bc412e8fcf559e4febb18710fcc15",
+      "published_at": "2026-11-20T09:23:05+00:00",
+      "data_commit": "fe69260f05dbfe6ae408e501c0ff0329eeb8740f",
       "note": "data 브랜치 커밋 이후 게시 확인"
     }
   },
   "counts": {
     "issues": 10,
-    "sources": 199,
+    "sources": 187,
     "entities": 36,
     "global_issues": 0,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "12b621c22e851b139f9b5b53b5b5d20a7d9c5b3ce0d9864d1912c0a031ba8b48",
+    "today": "316980b48f41367096045a758b71492bc174dab8d081cc37a249cba7cb3e7580",
     "global": null,
-    "quality": "4e39cc456b5c2c6c70818abbd22679d79f535a1f18f5bf32539e031ea6fc35dd",
-    "status": "95a112a30460f368bcc3bcf95fbf5ae1f1383402eff15e5b88d8b9f30ebb3573",
-    "event_quality": "8b83caec9ce75c7221ac35528f41de783354c7c514184af89f2168f4220c81ca"
-  },
-  "diagnostics": {
-    "collect": {
-      "by_kind": {
-        "timeout": 33,
-        "rate_limit": 1,
-        "not_found": 6
-      },
-      "by_host": {
-        "n.news.naver.com": 27,
-        "m.news.naver.com": 10,
-        "ko.wikipedia.org": 6
-      },
-      "surface": {
-        "core": 11,
-        "auxiliary": 29
-      },
-      "examples": [
-        {
-          "t": "06:07:27",
-          "host": "n.news.naver.com",
-          "path": "/article/022/0004177674",
-          "err": "reporter: The read operation timed out"
-        },
-        {
-          "t": "06:07:32",
-          "host": "m.news.naver.com",
-          "path": "/article/055/0001405424",
-          "err": "reporter: The read operation timed out"
-        },
-        {
-          "t": "06:07:33",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9E%90%EC%97%B0%EA%B3%BC%ED%95%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "06:07:33",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/km%EC%95%9E",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "06:07:33",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EA%B5%AC%ED%98%95%EC%9D%BC",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "06:07:33",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9B%94%EB%93%9C%ED%94%BD",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "06:07:33",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/KBS%EC%82%AC%EC%9E%A5",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "06:07:33",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/AI%ED%94%BD",
-          "err": "HTTP Error 404: Not Found"
-        }
-      ]
-    },
-    "analyze": {
-      "by_kind": {
-        "timeout": 19,
-        "not_found": 13
-      },
-      "by_host": {
-        "n.news.naver.com": 19,
-        "ko.wikipedia.org": 13
-      },
-      "surface": {
-        "core": 32,
-        "auxiliary": 0
-      },
-      "examples": [
-        {
-          "t": "06:11:00",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%B4%88%EB%93%B1",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "06:11:00",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%B0%98%EB%93%B1",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "06:11:00",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EA%B3%B5%EB%8F%99",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "06:11:00",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EA%B0%9C%EC%B5%9C",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "06:11:01",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%ED%99%9C%EC%84%B1",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "06:11:01",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%96%98%EA%B8%B0",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "06:11:01",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EA%B8%B0%EB%85%90%EC%8B%9D",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "06:11:01",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%ED%95%99%EC%9B%90%EC%9E%A5",
-          "err": "HTTP Error 404: Not Found"
-        }
-      ]
-    },
-    "global": {
-      "by_kind": {},
-      "by_host": {},
-      "surface": {
-        "core": 0,
-        "auxiliary": 0
-      },
-      "examples": []
-    },
-    "other": {
-      "db": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      },
-      "official": {
-        "by_kind": {},
-        "by_host": {
-          "dart": 1
-        },
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      },
-      "naver": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      }
-    }
+    "quality": "d946994bd8680754784bb7905885c564cceb16d9322d7459068619b16da91a37",
+    "status": "425e5ef15e3faed333cd1a4841896d5329594af5cdad479863a172d5b7b3a391",
+    "event_quality": "1de2d116ce7c94cc12656a2d4780a8714a43ff4e2f8477c7d25ca826f08b0557"
   },
   "status_snapshot": {
-    "updated": "2026-11-25T06:14:14.312070+09:00",
+    "updated": "2026-11-20T18:20:20.271374+09:00",
     "error_count": 60
   },
-  "publish_verified_at": "2026-11-24T21:17:03+00:00"
+  "publish_verified_at": "2026-11-20T09:23:05+00:00"
 }
