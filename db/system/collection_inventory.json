@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "measured_at": "2026-11-23T10:46:07.772478+00:00",
+  "measured_at": "2026-11-18T10:09:10.196069+00:00",
   "rows": [
     {
       "id": "legal-lawoc",
@@ -8,9 +8,9 @@
       "cadence": "3시간",
       "workflow": "legal.yml",
       "evidence": {
-        "lawgo_files": 48757,
-        "news_case_files": 2523,
-        "press_items": 54
+        "lawgo_files": 41571,
+        "news_case_files": 2213,
+        "press_items": 51
       },
       "status": "ACTIVE",
       "blocker": "legal 브랜치 원장을 data 분석층과 연결"
@@ -35,15 +35,15 @@
       "evidence": {
         "directory_reported_providers": 33,
         "provider_links": 32,
-        "approved_providers": 24,
-        "candidate_links": 317,
-        "candidate_errors": 8,
-        "bootstrap_seen": 132,
-        "raw_documents": 274,
-        "text_extracted": 273,
+        "approved_providers": 23,
+        "candidate_links": 269,
+        "candidate_errors": 9,
+        "bootstrap_seen": 130,
+        "raw_documents": 260,
+        "text_extracted": 259,
         "pdfs": 0,
         "ocr_documents": 0,
-        "classified_documents": 263,
+        "classified_documents": 249,
         "structured_policy_records": 3,
         "source_backed": 0
       },
@@ -56,9 +56,9 @@
       "cadence": "매일 + 장중 공시",
       "workflow": "corporate.yml + collect.yml",
       "evidence": {
-        "corp_files": 550,
-        "indexed_corps": 2508,
-        "filings": 8364
+        "corp_files": 530,
+        "indexed_corps": 2504,
+        "filings": 8117
       },
       "status": "ACTIVE",
       "blocker": "기업별 감사의견·임원·재무 필드 결측 보강"
@@ -72,7 +72,7 @@
         "indexed": true,
         "companies": 10398,
         "crawled": 100,
-        "detail_files": 400
+        "detail_files": 200
       },
       "status": "INCREMENTAL",
       "blocker": "10-K·10-Q·8-K 문서 본문 파싱"
@@ -94,7 +94,7 @@
       "cadence": "매일 증분 / 대표 사실 일요일",
       "workflow": "people-photos.yml",
       "evidence": {
-        "people_files": 5794,
+        "people_files": 5091,
         "media_files": 0
       },
       "status": "ACTIVE_R2",
