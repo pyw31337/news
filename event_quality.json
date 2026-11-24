@@ -1,130 +1,74 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-24 19:56:19",
-  "date": "2026-11-25",
+  "updated_at": "2026-11-19 07:54:45",
+  "date": "2026-11-19",
   "total_issues": 10,
   "average_quality": 0.89,
   "issues": [
     {
-      "id": "i7cb9982e",
-      "title": "'12·3 국민주권의 날' 기념일 지정...이 대통령 \"위대한 국민 승리\"",
-      "episode": "episode:526e72d2f04226",
-      "quality": 0.84,
+      "id": "ib0b88852",
+      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
+      "episode": "episode:6240c7cf2c14d8",
+      "quality": 1.0,
       "stages": [
-        "수사·대응",
+        "일반 보도",
         "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
         "발단·의혹",
         "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 22,
+      "duplicate_candidates": 24,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "iec4dc99e",
-      "title": "오세훈 “특검·탄핵 얘기하자, 李대통령 의사봉 3번 치고 자리 떠”",
-      "episode": "episode:3fecc08fbc1d47",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "사법·처분",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i570baf91",
-      "title": "젠슨 황 \"추가 불륜 있다\"…엔비디아 복귀 직전 이사회에 고백",
-      "episode": "episode:cca4d23c561c64",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "파장·후속",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 60,
-      "event_count": 19,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "id6a82444",
-      "title": "이란, 히잡 벗고 공연한 20대 女 가수에 태형 74대 집행",
-      "episode": "episode:a9c7ef32d1385e",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i12288418",
-      "title": "젠슨 황 복귀에 코스피도 5000선 회복…6.32% 급등",
-      "episode": "episode:f607f6e360ad73",
-      "quality": 1.0,
-      "stages": [
-        "발단·의혹",
-        "파장·후속",
-        "일반 보도",
-        "사법·처분",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 30,
-      "event_count": 21,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib8298fa5",
-      "title": "[자막뉴스] \"초등생 유인해 성폭행\"…알고 보니 '강남 유명 학원 원장'",
-      "episode": "episode:096c7037e9b2b9",
+      "id": "i52002ca2",
+      "title": "[속보] “용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
+      "episode": "episode:42a56cd22c055b",
       "quality": 0.76,
       "stages": [
         "일반 보도",
-        "사법·처분"
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 27,
+      "duplicate_candidates": 26,
       "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia6182cca",
-      "title": "[단독]‘리트 만점자’ 생명과학 과외 교사, 25일 경찰 참고인 조사",
-      "episode": "episode:a3d1f0b8b3a117",
-      "quality": 0.84,
+      "id": "i7472fb4e",
+      "title": "‘리트 만점자’ 숨진채 발견... 메모엔 “몸과 마음 지쳤다”",
+      "episode": "episode:43f66ea4b003f7",
+      "quality": 1.0,
       "stages": [
         "일반 보도",
+        "사법·처분",
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
         "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icc7073be",
+      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
+      "episode": "episode:b4571ab00be66b",
+      "quality": 0.66,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
@@ -246,61 +190,6 @@
       ],
       "duplicate_candidates": 31,
       "event_count": 39,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic2519fbf",
-      "title": "‘더 글로리 커플’ 임지연·이도현, 교제 4년 만에 결별···“좋은 동료로 남기로”",
-      "episode": "episode:7c3c52a71e5ab5",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 23,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i9a9a35cd",
-      "title": "‘젠슨황 복귀’ 트럼프 개입에 비판 고조…공화 강경파도 반발",
-      "episode": "episode:96c441bbe26241",
-      "quality": 1.0,
-      "stages": [
-        "파장·후속",
-        "사법·처분",
-        "입장·공방",
-        "일반 보도",
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 30,
-      "event_count": 30,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i487476c9",
-      "title": "젠슨 황, 11일 만에 전격 복귀…엔비디아 30%대 급등",
-      "episode": "episode:9a4cd60e14e858",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 39,
-      "event_count": 22,
       "evidence_rate": 1.0
     }
   ]
