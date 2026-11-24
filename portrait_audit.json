@@ -2,9 +2,9 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 9,
+    "current_person_entities": 10,
     "approved": 9,
-    "withheld": 0,
+    "withheld": 1,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 0,
     "sanitized": 0
@@ -32,13 +32,6 @@
       "wiki_title": "조희대"
     },
     {
-      "name": "오세훈",
-      "status": "approved",
-      "url": "data/pol/photos/LB24097N.webp",
-      "source": "",
-      "wiki_title": "오세훈"
-    },
-    {
       "name": "이승환",
       "status": "approved",
       "url": "media/ent/11/1127b18d5b85f40c.webp",
@@ -46,18 +39,18 @@
       "wiki_title": "이승환"
     },
     {
+      "name": "오세훈",
+      "status": "approved",
+      "url": "data/pol/photos/LB24097N.webp",
+      "source": "",
+      "wiki_title": "오세훈"
+    },
+    {
       "name": "트럼프",
       "status": "approved",
       "url": "media/ent/51/51d80b245f6cbf5e.webp",
       "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29%20%283x4%29.jpg?width=360",
       "wiki_title": "도널드 트럼프"
-    },
-    {
-      "name": "강금실",
-      "status": "approved",
-      "url": "media/ent/36/36e73a023752a876.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/KumsilKang.JPG?width=360",
-      "wiki_title": "강금실"
     },
     {
       "name": "차은우",
@@ -72,6 +65,20 @@
       "url": "data/pol/photos/TKJ4800F.webp",
       "source": "",
       "wiki_title": "서영교"
+    },
+    {
+      "name": "고경표",
+      "status": "approved",
+      "url": "media/ent/32/32d27de75e8caf24.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Go%20Kyung-pyo%20at%20the%2043rd%20Dragon%20Film%20Awards%20B.png?width=360",
+      "wiki_title": "고경표"
+    },
+    {
+      "name": "김대범",
+      "status": "no_portrait",
+      "url": "",
+      "source": "",
+      "wiki_title": "김대범"
     }
   ],
   "legacy_local_assets": [
