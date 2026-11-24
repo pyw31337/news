@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-24T17:49:23.547978+09:00",
-  "alerts_count": 44,
+  "updated": "2026-11-24T18:21:11.560079+09:00",
+  "alerts_count": 43,
   "alerts": [
     {
       "id": "urn:oid:2.49.0.1.840.0.4159fc7a39a1e0bed7ce132ec249a7470005f2e0.001.1",
@@ -147,22 +147,6 @@
       "desc": "* WHAT...East winds 25 to 35 mph with gusts up to 60 mph possible.\n\n* WHERE...Portions of northeast New Jersey and southeast New York.\n\n* WHEN...10 am Thursday Through 1 am Friday.\n\n* IMPACTS...Damaging winds could blow down trees and power lines.\nWidespread power outages are possible. Travel could "
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.e140ce14c79a05c0cc0fb8f966e2afe44c45f898.002.1",
-      "t": "2026-11-24 01:09",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Kent",
-      "area_en": "Kent",
-      "event": "강풍 주의보",
-      "event_en": "High Wind Watch",
-      "severity": "Severe",
-      "headline_ko": "Kent 강풍 주의보",
-      "headline_en": "Kent High Wind Watch",
-      "desc": "* WHAT...East winds 25 to 35 mph with gusts up to 60 mph possible.\n\n* WHERE...Caroline, Kent MD, Queen Annes, and Talbot Counties.\n\n* WHEN...From Wednesday evening through Thursday evening.\n\n* IMPACTS...Damaging winds could blow down trees and power lines.\nWidespread power outages are possible. Trav"
-    },
-    {
       "id": "urn:oid:2.49.0.1.840.0.e140ce14c79a05c0cc0fb8f966e2afe44c45f898.001.1",
       "t": "2026-11-24 01:09",
       "country": "US",
@@ -177,6 +161,22 @@
       "headline_ko": "Kent 강풍 주의보",
       "headline_en": "Kent High Wind Watch",
       "desc": "* WHAT...East winds 30 to 40 mph with gusts up to 70 mph possible.\n\n* WHERE...In Delaware, Kent and Inland Sussex Counties. In New\nJersey, Atlantic, Cape May, and Cumberland Counties.\n\n* WHEN...From Wednesday evening through Thursday evening.\n\n* IMPACTS...Damaging winds could blow down trees and pow"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.e140ce14c79a05c0cc0fb8f966e2afe44c45f898.002.1",
+      "t": "2026-11-24 01:09",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Kent",
+      "area_en": "Kent",
+      "event": "강풍 주의보",
+      "event_en": "High Wind Watch",
+      "severity": "Severe",
+      "headline_ko": "Kent 강풍 주의보",
+      "headline_en": "Kent High Wind Watch",
+      "desc": "* WHAT...East winds 25 to 35 mph with gusts up to 60 mph possible.\n\n* WHERE...Caroline, Kent MD, Queen Annes, and Talbot Counties.\n\n* WHEN...From Wednesday evening through Thursday evening.\n\n* IMPACTS...Damaging winds could blow down trees and power lines.\nWidespread power outages are possible. Trav"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.e140ce14c79a05c0cc0fb8f966e2afe44c45f898.004.1",
@@ -309,200 +309,15 @@
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ucxy"
     }
   ],
-  "cities": [
-    {
-      "id": "newyork",
-      "name_ko": "뉴욕",
-      "name_en": "New York",
-      "country": "US",
-      "flag": "🇺🇸",
-      "lat": 40.7128,
-      "lon": -74.006,
-      "temp": 6.2,
-      "apparent_temp": 1.7,
-      "humidity": 59,
-      "code": 0,
-      "wind": 15.0
-    },
-    {
-      "id": "losangeles",
-      "name_ko": "로스앤젤레스",
-      "name_en": "Los Angeles",
-      "country": "US",
-      "flag": "🇺🇸",
-      "lat": 34.0522,
-      "lon": -118.2437,
-      "temp": 12.3,
-      "apparent_temp": 10.1,
-      "humidity": 67,
-      "code": 3,
-      "wind": 8.2
-    },
-    {
-      "id": "london",
-      "name_ko": "런던",
-      "name_en": "London",
-      "country": "GB",
-      "flag": "🇬🇧",
-      "lat": 51.5074,
-      "lon": -0.1278,
-      "temp": 4.3,
-      "apparent_temp": 0.8,
-      "humidity": 87,
-      "code": 3,
-      "wind": 11.9
-    },
-    {
-      "id": "paris",
-      "name_ko": "파리",
-      "name_en": "Paris",
-      "country": "FR",
-      "flag": "🇫🇷",
-      "lat": 48.8566,
-      "lon": 2.3522,
-      "temp": 3.8,
-      "apparent_temp": 0.7,
-      "humidity": 86,
-      "code": 3,
-      "wind": 8.0
-    },
-    {
-      "id": "frankfurt",
-      "name_ko": "프랑크푸르트",
-      "name_en": "Frankfurt",
-      "country": "DE",
-      "flag": "🇩🇪",
-      "lat": 50.1109,
-      "lon": 8.6821,
-      "temp": -3.5,
-      "apparent_temp": -6.9,
-      "humidity": 96,
-      "code": 45,
-      "wind": 5.2
-    },
-    {
-      "id": "tokyo",
-      "name_ko": "도쿄",
-      "name_en": "Tokyo",
-      "country": "JP",
-      "flag": "🇯🇵",
-      "lat": 35.6895,
-      "lon": 139.6917,
-      "temp": 15.3,
-      "apparent_temp": 15.8,
-      "humidity": 92,
-      "code": 63,
-      "wind": 5.4
-    },
-    {
-      "id": "beijing",
-      "name_ko": "베이징",
-      "name_en": "Beijing",
-      "country": "CN",
-      "flag": "🇨🇳",
-      "lat": 39.9042,
-      "lon": 116.4074,
-      "temp": 4.0,
-      "apparent_temp": -0.2,
-      "humidity": 27,
-      "code": 0,
-      "wind": 4.7
-    },
-    {
-      "id": "singapore",
-      "name_ko": "싱가포르",
-      "name_en": "Singapore",
-      "country": "SG",
-      "flag": "🇸🇬",
-      "lat": 1.3521,
-      "lon": 103.8198,
-      "temp": 28.5,
-      "apparent_temp": 34.3,
-      "humidity": 83,
-      "code": 80,
-      "wind": 7.3
-    },
-    {
-      "id": "sydney",
-      "name_ko": "시드니",
-      "name_en": "Sydney",
-      "country": "AU",
-      "flag": "🇦🇺",
-      "lat": -33.8688,
-      "lon": 151.2093,
-      "temp": 18.0,
-      "apparent_temp": 15.5,
-      "humidity": 79,
-      "code": 51,
-      "wind": 26.7
-    },
-    {
-      "id": "toronto",
-      "name_ko": "토론토",
-      "name_en": "Toronto",
-      "country": "CA",
-      "flag": "🇨🇦",
-      "lat": 43.6532,
-      "lon": -79.3832,
-      "temp": -1.9,
-      "apparent_temp": -6.4,
-      "humidity": 77,
-      "code": 0,
-      "wind": 11.9
-    },
-    {
-      "id": "dubai",
-      "name_ko": "두바이",
-      "name_en": "Dubai",
-      "country": "AE",
-      "flag": "🇦🇪",
-      "lat": 25.2048,
-      "lon": 55.2708,
-      "temp": 30.1,
-      "apparent_temp": 31.1,
-      "humidity": 37,
-      "code": 0,
-      "wind": 7.6
-    },
-    {
-      "id": "saopaulo",
-      "name_ko": "상파울루",
-      "name_en": "São Paulo",
-      "country": "BR",
-      "flag": "🇧🇷",
-      "lat": -23.5505,
-      "lon": -46.6333,
-      "temp": 20.4,
-      "apparent_temp": 23.8,
-      "humidity": 98,
-      "code": 3,
-      "wind": 3.8
-    }
-  ],
+  "cities": [],
   "stories": [
     {
-      "id": "gde5c2ef7",
-      "title": "EU officials reject Cop31 deal as it 'doesn't speak to reality of the climate crisis' – video",
-      "press": "Guardian Environment",
-      "image": "https://i.guim.co.uk/img/media/889097b33a9db4d990e02f63f627671657fe64ce/265_0_3447_2758/master/3447.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=d3e0fd6e6e5a3f0f89e492d313e8e1fa",
-      "score": 16.9,
-      "url": "g/gde5c2ef7"
-    },
-    {
-      "id": "gec35b168",
+      "id": "g8a0e26db",
       "title": "Countries react as COP31 climate talks collapse",
       "press": "Reuters",
       "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/epa_6b0411b25b37-1795428786.jpg?resize=1920%2C1440",
-      "score": 16.8,
-      "url": "g/gec35b168"
-    },
-    {
-      "id": "ge4745726",
-      "title": "What it's like at a climate conference as talks collapse",
-      "press": "NPR",
-      "image": "https://i.guim.co.uk/img/media/bfd5ba75d2fef1972b3c75b1a735ae9b05d31036/0_0_7200_5760/master/7200.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=ff21e15d1533c0765eaa80b72de5594b",
-      "score": 8.3,
-      "url": "g/ge4745726"
+      "score": 23.2,
+      "url": "g/g8a0e26db"
     }
   ]
 }
