@@ -1,65 +1,45 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-24 03:23:52",
+  "updated_at": "2026-11-24 03:55:23",
   "date": "2026-11-24",
   "total_issues": 10,
-  "average_quality": 0.89,
+  "average_quality": 0.81,
   "issues": [
     {
-      "id": "i8e8c54ad",
-      "title": "코스피, 외국인 ‘사자’ 강세에 5000선 탈환… 코스닥도 4%대↑",
-      "episode": "episode:f5a8349bc90bab",
-      "quality": 1.0,
-      "stages": [
-        "발단·의혹",
-        "파장·후속",
-        "일반 보도",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "입장·공방"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 35,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3b20a577",
-      "title": "\"러시아 군용기 여러 대 카디즈 진입…영공 근접\"",
-      "episode": "episode:c354421e3e6661",
+      "id": "i0ef2dc49",
+      "title": "불법 계엄 선포된 12월 3일, '국민주권의 날'로… 이 대통령 \"오늘 안건 처리\"",
+      "episode": "episode:c9aa20793d008a",
       "quality": 0.84,
       "stages": [
         "일반 보도",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
         "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 27,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i0a47a4a4",
+      "title": "러시아 군용기 울릉도 근접에 경계경보…'北항공기' 안내 소동",
+      "episode": "episode:57b986ee271b44",
+      "quality": 0.56,
+      "stages": [
+        "일반 보도",
         "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1b18bbbf",
-      "title": "[속보]李대통령 \"12월3일, 국가기념일 '국민주권의 날' 지정 안건 처리 예정\"",
-      "episode": "episode:e018aeb2da4fa9",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
         "입장·공방",
         "사법·처분"
       ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 67,
+      "duplicate_candidates": 26,
+      "event_count": 2,
       "evidence_rate": 1.0
     },
     {
@@ -78,32 +58,87 @@
         "발단·의혹"
       ],
       "duplicate_candidates": 47,
-      "event_count": 19,
+      "event_count": 18,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i004aec5d",
+      "title": "돌아온 젠슨 황…서명한 박현주, 침묵한 ‘깐부’들",
+      "episode": "episode:3bc05da1310313",
+      "quality": 1.0,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "파장·후속",
+        "수사·대응",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i7d687fc1",
+      "title": "안철수 “중국 간첩이 국정원 접수했다고 보지 않겠나”…강금실 지명 맹공",
+      "episode": "episode:7ce5aae5791cf8",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i57d353bc",
+      "title": "삼성전자, 임원 131명 승진 인사…HBM·로봇 핵심 인재 중용",
+      "episode": "episode:e42fb71237d560",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
       "id": "idf9164cd",
       "title": "중고교 내신시험에서 스마트기기 적발땐 당일 전과목 0점…최대 퇴학",
-      "episode": "episode:8a29522ba3ef6a",
-      "quality": 0.84,
+      "episode": "episode:c6e0612750fc6b",
+      "quality": 0.66,
       "stages": [
         "일반 보도",
-        "발단·의혹",
         "수사·대응"
       ],
       "gaps": [
+        "발단·의혹",
         "입장·공방",
-        "사법·처분",
-        "파장·후속"
+        "사법·처분"
       ],
       "duplicate_candidates": 22,
-      "event_count": 5,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "i4b71d224",
-      "title": "변호사 부친도 못 말렸다…난리 난 ‘광명 붕은우’ 붕어빵 파는 사연",
-      "episode": "episode:09969cfb4edce1",
+      "id": "i425bffea",
+      "title": "붕어빵 파는 ‘광명 붕은우’는 명문대생?…“변호사 부친 반대에도 붕어빵 굽는 이유는”",
+      "episode": "episode:e2f7e764a76823",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -136,28 +171,9 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i020a3b35",
-      "title": "피 묻은 젠슨 황, 빨간 브래지어 번쩍…트럼프 올린 파격 사진",
-      "episode": "episode:eca9c15f1c11f9",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "파장·후속",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8802313d",
-      "title": "\"끔찍한 실수\"…가죽재킷 벗은 젠슨 황, '첫 출근' 뒤 한 말",
-      "episode": "episode:bb4d965729d4d8",
+      "id": "i8b097184",
+      "title": "젠슨 황이 구한 엔비디아 주가…하지만 WSJ “글쎄”",
+      "episode": "episode:53c51231232768",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -169,26 +185,8 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 40,
+      "duplicate_candidates": 38,
       "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i86b1375b",
-      "title": "경찰, '100억대 불법 정치자금 의혹' 전광훈 목사 구속영장 신청",
-      "episode": "episode:366f6a618871c5",
-      "quality": 0.76,
-      "stages": [
-        "사법·처분",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 36,
       "evidence_rate": 1.0
     }
   ]
