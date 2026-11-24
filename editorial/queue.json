@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
-  "date": "2026-11-24",
-  "generated_at": "2026-11-24T14:44:14+09:00",
+  "date": "2026-11-19",
+  "generated_at": "2026-11-19T16:54:45+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,22 +27,22 @@
   },
   "candidates": [
     {
-      "issue_id": "i82552a7e",
-      "title": "젠슨황 복귀시킨 트럼프, 엔비디아 급등에 최대 221억 원 수익",
+      "issue_id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
       "category": "경제",
-      "rank": 1,
-      "priority_score": 45,
+      "rank": 8,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
-        "젠슨 황 엔비디아 최고경영자(CEO)가 사임 11일 만인 23일 전격 복귀했다.",
-        "\"트럼프, 젠슨 황 복귀로 하루 만에 200억 챙겨\"",
-        "\"내가 젠슨 황 복귀 설득\" 트럼프, 하루새 201억 벌었다",
-        "‘피 흘리며 여성 속옷 치켜든 젠슨 황’···트럼프의 기상천외한 복귀 축하법",
-        "‘피 흘리며 여성 속옷 번쩍 치켜든 젠슨 황’…트럼프, 합성 밈으로 복귀 축하"
+        "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\"",
+        "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다.",
+        "반면 같은 해 한국 영화의 중국 수출액은 1500만달러(약 200억원), 방송 콘텐츠는 700만달러(약 93억원)에...",
+        "대한민국이 세계에서 네 번째로 '수출 1조 달러 시대'를 연 데 대해 세대를 이어온 국민의 도전과 헌신이...",
+        "반세기 만에 수출 규모를 100배로 키운 한국 경제의 성장사를 되짚으며 수출의 성과가 국민의 삶을 나아지게 하는..."
       ],
       "sources": [
         {
@@ -51,142 +51,41 @@
           "url": "https://n.news.naver.com/mnews/article/032/0003483787?sid=103"
         },
         {
-          "press": "머니투데이",
-          "title": "\"내가 젠슨 황 복귀 설득\" 트럼프, 하루새 201억 벌었다",
-          "url": "https://n.news.naver.com/article/008/0005445508"
+          "press": "sisajournal.com",
+          "title": "李 대통령 \"수출 1조 달러 시대…이제는 '모두의 성장'으로\"",
+          "url": "https://n.news.naver.com/mnews/article/586/0000142653?sid=101"
         },
         {
-          "press": "경향신문",
-          "title": "‘피 흘리며 여성 속옷 치켜든 젠슨 황’···트럼프의 기상천외한 복귀 축하법",
-          "url": "https://n.news.naver.com/article/032/0003484618"
+          "press": "SBS",
+          "title": "\"한국 대통령과 너무 달랐다\"…일본 총리 의전 어땠길래",
+          "url": "https://n.news.naver.com/article/055/0001404200"
         },
         {
-          "press": "디지털타임스",
-          "title": "‘피 흘리며 여성 속옷 번쩍 치켜든 젠슨 황’…트럼프, 합성 밈으로 복귀 축하",
-          "url": "https://n.news.naver.com/article/029/0003060818"
+          "press": "asiatime.co.kr",
+          "title": "수출 1조달러 시대…李대통령 ‘봉제·신발공장 선배 세대 덕분’",
+          "url": "https://www.asiatime.co.kr/article/20261119500437"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "젠슨 황 엔비디아 최고경영자(CEO)가 사임 11일 만인 23일 전격 복귀했다."
+          "evidence": "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\""
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "딥시그널 김종학 기자와 함께 젠슨 황 복귀가 AI 투자에 의미하는 것은 무엇인지, 남아있는 과제는 무엇인지..."
+          "evidence": "경제계 \"수출 1조 달러 성과, 국내 투자·일자리로 이어갈 것\""
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "\"트럼프, 젠슨 황 복귀로 하루 만에 200억 챙겨\""
+          "evidence": "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "젠슨 황의 복귀 과정에 트럼프 대통령이 직접 개입했다는 사실이 드러나며, 이를 둘러싼 정치적 논란과 이해충돌 의혹이 본격적으로 제기되는 흐름을 보인다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i0aa813a1",
-      "title": "삼성전자, 9년만에 최소 131명 승진…반도체서만 70명 발탁(종합2보)",
-      "category": "경제",
-      "rank": 6,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "삼성전자가 2027년 정기 임원인사를 통해 총 131명을 승진시키며 9년 만에 최소 규모의 인사를 단행했다.",
-        "‘실적 부진’ 삼성전자 DX, 임원 승진 3분의 1 줄였다… AI·로봇 인재는 중용",
-        "“승진 잔치 끝났다”…삼성전자, 임원 승진 19% 줄였다",
-        "전자 계열사 임원 인사는 차별화된 성과와 미래 기술 확보에 기여한 인물 발탁으로 요약된다....",
-        "최주선 삼성SDI, 이준희 삼성SDS 사장 등 대표이사가 모두 유임된 가운데, 사업별 성과에 따라 승진 규모는..."
-      ],
-      "sources": [
-        {
-          "press": "조선비즈",
-          "title": "‘실적 부진’ 삼성전자 DX, 임원 승진 3분의 1 줄였다… AI·로봇 인재는 중용",
-          "url": "https://n.news.naver.com/article/366/0001206895"
-        },
-        {
-          "press": "한경비즈니스",
-          "title": "“승진 잔치 끝났다”…삼성전자, 임원 승진 19% 줄였다",
-          "url": "https://n.news.naver.com/article/050/0000113671"
-        },
-        {
-          "press": "etnews.com",
-          "title": "[기획 박스]삼성 전자계열사, '차별화 기술·미래 성장' 기여자 승진 집...",
-          "url": "https://n.news.naver.com/mnews/article/030/0003489125?sid=105"
-        },
-        {
-          "press": "블로터",
-          "title": "삼성전자, 승진 폭 좁혀도 AI 인재 챙겼다…HBM 부활 주역 발탁",
-          "url": "https://n.news.naver.com/article/293/0000093712"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "삼성전자가 2027년 정기 임원인사를 통해 총 131명을 승진시키며 9년 만에 최소 규모의 인사를 단행했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "한편 이날 삼성디스플레이·삼성SDI·삼성전기 등 삼성 전자계열사도 총 42명을 승진 발탁하는 임원인사를 단행했다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "‘실적 부진’ 삼성전자 DX, 임원 승진 3분의 1 줄였다… AI·로봇 인재는 중용"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "실제 임원 인사 결과가 발표되며 승진 규모 축소와 반도체 인재 집중 발탁이라는 구체적인 전략이 확인되었다."
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
@@ -433,107 +332,6 @@
         "continuity_gaps": [
           "사법·처분"
         ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i8e8c54ad",
-      "title": "코스피, 외국인 ‘사자’ 강세에 5000선 탈환… 코스닥도 4%대↑",
-      "category": "경제",
-      "rank": 10,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "2026년 11월 24일, 젠슨 황 엔비디아 CEO의 경영 복귀 소식에 코스피 지수가 장중 5000선을 탈환하며 6~7%대 급등세를 보였다.",
-        "코스피, 외국인 ‘사자’ 강세에 5000선 탈환… 코스닥도 4%대↑",
-        "한국 코스피지수도 장중 7% 넘게 급등했습니다.",
-        "메모리 반도체 공급 업체인 삼성전자와...",
-        "전날 엔비디아 주가는 젠슨 황 CEO의 복귀 발표에 31.5% 폭등했습니다."
-      ],
-      "sources": [
-        {
-          "press": "조선비즈",
-          "title": "코스피, 외국인 ‘사자’ 강세에 5000선 탈환… 코스닥도 4%대↑",
-          "url": "https://n.news.naver.com/article/366/0001206917"
-        },
-        {
-          "press": "ichannela.com",
-          "title": "‘젠슨 황 귀환’에 한·일·대만 증시 ‘불기둥’",
-          "url": "https://n.news.naver.com/mnews/article/449/0000368519?sid=104"
-        },
-        {
-          "press": "donga.com",
-          "title": "“경차 타는데 외제차급 손실”…젠슨 황 복귀에도 웃지못한 ‘최고층...",
-          "url": "https://n.news.naver.com/mnews/article/020/0003764739?sid=101"
-        },
-        {
-          "press": "비즈워치",
-          "title": "젠슨 황 돌아오자 코스피도 살아났다…장중 5000선 탈환",
-          "url": "https://n.news.naver.com/article/648/0000052913"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "2026년 11월 24일, 젠슨 황 엔비디아 CEO의 경영 복귀 소식에 코스피 지수가 장중 5000선을 탈환하며 6~7%대 급등세를 보였다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "메모리 반도체 공급 업체인 삼성전자와..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "코스피, 외국인 ‘사자’ 강세에 5000선 탈환… 코스닥도 4%대↑"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "젠슨 황 복귀라는 대외적 호재로 5000선을 회복했으나, 과거 7000~8000선 대비 낮은 수준에서 지수 안착을 시도하고 있다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [],
         "no_generic_closing": true
       }
     }
