@@ -1,32 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-24 16:58:11",
+  "updated_at": "2026-11-24 17:21:21",
   "date": "2026-11-25",
   "total_issues": 10,
-  "average_quality": 0.84,
+  "average_quality": 0.88,
   "issues": [
-    {
-      "id": "i74d93bd6",
-      "title": "서울 지하철 노사 최종교섭 난항…첫차부터 총파업 예고",
-      "episode": "episode:c766ee791611fa",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
     {
       "id": "i7cb9982e",
       "title": "'12·3 국민주권의 날' 기념일 지정...이 대통령 \"위대한 국민 승리\"",
-      "episode": "episode:df8aaf5f4b6e4e",
+      "episode": "episode:5fcf748963956c",
       "quality": 0.84,
       "stages": [
         "수사·대응",
@@ -43,64 +25,46 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i570baf91",
-      "title": "젠슨 황 \"추가 불륜 있다\"…엔비디아 복귀 직전 이사회에 고백",
-      "episode": "episode:cca4d23c561c64",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "파장·후속",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 47,
-      "event_count": 18,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "id6a82444",
-      "title": "이란, 히잡 벗고 공연한 20대 女 가수에 태형 74대 집행",
-      "episode": "episode:a9c7ef32d1385e",
-      "quality": 0.48,
-      "stages": [
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 2,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i487476c9",
-      "title": "젠슨 황, 11일 만에 전격 복귀…엔비디아 30%대 급등",
-      "episode": "episode:d658ac7af55126",
+      "id": "id4edfded",
+      "title": "[속보]장동혁 “한동훈, 보수 궤멸의 중심…발붙일 곳 없어”",
+      "episode": "episode:19bce2afaeecdf",
       "quality": 1.0,
       "stages": [
         "일반 보도",
+        "수사·대응",
         "파장·후속",
         "사법·처분",
         "입장·공방",
-        "수사·대응"
+        "발단·의혹"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 30,
+      "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib281729a",
+      "title": "\"젠슨황, 알려진 두명 말고도 '추가 불륜' 이사회에 털어놔\"",
+      "episode": "episode:714d94a8a8c22d",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "수사·대응",
+        "입장·공방"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 41,
-      "event_count": 22,
+      "duplicate_candidates": 43,
+      "event_count": 18,
       "evidence_rate": 1.0
     },
     {
       "id": "i12288418",
       "title": "젠슨 황 복귀에 코스피도 5000선 회복…6.32% 급등",
-      "episode": "episode:5e49e89eb66a65",
+      "episode": "episode:856ff1f664ea81",
       "quality": 1.0,
       "stages": [
         "발단·의혹",
@@ -111,73 +75,92 @@
         "입장·공방"
       ],
       "gaps": [],
-      "duplicate_candidates": 29,
+      "duplicate_candidates": 28,
       "event_count": 21,
       "evidence_rate": 1.0
     },
     {
-      "id": "ica646e48",
-      "title": "초등학생 숙박업소로 불러내 술 먹이고 성폭행…30대 강남 유명 학원장 구속",
-      "episode": "episode:8e539483de57cc",
-      "quality": 0.76,
+      "id": "i5c998007",
+      "title": "女가수 히잡 없이 노래했다고... 이란, 태형 74대 집행",
+      "episode": "episode:f4b8e84424d2d0",
+      "quality": 0.84,
       "stages": [
-        "일반 보도",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i253cb2f8",
-      "title": "러 군용기, 카디즈 또 무단 진입… 울릉 ‘北 항공기’ 재난문자 혼란",
-      "episode": "episode:b4e7c0d07904ff",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8206374d",
-      "title": "임지연·이도현, 공개 열애 3년 만에 결별…\"좋은 동료로 남기로\"",
-      "episode": "episode:914d9fb53c3fe6",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
         "사법·처분",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
+        "일반 보도",
         "입장·공방"
       ],
-      "duplicate_candidates": 21,
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i487476c9",
+      "title": "젠슨 황, 11일 만에 전격 복귀…엔비디아 30%대 급등",
+      "episode": "episode:9a4cd60e14e858",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 22,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i349a49c5",
+      "title": "李 \"강남 엄청 떨어져…'안 사주면 어떡하나' 불안 해소해야\"",
+      "episode": "episode:59db307dce90b7",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 29,
       "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "icc32d63b",
-      "title": "\"美USTR, 이르면 이번주 '과잉생산 관세' 조사 결과 발표\"(종합)",
-      "episode": "episode:2b386fe5fe481a",
+      "id": "i6714d152",
+      "title": "'리트 만점자' 생명과학 과외 교사, 25일 경찰 참고인 조사",
+      "episode": "episode:0b52d96ab57f1b",
       "quality": 0.84,
       "stages": [
         "수사·대응",
-        "파장·후속",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 40,
+      "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i96d68578",
+      "title": "[단독] 군용기 카디즈 진입에 경보까지 울렸지만…러시아 대사 “국제법에 규정 없어”",
+      "episode": "episode:3e0e35c554d1a2",
+      "quality": 0.76,
+      "stages": [
+        "수사·대응",
         "일반 보도"
       ],
       "gaps": [
@@ -185,8 +168,26 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 22,
-      "event_count": 7,
+      "duplicate_candidates": 34,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i1109a4fe",
+      "title": "임지연·이도현, 교제 4년 만에 결별…\"좋은 동료로 남기로\"",
+      "episode": "episode:4ae3855cd75a47",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 20,
+      "event_count": 5,
       "evidence_rate": 1.0
     }
   ]
