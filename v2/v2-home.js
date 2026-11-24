@@ -88,6 +88,23 @@
     }).slice(0, 12);
   }
 
+  function flowThumb(e, i, index) {
+    if (e.img && typeof e.img === 'string' && e.img.trim()) return e.img.trim();
+    if (Array.isArray(i.sources) && i.sources.length) {
+      const match = i.sources.find(s => s.img && (s.url === e.url || s.title === e.title));
+      if (match && match.img) return match.img;
+      const partial = i.sources.find(s => s.img && e.title && s.title && (s.title.includes(e.title.slice(0, 8)) || e.title.includes(s.title.slice(0, 8))));
+      if (partial && partial.img) return partial.img;
+      const imgs = i.sources.map(s => s.img).filter(Boolean);
+      if (imgs.length) return imgs[index % imgs.length];
+    }
+    if (Array.isArray(i.gallery) && i.gallery.length) {
+      const g = i.gallery[index % i.gallery.length];
+      if (g && g.img) return g.img;
+    }
+    return i.image || '';
+  }
+
   const hrefEntity = k => {
     try { if (window.NB?.href?.e) return window.NB.href.e(k); } catch {}
     return `${root}e/?k=${encodeURIComponent(k)}`;
@@ -170,15 +187,29 @@
       const rank = String(idx + 2).padStart(2, '0');
       const issEntities = (iss.entities || iss.ents || []).slice(0, 3);
       const issSummary = (iss.summary || [])[0] || iss.lead || '사건 개요 및 관련 보도를 확인하세요.';
+      const issThumb = iss.image || (iss.sources || [])[0]?.img || (iss.gallery || [])[0]?.img || '';
 
       html += `
         <article class="agenda-card" data-issue-id="${esc(iss.id)}">
-          <div class="agenda-card-head">
-            <span class="agenda-rank">#${rank}</span>
-            <span class="badge" style="background:${color(iss.category || iss.cat)}18; color:${color(iss.category || iss.cat)}; padding:2px 8px; font-size:11px;">
-              ${esc(iss.category || iss.cat || '종합')}
-            </span>
-          </div>
+          ${issThumb ? `
+            <a href="${root}issue/${esc(iss.id)}" class="agenda-card-thumb">
+              <img src="${esc(issThumb)}" alt="${esc(iss.title)}" loading="lazy">
+              <span class="agenda-rank-badge">#${rank}</span>
+            </a>
+            <div class="agenda-card-head" style="margin-top:2px; margin-bottom:8px;">
+              <span class="badge" style="background:${color(iss.category || iss.cat)}18; color:${color(iss.category || iss.cat)}; padding:2px 8px; font-size:11px;">
+                ${esc(iss.category || iss.cat || '종합')}
+              </span>
+              <span style="font-size:11px; color:var(--muted); font-weight:700;">${esc(iss.press || '주요 언론')}</span>
+            </div>
+          ` : `
+            <div class="agenda-card-head">
+              <span class="agenda-rank">#${rank}</span>
+              <span class="badge" style="background:${color(iss.category || iss.cat)}18; color:${color(iss.category || iss.cat)}; padding:2px 8px; font-size:11px;">
+                ${esc(iss.category || iss.cat || '종합')}
+              </span>
+            </div>
+          `}
           <h3><a href="${root}issue/${esc(iss.id)}">${esc(iss.title)}</a></h3>
           <p class="agenda-summary-preview">${esc(short(issSummary, 110))}</p>
           
@@ -256,10 +287,16 @@
       const pressName = firstLead.press || item.press || 'Global Press';
       const textKo = firstLead.text_ko || item.summary_ko || 'AI 번역 및 심층 해설이 준비 중입니다.';
       const textEn = firstLead.text || item.title || '';
+      const itemImage = item.image || (item.gallery || [])[0]?.img || '';
 
       html += `
         <article class="global-card">
-          <span class="global-press-tag">${esc(pressName)}</span>
+          ${itemImage ? `
+            <div class="global-thumb">
+              <img src="${esc(itemImage)}" alt="${esc(item.title_ko || item.title)}" loading="lazy">
+              <span class="global-press-badge">${esc(pressName)}</span>
+            </div>
+          ` : `<span class="global-press-tag">${esc(pressName)}</span>`}
           <h3 class="global-title-ko">${esc(item.title_ko || item.title)}</h3>
           <div class="global-title-en">${esc(item.title)}</div>
           <p class="global-lead-ko">${esc(short(textKo, 180))}</p>
@@ -480,11 +517,36 @@
       <section class="section" id="flow">
         <div class="section-head">
           <div><div class="eyebrow">ISSUE CONTINUITY</div><h2>어떻게 이어졌나</h2></div>
-          <p>사건 단계별로 관련도가 검증된 원문만 시간순으로 연결했습니다.${i.flow_gap ? ` · ${esc(i.flow_gap)}` : ''}</p>
+          <p>사건 단계별로 관련도가 검증된 원문과 보도사진을 시간순으로 연결했습니다.${i.flow_gap ? ` · ${esc(i.flow_gap)}` : ''}</p>
         </div>
         <div class="band">
           <div class="timeline-grid">
-            ${flow.map(e => `<article class="timeline-node"><i></i><time>${esc(day(e.date) || '날짜 미상')}</time><small class="timeline-stage">${esc(e.stage || '관련 보도')}</small><a href="${esc(e.url || '#')}" target="_blank" rel="noopener">${esc(e.title || '관련 보도')}</a><p>${esc(short(e.body || e.press || '', 110))}</p></article>`).join('')}
+            ${flow.map((e, eIdx) => {
+              const thumb = flowThumb(e, i, eIdx);
+              return `
+                <article class="timeline-node">
+                  ${thumb ? `
+                    <a class="timeline-thumb-link" href="${esc(e.url || '#')}" target="_blank" rel="noopener">
+                      <div class="timeline-thumb">
+                        <img src="${esc(thumb)}" alt="${esc(e.title || '')}" loading="lazy" onerror="this.onerror=null;this.src='${esc(i.image || '')}'">
+                        ${e.press ? `<span class="timeline-press-tag">${esc(e.press)}</span>` : ''}
+                      </div>
+                    </a>
+                  ` : ''}
+                  <div class="timeline-track-node">
+                    <i class="timeline-dot"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <div class="timeline-meta">
+                      <time>${esc(day(e.date) || '날짜 미상')}</time>
+                      <small class="timeline-stage">${esc(e.stage || '관련 보도')}</small>
+                    </div>
+                    <a class="timeline-title" href="${esc(e.url || '#')}" target="_blank" rel="noopener">${esc(e.title || '관련 보도')}</a>
+                    <p class="timeline-summary">${esc(short(e.body || e.press || '', 110))}</p>
+                  </div>
+                </article>
+              `;
+            }).join('')}
           </div>
         </div>
       </section>
