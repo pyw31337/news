@@ -1,257 +1,55 @@
 {
-  "run_id": "45331611092",
-  "observed_at": "2026-11-24T05:27:07+00:00",
-  "observed_at_kst": "2026-11-24T14:27:07+09:00",
+  "run_id": "44666085152",
+  "observed_at": "2026-11-20T03:22:45+00:00",
+  "observed_at_kst": "2026-11-20T12:22:45+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
-  "commit": "a0c0d4acf5889bf228e568b110110f30fdbae79a",
+  "commit": "2285dd816511c8631dca55031f37d903e9025339",
   "host": "github-actions",
   "stages": {
     "collect": {
       "status": "degraded",
-      "ok": 290,
-      "fail": 38,
-      "errors": 38,
+      "ok": 266,
+      "fail": 24,
+      "errors": 24,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 493,
-      "fail": 42,
-      "errors": 40,
+      "ok": 505,
+      "fail": 23,
+      "errors": 23,
       "artifact": true
     },
     "quality": {
       "status": "success",
       "quality_issue_count": 10,
-      "event_quality_present": true,
-      "detail": {
-        "low_score": 8,
-        "low_photo": 5,
-        "low_source": 1,
-        "missing_event_stages": 9
-      }
+      "event_quality_present": true
     },
     "publish": {
       "status": "success",
-      "published_at": "2026-11-24T05:28:18+00:00",
-      "data_commit": "438358819328e16b4dd088c741b07af81079f007",
+      "published_at": "2026-11-20T09:23:05+00:00",
+      "data_commit": "fe69260f05dbfe6ae408e501c0ff0329eeb8740f",
       "note": "data 브랜치 커밋 이후 게시 확인"
     }
   },
   "counts": {
     "issues": 10,
-    "sources": 201,
+    "sources": 187,
     "entities": 36,
     "global_issues": 0,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "aa8bd55f3b3c2b648a7a6f267cf3f545ac26c9f2adbd8a99e07c4066fc825c75",
+    "today": "316980b48f41367096045a758b71492bc174dab8d081cc37a249cba7cb3e7580",
     "global": null,
-    "quality": "4216a922a16fea3317cb8a0204bd47df89fef195c18f1c6cbf2fa07cce1252eb",
-    "status": "d24c24f11574b95276313293371eacd6e61cc7d5b470165b9410b9cf3bd984df",
-    "event_quality": "7e93ca5e1ce775426c94598fb79a79a5a34405fa102d4ec30e167ef0acd53cb5"
-  },
-  "diagnostics": {
-    "collect": {
-      "by_kind": {
-        "timeout": 29,
-        "not_found": 9
-      },
-      "by_host": {
-        "n.news.naver.com": 22,
-        "m.news.naver.com": 7,
-        "ko.wikipedia.org": 9
-      },
-      "surface": {
-        "core": 13,
-        "auxiliary": 25
-      },
-      "examples": [
-        {
-          "t": "14:15:42",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%B6%95%EC%9D%80%EC%9A%B0",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "14:15:42",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%E8%88%87%EC%A0%95%EC%84%B1%ED%98%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "14:15:42",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A7%95%EA%B3%84%EC%9A%A9",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "14:15:42",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9E%90%EB%A7%89%EB%89%B4%EC%8A%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "14:15:42",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9E%90%EC%97%B0%EA%B3%BC%ED%95%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "14:15:42",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A1%B0%EC%9E%91%EC%A7%95%EA%B3%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "14:15:42",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A7%95%EB%A7%A8",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "14:15:42",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/SK%ED%95%98%EB%8B%89",
-          "err": "HTTP Error 404: Not Found"
-        }
-      ]
-    },
-    "analyze": {
-      "by_kind": {
-        "timeout": 22,
-        "not_found": 9,
-        "rate_limit": 9
-      },
-      "by_host": {
-        "n.news.naver.com": 24,
-        "ko.wikipedia.org": 18
-      },
-      "surface": {
-        "core": 40,
-        "auxiliary": 0
-      },
-      "examples": [
-        {
-          "t": "14:19:24",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EA%B2%BD%EA%B3%84%EA%B2%BD%EB%B3%",
-          "err": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "t": "14:19:25",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%8B%B9%EC%9D%BC",
-          "err": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "t": "14:19:42",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%82%B4%EC%8B%A0%EC%8B%9C%ED%97%",
-          "err": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "t": "14:19:42",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%B0%9C%ED%83%81",
-          "err": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "t": "14:19:43",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%B0%9C%EB%8F%99",
-          "err": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "t": "14:20:00",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%98%AC%ED%95%B4",
-          "err": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "t": "14:20:01",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%82%B4%EB%85%84",
-          "err": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "t": "14:20:01",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%AA%A8%EC%8A%B5",
-          "err": "HTTP Error 429: Too Many Requests"
-        }
-      ]
-    },
-    "global": {
-      "by_kind": {
-        "other": 2,
-        "timeout": 1
-      },
-      "by_host": {
-        "apnews.com": 1,
-        "www.washingtonpost.com": 1,
-        "www.ndtv.com": 1
-      },
-      "surface": {
-        "core": 3,
-        "auxiliary": 0
-      },
-      "examples": [
-        {
-          "t": "14:20:27",
-          "host": "apnews.com",
-          "path": "/article/mideast-iran-gaza-israel-houthis-libya-november-23-",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "14:21:09",
-          "host": "www.washingtonpost.com",
-          "path": "/technology/2026/11/23/trump-administration-blacklists-megas",
-          "err": "The read operation timed out"
-        },
-        {
-          "t": "14:21:10",
-          "host": "www.ndtv.com",
-          "path": "/entertainment/shah-rukh-khan-s-king-trailer-release-date-ou",
-          "err": "HTTP Error 403: Forbidden"
-        }
-      ]
-    },
-    "other": {
-      "db": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      },
-      "official": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      },
-      "naver": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      }
-    }
+    "quality": "d946994bd8680754784bb7905885c564cceb16d9322d7459068619b16da91a37",
+    "status": "425e5ef15e3faed333cd1a4841896d5329594af5cdad479863a172d5b7b3a391",
+    "event_quality": "1de2d116ce7c94cc12656a2d4780a8714a43ff4e2f8477c7d25ca826f08b0557"
   },
   "status_snapshot": {
-    "updated": "2026-11-24T14:26:30.289510+09:00",
+    "updated": "2026-11-20T18:20:20.271374+09:00",
     "error_count": 60
   },
-  "publish_verified_at": "2026-11-24T05:28:18+00:00"
+  "publish_verified_at": "2026-11-20T09:23:05+00:00"
 }
