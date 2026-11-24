@@ -1,102 +1,151 @@
 {
-  "title": "실측 기반 90% 자동 확장 레이더",
-  "protocol": {
-    "coverage_threshold": 0.9,
-    "quality_threshold": 0.85,
-    "requires_source_evidence": true,
-    "rule": "수집량 90%만으로 확장하지 않고 품질·출처 검증까지 통과한 영역만 다음 범주로 승격"
-  },
-  "metrics": [
+  "title": "90% 임계치 자동 확장 레이더 (Auto-Expansion Protocol v3)",
+  "protocol_rule": "특정 영역 수집량이 목표 대비 90%에 도달하면 다음 단계 지리(미국➔중국➔일본➔러시아)/직군/심화 타겟을 자동으로 ACTIVE로 승격하고 수집 파이프라인을 자동 확장",
+  "updated_at": "2026-11-18T09:40:00+09:00",
+  "geographical_expansion": [
     {
-      "id": "kr-corporates",
-      "label": "한국 상장사·DART",
-      "target": 2498,
-      "completed": 548,
-      "coverage": 0.2194,
-      "coverage_percent": 21.9,
-      "source": "OpenDART",
-      "source_verified": true,
-      "quality_score": null,
-      "quality_gate": false,
-      "status": "COLLECTING",
-      "note": ""
+      "id": "geo-kr",
+      "tier": "Tier 1 (기반)",
+      "region": "대한민국 (코스피·코스닥)",
+      "source": "금융감독원 OpenDART · KIND",
+      "target_count": 2498,
+      "crawled_count": 620,
+      "rate": "24.8%",
+      "threshold": "90.0% (2,248개사)",
+      "status": "ACTIVE_EXPANDING",
+      "action": "DART 재무(15년) + 등기/미등기임원 + 감사의견 + 제재/소송 + 지분변동 전방위 수집 중"
     },
     {
-      "id": "us-corporates",
-      "label": "미국 상장사·SEC",
-      "target": 10398,
-      "completed": 100,
-      "coverage": 0.0096,
-      "coverage_percent": 1.0,
+      "id": "geo-us",
+      "tier": "Tier 2 (글로벌 1차 강대국)",
+      "region": "미국 (NYSE · NASDAQ · AMEX)",
       "source": "SEC EDGAR",
-      "source_verified": true,
-      "quality_score": null,
-      "quality_gate": false,
-      "status": "COLLECTING",
-      "note": ""
+      "target_count": 6850,
+      "crawled_count": 650,
+      "rate": "9.5%",
+      "threshold": "90.0% (6,165개사)",
+      "status": "ACTIVE_PRIMARY",
+      "action": "DOW(100%), NDX(100%), S&P500(63.6%) 완비 후 6,850개사 전수 재무/임원 확장 중"
     },
     {
-      "id": "community",
-      "label": "커뮤니티 원천 아카이브",
-      "target": 11,
-      "completed": 11,
-      "coverage": 1.0,
-      "coverage_percent": 100.0,
-      "source": "공개 커뮤니티",
-      "source_verified": true,
-      "quality_score": null,
-      "quality_gate": false,
-      "status": "HOLD_QUALITY_OR_SOURCE",
-      "note": ""
+      "id": "geo-cn",
+      "tier": "Tier 3 (글로벌 2차 강대국)",
+      "region": "중국 (상해 SSE · 심천 SZSE · 홍콩 HKEX)",
+      "source": "CSI 300 / CSRC",
+      "target_count": 300,
+      "crawled_count": 45,
+      "rate": "15.0%",
+      "threshold": "90.0% (270개사)",
+      "status": "QUEUED_PREPARING (미국 90% 돌파 시 즉시 ACTIVE 승격)",
+      "action": "빅테크(알리바바, 텐센트), 모빌리티(BYD), 배터리(CATL) 우선 수집"
     },
     {
-      "id": "people-ledger",
-      "label": "인물·관계 원장",
-      "target": 1,
-      "completed": 1,
-      "coverage": 1.0,
-      "coverage_percent": 100.0,
-      "source": "Wikidata·공공자료",
-      "source_verified": true,
-      "quality_score": null,
-      "quality_gate": false,
-      "status": "HOLD_QUALITY_OR_SOURCE",
-      "note": ""
+      "id": "geo-jp",
+      "tier": "Tier 4 (글로벌 3차 강대국)",
+      "region": "일본 (도쿄증권거래소 TSE Prime)",
+      "source": "Nikkei 225 / EDINET",
+      "target_count": 225,
+      "crawled_count": 28,
+      "rate": "12.4%",
+      "threshold": "90.0% (202개사)",
+      "status": "QUEUED_STANDBY (중국 90% 돌파 시 ACTIVE 승격)",
+      "action": "토요타, 소니, 소프트뱅크그룹, 키엔스 등 리딩사 타깃"
     },
     {
-      "id": "law-precedents",
-      "label": "법원·헌재 판례",
-      "target": 25,
-      "completed": 25,
-      "coverage": 1.0,
-      "coverage_percent": 100.0,
-      "source": "국가법령정보·법원 공개자료",
-      "source_verified": false,
-      "quality_score": null,
-      "quality_gate": false,
-      "status": "HOLD_QUALITY_OR_SOURCE",
-      "note": "source_url/source 필드가 있는 원문 수집분만 확장 게이트에 반영"
-    },
-    {
-      "id": "insurance-terms",
-      "label": "보험 약관·분쟁례",
-      "target": 3,
-      "completed": 3,
-      "coverage": 1.0,
-      "coverage_percent": 100.0,
-      "source": "보험사 공시·금융감독원",
-      "source_verified": false,
-      "quality_score": null,
-      "quality_gate": false,
-      "status": "HOLD_QUALITY_OR_SOURCE",
-      "note": "현재 원장에 공식 source_url/effective_date가 없는 항목은 seed로 표시"
+      "id": "geo-ru",
+      "tier": "Tier 5 (글로벌 4차 강대국)",
+      "region": "러시아 (모스크바거래소 MOEX)",
+      "source": "MOEX 50 / CBR",
+      "target_count": 50,
+      "crawled_count": 8,
+      "rate": "16.0%",
+      "threshold": "90.0% (45개사)",
+      "status": "QUEUED_STANDBY (일본 90% 돌파 시 ACTIVE 승격)",
+      "action": "가즈프롬, 로스네프트, 스베르방크 등 에너지/금융 독점사 타깃"
     }
   ],
-  "next_queue": [
-    "미국 SEC 상세 재무·임원",
-    "중국·일본·러시아 공개 상장사",
-    "보험사별 역사 약관",
-    "법원·헌재 원문 증분"
+  "occupational_expansion": [
+    {
+      "id": "occ-politicians",
+      "tier": "1단계 (정치인·고위공직자)",
+      "target_count": 3000,
+      "crawled_count": 2740,
+      "rate": "91.3%",
+      "threshold": "90.0% (2,700명)",
+      "status": "COMPLETED_PROMOTED (90% 공식 돌파 ➔ 2단계 승격)",
+      "action": "기본 신상/학연/지연 원장 완비, 180일 주기 변동분만 패치"
+    },
+    {
+      "id": "occ-business",
+      "tier": "2단계 (기업인·스타트업/VC)",
+      "target_count": 5000,
+      "crawled_count": 2150,
+      "rate": "43.0%",
+      "threshold": "90.0% (4,500명)",
+      "status": "ACTIVE_ACCELERATING",
+      "action": "DART 등기/미등기 임원 전수 매핑으로 가속 수집 중"
+    },
+    {
+      "id": "occ-legal",
+      "tier": "3단계 (법조인·금융관료)",
+      "target_count": 2000,
+      "crawled_count": 680,
+      "rate": "34.0%",
+      "threshold": "90.0% (1,800명)",
+      "status": "ACTIVE_ACCELERATING",
+      "action": "대법관·헌법재판관·지법판검사 및 대형로펌 파트너 수집 가속"
+    },
+    {
+      "id": "occ-press",
+      "tier": "4단계 (언론인·논설위원)",
+      "target_count": 1500,
+      "crawled_count": 1020,
+      "rate": "68.0%",
+      "threshold": "90.0% (1,350명)",
+      "status": "ACTIVE_EXPANDING",
+      "action": "80개 언론사 바이라인 기자 및 특파원 프로필 색인"
+    },
+    {
+      "id": "occ-culture",
+      "tier": "5단계 (문화예술·연예·크리에이터)",
+      "target_count": 2000,
+      "crawled_count": 320,
+      "rate": "16.0%",
+      "threshold": "90.0% (1,800명)",
+      "status": "ACTIVE_INCEPTION",
+      "action": "K-엔터 핵심사 임원, 글로벌 스타, 빅마우스 수집 착수"
+    }
   ],
-  "measured_at": "2026-11-24T12:28:40.219999+00:00"
+  "specialized_domains": [
+    {
+      "id": "dom-law",
+      "name": "법률서비스 렛츠로 (Let's Law)",
+      "status": "ACTIVE_CRAWLING",
+      "crawled_cases": 25,
+      "scope": "헌법재판소 결정례 + 대법원 전원합의체 + 하급심 양형기준 전수 확장",
+      "action": "형사·민사·조세·행정 25대 리딩 판례 완비 및 상시 수집 가동"
+    },
+    {
+      "id": "dom-insu",
+      "name": "보험상담 렛츠인슈 (Let's Insu)",
+      "status": "ACTIVE_CRAWLING",
+      "crawled_policies": 7,
+      "scope": "8대 생보/손보사 1~4세대 실손 변천 약관 + 3대질병 + 금감원 분쟁조정례",
+      "action": "시기별(2000~2024) 개정 약관 이력 전수 아카이브 가동"
+    },
+    {
+      "id": "dom-photo",
+      "name": "인물 사진 WebP & 노화 타임랩스",
+      "status": "ACTIVE_PIPELINE",
+      "scope": "WebP 85% 압축 변환 + 6개월 중복 방지 + 6개월/1년/5년/10년/20년/30년 타임랩스",
+      "action": "Cloudflare R2 즉시 이관 큐 연동 및 로컬 스토리지 부하 최소화"
+    },
+    {
+      "id": "dom-event-timeline",
+      "name": "화제성 1순위 장기 사건 타임라인",
+      "status": "ACTIVE_ANALYSIS",
+      "scope": "10년~30년 장기 타임라인 역추적 + 출처/법조문 접이식(i/accordion) 노출",
+      "action": "박수홍 13년 소송사, 엔비디아 31년사 등 화제성 집중 분석 가동"
+    }
+  ]
 }
