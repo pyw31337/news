@@ -1,88 +1,183 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-24 05:44:14",
+  "updated_at": "2026-11-24 06:28:58",
   "date": "2026-11-24",
   "total_issues": 10,
-  "average_quality": 0.89,
+  "average_quality": 0.92,
   "issues": [
     {
-      "id": "i82552a7e",
-      "title": "젠슨황 복귀시킨 트럼프, 엔비디아 급등에 최대 221억 원 수익",
-      "episode": "episode:adf13b0e08a5f3",
+      "id": "ibbbcd244",
+      "title": "윤서인 “이승환에 ‘이혼당한 선동꾼’ 발언, 모욕 의도 없었다”",
+      "episode": "episode:ec03f2ffedfeb6",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "gaps": [
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9a2e2395",
+      "title": "\"정무적 부담 있지만\"... '조희대 탄핵' 밀어붙이는 민주당 속내",
+      "episode": "episode:ebf57cf042ea60",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "일반 보도",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9f88d46b",
+      "title": "김민석, 'SNS 폭주' 정청래에…\"노크멘트, 지지율 분발할 것\"",
+      "episode": "episode:bc5fafc73a4473",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 20,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i015acd87",
+      "title": "트럼프가 빨간 브래지어를 치켜든 젠슨 황 합성사진 공유한 이유",
+      "episode": "episode:ac39cd45f7efff",
       "quality": 1.0,
       "stages": [
         "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 37,
+      "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iee5f9701",
+      "title": "[속보] 엔비디아 이사회, 젠슨 황 CEO 복귀 결정",
+      "episode": "episode:32f82c39383314",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i32323eeb",
+      "title": "“대리만 불렀으면 됐잖아”…고경표 경찰 조사에 쓴소리 한 개그맨",
+      "episode": "episode:286db4e79310d5",
+      "quality": 0.76,
+      "stages": [
+        "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
         "발단·의혹",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id9f979fa",
+      "title": "젠슨 황 돌아오자 코스피도 살아났다…장중 5000선 탈환",
+      "episode": "episode:ecf3ef068abe58",
+      "quality": 1.0,
+      "stages": [
+        "발단·의혹",
+        "일반 보도",
         "사법·처분",
         "파장·후속",
         "입장·공방",
         "수사·대응"
       ],
       "gaps": [],
-      "duplicate_candidates": 35,
-      "event_count": 22,
+      "duplicate_candidates": 33,
+      "event_count": 23,
       "evidence_rate": 1.0
     },
     {
-      "id": "i1b18bbbf",
-      "title": "[속보]李대통령 \"12월3일, 국가기념일 '국민주권의 날' 지정 안건 처리 예정\"",
-      "episode": "episode:22ec04ddd49df0",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 39,
-      "event_count": 64,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i10a10a1c",
-      "title": "\"당일 전과목 0점…최대 퇴학\" 중고교 내신에도 칼 뽑았다",
-      "episode": "episode:25accc96863ff2",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 23,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib9ec70ec",
-      "title": "신세계백화점 폭파 협박범, 울산 사는 중학생으로 확인",
-      "episode": "episode:67428d20ad0c07",
-      "quality": 0.66,
+      "id": "i70853317",
+      "title": "삼성전자 2027년 정기 임원 인사 명단",
+      "episode": "episode:9de32adda5156f",
+      "quality": 0.92,
       "stages": [
         "사법·처분",
+        "파장·후속",
+        "일반 보도",
         "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "파장·후속"
+        "입장·공방"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 3,
+      "duplicate_candidates": 22,
+      "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "i8bd7a44c",
-      "title": "\"러 군용기 카디즈 진입\"...울릉도에 한때 경계경보",
-      "episode": "episode:c1054f0412f317",
+      "id": "i77ab91da",
+      "title": "[포토] 젠슨 황 복귀 발표에 분주한 트레이더들",
+      "episode": "episode:6a6a018590d9e7",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 18,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id1724162",
+      "title": "[현장] AWS, 20년 클라우드 공식 깬다…AI 에이전트 시대 개막",
+      "episode": "episode:7f93450f30afe8",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -93,189 +188,8 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 26,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i0aa813a1",
-      "title": "삼성전자, 9년만에 최소 131명 승진…반도체서만 70명 발탁(종합2보)",
-      "episode": "episode:f9df13ee8bc757",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i9fd6a06b",
-      "title": "이승환에 “이혼 당하고 정치 망상”…윤서인 측 “모욕 의도 없었다”",
-      "episode": "episode:38e7aee1a012aa",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "gaps": [
-        "수사·대응",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if978949a",
-      "title": "‘음주운전’ 배우 고경표, 첫 경찰 조사…“무책임한 모습, 죄송해”",
-      "episode": "episode:51285de9d49317",
-      "quality": 0.84,
-      "stages": [
-        "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1e572424",
-      "title": "\"대통령이 CEO까지 정하나\"…트럼프 나서자 뒤집힌 엔비디아 [영상]",
-      "episode": "episode:854681431e71a9",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if68e1f2d",
-      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
-      "episode": "episode:87c2b2d986a387",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "수사·대응",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 29,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i32f6a682",
-      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
-      "episode": "episode:bb1f3458304a26",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 19,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8e8c54ad",
-      "title": "코스피, 외국인 ‘사자’ 강세에 5000선 탈환… 코스닥도 4%대↑",
-      "episode": "episode:a720e67792851b",
-      "quality": 1.0,
-      "stages": [
-        "발단·의혹",
-        "사법·처분",
-        "수사·대응",
-        "일반 보도",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 32,
-      "event_count": 24,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3cea7471",
-      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
-      "episode": "episode:28b5802722ebe0",
-      "quality": 0.84,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i14bfd775",
-      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
-      "episode": "episode:332016de20ed99",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "id0d27ff9",
-      "title": "장애 아들 앞 폭행… ‘김창민 감독 살해’ 피의자들 징역 12년·3년",
-      "episode": "episode:f616ea440abebf",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "사법·처분",
-        "입장·공방",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 39,
+      "duplicate_candidates": 23,
+      "event_count": 9,
       "evidence_rate": 1.0
     }
   ]
