@@ -1,33 +1,52 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-24 20:59:25",
+  "updated_at": "2026-11-24 21:14:13",
   "date": "2026-11-25",
   "total_issues": 10,
-  "average_quality": 0.84,
+  "average_quality": 0.85,
   "issues": [
     {
-      "id": "i7cb9982e",
-      "title": "'12·3 국민주권의 날' 기념일 지정...이 대통령 \"위대한 국민 승리\"",
-      "episode": "episode:526e72d2f04226",
-      "quality": 0.84,
+      "id": "ic9fda1bf",
+      "title": "'12·3 국민주권의 날' 기념일 지정…정부·국회 첫 공동 기념식",
+      "episode": "episode:4e614473dbb7a9",
+      "quality": 1.0,
       "stages": [
+        "일반 보도",
         "수사·대응",
         "파장·후속",
-        "일반 보도"
+        "사법·처분",
+        "입장·공방"
       ],
       "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 35,
-      "event_count": 26,
+      "duplicate_candidates": 32,
+      "event_count": 45,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i487476c9",
+      "title": "젠슨 황, 11일 만에 전격 복귀…엔비디아 30%대 급등",
+      "episode": "episode:5b4d5846d755c7",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "파장·후속",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 43,
+      "event_count": 29,
       "evidence_rate": 1.0
     },
     {
       "id": "iec4dc99e",
       "title": "오세훈 “특검·탄핵 얘기하자, 李대통령 의사봉 3번 치고 자리 떠”",
-      "episode": "episode:2636c18bbc3434",
+      "episode": "episode:3fecc08fbc1d47",
       "quality": 0.92,
       "stages": [
         "수사·대응",
@@ -40,13 +59,13 @@
         "파장·후속"
       ],
       "duplicate_candidates": 29,
-      "event_count": 12,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
       "id": "ib281729a",
       "title": "\"젠슨황, 알려진 두명 말고도 '추가 불륜' 이사회에 털어놔\"",
-      "episode": "episode:dacad1a19ee26f",
+      "episode": "episode:714d94a8a8c22d",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -58,34 +77,34 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 49,
-      "event_count": 24,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7f2d357c",
-      "title": "'젠슨 황 체제 재가동' 엔비디아, AI 생태계 확장 속도 내나…韓기업들 다시 시동",
-      "episode": "episode:3af387f62ab6f6",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "사법·처분",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 42,
-      "event_count": 30,
+      "duplicate_candidates": 46,
+      "event_count": 18,
       "evidence_rate": 1.0
     },
     {
       "id": "i5c998007",
       "title": "女가수 히잡 없이 노래했다고... 이란, 태형 74대 집행",
       "episode": "episode:f4b8e84424d2d0",
-      "quality": 0.48,
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id75d6f66",
+      "title": "러 군용기 울릉도 근접을 北항공기 추정 영공 침범으로 경계경보",
+      "episode": "episode:67388fa828835d",
+      "quality": 0.58,
       "stages": [
         "입장·공방"
       ],
@@ -94,63 +113,62 @@
         "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 26,
+      "duplicate_candidates": 28,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ibbbcd244",
+      "title": "윤서인 “이승환에 ‘이혼당한 선동꾼’ 발언, 모욕 의도 없었다”",
+      "episode": "episode:5ceee30d1cbf23",
+      "quality": 0.56,
+      "stages": [
+        "사법·처분",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 18,
       "event_count": 2,
       "evidence_rate": 1.0
     },
     {
-      "id": "ieccbcde9",
-      "title": "트럼프·젠슨 황 ‘위험한 거래’",
-      "episode": "episode:0c69bc385bf3f3",
+      "id": "i07900ba6",
+      "title": "트럼프가 밀고 밴스가 뛰었다…미국이 젠슨 황을 놓지 못한 이유",
+      "episode": "episode:6309da7a442f12",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "사법·처분",
         "입장·공방",
         "발단·의혹",
-        "수사·대응",
-        "파장·후속"
+        "파장·후속",
+        "수사·대응"
       ],
       "gaps": [],
-      "duplicate_candidates": 34,
-      "event_count": 73,
+      "duplicate_candidates": 39,
+      "event_count": 78,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6714d152",
-      "title": "'리트 만점자' 생명과학 과외 교사, 25일 경찰 참고인 조사",
-      "episode": "episode:0b52d96ab57f1b",
-      "quality": 0.84,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 42,
-      "event_count": 15,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1109a4fe",
-      "title": "임지연·이도현, 교제 4년 만에 결별…\"좋은 동료로 남기로\"",
-      "episode": "episode:f493100d2fd9f9",
+      "id": "ica646e48",
+      "title": "초등학생 숙박업소로 불러내 술 먹이고 성폭행…30대 강남 유명 학원장 구속",
+      "episode": "episode:8e539483de57cc",
       "quality": 0.76,
       "stages": [
         "일반 보도",
-        "수사·대응"
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
-      "duplicate_candidates": 23,
-      "event_count": 5,
+      "duplicate_candidates": 27,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
@@ -170,24 +188,6 @@
       ],
       "duplicate_candidates": 28,
       "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie150fff8",
-      "title": "\"여기 내 자리야\" 표 없이 우긴 'KTX 빌런'…1시간 만에 강제 하차 [영상]",
-      "episode": "episode:2125c5730bf8e2",
-      "quality": 0.76,
-      "stages": [
-        "수사·대응",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 19,
-      "event_count": 6,
       "evidence_rate": 1.0
     }
   ]

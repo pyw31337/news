@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-25",
-  "generated_at": "2026-11-25T05:59:26+09:00",
+  "generated_at": "2026-11-25T06:14:14+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,113 @@
   },
   "candidates": [
     {
-      "issue_id": "ieccbcde9",
-      "title": "트럼프·젠슨 황 ‘위험한 거래’",
+      "issue_id": "i487476c9",
+      "title": "젠슨 황, 11일 만에 전격 복귀…엔비디아 30%대 급등",
+      "category": "경제",
+      "rank": 2,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "엔비디아의 젠슨 황 최고경영자가 사임 11일 만인 23일 전격 복귀하며 글로벌 증시와 국내 코스피가 큰 폭으로 반등했다.",
+        "\"차안에서 펑펑 울었다\"…젠슨 황 복귀에도 회복 못한 '최고층 개미'",
+        "젠슨 황 엔비디아 최고경영자(CEO) 복귀 호재로 국내 증시가 급등한 가운데 증시 대기자금인 투자자...",
+        "그러나 20일 코스피 지수가 5% 하락한 데 이어 23일에도 3% 내리자 저점 매수를 노린 투자자들의 자금이 증시로...",
+        "젠슨 황 돌아오자 코스피도 살아났다…장중 5000선 탈환"
+      ],
+      "sources": [
+        {
+          "press": "뉴스1",
+          "title": "\"차안에서 펑펑 울었다\"…젠슨 황 복귀에도 회복 못한 '최고층 개미'",
+          "url": "https://n.news.naver.com/article/421/0009306537"
+        },
+        {
+          "press": "sedaily.com",
+          "title": "“삼전닉스 지금이 저점?”…증시 대기자금 85조로 꿈틀 [코주부]",
+          "url": "https://n.news.naver.com/mnews/article/011/0004685817?sid=101"
+        },
+        {
+          "press": "비즈워치",
+          "title": "젠슨 황 돌아오자 코스피도 살아났다…장중 5000선 탈환",
+          "url": "https://n.news.naver.com/article/648/0000052913"
+        },
+        {
+          "press": "한겨레",
+          "title": "6% 급등한 코스피 5000선 턱걸이…“젠슨 황 복귀는 단기 호재”",
+          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0zTHl0WU42UDJoSncycGg1Rm93OTdldkpHZXRIUGFHOFo5dmhhWVZHYmg3Rjd4bnltMXFJNm9JeFdjR0g4NmhfUmRVSzVGeFptVkJsX1FGSDBxM2hNcEpaWlFhQlllcGc?oc=5"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "엔비디아의 젠슨 황 최고경영자가 사임 11일 만인 23일 전격 복귀하며 글로벌 증시와 국내 코스피가 큰 폭으로 반등했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "젠슨 황 엔비디아 최고경영자(CEO) 복귀 호재로 국내 증시가 급등한 가운데 증시 대기자금인 투자자..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "그러나 20일 코스피 지수가 5% 하락한 데 이어 23일에도 3% 내리자 저점 매수를 노린 투자자들의 자금이 증시로..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "지수 회복에도 불구하고 투자자들의 실망감이 표출되며, 이번 상승이 단기 호재에 그칠 것이라는 신중론이 제기되었다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "발단·의혹"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i07900ba6",
+      "title": "트럼프가 밀고 밴스가 뛰었다…미국이 젠슨 황을 놓지 못한 이유",
       "category": "세계",
-      "rank": 6,
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -38,49 +141,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "이사회는 무슨 근거로 위험이 없다고 결론 내렸는가?”라고 적었다.",
-        "상원 정보위원장인 톰 코튼 공화당...",
-        "젠슨 황 사태는 그의 낙마인 1막, 복귀인 2막에 이어, 의회와 트럼프 대통령의 대결이라는 3막을 앞두고 있다.",
-        "엔비디아 수장 공백 11일 만에 해소 투자·보증 ‘엄격 검토’는 변수로 트럼프 과세 경고에 美 고객 불투명...",
-        "지난 6월 이해진 네이버 이사회 의장과 손잡고 이 사업을 함께 짠 젠슨 황 엔비디아 최고경영자(CEO)가 사임..."
+        "해당 의혹에는 젠슨 황 엔비디아 CEO는 물론 도널드 트럼프 대통령 연루 가능성까지 제기된 상태다.",
+        "USTR은 16개 경제주체가 보조금 지원 등을 통한 과잉생산으로 미국 기업에 불리한 환경을 유발했다며 무역법 301조에...",
+        "트럼프 대통령은 지난 22일 자신의 사회관계망서비스(SNS) 트루스소셜에서도 민주당의 중간선거 승리 이후 미국 증시의 시가총액이 6조달러 이상 감소했다고 주장한 바 있다.",
+        "다만 최근 뉴욕증시의 급락에는 젠슨 황...",
+        "로이터=연합뉴스젠슨 황 엔비디아 최고경영자(CEO)가 경영 일선에 복귀한 지 하루 만에 직원들에게 사과했다."
       ],
       "sources": [
         {
-          "press": "hani.co.kr",
-          "title": "젠슨 황 복귀로 번진 ‘워싱턴 권력 투쟁 3막’…왜 공화당은 충격에 빠...",
-          "url": "https://n.news.naver.com/mnews/article/028/0002833811?sid=104"
+          "press": "yna.co.kr",
+          "title": "美 '과잉생산 관세' 이르면 오늘 발표…외신 \"韓 15% 유지 예상\"(종합2보...",
+          "url": "https://n.news.naver.com/mnews/article/001/0016461612?sid=104"
         },
         {
-          "press": "dnews.co.kr",
-          "title": "젠슨 황 복귀로 한숨 돌린 네이버…‘순환 금융’은 숙제",
-          "url": "https://www.dnews.co.kr/uhtml/view.jsp?idxno=202611241046052200341"
+          "press": "biz.heraldcorp.com",
+          "title": "선거 패배 한탄한 트럼프…“이겼다면 6조달러 더 벌었을 것”[1일1트]",
+          "url": "https://n.news.naver.com/mnews/article/016/0002727978?sid=104"
         },
         {
-          "press": "view.asiae.co.kr",
-          "title": "젠슨 황, 임직원에 사과…\"심리 상담 받고 있다\"",
-          "url": "https://n.news.naver.com/mnews/article/277/0005847295?sid=101"
+          "press": "bntnews.co.kr",
+          "title": "젠슨황 복귀…“끔찍한 실수 저질렀다”",
+          "url": "https://www.bntnews.co.kr/article/view/bnt202611250007"
         },
         {
-          "press": "g-enews.com",
-          "title": "[김대호 인물] 트럼프 이해충돌 \"엔비디아 대왕고래 \"",
-          "url": "https://www.g-enews.com/view.php?ud=202611241622055830906806b77b_1"
+          "press": "biz.heraldcorp.com",
+          "title": "젠슨 황 복귀 밀어붙인 트럼프…안보 논란 커지자 핵심 참모들은 ‘침묵...",
+          "url": "https://n.news.naver.com/mnews/article/016/0002727980?sid=104"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "이사회는 무슨 근거로 위험이 없다고 결론 내렸는가?”라고 적었다."
+          "evidence": "해당 의혹에는 젠슨 황 엔비디아 CEO는 물론 도널드 트럼프 대통령 연루 가능성까지 제기된 상태다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "엔비디아 수장 공백 11일 만에 해소 투자·보증 ‘엄격 검토’는 변수로 트럼프 과세 경고에 美 고객 불투명..."
+          "evidence": "트럼프 대통령은 지난 22일 자신의 사회관계망서비스(SNS) 트루스소셜에서도 민주당의 중간선거 승리 이후 미국 증시의 시가총액이 6조달러 이상 감소했다고 주장한 바 있다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "젠슨 황 사태는 그의 낙마인 1막, 복귀인 2막에 이어, 의회와 트럼프 대통령의 대결이라는 3막을 앞두고 있다."
+          "evidence": "USTR은 16개 경제주체가 보조금 지원 등을 통한 과잉생산으로 미국 기업에 불리한 환경을 유발했다며 무역법 301조에..."
         },
         {
           "panel": 4,
@@ -128,170 +231,65 @@
       }
     },
     {
-      "issue_id": "i6714d152",
-      "title": "'리트 만점자' 생명과학 과외 교사, 25일 경찰 참고인 조사",
-      "category": "사회",
-      "rank": 7,
-      "priority_score": 37,
+      "issue_id": "ib281729a",
+      "title": "\"젠슨황, 알려진 두명 말고도 '추가 불륜' 이사회에 털어놔\"",
+      "category": "IT",
+      "rank": 4,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
-        "[단독]‘리트 만점자’ 생명과학 과외 교사, 25일 경찰 참고인 조사",
-        "“리트 만점자, 2024년 고대 입학 때 커닝 돕는 조직 의심”",
-        "법학적성시험(LEET·리트) 만점자인 고 이진우씨에게 지난해 수능 직전 과외 수업을 했다고 주장한 A씨가 25일 경찰에 참고인으로 출석한다.",
-        "24일 경향신문 취재를 종합하면, 지난해 이씨에게 대학수학능력시험(수능)...",
-        "(LEET) 만점자 이진우 씨(32) 사건을 수사 중인 경찰이 이 씨가 출연한 유튜브 영상을 확보해 분석 중이다."
+        "엔비디아의 젠슨 황 CEO가 사임 11일 만에 복귀를 결정하는 과정에서, 기존에 알려진 두 건 외에 추가적인 혼외관계가 있었음을 이사회에 시인했다.",
+        "복귀엔 성공, ‘바람둥이’인 건 맞다…젠슨 황, 2건 외 불륜 더 있어",
+        "[속보]‘돌아오려 솔직하게…’ 젠슨황, 이사회에 추가 불륜 2명 고백",
+        "황 CEO도 엔비디아에 복귀하기 위해 한껏 몸을 낮췄다.",
+        "그는 이사회 비공개 회의에 참석해 지금까지 알려진 두 건의 불륜 사실 외에 추가적인 불륜을 털어놨다고 한다."
       ],
       "sources": [
         {
-          "press": "경향신문",
-          "title": "[단독]‘리트 만점자’ 생명과학 과외 교사, 25일 경찰 참고인 조사",
-          "url": "https://n.news.naver.com/article/032/0003484750"
+          "press": "디지털타임스",
+          "title": "복귀엔 성공, ‘바람둥이’인 건 맞다…젠슨 황, 2건 외 불륜 더 있어",
+          "url": "https://n.news.naver.com/article/029/0003060938"
         },
         {
-          "press": "주간경향",
-          "title": "“리트 만점자, 2024년 고대 입학 때 커닝 돕는 조직 의심”",
-          "url": "https://n.news.naver.com/article/033/0000053607"
+          "press": "문화일보",
+          "title": "[속보]‘돌아오려 솔직하게…’ 젠슨황, 이사회에 추가 불륜 2명 고백",
+          "url": "https://n.news.naver.com/article/021/0002835209"
         },
         {
-          "press": "khan.co.kr",
-          "title": "[단독]‘리트 만점자’ 생명과학 과외 교사, 25일 경찰 참고인 조사",
-          "url": "https://n.news.naver.com/mnews/article/032/0003484750?sid=102"
+          "press": "chosun.com",
+          "title": "트럼프 ‘젠슨 황 구하기’… “안보 위협 없다” 이사진에 직접 전화 ...",
+          "url": "https://n.news.naver.com/mnews/article/023/0004011569?sid=104"
         },
         {
-          "press": "sedaily.com",
-          "title": "경찰, ‘LEET 만점자’ 시험지 공개 유튜브 영상 확보",
-          "url": "https://n.news.naver.com/mnews/article/011/0004685745?sid=102"
+          "press": "연합뉴스",
+          "title": "\"젠슨황, 알려진 두명 말고도 '추가 불륜' 이사회에 털어놔\"",
+          "url": "https://n.news.naver.com/article/001/0016461264"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "[단독]‘리트 만점자’ 생명과학 과외 교사, 25일 경찰 참고인 조사"
+          "evidence": "엔비디아의 젠슨 황 CEO가 사임 11일 만에 복귀를 결정하는 과정에서, 기존에 알려진 두 건 외에 추가적인 혼외관계가 있었음을 이사회에 시인했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "\"너 때문에 재수했잖아\"…리트 만점자 사망 뒤 나온 주장"
+          "evidence": "[속보]‘돌아오려 솔직하게…’ 젠슨황, 이사회에 추가 불륜 2명 고백"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "“리트 만점자, 2024년 고대 입학 때 커닝 돕는 조직 의심”"
+          "evidence": "복귀엔 성공, ‘바람둥이’인 건 맞다…젠슨 황, 2건 외 불륜 더 있어"
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ie150fff8",
-      "title": "\"여기 내 자리야\" 표 없이 우긴 'KTX 빌런'…1시간 만에 강제 하차 [영상]",
-      "category": "사회",
-      "rank": 10,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "\"내 자리야!\" 표도 없이 1시간 난동…결국 KTX 강제 하차",
-        "\"여기 내 자리야\" 표 없이 우긴 'KTX 빌런'…1시간 만에 강제 하차 [영상]",
-        "KTX 잘못 탄 뒤 “내 자리야!”…표도 없이 1시간 우긴 여성 결국",
-        "남의 좌석을 자신의 자리라며 승차권 제시와 하차를 거부한 여성이 KTX 열차 출발을 1시간 지연시켜 결국 대전역에서 강제 하차됐다.지난 23일 JTBC '사건반장'을 통해 KTX 열차에서 발생한 황당한 사건이 보도됐다.",
-        "승차권도 없이 다른 승객의 좌석을 자신의 자리라고 주장하던 여성 승객 때문에 KTX 열차가 장시간 출발하지 못하는 일이 발생했다."
-      ],
-      "sources": [
-        {
-          "press": "JTBC",
-          "title": "\"내 자리야!\" 표도 없이 1시간 난동…결국 KTX 강제 하차",
-          "url": "https://n.news.naver.com/article/437/0000522111"
-        },
-        {
-          "press": "파이낸셜뉴스",
-          "title": "\"여기 내 자리야\" 표 없이 우긴 'KTX 빌런'…1시간 만에 강제 하차 [영상]",
-          "url": "https://n.news.naver.com/article/014/0005608797"
-        },
-        {
-          "press": "중앙일보",
-          "title": "KTX 잘못 탄 뒤 “내 자리야!”…표도 없이 1시간 우긴 여성 결국",
-          "url": "https://n.news.naver.com/article/025/0003567613"
-        },
-        {
-          "press": "insight.co.kr",
-          "title": "\"여기 내 자리\" 우기며 KTX 열차 1시간 지연시킨 여성 승객, 대전역서 강...",
-          "url": "https://www.insight.co.kr/news/583368"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "\"내 자리야!\" 표도 없이 1시간 난동…결국 KTX 강제 하차"
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "승차권도 없이 다른 승객의 좌석을 자신의 자리라고 주장하던 여성 승객 때문에 KTX 열차가 장시간 출발하지 못하는 일이 발생했다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "\"여기 내 자리야\" 표 없이 우긴 'KTX 빌런'…1시간 만에 강제 하차 [영상]"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+          "evidence": "추가 불륜 사실이 확정적으로 보도되면서 황 CEO의 사생활 논란이 재점화되는 양상이다."
         }
       ],
       "visual_brief": {
@@ -328,11 +326,9 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.76,
+        "continuity_quality": 1.0,
         "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "사법·처분"
+          "발단·의혹"
         ],
         "no_generic_closing": true
       }
