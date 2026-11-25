@@ -1,50 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 20:53:31",
+  "updated_at": "2026-11-25 21:27:52",
   "date": "2026-11-26",
   "total_issues": 10,
-  "average_quality": 0.82,
+  "average_quality": 0.81,
   "issues": [
     {
-      "id": "i9992704f",
-      "title": "[속보] 미 USTR \"한국, 일본, EU 등 관세 15% 상한 유지\"",
-      "episode": "episode:d69c7f78af5ff1",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3eed955b",
-      "title": "상품 살 돈도 부족한 홈플러스…전국 67개점 다시 휴업",
-      "episode": "episode:0085687c0dd5b5",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ifb9508f9",
-      "title": "김민석 \"曺 대법원장 탄핵 신속 추진 위한 5당 연대 공식 제안\"",
-      "episode": "episode:db5fae716b6ae3",
+      "id": "if422691f",
+      "title": "조국, 與내홍에 \"도무지 이해 안 돼…김민석 총체적 책임져야\"",
+      "episode": "episode:5a62c5a7e46a3b",
       "quality": 0.92,
       "stages": [
         "수사·대응",
@@ -56,18 +20,18 @@
         "발단·의혹",
         "파장·후속"
       ],
-      "duplicate_candidates": 36,
-      "event_count": 24,
+      "duplicate_candidates": 34,
+      "event_count": 13,
       "evidence_rate": 1.0
     },
     {
-      "id": "i757de90e",
-      "title": "조희대 탄핵 추진에 일선 법원 첫 반발… 창원지법 \"헌법질서 위태롭게 해\"",
-      "episode": "episode:65d0e9d2b0c32e",
+      "id": "ib2fc684a",
+      "title": "창원지법 전체판사회의 \"법관 탄핵 추진, 사법권 독립·헌법 가치 훼손\"",
+      "episode": "episode:8290504238ebbb",
       "quality": 0.84,
       "stages": [
-        "사법·처분",
         "입장·공방",
+        "사법·처분",
         "일반 보도"
       ],
       "gaps": [
@@ -75,68 +39,51 @@
         "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 38,
-      "event_count": 11,
+      "duplicate_candidates": 36,
+      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "i8e7e001e",
-      "title": "노소영, 최태원 '9,440억 지급 카드' 거부...\"상고 취하해야\"",
-      "episode": "episode:765351f2ac093c",
-      "quality": 0.68,
+      "id": "ia89d5100",
+      "title": "이틀에 한 번 꼴로 사이드카 울렸다…널뛰는 코스피에 개미들 ‘공황’",
+      "episode": "episode:69904d0aee5b55",
+      "quality": 1.0,
       "stages": [
+        "파장·후속",
+        "일반 보도",
+        "수사·대응",
+        "사법·처분",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 61,
+      "event_count": 39,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i78eb9905",
+      "title": "美, '과잉생산' 추가 관세 발표…한국은 합의대로 15% 상한 유지",
+      "episode": "episode:c3edc9055a6885",
+      "quality": 0.76,
+      "stages": [
+        "사법·처분",
         "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "사법·처분"
+        "입장·공방",
+        "수사·대응"
       ],
-      "duplicate_candidates": 28,
+      "duplicate_candidates": 31,
       "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i12ccf53f",
-      "title": "'젠슨 황 랠리' 하루 만에 끝났다…코스피 6.16% 급락",
-      "episode": "episode:c94068bbfe33e7",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "입장·공방",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 41,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8e8abb26",
-      "title": "\"간호학교 출신\" 젠슨 황 내연녀 과거 밝혀졌다…아버지는 군수공장 사무원",
-      "episode": "episode:14e7cf88b77e5a",
-      "quality": 1.0,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "입장·공방",
-        "사법·처분",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 49,
-      "event_count": 34,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib4c52943",
-      "title": "'반갑다, 겨울아!'",
-      "episode": "episode:2e9de6dcb5161a",
+      "id": "i85f0af74",
+      "title": "9440억에 하루 1.3억 이자까지… 최태원·노소영의 엇갈린 ‘화해’ 셈법",
+      "episode": "episode:ae5b6e674b654a",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -146,36 +93,52 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 5,
-      "event_count": 11,
+      "duplicate_candidates": 30,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i051d6f60",
-      "title": "고경표 빼고 조진웅 못 빼고...방송가 고육지책",
-      "episode": "episode:174856bd4c65f9",
-      "quality": 0.84,
+      "id": "iea19c0d8",
+      "title": "'이진우 과외교사' 경찰 출석하며 \"명복을 빕니다, 하지만\"",
+      "episode": "episode:f6d5783202004d",
+      "quality": 0.76,
       "stages": [
-        "사법·처분",
-        "수사·대응",
-        "일반 보도"
+        "일반 보도",
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "파장·후속"
+        "사법·처분"
       ],
-      "duplicate_candidates": 27,
+      "duplicate_candidates": 29,
       "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "ic1a8b768",
-      "title": "가수 비, 920억에 산 강남 빌딩 가치가…5년 만에 '깜짝'",
-      "episode": "episode:e0fe50128770ad",
+      "id": "i8fd63583",
+      "title": "AI가 산불 감지… 세종, 24시간 감시체계 가동",
+      "episode": "episode:a4af2eb1343177",
       "quality": 0.76,
       "stages": [
-        "파장·후속",
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 13,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib31e1393",
+      "title": "청룡영화상 작품상에 '호프'…설경구·전도연 남녀주연상 석권",
+      "episode": "episode:8d54f07f628088",
+      "quality": 0.68,
+      "stages": [
         "일반 보도"
       ],
       "gaps": [
@@ -183,8 +146,44 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 19,
-      "event_count": 10,
+      "duplicate_candidates": 24,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i4e497e12",
+      "title": "가수 비, 920억에 강남 빌딩 샀는데 5년 만에 가격이…'깜짝'",
+      "episode": "episode:c137652b27e162",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 18,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i12f0fe95",
+      "title": "하루만에 끝난 ‘젠슨 황 효과’, 코스피 전날 상승분 모두 반납",
+      "episode": "episode:9f66916229da4c",
+      "quality": 1.0,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "수사·대응",
+        "사법·처분",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 41,
       "evidence_rate": 1.0
     }
   ]
