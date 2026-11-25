@@ -1,0 +1,388 @@
+ 
+
+
+<!DOCTYPE html>
+<html lang="ko" class="page-layout-desktop page-publication">
+<head>
+
+
+
+
+
+
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="mobile-web-app-capable" content="yes">
+
+
+<meta name="description" content="삼성화재해상보험주식회사의 홈페이지입니다. 애니카 자동차보험, Super보험, 실손보험 등 각종 보험상품 정보를 제공, 인터넷창구를 이용한 계약조회, 보험계약대출, 보상서비스 및 라이프케어, 멤버십서비스 등 다양한 서비스를 제공합니다, Samsung Fire & Marine Insurance Homepage,">
+<meta name="keywords" content="삼성화재, 삼성화재 해상보험, 삼성화재해상보험주식회사, samsungfire, Insurance, 보험, 보험회사, 손해보험, 자동차보험, 애니카, anycar, 좋은보험, 인터넷창구, 보험상품, 보상, 외국인보험, RC, 대출, 보험계약대출, 퇴직연금, 펀드, 운세, V3, 멤버십카드, the s">
+<meta name="author" content="삼성화재">
+
+
+<title>삼성화재</title>
+<link rel="stylesheet" href="/v2/resources/css/style.css?_v=202611252017"/> 
+
+<script type="text/javascript" src="/v2/resources/js/jquery3.min.js"></script>
+<script type="text/javascript" src="/v2/resources/js/vue.min.js"></script>
+<script type="text/javascript" src="/v2/resources/js/ui.base.js?_v=202611252017"></script>
+<script type="text/javascript" src="/sfmi/v2/ui/common/ih.common.js?_v=202611252017"></script>
+<script type="text/javascript" src="/sfmi/v2/ui/common/ih.common.log.js?_v=202611252017"></script>
+<script type="text/javascript" src="/sfmi/v2/ui/common/ih.common.cert.js?_v=202611252017"></script>
+<script type="text/javascript" src="/sfmi/ui/m/js/sfmi_nexus_client_b2c_min.js"></script>
+<script type="text/javascript">
+$plugins.page.pageNumber = 'J_030_020_000';
+window._ihPage = {							
+	stage : 'P', 
+	rver : '202611252017',						
+	pageNumber : 'J_030_020_000',			
+	screenId : 'N41014-006999',				
+	chnlCd : 'PC',					
+	params : '{&#034;screenId&#034;:[&#034;N41014-006999&#034;],&#034;pageNumber&#034;:[&#034;J_030_020_000&#034;],&#034;pageName&#034;:[&#034;보험상품공시&#034;]}',					
+	e2eYN : '',						
+	certYN : '',					
+	oldPageYN : '',			
+};
+window.logLevel = 99;
+
+
+/* 현장응답 설정 */
+if(!window.sfmijs) {
+    window.sfmijs = {};
+}
+if(!window.sfmijs.performance) {
+    window.sfmijs.performance = {};
+}
+if (!window.sfmijs.CLIENT_PERF_CHK) {
+	window.sfmijs.CLIENT_PERF_CHK = {};
+}
+sfmijs.PAGE_UUID = "d3e7403d-5097-40cd-b13d-ff10f398c02d";
+sfmijs.CLIENT_PERF_LOG_LEVEL = "MAJOR";
+sfmijs.CLIENT_PERF_CHK.SFMI_REQ_START_TIME = "0";
+sfmijs.CLIENT_PERF_CHK.BIZ_PRC_TIME = 0;
+sfmijs.CLIENT_PERF_CHK.NEXUS_PRC_TIME = 1;
+sfmijs.CLIENT_PERF_CHK.UI_RENDERING_START_TIME = new Date();
+sfmijs.CURRENT_STAGE = "P";
+</script>
+
+</head>
+<body>
+	<div id="skip"></div>
+	<div class="base-layer" id="baseLayer"></div>
+	<div class="wrapper" id="IH_IF_Terms" data-page-main="false">
+		<span class="pgr-tit">보험상품공시</span>
+      <header class="base-header" id="baseHeader"></header>
+      
+      <main class="base-main" id="baseMain">
+        <div class="breadcrumb-wrap">
+          <ol class="breadcrumb"></ol>
+        </div>
+        <div class="content">
+
+         <section class="section">
+            <div class="group">
+              <div class="wrap-tit-s space-reset-pb">
+                <h3 class="title-lg">
+                  <span class="txt">삼성화재 보험상품공시를 안내해 드려요</span>
+                </h3>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="group">
+              <div class="module-box option-bg option-search">
+                <div class="item-row option-array">
+                  <div class="unit filled">
+                    <div class="form-wrap">
+                      <div class="ui-select option-box outlined" fui-selectbox="">
+                        <select id="" title="검색 카테고리 선택" v-model="selBox">
+                          <option value="0">상품명</option>
+                          <option value="1" selected="">판매기간+상품명</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="unit filled item-col">
+                    <div class="item-row" v-if="1 == selBox">
+                      <div class="unit filled">
+                        <div class="form-wrap">
+                          <div class="input-wrap sm option-box w-16">
+                            <div class="inp-date" fui-datepicker="to:#datepickerTo1;keyControl:true;" id="datepickerFrom1">
+                              <input type="text" class="inp-base" title="판매기간 시작일" maxlength="10" placeholder="날짜 선택" id="stDay"  @blur="numChangeDate(1)" @input="chkDate(1)">
+                              <button type="button" class="btn-base ui-drop ui-datepicker-btn" title="판매기간 시작일">
+                                <span class="sr-only">달력</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="unit fixed unit-mark">
+                        <span>~</span>
+                      </div>
+                      <div class="unit filled">
+                        <div class="form-wrap">
+                          <div class="input-wrap sm option-box w-16">
+                            <div class="inp-date" fui-datepicker="from:#datepickerFrom1;keyControl:true;" id="datepickerTo1">
+                              <input type="text" class="inp-base" title="판매기간 종료일" maxlength="10" placeholder="날짜 선택" id="edDay" @blur="numChangeDate(2)" @input="chkDate(2)">
+                              <button type="button" class="btn-base ui-drop ui-datepicker-btn" title="판매기간 종료일">
+                                <span class="sr-only">달력</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="input-wrap sm option-box has-button search" fui-input="">
+                      <input type="text" class="inp-base" title="상품명 검색" id="searchBox"  v-model="searchBox" @keypress.enter="sendData">
+                      <div class="combine">
+                        <button type="button" class="btn ico-search" @click="sendData">
+                          <span class="sr-only">검색</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+         
+          <section class="section" viewid="J_030_020_001">
+            <div class="group">
+              <div class="list-head">
+                <h4 class="title-min">
+                  <span class="txt">검색결과 - 판매상품(총{{onSaleList.length}}건)</span>
+                </h4>
+              </div>
+              <div class="tbl-wrap">
+                <table class="tbl-base">
+                  <caption>
+                    <strong>검색결과 - 판매상품(총건)</strong>
+                    <span>상품종류, 상품명, 판매개시일, 사업방법서, 상품요약서, 보험약관</span>
+                  </caption>
+                  <colgroup>
+                    <col width="80px" />
+                    <col width="auto" />
+                    <col width="110px" />
+                    <col width="133px" />
+                    <col width="133px" />
+                    <col width="120px" />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th scope="col">상품종류</th>
+                      <th scope="col">상품명</th>
+                      <th scope="col">판매개시일</th>
+                      <th scope="col">사업방법서</th>
+                      <th scope="col">상품요약서</th>
+                      <th scope="col">보험약관</th>
+                    </tr>
+                  </thead>
+                  <tbody v-if="onSaleList.length > 0">
+                    <tr v-for="(item, idx) in onSaleList" :key="idx">
+                      <td>{{item.productCategory}}</td>
+                      <td class="align-left">{{item.title}}</td>
+                      <td>{{item.productDay}}</td>
+                      <td>
+                        <div class="btn-wrap">
+                          <button type="button" class="btn outlined option-xsm option-round icon download" title="다운로드" v-bind:disabled ="item.method == ''" @click="fileDownload(item.method)">
+                            <span>사업방법서</span>
+                          </button>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="btn-wrap">
+                          <button type="button" class="btn outlined option-xsm option-round icon download" title="다운로드" v-bind:disabled ="item.summary == ''" @click="fileDownload(item.summary)">
+                            <span>상품요약서</span>
+                          </button>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="btn-wrap">
+                          <button type="button" class="btn outlined option-xsm option-round icon download" title="다운로드" v-bind:disabled ="item.policy == ''" @click="fileDownload(item.policy)">
+                            <span>보험약관</span>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+              <div class="list-nodata" v-if="true ==onSaleNoData">
+                <p>검색 결과가 없습니다.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" viewid="J_030_020_002">
+            <div class="group">
+              <div class="list-head">
+                <h4 class="title-min">
+                  <span class="txt">검색결과 - 판매중지상품(총{{comSaleList.length}}건)</span>
+                </h4>
+              </div>
+              <div class="tbl-wrap">
+                <table class="tbl-base">
+                  <caption>
+                    <strong>검색결과 - 판매상품(총2건)</strong>
+                    <span>상품종류, 상품명, 판매개시일, 사업방법서, 상품요약서, 보험약관</span>
+                  </caption>
+                  <colgroup>
+                    <col width="80px" />
+                    <col width="auto" />
+                    <col width="110px" />
+                    <col width="133px" />
+                    <col width="133px" />
+                    <col width="120px" />
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th scope="col">상품종류</th>
+                      <th scope="col">상품명</th>
+                      <th scope="col">판매개시일</th>
+                      <th scope="col">사업방법서</th>
+                      <th scope="col">상품요약서</th>
+                      <th scope="col">보험약관</th>
+                    </tr>
+                  </thead>
+                  <tbody v-if="comSaleList.length > 0">
+                    <tr v-for="(item, idx) in comSaleList" :key="idx">
+                      <td>{{item.productCategory}}</td>
+                      <td class="align-left">{{item.title}}</</td>
+                      <td>{{item.productDay}}</</td>
+                      <td>
+                        <div class="btn-wrap">
+                          <button type="button" class="btn outlined option-xsm option-round icon download" title="다운로드" v-bind:disabled ="item.method == ''"  @click="fileDownload(item.method)">
+                            <span>사업방법서</span>
+                          </button>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="btn-wrap">
+                          <button type="button" class="btn outlined option-xsm option-round icon download" title="다운로드" v-bind:disabled ="item.summary == ''" @click="fileDownload(item.summary)">
+                            <span>상품요약서</span>
+                          </button>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="btn-wrap">
+                          <button type="button" class="btn outlined option-xsm option-round icon download" title="다운로드" v-bind:disabled ="item.policy == ''" @click="fileDownload(item.policy)">
+                            <span>보험약관</span>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+              <div class="list-nodata"  v-if="true ==comSaleNoData">
+                <p>검색 결과가 없습니다.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <div class="group">
+              <div class="ui-tab" fui-tab="">
+                <div class="ui-tab-btns">
+                  <div class="ui-floating">
+                    <div class="ui-floating-wrap">
+                      <a href="javascript:;" class="ui-tab-btn selected" aria-selected="true"  @click="tabChage(1)"><span>판매상품</span></a>
+                      <a href="javascript:;" class="ui-tab-btn" aria-selected="false"  @click="tabChage(2)"><span>판매중지 상품</span></a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ui-tab-pnls">
+                  <section id="tab1">
+                    <div class="group space-mt-10">
+                      <div class="tbl-wrap option-fixed-head tbl-auto-slt type3">
+                        <table id="productListTable"  class="tbl-base">
+                          <caption>
+                            <strong>판매상품 선택</strong>
+                            <span>Step1. 상품종류, Step2. 상품명, Step3. 판매기간, 다운로드 구성</span>
+                          </caption>
+                          <colgroup>
+                            <col style="width: 100px" />
+                            <col style="width: 120px" />
+                            <col style="width: auto" />
+                            <col style="width: 213px" />
+                            <col style="width: 170px" />
+                          </colgroup>
+                          <thead>
+                            <tr>
+                              <th scope="col" colspan="2">Step1. 상품종류</th>
+                              <th scope="col">Step2. 상품명</th>
+                              <th scope="col">Step3. 판매기간</th>
+                              <th scope="col">다운로드</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <ul id="depth1" class="list-step-auto">
+                                  <li><a href="javascript:;" title="자동차" role="button"><span>자동차보험</span></a></li>
+                                  <li><a href="javascript:;"  title="장기" role="button"><span>장기보험</span></a></li>
+                                  <li><a href="javascript:;" title="일반보험" role="button"><span>일반보험</span></a></li>
+                                  <li><a href="javascript:;" title="퇴직연금" role="button"><span>퇴직연금</span></a></li>
+                                  <li><a href="javascript:;" title="퇴직보험" role="button"><span>퇴직보험</span></a></li>
+                                <ul>
+                              </td>
+                              <td>
+                                <ul id="product_gubun" class="list-step-auto">
+                                </ul>
+                              </td>
+                              <td>
+                                <ul id="product_list" class="list-step-auto">
+                                </ul>
+                              </td>
+                              <td>
+                                <ul id="date_list" class="list-step-auto">
+                                </ul>
+                              </td>
+                              <td class="step-download">
+                                <dl id="pdfDiv" style="display:none">
+                                  <dt><strong>상품명</strong></dt>
+                                  <dd>{{strPrdName}}</dd>
+                                  <dt><strong>판매기간</strong></dt>
+                                  <dd>{{strPeriod}}</dd>
+                                </dl>
+                                <div class="step-btn-wrap" id="pdfDiv2" style="display:none" >
+                                  <button id="pdfCnt_0" type="button" class="btn outlined option-xsm option-round icon download" disabled="disabled" title="새창열림_사업방법서 PDF보기" >
+                                    <span>사업방법서</span>
+                                  </button>
+                                  <button id="pdfCnt_1" type="button" class="btn outlined option-xsm option-round icon download" disabled="disabled" title="새창열림_상품요약서 PDF보기" >
+                                    <span>상품요약서</span>
+                                  </button>
+                                  <button id="pdfCnt_2" type="button" class="btn outlined option-xsm option-round icon download" disabled="disabled" title="새창열림_약관 PDF보기" >
+                                    <span>보험약관</span>
+                                  </button>
+                                  <button id="pdfCnt_3" type="button" class="btn outlined option-xsm option-round icon download" disabled="disabled" title="새창열림_상품설명서 PDF보기" >
+                                    <span>상품설명서</span>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </section>
+
+                 
+        </div>
+      </main>
+	 
+	 <footer class="base-footer" id="baseFooter"></footer>
+	</div>
+	<script type="text/javascript" src="/sfmi/v2/ui/info/IH_IF_Terms.js?_v=202611252017"></script>
+</body>
+</html>
