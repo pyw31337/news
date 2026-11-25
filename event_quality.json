@@ -1,33 +1,52 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 17:50:23",
+  "updated_at": "2026-11-25 18:25:07",
   "date": "2026-11-26",
   "total_issues": 10,
-  "average_quality": 0.82,
+  "average_quality": 0.87,
   "issues": [
     {
-      "id": "iffacd345",
+      "id": "i9992704f",
       "title": "[속보] 미 USTR \"한국, 일본, EU 등 관세 15% 상한 유지\"",
-      "episode": "episode:93ae3447f5c895",
+      "episode": "episode:393293d8a80b85",
       "quality": 0.84,
       "stages": [
         "일반 보도",
-        "파장·후속",
-        "발단·의혹",
         "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 24,
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 34,
       "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia42b0285",
-      "title": "[단독] 홈플러스, 67개 점포 27일 영업 중단…인수의향서 접수",
-      "episode": "episode:efd7b3daab2845",
+      "id": "iea26ca4e",
+      "title": "조국, 與내홍에 \"도무지 이해 안 돼…김민석 총체적 책임져야\"",
+      "episode": "episode:22f76eafcec66a",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia34e8b23",
+      "title": "홈플러스, 모레(27일)부터 전국 마트 영업 중단…“상품 수급 문제”",
+      "episode": "episode:c80dba0b030d0b",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -37,33 +56,14 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 29,
+      "duplicate_candidates": 30,
       "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "icd59108c",
-      "title": "김민석 “조희대 탄핵 신속 추진 5당 연대 공식 제안”",
-      "episode": "episode:ca8c48631a49cb",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "입장·공방",
-        "일반 보도",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 14,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i9ef64124",
-      "title": "노소영, 최태원 9440억원 받아도 세금은 '0원' 이유는",
-      "episode": "episode:720e0628fad7b9",
+      "id": "i85f0af74",
+      "title": "9440억에 하루 1.3억 이자까지… 최태원·노소영의 엇갈린 ‘화해’ 셈법",
+      "episode": "episode:105f2b31583147",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -78,9 +78,9 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i5d7461df",
-      "title": "한동훈 “조희대 탄핵 인용되면 난 사퇴…서영교, 의원직 걸어라 ”",
-      "episode": "episode:75850c1ec052cb",
+      "id": "id548fa75",
+      "title": "한동훈 \"조희대 탄핵 인용되면 의원직 던질 것…서영교·박선원도 걸어라\"",
+      "episode": "episode:5244d4d46dc404",
       "quality": 0.92,
       "stages": [
         "사법·처분",
@@ -100,44 +100,25 @@
       "id": "i941ee584",
       "title": "코스피, 반도체 투매 속 5%대 급락…매도→매수→매도 사이드카",
       "episode": "episode:22f3fcc92d4acd",
-      "quality": 0.92,
-      "stages": [
-        "파장·후속",
-        "사법·처분",
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 41,
-      "event_count": 41,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8d2c8153",
-      "title": "젠슨 황은 돌아왔는데…앨리스 황은 스캔들 터진 뒤 어디로 갔나",
-      "episode": "episode:eef452bec5b18b",
       "quality": 1.0,
       "stages": [
         "파장·후속",
-        "일반 보도",
-        "입장·공방",
         "사법·처분",
-        "수사·대응"
-      ],
-      "gaps": [
+        "일반 보도",
+        "수사·대응",
         "발단·의혹"
       ],
-      "duplicate_candidates": 42,
-      "event_count": 32,
+      "gaps": [
+        "입장·공방"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 43,
       "evidence_rate": 1.0
     },
     {
       "id": "i933c2b64",
       "title": "\"삼성전자, 믿었는데 너마저\" SK하닉 이어 10%대 급락…美 AI·관세 악재",
-      "episode": "episode:13dfd490812bee",
+      "episode": "episode:f2d3d3e6beb11e",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -148,45 +129,64 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 15,
-      "event_count": 8,
+      "duplicate_candidates": 20,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i652437d6",
+      "title": "北, 김여정 경고 하루 만에 스위스 외교사무소 전격 폐쇄…스위스 \"유감·대화 유지\"",
+      "episode": "episode:9c95be6a6ec642",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "사법·처분",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 29,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3f6cf216",
+      "title": "“앨리스 황, 中에 정보 넘겼다”... 트럼프 탄핵 불쏘시개 되나",
+      "episode": "episode:721ea5a07bcd3f",
+      "quality": 1.0,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "입장·공방",
+        "수사·대응",
+        "사법·처분",
+        "발단·의혹"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 26,
+      "event_count": 38,
       "evidence_rate": 1.0
     },
     {
       "id": "i051d6f60",
       "title": "고경표 빼고 조진웅 못 빼고...방송가 고육지책",
       "episode": "episode:174856bd4c65f9",
-      "quality": 0.76,
+      "quality": 0.84,
       "stages": [
+        "발단·의혹",
         "수사·대응",
-        "파장·후속",
         "일반 보도"
       ],
       "gaps": [
-        "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "사법·처분",
+        "파장·후속"
       ],
-      "duplicate_candidates": 23,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i4e497e12",
-      "title": "가수 비, 920억에 강남 빌딩 샀는데 5년 만에 가격이…'깜짝'",
-      "episode": "episode:fe36edcbdd68d3",
-      "quality": 0.76,
-      "stages": [
-        "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 17,
-      "event_count": 12,
+      "duplicate_candidates": 26,
+      "event_count": 7,
       "evidence_rate": 1.0
     }
   ]
