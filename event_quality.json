@@ -1,14 +1,33 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 13:01:27",
+  "updated_at": "2026-11-25 13:29:54",
   "date": "2026-11-25",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.86,
   "issues": [
     {
-      "id": "i1c3c9a13",
-      "title": "[속보] 노소영, 최태원 '9440억원 지급' 화해 요청 거부…\"상고 취하하라\"",
-      "episode": "episode:87e894d14e183b",
+      "id": "i5423f712",
+      "title": "또 사이드카…갈피 못 잡고 요동치는 2026 코스피",
+      "episode": "episode:92a779267b9376",
+      "quality": 1.0,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "수사·대응",
+        "사법·처분",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 37,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i190e3221",
+      "title": "노소영 측 “상고 취하하면 될 일”…9440억원 다 주겠다는 최태원, 왜 ‘화해권고’ 요청했나 [이슈+]",
+      "episode": "episode:fc18c2008b8db5",
       "quality": 0.76,
       "stages": [
         "수사·대응",
@@ -24,9 +43,9 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "iea6e79d2",
-      "title": "자금난 못 이긴 홈플러스...전 점포 27일부터 '임시휴업'",
-      "episode": "episode:0ff20ec65740d6",
+      "id": "ia42b0285",
+      "title": "[단독] 홈플러스, 67개 점포 27일 영업 중단…인수의향서 접수",
+      "episode": "episode:b521d439d0f67b",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -37,26 +56,7 @@
         "수사·대응"
       ],
       "duplicate_candidates": 27,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7ce9f3ca",
-      "title": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
-      "episode": "episode:315848fff28b28",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "파장·후속",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 25,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
@@ -68,123 +68,125 @@
         "입장·공방",
         "사법·처분",
         "일반 보도",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방",
         "수사·대응"
       ],
       "gaps": [
-        "사법·처분"
+        "발단·의혹",
+        "파장·후속"
       ],
       "duplicate_candidates": 27,
       "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "i7369c80b",
-      "title": "'리트 만점' 故 이진우 과외교사 경찰 출석…\"진실 묻어선 안 돼\"",
-      "episode": "episode:2d7569c17efc32",
-      "quality": 1.0,
+      "id": "ib3964b58",
+      "title": "\"죽음이 도주처 돼선 안 돼\"…수능 사흘 전 故 이진우 가르쳤다는 과외교사, 경찰 출석",
+      "episode": "episode:a50d15c4b86529",
+      "quality": 0.92,
       "stages": [
         "발단·의혹",
         "수사·대응",
         "입장·공방",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 41,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i59b91f5e",
-      "title": "진주서 공군 20대 여군 하사 숨진 채 발견…남긴 메모",
-      "episode": "episode:7f7a6e08c26400",
-      "quality": 0.84,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "입장·공방",
-        "사법·처분",
         "파장·후속"
       ],
-      "duplicate_candidates": 26,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie963e275",
-      "title": "\"대리비 5만원인데 팁도 5만원\"…고경표 태웠던 대리기사가 남긴 말",
-      "episode": "episode:9b632c49b35fc3",
-      "quality": 0.84,
-      "stages": [
-        "수사·대응",
-        "파장·후속",
-        "일반 보도"
-      ],
       "gaps": [
-        "발단·의혹",
-        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 38,
-      "event_count": 12,
+      "duplicate_candidates": 37,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "id126fc05",
-      "title": "트럼프 행정부, ‘젠슨 황 스캔들’ 와중 과잉생산 관세 발표 임박…韓 15% 관세율 지켜질 듯",
-      "episode": "episode:036a6e27a97d95",
+      "id": "ie002487f",
+      "title": "한동훈 \"조희대 탄핵 인용되면 사퇴\" 김용민 \"가벼운 태도 한심\"",
+      "episode": "episode:eab52148df6e85",
       "quality": 1.0,
       "stages": [
-        "일반 보도",
-        "사법·처분",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 45,
-      "event_count": 57,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie87d4b0a",
-      "title": "청년 연 15만원·소외계층 최대 21만원…전북 문화혜택 확대",
-      "episode": "episode:c51c913c013bf8",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 23,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie3ee5ebf",
-      "title": "\"스파이 의혹 젠슨 황 불륜 상대 앨리스 황, 오사카에도 법인 설립\"",
-      "episode": "episode:d9031f2775a16d",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
         "수사·대응",
+        "사법·처분",
+        "파장·후속",
+        "일반 보도",
         "입장·공방"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 42,
-      "event_count": 15,
+      "duplicate_candidates": 26,
+      "event_count": 17,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i8d2c8153",
+      "title": "젠슨 황은 돌아왔는데…앨리스 황은 스캔들 터진 뒤 어디로 갔나",
+      "episode": "episode:c679ddc6cbd0e9",
+      "quality": 1.0,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "입장·공방",
+        "사법·처분",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 49,
+      "event_count": 31,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id0661cf5",
+      "title": "삼성전자 1억 넣으면 3700만원 vs 1억5300만원…‘7만원·29만원 전망’ 뜯어보니 [숫자 뒤의 진실]",
+      "episode": "episode:02a6bb2ba071f6",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 13,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i051d6f60",
+      "title": "고경표 빼고 조진웅 못 빼고...방송가 고육지책",
+      "episode": "episode:1b006b44d4598a",
+      "quality": 0.84,
+      "stages": [
+        "사법·처분",
+        "수사·대응",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i755c98e5",
+      "title": "[신간] 2027 일본에서 유행하는 것들",
+      "episode": "episode:a4534a78a27d25",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 5,
+      "event_count": 12,
       "evidence_rate": 1.0
     }
   ]
