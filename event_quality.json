@@ -1,14 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 17:23:58",
+  "updated_at": "2026-11-25 17:50:23",
   "date": "2026-11-26",
   "total_issues": 10,
-  "average_quality": 0.84,
+  "average_quality": 0.82,
   "issues": [
     {
-      "id": "i9992704f",
+      "id": "iffacd345",
       "title": "[속보] 미 USTR \"한국, 일본, EU 등 관세 15% 상한 유지\"",
-      "episode": "episode:393293d8a80b85",
+      "episode": "episode:93ae3447f5c895",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -25,9 +25,9 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "ia34e8b23",
-      "title": "홈플러스, 모레(27일)부터 전국 마트 영업 중단…“상품 수급 문제”",
-      "episode": "episode:588c4011fdda63",
+      "id": "ia42b0285",
+      "title": "[단독] 홈플러스, 67개 점포 27일 영업 중단…인수의향서 접수",
+      "episode": "episode:efd7b3daab2845",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -37,82 +37,101 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 7,
+      "duplicate_candidates": 29,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "i500ec0ef",
-      "title": "김민석 '잘하고 있다' 14.1%... 조희대 탄핵 '반대' 48.2%",
-      "episode": "episode:5bce2097723406",
-      "quality": 1.0,
+      "id": "icd59108c",
+      "title": "김민석 “조희대 탄핵 신속 추진 5당 연대 공식 제안”",
+      "episode": "episode:ca8c48631a49cb",
+      "quality": 0.92,
       "stages": [
-        "일반 보도",
         "수사·대응",
         "입장·공방",
-        "사법·처분",
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
         "파장·후속"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9ef64124",
+      "title": "노소영, 최태원 9440억원 받아도 세금은 '0원' 이유는",
+      "episode": "episode:720e0628fad7b9",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5d7461df",
+      "title": "한동훈 “조희대 탄핵 인용되면 난 사퇴…서영교, 의원직 걸어라 ”",
+      "episode": "episode:75850c1ec052cb",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "입장·공방",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i941ee584",
+      "title": "코스피, 반도체 투매 속 5%대 급락…매도→매수→매도 사이드카",
+      "episode": "episode:22f3fcc92d4acd",
+      "quality": 0.92,
+      "stages": [
+        "파장·후속",
+        "사법·처분",
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 41,
+      "event_count": 41,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i8d2c8153",
+      "title": "젠슨 황은 돌아왔는데…앨리스 황은 스캔들 터진 뒤 어디로 갔나",
+      "episode": "episode:eef452bec5b18b",
+      "quality": 1.0,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "입장·공방",
+        "사법·처분",
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 15,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i513e2698",
-      "title": "최태원 \"9,440억 전액 주겠다\"‥노소영 \"화해 말고 상고 취하\"",
-      "episode": "episode:2e8231c54a02d4",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i13d24194",
-      "title": "한동훈 \"조희대 탄핵 인용하면 의원직 사퇴할 것…서영교, 박선원도 의원직 걸어라\"",
-      "episode": "episode:07f8056c3496f1",
-      "quality": 0.92,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i16ea188f",
-      "title": "“어제 팔걸 후회막급”…코스피 5000선 또 붕괴, 삼전닉스 7% 안팎↓[투자360]",
-      "episode": "episode:2b01263964a75b",
-      "quality": 1.0,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "사법·처분",
-        "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "수사·대응"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 38,
+      "duplicate_candidates": 42,
+      "event_count": 32,
       "evidence_rate": 1.0
     },
     {
@@ -129,64 +148,44 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 14,
+      "duplicate_candidates": 15,
       "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "ie963e275",
-      "title": "\"대리비 5만원인데 팁도 5만원\"…고경표 태웠던 대리기사가 남긴 말",
-      "episode": "episode:cad2d4fc0125f3",
-      "quality": 0.84,
+      "id": "i051d6f60",
+      "title": "고경표 빼고 조진웅 못 빼고...방송가 고육지책",
+      "episode": "episode:174856bd4c65f9",
+      "quality": 0.76,
       "stages": [
-        "발단·의혹",
         "수사·대응",
         "일반 보도"
       ],
       "gaps": [
-        "입장·공방",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i652437d6",
-      "title": "北, 김여정 경고 하루 만에 스위스 외교사무소 전격 폐쇄…스위스 \"유감·대화 유지\"",
-      "episode": "episode:72876ca896c8ea",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "입장·공방"
-      ],
-      "gaps": [
         "발단·의혹",
-        "수사·대응",
+        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 8,
+      "duplicate_candidates": 23,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "i322bc85c",
-      "title": "[속보]‘리트 만점자’ 생명과학 과외선생 “죽음이 범죄 도주처 되면 안돼···그래서 경찰 출석”",
-      "episode": "episode:722b46a066ea04",
-      "quality": 0.92,
+      "id": "i4e497e12",
+      "title": "가수 비, 920억에 강남 빌딩 샀는데 5년 만에 가격이…'깜짝'",
+      "episode": "episode:fe36edcbdd68d3",
+      "quality": 0.76,
       "stages": [
-        "수사·대응",
-        "사법·처분",
-        "일반 보도",
-        "파장·후속"
+        "파장·후속",
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방"
+        "입장·공방",
+        "수사·대응"
       ],
-      "duplicate_candidates": 40,
-      "event_count": 15,
+      "duplicate_candidates": 17,
+      "event_count": 12,
       "evidence_rate": 1.0
     }
   ]
