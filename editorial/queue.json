@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-25",
-  "generated_at": "2026-11-25T19:26:39+09:00",
+  "generated_at": "2026-11-25T19:56:15+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,134 +27,24 @@
   },
   "candidates": [
     {
-      "issue_id": "ia34e8b23",
-      "title": "홈플러스, 모레(27일)부터 전국 마트 영업 중단…“상품 수급 문제”",
+      "issue_id": "i64b5e9a1",
+      "title": "코스피, 하루 만에 6%대 급락…전날 급등분 반납",
       "category": "경제",
-      "rank": 4,
+      "rank": 3,
       "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "기업회생 절차를 밟고 있는 홈플러스가 상품 매입 자금 부족으로 인해 오는 27일부터 전국 67개 점포의 마트 영업을 임시 중단합니다.",
-        "홈플러스, 모레(27일)부터 전국 마트 영업 중단…“상품 수급 문제”",
-        "[단독] 홈플러스, 67개 점포 27일 영업 중단…인수의향서 접수",
-        "홈플러스, 27일 전 점포 임시 영업 중단…\"상품 매입자금 부족\"",
-        "홈플러스, 모레부터 마트 임시휴업...\"인수의향서 낸 기업 있어\""
-      ],
-      "sources": [
-        {
-          "press": "KBS",
-          "title": "홈플러스, 모레(27일)부터 전국 마트 영업 중단…“상품 수급 문제”",
-          "url": "https://n.news.naver.com/article/056/0012300934"
-        },
-        {
-          "press": "헤럴드경제",
-          "title": "[단독] 홈플러스, 67개 점포 27일 영업 중단…인수의향서 접수",
-          "url": "https://n.news.naver.com/article/016/0002728417"
-        },
-        {
-          "press": "SBS",
-          "title": "홈플러스, 27일 전 점포 임시 영업 중단…\"상품 매입자금 부족\"",
-          "url": "https://n.news.naver.com/article/055/0001405747"
-        },
-        {
-          "press": "YTN",
-          "title": "홈플러스, 모레부터 마트 임시휴업...\"인수의향서 낸 기업 있어\"",
-          "url": "https://n.news.naver.com/article/052/0002437978"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "기업회생 절차를 밟고 있는 홈플러스가 상품 매입 자금 부족으로 인해 오는 27일부터 전국 67개 점포의 마트 영업을 임시 중단합니다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "나머지 67개 점포도 상품 대금과 매장 유지 비용을 감당하기 어려워지면서 7월 13일부터 임시..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "홈플러스, 모레(27일)부터 전국 마트 영업 중단…“상품 수급 문제”"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "상품 매입 자금 고갈이 공식화되면서 전국 점포의 임시 휴업이 확정되어 경영 위기가 현실화되었습니다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.68,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i7ce9f3ca",
-      "title": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
-      "category": "경제",
-      "rank": 1,
-      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "코스피가 25일 반도체주 중심으로 하락하며 6% 급락 마감했다.",
-        "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
+        "2026년 11월 25일 코스피는 전날의 급등분을 모두 반납하며 6.16% 내린 4,697.51에 마감했다.",
         "9%↓ 마이크론 11%↓ 美 반도체주 폭락에 연쇄 하락 삼전닉스 9∼11%↓ 상승분 반납 외국인 하루 만에 1.9조원 던져 정부 자사주 매수 한도 완화 후 기업들 호응… ‘하방’ 방어 기대 코스피가 25일 6% 넘게 급락하며...",
         "이날 코스피가 25일 6% 넘게 급락하며 4600대로 밀려난 가운데, 사회관계망서비스(SNS)에서는 한 직장 상사의...",
-        "32%)을 모두 반납했다."
+        "32%)을 모두 반납했다.",
+        "이번 급락은 인공지능(AI) 투심 위축이 지속되며 간밤 미국 기술주가 약세를 보인..."
       ],
       "sources": [
-        {
-          "press": "매일경제",
-          "title": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
-          "url": "https://n.news.naver.com/article/009/0005769004"
-        },
         {
           "press": "segye.com",
           "title": "파랗게 질린 코스피 4697 마감… “바닥 안 보여” 개미들 패닉 [‘젠슨...",
@@ -169,13 +59,18 @@
           "press": "kbs.co.kr",
           "title": "‘젠슨 황 효과’ 하루 천하…삼전·닉스 10% 안팎 하락",
           "url": "https://n.news.naver.com/mnews/article/056/0012301039?sid=101"
+        },
+        {
+          "press": "세계일보",
+          "title": "[속보] 코스피, 6%대 급락 4697…전날 급등분 모두 반납",
+          "url": "https://n.news.naver.com/article/022/0004178030"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "코스피가 25일 반도체주 중심으로 하락하며 6% 급락 마감했다."
+          "evidence": "2026년 11월 25일 코스피는 전날의 급등분을 모두 반납하며 6.16% 내린 4,697.51에 마감했다."
         },
         {
           "panel": 2,
@@ -185,17 +80,17 @@
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안"
+          "evidence": "이날 코스피가 25일 6% 넘게 급락하며 4600대로 밀려난 가운데, 사회관계망서비스(SNS)에서는 한 직장 상사의..."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+          "evidence": "젠슨 황 효과로 반등했던 증시가 하루 만에 6%대 폭락으로 무너진 것은 대형 반도체주 중심의 장세가 얼마나 취약한지 단적으로 증명하는 해석을 낳는다."
         }
       ],
       "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -236,10 +131,115 @@
       }
     },
     {
+      "issue_id": "i74ab0829",
+      "title": "최태원 회장, 노소영 측 화해 거부에 \"진정성 폄훼 유감…원만한 해결 계속 모색\"",
+      "category": "경제",
+      "rank": 2,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "최태원 SK그룹 회장이 노소영 아트센터 나비 관장에게 재산분할금 9,440억 원을 지급하겠다고 법원에 요청한 화해권고 절차가 난관에 부딪혔다.",
+        "노소영 측 “상고 취하하면 될 일”…9440억원 다",
+        "주겠다는 최태원, 왜 ‘화해권고’ 요청했나 [이슈+]",
+        "노소영, 최태원 '9,440억 지급 카드' 거부...\"상고 취하해야\"",
+        "9440억에 하루 1.3억 이자까지… 최태원·노소영의 엇갈린 ‘화해’ 셈법"
+      ],
+      "sources": [
+        {
+          "press": "세계일보",
+          "title": "노소영 측 “상고 취하하면 될 일”…9440억원 다 주겠다는 최태원, 왜 ‘화해권고’ 요청했나 [이슈+]",
+          "url": "https://n.news.naver.com/article/022/0004178020"
+        },
+        {
+          "press": "YTN",
+          "title": "노소영, 최태원 '9,440억 지급 카드' 거부...\"상고 취하해야\"",
+          "url": "https://n.news.naver.com/article/052/0002437982"
+        },
+        {
+          "press": "조선비즈",
+          "title": "9440억에 하루 1.3억 이자까지… 최태원·노소영의 엇갈린 ‘화해’ 셈법",
+          "url": "https://n.news.naver.com/article/366/0001207330"
+        },
+        {
+          "press": "yna.co.kr",
+          "title": "화해권고 거부한 노소영 \"상고 취하해야\"…최태원 \"진정성 의심\"(종합3보...",
+          "url": "https://n.news.naver.com/mnews/article/001/0016463692?sid=102"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "최태원 SK그룹 회장이 노소영 아트센터 나비 관장에게 재산분할금 9,440억 원을 지급하겠다고 법원에 요청한 화해권고 절차가 난관에 부딪혔다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "노 관장 측이 최 회장의 화해권고 요청에 동의하지 않는다는 입장이었기 때문이다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "노소영 측 “상고 취하하면 될 일”…9440억원 다"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.76,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
       "issue_id": "i6caafbfc",
       "title": "“코스피 바닥은 지났다…삼성전자·SK하이닉스 주주환원도 저평가”",
       "category": "경제",
-      "rank": 5,
+      "rank": 4,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -247,11 +247,11 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "한화투자증권이 최근 급락세를 이어온 국내 증시가 바닥을 지났다는 분석을 내놓았습니다.",
+        "코스피가 25일 하루 만에 6%대 급락하며 4600선으로 내려앉았습니다.",
         "삼성전자 1억 넣으면 3700만원 vs 1억5300만원…‘7만원·29만원 전망’ 뜯어보니 [숫자 뒤의 진실]",
         "‘16만전자가 눈앞’ 코스피 6%대 급락…SK하이닉스 -11%",
-        "넘게 급락하며 다시 5000선 아래로 고꾸라졌다.",
-        "인공지능(AI) 투자심리 위축이 이어지고 시장의 이목을..."
+        "이에 코스피는 개장 8분 만에 매도사이드카가 발동됐다.",
+        "코스닥 역시 전거래일보다"
       ],
       "sources": [
         {
@@ -270,21 +270,21 @@
           "url": "https://n.news.naver.com/mnews/article/022/0004178092?sid=101"
         },
         {
-          "press": "kbs.co.kr",
-          "title": "‘젠슨 황 효과’ 하루 천하…삼전·닉스 10% 안팎 하락",
-          "url": "https://n.news.naver.com/mnews/article/056/0012301039?sid=101"
+          "press": "startuptoday.co.kr",
+          "title": "[기획] 달라진 금융주 3色 투자…내년 키워드는 '이익 방어력과 주주환...",
+          "url": "https://www.startuptoday.co.kr/news/articleView.html?idxno=820120"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "한화투자증권이 최근 급락세를 이어온 국내 증시가 바닥을 지났다는 분석을 내놓았습니다."
+          "evidence": "코스피가 25일 하루 만에 6%대 급락하며 4600선으로 내려앉았습니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "인공지능(AI) 투자심리 위축이 이어지고 시장의 이목을..."
+          "evidence": "이에 코스피는 개장 8분 만에 매도사이드카가 발동됐다."
         },
         {
           "panel": 3,
