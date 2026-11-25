@@ -1,53 +1,128 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 00:54:13",
+  "updated_at": "2026-11-25 01:26:47",
   "date": "2026-11-25",
   "total_issues": 10,
-  "average_quality": 0.83,
+  "average_quality": 0.88,
   "issues": [
     {
-      "id": "if8f12041",
-      "title": "코스피 3%대 하락 출발...하루 만에 '5천 선' 반납",
-      "episode": "episode:9c4ff945edda66",
+      "id": "i7b628e6d",
+      "title": "[속보] 코스피 매도 사이드카 발동…올해 62번째",
+      "episode": "episode:2d80991046dbcc",
       "quality": 0.92,
       "stages": [
+        "파장·후속",
         "일반 보도",
-        "사법·처분",
         "수사·대응",
-        "파장·후속"
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 41,
-      "event_count": 78,
+      "duplicate_candidates": 47,
+      "event_count": 34,
       "evidence_rate": 1.0
     },
     {
-      "id": "ic2068d38",
-      "title": "젠슨황 해고에 사표 던졌던 엔비디아 직원 “너무 성급했던 것 같다”",
-      "episode": "episode:03b139f5bdfe9b",
+      "id": "i5d7461df",
+      "title": "한동훈 “조희대 탄핵 100%라는 서영교, 의원직 걸라…인용되면 난 사퇴”",
+      "episode": "episode:ce3b82733a84d1",
+      "quality": 1.0,
+      "stages": [
+        "사법·처분",
+        "입장·공방",
+        "파장·후속",
+        "수사·대응",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "idc55eb2a",
+      "title": "李대통령, 5·18 진압경찰 등 포상취소에 \"당연…역사교정 계속\"",
+      "episode": "episode:29177442f80b48",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "사법·처분",
+        "파장·후속",
         "입장·공방",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "수사·대응"
+      ],
+      "duplicate_candidates": 25,
+      "event_count": 45,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia0a4294c",
+      "title": "美국무부, 김주애 '200만원' 스키복에 \"반입 금지 사치품\"",
+      "episode": "episode:2dc63db997b76e",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5a4c7360",
+      "title": "젠슨황, 복귀 이튿날 전사회의 열고 사과...\"매일 심리치료\"",
+      "episode": "episode:31c373bda48de8",
+      "quality": 1.0,
+      "stages": [
+        "입장·공방",
+        "일반 보도",
+        "사법·처분",
         "수사·대응",
         "파장·후속"
       ],
       "gaps": [
-        "사법·처분"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 39,
+      "duplicate_candidates": 36,
       "event_count": 16,
       "evidence_rate": 1.0
     },
     {
-      "id": "icdeb947e",
-      "title": "서울지하철 임단협 타결로 파업 철회…'출근길 대란' 피했다(종합3보)",
-      "episode": "episode:9e3be6e29fe8f7",
-      "quality": 0.58,
+      "id": "i6dd84f53",
+      "title": "美, 이르면 오늘 '과잉생산' 관세 발표…韓 총관세율 15% 안 넘길듯(종합)",
+      "episode": "episode:fe8afe8e454814",
+      "quality": 0.76,
+      "stages": [
+        "파장·후속",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 19,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i50d129da",
+      "title": "서울 지하철 밤샘 협상 끝 타결…출근대란 피해",
+      "episode": "episode:42a130f51b2261",
+      "quality": 0.68,
       "stages": [
         "일반 보도"
       ],
@@ -57,48 +132,13 @@
         "수사·대응"
       ],
       "duplicate_candidates": 26,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i89bb706a",
-      "title": "이용철, '공소취소 지휘 안하겠다는 말 못하나' 질문에 \"예\"(종합2보)",
-      "episode": "episode:5c8484a99e7f5d",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "파장·후속",
-        "사법·처분",
-        "발단·의혹"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 54,
-      "event_count": 129,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iea1d18f8",
-      "title": "스키 실력 뽐낸 김주애, 알고 보니...\"스키장비 반입 금지품\"",
-      "episode": "episode:d37e9862578f27",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 10,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
       "id": "ic47b1613",
       "title": "이란, 히잡 없이 공연한 여성 가수에 태형 74대",
-      "episode": "episode:f8f50d1eaf141c",
+      "episode": "episode:77255fea51df2c",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -109,115 +149,45 @@
         "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 33,
-      "event_count": 4,
+      "duplicate_candidates": 31,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "i795bd4cb",
-      "title": "\"젠슨 황, 알려진 두 명 외 추가 불륜 이사회에 고백\"",
-      "episode": "episode:3a8fee3d248b9c",
-      "quality": 1.0,
+      "id": "ie90c5f09",
+      "title": "“같이 가자” 9세 여아 유인 시도 남성…3년 전 동종 전력에도 ‘집유’",
+      "episode": "episode:0ac06ebc2eec82",
+      "quality": 0.84,
       "stages": [
-        "일반 보도",
-        "파장·후속",
+        "수사·대응",
         "사법·처분",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 41,
-      "event_count": 16,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8e48ea7d",
-      "title": "[르포]\"혼자 일하지만 외롭지 않다\"…제주 원도심서 만난 '느슨한 연대'",
-      "episode": "episode:87372e39510115",
-      "quality": 0.68,
-      "stages": [
-        "수사·대응",
-        "파장·후속",
         "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "파장·후속"
       ],
-      "duplicate_candidates": 38,
-      "event_count": 12,
+      "duplicate_candidates": 18,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "if68e1f2d",
-      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
-      "episode": "episode:87c2b2d986a387",
+      "id": "i2e8b774f",
+      "title": "CEO 복귀한 젠슨 황, 전 직원 부르더니…\"치료 중\" 공개",
+      "episode": "episode:ebeea7830aba59",
       "quality": 1.0,
       "stages": [
         "일반 보도",
+        "파장·후속",
         "사법·처분",
         "수사·대응",
-        "파장·후속",
         "발단·의혹",
         "입장·공방"
       ],
       "gaps": [],
-      "duplicate_candidates": 29,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i32f6a682",
-      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
-      "episode": "episode:bb1f3458304a26",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 13,
-      "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i375944af",
-      "title": "스캔들에도 돌아온 젠슨황 \"행동강령 위반직원 즉시 내쫓진않아\"",
-      "episode": "episode:5d2f60d66fa230",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 20,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i98f2b675",
-      "title": "“살다살다 이런 하객 처음”…‘결혼식 민폐하객’ 유시은·이관희 결국",
-      "episode": "episode:07aed02faef23b",
-      "quality": 0.76,
-      "stages": [
-        "입장·공방",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 23,
-      "event_count": 5,
+      "duplicate_candidates": 42,
+      "event_count": 19,
       "evidence_rate": 1.0
     }
   ]

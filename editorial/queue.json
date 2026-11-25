@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-25",
-  "generated_at": "2026-11-25T09:54:13+09:00",
+  "generated_at": "2026-11-25T10:26:47+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,114 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "if8f12041",
-      "title": "코스피 3%대 하락 출발...하루 만에 '5천 선' 반납",
+      "issue_id": "i7b628e6d",
+      "title": "[속보] 코스피 매도 사이드카 발동…올해 62번째",
       "category": "경제",
       "rank": 1,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "2026년 11월 24일(현지시간) 미국 뉴욕증시는 전날 급등했던 엔비디아 등 AI 관련 기술주에 차익실현 매물이 쏟아지며 혼조세로 마감했다.",
-        "60%가량을 하루 만에 반납했다.",
-        "엔비디아 칩 수요에 기대온 네오클라우드(AI 연산용 클라우드 임대업체)에서도 코어위브(11.85%), 네비우스(10.73%), 아이렌(11.54%)이 급락했다.",
-        "앤트로픽은 6.54% 내린 81.91달러에...",
-        "전날 5000선을 회복한 코스피가 하루 만에 4700대로 밀렸다."
-      ],
-      "sources": [
-        {
-          "press": "biz.heraldcorp.com",
-          "title": "“어제 팔걸 후회막급”…코스피 5000선 또 붕괴, 삼전닉스 7% 안팎↓[투...",
-          "url": "https://n.news.naver.com/mnews/article/016/0002728102?sid=101"
-        },
-        {
-          "press": "sedaily.com",
-          "title": "‘5000피’ 하루천하…코스피 4700대로 밀리며 매도 사이드카 발동 [마켓...",
-          "url": "https://n.news.naver.com/mnews/article/011/0004685899?sid=101"
-        },
-        {
-          "press": "문화일보",
-          "title": "[속보]31.5% 폭등했던 엔비디아, 하루 만에 급락…뉴욕증시 다시 ‘불안’",
-          "url": "https://n.news.naver.com/article/021/0002835254"
-        },
-        {
-          "press": "dailian.co.kr",
-          "title": "\"어제 팔 걸\"…말짱 '황' 코스피, 5000선 재붕괴 [시황]",
-          "url": "https://n.news.naver.com/mnews/article/119/0003159135?sid=101"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "2026년 11월 24일(현지시간) 미국 뉴욕증시는 전날 급등했던 엔비디아 등 AI 관련 기술주에 차익실현 매물이 쏟아지며 혼조세로 마감했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "엔비디아 칩 수요에 기대온 네오클라우드(AI 연산용 클라우드 임대업체)에서도 코어위브(11.85%), 네비우스(10.73%), 아이렌(11.54%)이 급락했다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "60%가량을 하루 만에 반납했다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "국내 반도체주의 부진을 엔비디아의 흐름과 연관 지어 분석했다. 반등의 실마리를 엔비디아에서 찾으려는 시장의 기대감이 반영되어 있다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ic2068d38",
-      "title": "젠슨황 해고에 사표 던졌던 엔비디아 직원 “너무 성급했던 것 같다”",
-      "category": "경제",
-      "rank": 2,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -142,49 +38,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "젠슨 황은 트럼프 대통령의 지원 속에 엔비디아 최고경영자로 복귀했다.",
-        "‘젠슨 황 복귀’ 랠리 하루 만에 꺾여…엔비디아 5.86% 하락",
-        "젠슨 황 따라 사표 던진 엔비디아 직원…“내가 성급했다, 나도 다시 돌아가고 싶다”",
-        "미국 증시에서 황 CEO 복귀로 잠시 가려졌던 AI(인공지능) 투자비 회수 우려와 메모리반도체 공급 과잉에...",
-        "24일(현지시간) 뉴욕증시에서 엔비디아는 전 거래일 대비 5.86% 하락했다."
+        "25일 코스피가 장중 4% 넘게 급락하면서 프로그램매매 매도호가 일시효력정지(매도 사이드카)가 발동했다.",
+        "[속보] 코스피, 반등 하루 만에 5%↓…장초반 매도 사이드카",
+        "[속보] 코스피 5% 급락하며 '매도 사이드카'‥5천 선 반납",
+        "[속보] 코스피 매도 사이드카 발동…올해 62번째",
+        "[속보] 코스피, 낙폭 4%대로 확대…매도 사이드카 발동"
       ],
       "sources": [
         {
-          "press": "한겨레",
-          "title": "‘젠슨 황 복귀’ 랠리 하루 만에 꺾여…엔비디아 5.86% 하락",
-          "url": "https://n.news.naver.com/article/028/0002833821"
+          "press": "이데일리",
+          "title": "[속보] 코스피, 반등 하루 만에 5%↓…장초반 매도 사이드카",
+          "url": "https://n.news.naver.com/article/018/0006415143"
         },
         {
-          "press": "전자신문",
-          "title": "젠슨 황 따라 사표 던진 엔비디아 직원…“내가 성급했다, 나도 다시 돌아가고 싶다”",
-          "url": "https://n.news.naver.com/article/030/0003489305"
-        },
-        {
-          "press": "wowtv.co.kr",
-          "title": "[속보] '1,700→775달러' 절반 아래로…\"젠슨 황 효과 무색하네\" 개미들...",
-          "url": "https://n.news.naver.com/mnews/article/215/0001273873?sid=101"
+          "press": "MBC",
+          "title": "[속보] 코스피 5% 급락하며 '매도 사이드카'‥5천 선 반납",
+          "url": "https://n.news.naver.com/article/214/0001537870"
         },
         {
           "press": "헤럴드경제",
-          "title": "젠슨황 해고에 사표 던졌던 엔비디아 직원 “너무 성급했던 것 같다”",
-          "url": "https://n.news.naver.com/article/016/0002727735"
+          "title": "[속보] 코스피 매도 사이드카 발동…올해 62번째",
+          "url": "https://n.news.naver.com/article/016/0002728058"
+        },
+        {
+          "press": "한국경제",
+          "title": "[속보] 코스피, 낙폭 4%대로 확대…매도 사이드카 발동",
+          "url": "https://n.news.naver.com/article/015/0005357882"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "젠슨 황은 트럼프 대통령의 지원 속에 엔비디아 최고경영자로 복귀했다."
+          "evidence": "25일 코스피가 장중 4% 넘게 급락하면서 프로그램매매 매도호가 일시효력정지(매도 사이드카)가 발동했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "‘젠슨 황 복귀’ 랠리 하루 만에 꺾여…엔비디아 5.86% 하락"
+          "evidence": "[속보] 코스피, 반등 하루 만에 5%↓…장초반 매도 사이드카"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "24일(현지시간) 뉴욕증시에서 엔비디아는 전 거래일 대비 5.86% 하락했다."
+          "evidence": "[속보] 코스피 5% 급락하며 '매도 사이드카'‥5천 선 반납"
         },
         {
           "panel": 4,
@@ -226,18 +122,19 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 1.0,
+        "continuity_quality": 0.92,
         "continuity_gaps": [
-          "사법·처분"
+          "발단·의혹",
+          "입장·공방"
         ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "iea1d18f8",
-      "title": "스키 실력 뽐낸 김주애, 알고 보니...\"스키장비 반입 금지품\"",
-      "category": "세계",
-      "rank": 5,
+      "issue_id": "i6dd84f53",
+      "title": "美, 이르면 오늘 '과잉생산' 관세 발표…韓 총관세율 15% 안 넘길듯(종합)",
+      "category": "경제",
+      "rank": 6,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -245,11 +142,116 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "최근 김정은 북한 국무위원장의 딸 김주애가 유럽산으로 추정되는 고가의 스키 장비를 착용한 채 스키를 타는 모습이 공개된 것에 대해 스키 장비가 대북 반입이 금지된 사치품에 해당한다고 미국 정부가 밝혔다.",
+        "미국이 한국 등 16개 경제권을 대상으로 한 '과잉생산 관세' 조사 결과를 이르면 24일 저녁(현지시간) 공개할 전망이다.",
+        "美 ‘과잉생산’ 추가 관세 초읽기… 韓 ‘15% 상한선’ 위태",
+        "美 ‘과잉생산 관세’ 발표 임박…한국 ‘15% 상한’ 지켜질까, 마지막 변수는?",
+        "미국 정부가 중국과 유럽연합(EU) 등 10여개 경제권 상품에 대한 관세 인상 계획을 이르면 이번주 발표한다....",
+        "당시 철강·알루미늄·자동차·배터리·반도체·선박 등을 과잉 생산 분야로 지목했다."
+      ],
+      "sources": [
+        {
+          "press": "동아일보",
+          "title": "美 ‘과잉생산’ 추가 관세 초읽기… 韓 ‘15% 상한선’ 위태",
+          "url": "https://www.donga.com/news/Inter/article/all/20261125/135085338/1"
+        },
+        {
+          "press": "매일경제",
+          "title": "美 ‘과잉생산 관세’ 발표 임박…한국 ‘15% 상한’ 지켜질까, 마지막 변수는?",
+          "url": "https://www.mk.co.kr/news/world/12217732"
+        },
+        {
+          "press": "edaily.co.kr",
+          "title": "블룸버그 \"美, 中·EU 관세 인상 발표 임박\"",
+          "url": "https://n.news.naver.com/mnews/article/018/0006415204?sid=104"
+        },
+        {
+          "press": "hani.co.kr",
+          "title": "트럼프, 한국 등 16개 경제권에 추가 관세 추진…한국 2.5~5%p 인상 전망",
+          "url": "https://n.news.naver.com/mnews/article/028/0002833843?sid=104"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "미국이 한국 등 16개 경제권을 대상으로 한 '과잉생산 관세' 조사 결과를 이르면 24일 저녁(현지시간) 공개할 전망이다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "미국과 일본 등 미국과 대미 투자합의를 맺은 국가들은 기존 합의한 관세 상한선을 넘지 않을..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "美 ‘과잉생산’ 추가 관세 초읽기… 韓 ‘15% 상한선’ 위태"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "industry",
+        "direction": "공장 동선·안전 표지·가동 보드를 이용, 캐릭터 행동을 컷마다 바꿀 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.76,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ia0a4294c",
+      "title": "美국무부, 김주애 '200만원' 스키복에 \"반입 금지 사치품\"",
+      "category": "세계",
+      "rank": 4,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "김정은 북한 국무위원장의 딸 김주애가 유럽산으로 추정되는 고가의 스키 장비를 착용한 모습이 공개되면서 논란이 일고 있다.",
         "美국무부, 김주애 '200만원' 스키복에 \"반입 금지 사치품\"",
-        "스위스 스키에 프랑스 명품복 입은 김주애···미 국무부 “대북 반입 금지 사치품”",
         "김정은 북한 국무위원장의 딸 김주애가 유럽산으로 추정된 고가의 스키 장비를 착용한 모습이 공개된 것과 관련, 미국 정부가 스키 장비는 대북 반입이 금지된 사치품에 해당한다고 밝혔다.",
-        "미국 국무부 대변인은 24일..."
+        "미국 국무부 대변인은 24일...",
+        "김주애의 순백 스키복 사진…미 국무부 \"대북 반입 금지 사치품\""
       ],
       "sources": [
         {
@@ -258,31 +260,31 @@
           "url": "https://n.news.naver.com/article/052/0002437646"
         },
         {
-          "press": "경향신문",
-          "title": "스위스 스키에 프랑스 명품복 입은 김주애···미 국무부 “대북 반입 금지 사치품”",
-          "url": "https://n.news.naver.com/article/032/0003484876"
-        },
-        {
           "press": "munhwa.com",
           "title": "‘200만원’ 스키복 입은 김주애…미국 국무부 “대북 반입 금지 사치품...",
           "url": "https://n.news.naver.com/mnews/article/021/0002835337?sid=100"
         },
         {
-          "press": "디지털타임스",
-          "title": "“김주애 스키 장비는 北반입 금지품목”…美국무부 밝혀",
-          "url": "https://n.news.naver.com/article/029/0003060990"
+          "press": "MBN",
+          "title": "김주애의 순백 스키복 사진…미 국무부 \"대북 반입 금지 사치품\"",
+          "url": "https://n.news.naver.com/article/057/0001979756"
+        },
+        {
+          "press": "연합뉴스TV",
+          "title": "美국무부, 김주애 스키 장비에 \"北 반입금지 사치품\"",
+          "url": "https://n.news.naver.com/article/422/0000929647"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "최근 김정은 북한 국무위원장의 딸 김주애가 유럽산으로 추정되는 고가의 스키 장비를 착용한 채 스키를 타는 모습이 공개된 것에 대해 스키 장비가 대북 반입이 금지된 사치품에 해당한다고 미국 정부가 밝혔다."
+          "evidence": "김정은 북한 국무위원장의 딸 김주애가 유럽산으로 추정되는 고가의 스키 장비를 착용한 모습이 공개되면서 논란이 일고 있다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "미국 정부는 스키 장비 역시 유엔 안전보장이사회(안보리) 결의에 따라 북한 반입이 금지된 사치품에..."
+          "evidence": "김정은 북한 국무위원장의 딸 김주애가 유럽산 고가 스키 장비를 사용하는 모습이 공개되자 미국 정부가 스키 장비는 유엔 안전보장이사회가 대북 반입을 금지한 사치품에 해당한다는 입장을 밝혔다."
         },
         {
           "panel": 3,
@@ -292,7 +294,7 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+          "evidence": "미국의 공식 입장을 바탕으로 북한의 제재 위반 행태에 대한 비판 여론이 확산되었다."
         }
       ],
       "visual_brief": {
