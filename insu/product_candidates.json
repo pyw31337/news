@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25T11:17:01.842463+00:00",
+  "updated_at": "2026-11-18T10:08:55.843546+00:00",
   "providers": [
     {
       "provider_id": "insurer-001",
@@ -13,7 +13,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-25T11:16:47.399104+00:00"
+      "discovered_at": "2026-11-18T10:08:45.158434+00:00"
     },
     {
       "provider_id": "insurer-002",
@@ -312,13 +312,21 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-25T11:16:47.207712+00:00"
+      "discovered_at": "2026-11-18T10:08:45.082975+00:00"
     },
     {
       "provider_id": "insurer-004",
       "insurer": "KB손해보험",
       "source_url": "https://www.kbinsure.co.kr/CG802030001.ec",
-      "error": "<urlopen error timed out>"
+      "candidate_links": [
+        {
+          "url": "https://www.kbinsure.co.kr/CG802030001.ec",
+          "label": "공식 상품·약관 공시 페이지(렌더링 후보)",
+          "verified": false,
+          "kind": "catalog_page"
+        }
+      ],
+      "discovered_at": "2026-11-18T10:08:44.572370+00:00"
     },
     {
       "provider_id": "insurer-005",
@@ -332,13 +340,21 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-25T11:16:46.194759+00:00"
+      "discovered_at": "2026-11-18T10:08:44.218669+00:00"
     },
     {
       "provider_id": "insurer-006",
       "insurer": "한화손해보험",
       "source_url": "https://www.hwgeneralins.com/notice/ir/product-ing01.do",
-      "error": "<urlopen error timed out>"
+      "candidate_links": [
+        {
+          "url": "https://www.hwgeneralins.com/notice/ir/product-ing01.do",
+          "label": "공식 상품·약관 공시 페이지(렌더링 후보)",
+          "verified": false,
+          "kind": "catalog_page"
+        }
+      ],
+      "discovered_at": "2026-11-18T10:08:44.684784+00:00"
     },
     {
       "provider_id": "insurer-007",
@@ -352,7 +368,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-25T11:16:47.254688+00:00"
+      "discovered_at": "2026-11-18T10:08:45.010977+00:00"
     },
     {
       "provider_id": "insurer-008",
@@ -665,7 +681,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-25T11:16:47.434107+00:00"
+      "discovered_at": "2026-11-18T10:08:45.252804+00:00"
     },
     {
       "provider_id": "insurer-009",
@@ -718,7 +734,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-25T11:16:48.459318+00:00"
+      "discovered_at": "2026-11-18T10:08:45.876063+00:00"
     },
     {
       "provider_id": "insurer-010",
@@ -1086,7 +1102,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-25T11:16:48.872949+00:00"
+      "discovered_at": "2026-11-18T10:08:46.228391+00:00"
     },
     {
       "provider_id": "insurer-011",
@@ -1100,13 +1116,57 @@
       "source_url": "https://www.hanainsure.co.kr/w/disclosure/product/saleProduct",
       "candidate_links": [
         {
+          "url": "https://www.hanainsure.co.kr/w/disclosure/manage/regularMngDisclosure",
+          "label": "공시실",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/w/disclosure/price",
+          "label": "가격공시",
+          "verified": false
+        },
+        {
           "url": "https://www.hanainsure.co.kr/w/disclosure/product/saleProduct",
-          "label": "공식 상품·약관 공시 페이지(렌더링 후보)",
-          "verified": false,
-          "kind": "catalog_page"
+          "label": "상품공시",
+          "verified": false
+        },
+        {
+          "url": "javascript:void(0);",
+          "label": "약관 및 정책",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/w/terms/homepageContract",
+          "label": "온라인서비스통합회원가입이용약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/w/terms/positionInfContract",
+          "label": "위치기반서비스이용약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/w/terms/creditInfNotice",
+          "label": "신용정보활용체제공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/download/<@=info.sPolicyFileID @>",
+          "label": "약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/download/<@=info.sBizFileID @>",
+          "label": "사업방법서",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/download/<@=info.sSummaryFileID @>",
+          "label": "상품요약서",
+          "verified": false
         }
       ],
-      "discovered_at": "2026-11-25T11:16:50.611022+00:00"
+      "discovered_at": "2026-11-18T10:08:45.763905+00:00"
     },
     {
       "provider_id": "insurer-013",
@@ -1120,300 +1180,13 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-25T11:16:48.509036+00:00"
+      "discovered_at": "2026-11-18T10:08:45.826558+00:00"
     },
     {
       "provider_id": "insurer-014",
       "insurer": "한화생명",
       "source_url": "https://www.hanwhalife.com//main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDGL000",
-      "candidate_links": [
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/main/DF_0000000_P00000.do",
-          "label": "공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/static/main/finance/loan/start/terms/FN_LNLSLTB_P10000.htm",
-          "label": "대출약관",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/static/main/finance/fund/start/terms/FN_FUFTM000_P10000.htm",
-          "label": "펀드약관",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/static/main/disclosure/fund/DC_FD00000_P10000.htm",
-          "label": "펀드소식&공시",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/static/main/customerCenter/protect/CU_CS00000_T10000.jsp?tab=T70000",
-          "label": "금융소비자보호 공시",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/customerCenter/disclosure/CU_CD00000_T10000.do",
-          "label": "민원건수공시 (현재)",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/customerCenter/disclosure/CU_CD00000_T30000.do",
-          "label": "민원건수공시 (과거)",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDRD000&MENU_ID2=DF_GDRD000_P3",
-          "label": "퇴직연금 공시실 바로가기",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/static/main/finance/loan/start/terms/FN_LNLSLTB_P10000.htm",
-          "label": "대출약관",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/static/main/finance/fund/start/terms/FN_FUFTM000_P10000.htm",
-          "label": "펀드약관",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/static/main/disclosure/fund/DC_FD00000_P10000.htm",
-          "label": "펀드소식&공시",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com//main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDGL000",
-          "label": "금융소비자보호 공시",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/customerCenter/disclosure/CU_CD00000_T10000.do",
-          "label": "민원건수공시 (현재)",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/customerCenter/disclosure/CU_CD00000_T30000.do",
-          "label": "민원건수공시 (과거)",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com//main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDGL000",
-          "label": "공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/main/DF_0000000_P00000.do",
-          "label": "공시실안내",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com//main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDGL000",
-          "label": "경영공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/management/occasionalmanagement/DF_MDOM000_P10000.do",
-          "label": "수시경영공시",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/management/occasionalmanagement/DF_MDRM000_P10000.do",
-          "label": "정기경영공시",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/management/occasionalmanagement/DF_MDGD000_P10000.do",
-          "label": "지배구조공시",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com//main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDGL000",
-          "label": "상품공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDDN000_P10000",
-          "label": "공시안내",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDPD000",
-          "label": "연금저축공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDPF000",
-          "label": "연금저축펀드공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDRD000",
-          "label": "퇴직연금공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDID000",
-          "label": "퇴직보험공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDAL000",
-          "label": "자산연계형상품공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com//main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDGL000",
-          "label": "변액보험공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/variableinsurance/DF_GDVD000_P10000.do?MENU_ID1=DF_GDVD000&MENU_ID2=DF_GDVD000_P20000",
-          "label": "변액보험 공시안내",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/variableinsurance/DF_GDVD000_P10000.do?MENU_ID1=DF_GDVD000&MENU_ID2=DF_GDVD000_P5",
-          "label": "공시/기타업무",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/insuranceprice/DF_IPCR000_P10000.do",
-          "label": "보험가격공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/bancassurance/DF_BDCR000_P10000.do",
-          "label": "방카슈랑스공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/trustrelate/DF_TRCR000_P10000.do",
-          "label": "신탁관련공시",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/totalrisk/DF_TORI000_P10000.do",
-          "label": "금융복합기업집단공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/static/main/disclosure/fund/DC_FD00000_P10000.htm",
-          "label": "펀드공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/static/main/etc/agreement/CF_CC00006_P1T100.jsp",
-          "label": "이용약관",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/main/DF_0000000_P00000.do",
-          "label": "공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/main/DF_0000000_P00000.do",
-          "label": "공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDDN000_P10000",
-          "label": "상품공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/main/DF_0000000_P00000.do",
-          "label": "공시실안내",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/management/occasionalmanagement/DF_MDOM000_P10000.do",
-          "label": "경영공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDDN000_P10000",
-          "label": "상품공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/variableinsurance/DF_GDVD000_P10000.do?MENU_ID1=DF_GDVD000&MENU_ID2=DF_GDVD000_P20000",
-          "label": "변액보험공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/insuranceprice/DF_IPCR000_P10000.do",
-          "label": "보험가격공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/bancassurance/DF_BDCR000_P10000.do",
-          "label": "방카슈랑스공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/trustrelate/DF_TRCR000_P10000.do",
-          "label": "신탁관련공시",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/totalrisk/DF_TORI000_P10000.do",
-          "label": "금융복합기업집단공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/static/main/disclosure/fund/DC_FD00000_P10000.htm",
-          "label": "펀드공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDDN000_P10000",
-          "label": "공시안내",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDPD000",
-          "label": "연금저축공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDPF000",
-          "label": "연금저축펀드공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDRD000",
-          "label": "퇴직연금공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDID000",
-          "label": "퇴직보험공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDAL000",
-          "label": "자산연계형상품공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com//main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDGL000#none",
-          "label": "공시안내",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com//main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDGL000#none",
-          "label": "공시제도 길라잡이",
-          "verified": false
-        },
-        {
-          "url": "https://www.hanwhalife.com/static/main/etc/agreement/CF_CC00006_P1T100.jsp",
-          "label": "이용약관",
-          "verified": false
-        }
-      ],
-      "discovered_at": "2026-11-25T11:16:48.994099+00:00"
+      "error": "HTTP Error 403: Forbidden"
     },
     {
       "provider_id": "insurer-015",
@@ -1473,7 +1246,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-25T11:16:49.410639+00:00"
+      "discovered_at": "2026-11-18T10:08:46.292321+00:00"
     },
     {
       "provider_id": "insurer-018",
@@ -1487,7 +1260,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-25T11:16:50.003309+00:00"
+      "discovered_at": "2026-11-18T10:08:47.137608+00:00"
     },
     {
       "provider_id": "insurer-019",
@@ -1507,7 +1280,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-25T11:16:50.384713+00:00"
+      "discovered_at": "2026-11-18T10:08:46.624607+00:00"
     },
     {
       "provider_id": "insurer-021",
@@ -1545,7 +1318,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-25T11:16:52.901560+00:00"
+      "discovered_at": "2026-11-18T10:08:48.378709+00:00"
     },
     {
       "provider_id": "insurer-022",
@@ -1559,7 +1332,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-25T11:16:50.863442+00:00"
+      "discovered_at": "2026-11-18T10:08:46.948634+00:00"
     },
     {
       "provider_id": "insurer-023",
@@ -1573,7 +1346,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-25T11:16:51.681157+00:00"
+      "discovered_at": "2026-11-18T10:08:47.332890+00:00"
     },
     {
       "provider_id": "insurer-024",
@@ -1585,7 +1358,154 @@
       "provider_id": "insurer-025",
       "insurer": "신한라이프",
       "source_url": "https://www.shinhanlife.co.kr/hp/cdhi0030.do",
-      "error": "<urlopen error timed out>"
+      "candidate_links": [
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0010.do",
+          "label": "신한라이프 공시실 홈",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0020t01.do",
+          "label": "상품공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0020t01.do",
+          "label": "공시안내",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0060t01.do",
+          "label": "수시공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0070.do",
+          "label": "위험지표공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0110t01.do",
+          "label": "연금저축 상품공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0120t01.do",
+          "label": "연금저축 비교공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0250t03.do",
+          "label": "공시이율 변동내역",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0250t07.do",
+          "label": "공시기준이율",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0250t08.do",
+          "label": "표준이율 및 평균공시이율",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0150t01.do",
+          "label": "퇴직연금사업자공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0180.do",
+          "label": "수시공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0190.do",
+          "label": "위험지표공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0210.do",
+          "label": "정기공시자료",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0230.do",
+          "label": "수시공시자료",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0290.do",
+          "label": "가격공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0310.do",
+          "label": "경영공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0310.do",
+          "label": "정기경영공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0320.do",
+          "label": "수시경영공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0330.do",
+          "label": "지배구조공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhi0410.do",
+          "label": "사회공헌공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhj0020.do",
+          "label": "홈페이지 이용약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhj0070.do",
+          "label": "디지털보험 이용약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhj0090.do",
+          "label": "전자금융거래 이용약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhj0100.do",
+          "label": "전자금융서비스 이용약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhj0200.do",
+          "label": "신한라이프 앱 이용약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhj0620.do",
+          "label": "신한라이프카드 이용약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhj0680.do",
+          "label": "신한라이프마이데이터 이용약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.shinhanlife.co.kr/hp/cdhj0760.do",
+          "label": "그룹 공동 플랫폼 서비스 이용약관",
+          "verified": false
+        }
+      ],
+      "discovered_at": "2026-11-18T10:08:47.814710+00:00"
     },
     {
       "provider_id": "insurer-026",
@@ -1599,7 +1519,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-25T11:16:52.614503+00:00"
+      "discovered_at": "2026-11-18T10:08:47.942299+00:00"
     },
     {
       "provider_id": "insurer-027",
@@ -1619,7 +1539,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-25T11:16:53.718800+00:00"
+      "discovered_at": "2026-11-18T10:08:48.004584+00:00"
     },
     {
       "provider_id": "insurer-029",
@@ -1633,7 +1553,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-25T11:16:54.441487+00:00"
+      "discovered_at": "2026-11-18T10:08:48.607912+00:00"
     },
     {
       "provider_id": "insurer-030",
@@ -1647,7 +1567,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-25T11:16:54.840308+00:00"
+      "discovered_at": "2026-11-18T10:08:48.679382+00:00"
     },
     {
       "provider_id": "insurer-031",
@@ -1676,7 +1596,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-25T11:16:56.878639+00:00"
+      "discovered_at": "2026-11-18T10:08:49.923390+00:00"
     }
   ]
 }
