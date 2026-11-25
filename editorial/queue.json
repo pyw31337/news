@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
-  "date": "2026-11-26",
-  "generated_at": "2026-11-26T08:19:32+09:00",
+  "date": "2026-11-19",
+  "generated_at": "2026-11-19T16:54:45+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,114 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i7ce9f3ca",
-      "title": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
+      "issue_id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
       "category": "경제",
-      "rank": 3,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "코스피가 반도체주 급락과 인공지능 투자에 대한 우려로 4700선 아래로 밀려나며 큰 폭의 하락세를 보이고 있다.",
-        "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
-        "\"이젠 뭘 사야 하나\" 3600조 증발…피할 곳도 사라진 코스피",
-        "\"삼전닉스 개미들 또 비명\"…코스피 4700선도 무너졌다",
-        "[단독] 코스피 다시 급락하자…정부 '증안펀드' 확대 나섰다"
-      ],
-      "sources": [
-        {
-          "press": "매일경제",
-          "title": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
-          "url": "https://n.news.naver.com/article/009/0005769004"
-        },
-        {
-          "press": "머니투데이",
-          "title": "\"이젠 뭘 사야 하나\" 3600조 증발…피할 곳도 사라진 코스피",
-          "url": "https://n.news.naver.com/article/008/0005446545"
-        },
-        {
-          "press": "파이낸셜뉴스",
-          "title": "\"삼전닉스 개미들 또 비명\"…코스피 4700선도 무너졌다",
-          "url": "https://n.news.naver.com/article/014/0005609924"
-        },
-        {
-          "press": "한국경제",
-          "title": "[단독] 코스피 다시 급락하자…정부 '증안펀드' 확대 나섰다",
-          "url": "https://n.news.naver.com/article/015/0005358175"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "코스피가 반도체주 급락과 인공지능 투자에 대한 우려로 4700선 아래로 밀려나며 큰 폭의 하락세를 보이고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "원인이 인플레이션 지속에 의한 금리 인상과 이에 따른 AI 생태계 붕괴 우려, 코스피의 글로벌 증시 중 높은 수익률로 인한 집중적인..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "증안펀드의 장기적 정체 상태가 지적되는 가운데, 박현주 회장의 제안이 시장 반등을 위한 핵심 의제로 부상했다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i96f79492",
-      "title": "임시휴업 앞둔 홈플러스 울산점 가보니, 대규모 할인인데 텅빈 매대…고객도 상인도 한숨",
-      "category": "경제",
-      "rank": 2,
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -142,11 +38,11 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "홈플러스가 유동성 압박과 상품 매입 자금 부족으로 27일부터 67개 대형마트 전체 점포의 영업을 임시 중단한다.",
-        "[단독] 홈플러스, 67개 점포 27일 영업 중단…인수의향서 접수",
-        "앞서 홈플러스는 25일 상품 매입 자금 부족 등을 이유로 27일부터 현재 운영 중인 67개 대형마트 점포 전체의 영업을 일시 중단한다고 밝혔다.",
-        "특히 사측은 휴업을 알리면서 최근 인수의향서가 접수됐다는 내용도 전했다....",
-        "속보 홈플러스, 모레부터 임시휴업...\"27일부터 마트 영업 중단\""
+        "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\"",
+        "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다.",
+        "반면 같은 해 한국 영화의 중국 수출액은 1500만달러(약 200억원), 방송 콘텐츠는 700만달러(약 93억원)에...",
+        "대한민국이 세계에서 네 번째로 '수출 1조 달러 시대'를 연 데 대해 세대를 이어온 국민의 도전과 헌신이...",
+        "반세기 만에 수출 규모를 100배로 키운 한국 경제의 성장사를 되짚으며 수출의 성과가 국민의 삶을 나아지게 하는..."
       ],
       "sources": [
         {
@@ -165,16 +61,16 @@
           "url": "https://n.news.naver.com/article/055/0001404200"
         },
         {
-          "press": "농민신문",
-          "title": "홈플러스, 27일부터 마트 전 점포 영업 중단…“상품 매입 자금 부족”",
-          "url": "https://n.news.naver.com/article/662/0000109325"
+          "press": "asiatime.co.kr",
+          "title": "수출 1조달러 시대…李대통령 ‘봉제·신발공장 선배 세대 덕분’",
+          "url": "https://www.asiatime.co.kr/article/20261119500437"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "홈플러스가 유동성 압박과 상품 매입 자금 부족으로 27일부터 67개 대형마트 전체 점포의 영업을 임시 중단한다."
+          "evidence": "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\""
         },
         {
           "panel": 2,
@@ -331,20 +227,16 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.76,
-        "continuity_gaps": [
-          "발단·의혹",
-          "수사·대응",
-          "사법·처분"
-        ],
+        "continuity_quality": 1.0,
+        "continuity_gaps": [],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "ieaff54e1",
-      "title": "미국 USTR \"한국, 일본, EU 등 관세 15% 상한 유지\"",
-      "category": "세계",
-      "rank": 5,
+      "issue_id": "ib0b88852",
+      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
+      "category": "IT",
+      "rank": 1,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -352,11 +244,11 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "미국이 한국 등 14개 국가에 과잉생산을 빌미로 또 관세 부과를 예고했습니다.",
-        "미, ‘과잉생산 관세’ 예고…“한국 15%, 약속 안 지키면 25%”",
-        "美, '과잉생산 관세' 한국 15%… \"25% 인상 여지도 남겨\"",
-        "USTR은 “한국이 지배적 지위를 계속 유지함에 따라 메모리 반도체 시장의 진입장벽은 매우 높다.",
-        "USTR은 한국에 최대 15%의 관세를 제시하면서 협의 진행 등이 만족스럽지 않을 경우 25%로 관세율을 올리는..."
+        "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다.",
+        "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
+        "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
+        "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
+        "흔적을 발견할 수 없었다."
       ],
       "sources": [
         {
@@ -375,31 +267,21 @@
           "url": "https://n.news.naver.com/article/056/0012297227"
         },
         {
-          "press": "TV조선",
-          "title": "美, '과잉생산 관세' 한국 15%… \"25% 인상 여지도 남겨\"",
-          "url": "https://n.news.naver.com/article/448/0000653432"
-        },
-        {
-          "press": "jasm.co.kr",
-          "title": "美, '호남 반도체 클러스터' 과잉생산 관세 근거...\"약속 어기면 25%\"",
-          "url": "https://www.jasm.co.kr/news/view/326520/?sc=Naver"
-        },
-        {
-          "press": "pennmike.com",
-          "title": "쿠팡사태가 뇌관...美 \"韓 관세 15%\"라면서도 여지 남겼다",
-          "url": "https://www.pennmike.com/news/articleView.html?idxno=132798"
+          "press": "sentv.co.kr",
+          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
+          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "미국이 한국 등 14개 국가에 과잉생산을 빌미로 또 관세 부과를 예고했습니다."
+          "evidence": "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "USTR이 한국의 디지털 정책에 대한 무역법 301조 조사를 할 수 있다는..."
+          "evidence": "게임 속 풍경을 단순한 배경으로 활용하는 데 그치지 않고, 이용자가 새로운 장소를 발견하고 직접..."
         },
         {
           "panel": 3,
@@ -448,7 +330,7 @@
         "sources": 4,
         "continuity_quality": 1.0,
         "continuity_gaps": [
-          "발단·의혹"
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
