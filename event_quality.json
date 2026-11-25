@@ -1,36 +1,92 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 14:59:33",
-  "date": "2026-11-25",
+  "updated_at": "2026-11-19 07:54:45",
+  "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.82,
+  "average_quality": 0.89,
   "issues": [
     {
-      "id": "i4c742d98",
-      "title": "[속보] 美, 한국 등 14개 경제주체에 '과잉생산 관세' 예고",
-      "episode": "episode:10d668678e2d1e",
+      "id": "ib0b88852",
+      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
+      "episode": "episode:6240c7cf2c14d8",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "입장·공방",
-        "사법·처분",
         "파장·후속",
+        "발단·의혹",
+        "입장·공방",
         "수사·대응"
       ],
       "gaps": [
-        "발단·의혹"
+        "사법·처분"
       ],
-      "duplicate_candidates": 26,
-      "event_count": 22,
+      "duplicate_candidates": 24,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "i190e3221",
-      "title": "노소영 측 “상고 취하하면 될 일”…9440억원 다 주겠다는 최태원, 왜 ‘화해권고’ 요청했나 [이슈+]",
-      "episode": "episode:4939b88fdc83be",
+      "id": "i52002ca2",
+      "title": "[속보] “용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
+      "episode": "episode:42a56cd22c055b",
       "quality": 0.76,
       "stages": [
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i7472fb4e",
+      "title": "‘리트 만점자’ 숨진채 발견... 메모엔 “몸과 마음 지쳤다”",
+      "episode": "episode:43f66ea4b003f7",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icc7073be",
+      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
+      "episode": "episode:b4571ab00be66b",
+      "quality": 0.66,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ibfb65b25",
+      "title": "한 총리 \"작년 수능 시험지 보관하라\" 긴급 지시",
+      "episode": "episode:70917d4ab49bf4",
+      "quality": 0.84,
+      "stages": [
         "수사·대응",
+        "파장·후속",
         "일반 보도"
       ],
       "gaps": [
@@ -38,153 +94,102 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 28,
+      "duplicate_candidates": 38,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if68e1f2d",
+      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
+      "episode": "episode:87c2b2d986a387",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "수사·대응",
+        "파장·후속",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 29,
+      "event_count": 20,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i32f6a682",
+      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
+      "episode": "episode:bb1f3458304a26",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
+      "episode": "episode:28b5802722ebe0",
+      "quality": 0.84,
+      "stages": [
+        "발단·의혹",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 17,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i14bfd775",
+      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
+      "episode": "episode:332016de20ed99",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "파장·후속",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 31,
       "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "i1e9c2c0d",
-      "title": "홈플러스, 27일부터 전국 67개점 영업 중단",
-      "episode": "episode:61788e556aeb8e",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i731db9ab",
-      "title": "반도체주 급락 속…SK하이닉스, '100조 주주환원' 재확인",
-      "episode": "episode:83cb0d85961372",
+      "id": "id0d27ff9",
+      "title": "장애 아들 앞 폭행… ‘김창민 감독 살해’ 피의자들 징역 12년·3년",
+      "episode": "episode:f616ea440abebf",
       "quality": 0.92,
       "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 34,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i2a2a305c",
-      "title": "창원지법 전체판사회의 \"법관 탄핵 추진, 사법권 독립·헌법 가치 훼손\"",
-      "episode": "episode:56216799d783b2",
-      "quality": 0.92,
-      "stages": [
-        "입장·공방",
-        "일반 보도",
+        "수사·대응",
         "사법·처분",
-        "수사·대응"
+        "입장·공방",
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
         "파장·후속"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i94b59986",
-      "title": "진주 영외서 공군 20대 여군 하사 숨진 채 발견…군 당국 수사",
-      "episode": "episode:52058c9b6980ca",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i0ab3541f",
-      "title": "교회 돈 102억 자유통일당에 지원… 전광훈 목사 구속영장 청구",
-      "episode": "episode:6299093ee94b03",
-      "quality": 0.68,
-      "stages": [
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i051d6f60",
-      "title": "고경표 빼고 조진웅 못 빼고...방송가 고육지책",
-      "episode": "episode:174856bd4c65f9",
-      "quality": 0.76,
-      "stages": [
-        "수사·대응",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i4ac8f821",
-      "title": "시골 간호학교 출신에서 젠슨 황 옆자리까지…‘中 스파이 의혹’ 앨리스 황 과거 드러났다",
-      "episode": "episode:0cf6ca20285a5f",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8693ad78",
-      "title": "시각장애 오케스트라 공연 찾은 김혜경 여사",
-      "episode": "episode:e008a71bf70a4c",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 9,
+      "duplicate_candidates": 31,
+      "event_count": 39,
       "evidence_rate": 1.0
     }
   ]
