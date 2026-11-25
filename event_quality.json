@@ -1,107 +1,109 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 08:31:59",
+  "updated_at": "2026-11-25 08:56:52",
   "date": "2026-11-25",
   "total_issues": 10,
-  "average_quality": 0.86,
+  "average_quality": 0.87,
   "issues": [
     {
       "id": "ic5dc9eff",
       "title": "코스피, 6%대 급락 4,697…전날 급등분 모두 반납",
-      "episode": "episode:97f11a19115d0d",
-      "quality": 1.0,
+      "episode": "episode:be13995249b4b9",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
-        "파장·후속",
-        "일반 보도",
-        "수사·대응",
         "사법·처분",
+        "파장·후속",
         "발단·의혹"
       ],
       "gaps": [
-        "입장·공방"
+        "입장·공방",
+        "수사·대응"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 37,
+      "duplicate_candidates": 34,
+      "event_count": 29,
       "evidence_rate": 1.0
     },
     {
-      "id": "i190e3221",
-      "title": "노소영 측 “상고 취하하면 될 일”…9440억원 다 주겠다는 최태원, 왜 ‘화해권고’ 요청했나 [이슈+]",
-      "episode": "episode:9809f82977cc31",
-      "quality": 0.76,
+      "id": "ib2231263",
+      "title": "9440억 준다는데 노소영, 화해권고 거부…최태원 \"취지 폄훼 착잡\"",
+      "episode": "episode:87a7860834a005",
+      "quality": 0.84,
       "stages": [
         "수사·대응",
-        "일반 보도"
+        "일반 보도",
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "파장·후속"
       ],
       "duplicate_candidates": 27,
       "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "i757de90e",
-      "title": "조희대 탄핵 추진에 일선 법원 첫 반발… 창원지법 \"헌법질서 위태롭게 해\"",
-      "episode": "episode:5ba00a8ff370f2",
-      "quality": 0.84,
-      "stages": [
-        "사법·처분",
-        "입장·공방",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie244d360",
-      "title": "[속보]‘드디어 조국에 손내민 김민석’…민주당, 진보4당에 ‘조희대 탄핵’ 공동 행동 제안",
-      "episode": "episode:81b0a6cf9bf5f3",
-      "quality": 1.0,
+      "id": "i5bde9e66",
+      "title": "‘16만전자가 눈앞’ 코스피 6%대 급락…SK하이닉스 -11%",
+      "episode": "episode:9a9c89e228da23",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
-        "수사·대응",
-        "입장·공방",
         "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
+        "사법·처분",
         "발단·의혹"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 17,
+      "gaps": [
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 35,
+      "event_count": 30,
       "evidence_rate": 1.0
     },
     {
-      "id": "i994a9a71",
-      "title": "故이진우 과외교사, 경찰 조사…“죽음이 범죄 도주처 돼선 안돼”",
-      "episode": "episode:762123fed820a7",
-      "quality": 1.0,
+      "id": "i5d7461df",
+      "title": "한동훈 “조희대 탄핵 인용되면 난 사퇴…서영교, 의원직 걸어라 ”",
+      "episode": "episode:adb8d0ec578cb0",
+      "quality": 0.92,
       "stages": [
-        "수사·대응",
         "사법·처분",
-        "발단·의혹",
         "입장·공방",
+        "일반 보도",
         "파장·후속"
       ],
-      "gaps": [],
-      "duplicate_candidates": 40,
-      "event_count": 19,
+      "gaps": [
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 13,
       "evidence_rate": 1.0
     },
     {
-      "id": "i8be14e0f",
-      "title": "[속보] 진주서 공군 20대 여군 하사 숨진 채 발견",
-      "episode": "episode:97878ce154c163",
+      "id": "i757de90e",
+      "title": "조희대 탄핵 추진에 일선 법원 첫 반발… 창원지법 \"헌법질서 위태롭게 해\"",
+      "episode": "episode:18df70b21f60fa",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "입장·공방",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ie9473f1c",
+      "title": "진주서 공군 20대 여군 중사 숨진 채 발견…군 당국 수사",
+      "episode": "episode:7feef695d19bdd",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -117,21 +119,58 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i37b09081",
-      "title": "직장 동료 태우고 음주운전하다 사고…1명 사망·3명 부상",
-      "episode": "episode:d7192a6e880529",
+      "id": "i37398a99",
+      "title": "숨진 정치인과 어깨동무한 리트 만점자?…\"선 넘었다\" \"풍자\" 팽팽",
+      "episode": "episode:e556cc743cfd1f",
       "quality": 1.0,
       "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
         "발단·의혹",
+        "입장·공방",
+        "파장·후속",
         "수사·대응",
-        "입장·공방"
+        "사법·처분"
       ],
       "gaps": [],
-      "duplicate_candidates": 43,
-      "event_count": 90,
+      "duplicate_candidates": 38,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i1c2651b9",
+      "title": "북한이 공개한 사진, 왜 굳이 '스키타는 김주애'였을까? [이슈톺]",
+      "episode": "episode:52f6f63871e567",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "사법·처분",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 30,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i0c872e60",
+      "title": "임광현, AI 부정행위 방지에 ‘속도전’ 강조‥844개 국가시험 대책 점검",
+      "episode": "episode:98d07a9126c0c3",
+      "quality": 0.84,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
@@ -149,58 +188,6 @@
       ],
       "duplicate_candidates": 22,
       "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie3ee5ebf",
-      "title": "\"스파이 의혹 젠슨 황 불륜 상대 앨리스 황, 오사카에도 법인 설립\"",
-      "episode": "episode:284932387bab19",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "입장·공방",
-        "사법·처분",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 34,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i52e97fc9",
-      "title": "“공학자 되고싶다”던 오정태 딸, 16세에 카이스트 합격…‘철새공부법’ ‘일타강사식 복습법’ 뭐길래",
-      "episode": "episode:bd365964ad6f23",
-      "quality": 0.58,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "수사·대응",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 29,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i32f6a682",
-      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
-      "episode": "episode:bb1f3458304a26",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 22,
-      "event_count": 3,
       "evidence_rate": 1.0
     }
   ]
