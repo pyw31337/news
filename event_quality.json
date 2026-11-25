@@ -1,71 +1,52 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 10:05:33",
+  "updated_at": "2026-11-25 10:26:37",
   "date": "2026-11-25",
   "total_issues": 10,
-  "average_quality": 0.88,
+  "average_quality": 0.86,
   "issues": [
     {
-      "id": "i11a07d76",
-      "title": "코스피, 6%대 급락 4,697…전날 급등분 모두 반납",
-      "episode": "episode:ad24ed4e1bcf16",
-      "quality": 1.0,
+      "id": "i7ce9f3ca",
+      "title": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
+      "episode": "episode:aa0d66326f4d66",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
         "사법·처분",
         "파장·후속",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 47,
-      "event_count": 34,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ied9c896d",
-      "title": "[속보] 창원지법 판사회의 \"재판 이유 법관 탄핵 추진에 깊은 우려\"",
-      "episode": "episode:f391148c732bce",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "파장·후속"
+        "입장·공방"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 9,
+      "duplicate_candidates": 34,
+      "event_count": 29,
       "evidence_rate": 1.0
     },
     {
-      "id": "i5bde9e66",
-      "title": "‘16만전자가 눈앞’ 코스피 6%대 급락…SK하이닉스 -11%",
-      "episode": "episode:9a9c89e228da23",
-      "quality": 0.92,
+      "id": "i5e2239f1",
+      "title": "창원지법 판사회의 “법관 탄핵 추진은 헌법가치 훼손”",
+      "episode": "episode:48ef86537b0ce6",
+      "quality": 0.84,
       "stages": [
-        "일반 보도",
-        "파장·후속",
+        "입장·공방",
         "사법·처분",
-        "발단·의혹"
+        "일반 보도"
       ],
       "gaps": [
-        "입장·공방",
-        "수사·대응"
+        "발단·의혹",
+        "수사·대응",
+        "파장·후속"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 30,
+      "duplicate_candidates": 30,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9ef64124",
-      "title": "노소영, 최태원 9440억원 받아도 세금은 '0원' 이유는",
-      "episode": "episode:dfdf9e77b6be8f",
+      "id": "i64c42764",
+      "title": "노소영, 최태원 ‘9440억 지급 화해’ 거부",
+      "episode": "episode:f3275803b95ca8",
       "quality": 0.76,
       "stages": [
         "수사·대응",
@@ -81,13 +62,49 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i59b91f5e",
-      "title": "진주서 공군 20대 여군 하사 숨진 채 발견…남긴 메모",
-      "episode": "episode:9178548c22138f",
-      "quality": 0.84,
+      "id": "ia34e8b23",
+      "title": "홈플러스, 모레(27일)부터 전국 마트 영업 중단…“상품 수급 문제”",
+      "episode": "episode:374dd426a6b5fd",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i6caafbfc",
+      "title": "“코스피 바닥은 지났다…삼성전자·SK하이닉스 주주환원도 저평가”",
+      "episode": "episode:1f6a281bd6adaf",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 31,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id1086742",
+      "title": "진주서 20대 공군 하사 숨진 채 발견… 휴대폰에 '상사 질책' 메모",
+      "episode": "episode:035974d8f86a5a",
+      "quality": 0.84,
+      "stages": [
         "발단·의혹",
+        "일반 보도",
         "수사·대응"
       ],
       "gaps": [
@@ -100,93 +117,76 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i345a8761",
-      "title": "“입 싼 송영길과 말 섞기 싫다”…정청래가 발끈한 이유는?",
-      "episode": "episode:2ea6cc97270d17",
+      "id": "i6dcff5ce",
+      "title": "이 대통령 지지율 40.3%…2개월 만에 40%대 회복 [KSOI]",
+      "episode": "episode:46b4a7bdc26357",
       "quality": 1.0,
       "stages": [
-        "일반 보도",
         "파장·후속",
+        "일반 보도",
+        "수사·대응",
         "입장·공방",
-        "사법·처분",
-        "수사·대응",
-        "발단·의혹"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 28,
-      "event_count": 50,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib42fa7db",
-      "title": "경찰 출석한 고 이진우 과외교사 \"진실 묻어선 안 되기에\"",
-      "episode": "episode:cc2960a6dfbab1",
-      "quality": 0.76,
-      "stages": [
-        "수사·대응",
         "사법·처분"
       ],
       "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ifca3ace7",
-      "title": "“도와준다고 해도”…‘젠슨 황 불륜녀’ 앨리스 황, 일본 오사카서 한 일",
-      "episode": "episode:1130e60eb260f1",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "입장·공방",
-        "수사·대응",
         "발단·의혹"
       ],
-      "gaps": [],
-      "duplicate_candidates": 41,
-      "event_count": 16,
+      "duplicate_candidates": 35,
+      "event_count": 98,
       "evidence_rate": 1.0
     },
     {
-      "id": "i867d629c",
-      "title": "[오늘 한 컷] 770만원을 건네며 미안하다는 사람",
-      "episode": "episode:857c69f4339077",
-      "quality": 0.68,
+      "id": "i051d6f60",
+      "title": "고경표 빼고 조진웅 못 빼고...방송가 고육지책",
+      "episode": "episode:b024059bcb7280",
+      "quality": 0.84,
       "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 11,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1063bf50",
-      "title": "'리트 만점자' 과외 교사 경찰 출석…\"공소권 없다고 진실 묻어선 안 돼\"",
-      "episode": "episode:c6d428ca791c67",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
         "사법·처분",
-        "일반 보도",
+        "수사·대응",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 41,
-      "event_count": 11,
+      "duplicate_candidates": 32,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ifca3ace7",
+      "title": "“도와준다고 해도”…‘젠슨 황 불륜녀’ 앨리스 황, 일본 오사카서 한 일",
+      "episode": "episode:731b475042253b",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "수사·대응",
+        "입장·공방",
+        "발단·의혹"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 31,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id1177c69",
+      "title": "혹시 사람입니까",
+      "episode": "episode:2a6a4ae0df92e4",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 11,
+      "event_count": 6,
       "evidence_rate": 1.0
     }
   ]
