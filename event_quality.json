@@ -1,14 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 14:59:33",
-  "date": "2026-11-25",
+  "updated_at": "2026-11-25 15:18:11",
+  "date": "2026-11-26",
   "total_issues": 10,
-  "average_quality": 0.82,
+  "average_quality": 0.86,
   "issues": [
     {
-      "id": "i4c742d98",
+      "id": "i58103fe8",
       "title": "[속보] 美, 한국 등 14개 경제주체에 '과잉생산 관세' 예고",
-      "episode": "episode:10d668678e2d1e",
+      "episode": "episode:d0e41e1bfbcae0",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -20,32 +20,51 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 26,
-      "event_count": 22,
+      "duplicate_candidates": 27,
+      "event_count": 23,
       "evidence_rate": 1.0
     },
     {
-      "id": "i190e3221",
-      "title": "노소영 측 “상고 취하하면 될 일”…9440억원 다 주겠다는 최태원, 왜 ‘화해권고’ 요청했나 [이슈+]",
-      "episode": "episode:4939b88fdc83be",
+      "id": "i513e2698",
+      "title": "최태원 \"9,440억 전액 주겠다\"‥노소영 \"화해 말고 상고 취하\"",
+      "episode": "episode:feb1e10e0b438b",
       "quality": 0.76,
       "stages": [
-        "수사·대응",
+        "사법·처분",
         "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "사법·처분"
+        "수사·대응"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 10,
+      "duplicate_candidates": 29,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
-      "id": "i1e9c2c0d",
-      "title": "홈플러스, 27일부터 전국 67개점 영업 중단",
-      "episode": "episode:61788e556aeb8e",
+      "id": "i7ce9f3ca",
+      "title": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
+      "episode": "episode:1a33c80fdc9dcf",
+      "quality": 0.92,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 37,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iea6e79d2",
+      "title": "자금난 못 이긴 홈플러스...전 점포 27일부터 '임시휴업'",
+      "episode": "episode:8c3b8d522b0ed7",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -60,28 +79,9 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i731db9ab",
-      "title": "반도체주 급락 속…SK하이닉스, '100조 주주환원' 재확인",
-      "episode": "episode:83cb0d85961372",
-      "quality": 0.92,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "파장·후속",
-        "사법·처분"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 35,
-      "event_count": 34,
-      "evidence_rate": 1.0
-    },
-    {
       "id": "i2a2a305c",
       "title": "창원지법 전체판사회의 \"법관 탄핵 추진, 사법권 독립·헌법 가치 훼손\"",
-      "episode": "episode:56216799d783b2",
+      "episode": "episode:49a42e50905233",
       "quality": 0.92,
       "stages": [
         "입장·공방",
@@ -93,49 +93,51 @@
         "발단·의혹",
         "파장·후속"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 8,
+      "duplicate_candidates": 27,
+      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "i94b59986",
-      "title": "진주 영외서 공군 20대 여군 하사 숨진 채 발견…군 당국 수사",
-      "episode": "episode:52058c9b6980ca",
+      "id": "if5870590",
+      "title": "한동훈 \"의원직 걸자\".. 민주당 \"그때는 장관직, 이번엔\"",
+      "episode": "episode:b4332421984057",
+      "quality": 1.0,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "수사·대응",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 25,
+      "event_count": 21,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i7e4e6f9d",
+      "title": "\"9급 공무원 시험, 고졸 수준\"…'막말 논란' 부산 인재개발원장, 결국 인사 조치",
+      "episode": "episode:64fa120d3cd6fd",
       "quality": 0.76,
       "stages": [
         "일반 보도",
-        "수사·대응"
+        "발단·의혹"
       ],
       "gaps": [
-        "발단·의혹",
         "입장·공방",
+        "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 13,
+      "duplicate_candidates": 27,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "i0ab3541f",
-      "title": "교회 돈 102억 자유통일당에 지원… 전광훈 목사 구속영장 청구",
-      "episode": "episode:6299093ee94b03",
-      "quality": 0.68,
-      "stages": [
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i051d6f60",
-      "title": "고경표 빼고 조진웅 못 빼고...방송가 고육지책",
-      "episode": "episode:174856bd4c65f9",
+      "id": "ie963e275",
+      "title": "\"대리비 5만원인데 팁도 5만원\"…고경표 태웠던 대리기사가 남긴 말",
+      "episode": "episode:cad2d4fc0125f3",
       "quality": 0.76,
       "stages": [
         "수사·대응",
@@ -147,7 +149,7 @@
         "사법·처분"
       ],
       "duplicate_candidates": 24,
-      "event_count": 5,
+      "event_count": 6,
       "evidence_rate": 1.0
     },
     {
@@ -156,35 +158,35 @@
       "episode": "episode:0cf6ca20285a5f",
       "quality": 1.0,
       "stages": [
-        "일반 보도",
         "파장·후속",
+        "일반 보도",
         "사법·처분",
         "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
+        "입장·공방",
         "발단·의혹"
       ],
-      "duplicate_candidates": 36,
-      "event_count": 13,
+      "gaps": [],
+      "duplicate_candidates": 37,
+      "event_count": 15,
       "evidence_rate": 1.0
     },
     {
-      "id": "i8693ad78",
-      "title": "시각장애 오케스트라 공연 찾은 김혜경 여사",
-      "episode": "episode:e008a71bf70a4c",
-      "quality": 0.76,
+      "id": "i82bd909e",
+      "title": "김혜경 여사, 시각장애 오케스트라 관람…응원봉 흔들며 수험생 격려도",
+      "episode": "episode:c9507627fa885a",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
-        "입장·공방"
+        "입장·공방",
+        "발단·의혹"
       ],
       "gaps": [
-        "발단·의혹",
         "수사·대응",
-        "사법·처분"
+        "사법·처분",
+        "파장·후속"
       ],
       "duplicate_candidates": 26,
-      "event_count": 9,
+      "event_count": 10,
       "evidence_rate": 1.0
     }
   ]
