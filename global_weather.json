@@ -1,7 +1,23 @@
 {
-  "updated": "2026-11-25T09:24:11.047841+09:00",
-  "alerts_count": 76,
+  "updated": "2026-11-25T09:51:16.091448+09:00",
+  "alerts_count": 71,
   "alerts": [
+    {
+      "id": "urn:oid:2.49.0.1.840.0.71a83efe09c374bdd42414d4de4b662a02acdfbc.001.1",
+      "t": "2026-11-24 15:45",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Western US Arctic Offshore",
+      "area_en": "Western US Arctic Offshore",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
+      "severity": "Severe",
+      "headline_ko": "Western US Arctic Offshore 해상 결빙 경보",
+      "headline_en": "Western US Arctic Offshore Heavy Freezing Spray Warning",
+      "desc": "Offshore Waters Forecast for the US Arctic Waters\n\nSea forecasts represent an average of the highest one-third of\nthe combined wind wave and swell height. Individual waves may be\ntwice as high.\n\n.TONIGHT...SE winds 25 kt. Seas 7 ft. Blowing snow. Heavy\nfreezing spray.\n.WED...E winds 20 kt. Seas 6 ft"
+    },
     {
       "id": "urn:oid:2.49.0.1.840.0.1f709af5c5e8702f4a0e237f0c32941e1e561cec.001.1",
       "t": "2026-11-24 16:37",
@@ -195,22 +211,6 @@
       "desc": "* WHAT...For the Gale Warning, seas 16 to 21 ft at 14 seconds and\nsouth winds 20 to 30 kt with gusts up to 35 kt. For the\nHazardous Seas Warning, very steep and hazardous seas 20 to 22\nft at 14 seconds and south winds around 25 kt with gusts up to\n35 kt expected. For the Storm Watch, seas 19 to 21 f"
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.e1ca2c8d623f2ab29e0df8bc60c64b0697a40038.005.2",
-      "t": "2026-11-24 15:16",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Inland Worcester",
-      "area_en": "Inland Worcester",
-      "event": "홍수 경보",
-      "event_en": "Coastal Flood Warning",
-      "severity": "Severe",
-      "headline_ko": "Inland Worcester 홍수 경보",
-      "headline_en": "Inland Worcester Coastal Flood Warning",
-      "desc": "* WHAT...Two to three feet of inundation above ground level\nexpected in low-lying areas near shorelines and tidal\nwaterways.\n\n* WHERE...In Maryland, Inland Worcester and Maryland Beaches\nCounties. In Virginia, Accomack and Northampton Counties.\n\n* WHEN...From 5 AM to 5 PM EST Thursday.\n\n* IMPACTS..."
-    },
-    {
       "id": "urn:oid:2.49.0.1.840.0.e1ca2c8d623f2ab29e0df8bc60c64b0697a40038.002.2",
       "t": "2026-11-24 15:16",
       "country": "US",
@@ -227,20 +227,20 @@
       "desc": "* WHAT...For the Coastal Flood Advisory, up to one foot of\ninundation above ground level expected in low-lying areas near\nshorelines and tidal waterways. For the Coastal Flood Warning,\ntwo to three feet of inundation above ground level expected in\nlow-lying areas near shorelines and tidal waterways."
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.e1ca2c8d623f2ab29e0df8bc60c64b0697a40038.004.2",
+      "id": "urn:oid:2.49.0.1.840.0.e1ca2c8d623f2ab29e0df8bc60c64b0697a40038.005.2",
       "t": "2026-11-24 15:16",
       "country": "US",
       "flag": "🇺🇸",
       "country_ko": "미국",
       "country_en": "United States",
-      "area": "Richmond",
-      "area_en": "Richmond",
+      "area": "Inland Worcester",
+      "area_en": "Inland Worcester",
       "event": "홍수 경보",
       "event_en": "Coastal Flood Warning",
       "severity": "Severe",
-      "headline_ko": "Richmond 홍수 경보",
-      "headline_en": "Richmond Coastal Flood Warning",
-      "desc": "* WHAT...Two to three feet of inundation above ground level\nexpected in low-lying areas near shorelines and tidal\nwaterways.\n\n* WHERE...Portions of east central, eastern and southeast\nVirginia.\n\n* WHEN...From 6 AM to 5 PM EST Thursday.\n\n* IMPACTS...Major flooding may cause extensive inundation and f"
+      "headline_ko": "Inland Worcester 홍수 경보",
+      "headline_en": "Inland Worcester Coastal Flood Warning",
+      "desc": "* WHAT...Two to three feet of inundation above ground level\nexpected in low-lying areas near shorelines and tidal\nwaterways.\n\n* WHERE...In Maryland, Inland Worcester and Maryland Beaches\nCounties. In Virginia, Accomack and Northampton Counties.\n\n* WHEN...From 5 AM to 5 PM EST Thursday.\n\n* IMPACTS..."
     }
   ],
   "quakes": [
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 4.5,
-      "apparent_temp": -0.0,
-      "humidity": 44,
+      "temp": 4.1,
+      "apparent_temp": -0.3,
+      "humidity": 46,
       "code": 0,
-      "wind": 10.7
+      "wind": 10.0
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 21.2,
-      "apparent_temp": 18.0,
-      "humidity": 32,
+      "temp": 19.6,
+      "apparent_temp": 17.5,
+      "humidity": 45,
       "code": 0,
-      "wind": 11.9
+      "wind": 9.8
     },
     {
       "id": "london",
@@ -362,11 +362,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 4.8,
-      "apparent_temp": 1.2,
-      "humidity": 75,
+      "temp": 4.7,
+      "apparent_temp": 0.9,
+      "humidity": 76,
       "code": 3,
-      "wind": 11.2
+      "wind": 12.6
     },
     {
       "id": "paris",
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 4.7,
-      "apparent_temp": 1.8,
-      "humidity": 87,
+      "temp": 4.6,
+      "apparent_temp": 1.9,
+      "humidity": 88,
       "code": 61,
-      "wind": 8.0
+      "wind": 7.6
     },
     {
       "id": "frankfurt",
@@ -390,11 +390,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": -1.9,
-      "apparent_temp": -5.5,
-      "humidity": 81,
+      "temp": -2.0,
+      "apparent_temp": -5.6,
+      "humidity": 82,
       "code": 1,
-      "wind": 6.1
+      "wind": 6.4
     },
     {
       "id": "tokyo",
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 9.6,
-      "apparent_temp": 6.2,
-      "humidity": 45,
+      "temp": 9.9,
+      "apparent_temp": 6.4,
+      "humidity": 44,
       "code": 0,
-      "wind": 7.1
+      "wind": 8.0
     },
     {
       "id": "beijing",
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": -1.4,
-      "apparent_temp": -4.9,
-      "humidity": 51,
-      "code": 1,
-      "wind": 1.9
+      "temp": -1.2,
+      "apparent_temp": -4.5,
+      "humidity": 50,
+      "code": 0,
+      "wind": 0.4
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 24.4,
-      "apparent_temp": 30.0,
-      "humidity": 97,
+      "temp": 26.1,
+      "apparent_temp": 32.5,
+      "humidity": 95,
       "code": 3,
-      "wind": 2.8
+      "wind": 2.6
     },
     {
       "id": "sydney",
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 20.4,
-      "apparent_temp": 20.1,
-      "humidity": 63,
+      "temp": 20.2,
+      "apparent_temp": 19.2,
+      "humidity": 67,
       "code": 3,
-      "wind": 13.3
+      "wind": 14.9
     },
     {
       "id": "toronto",
@@ -461,10 +461,10 @@
       "lat": 43.6532,
       "lon": -79.3832,
       "temp": -1.2,
-      "apparent_temp": -6.0,
-      "humidity": 63,
+      "apparent_temp": -5.9,
+      "humidity": 65,
       "code": 0,
-      "wind": 11.8
+      "wind": 12.2
     },
     {
       "id": "dubai",
@@ -474,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 24.2,
-      "apparent_temp": 27.8,
-      "humidity": 81,
+      "temp": 24.0,
+      "apparent_temp": 27.7,
+      "humidity": 82,
       "code": 0,
-      "wind": 4.1
+      "wind": 4.0
     },
     {
       "id": "saopaulo",
@@ -488,11 +488,11 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 23.2,
-      "apparent_temp": 27.1,
-      "humidity": 92,
+      "temp": 23.0,
+      "apparent_temp": 26.6,
+      "humidity": 90,
       "code": 3,
-      "wind": 6.0
+      "wind": 5.8
     }
   ],
   "stories": [
@@ -501,16 +501,8 @@
       "title": "Countries react as COP31 climate talks collapse",
       "press": "Reuters",
       "image": "https://www.ncronline.org/files/styles/facebook_ratio/public/2026-11/11.24.26%20COP31%20civil%20society%20shame.jpg?h=82f92a78&itok=R4QCjGi6",
-      "score": 19.1,
+      "score": 18.8,
       "url": "g/g5576dee4"
-    },
-    {
-      "id": "g99aa8721",
-      "title": "Democrats win House by largest margin in 50 years. And, COP31 ends with no deal",
-      "press": "NPR World",
-      "image": "https://npr.brightspotcdn.com/dims3/default/strip/false/crop/6719x3779+0+347/resize/1400/quality/85/format/webp/?url=https%3A%2F%2Fnpr-production-npr.s3.us-east-1.amazonaws.com%2Fbrightspot%2Fe5%2F7d%2Fc50c3bcc4fe1ae05beb95414859a%2Fgettyimages-2305196522.jpg",
-      "score": 8.0,
-      "url": "g/g99aa8721"
     }
   ]
 }
