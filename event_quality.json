@@ -1,37 +1,18 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 03:23:03",
+  "updated_at": "2026-11-25 03:54:25",
   "date": "2026-11-25",
   "total_issues": 10,
-  "average_quality": 0.75,
+  "average_quality": 0.76,
   "issues": [
     {
-      "id": "i3e1ed499",
-      "title": "[속보] 노소영 측 \"최태원 화해권고 요청 동의 안 해…즉시 상고 취하하라\"",
-      "episode": "episode:f2afe4000a91b7",
+      "id": "i83ccccc4",
+      "title": "[속보] 코스피, 장 초반 4%대 급락…매도 사이드카 발동",
+      "episode": "episode:f19fff6fbaa7c8",
       "quality": 0.92,
       "stages": [
-        "수사·대응",
-        "일반 보도",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i08be3b61",
-      "title": "[속보] 코스피, 반등 하루 만에 5%↓…장초반 매도 사이드카",
-      "episode": "episode:1a73c703af3e15",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
         "파장·후속",
+        "일반 보도",
         "수사·대응",
         "사법·처분"
       ],
@@ -39,53 +20,90 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 44,
-      "event_count": 39,
+      "duplicate_candidates": 43,
+      "event_count": 35,
       "evidence_rate": 1.0
     },
     {
-      "id": "ifb9508f9",
-      "title": "김민석 \"曺 대법원장 탄핵 신속 추진 위한 5당 연대 공식 제안\"",
-      "episode": "episode:24d50908a4f787",
-      "quality": 1.0,
+      "id": "i3e1ed499",
+      "title": "[속보] 노소영 측 \"최태원 화해권고 요청 동의 안 해…즉시 상고 취하하라\"",
+      "episode": "episode:f2afe4000a91b7",
+      "quality": 0.84,
       "stages": [
-        "수사·대응",
         "일반 보도",
         "입장·공방",
-        "사법·처분",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
         "파장·후속"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icd59108c",
+      "title": "김민석 “조희대 탄핵 신속 추진 5당 연대 공식 제안”",
+      "episode": "episode:44ab9af30b4762",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id548fa75",
+      "title": "한동훈 \"조희대 탄핵 인용되면 의원직 던질 것…서영교·박선원도 걸어라\"",
+      "episode": "episode:5244d4d46dc404",
+      "quality": 1.0,
+      "stages": [
+        "사법·처분",
+        "입장·공방",
+        "파장·후속",
+        "수사·대응",
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹"
       ],
       "duplicate_candidates": 34,
-      "event_count": 20,
+      "event_count": 13,
       "evidence_rate": 1.0
     },
     {
-      "id": "i3e14398e",
-      "title": "한동훈 “조희대 탄핵 인용 땐 의원직 사퇴…서영교·박선원도 직 걸라”",
-      "episode": "episode:ccb68531a598ec",
+      "id": "ic5c22ca2",
+      "title": "김주애 '200만원' 명품 스키복…알고 보니 北 반입 금지품",
+      "episode": "episode:19f45261709cfe",
       "quality": 0.92,
       "stages": [
-        "사법·처분",
-        "입장·공방",
         "일반 보도",
-        "파장·후속"
+        "입장·공방",
+        "사법·처분",
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "수사·대응"
+        "파장·후속"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 14,
+      "duplicate_candidates": 27,
+      "event_count": 20,
       "evidence_rate": 1.0
     },
     {
       "id": "ie4a37bec",
       "title": "오늘 같이 놀 사람을 찾습니다…느슨한 관계를 즐기는 청년들 [Now 2.30]",
-      "episode": "episode:11ef854a1ae073",
+      "episode": "episode:52960909ceed36",
       "quality": 0.48,
       "stages": [
         "일반 보도"
@@ -95,82 +113,27 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 4,
+      "duplicate_candidates": 5,
       "event_count": 2,
       "evidence_rate": 1.0
     },
     {
-      "id": "i2e8b774f",
-      "title": "CEO 복귀한 젠슨 황, 전 직원 부르더니…\"치료 중\" 공개",
-      "episode": "episode:34b20db29e11be",
-      "quality": 1.0,
+      "id": "ib75b0f87",
+      "title": "'천안 장애아동 학대치사' 목사 징역 25년·외조모 20년 구형(종합2보)",
+      "episode": "episode:b118df9a1613e9",
+      "quality": 0.84,
       "stages": [
-        "일반 보도",
-        "파장·후속",
         "사법·처분",
-        "입장·공방",
+        "일반 보도",
         "수사·대응"
       ],
       "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 41,
-      "event_count": 18,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i39ad918c",
-      "title": "北 김주애가 입은 ‘명품 스키복’, 대북 반입 금지 사치품이었다",
-      "episode": "episode:31171e5d6bcf70",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
+        "발단·의혹",
+        "입장·공방",
         "파장·후속"
       ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7472fb4e",
-      "title": "‘리트 만점자’ 숨진채 발견... 메모엔 “몸과 마음 지쳤다”",
-      "episode": "episode:43f66ea4b003f7",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "icc7073be",
-      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
-      "episode": "episode:b4571ab00be66b",
-      "quality": 0.66,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 11,
+      "duplicate_candidates": 19,
+      "event_count": 40,
       "evidence_rate": 1.0
     },
     {
@@ -191,42 +154,27 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i52b638aa",
-      "title": "생후 17개월 딸 집에 홀로 두고, 분유만 줘 영양결핍으로 숨지게 한 30대 친부 ‘아동학대살해’ 혐의 구속기소",
-      "episode": "episode:8b411370fee35a",
-      "quality": 0.68,
+      "id": "iea2a6a4f",
+      "title": "1~9월 출생아 21만 9천 명…14.3% 증가율 역대 최고 기록",
+      "episode": "episode:6d69eb57e999af",
+      "quality": 0.76,
       "stages": [
-        "일반 보도",
-        "사법·처분",
         "수사·대응",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방"
+        "일반 보도"
       ],
-      "gaps": [],
-      "duplicate_candidates": 29,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i32f6a682",
-      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
-      "episode": "episode:bb1f3458304a26",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
+      "gaps": [
         "발단·의혹",
         "입장·공방",
-        "수사·대응"
+        "사법·처분"
       ],
-      "duplicate_candidates": 22,
-      "event_count": 12,
+      "duplicate_candidates": 14,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
       "id": "i2fb03e12",
       "title": "보호자 없어도 응급처치 가능해진다…구급차 인력 기준도 강화",
-      "episode": "episode:e54b5deff61031",
+      "episode": "episode:c70dc6129ca76a",
       "quality": 0.38,
       "stages": [
         "파장·후속"
