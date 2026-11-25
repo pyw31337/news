@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-25",
-  "generated_at": "2026-11-25T13:48:48+09:00",
+  "generated_at": "2026-11-25T14:03:16+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,8 +27,8 @@
   },
   "candidates": [
     {
-      "issue_id": "i9bce8fc6",
-      "title": "코스피 5% 급락에 ‘매도 사이드카’...하루만에 5000선 반납",
+      "issue_id": "ie31a7edb",
+      "title": "하루 만에 무너진 '5천피'...코스피 개장 8분 만에 매도 사이드카",
       "category": "경제",
       "rank": 3,
       "priority_score": 45,
@@ -38,7 +38,7 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "2026년 11월 25일 코스피 지수가 미국 반도체주 약세와 엔비디아 회계 조사 등의 영향으로 전일 대비 4% 넘게 급락하며 5000선을 하루 만에 반납했다.",
+        "2026년 11월 25일, 코스피 지수가 전날 5,000선을 회복했으나 하루 만에 다시 급락하며 4,700선까지 밀려났다.",
         "‘5000피’ 하루천하…코스피 4700대로 밀리며 매도 사이드카 발동 [마켓시그널]",
         "코스피 5천 선 회복 하루 만에 급락…매도 사이드카 발동·4,700선 추락",
         "오전 코스피 시장에 매도 사이드카가 또다시 발동됐다.",
@@ -70,7 +70,7 @@
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "2026년 11월 25일 코스피 지수가 미국 반도체주 약세와 엔비디아 회계 조사 등의 영향으로 전일 대비 4% 넘게 급락하며 5000선을 하루 만에 반납했다."
+          "evidence": "2026년 11월 25일, 코스피 지수가 전날 5,000선을 회복했으나 하루 만에 다시 급락하며 4,700선까지 밀려났다."
         },
         {
           "panel": 2,
@@ -85,110 +85,7 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "전날의 상승분을 하루 만에 반납하며 다시 매도 사이드카가 발동되는 등 시장의 불안정성이 극에 달했다는 해석이 나온다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i9d9709e5",
-      "title": "\"배달기사들 500m 걸어서 와라\"...청담 아파트 갑질에 '공분'",
-      "category": "경제",
-      "rank": 6,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "서울 강남구 청담동의 초고가 아파트 '청담 르엘'이 단지 내 배달 오토바이 출입을 통제하고 도보 배달을 요구하면서 배달 기사들과의 갈등이 격화되고 있다.",
-        "50억 청담 아파트 앞 ‘배달 거부’ 현수막… “입주민 갑질이 자초했다”",
-        "“배달은 받고 싶고 오토바이는 금지?”…50억 청담 아파트에 걸린 현수막 [이슈픽]",
-        "\"배달기사들 500m 걸어서 와라\"...청담 아파트 갑질에 '공분'",
-        "서울 강남구 청담동의 한 아파트단지에서 배달 기사들에게 오토바이를 외부에 주차하고 약 500m를 걸어서..."
-      ],
-      "sources": [
-        {
-          "press": "조선비즈",
-          "title": "50억 청담 아파트 앞 ‘배달 거부’ 현수막… “입주민 갑질이 자초했다”",
-          "url": "https://n.news.naver.com/article/366/0001207175"
-        },
-        {
-          "press": "서울신문",
-          "title": "“배달은 받고 싶고 오토바이는 금지?”…50억 청담 아파트에 걸린 현수막 [이슈픽]",
-          "url": "https://n.news.naver.com/article/081/0003702960"
-        },
-        {
-          "press": "YTN",
-          "title": "\"배달기사들 500m 걸어서 와라\"...청담 아파트 갑질에 '공분'",
-          "url": "https://n.news.naver.com/article/052/0002437666"
-        },
-        {
-          "press": "ichannela.com",
-          "title": "단지 내 오토바이 배달 기사에게 “500m 걸어서 와라” 논란",
-          "url": "https://n.news.naver.com/mnews/article/449/0000368630?sid=102"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "서울 강남구 청담동의 초고가 아파트 '청담 르엘'이 단지 내 배달 오토바이 출입을 통제하고 도보 배달을 요구하면서 배달 기사들과의 갈등이 격화되고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "커뮤니티에 청담르엘에서 벌어지고 있는 배달 관련 갈등을 알리는 제보 글과 함께 아파트 입구에 설치된 현수막 사진이 올라왔다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "50억 청담 아파트 앞 ‘배달 거부’ 현수막… “입주민 갑질이 자초했다”"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "플랫폼 책임론과 아파트의 불편한 민낯이라는 비판적 시각이 더해지며 논란이 심화하는 국면이다."
+          "evidence": "전날의 상승세가 하루 만에 꺾이며 매도 사이드카가 발동되는 등 급격한 조정 국면으로 전환되었다."
         }
       ],
       "visual_brief": {
@@ -225,11 +122,10 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.66,
+        "continuity_quality": 0.92,
         "continuity_gaps": [
           "발단·의혹",
-          "수사·대응",
-          "사법·처분"
+          "입장·공방"
         ],
         "no_generic_closing": true
       }
@@ -238,7 +134,7 @@
       "issue_id": "i9e797316",
       "title": "반도체 호황에 전국민 보너스…조건 없이 '1인당 80만원' 지급",
       "category": "경제",
-      "rank": 8,
+      "rank": 6,
       "priority_score": 45,
       "production_types": [
         "comic",
@@ -335,6 +231,111 @@
           "발단·의혹",
           "입장·공방",
           "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ic5c22ca2",
+      "title": "김주애 '200만원' 명품 스키복…알고 보니 北 반입 금지품",
+      "category": "세계",
+      "rank": 5,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "김정은 북한 국무위원장의 딸 김주애가 유럽산 고가 스키 장비를 착용한 모습이 공개되면서 논란이 일고 있다.",
+        "김주애의 순백 스키복 사진…미 국무부 \"대북 반입 금지 사치품\"",
+        "美국무부, 北김주애 명품 스키 사진에…\"대북 반입 금지 사치품\"",
+        "김주애 '200만원' 명품 스키복…알고 보니 北 반입 금지품",
+        "스위스 스키에 프랑스 명품복 입은 김주애···미 국무부 “대북 반입 금지 사치품”"
+      ],
+      "sources": [
+        {
+          "press": "MBN",
+          "title": "김주애의 순백 스키복 사진…미 국무부 \"대북 반입 금지 사치품\"",
+          "url": "https://n.news.naver.com/article/057/0001979756"
+        },
+        {
+          "press": "뉴시스",
+          "title": "美국무부, 北김주애 명품 스키 사진에…\"대북 반입 금지 사치품\"",
+          "url": "https://n.news.naver.com/article/003/0014343733"
+        },
+        {
+          "press": "이데일리",
+          "title": "김주애 '200만원' 명품 스키복…알고 보니 北 반입 금지품",
+          "url": "https://n.news.naver.com/article/018/0006415168"
+        },
+        {
+          "press": "경향신문",
+          "title": "스위스 스키에 프랑스 명품복 입은 김주애···미 국무부 “대북 반입 금지 사치품”",
+          "url": "https://n.news.naver.com/article/032/0003484876"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "김정은 북한 국무위원장의 딸 김주애가 유럽산 고가 스키 장비를 착용한 모습이 공개되면서 논란이 일고 있다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "미 국무부 대변인은 24일(현지시간) 미국의소리(VOA) 방송의 관련 질의에 “유엔 회원국은 안전보장이사회 결의에 따라..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "김주애 '200만원' 명품 스키복…알고 보니 北 반입 금지품"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "미 국무부의 공식 입장이 언론을 통해 재확인되며 북한의 제재 회피 실태에 대한 비판적 해석이 이어졌다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.76,
+        "continuity_gaps": [
+          "발단·의혹",
+          "수사·대응",
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
