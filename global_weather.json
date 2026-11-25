@@ -1,23 +1,7 @@
 {
-  "updated": "2026-11-25T16:18:31.084085+09:00",
-  "alerts_count": 72,
+  "updated": "2026-11-25T16:47:46.351066+09:00",
+  "alerts_count": 71,
   "alerts": [
-    {
-      "id": "urn:oid:2.49.0.1.840.0.cbc4341dcddc39bedb1c7764fc84a6397d73ea10.001.1",
-      "t": "2026-11-24 23:13",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "캘리포니아",
-      "area_en": "California",
-      "event": "Special Marine Warning",
-      "event_en": "Special Marine Warning",
-      "severity": "Severe",
-      "headline_ko": "캘리포니아 Special Marine Warning",
-      "headline_en": "California Special Marine Warning",
-      "desc": "SMWMTR\n\nThe National Weather Service in San Francisco has issued a\n\n* Special Marine Warning for...\nCoastal Waters from Point Reyes to Pigeon Point California out to\n10 NM...\nCoastal Waters from Pigeon Point to Point Pinos California out to\n10 NM...\nWaters from Pigeon Point to Point Pinos 10-60 NM.."
-    },
     {
       "id": "urn:oid:2.49.0.1.840.0.aac603b349f70ef7e3ea2d9d1f27c012a065559b.002.3",
       "t": "2026-11-25 02:09",
@@ -241,6 +225,22 @@
       "headline_ko": "Dorchester 홍수 주의보",
       "headline_en": "Dorchester Flood Watch",
       "desc": "* WHAT...Flooding caused by excessive rainfall is possible.\n\n* WHERE...Portions of southeast Maryland, including the following\nareas, Dorchester, Inland Worcester, Maryland Beaches, Somerset and\nWicomico and Virginia, including the following areas, Accomack,\nEastern Essex, Eastern King William, East"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.6aca799ea7c8fa16f10bc3f5578171799d87c7b4.001.1",
+      "t": "2026-11-25 01:49",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Northampton",
+      "area_en": "Northampton",
+      "event": "홍수 주의보",
+      "event_en": "Flood Watch",
+      "severity": "Severe",
+      "headline_ko": "Northampton 홍수 주의보",
+      "headline_en": "Northampton Flood Watch",
+      "desc": "* WHAT...Flooding caused by excessive rainfall is possible.\n\n* WHERE...Portions of northeast North Carolina, including the\nfollowing areas, Bertie, Camden, Chowan, Eastern Currituck, Gates,\nHertford, Northampton, Pasquotank, Perquimans and Western Currituck\nand Virginia, including the following area"
     }
   ],
   "quakes": [
@@ -334,11 +334,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 0.5,
-      "apparent_temp": -4.3,
-      "humidity": 64,
+      "temp": 0.2,
+      "apparent_temp": -4.0,
+      "humidity": 69,
       "code": 0,
-      "wind": 13.4
+      "wind": 10.0
     },
     {
       "id": "losangeles",
@@ -348,11 +348,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 14.2,
-      "apparent_temp": 11.5,
-      "humidity": 51,
+      "temp": 13.9,
+      "apparent_temp": 11.2,
+      "humidity": 53,
       "code": 3,
-      "wind": 9.1
+      "wind": 8.9
     },
     {
       "id": "london",
@@ -363,10 +363,10 @@
       "lat": 51.5074,
       "lon": -0.1278,
       "temp": 4.9,
-      "apparent_temp": 1.6,
-      "humidity": 76,
+      "apparent_temp": 1.5,
+      "humidity": 78,
       "code": 3,
-      "wind": 9.7
+      "wind": 10.8
     },
     {
       "id": "paris",
@@ -376,11 +376,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 4.1,
-      "apparent_temp": 1.5,
+      "temp": 4.2,
+      "apparent_temp": 1.6,
       "humidity": 91,
       "code": 61,
-      "wind": 6.7
+      "wind": 6.6
     },
     {
       "id": "frankfurt",
@@ -390,11 +390,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": -2.3,
-      "apparent_temp": -6.0,
-      "humidity": 80,
+      "temp": -2.1,
+      "apparent_temp": -5.8,
+      "humidity": 79,
       "code": 3,
-      "wind": 6.4
+      "wind": 6.1
     },
     {
       "id": "tokyo",
@@ -404,11 +404,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 12.4,
-      "apparent_temp": 9.7,
-      "humidity": 37,
+      "temp": 11.6,
+      "apparent_temp": 9.2,
+      "humidity": 45,
       "code": 0,
-      "wind": 1.8
+      "wind": 2.3
     },
     {
       "id": "beijing",
@@ -418,11 +418,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 6.7,
+      "temp": 6.5,
       "apparent_temp": 2.7,
-      "humidity": 29,
-      "code": 0,
-      "wind": 4.7
+      "humidity": 31,
+      "code": 1,
+      "wind": 4.3
     },
     {
       "id": "singapore",
@@ -432,11 +432,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 28.2,
+      "temp": 27.1,
       "apparent_temp": 33.8,
-      "humidity": 84,
+      "humidity": 92,
       "code": 80,
-      "wind": 8.2
+      "wind": 3.2
     },
     {
       "id": "sydney",
@@ -446,11 +446,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 19.9,
+      "temp": 20.0,
       "apparent_temp": 18.8,
-      "humidity": 72,
+      "humidity": 70,
       "code": 3,
-      "wind": 17.6
+      "wind": 17.5
     },
     {
       "id": "toronto",
@@ -460,11 +460,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": -3.4,
-      "apparent_temp": -7.9,
-      "humidity": 72,
+      "temp": -3.5,
+      "apparent_temp": -7.8,
+      "humidity": 73,
       "code": 3,
-      "wind": 9.8
+      "wind": 8.8
     },
     {
       "id": "dubai",
@@ -474,11 +474,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 27.1,
-      "apparent_temp": 31.1,
-      "humidity": 67,
+      "temp": 27.5,
+      "apparent_temp": 31.2,
+      "humidity": 64,
       "code": 0,
-      "wind": 5.2
+      "wind": 7.0
     },
     {
       "id": "saopaulo",
@@ -489,21 +489,13 @@
       "lat": -23.5505,
       "lon": -46.6333,
       "temp": 20.9,
-      "apparent_temp": 23.1,
-      "humidity": 95,
+      "apparent_temp": 22.8,
+      "humidity": 94,
       "code": 3,
-      "wind": 11.4
+      "wind": 12.8
     }
   ],
   "stories": [
-    {
-      "id": "gfe57a5c3",
-      "title": "Countries react as COP31 climate talks collapse",
-      "press": "Reuters",
-      "image": "https://s7d1.scene7.com/is/image/CENODS/News--COP-31-climate-conference-outcomes---698648:Widescreen?$responsive$&qlt=90,0&resMode=sharp2&fmt=webp&op_sharpen=1",
-      "score": 11.5,
-      "url": "g/gfe57a5c3"
-    },
     {
       "id": "gcfd8c7a6",
       "title": "20 hostages as gunmen storm supermarket",
@@ -511,14 +503,6 @@
       "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/afp_6b05e778013d-1795549048.jpg?resize=1920%2C1440",
       "score": 10.6,
       "url": "g/gcfd8c7a6"
-    },
-    {
-      "id": "g3f44d4c0",
-      "title": "U.N. Climate Talks Collapse in a Bitter Clash Over Fossil Fuels",
-      "press": "The New York Times",
-      "image": "https://cst.brightspotcdn.com/dims4/default/d5c117a/2147483647/strip/true/crop/6397x3652+0+307/resize/1461x834!/quality/90/?url=https%3A%2F%2Fchorus-production-cst-web.s3.us-east-1.amazonaws.com%2Fbrightspot%2Fe9%2F3e%2F7ada13ba48e0ae3cec1f49132dcd%2F2305883801.jpg",
-      "score": 10.1,
-      "url": "g/g3f44d4c0"
     }
   ]
 }

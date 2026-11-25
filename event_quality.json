@@ -1,14 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 07:24:48",
+  "updated_at": "2026-11-25 07:50:28",
   "date": "2026-11-25",
   "total_issues": 10,
-  "average_quality": 0.89,
+  "average_quality": 0.87,
   "issues": [
     {
-      "id": "i48db79b2",
-      "title": "노소영, 최태원 ‘9440억 화해 카드’ 거부…소송 원점으로",
-      "episode": "episode:766038227e2e2b",
+      "id": "ifc21427b",
+      "title": "노소영, 최태원 화해권고 요청 거부…\"진정성 있다면 상고 취하\"(종합2보)",
+      "episode": "episode:22ed549d455b75",
       "quality": 0.84,
       "stages": [
         "수사·대응",
@@ -21,32 +21,32 @@
         "파장·후속"
       ],
       "duplicate_candidates": 26,
-      "event_count": 6,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i61234bd1",
-      "title": "[속보] 코스피 6.16% 급락한 4697.51 마감…전날 상승분 모두 반납",
-      "episode": "episode:a9277a5a178931",
-      "quality": 0.92,
+      "id": "i941ee584",
+      "title": "코스피, 반도체 투매 속 5%대 급락…매도→매수→매도 사이드카",
+      "episode": "episode:b4c8797bf2f9d2",
+      "quality": 1.0,
       "stages": [
-        "일반 보도",
         "파장·후속",
         "사법·처분",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
+        "일반 보도",
+        "수사·대응",
         "입장·공방"
       ],
-      "duplicate_candidates": 35,
-      "event_count": 44,
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 40,
+      "event_count": 52,
       "evidence_rate": 1.0
     },
     {
-      "id": "ib46ab7e7",
-      "title": "김민석 \"조희대 탄핵 신속 추진 위한 5당 연대 공식 제안\"",
-      "episode": "episode:63f256d768265c",
+      "id": "ia176f903",
+      "title": "김민석, 조희대 탄핵 위한 5당 연대 제안…“내란 완전 청산”",
+      "episode": "episode:1026566b2abb0b",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -59,13 +59,13 @@
         "발단·의혹"
       ],
       "duplicate_candidates": 40,
-      "event_count": 17,
+      "event_count": 18,
       "evidence_rate": 1.0
     },
     {
-      "id": "iafaf40ee",
-      "title": "한동훈 \"조희대 탄핵 인용되면 의원직 던진다… 서영교도 걸어야\"",
-      "episode": "episode:9303d8911ebe6f",
+      "id": "i5d7461df",
+      "title": "한동훈 “조희대 탄핵 인용되면 난 사퇴…서영교, 의원직 걸어라 ”",
+      "episode": "episode:75850c1ec052cb",
       "quality": 1.0,
       "stages": [
         "사법·처분",
@@ -77,32 +77,51 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 34,
+      "duplicate_candidates": 31,
       "event_count": 15,
       "evidence_rate": 1.0
     },
     {
-      "id": "ife890129",
-      "title": "직장 동료들 태우고 음주운전…1명 사망·3명 부상",
-      "episode": "episode:ead703ce6fdab2",
+      "id": "ia35b91a1",
+      "title": "직장 동료 태우고 만취 운전한 20대 남성…뒷자리 탄 1명 사망",
+      "episode": "episode:e0d1c49c5ebba0",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "파장·후속",
-        "사법·처분",
         "발단·의혹",
         "수사·대응",
+        "사법·처분",
         "입장·공방"
       ],
       "gaps": [],
-      "duplicate_candidates": 41,
-      "event_count": 90,
+      "duplicate_candidates": 38,
+      "event_count": 79,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i73cd922e",
+      "title": "김주애 고가 스키 장비에…미 국무부 \"북한 반입 금지 사치품\"",
+      "episode": "episode:63e432e8ee7779",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "사법·처분",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 23,
       "evidence_rate": 1.0
     },
     {
       "id": "i103eeb41",
       "title": "[속보] 삼성전자 10%대 급락…시총 1000조 깨져",
-      "episode": "episode:af08082cc299ca",
+      "episode": "episode:4332718b8ca74c",
       "quality": 0.92,
       "stages": [
         "파장·후속",
@@ -115,69 +134,13 @@
         "수사·대응"
       ],
       "duplicate_candidates": 21,
-      "event_count": 14,
+      "event_count": 16,
       "evidence_rate": 1.0
     },
     {
-      "id": "i39ad918c",
-      "title": "北 김주애가 입은 ‘명품 스키복’, 대북 반입 금지 사치품이었다",
-      "episode": "episode:36f94f6396d922",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "수사·대응",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic56c2ad3",
-      "title": "“이러다 90만닉스 될라” ‘삼전닉스’ -10% 폭락…“바닥이 안 보여” [내가샀다]",
-      "episode": "episode:04e15b3140544a",
-      "quality": 0.92,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "파장·후속",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 14,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i482c487a",
-      "title": "“배달은 받고 싶고 오토바이는 금지?”…50억 청담 아파트에 걸린 현수막 [이슈픽]",
-      "episode": "episode:6d688cb03eb1c9",
-      "quality": 0.66,
-      "stages": [
-        "일반 보도",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8be14e0f",
-      "title": "[속보] 진주서 공군 20대 여군 하사 숨진 채 발견",
-      "episode": "episode:2e5008eca8b323",
+      "id": "ie84ca063",
+      "title": "진주서 20대 공군 여군 부사관 숨져…'상사 질책' 메모, 과거에도 잇따른 군 가혹행위 의혹(종합)",
+      "episode": "episode:748ab9125a251d",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -188,8 +151,42 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 20,
+      "duplicate_candidates": 21,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i2afd2f98",
+      "title": "고비 사막에 우주산업도시…中 '우주 굴기' 심장 주취안 가보니 [차이나 워치]",
+      "episode": "episode:63b777759e5b23",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 23,
       "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i52e97fc9",
+      "title": "“공학자 되고싶다”던 오정태 딸, 16세에 카이스트 합격…‘철새공부법’ ‘일타강사식 복습법’ 뭐길래",
+      "episode": "episode:bd365964ad6f23",
+      "quality": 0.58,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 23,
+      "event_count": 3,
       "evidence_rate": 1.0
     }
   ]
