@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-26",
-  "generated_at": "2026-11-26T05:21:36+09:00",
+  "generated_at": "2026-11-26T05:53:32+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "ia34e8b23",
-      "title": "홈플러스, 모레(27일)부터 전국 마트 영업 중단…“상품 수급 문제”",
+      "issue_id": "i3eed955b",
+      "title": "상품 살 돈도 부족한 홈플러스…전국 67개점 다시 휴업",
       "category": "경제",
-      "rank": 1,
+      "rank": 2,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -38,7 +38,7 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "기업 회생 절차를 밟고 있는 홈플러스가 모레(27일)부터 전국 67개 점포의 마트 영업을 중단하기로 했습니다.",
+        "기업회생 절차를 밟고 있는 홈플러스가 27일부터 전국 67개 점포의 마트 영업을 중단하기로 했습니다.",
         "홈플러스, 모레(27일)부터 전국 마트 영업 중단…“상품 수급 문제”",
         "속보 홈플러스, 모레부터 임시휴업...\"27일부터 마트 영업 중단\"",
         "홈플러스, 27일부터 전 점포 임시 영업 중단",
@@ -46,9 +46,9 @@
       ],
       "sources": [
         {
-          "press": "중앙일보",
-          "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-          "url": "https://n.news.naver.com/article/025/0003566361"
+          "press": "KBS",
+          "title": "홈플러스, 모레(27일)부터 전국 마트 영업 중단…“상품 수급 문제”",
+          "url": "https://n.news.naver.com/article/056/0012300934"
         },
         {
           "press": "YTN",
@@ -70,17 +70,17 @@
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "기업 회생 절차를 밟고 있는 홈플러스가 모레(27일)부터 전국 67개 점포의 마트 영업을 중단하기로 했습니다."
+          "evidence": "기업회생 절차를 밟고 있는 홈플러스가 27일부터 전국 67개 점포의 마트 영업을 중단하기로 했습니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "판결문에 따르면 해당 인물은 고의로 교통사고를 낸 뒤 합의금을 받아낸 혐의 등으로 2022년 9월 징역 6개월을..."
+          "evidence": "극심한 유동성 압박으로 상품 매입에 필요한 자금이 바닥났기 때문이다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "법학적성시험(LEET·리트) 만점자로 알려진 이진우(32) 씨가 과거 고의 교통사고를 이용한 공갈 범죄와 경찰관..."
+          "evidence": "홈플러스, 모레(27일)부터 전국 마트 영업 중단…“상품 수급 문제”"
         },
         {
           "panel": 4,
@@ -122,119 +122,20 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ib0b88852",
-      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
-      "category": "IT",
-      "rank": 1,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다.",
-        "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
-        "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
-        "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
-        "흔적을 발견할 수 없었다."
-      ],
-      "sources": [
-        {
-          "press": "매일경제",
-          "title": "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
-          "url": "https://n.news.naver.com/article/009/0005766140"
-        },
-        {
-          "press": "한겨레",
-          "title": "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
-          "url": "https://n.news.naver.com/article/028/0002832987"
-        },
-        {
-          "press": "KBS",
-          "title": "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
-          "url": "https://n.news.naver.com/article/056/0012297227"
-        },
-        {
-          "press": "sentv.co.kr",
-          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
-          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "게임 속 풍경을 단순한 배경으로 활용하는 데 그치지 않고, 이용자가 새로운 장소를 발견하고 직접..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "‘리트 만점’ 이진우 모텔서 숨진 채 발견···“요즘 힘들다” 5줄 메모 남겨"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
+        "continuity_quality": 0.76,
         "continuity_gaps": [
-          "사법·처분"
+          "발단·의혹",
+          "입장·공방",
+          "수사·대응"
         ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "i5423f712",
-      "title": "또 사이드카…갈피 못 잡고 요동치는 2026 코스피",
+      "issue_id": "i12ccf53f",
+      "title": "'젠슨 황 랠리' 하루 만에 끝났다…코스피 6.16% 급락",
       "category": "경제",
-      "rank": 4,
+      "rank": 6,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -242,153 +143,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "오르는가 싶다가 다시 뚝 떨어지는 이런 널뛰기 장세가 올해 유독 심합니다.",
-        "젠슨 황 엔비디아 CEO(최고경영자) 복귀에 급등했던 코스피가 하루 만에 급락하며 올해 62번째 사이드카가 발동됐다",
-        "25일 코스피는 전날 대비 308.52포인트(6.16%) 내린 4697.51에 마감했다.",
-        "전날 황 CEO 복귀로 6.32% 오르며...",
-        "주가 급등과 급락 양쪽에서 사이드카 발동 요건을 충족하는 상황이 반복된 것이다."
+        "코스피가 6% 넘게 급락하며 전날 상승분을 모두 반납했다.",
+        "코스피는 지난 20일 5.21% 급락한 데 이어 24일에는 젠슨 황 엔비디아 최고경영자(CEO)의 복귀 소식 등에 힘입어 6.32% 상승했다.",
+        "당시에는 매수 사이드카가 발동됐다.",
+        "그러나 하루 뒤인 25일에는 개장 초부터 매도세가...",
+        "05% 폭락 ㆍ외국인 투자자 코스피 1조9000억원 순매도 젠슨 황 엔비디아 최고경영자(CEO)의 복귀로 단숨에 5000선을 회복했던 국내 증시가 하루 만에 상승분을 모두 반납했다."
       ],
       "sources": [
-        {
-          "press": "mt.co.kr",
-          "title": "\"이젠 뭘 사야 하나\" 3600조 증발…피할 곳도 사라진 코스피",
-          "url": "https://n.news.naver.com/mnews/article/008/0005446545?sid=101"
-        },
         {
           "press": "fnnews.com",
           "title": "\"하루는 급등, 다음 날은 폭락\"…개미들 울린 사이드카 102회",
           "url": "https://n.news.naver.com/mnews/article/014/0005609911?sid=101"
         },
         {
-          "press": "KBS",
-          "title": "코스피 5천 선 회복 하루 만에 급락…매도 사이드카 발동·4,700선 추락",
-          "url": "https://n.news.naver.com/article/056/0012300731"
+          "press": "chosun.com",
+          "title": "하루만에 ‘말짱 황’",
+          "url": "https://n.news.naver.com/mnews/article/023/0004011810?sid=101"
         },
         {
-          "press": "비즈워치",
-          "title": "하루 만에 무너진 '5천피'...코스피 개장 8분 만에 매도 사이드카",
-          "url": "https://n.news.naver.com/article/648/0000052955"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "오르는가 싶다가 다시 뚝 떨어지는 이런 널뛰기 장세가 올해 유독 심합니다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "코스피 5천 선 회복 하루 만에 급락…매도 사이드카 발동·4,700선 추락"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "젠슨 황 엔비디아 CEO(최고경영자) 복귀에 급등했던 코스피가 하루 만에 급락하며 올해 62번째 사이드카가 발동됐다"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i1b157417",
-      "title": "미국, 한국 등 14곳에 ‘과잉생산 관세’ 예고…“합의국은 15% 상한”",
-      "category": "세계",
-      "rank": 5,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "미국 무역대표부가 한국을 포함한 14개 경제주체에 '과잉생산 관세'를 예고했습니다.",
-        "미국, 한국 등 14곳에 ‘과잉생산 관세’ 예고…“합의국은 15% 상한”",
-        "미 무역대표부, 14개 경제주체에 과잉생산 관세‥\"한국 15% 상한 유지\"",
-        "美, 14개국에 과잉생산 관세…\"한국 15% 상한 유지\"(종합)",
-        "월스트리트저널(WSJ)은 지난 24일 미국이 한국 등 16개 교역 상대국의 과잉생산에 대한 무역법 301조 조사 결과와 추가 관세안을 이번 주 안에 공개할 수 있다고 보도했다."
-      ],
-      "sources": [
-        {
-          "press": "KBS",
-          "title": "미국, 한국 등 14곳에 ‘과잉생산 관세’ 예고…“합의국은 15% 상한”",
-          "url": "https://n.news.naver.com/article/056/0012301331"
-        },
-        {
-          "press": "MBC",
-          "title": "미 무역대표부, 14개 경제주체에 과잉생산 관세‥\"한국 15% 상한 유지\"",
-          "url": "https://n.news.naver.com/article/214/0001538064"
-        },
-        {
-          "press": "뉴시스",
-          "title": "美, 14개국에 과잉생산 관세…\"한국 15% 상한 유지\"(종합)",
-          "url": "https://n.news.naver.com/article/003/0014345596"
+          "press": "issuenbiz.com",
+          "title": "[뉴스이슈&비즈] 삼성디스플레이, 3,100억원 베팅 … 마이크로LED 핵심기...",
+          "url": "http://www.issuenbiz.com/news/articleView.html?idxno=82029"
         },
         {
           "press": "mt.co.kr",
-          "title": "\"이젠 뭘 사야 하나\" 3600조 증발…피할 곳도 사라진 코스피",
-          "url": "https://n.news.naver.com/mnews/article/008/0005446545?sid=101"
+          "title": "대장주 반토막, ETF도 와르르… 반도체 몰빵 개미 '커지는 비명'",
+          "url": "https://n.news.naver.com/mnews/article/008/0005446535?sid=101"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "미국 무역대표부가 한국을 포함한 14개 경제주체에 '과잉생산 관세'를 예고했습니다."
+          "evidence": "코스피가 6% 넘게 급락하며 전날 상승분을 모두 반납했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "(현지시간) 한국 정부의 산업 육성 정책과 정책금융 지원이 미국 제조업에 피해를 준다고 주장하며 추가 관세..."
+          "evidence": "코스피는 지난 20일 5.21% 급락한 데 이어 24일에는 젠슨 황 엔비디아 최고경영자(CEO)의 복귀 소식 등에 힘입어 6.32% 상승했다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "미국, 한국 등 14곳에 ‘과잉생산 관세’ 예고…“합의국은 15% 상한”"
+          "evidence": "그러나 하루 뒤인 25일에는 개장 초부터 매도세가..."
         },
         {
           "panel": 4,
@@ -397,8 +194,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "industry",
-        "direction": "공장 동선·안전 표지·가동 보드를 이용, 캐릭터 행동을 컷마다 바꿀 것",
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -433,6 +230,111 @@
         "continuity_quality": 1.0,
         "continuity_gaps": [
           "발단·의혹"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i9992704f",
+      "title": "[속보] 미 USTR \"한국, 일본, EU 등 관세 15% 상한 유지\"",
+      "category": "세계",
+      "rank": 1,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "미국 무역대표부(USTR)가 한국, 일본, EU 등 14개 경제주체를 대상으로 무역법 301조에 따른 과잉생산 관세 부과를 예고했다.",
+        "[속보] 미 USTR, 14개 경제주체에 과잉생산 관세···“한국·일본·EU 등은 관세 15% 상한 유지”",
+        "미 무역대표부, 14개 경제주체에 과잉생산 관세‥\"한국 15% 상한 유지\"",
+        "美, 한국·EU·일본 등에 ‘15% 상한’ 관세 예고",
+        "美, 14개국에 과잉생산 관세…\"한국 15% 상한 유지\"(종합)"
+      ],
+      "sources": [
+        {
+          "press": "경향신문",
+          "title": "[속보] 미 USTR, 14개 경제주체에 과잉생산 관세···“한국·일본·EU 등은 관세 15% 상한 유지”",
+          "url": "https://n.news.naver.com/article/032/0003485159"
+        },
+        {
+          "press": "MBC",
+          "title": "미 무역대표부, 14개 경제주체에 과잉생산 관세‥\"한국 15% 상한 유지\"",
+          "url": "https://n.news.naver.com/article/214/0001538064"
+        },
+        {
+          "press": "국민일보",
+          "title": "美, 한국·EU·일본 등에 ‘15% 상한’ 관세 예고",
+          "url": "https://n.news.naver.com/article/005/0001887479"
+        },
+        {
+          "press": "뉴시스",
+          "title": "美, 14개국에 과잉생산 관세…\"한국 15% 상한 유지\"(종합)",
+          "url": "https://n.news.naver.com/article/003/0014345596"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "미국 무역대표부(USTR)가 한국, 일본, EU 등 14개 경제주체를 대상으로 무역법 301조에 따른 과잉생산 관세 부과를 예고했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "한국의 핵심 산업정책 전반을 문제 삼으면서 추가 통상 압박에 나선..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "[속보] 미 USTR, 14개 경제주체에 과잉생산 관세···“한국·일본·EU 등은 관세 15% 상한 유지”"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "전날 발표에 이어 정부와 장관들이 15% 상한 유지에 대해 '선방 이상의 선방'으로 평가하는 반응이 보도됐다. 추가적인 301조 관세 인상 가능성에 촉각을 곤두세우는 흐름으로 이어졌다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.76,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "수사·대응"
         ],
         "no_generic_closing": true
       }
