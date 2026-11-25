@@ -3,13 +3,20 @@
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
     "current_person_entities": 10,
-    "approved": 9,
-    "withheld": 1,
+    "approved": 10,
+    "withheld": 0,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 0,
     "sanitized": 0
   },
   "current_entities": [
+    {
+      "name": "노소영",
+      "status": "approved",
+      "url": "media/ent/bb/bb56f145c9ff9de2.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Roh%20Soh-yeong%20at%20the%20Creative%20Commons%20Global%20Summit%20on%2015%20October%202015%20%28cropped%29.jpg?width=360",
+      "wiki_title": "노소영"
+    },
     {
       "name": "조희대",
       "status": "approved",
@@ -23,6 +30,13 @@
       "url": "data/pol/photos/5DC8083A.webp",
       "source": "",
       "wiki_title": "한동훈"
+    },
+    {
+      "name": "조국",
+      "status": "approved",
+      "url": "data/pol/photos/T3E4932G.webp",
+      "source": "",
+      "wiki_title": "조국"
     },
     {
       "name": "서영교",
@@ -60,25 +74,11 @@
       "wiki_title": "권양숙"
     },
     {
-      "name": "조국",
-      "status": "approved",
-      "url": "data/pol/photos/T3E4932G.webp",
-      "source": "",
-      "wiki_title": "조국"
-    },
-    {
       "name": "트럼프",
       "status": "approved",
       "url": "media/ent/51/51d80b245f6cbf5e.webp",
       "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29%20%283x4%29.jpg?width=360",
       "wiki_title": "도널드 트럼프"
-    },
-    {
-      "name": "쏜다",
-      "status": "no_portrait",
-      "url": "",
-      "source": "",
-      "wiki_title": "쏜다"
     }
   ],
   "legacy_local_assets": [

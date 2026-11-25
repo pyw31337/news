@@ -1,52 +1,71 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 02:54:19",
+  "updated_at": "2026-11-25 03:23:03",
   "date": "2026-11-25",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.75,
   "issues": [
     {
-      "id": "i7b628e6d",
-      "title": "[속보] 코스피 매도 사이드카 발동…올해 62번째",
-      "episode": "episode:8d58fa477fb21b",
-      "quality": 1.0,
+      "id": "i3e1ed499",
+      "title": "[속보] 노소영 측 \"최태원 화해권고 요청 동의 안 해…즉시 상고 취하하라\"",
+      "episode": "episode:f2afe4000a91b7",
+      "quality": 0.92,
       "stages": [
-        "파장·후속",
-        "일반 보도",
         "수사·대응",
-        "사법·처분",
-        "발단·의혹"
+        "일반 보도",
+        "입장·공방",
+        "사법·처분"
       ],
       "gaps": [
-        "입장·공방"
+        "발단·의혹",
+        "파장·후속"
       ],
-      "duplicate_candidates": 52,
-      "event_count": 36,
+      "duplicate_candidates": 34,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "ice6eb6c6",
-      "title": "김민석 “조희대 탄핵 위한 5당 연대 공식 제안”",
-      "episode": "episode:48cdaf70e4e807",
+      "id": "i08be3b61",
+      "title": "[속보] 코스피, 반등 하루 만에 5%↓…장초반 매도 사이드카",
+      "episode": "episode:1a73c703af3e15",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 44,
+      "event_count": 39,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ifb9508f9",
+      "title": "김민석 \"曺 대법원장 탄핵 신속 추진 위한 5당 연대 공식 제안\"",
+      "episode": "episode:24d50908a4f787",
       "quality": 1.0,
       "stages": [
+        "수사·대응",
         "일반 보도",
         "입장·공방",
         "사법·처분",
-        "수사·대응",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 15,
+      "duplicate_candidates": 34,
+      "event_count": 20,
       "evidence_rate": 1.0
     },
     {
-      "id": "id548fa75",
-      "title": "한동훈 \"조희대 탄핵 인용되면 의원직 던질 것…서영교·박선원도 걸어라\"",
-      "episode": "episode:5244d4d46dc404",
+      "id": "i3e14398e",
+      "title": "한동훈 “조희대 탄핵 인용 땐 의원직 사퇴…서영교·박선원도 직 걸라”",
+      "episode": "episode:ccb68531a598ec",
       "quality": 0.92,
       "stages": [
         "사법·처분",
@@ -58,14 +77,50 @@
         "발단·의혹",
         "수사·대응"
       ],
-      "duplicate_candidates": 34,
+      "duplicate_candidates": 31,
       "event_count": 14,
       "evidence_rate": 1.0
     },
     {
-      "id": "ic5c22ca2",
-      "title": "김주애 '200만원' 명품 스키복…알고 보니 北 반입 금지품",
-      "episode": "episode:41ef7e6b45de75",
+      "id": "ie4a37bec",
+      "title": "오늘 같이 놀 사람을 찾습니다…느슨한 관계를 즐기는 청년들 [Now 2.30]",
+      "episode": "episode:11ef854a1ae073",
+      "quality": 0.48,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 4,
+      "event_count": 2,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i2e8b774f",
+      "title": "CEO 복귀한 젠슨 황, 전 직원 부르더니…\"치료 중\" 공개",
+      "episode": "episode:34b20db29e11be",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 41,
+      "event_count": 18,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i39ad918c",
+      "title": "北 김주애가 입은 ‘명품 스키복’, 대북 반입 금지 사치품이었다",
+      "episode": "episode:31171e5d6bcf70",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -76,106 +131,30 @@
         "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 32,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i4e879f9b",
-      "title": "하루짜리 '젠슨 황' 효과… 코스피 장 초반 4%대 급락",
-      "episode": "episode:c2b4108aa0a1e1",
-      "quality": 1.0,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "수사·대응",
-        "사법·처분",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 41,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ifaf5887e",
-      "title": "남해고속도서 트레일러 넘어져 6중 추돌…3명 사망·1명 중상(종합2보)",
-      "episode": "episode:1a4e67b177af8c",
-      "quality": 0.92,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "사법·처분",
-        "수사·대응"
-      ],
-      "gaps": [
-        "입장·공방",
-        "파장·후속"
-      ],
       "duplicate_candidates": 25,
-      "event_count": 45,
+      "event_count": 11,
       "evidence_rate": 1.0
     },
     {
-      "id": "i99f23a04",
-      "title": "젠슨 황 복귀에 공화당도 반발…엔비디아 다시 하락",
-      "episode": "episode:63021706c4fe52",
-      "quality": 1.0,
+      "id": "i181cf5eb",
+      "title": "남의 결혼식 버진로드서 예행 연습… '민폐 하객' 유시은·이관희 사과",
+      "episode": "episode:da977235875f9f",
+      "quality": 0.48,
       "stages": [
-        "사법·처분",
-        "일반 보도",
-        "파장·후속",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 42,
-      "event_count": 19,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic47b1613",
-      "title": "이란, 히잡 없이 공연한 여성 가수에 태형 74대",
-      "episode": "episode:77255fea51df2c",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
         "입장·공방"
       ],
       "gaps": [
         "발단·의혹",
         "수사·대응",
-        "파장·후속"
+        "사법·처분"
       ],
-      "duplicate_candidates": 25,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i52e97fc9",
-      "title": "“공학자 되고싶다”던 오정태 딸, 16세에 카이스트 합격…‘철새공부법’ ‘일타강사식 복습법’ 뭐길래",
-      "episode": "episode:fc3a2a73f094ce",
-      "quality": 0.58,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 3,
+      "duplicate_candidates": 23,
+      "event_count": 2,
       "evidence_rate": 1.0
     },
     {
       "id": "i52b638aa",
-      "title": "[속보]생후 17개월 딸 집에 홀로 두고, 분유만 줘 영양결핍으로 숨지게 한 30대 친부 ‘아동학대살해’ 혐의 구속기소",
+      "title": "생후 17개월 딸 집에 홀로 두고, 분유만 줘 영양결핍으로 숨지게 한 30대 친부 ‘아동학대살해’ 혐의 구속기소",
       "episode": "episode:8b411370fee35a",
       "quality": 0.68,
       "stages": [
@@ -186,8 +165,25 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 19,
-      "event_count": 11,
+      "duplicate_candidates": 22,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i2fb03e12",
+      "title": "보호자 없어도 응급처치 가능해진다…구급차 인력 기준도 강화",
+      "episode": "episode:e54b5deff61031",
+      "quality": 0.38,
+      "stages": [
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 21,
+      "event_count": 1,
       "evidence_rate": 1.0
     }
   ]
