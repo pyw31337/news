@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-25",
-  "generated_at": "2026-11-25T16:50:29+09:00",
+  "generated_at": "2026-11-25T17:32:00+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,113 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "i941ee584",
-      "title": "코스피, 반도체 투매 속 5%대 급락…매도→매수→매도 사이드카",
+      "issue_id": "ic5dc9eff",
+      "title": "코스피, 6%대 급락 4,697…전날 급등분 모두 반납",
       "category": "경제",
-      "rank": 2,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "25일 코스피가 미국發 관세·AI 수익성 우려 여파로 반도체 대형주를 중심으로 5%대 급락하고 있다.",
-        "전날 급반등했던 코스피가 하루 만에 4% 넘게 급락하며 4700선으로 밀려났다.",
-        "미국발 반도체주 약세와 엔비디아를 둘러싼 불확실성에 삼성전자와 SK하이닉스가 7% 넘게 하락한 가운데 장 초반 매도 사이드카까지...",
-        "삼성전자와 SK하이닉스가 25일 나란히 10% 안팎 급락하면서 두 기업의 시가총액은 하루 만에 약 200조원 줄었고, 코스피도 전날 회복했던 5천선을 내줬다.",
-        "한국거래소에 따르면 이날 삼성전자는 전 거래일보다..."
-      ],
-      "sources": [
-        {
-          "press": "biz.heraldcorp.com",
-          "title": "“이 정도면 ‘발작피’ 수준” 사이드카 무려 102회…매도 ·매수 정확...",
-          "url": "https://n.news.naver.com/mnews/article/016/0002728454?sid=101"
-        },
-        {
-          "press": "kyeonggi.com",
-          "title": "5천선 탈환 하루 만에 ‘와르르’…삼전·하닉서 200조원 사라졌다",
-          "url": "https://n.news.naver.com/mnews/article/666/0000133766?sid=101"
-        },
-        {
-          "press": "SBS",
-          "title": "\"한국 대통령과 너무 달랐다\"…일본 총리 의전 어땠길래",
-          "url": "https://n.news.naver.com/article/055/0001404200"
-        },
-        {
-          "press": "asiatime.co.kr",
-          "title": "수출 1조달러 시대…李대통령 ‘봉제·신발공장 선배 세대 덕분’",
-          "url": "https://www.asiatime.co.kr/article/20261119500437"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "25일 코스피가 미국發 관세·AI 수익성 우려 여파로 반도체 대형주를 중심으로 5%대 급락하고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "미국발 반도체주 약세와 엔비디아를 둘러싼 불확실성에 삼성전자와 SK하이닉스가 7% 넘게 하락한 가운데 장 초반 매도 사이드카까지..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "전날 급반등했던 코스피가 하루 만에 4% 넘게 급락하며 4700선으로 밀려났다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "발단·의혹"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i103eeb41",
-      "title": "[속보] 삼성전자 10%대 급락…시총 1000조 깨져",
-      "category": "경제",
-      "rank": 7,
+      "rank": 1,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -141,49 +38,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "삼성전자와 SK하이닉스가 25일 나란히 10% 안팎 급락하면서 두 기업의 시가총액은 하루 만에 약 200조원 줄었고, 코스피도 전날 회복했던 5천선을 내줬다.",
-        "한국거래소에 따르면 이날 삼성전자는 전 거래일보다...",
-        "삼성전자 시가총액, 장중 1000조원 하회…3월 말 이후 처음",
-        "[속보] 삼성전자 10%대 급락…시총 1000조 깨져",
-        "“2028년 반도체 호황 꺾인다”…골드만삭스·모건스탠리, 삼성전자·SK하이닉스 목표가 줄하향"
+        "코스피 지수가 25일 6.16% 급락하며 전장 대비 308.52포인트 하락한 4697.51로 마감했다.",
+        "[속보] 삼전 시총 1000조 깨지고 하이닉스 11% 급락…코스피, 하루 만에 5000서 4600대로",
+        "삼전·닉스, 나란히 10% 가까이↓…'젠슨 황' 효과 하루만에 소멸하며 반도체주 '휘청'",
+        "직전 거래일인 20일 5% 넘게 급락한 데 이어 장중 한때 4600선마저 무너졌다.",
+        "지난해 말 코스피 종가가 4214.17이었던 점을 고려하면 올해 상승분도 상당 부분 반납한 셈이다."
       ],
       "sources": [
         {
-          "press": "kyeonggi.com",
-          "title": "5천선 탈환 하루 만에 ‘와르르’…삼전·하닉서 200조원 사라졌다",
-          "url": "https://n.news.naver.com/mnews/article/666/0000133766?sid=101"
+          "press": "매일경제",
+          "title": "[속보] 삼전 시총 1000조 깨지고 하이닉스 11% 급락…코스피, 하루 만에 5000서 4600대로",
+          "url": "https://n.news.naver.com/article/009/0005768792"
         },
         {
-          "press": "조선비즈",
-          "title": "삼성전자 시가총액, 장중 1000조원 하회…3월 말 이후 처음",
-          "url": "https://n.news.naver.com/article/366/0001207272"
+          "press": "뉴시스",
+          "title": "삼전·닉스, 나란히 10% 가까이↓…'젠슨 황' 효과 하루만에 소멸하며 반도체주 '휘청'",
+          "url": "https://n.news.naver.com/article/003/0014344694"
         },
         {
-          "press": "서울경제",
-          "title": "[속보] 삼성전자 10%대 급락…시총 1000조 깨져",
-          "url": "https://n.news.naver.com/article/011/0004686038"
+          "press": "imaeil.com",
+          "title": "코스피 또 6%대 추락…\"주식시장 망가지는 건 정부 탓\" 李 과거 발언 재...",
+          "url": "https://n.news.naver.com/mnews/article/088/0001042324?sid=101"
         },
         {
-          "press": "디지털데일리",
-          "title": "“2028년 반도체 호황 꺾인다”…골드만삭스·모건스탠리, 삼성전자·SK하이닉스 목표가 줄하향",
-          "url": "https://n.news.naver.com/article/138/0002249713"
+          "press": "비즈워치",
+          "title": "'젠슨 황 랠리' 하루 만에 끝났다…코스피 6.16% 급락",
+          "url": "https://n.news.naver.com/article/648/0000052978"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "삼성전자와 SK하이닉스가 25일 나란히 10% 안팎 급락하면서 두 기업의 시가총액은 하루 만에 약 200조원 줄었고, 코스피도 전날 회복했던 5천선을 내줬다."
+          "evidence": "코스피 지수가 25일 6.16% 급락하며 전장 대비 308.52포인트 하락한 4697.51로 마감했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "美 반도체지수 7.88% 급락 여파···SK하이닉스 11.05%·삼성전자 9.87%↓ 하락은 반도체 대형주에 집중됐다."
+          "evidence": "지난해 말 코스피 종가가 4214.17이었던 점을 고려하면 올해 상승분도 상당 부분 반납한 셈이다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "삼성전자 시가총액, 장중 1000조원 하회…3월 말 이후 처음"
+          "evidence": "[속보] 삼전 시총 1000조 깨지고 하이닉스 11% 급락…코스피, 하루 만에 5000서 4600대로"
         },
         {
           "panel": 4,
@@ -225,19 +122,18 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.92,
+        "continuity_quality": 1.0,
         "continuity_gaps": [
-          "입장·공방",
-          "수사·대응"
+          "입장·공방"
         ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "i73cd922e",
-      "title": "김주애 고가 스키 장비에…미 국무부 \"북한 반입 금지 사치품\"",
-      "category": "세계",
-      "rank": 6,
+      "issue_id": "ie3ee5ebf",
+      "title": "\"스파이 의혹 젠슨 황 불륜 상대 앨리스 황, 오사카에도 법인 설립\"",
+      "category": "경제",
+      "rank": 9,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -245,49 +141,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "미 국무부가 김정은 북한 노동당 총비서의 딸 김주애가 사용한 것으로 보이는 고가 스키 장비에 대해 유엔 제재로 북한 반입이 금지된 사치품이라고 밝혔다.",
-        "北 김주애가 입은 ‘명품 스키복’, 대북 반입 금지 사치품이었다",
-        "김주애의 순백 스키복 사진…미 국무부 \"대북 반입 금지 사치품\"",
-        "한편 미 국무부는 24일(현지시간) 김정은 북한 국무위원장의 딸 김주애가 유럽산으로 추정되는 고가 스키 장비를 착용한 보도사진을 두고 스키 장비는 유엔 제재로 대북 반입이 금지된 사치품이라는 입장을 밝혔다.",
-        "’유럽 스키 명품’ 휘감은 김주애, 장비 얼마길래…미국도 “사치품“"
+        "젠슨 황 엔비디아 최고경영자의 불륜 상대이자 중국 스파이 의혹을 받고 있는 앨리스 황이 일본 오사카에 회사를 설립했다고 일본 주간지 슈칸분슌이 보도했습니다.",
+        "“일본에 무역회사 세우고 싶다”… 앨리스 황, 오사카에도 법인 세웠나",
+        "“도와준다고 해도”…‘젠슨 황 불륜녀’ 앨리스 황, 일본 오사카서 한 일",
+        "\"스파이 의혹 젠슨 황 불륜 상대 앨리스 황, 오사카에도 법인 설립\"",
+        "젠슨 황 엔비디아 최고경영자(CEO)의 불륜 상대이자 중국 스파이로 지목된 앨리스 황이 일본 오사카에 회사를 설립했다는 현지 보도가 나왔습니다."
       ],
       "sources": [
         {
-          "press": "국민일보",
-          "title": "北 김주애가 입은 ‘명품 스키복’, 대북 반입 금지 사치품이었다",
-          "url": "https://n.news.naver.com/article/005/0001887315"
+          "press": "조선비즈",
+          "title": "“일본에 무역회사 세우고 싶다”… 앨리스 황, 오사카에도 법인 세웠나",
+          "url": "https://n.news.naver.com/article/366/0001207198"
         },
         {
-          "press": "MBN",
-          "title": "김주애의 순백 스키복 사진…미 국무부 \"대북 반입 금지 사치품\"",
-          "url": "https://n.news.naver.com/article/057/0001979756"
+          "press": "매일경제",
+          "title": "“도와준다고 해도”…‘젠슨 황 불륜녀’ 앨리스 황, 일본 오사카서 한 일",
+          "url": "https://n.news.naver.com/article/009/0005768811"
         },
         {
-          "press": "khan.co.kr",
-          "title": "김여정 담화 하루 만에 “스위스 외교관 48시간 내 추방”···대북 제재...",
-          "url": "https://n.news.naver.com/mnews/article/032/0003484986?sid=100"
+          "press": "MBC",
+          "title": "\"스파이 의혹 젠슨 황 불륜 상대 앨리스 황, 오사카에도 법인 설립\"",
+          "url": "https://n.news.naver.com/article/214/0001537972"
         },
         {
-          "press": "연합뉴스TV",
-          "title": "’유럽 스키 명품’ 휘감은 김주애, 장비 얼마길래…미국도 “사치품“",
-          "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE12dUVvT2hKcXZaa2xsaXB4YnRydXRlRnc1VGg0T1JFU3NZNzFkSXNtRXR5anBrTU9hQlJiNWxscHJfUHc3dDA2RFgzeDBGTHY2bm1zRXM4bFFNaGJmUU8wWTAyeWJHRTg?oc=5"
+          "press": "mbn.mk.co.kr",
+          "title": "\"젠슨 황 불륜녀, 오사카에도 법인 설립\"…목적은 '반도체 우회로'?",
+          "url": "https://n.news.naver.com/mnews/article/057/0001979824?sid=104"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "미 국무부가 김정은 북한 노동당 총비서의 딸 김주애가 사용한 것으로 보이는 고가 스키 장비에 대해 유엔 제재로 북한 반입이 금지된 사치품이라고 밝혔다."
+          "evidence": "젠슨 황 엔비디아 최고경영자의 불륜 상대이자 중국 스파이 의혹을 받고 있는 앨리스 황이 일본 오사카에 회사를 설립했다고 일본 주간지 슈칸분슌이 보도했습니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "한국내화 \"미국 법인 주식 13억원어치 취득…지분율 100%\""
+          "evidence": "\"앨리스 황 말고도…\" 젠슨 황, 엔비디아 이사회에 충격적 고백 [지금이뉴스]"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "한편 미 국무부는 24일(현지시간) 김정은 북한 국무위원장의 딸 김주애가 유럽산으로 추정되는 고가 스키 장비를 착용한 보도사진을 두고 스키 장비는 유엔 제재로 대북 반입이 금지된 사치품이라는 입장을 밝혔다."
+          "evidence": "일본 주간지 슈칸분슌은 26일호 기사에서 일본에 거주하는 앨리스 황의..."
         },
         {
           "panel": 4,
@@ -296,8 +192,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -329,10 +225,114 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "발단·의혹"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i190e3221",
+      "title": "노소영 측 “상고 취하하면 될 일”…9440억원 다 주겠다는 최태원, 왜 ‘화해권고’ 요청했나 [이슈+]",
+      "category": "사회",
+      "rank": 2,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "노소영 아트센터 나비 관장 측이 최태원 SK그룹 회장 측의 화해권고결정 요청을 거부하면서 재산분할 소송이 새로운 분수령을 맞았다.",
+        "노소영 측 “상고 취하하면 될 일”…9440억원 다",
+        "주겠다는 최태원, 왜 ‘화해권고’ 요청했나 [이슈+]",
+        "9440억 준다는데 노소영, 화해권고 거부…최태원 \"취지 폄훼 착잡\"",
+        "노소영, 최태원 ‘9440억 화해 카드’ 거부…소송 원점으로"
+      ],
+      "sources": [
+        {
+          "press": "세계일보",
+          "title": "노소영 측 “상고 취하하면 될 일”…9440억원 다 주겠다는 최태원, 왜 ‘화해권고’ 요청했나 [이슈+]",
+          "url": "https://n.news.naver.com/article/022/0004178020"
+        },
+        {
+          "press": "TV조선",
+          "title": "9440억 준다는데 노소영, 화해권고 거부…최태원 \"취지 폄훼 착잡\"",
+          "url": "https://n.news.naver.com/article/448/0000653335"
+        },
+        {
+          "press": "국민일보",
+          "title": "노소영, 최태원 ‘9440억 화해 카드’ 거부…소송 원점으로",
+          "url": "https://n.news.naver.com/article/005/0001887328"
+        },
+        {
+          "press": "뉴시스",
+          "title": "최태원 회장, 노소영 측 화해 거부에 \"진정성 폄훼 유감…원만한 해결 계속 모색\"",
+          "url": "https://n.news.naver.com/article/003/0014345060"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "노소영 아트센터 나비 관장 측이 최태원 SK그룹 회장 측의 화해권고결정 요청을 거부하면서 재산분할 소송이 새로운 분수령을 맞았다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "절차에 상당한 시일이 걸리는 화해권고 대신 상고를 취하해 판결을 즉시 확정..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "노소영 측 “상고 취하하면 될 일”…9440억원 다"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.76,
         "continuity_gaps": [
           "발단·의혹",
-          "파장·후속"
+          "입장·공방",
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
