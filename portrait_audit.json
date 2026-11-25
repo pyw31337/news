@@ -2,20 +2,55 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 6,
-    "approved": 5,
+    "current_person_entities": 12,
+    "approved": 11,
     "withheld": 1,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 0,
-    "sanitized": 0
+    "sanitized": 1
   },
   "current_entities": [
     {
-      "name": "이재명",
+      "name": "조희대",
       "status": "approved",
-      "url": "media/ent/da/da37f2330225f1ef.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Lee%20Jae-myung%202025%20%28cropped%29.jpg?width=360",
-      "wiki_title": "이재명"
+      "url": "media/ent/de/deac27e956f0f484.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Jo%20Heede%20in%20his%2017th%20Chief%20Justice%20inauguration%20ceremony.png?width=360",
+      "wiki_title": "조희대"
+    },
+    {
+      "name": "한동훈",
+      "status": "approved",
+      "url": "data/pol/photos/5DC8083A.webp",
+      "source": "",
+      "wiki_title": "한동훈"
+    },
+    {
+      "name": "조국",
+      "status": "approved",
+      "url": "data/pol/photos/T3E4932G.webp",
+      "source": "",
+      "wiki_title": "조국"
+    },
+    {
+      "name": "신장식",
+      "status": "approved",
+      "url": "media/ent/dd/dd8d876243d14856.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/%EC%8B%A0%EC%9E%A5%EC%8B%9D.jpg?width=360",
+      "wiki_title": "신장식"
+    },
+    {
+      "name": "서영교",
+      "status": "approved",
+      "url": "data/pol/photos/TKJ4800F.webp",
+      "source": "",
+      "wiki_title": "서영교"
+    },
+    {
+      "name": "노소영",
+      "status": "approved",
+      "url": "media/ent/bb/bb56f145c9ff9de2.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Roh%20Soh-yeong%20at%20the%20Creative%20Commons%20Global%20Summit%20on%2015%20October%202015%20%28cropped%29.jpg?width=360",
+      "wiki_title": "노소영"
     },
     {
       "name": "트럼프",
@@ -25,32 +60,39 @@
       "wiki_title": "도널드 트럼프"
     },
     {
-      "name": "나경원",
-      "status": "approved",
-      "url": "media/ent/1d/1d7270af80b536ed.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Na%20Kyung-won%202019.jpg?width=360",
-      "wiki_title": "나경원"
-    },
-    {
-      "name": "푸틴",
-      "status": "approved",
-      "url": "media/ent/fa/fab593ba1c73d1fa.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Putin%20V%202026%2008%2010.png?width=360",
-      "wiki_title": "블라디미르 푸틴"
-    },
-    {
-      "name": "김민석",
-      "status": "no_portrait",
+      "name": "GDP",
+      "status": "wiki_title_mismatch",
       "url": "",
       "source": "",
-      "wiki_title": ""
+      "wiki_title": "국내총생산"
     },
     {
-      "name": "추미애",
+      "name": "고경표",
       "status": "approved",
-      "url": "data/pol/photos/URV1689Q.webp",
-      "source": "",
-      "wiki_title": "추미애"
+      "url": "media/ent/32/32d27de75e8caf24.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Go%20Kyung-pyo%20at%20the%2043rd%20Dragon%20Film%20Awards%20B.png?width=360",
+      "wiki_title": "고경표"
+    },
+    {
+      "name": "조진웅",
+      "status": "approved",
+      "url": "media/ent/56/562699a7399b50e7.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/ChoJin-woong%20at%20news%20conference%20of%20movie%20%EC%82%AC%EB%83%A5.jpg?width=360",
+      "wiki_title": "조진웅"
+    },
+    {
+      "name": "김여정",
+      "status": "approved",
+      "url": "media/ent/f1/f12ec15247ff0198.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Kim%20Yo-jong%20at%20Blue%20House%20%28cropped%29.jpg?width=360",
+      "wiki_title": "김여정"
+    },
+    {
+      "name": "강금실",
+      "status": "approved",
+      "url": "media/ent/36/36e73a023752a876.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/KumsilKang.JPG?width=360",
+      "wiki_title": "강금실"
     }
   ],
   "legacy_local_assets": [
@@ -404,5 +446,10 @@
     }
   ],
   "entity_media_cache_issues": [],
-  "changes": []
+  "changes": [
+    {
+      "name": "GDP",
+      "reason": "wiki_title_mismatch"
+    }
+  ]
 }
