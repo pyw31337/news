@@ -1,192 +1,195 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 02:25:04",
-  "date": "2026-11-25",
+  "updated_at": "2026-11-19 07:54:45",
+  "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.82,
+  "average_quality": 0.89,
   "issues": [
     {
-      "id": "ie1e28885",
-      "title": "[속보] 코스피 4%대로 낙폭 확대…매도 사이드카 발동",
-      "episode": "episode:87e379e105e55e",
-      "quality": 0.92,
+      "id": "ib0b88852",
+      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
+      "episode": "episode:6240c7cf2c14d8",
+      "quality": 1.0,
       "stages": [
-        "파장·후속",
         "일반 보도",
-        "수사·대응",
+        "파장·후속",
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
         "사법·처분"
       ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 56,
-      "event_count": 35,
+      "duplicate_candidates": 24,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "i5d7461df",
-      "title": "한동훈 “조희대 탄핵 인용되면 난 사퇴…서영교, 의원직 걸어라 ”",
-      "episode": "episode:75850c1ec052cb",
-      "quality": 0.92,
-      "stages": [
-        "사법·처분",
-        "입장·공방",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 14,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib46ab7e7",
-      "title": "[속보] 김민석 \"조희대 탄핵 신속 추진 위한 5당 연대 공식 제안\"",
-      "episode": "episode:2a2b5cfff23acc",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "사법·처분",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 32,
-      "event_count": 15,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ia0a4294c",
-      "title": "美국무부, 김주애 '200만원' 스키복에 \"반입 금지 사치품\"",
-      "episode": "episode:374589151ac621",
+      "id": "i52002ca2",
+      "title": "[속보] “용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
+      "episode": "episode:42a56cd22c055b",
       "quality": 0.76,
       "stages": [
         "일반 보도",
-        "입장·공방"
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
-        "수사·대응",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i7472fb4e",
+      "title": "‘리트 만점자’ 숨진채 발견... 메모엔 “몸과 마음 지쳤다”",
+      "episode": "episode:43f66ea4b003f7",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icc7073be",
+      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
+      "episode": "episode:b4571ab00be66b",
+      "quality": 0.66,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
         "사법·처분"
       ],
       "duplicate_candidates": 30,
-      "event_count": 8,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9a4418bf",
-      "title": "젠슨 황, '스캔들' 뒤 매일 심리치료 고백…\"아내와 대화 힘들었다\"",
-      "episode": "episode:f291ddc79cfd78",
-      "quality": 1.0,
-      "stages": [
-        "입장·공방",
-        "일반 보도",
-        "발단·의혹",
-        "파장·후속",
-        "사법·처분",
-        "수사·대응"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 40,
-      "event_count": 21,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i2d02f998",
-      "title": "하루짜리 '젠슨 황' 효과… 코스피 5% 하락해 매도 사이드카",
-      "episode": "episode:4538586789e7c4",
-      "quality": 1.0,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "수사·대응",
-        "사법·처분",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 43,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic1903e6d",
-      "title": "히잡 벗고 공연한 이란 20대 女가수, 무릎 꿇고 태형 74대 …“치욕” 비판",
-      "episode": "episode:652605eb5a9c81",
+      "id": "ibfb65b25",
+      "title": "한 총리 \"작년 수능 시험지 보관하라\" 긴급 지시",
+      "episode": "episode:70917d4ab49bf4",
       "quality": 0.84,
       "stages": [
-        "사법·처분",
-        "일반 보도",
-        "입장·공방"
+        "수사·대응",
+        "파장·후속",
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "수사·대응",
-        "파장·후속"
+        "입장·공방",
+        "사법·처분"
       ],
-      "duplicate_candidates": 26,
-      "event_count": 8,
+      "duplicate_candidates": 38,
+      "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "ifaf5887e",
-      "title": "남해고속도서 트레일러 넘어져 6중 추돌…3명 사망·1명 중상(종합2보)",
-      "episode": "episode:69a6099daaf0c8",
+      "id": "if68e1f2d",
+      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
+      "episode": "episode:87c2b2d986a387",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "수사·대응",
+        "파장·후속",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 29,
+      "event_count": 20,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i32f6a682",
+      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
+      "episode": "episode:bb1f3458304a26",
       "quality": 0.92,
       "stages": [
         "일반 보도",
-        "사법·처분",
         "발단·의혹",
+        "입장·공방",
         "수사·대응"
       ],
       "gaps": [
-        "입장·공방",
+        "사법·처분",
         "파장·후속"
       ],
-      "duplicate_candidates": 25,
-      "event_count": 49,
+      "duplicate_candidates": 27,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "ibdd1129d",
-      "title": "[속보] 부산 길거리서 9세 여자아이 유인하려 한 男 ‘집유’…과거 동종 범죄로 처벌받은 전력도",
-      "episode": "episode:771de42587202d",
-      "quality": 0.38,
+      "id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
+      "episode": "episode:28b5802722ebe0",
+      "quality": 0.84,
       "stages": [
+        "발단·의혹",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 17,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i14bfd775",
+      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
+      "episode": "episode:332016de20ed99",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "파장·후속",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id0d27ff9",
+      "title": "장애 아들 앞 폭행… ‘김창민 감독 살해’ 피의자들 징역 12년·3년",
+      "episode": "episode:f616ea440abebf",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "사법·처분",
+        "입장·공방",
         "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "수사·대응"
+        "파장·후속"
       ],
-      "duplicate_candidates": 18,
-      "event_count": 1,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i52e97fc9",
-      "title": "“공학자 되고싶다”던 오정태 딸, 16세에 카이스트 합격…‘철새공부법’ ‘일타강사식 복습법’ 뭐길래",
-      "episode": "episode:fc3a2a73f094ce",
-      "quality": 0.58,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 3,
+      "duplicate_candidates": 31,
+      "event_count": 39,
       "evidence_rate": 1.0
     }
   ]
