@@ -1,10 +1,26 @@
 {
-  "updated": "2026-11-25T16:47:46.351066+09:00",
-  "alerts_count": 71,
+  "updated": "2026-11-19T16:49:22.039519+09:00",
+  "alerts_count": 11,
   "alerts": [
     {
-      "id": "urn:oid:2.49.0.1.840.0.aac603b349f70ef7e3ea2d9d1f27c012a065559b.002.3",
-      "t": "2026-11-25 02:09",
+      "id": "urn:oid:2.49.0.1.840.0.abb56f53d99ee5c3ce787293a96c3869d1f91501.001.1",
+      "t": "2026-11-18 23:47",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "San Luis Obispo",
+      "area_en": "San Luis Obispo",
+      "event": "홍수 경보",
+      "event_en": "Flash Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "San Luis Obispo 홍수 경보",
+      "headline_en": "San Luis Obispo Flash Flood Warning",
+      "desc": "FFWLOX\n\nThe National Weather Service in Los Angeles/Oxnard has issued a\n\n* Flash Flood Warning for...\nSouth Central San Luis Obispo County in southwestern California...\nNorthwestern Santa Barbara County in southwestern California...\n\n* Until 145 AM PST.\n\n* At 1147 PM PST, Doppler radar and automated"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.b9cf528d02c5c39464930c7952f30c2b8bc93eed.001.1",
+      "t": "2026-11-19 02:13",
       "country": "US",
       "flag": "🇺🇸",
       "country_ko": "미국",
@@ -142,25 +158,25 @@
       "event": "홍수 주의보",
       "event_en": "Flood Watch",
       "severity": "Severe",
-      "headline_ko": "Dorchester 홍수 주의보",
-      "headline_en": "Dorchester Flood Watch",
-      "desc": "* WHAT...Flooding caused by excessive rainfall is possible.\n\n* WHERE...Portions of southeast Maryland, including the following\nareas, Dorchester, Inland Worcester, Maryland Beaches, Somerset and\nWicomico and Virginia, including the following areas, Accomack,\nEastern Essex, Eastern King William, East"
+      "headline_ko": "SW Kenai Peninsula 홍수 주의보",
+      "headline_en": "SW Kenai Peninsula Flood Watch",
+      "desc": "* WHAT...Small stream and localized urban flooding caused by rain on\nsnow is possible.\n\n* WHERE...Including the following area, SW Kenai Peninsula. This\nincludes the cities of Homer, Anchor Point, Ninilchik, And Clam\nGulch.\n\n* WHEN...From Wednesday morning through Thursday afternoon.\n\n* IMPACTS...Ex"
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.6aca799ea7c8fa16f10bc3f5578171799d87c7b4.001.1",
-      "t": "2026-11-25 01:49",
+      "id": "urn:oid:2.49.0.1.840.0.8c11a51fff36cca6e5c7d021e392a554c3802420.001.1",
+      "t": "2026-11-16 15:18",
       "country": "US",
       "flag": "🇺🇸",
       "country_ko": "미국",
       "country_en": "United States",
-      "area": "Northampton",
-      "area_en": "Northampton",
+      "area": "Inland Volusia",
+      "area_en": "Inland Volusia",
       "event": "홍수 주의보",
       "event_en": "Flood Watch",
       "severity": "Severe",
-      "headline_ko": "Northampton 홍수 주의보",
-      "headline_en": "Northampton Flood Watch",
-      "desc": "* WHAT...Flooding caused by excessive rainfall is possible.\n\n* WHERE...Portions of northeast North Carolina, including the\nfollowing areas, Bertie, Camden, Chowan, Eastern Currituck, Gates,\nHertford, Northampton, Pasquotank, Perquimans and Western Currituck\nand Virginia, including the following area"
+      "headline_ko": "Inland Volusia 홍수 주의보",
+      "headline_en": "Inland Volusia Flood Watch",
+      "desc": "* WHAT...Flooding caused by excessive rainfall is possible.\n\n* WHERE...Most of east central Florida, including Volusia, Seminole,\nOrange, Osceola, Okeechobee, Brevard, Indian River, Saint Lucie,\nand Martin counties.\n\n* WHEN...From Tuesday afternoon through Friday evening.\n\n* IMPACTS...Excessive runo"
     }
   ],
   "quakes": [
@@ -254,11 +270,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 0.2,
-      "apparent_temp": -4.0,
-      "humidity": 69,
+      "temp": 5.7,
+      "apparent_temp": 2.6,
+      "humidity": 68,
       "code": 0,
-      "wind": 10.0
+      "wind": 7.0
     },
     {
       "id": "losangeles",
@@ -268,11 +284,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 13.9,
-      "apparent_temp": 11.2,
-      "humidity": 53,
+      "temp": 16.2,
+      "apparent_temp": 15.8,
+      "humidity": 69,
       "code": 3,
-      "wind": 8.9
+      "wind": 4.2
     },
     {
       "id": "london",
@@ -282,11 +298,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 4.9,
-      "apparent_temp": 1.5,
-      "humidity": 78,
-      "code": 3,
-      "wind": 10.8
+      "temp": 7.3,
+      "apparent_temp": 5.5,
+      "humidity": 92,
+      "code": 2,
+      "wind": 6.1
     },
     {
       "id": "paris",
@@ -296,11 +312,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 4.2,
-      "apparent_temp": 1.6,
-      "humidity": 91,
-      "code": 61,
-      "wind": 6.6
+      "temp": 10.4,
+      "apparent_temp": 7.4,
+      "humidity": 78,
+      "code": 2,
+      "wind": 15.3
     },
     {
       "id": "frankfurt",
@@ -310,11 +326,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": -2.1,
-      "apparent_temp": -5.8,
-      "humidity": 79,
-      "code": 3,
-      "wind": 6.1
+      "temp": 9.8,
+      "apparent_temp": 7.8,
+      "humidity": 90,
+      "code": 61,
+      "wind": 11.0
     },
     {
       "id": "tokyo",
@@ -324,11 +340,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 11.6,
-      "apparent_temp": 9.2,
-      "humidity": 45,
+      "temp": 14.5,
+      "apparent_temp": 11.0,
+      "humidity": 38,
       "code": 0,
-      "wind": 2.3
+      "wind": 9.6
     },
     {
       "id": "beijing",
@@ -338,11 +354,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 6.5,
-      "apparent_temp": 2.7,
-      "humidity": 31,
+      "temp": 5.0,
+      "apparent_temp": -1.5,
+      "humidity": 23,
       "code": 1,
-      "wind": 4.3
+      "wind": 20.1
     },
     {
       "id": "singapore",
@@ -352,11 +368,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 27.1,
-      "apparent_temp": 33.8,
-      "humidity": 92,
-      "code": 80,
-      "wind": 3.2
+      "temp": 28.2,
+      "apparent_temp": 32.9,
+      "humidity": 74,
+      "code": 3,
+      "wind": 6.4
     },
     {
       "id": "sydney",
@@ -366,11 +382,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 20.0,
-      "apparent_temp": 18.8,
-      "humidity": 70,
+      "temp": 22.1,
+      "apparent_temp": 21.7,
+      "humidity": 71,
       "code": 3,
-      "wind": 17.5
+      "wind": 19.0
     },
     {
       "id": "toronto",
@@ -380,11 +396,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": -3.5,
-      "apparent_temp": -7.8,
-      "humidity": 73,
+      "temp": 3.5,
+      "apparent_temp": -0.0,
+      "humidity": 79,
       "code": 3,
-      "wind": 8.8
+      "wind": 10.0
     },
     {
       "id": "dubai",
@@ -394,11 +410,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 27.5,
-      "apparent_temp": 31.2,
-      "humidity": 64,
+      "temp": 28.2,
+      "apparent_temp": 31.1,
+      "humidity": 55,
       "code": 0,
-      "wind": 7.0
+      "wind": 4.7
     },
     {
       "id": "saopaulo",
@@ -408,21 +424,21 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 20.9,
-      "apparent_temp": 22.8,
-      "humidity": 94,
-      "code": 3,
-      "wind": 12.8
+      "temp": 19.9,
+      "apparent_temp": 23.3,
+      "humidity": 100,
+      "code": 2,
+      "wind": 2.5
     }
   ],
   "stories": [
     {
-      "id": "gcfd8c7a6",
-      "title": "20 hostages as gunmen storm supermarket",
-      "press": "News.com.au",
-      "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/afp_6b05e778013d-1795549048.jpg?resize=1920%2C1440",
-      "score": 10.6,
-      "url": "g/gcfd8c7a6"
+      "id": "gbe966c60",
+      "title": "Tag team: dual waterspouts appear in San Francisco Bay amid stormy weather",
+      "press": "Guardian Environment",
+      "image": "https://i.guim.co.uk/img/media/f9f5212fc0956900ba97c6edec783a649f9bb14b/630_0_6300_5042/master/6300.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=0d473755fcf9607a2ec2dc7a2b090824",
+      "score": 12.0,
+      "url": "g/gbe966c60"
     }
   ]
 }
