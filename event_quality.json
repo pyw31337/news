@@ -1,33 +1,69 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-25 19:59:15",
+  "updated_at": "2026-11-25 20:21:36",
   "date": "2026-11-26",
   "total_issues": 10,
-  "average_quality": 0.84,
+  "average_quality": 0.86,
   "issues": [
     {
-      "id": "i9cb217bf",
-      "title": "미 무역대표부, 14개 경제주체에 과잉생산 관세‥\"한국 15% 상한 유지\"",
-      "episode": "episode:d34269290e4e77",
-      "quality": 0.84,
+      "id": "ia34e8b23",
+      "title": "홈플러스, 모레(27일)부터 전국 마트 영업 중단…“상품 수급 문제”",
+      "episode": "episode:ddd1eb7f335840",
+      "quality": 0.68,
       "stages": [
-        "일반 보도",
-        "입장·공방",
-        "사법·처분"
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "수사·대응",
-        "파장·후속"
+        "입장·공방",
+        "수사·대응"
       ],
-      "duplicate_candidates": 33,
+      "duplicate_candidates": 31,
       "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6cc4525a",
-      "title": "코스피 몸집 4배 커졌는데 증안펀드는 10조원 6년째 '제자리걸음'",
-      "episode": "episode:51535e5137f61b",
+      "id": "ied9c896d",
+      "title": "[속보] 창원지법 판사회의 \"재판 이유 법관 탄핵 추진에 깊은 우려\"",
+      "episode": "episode:5370a185b8ca4f",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "입장·공방",
+        "사법·처분",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 39,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icd59108c",
+      "title": "김민석 “조희대 탄핵 신속 추진 5당 연대 공식 제안”",
+      "episode": "episode:43399e976e8e68",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 17,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i5423f712",
+      "title": "또 사이드카…갈피 못 잡고 요동치는 2026 코스피",
+      "episode": "episode:6e47d1f56963aa",
       "quality": 0.92,
       "stages": [
         "파장·후속",
@@ -39,14 +75,33 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 40,
-      "event_count": 35,
+      "duplicate_candidates": 44,
+      "event_count": 34,
       "evidence_rate": 1.0
     },
     {
-      "id": "i3a8b9061",
-      "title": "홈플러스, 27일부터 전 점포 임시 영업 중단",
-      "episode": "episode:57518f54f04e91",
+      "id": "i1b157417",
+      "title": "미국, 한국 등 14곳에 ‘과잉생산 관세’ 예고…“합의국은 15% 상한”",
+      "episode": "episode:855534c616829d",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "파장·후속",
+        "사법·처분",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 35,
+      "event_count": 67,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3fcde2dc",
+      "title": "[사건현장] 노소영, 9천억 전액 지급에도 '거부'…이유는?",
+      "episode": "episode:0eedca102b5b77",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -56,137 +111,82 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 6,
+      "duplicate_candidates": 28,
+      "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "icd59108c",
-      "title": "김민석 “조희대 탄핵 신속 추진 5당 연대 공식 제안”",
-      "episode": "episode:ca8c48631a49cb",
+      "id": "i9992704f",
+      "title": "[속보] 미 USTR \"한국, 일본, EU 등 관세 15% 상한 유지\"",
+      "episode": "episode:270b695d55fbb3",
       "quality": 1.0,
       "stages": [
-        "수사·대응",
+        "일반 보도",
         "입장·공방",
         "사법·처분",
         "파장·후속",
-        "일반 보도"
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 38,
-      "event_count": 13,
+      "duplicate_candidates": 28,
+      "event_count": 22,
       "evidence_rate": 1.0
     },
     {
-      "id": "i13d24194",
-      "title": "한동훈 \"조희대 탄핵 인용하면 의원직 사퇴할 것…서영교, 박선원도 의원직 걸어라\"",
-      "episode": "episode:07f8056c3496f1",
-      "quality": 0.92,
+      "id": "i103eeb41",
+      "title": "[속보] 삼성전자 10%대 급락…시총 1000조 깨져",
+      "episode": "episode:6095056e451bea",
+      "quality": 0.76,
       "stages": [
-        "사법·처분",
         "일반 보도",
-        "입장·공방",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 14,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i85f0af74",
-      "title": "9440억에 하루 1.3억 이자까지… 최태원·노소영의 엇갈린 ‘화해’ 셈법",
-      "episode": "episode:3f187b3b14d30a",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 9,
+      "duplicate_candidates": 17,
+      "event_count": 11,
       "evidence_rate": 1.0
     },
     {
-      "id": "i3f6cf216",
-      "title": "“앨리스 황, 中에 정보 넘겼다”... 트럼프 탄핵 불쏘시개 되나",
-      "episode": "episode:8b28db1691c279",
-      "quality": 1.0,
-      "stages": [
-        "파장·후속",
-        "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 41,
-      "event_count": 35,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i79b711be",
-      "title": "\"920억에 샀는데 지금은 1400억\"…비, 5년 만에 빌딩 가치 480억 상승",
-      "episode": "episode:e5289fe7d7cae7",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ie963e275",
-      "title": "\"대리비 5만원인데 팁도 5만원\"…고경표 태웠던 대리기사가 남긴 말",
-      "episode": "episode:cad2d4fc0125f3",
-      "quality": 0.76,
+      "id": "i322bc85c",
+      "title": "[속보]‘리트 만점자’ 생명과학 과외선생 “죽음이 범죄 도주처 되면 안돼···그래서 경찰 출석”",
+      "episode": "episode:722b46a066ea04",
+      "quality": 0.92,
       "stages": [
         "수사·대응",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i6b3dce14",
-      "title": "삼전닉스 9∼11% 급락…삼전, 시총 1천조원 하회(종합)",
-      "episode": "episode:34febf41d8b9a2",
-      "quality": 0.84,
-      "stages": [
+        "사법·처분",
         "일반 보도",
-        "파장·후속",
-        "사법·처분"
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "수사·대응"
+        "입장·공방"
       ],
-      "duplicate_candidates": 28,
+      "duplicate_candidates": 40,
       "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib91e9a04",
+      "title": "고경표, 과거엔 대리 불렀다…전 대리기사 \"대리비 만큼 팁 줬는데\"",
+      "episode": "episode:090b68b06a2d8d",
+      "quality": 0.76,
+      "stages": [
+        "수사·대응",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 6,
       "evidence_rate": 1.0
     }
   ]
