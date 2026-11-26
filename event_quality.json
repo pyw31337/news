@@ -1,70 +1,71 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 06:25:25",
+  "updated_at": "2026-11-26 06:52:14",
   "date": "2026-11-26",
   "total_issues": 10,
-  "average_quality": 0.82,
+  "average_quality": 0.85,
   "issues": [
     {
-      "id": "ia927bf0c",
-      "title": "윤석열 '한덕수 재판 위증' 무죄확정…尹측 \"특검이 짜맞춘 소설\"(종합2보)",
-      "episode": "episode:3b50c162882bdd",
+      "id": "i75132554",
+      "title": "대법, 윤석열 '한덕수 재판 위증' 무죄 확정…특검 상고 기각",
+      "episode": "episode:0918cfac58a849",
       "quality": 0.92,
       "stages": [
-        "수사·대응",
         "사법·처분",
-        "발단·의혹",
-        "일반 보도"
+        "수사·대응",
+        "일반 보도",
+        "발단·의혹"
       ],
       "gaps": [
         "입장·공방",
         "파장·후속"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 16,
+      "duplicate_candidates": 32,
+      "event_count": 34,
       "evidence_rate": 1.0
     },
     {
-      "id": "if4680673",
-      "title": "李대통령 지지율 43%, 두 차례 연속 하락…부정평가 45%[NBS]",
-      "episode": "episode:d0b175ef32a334",
-      "quality": 1.0,
+      "id": "i639b50b2",
+      "title": "[속보] 조희대 대법원장 탄핵 추진...‘찬성’ 34%, ‘반대’ 44% [NBS]",
+      "episode": "episode:cdb0935540bd88",
+      "quality": 0.92,
       "stages": [
-        "파장·후속",
         "일반 보도",
         "수사·대응",
-        "사법·처분",
         "입장·공방",
-        "발단·의혹"
+        "사법·처분"
       ],
-      "gaps": [],
-      "duplicate_candidates": 33,
-      "event_count": 50,
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 40,
+      "event_count": 23,
       "evidence_rate": 1.0
     },
     {
-      "id": "i6a9491c1",
-      "title": "꽁꽁 숨은 '수능 만점자'들…가채점 만점 최소 3명 \"신원 공개 거부\"",
-      "episode": "episode:66edca220a78f1",
+      "id": "i18027a76",
+      "title": "만점 받으면 의심받는 시대?…수능 만점자 최소 3명, '신원 공개 거부'",
+      "episode": "episode:5e3ac2296c925b",
       "quality": 1.0,
       "stages": [
         "사법·처분",
-        "일반 보도",
         "수사·대응",
         "파장·후속",
-        "입장·공방"
+        "입장·공방",
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹"
       ],
       "duplicate_candidates": 31,
-      "event_count": 9,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i2545fa06",
-      "title": "의사-치과의사 국시 만점자도 최대 15배 늘었다",
-      "episode": "episode:d8ec10cd0408a0",
+      "id": "i89ae18f2",
+      "title": "의사 국시, 5년 새 만점자 7배 ‘쑥’…“의료계도 ‘냥이’ 출몰했나?”",
+      "episode": "episode:8dd0809cb53cab",
       "quality": 0.84,
       "stages": [
         "입장·공방",
@@ -76,33 +77,32 @@
         "사법·처분",
         "파장·후속"
       ],
-      "duplicate_candidates": 29,
+      "duplicate_candidates": 28,
       "event_count": 6,
       "evidence_rate": 1.0
     },
     {
-      "id": "i7f7389d9",
-      "title": "젠슨 황 복귀 후폭풍…안보 논란에 반독점 문제까지",
-      "episode": "episode:d73277a6bab920",
-      "quality": 1.0,
+      "id": "ib53fbdc5",
+      "title": "한은, 기준금리 연 3.25%로 올려…내년 성장률 4.1% 전망",
+      "episode": "episode:9ad346ef8d9e6c",
+      "quality": 0.76,
       "stages": [
-        "일반 보도",
         "파장·후속",
-        "사법·처분",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 43,
-      "event_count": 18,
+      "duplicate_candidates": 28,
+      "event_count": 15,
       "evidence_rate": 1.0
     },
     {
-      "id": "ida30c4a5",
-      "title": "선글라스 끼고 질문엔 묵묵부답…강금실 사무실 첫 출근",
-      "episode": "episode:3bd6732b59878e",
+      "id": "ibff8970f",
+      "title": "강금실, 또 까만 코트·까만 선글라스...블랙요원 연상? [앵커리포트]",
+      "episode": "episode:be9c4d045b02e4",
       "quality": 0.58,
       "stages": [
         "일반 보도"
@@ -117,28 +117,46 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i2f90081d",
-      "title": "이대로 묻히나 했는데…'리트냥이' 자취방 찾은 경찰",
-      "episode": "episode:a0bad4ef8261d1",
-      "quality": 0.84,
+      "id": "i1a893cb4",
+      "title": "경찰, ‘리트 만점자’ 자택·영훈고 압수수색…AI 부정행위 의혹 수사",
+      "episode": "episode:cd2deabeef875d",
+      "quality": 1.0,
       "stages": [
         "수사·대응",
+        "사법·처분",
+        "파장·후속",
         "발단·의혹",
-        "파장·후속"
+        "입장·공방"
       ],
-      "gaps": [
-        "입장·공방",
-        "사법·처분"
-      ],
+      "gaps": [],
       "duplicate_candidates": 34,
-      "event_count": 22,
+      "event_count": 73,
       "evidence_rate": 1.0
     },
     {
-      "id": "i0bd387c0",
-      "title": "[현장] 크레인 전도로 이틀째 막힌 부평IC…통행 재개 앞뒀지만 책임 공방은 ‘제자리’",
-      "episode": "episode:2b7c095d3687b7",
-      "quality": 0.66,
+      "id": "i61f809ed",
+      "title": "젠슨황 복귀에도 엔비디아 신용강등 위기…S&P “황 의존도 높고 승계계획 미흡”",
+      "episode": "episode:a9a669c0dfef36",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i2f440c98",
+      "title": "신현송 \"반도체 영업익 700조…국민경제로 환원될 것\"(종합)",
+      "episode": "episode:d360982debd9ac",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
         "파장·후속"
@@ -148,32 +166,14 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 21,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i1ad73a7e",
-      "title": "\"인천이 이런 곳인줄 몰랐어요\"…21개국 외국인들의 특별한 1박 2일(종합)",
-      "episode": "episode:32ed391349ff3c",
-      "quality": 0.66,
-      "stages": [
-        "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 10,
-      "event_count": 3,
+      "duplicate_candidates": 20,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
       "id": "i6b81513f",
       "title": "\"혈당 관리하려면 틈틈이 걸어라\"… 5분씩 나눠 걸어야 혈당 조절에 유리",
-      "episode": "episode:345216d2d7a50a",
+      "episode": "episode:5ae771e59f5930",
       "quality": 0.68,
       "stages": [
         "일반 보도"
