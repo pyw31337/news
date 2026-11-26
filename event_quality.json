@@ -1,52 +1,32 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 17:25:43",
+  "updated_at": "2026-11-26 17:52:12",
   "date": "2026-11-27",
   "total_issues": 10,
   "average_quality": 0.86,
   "issues": [
     {
-      "id": "i0cb5e6f0",
-      "title": "[속보] 대법, 윤석열 '한덕수 재판 위증' 무죄 확정",
-      "episode": "episode:52ab362146d798",
+      "id": "i388e6933",
+      "title": "계엄 전 국무회의 소집 증언, 허위로 보기 어려워…윤석열 '한덕수 재판 위증' 무죄 확정",
+      "episode": "episode:3dd6a693d5fbef",
       "quality": 1.0,
       "stages": [
         "수사·대응",
         "사법·처분",
-        "발단·의혹",
         "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 21,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3c3fc35f",
-      "title": "반도체 호황·물가 부담에…한은, 기준금리 3.25%로 인상(종합)",
-      "episode": "episode:209134e1559b5a",
-      "quality": 0.84,
-      "stages": [
-        "사법·처분",
-        "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
         "발단·의혹",
         "입장·공방",
-        "수사·대응"
+        "파장·후속"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 18,
+      "gaps": [],
+      "duplicate_candidates": 30,
+      "event_count": 22,
       "evidence_rate": 1.0
     },
     {
-      "id": "id43c8598",
-      "title": "삼성에 반도체 장기 계약 제안했다가…머스크도 진땀 뺀 이재용의 한마디",
-      "episode": "episode:cc665338c21cd0",
+      "id": "if7cf8d01",
+      "title": "머스크도 퇴짜 맞은 메모리… 이재용 “뭘 더 해줄 건데?”",
+      "episode": "episode:011c6059658d54",
       "quality": 0.92,
       "stages": [
         "사법·처분",
@@ -58,33 +38,52 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 12,
+      "duplicate_candidates": 28,
+      "event_count": 16,
       "evidence_rate": 1.0
     },
     {
-      "id": "id3c5e0b4",
-      "title": "이 대통령 지지율 43%...대법원장 탄핵 추진 반대 44%",
-      "episode": "episode:eaa4f7e4c60c29",
-      "quality": 1.0,
+      "id": "icff91bb5",
+      "title": "기준금리 연 3.25%로 인상...내년 초도 금리 오를까?",
+      "episode": "episode:5025fef28a6ca2",
+      "quality": 0.84,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 17,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icd6cc7fe",
+      "title": "조희대 탄핵, 반대 44%-찬성 34%…李지지율 1%p 내린 43%",
+      "episode": "episode:f0ba32caa598ab",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
-        "파장·후속",
         "수사·대응",
         "입장·공방",
         "사법·처분"
       ],
       "gaps": [
-        "발단·의혹"
+        "발단·의혹",
+        "파장·후속"
       ],
-      "duplicate_candidates": 42,
-      "event_count": 100,
+      "duplicate_candidates": 35,
+      "event_count": 39,
       "evidence_rate": 1.0
     },
     {
-      "id": "iebe0cd44",
-      "title": "AI 부정행위 자수한 '세무냥이'…경찰, 구속영장 신청",
-      "episode": "episode:d0082058e95f41",
+      "id": "i2b856bec",
+      "title": "'부정행위' 세무사 수석, 다른 시험도 준비했다… 경찰 구속영장 신청",
+      "episode": "episode:e72c048afa9a14",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -95,8 +94,8 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 21,
+      "duplicate_candidates": 34,
+      "event_count": 26,
       "evidence_rate": 1.0
     },
     {
@@ -118,6 +117,42 @@
       "evidence_rate": 1.0
     },
     {
+      "id": "i64adf019",
+      "title": "[단독] 이진우 '리트' 본 이유 \"책 내려는데 마침 만점자 없길래\"",
+      "episode": "episode:88b46cb8c30942",
+      "quality": 0.92,
+      "stages": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 11,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic96b90ae",
+      "title": "[바로이뉴스] 강유정 문체부 장관 후보자 첫 출근…\"한국 문화 중흥기 이어갈 것\"",
+      "episode": "episode:449d6f2566b3ac",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
       "id": "i10234606",
       "title": "2035 제주 탄소중립 비전 선포…“재생에너지 100% 달성”",
       "episode": "episode:182b2f11b51f95",
@@ -130,63 +165,27 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 22,
+      "duplicate_candidates": 21,
       "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "i48b0413d",
-      "title": "러시아 측 \"발트해 러 선박 공격에 나토 관여\"…보복 경고",
-      "episode": "episode:71f75b14dd5c99",
+      "id": "i98107a38",
+      "title": "\"中에 AI 컴퓨팅 자원 조금이라도 빌려주면 엔비디아 칩 못 산다\"",
+      "episode": "episode:0f523ef7349eea",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "입장·공방",
         "사법·처분",
         "수사·대응",
+        "입장·공방",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 24,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic96b90ae",
-      "title": "[바로이뉴스] 강유정 문체부 장관 후보자 첫 출근…\"한국 문화 중흥기 이어갈 것\"",
-      "episode": "episode:84049023e77b77",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ia8cd4f23",
-      "title": "\"학폭 때문에 대학 6곳 탈락\" 아버지 호소에 '싸늘'",
-      "episode": "episode:4f421cf59789dd",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 20,
-      "event_count": 7,
+      "duplicate_candidates": 37,
+      "event_count": 14,
       "evidence_rate": 1.0
     }
   ]

@@ -2,9 +2,9 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 14,
+    "current_person_entities": 15,
     "approved": 11,
-    "withheld": 3,
+    "withheld": 4,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 0,
     "sanitized": 1
@@ -46,13 +46,6 @@
       "wiki_title": "노소영"
     },
     {
-      "name": "오세훈",
-      "status": "approved",
-      "url": "data/pol/photos/LB24097N.webp",
-      "source": "",
-      "wiki_title": "오세훈"
-    },
-    {
       "name": "전두환",
       "status": "approved",
       "url": "media/ent/6c/6c81949187298159.webp",
@@ -60,11 +53,18 @@
       "wiki_title": "전두환"
     },
     {
-      "name": "한동훈",
-      "status": "approved",
-      "url": "data/pol/photos/5DC8083A.webp",
+      "name": "김민석",
+      "status": "no_portrait",
+      "url": "",
       "source": "",
-      "wiki_title": "한동훈"
+      "wiki_title": ""
+    },
+    {
+      "name": "이재명",
+      "status": "approved",
+      "url": "media/ent/da/da37f2330225f1ef.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Lee%20Jae-myung%202025%20%28cropped%29.jpg?width=360",
+      "wiki_title": "이재명"
     },
     {
       "name": "김대중",
@@ -81,13 +81,6 @@
       "wiki_title": "노무현"
     },
     {
-      "name": "이재명",
-      "status": "approved",
-      "url": "media/ent/da/da37f2330225f1ef.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Lee%20Jae-myung%202025%20%28cropped%29.jpg?width=360",
-      "wiki_title": "이재명"
-    },
-    {
       "name": "충주맨",
       "status": "wiki_title_mismatch",
       "url": "",
@@ -95,11 +88,25 @@
       "wiki_title": "김선태 (1987년)"
     },
     {
+      "name": "한동훈",
+      "status": "approved",
+      "url": "data/pol/photos/5DC8083A.webp",
+      "source": "",
+      "wiki_title": "한동훈"
+    },
+    {
       "name": "강금실",
       "status": "approved",
       "url": "media/ent/36/36e73a023752a876.webp",
       "source": "https://commons.wikimedia.org/wiki/Special:FilePath/KumsilKang.JPG?width=360",
       "wiki_title": "강금실"
+    },
+    {
+      "name": "오세훈",
+      "status": "approved",
+      "url": "data/pol/photos/LB24097N.webp",
+      "source": "",
+      "wiki_title": "오세훈"
     },
     {
       "name": "황경선",
