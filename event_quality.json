@@ -1,50 +1,33 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 22:23:50",
+  "updated_at": "2026-11-26 22:54:31",
   "date": "2026-11-27",
   "total_issues": 10,
   "average_quality": 0.88,
   "issues": [
     {
-      "id": "i92fd972e",
-      "title": "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
-      "episode": "episode:65ec52e9feea04",
+      "id": "i21f09a23",
+      "title": "“그래서 뭘 더해 줄 건데?”…머스크도 진땀 빼게 한 이재용의 한마디",
+      "episode": "episode:0c9ec76f317d28",
       "quality": 0.92,
       "stages": [
-        "일반 보도",
         "사법·처분",
-        "수사·대응",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "icff91bb5",
-      "title": "기준금리 연 3.25%로 인상...내년 초도 금리 오를까?",
-      "episode": "episode:50778b9fa6d656",
-      "quality": 0.84,
-      "stages": [
         "파장·후속",
         "일반 보도",
-        "사법·처분"
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "수사·대응"
+        "입장·공방"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 17,
+      "duplicate_candidates": 32,
+      "event_count": 14,
       "evidence_rate": 1.0
     },
     {
-      "id": "i612f9714",
-      "title": "최태원 측 \"9440억원, 화해 확정 후 7일 내 지급\"…노소영 측 거부",
-      "episode": "episode:47b7eda8d21927",
+      "id": "i39fefb29",
+      "title": "최태원 \"7일내 전액 지급\" 제안에 노소영 '반대'",
+      "episode": "episode:d5b9ecc12efb1f",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -60,9 +43,9 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i6bcc9b4f",
-      "title": "李대통령 \"SNS, 익명성에 혐오·비방 갈등 격화…폭언·욕설 차단\"",
-      "episode": "episode:9365a71072ed6d",
+      "id": "ica7ae6f4",
+      "title": "李대통령 \"폭언·욕설 이런 거 싫다. 그런 경우 차단\"",
+      "episode": "episode:c69e5a316036b7",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -74,45 +57,46 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 45,
-      "event_count": 89,
+      "duplicate_candidates": 36,
+      "event_count": 54,
       "evidence_rate": 1.0
     },
     {
-      "id": "iff9a3814",
-      "title": "자격정지? 제명?… 최민희 ‘징계 수위’ 촉각, 민주당 폭풍전야",
-      "episode": "episode:d73911e3e41c93",
-      "quality": 1.0,
+      "id": "i90adf0f3",
+      "title": "한은, 기준금리 3.25%로 인상…'반도체 호황' 내년 성장률 4%대로",
+      "episode": "episode:8c199343ac316c",
+      "quality": 0.92,
       "stages": [
         "파장·후속",
         "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 41,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ief7c1d87",
-      "title": "강유정 문체부 장관 후보자 “석 자 얼음 녹기 시작했다”···한한령 대응 최우선",
-      "episode": "episode:323c4690ad2735",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
+        "사법·처분",
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "수사·대응"
+        "입장·공방"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 5,
+      "duplicate_candidates": 34,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iaad9f8fa",
+      "title": "민주 중진들 김빠진 만찬, 김민석·정청래 없는 자리에서 “단합하고 단결”",
+      "episode": "episode:53153a916b22cc",
+      "quality": 1.0,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 40,
+      "event_count": 18,
       "evidence_rate": 1.0
     },
     {
@@ -121,7 +105,8 @@
       "episode": "episode:177411e3844a5a",
       "quality": 1.0,
       "stages": [
-        "수사·대응",
+        "일반 보도",
+        "파장·후속",
         "사법·처분",
         "입장·공방",
         "수사·대응"
@@ -129,14 +114,32 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 45,
+      "duplicate_candidates": 48,
       "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i411eefe5",
+      "title": "美 추수감사절 폭풍에 80만곳 정전·항공 2100편 운항 차질",
+      "episode": "episode:e954a9ac1e0fbe",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 22,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
       "id": "i18a5b7e2",
       "title": "[속보]경찰, ‘AI 부정행위 자수’ 세무사시험 수석에 구속영장 신청",
-      "episode": "episode:d0853dce94a7a4",
+      "episode": "episode:f4a1dc52861ebc",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -147,8 +150,26 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 33,
-      "event_count": 21,
+      "duplicate_candidates": 27,
+      "event_count": 22,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i7a11748c",
+      "title": "러시아, 유럽에 핵 위협...미국 \"푸틴이 참고 있다\"",
+      "episode": "episode:d400f0a3a1ec0b",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 17,
       "evidence_rate": 1.0
     },
     {
@@ -157,36 +178,17 @@
       "episode": "episode:9e9f2245c705f6",
       "quality": 0.84,
       "stages": [
-        "일반 보도",
-        "수사·대응",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 21,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i252215c3",
-      "title": "‘제자 성폭행 혐의’ 뮤지컬 배우 남경주 오늘 배심원 앞에 선다",
-      "episode": "episode:40d98fb88fe735",
-      "quality": 0.84,
-      "stages": [
-        "사법·처분",
-        "수사·대응",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
         "입장·공방",
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분",
         "파장·후속"
       ],
-      "duplicate_candidates": 19,
-      "event_count": 7,
+      "duplicate_candidates": 22,
+      "event_count": 6,
       "evidence_rate": 1.0
     }
   ]
