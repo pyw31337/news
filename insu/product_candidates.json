@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26T10:52:41.464601+00:00",
+  "updated_at": "2026-11-18T10:08:55.843546+00:00",
   "providers": [
     {
       "provider_id": "insurer-001",
@@ -13,7 +13,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:30.011814+00:00"
+      "discovered_at": "2026-11-18T10:08:45.158434+00:00"
     },
     {
       "provider_id": "insurer-002",
@@ -312,7 +312,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-26T10:52:29.983953+00:00"
+      "discovered_at": "2026-11-18T10:08:45.082975+00:00"
     },
     {
       "provider_id": "insurer-004",
@@ -326,7 +326,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:28.954559+00:00"
+      "discovered_at": "2026-11-18T10:08:44.572370+00:00"
     },
     {
       "provider_id": "insurer-005",
@@ -340,7 +340,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:28.674141+00:00"
+      "discovered_at": "2026-11-18T10:08:44.218669+00:00"
     },
     {
       "provider_id": "insurer-006",
@@ -354,7 +354,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:29.329139+00:00"
+      "discovered_at": "2026-11-18T10:08:44.684784+00:00"
     },
     {
       "provider_id": "insurer-007",
@@ -368,7 +368,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:29.884137+00:00"
+      "discovered_at": "2026-11-18T10:08:45.010977+00:00"
     },
     {
       "provider_id": "insurer-008",
@@ -681,7 +681,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-26T10:52:30.511892+00:00"
+      "discovered_at": "2026-11-18T10:08:45.252804+00:00"
     },
     {
       "provider_id": "insurer-009",
@@ -734,7 +734,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-26T10:52:31.228985+00:00"
+      "discovered_at": "2026-11-18T10:08:45.876063+00:00"
     },
     {
       "provider_id": "insurer-010",
@@ -1102,7 +1102,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-26T10:52:31.960446+00:00"
+      "discovered_at": "2026-11-18T10:08:46.228391+00:00"
     },
     {
       "provider_id": "insurer-011",
@@ -1116,13 +1116,57 @@
       "source_url": "https://www.hanainsure.co.kr/w/disclosure/product/saleProduct",
       "candidate_links": [
         {
+          "url": "https://www.hanainsure.co.kr/w/disclosure/manage/regularMngDisclosure",
+          "label": "공시실",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/w/disclosure/price",
+          "label": "가격공시",
+          "verified": false
+        },
+        {
           "url": "https://www.hanainsure.co.kr/w/disclosure/product/saleProduct",
-          "label": "공식 상품·약관 공시 페이지(렌더링 후보)",
-          "verified": false,
-          "kind": "catalog_page"
+          "label": "상품공시",
+          "verified": false
+        },
+        {
+          "url": "javascript:void(0);",
+          "label": "약관 및 정책",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/w/terms/homepageContract",
+          "label": "온라인서비스통합회원가입이용약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/w/terms/positionInfContract",
+          "label": "위치기반서비스이용약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/w/terms/creditInfNotice",
+          "label": "신용정보활용체제공시",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/download/<@=info.sPolicyFileID @>",
+          "label": "약관",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/download/<@=info.sBizFileID @>",
+          "label": "사업방법서",
+          "verified": false
+        },
+        {
+          "url": "https://www.hanainsure.co.kr/download/<@=info.sSummaryFileID @>",
+          "label": "상품요약서",
+          "verified": false
         }
       ],
-      "discovered_at": "2026-11-26T10:52:31.140339+00:00"
+      "discovered_at": "2026-11-18T10:08:45.763905+00:00"
     },
     {
       "provider_id": "insurer-013",
@@ -1136,13 +1180,13 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:30.984688+00:00"
+      "discovered_at": "2026-11-18T10:08:45.826558+00:00"
     },
     {
       "provider_id": "insurer-014",
       "insurer": "한화생명",
       "source_url": "https://www.hanwhalife.com//main/disclosure/goods/disclosurenotice/DF_GDDN000_P10000.do?MENU_ID1=DF_GDGL000",
-      "error": "The read operation timed out"
+      "error": "HTTP Error 403: Forbidden"
     },
     {
       "provider_id": "insurer-015",
@@ -1202,7 +1246,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-26T10:52:31.324794+00:00"
+      "discovered_at": "2026-11-18T10:08:46.292321+00:00"
     },
     {
       "provider_id": "insurer-018",
@@ -1216,7 +1260,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:32.308357+00:00"
+      "discovered_at": "2026-11-18T10:08:47.137608+00:00"
     },
     {
       "provider_id": "insurer-019",
@@ -1236,7 +1280,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:32.337962+00:00"
+      "discovered_at": "2026-11-18T10:08:46.624607+00:00"
     },
     {
       "provider_id": "insurer-021",
@@ -1274,7 +1318,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-26T10:52:32.460816+00:00"
+      "discovered_at": "2026-11-18T10:08:48.378709+00:00"
     },
     {
       "provider_id": "insurer-022",
@@ -1288,7 +1332,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:32.626923+00:00"
+      "discovered_at": "2026-11-18T10:08:46.948634+00:00"
     },
     {
       "provider_id": "insurer-023",
@@ -1302,7 +1346,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:33.384100+00:00"
+      "discovered_at": "2026-11-18T10:08:47.332890+00:00"
     },
     {
       "provider_id": "insurer-024",
@@ -1461,7 +1505,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-26T10:52:34.094173+00:00"
+      "discovered_at": "2026-11-18T10:08:47.814710+00:00"
     },
     {
       "provider_id": "insurer-026",
@@ -1475,7 +1519,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:34.121049+00:00"
+      "discovered_at": "2026-11-18T10:08:47.942299+00:00"
     },
     {
       "provider_id": "insurer-027",
@@ -1489,157 +1533,13 @@
       "source_url": "https://www.kblife.co.kr/customer-common/productList.do",
       "candidate_links": [
         {
-          "url": "https://www.kblife.co.kr/customer-common/guideToProductPublicNoticeOfficeProductPublicNotice.do",
-          "label": "공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/mypage.do",
-          "label": "계약관리",
-          "verified": false
-        },
-        {
-          "url": "javascript:void(0);",
-          "label": "소비자보호 공시",
-          "verified": false
-        },
-        {
-          "url": "javascript:void(0);",
-          "label": "상품공시",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/guideToProductPublicNoticeOfficeProductPublicNotice.do",
-          "label": "상품공시안내",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/variableInsurancePublicNoticeOffice.do",
-          "label": "변액보험공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/annuitySavingPublicNoticeOffice.do",
-          "label": "연금저축공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/assetLinkedProductPublicNoticeOffice.do",
-          "label": "자산연계상품공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/retirementPensionPublicNoticeOffice.do",
-          "label": "퇴직연금공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/foreignCurrencyInsurancePublicNoticeOffice.do",
-          "label": "외화보험공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/insurancePricePublicNoticeOffice.do",
-          "label": "보험가격공시",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/managementPublicNoticeOffice.do",
-          "label": "경영공시",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/guideToProductPublicNoticeOfficeProductPublicNotice.do",
-          "label": "상품공시안내",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/variableInsurancePublicNoticeOffice.do",
-          "label": "변액보험공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/annuitySavingPublicNoticeOffice.do",
-          "label": "연금저축공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/assetLinkedProductPublicNoticeOffice.do",
-          "label": "자산연계상품공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/retirementPensionPublicNoticeOffice.do",
-          "label": "퇴직연금공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/foreignCurrencyInsurancePublicNoticeOffice.do",
-          "label": "외화보험공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/insurancePricePublicNoticeOffice.do",
-          "label": "보험가격공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/managementPublicNoticeOffice.do",
-          "label": "경영공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/bankasurancePublicNoticeOffice.do",
-          "label": "방카슈랑스 공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/purchaseBiddingPublicNoticeOffice.do",
-          "label": "구매입찰공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-center/termsOfUse.do",
-          "label": "이용약관",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-center/electronicFinancialTransactionTermsOfUse.do",
-          "label": "전자금융거래이용약관",
-          "verified": false
-        },
-        {
           "url": "https://www.kblife.co.kr/customer-common/productList.do",
-          "label": "상품공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/insurancePricePublicNoticeOffice.do",
-          "label": "보험가격공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/bankasurancePublicNoticeOffice.do",
-          "label": "방카슈랑스공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/purchaseBiddingPublicNoticeOffice.do",
-          "label": "구매입찰공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/managementPublicNoticeOffice.do",
-          "label": "경영공시실",
-          "verified": false
-        },
-        {
-          "url": "https://www.kblife.co.kr/customer-common/noticeInPublicNumberOfAppeal.do",
-          "label": "소비자보호 공시",
-          "verified": false
+          "label": "공식 상품·약관 공시 페이지(렌더링 후보)",
+          "verified": false,
+          "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:35.946717+00:00"
+      "discovered_at": "2026-11-18T10:08:48.004584+00:00"
     },
     {
       "provider_id": "insurer-029",
@@ -1653,7 +1553,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:35.052732+00:00"
+      "discovered_at": "2026-11-18T10:08:48.607912+00:00"
     },
     {
       "provider_id": "insurer-030",
@@ -1667,7 +1567,7 @@
           "kind": "catalog_page"
         }
       ],
-      "discovered_at": "2026-11-26T10:52:35.461894+00:00"
+      "discovered_at": "2026-11-18T10:08:48.679382+00:00"
     },
     {
       "provider_id": "insurer-031",
@@ -1696,7 +1596,7 @@
           "verified": false
         }
       ],
-      "discovered_at": "2026-11-26T10:52:36.673879+00:00"
+      "discovered_at": "2026-11-18T10:08:49.923390+00:00"
     }
   ]
 }
