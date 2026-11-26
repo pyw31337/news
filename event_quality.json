@@ -1,33 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 21:55:32",
+  "updated_at": "2026-11-26 22:23:50",
   "date": "2026-11-27",
   "total_issues": 10,
-  "average_quality": 0.86,
+  "average_quality": 0.88,
   "issues": [
-    {
-      "id": "iaa4b8b04",
-      "title": "[속보] 대법, 윤석열 '한덕수 재판 위증' 혐의 무죄 확정",
-      "episode": "episode:a8d23bc58212a6",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
-        "수사·대응",
-        "입장·공방",
-        "발단·의혹",
-        "일반 보도"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 30,
-      "evidence_rate": 1.0
-    },
     {
       "id": "i92fd972e",
       "title": "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
-      "episode": "episode:a184e8c40a7f36",
+      "episode": "episode:65ec52e9feea04",
       "quality": 0.92,
       "stages": [
         "사법·처분",
@@ -39,38 +20,93 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 11,
+      "duplicate_candidates": 31,
+      "event_count": 13,
       "evidence_rate": 1.0
     },
     {
-      "id": "icd6cc7fe",
-      "title": "조희대 탄핵, 반대 44%-찬성 34%…李지지율 1%p 내린 43%",
-      "episode": "episode:0a46f0966db1ef",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 37,
-      "event_count": 44,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ibd937da7",
-      "title": "[속보] 한은, 기준금리 3.25%로 인상… 반도체 호황·물가상승에 인상",
-      "episode": "episode:885565c550bc5d",
+      "id": "icff91bb5",
+      "title": "기준금리 연 3.25%로 인상...내년 초도 금리 오를까?",
+      "episode": "episode:50778b9fa6d656",
       "quality": 0.84,
       "stages": [
         "파장·후속",
         "일반 보도",
         "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 17,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i612f9714",
+      "title": "최태원 측 \"9440억원, 화해 확정 후 7일 내 지급\"…노소영 측 거부",
+      "episode": "episode:47b7eda8d21927",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 36,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i6bcc9b4f",
+      "title": "李대통령 \"SNS, 익명성에 혐오·비방 갈등 격화…폭언·욕설 차단\"",
+      "episode": "episode:9365a71072ed6d",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방",
+        "파장·후속",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 45,
+      "event_count": 89,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iff9a3814",
+      "title": "자격정지? 제명?… 최민희 ‘징계 수위’ 촉각, 민주당 폭풍전야",
+      "episode": "episode:d73911e3e41c93",
+      "quality": 1.0,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 41,
+      "event_count": 17,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ief7c1d87",
+      "title": "강유정 문체부 장관 후보자 “석 자 얼음 녹기 시작했다”···한한령 대응 최우선",
+      "episode": "episode:323c4690ad2735",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
@@ -78,50 +114,13 @@
         "수사·대응"
       ],
       "duplicate_candidates": 30,
-      "event_count": 17,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i571fe950",
-      "title": "의사 국가고시 만점자, 7배 늘었다 “일부 과목서 20명→137명”",
-      "episode": "episode:6c81015b79011e",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i9b58a3eb",
-      "title": "경찰 ‘AI 커닝 자수’ 세무 수석 구속영장 신청…“도주 우려”",
-      "episode": "episode:eabdd292299f84",
-      "quality": 0.84,
-      "stages": [
-        "사법·처분",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 28,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i4f77a4cb",
-      "title": "젠슨 황에서 록펠러가 보이는 이유 … AI 패권 둘러싼 시장과 정치",
-      "episode": "episode:7d6290a368805a",
+      "id": "i36038f26",
+      "title": "젠슨 황 복귀, ‘독’이었나…S&P, 엔비디아 신용등급 강등 검토",
+      "episode": "episode:177411e3844a5a",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -133,62 +132,64 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 47,
+      "duplicate_candidates": 45,
       "event_count": 19,
       "evidence_rate": 1.0
     },
     {
-      "id": "i08e187f3",
-      "title": "“연명의료 중단, 임종기→말기 앞당겨야” 84%",
-      "episode": "episode:1cdbeb9fe28783",
-      "quality": 0.68,
+      "id": "i18a5b7e2",
+      "title": "[속보]경찰, ‘AI 부정행위 자수’ 세무사시험 수석에 구속영장 신청",
+      "episode": "episode:d0853dce94a7a4",
+      "quality": 0.84,
       "stages": [
+        "사법·처분",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 21,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icaca1677",
+      "title": "[속보]의사 국시 만점자 7배 늘었다",
+      "episode": "episode:9e9f2245c705f6",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 21,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i252215c3",
+      "title": "‘제자 성폭행 혐의’ 뮤지컬 배우 남경주 오늘 배심원 앞에 선다",
+      "episode": "episode:40d98fb88fe735",
+      "quality": 0.84,
+      "stages": [
+        "사법·처분",
+        "수사·대응",
         "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 23,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ic33f1781",
-      "title": "\"수시 6곳 모두 불합격, 이게 맞나요?…학폭 아들 둔 아버지 하소연 '논란'",
-      "episode": "episode:82350c9b5134d3",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 21,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7a11748c",
-      "title": "러시아, 유럽에 핵 위협...미국 \"푸틴이 참고 있다\"",
-      "episode": "episode:df93930f970322",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
         "파장·후속"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 18,
+      "duplicate_candidates": 19,
+      "event_count": 7,
       "evidence_rate": 1.0
     }
   ]
