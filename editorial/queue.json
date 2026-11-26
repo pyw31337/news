@@ -30,13 +30,13 @@
       "issue_id": "i92fd972e",
       "title": "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
       "category": "경제",
-      "rank": 3,
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
         "인공지능(AI) 인프라 투자 열풍에 따른 메모리 반도체 품귀 현상이 지속되면서 반도체를 구하려는 기업들이 한국에 진을 치고 있다고 월스트리트저널(WSJ)이 25일(현지시간) 보도했다.",
         "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
@@ -61,9 +61,9 @@
           "url": "https://n.news.naver.com/article/366/0001207646"
         },
         {
-          "press": "daily.hankooki.com",
-          "title": "일론 머스크 \"반도체 삽니다\" 요구에 이재용 반문 \"뭘 더 해줄 수 있나\"",
-          "url": "https://daily.hankooki.com/news/articleView.html?idxno=1429588"
+          "press": "asiatime.co.kr",
+          "title": "수출 1조달러 시대…李대통령 ‘봉제·신발공장 선배 세대 덕분’",
+          "url": "https://www.asiatime.co.kr/article/20261119500437"
         }
       ],
       "story_beats": [
@@ -89,8 +89,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -122,10 +122,11 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.92,
+        "continuity_quality": 0.84,
         "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
+          "입장·공방",
+          "수사·대응",
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
@@ -140,7 +141,7 @@
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
         "성장 전망 대폭 높이며 하반기 세 번째 인상…한미 금리차 0.75%p로 내년도 긴축 지속 예상…반도체 경기·증시 조정 등 변수 한지훈 채새롬 이도흔 기자 = 한국은행 금융통화위원회는 26일 올해 마지막 통화정책방향",
         "한은의 금리 인상 속도가 빨라지면서 빚이 많은 가계는 당장 직격탄을 맞게 됐다.",
@@ -226,12 +227,8 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.76,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
+        "continuity_quality": 1.0,
+        "continuity_gaps": [],
         "no_generic_closing": true
       }
     },
