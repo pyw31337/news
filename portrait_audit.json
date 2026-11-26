@@ -2,14 +2,21 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 8,
-    "approved": 6,
-    "withheld": 2,
+    "current_person_entities": 12,
+    "approved": 8,
+    "withheld": 4,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 0,
-    "sanitized": 0
+    "sanitized": 1
   },
   "current_entities": [
+    {
+      "name": "한덕수",
+      "status": "approved",
+      "url": "media/ent/76/76576ae35b263ce4.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Prime%20Minister%20of%20South%20Korea%20HAN%20Duck-soo%2020240516.jpg?width=360",
+      "wiki_title": "한덕수"
+    },
     {
       "name": "윤석열",
       "status": "approved",
@@ -18,11 +25,11 @@
       "wiki_title": "윤석열"
     },
     {
-      "name": "한덕수",
-      "status": "approved",
-      "url": "media/ent/76/76576ae35b263ce4.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Prime%20Minister%20of%20South%20Korea%20HAN%20Duck-soo%2020240516.jpg?width=360",
-      "wiki_title": "한덕수"
+      "name": "김계리",
+      "status": "no_portrait",
+      "url": "",
+      "source": "",
+      "wiki_title": "김계리"
     },
     {
       "name": "조희대",
@@ -32,18 +39,18 @@
       "wiki_title": "조희대"
     },
     {
-      "name": "우재준",
-      "status": "approved",
-      "url": "data/pol/photos/8UC4779G.webp",
-      "source": "",
-      "wiki_title": "우재준"
-    },
-    {
       "name": "신장식",
       "status": "approved",
       "url": "media/ent/dd/dd8d876243d14856.webp",
       "source": "https://commons.wikimedia.org/wiki/Special:FilePath/%EC%8B%A0%EC%9E%A5%EC%8B%9D.jpg?width=360",
       "wiki_title": "신장식"
+    },
+    {
+      "name": "이재명",
+      "status": "approved",
+      "url": "media/ent/da/da37f2330225f1ef.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Lee%20Jae-myung%202025%20%28cropped%29.jpg?width=360",
+      "wiki_title": "이재명"
     },
     {
       "name": "친한",
@@ -60,11 +67,32 @@
       "wiki_title": "황경선"
     },
     {
-      "name": "오세훈",
-      "status": "approved",
-      "url": "data/pol/photos/LB24097N.webp",
+      "name": "충주맨",
+      "status": "wiki_title_mismatch",
+      "url": "",
       "source": "",
-      "wiki_title": "오세훈"
+      "wiki_title": "김선태 (1987년)"
+    },
+    {
+      "name": "우재준",
+      "status": "approved",
+      "url": "data/pol/photos/8UC4779G.webp",
+      "source": "",
+      "wiki_title": "우재준"
+    },
+    {
+      "name": "한동훈",
+      "status": "approved",
+      "url": "data/pol/photos/5DC8083A.webp",
+      "source": "",
+      "wiki_title": "한동훈"
+    },
+    {
+      "name": "강금실",
+      "status": "approved",
+      "url": "media/ent/36/36e73a023752a876.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/KumsilKang.JPG?width=360",
+      "wiki_title": "강금실"
     }
   ],
   "legacy_local_assets": [
@@ -418,5 +446,10 @@
     }
   ],
   "entity_media_cache_issues": [],
-  "changes": []
+  "changes": [
+    {
+      "name": "충주맨",
+      "reason": "wiki_title_mismatch"
+    }
+  ]
 }
