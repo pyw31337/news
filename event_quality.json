@@ -1,51 +1,52 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 15:25:18",
+  "updated_at": "2026-11-26 15:52:57",
   "date": "2026-11-27",
   "total_issues": 10,
-  "average_quality": 0.83,
+  "average_quality": 0.82,
   "issues": [
     {
-      "id": "i585b535d",
-      "title": "대법원, '한덕수 재판 위증' 윤석열 무죄 확정‥상고 기각",
-      "episode": "episode:6bd8c8771f5cfd",
+      "id": "i206002b9",
+      "title": "윤석열  '한덕수 내란 재판 위증' 무죄 확정…대법, 특검 상고 기각",
+      "episode": "episode:be81e5b9a19183",
       "quality": 1.0,
       "stages": [
-        "수사·대응",
         "사법·처분",
-        "발단·의혹",
+        "수사·대응",
         "일반 보도",
+        "발단·의혹",
         "파장·후속"
       ],
       "gaps": [
         "입장·공방"
       ],
-      "duplicate_candidates": 34,
-      "event_count": 24,
+      "duplicate_candidates": 35,
+      "event_count": 43,
       "evidence_rate": 1.0
     },
     {
-      "id": "ifaef42a6",
-      "title": "“조희대 탄핵 찬성” 34%, “반대” 44% [NBS]",
-      "episode": "episode:02cb801369f90d",
+      "id": "icff91bb5",
+      "title": "기준금리 연 3.25%로 인상...내년 초도 금리 오를까?",
+      "episode": "episode:456e764bb49373",
       "quality": 0.92,
       "stages": [
+        "파장·후속",
         "일반 보도",
-        "수사·대응",
-        "입장·공방",
-        "사법·처분"
+        "사법·처분",
+        "수사·대응"
       ],
       "gaps": [
-        "사법·처분"
+        "발단·의혹",
+        "입장·공방"
       ],
-      "duplicate_candidates": 33,
-      "event_count": 39,
+      "duplicate_candidates": 29,
+      "event_count": 16,
       "evidence_rate": 1.0
     },
     {
-      "id": "i92fd972e",
-      "title": "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
-      "episode": "episode:a184e8c40a7f36",
+      "id": "id43c8598",
+      "title": "삼성에 반도체 장기 계약 제안했다가…머스크도 진땀 뺀 이재용의 한마디",
+      "episode": "episode:cc665338c21cd0",
       "quality": 0.92,
       "stages": [
         "사법·처분",
@@ -57,32 +58,50 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 14,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3c3fc35f",
-      "title": "반도체 호황·물가 부담에…한은, 기준금리 3.25%로 인상(종합)",
-      "episode": "episode:cca5b8a98d7799",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 26,
+      "duplicate_candidates": 27,
       "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "iebe0cd44",
-      "title": "AI 부정행위 자수한 '세무냥이'…경찰, 구속영장 신청",
-      "episode": "episode:3049a6f69c5e88",
+      "id": "ib1b8d721",
+      "title": "여학생 텀블러에 몰래 소변 본 남학생 '학급 교체'...피해 학생은 '자퇴'",
+      "episode": "episode:9e2384b81ce087",
+      "quality": 0.56,
+      "stages": [
+        "사법·처분",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 2,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "idc887be6",
+      "title": "[속보] 의사 국가시험 일부 과목 만점자 4년새 7배로",
+      "episode": "episode:47e0a9572f07a2",
+      "quality": 0.66,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 21,
+      "event_count": 3,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9b58a3eb",
+      "title": "경찰 ‘AI 커닝 자수’ 세무 수석 구속영장 신청…“도주 우려”",
+      "episode": "episode:eabdd292299f84",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -94,49 +113,13 @@
         "입장·공방"
       ],
       "duplicate_candidates": 35,
-      "event_count": 22,
+      "event_count": 29,
       "evidence_rate": 1.0
     },
     {
-      "id": "i29cdf020",
-      "title": "갑작스런 만점자 급증…\"의사·간호사 국시도 설마\"",
-      "episode": "episode:c624e1b8beaf72",
-      "quality": 0.66,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 22,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ief7c1d87",
-      "title": "강유정 문체부 장관 후보자 “석 자 얼음 녹기 시작했다”···한한령 대응 최우선",
-      "episode": "episode:965dae0aeb4c3a",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i0a7324b7",
-      "title": "“육아휴직 하고 세무사 합격”…워킹맘 합격 후기에 발칵",
-      "episode": "episode:13fb73df18826c",
+      "id": "i127774f1",
+      "title": "“육아휴직 내고 공부, 세무사 합격” 30대 女, 결국 신고 당했다",
+      "episode": "episode:39980a2b9817b9",
       "quality": 0.84,
       "stages": [
         "입장·공방",
@@ -153,6 +136,24 @@
       "evidence_rate": 1.0
     },
     {
+      "id": "ic96b90ae",
+      "title": "[바로이뉴스] 강유정 문체부 장관 후보자 첫 출근…\"한국 문화 중흥기 이어갈 것\"",
+      "episode": "episode:449d6f2566b3ac",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
       "id": "i10234606",
       "title": "2035 제주 탄소중립 비전 선포…“재생에너지 100% 달성”",
       "episode": "episode:182b2f11b51f95",
@@ -165,27 +166,27 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 22,
+      "duplicate_candidates": 21,
       "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "i53872ab2",
-      "title": "올리브영, 해킹 공격에 직원·고객 포함 790명 이름·연락처 등 개인정보 유출",
-      "episode": "episode:137e37a396e779",
-      "quality": 0.92,
+      "id": "i36038f26",
+      "title": "젠슨 황 복귀, ‘독’이었나…S&P, 엔비디아 신용등급 강등 검토",
+      "episode": "episode:360be27ec89a77",
+      "quality": 1.0,
       "stages": [
-        "파장·후속",
         "일반 보도",
-        "수사·대응",
-        "사법·처분"
+        "파장·후속",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응"
       ],
       "gaps": [
-        "발단·의혹",
-        "입장·공방"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 19,
+      "duplicate_candidates": 45,
+      "event_count": 18,
       "evidence_rate": 1.0
     }
   ]
