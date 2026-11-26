@@ -1,195 +1,194 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 07:54:45",
-  "date": "2026-11-19",
+  "updated_at": "2026-11-26 21:25:08",
+  "date": "2026-11-27",
   "total_issues": 10,
-  "average_quality": 0.89,
+  "average_quality": 0.88,
   "issues": [
     {
-      "id": "ib0b88852",
-      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
-      "episode": "episode:6240c7cf2c14d8",
+      "id": "i388e6933",
+      "title": "계엄 전 국무회의 소집 증언, 허위로 보기 어려워…윤석열 '한덕수 재판 위증' 무죄 확정",
+      "episode": "episode:3dd6a693d5fbef",
+      "quality": 1.0,
+      "stages": [
+        "수사·대응",
+        "사법·처분",
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "gaps": [
+        "파장·후속"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 21,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "iba5a591e",
+      "title": "‘조희대 탄핵’에 “반대” 44%, “찬성” 34%···이 대통령 지지율은 떨어져 43%[NBS]",
+      "episode": "episode:008ceaf8bfcf3f",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "파장·후속",
+        "수사·대응",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 41,
+      "event_count": 95,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i92fd972e",
+      "title": "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
+      "episode": "episode:65ec52e9feea04",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "파장·후속",
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
         "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 13,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icff91bb5",
+      "title": "기준금리 연 3.25%로 인상...내년 초도 금리 오를까?",
+      "episode": "episode:9fd8a1c84ea821",
+      "quality": 0.92,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "사법·처분",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i160cdbeb",
+      "title": "응시생 688명 줄었는데 법규 만점자는 7배 ‘껑충’… 의사 국시 성적 들여다봤더니",
+      "episode": "episode:d08ce3986e6b24",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
         "입장·공방",
         "수사·대응"
       ],
       "gaps": [
-        "사법·처분"
+        "발단·의혹",
+        "사법·처분",
+        "파장·후속"
       ],
       "duplicate_candidates": 24,
-      "event_count": 7,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
-      "id": "i52002ca2",
-      "title": "[속보] “용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
-      "episode": "episode:42a56cd22c055b",
+      "id": "i9b58a3eb",
+      "title": "경찰 ‘AI 커닝 자수’ 세무 수석 구속영장 신청…“도주 우려”",
+      "episode": "episode:eabdd292299f84",
+      "quality": 0.84,
+      "stages": [
+        "사법·처분",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 28,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i68370801",
+      "title": "돈 미친듯이 버는데 신용등급 강등위기?…엔비디아 진짜 리스크는",
+      "episode": "episode:cf08462442686a",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "수사·대응",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 41,
+      "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i08e187f3",
+      "title": "“연명의료 중단, 임종기→말기 앞당겨야” 84%",
+      "episode": "episode:1cdbeb9fe28783",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 22,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i0dd2e1a8",
+      "title": "美 어린이에 스페이스X 주식 나눠준다는 머스크…“주당 13조원 될 수도, 팔지 마라”",
+      "episode": "episode:9ebdf8540941e2",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "gaps": [
+        "수사·대응",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic33f1781",
+      "title": "\"수시 6곳 모두 불합격, 이게 맞나요?…학폭 아들 둔 아버지 하소연 '논란'",
+      "episode": "episode:82350c9b5134d3",
       "quality": 0.76,
       "stages": [
         "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7472fb4e",
-      "title": "‘리트 만점자’ 숨진채 발견... 메모엔 “몸과 마음 지쳤다”",
-      "episode": "episode:43f66ea4b003f7",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "icc7073be",
-      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
-      "episode": "episode:b4571ab00be66b",
-      "quality": 0.66,
-      "stages": [
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 30,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ibfb65b25",
-      "title": "한 총리 \"작년 수능 시험지 보관하라\" 긴급 지시",
-      "episode": "episode:70917d4ab49bf4",
-      "quality": 0.84,
-      "stages": [
-        "수사·대응",
-        "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if68e1f2d",
-      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
-      "episode": "episode:87c2b2d986a387",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "수사·대응",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 29,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i32f6a682",
-      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
-      "episode": "episode:bb1f3458304a26",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3cea7471",
-      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
-      "episode": "episode:28b5802722ebe0",
-      "quality": 0.84,
-      "stages": [
-        "발단·의혹",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i14bfd775",
-      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
-      "episode": "episode:332016de20ed99",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
         "입장·공방"
       ],
       "gaps": [
         "발단·의혹",
+        "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "id0d27ff9",
-      "title": "장애 아들 앞 폭행… ‘김창민 감독 살해’ 피의자들 징역 12년·3년",
-      "episode": "episode:f616ea440abebf",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "사법·처분",
-        "입장·공방",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 39,
+      "duplicate_candidates": 20,
+      "event_count": 6,
       "evidence_rate": 1.0
     }
   ]
