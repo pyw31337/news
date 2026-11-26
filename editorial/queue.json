@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-26",
-  "generated_at": "2026-11-26T09:54:01+09:00",
+  "generated_at": "2026-11-26T10:22:33+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,113 @@
   },
   "candidates": [
     {
-      "issue_id": "i571af14b",
-      "title": "홈플러스 27일부터 전 점포 영업 임시 중단",
+      "issue_id": "i7ce9f3ca",
+      "title": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
       "category": "경제",
-      "rank": 8,
+      "rank": 2,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "젠슨 황 엔비디아 CEO의 복귀 효과가 하루 만에 소멸하며 코스피가 4700선 아래로 급락했다.",
+        "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
+        "\"이젠 뭘 사야 하나\" 3600조 증발…피할 곳도 사라진 코스피",
+        "[속보] 코스피 4745.10(▲47.59p, 1.01%) 개장, 원·달러 환율 1344.9원",
+        "하루 만에 끝나버린 ‘젠슨 황 복귀 효과’···반도체주 급락, 상승분 60% 반납"
+      ],
+      "sources": [
+        {
+          "press": "매일경제",
+          "title": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
+          "url": "https://n.news.naver.com/article/009/0005769004"
+        },
+        {
+          "press": "머니투데이",
+          "title": "\"이젠 뭘 사야 하나\" 3600조 증발…피할 곳도 사라진 코스피",
+          "url": "https://n.news.naver.com/article/008/0005446545"
+        },
+        {
+          "press": "MBN",
+          "title": "[속보] 코스피 4745.10(▲47.59p, 1.01%) 개장, 원·달러 환율 1344.9원",
+          "url": "https://n.news.naver.com/article/057/0001979924"
+        },
+        {
+          "press": "경향신문",
+          "title": "하루 만에 끝나버린 ‘젠슨 황 복귀 효과’···반도체주 급락, 상승분 60% 반납",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKNVRvNjk1OU5tUmtlU0N5TlZXaEZ3QkExZjJHS0xsSi1KM0xETGxFWE53Z1hITXlrWElTcXpyNmU3c0o3XzJXczRoOFhMVms0dG00ZmlZY2p4QdIBX0FVX3lxTE1ndVpfbF9YeXRBdU9nY0VVeERKM0JDelRsYUllTmduSE12MDBheXJ4LWdNTXRTc2VuVGtCQnBCUjd5ckJzaHh1eDF2YWM5N21EM2d4VWE1QURSc3dVb293?oc=5"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "젠슨 황 엔비디아 CEO의 복귀 효과가 하루 만에 소멸하며 코스피가 4700선 아래로 급락했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "[속보] 코스피 4745.10(▲47.59p, 1.01%) 개장, 원·달러 환율 1344.9원"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "폭락 이후 외국인 매수세가 유입되며 4800선 회복을 시도하는 등 시장이 다시 반등을 모색하고 있다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ie2f9cbba",
+      "title": "오늘 금통위, ‘금리 인상’ 유력…내년 ‘추가 긴축’도 주목",
+      "category": "경제",
+      "rank": 1,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -38,49 +141,154 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "홈플러스가 유동성 압박과 상품 매입 자금 부족으로 27일부터 67개 대형마트 전체 점포의 영업을 임시 중단한다.",
-        "한편 홈플러스는 상품 수급 차질에 따른 매출 감소가 장기화하면서 상품 매입 자금마저 부족해지자 이날 온라인 배송 서비스를 중단한 데 이어 27일부터 전국 67개 점포의 마트 부문 영업을 일시 중단한다.",
-        "앞서 홈플러스 경영진은 어제 내부 공지를 통해 \"최근 인수의향서가 접수됐다\"며, \"오는 27일부터 M&A가 마무리될 때까지 마트 부문 영업을 일시 중단한다\"고 밝혔습니다.",
-        "홈플러스, 27일부터 마트 전 점포 영업 중단…“상품 매입 자금 부족”",
-        "'기업회생' 홈플러스, 27일부터 영업 중단...\"상품 매입 자금 부족\""
+        "한국은행이 26일 올해 마지막 금융통화위원회가 열린다.",
+        "오늘 금통위, ‘금리 인상’ 유력…내년 ‘추가 긴축’도 주목",
+        "오늘 금통위, 기준금리 3%→3.25% 인상 무게…내년 추가 인상 신호 촉각",
+        "'붉은 넥타이' 신현송, 금통위 시작…기준금리 3.25% 인상 무게, 추가 인상 촉각",
+        "한은, 오늘 금통위…韓경제 '깜짝 성장'에 금리 연 3.25%로 인상 전망"
       ],
       "sources": [
         {
-          "press": "news1.kr",
-          "title": "휴업 앞둔 홈플러스 \"인수의향서 접수\"라는데…노조 \"확인 못해\"",
-          "url": "https://n.news.naver.com/mnews/article/421/0009310798?sid=101"
+          "press": "디지털타임스",
+          "title": "오늘 금통위, ‘금리 인상’ 유력…내년 ‘추가 긴축’도 주목",
+          "url": "https://n.news.naver.com/article/029/0003061219"
         },
         {
-          "press": "imnews.imbc.com",
-          "title": "홈플러스 \"인수의향서 접수\"‥노조 \"확인 안 돼\"",
-          "url": "https://n.news.naver.com/mnews/article/214/0001538163?sid=101"
+          "press": "뉴스1",
+          "title": "오늘 금통위, 기준금리 3%→3.25% 인상 무게…내년 추가 인상 신호 촉각",
+          "url": "https://n.news.naver.com/article/421/0009310640"
         },
         {
-          "press": "농민신문",
-          "title": "홈플러스, 27일부터 마트 전 점포 영업 중단…“상품 매입 자금 부족”",
-          "url": "https://n.news.naver.com/article/662/0000109325"
+          "press": "뉴스1",
+          "title": "'붉은 넥타이' 신현송, 금통위 시작…기준금리 3.25% 인상 무게, 추가 인상 촉각",
+          "url": "https://n.news.naver.com/article/421/0009310967"
         },
         {
-          "press": "이코노미스트",
-          "title": "'기업회생' 홈플러스, 27일부터 영업 중단...\"상품 매입 자금 부족\"",
-          "url": "https://n.news.naver.com/article/243/0000106288"
+          "press": "뉴시스",
+          "title": "한은, 오늘 금통위…韓경제 '깜짝 성장'에 금리 연 3.25%로 인상 전망",
+          "url": "https://n.news.naver.com/article/003/0014345719"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "홈플러스가 유동성 압박과 상품 매입 자금 부족으로 27일부터 67개 대형마트 전체 점포의 영업을 임시 중단한다."
+          "evidence": "한국은행이 26일 올해 마지막 금융통화위원회가 열린다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "경제계 \"수출 1조 달러 성과, 국내 투자·일자리로 이어갈 것\""
+          "evidence": "오늘 금통위, ‘금리 인상’ 유력…내년 ‘추가 긴축’도 주목"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "앞서 홈플러스 경영진은 어제 내부 공지를 통해 \"최근 인수의향서가 접수됐다\"며, \"오는 27일부터 M&A가 마무리될 때까지 마트 부문 영업을 일시 중단한다\"고 밝혔습니다."
+          "evidence": "오늘 금통위, 기준금리 3%→3.25% 인상 무게…내년 추가 인상 신호 촉각"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ic1a8b768",
+      "title": "가수 비, 920억에 산 강남 빌딩 가치가…5년 만에 '깜짝'",
+      "category": "경제",
+      "rank": 10,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "가수 겸 배우 비(본명 정지훈)가 5년 전 920억원에 매입한 서울 강남의 빌딩 가치가 1400억원을 넘어섰다는 분석이 나왔다.",
+        "가수 겸 배우 비(본명 정지훈)가 2021년 약 920억원에 매입한 서울 강남의 빌딩이 현재 1400억원 이상의 가치를 지닌 것으로 평가됐다.",
+        "5년 만에 건물 가치가 약 480억원 상승한 것으로, 신사동에 보유한 다른 건물까지...",
+        "가수 비, 대출받아 920억 강남 빌딩 사더니…5년 만에 ‘깜짝’",
+        "가수 겸 배우 비(정지훈)가 매입한 서울 강남구 신사동 건물이 높은 용적률을 확보해 주목 받고 있다."
+      ],
+      "sources": [
+        {
+          "press": "fnnews.com",
+          "title": "\"920억에 샀는데 지금은 1400억\"…비, 5년 만에 빌딩 가치 480억 상승",
+          "url": "https://n.news.naver.com/mnews/article/014/0005609912?sid=101"
+        },
+        {
+          "press": "헤럴드경제",
+          "title": "가수 비, 대출받아 920억 강남 빌딩 사더니…5년 만에 ‘깜짝’",
+          "url": "https://n.news.naver.com/article/016/0002728526"
+        },
+        {
+          "press": "newsen.com",
+          "title": "‘김태희♥’ 비 강남 건물 두 채 자산가치만 1550억, 바로 옆 건물주 정...",
+          "url": "https://m.entertain.naver.com/article/609/0001191464"
+        },
+        {
+          "press": "biz.heraldcorp.com",
+          "title": "가수 비, 대출받아 920억 강남 빌딩 사더니…5년 만에 ‘깜짝’",
+          "url": "https://n.news.naver.com/mnews/article/016/0002728526?sid=101"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "가수 겸 배우 비(본명 정지훈)가 5년 전 920억원에 매입한 서울 강남의 빌딩 가치가 1400억원을 넘어섰다는 분석이 나왔다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "5년 만에 건물 가치가 약 480억원 상승한 것으로, 신사동에 보유한 다른 건물까지..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "가수 겸 배우 비(본명 정지훈)가 2021년 약 920억원에 매입한 서울 강남의 빌딩이 현재 1400억원 이상의 가치를 지닌 것으로 평가됐다."
         },
         {
           "panel": 4,
@@ -123,215 +331,6 @@
         "numeric_or_specific_evidence": true,
         "sources": 4,
         "continuity_quality": 0.68,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i4ef3669b",
-      "title": "“삼성전자 망할 것 같아요?”…존리, 주가 반토막에도 ‘오히려 찬스’라는 이유가",
-      "category": "경제",
-      "rank": 5,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "삼성전자가 국내 증시의 급락으로 주가가 크게 하락했지만, 존리 존리의투자학교 대표는 단기적인 주가 하락을 투자 기회로 보고 장기적인 성장 가능성에 주목해야 한다고 강조했다.",
-        "“삼성전자 망할 것 같아요?”…존리, 주가 반토막에도 ‘오히려 찬스’라는 이유가",
-        "국내 대장주인 반도체주인 삼성전자와 SK하이닉스도 급락했다.",
-        "삼성전자는 장중 17만원 선까지 밀렸고...",
-        "영상에서 진행자는 존리 대표에게 자신의 투자 계좌가 반토막 났다며 대책을 물었다."
-      ],
-      "sources": [
-        {
-          "press": "서울경제",
-          "title": "“삼성전자 망할 것 같아요?”…존리, 주가 반토막에도 ‘오히려 찬스’라는 이유가",
-          "url": "https://n.news.naver.com/article/011/0004686186"
-        },
-        {
-          "press": "view.asiae.co.kr",
-          "title": "\"이러다 전 재산 날리겠네\" 억장 와르르…\"장투 맞아요?\" 존리의 답은",
-          "url": "https://n.news.naver.com/mnews/article/277/0005839225?sid=101"
-        },
-        {
-          "press": "fnnews.com",
-          "title": "\"삼성전자 믿었다 망했다\" 원성에…존리 \"1년 해놓고 장투? 도박한 거다...",
-          "url": "https://n.news.naver.com/mnews/article/014/0005600534?sid=101"
-        },
-        {
-          "press": "뉴시스",
-          "title": "삼성전자 0.7%·SK하이닉스 1.65%↑…프리마켓서 반등 '시동'",
-          "url": "https://n.news.naver.com/article/003/0014345805"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "삼성전자가 국내 증시의 급락으로 주가가 크게 하락했지만, 존리 존리의투자학교 대표는 단기적인 주가 하락을 투자 기회로 보고 장기적인 성장 가능성에 주목해야 한다고 강조했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "영상에서 진행자는 존리 대표에게 자신의 투자 계좌가 반토막 났다며 대책을 물었다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "삼성전자는 장중 17만원 선까지 밀렸고..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "iff2f5e48",
-      "title": "코스피, 장초반 2%대 상승…4,800선 탈환 시도(종합)",
-      "category": "경제",
-      "rank": 9,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "대만 24% 떨어질 때 한국 반토막…\"피난처가 없다\" 코스피 지하로 코스피가 사상 최고치를 찍은 지 5개월 만에 반토막이 났다.",
-        "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
-        "\"이젠 뭘 사야 하나\" 3600조 증발…피할 곳도 사라진 코스피",
-        "“외국인 이달에만 15조 팔았는데”…10조원대 증안펀드 확대되나",
-        "코스피, 장초반 1% 안팎 상승 4,700대…코스닥 2%대 강세(서울=연합뉴스) 한종찬 기자 = 전날 6% 넘게 급락했던 코스피 지수가 26일 장 초반 1% 안팎의 상승세를 보이고 있다."
-      ],
-      "sources": [
-        {
-          "press": "매일경제",
-          "title": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안",
-          "url": "https://n.news.naver.com/article/009/0005769004"
-        },
-        {
-          "press": "머니투데이",
-          "title": "\"이젠 뭘 사야 하나\" 3600조 증발…피할 곳도 사라진 코스피",
-          "url": "https://n.news.naver.com/article/008/0005446545"
-        },
-        {
-          "press": "매일경제",
-          "title": "“외국인 이달에만 15조 팔았는데”…10조원대 증안펀드 확대되나",
-          "url": "https://www.mk.co.kr/news/stock/12218903"
-        },
-        {
-          "press": "einfomax.co.kr",
-          "title": "코스피, 상승폭 확대에 한때 4,800선 회복도…외인 순매수",
-          "url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4446625"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "대만 24% 떨어질 때 한국 반토막…\"피난처가 없다\" 코스피 지하로 코스피가 사상 최고치를 찍은 지 5개월 만에 반토막이 났다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "코스피, 장초반 1% 안팎 상승 4,700대…코스닥 2%대 강세(서울=연합뉴스) 한종찬 기자 = 전날 6% 넘게 급락했던 코스피 지수가 26일 장 초반 1% 안팎의 상승세를 보이고 있다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "[단독] 박현주, 코스피 무너진날 “10조 증안펀드, 100조로 키우자” 제안"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.76,
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
