@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
-  "date": "2026-11-27",
-  "generated_at": "2026-11-27T00:52:57+09:00",
+  "date": "2026-11-19",
+  "generated_at": "2026-11-19T16:54:45+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,164 +27,60 @@
   },
   "candidates": [
     {
-      "issue_id": "icff91bb5",
-      "title": "기준금리 연 3.25%로 인상...내년 초도 금리 오를까?",
+      "issue_id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
       "category": "경제",
-      "rank": 2,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "한국은행 금융통화위원회는 반도체 수출 호조에 따른 경제성장률 전망치 상향과 여전한 물가 상승 압력에 대응해 올해 마지막 통화정책방향 회의에서 기준금리를 연 3.25%로 0.25%p 인상했다.",
-        "박태형 우리은행 TCE시그니처센터 PB지점장은 “한은이 기준금리를 또 인상할 가능성이 높고 미국 연방준비제도(Fed·연준) 역시 내년에 인상 기조를 이어갈 것으로 보인다”고 했다.",
-        "주담대는 고정형이 유리할 수...",
-        "◀ 앵커 ▶ 한국은행이 기준금리를 0.25%포인트 인상했습니다.",
-        "반도체 수출 호조로 인한 높은 성장세와 물가상승 압력 등을 고려해 선제적 조치를 내놓은 건데요."
-      ],
-      "sources": [
-        {
-          "press": "donga.com",
-          "title": "내년 주담대 금리 年 8%대로 뛸 듯… “고정금리가 유리” 조언",
-          "url": "https://n.news.naver.com/mnews/article/020/0003765535?sid=101"
-        },
-        {
-          "press": "imnews.imbc.com",
-          "title": "\"내년 성장률 4.1% 자신\"‥긴축 페달 밟은 한은",
-          "url": "https://n.news.naver.com/mnews/article/214/0001538354?sid=101"
-        },
-        {
-          "press": "YTN",
-          "title": "기준금리 연 3.25%로 인상...내년 초도 금리 오를까?",
-          "url": "https://n.news.naver.com/article/052/0002438667"
-        },
-        {
-          "press": "비즈워치",
-          "title": "한은, 기준금리 3.25%로 인상…'반도체 호황' 내년 성장률 4%대로",
-          "url": "https://n.news.naver.com/article/648/0000053004"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "한국은행 금융통화위원회는 반도체 수출 호조에 따른 경제성장률 전망치 상향과 여전한 물가 상승 압력에 대응해 올해 마지막 통화정책방향 회의에서 기준금리를 연 3.25%로 0.25%p 인상했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "박태형 우리은행 TCE시그니처센터 PB지점장은 “한은이 기준금리를 또 인상할 가능성이 높고 미국 연방준비제도(Fed·연준) 역시 내년에 인상 기조를 이어갈 것으로 보인다”고 했다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "◀ 앵커 ▶ 한국은행이 기준금리를 0.25%포인트 인상했습니다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "물가 우려에 선제 대응하기 위해 한국은행이 기준금리를 연 2.75%에서 3%로 연속 인상하며 긴축 속도를 높였던 이전의 정책 기조가 확인된다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "id43c8598",
-      "title": "삼성에 반도체 장기 계약 제안했다가…머스크도 진땀 뺀 이재용의 한마디",
-      "category": "경제",
-      "rank": 3,
+      "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
-        "AI(인공지능) 인프라 투자 확대 속 메모리 반도체 공급난이 심화하는 가운데 일론 머스크 테슬라 겸 스페이스X 최고경영자(CEO)가 이재용 삼성전자 회장에게 메모리 반도체를 확보하려고 파격적인 조건을 제시했지만 명확",
-        "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
-        "머스크, 삼성에 \"장기 구매\" 제안…이재용 \"무엇을 더 해줄 수 있나?\"",
-        "WSJ, 머스크·이재용 반도체 구매 협상 일화 소개 인공지능(AI) 인프라 투자 열풍으로 메모리 반도체 품귀 현상이 심화하면서 글로벌 기업들의 물량 확보 경쟁이 치열해지고 있다.",
-        "미국 월스트리트저널(WSJ)은 일론 머스크..."
+        "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\"",
+        "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다.",
+        "반면 같은 해 한국 영화의 중국 수출액은 1500만달러(약 200억원), 방송 콘텐츠는 700만달러(약 93억원)에...",
+        "대한민국이 세계에서 네 번째로 '수출 1조 달러 시대'를 연 데 대해 세대를 이어온 국민의 도전과 헌신이...",
+        "반세기 만에 수출 규모를 100배로 키운 한국 경제의 성장사를 되짚으며 수출의 성과가 국민의 삶을 나아지게 하는..."
       ],
       "sources": [
         {
-          "press": "경향신문",
-          "title": "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
-          "url": "https://n.news.naver.com/article/032/0003485367"
+          "press": "khan.co.kr",
+          "title": "“10년 만에 중국 빗장 열리나”···한한령 해제 기대 커지지만 K팝 공...",
+          "url": "https://n.news.naver.com/mnews/article/032/0003483787?sid=103"
         },
         {
-          "press": "뉴시스",
-          "title": "머스크, 삼성에 \"장기 구매\" 제안…이재용 \"무엇을 더 해줄 수 있나?\"",
-          "url": "https://n.news.naver.com/article/003/0014348327"
+          "press": "sisajournal.com",
+          "title": "李 대통령 \"수출 1조 달러 시대…이제는 '모두의 성장'으로\"",
+          "url": "https://n.news.naver.com/mnews/article/586/0000142653?sid=101"
         },
         {
-          "press": "biz.chosun.com",
-          "title": "머스크도 진땀 뺀 ‘메모리 쟁탈전’…이재용 “뭘 더 해줄 수 있느냐”",
-          "url": "https://n.news.naver.com/mnews/article/366/0001207646?sid=105"
+          "press": "SBS",
+          "title": "\"한국 대통령과 너무 달랐다\"…일본 총리 의전 어땠길래",
+          "url": "https://n.news.naver.com/article/055/0001404200"
         },
         {
-          "press": "이데일리",
-          "title": "\"'반도체 장기 구매할게' 머스크 제안에…이재용 '뭘 더 해줄 수 있나'\"",
-          "url": "https://n.news.naver.com/article/018/0006416281"
+          "press": "asiatime.co.kr",
+          "title": "수출 1조달러 시대…李대통령 ‘봉제·신발공장 선배 세대 덕분’",
+          "url": "https://www.asiatime.co.kr/article/20261119500437"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "AI(인공지능) 인프라 투자 확대 속 메모리 반도체 공급난이 심화하는 가운데 일론 머스크 테슬라 겸 스페이스X 최고경영자(CEO)가 이재용 삼성전자 회장에게 메모리 반도체를 확보하려고 파격적인 조건을 제시했지만 명확"
+          "evidence": "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\""
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "WSJ, 머스크·이재용 반도체 구매 협상 일화 소개 인공지능(AI) 인프라 투자 열풍으로 메모리 반도체 품귀 현상이 심화하면서 글로벌 기업들의 물량 확보 경쟁이 치열해지고 있다."
+          "evidence": "경제계 \"수출 1조 달러 성과, 국내 투자·일자리로 이어갈 것\""
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "월스트리트저널(WSJ)은 25일(현지시간) 메모리 반도체..."
+          "evidence": "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다."
         },
         {
           "panel": 4,
@@ -193,8 +89,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -226,19 +122,20 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.92,
+        "continuity_quality": 0.84,
         "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
+          "입장·공방",
+          "수사·대응",
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "i36038f26",
-      "title": "젠슨 황 복귀, ‘독’이었나…S&P, 엔비디아 신용등급 강등 검토",
-      "category": "경제",
-      "rank": 10,
+      "issue_id": "if68e1f2d",
+      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
+      "category": "사회",
+      "rank": 6,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -246,49 +143,150 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "유응준 전 엔비디아코리아 대표 “대체 불가능한 리더십… CEO 복귀로 성장 가속화 기대” 젠슨 황 엔비디아 최고경영자(CEO)의 후임은 젠슨 황이었다.",
-        "젠슨 황 엔비디아 최고경영자(CEO) 복귀와 관련해서도 \"인공지능(AI) 산업 자체를 꺾기보다",
-        "미국 정부 기조에 맞춰 끌고 가려는 흐름 속에서 시장의 작은 도미노가 커지는 국면은 일단 막아낸 셈\"이라며 \"의회 설명과 조사...",
-        "엔비디아가 젠슨 황 최고경영자(CEO)의 복귀 과정에서 불거진 지배 구조 문제와 수출 통제 위반 의혹 등으로 신용 등급 강등 경고를 받았다.",
-        "국제 신용평가사 스탠더드앤드푸어스(S&P)는 25일(현지 시각) 엔비디아의..."
+        "법학적성시험(LEET·리트) 만점과 서울대 치의학과 합격 이력을 두고 부정행위 의혹을 받는 이진우(32)씨가 과거 경찰관을 폭행해 벌금형을 선고받은 것으로 드러났다.",
+        "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
+        "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
+        "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
+        "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다"
       ],
       "sources": [
         {
-          "press": "newsis.com",
-          "title": "\"올해보다 편해진다\"…전문가가 짚은 내년 증시 반등 타이밍",
-          "url": "https://n.news.naver.com/mnews/article/003/0014348370?sid=101"
+          "press": "중앙일보",
+          "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
+          "url": "https://n.news.naver.com/article/025/0003566361"
         },
         {
-          "press": "chosun.com",
-          "title": "S&P, ‘젠슨 황 복귀’ 엔비디아 신용등급 강등 검토",
-          "url": "https://n.news.naver.com/mnews/article/023/0004011993?sid=105"
+          "press": "서울경제",
+          "title": "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
+          "url": "https://n.news.naver.com/article/011/0004683998"
         },
         {
-          "press": "dailian.co.kr",
-          "title": "\"엔비디아, 신용등급마저 흔들리나…美 S&P, 강등 검토\"",
-          "url": "https://n.news.naver.com/mnews/article/119/0003160041?sid=104"
+          "press": "세계일보",
+          "title": "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
+          "url": "https://n.news.naver.com/article/022/0004176505"
         },
         {
-          "press": "newsis.com",
-          "title": "급락장에 주식 팔아야 할…전문가 \"섣부른 손절은 금물\"",
-          "url": "https://n.news.naver.com/mnews/article/003/0014348359?sid=101"
+          "press": "동아일보",
+          "title": "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다",
+          "url": "https://n.news.naver.com/article/020/0003763620"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "유응준 전 엔비디아코리아 대표 “대체 불가능한 리더십… CEO 복귀로 성장 가속화 기대” 젠슨 황 엔비디아 최고경영자(CEO)의 후임은 젠슨 황이었다."
+          "evidence": "법학적성시험(LEET·리트) 만점과 서울대 치의학과 합격 이력을 두고 부정행위 의혹을 받는 이진우(32)씨가 과거 경찰관을 폭행해 벌금형을 선고받은 것으로 드러났다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "증시에서도 젠슨 황 엔비디아 최고경영자(CEO)의 기습적인 복귀 발표 이후 화요일과 수요일 연휴를 앞둔 시점에 하방 포지션 청산 움직임이 강하게 나타났다\"고 진단했다."
+          "evidence": "판결문에 따르면 해당 인물은 고의로 교통사고를 낸 뒤 합의금을 받아낸 혐의 등으로 2022년 9월 징역 6개월을..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "국제 신용평가사 스탠더드앤드푸어스(S&P)는 25일(현지 시각) 엔비디아의..."
+          "evidence": "법학적성시험(LEET·리트) 만점자로 알려진 이진우(32) 씨가 과거 고의 교통사고를 이용한 공갈 범죄와 경찰관..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ib0b88852",
+      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
+      "category": "IT",
+      "rank": 1,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다.",
+        "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
+        "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
+        "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
+        "흔적을 발견할 수 없었다."
+      ],
+      "sources": [
+        {
+          "press": "매일경제",
+          "title": "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
+          "url": "https://n.news.naver.com/article/009/0005766140"
+        },
+        {
+          "press": "한겨레",
+          "title": "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
+          "url": "https://n.news.naver.com/article/028/0002832987"
+        },
+        {
+          "press": "KBS",
+          "title": "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
+          "url": "https://n.news.naver.com/article/056/0012297227"
+        },
+        {
+          "press": "sentv.co.kr",
+          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
+          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "게임 속 풍경을 단순한 배경으로 활용하는 데 그치지 않고, 이용자가 새로운 장소를 발견하고 직접..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "‘리트 만점’ 이진우 모텔서 숨진 채 발견···“요즘 힘들다” 5줄 메모 남겨"
         },
         {
           "panel": 4,
@@ -332,7 +330,7 @@
         "sources": 4,
         "continuity_quality": 1.0,
         "continuity_gaps": [
-          "발단·의혹"
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
