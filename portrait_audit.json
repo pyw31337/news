@@ -2,14 +2,21 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 12,
+    "current_person_entities": 11,
     "approved": 8,
-    "withheld": 4,
+    "withheld": 3,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 0,
     "sanitized": 1
   },
   "current_entities": [
+    {
+      "name": "윤석열",
+      "status": "approved",
+      "url": "media/ent/bb/bbbc599cbde9d0d8.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/South%20Korea%20President%20Yoon%20Suk%20Yeol%20portrait.jpg?width=360",
+      "wiki_title": "윤석열"
+    },
     {
       "name": "한덕수",
       "status": "approved",
@@ -18,32 +25,18 @@
       "wiki_title": "한덕수"
     },
     {
-      "name": "윤석열",
-      "status": "approved",
-      "url": "media/ent/da/da37f2330225f1ef.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Lee%20Jae-myung%202025%20%28cropped%29.jpg?width=360",
-      "wiki_title": "이재명"
-    },
-    {
-      "name": "김계리",
-      "status": "no_portrait",
-      "url": "",
-      "source": "",
-      "wiki_title": "김계리"
-    },
-    {
-      "name": "나경원",
-      "status": "approved",
-      "url": "media/ent/1d/1d7270af80b536ed.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Na%20Kyung-won%202019.jpg?width=360",
-      "wiki_title": "나경원"
-    },
-    {
       "name": "신장식",
       "status": "approved",
       "url": "media/ent/dd/dd8d876243d14856.webp",
       "source": "https://commons.wikimedia.org/wiki/Special:FilePath/%EC%8B%A0%EC%9E%A5%EC%8B%9D.jpg?width=360",
       "wiki_title": "신장식"
+    },
+    {
+      "name": "조희대",
+      "status": "approved",
+      "url": "media/ent/de/deac27e956f0f484.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Jo%20Heede%20in%20his%2017th%20Chief%20Justice%20inauguration%20ceremony.png?width=360",
+      "wiki_title": "조희대"
     },
     {
       "name": "이재명",
@@ -57,21 +50,7 @@
       "status": "no_portrait",
       "url": "",
       "source": "",
-      "wiki_title": ""
-    },
-    {
-      "name": "황경선",
-      "status": "no_portrait",
-      "url": "",
-      "source": "",
-      "wiki_title": "황경선"
-    },
-    {
-      "name": "충주맨",
-      "status": "wiki_title_mismatch",
-      "url": "",
-      "source": "",
-      "wiki_title": "김선태 (1987년)"
+      "wiki_title": "친한파"
     },
     {
       "name": "우재준",
@@ -88,11 +67,25 @@
       "wiki_title": "한동훈"
     },
     {
+      "name": "황경선",
+      "status": "no_portrait",
+      "url": "",
+      "source": "",
+      "wiki_title": "황경선"
+    },
+    {
       "name": "강금실",
       "status": "approved",
       "url": "media/ent/36/36e73a023752a876.webp",
       "source": "https://commons.wikimedia.org/wiki/Special:FilePath/KumsilKang.JPG?width=360",
       "wiki_title": "강금실"
+    },
+    {
+      "name": "충주맨",
+      "status": "wiki_title_mismatch",
+      "url": "",
+      "source": "",
+      "wiki_title": "김선태 (1987년)"
     }
   ],
   "legacy_local_assets": [
