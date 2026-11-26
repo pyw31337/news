@@ -1,14 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 05:27:50",
+  "updated_at": "2026-11-26 05:45:24",
   "date": "2026-11-26",
   "total_issues": 10,
   "average_quality": 0.89,
   "issues": [
     {
-      "id": "i585b535d",
-      "title": "대법원, '한덕수 재판 위증' 윤석열 무죄 확정‥상고 기각",
-      "episode": "episode:3286497fb242a6",
+      "id": "ie7846be4",
+      "title": "윤석열 ‘계엄 국무회의 위증’ 무죄 확정",
+      "episode": "episode:6d6c6f4048de17",
       "quality": 0.92,
       "stages": [
         "수사·대응",
@@ -21,44 +21,26 @@
         "파장·후속"
       ],
       "duplicate_candidates": 30,
-      "event_count": 21,
+      "event_count": 19,
       "evidence_rate": 1.0
     },
     {
-      "id": "iba5a591e",
-      "title": "‘조희대 탄핵’에 “반대” 44%, “찬성” 34%···이 대통령 지지율은 떨어져 43%[NBS]",
-      "episode": "episode:008ceaf8bfcf3f",
-      "quality": 1.0,
+      "id": "ib7ddb15f",
+      "title": "李 지지율, 긍정 43%·부정 45%... 조희대 탄핵 추진 ‘반대’ 44% [NBS]",
+      "episode": "episode:d3b1fe81559edb",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
-        "파장·후속",
         "수사·대응",
         "입장·공방",
-        "사법·처분",
-        "발단·의혹"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 38,
-      "event_count": 93,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i827dec99",
-      "title": "수능 만점 최소 3명 나왔는데…“신원 공개 거부” 쉬쉬하는 이유",
-      "episode": "episode:3f8da2307e46fe",
-      "quality": 1.0,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "입장·공방",
-        "수사·대응",
-        "파장·후속"
+        "사법·처분"
       ],
       "gaps": [
-        "발단·의혹"
+        "발단·의혹",
+        "파장·후속"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 9,
+      "duplicate_candidates": 35,
+      "event_count": 40,
       "evidence_rate": 1.0
     },
     {
@@ -76,31 +58,69 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 31,
+      "duplicate_candidates": 30,
       "event_count": 14,
       "evidence_rate": 1.0
     },
     {
-      "id": "i51bb7812",
-      "title": "숨은 조력자 있었나…경찰, '리트 만점자' 집·영훈고 압수수색",
-      "episode": "episode:fd0204dd35851c",
+      "id": "i0a38d8c2",
+      "title": "“의심만 받는데 굳이?”… 수능 만점자 3명 모두 신원 공개 거부",
+      "episode": "episode:28d01ab623b90a",
       "quality": 1.0,
       "stages": [
-        "수사·대응",
         "사법·처분",
+        "일반 보도",
+        "발단·의혹",
+        "수사·대응",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 32,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id72eb335",
+      "title": "경찰, ‘리트 만점자’ 집·수능시험지 보관 고등학교 압수수색",
+      "episode": "episode:294c92c1f00f11",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
         "발단·의혹",
         "파장·후속",
         "입장·공방"
       ],
-      "gaps": [],
-      "duplicate_candidates": 35,
-      "event_count": 23,
+      "gaps": [
+        "사법·처분"
+      ],
+      "duplicate_candidates": 36,
+      "event_count": 24,
       "evidence_rate": 1.0
     },
     {
-      "id": "ie4c76cbe",
-      "title": "조국 “공공기관 떠난 서울·수도권 알짜 땅에 공공주택 짓자”",
-      "episode": "episode:6824a731dd48bd",
+      "id": "i9f5d8052",
+      "title": "\"美국방부, 젠슨 황 복귀시키려 엔비디아에 전시법 압박 검토\"",
+      "episode": "episode:0b7bf16a1ea54b",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "사법·처분",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 47,
+      "event_count": 18,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ieabec860",
+      "title": "[단독] “회사만 갔다, 사람은 서울에”…공공기관 이전 10년의 현실",
+      "episode": "episode:762763d8ba1751",
       "quality": 0.92,
       "stages": [
         "일반 보도",
@@ -112,8 +132,45 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 24,
+      "duplicate_candidates": 23,
       "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i58a0c44e",
+      "title": "의사-치과의사 국시 만점자도 최대 15배 늘었다",
+      "episode": "episode:f9b7971094ed3e",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 21,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i0bd387c0",
+      "title": "[현장] 크레인 전도로 이틀째 막힌 부평IC…통행 재개 앞뒀지만 책임 공방은 ‘제자리’",
+      "episode": "episode:2b7c095d3687b7",
+      "quality": 0.66,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 21,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
@@ -131,62 +188,8 @@
         "사법·처분",
         "파장·후속"
       ],
-      "duplicate_candidates": 20,
+      "duplicate_candidates": 19,
       "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "if58d8c51",
-      "title": "젠슨황 복귀일에 엔비디아 본사 방문한 머스크…친분·의리 과시",
-      "episode": "episode:602ba4da17678a",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 22,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ibfbd2259",
-      "title": "의료혁신 시민패널 84% \"연명의료 중단 가능시점 임종기→말기로\"",
-      "episode": "episode:f4e97be166a6e8",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 21,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i0bd387c0",
-      "title": "[현장] 크레인 전도로 이틀째 막힌 부평IC…통행 재개 앞뒀지만 책임 공방은 ‘제자리’",
-      "episode": "episode:03d5008ccf9dde",
-      "quality": 0.66,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 20,
-      "event_count": 3,
       "evidence_rate": 1.0
     }
   ]

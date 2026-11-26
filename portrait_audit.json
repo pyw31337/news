@@ -2,12 +2,12 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 9,
+    "current_person_entities": 8,
     "approved": 6,
-    "withheld": 3,
+    "withheld": 2,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 0,
-    "sanitized": 1
+    "sanitized": 0
   },
   "current_entities": [
     {
@@ -60,18 +60,11 @@
       "wiki_title": "친한파"
     },
     {
-      "name": "김태희",
+      "name": "조국",
       "status": "approved",
-      "url": "data/pol/photos/UM981293.webp",
+      "url": "data/pol/photos/T3E4932G.webp",
       "source": "",
-      "wiki_title": "김태희"
-    },
-    {
-      "name": "GDP",
-      "status": "wiki_title_mismatch",
-      "url": "",
-      "source": "",
-      "wiki_title": "국내총생산"
+      "wiki_title": "조국"
     }
   ],
   "legacy_local_assets": [
@@ -425,10 +418,5 @@
     }
   ],
   "entity_media_cache_issues": [],
-  "changes": [
-    {
-      "name": "GDP",
-      "reason": "wiki_title_mismatch"
-    }
-  ]
+  "changes": []
 }
