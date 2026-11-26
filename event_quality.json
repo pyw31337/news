@@ -1,20 +1,20 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 14:26:32",
+  "updated_at": "2026-11-26 14:53:50",
   "date": "2026-11-26",
   "total_issues": 10,
-  "average_quality": 0.8,
+  "average_quality": 0.85,
   "issues": [
     {
-      "id": "i71447f20",
-      "title": "李 대통령 “SNS에서 폭언·욕설하면 차단한다”",
-      "episode": "episode:cba44f5fa3b227",
+      "id": "i7123f678",
+      "title": "李 대통령 \"폭언, 욕설 이런 건 싫다. 그런 경우 차단한다\"",
+      "episode": "episode:61384162cd49a7",
       "quality": 0.92,
       "stages": [
+        "수사·대응",
         "일반 보도",
         "사법·처분",
-        "입장·공방",
-        "수사·대응"
+        "입장·공방"
       ],
       "gaps": [
         "발단·의혹",
@@ -22,6 +22,25 @@
       ],
       "duplicate_candidates": 27,
       "event_count": 16,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia6e36800",
+      "title": "\"나도 제명하려고 했냐\" 고성에 퇴장까지... '조작 징계' 논란에 아수라장 된 국힘 최고위",
+      "episode": "episode:be208c56676680",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "입장·공방",
+        "파장·후속",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "수사·대응"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 11,
       "evidence_rate": 1.0
     },
     {
@@ -39,14 +58,14 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 27,
+      "duplicate_candidates": 26,
       "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "i1d9b8e4f",
-      "title": "최태원 측 “9440억원 7일 내 지급”…노소영 측, 지급 조건·추가 소송 제한 반발",
-      "episode": "episode:8be391e9793928",
+      "id": "ice96f893",
+      "title": "“9440억 현금에 이자까지, 그 대신…” 최태원 제안에도 노소영 거절 이유",
+      "episode": "episode:d89132af5babfc",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -58,7 +77,7 @@
         "수사·대응"
       ],
       "duplicate_candidates": 38,
-      "event_count": 9,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
@@ -75,99 +94,45 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 32,
-      "event_count": 27,
+      "duplicate_candidates": 31,
+      "event_count": 25,
       "evidence_rate": 1.0
     },
     {
-      "id": "iae3f642a",
-      "title": "여학생 텀블러에 남학생이 몰래 소변…남학생은 학급교체, 여학생은 ‘자퇴’ [이슈플러스]",
-      "episode": "episode:63a0d9f6f2b244",
-      "quality": 0.38,
+      "id": "i7233a52b",
+      "title": "철도노조 ‘안전운행 투쟁’ 돌입…학교비정규직노조 총파업 예고",
+      "episode": "episode:dd554406ede6fc",
+      "quality": 0.84,
       "stages": [
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 25,
-      "event_count": 1,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7e94a238",
-      "title": "CJ올리브영, 업무시스템 해킹으로 임직원·고객 개인정보 유출",
-      "episode": "episode:19777a4dafcbeb",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
         "수사·대응",
-        "사법·처분",
+        "일반 보도",
         "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8368ce79",
-      "title": "\"주식으로 와이프 가방 사줬습니다\"…사진 보니 '눈물'",
-      "episode": "episode:e9b21d0d5d50b2",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
+        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 24,
+      "duplicate_candidates": 29,
       "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9e5c9f6f",
-      "title": "예비군 10만명에 연락 돌려…'심상찮다' 전쟁 대비 움직임 보이는 영국",
-      "episode": "episode:87e63e0ebdb9b5",
+      "id": "i29cdf020",
+      "title": "갑작스런 만점자 급증…\"의사·간호사 국시도 설마\"",
+      "episode": "episode:56dd51678a5bb9",
       "quality": 0.66,
       "stages": [
-        "파장·후속",
-        "일반 보도"
+        "일반 보도",
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "수사·대응"
+        "사법·처분"
       ],
-      "duplicate_candidates": 20,
+      "duplicate_candidates": 19,
       "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i12ed77da",
-      "title": "'100만 달러' 복권 당첨됐는데... 엿새 만에 ICE에 체포",
-      "episode": "episode:e024790caaad9a",
-      "quality": 0.84,
-      "stages": [
-        "사법·처분",
-        "일반 보도",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
@@ -185,8 +150,44 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 45,
-      "event_count": 18,
+      "duplicate_candidates": 42,
+      "event_count": 19,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i10234606",
+      "title": "2035 제주 탄소중립 비전 선포…“재생에너지 100% 달성”",
+      "episode": "episode:182b2f11b51f95",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 22,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i76ab5e3b",
+      "title": "서울대 수시 AI 커닝 차단 총력…'스마트 감독관'까지(종합)",
+      "episode": "episode:a122c11d14020c",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "입장·공방"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 8,
       "evidence_rate": 1.0
     }
   ]

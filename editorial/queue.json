@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-26",
-  "generated_at": "2026-11-26T23:26:33+09:00",
+  "generated_at": "2026-11-26T23:53:50+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,114 @@
   },
   "candidates": [
     {
-      "issue_id": "i1d9b8e4f",
-      "title": "최태원 측 “9440억원 7일 내 지급”…노소영 측, 지급 조건·추가 소송 제한 반발",
+      "issue_id": "i6ae63d1d",
+      "title": "\"이재용, '반도체 장기구매할게' 머스크에 '그럼 뭘 해줄건데'\"",
       "category": "경제",
       "rank": 3,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "WSJ, 메모리칩 품귀 집중 조명…머스크도 진땀뺀 일화 소개 글로벌 기업들, 삼전닉스 공장앞 진치고 상황점검…단골고깃집 생긴 외국 CEO도 인공지능(AI) 인프라 투자 붐으로 메모리 반도체가 극심한 공급난을 겪으면서",
+        "머스크, 삼성에 \"장기 구매\" 제안…이재용 \"무엇을 더 해줄 수 있나?\"",
+        "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
+        "WSJ, 머스크·이재용 반도체 구매 협상 일화 소개 인공지능(AI) 인프라 투자 열풍으로 메모리 반도체 품귀 현상이 심화하면서 글로벌 기업들의 물량 확보 경쟁이 치열해지고 있다.",
+        "미국 월스트리트저널(WSJ)은 일론 머스크..."
+      ],
+      "sources": [
+        {
+          "press": "뉴시스",
+          "title": "머스크, 삼성에 \"장기 구매\" 제안…이재용 \"무엇을 더 해줄 수 있나?\"",
+          "url": "https://n.news.naver.com/article/003/0014348327"
+        },
+        {
+          "press": "경향신문",
+          "title": "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
+          "url": "https://n.news.naver.com/article/032/0003485367"
+        },
+        {
+          "press": "biz.chosun.com",
+          "title": "머스크도 진땀 뺀 ‘메모리 쟁탈전’…이재용 “뭘 더 해줄 수 있느냐”",
+          "url": "https://n.news.naver.com/mnews/article/366/0001207646?sid=105"
+        },
+        {
+          "press": "daily.hankooki.com",
+          "title": "일론 머스크 \"반도체 삽니다\" 요구에 이재용 반문 \"뭘 더 해줄 수 있나\"",
+          "url": "https://daily.hankooki.com/news/articleView.html?idxno=1429588"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "WSJ, 메모리칩 품귀 집중 조명…머스크도 진땀뺀 일화 소개 글로벌 기업들, 삼전닉스 공장앞 진치고 상황점검…단골고깃집 생긴 외국 CEO도 인공지능(AI) 인프라 투자 붐으로 메모리 반도체가 극심한 공급난을 겪으면서"
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "WSJ, 머스크·이재용 반도체 구매 협상 일화 소개 인공지능(AI) 인프라 투자 열풍으로 메모리 반도체 품귀 현상이 심화하면서 글로벌 기업들의 물량 확보 경쟁이 치열해지고 있다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "25일(현지시간) 미국 월스트리트저널(WSJ)은..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ice96f893",
+      "title": "“9440억 현금에 이자까지, 그 대신…” 최태원 제안에도 노소영 거절 이유",
+      "category": "경제",
+      "rank": 4,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -132,165 +236,60 @@
       }
     },
     {
-      "issue_id": "i8368ce79",
-      "title": "\"주식으로 와이프 가방 사줬습니다\"…사진 보니 '눈물'",
+      "issue_id": "i36038f26",
+      "title": "젠슨 황 복귀, ‘독’이었나…S&P, 엔비디아 신용등급 강등 검토",
       "category": "경제",
-      "rank": 7,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "국내 증시의 변동성이 커지면서 투자 손실을 자조적으로 표현한 밈(meme·인터넷 유행 콘텐츠)이 온라인에 잇달아 올라오고 있다.",
-        "한 네티즌은 “개미들을 진심으로 걱정하는 마음이 느껴진다”고 댓글을 달았고, 또 다른 네티즌은 “주식 전문가까지 눈물을 보일 정도인데, 나는 피눈물이 난다”고 털어놓았다.",
-        "이날 코스피는 전날 황 CEO의 복귀로...",
-        "\"주식으로 와이프 가방 사줬습니다\"…사진 보니 '눈물'",
-        "<편집자주> “몇억 원을 날리면서 3~4일을 계속해서 엉엉 울었습니다.” 주식 전문가로 이름난 채상욱..."
-      ],
-      "sources": [
-        {
-          "press": "seoul.co.kr",
-          "title": "“힘든 시간, 잘 이겨내야…” 주식 생방송 도중 ‘울먹’, 해외서도 화...",
-          "url": "https://n.news.naver.com/mnews/article/081/0003703527?sid=101"
-        },
-        {
-          "press": "한국경제",
-          "title": "\"주식으로 와이프 가방 사줬습니다\"…사진 보니 '눈물'",
-          "url": "https://n.news.naver.com/article/015/0005358815"
-        },
-        {
-          "press": "sedaily.com",
-          "title": "생방송 중 차트 보다가 ‘울컥’한 주식 전문가…개미들 “나도 계좌 보...",
-          "url": "https://n.news.naver.com/mnews/article/011/0004686545?sid=101"
-        },
-        {
-          "press": "머니투데이",
-          "title": "차트 보다가 울컥…\"주가 붕괴\" 주식 전문가들 줄줄이 눈물",
-          "url": "https://n.news.naver.com/article/008/0005447025"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "국내 증시의 변동성이 커지면서 투자 손실을 자조적으로 표현한 밈(meme·인터넷 유행 콘텐츠)이 온라인에 잇달아 올라오고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "지난 25일 방송된 서울경제TV '김아현의 금빛 스탁'에서 김아현 전문가는 나스닥 하락세를 설명하던 중..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "<편집자주> “몇억 원을 날리면서 3~4일을 계속해서 엉엉 울었습니다.” 주식 전문가로 이름난 채상욱..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.76,
-        "continuity_gaps": [
-          "발단·의혹",
-          "수사·대응",
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i9e5c9f6f",
-      "title": "예비군 10만명에 연락 돌려…'심상찮다' 전쟁 대비 움직임 보이는 영국",
-      "category": "세계",
       "rank": 8,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
-        "영국 국방부가 냉전 이후 처음으로 전역 예비군 약 10만명에게 전시 소집 가능성에 대비해 연락처와 경력 정보를 갱신하라는 서한을 보냈다.",
-        "예비군 10만명 \"소집 대비하라\"…냉전 이후 처음 [글로벌 pick]",
-        "\"전시 동원 대비하라\" 예비군 10만명에 날아든 서한…英, 냉전 이후 처음",
-        "러시아발 안보 위협이 고조되는 가운데 영국이 전쟁 대비태세 강화에 나섰다.",
-        "냉전 이후 처음으로 전략 예비군 10만명에게 유사시 소집에 대비하라는 서한을 발송하는 한편 핵잠수함의 작전 역량을 강화하기 위해 대규모..."
+        "유응준 전 엔비디아코리아 대표 “대체 불가능한 리더십… CEO 복귀로 성장 가속화 기대” 젠슨 황 엔비디아 최고경영자(CEO)의 후임은 젠슨 황이었다.",
+        "젠슨 황 엔비디아 CEO가 사임 11일 만에 복귀하면서, 한 개인의 거취에 미국 경제 전체가 출렁이는 현상에 월가가 주목하고 있습니다.",
+        "젠슨 황의 이탈은 연준이 기준금리를 세 차례 올리는 것과 맞먹는 충격이라는...",
+        "하루 만에 끝나버린 ‘젠슨 황 복귀 효과’···반도체주 급락, 상승분 60% 반납",
+        "도널드 트럼프 미국 대통령이 중국 간첩 의혹에 휘말린 젠슨 황 엔비디아 CEO의 복귀를 위해 직접 나선 것을 두고 미국이 지켜온 자유시장경제의 원칙을 훼손했다는 비판이 제기되고 있다."
       ],
       "sources": [
         {
-          "press": "한국경제TV",
-          "title": "예비군 10만명 \"소집 대비하라\"…냉전 이후 처음 [글로벌 pick]",
-          "url": "https://n.news.naver.com/article/215/0001274124"
+          "press": "ytn.co.kr",
+          "title": "\"젠슨 황 이탈은 금리 3번 인상 충격\"...미국 경제의 민낯",
+          "url": "https://n.news.naver.com/mnews/article/052/0002438684?sid=104"
         },
         {
-          "press": "머니투데이",
-          "title": "\"전시 동원 대비하라\" 예비군 10만명에 날아든 서한…英, 냉전 이후 처음",
-          "url": "https://n.news.naver.com/article/008/0005447145"
+          "press": "경향신문",
+          "title": "하루 만에 끝나버린 ‘젠슨 황 복귀 효과’···반도체주 급락, 상승분 60% 반납",
+          "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKNVRvNjk1OU5tUmtlU0N5TlZXaEZ3QkExZjJHS0xsSi1KM0xETGxFWE53Z1hITXlrWElTcXpyNmU3c0o3XzJXczRoOFhMVms0dG00ZmlZY2p4QdIBX0FVX3lxTE1ndVpfbF9YeXRBdU9nY0VVeERKM0JDelRsYUllTmduSE12MDBheXJ4LWdNTXRTc2VuVGtCQnBCUjd5ckJzaHh1eDF2YWM5N21EM2d4VWE1QURSc3dVb293?oc=5"
         },
         {
-          "press": "newscj.com",
-          "title": "英, 예비군 10만명에 \"전쟁 시 소집 대비\"… 냉전 이후 처음",
-          "url": "https://www.newscj.com/news/articleView.html?idxno=3452502"
+          "press": "munhwa.com",
+          "title": "‘대통령이 기업 CEO까지 좌우?’…NYT, 젠슨 황 복귀에 흔들리는 ‘美...",
+          "url": "https://n.news.naver.com/mnews/article/021/0002835862?sid=104"
         },
         {
-          "press": "mt.co.kr",
-          "title": "\"전시 동원 대비하라\" 예비군 10만명에 날아든 서한…英, 냉전 이후 처음",
-          "url": "https://n.news.naver.com/mnews/article/008/0005447145?sid=104"
+          "press": "munhwa.com",
+          "title": "‘젠슨 황 스캔들’ 새 국면?…美정보당국, “앨리스황 불륜뒤 中에 정...",
+          "url": "https://n.news.naver.com/mnews/article/021/0002835864?sid=104"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "영국 국방부가 냉전 이후 처음으로 전역 예비군 약 10만명에게 전시 소집 가능성에 대비해 연락처와 경력 정보를 갱신하라는 서한을 보냈다."
+          "evidence": "유응준 전 엔비디아코리아 대표 “대체 불가능한 리더십… CEO 복귀로 성장 가속화 기대” 젠슨 황 엔비디아 최고경영자(CEO)의 후임은 젠슨 황이었다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "과천시, 화재·붕괴 대비 '2026년 재난대응 안전한국훈련' 실시"
+          "evidence": "젠슨 황의 이탈은 연준이 기준금리를 세 차례 올리는 것과 맞먹는 충격이라는..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "예비군 10만명 \"소집 대비하라\"…냉전 이후 처음 [글로벌 pick]"
+          "evidence": "젠슨 황 엔비디아 CEO가 사임 11일 만에 복귀하면서, 한 개인의 거취에 미국 경제 전체가 출렁이는 현상에 월가가 주목하고 있습니다."
         },
         {
           "panel": 4,
@@ -332,11 +331,9 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.66,
+        "continuity_quality": 1.0,
         "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방",
-          "수사·대응"
+          "발단·의혹"
         ],
         "no_generic_closing": true
       }
