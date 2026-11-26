@@ -63,57 +63,19 @@
  ],
  "bills": {
   "ages": [
-   "17",
-   "18",
-   "19",
-   "20",
-   "21",
    "22"
   ],
-  "lead_count": 186,
-  "co_count": 1171,
-  "passed": 48,
+  "lead_count": 75,
+  "co_count": 339,
+  "passed": 29,
   "by_result": {
-   "임기만료폐기": 92,
-   "대안반영폐기": 37,
-   "원안가결": 5,
-   "폐기": 1,
-   "계류": 44,
+   "계류": 45,
    "수정가결": 6,
-   "철회": 1
+   "철회": 1,
+   "원안가결": 3,
+   "대안반영폐기": 20
   },
   "by_month": {
-   "2020-07": 2,
-   "2020-08": 1,
-   "2020-09": 4,
-   "2020-10": 3,
-   "2020-12": 6,
-   "2021-01": 1,
-   "2021-02": 1,
-   "2021-03": 2,
-   "2021-04": 1,
-   "2021-05": 1,
-   "2021-06": 3,
-   "2021-07": 3,
-   "2021-09": 2,
-   "2021-10": 1,
-   "2022-01": 1,
-   "2022-02": 1,
-   "2022-03": 8,
-   "2022-04": 1,
-   "2022-08": 2,
-   "2022-09": 4,
-   "2022-11": 2,
-   "2022-12": 11,
-   "2023-01": 10,
-   "2023-02": 7,
-   "2023-03": 6,
-   "2023-04": 10,
-   "2023-05": 6,
-   "2023-06": 4,
-   "2023-07": 2,
-   "2023-08": 2,
-   "2023-09": 4,
    "2024-06": 7,
    "2024-07": 1,
    "2024-08": 6,
@@ -138,16 +100,28 @@
    "2026-06": 1,
    "2026-09": 3,
    "2026-10": 2,
-   "2026-11": 11
+   "2026-11": 12
   },
   "recent": [
+   {
+    "id": "PRC_2AF7545D9B9F42219E1B46793D46E1",
+    "no": "2223278",
+    "name": "초·중등교육법 일부개정법률안",
+    "date": "2026-11-26",
+    "age": 22,
+    "committee": null,
+    "result": "계류",
+    "proc_date": null,
+    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_2AF7545D9B9F42219E1B46793D46E1&ageFrom=22&ageTo=22",
+    "proposer": "김용민의원 등 10인"
+   },
    {
     "id": "PRC_5CAE06BB69A9435CBEAB70EF6D30E8",
     "no": "2223242",
     "name": "상가건물 임대차보호법 일부개정법률안",
     "date": "2026-11-25",
     "age": 22,
-    "committee": null,
+    "committee": "법제사법위원회",
     "result": "계류",
     "proc_date": null,
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_5CAE06BB69A9435CBEAB70EF6D30E8&ageFrom=22&ageTo=22",
@@ -159,7 +133,7 @@
     "name": "상법 일부개정법률안",
     "date": "2026-11-25",
     "age": 22,
-    "committee": null,
+    "committee": "법제사법위원회",
     "result": "계류",
     "proc_date": null,
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_F36C30AC80C14FCA824E69B5A78ABD&ageFrom=22&ageTo=22",
@@ -171,7 +145,7 @@
     "name": "가등기담보 등에 관한 법률 일부개정법률안",
     "date": "2026-11-25",
     "age": 22,
-    "committee": null,
+    "committee": "법제사법위원회",
     "result": "계류",
     "proc_date": null,
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_454311AF58754A21A6842C8ABE98BE&ageFrom=22&ageTo=22",
@@ -183,7 +157,7 @@
     "name": "상법시행법 일부개정법률안",
     "date": "2026-11-25",
     "age": 22,
-    "committee": null,
+    "committee": "법제사법위원회",
     "result": "계류",
     "proc_date": null,
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_20C83A9E73C34671A9F7FAD6715A44&ageFrom=22&ageTo=22",
@@ -195,7 +169,7 @@
     "name": "상업등기법 일부개정법률안",
     "date": "2026-11-25",
     "age": 22,
-    "committee": null,
+    "committee": "법제사법위원회",
     "result": "계류",
     "proc_date": null,
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_871C4F6671184B4482E9BA69CA3414&ageFrom=22&ageTo=22",
@@ -488,18 +462,6 @@
     "proc_date": "2026-02-27",
     "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_P2N5O1M1L0L3T1T7S5T6R0R4Q9Y3Y9&ageFrom=22&ageTo=22",
     "proposer": "김용민의원 등 12인"
-   },
-   {
-    "id": "PRC_Y2Z5X0X9W2X4V1V2D4C5C1A8B2Z6A3",
-    "no": "2213474",
-    "name": "법원조직법 일부개정법률안",
-    "date": "2025-10-02",
-    "age": 22,
-    "committee": "법제사법위원회",
-    "result": "대안반영폐기",
-    "proc_date": "2026-02-28",
-    "url": "http://likms.assembly.go.kr/bill/billDetail.do?billId=PRC_Y2Z5X0X9W2X4V1V2D4C5C1A8B2Z6A3&ageFrom=22&ageTo=22",
-    "proposer": "김용민의원 등 13인"
    }
   ],
   "source": {
@@ -854,7 +816,7 @@
  ],
  "incidents": {
   "method": "자동 분류(기사 제목 키워드) — 사실 확인 전 단계 포함, 유무죄를 뜻하지 않음",
-  "updated": "2026-11-24",
+  "updated": "2026-11-27",
   "items": [
    {
     "date": "2024-04-03",
@@ -874,7 +836,7 @@
  },
  "media": {
   "method": "통계(연결된 기사 헤드라인 단어 빈도)",
-  "updated": "2026-11-24",
+  "updated": "2026-11-27",
   "top_words": [
    [
     "민주",
