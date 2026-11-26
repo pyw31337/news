@@ -2,20 +2,62 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 6,
-    "approved": 5,
-    "withheld": 1,
+    "current_person_entities": 14,
+    "approved": 12,
+    "withheld": 2,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 0,
-    "sanitized": 0
+    "sanitized": 1
   },
   "current_entities": [
     {
-      "name": "이재명",
+      "name": "김계리",
+      "status": "no_portrait",
+      "url": "",
+      "source": "",
+      "wiki_title": "김계리"
+    },
+    {
+      "name": "윤석열",
       "status": "approved",
-      "url": "media/ent/da/da37f2330225f1ef.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Lee%20Jae-myung%202025%20%28cropped%29.jpg?width=360",
-      "wiki_title": "이재명"
+      "url": "media/ent/bb/bbbc599cbde9d0d8.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/South%20Korea%20President%20Yoon%20Suk%20Yeol%20portrait.jpg?width=360",
+      "wiki_title": "윤석열"
+    },
+    {
+      "name": "한덕수",
+      "status": "approved",
+      "url": "media/ent/76/76576ae35b263ce4.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Prime%20Minister%20of%20South%20Korea%20HAN%20Duck-soo%2020240516.jpg?width=360",
+      "wiki_title": "한덕수"
+    },
+    {
+      "name": "조희대",
+      "status": "approved",
+      "url": "media/ent/de/deac27e956f0f484.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Jo%20Heede%20in%20his%2017th%20Chief%20Justice%20inauguration%20ceremony.png?width=360",
+      "wiki_title": "조희대"
+    },
+    {
+      "name": "노소영",
+      "status": "approved",
+      "url": "media/ent/bb/bb56f145c9ff9de2.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Roh%20Soh-yeong%20at%20the%20Creative%20Commons%20Global%20Summit%20on%2015%20October%202015%20%28cropped%29.jpg?width=360",
+      "wiki_title": "노소영"
+    },
+    {
+      "name": "오세훈",
+      "status": "approved",
+      "url": "data/pol/photos/LB24097N.webp",
+      "source": "",
+      "wiki_title": "오세훈"
+    },
+    {
+      "name": "전두환",
+      "status": "approved",
+      "url": "media/ent/6c/6c81949187298159.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Chun%20Doo-hwan%20%28%EC%A0%84%EB%91%90%ED%99%98%29%20Presidential%20Portrait.jpg?width=360",
+      "wiki_title": "전두환"
     },
     {
       "name": "트럼프",
@@ -25,32 +67,46 @@
       "wiki_title": "도널드 트럼프"
     },
     {
-      "name": "나경원",
+      "name": "김대중",
       "status": "approved",
-      "url": "media/ent/1d/1d7270af80b536ed.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Na%20Kyung-won%202019.jpg?width=360",
-      "wiki_title": "나경원"
+      "url": "media/ent/ce/ce6c3bae4bef9c4e.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Kim%20Dae-jung%20presidential%20portrait.jpg?width=360",
+      "wiki_title": "김대중"
     },
     {
-      "name": "푸틴",
+      "name": "이재명",
       "status": "approved",
-      "url": "media/ent/fa/fab593ba1c73d1fa.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Putin%20V%202026%2008%2010.png?width=360",
-      "wiki_title": "블라디미르 푸틴"
+      "url": "media/ent/da/da37f2330225f1ef.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Lee%20Jae-myung%202025%20%28cropped%29.jpg?width=360",
+      "wiki_title": "이재명"
     },
     {
-      "name": "김민석",
-      "status": "no_portrait",
+      "name": "노무현",
+      "status": "approved",
+      "url": "media/ent/83/834771b6037c4fda.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Roh%20Moo-hyun%20presidential%20portrait.jpg?width=360",
+      "wiki_title": "노무현"
+    },
+    {
+      "name": "충주맨",
+      "status": "wiki_title_mismatch",
       "url": "",
       "source": "",
-      "wiki_title": ""
+      "wiki_title": "김선태 (1987년)"
     },
     {
-      "name": "추미애",
+      "name": "한동훈",
       "status": "approved",
-      "url": "data/pol/photos/URV1689Q.webp",
+      "url": "data/pol/photos/5DC8083A.webp",
       "source": "",
-      "wiki_title": "추미애"
+      "wiki_title": "한동훈"
+    },
+    {
+      "name": "강금실",
+      "status": "approved",
+      "url": "media/ent/36/36e73a023752a876.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/KumsilKang.JPG?width=360",
+      "wiki_title": "강금실"
     }
   ],
   "legacy_local_assets": [
@@ -404,5 +460,10 @@
     }
   ],
   "entity_media_cache_issues": [],
-  "changes": []
+  "changes": [
+    {
+      "name": "충주맨",
+      "reason": "wiki_title_mismatch"
+    }
+  ]
 }
