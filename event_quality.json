@@ -3,7 +3,7 @@
   "updated_at": "2026-11-26 17:52:12",
   "date": "2026-11-27",
   "total_issues": 10,
-  "average_quality": 0.86,
+  "average_quality": 0.89,
   "issues": [
     {
       "id": "i388e6933",
@@ -29,14 +29,32 @@
       "episode": "episode:011c6059658d54",
       "quality": 0.92,
       "stages": [
+        "일반 보도",
         "사법·처분",
-        "파장·후속",
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icc7073be",
+      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
+      "episode": "episode:b4571ab00be66b",
+      "quality": 0.66,
+      "stages": [
         "일반 보도",
         "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방"
+        "입장·공방",
+        "사법·처분"
       ],
       "duplicate_candidates": 28,
       "event_count": 16,
@@ -88,9 +106,7 @@
       "stages": [
         "사법·처분",
         "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
+        "파장·후속",
         "발단·의혹",
         "입장·공방"
       ],
@@ -99,21 +115,41 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i29cdf020",
-      "title": "갑작스런 만점자 급증…\"의사·간호사 국시도 설마\"",
-      "episode": "episode:40aad9df4bd4fb",
-      "quality": 0.76,
+      "id": "i32f6a682",
+      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
+      "episode": "episode:bb1f3458304a26",
+      "quality": 0.92,
       "stages": [
         "일반 보도",
+        "발단·의혹",
+        "입장·공방",
         "수사·대응"
       ],
       "gaps": [
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
+      "episode": "episode:28b5802722ebe0",
+      "quality": 0.84,
+      "stages": [
         "발단·의혹",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
         "입장·공방",
+        "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 19,
-      "event_count": 4,
+      "duplicate_candidates": 33,
+      "event_count": 17,
       "evidence_rate": 1.0
     },
     {
@@ -158,7 +194,10 @@
       "episode": "episode:182b2f11b51f95",
       "quality": 0.68,
       "stages": [
-        "일반 보도"
+        "일반 보도",
+        "수사·대응",
+        "파장·후속",
+        "입장·공방"
       ],
       "gaps": [
         "발단·의혹",
