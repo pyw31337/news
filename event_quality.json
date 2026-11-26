@@ -1,126 +1,70 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 14:53:50",
-  "date": "2026-11-26",
+  "updated_at": "2026-11-19 07:54:45",
+  "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.85,
+  "average_quality": 0.89,
   "issues": [
     {
-      "id": "i7123f678",
-      "title": "李 대통령 \"폭언, 욕설 이런 건 싫다. 그런 경우 차단한다\"",
-      "episode": "episode:61384162cd49a7",
-      "quality": 0.92,
+      "id": "ib0b88852",
+      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
+      "episode": "episode:6240c7cf2c14d8",
+      "quality": 1.0,
       "stages": [
-        "수사·대응",
         "일반 보도",
-        "사법·처분",
-        "입장·공방"
+        "파장·후속",
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
       ],
       "gaps": [
-        "발단·의혹",
-        "파장·후속"
+        "사법·처분"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 16,
+      "duplicate_candidates": 24,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia6e36800",
-      "title": "\"나도 제명하려고 했냐\" 고성에 퇴장까지... '조작 징계' 논란에 아수라장 된 국힘 최고위",
-      "episode": "episode:be208c56676680",
+      "id": "i52002ca2",
+      "title": "[속보] “용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
+      "episode": "episode:42a56cd22c055b",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 26,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i7472fb4e",
+      "title": "‘리트 만점자’ 숨진채 발견... 메모엔 “몸과 마음 지쳤다”",
+      "episode": "episode:43f66ea4b003f7",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "사법·처분",
-        "입장·공방",
-        "파장·후속",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "수사·대응"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 11,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i6ae63d1d",
-      "title": "\"이재용, '반도체 장기구매할게' 머스크에 '그럼 뭘 해줄건데'\"",
-      "episode": "episode:5807c8a6e1a31a",
-      "quality": 0.92,
-      "stages": [
-        "사법·처분",
-        "파장·후속",
-        "일반 보도",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ice96f893",
-      "title": "“9440억 현금에 이자까지, 그 대신…” 최태원 제안에도 노소영 거절 이유",
-      "episode": "episode:d89132af5babfc",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "사법·처분"
-      ],
-      "gaps": [
         "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 38,
+      "gaps": [
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
       "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i9b58a3eb",
-      "title": "경찰 ‘AI 커닝 자수’ 세무 수석 구속영장 신청…“도주 우려”",
-      "episode": "episode:046147d346e0d7",
-      "quality": 0.84,
-      "stages": [
-        "사법·처분",
-        "수사·대응",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 25,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7233a52b",
-      "title": "철도노조 ‘안전운행 투쟁’ 돌입…학교비정규직노조 총파업 예고",
-      "episode": "episode:dd554406ede6fc",
-      "quality": 0.84,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i29cdf020",
-      "title": "갑작스런 만점자 급증…\"의사·간호사 국시도 설마\"",
-      "episode": "episode:56dd51678a5bb9",
+      "id": "icc7073be",
+      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
+      "episode": "episode:b4571ab00be66b",
       "quality": 0.66,
       "stages": [
         "일반 보도",
@@ -131,14 +75,33 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 19,
+      "duplicate_candidates": 30,
       "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "i36038f26",
-      "title": "젠슨 황 복귀, ‘독’이었나…S&P, 엔비디아 신용등급 강등 검토",
-      "episode": "episode:2a22a79ddee6de",
+      "id": "ibfb65b25",
+      "title": "한 총리 \"작년 수능 시험지 보관하라\" 긴급 지시",
+      "episode": "episode:70917d4ab49bf4",
+      "quality": 0.84,
+      "stages": [
+        "수사·대응",
+        "파장·후속",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if68e1f2d",
+      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
+      "episode": "episode:87c2b2d986a387",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -168,44 +131,65 @@
         "사법·처분",
         "파장·후속"
       ],
-      "duplicate_candidates": 42,
-      "event_count": 19,
+      "duplicate_candidates": 27,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i10234606",
-      "title": "2035 제주 탄소중립 비전 선포…“재생에너지 100% 달성”",
-      "episode": "episode:182b2f11b51f95",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 22,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i76ab5e3b",
-      "title": "서울대 수시 AI 커닝 차단 총력…'스마트 감독관'까지(종합)",
-      "episode": "episode:a122c11d14020c",
+      "id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
+      "episode": "episode:28b5802722ebe0",
       "quality": 0.84,
       "stages": [
+        "발단·의혹",
         "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 33,
+      "event_count": 17,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i14bfd775",
+      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
+      "episode": "episode:332016de20ed99",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
         "파장·후속",
         "입장·공방"
       ],
       "gaps": [
         "발단·의혹",
-        "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 8,
+      "duplicate_candidates": 31,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id0d27ff9",
+      "title": "장애 아들 앞 폭행… ‘김창민 감독 살해’ 피의자들 징역 12년·3년",
+      "episode": "episode:f616ea440abebf",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "사법·처분",
+        "입장·공방",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 39,
       "evidence_rate": 1.0
     }
   ]
