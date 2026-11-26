@@ -1,33 +1,33 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 20:22:53",
+  "updated_at": "2026-11-26 20:55:32",
   "date": "2026-11-27",
   "total_issues": 10,
-  "average_quality": 0.86,
+  "average_quality": 0.83,
   "issues": [
     {
-      "id": "i585b535d",
-      "title": "대법원, '한덕수 재판 위증' 윤석열 무죄 확정‥상고 기각",
-      "episode": "episode:d565132a11a7dd",
+      "id": "i388e6933",
+      "title": "계엄 전 국무회의 소집 증언, 허위로 보기 어려워…윤석열 '한덕수 재판 위증' 무죄 확정",
+      "episode": "episode:3dd6a693d5fbef",
       "quality": 1.0,
       "stages": [
         "수사·대응",
         "사법·처분",
-        "발단·의혹",
         "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
+        "발단·의혹",
         "입장·공방"
       ],
+      "gaps": [
+        "파장·후속"
+      ],
       "duplicate_candidates": 30,
-      "event_count": 21,
+      "event_count": 22,
       "evidence_rate": 1.0
     },
     {
-      "id": "i92fd972e",
-      "title": "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
-      "episode": "episode:a184e8c40a7f36",
+      "id": "ib05d4775",
+      "title": "머스크, 삼성에 \"장기 구매\" 제안…이재용 \"무엇을 더 해줄 수 있나?\"",
+      "episode": "episode:06ca0464e192df",
       "quality": 0.92,
       "stages": [
         "사법·처분",
@@ -41,25 +41,6 @@
       ],
       "duplicate_candidates": 29,
       "event_count": 11,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "id3c5e0b4",
-      "title": "이 대통령 지지율 43%...대법원장 탄핵 추진 반대 44%",
-      "episode": "episode:eaa4f7e4c60c29",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "수사·대응",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 42,
-      "event_count": 100,
       "evidence_rate": 1.0
     },
     {
@@ -77,8 +58,27 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 30,
+      "duplicate_candidates": 29,
       "event_count": 17,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id3c5e0b4",
+      "title": "이 대통령 지지율 43%...대법원장 탄핵 추진 반대 44%",
+      "episode": "episode:eaa4f7e4c60c29",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "수사·대응",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 41,
+      "event_count": 101,
       "evidence_rate": 1.0
     },
     {
@@ -95,14 +95,14 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 33,
-      "event_count": 25,
+      "duplicate_candidates": 32,
+      "event_count": 24,
       "evidence_rate": 1.0
     },
     {
-      "id": "i29cdf020",
-      "title": "갑작스런 만점자 급증…\"의사·간호사 국시도 설마\"",
-      "episode": "episode:40aad9df4bd4fb",
+      "id": "i160cdbeb",
+      "title": "응시생 688명 줄었는데 법규 만점자는 7배 ‘껑충’… 의사 국시 성적 들여다봤더니",
+      "episode": "episode:7de5937312f419",
       "quality": 0.84,
       "stages": [
         "일반 보도",
@@ -115,13 +115,13 @@
         "파장·후속"
       ],
       "duplicate_candidates": 19,
-      "event_count": 5,
+      "event_count": 4,
       "evidence_rate": 1.0
     },
     {
-      "id": "ief7c1d87",
-      "title": "강유정 문체부 장관 후보자 “석 자 얼음 녹기 시작했다”···한한령 대응 최우선",
-      "episode": "episode:965dae0aeb4c3a",
+      "id": "ic96b90ae",
+      "title": "[바로이뉴스] 강유정 문체부 장관 후보자 첫 출근…\"한국 문화 중흥기 이어갈 것\"",
+      "episode": "episode:449d6f2566b3ac",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -133,25 +133,7 @@
         "수사·대응"
       ],
       "duplicate_candidates": 32,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "id1bc74fa",
-      "title": "'13억 복권 당첨' 기쁨도 잠시…일주일도 안 돼 체포된 남성 사연",
-      "episode": "episode:4be6d3a94ced3e",
-      "quality": 0.76,
-      "stages": [
-        "사법·처분",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 10,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
@@ -172,21 +154,38 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i64adf019",
-      "title": "[단독] 이진우 '리트' 본 이유 \"책 내려는데 마침 만점자 없길래\"",
-      "episode": "episode:b4d362a21af0ea",
-      "quality": 0.92,
+      "id": "i0a7324b7",
+      "title": "“육아휴직 하고 세무사 합격”…워킹맘 합격 후기에 발칵",
+      "episode": "episode:bb56717c3623df",
+      "quality": 0.76,
       "stages": [
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속",
-        "수사·대응"
+        "일반 보도",
+        "발단·의혹"
       ],
       "gaps": [
+        "입장·공방",
+        "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 37,
-      "event_count": 11,
+      "duplicate_candidates": 20,
+      "event_count": 5,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i10234606",
+      "title": "2035 제주 탄소중립 비전 선포…“재생에너지 100% 달성”",
+      "episode": "episode:182b2f11b51f95",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 21,
+      "event_count": 8,
       "evidence_rate": 1.0
     }
   ]
