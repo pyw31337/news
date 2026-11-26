@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
-  "date": "2026-11-26",
-  "generated_at": "2026-11-26T13:17:16+09:00",
+  "date": "2026-11-19",
+  "generated_at": "2026-11-19T16:54:45+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,271 +27,65 @@
   },
   "candidates": [
     {
-      "issue_id": "iabd75f48",
-      "title": "[속보] 한은, 기준금리 세 번째 인상…연 3.00→3.25%",
+      "issue_id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
       "category": "경제",
-      "rank": 2,
-      "priority_score": 45,
+      "rank": 8,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
-        "한국은행 금융통화위원회는 26일 올해 마지막 통화정책방향 회의를 열고 기준금리를 연 3.00%에서 3.25%로 0.25%포인트 인상했다.",
-        "한은, 기준금리 연 3→3.25% 인상…내년 성장률 2.9→4.1% 대폭 상향",
-        "[속보] 올해만 세 차례 금리 인상… 한은, 기준금리 연 3.25%로 올렸다",
-        "신 총재는 한은이 내년 경제성장률 전망치를 기존 2.9%에서 4.1%로 대폭 높인 데 대해서도 자신감을 드러냈다....",
-        "주가 하락에 따른 긴축 효과를 고려해 기준금리 추가 인상에 신중해야 한다는 지적과 관련해서는 민간..."
+        "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\"",
+        "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다.",
+        "반면 같은 해 한국 영화의 중국 수출액은 1500만달러(약 200억원), 방송 콘텐츠는 700만달러(약 93억원)에...",
+        "대한민국이 세계에서 네 번째로 '수출 1조 달러 시대'를 연 데 대해 세대를 이어온 국민의 도전과 헌신이...",
+        "반세기 만에 수출 규모를 100배로 키운 한국 경제의 성장사를 되짚으며 수출의 성과가 국민의 삶을 나아지게 하는..."
       ],
       "sources": [
         {
-          "press": "뉴스1",
-          "title": "한은, 기준금리 연 3→3.25% 인상…내년 성장률 2.9→4.1% 대폭 상향",
-          "url": "https://n.news.naver.com/article/421/0009311154"
+          "press": "khan.co.kr",
+          "title": "“10년 만에 중국 빗장 열리나”···한한령 해제 기대 커지지만 K팝 공...",
+          "url": "https://n.news.naver.com/mnews/article/032/0003483787?sid=103"
         },
         {
-          "press": "한국일보",
-          "title": "[속보] 올해만 세 차례 금리 인상… 한은, 기준금리 연 3.25%로 올렸다",
-          "url": "https://n.news.naver.com/article/469/0000967859"
+          "press": "sisajournal.com",
+          "title": "李 대통령 \"수출 1조 달러 시대…이제는 '모두의 성장'으로\"",
+          "url": "https://n.news.naver.com/mnews/article/586/0000142653?sid=101"
         },
         {
-          "press": "yna.co.kr",
-          "title": "신현송 \"반도체 올해 영업익 700조원…국민경제 파급 시간문제\"(종합)",
-          "url": "https://n.news.naver.com/mnews/article/001/0016465175?sid=101"
+          "press": "SBS",
+          "title": "\"한국 대통령과 너무 달랐다\"…일본 총리 의전 어땠길래",
+          "url": "https://n.news.naver.com/article/055/0001404200"
         },
         {
-          "press": "yna.co.kr",
-          "title": "신현송 \"내년 4.1% 성장 자신\"…인상 반대 2명에도 긴축 페달",
-          "url": "https://n.news.naver.com/mnews/article/001/0016465169?sid=101"
+          "press": "asiatime.co.kr",
+          "title": "수출 1조달러 시대…李대통령 ‘봉제·신발공장 선배 세대 덕분’",
+          "url": "https://www.asiatime.co.kr/article/20261119500437"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "한국은행 금융통화위원회는 26일 올해 마지막 통화정책방향 회의를 열고 기준금리를 연 3.00%에서 3.25%로 0.25%포인트 인상했다."
+          "evidence": "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\""
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "한은, 기준금리 연 3→3.25% 인상…내년 성장률 2.9→4.1% 대폭 상향"
+          "evidence": "경제계 \"수출 1조 달러 성과, 국내 투자·일자리로 이어갈 것\""
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "[속보] 올해만 세 차례 금리 인상… 한은, 기준금리 연 3.25%로 올렸다"
+          "evidence": "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다."
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "최종적으로 금리 인상이 단행되었으며, 향후 추가 인상 가능성을 열어두는 등 긴축 기조가 지속될 것임을 시사했다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i76de5f25",
-      "title": "물가 폭주에도 “호남 팹” 관세 얹고 “10% 더” [트럼프 스톡커]",
-      "category": "경제",
-      "rank": 7,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "도널드 트럼프 미국 행정부가 이재명 정부의 호남권 반도체 클러스터 조성 사업을 한국의 '과잉생산' 근거로 지목하며 관세 부과를 압박하고 있다.",
-        "美, 관세 근거로 ‘호남 반도체’ 들었다…“약속 어기면 25%” 압박",
-        "'호남 반도체 클러스터' 문제 삼은 美… '과잉생산 관세' 최대 25%로 올릴 수도",
-        "트럼프, 선거 참패에도 관세 폭주…中에 “40%까지 인상” 압박",
-        "‘과잉생산’을 명목으로 각국에 대한 관세율을 더 높인 것인데, 한국을 향해서는 호남권 반도체 클러스터 조성 계획 등을 그 구실로 삼았다."
-      ],
-      "sources": [
-        {
-          "press": "중앙일보",
-          "title": "美, 관세 근거로 ‘호남 반도체’ 들었다…“약속 어기면 25%” 압박",
-          "url": "https://n.news.naver.com/article/025/0003568075"
-        },
-        {
-          "press": "한국일보",
-          "title": "'호남 반도체 클러스터' 문제 삼은 美… '과잉생산 관세' 최대 25%로 올릴 수도",
-          "url": "https://n.news.naver.com/article/469/0000967840"
-        },
-        {
-          "press": "헤럴드경제",
-          "title": "트럼프, 선거 참패에도 관세 폭주…中에 “40%까지 인상” 압박",
-          "url": "https://v.daum.net/v/20261126113525490"
-        },
-        {
-          "press": "sedaily.com",
-          "title": "물가 폭주에도 “호남 팹” 관세 얹고 “10% 더” [트럼프 스톡커]",
-          "url": "https://n.news.naver.com/mnews/article/011/0004686437?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "도널드 트럼프 미국 행정부가 이재명 정부의 호남권 반도체 클러스터 조성 사업을 한국의 '과잉생산' 근거로 지목하며 관세 부과를 압박하고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "트럼프, 선거 참패에도 관세 폭주…中에 “40%까지 인상” 압박"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "美, 관세 근거로 ‘호남 반도체’ 들었다…“약속 어기면 25%” 압박"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "미국이 호남 반도체 프로젝트를 과잉생산 관세의 핵심 타깃으로 삼았음이 구체화되면서, 15% 관세 유지와 25% 인상 압박 사이에서 한국 정부의 대응이 시험대에 올랐다는 해석이 나온다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "industry",
-        "direction": "공장 동선·안전 표지·가동 보드를 이용, 캐릭터 행동을 컷마다 바꿀 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "발단·의혹"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i49762876",
-      "title": "젠슨 황 복귀 후폭풍에 AI 빚투 공포까지… 엔비디아·빅테크 신용 위험 ‘사상 최고’",
-      "category": "경제",
-      "rank": 9,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "젠슨 황은 사임 닷새 만에 복귀 의사를 밝혔으나 이사회는 냉담한 반응을 보였고, 이후 트럼프 정부가 국방물자생산법까지 검토하며 그의 복귀를 지원했다.",
-        "젠슨 황 복귀 후폭풍에 AI 빚투 공포까지… 엔비디아·빅테크 신용 위험 ‘사상 최고’",
-        "중국 자체 기술로 만든 아이언에 이틀 전 발표된 젠슨 황 엔비디아 최고경영자(CEO) 경영 복귀에 관한 생각을 묻자, 아이언은 “그건 아주 큰 소식”이라고 호응하며 이렇게 말했다.",
-        "“젠슨 황의 복귀는 인공지능(AI)...",
-        "미국 국방부가 젠슨 황 엔비디아 최고경영자(CEO)의 복직을 위해 비상 사태 때 발동되던 국방물자생산법(DPA)..."
-      ],
-      "sources": [
-        {
-          "press": "조선비즈",
-          "title": "젠슨 황 복귀 후폭풍에 AI 빚투 공포까지… 엔비디아·빅테크 신용 위험 ‘사상 최고’",
-          "url": "https://n.news.naver.com/article/366/0001207428"
-        },
-        {
-          "press": "biz.chosun.com",
-          "title": "[르포] 中 로봇에 ‘젠슨 황 복귀’ 묻자 “AI 발전할 것”… 샤오펑 AI...",
-          "url": "https://n.news.naver.com/mnews/article/366/0001207496?sid=104"
-        },
-        {
-          "press": "newsis.com",
-          "title": "\"美국방부, 이사회에 젠슨 황 복귀 압박하려 '전시법' 발동 검토\"",
-          "url": "https://n.news.naver.com/mnews/article/003/0014346936?sid=104"
-        },
-        {
-          "press": "joseilbo.com",
-          "title": "\"중국 배후 증거 없다\"…美당국, 젠슨 황 불륜 의회 전달한 입장",
-          "url": "https://n.news.naver.com/mnews/article/123/0002394888?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "젠슨 황은 사임 닷새 만에 복귀 의사를 밝혔으나 이사회는 냉담한 반응을 보였고, 이후 트럼프 정부가 국방물자생산법까지 검토하며 그의 복귀를 지원했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "23일 황 CEO의 복귀 이전 엔비디아 이사회를 압박하는 수단으로 DPA를 어떻게 활용할 수 있을지 논의했다...."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "젠슨 황은 이달 CEO직에서 물러났다가 도널드 트럼프 미국 대통령이 엔비디아 이사회에 복귀를 압박한 끝에 지난 23일 복귀했다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "트럼프 정부의 적극적인 개입과 신용등급 강등 경고가 맞물리며, 기업 내부 문제를 넘어 국가적·경제적 차원의 리스크로 확대된 것으로 볼 수 있다."
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
@@ -328,9 +122,215 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
+          "입장·공방",
+          "수사·대응",
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "if68e1f2d",
+      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
+      "category": "사회",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "법학적성시험(LEET·리트) 만점과 서울대 치의학과 합격 이력을 두고 부정행위 의혹을 받는 이진우(32)씨가 과거 경찰관을 폭행해 벌금형을 선고받은 것으로 드러났다.",
+        "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
+        "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
+        "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
+        "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다"
+      ],
+      "sources": [
+        {
+          "press": "중앙일보",
+          "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
+          "url": "https://n.news.naver.com/article/025/0003566361"
+        },
+        {
+          "press": "서울경제",
+          "title": "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
+          "url": "https://n.news.naver.com/article/011/0004683998"
+        },
+        {
+          "press": "세계일보",
+          "title": "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
+          "url": "https://n.news.naver.com/article/022/0004176505"
+        },
+        {
+          "press": "동아일보",
+          "title": "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다",
+          "url": "https://n.news.naver.com/article/020/0003763620"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "법학적성시험(LEET·리트) 만점과 서울대 치의학과 합격 이력을 두고 부정행위 의혹을 받는 이진우(32)씨가 과거 경찰관을 폭행해 벌금형을 선고받은 것으로 드러났다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "판결문에 따르면 해당 인물은 고의로 교통사고를 낸 뒤 합의금을 받아낸 혐의 등으로 2022년 9월 징역 6개월을..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "법학적성시험(LEET·리트) 만점자로 알려진 이진우(32) 씨가 과거 고의 교통사고를 이용한 공갈 범죄와 경찰관..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 1.0,
+        "continuity_gaps": [],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ib0b88852",
+      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
+      "category": "IT",
+      "rank": 1,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다.",
+        "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
+        "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
+        "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
+        "흔적을 발견할 수 없었다."
+      ],
+      "sources": [
+        {
+          "press": "매일경제",
+          "title": "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
+          "url": "https://n.news.naver.com/article/009/0005766140"
+        },
+        {
+          "press": "한겨레",
+          "title": "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
+          "url": "https://n.news.naver.com/article/028/0002832987"
+        },
+        {
+          "press": "KBS",
+          "title": "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
+          "url": "https://n.news.naver.com/article/056/0012297227"
+        },
+        {
+          "press": "sentv.co.kr",
+          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
+          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "게임 속 풍경을 단순한 배경으로 활용하는 데 그치지 않고, 이용자가 새로운 장소를 발견하고 직접..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "‘리트 만점’ 이진우 모텔서 숨진 채 발견···“요즘 힘들다” 5줄 메모 남겨"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
         "continuity_quality": 1.0,
         "continuity_gaps": [
-          "발단·의혹"
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
