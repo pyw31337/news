@@ -1,16 +1,54 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 10:00:07",
+  "updated_at": "2026-11-26 10:26:35",
   "date": "2026-11-26",
   "total_issues": 10,
-  "average_quality": 0.77,
+  "average_quality": 0.81,
   "issues": [
     {
-      "id": "i4416d3e0",
-      "title": "여학생 텀블러에 몰래 소변 눴는데…피해자는 '자퇴'",
-      "episode": "episode:3724f2c9ac65a5",
-      "quality": 0.38,
+      "id": "i1d9b8e4f",
+      "title": "최태원 측 “9440억원 7일 내 지급”…노소영 측, 지급 조건·추가 소송 제한 반발",
+      "episode": "episode:c7e90c00184279",
+      "quality": 0.76,
       "stages": [
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 41,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icd6cc7fe",
+      "title": "조희대 탄핵, 반대 44%-찬성 34%…李지지율 1%p 내린 43%",
+      "episode": "episode:f0ba32caa598ab",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방",
+        "사법·처분",
+        "발단·의혹",
+        "파장·후속"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 38,
+      "event_count": 38,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ie6dd8c4e",
+      "title": "기준금리 3.75%까지 점 찍은 '매파 한은'…4%대 성장 자신감",
+      "episode": "episode:e09415d64d2cc8",
+      "quality": 0.84,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
         "사법·처분"
       ],
       "gaps": [
@@ -19,106 +57,50 @@
         "수사·대응"
       ],
       "duplicate_candidates": 26,
-      "event_count": 1,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ifaef42a6",
-      "title": "“조희대 탄핵 찬성” 34%, “반대” 44% [NBS]",
-      "episode": "episode:02cb801369f90d",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "입장·공방",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 36,
-      "event_count": 37,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i54c898ff",
-      "title": "의사 국시 법규 만점자 7배로…복지부, 10년치 시험 결과 들여다본다",
-      "episode": "episode:eeab861532e368",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "발단·의혹",
-        "수사·대응"
-      ],
-      "gaps": [
-        "입장·공방",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 5,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "iaba3910a",
-      "title": "[속보]인천 남동산단 PVC 공장 화재, 1명 숨져…불은 4시간 만에 진화",
-      "episode": "episode:d916b5b12fbbb7",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "발단·의혹",
-        "사법·처분",
-        "입장·공방"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 34,
       "event_count": 21,
       "evidence_rate": 1.0
     },
     {
-      "id": "i5752eb01",
-      "title": "“엄마, 홈플러스 문화센터 또 가면 안 돼?”",
-      "episode": "episode:2a486c40035a78",
-      "quality": 0.68,
+      "id": "id584e928",
+      "title": "윤석열 '한덕수 재판서 위증' 혐의 무죄 확정",
+      "episode": "episode:fd39b948483063",
+      "quality": 1.0,
       "stages": [
+        "사법·처분",
+        "수사·대응",
+        "일반 보도",
+        "입장·공방",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "파장·후속"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 30,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "idc887be6",
+      "title": "[속보] 의사 국가시험 일부 과목 만점자 4년새 7배로",
+      "episode": "episode:e653376488cf2a",
+      "quality": 0.66,
+      "stages": [
+        "수사·대응",
         "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
-        "수사·대응"
+        "사법·처분"
       ],
-      "duplicate_candidates": 8,
-      "event_count": 5,
+      "duplicate_candidates": 25,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "i36038f26",
-      "title": "젠슨 황 복귀, ‘독’이었나…S&P, 엔비디아 신용등급 강등 검토",
-      "episode": "episode:d241f215357de1",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 46,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i90adf0f3",
-      "title": "한은, 기준금리 3.25%로 인상…'반도체 호황' 내년 성장률 4%대로",
-      "episode": "episode:b6b02904717af6",
+      "id": "if5935107",
+      "title": "주택 종부세 73만명에 고지, 19만명↑…1인당 평균세액 200만원",
+      "episode": "episode:78c767099d09b3",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -129,59 +111,81 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 22,
-      "event_count": 12,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i5ee58132",
-      "title": "주택 종부세 대상 73만 명 육박...평균 세액 1인당 200만 원",
-      "episode": "episode:b194b3b5e9e5da",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 14,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ibf8c38b9",
-      "title": "제주에서 2030년 신차 100% 전기차로…2035년 재생 100% 달성",
-      "episode": "episode:3760e5ba84bcc9",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 25,
+      "duplicate_candidates": 24,
       "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "iccee0fe8",
-      "title": "임종 임박해서 결정하는 연명의료… 시민 84% \"말기로 앞당겨야\"",
-      "episode": "episode:9a63ee0e2011d8",
-      "quality": 0.68,
+      "id": "i9b32fd91",
+      "title": "강유정 문체부 장관 후보, 2년 전 인터뷰에 담긴 문화계 현안 해법은?",
+      "episode": "episode:06b529aa48fcb3",
+      "quality": 0.76,
       "stages": [
-        "일반 보도"
+        "일반 보도",
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 25,
-      "event_count": 6,
+      "duplicate_candidates": 35,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia1536761",
+      "title": "홈플러스 전체 인수 희망자 등장…회생까진 ‘갈 길 멀다’",
+      "episode": "episode:6afe585bf0b2b0",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 17,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if1e9d390",
+      "title": "여학생 텀블러에 소변 본 남학생…가해자는 학급교체, 피해자는 '자퇴'",
+      "episode": "episode:97e02b88f48fcc",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia73a8c0e",
+      "title": "머스크 \"美 아동에게 스페이스X 주식 2주씩 기부\"…24조원 규모",
+      "episode": "episode:fa1ccfa48be868",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 20,
+      "event_count": 14,
       "evidence_rate": 1.0
     }
   ]
