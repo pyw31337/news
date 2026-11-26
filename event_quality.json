@@ -1,27 +1,33 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 03:22:57",
+  "updated_at": "2026-11-26 03:56:17",
   "date": "2026-11-26",
   "total_issues": 10,
-  "average_quality": 0.89,
+  "average_quality": 0.9,
   "issues": [
     {
-      "id": "i6e7ade71",
-      "title": "대법원, 윤석열 ‘한덕수 재판 위증’ 무죄 확정",
-      "episode": "episode:89e1941cc5c7e6",
-      "quality": 0.92,
+      "id": "ibc5a3f76",
+      "title": "대법 “윤석열, 기억에 반하는 허위 진술로 볼 수 없다”…‘한덕수 내란 재판 위증’ 무죄 확정",
+      "episode": "episode:a0cb881b3b0e8e",
+      "quality": 1.0,
       "stages": [
+        "사법·처분",
+        "수사·대응",
         "일반 보도",
-        "파장·후속"
+        "파장·후속",
+        "발단·의혹"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 22,
+      "gaps": [
+        "입장·공방"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 35,
       "evidence_rate": 1.0
     },
     {
-      "id": "i73cfaaa2",
-      "title": "한은 금통위, 기준금리 3.25%로 인상…성장률 전망 크게 올려",
-      "episode": "episode:f2c6883fbde197",
+      "id": "if4ea89e2",
+      "title": "[속보] 올해만 세 차례 금리 인상… 한은, 기준금리 연 3.25%로 올렸다",
+      "episode": "episode:9a5bc0617b2624",
       "quality": 0.84,
       "stages": [
         "파장·후속",
@@ -33,128 +39,125 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 21,
+      "duplicate_candidates": 27,
+      "event_count": 20,
       "evidence_rate": 1.0
     },
     {
       "id": "id72eb335",
       "title": "경찰, ‘리트 만점자’ 집·수능시험지 보관 고등학교 압수수색",
       "episode": "episode:ed995af6952e87",
-      "quality": 0.84,
+      "quality": 0.92,
       "stages": [
         "수사·대응",
+        "발단·의혹",
         "파장·후속",
-        "발단·의혹"
+        "입장·공방"
       ],
       "gaps": [
-        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 44,
-      "event_count": 22,
+      "duplicate_candidates": 38,
+      "event_count": 21,
       "evidence_rate": 1.0
     },
     {
-      "id": "ieb089532",
-      "title": "김민석 \"오세훈, 서울시정이 대권 준비 징검다리? 자성해야\"",
-      "episode": "episode:0d556d2d946f3f",
+      "id": "i589ee1a9",
+      "title": "김민석, 오세훈에 \"국무회의는 대선 징검다리 아냐\" 직격(종합)",
+      "episode": "episode:e687fe89903f82",
       "quality": 1.0,
       "stages": [
-        "일반 보도",
-        "파장·후속",
         "수사·대응",
+        "일반 보도",
         "입장·공방",
+        "파장·후속",
         "사법·처분"
       ],
       "gaps": [
         "발단·의혹"
       ],
       "duplicate_candidates": 32,
-      "event_count": 15,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8601df04",
-      "title": "수능 만점자 최소 3명 나왔는데… 올해는 모두 ‘신원 비공개’",
-      "episode": "episode:3f3a06c0a01def",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i089765ee",
-      "title": "\"애 엄마는 안 된다더니\"…75년 만에 뒤집힌 미스 유니버스의 금기",
-      "episode": "episode:31d1dd0fe0d7b3",
-      "quality": 0.84,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "입장·공방",
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 28,
-      "event_count": 6,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ieabec860",
-      "title": "[단독] “회사만 갔다, 사람은 서울에”…공공기관 이전 10년의 현실",
-      "episode": "episode:1c684060bd5c96",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "gaps": [
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 30,
       "event_count": 11,
       "evidence_rate": 1.0
     },
     {
-      "id": "i14bfd775",
-      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
-      "episode": "episode:332016de20ed99",
-      "quality": 0.92,
+      "id": "i827dec99",
+      "title": "수능 만점 최소 3명 나왔는데…“신원 공개 거부” 쉬쉬하는 이유",
+      "episode": "episode:3f8da2307e46fe",
+      "quality": 1.0,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "파장·후속",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib107e4a0",
+      "title": "\"75년 역사상 처음\"…7살 딸 둔 엄마 '미스 유니버스' 왕관 썼다",
+      "episode": "episode:a3c04725e677e9",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
-        "수사·대응",
-        "파장·후속",
-        "입장·공방"
+        "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
+        "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 23,
+      "duplicate_candidates": 29,
       "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i8387c37e",
-      "title": "젠슨 황 복귀시키려 전시동원법까지 검토한 미 국방부",
-      "episode": "episode:6ec446a83ffffd",
+      "id": "i0a7324b7",
+      "title": "“육아휴직 하고 세무사 합격”…워킹맘 합격 후기에 발칵",
+      "episode": "episode:a9f9cd1c7ba04b",
+      "quality": 0.76,
+      "stages": [
+        "수사·대응",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 28,
+      "event_count": 4,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id33737a6",
+      "title": "가수 비, 대출받아 920억 강남 빌딩 사더니…5년 만에 ‘깜짝’",
+      "episode": "episode:e4a33920f781b5",
+      "quality": 0.84,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 22,
+      "event_count": 10,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i59a3ffb7",
+      "title": "美, 관세 근거로 ‘호남 반도체’ 들었다…“약속 어기면 25%” 압박",
+      "episode": "episode:b8af341c126532",
       "quality": 1.0,
       "stages": [
         "일반 보도",
@@ -166,26 +169,27 @@
       "gaps": [
         "발단·의혹"
       ],
-      "duplicate_candidates": 43,
-      "event_count": 23,
+      "duplicate_candidates": 20,
+      "event_count": 31,
       "evidence_rate": 1.0
     },
     {
-      "id": "ic1a8b768",
-      "title": "가수 비, 920억에 산 강남 빌딩 가치가…5년 만에 '깜짝'",
-      "episode": "episode:0dc5d31cbd143e",
+      "id": "i7db56e38",
+      "title": "의료데이터 활용 문턱 낮춘다... 가명처리 심의 간소화·AI 활용 기준 마련",
+      "episode": "episode:b12a66ee16eba2",
       "quality": 0.84,
       "stages": [
-        "파장·후속",
         "일반 보도",
-        "수사·대응"
+        "수사·대응",
+        "발단·의혹"
       ],
       "gaps": [
-        "발단·의혹",
+        "입장·공방",
+        "사법·처분",
         "파장·후속"
       ],
-      "duplicate_candidates": 23,
-      "event_count": 10,
+      "duplicate_candidates": 25,
+      "event_count": 9,
       "evidence_rate": 1.0
     }
   ]
