@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
-  "date": "2026-11-19",
-  "generated_at": "2026-11-19T16:54:45+09:00",
+  "date": "2026-11-26",
+  "generated_at": "2026-11-26T23:26:33+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,9 +27,219 @@
   },
   "candidates": [
     {
-      "issue_id": "i3cea7471",
-      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
+      "issue_id": "i1d9b8e4f",
+      "title": "최태원 측 “9440억원 7일 내 지급”…노소영 측, 지급 조건·추가 소송 제한 반발",
       "category": "경제",
+      "rank": 3,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "최태원 SK그룹 회장과 노소영 아트센터 나비 관장 사이의 재산분할금 9440억원 지급 문제에서 최 회장 측은 일주일 이내 전액 지급과 지연이자 부담을 제안했습니다.",
+        "최태원 측 “9440억원 7일 내 지급”…노소영 측, 지급 조건·추가 소송 제한 반발",
+        "“9440억 현금에 이자까지, 그 대신…” 최태원 제안에도 노소영 거절 이유",
+        "인더스트리뉴스 문기수 기자 최태원 SK그룹 회장이 노소영 아트센터 나비 관장에게 재산분할금 9440억 원을 일주일 내 전액 지급하겠다는 파격적인 화해 조건을 제시하며 9년여간 이어진 분쟁의 조기 종결을 시도하고...",
+        "최태원 SK그룹 회장이 노소영 아트센터 나비 관장에게 재산분할금 9천440억을 일주일 내에 지급하고 늦어지면 지연이자를 부담하겠다는 의사를 표했지만 노 관장 측이 반대한 것으로 알려졌습니다."
+      ],
+      "sources": [
+        {
+          "press": "조선비즈",
+          "title": "최태원 측 “9440억원 7일 내 지급”…노소영 측, 지급 조건·추가 소송 제한 반발",
+          "url": "https://n.news.naver.com/article/366/0001207625"
+        },
+        {
+          "press": "매일경제",
+          "title": "“9440억 현금에 이자까지, 그 대신…” 최태원 제안에도 노소영 거절 이유",
+          "url": "https://n.news.naver.com/article/009/0005769734"
+        },
+        {
+          "press": "industrynews.co.kr",
+          "title": "최태원 \"7일 내 9440억 전액 지급\" 승부수…노소영 \"상고 취하가 먼저\" ...",
+          "url": "https://www.industrynews.co.kr/news/articleView.html?idxno=90309"
+        },
+        {
+          "press": "yonhapnewstv.co.kr",
+          "title": "최태원 \"7일내 전액 지급\" 제안에 노소영 '반대'",
+          "url": "https://n.news.naver.com/mnews/article/422/0000930325?sid=102"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "최태원 SK그룹 회장과 노소영 아트센터 나비 관장 사이의 재산분할금 9440억원 지급 문제에서 최 회장 측은 일주일 이내 전액 지급과 지연이자 부담을 제안했습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "최태원 '화해 확정 후 7일내 9440억 지급' 제안…노소영 측 \"판결에 없던 지급 유예\""
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "최태원 측 “9440억원 7일 내 지급”…노소영 측, 지급 조건·추가 소송 제한 반발"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.76,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i8368ce79",
+      "title": "\"주식으로 와이프 가방 사줬습니다\"…사진 보니 '눈물'",
+      "category": "경제",
+      "rank": 7,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "국내 증시의 변동성이 커지면서 투자 손실을 자조적으로 표현한 밈(meme·인터넷 유행 콘텐츠)이 온라인에 잇달아 올라오고 있다.",
+        "한 네티즌은 “개미들을 진심으로 걱정하는 마음이 느껴진다”고 댓글을 달았고, 또 다른 네티즌은 “주식 전문가까지 눈물을 보일 정도인데, 나는 피눈물이 난다”고 털어놓았다.",
+        "이날 코스피는 전날 황 CEO의 복귀로...",
+        "\"주식으로 와이프 가방 사줬습니다\"…사진 보니 '눈물'",
+        "<편집자주> “몇억 원을 날리면서 3~4일을 계속해서 엉엉 울었습니다.” 주식 전문가로 이름난 채상욱..."
+      ],
+      "sources": [
+        {
+          "press": "seoul.co.kr",
+          "title": "“힘든 시간, 잘 이겨내야…” 주식 생방송 도중 ‘울먹’, 해외서도 화...",
+          "url": "https://n.news.naver.com/mnews/article/081/0003703527?sid=101"
+        },
+        {
+          "press": "한국경제",
+          "title": "\"주식으로 와이프 가방 사줬습니다\"…사진 보니 '눈물'",
+          "url": "https://n.news.naver.com/article/015/0005358815"
+        },
+        {
+          "press": "sedaily.com",
+          "title": "생방송 중 차트 보다가 ‘울컥’한 주식 전문가…개미들 “나도 계좌 보...",
+          "url": "https://n.news.naver.com/mnews/article/011/0004686545?sid=101"
+        },
+        {
+          "press": "머니투데이",
+          "title": "차트 보다가 울컥…\"주가 붕괴\" 주식 전문가들 줄줄이 눈물",
+          "url": "https://n.news.naver.com/article/008/0005447025"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "국내 증시의 변동성이 커지면서 투자 손실을 자조적으로 표현한 밈(meme·인터넷 유행 콘텐츠)이 온라인에 잇달아 올라오고 있다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "지난 25일 방송된 서울경제TV '김아현의 금빛 스탁'에서 김아현 전문가는 나스닥 하락세를 설명하던 중..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "<편집자주> “몇억 원을 날리면서 3~4일을 계속해서 엉엉 울었습니다.” 주식 전문가로 이름난 채상욱..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.76,
+        "continuity_gaps": [
+          "발단·의혹",
+          "수사·대응",
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i9e5c9f6f",
+      "title": "예비군 10만명에 연락 돌려…'심상찮다' 전쟁 대비 움직임 보이는 영국",
+      "category": "세계",
       "rank": 8,
       "priority_score": 37,
       "production_types": [
@@ -38,49 +248,49 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\"",
-        "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다.",
-        "반면 같은 해 한국 영화의 중국 수출액은 1500만달러(약 200억원), 방송 콘텐츠는 700만달러(약 93억원)에...",
-        "대한민국이 세계에서 네 번째로 '수출 1조 달러 시대'를 연 데 대해 세대를 이어온 국민의 도전과 헌신이...",
-        "반세기 만에 수출 규모를 100배로 키운 한국 경제의 성장사를 되짚으며 수출의 성과가 국민의 삶을 나아지게 하는..."
+        "영국 국방부가 냉전 이후 처음으로 전역 예비군 약 10만명에게 전시 소집 가능성에 대비해 연락처와 경력 정보를 갱신하라는 서한을 보냈다.",
+        "예비군 10만명 \"소집 대비하라\"…냉전 이후 처음 [글로벌 pick]",
+        "\"전시 동원 대비하라\" 예비군 10만명에 날아든 서한…英, 냉전 이후 처음",
+        "러시아발 안보 위협이 고조되는 가운데 영국이 전쟁 대비태세 강화에 나섰다.",
+        "냉전 이후 처음으로 전략 예비군 10만명에게 유사시 소집에 대비하라는 서한을 발송하는 한편 핵잠수함의 작전 역량을 강화하기 위해 대규모..."
       ],
       "sources": [
         {
-          "press": "khan.co.kr",
-          "title": "“10년 만에 중국 빗장 열리나”···한한령 해제 기대 커지지만 K팝 공...",
-          "url": "https://n.news.naver.com/mnews/article/032/0003483787?sid=103"
+          "press": "한국경제TV",
+          "title": "예비군 10만명 \"소집 대비하라\"…냉전 이후 처음 [글로벌 pick]",
+          "url": "https://n.news.naver.com/article/215/0001274124"
         },
         {
-          "press": "sisajournal.com",
-          "title": "李 대통령 \"수출 1조 달러 시대…이제는 '모두의 성장'으로\"",
-          "url": "https://n.news.naver.com/mnews/article/586/0000142653?sid=101"
+          "press": "머니투데이",
+          "title": "\"전시 동원 대비하라\" 예비군 10만명에 날아든 서한…英, 냉전 이후 처음",
+          "url": "https://n.news.naver.com/article/008/0005447145"
         },
         {
-          "press": "SBS",
-          "title": "\"한국 대통령과 너무 달랐다\"…일본 총리 의전 어땠길래",
-          "url": "https://n.news.naver.com/article/055/0001404200"
+          "press": "newscj.com",
+          "title": "英, 예비군 10만명에 \"전쟁 시 소집 대비\"… 냉전 이후 처음",
+          "url": "https://www.newscj.com/news/articleView.html?idxno=3452502"
         },
         {
-          "press": "asiatime.co.kr",
-          "title": "수출 1조달러 시대…李대통령 ‘봉제·신발공장 선배 세대 덕분’",
-          "url": "https://www.asiatime.co.kr/article/20261119500437"
+          "press": "mt.co.kr",
+          "title": "\"전시 동원 대비하라\" 예비군 10만명에 날아든 서한…英, 냉전 이후 처음",
+          "url": "https://n.news.naver.com/mnews/article/008/0005447145?sid=104"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\""
+          "evidence": "영국 국방부가 냉전 이후 처음으로 전역 예비군 약 10만명에게 전시 소집 가능성에 대비해 연락처와 경력 정보를 갱신하라는 서한을 보냈다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "경제계 \"수출 1조 달러 성과, 국내 투자·일자리로 이어갈 것\""
+          "evidence": "과천시, 화재·붕괴 대비 '2026년 재난대응 안전한국훈련' 실시"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다."
+          "evidence": "예비군 10만명 \"소집 대비하라\"…냉전 이후 처음 [글로벌 pick]"
         },
         {
           "panel": 4,
@@ -89,8 +299,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -122,215 +332,11 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
+        "continuity_quality": 0.66,
         "continuity_gaps": [
+          "발단·의혹",
           "입장·공방",
-          "수사·대응",
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "if68e1f2d",
-      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
-      "category": "사회",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "법학적성시험(LEET·리트) 만점과 서울대 치의학과 합격 이력을 두고 부정행위 의혹을 받는 이진우(32)씨가 과거 경찰관을 폭행해 벌금형을 선고받은 것으로 드러났다.",
-        "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-        "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
-        "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
-        "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다"
-      ],
-      "sources": [
-        {
-          "press": "중앙일보",
-          "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-          "url": "https://n.news.naver.com/article/025/0003566361"
-        },
-        {
-          "press": "서울경제",
-          "title": "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
-          "url": "https://n.news.naver.com/article/011/0004683998"
-        },
-        {
-          "press": "세계일보",
-          "title": "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
-          "url": "https://n.news.naver.com/article/022/0004176505"
-        },
-        {
-          "press": "동아일보",
-          "title": "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다",
-          "url": "https://n.news.naver.com/article/020/0003763620"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "법학적성시험(LEET·리트) 만점과 서울대 치의학과 합격 이력을 두고 부정행위 의혹을 받는 이진우(32)씨가 과거 경찰관을 폭행해 벌금형을 선고받은 것으로 드러났다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "판결문에 따르면 해당 인물은 고의로 교통사고를 낸 뒤 합의금을 받아낸 혐의 등으로 2022년 9월 징역 6개월을..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "법학적성시험(LEET·리트) 만점자로 알려진 이진우(32) 씨가 과거 고의 교통사고를 이용한 공갈 범죄와 경찰관..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ib0b88852",
-      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
-      "category": "IT",
-      "rank": 1,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다.",
-        "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
-        "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
-        "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
-        "흔적을 발견할 수 없었다."
-      ],
-      "sources": [
-        {
-          "press": "매일경제",
-          "title": "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
-          "url": "https://n.news.naver.com/article/009/0005766140"
-        },
-        {
-          "press": "한겨레",
-          "title": "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
-          "url": "https://n.news.naver.com/article/028/0002832987"
-        },
-        {
-          "press": "KBS",
-          "title": "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
-          "url": "https://n.news.naver.com/article/056/0012297227"
-        },
-        {
-          "press": "sentv.co.kr",
-          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
-          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "게임 속 풍경을 단순한 배경으로 활용하는 데 그치지 않고, 이용자가 새로운 장소를 발견하고 직접..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "‘리트 만점’ 이진우 모텔서 숨진 채 발견···“요즘 힘들다” 5줄 메모 남겨"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "사법·처분"
+          "수사·대응"
         ],
         "no_generic_closing": true
       }
