@@ -2,27 +2,27 @@
   "schema": 1,
   "policy": "Only provenance-verified political, Wikimedia, and archived entity portraits may render. Legacy filename-only images are retired.",
   "summary": {
-    "current_person_entities": 10,
-    "approved": 6,
-    "withheld": 4,
+    "current_person_entities": 6,
+    "approved": 5,
+    "withheld": 1,
     "legacy_local_retired": 58,
     "entity_media_cache_issues": 0,
-    "sanitized": 1
+    "sanitized": 0
   },
   "current_entities": [
     {
-      "name": "신장식",
+      "name": "이재명",
       "status": "approved",
-      "url": "media/ent/dd/dd8d876243d14856.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/%EC%8B%A0%EC%9E%A5%EC%8B%9D.jpg?width=360",
-      "wiki_title": "신장식"
+      "url": "media/ent/da/da37f2330225f1ef.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/President%20Lee%20Jae-myung%202025%20%28cropped%29.jpg?width=360",
+      "wiki_title": "이재명"
     },
     {
       "name": "우재준",
       "status": "approved",
-      "url": "data/pol/photos/8UC4779G.webp",
-      "source": "",
-      "wiki_title": "우재준"
+      "url": "media/ent/1d/1d7270af80b536ed.webp",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Na%20Kyung-won%202019.jpg?width=360",
+      "wiki_title": "나경원"
     },
     {
       "name": "노소영",
@@ -60,25 +60,11 @@
       "wiki_title": ""
     },
     {
-      "name": "김계리",
-      "status": "no_portrait",
-      "url": "",
-      "source": "",
-      "wiki_title": "김계리"
-    },
-    {
-      "name": "충주맨",
-      "status": "wiki_title_mismatch",
-      "url": "",
-      "source": "",
-      "wiki_title": "김선태 (1987년)"
-    },
-    {
-      "name": "한덕수",
+      "name": "추미애",
       "status": "approved",
-      "url": "media/ent/76/76576ae35b263ce4.webp",
-      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Prime%20Minister%20of%20South%20Korea%20HAN%20Duck-soo%2020240516.jpg?width=360",
-      "wiki_title": "한덕수"
+      "url": "data/pol/photos/URV1689Q.webp",
+      "source": "",
+      "wiki_title": "추미애"
     }
   ],
   "legacy_local_assets": [
@@ -432,10 +418,5 @@
     }
   ],
   "entity_media_cache_issues": [],
-  "changes": [
-    {
-      "name": "충주맨",
-      "reason": "wiki_title_mismatch"
-    }
-  ]
+  "changes": []
 }
