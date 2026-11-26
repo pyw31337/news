@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
-  "date": "2026-11-19",
-  "generated_at": "2026-11-19T16:54:45+09:00",
+  "date": "2026-11-27",
+  "generated_at": "2026-11-27T08:56:24+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,114 @@
   },
   "candidates": [
     {
-      "issue_id": "i3cea7471",
-      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
+      "issue_id": "ic4d9992b",
+      "title": "이재용 \"뭘 더 해줄 수 있냐\"…머스크 진땀 빼게 한 한마디",
       "category": "경제",
-      "rank": 8,
+      "rank": 1,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "인공지능(AI) 인프라 투자 열풍으로 메모리 반도체 공급난과 품귀 현상이 심화하면서 글로벌 기업들이 한국산 반도체 확보에 사활을 걸고 있다.",
+        "머스크 “반도체 장기구매할게” 이재용 “그럼 뭐 해줄건데?”…메모리 품귀 전쟁에 삼성 ‘방긋’",
+        "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
+        "“이재용, ‘반도체 장기구매할게’ 머스크에 ‘다들 그 정도는...뭘 더 해줄건데?’”",
+        "“그래서 뭘 더해 줄 건데?”…머스크도 진땀 빼게 한 이재용의 한마디"
+      ],
+      "sources": [
+        {
+          "press": "서울신문",
+          "title": "머스크 “반도체 장기구매할게” 이재용 “그럼 뭐 해줄건데?”…메모리 품귀 전쟁에 삼성 ‘방긋’",
+          "url": "https://n.news.naver.com/article/081/0003703750"
+        },
+        {
+          "press": "경향신문",
+          "title": "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
+          "url": "https://n.news.naver.com/article/032/0003485367"
+        },
+        {
+          "press": "서울경제",
+          "title": "“이재용, ‘반도체 장기구매할게’ 머스크에 ‘다들 그 정도는...뭘 더 해줄건데?’”",
+          "url": "https://n.news.naver.com/article/011/0004686663"
+        },
+        {
+          "press": "전자신문",
+          "title": "“그래서 뭘 더해 줄 건데?”…머스크도 진땀 빼게 한 이재용의 한마디",
+          "url": "https://n.news.naver.com/article/030/0003490529"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "인공지능(AI) 인프라 투자 열풍으로 메모리 반도체 공급난과 품귀 현상이 심화하면서 글로벌 기업들이 한국산 반도체 확보에 사활을 걸고 있다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "WSJ, 메모리칩 품귀 집중 조명…머스크-이재용 일화 조명 인공지능(AI) 투자 붐으로 메모리 반도체 공급난이 심해지면서 글로벌 기업들이 물량을 확보하기 위해 경쟁하고 있다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "27일 연합뉴스에 따르면 월스트리트저널(WSJ)은 머스크 CEO가 과거 삼성전자에 장기 반도체 구매계약을 제안했다가 이재용 회장으로부터 '남들도 다"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "머스크의 장기 구매 제안에 이재용 회장이 \"뭘 더 해줄 건데\"라고 응수했다는 일화가 집중 보도되며 메모리 반도체 시장의 주도권 변화를 시사한다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i5d302b39",
+      "title": "美 최대 명절에 '하필 폭풍이'...정전·결항에 '발 동동'",
+      "category": "세계",
+      "rank": 10,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -38,49 +142,49 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\"",
-        "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다.",
-        "반면 같은 해 한국 영화의 중국 수출액은 1500만달러(약 200억원), 방송 콘텐츠는 700만달러(약 93억원)에...",
-        "대한민국이 세계에서 네 번째로 '수출 1조 달러 시대'를 연 데 대해 세대를 이어온 국민의 도전과 헌신이...",
-        "반세기 만에 수출 규모를 100배로 키운 한국 경제의 성장사를 되짚으며 수출의 성과가 국민의 삶을 나아지게 하는..."
+        "미국의 추수감사절 기간인 2023년 11월 26일, 미 동부 지역에 폭우와 강풍을 동반한 강력한 폭풍이 발생하여 대규모의 피해가 발생했습니다.",
+        "미국 추수감사절 덮친 폭풍에 55만 곳 정전…항공편 수백 편 결항",
+        "미국 최대 명절 중 하나인 추수감사절인 26일(현지시간) 미 동부 지역에 폭우와 강풍을 동반한 폭풍이 몰아치면서 대규모 정전과 항공편 결항 등 피해가 속출했다.",
+        "이에 따라 추수감사절 대표적인 뉴욕의 대규모 퍼레이드...",
+        "미국 최대 명절 중 하나인 추수감사절인 26일(현지시간) 미 동부 지역에 폭우와 강풍을 동반한 폭풍이 몰아치면서 대규모 정전과 항공편 결항, 해안 지역 침수 등 피해가 잇따랐다."
       ],
       "sources": [
         {
-          "press": "khan.co.kr",
-          "title": "“10년 만에 중국 빗장 열리나”···한한령 해제 기대 커지지만 K팝 공...",
-          "url": "https://n.news.naver.com/mnews/article/032/0003483787?sid=103"
+          "press": "MBN",
+          "title": "미국 추수감사절 덮친 폭풍에 55만 곳 정전…항공편 수백 편 결항",
+          "url": "https://n.news.naver.com/article/057/0001980075"
         },
         {
-          "press": "sisajournal.com",
-          "title": "李 대통령 \"수출 1조 달러 시대…이제는 '모두의 성장'으로\"",
-          "url": "https://n.news.naver.com/mnews/article/586/0000142653?sid=101"
+          "press": "jasm.co.kr",
+          "title": "美 추수감사절 폭풍...55만곳 정전·항공기 수백편 결항·뉴욕 퍼레이드...",
+          "url": "https://www.jasm.co.kr/news/view/326668/?sc=Naver"
         },
         {
-          "press": "SBS",
-          "title": "\"한국 대통령과 너무 달랐다\"…일본 총리 의전 어땠길래",
-          "url": "https://n.news.naver.com/article/055/0001404200"
+          "press": "m-economynews.com",
+          "title": "美 추수감사절 동부 강타한 폭풍...55만 곳 정전·항공편 400편 결항",
+          "url": "https://www.m-economynews.com/news/article.html?no=73655"
         },
         {
-          "press": "asiatime.co.kr",
-          "title": "수출 1조달러 시대…李대통령 ‘봉제·신발공장 선배 세대 덕분’",
-          "url": "https://www.asiatime.co.kr/article/20261119500437"
+          "press": "cbci.co.kr",
+          "title": "美 추수감사절 폭풍 동·서부 강타…90만 가구 정전·항공편 400여 편 결...",
+          "url": "https://www.cbci.co.kr/news/articleView.html?idxno=631197"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\""
+          "evidence": "미국의 추수감사절 기간인 2023년 11월 26일, 미 동부 지역에 폭우와 강풍을 동반한 강력한 폭풍이 발생하여 대규모의 피해가 발생했습니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "경제계 \"수출 1조 달러 성과, 국내 투자·일자리로 이어갈 것\""
+          "evidence": "한때 55만 곳이 넘는 가구와 사업장에 전력 공급이 끊겼고, 항공편은 400편 넘게 결항하고 1600여 편이 지연되면서 명절 이동객들의 발이 묶였습니다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다."
+          "evidence": "미국 추수감사절 덮친 폭풍에 55만 곳 정전…항공편 수백 편 결항"
         },
         {
           "panel": 4,
@@ -89,8 +193,113 @@
         }
       ],
       "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.76,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i1fbae1dc",
+      "title": "이부진 아들, 어머니 성으로 바꿨다…노소영, 최태원 화해권고 요청 거부 [주간사건일지]",
+      "category": "사회",
+      "rank": 2,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "최태원 SK그룹 회장과 노소영 아트센터 나비 관장 간 재산분할 관련 합의에 실패한 것으로 보입니다.",
+        "“9440억 현금에 이자까지, 그 대신…” 최태원 제안에도 노소영 거절 이유",
+        "최태원 SK그룹 회장과 노소영 아트센터 나비 관장이 재산분할금 9440억원 지급 방식을 놓고 이견을 보이고 있다.",
+        "최 회장 측은 대법원에 화해권고결정을 요청하면서 재산분할금 전액을 확정 후 7일 이내에 지급하겠다는...",
+        "최태원 SK그룹 회장이 노소영 아트센터 나비 관장에게 재산분할금 9440억원을 일주일 안에 전액 지급하겠다는 의사를 밝혔다."
+      ],
+      "sources": [
+        {
+          "press": "매일경제",
+          "title": "“9440억 현금에 이자까지, 그 대신…” 최태원 제안에도 노소영 거절 이유",
+          "url": "https://n.news.naver.com/article/009/0005769734"
+        },
+        {
+          "press": "hankyung.com",
+          "title": "최태원 회장 \"9440억 전액 지급\" 제안했지만…노소영 관장 '이견'",
+          "url": "https://n.news.naver.com/mnews/article/015/0005358882?sid=101"
+        },
+        {
+          "press": "slist.kr",
+          "title": "최태원 측, \"9440억원 일주일 내 지급·5% 지연이자 부담\" 제안",
+          "url": "https://www.slist.kr/news/articleView.html?idxno=785193"
+        },
+        {
+          "press": "whitepaper.co.kr",
+          "title": "최태원 \"일주일내 9440억 지급, 5% 지연이자 부담\" 제안",
+          "url": "http://www.whitepaper.co.kr/news/articleView.html?idxno=269235"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "최태원 SK그룹 회장과 노소영 아트센터 나비 관장 간 재산분할 관련 합의에 실패한 것으로 보입니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "최태원 회장 측이 지급해야 할 재산 분할 금액은 94,40억 원인데 판결 확정일 다음 날부터 1년에 5%씩 지연손해금..."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "“9440억 현금에 이자까지, 그 대신…” 최태원 제안에도 노소영 거절 이유"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -124,213 +333,9 @@
         "sources": 4,
         "continuity_quality": 0.84,
         "continuity_gaps": [
+          "발단·의혹",
           "입장·공방",
-          "수사·대응",
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "if68e1f2d",
-      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
-      "category": "사회",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "법학적성시험(LEET·리트) 만점과 서울대 치의학과 합격 이력을 두고 부정행위 의혹을 받는 이진우(32)씨가 과거 경찰관을 폭행해 벌금형을 선고받은 것으로 드러났다.",
-        "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-        "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
-        "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
-        "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다"
-      ],
-      "sources": [
-        {
-          "press": "중앙일보",
-          "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-          "url": "https://n.news.naver.com/article/025/0003566361"
-        },
-        {
-          "press": "서울경제",
-          "title": "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
-          "url": "https://n.news.naver.com/article/011/0004683998"
-        },
-        {
-          "press": "세계일보",
-          "title": "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
-          "url": "https://n.news.naver.com/article/022/0004176505"
-        },
-        {
-          "press": "동아일보",
-          "title": "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다",
-          "url": "https://n.news.naver.com/article/020/0003763620"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "법학적성시험(LEET·리트) 만점과 서울대 치의학과 합격 이력을 두고 부정행위 의혹을 받는 이진우(32)씨가 과거 경찰관을 폭행해 벌금형을 선고받은 것으로 드러났다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "판결문에 따르면 해당 인물은 고의로 교통사고를 낸 뒤 합의금을 받아낸 혐의 등으로 2022년 9월 징역 6개월을..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "법학적성시험(LEET·리트) 만점자로 알려진 이진우(32) 씨가 과거 고의 교통사고를 이용한 공갈 범죄와 경찰관..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ib0b88852",
-      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
-      "category": "IT",
-      "rank": 1,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다.",
-        "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
-        "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
-        "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
-        "흔적을 발견할 수 없었다."
-      ],
-      "sources": [
-        {
-          "press": "매일경제",
-          "title": "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
-          "url": "https://n.news.naver.com/article/009/0005766140"
-        },
-        {
-          "press": "한겨레",
-          "title": "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
-          "url": "https://n.news.naver.com/article/028/0002832987"
-        },
-        {
-          "press": "KBS",
-          "title": "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
-          "url": "https://n.news.naver.com/article/056/0012297227"
-        },
-        {
-          "press": "sentv.co.kr",
-          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
-          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "게임 속 풍경을 단순한 배경으로 활용하는 데 그치지 않고, 이용자가 새로운 장소를 발견하고 직접..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "‘리트 만점’ 이진우 모텔서 숨진 채 발견···“요즘 힘들다” 5줄 메모 남겨"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "사법·처분"
+          "파장·후속"
         ],
         "no_generic_closing": true
       }
