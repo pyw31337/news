@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-26T12:19:52.748244+09:00",
-  "alerts_count": 44,
+  "updated": "2026-11-19T16:49:22.039519+09:00",
+  "alerts_count": 11,
   "alerts": [
     {
       "id": "urn:oid:2.49.0.1.840.0.abb56f53d99ee5c3ce787293a96c3869d1f91501.001.1",
@@ -261,6 +261,184 @@
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tz2w"
     }
   ],
-  "cities": [],
-  "stories": []
+  "cities": [
+    {
+      "id": "newyork",
+      "name_ko": "뉴욕",
+      "name_en": "New York",
+      "country": "US",
+      "flag": "🇺🇸",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "temp": 5.7,
+      "apparent_temp": 2.6,
+      "humidity": 68,
+      "code": 0,
+      "wind": 7.0
+    },
+    {
+      "id": "losangeles",
+      "name_ko": "로스앤젤레스",
+      "name_en": "Los Angeles",
+      "country": "US",
+      "flag": "🇺🇸",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "temp": 16.2,
+      "apparent_temp": 15.8,
+      "humidity": 69,
+      "code": 3,
+      "wind": 4.2
+    },
+    {
+      "id": "london",
+      "name_ko": "런던",
+      "name_en": "London",
+      "country": "GB",
+      "flag": "🇬🇧",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "temp": 7.3,
+      "apparent_temp": 5.5,
+      "humidity": 92,
+      "code": 2,
+      "wind": 6.1
+    },
+    {
+      "id": "paris",
+      "name_ko": "파리",
+      "name_en": "Paris",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "temp": 10.4,
+      "apparent_temp": 7.4,
+      "humidity": 78,
+      "code": 2,
+      "wind": 15.3
+    },
+    {
+      "id": "frankfurt",
+      "name_ko": "프랑크푸르트",
+      "name_en": "Frankfurt",
+      "country": "DE",
+      "flag": "🇩🇪",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "temp": 9.8,
+      "apparent_temp": 7.8,
+      "humidity": 90,
+      "code": 61,
+      "wind": 11.0
+    },
+    {
+      "id": "tokyo",
+      "name_ko": "도쿄",
+      "name_en": "Tokyo",
+      "country": "JP",
+      "flag": "🇯🇵",
+      "lat": 35.6895,
+      "lon": 139.6917,
+      "temp": 14.5,
+      "apparent_temp": 11.0,
+      "humidity": 38,
+      "code": 0,
+      "wind": 9.6
+    },
+    {
+      "id": "beijing",
+      "name_ko": "베이징",
+      "name_en": "Beijing",
+      "country": "CN",
+      "flag": "🇨🇳",
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "temp": 5.0,
+      "apparent_temp": -1.5,
+      "humidity": 23,
+      "code": 1,
+      "wind": 20.1
+    },
+    {
+      "id": "singapore",
+      "name_ko": "싱가포르",
+      "name_en": "Singapore",
+      "country": "SG",
+      "flag": "🇸🇬",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "temp": 28.2,
+      "apparent_temp": 32.9,
+      "humidity": 74,
+      "code": 3,
+      "wind": 6.4
+    },
+    {
+      "id": "sydney",
+      "name_ko": "시드니",
+      "name_en": "Sydney",
+      "country": "AU",
+      "flag": "🇦🇺",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "temp": 22.1,
+      "apparent_temp": 21.7,
+      "humidity": 71,
+      "code": 3,
+      "wind": 19.0
+    },
+    {
+      "id": "toronto",
+      "name_ko": "토론토",
+      "name_en": "Toronto",
+      "country": "CA",
+      "flag": "🇨🇦",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "temp": 3.5,
+      "apparent_temp": -0.0,
+      "humidity": 79,
+      "code": 3,
+      "wind": 10.0
+    },
+    {
+      "id": "dubai",
+      "name_ko": "두바이",
+      "name_en": "Dubai",
+      "country": "AE",
+      "flag": "🇦🇪",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "temp": 28.2,
+      "apparent_temp": 31.1,
+      "humidity": 55,
+      "code": 0,
+      "wind": 4.7
+    },
+    {
+      "id": "saopaulo",
+      "name_ko": "상파울루",
+      "name_en": "São Paulo",
+      "country": "BR",
+      "flag": "🇧🇷",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "temp": 19.9,
+      "apparent_temp": 23.3,
+      "humidity": 100,
+      "code": 2,
+      "wind": 2.5
+    }
+  ],
+  "stories": [
+    {
+      "id": "gbe966c60",
+      "title": "Tag team: dual waterspouts appear in San Francisco Bay amid stormy weather",
+      "press": "Guardian Environment",
+      "image": "https://i.guim.co.uk/img/media/f9f5212fc0956900ba97c6edec783a649f9bb14b/630_0_6300_5042/master/6300.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=0d473755fcf9607a2ec2dc7a2b090824",
+      "score": 12.0,
+      "url": "g/gbe966c60"
+    }
+  ]
 }
