@@ -1,52 +1,52 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 14:53:50",
-  "date": "2026-11-26",
+  "updated_at": "2026-11-26 15:25:18",
+  "date": "2026-11-27",
   "total_issues": 10,
-  "average_quality": 0.85,
+  "average_quality": 0.83,
   "issues": [
     {
-      "id": "i7123f678",
-      "title": "李 대통령 \"폭언, 욕설 이런 건 싫다. 그런 경우 차단한다\"",
-      "episode": "episode:61384162cd49a7",
-      "quality": 0.92,
+      "id": "i585b535d",
+      "title": "대법원, '한덕수 재판 위증' 윤석열 무죄 확정‥상고 기각",
+      "episode": "episode:6bd8c8771f5cfd",
+      "quality": 1.0,
       "stages": [
         "수사·대응",
-        "일반 보도",
         "사법·처분",
+        "발단·의혹",
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
         "입장·공방"
+      ],
+      "duplicate_candidates": 34,
+      "event_count": 24,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ifaef42a6",
+      "title": "“조희대 탄핵 찬성” 34%, “반대” 44% [NBS]",
+      "episode": "episode:02cb801369f90d",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "입장·공방",
+        "사법·처분"
       ],
       "gaps": [
         "발단·의혹",
         "파장·후속"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 16,
+      "duplicate_candidates": 33,
+      "event_count": 39,
       "evidence_rate": 1.0
     },
     {
-      "id": "ia6e36800",
-      "title": "\"나도 제명하려고 했냐\" 고성에 퇴장까지... '조작 징계' 논란에 아수라장 된 국힘 최고위",
-      "episode": "episode:be208c56676680",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "입장·공방",
-        "파장·후속",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "수사·대응"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 11,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i6ae63d1d",
-      "title": "\"이재용, '반도체 장기구매할게' 머스크에 '그럼 뭘 해줄건데'\"",
-      "episode": "episode:5807c8a6e1a31a",
+      "id": "i92fd972e",
+      "title": "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
+      "episode": "episode:a184e8c40a7f36",
       "quality": 0.92,
       "stages": [
         "사법·처분",
@@ -57,33 +57,33 @@
       "gaps": [
         "발단·의혹",
         "입장·공방"
+      ],
+      "duplicate_candidates": 24,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3c3fc35f",
+      "title": "반도체 호황·물가 부담에…한은, 기준금리 3.25%로 인상(종합)",
+      "episode": "episode:cca5b8a98d7799",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
       ],
       "duplicate_candidates": 26,
       "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "ice96f893",
-      "title": "“9440억 현금에 이자까지, 그 대신…” 최태원 제안에도 노소영 거절 이유",
-      "episode": "episode:d89132af5babfc",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 38,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i9b58a3eb",
-      "title": "경찰 ‘AI 커닝 자수’ 세무 수석 구속영장 신청…“도주 우려”",
-      "episode": "episode:046147d346e0d7",
+      "id": "iebe0cd44",
+      "title": "AI 부정행위 자수한 '세무냥이'…경찰, 구속영장 신청",
+      "episode": "episode:3049a6f69c5e88",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -94,33 +94,14 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 25,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7233a52b",
-      "title": "철도노조 ‘안전운행 투쟁’ 돌입…학교비정규직노조 총파업 예고",
-      "episode": "episode:dd554406ede6fc",
-      "quality": 0.84,
-      "stages": [
-        "수사·대응",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 8,
+      "duplicate_candidates": 35,
+      "event_count": 22,
       "evidence_rate": 1.0
     },
     {
       "id": "i29cdf020",
       "title": "갑작스런 만점자 급증…\"의사·간호사 국시도 설마\"",
-      "episode": "episode:56dd51678a5bb9",
+      "episode": "episode:c624e1b8beaf72",
       "quality": 0.66,
       "stages": [
         "일반 보도",
@@ -131,45 +112,45 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 19,
+      "duplicate_candidates": 22,
       "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "i36038f26",
-      "title": "젠슨 황 복귀, ‘독’이었나…S&P, 엔비디아 신용등급 강등 검토",
-      "episode": "episode:2a22a79ddee6de",
-      "quality": 1.0,
+      "id": "ief7c1d87",
+      "title": "강유정 문체부 장관 후보자 “석 자 얼음 녹기 시작했다”···한한령 대응 최우선",
+      "episode": "episode:965dae0aeb4c3a",
+      "quality": 0.76,
       "stages": [
         "일반 보도",
-        "사법·처분",
-        "수사·대응",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방"
+        "파장·후속"
       ],
-      "gaps": [],
-      "duplicate_candidates": 29,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i32f6a682",
-      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
-      "episode": "episode:bb1f3458304a26",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
+      "gaps": [
         "발단·의혹",
         "입장·공방",
         "수사·대응"
       ],
+      "duplicate_candidates": 26,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i0a7324b7",
+      "title": "“육아휴직 하고 세무사 합격”…워킹맘 합격 후기에 발칵",
+      "episode": "episode:13fb73df18826c",
+      "quality": 0.84,
+      "stages": [
+        "입장·공방",
+        "발단·의혹",
+        "일반 보도"
+      ],
       "gaps": [
+        "수사·대응",
         "사법·처분",
         "파장·후속"
       ],
-      "duplicate_candidates": 42,
-      "event_count": 19,
+      "duplicate_candidates": 18,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
@@ -190,22 +171,22 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "i76ab5e3b",
-      "title": "서울대 수시 AI 커닝 차단 총력…'스마트 감독관'까지(종합)",
-      "episode": "episode:a122c11d14020c",
-      "quality": 0.84,
+      "id": "i53872ab2",
+      "title": "올리브영, 해킹 공격에 직원·고객 포함 790명 이름·연락처 등 개인정보 유출",
+      "episode": "episode:137e37a396e779",
+      "quality": 0.92,
       "stages": [
-        "일반 보도",
         "파장·후속",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
+        "일반 보도",
         "수사·대응",
         "사법·처분"
       ],
-      "duplicate_candidates": 28,
-      "event_count": 8,
+      "gaps": [
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "duplicate_candidates": 37,
+      "event_count": 19,
       "evidence_rate": 1.0
     }
   ]
