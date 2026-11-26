@@ -1,70 +1,33 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-26 19:57:18",
+  "updated_at": "2026-11-26 20:22:53",
   "date": "2026-11-27",
   "total_issues": 10,
-  "average_quality": 0.8,
+  "average_quality": 0.86,
   "issues": [
     {
-      "id": "ife746af4",
-      "title": "윤석열 '한덕수 재판 위증' 무죄 확정…특검 '완패'",
-      "episode": "episode:632c76fa461dd9",
-      "quality": 0.92,
+      "id": "i585b535d",
+      "title": "대법원, '한덕수 재판 위증' 윤석열 무죄 확정‥상고 기각",
+      "episode": "episode:d565132a11a7dd",
+      "quality": 1.0,
       "stages": [
-        "사법·처분",
         "수사·대응",
+        "사법·처분",
+        "발단·의혹",
         "일반 보도",
-        "발단·의혹"
+        "파장·후속"
       ],
       "gaps": [
-        "입장·공방",
-        "파장·후속"
+        "입장·공방"
       ],
       "duplicate_candidates": 30,
-      "event_count": 30,
+      "event_count": 21,
       "evidence_rate": 1.0
     },
     {
-      "id": "i3c3fc35f",
-      "title": "반도체 호황·물가 부담에…한은, 기준금리 3.25%로 인상(종합)",
-      "episode": "episode:44b2aacbab65a7",
-      "quality": 0.76,
-      "stages": [
-        "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 14,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib7ddb15f",
-      "title": "李 지지율, 긍정 43%·부정 45%... 조희대 탄핵 추진 ‘반대’ 44% [NBS]",
-      "episode": "episode:d3b1fe81559edb",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 37,
-      "event_count": 41,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i0c045fe7",
-      "title": "'AI 반도체 품귀'에 머스크도 진땀… 이재용 \"뭘 더 해줄 수 있나\"",
-      "episode": "episode:2c4639a730f305",
+      "id": "i92fd972e",
+      "title": "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
+      "episode": "episode:a184e8c40a7f36",
       "quality": 0.92,
       "stages": [
         "사법·처분",
@@ -77,13 +40,51 @@
         "입장·공방"
       ],
       "duplicate_candidates": 29,
-      "event_count": 13,
+      "event_count": 11,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id3c5e0b4",
+      "title": "이 대통령 지지율 43%...대법원장 탄핵 추진 반대 44%",
+      "episode": "episode:eaa4f7e4c60c29",
+      "quality": 1.0,
+      "stages": [
+        "일반 보도",
+        "파장·후속",
+        "수사·대응",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹"
+      ],
+      "duplicate_candidates": 42,
+      "event_count": 100,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "icff91bb5",
+      "title": "기준금리 연 3.25%로 인상...내년 초도 금리 오를까?",
+      "episode": "episode:352e13774fa944",
+      "quality": 0.84,
+      "stages": [
+        "파장·후속",
+        "일반 보도",
+        "사법·처분"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 30,
+      "event_count": 17,
       "evidence_rate": 1.0
     },
     {
       "id": "i2b856bec",
       "title": "'부정행위' 세무사 수석, 다른 시험도 준비했다… 경찰 구속영장 신청",
-      "episode": "episode:e72c048afa9a14",
+      "episode": "episode:203ea98c0f6f4e",
       "quality": 0.84,
       "stages": [
         "사법·처분",
@@ -94,96 +95,98 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 31,
+      "duplicate_candidates": 33,
       "event_count": 25,
       "evidence_rate": 1.0
     },
     {
-      "id": "i95aac963",
-      "title": "'간호냥이·의사냥이'도 있나…국시 만점자 최대 27배 늘었다",
-      "episode": "episode:9239b4b5eacf79",
-      "quality": 0.76,
+      "id": "i29cdf020",
+      "title": "갑작스런 만점자 급증…\"의사·간호사 국시도 설마\"",
+      "episode": "episode:40aad9df4bd4fb",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
+        "입장·공방",
         "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "사법·처분"
+        "사법·처분",
+        "파장·후속"
       ],
       "duplicate_candidates": 19,
-      "event_count": 4,
+      "event_count": 5,
       "evidence_rate": 1.0
     },
     {
-      "id": "i08e187f3",
-      "title": "“연명의료 중단, 임종기→말기 앞당겨야” 84%",
-      "episode": "episode:997230babcd8fd",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 24,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i10234606",
-      "title": "2035 제주 탄소중립 비전 선포…“재생에너지 100% 달성”",
-      "episode": "episode:182b2f11b51f95",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 21,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i8368ce79",
-      "title": "\"주식으로 와이프 가방 사줬습니다\"…사진 보니 '눈물'",
-      "episode": "episode:7b88a999223ed6",
+      "id": "ief7c1d87",
+      "title": "강유정 문체부 장관 후보자 “석 자 얼음 녹기 시작했다”···한한령 대응 최우선",
+      "episode": "episode:965dae0aeb4c3a",
       "quality": 0.76,
       "stages": [
         "일반 보도",
-        "입장·공방"
+        "파장·후속"
       ],
       "gaps": [
         "발단·의혹",
-        "수사·대응",
-        "사법·처분"
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 32,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "id1bc74fa",
+      "title": "'13억 복권 당첨' 기쁨도 잠시…일주일도 안 돼 체포된 남성 사연",
+      "episode": "episode:4be6d3a94ced3e",
+      "quality": 0.76,
+      "stages": [
+        "사법·처분",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
       ],
       "duplicate_candidates": 26,
       "event_count": 11,
       "evidence_rate": 1.0
     },
     {
-      "id": "ic33f1781",
-      "title": "\"수시 6곳 모두 불합격, 이게 맞나요?…학폭 아들 둔 아버지 하소연 '논란'",
-      "episode": "episode:82350c9b5134d3",
-      "quality": 0.76,
+      "id": "i08e187f3",
+      "title": "“연명의료 중단, 임종기→말기 앞당겨야” 84%",
+      "episode": "episode:1cdbeb9fe28783",
+      "quality": 0.68,
       "stages": [
-        "일반 보도",
-        "입장·공방"
+        "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "수사·대응",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 22,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i64adf019",
+      "title": "[단독] 이진우 '리트' 본 이유 \"책 내려는데 마침 만점자 없길래\"",
+      "episode": "episode:b4d362a21af0ea",
+      "quality": 0.92,
+      "stages": [
+        "발단·의혹",
+        "입장·공방",
+        "파장·후속",
+        "수사·대응"
+      ],
+      "gaps": [
         "사법·처분"
       ],
-      "duplicate_candidates": 21,
-      "event_count": 6,
+      "duplicate_candidates": 37,
+      "event_count": 11,
       "evidence_rate": 1.0
     }
   ]

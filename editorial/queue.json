@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-27",
-  "generated_at": "2026-11-27T04:57:19+09:00",
+  "generated_at": "2026-11-27T05:22:54+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,8 +27,8 @@
   },
   "candidates": [
     {
-      "issue_id": "i0c045fe7",
-      "title": "'AI 반도체 품귀'에 머스크도 진땀… 이재용 \"뭘 더 해줄 수 있나\"",
+      "issue_id": "icff91bb5",
+      "title": "기준금리 연 3.25%로 인상...내년 초도 금리 오를까?",
       "category": "경제",
       "rank": 4,
       "priority_score": 45,
@@ -36,9 +36,114 @@
         "comic",
         "card_news"
       ],
+      "status": "needs_fact_review",
+      "facts": [
+        "한국은행 금융통화위원회는 올해 마지막 회의에서 기준금리를 연 3.25%로 0.25%p 인상하며 올해 들어 세 번째 인상을 단행했다.",
+        "미국의 추가 기준금리 인상 전망과 뉴욕증시 급락 여파로 국제 금값이 장중 15개월 만에 최저 수준으로 떨어졌다.",
+        "국내 증시도 한국은행의 기준금리 인상 속에 장 초반 상승분 대부분을 반납했다.",
+        "25일(현지시간)...",
+        "신현송 “반도체 영업익 700조” 돈 풀릴것 감안해 선제적 긴축 [한은 기준금리 3.25%로 인상] “내년 성장률 4.1%” 성과급-배당 풀리면 소비 확대 예상… 물가 상승 압력 막기 위해 금리 올려 내년 추가 금리인상..."
+      ],
+      "sources": [
+        {
+          "press": "seoul.co.kr",
+          "title": "금값 15개월 만에 최저 수준… ‘증안펀드’ 29일 긴급회의",
+          "url": "https://n.news.naver.com/mnews/article/081/0003703726?sid=101"
+        },
+        {
+          "press": "donga.com",
+          "title": "“내년 성장률 2.9→4.1%” 한은, 전망치 대폭 올려",
+          "url": "https://n.news.naver.com/mnews/article/020/0003765635?sid=101"
+        },
+        {
+          "press": "YTN",
+          "title": "기준금리 연 3.25%로 인상...내년 초도 금리 오를까?",
+          "url": "https://n.news.naver.com/article/052/0002438667"
+        },
+        {
+          "press": "비즈워치",
+          "title": "한은, 기준금리 3.25%로 인상…'반도체 호황' 내년 성장률 4%대로",
+          "url": "https://n.news.naver.com/article/648/0000053004"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "한국은행 금융통화위원회는 올해 마지막 회의에서 기준금리를 연 3.25%로 0.25%p 인상하며 올해 들어 세 번째 인상을 단행했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "미국의 추가 기준금리 인상 전망과 뉴욕증시 급락 여파로 국제 금값이 장중 15개월 만에 최저 수준으로 떨어졌다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "25일(현지시간)..."
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "기준금리 인상 여파로 주담대 금리가 15년 만에 최고치를 기록하는 등 서민 이자 부담이 가중되는 가운데, 금리가 최대 3.75%까지 열려 있다는 추가 긴축 전망이 이어지고 있다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i92fd972e",
+      "title": "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
+      "category": "경제",
+      "rank": 2,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "인공지능(AI) 붐으로 메모리 반도체 품귀 현상이 이어지는 가운데, 일론 머스크 테슬라 최고경영자(CEO)가 삼성전자에 반도체 장기 구매 계약과 공장 투자 금융 보증 등을 제안하며 칩 확보에 나섰던 일화가 보도되었다.",
+        "일론 머스크 테슬라 최고경영자(CEO)가 인공지능(AI) 붐으로 인해 발생한 메모리 반도체 품귀 현상에 진땀을 뺐는 가운데, 삼성전자와 장기 구매계약을 논의하던 과정에서 이재용 삼성전자 부회장이 '더 해줄 게 있느냐'는 반문에 고개를 끄덕였다.",
         "“머스크 ‘삼성전자 칩 장기구매’ 제안에···이재용 ‘뭐 더 해줄 건데’”",
         "머스크, 삼성에 \"장기 구매\" 제안…이재용 \"무엇을 더 해줄 수 있나?\"",
         "“그래서 뭘 더해 줄 건데?”…머스크도 진땀 빼게 한 이재용의 한마디",
@@ -70,7 +175,7 @@
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "인공지능(AI) 붐으로 메모리 반도체 품귀 현상이 이어지는 가운데, 일론 머스크 테슬라 최고경영자(CEO)가 삼성전자에 반도체 장기 구매 계약과 공장 투자 금융 보증 등을 제안하며 칩 확보에 나섰던 일화가…"
+          "evidence": "일론 머스크 테슬라 최고경영자(CEO)가 인공지능(AI) 붐으로 인해 발생한 메모리 반도체 품귀 현상에 진땀을 뺐는 가운데, 삼성전자와 장기 구매계약을 논의하던 과정에서 이재용 삼성전자 부회장이 '더 해줄 게…"
         },
         {
           "panel": 2,
@@ -85,12 +190,12 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "전날에 이어 머스크의 공장 금융보증 제안과 이재용 회장의 반문 일화가 거듭 보도되며 공급자 우위로 돌아선 시장 상황을 거듭 강조했다."
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
         }
       ],
       "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -131,60 +236,60 @@
       }
     },
     {
-      "issue_id": "i3c3fc35f",
-      "title": "반도체 호황·물가 부담에…한은, 기준금리 3.25%로 인상(종합)",
-      "category": "경제",
-      "rank": 2,
+      "issue_id": "i2b856bec",
+      "title": "'부정행위' 세무사 수석, 다른 시험도 준비했다… 경찰 구속영장 신청",
+      "category": "사회",
+      "rank": 5,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
-        "한국은행이 석 달 만에 기준금리를 0.25%p 인상했습니다.",
-        "신현송 “반도체 영업익 700조” 돈 풀릴것 감안해 선제적 긴축 [한은 기준금리 3.25%로 인상] “내년 성장률 4.1%” 성과급-배당 풀리면 소비 확대 예상… 물가 상승 압력 막기 위해 금리 올려 내년 추가 금리인상...",
-        "시장의 시각은 한은보다",
-        "이날 금통위 직후 나온 증권사 보고서에선 내년 2월 한 차례 추가 인상을 거쳐 기준금리가 연 3.5%에서 정점을 찍을 것이란 분석이 우세했다.",
-        "백윤민 교보증권 수석연구위원은..."
+        "경찰이 세무사 시험에서 인공지능(AI)을 활용해 수석 합격한 뒤 자수한 한모씨에 대해 위계에 의한 공무집행방해 등 혐의로 구속영장을 신청했습니다.",
+        "경찰 ‘AI 커닝 자수’ 세무 수석 구속영장 신청…“도주 우려”",
+        "경과를 지켜보고 있고, 다른 장소로 거주지를 옮길 생각도 있지만 시점은 정하지 못했다고 밝혔다.",
+        "경찰은 A씨 보호자를 설득해 보호입원을 추진하고, 접근금지 잠정조치와 구속영장 신청 절차도 진행할 예정이라고 밝혔다.",
+        "AI를 이용한 부정행위로 세무사 시험에 수석 합격했다고 자수한 한 모 씨에 대해 경찰이 구속영장을 신청했습니다."
       ],
       "sources": [
         {
-          "press": "donga.com",
-          "title": "“내년 성장률 2.9→4.1%” 한은, 전망치 대폭 올려",
-          "url": "https://n.news.naver.com/mnews/article/020/0003765635?sid=101"
+          "press": "국민일보",
+          "title": "경찰 ‘AI 커닝 자수’ 세무 수석 구속영장 신청…“도주 우려”",
+          "url": "https://n.news.naver.com/article/005/0001887713"
         },
         {
-          "press": "joongang.co.kr",
-          "title": "금리 3.25%가 끝 아니다…금통위원들 ‘추가 인상’ 가리켜",
-          "url": "https://n.news.naver.com/mnews/article/025/0003568352?sid=101"
+          "press": "mt.co.kr",
+          "title": "\"죽이겠다\" 윗집 남성이 흉기 휙휙…부모는 \"알아서 해\" 방치",
+          "url": "https://n.news.naver.com/mnews/article/008/0005447184?sid=102"
         },
         {
-          "press": "YTN",
-          "title": "기준금리 연 3.25%로 인상...내년 초도 금리 오를까?",
-          "url": "https://n.news.naver.com/article/052/0002438667"
+          "press": "kbs.co.kr",
+          "title": "‘AI 커닝’ 세무사 수석 구속영장…“범대 중대성 고려”",
+          "url": "https://n.news.naver.com/mnews/article/056/0012302254?sid=102"
         },
         {
-          "press": "비즈워치",
-          "title": "한은, 기준금리 3.25%로 인상…'반도체 호황' 내년 성장률 4%대로",
-          "url": "https://n.news.naver.com/article/648/0000053004"
+          "press": "매일경제",
+          "title": "[속보] 경찰, ‘세무냥이’ 구속영장 신청…“증거 훼손·도주 우려”",
+          "url": "https://www.mk.co.kr/news/society/12219755"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "한국은행이 석 달 만에 기준금리를 0.25%p 인상했습니다."
+          "evidence": "경찰이 세무사 시험에서 인공지능(AI)을 활용해 수석 합격한 뒤 자수한 한모씨에 대해 위계에 의한 공무집행방해 등 혐의로 구속영장을 신청했습니다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "신현송 “반도체 영업익 700조” 돈 풀릴것 감안해 선제적 긴축 [한은 기준금리 3.25%로 인상] “내년 성장률 4.1%” 성과급-배당 풀리면 소비 확대 예상… 물가 상승 압력 막기 위해 금리 올려 내년 추가…"
+          "evidence": "부산공소청은 공모주 투자금 명목의 사기 사건에서 경찰관과 피의자, 변호인을 함께 면담한 뒤 증거가 미비하다고 보고 구속영장 신청을 기각했다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "이날 금통위 직후 나온 증권사 보고서에선 내년 2월 한 차례 추가 인상을 거쳐 기준금리가 연 3.5%에서 정점을 찍을 것이란 분석이 우세했다."
+          "evidence": "경찰은 이날 세무사 시험 수석 합격자인 ‘세무냥이’ 한 모(34) 씨에 대해 위계에 의한 공무집행방해 등 혐의로 구속영장을 신청했다."
         },
         {
           "panel": 4,
@@ -193,8 +298,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -226,116 +331,10 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.76,
+        "continuity_quality": 0.84,
         "continuity_gaps": [
           "발단·의혹",
-          "입장·공방",
-          "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i8368ce79",
-      "title": "\"주식으로 와이프 가방 사줬습니다\"…사진 보니 '눈물'",
-      "category": "경제",
-      "rank": 9,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "국내 증시의 변동성이 커지면서 투자 손실을 자조적으로 표현한 밈(meme·인터넷 유행 콘텐츠)이 온라인에 잇달아 올라오고 있다.",
-        "\"3억 잃고 울었다\"는 주식 전문가…\"삼전닉스 괜찮다, 잡주엔 물리지 마라\"",
-        "한 네티즌은 “개미들을 진심으로 걱정하는 마음이 느껴진다”고 댓글을 달았고, 또 다른 네티즌은 “주식 전문가까지 눈물을 보일 정도인데, 나는 피눈물이 난다”고 털어놓았다.",
-        "이날 코스피는 전날 황 CEO의 복귀로...",
-        "\"주식으로 와이프 가방 사줬습니다\"…사진 보니 '눈물'"
-      ],
-      "sources": [
-        {
-          "press": "파이낸셜뉴스",
-          "title": "\"3억 잃고 울었다\"는 주식 전문가…\"삼전닉스 괜찮다, 잡주엔 물리지 마라\"",
-          "url": "https://n.news.naver.com/article/014/0005610051"
-        },
-        {
-          "press": "seoul.co.kr",
-          "title": "“힘든 시간, 잘 이겨내야…” 주식 생방송 도중 ‘울먹’, 해외서도 화...",
-          "url": "https://n.news.naver.com/mnews/article/081/0003703527?sid=101"
-        },
-        {
-          "press": "한국경제",
-          "title": "\"주식으로 와이프 가방 사줬습니다\"…사진 보니 '눈물'",
-          "url": "https://n.news.naver.com/article/015/0005358815"
-        },
-        {
-          "press": "sedaily.com",
-          "title": "생방송 중 차트 보다가 ‘울컥’한 주식 전문가…개미들 “나도 계좌 보...",
-          "url": "https://n.news.naver.com/mnews/article/011/0004686545?sid=101"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "국내 증시의 변동성이 커지면서 투자 손실을 자조적으로 표현한 밈(meme·인터넷 유행 콘텐츠)이 온라인에 잇달아 올라오고 있다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "정지연 인턴 기자 = 생방송 중 눈물을 보인 주식 전문가의 영상이 온라인에서 확산하며 개인투자자들의 공감을 얻고 있다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "\"3억 잃고 울었다\"는 주식 전문가…\"삼전닉스 괜찮다, 잡주엔 물리지 마라\""
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.76,
-        "continuity_gaps": [
-          "발단·의혹",
-          "수사·대응",
-          "사법·처분"
+          "입장·공방"
         ],
         "no_generic_closing": true
       }
