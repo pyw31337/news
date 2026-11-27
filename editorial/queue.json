@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-27",
-  "generated_at": "2026-11-27T14:26:25+09:00",
+  "generated_at": "2026-11-27T14:53:24+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -30,26 +30,21 @@
       "issue_id": "iccf2b956",
       "title": "오늘 삼성전자 배당금 30조 들어온다, 이재용 얼마 받을까?",
       "category": "경제",
-      "rank": 4,
-      "priority_score": 37,
+      "rank": 3,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
-        "삼성전자가 27일 주주들에게 약 30조원의 현금배당을 지급한다.",
-        "삼성전자, 오늘 역대 최대 30조원 배당… 개미들에 5조원, 이재용 4500억",
+        "삼성전자는 2026년 11월 27일, 보통주와 우선주 모두 주당 4,601원씩 총 30조 30억 원 규모의 3분기 현금배당을 지급했다.",
         "오늘 삼성전자 배당금 30조 들어온다, 이재용 얼마 받을까?",
         "삼성전자 '역대 최대' 30조 배당…이재용, 얼마 받았을까",
-        "“삼성전자 역대급 배당” 회장님도 4488억"
+        "삼성전자가 역대 최대인 30조원 규모의 분기 배당금을 풀었다.",
+        "이재용 삼성전자 회장이 받은 배당금도 한 분기에만 4000억원을 훌쩍 넘었다."
       ],
       "sources": [
-        {
-          "press": "조선일보",
-          "title": "삼성전자, 오늘 역대 최대 30조원 배당… 개미들에 5조원, 이재용 4500억",
-          "url": "https://n.news.naver.com/article/023/0004012077"
-        },
         {
           "press": "국민일보",
           "title": "오늘 삼성전자 배당금 30조 들어온다, 이재용 얼마 받을까?",
@@ -61,16 +56,21 @@
           "url": "https://n.news.naver.com/article/018/0006416557"
         },
         {
-          "press": "한경비즈니스",
-          "title": "“삼성전자 역대급 배당” 회장님도 4488억",
-          "url": "https://n.news.naver.com/article/050/0000113858"
+          "press": "khan.co.kr",
+          "title": "삼성전자 30조 ‘역대급’ 배당···이재용 회장, 한 분기에만 4488억 수...",
+          "url": "https://n.news.naver.com/mnews/article/032/0003485525?sid=101"
+        },
+        {
+          "press": "JTBC",
+          "title": "오늘 풀리는 ‘삼성전자’ 배당 30조…이재용 계좌엔 얼마가?",
+          "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9uSXFVbldjX2FHUXhickp3XzZkWXFueHBoeUoxWTAxb25pemZVRXZYX3lYcUlBYzJmbGNOWjFmc1ozZ2ZSNkJ5RURyT1RPY1JoZmoxeA?oc=5"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "삼성전자가 27일 주주들에게 약 30조원의 현금배당을 지급한다."
+          "evidence": "삼성전자는 2026년 11월 27일, 보통주와 우선주 모두 주당 4,601원씩 총 30조 30억 원 규모의 3분기 현금배당을 지급했다."
         },
         {
           "panel": 2,
@@ -80,12 +80,12 @@
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "삼성전자, 오늘 역대 최대 30조원 배당… 개미들에 5조원, 이재용 4500억"
+          "evidence": "오늘 삼성전자 배당금 30조 들어온다, 이재용 얼마 받을까?"
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+          "evidence": "실제 배당금이 지급되면서 이재용 회장의 수령액과 주가 하락에 따른 주주들의 불만이 교차하는 모습이 나타났다."
         }
       ],
       "visual_brief": {
@@ -122,169 +122,69 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.68,
+        "continuity_quality": 0.92,
         "continuity_gaps": [
-          "발단·의혹",
           "입장·공방",
-          "수사·대응"
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "i737b6112",
-      "title": "엔비디아발 'AI 조정' 잦아드나…코스피·코스닥 일제히 급등",
+      "issue_id": "i3ed05915",
+      "title": "증안펀드 기대에 코스닥 5%대 급등…코스피 4800선 회복",
       "category": "경제",
       "rank": 6,
-      "priority_score": 34,
+      "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "코스피 장중 2.9%↑…코스닥은 5%대 급등해 매수 사이드카 발동 외국인 '사자' 돌아서 지수상승 견인…삼전·닉스도 2∼3%대 올라 나스닥 야간선물 강세·금융당국 증시 안정대책 기대감 등 배경 거론 (서울=연합뉴스)",
-        "증안펀드 투입 기대감에 삼성전자(005930)와 SK하이닉스(000660)가 4%대로 상승 폭을 키우며 코스피 지수가 4% 가까이 오르고 있다.",
-        "코스닥도 7% 가까운 급등에 700선을 회복했다.",
-        "27일 오후 1시 35분...",
-        "증안펀드 기대 등이 거론되는 가운데 이날 오후 1시 49분 기준 코스피 지수는 전일 대비 3.81% 급등한 4890.86, 코스닥 지수는 7.04% 치솟은 701.87에서 각각 움직이는 중이다."
+        "증권시장안정펀드(증안펀드) 가동 기대감에 국내 증시가 가파르게 반등하고 있다.",
+        "\"곡소리 코스피에 홀로 웃는다\"…삼성전자 등에 업더니 '29%' 급등",
+        "18년 만에 ‘증안펀드’ 가동하나···4700선 갇힌 코스피에 고민 깊어진 정부",
+        "이기인 \"李대통령, 아파트 판 돈 코스피 넣었다면 7억 손실\"",
+        "이 같은 정책 기대감에 힘입어 27일 코스닥 지수는 장중 5% 이상 급등하며 오전에 매수 사이드카가..."
       ],
       "sources": [
         {
-          "press": "news1.kr",
-          "title": "'증안펀드 기대' 삼전닉스 4% 강세…코스닥 700선 회복[장중시황]",
-          "url": "https://n.news.naver.com/mnews/article/421/0009314205?sid=101"
+          "press": "한국경제TV",
+          "title": "\"곡소리 코스피에 홀로 웃는다\"…삼성전자 등에 업더니 '29%' 급등",
+          "url": "https://n.news.naver.com/article/215/0001274171"
         },
         {
-          "press": "choicenews.co.kr",
-          "title": "GS건설·대우건설·DL이앤씨 등 건설주 '장중 급등'...이슈는?",
-          "url": "http://www.choicenews.co.kr/news/articleView.html?idxno=173569"
+          "press": "경향신문",
+          "title": "18년 만에 ‘증안펀드’ 가동하나···4700선 갇힌 코스피에 고민 깊어진 정부",
+          "url": "https://n.news.naver.com/article/032/0003485514"
         },
         {
-          "press": "sisajournal.com",
-          "title": "'GPU 예수' 젠슨 황의 극적인 귀환…환호 뒤에 남은 시장의 물음표",
-          "url": "https://n.news.naver.com/mnews/article/586/0000143169?sid=101"
+          "press": "TV조선",
+          "title": "이기인 \"李대통령, 아파트 판 돈 코스피 넣었다면 7억 손실\"",
+          "url": "https://n.news.naver.com/article/448/0000653725"
+        },
+        {
+          "press": "biz.newdaily.co.kr",
+          "title": "증안펀드 가동 초읽기에 46조 배당 실탄까지 … 증시 ‘수급 구원투수’...",
+          "url": "https://biz.newdaily.co.kr/site/data/html/2026/11/27/2026112750215.html"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "코스피 장중 2.9%↑…코스닥은 5%대 급등해 매수 사이드카 발동 외국인 '사자' 돌아서 지수상승 견인…삼전·닉스도 2∼3%대 올라 나스닥 야간선물 강세·금융당국 증시 안정대책 기대감 등 배경 거론 (서울=연합뉴스)"
+          "evidence": "증권시장안정펀드(증안펀드) 가동 기대감에 국내 증시가 가파르게 반등하고 있다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "증안펀드 투입 기대감에 삼성전자(005930)와 SK하이닉스(000660)가 4%대로 상승 폭을 키우며 코스피 지수가 4% 가까이 오르고 있다."
+          "evidence": "이 같은 정책 기대감에 힘입어 27일 코스닥 지수는 장중 5% 이상 급등하며 오전에 매수 사이드카가..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "코스닥도 7% 가까운 급등에 700선을 회복했다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 3,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i4290bb0b",
-      "title": "“생지옥 도입뒤 살인율 역대 최저”…중남미 핫플 된 교도소",
-      "category": "세계",
-      "rank": 10,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "‘생지옥’, ‘산 자들의 무덤’.",
-        "\"한국 교도소가 천국처럼 보일 정도\"…살인율 역대 최저에 대통령까지 줄 선 '이곳'",
-        "출소자들은 “지옥에서 살았다고밖에 표현할 수 없다”고 전했다.",
-        "엄혹한 환경 때문에 ‘생지옥’...",
-        "라틴아메리카포스트는 세코트가 완공된 2023년 이후 중남미 각국 정부들이 최소 16개의 초대형 교도소 건설을 추진..."
-      ],
-      "sources": [
-        {
-          "press": "아시아경제",
-          "title": "\"한국 교도소가 천국처럼 보일 정도\"…살인율 역대 최저에 대통령까지 줄 선 '이곳'",
-          "url": "https://n.news.naver.com/article/277/0005848590"
-        },
-        {
-          "press": "joongang.co.kr",
-          "title": "“산자들의 무덤” 문신남 다닥다닥…‘철로 만든 지옥’ 성지 된 까닭",
-          "url": "https://n.news.naver.com/mnews/article/025/0003568285?sid=104"
-        },
-        {
-          "press": "biz.heraldcorp.com",
-          "title": "“범죄자 5100명 한곳에 가둔다”…중남미에 등장한 ‘지옥의 감옥’",
-          "url": "https://n.news.naver.com/mnews/article/016/0002710534?sid=104"
-        },
-        {
-          "press": "donga.com",
-          "title": "‘생지옥’ 엘살바도르 교도소, 중남미 우파 ‘핫플’로[지금, 여기]",
-          "url": "https://n.news.naver.com/mnews/article/020/0003765597?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "‘생지옥’, ‘산 자들의 무덤’."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "엄혹한 환경 때문에 ‘생지옥’..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "라틴아메리카포스트는 세코트가 완공된 2023년 이후 중남미 각국 정부들이 최소 16개의 초대형 교도소 건설을 추진..."
+          "evidence": "\"곡소리 코스피에 홀로 웃는다\"…삼성전자 등에 업더니 '29%' 급등"
         },
         {
           "panel": 4,
@@ -326,7 +226,111 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.68,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i76e8e189",
+      "title": "美동부 강타한 폭풍…추수감사절 90만곳 암흑·항공편 결항 속출(종합)",
+      "category": "세계",
+      "rank": 10,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "대통령 탄핵에 반대했다'는 취지로 발언한 사실이 알려지면서 감찰 대상이 됐습니다.",
+        "미 최대 명절인 추수감사절, 미 동부 지역에 폭우와 강풍을 동반한 폭풍이 몰아쳐 대규모 정전과 항공편 결항 등 피해가 잇따랐습니다.",
+        "워싱턴=민병기 특파원 미국 최대 명절 중 하나인 추수감사절인 26일(현지시간) 미 동부 지역에 폭우와 강풍을 동반한 폭풍이 몰아치며 90만 곳 이상이 정전되고 420편 이상의 항공편이 결항하는 등 큰 피해가 잇따랐다.",
+        "아시아투데이 김현민 기자 = 미국 최대 명절인 추수감사절인 26일(현지시간) 동부에서 폭풍으로 인해 해안...",
+        "항공편 추적 사이트 플라이트어웨어에 따르면 같은 날 국내선과 국제선 항공편 400여편이 결항되고 약..."
+      ],
+      "sources": [
+        {
+          "press": "sbs.co.kr",
+          "title": "[12뉴스] 오늘의 주요뉴스",
+          "url": "https://n.news.naver.com/mnews/article/055/0001406303?sid=102"
+        },
+        {
+          "press": "munhwa.com",
+          "title": "폭풍 맞은 美추수감사절… 92만 곳 정전·항공마비",
+          "url": "https://n.news.naver.com/mnews/article/021/0002836020?sid=104"
+        },
+        {
+          "press": "asiatoday.co.kr",
+          "title": "美 추수감사절 폭풍에 74만여곳 정전·항공편 400여편 결항",
+          "url": "https://www.asiatoday.co.kr/kn/view.php?key=20261127010010812"
+        },
+        {
+          "press": "imnews.imbc.com",
+          "title": "미 추수감사절 폭풍‥30만 곳 정전·수백 편 결항",
+          "url": "https://n.news.naver.com/mnews/article/214/0001538483?sid=104"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "대통령 탄핵에 반대했다'는 취지로 발언한 사실이 알려지면서 감찰 대상이 됐습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "양은하 이정환 기자 = 미국의 추수감사절인 26일(현지시간) 강력한 폭풍이 미 동부 해안 지역을 강타하면서 90만 곳에 육박하는 가정과 사업장에 전력 공급이 끊기고 항공편 수백 편이 결항하는 등 피해가…"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "워싱턴=민병기 특파원 미국 최대 명절 중 하나인 추수감사절인 26일(현지시간) 미 동부 지역에 폭우와 강풍을 동반한 폭풍이 몰아치며 90만 곳 이상이 정전되고 420편 이상의 항공편이 결항하는 등 큰 피해가…"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.84,
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
