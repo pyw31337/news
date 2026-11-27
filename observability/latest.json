@@ -1,7 +1,7 @@
 {
-  "run_id": "45926924777",
-  "observed_at": "2026-11-27T02:24:06+00:00",
-  "observed_at_kst": "2026-11-27T11:24:06+09:00",
+  "run_id": "44666085152",
+  "observed_at": "2026-11-20T03:22:45+00:00",
+  "observed_at_kst": "2026-11-20T12:22:45+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
   "commit": "2285dd816511c8631dca55031f37d903e9025339",
@@ -9,286 +9,47 @@
   "stages": {
     "collect": {
       "status": "degraded",
-      "ok": 305,
-      "fail": 20,
-      "errors": 20,
+      "ok": 266,
+      "fail": 24,
+      "errors": 24,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 455,
-      "fail": 51,
-      "errors": 40,
+      "ok": 505,
+      "fail": 23,
+      "errors": 23,
       "artifact": true
     },
     "quality": {
       "status": "success",
       "quality_issue_count": 10,
-      "event_quality_present": true,
-      "detail": {
-        "low_score": 9,
-        "low_photo": 3,
-        "low_source": 4,
-        "missing_event_stages": 10
-      }
+      "event_quality_present": true
     },
     "publish": {
       "status": "success",
-      "published_at": "2026-11-27T02:27:58+00:00",
-      "data_commit": "fcaf48fb96e41a2c59900d033f9ea095e40369dd",
+      "published_at": "2026-11-20T09:23:05+00:00",
+      "data_commit": "fe69260f05dbfe6ae408e501c0ff0329eeb8740f",
       "note": "data 브랜치 커밋 이후 게시 확인"
     }
   },
   "counts": {
     "issues": 10,
-    "sources": 188,
+    "sources": 187,
     "entities": 36,
     "global_issues": 0,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "8475e509f52b14124ecc4ae87e372187f74638e9e8ba1b29cf3f6aeb833bbd08",
-    "global": "476e896fb305a530c583494b0e7f1915e775455a3ea75655a7c9265229e2e4f5",
-    "quality": "5f98c300e20b7a6be6f3d4e7b02e187b106bcad63d2b52f4f976da3ea1f3652b",
-    "status": "607d9136f4210f3a64988b9a38ad3bb755fcb63f9632609812b5a6d0bd0fd6c1",
-    "event_quality": "0e81d57f061e4bb45a0bc1e639f7e1236da9b195877039e05a4a16ece4e59161"
-  },
-  "diagnostics": {
-    "collect": {
-      "by_kind": {
-        "timeout": 15,
-        "not_found": 5
-      },
-      "by_host": {
-        "n.news.naver.com": 13,
-        "m.news.naver.com": 2,
-        "ko.wikipedia.org": 5
-      },
-      "surface": {
-        "core": 8,
-        "auxiliary": 12
-      },
-      "examples": [
-        {
-          "t": "11:14:47",
-          "host": "n.news.naver.com",
-          "path": "/article/656/0000193678",
-          "err": "reporter: The read operation timed out"
-        },
-        {
-          "t": "11:14:56",
-          "host": "n.news.naver.com",
-          "path": "/article/660/0000122263",
-          "err": "reporter: The read operation timed out"
-        },
-        {
-          "t": "11:15:11",
-          "host": "n.news.naver.com",
-          "path": "/article/087/0001233898",
-          "err": "reporter: The read operation timed out"
-        },
-        {
-          "t": "11:15:13",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/TF%ED%8F%AC%EC%B0%A9",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "11:15:13",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%8B%9C%EC%82%AC%EC%87%BC",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "11:15:13",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%ED%95%9C%ED%99%94%ED%81%B4%EB%9E%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "11:15:13",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/SK%ED%95%98%EB%8B%89",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "11:15:13",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%B6%81%EB%9F%AC",
-          "err": "HTTP Error 404: Not Found"
-        }
-      ]
-    },
-    "analyze": {
-      "by_kind": {
-        "timeout": 18,
-        "rate_limit": 21,
-        "not_found": 1
-      },
-      "by_host": {
-        "n.news.naver.com": 29,
-        "ko.wikipedia.org": 22
-      },
-      "surface": {
-        "core": 40,
-        "auxiliary": 0
-      },
-      "examples": [
-        {
-          "t": "11:19:32",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%8F%8C%EB%B4%84",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "11:19:32",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%B0%A8%EC%A7%88",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "11:19:50",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%B3%B8%EA%B2%A9",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "11:19:50",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A3%BC%EB%91%94",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "11:19:50",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%82%B4%EB%85%84",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "11:20:08",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A0%84%EB%A7%9D",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "11:20:08",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EA%B5%AC%EB%A7%A4",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "11:20:08",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9E%90%EC%8B%A0%EA%B0%90",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        }
-      ]
-    },
-    "global": {
-      "by_kind": {
-        "other": 9,
-        "rate_limit": 1
-      },
-      "by_host": {
-        "apnews.com": 1,
-        "247sports.com": 1,
-        "athlonsports.com": 1,
-        "www.nytimes.com": 1,
-        "www.cbs8.com": 1,
-        "www.bloomberg.com": 1,
-        "www.thestreet.com": 1,
-        "www.usatoday.com": 1,
-        "www.techpowerup.com": 1,
-        "www.wkyc.com": 1
-      },
-      "surface": {
-        "core": 10,
-        "auxiliary": 0
-      },
-      "examples": [
-        {
-          "t": "11:20:23",
-          "host": "athlonsports.com",
-          "path": "/nfl/buffalo-bills/best-worst-bills-coaches",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "11:20:23",
-          "host": "www.nytimes.com",
-          "path": "/2026/11/25/movies/way-of-the-warrior-kid-review.html",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "11:20:24",
-          "host": "www.cbs8.com",
-          "path": "/article/entertainment/movies/way-of-the-warrior-kid-san-die",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "11:20:25",
-          "host": "www.bloomberg.com",
-          "path": "/news/articles/2026-11-26/asian-stock-futures-signal-gains-o",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "11:20:25",
-          "host": "www.thestreet.com",
-          "path": "/retail/black-friday-deals-freebies-2026",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "11:20:25",
-          "host": "www.usatoday.com",
-          "path": "/story/shopping/deals/black-friday/2026/11/26/costco-black-f",
-          "err": "HTTP Error 402: Payment Required"
-        },
-        {
-          "t": "11:20:25",
-          "host": "www.techpowerup.com",
-          "path": "/355245/gta-6-frame-rate-unlock-arrives-on-jailbroken-ps5-co",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "11:20:25",
-          "host": "www.wkyc.com",
-          "path": "/article/news/local/medina-county/annual-meadows-turkey-bowl",
-          "err": "HTTP Error 403: Forbidden"
-        }
-      ]
-    },
-    "other": {
-      "db": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      },
-      "official": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      },
-      "naver": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      }
-    }
+    "today": "316980b48f41367096045a758b71492bc174dab8d081cc37a249cba7cb3e7580",
+    "global": null,
+    "quality": "d946994bd8680754784bb7905885c564cceb16d9322d7459068619b16da91a37",
+    "status": "425e5ef15e3faed333cd1a4841896d5329594af5cdad479863a172d5b7b3a391",
+    "event_quality": "1de2d116ce7c94cc12656a2d4780a8714a43ff4e2f8477c7d25ca826f08b0557"
   },
   "status_snapshot": {
-    "updated": "2026-11-27T11:23:38.538877+09:00",
+    "updated": "2026-11-20T18:20:20.271374+09:00",
     "error_count": 60
   },
-  "publish_verified_at": "2026-11-27T02:27:58+00:00"
+  "publish_verified_at": "2026-11-20T09:23:05+00:00"
 }
