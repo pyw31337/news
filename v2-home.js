@@ -146,19 +146,34 @@
   }
 
   function buildFlow(i) {
-    if (Array.isArray(i.flow) && i.flow.length && !i.flow[0].items) {
-      const all = i.flow.slice().sort((a, b) => String(a.date).localeCompare(String(b.date)));
-      const direct = all.filter(e => /세무사|수석|AI ?커닝|AI ?안경|한원석|세무냥이/i.test(e.title || ''));
-      return (direct.length >= 4 ? direct : all).slice(-8);
-    }
     const terms = issueTerms(i);
+    const entities = new Set((i.entities || []).map(e => String(e).toLowerCase().trim()));
+    // 인물 단독 매칭 차단: 엔티티가 아닌 사건 행동/키워드
+    const actionTerms = terms.filter(t => !entities.has(t.toLowerCase()));
+
+    // 타임라인 후보 검증 필터 (인물 외 핵심 사건 키워드 1개 이상 필수)
+    const isCoherent = item => {
+      const text = `${item.title || ''} ${item.body || ''}`.toLowerCase();
+      const hasAction = actionTerms.some(t => text.includes(t.toLowerCase()));
+      const score = relevance(item, terms);
+      return score >= 2 && hasAction;
+    };
+
+    if (Array.isArray(i.flow) && i.flow.length && !i.flow[0].items) {
+      const all = i.flow.slice().filter(isCoherent).sort((a, b) => String(a.date).localeCompare(String(b.date)));
+      return (all.length >= 3 ? all : i.flow.slice()).slice(-8);
+    }
+
     const candidates = (i.flow || []).flatMap(x => (x.items || []).map(it => ({ date: x.date, title: it.title, body: it.body, url: it.url || it.ourl, img: it.img, press: it.press })))
+      .filter(isCoherent)
       .map(e => ({ ...e, score: relevance(e, terms) })).filter(e => e.score > 0);
     const bestByDate = new Map();
     candidates.forEach(e => { const prior = bestByDate.get(e.date) || null; if (!prior || e.score > prior.score) bestByDate.set(e.date, e); });
     const events = [...bestByDate.values()].sort((a, b) => String(a.date).localeCompare(String(b.date))).slice(-6);
     if (events.length >= 3) return events;
-    const sources = (i.sources || []).map(s => ({ date: s.time || s.t || '', title: s.title, body: s.body || s.press, url: s.url || s.ourl, img: s.img, press: s.press, score: relevance(s, terms) })).sort((a, b) => b.score - a.score || String(b.date).localeCompare(String(a.date)));
+    const sources = (i.sources || []).map(s => ({ date: s.time || s.t || '', title: s.title, body: s.body || s.press, url: s.url || s.ourl, img: s.img, press: s.press, score: relevance(s, terms) }))
+      .filter(isCoherent)
+      .sort((a, b) => b.score - a.score || String(b.date).localeCompare(String(a.date)));
     return [...events, ...sources.filter(s => !events.some(e => e.title === s.title)).slice(0, 6 - events.length)].sort((a, b) => String(a.date).localeCompare(String(b.date)));
   }
 

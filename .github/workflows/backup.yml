@@ -31,7 +31,7 @@ jobs:
             split -b 90m -d -a 2 $b.tgz $b.tgz.part- && rm $b.tgz
             for f in $b.tgz.part-*; do
               put "$f" "latest/$f" || fail=1
-              if [ "$b" != media ] && [ "$D" -le 07 ]; then put "$f" "$M/$f" || fail=1; fi
+              # Monthly copies disabled to protect R2 10GB free tier. All long-term historical data is vaulted in local Mac mini LETS_DATA_VAULT.
               rm "$f"
             done
           done

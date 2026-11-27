@@ -280,12 +280,45 @@ def verify_categories(issues):
                 x['category'] = o['cat']; x['cat_conf'] = round(float(o['conf']), 2)
         except Exception: pass
 
+def filter_semantic_flow(iss, items):
+    """사건 일관성 필터: 인물 단독 매칭을 차단하고 사건 행동/쟁점 키워드가 반드시 1개 이상 공존해야 타임라인으로 채택."""
+    title_terms = [re.sub(r'\W', '', w) for w in iss.get('title', '').split() if len(w) >= 2]
+    core_kw = set(iss.get('keywords', []) + iss.get('entities', []) + title_terms)
+    stop_kw = {'오늘', '어제', '최근', '단독', '종합', '속보', '포토', '뉴스', '논란', '의혹', '관련', '밝혀', '말해', '주장', '예정', '진행', '누구', '결국'}
+    core_kw = {k for k in core_kw if k not in stop_kw and len(k) >= 2}
+    entities = set(iss.get('entities', []))
+    action_kw = {k for k in core_kw if k not in entities}
+
+    scored = []
+    for x in items:
+        t = x.get('title', '')
+        b = x.get('body', '')
+        combined = (t + ' ' + b).lower()
+        matches = [k for k in core_kw if k.lower() in combined]
+        score = len(matches)
+        # 인물 이름만 들어간 과거 무관 기사는 100% 차단 (사건 행동/쟁점 키워드 최소 1개 필수)
+        has_action = any(m in action_kw for m in matches)
+        if score >= 2 and has_action:
+            scored.append((score, x))
+        elif score >= 1 and has_action and x.get('t', '')[:10] == D.get('date', '')[:10]:
+            scored.append((score, x))
+    scored.sort(key=lambda s: s[0], reverse=True)
+    return [s[1] for s in scored]
+
 def enrich_issue(iss):
-    kw = ' '.join(([e for e in iss['entities'][:1]] + [k for k in iss['keywords'] if k not in iss['entities']])[:3])
+    # 인물 단독 검색 방지: 인물 + 상위 쟁점 키워드 결합 검색
+    ents = [e for e in iss.get('entities', [])[:1]]
+    non_ents = [k for k in iss.get('keywords', []) if k not in iss.get('entities', [])][:2]
+    kw = ' '.join(ents + non_ents) if (ents and non_ents) else (' '.join(non_ents[:2]) or iss.get('title', '')[:20])
     hist = history(kw) if kw else []
     # Google 타임라인(기존)과 합치되 이미지 있는 네이버 결과 우선
     gtl = [dict(title=x['title'], url=x['url'], press=x['press'], t=x['t'], body='', img='') for x in iss.get('timeline', [])]
-    flow = dedupe(hist + gtl)
+    raw_flow = dedupe(hist + gtl)
+    # 사건 일관성 필터 적용 (무관한 과거 발언 및 타 사건 유입 제거)
+    flow = filter_semantic_flow(iss, raw_flow)
+    if len(flow) < 3:
+        # 안전 폴백: 최소 3건 유지하되 동일 일자 기사 중심으로 보강
+        flow = dedupe(flow + [x for x in raw_flow if x.get('t', '')[:10] == D.get('date', '')[:10]])
     leads = [d for d in ([iss.get('lead', '')] + [x['body'] for x in hist[:6] if x['t'][:10] == D['date']]) if d]
     nvs = [s['url'] for s in iss['sources'] if 'n.news.naver.com' in s['url'] and s['url'] != iss['url']][:3]
     with ThreadPoolExecutor(3) as ex: leads += [d for d in ex.map(og, nvs) if d]
