@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-27",
-  "generated_at": "2026-11-27T19:44:59+09:00",
+  "generated_at": "2026-11-27T20:24:29+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,8 +27,8 @@
   },
   "candidates": [
     {
-      "issue_id": "i8278aaca",
-      "title": "코스피·코스닥 동반 급등…증안펀드 기대감",
+      "issue_id": "i1ccd8e2b",
+      "title": "국민연금 3개월 만에 202조원 증발…상반기 수익률 절반 반납",
       "category": "경제",
       "rank": 4,
       "priority_score": 45,
@@ -36,117 +36,13 @@
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "최근 급락을 거듭하던 국내 증시가 2026년 11월 27일 외국인과 기관의 동반 매수와 금융당국의 증시 안정 대책 기대감에 힘입어 큰 폭으로 반등했다.",
-        "놨다’ 외국인 “하루 만에 1조 넘게 샀다”…코스피 4900선 회복",
-        "코스피, 외국인·기관 매수에 4.3% 급등...4900선 회복 고려아연, MBK·영풍 의혹 제기에 법적 대응 시사...",
-        "같은 날 코스닥 지수는 8.13% 오른 708.99에 거래를 마무리했다.",
-        "코스닥 지수가 종가 기준 700선 위로 올라선 것은..."
-      ],
-      "sources": [
-        {
-          "press": "중앙일보",
-          "title": "[단독] 리트냥이 전과자였다…‘고의 교통사고’ 공갈 누범에 실형도",
-          "url": "https://n.news.naver.com/article/025/0003566361"
-        },
-        {
-          "press": "서울경제",
-          "title": "‘AI 커닝 의혹’ LEET 만점자 사망…고발인 “수사 계속해야”",
-          "url": "https://n.news.naver.com/article/011/0004683998"
-        },
-        {
-          "press": "세계일보",
-          "title": "LEET 만점자 사망에 ‘공소권 없음’ 수사 종결 수순",
-          "url": "https://n.news.naver.com/article/022/0004176505"
-        },
-        {
-          "press": "동아일보",
-          "title": "[단독]리트 만점자, 고의 교통사고로 합의금 뜯어 실형 받았었다",
-          "url": "https://n.news.naver.com/article/020/0003763620"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "최근 급락을 거듭하던 국내 증시가 2026년 11월 27일 외국인과 기관의 동반 매수와 금융당국의 증시 안정 대책 기대감에 힘입어 큰 폭으로 반등했다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "판결문에 따르면 해당 인물은 고의로 교통사고를 낸 뒤 합의금을 받아낸 혐의 등으로 2022년 9월 징역 6개월을..."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "법학적성시험(LEET·리트) 만점자로 알려진 이진우(32) 씨가 과거 고의 교통사고를 이용한 공갈 범죄와 경찰관..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "외국인과 기관의 순매수와 증안펀드 기대감에 힘입어 코스피 4%대, 코스닥 8%대라는 동반 급등을 기록했다. 직전일의 주춤하던 흐름에서 벗어나 투자심리가 급격히 살아난 것으로 볼 수 있다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "ledger",
-        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.92,
-        "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i1ccd8e2b",
-      "title": "국민연금 3개월 만에 202조원 증발…상반기 수익률 절반 반납",
-      "category": "경제",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
       "status": "needs_fact_review",
       "facts": [
-        "국민연금기금 적립금이 석달 만에 202조원 가까이 줄어들며 상반기 벌어들인 수익의 절반가량을 반납했다.",
+        "국민연금기금 적립금이 3분기 만에 202조원 가까이 줄어들며 상반기에 거둔 수익의 절반가량을 반납했다.",
         "\"내 노후자금 어쩌나\" 국민연금 적립금 202조 증발…1866조→1664조(종합)",
         "[속보] 국민연금 3개월 만에 202조 증발… 상반기 수익률 절반 반납",
-        "국민연금 적립금 석달만에 202조원↓…3분기 수익률 13%",
-        "뉴데일리 박철호 = 국민연금의 올해 누적 운용수익률이 석 달 만에 반토막 났다."
+        "국민연금, 석 달 만에 202조원 사라져… 3분기 수익률 13%",
+        "국민연금 기금운용본부는 올해 9월까지 기금 운용수익률이 13.28%(금액가중수익률 기준)로 잠정 집계됐다고 27일 밝혔다."
       ],
       "sources": [
         {
@@ -160,26 +56,26 @@
           "url": "https://n.news.naver.com/article/016/0002729662"
         },
         {
-          "press": "연합뉴스",
-          "title": "국민연금 적립금 석달만에 202조원↓…3분기 수익률 13%",
-          "url": "https://n.news.naver.com/article/001/0016468409"
+          "press": "조선비즈",
+          "title": "국민연금, 석 달 만에 202조원 사라져… 3분기 수익률 13%",
+          "url": "https://n.news.naver.com/article/366/0001207873"
         },
         {
-          "press": "biz.newdaily.co.kr",
-          "title": "국민연금 누적 수익률 반토막 … 석 달 새 적립금 202조 증발",
-          "url": "https://biz.newdaily.co.kr/site/data/html/2026/11/27/2026112750321.html"
+          "press": "sedaily.com",
+          "title": "국민연금 9월 말 수익률 13.28%…기금규모 1664조 원 [시그널]",
+          "url": "https://n.news.naver.com/mnews/article/011/0004687048?sid=101"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "국민연금기금 적립금이 석달 만에 202조원 가까이 줄어들며 상반기 벌어들인 수익의 절반가량을 반납했다."
+          "evidence": "국민연금기금 적립금이 3분기 만에 202조원 가까이 줄어들며 상반기에 거둔 수익의 절반가량을 반납했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "국내외 주식 수익률이 큰 폭으로 하락한 데다"
+          "evidence": "205조 7290억 원 증가했다...."
         },
         {
           "panel": 3,
@@ -189,7 +85,7 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+          "evidence": "국민연금 적립금이 3분기 동안 202조원 감소하고 수익률이 반토막 났다는 공식적인 보도들이 집중되며, 주가 방어 및 정책 대응 실패를 지적하는 여론이 확산되는 것으로 볼 수 있다."
         }
       ],
       "visual_brief": {
@@ -226,7 +122,7 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.68,
+        "continuity_quality": 0.76,
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
@@ -236,10 +132,10 @@
       }
     },
     {
-      "issue_id": "i333a0d6d",
-      "title": "중국 권토중래 외친 현대차 ‘아이오닉V’, 870대 판매…후속은 전기 SUV",
+      "issue_id": "i5eb0bdd2",
+      "title": "[속보]돌아온 외국인에 코스피 4900선 탈환…코스닥 8%대 급등",
       "category": "경제",
-      "rank": 10,
+      "rank": 6,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -247,49 +143,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "현대자동차가 중국 시장 공략에 속도를 내고 있다.",
-        "현대차는 이날 모터쇼에서 중국 시장 전략형 소형 전기 스포츠유틸리티차(SUV) '아이오닉 머큐리 콘셉트'를 세계 최초로 공개했다.",
-        "양산형 모델인 '아이오닉 M'은 내년 상반기 중국 시장에 공식 출시된다.",
-        "세웠다며 사양부터 기준까지 다",
-        "바꾸지 않으면 이길 수 없다는 각오로 임해 왔다고 강조했습니다."
+        "외국인이 국내 증시에서 1조4000억원 넘게 쓸어 담으면서 코스피와 코스닥이 동반 급등했다.",
+        "놨다’ 외국인 “하루 만에 1조 넘게 샀다”…코스피 4900선 회복",
+        "코스피, 외국인·기관 매수에 4.3% 급등...4900선 회복 고려아연, MBK·영풍 의혹 제기에 법적 대응 시사...",
+        "같은 날 코스닥 지수는 8.13% 오른 708.99에 거래를 마무리했다.",
+        "코스닥 지수가 종가 기준 700선 위로 올라선 것은..."
       ],
       "sources": [
         {
-          "press": "inews24.com",
-          "title": "장재훈 현대차 부회장 \"중국과 원가 30% 차이⋯3년 내 격차 좁힌다\"",
-          "url": "https://n.news.naver.com/mnews/article/031/0001079224?sid=103"
+          "press": "매일경제",
+          "title": "증시 ‘들었다 놨다’ 외국인 “하루 만에 1조 넘게 샀다”…코스피 4900선 회복",
+          "url": "https://n.news.naver.com/article/009/0005770008"
         },
         {
-          "press": "ytn.co.kr",
-          "title": "[기업] 현대차그룹 부회장 \"중국과 원가 30% 차이...3년 내 줄일 것\"",
-          "url": "https://n.news.naver.com/mnews/article/052/0002439092?sid=101"
+          "press": "futurechosun.com",
+          "title": "[더나은미래 경제브리핑] 삼성전자 30조 ‘역대 최대’ 배당, 추가 주주...",
+          "url": "https://futurechosun.com/?p=167910"
         },
         {
-          "press": "한겨레",
-          "title": "중국 권토중래 외친 현대차 ‘아이오닉V’, 870대 판매…후속은 전기 SUV",
-          "url": "https://v.daum.net/v/20261127165106360"
+          "press": "비즈워치",
+          "title": "증안펀드 확대 기대에 코스닥 8% 급등…코스피도 4900선 회복",
+          "url": "https://n.news.naver.com/article/648/0000053053"
         },
         {
-          "press": "sedaily.com",
-          "title": "장재훈 “中과 원가 30% 차이…3년내 격차 좁힐 것”",
-          "url": "https://n.news.naver.com/mnews/article/011/0004686994?sid=101"
+          "press": "이데일리",
+          "title": "[속보]돌아온 외국인에 코스피 4900선 탈환…코스닥 8%대 급등",
+          "url": "https://n.news.naver.com/article/018/0006416644"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "현대자동차가 중국 시장 공략에 속도를 내고 있다."
+          "evidence": "외국인이 국내 증시에서 1조4000억원 넘게 쓸어 담으면서 코스피와 코스닥이 동반 급등했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "현대차, 中 투자법인 1875만 달러 추가 수혈…2차례 증자로 1년 새 자본금 19% 확대"
+          "evidence": "[기자] 장 초반 코스닥에서 시작된 상승세가 코스피로까지 확산하며 국내 증시가 동반 급등했습니다."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "중국 권토중래 외친 현대차 ‘아이오닉V’, 870대 판매…후속은 전기 SUV"
+          "evidence": "놨다’ 외국인 “하루 만에 1조 넘게 샀다”…코스피 4900선 회복"
         },
         {
           "panel": 4,
@@ -333,7 +229,112 @@
         "sources": 4,
         "continuity_quality": 0.92,
         "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "ifd530fa6",
+      "title": "\"속옷 다 비쳐 민망? 뚱뚱한 여자는 입지마\" \"22세, 임신할까봐 채용 꺼려\"…룰루레몬 창업자 또 막말",
+      "category": "경제",
+      "rank": 10,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "세계적인 요가복 브랜드 룰루레몬을 창업한 칩 윌슨이 성차별적 발언으로 논란의 중심에 섰다.",
+        "비쳐 민망? 뚱뚱한 여자는 입지마\" \"22세, 임신할까봐 채용 꺼려\"…룰루레몬 창업자 또 막말",
+        "브랜드 룰루레몬을 창업한 억만장자 칩 윌슨이 여성의 임신과 출산을 문제 삼는 발언으로 또다시 구설에...",
+        "사모펀드 TPG 공동창업자이자 우버 이사였던 데이비드 본더먼은 2017년 우버의 성희롱 문제와 조직문화 개선을...",
+        "글로브앤메일 등에 따르면 칩 윌슨 룰루레몬 창업자는 지난 23일(현지시간) 캐나다"
+      ],
+      "sources": [
+        {
+          "press": "아시아경제",
+          "title": "\"속옷 다 비쳐 민망? 뚱뚱한 여자는 입지마\" \"22세, 임신할까봐 채용 꺼려\"…룰루레몬 창업자 또 막말",
+          "url": "https://n.news.naver.com/article/277/0005848693"
+        },
+        {
+          "press": "sedaily.com",
+          "title": "“뚱뚱한 여자는 입지 마”, “22세 여성은 임신할까봐 안 뽑아”…룰루...",
+          "url": "https://n.news.naver.com/mnews/article/011/0004686863?sid=101"
+        },
+        {
+          "press": "tvchosun.com",
+          "title": "룰루레몬 창업자 \"22세 여성, 임신할까 채용 꺼려\"…또 성차별 막말",
+          "url": "https://n.news.naver.com/mnews/article/448/0000653824?sid=104"
+        },
+        {
+          "press": "news1.kr",
+          "title": "룰루레몬 창업자 또 막말 논란…\"피임 덕에 20대 여성 채용 부담 덜어\"",
+          "url": "https://n.news.naver.com/mnews/article/421/0009314406?sid=104"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "세계적인 요가복 브랜드 룰루레몬을 창업한 칩 윌슨이 성차별적 발언으로 논란의 중심에 섰다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "23세에 임신해 출산휴가를 갈 수 있기 때문\"이라고 말했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "비쳐 민망? 뚱뚱한 여자는 입지마\" \"22세, 임신할까봐 채용 꺼려\"…룰루레몬 창업자 또 막말"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.56,
+        "continuity_gaps": [
           "입장·공방",
+          "수사·대응",
           "사법·처분"
         ],
         "no_generic_closing": true
