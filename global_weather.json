@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T22:19:26.701825+09:00",
+  "updated": "2026-11-27T22:50:36.105578+09:00",
   "alerts_count": 43,
   "alerts": [
     {
@@ -245,6 +245,14 @@
   ],
   "quakes": [
     {
+      "id": "us6000udwh",
+      "mag": 4.5,
+      "place": "131 km WNW of Neiafu, Tonga",
+      "t": "2026-11-27 12:48",
+      "depth": 271.603,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000udwh"
+    },
+    {
       "id": "us6000udw4",
       "mag": 4.8,
       "place": "183 km SSE of Vilyuchinsk, Russia",
@@ -309,7 +317,176 @@
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000udq5"
     }
   ],
-  "cities": [],
+  "cities": [
+    {
+      "id": "newyork",
+      "name_ko": "뉴욕",
+      "name_en": "New York",
+      "country": "US",
+      "flag": "🇺🇸",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "temp": 11.1,
+      "apparent_temp": 7.8,
+      "humidity": 83,
+      "code": 0,
+      "wind": 20.2
+    },
+    {
+      "id": "losangeles",
+      "name_ko": "로스앤젤레스",
+      "name_en": "Los Angeles",
+      "country": "US",
+      "flag": "🇺🇸",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "temp": 14.2,
+      "apparent_temp": 10.0,
+      "humidity": 33,
+      "code": 2,
+      "wind": 11.8
+    },
+    {
+      "id": "london",
+      "name_ko": "런던",
+      "name_en": "London",
+      "country": "GB",
+      "flag": "🇬🇧",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "temp": 3.8,
+      "apparent_temp": -0.2,
+      "humidity": 77,
+      "code": 3,
+      "wind": 13.0
+    },
+    {
+      "id": "paris",
+      "name_ko": "파리",
+      "name_en": "Paris",
+      "country": "FR",
+      "flag": "🇫🇷",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "temp": 3.8,
+      "apparent_temp": 0.3,
+      "humidity": 67,
+      "code": 2,
+      "wind": 7.7
+    },
+    {
+      "id": "frankfurt",
+      "name_ko": "프랑크푸르트",
+      "name_en": "Frankfurt",
+      "country": "DE",
+      "flag": "🇩🇪",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "temp": 2.0,
+      "apparent_temp": -1.6,
+      "humidity": 64,
+      "code": 1,
+      "wind": 6.5
+    },
+    {
+      "id": "tokyo",
+      "name_ko": "도쿄",
+      "name_en": "Tokyo",
+      "country": "JP",
+      "flag": "🇯🇵",
+      "lat": 35.6895,
+      "lon": 139.6917,
+      "temp": 12.1,
+      "apparent_temp": 11.2,
+      "humidity": 79,
+      "code": 3,
+      "wind": 3.8
+    },
+    {
+      "id": "beijing",
+      "name_ko": "베이징",
+      "name_en": "Beijing",
+      "country": "CN",
+      "flag": "🇨🇳",
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "temp": 5.9,
+      "apparent_temp": 1.2,
+      "humidity": 25,
+      "code": 1,
+      "wind": 8.4
+    },
+    {
+      "id": "singapore",
+      "name_ko": "싱가포르",
+      "name_en": "Singapore",
+      "country": "SG",
+      "flag": "🇸🇬",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "temp": 25.0,
+      "apparent_temp": 30.8,
+      "humidity": 99,
+      "code": 55,
+      "wind": 5.6
+    },
+    {
+      "id": "sydney",
+      "name_ko": "시드니",
+      "name_en": "Sydney",
+      "country": "AU",
+      "flag": "🇦🇺",
+      "lat": -33.8688,
+      "lon": 151.2093,
+      "temp": 21.2,
+      "apparent_temp": 22.2,
+      "humidity": 91,
+      "code": 3,
+      "wind": 18.1
+    },
+    {
+      "id": "toronto",
+      "name_ko": "토론토",
+      "name_en": "Toronto",
+      "country": "CA",
+      "flag": "🇨🇦",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "temp": 3.8,
+      "apparent_temp": -0.1,
+      "humidity": 95,
+      "code": 51,
+      "wind": 15.8
+    },
+    {
+      "id": "dubai",
+      "name_ko": "두바이",
+      "name_en": "Dubai",
+      "country": "AE",
+      "flag": "🇦🇪",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "temp": 26.5,
+      "apparent_temp": 27.7,
+      "humidity": 58,
+      "code": 0,
+      "wind": 9.9
+    },
+    {
+      "id": "saopaulo",
+      "name_ko": "상파울루",
+      "name_en": "São Paulo",
+      "country": "BR",
+      "flag": "🇧🇷",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "temp": 21.0,
+      "apparent_temp": 20.8,
+      "humidity": 66,
+      "code": 2,
+      "wind": 11.5
+    }
+  ],
   "stories": [
     {
       "id": "g0062dca2",
@@ -318,14 +495,6 @@
       "image": "https://i.guim.co.uk/img/media/7021c3fba59895984e4b86a1f246a4fffca9c129/748_0_5657_4528/master/5657.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=1406bae1af4feee10fc68d856e4427af",
       "score": 10.6,
       "url": "g/g0062dca2"
-    },
-    {
-      "id": "g4a1425c8",
-      "title": "Thanksgiving storm leaves over 900,000 homes without power",
-      "press": "EL PAÍS English",
-      "image": "https://s.tradingview.com/static/images/illustrations/news-story.jpg",
-      "score": 9.2,
-      "url": "g/g4a1425c8"
     }
   ]
 }
