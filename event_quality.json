@@ -1,195 +1,191 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-19 07:54:45",
-  "date": "2026-11-19",
+  "updated_at": "2026-11-27 07:28:32",
+  "date": "2026-11-27",
   "total_issues": 10,
-  "average_quality": 0.89,
+  "average_quality": 0.86,
   "issues": [
     {
-      "id": "ib0b88852",
-      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
-      "episode": "episode:6240c7cf2c14d8",
+      "id": "i42d61e14",
+      "title": "이 대통령 지지율 41%… 민주 37%·국힘 30% [한국갤럽]",
+      "episode": "episode:788a087c6c49fc",
       "quality": 1.0,
       "stages": [
         "일반 보도",
         "파장·후속",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
+        "수사·대응",
+        "사법·처분",
+        "입장·공방"
       ],
       "gaps": [
-        "사법·처분"
+        "발단·의혹"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 7,
+      "duplicate_candidates": 53,
+      "event_count": 93,
       "evidence_rate": 1.0
     },
     {
-      "id": "i52002ca2",
-      "title": "[속보] “용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
-      "episode": "episode:42a56cd22c055b",
-      "quality": 0.76,
-      "stages": [
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 26,
-      "event_count": 7,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i7472fb4e",
-      "title": "‘리트 만점자’ 숨진채 발견... 메모엔 “몸과 마음 지쳤다”",
-      "episode": "episode:43f66ea4b003f7",
+      "id": "ib54ef053",
+      "title": "장동혁 \"한동훈, 복당해도 다시 징계하면 된다\"",
+      "episode": "episode:5a5cf430a2ee6a",
       "quality": 1.0,
       "stages": [
         "일반 보도",
-        "사법·처분",
-        "발단·의혹",
+        "수사·대응",
+        "파장·후속",
         "입장·공방",
-        "수사·대응"
+        "발단·의혹",
+        "사법·처분"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 34,
+      "event_count": 15,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i086b1642",
+      "title": "'제자 성폭행' 남경주, 성관계 시도 인정…\"위력 행사는 없었다\"",
+      "episode": "episode:f38c4638b11c3f",
+      "quality": 0.84,
+      "stages": [
+        "발단·의혹",
+        "수사·대응",
+        "사법·처분"
       ],
       "gaps": [
+        "입장·공방",
         "파장·후속"
       ],
       "duplicate_candidates": 27,
+      "event_count": 7,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia24b17c9",
+      "title": "학교 비정규직 총파업…급식·돌봄 차질",
+      "episode": "episode:38c3ae2636e744",
+      "quality": 0.76,
+      "stages": [
+        "일반 보도",
+        "수사·대응"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 29,
       "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "icc7073be",
-      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
-      "episode": "episode:b4571ab00be66b",
-      "quality": 0.66,
+      "id": "i76efc306",
+      "title": "삼성전자 30조 원 배당...개미 5조·이재용 4,500억 [앵커리포트]",
+      "episode": "episode:480b538d7c3bf1",
+      "quality": 0.84,
       "stages": [
         "일반 보도",
+        "사법·처분",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 11,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i9fd78369",
+      "title": "30대 탈북女, 민통선 넘어 북상…GOP 철책 인근서 붙잡혀",
+      "episode": "episode:87466509c5cfa0",
+      "quality": 0.92,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "입장·공방",
         "수사·대응"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "사법·처분"
+        "파장·후속"
       ],
-      "duplicate_candidates": 30,
-      "event_count": 3,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ibfb65b25",
-      "title": "한 총리 \"작년 수능 시험지 보관하라\" 긴급 지시",
-      "episode": "episode:70917d4ab49bf4",
-      "quality": 0.84,
-      "stages": [
-        "수사·대응",
-        "파장·후속",
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 38,
+      "duplicate_candidates": 33,
       "event_count": 12,
       "evidence_rate": 1.0
     },
     {
-      "id": "if68e1f2d",
-      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
-      "episode": "episode:87c2b2d986a387",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "수사·대응",
-        "파장·후속",
-        "발단·의혹",
-        "입장·공방"
-      ],
-      "gaps": [],
-      "duplicate_candidates": 29,
-      "event_count": 20,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i32f6a682",
-      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
-      "episode": "episode:bb1f3458304a26",
+      "id": "i7ca24cdd",
+      "title": "돌아온 외국인…코스피 3%·코스닥 6% 급등 [줍줍 리포트]",
+      "episode": "episode:e6bbe158f850b4",
       "quality": 0.92,
       "stages": [
+        "파장·후속",
         "일반 보도",
-        "발단·의혹",
-        "입장·공방",
+        "사법·처분",
         "수사·대응"
       ],
       "gaps": [
-        "사법·처분",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 8,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3cea7471",
-      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
-      "episode": "episode:28b5802722ebe0",
-      "quality": 0.84,
-      "stages": [
         "발단·의혹",
-        "일반 보도",
-        "파장·후속"
-      ],
-      "gaps": [
-        "입장·공방",
-        "수사·대응",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i14bfd775",
-      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
-      "episode": "episode:332016de20ed99",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "수사·대응",
-        "파장·후속",
         "입장·공방"
       ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분"
-      ],
-      "duplicate_candidates": 31,
-      "event_count": 10,
+      "duplicate_candidates": 36,
+      "event_count": 27,
       "evidence_rate": 1.0
     },
     {
-      "id": "id0d27ff9",
-      "title": "장애 아들 앞 폭행… ‘김창민 감독 살해’ 피의자들 징역 12년·3년",
-      "episode": "episode:f616ea440abebf",
-      "quality": 0.92,
+      "id": "i491e142b",
+      "title": "야구 대신 골프채 잡더니…강호동 아들, 전국 골프대회 준우승",
+      "episode": "episode:f017ebebc93096",
+      "quality": 0.68,
       "stages": [
-        "수사·대응",
-        "사법·처분",
-        "입장·공방",
         "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "파장·후속"
+        "입장·공방",
+        "수사·대응"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 39,
+      "duplicate_candidates": 23,
+      "event_count": 9,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ia846f2a2",
+      "title": "손연재 부부 30억 기부…고위험 산모-태아 돕는다",
+      "episode": "episode:931340b848e819",
+      "quality": 0.68,
+      "stages": [
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 20,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i674fa0b6",
+      "title": "머스크 “스페이스X 주당 13조원 될거야…절대 팔지마”",
+      "episode": "episode:c42f3dd75a55e2",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "파장·후속",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 17,
       "evidence_rate": 1.0
     }
   ]
