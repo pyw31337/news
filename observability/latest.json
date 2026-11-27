@@ -1,7 +1,7 @@
 {
-  "run_id": "46051418486",
-  "observed_at": "2026-11-27T18:52:40+00:00",
-  "observed_at_kst": "2026-11-28T03:52:40+09:00",
+  "run_id": "46052767762",
+  "observed_at": "2026-11-27T19:10:24+00:00",
+  "observed_at_kst": "2026-11-28T04:10:24+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
   "commit": "80b867ac1ac9b3606e3bf4b9bb5338644c1ae56a",
@@ -10,15 +10,15 @@
     "collect": {
       "status": "degraded",
       "ok": 293,
-      "fail": 9,
-      "errors": 9,
+      "fail": 8,
+      "errors": 8,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 493,
-      "fail": 28,
-      "errors": 28,
+      "ok": 500,
+      "fail": 16,
+      "errors": 16,
       "artifact": true
     },
     "quality": {
@@ -27,156 +27,151 @@
       "event_quality_present": true,
       "detail": {
         "low_score": 8,
-        "low_photo": 9,
+        "low_photo": 10,
         "low_source": 2,
-        "missing_event_stages": 8
+        "missing_event_stages": 9
       }
     },
     "publish": {
-      "status": "success",
-      "published_at": "2026-11-27T18:53:00+00:00",
-      "data_commit": "462c6a9bd8efbfbfb512c076ce51081d65186c38",
-      "note": "data 브랜치 커밋 이후 게시 확인"
+      "status": "pending",
+      "note": "기록 시점에는 data 브랜치 커밋 전"
     }
   },
   "counts": {
     "issues": 10,
-    "sources": 191,
+    "sources": 192,
     "entities": 36,
     "global_issues": 12,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "bfe0c04e9be0a3ceb2746bfafaeaf5db6f97ed3fd23d6ef8d73cf364949ca67e",
-    "global": "bdde963bbbb8f865ba872a05ccc474fbf7e40a41925623edffadf9580899984e",
-    "quality": "53462edc01ec7391565d2c4c7a7e6b00ef1d71df95f0de369878e19093e6fc52",
-    "status": "968bb6a0f312e580ab02936f367b65d52702e8d4b6907d693951a38ccceca1ff",
-    "event_quality": "df941d68e87af703a441d1ce4b69436902cdce7a780925a9016139f654eaab37"
+    "today": "e661aab96c3e72fa4b08f558e15c7a64fb721ffdbd558c90d61727ea5be7c505",
+    "global": "4e9ca8a5da414e73641fab1e0f5f38b4ab6fcd1255ed1441bfb94198bee1495f",
+    "quality": "bd761437ae722397639a63eb4edb9f4a203faf20da45ee2f0da9ba11d5b50eef",
+    "status": "77a1fc1f0d5765e0a0caf5862f936e9c339cc9c42c7cb83b0e0365e1889b24ae",
+    "event_quality": "5d9c1dcea7c023cd32f63e4ef015d31d61b3eeb1d354e789d0aed0f4eef780bf"
   },
   "diagnostics": {
     "collect": {
       "by_kind": {
-        "timeout": 2,
+        "timeout": 1,
         "not_found": 7
       },
       "by_host": {
-        "n.news.naver.com": 2,
+        "n.news.naver.com": 1,
         "ko.wikipedia.org": 7
       },
       "surface": {
         "core": 7,
-        "auxiliary": 2
+        "auxiliary": 1
       },
       "examples": [
         {
-          "t": "03:43:35",
+          "t": "04:01:25",
           "host": "n.news.naver.com",
-          "path": "/article/469/0000968103",
+          "path": "/article/422/0000930652",
           "err": "reporter: The read operation timed out"
         },
         {
-          "t": "03:44:03",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%95%84%EB%A6%AC%ED%8C%8D",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "03:44:03",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%8B%B9%EC%9B%90%EA%B6%8C",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "03:44:03",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/SM%EC%97%94%ED%84%B0",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "03:44:03",
+          "t": "04:01:28",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EC%B9%9C%EC%B2%AD%EA%B3%84",
           "err": "HTTP Error 404: Not Found"
         },
         {
-          "t": "03:44:03",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%B2%A0%EB%8F%84%EB%85%B8%EC%A1%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "03:44:03",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9D%B4%EC%9E%84%EC%84%B1",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "03:44:04",
+          "t": "04:01:28",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EC%97%B0%EC%9E%AC%ED%83%9C%EC%95%",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "04:01:28",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%95%84%EB%A6%AC%ED%8C%8D",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "04:01:29",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/COP31",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "04:01:29",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EB%8B%B9%EC%9B%90%EA%B6%8C",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "04:01:29",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/SM%EC%97%94%ED%84%B0",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "04:01:29",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%B2%A0%EB%8F%84%EB%85%B8%EC%A1%",
           "err": "HTTP Error 404: Not Found"
         }
       ]
     },
     "analyze": {
       "by_kind": {
-        "timeout": 15,
-        "rate_limit": 11,
-        "not_found": 2
+        "rate_limit": 16
       },
       "by_host": {
-        "n.news.naver.com": 15,
-        "ko.wikipedia.org": 13
+        "ko.wikipedia.org": 16
       },
       "surface": {
-        "core": 28,
+        "core": 16,
         "auxiliary": 0
       },
       "examples": [
         {
-          "t": "03:47:26",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9C%84%EB%A0%A5",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "03:47:44",
+          "t": "04:04:37",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EC%83%81%EB%B0%98%EA%B8%B0",
           "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
         },
         {
-          "t": "03:47:44",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EA%B3%B3%EA%B3%B3",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "03:47:44",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9D%98%EB%A3%8C%EC%9B%90",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "03:47:44",
+          "t": "04:04:55",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EB%A8%B8%EB%A6%AC%EC%B1%84",
-          "err": "HTTP Error 404: Not Found"
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
         },
         {
-          "t": "03:47:45",
+          "t": "04:04:55",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EA%B2%A9%ED%99%94",
-          "err": "HTTP Error 404: Not Found"
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
         },
         {
-          "t": "03:48:02",
+          "t": "04:04:55",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EC%B4%88%EB%93%B1",
           "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
         },
         {
-          "t": "03:48:02",
+          "t": "04:05:13",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%B5%9C%EB%8C%80",
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
+        },
+        {
+          "t": "04:05:13",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%8A%A4%EC%8B%9C%EC%9E%90%EB%A1%",
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
+        },
+        {
+          "t": "04:05:13",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EB%82%B4%ED%99%8D",
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
+        },
+        {
+          "t": "04:05:31",
           "host": "ko.wikipedia.org",
           "path": "/api/rest_v1/page/summary/%EB%A7%A4%EC%88%98",
           "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
@@ -185,49 +180,73 @@
     },
     "global": {
       "by_kind": {
-        "other": 5
+        "other": 12
       },
       "by_host": {
-        "www.nytimes.com": 1,
-        "www.bloomberg.com": 1,
-        "www.semissourian.com": 1,
-        "www.weareiowa.com": 1,
-        "247sports.com": 1
+        "apnews.com": 1,
+        "weather.com": 1,
+        "www.cricinfo.com": 1,
+        "people.com": 1,
+        "www.milenio.com": 1,
+        "www.commercialappeal.com": 1,
+        "247sports.com": 2,
+        "www.desmoinesregister.com": 1,
+        "ktla.com": 1,
+        "www.cbsnews.com": 1,
+        "chapelboro.com": 1
       },
       "surface": {
-        "core": 5,
+        "core": 12,
         "auxiliary": 0
       },
       "examples": [
         {
-          "t": "03:48:22",
-          "host": "www.nytimes.com",
-          "path": "/athletic/7816475/2026/11/27/ilia-malinin-figure-skating-sho",
+          "t": "04:05:50",
+          "host": "www.milenio.com",
+          "path": "/negocios/precio-del-dolar-hoy-27-noviembre-2026-a-cuanto-co",
           "err": "HTTP Error 403: Forbidden"
         },
         {
-          "t": "03:48:24",
-          "host": "www.bloomberg.com",
-          "path": "/news/newsletters/2026-11-27/turkey-spent-nearly-700-million",
-          "err": "HTTP Error 403: Forbidden"
+          "t": "04:05:50",
+          "host": "www.commercialappeal.com",
+          "path": "/story/sports/college/memphis-tigers/2026/11/26/memphis-bask",
+          "err": "HTTP Error 402: Payment Required"
         },
         {
-          "t": "03:48:24",
-          "host": "www.semissourian.com",
-          "path": "/arts-entertainment/a-thanksgiving-tradition-annual-holiday-",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "03:48:24",
-          "host": "www.weareiowa.com",
-          "path": "/video/news/agriculture/iowa-farmers-union-shares-concerns-o",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "03:48:24",
+          "t": "04:05:50",
           "host": "247sports.com",
-          "path": "/college/michigan/longformarticle/ichigan-ad-search-intel-tr",
+          "path": "/college/iowa-state/article/iowa-state-basketball-preview-vs",
           "err": "HTTP Error 406: Not Acceptable"
+        },
+        {
+          "t": "04:05:50",
+          "host": "247sports.com",
+          "path": "/college/wake-forest/article/wake-forest-seeks-battle-4-atla",
+          "err": "HTTP Error 406: Not Acceptable"
+        },
+        {
+          "t": "04:05:50",
+          "host": "www.desmoinesregister.com",
+          "path": "/story/sports/college/iowa-state/basketball-mens/2026/11/27/",
+          "err": "HTTP Error 402: Payment Required"
+        },
+        {
+          "t": "04:05:50",
+          "host": "ktla.com",
+          "path": "/news/california/southern-california-atmospheric-river-rain-",
+          "err": "HTTP Error 403: Forbidden"
+        },
+        {
+          "t": "04:05:50",
+          "host": "www.cbsnews.com",
+          "path": "/losangeles/video/alex-bistons-next-weather-forecast-nov-22/",
+          "err": "HTTP Error 406: Not Acceptable"
+        },
+        {
+          "t": "04:05:52",
+          "host": "chapelboro.com",
+          "path": "/world-news/army-calls-detonation-of-bomb-chemicals-in-iowa-",
+          "err": "HTTP Error 403: Forbidden"
         }
       ]
     },
@@ -264,8 +283,7 @@
     }
   },
   "status_snapshot": {
-    "updated": "2026-11-28T03:52:13.587834+09:00",
-    "error_count": 42
-  },
-  "publish_verified_at": "2026-11-27T18:53:00+00:00"
+    "updated": "2026-11-28T04:09:56.514692+09:00",
+    "error_count": 36
+  }
 }
