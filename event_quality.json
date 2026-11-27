@@ -1,94 +1,73 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-27 01:28:18",
-  "date": "2026-11-27",
+  "updated_at": "2026-11-19 07:54:45",
+  "date": "2026-11-19",
   "total_issues": 10,
-  "average_quality": 0.86,
+  "average_quality": 0.89,
   "issues": [
     {
-      "id": "iccf2b956",
-      "title": "오늘 삼성전자 배당금 30조 들어온다, 이재용 얼마 받을까?",
-      "episode": "episode:e256bdf53dfa54",
-      "quality": 0.92,
+      "id": "ib0b88852",
+      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
+      "episode": "episode:6240c7cf2c14d8",
+      "quality": 1.0,
       "stages": [
-        "사법·처분",
+        "일반 보도",
         "파장·후속",
-        "일반 보도",
+        "발단·의혹",
+        "입장·공방",
         "수사·대응"
       ],
       "gaps": [
-        "발단·의혹",
-        "입장·공방"
+        "사법·처분"
       ],
-      "duplicate_candidates": 31,
-      "event_count": 13,
+      "duplicate_candidates": 24,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "i7123f678",
-      "title": "李 대통령 \"폭언, 욕설 이런 건 싫다. 그런 경우 차단한다\"",
-      "episode": "episode:11b257916c17bf",
-      "quality": 0.84,
+      "id": "i52002ca2",
+      "title": "[속보] “용인 수능장서 발견된 초소형카메라·이어폰, 재수생이 사용”",
+      "episode": "episode:42a56cd22c055b",
+      "quality": 0.76,
       "stages": [
-        "수사·대응",
         "일반 보도",
-        "입장·공방"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "사법·처분",
         "파장·후속"
       ],
-      "duplicate_candidates": 29,
-      "event_count": 16,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i41a6306c",
-      "title": "[속보] 경찰, '한동훈 자료 유출 의혹' 법무부·공소청 등 압수수색",
-      "episode": "episode:4e4b4c4467b776",
-      "quality": 0.92,
-      "stages": [
-        "수사·대응",
-        "발단·의혹",
-        "사법·처분",
-        "일반 보도"
-      ],
       "gaps": [
+        "발단·의혹",
         "입장·공방",
-        "파장·후속"
+        "수사·대응"
       ],
-      "duplicate_candidates": 40,
-      "event_count": 52,
+      "duplicate_candidates": 26,
+      "event_count": 7,
       "evidence_rate": 1.0
     },
     {
-      "id": "i252215c3",
-      "title": "‘제자 성폭행 혐의’ 뮤지컬 배우 남경주 오늘 배심원 앞에 선다",
-      "episode": "episode:06aea0ca2bd6e3",
-      "quality": 0.92,
+      "id": "i7472fb4e",
+      "title": "‘리트 만점자’ 숨진채 발견... 메모엔 “몸과 마음 지쳤다”",
+      "episode": "episode:43f66ea4b003f7",
+      "quality": 1.0,
       "stages": [
+        "일반 보도",
         "사법·처분",
         "발단·의혹",
-        "일반 보도",
+        "입장·공방",
         "수사·대응"
       ],
       "gaps": [
-        "입장·공방",
         "파장·후속"
       ],
       "duplicate_candidates": 27,
-      "event_count": 9,
+      "event_count": 8,
       "evidence_rate": 1.0
     },
     {
-      "id": "i59ed8548",
-      "title": "학교 비정규직 오늘 총파업…대체 급식 등 비상 대응",
-      "episode": "episode:648aa9dec3ad63",
-      "quality": 0.84,
+      "id": "icc7073be",
+      "title": "[수능] 교육부 \"2차 위급재난문자, 오후 2시 21분 발송\"",
+      "episode": "episode:b4571ab00be66b",
+      "quality": 0.66,
       "stages": [
         "일반 보도",
-        "파장·후속",
         "수사·대응"
       ],
       "gaps": [
@@ -96,99 +75,121 @@
         "입장·공방",
         "사법·처분"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 5,
+      "duplicate_candidates": 30,
+      "event_count": 3,
       "evidence_rate": 1.0
     },
     {
-      "id": "i714a97d0",
-      "title": "[속보] 코스피, 0.37% 오른 4,728.80 개장",
-      "episode": "episode:707995dcc0328b",
+      "id": "ibfb65b25",
+      "title": "한 총리 \"작년 수능 시험지 보관하라\" 긴급 지시",
+      "episode": "episode:70917d4ab49bf4",
+      "quality": 0.84,
+      "stages": [
+        "수사·대응",
+        "파장·후속",
+        "일반 보도"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 38,
+      "event_count": 12,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if68e1f2d",
+      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
+      "episode": "episode:87c2b2d986a387",
       "quality": 1.0,
       "stages": [
-        "입장·공방",
         "일반 보도",
         "사법·처분",
         "수사·대응",
+        "파장·후속",
+        "발단·의혹",
+        "입장·공방"
+      ],
+      "gaps": [],
+      "duplicate_candidates": 29,
+      "event_count": 20,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i32f6a682",
+      "title": "리트 만점자 결국 사망…잠적 이후 천호동 모텔서 발견",
+      "episode": "episode:bb1f3458304a26",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "발단·의혹",
+        "입장·공방",
+        "수사·대응"
+      ],
+      "gaps": [
+        "사법·처분",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i3cea7471",
+      "title": "한국 수출 1조달러 돌파…일본 넘어 세계 4대 수출 강국(종합)",
+      "episode": "episode:28b5802722ebe0",
+      "quality": 0.84,
+      "stages": [
+        "발단·의혹",
+        "일반 보도",
         "파장·후속"
       ],
       "gaps": [
-        "발단·의혹"
+        "입장·공방",
+        "수사·대응",
+        "사법·처분"
       ],
-      "duplicate_candidates": 32,
+      "duplicate_candidates": 33,
       "event_count": 17,
       "evidence_rate": 1.0
     },
     {
-      "id": "i7f0c9c4e",
-      "title": "“성매매 지시 혐의도”… 점점 풀리는 ‘15세 소녀 살인사건’",
-      "episode": "episode:bd3236a93bbd4b",
-      "quality": 0.84,
+      "id": "i14bfd775",
+      "title": "제미나이 20~30초 만에… 수능 국어·수학 만점",
+      "episode": "episode:332016de20ed99",
+      "quality": 0.92,
       "stages": [
-        "수사·대응",
         "일반 보도",
-        "사법·처분"
+        "수사·대응",
+        "파장·후속",
+        "입장·공방"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "파장·후속"
+        "사법·처분"
       ],
-      "duplicate_candidates": 27,
+      "duplicate_candidates": 31,
       "event_count": 10,
       "evidence_rate": 1.0
     },
     {
-      "id": "ief5f666a",
-      "title": "김정은, 러시아 정부 대표단과 예술인 공연 관람…“양국 협력, 보다 긴밀해져”",
-      "episode": "episode:b70fc359b440ce",
-      "quality": 0.68,
+      "id": "id0d27ff9",
+      "title": "장애 아들 앞 폭행… ‘김창민 감독 살해’ 피의자들 징역 12년·3년",
+      "episode": "episode:f616ea440abebf",
+      "quality": 0.92,
       "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 23,
-      "event_count": 4,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i2b0e5444",
-      "title": "\"출판사 아무도 안 받아주더라\"…이진우, '책팔이' 노렸나",
-      "episode": "episode:0b2da36015b027",
-      "quality": 1.0,
-      "stages": [
-        "발단·의혹",
-        "입장·공방",
-        "파장·후속",
         "수사·대응",
-        "일반 보도"
-      ],
-      "gaps": [
-        "사법·처분"
-      ],
-      "duplicate_candidates": 33,
-      "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i79e486a8",
-      "title": "애플, 또 한국 속였나… ‘AI 기능’ 소비자 기만 의혹 확산",
-      "episode": "episode:d5dc6180094d06",
-      "quality": 0.68,
-      "stages": [
+        "사법·처분",
+        "입장·공방",
         "일반 보도"
       ],
       "gaps": [
         "발단·의혹",
-        "입장·공방",
-        "수사·대응"
+        "파장·후속"
       ],
-      "duplicate_candidates": 21,
-      "event_count": 6,
+      "duplicate_candidates": 31,
+      "event_count": 39,
       "evidence_rate": 1.0
     }
   ]
