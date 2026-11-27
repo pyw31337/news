@@ -1,7 +1,39 @@
 {
-  "updated": "2026-11-27T10:51:44.322455+09:00",
-  "alerts_count": 61,
+  "updated": "2026-11-27T11:20:37.338353+09:00",
+  "alerts_count": 52,
   "alerts": [
+    {
+      "id": "urn:oid:2.49.0.1.840.0.d58b9568f23f817eb7ca788c1f62ce0d22493469.001.1",
+      "t": "2026-11-26 21:11",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Bertie",
+      "area_en": "Bertie",
+      "event": "홍수 경보",
+      "event_en": "Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "Bertie 홍수 경보",
+      "headline_en": "Bertie Flood Warning",
+      "desc": "...The National Weather Service in Wakefield has issued a Flood\nWarning for the following rivers in North Carolina...\n\nCashie River Near Windsor affecting Bertie County.\n\nFor the Lower Roanoke Basin...including Windsor...Minor flooding is\nforecast.\n\n* WHAT...Minor flooding is forecast.\n\n* WHERE...Ca"
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.12e941e84bff81cea0880016ff98bf68eb177b9e.001.1",
+      "t": "2026-11-26 20:08",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Perry",
+      "area_en": "Perry",
+      "event": "Freeze Warning",
+      "event_en": "Freeze Warning",
+      "severity": "Severe",
+      "headline_ko": "Perry Freeze Warning",
+      "headline_en": "Perry Freeze Warning",
+      "desc": "* WHAT...Sub-freezing temperatures as low as 32 expected.\n\n* WHERE...George, Greene, Perry, and Stone Counties.\n\n* WHEN...From 3 AM to 7 AM CST Friday.\n\n* IMPACTS...Frost and freeze conditions could kill crops, other\nsensitive vegetation and possibly damage unprotected outdoor\nplumbing."
+    },
     {
       "id": "urn:oid:2.49.0.1.840.0.28236d693f059955ce1f81a986d0a131de09c55e.001.2",
       "t": "2026-11-26 19:55",
@@ -35,6 +67,22 @@
       "desc": "* WHAT...One to two feet of inundation above ground level in low-\nlying areas near shorelines and tidal waterways.\n\n* WHERE...Mercer.\n\n* WHEN...Until 8 PM EST Friday.\n\n* IMPACTS...At this level, widespread roadway flooding occurs\nalong tidal waterways. Some roads become impassable. Minor\ndamage to v"
     },
     {
+      "id": "urn:oid:2.49.0.1.840.0.0fbe050bbeda141ea68dc4ce87ca93fc5330a12a.002.2",
+      "t": "2026-11-26 15:49",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Dall Point to Kwikpak Pass out to 15 NM",
+      "area_en": "Dall Point to Kwikpak Pass out to 15 NM",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
+      "severity": "Severe",
+      "headline_ko": "Dall Point to Kwikpak Pass out to 15 NM 해상 결빙 경보",
+      "headline_en": "Dall Point to Kwikpak Pass out to 15 NM Heavy Freezing Spray Warning",
+      "desc": "Northwestern Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 25 kt. Seas 5 ft. Blowing snow. Snow. Heavy\nfreezing spray"
+    },
+    {
       "id": "urn:oid:2.49.0.1.840.0.0fbe050bbeda141ea68dc4ce87ca93fc5330a12a.004.1",
       "t": "2026-11-26 15:49",
       "country": "US",
@@ -64,6 +112,22 @@
       "severity": "Severe",
       "headline_ko": "Norton Sound greater than 15 NM 해상 결빙 경보",
       "headline_en": "Norton Sound greater than 15 NM Heavy Freezing Spray Warning",
+      "desc": "Northwestern Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 25 kt. Seas 6 ft. Heavy freezing spray.\n.FRI...E winds 25 "
+    },
+    {
+      "id": "urn:oid:2.49.0.1.840.0.0fbe050bbeda141ea68dc4ce87ca93fc5330a12a.005.2",
+      "t": "2026-11-26 15:49",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Moses Point to Sledge Island out to 15 NM",
+      "area_en": "Moses Point to Sledge Island out to 15 NM",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
+      "severity": "Severe",
+      "headline_ko": "Moses Point to Sledge Island out to 15 NM 해상 결빙 경보",
+      "headline_en": "Moses Point to Sledge Island out to 15 NM Heavy Freezing Spray Warning",
       "desc": "Northwestern Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 25 kt. Seas 6 ft. Heavy freezing spray.\n.FRI...E winds 25 "
     },
     {
@@ -147,38 +211,6 @@
       "desc": "Northwestern Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 30 kt. Seas 8 ft. Heavy freezing spray.\n.FRI...E winds 35 "
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.0fbe050bbeda141ea68dc4ce87ca93fc5330a12a.002.2",
-      "t": "2026-11-26 15:49",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Dall Point to Kwikpak Pass out to 15 NM",
-      "area_en": "Dall Point to Kwikpak Pass out to 15 NM",
-      "event": "해상 결빙 경보",
-      "event_en": "Heavy Freezing Spray Warning",
-      "severity": "Severe",
-      "headline_ko": "Dall Point to Kwikpak Pass out to 15 NM 해상 결빙 경보",
-      "headline_en": "Dall Point to Kwikpak Pass out to 15 NM Heavy Freezing Spray Warning",
-      "desc": "Northwestern Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 25 kt. Seas 5 ft. Blowing snow. Snow. Heavy\nfreezing spray"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.0fbe050bbeda141ea68dc4ce87ca93fc5330a12a.005.2",
-      "t": "2026-11-26 15:49",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Moses Point to Sledge Island out to 15 NM",
-      "area_en": "Moses Point to Sledge Island out to 15 NM",
-      "event": "해상 결빙 경보",
-      "event_en": "Heavy Freezing Spray Warning",
-      "severity": "Severe",
-      "headline_ko": "Moses Point to Sledge Island out to 15 NM 해상 결빙 경보",
-      "headline_en": "Moses Point to Sledge Island out to 15 NM Heavy Freezing Spray Warning",
-      "desc": "Northwestern Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 25 kt. Seas 6 ft. Heavy freezing spray.\n.FRI...E winds 25 "
-    },
-    {
       "id": "urn:oid:2.49.0.1.840.0.eed42829ecae461e778743911c88fb372b6357bd.006.2",
       "t": "2026-11-26 15:48",
       "country": "US",
@@ -193,38 +225,6 @@
       "headline_ko": "Cape Thompson to Cape Beaufort from 15 to 85 NM 해상 결빙 경보",
       "headline_en": "Cape Thompson to Cape Beaufort from 15 to 85 NM Heavy Freezing Spray Warning",
       "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 25 kt. Seas 4 ft building to 7 ft. Moderate\nfreezing spray.\n.FRI"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.eed42829ecae461e778743911c88fb372b6357bd.005.2",
-      "t": "2026-11-26 15:48",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Flaxman Island to Demarcation Point out to 15 NM",
-      "area_en": "Flaxman Island to Demarcation Point out to 15 NM",
-      "event": "해상 결빙 경보",
-      "event_en": "Heavy Freezing Spray Warning",
-      "severity": "Severe",
-      "headline_ko": "Flaxman Island to Demarcation Point out to 15 NM 해상 결빙 경보",
-      "headline_en": "Flaxman Island to Demarcation Point out to 15 NM Heavy Freezing Spray Warning",
-      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 40 kt. Seas 8 ft. Blowing snow. Extreme\nfreezing spray.\n.FRI...E"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.eed42829ecae461e778743911c88fb372b6357bd.007.1",
-      "t": "2026-11-26 15:48",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Cape Beaufort to Point Franklin from 15 to 85 NM",
-      "area_en": "Cape Beaufort to Point Franklin from 15 to 85 NM",
-      "event": "해상 결빙 경보",
-      "event_en": "Heavy Freezing Spray Warning",
-      "severity": "Severe",
-      "headline_ko": "Cape Beaufort to Point Franklin from 15 to 85 NM 해상 결빙 경보",
-      "headline_en": "Cape Beaufort to Point Franklin from 15 to 85 NM Heavy Freezing Spray Warning",
-      "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TONIGHT...E winds 35 kt. Seas 9 ft. Extreme freezing spray.\n.FRI...E winds 35 kt. "
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.eed42829ecae461e778743911c88fb372b6357bd.008.1",
@@ -307,14 +307,6 @@
       "t": "2026-11-26 03:30",
       "depth": 10,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000udki"
-    },
-    {
-      "id": "us6000udjz",
-      "mag": 5,
-      "place": "184 km N of Hicks Bay, New Zealand",
-      "t": "2026-11-26 02:09",
-      "depth": 10,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000udjz"
     }
   ],
   "cities": [
@@ -326,11 +318,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 8.7,
-      "apparent_temp": 2.6,
-      "humidity": 91,
-      "code": 51,
-      "wind": 37.4
+      "temp": 9.4,
+      "apparent_temp": 3.6,
+      "humidity": 90,
+      "code": 3,
+      "wind": 35.7
     },
     {
       "id": "losangeles",
@@ -340,11 +332,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 19.0,
+      "temp": 18.5,
       "apparent_temp": 17.7,
-      "humidity": 53,
-      "code": 1,
-      "wind": 7.6
+      "humidity": 61,
+      "code": 0,
+      "wind": 7.2
     },
     {
       "id": "london",
@@ -354,11 +346,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 2.0,
-      "apparent_temp": -2.2,
-      "humidity": 75,
+      "temp": 1.8,
+      "apparent_temp": -2.4,
+      "humidity": 76,
       "code": 3,
-      "wind": 11.9
+      "wind": 12.2
     },
     {
       "id": "paris",
@@ -369,10 +361,10 @@
       "lat": 48.8566,
       "lon": 2.3522,
       "temp": 0.8,
-      "apparent_temp": -2.4,
+      "apparent_temp": -2.3,
       "humidity": 83,
       "code": 3,
-      "wind": 5.4
+      "wind": 5.0
     },
     {
       "id": "frankfurt",
@@ -382,11 +374,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": -0.8,
-      "apparent_temp": -4.8,
+      "temp": -0.9,
+      "apparent_temp": -4.9,
       "humidity": 75,
       "code": 3,
-      "wind": 8.7
+      "wind": 8.4
     },
     {
       "id": "tokyo",
@@ -396,11 +388,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 13.7,
-      "apparent_temp": 12.1,
-      "humidity": 51,
+      "temp": 14.4,
+      "apparent_temp": 12.7,
+      "humidity": 49,
       "code": 0,
-      "wind": 0.8
+      "wind": 1.5
     },
     {
       "id": "beijing",
@@ -410,11 +402,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 7.7,
-      "apparent_temp": 1.4,
-      "humidity": 25,
+      "temp": 7.8,
+      "apparent_temp": 1.5,
+      "humidity": 24,
       "code": 0,
-      "wind": 20.1
+      "wind": 19.6
     },
     {
       "id": "singapore",
@@ -424,11 +416,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 28.6,
-      "apparent_temp": 34.4,
-      "humidity": 80,
+      "temp": 29.2,
+      "apparent_temp": 34.8,
+      "humidity": 77,
       "code": 51,
-      "wind": 5.0
+      "wind": 5.9
     },
     {
       "id": "sydney",
@@ -438,11 +430,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 24.8,
-      "apparent_temp": 26.6,
-      "humidity": 66,
+      "temp": 24.7,
+      "apparent_temp": 26.4,
+      "humidity": 67,
       "code": 51,
-      "wind": 18.8
+      "wind": 20.3
     },
     {
       "id": "toronto",
@@ -452,11 +444,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 2.6,
-      "apparent_temp": -2.2,
-      "humidity": 55,
-      "code": 51,
-      "wind": 13.0
+      "temp": 2.7,
+      "apparent_temp": -2.3,
+      "humidity": 64,
+      "code": 63,
+      "wind": 16.2
     },
     {
       "id": "dubai",
@@ -466,11 +458,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 25.4,
+      "temp": 25.2,
       "apparent_temp": 27.8,
-      "humidity": 64,
+      "humidity": 66,
       "code": 0,
-      "wind": 3.4
+      "wind": 3.6
     },
     {
       "id": "saopaulo",
@@ -480,30 +472,14 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 17.0,
-      "apparent_temp": 17.1,
-      "humidity": 90,
+      "temp": 16.9,
+      "apparent_temp": 17.0,
+      "humidity": 91,
       "code": 3,
-      "wind": 11.9
+      "wind": 11.4
     }
   ],
   "stories": [
-    {
-      "id": "g13d51cfd",
-      "title": "Thanksgiving storm knocks out power, disrupts flights on US East Coast",
-      "press": "Reuters",
-      "image": "https://ichef.bbci.co.uk/news/1024/branded_news/af5b/live/7a140030-e9f0-11f1-99b6-a35a62fa4264.jpg",
-      "score": 9.8,
-      "url": "g/g13d51cfd"
-    },
-    {
-      "id": "g865cc1cd",
-      "title": "Record-breaking California tides cause major flooding of roads and businesses",
-      "press": "Guardian Environment",
-      "image": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/6396/live/c71ce590-e919-11f1-8383-53f283141713.jpg",
-      "score": 9.5,
-      "url": "g/g865cc1cd"
-    },
     {
       "id": "gf3fa6ba1",
       "title": "I helped organise the letter from Labour MPs urging Andy Burnham to reject Rosebank. This is why | Catherine Fookes",
