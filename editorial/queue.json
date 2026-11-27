@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-28",
-  "generated_at": "2026-11-28T01:23:56+09:00",
+  "generated_at": "2026-11-28T01:56:21+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,33 +27,33 @@
   },
   "candidates": [
     {
-      "issue_id": "if89a5801",
-      "title": "국민연금 3개월 만에 202조 증발… 상반기 수익률 절반 반납",
+      "issue_id": "id5c065c7",
+      "title": "'반토막 증시' 국민연금 적립금 202조 '증발'…올해 수익률 13%",
       "category": "경제",
-      "rank": 8,
-      "priority_score": 37,
+      "rank": 4,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "needs_fact_review",
+      "status": "ready_for_editorial_review",
       "facts": [
-        "국민연금기금의 올해 3분기 말 기준 적립금이 1664조원으로 집계되어 석 달 만에 202조원 가량 줄어든 것으로 나타났다.",
-        "국민연금 적립금 3개월 만에 202조 줄었다…수익률도 반토막",
+        "올 상반기 27%대 운용수익률을 기록하며 기금 적립금 1,866조 원을 달성했던 국민연금이 3분기 들어 국내 증시 급락 등의 직격탄을 맞았다.",
         "국민연금, 석 달 만에 202조원 사라져… 3분기 수익률 13%",
+        "국민연금 적립금 3개월 만에 202조 줄었다…수익률도 반토막",
         "국민연금 3개월 만에 202조원 증발…상반기 수익률 절반 반납",
         "'반토막 증시' 국민연금 적립금 202조 '증발'…올해 수익률 13%"
       ],
       "sources": [
         {
-          "press": "khan.co.kr",
-          "title": "“10년 만에 중국 빗장 열리나”···한한령 해제 기대 커지지만 K팝 공...",
-          "url": "https://n.news.naver.com/mnews/article/032/0003483787?sid=103"
-        },
-        {
           "press": "조선비즈",
           "title": "국민연금, 석 달 만에 202조원 사라져… 3분기 수익률 13%",
           "url": "https://n.news.naver.com/article/366/0001207873"
+        },
+        {
+          "press": "비즈워치",
+          "title": "국민연금 적립금 3개월 만에 202조 줄었다…수익률도 반토막",
+          "url": "https://n.news.naver.com/article/648/0000053059"
         },
         {
           "press": "한국경제TV",
@@ -70,7 +70,7 @@
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "국민연금기금의 올해 3분기 말 기준 적립금이 1664조원으로 집계되어 석 달 만에 202조원 가량 줄어든 것으로 나타났다."
+          "evidence": "올 상반기 27%대 운용수익률을 기록하며 기금 적립금 1,866조 원을 달성했던 국민연금이 3분기 들어 국내 증시 급락 등의 직격탄을 맞았다."
         },
         {
           "panel": 2,
@@ -80,12 +80,12 @@
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "국민연금 적립금 3개월 만에 202조 줄었다…수익률도 반토막"
+          "evidence": "국민연금, 석 달 만에 202조원 사라져… 3분기 수익률 13%"
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "3분기 수익률 13% 및 상반기 대비 202조원 감소라는 사실이 재확인되며, 연금 운용 결과에 대한 우려가 확산되고 있음을 시사한다."
+          "evidence": "3분기 실적 결과가 최종 정리되면서 상반기 대비 대규모 적립금 감소와 수익률 하락을 확정적으로 전달하는 보도가 이어졌다."
         }
       ],
       "visual_brief": {
@@ -122,9 +122,8 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.76,
+        "continuity_quality": 0.92,
         "continuity_gaps": [
-          "발단·의혹",
           "입장·공방",
           "수사·대응"
         ],
@@ -143,17 +142,22 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "SM엔터테인먼트 인수 과정에서 불거진 시세조종 의혹으로 3년여간 사법적 불확실성에 직면했던 카카오가 경영 정상화의 전기를 마련했다.",
+        "카카오가 경영 정상화를 위한 전기를 마련했다.",
         "‘SM엔터테인먼트 시세조종’ 의혹으로 재판에 넘겨진 카카오 창업자 김범수 미래이니셔티브센터장의 무죄가 확정됐다.",
         "검찰(현 공소청)의 공소제기 이후 2년여 만이다.",
         "공소청은 27일 김 센터장의 자본시장법 위반...",
-        "[사진: 연합뉴스] SM엔터테인먼트 인수 과정에서 시세를 조종한 혐의로 재판을 받아온 김범수 카카오 미래이니셔티브센터장의 무죄가 확정됐다."
+        "[단독]공소청, 김범수 'SM 시세조종' 상고 포기…무죄 확정 - 머니투데이"
       ],
       "sources": [
         {
           "press": "kmib.co.kr",
           "title": "카카오 김범수 ‘SM시세조종’ 혐의 무죄 확정",
           "url": "https://n.news.naver.com/mnews/article/005/0001887918?sid=102"
+        },
+        {
+          "press": "머니투데이",
+          "title": "[단독]공소청, 김범수 'SM 시세조종' 상고 포기…무죄 확정 - 머니투데이",
+          "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB0V1c1U1pJYThmbmpLOFNWV0JWekRUX0padzR6b0Z2YTFDNkhRYTJSSmtEbjROVU5kYk1NbHM2ZlRWRkRhR0JvQ3daZXZjd0RJUGZvSjg3anZ2U29BTjc3LTVyY193cXJMTHpv0gFwQVVfeXFMT3JjSE9lUnQwN1V3dk5FQk85cjlOOEJBcExDSUFJMUJxSDBmZXkzU0tsZTREOGhzNEx4UktMT0pybzg5M2hVNl9pV3ZGeUdVTXJGa19jQks4NHJyOTFMLTY3aEZMRDc4M2NlUEtsZVBuUw?oc=5"
         },
         {
           "press": "digitaltoday.co.kr",
@@ -164,18 +168,13 @@
           "press": "newsbrite.net",
           "title": "김범수 카카오 창업자 'SM 시세조종' 무죄 확정...3년 사법 리스크 종결",
           "url": "http://www.newsbrite.net/news/articleView.html?idxno=201819"
-        },
-        {
-          "press": "newsinside.kr",
-          "title": "김범수, 3년 사법 리스크 털었다…SM 시세조종 의혹 무죄 확정",
-          "url": "https://www.newsinside.kr/news/articleView.html?idxno=5058238"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "SM엔터테인먼트 인수 과정에서 불거진 시세조종 의혹으로 3년여간 사법적 불확실성에 직면했던 카카오가 경영 정상화의 전기를 마련했다."
+          "evidence": "카카오가 경영 정상화를 위한 전기를 마련했다."
         },
         {
           "panel": 2,
@@ -236,10 +235,10 @@
       }
     },
     {
-      "issue_id": "ied9ccdf7",
-      "title": "'증안펀드 증액 기대감'… 하루 8% 튀어 오른 코스닥",
-      "category": "경제",
-      "rank": 6,
+      "issue_id": "idfa89d57",
+      "title": "담임 선생님 머리채 잡은 초등생… 부모는 “학교가 영상 유출” 진정",
+      "category": "사회",
+      "rank": 7,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -247,49 +246,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "외국인이 국내 증시에서 1조4000억원 넘게 쓸어 담으면서 코스피와 코스닥이 동반 급등했다.",
-        "증안펀드 확대 기대에 코스닥 8% 급등…코스피도 4900선 회복",
-        "[속보]돌아온 외국인에 코스피 4900선 탈환…코스닥 8%대 급등",
-        "‘증안펀드’ 기대, 코스피 4900선 회복…코스닥 8%↑ ‘사이드카’",
-        "코스닥 장중 5% 넘게 급등⋯증안펀드 투입 기대에 외국인·기관 ‘사자’ 행렬"
+        "청주의 한 초등학교에서 담임교사를 폭행한 학생의 학부모가 영상 유포를 문제 삼아 경찰에 진정했으나, 경찰은 학교 측의 혐의가 없다고 판단하여 사건을 종결했다.",
+        "‘교사 머리채 잡고 발길질’ 영상 유포에 “가해 학생 명예훼손으로 보기 어렵다”···경찰 내사 종결",
+        "'초등생이 교사 폭행'…경찰 \"영상 유포 경위 진정 내사종결\"",
+        "“초등생이 교사 머리채 폭행” 영상 유출, 학부모는 명예훼손 진정…내사 종결",
+        "담임 선생님 머리채 잡은 초등생… 부모는 “학교가 영상 유출” 진정"
       ],
       "sources": [
         {
-          "press": "비즈워치",
-          "title": "증안펀드 확대 기대에 코스닥 8% 급등…코스피도 4900선 회복",
-          "url": "https://n.news.naver.com/article/648/0000053053"
+          "press": "경향신문",
+          "title": "‘교사 머리채 잡고 발길질’ 영상 유포에 “가해 학생 명예훼손으로 보기 어렵다”···경찰 내사 종결",
+          "url": "https://n.news.naver.com/article/032/0003485541"
         },
         {
-          "press": "이데일리",
-          "title": "[속보]돌아온 외국인에 코스피 4900선 탈환…코스닥 8%대 급등",
-          "url": "https://n.news.naver.com/article/018/0006416644"
+          "press": "연합뉴스TV",
+          "title": "'초등생이 교사 폭행'…경찰 \"영상 유포 경위 진정 내사종결\"",
+          "url": "https://n.news.naver.com/article/422/0000930600"
         },
         {
-          "press": "동아일보",
-          "title": "‘증안펀드’ 기대, 코스피 4900선 회복…코스닥 8%↑ ‘사이드카’",
-          "url": "https://www.donga.com/news/Economy/article/all/20261127/135105252/1"
+          "press": "서울신문",
+          "title": "“초등생이 교사 머리채 폭행” 영상 유출, 학부모는 명예훼손 진정…내사 종결",
+          "url": "https://n.news.naver.com/article/081/0003704005"
         },
         {
-          "press": "국민일보",
-          "title": "코스닥 장중 5% 넘게 급등⋯증안펀드 투입 기대에 외국인·기관 ‘사자’ 행렬",
-          "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE90MXlBVF9ZTnRIbndkdjFsVGt4NWJTcXhacVMzckxSUmpEZmNQVW53NXlLdGpYY2oxOUQ1RHBUR0tHM1FfeFpWUmphNUE2dmoyWW5fcTVVMlI?oc=5"
+          "press": "조선일보",
+          "title": "담임 선생님 머리채 잡은 초등생… 부모는 “학교가 영상 유출” 진정",
+          "url": "https://n.news.naver.com/article/023/0004012119"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "외국인이 국내 증시에서 1조4000억원 넘게 쓸어 담으면서 코스피와 코스닥이 동반 급등했다."
+          "evidence": "청주의 한 초등학교에서 담임교사를 폭행한 학생의 학부모가 영상 유포를 문제 삼아 경찰에 진정했으나, 경찰은 학교 측의 혐의가 없다고 판단하여 사건을 종결했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "이상 급등 -코스모로보틱스 30.00%·클로봇 29.87% 상승 -정부 로봇 학습데이터 국가표준 추진…휴머노이드 수요"
+          "evidence": "강원 영월군 건물 지하 1층 화재…50대 숨져"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "증안펀드 확대 기대에 코스닥 8% 급등…코스피도 4900선 회복"
+          "evidence": "A양의 학부모는 지난 9월 2일 청주 한 초등학교 교실에서 A양이 교사 B씨의 머리채를 잡고 폭행하는 장면이 담긴 영상이 보도되자 학교 관계자들이 영상을 유출한 것으로 의심된다며 교장 등을 상대로 진정서를 냈다."
         },
         {
           "panel": 4,
@@ -298,8 +297,8 @@
         }
       ],
       "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
+        "scene": "security",
+        "direction": "보안 관제·접속 흔적·차단 절차를 사용, 실제 피해자·공격자 묘사는 제외",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -331,11 +330,10 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.84,
+        "continuity_quality": 0.92,
         "continuity_gaps": [
-          "입장·공방",
-          "수사·대응",
-          "사법·처분"
+          "사법·처분",
+          "파장·후속"
         ],
         "no_generic_closing": true
       }
