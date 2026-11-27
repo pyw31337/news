@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-27",
-  "generated_at": "2026-11-27T19:28:09+09:00",
+  "generated_at": "2026-11-27T19:44:59+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,18 +27,18 @@
   },
   "candidates": [
     {
-      "issue_id": "i5eb0bdd2",
-      "title": "[속보]돌아온 외국인에 코스피 4900선 탈환…코스닥 8%대 급등",
+      "issue_id": "i8278aaca",
+      "title": "코스피·코스닥 동반 급등…증안펀드 기대감",
       "category": "경제",
       "rank": 4,
-      "priority_score": 37,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "외국인이 국내 증시에서 1조4000억원 넘게 쓸어 담으면서 코스피와 코스닥이 동반 급등했다.",
+        "최근 급락을 거듭하던 국내 증시가 2026년 11월 27일 외국인과 기관의 동반 매수와 금융당국의 증시 안정 대책 기대감에 힘입어 큰 폭으로 반등했다.",
         "놨다’ 외국인 “하루 만에 1조 넘게 샀다”…코스피 4900선 회복",
         "코스피, 외국인·기관 매수에 4.3% 급등...4900선 회복 고려아연, MBK·영풍 의혹 제기에 법적 대응 시사...",
         "같은 날 코스닥 지수는 8.13% 오른 708.99에 거래를 마무리했다.",
@@ -70,7 +70,7 @@
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "외국인이 국내 증시에서 1조4000억원 넘게 쓸어 담으면서 코스피와 코스닥이 동반 급등했다."
+          "evidence": "최근 급락을 거듭하던 국내 증시가 2026년 11월 27일 외국인과 기관의 동반 매수와 금융당국의 증시 안정 대책 기대감에 힘입어 큰 폭으로 반등했다."
         },
         {
           "panel": 2,
@@ -81,6 +81,215 @@
           "panel": 3,
           "purpose": "핵심 수치·근거",
           "evidence": "놨다’ 외국인 “하루 만에 1조 넘게 샀다”…코스피 4900선 회복"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "외국인과 기관의 순매수와 증안펀드 기대감에 힘입어 코스피 4%대, 코스닥 8%대라는 동반 급등을 기록했다. 직전일의 주춤하던 흐름에서 벗어나 투자심리가 급격히 살아난 것으로 볼 수 있다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i1ccd8e2b",
+      "title": "국민연금 3개월 만에 202조원 증발…상반기 수익률 절반 반납",
+      "category": "경제",
+      "rank": 6,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "needs_fact_review",
+      "facts": [
+        "국민연금기금 적립금이 석달 만에 202조원 가까이 줄어들며 상반기 벌어들인 수익의 절반가량을 반납했다.",
+        "\"내 노후자금 어쩌나\" 국민연금 적립금 202조 증발…1866조→1664조(종합)",
+        "[속보] 국민연금 3개월 만에 202조 증발… 상반기 수익률 절반 반납",
+        "국민연금 적립금 석달만에 202조원↓…3분기 수익률 13%",
+        "뉴데일리 박철호 = 국민연금의 올해 누적 운용수익률이 석 달 만에 반토막 났다."
+      ],
+      "sources": [
+        {
+          "press": "뉴시스",
+          "title": "\"내 노후자금 어쩌나\" 국민연금 적립금 202조 증발…1866조→1664조(종합)",
+          "url": "https://n.news.naver.com/article/003/0014350209"
+        },
+        {
+          "press": "헤럴드경제",
+          "title": "[속보] 국민연금 3개월 만에 202조 증발… 상반기 수익률 절반 반납",
+          "url": "https://n.news.naver.com/article/016/0002729662"
+        },
+        {
+          "press": "연합뉴스",
+          "title": "국민연금 적립금 석달만에 202조원↓…3분기 수익률 13%",
+          "url": "https://n.news.naver.com/article/001/0016468409"
+        },
+        {
+          "press": "biz.newdaily.co.kr",
+          "title": "국민연금 누적 수익률 반토막 … 석 달 새 적립금 202조 증발",
+          "url": "https://biz.newdaily.co.kr/site/data/html/2026/11/27/2026112750321.html"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "국민연금기금 적립금이 석달 만에 202조원 가까이 줄어들며 상반기 벌어들인 수익의 절반가량을 반납했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "국내외 주식 수익률이 큰 폭으로 하락한 데다"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "\"내 노후자금 어쩌나\" 국민연금 적립금 202조 증발…1866조→1664조(종합)"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.68,
+        "continuity_gaps": [
+          "발단·의혹",
+          "입장·공방",
+          "수사·대응"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i333a0d6d",
+      "title": "중국 권토중래 외친 현대차 ‘아이오닉V’, 870대 판매…후속은 전기 SUV",
+      "category": "경제",
+      "rank": 10,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "현대자동차가 중국 시장 공략에 속도를 내고 있다.",
+        "현대차는 이날 모터쇼에서 중국 시장 전략형 소형 전기 스포츠유틸리티차(SUV) '아이오닉 머큐리 콘셉트'를 세계 최초로 공개했다.",
+        "양산형 모델인 '아이오닉 M'은 내년 상반기 중국 시장에 공식 출시된다.",
+        "세웠다며 사양부터 기준까지 다",
+        "바꾸지 않으면 이길 수 없다는 각오로 임해 왔다고 강조했습니다."
+      ],
+      "sources": [
+        {
+          "press": "inews24.com",
+          "title": "장재훈 현대차 부회장 \"중국과 원가 30% 차이⋯3년 내 격차 좁힌다\"",
+          "url": "https://n.news.naver.com/mnews/article/031/0001079224?sid=103"
+        },
+        {
+          "press": "ytn.co.kr",
+          "title": "[기업] 현대차그룹 부회장 \"중국과 원가 30% 차이...3년 내 줄일 것\"",
+          "url": "https://n.news.naver.com/mnews/article/052/0002439092?sid=101"
+        },
+        {
+          "press": "한겨레",
+          "title": "중국 권토중래 외친 현대차 ‘아이오닉V’, 870대 판매…후속은 전기 SUV",
+          "url": "https://v.daum.net/v/20261127165106360"
+        },
+        {
+          "press": "sedaily.com",
+          "title": "장재훈 “中과 원가 30% 차이…3년내 격차 좁힐 것”",
+          "url": "https://n.news.naver.com/mnews/article/011/0004686994?sid=101"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "현대자동차가 중국 시장 공략에 속도를 내고 있다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "현대차, 中 투자법인 1875만 달러 추가 수혈…2차례 증자로 1년 새 자본금 19% 확대"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "중국 권토중래 외친 현대차 ‘아이오닉V’, 870대 판매…후속은 전기 SUV"
         },
         {
           "panel": 4,
@@ -124,216 +333,8 @@
         "sources": 4,
         "continuity_quality": 0.92,
         "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ib5bbd995",
-      "title": "[속보] 'SM 시세조종' 김범수 무죄 확정…공소청 '상고 포기'",
-      "category": "경제",
-      "rank": 5,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "SM엔터테인먼트 인수 과정에서 시세조종에 가담한 혐의로 재판에 넘겨진 김범수 카카오 창업자가 무죄를 확정받게 됐다.",
-        "SM엔터테인먼트 인수 과정에서 시세조종에 관여한 혐의로 재판에 넘겨진 카카오 창업자 김범수 미래이니셔티브센터장의 무죄가 최종 확정됐다.",
-        "27일 법조계에 따르면 서울남부공소청은 자본시장법 위반 혐의로 기소된 김...",
-        "공소청은 27일 김범수 카카오 창업자 겸 미래이니셔티브센터장에게 무죄를 선고한 항소심 판결에 상고하지 않기로 했다.",
-        "이에 따라 1·2심에서 무죄를 선고받은 김 센터장과 함께 기소된 카카오·카카오엔터테인먼트..."
-      ],
-      "sources": [
-        {
-          "press": "fnnews.com",
-          "title": "'SM 시세조종 혐의' 김범수 무죄 확정…카카오 \"사법적 불확실성 해소\"",
-          "url": "https://n.news.naver.com/mnews/article/014/0005610934?sid=102"
-        },
-        {
-          "press": "sentv.co.kr",
-          "title": "카카오 김범수, ‘SM 시세조종’ 무죄 확정…공소청 상고 포기",
-          "url": "https://www.sentv.co.kr/article/view/sentv202611270229"
-        },
-        {
-          "press": "kukinews.com",
-          "title": "김범수 카카오 창업자, ‘SM시세조종 혐의’ 무죄 확정…공소청 상고 포...",
-          "url": "https://www.kukinews.com/article/view/kuk202611270182"
-        },
-        {
-          "press": "뉴스1",
-          "title": "김범수 무죄에 카카오 '3년 족쇄' 풀렸다…AI전환 속도(종합)",
-          "url": "https://v.daum.net/v/20261127185106608"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "SM엔터테인먼트 인수 과정에서 시세조종에 가담한 혐의로 재판에 넘겨진 김범수 카카오 창업자가 무죄를 확정받게 됐다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "공소청은 27일 김범수 카카오 창업자 겸 미래이니셔티브센터장에게 무죄를 선고한 항소심 판결에 상고하지 않기로 했다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "27일 법조계에 따르면 서울남부공소청은 자본시장법 위반 혐의로 기소된 김..."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "파장·후속"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i51771867",
-      "title": "국민연금 적립금 석달만에 202조원↓…3분기 수익률 13%",
-      "category": "경제",
-      "rank": 7,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "올해 3분기 국민연금기금 적립금은 1천664조원, 기금운용 수익률은 13.28%(금액가중수익률)로 나타났다.",
-        "국민연금 3개월 만에 202조원 증발…상반기 수익률 절반 반납",
-        "\"내 노후자금 어쩌나\" 국민연금 적립금 202조 증발…1866조→1664조(종합)",
-        "[속보] 국민연금 3개월 만에 202조 증발… 상반기 수익률 절반 반납",
-        "국민연금 적립금 석달만에 202조원↓…3분기 수익률 13%"
-      ],
-      "sources": [
-        {
-          "press": "한국경제TV",
-          "title": "국민연금 3개월 만에 202조원 증발…상반기 수익률 절반 반납",
-          "url": "https://n.news.naver.com/article/215/0001274235"
-        },
-        {
-          "press": "뉴시스",
-          "title": "\"내 노후자금 어쩌나\" 국민연금 적립금 202조 증발…1866조→1664조(종합)",
-          "url": "https://n.news.naver.com/article/003/0014350209"
-        },
-        {
-          "press": "헤럴드경제",
-          "title": "[속보] 국민연금 3개월 만에 202조 증발… 상반기 수익률 절반 반납",
-          "url": "https://n.news.naver.com/article/016/0002729662"
-        },
-        {
-          "press": "연합뉴스",
-          "title": "국민연금 적립금 석달만에 202조원↓…3분기 수익률 13%",
-          "url": "https://n.news.naver.com/article/001/0016468409"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "올해 3분기 국민연금기금 적립금은 1천664조원, 기금운용 수익률은 13.28%(금액가중수익률)로 나타났다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "국내외 주식 수익률이 큰 폭으로 하락한 데다"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "국민연금 3개월 만에 202조원 증발…상반기 수익률 절반 반납"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.68,
-        "continuity_gaps": [
-          "발단·의혹",
           "입장·공방",
-          "수사·대응"
+          "사법·처분"
         ],
         "no_generic_closing": true
       }
