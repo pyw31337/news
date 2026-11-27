@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-27",
-  "generated_at": "2026-11-27T20:24:29+09:00",
+  "generated_at": "2026-11-27T20:52:28+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,138 +27,28 @@
   },
   "candidates": [
     {
-      "issue_id": "i1ccd8e2b",
-      "title": "국민연금 3개월 만에 202조원 증발…상반기 수익률 절반 반납",
+      "issue_id": "i167ac6ca",
+      "title": "국민연금 수익률 절반으로 줄고 적립금 202조원 증발",
       "category": "경제",
-      "rank": 8,
-      "priority_score": 37,
+      "rank": 4,
+      "priority_score": 45,
       "production_types": [
         "comic",
         "card_news"
       ],
       "status": "needs_fact_review",
       "facts": [
-        "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\"",
-        "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다.",
-        "반면 같은 해 한국 영화의 중국 수출액은 1500만달러(약 200억원), 방송 콘텐츠는 700만달러(약 93억원)에...",
-        "대한민국이 세계에서 네 번째로 '수출 1조 달러 시대'를 연 데 대해 세대를 이어온 국민의 도전과 헌신이...",
-        "반세기 만에 수출 규모를 100배로 키운 한국 경제의 성장사를 되짚으며 수출의 성과가 국민의 삶을 나아지게 하는..."
-      ],
-      "sources": [
-        {
-          "press": "khan.co.kr",
-          "title": "“10년 만에 중국 빗장 열리나”···한한령 해제 기대 커지지만 K팝 공...",
-          "url": "https://n.news.naver.com/mnews/article/032/0003483787?sid=103"
-        },
-        {
-          "press": "sisajournal.com",
-          "title": "李 대통령 \"수출 1조 달러 시대…이제는 '모두의 성장'으로\"",
-          "url": "https://n.news.naver.com/mnews/article/586/0000142653?sid=101"
-        },
-        {
-          "press": "SBS",
-          "title": "\"한국 대통령과 너무 달랐다\"…일본 총리 의전 어땠길래",
-          "url": "https://n.news.naver.com/article/055/0001404200"
-        },
-        {
-          "press": "asiatime.co.kr",
-          "title": "수출 1조달러 시대…李대통령 ‘봉제·신발공장 선배 세대 덕분’",
-          "url": "https://www.asiatime.co.kr/article/20261119500437"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "미국·독일·중국 이어 19년만에 '1조달러 클럽'…근 80년만에 수출 5만배 반도체 슈퍼사이클 속 비반도체도 20%↑…무역흑자 3배 뛰며 질적 도약 보호무역 파고 정면 돌파…정부 \"AI·신산업 육성해 성장세 잇는다\""
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "경제계 \"수출 1조 달러 성과, 국내 투자·일자리로 이어갈 것\""
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "한국콘텐츠진흥원에 따르면 2024년 중국 콘텐츠 시장 규모는 3393억9500만달러(약 451조원)로 세계 2위 수준이다."
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.84,
-        "continuity_gaps": [
-          "입장·공방",
-          "수사·대응",
-          "사법·처분"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "if68e1f2d",
-      "title": "'리트 만점' 이진우, 경찰 폭행하고 고의 교통사고로 수차례 돈 뜯어",
-      "category": "사회",
-      "rank": 6,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "국민연금기금 적립금이 3분기 만에 202조원 가까이 줄어들며 상반기에 거둔 수익의 절반가량을 반납했다.",
-        "\"내 노후자금 어쩌나\" 국민연금 적립금 202조 증발…1866조→1664조(종합)",
-        "[속보] 국민연금 3개월 만에 202조 증발… 상반기 수익률 절반 반납",
+        "2026년 3분기 국민연금 기금 적립금이 석 달 만에 202조원 가까이 줄어들며 1866조원에서 1664조원으로 감소하고 상반기 수익률의 절반가량을 반납했다.",
+        "국민연금 적립금 3개월 만에 202조 줄었다…수익률도 반토막",
         "국민연금, 석 달 만에 202조원 사라져… 3분기 수익률 13%",
-        "국민연금 기금운용본부는 올해 9월까지 기금 운용수익률이 13.28%(금액가중수익률 기준)로 잠정 집계됐다고 27일 밝혔다."
+        "\"내 노후자금 어쩌나\" 국민연금 적립금 202조 증발…1866조→1664조(종합)",
+        "국민연금 3개월 만에 202조원 증발…상반기 수익률 절반 반납"
       ],
       "sources": [
         {
-          "press": "뉴시스",
-          "title": "\"내 노후자금 어쩌나\" 국민연금 적립금 202조 증발…1866조→1664조(종합)",
-          "url": "https://n.news.naver.com/article/003/0014350209"
-        },
-        {
-          "press": "헤럴드경제",
-          "title": "[속보] 국민연금 3개월 만에 202조 증발… 상반기 수익률 절반 반납",
-          "url": "https://n.news.naver.com/article/016/0002729662"
+          "press": "비즈워치",
+          "title": "국민연금 적립금 3개월 만에 202조 줄었다…수익률도 반토막",
+          "url": "https://n.news.naver.com/article/648/0000053059"
         },
         {
           "press": "조선비즈",
@@ -166,31 +56,36 @@
           "url": "https://n.news.naver.com/article/366/0001207873"
         },
         {
-          "press": "sedaily.com",
-          "title": "국민연금 9월 말 수익률 13.28%…기금규모 1664조 원 [시그널]",
-          "url": "https://n.news.naver.com/mnews/article/011/0004687048?sid=101"
+          "press": "뉴시스",
+          "title": "\"내 노후자금 어쩌나\" 국민연금 적립금 202조 증발…1866조→1664조(종합)",
+          "url": "https://n.news.naver.com/article/003/0014350209"
+        },
+        {
+          "press": "한국경제TV",
+          "title": "국민연금 3개월 만에 202조원 증발…상반기 수익률 절반 반납",
+          "url": "https://n.news.naver.com/article/215/0001274235"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "국민연금기금 적립금이 3분기 만에 202조원 가까이 줄어들며 상반기에 거둔 수익의 절반가량을 반납했다."
+          "evidence": "2026년 3분기 국민연금 기금 적립금이 석 달 만에 202조원 가까이 줄어들며 1866조원에서 1664조원으로 감소하고 상반기 수익률의 절반가량을 반납했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "205조 7290억 원 증가했다...."
+          "evidence": "국내외 주식 수익률이 큰 폭으로 하락한 데다"
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "\"내 노후자금 어쩌나\" 국민연금 적립금 202조 증발…1866조→1664조(종합)"
+          "evidence": "국민연금 적립금 3개월 만에 202조 줄었다…수익률도 반토막"
         },
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "국민연금 적립금이 3분기 동안 202조원 감소하고 수익률이 반토막 났다는 공식적인 보도들이 집중되며, 주가 방어 및 정책 대응 실패를 지적하는 여론이 확산되는 것으로 볼 수 있다."
+          "evidence": "석 달간 202조원이 줄어들고 1~3분기 누적 수익률이 13%로 반토막 났다는 공식 수치가 확인되었다. 주식 급락, 환율 하락, 채권금리 상승이 복합적으로 작용한 결과임이 최종 집계된 것으로 볼 수 있다."
         }
       ],
       "visual_brief": {
@@ -227,7 +122,7 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.76,
+        "continuity_quality": 0.68,
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
@@ -237,10 +132,10 @@
       }
     },
     {
-      "issue_id": "i5eb0bdd2",
-      "title": "[속보]돌아온 외국인에 코스피 4900선 탈환…코스닥 8%대 급등",
+      "issue_id": "i5353ad6b",
+      "title": "증시 ‘들었다 놨다’ 외국인 “하루 만에 1조 넘게 샀다”…코스피 4900선 회복",
       "category": "경제",
-      "rank": 6,
+      "rank": 5,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -248,7 +143,7 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "외국인이 국내 증시에서 1조4000억원 넘게 쓸어 담으면서 코스피와 코스닥이 동반 급등했다.",
+        "국내 증시가 27일 외국인과 기관의 동반 매수에 힘입어 급등했다.",
         "놨다’ 외국인 “하루 만에 1조 넘게 샀다”…코스피 4900선 회복",
         "코스피, 외국인·기관 매수에 4.3% 급등...4900선 회복 고려아연, MBK·영풍 의혹 제기에 법적 대응 시사...",
         "같은 날 코스닥 지수는 8.13% 오른 708.99에 거래를 마무리했다.",
@@ -280,7 +175,7 @@
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "외국인이 국내 증시에서 1조4000억원 넘게 쓸어 담으면서 코스피와 코스닥이 동반 급등했다."
+          "evidence": "국내 증시가 27일 외국인과 기관의 동반 매수에 힘입어 급등했다."
         },
         {
           "panel": 2,
@@ -333,15 +228,17 @@
         "numeric_or_specific_evidence": true,
         "sources": 4,
         "continuity_quality": 1.0,
-        "continuity_gaps": [],
+        "continuity_gaps": [
+          "입장·공방"
+        ],
         "no_generic_closing": true
       }
     },
     {
-      "issue_id": "ib0b88852",
-      "title": "[속보] '리트 만점자' 이진우 씨, 서울 천호동서 심정지 상태 발견",
-      "category": "IT",
-      "rank": 1,
+      "issue_id": "i18f186bc",
+      "title": "[속보] '여제자 성폭행 혐의' 남경주, 성관계 시도는 인정하나 위력행사는 부인",
+      "category": "사회",
+      "rank": 2,
       "priority_score": 37,
       "production_types": [
         "comic",
@@ -349,49 +246,49 @@
       ],
       "status": "ready_for_editorial_review",
       "facts": [
-        "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다.",
-        "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
-        "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
-        "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
-        "흔적을 발견할 수 없었다."
+        "뮤지컬 배우 남경주 시가 자신의 여성 제자와 성관계를 시도한 사실은 인정하나 위력을 행사하거나 간음에 이르지도 않았다고 주장했다.",
+        "‘제자 성폭행’ 의혹 남경주 “성관계 시도 인정·위력은 부인”",
+        "‘제자 위력 간음 혐의’ 남경주, 결혼반지 낀 채 법정에…첫 국민참여재판서 무죄 주장",
+        "'제자 성폭행' 남경주, 성관계 시도 인정…\"위력 행사는 없었다\"",
+        "홍연우 이윤석 기자 = 제자 성폭행 혐의로 재판에 넘겨진 뮤지컬 배우 남경주씨의 국민참여재판 첫날..."
       ],
       "sources": [
         {
-          "press": "매일경제",
-          "title": "[속보] ‘리트 만점’ 이진우 “지쳤다”…천호역 인근서 심정지 상태로 발견",
-          "url": "https://n.news.naver.com/article/009/0005766140"
+          "press": "국민일보",
+          "title": "‘제자 성폭행’ 의혹 남경주 “성관계 시도 인정·위력은 부인”",
+          "url": "https://n.news.naver.com/article/005/0001887873"
         },
         {
-          "press": "한겨레",
-          "title": "‘리트 만점’ 이진우 심정지 상태로 발견…서울 천호역 인근",
-          "url": "https://n.news.naver.com/article/028/0002832987"
+          "press": "세계일보",
+          "title": "‘제자 위력 간음 혐의’ 남경주, 결혼반지 낀 채 법정에…첫 국민참여재판서 무죄 주장",
+          "url": "https://n.news.naver.com/article/022/0004178659"
         },
         {
-          "press": "KBS",
-          "title": "‘리트 만점자’ 이진우 씨, 공개 검증 불참…심정지 상태로 발견",
-          "url": "https://n.news.naver.com/article/056/0012297227"
+          "press": "MBN",
+          "title": "'제자 성폭행' 남경주, 성관계 시도 인정…\"위력 행사는 없었다\"",
+          "url": "https://n.news.naver.com/article/057/0001980175"
         },
         {
-          "press": "sentv.co.kr",
-          "title": "셀루메드, '껍데기 법인'에 140억 대여…\"업무상 배임 소지\"",
-          "url": "https://www.sentv.co.kr/article/view/sentv202611110038"
+          "press": "newsis.com",
+          "title": "남경주 '제자 성폭행' 국참 첫날…\"지위 이용 간음\" vs \"위력 없었다\"(종...",
+          "url": "https://n.news.naver.com/mnews/article/003/0014350261?sid=102"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "법학적성시험(LEET·리트) 만점자 이진우(32)씨가 19일 서울 강동구 천호역 인근 숙박업소에서 심정지 상태로 발견됐다."
+          "evidence": "뮤지컬 배우 남경주 시가 자신의 여성 제자와 성관계를 시도한 사실은 인정하나 위력을 행사하거나 간음에 이르지도 않았다고 주장했다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "게임 속 풍경을 단순한 배경으로 활용하는 데 그치지 않고, 이용자가 새로운 장소를 발견하고 직접..."
+          "evidence": "제자 성폭행 혐의로 기소…재판서 피해자 녹취록 등 공개 공소청 \"영향력 있는 뮤지컬배우\"…남씨 \"보호감독..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "‘리트 만점’ 이진우 모텔서 숨진 채 발견···“요즘 힘들다” 5줄 메모 남겨"
+          "evidence": "뉴데일리 조광형 = 1세대 뮤지컬 배우 남경주(62)의 제자 성폭행 혐의(피감독자간음) 국민참여재판에서 △사건..."
         },
         {
           "panel": 4,
@@ -433,115 +330,9 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 1.0,
+        "continuity_quality": 0.92,
         "continuity_gaps": [
-          "발단·의혹",
-          "입장·공방"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "ifd530fa6",
-      "title": "\"속옷 다 비쳐 민망? 뚱뚱한 여자는 입지마\" \"22세, 임신할까봐 채용 꺼려\"…룰루레몬 창업자 또 막말",
-      "category": "경제",
-      "rank": 10,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "needs_fact_review",
-      "facts": [
-        "세계적인 요가복 브랜드 룰루레몬을 창업한 칩 윌슨이 성차별적 발언으로 논란의 중심에 섰다.",
-        "비쳐 민망? 뚱뚱한 여자는 입지마\" \"22세, 임신할까봐 채용 꺼려\"…룰루레몬 창업자 또 막말",
-        "브랜드 룰루레몬을 창업한 억만장자 칩 윌슨이 여성의 임신과 출산을 문제 삼는 발언으로 또다시 구설에...",
-        "사모펀드 TPG 공동창업자이자 우버 이사였던 데이비드 본더먼은 2017년 우버의 성희롱 문제와 조직문화 개선을...",
-        "글로브앤메일 등에 따르면 칩 윌슨 룰루레몬 창업자는 지난 23일(현지시간) 캐나다"
-      ],
-      "sources": [
-        {
-          "press": "아시아경제",
-          "title": "\"속옷 다 비쳐 민망? 뚱뚱한 여자는 입지마\" \"22세, 임신할까봐 채용 꺼려\"…룰루레몬 창업자 또 막말",
-          "url": "https://n.news.naver.com/article/277/0005848693"
-        },
-        {
-          "press": "sedaily.com",
-          "title": "“뚱뚱한 여자는 입지 마”, “22세 여성은 임신할까봐 안 뽑아”…룰루...",
-          "url": "https://n.news.naver.com/mnews/article/011/0004686863?sid=101"
-        },
-        {
-          "press": "tvchosun.com",
-          "title": "룰루레몬 창업자 \"22세 여성, 임신할까 채용 꺼려\"…또 성차별 막말",
-          "url": "https://n.news.naver.com/mnews/article/448/0000653824?sid=104"
-        },
-        {
-          "press": "news1.kr",
-          "title": "룰루레몬 창업자 또 막말 논란…\"피임 덕에 20대 여성 채용 부담 덜어\"",
-          "url": "https://n.news.naver.com/mnews/article/421/0009314406?sid=104"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "세계적인 요가복 브랜드 룰루레몬을 창업한 칩 윌슨이 성차별적 발언으로 논란의 중심에 섰다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "23세에 임신해 출산휴가를 갈 수 있기 때문\"이라고 말했다."
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "비쳐 민망? 뚱뚱한 여자는 입지마\" \"22세, 임신할까봐 채용 꺼려\"…룰루레몬 창업자 또 막말"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 0.56,
-        "continuity_gaps": [
-          "입장·공방",
-          "수사·대응",
-          "사법·처분"
+          "파장·후속"
         ],
         "no_generic_closing": true
       }
