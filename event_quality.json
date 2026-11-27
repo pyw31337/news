@@ -1,47 +1,10 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-27 15:56:34",
+  "updated_at": "2026-11-27 16:23:55",
   "date": "2026-11-28",
   "total_issues": 10,
-  "average_quality": 0.87,
+  "average_quality": 0.88,
   "issues": [
-    {
-      "id": "i94ae266d",
-      "title": "[단독] 민주 윤리심판원, 최민희 중징계 의결 '당원권 2년 정지'",
-      "episode": "episode:a3b135a2a7da76",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "수사·대응",
-        "발단·의혹"
-      ],
-      "gaps": [
-        "입장·공방",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 27,
-      "event_count": 10,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i3a66be69",
-      "title": "'제자 성폭행 혐의' 남경주, 재판서 성관계 시도는 인정…위력은 부인",
-      "episode": "episode:fce82c726f8ba7",
-      "quality": 0.92,
-      "stages": [
-        "사법·처분",
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "파장·후속"
-      ],
-      "duplicate_candidates": 29,
-      "event_count": 13,
-      "evidence_rate": 1.0
-    },
     {
       "id": "i1f6c8ceb",
       "title": "장동혁 \"한동훈, 복당해도 다시 징계…추가 징계 사유 있어\"",
@@ -56,14 +19,51 @@
         "수사·대응"
       ],
       "gaps": [],
-      "duplicate_candidates": 33,
-      "event_count": 20,
+      "duplicate_candidates": 34,
+      "event_count": 19,
       "evidence_rate": 1.0
     },
     {
-      "id": "i1ccd8e2b",
-      "title": "국민연금 3개월 만에 202조원 증발…상반기 수익률 절반 반납",
-      "episode": "episode:2dff21462c1f21",
+      "id": "id3021e88",
+      "title": "남경주 '제자 성폭행' 국참 첫날…\"지위 이용 간음\" vs \"위력 없었다\"(종합)",
+      "episode": "episode:61e547a7efbed9",
+      "quality": 0.92,
+      "stages": [
+        "발단·의혹",
+        "사법·처분",
+        "수사·대응",
+        "입장·공방"
+      ],
+      "gaps": [
+        "파장·후속"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 6,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ib24b5927",
+      "title": "與, 최민희 ‘당원권 2년 정지’ 중징계…친청계 “납득 못해” 반발",
+      "episode": "episode:ffd355ad8c4a5d",
+      "quality": 0.92,
+      "stages": [
+        "일반 보도",
+        "사법·처분",
+        "수사·대응",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "if89a5801",
+      "title": "국민연금 3개월 만에 202조 증발… 상반기 수익률 절반 반납",
+      "episode": "episode:c88fb0003483b4",
       "quality": 0.76,
       "stages": [
         "일반 보도",
@@ -74,14 +74,33 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 27,
-      "event_count": 9,
+      "duplicate_candidates": 28,
+      "event_count": 8,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "ic11bd0fa",
+      "title": "카카오 SM엔터 인수부터 김범수 무죄 확정까지 '격랑의 3년 9개월'",
+      "episode": "episode:5b4879df230b3d",
+      "quality": 0.92,
+      "stages": [
+        "수사·대응",
+        "사법·처분",
+        "발단·의혹",
+        "일반 보도"
+      ],
+      "gaps": [
+        "입장·공방",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 29,
+      "event_count": 12,
       "evidence_rate": 1.0
     },
     {
       "id": "ied9ccdf7",
       "title": "'증안펀드 증액 기대감'… 하루 8% 튀어 오른 코스닥",
-      "episode": "episode:1a65edbfccd3f6",
+      "episode": "episode:aee0b7a52aa208",
       "quality": 0.92,
       "stages": [
         "파장·후속",
@@ -93,8 +112,8 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 32,
-      "event_count": 34,
+      "duplicate_candidates": 35,
+      "event_count": 33,
       "evidence_rate": 1.0
     },
     {
@@ -117,26 +136,47 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "idf38372a",
-      "title": "손연재 부부, 연세의료원에 30억원 기부…연재태아협진센터 설립",
-      "episode": "episode:15e4a7b13b3eb5",
-      "quality": 0.68,
+      "id": "ibcc6261d",
+      "title": "전문의 없어서…심정지 6개월 영아, 목포서 서울까지 헬기 이송",
+      "episode": "episode:e06f6db1c756a7",
+      "quality": 0.92,
       "stages": [
-        "일반 보도"
+        "일반 보도",
+        "발단·의혹",
+        "수사·대응",
+        "입장·공방"
       ],
       "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
+        "사법·처분",
+        "파장·후속"
       ],
-      "duplicate_candidates": 21,
-      "event_count": 8,
+      "duplicate_candidates": 22,
+      "event_count": 14,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "idaadaaa9",
+      "title": "[단독] 남경필 장남, 스토킹 혐의 체포...성관계 영상 유포 협박도",
+      "episode": "episode:d2d247b7fc08fd",
+      "quality": 0.84,
+      "stages": [
+        "사법·처분",
+        "일반 보도",
+        "발단·의혹"
+      ],
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 22,
+      "event_count": 16,
       "evidence_rate": 1.0
     },
     {
       "id": "i491e142b",
       "title": "야구 대신 골프채 잡더니…강호동 아들, 전국 골프대회 준우승",
-      "episode": "episode:958840f254852b",
+      "episode": "episode:c447ba2d1fadb3",
       "quality": 0.76,
       "stages": [
         "입장·공방",
@@ -149,44 +189,6 @@
       ],
       "duplicate_candidates": 23,
       "event_count": 9,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "ib74ea921",
-      "title": "“왜 남자들은 돈만 벌면 바람 피울까”… 선우용여, 젠슨 황에게 한마디",
-      "episode": "episode:54172a864d5575",
-      "quality": 1.0,
-      "stages": [
-        "일반 보도",
-        "파장·후속",
-        "사법·처분",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹"
-      ],
-      "duplicate_candidates": 34,
-      "event_count": 18,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i9fd78369",
-      "title": "30대 탈북女, 민통선 넘어 북상…GOP 철책 인근서 붙잡혀",
-      "episode": "episode:2caf39b7796c37",
-      "quality": 0.92,
-      "stages": [
-        "일반 보도",
-        "사법·처분",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "파장·후속"
-      ],
-      "duplicate_candidates": 22,
-      "event_count": 14,
       "evidence_rate": 1.0
     }
   ]

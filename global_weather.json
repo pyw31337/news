@@ -1,7 +1,23 @@
 {
-  "updated": "2026-11-28T00:51:52.089550+09:00",
+  "updated": "2026-11-28T01:21:06.328730+09:00",
   "alerts_count": 34,
   "alerts": [
+    {
+      "id": "urn:oid:2.49.0.1.840.0.b68bc6fe066d761d3330f904b260b3c5a3f96c27.001.1",
+      "t": "2026-11-27 09:55",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Scott",
+      "area_en": "Scott",
+      "event": "강풍 주의보",
+      "event_en": "High Wind Watch",
+      "severity": "Severe",
+      "headline_ko": "Scott 강풍 주의보",
+      "headline_en": "Scott High Wind Watch",
+      "desc": "* WHAT...North winds 30 to 40 mph with gusts up to 65 mph possible.\n\n* WHERE...Finney, Gray, Haskell, Meade, Seward, Lane, and Scott\nCounties.\n\n* WHEN...From Saturday afternoon through Saturday evening.\n\n* IMPACTS...Damaging winds could blow down trees and power lines.\nIsolated power outages are pos"
+    },
     {
       "id": "urn:oid:2.49.0.1.840.0.d5abf6bef76738303db79a93b1d656fe39df1263.001.1",
       "t": "2026-11-27 10:50",
@@ -147,22 +163,6 @@
       "desc": "Northwestern Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TODAY...E winds 35 kt. Seas 8 ft. Heavy freezing spray.\n.TONIGHT...E winds 3"
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.9d8108cd8bbb236dcc9534162c2dccc43317f39b.001.1",
-      "t": "2026-11-27 03:45",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Western US Arctic Offshore",
-      "area_en": "Western US Arctic Offshore",
-      "event": "해상 결빙 경보",
-      "event_en": "Heavy Freezing Spray Warning",
-      "severity": "Severe",
-      "headline_ko": "Western US Arctic Offshore 해상 결빙 경보",
-      "headline_en": "Western US Arctic Offshore Heavy Freezing Spray Warning",
-      "desc": "Offshore Waters Forecast for the US Arctic Waters\n\nSea forecasts represent an average of the highest one-third of\nthe combined wind wave and swell height. Individual waves may be\ntwice as high.\n\n.TODAY...E winds 35 kt. Seas 13 ft. Blowing snow. Extreme\nfreezing spray.\n.TONIGHT...E winds 35 kt. Seas "
-    },
-    {
       "id": "urn:oid:2.49.0.1.840.0.3818ea5c8a2ac8f7c8372874ce664ace7b47d96d.009.1",
       "t": "2026-11-27 03:45",
       "country": "US",
@@ -227,20 +227,20 @@
       "desc": "Arctic Alaska Coastal Waters out 100 NM\n\nWind forecasts reflect the predominant speed and direction\nexpected. Sea forecasts represent the average of the highest one-\nthird of the combined wind-wave and swell height.\n\n.TODAY...E winds 40 kt. Seas 9 ft. Blowing snow. Extreme freezing\nspray.\n.TONIGHT.."
     },
     {
-      "id": "urn:oid:2.49.0.1.840.0.2b6a5fdabb325a2de8dba4ed27c6f74743e1c455.005.1",
-      "t": "2026-11-27 01:29",
+      "id": "urn:oid:2.49.0.1.840.0.9d8108cd8bbb236dcc9534162c2dccc43317f39b.001.1",
+      "t": "2026-11-27 03:45",
       "country": "US",
       "flag": "🇺🇸",
       "country_ko": "미국",
       "country_en": "United States",
-      "area": "Laramie Valley",
-      "area_en": "Laramie Valley",
-      "event": "강풍 주의보",
-      "event_en": "High Wind Watch",
+      "area": "Western US Arctic Offshore",
+      "area_en": "Western US Arctic Offshore",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
       "severity": "Severe",
-      "headline_ko": "Laramie Valley 강풍 주의보",
-      "headline_en": "Laramie Valley High Wind Watch",
-      "desc": "* WHAT...West winds 30 to 40 mph with gusts up to 65 mph possible.\n\n* WHERE...Central Laramie County and Laramie Valley.\n\n* WHEN...From 8 AM MST this morning through this afternoon.\n\n* IMPACTS...Mainly to transportation. Strong cross winds will be\nhazardous to light weight or high profile vehicles, "
+      "headline_ko": "Western US Arctic Offshore 해상 결빙 경보",
+      "headline_en": "Western US Arctic Offshore Heavy Freezing Spray Warning",
+      "desc": "Offshore Waters Forecast for the US Arctic Waters\n\nSea forecasts represent an average of the highest one-third of\nthe combined wind wave and swell height. Individual waves may be\ntwice as high.\n\n.TODAY...E winds 35 kt. Seas 13 ft. Blowing snow. Extreme\nfreezing spray.\n.TONIGHT...E winds 35 kt. Seas "
     }
   ],
   "quakes": [
@@ -299,14 +299,6 @@
       "t": "2026-11-26 19:33",
       "depth": 84.59,
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000udry"
-    },
-    {
-      "id": "us6000udqa",
-      "mag": 4.5,
-      "place": "95 km SSE of Sarangani, Philippines",
-      "t": "2026-11-26 16:18",
-      "depth": 173.297,
-      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000udqa"
     }
   ],
   "cities": [
@@ -318,11 +310,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 12.5,
-      "apparent_temp": 9.3,
+      "temp": 11.6,
+      "apparent_temp": 8.3,
       "humidity": 79,
-      "code": 2,
-      "wind": 19.6
+      "code": 3,
+      "wind": 19.3
     },
     {
       "id": "losangeles",
@@ -332,11 +324,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 15.0,
-      "apparent_temp": 11.8,
-      "humidity": 40,
+      "temp": 17.2,
+      "apparent_temp": 14.3,
+      "humidity": 35,
       "code": 0,
-      "wind": 8.9
+      "wind": 7.4
     },
     {
       "id": "london",
@@ -346,11 +338,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 4.5,
-      "apparent_temp": 0.8,
+      "temp": 4.3,
+      "apparent_temp": 0.6,
       "humidity": 84,
       "code": 3,
-      "wind": 13.0
+      "wind": 13.3
     },
     {
       "id": "paris",
@@ -360,11 +352,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 3.7,
-      "apparent_temp": 0.1,
-      "humidity": 67,
+      "temp": 3.2,
+      "apparent_temp": -0.6,
+      "humidity": 68,
       "code": 3,
-      "wind": 8.4
+      "wind": 9.4
     },
     {
       "id": "frankfurt",
@@ -374,11 +366,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 1.4,
-      "apparent_temp": -2.3,
-      "humidity": 67,
-      "code": 2,
-      "wind": 6.7
+      "temp": 1.0,
+      "apparent_temp": -2.6,
+      "humidity": 68,
+      "code": 3,
+      "wind": 6.6
     },
     {
       "id": "tokyo",
@@ -390,9 +382,9 @@
       "lon": 139.6917,
       "temp": 11.3,
       "apparent_temp": 11.0,
-      "humidity": 90,
+      "humidity": 92,
       "code": 53,
-      "wind": 1.9
+      "wind": 1.8
     },
     {
       "id": "beijing",
@@ -402,11 +394,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 4.4,
-      "apparent_temp": 0.2,
-      "humidity": 29,
+      "temp": 4.1,
+      "apparent_temp": -0.1,
+      "humidity": 30,
       "code": 0,
-      "wind": 5.3
+      "wind": 5.4
     },
     {
       "id": "singapore",
@@ -417,10 +409,10 @@
       "lat": 1.3521,
       "lon": 103.8198,
       "temp": 24.7,
-      "apparent_temp": 30.3,
+      "apparent_temp": 30.2,
       "humidity": 100,
-      "code": 45,
-      "wind": 5.9
+      "code": 3,
+      "wind": 6.3
     },
     {
       "id": "sydney",
@@ -430,11 +422,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 20.9,
+      "temp": 20.8,
       "apparent_temp": 22.2,
       "humidity": 91,
       "code": 2,
-      "wind": 15.1
+      "wind": 14.4
     },
     {
       "id": "toronto",
@@ -444,11 +436,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 3.7,
-      "apparent_temp": -0.5,
+      "temp": 4.1,
+      "apparent_temp": -0.2,
       "humidity": 95,
-      "code": 61,
-      "wind": 17.8
+      "code": 53,
+      "wind": 18.7
     },
     {
       "id": "dubai",
@@ -462,7 +454,7 @@
       "apparent_temp": 28.2,
       "humidity": 60,
       "code": 0,
-      "wind": 7.4
+      "wind": 7.1
     },
     {
       "id": "saopaulo",
@@ -472,14 +464,22 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 23.8,
-      "apparent_temp": 25.2,
-      "humidity": 56,
+      "temp": 23.7,
+      "apparent_temp": 24.0,
+      "humidity": 57,
       "code": 3,
-      "wind": 8.9
+      "wind": 9.1
     }
   ],
   "stories": [
+    {
+      "id": "gb8999e3c",
+      "title": "Thanksgiving storm leaves over 900,000 homes without power",
+      "press": "EL PAÍS English",
+      "image": "https://i.cbc.ca/ais/36e09950-3c14-4e21-a649-39b2b2ac843e,1795786802233/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C13%2C594%2C334%29%3BResize%3D620",
+      "score": 11.7,
+      "url": "g/gb8999e3c"
+    },
     {
       "id": "g0062dca2",
       "title": "King tides batter US coasts as storms threaten Thanksgiving celebrations",
