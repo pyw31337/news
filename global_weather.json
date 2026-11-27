@@ -1,7 +1,23 @@
 {
-  "updated": "2026-11-27T23:22:24.285136+09:00",
-  "alerts_count": 31,
+  "updated": "2026-11-27T23:49:31.578619+09:00",
+  "alerts_count": 32,
   "alerts": [
+    {
+      "id": "urn:oid:2.49.0.1.840.0.01df62ec427a1e6973d10d86301748972cd47e6c.004.2",
+      "t": "2026-11-27 09:29",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Inland Worcester",
+      "area_en": "Inland Worcester",
+      "event": "홍수 경보",
+      "event_en": "Coastal Flood Warning",
+      "severity": "Severe",
+      "headline_ko": "Inland Worcester 홍수 경보",
+      "headline_en": "Inland Worcester Coastal Flood Warning",
+      "desc": "* WHAT...Up to 2 feet of inundation above ground level in\nlow-lying areas near shorelines and tidal waterways.\n\n* WHERE...Inland Worcester County.\n\n* WHEN...Until 10 PM EST this evening.\n\n* IMPACTS...Widespread flooding of vulnerable areas will result\nin an elevated threat of property damage to home"
+    },
     {
       "id": "urn:oid:2.49.0.1.840.0.1474792d7cb72a4d96c6dbfa2053f2cd3ef68bf8.001.1",
       "t": "2026-11-27 09:18",
@@ -225,27 +241,19 @@
       "headline_ko": "Union County 강풍 주의보",
       "headline_en": "Union County High Wind Watch",
       "desc": "* WHAT...North winds 25 to 40 mph with gusts up to 60 mph possible.\n\n* WHERE...Union County.\n\n* WHEN...From Saturday afternoon through Saturday evening.\n\n* IMPACTS...Damaging winds could blow down trees and power lines.\nPower outages are possible. Travel will be difficult, especially\nfor high profil"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.08e874364c61a320d772afb6a80bca56fcaf87df.001.2",
-      "t": "2026-11-26 22:05",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "West Jackson and West Grand Counties Above 9000 Feet",
-      "area_en": "West Jackson and West Grand Counties Above 9000 Feet",
-      "event": "겨울 폭풍 경보",
-      "event_en": "Winter Storm Warning",
-      "severity": "Severe",
-      "headline_ko": "West Jackson and West Grand Counties Above 9000 Feet 겨울 폭풍 경보",
-      "headline_en": "West Jackson and West Grand Counties Above 9000 Feet Winter Storm Warning",
-      "desc": "* WHAT...Snow and blowing snow expected. Total snow accumulations\nbetween 8 and 15 inches. Winds gusting as high as 55 mph.\n\n* WHERE...Rabbit Ears Pass.\n\n* WHEN...From 5 PM Friday to midnight MST Saturday Night.\n\n* IMPACTS...Travel could be very difficult due to slick and\nsnowpacked roads, blowing s"
     }
   ],
   "quakes": [
     {
-      "id": "us6000uby4",
+      "id": "us6000udwh",
+      "mag": 4.5,
+      "place": "131 km WNW of Neiafu, Tonga",
+      "t": "2026-11-27 12:48",
+      "depth": 271.603,
+      "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000udwh"
+    },
+    {
+      "id": "us6000udw4",
       "mag": 4.8,
       "place": "183 km SSE of Vilyuchinsk, Russia",
       "t": "2026-11-27 11:02",
@@ -309,176 +317,7 @@
       "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000udq5"
     }
   ],
-  "cities": [
-    {
-      "id": "newyork",
-      "name_ko": "뉴욕",
-      "name_en": "New York",
-      "country": "US",
-      "flag": "🇺🇸",
-      "lat": 40.7128,
-      "lon": -74.006,
-      "temp": 11.5,
-      "apparent_temp": 7.5,
-      "humidity": 80,
-      "code": 0,
-      "wind": 24.0
-    },
-    {
-      "id": "losangeles",
-      "name_ko": "로스앤젤레스",
-      "name_en": "Los Angeles",
-      "country": "US",
-      "flag": "🇺🇸",
-      "lat": 34.0522,
-      "lon": -118.2437,
-      "temp": 13.9,
-      "apparent_temp": 9.9,
-      "humidity": 35,
-      "code": 0,
-      "wind": 11.4
-    },
-    {
-      "id": "london",
-      "name_ko": "런던",
-      "name_en": "London",
-      "country": "GB",
-      "flag": "🇬🇧",
-      "lat": 51.5074,
-      "lon": -0.1278,
-      "temp": 4.0,
-      "apparent_temp": 0.0,
-      "humidity": 81,
-      "code": 3,
-      "wind": 13.7
-    },
-    {
-      "id": "paris",
-      "name_ko": "파리",
-      "name_en": "Paris",
-      "country": "FR",
-      "flag": "🇫🇷",
-      "lat": 48.8566,
-      "lon": 2.3522,
-      "temp": 3.9,
-      "apparent_temp": 0.4,
-      "humidity": 66,
-      "code": 3,
-      "wind": 7.4
-    },
-    {
-      "id": "frankfurt",
-      "name_ko": "프랑크푸르트",
-      "name_en": "Frankfurt",
-      "country": "DE",
-      "flag": "🇩🇪",
-      "lat": 50.1109,
-      "lon": 8.6821,
-      "temp": 2.0,
-      "apparent_temp": -1.5,
-      "humidity": 65,
-      "code": 2,
-      "wind": 6.1
-    },
-    {
-      "id": "tokyo",
-      "name_ko": "도쿄",
-      "name_en": "Tokyo",
-      "country": "JP",
-      "flag": "🇯🇵",
-      "lat": 35.6895,
-      "lon": 139.6917,
-      "temp": 11.9,
-      "apparent_temp": 11.0,
-      "humidity": 81,
-      "code": 3,
-      "wind": 3.6
-    },
-    {
-      "id": "beijing",
-      "name_ko": "베이징",
-      "name_en": "Beijing",
-      "country": "CN",
-      "flag": "🇨🇳",
-      "lat": 39.9042,
-      "lon": 116.4074,
-      "temp": 5.5,
-      "apparent_temp": 1.1,
-      "humidity": 26,
-      "code": 0,
-      "wind": 7.0
-    },
-    {
-      "id": "singapore",
-      "name_ko": "싱가포르",
-      "name_en": "Singapore",
-      "country": "SG",
-      "flag": "🇸🇬",
-      "lat": 1.3521,
-      "lon": 103.8198,
-      "temp": 24.9,
-      "apparent_temp": 30.7,
-      "humidity": 99,
-      "code": 51,
-      "wind": 4.8
-    },
-    {
-      "id": "sydney",
-      "name_ko": "시드니",
-      "name_en": "Sydney",
-      "country": "AU",
-      "flag": "🇦🇺",
-      "lat": -33.8688,
-      "lon": 151.2093,
-      "temp": 21.1,
-      "apparent_temp": 22.1,
-      "humidity": 91,
-      "code": 3,
-      "wind": 17.5
-    },
-    {
-      "id": "toronto",
-      "name_ko": "토론토",
-      "name_en": "Toronto",
-      "country": "CA",
-      "flag": "🇨🇦",
-      "lat": 43.6532,
-      "lon": -79.3832,
-      "temp": 3.7,
-      "apparent_temp": -0.2,
-      "humidity": 94,
-      "code": 53,
-      "wind": 15.5
-    },
-    {
-      "id": "dubai",
-      "name_ko": "두바이",
-      "name_en": "Dubai",
-      "country": "AE",
-      "flag": "🇦🇪",
-      "lat": 25.2048,
-      "lon": 55.2708,
-      "temp": 26.4,
-      "apparent_temp": 27.7,
-      "humidity": 58,
-      "code": 0,
-      "wind": 9.2
-    },
-    {
-      "id": "saopaulo",
-      "name_ko": "상파울루",
-      "name_en": "São Paulo",
-      "country": "BR",
-      "flag": "🇧🇷",
-      "lat": -23.5505,
-      "lon": -46.6333,
-      "temp": 21.6,
-      "apparent_temp": 22.1,
-      "humidity": 63,
-      "code": 2,
-      "wind": 11.1
-    }
-  ],
+  "cities": [],
   "stories": [
     {
       "id": "g0062dca2",
@@ -487,14 +326,6 @@
       "image": "https://i.guim.co.uk/img/media/7021c3fba59895984e4b86a1f246a4fffca9c129/748_0_5657_4528/master/5657.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=1406bae1af4feee10fc68d856e4427af",
       "score": 8.0,
       "url": "g/g0062dca2"
-    },
-    {
-      "id": "gf3fa6ba1",
-      "title": "I helped organise the letter from Labour MPs urging Andy Burnham to reject Rosebank. This is why | Catherine Fookes",
-      "press": "Guardian Environment",
-      "image": "https://i.guim.co.uk/img/media/ba5262851964d5124a817774a99f5721676cee39/620_0_6827_5464/master/6827.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctb3BpbmlvbnMucG5n&enable=upscale&s=5eefdef1bf388e18a88702019cbc5105",
-      "score": 8.0,
-      "url": "g/gf3fa6ba1"
     }
   ]
 }
