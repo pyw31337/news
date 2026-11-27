@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-28",
-  "generated_at": "2026-11-28T05:21:32+09:00",
+  "generated_at": "2026-11-28T05:39:50+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -27,10 +27,10 @@
   },
   "candidates": [
     {
-      "issue_id": "id5c065c7",
-      "title": "'반토막 증시' 국민연금 적립금 202조 '증발'…올해 수익률 13%",
+      "issue_id": "i51771867",
+      "title": "국민연금 적립금 석달만에 202조원↓…3분기 수익률 13%",
       "category": "경제",
-      "rank": 3,
+      "rank": 4,
       "priority_score": 45,
       "production_types": [
         "comic",
@@ -38,7 +38,7 @@
       ],
       "status": "needs_fact_review",
       "facts": [
-        "국민연금공단 기금운용본부는 2026년 3분기(1월~9월 말) 국민연금기금 적립금이 1664조원이며, 누적 기금운용 수익률은 잠정적으로 13.28%를 기록했다고 밝혔다.",
+        "올해 3분기 국민연금기금 적립금은 1천664조원, 기금운용 수익률은 13.28%로 잠정 집계됐다.",
         "국민연금, 석 달 만에 202조원 사라져… 3분기 수익률 13%",
         "국민연금 적립금 3개월 만에 202조 줄었다…수익률도 반토막",
         "국민연금 3개월 만에 202조원 증발…상반기 수익률 절반 반납",
@@ -70,7 +70,7 @@
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "국민연금공단 기금운용본부는 2026년 3분기(1월~9월 말) 국민연금기금 적립금이 1664조원이며, 누적 기금운용 수익률은 잠정적으로 13.28%를 기록했다고 밝혔다."
+          "evidence": "올해 3분기 국민연금기금 적립금은 1천664조원, 기금운용 수익률은 13.28%로 잠정 집계됐다."
         },
         {
           "panel": 2,
@@ -85,7 +85,7 @@
         {
           "panel": 4,
           "purpose": "다음에 검증할 지표·조건",
-          "evidence": "3분기 누적 수익률이 13.28%로 잠정 집계되고 적립금 감소세가 재확인되었다. 기금 적립금 규모가 1664조 원대로 내려앉으며 자산 방어에 대한 우려가 커진 것으로 볼 수 있다."
+          "evidence": "3분기 기금적립금 1664조원 돌파 및 누적 수익률 13.28%가 공식적으로 잠정 집계되었음을 재확인하는 흐름이다."
         }
       ],
       "visual_brief": {
@@ -122,114 +122,11 @@
         "cause_grounded": true,
         "numeric_or_specific_evidence": true,
         "sources": 4,
-        "continuity_quality": 0.76,
+        "continuity_quality": 0.68,
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
           "수사·대응"
-        ],
-        "no_generic_closing": true
-      }
-    },
-    {
-      "issue_id": "i45c3c699",
-      "title": "삼성전자 오늘 30조 '역대급' 배당…이재용 회장 배당액 무려",
-      "category": "경제",
-      "rank": 5,
-      "priority_score": 37,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "삼성전자 주주들의 계좌에 오늘(27일) 총 30조 원 규모의 배당금이 지급됐습니다.",
-        "1주 17만원→13조원? “주식 절대 팔지 마라”…머스크 ‘파격 전망’, 이유가",
-        "“그래서 뭘 더해 줄 건데?”…머스크도 진땀 빼게 한 이재용의 한마디",
-        "\"미친 상황\" 머스크도 '못 구해서' 쩔쩔매는데 과잉생산이라고?",
-        "머스크도 \"칩 좀 더\"‥美 과잉생산 지적했지만 현실은 초과수요"
-      ],
-      "sources": [
-        {
-          "press": "서울경제",
-          "title": "1주 17만원→13조원? “주식 절대 팔지 마라”…머스크 ‘파격 전망’, 이유가",
-          "url": "https://n.news.naver.com/article/011/0004686902"
-        },
-        {
-          "press": "전자신문",
-          "title": "“그래서 뭘 더해 줄 건데?”…머스크도 진땀 빼게 한 이재용의 한마디",
-          "url": "https://n.news.naver.com/article/030/0003490529"
-        },
-        {
-          "press": "JTBC",
-          "title": "\"미친 상황\" 머스크도 '못 구해서' 쩔쩔매는데 과잉생산이라고?",
-          "url": "https://n.news.naver.com/article/437/0000522852"
-        },
-        {
-          "press": "MBC",
-          "title": "머스크도 \"칩 좀 더\"‥美 과잉생산 지적했지만 현실은 초과수요",
-          "url": "https://n.news.naver.com/article/214/0001538575"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "삼성전자 주주들의 계좌에 오늘(27일) 총 30조 원 규모의 배당금이 지급됐습니다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "머스크도 \"칩 좀 더\"‥美 과잉생산 지적했지만 현실은 초과수요"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "1주 17만원→13조원? “주식 절대 팔지 마라”…머스크 ‘파격 전망’, 이유가"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
-        }
-      ],
-      "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "입장·공방"
         ],
         "no_generic_closing": true
       }
@@ -269,9 +166,9 @@
           "url": "http://www.newsbrite.net/news/articleView.html?idxno=201819"
         },
         {
-          "press": "조선일보",
-          "title": "김범수 ‘SM 주가 조작 혐의’ 무죄 확정…공소청 상고 포기",
-          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxONDRvQmgtVkt5X1pWb1UxSm1LY0dhbTNBLWlnTlgzTkpIaDIwZl9RX3VBN2loWjkzTzFCT1o4SkRZNTdYdnlHRGFlZ3VodmxVS3R1RlJCQzNBbVlyWXZPc0w3azZaTjFuNnJ4bG1ST0JZN0dna3hKdGI1UXFrenI5QXBadHB2WDg?oc=5"
+          "press": "한겨레",
+          "title": "공소청, 김범수 ‘SM 시세조종 혐의’ 상고 포기…무죄 확정",
+          "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE15S0J5elE5MmwzTnY3aUlocU55dU04aXdQdFpkVWE0eXU0anRPa2dDQlIzTkFEeGllVHhFZ2kyanpXLXY3OExKOGVrYm5VeEZORlJTRnBlUGtrcXlZa3ZMWDZEMVJSdEZqdkdISEVtbXFCZw?oc=5"
         }
       ],
       "story_beats": [
@@ -334,6 +231,109 @@
         "continuity_gaps": [
           "발단·의혹",
           "입장·공방",
+          "파장·후속"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i3a66be69",
+      "title": "'제자 성폭행 혐의' 남경주, 재판서 성관계 시도는 인정…위력은 부인",
+      "category": "사회",
+      "rank": 3,
+      "priority_score": 37,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "제자를 성폭행한 혐의로 기소된 뮤지컬 배우 남경주 측이 국민참여재판에서 성관계를 시도한 사실은 인정하면서도 위력을 행사한 적은 없다며 무죄를 주장했다.",
+        "남경주 '제자 성폭행' 국참 첫날…\"지위 이용 간음\" vs \"위력 없었다\"(종합)",
+        "‘제자 성폭행’ 의혹 남경주 “성관계 시도 인정·위력은 부인”",
+        "뮤지컬 배우 남경주가 여성 제자를 상대로 성폭행을 시도한 혐의로 재판을 받고 있는 가운데, 성관계를 시도한 사실 자체는 인정하면서도 검찰이 제기한 공소사실에 대해서는 무죄를 주장했다.",
+        "양측이 보호·감독 관계와..."
+      ],
+      "sources": [
+        {
+          "press": "뉴시스",
+          "title": "남경주 '제자 성폭행' 국참 첫날…\"지위 이용 간음\" vs \"위력 없었다\"(종합)",
+          "url": "https://n.news.naver.com/article/003/0014350261"
+        },
+        {
+          "press": "국민일보",
+          "title": "‘제자 성폭행’ 의혹 남경주 “성관계 시도 인정·위력은 부인”",
+          "url": "https://n.news.naver.com/article/005/0001887873"
+        },
+        {
+          "press": "sportsseoul.com",
+          "title": "“정황이 너무 심각해” 남경주, 제자 성관계 시도 인정→상황 ‘급변’...",
+          "url": "https://m.entertain.naver.com/article/468/0001283968"
+        },
+        {
+          "press": "머니투데이",
+          "title": "남경주 \"여제자와 성관계 시도 인정...위력 행사는 없었다\"",
+          "url": "https://n.news.naver.com/article/008/0005447433"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "제자를 성폭행한 혐의로 기소된 뮤지컬 배우 남경주 측이 국민참여재판에서 성관계를 시도한 사실은 인정하면서도 위력을 행사한 적은 없다며 무죄를 주장했다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "이날 검사 측은 남경주가 지난해 12월 서울 서초구 모처에서 자신의 사회적 지위와 영향력을 이용해 제자인 여성을 성폭행했다고 주장했다."
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "'제자 성폭행' 혐의 뮤지컬 배우 남경주 27일 국민참여재판"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "다음 발표에서 원인이 된 조건과 핵심 수치의 변화를 확인"
+        }
+      ],
+      "visual_brief": {
+        "scene": "reportage",
+        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.92,
+        "continuity_gaps": [
           "파장·후속"
         ],
         "no_generic_closing": true
