@@ -1,0 +1,2555 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Lotte손해보험">
+<title>상품목록 - 롯데손해보험</title>
+<link rel="stylesheet" type="text/css" href="/web/C/cm/css/intro.css">
+<!--사이버창구css-->
+
+<!--  javascript 영역 시작 -->
+
+<script src="/web/C/cm/js/jquery-3.5.0.min.js"></script>
+<script src="/web/C/cm/js/jquery-ui-1.13.2.js"></script>
+
+<!-- <script src="/web/C/cm/js/jquery-1.10.2.min.js"></script>
+<script src="/web/C/cm/js/jquery-ui.min.js"></script> --><!--Publ part-->
+<script src="/web/C/cm/js/hoverIntent.js"></script><!--Publ part-->
+<script src="/web/C/cm/js/superfish.min.js"></script><!--Publ part-->
+<script src="/web/C/cm/js/ui_common.js"></script><!--Publ part-->
+<script src="/web/C/cm/js/common.js"></script>
+<script src="/cm/js/util.js"></script>
+<script src="/web/C/cm/js/Cutil.js"></script>
+<script src="/web/C/cm/js/float.js"></script>
+<!--  javascript 영역 끝 -->
+<!-- Xecure 사용하는 페이지만 적용 ==> 하단에 Xecure 관련 jsp include 추가 -->
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<script type="text/javascript">
+document.write("<script type=\"text/javascript\" src=\"" + "/anysign/anySign4PCInterface.js" + "?version=" + new Date().getTime() + "\"></scr"+"ipt>");
+
+(function(){
+	
+	var platform = navigator.platform.toLowerCase();
+	var macfilter ="mac|macintel";
+	
+	function callMac(){ //mac인경우		
+		
+		if(macfilter.indexOf(platform)> -1){
+			var exist = false;
+			var scripts = document.getElementsByTagName("script");
+			
+			for (var i= 0 ; i < scripts.length; i++){
+				if(scripts[i].src && scripts[i].src.indexOf("nppfs-1.13.0.js") > -1){
+					exist = true;
+					break;
+				}
+			}
+			if(!exist){
+				var nppscript = document.createElement("script");
+				nppscript.src="/inca/nppfs-1.13.0.js";		
+				
+				document.head.appendChild(nppscript);		
+			}			
+		}
+	}
+	if(typeof window.jQuery !=='undefined'){
+		callMac();
+	}else{ // jquery 없는경우
+		if(macfilter.indexOf(platform)> -1){
+			var script = document.createElement("script");
+			script.src="/web/C/cm/js/jquery-3.5.0.min.js";
+			script.load = callMac;
+			script.onerror = function(){
+			//	console.error("jquery 실패");
+			}
+			document.head.appendChild(script);
+		}
+	}
+})();
+</script>
+
+<script>
+	navigator.plugins.refresh();
+	PrintObjectTag ();
+	
+	var aSessionKey = '';
+
+	// windows
+	//if( AnySign.IsNeedUpdateXWM () != true ) {
+		if( AnySign.mPlatform.aName.indexOf("windows") != -1 ) {
+			//aSessionKey = XecureWeb.GenerateRandom(16, 0);
+			//XecureWeb.mKDefenseEnable = true;
+			//XecureWeb.mVKeypadEnable = false;
+			//Non-ActiveX
+			AnySign.mKOSKeyEnable = true;
+			AnySign.mVKeypadEnable = false;
+		} else {	// not windows
+			//XecureWeb.mKDefenseEnable = false;
+			//XecureWeb.mVKeypadEnable = true;
+			//Non-ActiveX
+			AnySign.mKOSKeyEnable = false;
+			AnySign.mVKeypadEnable = true;
+		}
+	//}
+</script>
+<!-- 공통기능 -->
+
+	
+
+ <!-- 빈 jsp 파일 추가 고객요청 -->
+
+<script language="JavaScript">
+
+	$(document).ready(function(){
+		
+	});
+	
+	
+	function hideMenus(){
+		$('.toparea').hide();
+		$('#left_wrap').hide();
+		$('#header').hide();
+		$('#content_wrap').css('float', 'none');
+		$('#footerss').hide();
+	}
+
+	function insuranceSearch() {
+		var frm = document.myform;
+
+		var prdNm = frm.srcPrdNm.value;
+
+		if(prdNm == ""){
+			alert ("상품을 입력해 주세요");
+			frm.srcPrdNm.focus();
+			return;
+		}
+
+		frm.task.value = "searchKey";
+		frm.ops_tc.value = "dfi.c.d.g.cmd.Cdg079Cmd";
+		frm.rtnUri.value = "/web/C/D/H/cdh190_result.jsp";
+		frm.target = "common";
+		frm.submit();
+	}
+
+	function procTask(issale) {
+		var frm = document.myform;
+
+		frm.issale.value = issale;
+		document.getElementById("step2view").innerHTML="";
+		document.getElementById("step3view").innerHTML="";
+		document.getElementById("step4view").innerHTML="<dl class='pro_select'><dt>상품명</dt><dd><span><br></span></dd><dt class='pt20'>판매기간</dt><dd><span><br></span></dd></dl><ul class='pdf_btn'><li><img src='/web/C/images/com/btn/btn_cdh_pdf01.gif' alt='사업방법서'></li><li>	<img src='/web/C/images/com/btn/btn_cdh_pdf02.gif' alt='상품요약서'></li><li><img src='/web/C/images/com/btn/btn_cdh_pdf03.gif' alt='약관'></li></ul>";
+
+
+		$("#cur0").removeClass("current");
+		$("#cur1").removeClass("current");
+
+		$("#addb0").removeClass("on");
+		$("#addd0").removeClass("on");
+		for(var i=0; i<=12; i++){
+			$("#adda"+i).removeClass("on");
+			$("#addc"+i).removeClass("on");
+		}
+
+
+		if(issale=="Y"){
+			$("#cur0").addClass("current");
+		}else{
+			$("#cur1").addClass("current");
+		}
+	}
+
+
+	function classchkStep2(val, size){
+		for(var i=0; i<size; i++){
+			if(i!=val){
+				$("#adde"+i).removeClass("on");
+			}
+			if(i==val){
+				$("#adde"+i).addClass("on");
+			}
+		}
+	}
+
+	function classchkStep3(val, size){
+		for(var i=0; i<size; i++){
+			if(i!=val){
+				$("#addf"+i).removeClass("on");
+			}
+			if(i==val){
+				$("#addf"+i).addClass("on");
+			}
+		}
+	}
+
+	function step2(lcode, mcode, val, gubun){
+		var frm = document.myform;
+
+		if(gubun == "1"){
+			$("#addb0").removeClass("on");
+			$("#addd0").removeClass("on");
+			for(var i=0; i<=12; i++){
+				if(i!=val){
+					$("#adda"+i).removeClass("on");
+					$("#addc"+i).removeClass("on");
+				}
+				if(i==val){
+					$("#adda"+i).addClass("on");
+				}
+			}
+		}
+
+		if(gubun == "2"){
+			$("#addb0").removeClass("on");
+			$("#addd0").removeClass("on");
+			for(var i=0; i<=12; i++){
+				if(i!=val){
+					$("#adda"+i).removeClass("on");
+					$("#addc"+i).removeClass("on");
+				}
+				if(i==val){
+					$("#addb0").addClass("on");
+				}
+			}
+		}
+
+		if(gubun == "3"){
+			$("#addb0").removeClass("on");
+			$("#addd0").removeClass("on");
+			for(var i=0; i<=12; i++){
+				if(i!=val){
+					$("#adda"+i).removeClass("on");
+					$("#addc"+i).removeClass("on");
+				}
+				if(i==val){
+					$("#addc"+i).addClass("on");
+				}
+			}
+		}
+
+		if(gubun == "4"){
+			$("#addb0").removeClass("on");
+			$("#addd0").removeClass("on");
+			for(var i=0; i<=12; i++){
+				if(i!=val){
+					$("#adda"+i).removeClass("on");
+					$("#addc"+i).removeClass("on");
+				}
+				if(i==val){
+					$("#addd0").addClass("on");
+				}
+			}
+
+		}
+
+
+		frm.lcode.value = lcode;
+		frm.mcode.value = mcode;
+		if(frm.issale.value=="Y"){
+			frm.task.value = "gostep2issale";
+		}else{
+			frm.task.value = "gostep2isnotsale";
+		}
+		frm.ops_tc.value = "dfi.c.d.g.cmd.Cdg079Cmd";
+		frm.rtnUri.value = "/web/C/D/H/cdh190_result.jsp";
+		frm.target = "common";
+		frm.submit();
+	}
+
+
+	function step3(lcode, mcode, scode, val, roop){
+		var frm = document.myform;
+		frm.lcode.value = lcode;
+		frm.mcode.value = mcode;
+		frm.scode.value = scode;
+		if(frm.issale.value=="Y"){
+			frm.task.value = "gostep3issale";
+		}else{
+			frm.task.value = "gostep3isnotsale";
+		}
+		frm.ops_tc.value = "dfi.c.d.g.cmd.Cdg079Cmd";
+		frm.rtnUri.value = "/web/C/D/H/cdh190_result.jsp";
+		frm.target = "common";
+		frm.submit();
+	}
+
+	function step4(lcode, mcode, scode, startdate, val, roop){
+		var frm = document.myform;
+		frm.lcode.value = lcode;
+		frm.mcode.value = mcode;
+		frm.scode.value = scode;
+		frm.startdate.value = startdate;
+		if(frm.issale.value=="Y"){
+			frm.task.value = "gostep4issale";
+		}else{
+			frm.task.value = "gostep4isnotsale";
+		}
+		frm.ops_tc.value = "dfi.c.d.g.cmd.Cdg079Cmd";
+		frm.rtnUri.value = "/web/C/D/H/cdh190_result.jsp";
+		frm.target = "common";
+		frm.submit();
+	}
+
+</script>
+</head>
+<body>
+<div id="wrapper">
+
+
+	<!-- header -->
+	
+
+
+
+
+
+
+
+
+
+<script src="/web/C/cm/js/js_common.js?1795776689469"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	getTopMenuList("top", "submenu");
+	
+	// 웹접근성 수정
+	$("#header span a").each(function(){
+		console.log("href = " + $(this).attr('href'));
+		
+		if($(this).attr('href') == '#content' && $("#content_new").length > 0 && $("#content").length == 0 ) {
+			$(this).attr('href', '#content_new');
+		}
+	});
+	
+});
+
+//170901 모바일서비스
+function mobileService(url){	
+    var pop = window.open(url, "mobile_service", "toolbar=no,location=no,status=no,menubar=no,resizable=no,top=1,left=1,width=890, height=768");
+    pop.focus();
+}
+
+</script>
+
+
+	<div id="header" style="border-bottom:1px solid #b5b5b5;"><span class="skipnavi"><a href="#gnb">주메뉴 바로가기</a><a href="#content">본문 바로가기</a></span>
+	
+	<div class="topmenu_sub">
+		<ul>
+			
+			<li class="ml10"><a href="/web/C/D/H/cdh000.jsp" class="int">회사소개</a></li>
+			<li class="point-top"><a href="/web/C/D/H/cdh_ir_board04_list_6.jsp" class="ir">IR</a></li>
+			<li class="point-top"><a href="/web/C/D/H/cdh_lc_intro.jsp" class="lp">LP지원</a></li>
+			<li class="point-top"><a href="/web/C/D/H/cdh700.jsp" class="lot">공시실</a></li>			
+			<li class="point-top"><a href="/web/C/D/J/cdj1000.jsp" class="certifi_01">소비자포털</a></li>
+			<li class="point-top"><a href="/eng/index.jsp" class="eng" target="_blank" title="새창열림">ENGLISH</a></li>
+			<li class="point-top"><a href="/web/mservice.jsp" onClick="mobileService(this.href); return false;" class="mobileservice" title="새창열림">모바일서비스</a></li>
+
+
+
+				<li><a title="로그인" class="mypage_01" href="javascript:movepage('/CChannelSvl', 'dfi.c.cm.CFrontCmd', '/web/C/D/K/cdk524.jsp');">로그인</a></li>
+
+		</ul>
+	
+	</div>
+	<div class="innerwrap">
+		<h1 class="logo"><a href="/web/main.jsp"><img src="/web/C/images/main/let_sublogo.png" alt="let"></a></h1>
+	</div>
+	<!--gnb-->
+	<div id="gnbwrap_sub">
+		<ul id="gnb" class="type001 gnb_menu">
+	
+		</ul>
+	</div>
+	<!--//gnbwrap -->
+	<!-- search -->
+ 	
+
+
+
+<style>
+.loadingWrap_search.on {display:block; left:0;top:0;width:10%;height:10%;z-index:9999993}
+.loadingWrap_search.on .dimmed{margin-top:265px;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;opacity:.3;filter:Alpha(opacity=30);z-index:9999994}
+</style>
+<script type="text/javascript" src="/web/C/D/K/include/js/ui_calc_pc.js"></script>
+<script type="text/javascript" src="/web/C/cm/js/CmUtil.js" charset='euc-kr'></script>
+<script type="text/javascript">
+//페이지에 들어갈 스크립트
+var oldVal = '';
+var completePos = -99;
+var completeTime;
+$(document).ready(function() {
+	$('div[name=search_tab_new] ul.tabs').each(function(){
+		// For each set of tabs, we want to keep track of
+		// which tab is active and it's associated content
+		var $active, $content, $links = $(this).find('a');
+
+		// If the location.hash matches one of the links, use that as the active tab.
+		// If no match is found, use the first link as the initial active tab.
+		$active = $($links.filter('[href="'+location.hash+'"]')[0] || $links[0]);
+		$active.addClass('active');
+		$active.closest('li').addClass('current');
+
+		$content = $($active[0].hash);
+
+		// Hide the remaining content
+		$links.not($active).each(function () {
+			$(this.hash).hide();
+		});
+
+		// Bind the click event handler
+		$('div[name=search_tab_new] ul.tabs a span').off('click');
+		$('div[name=search_tab_new] ul.tabs a').on('click', function(e){
+		//$(this).on('click', 'a', function(e){
+			// Make the old tab inactive.
+			$active.removeClass('active');
+			$active.closest('li').removeClass('current');
+			$content.hide();
+
+			// Update the variables with the new link and content
+			$active = $(this);
+			$content = $(this.hash);
+
+			// Make the tab active.
+			$active.addClass('active');
+			$active.closest('li').addClass('current');
+			$content.show();
+			
+			// Prevent the anchor's default click action
+			e.preventDefault();
+		});
+	});
+		
+	// onChagne event
+	setOnChange();
+	
+	// OnMouseLeave
+	setOnMouseLeave();
+	
+});
+
+//자동완성 
+function fn_change(){
+	
+	document.search_form.pageTypeCd.value = "getComplete";
+	
+	AjaxUtil.callAjax("/CChannelSvl","POST", $("form[name='search_form']").serialize(),"json"
+   		 , function(data) {
+			//console.log(data);
+			
+			var json = JSON.parse(data.result);
+			var code = json.code;
+			//console.log("code = " + code);
+			
+			// 1이 성공
+			if(code == 1) {
+				$("#complete").empty();				
+				
+				var jsonData = json.data;
+				
+				var count = jsonData.count;
+				
+				if(count > 0) {
+					$("#div_complete").show();
+				}
+				
+				var list = jsonData.list;
+				
+				for(var i = 0; i < count; i++) {
+					var tmpStr = "";
+					tmpStr += "<li style='cursor:pointer;' onclick=javascript:fn_search(";
+					tmpStr += "'" + list[i].KEYWORDS + "'";
+					tmpStr += ");>";
+					tmpStr += list[i].KEYWORDS; 
+					tmpStr += "</li>";
+					$("#complete").append(tmpStr);
+				}
+			}
+		}, false, false
+	);
+}
+
+// 검색 시작
+function fn_search(searchWord) {
+	allClear();
+	document.search_form.searchWord.value = searchWord;
+	fn_topSearch();
+}
+
+// 검색 관련 초기화
+function allClear(){
+	document.search_form.menuPerPage.value = 5;
+	document.search_form.faqPerPage.value = 5;
+	document.search_form.contentsPerPage.value = 5;
+	
+	$("#search_tab1").click();
+	
+	$("#menu_dtl").empty();
+	$("#faq_dtl").empty();
+	$("#content_dtl").empty();
+	
+	$("#menu_dtl_tab").empty();
+	$("#faq_dtl_tab").empty();
+	$("#content_dtl_tab").empty();
+}
+
+// 최초 초기화
+function search_init(){
+	allClear();
+	
+	// 자동완성 초기화
+	$("#complete").empty();
+	$("#div_complete").hide();
+	
+	// 검색결과 숨김
+	$("#search_result").hide();
+	$("#total_srch").css("height", "")
+	$("#searchWordTitle").html("");
+	$("#searchWordTotlCnt").html("");
+	$("p[name=menu_cnt]").html("");
+	$("p[name=faq_cnt]").html("");
+	$("p[name=content_cnt]").html("");
+	
+	// 검색어 초기화
+	$("#searchTerm").val('');
+	
+}
+
+// 키입력 체크
+function setOnChange(){
+	$("#searchTerm").on("propertychange change keyup paste input",  function(){
+		
+		if($(this).val().length == 0) {
+			$("#complete").empty();
+			$("#div_complete").hide();
+			return false;
+		}	
+	
+		var currentVal = $(this).val();
+		if(currentVal == oldVal) {
+			return;
+		}
+		if(completePos == -99) {
+			oldVal = currentVal;
+			fn_change();
+		}
+	});
+}
+
+// mouseover에 자동완성 삭제
+function setOnMouseLeave(){
+	$("#div_complete").on("mouseleave", function(){
+
+		if(completeTime) {
+			clearTimeout(completeTime);	
+		}
+		completePos = -99;
+		
+		$("#complete").empty();
+		$("#div_complete").hide();
+	});
+}
+
+//엔터 이벤트
+function fn_SearchEnter(event, thisform) {
+	
+	//console.log("$(thisform).length = " + $(thisform).length);
+	
+	if($(thisform).length == 0) {
+		return false;
+	}
+		
+	var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+	if (keyCode == 13) { // 엔터키
+		fn_search(document.search_form.searchWord.value);
+		event.preventDefault();
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function fn_keyDown(event, thisform){
+
+	var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.charCode;
+	if(keyCode == 38){ // 키보드 UP
+		
+		if(completeTime) {
+			clearTimeout(completeTime);	
+		}
+		var totLiTagCnt = $("#complete li").length;
+		
+		if(totLiTagCnt > 0) {
+			if(completePos == -99 || completePos == -1) {
+				completePos = totLiTagCnt-1;
+			}
+			else if(completePos > -1){
+				completePos = completePos-1;	
+			}
+			console.log("keyup completePos = " + completePos);
+			var liTag = $("#complete li:eq(" + completePos + ")");
+			console.log("keyup liTag.html = " + liTag.html());
+			$("#searchTerm").val(liTag.html());
+			
+			if(completePos == 0) {
+				completePos = totLiTagCnt-1;
+			}
+			completeTime = setTimeout(function(){
+				console.log("keyup setTimeout");
+				completePos = -99;
+			}, 2000);
+		}
+	} else if(keyCode == 40) { // DOWNKEY: 40
+		
+		if(completeTime) {
+			clearTimeout(completeTime);	
+		}
+		var totLiTagCnt = $("#complete li").length;
+		if(totLiTagCnt > 0) {
+			if(completePos == -99) {
+				completePos = 0;
+			}
+			else {
+				completePos = completePos+1;	
+			}
+			
+			console.log("keydown completePos = " + completePos);
+			var liTag = $("#complete li:eq(" + completePos + ")");
+			console.log("keydown liTag.html = " + liTag.html());
+			$("#searchTerm").val(liTag.html());
+			
+			console.log("totLiTagCnt = " + totLiTagCnt);
+			
+			if(completePos == (totLiTagCnt-1)) {
+				completePos = -1;
+			}
+			completeTime = setTimeout(function(){
+				console.log("keydown setTimeout");
+				completePos = -99;
+			}, 2000);
+		}
+	} else {
+		return true;
+	}
+}
+
+// 검색 시작
+function fn_topSearch(){
+
+	faqCnt = 0;
+	menuCnt = 0;
+	contentCnt = 0;
+	
+	document.search_form.pageTypeCd.value = "getTotalResult";
+	
+	AjaxUtil.callAjax("/CChannelSvl","POST", $("form[name='search_form']").serialize(),"json"
+   		 , function(data) {
+		//console.log(data);
+   			var json = JSON.parse(data.result);
+			var code = json.code;
+			
+			// 1이 성공 
+			if(code == 1) {
+
+				$("#complete").empty(); // 자동완성 단어 초기화 
+				$("#div_complete").hide(); // 자동완성 hide
+				$("#searchTerm").blur(); // 포커스 해지
+				
+				// 타이틀 검색어
+				$("#searchWordTitle").html(document.search_form.searchWord.value);
+				
+				var jsonData = json.data;
+				
+				var faqCnt = jsonData.count.faq;
+				var menuCnt = jsonData.count.menu;
+				var contentCnt = jsonData.count.contents;
+				var totalCnt = Number(faqCnt)+Number(menuCnt)+Number(contentCnt);
+				
+				$("#searchWordTotlCnt").html("총 " + totalCnt + " 건");
+				
+				$("p[name=menu_cnt]").html("메뉴 (총" + menuCnt + "건)");
+				$("p[name=faq_cnt]").html("자주하는 질문(FAQ) (총" + faqCnt + "건)");
+				$("p[name=content_cnt]").html("본문내용 (총" + contentCnt + "건)" );
+				
+				var faqList = jsonData.list.faq;
+				var menuList = jsonData.list.menu;
+				var contentList = jsonData.list.contents;
+				
+				$("#menu_dtl").empty();
+				if(menuCnt == 0) {
+					$("#menu_dtl").html("<li>검색결과가 없습니다.</li>");
+				}
+				else {
+					for(var i = 0; i < menuCnt; i++) {
+						var tmpStr = "";
+						if(typeof menuList[i] != 'undefined') {
+							
+							if( i == 0 ) {
+								tmpStr += "<li style='cursor:pointer;' onclick=javascript:goMovePage(";	
+							}
+							else {
+								tmpStr += "<li style='cursor:pointer;margin-top:5px' onclick=javascript:goMovePage(";
+							}
+							
+							// 값이 비어있는 경우는 보험서비스안내 관련
+							if(menuList[i].PGMURL == '') {
+								menuList[i].SERVICENM = "/CChannelSvl";
+								menuList[i].CMDNM = "dfi.c.cm.CFrontCmd";
+								menuList[i].PGMURL = "/web/C/D/A/cda020.jsp?prdtseq=" + menuList[i].SEQ;
+							}
+							
+							tmpStr += "'" + menuList[i].SERVICENM + "'" + ","; // /CChannelSvl
+							tmpStr += "'" + menuList[i].CMDNM + "'" + ","; // dfi.c.cm.CFrontCmd
+							tmpStr += "'" + menuList[i].PGMURL + "'" + ","; // /web/C/D/A/cda020.jsp
+							tmpStr += "'" + menuList[i].WORKNM + "'" + ","; // ''
+							tmpStr += "'" + menuList[i].SEQ + "'" + ","; // 83 (SEQ)
+							tmpStr += "'" + menuList[i].PGMSEQ + "'" + ","; // '1004001'
+							tmpStr += "'" + menuList[i].UPPGMSEQ + "'" + ","; // '100400'
+							tmpStr += "'" + menuList[i].ATTRIBUTE1 + "'" + ","; // 'LINKTYPE02'
+							tmpStr += "'" + menuList[i].ATTRIBUTE2 + "'" + ");>"; // ''
+							tmpStr += menuList[i].PGMNM; // 국내여행보험
+							tmpStr += "</li>";
+							$("#menu_dtl").append(tmpStr);
+						}
+					}
+				}
+				
+				$("#faq_dtl").empty();
+				if(faqCnt == 0){
+					$("#faq_dtl").html("<div>검색결과가 없습니다.</div>");
+				}
+				else {
+					for(var i = 0; i < faqCnt; i++) {
+						var tmpStr = "";
+						if(typeof faqList[i] != 'undefined') {
+							//console.log("faqList[i] = " + faqList[i]);
+							tmpStr += "<dt style='cursor:pointer;' onclick='view_detail(this," + i + "); return false;'>";
+							tmpStr += faqList[i].TTL;
+							tmpStr += "<button type='button' class='srch_btn_open fr'></button>";
+							tmpStr += "</dt>"
+							tmpStr += "<dd name='detail_" + i + "'" + "style='display:none;'>";
+							tmpStr += faqList[i].CNTNT;
+							tmpStr += "</dd>"
+							$("#faq_dtl").append(tmpStr);
+						} 				
+					}
+				}
+				
+				$("#content_dtl").empty();
+				if(contentCnt == 0){
+					$("#content_dtl").html("<div>검색결과가 없습니다.</div>");
+				}
+				else {
+					for(var i = 0; i < contentCnt; i++) {
+						var tmpStr = "";
+						if(typeof contentList[i] != 'undefined') {
+							//console.log("faqList[i] = " + faqList[i]);
+							tmpStr += "<dt style='cursor:pointer;' onclick=javascript:goMovePage(";
+							tmpStr += "'" + contentList[i].SERVICENM + "'" + ","; // /CChannelSvl
+							tmpStr += "'" + contentList[i].CMDNM + "'" + ","; // dfi.c.cm.CFrontCmd
+							tmpStr += "'" + contentList[i].JSPPATH + "'" + ","; // /web/C/D/A/cda020.jsp
+							tmpStr += "'" + contentList[i].WORKNM + "'" + ","; // ''
+							tmpStr += "'" + contentList[i].SEQ + "'" + ","; // 83 (SEQ)
+							tmpStr += "'" + contentList[i].PGMSEQ + "'" + ","; // '1004001'
+							tmpStr += "'" + contentList[i].UPPGMSEQ + "'" + ","; // '100400'
+							tmpStr += "'" + contentList[i].ATTRIBUTE1 + "'" + ","; // 'LINKTYPE02'
+							tmpStr += "'" + contentList[i].ATTRIBUTE2 + "'" + ");>"; // ''
+							tmpStr += contentList[i].JSPTITLE;
+							tmpStr += "</dt>"
+							tmpStr += "<dd>";
+							tmpStr += tagReplace(contentList[i].ATTACH_JSPPATH);
+							tmpStr += "</dd>"
+							$("#content_dtl").append(tmpStr);
+						} 				
+					}
+				}
+				
+				$("#search_result").show();
+				$("#total_srch").css("height", "100%")
+				$(".loadingWrap_search").removeClass("on");
+			}
+			else {
+				$("#search_result").hide();
+				$("#total_srch").css("height", "")
+				$(".loadingWrap_search").addClass("on");
+			}
+	}
+	);
+}
+
+// FAQ 상세보기
+function view_detail(obj, index) {
+	var tagName = $(obj).prop('tagName');
+	var btnObj = $(obj);
+	
+	if(tagName == 'DT') {
+		btnObj = $(obj).find('button');
+	}
+	
+	if(btnObj.hasClass("srch_btn_open_on")) {
+		btnObj.removeClass("srch_btn_open_on");
+		btnObj.addClass("srch_btn_open");
+		
+		$('dd[name=detail_' + index + ']').hide();		
+	}
+	else if(btnObj.hasClass("srch_btn_open")) {
+		btnObj.removeClass("srch_btn_open");
+		btnObj.addClass("srch_btn_open_on");
+		$('dd[name=detail_' + index + ']').show();
+	}
+}
+
+// 탭 선택시 검색
+function tabSearch(obj) {
+/* 	console.log("obj.attr('id' = " + $(obj).attr('id'));
+	console.log("$('#menu_dtl_tab li').length = " + $("#menu_dtl_tab li").length);
+	console.log("$('#faq_dtl_tab dt').length = " + $("#faq_dtl_tab dt").length);
+	console.log("$('#content_dtl_tab dt').length = " + $("#content_dtl_tab dt").length);
+ */	
+	var bodyHeigth = $("body").css("height");
+//	console.log("$('body').css('height')" + bodyHeigth);
+	$("#search_result").css("height", bodyHeigth);
+	$("html").css("overflow", "hidden");
+
+	// 2022상반기 웹접근성
+	$(".customer_tab .tabmenu_lt li a").each(function(){
+
+		var title = $(this).attr('title');
+		
+		if(title !== undefined && title != '') {
+			$(this).attr('title', title.replace(' 선택됨', ''));
+		}
+		
+		if($(obj).attr('id') == $(this).attr('id')) {
+			$(this).attr('title', $(this).attr('title') + ' 선택됨');
+		}
+	});
+	
+	// 메뉴
+	if($(obj).attr('id') == 'search_tab2' && $("#menu_dtl_tab li").length == 0) {
+		
+		var menuPerPage = document.search_form.menuPerPage.value;
+		var menuAllCnt = fnInterger($("p[name=menu_cnt]").html());
+	
+		if(Number(menuAllCnt) > Number(menuPerPage)) {
+			
+			document.search_form.menuPerPage.value = menuAllCnt;
+			document.search_form.pageTypeCd.value = "getMenuResult";
+			
+			AjaxUtil.callAjax("/CChannelSvl","POST", $("form[name='search_form']").serialize(),"json"
+		   		 , function(data) {
+				//console.log(data);
+		   			var json = JSON.parse(data.result);
+					var code = json.code;
+					
+					// 1이 성공 
+					if(code == 1) {
+
+						var jsonData = json.data;
+						
+						var menuCnt = jsonData.count.menu;
+						var menuList = jsonData.list.menu;
+						
+						//$("#menu_dtl_tab").append($("#menu_dtl").html());
+						$("#menu_dtl_tab").empty();
+						if(menuCnt == 0) {
+							tmpStr += "<li>검색결과가 없습니다.</li>";
+							$("#menu_dtl_tab").html(tmpStr);
+						}
+						else {
+							for(var i = 0; i < menuCnt; i++) {
+								var tmpStr = "";
+								if(typeof menuList[i] != 'undefined') {
+									
+									if( i == 0 ) {
+										tmpStr += "<li style='cursor:pointer;' onclick=javascript:goMovePage(";	
+									}
+									else {
+										tmpStr += "<li style='cursor:pointer;margin-top:5px' onclick=javascript:goMovePage(";
+									}
+									
+									// 값이 비어있는 경우는 보험서비스안내 관련
+									if(menuList[i].PGMURL == '') {
+										menuList[i].SERVICENM = "/CChannelSvl";
+										menuList[i].CMDNM = "dfi.c.cm.CFrontCmd";
+										menuList[i].PGMURL = "/web/C/D/A/cda020.jsp?prdtseq=" + menuList[i].SEQ;
+									}
+									
+									tmpStr += "'" + menuList[i].SERVICENM + "'" + ","; // /CChannelSvl
+									tmpStr += "'" + menuList[i].CMDNM + "'" + ","; // dfi.c.cm.CFrontCmd
+									tmpStr += "'" + menuList[i].PGMURL + "'" + ","; // /web/C/D/A/cda020.jsp
+									tmpStr += "'" + menuList[i].WORKNM + "'" + ","; // ''
+									tmpStr += "'" + menuList[i].SEQ + "'" + ","; // 83 (SEQ)
+									tmpStr += "'" + menuList[i].PGMSEQ + "'" + ","; // '1004001'
+									tmpStr += "'" + menuList[i].UPPGMSEQ + "'" + ","; // '100400'
+									tmpStr += "'" + menuList[i].ATTRIBUTE1 + "'" + ","; // 'LINKTYPE02'
+									tmpStr += "'" + menuList[i].ATTRIBUTE2 + "'" + ");>"; // ''
+									tmpStr += menuList[i].PGMNM; // 국내여행보험
+									tmpStr += "</li>";
+									$("#menu_dtl_tab").append(tmpStr);
+								}
+							}
+						}
+					}
+				}
+			);
+		}
+		else {
+			$("#menu_dtl_tab").html($("#menu_dtl").html());			
+		}
+	} 
+	// Faq
+	else if($(obj).attr('id') == 'search_tab3' && $("#faq_dtl_tab dt").length == 0) {
+		
+		if( $("#faq_dtl_tab div").length == 1 ) {
+			return;
+		}
+		var faqPerPage = document.search_form.faqPerPage.value;
+		var faqAllCnt = fnInterger($("p[name=faq_cnt]").html());
+		
+		if(Number(faqAllCnt) > Number(faqPerPage)) {
+			
+			document.search_form.faqPerPage.value = faqAllCnt;
+			document.search_form.pageTypeCd.value = "getFaqResult";
+			
+			AjaxUtil.callAjax("/CChannelSvl","POST", $("form[name='search_form']").serialize(),"json"
+		   		 , function(data) {
+				//console.log(data);
+		   			var json = JSON.parse(data.result);
+					var code = json.code;
+					
+					// 1이 성공 
+					if(code == 1) {
+
+						var jsonData = json.data;
+						
+						var faqCnt = jsonData.count.faq;
+						var faqList = jsonData.list.faq;
+						
+						//$("#faq_dtl_tab").append($("#faq_dtl").html());
+						$("#faq_dtl_tab").empty();
+						if(faqCnt == 0){
+							tmpStr += "<div>검색결과가 없습니다.</div>";
+							$("#faq_dtl_tab").html(tmpStr);
+						}
+						else {
+							for(var i = 0; i < faqCnt; i++) {
+								var tmpStr = "";
+								if(typeof faqList[i] != 'undefined') {
+									//console.log("faqList[i] = " + faqList[i]);
+									tmpStr += "<dt style='cursor:pointer;' onclick='view_detail(this," + i + "); return false;'>";
+									tmpStr += faqList[i].TTL;
+									tmpStr += "<button type='button' class='srch_btn_open fr'></button>";
+									tmpStr += "</dt>"
+									tmpStr += "<dd name='detail_" + i + "'" + "style='display:none;'>";
+									tmpStr += faqList[i].CNTNT;
+									tmpStr += "</dd>"
+									$("#faq_dtl_tab").append(tmpStr);
+								} 				
+							}
+						}
+					}
+				}
+			);
+		}
+		else {
+			$("#faq_dtl_tab").html($("#faq_dtl").html());
+		}
+	}
+	// 본문내용
+	else if($(obj).attr('id') == 'search_tab4' && $("#content_dtl_tab dt").length == 0 ) {
+		
+		if( $("#content_dtl_tab div").length == 1 ) {
+			return;
+		}
+		
+		var contentsPerPage = document.search_form.contentsPerPage.value;
+		var contentAllCnt = fnInterger($("p[name=content_cnt]").html());
+		
+		if(Number(contentAllCnt) > Number(contentsPerPage)) {
+			
+			document.search_form.contentsPerPage.value = contentAllCnt;
+			document.search_form.pageTypeCd.value = "getContentsResult";
+			
+			AjaxUtil.callAjax("/CChannelSvl","POST", $("form[name='search_form']").serialize(),"json"
+		   		 , function(data) {
+				//console.log(data);
+		   			var json = JSON.parse(data.result);
+					var code = json.code;
+					
+					// 1이 성공 
+					if(code == 1) {
+
+						var jsonData = json.data;
+						
+						var contentCnt = jsonData.count.contents;
+						var contentList = jsonData.list.contents;
+						
+						//$("#content_dtl_tab").append($("#content_dtl").html());
+						$("#content_dtl_tab").empty();
+						if(contentCnt == 0){
+							$("#content_dtl_tab").html("<div>검색결과가 없습니다.</div>");
+						}
+						else {
+							for(var i = 0; i < contentCnt; i++) {
+								var tmpStr = "";
+								if(typeof contentList[i] != 'undefined') {
+									//console.log("faqList[i] = " + faqList[i]);
+									tmpStr += "<dt style='cursor:pointer;' onclick=javascript:goMovePage(";
+									tmpStr += "'" + contentList[i].SERVICENM + "'" + ","; // /CChannelSvl
+									tmpStr += "'" + contentList[i].CMDNM + "'" + ","; // dfi.c.cm.CFrontCmd
+									tmpStr += "'" + contentList[i].JSPPATH + "'" + ","; // /web/C/D/A/cda020.jsp
+									tmpStr += "'" + contentList[i].WORKNM + "'" + ","; // ''
+									tmpStr += "'" + contentList[i].SEQ + "'" + ","; // 83 (SEQ)
+									tmpStr += "'" + contentList[i].PGMSEQ + "'" + ","; // '1004001'
+									tmpStr += "'" + contentList[i].UPPGMSEQ + "'" + ","; // '100400'
+									tmpStr += "'" + contentList[i].ATTRIBUTE1 + "'" + ","; // 'LINKTYPE02'
+									tmpStr += "'" + contentList[i].ATTRIBUTE2 + "'" + ");>"; // ''
+									tmpStr += contentList[i].JSPTITLE;
+									tmpStr += "</dt>"
+									tmpStr += "<dd>";
+									tmpStr += tagReplace(contentList[i].ATTACH_JSPPATH);
+									tmpStr += "</dd>"
+									$("#content_dtl_tab").append(tmpStr);
+								} 	
+							}
+						}
+					}
+				}
+			);
+		}
+		else {
+			$("#content_dtl_tab").html($("#content_dtl").html());
+		}
+	}
+}
+
+function fnInterger(str){
+	var res = str.replace(/[^0-9]/g, "");
+	return res;
+}
+
+// 인기검색어 가져오기
+function getTrend(){
+	
+	// 인기검색어는 변경 사항이 없어서 최초 한번만 가져옴.
+	if($("#trend li").lenght > 1) {
+		return;	
+	}
+
+	loaderShow();
+	
+	document.search_form.pageTypeCd.value = "getTrend";
+	
+	AjaxUtil.callAjax("/CChannelSvl","POST", $("form[name='search_form']").serialize(),"json"
+	   		 , function(data) {
+		
+				loaderHide();
+				//console.log("data.result = " + data.result);
+				var json = JSON.parse(data.result);
+				var code = json.code;
+				//console.log("code = " + code);
+				
+				$("#trend").empty();
+				
+				// 1이 성공
+				if(code == 1) {
+					
+					$("#trend").append("<li class='title'>인기검색어</li>");
+				
+					var jsonData = json.data;
+					
+					var count = jsonData.count;
+					
+					var list = jsonData.list;
+					
+					//console.log("list = " + list);
+					
+					for(var i = 0; i < count; i++) {
+						
+						var keyword = list[i].KEYWORD.replace(" ", "");
+						console.log("keyword = " + keyword);
+					
+						var tmpStr = "";
+						tmpStr += "<li style='cursor:pointer;' onclick=javascript:fn_search(";
+						tmpStr += "'";
+						tmpStr += keyword;
+						tmpStr += "'";
+						tmpStr += ");>";
+						tmpStr += "<button";
+						if(i == (count-1)){
+							tmpStr += " id='lastPopularSearch'"
+						}
+						tmpStr += " onclick=javascript:fn_search('";
+						tmpStr += keyword;
+						tmpStr += "'";
+						tmpStr += ");>";
+						tmpStr += keyword;
+						tmpStr += "</button>";
+						tmpStr += "</li>";
+						$("#trend").append(tmpStr);
+					}
+					
+					//2022 웹접근성
+					$("#lastPopularSearch").focusout(function(e){
+						$("#searchmain").children('a').focus();
+					});
+				}
+			}
+		);
+}
+
+function tagReplace(ATTACH_JSPPATH) {
+	var replaceTag = ATTACH_JSPPATH.replace("\" target=\"_blank\">','', ''); \">", "");
+	replaceTag = replaceTag.replace("selected value=''", "");
+	replaceTag = replaceTag.replace(" \" > \" >", "");
+	replaceTag = replaceTag.replace(" \" > ','');\" title=\"\" > \" > ','')\" title=\"\" >", "");
+	replaceTag = replaceTag.replace("class=\"nb0\"  > ','', , 1);\">", "");
+	 
+	return replaceTag;
+}
+
+</script>
+
+<!-- //main 상단레이어 -->
+
+	<!-- container -->
+	<div id="contents" name="search_contents" style="display:none;height:100%;overflow:auto;">
+
+		<form name="search_form" method="post" action="/CChannelSvl" onsubmit="return false;">	
+		<!------------------------------ 2020.11.04 통합검색기능 -------------------------------------------->
+		<div id="total_srch" style="position: fixed;top:103px;;overflow:auto;">
+			<div class="srch_top" style="height:auto">				
+				<div class="srch_bar">
+					<input autocomplete="off" name="searchWord" id="searchTerm" title="검색어 입력" type="text" class="fl" placeholder="검색어를 입력하세요." style="width:900px;" onkeypress="fn_SearchEnter(event, this)" onkeydown="fn_keyDown(event, this)">
+					<button type="button" class="srch_bar_icon01 fr" onclick="javascript:fn_topSearch();" title="검색">검색</button>
+				</div>
+				<!-- 자동완성 보여주기 -->
+				<div class="srch_bar_box" style="display:none;" id="div_complete">
+					<ul id="complete">
+					</ul>
+				</div>
+				<!-- //인기검색어 보여주기 -->
+				<ul class="srch_ex_t mt10" id="trend">
+					<li class="title">인기검색어</li>
+ 				</ul>
+			</div>
+			<div id="search_result" class="srch_con" style="display:none;">
+				<h2><span id="searchWordTitle"></span>에 대해 <span id="searchWordTotlCnt"></span>이 검색되었습니다.</h2>
+				<div class="customer_tab mt30" name="search_tab_new">
+					<h3 class="newBlind">검색결과 선택</h3>
+					<ul class="tabmenu_lt type005 tabs">
+						<li class="current"><a id="search_tab1" title="전체 선택됨" href="#search_tab-1" onclick="tabSearch(this);return false;">전체</a></li>
+						<li><a id="search_tab2" title="메뉴" href="#search_tab-2" onclick="tabSearch(this);return false;">메뉴</a></li>
+						<li><a id="search_tab3" title="자주하는 질문(FAQ)" href="#search_tab-3" onclick="tabSearch(this);return false;">자주하는 질문(FAQ)</a></li>
+						<li class="last"><a id="search_tab4"  title="본문내용" href="#search_tab-4" onclick="tabSearch(this);return false;">본문내용</a></li>
+					</ul>
+					<div class="tab_container" style="margin-bottom:180px">
+						<div id="search_tab-1" class="tab_content">
+							<div class="content_srch" id="menu_srch">
+								<div class="s_tit_srch">
+									<p class="fl" name="menu_cnt"></p>
+									<button type="button" class="srch_bar_icon02 fr" onclick="javascript:$('#search_tab2').click();"></button>
+								</div>
+								<ul class="list_t001 mt10" id="menu_dtl">
+ 								</ul>
+							</div>
+							
+							<div class="content_srch mt30" id="faq_srch">
+								<div class="s_tit_srch">
+									<p class="fl" name="faq_cnt"></p>
+									<button type="button" class="srch_bar_icon02 fr" onclick="javascript:$('#search_tab3').click();"></button>
+								</div>
+								<dl class="list_t003 mt10" id="faq_dtl">
+								</dl>
+							</div>
+
+							<div class="content_srch mt30" id="content_srch">
+								<div class="s_tit_srch">
+									<p class="fl" name="content_cnt"></p>
+									<button type="button" class="srch_bar_icon02 fr" onclick="javascript:$('#search_tab4').click();"></button>
+								</div>
+								<dl class="list_t002 mt10" id="content_dtl">
+								</dl>
+							</div>
+						</div>
+						<div id="search_tab-2" class="tab_content">
+							<div class="content_srch">
+								<div class="s_tit_srch">
+									<p class="mb10 fl" name="menu_cnt"></p>
+									<!-- <button type="button" class="srch_bar_icon02 fr"></button> -->
+								</div>
+								<ul class="list_t001 mt10" id="menu_dtl_tab">
+								</ul>
+							</div>
+						</div>
+						<div id="search_tab-3" class="tab_content">
+							<div class="content_srch">
+								<div class="s_tit_srch">
+									<p class="mb10 fl" name="faq_cnt"></p>
+									<!-- <button type="button" class="srch_bar_icon02 fr"></button> -->
+								</div>
+								<dl class="list_t003 mt10" id="faq_dtl_tab">
+								</dl>
+							</div>
+						</div>
+						<div id="search_tab-4" class="tab_content">
+							<div class="content_srch">
+								<div class="s_tit_srch">
+									<p class="mb10 fl" name="content_cnt"></p>
+									<!-- <button type="button" class="srch_bar_icon02 fr"></button> -->
+								</div>
+								<dl class="list_t002 mt10" id="content_dtl_tab">
+ 								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!------------------------------ // 2020.11.04 통합검색기능 -------------------------------------------->
+			<input type="hidden" name="menuPage" 		value="1">
+			<input type="hidden" name="menuPerPage" 		value="5">  
+			<input type="hidden" name="faqPage" 		value="1">
+			<input type="hidden" name="faqPerPage" 		value="5">
+			<input type="hidden" name="contentsPage" 		value="1">
+			<input type="hidden" name="contentsPerPage" 		value="5">
+			<input type="hidden" name="device" 		value="pc">
+			
+			<input type="hidden" name="tc" 					value="dfi.c.cm.CSearchCmd">
+			<input type="hidden" name="rtnUri"				value="/web/C/M/inc/returnJsonData.jsp">
+			<input type="hidden" name="pageTypeCd" 			value="getTotalResult">
+		</form>
+		
+		<!-- //content_wrap -->
+	</div>
+	<!-- //container -->
+	<div id="loading" class="loadingWrap_search hide">
+		<div class="dimmed"></div>
+	</div>
+
+
+</div>
+	<!-- //header -->
+	
+	
+	<!-- container -->
+	<div id="container">
+	
+	
+		<!-- left_wrap -->
+		
+
+ 
+
+<script>
+
+$(document).ready(function(){
+	
+	var sCurPgmSeq = "5018";
+	var sPrdtSeq = "0";
+	
+	try{
+		console.log("========================  현재 메뉴정보 Start  ===================");
+		//console.log("메뉴번호 : " + top.getMenuSeq());
+		//console.log("메뉴ID    : " + top.getMenuPgmId());
+		//console.log("상위메뉴ID : " + top.getUpMenuPgmId());
+		
+		console.log("메뉴번호 : " + sCurPgmSeq);
+		console.log("상품번호 : " + sPrdtSeq);
+		console.log("========================  현재 메뉴정보 End ====================");
+	}catch(e){
+		console.log('error')
+	}
+	
+	switch(sCurPgmSeq){
+	// 고객정보변경/우편물수령지변경
+	case"1": sCurPgmSeq="6500"; break;   
+	case"4200": sCurPgmSeq="6506"; break;
+	case"4202": sCurPgmSeq="6512"; break;
+	case"4204": sCurPgmSeq="6513"; break;
+	case"4205": sCurPgmSeq="6514"; break;
+	case"4203": sCurPgmSeq="6515"; break;
+	case"4207": sCurPgmSeq="6516"; break;
+	case"4209": sCurPgmSeq="6517"; break;
+	case"4213": sCurPgmSeq="6518"; break;
+	case"4585": sCurPgmSeq="6519"; break;
+	case"4587": sCurPgmSeq="6520"; break;
+	case"4215": sCurPgmSeq="6521"; break;
+	case"4222": sCurPgmSeq="6522"; break;
+	case"4217": sCurPgmSeq="6523"; break;
+	case"4218": sCurPgmSeq="6524"; break;
+	case"4219": sCurPgmSeq="6525"; break;
+	case"4221": sCurPgmSeq="6526"; break;
+	case"4325": sCurPgmSeq="6527"; break;
+	case"4514": sCurPgmSeq="6528"; break;
+	case"4236": sCurPgmSeq="6529"; break;
+	case"4238": sCurPgmSeq="6530"; break;
+	case"4555": sCurPgmSeq="6531"; break;
+	case"4239": sCurPgmSeq="6532"; break;
+	case"4576": sCurPgmSeq="6533"; break;
+	case"4240": sCurPgmSeq="6534"; break;
+	case"4593": sCurPgmSeq="6535"; break;
+	case"4243": sCurPgmSeq="6536"; break;
+	case"4242": sCurPgmSeq="6537"; break;
+	case"4245": sCurPgmSeq="6538"; break;
+	case"4233": sCurPgmSeq="6539"; break;
+	case"4574": sCurPgmSeq="6540"; break;
+	case"4246": sCurPgmSeq="6541"; break;
+	case"4568": sCurPgmSeq="6545"; break;
+	case"4250": sCurPgmSeq="6546"; break;
+	case"4248": sCurPgmSeq="6547"; break;
+	case"4254": sCurPgmSeq="6548"; break;
+	case"6105": sCurPgmSeq="6549"; break;
+	case"4569": sCurPgmSeq="6550"; break;
+	case"4249": sCurPgmSeq="6551"; break;
+	case"4534": sCurPgmSeq="6552"; break;
+	case"4260": sCurPgmSeq="6553"; break;
+	case"4268": sCurPgmSeq="6554"; break;
+	case"4234": sCurPgmSeq="6555"; break;
+	case"4269": sCurPgmSeq="6556"; break;
+	case"4273": sCurPgmSeq="6557"; break;
+	case"4101": sCurPgmSeq="6562"; break;
+	case"4283": sCurPgmSeq="6563"; break;
+	case"4285": sCurPgmSeq="6564"; break;
+	case"4286": sCurPgmSeq="6565"; break;
+	case"4284": sCurPgmSeq="6566"; break;
+	case"4276": sCurPgmSeq="6567"; break;
+	case"4288": sCurPgmSeq="6568"; break;
+	case"4289": sCurPgmSeq="6569"; break;
+	case"4277": sCurPgmSeq="6570"; break;
+	case"4278": sCurPgmSeq="6571"; break;
+	case"4279": sCurPgmSeq="6572"; break;
+	case"4280": sCurPgmSeq="6573"; break;
+	case"4244": sCurPgmSeq="6574"; break;
+	case"1043": sCurPgmSeq="6575"; break;
+	case"4287": sCurPgmSeq="6576"; break;
+	case"4290": sCurPgmSeq="6577"; break;
+	case"4291": sCurPgmSeq="6578"; break;
+	case"4309": sCurPgmSeq="6579"; break;
+	case"4314": sCurPgmSeq="6580"; break;
+	case"4317": sCurPgmSeq="6581"; break;
+	case"4320": sCurPgmSeq="6582"; break;
+	case"4292": sCurPgmSeq="6583"; break;
+	case"4295": sCurPgmSeq="6584"; break;
+	case"4296": sCurPgmSeq="6585"; break;
+	case"4297": sCurPgmSeq="6586"; break;
+	case"4298": sCurPgmSeq="6587"; break;
+	case"5054": sCurPgmSeq="6588"; break;
+	case"4304": sCurPgmSeq="6589"; break;
+	case"4307": sCurPgmSeq="6590"; break;
+	case"4302": sCurPgmSeq="6591"; break;
+	case"4562": sCurPgmSeq="6592"; break;
+	case"4310":
+	case"241": // 예전 뉴스/공지사항
+		sCurPgmSeq="6593"; break;
+	case"4308": sCurPgmSeq="6594"; break;
+	case"39": sCurPgmSeq="6595"; break;  
+	case"4324": sCurPgmSeq="6596"; break;
+	case"5031": sCurPgmSeq="6597"; break;
+	case"4321": sCurPgmSeq="6598"; break;
+	case"4322": sCurPgmSeq="6599"; break;
+	case"4315": sCurPgmSeq="6600"; break;
+	case"4318": sCurPgmSeq="6601"; break;
+	case"4319": sCurPgmSeq="6602"; break;
+	case"4400": sCurPgmSeq="6603"; break;
+	case"4401": sCurPgmSeq="6604"; break;
+	case"4407": sCurPgmSeq="6605"; break;
+	case"4410": sCurPgmSeq="6606"; break;
+	case"4417": sCurPgmSeq="6607"; break;
+	case"4421": sCurPgmSeq="6608"; break;
+	case"4449": sCurPgmSeq="6609"; break;
+	case"4402": sCurPgmSeq="6610"; break;
+	case"4403": sCurPgmSeq="6611"; break;
+	case"4404": sCurPgmSeq="6612"; break;
+	case"4405": sCurPgmSeq="6613"; break;
+	case"4406": sCurPgmSeq="6614"; break;
+	case"4408": sCurPgmSeq="6615"; break;
+	case"4409": sCurPgmSeq="6616"; break;
+	case"4411": sCurPgmSeq="6617"; break;
+	case"4412": sCurPgmSeq="6618"; break;
+	case"4413": sCurPgmSeq="6619"; break;
+	case"4414": sCurPgmSeq="6620"; break;
+	case"4415": sCurPgmSeq="6621"; break;
+	case"4416": sCurPgmSeq="6622"; break;
+	case"4560": sCurPgmSeq="6623"; break;
+	case"4418": sCurPgmSeq="6624"; break;
+	case"4419": sCurPgmSeq="6625"; break;
+	case"4420": sCurPgmSeq="6626"; break;
+	case"4422": sCurPgmSeq="6627"; break;
+	case"4427": sCurPgmSeq="6628"; break;
+	case"4430": sCurPgmSeq="6629"; break;
+	case"4435": sCurPgmSeq="6630"; break;
+	case"4440": sCurPgmSeq="6631"; break;
+	case"4444": sCurPgmSeq="6632"; break;
+	case"4446": sCurPgmSeq="6633"; break;
+	case"4450": sCurPgmSeq="6634"; break;
+	case"4456": sCurPgmSeq="6635"; break;
+	case"4458": sCurPgmSeq="6636"; break;
+	case"4464": sCurPgmSeq="6637"; break;
+	case"4470": sCurPgmSeq="6638"; break;
+	case"4473": sCurPgmSeq="6639"; break;
+	case"4423": sCurPgmSeq="6640"; break;
+	case"4424": sCurPgmSeq="6641"; break;
+	case"4425": sCurPgmSeq="6642"; break;
+	case"4426": sCurPgmSeq="6643"; break;
+	case"4428": sCurPgmSeq="6644"; break;
+	case"4429": sCurPgmSeq="6645"; break;
+	case"4431": sCurPgmSeq="6646"; break;
+	case"4432": sCurPgmSeq="6647"; break;
+	case"4433": sCurPgmSeq="6648"; break;
+	case"4434": sCurPgmSeq="6649"; break;
+	case"4436": sCurPgmSeq="6650"; break;
+	case"4437": sCurPgmSeq="6651"; break;
+	case"4438": sCurPgmSeq="6652"; break;
+	case"4439": sCurPgmSeq="6653"; break;
+	case"4441": sCurPgmSeq="6654"; break;
+	case"4442": sCurPgmSeq="6655"; break;
+	case"4443": sCurPgmSeq="6656"; break;
+	case"4445": sCurPgmSeq="6657"; break;
+	case"4447": sCurPgmSeq="6658"; break;
+	case"4448": sCurPgmSeq="6659"; break;
+	case"4451": sCurPgmSeq="6660"; break;
+	case"4452": sCurPgmSeq="6661"; break;
+	case"4453": sCurPgmSeq="6662"; break;
+	case"4454": sCurPgmSeq="6663"; break;
+	case"4455": sCurPgmSeq="6664"; break;
+	case"4457": sCurPgmSeq="6665"; break;
+	case"4459": sCurPgmSeq="6666"; break;
+	case"4460": sCurPgmSeq="6667"; break;
+	case"4461": sCurPgmSeq="6668"; break;
+	case"4462": sCurPgmSeq="6669"; break;
+	case"4463": sCurPgmSeq="6670"; break;
+	case"4465": sCurPgmSeq="6671"; break;
+	case"4466": sCurPgmSeq="6672"; break;
+	case"4471": sCurPgmSeq="6673"; break;
+	case"4472": sCurPgmSeq="6674"; break;
+	case"4474": sCurPgmSeq="6675"; break;
+	case"4475": sCurPgmSeq="6676"; break;
+	case"4993": sCurPgmSeq="6677"; break;
+	case"4994": sCurPgmSeq="6750"; break;
+	
+	}
+	//var sUpMenuPgmId = top.getUpMenuPgmId();
+	
+	getLeftMenuList(sCurPgmSeq, sPrdtSeq);
+});
+
+</script>
+
+
+	<div id="left_wrap">
+		
+	</div>
+		<!-- //left_wrap -->
+		
+		
+		<!-- content_wrap -->
+		<div id="content_wrap">
+			<div id="content">
+				<div class="toparea">
+					<!-- Content 타이틀 시작 -->
+					<h1 class="tit_pd_h1">상품목록</h1><!-- 화면별로 변경가능 -->
+					<!-- Content 타이틀 끝   -->
+					<!-- Content Navigation  시작 --><!-- 공통기능 -->
+					
+
+
+
+<script>
+
+$(document).ready(function(){
+
+	var sCurPgmSeq = "5018";
+	var sPrdtSeq = "0";
+	
+	switch(sCurPgmSeq){
+	// 고객정보변경/우편물수령지변경
+	case"1": sCurPgmSeq="6500"; break;   
+	case"4200": sCurPgmSeq="6506"; break;
+	case"4202": sCurPgmSeq="6512"; break;
+	case"4204": sCurPgmSeq="6513"; break;
+	case"4205": sCurPgmSeq="6514"; break;
+	case"4203": sCurPgmSeq="6515"; break;
+	case"4207": sCurPgmSeq="6516"; break;
+	case"4209": sCurPgmSeq="6517"; break;
+	case"4213": sCurPgmSeq="6518"; break;
+	case"4585": sCurPgmSeq="6519"; break;
+	case"4587": sCurPgmSeq="6520"; break;
+	case"4215": sCurPgmSeq="6521"; break;
+	case"4222": sCurPgmSeq="6522"; break;
+	case"4217": sCurPgmSeq="6523"; break;
+	case"4218": sCurPgmSeq="6524"; break;
+	case"4219": sCurPgmSeq="6525"; break;
+	case"4221": sCurPgmSeq="6526"; break;
+	case"4325": sCurPgmSeq="6527"; break;
+	case"4514": sCurPgmSeq="6528"; break;
+	case"4236": sCurPgmSeq="6529"; break;
+	case"4238": sCurPgmSeq="6530"; break;
+	case"4555": sCurPgmSeq="6531"; break;
+	case"4239": sCurPgmSeq="6532"; break;
+	case"4576": sCurPgmSeq="6533"; break;
+	case"4240": sCurPgmSeq="6534"; break;
+	case"4593": sCurPgmSeq="6535"; break;
+	case"4243": sCurPgmSeq="6536"; break;
+	case"4242": sCurPgmSeq="6537"; break;
+	case"4245": sCurPgmSeq="6538"; break;
+	case"4233": sCurPgmSeq="6539"; break;
+	case"4574": sCurPgmSeq="6540"; break;
+	case"4246": sCurPgmSeq="6541"; break;
+	case"4568": sCurPgmSeq="6545"; break;
+	case"4250": sCurPgmSeq="6546"; break;
+	case"4248": sCurPgmSeq="6547"; break;
+	case"4254": sCurPgmSeq="6548"; break;
+	case"6105": sCurPgmSeq="6549"; break;
+	case"4569": sCurPgmSeq="6550"; break;
+	case"4249": sCurPgmSeq="6551"; break;
+	case"4534": sCurPgmSeq="6552"; break;
+	case"4260": sCurPgmSeq="6553"; break;
+	case"4268": sCurPgmSeq="6554"; break;
+	case"4234": sCurPgmSeq="6555"; break;
+	case"4269": sCurPgmSeq="6556"; break;
+	case"4273": sCurPgmSeq="6557"; break;
+	case"4101": sCurPgmSeq="6562"; break;
+	case"4283": sCurPgmSeq="6563"; break;
+	case"4285": sCurPgmSeq="6564"; break;
+	case"4286": sCurPgmSeq="6565"; break;
+	case"4284": sCurPgmSeq="6566"; break;
+	case"4276": sCurPgmSeq="6567"; break;
+	case"4288": sCurPgmSeq="6568"; break;
+	case"4289": sCurPgmSeq="6569"; break;
+	case"4277": sCurPgmSeq="6570"; break;
+	case"4278": sCurPgmSeq="6571"; break;
+	case"4279": sCurPgmSeq="6572"; break;
+	case"4280": sCurPgmSeq="6573"; break;
+	case"4244": sCurPgmSeq="6574"; break;
+	case"1043": sCurPgmSeq="6575"; break;
+	case"4287": sCurPgmSeq="6576"; break;
+	case"4290": sCurPgmSeq="6577"; break;
+	case"4291": sCurPgmSeq="6578"; break;
+	case"4309": sCurPgmSeq="6579"; break;
+	case"4314": sCurPgmSeq="6580"; break;
+	case"4317": sCurPgmSeq="6581"; break;
+	case"4320": sCurPgmSeq="6582"; break;
+	case"4292": sCurPgmSeq="6583"; break;
+	case"4295": sCurPgmSeq="6584"; break;
+	case"4296": sCurPgmSeq="6585"; break;
+	case"4297": sCurPgmSeq="6586"; break;
+	case"4298": sCurPgmSeq="6587"; break;
+	case"5054": sCurPgmSeq="6588"; break;
+	case"4304": sCurPgmSeq="6589"; break;
+	case"4307": sCurPgmSeq="6590"; break;
+	case"4302": sCurPgmSeq="6591"; break;
+	case"4562": sCurPgmSeq="6592"; break;
+	case"4310": sCurPgmSeq="6593"; break;
+	case"4308": sCurPgmSeq="6594"; break;
+	case"39": sCurPgmSeq="6595"; break;  
+	case"4324": sCurPgmSeq="6596"; break;
+	case"5031": sCurPgmSeq="6597"; break;
+	case"4321": sCurPgmSeq="6598"; break;
+	case"4322": sCurPgmSeq="6599"; break;
+	case"4315": sCurPgmSeq="6600"; break;
+	case"4318": sCurPgmSeq="6601"; break;
+	case"4319": sCurPgmSeq="6602"; break;
+	case"4400": sCurPgmSeq="6603"; break;
+	case"4401": sCurPgmSeq="6604"; break;
+	case"4407": sCurPgmSeq="6605"; break;
+	case"4410": sCurPgmSeq="6606"; break;
+	case"4417": sCurPgmSeq="6607"; break;
+	case"4421": sCurPgmSeq="6608"; break;
+	case"4449": sCurPgmSeq="6609"; break;
+	case"4402": sCurPgmSeq="6610"; break;
+	case"4403": sCurPgmSeq="6611"; break;
+	case"4404": sCurPgmSeq="6612"; break;
+	case"4405": sCurPgmSeq="6613"; break;
+	case"4406": sCurPgmSeq="6614"; break;
+	case"4408": sCurPgmSeq="6615"; break;
+	case"4409": sCurPgmSeq="6616"; break;
+	case"4411": sCurPgmSeq="6617"; break;
+	case"4412": sCurPgmSeq="6618"; break;
+	case"4413": sCurPgmSeq="6619"; break;
+	case"4414": sCurPgmSeq="6620"; break;
+	case"4415": sCurPgmSeq="6621"; break;
+	case"4416": sCurPgmSeq="6622"; break;
+	case"4560": sCurPgmSeq="6623"; break;
+	case"4418": sCurPgmSeq="6624"; break;
+	case"4419": sCurPgmSeq="6625"; break;
+	case"4420": sCurPgmSeq="6626"; break;
+	case"4422": sCurPgmSeq="6627"; break;
+	case"4427": sCurPgmSeq="6628"; break;
+	case"4430": sCurPgmSeq="6629"; break;
+	case"4435": sCurPgmSeq="6630"; break;
+	case"4440": sCurPgmSeq="6631"; break;
+	case"4444": sCurPgmSeq="6632"; break;
+	case"4446": sCurPgmSeq="6633"; break;
+	case"4450": sCurPgmSeq="6634"; break;
+	case"4456": sCurPgmSeq="6635"; break;
+	case"4458": sCurPgmSeq="6636"; break;
+	case"4464": sCurPgmSeq="6637"; break;
+	case"4470": sCurPgmSeq="6638"; break;
+	case"4473": sCurPgmSeq="6639"; break;
+	case"4423": sCurPgmSeq="6640"; break;
+	case"4424": sCurPgmSeq="6641"; break;
+	case"4425": sCurPgmSeq="6642"; break;
+	case"4426": sCurPgmSeq="6643"; break;
+	case"4428": sCurPgmSeq="6644"; break;
+	case"4429": sCurPgmSeq="6645"; break;
+	case"4431": sCurPgmSeq="6646"; break;
+	case"4432": sCurPgmSeq="6647"; break;
+	case"4433": sCurPgmSeq="6648"; break;
+	case"4434": sCurPgmSeq="6649"; break;
+	case"4436": sCurPgmSeq="6650"; break;
+	case"4437": sCurPgmSeq="6651"; break;
+	case"4438": sCurPgmSeq="6652"; break;
+	case"4439": sCurPgmSeq="6653"; break;
+	case"4441": sCurPgmSeq="6654"; break;
+	case"4442": sCurPgmSeq="6655"; break;
+	case"4443": sCurPgmSeq="6656"; break;
+	case"4445": sCurPgmSeq="6657"; break;
+	case"4447": sCurPgmSeq="6658"; break;
+	case"4448": sCurPgmSeq="6659"; break;
+	case"4451": sCurPgmSeq="6660"; break;
+	case"4452": sCurPgmSeq="6661"; break;
+	case"4453": sCurPgmSeq="6662"; break;
+	case"4454": sCurPgmSeq="6663"; break;
+	case"4455": sCurPgmSeq="6664"; break;
+	case"4457": sCurPgmSeq="6665"; break;
+	case"4459": sCurPgmSeq="6666"; break;
+	case"4460": sCurPgmSeq="6667"; break;
+	case"4461": sCurPgmSeq="6668"; break;
+	case"4462": sCurPgmSeq="6669"; break;
+	case"4463": sCurPgmSeq="6670"; break;
+	case"4465": sCurPgmSeq="6671"; break;
+	case"4466": sCurPgmSeq="6672"; break;
+	case"4471": sCurPgmSeq="6673"; break;
+	case"4472": sCurPgmSeq="6674"; break;
+	case"4474": sCurPgmSeq="6675"; break;
+	case"4475": sCurPgmSeq="6676"; break;
+	case"4993": sCurPgmSeq="6677"; break;
+	case"4994": sCurPgmSeq="6750"; break;
+	
+	}
+
+	getContentNaviList(sCurPgmSeq, sPrdtSeq);
+	//var sMenuSeq = top.getMenuSeq();
+	/*
+		if(document.title == ""){
+			getContentNaviList(sCurPgmSeq, sPrdtSeq);
+		}else{
+			if(document.title != $("#spanSiteTitle").text()){
+				top.fn_changePageTitle(document.title);
+			}else{
+				top.fn_changePageTitle($("#spanSiteTitle").text());
+			}
+		}
+		*/
+});
+
+</script>
+
+<p id="contentNaviBar" class="pnavi" style="width:500px;"></p>
+
+					<!-- Content Navigation  끝    -->
+				</div>
+				<div class="section_mid">
+					<div class="box_round">
+						<div class="innerwrap">
+							<ul class="list_ssq">
+								<li class="lst"><a href="https://get.adobe.com/kr/reader" title="adobe reader 파일내려받기" class="bt_reader" target="_blank"><img src="/web/C/images/com/btn/btn_adobereader.gif" alt="adobe reader 내려받기"></a>본 자료는 PDF로 작성되어 ADOBE PDF 리더가 필요합니다. ADOBE READER 내려받기<br>
+
+이미지를 클릭하시면 뷰어프로그램을 다운로드 받으실 수 있습니다.
+
+</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			<form name="myform" method="post" action="/CChannelSvl">
+				<input type=hidden name="ops_tc" value="dfi.c.d.g.cmd.Cdg079Cmd">
+				<input type=hidden name="task">
+				<input type=hidden name="rtnUri">
+				<input type=hidden name="lcode">
+				<input type=hidden name="mcode">
+				<input type=hidden name="scode">
+				<input type=hidden name="startdate">
+				<input type=hidden name="issale" value="Y">
+
+				<div class="section_mid">
+					<div class="box_grey_round">
+						<div class="innerwrap">
+							<ul class="list_ssq">
+								<li class="lst imgsq"><p class="line_vam"><label><img src="/web/C/images/com/txt/pdname.gif" alt="상품명"> <input type="text" name="srcPrdNm" maxlength="40" class="ip_txt ip_search" value="" title="상품명입력" onKeyPress="JavaScript: if(event.keyCode == 13) insuranceSearch();"></label> <span class="btn_sp"><a class="bt_05_10" href="javascript:insuranceSearch();">조회</a></span> &nbsp;상품명을 입력하세요 (예 하우머치, 나눔의 행복, 사랑해우리가족)</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="section_con">
+					<div id="searchviewissale" style="display:none">
+					</div>
+					<div id="searchviewisnotsale" style="display:none">
+					</div>
+				</div>
+
+
+
+<!--2015-->
+				<div class="section_con">
+					<div id="tabs" class="customer_tab">
+						<ul class="tabmenu_lt_nolink">
+							<li id='cur0'  class="current"><a href="javascript:procTask('Y');">판매상품</a></li>
+							<li id='cur1' ><a href="javascript:procTask('N');">판매중지 상품</a></li>
+						</ul>
+
+						<div class="tab_container">
+							<h3 class="blind">판매상품목록</h3>
+								<table class="tbl_publication">
+									<caption>
+									판매구분 상품명 판매기간 약관 사용방법서 상품요약서에 관한 테이블입니다.
+									</caption>
+									<colgroup>
+									<col style="width:15%">
+									<col style="width:36%">
+									<col style="width:25%">
+									<col style="width:24%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col"><img src="/web/C/images/com/txt/publication_th_text01.gif" alt="STEP1 상품군"></th>
+											<th scope="col"><img src="/web/C/images/com/txt/publication_th_text02.gif" alt="STEP2 보험상품목록"></th>
+											<th scope="col"><img src="/web/C/images/com/txt/publication_th_text03.gif" alt="STEP3 판매기간"></th>
+											<th scope="col"><img src="/web/C/images/com/txt/publication_th_text04.gif" alt="STEP4 선택항목"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<ul>
+
+													<li>
+														<p  class="nb0"  >자동차보험</p>
+
+
+													<ol class="dep02">
+
+															<li id="adda0"><a href="#!"
+																onclick="javascript:step2('01','01', 0, 1);">개인용</a></li>
+
+
+															<li id="adda1"><a href="#!"
+																onclick="javascript:step2('01','02', 1, 1);">업무용</a></li>
+
+
+															<li id="adda2"><a href="#!"
+																onclick="javascript:step2('01','03', 2, 1);">영업용</a></li>
+
+
+															<li id="adda3"><a href="#!"
+																onclick="javascript:step2('01','04', 3, 1);">이륜차</a></li>
+
+
+															<li id="adda4"><a href="#!"
+																onclick="javascript:step2('01','05', 4, 1);">운전자</a></li>
+
+
+															<li id="adda5"><a href="#!"
+																onclick="javascript:step2('01','06', 5, 1);">외화표시</a></li>
+
+
+															<li id="adda6"><a href="#!"
+																onclick="javascript:step2('01','07', 6, 1);">농기계</a></li>
+
+
+															<li id="adda7"><a href="#!"
+																onclick="javascript:step2('01','08', 7, 1);">기타</a></li>
+
+
+															<li id="adda8"><a href="#!"
+																onclick="javascript:step2('01','09', 8, 1);">운전면허교습생</a></li>
+
+
+															<li id="adda9"><a href="#!"
+																onclick="javascript:step2('01','10', 9, 1);">모터바이크</a></li>
+
+
+															<li id="adda10"><a href="#!"
+																onclick="javascript:step2('01','11', 10, 1);">공동인수</a></li>
+
+
+														</ol>
+													</li>
+
+
+
+
+
+													<li>
+														<p  >일반보험</p>
+
+
+
+														<ol class="dep02">
+															<li id="addb0"><a href="#!" onclick="javascript:step2('02','01', 0, 2);">일반</a></li>
+														</ol>
+													</li>
+
+
+
+
+													<li>
+														<p  >장기보험</p>
+
+
+
+
+
+														<ol class="dep02">
+
+															<li id="addc0"><a href="#!"
+																onclick="javascript:step2('03','01', 0, 3);">상해,질병</a></li>
+
+															<li id="addc1"><a href="#!"
+																onclick="javascript:step2('03','02', 1, 3);">저축</a></li>
+
+															<li id="addc2"><a href="#!"
+																onclick="javascript:step2('03','03', 2, 3);">운전자</a></li>
+
+															<li id="addc3"><a href="#!"
+																onclick="javascript:step2('03','04', 3, 3);">재물</a></li>
+
+															<li id="addc4"><a href="#!"
+																onclick="javascript:step2('03','05', 4, 3);">연금보험</a></li>
+
+															<li id="addc5"><a href="#!"
+																onclick="javascript:step2('03','06', 5, 3);">제도성특약</a></li>
+
+														</ol>
+													</li>
+
+
+
+													<li>
+														<p  >공통</p>
+
+
+
+
+
+														<ol class="dep02">
+															<li id="addd0"><a href="#!" onclick="javascript:step2('04','01', 0, 4);" >공통</a></li>
+														</ol>
+													</li>
+
+
+												</ul>
+											</td>
+											<td>
+												<div class="table_scroll" id="step2view" style="display:none">
+												<!--step2div-->
+												</div>
+											</td>
+											<td>
+												<div class="table_scroll" id="step3view" style="display:none">
+												<!--step3div-->
+												</div>
+											</td>
+											<td>
+												<div class="table_scroll" id="step4view" style="display:">
+													<dl class='pro_select'>
+													<dt>상품명</dt>
+													<dd><span><br></span></dd>
+													<dt class='pt20'>판매기간</dt>
+													<dd><span><br></span></dd>
+													</dl>
+													<ul class='pdf_btn'>
+														<li>
+															<img src='/web/C/images/com/btn/btn_cdh_pdf01.gif' alt='사업방법서'>
+														</li>
+														<li>
+															<img src='/web/C/images/com/btn/btn_cdh_pdf02.gif' alt='상품요약서'>
+														</li>
+														<li>
+															<img src='/web/C/images/com/btn/btn_cdh_pdf03.gif' alt='약관'>
+														</li>
+													</ul>
+												<!--step4div-->
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- //tab_container -->
+					</div>
+				</div>
+			</form>
+			</div>
+			<!-- //content -->
+		</div>
+		<!-- //content_wrap -->
+	</div>
+	<!-- footer -->
+	
+
+<!-- 2024 상반기 소스코드 취약점 / 크로스 사이트 스크립팅 / 김태희 / xss 스크립트 함수 추가 -->
+<link rel="stylesheet" type="text/css" href="/web/C/C/css/jquery-ui/jquery-ui.css">
+<!-- <link type="text/css" rel="stylesheet" href="/web/C/cm/css/popup_new.css"> -->
+
+
+
+
+<script type="text/javascript">
+
+	// 패밀리사이트 공통 플러그인
+
+	$.fn.familysite = function() {
+
+		return this.each(function() {
+
+			var $obj = $(this), $tit = $obj.find(".tit"), $tgt = $tit.next();
+
+
+
+
+			$tit.on("click", function() {
+
+				$(this).addClass("on").next().removeClass("hide").attr({
+
+					"tabindex" : "0"
+
+				}).css("outline", 0).focus();
+
+				return false;
+
+			});
+
+
+
+
+			$tgt.find("button").on("click", function() {
+
+				$tit.removeClass("on").next().addClass("hide");
+
+				$tit.attr("tabindex", 0).focus();
+
+			});
+
+
+
+
+			$(document).click(function(event) {
+
+				if (!$(event.target).parents().is($obj)) {
+
+					$tit.removeClass("on").next().addClass("hide");
+
+				}
+
+			});
+
+		});
+
+	}
+
+
+
+
+
+
+
+
+
+
+	//페이지에 들어갈 스크립트
+
+	$(document).ready(function() {
+
+		//슬라이드
+
+		$('#slides').slidesjs({
+
+			width:178,
+
+            height:315,
+
+			play: {
+
+				active: true,
+
+	            auto: true,
+
+	            interval: 3000,
+
+	            swap: true
+
+			}
+
+		});
+
+
+
+
+		//패밀리 사이트
+
+		$(".familySite").familysite();
+
+		// 하단 메뉴
+		$(".foot-menu, .footer-laypop").off('mouseover').on('mouseover', function(e){
+			$('.footer-laypop').show();
+		});
+
+		$(".foot-menu, .footer-laypop").off('mouseout').on('mouseout', function(e){
+			$('.footer-laypop').hide();
+		});
+
+		// 추가
+		$(".foot-menu a, .footer-laypop a").off('focus.tidx').on('focus.tidx', function(e){
+			//console.log('FOCUS', $(e.currentTarget).html(), e);
+			$('.footer-laypop').show();
+		});
+		$(".foot-menu a").off('blur.tidx').on('blur.tidx', function(e){
+			setTimeout(function(){
+				if($(".foot-menu, .footer-laypop").find("a:focus").length == 0){
+					//console.log('BLUR', $(e.currentTarget).html(), e);
+					$('.footer-laypop').hide();
+				}
+			}, 10);
+		});
+		$(".foot-menu a, .footer-laypop ol a").off('keydown.tidx').on('keydown.tidx', function(e){
+			var keycode = e.which || (e.event ? window.event.keyCode : -1);
+			
+			var me = $(this);
+			var firstA = $('.footer-laypop a:first');
+
+			if(! keycode == 9){
+				return;
+			}
+
+			if(e.shiftKey){ 
+				if(me[0] == firstA[0]){
+					$(".foot-menu a:first").focus();
+					return false; 
+				}
+				return;
+			}
+
+			//console.log('KEYDOWN', keycode, String.fromCharCode(keycode), $(e.currentTarget)[0], e);
+
+			$('.footer-laypop .p1 a').attr('midx', 0);
+			$('.footer-laypop .p2 a').attr('midx', 1);
+			$('.footer-laypop .p3 a,.footer-laypop .p4 a,.footer-laypop .p5 a').attr('midx', 2);
+
+			var idx1 = $(".foot-menu a").index(me);
+			var idx2 = $(".footer-laypop ol").index(me.closest('ol'));
+			var idx3 = $(".footer-laypop ol:eq(" + idx2 + ") a").index(me);
+			var depth = idx1 == -1 ? 1 : 0;
+			idx2 = idx2 == -1 ? idx1 : idx2;
+			idx3 = idx3 == -1 ? 0 : idx3;
+			var o = $(".footer-laypop ol").eq(idx2).find('a').eq(idx3);
+			var oMax = $(".footer-laypop ol").eq(idx2).find('a:last');
+			var idx3_max = $('.footer-laypop a').index(oMax) || 0;
+			var idx4 = $('.footer-laypop a').index(o) || 0;
+			var idx4_max = $('.footer-laypop a').length - 1;
+			var index = 0;
+
+			//console.info(depth, 'idx1 : ' + idx1 + ', ' + 'idx2 : ' + idx2 + ', ' + 'idx3 : ' + idx3 + ', ' + 'idx4 : ' + idx4 + ', ' + 'idx3_max : ' + idx3_max + ', ' + 'idx4_max : ' + idx4_max);
+			
+			if(idx1 == 0){
+				me.blur();
+				$('.footer-laypop').show().find(".p1 a:eq(0)").focus();	
+			}else if(idx1 == 1){
+				me.blur();
+				$('.footer-laypop').show().find(".p2 a:eq(0)").focus();	
+			}else if(idx1 == 2){
+				me.blur();
+				$('.footer-laypop').show().find(".p3 a:eq(0)").focus();	
+			}else{
+				var ol = me.closest('ol');
+				var lastA = $('.footer-laypop a:last');
+				idx1 = idx1 == -1 ? Number(me.attr('midx')) : idx1;
+				
+				var foot_layLastA = $('.foot_lay .last a:first'); // 2023 웹접근성 추가
+				
+				if(me[0] == lastA[0]){
+					$('.footer-laypop').hide();
+					$('.foot_lay .last a:first').focus();
+				}
+				// 2023 웹접근성 추가 마지막 기타사이트에서 탭시 개인정보처리방침으로 이동
+				else if(me[0] == foot_layLastA[0]){
+					$('.footer-laypop').hide();
+					$(".foot_link002 .frist a").focus();
+					return false;
+				}else if(idx2 < 2 && idx4 == idx3_max){
+					$(".foot-menu a").eq(idx1 + 1).focus();
+				}else{
+					return;
+				}
+			}
+			return false;
+		});
+		
+		// 원라운딩골프보험 close시 삭제 처리
+		/* $("#lay_calc_pop_golf0906").parent().find(".ui-dialog-buttonset button").click(
+				function(){
+					setTimeout(function() {
+						commStyle.removeJsCssFile('/web/C/cm/css/popup_new.css', 'css');	
+					}, 300);	
+				}
+		); */
+		
+		var toDate = new Date().format("yyyyMMdd");
+		var cookieName = 'null' + toDate;
+		console.log("cookieName = " + cookieName + " getCookie = " + getCookie(cookieName));
+		
+		// 2023.10.10 이미지시스템 고도화 홈페이지 일시 중단 팝업 노출
+		var notice20231010Yn = false;
+		console.log("notice20231010Yn = " + notice20231010Yn);
+		
+		// 이미지시스템 고도화 홈페이지 중단 팝업 호출
+		if(notice20231010Yn && 'null' != null && 'null' == 'true' && getCookie(cookieName) != 'Y') {
+			$("#lay_calc_pop_notice20231010").dialog('open');
+		}
+
+	});
+
+// 쿠키 설정
+function setCookie( name, value, expiredays ) { 
+	var todayDate = new Date(); 
+	todayDate.setDate( todayDate.getDate() + expiredays ); 
+	document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";" 
+}
+
+//쿠키 검사 함수 정의
+function getCookie(name) {
+	var prefix = name + "=";
+	var cookieStartIndex = document.cookie.indexOf(prefix);
+	if (cookieStartIndex == -1) return null;
+	var cookieEndIndex = document.cookie.indexOf(";", cookieStartIndex + prefix.length);
+	if (cookieEndIndex == -1) cookieEndIndex = document.cookie.length;
+	return unescape(document.cookie.substring(cookieStartIndex + prefix.length, cookieEndIndex));
+}	
+	
+/********************* 팝업관련 시작 *********************/
+	
+function openMainPopUp(uRL, popWidth, popHeight, title, opt, winLeft, winTop) {
+	var wid;
+	var winWidth = popWidth;
+	var winHeight = popHeight;
+	var winURL = uRL;
+	var winName = title;
+	var winPosLeft = ((screen.width - winWidth) / 2) - 240;
+	var winPosTop = (screen.height - winHeight) / 2;
+
+	if(winLeft){ winPosLeft = winLeft; }
+	if(winTop){ winPosTop = winTop; }
+
+	var winOpt = "width=" + winWidth + ",height=" + winHeight + ",top=100, left=150";
+	if (opt == '') {
+		winOpt = winOpt + ", scrollbars=yes,resizable=yes";
+	} else {
+		winOpt = winOpt + ", " + opt;
+	}
+	return window.open(winURL, winName, winOpt);
+}
+
+//팝업정보
+function openPopUp(uRL, popWidth, popHeight, title, opt) {
+    var wid;
+    var winWidth = popWidth;
+    var winHeight = popHeight;
+    var winURL = uRL;
+    var winName = title;
+    var winPosLeft = (screen.width - winWidth) / 2;
+    var winPosTop = (screen.height - winHeight) / 2;
+    var winOpt = "width=" + winWidth + ",height=" + winHeight + ",top=" + winPosTop + ",left=" + winPosLeft;
+    if (opt == '') {
+        winOpt = winOpt + ", scrollbars=yes,resizable=yes";
+    } else {
+        winOpt = winOpt + ", " + opt;
+    }
+    return window.open(winURL, winName, winOpt);
+}
+
+function fnMovePage()
+{
+    openPopUp('http://www.lotteins.co.kr/web/C/D/popup/mobile_20160225.html',745, 780, '', '');
+}
+
+// 원라운딩골프보험 처리
+function lickPop(){
+	/* commStyle.addStylesheet('/web/C/cm/css/popup_new.css');
+	$('#lay_calc_pop_golf0906').dialog("open"); */
+}
+
+// css 동적 로딩
+var commStyle = {
+	addStylesheet : function(aHref){
+		var link = document.createElement('link');
+		link.setAttribute('rel', 'stylesheet');
+		link.type = 'text/css';
+		link.href = aHref;
+		document.head.appendChild(link);
+	},
+	removeJsCssFile : function (filename, filetype){
+		var targetelement=(filetype=="js")? "script" : (filetype=="css")? "link" : "none";
+		var targetattr=(filetype=="js")? "src" : (filetype=="css")? "href" : "none";
+		var allsuspects=document.getElementsByTagName(targetelement);
+		for (var i=allsuspects.length; i>=0; i--){ 
+			if (allsuspects[i] && allsuspects[i].getAttribute(targetattr)!=null && allsuspects[i].getAttribute(targetattr).indexOf(filename)!=-1){
+				allsuspects[i].parentNode.removeChild(allsuspects[i]);
+			}
+		}
+	}
+};
+
+</script>
+<script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "Organization",
+"name": "Lotteins", 
+"url": " http://www.lotteins.co.kr",
+"sameAs": [
+   https://ddei5-0-ctp.trendmicro.com:443/wis/clicktime/v1/query?url=https%3a%2f%2fwww.youtube.com%2fc%2fletlotteins%2f&umid=7A088C85-C92F-BE05-9365-71EA93C242A2&auth=0fba85e65ea135e2b150081b09acdc6e21360aee-c8c5d429f3b433e8b5a80e4cbb720a17eb23e1ea,
+]  
+}
+</script>
+
+	<!-- footer -->
+	<div id="footerss">
+		<div class="footer-line">
+			<div class="innerwrap">
+				<ul class="foot_lay">
+					<li class="foot-menu"><a href="#"><img src="/web/C/images/btn/footer_lay_b01_01.png" alt="공시정보"></a>
+					</li>
+					<li class="foot-menu"><a href="#"><img src="/web/C/images/btn/footer_lay_b02_01.png" alt="이용안내"></a></li>
+					<li class="foot-menu"><a href="#"><img src="/web/C/images/btn/footer_lay_b03_01.png" alt="신고정보"></a></li>
+					<li class="foot-menu"><a href="#"><img src="/web/C/images/btn/footer_lay_b04_01.png" alt="채권추심안내"></a></li>
+					<li class="foot-menu last"><a href="#"><img src="/web/C/images/btn/footer_lay_b05_01.png" alt="기타사이트"></a></li>
+				</ul>
+				<ul class="footer-laypop">
+					<li>
+						<h2 class="blind">공시정보</h2>
+						<ol class="p1">
+							<li><a href="/web/C/D/H/cdh_ir_board03_list.jsp">경영공시</a></li>
+							<li><a href="/web/C/D/H/cdh170.jsp">상품공시</a></li> 
+							<li><a href="/web/C/D/H/cdh_price_index.jsp">보험가격공시</a></li>
+							<li><a href="/web/C/D/H/cdh260.jsp">연금보험공시</a></li>
+							<li><a href="/web/C/D/H/cdh310.jsp">자동차보험공시</a></li>
+							<li><a href="/web/C/D/H/cdh420.jsp">모집수수료율공시</a></li>
+							<li><a href="/web/C/D/H/cdh190.jsp">보험상품약관</a></li>
+							<li><a href="/web/C/D/I/cdi130.jsp">신용정보활용체제</a></li>
+						</ol>
+					</li>
+					<li>
+						<h2 class="blind">이용안내</h2>
+						<ol class="p2">
+							<li><a href="/web/C/D/I/cdi040.jsp">서비스이용약관</a></li>
+							<li><a href="" onClick="movepage('/CChannelSvl','dfi.c.c.e.cmd.Cce080Cmd','/web/C/D/K/cdk312.jsp','','',''); return false;" >개인신용정보제공조회</a></li>
+							<li><a href="" onClick="movepage('/CChannelSvl','dfi.c.c.e.cmd.Cce080Cmd','/web/C/D/K/cdk315.jsp','','',''); return false;" >개인신용정보이용조회</a></li>
+							<li><a href="/web/C/D/C/cdc130_email.jsp">이메일주소무단수집거부</a></li>
+							<li><a href="/web/C/D/I/cdi030_1.jsp">영상정보처리기기운영관리방침</a></li>
+							<li><a href="/web/C/D/I/cdi041.jsp">휴대폰인증서비스이용약관</a></li>
+							<li><a href="/web/C/D/I/cdi050.jsp?type=tab1">고객권리안내문</a></li>
+							<li><a href="/web/C/D/I/cdi060.jsp">전자금융거래 고객보호정책</a></li>
+							<!--<li><a href="" onClick="movepage('/CChannelSvl','dfi.c.cm.CmDanSilSerchCmd','/web/C/D/K/cdk155.jsp','','',''); return false;">단체실손계약정보제공내역</a></li>-->
+							<li><a href="/web/C/D/K/cdk155.jsp">단체실손계약정보제공내역</a></li>
+							<li><a href="https://lotteins.recruiter.co.kr/" target="_blank" title="새창">임직원 채용정보</a></li> 
+							<li><a href="" onClick="movepage('/CChannelSvl','dfi.c.cm.CFrontCmd','/web/C/D/K/cdk524_retire.jsp','','',''); return false;" >퇴직자 서류발급</a></li>
+							<li><a href="/web/C/D/I/cdi600.jsp">위치기반서비스이용약관</a></li>
+						</ol>
+					</li>
+					<li>
+						<h2 class="blind">신고정보</h2>
+						<ol class="p3">
+							<!--<li><a href="" onClick="movepage('/CChannelSvl','dfi.c.c.e.cmd.Cce090Cmd','/web/C/D/K/cdk317.jsp','','',''); return false;" >보험범죄신고</a></li>-->
+							<li><a href="/web/C/D/K/cdk317.jsp">보험범죄신고</a></li>
+							<!--<li><a href="" onClick="movepage('/CChannelSvl','dfi.c.cm.CFrontCmd','/web/C/D/K/cdk202.jsp','','',''); return false;" >금융사고신고</a></li>-->
+							<li><a href="/web/C/D/K/cdk202.jsp">금융사고신고</a></li>
+							<li><a href="/web/C/D/H/cdh_ethics_accusation_01.jsp">윤리제보</a></li>
+							<li><a href="/web/C/D/H/cdh_ethics_accusation_02.jsp">미승인광고물신고</a></li>
+							<li><a href="http://insucop.fss.or.kr" target="_blank" title="새창">모집질서위반신고</a></li>
+							<li><a href="/web/C/D/C/cdc240.jsp">자기신체사고보험급지급</a></li>
+							<li><a href="https://www.fss.or.kr/fss/s1332/s1332Index/sub.do?menuNo=200037" target="_blank" title="새창">서민금융1332</a></li>
+							<!--<li><a href="http://www.fss.or.kr/fss/kr/popup/fsspopup_20140415.html" target="_blank" title="새창">금융사고예방안내</a></li>-->
+							<li><a href="/web/C/D/F/cdf220.jsp">보험가입조회센터</a></li>
+							<!--<li><a href="" onClick="movepage('/CChannelSvl','dfi.c.cm.CFrontCmd','/web/C/D/K/cdk310.jsp','','',''); return false;">휴면보험금조회</a></li>-->
+							<li><a href="/web/C/D/K/cdk310.jsp">휴면보험금조회</a></li>
+							<li><a href="/web/C/D/C/cdc130.jsp">뺑소니무보험보상</a></li>
+							<!--<li><a href="http://www.lotteins.co.kr/upload/C/2018/corruption-prevention.pdf" target="_blank">부패방지방침</a></li>-->
+						</ol>
+					</li>
+					<li>
+						<h2 class="blind">채권추심안내</h2>
+						<ol class="p4">
+							<li><a href="/web/C/D/I/cdi700.jsp">채권추심처리절차안내</a></li>
+							<li><a href="/web/C/D/I/cdi701.jsp">불법채권추심대응요령</a></li>
+							<li><a href="/web/C/D/I/cdi702.jsp">금융소비자유의사항</a></li>
+						</ol>
+					</li>
+					<li>
+						<h2 class="blind">기타사이트</h2>
+						<ol class="p5">
+							<li><a href="http://www.lottemiso.net/" target="_blank" title="새창">롯데미소금융재단</a></li>
+							<li><a href="http://biz.lotteins.co.kr" target="_blank" title="새창">적하보험서비스</a></li>
+							<!--<li><a href="/web/C/D/C/cdc330_login.jsp">롯데쇼핑사고조회</a></li>
+							<li><a href="javascript:movepage('/CChannelSvl', 'dfi.c.cm.CFrontCmd', '/web/C/D/I/cdi090_conf_2.jsp')">롯데계열사사고조회</a></li>-->
+							<li><a href="http://lottero.lotteins.co.kr" target="_blank" title="새창 열림">롯데로</a></li>
+						</ol>
+					</li>
+				</ul>	
+			</div>
+		</div>
+		<div class="foot_con02">
+			<div class="left_m">
+				<ul class="foot_link002">
+					<li class="frist"><a href="/web/C/D/I/cdi230.jsp">개인정보처리방침</a></li>
+					<li><a href="/web/C/D/H/cdh230.jsp">보호금융상품등록부</a></li>
+					<li><a href="/web/C/D/I/cdi070.jsp">전자금융거래약관</a></li>
+					<li><a href="/web/C/D/I/cdi600.jsp">위치기반서비스이용약관</a></li>
+					<li><a href="/web/C/D/H/cdh_ethics_accusation_01.jsp">윤리제보</a></li>
+					<li><a href="/web/C/D/H/cdh_ethics_accusation_02.jsp">미승인광고물신고</a></li>
+					<li><a href="#none" onClick="movepage('/CChannelSvl','dfi.c.c.e.cmd.Cce001Cmd','/web/C/D/K/cdk300.jsp','','',''); return false;">온라인상담신청</a></li>
+					<li class="last"><a href="/web/C/D/C/cdc033re.jsp">방문판매원조회</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="foot_con03">
+			<div class="foot_sty">
+				<div class="foot_logo2020"><img src="/web/C/images/main/footer_logo.png" alt="롯데손해보험"></div>
+				<p>
+					<span>대표이사 이은호</span> <span>서울시 중구 소월로3 (남창동)</span><span>사업자등록번호 104-81-30770</span><br />
+					<span class="fs-copy">COPYRIGHTⓒ LOTTE INSURANCE CO., LTD. ALL RIGHTS RESERVED.</span>
+				</p>				
+				<ul class="bottommenu03">
+					<li><a href="http://www.lotteins.co.kr/upload/C/2021/webaccessibility_lotteins.pdf" target="_blank" title="새창열림"><img src="/web/C/images/main/footer_icon_link01_1.png" alt="웹접근성우수사이트"></a></li>
+					<!--<li><a href="https://www.lotteins.co.kr/upload/C/IFSR/lotteins_nicerating.pdf" target="_blank" title="새창열림"><img src="/web/C/images/main/footer_icon_link06_1.png" alt="한국신용평가신용등급A+획득"></a></li>-->
+					<li><a href="http://www.lotteins.co.kr/upload/C/2017/lotteins_korearatings.pdf" target="_blank" title="새창팝업이동"><img src="/web/C/images/main/footer_icon_link03_1.png" alt="한국기업평가등급A+획득"></a></li>
+					<!--<li><a href="/web/C/images/lotteins_iso27001.pdf" target="_blank" title="새창팝업이동"><img src="/web/C/images/main/footer_icon_link04_1.gif" alt="ISO 27001인증획득"></a></li>-->
+					<!--<li><a href="https://www.lotteins.co.kr/upload/C/ISMS/ISMS_2022.pdf" target="_blank" title="새창팝업이동"><img src="/web/C/images/main/footer_icon_link05_1.png" alt="정보보호관리체계인증"></a></li>-->
+				</ul>
+				<ul class="arsmemu04">
+					<li class="pt03"><img src="/web/C/images/com/txt/bt_ars_nber001.gif" alt="고객콜센터 1588-3344"></li>
+					<li><a href="/web/C/D/K/cdk160.jsp"><img src="/web/C/images/com/btn/bt_ars_1128.gif" alt="ARS안내"></a></li>
+				</ul>
+			</div>			
+		</div>
+		
+	</div>
+	<!-- //footer -->
+	
+	
+
+<div id="lay_calc_pop_golf0906" class="ly-pop lg890" style="background:none;display:inline;">
+
+	<div class="pop-top-pink" style="padding:0;">
+	</div>
+
+	<div class="pop-mid-pink" style="padding:0 0 0 1px;background:none;">
+		<div class="galy_box001 type06 tac">	
+			<p class="tac"><img src="/web/C/images/event/golfopen_0913.jpg" alt="" />
+				<span class="hide-txt">
+					
+				</span>
+			</p>
+		</div>
+	</div>
+	<div class="pop-bot-pink" style="display:inline-flex;width:100%;padding:0;">
+	</div>
+</div>
+
+
+
+ <!-- 보험상품 -> 골프보험 -> 원라운딩골프보험 안내 팝업 -->
+	<!-- 이미지시스템 고도화 홈페이지 일시 중단 안내 -->
+	
+<!-- <link rel="stylesheet" type="text/css" href="/web/C/cm/css/popup_calcurate.css"> -->
+
+<style>
+.ip_check {vertical-align:-2px;border-color:#8e8f8f}
+.popcheck {background:#525252;position:relative;height:32px;color:#fff;vertical-align:middle;line-height:32px;padding-left:11px}
+.popcheck * {vertical-align:middle;line-height:22px}
+.popcheck .bt_close {position:absolute;right:10px;top:4px;}
+</style>
+<div id="lay_calc_pop_notice20231010" class="ly-pop popwrap_500_ins" style="background:#525252; display:none;">
+	<ul class="" id="slides_pop" style="width:0px;height: 0px;">
+		<li>
+			<div class="blind">
+				이미지시스템 고도화 홈페이지 일시 중단 안내
+			</div>
+			<!-- img src="/web/C/images/event/ins_main_notice20231010.jpg" alt="이미지시스템 고도화 홈페이지 일시 중단 안내" /-->
+		</li>
+	</ul>	
+	<p class="popcheck" style="margin:0;margin-top:0px;">
+		<input type="checkbox" class="ip_check" id="chk_not_domain_ins_notice_01"> 
+		<label for="chk_not_domain_ins_notice_01">오늘 다시보기 않기</label>
+		<a id="popwrap_500_ins_a_04" href="#" onclick="javascript:$('#lay_calc_pop_notice20231010').dialog('close');" class="bt_close" title="닫기">
+			<img src="/web/C/cm/image/hm/bt/bt_popclose001.gif" alt="close">
+		</a>
+	</p>
+	
+	<!--  javascript 영역 시작 -->
+<script >
+
+	function setCookie(cName, cValue, cDay){
+	     var expire = new Date();
+	     expire.setDate(expire.getDate() + cDay);
+	     cookies = cName + '=' + escape(cValue) + '; path=/ '; // 한글 깨짐을 막기위해 escape(cValue)를 합니다.
+	     if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
+	     document.cookie = cookies;
+	}
+	
+	function getCookie(cName) {
+	     cName = cName + '=';
+	     var cookieData = document.cookie;
+	//alert(cookieData);     
+	     var start = cookieData.indexOf(cName);
+	     var cValue = '';
+	     if(start != -1){
+	          start += cName.length;
+	          var end = cookieData.indexOf(';', start);
+	          if(end == -1)end = cookieData.length;
+	          cValue = cookieData.substring(start, end);
+	     }
+	     return unescape(cValue);
+	}
+		
+	function deleteCookie( cName ){
+		var expireDate = new Date();
+		//어제 날짜를 쿠키 소멸 날짜로 설정한다.
+		expireDate.setDate( expireDate.getDate() - 1 );
+		document.cookie = cName + "= " + "; expires=" + expireDate.toGMTString() + "; path=/";
+	}
+
+	$(document).ready(function () {
+		try{
+			$('#chk_not_domain_ins_notice_01').bind("click", function(){ 
+				var chk_not_domain_ins = document.getElementById("chk_not_domain_ins_notice_01");
+				var toDate = new Date().format("yyyyMMdd");
+				var cookieName = 'null' + toDate;
+				if(chk_not_domain_ins.checked){
+					setCookie(cookieName, "Y", 1);
+				}else{
+					deleteCookie(cookieName);
+				}
+			});
+			
+			setTimeout(function(){
+				$("#popwrap_500_ins_a_04").focus();
+			}, 300);
+		}catch(e){}
+	});
+	
+</script>
+</div>
+
+	 <!-- 공통기능 -->
+	<!-- //footer -->
+	<!-- //container -->
+</div>
+<!-- //wrapper -->
+<!--   팝업화면은 아래 Include 제외 -->
+<!-- NProtect 영역 시작 -->
+		
+
+
+     <script language='javascript' src='/kings/kdfense_object.js'></script>
+
+<!-- 공통기능 -->
+<!-- // NProtect 영역 시작  -->
+<!-- e2e 영역 시작 -->
+		
+<!--nProtect Netizen 적용 시작-->
+		<!-- script type="text/javascript" src="http://update.nprotect.net/netizenv55/insurance/lotteins/dev/netizen55_multi.js"></script -->
+<!--nProtect Netizen ?  적용 끝-->
+
+
+
+    <!--script language='javascript' src='/Xkings/idefense_object.js'></script-->
+
+
+
+<!-- VEST BEGIN --> <!-- VEST END -->
+
+
+<!-- 공통기능 -->
+<!-- // e2e 영역 시작  -->
+<!-- 기타 jsp 영역 시작 -->
+		
+	
+
+
+
+<form name="logform" method="post" action="/CChannelSvl">
+<input type="hidden" name="tc" />
+<input type="hidden" name="ops_tc" />
+<input type="hidden" name="task" />
+<input type="hidden" name="rtnUri" />
+<input type="hidden" name="cmd" />
+<input type="hidden" name="pageTypeCd" />
+<input type="hidden" name="page_no" value="1" />
+
+<!-- 보험상품에서만 사용되는 필드 20100323 -->
+<input type=hidden name="prdtseq" value="" />
+<input type=hidden name="prdtorder" value="" />
+	
+</form>
+
+<form name="frmGnbSearch" method="post" action="/web/search/search.jsp">
+
+	<input type="hidden" name="searchalign" id="searchalign" value="weight" /> 
+	<input type="hidden" name="searchprint" id="searchprint" value="3"> 	
+	<input type="hidden" name="searchTerm" id="name" value="">
+
+</form><!-- 공통기능 -->
+<!-- 기타 jsp 영역 끝 -->
+<!-- Xecure 사용하는 화면인경우 적용 -->
+		
+ <!--    <script type="text/javascript" src="/cm/lafj/xjos.js"></script> -->
+<form name='xecure'><input type=hidden name='p'></form>
+
+
+
+
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+if(!wcs_add) var wcs_add = {};
+wcs_add["wa"] = "7eaf6dcf86f388";
+if(window.wcs) {
+  wcs_do(); 
+}
+</script>
+
+<!-- 공통기능 -->
+<!-- Xecure 사용하는 화면인경우 적용 -->
+<iframe name="common" style="width:0px; height:0px;" frameborder="0" title="검색결과" ></iframe>
+</body>
+</html>
