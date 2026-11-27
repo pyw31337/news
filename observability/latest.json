@@ -1,295 +1,55 @@
 {
-  "run_id": "45924070923",
-  "observed_at": "2026-11-27T01:56:35+00:00",
-  "observed_at_kst": "2026-11-27T10:56:35+09:00",
+  "run_id": "44666085152",
+  "observed_at": "2026-11-20T03:22:45+00:00",
+  "observed_at_kst": "2026-11-20T12:22:45+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
-  "commit": "948dd52464008e1daedf32066c4c4be7a53a790d",
+  "commit": "2285dd816511c8631dca55031f37d903e9025339",
   "host": "github-actions",
   "stages": {
     "collect": {
       "status": "degraded",
-      "ok": 301,
-      "fail": 13,
-      "errors": 13,
+      "ok": 266,
+      "fail": 24,
+      "errors": 24,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 453,
-      "fail": 50,
-      "errors": 40,
+      "ok": 505,
+      "fail": 23,
+      "errors": 23,
       "artifact": true
     },
     "quality": {
       "status": "success",
       "quality_issue_count": 10,
-      "event_quality_present": true,
-      "detail": {
-        "low_score": 7,
-        "low_photo": 7,
-        "low_source": 2,
-        "missing_event_stages": 10
-      }
+      "event_quality_present": true
     },
     "publish": {
       "status": "success",
-      "published_at": "2026-11-27T02:00:35+00:00",
-      "data_commit": "fdd5d0c8d7beb4b3d1006bc29186ac39d33365e2",
+      "published_at": "2026-11-20T09:23:05+00:00",
+      "data_commit": "fe69260f05dbfe6ae408e501c0ff0329eeb8740f",
       "note": "data 브랜치 커밋 이후 게시 확인"
     }
   },
   "counts": {
     "issues": 10,
-    "sources": 193,
+    "sources": 187,
     "entities": 36,
-    "global_issues": 12,
+    "global_issues": 0,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "8712d42ccc747b0b72afc2435259f3dd9ae4ba0235ab30d3a4ad07cd3ff73804",
-    "global": "11527769a8f0c89a01ba96fcdea3a46db0e0b38dfc1060a9bd5f3aa1256f651b",
-    "quality": "d6aba45cbf77a573cc6ffd89e49f31d2a790af6cd112674cd231954afa1702c7",
-    "status": "dba4245f6f41f43c15a29b6ee3d3befb3347576f391f1e9d103754282ef1f34e",
-    "event_quality": "6f8be90feeca74a02fce16321aeef44d9610e1e4bba56375d77d657d50f6bc44"
-  },
-  "diagnostics": {
-    "collect": {
-      "by_kind": {
-        "timeout": 7,
-        "not_found": 6
-      },
-      "by_host": {
-        "n.news.naver.com": 6,
-        "m.news.naver.com": 1,
-        "ko.wikipedia.org": 6
-      },
-      "surface": {
-        "core": 6,
-        "auxiliary": 7
-      },
-      "examples": [
-        {
-          "t": "10:44:13",
-          "host": "n.news.naver.com",
-          "path": "/article/055/0001406212",
-          "err": "reporter: The read operation timed out"
-        },
-        {
-          "t": "10:44:28",
-          "host": "n.news.naver.com",
-          "path": "/article/057/0001980115",
-          "err": "reporter: The read operation timed out"
-        },
-        {
-          "t": "10:44:37",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%B6%80%EC%A0%95%ED%8F%89%EA%B0%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "10:44:37",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%ED%95%9C%ED%99%94%ED%81%B4%EB%9E%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "10:44:37",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%95%84%EC%9D%B4%ED%8F%B016",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "10:44:37",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%84%9C%EC%9A%B8%EC%84%9C",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "10:44:38",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9A%B8%EC%82%B0%EC%97%98%EB%A6%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "10:44:38",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/K%EC%9B%90%EC%A0%84",
-          "err": "HTTP Error 404: Not Found"
-        }
-      ]
-    },
-    "analyze": {
-      "by_kind": {
-        "timeout": 18,
-        "rate_limit": 22
-      },
-      "by_host": {
-        "n.news.naver.com": 28,
-        "ko.wikipedia.org": 22
-      },
-      "surface": {
-        "core": 40,
-        "auxiliary": 0
-      },
-      "examples": [
-        {
-          "t": "10:49:28",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EA%B5%AC%EB%A7%A4",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "10:49:46",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A3%BC%EB%91%94",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "10:49:46",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%A7%8C%EC%A0%90%EC%9E%90",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "10:49:46",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9E%90%EC%8B%A0%EA%B0%90",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "10:50:05",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%B0%80%EC%B0%A9",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "10:50:05",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%AE%A4%EC%A7%80%EC%BB%AC%EB%B0%",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "10:50:05",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9E%90%EB%A3%8C",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "10:50:23",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%A7%84%EB%95%80",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        }
-      ]
-    },
-    "global": {
-      "by_kind": {
-        "other": 11,
-        "timeout": 1
-      },
-      "by_host": {
-        "thehill.com": 1,
-        "www.wqad.com": 1,
-        "apnews.com": 1,
-        "www.cricinfo.com": 1,
-        "www.cleveland.com": 1,
-        "www.wivb.com": 1,
-        "www.wgrz.com": 1,
-        "www.health.com": 1,
-        "www.wkyc.com": 1,
-        "blogs.timesofisrael.com": 1,
-        "www.scmp.com": 1,
-        "www.washingtonpost.com": 1
-      },
-      "surface": {
-        "core": 12,
-        "auxiliary": 0
-      },
-      "examples": [
-        {
-          "t": "10:50:42",
-          "host": "www.cleveland.com",
-          "path": "/news/2026/11/why-cris-collinsworth-wont-call-browns-raiders",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "10:50:42",
-          "host": "www.wivb.com",
-          "path": "/news/local-news/volunteers-distribute-thanksgiving-meals-ac",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "10:50:42",
-          "host": "www.wgrz.com",
-          "path": "/article/life/holidays/local-missions-prepping-thousands-of-",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "10:50:44",
-          "host": "www.health.com",
-          "path": "/best-time-to-brush-teeth-before-or-after-breakfast-12244654",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "10:50:44",
-          "host": "www.wkyc.com",
-          "path": "/article/news/health/doctors-warn-holiday-season-poses-incre",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "10:50:44",
-          "host": "blogs.timesofisrael.com",
-          "path": "/beyond-the-campus-the-power-of-research-resilience-and-resp",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "10:50:44",
-          "host": "www.scmp.com",
-          "path": "/news/china/science/article/3375928/leading-us-brain-scienti",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "10:51:26",
-          "host": "www.washingtonpost.com",
-          "path": "/technology/2026/11/26/fcc-approves-1-million-spacex-data-ce",
-          "err": "The read operation timed out"
-        }
-      ]
-    },
-    "other": {
-      "db": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      },
-      "official": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      },
-      "naver": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      }
-    }
+    "today": "316980b48f41367096045a758b71492bc174dab8d081cc37a249cba7cb3e7580",
+    "global": null,
+    "quality": "d946994bd8680754784bb7905885c564cceb16d9322d7459068619b16da91a37",
+    "status": "425e5ef15e3faed333cd1a4841896d5329594af5cdad479863a172d5b7b3a391",
+    "event_quality": "1de2d116ce7c94cc12656a2d4780a8714a43ff4e2f8477c7d25ca826f08b0557"
   },
   "status_snapshot": {
-    "updated": "2026-11-27T10:56:06.051452+09:00",
+    "updated": "2026-11-20T18:20:20.271374+09:00",
     "error_count": 60
   },
-  "publish_verified_at": "2026-11-27T02:00:35+00:00"
+  "publish_verified_at": "2026-11-20T09:23:05+00:00"
 }
