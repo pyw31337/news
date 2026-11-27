@@ -1,74 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
-<meta name="theme-color" content="#fbfbfa">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="NewsBoard">
-<meta property="og:title" content="NewsBoard v2 · 오늘의 이슈 흐름">
-<meta property="og:description" content="수집된 이슈·기사·인물·관계·민심을 실제 데이터로 탐색합니다.">
-<title>NewsBoard v2 · 오늘의 이슈 흐름</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="v2-home.css?v=10">
-<link rel="stylesheet" href="timeline.css?v=1">
-<link rel="stylesheet" href="https://pyw31337.github.io/lets/css/lets-design-system.css?v=1.1.0">
+<meta charset="UTF-8">
+<script>location.replace('../' + location.search + location.hash);</script>
+<meta http-equiv="refresh" content="0;url=../">
+<title>NewsBoard</title>
 </head>
-<body>
-<header class="site-head">
-  <div class="head-in">
-    <a class="brand" href="./">NewsBoard<i>.</i></a>
-    <nav class="main-nav" aria-label="주요 메뉴">
-      <a class="is-on" href="./">오늘</a>
-      <a href="live/">흐름</a>
-      <a href="../persons/">인물</a>
-      <a href="../market/">마켓</a>
-      <a href="reports/">아카이브</a>
-    </nav>
-    <div class="region" role="group" aria-label="뉴스 지역">
-      <button class="is-on" data-region="kr">국내</button>
-      <button data-region="global-ko">해외(국문)</button>
-      <button data-region="global-en">해외(영문)</button>
-    </div>
-    <div class="head-tools">
-      <button class="tool" id="searchBtn" aria-label="이슈·인물 검색"><svg class="icon"><use href="#i-search"></use></svg></button>
-      <a class="tool" href="../login/" aria-label="로그인"><svg class="icon"><use href="#i-user"></use></svg></a>
-    </div>
-  </div>
-</header>
-
-<!-- Macro Pulse & Briefing Bar (Fused from v3) -->
-<aside class="macro-pulse" id="macroTicker"></aside>
-
-<main class="wrap page" id="app">
-  <p class="load">수집된 이슈·기사·인물 데이터를 불러오는 중…</p>
-</main>
-
-<footer class="wrap footer">
-  <div class="footer-inner">
-    <strong>NewsBoard v2</strong>
-    <span>인물 페이지 디자인시스템 기반 · 실제 원문과 데이터 흐름을 연결합니다.</span>
-  </div>
-</footer>
-
-<!-- Modal Search Palette (Fused from v3, replacing prompt) -->
-<div class="modal-overlay" id="searchModal" role="dialog" aria-modal="true" aria-label="빠른 검색 팔레트">
-  <div class="search-dialog">
-    <div class="search-input-wrap">
-      <span style="font-size:18px; color:var(--muted); margin-right:12px;">⌕</span>
-      <input type="text" id="modalSearchInput" placeholder="이슈, 인물, 기관, 키워드 검색…" autocomplete="off">
-      <button id="closeSearchBtn" style="padding:4px 8px; font-size:12px; color:var(--muted); font-weight:700;">ESC</button>
-    </div>
-    <div class="search-results-list" id="modalSearchResults"></div>
-  </div>
-</div>
-
-<script src="../assets/nbp/icons.js"></script>
-<script src="https://pyw31337.github.io/lets/js/lets-design-system.js?v=1.1.0"></script>
-<script src="lds-init.js?v=2"></script>
-<script src="v2-home.js?v=10"></script>
-<script src="nav.js?v=2"></script>
-</body>
+<body><a href="../">Redirecting to NewsBoard...</a></body>
 </html>

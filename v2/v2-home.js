@@ -27,8 +27,8 @@
   };
   const short = (s, n = 100) => { const t = String(s || ''); return t.length > n ? `${t.slice(0, n - 1)}…` : t; };
   const uniq = a => [...new Set((a || []).filter(Boolean))];
-  const root = '../';
-  const dataRoot = location.protocol === 'file:' ? 'https://pyw31337.github.io/news/data/' : '../data/';
+  const root = (location.pathname.includes('/v2/') || location.pathname.includes('/live/') || location.pathname.includes('/reports/')) ? '../' : './';
+  const dataRoot = location.protocol === 'file:' ? 'https://pyw31337.github.io/news/data/' : (root + 'data/');
   let V = null;
 
   const KNOWN_PORTRAITS = {
@@ -75,12 +75,29 @@
     const name = String(p.name || '').trim();
     if (KNOWN_PORTRAITS[name]) return KNOWN_PORTRAITS[name];
     if (p.photo && typeof p.photo === 'string') return p.photo;
-    if (p.visual && typeof p.visual.url === 'string') return p.visual.url;
-    const wThumb = p.wiki?.thumb;
-    if (wThumb && typeof wThumb === 'string') {
+    
+    // 1. visual.url 처리 (상대경로 data/pol/photos/ 정규화 및 R2 / pub/ url 통일)
+    if (p.visual && typeof p.visual.url === 'string' && p.visual.url.trim()) {
+      let u = p.visual.url.trim();
+      if (u.startsWith('data/')) return root + u;
+      return u;
+    }
+
+    // 2. wiki.thumb_src 또는 wiki.thumb 처리 (빈 문자열 제외 및 쿼리스트링 정리)
+    const wThumb = (p.wiki?.thumb_src && typeof p.wiki.thumb_src === 'string' && p.wiki.thumb_src.trim())
+      ? p.wiki.thumb_src.trim()
+      : (p.wiki?.thumb && typeof p.wiki.thumb === 'string' && p.wiki.thumb.trim() ? p.wiki.thumb.trim() : '');
+    if (wThumb) {
       return wThumb.split('?')[0];
     }
-    return p.thumb || '';
+
+    // 3. 최후 폴백 (p.thumb)
+    if (p.thumb && typeof p.thumb === 'string' && p.thumb.trim()) {
+      let u = p.thumb.trim();
+      if (u.startsWith('data/')) return root + u;
+      return u;
+    }
+    return '';
   }
 
   function catIcon(cat, filled = false) {
@@ -766,12 +783,6 @@
           </div>
         </section>
       </div>
-          <div class="kpi"><small>오늘의 이슈</small><b>${nf(issues.length)}<em>건</em></b></div>
-          <div class="kpi"><small>수집 기사</small><b>${nf((full.stats || {}).naver || (vm.nums || {}).arts)}<em>건</em></b></div>
-          <div class="kpi"><small>언론사</small><b>${nf(i.presses || (vm.nums || {}).presses || 0)}<em>곳</em></b></div>
-          <div class="kpi"><small>누적 반응</small><b>${nf((i.opinion || {}).total || (vm.nums || {}).comments || 0)}<em>건</em></b></div>
-        </div>
-      </section>
     `;
   }
 

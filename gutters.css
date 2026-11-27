@@ -1,0 +1,4 @@
+/* LDS page gutter guard: section pages must not touch the viewport edge. */
+.page{padding-left:clamp(20px,4.4vw,64px)!important;padding-right:clamp(20px,4.4vw,64px)!important}
+@media(max-width:800px){.page{padding-left:20px!important;padding-right:20px!important}}
+*,*::before,*::after{word-break:keep-all;overflow-wrap:normal}
