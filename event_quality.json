@@ -1,14 +1,14 @@
 {
   "schema": "newsboard.event-quality.v2",
-  "updated_at": "2026-11-27 03:31:09",
+  "updated_at": "2026-11-27 03:51:31",
   "date": "2026-11-27",
   "total_issues": 10,
-  "average_quality": 0.88,
+  "average_quality": 0.87,
   "issues": [
     {
-      "id": "i623fb8ed",
-      "title": "[속보] 경찰, '한동훈 자료유출 의혹' 압수수색",
-      "episode": "episode:b393f5e544d971",
+      "id": "icbd64c57",
+      "title": "경찰, ‘한동훈 자료유출 의혹’ 법무부·공소청 등 압수수색",
+      "episode": "episode:d6daa0b5bed044",
       "quality": 0.92,
       "stages": [
         "수사·대응",
@@ -25,21 +25,22 @@
       "evidence_rate": 1.0
     },
     {
-      "id": "ib3e32b59",
-      "title": "장동혁 \"한동훈 복당해도 다시 징계하면 된다... 추가 사유 있어\"",
-      "episode": "episode:d9adad4fa32801",
-      "quality": 1.0,
+      "id": "i187dfe40",
+      "title": "'윤석열 관저 이전 예산 전용' 김대기 전 비서실장, 1심서 징역형 집행유예",
+      "episode": "episode:c3d627320e41ce",
+      "quality": 0.84,
       "stages": [
-        "일반 보도",
         "사법·처분",
-        "파장·후속",
-        "입장·공방",
         "발단·의혹",
-        "수사·대응"
+        "일반 보도"
       ],
-      "gaps": [],
-      "duplicate_candidates": 36,
-      "event_count": 18,
+      "gaps": [
+        "입장·공방",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "duplicate_candidates": 27,
+      "event_count": 11,
       "evidence_rate": 1.0
     },
     {
@@ -57,14 +58,14 @@
         "발단·의혹",
         "입장·공방"
       ],
-      "duplicate_candidates": 36,
+      "duplicate_candidates": 37,
       "event_count": 34,
       "evidence_rate": 1.0
     },
     {
-      "id": "iccf2b956",
-      "title": "오늘 삼성전자 배당금 30조 들어온다, 이재용 얼마 받을까?",
-      "episode": "episode:eb34731a8546b3",
+      "id": "i2fa30724",
+      "title": "삼성전자, 오늘 역대 최대 30조원 배당… 개미들에 5조원, 이재용 4500억",
+      "episode": "episode:469b241bf8182e",
       "quality": 0.92,
       "stages": [
         "발단·의혹",
@@ -77,26 +78,26 @@
         "사법·처분"
       ],
       "duplicate_candidates": 31,
-      "event_count": 17,
+      "event_count": 16,
       "evidence_rate": 1.0
     },
     {
-      "id": "i03fdaf0b",
-      "title": "이진우 ‘리트’ 본 이유? “책 내려는데 마침 만점자 없어서”",
-      "episode": "episode:5e4608fde12ea7",
-      "quality": 1.0,
+      "id": "i62a83095",
+      "title": "“수능 하나만으로”…최초 만점자 이진우, ‘리트’ 시험 본 진짜 이유",
+      "episode": "episode:75cc169a393871",
+      "quality": 0.92,
       "stages": [
-        "발단·의혹",
         "일반 보도",
-        "입장·공방",
+        "수사·대응",
         "파장·후속",
-        "수사·대응"
+        "입장·공방"
       ],
       "gaps": [
+        "발단·의혹",
         "사법·처분"
       ],
       "duplicate_candidates": 40,
-      "event_count": 10,
+      "event_count": 11,
       "evidence_rate": 1.0
     },
     {
@@ -114,8 +115,27 @@
       "gaps": [
         "입장·공방"
       ],
-      "duplicate_candidates": 24,
-      "event_count": 59,
+      "duplicate_candidates": 25,
+      "event_count": 58,
+      "evidence_rate": 1.0
+    },
+    {
+      "id": "i0ad8c2fd",
+      "title": "\"흰 가운 입고 안경·소매까지 검사\"…'AI 커닝' 여파 속 서울대 면접[현장]",
+      "episode": "episode:ddd4f045ddff5f",
+      "quality": 0.84,
+      "stages": [
+        "일반 보도",
+        "수사·대응",
+        "파장·후속"
+      ],
+      "gaps": [
+        "발단·의혹",
+        "입장·공방",
+        "사법·처분"
+      ],
+      "duplicate_candidates": 31,
+      "event_count": 9,
       "evidence_rate": 1.0
     },
     {
@@ -150,14 +170,14 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 22,
-      "event_count": 9,
+      "duplicate_candidates": 24,
+      "event_count": 14,
       "evidence_rate": 1.0
     },
     {
-      "id": "icad7e40e",
-      "title": "“133% 올라야 본전”…하이닉스 투자자 평균 160층, 10%는 247층",
-      "episode": "episode:f93055e8e1f00f",
+      "id": "i5d844c76",
+      "title": "‘생지옥’ 엘살바도르 교도소, 중남미 우파 ‘핫플’로[지금, 여기]",
+      "episode": "episode:0a24f45065a7ba",
       "quality": 0.68,
       "stages": [
         "일반 보도"
@@ -167,25 +187,8 @@
         "입장·공방",
         "수사·대응"
       ],
-      "duplicate_candidates": 9,
-      "event_count": 17,
-      "evidence_rate": 1.0
-    },
-    {
-      "id": "i4290bb0b",
-      "title": "“생지옥 도입뒤 살인율 역대 최저”…중남미 핫플 된 교도소",
-      "episode": "episode:1fae382e143ac0",
-      "quality": 0.68,
-      "stages": [
-        "일반 보도"
-      ],
-      "gaps": [
-        "발단·의혹",
-        "입장·공방",
-        "수사·대응"
-      ],
-      "duplicate_candidates": 16,
-      "event_count": 6,
+      "duplicate_candidates": 20,
+      "event_count": 7,
       "evidence_rate": 1.0
     }
   ]
