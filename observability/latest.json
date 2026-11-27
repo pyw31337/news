@@ -1,7 +1,7 @@
 {
-  "run_id": "45970332727",
-  "observed_at": "2026-11-27T10:45:41+00:00",
-  "observed_at_kst": "2026-11-27T19:45:41+09:00",
+  "run_id": "44666085152",
+  "observed_at": "2026-11-20T03:22:45+00:00",
+  "observed_at_kst": "2026-11-20T12:22:45+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
   "commit": "2285dd816511c8631dca55031f37d903e9025339",
@@ -9,14 +9,14 @@
   "stages": {
     "collect": {
       "status": "degraded",
-      "ok": 286,
-      "fail": 11,
-      "errors": 11,
+      "ok": 266,
+      "fail": 24,
+      "errors": 24,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 502,
+      "ok": 505,
       "fail": 23,
       "errors": 23,
       "artifact": true
@@ -24,247 +24,32 @@
     "quality": {
       "status": "success",
       "quality_issue_count": 10,
-      "event_quality_present": true,
-      "detail": {
-        "low_score": 8,
-        "low_photo": 2,
-        "low_source": 4,
-        "missing_event_stages": 10
-      }
+      "event_quality_present": true
     },
     "publish": {
       "status": "success",
-      "published_at": "2026-11-27T10:49:28+00:00",
-      "data_commit": "38c885c0bf02f433f76b492aa2d1f700d3b17941",
+      "published_at": "2026-11-20T09:23:05+00:00",
+      "data_commit": "fe69260f05dbfe6ae408e501c0ff0329eeb8740f",
       "note": "data 브랜치 커밋 이후 게시 확인"
     }
   },
   "counts": {
     "issues": 10,
-    "sources": 201,
+    "sources": 187,
     "entities": 36,
     "global_issues": 0,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "7ccd4fbccd6658ac55c2ed0228a42bb52795cc127e12e26fc8a2b47f9336e405",
-    "global": "51b4f69f96ef5a99567ba11c1f2a3e027e946aad187bc9b18c5fb2170d193d60",
-    "quality": "e65d0641b1fc7c942f28e5b371dbf64b5b37aaaa99fdb68318665a7f18ece4e0",
-    "status": "952591304093580c2919d4674a4f69e3512030587013d1e9bac39fcf1673823b",
-    "event_quality": "9e243f7bf49fd656c5964f1143c7b3caadaf57f3a5407eb3724b91ce3e719846"
-  },
-  "diagnostics": {
-    "collect": {
-      "by_kind": {
-        "timeout": 2,
-        "not_found": 9
-      },
-      "by_host": {
-        "n.news.naver.com": 2,
-        "ko.wikipedia.org": 9
-      },
-      "surface": {
-        "core": 9,
-        "auxiliary": 2
-      },
-      "examples": [
-        {
-          "t": "19:35:00",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%97%B0%EC%9E%AC%ED%83%9C%EC%95%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "19:35:00",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/TF%EC%82%AC%EC%A7%84%EA%B4%80",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "19:35:00",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9D%B4%EB%8F%99%EC%97%B0",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "19:35:00",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/SM%EC%8B%9C%EC%84%B8%EC%A1%B0%EC%A",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "19:35:00",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9E%90%EB%A7%89%EB%89%B4%EC%8A%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "19:35:00",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%B2%A0%EB%8F%84%EB%85%B8%EC%A1%",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "19:35:00",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9D%B4%EB%B6%81%EC%84%9C",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "19:35:01",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%B9%9C%ED%95%9C%EA%B3%84",
-          "err": "HTTP Error 404: Not Found"
-        }
-      ]
-    },
-    "analyze": {
-      "by_kind": {
-        "timeout": 5,
-        "rate_limit": 17,
-        "not_found": 1
-      },
-      "by_host": {
-        "n.news.naver.com": 5,
-        "ko.wikipedia.org": 18
-      },
-      "surface": {
-        "core": 23,
-        "auxiliary": 0
-      },
-      "examples": [
-        {
-          "t": "19:38:35",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%82%B4%EB%85%84",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "19:38:35",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%B0%98%ED%86%A0%EB%A7%89",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "19:38:36",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/SM%EC%8B%9C%EC%84%B8%EC%A1%B0%EC%A",
-          "err": "HTTP Error 404: Not Found"
-        },
-        {
-          "t": "19:38:54",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%84%A4%EB%A6%BD",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "19:38:54",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%ED%8A%B9%EB%B3%84%EA%B3%A0%EB%AC%",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "19:38:54",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%B2%AD%EB%AC%B8%EB%B3%B4%EA%B3%",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "19:39:12",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EC%9E%90%EB%A3%8C",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        },
-        {
-          "t": "19:39:12",
-          "host": "ko.wikipedia.org",
-          "path": "/api/rest_v1/page/summary/%EB%A7%A4%EC%88%98",
-          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
-        }
-      ]
-    },
-    "global": {
-      "by_kind": {
-        "other": 4,
-        "timeout": 1
-      },
-      "by_host": {
-        "www.reuters.com": 1,
-        "www.bloomberg.com": 1,
-        "www.desmoinesregister.com": 1,
-        "www.facebook.com": 1,
-        "www.bradenton.com": 1
-      },
-      "surface": {
-        "core": 5,
-        "auxiliary": 0
-      },
-      "examples": [
-        {
-          "t": "19:39:33",
-          "host": "www.reuters.com",
-          "path": "/world/india/india-swaps-treasury-bills-signal-possibility-o",
-          "err": "HTTP Error 401: HTTP Forbidden"
-        },
-        {
-          "t": "19:39:34",
-          "host": "www.bloomberg.com",
-          "path": "/news/articles/2026-11-27/nomura-now-sees-india-s-rbi-hiking",
-          "err": "HTTP Error 403: Forbidden"
-        },
-        {
-          "t": "19:39:36",
-          "host": "www.desmoinesregister.com",
-          "path": "/press-release/story/158674/signal-health-group-franchise-in",
-          "err": "HTTP Error 402: Payment Required"
-        },
-        {
-          "t": "19:39:36",
-          "host": "www.facebook.com",
-          "path": "/rapplerdotcom/posts/watch-the-world-is-warming-and-world-le",
-          "err": "HTTP Error 400: Bad Request"
-        },
-        {
-          "t": "19:40:19",
-          "host": "www.bradenton.com",
-          "path": "/news/nation-world/national/article318276251.html",
-          "err": "The read operation timed out"
-        }
-      ]
-    },
-    "other": {
-      "db": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      },
-      "official": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      },
-      "naver": {
-        "by_kind": {},
-        "by_host": {},
-        "surface": {
-          "core": 0,
-          "auxiliary": 0
-        },
-        "examples": []
-      }
-    }
+    "today": "316980b48f41367096045a758b71492bc174dab8d081cc37a249cba7cb3e7580",
+    "global": null,
+    "quality": "d946994bd8680754784bb7905885c564cceb16d9322d7459068619b16da91a37",
+    "status": "425e5ef15e3faed333cd1a4841896d5329594af5cdad479863a172d5b7b3a391",
+    "event_quality": "1de2d116ce7c94cc12656a2d4780a8714a43ff4e2f8477c7d25ca826f08b0557"
   },
   "status_snapshot": {
-    "updated": "2026-11-27T19:44:59.871373+09:00",
-    "error_count": 39
+    "updated": "2026-11-20T18:20:20.271374+09:00",
+    "error_count": 60
   },
-  "publish_verified_at": "2026-11-27T10:49:28+00:00"
+  "publish_verified_at": "2026-11-20T09:23:05+00:00"
 }
