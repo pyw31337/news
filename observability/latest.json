@@ -1,55 +1,297 @@
 {
-  "run_id": "44666085152",
-  "observed_at": "2026-11-20T03:22:45+00:00",
-  "observed_at_kst": "2026-11-20T12:22:45+09:00",
+  "run_id": "45953540496",
+  "observed_at": "2026-11-27T07:00:09+00:00",
+  "observed_at_kst": "2026-11-27T16:00:09+09:00",
   "source": "github_actions",
   "workflow": "collect-news",
-  "commit": "2285dd816511c8631dca55031f37d903e9025339",
+  "commit": "80b867ac1ac9b3606e3bf4b9bb5338644c1ae56a",
   "host": "github-actions",
   "stages": {
     "collect": {
       "status": "degraded",
-      "ok": 266,
-      "fail": 24,
-      "errors": 24,
+      "ok": 293,
+      "fail": 35,
+      "errors": 35,
       "artifact": true
     },
     "analyze": {
       "status": "degraded",
-      "ok": 505,
-      "fail": 23,
-      "errors": 23,
+      "ok": 499,
+      "fail": 32,
+      "errors": 32,
       "artifact": true
     },
     "quality": {
       "status": "success",
       "quality_issue_count": 10,
-      "event_quality_present": true
+      "event_quality_present": true,
+      "detail": {
+        "low_score": 8,
+        "low_photo": 3,
+        "low_source": 6,
+        "missing_event_stages": 10
+      }
     },
     "publish": {
       "status": "success",
-      "published_at": "2026-11-20T09:23:05+00:00",
-      "data_commit": "fe69260f05dbfe6ae408e501c0ff0329eeb8740f",
+      "published_at": "2026-11-27T07:08:56+00:00",
+      "data_commit": "9d26f1878543f171c6ad1b5d9f79de10c9116424",
       "note": "data 브랜치 커밋 이후 게시 확인"
     }
   },
   "counts": {
     "issues": 10,
-    "sources": 187,
+    "sources": 196,
     "entities": 36,
-    "global_issues": 0,
+    "global_issues": 12,
     "quality_issues": 10
   },
   "artifacts": {
-    "today": "316980b48f41367096045a758b71492bc174dab8d081cc37a249cba7cb3e7580",
-    "global": null,
-    "quality": "d946994bd8680754784bb7905885c564cceb16d9322d7459068619b16da91a37",
-    "status": "425e5ef15e3faed333cd1a4841896d5329594af5cdad479863a172d5b7b3a391",
-    "event_quality": "1de2d116ce7c94cc12656a2d4780a8714a43ff4e2f8477c7d25ca826f08b0557"
+    "today": "50f77587276b6598e8add53bf66e7807bbbc3d524ca675bc5d6c43cebb2b5dea",
+    "global": "85e9241551b14bf6dff0a8ca0222add52ea061db17b3143554143a853d426e02",
+    "quality": "095b22fa6511b29b3c1b211c68923629979cb5c53e3bc59f8326b47a3a252b39",
+    "status": "d506a4360b0450ce87b19502749a0d1cd2832d6e06d1f927fae159d17f222345",
+    "event_quality": "c79a21787eb110c200ec786bb447ae8ff544e00b64218ed8fcc654d4942eb6ca"
+  },
+  "diagnostics": {
+    "collect": {
+      "by_kind": {
+        "timeout": 26,
+        "not_found": 9
+      },
+      "by_host": {
+        "n.news.naver.com": 25,
+        "m.news.naver.com": 1,
+        "ko.wikipedia.org": 9
+      },
+      "surface": {
+        "core": 19,
+        "auxiliary": 16
+      },
+      "examples": [
+        {
+          "t": "15:45:25",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EB%A7%88%EC%BC%93%EB%B7%B0",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "15:45:25",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%9D%B4%EB%B6%81%EC%84%9C",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "15:45:25",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EA%B0%95%EB%82%A8%EC%84%9C",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "15:45:25",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%9E%90%EB%A7%89%EB%89%B4%EC%8A%",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "15:45:26",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/TF%ED%8F%AC%EC%B0%A9",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "15:45:26",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%9D%B4%EC%A4%80%ED%9A%A8",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "15:45:26",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EB%B6%80%EC%82%B0%EC%84%9C",
+          "err": "HTTP Error 404: Not Found"
+        },
+        {
+          "t": "15:45:26",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%97%B0%EC%9E%AC%ED%83%9C%EC%95%",
+          "err": "HTTP Error 404: Not Found"
+        }
+      ]
+    },
+    "analyze": {
+      "by_kind": {
+        "timeout": 16,
+        "rate_limit": 16
+      },
+      "by_host": {
+        "n.news.naver.com": 16,
+        "ko.wikipedia.org": 16
+      },
+      "surface": {
+        "core": 32,
+        "auxiliary": 0
+      },
+      "examples": [
+        {
+          "t": "15:49:39",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%97%AD%EB%8C%80",
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
+        },
+        {
+          "t": "15:49:57",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%A7%80%ED%8C%A1%EC%9D%B4",
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
+        },
+        {
+          "t": "15:49:57",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EB%B6%81%EC%83%81",
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
+        },
+        {
+          "t": "15:49:57",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%9C%A0%EB%A0%A5",
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
+        },
+        {
+          "t": "15:50:15",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%ED%83%9C%EC%95%84",
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
+        },
+        {
+          "t": "15:50:15",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EB%A7%A4%EC%88%98",
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
+        },
+        {
+          "t": "15:50:15",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EC%84%A4%EB%A6%BD",
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
+        },
+        {
+          "t": "15:50:34",
+          "host": "ko.wikipedia.org",
+          "path": "/api/rest_v1/page/summary/%EB%A1%9C%EB%B4%87%EC%A3%BC",
+          "err": "HTTP Error 429: We suspect this request is automated: if so, please respect our robot policy. If you think you were inco"
+        }
+      ]
+    },
+    "global": {
+      "by_kind": {
+        "other": 27
+      },
+      "by_host": {
+        "www.scmp.com": 1,
+        "www.cnn.com": 1,
+        "www.marketscreener.com": 1,
+        "www.telegraphindia.com": 1,
+        "www.techpowerup.com": 1,
+        "www.shiksha.com": 1,
+        "www.bloomberg.com": 1,
+        "www.reuters.com": 4,
+        "www.theedgesingapore.com": 1,
+        "www.perfectduluthday.com": 1,
+        "www.newsnationnow.com": 1,
+        "www.usatoday.com": 1,
+        "translate.googleapis.com": 36,
+        "translate.google.com": 36,
+        "papago": 12
+      },
+      "surface": {
+        "core": 27,
+        "auxiliary": 0
+      },
+      "examples": [
+        {
+          "t": "15:52:13",
+          "host": "papago",
+          "path": "/nmt/v1/translation",
+          "err": "HTTP Error 401: Unauthorized"
+        },
+        {
+          "t": "15:52:28",
+          "host": "papago",
+          "path": "/nmt/v1/translation",
+          "err": "HTTP Error 401: Unauthorized"
+        },
+        {
+          "t": "15:52:43",
+          "host": "papago",
+          "path": "/nmt/v1/translation",
+          "err": "HTTP Error 401: Unauthorized"
+        },
+        {
+          "t": "15:52:58",
+          "host": "papago",
+          "path": "/nmt/v1/translation",
+          "err": "HTTP Error 401: Unauthorized"
+        },
+        {
+          "t": "15:53:12",
+          "host": "papago",
+          "path": "/nmt/v1/translation",
+          "err": "HTTP Error 401: Unauthorized"
+        },
+        {
+          "t": "15:53:27",
+          "host": "papago",
+          "path": "/nmt/v1/translation",
+          "err": "HTTP Error 401: Unauthorized"
+        },
+        {
+          "t": "15:53:42",
+          "host": "papago",
+          "path": "/nmt/v1/translation",
+          "err": "HTTP Error 401: Unauthorized"
+        },
+        {
+          "t": "15:53:56",
+          "host": "papago",
+          "path": "/nmt/v1/translation",
+          "err": "HTTP Error 401: Unauthorized"
+        }
+      ]
+    },
+    "other": {
+      "db": {
+        "by_kind": {},
+        "by_host": {},
+        "surface": {
+          "core": 0,
+          "auxiliary": 0
+        },
+        "examples": []
+      },
+      "official": {
+        "by_kind": {},
+        "by_host": {},
+        "surface": {
+          "core": 0,
+          "auxiliary": 0
+        },
+        "examples": []
+      },
+      "naver": {
+        "by_kind": {},
+        "by_host": {},
+        "surface": {
+          "core": 0,
+          "auxiliary": 0
+        },
+        "examples": []
+      }
+    }
   },
   "status_snapshot": {
-    "updated": "2026-11-20T18:20:20.271374+09:00",
+    "updated": "2026-11-27T15:59:35.064289+09:00",
     "error_count": 60
   },
-  "publish_verified_at": "2026-11-20T09:23:05+00:00"
+  "publish_verified_at": "2026-11-27T07:08:56+00:00"
 }
