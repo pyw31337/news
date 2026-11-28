@@ -1,0 +1,44 @@
+diff --git a/.github/workflows/collect.yml b/.github/workflows/collect.yml
+index 3f6b005..5654016 100644
+--- a/.github/workflows/collect.yml
++++ b/.github/workflows/collect.yml
+@@ -348,7 +348,16 @@ jobs:
+         env:
+           GITHUB_SHA: ${{ github.sha }}
+         run: |
+-          mkdir _site && cp -r index.html assets icons admin v2 v3 manifest.webmanifest sw.js og-image.png favicon.ico robots.txt _site/
++          mkdir -p _site
++          # 공개할 루트 자산만 올린다. 목록에 든 폴더가 저장소에서 사라져도(2026-11-27 v3→v2 승격 때 v3/ 삭제)
++          # 배포 전체가 멈추지 않도록, 없는 항목은 건너뛰고 경고만 남긴다.
++          # 2026-11-27 04:42Z 부터 2026-11-28 02:42Z 사이 collect-news 실행 41건이 `cp: cannot stat 'v3'` 로 전부 실패했다.
++          for f in index.html assets icons admin v2 \
++                   v2-home.css v2-home.js nav.js timeline.css title.css gutters.css section.css sections.js \
++                   subpage.css lds-init.js manifest.webmanifest sw.js og-image.png favicon.ico robots.txt \
++                   showcase live market insu lawtech reports; do
++            if [ -e "$f" ]; then cp -r "$f" _site/; else echo "::warning::루트 자산이 없어 건너뜀: $f"; fi
++          done
+           mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/db/people/coverage.json _site/data/people_coverage.json 2>/dev/null || true); (cp data/global.json data/status.json _site/data/ || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/elite_network.json _site/data/ 2>/dev/null || true); (cp data/people_public.json _site/data/ 2>/dev/null || true); (mkdir -p _site/data/graph && cp -r data/db/people/graph/n data/db/people/graph/e _site/data/graph/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp data/stats.json data/stats_detail.json _site/data/ 2>/dev/null || cp data/stats.json _site/data/ 2>/dev/null || true); (cp data/market_detail.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true); (cp data/voice.json _site/data/ 2>/dev/null || true); (cp data/quiz.json _site/data/ 2>/dev/null || true); (cp data/social.json _site/data/ 2>/dev/null || true); (cp data/fun.json _site/data/ 2>/dev/null && python scripts/fun_og.py _site || true); (cp -r data/fun _site/data/ 2>/dev/null || true); (cp -r data/editorial _site/data/ 2>/dev/null || true)
+           python scripts/people/build_v2_people.py data/people_bio.json _site/data/v2_people.json
+           python scripts/people/build_v2_ids.py data/db/people/registry.json.gz _site/data/v2_person_ids.json
+diff --git a/.github/workflows/pages.yml b/.github/workflows/pages.yml
+index 7d15f6f..fd141cc 100644
+--- a/.github/workflows/pages.yml
++++ b/.github/workflows/pages.yml
+@@ -56,7 +56,16 @@ jobs:
+           FUN_DATA=data python scripts/editorial_queue.py
+           # 안전 폴백을 제공하는 정적 배포는 유지하면서, 편집 품질 이슈는 배포 로그에서 즉시 보이게 한다.
+           FUN_DATA=data python scripts/editorial_queue.py --validate || echo "::warning::Editorial quality gate reported an issue; safe fallback content remains published."
+-          mkdir _site && cp -r index.html assets icons admin v2 manifest.webmanifest sw.js og-image.png favicon.ico robots.txt _site/
++          mkdir -p _site
++          # 공개할 루트 자산만 올린다. 목록에 든 폴더가 저장소에서 사라져도(2026-11-27 v3→v2 승격 때 v3/ 삭제)
++          # 배포 전체가 멈추지 않도록, 없는 항목은 건너뛰고 경고만 남긴다.
++          # 2026-11-27 04:42Z 부터 2026-11-28 02:42Z 사이 collect-news 실행 41건이 `cp: cannot stat 'v3'` 로 전부 실패했다.
++          for f in index.html assets icons admin v2 \
++                   v2-home.css v2-home.js nav.js timeline.css title.css gutters.css section.css sections.js \
++                   subpage.css lds-init.js manifest.webmanifest sw.js og-image.png favicon.ico robots.txt \
++                   showcase live market insu lawtech reports; do
++            if [ -e "$f" ]; then cp -r "$f" _site/; else echo "::warning::루트 자산이 없어 건너뜀: $f"; fi
++          done
+           mkdir _site/data && cp -r data/today.json data/archive _site/data/ && (cp data/portrait_audit.json _site/data/ || true); (cp data/db/people/coverage.json _site/data/people_coverage.json 2>/dev/null || true); (cp data/global.json data/status.json _site/data/ || true); (cp data/global_weather.json _site/data/ 2>/dev/null || true); (cp data/briefs.json _site/data/ 2>/dev/null || true); (cp data/official.json _site/data/ 2>/dev/null || true); (cp data/elite_network.json _site/data/ 2>/dev/null || true); (cp data/people_public.json _site/data/ 2>/dev/null || true); (mkdir -p _site/data/graph && cp -r data/db/people/graph/n data/db/people/graph/e _site/data/graph/ 2>/dev/null || true); (cp data/ecos_series.json _site/data/ 2>/dev/null || true); (cp data/stats.json data/stats_detail.json _site/data/ 2>/dev/null || cp data/stats.json _site/data/ 2>/dev/null || true); (cp data/market_detail.json _site/data/ 2>/dev/null || true); (cp -r data/gov _site/data/ 2>/dev/null || true); (cp data/voice.json _site/data/ 2>/dev/null || true); (cp data/quiz.json _site/data/ 2>/dev/null || true); (cp data/social.json _site/data/ 2>/dev/null || true); (cp data/fun.json _site/data/ 2>/dev/null && python scripts/fun_og.py _site || true); (cp -r data/fun _site/data/ 2>/dev/null || true); (cp -r data/editorial _site/data/ 2>/dev/null || true)
+           python scripts/people/build_v2_people.py data/people_bio.json _site/data/v2_people.json
+           python scripts/people/build_v2_ids.py data/db/people/registry.json.gz _site/data/v2_person_ids.json
