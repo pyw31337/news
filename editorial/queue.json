@@ -1,7 +1,7 @@
 {
   "schema": "newsboard.editorial-queue.v2",
   "date": "2026-11-28",
-  "generated_at": "2026-11-28T10:52:20+09:00",
+  "generated_at": "2026-11-28T11:15:37+09:00",
   "handoff": {
     "state": "brief_ready",
     "owner": "unassigned",
@@ -26,107 +26,6 @@
     "completion_definition": "A comic/card item has four evidence-backed beats, a registered visual asset or safe fallback, and passes the no-filler validator."
   },
   "candidates": [
-    {
-      "issue_id": "i99f701af",
-      "title": "젠슨 황 불륜녀, 무슨 짓을 한거야…중국 시설서 발견된 물건 ‘충격’",
-      "category": "경제",
-      "rank": 2,
-      "priority_score": 45,
-      "production_types": [
-        "comic",
-        "card_news"
-      ],
-      "status": "ready_for_editorial_review",
-      "facts": [
-        "미국 정부의 대중국 수출통제 대상인 엔비디아의 최첨단 AI 칩 '블랙웰'이 젠슨 황 엔비디아 CEO의 불륜 상대였던 앨리스 황과 연계된 중국 데이터센터에서 발견되었다.",
-        "[속보] ‘젠슨 황 불륜 상대’ 얽힌 中기업서 엔비디아 ‘블랙웰’ 칩 포착",
-        "젠슨 황 불륜녀, 무슨 짓을 한거야…중국 시설서 발견된 물건 ‘충격’",
-        "‘젠슨 황 불륜 상대’ 연관된 中 데이터센터에서 엔비디아 최첨단 칩 발견",
-        "\"앨리스 황 연계 중국 시설에 엔비디아 AI 칩\""
-      ],
-      "sources": [
-        {
-          "press": "디지털타임스",
-          "title": "[속보] ‘젠슨 황 불륜 상대’ 얽힌 中기업서 엔비디아 ‘블랙웰’ 칩 포착",
-          "url": "https://n.news.naver.com/article/029/0003061577"
-        },
-        {
-          "press": "매일경제",
-          "title": "젠슨 황 불륜녀, 무슨 짓을 한거야…중국 시설서 발견된 물건 ‘충격’",
-          "url": "https://n.news.naver.com/article/009/0005770187"
-        },
-        {
-          "press": "조선비즈",
-          "title": "‘젠슨 황 불륜 상대’ 연관된 中 데이터센터에서 엔비디아 최첨단 칩 발견",
-          "url": "https://n.news.naver.com/article/366/0001207894"
-        },
-        {
-          "press": "MBC",
-          "title": "\"앨리스 황 연계 중국 시설에 엔비디아 AI 칩\"",
-          "url": "https://n.news.naver.com/article/214/0001538623"
-        }
-      ],
-      "story_beats": [
-        {
-          "panel": 1,
-          "purpose": "무슨 일이 있었나",
-          "evidence": "미국 정부의 대중국 수출통제 대상인 엔비디아의 최첨단 AI 칩 '블랙웰'이 젠슨 황 엔비디아 CEO의 불륜 상대였던 앨리스 황과 연계된 중국 데이터센터에서 발견되었다."
-        },
-        {
-          "panel": 2,
-          "purpose": "왜 이 일이 생겼나",
-          "evidence": "젠슨 황 엔비디아 최고경영자(CEO)의 불륜 상대이자 중국 스파이로 지목된 앨리스 황과 연계된 중국 데이터센터에 미국의 수출 규제 대상인 엔비디아의 최첨단 인공지능(AI) 칩 ‘블랙웰’이 설치된 것으로…"
-        },
-        {
-          "panel": 3,
-          "purpose": "핵심 수치·근거",
-          "evidence": "전문보기: https://www.yna.co.kr/view/AKR20261128000900017 ■ '젠슨황 불륜 상대' 연계 中시설서 엔비디아 최첨단 칩 발견 젠슨 황 엔비디아 최고경영자(CEO)의 불륜 상대였던…"
-        },
-        {
-          "panel": 4,
-          "purpose": "다음에 검증할 지표·조건",
-          "evidence": "중국 데이터센터에서 실제 수출 통제 품목인 '블랙웰'이 발견되면서, 앞선 의혹들이 구체적인 물증으로 확인되는 국면을 맞았다."
-        }
-      ],
-      "visual_brief": {
-        "scene": "science",
-        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
-        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
-        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
-      },
-      "visual_contract": {
-        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
-        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
-        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
-        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
-        "forbid": [
-          "read-the-original CTA",
-          "generic city sunset",
-          "generic classroom chalkboard",
-          "copied panel composition",
-          "invented chart number",
-          "real-person likeness"
-        ],
-        "acceptance": [
-          "four distinct panel scenes",
-          "no rasterized text or speech bubbles",
-          "source beats checked",
-          "asset registered in assets/editorial-art.json"
-        ]
-      },
-      "asset": {
-        "existing": "",
-        "action": "generate_after_human_fact_check"
-      },
-      "quality_gate": {
-        "cause_grounded": true,
-        "numeric_or_specific_evidence": true,
-        "sources": 4,
-        "continuity_quality": 1.0,
-        "continuity_gaps": [],
-        "no_generic_closing": true
-      }
-    },
     {
       "issue_id": "ia4ff45cc",
       "title": "국민연금 적립금 석 달 만에 202조 '증발'...수익률 '반 토막'",
@@ -233,60 +132,60 @@
       }
     },
     {
-      "issue_id": "ic2a80c30",
-      "title": "한국 약사 보수, 물가 반영하니 일본의 1.8배…미국의 74%",
-      "category": "세계",
+      "issue_id": "if55e8cc8",
+      "title": "\"삼성전자 4만원까지 떨어질 수도\"…전문가 전망 나왔다",
+      "category": "경제",
       "rank": 7,
       "priority_score": 37,
       "production_types": [
         "comic",
         "card_news"
       ],
-      "status": "ready_for_editorial_review",
+      "status": "needs_fact_review",
       "facts": [
-        "친근감 전년 대비 7.1%p 상승, 中엔 12.9%…극명한 온도 차 여행·한류에 셔틀외교도 한몫…韓日 신뢰 구축은 여전히 과제 11월18일 아시아태평양경제협력체(APEC) 정상회의 참석을 위해 중국 선전에 도착한 다",
-        "지난해 한국·중국·일본에서 행사를 진행한 데 이어 올해는 북미·중남미·유럽으로 범위를 확장했다.",
-        "서울을 시작으로 베이징·상하이·선전·타이베이·가오슝·홍콩·후쿠오카·오사카·요코하마·멕시코시티...",
-        "“이걸 한국에 내주지”…중국의, 중국을 위한, 중국에 의한 아이오닉 어떻길래",
-        "협회의 2025년 자료에 따르면, 한국의 1인당 연간 아몬드 소비량(약 800g)은 아시아 4개국(한국·일본·중국·인도) 가운데 가장 높다."
+        "삼성전자 주가가 4만원대까지 내려갈 수 있다는 전문가의 전망이 나왔다.",
+        "반도체 전문가가 이번에는 삼성전자의 '4만원대 추락' 가능성까지 경고하고 나섰다.",
+        "인공지능(AI) 투자...",
+        "삼성전자와 SK하이닉스의 적정 주가를 각각 7만원과 20만원 수준으로 평가하면서도, 이 수치가 주가의 하단(바닥)...",
+        "\"삼성전자 7만원도 바닥 아니다\"…이대로 가다가는 '섬뜩 경고'"
       ],
       "sources": [
         {
-          "press": "enter.etoday.co.kr",
-          "title": "[스톡 브리핑] 하이브, ‘2027 시즌그리팅 팝업’ 개최…북미·유럽까지...",
-          "url": "https://enter.etoday.co.kr/news/view/305896"
+          "press": "magazine.hankyung.com",
+          "title": "'7만전자' 외쳐 난리 났는데…이번엔 \"4만전자\" 더 센 폭탄 던졌다",
+          "url": "https://n.news.naver.com/mnews/article/050/0000113887?sid=101"
         },
         {
-          "press": "매일경제",
-          "title": "“이걸 한국에 내주지”…중국의, 중국을 위한, 중국에 의한 아이오닉 어떻길래",
-          "url": "https://n.news.naver.com/article/009/0005770174"
+          "press": "한국경제TV",
+          "title": "\"삼성전자 7만원도 바닥 아니다\"…이대로 가다가는 '섬뜩 경고'",
+          "url": "https://n.news.naver.com/article/215/0001274266"
         },
         {
-          "press": "biz.heraldcorp.com",
-          "title": "“장 건강 안 좋나요? 아몬드가 해결사” 한국이 일본보다 2배 더 먹는 ...",
-          "url": "https://n.news.naver.com/mnews/article/016/0002729739?sid=103"
+          "press": "TV조선",
+          "title": "삼성전자 배당금, '오늘 입금'…이재용 4500억원 받았다",
+          "url": "https://n.news.naver.com/article/448/0000653894"
         },
         {
-          "press": "mk.co.kr",
-          "title": "“스미마셍, 엔화가 없는데요”…일본 라멘집서 원화코인 쓸 날 올까",
-          "url": "https://n.news.naver.com/mnews/article/009/0005770226?sid=101"
+          "press": "n.news.naver.com",
+          "title": "[시선집중] 靑 이해민 “AI 커닝 방지, ‘전 세계 공조’ 한국이 제일 먼...",
+          "url": "https://n.news.naver.com/mnews/article/214/0001538441?sid=100"
         }
       ],
       "story_beats": [
         {
           "panel": 1,
           "purpose": "무슨 일이 있었나",
-          "evidence": "친근감 전년 대비 7.1%p 상승, 中엔 12.9%…극명한 온도 차 여행·한류에 셔틀외교도 한몫…韓日 신뢰 구축은 여전히 과제 11월18일 아시아태평양경제협력체(APEC) 정상회의 참석을 위해 중국 선전에 도착한 다"
+          "evidence": "삼성전자 주가가 4만원대까지 내려갈 수 있다는 전문가의 전망이 나왔다."
         },
         {
           "panel": 2,
           "purpose": "왜 이 일이 생겼나",
-          "evidence": "다만 USTR은 지난해 한국과 체결한 전략적 무역·투자 합의와 3500억 달러 규모의 대미 투자 약속을 존중해 한국의 관세 상한선은 15%로 유지했습니다."
+          "evidence": "인공지능(AI) 투자..."
         },
         {
           "panel": 3,
           "purpose": "핵심 수치·근거",
-          "evidence": "협회의 2025년 자료에 따르면, 한국의 1인당 연간 아몬드 소비량(약 800g)은 아시아 4개국(한국·일본·중국·인도) 가운데 가장 높다."
+          "evidence": "반도체 전문가가 이번에는 삼성전자의 '4만원대 추락' 가능성까지 경고하고 나섰다."
         },
         {
           "panel": 4,
@@ -295,8 +194,113 @@
         }
       ],
       "visual_brief": {
-        "scene": "reportage",
-        "direction": "사건을 설명하는 실제 사물·공간을 쓰고 도시 배경·노을 반복을 피할 것",
+        "scene": "ledger",
+        "direction": "장부·물류·그래프를 쓰되 실제 회사 로고·실제 인물은 제외",
+        "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
+        "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
+      },
+      "visual_contract": {
+        "layout": "comic: 1-wide / 2-split / 1-wide, card: one visual idea per card",
+        "continuity": "Bori is warm orange; Nuri is navy. Keep silhouette and costume consistent across the four panels.",
+        "composition": "Leave clean upper-side negative space for two HTML speech bubbles. Do not place essential evidence behind bubble zones.",
+        "evidence": "Every panel must visibly support its assigned story beat; panel 2 is the cause, panel 3 is the named number or evidence, panel 4 is a concrete next signal.",
+        "forbid": [
+          "read-the-original CTA",
+          "generic city sunset",
+          "generic classroom chalkboard",
+          "copied panel composition",
+          "invented chart number",
+          "real-person likeness"
+        ],
+        "acceptance": [
+          "four distinct panel scenes",
+          "no rasterized text or speech bubbles",
+          "source beats checked",
+          "asset registered in assets/editorial-art.json"
+        ]
+      },
+      "asset": {
+        "existing": "",
+        "action": "generate_after_human_fact_check"
+      },
+      "quality_gate": {
+        "cause_grounded": true,
+        "numeric_or_specific_evidence": true,
+        "sources": 4,
+        "continuity_quality": 0.84,
+        "continuity_gaps": [
+          "발단·의혹",
+          "수사·대응",
+          "사법·처분"
+        ],
+        "no_generic_closing": true
+      }
+    },
+    {
+      "issue_id": "i2e25869f",
+      "title": "“젠슨 황 불륜 상대와 연계된 중국 데이터센터에 엔비디아 블랙웰 설치”",
+      "category": "세계",
+      "rank": 2,
+      "priority_score": 45,
+      "production_types": [
+        "comic",
+        "card_news"
+      ],
+      "status": "ready_for_editorial_review",
+      "facts": [
+        "미국의 대중국 수출통제 대상인 엔비디아의 최첨단 AI 칩 '블랙웰'이 젠슨 황 전 엔비디아 CEO의 불륜 상대인 앨리스 황과 연계된 중국 데이터센터에 설치된 사실이 확인되었습니다.",
+        "[속보] ‘젠슨 황 불륜 상대’ 얽힌 中기업서 엔비디아 ‘블랙웰’ 칩 포착",
+        "젠슨 황 불륜녀, 무슨 짓을 한거야…중국 시설서 발견된 물건 ‘충격’",
+        "‘젠슨 황 불륜 상대’ 연관된 中 데이터센터에서 엔비디아 최첨단 칩 발견",
+        "\"앨리스 황 연계 중국 시설에 엔비디아 AI 칩\""
+      ],
+      "sources": [
+        {
+          "press": "디지털타임스",
+          "title": "[속보] ‘젠슨 황 불륜 상대’ 얽힌 中기업서 엔비디아 ‘블랙웰’ 칩 포착",
+          "url": "https://n.news.naver.com/article/029/0003061577"
+        },
+        {
+          "press": "매일경제",
+          "title": "젠슨 황 불륜녀, 무슨 짓을 한거야…중국 시설서 발견된 물건 ‘충격’",
+          "url": "https://n.news.naver.com/article/009/0005770187"
+        },
+        {
+          "press": "조선비즈",
+          "title": "‘젠슨 황 불륜 상대’ 연관된 中 데이터센터에서 엔비디아 최첨단 칩 발견",
+          "url": "https://n.news.naver.com/article/366/0001207894"
+        },
+        {
+          "press": "MBC",
+          "title": "\"앨리스 황 연계 중국 시설에 엔비디아 AI 칩\"",
+          "url": "https://n.news.naver.com/article/214/0001538623"
+        }
+      ],
+      "story_beats": [
+        {
+          "panel": 1,
+          "purpose": "무슨 일이 있었나",
+          "evidence": "미국의 대중국 수출통제 대상인 엔비디아의 최첨단 AI 칩 '블랙웰'이 젠슨 황 전 엔비디아 CEO의 불륜 상대인 앨리스 황과 연계된 중국 데이터센터에 설치된 사실이 확인되었습니다."
+        },
+        {
+          "panel": 2,
+          "purpose": "왜 이 일이 생겼나",
+          "evidence": "젠슨 황 엔비디아 최고경영자(CEO)의 불륜 상대이자 중국 스파이로 지목된 앨리스 황과 연계된 중국 데이터센터에 미국의 수출 규제 대상인 엔비디아의 최첨단 인공지능(AI) 칩 ‘블랙웰’이 설치된 것으로…"
+        },
+        {
+          "panel": 3,
+          "purpose": "핵심 수치·근거",
+          "evidence": "전문보기: https://www.yna.co.kr/view/AKR20261128000900017 ■ '젠슨황 불륜 상대' 연계 中시설서 엔비디아 최첨단 칩 발견 젠슨 황 엔비디아 최고경영자(CEO)의 불륜 상대였던…"
+        },
+        {
+          "panel": 4,
+          "purpose": "다음에 검증할 지표·조건",
+          "evidence": "수출통제 대상인 블랙웰 칩이 실제 중국 데이터센터에 설치된 것이 확인되면서, 앞선 의혹들이 사실로 드러났다는 해석이 나옵니다."
+        }
+      ],
+      "visual_brief": {
+        "scene": "science",
+        "direction": "관측·실험·데이터라는 실제 설명 요소를 사용, 범용 칠판은 피할 것",
         "comic": "세로 4컷: 상단 가로 와이드 1컷 → 가운데 좌·우 분할 2컷 → 하단 가로 와이드 1컷. 같은 보리·누리 캐릭터의 의상·비율을 유지하되, 네 컷의 카메라·행동·실제 사물은 모두 달리한다. 이미지 안에는 읽을 한글, 말풍선, 회사 로고, 실존 인물 얼굴을 넣지 않는다. 말풍선과 대사는 웹 오버레이로 제공한다.",
         "card_news": "표지 1장 + 사건·원인·근거·다음 신호를 독립 카드로. 각 카드에는 해당 사실을 설명하는 고유한 도표·물체·공간을 쓰며, 근거 없는 장식 문구와 같은 배경 재사용을 금지한다."
       },
@@ -329,9 +333,7 @@
         "numeric_or_specific_evidence": true,
         "sources": 4,
         "continuity_quality": 1.0,
-        "continuity_gaps": [
-          "수사·대응"
-        ],
+        "continuity_gaps": [],
         "no_generic_closing": true
       }
     }
