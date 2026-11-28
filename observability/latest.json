@@ -33,8 +33,10 @@
       }
     },
     "publish": {
-      "status": "pending",
-      "note": "기록 시점에는 data 브랜치 커밋 전"
+      "status": "success",
+      "published_at": "2026-11-28T03:47:05+00:00",
+      "data_commit": "dcc8db14a5b1c16184cfb532b5ddfaa07ea26181",
+      "note": "data 브랜치 커밋 이후 게시 확인"
     }
   },
   "counts": {
@@ -287,5 +289,6 @@
   "status_snapshot": {
     "updated": "2026-11-28T12:42:42.543106+09:00",
     "error_count": 54
-  }
+  },
+  "publish_verified_at": "2026-11-28T03:47:05+00:00"
 }
