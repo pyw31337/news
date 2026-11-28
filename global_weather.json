@@ -1,7 +1,23 @@
 {
-  "updated": "2026-11-28T09:22:53.873830+09:00",
-  "alerts_count": 34,
+  "updated": "2026-11-28T09:48:28.700944+09:00",
+  "alerts_count": 33,
   "alerts": [
+    {
+      "id": "urn:oid:2.49.0.1.840.0.b4d9d806664bee5f5bf4ef69c5e2cca2e52288aa.001.2",
+      "t": "2026-11-27 15:45",
+      "country": "US",
+      "flag": "🇺🇸",
+      "country_ko": "미국",
+      "country_en": "United States",
+      "area": "Western US Arctic Offshore",
+      "area_en": "Western US Arctic Offshore",
+      "event": "해상 결빙 경보",
+      "event_en": "Heavy Freezing Spray Warning",
+      "severity": "Severe",
+      "headline_ko": "Western US Arctic Offshore 해상 결빙 경보",
+      "headline_en": "Western US Arctic Offshore Heavy Freezing Spray Warning",
+      "desc": "Offshore Waters Forecast for the US Arctic Waters\n\nSea forecasts represent an average of the highest one-third of\nthe combined wind wave and swell height. Individual waves may be\ntwice as high.\n\n.TONIGHT...E winds 35 kt with gusts to around 50 kt. Seas 13 ft.\nBlowing snow. Extreme freezing spray.\n.S"
+    },
     {
       "id": "urn:oid:2.49.0.1.840.0.b0a6f09ef55e554e6a4c6c77a8ae3c8d61c0a7fb.001.1",
       "t": "2026-11-27 15:37",
@@ -113,22 +129,6 @@
       "headline_ko": "Johnson 강풍 주의보",
       "headline_en": "Johnson High Wind Watch",
       "desc": "* WHAT...South winds 25 to 35 mph with gusts up to 65 mph possible.\n\n* WHERE...Blount Smoky Mountains, Cocke Smoky Mountains, Johnson,\nSevier Smoky Mountains, Southeast Carter, Southeast Greene,\nSoutheast Monroe, and Unicoi Counties.\n\n* WHEN...From Sunday morning through late Sunday night.\n\n* IMPACT"
-    },
-    {
-      "id": "urn:oid:2.49.0.1.840.0.25737a63a6365c8524ac89e80d8e7a4332b78d5c.001.1",
-      "t": "2026-11-27 11:06",
-      "country": "US",
-      "flag": "🇺🇸",
-      "country_ko": "미국",
-      "country_en": "United States",
-      "area": "Eastern Las Animas County",
-      "area_en": "Eastern Las Animas County",
-      "event": "강풍 주의보",
-      "event_en": "High Wind Watch",
-      "severity": "Severe",
-      "headline_ko": "Eastern Las Animas County 강풍 주의보",
-      "headline_en": "Eastern Las Animas County High Wind Watch",
-      "desc": "* WHAT...Northwest winds 25 to 35 mph with gusts up to 60 mph\npossible.\n\n* WHERE...Eastern Las Animas County.\n\n* WHEN...From Saturday afternoon through Saturday evening.\n\n* IMPACTS...Damaging winds could blow down trees and power lines.\nTravel could be difficult, especially for high profile and ligh"
     },
     {
       "id": "urn:oid:2.49.0.1.840.0.16717c042704324324419c72ac9aa2b23e3c4a05.003.1",
@@ -302,11 +302,11 @@
       "flag": "🇺🇸",
       "lat": 40.7128,
       "lon": -74.006,
-      "temp": 6.4,
-      "apparent_temp": 1.3,
-      "humidity": 78,
+      "temp": 7.3,
+      "apparent_temp": 2.4,
+      "humidity": 80,
       "code": 3,
-      "wind": 24.2
+      "wind": 23.5
     },
     {
       "id": "losangeles",
@@ -316,11 +316,11 @@
       "flag": "🇺🇸",
       "lat": 34.0522,
       "lon": -118.2437,
-      "temp": 25.2,
-      "apparent_temp": 23.5,
-      "humidity": 34,
-      "code": 2,
-      "wind": 7.9
+      "temp": 22.5,
+      "apparent_temp": 21.1,
+      "humidity": 42,
+      "code": 1,
+      "wind": 7.2
     },
     {
       "id": "london",
@@ -330,11 +330,11 @@
       "flag": "🇬🇧",
       "lat": 51.5074,
       "lon": -0.1278,
-      "temp": 5.2,
-      "apparent_temp": 2.0,
-      "humidity": 86,
+      "temp": 5.3,
+      "apparent_temp": 2.3,
+      "humidity": 87,
       "code": 3,
-      "wind": 10.8
+      "wind": 9.7
     },
     {
       "id": "paris",
@@ -344,11 +344,11 @@
       "flag": "🇫🇷",
       "lat": 48.8566,
       "lon": 2.3522,
-      "temp": 0.6,
-      "apparent_temp": -3.6,
-      "humidity": 77,
+      "temp": 0.4,
+      "apparent_temp": -3.8,
+      "humidity": 76,
       "code": 2,
-      "wind": 11.4
+      "wind": 10.8
     },
     {
       "id": "frankfurt",
@@ -358,11 +358,11 @@
       "flag": "🇩🇪",
       "lat": 50.1109,
       "lon": 8.6821,
-      "temp": 0.4,
+      "temp": 0.3,
       "apparent_temp": -3.0,
-      "humidity": 82,
+      "humidity": 81,
       "code": 2,
-      "wind": 6.8
+      "wind": 5.8
     },
     {
       "id": "tokyo",
@@ -372,11 +372,11 @@
       "flag": "🇯🇵",
       "lat": 35.6895,
       "lon": 139.6917,
-      "temp": 9.0,
-      "apparent_temp": 7.4,
-      "humidity": 89,
+      "temp": 8.9,
+      "apparent_temp": 7.6,
+      "humidity": 93,
       "code": 2,
-      "wind": 6.4
+      "wind": 5.4
     },
     {
       "id": "beijing",
@@ -386,11 +386,11 @@
       "flag": "🇨🇳",
       "lat": 39.9042,
       "lon": 116.4074,
-      "temp": 1.6,
-      "apparent_temp": -1.9,
-      "humidity": 40,
+      "temp": 2.2,
+      "apparent_temp": -1.5,
+      "humidity": 36,
       "code": 0,
-      "wind": 1.4
+      "wind": 2.1
     },
     {
       "id": "singapore",
@@ -400,11 +400,11 @@
       "flag": "🇸🇬",
       "lat": 1.3521,
       "lon": 103.8198,
-      "temp": 24.4,
-      "apparent_temp": 30.0,
-      "humidity": 99,
-      "code": 3,
-      "wind": 4.3
+      "temp": 25.4,
+      "apparent_temp": 31.1,
+      "humidity": 96,
+      "code": 51,
+      "wind": 4.9
     },
     {
       "id": "sydney",
@@ -414,11 +414,11 @@
       "flag": "🇦🇺",
       "lat": -33.8688,
       "lon": 151.2093,
-      "temp": 26.9,
-      "apparent_temp": 29.1,
-      "humidity": 63,
+      "temp": 26.4,
+      "apparent_temp": 29.5,
+      "humidity": 71,
       "code": 1,
-      "wind": 19.6
+      "wind": 18.7
     },
     {
       "id": "toronto",
@@ -428,11 +428,11 @@
       "flag": "🇨🇦",
       "lat": 43.6532,
       "lon": -79.3832,
-      "temp": 3.4,
-      "apparent_temp": 0.6,
+      "temp": 3.7,
+      "apparent_temp": 0.9,
       "humidity": 94,
       "code": 3,
-      "wind": 7.2
+      "wind": 7.8
     },
     {
       "id": "dubai",
@@ -442,11 +442,11 @@
       "flag": "🇦🇪",
       "lat": 25.2048,
       "lon": 55.2708,
-      "temp": 22.7,
-      "apparent_temp": 25.8,
+      "temp": 22.4,
+      "apparent_temp": 25.3,
       "humidity": 84,
       "code": 0,
-      "wind": 5.0
+      "wind": 5.5
     },
     {
       "id": "saopaulo",
@@ -456,29 +456,21 @@
       "flag": "🇧🇷",
       "lat": -23.5505,
       "lon": -46.6333,
-      "temp": 17.5,
-      "apparent_temp": 18.5,
+      "temp": 18.1,
+      "apparent_temp": 19.3,
       "humidity": 91,
-      "code": 1,
-      "wind": 7.0
+      "code": 3,
+      "wind": 7.3
     }
   ],
   "stories": [
     {
-      "id": "gdc52a43e",
-      "title": "Thanksgiving storm on U.S. East Coast knocks out power, disrupts flights",
-      "press": "CBC",
-      "image": "https://i.cbc.ca/ais/36e09950-3c14-4e21-a649-39b2b2ac843e,1795786802233/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C13%2C594%2C334%29%3BResize%3D620",
-      "score": 9.5,
-      "url": "g/gdc52a43e"
-    },
-    {
-      "id": "g7c6522ed",
-      "title": "Record-breaking California tides cause major flooding of roads and businesses",
-      "press": "Guardian Environment",
-      "image": "https://i.guim.co.uk/img/media/431702ff7ef1dcec67ed80c675827aa7bb470406/332_0_3320_2656/master/3320.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=7f2a46ef4985a699b834dc579801bbbf",
-      "score": 9.5,
-      "url": "g/g7c6522ed"
+      "id": "g680c0991",
+      "title": "Thousands still without power after storms that snarled Thanksgiving travel",
+      "press": "Guardian World",
+      "image": "https://ichef.bbci.co.uk/news/1024/branded_news/058e/live/011ab230-eaab-11f1-9d2d-dd9286f639a6.jpg",
+      "score": 8.0,
+      "url": "g/g680c0991"
     }
   ]
 }
