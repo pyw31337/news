@@ -10,7 +10,7 @@ index 3f6b005..5654016 100644
 +          mkdir -p _site
 +          # 공개할 루트 자산만 올린다. 목록에 든 폴더가 저장소에서 사라져도(2026-11-27 v3→v2 승격 때 v3/ 삭제)
 +          # 배포 전체가 멈추지 않도록, 없는 항목은 건너뛰고 경고만 남긴다.
-+          # 2026-11-27 04:42Z 부터 2026-11-28 02:42Z 사이 collect-news 실행 41건이 `cp: cannot stat 'v3'` 로 전부 실패했다.
++          # 2026-11-27 04:42Z 부터 지금까지 collect-news 실행이 모두 `cp: cannot stat 'v3'` 로 실패했다(11-28 03:31Z 기준 42건).
 +          for f in index.html assets icons admin v2 \
 +                   v2-home.css v2-home.js nav.js timeline.css title.css gutters.css section.css sections.js \
 +                   subpage.css lds-init.js manifest.webmanifest sw.js og-image.png favicon.ico robots.txt \
@@ -32,7 +32,7 @@ index 7d15f6f..fd141cc 100644
 +          mkdir -p _site
 +          # 공개할 루트 자산만 올린다. 목록에 든 폴더가 저장소에서 사라져도(2026-11-27 v3→v2 승격 때 v3/ 삭제)
 +          # 배포 전체가 멈추지 않도록, 없는 항목은 건너뛰고 경고만 남긴다.
-+          # 2026-11-27 04:42Z 부터 2026-11-28 02:42Z 사이 collect-news 실행 41건이 `cp: cannot stat 'v3'` 로 전부 실패했다.
++          # 2026-11-27 04:42Z 부터 지금까지 collect-news 실행이 모두 `cp: cannot stat 'v3'` 로 실패했다(11-28 03:31Z 기준 42건).
 +          for f in index.html assets icons admin v2 \
 +                   v2-home.css v2-home.js nav.js timeline.css title.css gutters.css section.css sections.js \
 +                   subpage.css lds-init.js manifest.webmanifest sw.js og-image.png favicon.ico robots.txt \
